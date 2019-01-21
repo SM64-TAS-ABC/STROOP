@@ -17,7 +17,7 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            MovementCalculator.CalculateMovementForWfHolp();
+            TestScuttlebugDrops();
         }
 
         public static void TestSomethingElse()
@@ -288,5 +288,48 @@ namespace STROOP.Utilities
             -3850.870361,-3818.78833,-3787.706299,-3756.247314,-3724.419189,-3692.231689,-3661.044189,
             -3629.481689,-3597.552979,-3565.266846,-3533.980713,-3502.32251,-3470.300049,-3439.277588,
         };
+
+        public static void TestScuttlebugDrops()
+        {
+            List<int> startingVerticalSpeeds = new List<int>();
+            for (int i = 16; i >= -76; i -= 4)
+            {
+                startingVerticalSpeeds.Add(i);
+            }
+            startingVerticalSpeeds.Add(-78);
+
+            List<List<int>> diffListList = new List<List<int>>();
+            foreach (int startingVerticalSpeed in startingVerticalSpeeds)
+            {
+                int vs1 = startingVerticalSpeed;
+                int vs2 = 16;
+                int y1 = 0;
+                int y2 = 0;
+
+                List<int> diffList = new List<int>();
+                for (int i = 0; i < 25; i++)
+                {
+                    int diff = y2 - y1;
+                    diffList.Add(diff);
+                    y1 += vs1;
+                    y2 += vs2;
+                    vs1 = Math.Max(vs1 - 4, -78);
+                    vs2 = Math.Max(vs2 - 4, -78);
+                }
+                diffListList.Add(diffList);
+            }
+
+            string output = "";
+            foreach (List<int> diffList in diffListList)
+            {
+                foreach (int diff in diffList)
+                {
+                    output += diff;
+                    output += "\t";
+                }
+                output += "\n";
+            }
+            InfoForm.ShowValue(output);
+        }
     }
 } 
