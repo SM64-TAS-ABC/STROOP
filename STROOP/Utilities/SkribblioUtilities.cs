@@ -260,6 +260,8 @@ namespace STROOP.Structs
                 "Game Shark",
                 "Frame",
                 "TASBot",
+                "Improvement",
+                "Hack",
 
                 // People
                 "pannenkoek2012",
@@ -329,10 +331,14 @@ namespace STROOP.Structs
                 "Velocity",
                 "FOV",
                 "Out of Bounds",
+                "Button Mashing",
+                "Pause Buffering",
+                "Pause",
 
                 // Memes
                 "Bait",
                 "Half A Press",
+                "Iwerp",
 
                 // Menu
                 "Copy",
@@ -832,6 +838,7 @@ namespace STROOP.Structs
                 "Blow",
                 "Heavy",
                 "Owl",
+                "Barbed Wire",
             };
 
         public static void ShowWords()
