@@ -190,6 +190,7 @@ namespace STROOP.Managers
             // Create new graphics control
             _mapGraphics = new Map2Graphics(_mapGui.GLControl);
             _mapGraphics.Load();
+            _mapGraphics.IconSize = _mapGui.MapIconSizeTrackbar.Value;
 
             _isLoaded = true;
 
