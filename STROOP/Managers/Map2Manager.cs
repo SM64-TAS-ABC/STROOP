@@ -190,6 +190,7 @@ namespace STROOP.Managers
             // Create new graphics control
             _mapGraphics = new Map2Graphics(_mapGui.GLControl);
             _mapGraphics.Load();
+            _mapGraphics.IconSize = _mapGui.MapIconSizeTrackbar.Value;
 
             _isLoaded = true;
 
@@ -319,6 +320,7 @@ namespace STROOP.Managers
                 Config.StroopMainForm.Bounds.Y,
                 Config.StroopMainForm.Bounds.Width,
                 Config.StroopMainForm.Bounds.Height,
+                _mapGui.MapIconSizeTrackbar.Value,
             };
             Clipboard.SetText(string.Join(",", values));
         }
@@ -326,7 +328,7 @@ namespace STROOP.Managers
         private void PasteMapSettings()
         {
             List<string> values = ParsingUtilities.ParseStringList(Clipboard.GetText());
-            if (values.Count != 15) return;
+            if (values.Count != 16) return;
 
             SplitContainer innerSplitContainer = ControlUtilities.GetAncestorSplitContainer(_mapGui.MapNameLabel);
             SplitContainer outerSplitContainer = ControlUtilities.GetAncestorSplitContainer(innerSplitContainer);
@@ -348,6 +350,8 @@ namespace STROOP.Managers
                 ParsingUtilities.ParseInt(values[12]),
                 ParsingUtilities.ParseInt(values[13]),
                 ParsingUtilities.ParseInt(values[14]));
+            _mapGui.MapIconSizeTrackbar.Value = ParsingUtilities.ParseInt(values[15]);
+            _mapGraphics.IconSize = _mapGui.MapIconSizeTrackbar.Value;
         }
 
         private (List<TriangleShape> floors, List<TriangleShape> walls) GetTriShapes(int numSides)

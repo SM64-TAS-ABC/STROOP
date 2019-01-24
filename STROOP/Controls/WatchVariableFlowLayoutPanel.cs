@@ -274,6 +274,7 @@ namespace STROOP.Controls
         {
             _selectedWatchVarControls.ForEach(control => control.IsSelected = false);
             _selectedWatchVarControls.Clear();
+            UnselectText();
         }
 
         public void UnselectText()
