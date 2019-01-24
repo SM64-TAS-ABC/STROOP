@@ -172,7 +172,6 @@ namespace STROOP.Structs
                 "Cloning",
                 "Cloned Coin",
                 "Beached Bubba",
-                "Timestop",
                 "Time Stop",
                 "Lakitu Skip",
                 "Cannonless",
