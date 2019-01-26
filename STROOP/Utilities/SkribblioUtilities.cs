@@ -234,6 +234,7 @@ namespace STROOP.Structs
                 "Wii VC",
                 "Wii U",
                 "Wii U VC",
+                "Nintendo 64 Disk Drive",
                 "Emulator",
                 "Mupen",
                 "Project64",
@@ -356,6 +357,7 @@ namespace STROOP.Structs
                 "Arrow",
                 "Menu",
                 "Select",
+                "Option",
 
                 // Controller
                 "A Button",
@@ -417,7 +419,7 @@ namespace STROOP.Structs
                 "Checkpoint",
                 "Chest",
                 "Chest Bottom",
-                "Chest Top",
+                "Chest Lid",
                 "Chill Bully",
                 "Chuckya",
                 "Clam",
@@ -583,7 +585,7 @@ namespace STROOP.Structs
                 "Yoshi",
                 "Yoshi Egg",
   
-                // Challanges
+                // Challenges
                 "A Button Challenge",
                 "B Button Challenge",
                 "Z Button Challenge",
@@ -594,6 +596,19 @@ namespace STROOP.Structs
                 "No Buttons Allowed",
                 "CCC Challenge",
 
+                // Speedrunning Terms
+                "120 Star",
+                "70 Star",
+                "31 Star",
+                "16 Star",
+                "1 Star",
+                "0 Star",
+                "Side BLJ",
+                "Lobby BLJ",
+                "Save & Continue",
+                "Save & Quit",
+                "Continue, Don't Save",
+                
                 // Moves & Actions & States
                 "Single Jump",
                 "Double Jump",
@@ -640,7 +655,7 @@ namespace STROOP.Structs
                 "Hop",
                 "Death",
                 "Eaten",
-                "Electrocution",
+                "Electrocuted",
                 "Shocked",
                 "Sit",
                 "Handstand",
@@ -736,7 +751,6 @@ namespace STROOP.Structs
                 "Bonk",
                 "Hall",
                 "Hallway",
-                "Spider",
                 "Ghost",
                 "Statue",
                 "Hunt",
