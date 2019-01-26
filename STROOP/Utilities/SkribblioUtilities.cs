@@ -607,7 +607,7 @@ namespace STROOP.Structs
                 "Lobby BLJ",
                 "Save & Continue",
                 "Save & Quit",
-                "Continue, Don't Save",
+                "Continue Don't Save",
                 
                 // Moves & Actions & States
                 "Single Jump",
