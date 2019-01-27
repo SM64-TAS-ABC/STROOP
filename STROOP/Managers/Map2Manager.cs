@@ -608,7 +608,12 @@ namespace STROOP.Managers
             double qpuY = puY / 4d;
             double qpuZ = puZ / 4d;
 
+            // Update yNorm
+            uint floorTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            float? yNorm = floorTriangleAddress == 0 ? (float?)null : Config.Stream.GetSingle(floorTriangleAddress + TriangleOffsetsConfig.NormY);
+
             // Update labels
+            _mapGui.YNormValueLabel.Text = yNorm?.ToString() ?? "(none)";
             _mapGui.PuValueLabel.Text = string.Format("[{0}:{1}:{2}]", puX, puY, puZ);
             _mapGui.QpuValueLabel.Text = string.Format("[{0}:{1}:{2}]", qpuX, qpuY, qpuZ);
             _mapGui.MapIdLabel.Text = string.Format("[{0}:{1}:{2}:{3}]", level, area, loadingPoint, missionLayout);

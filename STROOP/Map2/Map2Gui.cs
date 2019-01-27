@@ -12,6 +12,7 @@ namespace STROOP.Map2
     public class Map2Gui
     {
         public GLControl GLControl;
+        public Label YNormValueLabel;
         public Label QpuValueLabel;
         public Label PuValueLabel;
         public Label MapIdLabel;

@@ -279,11 +279,14 @@ namespace STROOP
             Map2Gui map2Gui = new Map2Gui()
             {
                 GLControl = glControlMap2,
+
                 MapIdLabel = labelMap2Id,
                 MapNameLabel = labelMap2Name,
                 MapSubNameLabel = labelMap2SubName,
                 PuValueLabel = labelMap2PuValue,
                 QpuValueLabel = labelMap2QpuValue,
+                YNormValueLabel = labelMap2YNormValue,
+
                 MapIconSizeTrackbar = trackBarMap2IconSize,
                 MapShowInactiveObjects = checkBoxMap2ShowInactive,
                 MapShowMario = checkBoxMap2ShowMario,
