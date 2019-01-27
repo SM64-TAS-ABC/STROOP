@@ -257,9 +257,19 @@ namespace STROOP.Managers
                 });
         }
 
+        private void ChangeMapFillToNone()
+        {
+            if (_mapGui.GLControl.Dock != DockStyle.None)
+            {
+                Control parent = _mapGui.GLControl.Parent;
+                _mapGui.GLControl.SetBounds(0, 0, parent.Width, parent.Height);
+                _mapGui.GLControl.Dock = DockStyle.None;
+            }
+        }
+
         private void ChangeMapPosition(int xSign, int ySign)
         {
-            _mapGui.GLControl.Dock = DockStyle.None;
+            ChangeMapFillToNone();
             int positionChange = ParsingUtilities.ParseInt(_mapGui.MapBoundsPositionTextBox.Text);
             int xChange = positionChange * xSign;
             int yChange = positionChange * ySign;
@@ -270,7 +280,7 @@ namespace STROOP.Managers
 
         private void ChangeMapZoom(int sign)
         {
-            _mapGui.GLControl.Dock = DockStyle.None;
+            ChangeMapFillToNone();
             int change = ParsingUtilities.ParseInt(_mapGui.MapBoundsZoomTextBox.Text);
             int zoomChange = change * sign;
             double zoomMultiply = (zoomChange + 100d) / 100d;
