@@ -956,6 +956,7 @@ namespace STROOP.Structs
 
         public static void ShowWords()
         {
+            /*
             for (int i = 0; i < _words.Count; i++)
             {
                 for (int j = i + 1; j < _words.Count; j++)
@@ -964,6 +965,7 @@ namespace STROOP.Structs
                         Config.Print("Duplicate skribbl.io word: " + _words[i]);
                 }
             }
+            */
 
             List<string> randomWords = ControlUtilities.Randomize(_words);
             InfoForm.ShowValue(
