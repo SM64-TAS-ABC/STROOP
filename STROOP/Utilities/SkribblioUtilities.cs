@@ -850,7 +850,6 @@ namespace STROOP.Structs
                 "Middle",
                 "Comrade",
                 "Meadow",
-                "Powerful",
                 "Enemy",
                 "Powerful",
                 "Side",
@@ -863,7 +862,6 @@ namespace STROOP.Structs
                 "Puff",
                 "Win",
                 "Lose",
-                "Scary",
                 "Train",
                 "Home",
                 "Windswept Valley",
@@ -893,7 +891,6 @@ namespace STROOP.Structs
                 "Flap",
                 "Pasta",
                 "Master",
-                "Hop",
                 "Skip",
                 "Distance",
                 "Slippery",
@@ -901,10 +898,8 @@ namespace STROOP.Structs
                 "Baby",
                 "Herring",
                 "Ice cube",
-                "Parent",
                 "Oxygen",
                 "Frostbite",
-                "Mad",
                 "Bump",
                 "Danger",
                 "Shelter",
@@ -921,7 +916,6 @@ namespace STROOP.Structs
                 "Minion",
                 "Animal",
                 "Tread",
-                "Peak",
                 "Blastoff",
                 "Terror",
                 "Shoulder",
@@ -936,7 +930,6 @@ namespace STROOP.Structs
                 "Display",
                 "Power Meter",
                 "Meter",
-                "Princess",
                 "Toadstool",
                 "Up",
                 "Down",
@@ -947,14 +940,12 @@ namespace STROOP.Structs
                 "Inside",
                 "Outside",
                 "Uncle",
-                "Peace",
                 "Ant",
                 "Flea",
                 "Bug",
                 "Injury",
                 "Swallow",
                 "Smother",
-                "Sink",
                 "Fast",
                 "Slow",
                 "Bounce",
@@ -965,6 +956,15 @@ namespace STROOP.Structs
 
         public static void ShowWords()
         {
+            for (int i = 0; i < _words.Count; i++)
+            {
+                for (int j = i + 1; j < _words.Count; j++)
+                {
+                    if (_words[i] == _words[j])
+                        Config.Print("Duplicate skribbl.io word: " + _words[i]);
+                }
+            }
+
             List<string> randomWords = ControlUtilities.Randomize(_words);
             InfoForm.ShowValue(
                 String.Join(",", randomWords),
