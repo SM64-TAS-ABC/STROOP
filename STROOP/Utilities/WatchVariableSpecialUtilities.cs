@@ -3264,7 +3264,20 @@ namespace STROOP.Structs
 
         private static (float x, float y, float z) GetRotationDisplacement()
         {
-            return (1, 2, 3);
+            uint stoodOnObject = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);
+            if (stoodOnObject == 0)
+            {
+                return (0, 0, 0);
+            }
+
+            short[] rotation = new short[]
+            {
+                (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.PitchVelocityOffset),
+                (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.YawVelocityOffset),
+                (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.RollVelocityOffset),
+            };
+
+            return (rotation[0], rotation[1], rotation[2]);
         }
     }
 }
