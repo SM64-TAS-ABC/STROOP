@@ -3270,14 +3270,108 @@ namespace STROOP.Structs
                 return (0, 0, 0);
             }
 
-            short[] rotation = new short[]
+            float[] currentObjectPos = new float[]
+            {
+                Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset),
+                Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset),
+                Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset),
+            };
+
+            float[] platformPos = new float[]
+            {
+                Config.Stream.GetSingle(stoodOnObject + ObjectConfig.XOffset),
+                Config.Stream.GetSingle(stoodOnObject + ObjectConfig.YOffset),
+                Config.Stream.GetSingle(stoodOnObject + ObjectConfig.ZOffset),
+            };
+
+            float[] currentObjectOffset = new float[]
+            {
+                currentObjectPos[0] - platformPos[0],
+                currentObjectPos[1] - platformPos[1],
+                currentObjectPos[2] - platformPos[2],
+            };
+
+            short[] platformAngularVelocity = new short[]
             {
                 (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.PitchVelocityOffset),
                 (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.YawVelocityOffset),
                 (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.RollVelocityOffset),
             };
 
-            return (rotation[0], rotation[1], rotation[2]);
+            short[] platformFacingAngle = new short[]
+            {
+                Config.Stream.GetInt16(stoodOnObject + ObjectConfig.PitchFacingOffset),
+                Config.Stream.GetInt16(stoodOnObject + ObjectConfig.YawFacingOffset),
+                Config.Stream.GetInt16(stoodOnObject + ObjectConfig.RollFacingOffset),
+            };
+
+            short[] rotation = new short[]
+            {
+                (short)(platformFacingAngle[0] - platformAngularVelocity[0]),
+                (short)(platformFacingAngle[1] - platformAngularVelocity[1]),
+                (short)(platformFacingAngle[2] - platformAngularVelocity[2]),
+            };
+
+            float[,] displaceMatrix = new float[4,4];
+            float[] relativeOffset = new float[3];
+            float[] newObjectOffset = new float[3];
+
+            mtxf_rotate_zxy_and_translate(displaceMatrix, currentObjectOffset, rotation);
+            linear_mtxf_transpose_mul_vec3f(displaceMatrix, relativeOffset, currentObjectOffset);
+
+            rotation[0] = platformFacingAngle[0];
+            rotation[1] = platformFacingAngle[1];
+            rotation[2] = platformFacingAngle[2];
+
+            mtxf_rotate_zxy_and_translate(displaceMatrix, currentObjectOffset, rotation);
+            linear_mtxf_transpose_mul_vec3f(displaceMatrix, newObjectOffset, relativeOffset);
+
+            float[] netDisplacement = new float[]
+            {
+                newObjectOffset[0] - currentObjectOffset[0],
+                newObjectOffset[1] - currentObjectOffset[1],
+                newObjectOffset[2] - currentObjectOffset[2],
+            };
+
+            return (netDisplacement[0], netDisplacement[1], netDisplacement[2]);
+        }
+
+        private static void mtxf_rotate_zxy_and_translate(float[,] dest, float[] translate, short[] rotate)
+        {
+            float sx = InGameTrigUtilities.InGameSine(rotate[0]);
+            float cx = InGameTrigUtilities.InGameCosine(rotate[0]);
+
+            float sy = InGameTrigUtilities.InGameSine(rotate[1]);
+            float cy = InGameTrigUtilities.InGameCosine(rotate[1]);
+
+            float sz = InGameTrigUtilities.InGameSine(rotate[2]);
+            float cz = InGameTrigUtilities.InGameCosine(rotate[2]);
+
+            dest[0,0] = cy * cz + sx * sy * sz;
+            dest[1,0] = -cy * sz + sx * sy * cz;
+            dest[2,0] = cx * sy;
+            dest[3,0] = translate[0];
+
+            dest[0,1] = cx * sz;
+            dest[1,1] = cx * cz;
+            dest[2,1] = -sx;
+            dest[3,1] = translate[1];
+
+            dest[0,2] = -sy * cz + sx * cy * sz;
+            dest[1,2] = sy * sz + sx * cy * cz;
+            dest[2,2] = cx * cy;
+            dest[3,2] = translate[2];
+
+            dest[0,3] = dest[1,3] = dest[2,3] = 0.0f;
+            dest[3,3] = 1.0f;
+        }
+
+        private static void linear_mtxf_transpose_mul_vec3f(float[,] m, float[] dst, float[] v)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                dst[i] = m[i,0] * v[0] + m[i,1] * v[1] + m[i,2] * v[2];
+            }
         }
     }
 }

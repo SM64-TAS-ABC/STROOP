@@ -8,9 +8,9 @@
   <Data groupList="Basic" type="float" offset="0x50" base="Mario" coord="Z">Z Speed</Data>
   <Data groupList="Basic" type="float" offset="0x54" base="Mario">H Speed</Data>
 
-  <Data groupList="Basic" base="None" specialType="RotationDisplacementX">Rot Disp X</Data>
-  <Data groupList="Basic" base="None" specialType="RotationDisplacementY">Rot Disp Y</Data>
-  <Data groupList="Basic" base="None" specialType="RotationDisplacementZ">Rot Disp Z</Data>
+  <Data groupList="Advanced" base="None" specialType="RotationDisplacementX">Rot Disp X</Data>
+  <Data groupList="Advanced" base="None" specialType="RotationDisplacementY">Rot Disp Y</Data>
+  <Data groupList="Advanced" base="None" specialType="RotationDisplacementZ">Rot Disp Z</Data>
 
   <Data groupList="Trajectory" base="None" specialType="TrajectoryRemainingHeight">Traj Remaining Height</Data>
   <Data groupList="Trajectory" base="None" specialType="TrajectoryPeakHeight">Traj Peak Height</Data>
