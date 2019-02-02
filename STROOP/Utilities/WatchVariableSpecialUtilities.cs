@@ -154,6 +154,8 @@ namespace STROOP.Structs
 
         public static void AddLiteralEntriesToDictionary()
         {
+            // Object vars
+
             _dictionary.Add("MarioHitboxAwayFromObject",
                 ((uint objAddress) =>
                 {
@@ -830,6 +832,27 @@ namespace STROOP.Structs
                 }));
 
             // Mario vars
+
+            _dictionary.Add("RotationDisplacementX",
+                ((uint dummy) =>
+                {
+                    return GetRotationDisplacement().ToTuple().Item1;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("RotationDisplacementY",
+                ((uint dummy) =>
+                {
+                    return GetRotationDisplacement().ToTuple().Item2;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("RotationDisplacementZ",
+                ((uint dummy) =>
+                {
+                    return GetRotationDisplacement().ToTuple().Item3;
+                },
+                DEFAULT_SETTER));
 
             _dictionary.Add("DeFactoSpeed",
                 ((uint dummy) =>
@@ -3235,6 +3258,13 @@ namespace STROOP.Structs
             double triangleConstant = 2 * numFrames * (numFrames - 1);
             double initialSpeed = (heightChange + triangleConstant) / numFrames;
             return initialSpeed;
+        }
+
+        // Rotation methods
+
+        private static (float x, float y, float z) GetRotationDisplacement()
+        {
+            return (1, 2, 3);
         }
     }
 }
