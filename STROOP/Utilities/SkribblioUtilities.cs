@@ -844,6 +844,16 @@ namespace STROOP.Structs
                 "Heavy",
                 "Owl",
                 "Barbed Wire",
+                "The End",
+                "Candle",
+                "Tablecloth",
+                "Frosting",
+                "Teacup",
+                "Plate",
+                "Spoon",
+                "Pitcher",
+                "Handle",
+                "Strawberry",
 
                 // Dialog & Text
                 "Smack",
