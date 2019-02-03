@@ -186,6 +186,26 @@ namespace STROOP.Models
             return Classification == TriangleClassification.Ceiling;
         }
 
+        public short GetMinX()
+        {
+            return Math.Min(X1, Math.Min(X2, X3));
+        }
+
+        public short GetMaxX()
+        {
+            return Math.Max(X1, Math.Max(X2, X3));
+        }
+
+        public short GetMinZ()
+        {
+            return Math.Min(Z1, Math.Min(Z2, Z3));
+        }
+
+        public short GetMaxZ()
+        {
+            return Math.Max(Z1, Math.Max(Z2, Z3));
+        }
+
         public int GetClosestVertex()
         {
             float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);

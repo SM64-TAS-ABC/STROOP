@@ -77,6 +77,8 @@
   <Data groupList="Intermediate" base="Triangle" specialType="MaxHSpeedDownhill" color="Pink">Max Hspd Downhill</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="MaxHSpeedDownhillAtAngle" color="Pink">Max Hspd Downhill at Ang</Data>
 
+  <Data groupList="Advanced" base="Triangle" specialType="TriangleCells" subclass="String" color="Grey">Cells</Data>
+
   <Data groupList="Advanced" type="uint" offsetUS="0x8038EE9C" offsetJP="0x8038EE9C" base="Relative" subclass="Address" color="Grey">Tri List Pointer</Data>
   <Data groupList="Advanced" type="short" offsetUS="0x8038EEA0" offsetJP="0x8038EEA0" base="Relative" color="Grey">Tri List Capacity</Data>
   <Data groupList="Advanced" type="int" offsetUS="0x80361178" offsetJP="0x8035FE08" base="Relative" color="Grey">Level Tri Count</Data>

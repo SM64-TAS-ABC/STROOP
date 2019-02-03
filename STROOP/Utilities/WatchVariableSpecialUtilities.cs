@@ -1598,6 +1598,19 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("TriangleCells",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel tri = new TriangleDataModel(triAddress);
+                    short minCellX = lower_cell_index(tri.GetMinX());
+                    short maxCellX = upper_cell_index(tri.GetMaxX());
+                    short minCellZ = lower_cell_index(tri.GetMinZ());
+                    short maxCellZ = upper_cell_index(tri.GetMaxZ());
+                    return string.Format("X:{0}-{1},Z:{2}-{3}",
+                        minCellX, maxCellX, minCellZ, maxCellZ);
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("ObjectTriCount",
                 ((uint dummy) =>
                 {
@@ -3372,6 +3385,54 @@ namespace STROOP.Structs
             {
                 dst[i] = m[i,0] * v[0] + m[i,1] * v[1] + m[i,2] * v[2];
             }
+        }
+
+        // Triangle methods
+
+        static short lower_cell_index(short t)
+        {
+            short index;
+
+            // Move from range [-0x2000, 0x2000) to [0, 0x4000)
+            t += 0x2000;
+            if (t < 0)
+                t = 0;
+
+            // [0, 16)
+            index = (short)(t / 0x400);
+
+            // Include extra cell if close to boundary
+            if (t % 0x400 < 50)
+                index -= 1;
+
+            if (index < 0)
+                index = 0;
+
+            // Potentially > 15, but since the upper index is <= 15, not exploitable
+            return index;
+        }
+
+        static short upper_cell_index(short t)
+        {
+            short index;
+
+            // Move from range [-0x2000, 0x2000) to [0, 0x4000)
+            t += 0x2000;
+            if (t < 0)
+                t = 0;
+
+            // [0, 16)
+            index = (short)(t / 0x400);
+
+            // Include extra cell if close to boundary
+            if (t % 0x400 > 0x400 - 50)
+                index += 1;
+
+            if (index > 15)
+                index = 15;
+
+            // Potentially < 0, but since lower index is >= 0, not exploitable
+            return index;
         }
     }
 }
