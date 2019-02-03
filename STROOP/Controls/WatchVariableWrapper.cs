@@ -364,16 +364,15 @@ namespace STROOP.Controls
             double changeValue = changeValueNullable.Value;
 
             List<object> currentValues = _watchVar.GetValues(addresses);
-            List<double?> currentValuesDoubleNullable =
-                currentValues.ConvertAll(
-                    currentValue => ParsingUtilities.ParseDoubleNullable(currentValue));
-            List<object> newValues = currentValuesDoubleNullable.ConvertAll(currentValueDoubleNullable =>
+            List<object> convertedValues = currentValues.ConvertAll(
+                currentValue => ConvertValue(currentValue, false, false));
+            List<double?> convertedValuesDoubleNullable =
+                convertedValues.ConvertAll(
+                    convertedValue => ParsingUtilities.ParseDoubleNullable(convertedValue));
+            List<object> newValues = convertedValuesDoubleNullable.ConvertAll(convertedValueDoubleNullable =>
             {
-                if (!currentValueDoubleNullable.HasValue) return null;
-                double currentValueDouble = currentValueDoubleNullable.Value;
-                object convertedValue = ConvertValue(currentValueDouble, false, false);
-                // TODO tyler fix this for float logic
-                double convertedValueDouble = ParsingUtilities.ParseDouble(convertedValue);
+                if (!convertedValueDoubleNullable.HasValue) return null;
+                double convertedValueDouble = convertedValueDoubleNullable.Value;
                 double modifiedValue = convertedValueDouble + changeValue * (add ? +1 : -1);
                 object unconvertedValue = UnconvertValue(modifiedValue);
                 return unconvertedValue;
