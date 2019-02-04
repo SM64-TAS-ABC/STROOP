@@ -290,7 +290,7 @@ namespace STROOP.Structs
                     double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
 
                     bool overlap = marioHitboxAwayFromObject < 0 && marioHitboxAboveObject <= 0 && marioHitboxBelowObject <= 0;
-                    return overlap ? "1" : "0";
+                    return overlap ? 1 : 0;
                 },
                 DEFAULT_SETTER));
 
