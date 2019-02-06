@@ -185,6 +185,10 @@ namespace STROOP.Controls
             if (!doubleValueNullable.HasValue) return value;
             double doubleValue = doubleValueNullable.Value;
 
+            if (_reverse)
+            {
+                doubleValue += 32768;
+            }
             if (_truncateToMultipleOf16)
             {
                 doubleValue = MoreMath.TruncateToMultipleOf16(doubleValue);
