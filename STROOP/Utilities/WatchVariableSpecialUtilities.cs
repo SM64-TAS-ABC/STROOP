@@ -1168,6 +1168,13 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("DeltaYawIntendedBackwards",
+                ((uint dummy) =>
+                {
+                    return GetDeltaYawIntendedBackwards();
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("FallHeight",
                 ((uint dummy) =>
                 {
@@ -3243,6 +3250,13 @@ namespace STROOP.Structs
             ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
             return MoreMath.GetDeltaAngleTruncated(marioYawFacing, marioYawIntended);
+        }
+
+        public static short GetDeltaYawIntendedBackwards()
+        {
+            ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
+            return MoreMath.GetDeltaAngleTruncated(marioYawFacing + 32768, marioYawIntended);
         }
 
         // Mario trajectory methods
