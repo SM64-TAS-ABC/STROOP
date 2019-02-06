@@ -197,6 +197,17 @@ namespace STROOP.Structs
                     () => apply(new WatchVariableControlSettings(changeAngleConstrainToOneRevolution: true, newAngleConstrainToOneRevolution: false)),
                 });
 
+            ToolStripMenuItem itemAngleReverse = new ToolStripMenuItem("Angle: Reverse...");
+            ControlUtilities.AddDropDownItems(
+                itemAngleReverse,
+                new List<string>() { "Default", "Reverse", "Don't Reverse" },
+                new List<Action>()
+                {
+                    () => apply(new WatchVariableControlSettings(changeAngleReverse: true, changeAngleReverseToDefault: true)),
+                    () => apply(new WatchVariableControlSettings(changeAngleReverse: true, newAngleReverse: true)),
+                    () => apply(new WatchVariableControlSettings(changeAngleReverse: true, newAngleReverse: false)),
+                });
+
             ToolStripMenuItem itemAngleDisplayAsHex = new ToolStripMenuItem("Angle: Display as Hex...");
             ControlUtilities.AddDropDownItems(
                 itemAngleDisplayAsHex,
@@ -293,6 +304,7 @@ namespace STROOP.Structs
                 itemAngleUnits,
                 itemAngleTruncateToMultipleOf16,
                 itemAngleConstrainToOneRevolution,
+                itemAngleReverse,
                 itemAngleDisplayAsHex,
                 new ToolStripSeparator(),
                 itemShowVariableXml,

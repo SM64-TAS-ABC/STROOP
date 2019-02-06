@@ -55,6 +55,10 @@ namespace STROOP.Controls
         public readonly bool ChangeAngleConstrainToOneRevolutionToDefault;
         public readonly bool NewAngleConstrainToOneRevolution;
 
+        public readonly bool ChangeAngleReverse;
+        public readonly bool ChangeAngleReverseToDefault;
+        public readonly bool NewAngleReverse;
+
         public readonly bool ChangeAngleDisplayAsHex;
         public readonly bool ChangeAngleDisplayAsHexToDefault;
         public readonly bool NewAngleDisplayAsHex;
@@ -96,6 +100,10 @@ namespace STROOP.Controls
             bool changeAngleConstrainToOneRevolutionToDefault = false,
             bool newAngleConstrainToOneRevolution = false,
 
+            bool changeAngleReverse = false,
+            bool changeAngleReverseToDefault = false,
+            bool newAngleReverse = false,
+
             bool changeAngleDisplayAsHex = false,
             bool changeAngleDisplayAsHexToDefault = false,
             bool newAngleDisplayAsHex = false,
@@ -135,6 +143,10 @@ namespace STROOP.Controls
             ChangeAngleConstrainToOneRevolution = changeAngleConstrainToOneRevolution;
             ChangeAngleConstrainToOneRevolutionToDefault = changeAngleConstrainToOneRevolutionToDefault;
             NewAngleConstrainToOneRevolution = newAngleConstrainToOneRevolution;
+
+            ChangeAngleReverse = changeAngleReverse;
+            ChangeAngleReverseToDefault = changeAngleReverseToDefault;
+            NewAngleReverse = newAngleReverse;
 
             ChangeAngleDisplayAsHex = changeAngleDisplayAsHex;
             ChangeAngleDisplayAsHexToDefault = changeAngleDisplayAsHexToDefault;
