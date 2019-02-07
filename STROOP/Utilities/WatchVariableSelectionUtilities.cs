@@ -36,6 +36,36 @@ namespace STROOP.Structs
                     () => apply(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: true)),
                     () => apply(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: false)),
                 });
+            ToolStripMenuItem itemHighlightColor = new ToolStripMenuItem("Color...");
+            ControlUtilities.AddDropDownItems(
+                itemHighlightColor,
+                new List<string>()
+                {
+                    "Red",
+                    "Orange",
+                    "Yellow",
+                    "Green",
+                    "Blue",
+                    "Purple",
+                    "Pink",
+                    "Brown",
+                    "Black",
+                    "White",
+                },
+                new List<Action>()
+                {
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Red)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Orange)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Yellow)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Green)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Blue)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Purple)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Pink)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Brown)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Black)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.White)),
+                });
+            itemHighlight.DropDownItems.Add(itemHighlightColor);
 
             ToolStripMenuItem itemLock = new ToolStripMenuItem("Lock...");
             ControlUtilities.AddDropDownItems(

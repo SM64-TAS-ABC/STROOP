@@ -66,6 +66,9 @@ namespace STROOP.Controls
         public readonly bool ChangeHighlighted;
         public readonly bool NewHighlighted;
 
+        public readonly bool ChangeHighlightColor;
+        public readonly Color? NewHighlightColor;
+
         public readonly bool ChangeBackgroundColor;
         public readonly bool ChangeBackgroundColorToDefault;
         public readonly Color? NewBackgroundColor;
@@ -115,6 +118,9 @@ namespace STROOP.Controls
             bool changeHighlighted = false,
             bool newHighlighted = false,
 
+            bool changeHighlightColor = false,
+            Color? newHighlightColor = null,
+
             bool changeBackgroundColor = false,
             bool changeBackgroundColorToDefault = false,
             Color? newBackgroundColor = null,
@@ -162,6 +168,9 @@ namespace STROOP.Controls
 
             ChangeHighlighted = changeHighlighted;
             NewHighlighted = newHighlighted;
+
+            ChangeHighlightColor = changeHighlightColor;
+            NewHighlightColor = newHighlightColor;
 
             ChangeBackgroundColor = changeBackgroundColor;
             ChangeBackgroundColorToDefault = changeBackgroundColorToDefault;
