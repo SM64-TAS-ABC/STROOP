@@ -684,6 +684,13 @@ namespace STROOP.Controls
             {
                 Highlighted = settings.NewHighlighted;
             }
+
+            if (settings.ChangeHighlightColor)
+            {
+                _tableLayoutPanel.BorderColor = settings.NewHighlightColor.Value;
+                _tableLayoutPanel.ShowBorder = true;
+            }
+
             if (settings.EnableCustomization)
             {
                 EnableCustomization();
