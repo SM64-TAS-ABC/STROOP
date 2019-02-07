@@ -459,13 +459,13 @@ namespace STROOP.Controls
                 if (newColor.HasValue)
                 {
                     BaseColor = newColor.Value;
-                    ColorUtilities.LastSelectedColor = newColor.Value;
+                    ColorUtilities.LastCustomColor = newColor.Value;
                 }
             }
             else if (isOKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                BaseColor = ColorUtilities.LastSelectedColor;
+                BaseColor = ColorUtilities.LastCustomColor;
             }
             else
             {

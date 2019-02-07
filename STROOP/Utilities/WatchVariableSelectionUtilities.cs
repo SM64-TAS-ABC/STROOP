@@ -6,6 +6,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
@@ -57,7 +58,8 @@ namespace STROOP.Structs
             };
             ControlUtilities.AddDropDownItems(
                 itemCopy,
-                new List<string>() {
+                new List<string>()
+                {
                     "Copy with Commas",
                     "Copy with Tabs",
                     "Copy with Line Breaks",
@@ -247,6 +249,31 @@ namespace STROOP.Structs
                 infoForm.Show();
             };
 
+
+            List<string> backgroundColorStringList = new List<string>();
+            List<Action> backgroundColorActionList = new List<Action>();
+            backgroundColorStringList.Add("Default");
+            backgroundColorActionList.Add(
+                () => apply(new WatchVariableControlSettings(changeBackgroundColor: true, changeBackgroundColorToDefault: true)));
+            foreach (KeyValuePair<string, string> pair in ColorUtilities.ColorToParamsDictionary)
+            {
+                Color color = ColorTranslator.FromHtml(pair.Value);
+                backgroundColorStringList.Add(pair.Key);
+                backgroundColorActionList.Add(
+                    () => apply(new WatchVariableControlSettings(changeBackgroundColor: true, newBackgroundColor: color)));
+            }
+            backgroundColorStringList.Add("Control (No Color)");
+            backgroundColorActionList.Add(
+                () => apply(new WatchVariableControlSettings(changeBackgroundColor: true, newBackgroundColor: SystemColors.Control)));
+            backgroundColorStringList.Add("Last Custom Color");
+            backgroundColorActionList.Add(
+                () => apply(new WatchVariableControlSettings(changeBackgroundColor: true, newBackgroundColor: ColorUtilities.LastCustomColor)));
+            ToolStripMenuItem itemBackgroundColor = new ToolStripMenuItem("Background Color...");
+            ControlUtilities.AddDropDownItems(
+                itemBackgroundColor,
+                backgroundColorStringList,
+                backgroundColorActionList);
+
             ToolStripMenuItem itemMove = new ToolStripMenuItem("Move...");
             ControlUtilities.AddDropDownItems(
                 itemMove,
@@ -310,6 +337,7 @@ namespace STROOP.Structs
                 itemShowVariableXml,
                 itemShowVariableInfo,
                 new ToolStripSeparator(),
+                itemBackgroundColor,
                 itemMove,
                 itemRemove,
                 itemEnableCustomization,
