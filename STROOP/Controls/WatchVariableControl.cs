@@ -54,6 +54,7 @@ namespace STROOP.Controls
         public static readonly Color SELECTED_COLOR = Color.FromArgb(51, 153, 255);
         private static readonly int FLASH_DURATION_MS = 1000;
 
+        private readonly Color _initialBaseColor;
         private Color _baseColor;
         public Color BaseColor
         {
@@ -209,7 +210,8 @@ namespace STROOP.Controls
             FixedAddressList = fixedAddresses;
 
             // Initialize color fields
-            _baseColor = backgroundColor ?? DEFAULT_COLOR;
+            _initialBaseColor = backgroundColor ?? DEFAULT_COLOR;
+            _baseColor = _initialBaseColor;
             _currentColor = _baseColor;
             _isFlashing = false;
             _flashStartTime = DateTime.Now;
@@ -686,6 +688,19 @@ namespace STROOP.Controls
             {
                 EnableCustomization();
             }
+
+            if (settings.ChangeBackgroundColor)
+            {
+                if (settings.ChangeBackgroundColorToDefault)
+                {
+                    BaseColor = _initialBaseColor;
+                }
+                else
+                {
+                    BaseColor = settings.NewBackgroundColor.Value;
+                }
+            }
+
             WatchVarWrapper.ApplySettings(settings);
         }
 
