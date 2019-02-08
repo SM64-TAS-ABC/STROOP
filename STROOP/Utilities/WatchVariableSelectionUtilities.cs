@@ -195,7 +195,9 @@ namespace STROOP.Structs
             foreach (AngleUnitType angleUnitType in Enum.GetValues(typeof(AngleUnitType)))
             {
                 AngleUnitType angleUnitTypeFixed = angleUnitType;
-                ToolStripMenuItem itemAngleUnitsValue = new ToolStripMenuItem(angleUnitTypeFixed.ToString());
+                string stringValue = angleUnitTypeFixed.ToString();
+                if (stringValue == AngleUnitType.InGameUnits.ToString()) stringValue = "In-Game Units";
+                ToolStripMenuItem itemAngleUnitsValue = new ToolStripMenuItem(stringValue);
                 itemAngleUnitsValue.Click += (sender, e) =>
                     apply(new WatchVariableControlSettings(
                         changeAngleUnits: true, newAngleUnits: angleUnitTypeFixed));
@@ -288,7 +290,9 @@ namespace STROOP.Structs
             foreach (KeyValuePair<string, string> pair in ColorUtilities.ColorToParamsDictionary)
             {
                 Color color = ColorTranslator.FromHtml(pair.Value);
-                backgroundColorStringList.Add(pair.Key);
+                string colorString = pair.Key;
+                if (colorString == "LightBlue") colorString = "Light Blue";
+                backgroundColorStringList.Add(colorString);
                 backgroundColorActionList.Add(
                     () => apply(new WatchVariableControlSettings(changeBackgroundColor: true, newBackgroundColor: color)));
             }
