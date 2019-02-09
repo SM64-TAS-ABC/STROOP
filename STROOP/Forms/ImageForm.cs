@@ -21,7 +21,7 @@ namespace STROOP.Forms
                 if (result != DialogResult.OK) return;
                 string fileName = openFileDialog.FileName;
                 Image image = Image.FromFile(fileName);
-                panelImage.BackgroundImage = image;
+                pictureBoxImage.BackgroundImage = image;
             };
             // rackBarTransparency
             // panelImage

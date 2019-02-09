@@ -31,10 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImageForm));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.trackBarTransparency = new System.Windows.Forms.TrackBar();
-            this.panelImage = new System.Windows.Forms.Panel();
             this.buttonOpenImage = new System.Windows.Forms.Button();
+            this.pictureBoxImage = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTransparency)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelMain
@@ -47,8 +48,8 @@
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelMain.Controls.Add(this.trackBarTransparency, 1, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.panelImage, 0, 1);
             this.tableLayoutPanelMain.Controls.Add(this.buttonOpenImage, 0, 0);
+            this.tableLayoutPanelMain.Controls.Add(this.pictureBoxImage, 0, 1);
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanelMain.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
@@ -71,16 +72,6 @@
             this.trackBarTransparency.TickFrequency = 10;
             this.trackBarTransparency.Value = 100;
             // 
-            // panelImage
-            // 
-            this.tableLayoutPanelMain.SetColumnSpan(this.panelImage, 2);
-            this.panelImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelImage.Location = new System.Drawing.Point(1, 32);
-            this.panelImage.Margin = new System.Windows.Forms.Padding(0);
-            this.panelImage.Name = "panelImage";
-            this.panelImage.Size = new System.Drawing.Size(258, 117);
-            this.panelImage.TabIndex = 0;
-            // 
             // buttonOpenImage
             // 
             this.buttonOpenImage.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -91,6 +82,18 @@
             this.buttonOpenImage.TabIndex = 1;
             this.buttonOpenImage.Text = "Open Image";
             this.buttonOpenImage.UseVisualStyleBackColor = true;
+            // 
+            // pictureBoxImage
+            // 
+            this.pictureBoxImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tableLayoutPanelMain.SetColumnSpan(this.pictureBoxImage, 2);
+            this.pictureBoxImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxImage.Location = new System.Drawing.Point(1, 32);
+            this.pictureBoxImage.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxImage.Name = "pictureBoxImage";
+            this.pictureBoxImage.Size = new System.Drawing.Size(258, 117);
+            this.pictureBoxImage.TabIndex = 5;
+            this.pictureBoxImage.TabStop = false;
             // 
             // ImageForm
             // 
@@ -105,9 +108,11 @@
             this.Name = "ImageForm";
             this.ShowIcon = false;
             this.Text = "Image Form";
+            this.TransparencyKey = System.Drawing.SystemColors.Control;
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tableLayoutPanelMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTransparency)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -115,8 +120,8 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
-        private System.Windows.Forms.Panel panelImage;
         private System.Windows.Forms.Button buttonOpenImage;
         private System.Windows.Forms.TrackBar trackBarTransparency;
+        private System.Windows.Forms.PictureBox pictureBoxImage;
     }
 }
