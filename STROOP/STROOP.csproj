@@ -185,6 +185,12 @@
     <Compile Include="Enums\AddToTabTypeEnum.cs" />
     <Compile Include="Enums\RomVersionSelection.cs" />
     <Compile Include="Extensions\FormExtensions.cs" />
+    <Compile Include="Forms\ImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImageForm.Designer.cs">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TextForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -633,6 +639,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Map\MapObjectControl.resx">
       <DependentUpon>MapObjectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ImageForm.resx">
+      <DependentUpon>ImageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TextForm.resx">
       <DependentUpon>TextForm.cs</DependentUpon>

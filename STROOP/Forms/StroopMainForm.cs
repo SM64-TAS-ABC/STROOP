@@ -124,6 +124,7 @@ namespace STROOP
                     "Show All Helpful Hints",
                     "Add Gfx Vertices",
                     "Show Skribblio Words",
+                    "Show Image Form",
                     "Test Something",
                     "Test Something Else",
                 },
@@ -153,6 +154,11 @@ namespace STROOP
                     () => HelpfulHintUtilities.ShowAllHelpfulHints(),
                     () => TestUtilities.AddGraphicsTriangleVerticesToTriangleTab(),
                     () => SkribblioUtilities.ShowWords(),
+                    () =>
+                    {
+                        ImageForm imageForm = new ImageForm();
+                        imageForm.Show();
+                    },
                     () => TestUtilities.TestSomething(),
                     () => TestUtilities.TestSomethingElse(),
                 });
