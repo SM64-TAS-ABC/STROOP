@@ -515,6 +515,7 @@
     <Compile Include="Utilities\CoinTrajejctory.cs" />
     <Compile Include="Utilities\CoinObject.cs" />
     <Compile Include="Utilities\CoinMovementCalculator.cs" />
+    <Compile Include="Utilities\ImageUtilities.cs" />
     <Compile Include="Utilities\SkribblioUtilities.cs" />
     <Compile Include="Utilities\ObjectUtilities.cs" />
     <Compile Include="Utilities\ObjectSnapshot.cs" />
