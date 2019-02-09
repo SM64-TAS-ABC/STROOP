@@ -1,6 +1,7 @@
 ﻿using STROOP.Controls;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,6 +11,8 @@ namespace STROOP.Forms
 {
     public partial class ImageForm : Form
     {
+        private Image _baseImage = null;
+
         public ImageForm()
         {
             InitializeComponent();
@@ -20,11 +23,16 @@ namespace STROOP.Forms
                 DialogResult result = openFileDialog.ShowDialog();
                 if (result != DialogResult.OK) return;
                 string fileName = openFileDialog.FileName;
-                Image image = Image.FromFile(fileName);
-                pictureBoxImage.BackgroundImage = image;
+                _baseImage = Image.FromFile(fileName);
+                pictureBoxImage.BackgroundImage = _baseImage;
             };
-            // rackBarTransparency
-            // panelImage
+
+            trackBarTransparency.ValueChanged += (sender, e) =>
+            {
+                byte newAlpha = (byte)(trackBarTransparency.Value / 100.0 * 255.0);
+                Image newImage = ImageUtilities.ChangeTransparency(_baseImage, newAlpha);
+                pictureBoxImage.BackgroundImage = newImage;
+            };
         }
     }
 }

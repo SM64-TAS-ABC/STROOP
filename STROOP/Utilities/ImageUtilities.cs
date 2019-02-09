@@ -21,7 +21,7 @@ namespace STROOP.Utilities
 
             for (int x = 0; x < image.Width; x++)
             {
-                for (int y = 0; y < image.Width; y++)
+                for (int y = 0; y < image.Height; y++)
                 {
                     originalColor = originalBitmap.GetPixel(x, y);
                     transparentColor = Color.FromArgb(alpha, originalColor.R, originalColor.G, originalColor.B);
