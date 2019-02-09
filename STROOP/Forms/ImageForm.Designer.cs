@@ -61,6 +61,7 @@
             // 
             // trackBarTransparency
             // 
+            this.trackBarTransparency.BackColor = System.Drawing.SystemColors.Control;
             this.trackBarTransparency.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trackBarTransparency.Location = new System.Drawing.Point(130, 1);
             this.trackBarTransparency.Margin = new System.Windows.Forms.Padding(0);
@@ -99,6 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightPink;
             this.ClientSize = new System.Drawing.Size(284, 174);
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -108,7 +110,7 @@
             this.Name = "ImageForm";
             this.ShowIcon = false;
             this.Text = "Image Form";
-            this.TransparencyKey = System.Drawing.SystemColors.Control;
+            this.TransparencyKey = System.Drawing.Color.LightPink;
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tableLayoutPanelMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTransparency)).EndInit();
