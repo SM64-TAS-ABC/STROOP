@@ -15,5 +15,6 @@ namespace STROOP.Structs
         StroopVariables,
         StroopVarHackVariables,
         MupenMovie,
+        Image,
     };
 }

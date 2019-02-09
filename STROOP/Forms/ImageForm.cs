@@ -12,6 +12,17 @@ namespace STROOP.Forms
         public ImageForm()
         {
             InitializeComponent();
+
+            buttonOpenImage.Click += (sender, e) =>
+            {
+                OpenFileDialog openFileDialog = DialogUtilities.CreateOpenFileDialog(FileType.Image);
+                DialogResult result = openFileDialog.ShowDialog();
+                if (result != DialogResult.OK) return;
+                string fileName = openFileDialog.FileName;
+                InfoForm.ShowValue(fileName);
+            };
+            // rackBarTransparency
+            // panelImage
         }
     }
 }

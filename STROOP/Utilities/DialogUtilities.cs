@@ -28,6 +28,8 @@ namespace STROOP.Structs
                     return "STROOP Var Hack Variables|*.stvhv";
                 case FileType.MupenMovie:
                     return "Mupen Movies|*.m64|All Files|*.*";
+                case FileType.Image:
+                    return "Image files|*.jpg;*.jpeg;*.jpe;*.jfif;*.png|All Files|*.*";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
