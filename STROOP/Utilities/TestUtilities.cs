@@ -334,13 +334,36 @@ namespace STROOP.Utilities
 
         public static void TestSomething11()
         {
+            /*
             double normX = -20;
             double normY = -58;
             double normZ = 50;
             double normOffset = 750;
+            */
+
+            /*
+            double normX = 0;
+            double normY = -50;
+            double normZ = 40;
+            double normOffset = 440;
+            */
+
+            double normX = 0;
+            double normY = -25;
+            double normZ = 100;
+            double normOffset = 600;
 
             Func<double, double, double> getY =
                 (double x, double z) => TriangleDataModel.GetHeightOnTriangle(x, z, normX, normY, normZ, normOffset);
+
+            List<int[]> unitCoordinates = new List<int[]>();
+            for (int x = 1; x <= 6; x++)
+            {
+                for (int y = 1; y <= 6; y++)
+                {
+                    unitCoordinates.Add(new int[] { x, y });
+                }
+            }
 
             foreach (int[] coord in unitCoordinates)
             {
@@ -368,7 +391,7 @@ namespace STROOP.Utilities
             }
         }
 
-        private static List<int[]> unitCoordinates = new List<int[]>()
+        private static List<int[]> unitCoordinates_ = new List<int[]>()
         {
             new int[] {5,13},
             new int[] {5,12},
