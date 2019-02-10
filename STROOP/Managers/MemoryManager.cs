@@ -154,11 +154,24 @@ namespace STROOP.Managers
                 _objectSnapshot = new ObjectSnapshot(Address.Value);
             };
 
-            _buttonMemoryPasteObject.Click += (sender, e) =>
+            Action<bool> pasteAction = (bool spareSecondary) =>
             {
                 if (!Address.HasValue || _objectSnapshot == null) return;
-                _objectSnapshot.Apply(Address.Value);
+                _objectSnapshot.Apply(Address.Value, spareSecondary);
             };
+            _buttonMemoryPasteObject.Click += (sender, e) => pasteAction(true);
+            ControlUtilities.AddContextMenuStripFunctions(
+                _buttonMemoryPasteObject,
+                new List<string>()
+                {
+                    "Paste Object without Primary Variables",
+                    "Paste Object without Secondary Variables",
+                },
+                new List<Action>()
+                {
+                    () => pasteAction(false),
+                    () => pasteAction(true),
+                });
 
             _buttonMemoryMoveUpOnce.Click += (sender, e) => ScrollMemory(-1);
             _buttonMemoryMoveDownOnce.Click += (sender, e) => ScrollMemory(1);

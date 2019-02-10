@@ -13,7 +13,15 @@ namespace STROOP.Utilities
     {
         private readonly List<uint> uintValues;
 
-        private static readonly List<uint> _doNotEditList = new List<uint>()
+        private static readonly List<uint> _primaryVariables = new List<uint>()
+        {
+            ObjectConfig.NextLinkOffset,
+            ObjectConfig.PreviousLinkOffset,
+            ObjectConfig.ProcessedNextLinkOffset,
+            ObjectConfig.ProcessedPreviousLinkOffset,
+        };
+
+        private static readonly List<uint> _secondaryVariables = new List<uint>()
         {
             ObjectConfig.NextLinkOffset,
             ObjectConfig.PreviousLinkOffset,
@@ -43,11 +51,13 @@ namespace STROOP.Utilities
             }
         }
 
-        public void Apply(uint address)
+        public void Apply(uint address, bool spareSecondary = true)
         {
+            List<uint> toBeSpared = spareSecondary ? _secondaryVariables : _primaryVariables;
+
             for (int i = 0; i < ObjectConfig.StructSize; i += 4)
             {
-                if (_doNotEditList.Any(offset => offset == i)) continue;
+                if (toBeSpared.Any(offset => offset == i)) continue;
                 uint uintValue = uintValues[i / 4];
                 Config.Stream.SetValue(uintValue, address + (uint)i);
             }
