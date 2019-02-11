@@ -604,6 +604,30 @@ namespace STROOP.Utilities
             return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
+        public static bool RetrieveSnow(int index)
+        {
+            /*
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Holp };
+
+            float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float zDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+
+            return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            */
+            return false;
+        }
+
+        public static bool TranslateSnow(int index, int xOffset, int yOffset, int zOffset, bool useRelative)
+        {
+            /*
+            PositionAngle holpPosMarioAngle = PositionAngle.Hybrid(PositionAngle.Holp, PositionAngle.Mario);
+            List<PositionAngle> posAngles = new List<PositionAngle> { holpPosMarioAngle };
+            return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            */
+            return false;
+        }
+
         public static bool MarioChangeYaw(int yawOffset)
         {
             ushort yaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);

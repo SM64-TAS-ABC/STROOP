@@ -388,7 +388,7 @@ namespace STROOP
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
             Config.WaterManager = new WaterManager(@"Config/WaterData.xml", watchVariablePanelWater);
-            Config.SnowManager = new SnowManager(@"Config/SnowData.xml", watchVariablePanelSnow);
+            Config.SnowManager = new SnowManager(@"Config/SnowData.xml", watchVariablePanelSnow, tabPageSnow);
             Config.InputManager = new InputManager(@"Config/InputData.xml", tabPageInput, watchVariablePanelInput, _inputImageGuiList);
             Config.MarioManager = new MarioManager(@"Config/MarioData.xml", tabPageMario, WatchVariablePanelMario);
             Config.HudManager = new HudManager(@"Config/HudData.xml", tabPageHud, watchVariablePanelHud);
