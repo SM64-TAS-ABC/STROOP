@@ -37,6 +37,7 @@ namespace STROOP.Utilities
             Wall,
             Floor,
             Ceiling,
+            Snow,
             Schedule,
             Hybrid,
         }
@@ -48,6 +49,15 @@ namespace STROOP.Utilities
                 posAngleType == PositionAngleTypeEnum.ObjGfx ||
                 posAngleType == PositionAngleTypeEnum.ObjScale ||
                 posAngleType == PositionAngleTypeEnum.Tri;
+        }
+
+        private bool ShouldHaveIndex(PositionAngleTypeEnum posAngleType)
+        {
+            return posAngleType == PositionAngleTypeEnum.Tri ||
+                posAngleType == PositionAngleTypeEnum.Wall ||
+                posAngleType == PositionAngleTypeEnum.Floor ||
+                posAngleType == PositionAngleTypeEnum.Ceiling ||
+                posAngleType == PositionAngleTypeEnum.Snow;
         }
 
         private PositionAngle(
@@ -67,11 +77,7 @@ namespace STROOP.Utilities
             if (address.HasValue != shouldHaveAddress)
                 throw new ArgumentOutOfRangeException();
 
-            bool shouldHaveIndex =
-                posAngleType == PositionAngleTypeEnum.Tri ||
-                posAngleType == PositionAngleTypeEnum.Wall ||
-                posAngleType == PositionAngleTypeEnum.Floor ||
-                posAngleType == PositionAngleTypeEnum.Ceiling;
+            bool shouldHaveIndex = ShouldHaveIndex(posAngleType);
             if (index.HasValue != shouldHaveIndex)
                 throw new ArgumentOutOfRangeException();
 
@@ -112,6 +118,8 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.Floor, null, index);
         public static PositionAngle Ceiling(int index) =>
             new PositionAngle(PositionAngleTypeEnum.Ceiling, null, index);
+        public static PositionAngle Snow(int index) =>
+            new PositionAngle(PositionAngleTypeEnum.Snow, null, index);
         public static PositionAngle Hybrid(PositionAngle posPA, PositionAngle anglePA) =>
             new PositionAngle(PositionAngleTypeEnum.Hybrid, null, null, posPA, anglePA);
 
@@ -208,6 +216,12 @@ namespace STROOP.Utilities
                 if (!index.HasValue || index.Value < 0 || index.Value > 4) return null;
                 return Ceiling(index.Value);
             }
+            else if (parts.Count == 2 && parts[0] == "snow")
+            {
+                int? index = ParsingUtilities.ParseIntNullable(parts[1]);
+                if (!index.HasValue || index.Value < 0) return null;
+                return Snow(index.Value);
+            }
             else if (parts.Count == 1 && parts[0] == "schedule")
             {
                 return Scheduler;
@@ -272,6 +286,8 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Ceiling:
                         return GetTriangleVertexComponent(
                             Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.X);
+                    case PositionAngleTypeEnum.Snow:
+                        return GetSnowComponent(Index.Value, Coordinate.X);
                     case PositionAngleTypeEnum.Schedule:
                         uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item1;
@@ -324,6 +340,8 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Ceiling:
                         return GetTriangleVertexComponent(
                             Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Y);
+                    case PositionAngleTypeEnum.Snow:
+                        return GetSnowComponent(Index.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.Schedule:
                         uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item2;
@@ -376,6 +394,8 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Ceiling:
                         return GetTriangleVertexComponent(
                             Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Z);
+                    case PositionAngleTypeEnum.Snow:
+                        return GetSnowComponent(Index.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.Schedule:
                         uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item3;
@@ -424,6 +444,8 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Floor:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Ceiling:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.Snow:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Schedule:
                         uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
@@ -494,6 +516,24 @@ namespace STROOP.Utilities
             throw new ArgumentOutOfRangeException();
         }
 
+        private static double GetSnowComponent(int index, Coordinate coordinate)
+        {
+            short numSnowParticles = Config.Stream.GetInt16(SnowConfig.CounterAddress);
+            if (index < 0 || index > numSnowParticles) return Double.NaN;
+            uint snowStart = Config.Stream.GetUInt32(SnowConfig.SnowArrayPointerAddress);
+            uint structOffset = (uint)index * SnowConfig.ParticleStructSize;
+            switch (coordinate)
+            {
+                case Coordinate.X:
+                    return Config.Stream.GetInt32(snowStart + structOffset + SnowConfig.XOffset);
+                case Coordinate.Y:
+                    return Config.Stream.GetInt32(snowStart + structOffset + SnowConfig.YOffset);
+                case Coordinate.Z:
+                    return Config.Stream.GetInt32(snowStart + structOffset + SnowConfig.ZOffset);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
 
 
 
@@ -536,6 +576,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Ceiling:
                     return SetTriangleVertexComponent(
                         (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.X);
+                case PositionAngleTypeEnum.Snow:
+                    return SetSnowComponent((int)value, Index.Value, Coordinate.X);
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
@@ -584,6 +626,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Ceiling:
                     return SetTriangleVertexComponent(
                         (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Y);
+                case PositionAngleTypeEnum.Snow:
+                    return SetSnowComponent((int)value, Index.Value, Coordinate.Y);
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
@@ -632,6 +676,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Ceiling:
                     return SetTriangleVertexComponent(
                         (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Z);
+                case PositionAngleTypeEnum.Snow:
+                    return SetSnowComponent((int)value, Index.Value, Coordinate.Z);
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
@@ -680,6 +726,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Floor:
                     return false;
                 case PositionAngleTypeEnum.Ceiling:
+                    return false;
+                case PositionAngleTypeEnum.Snow:
                     return false;
                 case PositionAngleTypeEnum.Schedule:
                     return false;
@@ -736,6 +784,25 @@ namespace STROOP.Utilities
                     return false;
             }
             throw new ArgumentOutOfRangeException();
+        }
+
+        private static bool SetSnowComponent(int value, int index, Coordinate coordinate)
+        {
+            short numSnowParticles = Config.Stream.GetInt16(SnowConfig.CounterAddress);
+            if (index < 0 || index > numSnowParticles) return false;
+            uint snowStart = Config.Stream.GetUInt32(SnowConfig.SnowArrayPointerAddress);
+            uint structOffset = (uint)index * SnowConfig.ParticleStructSize;
+            switch (coordinate)
+            {
+                case Coordinate.X:
+                    return Config.Stream.SetValue(value, snowStart + structOffset + SnowConfig.XOffset);
+                case Coordinate.Y:
+                    return Config.Stream.SetValue(value, snowStart + structOffset + SnowConfig.YOffset);
+                case Coordinate.Z:
+                    return Config.Stream.SetValue(value, snowStart + structOffset + SnowConfig.ZOffset);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         public bool SetValues(double? x = null, double? y = null, double? z = null, double? angle = null)
