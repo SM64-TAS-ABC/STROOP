@@ -81,9 +81,9 @@ namespace STROOP.Managers
                     if (snowIndex < 0 || snowIndex > _numSnowParticles) return;
                     ButtonUtilities.TranslateSnow(
                         snowIndex,
-                        (int)hOffset,
-                        (int)nOffset,
-                        -1 * (int)vOffset,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
                         useRelative);
                 });
         }

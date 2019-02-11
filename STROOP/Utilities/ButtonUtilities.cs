@@ -618,7 +618,7 @@ namespace STROOP.Utilities
             return false;
         }
 
-        public static bool TranslateSnow(int index, int xOffset, int yOffset, int zOffset, bool useRelative)
+        public static bool TranslateSnow(int index, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             /*
             PositionAngle holpPosMarioAngle = PositionAngle.Hybrid(PositionAngle.Holp, PositionAngle.Mario);
