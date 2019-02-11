@@ -127,7 +127,7 @@ namespace STROOP.Managers
                     useHex: null,
                     invertBool: null,
                     isYaw: null,
-                    coordinate: null,
+                    coordinate: i == 0 ? Coordinate.X : i == 1 ? Coordinate.Y : Coordinate.Z,
                     groupList: new List<VariableGroup>() { VariableGroup.Snow });
                 controls.Add(precursor.CreateWatchVariableControl());
             }
