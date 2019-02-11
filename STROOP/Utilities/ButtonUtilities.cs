@@ -102,6 +102,10 @@ namespace STROOP.Utilities
                         relativeAngle = MoreMath.NormalizeAngleUshort(PositionControllerRelativityConfig.CustomAngle);
                         break;
                 }
+
+                if (double.IsNaN(relativeAngle.Value))
+                    relativeAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+
                 double thetaChange = MoreMath.NormalizeAngleDouble(relativeAngle.Value - 32768);
                 (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0);
             }
@@ -606,26 +610,21 @@ namespace STROOP.Utilities
 
         public static bool RetrieveSnow(int index)
         {
-            /*
-            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Holp };
+            List<PositionAngle> posAngles = new List<PositionAngle>() { PositionAngle.Snow(index) };
 
-            float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float zDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float xDestination = DataModels.Mario.X;
+            float yDestination = DataModels.Mario.Y;
+            float zDestination = DataModels.Mario.Z;
 
-            return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
-            */
-            return false;
+            HandleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
+
+            return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, false);
         }
 
         public static bool TranslateSnow(int index, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            /*
-            PositionAngle holpPosMarioAngle = PositionAngle.Hybrid(PositionAngle.Holp, PositionAngle.Mario);
-            List<PositionAngle> posAngles = new List<PositionAngle> { holpPosMarioAngle };
+            List<PositionAngle> posAngles = new List<PositionAngle>() { PositionAngle.Snow(index) };
             return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
-            */
-            return false;
         }
 
         public static bool MarioChangeYaw(int yawOffset)
