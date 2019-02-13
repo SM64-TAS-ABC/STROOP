@@ -78,18 +78,16 @@ namespace STROOP.Utilities
             }
         }
 
-        public static void HandleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, double? relativeAngle)
+        public static void HandleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, double relativeAngle)
         {
-            if (KeyboardUtilities.IsShiftHeld())
+            if (!useRelative) return;
+
+            if (KeyboardUtilities.IsShiftHeld() || double.IsNaN(relativeAngle))
             {
                 relativeAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             }
-
-            if (useRelative)
+            else
             {
-                if (!relativeAngle.HasValue)
-                    throw new ArgumentNullException();
-
                 switch (PositionControllerRelativityConfig.Relativity)
                 {
                     case PositionControllerRelativity.Recommended:
@@ -102,13 +100,10 @@ namespace STROOP.Utilities
                         relativeAngle = MoreMath.NormalizeAngleUshort(PositionControllerRelativityConfig.CustomAngle);
                         break;
                 }
-
-                if (double.IsNaN(relativeAngle.Value))
-                    relativeAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-
-                double thetaChange = MoreMath.NormalizeAngleDouble(relativeAngle.Value - 32768);
-                (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0);
             }
+
+            double thetaChange = MoreMath.NormalizeAngleDouble(relativeAngle - 32768);
+            (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0);
         }
 
         public static bool GotoObjects(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
