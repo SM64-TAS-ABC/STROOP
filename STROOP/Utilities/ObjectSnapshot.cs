@@ -51,7 +51,7 @@ namespace STROOP.Utilities
             }
         }
 
-        public void Apply(uint address, bool spareSecondary = true)
+        public void Apply(uint address, bool spareSecondary)
         {
             List<uint> toBeSpared = spareSecondary ? _secondaryVariables : _primaryVariables;
 

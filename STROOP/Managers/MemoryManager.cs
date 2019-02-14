@@ -159,7 +159,7 @@ namespace STROOP.Managers
                 if (!Address.HasValue || _objectSnapshot == null) return;
                 _objectSnapshot.Apply(Address.Value, spareSecondary);
             };
-            _buttonMemoryPasteObject.Click += (sender, e) => pasteAction(true);
+            _buttonMemoryPasteObject.Click += (sender, e) => pasteAction(false);
             ControlUtilities.AddContextMenuStripFunctions(
                 _buttonMemoryPasteObject,
                 new List<string>()
