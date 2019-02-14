@@ -157,7 +157,12 @@ namespace STROOP.Managers
             Action<bool> pasteAction = (bool spareSecondary) =>
             {
                 if (!Address.HasValue || _objectSnapshot == null) return;
-                _objectSnapshot.Apply(Address.Value, spareSecondary);
+                List<uint> addresses = new List<uint>() { Address.Value };
+                if (KeyboardUtilities.IsCtrlHeld())
+                {
+                    addresses = Config.ObjectSlotsManager.SelectedObjects.ConvertAll(obj => obj.Address);
+                }
+                _objectSnapshot.Apply(addresses, spareSecondary);
             };
             _buttonMemoryPasteObject.Click += (sender, e) => pasteAction(false);
             ControlUtilities.AddContextMenuStripFunctions(

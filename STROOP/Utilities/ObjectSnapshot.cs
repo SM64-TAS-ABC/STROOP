@@ -62,5 +62,13 @@ namespace STROOP.Utilities
                 Config.Stream.SetValue(uintValue, address + (uint)i);
             }
         }
+
+        public void Apply(List<uint> addresses, bool spareSecondary)
+        {
+            foreach (uint address in addresses)
+            {
+                Apply(address, spareSecondary);
+            }
+        }
     }
 }
