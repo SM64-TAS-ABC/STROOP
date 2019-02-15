@@ -1006,7 +1006,8 @@ namespace STROOP.Utilities
                 (double x, double z) =
                     MoreMath.GetRelativelyOffsettedPosition(
                         p1.X, p1.Z, p1.Angle, p2.X, p2.Z, distance, null);
-                return p2.SetValues(x: x, z: z);            }
+                return p2.SetValues(x: x, z: z);
+            }
             else
             {
                 (double x, double z) =
