@@ -225,6 +225,22 @@ namespace STROOP
                 });
             };
 
+            ToolStripMenuItem itemCopyObject = new ToolStripMenuItem("Copy Object");
+            itemCopyObject.Click += (sender, e) =>
+            {
+                ObjectSnapshot.StoredObjectSnapshot = new ObjectSnapshot(CurrentObject.Address);
+            };
+
+            ToolStripMenuItem itemPasteObject = new ToolStripMenuItem("Paste Object");
+            itemPasteObject.Click += (sender, e) =>
+            {
+                if (ObjectSnapshot.StoredObjectSnapshot == null) return;
+                getObjects().ForEach(obj =>
+                {
+                    ObjectSnapshot.StoredObjectSnapshot.Apply(obj.Address, false);
+                });
+            };
+
             ContextMenuStrip = new ContextMenuStrip();
             ContextMenuStrip.Items.Add(itemSelectInObjectTab);
             ContextMenuStrip.Items.Add(itemSelectInMemoryTab);
@@ -252,6 +268,8 @@ namespace STROOP
             ContextMenuStrip.Items.Add(itemPastePosition);
             ContextMenuStrip.Items.Add(itemCopyGraphics);
             ContextMenuStrip.Items.Add(itemPasteGraphics);
+            ContextMenuStrip.Items.Add(itemCopyObject);
+            ContextMenuStrip.Items.Add(itemPasteObject);
         }
 
         private void RebufferObjectImage()
