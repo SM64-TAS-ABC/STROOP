@@ -19,4 +19,6 @@
   <Data groupList="Intermediate" type="int" offsetUS="0x8036140C" offsetJP="0x8036009C" base="Relative" coord="Y" color="LightBlue">Snow Center Y</Data>
   <Data groupList="Intermediate" type="int" offsetUS="0x80361410" offsetJP="0x803600A0" base="Relative" coord="Z" color="LightBlue">Snow Center Z</Data>
 
+  <Data groupList="Advanced" type="uint" offsetUS="0x802DF8A8 " offsetJP="0x802DE998 " base="Relative" useHex="true" color="Grey">Snow Function</Data>
+
 </VarData>
