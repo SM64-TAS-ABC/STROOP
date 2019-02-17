@@ -94,7 +94,8 @@ namespace STROOP.Managers
         // This can contain vertices and triangles, but also draw settings like lighting and fog
         private void DumpButton_Click(object sender, EventArgs e)
         {
-            if (SelectedNode != null && SelectedNode is GfxDisplayList)
+            if (SelectedNode != null && (SelectedNode is GfxDisplayList || SelectedNode is GfxAnimationNode 
+                || SelectedNode is GfxTranslatedModel || SelectedNode is GfxRotationNode))
             {
                 uint address = Config.Stream.GetUInt32(SelectedNode.Address + 0x14);
                 _outputTextBox.Text = Fast3DDecoder.DecodeList(Fast3DDecoder.DecodeSegmentedAddress(address));
@@ -229,12 +230,12 @@ namespace STROOP.Managers
                 case 0x002: res = new GfxScreenSpace(); break;
                 case 0x004: res = new GfxMasterList(); break;
                 case 0x00A: res = new GfxGroupParent(); break;
-                case 0x00B: res = new GfxHeightGate(); break;
-                case 0x015: res = new GfxUnknown15(); break;
+                case 0x00B: res = new GfxLevelOfDetail(); break;
+                case 0x015: res = new GfxDebugTransformation(); break;
                 case 0x016: res = new GfxTranslatedModel(); break;
                 case 0x017: res = new GfxRotationNode(); break;
                 case 0x018: res = new GfxGameObject(); break;
-                case 0x019: res = new GfxTranslationNode(); break;
+                case 0x019: res = new GfxAnimationNode(); break;
                 case 0x01A: res = new GfxBillboard(); break;
                 case 0x01B: res = new GfxDisplayList(); break;
                 case 0x01C: res = new GfxScalingNode(); break;
@@ -290,7 +291,7 @@ namespace STROOP.Managers
             precursors.Add(gfxProperty("Billboard object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x04));
             precursors.Add(gfxProperty("Bit 3", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x08));
             precursors.Add(gfxProperty("Invisible object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x10));
-            precursors.Add(gfxProperty("Is object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x20));
+            precursors.Add(gfxProperty("Is animated", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x20));
             precursors.Add(gfxProperty("List index", "byte", 0x02));   //note: not actually a byte, but the result of (short>>8)
             precursors.Add(gfxProperty("Previous", "uint", 0x04));
             precursors.Add(gfxProperty("Next", "uint", 0x08));
@@ -341,7 +342,38 @@ namespace STROOP.Managers
 
     internal class GfxChildSelector : GfxNode
     {
-        public override string Name { get { return "Child selector"; } }
+
+        public static readonly Dictionary<uint, string> DictionaryUS = new Dictionary<uint, string>
+        {
+            { 0x80277150, "Mario standing or moving" },
+            { 0x802776D8, "Vanish / metal cap" },
+            { 0x80277740, "Lost cap" },
+            { 0x802771BC, "Mario eyes" },
+            { 0x802774F4, "Mario hand" },
+            { 0x8029DBD4, "Current room" },
+            { 0x8029DB48, "Fully opaque" },
+            
+
+        };
+
+        public static readonly Dictionary<uint, string> DictionaryJP = new Dictionary<uint, string>
+        {
+            { 0x80276BA0, "Mario standing or moving" },
+            { 0x80277128, "Vanish / metal cap" },
+            { 0x80277190, "Lost cap" },
+            { 0x80276C0C, "Mario eyes" },
+            { 0x80276F44, "Mario hand" },
+            { 0x8029D458, "Current room" },
+            { 0x8029D3CC, "Fully opaque" },
+        };
+
+
+        public override string Name { get {
+                var currentDict = RomVersionConfig.Version == Structs.RomVersion.US ? DictionaryUS : DictionaryJP;
+                var function = Config.Stream.GetUInt32(Address + 0x14);
+                if (currentDict.ContainsKey(function)) return "Switch: " + currentDict[function];
+                return "Switch";
+            } }
 
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
@@ -373,7 +405,7 @@ namespace STROOP.Managers
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
-            precursors.Add(gfxProperty("Function", "uint", 0x14));
+            precursors.Add(gfxProperty("Function pointer", "uint", 0x14));
             precursors.Add(gfxProperty("Mario offset", "int", 0x18));
             precursors.Add(gfxProperty("Held object", "uint", 0x1C));
             precursors.Add(gfxProperty("Position x", "short", 0x20));
@@ -397,7 +429,11 @@ namespace STROOP.Managers
             { 0x802CD1E8, "Overlay?" },
             { 0x802D5D0C, "Painting wobble controller" },
             { 0x802D5B98, "Painting drawer" },
-            { 0x80277B14, "Mirror Mario controller"}
+            { 0x80277B14, "Mirror Mario drawer"},
+            { 0x802775CC, "Mario hand / foot scaler"},
+            { 0x80277D6C, "Mirror Mario inside out"},
+            { 0x80277294, "Mario torso tilter"},
+            { 0x802773A4, "C-up head rotation" },
         };
 
         public static readonly Dictionary<uint, string> DictionaryJP = new Dictionary<uint, string>
@@ -411,22 +447,26 @@ namespace STROOP.Managers
             { 0x802CC708, "Overlay?" },
             { 0x802D522C, "Painting wobble controller" },
             { 0x802D50B8, "Painting drawer" },
-            { 0x80277564, "Mirror Mario controller" }
+            { 0x80277564, "Mirror Mario drawer" },
+            { 0x8027701C, "Mario hand / foot scaler"},
+            { 0x802777BC, "Mirror Mario inside out"},
+            { 0x80276CE4, "Mario torso tilter"},
+            { 0x80276DF4, "C-up head rotation" },
         };
 
         public override string Name {
             get {
                 var currentDict = RomVersionConfig.Version == Structs.RomVersion.US ? DictionaryUS : DictionaryJP;
                 var function = Config.Stream.GetUInt32(Address + 0x14);
-                if (currentDict.ContainsKey(function)) return currentDict[function];
-                return "Geo Layout script";
+                if (currentDict.ContainsKey(function)) return "Script: " + currentDict[function];
+                return "Script";
             }
         }
 
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             var precursors = new List<WatchVariableControlPrecursor>();
-            precursors.Add(gfxProperty("Draw function", "uint", 0x14));
+            precursors.Add(gfxProperty("Function pointer", "uint", 0x14));
             precursors.Add(gfxProperty("Parameter 1", "ushort", 0x18));
             precursors.Add(gfxProperty("Parameter 2", "ushort", 0x1A));
             return precursors;
@@ -441,7 +481,7 @@ namespace STROOP.Managers
             List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
             precursors.Add(gfxProperty("Update function", "uint", 0x14));
             precursors.Add(gfxProperty("X from", "float", 0x1C));
-            precursors.Add(gfxProperty("X from", "float", 0x20));
+            precursors.Add(gfxProperty("Y from", "float", 0x20));
             precursors.Add(gfxProperty("Z from", "float", 0x24));
             precursors.Add(gfxProperty("X to", "float", 0x28));
             precursors.Add(gfxProperty("Y to", "float", 0x2C));
@@ -505,16 +545,16 @@ namespace STROOP.Managers
         public override string Name { get { return "Billboard"; } }
     }
 
-    internal class GfxTranslationNode : GfxNode
+    internal class GfxAnimationNode : GfxNode
     {
-        public override string Name { get { return "Translation"; } }
+        public override string Name { get { return "Animated node"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
             precursors.Add(gfxProperty("Display list", "uint", 0x14));
-            precursors.Add(gfxProperty("X", "short", 0x18));
-            precursors.Add(gfxProperty("Y", "short", 0x1A));
-            precursors.Add(gfxProperty("Z", "short", 0x1C));
+            precursors.Add(gfxProperty("X offset", "short", 0x18));
+            precursors.Add(gfxProperty("Y offset", "short", 0x1A));
+            precursors.Add(gfxProperty("Z offset", "short", 0x1C));
             return precursors;
         }
     }
@@ -525,7 +565,7 @@ namespace STROOP.Managers
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
-            precursors.Add(gfxProperty("Actual child", "uint", 0x14));
+            precursors.Add(gfxProperty("Shared child", "uint", 0x14));
             return precursors;
         }
     }
@@ -560,19 +600,31 @@ namespace STROOP.Managers
         }
     }
 
-    internal class GfxUnknown15 : GfxNode
+    internal class GfxDebugTransformation : GfxNode
     {
-        public override string Name { get { return "Unknown 0x15"; } }
-    }
+        public override string Name { get { return "Debug transformation"; } }
 
-    internal class GfxHeightGate : GfxNode
-    {
-        public override string Name { get { return "Height gate"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             var precursors = new List<WatchVariableControlPrecursor>();
-            precursors.Add(gfxProperty("Y min", "short", 0x14));
-            precursors.Add(gfxProperty("Y max", "short", 0x16));
+            precursors.Add(gfxProperty("X translation", "short", 0x18));
+            precursors.Add(gfxProperty("Y translation", "short", 0x1A));
+            precursors.Add(gfxProperty("Z translation", "short", 0x1C));
+            precursors.Add(gfxProperty("X rotation", "short", 0x1E));
+            precursors.Add(gfxProperty("Y rotation", "short", 0x20));
+            precursors.Add(gfxProperty("Z rotation", "short", 0x22));
+            return precursors;
+        }
+    }
+
+    internal class GfxLevelOfDetail : GfxNode
+    {
+        public override string Name { get { return "Level of detail"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Min cam distance", "short", 0x14));
+            precursors.Add(gfxProperty("Max cam distance", "short", 0x16));
             precursors.Add(gfxProperty("Pointer 1", "uint", 0x18));
 
             return precursors;
