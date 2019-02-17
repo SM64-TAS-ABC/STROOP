@@ -6,6 +6,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
@@ -35,6 +36,36 @@ namespace STROOP.Structs
                     () => apply(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: true)),
                     () => apply(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: false)),
                 });
+            ToolStripMenuItem itemHighlightColor = new ToolStripMenuItem("Color...");
+            ControlUtilities.AddDropDownItems(
+                itemHighlightColor,
+                new List<string>()
+                {
+                    "Red",
+                    "Orange",
+                    "Yellow",
+                    "Green",
+                    "Blue",
+                    "Purple",
+                    "Pink",
+                    "Brown",
+                    "Black",
+                    "White",
+                },
+                new List<Action>()
+                {
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Red)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Orange)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Yellow)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Green)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Blue)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Purple)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Pink)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Brown)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Black)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.White)),
+                });
+            itemHighlight.DropDownItems.Add(itemHighlightColor);
 
             ToolStripMenuItem itemLock = new ToolStripMenuItem("Lock...");
             ControlUtilities.AddDropDownItems(
@@ -57,7 +88,8 @@ namespace STROOP.Structs
             };
             ControlUtilities.AddDropDownItems(
                 itemCopy,
-                new List<string>() {
+                new List<string>()
+                {
                     "Copy with Commas",
                     "Copy with Tabs",
                     "Copy with Line Breaks",
@@ -163,7 +195,9 @@ namespace STROOP.Structs
             foreach (AngleUnitType angleUnitType in Enum.GetValues(typeof(AngleUnitType)))
             {
                 AngleUnitType angleUnitTypeFixed = angleUnitType;
-                ToolStripMenuItem itemAngleUnitsValue = new ToolStripMenuItem(angleUnitTypeFixed.ToString());
+                string stringValue = angleUnitTypeFixed.ToString();
+                if (stringValue == AngleUnitType.InGameUnits.ToString()) stringValue = "In-Game Units";
+                ToolStripMenuItem itemAngleUnitsValue = new ToolStripMenuItem(stringValue);
                 itemAngleUnitsValue.Click += (sender, e) =>
                     apply(new WatchVariableControlSettings(
                         changeAngleUnits: true, newAngleUnits: angleUnitTypeFixed));
@@ -195,6 +229,17 @@ namespace STROOP.Structs
                     () => apply(new WatchVariableControlSettings(changeAngleConstrainToOneRevolution: true, changeAngleConstrainToOneRevolutionToDefault: true)),
                     () => apply(new WatchVariableControlSettings(changeAngleConstrainToOneRevolution: true, newAngleConstrainToOneRevolution: true)),
                     () => apply(new WatchVariableControlSettings(changeAngleConstrainToOneRevolution: true, newAngleConstrainToOneRevolution: false)),
+                });
+
+            ToolStripMenuItem itemAngleReverse = new ToolStripMenuItem("Angle: Reverse...");
+            ControlUtilities.AddDropDownItems(
+                itemAngleReverse,
+                new List<string>() { "Default", "Reverse", "Don't Reverse" },
+                new List<Action>()
+                {
+                    () => apply(new WatchVariableControlSettings(changeAngleReverse: true, changeAngleReverseToDefault: true)),
+                    () => apply(new WatchVariableControlSettings(changeAngleReverse: true, newAngleReverse: true)),
+                    () => apply(new WatchVariableControlSettings(changeAngleReverse: true, newAngleReverse: false)),
                 });
 
             ToolStripMenuItem itemAngleDisplayAsHex = new ToolStripMenuItem("Angle: Display as Hex...");
@@ -235,6 +280,33 @@ namespace STROOP.Structs
                                 .ConvertAll(infoList => String.Join("\t", infoList))));
                 infoForm.Show();
             };
+
+
+            List<string> backgroundColorStringList = new List<string>();
+            List<Action> backgroundColorActionList = new List<Action>();
+            backgroundColorStringList.Add("Default");
+            backgroundColorActionList.Add(
+                () => apply(new WatchVariableControlSettings(changeBackgroundColor: true, changeBackgroundColorToDefault: true)));
+            foreach (KeyValuePair<string, string> pair in ColorUtilities.ColorToParamsDictionary)
+            {
+                Color color = ColorTranslator.FromHtml(pair.Value);
+                string colorString = pair.Key;
+                if (colorString == "LightBlue") colorString = "Light Blue";
+                backgroundColorStringList.Add(colorString);
+                backgroundColorActionList.Add(
+                    () => apply(new WatchVariableControlSettings(changeBackgroundColor: true, newBackgroundColor: color)));
+            }
+            backgroundColorStringList.Add("Control (No Color)");
+            backgroundColorActionList.Add(
+                () => apply(new WatchVariableControlSettings(changeBackgroundColor: true, newBackgroundColor: SystemColors.Control)));
+            backgroundColorStringList.Add("Last Custom Color");
+            backgroundColorActionList.Add(
+                () => apply(new WatchVariableControlSettings(changeBackgroundColor: true, newBackgroundColor: ColorUtilities.LastCustomColor)));
+            ToolStripMenuItem itemBackgroundColor = new ToolStripMenuItem("Background Color...");
+            ControlUtilities.AddDropDownItems(
+                itemBackgroundColor,
+                backgroundColorStringList,
+                backgroundColorActionList);
 
             ToolStripMenuItem itemMove = new ToolStripMenuItem("Move...");
             ControlUtilities.AddDropDownItems(
@@ -293,11 +365,13 @@ namespace STROOP.Structs
                 itemAngleUnits,
                 itemAngleTruncateToMultipleOf16,
                 itemAngleConstrainToOneRevolution,
+                itemAngleReverse,
                 itemAngleDisplayAsHex,
                 new ToolStripSeparator(),
                 itemShowVariableXml,
                 itemShowVariableInfo,
                 new ToolStripSeparator(),
+                itemBackgroundColor,
                 itemMove,
                 itemRemove,
                 itemEnableCustomization,

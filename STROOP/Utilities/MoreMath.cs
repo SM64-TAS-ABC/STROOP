@@ -167,6 +167,9 @@ namespace STROOP.Utilities
         public static double GetSignedDistanceFromPointToLine(
             double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z, double v3X, double v3Z, int p1Index, int p2Index, bool? misalignmentOffsetNullable = null)
         {
+            pX = PuUtilities.GetRelativeCoordinate(pX);
+            pZ = PuUtilities.GetRelativeCoordinate(pZ);
+
             double[] vX = new double[] { v1X, v2X, v3X };
             double[] vZ = new double[] { v1Z, v2Z, v3Z };
 

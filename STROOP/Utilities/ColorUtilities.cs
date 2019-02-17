@@ -8,7 +8,7 @@ namespace STROOP.Utilities
 {
     public static class ColorUtilities
     {
-        private static readonly Dictionary<string, string> ColorToParamsDictionary =
+        public static readonly Dictionary<string, string> ColorToParamsDictionary =
             new Dictionary<string, string>()
             {
                 ["Red"] = "#FFD7D7",
@@ -21,6 +21,10 @@ namespace STROOP.Utilities
                 ["Pink"] = "#FFCCFF",
                 ["Grey"] = "#D0D0D0",
             };
+
+        public static readonly List<Color> ColorList =
+            ColorToParamsDictionary.Values.ToList()
+              .ConvertAll(html => ColorTranslator.FromHtml(html));
 
         private static readonly Dictionary<string, string> ParamsToColorDictionary =
             DictionaryUtilities.ReverseDictionary(ColorToParamsDictionary);
@@ -48,20 +52,16 @@ namespace STROOP.Utilities
             return "#" + r + g + b;
         }
 
-        public static Color LastSelectedColor = SystemColors.Control;
+        public static Color LastCustomColor = SystemColors.Control;
         public static Color GetColorForVariable()
         {
             int? inputtedNumber = KeyboardUtilities.GetCurrentlyInputtedNumber();
 
-            if (inputtedNumber == 0) return SystemColors.Control;
-
             if (inputtedNumber.HasValue &&
                 inputtedNumber.Value > 0 &&
-                inputtedNumber.Value <= ColorToParamsDictionary.Count)
+                inputtedNumber.Value <= ColorList.Count)
             {
-                int index = inputtedNumber.Value - 1;
-                string colorString = ColorToParamsDictionary.ToList()[index].Value;
-                return ColorTranslator.FromHtml(colorString);
+                return ColorList[inputtedNumber.Value - 1];
             }
             return SystemColors.Control;
         }

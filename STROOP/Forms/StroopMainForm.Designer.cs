@@ -757,6 +757,7 @@ namespace STROOP
             this.labelMap2Qpu = new System.Windows.Forms.Label();
             this.textBoxMap2ArtificialMarioYLabel = new STROOP.BetterTextbox();
             this.labelMap2IconSize = new System.Windows.Forms.Label();
+            this.labelMap2YNormValue = new System.Windows.Forms.Label();
             this.labelMap2Id = new System.Windows.Forms.Label();
             this.labelMap2QpuValue = new System.Windows.Forms.Label();
             this.labelMap2PuValue = new System.Windows.Forms.Label();
@@ -1358,6 +1359,23 @@ namespace STROOP
             this.labelMetric5Value = new System.Windows.Forms.Label();
             this.labelMetric4Value = new System.Windows.Forms.Label();
             this.tabPageSnow = new System.Windows.Forms.TabPage();
+            this.splitContainerSnow = new STROOP.BetterSplitContainer();
+            this.textBoxSnowIndex = new STROOP.BetterTextbox();
+            this.buttonSnowRetrieve = new System.Windows.Forms.Button();
+            this.groupBoxSnowPosition = new System.Windows.Forms.GroupBox();
+            this.checkBoxSnowPositionRelative = new System.Windows.Forms.CheckBox();
+            this.textBoxSnowPositionY = new STROOP.BetterTextbox();
+            this.buttonSnowPositionYp = new System.Windows.Forms.Button();
+            this.buttonSnowPositionYn = new System.Windows.Forms.Button();
+            this.buttonSnowPositionXpZp = new System.Windows.Forms.Button();
+            this.textBoxSnowPositionXZ = new STROOP.BetterTextbox();
+            this.buttonSnowPositionXp = new System.Windows.Forms.Button();
+            this.buttonSnowPositionXpZn = new System.Windows.Forms.Button();
+            this.buttonSnowPositionZn = new System.Windows.Forms.Button();
+            this.buttonSnowPositionZp = new System.Windows.Forms.Button();
+            this.buttonSnowPositionXnZp = new System.Windows.Forms.Button();
+            this.buttonSnowPositionXn = new System.Windows.Forms.Button();
+            this.buttonSnowPositionXnZn = new System.Windows.Forms.Button();
             this.watchVariablePanelSnow = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageMainSave = new System.Windows.Forms.TabPage();
             this.splitContainerMainSave = new STROOP.BetterSplitContainer();
@@ -1872,6 +1890,11 @@ namespace STROOP
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.tabPageSnow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerSnow)).BeginInit();
+            this.splitContainerSnow.Panel1.SuspendLayout();
+            this.splitContainerSnow.Panel2.SuspendLayout();
+            this.splitContainerSnow.SuspendLayout();
+            this.groupBoxSnowPosition.SuspendLayout();
             this.tabPageMainSave.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMainSave)).BeginInit();
             this.splitContainerMainSave.Panel1.SuspendLayout();
@@ -5315,7 +5338,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 452F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 458F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9034,7 +9057,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(403, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(415, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -9428,8 +9451,6 @@ namespace STROOP
             // checkBoxUseValueAtStartOfGlobalTimer
             // 
             this.checkBoxUseValueAtStartOfGlobalTimer.AutoSize = true;
-            this.checkBoxUseValueAtStartOfGlobalTimer.Checked = true;
-            this.checkBoxUseValueAtStartOfGlobalTimer.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxUseValueAtStartOfGlobalTimer.Location = new System.Drawing.Point(11, 109);
             this.checkBoxUseValueAtStartOfGlobalTimer.Name = "checkBoxUseValueAtStartOfGlobalTimer";
             this.checkBoxUseValueAtStartOfGlobalTimer.Size = new System.Drawing.Size(186, 17);
@@ -10677,6 +10698,7 @@ namespace STROOP
             this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2Qpu);
             this.splitContainerMap2.Panel1.Controls.Add(this.textBoxMap2ArtificialMarioYLabel);
             this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2IconSize);
+            this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2YNormValue);
             this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2Id);
             this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2QpuValue);
             this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2PuValue);
@@ -10731,6 +10753,15 @@ namespace STROOP
             this.labelMap2IconSize.Size = new System.Drawing.Size(54, 13);
             this.labelMap2IconSize.TabIndex = 34;
             this.labelMap2IconSize.Text = "Icon Size:";
+            // 
+            // labelMap2YNormValue
+            // 
+            this.labelMap2YNormValue.AutoSize = true;
+            this.labelMap2YNormValue.Location = new System.Drawing.Point(73, 392);
+            this.labelMap2YNormValue.Name = "labelMap2YNormValue";
+            this.labelMap2YNormValue.Size = new System.Drawing.Size(40, 13);
+            this.labelMap2YNormValue.TabIndex = 11;
+            this.labelMap2YNormValue.Text = "1.0000";
             // 
             // labelMap2Id
             // 
@@ -11354,7 +11385,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 675;
+            this.splitContainerMemory.SplitterDistance = 681;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11395,7 +11426,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(675, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(681, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11612,7 +11643,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(675, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(681, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11641,7 +11672,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(574, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(580, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11654,7 +11685,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(231, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(225, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12808,7 +12839,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12840,7 +12871,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(385, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(317, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12896,7 +12927,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(385, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(317, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -17457,13 +17488,212 @@ namespace STROOP
             // tabPageSnow
             // 
             this.tabPageSnow.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageSnow.Controls.Add(this.watchVariablePanelSnow);
+            this.tabPageSnow.Controls.Add(this.splitContainerSnow);
             this.tabPageSnow.Location = new System.Drawing.Point(4, 22);
             this.tabPageSnow.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageSnow.Name = "tabPageSnow";
             this.tabPageSnow.Size = new System.Drawing.Size(915, 463);
             this.tabPageSnow.TabIndex = 31;
             this.tabPageSnow.Text = "Snow";
+            // 
+            // splitContainerSnow
+            // 
+            this.splitContainerSnow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerSnow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerSnow.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerSnow.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerSnow.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerSnow.Name = "splitContainerSnow";
+            // 
+            // splitContainerSnow.Panel1
+            // 
+            this.splitContainerSnow.Panel1.AutoScroll = true;
+            this.splitContainerSnow.Panel1.Controls.Add(this.textBoxSnowIndex);
+            this.splitContainerSnow.Panel1.Controls.Add(this.buttonSnowRetrieve);
+            this.splitContainerSnow.Panel1.Controls.Add(this.groupBoxSnowPosition);
+            this.splitContainerSnow.Panel1MinSize = 0;
+            // 
+            // splitContainerSnow.Panel2
+            // 
+            this.splitContainerSnow.Panel2.Controls.Add(this.watchVariablePanelSnow);
+            this.splitContainerSnow.Panel2MinSize = 0;
+            this.splitContainerSnow.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerSnow.SplitterDistance = 210;
+            this.splitContainerSnow.SplitterWidth = 1;
+            this.splitContainerSnow.TabIndex = 34;
+            // 
+            // textBoxSnowIndex
+            // 
+            this.textBoxSnowIndex.Location = new System.Drawing.Point(6, 3);
+            this.textBoxSnowIndex.Name = "textBoxSnowIndex";
+            this.textBoxSnowIndex.Size = new System.Drawing.Size(86, 20);
+            this.textBoxSnowIndex.TabIndex = 32;
+            this.textBoxSnowIndex.Text = "0";
+            this.textBoxSnowIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonSnowRetrieve
+            // 
+            this.buttonSnowRetrieve.Location = new System.Drawing.Point(97, 3);
+            this.buttonSnowRetrieve.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSnowRetrieve.Name = "buttonSnowRetrieve";
+            this.buttonSnowRetrieve.Size = new System.Drawing.Size(91, 21);
+            this.buttonSnowRetrieve.TabIndex = 31;
+            this.buttonSnowRetrieve.Text = "Retrieve";
+            this.buttonSnowRetrieve.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxSnowPosition
+            // 
+            this.groupBoxSnowPosition.Controls.Add(this.checkBoxSnowPositionRelative);
+            this.groupBoxSnowPosition.Controls.Add(this.textBoxSnowPositionY);
+            this.groupBoxSnowPosition.Controls.Add(this.buttonSnowPositionYp);
+            this.groupBoxSnowPosition.Controls.Add(this.buttonSnowPositionYn);
+            this.groupBoxSnowPosition.Controls.Add(this.buttonSnowPositionXpZp);
+            this.groupBoxSnowPosition.Controls.Add(this.textBoxSnowPositionXZ);
+            this.groupBoxSnowPosition.Controls.Add(this.buttonSnowPositionXp);
+            this.groupBoxSnowPosition.Controls.Add(this.buttonSnowPositionXpZn);
+            this.groupBoxSnowPosition.Controls.Add(this.buttonSnowPositionZn);
+            this.groupBoxSnowPosition.Controls.Add(this.buttonSnowPositionZp);
+            this.groupBoxSnowPosition.Controls.Add(this.buttonSnowPositionXnZp);
+            this.groupBoxSnowPosition.Controls.Add(this.buttonSnowPositionXn);
+            this.groupBoxSnowPosition.Controls.Add(this.buttonSnowPositionXnZn);
+            this.groupBoxSnowPosition.Location = new System.Drawing.Point(3, 28);
+            this.groupBoxSnowPosition.Name = "groupBoxSnowPosition";
+            this.groupBoxSnowPosition.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxSnowPosition.TabIndex = 30;
+            this.groupBoxSnowPosition.TabStop = false;
+            this.groupBoxSnowPosition.Text = "Position";
+            // 
+            // checkBoxSnowPositionRelative
+            // 
+            this.checkBoxSnowPositionRelative.AutoSize = true;
+            this.checkBoxSnowPositionRelative.Location = new System.Drawing.Point(120, 0);
+            this.checkBoxSnowPositionRelative.Name = "checkBoxSnowPositionRelative";
+            this.checkBoxSnowPositionRelative.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxSnowPositionRelative.TabIndex = 36;
+            this.checkBoxSnowPositionRelative.Text = "Relative";
+            this.checkBoxSnowPositionRelative.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSnowPositionY
+            // 
+            this.textBoxSnowPositionY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSnowPositionY.Location = new System.Drawing.Point(140, 70);
+            this.textBoxSnowPositionY.Name = "textBoxSnowPositionY";
+            this.textBoxSnowPositionY.Size = new System.Drawing.Size(42, 20);
+            this.textBoxSnowPositionY.TabIndex = 33;
+            this.textBoxSnowPositionY.Text = "100";
+            this.textBoxSnowPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonSnowPositionYp
+            // 
+            this.buttonSnowPositionYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSnowPositionYp.Location = new System.Drawing.Point(140, 16);
+            this.buttonSnowPositionYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSnowPositionYp.Name = "buttonSnowPositionYp";
+            this.buttonSnowPositionYp.Size = new System.Drawing.Size(42, 42);
+            this.buttonSnowPositionYp.TabIndex = 35;
+            this.buttonSnowPositionYp.Text = "Y+";
+            this.buttonSnowPositionYp.UseVisualStyleBackColor = true;
+            // 
+            // buttonSnowPositionYn
+            // 
+            this.buttonSnowPositionYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSnowPositionYn.Location = new System.Drawing.Point(140, 100);
+            this.buttonSnowPositionYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSnowPositionYn.Name = "buttonSnowPositionYn";
+            this.buttonSnowPositionYn.Size = new System.Drawing.Size(42, 42);
+            this.buttonSnowPositionYn.TabIndex = 34;
+            this.buttonSnowPositionYn.Text = "Y-";
+            this.buttonSnowPositionYn.UseVisualStyleBackColor = true;
+            // 
+            // buttonSnowPositionXpZp
+            // 
+            this.buttonSnowPositionXpZp.Location = new System.Drawing.Point(87, 100);
+            this.buttonSnowPositionXpZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSnowPositionXpZp.Name = "buttonSnowPositionXpZp";
+            this.buttonSnowPositionXpZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonSnowPositionXpZp.TabIndex = 32;
+            this.buttonSnowPositionXpZp.Text = "X+Z+";
+            this.buttonSnowPositionXpZp.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSnowPositionXZ
+            // 
+            this.textBoxSnowPositionXZ.AcceptsReturn = true;
+            this.textBoxSnowPositionXZ.Location = new System.Drawing.Point(45, 70);
+            this.textBoxSnowPositionXZ.Name = "textBoxSnowPositionXZ";
+            this.textBoxSnowPositionXZ.Size = new System.Drawing.Size(42, 20);
+            this.textBoxSnowPositionXZ.TabIndex = 27;
+            this.textBoxSnowPositionXZ.Text = "100";
+            this.textBoxSnowPositionXZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonSnowPositionXp
+            // 
+            this.buttonSnowPositionXp.Location = new System.Drawing.Point(87, 58);
+            this.buttonSnowPositionXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSnowPositionXp.Name = "buttonSnowPositionXp";
+            this.buttonSnowPositionXp.Size = new System.Drawing.Size(42, 42);
+            this.buttonSnowPositionXp.TabIndex = 31;
+            this.buttonSnowPositionXp.Text = "X+";
+            this.buttonSnowPositionXp.UseVisualStyleBackColor = true;
+            // 
+            // buttonSnowPositionXpZn
+            // 
+            this.buttonSnowPositionXpZn.Location = new System.Drawing.Point(87, 16);
+            this.buttonSnowPositionXpZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSnowPositionXpZn.Name = "buttonSnowPositionXpZn";
+            this.buttonSnowPositionXpZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonSnowPositionXpZn.TabIndex = 30;
+            this.buttonSnowPositionXpZn.Text = "X+Z-";
+            this.buttonSnowPositionXpZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonSnowPositionZn
+            // 
+            this.buttonSnowPositionZn.Location = new System.Drawing.Point(45, 16);
+            this.buttonSnowPositionZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSnowPositionZn.Name = "buttonSnowPositionZn";
+            this.buttonSnowPositionZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonSnowPositionZn.TabIndex = 29;
+            this.buttonSnowPositionZn.Text = "Z-";
+            this.buttonSnowPositionZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonSnowPositionZp
+            // 
+            this.buttonSnowPositionZp.Location = new System.Drawing.Point(45, 100);
+            this.buttonSnowPositionZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSnowPositionZp.Name = "buttonSnowPositionZp";
+            this.buttonSnowPositionZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonSnowPositionZp.TabIndex = 28;
+            this.buttonSnowPositionZp.Text = "Z+";
+            this.buttonSnowPositionZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonSnowPositionXnZp
+            // 
+            this.buttonSnowPositionXnZp.Location = new System.Drawing.Point(3, 100);
+            this.buttonSnowPositionXnZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSnowPositionXnZp.Name = "buttonSnowPositionXnZp";
+            this.buttonSnowPositionXnZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonSnowPositionXnZp.TabIndex = 27;
+            this.buttonSnowPositionXnZp.Text = "X-Z+";
+            this.buttonSnowPositionXnZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonSnowPositionXn
+            // 
+            this.buttonSnowPositionXn.Location = new System.Drawing.Point(3, 58);
+            this.buttonSnowPositionXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSnowPositionXn.Name = "buttonSnowPositionXn";
+            this.buttonSnowPositionXn.Size = new System.Drawing.Size(42, 42);
+            this.buttonSnowPositionXn.TabIndex = 26;
+            this.buttonSnowPositionXn.Text = "X-";
+            this.buttonSnowPositionXn.UseVisualStyleBackColor = true;
+            // 
+            // buttonSnowPositionXnZn
+            // 
+            this.buttonSnowPositionXnZn.Location = new System.Drawing.Point(3, 16);
+            this.buttonSnowPositionXnZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSnowPositionXnZn.Name = "buttonSnowPositionXnZn";
+            this.buttonSnowPositionXnZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonSnowPositionXnZn.TabIndex = 25;
+            this.buttonSnowPositionXnZn.Text = "X-Z-";
+            this.buttonSnowPositionXnZn.UseVisualStyleBackColor = true;
             // 
             // watchVariablePanelSnow
             // 
@@ -17474,7 +17704,7 @@ namespace STROOP
             this.watchVariablePanelSnow.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelSnow.Name = "watchVariablePanelSnow";
             this.watchVariablePanelSnow.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelSnow.Size = new System.Drawing.Size(915, 463);
+            this.watchVariablePanelSnow.Size = new System.Drawing.Size(702, 461);
             this.watchVariablePanelSnow.TabIndex = 3;
             // 
             // tabPageMainSave
@@ -17612,7 +17842,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -18796,7 +19026,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(52, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(58, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -19490,6 +19720,13 @@ namespace STROOP
             this.groupBoxRecording.ResumeLayout(false);
             this.groupBoxRecording.PerformLayout();
             this.tabPageSnow.ResumeLayout(false);
+            this.splitContainerSnow.Panel1.ResumeLayout(false);
+            this.splitContainerSnow.Panel1.PerformLayout();
+            this.splitContainerSnow.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerSnow)).EndInit();
+            this.splitContainerSnow.ResumeLayout(false);
+            this.groupBoxSnowPosition.ResumeLayout(false);
+            this.groupBoxSnowPosition.PerformLayout();
             this.tabPageMainSave.ResumeLayout(false);
             this.splitContainerMainSave.Panel1.ResumeLayout(false);
             this.splitContainerMainSave.Panel2.ResumeLayout(false);
@@ -20932,6 +21169,24 @@ namespace STROOP
         private SaveFileDialog saveFileDialogSt;
         private Button buttonObjUkikipedia;
         private BinaryButton buttonObjRide;
+        private Label labelMap2YNormValue;
+        private BetterSplitContainer splitContainerSnow;
+        private Button buttonSnowRetrieve;
+        private GroupBox groupBoxSnowPosition;
+        private CheckBox checkBoxSnowPositionRelative;
+        private BetterTextbox textBoxSnowPositionY;
+        private Button buttonSnowPositionYp;
+        private Button buttonSnowPositionYn;
+        private Button buttonSnowPositionXpZp;
+        private BetterTextbox textBoxSnowPositionXZ;
+        private Button buttonSnowPositionXp;
+        private Button buttonSnowPositionXpZn;
+        private Button buttonSnowPositionZn;
+        private Button buttonSnowPositionZp;
+        private Button buttonSnowPositionXnZp;
+        private Button buttonSnowPositionXn;
+        private Button buttonSnowPositionXnZn;
+        private BetterTextbox textBoxSnowIndex;
     }
 }
 

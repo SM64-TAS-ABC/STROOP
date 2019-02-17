@@ -31,7 +31,6 @@ namespace STROOP.Managers
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
-                VariableGroup.Advanced,
             };
 
         public MarioManager(string varFilePath, Control marioControl, WatchVariableFlowLayoutPanel variableTable)

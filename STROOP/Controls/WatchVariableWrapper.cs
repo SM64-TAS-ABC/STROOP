@@ -292,12 +292,19 @@ namespace STROOP.Controls
             return _watchVar.MemoryType;
         }
 
+        private List<object> GetVerifiedValues(List<uint> addresses = null)
+        {
+            List<object> values = _watchVar.GetValues(addresses);
+            values.ForEach(value => HandleVerification(value));
+            return values;
+        }
+
         public object GetValue(
             bool handleRounding = true,
             bool handleFormatting = true,
             List<uint> addresses = null)
         {
-            List<object> values = _watchVar.GetValues(addresses);
+            List<object> values = GetVerifiedValues(addresses);
             (bool meaningfulValue, object value) = CombineValues(values);
             if (!meaningfulValue) return value;
 
@@ -310,7 +317,6 @@ namespace STROOP.Controls
             bool handleRounding = true,
             bool handleFormatting = true)
         {
-            HandleVerification(value);
             if (handleFormatting && GetUseHexExactly() && SavedSettingsConfig.DisplayAsHexUsesMemory)
             {
                 return HandleHexDisplaying(value);
@@ -342,7 +348,7 @@ namespace STROOP.Controls
 
         public CheckState GetCheckStateValue(List<uint> addresses = null)
         {
-            List<object> values = _watchVar.GetValues(addresses);
+            List<object> values = GetVerifiedValues(addresses);
             List<CheckState> checkStates = values.ConvertAll(value => ConvertValueToCheckState(value));
             CheckState checkState = CombineCheckStates(checkStates);
             return checkState;
@@ -363,17 +369,16 @@ namespace STROOP.Controls
             if (!changeValueNullable.HasValue) return false;
             double changeValue = changeValueNullable.Value;
 
-            List<object> currentValues = _watchVar.GetValues(addresses);
-            List<double?> currentValuesDoubleNullable =
-                currentValues.ConvertAll(
-                    currentValue => ParsingUtilities.ParseDoubleNullable(currentValue));
-            List<object> newValues = currentValuesDoubleNullable.ConvertAll(currentValueDoubleNullable =>
+            List<object> currentValues = GetVerifiedValues(addresses);
+            List<object> convertedValues = currentValues.ConvertAll(
+                currentValue => ConvertValue(currentValue, false, false));
+            List<double?> convertedValuesDoubleNullable =
+                convertedValues.ConvertAll(
+                    convertedValue => ParsingUtilities.ParseDoubleNullable(convertedValue));
+            List<object> newValues = convertedValuesDoubleNullable.ConvertAll(convertedValueDoubleNullable =>
             {
-                if (!currentValueDoubleNullable.HasValue) return null;
-                double currentValueDouble = currentValueDoubleNullable.Value;
-                object convertedValue = ConvertValue(currentValueDouble, false, false);
-                // TODO tyler fix this for float logic
-                double convertedValueDouble = ParsingUtilities.ParseDouble(convertedValue);
+                if (!convertedValueDoubleNullable.HasValue) return null;
+                double convertedValueDouble = convertedValueDoubleNullable.Value;
                 double modifiedValue = convertedValueDouble + changeValue * (add ? +1 : -1);
                 object unconvertedValue = UnconvertValue(modifiedValue);
                 return unconvertedValue;

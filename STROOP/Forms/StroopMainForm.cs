@@ -124,6 +124,7 @@ namespace STROOP
                     "Show All Helpful Hints",
                     "Add Gfx Vertices",
                     "Show Skribblio Words",
+                    "Show Image Form",
                     "Test Something",
                     "Test Something Else",
                 },
@@ -153,6 +154,11 @@ namespace STROOP
                     () => HelpfulHintUtilities.ShowAllHelpfulHints(),
                     () => TestUtilities.AddGraphicsTriangleVerticesToTriangleTab(),
                     () => SkribblioUtilities.ShowWords(),
+                    () =>
+                    {
+                        ImageForm imageForm = new ImageForm();
+                        imageForm.Show();
+                    },
                     () => TestUtilities.TestSomething(),
                     () => TestUtilities.TestSomethingElse(),
                 });
@@ -279,11 +285,14 @@ namespace STROOP
             Map2Gui map2Gui = new Map2Gui()
             {
                 GLControl = glControlMap2,
+
                 MapIdLabel = labelMap2Id,
                 MapNameLabel = labelMap2Name,
                 MapSubNameLabel = labelMap2SubName,
                 PuValueLabel = labelMap2PuValue,
                 QpuValueLabel = labelMap2QpuValue,
+                YNormValueLabel = labelMap2YNormValue,
+
                 MapIconSizeTrackbar = trackBarMap2IconSize,
                 MapShowInactiveObjects = checkBoxMap2ShowInactive,
                 MapShowMario = checkBoxMap2ShowMario,
@@ -379,7 +388,7 @@ namespace STROOP
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
             Config.WaterManager = new WaterManager(@"Config/WaterData.xml", watchVariablePanelWater);
-            Config.SnowManager = new SnowManager(@"Config/SnowData.xml", watchVariablePanelSnow);
+            Config.SnowManager = new SnowManager(@"Config/SnowData.xml", watchVariablePanelSnow, tabPageSnow);
             Config.InputManager = new InputManager(@"Config/InputData.xml", tabPageInput, watchVariablePanelInput, _inputImageGuiList);
             Config.MarioManager = new MarioManager(@"Config/MarioData.xml", tabPageMario, WatchVariablePanelMario);
             Config.HudManager = new HudManager(@"Config/HudData.xml", tabPageHud, watchVariablePanelHud);

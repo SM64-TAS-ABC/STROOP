@@ -55,12 +55,23 @@ namespace STROOP.Controls
         public readonly bool ChangeAngleConstrainToOneRevolutionToDefault;
         public readonly bool NewAngleConstrainToOneRevolution;
 
+        public readonly bool ChangeAngleReverse;
+        public readonly bool ChangeAngleReverseToDefault;
+        public readonly bool NewAngleReverse;
+
         public readonly bool ChangeAngleDisplayAsHex;
         public readonly bool ChangeAngleDisplayAsHexToDefault;
         public readonly bool NewAngleDisplayAsHex;
 
         public readonly bool ChangeHighlighted;
         public readonly bool NewHighlighted;
+
+        public readonly bool ChangeHighlightColor;
+        public readonly Color? NewHighlightColor;
+
+        public readonly bool ChangeBackgroundColor;
+        public readonly bool ChangeBackgroundColorToDefault;
+        public readonly Color? NewBackgroundColor;
 
         public readonly bool ChangeLocked;
         public readonly bool NewLocked;
@@ -96,12 +107,23 @@ namespace STROOP.Controls
             bool changeAngleConstrainToOneRevolutionToDefault = false,
             bool newAngleConstrainToOneRevolution = false,
 
+            bool changeAngleReverse = false,
+            bool changeAngleReverseToDefault = false,
+            bool newAngleReverse = false,
+
             bool changeAngleDisplayAsHex = false,
             bool changeAngleDisplayAsHexToDefault = false,
             bool newAngleDisplayAsHex = false,
 
             bool changeHighlighted = false,
             bool newHighlighted = false,
+
+            bool changeHighlightColor = false,
+            Color? newHighlightColor = null,
+
+            bool changeBackgroundColor = false,
+            bool changeBackgroundColorToDefault = false,
+            Color? newBackgroundColor = null,
 
             bool changeLocked = false,
             bool newLocked = false,
@@ -136,12 +158,23 @@ namespace STROOP.Controls
             ChangeAngleConstrainToOneRevolutionToDefault = changeAngleConstrainToOneRevolutionToDefault;
             NewAngleConstrainToOneRevolution = newAngleConstrainToOneRevolution;
 
+            ChangeAngleReverse = changeAngleReverse;
+            ChangeAngleReverseToDefault = changeAngleReverseToDefault;
+            NewAngleReverse = newAngleReverse;
+
             ChangeAngleDisplayAsHex = changeAngleDisplayAsHex;
             ChangeAngleDisplayAsHexToDefault = changeAngleDisplayAsHexToDefault;
             NewAngleDisplayAsHex = newAngleDisplayAsHex;
 
             ChangeHighlighted = changeHighlighted;
             NewHighlighted = newHighlighted;
+
+            ChangeHighlightColor = changeHighlightColor;
+            NewHighlightColor = newHighlightColor;
+
+            ChangeBackgroundColor = changeBackgroundColor;
+            ChangeBackgroundColorToDefault = changeBackgroundColorToDefault;
+            NewBackgroundColor = newBackgroundColor;
 
             ChangeLocked = changeLocked;
             NewLocked = newLocked;

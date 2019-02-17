@@ -35,11 +35,57 @@ namespace STROOP.Managers
         private short _numSnowParticles;
         private List<List<WatchVariableControl>> _snowParticleControls;
 
-        public SnowManager(string varFilePath, WatchVariableFlowLayoutPanel variableTable)
+        public SnowManager(string varFilePath, WatchVariableFlowLayoutPanel variableTable, TabPage tabPageSnow)
             : base(varFilePath, variableTable, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             _numSnowParticles = 0;
             _snowParticleControls = new List<List<WatchVariableControl>>();
+
+            SplitContainer splitContainerSnow = tabPageSnow.Controls["splitContainerSnow"] as SplitContainer;
+
+            TextBox textBoxSnowIndex = splitContainerSnow.Panel1.Controls["textBoxSnowIndex"] as TextBox;
+
+            Button buttonSnowRetrieve = splitContainerSnow.Panel1.Controls["buttonSnowRetrieve"] as Button;
+            buttonSnowRetrieve.Click += (sender, e) =>
+            {
+                int? snowIndexNullable = ParsingUtilities.ParseIntNullable(textBoxSnowIndex.Text);
+                if (!snowIndexNullable.HasValue) return;
+                int snowIndex = snowIndexNullable.Value;
+                if (snowIndex < 0 || snowIndex > _numSnowParticles) return;
+                ButtonUtilities.RetrieveSnow(snowIndex);
+            };
+
+            GroupBox groupBoxSnowPosition = splitContainerSnow.Panel1.Controls["groupBoxSnowPosition"] as GroupBox;
+            ControlUtilities.InitializeThreeDimensionController(
+                CoordinateSystem.Euler,
+                true,
+                groupBoxSnowPosition,
+                groupBoxSnowPosition.Controls["buttonSnowPositionXn"] as Button,
+                groupBoxSnowPosition.Controls["buttonSnowPositionXp"] as Button,
+                groupBoxSnowPosition.Controls["buttonSnowPositionZn"] as Button,
+                groupBoxSnowPosition.Controls["buttonSnowPositionZp"] as Button,
+                groupBoxSnowPosition.Controls["buttonSnowPositionXnZn"] as Button,
+                groupBoxSnowPosition.Controls["buttonSnowPositionXnZp"] as Button,
+                groupBoxSnowPosition.Controls["buttonSnowPositionXpZn"] as Button,
+                groupBoxSnowPosition.Controls["buttonSnowPositionXpZp"] as Button,
+                groupBoxSnowPosition.Controls["buttonSnowPositionYp"] as Button,
+                groupBoxSnowPosition.Controls["buttonSnowPositionYn"] as Button,
+                groupBoxSnowPosition.Controls["textBoxSnowPositionXZ"] as TextBox,
+                groupBoxSnowPosition.Controls["textBoxSnowPositionY"] as TextBox,
+                groupBoxSnowPosition.Controls["checkBoxSnowPositionRelative"] as CheckBox,
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
+                {
+                    int? snowIndexNullable = ParsingUtilities.ParseIntNullable(textBoxSnowIndex.Text);
+                    if (!snowIndexNullable.HasValue) return;
+                    int snowIndex = snowIndexNullable.Value;
+                    if (snowIndex < 0 || snowIndex > _numSnowParticles) return;
+                    ButtonUtilities.TranslateSnow(
+                        snowIndex,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
+                        useRelative);
+                });
         }
 
         private List<WatchVariableControl> GetSnowParticleControls(int index)
@@ -81,7 +127,7 @@ namespace STROOP.Managers
                     useHex: null,
                     invertBool: null,
                     isYaw: null,
-                    coordinate: null,
+                    coordinate: i == 0 ? Coordinate.X : i == 1 ? Coordinate.Y : Coordinate.Z,
                     groupList: new List<VariableGroup>() { VariableGroup.Snow });
                 controls.Add(precursor.CreateWatchVariableControl());
             }

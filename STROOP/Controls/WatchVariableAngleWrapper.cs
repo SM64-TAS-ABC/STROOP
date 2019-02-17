@@ -30,6 +30,10 @@ namespace STROOP.Controls
         private bool _constrainToOneRevolution;
         private Action<bool> _setConstrainToOneRevolution;
 
+        private readonly bool _defaultReverse;
+        private bool _reverse;
+        private Action<bool> _setReverse;
+
         private readonly Type _baseType;
         private readonly Type _defaultEffectiveType;
         private Type _effectiveType
@@ -69,6 +73,9 @@ namespace STROOP.Controls
                 displayType != null && TypeUtilities.TypeSize[displayType] == 2 &&
                 watchVar.MemoryType != null && TypeUtilities.TypeSize[watchVar.MemoryType] == 4;
             _constrainToOneRevolution = _defaultConstrainToOneRevolution;
+
+            _defaultReverse = false;
+            _reverse = _defaultReverse;
 
             _isYaw = isYaw ?? DEFAULT_IS_YAW;
 
@@ -119,11 +126,21 @@ namespace STROOP.Controls
             itemConstrainToOneRevolution.Click += (sender, e) => _setConstrainToOneRevolution(!_constrainToOneRevolution);
             itemConstrainToOneRevolution.Checked = _constrainToOneRevolution;
 
+            ToolStripMenuItem itemReverse = new ToolStripMenuItem("Reverse");
+            _setReverse = (bool reverse) =>
+            {
+                _reverse = reverse;
+                itemReverse.Checked = reverse;
+            };
+            itemReverse.Click += (sender, e) => _setReverse(!_reverse);
+            itemReverse.Checked = _reverse;
+
             _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
             _contextMenuStrip.AddToBeginningList(itemSigned);
             _contextMenuStrip.AddToBeginningList(itemUnits);
             _contextMenuStrip.AddToBeginningList(itemTruncateToMultipleOf16);
             _contextMenuStrip.AddToBeginningList(itemConstrainToOneRevolution);
+            _contextMenuStrip.AddToBeginningList(itemReverse);
         }
 
         private double GetAngleUnitTypeMaxValue(AngleUnitType? angleUnitTypeNullable = null)
@@ -168,6 +185,10 @@ namespace STROOP.Controls
             if (!doubleValueNullable.HasValue) return value;
             double doubleValue = doubleValueNullable.Value;
 
+            if (_reverse)
+            {
+                doubleValue += 32768;
+            }
             if (_truncateToMultipleOf16)
             {
                 doubleValue = MoreMath.TruncateToMultipleOf16(doubleValue);
@@ -243,6 +264,13 @@ namespace STROOP.Controls
                     _setConstrainToOneRevolution(_defaultConstrainToOneRevolution);
                 else
                     _setConstrainToOneRevolution(settings.NewAngleConstrainToOneRevolution);
+            }
+            if (settings.ChangeAngleReverse)
+            {
+                if (settings.ChangeAngleReverseToDefault)
+                    _setReverse(_defaultReverse);
+                else
+                    _setReverse(settings.NewAngleReverse);
             }
             if (settings.ChangeAngleDisplayAsHex)
             {

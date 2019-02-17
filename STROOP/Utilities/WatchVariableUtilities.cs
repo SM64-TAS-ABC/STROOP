@@ -98,6 +98,24 @@ namespace STROOP.Structs
                             return TriangleConfig.ExertionForceTableAddress + 2 * exertionForceIndex;
                         });
 
+                case BaseAddressTypeEnum.Floor:
+                    {
+                        uint floorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                        return floorAddress != 0 ? new List<uint>() { floorAddress } : BaseAddressListEmpty;
+                    }
+
+                case BaseAddressTypeEnum.Wall:
+                    {
+                        uint wallAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+                        return wallAddress != 0 ? new List<uint>() { wallAddress } : BaseAddressListEmpty;
+                    }
+
+                case BaseAddressTypeEnum.Ceiling:
+                    {
+                        uint ceilingAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
+                        return ceilingAddress != 0 ? new List<uint>() { ceilingAddress } : BaseAddressListEmpty;
+                    }
+
                 case BaseAddressTypeEnum.InputCurrent:
                     return new List<uint> { InputConfig.CurrentInputAddress };
 

@@ -17,7 +17,7 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            TestScuttlebugDrops();
+            TestSomething11();
         }
 
         public static void TestSomethingElse()
@@ -331,5 +331,130 @@ namespace STROOP.Utilities
             }
             InfoForm.ShowValue(output);
         }
+
+        public static void TestSomething11()
+        {
+            /*
+            double normX = -20;
+            double normY = -58;
+            double normZ = 50;
+            double normOffset = 750;
+            */
+
+            /*
+            double normX = 0;
+            double normY = -50;
+            double normZ = 40;
+            double normOffset = 440;
+            */
+
+            double normX = 0;
+            double normY = -25;
+            double normZ = 100;
+            double normOffset = 600;
+
+            Func<double, double, double> getY =
+                (double x, double z) => TriangleDataModel.GetHeightOnTriangle(x, z, normX, normY, normZ, normOffset);
+
+            List<int[]> unitCoordinates = new List<int[]>();
+            for (int x = 1; x <= 6; x++)
+            {
+                for (int y = 1; y <= 6; y++)
+                {
+                    unitCoordinates.Add(new int[] { x, y });
+                }
+            }
+
+            foreach (int[] coord in unitCoordinates)
+            {
+                int x = coord[0];
+                int z = coord[1] * -1;
+
+                int x1 = x;
+                int z1 = z;
+                int x2 = x;
+                int z2 = z - 1;
+                int x3 = x + 1;
+                int z3 = z - 1;
+                int x4 = x + 1;
+                int z4 = z;
+
+                double y1 = getY(x1, z1);
+                double y2 = getY(x1, z1);
+                double y3 = getY(x1, z1);
+                double y4 = getY(x1, z1);
+
+                Config.Print("{0},{1}[1]\t{2}\t{3}\t{4}", x, z, x1, -1 * z1, y1);
+                Config.Print("{0},{1}[2]\t{2}\t{3}\t{4}", x, z, x2, -1 * z2, y2);
+                Config.Print("{0},{1}[3]\t{2}\t{3}\t{4}", x, z, x3, -1 * z3, y3);
+                Config.Print("{0},{1}[4]\t{2}\t{3}\t{4}", x, z, x4, -1 * z4, y4);
+            }
+        }
+
+        private static List<int[]> unitCoordinates_ = new List<int[]>()
+        {
+            new int[] {5,13},
+            new int[] {5,12},
+            new int[] {6,12},
+            new int[] {7,12},
+            new int[] {5,11},
+            new int[] {6,11},
+            new int[] {7,11},
+            new int[] {8,11},
+            new int[] {9,11},
+            new int[] {10,11},
+            new int[] {4,10},
+            new int[] {5,10},
+            new int[] {6,10},
+            new int[] {7,10},
+            new int[] {8,10},
+            new int[] {9,10},
+            new int[] {4,9},
+            new int[] {5,9},
+            new int[] {6,9},
+            new int[] {7,9},
+            new int[] {8,9},
+            new int[] {9,9},
+            new int[] {3,8},
+            new int[] {4,8},
+            new int[] {5,8},
+            new int[] {6,8},
+            new int[] {7,8},
+            new int[] {8,8},
+            new int[] {3,7},
+            new int[] {4,7},
+            new int[] {5,7},
+            new int[] {6,7},
+            new int[] {7,7},
+            new int[] {8,7},
+            new int[] {3,6},
+            new int[] {4,6},
+            new int[] {5,6},
+            new int[] {6,6},
+            new int[] {7,6},
+            new int[] {8,6},
+            new int[] {2,5},
+            new int[] {3,5},
+            new int[] {4,5},
+            new int[] {5,5},
+            new int[] {6,5},
+            new int[] {7,5},
+            new int[] {2,4},
+            new int[] {3,4},
+            new int[] {4,4},
+            new int[] {5,4},
+            new int[] {6,4},
+            new int[] {7,4},
+            new int[] {1,3},
+            new int[] {2,3},
+            new int[] {3,3},
+            new int[] {4,3},
+            new int[] {5,3},
+            new int[] {6,3},
+            new int[] {4,2},
+            new int[] {5,2},
+            new int[] {6,2},
+            new int[] {6,1},
+        };
     }
 } 
