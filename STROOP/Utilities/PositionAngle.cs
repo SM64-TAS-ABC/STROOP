@@ -519,7 +519,7 @@ namespace STROOP.Utilities
         private static double GetSnowComponent(int index, Coordinate coordinate)
         {
             short numSnowParticles = Config.Stream.GetInt16(SnowConfig.CounterAddress);
-            if (index < 0 || index > numSnowParticles) return Double.NaN;
+            if (index < 0 || index >= numSnowParticles) return Double.NaN;
             uint snowStart = Config.Stream.GetUInt32(SnowConfig.SnowArrayPointerAddress);
             uint structOffset = (uint)index * SnowConfig.ParticleStructSize;
             switch (coordinate)
