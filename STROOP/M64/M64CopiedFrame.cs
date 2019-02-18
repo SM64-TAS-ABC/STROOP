@@ -62,22 +62,22 @@ namespace STROOP.M64
             this.D_Right = D_Right;
 
             RawValue = M64Utilities.GetRawValueFromInputs(
-                X.HasValue ? X.Value : (sbyte)0,
-                Y.HasValue ? Y.Value : (sbyte)0,
-                A.HasValue ? A.Value : false,
-                B.HasValue ? B.Value : false,
-                Z.HasValue ? Z.Value : false,
-                S.HasValue ? S.Value : false,
-                R.HasValue ? R.Value : false,
-                C_Up.HasValue ? C_Up.Value : false,
-                C_Down.HasValue ? C_Down.Value : false,
-                C_Left.HasValue ? C_Left.Value : false,
-                C_Right.HasValue ? C_Right.Value : false,
-                L.HasValue ? L.Value : false,
-                D_Up.HasValue ? D_Up.Value : false,
-                D_Down.HasValue ? D_Down.Value : false,
-                D_Left.HasValue ? D_Left.Value : false,
-                D_Right.HasValue ? D_Right.Value : false);
+                X ?? 0,
+                Y ?? 0,
+                A ?? false,
+                B ?? false,
+                Z ?? false,
+                S ?? false,
+                R ?? false,
+                C_Up ?? false,
+                C_Down ?? false,
+                C_Left ?? false,
+                C_Right ?? false,
+                L ?? false,
+                D_Up ?? false,
+                D_Down ?? false,
+                D_Left ?? false,
+                D_Right ?? false);
         }
 
         public static M64CopiedFrame CreateCopiedFrame(M64InputFrame input, bool useRows, string inputsList)
