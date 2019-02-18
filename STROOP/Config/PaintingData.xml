@@ -2,7 +2,9 @@
 <VarData>
   <Data base="Painting" offset="0x0" type="short">ID</Data>
   <Data base="Painting" offset="0x2" type="sbyte">Face Count</Data>
-  <Data base="Painting" offset="0x3" type="sbyte">Ripple Count</Data>
+  <Data base="Painting" offset="0x3" type="sbyte">Ripple Type</Data>
+  <Data base="Painting" offset="0x4" type="sbyte">Last Floor</Data>
+  <Data base="Painting" offset="0x5" type="sbyte">Current Floor</Data>
   <Data base="Painting" offset="0x10" type="float">X</Data>
   <Data base="Painting" offset="0x14" type="float">Y</Data>
   <Data base="Painting" offset="0x18" type="float">Z</Data>
