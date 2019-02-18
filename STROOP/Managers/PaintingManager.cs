@@ -13,47 +13,60 @@ namespace STROOP.Managers
 {
     public class PaintingManager : DataManager
     {
+        private class PaintingData
+        {
+            private readonly string _name;
+            private readonly PaintingListTypeEnum _paintingListType;
+            private readonly int _index;
+
+            public PaintingData(string name, PaintingListTypeEnum paintingListType, int index)
+            {
+                _name = name;
+                _paintingListType = paintingListType;
+                _index = index;
+            }
+
+            public override string ToString()
+            {
+                return _name;
+            }
+
+            public uint GetAddress()
+            {
+                return 0;
+            }
+        }
+
+        private List<PaintingData> paintingDataList =
+            new List<PaintingData>()
+            {
+                new PaintingData("BoB", PaintingListTypeEnum.Castle, 0),
+                new PaintingData("WF", PaintingListTypeEnum.Castle, 2),
+                new PaintingData("JRB", PaintingListTypeEnum.Castle, 3),
+                new PaintingData("CCM", PaintingListTypeEnum.Castle, 1),
+                new PaintingData("HMC", PaintingListTypeEnum.Castle, 6),
+                new PaintingData("LLL", PaintingListTypeEnum.Castle, 4),
+                new PaintingData("SSL", PaintingListTypeEnum.Castle, 5),
+                new PaintingData("DDD", PaintingListTypeEnum.Castle, 7),
+                new PaintingData("SL", PaintingListTypeEnum.Castle, 12),
+                new PaintingData("WDW", PaintingListTypeEnum.Castle, 8),
+                new PaintingData("TTM", PaintingListTypeEnum.Castle, 10),
+                new PaintingData("TTM Slide", PaintingListTypeEnum.TTM, 0),
+                new PaintingData("THI Tiny", PaintingListTypeEnum.Castle, 9),
+                new PaintingData("THI Huge", PaintingListTypeEnum.Castle, 13),
+                new PaintingData("TTC", PaintingListTypeEnum.Castle, 11),
+                new PaintingData("CotMC", PaintingListTypeEnum.HMC, 0),
+            };
+
         public PaintingManager(string varFilePath, WatchVariableFlowLayoutPanel variables, TabPage tabPage)
             : base(varFilePath, variables)
         {
-
-            /*
-            SplitContainer splitContainerHud = tabControl.Controls["splitContainerHud"] as SplitContainer;
-
-            (splitContainerHud.Panel1.Controls["buttonFullHp"] as Button).Click += (sender, e) => ButtonUtilities.FullHp();
-            (splitContainerHud.Panel1.Controls["buttonDie"] as Button).Click += (sender, e) => ButtonUtilities.Die();
-            (splitContainerHud.Panel1.Controls["buttonGameOver"] as Button).Click += (sender, e) => ButtonUtilities.GameOver();
-            (splitContainerHud.Panel1.Controls["button99Coins"] as Button).Click += (sender, e) => ButtonUtilities.Coins99();
-            (splitContainerHud.Panel1.Controls["button100Lives"] as Button).Click += (sender, e) => ButtonUtilities.Lives100();
-            (splitContainerHud.Panel1.Controls["buttonStandardHud"] as Button).Click += (sender, e) => ButtonUtilities.StandardHud();
-
-            _turnOnOffHudButton = splitContainerHud.Panel1.Controls["buttonTurnOnOffHud"] as BinaryButton;
-            _turnOnOffHudButton.Initialize(
-                "Turn Off HUD",
-                "Turn On HUD",
-                () => ButtonUtilities.SetHudVisibility(false),
-                () => ButtonUtilities.SetHudVisibility(true),
-                () => (Config.Stream.GetByte(MarioConfig.StructAddress + HudConfig.VisibilityOffset) & HudConfig.VisibilityMask) == 0);
-
-            ControlUtilities.AddContextMenuStripFunctions(
-                _turnOnOffHudButton,
-                new List<string>()
-                {
-                    "Disable HUD by Changing Level Index",
-                    "Enable HUD by Changing Level Index",
-                    "Disable HUD by Removing Function",
-                    "Enable HUD by Removing Function",
-                },
-                new List<Action>()
-                {
-                    () => ButtonUtilities.SetHudVisibility(false, true),
-                    () => ButtonUtilities.SetHudVisibility(true, true),
-                    () => ButtonUtilities.SetHudVisibility(false, false),
-                    () => ButtonUtilities.SetHudVisibility(true, false),
-                });
-
-            _checkBoxFullHP = splitContainerHud.Panel1.Controls["checkBoxFullHP"] as CheckBox;
-            */
+            SplitContainer splitContainer = tabPage.Controls["splitContainerPainting"] as SplitContainer;
+            ListBox listBox = splitContainer.Panel1.Controls["listBoxPainting"] as ListBox;
+            foreach (PaintingData paintingData in paintingDataList)
+            {
+                listBox.Items.Add(paintingData);
+            }
         }
 
         public override void Update(bool updateView)
