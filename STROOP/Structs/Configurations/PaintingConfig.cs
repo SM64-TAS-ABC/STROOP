@@ -41,7 +41,9 @@ namespace STROOP.Structs
                     throw new ArgumentOutOfRangeException();
             }
             uint offset = (uint)index * PaintingStructSize;
-            return startAddress + offset;
+            uint segmentedAddress = startAddress + offset;
+            uint address = SegmentationUtilities.DecodeSegmentedAddress(segmentedAddress);
+            return address;
         }
     }
 }
