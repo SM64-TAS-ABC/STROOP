@@ -16,6 +16,8 @@ namespace STROOP.Utilities
         public readonly int? Index;
         public readonly PositionAngle PosPA;
         public readonly PositionAngle AnglePA;
+        public readonly List<Func<double>> Getters;
+        public readonly List<Func<double, bool>> Setters;
 
         public static Dictionary<uint, (double, double, double, double)> Schedule =
             new Dictionary<uint, (double, double, double, double)>();
@@ -40,6 +42,7 @@ namespace STROOP.Utilities
             Snow,
             Schedule,
             Hybrid,
+            Functions,
         }
 
         private bool ShouldHaveAddress(PositionAngleTypeEnum posAngleType)
@@ -65,13 +68,17 @@ namespace STROOP.Utilities
             uint? address = null,
             int? index = null,
             PositionAngle posPA = null,
-            PositionAngle anglePA = null)
+            PositionAngle anglePA = null,
+            List<Func<double>> getters = null,
+            List<Func<double, bool>> setters = null)
         {
             PosAngleType = posAngleType;
             Address = address;
             Index = index;
             PosPA = posPA;
             AnglePA = anglePA;
+            Getters = getters;
+            Setters = setters;
 
             bool shouldHaveAddress = ShouldHaveAddress(posAngleType);
             if (address.HasValue != shouldHaveAddress)
@@ -81,11 +88,22 @@ namespace STROOP.Utilities
             if (index.HasValue != shouldHaveIndex)
                 throw new ArgumentOutOfRangeException();
 
-            bool shouldHavePAs =
-                PosAngleType == PositionAngleTypeEnum.Hybrid;
+            bool shouldHavePAs = PosAngleType == PositionAngleTypeEnum.Hybrid;
             if ((posPA != null) != shouldHavePAs)
                 throw new ArgumentOutOfRangeException();
             if ((anglePA != null) != shouldHavePAs)
+                throw new ArgumentOutOfRangeException();
+            
+            bool shouldHaveGetters = PosAngleType == PositionAngleTypeEnum.Functions;
+            if ((getters != null) != shouldHaveGetters)
+                throw new ArgumentOutOfRangeException();
+            if (getters != null && (getters.Count < 3 || getters.Count > 4)) // optional angle getter
+                throw new ArgumentOutOfRangeException();
+            
+            bool shouldHaveSetters = PosAngleType == PositionAngleTypeEnum.Functions;
+            if ((setters != null) != shouldHaveSetters)
+                throw new ArgumentOutOfRangeException();
+            if (setters != null && (setters.Count < 3 || setters.Count > 3))
                 throw new ArgumentOutOfRangeException();
         }
 
@@ -122,6 +140,8 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.Snow, index: index);
         public static PositionAngle Hybrid(PositionAngle posPA, PositionAngle anglePA) =>
             new PositionAngle(PositionAngleTypeEnum.Hybrid, posPA: posPA, anglePA: anglePA);
+        public static PositionAngle Functions(List<Func<double>> getters, List<Func<double, bool>> setters) =>
+            new PositionAngle(PositionAngleTypeEnum.Functions, getters: getters, setters: setters);
 
         public static PositionAngle FromString(string stringValue)
         {
@@ -294,6 +314,8 @@ namespace STROOP.Utilities
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
                         return PosPA.X;
+                    case PositionAngleTypeEnum.Functions:
+                        return Getters[0]();
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -348,6 +370,8 @@ namespace STROOP.Utilities
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
                         return PosPA.Y;
+                    case PositionAngleTypeEnum.Functions:
+                        return Getters[1]();
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -402,6 +426,8 @@ namespace STROOP.Utilities
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
                         return PosPA.Z;
+                    case PositionAngleTypeEnum.Functions:
+                        return Getters[2]();
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -453,6 +479,8 @@ namespace STROOP.Utilities
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
                         return AnglePA.Angle;
+                    case PositionAngleTypeEnum.Functions:
+                        return Getters?[3]?.Invoke() ?? Double.NaN;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -582,6 +610,8 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
                     return PosPA.SetX(value);
+                case PositionAngleTypeEnum.Functions:
+                    return Setters[0](value);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -632,6 +662,8 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
                     return PosPA.SetY(value);
+                case PositionAngleTypeEnum.Functions:
+                    return Setters[1](value);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -682,6 +714,8 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
                     return PosPA.SetZ(value);
+                case PositionAngleTypeEnum.Functions:
+                    return Setters[2](value);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -733,6 +767,8 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
                     return AnglePA.SetAngle(value);
+                case PositionAngleTypeEnum.Functions:
+                    return false;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
