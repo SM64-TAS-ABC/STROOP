@@ -59,6 +59,7 @@ namespace STROOP.Structs.Configurations
         public static CoinManager CoinManager;
         public static ScriptManager ScriptManager;
         public static GfxManager GfxManager;
+        public static PaintingManager PaintingManager;
         public static M64Manager M64Manager;
 
         public static List<DataManager> GetDataManagers()

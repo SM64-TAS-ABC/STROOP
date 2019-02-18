@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VarData>
+  <Data type="uint" offsetUS="0x80361158" offsetJP="0x8035FDE8" base="Relative" subclass="Object">Effective Mario Object</Data>
+  <Data type="uint" offset="0x88" base="Mario" subclass="Object">Visual Mario Object</Data>
+</VarData>
