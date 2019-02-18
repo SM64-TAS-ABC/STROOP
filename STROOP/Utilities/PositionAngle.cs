@@ -99,29 +99,29 @@ namespace STROOP.Utilities
         public static PositionAngle Scheduler = new PositionAngle(PositionAngleTypeEnum.Schedule);
 
         public static PositionAngle Obj(uint address) =>
-            new PositionAngle(PositionAngleTypeEnum.Obj, address);
+            new PositionAngle(PositionAngleTypeEnum.Obj, address: address);
         public static PositionAngle ObjHome(uint address) =>
-            new PositionAngle(PositionAngleTypeEnum.ObjHome, address);
+            new PositionAngle(PositionAngleTypeEnum.ObjHome, address: address);
         public static PositionAngle MarioObj() => Obj(Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress));
         public static PositionAngle ObjGfx(uint address) =>
-            new PositionAngle(PositionAngleTypeEnum.ObjGfx, address);
+            new PositionAngle(PositionAngleTypeEnum.ObjGfx, address: address);
         public static PositionAngle Ghost() =>
             ObjGfx(Config.ObjectSlotsManager.GetLoadedObjectsWithName("Mario Ghost")
                 .ConvertAll(objectDataModel => objectDataModel.Address).FirstOrDefault());
         public static PositionAngle ObjScale(uint address) =>
-            new PositionAngle(PositionAngleTypeEnum.ObjScale, address);
+            new PositionAngle(PositionAngleTypeEnum.ObjScale, address: address);
         public static PositionAngle Tri(uint address, int index) =>
-            new PositionAngle(PositionAngleTypeEnum.Tri, address, index);
+            new PositionAngle(PositionAngleTypeEnum.Tri, address: address, index: index);
         public static PositionAngle Wall(int index) =>
-            new PositionAngle(PositionAngleTypeEnum.Wall, null, index);
+            new PositionAngle(PositionAngleTypeEnum.Wall, index: index);
         public static PositionAngle Floor(int index) =>
-            new PositionAngle(PositionAngleTypeEnum.Floor, null, index);
+            new PositionAngle(PositionAngleTypeEnum.Floor, index: index);
         public static PositionAngle Ceiling(int index) =>
-            new PositionAngle(PositionAngleTypeEnum.Ceiling, null, index);
+            new PositionAngle(PositionAngleTypeEnum.Ceiling, index: index);
         public static PositionAngle Snow(int index) =>
-            new PositionAngle(PositionAngleTypeEnum.Snow, null, index);
+            new PositionAngle(PositionAngleTypeEnum.Snow, index: index);
         public static PositionAngle Hybrid(PositionAngle posPA, PositionAngle anglePA) =>
-            new PositionAngle(PositionAngleTypeEnum.Hybrid, null, null, posPA, anglePA);
+            new PositionAngle(PositionAngleTypeEnum.Hybrid, posPA: posPA, anglePA: anglePA);
 
         public static PositionAngle FromString(string stringValue)
         {
