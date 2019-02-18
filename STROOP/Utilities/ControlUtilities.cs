@@ -128,8 +128,11 @@ namespace STROOP.Utilities
             ToolStripMenuItem itemDownLeft = new ToolStripMenuItem("Face Down-Left");
             ToolStripMenuItem itemUpRight = new ToolStripMenuItem("Face Up-Right");
             ToolStripMenuItem itemDownRight = new ToolStripMenuItem("Face Down-Right");
+            ToolStripMenuItem itemReverse = new ToolStripMenuItem("Reverse");
+            int lastDirection = 0;
+            FacingDirection lastFacingDirection = FacingDirection.Up;
 
-            Action<FacingDirection, int> SetFacingDirection = (FacingDirection facingDirection, int direction) =>
+            Action<FacingDirection, int, bool> SetFacingDirection = (FacingDirection facingDirection, int direction, bool reversed) =>
             {
                 itemLeft.Checked = facingDirection == FacingDirection.Left;
                 itemRight.Checked = facingDirection == FacingDirection.Right;
@@ -139,24 +142,32 @@ namespace STROOP.Utilities
                 itemDownLeft.Checked = facingDirection == FacingDirection.DownLeft;
                 itemUpRight.Checked = facingDirection == FacingDirection.UpRight;
                 itemDownRight.Checked = facingDirection == FacingDirection.DownRight;
+                lastDirection = direction;
+                lastFacingDirection = facingDirection;
 
                 for (int i = 0; i < buttonList.Count; i++)
                 {
-                    int newDirection = (direction + i) % buttonList.Count;
+                    int sign = reversed ? -1 : 1;
+                    int newDirection = MoreMath.NonNegativeModulus(direction + i * sign, buttonList.Count);
                     Point newPoint = positionList[newDirection];
                     Button button = buttonList[i];
                     button.Location = newPoint;
                 }
             };
 
-            itemLeft.Click += (sender, e) => SetFacingDirection(FacingDirection.Left, 6);
-            itemRight.Click += (sender, e) => SetFacingDirection(FacingDirection.Right, 2);
-            itemUp.Click += (sender, e) => SetFacingDirection(FacingDirection.Up, 0);
-            itemDown.Click += (sender, e) => SetFacingDirection(FacingDirection.Down, 4);
-            itemUpLeft.Click += (sender, e) => SetFacingDirection(FacingDirection.UpLeft, 7);
-            itemDownLeft.Click += (sender, e) => SetFacingDirection(FacingDirection.DownLeft, 5);
-            itemUpRight.Click += (sender, e) => SetFacingDirection(FacingDirection.UpRight, 1);
-            itemDownRight.Click += (sender, e) => SetFacingDirection(FacingDirection.DownRight, 3);
+            itemLeft.Click += (sender, e) => SetFacingDirection(FacingDirection.Left, 6, itemReverse.Checked);
+            itemRight.Click += (sender, e) => SetFacingDirection(FacingDirection.Right, 2, itemReverse.Checked);
+            itemUp.Click += (sender, e) => SetFacingDirection(FacingDirection.Up, 0, itemReverse.Checked);
+            itemDown.Click += (sender, e) => SetFacingDirection(FacingDirection.Down, 4, itemReverse.Checked);
+            itemUpLeft.Click += (sender, e) => SetFacingDirection(FacingDirection.UpLeft, 7, itemReverse.Checked);
+            itemDownLeft.Click += (sender, e) => SetFacingDirection(FacingDirection.DownLeft, 5, itemReverse.Checked);
+            itemUpRight.Click += (sender, e) => SetFacingDirection(FacingDirection.UpRight, 1, itemReverse.Checked);
+            itemDownRight.Click += (sender, e) => SetFacingDirection(FacingDirection.DownRight, 3, itemReverse.Checked);
+            itemReverse.Click += (sender, e) =>
+            {
+                itemReverse.Checked = !itemReverse.Checked;
+                SetFacingDirection(lastFacingDirection, lastDirection, itemReverse.Checked);
+            };
 
             ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Items.Add(itemLeft);
@@ -167,6 +178,8 @@ namespace STROOP.Utilities
             contextMenuStrip.Items.Add(itemDownLeft);
             contextMenuStrip.Items.Add(itemUpRight);
             contextMenuStrip.Items.Add(itemDownRight);
+            contextMenuStrip.Items.Add(new ToolStripSeparator());
+            contextMenuStrip.Items.Add(itemReverse);
             groupbox.ContextMenuStrip = contextMenuStrip;
 
             AddInversionContextMenuStrip(buttonLineUp, buttonLineDown);
