@@ -15,7 +15,6 @@ namespace STROOP.Managers
 {
     public class M64Manager
     {
-        private bool _displaySaveChangesOnOpen = false;
         private readonly M64File _m64File;
         private readonly M64Gui _gui;
 
@@ -246,9 +245,6 @@ namespace STROOP.Managers
 
         private void Open()
         {
-            if (CheckSaveChanges() == DialogResult.Cancel)
-                return;
-
             OpenFileDialog openFileDialog = DialogUtilities.CreateOpenFileDialog(FileType.MupenMovie);
             DialogResult dialogResult = openFileDialog.ShowDialog();
             if (dialogResult != DialogResult.OK)
@@ -288,15 +284,6 @@ namespace STROOP.Managers
             _gui.DataGridViewInputs.Refresh();
             _gui.PropertyGridHeader.Refresh();
             _gui.PropertyGridStats.Refresh();
-        }
-
-        private DialogResult CheckSaveChanges()
-        {
-            if (!_displaySaveChangesOnOpen)
-                return DialogResult.OK;
-
-            return MessageBox.Show("Do you want to save changes?", "Save Changes",
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
         }
 
         private void ListBoxCopied_KeyDown()

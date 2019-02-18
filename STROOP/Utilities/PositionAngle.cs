@@ -546,7 +546,7 @@ namespace STROOP.Utilities
                     SpecialConfig.CustomX = value;
                     return true;
                 case PositionAngleTypeEnum.Mario:
-                    return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.XOffset);
+                    return SetMarioComponent((float)value, Coordinate.X);
                 case PositionAngleTypeEnum.Holp:
                     return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpXOffset);
                 case PositionAngleTypeEnum.Camera:
@@ -596,7 +596,7 @@ namespace STROOP.Utilities
                     SpecialConfig.CustomY = value;
                     return true;
                 case PositionAngleTypeEnum.Mario:
-                    return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.YOffset);
+                    return SetMarioComponent((float)value, Coordinate.Y);
                 case PositionAngleTypeEnum.Holp:
                     return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpYOffset);
                 case PositionAngleTypeEnum.Camera:
@@ -646,7 +646,7 @@ namespace STROOP.Utilities
                     SpecialConfig.CustomZ = value;
                     return true;
                 case PositionAngleTypeEnum.Mario:
-                    return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    return SetMarioComponent((float)value, Coordinate.Z);
                 case PositionAngleTypeEnum.Holp:
                     return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpZOffset);
                 case PositionAngleTypeEnum.Camera:
@@ -736,6 +736,50 @@ namespace STROOP.Utilities
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private static bool SetMarioComponent(float value, Coordinate coordinate)
+        {
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            switch (coordinate)
+            {
+                case Coordinate.X:
+                    success &= Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.XOffset);
+                    break;
+                case Coordinate.Y:
+                    success &= Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.YOffset);
+                    break;
+                case Coordinate.Z:
+                    success &= Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            if (KeyboardUtilities.IsAltHeld())
+            {
+                uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                switch (coordinate)
+                {
+                    case Coordinate.X:
+                        success &= Config.Stream.SetValue(value, marioObjRef + ObjectConfig.GraphicsXOffset);
+                        break;
+                    case Coordinate.Y:
+                        success &= Config.Stream.SetValue(value, marioObjRef + ObjectConfig.GraphicsYOffset);
+                        break;
+                    case Coordinate.Z:
+                        success &= Config.Stream.SetValue(value, marioObjRef + ObjectConfig.GraphicsZOffset);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
         }
 
         private static bool SetTriangleVertexComponent(short value, uint address, int index, Coordinate coordinate)
