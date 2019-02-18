@@ -480,7 +480,8 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Hybrid:
                         return AnglePA.Angle;
                     case PositionAngleTypeEnum.Functions:
-                        return Getters?[3]?.Invoke() ?? Double.NaN;
+                        if (Getters.Count >= 4) return Getters[3]();
+                        return Double.NaN;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }

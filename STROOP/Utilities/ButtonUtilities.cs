@@ -603,6 +603,12 @@ namespace STROOP.Utilities
             return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
+        public static bool TranslatePosAngle(PositionAngle posAngle, float xOffset, float yOffset, float zOffset, bool useRelative)
+        {
+            List<PositionAngle> posAngles = new List<PositionAngle> { posAngle };
+            return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+        }
+
         public static bool RetrieveSnow(int index)
         {
             List<PositionAngle> posAngles = new List<PositionAngle>() { PositionAngle.Snow(index) };

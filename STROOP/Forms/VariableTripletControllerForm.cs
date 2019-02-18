@@ -18,6 +18,28 @@ namespace STROOP.Forms
 
         public void Initialize(List<WatchVariableControl> controls)
         {
+            if (controls.Count < 3) return;
+
+            List<Func<double>> getters =
+                new List<Func<double>>()
+                {
+                    () => ParsingUtilities.ParseDouble(controls[0].GetValue(false)),
+                    () => ParsingUtilities.ParseDouble(controls[1].GetValue(false)),
+                    () => ParsingUtilities.ParseDouble(controls[2].GetValue(false)),
+                };
+            if (controls.Count >= 4)
+                getters.Add(() => ParsingUtilities.ParseDouble(controls[3].GetValue(false)));
+
+            List<Func<double, bool>> setters =
+                new List<Func<double, bool>>()
+                {
+                    (double value) => controls[0].SetValue(value.ToString()),
+                    (double value) => controls[1].SetValue(value.ToString()),
+                    (double value) => controls[2].SetValue(value.ToString()),
+                };
+
+            PositionAngle posAngle = PositionAngle.Functions(getters, setters);
+                    
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
                 true,
@@ -37,7 +59,8 @@ namespace STROOP.Forms
                 groupBoxVar.Controls["checkBoxVarRelative"] as CheckBox,
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
-                    ButtonUtilities.TranslateMario(
+                    ButtonUtilities.TranslatePosAngle(
+                        posAngle,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
