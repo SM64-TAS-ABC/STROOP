@@ -512,6 +512,7 @@
     <Compile Include="Structs\RomHack.cs" />
     <Compile Include="Structs\SpawnHack.cs" />
     <Compile Include="Enums\AngleUnitType.cs" />
+    <Compile Include="Utilities\SegmentationUtilities.cs" />
     <Compile Include="Utilities\BoolUtilities.cs" />
     <Compile Include="Utilities\CamHackUtilities.cs" />
     <Compile Include="Utilities\CoinTrajectoryFilter.cs" />

@@ -97,7 +97,7 @@ namespace STROOP.Managers
             if (SelectedNode != null && SelectedNode is GfxDisplayList)
             {
                 uint address = Config.Stream.GetUInt32(SelectedNode.Address + 0x14);
-                _outputTextBox.Text = Fast3DDecoder.DecodeList(Fast3DDecoder.DecodeSegmentedAddress(address));
+                _outputTextBox.Text = Fast3DDecoder.DecodeList(SegmentationUtilities.DecodeSegmentedAddress(address));
 
             } else
             {

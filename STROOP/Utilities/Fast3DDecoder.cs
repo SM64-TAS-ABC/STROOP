@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using STROOP.Structs.Configurations;
+using STROOP.Structs;
 
 namespace STROOP.Utilities
 {
@@ -109,11 +110,11 @@ namespace STROOP.Utilities
                     case F3DOpcode.G_MOVEMEM:
                     case F3DOpcode.G_SETTIMG:
 
-                        res.AppendLine($"0x{DecodeSegmentedAddress(secondWord):X8}");
+                        res.AppendLine($"0x{SegmentationUtilities.DecodeSegmentedAddress(secondWord):X8}");
                         break;
 
                     case F3DOpcode.G_MTX:
-                        res.Append($"0x{DecodeSegmentedAddress(secondWord):X8} ");
+                        res.Append($"0x{SegmentationUtilities.DecodeSegmentedAddress(secondWord):X8} ");
                         var p = (firstWord >> 16) & 0xFF;
                         res.Append(((p & 0x01) != 0) ? "projection: " : "model view: ");
                         res.Append(((p & 0x02) != 0) ? "load" : "multiply");
@@ -137,7 +138,7 @@ namespace STROOP.Utilities
                     case F3DOpcode.G_VTX:
                         var vertexAmount = ((firstWord >> 20) & 0xF) + 1;
                         var startIndex = ((firstWord >> 16) & 0xF);
-                        var vertexAddress = DecodeSegmentedAddress(secondWord);
+                        var vertexAddress = SegmentationUtilities.DecodeSegmentedAddress(secondWord);
                         res.AppendLine($"{vertexAmount} vertices at 0x{vertexAddress:X8}, start index {startIndex}");
                         res.AppendLine(Indent(recursionDepth) + "(pos) flags (tex) (normal/color)");
                         for (byte j = 0; j < vertexAmount; j++)
@@ -164,7 +165,7 @@ namespace STROOP.Utilities
                         break;
                     case F3DOpcode.G_DL:
                         res.AppendLine();
-                        res.AppendLine(DecodeList(DecodeSegmentedAddress(secondWord), recursionDepth + 1));
+                        res.AppendLine(DecodeList(SegmentationUtilities.DecodeSegmentedAddress(secondWord), recursionDepth + 1));
                         break;
                     default:
                         res.AppendLine();
@@ -200,17 +201,6 @@ namespace STROOP.Utilities
                 if ((word & flag) != 0) res += Enum.GetName(typeof(GeometryFlags), word) + " ";
             }
             return res;
-        }
-
-        // A segmented address is 4 bytes. The first byte contains the index of the segment in the segment table, the 
-        // other 3 bytes are the offset from the segment. Segmented addresses are used for locating object behavior scripts, 
-        // display lists, textures and other resources.
-        // todo: not limited to Fast3D display lists, can be put in a more general utilitiies class
-        public static uint DecodeSegmentedAddress(uint segmentedAddress)
-        {
-            var offset = segmentedAddress & 0xFFFFFF;
-            var segment = (segmentedAddress >> 24);
-            return offset + Config.Stream.GetUInt32(4 * segment + RomVersionConfig.Switch(0x33B400, 0x33A090));
         }
     }
 }
