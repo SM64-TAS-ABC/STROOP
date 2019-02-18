@@ -58,15 +58,23 @@ namespace STROOP.Managers
                 new PaintingData("CotMC", PaintingListTypeEnum.HMC, 0),
             };
 
+        private ListBox _listBoxPainting;
+
         public PaintingManager(string varFilePath, WatchVariableFlowLayoutPanel variables, TabPage tabPage)
             : base(varFilePath, variables)
         {
             SplitContainer splitContainer = tabPage.Controls["splitContainerPainting"] as SplitContainer;
-            ListBox listBox = splitContainer.Panel1.Controls["listBoxPainting"] as ListBox;
+            _listBoxPainting = splitContainer.Panel1.Controls["listBoxPainting"] as ListBox;
             foreach (PaintingData paintingData in paintingDataList)
             {
-                listBox.Items.Add(paintingData);
+                _listBoxPainting.Items.Add(paintingData);
             }
+        }
+
+        public uint? GetPaintingAddress()
+        {
+            PaintingData paintingData = _listBoxPainting.SelectedItem as PaintingData;
+            return paintingData?.GetAddress();
         }
 
         public override void Update(bool updateView)

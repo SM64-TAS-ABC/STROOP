@@ -38,6 +38,7 @@ namespace STROOP.Structs
         Water,
         Snow,
         Area,
+        Painting,
         LastCoin,
 
         Ghost,

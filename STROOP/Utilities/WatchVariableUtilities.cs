@@ -149,6 +149,12 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Area:
                     return new List<uint> { Config.AreaManager.SelectedAreaAddress };
 
+                case BaseAddressTypeEnum.Painting:
+                    {
+                        uint? paintingAddress = Config.PaintingManager.GetPaintingAddress();
+                        return paintingAddress != null ? new List<uint>() { paintingAddress.Value } : BaseAddressListEmpty;
+                    }
+
                 case BaseAddressTypeEnum.LastCoin:
                     {
                         List<uint> coinAddresses = Config.ObjectSlotsManager.GetLoadedObjectsWithPredicate(
