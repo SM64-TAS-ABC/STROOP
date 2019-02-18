@@ -1,4 +1,4 @@
-﻿using STROOP.Controls;
+﻿ using STROOP.Controls;
 using STROOP.Forms;
 using STROOP.Managers;
 using STROOP.Models;
@@ -75,6 +75,17 @@ namespace STROOP.Structs
                 {
                     () => apply(new WatchVariableControlSettings(changeLocked: true, newLocked: true)),
                     () => apply(new WatchVariableControlSettings(changeLocked: true, newLocked: false)),
+                });
+
+            ToolStripMenuItem itemFix = new ToolStripMenuItem("Fix...");
+            ControlUtilities.AddDropDownItems(
+                itemFix,
+                new List<string>() { "Default", "Fix", "Don't Fix" },
+                new List<Action>()
+                {
+                    () => apply(new WatchVariableControlSettings(changeFixed: true, changeFixedToDefault: true)),
+                    () => apply(new WatchVariableControlSettings(changeFixed: true, newFixed: true)),
+                    () => apply(new WatchVariableControlSettings(changeFixed: true, newFixed: false)),
                 });
 
             ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy...");
@@ -363,6 +374,7 @@ namespace STROOP.Structs
             {
                 itemHighlight,
                 itemLock,
+                itemFix,
                 itemCopy,
                 itemPaste,
                 new ToolStripSeparator(),
