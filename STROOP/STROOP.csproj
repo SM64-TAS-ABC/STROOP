@@ -369,6 +369,7 @@
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
+    <Compile Include="Structs\Configurations\PaintingConfig.cs" />
     <Compile Include="Structs\Configurations\SnowConfig.cs" />
     <Compile Include="Structs\Map\BackgroundImage.cs" />
     <Compile Include="Structs\TriangleInfoTable.cs" />

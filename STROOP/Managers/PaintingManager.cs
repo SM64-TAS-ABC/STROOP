@@ -33,7 +33,7 @@ namespace STROOP.Managers
 
             public uint GetAddress()
             {
-                return 0;
+                return PaintingConfig.GetAddress(_paintingListType, _index);
             }
         }
 
