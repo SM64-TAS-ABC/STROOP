@@ -337,6 +337,14 @@ namespace STROOP.Structs
                 varController.Show();
             };
 
+            ToolStripMenuItem itemOpenTripletController = new ToolStripMenuItem("Open Triplet Controller");
+            itemOpenTripletController.Click += (sender, e) =>
+            {
+                VariableTripletControllerForm form = new VariableTripletControllerForm();
+                form.Initialize(getVars().ConvertAll(control => control.CreateCopy()));
+                form.ShowForm();
+            };
+
             ToolStripMenuItem itemOpenPopOut = new ToolStripMenuItem("Open Pop Out");
             itemOpenPopOut.Click += (sender, e) =>
             {
@@ -376,6 +384,7 @@ namespace STROOP.Structs
                 itemRemove,
                 itemEnableCustomization,
                 itemOpenController,
+                itemOpenTripletController,
                 itemOpenPopOut,
                 itemAddToTab,
                 itemAddToCustomTab,
