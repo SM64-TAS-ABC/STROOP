@@ -148,6 +148,7 @@ namespace STROOP.Controls
             }
         }
 
+        private List<uint> _defaultFixedAddressList;
         public List<uint> FixedAddressList;
 
         private int _settingsLevel = 0;
@@ -207,6 +208,8 @@ namespace STROOP.Controls
             _editMode = false;
             _renameMode = false;
             _isSelected = false;
+
+            _defaultFixedAddressList = fixedAddresses;
             FixedAddressList = fixedAddresses;
 
             // Initialize color fields
@@ -708,6 +711,18 @@ namespace STROOP.Controls
                 }
             }
 
+            if (settings.ChangeFixed)
+            {
+                if (settings.ChangeFixedToDefault)
+                {
+                    FixedAddressList = _defaultFixedAddressList;
+                }
+                else
+                {
+                    SetFixedAddress(settings.NewFixed);
+                }
+            }
+
             WatchVarWrapper.ApplySettings(settings);
         }
 
@@ -833,6 +848,18 @@ namespace STROOP.Controls
         public void ToggleFixedAddress()
         {
             if (FixedAddressList == null)
+            {
+                FixedAddressList = WatchVarWrapper.GetCurrentAddresses();
+            }
+            else
+            {
+                FixedAddressList = null;
+            }
+        }
+
+        public void SetFixedAddress(bool fix)
+        {
+            if (fix)
             {
                 FixedAddressList = WatchVarWrapper.GetCurrentAddresses();
             }
