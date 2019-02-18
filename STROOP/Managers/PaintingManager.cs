@@ -81,8 +81,6 @@ namespace STROOP.Managers
         {
             if (!updateView) return;
             base.Update(updateView);
-
-
         }
     }
 }
