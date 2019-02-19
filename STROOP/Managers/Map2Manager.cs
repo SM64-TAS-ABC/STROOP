@@ -247,7 +247,7 @@ namespace STROOP.Managers
                     _mapGui.MapArtificialMarioYLabelTextBox.Text));
 
             ControlUtilities.AddContextMenuStripFunctions(
-                _mapGui.GLControl,
+                _mapGui.GLControl.Parent,
                 new List<string>() { "Fill Screen", "Copy Map Settings", "Paste Map Settings" },
                 new List<Action>()
                 {
