@@ -33,9 +33,9 @@ namespace STROOP.Forms
             List<Func<double, bool>> setters =
                 new List<Func<double, bool>>()
                 {
-                    (double value) => controls[0].SetValue(value.ToString()),
-                    (double value) => controls[1].SetValue(value.ToString()),
-                    (double value) => controls[2].SetValue(value.ToString()),
+                    (double value) => controls[0].SetValue(value),
+                    (double value) => controls[1].SetValue(value),
+                    (double value) => controls[2].SetValue(value),
                 };
 
             PositionAngle posAngle = PositionAngle.Functions(getters, setters);

@@ -914,7 +914,7 @@ namespace STROOP.Controls
             return WatchVarWrapper.GetValue(useRounding, true, FixedAddressList);
         }
 
-        public bool SetValue(string value)
+        public bool SetValue(object value)
         {
             bool success = WatchVarWrapper.SetValue(value, FixedAddressList);
             if (!success) FlashColor(FAILURE_COLOR);
