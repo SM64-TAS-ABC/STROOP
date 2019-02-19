@@ -27,6 +27,15 @@ namespace STROOP.Structs
                     getVars().ForEach(control => control.ApplySettings(settings));
             };
 
+            Action<WatchVariableControlSettings, List<WatchVariableControl>> apply2 =
+                (WatchVariableControlSettings settings, List<WatchVariableControl> vars) =>
+            {
+                if (KeyboardUtilities.IsCtrlHeld())
+                    WatchVariableControlSettingsManager.AddSettings(settings);
+                else
+                    vars.ForEach(control => control.ApplySettings(settings));
+            };
+
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight...");
             ControlUtilities.AddDropDownItems(
                 itemHighlight,
@@ -310,6 +319,18 @@ namespace STROOP.Structs
             backgroundColorStringList.Add("Control (No Color)");
             backgroundColorActionList.Add(
                 () => apply(new WatchVariableControlSettings(changeBackgroundColor: true, newBackgroundColor: SystemColors.Control)));
+            backgroundColorStringList.Add("Custom Color");
+            backgroundColorActionList.Add(
+                () =>
+                {
+                    List<WatchVariableControl> vars = getVars();
+                    Color? newColor = ColorUtilities.GetColorFromDialog(SystemColors.Control);
+                    if (newColor.HasValue)
+                    {
+                        apply2(new WatchVariableControlSettings(changeBackgroundColor: true, newBackgroundColor: newColor.Value), vars);
+                        ColorUtilities.LastCustomColor = newColor.Value;
+                    }
+                });
             backgroundColorStringList.Add("Last Custom Color");
             backgroundColorActionList.Add(
                 () => apply(new WatchVariableControlSettings(changeBackgroundColor: true, newBackgroundColor: ColorUtilities.LastCustomColor)));
