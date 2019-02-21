@@ -445,17 +445,17 @@ namespace STROOP.Controls
             else if (isZHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                SetValue("0");
+                SetValue(0);
             }
             else if (isMinusHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                AddValue("1", false);
+                AddValue(1, false);
             }
             else if (isPlusHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                AddValue("1", true);
+                AddValue(1, true);
             }
             else if (isQKeyHeld)
             {
@@ -921,10 +921,11 @@ namespace STROOP.Controls
             return success;
         }
 
-        public void AddValue(string value, bool add)
+        public bool AddValue(object value, bool add)
         {
             bool success = WatchVarWrapper.AddValue(value, add, FixedAddressList);
             if (!success) FlashColor(FAILURE_COLOR);
+            return success;
         }
 
         public XElement ToXml(bool useCurrentState = true)
