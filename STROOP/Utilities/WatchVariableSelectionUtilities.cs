@@ -19,14 +19,6 @@ namespace STROOP.Structs
             Func<List<WatchVariableControl>> getVars,
             WatchVariableFlowLayoutPanel panel)
         {
-            Action<WatchVariableControlSettings> apply = (WatchVariableControlSettings settings) =>
-            {
-                if (KeyboardUtilities.IsCtrlHeld())
-                    WatchVariableControlSettingsManager.AddSettings(settings);
-                else
-                    getVars().ForEach(control => control.ApplySettings(settings));
-            };
-
             Action<WatchVariableControlSettings, List<WatchVariableControl>> apply2 =
                 (WatchVariableControlSettings settings, List<WatchVariableControl> vars) =>
             {
@@ -35,6 +27,8 @@ namespace STROOP.Structs
                 else
                     vars.ForEach(control => control.ApplySettings(settings));
             };
+
+            Action<WatchVariableControlSettings> apply = (WatchVariableControlSettings settings) => apply2(settings, getVars());
 
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight...");
             ControlUtilities.AddDropDownItems(
