@@ -118,14 +118,14 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.D_Right = false); }
         }
 
-        [Category("Misc"), DisplayName("\u200B\u200BLag VIs")]
+        [Category("Misc"), DisplayName("\u200B\u200B\u200BLag VIs")]
         public int LagVis
         {
             get { return _header.NumVis - 2 * _header.NumInputs; }
             set { }
         }
 
-        [Category("Misc"), DisplayName("\u200BNum Unused Inputs")]
+        [Category("Misc"), DisplayName("\u200B\u200BNum Unused Inputs")]
         public int NumUnusedInputs
         {
             get
@@ -138,13 +138,17 @@ namespace STROOP.M64
             set { }
         }
 
+        [Category("Misc"), DisplayName("\u200BNum Joystick Frames")]
+        public int NumJoystickFrames
+        {
+            get { return FindJoystickFrames().Count; }
+            set { }
+        }
+
         [Category("Misc"), DisplayName("Num Input Changes")]
         public int NumInputChanges
         {
-            get
-            {
-                return Math.Max(FindInputChanges().Count - 1, 0);
-            }
+            get { return Math.Max(FindInputChanges().Count - 1, 0); }
             set { }
         }
 
@@ -202,6 +206,18 @@ namespace STROOP.M64
             }
         }
 
+        private List<int> FindJoystickFrames()
+        {
+            List<int> joystickFrames = new List<int>();
+            for (int i = 0; i < _inputs.Count; i++)
+            {
+                M64InputFrame frame = _inputs[i];
+                bool isJoystickFrame = frame.X != 0 || frame.Y != 0;
+                if (isJoystickFrame) joystickFrames.Add(i);
+            }
+            return joystickFrames;
+        }
+
         private List<(int, string)> FindInputChanges()
         {
             List<(int, string)> inputChanges = new List<(int, string)>();
@@ -243,6 +259,16 @@ namespace STROOP.M64
                 };
             }
 
+            ToolStripMenuItem itemShowAllJoystickFrames = new ToolStripMenuItem("Show All Joystick Frames");
+            itemShowAllJoystickFrames.Click += (sender, e) =>
+            {
+                InfoForm.ShowValue(
+                    FormatJoystickFramesString(FindJoystickFrames()),
+                    "Joystick Frames",
+                    "Joystick Frames");
+            };
+            items.Add(itemShowAllJoystickFrames);
+
             ToolStripMenuItem itemShowAllInputChanges = new ToolStripMenuItem("Show All Input Changes");
             itemShowAllInputChanges.Click += (sender, e) =>
             {
@@ -272,6 +298,21 @@ namespace STROOP.M64
                 lines.Add(String.Format(
                     "{0} press #{1}: frame {2} to frame {3} ({4} frame{5})",
                     buttonName, i + 1, startFrame, endFrame, frameSpan, pluralitySuffix));
+            }
+            return String.Join("\r\n", lines);
+        }
+
+        private string FormatJoystickFramesString(List<int> joystickFrames)
+        {
+            List<string> lines = new List<string>();
+            lines.Add(String.Format(
+                "{0} joystick frame{1} total:",
+                joystickFrames.Count, joystickFrames.Count != 1 ? "s" : ""));
+            for (int i = 0; i < joystickFrames.Count; i++)
+            {
+                lines.Add(String.Format(
+                    "Joystick frame #{0} on frame {1}",
+                    i + 1, joystickFrames[i]));
             }
             return String.Join("\r\n", lines);
         }
