@@ -206,14 +206,14 @@ namespace STROOP.M64
             }
         }
 
-        private List<int> FindJoystickFrames()
+        private List<(int, int, int)> FindJoystickFrames()
         {
-            List<int> joystickFrames = new List<int>();
+            List<(int, int, int)> joystickFrames = new List<(int, int, int)>();
             for (int i = 0; i < _inputs.Count; i++)
             {
                 M64InputFrame frame = _inputs[i];
                 bool isJoystickFrame = frame.X != 0 || frame.Y != 0;
-                if (isJoystickFrame) joystickFrames.Add(i);
+                if (isJoystickFrame) joystickFrames.Add((i, frame.X, frame.Y));
             }
             return joystickFrames;
         }
@@ -302,7 +302,7 @@ namespace STROOP.M64
             return String.Join("\r\n", lines);
         }
 
-        private string FormatJoystickFramesString(List<int> joystickFrames)
+        private string FormatJoystickFramesString(List<(int, int, int)> joystickFrames)
         {
             List<string> lines = new List<string>();
             lines.Add(String.Format(
@@ -310,9 +310,10 @@ namespace STROOP.M64
                 joystickFrames.Count, joystickFrames.Count != 1 ? "s" : ""));
             for (int i = 0; i < joystickFrames.Count; i++)
             {
+                (int frame, int x, int y) = joystickFrames[i];
                 lines.Add(String.Format(
-                    "Joystick frame #{0} on frame {1}",
-                    i + 1, joystickFrames[i]));
+                    "Joystick frame #{0} on frame {1}: ({2},{3})",
+                    i + 1, frame, x, y));
             }
             return String.Join("\r\n", lines);
         }
