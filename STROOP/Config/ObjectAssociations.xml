@@ -293,6 +293,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x100" base="Object">Escape Counter</Data>
     <Data groupList="ObjectSpecific" type="int" offsetUS="0x80361270" offsetJP="0x8035FF00" base="Relative" subclass="Boolean">Control Stick Held</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0x6C" base="Object" subclass="Object">Anchor Object</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ChuckyaAngleMod1024">Angle Mod 1024</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000584" name="Chuckya Anchor">
     <SpawnCode gfxId="0x00"/>

@@ -707,6 +707,17 @@ namespace STROOP.Structs
                     return marioPos.SetValues(x: newMarioX, z: newMarioZ);
                 }));
 
+            // Object specific vars - Chuckya
+
+            _dictionary.Add("ChuckyaAngleMod1024",
+                ((uint objAddress) =>
+                {
+                    ushort angle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawMovingOffset);
+                    int mod = angle % 1024;
+                    return mod;
+                },
+                DEFAULT_SETTER));
+
             // Object specific vars - Scuttlebug
 
             _dictionary.Add("ScuttlebugDeltaAngleToTarget",
