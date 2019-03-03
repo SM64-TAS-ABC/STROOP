@@ -347,7 +347,6 @@ namespace STROOP.Structs
 
                 // Menu
                 "Copy",
-                "Paste",
                 "Score",
                 "Game Over",
                 "Die",
@@ -845,7 +844,6 @@ namespace STROOP.Structs
                 "Owl",
                 "Barbed Wire",
                 "The End",
-                "Candle",
                 "Tablecloth",
                 "Frosting",
                 "Teacup",
