@@ -72,7 +72,7 @@
 
   <Data groupList="Advanced" type="float" offset="0x128" base="Object">Min Wall Dist</Data>
   <Data groupList="Intermediate" type="float" offset="0x0194" base="Object">Tangible Dist</Data>
-  <Data groupList="Intermediate" type="float" offset="0x019C" base="Object">Drawing Dist</Data>
+  <Data groupList="Intermediate" type="float" offset="0x019C" base="Object">Draw Dist</Data>
   <Data groupList="Advanced" type="float" offset="0xE8" base="Object">Floor Height</Data>
   <Data groupList="Advanced" type="float" offset="0xE4" base="Object">Gravity</Data>
   <Data groupList="Advanced" type="float" offset="0x174" base="Object">Water Buoyancy</Data>
