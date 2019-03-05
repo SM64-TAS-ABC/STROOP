@@ -71,14 +71,14 @@
   <Data groupList="Advanced" base="Object" specialType="MarioPunchAngleAway" subclass="Angle" display="short">Punch Angle Away</Data>
 
   <Data groupList="Advanced" type="float" offset="0x128" base="Object">Min Wall Dist</Data>
-  <Data groupList="Advanced" type="float" offset="0x0194" base="Object">Tangible Dist</Data>
-  <Data groupList="Advanced" type="float" offset="0x019C" base="Object">Drawing Dist</Data>
+  <Data groupList="Intermediate" type="float" offset="0x0194" base="Object">Tangible Dist</Data>
+  <Data groupList="Intermediate" type="float" offset="0x019C" base="Object">Drawing Dist</Data>
   <Data groupList="Advanced" type="float" offset="0xE8" base="Object">Floor Height</Data>
   <Data groupList="Advanced" type="float" offset="0xE4" base="Object">Gravity</Data>
   <Data groupList="Advanced" type="float" offset="0x174" base="Object">Water Buoyancy</Data>
   <Data groupList="Advanced" type="float" offset="0x158" base="Object">Bounce Coefficient</Data>
   <Data groupList="Advanced" type="int" offset="0x180" base="Object">Damage</Data>
-  <Data groupList="Advanced" type="int" offset="0x1A0" base="Object">Native Room</Data>
+  <Data groupList="Intermediate" type="int" offset="0x1A0" base="Object">Native Room</Data>
   <Data groupList="Advanced" type="short" offset="0x92" base="Object">Talking State</Data>
   <Data groupList="Advanced" type="ushort" offset="0x74" base="Object" mask="0x0030" subclass="Boolean">Active During Timestop</Data>
   <Data groupList="Advanced" type="uint" offset="0x214" base="Object" subclass="Object">Platform Object</Data>
