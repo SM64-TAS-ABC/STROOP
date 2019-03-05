@@ -1354,7 +1354,6 @@ namespace STROOP.Structs
             _dictionary.Add("UpHillAngle",
                 ((uint triAddress) =>
                 {
-
                     return GetTriangleUphillAngle(triAddress);
                 },
                 DEFAULT_SETTER));
