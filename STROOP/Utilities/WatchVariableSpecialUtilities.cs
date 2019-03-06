@@ -780,6 +780,8 @@ namespace STROOP.Structs
                     return marioPos.SetValues(x: newMarioX, y: newMarioY, z: newMarioZ);
                 }));
 
+            // Object specific vars - BitFS Platform
+
             _dictionary.Add("BitfsPlatformGroupMinHeight",
                 ((uint objAddress) =>
                 {
@@ -840,6 +842,23 @@ namespace STROOP.Structs
                     float relativeHeightFromMax = BitfsPlatformGroupTable.GetRelativeHeightFromMax(timer);
                     double newHeight = newMaxHeight + relativeHeightFromMax;
                     return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
+                }));
+
+            // Object specific vars - Hoot
+
+            _dictionary.Add("HootReleaseTimer",
+                ((uint objAddress) =>
+                {
+                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    uint lastReleaseTime = Config.Stream.GetUInt32(objAddress + ObjectConfig.HootLastReleaseTimeOffset);
+                    int diff = (int)(globalTimer - lastReleaseTime);
+                    return diff;
+                },
+                (int newDiff, uint objAddress) =>
+                {
+                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    uint newLastReleaseTime = (uint)(globalTimer - newDiff);
+                    return Config.Stream.SetValue(newLastReleaseTime, objAddress + ObjectConfig.HootLastReleaseTimeOffset);
                 }));
 
             // Mario vars

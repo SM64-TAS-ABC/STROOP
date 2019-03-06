@@ -124,5 +124,7 @@ namespace STROOP.Structs
         public static readonly uint SignGraphicsIdJP = 0x800F5DCC;
 
         public static readonly uint BitfsPlatformGroupTimerOffset = 0xF4;
+
+        public static readonly uint HootLastReleaseTimeOffset = 0x110;
     }
 }
