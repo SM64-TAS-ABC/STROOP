@@ -190,8 +190,8 @@ namespace STROOP.Controls
                     _watchVarControl.VarName,
                     _watchVar.GetTypeDescription(),
                     _watchVar.GetBaseOffsetDescription(),
-                    _watchVar.GetRamAddressString(true, _watchVarControl.FixedAddressList),
-                    _watchVar.GetProcessAddressString(_watchVarControl.FixedAddressList));
+                    _watchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
+                    _watchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList));
             varInfo.Show();
         }
 
@@ -202,8 +202,8 @@ namespace STROOP.Controls
                 _watchVarControl.VarName,
                 _watchVar.GetTypeDescription(),
                 _watchVar.GetBaseOffsetDescription(),
-                _watchVar.GetRamAddressString(true, _watchVarControl.FixedAddressList),
-                _watchVar.GetProcessAddressString(_watchVarControl.FixedAddressList),
+                _watchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
+                _watchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList),
             };
         }
 

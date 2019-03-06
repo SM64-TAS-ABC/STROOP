@@ -232,20 +232,42 @@ namespace STROOP.Controls
             return BaseAddressType + " + " + offsetString;
         }
 
-        public string GetRamAddressString(bool addressArea = true, List<uint> addresses = null)
+        public string GetProcessAddressListString(List<uint> addresses = null)
         {
-            List<uint> addressList = addresses ?? AddressList;
             if (IsSpecial) return "(none)";
+            List<uint> addressList = addresses ?? AddressList;
             if (addressList.Count == 0) return "(none)";
-            return HexUtilities.FormatValue(GetRamAddress(addressArea, addresses), 8);
+            List<ulong> processAddressList = GetProcessAddressList(addresses).ConvertAll(address => address.ToUInt64());
+            List<string> stringList = processAddressList.ConvertAll(address => HexUtilities.FormatValue(address, address > 0xFFFFFFFFU ? 16 : 8));
+            return string.Join(", ", stringList);
         }
 
-        public uint GetRamAddress(bool addressArea = true, List<uint> addresses = null)
+        private List<UIntPtr> GetProcessAddressList(List<uint> addresses = null)
         {
             List<uint> addressList = addresses ?? AddressList;
-            if (addressList.Count == 0) return 0;
+            List<uint> ramAddressList = GetRamAddressList(false, addressList);
+            return ramAddressList.ConvertAll(address => Config.Stream.GetAbsoluteAddress(address, ByteCount.Value));
+        }
 
-            UIntPtr addressPtr = new UIntPtr(addressList[0]);
+        public string GetRamAddressListString(bool addressArea = true, List<uint> addresses = null)
+        {
+            if (IsSpecial) return "(none)";
+            List<uint> addressList = addresses ?? AddressList;
+            if (addressList.Count == 0) return "(none)";
+            List<uint> ramAddressList = GetRamAddressList(addressArea, addressList);
+            List<string> stringList = ramAddressList.ConvertAll(address => HexUtilities.FormatValue(address, 8));
+            return string.Join(", ", stringList);
+        }
+
+        private List<uint> GetRamAddressList(bool addressArea = true, List<uint> addresses = null)
+        {
+            List<uint> addressList = addresses ?? AddressList;
+            return addressList.ConvertAll(address => GetRamAddress(address, addressArea));
+        }
+
+        private uint GetRamAddress(uint addr, bool addressArea = true)
+        {
+            UIntPtr addressPtr = new UIntPtr(addr);
             uint address;
 
             if (UseAbsoluteAddressing)
@@ -255,21 +277,6 @@ namespace STROOP.Controls
                 address = addressPtr.ToUInt32();
 
             return addressArea ? address | 0x80000000 : address & 0x0FFFFFFF;
-        }
-
-        public string GetProcessAddressString(List<uint> addresses = null)
-        {
-            List<uint> addressList = addresses ?? AddressList;
-            if (IsSpecial) return "(none)";
-            if (addressList.Count == 0) return "(none)";
-            var address = GetProcessAddress(addresses).ToUInt64();
-            return HexUtilities.FormatValue(address, address > 0xFFFFFFFFU ? 16 : 8);
-        }
-
-        public UIntPtr GetProcessAddress(List<uint> addresses = null)
-        {
-            uint address = GetRamAddress(false, addresses);
-            return Config.Stream.GetAbsoluteAddress(address, ByteCount.Value);
         }
     }
 }
