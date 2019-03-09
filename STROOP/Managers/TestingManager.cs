@@ -1074,14 +1074,14 @@ namespace STROOP.Managers
             List<string> instructionList = new List<string>()
             {
                 "This is a tool for having one m64 file start with the same state",
-                "(i.e. RNG, global timer, HOLP, etc) as another m64.",
+                "(i.e. RNG, global timer, HOLP, etc) as another m64 file.",
                 "This assumes the m64 starts from the mission select screen.",
                 "To use it, just follow these instructions:",
                 "(1) Pause the emulator.",
                 "(2) Open the m64 that you would like to copy state from.",
                 "(3) Advance 1 frame.",
                 "(4) Press the Save button in the State Transfer box in STROOP.",
-                "(5) Go to the mission select screen where you would like to paste the state to (possibly on a different ROM.",
+                "(5) Go to the mission select screen where you would like to paste the state to (possibly on a different ROM).",
                 "(6) Make sure you're selecting the correct mission.",
                 "(7) Pause the emulator.",
                 "(8) Press the Apply button in the State Transfer box in STROOP.",
