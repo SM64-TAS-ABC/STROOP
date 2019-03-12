@@ -2717,7 +2717,7 @@
     <Image path="Bowling Ball.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003A30" name="Bowling Ball (Still)">
-    <SpawnCode gfxId="0xb4"/>
+    <SpawnCode gfxId="0xB4"/>
     <Image path="Bowling Ball.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003A58" name="Bowling Ball (Spawned)">
@@ -2727,14 +2727,23 @@
   <Object behaviorScriptAddress="0x13003A80" name="Bowling Ball Spawner (TTM)">
     <SpawnCode gfxId="0x00"/>
     <Image path="Bowling Ball Spawner.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0F4" base="Object">Max Spawn Dist</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Spawn Chance</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Spawn Period</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003AA4" name="Bowling Ball Spawner (BoB)">
     <SpawnCode gfxId="0x00"/>
     <Image path="Bowling Ball Spawner.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0F4" base="Object">Max Spawn Dist</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Spawn Chance</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Spawn Period</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003AC8" name="Bowling Ball Spawner (THI)">
     <SpawnCode gfxId="0x00"/>
     <Image path="Bowling Ball Spawner.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0F4" base="Object">Max Spawn Dist</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Spawn Chance</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Spawn Period</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003AE0" name="Cruiser Wing">
     <SpawnCode gfxId="0x3B"/>
