@@ -2727,6 +2727,8 @@
   <Object behaviorScriptAddress="0x13003A80" name="Bowling Ball Spawner (TTM)">
     <SpawnCode gfxId="0x00"/>
     <Image path="Bowling Ball Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" specialType="YDistObjToMario">YDist Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0F4" base="Object">Max Spawn Dist</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Spawn Chance</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Spawn Period</Data>
@@ -2734,6 +2736,8 @@
   <Object behaviorScriptAddress="0x13003AA4" name="Bowling Ball Spawner (BoB)">
     <SpawnCode gfxId="0x00"/>
     <Image path="Bowling Ball Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" specialType="YDistObjToMario">YDist Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0F4" base="Object">Max Spawn Dist</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Spawn Chance</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Spawn Period</Data>
@@ -2741,6 +2745,8 @@
   <Object behaviorScriptAddress="0x13003AC8" name="Bowling Ball Spawner (THI)">
     <SpawnCode gfxId="0x00"/>
     <Image path="Bowling Ball Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" specialType="YDistObjToMario">YDist Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0F4" base="Object">Max Spawn Dist</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Spawn Chance</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Spawn Period</Data>
