@@ -342,8 +342,11 @@ namespace STROOP.Structs
 
                 // Memes
                 "Bait",
+                "Gay Baby Jail",
                 "Half A Press",
                 "Iwerp",
+                "Pyramid The",
+                "Clocl",
 
                 // Menu
                 "Copy",
