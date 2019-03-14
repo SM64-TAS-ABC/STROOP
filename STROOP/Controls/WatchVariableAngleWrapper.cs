@@ -206,6 +206,10 @@ namespace STROOP.Controls
             double doubleValue = doubleValueNullable.Value;
 
             doubleValue = (doubleValue / GetAngleUnitTypeMaxValue()) * 65536;
+            if (_reverse)
+            {
+                doubleValue += 32768;
+            }
 
             return doubleValue;
         }
