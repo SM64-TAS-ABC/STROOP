@@ -34,10 +34,19 @@ namespace STROOP.Utilities
                 float currentYValue = yValue;
                 float currentZValue = zValue;
 
+                bool ignoreX = false;
+                bool ignoreY = false;
+                bool ignoreZ = false;
+
                 if (change == Change.ADD)
                 {
                     if (handleScaling) HandleScaling(ref currentXValue, ref currentZValue);
                     HandleRelativeAngle(ref currentXValue, ref currentZValue, useRelative, posAddressAngle.Angle);
+
+                    if (currentXValue == 0) ignoreX = true;
+                    if (currentYValue == 0) ignoreY = true;
+                    if (currentZValue == 0) ignoreZ = true;
+
                     currentXValue += (float)posAddressAngle.X;
                     currentYValue += (float)posAddressAngle.Y;
                     currentZValue += (float)posAddressAngle.Z;
@@ -45,22 +54,26 @@ namespace STROOP.Utilities
 
                 if (change == Change.MULTIPLY)
                 {
+                    if (currentXValue == 1) ignoreX = true;
+                    if (currentYValue == 1) ignoreY = true;
+                    if (currentZValue == 1) ignoreZ = true;
+
                     currentXValue *= (float)posAddressAngle.X;
                     currentYValue *= (float)posAddressAngle.Y;
                     currentZValue *= (float)posAddressAngle.Z;
                 }
 
-                if (!affects.HasValue || affects.Value.affectX)
+                if ((!affects.HasValue || affects.Value.affectX) && !ignoreX)
                 {
                     success &= posAddressAngle.SetX(currentXValue);
                 }
 
-                if (!affects.HasValue || affects.Value.affectY)
+                if ((!affects.HasValue || affects.Value.affectY) && !ignoreY)
                 {
                     success &= posAddressAngle.SetY(currentYValue);
                 }
 
-                if (!affects.HasValue || affects.Value.affectZ)
+                if ((!affects.HasValue || affects.Value.affectZ) && !ignoreZ)
                 {
                     success &= posAddressAngle.SetZ(currentZValue);
                 }
