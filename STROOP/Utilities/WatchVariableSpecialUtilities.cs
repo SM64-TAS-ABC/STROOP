@@ -2777,7 +2777,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.PointPosPA.SetAngle(doubleValue);
+                    return SpecialConfig.PointAnglePA.SetAngle(doubleValue);
                 }));
 
             // Mupen vars
