@@ -37,6 +37,8 @@ namespace STROOP.Forms
                     (double value) => controls[1].SetValue(value),
                     (double value) => controls[2].SetValue(value),
                 };
+            if (controls.Count >= 4)
+                setters.Add((double value) => controls[3].SetValue(value));
 
             PositionAngle posAngle = PositionAngle.Functions(getters, setters);
                     

@@ -103,7 +103,7 @@ namespace STROOP.Utilities
             bool shouldHaveSetters = PosAngleType == PositionAngleTypeEnum.Functions;
             if ((setters != null) != shouldHaveSetters)
                 throw new ArgumentOutOfRangeException();
-            if (setters != null && (setters.Count < 3 || setters.Count > 3))
+            if (setters != null && (setters.Count < 3 || setters.Count > 4)) // optional angle setter
                 throw new ArgumentOutOfRangeException();
         }
 
@@ -769,6 +769,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Hybrid:
                     return AnglePA.SetAngle(value);
                 case PositionAngleTypeEnum.Functions:
+                    if (Setters.Count >= 4) return Setters[3](value);
                     return false;
                 default:
                     throw new ArgumentOutOfRangeException();
