@@ -1485,6 +1485,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.buttonTasPasteSchedule = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -5348,7 +5349,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 462F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 463F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9067,7 +9068,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(427, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(430, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -9824,7 +9825,7 @@ namespace STROOP
             this.splitContainerTas.Panel2.Controls.Add(this.watchVariablePanelTas);
             this.splitContainerTas.Panel2MinSize = 0;
             this.splitContainerTas.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerTas.SplitterDistance = 432;
+            this.splitContainerTas.SplitterDistance = 453;
             this.splitContainerTas.SplitterWidth = 1;
             this.splitContainerTas.TabIndex = 19;
             // 
@@ -9842,6 +9843,7 @@ namespace STROOP
             // 
             this.splitContainerTasTable.Panel1.AutoScroll = true;
             this.splitContainerTasTable.Panel1.Controls.Add(this.richTextBoxTasInstructions);
+            this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasPasteSchedule);
             this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasStoreMarioAngle);
             this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasStoreMarioPosition);
             this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasClearData);
@@ -9851,7 +9853,7 @@ namespace STROOP
             // 
             this.splitContainerTasTable.Panel2.AutoScroll = true;
             this.splitContainerTasTable.Panel2.Controls.Add(this.dataGridViewTas);
-            this.splitContainerTasTable.Size = new System.Drawing.Size(432, 457);
+            this.splitContainerTasTable.Size = new System.Drawing.Size(453, 457);
             this.splitContainerTasTable.SplitterDistance = 85;
             this.splitContainerTasTable.SplitterWidth = 1;
             this.splitContainerTasTable.TabIndex = 32;
@@ -9863,17 +9865,17 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBoxTasInstructions.Location = new System.Drawing.Point(99, 3);
             this.richTextBoxTasInstructions.Name = "richTextBoxTasInstructions";
-            this.richTextBoxTasInstructions.Size = new System.Drawing.Size(222, 75);
+            this.richTextBoxTasInstructions.Size = new System.Drawing.Size(227, 75);
             this.richTextBoxTasInstructions.TabIndex = 38;
             this.richTextBoxTasInstructions.Text = "(1)\n(2)\n(3)\n(4)\n(5)";
             // 
             // buttonTasStoreMarioAngle
             // 
             this.buttonTasStoreMarioAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonTasStoreMarioAngle.Location = new System.Drawing.Point(334, 42);
+            this.buttonTasStoreMarioAngle.Location = new System.Drawing.Point(329, 29);
             this.buttonTasStoreMarioAngle.Margin = new System.Windows.Forms.Padding(0);
             this.buttonTasStoreMarioAngle.Name = "buttonTasStoreMarioAngle";
-            this.buttonTasStoreMarioAngle.Size = new System.Drawing.Size(87, 35);
+            this.buttonTasStoreMarioAngle.Size = new System.Drawing.Size(113, 25);
             this.buttonTasStoreMarioAngle.TabIndex = 37;
             this.buttonTasStoreMarioAngle.Text = "Store Mario Angle";
             this.buttonTasStoreMarioAngle.UseVisualStyleBackColor = true;
@@ -9881,10 +9883,10 @@ namespace STROOP
             // buttonTasStoreMarioPosition
             // 
             this.buttonTasStoreMarioPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonTasStoreMarioPosition.Location = new System.Drawing.Point(334, 5);
+            this.buttonTasStoreMarioPosition.Location = new System.Drawing.Point(329, 3);
             this.buttonTasStoreMarioPosition.Margin = new System.Windows.Forms.Padding(0);
             this.buttonTasStoreMarioPosition.Name = "buttonTasStoreMarioPosition";
-            this.buttonTasStoreMarioPosition.Size = new System.Drawing.Size(87, 35);
+            this.buttonTasStoreMarioPosition.Size = new System.Drawing.Size(113, 25);
             this.buttonTasStoreMarioPosition.TabIndex = 37;
             this.buttonTasStoreMarioPosition.Text = "Store Mario Position";
             this.buttonTasStoreMarioPosition.UseVisualStyleBackColor = true;
@@ -9933,7 +9935,7 @@ namespace STROOP
             this.dataGridViewTas.Name = "dataGridViewTas";
             this.dataGridViewTas.ReadOnly = true;
             this.dataGridViewTas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTas.Size = new System.Drawing.Size(430, 369);
+            this.dataGridViewTas.Size = new System.Drawing.Size(451, 369);
             this.dataGridViewTas.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
@@ -10007,7 +10009,7 @@ namespace STROOP
             this.watchVariablePanelTas.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelTas.Name = "watchVariablePanelTas";
             this.watchVariablePanelTas.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelTas.Size = new System.Drawing.Size(474, 455);
+            this.watchVariablePanelTas.Size = new System.Drawing.Size(453, 455);
             this.watchVariablePanelTas.TabIndex = 5;
             // 
             // tabPageMap
@@ -11393,7 +11395,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 672;
+            this.splitContainerMemory.SplitterDistance = 675;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11434,7 +11436,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(672, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(675, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11651,7 +11653,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(672, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(675, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11680,7 +11682,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(571, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(574, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11693,7 +11695,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(234, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(231, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12847,7 +12849,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12879,7 +12881,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(385, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12935,7 +12937,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(385, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -17850,7 +17852,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -19034,7 +19036,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(62, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(63, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -19256,6 +19258,17 @@ namespace STROOP
             this.trackBarObjSlotSize.TickFrequency = 10;
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
+            // 
+            // buttonTasPasteSchedule
+            // 
+            this.buttonTasPasteSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasPasteSchedule.Location = new System.Drawing.Point(329, 55);
+            this.buttonTasPasteSchedule.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasPasteSchedule.Name = "buttonTasPasteSchedule";
+            this.buttonTasPasteSchedule.Size = new System.Drawing.Size(113, 25);
+            this.buttonTasPasteSchedule.TabIndex = 37;
+            this.buttonTasPasteSchedule.Text = "Paste Schedule";
+            this.buttonTasPasteSchedule.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -21261,6 +21274,7 @@ namespace STROOP
         private BetterSplitContainer splitContainerPainting;
         private WatchVariableFlowLayoutPanel watchVariablePanelPainting;
         private ListBox listBoxPainting;
+        private Button buttonTasPasteSchedule;
     }
 }
 
