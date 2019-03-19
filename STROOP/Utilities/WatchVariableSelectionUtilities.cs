@@ -295,6 +295,23 @@ namespace STROOP.Structs
                 infoForm.Show();
             };
 
+            Action<bool> createVariable = (bool add) =>
+            {
+
+            };
+            ToolStripMenuItem itemAddVariable = new ToolStripMenuItem("Add Variable...");
+            ControlUtilities.AddDropDownItems(
+                itemAddVariable,
+                new List<string>()
+                {
+                    "Sum",
+                    "Difference",
+                },
+                new List<Action>()
+                {
+                    () => createVariable(true),
+                    () => createVariable(false),
+                });
 
             List<string> backgroundColorStringList = new List<string>();
             List<Action> backgroundColorActionList = new List<Action>();
@@ -405,6 +422,8 @@ namespace STROOP.Structs
                 new ToolStripSeparator(),
                 itemShowVariableXml,
                 itemShowVariableInfo,
+                new ToolStripSeparator(),
+                itemAddVariable,
                 new ToolStripSeparator(),
                 itemBackgroundColor,
                 itemMove,
