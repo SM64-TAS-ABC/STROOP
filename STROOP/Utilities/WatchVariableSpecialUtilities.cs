@@ -1,4 +1,5 @@
-﻿using STROOP.Managers;
+﻿using STROOP.Controls;
+using STROOP.Managers;
 using STROOP.Models;
 using STROOP.Structs.Configurations;
 using STROOP.Ttc;
@@ -11,6 +12,9 @@ namespace STROOP.Structs
 {
     public static class WatchVariableSpecialUtilities
     {
+        public static WatchVariableControl Control1;
+        public static WatchVariableControl Control2;
+
         private readonly static Func<uint, object> DEFAULT_GETTER = (uint address) => Double.NaN;
         private readonly static Func<object, uint, bool> DEFAULT_SETTER = (object value, uint address) => false;
         private readonly static WatchVariableSpecialDictionary _dictionary;
