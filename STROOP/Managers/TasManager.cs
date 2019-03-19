@@ -196,6 +196,39 @@ namespace STROOP.Managers
                 new List<VariableGroup>() { VariableGroup.TAS, VariableGroup.Custom });
         }
 
+        public void SetScheduler(string text)
+        {
+            List<string> lines = text.Split('\n').ToList();
+            List<List<string>> linePartsList = lines.ConvertAll(line => ParsingUtilities.ParseStringList(line));
+
+            Dictionary<uint, (double, double, double, double, List<double>)> schedule =
+                new Dictionary<uint, (double, double, double, double, List<double>)>();
+            foreach (List<string> lineParts in linePartsList)
+            {
+                if (lineParts.Count == 0) continue;
+                uint? globalTimerNullable = ParsingUtilities.ParseUIntNullable(lineParts[0]);
+                if (!globalTimerNullable.HasValue) continue;
+                uint globalTimer = globalTimerNullable.Value;
+
+                double x = lineParts.Count >= 2 ? ParsingUtilities.ParseDoubleNullable(lineParts[1]) ?? Double.NaN : Double.NaN;
+                double y = lineParts.Count >= 3 ? ParsingUtilities.ParseDoubleNullable(lineParts[2]) ?? Double.NaN : Double.NaN;
+                double z = lineParts.Count >= 4 ? ParsingUtilities.ParseDoubleNullable(lineParts[3]) ?? Double.NaN : Double.NaN;
+                double angle = lineParts.Count >= 5 ? ParsingUtilities.ParseDoubleNullable(lineParts[4]) ?? Double.NaN : Double.NaN;
+
+                List<double> doubleList = new List<double>();
+                for (int i = 5; i < lineParts.Count; i++)
+                {
+                    doubleList.Add(ParsingUtilities.ParseDoubleNullable(lineParts[i]) ?? Double.NaN);
+                }
+
+                schedule[globalTimer] = (x, y, z, angle, doubleList);
+            }
+
+            PositionAngle.Schedule = schedule;
+            SpecialConfig.PointPosPA = PositionAngle.Scheduler;
+            SpecialConfig.PointAnglePA = PositionAngle.Scheduler;
+        }
+
         public override void Update(bool updateView)
         {
             if (!updateView) return;

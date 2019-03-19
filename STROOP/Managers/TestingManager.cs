@@ -500,40 +500,7 @@ namespace STROOP.Managers
             _groupBoxTestingScheduler = tabControl.Controls["groupBoxTestingScheduler"] as GroupBox;
             _richTextBoxTestingScheduler = _groupBoxTestingScheduler.Controls["richTextBoxTestingScheduler"] as RichTextBoxEx;
             _buttonTestingScheduler = _groupBoxTestingScheduler.Controls["buttonTestingScheduler"] as Button;
-            _buttonTestingScheduler.Click += (sender, e) => SetScheduler();
-        }
-
-        private void SetScheduler()
-        {
-            List<string> lines = _richTextBoxTestingScheduler.Text.Split('\n').ToList();
-            List<List<string>> linePartsList = lines.ConvertAll(line => ParsingUtilities.ParseStringList(line));
-
-            Dictionary<uint, (double, double, double, double, List<double>)> schedule =
-                new Dictionary<uint, (double, double, double, double, List<double>)>();
-            foreach (List<string> lineParts in linePartsList)
-            {
-                if (lineParts.Count == 0) continue;
-                uint? globalTimerNullable = ParsingUtilities.ParseUIntNullable(lineParts[0]);
-                if (!globalTimerNullable.HasValue) continue;
-                uint globalTimer = globalTimerNullable.Value;
-
-                double x = lineParts.Count >= 2 ? ParsingUtilities.ParseDoubleNullable(lineParts[1]) ?? Double.NaN : Double.NaN;
-                double y = lineParts.Count >= 3 ? ParsingUtilities.ParseDoubleNullable(lineParts[2]) ?? Double.NaN : Double.NaN;
-                double z = lineParts.Count >= 4 ? ParsingUtilities.ParseDoubleNullable(lineParts[3]) ?? Double.NaN : Double.NaN;
-                double angle = lineParts.Count >= 5 ? ParsingUtilities.ParseDoubleNullable(lineParts[4]) ?? Double.NaN : Double.NaN;
-
-                List<double> doubleList = new List<double>();
-                for (int i = 5; i < lineParts.Count; i++)
-                {
-                    doubleList.Add(ParsingUtilities.ParseDoubleNullable(lineParts[i]) ?? Double.NaN);
-                }
-
-                schedule[globalTimer] = (x, y, z, angle, doubleList);
-            }
-
-            PositionAngle.Schedule = schedule;
-            SpecialConfig.PointPosPA = PositionAngle.Scheduler;
-            SpecialConfig.PointAnglePA = PositionAngle.Scheduler;
+            _buttonTestingScheduler.Click += (sender, e) => Config.TasManager.SetScheduler(_richTextBoxTestingScheduler.Text);
         }
 
         private List<uint> GetScuttlebugAddresses()
