@@ -35,6 +35,27 @@ namespace STROOP.Structs
                 throw new ArgumentOutOfRangeException();
         }
 
+        private static int _numCalculatedEntries = 0;
+
+        public static string AddCalculatedEntry(WatchVariableControl control1, WatchVariableControl control2, bool add)
+        {
+            string specialType = "Calculated" + _numCalculatedEntries;
+            _dictionary.Add(specialType,
+                ((uint dummy) =>
+                {
+                    double value1 = ParsingUtilities.ParseDouble(control1.GetValue(false));
+                    double value2 = ParsingUtilities.ParseDouble(control2.GetValue(false));
+                    if (add) return value1 + value2;
+                    else return value1 - value2;
+                },
+                (double sum, uint dummy) =>
+                {
+                    return false;
+                }));
+            _numCalculatedEntries++;
+            return specialType;
+        }
+
         public static void AddGeneratedEntriesToDictionary()
         {
             List<Func<uint, PositionAngle>> posAngleFuncs =
@@ -158,28 +179,6 @@ namespace STROOP.Structs
 
         public static void AddLiteralEntriesToDictionary()
         {
-            // Calculated vars
-
-            _dictionary.Add("Sum",
-                ((uint dummy) =>
-                {
-                    return 1;
-                },
-                (double sum, uint dummy) =>
-                {
-                    return false;
-                }));
-
-            _dictionary.Add("Diff",
-                ((uint dummy) =>
-                {
-                    return 2;
-                },
-                (double sum, uint dummy) =>
-                {
-                    return false;
-                }));
-
             // Object vars
 
             _dictionary.Add("MarioHitboxAwayFromObject",

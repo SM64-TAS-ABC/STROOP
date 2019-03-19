@@ -302,13 +302,12 @@ namespace STROOP.Structs
 
                 WatchVariableControl control1 = controls[0];
                 WatchVariableControl control2 = controls[1];
-                WatchVariableSpecialUtilities.Control1 = control1;
-                WatchVariableSpecialUtilities.Control2 = control2;
+                string specialType = WatchVariableSpecialUtilities.AddCalculatedEntry(control1, control2, add);
 
                 WatchVariable watchVariable =
                     new WatchVariable(
                         memoryTypeName: null,
-                        specialType: add ? "Sum" : "Diff",
+                        specialType: specialType,
                         baseAddressType: BaseAddressTypeEnum.None,
                         offsetUS: null,
                         offsetJP: null,
