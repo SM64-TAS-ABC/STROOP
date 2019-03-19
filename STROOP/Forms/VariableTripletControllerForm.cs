@@ -23,12 +23,12 @@ namespace STROOP.Forms
             List<Func<double>> getters =
                 new List<Func<double>>()
                 {
-                    () => ParsingUtilities.ParseDouble(controls[0].GetValue(false)),
-                    () => ParsingUtilities.ParseDouble(controls[1].GetValue(false)),
-                    () => ParsingUtilities.ParseDouble(controls[2].GetValue(false)),
+                    () => ParsingUtilities.ParseDouble(controls[0].GetValue(handleFormatting: false)),
+                    () => ParsingUtilities.ParseDouble(controls[1].GetValue(handleFormatting: false)),
+                    () => ParsingUtilities.ParseDouble(controls[2].GetValue(handleFormatting: false)),
                 };
             if (controls.Count >= 4)
-                getters.Add(() => ParsingUtilities.ParseDouble(controls[3].GetValue(false)));
+                getters.Add(() => ParsingUtilities.ParseDouble(controls[3].GetValue(handleFormatting: false)));
 
             List<Func<double, bool>> setters =
                 new List<Func<double, bool>>()

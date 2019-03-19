@@ -45,21 +45,21 @@ namespace STROOP.Structs
                 _dictionary.Add(specialType,
                     ((uint dummy) =>
                     {
-                        double value1 = ParsingUtilities.ParseDouble(control1.GetValue(false));
-                        double value2 = ParsingUtilities.ParseDouble(control2.GetValue(false));
+                        double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
+                        double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                         return value1 + value2;
                     },
                     (double sum, uint dummy) =>
                     {
                         if (!KeyboardUtilities.IsCtrlHeld())
                         {
-                            double value1 = ParsingUtilities.ParseDouble(control1.GetValue(false));
+                            double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                             double newValue2 = sum - value1;
                             return control2.SetValue(newValue2);
                         }
                         else
                         {
-                            double value2 = ParsingUtilities.ParseDouble(control2.GetValue(false));
+                            double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                             double newValue1 = sum - value2;
                             return control1.SetValue(newValue1);
                         }
@@ -70,21 +70,21 @@ namespace STROOP.Structs
                 _dictionary.Add(specialType,
                     ((uint dummy) =>
                     {
-                        double value1 = ParsingUtilities.ParseDouble(control1.GetValue(false));
-                        double value2 = ParsingUtilities.ParseDouble(control2.GetValue(false));
+                        double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
+                        double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                         return value1 - value2;
                     },
                     (double diff, uint dummy) =>
                     {
                         if (!KeyboardUtilities.IsCtrlHeld())
                         {
-                            double value1 = ParsingUtilities.ParseDouble(control1.GetValue(false));
+                            double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                             double newValue2 = value1 - diff;
                             return control2.SetValue(newValue2);
                         }
                         else
                         {
-                            double value2 = ParsingUtilities.ParseDouble(control2.GetValue(false));
+                            double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                             double newValue1 = value2 + diff;
                             return control1.SetValue(newValue1);
                         }

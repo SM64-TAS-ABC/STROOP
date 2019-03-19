@@ -909,9 +909,9 @@ namespace STROOP.Controls
             return WatchVarWrapper.GetMemoryType();
         }
 
-        public object GetValue(bool useRounding)
+        public object GetValue(bool useRounding = false, bool handleFormatting = true)
         {
-            return WatchVarWrapper.GetValue(useRounding, true, FixedAddressList);
+            return WatchVarWrapper.GetValue(useRounding, handleFormatting, FixedAddressList);
         }
 
         public bool SetValue(object value)

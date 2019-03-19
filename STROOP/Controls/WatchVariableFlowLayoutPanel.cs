@@ -471,9 +471,9 @@ namespace STROOP.Controls
             return GetCurrentVariableControls().ConvertAll(control => control.WatchVarPrecursor);
         }
 
-        public List<object> GetCurrentVariableValues(bool useRounding)
+        public List<object> GetCurrentVariableValues(bool useRounding = false, bool handleFormatting = true)
         {
-            return GetCurrentVariableControls().ConvertAll(control => control.GetValue(useRounding));
+            return GetCurrentVariableControls().ConvertAll(control => control.GetValue(useRounding, handleFormatting));
         }
 
         public List<string> GetCurrentVariableNames()
