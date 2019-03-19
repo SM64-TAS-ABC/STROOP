@@ -19,8 +19,8 @@ namespace STROOP.Utilities
         public readonly List<Func<double>> Getters;
         public readonly List<Func<double, bool>> Setters;
 
-        public static Dictionary<uint, (double, double, double, double)> Schedule =
-            new Dictionary<uint, (double, double, double, double)>();
+        public static Dictionary<uint, (double, double, double, double, List<double>)> Schedule =
+            new Dictionary<uint, (double, double, double, double, List<double>)>();
 
         private enum PositionAngleTypeEnum
         {

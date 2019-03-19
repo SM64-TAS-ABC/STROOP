@@ -508,8 +508,8 @@ namespace STROOP.Managers
             List<string> lines = _richTextBoxTestingScheduler.Text.Split('\n').ToList();
             List<List<string>> linePartsList = lines.ConvertAll(line => ParsingUtilities.ParseStringList(line));
 
-            Dictionary<uint, (double, double, double, double)> schedule =
-                new Dictionary<uint, (double, double, double, double)>();
+            Dictionary<uint, (double, double, double, double, List<double>)> schedule =
+                new Dictionary<uint, (double, double, double, double, List<double>)>();
             foreach (List<string> lineParts in linePartsList)
             {
                 if (lineParts.Count == 0) continue;
@@ -522,7 +522,13 @@ namespace STROOP.Managers
                 double z = lineParts.Count >= 4 ? ParsingUtilities.ParseDoubleNullable(lineParts[3]) ?? Double.NaN : Double.NaN;
                 double angle = lineParts.Count >= 5 ? ParsingUtilities.ParseDoubleNullable(lineParts[4]) ?? Double.NaN : Double.NaN;
 
-                schedule[globalTimer] = (x, y, z, angle);
+                List<double> doubleList = new List<double>();
+                for (int i = 5; i < lineParts.Count; i++)
+                {
+                    doubleList.Add(ParsingUtilities.ParseDoubleNullable(lineParts[i]) ?? Double.NaN);
+                }
+
+                schedule[globalTimer] = (x, y, z, angle, doubleList);
             }
 
             PositionAngle.Schedule = schedule;
