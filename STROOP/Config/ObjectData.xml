@@ -77,11 +77,16 @@
   <Data groupList="Advanced" type="float" offset="0xE4" base="Object">Gravity</Data>
   <Data groupList="Advanced" type="float" offset="0x174" base="Object">Water Buoyancy</Data>
   <Data groupList="Advanced" type="float" offset="0x158" base="Object">Bounce Coefficient</Data>
+  <Data groupList="Advanced" type="float" offset="0x170" base="Object">Friction</Data>
+  <Data groupList="Advanced" type="float" offset="0x12C" base="Object">Drag Strength</Data>
   <Data groupList="Advanced" type="int" offset="0x180" base="Object">Damage</Data>
+  <Data groupList="Advanced" type="int" offset="0x184" base="Object">Health</Data>
+  <Data groupList="Advanced" type="int" offset="0x17C" base="Object">Opacity</Data>
   <Data groupList="Intermediate" type="int" offset="0x1A0" base="Object">Native Room</Data>
   <Data groupList="Advanced" type="short" offset="0x92" base="Object">Talking State</Data>
   <Data groupList="Advanced" type="ushort" offset="0x74" base="Object" mask="0x0030" subclass="Boolean">Active During Timestop</Data>
   <Data groupList="Advanced" type="uint" offset="0x214" base="Object" subclass="Object">Platform Object</Data>
+
 
   <Data groupList="Advanced" base="Object" specialType="ObjectRngCallsPerFrame">RNG Calls/Frame</Data>
 
@@ -256,6 +261,6 @@
   <Data groupList="Basic" type="int" offset="0x144" base="Object">Subtype</Data>
   <Data groupList="Basic" type="int" offset="0x14C" base="Object">Action</Data>
   <Data groupList="Advanced" type="int" offset="0x18C" base="Object">Action 2</Data>
-  <Data groupList="Advanced" type="int" offset="0x150" base="Object">Phase</Data>
+  <Data groupList="Advanced" type="int" offset="0x150" base="Object">Sub Action</Data>
   <Data groupList="Basic" type="int" offset="0x154" base="Object">Timer</Data>
 </VarData>
