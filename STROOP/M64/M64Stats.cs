@@ -142,7 +142,7 @@ namespace STROOP.M64
         public int NumJoystickFrames
         {
             get { return FindJoystickFrames().Count; }
-            set { }
+            set { SetNumJoystickFrames(value); }
         }
 
         [Category("Misc"), DisplayName("Num Input Changes")]
@@ -216,6 +216,16 @@ namespace STROOP.M64
                 if (isJoystickFrame) joystickFrames.Add((i, frame.X, frame.Y));
             }
             return joystickFrames;
+        }
+
+        private void SetNumJoystickFrames(int numFrames)
+        {
+            if (numFrames != 0) return;
+            for (int i = 0; i < _inputs.Count; i++)
+            {
+                _inputs[i].X = 0;
+                _inputs[i].Y = 0;
+            }
         }
 
         private List<(int, string)> FindInputChanges()
