@@ -40,18 +40,45 @@ namespace STROOP.Structs
         public static string AddCalculatedEntry(WatchVariableControl control1, WatchVariableControl control2, bool add)
         {
             string specialType = "Calculated" + _numCalculatedEntries;
-            _dictionary.Add(specialType,
-                ((uint dummy) =>
-                {
-                    double value1 = ParsingUtilities.ParseDouble(control1.GetValue(false));
-                    double value2 = ParsingUtilities.ParseDouble(control2.GetValue(false));
-                    if (add) return value1 + value2;
-                    else return value1 - value2;
-                },
-                (double sum, uint dummy) =>
-                {
-                    return false;
-                }));
+            if (add)
+            {
+                _dictionary.Add(specialType,
+                    ((uint dummy) =>
+                    {
+                        double value1 = ParsingUtilities.ParseDouble(control1.GetValue(false));
+                        double value2 = ParsingUtilities.ParseDouble(control2.GetValue(false));
+                        return value1 + value2;
+                    },
+                    (double sum, uint dummy) =>
+                    {
+                        if (!KeyboardUtilities.IsCtrlHeld())
+                        {
+                            double value1 = ParsingUtilities.ParseDouble(control1.GetValue(false));
+                            double newValue2 = sum - value1;
+                            return control2.SetValue(newValue2);
+                        }
+                        else
+                        {
+                            double value2 = ParsingUtilities.ParseDouble(control2.GetValue(false));
+                            double newValue1 = sum - value2;
+                            return control1.SetValue(newValue1);
+                        }
+                    }));
+            }
+            else
+            {
+                _dictionary.Add(specialType,
+                    ((uint dummy) =>
+                    {
+                        double value1 = ParsingUtilities.ParseDouble(control1.GetValue(false));
+                        double value2 = ParsingUtilities.ParseDouble(control2.GetValue(false));
+                        return value1 - value2;
+                    },
+                    (double diff, uint dummy) =>
+                    {
+                        return false;
+                    }));
+            }
             _numCalculatedEntries++;
             return specialType;
         }
