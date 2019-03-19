@@ -158,6 +158,28 @@ namespace STROOP.Structs
 
         public static void AddLiteralEntriesToDictionary()
         {
+            // Calculated vars
+
+            _dictionary.Add("Sum",
+                ((uint dummy) =>
+                {
+                    return 1;
+                },
+                (double sum, uint dummy) =>
+                {
+                    return false;
+                }));
+
+            _dictionary.Add("Diff",
+                ((uint dummy) =>
+                {
+                    return 2;
+                },
+                (double sum, uint dummy) =>
+                {
+                    return false;
+                }));
+
             // Object vars
 
             _dictionary.Add("MarioHitboxAwayFromObject",

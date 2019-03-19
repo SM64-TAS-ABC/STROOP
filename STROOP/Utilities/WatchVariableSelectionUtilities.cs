@@ -318,7 +318,7 @@ namespace STROOP.Structs
                         shift: null);
                 WatchVariableControlPrecursor precursor =
                     new WatchVariableControlPrecursor(
-                        name: string.Format("{1} {2} {3}", control1.Name, add ? "+" : "-", control2.Name),
+                        name: string.Format("{0} {1} {2}", control1.VarName, add ? "+" : "-", control2.VarName),
                         watchVar: watchVariable,
                         subclass: WatchVariableSubclass.Number,
                         backgroundColor: null,
