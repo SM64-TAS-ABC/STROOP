@@ -227,6 +227,38 @@ namespace STROOP.Managers
             PositionAngle.Schedule = schedule;
             SpecialConfig.PointPosPA = PositionAngle.Scheduler;
             SpecialConfig.PointAnglePA = PositionAngle.Scheduler;
+
+            int maxDoubleListCount = schedule.Values.ToList().ConvertAll(tuple => tuple.Item5).Max(doubleList => doubleList.Count);
+            for (int i = 0; i < maxDoubleListCount; i++)
+            {
+                string specialType = WatchVariableSpecialUtilities.AddSchedulerEntry(i);
+                WatchVariable watchVariable =
+                    new WatchVariable(
+                        memoryTypeName: null,
+                        specialType: specialType,
+                        baseAddressType: BaseAddressTypeEnum.None,
+                        offsetUS: null,
+                        offsetJP: null,
+                        offsetPAL: null,
+                        offsetDefault: null,
+                        mask: null,
+                        shift: null);
+                WatchVariableControlPrecursor precursor =
+                    new WatchVariableControlPrecursor(
+                        name: "Var " + (i + 1),
+                        watchVar: watchVariable,
+                        subclass: WatchVariableSubclass.Number,
+                        backgroundColor: null,
+                        displayType: null,
+                        roundingLimit: null,
+                        useHex: null,
+                        invertBool: null,
+                        isYaw: null,
+                        coordinate: null,
+                        groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                WatchVariableControl control = precursor.CreateWatchVariableControl();
+                AddVariable(control);
+            }
         }
 
         public override void Update(bool updateView)

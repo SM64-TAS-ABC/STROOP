@@ -488,6 +488,16 @@ namespace STROOP.Utilities
             }
         }
 
+        public double GetAdditionalValue(int index)
+        {
+            if (PosAngleType != PositionAngleTypeEnum.Schedule) return Double.NaN;
+            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            if (!Schedule.ContainsKey(globalTimer)) return Double.NaN;
+            List<double> doubleList = Schedule[globalTimer].Item5;
+            if (index < 0 || index >= doubleList.Count) return Double.NaN;
+            return doubleList[index];
+        }
+
         private static double GetTriangleVertexComponent(uint address, int index, Coordinate coordinate)
         {
             if (address == 0) return Double.NaN;

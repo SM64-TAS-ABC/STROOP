@@ -94,6 +94,18 @@ namespace STROOP.Structs
             return specialType;
         }
 
+        public static string AddSchedulerEntry(int index)
+        {
+            string specialType = "Scheduler" + index;
+            _dictionary.Add(specialType,
+                ((uint dummy) =>
+                {
+                    return PositionAngle.Scheduler.GetAdditionalValue(index);
+                },
+                DEFAULT_SETTER));
+            return specialType;
+        }
+
         public static void AddGeneratedEntriesToDictionary()
         {
             List<Func<uint, PositionAngle>> posAngleFuncs =
