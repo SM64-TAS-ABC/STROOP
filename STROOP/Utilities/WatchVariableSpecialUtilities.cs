@@ -76,7 +76,18 @@ namespace STROOP.Structs
                     },
                     (double diff, uint dummy) =>
                     {
-                        return false;
+                        if (!KeyboardUtilities.IsCtrlHeld())
+                        {
+                            double value1 = ParsingUtilities.ParseDouble(control1.GetValue(false));
+                            double newValue2 = value1 - diff;
+                            return control2.SetValue(newValue2);
+                        }
+                        else
+                        {
+                            double value2 = ParsingUtilities.ParseDouble(control2.GetValue(false));
+                            double newValue1 = value2 + diff;
+                            return control1.SetValue(newValue1);
+                        }
                     }));
             }
             _numCalculatedEntries++;
