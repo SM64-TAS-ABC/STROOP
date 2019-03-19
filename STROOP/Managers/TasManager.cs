@@ -43,6 +43,7 @@ namespace STROOP.Managers
                 VariableGroup.Advanced,
                 VariableGroup.TAS,
                 VariableGroup.Point,
+                VariableGroup.Scheduler,
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
@@ -51,6 +52,7 @@ namespace STROOP.Managers
                 VariableGroup.Basic,
                 VariableGroup.Advanced,
                 VariableGroup.Point,
+                VariableGroup.Scheduler,
             };
 
         public TasManager(string varFilePath, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
@@ -228,6 +230,7 @@ namespace STROOP.Managers
             SpecialConfig.PointPosPA = PositionAngle.Scheduler;
             SpecialConfig.PointAnglePA = PositionAngle.Scheduler;
 
+            RemoveVariableGroup(VariableGroup.Scheduler);
             int maxDoubleListCount = schedule.Values.ToList().ConvertAll(tuple => tuple.Item5).Max(doubleList => doubleList.Count);
             for (int i = 0; i < maxDoubleListCount; i++)
             {
@@ -248,14 +251,14 @@ namespace STROOP.Managers
                         name: "Var " + (i + 1),
                         watchVar: watchVariable,
                         subclass: WatchVariableSubclass.Number,
-                        backgroundColor: null,
+                        backgroundColor: ColorUtilities.GetColorFromString("Purple"),
                         displayType: null,
                         roundingLimit: null,
                         useHex: null,
                         invertBool: null,
                         isYaw: null,
                         coordinate: null,
-                        groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                        groupList: new List<VariableGroup>() { VariableGroup.Scheduler });
                 WatchVariableControl control = precursor.CreateWatchVariableControl();
                 AddVariable(control);
             }

@@ -16,6 +16,7 @@ namespace STROOP.Structs
         Advanced,
 
         ObjectSpecific,
+        Scheduler,
         Snow,
 
         NoGroup,
