@@ -82,6 +82,9 @@ namespace STROOP.Managers
             Button buttonTasStoreMarioAngle = splitContainerTasTable.Panel1.Controls["buttonTasStoreMarioAngle"] as Button;
             buttonTasStoreMarioAngle.Click += (sender, e) => StoreMarioInfo(angle: true);
 
+            Button buttonTasPasteSchedule = splitContainerTasTable.Panel1.Controls["buttonTasPasteSchedule"] as Button;
+            buttonTasPasteSchedule.Click += (sender, e) => SetScheduler(Clipboard.GetText());
+
             _waitingGlobalTimer = 0;
             _waitingDateTime = DateTime.Now;
             _lastUpdatedGlobalTimer = 0;
@@ -231,7 +234,8 @@ namespace STROOP.Managers
             SpecialConfig.PointAnglePA = PositionAngle.Scheduler;
 
             RemoveVariableGroup(VariableGroup.Scheduler);
-            int maxDoubleListCount = schedule.Values.ToList().ConvertAll(tuple => tuple.Item5).Max(doubleList => doubleList.Count);
+            List<List<double>> doubleListList = schedule.Values.ToList().ConvertAll(tuple => tuple.Item5);
+            int maxDoubleListCount = doubleListList.Count == 0 ? 0 : doubleListList.Max(doubleList => doubleList.Count);
             for (int i = 0; i < maxDoubleListCount; i++)
             {
                 string specialType = WatchVariableSpecialUtilities.AddSchedulerEntry(i);
