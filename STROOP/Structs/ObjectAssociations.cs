@@ -38,6 +38,7 @@ namespace STROOP.Structs
         public Image CameraImage;
         public Image CameraMapImage;
         public Image HolpImage;
+        public Image HomeImage;
         public Image IntendedNextPositionImage;
         public Image MarioMapImage;
         public Image TriangleFloorImage;
@@ -237,6 +238,7 @@ namespace STROOP.Structs
             MarioImage?.Dispose();
             MarioMapImage?.Dispose();
             HolpImage?.Dispose();
+            HomeImage?.Dispose();
             HudImage?.Dispose();
             DebugImage?.Dispose();
             MiscImage?.Dispose();

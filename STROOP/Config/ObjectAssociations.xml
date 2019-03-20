@@ -17,6 +17,9 @@
   <Holp>
     <MapImage path="HOLP.png"/>
   </Holp>
+  <Home>
+    <MapImage path="Home.png"/>
+  </Home>
   <IntendedNextPosition>
     <MapImage path="Intended Next Position.png"/>
   </IntendedNextPosition>
