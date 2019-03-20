@@ -765,7 +765,7 @@ namespace STROOP.Managers
                 Map2Object mapObj = _mapObjectHomeDictionary[address];
                 mapObj.Draw = true;
                 mapObj.X = Config.Stream.GetSingle(address + ObjectConfig.HomeXOffset);
-                mapObj.Y = Config.Stream.GetSingle(address + ObjectConfig.HomeYOffset);
+                mapObj.Y = Config.Stream.GetSingle(address + ObjectConfig.YOffset) - 1;
                 mapObj.Z = Config.Stream.GetSingle(address + ObjectConfig.HomeZOffset);
                 var objCoords = new PointF(mapObj.RelX, mapObj.RelZ);
 
