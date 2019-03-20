@@ -45,6 +45,10 @@ namespace STROOP.Managers
 
         List<Map2Object> _mapObjects = new List<Map2Object>();
         public Dictionary<uint, Map2Object> _mapObjectDictionary = new Dictionary<uint, Map2Object>();
+
+        List<Map2Object> _mapObjectHomes = new List<Map2Object>();
+        public Dictionary<uint, Map2Object> _mapObjectHomeDictionary = new Dictionary<uint, Map2Object>();
+
         Map2Gui _mapGui;
         bool _isLoaded = false;
         float? _artificialMarioY = null;
@@ -731,6 +735,44 @@ namespace STROOP.Managers
                 }
             }
 
+            foreach (ObjectDataModel obj in DataModels.Objects)
+            {
+                if (obj == null) continue;
+                uint address = obj.Address;
+
+                // Need to add map obj
+                if (Config.ObjectSlotsManager.ShowHomeOnMap2SlotsAddresses.Contains(address) &&
+                    !_mapObjectHomeDictionary.ContainsKey(address))
+                {
+                    Map2Object mapObj = new Map2Object(Config.ObjectAssociations.HomeImage);
+                    _mapObjectHomeDictionary.Add(address, mapObj);
+                    AddMapObjectHome(mapObj);
+                }
+
+                // Need to remove map obj
+                if (!Config.ObjectSlotsManager.ShowHomeOnMap2SlotsAddresses.Contains(address) &&
+                    _mapObjectHomeDictionary.ContainsKey(address))
+                {
+                    Map2Object mapObj = _mapObjectHomeDictionary[address];
+                    _mapObjectHomeDictionary.Remove(address);
+                    RemoveMapObjectHome(mapObj);
+                }
+            }
+
+            // Calculate object slot's cooridnates
+            foreach (uint address in _mapObjectHomeDictionary.Keys)
+            {
+                Map2Object mapObj = _mapObjectHomeDictionary[address];
+                mapObj.Draw = true;
+                mapObj.X = Config.Stream.GetSingle(address + ObjectConfig.HomeXOffset);
+                mapObj.Y = Config.Stream.GetSingle(address + ObjectConfig.HomeYOffset);
+                mapObj.Z = Config.Stream.GetSingle(address + ObjectConfig.HomeZOffset);
+                var objCoords = new PointF(mapObj.RelX, mapObj.RelZ);
+
+                // Calculate object's location on control
+                mapObj.LocationOnContol = CalculateLocationOnControl(objCoords, mapView);
+            }
+
             // Calculate object slot's cooridnates
             foreach (var mapObj in _mapObjects)
             {
@@ -769,6 +811,18 @@ namespace STROOP.Managers
             locCtrl.Y = mapView.Y + (mapLoc.Y - _currentMap.Coordinates.Y)
                 * (mapView.Height / _currentMap.Coordinates.Height);
             return locCtrl;
+        }
+
+        public void AddMapObjectHome(Map2Object mapObj)
+        {
+            _mapObjectHomes.Add(mapObj);
+            _mapGraphics.AddMapObject(mapObj);
+        }
+
+        public void RemoveMapObjectHome(Map2Object mapObj)
+        {
+            _mapObjectHomes.Remove(mapObj);
+            _mapGraphics.RemoveMapObject(mapObj);
         }
 
         public void AddMapObject(Map2Object mapObj)
