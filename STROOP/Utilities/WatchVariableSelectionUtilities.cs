@@ -298,42 +298,45 @@ namespace STROOP.Structs
             Action<bool> createVariable = (bool add) =>
             {
                 List<WatchVariableControl> controls = getVars();
-                if (controls.Count < 2) return;
+                if (controls.Count % 2 == 1) controls.RemoveAt(controls.Count - 1);
 
-                WatchVariableControl control1 = controls[0];
-                WatchVariableControl control2 = controls[1];
-                string specialType = WatchVariableSpecialUtilities.AddCalculatedEntry(control1, control2, add);
+                for (int i = 0; i < controls.Count / 2; i++)
+                {
+                    WatchVariableControl control1 = controls[i];
+                    WatchVariableControl control2 = controls[i + controls.Count / 2];
+                    string specialType = WatchVariableSpecialUtilities.AddCalculatedEntry(control1, control2, add);
 
-                WatchVariable watchVariable =
-                    new WatchVariable(
-                        memoryTypeName: null,
-                        specialType: specialType,
-                        baseAddressType: BaseAddressTypeEnum.None,
-                        offsetUS: null,
-                        offsetJP: null,
-                        offsetPAL: null,
-                        offsetDefault: null,
-                        mask: null,
-                        shift: null);
-                WatchVariableControlPrecursor precursor =
-                    new WatchVariableControlPrecursor(
-                        name: string.Format("{0} {1} {2}", control1.VarName, add ? "+" : "-", control2.VarName),
-                        watchVar: watchVariable,
-                        subclass: WatchVariableSubclass.Number,
-                        backgroundColor: null,
-                        displayType: null,
-                        roundingLimit: null,
-                        useHex: null,
-                        invertBool: null,
-                        isYaw: null,
-                        coordinate: null,
-                        groupList: new List<VariableGroup>() { VariableGroup.Custom });
-                WatchVariableControl control = precursor.CreateWatchVariableControl();
-                panel.AddVariable(control);
+                    WatchVariable watchVariable =
+                        new WatchVariable(
+                            memoryTypeName: null,
+                            specialType: specialType,
+                            baseAddressType: BaseAddressTypeEnum.None,
+                            offsetUS: null,
+                            offsetJP: null,
+                            offsetPAL: null,
+                            offsetDefault: null,
+                            mask: null,
+                            shift: null);
+                    WatchVariableControlPrecursor precursor =
+                        new WatchVariableControlPrecursor(
+                            name: string.Format("{0} {1} {2}", control1.VarName, add ? "+" : "-", control2.VarName),
+                            watchVar: watchVariable,
+                            subclass: WatchVariableSubclass.Number,
+                            backgroundColor: null,
+                            displayType: null,
+                            roundingLimit: null,
+                            useHex: null,
+                            invertBool: null,
+                            isYaw: null,
+                            coordinate: null,
+                            groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                    WatchVariableControl control = precursor.CreateWatchVariableControl();
+                    panel.AddVariable(control);
+                }
             };
-            ToolStripMenuItem itemAddVariable = new ToolStripMenuItem("Add Variable...");
+            ToolStripMenuItem itemAddVariables = new ToolStripMenuItem("Add Variables...");
             ControlUtilities.AddDropDownItems(
-                itemAddVariable,
+                itemAddVariables,
                 new List<string>()
                 {
                     "Sum",
@@ -455,7 +458,7 @@ namespace STROOP.Structs
                 itemShowVariableXml,
                 itemShowVariableInfo,
                 new ToolStripSeparator(),
-                itemAddVariable,
+                itemAddVariables,
                 new ToolStripSeparator(),
                 itemBackgroundColor,
                 itemMove,
