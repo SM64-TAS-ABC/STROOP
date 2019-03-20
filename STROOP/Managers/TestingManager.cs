@@ -196,11 +196,6 @@ namespace STROOP.Managers
         string _lastTtcSaveState;
         HashSet<string> _ttcSaveStates;
 
-        // Scheduler
-        GroupBox _groupBoxTestingScheduler;
-        RichTextBoxEx _richTextBoxTestingScheduler;
-        Button _buttonTestingScheduler;
-
         public TestingManager(TabPage tabControl)
         {
             // Recording
@@ -495,12 +490,6 @@ namespace STROOP.Managers
                 _lastTtcSaveState = null;
                 _ttcSaveStates = new HashSet<string>();
             };
-
-            // Scheduler
-            _groupBoxTestingScheduler = tabControl.Controls["groupBoxTestingScheduler"] as GroupBox;
-            _richTextBoxTestingScheduler = _groupBoxTestingScheduler.Controls["richTextBoxTestingScheduler"] as RichTextBoxEx;
-            _buttonTestingScheduler = _groupBoxTestingScheduler.Controls["buttonTestingScheduler"] as Button;
-            _buttonTestingScheduler.Click += (sender, e) => Config.TasManager.SetScheduler(_richTextBoxTestingScheduler.Text);
         }
 
         private List<uint> GetScuttlebugAddresses()

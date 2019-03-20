@@ -679,6 +679,7 @@ namespace STROOP
             this.splitContainerTas = new STROOP.BetterSplitContainer();
             this.splitContainerTasTable = new STROOP.BetterSplitContainer();
             this.richTextBoxTasInstructions = new System.Windows.Forms.RichTextBox();
+            this.buttonTasPasteSchedule = new System.Windows.Forms.Button();
             this.buttonTasStoreMarioAngle = new System.Windows.Forms.Button();
             this.buttonTasStoreMarioPosition = new System.Windows.Forms.Button();
             this.buttonTasClearData = new System.Windows.Forms.Button();
@@ -1209,9 +1210,6 @@ namespace STROOP
             this.labelTestingPendulumManipulationPendulum = new System.Windows.Forms.Label();
             this.textBoxTestingPendulumManipulationIterations = new STROOP.BetterTextbox();
             this.textBoxTestingPendulumManipulationPendulum = new STROOP.BetterTextbox();
-            this.groupBoxTestingScheduler = new System.Windows.Forms.GroupBox();
-            this.richTextBoxTestingScheduler = new STROOP.Controls.RichTextBoxEx();
-            this.buttonTestingScheduler = new System.Windows.Forms.Button();
             this.groupBoxTestingTtcSimulator = new System.Windows.Forms.GroupBox();
             this.buttonTestingTtcSimulatorCalculate = new System.Windows.Forms.Button();
             this.textBoxTestingTtcSimulatorDustFrames = new STROOP.BetterTextbox();
@@ -1485,7 +1483,6 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonTasPasteSchedule = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1883,7 +1880,6 @@ namespace STROOP
             this.groupBoxScuttlebugStuff.SuspendLayout();
             this.groupBoxTtcLogger.SuspendLayout();
             this.groupBoxTestingPendulumManipulation.SuspendLayout();
-            this.groupBoxTestingScheduler.SuspendLayout();
             this.groupBoxTestingTtcSimulator.SuspendLayout();
             this.groupBoxSchedule.SuspendLayout();
             this.groupBoxStateTransfer.SuspendLayout();
@@ -5349,7 +5345,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 463F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 464F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9068,7 +9064,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(430, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(433, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -9868,6 +9864,17 @@ namespace STROOP
             this.richTextBoxTasInstructions.Size = new System.Drawing.Size(227, 75);
             this.richTextBoxTasInstructions.TabIndex = 38;
             this.richTextBoxTasInstructions.Text = "(1)\n(2)\n(3)\n(4)\n(5)";
+            // 
+            // buttonTasPasteSchedule
+            // 
+            this.buttonTasPasteSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasPasteSchedule.Location = new System.Drawing.Point(329, 55);
+            this.buttonTasPasteSchedule.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasPasteSchedule.Name = "buttonTasPasteSchedule";
+            this.buttonTasPasteSchedule.Size = new System.Drawing.Size(113, 25);
+            this.buttonTasPasteSchedule.TabIndex = 37;
+            this.buttonTasPasteSchedule.Text = "Paste Schedule";
+            this.buttonTasPasteSchedule.UseVisualStyleBackColor = true;
             // 
             // buttonTasStoreMarioAngle
             // 
@@ -11395,7 +11402,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 675;
+            this.splitContainerMemory.SplitterDistance = 678;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11436,7 +11443,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(675, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(678, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11653,7 +11660,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(675, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(678, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11682,7 +11689,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(574, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(577, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11695,7 +11702,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(231, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(228, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12849,7 +12856,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(357, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12881,7 +12888,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(351, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12937,7 +12944,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(351, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -15488,7 +15495,6 @@ namespace STROOP
             this.tabPageTesting.Controls.Add(this.groupBoxScuttlebugStuff);
             this.tabPageTesting.Controls.Add(this.groupBoxTtcLogger);
             this.tabPageTesting.Controls.Add(this.groupBoxTestingPendulumManipulation);
-            this.tabPageTesting.Controls.Add(this.groupBoxTestingScheduler);
             this.tabPageTesting.Controls.Add(this.groupBoxTestingTtcSimulator);
             this.tabPageTesting.Controls.Add(this.groupBoxSchedule);
             this.tabPageTesting.Controls.Add(this.groupBoxStateTransfer);
@@ -15839,39 +15845,6 @@ namespace STROOP
             this.textBoxTestingPendulumManipulationPendulum.TabIndex = 28;
             this.textBoxTestingPendulumManipulationPendulum.Text = "0x8033E788";
             this.textBoxTestingPendulumManipulationPendulum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBoxTestingScheduler
-            // 
-            this.groupBoxTestingScheduler.Controls.Add(this.richTextBoxTestingScheduler);
-            this.groupBoxTestingScheduler.Controls.Add(this.buttonTestingScheduler);
-            this.groupBoxTestingScheduler.Location = new System.Drawing.Point(6, 553);
-            this.groupBoxTestingScheduler.Name = "groupBoxTestingScheduler";
-            this.groupBoxTestingScheduler.Size = new System.Drawing.Size(325, 119);
-            this.groupBoxTestingScheduler.TabIndex = 42;
-            this.groupBoxTestingScheduler.TabStop = false;
-            this.groupBoxTestingScheduler.Text = "Scheduler";
-            // 
-            // richTextBoxTestingScheduler
-            // 
-            this.richTextBoxTestingScheduler.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBoxTestingScheduler.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBoxTestingScheduler.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxTestingScheduler.Location = new System.Drawing.Point(5, 18);
-            this.richTextBoxTestingScheduler.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxTestingScheduler.Name = "richTextBoxTestingScheduler";
-            this.richTextBoxTestingScheduler.Size = new System.Drawing.Size(315, 69);
-            this.richTextBoxTestingScheduler.TabIndex = 44;
-            this.richTextBoxTestingScheduler.Text = "";
-            // 
-            // buttonTestingScheduler
-            // 
-            this.buttonTestingScheduler.Location = new System.Drawing.Point(5, 91);
-            this.buttonTestingScheduler.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTestingScheduler.Name = "buttonTestingScheduler";
-            this.buttonTestingScheduler.Size = new System.Drawing.Size(315, 23);
-            this.buttonTestingScheduler.TabIndex = 43;
-            this.buttonTestingScheduler.Text = "Set";
-            this.buttonTestingScheduler.UseVisualStyleBackColor = true;
             // 
             // groupBoxTestingTtcSimulator
             // 
@@ -17852,7 +17825,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -19036,7 +19009,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(63, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(64, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -19258,17 +19231,6 @@ namespace STROOP
             this.trackBarObjSlotSize.TickFrequency = 10;
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
-            // 
-            // buttonTasPasteSchedule
-            // 
-            this.buttonTasPasteSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonTasPasteSchedule.Location = new System.Drawing.Point(329, 55);
-            this.buttonTasPasteSchedule.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonTasPasteSchedule.Name = "buttonTasPasteSchedule";
-            this.buttonTasPasteSchedule.Size = new System.Drawing.Size(113, 25);
-            this.buttonTasPasteSchedule.TabIndex = 37;
-            this.buttonTasPasteSchedule.Text = "Paste Schedule";
-            this.buttonTasPasteSchedule.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -19776,7 +19738,6 @@ namespace STROOP
             this.groupBoxTtcLogger.PerformLayout();
             this.groupBoxTestingPendulumManipulation.ResumeLayout(false);
             this.groupBoxTestingPendulumManipulation.PerformLayout();
-            this.groupBoxTestingScheduler.ResumeLayout(false);
             this.groupBoxTestingTtcSimulator.ResumeLayout(false);
             this.groupBoxTestingTtcSimulator.PerformLayout();
             this.groupBoxSchedule.ResumeLayout(false);
@@ -21245,9 +21206,6 @@ namespace STROOP
         private Label labelTtcLoggerLogs;
         private Label labelTtcLoggerState;
         private Button buttonTtcLoggerClear;
-        private GroupBox groupBoxTestingScheduler;
-        private RichTextBoxEx richTextBoxTestingScheduler;
-        private Button buttonTestingScheduler;
         private CheckBox checkBoxMap2ShowPoint;
         private SaveFileDialog saveFileDialogSt;
         private Button buttonObjUkikipedia;
