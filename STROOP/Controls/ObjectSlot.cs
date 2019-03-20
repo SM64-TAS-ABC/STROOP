@@ -78,7 +78,7 @@ namespace STROOP
             _drawFloorOverlay, _drawWallOverlay, _drawCeilingOverlay,
             _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawChildOverlay,
             _drawCollision1Overlay, _drawCollision2Overlay, _drawCollision3Overlay, _drawCollision4Overlay,
-            _drawMarkedOverlay;
+            _drawMarkedOverlay, _drawHomeOverlay;
 
         public ObjectSlot(ObjectSlotsManager manager, int index, ObjectSlotManagerGui gui, Size size)
         {
@@ -397,6 +397,7 @@ namespace STROOP
                 _drawCollision3Overlay,
                 _drawCollision4Overlay,
                 _drawMarkedOverlay,
+                _drawHomeOverlay,
             };
         }
 
@@ -517,6 +518,8 @@ namespace STROOP
                 e.Graphics.DrawImage(_gui.Collision3OverlayImage, new Rectangle(new Point(), Size));
             if (_drawCollision4Overlay)
                 e.Graphics.DrawImage(_gui.Collision4OverlayImage, new Rectangle(new Point(), Size));
+            if (_drawHomeOverlay)
+                e.Graphics.DrawImage(_gui.HomeOverlayImage, new Rectangle(new Point(), Size));
         }
 
         public void Update(ObjectDataModel obj)
@@ -542,6 +545,7 @@ namespace STROOP
                 _drawWallOverlay = OverlayConfig.ShowOverlayWallObject && address == DataModels.Mario.WallTriangle?.AssociatedObject;
                 _drawFloorOverlay = OverlayConfig.ShowOverlayFloorObject && address == DataModels.Mario.FloorTriangle?.AssociatedObject;
                 _drawCeilingOverlay = OverlayConfig.ShowOverlayCeilingObject && address == DataModels.Mario.CeilingTriangle?.AssociatedObject;
+                _drawHomeOverlay = false; // change this
 
                 uint? hoveredAddress = Config.ObjectSlotsManager.HoveredObjectAdress;
                 if (hoveredAddress.HasValue)
@@ -604,6 +608,7 @@ namespace STROOP
                 _drawCollision3Overlay = false;
                 _drawCollision4Overlay = false;
                 _drawMarkedOverlay = false;
+                _drawHomeOverlay = false;
             }
             List<bool> overlays = GetCurrentOverlayValues();
 

@@ -237,7 +237,7 @@ namespace STROOP.Utilities
                 modelOverlayImagePath = "", floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "",
                 parentOverlayImagePath = "", parentUnusedOverlayImagePath = "", parentNoneOverlayImagePath = "", childOverlayImagePath = "",
                 collision1OverlayImagePath = "", collision2OverlayImagePath = "", collision3OverlayImagePath = "", collision4OverlayImagePath = "",
-                markedOverlayImagePath = "";
+                markedOverlayImagePath = "", homeOverlayImagePath = "";
             uint marioBehavior = 0;
 
             foreach (XElement element in doc.Root.Elements())
@@ -427,6 +427,10 @@ namespace STROOP.Utilities
                                 case "Marked":
                                     markedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
+
+                                case "Home":
+                                    homeOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -545,6 +549,7 @@ namespace STROOP.Utilities
             objectSlotManagerGui.Collision3OverlayImage = Image.FromFile(overlayImageDir + collision3OverlayImagePath);
             objectSlotManagerGui.Collision4OverlayImage = Image.FromFile(overlayImageDir + collision4OverlayImagePath);
             objectSlotManagerGui.MarkedObjectOverlayImage = Image.FromFile(overlayImageDir + markedOverlayImagePath);
+            objectSlotManagerGui.HomeOverlayImage = Image.FromFile(overlayImageDir + homeOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
             {

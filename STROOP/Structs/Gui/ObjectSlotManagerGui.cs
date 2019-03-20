@@ -35,6 +35,7 @@ namespace STROOP.Structs
         public Image Collision3OverlayImage;
         public Image Collision4OverlayImage;
         public Image MarkedObjectOverlayImage;
+        public Image HomeOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
@@ -68,6 +69,7 @@ namespace STROOP.Structs
             Collision3OverlayImage?.Dispose();
             Collision4OverlayImage?.Dispose();
             MarkedObjectOverlayImage?.Dispose();
+            HomeOverlayImage?.Dispose();
         }
     }
 }

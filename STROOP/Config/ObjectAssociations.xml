@@ -122,6 +122,9 @@
     <Marked>
       <OverlayImage path="Marked.png"/>
     </Marked>
+    <Home>
+      <OverlayImage path="Home.png"/>
+    </Home>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <SpawnCode gfxId="0xD5"/>
