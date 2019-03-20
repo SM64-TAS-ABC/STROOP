@@ -545,7 +545,7 @@ namespace STROOP
                 _drawWallOverlay = OverlayConfig.ShowOverlayWallObject && address == DataModels.Mario.WallTriangle?.AssociatedObject;
                 _drawFloorOverlay = OverlayConfig.ShowOverlayFloorObject && address == DataModels.Mario.FloorTriangle?.AssociatedObject;
                 _drawCeilingOverlay = OverlayConfig.ShowOverlayCeilingObject && address == DataModels.Mario.CeilingTriangle?.AssociatedObject;
-                _drawHomeOverlay = false; // change this
+                _drawHomeOverlay = _manager.ActiveTab == TabType.Map2 && Config.ObjectSlotsManager.ShowHomeOnMap2SlotsAddresses.Contains(address.Value);
 
                 uint? hoveredAddress = Config.ObjectSlotsManager.HoveredObjectAdress;
                 if (hoveredAddress.HasValue)

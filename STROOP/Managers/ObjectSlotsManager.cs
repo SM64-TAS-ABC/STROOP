@@ -12,6 +12,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Controls;
 using STROOP.Models;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace STROOP.Managers
 {
@@ -26,7 +27,7 @@ namespace STROOP.Managers
         public enum TabDestinationType { Object, Memory };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
-        public enum ClickType { ObjectClick, MapClick, Map2Click, ModelClick, MemoryClick, CamHackClick, MarkClick };
+        public enum ClickType { ObjectClick, MapClick, Map2Click, Map2HomeClick, ModelClick, MemoryClick, CamHackClick, MarkClick };
 
         public uint? HoveredObjectAdress;
 
@@ -40,6 +41,7 @@ namespace STROOP.Managers
         public List<uint> SelectedSlotsAddresses = new List<uint>();
         public List<uint> SelectedOnMapSlotsAddresses = new List<uint>();
         public List<uint> SelectedOnMap2SlotsAddresses = new List<uint>();
+        public List<uint> ShowHomeOnMap2SlotsAddresses = new List<uint>();
         public List<uint> MarkedSlotsAddresses = new List<uint>();
 
         public List<ObjectDataModel> SelectedObjects = new List<ObjectDataModel>();
@@ -111,14 +113,15 @@ namespace STROOP.Managers
             bool isCtrlKeyHeld = KeyboardUtilities.IsCtrlHeld();
             bool isShiftKeyHeld = KeyboardUtilities.IsShiftHeld();
             bool isAltKeyHeld = KeyboardUtilities.IsAltHeld();
+            bool isHKeyHeld = Keyboard.IsKeyDown(Key.H);
 
-            DoSlotClickUsingInput(selectedSlot, isCtrlKeyHeld, isShiftKeyHeld, isAltKeyHeld);
+            DoSlotClickUsingInput(selectedSlot, isCtrlKeyHeld, isShiftKeyHeld, isAltKeyHeld, isHKeyHeld);
         }
 
         private void DoSlotClickUsingInput(
-            ObjectSlot selectedSlot, bool isCtrlKeyHeld, bool isShiftKeyHeld, bool isAltKeyHeld)
+            ObjectSlot selectedSlot, bool isCtrlKeyHeld, bool isShiftKeyHeld, bool isAltKeyHeld, bool isHKeyHeld)
         {
-            ClickType click = GetClickType(isAltKeyHeld);
+            ClickType click = GetClickType(isAltKeyHeld, isHKeyHeld);
             bool shouldToggle = ShouldToggle(isCtrlKeyHeld, isAltKeyHeld);
             bool shouldExtendRange = isShiftKeyHeld;
             TabDestinationType? tabDestination = GetTabDestination(isAltKeyHeld);
@@ -128,10 +131,10 @@ namespace STROOP.Managers
         public void SelectSlotByAddress(uint address)
         {
             ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.CurrentObject.Address == address);
-            if (slot != null) DoSlotClickUsingInput(slot, false, false, false);
+            if (slot != null) DoSlotClickUsingInput(slot, false, false, false, false);
         }
 
-        private ClickType GetClickType(bool isAltKeyHeld)
+        private ClickType GetClickType(bool isAltKeyHeld, bool isHKeyHeld)
         {
             if (isAltKeyHeld)
             {
@@ -146,7 +149,7 @@ namespace STROOP.Managers
                     case TabType.Map:
                         return ClickType.MapClick;
                     case TabType.Map2:
-                        return ClickType.Map2Click;
+                        return isHKeyHeld ? ClickType.Map2HomeClick : ClickType.Map2Click;
                     case TabType.Model:
                         return ClickType.ModelClick;
                     case TabType.Memory:
@@ -210,6 +213,9 @@ namespace STROOP.Managers
                         break;
                     case ClickType.Map2Click:
                         selection = SelectedOnMap2SlotsAddresses;
+                        break;
+                    case ClickType.Map2HomeClick:
+                        selection = ShowHomeOnMap2SlotsAddresses;
                         break;
                     case ClickType.MarkClick:
                         selection = MarkedSlotsAddresses;
