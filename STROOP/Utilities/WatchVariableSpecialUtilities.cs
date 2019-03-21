@@ -37,7 +37,7 @@ namespace STROOP.Structs
 
         private static int _numCalculatedEntries = 0;
 
-        public static string AddCalculatedEntry(WatchVariableControl control1, WatchVariableControl control2, bool add)
+        public static string AddCalculatedEntry(WatchVariableControl control1, WatchVariableControl control2, MathOperation operation)
         {
             string specialType = "Calculated" + _numCalculatedEntries;
             if (add)

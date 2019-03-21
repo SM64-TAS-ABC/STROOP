@@ -295,7 +295,7 @@ namespace STROOP.Structs
                 infoForm.Show();
             };
 
-            Action<bool> createVariable = (bool add) =>
+            Action<MathOperation> createVariable = (MathOperation operation) =>
             {
                 List<WatchVariableControl> controls = getVars();
                 if (controls.Count % 2 == 1) controls.RemoveAt(controls.Count - 1);
@@ -304,7 +304,7 @@ namespace STROOP.Structs
                 {
                     WatchVariableControl control1 = controls[i];
                     WatchVariableControl control2 = controls[i + controls.Count / 2];
-                    string specialType = WatchVariableSpecialUtilities.AddCalculatedEntry(control1, control2, add);
+                    string specialType = WatchVariableSpecialUtilities.AddCalculatedEntry(control1, control2, operation);
 
                     WatchVariable watchVariable =
                         new WatchVariable(
@@ -319,7 +319,7 @@ namespace STROOP.Structs
                             shift: null);
                     WatchVariableControlPrecursor precursor =
                         new WatchVariableControlPrecursor(
-                            name: string.Format("{0} {1} {2}", control1.VarName, add ? "+" : "-", control2.VarName),
+                            name: string.Format("{0} {1} {2}", control1.VarName, MathOperationUtilities.GetSymbol(operation), control2.VarName),
                             watchVar: watchVariable,
                             subclass: WatchVariableSubclass.Number,
                             backgroundColor: null,
@@ -339,13 +339,17 @@ namespace STROOP.Structs
                 itemAddVariables,
                 new List<string>()
                 {
-                    "Sum",
-                    "Difference",
+                    "Addition",
+                    "Subtraction",
+                    "Multiplication",
+                    "Division",
                 },
                 new List<Action>()
                 {
-                    () => createVariable(true),
-                    () => createVariable(false),
+                    () => createVariable(MathOperation.Add),
+                    () => createVariable(MathOperation.Subtract),
+                    () => createVariable(MathOperation.Multiply),
+                    () => createVariable(MathOperation.Divide),
                 });
 
             List<string> backgroundColorStringList = new List<string>();
