@@ -177,6 +177,7 @@
     <Compile Include="Controls\WatchVariableAddressWrapper.cs" />
     <Compile Include="Controls\WatchVariableTriangleWrapper.cs" />
     <Compile Include="Controls\WatchVariableStringWrapper.cs" />
+    <Compile Include="Enums\MathOperation.cs" />
     <Compile Include="Enums\PaintingListTypeEnum.cs" />
     <Compile Include="Enums\FrameInputRelationType.cs" />
     <Compile Include="Enums\CellSelectionType.cs" />
@@ -518,6 +519,7 @@
     <Compile Include="Structs\RomHack.cs" />
     <Compile Include="Structs\SpawnHack.cs" />
     <Compile Include="Enums\AngleUnitType.cs" />
+    <Compile Include="Utilities\MathOperationUtilities.cs" />
     <Compile Include="Utilities\SegmentationUtilities.cs" />
     <Compile Include="Utilities\BoolUtilities.cs" />
     <Compile Include="Utilities\CamHackUtilities.cs" />

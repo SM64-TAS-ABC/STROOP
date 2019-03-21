@@ -1,4 +1,4 @@
-﻿ using STROOP.Controls;
+﻿using STROOP.Controls;
 using STROOP.Forms;
 using STROOP.Managers;
 using STROOP.Models;
