@@ -225,6 +225,33 @@ namespace STROOP
             this.watchVariablePanelHud = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
             this.splitContainerCamera = new STROOP.BetterSplitContainer();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.betterTextbox3 = new STROOP.BetterTextbox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.betterTextbox5 = new STROOP.BetterTextbox();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.betterTextbox1 = new STROOP.BetterTextbox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.betterTextbox2 = new STROOP.BetterTextbox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.buttonDisableFOVFunctions = new STROOP.BinaryButton();
             this.groupBoxCameraSphericalPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraSphericalPosPivotOnFocus = new System.Windows.Forms.CheckBox();
@@ -1483,33 +1510,6 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.betterTextbox1 = new STROOP.BetterTextbox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.betterTextbox2 = new STROOP.BetterTextbox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.betterTextbox3 = new STROOP.BetterTextbox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.betterTextbox5 = new STROOP.BetterTextbox();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1552,6 +1552,8 @@ namespace STROOP
             this.splitContainerCamera.Panel1.SuspendLayout();
             this.splitContainerCamera.Panel2.SuspendLayout();
             this.splitContainerCamera.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBoxCameraSphericalPos.SuspendLayout();
             this.panelCameraBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
@@ -1939,8 +1941,6 @@ namespace STROOP
             this.splitContainerPainting.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -4079,6 +4079,301 @@ namespace STROOP
             this.splitContainerCamera.SplitterWidth = 1;
             this.splitContainerCamera.TabIndex = 31;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.betterTextbox3);
+            this.groupBox2.Controls.Add(this.button13);
+            this.groupBox2.Controls.Add(this.button14);
+            this.groupBox2.Controls.Add(this.button15);
+            this.groupBox2.Controls.Add(this.betterTextbox5);
+            this.groupBox2.Controls.Add(this.button16);
+            this.groupBox2.Controls.Add(this.button17);
+            this.groupBox2.Controls.Add(this.button18);
+            this.groupBox2.Controls.Add(this.button19);
+            this.groupBox2.Controls.Add(this.button20);
+            this.groupBox2.Controls.Add(this.button21);
+            this.groupBox2.Controls.Add(this.button22);
+            this.groupBox2.Location = new System.Drawing.Point(2, 557);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(185, 146);
+            this.groupBox2.TabIndex = 39;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Focus Spherical";
+            // 
+            // betterTextbox3
+            // 
+            this.betterTextbox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox3.Location = new System.Drawing.Point(140, 70);
+            this.betterTextbox3.Name = "betterTextbox3";
+            this.betterTextbox3.Size = new System.Drawing.Size(42, 20);
+            this.betterTextbox3.TabIndex = 33;
+            this.betterTextbox3.Text = "100";
+            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button13
+            // 
+            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button13.Location = new System.Drawing.Point(140, 16);
+            this.button13.Margin = new System.Windows.Forms.Padding(0);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(42, 42);
+            this.button13.TabIndex = 35;
+            this.button13.Text = "R-";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button14.Location = new System.Drawing.Point(140, 100);
+            this.button14.Margin = new System.Windows.Forms.Padding(0);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(42, 42);
+            this.button14.TabIndex = 34;
+            this.button14.Text = "R+";
+            this.button14.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(87, 100);
+            this.button15.Margin = new System.Windows.Forms.Padding(0);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(42, 42);
+            this.button15.TabIndex = 32;
+            this.button15.Text = "θ+ϕ+";
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // betterTextbox5
+            // 
+            this.betterTextbox5.Location = new System.Drawing.Point(45, 70);
+            this.betterTextbox5.Name = "betterTextbox5";
+            this.betterTextbox5.Size = new System.Drawing.Size(42, 20);
+            this.betterTextbox5.TabIndex = 27;
+            this.betterTextbox5.Text = "1024";
+            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(87, 58);
+            this.button16.Margin = new System.Windows.Forms.Padding(0);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(42, 42);
+            this.button16.TabIndex = 31;
+            this.button16.Text = "θ+";
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(87, 16);
+            this.button17.Margin = new System.Windows.Forms.Padding(0);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(42, 42);
+            this.button17.TabIndex = 30;
+            this.button17.Text = "θ+ϕ-";
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(45, 16);
+            this.button18.Margin = new System.Windows.Forms.Padding(0);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(42, 42);
+            this.button18.TabIndex = 29;
+            this.button18.Text = "ϕ-";
+            this.button18.UseVisualStyleBackColor = true;
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(45, 100);
+            this.button19.Margin = new System.Windows.Forms.Padding(0);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(42, 42);
+            this.button19.TabIndex = 28;
+            this.button19.Text = "ϕ+";
+            this.button19.UseVisualStyleBackColor = true;
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(3, 100);
+            this.button20.Margin = new System.Windows.Forms.Padding(0);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(42, 42);
+            this.button20.TabIndex = 27;
+            this.button20.Text = "θ-ϕ+";
+            this.button20.UseVisualStyleBackColor = true;
+            // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(3, 58);
+            this.button21.Margin = new System.Windows.Forms.Padding(0);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(42, 42);
+            this.button21.TabIndex = 26;
+            this.button21.Text = "θ-";
+            this.button21.UseVisualStyleBackColor = true;
+            // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(3, 16);
+            this.button22.Margin = new System.Windows.Forms.Padding(0);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(42, 42);
+            this.button22.TabIndex = 25;
+            this.button22.Text = "θ-ϕ-";
+            this.button22.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.betterTextbox1);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.betterTextbox2);
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.button10);
+            this.groupBox1.Controls.Add(this.button11);
+            this.groupBox1.Controls.Add(this.button12);
+            this.groupBox1.Location = new System.Drawing.Point(2, 405);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(185, 146);
+            this.groupBox1.TabIndex = 32;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Focus Position";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(120, 0);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(65, 17);
+            this.checkBox1.TabIndex = 37;
+            this.checkBox1.Text = "Relative";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // betterTextbox1
+            // 
+            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox1.Location = new System.Drawing.Point(140, 70);
+            this.betterTextbox1.Name = "betterTextbox1";
+            this.betterTextbox1.Size = new System.Drawing.Size(42, 20);
+            this.betterTextbox1.TabIndex = 33;
+            this.betterTextbox1.Text = "100";
+            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(140, 16);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(42, 42);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Y+";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(140, 100);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(42, 42);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "Y-";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(87, 100);
+            this.button3.Margin = new System.Windows.Forms.Padding(0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(42, 42);
+            this.button3.TabIndex = 32;
+            this.button3.Text = "X+Z+";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // betterTextbox2
+            // 
+            this.betterTextbox2.Location = new System.Drawing.Point(45, 70);
+            this.betterTextbox2.Name = "betterTextbox2";
+            this.betterTextbox2.Size = new System.Drawing.Size(42, 20);
+            this.betterTextbox2.TabIndex = 27;
+            this.betterTextbox2.Text = "100";
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(87, 58);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(42, 42);
+            this.button4.TabIndex = 31;
+            this.button4.Text = "X+";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(87, 16);
+            this.button5.Margin = new System.Windows.Forms.Padding(0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(42, 42);
+            this.button5.TabIndex = 30;
+            this.button5.Text = "X+Z-";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(45, 16);
+            this.button6.Margin = new System.Windows.Forms.Padding(0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(42, 42);
+            this.button6.TabIndex = 29;
+            this.button6.Text = "Z-";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(45, 100);
+            this.button7.Margin = new System.Windows.Forms.Padding(0);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(42, 42);
+            this.button7.TabIndex = 28;
+            this.button7.Text = "Z+";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(3, 100);
+            this.button10.Margin = new System.Windows.Forms.Padding(0);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(42, 42);
+            this.button10.TabIndex = 27;
+            this.button10.Text = "X-Z+";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(3, 58);
+            this.button11.Margin = new System.Windows.Forms.Padding(0);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(42, 42);
+            this.button11.TabIndex = 26;
+            this.button11.Text = "X-";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(3, 16);
+            this.button12.Margin = new System.Windows.Forms.Padding(0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(42, 42);
+            this.button12.TabIndex = 25;
+            this.button12.Text = "X-Z-";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
             // buttonDisableFOVFunctions
             // 
             this.buttonDisableFOVFunctions.Location = new System.Drawing.Point(3, 366);
@@ -4108,7 +4403,7 @@ namespace STROOP
             this.groupBoxCameraSphericalPos.Size = new System.Drawing.Size(185, 146);
             this.groupBoxCameraSphericalPos.TabIndex = 30;
             this.groupBoxCameraSphericalPos.TabStop = false;
-            this.groupBoxCameraSphericalPos.Text = "Spherical";
+            this.groupBoxCameraSphericalPos.Text = "Cam Spherical";
             // 
             // checkBoxCameraSphericalPosPivotOnFocus
             // 
@@ -4285,7 +4580,7 @@ namespace STROOP
             this.groupBoxCameraPos.Size = new System.Drawing.Size(185, 146);
             this.groupBoxCameraPos.TabIndex = 30;
             this.groupBoxCameraPos.TabStop = false;
-            this.groupBoxCameraPos.Text = "Position";
+            this.groupBoxCameraPos.Text = "Cam Position";
             // 
             // checkBoxCameraPosRelative
             // 
@@ -5376,7 +5671,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 465F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 466F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9095,7 +9390,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(436, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(439, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11433,7 +11728,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 681;
+            this.splitContainerMemory.SplitterDistance = 684;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11474,7 +11769,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(681, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(684, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11691,7 +11986,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(681, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(684, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11720,7 +12015,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(580, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(583, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11733,7 +12028,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(225, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(222, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12887,7 +13182,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(340, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12919,7 +13214,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(334, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(317, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12975,7 +13270,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(334, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(317, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -17856,7 +18151,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -19040,7 +19335,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(65, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(66, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -19263,301 +19558,6 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.betterTextbox1);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.betterTextbox2);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button10);
-            this.groupBox1.Controls.Add(this.button11);
-            this.groupBox1.Controls.Add(this.button12);
-            this.groupBox1.Location = new System.Drawing.Point(2, 405);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(185, 146);
-            this.groupBox1.TabIndex = 32;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Position";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(120, 0);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(65, 17);
-            this.checkBox1.TabIndex = 37;
-            this.checkBox1.Text = "Relative";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // betterTextbox1
-            // 
-            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox1.Location = new System.Drawing.Point(140, 70);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox1.TabIndex = 33;
-            this.betterTextbox1.Text = "100";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(140, 16);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 42);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Y+";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(140, 100);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(42, 42);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Y-";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(87, 100);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(42, 42);
-            this.button3.TabIndex = 32;
-            this.button3.Text = "X+Z+";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // betterTextbox2
-            // 
-            this.betterTextbox2.Location = new System.Drawing.Point(45, 70);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox2.TabIndex = 27;
-            this.betterTextbox2.Text = "100";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(87, 58);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(42, 42);
-            this.button4.TabIndex = 31;
-            this.button4.Text = "X+";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(87, 16);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(42, 42);
-            this.button5.TabIndex = 30;
-            this.button5.Text = "X+Z-";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(45, 16);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(42, 42);
-            this.button6.TabIndex = 29;
-            this.button6.Text = "Z-";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(45, 100);
-            this.button7.Margin = new System.Windows.Forms.Padding(0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(42, 42);
-            this.button7.TabIndex = 28;
-            this.button7.Text = "Z+";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(3, 100);
-            this.button10.Margin = new System.Windows.Forms.Padding(0);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(42, 42);
-            this.button10.TabIndex = 27;
-            this.button10.Text = "X-Z+";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(3, 58);
-            this.button11.Margin = new System.Windows.Forms.Padding(0);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(42, 42);
-            this.button11.TabIndex = 26;
-            this.button11.Text = "X-";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(3, 16);
-            this.button12.Margin = new System.Windows.Forms.Padding(0);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(42, 42);
-            this.button12.TabIndex = 25;
-            this.button12.Text = "X-Z-";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.betterTextbox3);
-            this.groupBox2.Controls.Add(this.button13);
-            this.groupBox2.Controls.Add(this.button14);
-            this.groupBox2.Controls.Add(this.button15);
-            this.groupBox2.Controls.Add(this.betterTextbox5);
-            this.groupBox2.Controls.Add(this.button16);
-            this.groupBox2.Controls.Add(this.button17);
-            this.groupBox2.Controls.Add(this.button18);
-            this.groupBox2.Controls.Add(this.button19);
-            this.groupBox2.Controls.Add(this.button20);
-            this.groupBox2.Controls.Add(this.button21);
-            this.groupBox2.Controls.Add(this.button22);
-            this.groupBox2.Location = new System.Drawing.Point(2, 557);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(185, 146);
-            this.groupBox2.TabIndex = 39;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Spherical";
-            // 
-            // betterTextbox3
-            // 
-            this.betterTextbox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox3.Location = new System.Drawing.Point(140, 70);
-            this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox3.TabIndex = 33;
-            this.betterTextbox3.Text = "100";
-            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button13
-            // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.Location = new System.Drawing.Point(140, 16);
-            this.button13.Margin = new System.Windows.Forms.Padding(0);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(42, 42);
-            this.button13.TabIndex = 35;
-            this.button13.Text = "R-";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button14.Location = new System.Drawing.Point(140, 100);
-            this.button14.Margin = new System.Windows.Forms.Padding(0);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(42, 42);
-            this.button14.TabIndex = 34;
-            this.button14.Text = "R+";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // button15
-            // 
-            this.button15.Location = new System.Drawing.Point(87, 100);
-            this.button15.Margin = new System.Windows.Forms.Padding(0);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(42, 42);
-            this.button15.TabIndex = 32;
-            this.button15.Text = "θ+ϕ+";
-            this.button15.UseVisualStyleBackColor = true;
-            // 
-            // betterTextbox5
-            // 
-            this.betterTextbox5.Location = new System.Drawing.Point(45, 70);
-            this.betterTextbox5.Name = "betterTextbox5";
-            this.betterTextbox5.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox5.TabIndex = 27;
-            this.betterTextbox5.Text = "1024";
-            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button16
-            // 
-            this.button16.Location = new System.Drawing.Point(87, 58);
-            this.button16.Margin = new System.Windows.Forms.Padding(0);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(42, 42);
-            this.button16.TabIndex = 31;
-            this.button16.Text = "θ+";
-            this.button16.UseVisualStyleBackColor = true;
-            // 
-            // button17
-            // 
-            this.button17.Location = new System.Drawing.Point(87, 16);
-            this.button17.Margin = new System.Windows.Forms.Padding(0);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(42, 42);
-            this.button17.TabIndex = 30;
-            this.button17.Text = "θ+ϕ-";
-            this.button17.UseVisualStyleBackColor = true;
-            // 
-            // button18
-            // 
-            this.button18.Location = new System.Drawing.Point(45, 16);
-            this.button18.Margin = new System.Windows.Forms.Padding(0);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(42, 42);
-            this.button18.TabIndex = 29;
-            this.button18.Text = "ϕ-";
-            this.button18.UseVisualStyleBackColor = true;
-            // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(45, 100);
-            this.button19.Margin = new System.Windows.Forms.Padding(0);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(42, 42);
-            this.button19.TabIndex = 28;
-            this.button19.Text = "ϕ+";
-            this.button19.UseVisualStyleBackColor = true;
-            // 
-            // button20
-            // 
-            this.button20.Location = new System.Drawing.Point(3, 100);
-            this.button20.Margin = new System.Windows.Forms.Padding(0);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(42, 42);
-            this.button20.TabIndex = 27;
-            this.button20.Text = "θ-ϕ+";
-            this.button20.UseVisualStyleBackColor = true;
-            // 
-            // button21
-            // 
-            this.button21.Location = new System.Drawing.Point(3, 58);
-            this.button21.Margin = new System.Windows.Forms.Padding(0);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(42, 42);
-            this.button21.TabIndex = 26;
-            this.button21.Text = "θ-";
-            this.button21.UseVisualStyleBackColor = true;
-            // 
-            // button22
-            // 
-            this.button22.Location = new System.Drawing.Point(3, 16);
-            this.button22.Margin = new System.Windows.Forms.Padding(0);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(42, 42);
-            this.button22.TabIndex = 25;
-            this.button22.Text = "θ-ϕ-";
-            this.button22.UseVisualStyleBackColor = true;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -19642,6 +19642,10 @@ namespace STROOP
             this.splitContainerCamera.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCamera)).EndInit();
             this.splitContainerCamera.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBoxCameraSphericalPos.ResumeLayout(false);
             this.groupBoxCameraSphericalPos.PerformLayout();
             this.panelCameraBorder.ResumeLayout(false);
@@ -20113,10 +20117,6 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
