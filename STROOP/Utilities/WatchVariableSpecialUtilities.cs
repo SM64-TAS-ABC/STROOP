@@ -40,55 +40,110 @@ namespace STROOP.Structs
         public static string AddCalculatedEntry(WatchVariableControl control1, WatchVariableControl control2, MathOperation operation)
         {
             string specialType = "Calculated" + _numCalculatedEntries;
-            if (add)
+            switch (operation)
             {
-                _dictionary.Add(specialType,
-                    ((uint dummy) =>
-                    {
-                        double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
-                        double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
-                        return value1 + value2;
-                    },
-                    (double sum, uint dummy) =>
-                    {
-                        if (!KeyboardUtilities.IsCtrlHeld())
+                case MathOperation.Add:
+                    _dictionary.Add(specialType,
+                        ((uint dummy) =>
                         {
                             double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
-                            double newValue2 = sum - value1;
-                            return control2.SetValue(newValue2);
-                        }
-                        else
-                        {
                             double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
-                            double newValue1 = sum - value2;
-                            return control1.SetValue(newValue1);
-                        }
-                    }));
-            }
-            else
-            {
-                _dictionary.Add(specialType,
-                    ((uint dummy) =>
-                    {
-                        double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
-                        double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
-                        return value1 - value2;
-                    },
-                    (double diff, uint dummy) =>
-                    {
-                        if (!KeyboardUtilities.IsCtrlHeld())
+                            return value1 + value2;
+                        },
+                        (double sum, uint dummy) =>
+                        {
+                            if (!KeyboardUtilities.IsCtrlHeld())
+                            {
+                                double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
+                                double newValue2 = sum - value1;
+                                return control2.SetValue(newValue2);
+                            }
+                            else
+                            {
+                                double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
+                                double newValue1 = sum - value2;
+                                return control1.SetValue(newValue1);
+                            }
+                        }));
+                    break;
+
+                case MathOperation.Subtract:
+                    _dictionary.Add(specialType,
+                        ((uint dummy) =>
                         {
                             double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
-                            double newValue2 = value1 - diff;
-                            return control2.SetValue(newValue2);
-                        }
-                        else
-                        {
                             double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
-                            double newValue1 = value2 + diff;
-                            return control1.SetValue(newValue1);
-                        }
-                    }));
+                            return value1 - value2;
+                        },
+                        (double diff, uint dummy) =>
+                        {
+                            if (!KeyboardUtilities.IsCtrlHeld())
+                            {
+                                double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
+                                double newValue2 = value1 - diff;
+                                return control2.SetValue(newValue2);
+                            }
+                            else
+                            {
+                                double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
+                                double newValue1 = value2 + diff;
+                                return control1.SetValue(newValue1);
+                            }
+                        }));
+                    break;
+
+                case MathOperation.Multiply:
+                    _dictionary.Add(specialType,
+                        ((uint dummy) =>
+                        {
+                            double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
+                            double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
+                            return value1 * value2;
+                        },
+                        (double product, uint dummy) =>
+                        {
+                            if (!KeyboardUtilities.IsCtrlHeld())
+                            {
+                                double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
+                                double newValue2 = product / value1;
+                                return control2.SetValue(newValue2);
+                            }
+                            else
+                            {
+                                double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
+                                double newValue1 = product / value2;
+                                return control1.SetValue(newValue1);
+                            }
+                        }));
+                    break;
+
+                case MathOperation.Divide:
+                    _dictionary.Add(specialType,
+                        ((uint dummy) =>
+                        {
+                            double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
+                            double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
+                            return value1 / value2;
+                        },
+                        (double quotient, uint dummy) =>
+                        {
+                            if (!KeyboardUtilities.IsCtrlHeld())
+                            {
+                                double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
+                                double newValue2 = value1 / quotient;
+                                return control2.SetValue(newValue2);
+                            }
+                            else
+                            {
+                                double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
+                                double newValue1 = value2 * quotient;
+                                return control1.SetValue(newValue1);
+                            }
+                        }));
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
             _numCalculatedEntries++;
             return specialType;

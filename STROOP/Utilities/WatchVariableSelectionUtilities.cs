@@ -334,7 +334,7 @@ namespace STROOP.Structs
                     panel.AddVariable(control);
                 }
             };
-            ToolStripMenuItem itemAddVariables = new ToolStripMenuItem("Add Variables...");
+            ToolStripMenuItem itemAddVariables = new ToolStripMenuItem("Add Variable(s)...");
             ControlUtilities.AddDropDownItems(
                 itemAddVariables,
                 new List<string>()
