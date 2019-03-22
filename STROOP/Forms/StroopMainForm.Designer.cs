@@ -34,15 +34,15 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -227,17 +227,17 @@ namespace STROOP
             this.splitContainerCamera = new STROOP.BetterSplitContainer();
             this.groupBoxCameraFocusSphericalPos = new System.Windows.Forms.GroupBox();
             this.textBoxCameraFocusSphericalPosR = new STROOP.BetterTextbox();
-            this.buttonCameraFocusSphericalPosRn = new System.Windows.Forms.Button();
             this.buttonCameraFocusSphericalPosRp = new System.Windows.Forms.Button();
-            this.buttonCameraFocusSphericalPosTpPp = new System.Windows.Forms.Button();
-            this.textBoxCameraFocusSphericalPosTP = new STROOP.BetterTextbox();
-            this.buttonCameraFocusSphericalPosTp = new System.Windows.Forms.Button();
-            this.buttonCameraFocusSphericalPosTpPn = new System.Windows.Forms.Button();
-            this.buttonCameraFocusSphericalPosPn = new System.Windows.Forms.Button();
-            this.buttonCameraFocusSphericalPosPp = new System.Windows.Forms.Button();
+            this.buttonCameraFocusSphericalPosRn = new System.Windows.Forms.Button();
             this.buttonCameraFocusSphericalPosTnPp = new System.Windows.Forms.Button();
+            this.textBoxCameraFocusSphericalPosTP = new STROOP.BetterTextbox();
             this.buttonCameraFocusSphericalPosTn = new System.Windows.Forms.Button();
             this.buttonCameraFocusSphericalPosTnPn = new System.Windows.Forms.Button();
+            this.buttonCameraFocusSphericalPosPn = new System.Windows.Forms.Button();
+            this.buttonCameraFocusSphericalPosPp = new System.Windows.Forms.Button();
+            this.buttonCameraFocusSphericalPosTpPp = new System.Windows.Forms.Button();
+            this.buttonCameraFocusSphericalPosTp = new System.Windows.Forms.Button();
+            this.buttonCameraFocusSphericalPosTpPn = new System.Windows.Forms.Button();
             this.groupBoxCameraFocusPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraFocusPosRelative = new System.Windows.Forms.CheckBox();
             this.textBoxCameraFocusPosY = new STROOP.BetterTextbox();
@@ -4063,17 +4063,17 @@ namespace STROOP
             // groupBoxCameraFocusSphericalPos
             // 
             this.groupBoxCameraFocusSphericalPos.Controls.Add(this.textBoxCameraFocusSphericalPosR);
-            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosRn);
             this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosRp);
-            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTpPp);
-            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.textBoxCameraFocusSphericalPosTP);
-            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTp);
-            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTpPn);
-            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosPn);
-            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosPp);
+            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosRn);
             this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTnPp);
+            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.textBoxCameraFocusSphericalPosTP);
             this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTn);
             this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTnPn);
+            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosPn);
+            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosPp);
+            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTpPp);
+            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTp);
+            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTpPn);
             this.groupBoxCameraFocusSphericalPos.Location = new System.Drawing.Point(2, 557);
             this.groupBoxCameraFocusSphericalPos.Name = "groupBoxCameraFocusSphericalPos";
             this.groupBoxCameraFocusSphericalPos.Size = new System.Drawing.Size(185, 146);
@@ -4091,37 +4091,37 @@ namespace STROOP
             this.textBoxCameraFocusSphericalPosR.Text = "100";
             this.textBoxCameraFocusSphericalPosR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // buttonCameraFocusSphericalPosRn
-            // 
-            this.buttonCameraFocusSphericalPosRn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCameraFocusSphericalPosRn.Location = new System.Drawing.Point(140, 16);
-            this.buttonCameraFocusSphericalPosRn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraFocusSphericalPosRn.Name = "buttonCameraFocusSphericalPosRn";
-            this.buttonCameraFocusSphericalPosRn.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosRn.TabIndex = 35;
-            this.buttonCameraFocusSphericalPosRn.Text = "R-";
-            this.buttonCameraFocusSphericalPosRn.UseVisualStyleBackColor = true;
-            // 
             // buttonCameraFocusSphericalPosRp
             // 
             this.buttonCameraFocusSphericalPosRp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCameraFocusSphericalPosRp.Location = new System.Drawing.Point(140, 100);
+            this.buttonCameraFocusSphericalPosRp.Location = new System.Drawing.Point(140, 16);
             this.buttonCameraFocusSphericalPosRp.Margin = new System.Windows.Forms.Padding(0);
             this.buttonCameraFocusSphericalPosRp.Name = "buttonCameraFocusSphericalPosRp";
             this.buttonCameraFocusSphericalPosRp.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosRp.TabIndex = 34;
+            this.buttonCameraFocusSphericalPosRp.TabIndex = 35;
             this.buttonCameraFocusSphericalPosRp.Text = "R+";
             this.buttonCameraFocusSphericalPosRp.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraFocusSphericalPosTpPp
+            // buttonCameraFocusSphericalPosRn
             // 
-            this.buttonCameraFocusSphericalPosTpPp.Location = new System.Drawing.Point(87, 100);
-            this.buttonCameraFocusSphericalPosTpPp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraFocusSphericalPosTpPp.Name = "buttonCameraFocusSphericalPosTpPp";
-            this.buttonCameraFocusSphericalPosTpPp.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosTpPp.TabIndex = 32;
-            this.buttonCameraFocusSphericalPosTpPp.Text = "θ+ϕ+";
-            this.buttonCameraFocusSphericalPosTpPp.UseVisualStyleBackColor = true;
+            this.buttonCameraFocusSphericalPosRn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCameraFocusSphericalPosRn.Location = new System.Drawing.Point(140, 100);
+            this.buttonCameraFocusSphericalPosRn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraFocusSphericalPosRn.Name = "buttonCameraFocusSphericalPosRn";
+            this.buttonCameraFocusSphericalPosRn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraFocusSphericalPosRn.TabIndex = 34;
+            this.buttonCameraFocusSphericalPosRn.Text = "R-";
+            this.buttonCameraFocusSphericalPosRn.UseVisualStyleBackColor = true;
+            // 
+            // buttonCameraFocusSphericalPosTnPp
+            // 
+            this.buttonCameraFocusSphericalPosTnPp.Location = new System.Drawing.Point(87, 100);
+            this.buttonCameraFocusSphericalPosTnPp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraFocusSphericalPosTnPp.Name = "buttonCameraFocusSphericalPosTnPp";
+            this.buttonCameraFocusSphericalPosTnPp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraFocusSphericalPosTnPp.TabIndex = 32;
+            this.buttonCameraFocusSphericalPosTnPp.Text = "θ-ϕ+";
+            this.buttonCameraFocusSphericalPosTnPp.UseVisualStyleBackColor = true;
             // 
             // textBoxCameraFocusSphericalPosTP
             // 
@@ -4132,25 +4132,25 @@ namespace STROOP
             this.textBoxCameraFocusSphericalPosTP.Text = "1024";
             this.textBoxCameraFocusSphericalPosTP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // buttonCameraFocusSphericalPosTp
+            // buttonCameraFocusSphericalPosTn
             // 
-            this.buttonCameraFocusSphericalPosTp.Location = new System.Drawing.Point(87, 58);
-            this.buttonCameraFocusSphericalPosTp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraFocusSphericalPosTp.Name = "buttonCameraFocusSphericalPosTp";
-            this.buttonCameraFocusSphericalPosTp.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosTp.TabIndex = 31;
-            this.buttonCameraFocusSphericalPosTp.Text = "θ+";
-            this.buttonCameraFocusSphericalPosTp.UseVisualStyleBackColor = true;
+            this.buttonCameraFocusSphericalPosTn.Location = new System.Drawing.Point(87, 58);
+            this.buttonCameraFocusSphericalPosTn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraFocusSphericalPosTn.Name = "buttonCameraFocusSphericalPosTn";
+            this.buttonCameraFocusSphericalPosTn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraFocusSphericalPosTn.TabIndex = 31;
+            this.buttonCameraFocusSphericalPosTn.Text = "θ-";
+            this.buttonCameraFocusSphericalPosTn.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraFocusSphericalPosTpPn
+            // buttonCameraFocusSphericalPosTnPn
             // 
-            this.buttonCameraFocusSphericalPosTpPn.Location = new System.Drawing.Point(87, 16);
-            this.buttonCameraFocusSphericalPosTpPn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraFocusSphericalPosTpPn.Name = "buttonCameraFocusSphericalPosTpPn";
-            this.buttonCameraFocusSphericalPosTpPn.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosTpPn.TabIndex = 30;
-            this.buttonCameraFocusSphericalPosTpPn.Text = "θ+ϕ-";
-            this.buttonCameraFocusSphericalPosTpPn.UseVisualStyleBackColor = true;
+            this.buttonCameraFocusSphericalPosTnPn.Location = new System.Drawing.Point(87, 16);
+            this.buttonCameraFocusSphericalPosTnPn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraFocusSphericalPosTnPn.Name = "buttonCameraFocusSphericalPosTnPn";
+            this.buttonCameraFocusSphericalPosTnPn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraFocusSphericalPosTnPn.TabIndex = 30;
+            this.buttonCameraFocusSphericalPosTnPn.Text = "θ-ϕ-";
+            this.buttonCameraFocusSphericalPosTnPn.UseVisualStyleBackColor = true;
             // 
             // buttonCameraFocusSphericalPosPn
             // 
@@ -4172,35 +4172,35 @@ namespace STROOP
             this.buttonCameraFocusSphericalPosPp.Text = "ϕ+";
             this.buttonCameraFocusSphericalPosPp.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraFocusSphericalPosTnPp
+            // buttonCameraFocusSphericalPosTpPp
             // 
-            this.buttonCameraFocusSphericalPosTnPp.Location = new System.Drawing.Point(3, 100);
-            this.buttonCameraFocusSphericalPosTnPp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraFocusSphericalPosTnPp.Name = "buttonCameraFocusSphericalPosTnPp";
-            this.buttonCameraFocusSphericalPosTnPp.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosTnPp.TabIndex = 27;
-            this.buttonCameraFocusSphericalPosTnPp.Text = "θ-ϕ+";
-            this.buttonCameraFocusSphericalPosTnPp.UseVisualStyleBackColor = true;
+            this.buttonCameraFocusSphericalPosTpPp.Location = new System.Drawing.Point(3, 100);
+            this.buttonCameraFocusSphericalPosTpPp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraFocusSphericalPosTpPp.Name = "buttonCameraFocusSphericalPosTpPp";
+            this.buttonCameraFocusSphericalPosTpPp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraFocusSphericalPosTpPp.TabIndex = 27;
+            this.buttonCameraFocusSphericalPosTpPp.Text = "θ+ϕ+";
+            this.buttonCameraFocusSphericalPosTpPp.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraFocusSphericalPosTn
+            // buttonCameraFocusSphericalPosTp
             // 
-            this.buttonCameraFocusSphericalPosTn.Location = new System.Drawing.Point(3, 58);
-            this.buttonCameraFocusSphericalPosTn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraFocusSphericalPosTn.Name = "buttonCameraFocusSphericalPosTn";
-            this.buttonCameraFocusSphericalPosTn.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosTn.TabIndex = 26;
-            this.buttonCameraFocusSphericalPosTn.Text = "θ-";
-            this.buttonCameraFocusSphericalPosTn.UseVisualStyleBackColor = true;
+            this.buttonCameraFocusSphericalPosTp.Location = new System.Drawing.Point(3, 58);
+            this.buttonCameraFocusSphericalPosTp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraFocusSphericalPosTp.Name = "buttonCameraFocusSphericalPosTp";
+            this.buttonCameraFocusSphericalPosTp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraFocusSphericalPosTp.TabIndex = 26;
+            this.buttonCameraFocusSphericalPosTp.Text = "θ+";
+            this.buttonCameraFocusSphericalPosTp.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraFocusSphericalPosTnPn
+            // buttonCameraFocusSphericalPosTpPn
             // 
-            this.buttonCameraFocusSphericalPosTnPn.Location = new System.Drawing.Point(3, 16);
-            this.buttonCameraFocusSphericalPosTnPn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraFocusSphericalPosTnPn.Name = "buttonCameraFocusSphericalPosTnPn";
-            this.buttonCameraFocusSphericalPosTnPn.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosTnPn.TabIndex = 25;
-            this.buttonCameraFocusSphericalPosTnPn.Text = "θ-ϕ-";
-            this.buttonCameraFocusSphericalPosTnPn.UseVisualStyleBackColor = true;
+            this.buttonCameraFocusSphericalPosTpPn.Location = new System.Drawing.Point(3, 16);
+            this.buttonCameraFocusSphericalPosTpPn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraFocusSphericalPosTpPn.Name = "buttonCameraFocusSphericalPosTpPn";
+            this.buttonCameraFocusSphericalPosTpPn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraFocusSphericalPosTpPn.TabIndex = 25;
+            this.buttonCameraFocusSphericalPosTpPn.Text = "θ+ϕ-";
+            this.buttonCameraFocusSphericalPosTpPn.UseVisualStyleBackColor = true;
             // 
             // groupBoxCameraFocusPos
             // 
@@ -5652,7 +5652,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 466F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 467F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9371,7 +9371,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(439, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(442, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -9405,14 +9405,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -9433,14 +9433,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -11709,7 +11709,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 669;
+            this.splitContainerMemory.SplitterDistance = 672;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11750,7 +11750,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(669, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(672, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11967,7 +11967,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(669, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(672, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11996,7 +11996,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(568, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(571, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12009,7 +12009,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(237, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(234, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -13163,7 +13163,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -13195,7 +13195,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(385, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -13251,7 +13251,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(385, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -15503,14 +15503,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -15530,46 +15530,46 @@ namespace STROOP
             // 
             // rngIndex
             // 
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
             this.rngIndex.HeaderText = "RNG Index";
             this.rngIndex.MinimumWidth = 2;
             this.rngIndex.Name = "rngIndex";
             // 
             // rngValue
             // 
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
             this.rngValue.HeaderText = "RNG Value";
             this.rngValue.MinimumWidth = 2;
             this.rngValue.Name = "rngValue";
             // 
             // rngToGo
             // 
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
             this.rngToGo.HeaderText = "RNG To Go";
             this.rngToGo.MinimumWidth = 2;
             this.rngToGo.Name = "rngToGo";
             // 
             // coinHSpeed
             // 
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
             this.coinHSpeed.HeaderText = "Coin HSpeed";
             this.coinHSpeed.Name = "coinHSpeed";
             // 
             // coinVSpeed
             // 
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
             this.coinVSpeed.HeaderText = "Coin VSpeed";
             this.coinVSpeed.Name = "coinVSpeed";
             // 
             // coinAngle
             // 
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
             this.coinAngle.HeaderText = "Coin Angle";
             this.coinAngle.MinimumWidth = 2;
             this.coinAngle.Name = "coinAngle";
@@ -17915,7 +17915,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -19099,7 +19099,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(66, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(67, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -21309,17 +21309,17 @@ namespace STROOP
         private Button buttonTasPasteSchedule;
         private GroupBox groupBoxCameraFocusSphericalPos;
         private BetterTextbox textBoxCameraFocusSphericalPosR;
-        private Button buttonCameraFocusSphericalPosRn;
         private Button buttonCameraFocusSphericalPosRp;
-        private Button buttonCameraFocusSphericalPosTpPp;
-        private BetterTextbox textBoxCameraFocusSphericalPosTP;
-        private Button buttonCameraFocusSphericalPosTp;
-        private Button buttonCameraFocusSphericalPosTpPn;
-        private Button buttonCameraFocusSphericalPosPn;
-        private Button buttonCameraFocusSphericalPosPp;
+        private Button buttonCameraFocusSphericalPosRn;
         private Button buttonCameraFocusSphericalPosTnPp;
+        private BetterTextbox textBoxCameraFocusSphericalPosTP;
         private Button buttonCameraFocusSphericalPosTn;
         private Button buttonCameraFocusSphericalPosTnPn;
+        private Button buttonCameraFocusSphericalPosPn;
+        private Button buttonCameraFocusSphericalPosPp;
+        private Button buttonCameraFocusSphericalPosTpPp;
+        private Button buttonCameraFocusSphericalPosTp;
+        private Button buttonCameraFocusSphericalPosTpPn;
         private GroupBox groupBoxCameraFocusPos;
         private CheckBox checkBoxCameraFocusPosRelative;
         private BetterTextbox textBoxCameraFocusPosY;
