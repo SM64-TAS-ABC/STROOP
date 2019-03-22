@@ -34,15 +34,15 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -1365,24 +1365,6 @@ namespace STROOP
             this.buttonGoto = new System.Windows.Forms.Button();
             this.labelGotoY = new System.Windows.Forms.Label();
             this.labelGotoX = new System.Windows.Forms.Label();
-            this.groupBoxRecording = new System.Windows.Forms.GroupBox();
-            this.radioButtonPenguin = new System.Windows.Forms.RadioButton();
-            this.labelMetric6Name = new System.Windows.Forms.Label();
-            this.radioButtonMario = new System.Windows.Forms.RadioButton();
-            this.labelMetric5Name = new System.Windows.Forms.Label();
-            this.buttonTestingClear = new System.Windows.Forms.Button();
-            this.labelMetric4Name = new System.Windows.Forms.Label();
-            this.buttonTestingShow = new System.Windows.Forms.Button();
-            this.labelMetric3Name = new System.Windows.Forms.Label();
-            this.checkBoxTestingRecord = new System.Windows.Forms.CheckBox();
-            this.labelMetric2Name = new System.Windows.Forms.Label();
-            this.labelMetric1Value = new System.Windows.Forms.Label();
-            this.labelMetric1Name = new System.Windows.Forms.Label();
-            this.labelMetric2Value = new System.Windows.Forms.Label();
-            this.labelMetric6Value = new System.Windows.Forms.Label();
-            this.labelMetric3Value = new System.Windows.Forms.Label();
-            this.labelMetric5Value = new System.Windows.Forms.Label();
-            this.labelMetric4Value = new System.Windows.Forms.Label();
             this.tabPageSnow = new System.Windows.Forms.TabPage();
             this.splitContainerSnow = new STROOP.BetterSplitContainer();
             this.textBoxSnowIndex = new STROOP.BetterTextbox();
@@ -1918,7 +1900,6 @@ namespace STROOP
             this.groupBoxObjAtHome.SuspendLayout();
             this.groupBoxObjAtHOLP.SuspendLayout();
             this.groupBoxGoto.SuspendLayout();
-            this.groupBoxRecording.SuspendLayout();
             this.tabPageSnow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSnow)).BeginInit();
             this.splitContainerSnow.Panel1.SuspendLayout();
@@ -9424,14 +9405,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -9452,14 +9433,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -11728,7 +11709,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 684;
+            this.splitContainerMemory.SplitterDistance = 669;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11769,7 +11750,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(684, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(669, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11986,7 +11967,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(684, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(669, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -12015,7 +11996,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(583, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(568, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12028,7 +12009,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(222, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(237, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -13182,7 +13163,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -13214,7 +13195,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(317, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(385, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -13270,7 +13251,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(317, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(385, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -15522,14 +15503,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -15549,46 +15530,46 @@ namespace STROOP
             // 
             // rngIndex
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle22;
             this.rngIndex.HeaderText = "RNG Index";
             this.rngIndex.MinimumWidth = 2;
             this.rngIndex.Name = "rngIndex";
             // 
             // rngValue
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle23;
             this.rngValue.HeaderText = "RNG Value";
             this.rngValue.MinimumWidth = 2;
             this.rngValue.Name = "rngValue";
             // 
             // rngToGo
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle24;
             this.rngToGo.HeaderText = "RNG To Go";
             this.rngToGo.MinimumWidth = 2;
             this.rngToGo.Name = "rngToGo";
             // 
             // coinHSpeed
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle25;
             this.coinHSpeed.HeaderText = "Coin HSpeed";
             this.coinHSpeed.Name = "coinHSpeed";
             // 
             // coinVSpeed
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle26;
             this.coinVSpeed.HeaderText = "Coin VSpeed";
             this.coinVSpeed.Name = "coinVSpeed";
             // 
             // coinAngle
             // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle27;
             this.coinAngle.HeaderText = "Coin Angle";
             this.coinAngle.MinimumWidth = 2;
             this.coinAngle.Name = "coinAngle";
@@ -15830,7 +15811,6 @@ namespace STROOP
             this.tabPageTesting.Controls.Add(this.groupBoxObjAtHome);
             this.tabPageTesting.Controls.Add(this.groupBoxObjAtHOLP);
             this.tabPageTesting.Controls.Add(this.groupBoxGoto);
-            this.tabPageTesting.Controls.Add(this.groupBoxRecording);
             this.tabPageTesting.Location = new System.Drawing.Point(4, 22);
             this.tabPageTesting.Name = "tabPageTesting";
             this.tabPageTesting.Padding = new System.Windows.Forms.Padding(3);
@@ -17577,222 +17557,6 @@ namespace STROOP
             this.labelGotoX.TabIndex = 18;
             this.labelGotoX.Text = "X:";
             this.labelGotoX.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // groupBoxRecording
-            // 
-            this.groupBoxRecording.Controls.Add(this.radioButtonPenguin);
-            this.groupBoxRecording.Controls.Add(this.labelMetric6Name);
-            this.groupBoxRecording.Controls.Add(this.radioButtonMario);
-            this.groupBoxRecording.Controls.Add(this.labelMetric5Name);
-            this.groupBoxRecording.Controls.Add(this.buttonTestingClear);
-            this.groupBoxRecording.Controls.Add(this.labelMetric4Name);
-            this.groupBoxRecording.Controls.Add(this.buttonTestingShow);
-            this.groupBoxRecording.Controls.Add(this.labelMetric3Name);
-            this.groupBoxRecording.Controls.Add(this.checkBoxTestingRecord);
-            this.groupBoxRecording.Controls.Add(this.labelMetric2Name);
-            this.groupBoxRecording.Controls.Add(this.labelMetric1Value);
-            this.groupBoxRecording.Controls.Add(this.labelMetric1Name);
-            this.groupBoxRecording.Controls.Add(this.labelMetric2Value);
-            this.groupBoxRecording.Controls.Add(this.labelMetric6Value);
-            this.groupBoxRecording.Controls.Add(this.labelMetric3Value);
-            this.groupBoxRecording.Controls.Add(this.labelMetric5Value);
-            this.groupBoxRecording.Controls.Add(this.labelMetric4Value);
-            this.groupBoxRecording.Location = new System.Drawing.Point(6, 6);
-            this.groupBoxRecording.Name = "groupBoxRecording";
-            this.groupBoxRecording.Size = new System.Drawing.Size(331, 189);
-            this.groupBoxRecording.TabIndex = 39;
-            this.groupBoxRecording.TabStop = false;
-            this.groupBoxRecording.Text = "Recording";
-            // 
-            // radioButtonPenguin
-            // 
-            this.radioButtonPenguin.AutoSize = true;
-            this.radioButtonPenguin.Checked = true;
-            this.radioButtonPenguin.Location = new System.Drawing.Point(69, 18);
-            this.radioButtonPenguin.Name = "radioButtonPenguin";
-            this.radioButtonPenguin.Size = new System.Drawing.Size(64, 17);
-            this.radioButtonPenguin.TabIndex = 12;
-            this.radioButtonPenguin.TabStop = true;
-            this.radioButtonPenguin.Text = "Penguin";
-            this.radioButtonPenguin.UseVisualStyleBackColor = true;
-            // 
-            // labelMetric6Name
-            // 
-            this.labelMetric6Name.AutoSize = true;
-            this.labelMetric6Name.Location = new System.Drawing.Point(9, 158);
-            this.labelMetric6Name.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelMetric6Name.Name = "labelMetric6Name";
-            this.labelMetric6Name.Size = new System.Drawing.Size(100, 13);
-            this.labelMetric6Name.TabIndex = 18;
-            this.labelMetric6Name.Text = "Name:";
-            this.labelMetric6Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // radioButtonMario
-            // 
-            this.radioButtonMario.AutoSize = true;
-            this.radioButtonMario.Location = new System.Drawing.Point(12, 18);
-            this.radioButtonMario.Name = "radioButtonMario";
-            this.radioButtonMario.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonMario.TabIndex = 11;
-            this.radioButtonMario.Text = "Mario";
-            this.radioButtonMario.UseVisualStyleBackColor = true;
-            // 
-            // labelMetric5Name
-            // 
-            this.labelMetric5Name.AutoSize = true;
-            this.labelMetric5Name.Location = new System.Drawing.Point(9, 133);
-            this.labelMetric5Name.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelMetric5Name.Name = "labelMetric5Name";
-            this.labelMetric5Name.Size = new System.Drawing.Size(100, 13);
-            this.labelMetric5Name.TabIndex = 18;
-            this.labelMetric5Name.Text = "Name:";
-            this.labelMetric5Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // buttonTestingClear
-            // 
-            this.buttonTestingClear.Location = new System.Drawing.Point(205, 96);
-            this.buttonTestingClear.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTestingClear.Name = "buttonTestingClear";
-            this.buttonTestingClear.Size = new System.Drawing.Size(100, 34);
-            this.buttonTestingClear.TabIndex = 16;
-            this.buttonTestingClear.Text = "Clear";
-            this.buttonTestingClear.UseVisualStyleBackColor = true;
-            // 
-            // labelMetric4Name
-            // 
-            this.labelMetric4Name.AutoSize = true;
-            this.labelMetric4Name.Location = new System.Drawing.Point(9, 111);
-            this.labelMetric4Name.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelMetric4Name.Name = "labelMetric4Name";
-            this.labelMetric4Name.Size = new System.Drawing.Size(100, 13);
-            this.labelMetric4Name.TabIndex = 18;
-            this.labelMetric4Name.Text = "Name:";
-            this.labelMetric4Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // buttonTestingShow
-            // 
-            this.buttonTestingShow.Location = new System.Drawing.Point(205, 137);
-            this.buttonTestingShow.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTestingShow.Name = "buttonTestingShow";
-            this.buttonTestingShow.Size = new System.Drawing.Size(100, 34);
-            this.buttonTestingShow.TabIndex = 16;
-            this.buttonTestingShow.Text = "Show";
-            this.buttonTestingShow.UseVisualStyleBackColor = true;
-            // 
-            // labelMetric3Name
-            // 
-            this.labelMetric3Name.AutoSize = true;
-            this.labelMetric3Name.Location = new System.Drawing.Point(9, 88);
-            this.labelMetric3Name.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelMetric3Name.Name = "labelMetric3Name";
-            this.labelMetric3Name.Size = new System.Drawing.Size(100, 13);
-            this.labelMetric3Name.TabIndex = 18;
-            this.labelMetric3Name.Text = "Name:";
-            this.labelMetric3Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // checkBoxTestingRecord
-            // 
-            this.checkBoxTestingRecord.AutoSize = true;
-            this.checkBoxTestingRecord.Location = new System.Drawing.Point(205, 62);
-            this.checkBoxTestingRecord.Name = "checkBoxTestingRecord";
-            this.checkBoxTestingRecord.Size = new System.Drawing.Size(61, 17);
-            this.checkBoxTestingRecord.TabIndex = 17;
-            this.checkBoxTestingRecord.Text = "Record";
-            this.checkBoxTestingRecord.UseVisualStyleBackColor = true;
-            // 
-            // labelMetric2Name
-            // 
-            this.labelMetric2Name.AutoSize = true;
-            this.labelMetric2Name.Location = new System.Drawing.Point(9, 66);
-            this.labelMetric2Name.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelMetric2Name.Name = "labelMetric2Name";
-            this.labelMetric2Name.Size = new System.Drawing.Size(100, 13);
-            this.labelMetric2Name.TabIndex = 18;
-            this.labelMetric2Name.Text = "Name:";
-            this.labelMetric2Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelMetric1Value
-            // 
-            this.labelMetric1Value.AutoSize = true;
-            this.labelMetric1Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelMetric1Value.Location = new System.Drawing.Point(115, 44);
-            this.labelMetric1Value.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelMetric1Value.Name = "labelMetric1Value";
-            this.labelMetric1Value.Size = new System.Drawing.Size(60, 15);
-            this.labelMetric1Value.TabIndex = 18;
-            this.labelMetric1Value.Text = "Value";
-            this.labelMetric1Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelMetric1Name
-            // 
-            this.labelMetric1Name.AutoSize = true;
-            this.labelMetric1Name.Location = new System.Drawing.Point(9, 45);
-            this.labelMetric1Name.MinimumSize = new System.Drawing.Size(100, 2);
-            this.labelMetric1Name.Name = "labelMetric1Name";
-            this.labelMetric1Name.Size = new System.Drawing.Size(100, 13);
-            this.labelMetric1Name.TabIndex = 18;
-            this.labelMetric1Name.Text = "Name:";
-            this.labelMetric1Name.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelMetric2Value
-            // 
-            this.labelMetric2Value.AutoSize = true;
-            this.labelMetric2Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelMetric2Value.Location = new System.Drawing.Point(115, 65);
-            this.labelMetric2Value.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelMetric2Value.Name = "labelMetric2Value";
-            this.labelMetric2Value.Size = new System.Drawing.Size(60, 15);
-            this.labelMetric2Value.TabIndex = 18;
-            this.labelMetric2Value.Text = "Value";
-            this.labelMetric2Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelMetric6Value
-            // 
-            this.labelMetric6Value.AutoSize = true;
-            this.labelMetric6Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelMetric6Value.Location = new System.Drawing.Point(115, 157);
-            this.labelMetric6Value.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelMetric6Value.Name = "labelMetric6Value";
-            this.labelMetric6Value.Size = new System.Drawing.Size(60, 15);
-            this.labelMetric6Value.TabIndex = 18;
-            this.labelMetric6Value.Text = "Value";
-            this.labelMetric6Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelMetric3Value
-            // 
-            this.labelMetric3Value.AutoSize = true;
-            this.labelMetric3Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelMetric3Value.Location = new System.Drawing.Point(115, 87);
-            this.labelMetric3Value.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelMetric3Value.Name = "labelMetric3Value";
-            this.labelMetric3Value.Size = new System.Drawing.Size(60, 15);
-            this.labelMetric3Value.TabIndex = 18;
-            this.labelMetric3Value.Text = "Value";
-            this.labelMetric3Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelMetric5Value
-            // 
-            this.labelMetric5Value.AutoSize = true;
-            this.labelMetric5Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelMetric5Value.Location = new System.Drawing.Point(115, 132);
-            this.labelMetric5Value.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelMetric5Value.Name = "labelMetric5Value";
-            this.labelMetric5Value.Size = new System.Drawing.Size(60, 15);
-            this.labelMetric5Value.TabIndex = 18;
-            this.labelMetric5Value.Text = "Value";
-            this.labelMetric5Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // labelMetric4Value
-            // 
-            this.labelMetric4Value.AutoSize = true;
-            this.labelMetric4Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelMetric4Value.Location = new System.Drawing.Point(115, 110);
-            this.labelMetric4Value.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelMetric4Value.Name = "labelMetric4Value";
-            this.labelMetric4Value.Size = new System.Drawing.Size(60, 15);
-            this.labelMetric4Value.TabIndex = 18;
-            this.labelMetric4Value.Text = "Value";
-            this.labelMetric4Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tabPageSnow
             // 
@@ -20086,8 +19850,6 @@ namespace STROOP
             this.groupBoxObjAtHOLP.PerformLayout();
             this.groupBoxGoto.ResumeLayout(false);
             this.groupBoxGoto.PerformLayout();
-            this.groupBoxRecording.ResumeLayout(false);
-            this.groupBoxRecording.PerformLayout();
             this.tabPageSnow.ResumeLayout(false);
             this.splitContainerSnow.Panel1.ResumeLayout(false);
             this.splitContainerSnow.Panel1.PerformLayout();
@@ -20790,26 +20552,8 @@ namespace STROOP
         private BinaryButton button100Lives;
         private Button buttonTriangleClearData;
         private TabPage tabPageTesting;
-        private CheckBox checkBoxTestingRecord;
-        private Button buttonTestingClear;
-        private Label labelMetric6Name;
-        private Label labelMetric5Name;
-        private Label labelMetric4Name;
-        private Label labelMetric3Name;
-        private Label labelMetric2Name;
-        private Label labelMetric1Name;
-        private Label labelMetric6Value;
-        private Label labelMetric5Value;
-        private Label labelMetric4Value;
-        private Label labelMetric3Value;
-        private Label labelMetric2Value;
-        private Label labelMetric1Value;
-        private Button buttonTestingShow;
         private GroupBox groupBoxFPS;
         private BetterTextbox betterTextboxFPS;
-        private GroupBox groupBoxRecording;
-        private RadioButton radioButtonPenguin;
-        private RadioButton radioButtonMario;
         private GroupBox groupBoxGoto;
         private BetterTextbox betterTextboxGotoZ;
         private BetterTextbox betterTextboxGotoY;
