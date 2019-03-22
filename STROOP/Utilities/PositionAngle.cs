@@ -504,7 +504,7 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Camera:
                         return Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
                     case PositionAngleTypeEnum.CameraFocus:
-                        return Double.NaN;
+                        return Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
                     case PositionAngleTypeEnum.CamHackCamera:
                         return CamHackUtilities.GetCamHackYawFacing();
                     case PositionAngleTypeEnum.CamHackFocus:

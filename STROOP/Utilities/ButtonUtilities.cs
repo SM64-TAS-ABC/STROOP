@@ -1140,7 +1140,7 @@ namespace STROOP.Utilities
 
         public static bool TranslateCameraFocus(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Camera };
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.CameraFocus };
             return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
