@@ -16,42 +16,6 @@ namespace STROOP.Managers
 {
     public class TestingManager
     {
-        // Recording
-        GroupBox _groupBoxRecording;
-        CheckBox _checkBoxTestingRecord;
-        Button _buttonTestingClear;
-        Button _buttonTestingShow;
-
-        Label _labelMetric1Name;
-        Label _labelMetric2Name;
-        Label _labelMetric3Name;
-        Label _labelMetric4Name;
-        Label _labelMetric5Name;
-        Label _labelMetric6Name;
-
-        Label _labelMetric1Value;
-        Label _labelMetric2Value;
-        Label _labelMetric3Value;
-        Label _labelMetric4Value;
-        Label _labelMetric5Value;
-        Label _labelMetric6Value;
-
-        RadioButton _radioButtonMario;
-        RadioButton _radioButtonPenguin;
-
-        enum VarToRecord { Mario, Penguin };
-
-        VarToRecord _varToRecord;
-
-        public Dictionary<int, VarState> VarStateDictionary;
-
-        int? _previousTimer;
-        int _currentTimer;
-        int _globalTimerDiff;
-        int _collisions;
-        int _badCollisions;
-        int _gaps;
-
         // Control stick
         GroupBox _groupBoxControlStick;
         CheckBox _checkBoxUseInput;
@@ -198,58 +162,6 @@ namespace STROOP.Managers
 
         public TestingManager(TabPage tabControl)
         {
-            // Recording
-            _groupBoxRecording = tabControl.Controls["groupBoxRecording"] as GroupBox;
-
-            _checkBoxTestingRecord = _groupBoxRecording.Controls["checkBoxTestingRecord"] as CheckBox;
-            _checkBoxTestingRecord.Click += (sender, e) => SetRecordOn(_checkBoxTestingRecord.Checked);
-            _buttonTestingClear = _groupBoxRecording.Controls["buttonTestingClear"] as Button;
-            _buttonTestingClear.Click += (sender, e) => ClearData();
-            _buttonTestingShow = _groupBoxRecording.Controls["buttonTestingShow"] as Button;
-            _buttonTestingShow.Click += (sender, e) => ShowData();
-
-            _labelMetric1Name = _groupBoxRecording.Controls["labelMetric1Name"] as Label;
-            _labelMetric2Name = _groupBoxRecording.Controls["labelMetric2Name"] as Label;
-            _labelMetric3Name = _groupBoxRecording.Controls["labelMetric3Name"] as Label;
-            _labelMetric4Name = _groupBoxRecording.Controls["labelMetric4Name"] as Label;
-            _labelMetric5Name = _groupBoxRecording.Controls["labelMetric5Name"] as Label;
-            _labelMetric6Name = _groupBoxRecording.Controls["labelMetric6Name"] as Label;
-
-            _labelMetric1Value = _groupBoxRecording.Controls["labelMetric1Value"] as Label;
-            _labelMetric2Value = _groupBoxRecording.Controls["labelMetric2Value"] as Label;
-            _labelMetric3Value = _groupBoxRecording.Controls["labelMetric3Value"] as Label;
-            _labelMetric4Value = _groupBoxRecording.Controls["labelMetric4Value"] as Label;
-            _labelMetric5Value = _groupBoxRecording.Controls["labelMetric5Value"] as Label;
-            _labelMetric6Value = _groupBoxRecording.Controls["labelMetric6Value"] as Label;
-
-            _radioButtonMario = _groupBoxRecording.Controls["radioButtonMario"] as RadioButton;
-            _radioButtonMario.Click += (sender, e) => _varToRecord = VarToRecord.Mario;
-            _radioButtonPenguin = _groupBoxRecording.Controls["radioButtonPenguin"] as RadioButton;
-            _radioButtonPenguin.Click += (sender, e) => _varToRecord = VarToRecord.Penguin;
-
-            if (_radioButtonMario.Checked)
-            {
-                _varToRecord = VarToRecord.Mario;
-            }
-            else
-            {
-                _varToRecord = VarToRecord.Penguin;
-            }
-
-            _labelMetric1Name.Text = "Data Count:";
-            _labelMetric2Name.Text = "Collisions:";
-            _labelMetric3Name.Text = "Bad Collisions:";
-            _labelMetric4Name.Text = "Gaps:";
-            _labelMetric5Name.Text = "Timer:";
-
-            VarStateDictionary = new Dictionary<int, VarState>();
-            ClearData();
-
-            foreach ((int timer, double progress) in _plushRacingPenguinProgress)
-            {
-                VarStateDictionary.Add(timer, new VarStatePenguin() { Progress = progress });
-            }
-
             // Control stick
             _groupBoxControlStick = tabControl.Controls["groupBoxControlStick"] as GroupBox;
             _checkBoxUseInput = _groupBoxControlStick.Controls["checkBoxUseInput"] as CheckBox;
@@ -716,36 +628,6 @@ namespace STROOP.Managers
             else RefreshRateConfig.RefreshRateFreq = 30;
         }
 
-        private void ClearData()
-        {
-            VarStateDictionary.Clear();
-            _previousTimer = null;
-            _currentTimer = 0;
-            _globalTimerDiff = 0;
-            _collisions = 0;
-            _badCollisions = 0;
-            _gaps = 0;
-        }
-
-        private void ShowData()
-        {
-            InfoForm infoForm = new InfoForm();
-            string varNamesString;
-            switch (_varToRecord)
-            {
-                case VarToRecord.Mario:
-                    varNamesString = VarStateMario.VarNamesString();
-                    break;
-                case VarToRecord.Penguin:
-                    varNamesString = VarStatePenguin.VarNamesString();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            infoForm.SetDictionary(VarStateDictionary, "Timer", varNamesString);
-            infoForm.Show();
-        }
-
         public void Update(bool updateView)
         {
             // Show Invisible Objects as Signs
@@ -837,68 +719,6 @@ namespace STROOP.Managers
                 _labelScheduleIndex.Text = _rollingRocksScheduleIndex.ToString();
                 _labelScheduleDescription.Text = description.ToString();
             }
-
-            // get current stream values
-            switch (_varToRecord)
-            {
-                case VarToRecord.Mario:
-                    uint marioObjAddress = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    _currentTimer = Config.Stream.GetInt32(marioObjAddress + ObjectConfig.TimerOffset);
-                    break;
-                case VarToRecord.Penguin:
-                    _currentTimer = Config.Stream.GetInt32(RomVersionConfig.Switch(0x803493DC, 0x803463EC));
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            VarState varState;
-            switch (_varToRecord)
-            {
-                case VarToRecord.Mario:
-                    varState = VarStateMario.GetCurrent();
-                    break;
-                case VarToRecord.Penguin:
-                    varState = VarStatePenguin.GetCurrent();
-                    _labelMetric6Value.Text = ((int)(varState as VarStatePenguin).Progress).ToString();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            if (_checkBoxTestingRecord.Checked)
-            {
-                // check for key collisions
-                bool keyCollision = VarStateDictionary.ContainsKey(_currentTimer);
-                if (keyCollision) _collisions++;
-
-                // check for value collisions
-                bool valueCollision = keyCollision && VarStateDictionary[_currentTimer].Equals(varState);
-                if (keyCollision && !valueCollision)
-                {
-                    _badCollisions++;
-                    //System.Diagnostics.Trace.WriteLine("timer " + _currentTimer + " was " + _varStateDictionary[_currentTimer] + " but attempted " + varState);
-                }
-
-                // check the global timer difference
-                if (_previousTimer != null)
-                {
-                    _globalTimerDiff = _currentTimer - _previousTimer.Value;
-                    if (_globalTimerDiff > 1) _gaps += _globalTimerDiff - 1;
-                }
-
-                // update dictionary if need be
-                if (!keyCollision) VarStateDictionary[_currentTimer] = varState;
-
-                // update previous global timer value
-                _previousTimer = _currentTimer;
-            }
-
-            _labelMetric1Value.Text = VarStateDictionary.Count.ToString();
-            _labelMetric2Value.Text = _collisions.ToString();
-            _labelMetric3Value.Text = _badCollisions.ToString();
-            _labelMetric4Value.Text = _gaps.ToString();
-            _labelMetric5Value.Text = _currentTimer.ToString();
 
             // Control stick
             sbyte currentX = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickXOffset);
