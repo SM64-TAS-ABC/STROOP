@@ -1147,14 +1147,16 @@ namespace STROOP.Utilities
         public static bool TranslateCameraFocusSpherically(float radiusOffset, float thetaOffset, float phiOffset)
         {
             float pivotX, pivotY, pivotZ;
-            (pivotX, pivotY, pivotZ) = (0,0,0);
+            pivotX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
+            pivotY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
+            pivotZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
 
             HandleScaling(ref thetaOffset, ref phiOffset);
 
             float oldX, oldY, oldZ;
-            oldX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
-            oldY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
-            oldZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
+            oldX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
+            oldY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
+            oldZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
 
             double newX, newY, newZ;
             (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ);
@@ -1163,9 +1165,9 @@ namespace STROOP.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue((float)newX, CameraConfig.StructAddress + CameraConfig.XOffset);
-            success &= Config.Stream.SetValue((float)newY, CameraConfig.StructAddress + CameraConfig.YOffset);
-            success &= Config.Stream.SetValue((float)newZ, CameraConfig.StructAddress + CameraConfig.ZOffset);
+            success &= Config.Stream.SetValue((float)newX, CameraConfig.StructAddress + CameraConfig.FocusXOffset);
+            success &= Config.Stream.SetValue((float)newY, CameraConfig.StructAddress + CameraConfig.FocusYOffset);
+            success &= Config.Stream.SetValue((float)newZ, CameraConfig.StructAddress + CameraConfig.FocusZOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
