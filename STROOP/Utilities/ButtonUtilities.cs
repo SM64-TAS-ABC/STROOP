@@ -1138,6 +1138,39 @@ namespace STROOP.Utilities
             return success;
         }
 
+        public static bool TranslateCameraFocus(float xOffset, float yOffset, float zOffset, bool useRelative)
+        {
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Camera };
+            return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+        }
+
+        public static bool TranslateCameraFocusSpherically(float radiusOffset, float thetaOffset, float phiOffset)
+        {
+            float pivotX, pivotY, pivotZ;
+            (pivotX, pivotY, pivotZ) = (0,0,0);
+
+            HandleScaling(ref thetaOffset, ref phiOffset);
+
+            float oldX, oldY, oldZ;
+            oldX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
+            oldY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
+            oldZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
+
+            double newX, newY, newZ;
+            (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ);
+
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            success &= Config.Stream.SetValue((float)newX, CameraConfig.StructAddress + CameraConfig.XOffset);
+            success &= Config.Stream.SetValue((float)newY, CameraConfig.StructAddress + CameraConfig.YOffset);
+            success &= Config.Stream.SetValue((float)newZ, CameraConfig.StructAddress + CameraConfig.ZOffset);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
         private static ushort getCamHackYawFacing(CamHackMode camHackMode)
         {
             switch (camHackMode)
