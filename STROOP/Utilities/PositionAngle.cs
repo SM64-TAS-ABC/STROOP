@@ -35,6 +35,7 @@ namespace STROOP.Utilities
             ObjHome,
             ObjGfx,
             ObjScale,
+            Selected,
             Moneybag,
             MoneybagHome,
             Tri,
@@ -112,6 +113,7 @@ namespace STROOP.Utilities
         public static PositionAngle Custom = new PositionAngle(PositionAngleTypeEnum.Custom);
         public static PositionAngle Mario = new PositionAngle(PositionAngleTypeEnum.Mario);
         public static PositionAngle Holp = new PositionAngle(PositionAngleTypeEnum.Holp);
+        public static PositionAngle Selected = new PositionAngle(PositionAngleTypeEnum.Selected);
         public static PositionAngle Moneybag = new PositionAngle(PositionAngleTypeEnum.Moneybag);
         public static PositionAngle MoneybagHome = new PositionAngle(PositionAngleTypeEnum.MoneybagHome);
         public static PositionAngle Camera = new PositionAngle(PositionAngleTypeEnum.Camera);
@@ -208,6 +210,10 @@ namespace STROOP.Utilities
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
                 if (!address.HasValue) return null;
                 return ObjScale(address.Value);
+            }
+            else if (parts.Count == 1 && parts[0] == "selected")
+            {
+                return Selected;
             }
             else if (parts.Count == 1 && parts[0] == "moneybag")
             {
@@ -307,6 +313,13 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsXOffset);
                     case PositionAngleTypeEnum.ObjScale:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleWidthOffset);
+                    case PositionAngleTypeEnum.Selected:
+                    {
+                        List<uint> objAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+                        if (objAddresses.Count == 0) return Double.NaN;
+                        uint objAddress = objAddresses[0];
+                        return Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    }
                     case PositionAngleTypeEnum.Moneybag:
                     {
                         ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
@@ -377,6 +390,13 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsYOffset);
                     case PositionAngleTypeEnum.ObjScale:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleHeightOffset);
+                    case PositionAngleTypeEnum.Selected:
+                    {
+                        List<uint> objAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+                        if (objAddresses.Count == 0) return Double.NaN;
+                        uint objAddress = objAddresses[0];
+                        return Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    }
                     case PositionAngleTypeEnum.Moneybag:
                     {
                         ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
@@ -447,6 +467,13 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsZOffset);
                     case PositionAngleTypeEnum.ObjScale:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleDepthOffset);
+                    case PositionAngleTypeEnum.Selected:
+                    {
+                        List<uint> objAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+                        if (objAddresses.Count == 0) return Double.NaN;
+                        uint objAddress = objAddresses[0];
+                        return Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    }
                     case PositionAngleTypeEnum.Moneybag:
                     {
                         ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
@@ -517,6 +544,13 @@ namespace STROOP.Utilities
                         return Config.Stream.GetUInt16(Address.Value + ObjectConfig.GraphicsYawOffset);
                     case PositionAngleTypeEnum.ObjScale:
                         return Double.NaN;
+                    case PositionAngleTypeEnum.Selected:
+                    {
+                        List<uint> objAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+                        if (objAddresses.Count == 0) return Double.NaN;
+                        uint objAddress = objAddresses[0];
+                        return Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                    }
                     case PositionAngleTypeEnum.Moneybag:
                         ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
                         uint? moneybagAddress = moneybag?.Address;
@@ -665,6 +699,13 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.GraphicsXOffset);
                 case PositionAngleTypeEnum.ObjScale:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ScaleWidthOffset);
+                case PositionAngleTypeEnum.Selected:
+                {
+                    List<uint> objAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+                    if (objAddresses.Count == 0) return false;
+                    uint objAddress = objAddresses[0];
+                    return Config.Stream.SetValue((float)value, objAddress + ObjectConfig.XOffset);
+                }
                 case PositionAngleTypeEnum.Moneybag:
                 {
                     ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
@@ -731,6 +772,13 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.GraphicsYOffset);
                 case PositionAngleTypeEnum.ObjScale:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ScaleHeightOffset);
+                case PositionAngleTypeEnum.Selected:
+                {
+                    List<uint> objAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+                    if (objAddresses.Count == 0) return false;
+                    uint objAddress = objAddresses[0];
+                    return Config.Stream.SetValue((float)value, objAddress + ObjectConfig.YOffset);
+                }
                 case PositionAngleTypeEnum.Moneybag:
                 {
                     ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
@@ -797,6 +845,13 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.GraphicsZOffset);
                 case PositionAngleTypeEnum.ObjScale:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ScaleDepthOffset);
+                case PositionAngleTypeEnum.Selected:
+                {
+                    List<uint> objAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+                    if (objAddresses.Count == 0) return false;
+                    uint objAddress = objAddresses[0];
+                    return Config.Stream.SetValue((float)value, objAddress + ObjectConfig.ZOffset);
+                }
                 case PositionAngleTypeEnum.Moneybag:
                 {
                     ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
@@ -869,6 +924,16 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue(valueUShort, Address.Value + ObjectConfig.GraphicsYawOffset);
                 case PositionAngleTypeEnum.ObjScale:
                     return false;
+                case PositionAngleTypeEnum.Selected:
+                {
+                    List<uint> objAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+                    if (objAddresses.Count == 0) return false;
+                    uint objAddress = objAddresses[0];
+                    bool success = true;
+                    success &= Config.Stream.SetValue(valueUShort, objAddress + ObjectConfig.YawFacingOffset);
+                    success &= Config.Stream.SetValue(valueUShort, objAddress + ObjectConfig.YawMovingOffset);
+                    return success;
+                }
                 case PositionAngleTypeEnum.Moneybag:
                 {
                     ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
