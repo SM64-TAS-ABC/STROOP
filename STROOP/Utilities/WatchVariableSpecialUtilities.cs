@@ -1070,6 +1070,14 @@ namespace STROOP.Structs
                     return success;
                 }));
 
+            _dictionary.Add("TwirlYawMod2048",
+                ((uint dummy) =>
+                {
+                    ushort twirlYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.TwirlYawOffset);
+                    return twirlYaw % 2048;
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("BobombTrajectoryFramesToPoint",
                 ((uint dummy) =>
                 {

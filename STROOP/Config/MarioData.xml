@@ -41,6 +41,7 @@
   <Data groupList="Basic" base="None" specialType="DeltaYawIntendedFacing" subclass="Angle" display="short">DYaw Intend-Face</Data>
   <Data groupList="Intermediate" base="None" specialType="DeltaYawIntendedBackwards" subclass="Angle" display="short">DYaw Intend-Back</Data>
   <Data groupList="Intermediate" type="ushort" offset="0x3A" base="Mario" subclass="Angle" yaw="true">Twirl Yaw</Data>
+  <Data groupList="Advanced" base="None" specialType="TwirlYawMod2048">Twirl Yaw Mod 2048</Data>
   <Data groupList="Intermediate" type="ushort" offset="0x74" base="Mario" subclass="Angle" yaw="true">Floor Yaw</Data>
   <Data groupList="Intermediate" type="short" offset="0x34" base="Mario" subclass="Angle">Yaw Velocity</Data>
   <Data groupList="Intermediate" type="short" offset="0x2C" base="Mario" subclass="Angle">Pitch</Data>
