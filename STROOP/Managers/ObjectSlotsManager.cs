@@ -23,7 +23,7 @@ namespace STROOP.Managers
         /// </summary>
         const int DefaultSlotSize = 36;
 
-        public enum TabType { Object, Map, Map2, Model, Memory, Custom, CamHack, Other };
+        public enum TabType { Object, Map, Map2, Model, Memory, Custom, TAS, CamHack, Other };
         public enum TabDestinationType { Object, Memory };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
@@ -91,6 +91,7 @@ namespace STROOP.Managers
             ["Model"] = TabType.Model,
             ["Memory"] = TabType.Memory,
             ["Custom"] = TabType.Custom,
+            ["TAS"] = TabType.TAS,
             ["Cam Hack"] = TabType.CamHack,
         };
         private void TabControl_Selected(object sender, TabControlEventArgs e)
@@ -156,6 +157,7 @@ namespace STROOP.Managers
                         return ClickType.MemoryClick;
                     case TabType.Object:
                     case TabType.Custom:
+                    case TabType.TAS:
                     case TabType.Other:
                         return ClickType.ObjectClick;
                     default:
@@ -175,6 +177,7 @@ namespace STROOP.Managers
         {
             if (isAltKeyHeld) return null;
             if (ActiveTab == TabType.Other) return TabDestinationType.Object;
+            if (ActiveTab == TabType.TAS && !SpecialConfig.IsSelectedPA) return TabDestinationType.Object;
             return null;
         }
 
