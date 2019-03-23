@@ -66,7 +66,7 @@ namespace STROOP.Managers
             _buttonTasClearData.Click += (sender, e) => ClearData();
             _richTextBoxTasInstructions = splitContainerTasTable.Panel1.Controls["richTextBoxTasInstructions"] as RichTextBox;
 
-            Button buttonTasStoreMarioPosition = splitContainerTasTable.Panel1.Controls["buttonTasStoreMarioPosition"] as Button;
+            Button buttonTasStoreMarioPosition = splitContainerTasTable.Panel1.Controls["buttonTasStorePosition"] as Button;
             buttonTasStoreMarioPosition.Click += (sender, e) => StoreMarioInfo(x: true, y: true, z: true);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTasStoreMarioPosition,
@@ -79,7 +79,7 @@ namespace STROOP.Managers
                     () => StoreMarioInfo(z: true),
                 });
 
-            Button buttonTasStoreMarioAngle = splitContainerTasTable.Panel1.Controls["buttonTasStoreMarioAngle"] as Button;
+            Button buttonTasStoreMarioAngle = splitContainerTasTable.Panel1.Controls["buttonTasStoreAngle"] as Button;
             buttonTasStoreMarioAngle.Click += (sender, e) => StoreMarioInfo(angle: true);
 
             Button buttonTasPasteSchedule = splitContainerTasTable.Panel1.Controls["buttonTasPasteSchedule"] as Button;
