@@ -65,22 +65,38 @@ namespace STROOP.Managers
             _buttonTasClearData = splitContainerTasTable.Panel1.Controls["buttonTasClearData"] as Button;
             _buttonTasClearData.Click += (sender, e) => ClearData();
             _richTextBoxTasInstructions = splitContainerTasTable.Panel1.Controls["richTextBoxTasInstructions"] as RichTextBox;
-
-            Button buttonTasStoreMarioPosition = splitContainerTasTable.Panel1.Controls["buttonTasStorePosition"] as Button;
-            buttonTasStoreMarioPosition.Click += (sender, e) => StoreMarioInfo(x: true, y: true, z: true);
+            
+            Button buttonTasStorePosition = splitContainerTasTable.Panel1.Controls["buttonTasStorePosition"] as Button;
+            buttonTasStorePosition.Click += (sender, e) => StoreInfo(x: true, y: true, z: true);
             ControlUtilities.AddContextMenuStripFunctions(
-                buttonTasStoreMarioPosition,
+                buttonTasStorePosition,
                 new List<string>() { "Store Position", "Store Lateral Position", "Store X", "Store Y", "Store Z" },
                 new List<Action>() {
-                    () => StoreMarioInfo(x: true, y: true, z: true),
-                    () => StoreMarioInfo(x: true, z: true),
-                    () => StoreMarioInfo(x: true),
-                    () => StoreMarioInfo(y: true),
-                    () => StoreMarioInfo(z: true),
+                    () => StoreInfo(x: true, y: true, z: true),
+                    () => StoreInfo(x: true, z: true),
+                    () => StoreInfo(x: true),
+                    () => StoreInfo(y: true),
+                    () => StoreInfo(z: true),
                 });
 
-            Button buttonTasStoreMarioAngle = splitContainerTasTable.Panel1.Controls["buttonTasStoreAngle"] as Button;
-            buttonTasStoreMarioAngle.Click += (sender, e) => StoreMarioInfo(angle: true);
+            Button buttonTasStoreAngle = splitContainerTasTable.Panel1.Controls["buttonTasStoreAngle"] as Button;
+            buttonTasStoreAngle.Click += (sender, e) => StoreInfo(angle: true);
+            
+            Button buttonTasGoToPosition = splitContainerTasTable.Panel1.Controls["buttonTasGoToPosition"] as Button;
+            buttonTasGoToPosition.Click += (sender, e) => GoToPoint(x: true, y: true, z: true);
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonTasGoToPosition,
+                new List<string>() { "Go To Position", "Go To Lateral Position", "Go To X", "Go To Y", "Go To Z" },
+                new List<Action>() {
+                    () => GoToPoint(x: true, y: true, z: true),
+                    () => GoToPoint(x: true, z: true),
+                    () => GoToPoint(x: true),
+                    () => GoToPoint(y: true),
+                    () => GoToPoint(z: true),
+                });
+
+            Button buttonTasGoToMarioAngle = splitContainerTasTable.Panel1.Controls["buttonTasGoToAngle"] as Button;
+            buttonTasGoToMarioAngle.Click += (sender, e) => GoToPoint(angle: true);
 
             Button buttonTasPasteSchedule = splitContainerTasTable.Panel1.Controls["buttonTasPasteSchedule"] as Button;
             buttonTasPasteSchedule.Click += (sender, e) => SetScheduler(Clipboard.GetText());
@@ -93,13 +109,22 @@ namespace STROOP.Managers
             _rowDictionary = new Dictionary<uint, DataGridViewRow>();
         }
 
-        private void StoreMarioInfo(
+        private void StoreInfo(
             bool x = false, bool y = false, bool z = false, bool angle = false)
         {
             if (x) SpecialConfig.CustomX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             if (y) SpecialConfig.CustomY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             if (z) SpecialConfig.CustomZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
             if (angle) SpecialConfig.CustomAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+        }
+
+        private void GoToPoint(
+            bool x = false, bool y = false, bool z = false, bool angle = false)
+        {
+            if (x) Config.Stream.SetValue((float)SpecialConfig.CustomX, MarioConfig.StructAddress + MarioConfig.XOffset);
+            if (y) Config.Stream.SetValue((float)SpecialConfig.CustomY, MarioConfig.StructAddress + MarioConfig.YOffset);
+            if (z) Config.Stream.SetValue((float)SpecialConfig.CustomZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+            if (angle) Config.Stream.SetValue((ushort)SpecialConfig.CustomAngle, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
         }
 
         private class TasDataStruct
