@@ -48,6 +48,11 @@ namespace STROOP.Utilities
             Functions,
         }
 
+        public bool IsSelected
+        {
+            get => PosAngleType == PositionAngleTypeEnum.Selected;
+        }
+
         private bool ShouldHaveAddress(PositionAngleTypeEnum posAngleType)
         {
             return posAngleType == PositionAngleTypeEnum.Obj ||
@@ -1343,6 +1348,5 @@ namespace STROOP.Utilities
                 return p2.SetValues(angle: newAngle);
             }
         }
-
     }
 }

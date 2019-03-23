@@ -76,6 +76,16 @@ namespace STROOP.Structs.Configurations
             get => PointPA.Angle;
         }
 
+        // - Functions
+
+        public static bool IsSelectedPA
+        {
+            get => SelfPosPA.IsSelected ||
+                SelfAnglePA.IsSelected ||
+                PointPosPA.IsSelected ||
+                PointAnglePA.IsSelected;
+        }
+
         // Rng vars
 
         public static int GoalRngIndex
