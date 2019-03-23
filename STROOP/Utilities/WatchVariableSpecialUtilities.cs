@@ -286,6 +286,14 @@ namespace STROOP.Structs
         {
             // Object vars
 
+            _dictionary.Add("DAngleMarioToObjMod512",
+                ((uint objAddress) =>
+                {
+                    double dAngle = PositionAngle.GetDAngleTo(PositionAngle.Mario, PositionAngle.Obj(objAddress), false, false);
+                    return MoreMath.MaybeNegativeModulus(dAngle, 512);
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("MarioHitboxAwayFromObject",
                 ((uint objAddress) =>
                 {

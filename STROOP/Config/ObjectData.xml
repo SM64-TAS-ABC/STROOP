@@ -56,6 +56,7 @@
   <Data groupList="Intermediate" base="Object" specialType="DAngleObjToMario" subclass="Angle" display="short">DAngle Obj to Mario</Data>
   <Data groupList="Intermediate" base="Object" specialType="AngleMarioToObj" subclass="Angle" display="ushort" yaw="true">Angle Mario to Obj</Data>
   <Data groupList="Intermediate" base="Object" specialType="DAngleMarioToObj" subclass="Angle" display="short">DAngle Mario to Obj</Data>
+  <Data groupList="Advanced" base="Object" specialType="DAngleMarioToObjMod512" subclass="Angle" display="short">DAngle Mario to Obj Mod 512</Data>
   <Data groupList="Advanced" base="Object" specialType="AngleObjToObjHome" subclass="Angle" display="ushort" yaw="true">Angle Obj to Home</Data>
   <Data groupList="Advanced" base="Object" specialType="DAngleObjToObjHome" subclass="Angle" display="short">DAngle Obj to Home</Data>
   <Data groupList="Advanced" base="Object" specialType="AngleObjHomeToObj" subclass="Angle" display="ushort" yaw="true">Angle Home to Obj</Data>
