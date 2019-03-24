@@ -38,6 +38,7 @@ namespace STROOP.Utilities
             Selected,
             Moneybag,
             MoneybagHome,
+            Ghost,
             Tri,
             Wall,
             Floor,
@@ -121,6 +122,7 @@ namespace STROOP.Utilities
         public static PositionAngle Selected = new PositionAngle(PositionAngleTypeEnum.Selected);
         public static PositionAngle Moneybag = new PositionAngle(PositionAngleTypeEnum.Moneybag);
         public static PositionAngle MoneybagHome = new PositionAngle(PositionAngleTypeEnum.MoneybagHome);
+        public static PositionAngle Ghost = new PositionAngle(PositionAngleTypeEnum.Ghost);
         public static PositionAngle Camera = new PositionAngle(PositionAngleTypeEnum.Camera);
         public static PositionAngle CameraFocus = new PositionAngle(PositionAngleTypeEnum.CameraFocus);
         public static PositionAngle CamHackCamera = new PositionAngle(PositionAngleTypeEnum.CamHackCamera);
@@ -134,9 +136,6 @@ namespace STROOP.Utilities
         public static PositionAngle MarioObj() => Obj(Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress));
         public static PositionAngle ObjGfx(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.ObjGfx, address: address);
-        public static PositionAngle Ghost() =>
-            ObjGfx(Config.ObjectSlotsManager.GetLoadedObjectsWithName("Mario Ghost")
-                .ConvertAll(objectDataModel => objectDataModel.Address).FirstOrDefault());
         public static PositionAngle ObjScale(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.ObjScale, address: address);
         public static PositionAngle Tri(uint address, int index) =>
@@ -187,10 +186,6 @@ namespace STROOP.Utilities
             {
                 return CamHackFocus;
             }
-            else if (parts.Count == 1 && parts[0] == "ghost")
-            {
-                return Ghost();
-            }
             else if (parts.Count == 2 && (parts[0] == "obj" || parts[0] == "object"))
             {
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
@@ -227,6 +222,10 @@ namespace STROOP.Utilities
             else if (parts.Count == 1 && parts[0] == "moneybaghome")
             {
                 return MoneybagHome;
+            }
+            else if (parts.Count == 1 && parts[0] == "ghost")
+            {
+                return Ghost;
             }
             else if (parts.Count == 3 && (parts[0] == "tri" || parts[0] == "triangle"))
             {
@@ -329,6 +328,8 @@ namespace STROOP.Utilities
                         return GetObjectValue("Moneybag", CoordinateAngle.X);
                     case PositionAngleTypeEnum.MoneybagHome:
                         return GetObjectValue("Moneybag", CoordinateAngle.X, home: true);
+                    case PositionAngleTypeEnum.Ghost:
+                        return GetObjectValue("Mario Ghost", CoordinateAngle.X, gfx: true);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.X);
                     case PositionAngleTypeEnum.Wall:
@@ -396,6 +397,8 @@ namespace STROOP.Utilities
                         return GetObjectValue("Moneybag", CoordinateAngle.Y);
                     case PositionAngleTypeEnum.MoneybagHome:
                         return GetObjectValue("Moneybag", CoordinateAngle.Y, home: true);
+                    case PositionAngleTypeEnum.Ghost:
+                        return GetObjectValue("Mario Ghost", CoordinateAngle.Y, gfx: true);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.Wall:
@@ -463,6 +466,8 @@ namespace STROOP.Utilities
                         return GetObjectValue("Moneybag", CoordinateAngle.Z);
                     case PositionAngleTypeEnum.MoneybagHome:
                         return GetObjectValue("Moneybag", CoordinateAngle.Z, home: true);
+                    case PositionAngleTypeEnum.Ghost:
+                        return GetObjectValue("Mario Ghost", CoordinateAngle.Z, gfx: true);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.Wall:
@@ -530,6 +535,8 @@ namespace STROOP.Utilities
                         return GetObjectValue("Moneybag", CoordinateAngle.Angle);
                     case PositionAngleTypeEnum.MoneybagHome:
                         return GetObjectValue("Moneybag", CoordinateAngle.Angle, home: true);
+                    case PositionAngleTypeEnum.Ghost:
+                        return GetObjectValue("Mario Ghost", CoordinateAngle.Angle, gfx: true);
                     case PositionAngleTypeEnum.Tri:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Wall:
@@ -565,7 +572,7 @@ namespace STROOP.Utilities
             return doubleList[index];
         }
 
-        private static double GetObjectValue(string name, CoordinateAngle coordAngle, bool home = false)
+        private static double GetObjectValue(string name, CoordinateAngle coordAngle, bool home = false, bool gfx = false)
         {
             ObjectDataModel obj = Config.ObjectSlotsManager.GetLoadedObjectsWithName(name).LastOrDefault();
             uint? objAddress = obj?.Address;
@@ -573,16 +580,17 @@ namespace STROOP.Utilities
             switch (coordAngle)
             {
                 case CoordinateAngle.X:
-                    uint xOffset = home ? ObjectConfig.HomeXOffset : ObjectConfig.XOffset;
+                    uint xOffset = home ? ObjectConfig.HomeXOffset : gfx ? ObjectConfig.GraphicsXOffset : ObjectConfig.XOffset;
                     return Config.Stream.GetSingle(objAddress.Value + xOffset);
                 case CoordinateAngle.Y:
-                    uint yOffset = home ? ObjectConfig.HomeYOffset : ObjectConfig.YOffset;
+                    uint yOffset = home ? ObjectConfig.HomeYOffset : gfx ? ObjectConfig.GraphicsYOffset : ObjectConfig.YOffset;
                     return Config.Stream.GetSingle(objAddress.Value + yOffset);
                 case CoordinateAngle.Z:
-                    uint zOffset = home ? ObjectConfig.HomeZOffset : ObjectConfig.ZOffset;
+                    uint zOffset = home ? ObjectConfig.HomeZOffset : gfx ? ObjectConfig.GraphicsZOffset : ObjectConfig.ZOffset;
                     return Config.Stream.GetSingle(objAddress.Value + zOffset);
                 case CoordinateAngle.Angle:
                     if (home) return Double.NaN;
+                    if (gfx) return Config.Stream.GetUInt16(objAddress.Value + ObjectConfig.GraphicsYawOffset);
                     return Config.Stream.GetUInt16(objAddress.Value + ObjectConfig.YawFacingOffset);
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -706,6 +714,8 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.X);
                 case PositionAngleTypeEnum.MoneybagHome:
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.X, home: true);
+                case PositionAngleTypeEnum.Ghost:
+                    return SetObjectValue(value, "Mario Ghost", CoordinateAngle.X, gfx: true);
                 case PositionAngleTypeEnum.Tri:
                     return SetTriangleVertexComponent((short)value, Address.Value, Index.Value, Coordinate.X);
                 case PositionAngleTypeEnum.Wall:
@@ -769,6 +779,8 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.Y);
                 case PositionAngleTypeEnum.MoneybagHome:
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.Y, home: true);
+                case PositionAngleTypeEnum.Ghost:
+                    return SetObjectValue(value, "Mario Ghost", CoordinateAngle.Y, gfx: true);
                 case PositionAngleTypeEnum.Tri:
                     return SetTriangleVertexComponent((short)value, Address.Value, Index.Value, Coordinate.Y);
                 case PositionAngleTypeEnum.Wall:
@@ -832,6 +844,8 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.Z);
                 case PositionAngleTypeEnum.MoneybagHome:
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.Z, home: true);
+                case PositionAngleTypeEnum.Ghost:
+                    return SetObjectValue(value, "Mario Ghost", CoordinateAngle.Z, gfx: true);
                 case PositionAngleTypeEnum.Tri:
                     return SetTriangleVertexComponent((short)value, Address.Value, Index.Value, Coordinate.Z);
                 case PositionAngleTypeEnum.Wall:
@@ -904,6 +918,8 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.Angle);
                 case PositionAngleTypeEnum.MoneybagHome:
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.Angle, home: true);
+                case PositionAngleTypeEnum.Ghost:
+                    return SetObjectValue(value, "Mario Ghost", CoordinateAngle.Angle, gfx: true);
                 case PositionAngleTypeEnum.Tri:
                     return false;
                 case PositionAngleTypeEnum.Wall:
@@ -970,7 +986,7 @@ namespace STROOP.Utilities
             return success;
         }
 
-        private static bool SetObjectValue(double value, string name, CoordinateAngle coordAngle, bool home = false)
+        private static bool SetObjectValue(double value, string name, CoordinateAngle coordAngle, bool home = false, bool gfx = false)
         {
             ObjectDataModel obj = Config.ObjectSlotsManager.GetLoadedObjectsWithName(name).LastOrDefault();
             uint? objAddress = obj?.Address;
@@ -978,16 +994,17 @@ namespace STROOP.Utilities
             switch (coordAngle)
             {
                 case CoordinateAngle.X:
-                    uint xOffset = home ? ObjectConfig.HomeXOffset : ObjectConfig.XOffset;
+                    uint xOffset = home ? ObjectConfig.HomeXOffset : gfx ? ObjectConfig.GraphicsXOffset : ObjectConfig.XOffset;
                     return Config.Stream.SetValue((float)value, objAddress.Value + xOffset);
                 case CoordinateAngle.Y:
-                    uint yOffset = home ? ObjectConfig.HomeYOffset : ObjectConfig.YOffset;
+                    uint yOffset = home ? ObjectConfig.HomeYOffset : gfx ? ObjectConfig.GraphicsYOffset : ObjectConfig.YOffset;
                     return Config.Stream.SetValue((float)value, objAddress.Value + yOffset);
                 case CoordinateAngle.Z:
-                    uint zOffset = home ? ObjectConfig.HomeZOffset : ObjectConfig.ZOffset;
+                    uint zOffset = home ? ObjectConfig.HomeZOffset : gfx ? ObjectConfig.GraphicsZOffset : ObjectConfig.ZOffset;
                     return Config.Stream.SetValue((float)value, objAddress.Value + zOffset);
                 case CoordinateAngle.Angle:
                     if (home) return false;
+                    if (gfx) return Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(value), objAddress.Value + ObjectConfig.GraphicsYawOffset);
                     bool success = true;
                     success &= Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(value), objAddress.Value + ObjectConfig.YawFacingOffset);
                     success &= Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(value), objAddress.Value + ObjectConfig.YawMovingOffset);

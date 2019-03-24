@@ -172,7 +172,7 @@ namespace STROOP.Structs
                     (uint address) => PositionAngle.Camera,
                     (uint address) => PositionAngle.Obj(address),
                     (uint address) => PositionAngle.ObjHome(address),
-                    (uint address) => PositionAngle.Ghost(),
+                    (uint address) => PositionAngle.Ghost,
                     (uint address) => PositionAngle.Tri(address, 1),
                     (uint address) => PositionAngle.Tri(address, 2),
                     (uint address) => PositionAngle.Tri(address, 3),
