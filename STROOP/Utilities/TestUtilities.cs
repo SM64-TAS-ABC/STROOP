@@ -17,12 +17,35 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            TestSomething11();
+            TestSomething12();
         }
 
         public static void TestSomethingElse()
         {
             Config.Print(TtcMain.FindHandMovement());
+        }
+
+        public static void TestSomething12()
+        {
+            uint triAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            if (triAddress == 0) return;
+            TriangleDataModel triDataModel = new TriangleDataModel(triAddress);
+            TriangleShape triShape =
+                new TriangleShape(
+                    triDataModel.X1, triDataModel.Y1, triDataModel.Z1,
+                    triDataModel.X2, triDataModel.Y2, triDataModel.Z2,
+                    triDataModel.X3, triDataModel.Y3, triDataModel.Z3);
+            /*
+            InfoForm.ShowValue(
+                String.Format(
+                    "NormX:{0}, NormY:{1}, NormZ:{2}, NormOffset:{3}",
+                    triShape.NormX, triShape.NormY, triShape.NormZ, triShape.NormOffset));
+            */
+
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+
+            InfoForm.ShowValue(triShape.GetY(marioX, marioZ));
         }
 
         public static void TestSomething10()
