@@ -326,19 +326,9 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
                     }
                     case PositionAngleTypeEnum.Moneybag:
-                    {
-                        ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                        uint? moneybagAddress = moneybag?.Address;
-                        if (!moneybagAddress.HasValue) return Double.NaN;
-                        return Config.Stream.GetSingle(moneybagAddress.Value + ObjectConfig.XOffset);
-                    }
+                        return GetObjectValue("Moneybag", CoordinateAngle.X);
                     case PositionAngleTypeEnum.MoneybagHome:
-                    {
-                        ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                        uint? moneybagAddress = moneybag?.Address;
-                        if (!moneybagAddress.HasValue) return Double.NaN;
-                        return Config.Stream.GetSingle(moneybagAddress.Value + ObjectConfig.HomeXOffset);
-                    }
+                        return GetObjectValue("Moneybag", CoordinateAngle.X, home: true);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.X);
                     case PositionAngleTypeEnum.Wall:
@@ -403,19 +393,9 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
                     }
                     case PositionAngleTypeEnum.Moneybag:
-                    {
-                        ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                        uint? moneybagAddress = moneybag?.Address;
-                        if (!moneybagAddress.HasValue) return Double.NaN;
-                        return Config.Stream.GetSingle(moneybagAddress.Value + ObjectConfig.YOffset);
-                    }
+                        return GetObjectValue("Moneybag", CoordinateAngle.Y);
                     case PositionAngleTypeEnum.MoneybagHome:
-                    {
-                        ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                        uint? moneybagAddress = moneybag?.Address;
-                        if (!moneybagAddress.HasValue) return Double.NaN;
-                        return Config.Stream.GetSingle(moneybagAddress.Value + ObjectConfig.HomeYOffset);
-                    }
+                        return GetObjectValue("Moneybag", CoordinateAngle.Y, home: true);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.Wall:
@@ -480,19 +460,9 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
                     }
                     case PositionAngleTypeEnum.Moneybag:
-                    {
-                        ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                        uint? moneybagAddress = moneybag?.Address;
-                        if (!moneybagAddress.HasValue) return Double.NaN;
-                        return Config.Stream.GetSingle(moneybagAddress.Value + ObjectConfig.ZOffset);
-                    }
+                        return GetObjectValue("Moneybag", CoordinateAngle.Z);
                     case PositionAngleTypeEnum.MoneybagHome:
-                    {
-                        ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                        uint? moneybagAddress = moneybag?.Address;
-                        if (!moneybagAddress.HasValue) return Double.NaN;
-                        return Config.Stream.GetSingle(moneybagAddress.Value + ObjectConfig.HomeZOffset);
-                    }
+                        return GetObjectValue("Moneybag", CoordinateAngle.Z, home: true);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.Wall:
@@ -557,12 +527,9 @@ namespace STROOP.Utilities
                         return Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
                     }
                     case PositionAngleTypeEnum.Moneybag:
-                        ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                        uint? moneybagAddress = moneybag?.Address;
-                        if (!moneybagAddress.HasValue) return Double.NaN;
-                        return Config.Stream.GetUInt16(moneybagAddress.Value + ObjectConfig.YawFacingOffset);
+                        return GetObjectValue("Moneybag", CoordinateAngle.Angle);
                     case PositionAngleTypeEnum.MoneybagHome:
-                        return Double.NaN;
+                        return GetObjectValue("Moneybag", CoordinateAngle.Angle, home: true);
                     case PositionAngleTypeEnum.Tri:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Wall:
@@ -596,6 +563,30 @@ namespace STROOP.Utilities
             List<double> doubleList = Schedule[globalTimer].Item5;
             if (index < 0 || index >= doubleList.Count) return Double.NaN;
             return doubleList[index];
+        }
+
+        private static double GetObjectValue(string name, CoordinateAngle coordAngle, bool home = false)
+        {
+            ObjectDataModel obj = Config.ObjectSlotsManager.GetLoadedObjectsWithName(name).LastOrDefault();
+            uint? objAddress = obj?.Address;
+            if (!objAddress.HasValue) return Double.NaN;
+            switch (coordAngle)
+            {
+                case CoordinateAngle.X:
+                    uint xOffset = home ? ObjectConfig.HomeXOffset : ObjectConfig.XOffset;
+                    return Config.Stream.GetSingle(objAddress.Value + xOffset);
+                case CoordinateAngle.Y:
+                    uint yOffset = home ? ObjectConfig.HomeYOffset : ObjectConfig.YOffset;
+                    return Config.Stream.GetSingle(objAddress.Value + yOffset);
+                case CoordinateAngle.Z:
+                    uint zOffset = home ? ObjectConfig.HomeZOffset : ObjectConfig.ZOffset;
+                    return Config.Stream.GetSingle(objAddress.Value + zOffset);
+                case CoordinateAngle.Angle:
+                    if (home) return Double.NaN;
+                    return Config.Stream.GetUInt16(objAddress.Value + ObjectConfig.YawFacingOffset);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private static double GetTriangleVertexComponent(uint address, int index, Coordinate coordinate)
@@ -712,19 +703,9 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, objAddress + ObjectConfig.XOffset);
                 }
                 case PositionAngleTypeEnum.Moneybag:
-                {
-                    ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                    uint? moneybagAddress = moneybag?.Address;
-                    if (!moneybagAddress.HasValue) return false;
-                    return Config.Stream.SetValue((float)value, moneybagAddress.Value + ObjectConfig.XOffset);
-                }
+                    return SetObjectValue(value, "Moneybag", CoordinateAngle.X);
                 case PositionAngleTypeEnum.MoneybagHome:
-                {
-                    ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                    uint? moneybagAddress = moneybag?.Address;
-                    if (!moneybagAddress.HasValue) return false;
-                    return Config.Stream.SetValue((float)value, moneybagAddress.Value + ObjectConfig.HomeXOffset);
-                }
+                    return SetObjectValue(value, "Moneybag", CoordinateAngle.X, home: true);
                 case PositionAngleTypeEnum.Tri:
                     return SetTriangleVertexComponent((short)value, Address.Value, Index.Value, Coordinate.X);
                 case PositionAngleTypeEnum.Wall:
@@ -785,19 +766,9 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, objAddress + ObjectConfig.YOffset);
                 }
                 case PositionAngleTypeEnum.Moneybag:
-                {
-                    ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                    uint? moneybagAddress = moneybag?.Address;
-                    if (!moneybagAddress.HasValue) return false;
-                    return Config.Stream.SetValue((float)value, moneybagAddress.Value + ObjectConfig.YOffset);
-                }
+                    return SetObjectValue(value, "Moneybag", CoordinateAngle.Y);
                 case PositionAngleTypeEnum.MoneybagHome:
-                {
-                    ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                    uint? moneybagAddress = moneybag?.Address;
-                    if (!moneybagAddress.HasValue) return false;
-                    return Config.Stream.SetValue((float)value, moneybagAddress.Value + ObjectConfig.HomeYOffset);
-                }
+                    return SetObjectValue(value, "Moneybag", CoordinateAngle.Y, home: true);
                 case PositionAngleTypeEnum.Tri:
                     return SetTriangleVertexComponent((short)value, Address.Value, Index.Value, Coordinate.Y);
                 case PositionAngleTypeEnum.Wall:
@@ -858,19 +829,9 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, objAddress + ObjectConfig.ZOffset);
                 }
                 case PositionAngleTypeEnum.Moneybag:
-                {
-                    ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                    uint? moneybagAddress = moneybag?.Address;
-                    if (!moneybagAddress.HasValue) return false;
-                    return Config.Stream.SetValue((float)value, moneybagAddress.Value + ObjectConfig.ZOffset);
-                }
+                    return SetObjectValue(value, "Moneybag", CoordinateAngle.Z);
                 case PositionAngleTypeEnum.MoneybagHome:
-                {
-                    ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                    uint? moneybagAddress = moneybag?.Address;
-                    if (!moneybagAddress.HasValue) return false;
-                    return Config.Stream.SetValue((float)value, moneybagAddress.Value + ObjectConfig.HomeZOffset);
-                }
+                    return SetObjectValue(value, "Moneybag", CoordinateAngle.Z, home: true);
                 case PositionAngleTypeEnum.Tri:
                     return SetTriangleVertexComponent((short)value, Address.Value, Index.Value, Coordinate.Z);
                 case PositionAngleTypeEnum.Wall:
@@ -940,17 +901,9 @@ namespace STROOP.Utilities
                     return success;
                 }
                 case PositionAngleTypeEnum.Moneybag:
-                {
-                    ObjectDataModel moneybag = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").LastOrDefault();
-                    uint? moneybagAddress = moneybag?.Address;
-                    if (!moneybagAddress.HasValue) return false;
-                    bool success = true;
-                    success &= Config.Stream.SetValue(valueUShort, moneybagAddress.Value + ObjectConfig.YawFacingOffset);
-                    success &= Config.Stream.SetValue(valueUShort, moneybagAddress.Value + ObjectConfig.YawMovingOffset);
-                    return success;
-                }
+                    return SetObjectValue(value, "Moneybag", CoordinateAngle.Angle);
                 case PositionAngleTypeEnum.MoneybagHome:
-                    return false;
+                    return SetObjectValue(value, "Moneybag", CoordinateAngle.Angle, home: true);
                 case PositionAngleTypeEnum.Tri:
                     return false;
                 case PositionAngleTypeEnum.Wall:
@@ -1015,6 +968,33 @@ namespace STROOP.Utilities
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
+        }
+
+        private static bool SetObjectValue(double value, string name, CoordinateAngle coordAngle, bool home = false)
+        {
+            ObjectDataModel obj = Config.ObjectSlotsManager.GetLoadedObjectsWithName(name).LastOrDefault();
+            uint? objAddress = obj?.Address;
+            if (!objAddress.HasValue) return false;
+            switch (coordAngle)
+            {
+                case CoordinateAngle.X:
+                    uint xOffset = home ? ObjectConfig.HomeXOffset : ObjectConfig.XOffset;
+                    return Config.Stream.SetValue((float)value, objAddress.Value + xOffset);
+                case CoordinateAngle.Y:
+                    uint yOffset = home ? ObjectConfig.HomeYOffset : ObjectConfig.YOffset;
+                    return Config.Stream.SetValue((float)value, objAddress.Value + yOffset);
+                case CoordinateAngle.Z:
+                    uint zOffset = home ? ObjectConfig.HomeZOffset : ObjectConfig.ZOffset;
+                    return Config.Stream.SetValue((float)value, objAddress.Value + zOffset);
+                case CoordinateAngle.Angle:
+                    if (home) return false;
+                    bool success = true;
+                    success &= Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(value), objAddress.Value + ObjectConfig.YawFacingOffset);
+                    success &= Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(value), objAddress.Value + ObjectConfig.YawMovingOffset);
+                    return success;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private static bool SetTriangleVertexComponent(short value, uint address, int index, Coordinate coordinate)
