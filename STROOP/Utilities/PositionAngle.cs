@@ -224,7 +224,7 @@ namespace STROOP.Utilities
             {
                 return Moneybag;
             }
-            else if (parts.Count == 2 && parts[0] == "moneybag" && parts[1] == "home")
+            else if (parts.Count == 1 && parts[0] == "moneybaghome")
             {
                 return MoneybagHome;
             }
