@@ -16,6 +16,7 @@ namespace STROOP.Structs
         public static WaypointTable RacingPenguinWaypoints;
         public static WaypointTable KoopaTheQuick1Waypoints;
         public static WaypointTable KoopaTheQuick2Waypoints;
+        public static PointTable TtmBowlingBallPoints;
         public static MissionTable Missions;
         public static CourseDataTable CourseData;
         public static FlyGuyDataTable FlyGuyData;

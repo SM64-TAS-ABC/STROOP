@@ -1485,6 +1485,38 @@ namespace STROOP.Utilities
             return new WaypointTable(waypoints);
         }
 
+        public static PointTable OpenPointTable(string path)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/WaypointTableSchema.xsd", "WaypointTableSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            List<PointTable.PointReference> points = new List<PointTable.PointReference>();
+            foreach (XElement element in doc.Root.Elements())
+            {
+                int index = ParsingUtilities.ParseInt (element.Attribute(XName.Get("index")).Value);
+                double x = ParsingUtilities.ParseDouble(element.Attribute(XName.Get("x")).Value);
+                double y = ParsingUtilities.ParseDouble(element.Attribute(XName.Get("y")).Value);
+                double z = ParsingUtilities.ParseDouble(element.Attribute(XName.Get("z")).Value);
+                points.Add(new PointTable.PointReference()
+                {
+                    Index = index,
+                    X = x,
+                    Y = y,
+                    Z = z,
+                });
+            }
+
+            return new PointTable(points);
+        }
+
         public static MissionTable OpenMissionTable(string path)
         {
             MissionTable missionTable = new MissionTable();
