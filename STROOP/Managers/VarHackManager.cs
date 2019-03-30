@@ -12,7 +12,7 @@ using STROOP.Structs.Configurations;
 
 namespace STROOP.Managers
 {
-    public class VarHackManager
+    public class VarHackManager : VariableAdder
     {
         private readonly VarHackFlowLayoutPanel _varHackPanel;
         private readonly BinaryButton _buttonEnableDisableRomHack;
@@ -21,7 +21,7 @@ namespace STROOP.Managers
         private readonly BetterTextbox _textBoxYPosValue;
         private readonly BetterTextbox _textBoxYDeltaValue;
 
-        public VarHackManager(Control varHackControlControl, VarHackFlowLayoutPanel varHackPanel)
+        public VarHackManager(Control varHackControlControl, VarHackFlowLayoutPanel varHackPanel) : base(varHackPanel)
         {
             _varHackPanel = varHackPanel;
 
@@ -199,7 +199,7 @@ namespace STROOP.Managers
             _varHackPanel.AddNewControl(specialType);
         }
 
-        public void AddVariable(WatchVariableControl control)
+        public override void AddVariable(WatchVariableControl control)
         {
             List<uint> addresses = control.FixedAddressList;
             WatchVariableWrapper watchVarWrapper = control.WatchVarWrapper;
@@ -230,7 +230,7 @@ namespace STROOP.Managers
             }
         }
 
-        public void AddVariables(List<WatchVariableControl> controls)
+        public override void AddVariables(List<WatchVariableControl> controls)
         {
             controls.ForEach(control => AddVariable(control));
         }
