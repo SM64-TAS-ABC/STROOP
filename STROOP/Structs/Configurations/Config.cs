@@ -62,12 +62,12 @@ namespace STROOP.Structs.Configurations
         public static PaintingManager PaintingManager;
         public static M64Manager M64Manager;
 
-        public static List<DataManager> GetDataManagers()
+        public static List<VariableAdder> GetVariableAdders()
         {
-            List<DataManager> dataManagerList =
-                ControlUtilities.GetFieldsOfType<DataManager>(typeof(Config), null);
-            dataManagerList.Sort((d1, d2) => d1.TabIndex - d2.TabIndex);
-            return dataManagerList;
+            List<VariableAdder> variableAdderList =
+                ControlUtilities.GetFieldsOfType<VariableAdder>(typeof(Config), null);
+            variableAdderList.Sort((d1, d2) => d1.TabIndex - d2.TabIndex);
+            return variableAdderList;
         }
 
         public static void Print(object formatNullable = null, params object[] args)

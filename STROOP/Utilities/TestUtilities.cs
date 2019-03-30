@@ -266,8 +266,8 @@ namespace STROOP.Utilities
 
         public static void TestSomething3()
         {
-            List<DataManager> dataManagerList = Config.GetDataManagers();
-            InfoForm.ShowValue(String.Join("\r\n\r\n", dataManagerList));
+            List<VariableAdder> variableAdderList = Config.GetVariableAdders();
+            InfoForm.ShowValue(String.Join("\r\n\r\n", variableAdderList));
         }
 
         public static void TestSomething2()

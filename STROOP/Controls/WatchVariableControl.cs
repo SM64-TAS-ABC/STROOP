@@ -767,7 +767,7 @@ namespace STROOP.Controls
         }
 
         public static void AddVarsToTab(
-            List<WatchVariableControl> watchVars, DataManager dataManager, AddToTabTypeEnum? addToTabTypeNullable = null)
+            List<WatchVariableControl> watchVars, VariableAdder variableAdder, AddToTabTypeEnum? addToTabTypeNullable = null)
         {
             List<List<WatchVariableControl>> newVarListList = new List<List<WatchVariableControl>>();
             AddToTabTypeEnum addToTabType = addToTabTypeNullable ?? GetAddToTabType();
@@ -812,7 +812,7 @@ namespace STROOP.Controls
                         List<WatchVariableControl> newVarList = newVarListList[j];
                         if (i >= newVarList.Count) continue;
                         WatchVariableControl newVar = newVarList[i];
-                        dataManager.AddVariable(newVar);
+                        variableAdder.AddVariable(newVar);
                     }
                 }
             }
@@ -822,7 +822,7 @@ namespace STROOP.Controls
                 {
                     foreach (WatchVariableControl newVar in newVarList)
                     {
-                        dataManager.AddVariable(newVar);
+                        variableAdder.AddVariable(newVar);
                     }
                 }
             }

@@ -177,8 +177,8 @@ namespace STROOP.Forms
             selectionForm.Initialize(
                 "Select a Tab",
                 "Add Variable(s) to Tab",
-                Config.GetDataManagers(),
-                dataManager => WatchVariableControl.AddVarsToTab(controls, dataManager));
+                Config.GetVariableAdders(),
+                variableAdder => WatchVariableControl.AddVarsToTab(controls, variableAdder));
             selectionForm.Show();
         }
     }
