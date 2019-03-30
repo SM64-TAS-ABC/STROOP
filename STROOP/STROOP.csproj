@@ -373,6 +373,7 @@
       <DependentUpon>MainLoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
+    <Compile Include="Managers\VariableAdder.cs" />
     <Compile Include="Managers\PaintingManager.cs" />
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />

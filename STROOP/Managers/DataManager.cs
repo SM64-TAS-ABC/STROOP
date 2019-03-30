@@ -12,25 +12,21 @@ using STROOP.Structs.Configurations;
 
 namespace STROOP.Managers
 {
-    public class DataManager
+    public class DataManager : VariableAdder
     {
         protected WatchVariableFlowLayoutPanel _variablePanel;
-        public readonly string TabName;
-        public readonly int TabIndex;
 
         public DataManager(
             string varFilePath,
             WatchVariableFlowLayoutPanel variablePanel,
             List<VariableGroup> allVariableGroups = null,
-            List<VariableGroup> visibleVariableGroups = null)
+            List<VariableGroup> visibleVariableGroups = null) : base(variablePanel)
         {
             _variablePanel = variablePanel;
             _variablePanel.Initialize(
                 varFilePath,
                 allVariableGroups,
                 visibleVariableGroups);
-            TabName = ControlUtilities.GetTabName(_variablePanel);
-            TabIndex = ControlUtilities.GetTabIndex(_variablePanel);
         }
 
         public virtual void RemoveVariableGroup(VariableGroup varGroup)
@@ -38,12 +34,12 @@ namespace STROOP.Managers
             _variablePanel.RemoveVariableGroup(varGroup);
         }
 
-        public virtual void AddVariable(WatchVariableControl watchVarControl)
+        public override void AddVariable(WatchVariableControl watchVarControl)
         {
             _variablePanel.AddVariable(watchVarControl);
         }
 
-        public virtual void AddVariables(List<WatchVariableControl> watchVarControls)
+        public override void AddVariables(List<WatchVariableControl> watchVarControls)
         {
             _variablePanel.AddVariables(watchVarControls);
         }
@@ -67,11 +63,6 @@ namespace STROOP.Managers
         {
             if (!updateView) return;
             _variablePanel.UpdatePanel();
-        }
-
-        public override string ToString()
-        {
-            return TabName;
         }
     }
 }
