@@ -24,7 +24,7 @@
   <Data type="float" offset="0xC8" base="Camera">Dist Cam to Focus</Data>
   <Data base="None" specialType="DistMarioToCamera">Dist Cam to Mario</Data>
 
-  <Data type="short" offset="0xBC" base="Camera">Camera Mode</Data>
+  <Data type="short" offset="0xBC" base="Camera" useHex="true">Camera Mode</Data>
   <Data type="uint" offsetUS="0x8032DF30" offsetJP="0x8032CFD0" base="Relative" subclass="Object">Secondary Object</Data>
 
   <Data type="byte" offsetUS="0x8033161C" offsetJP="0x80330530" base="Relative" subclass="Boolean" mask="0x01" color="Yellow">Mario Cam Selected</Data>
