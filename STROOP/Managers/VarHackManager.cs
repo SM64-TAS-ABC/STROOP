@@ -199,6 +199,42 @@ namespace STROOP.Managers
             _varHackPanel.AddNewControl(specialType);
         }
 
+        public void AddVariable(WatchVariableControl control)
+        {
+            List<uint> addresses = control.FixedAddressList;
+            WatchVariableWrapper watchVarWrapper = control.WatchVarWrapper;
+            WatchVariable watchVar = watchVarWrapper.WatchVar;
+
+            if (watchVar.BaseAddressType == BaseAddressTypeEnum.Triangle)
+            {
+                Config.VarHackManager.AddVariable(
+                    control.VarName + " " + VarHackConfig.EscapeChar,
+                    Config.TriangleManager.TrianglePointerAddress,
+                    watchVar.MemoryType,
+                    watchVarWrapper.GetUseHex(),
+                    watchVar.Offset);
+            }
+            else
+            {
+                List<uint> addressList = addresses ?? watchVar.AddressList;
+                for (int i = 0; i < addressList.Count; i++)
+                {
+                    string indexSuffix = addressList.Count > 1 ? (i + 1).ToString() : "";
+                    Config.VarHackManager.AddVariable(
+                        control.VarName + indexSuffix + " " + VarHackConfig.EscapeChar,
+                        addressList[i],
+                        watchVar.MemoryType,
+                        watchVarWrapper.GetUseHex(),
+                        null);
+                }
+            }
+        }
+
+        public void AddVariables(List<WatchVariableControl> controls)
+        {
+            controls.ForEach(control => AddVariable(control));
+        }
+
         public void Update(bool updateView)
         {
             _varHackPanel.UpdateControls();

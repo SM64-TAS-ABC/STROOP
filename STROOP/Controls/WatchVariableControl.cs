@@ -830,7 +830,7 @@ namespace STROOP.Controls
 
         public void AddToVarHackTab()
         {
-            WatchVarWrapper.AddToVarHackTab(FixedAddressList);
+            Config.VarHackManager.AddVariable(this);
             FlashColor(ADD_TO_VAR_HACK_TAB_COLOR);
         }
 

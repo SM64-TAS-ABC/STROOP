@@ -184,8 +184,8 @@ namespace STROOP.Controls
 
             if (SavedSettingsConfig.DisplayAsHexUsesMemory)
             {
-                if (_watchVar.MemoryType == null) return value;
-                object obj = TypeUtilities.ConvertBytes(_watchVar.MemoryType, stringValue, false);
+                if (WatchVar.MemoryType == null) return value;
+                object obj = TypeUtilities.ConvertBytes(WatchVar.MemoryType, stringValue, false);
                 if (obj != null) return obj;
             }
             else
@@ -199,10 +199,10 @@ namespace STROOP.Controls
         protected virtual int? GetHexDigitCount()
         {
             if (_displayType != null) return TypeUtilities.TypeSize[_displayType] * 2;
-            return _watchVar.NibbleCount;
+            return WatchVar.NibbleCount;
         }
 
-        protected override bool GetUseHex()
+        public override bool GetUseHex()
         {
             return _displayAsHex;
         }

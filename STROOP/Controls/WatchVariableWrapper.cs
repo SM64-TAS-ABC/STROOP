@@ -23,7 +23,7 @@ namespace STROOP.Controls
         protected const bool DEFAULT_IS_YAW = false;
 
         // Main objects
-        protected readonly WatchVariable _watchVar;
+        public readonly WatchVariable WatchVar;
         protected readonly WatchVariableControl _watchVarControl;
         protected readonly BetterContextMenuStrip _contextMenuStrip;
 
@@ -89,7 +89,7 @@ namespace STROOP.Controls
 
         protected WatchVariableWrapper(WatchVariable watchVar, WatchVariableControl watchVarControl, bool useCheckbox = false)
         {
-            _watchVar = watchVar;
+            WatchVar = watchVar;
             _watchVarControl = watchVarControl;
 
             _startsAsCheckbox = useCheckbox;
@@ -188,10 +188,10 @@ namespace STROOP.Controls
             VariableViewerForm varInfo =
                 new VariableViewerForm(
                     _watchVarControl.VarName,
-                    _watchVar.GetTypeDescription(),
-                    _watchVar.GetBaseOffsetDescription(),
-                    _watchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
-                    _watchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList));
+                    WatchVar.GetTypeDescription(),
+                    WatchVar.GetBaseOffsetDescription(),
+                    WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
+                    WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList));
             varInfo.Show();
         }
 
@@ -200,10 +200,10 @@ namespace STROOP.Controls
             return new List<string>()
             {
                 _watchVarControl.VarName,
-                _watchVar.GetTypeDescription(),
-                _watchVar.GetBaseOffsetDescription(),
-                _watchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
-                _watchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList),
+                WatchVar.GetTypeDescription(),
+                WatchVar.GetBaseOffsetDescription(),
+                WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
+                WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList),
             };
         }
 
@@ -231,19 +231,19 @@ namespace STROOP.Controls
 
         public void ShowBitForm()
         {
-            if (_watchVar.IsSpecial) return;
+            if (WatchVar.IsSpecial) return;
             VariableBitForm varController =
                 new VariableBitForm(
                     _watchVarControl.VarName,
-                    _watchVar,
+                    WatchVar,
                     _watchVarControl.FixedAddressList);
             varController.Show();
         }
 
         public void ViewInMemoryTab()
         {
-            if (_watchVar.IsSpecial) return;
-            List<uint> addressList = _watchVar.AddressList;
+            if (WatchVar.IsSpecial) return;
+            List<uint> addressList = WatchVar.AddressList;
             if (addressList.Count == 0) return;
             uint address = addressList[0];
             Config.TabControlMain.SelectedTab = Config.TabControlMain.TabPages["tabPageMemory"];
@@ -253,12 +253,12 @@ namespace STROOP.Controls
 
         public CheckState GetLockedCheckState(List<uint> addresses = null)
         {
-            return WatchVariableLockManager.ContainsLocksCheckState(_watchVar, addresses);
+            return WatchVariableLockManager.ContainsLocksCheckState(WatchVar, addresses);
         }
 
         public bool GetLockedBool(List<uint> addresses = null)
         {
-            return WatchVariableLockManager.ContainsLocksBool(_watchVar, addresses);
+            return WatchVariableLockManager.ContainsLocksBool(WatchVar, addresses);
         }
 
         public void UpdateItemCheckStates(List<uint> addresses = null)
@@ -271,17 +271,17 @@ namespace STROOP.Controls
 
         public void ToggleLocked(bool? newLockedValueNullable, List<uint> addresses = null)
         {
-            bool currentLockedValue = WatchVariableLockManager.ContainsLocksBool(_watchVar, addresses);
+            bool currentLockedValue = WatchVariableLockManager.ContainsLocksBool(WatchVar, addresses);
             bool newLockedValue = newLockedValueNullable ?? !currentLockedValue;
             if (newLockedValue == currentLockedValue) return;
 
             if (newLockedValue)
             {
-                WatchVariableLockManager.AddLocks(_watchVar, addresses);
+                WatchVariableLockManager.AddLocks(WatchVar, addresses);
             }
             else
             {
-                WatchVariableLockManager.RemoveLocks(_watchVar, addresses);
+                WatchVariableLockManager.RemoveLocks(WatchVar, addresses);
             }
         }
 
@@ -289,12 +289,12 @@ namespace STROOP.Controls
 
         public Type GetMemoryType()
         {
-            return _watchVar.MemoryType;
+            return WatchVar.MemoryType;
         }
 
         private List<object> GetVerifiedValues(List<uint> addresses = null)
         {
-            List<object> values = _watchVar.GetValues(addresses);
+            List<object> values = WatchVar.GetValues(addresses);
             values.ForEach(value => HandleVerification(value));
             return values;
         }
@@ -332,9 +332,9 @@ namespace STROOP.Controls
         public bool SetValue(object value, List<uint> addresses = null)
         {
             value = UnconvertValue(value);
-            bool success = _watchVar.SetValue(value, addresses);
+            bool success = WatchVar.SetValue(value, addresses);
             if (success && GetLockedBool(addresses))
-                WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
+                WatchVariableLockManager.UpdateLockValues(WatchVar, value, addresses);
             return success;
         }
 
@@ -357,9 +357,9 @@ namespace STROOP.Controls
         public bool SetCheckStateValue(CheckState checkState, List<uint> addresses = null)
         {
             object value = ConvertCheckStateToValue(checkState);
-            bool success = _watchVar.SetValue(value, addresses);
+            bool success = WatchVar.SetValue(value, addresses);
             if (success && GetLockedBool(addresses))
-                WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
+                WatchVariableLockManager.UpdateLockValues(WatchVar, value, addresses);
             return success;
         }
 
@@ -384,15 +384,15 @@ namespace STROOP.Controls
                 return unconvertedValue;
             });
 
-            bool success = _watchVar.SetValues(newValues, addresses);
+            bool success = WatchVar.SetValues(newValues, addresses);
             if (success && GetLockedBool(addresses))
-                WatchVariableLockManager.UpdateLockValues(_watchVar, newValues, addresses);
+                WatchVariableLockManager.UpdateLockValues(WatchVar, newValues, addresses);
             return success;
         }
 
         public List<uint> GetCurrentAddresses()
         {
-            return _watchVar.AddressList;
+            return WatchVar.AddressList;
         }
 
         public void EnableCustomization()
@@ -401,33 +401,6 @@ namespace STROOP.Controls
             _itemFixAddress.Visible = true;
             _itemRename.Visible = true;
             _itemDelete.Visible = true;
-        }
-
-        public void AddToVarHackTab(List<uint> addresses = null)
-        {
-            if (_watchVar.BaseAddressType == BaseAddressTypeEnum.Triangle)
-            {
-                Config.VarHackManager.AddVariable(
-                    _watchVarControl.VarName + " " + VarHackConfig.EscapeChar,
-                    Config.TriangleManager.TrianglePointerAddress,
-                    _watchVar.MemoryType,
-                    GetUseHex(),
-                    _watchVar.Offset);
-            }
-            else
-            {
-                List<uint> addressList = addresses ?? _watchVar.AddressList;
-                for (int i = 0; i < addressList.Count; i++)
-                {
-                    string indexSuffix = addressList.Count > 1 ? (i + 1).ToString() : "";
-                    Config.VarHackManager.AddVariable(
-                        _watchVarControl.VarName + indexSuffix + " " + VarHackConfig.EscapeChar,
-                        addressList[i],
-                        _watchVar.MemoryType,
-                        GetUseHex(),
-                        null);
-                }
-            }
         }
 
 
@@ -528,7 +501,7 @@ namespace STROOP.Controls
 
         // Virtual methods
 
-        protected virtual bool GetUseHex()
+        public virtual bool GetUseHex()
         {
             return false;
         }

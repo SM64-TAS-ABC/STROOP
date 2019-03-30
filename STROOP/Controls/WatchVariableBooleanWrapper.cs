@@ -57,7 +57,7 @@ namespace STROOP.Controls
             if (checkState == CheckState.Indeterminate) return "";
 
             object offValue = 0;
-            object onValue = _watchVar.Mask ?? 1;
+            object onValue = WatchVar.Mask ?? 1;
 
             return HandleInverting(checkState == CheckState.Unchecked) ? offValue : onValue;
         }

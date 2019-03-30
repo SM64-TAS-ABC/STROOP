@@ -56,8 +56,8 @@ namespace STROOP.Controls
             bool? isYaw)
             : base(watchVar, watchVarControl, displayType, 0)
         {
-            _baseType = _watchVar.MemoryType ?? displayType;
-            _defaultEffectiveType = displayType ?? _watchVar.MemoryType;
+            _baseType = WatchVar.MemoryType ?? displayType;
+            _defaultEffectiveType = displayType ?? WatchVar.MemoryType;
             if (_baseType == null || _defaultEffectiveType == null) throw new ArgumentOutOfRangeException();
 
             _defaultSigned = TypeUtilities.TypeSign[_defaultEffectiveType];
