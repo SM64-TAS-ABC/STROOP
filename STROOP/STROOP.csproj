@@ -382,6 +382,7 @@
     <Compile Include="Structs\Configurations\SnowConfig.cs" />
     <Compile Include="Structs\Map\BackgroundImage.cs" />
     <Compile Include="Structs\TriangleInfoTable.cs" />
+    <Compile Include="Structs\PointTable.cs" />
     <Compile Include="Ttc\TtcSaveStateByteIterator.cs" />
     <Compile Include="Ttc\TtcUtilities.cs" />
     <Compile Include="Ttc\TtcSimulation.cs" />
@@ -692,6 +693,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\MhsData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\TtmBowlingBallPoints.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\SnowData.xml">
