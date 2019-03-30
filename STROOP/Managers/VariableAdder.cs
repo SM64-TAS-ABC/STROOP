@@ -14,13 +14,14 @@ namespace STROOP.Managers
 {
     public abstract class VariableAdder
     {
+        public readonly TabPage Tab;
         public readonly string TabName;
-        public readonly int TabIndex;
+        public int TabIndex { get => ControlUtilities.GetTabIndexDynamically(Tab); }
 
         public VariableAdder(Control control)
         {
+            Tab = ControlUtilities.GetTab(control);
             TabName = ControlUtilities.GetTabName(control);
-            TabIndex = ControlUtilities.GetTabIndex(control);
         }
 
         public abstract void AddVariable(WatchVariableControl watchVarControl);

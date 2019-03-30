@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using STROOP.Structs;
 using System.Reflection;
+using STROOP.Structs.Configurations;
 
 namespace STROOP.Utilities
 {
@@ -591,6 +592,14 @@ namespace STROOP.Utilities
         {
             TabPage tab = GetTab(control);
             return tab?.TabIndex ?? Int32.MaxValue;
+        }
+
+        public static int GetTabIndexDynamically(Control control)
+        {
+            TabPage tab = GetTab(control);
+            List<TabPage> tabPages = GetTabPages(Config.TabControlMain);
+            if (!tabPages.Contains(tab)) return Int32.MaxValue;
+            return tabPages.IndexOf(tab);
         }
 
         public static SplitContainer GetAncestorSplitContainer(Control control)

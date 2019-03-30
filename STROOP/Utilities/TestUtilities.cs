@@ -17,7 +17,7 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            TestSomething12();
+            TestSomething3();
         }
 
         public static void TestSomethingElse()
@@ -267,7 +267,9 @@ namespace STROOP.Utilities
         public static void TestSomething3()
         {
             List<VariableAdder> variableAdderList = Config.GetVariableAdders();
-            InfoForm.ShowValue(String.Join("\r\n\r\n", variableAdderList));
+            string output = "";
+            variableAdderList.ForEach(varAdder => output += varAdder.ToString() + " " + varAdder.TabIndex + "\r\n");
+            InfoForm.ShowValue(output);
         }
 
         public static void TestSomething2()
