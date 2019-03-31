@@ -1,6 +1,4 @@
-﻿
-
-using STROOP.Structs.Configurations;
+﻿using STROOP.Structs.Configurations;
 
 namespace STROOP.Structs
 {
@@ -81,18 +79,13 @@ namespace STROOP.Structs
             WriteWords(ref currAddress, JAL(address), 0x00000000); // NOP for delay slot
 
             // Erase self and return as if nothing happened:
-            //LI RA, 0x8037EB0C
-            //LUI A0, 0x803D
-            //ADDIU A1, A0, 0x63FF
-            //ADDIU A0, A0, 0x6400
-            //J memcpy
-            //ADDIU A2, R0, eraseBytes
+            
             uint memcpyAddress = RomVersionConfig.Switch(0x803273F0, 0x803264C0);
             const uint eraseBytes = 16 * 4 + maxArguments * 8; //fixed instructions + 2 instructions per argument
-            WriteWords(ref currAddress, 0x3C1F8037, 0x37FFEB0C);
+            WriteWords(ref currAddress, 0x3C1F8037, 0x37FFEB0C); //LI RA, 0x8037EB0C
             WriteRegisterAssign(ref currAddress, A0  , currAddress);
             WriteRegisterAssign(ref currAddress, A0+1, currAddress-1);
-            WriteWords(ref currAddress, J(memcpyAddress), 0x24060000 | eraseBytes);
+            WriteWords(ref currAddress, J(memcpyAddress), 0x24060000 | eraseBytes); //ADDIU A2, R0, eraseBytes
 
             // Hijack level script function pointer to point to injected asm
             Config.Stream.SetValue(startAddress | 0x80000000, 0x8038B900);
