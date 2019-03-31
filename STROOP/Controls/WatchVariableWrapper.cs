@@ -36,7 +36,7 @@ namespace STROOP.Controls
         private ToolStripSeparator _separatorCustom;
         private ToolStripMenuItem _itemFixAddress;
         private ToolStripMenuItem _itemRename;
-        private ToolStripMenuItem _itemDelete;
+        private ToolStripMenuItem _itemRemove;
 
         // Fields
         private readonly bool _startsAsCheckbox;
@@ -173,14 +173,14 @@ namespace STROOP.Controls
             _itemRename.Click += (sender, e) => { _watchVarControl.RenameMode = true; };
             _itemRename.Visible = false;
 
-            _itemDelete = new ToolStripMenuItem("Delete");
-            _itemDelete.Click += (sender, e) => { _watchVarControl.DeleteFromPanel(); };
-            _itemDelete.Visible = false;
+            _itemRemove = new ToolStripMenuItem("Remove");
+            _itemRemove.Click += (sender, e) => { _watchVarControl.DeleteFromPanel(); };
+            _itemRemove.Visible = false;
 
             _contextMenuStrip.AddToEndingList(_separatorCustom);
             _contextMenuStrip.AddToEndingList(_itemFixAddress);
             _contextMenuStrip.AddToEndingList(_itemRename);
-            _contextMenuStrip.AddToEndingList(_itemDelete);
+            _contextMenuStrip.AddToEndingList(_itemRemove);
         }
 
         public void ShowVarInfo()
@@ -400,7 +400,7 @@ namespace STROOP.Controls
             _separatorCustom.Visible = true;
             _itemFixAddress.Visible = true;
             _itemRename.Visible = true;
-            _itemDelete.Visible = true;
+            _itemRemove.Visible = true;
         }
 
 
