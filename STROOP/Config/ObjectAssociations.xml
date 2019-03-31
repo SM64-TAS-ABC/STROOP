@@ -1822,6 +1822,7 @@
   <Object behaviorScriptAddress="0x1300229C" name="Sound Effect">
     <SpawnCode gfxId="0x00"/>
     <Image path="Sound Effect.png"/>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object" useHex="true">Sound</Data>
   </Object>
   <Object behaviorScriptAddress="0x130022B8" name="JRB Rock">
     <SpawnCode gfxId="0x3B"/>
