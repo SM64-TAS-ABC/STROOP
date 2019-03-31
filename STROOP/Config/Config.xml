@@ -13,7 +13,7 @@
     <Emulator name="Dolphin" processName="Dolphin" ramStart="0xe6a180" endianness="big" special="dolphin"/>
   </Emulators>
 
-  <!-- US, JP, or PAL -->
+  <!-- US, JP, or SH -->
   <RomVersion>US</RomVersion>
 
   <RefreshRateFreq>30</RefreshRateFreq>

@@ -13,6 +13,6 @@ namespace STROOP.Structs
     {
         US,
         JP,
-        PAL,
+        SH,
     };
 }

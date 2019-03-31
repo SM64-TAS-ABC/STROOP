@@ -271,7 +271,7 @@ namespace STROOP.Managers
                         baseAddressType: BaseAddressTypeEnum.None,
                         offsetUS: null,
                         offsetJP: null,
-                        offsetPAL: null,
+                        offsetSH: null,
                         offsetDefault: null,
                         mask: null,
                         shift: null);

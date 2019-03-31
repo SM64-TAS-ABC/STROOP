@@ -427,7 +427,7 @@ namespace STROOP.Managers
                     baseAddressType: baseAddressType,
                     offsetUS: null,
                     offsetJP: null,
-                    offsetPAL: null,
+                    offsetSH: null,
                     offsetDefault: offset,
                     mask: null,
                     shift: null);

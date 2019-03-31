@@ -14,6 +14,6 @@ namespace STROOP.Structs
         AUTO,
         US,
         JP,
-        PAL,
+        SH,
     };
 }
