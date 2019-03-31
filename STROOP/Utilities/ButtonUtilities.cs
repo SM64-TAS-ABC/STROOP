@@ -415,7 +415,7 @@ namespace STROOP.Utilities
                 }
 
                 // Read first object in group
-                uint groupAddress = ObjectSlotsConfig.FirstGroupingAddress + processGroup.Value * ObjectSlotsConfig.ProcessGroupStructSize;
+                uint groupAddress = ObjectSlotsConfig.ProcessGroupsStartAddress + processGroup.Value * ObjectSlotsConfig.ProcessGroupStructSize;
 
                 // Loop through and find last object in group
                 uint lastGroupObj = groupAddress;
@@ -424,11 +424,11 @@ namespace STROOP.Utilities
 
                 // Remove object from current group
                 uint nextObj = Config.Stream.GetUInt32(obj.Address + ObjectConfig.ProcessedNextLinkOffset);
-                uint prevObj = Config.Stream.GetUInt32(ObjectSlotsConfig.VacantPointerAddress);
+                uint prevObj = Config.Stream.GetUInt32(ObjectSlotsConfig.VacantSlotsPointerAddress);
                 if (prevObj == obj.Address)
                 {
                     // Set new vacant pointer
-                    success &= Config.Stream.SetValue(nextObj, ObjectSlotsConfig.VacantPointerAddress);
+                    success &= Config.Stream.SetValue(nextObj, ObjectSlotsConfig.VacantSlotsPointerAddress);
                 }
                 else
                 {

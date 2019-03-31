@@ -415,7 +415,7 @@ namespace STROOP.Managers
                         goto case SlotLabelType.SlotPosVs;
 
                 case SlotLabelType.SlotIndex:
-                    return String.Format("{0}", (obj.Address - ObjectSlotsConfig.LinkStartAddress)
+                    return String.Format("{0}", (obj.Address - ObjectSlotsConfig.ObjectSlotsStartAddress)
                         / ObjectConfig.StructSize + (SavedSettingsConfig.StartSlotIndexsFromOne ? 1 : 0));
 
                 case SlotLabelType.SlotPos:

@@ -60,7 +60,7 @@ namespace STROOP.Models
             int slotIndex = 0;
             foreach (var processGroup in ObjectSlotsConfig.ProcessingGroups)
             {
-                uint processGroupStructAddress = ObjectSlotsConfig.FirstGroupingAddress + processGroup * ObjectSlotsConfig.ProcessGroupStructSize;
+                uint processGroupStructAddress = ObjectSlotsConfig.ProcessGroupsStartAddress + processGroup * ObjectSlotsConfig.ProcessGroupStructSize;
 
                 // Calculate start object
                 uint objAddress = Config.Stream.GetUInt32(processGroupStructAddress + ObjectConfig.ProcessedNextLinkOffset);
@@ -99,7 +99,7 @@ namespace STROOP.Models
         private void UpdateGetVacantObjects(int slotIndex)
         {
             // Now calculate vacant addresses
-            uint objAddress = Config.Stream.GetUInt32(ObjectSlotsConfig.VacantPointerAddress);
+            uint objAddress = Config.Stream.GetUInt32(ObjectSlotsConfig.VacantSlotsPointerAddress);
             for (int vacantSlotIndex = 0; slotIndex < ObjectSlotsConfig.MaxSlots; slotIndex++, vacantSlotIndex++)
             {
                 // Validate current object

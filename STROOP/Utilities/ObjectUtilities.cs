@@ -18,7 +18,7 @@ namespace STROOP.Utilities
 
         public static uint? GetObjectRelativeAddress(uint absoluteAddress)
         {
-            uint objRangeMinAddress = ObjectSlotsConfig.LinkStartAddress;
+            uint objRangeMinAddress = ObjectSlotsConfig.ObjectSlotsStartAddress;
             uint objRangeMaxAddress =
                 objRangeMinAddress + (uint)ObjectSlotsConfig.MaxSlots * ObjectConfig.StructSize;
 
@@ -32,7 +32,7 @@ namespace STROOP.Utilities
         public static int? GetObjectIndex(uint absoluteAddress)
         {
             if (!IsObjectAddress(absoluteAddress)) return null;
-            int index = (int)((absoluteAddress - ObjectSlotsConfig.LinkStartAddress) / ObjectConfig.StructSize);
+            int index = (int)((absoluteAddress - ObjectSlotsConfig.ObjectSlotsStartAddress) / ObjectConfig.StructSize);
             return index;
         }
 
@@ -41,7 +41,7 @@ namespace STROOP.Utilities
             if (index < 0 || index >= ObjectSlotsConfig.MaxSlots)
                 throw new ArgumentOutOfRangeException();
 
-            return ObjectSlotsConfig.LinkStartAddress + (uint)index * ObjectConfig.StructSize;
+            return ObjectSlotsConfig.ObjectSlotsStartAddress + (uint)index * ObjectConfig.StructSize;
         }
 
         public static uint? GetCollisionObject(uint objAddress, int collisionIndex)
@@ -67,7 +67,7 @@ namespace STROOP.Utilities
         {
             foreach (byte processGroup in ObjectSlotsConfig.ProcessingGroups)
             {
-                uint processGroupStructAddress = ObjectSlotsConfig.FirstGroupingAddress + processGroup * ObjectSlotsConfig.ProcessGroupStructSize;
+                uint processGroupStructAddress = ObjectSlotsConfig.ProcessGroupsStartAddress + processGroup * ObjectSlotsConfig.ProcessGroupStructSize;
                 if (address == processGroupStructAddress) return processGroup;
             }
             return null;
