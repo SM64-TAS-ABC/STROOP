@@ -54,9 +54,10 @@ namespace STROOP.Structs
         public static readonly uint GlobalTimerAddressJP = 0x8032C694;
         public static readonly uint GlobalTimerAddressSH = 0x8030CD04;
         
-        public static uint RngAddress { get => RomVersionConfig.Switch(RngAddressUS, RngAddressJP); }
+        public static uint RngAddress { get => RomVersionConfig.Switch(RngAddressUS, RngAddressJP, RngAddressSH); }
         public static readonly uint RngAddressUS = 0x8038EEE0;
         public static readonly uint RngAddressJP = 0x8038EEE0;
+        public static readonly uint RngAddressSH = 0x8038BBC0; 
 
         public static uint AnimationTimerAddress { get => RomVersionConfig.Switch(AnimationTimerAddressUS, AnimationTimerAddressJP); }
         public static readonly uint AnimationTimerAddressUS = 0x8032DF08;
