@@ -49,10 +49,11 @@ namespace STROOP.Structs
         public static readonly uint HackedAreaAddressUS = 0x803E0000;
         public static readonly uint HackedAreaAddressJP = 0x803E0000;
 
-        public static uint GlobalTimerAddress { get => RomVersionConfig.Switch(GlobalTimerAddressUS, GlobalTimerAddressJP); }
+        public static uint GlobalTimerAddress { get => RomVersionConfig.Switch(GlobalTimerAddressUS, GlobalTimerAddressJP, GlobalTimerAddressSH); }
         public static readonly uint GlobalTimerAddressUS = 0x8032D5D4;
         public static readonly uint GlobalTimerAddressJP = 0x8032C694;
-
+        public static readonly uint GlobalTimerAddressSH = 0x8030CD04;
+        
         public static uint RngAddress { get => RomVersionConfig.Switch(RngAddressUS, RngAddressJP); }
         public static readonly uint RngAddressUS = 0x8038EEE0;
         public static readonly uint RngAddressJP = 0x8038EEE0;

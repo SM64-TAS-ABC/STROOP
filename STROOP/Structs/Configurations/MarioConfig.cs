@@ -9,9 +9,10 @@ namespace STROOP.Structs
 {
     public static class MarioConfig
     {
-        public static uint StructAddress { get => RomVersionConfig.Switch(StructAddressUS, StructAddressJP); }
+        public static uint StructAddress { get => RomVersionConfig.Switch(StructAddressUS, StructAddressJP, StructAddressSH); }
         public static readonly uint StructAddressUS = 0x8033B170;
         public static readonly uint StructAddressJP = 0x80339E00;
+        public static readonly uint StructAddressSH = 0x8031D9C0;
 
         public static readonly uint XOffset = 0x3C;
         public static readonly uint YOffset = 0x40;

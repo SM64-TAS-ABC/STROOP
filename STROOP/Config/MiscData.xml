@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VarData>
-  <Data groupList="Basic" type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative">Global Timer</Data>
+  <Data groupList="Basic" type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" offsetSH="0x8030CD04" base="Relative">Global Timer</Data>
   <Data groupList="Basic" base="None" specialType="GlobalTimerMod64">Global Timer Mod 64</Data>
   <Data groupList="Basic,Coin" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative">RNG Value</Data>
   <Data groupList="Basic,Coin" base="None" specialType="RngIndex">RNG Index</Data>

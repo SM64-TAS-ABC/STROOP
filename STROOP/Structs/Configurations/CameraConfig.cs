@@ -8,9 +8,10 @@ namespace STROOP.Structs.Configurations
 {
     public static class CameraConfig
     {
-        public static uint StructAddress { get => RomVersionConfig.Switch(StructAddressUS, StructAddressJP); }
+        public static uint StructAddress { get => RomVersionConfig.Switch(StructAddressUS, StructAddressJP, StructAddressSH); }
         public static readonly uint StructAddressUS = 0x8033C618;
         public static readonly uint StructAddressJP = 0x8033B2A8;
+        public static readonly uint StructAddressSH = 0x8031ED70;
 
         public static readonly uint XOffset = 0x8C;
         public static readonly uint YOffset = 0x90;

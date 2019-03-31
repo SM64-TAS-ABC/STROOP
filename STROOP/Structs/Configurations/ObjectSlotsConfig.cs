@@ -39,17 +39,20 @@ namespace STROOP.Structs
         }
         public static readonly List<byte> ProcessingGroups = ProcessingGroupsColor.Keys.ToList();
 
-        public static uint ProcessGroupsStartAddress { get => RomVersionConfig.Switch(FirstGroupingAddressUS, FirstGroupingAddressJP); }
-        public static readonly uint FirstGroupingAddressUS = 0x8033CBE0;
-        public static readonly uint FirstGroupingAddressJP = 0x8033B870;
+        public static uint ProcessGroupsStartAddress { get => RomVersionConfig.Switch(ProcessGroupsStartAddressUS, ProcessGroupsStartAddressJP, ProcessGroupsStartAddressSH); }
+        public static readonly uint ProcessGroupsStartAddressUS = 0x8033CBE0;
+        public static readonly uint ProcessGroupsStartAddressJP = 0x8033B870;
+        public static readonly uint ProcessGroupsStartAddressSH = 0x8031DA48;
 
-        public static uint ObjectSlotsStartAddress { get => RomVersionConfig.Switch(LinkStartAddressUS, LinkStartAddressJP); }
-        public static readonly uint LinkStartAddressUS = 0x8033D488;
-        public static readonly uint LinkStartAddressJP = 0x8033C118;
+        public static uint ObjectSlotsStartAddress { get => RomVersionConfig.Switch(ObjectSlotsStartAddressUS, ObjectSlotsStartAddressJP, ObjectSlotsStartAddressSH); }
+        public static readonly uint ObjectSlotsStartAddressUS = 0x8033D488;
+        public static readonly uint ObjectSlotsStartAddressJP = 0x8033C118;
+        public static readonly uint ObjectSlotsStartAddressSH = 0x8033BE48;
 
-        public static uint VacantSlotsPointerAddress { get => RomVersionConfig.Switch(VacantPointerAddressUS, VacantPointerAddressJP); }
-        public static readonly uint VacantPointerAddressUS = 0x80361150;
-        public static readonly uint VacantPointerAddressJP = 0x8035FDE0;
+        public static uint VacantSlotsPointerAddress { get => RomVersionConfig.Switch(VacantSlotsPointerAddressUS, VacantSlotsPointerAddressJP, VacantSlotsPointerAddressSH); }
+        public static readonly uint VacantSlotsPointerAddressUS = 0x80361150;
+        public static readonly uint VacantSlotsPointerAddressJP = 0x8035FDE0;
+        public static readonly uint VacantSlotsPointerAddressSH = 0x80343310;
 
         public static uint UnusedSlotAddress { get => RomVersionConfig.Switch(UnusedSlotAddressUS, UnusedSlotAddressJP); }
         public static readonly uint UnusedSlotAddressUS = 0x80360E88;
