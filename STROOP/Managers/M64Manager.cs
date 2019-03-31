@@ -147,7 +147,7 @@ namespace STROOP.Managers
                     _m64File.Header.CountryCode = M64Config.CountryCodeJP;
                     _m64File.Header.Crc32 = M64Config.CrcJP;
                     break;
-                case RomVersion.PAL:
+                case RomVersion.SH:
                 default:
                     throw new ArgumentOutOfRangeException();
             }

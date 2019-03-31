@@ -31,8 +31,8 @@ namespace STROOP.Structs.Configurations
                 case RomVersionSelection.JP:
                     Version = RomVersion.JP;
                     break;
-                case RomVersionSelection.PAL:
-                    Version = RomVersion.PAL;
+                case RomVersionSelection.SH:
+                    Version = RomVersion.SH;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -47,7 +47,7 @@ namespace STROOP.Structs.Configurations
             return null;
         }
 
-        public static uint Switch(uint? valUS = null, uint? valJP = null, uint? valPAL = null)
+        public static uint Switch(uint? valUS = null, uint? valJP = null, uint? valSH = null)
         {
             switch (Version)
             {
@@ -57,13 +57,13 @@ namespace STROOP.Structs.Configurations
                 case RomVersion.JP:
                     if (valJP.HasValue) return valJP.Value;
                     break;
-                case RomVersion.PAL:
-                    if (valPAL.HasValue) return valPAL.Value;
+                case RomVersion.SH:
+                    if (valSH.HasValue) return valSH.Value;
                     break;
             }
             return 0;
         }
-        public static ushort Switch(ushort? valUS = null, ushort? valJP = null, ushort? valPAL = null)
+        public static ushort Switch(ushort? valUS = null, ushort? valJP = null, ushort? valSH = null)
         {
             switch (Version)
             {
@@ -73,8 +73,8 @@ namespace STROOP.Structs.Configurations
                 case RomVersion.JP:
                     if (valJP.HasValue) return valJP.Value;
                     break;
-                case RomVersion.PAL:
-                    if (valPAL.HasValue) return valPAL.Value;
+                case RomVersion.SH:
+                    if (valSH.HasValue) return valSH.Value;
                     break;
             }
             return 0;

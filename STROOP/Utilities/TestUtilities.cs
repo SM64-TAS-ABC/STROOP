@@ -162,7 +162,7 @@ namespace STROOP.Utilities
                                 baseAddressType: BaseAddressTypeEnum.Relative,
                                 offsetUS: null,
                                 offsetJP: null,
-                                offsetPAL: null,
+                                offsetSH: null,
                                 offsetDefault: addresses[i],
                                 mask: null,
                                 shift: null);

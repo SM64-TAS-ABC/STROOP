@@ -113,7 +113,7 @@ namespace STROOP.Managers
                     baseAddressType: BaseAddressTypeEnum.Snow,
                     offsetUS: null,
                     offsetJP: null,
-                    offsetPAL: null,
+                    offsetSH: null,
                     offsetDefault: offsets[i],
                     mask: null,
                     shift: null);

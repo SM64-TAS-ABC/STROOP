@@ -314,7 +314,7 @@ namespace STROOP.Managers
                 baseAddressType: BaseAddressTypeEnum.GfxNode,
                 offsetUS: null,
                 offsetJP: null,
-                offsetPAL: null,
+                offsetSH: null,
                 offsetDefault: offset,
                 mask: mask,
                 shift: null);
