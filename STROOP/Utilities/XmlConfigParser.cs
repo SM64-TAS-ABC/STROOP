@@ -264,12 +264,6 @@ namespace STROOP.Utilities
                                 case "EmptyImage":
                                     emptyImagePath = subElement.Value;
                                     break;
-                                case "SegmentTableUS":
-                                    assoc.SegmentTableUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "SegmentTableJP":
-                                    assoc.SegmentTableJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
                             }
                         }
                         break;

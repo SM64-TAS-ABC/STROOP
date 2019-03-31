@@ -6,8 +6,6 @@
     <OverlayImageDirectory>Resources\Overlays\</OverlayImageDirectory>
     <DefaultImage>default.png</DefaultImage>
     <EmptyImage>Empty.png</EmptyImage>
-    <SegmentTableUS>0x33b400</SegmentTableUS>
-    <SegmentTableJP>0x33A090</SegmentTableJP>
   </Config>
   <Mario behaviorScriptAddress="0x13002EC0">
     <Image path="Mario.png"/>

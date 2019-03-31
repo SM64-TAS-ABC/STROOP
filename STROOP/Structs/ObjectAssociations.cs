@@ -53,8 +53,8 @@ namespace STROOP.Structs
         public Color CameraColor;
         public uint MarioBehavior;
         public uint SegmentTable { get => RomVersionConfig.Switch(SegmentTableUS, SegmentTableJP); }
-        public uint SegmentTableUS;
-        public uint SegmentTableJP;
+        public uint SegmentTableUS = 0x33B400;
+        public uint SegmentTableJP = 0x33A090;
         public uint BehaviorBankStart;
 
         Dictionary<Image, Image> _cachedBufferedObjectImages = new Dictionary<Image, Image>();
