@@ -42,7 +42,7 @@ namespace STROOP.Structs
         public static uint ProcessGroupsStartAddress { get => RomVersionConfig.Switch(ProcessGroupsStartAddressUS, ProcessGroupsStartAddressJP, ProcessGroupsStartAddressSH); }
         public static readonly uint ProcessGroupsStartAddressUS = 0x8033CBE0;
         public static readonly uint ProcessGroupsStartAddressJP = 0x8033B870;
-        public static readonly uint ProcessGroupsStartAddressSH = 0x8031DA48;
+        public static readonly uint ProcessGroupsStartAddressSH = 0x80343428;
 
         public static uint ObjectSlotsStartAddress { get => RomVersionConfig.Switch(ObjectSlotsStartAddressUS, ObjectSlotsStartAddressJP, ObjectSlotsStartAddressSH); }
         public static readonly uint ObjectSlotsStartAddressUS = 0x8033D488;
