@@ -425,7 +425,7 @@ namespace STROOP.Controls
             else if (isDeletishKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                DeleteFromPanel();
+                RemoveFromPanel();
             }
             else if (isXKeyHeld)
             {
@@ -732,7 +732,7 @@ namespace STROOP.Controls
             _selectionToolStripItems = panel?.GetSelectionToolStripItems();
         }
 
-        public void DeleteFromPanel()
+        public void RemoveFromPanel()
         {
             if (_watchVariablePanel == null) return;
             _watchVariablePanel.RemoveVariable(this);

@@ -174,7 +174,7 @@ namespace STROOP.Controls
             _itemRename.Visible = false;
 
             _itemRemove = new ToolStripMenuItem("Remove");
-            _itemRemove.Click += (sender, e) => { _watchVarControl.DeleteFromPanel(); };
+            _itemRemove.Click += (sender, e) => { _watchVarControl.RemoveFromPanel(); };
             _itemRemove.Visible = false;
 
             _contextMenuStrip.AddToEndingList(_separatorCustom);
