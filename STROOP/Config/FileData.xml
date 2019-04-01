@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VarData>
-  <Data type="short" offsetUS="0x8032DDF4" offsetJP="0x8032CE94" base="Relative">Current File</Data>
+  <Data type="short" offsetUS="0x8032DDF4" offsetJP="0x8032CE94" offsetSH="0x8030D524" base="Relative">Current File</Data>
   
   <Data type="short" offset="0xAA" base="Mario" color="Yellow">Star Count</Data>
   <Data type="short" offset="0xF4" base="Mario" color="Yellow">Star Display</Data>
