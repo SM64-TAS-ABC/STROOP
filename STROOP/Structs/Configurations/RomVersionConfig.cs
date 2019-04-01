@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace STROOP.Structs.Configurations
 {
@@ -17,17 +18,36 @@ namespace STROOP.Structs.Configurations
         public static uint RomVersionTellValueJP = 0x46006004;
         public static uint RomVersionTellValueSH = 0x00000000;
 
-        public static void UpdateRomVersion(RomVersionSelection romVersionSelection)
+        public static void UpdateRomVersion(ComboBox comboBoxRomVersion)
         {
+            RomVersionSelection romVersionSelection = (RomVersionSelection)comboBoxRomVersion.SelectedItem;
             switch (romVersionSelection)
             {
                 case RomVersionSelection.AUTO:
                 case RomVersionSelection.AUTO_US:
                 case RomVersionSelection.AUTO_JP:
                 case RomVersionSelection.AUTO_SH:
-                    RomVersion? autoRomVersion = GetRomVersionUsingTell();
-                    if (autoRomVersion.HasValue)
-                        Version = autoRomVersion.Value;
+                    RomVersion? autoRomVersionNullable = GetRomVersionUsingTell();
+                    if (!autoRomVersionNullable.HasValue) return;
+                    RomVersion autoRomVersion = autoRomVersionNullable.Value;
+                    Version = autoRomVersion;
+                    if (!comboBoxRomVersion.DroppedDown)
+                    {
+                        switch (autoRomVersion)
+                        {
+                            case RomVersion.US:
+                                comboBoxRomVersion.SelectedItem = RomVersionSelection.AUTO_US;
+                                break;
+                            case RomVersion.JP:
+                                comboBoxRomVersion.SelectedItem = RomVersionSelection.AUTO_JP;
+                                break;
+                            case RomVersion.SH:
+                                comboBoxRomVersion.SelectedItem = RomVersionSelection.AUTO_SH;
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+                    }
                     break;
                 case RomVersionSelection.US:
                     Version = RomVersion.US;

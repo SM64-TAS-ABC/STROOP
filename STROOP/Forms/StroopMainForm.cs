@@ -585,7 +585,7 @@ namespace STROOP
         private void UpdateComboBoxes()
         {
             // Rom Version
-            RomVersionConfig.UpdateRomVersion((RomVersionSelection)comboBoxRomVersion.SelectedItem);
+            RomVersionConfig.UpdateRomVersion(comboBoxRomVersion);
 
             // Readonly / Read+Write
             Config.Stream.Readonly = (ReadWriteMode)comboBoxReadWriteMode.SelectedItem == ReadWriteMode.ReadOnly;
