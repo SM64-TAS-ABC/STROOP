@@ -43,8 +43,8 @@
   <Data groupList="Intermediate" base="None" specialType="TtcSaveState" subclass="String" color="Yellow">TTC Save State</Data>
 
   <Data groupList="Intermediate" type="byte" offsetUS="0x801A81A4" offsetJP="0x801A8014" base="Relative" color="LightBlue">Mission Selected</Data>
-  <Data groupList="Intermediate" type="short" offsetUS="0x8033BAC8" offsetJP="0x8033A758" base="Relative" color="LightBlue">Mission Layout</Data>
-  <Data groupList="Intermediate" type="byte" offsetUS="0x80331620" offsetJP="0x80330534" base="Relative" color="LightBlue">Mission Name</Data>
+  <Data groupList="Intermediate" type="short" offsetUS="0x8033BAC8" offsetJP="0x8033A758" offsetSH="0x8031E318" base="Relative" color="LightBlue">Mission Layout</Data>
+  <Data groupList="Intermediate" type="byte" offsetUS="0x80331620" offsetJP="0x80330534" offsetSH="0x80310BC8" base="Relative" color="LightBlue">Mission Name</Data>
   <Data groupList="Intermediate" type="byte" offsetUS="0x8032DD84" offsetJP="0x8032CE24" base="Relative" color="LightBlue">Last Star</Data>
   <Data groupList="Intermediate" type="byte" offsetUS="0x8032DD80" offsetJP="0x8032CE20" base="Relative" color="LightBlue">Last Star Course</Data>
   <Data groupList="Intermediate" type="byte" offsetUS="0x80331490" offsetJP="0x80330430" base="Relative" color="LightBlue">Selection Index</Data>
