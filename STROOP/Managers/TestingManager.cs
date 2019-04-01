@@ -630,6 +630,22 @@ namespace STROOP.Managers
 
         public void Update(bool updateView)
         {
+            /*
+            if (updateView)
+            {
+                int koopaTurnAngle = 1536;
+                uint koopaAddress = 0x8034E0E8;
+                ushort koopaAngle = Config.Stream.GetUInt16(koopaAddress + ObjectConfig.YawFacingOffset);
+                uint cameraHackAngleAddress = 0x803E001E;
+                ushort cameraHackAngle = Config.Stream.GetUInt16(cameraHackAngleAddress);
+                if (MoreMath.GetAngleDistance(koopaAngle, cameraHackAngle) > 2 * koopaTurnAngle)
+                {
+                    ushort newCameraHackAngle = (ushort)MoreMath.RotateAngleTowards(cameraHackAngle, koopaAngle, koopaTurnAngle);
+                    Config.Stream.SetValue(newCameraHackAngle, cameraHackAngleAddress);
+                }
+            }
+            */
+
             // Show Invisible Objects as Signs
             if (TestingConfig.ShowInvisibleObjectsAsSigns)
             {
