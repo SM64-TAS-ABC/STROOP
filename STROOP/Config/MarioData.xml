@@ -117,6 +117,6 @@
   <Data groupList="Advanced" type="int" offsetUS="0x800F0A5C" offsetJP="0x800EDBDC" base="Relative">Blinking State</Data>
   <Data groupList="Advanced" type="short" offsetUS="0x8032DF08" offsetJP="0x8032CFA8" base="Relative">Blinking Timer</Data>
   
-  <Data groupList="Intermediate" type="uint" offsetUS="0x80361158" offsetJP="0x8035FDE8" base="Relative" subclass="Object">Effective Mario Object</Data>
+  <Data groupList="Intermediate" type="uint" offsetUS="0x80361158" offsetJP="0x8035FDE8" offsetSH="0x80343318" base="Relative" subclass="Object">Effective Mario Object</Data>
   <Data groupList="Intermediate" type="uint" offset="0x88" base="Mario" subclass="Object">Visual Mario Object</Data>
 </VarData>
