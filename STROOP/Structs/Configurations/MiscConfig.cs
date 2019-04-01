@@ -9,25 +9,31 @@ namespace STROOP.Structs
 {
     public static class MiscConfig
     {
-        public static uint LevelAddress { get => RomVersionConfig.Switch(LevelAddressUS, LevelAddressJP); }
+        public static uint LevelAddress { get => RomVersionConfig.Switch(LevelAddressUS, LevelAddressJP, LevelAddressSH); }
         public static readonly uint LevelAddressUS = 0x8033B249;
         public static readonly uint LevelAddressJP = 0x80339ED9;
+        public static readonly uint LevelAddressSH = 0x8031DAA1;
 
-        public static uint AreaAddress { get => RomVersionConfig.Switch(AreaAddressUS, AreaAddressJP); }
+        public static uint AreaAddress { get => RomVersionConfig.Switch(AreaAddressUS, AreaAddressJP, AreaAddressSH); }
         public static readonly uint AreaAddressUS = 0x8033B24A;
         public static readonly uint AreaAddressJP = 0x80339EDA;
+        public static readonly uint AreaAddressSH = 0x8031DAA2;
 
-        public static uint LoadingPointAddress { get => RomVersionConfig.Switch(LoadingPointAddressUS, LoadingPointAddressJP); }
+        public static uint LoadingPointAddress { get => RomVersionConfig.Switch(LoadingPointAddressUS, LoadingPointAddressJP, LoadingPointAddressSH); }
         public static readonly uint LoadingPointAddressUS = 0x8033BACA;
         public static readonly uint LoadingPointAddressJP = 0x8033A75A;
+        public static readonly uint LoadingPointAddressSH = 0x8031E31A;
 
-        public static uint MissionAddress { get => RomVersionConfig.Switch(MissionAddressUS, MissionAddressJP); }
+        public static uint MissionAddress { get => RomVersionConfig.Switch(MissionAddressUS, MissionAddressJP, MissionAddressSH); }
         public static readonly uint MissionAddressUS = 0x8033BAC8;
         public static readonly uint MissionAddressJP = 0x8033A758;
+        public static readonly uint MissionAddressSH = 0x8031E318;
 
-        public static uint LevelIndexAddress { get => RomVersionConfig.Switch(LevelIndexAddressUS, LevelIndexAddressJP); }
+        public static uint LevelIndexAddress { get => RomVersionConfig.Switch(LevelIndexAddressUS, LevelIndexAddressJP, LevelIndexAddressSH); }
         public static readonly uint LevelIndexAddressUS = 0x8033BAC6;
         public static readonly uint LevelIndexAddressJP = 0x8033A756;
+        public static readonly uint LevelIndexAddressSH = 0x8031E316;
+
 
         public static uint WaterLevelMedianAddress { get => RomVersionConfig.Switch(WaterLevelMedianAddressUS, WaterLevelMedianAddressJP); }
         public static readonly uint WaterLevelMedianAddressUS = 0x8036118A;
