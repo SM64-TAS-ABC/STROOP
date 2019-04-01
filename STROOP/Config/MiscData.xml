@@ -52,7 +52,7 @@
   <Data groupList="Intermediate" type="byte" offsetUS="0x8033149C" offsetJP="0x8033043C" base="Relative" color="LightBlue">Selection Timer</Data>
 
   <Data groupList="Intermediate" type="short" offsetUS="0x8033BAC6" offsetJP="0x8033A756" offsetSH="0x8031E316" base="Relative" color="Blue">Level Index</Data>
-  <Data groupList="Intermediate" type="byte" offsetUS="0x8033B249" offsetJP="0x80339ED9" base="Relative" color="Blue">Level</Data>
+  <Data groupList="Intermediate" type="byte" offsetUS="0x8033B249" offsetJP="0x80339ED9" offsetSH="0x8031DAA1" base="Relative" color="Blue">Level</Data>
   <Data groupList="Intermediate" type="byte" offsetUS="0x8033B24A" offsetJP="0x80339EDA" base="Relative" color="Blue">Area</Data>
   <Data groupList="Intermediate" type="short" offsetUS="0x8033BACA" offsetJP="0x8033A75A" base="Relative" color="Blue">Loading Point</Data>
   <Data groupList="Intermediate" type="uint" offsetUS="0x8033B4A0" offsetJP="0x8033A130" base="Relative" useHex="true" color="Blue">Last Area</Data>
