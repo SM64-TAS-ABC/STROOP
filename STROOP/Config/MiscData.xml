@@ -54,7 +54,7 @@
   <Data groupList="Intermediate" type="short" offsetUS="0x8033BAC6" offsetJP="0x8033A756" offsetSH="0x8031E316" base="Relative" color="Blue">Level Index</Data>
   <Data groupList="Intermediate" type="byte" offsetUS="0x8033B249" offsetJP="0x80339ED9" offsetSH="0x8031DAA1" base="Relative" color="Blue">Level</Data>
   <Data groupList="Intermediate" type="byte" offsetUS="0x8033B24A" offsetJP="0x80339EDA" offsetSH="0x8031DAA2" base="Relative" color="Blue">Area</Data>
-  <Data groupList="Intermediate" type="short" offsetUS="0x8033BACA" offsetJP="0x8033A75A" base="Relative" color="Blue">Loading Point</Data>
+  <Data groupList="Intermediate" type="short" offsetUS="0x8033BACA" offsetJP="0x8033A75A" offsetSH="0x8031E31A" base="Relative" color="Blue">Loading Point</Data>
   <Data groupList="Intermediate" type="uint" offsetUS="0x8033B4A0" offsetJP="0x8033A130" base="Relative" useHex="true" color="Blue">Last Area</Data>
   <Data groupList="Intermediate" type="byte" offsetUS="0x8033B4A4" offsetJP="0x8033A134" base="Relative" color="Blue">Last Area Entrance</Data>
   <Data groupList="Intermediate" type="short" offsetUS="0x8033BACC" offsetJP="0x8033A75C" base="Relative" color="Blue">Last Death Course</Data>
