@@ -215,17 +215,6 @@ namespace STROOP.Structs
             return segmented;
         }
 
-        public uint AlignSHBehavior(uint segmented)
-        {
-            if (segmented >= 0x13002ea0)
-                return segmented + 32;
-            if (segmented >= 0x13002c6c)
-                return segmented + 36;
-            if (segmented >= 0x13002998)
-                return segmented + 24;
-            return segmented;
-        }
-
         ~ObjectAssociations()
         {
             lock (_cachedBufferedObjectImageLocker)
