@@ -80,13 +80,15 @@ namespace STROOP.Structs
         public static readonly uint InitialReleaseStatusOffset = 0x1D4;
         public static readonly uint InteractionStatusOffset = 0x134;
 
-        public static uint ReleaseStatusThrownValue { get => RomVersionConfig.Switch(ReleaseStatusThrownValueUS, ReleaseStatusThrownValueJP); }
+        public static uint ReleaseStatusThrownValue { get => RomVersionConfig.Switch(ReleaseStatusThrownValueUS, ReleaseStatusThrownValueJP, ReleaseStatusThrownValueSH); }
         public static readonly uint ReleaseStatusThrownValueUS = 0x800EE5F8;
         public static readonly uint ReleaseStatusThrownValueJP = 0x800EB778;
+        public static readonly uint ReleaseStatusThrownValueSH = 0x800EB798;
 
-        public static uint ReleaseStatusDroppedValue { get => RomVersionConfig.Switch(ReleaseStatusDroppedValueUS, ReleaseStatusDroppedValueJP); }
+        public static uint ReleaseStatusDroppedValue { get => RomVersionConfig.Switch(ReleaseStatusDroppedValueUS, ReleaseStatusDroppedValueJP, ReleaseStatusDroppedValueSH); }
         public static readonly uint ReleaseStatusDroppedValueUS = 0x800EE5F0;
         public static readonly uint ReleaseStatusDroppedValueJP = 0x800EB770;
+        public static readonly uint ReleaseStatusDroppedValueSH = 0x800EB790;
 
         public static readonly uint NativeRoomOffset = 0x1A0;
         public static readonly uint NumCollidedObjectsOffset = 0x76;
@@ -119,9 +121,10 @@ namespace STROOP.Structs
         public static readonly uint ScuttlebugPhaseOffset = 0x150;
         public static readonly uint ScuttlebugTargetAngleOffset = 0x162;
 
-        public static uint SignGraphicsId { get => RomVersionConfig.Switch(SignGraphicsIdUS, SignGraphicsIdJP); }
+        public static uint SignGraphicsId { get => RomVersionConfig.Switch(SignGraphicsIdUS, SignGraphicsIdJP, SignGraphicsIdSH); }
         public static readonly uint SignGraphicsIdUS = 0x800F8C4C;
         public static readonly uint SignGraphicsIdJP = 0x800F5DCC;
+        public static readonly uint SignGraphicsIdSH = 0x800F5DEC;
 
         public static readonly uint BitfsPlatformGroupTimerOffset = 0xF4;
 
