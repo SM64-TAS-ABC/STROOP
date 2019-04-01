@@ -12,6 +12,9 @@ namespace STROOP.Structs
     public enum RomVersionSelection
     {
         AUTO,
+        AUTO_US,
+        AUTO_JP,
+        AUTO_SH,
         US,
         JP,
         SH,

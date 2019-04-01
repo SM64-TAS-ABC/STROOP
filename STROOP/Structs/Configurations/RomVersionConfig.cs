@@ -22,6 +22,9 @@ namespace STROOP.Structs.Configurations
             switch (romVersionSelection)
             {
                 case RomVersionSelection.AUTO:
+                case RomVersionSelection.AUTO_US:
+                case RomVersionSelection.AUTO_JP:
+                case RomVersionSelection.AUTO_SH:
                     RomVersion? autoRomVersion = GetRomVersionUsingTell();
                     if (autoRomVersion.HasValue)
                         Version = autoRomVersion.Value;
