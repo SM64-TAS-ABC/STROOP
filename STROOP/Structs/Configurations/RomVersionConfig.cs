@@ -46,7 +46,7 @@ namespace STROOP.Structs.Configurations
             if (tell == RomVersionTellValueUS) return RomVersion.US;
             if (tell == RomVersionTellValueJP) return RomVersion.JP;
             if (tell == RomVersionTellValueSH) return RomVersion.SH;
-            return null;
+            return RomVersion.SH;
         }
 
         public static uint Switch(uint? valUS = null, uint? valJP = null, uint? valSH = null)
