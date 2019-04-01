@@ -278,9 +278,14 @@ namespace STROOP.Models
             else 
                 SegmentedBehavior = 0x13000000 + (uint) behaviorOffset;
 
+            uint behaviorAddress = RomVersionConfig.Switch(
+                SegmentedBehavior,
+                Config.ObjectAssociations.AlignJPBehavior(SegmentedBehavior),
+                Config.ObjectAssociations.AlignSHBehavior(SegmentedBehavior));
+
             BehaviorCriteria = new BehaviorCriteria()
             {
-                BehaviorAddress = RomVersionConfig.Switch(SegmentedBehavior, Config.ObjectAssociations.AlignJPBehavior(SegmentedBehavior)),
+                BehaviorAddress = behaviorAddress,
                 GfxId = _gfxId,
                 SubType = _subType,
                 Appearance = _appearance,
