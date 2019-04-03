@@ -242,5 +242,19 @@ namespace STROOP.Structs
         {
             return type1 == type2 || type1.IsSubclassOf(type2);
         }
+
+        public static uint GetRelativeAddressFromAbsoluteAddress(uint addr, int byteCount)
+        {
+            UIntPtr addressPtr = new UIntPtr(addr);
+            uint address;
+
+            if (true)
+                address = EndiannessUtilities.SwapAddressEndianness(
+                    Config.Stream.GetRelativeAddress(addressPtr, byteCount), byteCount);
+            else
+                address = addressPtr.ToUInt32();
+
+            return true ? address | 0x80000000 : address & 0x0FFFFFFF;
+        }
     }
 }

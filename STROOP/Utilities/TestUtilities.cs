@@ -17,12 +17,19 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            TestSomething3();
+            TestSomething13();
         }
 
         public static void TestSomethingElse()
         {
             Config.Print(TtcMain.FindHandMovement());
+        }
+
+        public static void TestSomething13()
+        {
+            uint absoluteAddress = (uint)SpecialConfig.CustomX;
+            uint relativeAddress = TypeUtilities.GetRelativeAddressFromAbsoluteAddress(absoluteAddress, 4);
+            InfoForm.ShowValue(relativeAddress);
         }
 
         public static void TestSomething12()
