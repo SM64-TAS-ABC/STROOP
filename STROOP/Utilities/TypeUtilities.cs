@@ -246,15 +246,9 @@ namespace STROOP.Structs
         public static uint GetRelativeAddressFromAbsoluteAddress(uint addr, int byteCount)
         {
             UIntPtr addressPtr = new UIntPtr(addr);
-            uint address;
-
-            if (true)
-                address = EndiannessUtilities.SwapAddressEndianness(
-                    Config.Stream.GetRelativeAddress(addressPtr, byteCount), byteCount);
-            else
-                address = addressPtr.ToUInt32();
-
-            return true ? address | 0x80000000 : address & 0x0FFFFFFF;
+            uint address = EndiannessUtilities.SwapAddressEndianness(
+                Config.Stream.GetRelativeAddress(addressPtr, byteCount), byteCount);
+            return address | 0x80000000;
         }
     }
 }

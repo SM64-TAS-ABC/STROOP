@@ -29,7 +29,7 @@ namespace STROOP.Utilities
         {
             uint absoluteAddress = (uint)SpecialConfig.CustomX;
             uint relativeAddress = TypeUtilities.GetRelativeAddressFromAbsoluteAddress(absoluteAddress, 4);
-            InfoForm.ShowValue(relativeAddress);
+            InfoForm.ShowValue(HexUtilities.FormatValue(relativeAddress));
         }
 
         public static void TestSomething12()
