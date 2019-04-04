@@ -16,6 +16,13 @@ namespace STROOP.Managers
 {
     public class TestingManager
     {
+        // Conversion
+        GroupBox _groupBoxTestingConversion;
+        BetterTextbox _textBoxTestingConversionAddress;
+        BetterTextbox _textBoxTestingConversionBytes;
+        BetterTextbox _textBoxTestingConversionResult;
+        Button _buttonTestingConversionConvert;
+
         // Control stick
         GroupBox _groupBoxControlStick;
         CheckBox _checkBoxUseInput;
@@ -162,6 +169,22 @@ namespace STROOP.Managers
 
         public TestingManager(TabPage tabControl)
         {
+            // Conversion
+            _groupBoxTestingConversion = tabControl.Controls["groupBoxTestingConversion"] as GroupBox;
+            _textBoxTestingConversionAddress = _groupBoxTestingConversion.Controls["textBoxTestingConversionAddress"] as BetterTextbox;
+            _textBoxTestingConversionBytes = _groupBoxTestingConversion.Controls["textBoxTestingConversionBytes"] as BetterTextbox;
+            _textBoxTestingConversionResult = _groupBoxTestingConversion.Controls["textBoxTestingConversionResult"] as BetterTextbox;
+            _buttonTestingConversionConvert = _groupBoxTestingConversion.Controls["buttonTestingConversionConvert"] as Button;
+            _buttonTestingConversionConvert.Click += (sender, e) =>
+            {
+                uint? address = ParsingUtilities.ParseHexNullable(_textBoxTestingConversionAddress.Text);
+                int? bytes = ParsingUtilities.ParseIntNullable(_textBoxTestingConversionBytes.Text);
+                if (!address.HasValue || !bytes.HasValue) return;
+                uint result = TypeUtilities.GetRelativeAddressFromAbsoluteAddress(address.Value, bytes.Value);
+                string resultString = HexUtilities.FormatValue(result);
+                _textBoxTestingConversionResult.Text = resultString;
+            };
+
             // Control stick
             _groupBoxControlStick = tabControl.Controls["groupBoxControlStick"] as GroupBox;
             _checkBoxUseInput = _groupBoxControlStick.Controls["checkBoxUseInput"] as CheckBox;
