@@ -180,8 +180,9 @@ namespace STROOP.Managers
                 uint? address = ParsingUtilities.ParseHexNullable(_textBoxTestingConversionAddress.Text);
                 int? bytes = ParsingUtilities.ParseIntNullable(_textBoxTestingConversionBytes.Text);
                 if (!address.HasValue || !bytes.HasValue) return;
-                uint result = TypeUtilities.GetRelativeAddressFromAbsoluteAddress(address.Value, bytes.Value);
-                string resultString = HexUtilities.FormatValue(result);
+                uint? result = TypeUtilities.SwapRelativeAbsolute(address.Value, bytes.Value);
+                if (!result.HasValue) return;
+                string resultString = HexUtilities.FormatValue(result.Value);
                 _textBoxTestingConversionResult.Text = resultString;
             };
 

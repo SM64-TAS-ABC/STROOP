@@ -250,5 +250,25 @@ namespace STROOP.Structs
                 Config.Stream.GetRelativeAddress(addressPtr, byteCount), byteCount);
             return address | 0x80000000;
         }
+
+        public static uint GetAbsoluteAddressFromRelativeAddress(uint addr, int byteCount) {
+            return Config.Stream.GetAbsoluteAddress(addr, byteCount).ToUInt32();
+        }
+
+        public static uint? SwapRelativeAbsolute(uint addr, int byteCount)
+        {
+            try
+            {
+                string addressString = HexUtilities.FormatValue(addr);
+                if (addressString.Length >= 4 && addressString.StartsWith("0x80"))
+                    return GetAbsoluteAddressFromRelativeAddress(addr, byteCount);
+                else
+                    return GetRelativeAddressFromAbsoluteAddress(addr, byteCount);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }
