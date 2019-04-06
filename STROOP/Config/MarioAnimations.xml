@@ -2,8 +2,8 @@
 <MarioAnimations>
   <Animation value="-1" name="nonexistant"/>
   <Animation value="0" name="slow ledge get up"/>
-  <Animation value="1" name="hard backward KB"/>
-  <Animation value="2" name="backward air KB"/>
+  <Animation value="1" name="hard backward knockback"/>
+  <Animation value="2" name="backward air knockback"/>
   <Animation value="3" name="death on back"/>
   <Animation value="4" name="backflip"/>
   <Animation value="5" name="climbing pole"/>
@@ -23,9 +23,9 @@
   <Animation value="19" name="fast long jump"/>
   <Animation value="20" name="slow long jump"/>
   <Animation value="21" name="cannon shot / vertical wind"/>
-  <Animation value="22" name="'decelerating"/>
-  <Animation value="23" name="'walking"/>
-  <Animation value="24" name="'slow walking"/>
+  <Animation value="22" name="decelerating with an object"/>
+  <Animation value="23" name="walking with an object"/>
+  <Animation value="24" name="slow walking with an object"/>
   <Animation value="25" name="start shivering"/>
   <Animation value="26" name="stop shivering"/>
   <Animation value="27" name="shivering"/>
@@ -33,20 +33,20 @@
   <Animation value="29" name="waving"/>
   <Animation value="30" name="Peach cutscene - holding hat"/>
   <Animation value="31" name="Peach cutscene - looking forward"/>
-  <Animation value="32" name="Peach cutscene - standing"/>
+  <Animation value="32" name="Peach cutscene - looking around"/>
   <Animation value="33" name="Peach cutscene - looking up"/>
   <Animation value="34" name="Peach cutscene - taking off hat"/>
   <Animation value="35" name="Peach cutscene - walking to castle"/>
   <Animation value="36" name="Peach cutscene - running to castle"/>
   <Animation value="37" name="grand star cutscene - twirling"/>
   <Animation value="38" name="grand star cutscene - jumping"/>
-  <Animation value="39" name="Peach cutscene - peace sign dance"/>
+  <Animation value="39" name="Peach cutscene - victory sign dance"/>
   <Animation value="40" name="lava boost landing"/>
   <Animation value="41" name="lava/fire boost"/>
   <Animation value="42" name="flying"/>
   <Animation value="43" name="riding owl"/>
-  <Animation value="44" name="hard forward KB"/>
-  <Animation value="45" name="thrown / forward air KB"/>
+  <Animation value="44" name="hard forward knockback"/>
+  <Animation value="45" name="thrown / forward air knockback"/>
   <Animation value="46" name="death on stomach"/>
   <Animation value="47" name="suffocation"/>
   <Animation value="48" name="coughing"/>
@@ -64,17 +64,17 @@
   <Animation value="60" name="start ground pound from freefall"/>
   <Animation value="61" name="ground pound"/>
   <Animation value="62" name="butt stuck in ground"/>
-  <Animation value="63" name="'standing"/>
-  <Animation value="64" name="'jump landing"/>
-  <Animation value="65" name="'jump"/>
-  <Animation value="66" name="'freefall landing"/>
-  <Animation value="67" name="'freefall"/>
-  <Animation value="68" name="'sitting to freefall"/>
-  <Animation value="69" name="'ground/air sitting"/>
-  <Animation value="70" name="'stop sitting"/>
+  <Animation value="63" name="standing with an object"/>
+  <Animation value="64" name="jump landing with an object"/>
+  <Animation value="65" name="jump with an object"/>
+  <Animation value="66" name="freefall landing with an object"/>
+  <Animation value="67" name="freefall with an object"/>
+  <Animation value="68" name="sitting to freefall with an object"/>
+  <Animation value="69" name="air/ground sitting with an object"/>
+  <Animation value="70" name="stop sitting with an object"/>
   <Animation value="71" name="shell riding on ground"/>
   <Animation value="72" name="walking"/>
-  <Animation value="73" name="~forward sideflip"/>
+  <Animation value="73" name="~forward flip"/>
   <Animation value="74" name="shell riding in air"/>
   <Animation value="75" name="double jump landing"/>
   <Animation value="76" name="double jump (2/2)"/>
@@ -82,15 +82,15 @@
   <Animation value="78" name="standard jump landing"/>
   <Animation value="79" name="air kick"/>
   <Animation value="80" name="double jump (1/2)"/>
-  <Animation value="81" name="~ground pound from 'freefall"/>
-  <Animation value="82" name="'air throw"/>
+  <Animation value="81" name="~start forward spinning"/>
+  <Animation value="82" name="air throw"/>
   <Animation value="83" name="slide kick freefall"/>
   <Animation value="84" name="~bend knees while riding shell"/>
   <Animation value="85" name="feet stuck in ground"/>
   <Animation value="86" name="freefall"/>
   <Animation value="87" name="freefall landing"/>
-  <Animation value="88" name="start grabbed / heaved"/>
-  <Animation value="89" name="'heavy picking up"/>
+  <Animation value="88" name="start being grabbed/heaved"/>
+  <Animation value="89" name="picking up a heavy object"/>
   <Animation value="90" name="stop sliding/diving"/>
   <Animation value="91" name="start flying from cannon shot"/>
   <Animation value="92" name="swinging - right arm"/>
@@ -99,34 +99,34 @@
   <Animation value="95" name="pulling door"/>
   <Animation value="96" name="pushing door"/>
   <Animation value="97" name="unlocking key door"/>
-  <Animation value="98" name="~start crying"/>
-  <Animation value="99" name="~crying"/>
-  <Animation value="100" name="~stop crying"/>
-  <Animation value="101" name="'ground throw"/>
+  <Animation value="98" name="~start reaching into pocket"/>
+  <Animation value="99" name="~reaching into pocket"/>
+  <Animation value="100" name="~stop reaching into pocket"/>
+  <Animation value="101" name="ground throw"/>
   <Animation value="102" name="ground kick"/>
   <Animation value="103" name="first punch (1/2)"/>
   <Animation value="104" name="second punch (1/2)"/>
   <Animation value="105" name="first punch (2/2)"/>
   <Animation value="106" name="second punch (2/2)"/>
-  <Animation value="107" name="'picking up"/>
+  <Animation value="107" name="picking up an object"/>
   <Animation value="108" name="pushing"/>
   <Animation value="109" name="start riding shell"/>
-  <Animation value="110" name="'placing down"/>
-  <Animation value="111" name="forward spinning (scrunched)"/>
+  <Animation value="110" name="placing down an object"/>
+  <Animation value="111" name="forward spinning"/>
   <Animation value="112" name="backward spinning"/>
   <Animation value="113" name="breakdance"/>
   <Animation value="114" name="running"/>
   <Animation value="115" name="~running 2"/>
-  <Animation value="116" name="soft backward KB"/>
-  <Animation value="117" name="soft forward KB"/>
+  <Animation value="116" name="soft backward knockback"/>
+  <Animation value="117" name="soft forward knockback"/>
   <Animation value="118" name="quicksand dying breath"/>
   <Animation value="119" name="in quicksand"/>
   <Animation value="120" name="wading through quicksand"/>
   <Animation value="121" name="electrocution"/>
   <Animation value="122" name="shocked"/>
-  <Animation value="123" name="medium backward KB"/>
-  <Animation value="124" name="medium forward KB"/>
-  <Animation value="125" name="'heavy standing"/>
+  <Animation value="123" name="medium backward knockback"/>
+  <Animation value="124" name="medium forward knockback"/>
+  <Animation value="125" name="standing with a heavy object"/>
   <Animation value="126" name="standing against wall"/>
   <Animation value="127" name="sidestepping left"/>
   <Animation value="128" name="sidestepping right"/>
@@ -140,13 +140,13 @@
   <Animation value="136" name="air/ground dive"/>
   <Animation value="137" name="sliding"/>
   <Animation value="138" name="ground bonk"/>
-  <Animation value="139" name="'stop sliding"/>
+  <Animation value="139" name="stop sliding with an object"/>
   <Animation value="140" name="slide kick"/>
   <Animation value="141" name="stop slide kicking"/>
   <Animation value="142" name="~sitting motionless"/>
   <Animation value="143" name="stop sitting"/>
   <Animation value="144" name="sitting to freefall"/>
-  <Animation value="145" name="ground/air sitting"/>
+  <Animation value="145" name="air/ground sitting"/>
   <Animation value="146" name="tiptoeing"/>
   <Animation value="147" name="twirl landing"/>
   <Animation value="148" name="twirling"/>
@@ -159,36 +159,36 @@
   <Animation value="155" name="start crawling"/>
   <Animation value="156" name="unlocking door (1/2)"/>
   <Animation value="157" name="unlocking door (2/2)"/>
-  <Animation value="158" name="water backward KB"/>
-  <Animation value="159" name="'swim (1/2)"/>
-  <Animation value="160" name="'swim (2/2)"/>
-  <Animation value="161" name="'flutterkick"/>
-  <Animation value="162" name="'water action end"/>
-  <Animation value="163" name="'water grabbing end"/>
-  <Animation value="164" name="'in water"/>
+  <Animation value="158" name="water backward knockback"/>
+  <Animation value="159" name="swim with an object (1/2)"/>
+  <Animation value="160" name="swim with an object (2/2)"/>
+  <Animation value="161" name="flutterkick with an object"/>
+  <Animation value="162" name="water action end with an object"/>
+  <Animation value="163" name="water grabbing end with an object"/>
+  <Animation value="164" name="in water with an object"/>
   <Animation value="165" name="drowning - holding mouth"/>
   <Animation value="166" name="drowning - falling forward"/>
   <Animation value="167" name="water death"/>
-  <Animation value="168" name="water forward KB"/>
+  <Animation value="168" name="water forward knockback"/>
   <Animation value="169" name="water to freefall"/>
   <Animation value="170" name="swim (1/2)"/>
   <Animation value="171" name="swim (2/2)"/>
   <Animation value="172" name="flutterkick"/>
   <Animation value="173" name="water action end"/>
-  <Animation value="174" name="'water picking up"/>
+  <Animation value="174" name="picking up an object in water"/>
   <Animation value="175" name="water grab (2/2)"/>
   <Animation value="176" name="water grab (1/2)"/>
-  <Animation value="177" name="'water throw"/>
+  <Animation value="177" name="water throw"/>
   <Animation value="178" name="in water"/>
-  <Animation value="179" name="star dance water"/>
-  <Animation value="180" name="stop star dance water"/>
-  <Animation value="181" name="'picking up Bowser"/>
-  <Animation value="182" name="'swinging Bowser"/>
-  <Animation value="183" name="'releasing Bowser"/>
-  <Animation value="184" name="'holding Bowser"/>
-  <Animation value="185" name="'heavy throw"/>
+  <Animation value="179" name="star dance in water"/>
+  <Animation value="180" name="stop star dance in water"/>
+  <Animation value="181" name="picking up Bowser"/>
+  <Animation value="182" name="swinging Bowser"/>
+  <Animation value="183" name="releasing Bowser"/>
+  <Animation value="184" name="holding Bowser"/>
+  <Animation value="185" name="heavy throw"/>
   <Animation value="186" name="panting"/>
-  <Animation value="187" name="'heavy walking"/>
+  <Animation value="187" name="walking with a heavy object"/>
   <Animation value="188" name="turning around (1/2)"/>
   <Animation value="189" name="turning around (2/2)"/>
   <Animation value="190" name="sideflip landing"/>
@@ -206,9 +206,9 @@
   <Animation value="202" name="pre-tiptoeing"/>
   <Animation value="203" name="pole jump / wall kick"/>
   <Animation value="204" name="pre-wallkick"/>
-  <Animation value="205" name="star dance ground"/>
-  <Animation value="206" name="stop star dance ground"/>
-  <Animation value="207" name="forward spinning (non-scrunched)"/>
+  <Animation value="205" name="star dance on ground"/>
+  <Animation value="206" name="stop star dance on ground"/>
+  <Animation value="207" name="forward spinning to horizontal"/>
   <Animation value="208" name="flying triple jump"/>
   <Animation value="266" name="between levels"/>
 </MarioAnimations>
