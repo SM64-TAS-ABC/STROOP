@@ -7,8 +7,8 @@
   <Data base="None" specialType="MarioAboveWater" color="Red">Mario Above Water</Data>
   <Data type="float" offset="0x40" base="Mario" color="Red">Mario Y</Data>
 
-  <Data type="short" offsetUS="0x801112E2" offsetJP="0x8010E462" base="Relative" color="Blue">WDW Main WL</Data>
-  <Data type="short" offsetUS="0x8011342E" offsetJP="0x801105AE" base="Relative" color="Blue">WDW Town WL</Data>
+  <Data type="short" offsetUS="0x801112E2" offsetJP="0x8010E462" offsetSH="0x8010E482" base="Relative" color="Blue">WDW Main WL</Data>
+  <Data type="short" offsetUS="0x8011342E" offsetJP="0x801105AE" offsetSH="0x801105CE" base="Relative" color="Blue">WDW Town WL</Data>
   <Data type="float" offsetUS="0x80330F3C" offsetJP="0x8032FFDC" base="Relative">WDW Painting Level</Data>
   
   <Data type="short" offsetUS="0x8010C81C" offsetJP="0x801090E4" base="Relative">Castle Lake WL</Data>
