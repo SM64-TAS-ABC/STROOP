@@ -43,9 +43,10 @@ namespace STROOP.Structs
         public static readonly uint WaterPointerAddressUS = 0x80361184;
         public static readonly uint WaterPointerAddressJP = 0x8035FE14;
 
-        public static uint CurrentFileAddress { get => RomVersionConfig.Switch(CurrentFileAddressUS, CurrentFileAddressJP); }
+        public static uint CurrentFileAddress { get => RomVersionConfig.Switch(CurrentFileAddressUS, CurrentFileAddressJP, CurrentFileAddressSH); }
         public static readonly uint CurrentFileAddressUS = 0x8032DDF4;
         public static readonly uint CurrentFileAddressJP = 0x8032CE94;
+        public static readonly uint CurrentFileAddressSH = 0x8030D524;
 
         public static uint SpecialTripleJumpAddress { get => RomVersionConfig.Switch(SpecialTripleJumpAddressUS, SpecialTripleJumpAddressJP); }
         public static readonly uint SpecialTripleJumpAddressUS = 0x8032DD94;
