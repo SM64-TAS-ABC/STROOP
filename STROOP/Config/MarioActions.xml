@@ -108,16 +108,16 @@
   <Action name="grabbed / heaved start" value="0x00020370" afterCloneValue="0x010008A1" afterUncloneValue="0x00020370" handsfreeValue="0x010008A1"/>
   <Action name="twirling in tornado" value="0x10020372" afterCloneValue="0x010008A1" afterUncloneValue="0x10020372" handsfreeValue="0x010008A1"/>
   <Action name="burning on ground" value="0x00020449" afterCloneValue="0x08000207" afterUncloneValue="0x00020449" handsfreeValue="0x08000207"/>
-  <Action name="hard backward KB" value="0x00020460" afterCloneValue="0x08000207" afterUncloneValue="0x00020460" handsfreeValue="0x08000207"/>
-  <Action name="hard forward KB" value="0x00020461" afterCloneValue="0x08000207" afterUncloneValue="0x00020461" handsfreeValue="0x08000207"/>
-  <Action name="medium backward KB" value="0x00020462" afterCloneValue="0x08000207" afterUncloneValue="0x00020462" handsfreeValue="0x08000207"/>
-  <Action name="medium forward KB" value="0x00020463" afterCloneValue="0x08000207" afterUncloneValue="0x00020463" handsfreeValue="0x08000207"/>
-  <Action name="soft backward KB" value="0x00020464" afterCloneValue="0x08000207" afterUncloneValue="0x00020464" handsfreeValue="0x08000207"/>
-  <Action name="soft forward KB" value="0x00020465" afterCloneValue="0x08000207" afterUncloneValue="0x00020465" handsfreeValue="0x08000207"/>
+  <Action name="hard backward knockback" value="0x00020460" afterCloneValue="0x08000207" afterUncloneValue="0x00020460" handsfreeValue="0x08000207"/>
+  <Action name="hard forward knockback" value="0x00020461" afterCloneValue="0x08000207" afterUncloneValue="0x00020461" handsfreeValue="0x08000207"/>
+  <Action name="medium backward knockback" value="0x00020462" afterCloneValue="0x08000207" afterUncloneValue="0x00020462" handsfreeValue="0x08000207"/>
+  <Action name="medium forward knockback" value="0x00020463" afterCloneValue="0x08000207" afterUncloneValue="0x00020463" handsfreeValue="0x08000207"/>
+  <Action name="soft backward knockback" value="0x00020464" afterCloneValue="0x08000207" afterUncloneValue="0x00020464" handsfreeValue="0x08000207"/>
+  <Action name="soft forward knockback" value="0x00020465" afterCloneValue="0x08000207" afterUncloneValue="0x00020465" handsfreeValue="0x08000207"/>
   <Action name="ground bonk" value="0x00020466" afterCloneValue="0x08000207" afterUncloneValue="0x00020466" handsfreeValue="0x08000207"/>
   <Action name="death exit landing" value="0x00020467" afterCloneValue="0x08000207" afterUncloneValue="0x00020467" handsfreeValue="0x08000207"/>
-  <Action name="backward air KB" value="0x010208B0" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B0" handsfreeValue="0x010008A1"/>
-  <Action name="forward air KB" value="0x010208B1" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B1" handsfreeValue="0x010008A1"/>
+  <Action name="backward air knockback" value="0x010208B0" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B0" handsfreeValue="0x010008A1"/>
+  <Action name="forward air knockback" value="0x010208B1" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B1" handsfreeValue="0x010008A1"/>
   <Action name="forward death air" value="0x010208B2" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B2" handsfreeValue="0x010008A1"/>
   <Action name="backward death air" value="0x010208B3" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B3" handsfreeValue="0x010008A1"/>
   <Action name="fire bounce" value="0x010208B4" afterCloneValue="0x010008A1" afterUncloneValue="0x010208B4" handsfreeValue="0x010008A1"/>
@@ -138,8 +138,8 @@
   <Action name="in water" value="0x380022C0" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C1"/>
   <Action name="water action end" value="0x300022C2" afterCloneValue="0x380022C1" afterUncloneValue="0x300022C2" handsfreeValue="0x380022C1"/>
   <Action name="drowning" value="0x300032C4" afterCloneValue="0x380022C1" afterUncloneValue="0x300032C4" handsfreeValue="0x380022C1"/>
-  <Action name="water backward KB" value="0x300222C5" afterCloneValue="0x380022C1" afterUncloneValue="0x300222C5" handsfreeValue="0x380022C1"/>
-  <Action name="water forward KB" value="0x300222C6" afterCloneValue="0x380022C1" afterUncloneValue="0x300222C6" handsfreeValue="0x380022C1"/>
+  <Action name="water backward knockback" value="0x300222C5" afterCloneValue="0x380022C1" afterUncloneValue="0x300222C5" handsfreeValue="0x380022C1"/>
+  <Action name="water forward knockback" value="0x300222C6" afterCloneValue="0x380022C1" afterUncloneValue="0x300222C6" handsfreeValue="0x380022C1"/>
   <Action name="water death" value="0x300032C7" afterCloneValue="0x380022C1" afterUncloneValue="0x300032C7" handsfreeValue="0x380022C1"/>
   <Action name="water shocked" value="0x300222C8" afterCloneValue="0x380022C1" afterUncloneValue="0x300222C8" handsfreeValue="0x380022C1"/>
   <Action name="swim (1/2)" value="0x300024D0" afterCloneValue="0x380022C1" afterUncloneValue="0x300024D0" handsfreeValue="0x380022C1"/>
@@ -153,49 +153,49 @@
   <Action name="metal water fall landing" value="0x000042F6" afterCloneValue="0x080042F1" afterUncloneValue="0x000042F6" handsfreeValue="0x080042F1"/>
   <Action name="metal water jump" value="0x000044F8" afterCloneValue="0x000044F9" afterUncloneValue="0x000044F8" handsfreeValue="0x000044F9"/>
   <Action name="metal water jump landing" value="0x000044FA" afterCloneValue="0x080042F1" afterUncloneValue="0x000044FA" handsfreeValue="0x080042F1"/>
-  <Action name="'start sliding" value="0x00000051" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'panting" value="0x08000206" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'standing" value="0x08000207" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'heavy standing" value="0x08000208" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'picking up" value="0x00000383" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'stop sliding" value="0x00000385" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'placing down" value="0x00000387" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'picking up Bowser" value="0x00000390" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'holding Bowser" value="0x00000391" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="start sliding with an object" value="0x00000051" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="panting with an object" value="0x08000206" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="standing with an object" value="0x08000207" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="standing with a heavy object" value="0x08000208" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="picking up an object" value="0x00000383" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="stop sliding with an object" value="0x00000385" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="placing down an object" value="0x00000387" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="picking up Bowser" value="0x00000390" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="holding Bowser" value="0x00000391" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
   <Action name="releasing Bowser" value="0x00000392" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'walking" value="0x00000442" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'decelerating" value="0x0000044B" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'jump" value="0x030008A0" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C" handsfreeValue="0x0100088C"/>
-  <Action name="'jump landing (1/2)" value="0x00000474" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'jump landing (2/2)" value="0x08000234" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'freefall" value="0x010008A1" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C" handsfreeValue="0x0100088C"/>
-  <Action name="'freefall landing (1/2)" value="0x00000475" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'freefall landing (2/2)" value="0x08000235" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'air sitting" value="0x010008A2" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C" handsfreeValue="0x0100088C"/>
-  <Action name="'ground sitting" value="0x00840454" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'stop sitting" value="0x0800043F" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'sliding" value="0x008C0455" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'ground throw" value="0x80000588" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'air throw" value="0x830008AB" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C" handsfreeValue="0x0100088C"/>
-  <Action name="'air throw landing" value="0x80000A36" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'quicksand jump landing" value="0x00000477" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'heavy walking" value="0x00000447" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'heavy throw" value="0x80000589" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
-  <Action name="'crazy box hopping" value="0x000008AE" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C" handsfreeValue="0x0100088C"/>
-  <Action name="'water shell swimming" value="0x300024D6" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
-  <Action name="'water throw" value="0x300024E0" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
-  <Action name="'in water" value="0x380022C1" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
-  <Action name="'water action end" value="0x300022C3" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
-  <Action name="'swim (1/2)" value="0x300024D3" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
-  <Action name="'swim (2/2)" value="0x300024D4" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
-  <Action name="'flutterkick" value="0x300024D5" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
-  <Action name="'water jump" value="0x010008A3" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x0100088C"/>
-  <Action name="'metal water standing" value="0x080042F1" afterCloneValue="0x080042F1" afterUncloneValue="0x080042F0" handsfreeValue="0x080042F0"/>
-  <Action name="'metal water walking" value="0x000044F3" afterCloneValue="0x080042F1" afterUncloneValue="0x000044F2" handsfreeValue="0x000044F2"/>
-  <Action name="'metal water falling" value="0x000042F5" afterCloneValue="0x000042F5" afterUncloneValue="0x000042F4" handsfreeValue="0x000042F4"/>
-  <Action name="'metal water fall landing" value="0x000042F7" afterCloneValue="0x080042F1" afterUncloneValue="0x000042F6" handsfreeValue="0x000042F6"/>
-  <Action name="'metal water jump" value="0x000044F9" afterCloneValue="0x000044F9" afterUncloneValue="0x000044F8" handsfreeValue="0x000044F8"/>
-  <Action name="'metal water jump landing" value="0x000044FB" afterCloneValue="0x080042F1" afterUncloneValue="0x000044FA" handsfreeValue="0x000044FA"/>
+  <Action name="walking with an object" value="0x00000442" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="decelerating with an object" value="0x0000044B" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="jump with an object" value="0x030008A0" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C" handsfreeValue="0x0100088C"/>
+  <Action name="jump landing with an object (1/2)" value="0x00000474" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="jump landing with an object (2/2)" value="0x08000234" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="freefall with an object" value="0x010008A1" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C" handsfreeValue="0x0100088C"/>
+  <Action name="freefall landing with an object (1/2)" value="0x00000475" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="freefall landing with an object (2/2)" value="0x08000235" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="air sitting with an object" value="0x010008A2" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C" handsfreeValue="0x0100088C"/>
+  <Action name="ground sitting with an object" value="0x00840454" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="stop sitting with an object" value="0x0800043F" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="sliding with an object" value="0x008C0455" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="ground throw" value="0x80000588" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="air throw" value="0x830008AB" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C" handsfreeValue="0x0100088C"/>
+  <Action name="air throw landing" value="0x80000A36" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="quicksand jump landing with an object" value="0x00000477" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="walking with a heavy object" value="0x00000447" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="throwing a heavy object" value="0x80000589" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
+  <Action name="crazy box hopping" value="0x000008AE" afterCloneValue="0x010008A1" afterUncloneValue="0x0100088C" handsfreeValue="0x0100088C"/>
+  <Action name="water shell swimming" value="0x300024D6" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
+  <Action name="water throw" value="0x300024E0" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
+  <Action name="in water with an object" value="0x380022C1" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
+  <Action name="water action end with an object" value="0x300022C3" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
+  <Action name="swim with an object (1/2)" value="0x300024D3" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
+  <Action name="swim with an object (2/2)" value="0x300024D4" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
+  <Action name="flutterkick with an object" value="0x300024D5" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x380022C0"/>
+  <Action name="water jump with an object" value="0x010008A3" afterCloneValue="0x380022C1" afterUncloneValue="0x380022C0" handsfreeValue="0x0100088C"/>
+  <Action name="metal water standing with an object" value="0x080042F1" afterCloneValue="0x080042F1" afterUncloneValue="0x080042F0" handsfreeValue="0x080042F0"/>
+  <Action name="metal water walking with an object" value="0x000044F3" afterCloneValue="0x080042F1" afterUncloneValue="0x000044F2" handsfreeValue="0x000044F2"/>
+  <Action name="metal water falling with an object" value="0x000042F5" afterCloneValue="0x000042F5" afterUncloneValue="0x000042F4" handsfreeValue="0x000042F4"/>
+  <Action name="metal water fall landing with an object" value="0x000042F7" afterCloneValue="0x080042F1" afterUncloneValue="0x000042F6" handsfreeValue="0x000042F6"/>
+  <Action name="metal water jump with an object" value="0x000044F9" afterCloneValue="0x000044F9" afterUncloneValue="0x000044F8" handsfreeValue="0x000044F8"/>
+  <Action name="metal water jump landing with an object" value="0x000044FB" afterCloneValue="0x080042F1" afterUncloneValue="0x000044FA" handsfreeValue="0x000044FA"/>
   <Action name="uninitialized" value="0x00000000" afterCloneValue="0x00000000" afterUncloneValue="0x00000000" handsfreeValue="0x00000000"/>
   <Action name="disappeared" value="0x00001300" afterCloneValue="0x08000207" afterUncloneValue="0x00001300" handsfreeValue="0x08000207"/>
   <Action name="intro cutscene" value="0x04001301" afterCloneValue="0x08000207" afterUncloneValue="0x04001301" handsfreeValue="0x08000207"/>
