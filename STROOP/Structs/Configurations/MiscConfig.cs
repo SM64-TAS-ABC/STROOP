@@ -35,9 +35,10 @@ namespace STROOP.Structs
         public static readonly uint LevelIndexAddressSH = 0x8031E316;
 
 
-        public static uint WaterLevelMedianAddress { get => RomVersionConfig.Switch(WaterLevelMedianAddressUS, WaterLevelMedianAddressJP); }
+        public static uint WaterLevelMedianAddress { get => RomVersionConfig.Switch(WaterLevelMedianAddressUS, WaterLevelMedianAddressJP, WaterLevelMedianAddressSH); }
         public static readonly uint WaterLevelMedianAddressUS = 0x8036118A;
         public static readonly uint WaterLevelMedianAddressJP = 0x8035FE1A;
+        public static readonly uint WaterLevelMedianAddressSH = 0x8034334A;
 
         public static uint WaterPointerAddress { get => RomVersionConfig.Switch(WaterPointerAddressUS, WaterPointerAddressJP); }
         public static readonly uint WaterPointerAddressUS = 0x80361184;
@@ -52,9 +53,10 @@ namespace STROOP.Structs
         public static readonly uint SpecialTripleJumpAddressUS = 0x8032DD94;
         public static readonly uint SpecialTripleJumpAddressJP = 0x8032CE34;
 
-        public static uint HackedAreaAddress { get => RomVersionConfig.Switch(HackedAreaAddressUS, HackedAreaAddressJP); }
+        public static uint HackedAreaAddress { get => RomVersionConfig.Switch(HackedAreaAddressUS, HackedAreaAddressJP, HackedAreaAddressSH); }
         public static readonly uint HackedAreaAddressUS = 0x803E0000;
         public static readonly uint HackedAreaAddressJP = 0x803E0000;
+        public static readonly uint HackedAreaAddressSH = 0x803E0000;
 
         public static uint GlobalTimerAddress { get => RomVersionConfig.Switch(GlobalTimerAddressUS, GlobalTimerAddressJP, GlobalTimerAddressSH); }
         public static readonly uint GlobalTimerAddressUS = 0x8032D5D4;
