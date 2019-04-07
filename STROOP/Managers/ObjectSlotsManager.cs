@@ -177,7 +177,7 @@ namespace STROOP.Managers
         {
             if (isAltKeyHeld) return null;
             if (ActiveTab == TabType.Other) return Config.ObjectManager.Tab;
-            if (ActiveTab == TabType.TAS && !SpecialConfig.IsSelectedPA) return Config.TasManager.Tab;
+            if (ActiveTab == TabType.TAS && !SpecialConfig.IsSelectedPA) return Config.ObjectManager.Tab;
             return null;
         }
 
