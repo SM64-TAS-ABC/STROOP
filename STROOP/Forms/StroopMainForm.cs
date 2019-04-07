@@ -903,7 +903,9 @@ namespace STROOP
 
         public void SwitchTab(string name)
         {
-            tabControlMain.SelectTab(name);
+            List<TabPage> tabPages = ControlUtilities.GetTabPages(tabControlMain);
+            bool containsTab = tabPages.Any(tabPage => tabPage.Name == name);
+            if (containsTab) tabControlMain.SelectTab(name);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
