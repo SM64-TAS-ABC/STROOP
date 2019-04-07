@@ -24,7 +24,6 @@ namespace STROOP.Managers
         const int DefaultSlotSize = 36;
 
         public enum TabType { Object, Map, Map2, Model, Memory, Custom, TAS, CamHack, Other };
-        public enum TabDestinationType { Object, Memory };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
         public enum ClickType { ObjectClick, MapClick, Map2Click, Map2HomeClick, ModelClick, MemoryClick, CamHackClick, MarkClick };
@@ -126,7 +125,7 @@ namespace STROOP.Managers
             ClickType click = GetClickType(isAltKeyHeld, isHKeyHeld);
             bool shouldToggle = ShouldToggle(isCtrlKeyHeld, isAltKeyHeld);
             bool shouldExtendRange = isShiftKeyHeld;
-            TabDestinationType? tabDestination = GetTabDestination(isAltKeyHeld);
+            TabPage tabDestination = GetTabDestination(isAltKeyHeld);
             DoSlotClickUsingSpecifications(selectedSlot, click, shouldToggle, shouldExtendRange, tabDestination);
         }
 
@@ -174,16 +173,16 @@ namespace STROOP.Managers
             return isToggleState != isCtrlKeyHeld;
         }
 
-        private TabDestinationType? GetTabDestination(bool isAltKeyHeld)
+        private TabPage GetTabDestination(bool isAltKeyHeld)
         {
             if (isAltKeyHeld) return null;
-            if (ActiveTab == TabType.Other) return TabDestinationType.Object;
-            if (ActiveTab == TabType.TAS && !SpecialConfig.IsSelectedPA) return TabDestinationType.Object;
+            if (ActiveTab == TabType.Other) return Config.ObjectManager.Tab;
+            if (ActiveTab == TabType.TAS && !SpecialConfig.IsSelectedPA) return Config.TasManager.Tab;
             return null;
         }
 
         public void DoSlotClickUsingSpecifications(
-            ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, TabDestinationType? tabDestination)
+            ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, TabPage tabDestination)
         {
             if (selectedSlot.CurrentObject == null)
                 return;
@@ -228,19 +227,11 @@ namespace STROOP.Managers
                         throw new ArgumentOutOfRangeException();
                 }
 
-                if (tabDestination.HasValue)
+                if (tabDestination != null)
                 {
-                    switch (tabDestination.Value)
-                    {
-                        case TabDestinationType.Object:
-                            _gui.TabControl.SelectedTab = _gui.TabControl.TabPages["tabPageObject"];
-                            break;
-                        case TabDestinationType.Memory:
-                            _gui.TabControl.SelectedTab = _gui.TabControl.TabPages["tabPageMemory"];
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
+                    List<TabPage> tabPages = ControlUtilities.GetTabPages(Config.TabControlMain);
+                    bool containsTab = tabPages.Any(tabPage => tabPage == tabDestination);
+                    if (containsTab) Config.TabControlMain.SelectTab(tabDestination);
                 }
 
                 if (shouldExtendRange && selection.Count > 0)
