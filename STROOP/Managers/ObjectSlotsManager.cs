@@ -96,9 +96,10 @@ namespace STROOP.Managers
         };
         private void TabControl_Selected(object sender, TabControlEventArgs e)
         {
-            TabType tabType;
-            if (!TabNameToTabType.TryGetValue(e.TabPage.Text, out tabType))
-                tabType = TabType.Other;
+            TabType tabType = TabType.Other;
+            if (e.TabPage != null && TabNameToTabType.ContainsKey(e.TabPage.Text)) {
+                tabType = TabNameToTabType[e.TabPage.Text];
+            }
             ActiveTab = tabType;
         }
 
