@@ -264,7 +264,7 @@ namespace STROOP.Structs.Configurations
             TabPage currentTab = Config.TabControlMain.SelectedTab;
             _removedTabs.Add(removeTab);
             Config.TabControlMain.TabPages.Remove(removeTab);
-            if (removeTab == currentTab)
+            if (removeTab == currentTab && Config.TabControlMain.TabPages.Contains(previousTab))
                 Config.TabControlMain.SelectedTab = previousTab;
             Save();
         }
