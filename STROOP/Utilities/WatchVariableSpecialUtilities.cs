@@ -1025,8 +1025,33 @@ namespace STROOP.Structs
             _dictionary.Add("SpeedMultiplier",
                 ((uint dummy) =>
                 {
+                    /*
+                    intended dyaw = intended yaw - slide yaw (idk what this is called in stroop)
+                    if cos(intended dyaw) < 0 and fspeed >= 0:
+                      K = 0.5 + 0.5 * fspeed / 100
+                    else:
+                      K = 1
+
+                    multiplier = (intended mag / 32) * cos(intended dyaw) * K * 0.02 + A
+
+                    slide: A = 0.98
+                    slippery: A = 0.96
+                    default: A = 0.92
+                    not slippery: A = 0.92
+                    */
+
+                    ushort intendedYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
+                    ushort movingYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.MovingYawOffset);
+                    float scaledMagnitude = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ScaledMagnitudeOffset);
                     float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                    double multiplier = 0.5 + 0.5 * hSpeed / 100;
+                    uint floorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                    TriangleDataModel floorStruct = Config.TriangleManager.GetTriangleStruct(floorAddress);
+                    double A = floorStruct.FrictionMultiplier;
+
+                    int intendedDYaw = intendedYaw - movingYaw;
+                    double K = InGameTrigUtilities.InGameCosine(intendedDYaw) < 0 && hSpeed >= 0 ? 0.5 + 0.5 * hSpeed / 100 : 1;
+                    double multiplier = (scaledMagnitude / 32) * InGameTrigUtilities.InGameCosine(intendedDYaw) * K * 0.02 + A;
+
                     return multiplier;
                 },
                 DEFAULT_SETTER));
@@ -1477,6 +1502,14 @@ namespace STROOP.Structs
                 {
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     return triStruct.SlipperinessDescription;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriangleFrictionMultiplier",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    return triStruct.FrictionMultiplier;
                 },
                 DEFAULT_SETTER));
 

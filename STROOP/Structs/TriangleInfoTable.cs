@@ -75,6 +75,24 @@ namespace STROOP.Structs
             }
         }
 
+        public double GetFrictionMultiplier(short type)
+        {
+            short? slipperiness = GetSlipperiness(type);
+            switch (slipperiness)
+            {
+                case 0x00:
+                    return 0.92;
+                case 0x13:
+                    return 0.98;
+                case 0x14:
+                    return 0.96;
+                case 0x15:
+                    return 0.92;
+                default:
+                    return Double.NaN;
+            }
+        }
+
         public bool? GetExertion(short type)
         {
             if (!_typeTable.ContainsKey(type))

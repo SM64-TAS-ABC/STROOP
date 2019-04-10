@@ -6,6 +6,7 @@
   <Data groupList="Basic" base="Triangle" specialType="TriangleTypeDescription" subclass="String">Description</Data>
   <Data groupList="Basic" base="Triangle" specialType="TriangleSlipperiness" display="byte" useHex="true">Slipperiness</Data>
   <Data groupList="Basic" base="Triangle" specialType="TriangleSlipperinessDescription" subclass="String">Slipperiness Description</Data>
+  <Data groupList="Basic" base="Triangle" specialType="TriangleFrictionMultiplier">Friction Multiplier</Data>
 
   <Data groupList="Basic" type="byte" offset="0x04" base="Triangle" useHex="true">Flags</Data>
   <Data groupList="Basic" type="byte" offset="0x04" base="Triangle" subclass="Boolean" mask="0x08">X Projection</Data>

@@ -49,6 +49,7 @@ namespace STROOP.Models
         public readonly string Description;
         public readonly short Slipperiness;
         public readonly string SlipperinessDescription;
+        public readonly double FrictionMultiplier;
         public readonly bool Exertion;
 
         public readonly static List<string> FieldNameList = new List<string> {
@@ -125,6 +126,7 @@ namespace STROOP.Models
             Description = TableConfig.TriangleInfo.GetDescription(SurfaceType);
             Slipperiness = TableConfig.TriangleInfo.GetSlipperiness(SurfaceType) ?? 0;
             SlipperinessDescription = TableConfig.TriangleInfo.GetSlipperinessDescription(SurfaceType);
+            FrictionMultiplier = TableConfig.TriangleInfo.GetFrictionMultiplier(SurfaceType);
             Exertion = TableConfig.TriangleInfo.GetExertion(SurfaceType) ?? false;
 
             FieldValueList = new List<object> {
