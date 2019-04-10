@@ -7,6 +7,8 @@
   <Data groupList="Basic" type="float" offset="0x4C" base="Mario" coord="Y">Y Speed</Data>
   <Data groupList="Basic" type="float" offset="0x50" base="Mario" coord="Z">Z Speed</Data>
   <Data groupList="Basic" type="float" offset="0x54" base="Mario">H Speed</Data>
+  
+  <Data groupList="Advanced" base="None" specialType="SpeedMultiplier">Speed Multiplier</Data>
 
   <Data groupList="Advanced" base="None" specialType="RotationDisplacementX">Rot Disp X</Data>
   <Data groupList="Advanced" base="None" specialType="RotationDisplacementY">Rot Disp Y</Data>

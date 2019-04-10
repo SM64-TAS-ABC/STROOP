@@ -1022,6 +1022,15 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("SpeedMultiplier",
+                ((uint dummy) =>
+                {
+                    float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    double multiplier = 0.5 + 0.5 * hSpeed / 100;
+                    return multiplier;
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("DeFactoSpeed",
                 ((uint dummy) =>
                 {
