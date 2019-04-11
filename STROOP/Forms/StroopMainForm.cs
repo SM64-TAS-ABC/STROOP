@@ -882,6 +882,7 @@ namespace STROOP
                 return;
 
             Config.Stream.OpenSTFile(openFileDialogSt.FileName);
+            labelProcessSelect.Text = "Connected To: " + Config.Stream.ProcessName;
             panelConnect.Visible = false;
         }
 
