@@ -895,6 +895,7 @@ namespace STROOP
                 return;
             }
 
+            saveFileDialogSt.FileName = io.Name;
             DialogResult dr = saveFileDialogSt.ShowDialog();
             if (dr != DialogResult.OK)
                 return;
