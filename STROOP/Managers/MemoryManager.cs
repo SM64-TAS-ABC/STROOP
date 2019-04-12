@@ -525,29 +525,6 @@ namespace STROOP.Managers
             return builder.ToString();
         }
 
-        private static string FormatBytes(byte[] bytes, bool littleEndian)
-        {
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                string whiteSpace = " ";
-                if (i % 4 == 0) whiteSpace = "  ";
-                if (i % 16 == 0) whiteSpace = "\n";
-                if (i == 0) whiteSpace = "";
-                builder.Append(whiteSpace);
-
-                int byteIndex = i;
-                if (littleEndian)
-                {
-                    int mod = i % 4;
-                    int antiMod = 3 - mod;
-                    byteIndex = byteIndex - mod + antiMod;
-                }
-                builder.Append(HexUtilities.FormatValue(bytes[byteIndex], 2, false));
-            }
-            return builder.ToString();
-        }
-
         private string FormatValues(
             byte[] bytes, uint baseAddress, Type type, bool isLittleEndian, bool useHex, bool useObj)
         {
