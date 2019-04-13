@@ -117,16 +117,24 @@ namespace STROOP.Structs
                     () =>
                     {
                         List<WatchVariableControl> watchVars = getVars();
-                        string prefix = KeyboardUtilities.IsCtrlHeld() ? DialogUtilities.GetStringFromDialog() : "";
+                        Func<string, string> varNameFunc;
+                        if (KeyboardUtilities.IsCtrlHeld())
+                        {
+                            string template = DialogUtilities.GetStringFromDialog("$");
+                            varNameFunc = varName => template.Replace("$", varName);
+                        }
+                        else
+                        {
+                            varNameFunc = varName => varName;
+                        }
                         List<string> lines = new List<string>();
                         foreach (WatchVariableControl watchVar in watchVars)
                         {
                             Type type = watchVar.GetMemoryType();
                             string line = String.Format(
-                                "{0} {1}{2} = {3}{4};",
+                                "{0} {1} = {2}{3};",
                                 type != null ? TypeUtilities.TypeToString[watchVar.GetMemoryType()] : "double",
-                                prefix,
-                                watchVar.VarName.Replace(" ", ""),
+                                varNameFunc(watchVar.VarName.Replace(" ", "")),
                                 watchVar.GetValue(false),
                                 type == typeof(float) ? "f" : "");
                             lines.Add(line);
