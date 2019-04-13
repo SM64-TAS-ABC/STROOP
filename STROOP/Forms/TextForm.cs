@@ -12,9 +12,10 @@ namespace STROOP.Forms
     {
         public string StringValue;
 
-        public TextForm()
+        public TextForm(string initialText = "")
         {
             InitializeComponent();
+            betterTextbox1.Text = initialText;
             button1.Click += (sender, e) =>
             {
                 StringValue = betterTextbox1.Text;

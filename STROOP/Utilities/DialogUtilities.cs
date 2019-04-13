@@ -153,9 +153,9 @@ namespace STROOP.Structs
             }
         }
 
-        public static string GetStringFromDialog()
+        public static string GetStringFromDialog(string initialText = "")
         {
-            TextForm stringForm = new TextForm();
+            TextForm stringForm = new TextForm(initialText);
             if (stringForm.ShowDialog() == DialogResult.OK)
                 return stringForm.StringValue;
             return "";
