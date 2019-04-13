@@ -285,7 +285,7 @@ namespace STROOP.Managers
             bool useObjAddress = _checkBoxMemoryUseObjAddress.Checked;
             bool useHex = _checkBoxMemoryHex.Checked;
             bool useObj = _checkBoxMemoryObj.Checked;
-            bool useRelativeAddress = _checkBoxMemoryRelativeAddresses.Checked;
+            bool useRelativeName = _checkBoxMemoryRelativeAddresses.Checked;
             if (isAltKeyHeld)
             {
                 List<List<WatchVariableControlPrecursor>> precursorLists =
@@ -297,7 +297,7 @@ namespace STROOP.Managers
             else
             {
                 _currentValueTexts.ForEach(valueText =>
-                    valueText.AddVariableIfSelected(index, useObjAddress, useHex, useObj, useRelativeAddress));
+                    valueText.AddVariableIfSelected(index, useObjAddress, useHex, useObj, useRelativeName));
             }
             _richTextBoxMemoryValues.Parent.Focus();
         }
@@ -381,21 +381,21 @@ namespace STROOP.Managers
                 });
             }
 
-            public void AddVariableIfSelected(int selectedIndex, bool useObjAddress, bool useHex, bool useObj, bool useRelativeAddress)
+            public void AddVariableIfSelected(int selectedIndex, bool useObjAddress, bool useHex, bool useObj, bool useRelativeName)
             {
                 if (selectedIndex >= StringIndex && selectedIndex <= StringIndex + StringSize)
                 {
-                    AddVariable(useObjAddress, useHex, useObj, useRelativeAddress);
+                    AddVariable(useObjAddress, useHex, useObj, useRelativeName);
                 }
             }
 
-            private void AddVariable(bool useObjAddress, bool useHex, bool useObj, bool useRelativeAddress)
+            private void AddVariable(bool useObjAddress, bool useHex, bool useObj, bool useRelativeName)
             {
-                WatchVariableControlPrecursor precursor = CreatePrecursor(useObjAddress, useHex, useObj, useRelativeAddress);
+                WatchVariableControlPrecursor precursor = CreatePrecursor(useObjAddress, useHex, useObj, useRelativeName);
                 Config.MemoryManager.AddVariable(precursor.CreateWatchVariableControl());
             }
 
-            private WatchVariableControlPrecursor CreatePrecursor(bool useObjAddress, bool useHex, bool useObj, bool useRelativeAddress)
+            private WatchVariableControlPrecursor CreatePrecursor(bool useObjAddress, bool useHex, bool useObj, bool useRelativeName)
             {
                 WatchVariableSubclass subclass = useObj
                     ? WatchVariableSubclass.Object
@@ -421,7 +421,7 @@ namespace STROOP.Managers
                 BaseAddressTypeEnum baseAddressType =
                     useObjAddress ? BaseAddressTypeEnum.Object : BaseAddressTypeEnum.Relative;
                 uint offset = useObjAddress ? (uint)ByteIndex : MemoryAddress; 
-                uint nameOffset = useRelativeAddress ? (uint)ByteIndex : MemoryAddress;
+                uint nameOffset = useRelativeName ? (uint)ByteIndex : MemoryAddress;
 
                 WatchVariable watchVar = new WatchVariable(
                     memoryTypeName: typeString,
