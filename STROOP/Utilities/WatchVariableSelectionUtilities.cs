@@ -121,6 +121,7 @@ namespace STROOP.Structs
                         if (KeyboardUtilities.IsCtrlHeld())
                         {
                             string template = DialogUtilities.GetStringFromDialog("$");
+                            if (template == null) return;
                             varNameFunc = varName => template.Replace("$", varName);
                         }
                         else
@@ -417,6 +418,7 @@ namespace STROOP.Structs
             {
                 List<WatchVariableControl> watchVars = getVars();
                 string template = DialogUtilities.GetStringFromDialog("$");
+                if (template == null) return;
                 foreach (WatchVariableControl control in watchVars)
                 {
                     control.VarName = template.Replace("$", control.VarName);

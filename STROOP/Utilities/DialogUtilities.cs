@@ -158,7 +158,7 @@ namespace STROOP.Structs
             TextForm stringForm = new TextForm(initialText);
             if (stringForm.ShowDialog() == DialogResult.OK)
                 return stringForm.StringValue;
-            return "";
+            return null;
         }
 
     }
