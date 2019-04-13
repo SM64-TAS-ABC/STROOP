@@ -45,7 +45,6 @@ namespace STROOP.Controls
 
         public static readonly Color DEFAULT_COLOR = SystemColors.Control;
         public static readonly Color FAILURE_COLOR = Color.Red;
-        public static readonly Color ENABLE_CUSTOMIZATION_COLOR = Color.Yellow;
         public static readonly Color ADD_TO_CUSTOM_TAB_COLOR = Color.CornflowerBlue;
         public static readonly Color REORDER_START_COLOR = Color.DarkGreen;
         public static readonly Color REORDER_END_COLOR = Color.LightGreen;
@@ -437,11 +436,6 @@ namespace STROOP.Controls
                 _watchVariablePanel.UnselectAllVariables();
                 NotifyPanelOfReodering();
             }
-            else if (isAltKeyHeld)
-            {
-                _watchVariablePanel.UnselectAllVariables();
-                EnableCustomization();
-            }
             else if (isBacktickHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
@@ -699,11 +693,6 @@ namespace STROOP.Controls
                 _tableLayoutPanel.ShowBorder = true;
             }
 
-            if (settings.EnableCustomization)
-            {
-                EnableCustomization();
-            }
-
             if (settings.ChangeBackgroundColor)
             {
                 if (settings.ChangeBackgroundColorToDefault)
@@ -837,12 +826,6 @@ namespace STROOP.Controls
         {
             Config.VarHackManager.AddVariable(this);
             FlashColor(ADD_TO_VAR_HACK_TAB_COLOR);
-        }
-
-        public void EnableCustomization(bool flashColor = true)
-        {
-            WatchVarWrapper.EnableCustomization();
-            if (flashColor) FlashColor(ENABLE_CUSTOMIZATION_COLOR);
         }
 
         public void NotifyPanelOfReodering()

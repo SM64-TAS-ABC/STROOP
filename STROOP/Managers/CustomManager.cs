@@ -33,8 +33,6 @@ namespace STROOP.Managers
         public CustomManager(string varFilePath, Control customControl, WatchVariableFlowLayoutPanel variableTable)
             : base(varFilePath, variableTable)
         {
-            EnableCustomization();
-
             SplitContainer splitContainerCustom = customControl.Controls["splitContainerCustom"] as SplitContainer;
             SplitContainer splitContainerCustomControls = splitContainerCustom.Panel1.Controls["splitContainerCustomControls"] as SplitContainer;
 
@@ -163,21 +161,6 @@ namespace STROOP.Managers
                 int intValue = intValueNullable.Value;
                 setterFunction(intValue);
             };
-        }
-
-        public override void AddVariable(WatchVariableControl watchVarControl)
-        {
-            base.AddVariable(watchVarControl);
-            watchVarControl.EnableCustomization(false);
-        }
-
-        public override void AddVariables(List<WatchVariableControl> watchVarControls)
-        {
-            base.AddVariables(watchVarControls);
-            foreach (WatchVariableControl watchVarControl in watchVarControls)
-            {
-                watchVarControl.EnableCustomization(false);
-            }
         }
 
         private void ToggleRecording()

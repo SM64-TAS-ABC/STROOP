@@ -80,8 +80,6 @@ namespace STROOP.Controls
         public readonly bool ChangeFixedToDefault;
         public readonly bool NewFixed;
 
-        public readonly bool EnableCustomization;
-
         public WatchVariableControlSettings(
             bool changeRoundingLimit = false,
             bool changeRoundingLimitToDefault = false,
@@ -134,9 +132,7 @@ namespace STROOP.Controls
 
             bool changeFixed = false,
             bool changeFixedToDefault = false,
-            bool newFixed = false,
-
-            bool enableCustomization = false)
+            bool newFixed = false)
         {
             ChangeRoundingLimit = changeRoundingLimit;
             ChangeRoundingLimitToDefault = changeRoundingLimitToDefault;
@@ -190,8 +186,6 @@ namespace STROOP.Controls
             ChangeFixed = changeFixed;
             ChangeFixedToDefault = changeFixedToDefault;
             NewFixed = newFixed;
-
-            EnableCustomization = enableCustomization;
         }
     }
 }

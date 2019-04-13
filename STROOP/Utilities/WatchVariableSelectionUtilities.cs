@@ -425,9 +425,6 @@ namespace STROOP.Structs
                 }
             };
 
-            ToolStripMenuItem itemEnableCustomization = new ToolStripMenuItem("Enable Customization");
-            itemEnableCustomization.Click += (sender, e) => apply(new WatchVariableControlSettings(enableCustomization: true));
-
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
             itemOpenController.Click += (sender, e) =>
             {
@@ -489,7 +486,6 @@ namespace STROOP.Structs
                 itemMove,
                 itemRemove,
                 itemRename,
-                itemEnableCustomization,
                 itemOpenController,
                 itemOpenTripletController,
                 itemOpenPopOut,

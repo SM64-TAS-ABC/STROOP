@@ -44,11 +44,6 @@ namespace STROOP.Managers
             _variablePanel.AddVariables(watchVarControls);
         }
 
-        public virtual void EnableCustomization()
-        {
-            _variablePanel.EnableCustomization(false);
-        }
-
         public virtual List<object> GetCurrentVariableValues(bool useRounding = false, bool handleFormatting = true)
         {
             return _variablePanel.GetCurrentVariableValues(useRounding, handleFormatting);

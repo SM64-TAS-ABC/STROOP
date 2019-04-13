@@ -159,7 +159,6 @@ namespace STROOP.Controls
         private void AddCustomContextMenuStripItems()
         {
             _separatorCustom = new ToolStripSeparator();
-            _separatorCustom.Visible = false;
 
             _itemFixAddress = new ToolStripMenuItem("Fix Address");
             _itemFixAddress.Click += (sender, e) =>
@@ -167,15 +166,12 @@ namespace STROOP.Controls
                 _watchVarControl.ToggleFixedAddress();
                 _itemFixAddress.Checked = _watchVarControl.FixedAddressList != null;
             };
-            _itemFixAddress.Visible = false;
 
             _itemRename = new ToolStripMenuItem("Rename");
             _itemRename.Click += (sender, e) => { _watchVarControl.RenameMode = true; };
-            _itemRename.Visible = false;
 
             _itemRemove = new ToolStripMenuItem("Remove");
             _itemRemove.Click += (sender, e) => { _watchVarControl.RemoveFromPanel(); };
-            _itemRemove.Visible = false;
 
             _contextMenuStrip.AddToEndingList(_separatorCustom);
             _contextMenuStrip.AddToEndingList(_itemFixAddress);
@@ -393,14 +389,6 @@ namespace STROOP.Controls
         public List<uint> GetCurrentAddresses()
         {
             return WatchVar.AddressList;
-        }
-
-        public void EnableCustomization()
-        {
-            _separatorCustom.Visible = true;
-            _itemFixAddress.Visible = true;
-            _itemRename.Visible = true;
-            _itemRemove.Visible = true;
         }
 
 
