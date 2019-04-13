@@ -412,6 +412,17 @@ namespace STROOP.Structs
             ToolStripMenuItem itemRemove = new ToolStripMenuItem("Remove");
             itemRemove.Click += (sender, e) => panel.RemoveVariables(getVars());
 
+            ToolStripMenuItem itemRename = new ToolStripMenuItem("Rename");
+            itemRename.Click += (sender, e) =>
+            {
+                List<WatchVariableControl> watchVars = getVars();
+                string template = DialogUtilities.GetStringFromDialog("$");
+                foreach (WatchVariableControl control in watchVars)
+                {
+                    control.VarName = template.Replace("$", control.VarName);
+                }
+            };
+
             ToolStripMenuItem itemEnableCustomization = new ToolStripMenuItem("Enable Customization");
             itemEnableCustomization.Click += (sender, e) => apply(new WatchVariableControlSettings(enableCustomization: true));
 
@@ -475,6 +486,7 @@ namespace STROOP.Structs
                 itemBackgroundColor,
                 itemMove,
                 itemRemove,
+                itemRename,
                 itemEnableCustomization,
                 itemOpenController,
                 itemOpenTripletController,

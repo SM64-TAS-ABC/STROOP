@@ -74,6 +74,11 @@ namespace STROOP.Controls
             {
                 return _varName;
             }
+            set
+            {
+                _varName = value;
+                _nameTextBox.Text = value;
+            }
         }
 
         public bool Highlighted
