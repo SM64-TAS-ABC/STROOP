@@ -78,6 +78,32 @@ namespace STROOP.Forms
                 new List<string>() { "Start Continuous Subtract", "Stop Continuous Subtract" },
                 new List<Action>() { () => subtractTimer2.Start(), () => subtractTimer2.Stop() });
 
+            ToolStripMenuItem itemInvertedAdd = new ToolStripMenuItem("Inverted");
+            ToolStripMenuItem itemInvertedSubtract = new ToolStripMenuItem("Inverted");
+            Action<bool> setInverted = (bool inverted) =>
+            {
+                tableLayoutPanel1.Controls.Remove(_buttonAdd);
+                tableLayoutPanel1.Controls.Remove(_buttonSubtract);
+                if (inverted)
+                {
+                    tableLayoutPanel1.Controls.Add(_buttonAdd, 0, 2);
+                    tableLayoutPanel1.Controls.Add(_buttonSubtract, 2, 2);
+                }
+                else
+                {
+                    tableLayoutPanel1.Controls.Add(_buttonAdd, 2, 2);
+                    tableLayoutPanel1.Controls.Add(_buttonSubtract, 0, 2);
+                }
+                itemInvertedAdd.Checked = inverted;
+                itemInvertedSubtract.Checked = inverted;
+            };
+            itemInvertedAdd.Click += (sender, e) => setInverted(!itemInvertedAdd.Checked);
+            itemInvertedSubtract.Click += (sender, e) => setInverted(!itemInvertedSubtract.Checked);
+            _buttonAdd.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            _buttonAdd.ContextMenuStrip.Items.Add(itemInvertedAdd);
+            _buttonSubtract.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            _buttonSubtract.ContextMenuStrip.Items.Add(itemInvertedSubtract);
+
             _buttonGet.Click += (s, e) => _textBoxGetSet.Text = GetValues();
 
             _buttonSet.Click += (s, e) => SetValues();
