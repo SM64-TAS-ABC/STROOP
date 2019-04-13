@@ -135,7 +135,7 @@ namespace STROOP.Structs
                                 "{0} {1} = {2}{3};",
                                 type != null ? TypeUtilities.TypeToString[watchVar.GetMemoryType()] : "double",
                                 varNameFunc(watchVar.VarName.Replace(" ", "")),
-                                watchVar.GetValue(useRounding: false, handleFormatting: false),
+                                watchVar.GetValue(false),
                                 type == typeof(float) ? "f" : "");
                             lines.Add(line);
                         }
