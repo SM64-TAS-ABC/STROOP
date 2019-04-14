@@ -360,20 +360,13 @@ namespace STROOP.Controls
 
         public void NotifyOfReordering(WatchVariableControl watchVarControl)
         {
-            if (_reorderingWatchVarControls.Count == 1 && _reorderingWatchVarControls[0] == watchVarControl)
+            if (_reorderingWatchVarControls.Count == 0)
             {
-                NotifyOfReorderingClear();
+                NotifyOfReorderingStart(new List<WatchVariableControl>() { watchVarControl });
             }
             else
             {
-                if (_reorderingWatchVarControls.Count == 0)
-                {
-                    NotifyOfReorderingStart(new List<WatchVariableControl>() { watchVarControl });
-                }
-                else
-                {
-                    NotifyOfReorderingEnd(new List<WatchVariableControl>() { watchVarControl });
-                }
+                NotifyOfReorderingEnd(new List<WatchVariableControl>() { watchVarControl });
             }
         }
 
