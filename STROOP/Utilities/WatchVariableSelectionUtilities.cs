@@ -150,14 +150,14 @@ namespace STROOP.Structs
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) =>
             {
-                List<string> stringList = ParsingUtilities.ParseStringList(Clipboard.GetText());
                 List<WatchVariableControl> varList = getVars();
-                if (stringList.Count != varList.Count) return;
+                List<string> stringList = ParsingUtilities.ParseStringList(Clipboard.GetText());
+                if (stringList.Count == 0) return;
 
                 Config.Stream.Suspend();
-                for (int i = 0; i < stringList.Count; i++)
+                for (int i = 0; i < varList.Count; i++)
                 {
-                    varList[i].SetValue(stringList[i]);
+                    varList[i].SetValue(stringList[i % stringList.Count]);
                 }
                 Config.Stream.Resume();
             };
