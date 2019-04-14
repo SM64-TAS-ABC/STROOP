@@ -80,15 +80,15 @@ namespace STROOP.Structs
                     () => apply(new WatchVariableControlSettings(changeLocked: true, newLocked: false)),
                 });
 
-            ToolStripMenuItem itemFix = new ToolStripMenuItem("Fix...");
+            ToolStripMenuItem itemFixAddress = new ToolStripMenuItem("Fix Address...");
             ControlUtilities.AddDropDownItems(
-                itemFix,
-                new List<string>() { "Default", "Fix", "Don't Fix" },
+                itemFixAddress,
+                new List<string>() { "Default", "Fix Address", "Don't Fix Address" },
                 new List<Action>()
                 {
-                    () => apply(new WatchVariableControlSettings(changeFixed: true, changeFixedToDefault: true)),
-                    () => apply(new WatchVariableControlSettings(changeFixed: true, newFixed: true)),
-                    () => apply(new WatchVariableControlSettings(changeFixed: true, newFixed: false)),
+                    () => apply(new WatchVariableControlSettings(changeFixedAddress: true, changeFixedAddressToDefault: true)),
+                    () => apply(new WatchVariableControlSettings(changeFixedAddress: true, newFixedAddress: true)),
+                    () => apply(new WatchVariableControlSettings(changeFixedAddress: true, newFixedAddress: false)),
                 });
 
             ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy...");
@@ -463,7 +463,7 @@ namespace STROOP.Structs
             {
                 itemHighlight,
                 itemLock,
-                itemFix,
+                itemFixAddress,
                 itemCopy,
                 itemPaste,
                 new ToolStripSeparator(),

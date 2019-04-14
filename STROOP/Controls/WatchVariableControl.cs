@@ -705,15 +705,15 @@ namespace STROOP.Controls
                 }
             }
 
-            if (settings.ChangeFixed)
+            if (settings.ChangeFixedAddress)
             {
-                if (settings.ChangeFixedToDefault)
+                if (settings.ChangeFixedAddressToDefault)
                 {
                     FixedAddressList = _defaultFixedAddressList;
                 }
                 else
                 {
-                    SetFixedAddress(settings.NewFixed);
+                    SetFixedAddress(settings.NewFixedAddress);
                 }
             }
 

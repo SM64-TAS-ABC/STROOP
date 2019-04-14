@@ -76,9 +76,9 @@ namespace STROOP.Controls
         public readonly bool ChangeLocked;
         public readonly bool NewLocked;
 
-        public readonly bool ChangeFixed;
-        public readonly bool ChangeFixedToDefault;
-        public readonly bool NewFixed;
+        public readonly bool ChangeFixedAddress;
+        public readonly bool ChangeFixedAddressToDefault;
+        public readonly bool NewFixedAddress;
 
         public WatchVariableControlSettings(
             bool changeRoundingLimit = false,
@@ -130,9 +130,9 @@ namespace STROOP.Controls
             bool changeLocked = false,
             bool newLocked = false,
 
-            bool changeFixed = false,
-            bool changeFixedToDefault = false,
-            bool newFixed = false)
+            bool changeFixedAddress = false,
+            bool changeFixedAddressToDefault = false,
+            bool newFixedAddress = false)
         {
             ChangeRoundingLimit = changeRoundingLimit;
             ChangeRoundingLimitToDefault = changeRoundingLimitToDefault;
@@ -183,9 +183,9 @@ namespace STROOP.Controls
             ChangeLocked = changeLocked;
             NewLocked = newLocked;
 
-            ChangeFixed = changeFixed;
-            ChangeFixedToDefault = changeFixedToDefault;
-            NewFixed = newFixed;
+            ChangeFixedAddress = changeFixedAddress;
+            ChangeFixedAddressToDefault = changeFixedAddressToDefault;
+            NewFixedAddress = newFixedAddress;
         }
     }
 }
