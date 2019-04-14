@@ -413,7 +413,7 @@ namespace STROOP.Structs
             ToolStripMenuItem itemRemove = new ToolStripMenuItem("Remove");
             itemRemove.Click += (sender, e) => panel.RemoveVariables(getVars());
 
-            ToolStripMenuItem itemRename = new ToolStripMenuItem("Rename");
+            ToolStripMenuItem itemRename = new ToolStripMenuItem("Rename...");
             itemRename.Click += (sender, e) =>
             {
                 List<WatchVariableControl> watchVars = getVars();
