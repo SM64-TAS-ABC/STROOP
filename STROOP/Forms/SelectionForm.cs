@@ -12,6 +12,8 @@ namespace STROOP.Forms
         public static int? WIDTH = null;
         public static int? HEIGHT = null;
 
+        public object Selection;
+
         public SelectionForm()
         {
             InitializeComponent();
@@ -38,6 +40,8 @@ namespace STROOP.Forms
             {
                 T selection = (T)listBoxSelections.SelectedItem;
                 selectionAction(selection);
+                Selection = selection;
+                DialogResult = DialogResult.OK;
                 Close();
             };
             buttonSet.Click += (sender, e) => enterAction();
@@ -93,6 +97,23 @@ namespace STROOP.Forms
                     }
                 });
             selectionForm.Show();
+        }
+
+        public static int? GetAnimation(string firstText, string secondText)
+        {
+            SelectionForm selectionForm = new SelectionForm();
+            selectionForm.Initialize(
+                firstText,
+                secondText,
+                TableConfig.MarioAnimations.GetAnimationNameList(),
+                animationName => { });
+            if (selectionForm.ShowDialog() == DialogResult.OK)
+            {
+                string animationName = selectionForm.Selection as string;
+                int? animationIndex = TableConfig.MarioAnimations.GetAnimationFromName(animationName);
+                return animationIndex;
+            }
+            return null;
         }
 
         public static void ShowTriangleTypeDescriptionSelectionForm()
