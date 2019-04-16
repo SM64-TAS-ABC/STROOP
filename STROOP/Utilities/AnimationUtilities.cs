@@ -11,6 +11,14 @@ namespace STROOP.Structs
 {
     public static class AnimationUtilities
     {
-        
+        static AnimationUtilities()
+        {
+
+        }
+
+        public static void ReplaceAnimation(int animationToBeReplaced, int animationToReplaceIt)
+        {
+
+        }
     }
 }

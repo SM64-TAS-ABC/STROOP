@@ -46,9 +46,9 @@ namespace STROOP.Managers
                     () =>
                     {
                         int? animationToBeReplaced = SelectionForm.GetAnimation("Choose Animation to Be Replaced", "Select Animation");
-                        int? animationToReplace = SelectionForm.GetAnimation("Choose Animation to Replace It", "Select Animation");
-                        if (animationToBeReplaced == null || animationToReplace == null) return;
-                        Config.Print(animationToBeReplaced + " " + animationToReplace);
+                        int? animationToReplaceIt = SelectionForm.GetAnimation("Choose Animation to Replace It", "Select Animation");
+                        if (animationToBeReplaced == null || animationToReplaceIt == null) return;
+                        AnimationUtilities.ReplaceAnimation(animationToBeReplaced.Value, animationToReplaceIt.Value);
                     },
                 });
         }
