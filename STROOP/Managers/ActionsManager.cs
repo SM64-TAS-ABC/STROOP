@@ -36,6 +36,15 @@ namespace STROOP.Managers
                     () => Config.Stream.SetValue(MarioConfig.FreeMovementAction, MarioConfig.StructAddress + MarioConfig.ActionOffset),
                     () => new ActionForm().Show(),
                 });
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                textBoxAnimationDescription,
+                new List<string>() { "Select Animation", "Replace Animation" },
+                new List<Action>()
+                {
+                    () => SelectionForm.ShowAnimationDescriptionSelectionForm(),
+                    () => { },
+                });
         }
 
         public override void Update(bool updateView)
