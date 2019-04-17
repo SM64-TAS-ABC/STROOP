@@ -52,6 +52,11 @@ namespace STROOP.Controls
             _contextMenuStrip.AddToBeginningList(itemSelectObject);
         }
 
+        protected override string GetClass()
+        {
+            return "Object";
+        }
+
         protected override object HandleHexDisplaying(object value)
         {
             // prevent hex display if we're displaying as object

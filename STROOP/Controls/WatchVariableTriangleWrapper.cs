@@ -38,5 +38,10 @@ namespace STROOP.Controls
             _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
             _contextMenuStrip.AddToBeginningList(itemSelectTriangle);
         }
+
+        protected override string GetClass()
+        {
+            return "Triangle";
+        }
     }
 }

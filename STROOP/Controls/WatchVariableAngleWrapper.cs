@@ -284,5 +284,10 @@ namespace STROOP.Controls
                     _setDisplayAsHex(settings.NewAngleDisplayAsHex);
             }
         }
+
+        protected override string GetClass()
+        {
+            return "Angle";
+        }
     }
 }

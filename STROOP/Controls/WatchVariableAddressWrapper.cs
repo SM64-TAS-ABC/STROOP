@@ -54,5 +54,10 @@ namespace STROOP.Controls
             if (!(value is uint))
                 throw new ArgumentOutOfRangeException(value + " is not a uint, but represents an address");
         }
+
+        protected override string GetClass()
+        {
+            return "Address";
+        }
     }
 }

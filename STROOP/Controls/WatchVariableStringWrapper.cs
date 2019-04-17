@@ -73,5 +73,10 @@ namespace STROOP.Controls
             if (!(value is string))
                 throw new ArgumentOutOfRangeException(value + " is not a string");
         }
+
+        protected override string GetClass()
+        {
+            return "String";
+        }
     }
 }

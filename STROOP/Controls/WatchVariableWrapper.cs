@@ -427,6 +427,8 @@ namespace STROOP.Controls
                 throw new ArgumentOutOfRangeException("value cannot be null");
         }
 
+        protected abstract string GetClass();
+
         // Number methods
 
         protected virtual object HandleRounding(object value, bool handleRounding)
