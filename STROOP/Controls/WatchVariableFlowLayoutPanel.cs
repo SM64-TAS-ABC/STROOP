@@ -296,42 +296,6 @@ namespace STROOP.Controls
             return GetCurrentVariableControls().ConvertAll(control => control.ToXml(useCurrentState));
         }
 
-        private List<List<string>> GetCurrentVarInfo()
-        {
-            return GetCurrentVariableControls().ConvertAll(control => control.GetVarInfo());
-        }
-
-        public void ShowVariableXml()
-        {
-            InfoForm infoForm = new InfoForm();
-            lock (_objectLock)
-            {
-                infoForm.SetText(
-                    "Variable Info",
-                    "Variable XML",
-                    String.Join("\r\n", GetCurrentVarXmlElements()));
-            }
-            infoForm.Show();
-        }
-
-        public void ShowVariableInfo()
-        {
-            InfoForm infoForm = new InfoForm();
-            lock (_objectLock)
-            {
-                infoForm.SetText(
-                    "Variable Info",
-                    "Variable Info",
-                    String.Join("\t",
-                        WatchVariableWrapper.GetVarInfoLabels()) +
-                        "\r\n" +
-                        String.Join("\r\n",
-                            GetCurrentVarInfo().ConvertAll(
-                                infoList => String.Join("\t", infoList))));
-            }
-            infoForm.Show();
-        }
-
         public void OpenVariables()
         {
             List<XElement> elements = DialogUtilities.OpenXmlElements(FileType.StroopVariables);
