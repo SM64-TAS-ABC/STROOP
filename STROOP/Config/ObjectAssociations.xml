@@ -931,6 +931,9 @@
   <Object behaviorScriptAddress="0x13001030" name="BitFS Tilting Inverted Pyramid Platform">
     <SpawnCode gfxId="0x37"/>
     <Image path="BitFS Tilting Inverted Pyramid Platform.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">Normal X</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Normal Y</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Normal Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001064" name="Springy Staircase">
     <SpawnCode gfxId="0x3C"/>
