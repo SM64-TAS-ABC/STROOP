@@ -20,6 +20,7 @@ namespace STROOP.Forms
             InitializeComponent();
 
             textBoxVariableName.Text = name;
+            textBoxClassValue.Text = clazz;
             textBoxBaseOffsetValue.Text = baseOffset;
             textBoxTypeValue.Text = type;
             textBoxN64AddressValue.Text = n64Address;
