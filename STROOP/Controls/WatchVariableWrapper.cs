@@ -184,6 +184,7 @@ namespace STROOP.Controls
             VariableViewerForm varInfo =
                 new VariableViewerForm(
                     _watchVarControl.VarName,
+                    GetClass(),
                     WatchVar.GetTypeDescription(),
                     WatchVar.GetBaseOffsetDescription(),
                     WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
@@ -196,6 +197,7 @@ namespace STROOP.Controls
             return new List<string>()
             {
                 _watchVarControl.VarName,
+                GetClass(),
                 WatchVar.GetTypeDescription(),
                 WatchVar.GetBaseOffsetDescription(),
                 WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
@@ -208,6 +210,7 @@ namespace STROOP.Controls
             return new List<string>()
             {
                 "Name",
+                "Class",
                 "Type",
                 "Base + Offset",
                 "N64 Address",

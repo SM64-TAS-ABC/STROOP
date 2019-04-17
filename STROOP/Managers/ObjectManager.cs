@@ -460,6 +460,7 @@ namespace STROOP.Managers
             var variableTitle = "Object Address" + (_objects.Count > 1 ? " (First of Multiple)" : "");
             var variableInfo = new VariableViewerForm(
                 variableTitle,
+                "(none)",
                 "Object",
                 "Relative + " + HexUtilities.FormatValue(_objects.First().Address, 8),
                 HexUtilities.FormatValue(_objects.First().Address, 8),

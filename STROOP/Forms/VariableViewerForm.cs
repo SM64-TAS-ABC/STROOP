@@ -15,7 +15,7 @@ namespace STROOP.Forms
 {
     public partial class VariableViewerForm : Form
     {
-        public VariableViewerForm(string name, string type, string baseOffset, string n64Address, string emulatorAddress)
+        public VariableViewerForm(string name, string clazz, string type, string baseOffset, string n64Address, string emulatorAddress)
         {
             InitializeComponent();
 
