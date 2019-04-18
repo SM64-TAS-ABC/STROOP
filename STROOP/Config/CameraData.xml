@@ -4,8 +4,11 @@
   <Data type="byte" offset="0x6D" base="Camera" subclass="Boolean" mask="0x04">Mario Cam Possible</Data>
   <Data type="byte" offset="0x6D" base="Camera" subclass="Boolean" mask="0x01">Mario Cam</Data>
   <Data type="byte" offset="0x75" base="Camera" subclass="Boolean" mask="0x20">Fixed Cam</Data>
-  <Data type="byte" offset="0x231" base="Camera" subclass="Boolean" mask="0x02">Far Cam</Data>
   <Data type="byte" offset="0x230" base="Camera" subclass="Boolean" mask="0x20">Close Cam</Data>
+  <Data type="byte" offset="0x231" base="Camera" subclass="Boolean" mask="0x02">Far Cam</Data>
+  <Data type="byte" offset="0x231" base="Camera" subclass="Boolean" mask="0x04">Right Cam</Data>
+  <Data type="byte" offset="0x231" base="Camera" subclass="Boolean" mask="0x08">Left Cam</Data>
+  
   <Data type="float" offset="0x8C" base="Camera" coord="X">Camera X</Data>
   <Data type="float" offset="0x90" base="Camera" coord="Y">Camera Y</Data>
   <Data type="float" offset="0x94" base="Camera" coord="Z">Camera Z</Data>
