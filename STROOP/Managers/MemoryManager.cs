@@ -211,6 +211,7 @@ namespace STROOP.Managers
                 RefreshAddressTextbox();
                 return;
             }
+            address = address - address % 4;
             if (address < 0x80000000 || address + MemorySize >= 0x80000000 + Config.RamSize)
             {
                 RefreshAddressTextbox();
