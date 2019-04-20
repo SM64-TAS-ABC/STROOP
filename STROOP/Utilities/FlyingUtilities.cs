@@ -53,8 +53,8 @@ namespace STROOP.Utilities
                 FaceAngle2 = GetShort(0x30);
 
                 AngleVel0 = GetShort(0x32);
-                AngleVel0 = GetShort(0x34);
-                AngleVel0 = GetShort(0x36);
+                AngleVel1 = GetShort(0x34);
+                AngleVel2 = GetShort(0x36);
             }
         }
 
