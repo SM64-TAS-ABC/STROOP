@@ -654,8 +654,8 @@ namespace STROOP.Managers
 
         public void Update(bool updateView)
         {
-            /*
-            if (updateView)
+            // Koopa better camera
+            if (false)
             {
                 int koopaTurnAngle = 1536;
                 uint koopaAddress = 0x8034E0E8;
@@ -668,7 +668,27 @@ namespace STROOP.Managers
                     Config.Stream.SetValue(newCameraHackAngle, cameraHackAngleAddress);
                 }
             }
-            */
+
+            // panning cam hack
+            if (false)
+            {
+                float camStartZ = -3380;
+                float camEndZ = 7620;
+                uint globalTimerStart = 35000;
+                uint globalTimerEnd = globalTimerStart + 150;
+
+                uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                if (globalTimer >= globalTimerStart && globalTimer <= globalTimerEnd)
+                {
+                    double ratio = (globalTimer - globalTimerStart) / (double)(globalTimerEnd - globalTimerStart);
+                    double newZ = camStartZ + ratio * (camEndZ - camStartZ);
+                    bool streamAlreadySuspended = Config.Stream.IsSuspended;
+                    if (!streamAlreadySuspended) Config.Stream.Suspend();
+                    Config.Stream.SetValue((float)newZ, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    Config.Stream.SetValue((float)newZ, CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    if (!streamAlreadySuspended) Config.Stream.Resume();
+                }
+            }
 
             // Show Invisible Objects as Signs
             if (TestingConfig.ShowInvisibleObjectsAsSigns)
