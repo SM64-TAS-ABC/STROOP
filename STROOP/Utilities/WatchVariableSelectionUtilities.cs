@@ -105,6 +105,7 @@ namespace STROOP.Structs
                 new List<string>()
                 {
                     "Copy with Commas",
+                    "Copy with Spaces",
                     "Copy with Tabs",
                     "Copy with Line Breaks",
                     "Copy for Code",
@@ -112,6 +113,7 @@ namespace STROOP.Structs
                 new List<Action>()
                 {
                     () => copyValues(getVars(), ","),
+                    () => copyValues(getVars(), " "),
                     () => copyValues(getVars(), "\t"),
                     () => copyValues(getVars(), "\r\n"),
                     () =>
