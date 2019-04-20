@@ -3045,21 +3045,6 @@ namespace STROOP.Structs
             return MoreMath.NormalizeAngleDouble(uphillAngle);
         }
 
-        private static double GetTriangleUphillAngleRadiansTrue(uint triAddress)
-        {
-            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-            double uphillAngleRadians = Math.PI + Math.Atan2(triStruct.NormX, triStruct.NormZ);
-            if (triStruct.NormX == 0 && triStruct.NormZ == 0) uphillAngleRadians = double.NaN;
-            if (triStruct.IsCeiling()) uphillAngleRadians += Math.PI;
-            return uphillAngleRadians;
-        }
-
-        private static double GetTriangleUphillAngleTrue(uint triAddress)
-        {
-            double uphillAngleRadians = GetTriangleUphillAngleRadiansTrue(triAddress);
-            return MoreMath.RadiansToAngleUnits(uphillAngleRadians);
-        }
-
         private static double GetMaxHorizontalSpeedOnTriangle(uint triAddress, bool uphill, bool atAngle)
         {
             TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
