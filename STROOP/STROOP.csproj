@@ -523,6 +523,7 @@
     <Compile Include="Structs\SpawnHack.cs" />
     <Compile Include="Enums\AngleUnitType.cs" />
     <Compile Include="Utilities\AnimationUtilities.cs" />
+    <Compile Include="Utilities\FlyingUtilities.cs" />
     <Compile Include="Utilities\InGameFunctionCall.cs" />
     <Compile Include="Utilities\MathOperationUtilities.cs" />
     <Compile Include="Utilities\SegmentationUtilities.cs" />
