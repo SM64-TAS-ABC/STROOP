@@ -1120,6 +1120,13 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("FlyingEnergy",
+                ((uint dummy) =>
+                {
+                    return FlyingUtilities.GetEnergy();
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("BobombTrajectoryFramesToPoint",
                 ((uint dummy) =>
                 {

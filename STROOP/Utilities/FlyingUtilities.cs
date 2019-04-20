@@ -8,6 +8,16 @@ namespace STROOP.Utilities
 {
     public static class FlyingUtilities
     {
+        private static float GetFloat(uint address)
+        {
+            return Config.Stream.GetSingle(MarioConfig.StructAddress + address);
+        }
+
+        private static float GetShort(uint address)
+        {
+            return Config.Stream.GetInt16(MarioConfig.StructAddress + address);
+        }
+
         private class MarioFlyingState
         {
             public float Pos0;
@@ -26,16 +36,6 @@ namespace STROOP.Utilities
             public float AngleVel0;
             public float AngleVel1;
             public float AngleVel2;
-
-            private static float GetFloat(uint address)
-            {
-                return Config.Stream.GetSingle(MarioConfig.StructAddress + address);
-            }
-
-            private static float GetShort(uint address)
-            {
-                return Config.Stream.GetInt16(MarioConfig.StructAddress + address);
-            }
 
             public MarioFlyingState()
             {
@@ -58,6 +58,11 @@ namespace STROOP.Utilities
             }
         }
 
-
+        public static double GetEnergy()
+        {
+            float hSpeed = GetFloat(0x54);
+            float y = GetFloat(0x40);
+            return hSpeed * hSpeed + (4 / Math.PI) * y;
+        }
     }
 }
