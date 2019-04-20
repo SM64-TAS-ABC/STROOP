@@ -84,15 +84,15 @@ namespace STROOP.Utilities
                     returnValue = 0x8000 - InGameATan45Degrees(yComp, -xComp);
             else
                 if (xComp < 0)
-                if (-yComp < -xComp)
-                    returnValue = 0x8000 + InGameATan45Degrees(-yComp, -xComp);
+                    if (-yComp < -xComp)
+                        returnValue = 0x8000 + InGameATan45Degrees(-yComp, -xComp);
+                    else
+                        returnValue = 0xC000 - InGameATan45Degrees(-xComp, -yComp);
                 else
-                    returnValue = 0xC000 - InGameATan45Degrees(-xComp, -yComp);
-            else
                     if (xComp < -yComp)
-                returnValue = 0xC000 + InGameATan45Degrees(xComp, -yComp);
-            else
-                returnValue = 0x10000 - InGameATan45Degrees(-yComp, xComp);
+                        returnValue = 0xC000 + InGameATan45Degrees(xComp, -yComp);
+                    else
+                        returnValue = 0x10000 - InGameATan45Degrees(-yComp, xComp);
 
             return (ushort)returnValue;
         }
