@@ -1511,6 +1511,30 @@ namespace STROOP.Utilities
             return new PointTable(points);
         }
 
+        public static MusicTable OpenMusicTable(string path)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/WaypointTableSchema.xsd", "WaypointTableSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            List<MusicEntry> musicEntries = new List<MusicEntry>();
+            foreach (XElement element in doc.Root.Elements())
+            {
+                int index = ParsingUtilities.ParseInt(element.Attribute(XName.Get("index")).Value);
+                string name = element.Attribute(XName.Get("name")).Value;
+                musicEntries.Add(new MusicEntry(index, name));
+            }
+
+            return new MusicTable(musicEntries);
+        }
+
         public static MissionTable OpenMissionTable(string path)
         {
             MissionTable missionTable = new MissionTable();

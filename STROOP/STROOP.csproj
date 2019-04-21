@@ -382,6 +382,8 @@
     <Compile Include="Structs\Configurations\PaintingConfig.cs" />
     <Compile Include="Structs\Configurations\SnowConfig.cs" />
     <Compile Include="Structs\Map\BackgroundImage.cs" />
+    <Compile Include="Structs\MusicEntry.cs" />
+    <Compile Include="Structs\MusicTable.cs" />
     <Compile Include="Structs\TriangleInfoTable.cs" />
     <Compile Include="Structs\PointTable.cs" />
     <Compile Include="Ttc\TtcSaveStateByteIterator.cs" />
@@ -697,6 +699,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\MhsData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\MusicData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\TtmBowlingBallPoints.xml">

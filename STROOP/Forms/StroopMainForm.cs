@@ -506,6 +506,7 @@ namespace STROOP
             TableConfig.KoopaTheQuick1Waypoints = XmlConfigParser.OpenWaypointTable(@"Config/KoopaTheQuick1Waypoints.xml");
             TableConfig.KoopaTheQuick2Waypoints = XmlConfigParser.OpenWaypointTable(@"Config/KoopaTheQuick2Waypoints.xml");
             TableConfig.TtmBowlingBallPoints = XmlConfigParser.OpenPointTable(@"Config/TtmBowlingBallPoints.xml");
+            TableConfig.MusicData = XmlConfigParser.OpenMusicTable(@"Config/MusicData.xml");
             TableConfig.Missions = XmlConfigParser.OpenMissionTable(@"Config/Missions.xml");
             TableConfig.CourseData = XmlConfigParser.OpenCourseDataTable(@"Config/CourseData.xml");
             TableConfig.FlyGuyData = new FlyGuyDataTable();
