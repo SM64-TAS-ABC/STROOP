@@ -16,49 +16,17 @@ namespace STROOP.Managers
     {
         public SoundManager(TabPage tabPage)
         {
-            /*
-            CurrentMainSaveMode = MainSaveMode.MainSave;
+            SplitContainer splitContainerSound = tabPage.Controls["splitContainerSound"] as SplitContainer;
 
-            SplitContainer splitContainerMainSave = tabPage.Controls["splitContainerMainSave"] as SplitContainer;
-            TableLayoutPanel tableLayoutPanelMainSaveCoinRank = splitContainerMainSave.Panel1.Controls["tableLayoutPanelMainSaveCoinRank"] as TableLayoutPanel;
+            SplitContainer splitContainerSoundMusic = splitContainerSound.Panel1.Controls["splitContainerSoundMusic"] as SplitContainer;
+            ListBox listBoxSoundMusic = splitContainerSoundMusic.Panel1.Controls["listBoxSoundMusic"] as ListBox;
+            TextBox textBoxSoundMusic = splitContainerSoundMusic.Panel2.Controls["textBoxSoundMusic"] as TextBox;
+            Button buttonSoundPlayMusic = splitContainerSoundMusic.Panel2.Controls["buttonSoundPlayMusic"] as Button;
 
-            _mainSaveTextboxes = new List<MainSaveTextbox>();
-            for (int row = 1; row <= 15; row++)
-            {
-                for (int col = 1; col <= 4; col++)
-                {
-                    string controlName = String.Format("textBoxMainSaveCoinRankRow{0}Col{1}", row, col);
-                    MainSaveTextbox mainSaveTextbox = tableLayoutPanelMainSaveCoinRank.Controls[controlName] as MainSaveTextbox;
-                    mainSaveTextbox.Initialize(row - 1, col - 1);
-                    _mainSaveTextboxes.Add(mainSaveTextbox);
-                }
-            }
-
-            GroupBox groupBoxMainSaveStruct = splitContainerMainSave.Panel1.Controls["groupBoxMainSaveStruct"] as GroupBox;
-
-            _radioButtonMainSaveStructMainSave = groupBoxMainSaveStruct.Controls["radioButtonMainSaveStructMainSave"] as RadioButton;
-            _radioButtonMainSaveStructMainSave.Click += (sender, e) => CurrentMainSaveMode = MainSaveMode.MainSave;
-
-            _radioButtonMainSaveStructMainSaveSaved = groupBoxMainSaveStruct.Controls["radioButtonMainSaveStructMainSaveSaved"] as RadioButton;
-            _radioButtonMainSaveStructMainSaveSaved.Click += (sender, e) => CurrentMainSaveMode = MainSaveMode.MainSaveSaved;
-
-            GroupBox groupBoxMainSaveSoundMode = splitContainerMainSave.Panel1.Controls["groupBoxMainSaveSoundMode"] as GroupBox;
-
-            _radioButtonMainSaveSoundModeStereo = groupBoxMainSaveSoundMode.Controls["radioButtonMainSaveSoundModeStereo"] as RadioButton;
-            _radioButtonMainSaveSoundModeStereo.Click += (sender, e) =>
-                Config.Stream.SetValue(MainSaveConfig.SoundModeStereoValue, CurrentMainSaveAddress + MainSaveConfig.SoundModeOffset);
-
-            _radioButtonMainSaveSoundModeMono = groupBoxMainSaveSoundMode.Controls["radioButtonMainSaveSoundModeMono"] as RadioButton;
-            _radioButtonMainSaveSoundModeMono.Click += (sender, e) =>
-                Config.Stream.SetValue(MainSaveConfig.SoundModeMonoValue, CurrentMainSaveAddress + MainSaveConfig.SoundModeOffset);
-
-            _radioButtonMainSaveSoundModeHeadset = groupBoxMainSaveSoundMode.Controls["radioButtonMainSaveSoundModeHeadset"] as RadioButton;
-            _radioButtonMainSaveSoundModeHeadset.Click += (sender, e) =>
-                Config.Stream.SetValue(MainSaveConfig.SoundModeHeadsetValue, CurrentMainSaveAddress + MainSaveConfig.SoundModeOffset);
-
-            _buttonMainSaveSave = splitContainerMainSave.Panel1.Controls["buttonMainSaveSave"] as Button;
-            _buttonMainSaveSave.Click += (sender, e) => Save();
-            */
+            SplitContainer splitContainerSoundSoundEffect = splitContainerSound.Panel2.Controls["splitContainerSoundSoundEffect"] as SplitContainer;
+            ListBox listBoxSoundSoundEffect = splitContainerSoundSoundEffect.Panel1.Controls["listBoxSoundSoundEffect"] as ListBox;
+            TextBox textBoxSoundSoundEffect = splitContainerSoundSoundEffect.Panel2.Controls["textBoxSoundSoundEffect"] as TextBox;
+            Button buttonSoundPlaySoundEffect = splitContainerSoundSoundEffect.Panel2.Controls["buttonSoundPlaySoundEffect"] as Button;
         }
 
         public void Update(bool updateView)
