@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace STROOP.Utilities
 {
@@ -17,12 +18,40 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            TestSomething14();
+            TestSomething15();
         }
 
         public static void TestSomethingElse()
         {
             Config.Print(TtcMain.FindHandMovement());
+        }
+
+        public static void TestSomething15()
+        {
+            string clipboard = Clipboard.GetText();
+            List<string> lines = clipboard.Split('\n').ToList();
+            List<string> output = new List<string>();
+            foreach (string line in lines)
+            {
+                List<string> parts = ParsingUtilities.ParseStringList(line);
+                if (parts.Count == 0) continue;
+
+                if (parts.Contains("SOUND_ARG_LOAD"))
+                {
+                    int index = parts.IndexOf("SOUND_ARG_LOAD");
+                    string part1 = parts[index + 1];
+                    string part2 = parts[index + 2];
+                    string part3 = parts[index + 3];
+                    string value = "0x" + part1 + part2 + part3.Substring(2);
+                    output.Add(value + ",");
+                }
+                else
+                {
+                    string value = parts[parts.Count - 1];
+                    output.Add(value + ",");
+                }
+            }
+            InfoForm.ShowValue(string.Join("\r\n", output));
         }
 
         public static void TestSomething14()
