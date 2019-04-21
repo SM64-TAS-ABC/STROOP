@@ -112,7 +112,7 @@
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D124" offsetJP="0x8033BDB4" base="Relative" subclass="Object" color="Pink">PG C Prev</Data>
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x80361150" offsetJP="0x8035FDE0" base="Relative" subclass="Object" color="Grey">Vacant Next</Data>
 
-  <Data groupList="Advanced" base="ProcessGroup" specialType="ObjectProcessGroup" display="sbyte">Process Group</Data>
+  <Data groupList="Advanced" base="ProcessGroup" specialType="ObjectProcessGroup" display="sbyte" useHex="true">Process Group</Data>
   <Data groupList="Advanced" base="ProcessGroup" specialType="ObjectProcessGroupDescription" subclass="String">Process Group Desc.</Data>
   
   <Data groupList="Advanced" type="uint" offset="0x04" base="Object" subclass="Object">Prev Memory Obj</Data>
