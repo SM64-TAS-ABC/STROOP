@@ -90,12 +90,12 @@
 
   <Data groupList="Advanced" base="Object" specialType="ObjectRngCallsPerFrame">RNG Calls/Frame</Data>
 
-  <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D0B8" offsetJP="0x8033BD48" base="Relative" subclass="Object" color="Pink">PG 11 Next</Data>
-  <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D0BC" offsetJP="0x8033BD4C" base="Relative" subclass="Object" color="Pink">PG 11 Prev</Data>
+  <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D0B8" offsetJP="0x8033BD48" base="Relative" subclass="Object" color="Pink">PG B Next</Data>
+  <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D0BC" offsetJP="0x8033BD4C" base="Relative" subclass="Object" color="Pink">PG B Prev</Data>
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033CFE8" offsetJP="0x8033BC78" base="Relative" subclass="Object" color="Red">PG 9 Next</Data>
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033CFEC" offsetJP="0x8033BC7C" base="Relative" subclass="Object" color="Red">PG 9 Prev</Data>
-  <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D050" offsetJP="0x8033BCE0" base="Relative" subclass="Object" color="Orange">PG 10 Next</Data>
-  <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D054" offsetJP="0x8033BCE4" base="Relative" subclass="Object" color="Orange">PG 10 Prev</Data>
+  <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D050" offsetJP="0x8033BCE0" base="Relative" subclass="Object" color="Orange">PG A Next</Data>
+  <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D054" offsetJP="0x8033BCE4" base="Relative" subclass="Object" color="Orange">PG A Prev</Data>
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033CC40" offsetJP="0x8033B8D0" base="Relative" subclass="Object" color="Orange">PG 0 Next</Data>
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033CC44" offsetJP="0x8033B8D4" base="Relative" subclass="Object" color="Orange">PG 0 Prev</Data>
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033CE48" offsetJP="0x8033BAD8" base="Relative" subclass="Object" color="Yellow">PG 5 Next</Data>
@@ -108,8 +108,8 @@
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033CEB4" offsetJP="0x8033BB44" base="Relative" subclass="Object" color="Blue">PG 6 Prev</Data>
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033CF80" offsetJP="0x8033BC10" base="Relative" subclass="Object" color="Purple">PG 8 Next</Data>
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033CF84" offsetJP="0x8033BC14" base="Relative" subclass="Object" color="Purple">PG 8 Prev</Data>
-  <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D120" offsetJP="0x8033BDB0" base="Relative" subclass="Object" color="Pink">PG 12 Next</Data>
-  <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D124" offsetJP="0x8033BDB4" base="Relative" subclass="Object" color="Pink">PG 12 Prev</Data>
+  <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D120" offsetJP="0x8033BDB0" base="Relative" subclass="Object" color="Pink">PG C Next</Data>
+  <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D124" offsetJP="0x8033BDB4" base="Relative" subclass="Object" color="Pink">PG C Prev</Data>
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x80361150" offsetJP="0x8035FDE0" base="Relative" subclass="Object" color="Grey">Vacant Next</Data>
 
   <Data groupList="Advanced" base="ProcessGroup" specialType="ObjectProcessGroup" display="sbyte">Process Group</Data>
