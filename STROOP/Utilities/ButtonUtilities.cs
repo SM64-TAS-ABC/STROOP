@@ -810,17 +810,11 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool Coins99()
+        public static bool CoinStar100()
         {
-            bool success = true;
-            bool streamAlreadySuspended = Config.Stream.IsSuspended;
-            if (!streamAlreadySuspended) Config.Stream.Suspend();
-
-            success &= Config.Stream.SetValue((short)99, MarioConfig.StructAddress + HudConfig.CoinCountOffset);
-            success &= Config.Stream.SetValue((short)99, MarioConfig.StructAddress + HudConfig.CoinDisplayOffset);
-
-            if (!streamAlreadySuspended) Config.Stream.Resume();
-            return success;
+            uint spawnStar = RomVersionConfig.Switch(0x802AB558, 0x802AACE4);
+            InGameFunctionCall.WriteInGameFunctionCall(spawnStar, 6);
+            return true;
         }
 
         public static bool Lives100()

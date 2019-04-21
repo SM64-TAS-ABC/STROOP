@@ -27,7 +27,7 @@ namespace STROOP.Managers
             (splitContainerHud.Panel1.Controls["buttonFullHp"] as Button).Click += (sender, e) => ButtonUtilities.FullHp();
             (splitContainerHud.Panel1.Controls["buttonDie"] as Button).Click += (sender, e) => ButtonUtilities.Die();
             (splitContainerHud.Panel1.Controls["buttonGameOver"] as Button).Click += (sender, e) => ButtonUtilities.GameOver();
-            (splitContainerHud.Panel1.Controls["button99Coins"] as Button).Click += (sender, e) => ButtonUtilities.Coins99();
+            (splitContainerHud.Panel1.Controls["button100CoinStar"] as Button).Click += (sender, e) => ButtonUtilities.CoinStar100();
             (splitContainerHud.Panel1.Controls["button100Lives"] as Button).Click += (sender, e) => ButtonUtilities.Lives100();
             (splitContainerHud.Panel1.Controls["buttonStandardHud"] as Button).Click += (sender, e) => ButtonUtilities.StandardHud();
 
