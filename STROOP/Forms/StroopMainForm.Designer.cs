@@ -1493,6 +1493,8 @@ namespace STROOP
             this.splitContainerPainting = new STROOP.BetterSplitContainer();
             this.listBoxPainting = new System.Windows.Forms.ListBox();
             this.watchVariablePanelPainting = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.tabPageSound = new System.Windows.Forms.TabPage();
+            this.betterSplitContainer1 = new STROOP.BetterSplitContainer();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
             this.labelLabelMethod = new System.Windows.Forms.Label();
@@ -1502,8 +1504,8 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.tabPageSound = new System.Windows.Forms.TabPage();
-            this.betterSplitContainer1 = new STROOP.BetterSplitContainer();
+            this.betterSplitContainer2 = new STROOP.BetterSplitContainer();
+            this.betterSplitContainer3 = new STROOP.BetterSplitContainer();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1933,11 +1935,17 @@ namespace STROOP
             this.splitContainerPainting.Panel1.SuspendLayout();
             this.splitContainerPainting.Panel2.SuspendLayout();
             this.splitContainerPainting.SuspendLayout();
-            this.groupBoxObjects.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             this.tabPageSound.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer1)).BeginInit();
+            this.betterSplitContainer1.Panel1.SuspendLayout();
+            this.betterSplitContainer1.Panel2.SuspendLayout();
             this.betterSplitContainer1.SuspendLayout();
+            this.groupBoxObjects.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer2)).BeginInit();
+            this.betterSplitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer3)).BeginInit();
+            this.betterSplitContainer3.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -5669,7 +5677,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 476F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 477F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9388,7 +9396,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(469, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(472, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11750,7 +11758,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 699;
+            this.splitContainerMemory.SplitterDistance = 702;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11791,7 +11799,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(699, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(702, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -12008,7 +12016,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(699, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(702, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -12037,7 +12045,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(598, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(601, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12050,7 +12058,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(207, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(204, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -13204,7 +13212,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(221, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(204, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -13236,7 +13244,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(215, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(198, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -13292,7 +13300,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(215, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(198, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -18042,7 +18050,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -19226,7 +19234,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(76, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(77, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -19343,6 +19351,41 @@ namespace STROOP
             this.watchVariablePanelPainting.Size = new System.Drawing.Size(753, 455);
             this.watchVariablePanelPainting.TabIndex = 7;
             // 
+            // tabPageSound
+            // 
+            this.tabPageSound.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageSound.Controls.Add(this.betterSplitContainer1);
+            this.tabPageSound.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSound.Name = "tabPageSound";
+            this.tabPageSound.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSound.Size = new System.Drawing.Size(915, 463);
+            this.tabPageSound.TabIndex = 34;
+            this.tabPageSound.Text = "Sound";
+            // 
+            // betterSplitContainer1
+            // 
+            this.betterSplitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.betterSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.betterSplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.betterSplitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.betterSplitContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.betterSplitContainer1.Name = "betterSplitContainer1";
+            // 
+            // betterSplitContainer1.Panel1
+            // 
+            this.betterSplitContainer1.Panel1.AutoScroll = true;
+            this.betterSplitContainer1.Panel1.Controls.Add(this.betterSplitContainer2);
+            this.betterSplitContainer1.Panel1MinSize = 0;
+            // 
+            // betterSplitContainer1.Panel2
+            // 
+            this.betterSplitContainer1.Panel2.Controls.Add(this.betterSplitContainer3);
+            this.betterSplitContainer1.Panel2MinSize = 0;
+            this.betterSplitContainer1.Size = new System.Drawing.Size(909, 457);
+            this.betterSplitContainer1.SplitterDistance = 422;
+            this.betterSplitContainer1.SplitterWidth = 1;
+            this.betterSplitContainer1.TabIndex = 35;
+            // 
             // groupBoxObjects
             // 
             this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
@@ -19449,35 +19492,45 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // tabPageSound
+            // betterSplitContainer2
             // 
-            this.tabPageSound.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageSound.Controls.Add(this.betterSplitContainer1);
-            this.tabPageSound.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSound.Name = "tabPageSound";
-            this.tabPageSound.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSound.Size = new System.Drawing.Size(915, 463);
-            this.tabPageSound.TabIndex = 34;
-            this.tabPageSound.Text = "Sound";
+            this.betterSplitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.betterSplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.betterSplitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.betterSplitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.betterSplitContainer2.Margin = new System.Windows.Forms.Padding(0);
+            this.betterSplitContainer2.Name = "betterSplitContainer2";
+            this.betterSplitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // betterSplitContainer1
+            // betterSplitContainer2.Panel1
             // 
-            this.betterSplitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.betterSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.betterSplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.betterSplitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.betterSplitContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.betterSplitContainer1.Name = "betterSplitContainer1";
+            this.betterSplitContainer2.Panel1.AutoScroll = true;
+            this.betterSplitContainer2.Panel1MinSize = 0;
+            this.betterSplitContainer2.Panel2MinSize = 0;
+            this.betterSplitContainer2.Size = new System.Drawing.Size(422, 457);
+            this.betterSplitContainer2.SplitterDistance = 153;
+            this.betterSplitContainer2.SplitterWidth = 1;
+            this.betterSplitContainer2.TabIndex = 35;
             // 
-            // betterSplitContainer1.Panel1
+            // betterSplitContainer3
             // 
-            this.betterSplitContainer1.Panel1.AutoScroll = true;
-            this.betterSplitContainer1.Panel1MinSize = 0;
-            this.betterSplitContainer1.Panel2MinSize = 0;
-            this.betterSplitContainer1.Size = new System.Drawing.Size(909, 457);
-            this.betterSplitContainer1.SplitterDistance = 422;
-            this.betterSplitContainer1.SplitterWidth = 1;
-            this.betterSplitContainer1.TabIndex = 35;
+            this.betterSplitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.betterSplitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.betterSplitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.betterSplitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.betterSplitContainer3.Margin = new System.Windows.Forms.Padding(0);
+            this.betterSplitContainer3.Name = "betterSplitContainer3";
+            this.betterSplitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // betterSplitContainer3.Panel1
+            // 
+            this.betterSplitContainer3.Panel1.AutoScroll = true;
+            this.betterSplitContainer3.Panel1MinSize = 0;
+            this.betterSplitContainer3.Panel2MinSize = 0;
+            this.betterSplitContainer3.Size = new System.Drawing.Size(484, 455);
+            this.betterSplitContainer3.SplitterDistance = 153;
+            this.betterSplitContainer3.SplitterWidth = 1;
+            this.betterSplitContainer3.TabIndex = 35;
             // 
             // StroopMainForm
             // 
@@ -20035,12 +20088,18 @@ namespace STROOP
             this.splitContainerPainting.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerPainting)).EndInit();
             this.splitContainerPainting.ResumeLayout(false);
+            this.tabPageSound.ResumeLayout(false);
+            this.betterSplitContainer1.Panel1.ResumeLayout(false);
+            this.betterSplitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer1)).EndInit();
+            this.betterSplitContainer1.ResumeLayout(false);
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.tabPageSound.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer1)).EndInit();
-            this.betterSplitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer2)).EndInit();
+            this.betterSplitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer3)).EndInit();
+            this.betterSplitContainer3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -21508,6 +21567,8 @@ namespace STROOP
         private Label labelTestingConversionAddress;
         private TabPage tabPageSound;
         private BetterSplitContainer betterSplitContainer1;
+        private BetterSplitContainer betterSplitContainer2;
+        private BetterSplitContainer betterSplitContainer3;
     }
 }
 
