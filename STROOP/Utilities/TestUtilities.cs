@@ -17,12 +17,27 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            TestSomething13();
+            TestSomething14();
         }
 
         public static void TestSomethingElse()
         {
             Config.Print(TtcMain.FindHandMovement());
+        }
+
+        public static void TestSomething14()
+        {
+            /*
+            uint setSound = RomVersionConfig.Switch(0x8031EB00, 0x8031DC78);
+            uint soundArg = RomVersionConfig.Switch(0x803331F0, 0x803320E0); // = default stereo panning?
+            uint starCollectSound = 0x701EFF81; // or any other
+            InGameFunctionCall.WriteInGameFunctionCall(setSound, starCollectSound, soundArg);
+            */
+            
+            uint fileSelectMusic = 31; // or any other
+            uint setMusic = RomVersionConfig.Switch(0x80320544, 0x8031F690);
+            InGameFunctionCall.WriteInGameFunctionCall(setMusic, 0, fileSelectMusic, 0);
+            
         }
 
         public static void TestSomething13()
