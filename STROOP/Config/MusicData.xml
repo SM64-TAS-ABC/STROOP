@@ -6,33 +6,32 @@
   <Point index="03" name="Grass"/>
   <Point index="04" name="Inside Castle"/>
   <Point index="05" name="Water"/>
-  <Point index="06" name="Water SA"/>
-  <Point index="07" name="Hot"/>
-  <Point index="08" name="Bowser"/>
-  <Point index="09" name="Snow"/>
-  <Point index="10" name="Slide"/>
-  <Point index="11" name="Spooky"/>
-  <Point index="12" name="Piranha Plant"/>
-  <Point index="13" name="Underground"/>
-  <Point index="14" name="Star Select"/>
-  <Point index="15" name="Powerup"/>
-  <Point index="16" name="Metal Cap"/>
-  <Point index="17" name="Koopa Message"/>
-  <Point index="18" name="Koopa Road"/>
-  <Point index="19" name="High Score"/>
-  <Point index="20" name="Merry-Go-Round"/>
-  <Point index="21" name="Race"/>
-  <Point index="22" name="Star Spawn"/>
-  <Point index="23" name="Boss"/>
-  <Point index="24" name="Key Collection"/>
-  <Point index="25" name="Endless Stairs"/>
-  <Point index="26" name="3rd Bowser"/>
-  <Point index="27" name="Credits"/>
-  <Point index="28" name="Solved Puzzle"/>
-  <Point index="29" name="Toad Message"/>
-  <Point index="30" name="Solved Puzzle"/>
-  <Point index="31" name="Intro"/>
-  <Point index="32" name="Victory"/>
+  <Point index="06" name="Hot"/>
+  <Point index="07" name="Bowser"/>
+  <Point index="08" name="Snow"/>
+  <Point index="09" name="Slide"/>
+  <Point index="10" name="Spooky"/>
+  <Point index="11" name="Piranha Plant"/>
+  <Point index="12" name="Underground"/>
+  <Point index="13" name="Star Select"/>
+  <Point index="14" name="Powerup"/>
+  <Point index="15" name="Metal Cap"/>
+  <Point index="16" name="Bowser Message"/>
+  <Point index="17" name="Bowser Course"/>
+  <Point index="18" name="High Score"/>
+  <Point index="19" name="Merry-Go-Round"/>
+  <Point index="20" name="Race Start"/>
+  <Point index="21" name="Star Spawn"/>
+  <Point index="22" name="Boss"/>
+  <Point index="23" name="Key Collection"/>
+  <Point index="24" name="Endless Stairs"/>
+  <Point index="25" name="3rd Bowser"/>
+  <Point index="26" name="Credits"/>
+  <Point index="27" name="Solved Puzzle"/>
+  <Point index="28" name="Toad Message"/>
+  <Point index="29" name="Peach Message"/>
+  <Point index="30" name="Intro"/>
+  <Point index="31" name="Grand Star Collection"/>
+  <Point index="32" name="Ending Cutscene"/>
   <Point index="33" name="File Select"/>
-  <Point index="34" name="Lakitu"/>
 </Data>
