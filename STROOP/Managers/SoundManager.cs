@@ -39,7 +39,7 @@ namespace STROOP.Managers
                 int? musicIndexNullable = ParsingUtilities.ParseIntNullable(textBoxSoundMusic.Text);
                 if (musicIndexNullable == null) return;
                 int musicIndex = musicIndexNullable.Value;
-                //if (musicIndex < 0 || musicIndex > 34) return;
+                if (musicIndex < 0 || musicIndex > 34) return;
                 uint setMusic = RomVersionConfig.Switch(0x80320544, 0x8031F690);
                 InGameFunctionCall.WriteInGameFunctionCall(setMusic, 0, (uint)musicIndex, 0);
             };
