@@ -29,9 +29,10 @@
   <Point index="26" name="Credits"/>
   <Point index="27" name="Solved Puzzle"/>
   <Point index="28" name="Toad Message"/>
-  <Point index="29" name="Peach Message"/>
-  <Point index="30" name="Intro"/>
+  <Point index="29" name="Peach Intro"/>
+  <Point index="30" name="Lakitu Intro"/>
   <Point index="31" name="Grand Star Collection"/>
   <Point index="32" name="Ending Cutscene"/>
   <Point index="33" name="File Select"/>
+  <Point index="34" name="Peach Message"/>
 </Data>
