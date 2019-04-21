@@ -46,6 +46,8 @@
     <Tab>Coin</Tab>
     <Tab>Snow</Tab>
     <Tab>Main Save</Tab>
+    <Tab>Painting</Tab>
+    <Tab>Sound</Tab>
     <Tab>Testing</Tab>
   </TabOrder>
   <RemovedTabs>
