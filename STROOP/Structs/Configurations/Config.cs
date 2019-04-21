@@ -60,6 +60,7 @@ namespace STROOP.Structs.Configurations
         public static ScriptManager ScriptManager;
         public static GfxManager GfxManager;
         public static PaintingManager PaintingManager;
+        public static SoundManager SoundManager;
         public static M64Manager M64Manager;
 
         public static List<VariableAdder> GetVariableAdders()
