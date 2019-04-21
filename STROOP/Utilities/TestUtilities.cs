@@ -33,11 +33,15 @@ namespace STROOP.Utilities
             uint starCollectSound = 0x701EFF81; // or any other
             InGameFunctionCall.WriteInGameFunctionCall(setSound, starCollectSound, soundArg);
             */
-            
+
+            /*
             uint fileSelectMusic = 31; // or any other
             uint setMusic = RomVersionConfig.Switch(0x80320544, 0x8031F690);
             InGameFunctionCall.WriteInGameFunctionCall(setMusic, 0, fileSelectMusic, 0);
-            
+            */
+
+            uint spawnStar = RomVersionConfig.Switch(0x802AB558, 0x802AACE4);
+            InGameFunctionCall.WriteInGameFunctionCall(spawnStar, 6);
         }
 
         public static void TestSomething13()
