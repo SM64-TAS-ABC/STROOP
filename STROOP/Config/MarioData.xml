@@ -115,7 +115,8 @@
   <Data groupList="Intermediate" type="float" offset="0x70" base="Mario">Floor Height</Data>
   <Data groupList="Intermediate" base="None" specialType="FallHeight">Fall Height</Data>
   <Data groupList="Advanced" type="float" offset="0xC0" base="Mario">Quicksand Height</Data>
-  
+
+  <Data groupList="Intermediate" type="short" offsetUS="0x80361250" offsetJP="0x8035FEE0" base="Relative">Current Room</Data>
   <Data groupList="Advanced" type="short" offset="0x14" base="Mario">Floor Footstep Type</Data>
   <Data groupList="Advanced" type="byte" offsetUS="0x8032DA94" offsetJP="0x8032CB34" base="Relative" subclass="Boolean" mask="0x01">Just Teleported</Data>
   <Data groupList="Advanced" type="int" offsetUS="0x800F0A5C" offsetJP="0x800EDBDC" base="Relative">Blinking State</Data>
