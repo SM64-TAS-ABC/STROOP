@@ -11,8 +11,12 @@ namespace STROOP.Structs.Configurations
 {
     public static class MappingConfig
     {
-        private static Dictionary<uint, string> mappingUS = GetMappingDictionary(@"Mappings/MappingUS.map");
-        //private static Dictionary<uint, string> mappingJP = GetMappingDictionary(@"Mappings/MappingJP.map");
+        private static readonly Dictionary<uint, string> mappingUS = GetMappingDictionary(@"Mappings/MappingUS.map");
+        private static readonly Dictionary<uint, string> mappingJP = GetMappingDictionary(@"Mappings/MappingJP.map");
+        private static readonly Dictionary<uint, string> mappingSH = GetMappingDictionary(@"Mappings/MappingUS.map"); // TODO: fix this
+
+        private static Dictionary<uint, string> mappingCurrent = null;
+        private static Dictionary<string, uint> mappingCurrentReversed = null;
 
         public static Dictionary<uint, string> GetMappingDictionary(string filePath)
         {
@@ -36,7 +40,28 @@ namespace STROOP.Structs.Configurations
 
         public static uint HandleMapping(uint address)
         {
-            return address;
+            if (mappingCurrent == null) return address;
+
+            Dictionary<uint, string> originalDictionary;
+            switch (RomVersionConfig.Version)
+            {
+                case RomVersion.US:
+                    originalDictionary = mappingUS;
+                    break;
+                case RomVersion.JP:
+                    originalDictionary = mappingJP;
+                    break;
+                case RomVersion.SH:
+                    originalDictionary = mappingSH;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            if (!originalDictionary.ContainsKey(address)) return address;
+            string name = originalDictionary[address];
+            if (!mappingCurrentReversed.ContainsKey(name)) return address;
+            return mappingCurrentReversed[name];
         }
 
     }
