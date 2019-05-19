@@ -119,6 +119,7 @@ namespace STROOP
                 new List<string>()
                 {
                     "Enable TASer Settings",
+                    "Open Mapping",
                     "Show MHS Vars",
                     "Download Latest STROOP Release",
                     "Show All Helpful Hints",
@@ -139,6 +140,7 @@ namespace STROOP
                         Config.TasManager.ShowTaserVariables();
                         tabControlMain.SelectedTab = tabPageTas;
                     },
+                    () => MappingConfig.OpenMapping(),
                     () =>
                     {
                         string varFilePath = @"Config/MhsData.xml";
