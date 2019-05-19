@@ -226,101 +226,101 @@ Discarded input sections
  .reginfo       0x0000000000000000       0x18 build/us/src/game/main.o
  .gptab.data    0x0000000000000000       0x30 build/us/src/game/main.o
  .gptab.bss     0x0000000000000000       0x40 build/us/src/game/main.o
- .mdebug        0x0000000000000000     0xe408 build/us/src/game/main.o
+ .mdebug        0x0000000000000000     0xe564 build/us/src/game/main.o
  .options       0x0000000000000000       0x20 build/us/src/game/display.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/display.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/game/display.o
- .mdebug        0x0000000000000000     0xe314 build/us/src/game/display.o
+ .mdebug        0x0000000000000000     0xe470 build/us/src/game/display.o
  .options       0x0000000000000000       0x20 build/us/src/game/game.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/game.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/game/game.o
  .gptab.bss     0x0000000000000000       0x50 build/us/src/game/game.o
- .mdebug        0x0000000000000000    0x11388 build/us/src/game/game.o
+ .mdebug        0x0000000000000000    0x11578 build/us/src/game/game.o
  .options       0x0000000000000000       0x20 build/us/src/game/sound_init.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/sound_init.o
  .gptab.data    0x0000000000000000       0x38 build/us/src/game/sound_init.o
  .gptab.bss     0x0000000000000000       0x30 build/us/src/game/sound_init.o
- .mdebug        0x0000000000000000    0x12a44 build/us/src/game/sound_init.o
+ .mdebug        0x0000000000000000    0x12bf8 build/us/src/game/sound_init.o
  .options       0x0000000000000000       0x20 build/us/src/game/level_update.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/level_update.o
  .gptab.data    0x0000000000000000       0x48 build/us/src/game/level_update.o
  .gptab.bss     0x0000000000000000       0x30 build/us/src/game/level_update.o
- .mdebug        0x0000000000000000    0x165d8 build/us/src/game/level_update.o
+ .mdebug        0x0000000000000000    0x166fc build/us/src/game/level_update.o
  .options       0x0000000000000000       0x20 build/us/src/game/interaction.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/interaction.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/game/interaction.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/game/interaction.o
- .mdebug        0x0000000000000000    0x20ce8 build/us/src/game/interaction.o
+ .mdebug        0x0000000000000000    0x20e08 build/us/src/game/interaction.o
  .options       0x0000000000000000       0x20 build/us/src/game/mario.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/mario.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/game/mario.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/game/mario.o
- .mdebug        0x0000000000000000    0x22d40 build/us/src/game/mario.o
+ .mdebug        0x0000000000000000    0x22f40 build/us/src/game/mario.o
  .options       0x0000000000000000       0x20 build/us/src/game/mario_step.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/mario_step.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/game/mario_step.o
- .mdebug        0x0000000000000000     0xd9d8 build/us/src/game/mario_step.o
+ .mdebug        0x0000000000000000     0xdb48 build/us/src/game/mario_step.o
  .options       0x0000000000000000       0x20 build/us/src/game/mario_actions_cutscene.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/mario_actions_cutscene.o
  .gptab.data    0x0000000000000000       0x48 build/us/src/game/mario_actions_cutscene.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/game/mario_actions_cutscene.o
- .mdebug        0x0000000000000000    0x249d8 build/us/src/game/mario_actions_cutscene.o
+ .mdebug        0x0000000000000000    0x24b48 build/us/src/game/mario_actions_cutscene.o
  .options       0x0000000000000000       0x20 build/us/src/game/mario_actions_automatic.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/mario_actions_automatic.o
- .mdebug        0x0000000000000000    0x1b4d0 build/us/src/game/mario_actions_automatic.o
+ .mdebug        0x0000000000000000    0x19aac build/us/src/game/mario_actions_automatic.o
  .options       0x0000000000000000       0x20 build/us/src/game/mario_actions_stationary.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/mario_actions_stationary.o
- .mdebug        0x0000000000000000    0x1c6b4 build/us/src/game/mario_actions_stationary.o
+ .mdebug        0x0000000000000000    0x1c76c build/us/src/game/mario_actions_stationary.o
  .options       0x0000000000000000       0x20 build/us/src/game/mario_actions_moving.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/mario_actions_moving.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/game/mario_actions_moving.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/mario_actions_moving.o
- .mdebug        0x0000000000000000    0x1cd40 build/us/src/game/mario_actions_moving.o
+ .mdebug        0x0000000000000000    0x1cedc build/us/src/game/mario_actions_moving.o
  .options       0x0000000000000000       0x20 build/us/src/game/mario_actions_airborne.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/mario_actions_airborne.o
- .mdebug        0x0000000000000000    0x15630 build/us/src/game/mario_actions_airborne.o
+ .mdebug        0x0000000000000000    0x156e0 build/us/src/game/mario_actions_airborne.o
  .options       0x0000000000000000       0x20 build/us/src/game/mario_actions_submerged.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/mario_actions_submerged.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/game/mario_actions_submerged.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/game/mario_actions_submerged.o
- .mdebug        0x0000000000000000    0x1de98 build/us/src/game/mario_actions_submerged.o
+ .mdebug        0x0000000000000000    0x1df5c build/us/src/game/mario_actions_submerged.o
  .options       0x0000000000000000       0x20 build/us/src/game/mario_actions_object.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/mario_actions_object.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/game/mario_actions_object.o
- .mdebug        0x0000000000000000     0xc578 build/us/src/game/mario_actions_object.o
+ .mdebug        0x0000000000000000     0xc6d0 build/us/src/game/mario_actions_object.o
  .options       0x0000000000000000       0x20 build/us/src/game/level_geo.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/level_geo.o
- .mdebug        0x0000000000000000    0x10db4 build/us/src/game/level_geo.o
+ .mdebug        0x0000000000000000    0x10e44 build/us/src/game/level_geo.o
  .options       0x0000000000000000       0x20 build/us/src/game/mario_misc.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/mario_misc.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/game/mario_misc.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/game/mario_misc.o
- .mdebug        0x0000000000000000    0x24058 build/us/src/game/mario_misc.o
+ .mdebug        0x0000000000000000    0x241fc build/us/src/game/mario_misc.o
  .options       0x0000000000000000       0x20 build/us/src/game/memory.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/memory.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/game/memory.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/game/memory.o
- .mdebug        0x0000000000000000     0xe66c build/us/src/game/memory.o
+ .mdebug        0x0000000000000000     0xe79c build/us/src/game/memory.o
  .options       0x0000000000000000       0x20 build/us/src/game/save_file.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/save_file.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/game/save_file.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/save_file.o
- .mdebug        0x0000000000000000    0x11868 build/us/src/game/save_file.o
+ .mdebug        0x0000000000000000    0x119d8 build/us/src/game/save_file.o
  .options       0x0000000000000000       0x20 build/us/src/game/area.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/area.o
  .gptab.data    0x0000000000000000       0x40 build/us/src/game/area.o
  .gptab.bss     0x0000000000000000       0x38 build/us/src/game/area.o
- .mdebug        0x0000000000000000    0x1c068 build/us/src/game/area.o
+ .mdebug        0x0000000000000000    0x1c2b0 build/us/src/game/area.o
  .options       0x0000000000000000       0x20 build/us/src/game/rendering_graph_node.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/rendering_graph_node.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/game/rendering_graph_node.o
  .gptab.bss     0x0000000000000000       0x38 build/us/src/game/rendering_graph_node.o
- .mdebug        0x0000000000000000    0x121fc build/us/src/game/rendering_graph_node.o
+ .mdebug        0x0000000000000000    0x12398 build/us/src/game/rendering_graph_node.o
  .options       0x0000000000000000       0x20 build/us/src/game/profiler.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/profiler.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/game/profiler.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/profiler.o
- .mdebug        0x0000000000000000     0xc7f4 build/us/src/game/profiler.o
+ .mdebug        0x0000000000000000     0xc910 build/us/src/game/profiler.o
  .data          0x0000000000000000        0x0 build/us/asm/decompress.o
  .bss           0x0000000000000000        0x0 build/us/asm/decompress.o
  .reginfo       0x0000000000000000       0x18 build/us/asm/decompress.o
@@ -333,111 +333,111 @@ Discarded input sections
  .reginfo       0x0000000000000000       0x18 build/us/src/game/camera.o
  .gptab.data    0x0000000000000000       0xe8 build/us/src/game/camera.o
  .gptab.bss     0x0000000000000000       0x78 build/us/src/game/camera.o
- .mdebug        0x0000000000000000    0x47e38 build/us/src/game/camera.o
+ .mdebug        0x0000000000000000    0x47020 build/us/src/game/camera.o
  .options       0x0000000000000000       0x20 build/us/src/game/debug_course.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/debug_course.o
- .mdebug        0x0000000000000000     0xa9b0 build/us/src/game/debug_course.o
+ .mdebug        0x0000000000000000     0xaa8c build/us/src/game/debug_course.o
  .options       0x0000000000000000       0x20 build/us/src/game/object_list_processor.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/object_list_processor.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/game/object_list_processor.o
  .gptab.bss     0x0000000000000000       0x48 build/us/src/game/object_list_processor.o
- .mdebug        0x0000000000000000    0x1db68 build/us/src/game/object_list_processor.o
+ .mdebug        0x0000000000000000    0x1dcb8 build/us/src/game/object_list_processor.o
  .options       0x0000000000000000       0x20 build/us/src/game/object_helpers.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/object_helpers.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/game/object_helpers.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/object_helpers.o
- .mdebug        0x0000000000000000    0x2dbbc build/us/src/game/object_helpers.o
+ .mdebug        0x0000000000000000    0x2dd5c build/us/src/game/object_helpers.o
  .options       0x0000000000000000       0x20 build/us/src/game/behavior_actions.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/behavior_actions.o
  .gptab.data    0x0000000000000000      0x100 build/us/src/game/behavior_actions.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/behavior_actions.o
- .mdebug        0x0000000000000000    0x4e8bc build/us/src/game/behavior_actions.o
+ .mdebug        0x0000000000000000    0x4f3ec build/us/src/game/behavior_actions.o
  .options       0x0000000000000000       0x20 build/us/src/game/platform_displacement.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/platform_displacement.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/game/platform_displacement.o
- .mdebug        0x0000000000000000     0xd7f8 build/us/src/game/platform_displacement.o
+ .mdebug        0x0000000000000000     0xd994 build/us/src/game/platform_displacement.o
  .options       0x0000000000000000       0x20 build/us/src/game/object_collision.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/object_collision.o
- .mdebug        0x0000000000000000     0xc2c4 build/us/src/game/object_collision.o
+ .mdebug        0x0000000000000000     0xc3f4 build/us/src/game/object_collision.o
  .options       0x0000000000000000       0x20 build/us/src/game/spawn_object.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/spawn_object.o
- .mdebug        0x0000000000000000    0x10d88 build/us/src/game/spawn_object.o
+ .mdebug        0x0000000000000000    0x10f50 build/us/src/game/spawn_object.o
  .options       0x0000000000000000       0x20 build/us/src/game/spawn_sound.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/spawn_sound.o
- .mdebug        0x0000000000000000     0xc564 build/us/src/game/spawn_sound.o
+ .mdebug        0x0000000000000000     0xc6ac build/us/src/game/spawn_sound.o
  .options       0x0000000000000000       0x20 build/us/src/game/debug.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/debug.o
  .gptab.data    0x0000000000000000       0x30 build/us/src/game/debug.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/debug.o
- .mdebug        0x0000000000000000    0x1015c build/us/src/game/debug.o
+ .mdebug        0x0000000000000000    0x10334 build/us/src/game/debug.o
  .options       0x0000000000000000       0x20 build/us/src/game/screen_transition.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/screen_transition.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/game/screen_transition.o
- .mdebug        0x0000000000000000    0x11724 build/us/src/game/screen_transition.o
+ .mdebug        0x0000000000000000    0x11884 build/us/src/game/screen_transition.o
  .options       0x0000000000000000       0x20 build/us/src/game/shadow.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/shadow.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/game/shadow.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/game/shadow.o
- .mdebug        0x0000000000000000    0x12fc0 build/us/src/game/shadow.o
+ .mdebug        0x0000000000000000    0x13188 build/us/src/game/shadow.o
  .options       0x0000000000000000       0x20 build/us/src/game/skybox.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/skybox.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/game/skybox.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/skybox.o
- .mdebug        0x0000000000000000     0xf704 build/us/src/game/skybox.o
+ .mdebug        0x0000000000000000     0xf860 build/us/src/game/skybox.o
  .options       0x0000000000000000       0x20 build/us/src/game/moving_texture.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/moving_texture.o
  .gptab.data    0x0000000000000000       0x50 build/us/src/game/moving_texture.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/moving_texture.o
- .mdebug        0x0000000000000000    0x15924 build/us/src/game/moving_texture.o
+ .mdebug        0x0000000000000000    0x159dc build/us/src/game/moving_texture.o
  .options       0x0000000000000000       0x20 build/us/src/game/transparent_texture.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/transparent_texture.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/game/transparent_texture.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/transparent_texture.o
- .mdebug        0x0000000000000000    0x10998 build/us/src/game/transparent_texture.o
+ .mdebug        0x0000000000000000    0x10b48 build/us/src/game/transparent_texture.o
  .options       0x0000000000000000       0x20 build/us/src/game/paintings.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/paintings.o
  .gptab.data    0x0000000000000000       0x30 build/us/src/game/paintings.o
  .gptab.bss     0x0000000000000000       0x28 build/us/src/game/paintings.o
- .mdebug        0x0000000000000000    0x13414 build/us/src/game/paintings.o
+ .mdebug        0x0000000000000000    0x13584 build/us/src/game/paintings.o
  .options       0x0000000000000000       0x20 build/us/src/game/print.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/print.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/game/print.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/print.o
- .mdebug        0x0000000000000000     0xf2d4 build/us/src/game/print.o
+ .mdebug        0x0000000000000000     0xf444 build/us/src/game/print.o
  .options       0x0000000000000000       0x20 build/us/src/game/ingame_menu.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/ingame_menu.o
  .gptab.data    0x0000000000000000       0xc0 build/us/src/game/ingame_menu.o
  .gptab.bss     0x0000000000000000       0x28 build/us/src/game/ingame_menu.o
- .mdebug        0x0000000000000000    0x19f38 build/us/src/game/ingame_menu.o
+ .mdebug        0x0000000000000000    0x19fcc build/us/src/game/ingame_menu.o
  .options       0x0000000000000000       0x20 build/us/src/game/envfx_snow.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/envfx_snow.o
  .gptab.data    0x0000000000000000       0x30 build/us/src/game/envfx_snow.o
  .gptab.bss     0x0000000000000000       0x28 build/us/src/game/envfx_snow.o
- .mdebug        0x0000000000000000     0xe218 build/us/src/game/envfx_snow.o
+ .mdebug        0x0000000000000000     0xe3dc build/us/src/game/envfx_snow.o
  .options       0x0000000000000000       0x20 build/us/src/game/envfx_bubbles.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/envfx_bubbles.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/game/envfx_bubbles.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/game/envfx_bubbles.o
- .mdebug        0x0000000000000000     0xe6e4 build/us/src/game/envfx_bubbles.o
+ .mdebug        0x0000000000000000     0xe8a8 build/us/src/game/envfx_bubbles.o
  .options       0x0000000000000000       0x20 build/us/src/game/macro_special_objects.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/macro_special_objects.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/game/macro_special_objects.o
- .mdebug        0x0000000000000000    0x1a3a8 build/us/src/game/macro_special_objects.o
+ .mdebug        0x0000000000000000    0x1a52c build/us/src/game/macro_special_objects.o
  .options       0x0000000000000000       0x20 build/us/src/game/hud.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/hud.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/game/hud.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/hud.o
- .mdebug        0x0000000000000000    0x12710 build/us/src/game/hud.o
+ .mdebug        0x0000000000000000    0x127a0 build/us/src/game/hud.o
  .options       0x0000000000000000       0x20 build/us/src/game/obj_behaviors.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/obj_behaviors.o
  .gptab.data    0x0000000000000000       0x40 build/us/src/game/obj_behaviors.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/obj_behaviors.o
- .mdebug        0x0000000000000000    0x39720 build/us/src/game/obj_behaviors.o
+ .mdebug        0x0000000000000000    0x39d14 build/us/src/game/obj_behaviors.o
  .options       0x0000000000000000       0x20 build/us/src/game/obj_behaviors_2.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/obj_behaviors_2.o
  .gptab.data    0x0000000000000000       0x70 build/us/src/game/obj_behaviors_2.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/game/obj_behaviors_2.o
- .mdebug        0x0000000000000000    0x3e500 build/us/src/game/obj_behaviors_2.o
+ .mdebug        0x0000000000000000    0x3ea94 build/us/src/game/obj_behaviors_2.o
  .options       0x0000000000000000       0x20 build/us/src/audio/something.o
  .reginfo       0x0000000000000000       0x18 build/us/src/audio/something.o
  .options       0x0000000000000000       0x20 build/us/src/audio/dac.o
@@ -446,10 +446,10 @@ Discarded input sections
  .reginfo       0x0000000000000000       0x18 build/us/src/audio/dma.o
  .options       0x0000000000000000       0x20 build/us/src/audio/playback.o
  .reginfo       0x0000000000000000       0x18 build/us/src/audio/playback.o
- .mdebug        0x0000000000000000     0x1aec build/us/src/audio/playback.o
+ .mdebug        0x0000000000000000     0x1b68 build/us/src/audio/playback.o
  .options       0x0000000000000000       0x20 build/us/src/audio/playback2.o
  .reginfo       0x0000000000000000       0x18 build/us/src/audio/playback2.o
- .mdebug        0x0000000000000000      0xa88 build/us/src/audio/playback2.o
+ .mdebug        0x0000000000000000      0xac4 build/us/src/audio/playback2.o
  .options       0x0000000000000000       0x20 build/us/src/audio/interface_1.o
  .reginfo       0x0000000000000000       0x18 build/us/src/audio/interface_1.o
  .options       0x0000000000000000       0x20 build/us/src/audio/interface_2.o
@@ -465,42 +465,42 @@ Discarded input sections
  .options       0x0000000000000000       0x20 build/us/src/audio/data.o
  .reginfo       0x0000000000000000       0x18 build/us/src/audio/data.o
  .gptab.data    0x0000000000000000       0x68 build/us/src/audio/data.o
- .mdebug        0x0000000000000000      0x5f8 build/us/src/audio/data.o
+ .mdebug        0x0000000000000000      0x60c build/us/src/audio/data.o
  .options       0x0000000000000000       0x20 build/us/src/game/room.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/room.o
  .gptab.bss     0x0000000000000000       0x30 build/us/src/game/room.o
- .mdebug        0x0000000000000000     0xad88 build/us/src/game/room.o
+ .mdebug        0x0000000000000000     0xae78 build/us/src/game/room.o
  .options       0x0000000000000000       0x20 build/us/src/engine/math_util.o
  .reginfo       0x0000000000000000       0x18 build/us/src/engine/math_util.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/engine/math_util.o
- .mdebug        0x0000000000000000     0xe684 build/us/src/engine/math_util.o
+ .mdebug        0x0000000000000000     0xe7a0 build/us/src/engine/math_util.o
  .options       0x0000000000000000       0x20 build/us/src/engine/graph_node.o
  .reginfo       0x0000000000000000       0x18 build/us/src/engine/graph_node.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/engine/graph_node.o
- .mdebug        0x0000000000000000    0x11f04 build/us/src/engine/graph_node.o
+ .mdebug        0x0000000000000000    0x12060 build/us/src/engine/graph_node.o
  .options       0x0000000000000000       0x20 build/us/src/engine/geo_layout.o
  .reginfo       0x0000000000000000       0x18 build/us/src/engine/geo_layout.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/engine/geo_layout.o
  .gptab.bss     0x0000000000000000       0x38 build/us/src/engine/geo_layout.o
- .mdebug        0x0000000000000000     0xf420 build/us/src/engine/geo_layout.o
+ .mdebug        0x0000000000000000     0xf550 build/us/src/engine/geo_layout.o
  .options       0x0000000000000000       0x20 build/us/src/engine/level_script.o
  .reginfo       0x0000000000000000       0x18 build/us/src/engine/level_script.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/engine/level_script.o
  .gptab.bss     0x0000000000000000       0x28 build/us/src/engine/level_script.o
- .mdebug        0x0000000000000000    0x19780 build/us/src/engine/level_script.o
+ .mdebug        0x0000000000000000    0x199dc build/us/src/engine/level_script.o
  .options       0x0000000000000000       0x20 build/us/src/engine/surface_collision.o
  .reginfo       0x0000000000000000       0x18 build/us/src/engine/surface_collision.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/engine/surface_collision.o
- .mdebug        0x0000000000000000    0x124e4 build/us/src/engine/surface_collision.o
+ .mdebug        0x0000000000000000    0x12588 build/us/src/engine/surface_collision.o
  .options       0x0000000000000000       0x20 build/us/src/engine/surface_load.o
  .reginfo       0x0000000000000000       0x18 build/us/src/engine/surface_load.o
  .gptab.bss     0x0000000000000000       0x30 build/us/src/engine/surface_load.o
- .mdebug        0x0000000000000000    0x18f40 build/us/src/engine/surface_load.o
+ .mdebug        0x0000000000000000    0x19104 build/us/src/engine/surface_load.o
  .options       0x0000000000000000       0x20 build/us/src/engine/behavior_script.o
  .reginfo       0x0000000000000000       0x18 build/us/src/engine/behavior_script.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/engine/behavior_script.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/engine/behavior_script.o
- .mdebug        0x0000000000000000    0x1c2a8 build/us/src/engine/behavior_script.o
+ .mdebug        0x0000000000000000    0x1c468 build/us/src/engine/behavior_script.o
  .text          0x0000000000000000        0x0 build/us/data/trig_tables.o
  .bss           0x0000000000000000        0x0 build/us/data/trig_tables.o
  .reginfo       0x0000000000000000       0x18 build/us/data/trig_tables.o
@@ -886,90 +886,90 @@ Discarded input sections
  .options       0x0000000000000000       0x20 build/us/src/game/level_select_menu.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/level_select_menu.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/game/level_select_menu.o
- .mdebug        0x0000000000000000     0xf45c build/us/src/game/level_select_menu.o
+ .mdebug        0x0000000000000000     0xf60c build/us/src/game/level_select_menu.o
  .options       0x0000000000000000       0x20 build/us/src/game/intro_geo.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/intro_geo.o
  .gptab.data    0x0000000000000000       0x38 build/us/src/game/intro_geo.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/game/intro_geo.o
- .mdebug        0x0000000000000000     0xeaf8 build/us/src/game/intro_geo.o
+ .mdebug        0x0000000000000000     0xec3c build/us/src/game/intro_geo.o
  .options       0x0000000000000000       0x20 build/us/src/game/file_select.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/file_select.o
  .gptab.data    0x0000000000000000       0xb0 build/us/src/game/file_select.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/game/file_select.o
- .mdebug        0x0000000000000000    0x1f5a8 build/us/src/game/file_select.o
+ .mdebug        0x0000000000000000    0x1f784 build/us/src/game/file_select.o
  .options       0x0000000000000000       0x20 build/us/src/game/star_select.o
  .reginfo       0x0000000000000000       0x18 build/us/src/game/star_select.o
  .gptab.data    0x0000000000000000       0x30 build/us/src/game/star_select.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/game/star_select.o
- .mdebug        0x0000000000000000    0x116ac build/us/src/game/star_select.o
+ .mdebug        0x0000000000000000    0x11888 build/us/src/game/star_select.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/gd_main.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/gd_main.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/goddard/gd_main.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/goddard/gd_main.o
- .mdebug        0x0000000000000000    0x107ec build/us/src/goddard/gd_main.o
+ .mdebug        0x0000000000000000    0x10948 build/us/src/goddard/gd_main.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/gd_memory.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/gd_memory.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/goddard/gd_memory.o
- .mdebug        0x0000000000000000    0x100c0 build/us/src/goddard/gd_memory.o
+ .mdebug        0x0000000000000000    0x101f0 build/us/src/goddard/gd_memory.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/mhead_sfx.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/mhead_sfx.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/goddard/mhead_sfx.o
- .mdebug        0x0000000000000000     0xaec0 build/us/src/goddard/mhead_sfx.o
+ .mdebug        0x0000000000000000     0xafb0 build/us/src/goddard/mhead_sfx.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/draw_objects.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/draw_objects.o
  .gptab.data    0x0000000000000000       0x40 build/us/src/goddard/draw_objects.o
  .gptab.bss     0x0000000000000000       0x48 build/us/src/goddard/draw_objects.o
- .mdebug        0x0000000000000000    0x1712c build/us/src/goddard/draw_objects.o
+ .mdebug        0x0000000000000000    0x17250 build/us/src/goddard/draw_objects.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/mario_head_1.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/mario_head_1.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/goddard/mario_head_1.o
  .gptab.bss     0x0000000000000000       0x38 build/us/src/goddard/mario_head_1.o
- .mdebug        0x0000000000000000    0x17200 build/us/src/goddard/mario_head_1.o
+ .mdebug        0x0000000000000000    0x17360 build/us/src/goddard/mario_head_1.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/mario_head_2.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/mario_head_2.o
  .gptab.bss     0x0000000000000000       0x20 build/us/src/goddard/mario_head_2.o
- .mdebug        0x0000000000000000    0x1049c build/us/src/goddard/mario_head_2.o
+ .mdebug        0x0000000000000000    0x1060c build/us/src/goddard/mario_head_2.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/mario_head_3.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/mario_head_3.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/goddard/mario_head_3.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/goddard/mario_head_3.o
- .mdebug        0x0000000000000000    0x11e04 build/us/src/goddard/mario_head_3.o
+ .mdebug        0x0000000000000000    0x11efc build/us/src/goddard/mario_head_3.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlist_proc.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlist_proc.o
  .gptab.data    0x0000000000000000       0x20 build/us/src/goddard/dynlist_proc.o
  .gptab.bss     0x0000000000000000       0x38 build/us/src/goddard/dynlist_proc.o
- .mdebug        0x0000000000000000    0x19a9c build/us/src/goddard/dynlist_proc.o
+ .mdebug        0x0000000000000000    0x18b4c build/us/src/goddard/dynlist_proc.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/old_obj_fn.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/old_obj_fn.o
  .gptab.bss     0x0000000000000000       0x28 build/us/src/goddard/old_obj_fn.o
- .mdebug        0x0000000000000000    0x11044 build/us/src/goddard/old_obj_fn.o
+ .mdebug        0x0000000000000000    0x11100 build/us/src/goddard/old_obj_fn.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/profiler_utils.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/profiler_utils.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/goddard/profiler_utils.o
  .gptab.bss     0x0000000000000000       0x38 build/us/src/goddard/profiler_utils.o
- .mdebug        0x0000000000000000    0x12d30 build/us/src/goddard/profiler_utils.o
+ .mdebug        0x0000000000000000    0x12e60 build/us/src/goddard/profiler_utils.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/joint_fns.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/joint_fns.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/goddard/joint_fns.o
  .gptab.bss     0x0000000000000000       0x30 build/us/src/goddard/joint_fns.o
- .mdebug        0x0000000000000000    0x15098 build/us/src/goddard/joint_fns.o
+ .mdebug        0x0000000000000000    0x151cc build/us/src/goddard/joint_fns.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/skin_fns.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/skin_fns.o
  .gptab.bss     0x0000000000000000       0x18 build/us/src/goddard/skin_fns.o
- .mdebug        0x0000000000000000    0x12754 build/us/src/goddard/skin_fns.o
+ .mdebug        0x0000000000000000    0x12904 build/us/src/goddard/skin_fns.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/matrix_fns.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/matrix_fns.o
- .mdebug        0x0000000000000000    0x13168 build/us/src/goddard/matrix_fns.o
+ .mdebug        0x0000000000000000    0x132ac build/us/src/goddard/matrix_fns.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/half_6.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/half_6.o
  .gptab.data    0x0000000000000000       0x58 build/us/src/goddard/half_6.o
  .gptab.bss     0x0000000000000000       0x60 build/us/src/goddard/half_6.o
- .mdebug        0x0000000000000000    0x17a54 build/us/src/goddard/half_6.o
+ .mdebug        0x0000000000000000    0x17b70 build/us/src/goddard/half_6.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/mario_head_6.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/mario_head_6.o
  .gptab.data    0x0000000000000000       0x30 build/us/src/goddard/mario_head_6.o
  .gptab.bss     0x0000000000000000       0xa8 build/us/src/goddard/mario_head_6.o
- .mdebug        0x0000000000000000    0x23198 build/us/src/goddard/mario_head_6.o
+ .mdebug        0x0000000000000000    0x23324 build/us/src/goddard/mario_head_6.o
  .text          0x0000000000000000        0x0 build/us/data/goddard_tex_dl.o
  .data          0x0000000000000000        0x0 build/us/data/goddard_tex_dl.o
  .bss           0x0000000000000000        0x0 build/us/data/goddard_tex_dl.o
@@ -1016,55 +1016,55 @@ Discarded input sections
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/dynlist_test_cube.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/dynlist_test_cube.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/goddard/dynlists/dynlist_test_cube.o
- .mdebug        0x0000000000000000     0xf298 build/us/src/goddard/dynlists/dynlist_test_cube.o
+ .mdebug        0x0000000000000000     0xf314 build/us/src/goddard/dynlists/dynlist_test_cube.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/dynlist_unused.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/dynlist_unused.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/goddard/dynlists/dynlist_unused.o
- .mdebug        0x0000000000000000     0xf28c build/us/src/goddard/dynlists/dynlist_unused.o
+ .mdebug        0x0000000000000000     0xf308 build/us/src/goddard/dynlists/dynlist_unused.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/dynlist_mario_face.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/dynlist_mario_face.o
  .gptab.data    0x0000000000000000       0x30 build/us/src/goddard/dynlists/dynlist_mario_face.o
- .mdebug        0x0000000000000000     0xf388 build/us/src/goddard/dynlists/dynlist_mario_face.o
+ .mdebug        0x0000000000000000     0xf404 build/us/src/goddard/dynlists/dynlist_mario_face.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/dynlists_mario_eyes.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/dynlists_mario_eyes.o
  .gptab.data    0x0000000000000000       0x30 build/us/src/goddard/dynlists/dynlists_mario_eyes.o
- .mdebug        0x0000000000000000     0xf4c8 build/us/src/goddard/dynlists/dynlists_mario_eyes.o
+ .mdebug        0x0000000000000000     0xf544 build/us/src/goddard/dynlists/dynlists_mario_eyes.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/dynlists_mario_eyebrows_mustache.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/dynlists_mario_eyebrows_mustache.o
  .gptab.data    0x0000000000000000       0x40 build/us/src/goddard/dynlists/dynlists_mario_eyebrows_mustache.o
- .mdebug        0x0000000000000000     0xf650 build/us/src/goddard/dynlists/dynlists_mario_eyebrows_mustache.o
+ .mdebug        0x0000000000000000     0xf6cc build/us/src/goddard/dynlists/dynlists_mario_eyebrows_mustache.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/dynlist_mario_master.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/dynlist_mario_master.o
  .gptab.data    0x0000000000000000       0x18 build/us/src/goddard/dynlists/dynlist_mario_master.o
- .mdebug        0x0000000000000000     0xfd44 build/us/src/goddard/dynlists/dynlist_mario_master.o
+ .mdebug        0x0000000000000000     0xfdec build/us/src/goddard/dynlists/dynlist_mario_master.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/anim_mario_mustache_right.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/anim_mario_mustache_right.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/goddard/dynlists/anim_mario_mustache_right.o
- .mdebug        0x0000000000000000     0xf3e8 build/us/src/goddard/dynlists/anim_mario_mustache_right.o
+ .mdebug        0x0000000000000000     0xf4f0 build/us/src/goddard/dynlists/anim_mario_mustache_right.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/anim_mario_mustache_left.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/anim_mario_mustache_left.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/goddard/dynlists/anim_mario_mustache_left.o
- .mdebug        0x0000000000000000     0xf3e0 build/us/src/goddard/dynlists/anim_mario_mustache_left.o
+ .mdebug        0x0000000000000000     0xf4e8 build/us/src/goddard/dynlists/anim_mario_mustache_left.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/anim_mario_lips_1.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/anim_mario_lips_1.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/goddard/dynlists/anim_mario_lips_1.o
- .mdebug        0x0000000000000000     0xf3b8 build/us/src/goddard/dynlists/anim_mario_lips_1.o
+ .mdebug        0x0000000000000000     0xf4c0 build/us/src/goddard/dynlists/anim_mario_lips_1.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/anim_mario_lips_2.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/anim_mario_lips_2.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/goddard/dynlists/anim_mario_lips_2.o
- .mdebug        0x0000000000000000     0xf3b8 build/us/src/goddard/dynlists/anim_mario_lips_2.o
+ .mdebug        0x0000000000000000     0xf4c0 build/us/src/goddard/dynlists/anim_mario_lips_2.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/anim_mario_eyebrows_1.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/anim_mario_eyebrows_1.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/goddard/dynlists/anim_mario_eyebrows_1.o
- .mdebug        0x0000000000000000     0xf3d0 build/us/src/goddard/dynlists/anim_mario_eyebrows_1.o
+ .mdebug        0x0000000000000000     0xf4d8 build/us/src/goddard/dynlists/anim_mario_eyebrows_1.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/anim_group_1.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/anim_group_1.o
  .gptab.data    0x0000000000000000       0x28 build/us/src/goddard/dynlists/anim_group_1.o
- .mdebug        0x0000000000000000     0xfa0c build/us/src/goddard/dynlists/anim_group_1.o
+ .mdebug        0x0000000000000000     0xfb10 build/us/src/goddard/dynlists/anim_group_1.o
  .options       0x0000000000000000       0x20 build/us/src/goddard/dynlists/anim_group_2.o
  .reginfo       0x0000000000000000       0x18 build/us/src/goddard/dynlists/anim_group_2.o
  .gptab.data    0x0000000000000000       0x38 build/us/src/goddard/dynlists/anim_group_2.o
- .mdebug        0x0000000000000000     0xf988 build/us/src/goddard/dynlists/anim_group_2.o
+ .mdebug        0x0000000000000000     0xfa8c build/us/src/goddard/dynlists/anim_group_2.o
  .text          0x0000000000000000        0x0 build/us/bin/menu/header.o
  .data          0x0000000000000000        0x0 build/us/bin/menu/header.o
  .bss           0x0000000000000000        0x0 build/us/bin/menu/header.o
@@ -1586,6 +1586,14 @@ Discarded input sections
  .pdr           0x0000000000000000        0x0 build/us/assets/music_data.sbk.o
  .gnu.attributes
                 0x0000000000000000       0x10 build/us/assets/music_data.sbk.o
+ .text          0x0000000000000000      0x760 build/us/src/engine/gravity.o
+ .data          0x0000000000000000       0xb0 build/us/src/engine/gravity.o
+ .bss           0x0000000000000000       0xb0 build/us/src/engine/gravity.o
+ .options       0x0000000000000000       0x20 build/us/src/engine/gravity.o
+ .reginfo       0x0000000000000000       0x18 build/us/src/engine/gravity.o
+ .gptab.data    0x0000000000000000       0x20 build/us/src/engine/gravity.o
+ .gptab.bss     0x0000000000000000       0x18 build/us/src/engine/gravity.o
+ .mdebug        0x0000000000000000     0xdc34 build/us/src/engine/gravity.o
  .text          0x0000000000000000        0x0 build/us/actors/group7.o
  .data          0x0000000000000000        0x0 build/us/actors/group7.o
  .bss           0x0000000000000000        0x0 build/us/actors/group7.o
@@ -2491,7 +2499,7 @@ Linker script and memory map
  .text          0x0000000080250940     0x4740 build/us/src/game/mario.o
                 0x0000000080250940                func_80250770
                 0x000000008025097c                func_802507AC
-                0x00000000802509b8                set_mario_animation
+                0x00000000802509b8                func_802507E8
                 0x0000000080250b04                func_80250934
                 0x0000000080250c7c                func_80250AAC
                 0x0000000080250d38                func_80250B68
@@ -2727,9 +2735,9 @@ Linker script and memory map
                 0x0000000080262398                func_80261F8C
                 0x0000000080262490                act_slide_kick_slide_stop
                 0x0000000080262530                act_start_crouching
-                0x0000000080262650                act_stop_crouching
+                0x0000000080262650                func_80262244
                 0x0000000080262770                act_start_crawling
-                0x0000000080262890                act_stop_crawling
+                0x0000000080262890                func_80262484
                 0x0000000080262980                func_80262574
                 0x0000000080262bc4                func_802627B8
                 0x0000000080262c34                func_80262828
@@ -3133,17 +3141,17 @@ Linker script and memory map
                 0x000000008027f4e0                decompress
  build/us/src/game/camera.o(.text)
  .text          0x000000008027f590    0x1d1e0 build/us/src/game/camera.o
-                0x000000008027f590                set_camera_shake
-                0x000000008027f8b8                set_camera_shake_2
+                0x000000008027f590                func_8027EFE0
+                0x000000008027f8b8                func_8027F308
                 0x000000008027f9f0                func_8027F440
-                0x000000008027fb74                unused_set_camera_shake
-                0x000000008027fc18                return_height_above_floor
-                0x000000008027fe20                return_mario_pos_and_pos_rotated
+                0x000000008027fb74                unused_8027F5C4
+                0x000000008027fc18                func_8027F668
+                0x000000008027fe20                func_8027F870
                 0x000000008027ff00                unused_8027F950
                 0x000000008027fff8                func_8027FA48
                 0x0000000080280368                func_8027FDB8
                 0x00000000802804f4                func_8027FF44
-                0x00000000802806a4                find_in_bounds_yaw_wdw_bob_thi
+                0x00000000802806a4                func_802800F4
                 0x0000000080280810                CameraChange01
                 0x0000000080280970                CameraChange0E
                 0x0000000080280b00                func_80280550
@@ -3151,7 +3159,7 @@ Linker script and memory map
                 0x00000000802813bc                func_80280E0C
                 0x00000000802813ec                func_80280E3C
                 0x000000008028146c                func_80280EBC
-                0x0000000080281588                update_bowser_level_camera
+                0x0000000080281588                func_80280FD8
                 0x00000000802816a0                CameraChange02
                 0x00000000802817fc                func_8028124C
                 0x0000000080281904                CameraChange0C
@@ -3165,9 +3173,9 @@ Linker script and memory map
                 0x0000000080282d78                CameraChange03
                 0x0000000080283340                func_80282D90
                 0x0000000080283578                func_80282FC8
-                0x00000000802839e4                update_behind_mario_camera
-                0x0000000080283a18                camera_change_nop
-                0x0000000080283a34                update_water_surface_camera
+                0x00000000802839e4                func_80283434
+                0x0000000080283a18                CameraChange08
+                0x0000000080283a34                func_80283484
                 0x0000000080283a68                CameraChange040710
                 0x0000000080283af8                func_80283548
                 0x0000000080284cb8                func_80284708
@@ -3180,25 +3188,25 @@ Linker script and memory map
                 0x00000000802851dc                func_80284C2C
                 0x000000008028526c                func_80284CBC
                 0x00000000802852f4                func_80284D44
-                0x0000000080285370                exit_c_up_mode
+                0x0000000080285370                func_80284DC0
                 0x0000000080285808                CameraChange06
                 0x00000000802858a4                func_802852F4
                 0x0000000080285a2c                func_8028547C
-                0x0000000080285d20                update_c_up_camera
+                0x0000000080285d20                func_80285770
                 0x0000000080285ed8                CameraChange0A
-                0x0000000080285f60                update_cannon_camera
+                0x0000000080285f60                func_802859B0
                 0x000000008028603c                func_80285A8C
-                0x0000000080286088                set_camera_preset
+                0x0000000080286088                func_80285AD8
                 0x0000000080286188                func_80285BD8
                 0x0000000080286420                func_80285E70
-                0x00000000802868f8                update_camera
-                0x0000000080286f68                reset_camera
-                0x000000008028724c                init_camera
+                0x00000000802868f8                func_80286348
+                0x0000000080286f68                func_802869B8
+                0x000000008028724c                func_80286C9C
                 0x00000000802879ec                func_80287404
-                0x0000000080287bc4                select_mario_cam_mode
+                0x0000000080287bc4                func_802875DC
                 0x0000000080287be0                func_802875F8
                 0x0000000080287cb8                func_802876D0
-                0x0000000080287d30                geo_camera_preset_and_pos
+                0x0000000080287d30                Geo0F_80287D30
                 0x0000000080287dc0                dummy_802877D8
                 0x0000000080287dd4                dummy_802877EC
                 0x0000000080287de8                vec3f_sub
@@ -3207,49 +3215,49 @@ Linker script and memory map
                 0x0000000080287e78                unused_object_angle_to_vec3s
                 0x0000000080287ea0                func_802878B8
                 0x00000000802882e4                func_80287CFC
-                0x0000000080288624                select_or_activate_mario_cam
-                0x0000000080288718                test_or_set_mario_cam_active
-                0x0000000080288888                move_camera_for_cutscene
+                0x0000000080288624                func_8028803C
+                0x0000000080288718                func_80288130
+                0x0000000080288888                func_802882A0
                 0x00000000802889b0                func_802883C8
-                0x0000000080288ce4                find_c_buttons_pressed
+                0x0000000080288ce4                func_802886FC
                 0x0000000080288e68                update_camera_status
-                0x0000000080288f5c                find_and_return_count_wall_collisions
-                0x0000000080289198                vec3f_compare
-                0x0000000080289214                vec3f_rotate_into_yaw_range
-                0x00000000802892d8                is_within_100_units_of_mario
+                0x0000000080288f5c                func_80288974
+                0x0000000080289198                func_80288BB0
+                0x0000000080289214                func_80288C2C
+                0x00000000802892d8                func_80288CF0
                 0x000000008028935c                func_80288D74
-                0x00000000802893f4                approach_f32_exponential_bool
-                0x0000000080289488                approach_f32_exponential
-                0x00000000802894b4                approach_s16_exponential_bool
-                0x000000008028956c                approach_s16_exponential
+                0x00000000802893f4                approach_f32_exponential
+                0x0000000080289488                approach_f32_exponential_2
+                0x00000000802894b4                approach_s16_exponential
+                0x000000008028956c                approach_s16_exponential_2
                 0x0000000080289610                approach_vec3f_exponential
                 0x0000000080289684                func_8028909C
                 0x00000000802896f8                approach_vec3s_exponential
-                0x000000008028976c                camera_approach_s16_symmetric_bool
-                0x000000008028984c                camera_approach_s16_symmetric
+                0x000000008028976c                func_80289184
+                0x000000008028984c                func_80289264
                 0x000000008028993c                func_80289354
-                0x00000000802899cc                camera_approach_f32_symmetric_bool
-                0x0000000080289b0c                camera_approach_f32_symmetric
+                0x00000000802899cc                func_802893E4
+                0x0000000080289b0c                func_80289524
                 0x0000000080289c00                func_80289618
                 0x0000000080289d20                func_80289738
-                0x0000000080289f88                clamp_positions_and_find_yaw_angle
+                0x0000000080289f88                func_802899A0
                 0x000000008028a080                func_80289A98
-                0x000000008028a0f4                is_pos_less_than_bounds
-                0x000000008028a4ec                is_behind_surface
+                0x000000008028a0f4                func_80289B0C
+                0x000000008028a4ec                func_80289F04
                 0x000000008028a6bc                func_8028A0D4
-                0x000000008028a7ec                is_mario_behind_surface
-                0x000000008028a834                scale_along_line
-                0x000000008028a8e8                check_if_vector_fits_in_bounds
-                0x000000008028aa28                calculate_verticle_angle
-                0x000000008028aad8                calculate_yaw
-                0x000000008028ab60                calculate_angles
-                0x000000008028ac28                calc_abs_dist
-                0x000000008028accc                calc_hor_dist
-                0x000000008028ad4c                rotate_in_xz
-                0x000000008028ae1c                rotate_in_yz
-                0x000000008028aef0                set_camera_pitch_shake
-                0x000000008028af4c                set_camera_yaw_shake
-                0x000000008028b00c                set_camera_roll_shake
+                0x000000008028a7ec                func_8028A204
+                0x000000008028a834                func_8028A24C
+                0x000000008028a8e8                func_8028A300
+                0x000000008028aa28                func_8028A440
+                0x000000008028aad8                func_8028A4F0
+                0x000000008028ab60                func_8028A578
+                0x000000008028ac28                func_8028A640
+                0x000000008028accc                func_8028A6E4
+                0x000000008028ad4c                func_8028A764
+                0x000000008028ae1c                func_8028A834
+                0x000000008028aef0                func_8028A908
+                0x000000008028af4c                func_8028A964
+                0x000000008028b00c                func_8028AA24
                 0x000000008028b068                func_8028AA80
                 0x000000008028b11c                Unknown8028AB34
                 0x000000008028b1d0                func_8028ABE8
@@ -3259,39 +3267,39 @@ Linker script and memory map
                 0x000000008028b50c                func_8028AF24
                 0x000000008028b724                func_8028B13C
                 0x000000008028b754                func_8028B16C
-                0x000000008028b784                play_camera_buzz_if_cdown
-                0x000000008028b7c4                play_camera_buzz_if_cbutton
-                0x000000008028b804                play_camera_buzz_if_c_sideways
-                0x000000008028b850                play_sound_cbutton_up
-                0x000000008028b884                play_sound_cbutton_down
-                0x000000008028b8b8                play_sound_cbutton_side
-                0x000000008028b8ec                play_sound_button_change_blocked
-                0x000000008028b920                play_sound_rbutton_changed
+                0x000000008028b784                func_8028B19C
+                0x000000008028b7c4                func_8028B1DC
+                0x000000008028b804                func_8028B21C
+                0x000000008028b850                func_8028B268
+                0x000000008028b884                func_8028B29C
+                0x000000008028b8b8                func_8028B2D0
+                0x000000008028b8ec                func_8028B304
+                0x000000008028b920                func_8028B338
                 0x000000008028b954                func_8028B36C
                 0x000000008028b9c4                func_8028B3DC
-                0x000000008028bd34                stop_mario
-                0x000000008028bd98                handle_c_button_movement
+                0x000000008028bd34                StopMario
+                0x000000008028bd98                func_8028B7A4
                 0x000000008028c038                func_8028BA38
-                0x000000008028c13c                set_camera_cutscene_table
-                0x000000008028c18c                determine_star_fadeout_cutscene_table
-                0x000000008028c26c                return_table_door_push_or_pull
-                0x000000008028c2c8                return_cutscene_table
-                0x000000008028c7a0                instant_warp_camera_update
-                0x000000008028c8f0                approach_camera_height
+                0x000000008028c13c                func_8028BB3C
+                0x000000008028c18c                func_8028BB8C
+                0x000000008028c26c                func_8028BC6C
+                0x000000008028c2c8                func_8028BCC8
+                0x000000008028c7a0                func_8028C1A0
+                0x000000008028c8f0                func_8028C2F0
                 0x000000008028c9ac                Unknown8028C3AC
-                0x000000008028c9cc                set_focus_position
-                0x000000008028cb08                unused_set_camera_position
+                0x000000008028c9cc                func_8028C3CC
+                0x000000008028cb08                unused_8028C508
                 0x000000008028cbf0                func_8028C5F0
                 0x000000008028cd94                func_8028C794
-                0x000000008028cdec                determine_pushing_or_pulling_door
+                0x000000008028cdec                func_8028C7EC
                 0x000000008028ce24                func_8028C824
                 0x000000008028d41c                Unknown8028CE1C
-                0x000000008028d44c                set_camera_preset_fixed_ref_point
-                0x000000008028d5ac                set_camera_preset_bowser_level
-                0x000000008028d5fc                set_camera_preset_boss_fight
-                0x000000008028d658                set_camera_preset_close_cam
-                0x000000008028d698                set_camera_preset_open_camera
-                0x000000008028d79c                parallel_tracking_init
+                0x000000008028d44c                func_8028CE4C
+                0x000000008028d5ac                func_8028CFAC
+                0x000000008028d5fc                func_8028CFFC
+                0x000000008028d658                func_8028D058
+                0x000000008028d698                func_8028D098
+                0x000000008028d79c                func_8028D19C
                 0x000000008028d888                func_8028D288
                 0x000000008028d92c                func_8028D32C
                 0x000000008028da18                CameraRR00
@@ -3299,7 +3307,7 @@ Linker script and memory map
                 0x000000008028daec                CameraRR02
                 0x000000008028db38                CameraRR0305
                 0x000000008028dbb4                CameraRR01
-                0x000000008028dbf4                CameraCotMC00
+                0x000000008028dbf4                CameraMetal00
                 0x000000008028dc1c                CameraSL00
                 0x000000008028dc70                CameraSL01
                 0x000000008028dca4                func_8028D6A4
@@ -3325,45 +3333,45 @@ Linker script and memory map
                 0x000000008028e38c                CameraInside00
                 0x000000008028e3b8                CameraInside0E
                 0x000000008028e3f0                CameraInside0F
-                0x000000008028e41c                bbh_room_6_camera
+                0x000000008028e41c                CameraBBH2B2C
                 0x000000008028e450                CameraBBH24
                 0x000000008028e47c                CameraBBH2E2F
-                0x000000008028e524                bbh_room_1_camera
+                0x000000008028e524                CameraBBH020C
                 0x000000008028e55c                CameraBBH01
-                0x000000008028e594                bbh_room_2_lower_camera
-                0x000000008028e5cc                bbh_room_4_camera
-                0x000000008028e604                bbh_room_8_camera
-                0x000000008028e63c                bbh_room_5_library_camera
-                0x000000008028e674                bbh_room_5_library_to_hidden_transition
-                0x000000008028e6c4                bbh_room_5_hidden_to_library_transition
-                0x000000008028e714                bbh_room_5_hidden_camera
-                0x000000008028e758                bbh_room_3_camera
-                0x000000008028e790                bbh_room_7_mr_i_camera
-                0x000000008028e7c8                bbh_room_7_mr_i_to_coffins_transition
-                0x000000008028e818                bbh_room_7_coffins_to_mr_i_transition
+                0x000000008028e594                CameraBBH0D0F
+                0x000000008028e5cc                CameraBBH1011
+                0x000000008028e604                CameraBBH12
+                0x000000008028e63c                CameraBBH1314
+                0x000000008028e674                CameraBBH15
+                0x000000008028e6c4                CameraBBH16
+                0x000000008028e714                CameraBBH17
+                0x000000008028e758                CameraBBH18
+                0x000000008028e790                CameraBBH28
+                0x000000008028e7c8                CameraBBH29
+                0x000000008028e818                CameraBBH2A
                 0x000000008028e868                CameraBBH3033
                 0x000000008028e8a0                CameraBBH34
                 0x000000008028e8cc                CameraBBH38
-                0x000000008028e930                bbh_room_12_upper_camera
+                0x000000008028e930                CameraBBH393A
                 0x000000008028e974                CameraBBH00
-                0x000000008028e9a0                bbh_room_2_library_camera
-                0x000000008028e9d8                bbh_room_2_library_to_trapdoor_transition
-                0x000000008028ea28                bbh_room_2_trapdoor_camera
-                0x000000008028ea60                bbh_room_2_trapdoor_transition
-                0x000000008028eab0                bbh_room_9_attic_camera
-                0x000000008028eae8                bbh_room_9_attic_transition
-                0x000000008028eb38                bbh_room_9_mr_i_transition
-                0x000000008028eb88                bbh_room_13_balcony_camera
-                0x000000008028ebc0                bbh_room_0_camera
+                0x000000008028e9a0                CameraBBH1A1B
+                0x000000008028e9d8                CameraBBH1C
+                0x000000008028ea28                CameraBBH1E
+                0x000000008028ea60                CameraBBH1D
+                0x000000008028eab0                CameraBBH1F20
+                0x000000008028eae8                CameraBBH21
+                0x000000008028eb38                CameraBBH22
+                0x000000008028eb88                CameraBBH23
+                0x000000008028ebc0                CameraBBH3536
                 0x000000008028ec04                CameraCCM00
                 0x000000008028ec2c                CameraCCM01
-                0x000000008028ec58                surface_type_presets
-                0x000000008028ed30                set_preset_via_surface_or_input
-                0x000000008028ed98                surface_type_presets_thi
-                0x000000008028eeb0                level_specific_camera_update
-                0x000000008028f670                resolve_geometry_collisions
+                0x000000008028ec58                func_8028E634
+                0x000000008028ed30                func_8028E70C
+                0x000000008028ed98                func_8028E774
+                0x000000008028eeb0                func_8028E88C
+                0x000000008028f670                func_8028F04C
                 0x000000008028f914                func_8028F2F0
-                0x000000008028fc9c                find_mario_relative_geometry
+                0x000000008028fc9c                func_8028F678
                 0x000000008028fe24                func_8028F800
                 0x000000008028fe58                func_8028F834
                 0x000000008028fe84                unused_8028F860
@@ -3373,7 +3381,7 @@ Linker script and memory map
                 0x0000000080290098                func_8028FA74
                 0x00000000802900e0                func_8028FABC
                 0x0000000080290104                func_8028FAE0
-                0x0000000080290168                cap_switch_save
+                0x0000000080290168                func_8028FB44
                 0x00000000802901a4                func_8028FB80
                 0x00000000802901fc                func_8028FBD8
                 0x00000000802903b8                func_8028FD94
@@ -3383,7 +3391,7 @@ Linker script and memory map
                 0x00000000802904a8                CutsceneIntroPeach0_2
                 0x00000000802904e4                CutsceneIntroPeach2_1
                 0x000000008029051c                func_8028FEDC
-                0x000000008029053c                move_credits_camera
+                0x000000008029053c                func_8028FEFC
                 0x0000000080290784                func_80290144
                 0x00000000802907f4                func_802901B4
                 0x0000000080290864                func_80290224
@@ -3484,7 +3492,7 @@ Linker script and memory map
                 0x00000000802936dc                CutsceneEnterBowserPlatform0_1
                 0x0000000080293708                func_802930C8
                 0x0000000080293734                CutsceneEnterBowserPlatform0_2
-                0x00000000802937e8                bowser_fight_intro_dialogue
+                0x00000000802937e8                CutsceneEnterBowserPlatform1_1
                 0x000000008029386c                CutsceneEnterBowserPlatform1
                 0x00000000802938c8                CutsceneEnterBowserPlatform2
                 0x0000000080293944                CutsceneEnterBowserPlatform0
@@ -3591,8 +3599,8 @@ Linker script and memory map
                 0x0000000080297384                CutsceneUnlockKeyDoor0_4
                 0x00000000802973b0                CutsceneUnlockKeyDoor0
                 0x0000000080297464                func_80296DDC
-                0x0000000080297560                peach_letter_text
-                0x000000008029758c                play_sound_peach_reading_letter
+                0x0000000080297560                CutsceneIntroPeach0_3
+                0x000000008029758c                CutsceneIntroPeach0_4
                 0x00000000802975c4                CutsceneIntroPeachCommon
                 0x000000008029762c                CutsceneIntroPeach4
                 0x00000000802976bc                CutsceneIntroPeach3_2
@@ -3600,8 +3608,8 @@ Linker script and memory map
                 0x0000000080297748                CutsceneIntroPeach0_1
                 0x0000000080297784                CutsceneIntroPeach3_1
                 0x00000000802977c8                CutsceneIntroPeach3_3
-                0x00000000802977f4                intro_pipe_exit_text
-                0x0000000080297820                play_sound_intro_turn_on_hud
+                0x00000000802977f4                CutsceneIntroPeach3_4
+                0x0000000080297820                CutsceneIntroPeach2_3
                 0x000000008029784c                CutsceneIntroPeach2
                 0x0000000080297908                CutsceneIntroPeach3
                 0x0000000080297a38                CutsceneIntroPeach1
@@ -3643,20 +3651,20 @@ Linker script and memory map
                 0x000000008029a41c                func_80299D00
                 0x000000008029a4d0                func_80299DB4
                 0x000000008029a5bc                unused_80299EA0
-                0x000000008029a5e8                set_fov_30
-                0x000000008029a60c                approach_fov_20
-                0x000000008029a64c                set_fov_45
-                0x000000008029a670                set_fov_29
-                0x000000008029a694                zoom_fov_30
-                0x000000008029a6f4                zoom_fov_for_sleep
+                0x000000008029a5e8                func_80299ECC
+                0x000000008029a60c                func_80299EF0
+                0x000000008029a64c                func_80299F30
+                0x000000008029a670                func_80299F54
+                0x000000008029a694                func_80299F78
+                0x000000008029a6f4                func_80299FD8
                 0x000000008029a81c                unused_8029A100
-                0x000000008029a858                approach_fov_30
-                0x000000008029a894                approach_fov_60
-                0x000000008029a8d0                approach_fov_45
-                0x000000008029a968                approach_fov_80
+                0x000000008029a858                func_8029A13C
+                0x000000008029a894                func_8029A178
+                0x000000008029a8d0                func_8029A1B4
+                0x000000008029a968                func_8029A24C
                 0x000000008029a9a4                func_8029A288
-                0x000000008029aa3c                geo_camera_fov
-                0x000000008029ab94                set_fov_function
+                0x000000008029aa3c                Geo0A_8029AA3C
+                0x000000008029ab94                func_8029A478
                 0x000000008029abb0                func_8029A494
                 0x000000008029ac30                func_8029A514
                 0x000000008029ad80                unused_8029A664
@@ -6222,8 +6230,8 @@ Linker script and memory map
                 0x000000008032b330                rspF3DBootEnd
                 0x000000008032b330                rspF3DStart
                 0x000000008032c738                rspF3DEnd
-                0x000000008032c740                rspAspMainStart
-                0x000000008032d560                rspAspMainEnd
+                0x000000008032c740                rspF3DAudioStart
+                0x000000008032d560                rspF3DAudioEnd
  build/us/src/game/main.o(.data*)
  .data          0x000000008032d560       0x70 build/us/src/game/main.o
                 0x000000008032d560                gVblankHandler1
@@ -6401,24 +6409,24 @@ Linker script and memory map
                 0x000000008032df18                gCurrentFrameIndex2
  build/us/src/game/camera.o(.data*)
  .data          0x000000008032df20     0x1fa0 build/us/src/game/camera.o
-                0x000000008032df20                unused_8032CFC0
-                0x000000008032df24                gCutsceneFocus
-                0x000000008032df28                unused_8032CFC8
-                0x000000008032df2c                unused_8032CFCC
-                0x000000008032df30                gSecondCameraFocus
+                0x000000008032df20                D_8032CFC0
+                0x000000008032df24                D_8032CFC4
+                0x000000008032df28                D_8032CFC8
+                0x000000008032df2c                D_8032CFCC
+                0x000000008032df30                D_8032CFD0
                 0x000000008032df34                D_8032CFD4
-                0x000000008032df38                gCurrLevelArea
-                0x000000008032df3c                gPrevLevel
+                0x000000008032df38                D_8032CFD8
+                0x000000008032df3c                D_8032CFDC
                 0x000000008032df40                D_8032CFE0
                 0x000000008032df44                D_8032CFE4
                 0x000000008032df48                D_8032CFE8
                 0x000000008032df4c                gCameraZoomDist
-                0x000000008032df50                sTempCutsceneNumber
-                0x000000008032df54                gCutsceneNumber
-                0x000000008032df58                sCutsceneTransitionTimer
+                0x000000008032df50                D_8032CFF0
+                0x000000008032df54                D_8032CFF4
+                0x000000008032df58                D_8032CFF8
                 0x000000008032df5c                D_8032CFFC
-                0x000000008032df60                sMarioStatusForCamera
-                0x000000008032df64                sLuigiStatusForCamera
+                0x000000008032df60                D_8032D000
+                0x000000008032df64                D_8032D004
                 0x000000008032df68                D_8032D008
                 0x000000008032df6c                D_8032D00C
                 0x000000008032df78                D_8032D00C_2
@@ -6426,16 +6434,16 @@ Linker script and memory map
                 0x000000008032df90                D_8032D00C_4
                 0x000000008032df9c                D_8032D00C_5
                 0x000000008032dfa8                TableCameraTransitions
-                0x000000008032e008                unused_8032D0A8
-                0x000000008032e010                unused_8032D0B0
+                0x000000008032e008                D_8032D0A8
+                0x000000008032e010                D_8032D0B0
                 0x000000008032e018                D_8032D0B8
-                0x000000008032e050                BBHRoom6ParallelTrackingTable
+                0x000000008032e050                D_8032D0F0
                 0x000000008032e098                TableCameraSL
                 0x000000008032e0e0                TableCameraTHI
                 0x000000008032e128                TableCameraHMC
                 0x000000008032e1d0                TableCameraSSL
                 0x000000008032e248                TableCameraRR
-                0x000000008032e338                TableCameraCotMC
+                0x000000008032e338                TableCameraMetal
                 0x000000008032e368                TableCameraCCM
                 0x000000008032e3b0                TableCameraInside
                 0x000000008032e6f8                TableCameraBBH
@@ -6469,7 +6477,7 @@ Linker script and memory map
                 0x000000008032f60c                TableCutsceneStarSpawn
                 0x000000008032f624                TableCutsceneSpecialStarSpawn
                 0x000000008032f634                TableCutsceneEnterPainting
-                0x000000008032f63c                TableCutsceneDeathExit
+                0x000000008032f63c                TableCutsceneExitPaintingDeath
                 0x000000008032f64c                TableCutsceneExitPaintingSuccess
                 0x000000008032f65c                TableCutscene11Todo
                 0x000000008032f674                TableCutsceneIntroPeach
@@ -6478,12 +6486,12 @@ Linker script and memory map
                 0x000000008032f6bc                TableCutsceneFallToCastleGrounds
                 0x000000008032f6cc                TableCutsceneEnterPyramidTop
                 0x000000008032f6dc                TableCutscene26Todo
-                0x000000008032f6f4                TableCutsceneStandingDeath
+                0x000000008032f6f4                TableCutsceneDeath1
                 0x000000008032f6fc                TableCutsceneEnterPool
                 0x000000008032f70c                TableCutsceneDeath2
-                0x000000008032f714                TableCutsceneDeathOnBack
+                0x000000008032f714                TableCutsceneBBHDeath
                 0x000000008032f71c                TableCutsceneQuicksandDeath
-                0x000000008032f72c                TableCutsceneSuffocationDeath
+                0x000000008032f72c                TableCutscene1ATodo
                 0x000000008032f734                TableCutsceneEnterBowserPlatform
                 0x000000008032f74c                TableCutsceneStarDance1
                 0x000000008032f754                TableCutsceneStarDance2
@@ -6500,46 +6508,46 @@ Linker script and memory map
                 0x000000008032f7ec                TableCutsceneReadMessage
                 0x000000008032f804                D_8032E8A4
                 0x000000008032f870                D_8032E910
-                0x000000008032f884                sBobCreditsCameraPositions
-                0x000000008032f8ac                sBobCreditsCameraFocus
-                0x000000008032f8d4                sWfCreditsCameraPositions
-                0x000000008032f8fc                sWfCreditsCameraFocus
-                0x000000008032f924                sJrbCreditsCameraPositions
-                0x000000008032f94c                sJrbCreditsCameraFocus
-                0x000000008032f974                sCcmSlideCreditsCameraPositions
-                0x000000008032f99c                sCcmSlideCreditsCameraFocus
-                0x000000008032f9c4                sBbhCreditsCameraPositions
-                0x000000008032f9e4                sBbhCreditsCameraFocus
-                0x000000008032fa04                sHmcCreditsCameraPositions
-                0x000000008032fa2c                sHmcCreditsCameraFocus
-                0x000000008032fa54                sThiWigglerCreditsCameraPositions
-                0x000000008032fa6c                sThiWigglerCreditsCameraFocus
-                0x000000008032fa84                sVolcanoCreditsCameraPositions
-                0x000000008032fab4                sVolcanoCreditsCameraFocus
-                0x000000008032fae4                sSslCreditsCameraPositions
-                0x000000008032fb14                sSslCreditsCameraFocus
-                0x000000008032fb44                sDddCreditsCameraPositions
-                0x000000008032fb7c                sDddCreditsCameraFocus
-                0x000000008032fbb4                sSlCreditsCameraPositions
-                0x000000008032fbd4                sSlCreditsCameraFocus
-                0x000000008032fbf4                sWdwCreditsCameraPositions
-                0x000000008032fc14                sWdwCreditsCameraFocus
-                0x000000008032fc34                sTtmCreditsCameraPositions
-                0x000000008032fc64                sTtmCreditsCameraFocus
-                0x000000008032fc94                sThiHugeCreditsCameraPositions
-                0x000000008032fccc                sThiHugeCreditsCameraFocus
-                0x000000008032fd04                sTtcCreditsCameraPositions
-                0x000000008032fd24                sTtcCreditsCameraFocus
-                0x000000008032fd44                sRrCreditsCameraPositions
-                0x000000008032fd64                sRrCreditsCameraFocus
-                0x000000008032fd84                sSaCreditsCameraPositions
-                0x000000008032fdac                sSaCreditsCameraFocus
-                0x000000008032fdd4                sCotmcCreditsCameraPositions
-                0x000000008032fdfc                sCotmcCreditsCameraFocus
-                0x000000008032fe24                sDddSubCreditsCameraPositions
-                0x000000008032fe4c                sDddSubCreditsCameraFocus
-                0x000000008032fe74                sCcmOutsideCreditsCameraPositions
-                0x000000008032fe94                sCcmOutsideCreditsCameraFocus
+                0x000000008032f884                D_8032E924
+                0x000000008032f8ac                D_8032E94C
+                0x000000008032f8d4                D_8032E974
+                0x000000008032f8fc                D_8032E99C
+                0x000000008032f924                D_8032E9C4
+                0x000000008032f94c                D_8032E9EC
+                0x000000008032f974                D_8032EA14
+                0x000000008032f99c                D_8032EA3C
+                0x000000008032f9c4                D_8032EA64
+                0x000000008032f9e4                D_8032EA84
+                0x000000008032fa04                D_8032EAA4
+                0x000000008032fa2c                D_8032EACC
+                0x000000008032fa54                D_8032EAF4
+                0x000000008032fa6c                D_8032EB0C
+                0x000000008032fa84                D_8032EB24
+                0x000000008032fab4                D_8032EB54
+                0x000000008032fae4                D_8032EB84
+                0x000000008032fb14                D_8032EBB4
+                0x000000008032fb44                D_8032EBE4
+                0x000000008032fb7c                D_8032EC1C
+                0x000000008032fbb4                D_8032EC54
+                0x000000008032fbd4                D_8032EC74
+                0x000000008032fbf4                D_8032EC94
+                0x000000008032fc14                D_8032ECB4
+                0x000000008032fc34                D_8032ECD4
+                0x000000008032fc64                D_8032ED04
+                0x000000008032fc94                D_8032ED34
+                0x000000008032fccc                D_8032ED6C
+                0x000000008032fd04                D_8032EDA4
+                0x000000008032fd24                D_8032EDC4
+                0x000000008032fd44                D_8032EDE4
+                0x000000008032fd64                D_8032EE04
+                0x000000008032fd84                D_8032EE24
+                0x000000008032fdac                D_8032EE4C
+                0x000000008032fdd4                D_8032EE74
+                0x000000008032fdfc                D_8032EE9C
+                0x000000008032fe24                D_8032EEC4
+                0x000000008032fe4c                D_8032EEEC
+                0x000000008032fe74                D_8032EF14
+                0x000000008032fe94                D_8032EF34
  build/us/src/game/object_list_processor.o(.data*)
  .data          0x000000008032fec0      0x140 build/us/src/game/object_list_processor.o
                 0x000000008032fec0                sObjectListUpdateOrder
@@ -7175,8 +7183,8 @@ Linker script and memory map
  .rodata        0x0000000080339ac0      0xac0 build/us/lib/rsp.o
                 0x0000000080339ac0                rspF3DDataStart
                 0x000000008033a2c0                rspF3DDataEnd
-                0x000000008033a2c0                rspAspMainDataStart
-                0x000000008033a580                rspAspMainDataEnd
+                0x000000008033a2c0                rspF3DAudioDataStart
+                0x000000008033a580                rspF3DAudioDataEnd
                 0x000000008033a580                _mainSegmentEnd = (ADDR (.main) + SIZEOF (.main))
                 0x00000000008c0c40                _mainSegmentRomEnd = (__romPos + SIZEOF (.main))
                 [0x00000000007cc6c0]                __romPos = (__romPos + SIZEOF (.main))
@@ -7342,56 +7350,56 @@ Linker script and memory map
                 0x000000008033c390                gProfilerFrameData
  build/us/src/game/camera.o(.bss*)
  .bss           0x000000008033c520      0x6c0 build/us/src/game/camera.o
-                0x000000008033c520                gPlayerStatusForCamera
-                0x000000008033c568                sCameraPosition
-                0x000000008033c578                sCameraFocus
+                0x000000008033c520                D_8033B1B0
+                0x000000008033c568                D_8033B1F8
+                0x000000008033c578                D_8033B208
                 0x000000008033c588                D_8033B218
-                0x000000008033c594                sCreditsCameraPitch
-                0x000000008033c596                sCreditsCameraYaw
-                0x000000008033c598                gFramesPaused
+                0x000000008033c594                D_8033B224
+                0x000000008033c596                D_8033B226
+                0x000000008033c598                D_8033B228
                 0x000000008033c5a0                D_8033B230
-                0x000000008033c5c0                sCameraTransition
-                0x000000008033c5e8                sGeometryForMario
-                0x000000008033c61c                unused_8033B2AC
-                0x000000008033c61e                sCameraYawVelocity
-                0x000000008033c620                sCameraYawAfterDoorCutscene
-                0x000000008033c622                unused_8033B2B2
-                0x000000008033c624                unused_8033B2B4
+                0x000000008033c5c0                D_8033B250
+                0x000000008033c5e8                D_8033B278
+                0x000000008033c61c                D_8033B2AC
+                0x000000008033c61e                D_8033B2AE
+                0x000000008033c620                D_8033B2B0
+                0x000000008033c622                D_8033B2B2
+                0x000000008033c624                D_8033B2B4
                 0x000000008033c628                D_8033B2B8
                 0x000000008033c668                D_8033B2F8
                 0x000000008033c66c                D_8033B2FC
                 0x000000008033c670                D_8033B300
-                0x000000008033c674                sCameraCutscenePitchOffset
-                0x000000008033c676                sCameraCutsceneYawOffset
-                0x000000008033c678                sCameraCutsceneRollOffset
-                0x000000008033c67c                unused_8033B30C
-                0x000000008033c680                unused_8033B310
-                0x000000008033c684                gCameraModeFlags
-                0x000000008033c686                unused_8033B316
-                0x000000008033c688                sCameraSideCFlags
-                0x000000008033c68a                unused_8033B31A
-                0x000000008033c68c                gCameraFlags1
-                0x000000008033c68e                gCButtonsPressed
+                0x000000008033c674                D_8033B304
+                0x000000008033c676                D_8033B306
+                0x000000008033c678                D_8033B308
+                0x000000008033c67c                D_8033B30C
+                0x000000008033c680                D_8033B310
+                0x000000008033c684                D_8033B314
+                0x000000008033c686                D_8033B316
+                0x000000008033c688                D_8033B318
+                0x000000008033c68a                D_8033B31A
+                0x000000008033c68c                D_8033B31C
+                0x000000008033c68e                D_8033B31E
                 0x000000008033c690                D_8033B320
-                0x000000008033c698                gCameraStatus
-                0x000000008033c74c                sCameraKeyCutsceneRollOffset
-                0x000000008033c750                sLastFrameAction
-                0x000000008033c754                unused_8033B3E4
-                0x000000008033c756                unused_8033B3E6
-                0x000000008033c758                unused_8033B3E8
+                0x000000008033c698                D_8033B328
+                0x000000008033c74c                D_8033B3DC
+                0x000000008033c750                D_8033B3E0
+                0x000000008033c754                D_8033B3E4
+                0x000000008033c756                D_8033B3E6
+                0x000000008033c758                D_8033B3E8
                 0x000000008033c75a                D_8033B3EA
                 0x000000008033c75c                D_8033B3EC
                 0x000000008033c75e                D_8033B3EE
                 0x000000008033c760                D_8033B3F0
                 0x000000008033c764                D_8033B3F4
-                0x000000008033c768                sCSideButtonYaw
+                0x000000008033c768                D_8033B3F8
                 0x000000008033c76a                D_8033B3FA
                 0x000000008033c76c                D_8033B3FC
-                0x000000008033c770                sFirstPersonCameraPitch
-                0x000000008033c772                sFirstPersonCameraYaw
+                0x000000008033c770                D_8033B400
+                0x000000008033c772                D_8033B402
                 0x000000008033c774                D_8033B404
-                0x000000008033c776                sBowserLevelPresetBaseYaw
-                0x000000008033c778                gBowserLevelYawOffset
+                0x000000008033c776                D_8033B406
+                0x000000008033c778                D_8033B408
                 0x000000008033c77c                D_8033B40C
                 0x000000008033c780                D_8033B410
                 0x000000008033c788                D_8033B418
@@ -7401,8 +7409,8 @@ Linker script and memory map
                 0x000000008033c7e8                D_8033B478
                 0x000000008033c808                D_8033B498
                 0x000000008033c828                D_8033B4B8
-                0x000000008033c848                gCameraMovementFlags
-                0x000000008033c84a                gCameraFlags2
+                0x000000008033c848                D_8033B4D8
+                0x000000008033c84a                D_8033B4DA
                 0x000000008033c850                D_8033B4E0
                 0x000000008033c950                D_8033B5E0
                 0x000000008033ca50                D_8033B6E0
@@ -7411,8 +7419,8 @@ Linker script and memory map
                 0x000000008033ca5a                D_8033B6EA
                 0x000000008033ca5c                gCutsceneTimer
                 0x000000008033ca60                D_8033B6F0
-                0x000000008033cbc8                gCutsceneActive
-                0x000000008033cbcc                sCutscenePhase
+                0x000000008033cbc8                D_8033B858
+                0x000000008033cbcc                D_8033B85C
                 0x000000008033cbd0                gCurrLevelCamera
  build/us/src/game/object_list_processor.o(.bss*)
  .bss           0x000000008033cbe0    0x245a0 build/us/src/game/object_list_processor.o
@@ -9463,14 +9471,14 @@ Linker script and memory map
                 0x0000000080183ab0                reset_dynlist
                 0x0000000080183b20                proc_dynlist
                 0x000000008018435c                d_copystr_to_idbuf
-                0x0000000080184400                d_catstr_to_idbuf
+                0x0000000080184400                Unknown801842C0
                 0x00000000801844a8                cpy_idbuf_to_backbuf
                 0x00000000801844dc                cpy_backbuf_to_idbuf
                 0x0000000080184510                get_dynobj_info
-                0x0000000080184630                reset_dynamic_objs
+                0x0000000080184630                Unknown801844F0
                 0x000000008018468c                d_add_net_with_subgroup
                 0x0000000080184740                d_end_net_subgroup
-                0x00000000801847ac                d_attach_joint_to_net
+                0x00000000801847ac                d_attach_net_to_joint
                 0x0000000080184828                d_make_netfromshapeid
                 0x00000000801848a0                d_make_netfromshape_ptrptr
                 0x00000000801848e8                add_to_dynobj_list
@@ -9751,10 +9759,10 @@ Linker script and memory map
                 0x0000000080198228                func_801980E8
                 0x0000000080198294                Unknown80198154
                 0x00000000801982c4                Unknown80198184
-                0x0000000080198330                scale_obj_position
-                0x00000000801983f8                translate_obj_position
-                0x000000008019848c                scale_verts_in_shape
-                0x0000000080198514                translate_verts_in_shape
+                0x0000000080198330                Unknown801981F0
+                0x00000000801983f8                Unknown801982B8
+                0x000000008019848c                func_8019834C
+                0x0000000080198514                Unknown801983D4
                 0x0000000080198584                Unknown80198444
                 0x0000000080198664                Unknown80198524
                 0x0000000080198728                Unknown801985E8
@@ -10288,7 +10296,7 @@ Linker script and memory map
                 0x00000000801ba0b8                sUnnamedObjCount
                 0x00000000801ba0bc                sLoadedDynObjs
                 0x00000000801ba0c0                sDynListCurInfo
-                0x00000000801ba0c4                sParentNetInfo
+                0x00000000801ba0c4                sSecondaryInfoStash
                 0x00000000801ba0c8                sStashedDynObjInfo
                 0x00000000801ba0cc                sStashedDynObj
                 0x00000000801ba0d0                sDynNetCount
@@ -10351,8 +10359,8 @@ Linker script and memory map
                 0x00000000801bae2c                D_801BAC9C
                 0x00000000801bae30                D_801BACA0
                 0x00000000801bae38                sUnrefSpaceCA8
-                0x00000000801bae48                sVertexScaleFactor
-                0x00000000801bae58                sVertexTranslateOffset
+                0x00000000801bae48                D_801BACB8
+                0x00000000801bae58                D_801BACC8
                 0x00000000801bae68                sUnrefSpaceCD8
                 0x00000000801bae98                D_801BAD08
                 0x00000000801baea0                sUnrefSpaceD10
@@ -12194,6 +12202,7 @@ LOAD build/us/src/engine/math_util.o
 LOAD build/us/src/engine/geo_layout.o
 LOAD build/us/src/engine/surface_load.o
 LOAD build/us/src/engine/graph_node.o
+LOAD build/us/src/engine/gravity.o
 LOAD build/us/src/game/star_select.o
 LOAD build/us/src/game/save_file.o
 LOAD build/us/src/game/mario_actions_automatic.o
