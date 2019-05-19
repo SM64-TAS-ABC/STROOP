@@ -278,7 +278,7 @@ namespace STROOP.Models
             else 
                 SegmentedBehavior = 0x13000000 + (uint) behaviorOffset;
 
-            uint behaviorAddress = RomVersionConfig.Switch(
+            uint behaviorAddress = SegmentedBehavior == 0 ? 0 : RomVersionConfig.Switch(
                 SegmentedBehavior,
                 Config.ObjectAssociations.AlignJPBehavior(SegmentedBehavior),
                 SegmentedBehavior); // Shindou objects are the same as U
