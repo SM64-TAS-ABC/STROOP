@@ -39,7 +39,7 @@ namespace STROOP.Utilities
             // vacant slots
             {
                 List<uint> processGroup = new List<uint>();
-                uint objAddress = Config.Stream.GetUInt32(ObjectSlotsConfig.VacantSlotsPointerAddress);
+                uint objAddress = Config.Stream.GetUInt32(ObjectSlotsConfig.VacantSlotsNodeAddress + ObjectConfig.ProcessedNextLinkOffset);
                 while ((objAddress != 0 && slotIndex < ObjectSlotsConfig.MaxSlots))
                 {
                     processGroup.Add(objAddress);
@@ -75,15 +75,14 @@ namespace STROOP.Utilities
             // vacant slots
             {
                 List<uint> expandedProcessGroup = new List<uint>(processGroups[processGroups.Count - 1]);
-                expandedProcessGroup.Insert(0, ObjectSlotsConfig.VacantSlotsPointerAddress);
+                expandedProcessGroup.Insert(0, ObjectSlotsConfig.VacantSlotsNodeAddress);
                 expandedProcessGroup.Add(0);
 
                 for (int j = 0; j < expandedProcessGroup.Count - 1; j++)
                 {
                     uint address1 = expandedProcessGroup[j];
                     uint address2 = expandedProcessGroup[j + 1];
-                    uint nextLinkOffset = j == 0 ? 0 : ObjectConfig.ProcessedNextLinkOffset;
-                    Config.Stream.SetValue(address2, address1 + nextLinkOffset);
+                    Config.Stream.SetValue(address2, address1 + ObjectConfig.ProcessedNextLinkOffset);
                 }
             }
         }
@@ -200,7 +199,7 @@ namespace STROOP.Utilities
                 outputList.Add(nextString);
                 outputList.Add(prevString);
             }
-            outputList.Add("vacant\t\t" + HexUtilities.FormatValue(ObjectSlotsConfig.VacantSlotsPointerAddress));
+            outputList.Add("vacant\t\t" + HexUtilities.FormatValue(ObjectSlotsConfig.VacantSlotsNodeAddress + ObjectConfig.ProcessedNextLinkOffset));
             InfoForm.ShowValue(String.Join("\r\n", outputList));
         }
 
