@@ -23,7 +23,7 @@ namespace STROOP.Models
         public void Update()
         {
             // Update behavior bank
-            Config.ObjectAssociations.BehaviorBankStart = Config.Stream.GetUInt32(Config.ObjectAssociations.SegmentTable + 0x13 * 4);
+            Config.ObjectAssociations.BehaviorBankStart = Config.Stream.GetUInt32((Config.ObjectAssociations.SegmentTable & 0xFFFFFF) + 0x13 * 4);
 
             int? vacantIndexStart = UpdateGetProcessedObjects();
             if (vacantIndexStart.HasValue)
