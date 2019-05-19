@@ -45,17 +45,12 @@ namespace STROOP.Controls
         {
             get
             {
-                switch (RomVersionConfig.Version)
+                if (OffsetUS.HasValue || OffsetJP.HasValue || OffsetSH.HasValue)
                 {
-                    case RomVersion.US:
-                        if (OffsetUS.HasValue) return OffsetUS.Value;
-                        break;
-                    case RomVersion.JP:
-                        if (OffsetJP.HasValue) return OffsetJP.Value;
-                        break;
-                    case RomVersion.SH:
-                        if (OffsetSH.HasValue) return OffsetSH.Value;
-                        break;
+                    return RomVersionConfig.Switch(
+                        OffsetUS ?? 0,
+                        OffsetJP ?? 0,
+                        OffsetSH ?? 0);
                 }
                 if (OffsetDefault.HasValue) return OffsetDefault.Value;
                 return 0;
