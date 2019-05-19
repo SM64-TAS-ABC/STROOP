@@ -74,6 +74,13 @@ namespace STROOP.Structs.Configurations
 
         public static uint Switch(uint? valUS = null, uint? valJP = null, uint? valSH = null)
         {
+            uint address = SwitchOnly(valUS, valJP, valSH);
+            address = MappingConfig.HandleMapping(address);
+            return address;
+        }
+
+        private static uint SwitchOnly(uint? valUS = null, uint? valJP = null, uint? valSH = null)
+        {
             switch (Version)
             {
                 case RomVersion.US:
@@ -88,6 +95,7 @@ namespace STROOP.Structs.Configurations
             }
             return 0;
         }
+
         public static ushort Switch(ushort? valUS = null, ushort? valJP = null, ushort? valSH = null)
         {
             switch (Version)

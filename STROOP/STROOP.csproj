@@ -380,6 +380,7 @@
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
     <Compile Include="Structs\Configurations\PaintingConfig.cs" />
+    <Compile Include="Structs\Configurations\MappingConfig.cs" />
     <Compile Include="Structs\Configurations\SnowConfig.cs" />
     <Compile Include="Structs\Map\BackgroundImage.cs" />
     <Compile Include="Structs\MusicEntry.cs" />
@@ -625,6 +626,7 @@
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
     <None Include="app.manifest" />
+    <None Include="Mappings\MappingUS.map" />
     <None Include="Resources\lock_blue.png" />
     <None Include="Controls\Map\MapTab.cd" />
     <None Include="Resources\cog.png" />
@@ -1471,9 +1473,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mappings\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>del "$(TargetDir)OpenTK.dll.config"
