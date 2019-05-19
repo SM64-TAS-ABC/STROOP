@@ -18,7 +18,7 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            TestSomething15();
+            MappingConfig.OpenMapping();
         }
 
         public static void TestSomethingElse()

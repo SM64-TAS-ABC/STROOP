@@ -38,6 +38,16 @@ namespace STROOP.Structs.Configurations
             return dictionary;
         }
 
+        public static void OpenMapping()
+        {
+            OpenFileDialog openFileDialog = DialogUtilities.CreateOpenFileDialog(FileType.Mapping);
+            DialogResult result = openFileDialog.ShowDialog();
+            if (result != DialogResult.OK) return;
+            string fileName = openFileDialog.FileName;
+            mappingCurrent = GetMappingDictionary(fileName);
+            mappingCurrentReversed = DictionaryUtilities.ReverseDictionary(mappingCurrent);
+        }
+
         public static uint HandleMapping(uint address)
         {
             if (mappingCurrent == null) return address;

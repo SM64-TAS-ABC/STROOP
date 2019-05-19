@@ -30,6 +30,8 @@ namespace STROOP.Structs
                     return "Mupen Movies|*.m64|All Files|*.*";
                 case FileType.Image:
                     return "Image files|*.jpg;*.jpeg;*.jpe;*.jfif;*.png|All Files|*.*";
+                case FileType.Mapping:
+                    return "Mapping|*.map";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
