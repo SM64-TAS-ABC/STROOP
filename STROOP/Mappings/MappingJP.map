@@ -14,8 +14,6 @@ build/jp/libultra.a(osMapTLB.o)
                               build/jp/src/game/main.o (osMapTLB)
 build/jp/libultra.a(osWritebackDCache.o)
                               build/jp/src/audio/playback.o (osWritebackDCache)
-build/jp/libultra.a(osSendMesg.o)
-                              build/jp/src/game/main.o (osSendMesg)
 build/jp/libultra.a(osContInit.o)
                               build/jp/src/game/game.o (osContInit)
 build/jp/libultra.a(sprintf.o)
@@ -147,6 +145,8 @@ build/jp/libultra.a(__osDequeueThread.o)
                               build/jp/libultra.a(osCreateMesgQueue.o) (D_80334890)
 build/jp/libultra.a(__osDevMgrMain.o)
                               build/jp/libultra.a(osCreatePiManager.o) (__osDevMgrMain)
+build/jp/libultra.a(osSendMesg.o)
+                              build/jp/src/game/main.o (osSendMesg)
 build/jp/libultra.a(llmuldiv.o)
                               build/jp/src/game/profiler.o (__ull_div)
 build/jp/libultra.a(sinf.o)   build/jp/src/game/shadow.o (sinf)
@@ -156,7 +156,7 @@ build/jp/libultra.a(cosf.o)   build/jp/src/game/shadow.o (cosf)
 build/jp/libultra.a(__osGetSR.o)
                               build/jp/libultra.a(osInitialize.o) (__osGetSR)
 build/jp/libultra.a(__osDisableInt.o)
-                              build/jp/libultra.a(osSendMesg.o) (__osDisableInt)
+                              build/jp/libultra.a(osViSetEvent.o) (__osDisableInt)
 build/jp/libultra.a(osGetCount.o)
                               build/jp/libultra.a(osGetTime.o) (osGetCount)
 build/jp/libultra.a(__osSetFpcCsr.o)
@@ -170,7 +170,7 @@ build/jp/libultra.a(__osExceptionPreamble.o)
 build/jp/libultra.a(osSetIntMask.o)
                               build/jp/libultra.a(__osExceptionPreamble.o) (D_803386D0)
 build/jp/libultra.a(__osRestoreInt.o)
-                              build/jp/libultra.a(osSendMesg.o) (__osRestoreInt)
+                              build/jp/libultra.a(osViSetEvent.o) (__osRestoreInt)
 build/jp/libultra.a(__osSetSR.o)
                               build/jp/libultra.a(osInitialize.o) (__osSetSR)
 build/jp/libultra.a(__osProbeTLB.o)
@@ -226,101 +226,101 @@ Discarded input sections
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/main.o
  .gptab.data    0x0000000000000000       0x30 build/jp/src/game/main.o
  .gptab.bss     0x0000000000000000       0x40 build/jp/src/game/main.o
- .mdebug        0x0000000000000000     0xe540 build/jp/src/game/main.o
+ .mdebug        0x0000000000000000     0xe3a4 build/jp/src/game/main.o
  .options       0x0000000000000000       0x20 build/jp/src/game/display.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/display.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/game/display.o
- .mdebug        0x0000000000000000     0xe470 build/jp/src/game/display.o
+ .mdebug        0x0000000000000000     0xe2d0 build/jp/src/game/display.o
  .options       0x0000000000000000       0x20 build/jp/src/game/game.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/game.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/game/game.o
  .gptab.bss     0x0000000000000000       0x50 build/jp/src/game/game.o
- .mdebug        0x0000000000000000    0x11578 build/jp/src/game/game.o
+ .mdebug        0x0000000000000000    0x1139c build/jp/src/game/game.o
  .options       0x0000000000000000       0x20 build/jp/src/game/sound_init.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/sound_init.o
  .gptab.data    0x0000000000000000       0x38 build/jp/src/game/sound_init.o
  .gptab.bss     0x0000000000000000       0x30 build/jp/src/game/sound_init.o
- .mdebug        0x0000000000000000    0x12bf8 build/jp/src/game/sound_init.o
+ .mdebug        0x0000000000000000    0x129e8 build/jp/src/game/sound_init.o
  .options       0x0000000000000000       0x20 build/jp/src/game/level_update.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/level_update.o
  .gptab.data    0x0000000000000000       0x40 build/jp/src/game/level_update.o
  .gptab.bss     0x0000000000000000       0x30 build/jp/src/game/level_update.o
- .mdebug        0x0000000000000000    0x16624 build/jp/src/game/level_update.o
+ .mdebug        0x0000000000000000    0x167ac build/jp/src/game/level_update.o
  .options       0x0000000000000000       0x20 build/jp/src/game/interaction.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/interaction.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/game/interaction.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/game/interaction.o
- .mdebug        0x0000000000000000    0x20e04 build/jp/src/game/interaction.o
+ .mdebug        0x0000000000000000    0x20d50 build/jp/src/game/interaction.o
  .options       0x0000000000000000       0x20 build/jp/src/game/mario.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/mario.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/game/mario.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/game/mario.o
- .mdebug        0x0000000000000000    0x22f40 build/jp/src/game/mario.o
+ .mdebug        0x0000000000000000    0x22d94 build/jp/src/game/mario.o
  .options       0x0000000000000000       0x20 build/jp/src/game/mario_step.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/mario_step.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/game/mario_step.o
- .mdebug        0x0000000000000000     0xdb48 build/jp/src/game/mario_step.o
+ .mdebug        0x0000000000000000     0xda80 build/jp/src/game/mario_step.o
  .options       0x0000000000000000       0x20 build/jp/src/game/mario_actions_cutscene.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/mario_actions_cutscene.o
  .gptab.data    0x0000000000000000       0x48 build/jp/src/game/mario_actions_cutscene.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/game/mario_actions_cutscene.o
- .mdebug        0x0000000000000000    0x24abc build/jp/src/game/mario_actions_cutscene.o
+ .mdebug        0x0000000000000000    0x249ac build/jp/src/game/mario_actions_cutscene.o
  .options       0x0000000000000000       0x20 build/jp/src/game/mario_actions_automatic.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/mario_actions_automatic.o
- .mdebug        0x0000000000000000    0x19aa8 build/jp/src/game/mario_actions_automatic.o
+ .mdebug        0x0000000000000000    0x1b540 build/jp/src/game/mario_actions_automatic.o
  .options       0x0000000000000000       0x20 build/jp/src/game/mario_actions_stationary.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/mario_actions_stationary.o
- .mdebug        0x0000000000000000    0x1c74c build/jp/src/game/mario_actions_stationary.o
+ .mdebug        0x0000000000000000    0x1c61c build/jp/src/game/mario_actions_stationary.o
  .options       0x0000000000000000       0x20 build/jp/src/game/mario_actions_moving.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/mario_actions_moving.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/game/mario_actions_moving.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/mario_actions_moving.o
- .mdebug        0x0000000000000000    0x1ced8 build/jp/src/game/mario_actions_moving.o
+ .mdebug        0x0000000000000000    0x1cdd0 build/jp/src/game/mario_actions_moving.o
  .options       0x0000000000000000       0x20 build/jp/src/game/mario_actions_airborne.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/mario_actions_airborne.o
- .mdebug        0x0000000000000000    0x155fc build/jp/src/game/mario_actions_airborne.o
+ .mdebug        0x0000000000000000    0x154d4 build/jp/src/game/mario_actions_airborne.o
  .options       0x0000000000000000       0x20 build/jp/src/game/mario_actions_submerged.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/mario_actions_submerged.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/game/mario_actions_submerged.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/game/mario_actions_submerged.o
- .mdebug        0x0000000000000000    0x1df5c build/jp/src/game/mario_actions_submerged.o
+ .mdebug        0x0000000000000000    0x1df08 build/jp/src/game/mario_actions_submerged.o
  .options       0x0000000000000000       0x20 build/jp/src/game/mario_actions_object.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/mario_actions_object.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/game/mario_actions_object.o
- .mdebug        0x0000000000000000     0xc6d0 build/jp/src/game/mario_actions_object.o
+ .mdebug        0x0000000000000000     0xc534 build/jp/src/game/mario_actions_object.o
  .options       0x0000000000000000       0x20 build/jp/src/game/level_geo.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/level_geo.o
- .mdebug        0x0000000000000000    0x10e44 build/jp/src/game/level_geo.o
+ .mdebug        0x0000000000000000    0x10d40 build/jp/src/game/level_geo.o
  .options       0x0000000000000000       0x20 build/jp/src/game/mario_misc.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/mario_misc.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/game/mario_misc.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/game/mario_misc.o
- .mdebug        0x0000000000000000    0x241fc build/jp/src/game/mario_misc.o
+ .mdebug        0x0000000000000000    0x23fcc build/jp/src/game/mario_misc.o
  .options       0x0000000000000000       0x20 build/jp/src/game/memory.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/memory.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/game/memory.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/game/memory.o
- .mdebug        0x0000000000000000     0xe79c build/jp/src/game/memory.o
+ .mdebug        0x0000000000000000     0xe62c build/jp/src/game/memory.o
  .options       0x0000000000000000       0x20 build/jp/src/game/save_file.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/save_file.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/game/save_file.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/save_file.o
- .mdebug        0x0000000000000000    0x119d8 build/jp/src/game/save_file.o
+ .mdebug        0x0000000000000000    0x11810 build/jp/src/game/save_file.o
  .options       0x0000000000000000       0x20 build/jp/src/game/area.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/area.o
  .gptab.data    0x0000000000000000       0x40 build/jp/src/game/area.o
  .gptab.bss     0x0000000000000000       0x38 build/jp/src/game/area.o
- .mdebug        0x0000000000000000    0x1c2b0 build/jp/src/game/area.o
+ .mdebug        0x0000000000000000    0x1bffc build/jp/src/game/area.o
  .options       0x0000000000000000       0x20 build/jp/src/game/rendering_graph_node.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/rendering_graph_node.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/game/rendering_graph_node.o
  .gptab.bss     0x0000000000000000       0x38 build/jp/src/game/rendering_graph_node.o
- .mdebug        0x0000000000000000    0x12398 build/jp/src/game/rendering_graph_node.o
+ .mdebug        0x0000000000000000    0x122e4 build/jp/src/game/rendering_graph_node.o
  .options       0x0000000000000000       0x20 build/jp/src/game/profiler.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/profiler.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/game/profiler.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/profiler.o
- .mdebug        0x0000000000000000     0xc910 build/jp/src/game/profiler.o
+ .mdebug        0x0000000000000000     0xc7b8 build/jp/src/game/profiler.o
  .data          0x0000000000000000        0x0 build/jp/asm/decompress.o
  .bss           0x0000000000000000        0x0 build/jp/asm/decompress.o
  .reginfo       0x0000000000000000       0x18 build/jp/asm/decompress.o
@@ -333,67 +333,67 @@ Discarded input sections
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/camera.o
  .gptab.data    0x0000000000000000       0xe8 build/jp/src/game/camera.o
  .gptab.bss     0x0000000000000000       0x78 build/jp/src/game/camera.o
- .mdebug        0x0000000000000000    0x46e44 build/jp/src/game/camera.o
+ .mdebug        0x0000000000000000    0x479bc build/jp/src/game/camera.o
  .options       0x0000000000000000       0x20 build/jp/src/game/debug_course.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/debug_course.o
- .mdebug        0x0000000000000000     0xaa8c build/jp/src/game/debug_course.o
+ .mdebug        0x0000000000000000     0xa978 build/jp/src/game/debug_course.o
  .options       0x0000000000000000       0x20 build/jp/src/game/object_list_processor.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/object_list_processor.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/game/object_list_processor.o
  .gptab.bss     0x0000000000000000       0x48 build/jp/src/game/object_list_processor.o
- .mdebug        0x0000000000000000    0x1dc88 build/jp/src/game/object_list_processor.o
+ .mdebug        0x0000000000000000    0x1dba0 build/jp/src/game/object_list_processor.o
  .options       0x0000000000000000       0x20 build/jp/src/game/object_helpers.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/object_helpers.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/game/object_helpers.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/object_helpers.o
- .mdebug        0x0000000000000000    0x2dc00 build/jp/src/game/object_helpers.o
+ .mdebug        0x0000000000000000    0x2dabc build/jp/src/game/object_helpers.o
  .options       0x0000000000000000       0x20 build/jp/src/game/behavior_actions.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/behavior_actions.o
  .gptab.data    0x0000000000000000      0x100 build/jp/src/game/behavior_actions.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/behavior_actions.o
- .mdebug        0x0000000000000000    0x4efe0 build/jp/src/game/behavior_actions.o
+ .mdebug        0x0000000000000000    0x4e3f4 build/jp/src/game/behavior_actions.o
  .options       0x0000000000000000       0x20 build/jp/src/game/platform_displacement.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/platform_displacement.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/game/platform_displacement.o
- .mdebug        0x0000000000000000     0xd8c0 build/jp/src/game/platform_displacement.o
+ .mdebug        0x0000000000000000     0xd7cc build/jp/src/game/platform_displacement.o
  .options       0x0000000000000000       0x20 build/jp/src/game/object_collision.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/object_collision.o
- .mdebug        0x0000000000000000     0xc3f4 build/jp/src/game/object_collision.o
+ .mdebug        0x0000000000000000     0xc284 build/jp/src/game/object_collision.o
  .options       0x0000000000000000       0x20 build/jp/src/game/spawn_object.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/spawn_object.o
- .mdebug        0x0000000000000000    0x10f50 build/jp/src/game/spawn_object.o
+ .mdebug        0x0000000000000000    0x10e18 build/jp/src/game/spawn_object.o
  .options       0x0000000000000000       0x20 build/jp/src/game/spawn_sound.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/spawn_sound.o
- .mdebug        0x0000000000000000     0xc6ac build/jp/src/game/spawn_sound.o
+ .mdebug        0x0000000000000000     0xc524 build/jp/src/game/spawn_sound.o
  .options       0x0000000000000000       0x20 build/jp/src/game/debug.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/debug.o
  .gptab.data    0x0000000000000000       0x30 build/jp/src/game/debug.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/debug.o
- .mdebug        0x0000000000000000    0x10334 build/jp/src/game/debug.o
+ .mdebug        0x0000000000000000    0x101fc build/jp/src/game/debug.o
  .options       0x0000000000000000       0x20 build/jp/src/game/screen_transition.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/screen_transition.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/game/screen_transition.o
- .mdebug        0x0000000000000000    0x11884 build/jp/src/game/screen_transition.o
+ .mdebug        0x0000000000000000    0x117ec build/jp/src/game/screen_transition.o
  .options       0x0000000000000000       0x20 build/jp/src/game/shadow.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/shadow.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/game/shadow.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/game/shadow.o
- .mdebug        0x0000000000000000    0x13188 build/jp/src/game/shadow.o
+ .mdebug        0x0000000000000000    0x133f8 build/jp/src/game/shadow.o
  .options       0x0000000000000000       0x20 build/jp/src/game/skybox.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/skybox.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/game/skybox.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/skybox.o
- .mdebug        0x0000000000000000     0xf860 build/jp/src/game/skybox.o
+ .mdebug        0x0000000000000000     0xf7cc build/jp/src/game/skybox.o
  .options       0x0000000000000000       0x20 build/jp/src/game/moving_texture.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/moving_texture.o
  .gptab.data    0x0000000000000000       0x50 build/jp/src/game/moving_texture.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/moving_texture.o
- .mdebug        0x0000000000000000    0x159dc build/jp/src/game/moving_texture.o
- .options       0x0000000000000000       0x20 build/jp/src/game/transparent_texture.o
- .reginfo       0x0000000000000000       0x18 build/jp/src/game/transparent_texture.o
- .gptab.data    0x0000000000000000       0x18 build/jp/src/game/transparent_texture.o
- .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/transparent_texture.o
- .mdebug        0x0000000000000000    0x10b48 build/jp/src/game/transparent_texture.o
+ .mdebug        0x0000000000000000    0x15ab8 build/jp/src/game/moving_texture.o
+ .options       0x0000000000000000       0x20 build/jp/src/game/geo_misc.o
+ .reginfo       0x0000000000000000       0x18 build/jp/src/game/geo_misc.o
+ .gptab.data    0x0000000000000000       0x18 build/jp/src/game/geo_misc.o
+ .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/geo_misc.o
+ .mdebug        0x0000000000000000    0x10b38 build/jp/src/game/geo_misc.o
  .options       0x0000000000000000       0x20 build/jp/src/game/paintings.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/paintings.o
  .gptab.data    0x0000000000000000       0x30 build/jp/src/game/paintings.o
@@ -403,41 +403,41 @@ Discarded input sections
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/print.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/game/print.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/print.o
- .mdebug        0x0000000000000000     0xf444 build/jp/src/game/print.o
+ .mdebug        0x0000000000000000     0xf418 build/jp/src/game/print.o
  .options       0x0000000000000000       0x20 build/jp/src/game/ingame_menu.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/ingame_menu.o
  .gptab.data    0x0000000000000000       0x98 build/jp/src/game/ingame_menu.o
  .gptab.bss     0x0000000000000000       0x28 build/jp/src/game/ingame_menu.o
- .mdebug        0x0000000000000000    0x19b40 build/jp/src/game/ingame_menu.o
+ .mdebug        0x0000000000000000    0x19aac build/jp/src/game/ingame_menu.o
  .options       0x0000000000000000       0x20 build/jp/src/game/envfx_snow.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/envfx_snow.o
  .gptab.data    0x0000000000000000       0x30 build/jp/src/game/envfx_snow.o
  .gptab.bss     0x0000000000000000       0x28 build/jp/src/game/envfx_snow.o
- .mdebug        0x0000000000000000     0xe3dc build/jp/src/game/envfx_snow.o
+ .mdebug        0x0000000000000000     0xe2b8 build/jp/src/game/envfx_snow.o
  .options       0x0000000000000000       0x20 build/jp/src/game/envfx_bubbles.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/envfx_bubbles.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/game/envfx_bubbles.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/game/envfx_bubbles.o
- .mdebug        0x0000000000000000     0xe8a8 build/jp/src/game/envfx_bubbles.o
+ .mdebug        0x0000000000000000     0xe790 build/jp/src/game/envfx_bubbles.o
  .options       0x0000000000000000       0x20 build/jp/src/game/macro_special_objects.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/macro_special_objects.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/game/macro_special_objects.o
- .mdebug        0x0000000000000000    0x1a52c build/jp/src/game/macro_special_objects.o
+ .mdebug        0x0000000000000000    0x1a364 build/jp/src/game/macro_special_objects.o
  .options       0x0000000000000000       0x20 build/jp/src/game/hud.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/hud.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/game/hud.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/hud.o
- .mdebug        0x0000000000000000    0x127a0 build/jp/src/game/hud.o
+ .mdebug        0x0000000000000000    0x12714 build/jp/src/game/hud.o
  .options       0x0000000000000000       0x20 build/jp/src/game/obj_behaviors.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/obj_behaviors.o
  .gptab.data    0x0000000000000000       0x40 build/jp/src/game/obj_behaviors.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/obj_behaviors.o
- .mdebug        0x0000000000000000    0x39d00 build/jp/src/game/obj_behaviors.o
+ .mdebug        0x0000000000000000    0x3970c build/jp/src/game/obj_behaviors.o
  .options       0x0000000000000000       0x20 build/jp/src/game/obj_behaviors_2.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/obj_behaviors_2.o
  .gptab.data    0x0000000000000000       0x70 build/jp/src/game/obj_behaviors_2.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/game/obj_behaviors_2.o
- .mdebug        0x0000000000000000    0x3ea34 build/jp/src/game/obj_behaviors_2.o
+ .mdebug        0x0000000000000000    0x3e548 build/jp/src/game/obj_behaviors_2.o
  .options       0x0000000000000000       0x20 build/jp/src/audio/something.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/audio/something.o
  .options       0x0000000000000000       0x20 build/jp/src/audio/dac.o
@@ -446,10 +446,10 @@ Discarded input sections
  .reginfo       0x0000000000000000       0x18 build/jp/src/audio/dma.o
  .options       0x0000000000000000       0x20 build/jp/src/audio/playback.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/audio/playback.o
- .mdebug        0x0000000000000000     0x1b6c build/jp/src/audio/playback.o
+ .mdebug        0x0000000000000000     0x1ae4 build/jp/src/audio/playback.o
  .options       0x0000000000000000       0x20 build/jp/src/audio/playback2.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/audio/playback2.o
- .mdebug        0x0000000000000000      0xad0 build/jp/src/audio/playback2.o
+ .mdebug        0x0000000000000000      0xa8c build/jp/src/audio/playback2.o
  .options       0x0000000000000000       0x20 build/jp/src/audio/interface_1.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/audio/interface_1.o
  .options       0x0000000000000000       0x20 build/jp/src/audio/interface_2.o
@@ -465,42 +465,42 @@ Discarded input sections
  .options       0x0000000000000000       0x20 build/jp/src/audio/data.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/audio/data.o
  .gptab.data    0x0000000000000000       0x68 build/jp/src/audio/data.o
- .mdebug        0x0000000000000000      0x60c build/jp/src/audio/data.o
+ .mdebug        0x0000000000000000      0x5f8 build/jp/src/audio/data.o
  .options       0x0000000000000000       0x20 build/jp/src/game/room.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/room.o
  .gptab.bss     0x0000000000000000       0x30 build/jp/src/game/room.o
- .mdebug        0x0000000000000000     0xae78 build/jp/src/game/room.o
+ .mdebug        0x0000000000000000     0xad50 build/jp/src/game/room.o
  .options       0x0000000000000000       0x20 build/jp/src/engine/math_util.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/engine/math_util.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/engine/math_util.o
- .mdebug        0x0000000000000000     0xe7a0 build/jp/src/engine/math_util.o
+ .mdebug        0x0000000000000000     0xe734 build/jp/src/engine/math_util.o
  .options       0x0000000000000000       0x20 build/jp/src/engine/graph_node.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/engine/graph_node.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/engine/graph_node.o
- .mdebug        0x0000000000000000    0x12060 build/jp/src/engine/graph_node.o
+ .mdebug        0x0000000000000000    0x11eac build/jp/src/engine/graph_node.o
  .options       0x0000000000000000       0x20 build/jp/src/engine/geo_layout.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/engine/geo_layout.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/engine/geo_layout.o
  .gptab.bss     0x0000000000000000       0x38 build/jp/src/engine/geo_layout.o
- .mdebug        0x0000000000000000     0xf550 build/jp/src/engine/geo_layout.o
+ .mdebug        0x0000000000000000     0xf3e0 build/jp/src/engine/geo_layout.o
  .options       0x0000000000000000       0x20 build/jp/src/engine/level_script.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/engine/level_script.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/engine/level_script.o
  .gptab.bss     0x0000000000000000       0x28 build/jp/src/engine/level_script.o
- .mdebug        0x0000000000000000    0x199dc build/jp/src/engine/level_script.o
+ .mdebug        0x0000000000000000    0x19800 build/jp/src/engine/level_script.o
  .options       0x0000000000000000       0x20 build/jp/src/engine/surface_collision.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/engine/surface_collision.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/engine/surface_collision.o
- .mdebug        0x0000000000000000    0x12588 build/jp/src/engine/surface_collision.o
+ .mdebug        0x0000000000000000    0x12498 build/jp/src/engine/surface_collision.o
  .options       0x0000000000000000       0x20 build/jp/src/engine/surface_load.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/engine/surface_load.o
  .gptab.bss     0x0000000000000000       0x30 build/jp/src/engine/surface_load.o
- .mdebug        0x0000000000000000    0x19104 build/jp/src/engine/surface_load.o
+ .mdebug        0x0000000000000000    0x18fe0 build/jp/src/engine/surface_load.o
  .options       0x0000000000000000       0x20 build/jp/src/engine/behavior_script.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/engine/behavior_script.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/engine/behavior_script.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/engine/behavior_script.o
- .mdebug        0x0000000000000000    0x1c468 build/jp/src/engine/behavior_script.o
+ .mdebug        0x0000000000000000    0x1c348 build/jp/src/engine/behavior_script.o
  .text          0x0000000000000000        0x0 build/jp/data/trig_tables.o
  .bss           0x0000000000000000        0x0 build/jp/data/trig_tables.o
  .reginfo       0x0000000000000000       0x18 build/jp/data/trig_tables.o
@@ -886,90 +886,90 @@ Discarded input sections
  .options       0x0000000000000000       0x20 build/jp/src/game/level_select_menu.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/level_select_menu.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/game/level_select_menu.o
- .mdebug        0x0000000000000000     0xf5a0 build/jp/src/game/level_select_menu.o
+ .mdebug        0x0000000000000000     0xf390 build/jp/src/game/level_select_menu.o
  .options       0x0000000000000000       0x20 build/jp/src/game/intro_geo.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/intro_geo.o
  .gptab.data    0x0000000000000000       0x38 build/jp/src/game/intro_geo.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/game/intro_geo.o
- .mdebug        0x0000000000000000     0xec3c build/jp/src/game/intro_geo.o
+ .mdebug        0x0000000000000000     0xeb30 build/jp/src/game/intro_geo.o
  .options       0x0000000000000000       0x20 build/jp/src/game/file_select.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/file_select.o
  .gptab.data    0x0000000000000000       0x98 build/jp/src/game/file_select.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/game/file_select.o
- .mdebug        0x0000000000000000    0x1f708 build/jp/src/game/file_select.o
+ .mdebug        0x0000000000000000    0x1f4cc build/jp/src/game/file_select.o
  .options       0x0000000000000000       0x20 build/jp/src/game/star_select.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/game/star_select.o
  .gptab.data    0x0000000000000000       0x30 build/jp/src/game/star_select.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/game/star_select.o
- .mdebug        0x0000000000000000    0x11888 build/jp/src/game/star_select.o
+ .mdebug        0x0000000000000000    0x116c0 build/jp/src/game/star_select.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/gd_main.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/gd_main.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/goddard/gd_main.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/goddard/gd_main.o
- .mdebug        0x0000000000000000    0x10948 build/jp/src/goddard/gd_main.o
+ .mdebug        0x0000000000000000    0x107ac build/jp/src/goddard/gd_main.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/gd_memory.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/gd_memory.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/goddard/gd_memory.o
- .mdebug        0x0000000000000000    0x101f0 build/jp/src/goddard/gd_memory.o
+ .mdebug        0x0000000000000000    0x10080 build/jp/src/goddard/gd_memory.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/mhead_sfx.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/mhead_sfx.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/goddard/mhead_sfx.o
- .mdebug        0x0000000000000000     0xafb0 build/jp/src/goddard/mhead_sfx.o
+ .mdebug        0x0000000000000000     0xae88 build/jp/src/goddard/mhead_sfx.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/draw_objects.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/draw_objects.o
  .gptab.data    0x0000000000000000       0x40 build/jp/src/goddard/draw_objects.o
  .gptab.bss     0x0000000000000000       0x48 build/jp/src/goddard/draw_objects.o
- .mdebug        0x0000000000000000    0x17250 build/jp/src/goddard/draw_objects.o
+ .mdebug        0x0000000000000000    0x170e0 build/jp/src/goddard/draw_objects.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/mario_head_1.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/mario_head_1.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/goddard/mario_head_1.o
  .gptab.bss     0x0000000000000000       0x38 build/jp/src/goddard/mario_head_1.o
- .mdebug        0x0000000000000000    0x17360 build/jp/src/goddard/mario_head_1.o
+ .mdebug        0x0000000000000000    0x171ac build/jp/src/goddard/mario_head_1.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/mario_head_2.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/mario_head_2.o
  .gptab.bss     0x0000000000000000       0x20 build/jp/src/goddard/mario_head_2.o
- .mdebug        0x0000000000000000    0x1060c build/jp/src/goddard/mario_head_2.o
+ .mdebug        0x0000000000000000    0x10458 build/jp/src/goddard/mario_head_2.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/mario_head_3.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/mario_head_3.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/goddard/mario_head_3.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/goddard/mario_head_3.o
- .mdebug        0x0000000000000000    0x11efc build/jp/src/goddard/mario_head_3.o
+ .mdebug        0x0000000000000000    0x11db8 build/jp/src/goddard/mario_head_3.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlist_proc.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlist_proc.o
  .gptab.data    0x0000000000000000       0x20 build/jp/src/goddard/dynlist_proc.o
  .gptab.bss     0x0000000000000000       0x38 build/jp/src/goddard/dynlist_proc.o
- .mdebug        0x0000000000000000    0x18b4c build/jp/src/goddard/dynlist_proc.o
+ .mdebug        0x0000000000000000    0x19a48 build/jp/src/goddard/dynlist_proc.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/old_obj_fn.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/old_obj_fn.o
  .gptab.bss     0x0000000000000000       0x28 build/jp/src/goddard/old_obj_fn.o
- .mdebug        0x0000000000000000    0x11100 build/jp/src/goddard/old_obj_fn.o
+ .mdebug        0x0000000000000000    0x11000 build/jp/src/goddard/old_obj_fn.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/profiler_utils.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/profiler_utils.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/goddard/profiler_utils.o
  .gptab.bss     0x0000000000000000       0x38 build/jp/src/goddard/profiler_utils.o
- .mdebug        0x0000000000000000    0x12e60 build/jp/src/goddard/profiler_utils.o
+ .mdebug        0x0000000000000000    0x12cf0 build/jp/src/goddard/profiler_utils.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/joint_fns.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/joint_fns.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/goddard/joint_fns.o
  .gptab.bss     0x0000000000000000       0x30 build/jp/src/goddard/joint_fns.o
- .mdebug        0x0000000000000000    0x151cc build/jp/src/goddard/joint_fns.o
+ .mdebug        0x0000000000000000    0x15048 build/jp/src/goddard/joint_fns.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/skin_fns.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/skin_fns.o
  .gptab.bss     0x0000000000000000       0x18 build/jp/src/goddard/skin_fns.o
- .mdebug        0x0000000000000000    0x12904 build/jp/src/goddard/skin_fns.o
+ .mdebug        0x0000000000000000    0x1270c build/jp/src/goddard/skin_fns.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/matrix_fns.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/matrix_fns.o
- .mdebug        0x0000000000000000    0x132ac build/jp/src/goddard/matrix_fns.o
+ .mdebug        0x0000000000000000    0x13124 build/jp/src/goddard/matrix_fns.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/half_6.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/half_6.o
  .gptab.data    0x0000000000000000       0x58 build/jp/src/goddard/half_6.o
  .gptab.bss     0x0000000000000000       0x60 build/jp/src/goddard/half_6.o
- .mdebug        0x0000000000000000    0x17b70 build/jp/src/goddard/half_6.o
+ .mdebug        0x0000000000000000    0x17a00 build/jp/src/goddard/half_6.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/mario_head_6.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/mario_head_6.o
  .gptab.data    0x0000000000000000       0x30 build/jp/src/goddard/mario_head_6.o
  .gptab.bss     0x0000000000000000       0xa8 build/jp/src/goddard/mario_head_6.o
- .mdebug        0x0000000000000000    0x23324 build/jp/src/goddard/mario_head_6.o
+ .mdebug        0x0000000000000000    0x23140 build/jp/src/goddard/mario_head_6.o
  .text          0x0000000000000000        0x0 build/jp/data/goddard_tex_dl.o
  .data          0x0000000000000000        0x0 build/jp/data/goddard_tex_dl.o
  .bss           0x0000000000000000        0x0 build/jp/data/goddard_tex_dl.o
@@ -1016,55 +1016,55 @@ Discarded input sections
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/dynlist_test_cube.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/dynlist_test_cube.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/goddard/dynlists/dynlist_test_cube.o
- .mdebug        0x0000000000000000     0xf314 build/jp/src/goddard/dynlists/dynlist_test_cube.o
+ .mdebug        0x0000000000000000     0xf25c build/jp/src/goddard/dynlists/dynlist_test_cube.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/dynlist_unused.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/dynlist_unused.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/goddard/dynlists/dynlist_unused.o
- .mdebug        0x0000000000000000     0xf308 build/jp/src/goddard/dynlists/dynlist_unused.o
+ .mdebug        0x0000000000000000     0xf250 build/jp/src/goddard/dynlists/dynlist_unused.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/dynlist_mario_face.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/dynlist_mario_face.o
  .gptab.data    0x0000000000000000       0x30 build/jp/src/goddard/dynlists/dynlist_mario_face.o
- .mdebug        0x0000000000000000     0xf404 build/jp/src/goddard/dynlists/dynlist_mario_face.o
+ .mdebug        0x0000000000000000     0xf348 build/jp/src/goddard/dynlists/dynlist_mario_face.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/dynlists_mario_eyes.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/dynlists_mario_eyes.o
  .gptab.data    0x0000000000000000       0x30 build/jp/src/goddard/dynlists/dynlists_mario_eyes.o
- .mdebug        0x0000000000000000     0xf544 build/jp/src/goddard/dynlists/dynlists_mario_eyes.o
+ .mdebug        0x0000000000000000     0xf48c build/jp/src/goddard/dynlists/dynlists_mario_eyes.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/dynlists_mario_eyebrows_mustache.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/dynlists_mario_eyebrows_mustache.o
  .gptab.data    0x0000000000000000       0x40 build/jp/src/goddard/dynlists/dynlists_mario_eyebrows_mustache.o
- .mdebug        0x0000000000000000     0xf6cc build/jp/src/goddard/dynlists/dynlists_mario_eyebrows_mustache.o
+ .mdebug        0x0000000000000000     0xf614 build/jp/src/goddard/dynlists/dynlists_mario_eyebrows_mustache.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/dynlist_mario_master.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/dynlist_mario_master.o
  .gptab.data    0x0000000000000000       0x18 build/jp/src/goddard/dynlists/dynlist_mario_master.o
- .mdebug        0x0000000000000000     0xfdec build/jp/src/goddard/dynlists/dynlist_mario_master.o
+ .mdebug        0x0000000000000000     0xfd04 build/jp/src/goddard/dynlists/dynlist_mario_master.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/anim_mario_mustache_right.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/anim_mario_mustache_right.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/goddard/dynlists/anim_mario_mustache_right.o
- .mdebug        0x0000000000000000     0xf4f0 build/jp/src/goddard/dynlists/anim_mario_mustache_right.o
+ .mdebug        0x0000000000000000     0xf3b0 build/jp/src/goddard/dynlists/anim_mario_mustache_right.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/anim_mario_mustache_left.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/anim_mario_mustache_left.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/goddard/dynlists/anim_mario_mustache_left.o
- .mdebug        0x0000000000000000     0xf4e8 build/jp/src/goddard/dynlists/anim_mario_mustache_left.o
+ .mdebug        0x0000000000000000     0xf3a8 build/jp/src/goddard/dynlists/anim_mario_mustache_left.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/anim_mario_lips_1.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/anim_mario_lips_1.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/goddard/dynlists/anim_mario_lips_1.o
- .mdebug        0x0000000000000000     0xf4c0 build/jp/src/goddard/dynlists/anim_mario_lips_1.o
+ .mdebug        0x0000000000000000     0xf380 build/jp/src/goddard/dynlists/anim_mario_lips_1.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/anim_mario_lips_2.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/anim_mario_lips_2.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/goddard/dynlists/anim_mario_lips_2.o
- .mdebug        0x0000000000000000     0xf4c0 build/jp/src/goddard/dynlists/anim_mario_lips_2.o
+ .mdebug        0x0000000000000000     0xf380 build/jp/src/goddard/dynlists/anim_mario_lips_2.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/anim_mario_eyebrows_1.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/anim_mario_eyebrows_1.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/goddard/dynlists/anim_mario_eyebrows_1.o
- .mdebug        0x0000000000000000     0xf4d8 build/jp/src/goddard/dynlists/anim_mario_eyebrows_1.o
+ .mdebug        0x0000000000000000     0xf398 build/jp/src/goddard/dynlists/anim_mario_eyebrows_1.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/anim_group_1.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/anim_group_1.o
  .gptab.data    0x0000000000000000       0x28 build/jp/src/goddard/dynlists/anim_group_1.o
- .mdebug        0x0000000000000000     0xfb10 build/jp/src/goddard/dynlists/anim_group_1.o
+ .mdebug        0x0000000000000000     0xf9d0 build/jp/src/goddard/dynlists/anim_group_1.o
  .options       0x0000000000000000       0x20 build/jp/src/goddard/dynlists/anim_group_2.o
  .reginfo       0x0000000000000000       0x18 build/jp/src/goddard/dynlists/anim_group_2.o
  .gptab.data    0x0000000000000000       0x38 build/jp/src/goddard/dynlists/anim_group_2.o
- .mdebug        0x0000000000000000     0xfa8c build/jp/src/goddard/dynlists/anim_group_2.o
+ .mdebug        0x0000000000000000     0xf94c build/jp/src/goddard/dynlists/anim_group_2.o
  .text          0x0000000000000000        0x0 build/jp/bin/menu/header.o
  .data          0x0000000000000000        0x0 build/jp/bin/menu/header.o
  .bss           0x0000000000000000        0x0 build/jp/bin/menu/header.o
@@ -1586,14 +1586,6 @@ Discarded input sections
  .pdr           0x0000000000000000        0x0 build/jp/assets/music_data.sbk.o
  .gnu.attributes
                 0x0000000000000000       0x10 build/jp/assets/music_data.sbk.o
- .text          0x0000000000000000      0x760 build/jp/src/engine/gravity.o
- .data          0x0000000000000000       0xb0 build/jp/src/engine/gravity.o
- .bss           0x0000000000000000       0xb0 build/jp/src/engine/gravity.o
- .options       0x0000000000000000       0x20 build/jp/src/engine/gravity.o
- .reginfo       0x0000000000000000       0x18 build/jp/src/engine/gravity.o
- .gptab.data    0x0000000000000000       0x20 build/jp/src/engine/gravity.o
- .gptab.bss     0x0000000000000000       0x18 build/jp/src/engine/gravity.o
- .mdebug        0x0000000000000000     0xdc34 build/jp/src/engine/gravity.o
  .text          0x0000000000000000        0x0 build/jp/actors/group7.o
  .data          0x0000000000000000        0x0 build/jp/actors/group7.o
  .bss           0x0000000000000000        0x0 build/jp/actors/group7.o
@@ -1858,9 +1850,6 @@ Discarded input sections
  .pdr           0x0000000000000000        0x0 build/jp/libultra.a(osWritebackDCache.o)
  .gnu.attributes
                 0x0000000000000000       0x10 build/jp/libultra.a(osWritebackDCache.o)
- .options       0x0000000000000000       0x20 build/jp/libultra.a(osSendMesg.o)
- .reginfo       0x0000000000000000       0x18 build/jp/libultra.a(osSendMesg.o)
- .mdebug        0x0000000000000000      0x438 build/jp/libultra.a(osSendMesg.o)
  .options       0x0000000000000000       0x20 build/jp/libultra.a(osContInit.o)
  .reginfo       0x0000000000000000       0x18 build/jp/libultra.a(osContInit.o)
  .gptab.data    0x0000000000000000       0x18 build/jp/libultra.a(osContInit.o)
@@ -2083,6 +2072,9 @@ Discarded input sections
  .options       0x0000000000000000       0x20 build/jp/libultra.a(__osDevMgrMain.o)
  .reginfo       0x0000000000000000       0x18 build/jp/libultra.a(__osDevMgrMain.o)
  .mdebug        0x0000000000000000      0x2ec build/jp/libultra.a(__osDevMgrMain.o)
+ .options       0x0000000000000000       0x20 build/jp/libultra.a(osSendMesg.o)
+ .reginfo       0x0000000000000000       0x18 build/jp/libultra.a(osSendMesg.o)
+ .mdebug        0x0000000000000000      0x438 build/jp/libultra.a(osSendMesg.o)
  .options       0x0000000000000000       0x20 build/jp/libultra.a(llmuldiv.o)
  .reginfo       0x0000000000000000       0x18 build/jp/libultra.a(llmuldiv.o)
  .mdebug        0x0000000000000000      0x6b0 build/jp/libultra.a(llmuldiv.o)
@@ -2499,7 +2491,7 @@ Linker script and memory map
  .text          0x0000000080250770     0x46b0 build/jp/src/game/mario.o
                 0x0000000080250770                func_80250770
                 0x00000000802507ac                func_802507AC
-                0x00000000802507e8                func_802507E8
+                0x00000000802507e8                set_mario_animation
                 0x0000000080250934                func_80250934
                 0x0000000080250aac                func_80250AAC
                 0x0000000080250b68                func_80250B68
@@ -2735,9 +2727,9 @@ Linker script and memory map
                 0x0000000080261f8c                func_80261F8C
                 0x0000000080262084                act_slide_kick_slide_stop
                 0x0000000080262124                act_start_crouching
-                0x0000000080262244                func_80262244
+                0x0000000080262244                act_stop_crouching
                 0x0000000080262364                act_start_crawling
-                0x0000000080262484                func_80262484
+                0x0000000080262484                act_stop_crawling
                 0x0000000080262574                func_80262574
                 0x00000000802627b8                func_802627B8
                 0x0000000080262828                func_80262828
@@ -3140,17 +3132,17 @@ Linker script and memory map
                 0x000000008027ef30                decompress
  build/jp/src/game/camera.o(.text)
  .text          0x000000008027efe0    0x1d010 build/jp/src/game/camera.o
-                0x000000008027efe0                func_8027EFE0
-                0x000000008027f308                func_8027F308
+                0x000000008027efe0                set_camera_shake
+                0x000000008027f308                set_camera_shake_2
                 0x000000008027f440                func_8027F440
-                0x000000008027f5c4                unused_8027F5C4
+                0x000000008027f5c4                unused_set_camera_shake
                 0x000000008027f668                func_8027F668
-                0x000000008027f870                func_8027F870
+                0x000000008027f870                copy_mario_position_shifted_up
                 0x000000008027f950                unused_8027F950
                 0x000000008027fa48                func_8027FA48
                 0x000000008027fdb8                func_8027FDB8
                 0x000000008027ff44                func_8027FF44
-                0x00000000802800f4                func_802800F4
+                0x00000000802800f4                find_in_bounds_yaw_wdw_bob_thi
                 0x0000000080280260                CameraChange01
                 0x00000000802803c0                CameraChange0E
                 0x0000000080280550                func_80280550
@@ -3158,7 +3150,7 @@ Linker script and memory map
                 0x0000000080280e0c                func_80280E0C
                 0x0000000080280e3c                func_80280E3C
                 0x0000000080280ebc                func_80280EBC
-                0x0000000080280fd8                func_80280FD8
+                0x0000000080280fd8                update_bowser_level_camera
                 0x00000000802810f0                CameraChange02
                 0x000000008028124c                func_8028124C
                 0x0000000080281354                CameraChange0C
@@ -3172,9 +3164,9 @@ Linker script and memory map
                 0x00000000802827c8                CameraChange03
                 0x0000000080282d90                func_80282D90
                 0x0000000080282fc8                func_80282FC8
-                0x0000000080283434                func_80283434
-                0x0000000080283468                CameraChange08
-                0x0000000080283484                func_80283484
+                0x0000000080283434                update_behind_mario_camera
+                0x0000000080283468                camera_change_nop
+                0x0000000080283484                update_water_surface_camera
                 0x00000000802834b8                CameraChange040710
                 0x0000000080283548                func_80283548
                 0x0000000080284708                func_80284708
@@ -3187,22 +3179,22 @@ Linker script and memory map
                 0x0000000080284c2c                func_80284C2C
                 0x0000000080284cbc                func_80284CBC
                 0x0000000080284d44                func_80284D44
-                0x0000000080284dc0                func_80284DC0
+                0x0000000080284dc0                exit_c_up_mode
                 0x0000000080285258                CameraChange06
                 0x00000000802852f4                func_802852F4
                 0x000000008028547c                func_8028547C
-                0x0000000080285770                func_80285770
+                0x0000000080285770                update_c_up_camera
                 0x0000000080285928                CameraChange0A
-                0x00000000802859b0                func_802859B0
+                0x00000000802859b0                update_cannon_camera
                 0x0000000080285a8c                func_80285A8C
-                0x0000000080285ad8                func_80285AD8
+                0x0000000080285ad8                set_camera_preset
                 0x0000000080285bd8                func_80285BD8
                 0x0000000080285e70                func_80285E70
-                0x0000000080286348                func_80286348
-                0x00000000802869b8                func_802869B8
-                0x0000000080286c9c                func_80286C9C
+                0x0000000080286348                update_camera
+                0x00000000802869b8                reset_camera
+                0x0000000080286c9c                init_camera
                 0x0000000080287404                func_80287404
-                0x00000000802875dc                func_802875DC
+                0x00000000802875dc                select_mario_cam_mode
                 0x00000000802875f8                func_802875F8
                 0x00000000802876d0                func_802876D0
                 0x0000000080287748                Geo0F_80287D30
@@ -3214,49 +3206,49 @@ Linker script and memory map
                 0x0000000080287890                unused_object_angle_to_vec3s
                 0x00000000802878b8                func_802878B8
                 0x0000000080287cfc                func_80287CFC
-                0x000000008028803c                func_8028803C
-                0x0000000080288130                func_80288130
+                0x000000008028803c                select_or_activate_mario_cam
+                0x0000000080288130                test_or_set_mario_cam_active
                 0x00000000802882a0                func_802882A0
                 0x00000000802883c8                func_802883C8
-                0x00000000802886fc                func_802886FC
+                0x00000000802886fc                find_c_buttons_pressed
                 0x0000000080288880                update_camera_status
-                0x0000000080288974                func_80288974
-                0x0000000080288bb0                func_80288BB0
-                0x0000000080288c2c                func_80288C2C
-                0x0000000080288cf0                func_80288CF0
+                0x0000000080288974                find_and_return_count_wall_collisions
+                0x0000000080288bb0                vec3f_compare
+                0x0000000080288c2c                vec3f_rotate_into_yaw_range
+                0x0000000080288cf0                is_within_100_units_of_mario
                 0x0000000080288d74                func_80288D74
-                0x0000000080288e0c                approach_f32_exponential
-                0x0000000080288ea0                approach_f32_exponential_2
-                0x0000000080288ecc                approach_s16_exponential
-                0x0000000080288f84                approach_s16_exponential_2
+                0x0000000080288e0c                approach_f32_exponential_bool
+                0x0000000080288ea0                approach_f32_exponential
+                0x0000000080288ecc                approach_s16_exponential_bool
+                0x0000000080288f84                approach_s16_exponential
                 0x0000000080289028                approach_vec3f_exponential
                 0x000000008028909c                func_8028909C
                 0x0000000080289110                approach_vec3s_exponential
-                0x0000000080289184                func_80289184
-                0x0000000080289264                func_80289264
+                0x0000000080289184                camera_approach_s16_symmetric_bool
+                0x0000000080289264                camera_approach_s16_symmetric
                 0x0000000080289354                func_80289354
-                0x00000000802893e4                func_802893E4
-                0x0000000080289524                func_80289524
+                0x00000000802893e4                camera_approach_f32_symmetric_bool
+                0x0000000080289524                camera_approach_f32_symmetric
                 0x0000000080289618                func_80289618
                 0x0000000080289738                func_80289738
-                0x00000000802899a0                func_802899A0
+                0x00000000802899a0                clamp_positions_and_find_yaw_angle
                 0x0000000080289a98                func_80289A98
-                0x0000000080289b0c                func_80289B0C
-                0x0000000080289f04                func_80289F04
+                0x0000000080289b0c                is_pos_less_than_bounds
+                0x0000000080289f04                is_behind_surface
                 0x000000008028a0d4                func_8028A0D4
-                0x000000008028a204                func_8028A204
-                0x000000008028a24c                func_8028A24C
-                0x000000008028a300                func_8028A300
-                0x000000008028a440                func_8028A440
-                0x000000008028a4f0                func_8028A4F0
-                0x000000008028a578                func_8028A578
-                0x000000008028a640                func_8028A640
-                0x000000008028a6e4                func_8028A6E4
-                0x000000008028a764                func_8028A764
-                0x000000008028a834                func_8028A834
-                0x000000008028a908                func_8028A908
-                0x000000008028a964                func_8028A964
-                0x000000008028aa24                func_8028AA24
+                0x000000008028a204                is_mario_behind_surface
+                0x000000008028a24c                scale_along_line
+                0x000000008028a300                check_if_vector_fits_in_bounds
+                0x000000008028a440                calculate_verticle_angle
+                0x000000008028a4f0                calculate_yaw
+                0x000000008028a578                calculate_angles
+                0x000000008028a640                calc_abs_dist
+                0x000000008028a6e4                calc_hor_dist
+                0x000000008028a764                rotate_in_xz
+                0x000000008028a834                rotate_in_yz
+                0x000000008028a908                set_camera_pitch_shake
+                0x000000008028a964                set_camera_yaw_shake
+                0x000000008028aa24                set_camera_roll_shake
                 0x000000008028aa80                func_8028AA80
                 0x000000008028ab34                Unknown8028AB34
                 0x000000008028abe8                func_8028ABE8
@@ -3266,23 +3258,23 @@ Linker script and memory map
                 0x000000008028af24                func_8028AF24
                 0x000000008028b13c                func_8028B13C
                 0x000000008028b16c                func_8028B16C
-                0x000000008028b19c                func_8028B19C
-                0x000000008028b1dc                func_8028B1DC
-                0x000000008028b21c                func_8028B21C
-                0x000000008028b268                func_8028B268
-                0x000000008028b29c                func_8028B29C
-                0x000000008028b2d0                func_8028B2D0
-                0x000000008028b304                func_8028B304
-                0x000000008028b338                func_8028B338
+                0x000000008028b19c                play_camera_buzz_if_cdown
+                0x000000008028b1dc                play_camera_buzz_if_cbutton
+                0x000000008028b21c                play_camera_buzz_if_c_sideways
+                0x000000008028b268                play_sound_cbutton_up
+                0x000000008028b29c                play_sound_cbutton_down
+                0x000000008028b2d0                play_sound_cbutton_side
+                0x000000008028b304                play_sound_button_change_blocked
+                0x000000008028b338                play_sound_rbutton_changed
                 0x000000008028b36c                func_8028B36C
                 0x000000008028b3dc                func_8028B3DC
-                0x000000008028b740                StopMario
+                0x000000008028b740                stop_mario
                 0x000000008028b7a4                func_8028B7A4
                 0x000000008028ba38                func_8028BA38
-                0x000000008028bb3c                func_8028BB3C
-                0x000000008028bb8c                func_8028BB8C
-                0x000000008028bc6c                func_8028BC6C
-                0x000000008028bcc8                func_8028BCC8
+                0x000000008028bb3c                set_camera_cutscene_table
+                0x000000008028bb8c                determine_star_fadeout_cutscene_table
+                0x000000008028bc6c                return_table_door_push_or_pull
+                0x000000008028bcc8                return_cutscene_table
                 0x000000008028c1a0                func_8028C1A0
                 0x000000008028c2f0                func_8028C2F0
                 0x000000008028c3ac                Unknown8028C3AC
@@ -3290,15 +3282,15 @@ Linker script and memory map
                 0x000000008028c508                unused_8028C508
                 0x000000008028c5f0                func_8028C5F0
                 0x000000008028c794                func_8028C794
-                0x000000008028c7ec                func_8028C7EC
+                0x000000008028c7ec                determine_pushing_or_pulling_door
                 0x000000008028c824                func_8028C824
                 0x000000008028ce1c                Unknown8028CE1C
-                0x000000008028ce4c                func_8028CE4C
-                0x000000008028cfac                func_8028CFAC
-                0x000000008028cffc                func_8028CFFC
-                0x000000008028d058                func_8028D058
-                0x000000008028d098                func_8028D098
-                0x000000008028d19c                func_8028D19C
+                0x000000008028ce4c                set_camera_preset_fixed_ref_point
+                0x000000008028cfac                set_camera_preset_bowser_level
+                0x000000008028cffc                set_camera_preset_boss_fight
+                0x000000008028d058                set_camera_preset_close_cam
+                0x000000008028d098                set_camera_preset_open_camera
+                0x000000008028d19c                parallel_tracking_init
                 0x000000008028d288                func_8028D288
                 0x000000008028d32c                func_8028D32C
                 0x000000008028d418                CameraRR00
@@ -3306,7 +3298,7 @@ Linker script and memory map
                 0x000000008028d4ec                CameraRR02
                 0x000000008028d538                CameraRR0305
                 0x000000008028d5b4                CameraRR01
-                0x000000008028d5f4                CameraMetal00
+                0x000000008028d5f4                CameraCotMC00
                 0x000000008028d61c                CameraSL00
                 0x000000008028d670                CameraSL01
                 0x000000008028d6a4                func_8028D6A4
@@ -3332,45 +3324,45 @@ Linker script and memory map
                 0x000000008028dd68                CameraInside00
                 0x000000008028dd94                CameraInside0E
                 0x000000008028ddcc                CameraInside0F
-                0x000000008028ddf8                CameraBBH2B2C
+                0x000000008028ddf8                bbh_room_6_camera
                 0x000000008028de2c                CameraBBH24
                 0x000000008028de58                CameraBBH2E2F
-                0x000000008028df00                CameraBBH020C
+                0x000000008028df00                bbh_room_1_camera
                 0x000000008028df38                CameraBBH01
-                0x000000008028df70                CameraBBH0D0F
-                0x000000008028dfa8                CameraBBH1011
-                0x000000008028dfe0                CameraBBH12
-                0x000000008028e018                CameraBBH1314
-                0x000000008028e050                CameraBBH15
-                0x000000008028e0a0                CameraBBH16
-                0x000000008028e0f0                CameraBBH17
-                0x000000008028e134                CameraBBH18
-                0x000000008028e16c                CameraBBH28
-                0x000000008028e1a4                CameraBBH29
-                0x000000008028e1f4                CameraBBH2A
+                0x000000008028df70                bbh_room_2_lower_camera
+                0x000000008028dfa8                bbh_room_4_camera
+                0x000000008028dfe0                bbh_room_8_camera
+                0x000000008028e018                bbh_room_5_library_camera
+                0x000000008028e050                bbh_room_5_library_to_hidden_transition
+                0x000000008028e0a0                bbh_room_5_hidden_to_library_transition
+                0x000000008028e0f0                bbh_room_5_hidden_camera
+                0x000000008028e134                bbh_room_3_camera
+                0x000000008028e16c                bbh_room_7_mr_i_camera
+                0x000000008028e1a4                bbh_room_7_mr_i_to_coffins_transition
+                0x000000008028e1f4                bbh_room_7_coffins_to_mr_i_transition
                 0x000000008028e244                CameraBBH3033
                 0x000000008028e27c                CameraBBH34
                 0x000000008028e2a8                CameraBBH38
-                0x000000008028e30c                CameraBBH393A
+                0x000000008028e30c                bbh_room_12_upper_camera
                 0x000000008028e350                CameraBBH00
-                0x000000008028e37c                CameraBBH1A1B
-                0x000000008028e3b4                CameraBBH1C
-                0x000000008028e404                CameraBBH1E
-                0x000000008028e43c                CameraBBH1D
-                0x000000008028e48c                CameraBBH1F20
-                0x000000008028e4c4                CameraBBH21
-                0x000000008028e514                CameraBBH22
-                0x000000008028e564                CameraBBH23
-                0x000000008028e59c                CameraBBH3536
+                0x000000008028e37c                bbh_room_2_library_camera
+                0x000000008028e3b4                bbh_room_2_library_to_trapdoor_transition
+                0x000000008028e404                bbh_room_2_trapdoor_camera
+                0x000000008028e43c                bbh_room_2_trapdoor_transition
+                0x000000008028e48c                bbh_room_9_attic_camera
+                0x000000008028e4c4                bbh_room_9_attic_transition
+                0x000000008028e514                bbh_room_9_mr_i_transition
+                0x000000008028e564                bbh_room_13_balcony_camera
+                0x000000008028e59c                bbh_room_0_camera
                 0x000000008028e5e0                CameraCCM00
                 0x000000008028e608                CameraCCM01
                 0x000000008028e634                func_8028E634
                 0x000000008028e70c                func_8028E70C
                 0x000000008028e774                func_8028E774
                 0x000000008028e88c                func_8028E88C
-                0x000000008028f04c                func_8028F04C
+                0x000000008028f04c                resolve_geometry_collisions
                 0x000000008028f2f0                func_8028F2F0
-                0x000000008028f678                func_8028F678
+                0x000000008028f678                find_mario_relative_geometry
                 0x000000008028f800                func_8028F800
                 0x000000008028f834                func_8028F834
                 0x000000008028f860                unused_8028F860
@@ -3380,7 +3372,7 @@ Linker script and memory map
                 0x000000008028fa74                func_8028FA74
                 0x000000008028fabc                func_8028FABC
                 0x000000008028fae0                func_8028FAE0
-                0x000000008028fb44                func_8028FB44
+                0x000000008028fb44                cap_switch_save
                 0x000000008028fb80                func_8028FB80
                 0x000000008028fbd8                func_8028FBD8
                 0x000000008028fd94                func_8028FD94
@@ -3390,7 +3382,7 @@ Linker script and memory map
                 0x000000008028fe84                CutsceneIntroPeach0_2
                 0x000000008028feb0                CutsceneIntroPeach2_1
                 0x000000008028fedc                func_8028FEDC
-                0x000000008028fefc                func_8028FEFC
+                0x000000008028fefc                move_credits_camera
                 0x0000000080290144                func_80290144
                 0x00000000802901b4                func_802901B4
                 0x0000000080290224                func_80290224
@@ -3491,7 +3483,7 @@ Linker script and memory map
                 0x000000008029309c                CutsceneEnterBowserPlatform0_1
                 0x00000000802930c8                func_802930C8
                 0x00000000802930f4                CutsceneEnterBowserPlatform0_2
-                0x00000000802931a8                CutsceneEnterBowserPlatform1_1
+                0x00000000802931a8                bowser_fight_intro_dialogue
                 0x000000008029322c                CutsceneEnterBowserPlatform1
                 0x0000000080293288                CutsceneEnterBowserPlatform2
                 0x0000000080293304                CutsceneEnterBowserPlatform0
@@ -3598,7 +3590,7 @@ Linker script and memory map
                 0x0000000080296cfc                CutsceneUnlockKeyDoor0_4
                 0x0000000080296d28                CutsceneUnlockKeyDoor0
                 0x0000000080296ddc                func_80296DDC
-                0x0000000080296ed8                CutsceneIntroPeach0_3
+                0x0000000080296ed8                peach_letter_text
                 0x0000000080296f04                CutsceneIntroPeachCommon
                 0x0000000080296f6c                CutsceneIntroPeach4
                 0x0000000080296ffc                CutsceneIntroPeach3_2
@@ -3606,7 +3598,7 @@ Linker script and memory map
                 0x0000000080297088                CutsceneIntroPeach0_1
                 0x00000000802970c4                CutsceneIntroPeach3_1
                 0x0000000080297108                CutsceneIntroPeach3_3
-                0x0000000080297134                CutsceneIntroPeach3_4
+                0x0000000080297134                intro_pipe_exit_text
                 0x0000000080297160                CutsceneIntroPeach2
                 0x0000000080297204                CutsceneIntroPeach3
                 0x0000000080297334                CutsceneIntroPeach1
@@ -3648,20 +3640,20 @@ Linker script and memory map
                 0x0000000080299d00                func_80299D00
                 0x0000000080299db4                func_80299DB4
                 0x0000000080299ea0                unused_80299EA0
-                0x0000000080299ecc                func_80299ECC
-                0x0000000080299ef0                func_80299EF0
-                0x0000000080299f30                func_80299F30
-                0x0000000080299f54                func_80299F54
-                0x0000000080299f78                func_80299F78
-                0x0000000080299fd8                func_80299FD8
+                0x0000000080299ecc                set_fov_30
+                0x0000000080299ef0                approach_fov_20
+                0x0000000080299f30                set_fov_45
+                0x0000000080299f54                set_fov_29
+                0x0000000080299f78                zoom_fov_30
+                0x0000000080299fd8                zoom_fov_for_sleep
                 0x000000008029a100                unused_8029A100
-                0x000000008029a13c                func_8029A13C
-                0x000000008029a178                func_8029A178
-                0x000000008029a1b4                func_8029A1B4
-                0x000000008029a24c                func_8029A24C
+                0x000000008029a13c                approach_fov_30
+                0x000000008029a178                approach_fov_60
+                0x000000008029a1b4                approach_fov_45
+                0x000000008029a24c                approach_fov_80
                 0x000000008029a288                func_8029A288
                 0x000000008029a320                Geo0A_8029AA3C
-                0x000000008029a478                func_8029A478
+                0x000000008029a478                set_fov_function
                 0x000000008029a494                func_8029A494
                 0x000000008029a514                func_8029A514
                 0x000000008029a664                unused_8029A664
@@ -4613,18 +4605,18 @@ Linker script and memory map
                 0x00000000802cd3b4                floor_local_tilt
                 0x00000000802cd45c                make_shadow_vertex
                 0x00000000802cd648                add_shadow_to_display_list
-                0x00000000802cd7dc                func_802CD7DC
-                0x00000000802cd90c                func_802CD90C
-                0x00000000802cda44                func_802CDA44
+                0x00000000802cd7dc                linearly_interpolate_solidity_positive
+                0x00000000802cd90c                linearly_interpolate_solidity_negative
+                0x00000000802cda44                correct_shadow_solidity_for_animations
                 0x00000000802cdbb0                correct_lava_shadow_height
-                0x00000000802cdcbc                func_802CDCBC
-                0x00000000802cdef0                draw_shadow_circle_9_verts
-                0x00000000802ce008                draw_shadow_circle_4_verts
-                0x00000000802ce124                draw_shadow_circle_assuming_flat_ground
-                0x00000000802ce2e0                draw_shadow_rectangle
+                0x00000000802cdcbc                create_shadow_player
+                0x00000000802cdef0                create_shadow_circle_9_verts
+                0x00000000802ce008                create_shadow_circle_4_verts
+                0x00000000802ce124                create_shadow_circle_assuming_flat_ground
+                0x00000000802ce2e0                create_shadow_rectangle
                 0x00000000802ce48c                get_shadow_height_solidity
-                0x00000000802ce5a0                draw_shadow_square
-                0x00000000802ce710                draw_shadow_hardcoded_rectangle
+                0x00000000802ce5a0                create_shadow_square
+                0x00000000802ce710                create_shadow_hardcoded_rectangle
                 0x00000000802ce86c                create_shadow_below_xyz
  build/jp/src/game/skybox.o(.text)
  .text          0x00000000802cead0      0xad0 build/jp/src/game/skybox.o
@@ -4656,14 +4648,14 @@ Linker script and memory map
                 0x00000000802d1368                Geo18_802D1E48
                 0x00000000802d14c8                Geo18_802D1FA8
                 0x00000000802d1628                Geo18_802D2108
- build/jp/src/game/transparent_texture.o(.text)
- .text          0x00000000802d1730      0x7b0 build/jp/src/game/transparent_texture.o
+ build/jp/src/game/geo_misc.o(.text)
+ .text          0x00000000802d1730      0x7b0 build/jp/src/game/geo_misc.o
                 0x00000000802d1730                make_vertex
                 0x00000000802d17e4                round_float
-                0x00000000802d1880                Geo18_802D2360
-                0x00000000802d1990                Geo18_802D2470
-                0x00000000802d1a40                Geo18_802D2520
-                0x00000000802d1dec                Geo18_802D28CC
+                0x00000000802d1880                geo_exec_inside_castle_light
+                0x00000000802d1990                geo_exec_flying_carpet_timer_update
+                0x00000000802d1a40                geo_exec_flying_carpet_create
+                0x00000000802d1dec                geo_exec_cake_end_screen
  build/jp/src/game/paintings.o(.text)
  .text          0x00000000802d1ee0     0x3440 build/jp/src/game/paintings.o
                 0x00000000802d1ee0                func_802D1EE0
@@ -6212,14 +6204,15 @@ Linker script and memory map
  build/jp/libultra.a:__osAtomicDec.o(.text)
  .text          0x000000008032a2c0       0x60 build/jp/libultra.a(__osAtomicDec.o)
                 0x000000008032a2c0                __osAtomicDec
+ build/jp/libultra.a:guLookAtRef.o(.text)
  build/jp/lib/rsp.o(.text)
  .text          0x000000008032a320     0x2300 build/jp/lib/rsp.o
                 0x000000008032a320                rspF3DBootStart
                 0x000000008032a3f0                rspF3DBootEnd
                 0x000000008032a3f0                rspF3DStart
                 0x000000008032b7f8                rspF3DEnd
-                0x000000008032b800                rspF3DAudioStart
-                0x000000008032c620                rspF3DAudioEnd
+                0x000000008032b800                rspAspMainStart
+                0x000000008032c620                rspAspMainEnd
  build/jp/src/game/main.o(.data*)
  .data          0x000000008032c620       0x70 build/jp/src/game/main.o
                 0x000000008032c620                gVblankHandler1
@@ -6397,14 +6390,14 @@ Linker script and memory map
                 0x000000008032cfb8                gCurrentFrameIndex2
  build/jp/src/game/camera.o(.data*)
  .data          0x000000008032cfc0     0x1fa0 build/jp/src/game/camera.o
-                0x000000008032cfc0                D_8032CFC0
-                0x000000008032cfc4                D_8032CFC4
-                0x000000008032cfc8                D_8032CFC8
-                0x000000008032cfcc                D_8032CFCC
-                0x000000008032cfd0                D_8032CFD0
+                0x000000008032cfc0                unused_8032CFC0
+                0x000000008032cfc4                gCutsceneFocus
+                0x000000008032cfc8                unused_8032CFC8
+                0x000000008032cfcc                unused_8032CFCC
+                0x000000008032cfd0                gSecondCameraFocus
                 0x000000008032cfd4                D_8032CFD4
-                0x000000008032cfd8                D_8032CFD8
-                0x000000008032cfdc                D_8032CFDC
+                0x000000008032cfd8                gCurrLevelArea
+                0x000000008032cfdc                gPrevLevel
                 0x000000008032cfe0                D_8032CFE0
                 0x000000008032cfe4                D_8032CFE4
                 0x000000008032cfe8                D_8032CFE8
@@ -6413,8 +6406,8 @@ Linker script and memory map
                 0x000000008032cff4                D_8032CFF4
                 0x000000008032cff8                D_8032CFF8
                 0x000000008032cffc                D_8032CFFC
-                0x000000008032d000                D_8032D000
-                0x000000008032d004                D_8032D004
+                0x000000008032d000                sMarioStatusForCamera
+                0x000000008032d004                sLuigiStatusForCamera
                 0x000000008032d008                D_8032D008
                 0x000000008032d00c                D_8032D00C
                 0x000000008032d018                D_8032D00C_2
@@ -6422,16 +6415,16 @@ Linker script and memory map
                 0x000000008032d030                D_8032D00C_4
                 0x000000008032d03c                D_8032D00C_5
                 0x000000008032d048                TableCameraTransitions
-                0x000000008032d0a8                D_8032D0A8
-                0x000000008032d0b0                D_8032D0B0
+                0x000000008032d0a8                unused_8032D0A8
+                0x000000008032d0b0                unused_8032D0B0
                 0x000000008032d0b8                D_8032D0B8
-                0x000000008032d0f0                D_8032D0F0
+                0x000000008032d0f0                BBHRoom6ParallelTrackingTable
                 0x000000008032d138                TableCameraSL
                 0x000000008032d180                TableCameraTHI
                 0x000000008032d1c8                TableCameraHMC
                 0x000000008032d270                TableCameraSSL
                 0x000000008032d2e8                TableCameraRR
-                0x000000008032d3d8                TableCameraMetal
+                0x000000008032d3d8                TableCameraCotMC
                 0x000000008032d408                TableCameraCCM
                 0x000000008032d450                TableCameraInside
                 0x000000008032d798                TableCameraBBH
@@ -6465,7 +6458,7 @@ Linker script and memory map
                 0x000000008032e6ac                TableCutsceneStarSpawn
                 0x000000008032e6c4                TableCutsceneSpecialStarSpawn
                 0x000000008032e6d4                TableCutsceneEnterPainting
-                0x000000008032e6dc                TableCutsceneExitPaintingDeath
+                0x000000008032e6dc                TableCutsceneDeathExit
                 0x000000008032e6ec                TableCutsceneExitPaintingSuccess
                 0x000000008032e6fc                TableCutscene11Todo
                 0x000000008032e714                TableCutsceneIntroPeach
@@ -6474,12 +6467,12 @@ Linker script and memory map
                 0x000000008032e75c                TableCutsceneFallToCastleGrounds
                 0x000000008032e76c                TableCutsceneEnterPyramidTop
                 0x000000008032e77c                TableCutscene26Todo
-                0x000000008032e794                TableCutsceneDeath1
+                0x000000008032e794                TableCutsceneStandingDeath
                 0x000000008032e79c                TableCutsceneEnterPool
                 0x000000008032e7ac                TableCutsceneDeath2
-                0x000000008032e7b4                TableCutsceneBBHDeath
+                0x000000008032e7b4                TableCutsceneDeathOnBack
                 0x000000008032e7bc                TableCutsceneQuicksandDeath
-                0x000000008032e7cc                TableCutscene1ATodo
+                0x000000008032e7cc                TableCutsceneSuffocationDeath
                 0x000000008032e7d4                TableCutsceneEnterBowserPlatform
                 0x000000008032e7ec                TableCutsceneStarDance1
                 0x000000008032e7f4                TableCutsceneStarDance2
@@ -6496,46 +6489,46 @@ Linker script and memory map
                 0x000000008032e88c                TableCutsceneReadMessage
                 0x000000008032e8a4                D_8032E8A4
                 0x000000008032e910                D_8032E910
-                0x000000008032e924                D_8032E924
-                0x000000008032e94c                D_8032E94C
-                0x000000008032e974                D_8032E974
-                0x000000008032e99c                D_8032E99C
-                0x000000008032e9c4                D_8032E9C4
-                0x000000008032e9ec                D_8032E9EC
-                0x000000008032ea14                D_8032EA14
-                0x000000008032ea3c                D_8032EA3C
-                0x000000008032ea64                D_8032EA64
-                0x000000008032ea84                D_8032EA84
-                0x000000008032eaa4                D_8032EAA4
-                0x000000008032eacc                D_8032EACC
-                0x000000008032eaf4                D_8032EAF4
-                0x000000008032eb0c                D_8032EB0C
-                0x000000008032eb24                D_8032EB24
-                0x000000008032eb54                D_8032EB54
-                0x000000008032eb84                D_8032EB84
-                0x000000008032ebb4                D_8032EBB4
-                0x000000008032ebe4                D_8032EBE4
-                0x000000008032ec1c                D_8032EC1C
-                0x000000008032ec54                D_8032EC54
-                0x000000008032ec74                D_8032EC74
-                0x000000008032ec94                D_8032EC94
-                0x000000008032ecb4                D_8032ECB4
-                0x000000008032ecd4                D_8032ECD4
-                0x000000008032ed04                D_8032ED04
-                0x000000008032ed34                D_8032ED34
-                0x000000008032ed6c                D_8032ED6C
-                0x000000008032eda4                D_8032EDA4
-                0x000000008032edc4                D_8032EDC4
-                0x000000008032ede4                D_8032EDE4
-                0x000000008032ee04                D_8032EE04
-                0x000000008032ee24                D_8032EE24
-                0x000000008032ee4c                D_8032EE4C
-                0x000000008032ee74                D_8032EE74
-                0x000000008032ee9c                D_8032EE9C
-                0x000000008032eec4                D_8032EEC4
-                0x000000008032eeec                D_8032EEEC
-                0x000000008032ef14                D_8032EF14
-                0x000000008032ef34                D_8032EF34
+                0x000000008032e924                sBobCreditsCameraPositions
+                0x000000008032e94c                sBobCreditsCameraFocus
+                0x000000008032e974                sWfCreditsCameraPositions
+                0x000000008032e99c                sWfCreditsCameraFocus
+                0x000000008032e9c4                sJrbCreditsCameraPositions
+                0x000000008032e9ec                sJrbCreditsCameraFocus
+                0x000000008032ea14                sCcmSlideCreditsCameraPositions
+                0x000000008032ea3c                sCcmSlideCreditsCameraFocus
+                0x000000008032ea64                sBbhCreditsCameraPositions
+                0x000000008032ea84                sBbhCreditsCameraFocus
+                0x000000008032eaa4                sHmcCreditsCameraPositions
+                0x000000008032eacc                sHmcCreditsCameraFocus
+                0x000000008032eaf4                sThiWigglerCreditsCameraPositions
+                0x000000008032eb0c                sThiWigglerCreditsCameraFocus
+                0x000000008032eb24                sVolcanoCreditsCameraPositions
+                0x000000008032eb54                sVolcanoCreditsCameraFocus
+                0x000000008032eb84                sSslCreditsCameraPositions
+                0x000000008032ebb4                sSslCreditsCameraFocus
+                0x000000008032ebe4                sDddCreditsCameraPositions
+                0x000000008032ec1c                sDddCreditsCameraFocus
+                0x000000008032ec54                sSlCreditsCameraPositions
+                0x000000008032ec74                sSlCreditsCameraFocus
+                0x000000008032ec94                sWdwCreditsCameraPositions
+                0x000000008032ecb4                sWdwCreditsCameraFocus
+                0x000000008032ecd4                sTtmCreditsCameraPositions
+                0x000000008032ed04                sTtmCreditsCameraFocus
+                0x000000008032ed34                sThiHugeCreditsCameraPositions
+                0x000000008032ed6c                sThiHugeCreditsCameraFocus
+                0x000000008032eda4                sTtcCreditsCameraPositions
+                0x000000008032edc4                sTtcCreditsCameraFocus
+                0x000000008032ede4                sRrCreditsCameraPositions
+                0x000000008032ee04                sRrCreditsCameraFocus
+                0x000000008032ee24                sSaCreditsCameraPositions
+                0x000000008032ee4c                sSaCreditsCameraFocus
+                0x000000008032ee74                sCotmcCreditsCameraPositions
+                0x000000008032ee9c                sCotmcCreditsCameraFocus
+                0x000000008032eec4                sDddSubCreditsCameraPositions
+                0x000000008032eeec                sDddSubCreditsCameraFocus
+                0x000000008032ef14                sCcmOutsideCreditsCameraPositions
+                0x000000008032ef34                sCcmOutsideCreditsCameraFocus
  build/jp/src/game/object_list_processor.o(.data*)
  .data          0x000000008032ef60      0x140 build/jp/src/game/object_list_processor.o
                 0x000000008032ef60                sObjectListUpdateOrder
@@ -6710,11 +6703,11 @@ Linker script and memory map
                 0x0000000080330004                D_80330004
                 0x0000000080330244                D_80330244
                 0x000000008033031c                D_8033031C
- build/jp/src/game/transparent_texture.o(.data*)
- .data          0x0000000080330390       0x10 build/jp/src/game/transparent_texture.o
-                0x0000000080330390                D_80330390
-                0x0000000080330394                D_80330394
-                0x0000000080330398                D_80330398
+ build/jp/src/game/geo_misc.o(.data*)
+ .data          0x0000000080330390       0x10 build/jp/src/game/geo_misc.o
+                0x0000000080330390                sCurAreaTimer
+                0x0000000080330394                sPrevAreaTimer
+                0x0000000080330398                sFlyingCarpetRippleTimer
  build/jp/src/game/paintings.o(.data*)
  .data          0x00000000803303a0       0x60 build/jp/src/game/paintings.o
                 0x00000000803303a0                hmcPaintings
@@ -7096,6 +7089,7 @@ Linker script and memory map
  .rodata        0x0000000080336fa0       0x20 build/jp/src/game/skybox.o
  build/jp/src/game/moving_texture.o(.rodata*)
  .rodata        0x0000000080336fc0       0x10 build/jp/src/game/moving_texture.o
+ build/jp/src/game/geo_misc.o(.rodata*)
  build/jp/src/game/paintings.o(.rodata*)
  .rodata        0x0000000080336fd0       0x30 build/jp/src/game/paintings.o
  build/jp/src/game/print.o(.rodata*)
@@ -7167,12 +7161,13 @@ Linker script and memory map
  build/jp/libultra.a:osSetIntMask.o(.rodata*)
  .rodata        0x00000000803386d0       0x80 build/jp/libultra.a(osSetIntMask.o)
                 0x00000000803386d0                D_803386D0
+ build/jp/libultra.a:guLookAtRef.o(.rodata*)
  build/jp/lib/rsp.o(.rodata*)
  .rodata        0x0000000080338750      0xac0 build/jp/lib/rsp.o
                 0x0000000080338750                rspF3DDataStart
                 0x0000000080338f50                rspF3DDataEnd
-                0x0000000080338f50                rspF3DAudioDataStart
-                0x0000000080339210                rspF3DAudioDataEnd
+                0x0000000080338f50                rspAspMainDataStart
+                0x0000000080339210                rspAspMainDataEnd
                 0x0000000080339210                _mainSegmentEnd = (ADDR (.main) + SIZEOF (.main))
                 0x0000000000854df0                _mainSegmentRomEnd = (__romPos + SIZEOF (.main))
                 [0x0000000000761be0]                __romPos = (__romPos + SIZEOF (.main))
@@ -7338,21 +7333,21 @@ Linker script and memory map
                 0x000000008033b020                gProfilerFrameData
  build/jp/src/game/camera.o(.bss*)
  .bss           0x000000008033b1b0      0x6c0 build/jp/src/game/camera.o
-                0x000000008033b1b0                D_8033B1B0
+                0x000000008033b1b0                gPlayerStatusForCamera
                 0x000000008033b1f8                D_8033B1F8
                 0x000000008033b208                D_8033B208
                 0x000000008033b218                D_8033B218
                 0x000000008033b224                D_8033B224
                 0x000000008033b226                D_8033B226
-                0x000000008033b228                D_8033B228
+                0x000000008033b228                gFramesPaused
                 0x000000008033b230                D_8033B230
                 0x000000008033b250                D_8033B250
-                0x000000008033b278                D_8033B278
-                0x000000008033b2ac                D_8033B2AC
+                0x000000008033b278                sGeometryForMario
+                0x000000008033b2ac                unused_8033B2AC
                 0x000000008033b2ae                D_8033B2AE
                 0x000000008033b2b0                D_8033B2B0
-                0x000000008033b2b2                D_8033B2B2
-                0x000000008033b2b4                D_8033B2B4
+                0x000000008033b2b2                unused_8033B2B2
+                0x000000008033b2b4                unused_8033B2B4
                 0x000000008033b2b8                D_8033B2B8
                 0x000000008033b2f8                D_8033B2F8
                 0x000000008033b2fc                D_8033B2FC
@@ -7360,21 +7355,21 @@ Linker script and memory map
                 0x000000008033b304                D_8033B304
                 0x000000008033b306                D_8033B306
                 0x000000008033b308                D_8033B308
-                0x000000008033b30c                D_8033B30C
-                0x000000008033b310                D_8033B310
-                0x000000008033b314                D_8033B314
-                0x000000008033b316                D_8033B316
-                0x000000008033b318                D_8033B318
-                0x000000008033b31a                D_8033B31A
-                0x000000008033b31c                D_8033B31C
-                0x000000008033b31e                D_8033B31E
+                0x000000008033b30c                unused_8033B30C
+                0x000000008033b310                unused_8033B310
+                0x000000008033b314                gCameraModeFlags
+                0x000000008033b316                unused_8033B316
+                0x000000008033b318                sCameraSideCFlags
+                0x000000008033b31a                unused_8033B31A
+                0x000000008033b31c                gCameraFlags1
+                0x000000008033b31e                gCButtonsPressed
                 0x000000008033b320                D_8033B320
-                0x000000008033b328                D_8033B328
-                0x000000008033b3dc                D_8033B3DC
-                0x000000008033b3e0                D_8033B3E0
-                0x000000008033b3e4                D_8033B3E4
-                0x000000008033b3e6                D_8033B3E6
-                0x000000008033b3e8                D_8033B3E8
+                0x000000008033b328                gCameraStatus
+                0x000000008033b3dc                sCameraCutsceneRollOffset
+                0x000000008033b3e0                sLastFrameAction
+                0x000000008033b3e4                unused_8033B3E4
+                0x000000008033b3e6                unused_8033B3E6
+                0x000000008033b3e8                unused_8033B3E8
                 0x000000008033b3ea                D_8033B3EA
                 0x000000008033b3ec                D_8033B3EC
                 0x000000008033b3ee                D_8033B3EE
@@ -7387,7 +7382,7 @@ Linker script and memory map
                 0x000000008033b402                D_8033B402
                 0x000000008033b404                D_8033B404
                 0x000000008033b406                D_8033B406
-                0x000000008033b408                D_8033B408
+                0x000000008033b408                gBowserLevelYawOffset
                 0x000000008033b40c                D_8033B40C
                 0x000000008033b410                D_8033B410
                 0x000000008033b418                D_8033B418
@@ -7397,8 +7392,8 @@ Linker script and memory map
                 0x000000008033b478                D_8033B478
                 0x000000008033b498                D_8033B498
                 0x000000008033b4b8                D_8033B4B8
-                0x000000008033b4d8                D_8033B4D8
-                0x000000008033b4da                D_8033B4DA
+                0x000000008033b4d8                gCameraMovementFlags
+                0x000000008033b4da                gCameraFlags2
                 0x000000008033b4e0                D_8033B4E0
                 0x000000008033b5e0                D_8033B5E0
                 0x000000008033b6e0                D_8033B6E0
@@ -7468,19 +7463,19 @@ Linker script and memory map
                 0x000000008035ff30                gDebugPrintState2
  build/jp/src/game/shadow.o(.bss*)
  .bss           0x000000008035ff40       0x10 build/jp/src/game/shadow.o
-                0x000000008035ff40                D_8035FF40
-                0x000000008035ff42                gSurfaceTypeBelowShadow
+                0x000000008035ff40                sMarioOnFlyingCarpet
+                0x000000008035ff42                sSurfaceTypeBelowShadow
                 0x000000008035ff44                gShadowAboveWaterOrLava
-                0x000000008035ff45                D_8035FF45
+                0x000000008035ff45                gMarioOnIceOrCarpet
  build/jp/src/game/skybox.o(.bss*)
  .bss           0x000000008035ff50       0x20 build/jp/src/game/skybox.o
                 0x000000008035ff50                D_8035FF50
  build/jp/src/game/moving_texture.o(.bss*)
  .bss           0x000000008035ff70       0x10 build/jp/src/game/moving_texture.o
                 0x000000008035ff70                D_8035FF70
- build/jp/src/game/transparent_texture.o(.bss*)
- .bss           0x000000008035ff80       0x10 build/jp/src/game/transparent_texture.o
-                0x000000008035ff80                D_8035FF80
+ build/jp/src/game/geo_misc.o(.bss*)
+ .bss           0x000000008035ff80       0x10 build/jp/src/game/geo_misc.o
+                0x000000008035ff80                gFlyingCarpetState
  build/jp/src/game/paintings.o(.bss*)
  .bss           0x000000008035ff90       0x20 build/jp/src/game/paintings.o
                 0x000000008035ff90                D_8035FF90
@@ -7806,7 +7801,7 @@ Linker script and memory map
                 0x0000000080381038                find_ceil_from_list
                 0x0000000080381264                find_ceil
                 0x0000000080381470                unused_find_floor_height
-                0x00000000803814b8                func_803814B8
+                0x00000000803814b8                find_floor_height_and_data
                 0x000000008038156c                find_floor_from_list
                 0x0000000080381794                find_floor_height
                 0x00000000803817e0                find_dynamic_floor
@@ -9457,14 +9452,14 @@ Linker script and memory map
                 0x0000000080183970                reset_dynlist
                 0x00000000801839e0                proc_dynlist
                 0x000000008018421c                d_copystr_to_idbuf
-                0x00000000801842c0                Unknown801842C0
+                0x00000000801842c0                d_catstr_to_idbuf
                 0x0000000080184368                cpy_idbuf_to_backbuf
                 0x000000008018439c                cpy_backbuf_to_idbuf
                 0x00000000801843d0                get_dynobj_info
-                0x00000000801844f0                Unknown801844F0
+                0x00000000801844f0                reset_dynamic_objs
                 0x000000008018454c                d_add_net_with_subgroup
                 0x0000000080184600                d_end_net_subgroup
-                0x000000008018466c                d_attach_net_to_joint
+                0x000000008018466c                d_attach_joint_to_net
                 0x00000000801846e8                d_make_netfromshapeid
                 0x0000000080184760                d_make_netfromshape_ptrptr
                 0x00000000801847a8                add_to_dynobj_list
@@ -9745,10 +9740,10 @@ Linker script and memory map
                 0x00000000801980e8                func_801980E8
                 0x0000000080198154                Unknown80198154
                 0x0000000080198184                Unknown80198184
-                0x00000000801981f0                Unknown801981F0
-                0x00000000801982b8                Unknown801982B8
-                0x000000008019834c                func_8019834C
-                0x00000000801983d4                Unknown801983D4
+                0x00000000801981f0                scale_obj_position
+                0x00000000801982b8                translate_obj_position
+                0x000000008019834c                scale_verts_in_shape
+                0x00000000801983d4                translate_verts_in_shape
                 0x0000000080198444                Unknown80198444
                 0x0000000080198524                Unknown80198524
                 0x00000000801985e8                Unknown801985E8
@@ -10279,7 +10274,7 @@ Linker script and memory map
                 0x00000000801b9f28                sUnnamedObjCount
                 0x00000000801b9f2c                sLoadedDynObjs
                 0x00000000801b9f30                sDynListCurInfo
-                0x00000000801b9f34                sSecondaryInfoStash
+                0x00000000801b9f34                sParentNetInfo
                 0x00000000801b9f38                sStashedDynObjInfo
                 0x00000000801b9f3c                sStashedDynObj
                 0x00000000801b9f40                sDynNetCount
@@ -10342,8 +10337,8 @@ Linker script and memory map
                 0x00000000801bac9c                D_801BAC9C
                 0x00000000801baca0                D_801BACA0
                 0x00000000801baca8                sUnrefSpaceCA8
-                0x00000000801bacb8                D_801BACB8
-                0x00000000801bacc8                D_801BACC8
+                0x00000000801bacb8                sVertexScaleFactor
+                0x00000000801bacc8                sVertexTranslateOffset
                 0x00000000801bacd8                sUnrefSpaceCD8
                 0x00000000801bad08                D_801BAD08
                 0x00000000801bad10                sUnrefSpaceD10
@@ -10424,7 +10419,7 @@ Linker script and memory map
                 0x00000000801be980                D_801BE980
                 0x00000000801be994                D_801BE994
                 0x00000000801be9a0                _goddardSegmentNoloadEnd = (ADDR (.goddard.noload) + SIZEOF (.goddard.noload))
-                0x0000000000000001                ASSERT ((. <= 0x801c1000), Error: goddard segment extended into stack.)
+                0x0000000000000001                ASSERT ((. <= 0x801c1000), Error: extended past pool end.)
                 0x00000000801c1000                . = 0x801c1000
                 0x00000000801c1000                _stackSegmentNoloadStart = ADDR (.stack.noload)
 
@@ -12186,12 +12181,9 @@ LOAD build/jp/src/engine/math_util.o
 LOAD build/jp/src/engine/geo_layout.o
 LOAD build/jp/src/engine/surface_load.o
 LOAD build/jp/src/engine/graph_node.o
-LOAD build/jp/src/engine/gravity.o
 LOAD build/jp/src/game/star_select.o
-LOAD build/jp/src/game/save_file.o
 LOAD build/jp/src/game/mario_actions_automatic.o
 LOAD build/jp/src/game/mario_actions_stationary.o
-LOAD build/jp/src/game/transparent_texture.o
 LOAD build/jp/src/game/mario_actions_object.o
 LOAD build/jp/src/game/moving_texture.o
 LOAD build/jp/src/game/obj_behaviors.o
@@ -12202,6 +12194,7 @@ LOAD build/jp/src/game/platform_displacement.o
 LOAD build/jp/src/game/area.o
 LOAD build/jp/src/game/spawn_sound.o
 LOAD build/jp/src/game/mario_actions_moving.o
+LOAD build/jp/src/game/sound_init.o
 LOAD build/jp/src/game/spawn_object.o
 LOAD build/jp/src/game/envfx_snow.o
 LOAD build/jp/src/game/skybox.o
@@ -12222,13 +12215,14 @@ LOAD build/jp/src/game/debug.o
 LOAD build/jp/src/game/hud.o
 LOAD build/jp/src/game/memory.o
 LOAD build/jp/src/game/ingame_menu.o
+LOAD build/jp/src/game/geo_misc.o
 LOAD build/jp/src/game/obj_behaviors_2.o
-LOAD build/jp/src/game/sound_init.o
 LOAD build/jp/src/game/macro_special_objects.o
 LOAD build/jp/src/game/mario_actions_cutscene.o
 LOAD build/jp/src/game/screen_transition.o
 LOAD build/jp/src/game/envfx_bubbles.o
 LOAD build/jp/src/game/mario_misc.o
+LOAD build/jp/src/game/save_file.o
 LOAD build/jp/src/game/mario_actions_submerged.o
 LOAD build/jp/src/game/level_select_menu.o
 LOAD build/jp/src/game/print.o
