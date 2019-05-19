@@ -16,8 +16,22 @@ namespace STROOP.Structs.Configurations
 
         public static Dictionary<uint, string> GetMappingDictionary(string filePath)
         {
+            Dictionary<uint, string> dictionary = new Dictionary<uint, string>();
             List<string> lines = DialogUtilities.ReadFileLines(filePath);
-            return null;
+            foreach (string line in lines)
+            {
+                List<string> parts = ParsingUtilities.ParseStringList(line, false);
+                if (parts.Count != 2) continue;
+                string part1 = parts[0];
+                string part2 = parts[1];
+                if (!part1.StartsWith("0x00000000")) continue;
+                string addressString = "0x" + part1.Substring(10);
+                uint? addressNullable = ParsingUtilities.ParseHexNullable(addressString);
+                if (!addressNullable.HasValue) continue;
+                uint address = addressNullable.Value;
+                dictionary[address] = part2;
+            }
+            return dictionary;
         }
 
         public static uint HandleMapping(uint address)

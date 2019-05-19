@@ -253,20 +253,23 @@ namespace STROOP.Utilities
             return ParseBoolNullable(obj) ?? false;
         }
 
-        public static List<string> ParseStringList(string text)
+        public static List<string> ParseStringList(string text, bool replaceCharacters = true)
         {
             if (text == null || text == "")
             {
                 return new List<string>();
             }
-            text = text
-                .Replace('\n', ' ')
-                .Replace('\r', ' ')
-                .Replace('\t', ' ')
-                .Replace(',', ' ')
-                .Replace('(', ' ')
-                .Replace(')', ' ')
-                .Trim();
+            if (replaceCharacters)
+            {
+                text = text
+                    .Replace('\n', ' ')
+                    .Replace('\r', ' ')
+                    .Replace('\t', ' ')
+                    .Replace(',', ' ')
+                    .Replace('(', ' ')
+                    .Replace(')', ' ');
+            }
+            text = text.Trim();
             text = Regex.Replace(text, @"\s+", " ");
             string[] stringArray = text.Split(' ');
             return new List<string>(stringArray);
