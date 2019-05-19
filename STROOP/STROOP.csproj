@@ -626,6 +626,7 @@
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
     <None Include="app.manifest" />
+    <None Include="Mappings\MappingJP.map" />
     <None Include="Mappings\MappingUS.map" />
     <None Include="Resources\lock_blue.png" />
     <None Include="Controls\Map\MapTab.cd" />
