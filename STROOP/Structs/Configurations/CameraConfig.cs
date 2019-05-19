@@ -9,22 +9,22 @@ namespace STROOP.Structs.Configurations
     public static class CameraConfig
     {
         public static uint StructAddress { get => RomVersionConfig.Switch(StructAddressUS, StructAddressJP, StructAddressSH); }
-        public static readonly uint StructAddressUS = 0x8033C618;
-        public static readonly uint StructAddressJP = 0x8033B2A8;
-        public static readonly uint StructAddressSH = 0x8031ED70;
+        public static readonly uint StructAddressUS = 0x8033C520;
+        public static readonly uint StructAddressJP = 0x8033B1B0;
+        public static readonly uint StructAddressSH = 0x8031EC78;
 
-        public static readonly uint XOffset = 0x8C;
-        public static readonly uint YOffset = 0x90;
-        public static readonly uint ZOffset = 0x94;
-        public static readonly uint FocusXOffset = 0x80;
-        public static readonly uint FocusYOffset = 0x84;
-        public static readonly uint FocusZOffset = 0x88;
-        public static readonly uint FacingYawOffset = 0xCE;
-        public static readonly uint FacingPitchOffset = 0xCC;
-        public static readonly uint FacingRollOffset = 0xD0;
-        public static readonly uint CentripetalAngleOffset = 0xFC;
+        public static readonly uint XOffset = 0x184;
+        public static readonly uint YOffset = 0x188;
+        public static readonly uint ZOffset = 0x18C;
+        public static readonly uint FocusXOffset = 0x178;
+        public static readonly uint FocusYOffset = 0x17C;
+        public static readonly uint FocusZOffset = 0x180;
+        public static readonly uint FacingYawOffset = 0x1C6;
+        public static readonly uint FacingPitchOffset = 0x1C4;
+        public static readonly uint FacingRollOffset = 0x1C8;
+        public static readonly uint CentripetalAngleOffset = 0x1F4;
 
-        public static readonly uint MarioCamPossibleOffset = 0x6D;
+        public static readonly uint MarioCamPossibleOffset = 0x165;
         public static readonly byte MarioCamPossibleMask = 0x04;
 
         public static uint FOVAddress { get => RomVersionConfig.Switch(FOVAddressUS, FOVAddressJP); }
