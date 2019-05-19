@@ -16,7 +16,6 @@ namespace STROOP.Structs.Configurations
         public static readonly uint XOffset = 0x8C;
         public static readonly uint YOffset = 0x90;
         public static readonly uint ZOffset = 0x94;
-        public static readonly uint FOV = 0x8033C5A4;
         public static readonly uint FocusXOffset = 0x80;
         public static readonly uint FocusYOffset = 0x84;
         public static readonly uint FocusZOffset = 0x88;
@@ -27,6 +26,10 @@ namespace STROOP.Structs.Configurations
 
         public static readonly uint MarioCamPossibleOffset = 0x6D;
         public static readonly byte MarioCamPossibleMask = 0x04;
+
+        public static uint FOVAddress { get => RomVersionConfig.Switch(FOVAddressUS, FOVAddressJP); }
+        public static readonly uint FOVAddressUS = 0x8033C5A4;
+        public static readonly uint FOVAddressJP = 0x8033B234;
 
         public static uint SecondaryObjectAddress { get => RomVersionConfig.Switch(SecondaryObjectAddressUS, SecondaryObjectAddressJP); }
         public static readonly uint SecondaryObjectAddressUS = 0x8032DF30;

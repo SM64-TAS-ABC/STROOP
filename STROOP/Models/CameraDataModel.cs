@@ -83,7 +83,7 @@ namespace STROOP.Models
             get => _fov;
             set
             {
-                if (Config.Stream.SetValue(value, CameraConfig.StructAddress + CameraConfig.FOV))
+                if (Config.Stream.SetValue(value, CameraConfig.FOVAddress))
                     _fov = value;
             }
         }
@@ -123,7 +123,7 @@ namespace STROOP.Models
             _facingPitch =  Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingPitchOffset);
             _facingRoll =   Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingRollOffset);
 
-            _fov = Config.Stream.GetSingle(CameraConfig.FOV);
+            _fov = Config.Stream.GetSingle(CameraConfig.FOVAddress);
 
             _secondaryObject = Config.Stream.GetUInt32(CameraConfig.SecondaryObjectAddress);
             _hackObject = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
