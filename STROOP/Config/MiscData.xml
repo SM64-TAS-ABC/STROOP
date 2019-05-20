@@ -70,5 +70,5 @@
   <Data groupList="Advanced" type="short" offsetUS="0x8038B8A4" offsetJP="0x8038B8A4" base="Relative" color="Grey">Transition White Fade</Data>
   <Data groupList="Advanced" type="short" offsetUS="0x8033B254" offsetJP="0x80339EE4" base="Relative" color="Grey">Transition Shrinking</Data>
 
-  <Data groupList="Advanced" type="int" offset="0x80322B24" base="Relative" useHex="true" color="Pink">ROM Version Tell</Data>
+  <Data groupList="Advanced" type="int" offset="0x802F0000" base="Relative" useHex="true" color="Pink">ROM Version Tell</Data>
 </VarData>
