@@ -529,7 +529,7 @@ namespace STROOP.Structs
                 {
                     float pendulumAmplitudeFloat = GetPendulumAmplitude(objAddress);
                     int? pendulumAmplitudeIntNullable = ParsingUtilities.ParseIntNullable(pendulumAmplitudeFloat);
-                    if (!pendulumAmplitudeIntNullable.HasValue) return Double.NaN;
+                    if (!pendulumAmplitudeIntNullable.HasValue) return Double.NaN.ToString();
                     int pendulumAmplitudeInt = pendulumAmplitudeIntNullable.Value;
                     return TableConfig.PendulumSwings.GetPendulumSwingIndexExtended(pendulumAmplitudeInt);
                 },
