@@ -195,6 +195,9 @@ namespace STROOP.Managers
 
         public override void Update(bool updateView)
         {
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
             double camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
             double camY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
             double camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
@@ -286,6 +289,8 @@ namespace STROOP.Managers
                 Config.Stream.SetValue((float)focusY, CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
                 Config.Stream.SetValue((float)focusZ, CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
             }
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
 
             if (!updateView) return;
             base.Update(updateView);
