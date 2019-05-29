@@ -220,7 +220,7 @@ namespace STROOP.Managers
                 else
                 {
                     double proportion = (globalTimer - SpecialConfig.PanStartTime) / (SpecialConfig.PanEndTime - SpecialConfig.PanStartTime);
-                    proportion = EasingUtilities.Ease(proportion);
+                    proportion = EasingUtilities.Ease(3, proportion, true, true);
                     camX = SpecialConfig.PanCamStartX + proportion * (SpecialConfig.PanCamEndX - SpecialConfig.PanCamStartX);
                     camY = SpecialConfig.PanCamStartY + proportion * (SpecialConfig.PanCamEndY - SpecialConfig.PanCamStartY);
                     camZ = SpecialConfig.PanCamStartZ + proportion * (SpecialConfig.PanCamEndZ - SpecialConfig.PanCamStartZ);
@@ -247,7 +247,7 @@ namespace STROOP.Managers
                 else
                 {
                     double proportion = (globalTimer - SpecialConfig.PanStartTime) / (SpecialConfig.PanEndTime - SpecialConfig.PanStartTime);
-                    proportion = EasingUtilities.Ease(proportion);
+                    proportion = EasingUtilities.Ease(3, proportion, true, true);
                     double focusX = SpecialConfig.PanFocusStartX + proportion * (SpecialConfig.PanFocusEndX - SpecialConfig.PanFocusStartX);
                     double focusY = SpecialConfig.PanFocusStartY + proportion * (SpecialConfig.PanFocusEndY - SpecialConfig.PanFocusStartY);
                     double focusZ = SpecialConfig.PanFocusStartZ + proportion * (SpecialConfig.PanFocusEndZ - SpecialConfig.PanFocusStartZ);
@@ -275,7 +275,7 @@ namespace STROOP.Managers
                 else
                 {
                     double proportion = (globalTimer - SpecialConfig.PanStartTime) / (SpecialConfig.PanEndTime - SpecialConfig.PanStartTime);
-                    proportion = EasingUtilities.Ease(proportion);
+                    proportion = EasingUtilities.Ease(3, proportion, true, true);
 
                     double yawDist = MoreMath.GetUnsignedAngleDifference(SpecialConfig.PanCamStartYaw, SpecialConfig.PanCamEndYaw);
                     if (SpecialConfig.PanRotateCW != 0) yawDist -= 65536;
