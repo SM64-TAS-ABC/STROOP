@@ -195,10 +195,13 @@ namespace STROOP.Managers
 
         public override void Update(bool updateView)
         {
+            double camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+            double camY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+            double camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+
             if (SpecialConfig.PanPosEnabled != 0)
             {
-                uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-
                 if (globalTimer <= SpecialConfig.PanStartTime)
                 {
                     Config.Stream.SetValue((float)SpecialConfig.PanStartX, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
@@ -214,12 +217,41 @@ namespace STROOP.Managers
                 else
                 {
                     double proportion = (globalTimer - SpecialConfig.PanStartTime) / (SpecialConfig.PanEndTime - SpecialConfig.PanStartTime);
-                    double newX = SpecialConfig.PanStartX + proportion * (SpecialConfig.PanEndX - SpecialConfig.PanStartX);
-                    double newY = SpecialConfig.PanStartY + proportion * (SpecialConfig.PanEndY - SpecialConfig.PanStartY);
-                    double newZ = SpecialConfig.PanStartZ + proportion * (SpecialConfig.PanEndZ - SpecialConfig.PanStartZ);
-                    Config.Stream.SetValue((float)newX, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                    Config.Stream.SetValue((float)newY, CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
-                    Config.Stream.SetValue((float)newZ, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    camX = SpecialConfig.PanStartX + proportion * (SpecialConfig.PanEndX - SpecialConfig.PanStartX);
+                    camY = SpecialConfig.PanStartY + proportion * (SpecialConfig.PanEndY - SpecialConfig.PanStartY);
+                    camZ = SpecialConfig.PanStartZ + proportion * (SpecialConfig.PanEndZ - SpecialConfig.PanStartZ);
+                    Config.Stream.SetValue((float)camX, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    Config.Stream.SetValue((float)camY, CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                    Config.Stream.SetValue((float)camZ, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                }
+            }
+
+            if (SpecialConfig.PanAngleEnabled != 0)
+            {
+                double camYaw;
+                double camPitch;
+
+                if (globalTimer <= SpecialConfig.PanStartTime)
+                {
+                    camYaw = SpecialConfig.PanStartYaw;
+                    camPitch = SpecialConfig.PanStartPitch;
+                }
+                else if (globalTimer >= SpecialConfig.PanEndTime)
+                {
+                    camYaw = SpecialConfig.PanEndYaw;
+                    camPitch = SpecialConfig.PanEndPitch;
+                }
+                else
+                {
+                    double proportion = (globalTimer - SpecialConfig.PanStartTime) / (SpecialConfig.PanEndTime - SpecialConfig.PanStartTime);
+
+                    double yawDist = MoreMath.GetAngleDifference(SpecialConfig.PanStartYaw, SpecialConfig.PanEndYaw);
+                    if (SpecialConfig.PanRotateCW != 0) yawDist -= 65536;
+                    camYaw = SpecialConfig.PanStartYaw + proportion * yawDist;
+                    camYaw = MoreMath.NormalizeAngleDouble(camYaw);
+
+                    double pitchDist = SpecialConfig.PanEndPitch - SpecialConfig.PanStartPitch;
+                    camPitch = SpecialConfig.PanStartPitch + proportion * pitchDist;
                 }
             }
 
