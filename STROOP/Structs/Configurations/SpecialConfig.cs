@@ -113,6 +113,14 @@ namespace STROOP.Structs.Configurations
         public static double PanCamEndYaw = 0;
         public static double PanCamEndPitch = 16384;
 
+        public static double PanFocusStartX = 0;
+        public static double PanFocusStartY = 0;
+        public static double PanFocusStartZ = 0;
+
+        public static double PanFocusEndX = 0;
+        public static double PanFocusEndY = 0;
+        public static double PanFocusEndZ = 0;
+
         // Rng vars
 
         public static int GoalRngIndex
