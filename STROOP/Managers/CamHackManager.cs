@@ -195,6 +195,34 @@ namespace STROOP.Managers
 
         public override void Update(bool updateView)
         {
+            if (SpecialConfig.PanEnabled != 0)
+            {
+                uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+
+                if (globalTimer <= SpecialConfig.PanStartTime)
+                {
+                    Config.Stream.SetValue((float)SpecialConfig.PanStartX, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    Config.Stream.SetValue((float)SpecialConfig.PanStartY, CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                    Config.Stream.SetValue((float)SpecialConfig.PanStartZ, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                }
+                else if (globalTimer >= SpecialConfig.PanEndTime)
+                {
+                    Config.Stream.SetValue((float)SpecialConfig.PanEndX, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    Config.Stream.SetValue((float)SpecialConfig.PanEndY, CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                    Config.Stream.SetValue((float)SpecialConfig.PanEndZ, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                }
+                else
+                {
+                    double proportion = (globalTimer - SpecialConfig.PanStartTime) / (SpecialConfig.PanEndTime - SpecialConfig.PanStartTime);
+                    double newX = SpecialConfig.PanStartX + proportion * (SpecialConfig.PanEndX - SpecialConfig.PanStartX);
+                    double newY = SpecialConfig.PanStartY + proportion * (SpecialConfig.PanEndY - SpecialConfig.PanStartY);
+                    double newZ = SpecialConfig.PanStartZ + proportion * (SpecialConfig.PanEndZ - SpecialConfig.PanStartZ);
+                    Config.Stream.SetValue((float)newX, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    Config.Stream.SetValue((float)newY, CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                    Config.Stream.SetValue((float)newZ, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                }
+            }
+
             if (!updateView) return;
             base.Update(updateView);
 
@@ -204,8 +232,6 @@ namespace STROOP.Managers
                 CurrentCamHackMode = correctCamHackMode;
                 getCorrespondingRadioButton(correctCamHackMode).Checked = true;
             }
-
-            //DoTestingCalculations();
         }
 
         private int _globalTimer = 0;
