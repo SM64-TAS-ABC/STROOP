@@ -103,13 +103,13 @@ namespace STROOP.Structs.Configurations
         public static double PanStartY = 0;
         public static double PanStartZ = 0;
         public static double PanStartYaw = 0;
-        public static double PanStartPitch = 0;
+        public static double PanStartPitch = 16384;
 
         public static double PanEndX = 0;
         public static double PanEndY = 0;
         public static double PanEndZ = 0;
         public static double PanEndYaw = 0;
-        public static double PanEndPitch = 0;
+        public static double PanEndPitch = 16384;
 
         // Rng vars
 
