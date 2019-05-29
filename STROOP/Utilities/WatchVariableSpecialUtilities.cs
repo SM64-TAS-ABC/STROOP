@@ -167,12 +167,14 @@ namespace STROOP.Structs
             List<(string, Func<double>, Action<double>)> entries =
                 new List<(string, Func<double>, Action<double>)>()
                 {
-                    ("PanPosEnabled", () => SpecialConfig.PanPosEnabled, (double value) => SpecialConfig.PanPosEnabled = value),
-                    ("PanAngleEnabled", () => SpecialConfig.PanAngleEnabled, (double value) => SpecialConfig.PanAngleEnabled = value),
+                    ("PanCamPos", () => SpecialConfig.PanCamPos, (double value) => SpecialConfig.PanCamPos = value),
+                    ("PanCamAngle", () => SpecialConfig.PanCamAngle, (double value) => SpecialConfig.PanCamAngle = value),
+                    ("PanFocusPos", () => SpecialConfig.PanFocusPos, (double value) => SpecialConfig.PanFocusPos = value),
+                    ("PanRotateCW", () => SpecialConfig.PanRotateCW, (double value) => SpecialConfig.PanRotateCW = value),
+
                     ("PanStartTime", () => SpecialConfig.PanStartTime, (double value) => SpecialConfig.PanStartTime = value),
                     ("PanEndTime", () => SpecialConfig.PanEndTime, (double value) => SpecialConfig.PanEndTime = value),
                     ("PanDuration", () => SpecialConfig.PanDuration, (double value) => SpecialConfig.PanDuration = value),
-                    ("PanRotateCW", () => SpecialConfig.PanRotateCW, (double value) => SpecialConfig.PanRotateCW = value),
 
                     ("PanStartX", () => SpecialConfig.PanStartX, (double value) => SpecialConfig.PanStartX = value),
                     ("PanStartY", () => SpecialConfig.PanStartY, (double value) => SpecialConfig.PanStartY = value),

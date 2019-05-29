@@ -200,7 +200,7 @@ namespace STROOP.Managers
             double camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
             uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
 
-            if (SpecialConfig.PanPosEnabled != 0)
+            if (SpecialConfig.PanCamPos != 0)
             {
                 if (globalTimer <= SpecialConfig.PanStartTime)
                 {
@@ -226,7 +226,7 @@ namespace STROOP.Managers
                 }
             }
 
-            if (SpecialConfig.PanAngleEnabled != 0)
+            if (SpecialConfig.PanCamAngle != 0)
             {
                 double camYaw;
                 double camPitch;

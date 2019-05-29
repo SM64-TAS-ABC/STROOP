@@ -88,8 +88,11 @@ namespace STROOP.Structs.Configurations
 
         // Cam Hack vars
 
-        public static double PanPosEnabled = 0;
-        public static double PanAngleEnabled = 0;
+        public static double PanCamPos = 0;
+        public static double PanCamAngle = 0;
+        public static double PanFocusPos = 0;
+        public static double PanRotateCW = 0;
+
         public static double PanStartTime = 0;
         public static double PanEndTime = 0;
         public static double PanDuration
@@ -97,7 +100,6 @@ namespace STROOP.Structs.Configurations
             get => PanEndTime - PanStartTime;
             set => PanEndTime = PanStartTime + value;
         }
-        public static double PanRotateCW = 0;
         
         public static double PanStartX = 0;
         public static double PanStartY = 0;
