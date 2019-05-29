@@ -12,7 +12,9 @@
   <Data type="float" offset="0x20" base="CamHack">Radius</Data>
   <Data type="short" offset="0x1E" base="CamHack" subclass="Angle" yaw="true">Theta</Data>
   <Data type="float" offset="0x24" base="CamHack">Relative Height</Data>
-  
+
+  <Data type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" offsetSH="0x8030CD04" base="Relative" color="Orange">Global Timer</Data>
+
   <Data base="None" specialType="PanEnabled" color="Yellow" subclass="Boolean">Pan Enabled</Data>
   <Data base="None" specialType="PanStartTime" color="Yellow">Pan Start Time</Data>
   <Data base="None" specialType="PanEndTime" color="Yellow">Pan End Time</Data>
