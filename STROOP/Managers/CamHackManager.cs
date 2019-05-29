@@ -230,33 +230,6 @@ namespace STROOP.Managers
                 }
             }
 
-            if (SpecialConfig.PanFocusPos != 0)
-            {
-                if (globalTimer <= SpecialConfig.PanStartTime)
-                {
-                    Config.Stream.SetValue((float)SpecialConfig.PanFocusStartX, CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                    Config.Stream.SetValue((float)SpecialConfig.PanFocusStartY, CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
-                    Config.Stream.SetValue((float)SpecialConfig.PanFocusStartZ, CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
-                }
-                else if (globalTimer >= SpecialConfig.PanEndTime)
-                {
-                    Config.Stream.SetValue((float)SpecialConfig.PanFocusEndX, CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                    Config.Stream.SetValue((float)SpecialConfig.PanFocusEndY, CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
-                    Config.Stream.SetValue((float)SpecialConfig.PanFocusEndZ, CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
-                }
-                else
-                {
-                    double proportion = (globalTimer - SpecialConfig.PanStartTime) / (SpecialConfig.PanEndTime - SpecialConfig.PanStartTime);
-                    proportion = EasingUtilities.Ease(3, proportion, true, true);
-                    double focusX = SpecialConfig.PanFocusStartX + proportion * (SpecialConfig.PanFocusEndX - SpecialConfig.PanFocusStartX);
-                    double focusY = SpecialConfig.PanFocusStartY + proportion * (SpecialConfig.PanFocusEndY - SpecialConfig.PanFocusStartY);
-                    double focusZ = SpecialConfig.PanFocusStartZ + proportion * (SpecialConfig.PanFocusEndZ - SpecialConfig.PanFocusStartZ);
-                    Config.Stream.SetValue((float)focusX, CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                    Config.Stream.SetValue((float)focusY, CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
-                    Config.Stream.SetValue((float)focusZ, CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
-                }
-            }
-
             if (SpecialConfig.PanCamAngle != 0)
             {
                 double camYaw;

@@ -90,7 +90,6 @@ namespace STROOP.Structs.Configurations
 
         public static double PanCamPos = 0;
         public static double PanCamAngle = 0;
-        public static double PanFocusPos = 0;
         public static double PanRotateCW = 0;
 
         public static double PanStartTime = 0;
@@ -112,14 +111,6 @@ namespace STROOP.Structs.Configurations
         public static double PanCamEndZ = 0;
         public static double PanCamEndYaw = 0;
         public static double PanCamEndPitch = 16384;
-
-        public static double PanFocusStartX = 0;
-        public static double PanFocusStartY = 0;
-        public static double PanFocusStartZ = 0;
-
-        public static double PanFocusEndX = 0;
-        public static double PanFocusEndY = 0;
-        public static double PanFocusEndZ = 0;
 
         // Rng vars
 

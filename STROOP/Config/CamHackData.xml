@@ -15,7 +15,6 @@
 
   <Data base="None" specialType="PanCamPos" color="Yellow" subclass="Boolean">Pan Cam Pos</Data>
   <Data base="None" specialType="PanCamAngle" color="Yellow" subclass="Boolean">Pan Cam Angle</Data>
-  <Data base="None" specialType="PanFocusPos" color="Yellow" subclass="Boolean">Pan Focus Pos</Data>
   <Data base="None" specialType="PanRotateCW" color="Yellow" subclass="Boolean">Pan Rotate CW</Data>
 
   <Data type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" offsetSH="0x8030CD04" base="Relative" color="Orange">Global Timer</Data>
@@ -34,12 +33,4 @@
   <Data base="None" specialType="PanCamEndZ" coord="Z" color="Red">Pan Cam End Z</Data>
   <Data base="None" specialType="PanCamEndYaw" subclass="Angle" display="ushort" yaw="true" color="Red">Pan Cam End Yaw</Data>
   <Data base="None" specialType="PanCamEndPitch" subclass="Angle" display="short" color="Red">Pan Cam End Pitch</Data>
-
-  <Data base="None" specialType="PanFocusStartX" coord="X" color="LightBlue">Pan Focus Start X</Data>
-  <Data base="None" specialType="PanFocusStartY" coord="Y" color="LightBlue">Pan Focus Start Y</Data>
-  <Data base="None" specialType="PanFocusStartZ" coord="Z" color="LightBlue">Pan Focus Start Z</Data>
-
-  <Data base="None" specialType="PanFocusEndX" coord="X" color="Blue">Pan Focus End X</Data>
-  <Data base="None" specialType="PanFocusEndY" coord="Y" color="Blue">Pan Focus End Y</Data>
-  <Data base="None" specialType="PanFocusEndZ" coord="Z" color="Blue">Pan Focus End Z</Data>
 </VarData>

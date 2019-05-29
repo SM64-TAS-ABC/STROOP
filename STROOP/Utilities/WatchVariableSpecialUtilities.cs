@@ -169,7 +169,6 @@ namespace STROOP.Structs
                 {
                     ("PanCamPos", () => SpecialConfig.PanCamPos, (double value) => SpecialConfig.PanCamPos = value),
                     ("PanCamAngle", () => SpecialConfig.PanCamAngle, (double value) => SpecialConfig.PanCamAngle = value),
-                    ("PanFocusPos", () => SpecialConfig.PanFocusPos, (double value) => SpecialConfig.PanFocusPos = value),
                     ("PanRotateCW", () => SpecialConfig.PanRotateCW, (double value) => SpecialConfig.PanRotateCW = value),
 
                     ("PanStartTime", () => SpecialConfig.PanStartTime, (double value) => SpecialConfig.PanStartTime = value),
@@ -187,14 +186,6 @@ namespace STROOP.Structs
                     ("PanCamEndZ", () => SpecialConfig.PanCamEndZ, (double value) => SpecialConfig.PanCamEndZ = value),
                     ("PanCamEndYaw", () => SpecialConfig.PanCamEndYaw, (double value) => SpecialConfig.PanCamEndYaw = value),
                     ("PanCamEndPitch", () => SpecialConfig.PanCamEndPitch, (double value) => SpecialConfig.PanCamEndPitch = value),
-
-                    ("PanFocusStartX", () => SpecialConfig.PanFocusStartX, (double value) => SpecialConfig.PanFocusStartX = value),
-                    ("PanFocusStartY", () => SpecialConfig.PanFocusStartY, (double value) => SpecialConfig.PanFocusStartY = value),
-                    ("PanFocusStartZ", () => SpecialConfig.PanFocusStartZ, (double value) => SpecialConfig.PanFocusStartZ = value),
-
-                    ("PanFocusEndX", () => SpecialConfig.PanFocusEndX, (double value) => SpecialConfig.PanFocusEndX = value),
-                    ("PanFocusEndY", () => SpecialConfig.PanFocusEndY, (double value) => SpecialConfig.PanFocusEndY = value),
-                    ("PanFocusEndZ", () => SpecialConfig.PanFocusEndZ, (double value) => SpecialConfig.PanFocusEndZ = value),
                 };
 
             foreach ((string key, Func<double> getter, Action<double> setter) in entries)
