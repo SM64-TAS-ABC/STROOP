@@ -195,7 +195,7 @@ namespace STROOP.Managers
 
         public override void Update(bool updateView)
         {
-            if (SpecialConfig.PanEnabled != 0)
+            if (SpecialConfig.PanPosEnabled != 0)
             {
                 uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
 

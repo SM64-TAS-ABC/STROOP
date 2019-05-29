@@ -15,7 +15,8 @@
 
   <Data type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" offsetSH="0x8030CD04" base="Relative" color="Orange">Global Timer</Data>
 
-  <Data base="None" specialType="PanEnabled" color="Yellow" subclass="Boolean">Pan Enabled</Data>
+  <Data base="None" specialType="PanPosEnabled" color="Yellow" subclass="Boolean">Pan Pos Enabled</Data>
+  <Data base="None" specialType="PanAngleEnabled" color="Yellow" subclass="Boolean">Pan Angle Enabled</Data>
   <Data base="None" specialType="PanStartTime" color="Yellow">Pan Start Time</Data>
   <Data base="None" specialType="PanEndTime" color="Yellow">Pan End Time</Data>
   <Data base="None" specialType="PanDuration" color="Yellow">Pan Duration</Data>
