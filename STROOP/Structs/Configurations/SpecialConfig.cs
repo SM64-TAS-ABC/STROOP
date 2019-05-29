@@ -101,17 +101,17 @@ namespace STROOP.Structs.Configurations
             set => PanEndTime = PanStartTime + value;
         }
         
-        public static double PanStartX = 0;
-        public static double PanStartY = 0;
-        public static double PanStartZ = 0;
-        public static double PanStartYaw = 0;
-        public static double PanStartPitch = 16384;
+        public static double PanCamStartX = 0;
+        public static double PanCamStartY = 0;
+        public static double PanCamStartZ = 0;
+        public static double PanCamStartYaw = 0;
+        public static double PanCamStartPitch = 16384;
 
-        public static double PanEndX = 0;
-        public static double PanEndY = 0;
-        public static double PanEndZ = 0;
-        public static double PanEndYaw = 0;
-        public static double PanEndPitch = 16384;
+        public static double PanCamEndX = 0;
+        public static double PanCamEndY = 0;
+        public static double PanCamEndZ = 0;
+        public static double PanCamEndYaw = 0;
+        public static double PanCamEndPitch = 16384;
 
         // Rng vars
 

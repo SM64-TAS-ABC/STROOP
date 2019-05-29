@@ -176,17 +176,17 @@ namespace STROOP.Structs
                     ("PanEndTime", () => SpecialConfig.PanEndTime, (double value) => SpecialConfig.PanEndTime = value),
                     ("PanDuration", () => SpecialConfig.PanDuration, (double value) => SpecialConfig.PanDuration = value),
 
-                    ("PanStartX", () => SpecialConfig.PanStartX, (double value) => SpecialConfig.PanStartX = value),
-                    ("PanStartY", () => SpecialConfig.PanStartY, (double value) => SpecialConfig.PanStartY = value),
-                    ("PanStartZ", () => SpecialConfig.PanStartZ, (double value) => SpecialConfig.PanStartZ = value),
-                    ("PanStartYaw", () => SpecialConfig.PanStartYaw, (double value) => SpecialConfig.PanStartYaw = value),
-                    ("PanStartPitch", () => SpecialConfig.PanStartPitch, (double value) => SpecialConfig.PanStartPitch = value),
+                    ("PanCamStartX", () => SpecialConfig.PanCamStartX, (double value) => SpecialConfig.PanCamStartX = value),
+                    ("PanCamStartY", () => SpecialConfig.PanCamStartY, (double value) => SpecialConfig.PanCamStartY = value),
+                    ("PanCamStartZ", () => SpecialConfig.PanCamStartZ, (double value) => SpecialConfig.PanCamStartZ = value),
+                    ("PanCamStartYaw", () => SpecialConfig.PanCamStartYaw, (double value) => SpecialConfig.PanCamStartYaw = value),
+                    ("PanCamStartPitch", () => SpecialConfig.PanCamStartPitch, (double value) => SpecialConfig.PanCamStartPitch = value),
 
-                    ("PanEndX", () => SpecialConfig.PanEndX, (double value) => SpecialConfig.PanEndX = value),
-                    ("PanEndY", () => SpecialConfig.PanEndY, (double value) => SpecialConfig.PanEndY = value),
-                    ("PanEndZ", () => SpecialConfig.PanEndZ, (double value) => SpecialConfig.PanEndZ = value),
-                    ("PanEndYaw", () => SpecialConfig.PanEndYaw, (double value) => SpecialConfig.PanEndYaw = value),
-                    ("PanEndPitch", () => SpecialConfig.PanEndPitch, (double value) => SpecialConfig.PanEndPitch = value),
+                    ("PanCamEndX", () => SpecialConfig.PanCamEndX, (double value) => SpecialConfig.PanCamEndX = value),
+                    ("PanCamEndY", () => SpecialConfig.PanCamEndY, (double value) => SpecialConfig.PanCamEndY = value),
+                    ("PanCamEndZ", () => SpecialConfig.PanCamEndZ, (double value) => SpecialConfig.PanCamEndZ = value),
+                    ("PanCamEndYaw", () => SpecialConfig.PanCamEndYaw, (double value) => SpecialConfig.PanCamEndYaw = value),
+                    ("PanCamEndPitch", () => SpecialConfig.PanCamEndPitch, (double value) => SpecialConfig.PanCamEndPitch = value),
                 };
 
             foreach ((string key, Func<double> getter, Action<double> setter) in entries)

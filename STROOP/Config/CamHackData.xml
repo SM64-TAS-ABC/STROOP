@@ -23,15 +23,15 @@
   <Data base="None" specialType="PanEndTime" color="Orange">Pan End Time</Data>
   <Data base="None" specialType="PanDuration" color="Orange">Pan Duration</Data>
 
-  <Data base="None" specialType="PanStartX" coord="X" color="Green">Pan Start X</Data>
-  <Data base="None" specialType="PanStartY" coord="Y" color="Green">Pan Start Y</Data>
-  <Data base="None" specialType="PanStartZ" coord="Z" color="Green">Pan Start Z</Data>
-  <Data base="None" specialType="PanStartYaw" subclass="Angle" display="ushort" yaw="true" color="Green">Pan Start Yaw</Data>
-  <Data base="None" specialType="PanStartPitch" subclass="Angle" display="short" color="Green">Pan Start Pitch</Data>
+  <Data base="None" specialType="PanCamStartX" coord="X" color="Green">Pan Cam Start X</Data>
+  <Data base="None" specialType="PanCamStartY" coord="Y" color="Green">Pan Cam Start Y</Data>
+  <Data base="None" specialType="PanCamStartZ" coord="Z" color="Green">Pan Cam Start Z</Data>
+  <Data base="None" specialType="PanCamStartYaw" subclass="Angle" display="ushort" yaw="true" color="Green">Pan Cam Start Yaw</Data>
+  <Data base="None" specialType="PanCamStartPitch" subclass="Angle" display="short" color="Green">Pan Cam Start Pitch</Data>
 
-  <Data base="None" specialType="PanEndX" coord="X" color="Red">Pan End X</Data>
-  <Data base="None" specialType="PanEndY" coord="Y" color="Red">Pan End Y</Data>
-  <Data base="None" specialType="PanEndZ" coord="Z" color="Red">Pan End Z</Data>
-  <Data base="None" specialType="PanEndYaw" subclass="Angle" display="ushort" yaw="true" color="Red">Pan End Yaw</Data>
-  <Data base="None" specialType="PanEndPitch" subclass="Angle" display="short" color="Red">Pan End Pitch</Data>
+  <Data base="None" specialType="PanCamEndX" coord="X" color="Red">Pan Cam End X</Data>
+  <Data base="None" specialType="PanCamEndY" coord="Y" color="Red">Pan Cam End Y</Data>
+  <Data base="None" specialType="PanCamEndZ" coord="Z" color="Red">Pan Cam End Z</Data>
+  <Data base="None" specialType="PanCamEndYaw" subclass="Angle" display="ushort" yaw="true" color="Red">Pan Cam End Yaw</Data>
+  <Data base="None" specialType="PanCamEndPitch" subclass="Angle" display="short" color="Red">Pan Cam End Pitch</Data>
 </VarData>
