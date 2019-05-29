@@ -47,7 +47,7 @@ namespace STROOP.Controls
             string specialType = useDefaults ? defaults.SpecialType : specialTypeIn;
             bool noNum = useDefaults ? defaults.NoNum : (noNumIn ?? VarHackContainerDefaults.StaticNoNum);
             string varName = useDefaults ? defaults.VarName : (varNameIn ?? VarHackContainerDefaults.StaticVarName);
-            uint address = useDefaults ? defaults.Address : (addressIn ?? VarHackContainerDefaults.StaticAddres);
+            uint address = useDefaults ? defaults.Address : (addressIn ?? VarHackContainerDefaults.StaticAddress);
             Type memoryType = useDefaults ? defaults.MemoryType : (memoryTypeIn ?? VarHackContainerDefaults.StaticMemoryType);
             bool useHex = useDefaults ? defaults.UseHex : (useHexIn ?? VarHackContainerDefaults.StaticUseHex);
             uint? tempPointerOffset = useDefaults ? defaults.PointerOffset : pointerOffsetIn;
