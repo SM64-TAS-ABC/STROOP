@@ -271,7 +271,7 @@ namespace STROOP.Managers
                 {
                     double proportion = (globalTimer - SpecialConfig.PanStartTime) / (SpecialConfig.PanEndTime - SpecialConfig.PanStartTime);
 
-                    double yawDist = MoreMath.GetAngleDifference(SpecialConfig.PanCamStartYaw, SpecialConfig.PanCamEndYaw);
+                    double yawDist = MoreMath.GetUnsignedAngleDifference(SpecialConfig.PanCamStartYaw, SpecialConfig.PanCamEndYaw);
                     if (SpecialConfig.PanRotateCW != 0) yawDist -= 65536;
                     camYaw = SpecialConfig.PanCamStartYaw + proportion * yawDist;
                     camYaw = MoreMath.NormalizeAngleDouble(camYaw);
