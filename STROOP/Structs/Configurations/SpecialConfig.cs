@@ -86,6 +86,20 @@ namespace STROOP.Structs.Configurations
                 PointAnglePA.IsSelected;
         }
 
+        // Cam Hack vars
+
+        public static double PanStartX = 0;
+        public static double PanStartY = 0;
+        public static double PanStartZ = 0;
+        public static double PanStartYaw = 0;
+        public static double PanStartPitch = 0;
+
+        public static double PanEndX = 0;
+        public static double PanEndY = 0;
+        public static double PanEndZ = 0;
+        public static double PanEndYaw = 0;
+        public static double PanEndPitch = 0;
+
         // Rng vars
 
         public static int GoalRngIndex

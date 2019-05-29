@@ -12,4 +12,16 @@
   <Data type="float" offset="0x20" base="CamHack">Radius</Data>
   <Data type="short" offset="0x1E" base="CamHack" subclass="Angle" yaw="true">Theta</Data>
   <Data type="float" offset="0x24" base="CamHack">Relative Height</Data>
+
+  <Data base="None" specialType="PanStartX" coord="X" color="Green">Pan Start X</Data>
+  <Data base="None" specialType="PanStartY" coord="Y" color="Green">Pan Start Y</Data>
+  <Data base="None" specialType="PanStartZ" coord="Z" color="Green">Pan Start Z</Data>
+  <Data base="None" specialType="PanStartYaw" subclass="Angle" display="ushort" yaw="true" color="Green">Pan Start Yaw</Data>
+  <Data base="None" specialType="PanStartPitch" subclass="Angle" display="short" color="Green">Pan Start Pitch</Data>
+
+  <Data base="None" specialType="PanEndX" coord="X" color="Red">Pan End X</Data>
+  <Data base="None" specialType="PanEndY" coord="Y" color="Red">Pan End Y</Data>
+  <Data base="None" specialType="PanEndZ" coord="Z" color="Red">Pan End Z</Data>
+  <Data base="None" specialType="PanEndYaw" subclass="Angle" display="ushort" yaw="true" color="Red">Pan End Yaw</Data>
+  <Data base="None" specialType="PanEndPitch" subclass="Angle" display="short" color="Red">Pan End Pitch</Data>
 </VarData>

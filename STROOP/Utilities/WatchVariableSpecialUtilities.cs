@@ -24,6 +24,7 @@ namespace STROOP.Structs
             _dictionary = new WatchVariableSpecialDictionary();
             AddLiteralEntriesToDictionary();
             AddGeneratedEntriesToDictionary();
+            AddStoredEntriesToDictionary();
         }
 
         public static (Func<uint, object> getter, Func<object, uint, bool> setter)
@@ -159,6 +160,39 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
             return specialType;
+        }
+
+        public static void AddStoredEntriesToDictionary()
+        {
+            List<(string, Func<double>, Action<double>)> entries =
+                new List<(string, Func<double>, Action<double>)>()
+                {
+                    ("PanStartX", () => SpecialConfig.PanStartX, (double value) => SpecialConfig.PanStartX = value),
+                    ("PanStartY", () => SpecialConfig.PanStartY, (double value) => SpecialConfig.PanStartY = value),
+                    ("PanStartZ", () => SpecialConfig.PanStartZ, (double value) => SpecialConfig.PanStartZ = value),
+                    ("PanStartYaw", () => SpecialConfig.PanStartYaw, (double value) => SpecialConfig.PanStartYaw = value),
+                    ("PanStartPitch", () => SpecialConfig.PanStartPitch, (double value) => SpecialConfig.PanStartPitch = value),
+
+                    ("PanEndX", () => SpecialConfig.PanEndX, (double value) => SpecialConfig.PanEndX = value),
+                    ("PanEndY", () => SpecialConfig.PanEndY, (double value) => SpecialConfig.PanEndY = value),
+                    ("PanEndZ", () => SpecialConfig.PanEndZ, (double value) => SpecialConfig.PanEndZ = value),
+                    ("PanEndYaw", () => SpecialConfig.PanEndYaw, (double value) => SpecialConfig.PanEndYaw = value),
+                    ("PanEndPitch", () => SpecialConfig.PanEndPitch, (double value) => SpecialConfig.PanEndPitch = value),
+                };
+
+            foreach ((string key, Func<double> getter, Action<double> setter) in entries)
+            {
+                _dictionary.Add(key,
+                    ((uint dummy) =>
+                    {
+                        return getter();
+                    },
+                    (double doubleValue, uint dummy) =>
+                    {
+                        setter(doubleValue);
+                        return true;
+                    }));
+            }
         }
 
         public static void AddGeneratedEntriesToDictionary()
