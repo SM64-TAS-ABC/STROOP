@@ -13,6 +13,9 @@
   <Data type="short" offset="0x1E" base="CamHack" subclass="Angle" yaw="true">Theta</Data>
   <Data type="float" offset="0x24" base="CamHack">Relative Height</Data>
 
+  <Data base="None" specialType="NumPans" color="Grey">Num Pans</Data>
+  <Data base="None" specialType="CurrentPan" color="Grey">Current Pan</Data>
+
   <Data base="None" specialType="PanCamPos" color="Yellow" subclass="Boolean">Pan Cam Pos</Data>
   <Data base="None" specialType="PanCamAngle" color="Yellow" subclass="Boolean">Pan Cam Angle</Data>
   <Data base="None" specialType="PanRotateCW" color="Yellow" subclass="Boolean">Pan Rotate CW</Data>
