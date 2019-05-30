@@ -168,7 +168,7 @@ namespace STROOP.Structs
                 new List<(string, Func<double>, Action<double>)>()
                 {
                     ("NumPans", () => SpecialConfig.NumPans, (double value) => SpecialConfig.NumPans = value),
-                    ("CurrentPan", () => SpecialConfig.CurrentPan, (double value) => SpecialConfig.CurrentPan = value),
+                    ("CurrentPan", () => SpecialConfig.CurrentPan, (double value) => {}),
                     ("PanCamPos", () => SpecialConfig.PanCamPos, (double value) => SpecialConfig.PanCamPos = value),
                     ("PanCamAngle", () => SpecialConfig.PanCamAngle, (double value) => SpecialConfig.PanCamAngle = value),
                 };

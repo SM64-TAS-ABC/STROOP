@@ -265,27 +265,27 @@ namespace STROOP.Managers
             return new List<WatchVariableControl>
             {
                 CreatePanVar("Global Timer", String.Format("Pan{0}GlobalTimer", index), "Orange"),
-                CreatePanVar(String.Format("Pan{0} Start Time", index+1), String.Format("Pan{0}StartTime", index), "Orange"),
-                CreatePanVar(String.Format("Pan{0} End Time", index+1), String.Format("Pan{0}EndTime", index), "Orange"),
-                CreatePanVar(String.Format("Pan{0} Duration", index+1), String.Format("Pan{0}Duration", index), "Orange"),
+                CreatePanVar(String.Format("Pan{0} Start Time", index), String.Format("Pan{0}StartTime", index), "Orange"),
+                CreatePanVar(String.Format("Pan{0} End Time", index), String.Format("Pan{0}EndTime", index), "Orange"),
+                CreatePanVar(String.Format("Pan{0} Duration", index), String.Format("Pan{0}Duration", index), "Orange"),
 
-                CreatePanVar(String.Format("Pan{0} Ease Start", index+1), String.Format("Pan{0}EaseStart", index), "LightBlue", subclass: "Boolean"),
-                CreatePanVar(String.Format("Pan{0} Ease End", index+1), String.Format("Pan{0}EaseEnd", index), "LightBlue", subclass: "Boolean"),
-                CreatePanVar(String.Format("Pan{0} Ease Degree", index+1), String.Format("Pan{0}EaseDegree", index), "LightBlue"),
+                CreatePanVar(String.Format("Pan{0} Ease Start", index), String.Format("Pan{0}EaseStart", index), "LightBlue", subclass: "Boolean"),
+                CreatePanVar(String.Format("Pan{0} Ease End", index), String.Format("Pan{0}EaseEnd", index), "LightBlue", subclass: "Boolean"),
+                CreatePanVar(String.Format("Pan{0} Ease Degree", index), String.Format("Pan{0}EaseDegree", index), "LightBlue"),
 
-                CreatePanVar(String.Format("Pan{0} Rotate CW", index+1), String.Format("Pan{0}RotateCW", index), "Yellow", subclass: "Boolean"),
+                CreatePanVar(String.Format("Pan{0} Rotate CW", index), String.Format("Pan{0}RotateCW", index), "Yellow", subclass: "Boolean"),
 
-                CreatePanVar(String.Format("Pan{0} Cam Start X", index+1), String.Format("Pan{0}CamStartX", index), "Green", coord: "X"),
-                CreatePanVar(String.Format("Pan{0} Cam Start Y", index+1), String.Format("Pan{0}CamStartY", index), "Green", coord: "Y"),
-                CreatePanVar(String.Format("Pan{0} Cam Start Z", index+1), String.Format("Pan{0}CamStartZ", index), "Green", coord: "Z"),
-                CreatePanVar(String.Format("Pan{0} Cam Start Yaw", index+1), String.Format("Pan{0}CamStartYaw", index), "Green", subclass: "Angle", display: "ushort", yaw: "true"),
-                CreatePanVar(String.Format("Pan{0} Cam Start Pitch", index+1), String.Format("Pan{0}CamStartPitch", index), "Green", subclass: "Angle", display: "short"),
+                CreatePanVar(String.Format("Pan{0} Cam Start X", index), String.Format("Pan{0}CamStartX", index), "Green", coord: "X"),
+                CreatePanVar(String.Format("Pan{0} Cam Start Y", index), String.Format("Pan{0}CamStartY", index), "Green", coord: "Y"),
+                CreatePanVar(String.Format("Pan{0} Cam Start Z", index), String.Format("Pan{0}CamStartZ", index), "Green", coord: "Z"),
+                CreatePanVar(String.Format("Pan{0} Cam Start Yaw", index), String.Format("Pan{0}CamStartYaw", index), "Green", subclass: "Angle", display: "ushort", yaw: "true"),
+                CreatePanVar(String.Format("Pan{0} Cam Start Pitch", index), String.Format("Pan{0}CamStartPitch", index), "Green", subclass: "Angle", display: "short"),
 
-                CreatePanVar(String.Format("Pan{0} Cam End X", index+1), String.Format("Pan{0}CamEndX", index), "Red", coord: "X"),
-                CreatePanVar(String.Format("Pan{0} Cam End Y", index+1), String.Format("Pan{0}CamEndY", index), "Red", coord: "Y"),
-                CreatePanVar(String.Format("Pan{0} Cam End Z", index+1), String.Format("Pan{0}CamEndZ", index), "Red", coord: "Z"),
-                CreatePanVar(String.Format("Pan{0} Cam End Yaw", index+1), String.Format("Pan{0}CamEndYaw", index), "Red", subclass: "Angle", display: "ushort", yaw: "true"),
-                CreatePanVar(String.Format("Pan{0} Cam End Pitch", index+1), String.Format("Pan{0}CamEndPitch", index), "Red", subclass: "Angle", display: "short"),
+                CreatePanVar(String.Format("Pan{0} Cam End X", index), String.Format("Pan{0}CamEndX", index), "Red", coord: "X"),
+                CreatePanVar(String.Format("Pan{0} Cam End Y", index), String.Format("Pan{0}CamEndY", index), "Red", coord: "Y"),
+                CreatePanVar(String.Format("Pan{0} Cam End Z", index), String.Format("Pan{0}CamEndZ", index), "Red", coord: "Z"),
+                CreatePanVar(String.Format("Pan{0} Cam End Yaw", index), String.Format("Pan{0}CamEndYaw", index), "Red", subclass: "Angle", display: "ushort", yaw: "true"),
+                CreatePanVar(String.Format("Pan{0} Cam End Pitch", index), String.Format("Pan{0}CamEndPitch", index), "Red", subclass: "Angle", display: "short"),
             };
 
             /*
@@ -316,36 +316,42 @@ namespace STROOP.Managers
 
         public void UpdatePanning()
         {
-            /*
+            // Short circuit the logic if panning is disabled
+            if (SpecialConfig.PanCamPos == 0 && SpecialConfig.PanCamAngle == 0) return;
+
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
+            int panIndex = (int)SpecialConfig.CurrentPan;
+            if (panIndex == -1) return;
+            PanModel panModel = SpecialConfig.PanModels[panIndex];
+
+            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
             double camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
             double camY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
             double camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
-            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
 
             if (SpecialConfig.PanCamPos != 0)
             {
-                if (globalTimer <= SpecialConfig.PanStartTime)
+                if (globalTimer <= panModel.PanStartTime)
                 {
-                    Config.Stream.SetValue((float)SpecialConfig.PanCamStartX, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                    Config.Stream.SetValue((float)SpecialConfig.PanCamStartY, CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
-                    Config.Stream.SetValue((float)SpecialConfig.PanCamStartZ, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    Config.Stream.SetValue((float)panModel.PanCamStartX, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    Config.Stream.SetValue((float)panModel.PanCamStartY, CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                    Config.Stream.SetValue((float)panModel.PanCamStartZ, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
                 }
-                else if (globalTimer >= SpecialConfig.PanEndTime)
+                else if (globalTimer >= panModel.PanEndTime)
                 {
-                    Config.Stream.SetValue((float)SpecialConfig.PanCamEndX, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                    Config.Stream.SetValue((float)SpecialConfig.PanCamEndY, CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
-                    Config.Stream.SetValue((float)SpecialConfig.PanCamEndZ, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    Config.Stream.SetValue((float)panModel.PanCamEndX, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    Config.Stream.SetValue((float)panModel.PanCamEndY, CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                    Config.Stream.SetValue((float)panModel.PanCamEndZ, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
                 }
                 else
                 {
-                    double proportion = (globalTimer - SpecialConfig.PanStartTime) / (SpecialConfig.PanEndTime - SpecialConfig.PanStartTime);
-                    proportion = EasingUtilities.Ease(SpecialConfig.PanEaseDegree, proportion, SpecialConfig.PanEaseStart != 0, SpecialConfig.PanEaseEnd != 0);
-                    camX = SpecialConfig.PanCamStartX + proportion * (SpecialConfig.PanCamEndX - SpecialConfig.PanCamStartX);
-                    camY = SpecialConfig.PanCamStartY + proportion * (SpecialConfig.PanCamEndY - SpecialConfig.PanCamStartY);
-                    camZ = SpecialConfig.PanCamStartZ + proportion * (SpecialConfig.PanCamEndZ - SpecialConfig.PanCamStartZ);
+                    double proportion = (globalTimer - panModel.PanStartTime) / (panModel.PanEndTime - panModel.PanStartTime);
+                    proportion = EasingUtilities.Ease(panModel.PanEaseDegree, proportion, panModel.PanEaseStart != 0, panModel.PanEaseEnd != 0);
+                    camX = panModel.PanCamStartX + proportion * (panModel.PanCamEndX - panModel.PanCamStartX);
+                    camY = panModel.PanCamStartY + proportion * (panModel.PanCamEndY - panModel.PanCamStartY);
+                    camZ = panModel.PanCamStartZ + proportion * (panModel.PanCamEndZ - panModel.PanCamStartZ);
                     Config.Stream.SetValue((float)camX, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
                     Config.Stream.SetValue((float)camY, CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
                     Config.Stream.SetValue((float)camZ, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
@@ -357,28 +363,28 @@ namespace STROOP.Managers
                 double camYaw;
                 double camPitch;
 
-                if (globalTimer <= SpecialConfig.PanStartTime)
+                if (globalTimer <= panModel.PanStartTime)
                 {
-                    camYaw = SpecialConfig.PanCamStartYaw;
-                    camPitch = SpecialConfig.PanCamStartPitch;
+                    camYaw = panModel.PanCamStartYaw;
+                    camPitch = panModel.PanCamStartPitch;
                 }
-                else if (globalTimer >= SpecialConfig.PanEndTime)
+                else if (globalTimer >= panModel.PanEndTime)
                 {
-                    camYaw = SpecialConfig.PanCamEndYaw;
-                    camPitch = SpecialConfig.PanCamEndPitch;
+                    camYaw = panModel.PanCamEndYaw;
+                    camPitch = panModel.PanCamEndPitch;
                 }
                 else
                 {
-                    double proportion = (globalTimer - SpecialConfig.PanStartTime) / (SpecialConfig.PanEndTime - SpecialConfig.PanStartTime);
-                    proportion = EasingUtilities.Ease(SpecialConfig.PanEaseDegree, proportion, SpecialConfig.PanEaseStart != 0, SpecialConfig.PanEaseEnd != 0);
+                    double proportion = (globalTimer - panModel.PanStartTime) / (panModel.PanEndTime - panModel.PanStartTime);
+                    proportion = EasingUtilities.Ease(panModel.PanEaseDegree, proportion, panModel.PanEaseStart != 0, panModel.PanEaseEnd != 0);
 
-                    double yawDist = MoreMath.GetUnsignedAngleDifference(SpecialConfig.PanCamStartYaw, SpecialConfig.PanCamEndYaw);
-                    if (SpecialConfig.PanRotateCW != 0) yawDist -= 65536;
-                    camYaw = SpecialConfig.PanCamStartYaw + proportion * yawDist;
+                    double yawDist = MoreMath.GetUnsignedAngleDifference(panModel.PanCamStartYaw, panModel.PanCamEndYaw);
+                    if (panModel.PanRotateCW != 0) yawDist -= 65536;
+                    camYaw = panModel.PanCamStartYaw + proportion * yawDist;
                     camYaw = MoreMath.NormalizeAngleDouble(camYaw);
 
-                    double pitchDist = SpecialConfig.PanCamEndPitch - SpecialConfig.PanCamStartPitch;
-                    camPitch = SpecialConfig.PanCamStartPitch + proportion * pitchDist;
+                    double pitchDist = panModel.PanCamEndPitch - panModel.PanCamStartPitch;
+                    camPitch = panModel.PanCamStartPitch + proportion * pitchDist;
                 }
 
                 (double diffX, double diffY, double diffZ) = MoreMath.SphericalToEuler_AngleUnits(1000, camYaw, camPitch);
@@ -389,7 +395,6 @@ namespace STROOP.Managers
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
-            */
         }
 
         private int _globalTimer = 0;

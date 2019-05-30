@@ -99,7 +99,22 @@ namespace STROOP.Structs.Configurations
                 Config.CamHackManager.NotifyNumPanChange((int)_numPans);
             }
         }
-        public static double CurrentPan = 0;
+        public static double CurrentPan
+        {
+            get
+            {
+                if (PanModels.Count == 0) return -1;
+                uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                for (int i = 0; i < PanModels.Count; i++)
+                {
+                    if (globalTimer < PanModels[i].PanStartTime)
+                    {
+                        return Math.Max(0, i - 1);
+                    }
+                }
+                return PanModels.Count - 1;
+            }
+        }
         public static double PanCamPos = 0;
         public static double PanCamAngle = 0;
 
