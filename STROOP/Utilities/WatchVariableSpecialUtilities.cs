@@ -178,6 +178,7 @@ namespace STROOP.Structs
                     ("PanEaseEnd", () => SpecialConfig.PanEaseEnd, (double value) => SpecialConfig.PanEaseEnd = value),
                     ("PanEaseDegree", () => SpecialConfig.PanEaseDegree, (double value) => SpecialConfig.PanEaseDegree = value),
 
+                    ("PanGlobalTimer", () => SpecialConfig.PanGlobalTimer, (double value) => SpecialConfig.PanGlobalTimer = value),
                     ("PanStartTime", () => SpecialConfig.PanStartTime, (double value) => SpecialConfig.PanStartTime = value),
                     ("PanEndTime", () => SpecialConfig.PanEndTime, (double value) => SpecialConfig.PanEndTime = value),
                     ("PanDuration", () => SpecialConfig.PanDuration, (double value) => SpecialConfig.PanDuration = value),
