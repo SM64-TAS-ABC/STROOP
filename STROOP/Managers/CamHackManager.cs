@@ -220,7 +220,7 @@ namespace STROOP.Managers
                 for (int i = _numPans; i < numPans; i++)
                 {
                     SpecialConfig.PanModels.Add(new PanModel());
-                    List<WatchVariableControl> panVars = GetPanVars(i);
+                    List<WatchVariableControl> panVars = CreatePanVars(i);
                     _panVars.Add(panVars);
                     _variablePanel.AddVariables(panVars);
                 }
@@ -259,7 +259,7 @@ namespace STROOP.Managers
             return precursor.CreateWatchVariableControl();
         }
 
-        private List<WatchVariableControl> GetPanVars(int index)
+        private List<WatchVariableControl> CreatePanVars(int index)
         {
             WatchVariableSpecialUtilities.AddPanEntriesToDictionary(index);
             return new List<WatchVariableControl>
