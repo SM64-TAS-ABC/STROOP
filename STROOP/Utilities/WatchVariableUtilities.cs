@@ -71,6 +71,16 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Camera:
                     return new List<uint> { CameraConfig.StructAddress };
 
+                case BaseAddressTypeEnum.CameraSettings:
+                    {
+                        uint a1 = 0x8033B910;
+                        uint a2 = Config.Stream.GetUInt32(a1);
+                        uint a3 = Config.Stream.GetUInt32(a2 + 0x10);
+                        uint a4 = Config.Stream.GetUInt32(a3 + 0x08);
+                        uint a5 = Config.Stream.GetUInt32(a4 + 0x10);
+                        return new List<uint> { a5 };
+                    }
+
                 case BaseAddressTypeEnum.File:
                     return new List<uint> { Config.FileManager.CurrentFileAddress };
 

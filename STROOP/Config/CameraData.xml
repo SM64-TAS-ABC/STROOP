@@ -38,6 +38,10 @@
   <Data type="byte" offsetUS="0x80332609" offsetJP="0x803314F9" base="Relative" subclass="Boolean" mask="0x08" color="Yellow">Down Arrow Displayed</Data>
   <Data type="byte" offsetUS="0x80332609" offsetJP="0x803314F9" base="Relative" subclass="Boolean" mask="0x10" color="Yellow">Up Arrow Displayed</Data>
 
+  <Data type="float" offset="0x1C" base="CameraSettings" color="Green">FOV</Data>
+  <Data type="short" offset="0x20" base="CameraSettings" color="Green">Near Dist</Data>
+  <Data type="short" offset="0x22" base="CameraSettings" color="Green">Far Dist</Data>
+
   <Data type="float" offsetUS="0x8033C5A4" offsetJP="0x8033B234" base="Relative" color="LightBlue">FOV</Data>
   <Data type="uint" offsetUS="0x8029A7C8" offsetJP="0x8029A0AC" base="Relative" useHex="true" color="LightBlue">FOV Awake</Data>
   <Data type="uint" offsetUS="0x8029A774" offsetJP="0x8029A058" base="Relative" useHex="true" color="LightBlue">FOV Sleeping</Data>
