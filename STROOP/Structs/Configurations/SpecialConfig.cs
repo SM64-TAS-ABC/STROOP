@@ -92,6 +92,10 @@ namespace STROOP.Structs.Configurations
         public static double PanCamAngle = 0;
         public static double PanRotateCW = 0;
 
+        public static double PanEaseStart = 0;
+        public static double PanEaseEnd = 0;
+        public static double PanEaseDegree = 3;
+
         public static double PanStartTime = 0;
         public static double PanEndTime = 0;
         public static double PanDuration

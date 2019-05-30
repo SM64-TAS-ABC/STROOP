@@ -17,6 +17,10 @@
   <Data base="None" specialType="PanCamAngle" color="Yellow" subclass="Boolean">Pan Cam Angle</Data>
   <Data base="None" specialType="PanRotateCW" color="Yellow" subclass="Boolean">Pan Rotate CW</Data>
 
+  <Data base="None" specialType="PanEaseStart" color="LightBlue" subclass="Boolean">PanEaseStart</Data>
+  <Data base="None" specialType="PanEaseEnd" color="LightBlue" subclass="Boolean">PanEaseEnd</Data>
+  <Data base="None" specialType="PanEaseDegree" color="LightBlue">PanEaseDegree</Data>
+
   <Data type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" offsetSH="0x8030CD04" base="Relative" color="Orange">Global Timer</Data>
   <Data base="None" specialType="PanStartTime" color="Orange">Pan Start Time</Data>
   <Data base="None" specialType="PanEndTime" color="Orange">Pan End Time</Data>

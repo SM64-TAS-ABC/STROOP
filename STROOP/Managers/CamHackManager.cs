@@ -220,7 +220,7 @@ namespace STROOP.Managers
                 else
                 {
                     double proportion = (globalTimer - SpecialConfig.PanStartTime) / (SpecialConfig.PanEndTime - SpecialConfig.PanStartTime);
-                    proportion = EasingUtilities.Ease(3, proportion, true, true);
+                    proportion = EasingUtilities.Ease(SpecialConfig.PanEaseDegree, proportion, SpecialConfig.PanEaseStart != 0, SpecialConfig.PanEaseEnd != 0);
                     camX = SpecialConfig.PanCamStartX + proportion * (SpecialConfig.PanCamEndX - SpecialConfig.PanCamStartX);
                     camY = SpecialConfig.PanCamStartY + proportion * (SpecialConfig.PanCamEndY - SpecialConfig.PanCamStartY);
                     camZ = SpecialConfig.PanCamStartZ + proportion * (SpecialConfig.PanCamEndZ - SpecialConfig.PanCamStartZ);
@@ -248,7 +248,7 @@ namespace STROOP.Managers
                 else
                 {
                     double proportion = (globalTimer - SpecialConfig.PanStartTime) / (SpecialConfig.PanEndTime - SpecialConfig.PanStartTime);
-                    proportion = EasingUtilities.Ease(3, proportion, true, true);
+                    proportion = EasingUtilities.Ease(SpecialConfig.PanEaseDegree, proportion, SpecialConfig.PanEaseStart != 0, SpecialConfig.PanEaseEnd != 0);
 
                     double yawDist = MoreMath.GetUnsignedAngleDifference(SpecialConfig.PanCamStartYaw, SpecialConfig.PanCamEndYaw);
                     if (SpecialConfig.PanRotateCW != 0) yawDist -= 65536;

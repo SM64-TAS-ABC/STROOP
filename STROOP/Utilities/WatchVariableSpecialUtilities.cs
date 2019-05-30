@@ -171,6 +171,10 @@ namespace STROOP.Structs
                     ("PanCamAngle", () => SpecialConfig.PanCamAngle, (double value) => SpecialConfig.PanCamAngle = value),
                     ("PanRotateCW", () => SpecialConfig.PanRotateCW, (double value) => SpecialConfig.PanRotateCW = value),
 
+                    ("PanEaseStart", () => SpecialConfig.PanEaseStart, (double value) => SpecialConfig.PanEaseStart = value),
+                    ("PanEaseEnd", () => SpecialConfig.PanEaseEnd, (double value) => SpecialConfig.PanEaseEnd = value),
+                    ("PanEaseDegree", () => SpecialConfig.PanEaseDegree, (double value) => SpecialConfig.PanEaseDegree = value),
+
                     ("PanStartTime", () => SpecialConfig.PanStartTime, (double value) => SpecialConfig.PanStartTime = value),
                     ("PanEndTime", () => SpecialConfig.PanEndTime, (double value) => SpecialConfig.PanEndTime = value),
                     ("PanDuration", () => SpecialConfig.PanDuration, (double value) => SpecialConfig.PanDuration = value),
