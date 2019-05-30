@@ -24,7 +24,7 @@ namespace STROOP.Structs
             _dictionary = new WatchVariableSpecialDictionary();
             AddLiteralEntriesToDictionary();
             AddGeneratedEntriesToDictionary();
-            AddStoredEntriesToDictionary();
+            AddPanEntriesToDictionary();
         }
 
         public static (Func<uint, object> getter, Func<object, uint, bool> setter)
@@ -162,38 +162,59 @@ namespace STROOP.Structs
             return specialType;
         }
 
-        public static void AddStoredEntriesToDictionary()
+        public static void AddPanEntriesToDictionary()
         {
             List<(string, Func<double>, Action<double>)> entries =
                 new List<(string, Func<double>, Action<double>)>()
                 {
                     ("NumPans", () => SpecialConfig.NumPans, (double value) => SpecialConfig.NumPans = value),
                     ("CurrentPan", () => SpecialConfig.CurrentPan, (double value) => SpecialConfig.CurrentPan = value),
-
                     ("PanCamPos", () => SpecialConfig.PanCamPos, (double value) => SpecialConfig.PanCamPos = value),
                     ("PanCamAngle", () => SpecialConfig.PanCamAngle, (double value) => SpecialConfig.PanCamAngle = value),
-                    ("PanRotateCW", () => SpecialConfig.PanRotateCW, (double value) => SpecialConfig.PanRotateCW = value),
+                };
 
-                    ("PanEaseStart", () => SpecialConfig.PanEaseStart, (double value) => SpecialConfig.PanEaseStart = value),
-                    ("PanEaseEnd", () => SpecialConfig.PanEaseEnd, (double value) => SpecialConfig.PanEaseEnd = value),
-                    ("PanEaseDegree", () => SpecialConfig.PanEaseDegree, (double value) => SpecialConfig.PanEaseDegree = value),
+            foreach ((string key, Func<double> getter, Action<double> setter) in entries)
+            {
+                _dictionary.Add(key,
+                    ((uint dummy) =>
+                    {
+                        return getter();
+                    },
+                    (double doubleValue, uint dummy) =>
+                    {
+                        setter(doubleValue);
+                        return true;
+                    }));
+            }
+        }
 
-                    ("PanGlobalTimer", () => SpecialConfig.PanGlobalTimer, (double value) => SpecialConfig.PanGlobalTimer = value),
-                    ("PanStartTime", () => SpecialConfig.PanStartTime, (double value) => SpecialConfig.PanStartTime = value),
-                    ("PanEndTime", () => SpecialConfig.PanEndTime, (double value) => SpecialConfig.PanEndTime = value),
-                    ("PanDuration", () => SpecialConfig.PanDuration, (double value) => SpecialConfig.PanDuration = value),
+        public static void AddPanEntriesToDictionary(int index)
+        {
+            List<(string, Func<double>, Action<double>)> entries =
+                new List<(string, Func<double>, Action<double>)>()
+                {
+                    (String.Format("Pan{0}GlobalTimer", index), () => SpecialConfig.PanModels[index].PanGlobalTimer, (double value) => SpecialConfig.PanModels[index].PanGlobalTimer = value),
+                    (String.Format("Pan{0}StartTime", index), () => SpecialConfig.PanModels[index].PanStartTime, (double value) => SpecialConfig.PanModels[index].PanStartTime = value),
+                    (String.Format("Pan{0}EndTime", index), () => SpecialConfig.PanModels[index].PanEndTime, (double value) => SpecialConfig.PanModels[index].PanEndTime = value),
+                    (String.Format("Pan{0}Duration", index), () => SpecialConfig.PanModels[index].PanDuration, (double value) => SpecialConfig.PanModels[index].PanDuration = value),
 
-                    ("PanCamStartX", () => SpecialConfig.PanCamStartX, (double value) => SpecialConfig.PanCamStartX = value),
-                    ("PanCamStartY", () => SpecialConfig.PanCamStartY, (double value) => SpecialConfig.PanCamStartY = value),
-                    ("PanCamStartZ", () => SpecialConfig.PanCamStartZ, (double value) => SpecialConfig.PanCamStartZ = value),
-                    ("PanCamStartYaw", () => SpecialConfig.PanCamStartYaw, (double value) => SpecialConfig.PanCamStartYaw = value),
-                    ("PanCamStartPitch", () => SpecialConfig.PanCamStartPitch, (double value) => SpecialConfig.PanCamStartPitch = value),
+                    (String.Format("Pan{0}EaseStart", index), () => SpecialConfig.PanModels[index].PanEaseStart, (double value) => SpecialConfig.PanModels[index].PanEaseStart = value),
+                    (String.Format("Pan{0}EaseEnd", index), () => SpecialConfig.PanModels[index].PanEaseEnd, (double value) => SpecialConfig.PanModels[index].PanEaseEnd = value),
+                    (String.Format("Pan{0}EaseDegree", index), () => SpecialConfig.PanModels[index].PanEaseDegree, (double value) => SpecialConfig.PanModels[index].PanEaseDegree = value),
 
-                    ("PanCamEndX", () => SpecialConfig.PanCamEndX, (double value) => SpecialConfig.PanCamEndX = value),
-                    ("PanCamEndY", () => SpecialConfig.PanCamEndY, (double value) => SpecialConfig.PanCamEndY = value),
-                    ("PanCamEndZ", () => SpecialConfig.PanCamEndZ, (double value) => SpecialConfig.PanCamEndZ = value),
-                    ("PanCamEndYaw", () => SpecialConfig.PanCamEndYaw, (double value) => SpecialConfig.PanCamEndYaw = value),
-                    ("PanCamEndPitch", () => SpecialConfig.PanCamEndPitch, (double value) => SpecialConfig.PanCamEndPitch = value),
+                    (String.Format("Pan{0}RotateCW", index), () => SpecialConfig.PanModels[index].PanRotateCW, (double value) => SpecialConfig.PanModels[index].PanRotateCW = value),
+
+                    (String.Format("Pan{0}CamStartX", index), () => SpecialConfig.PanModels[index].PanCamStartX, (double value) => SpecialConfig.PanModels[index].PanCamStartX = value),
+                    (String.Format("Pan{0}CamStartY", index), () => SpecialConfig.PanModels[index].PanCamStartY, (double value) => SpecialConfig.PanModels[index].PanCamStartY = value),
+                    (String.Format("Pan{0}CamStartZ", index), () => SpecialConfig.PanModels[index].PanCamStartZ, (double value) => SpecialConfig.PanModels[index].PanCamStartZ = value),
+                    (String.Format("Pan{0}CamStartYaw", index), () => SpecialConfig.PanModels[index].PanCamStartYaw, (double value) => SpecialConfig.PanModels[index].PanCamStartYaw = value),
+                    (String.Format("Pan{0}CamStartPitch", index), () => SpecialConfig.PanModels[index].PanCamStartPitch, (double value) => SpecialConfig.PanModels[index].PanCamStartPitch = value),
+
+                    (String.Format("Pan{0}CamEndX", index), () => SpecialConfig.PanModels[index].PanCamEndX, (double value) => SpecialConfig.PanModels[index].PanCamEndX = value),
+                    (String.Format("Pan{0}CamEndY", index), () => SpecialConfig.PanModels[index].PanCamEndY, (double value) => SpecialConfig.PanModels[index].PanCamEndY = value),
+                    (String.Format("Pan{0}CamEndZ", index), () => SpecialConfig.PanModels[index].PanCamEndZ, (double value) => SpecialConfig.PanModels[index].PanCamEndZ = value),
+                    (String.Format("Pan{0}CamEndYaw", index), () => SpecialConfig.PanModels[index].PanCamEndYaw, (double value) => SpecialConfig.PanModels[index].PanCamEndYaw = value),
+                    (String.Format("Pan{0}CamEndPitch", index), () => SpecialConfig.PanModels[index].PanCamEndPitch, (double value) => SpecialConfig.PanModels[index].PanCamEndPitch = value),
                 };
 
             foreach ((string key, Func<double> getter, Action<double> setter) in entries)

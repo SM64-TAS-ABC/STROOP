@@ -1,4 +1,5 @@
-﻿using STROOP.Utilities;
+﻿using STROOP.Models;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,41 +89,21 @@ namespace STROOP.Structs.Configurations
 
         // Cam Hack vars
 
-        public static double NumPans = 0;
+        private static double _numPans = 0;
+        public static double NumPans
+        {
+            get => _numPans;
+            set
+            {
+                _numPans = Math.Max(0, value);
+                Config.CamHackManager.NotifyNumPanChange((int)_numPans);
+            }
+        }
         public static double CurrentPan = 0;
-
         public static double PanCamPos = 0;
         public static double PanCamAngle = 0;
-        public static double PanRotateCW = 0;
 
-        public static double PanEaseStart = 0;
-        public static double PanEaseEnd = 0;
-        public static double PanEaseDegree = 3;
-
-        public static double PanGlobalTimer
-        {
-            get => Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-            set => Config.Stream.SetValue((uint)value, MiscConfig.GlobalTimerAddress);
-        }
-        public static double PanStartTime = 0;
-        public static double PanEndTime = 0;
-        public static double PanDuration
-        {
-            get => PanEndTime - PanStartTime;
-            set => PanEndTime = PanStartTime + value;
-        }
-        
-        public static double PanCamStartX = 0;
-        public static double PanCamStartY = 0;
-        public static double PanCamStartZ = 0;
-        public static double PanCamStartYaw = 0;
-        public static double PanCamStartPitch = 16384;
-
-        public static double PanCamEndX = 0;
-        public static double PanCamEndY = 0;
-        public static double PanCamEndZ = 0;
-        public static double PanCamEndYaw = 0;
-        public static double PanCamEndPitch = 16384;
+        public static List<PanModel> PanModels = new List<PanModel>();
 
         // Rng vars
 

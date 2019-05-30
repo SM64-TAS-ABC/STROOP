@@ -1,10 +1,12 @@
 ﻿using STROOP.Controls;
+using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Managers
 {
@@ -17,6 +19,9 @@ namespace STROOP.Managers
         RadioButton _mode1RadioButtonAbsoluteAngle;
         RadioButton _mode2RadioButton;
         RadioButton _mode3RadioButton;
+
+        private int _numPans = 0;
+        private List<List<WatchVariableControl>> _panVars = new List<List<WatchVariableControl>>();
 
         public CamHackManager(string varFilePath, TabPage camHackControl, WatchVariableFlowLayoutPanel variableTable)
             : base(varFilePath, variableTable)
@@ -195,6 +200,123 @@ namespace STROOP.Managers
 
         public override void Update(bool updateView)
         {
+            UpdatePanning();
+
+            if (!updateView) return;
+            base.Update(updateView);
+
+            CamHackMode correctCamHackMode = getCorrectCamHackMode();
+            if (CurrentCamHackMode != correctCamHackMode)
+            {
+                CurrentCamHackMode = correctCamHackMode;
+                getCorrespondingRadioButton(correctCamHackMode).Checked = true;
+            }
+        }
+
+        public void NotifyNumPanChange(int numPans)
+        {
+            if (numPans > _numPans) // Need to add vars
+            {
+                for (int i = _numPans; i < numPans; i++)
+                {
+                    SpecialConfig.PanModels.Add(new PanModel());
+                    List<WatchVariableControl> panVars = GetPanVars(i);
+                    _panVars.Add(panVars);
+                    _variablePanel.AddVariables(panVars);
+                }
+            }
+            if (numPans < _numPans) // Need to remove vars
+            {
+                for (int i = _numPans - 1; i >= numPans; i--)
+                {
+                    SpecialConfig.PanModels.RemoveAt(i);
+                    List<WatchVariableControl> panVars = _panVars[i];
+                    _panVars.Remove(panVars);
+                    _variablePanel.RemoveVariables(panVars);
+                }
+            }
+            _numPans = numPans;
+        }
+
+        private WatchVariableControl CreatePanVar(
+            string name,
+            string specialType,
+            string color,
+            string subclass = null,
+            string coord = null,
+            string display = null,
+            string yaw = null)
+        {
+            XElement xElement = new XElement("Data", name);
+            xElement.Add(new XAttribute("base", "None"));
+            xElement.Add(new XAttribute("specialType", specialType));
+            xElement.Add(new XAttribute("color", color));
+            if (subclass != null) xElement.Add(new XAttribute("subclass", subclass));
+            if (coord != null) xElement.Add(new XAttribute("coord", coord));
+            if (display != null) xElement.Add(new XAttribute("display", display));
+            if (yaw != null) xElement.Add(new XAttribute("yaw", yaw));
+            WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(xElement);
+            return precursor.CreateWatchVariableControl();
+        }
+
+        private List<WatchVariableControl> GetPanVars(int index)
+        {
+            WatchVariableSpecialUtilities.AddPanEntriesToDictionary(index);
+            return new List<WatchVariableControl>
+            {
+                CreatePanVar("Global Timer", String.Format("Pan{0}GlobalTimer", index), "Orange"),
+                CreatePanVar(String.Format("Pan{0} Start Time", index+1), String.Format("Pan{0}StartTime", index), "Orange"),
+                CreatePanVar(String.Format("Pan{0} End Time", index+1), String.Format("Pan{0}EndTime", index), "Orange"),
+                CreatePanVar(String.Format("Pan{0} Duration", index+1), String.Format("Pan{0}Duration", index), "Orange"),
+
+                CreatePanVar(String.Format("Pan{0} Ease Start", index+1), String.Format("Pan{0}EaseStart", index), "LightBlue", subclass: "Boolean"),
+                CreatePanVar(String.Format("Pan{0} Ease End", index+1), String.Format("Pan{0}EaseEnd", index), "LightBlue", subclass: "Boolean"),
+                CreatePanVar(String.Format("Pan{0} Ease Degree", index+1), String.Format("Pan{0}EaseDegree", index), "LightBlue"),
+
+                CreatePanVar(String.Format("Pan{0} Rotate CW", index+1), String.Format("Pan{0}RotateCW", index), "Yellow", subclass: "Boolean"),
+
+                CreatePanVar(String.Format("Pan{0} Cam Start X", index+1), String.Format("Pan{0}CamStartX", index), "Green", coord: "X"),
+                CreatePanVar(String.Format("Pan{0} Cam Start Y", index+1), String.Format("Pan{0}CamStartY", index), "Green", coord: "Y"),
+                CreatePanVar(String.Format("Pan{0} Cam Start Z", index+1), String.Format("Pan{0}CamStartZ", index), "Green", coord: "Z"),
+                CreatePanVar(String.Format("Pan{0} Cam Start Yaw", index+1), String.Format("Pan{0}CamStartYaw", index), "Green", subclass: "Angle", display: "ushort", yaw: "true"),
+                CreatePanVar(String.Format("Pan{0} Cam Start Pitch", index+1), String.Format("Pan{0}CamStartPitch", index), "Green", subclass: "Angle", display: "short"),
+
+                CreatePanVar(String.Format("Pan{0} Cam End X", index+1), String.Format("Pan{0}CamEndX", index), "Red", coord: "X"),
+                CreatePanVar(String.Format("Pan{0} Cam End Y", index+1), String.Format("Pan{0}CamEndY", index), "Red", coord: "Y"),
+                CreatePanVar(String.Format("Pan{0} Cam End Z", index+1), String.Format("Pan{0}CamEndZ", index), "Red", coord: "Z"),
+                CreatePanVar(String.Format("Pan{0} Cam End Yaw", index+1), String.Format("Pan{0}CamEndYaw", index), "Red", subclass: "Angle", display: "ushort", yaw: "true"),
+                CreatePanVar(String.Format("Pan{0} Cam End Pitch", index+1), String.Format("Pan{0}CamEndPitch", index), "Red", subclass: "Angle", display: "short"),
+            };
+
+            /*
+              < Data base="None" specialType="PanGlobalTimer" color="Orange">Global Timer</Data>
+              <Data base="None" specialType="PanStartTime" color="Orange">Pan Start Time</Data>
+              <Data base="None" specialType="PanEndTime" color="Orange">Pan End Time</Data>
+              <Data base="None" specialType="PanDuration" color="Orange">Pan Duration</Data>
+
+              <Data base="None" specialType="PanEaseStart" color="LightBlue" subclass="Boolean">PanEaseStart</Data>
+              <Data base="None" specialType="PanEaseEnd" color="LightBlue" subclass="Boolean">PanEaseEnd</Data>
+              <Data base="None" specialType="PanEaseDegree" color="LightBlue">PanEaseDegree</Data>
+
+              <Data base="None" specialType="PanRotateCW" color="Yellow" subclass="Boolean">Pan Rotate CW</Data>
+
+              <Data base="None" specialType="PanCamStartX" coord="X" color="Green">Pan Cam Start X</Data>
+              <Data base="None" specialType="PanCamStartY" coord="Y" color="Green">Pan Cam Start Y</Data>
+              <Data base="None" specialType="PanCamStartZ" coord="Z" color="Green">Pan Cam Start Z</Data>
+              <Data base="None" specialType="PanCamStartYaw" subclass="Angle" display="ushort" yaw="true" color="Green">Pan Cam Start Yaw</Data>
+              <Data base="None" specialType="PanCamStartPitch" subclass="Angle" display="short" color="Green">Pan Cam Start Pitch</Data>
+
+              <Data base="None" specialType="PanCamEndX" coord="X" color="Red">Pan Cam End X</Data>
+              <Data base="None" specialType="PanCamEndY" coord="Y" color="Red">Pan Cam End Y</Data>
+              <Data base="None" specialType="PanCamEndZ" coord="Z" color="Red">Pan Cam End Z</Data>
+              <Data base="None" specialType="PanCamEndYaw" subclass="Angle" display="ushort" yaw="true" color="Red">Pan Cam End Yaw</Data>
+              <Data base="None" specialType="PanCamEndPitch" subclass="Angle" display="short" color="Red">Pan Cam End Pitch</Data>
+              */
+        }
+
+        public void UpdatePanning()
+        {
+            /*
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
@@ -267,16 +389,7 @@ namespace STROOP.Managers
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
-
-            if (!updateView) return;
-            base.Update(updateView);
-
-            CamHackMode correctCamHackMode = getCorrectCamHackMode();
-            if (CurrentCamHackMode != correctCamHackMode)
-            {
-                CurrentCamHackMode = correctCamHackMode;
-                getCorrespondingRadioButton(correctCamHackMode).Checked = true;
-            }
+            */
         }
 
         private int _globalTimer = 0;

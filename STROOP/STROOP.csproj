@@ -378,6 +378,7 @@
     <Compile Include="Managers\PaintingManager.cs" />
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
+    <Compile Include="Models\PanModel.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
     <Compile Include="Structs\Configurations\PaintingConfig.cs" />
     <Compile Include="Structs\Configurations\MappingConfig.cs" />
