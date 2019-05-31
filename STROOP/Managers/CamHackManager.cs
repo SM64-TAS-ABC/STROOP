@@ -369,6 +369,11 @@ namespace STROOP.Managers
                 Config.Stream.SetValue((float)focusZ, CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
             }
 
+            if (SpecialConfig.PanFOV != 0)
+            {
+                // do FOV stuff
+            }
+
             if (!streamAlreadySuspended) Config.Stream.Resume();
         }
 

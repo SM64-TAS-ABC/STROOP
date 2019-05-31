@@ -171,6 +171,7 @@ namespace STROOP.Structs
                     ("CurrentPan", () => SpecialConfig.CurrentPan, (double value) => {}),
                     ("PanCamPos", () => SpecialConfig.PanCamPos, (double value) => SpecialConfig.PanCamPos = value),
                     ("PanCamAngle", () => SpecialConfig.PanCamAngle, (double value) => SpecialConfig.PanCamAngle = value),
+                    ("PanFOV", () => SpecialConfig.PanFOV, (double value) => SpecialConfig.PanFOV = value),
                 };
 
             foreach ((string key, Func<double> getter, Action<double> setter) in entries)
