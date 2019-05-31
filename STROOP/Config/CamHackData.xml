@@ -14,6 +14,7 @@
   <Data type="float" offset="0x20" base="CamHack">Radius</Data>
   <Data type="short" offset="0x1E" base="CamHack" subclass="Angle" yaw="true">Theta</Data>
   <Data type="float" offset="0x24" base="CamHack">Relative Height</Data>
+  <Data type="float" offsetUS="0x8033C5A4" offsetJP="0x8033B234" base="Relative">FOV</Data>
 
   <Data base="None" specialType="NumPans" color="Grey">Num Pans</Data>
   <Data base="None" specialType="CurrentPan" color="Grey">Current Pan</Data>

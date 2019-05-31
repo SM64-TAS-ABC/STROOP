@@ -41,5 +41,8 @@ namespace STROOP.Models
         public double PanCamEndZ = 0;
         public double PanCamEndYaw = 0;
         public double PanCamEndPitch = 16384;
+
+        public double PanFOVStart = 45;
+        public double PanFOVEnd = 45;
     }
 }
