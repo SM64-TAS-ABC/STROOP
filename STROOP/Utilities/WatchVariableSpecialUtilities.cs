@@ -2279,6 +2279,41 @@ namespace STROOP.Structs
                     return Config.Stream.SetValue((float)goalMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
                 }));
 
+            // Cam Hack Vars
+
+            _dictionary.Add("CamHackYaw",
+                ((uint dummy) =>
+                {
+                    float camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    float camY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                    float camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    float focusX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                    float focusY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
+                    float focusZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    return MoreMath.AngleTo_AngleUnits(camX, camZ, focusX, focusZ);
+                },
+                (double newQpuXIndex, uint dummy) =>
+                {
+                    return false;
+                }));
+
+            _dictionary.Add("CamHackPitch",
+                ((uint dummy) =>
+                {
+                    float camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    float camY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                    float camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    float focusX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                    float focusY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
+                    float focusZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    (double radius, double theta, double phi) = MoreMath.EulerToSpherical_AngleUnits(focusX - camX, focusY - camY, focusZ - camZ);
+                    return phi;
+                },
+                (double newQpuXIndex, uint dummy) =>
+                {
+                    return false;
+                }));
+
             // PU vars
 
             _dictionary.Add("MarioXQpuIndex",
