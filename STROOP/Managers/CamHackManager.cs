@@ -295,7 +295,7 @@ namespace STROOP.Managers
         public void UpdatePanning()
         {
             // Short circuit the logic if panning is disabled
-            if (SpecialConfig.PanCamPos == 0 && SpecialConfig.PanCamAngle == 0) return;
+            if (SpecialConfig.PanCamPos == 0 && SpecialConfig.PanCamAngle == 0 && SpecialConfig.PanFOV == 0) return;
 
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
@@ -374,7 +374,21 @@ namespace STROOP.Managers
 
             if (SpecialConfig.PanFOV != 0)
             {
-                // do FOV stuff
+                if (globalTimer <= panModel.PanStartTime)
+                {
+                    Config.Stream.SetValue((float)panModel.PanFOVStart, CameraConfig.FOVAddress);
+                }
+                else if (globalTimer >= panModel.PanEndTime)
+                {
+                    Config.Stream.SetValue((float)panModel.PanFOVEnd, CameraConfig.FOVAddress);
+                }
+                else
+                {
+                    double proportion = (globalTimer - panModel.PanStartTime) / (panModel.PanEndTime - panModel.PanStartTime);
+                    proportion = EasingUtilities.Ease(panModel.PanEaseDegree, proportion, panModel.PanEaseStart != 0, panModel.PanEaseEnd != 0);
+                    double fov = panModel.PanFOVStart + proportion * (panModel.PanFOVEnd - panModel.PanFOVStart);
+                    Config.Stream.SetValue((float)fov, CameraConfig.FOVAddress);
+                }
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
