@@ -2285,16 +2285,23 @@ namespace STROOP.Structs
                 ((uint dummy) =>
                 {
                     float camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                    float camY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
                     float camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
                     float focusX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                    float focusY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
                     float focusZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
                     return MoreMath.AngleTo_AngleUnits(camX, camZ, focusX, focusZ);
                 },
-                (double newQpuXIndex, uint dummy) =>
+                (double yaw, uint dummy) =>
                 {
-                    return false;
+                    float camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    float camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    float focusX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                    float focusZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    (double newFocusX, double newFocusZ) = MoreMath.RotatePointAboutPointToAngle(focusX, focusZ, camX, camZ, yaw);
+
+                    bool success = true;
+                    success &= Config.Stream.SetValue((float)newFocusX, CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                    success &= Config.Stream.SetValue((float)newFocusZ, CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    return success;
                 }));
 
             _dictionary.Add("CamHackPitch",
@@ -2309,10 +2316,25 @@ namespace STROOP.Structs
                     (double radius, double theta, double phi) = MoreMath.EulerToSpherical_AngleUnits(focusX - camX, focusY - camY, focusZ - camZ);
                     return phi;
                 },
-                (double newQpuXIndex, uint dummy) =>
+                (double pitch, uint dummy) =>
                 {
-                    return false;
-                }));
+                    float camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    float camY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                    float camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    float focusX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                    float focusY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
+                    float focusZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    (double radius, double theta, double phi) = MoreMath.EulerToSpherical_AngleUnits(focusX - camX, focusY - camY, focusZ - camZ);
+                    (double diffX, double diffY, double diffZ) = MoreMath.SphericalToEuler_AngleUnits(radius, theta, pitch);
+                    (double newFocusX, double newFocusY, double newFocusZ) = (camX + diffX, camY + diffY, camZ + diffZ);
+
+                    bool success = true;
+                    success &= Config.Stream.SetValue((float)newFocusX, CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                    success &= Config.Stream.SetValue((float)newFocusY, CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
+                    success &= Config.Stream.SetValue((float)newFocusZ, CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    return success;
+                }
+            ));
 
             // PU vars
 
