@@ -287,31 +287,6 @@ namespace STROOP.Managers
                 CreatePanVar(String.Format("Pan{0} Cam End Yaw", index), String.Format("Pan{0}CamEndYaw", index), "Red", subclass: "Angle", display: "ushort", yaw: "true"),
                 CreatePanVar(String.Format("Pan{0} Cam End Pitch", index), String.Format("Pan{0}CamEndPitch", index), "Red", subclass: "Angle", display: "short"),
             };
-
-            /*
-              < Data base="None" specialType="PanGlobalTimer" color="Orange">Global Timer</Data>
-              <Data base="None" specialType="PanStartTime" color="Orange">Pan Start Time</Data>
-              <Data base="None" specialType="PanEndTime" color="Orange">Pan End Time</Data>
-              <Data base="None" specialType="PanDuration" color="Orange">Pan Duration</Data>
-
-              <Data base="None" specialType="PanEaseStart" color="LightBlue" subclass="Boolean">PanEaseStart</Data>
-              <Data base="None" specialType="PanEaseEnd" color="LightBlue" subclass="Boolean">PanEaseEnd</Data>
-              <Data base="None" specialType="PanEaseDegree" color="LightBlue">PanEaseDegree</Data>
-
-              <Data base="None" specialType="PanRotateCW" color="Yellow" subclass="Boolean">Pan Rotate CW</Data>
-
-              <Data base="None" specialType="PanCamStartX" coord="X" color="Green">Pan Cam Start X</Data>
-              <Data base="None" specialType="PanCamStartY" coord="Y" color="Green">Pan Cam Start Y</Data>
-              <Data base="None" specialType="PanCamStartZ" coord="Z" color="Green">Pan Cam Start Z</Data>
-              <Data base="None" specialType="PanCamStartYaw" subclass="Angle" display="ushort" yaw="true" color="Green">Pan Cam Start Yaw</Data>
-              <Data base="None" specialType="PanCamStartPitch" subclass="Angle" display="short" color="Green">Pan Cam Start Pitch</Data>
-
-              <Data base="None" specialType="PanCamEndX" coord="X" color="Red">Pan Cam End X</Data>
-              <Data base="None" specialType="PanCamEndY" coord="Y" color="Red">Pan Cam End Y</Data>
-              <Data base="None" specialType="PanCamEndZ" coord="Z" color="Red">Pan Cam End Z</Data>
-              <Data base="None" specialType="PanCamEndYaw" subclass="Angle" display="ushort" yaw="true" color="Red">Pan Cam End Yaw</Data>
-              <Data base="None" specialType="PanCamEndPitch" subclass="Angle" display="short" color="Red">Pan Cam End Pitch</Data>
-              */
         }
 
         public void UpdatePanning()
@@ -379,7 +354,7 @@ namespace STROOP.Managers
                     proportion = EasingUtilities.Ease(panModel.PanEaseDegree, proportion, panModel.PanEaseStart != 0, panModel.PanEaseEnd != 0);
 
                     double yawDist = MoreMath.GetUnsignedAngleDifference(panModel.PanCamStartYaw, panModel.PanCamEndYaw);
-                    if (panModel.PanRotateCW != 0) yawDist -= 65536;
+                    if (panModel.PanRotateCW != 0 && yawDist != 0) yawDist -= 65536;
                     camYaw = panModel.PanCamStartYaw + proportion * yawDist;
                     camYaw = MoreMath.NormalizeAngleDouble(camYaw);
 
