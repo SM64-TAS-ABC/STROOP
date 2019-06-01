@@ -365,7 +365,7 @@ namespace STROOP.Managers
                     camPitch = panModel.PanCamStartPitch + proportion * pitchDist;
                 }
 
-                (double diffX, double diffY, double diffZ) = MoreMath.SphericalToEuler_AngleUnits(1000, camYaw, camPitch);
+                (double diffX, double diffY, double diffZ) = MoreMath.SphericalToEuler_AngleUnits2(1000, camYaw, camPitch);
                 (double focusX, double focusY, double focusZ) = (camX + diffX, camY + diffY, camZ + diffZ);
                 Config.Stream.SetValue((float)focusX, CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
                 Config.Stream.SetValue((float)focusY, CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
