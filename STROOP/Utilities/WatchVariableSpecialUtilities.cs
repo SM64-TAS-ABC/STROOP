@@ -2317,7 +2317,7 @@ namespace STROOP.Structs
                     float focusX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
                     float focusY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
                     float focusZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
-                    (double radius, double theta, double phi) = MoreMath.EulerToSpherical_AngleUnits(focusX - camX, focusY - camY, focusZ - camZ);
+                    (double radius, double theta, double phi) = MoreMath.EulerToSpherical_AngleUnits2(focusX - camX, focusY - camY, focusZ - camZ);
                     return phi;
                 },
                 (double pitch, uint dummy) =>
@@ -2328,8 +2328,8 @@ namespace STROOP.Structs
                     float focusX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
                     float focusY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
                     float focusZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
-                    (double radius, double theta, double phi) = MoreMath.EulerToSpherical_AngleUnits(focusX - camX, focusY - camY, focusZ - camZ);
-                    (double diffX, double diffY, double diffZ) = MoreMath.SphericalToEuler_AngleUnits(radius, theta, pitch);
+                    (double radius, double theta, double phi) = MoreMath.EulerToSpherical_AngleUnits2(focusX - camX, focusY - camY, focusZ - camZ);
+                    (double diffX, double diffY, double diffZ) = MoreMath.SphericalToEuler_AngleUnits2(radius, theta, pitch);
                     (double newFocusX, double newFocusY, double newFocusZ) = (camX + diffX, camY + diffY, camZ + diffZ);
 
                     bool success = true;

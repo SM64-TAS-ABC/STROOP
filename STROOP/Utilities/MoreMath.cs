@@ -370,6 +370,38 @@ namespace STROOP.Utilities
             return SphericalToEuler_Radians(radius, thetaRadians, phiRadians);
         }
 
+        public static (double radius, double theta, double phi) EulerToSpherical_Radians2(double x, double y, double z)
+        {
+            double radius = Math.Sqrt(x * x + y * y + z * z);
+            double theta = Math.Atan2(x, z);
+            double phi = radius == 0 ? 0 : Math.Asin(y / radius);
+            return (radius, theta, phi);
+        }
+
+        public static (double radius, double theta, double phi) EulerToSpherical_AngleUnits2(double x, double y, double z)
+        {
+            double radius, thetaRadians, phiRadians;
+            (radius, thetaRadians, phiRadians) = EulerToSpherical_Radians2(x, y, z);
+            double thetaAngleUnits = RadiansToAngleUnits(thetaRadians);
+            double phiAngleUnits = RadiansToAngleUnits(phiRadians);
+            return (radius, thetaAngleUnits, phiAngleUnits);
+        }
+
+        public static (double x, double y, double z) SphericalToEuler_Radians2(double radius, double theta, double phi)
+        {
+            double x = radius * Math.Sin(theta) * Math.Cos(phi);
+            double y = radius * Math.Sin(phi);
+            double z = radius * Math.Cos(theta) * Math.Cos(phi);
+            return (x, y, z);
+        }
+
+        public static (double x, double y, double z) SphericalToEuler_AngleUnits2(double radius, double thetaAngleUnits, double phiAngleUnits)
+        {
+            double thetaRadians = AngleUnitsToRadians(thetaAngleUnits);
+            double phiRadians = AngleUnitsToRadians(phiAngleUnits);
+            return SphericalToEuler_Radians2(radius, thetaRadians, phiRadians);
+        }
+
         public static (double radius, double theta, double height) EulerToCylindrical_Radians(double x, double y, double z)
         {
             double radius = Math.Sqrt(x * x + z * z);

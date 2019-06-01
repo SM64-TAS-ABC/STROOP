@@ -6,8 +6,8 @@
   <Data type="float" offset="0x04" base="CamHack" coord="X">Camera X</Data>
   <Data type="float" offset="0x08" base="CamHack" coord="Y">Camera Y</Data>
   <Data type="float" offset="0x0C" base="CamHack" coord="Z">Camera Z</Data>
-  <Data base="None" specialType="CamHackYaw">Camera Yaw</Data>
-  <Data base="None" specialType="CamHackPitch">Camera Pitch</Data>
+  <Data base="None" specialType="CamHackYaw" subclass="Angle" display="ushort" yaw="true">Camera Yaw</Data>
+  <Data base="None" specialType="CamHackPitch" subclass="Angle" display="short">Camera Pitch</Data>
   <Data type="float" offset="0x10" base="CamHack" coord="X">Focus X</Data>
   <Data type="float" offset="0x14" base="CamHack" coord="Y">Focus Y</Data>
   <Data type="float" offset="0x18" base="CamHack" coord="Z">Focus Z</Data>
