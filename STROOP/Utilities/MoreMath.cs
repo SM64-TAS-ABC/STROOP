@@ -338,38 +338,6 @@ namespace STROOP.Utilities
             return NormalizeAngleShort(delta);
         }
 
-        public static (double radius, double theta, double phi) EulerToSpherical_Radians(double x, double y, double z)
-        {
-            double radius = Math.Sqrt(x * x + y * y + z * z);
-            double theta = Math.Atan2(x, z);
-            double phi = radius == 0 ? 0 : Math.Acos(y / radius);
-            return (radius, theta, phi);
-        }
-
-        public static (double radius, double theta, double phi) EulerToSpherical_AngleUnits(double x, double y, double z)
-        {
-            double radius, thetaRadians, phiRadians;
-            (radius, thetaRadians, phiRadians) = EulerToSpherical_Radians(x, y, z);
-            double thetaAngleUnits = RadiansToAngleUnits(thetaRadians);
-            double phiAngleUnits = RadiansToAngleUnits(phiRadians);
-            return (radius, thetaAngleUnits, phiAngleUnits);
-        }
-
-        public static (double x, double y, double z) SphericalToEuler_Radians(double radius, double theta, double phi)
-        {
-            double x = radius * Math.Sin(theta) * Math.Sin(phi);
-            double y = radius * Math.Cos(phi);
-            double z = radius * Math.Cos(theta) * Math.Sin(phi);
-            return (x, y, z);
-        }
-
-        public static (double x, double y, double z) SphericalToEuler_AngleUnits(double radius, double thetaAngleUnits, double phiAngleUnits)
-        {
-            double thetaRadians = AngleUnitsToRadians(thetaAngleUnits);
-            double phiRadians = AngleUnitsToRadians(phiAngleUnits);
-            return SphericalToEuler_Radians(radius, thetaRadians, phiRadians);
-        }
-
         public static (double radius, double theta, double phi) EulerToSpherical_Radians2(double x, double y, double z)
         {
             double radius = Math.Sqrt(x * x + y * y + z * z);
@@ -482,13 +450,13 @@ namespace STROOP.Utilities
             double x, double y, double z, double radiusChange, double thetaChangeAngleUnits, double phiChangeAngleUnits)
         {
             double oldRadius, oldTheta, oldPhi;
-            (oldRadius, oldTheta, oldPhi) = EulerToSpherical_AngleUnits(x, y, z);
+            (oldRadius, oldTheta, oldPhi) = EulerToSpherical_AngleUnits2(x, y, z);
 
             double newRadius = Math.Max(oldRadius + radiusChange, 0);
             double newTheta = NonNegativeModulus(oldTheta + thetaChangeAngleUnits, 65536);
-            double newPhi = OffsetAngleUnitsCappedAt32768(oldPhi, phiChangeAngleUnits);
-
-            return SphericalToEuler_AngleUnits(newRadius, newTheta, newPhi);
+            double newPhi = Clamp(NormalizeAngleDoubleSigned(oldPhi) + phiChangeAngleUnits, -16384, 16384);
+         
+            return SphericalToEuler_AngleUnits2(newRadius, newTheta, newPhi);
         }
 
         public static (double x, double y, double z) OffsetSphericallyAboutPivot(
@@ -511,13 +479,6 @@ namespace STROOP.Utilities
             angleUnits = NonNegativeModulus(angleUnits, 65536);
             angleUnits = Clamp(angleUnits + change, 0, 65536);
             angleUnits = NonNegativeModulus(angleUnits, 65536);
-            return angleUnits;
-        }
-
-        public static double OffsetAngleUnitsCappedAt32768(double angleUnits, double change)
-        {
-            angleUnits = NonNegativeModulus(angleUnits, 65536);
-            angleUnits = Clamp(angleUnits + change, 0, 32768);
             return angleUnits;
         }
 
