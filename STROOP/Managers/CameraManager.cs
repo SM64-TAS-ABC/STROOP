@@ -136,12 +136,12 @@ namespace STROOP.Managers
                 cameraFocusSphericalPosGroupBox,
                 cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosTp"] as Button,
                 cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosTn"] as Button,
-                cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosPn"] as Button,
                 cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosPp"] as Button,
-                cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosTpPn"] as Button,
+                cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosPn"] as Button,
                 cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosTpPp"] as Button,
-                cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosTnPn"] as Button,
+                cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosTpPn"] as Button,
                 cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosTnPp"] as Button,
+                cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosTnPn"] as Button,
                 cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosRp"] as Button,
                 cameraFocusSphericalPosGroupBox.Controls["buttonCameraFocusSphericalPosRn"] as Button,
                 cameraFocusSphericalPosGroupBox.Controls["textBoxCameraFocusSphericalPosTP"] as TextBox,
@@ -152,7 +152,7 @@ namespace STROOP.Managers
                     ButtonUtilities.TranslateCameraFocusSpherically(
                         nOffset,
                         -1 * hOffset,
-                        -1 * vOffset);
+                        vOffset);
                 });
         }
 

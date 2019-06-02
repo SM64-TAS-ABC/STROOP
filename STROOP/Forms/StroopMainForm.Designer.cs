@@ -229,15 +229,15 @@ namespace STROOP
             this.textBoxCameraFocusSphericalPosR = new STROOP.BetterTextbox();
             this.buttonCameraFocusSphericalPosRp = new System.Windows.Forms.Button();
             this.buttonCameraFocusSphericalPosRn = new System.Windows.Forms.Button();
-            this.buttonCameraFocusSphericalPosTnPp = new System.Windows.Forms.Button();
+            this.buttonCameraFocusSphericalPosTnPn = new System.Windows.Forms.Button();
             this.textBoxCameraFocusSphericalPosTP = new STROOP.BetterTextbox();
             this.buttonCameraFocusSphericalPosTn = new System.Windows.Forms.Button();
-            this.buttonCameraFocusSphericalPosTnPn = new System.Windows.Forms.Button();
-            this.buttonCameraFocusSphericalPosPn = new System.Windows.Forms.Button();
+            this.buttonCameraFocusSphericalPosTnPp = new System.Windows.Forms.Button();
             this.buttonCameraFocusSphericalPosPp = new System.Windows.Forms.Button();
-            this.buttonCameraFocusSphericalPosTpPp = new System.Windows.Forms.Button();
-            this.buttonCameraFocusSphericalPosTp = new System.Windows.Forms.Button();
+            this.buttonCameraFocusSphericalPosPn = new System.Windows.Forms.Button();
             this.buttonCameraFocusSphericalPosTpPn = new System.Windows.Forms.Button();
+            this.buttonCameraFocusSphericalPosTp = new System.Windows.Forms.Button();
+            this.buttonCameraFocusSphericalPosTpPp = new System.Windows.Forms.Button();
             this.groupBoxCameraFocusPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraFocusPosRelative = new System.Windows.Forms.CheckBox();
             this.textBoxCameraFocusPosY = new STROOP.BetterTextbox();
@@ -4100,15 +4100,15 @@ namespace STROOP
             this.groupBoxCameraFocusSphericalPos.Controls.Add(this.textBoxCameraFocusSphericalPosR);
             this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosRp);
             this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosRn);
-            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTnPp);
+            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTnPn);
             this.groupBoxCameraFocusSphericalPos.Controls.Add(this.textBoxCameraFocusSphericalPosTP);
             this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTn);
-            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTnPn);
-            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosPn);
+            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTnPp);
             this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosPp);
-            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTpPp);
-            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTp);
+            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosPn);
             this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTpPn);
+            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTp);
+            this.groupBoxCameraFocusSphericalPos.Controls.Add(this.buttonCameraFocusSphericalPosTpPp);
             this.groupBoxCameraFocusSphericalPos.Location = new System.Drawing.Point(2, 557);
             this.groupBoxCameraFocusSphericalPos.Name = "groupBoxCameraFocusSphericalPos";
             this.groupBoxCameraFocusSphericalPos.Size = new System.Drawing.Size(185, 146);
@@ -4148,15 +4148,15 @@ namespace STROOP
             this.buttonCameraFocusSphericalPosRn.Text = "R-";
             this.buttonCameraFocusSphericalPosRn.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraFocusSphericalPosTnPp
+            // buttonCameraFocusSphericalPosTnPn
             // 
-            this.buttonCameraFocusSphericalPosTnPp.Location = new System.Drawing.Point(87, 100);
-            this.buttonCameraFocusSphericalPosTnPp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraFocusSphericalPosTnPp.Name = "buttonCameraFocusSphericalPosTnPp";
-            this.buttonCameraFocusSphericalPosTnPp.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosTnPp.TabIndex = 32;
-            this.buttonCameraFocusSphericalPosTnPp.Text = "θ-ϕ+";
-            this.buttonCameraFocusSphericalPosTnPp.UseVisualStyleBackColor = true;
+            this.buttonCameraFocusSphericalPosTnPn.Location = new System.Drawing.Point(87, 100);
+            this.buttonCameraFocusSphericalPosTnPn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraFocusSphericalPosTnPn.Name = "buttonCameraFocusSphericalPosTnPn";
+            this.buttonCameraFocusSphericalPosTnPn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraFocusSphericalPosTnPn.TabIndex = 32;
+            this.buttonCameraFocusSphericalPosTnPn.Text = "θ-ϕ-";
+            this.buttonCameraFocusSphericalPosTnPn.UseVisualStyleBackColor = true;
             // 
             // textBoxCameraFocusSphericalPosTP
             // 
@@ -4177,45 +4177,45 @@ namespace STROOP
             this.buttonCameraFocusSphericalPosTn.Text = "θ-";
             this.buttonCameraFocusSphericalPosTn.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraFocusSphericalPosTnPn
+            // buttonCameraFocusSphericalPosTnPp
             // 
-            this.buttonCameraFocusSphericalPosTnPn.Location = new System.Drawing.Point(87, 16);
-            this.buttonCameraFocusSphericalPosTnPn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraFocusSphericalPosTnPn.Name = "buttonCameraFocusSphericalPosTnPn";
-            this.buttonCameraFocusSphericalPosTnPn.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosTnPn.TabIndex = 30;
-            this.buttonCameraFocusSphericalPosTnPn.Text = "θ-ϕ-";
-            this.buttonCameraFocusSphericalPosTnPn.UseVisualStyleBackColor = true;
-            // 
-            // buttonCameraFocusSphericalPosPn
-            // 
-            this.buttonCameraFocusSphericalPosPn.Location = new System.Drawing.Point(45, 16);
-            this.buttonCameraFocusSphericalPosPn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraFocusSphericalPosPn.Name = "buttonCameraFocusSphericalPosPn";
-            this.buttonCameraFocusSphericalPosPn.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosPn.TabIndex = 29;
-            this.buttonCameraFocusSphericalPosPn.Text = "ϕ-";
-            this.buttonCameraFocusSphericalPosPn.UseVisualStyleBackColor = true;
+            this.buttonCameraFocusSphericalPosTnPp.Location = new System.Drawing.Point(87, 16);
+            this.buttonCameraFocusSphericalPosTnPp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraFocusSphericalPosTnPp.Name = "buttonCameraFocusSphericalPosTnPp";
+            this.buttonCameraFocusSphericalPosTnPp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraFocusSphericalPosTnPp.TabIndex = 30;
+            this.buttonCameraFocusSphericalPosTnPp.Text = "θ-ϕ+";
+            this.buttonCameraFocusSphericalPosTnPp.UseVisualStyleBackColor = true;
             // 
             // buttonCameraFocusSphericalPosPp
             // 
-            this.buttonCameraFocusSphericalPosPp.Location = new System.Drawing.Point(45, 100);
+            this.buttonCameraFocusSphericalPosPp.Location = new System.Drawing.Point(45, 16);
             this.buttonCameraFocusSphericalPosPp.Margin = new System.Windows.Forms.Padding(0);
             this.buttonCameraFocusSphericalPosPp.Name = "buttonCameraFocusSphericalPosPp";
             this.buttonCameraFocusSphericalPosPp.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosPp.TabIndex = 28;
+            this.buttonCameraFocusSphericalPosPp.TabIndex = 29;
             this.buttonCameraFocusSphericalPosPp.Text = "ϕ+";
             this.buttonCameraFocusSphericalPosPp.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraFocusSphericalPosTpPp
+            // buttonCameraFocusSphericalPosPn
             // 
-            this.buttonCameraFocusSphericalPosTpPp.Location = new System.Drawing.Point(3, 100);
-            this.buttonCameraFocusSphericalPosTpPp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraFocusSphericalPosTpPp.Name = "buttonCameraFocusSphericalPosTpPp";
-            this.buttonCameraFocusSphericalPosTpPp.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosTpPp.TabIndex = 27;
-            this.buttonCameraFocusSphericalPosTpPp.Text = "θ+ϕ+";
-            this.buttonCameraFocusSphericalPosTpPp.UseVisualStyleBackColor = true;
+            this.buttonCameraFocusSphericalPosPn.Location = new System.Drawing.Point(45, 100);
+            this.buttonCameraFocusSphericalPosPn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraFocusSphericalPosPn.Name = "buttonCameraFocusSphericalPosPn";
+            this.buttonCameraFocusSphericalPosPn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraFocusSphericalPosPn.TabIndex = 28;
+            this.buttonCameraFocusSphericalPosPn.Text = "ϕ-";
+            this.buttonCameraFocusSphericalPosPn.UseVisualStyleBackColor = true;
+            // 
+            // buttonCameraFocusSphericalPosTpPn
+            // 
+            this.buttonCameraFocusSphericalPosTpPn.Location = new System.Drawing.Point(3, 100);
+            this.buttonCameraFocusSphericalPosTpPn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraFocusSphericalPosTpPn.Name = "buttonCameraFocusSphericalPosTpPn";
+            this.buttonCameraFocusSphericalPosTpPn.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraFocusSphericalPosTpPn.TabIndex = 27;
+            this.buttonCameraFocusSphericalPosTpPn.Text = "θ+ϕ-";
+            this.buttonCameraFocusSphericalPosTpPn.UseVisualStyleBackColor = true;
             // 
             // buttonCameraFocusSphericalPosTp
             // 
@@ -4227,15 +4227,15 @@ namespace STROOP
             this.buttonCameraFocusSphericalPosTp.Text = "θ+";
             this.buttonCameraFocusSphericalPosTp.UseVisualStyleBackColor = true;
             // 
-            // buttonCameraFocusSphericalPosTpPn
+            // buttonCameraFocusSphericalPosTpPp
             // 
-            this.buttonCameraFocusSphericalPosTpPn.Location = new System.Drawing.Point(3, 16);
-            this.buttonCameraFocusSphericalPosTpPn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonCameraFocusSphericalPosTpPn.Name = "buttonCameraFocusSphericalPosTpPn";
-            this.buttonCameraFocusSphericalPosTpPn.Size = new System.Drawing.Size(42, 42);
-            this.buttonCameraFocusSphericalPosTpPn.TabIndex = 25;
-            this.buttonCameraFocusSphericalPosTpPn.Text = "θ+ϕ-";
-            this.buttonCameraFocusSphericalPosTpPn.UseVisualStyleBackColor = true;
+            this.buttonCameraFocusSphericalPosTpPp.Location = new System.Drawing.Point(3, 16);
+            this.buttonCameraFocusSphericalPosTpPp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonCameraFocusSphericalPosTpPp.Name = "buttonCameraFocusSphericalPosTpPp";
+            this.buttonCameraFocusSphericalPosTpPp.Size = new System.Drawing.Size(42, 42);
+            this.buttonCameraFocusSphericalPosTpPp.TabIndex = 25;
+            this.buttonCameraFocusSphericalPosTpPp.Text = "θ+ϕ+";
+            this.buttonCameraFocusSphericalPosTpPp.UseVisualStyleBackColor = true;
             // 
             // groupBoxCameraFocusPos
             // 
@@ -5687,7 +5687,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 485F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 486F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9406,7 +9406,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(496, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(499, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11768,7 +11768,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 671;
+            this.splitContainerMemory.SplitterDistance = 674;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11809,7 +11809,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(671, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(674, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -12026,7 +12026,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(671, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(674, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -12055,7 +12055,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(570, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(573, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12068,7 +12068,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(235, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(232, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -13222,7 +13222,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(357, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -13254,7 +13254,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(351, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -13310,7 +13310,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(351, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -18060,7 +18060,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -19244,7 +19244,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(25, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(26, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -19418,7 +19418,7 @@ namespace STROOP
             this.splitContainerSoundMusic.Panel2.Controls.Add(this.buttonSoundPlayMusic);
             this.splitContainerSoundMusic.Panel2MinSize = 0;
             this.splitContainerSoundMusic.Size = new System.Drawing.Size(422, 457);
-            this.splitContainerSoundMusic.SplitterDistance = 426;
+            this.splitContainerSoundMusic.SplitterDistance = 429;
             this.splitContainerSoundMusic.SplitterWidth = 1;
             this.splitContainerSoundMusic.TabIndex = 35;
             // 
@@ -19429,7 +19429,7 @@ namespace STROOP
             this.listBoxSoundMusic.FormattingEnabled = true;
             this.listBoxSoundMusic.Location = new System.Drawing.Point(0, 0);
             this.listBoxSoundMusic.Name = "listBoxSoundMusic";
-            this.listBoxSoundMusic.Size = new System.Drawing.Size(420, 424);
+            this.listBoxSoundMusic.Size = new System.Drawing.Size(420, 427);
             this.listBoxSoundMusic.TabIndex = 19;
             // 
             // textBoxSoundMusic
@@ -19472,7 +19472,7 @@ namespace STROOP
             this.splitContainerSoundSoundEffect.Panel2.Controls.Add(this.buttonSoundPlaySoundEffect);
             this.splitContainerSoundSoundEffect.Panel2MinSize = 0;
             this.splitContainerSoundSoundEffect.Size = new System.Drawing.Size(486, 457);
-            this.splitContainerSoundSoundEffect.SplitterDistance = 426;
+            this.splitContainerSoundSoundEffect.SplitterDistance = 429;
             this.splitContainerSoundSoundEffect.SplitterWidth = 1;
             this.splitContainerSoundSoundEffect.TabIndex = 35;
             // 
@@ -19483,7 +19483,7 @@ namespace STROOP
             this.listBoxSoundSoundEffect.FormattingEnabled = true;
             this.listBoxSoundSoundEffect.Location = new System.Drawing.Point(0, 0);
             this.listBoxSoundSoundEffect.Name = "listBoxSoundSoundEffect";
-            this.listBoxSoundSoundEffect.Size = new System.Drawing.Size(484, 424);
+            this.listBoxSoundSoundEffect.Size = new System.Drawing.Size(484, 427);
             this.listBoxSoundSoundEffect.TabIndex = 19;
             // 
             // textBoxSoundSoundEffect
@@ -21616,15 +21616,15 @@ namespace STROOP
         private BetterTextbox textBoxCameraFocusSphericalPosR;
         private Button buttonCameraFocusSphericalPosRp;
         private Button buttonCameraFocusSphericalPosRn;
-        private Button buttonCameraFocusSphericalPosTnPp;
+        private Button buttonCameraFocusSphericalPosTnPn;
         private BetterTextbox textBoxCameraFocusSphericalPosTP;
         private Button buttonCameraFocusSphericalPosTn;
-        private Button buttonCameraFocusSphericalPosTnPn;
-        private Button buttonCameraFocusSphericalPosPn;
+        private Button buttonCameraFocusSphericalPosTnPp;
         private Button buttonCameraFocusSphericalPosPp;
-        private Button buttonCameraFocusSphericalPosTpPp;
-        private Button buttonCameraFocusSphericalPosTp;
+        private Button buttonCameraFocusSphericalPosPn;
         private Button buttonCameraFocusSphericalPosTpPn;
+        private Button buttonCameraFocusSphericalPosTp;
+        private Button buttonCameraFocusSphericalPosTpPp;
         private GroupBox groupBoxCameraFocusPos;
         private CheckBox checkBoxCameraFocusPosRelative;
         private BetterTextbox textBoxCameraFocusPosY;
