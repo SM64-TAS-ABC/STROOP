@@ -111,7 +111,7 @@ namespace STROOP.Managers
                         CurrentCamHackMode,
                         -1 * nOffset,
                         hOffset,
-                        -1 * vOffset);
+                        vOffset);
                 });
 
             var cameraHackFocusPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackFocusPos"] as GroupBox;
