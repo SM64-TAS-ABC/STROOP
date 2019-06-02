@@ -71,7 +71,7 @@ namespace STROOP.Managers
                     ButtonUtilities.TranslateCameraSpherically(
                         -1 * nOffset,
                         hOffset,
-                        -1 * vOffset,
+                        vOffset,
                         getSphericalPivotPoint(pivotOnFocus));
                 });
 
