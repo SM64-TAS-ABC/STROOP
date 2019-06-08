@@ -22,4 +22,5 @@
   <Data base="None" specialType="PanCamAngle" color="Grey" subclass="Boolean">Pan Cam Angle</Data>
   <Data base="None" specialType="PanCamRotation" color="Grey" subclass="Boolean">Pan Cam Rotation</Data>
   <Data base="None" specialType="PanFOV" color="Grey" subclass="Boolean">Pan FOV</Data>
+  <Data base="None" specialType="Buffer" color="Grey">Buffer</Data>
 </VarData>

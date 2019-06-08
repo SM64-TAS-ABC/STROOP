@@ -363,6 +363,12 @@ namespace STROOP.Structs
 
         public static void AddLiteralEntriesToDictionary()
         {
+            // Buffer
+
+            _dictionary.Add("Buffer",
+                ((uint objAddress) => 0,
+                DEFAULT_SETTER));
+
             // Object vars
 
             _dictionary.Add("DAngleMarioToObjMod512",
