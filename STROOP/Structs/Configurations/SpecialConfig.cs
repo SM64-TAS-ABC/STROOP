@@ -115,9 +115,44 @@ namespace STROOP.Structs.Configurations
                 return PanModels.Count - 1;
             }
         }
-        public static double PanCamPos = 0;
-        public static double PanCamAngle = 0;
-        public static double PanCamRotation = 0;
+
+        private static double _panCamPos = 0;
+        public static double PanCamPos
+        {
+            get => _panCamPos;
+            set
+            {
+                _panCamPos = value;
+                if (_panCamPos != 0) _panCamRotation = 0;
+            }
+        }
+
+        private static double _panCamAngle = 0;
+        public static double PanCamAngle
+        {
+            get => _panCamAngle;
+            set
+            {
+                _panCamAngle = value;
+                if (_panCamAngle != 0) _panCamRotation = 0;
+            }
+        }
+
+        private static double _panCamRotation = 0;
+        public static double PanCamRotation
+        {
+            get => _panCamRotation;
+            set
+            {
+                _panCamRotation = value;
+                if (_panCamRotation != 0)
+                {
+                    _panCamPos = 0;
+                    _panCamAngle = 0;
+                }
+            }
+        }
+
         public static double PanFOV = 0;
 
         public static List<PanModel> PanModels = new List<PanModel>();
