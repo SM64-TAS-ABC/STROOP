@@ -117,6 +117,7 @@ namespace STROOP.Structs.Configurations
         }
         public static double PanCamPos = 0;
         public static double PanCamAngle = 0;
+        public static double PanCamRotation = 0;
         public static double PanFOV = 0;
 
         public static List<PanModel> PanModels = new List<PanModel>();

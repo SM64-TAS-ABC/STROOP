@@ -20,5 +20,6 @@
   <Data base="None" specialType="CurrentPan" color="Grey">Current Pan</Data>
   <Data base="None" specialType="PanCamPos" color="Grey" subclass="Boolean">Pan Cam Pos</Data>
   <Data base="None" specialType="PanCamAngle" color="Grey" subclass="Boolean">Pan Cam Angle</Data>
+  <Data base="None" specialType="PanCamRotation" color="Grey" subclass="Boolean">Pan Cam Rotation</Data>
   <Data base="None" specialType="PanFOV" color="Grey" subclass="Boolean">Pan FOV</Data>
 </VarData>
