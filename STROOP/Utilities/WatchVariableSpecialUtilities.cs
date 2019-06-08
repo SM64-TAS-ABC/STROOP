@@ -218,6 +218,9 @@ namespace STROOP.Structs
                     (String.Format("Pan{0}CamEndYaw", index), () => SpecialConfig.PanModels[index].PanCamEndYaw, (double value) => SpecialConfig.PanModels[index].PanCamEndYaw = value),
                     (String.Format("Pan{0}CamEndPitch", index), () => SpecialConfig.PanModels[index].PanCamEndPitch, (double value) => SpecialConfig.PanModels[index].PanCamEndPitch = value),
 
+                    (String.Format("Pan{0}RadiusStart", index), () => SpecialConfig.PanModels[index].PanRadiusStart, (double value) => SpecialConfig.PanModels[index].PanRadiusStart = value),
+                    (String.Format("Pan{0}RadiusEnd", index), () => SpecialConfig.PanModels[index].PanRadiusEnd, (double value) => SpecialConfig.PanModels[index].PanRadiusEnd = value),
+
                     (String.Format("Pan{0}FOVStart", index), () => SpecialConfig.PanModels[index].PanFOVStart, (double value) => SpecialConfig.PanModels[index].PanFOVStart = value),
                     (String.Format("Pan{0}FOVEnd", index), () => SpecialConfig.PanModels[index].PanFOVEnd, (double value) => SpecialConfig.PanModels[index].PanFOVEnd = value),
                 };

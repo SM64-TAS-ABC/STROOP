@@ -287,8 +287,11 @@ namespace STROOP.Managers
                 CreatePanVar(String.Format("Pan{0} Cam End Yaw", index), String.Format("Pan{0}CamEndYaw", index), "Red", subclass: "Angle", display: "ushort", yaw: "true"),
                 CreatePanVar(String.Format("Pan{0} Cam End Pitch", index), String.Format("Pan{0}CamEndPitch", index), "Red", subclass: "Angle", display: "short"),
 
-                CreatePanVar(String.Format("Pan{0} FOV Start", index), String.Format("Pan{0}FOVStart", index), "Purple"),
-                CreatePanVar(String.Format("Pan{0} FOV End", index), String.Format("Pan{0}FOVEnd", index), "Purple"),
+                CreatePanVar(String.Format("Pan{0} Cam Radius Start", index), String.Format("Pan{0}RadiusStart", index), "Blue"),
+                CreatePanVar(String.Format("Pan{0} Cam Radius End", index), String.Format("Pan{0}RadiusEnd", index), "Blue"),
+
+                CreatePanVar(String.Format("Pan{0} FOV Start", index), String.Format("Pan{0}FOVStart", index), "Pink"),
+                CreatePanVar(String.Format("Pan{0} FOV End", index), String.Format("Pan{0}FOVEnd", index), "Pink"),
             };
         }
 
