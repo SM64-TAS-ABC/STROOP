@@ -194,11 +194,11 @@
     <Compile Include="Forms\ImageForm.Designer.cs">
       <DependentUpon>ImageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TextForm.cs">
+    <Compile Include="Forms\ValueForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TextForm.Designer.cs">
-      <DependentUpon>TextForm.cs</DependentUpon>
+    <Compile Include="Forms\ValueForm.Designer.cs">
+      <DependentUpon>ValueForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ActionForm.cs">
       <SubType>Form</SubType>
@@ -674,8 +674,8 @@
     <EmbeddedResource Include="Forms\ImageForm.resx">
       <DependentUpon>ImageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TextForm.resx">
-      <DependentUpon>TextForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ValueForm.resx">
+      <DependentUpon>ValueForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ActionForm.resx">
       <DependentUpon>ActionForm.cs</DependentUpon>

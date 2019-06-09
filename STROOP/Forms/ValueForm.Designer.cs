@@ -1,6 +1,6 @@
 ﻿namespace STROOP.Forms
 {
-    partial class TextForm
+    partial class ValueForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TextForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ValueForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -62,7 +62,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(135, 27);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Enter Text:";
+            this.label1.Text = "Enter Value:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
@@ -84,7 +84,7 @@
             this.betterTextbox1.TabIndex = 2;
             this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TextForm
+            // ValueForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -94,9 +94,9 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(10000, 10000);
             this.MinimizeBox = false;
-            this.Name = "TextForm";
+            this.Name = "ValueForm";
             this.ShowIcon = false;
-            this.Text = "Text Form";
+            this.Text = "Value Form";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

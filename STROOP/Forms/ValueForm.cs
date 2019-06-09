@@ -8,20 +8,24 @@ using System.Windows.Forms;
 
 namespace STROOP.Forms
 {
-    public partial class TextForm : Form
+    public partial class ValueForm : Form
     {
         public string StringValue;
 
-        public TextForm(string initialText = "")
+        public ValueForm(string initialText = "")
         {
             InitializeComponent();
             betterTextbox1.Text = initialText;
-            button1.Click += (sender, e) =>
+
+            Action okayAction = () =>
             {
                 StringValue = betterTextbox1.Text;
                 DialogResult = DialogResult.OK;
                 Close();
             };
+
+            button1.Click += (sender, e) => okayAction();
+            betterTextbox1.AddEnterAction(okayAction);
         }
     }
 }
