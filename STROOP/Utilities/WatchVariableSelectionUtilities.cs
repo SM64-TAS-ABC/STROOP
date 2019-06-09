@@ -363,6 +363,16 @@ namespace STROOP.Structs
                     () => createVariable(MathOperation.Divide),
                 });
 
+            ToolStripMenuItem itemSetCascadingValues = new ToolStripMenuItem("Set Cascading Values");
+            itemSetCascadingValues.Click += (sender, e) =>
+            {
+                List<WatchVariableControl> controls = getVars();
+                object value1 = DialogUtilities.GetStringFromDialog();
+                object value2 = DialogUtilities.GetStringFromDialog();
+                if (value1 == null || value2 == null) return;
+                InfoForm.ShowValue(controls.Count + " " + value1 + " " + value2);
+            };
+
             List<string> backgroundColorStringList = new List<string>();
             List<Action> backgroundColorActionList = new List<Action>();
             backgroundColorStringList.Add("Default");
@@ -483,6 +493,7 @@ namespace STROOP.Structs
                 itemShowVariableInfo,
                 new ToolStripSeparator(),
                 itemAddVariables,
+                itemSetCascadingValues,
                 new ToolStripSeparator(),
                 itemBackgroundColor,
                 itemMove,
