@@ -218,6 +218,11 @@ namespace STROOP.Controls
             };
         }
 
+        public List<Func<object, bool>> GetSetters(List<uint> addresses = null)
+        {
+            return WatchVar.GetSetters(addresses);
+        }
+
         public void ShowControllerForm()
         {
             VariableControllerForm varController =

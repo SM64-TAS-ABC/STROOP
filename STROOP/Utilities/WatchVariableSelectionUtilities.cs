@@ -7,6 +7,7 @@ using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -370,7 +371,14 @@ namespace STROOP.Structs
                 object value1 = DialogUtilities.GetStringFromDialog();
                 object value2 = DialogUtilities.GetStringFromDialog();
                 if (value1 == null || value2 == null) return;
-                InfoForm.ShowValue(controls.Count + " " + value1 + " " + value2);
+                double? number1 = ParsingUtilities.ParseDoubleNullable(value1);
+                double? number2 = ParsingUtilities.ParseDoubleNullable(value2);
+                if (!number1.HasValue || !number2.HasValue) return;
+                List<Func<object, bool>> setters = controls.SelectMany(control => control.GetSetters()).ToList();
+                for (int i = 0; i < setters.Count; i++)
+                {
+                    setters[i](number1.Value + i * number2.Value);
+                }
             };
 
             List<string> backgroundColorStringList = new List<string>();

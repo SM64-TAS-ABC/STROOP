@@ -199,6 +199,13 @@ namespace STROOP.Controls
             return locks;
         }
 
+        public List<Func<object, bool>> GetSetters(List<uint> addresses = null)
+        {
+            List<uint> addressList = addresses ?? AddressList;
+            return addressList.ConvertAll(
+                address => (Func<object, bool>)((object value) => _setterFunction(value, address)));
+        }
+
         public string GetTypeDescription()
         {
             if (IsSpecial)

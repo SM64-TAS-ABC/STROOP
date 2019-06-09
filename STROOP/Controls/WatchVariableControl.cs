@@ -931,6 +931,11 @@ namespace STROOP.Controls
             return WatchVarWrapper.GetVarInfo();
         }
 
+        public List<Func<object, bool>> GetSetters()
+        {
+            return WatchVarWrapper.GetSetters(FixedAddressList);
+        }
+
         public void UnselectText()
         {
             _nameTextBox.SelectionLength = 0;
