@@ -418,7 +418,6 @@ namespace STROOP
             Config.SoundManager = new SoundManager(tabPageSound);
 
             Config.DisassemblyManager = new DisassemblyManager(tabPageDisassembly);
-            Config.DecompilerManager = new DecompilerManager(tabPageDecompiler);
             Config.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
             Config.HackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
             Config.M64Manager = new M64Manager(m64Gui);

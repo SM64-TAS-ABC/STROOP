@@ -28,7 +28,6 @@ namespace STROOP.Structs.Configurations
         public static CameraManager CameraManager;
         public static DebugManager DebugManager;
         public static DisassemblyManager DisassemblyManager;
-        public static DecompilerManager DecompilerManager;
         public static HackManager HackManager;
         public static HudManager HudManager;
         public static MapManager MapManager;

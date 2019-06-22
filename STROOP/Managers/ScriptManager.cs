@@ -30,8 +30,8 @@ namespace STROOP.Managers
 
         private void _output_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            Config.DecompilerManager.Decompile(e.LinkText, true);
-            Config.StroopMainForm.SwitchTab("tabPageDecompiler");
+            Config.DisassemblyManager.Disassemble(e.LinkText);
+            Config.StroopMainForm.SwitchTab("tabPageDisassembler");
         }
 
         public void Go(uint? scriptAddress = null)

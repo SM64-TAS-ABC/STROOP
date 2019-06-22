@@ -1192,16 +1192,6 @@ namespace STROOP
             this.buttonDisGo = new System.Windows.Forms.Button();
             this.labelDisStart = new System.Windows.Forms.Label();
             this.richTextBoxDissasembly = new STROOP.Controls.RichTextBoxEx();
-            this.tabPageDecompiler = new System.Windows.Forms.TabPage();
-            this.buttonDecompilerBack = new System.Windows.Forms.Button();
-            this.buttonDecompilerNext = new System.Windows.Forms.Button();
-            this.textBoxDecompilerAddress = new System.Windows.Forms.TextBox();
-            this.buttonDecompilerDecompile = new System.Windows.Forms.Button();
-            this.labelDecompilerAddress = new System.Windows.Forms.Label();
-            this.splitContainerDecompiler = new STROOP.BetterSplitContainer();
-            this.treeViewDecompile = new System.Windows.Forms.TreeView();
-            this.decompilerViewHost = new System.Windows.Forms.Integration.ElementHost();
-            this.decompilerView = new STROOP.Controls.DecompilerView();
             this.tabPageScripts = new System.Windows.Forms.TabPage();
             this.buttonScriptGo = new System.Windows.Forms.Button();
             this.textBoxScriptAddress = new System.Windows.Forms.TextBox();
@@ -1900,11 +1890,6 @@ namespace STROOP
             this.groupBoxCoinCustomization.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoin)).BeginInit();
             this.tabPageDisassembly.SuspendLayout();
-            this.tabPageDecompiler.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).BeginInit();
-            this.splitContainerDecompiler.Panel1.SuspendLayout();
-            this.splitContainerDecompiler.Panel2.SuspendLayout();
-            this.splitContainerDecompiler.SuspendLayout();
             this.tabPageScripts.SuspendLayout();
             this.tabPageTesting.SuspendLayout();
             this.groupBoxTestingConversion.SuspendLayout();
@@ -2316,7 +2301,6 @@ namespace STROOP
             this.tabControlMain.Controls.Add(this.tabPageVarHack);
             this.tabControlMain.Controls.Add(this.tabPageCoin);
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
-            this.tabControlMain.Controls.Add(this.tabPageDecompiler);
             this.tabControlMain.Controls.Add(this.tabPageScripts);
             this.tabControlMain.Controls.Add(this.tabPageTesting);
             this.tabControlMain.Controls.Add(this.tabPageSnow);
@@ -15700,106 +15684,6 @@ namespace STROOP
             this.richTextBoxDissasembly.TabIndex = 0;
             this.richTextBoxDissasembly.Text = "";
             // 
-            // tabPageDecompiler
-            // 
-            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerBack);
-            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerNext);
-            this.tabPageDecompiler.Controls.Add(this.textBoxDecompilerAddress);
-            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerDecompile);
-            this.tabPageDecompiler.Controls.Add(this.labelDecompilerAddress);
-            this.tabPageDecompiler.Controls.Add(this.splitContainerDecompiler);
-            this.tabPageDecompiler.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDecompiler.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageDecompiler.Name = "tabPageDecompiler";
-            this.tabPageDecompiler.Size = new System.Drawing.Size(915, 463);
-            this.tabPageDecompiler.TabIndex = 23;
-            this.tabPageDecompiler.Text = "Decompiler";
-            // 
-            // buttonDecompilerBack
-            // 
-            this.buttonDecompilerBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonDecompilerBack.BackgroundImage = global::STROOP.Properties.Resources.img_arrow_left;
-            this.buttonDecompilerBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDecompilerBack.Location = new System.Drawing.Point(220, 1);
-            this.buttonDecompilerBack.Name = "buttonDecompilerBack";
-            this.buttonDecompilerBack.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonDecompilerBack.Size = new System.Drawing.Size(25, 25);
-            this.buttonDecompilerBack.TabIndex = 13;
-            this.buttonDecompilerBack.UseVisualStyleBackColor = true;
-            // 
-            // buttonDecompilerNext
-            // 
-            this.buttonDecompilerNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonDecompilerNext.BackgroundImage = global::STROOP.Properties.Resources.img_arrow_right;
-            this.buttonDecompilerNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDecompilerNext.Location = new System.Drawing.Point(251, 1);
-            this.buttonDecompilerNext.Name = "buttonDecompilerNext";
-            this.buttonDecompilerNext.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonDecompilerNext.Size = new System.Drawing.Size(25, 25);
-            this.buttonDecompilerNext.TabIndex = 12;
-            this.buttonDecompilerNext.UseVisualStyleBackColor = true;
-            // 
-            // textBoxDecompilerAddress
-            // 
-            this.textBoxDecompilerAddress.Location = new System.Drawing.Point(55, 3);
-            this.textBoxDecompilerAddress.Name = "textBoxDecompilerAddress";
-            this.textBoxDecompilerAddress.Size = new System.Drawing.Size(93, 20);
-            this.textBoxDecompilerAddress.TabIndex = 10;
-            // 
-            // buttonDecompilerDecompile
-            // 
-            this.buttonDecompilerDecompile.Location = new System.Drawing.Point(153, 3);
-            this.buttonDecompilerDecompile.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDecompilerDecompile.Name = "buttonDecompilerDecompile";
-            this.buttonDecompilerDecompile.Size = new System.Drawing.Size(62, 20);
-            this.buttonDecompilerDecompile.TabIndex = 9;
-            this.buttonDecompilerDecompile.Text = "Go";
-            this.buttonDecompilerDecompile.UseVisualStyleBackColor = true;
-            // 
-            // labelDecompilerAddress
-            // 
-            this.labelDecompilerAddress.AutoSize = true;
-            this.labelDecompilerAddress.Location = new System.Drawing.Point(-1, 3);
-            this.labelDecompilerAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDecompilerAddress.Name = "labelDecompilerAddress";
-            this.labelDecompilerAddress.Size = new System.Drawing.Size(48, 13);
-            this.labelDecompilerAddress.TabIndex = 8;
-            this.labelDecompilerAddress.Text = "Address:";
-            // 
-            // splitContainerDecompiler
-            // 
-            this.splitContainerDecompiler.Location = new System.Drawing.Point(6, 27);
-            this.splitContainerDecompiler.Name = "splitContainerDecompiler";
-            // 
-            // splitContainerDecompiler.Panel1
-            // 
-            this.splitContainerDecompiler.Panel1.Controls.Add(this.treeViewDecompile);
-            // 
-            // splitContainerDecompiler.Panel2
-            // 
-            this.splitContainerDecompiler.Panel2.Controls.Add(this.decompilerViewHost);
-            this.splitContainerDecompiler.Size = new System.Drawing.Size(903, 430);
-            this.splitContainerDecompiler.SplitterDistance = 301;
-            this.splitContainerDecompiler.TabIndex = 1;
-            // 
-            // treeViewDecompile
-            // 
-            this.treeViewDecompile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewDecompile.Location = new System.Drawing.Point(0, 0);
-            this.treeViewDecompile.Name = "treeViewDecompile";
-            this.treeViewDecompile.Size = new System.Drawing.Size(301, 430);
-            this.treeViewDecompile.TabIndex = 0;
-            // 
-            // decompilerViewHost
-            // 
-            this.decompilerViewHost.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.decompilerViewHost.Location = new System.Drawing.Point(3, 3);
-            this.decompilerViewHost.Name = "decompilerViewHost";
-            this.decompilerViewHost.Size = new System.Drawing.Size(592, 424);
-            this.decompilerViewHost.TabIndex = 0;
-            this.decompilerViewHost.Text = "elementHost1";
-            this.decompilerViewHost.Child = this.decompilerView;
-            // 
             // tabPageScripts
             // 
             this.tabPageScripts.Controls.Add(this.buttonScriptGo);
@@ -20103,12 +19987,6 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoin)).EndInit();
             this.tabPageDisassembly.ResumeLayout(false);
             this.tabPageDisassembly.PerformLayout();
-            this.tabPageDecompiler.ResumeLayout(false);
-            this.tabPageDecompiler.PerformLayout();
-            this.splitContainerDecompiler.Panel1.ResumeLayout(false);
-            this.splitContainerDecompiler.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).EndInit();
-            this.splitContainerDecompiler.ResumeLayout(false);
             this.tabPageScripts.ResumeLayout(false);
             this.tabPageScripts.PerformLayout();
             this.tabPageTesting.ResumeLayout(false);
@@ -21063,13 +20941,6 @@ namespace STROOP
         private RadioButton radioButtonArea6;
         private TabPage tabPageCustom;
         private WatchVariableFlowLayoutPanel watchVariablePanelCustom;
-        private TabPage tabPageDecompiler;
-        private BetterSplitContainer splitContainerDecompiler;
-        private System.Windows.Forms.Integration.ElementHost decompilerViewHost;
-        private DecompilerView decompilerView;
-        private TextBox textBoxDecompilerAddress;
-        private Button buttonDecompilerDecompile;
-        private Label labelDecompilerAddress;
         private BetterSplitContainer splitContainerCustom;
         private GroupBox groupBoxVarHeight;
         private BetterTextbox betterTextboxVarHeightGetSet;
@@ -21094,8 +20965,6 @@ namespace STROOP
         private Button buttonVarNameWidthAdd;
         private Button buttonOpenVars;
         private Button buttonResetVariableSizeToDefault;
-        private Button buttonDecompilerBack;
-        private Button buttonDecompilerNext;
         private TabPage tabPageVarHack;
         private BetterSplitContainer splitContainerVarHack;
         private Button buttonVarHackAddNewVariable;
@@ -21165,7 +21034,6 @@ namespace STROOP
         private Button buttonGfxDumpDisplayList;
         private Button buttonClearVars;
         private Button buttonSaveVars;
-        private TreeView treeViewDecompile;
         private Button buttonVarHackOpenVars;
         private Button buttonVarHackSaveVars;
         private BetterTextbox textBoxAnimationDescription;

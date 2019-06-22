@@ -45,16 +45,8 @@ namespace STROOP.Managers
             if (!ParsingUtilities.TryParseHex(e.LinkText, out address))
                 return;
 
-            if (Control.ModifierKeys == Keys.Shift)
-            {
-                Config.DecompilerManager.Decompile(address, false);
-                Config.StroopMainForm.SwitchTab("tabPageDecompiler");
-            }
-            else
-            {
-                _textBoxStartAdd.Text = e.LinkText;
-                StartShowDisassmbly(address, NumberOfLinesAdd);
-            }
+            _textBoxStartAdd.Text = e.LinkText;
+            StartShowDisassmbly(address, NumberOfLinesAdd);
         }
 
         private void MoreButton_Click(object sender, EventArgs e)
