@@ -412,7 +412,6 @@ namespace STROOP
             Config.TestingManager = new TestingManager(tabPageTesting);
             Config.MemoryManager = new MemoryManager(tabPageMemory, watchVariablePanelMemory, @"Config/ObjectData.xml");
             Config.CoinManager = new CoinManager(tabPageCoin);
-            Config.ScriptManager = new ScriptManager(tabPageScripts);
             Config.GfxManager = new GfxManager(tabPageGfx, watchVariablePanelGfx);
             Config.PaintingManager = new PaintingManager(@"Config/PaintingData.xml", watchVariablePanelPainting, tabPagePainting);
             Config.SoundManager = new SoundManager(tabPageSound);

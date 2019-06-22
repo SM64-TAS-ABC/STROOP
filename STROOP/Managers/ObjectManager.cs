@@ -441,7 +441,6 @@ namespace STROOP.Managers
                 return;
 
             var scriptAddress = Config.Stream.GetUInt32(_objects.First().Address + ObjectConfig.BehaviorScriptOffset);
-            Config.ScriptManager.Go(scriptAddress);
             Config.StroopMainForm.SwitchTab("tabPageScripts");
         }
 

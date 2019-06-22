@@ -404,7 +404,6 @@
     <Compile Include="Managers\TasManager.cs" />
     <Compile Include="Managers\VarHackManager.cs" />
     <Compile Include="Managers\CustomManager.cs" />
-    <Compile Include="Managers\ScriptManager.cs" />
     <Compile Include="Managers\WatchVariableControlSettingsManager.cs" />
     <Compile Include="Managers\WaterManager.cs" />
     <Compile Include="Managers\ModelManager.cs" />
