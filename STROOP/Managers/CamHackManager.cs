@@ -307,7 +307,8 @@ namespace STROOP.Managers
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             int panIndex = (int)SpecialConfig.CurrentPan;
-            if (panIndex == -1) return;
+            if (panIndex == -1)
+                goto END;
             PanModel panModel = SpecialConfig.PanModels[panIndex];
 
             uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
@@ -439,6 +440,7 @@ namespace STROOP.Managers
                 }
             }
 
+END:
             if (!streamAlreadySuspended) Config.Stream.Resume();
         }
 
