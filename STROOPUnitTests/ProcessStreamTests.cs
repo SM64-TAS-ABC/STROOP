@@ -18,7 +18,7 @@ namespace STROOPUnitTests
             Config.RamSize = 0x800000;
         }
 
-        public void BasicTest<T>(IEnumerable<(uint, T, byte[])> valuesToWrite, ProcessStream processStream, Func<uint, bool, T> valueReader)
+        public void BasicTest<T>(IEnumerable<(uint, T, byte[])> valuesToWrite, ProcessStream processStream, Func<uint, int, bool, T> valueReader)
         {
             MockEmuIO io = new MockEmuIO(EndiannessType.Little);
             processStream.SwitchIO(io);
@@ -36,19 +36,17 @@ namespace STROOPUnitTests
 
                     string message(uint relativeAddress) => $"Failed to match at address {relativeAddress:X4}, Endianess: {endianness}, Absolute Addressing: {absolute}";
 
-                    uint addressFromRelativeAddress(uint relativeAddress)
+                    uint addressFromRelativeAddress(uint relativeAddress, int dataSize)
                     {
                         uint address = absolute ? relativeAddress + MockEmuIO.Offset : relativeAddress;
-                        int dataSize = TypeUtilities.TypeSize[typeof(T)];
                         if (absolute)
                             address = EndiannessUtilities.SwapAddressEndianness(address, dataSize);
                         return address;
                     }
 
-                    uint emuAddressFromRelativeAddress(uint relativeAddress)
+                    uint emuAddressFromRelativeAddress(uint relativeAddress, int dataSize)
                     {
                         uint address = relativeAddress;
-                        int dataSize = TypeUtilities.TypeSize[typeof(T)];
                         if (endianness == EndiannessType.Little)
                             address = EndiannessUtilities.SwapAddressEndianness(address, dataSize);
                         return address;
@@ -57,14 +55,19 @@ namespace STROOPUnitTests
                     // Write all values to the IO
                     foreach ((uint relativeAddress, T value, byte[] byteValue) in valuesToWrite)
                     {
-                        uint address = addressFromRelativeAddress(relativeAddress);
-                        uint emuAddress = emuAddressFromRelativeAddress(relativeAddress);
-                        byte[] expectedBytes = endianness == EndiannessType.Little ? byteValue : byteValue.Reverse().ToArray();
+                        uint address = addressFromRelativeAddress(relativeAddress, byteValue.Length);
+                        uint emuAddress = emuAddressFromRelativeAddress(relativeAddress, byteValue.Length);
 
-                        processStream.SetValue(typeof(T), value, address, absolute);
+                        EndiannessType dataEndianess = (typeof(T) == typeof(byte[])) ? EndiannessType.Big : EndiannessType.Little; 
+                        byte[] expectedBytes = byteValue;
+                        if (endianness != dataEndianess)
+                            expectedBytes = EndiannessUtilities.SwapByteEndianness(byteValue);
 
-                        int dataSize = TypeUtilities.TypeSize[typeof(T)];
-                        byte[] actualBytes = io.GetBytes(emuAddress, dataSize);
+                        if (typeof(T) == typeof(byte[]))
+                            processStream.WriteRam(byteValue, new UIntPtr(address), EndiannessType.Big, absolute);
+                        else
+                            processStream.SetValue(typeof(T), value, address, absolute);
+                        byte[] actualBytes = io.GetBytes(emuAddress, byteValue.Length);
                         CollectionAssert.AreEqual(expectedBytes, actualBytes, message(relativeAddress));
                     }
 
@@ -72,12 +75,15 @@ namespace STROOPUnitTests
                     processStream.RefreshRam();
                     
                     // Validate values read are values written
-                    foreach ((uint relativeAddress, T value, _) in valuesToWrite)
+                    foreach ((uint relativeAddress, T value, byte[] bytes) in valuesToWrite)
                     {
-                        uint address = addressFromRelativeAddress(relativeAddress);
+                        uint address = addressFromRelativeAddress(relativeAddress, bytes.Length);
 
-                        T actualValue = valueReader(address, absolute);
-                        Assert.AreEqual(value, actualValue, message(relativeAddress));
+                        T actualValue = valueReader(address, bytes.Length, absolute);
+                        if (typeof(T) == typeof(byte[]))
+                            CollectionAssert.AreEqual(value as byte[], actualValue as byte[], message(relativeAddress));
+                        else
+                            Assert.AreEqual(value, actualValue, message(relativeAddress));
                     }
                 }
             }
@@ -97,7 +103,7 @@ namespace STROOPUnitTests
 
             var valuesWithBytes = values.Select(s => (s.Item1, s.Item2, new byte[] { s.Item2 })).ToList();
 
-            BasicTest<byte>(valuesWithBytes, processStream, (address, absolute) => processStream.GetByte(address, absolute));
+            BasicTest<byte>(valuesWithBytes, processStream, (address, _, absolute) => processStream.GetByte(address, absolute));
         }
 
         [TestMethod]
@@ -113,7 +119,7 @@ namespace STROOPUnitTests
 
             var valuesWithBytes = values.Select(s => (s.Item1, s.Item2, BitConverter.GetBytes(s.Item2))).ToList();
 
-            BasicTest<UInt16>(valuesWithBytes, processStream, (address, absolute) => processStream.GetUInt16(address, absolute));
+            BasicTest<UInt16>(valuesWithBytes, processStream, (address, _, absolute) => processStream.GetUInt16(address, absolute));
         }
 
         [TestMethod]
@@ -128,7 +134,23 @@ namespace STROOPUnitTests
 
             var valuesWithBytes = values.Select(s => (s.Item1, s.Item2, BitConverter.GetBytes(s.Item2))).ToList();
 
-            BasicTest<UInt32>(valuesWithBytes, processStream, (address, absolute) => processStream.GetUInt32(address, absolute));
+           BasicTest<UInt32>(valuesWithBytes, processStream, (address, _, absolute) => processStream.GetUInt32(address, absolute));
+        }
+
+        [TestMethod]
+        public void Test_ProcessStream_ReadWrite_data()
+        {
+            ProcessStream processStream = new ProcessStream();
+            var values = new List<(uint, byte[])>()
+            {
+                (0, new byte[] { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07 }),
+                (8, new byte[] { 0x10, 0x11, 0x12, 0x13 }),
+                (12, new byte[] { 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x2B }),
+            };
+
+            var valuesWithBytes = values.Select(s => (s.Item1, s.Item2, s.Item2)).ToList();
+
+            BasicTest<byte[]>(valuesWithBytes, processStream, (address, length, absolute) => processStream.ReadRam(new UIntPtr(address), length, EndiannessType.Big, absolute));
         }
     }
 }
