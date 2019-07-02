@@ -56,6 +56,7 @@
   <Data groupList="Basic" type="float" offset="0x1C" base="Triangle" round="10" coord="X">Normal X</Data>
   <Data groupList="Basic" type="float" offset="0x20" base="Triangle" round="10" coord="Y">Normal Y</Data>
   <Data groupList="Basic" type="float" offset="0x24" base="Triangle" round="10" coord="Z">Normal Z</Data>
+  <Data groupList="Basic" base="Triangle" specialType="TriangleHorizontalNormal" round="10">Normal H</Data>
   <Data groupList="Basic" type="float" offset="0x28" base="Triangle">Normal Offset</Data>
   <Data groupList="Basic" type="uint" offset="0x2C" base="Triangle" subclass="Object">Associated Object</Data>
 

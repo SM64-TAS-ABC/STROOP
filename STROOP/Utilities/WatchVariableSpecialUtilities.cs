@@ -1613,6 +1613,14 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("TriangleHorizontalNormal",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    return MoreMath.GetHypotenuse(triStruct.NormX, triStruct.NormZ);
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("ClosestVertex",
                 ((uint triAddress) =>
                 {
