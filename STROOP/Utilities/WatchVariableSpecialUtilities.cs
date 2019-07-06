@@ -1616,8 +1616,10 @@ namespace STROOP.Structs
             _dictionary.Add("TriangleHorizontalNormal",
                 ((uint triAddress) =>
                 {
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                    return MoreMath.GetHypotenuse(triStruct.NormX, triStruct.NormZ);
+                    float normalX = Config.Stream.GetSingle(triAddress + TriangleOffsetsConfig.NormX);
+                    float normalZ = Config.Stream.GetSingle(triAddress + TriangleOffsetsConfig.NormZ);
+                    float normalH = (float) Math.Sqrt(normalX * normalX + normalZ * normalZ);
+                    return normalH;
                 },
                 DEFAULT_SETTER));
 
