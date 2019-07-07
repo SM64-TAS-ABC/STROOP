@@ -19,6 +19,11 @@ namespace STROOP.Structs.Configurations
         public static double CustomZ = 0;
         public static double CustomAngle = 0;
 
+        public static double Custom2X = 0;
+        public static double Custom2Y = 0;
+        public static double Custom2Z = 0;
+        public static double Custom2Angle = 0;
+
         // - Self pos
 
         public static PositionAngle SelfPosPA = PositionAngle.Mario;

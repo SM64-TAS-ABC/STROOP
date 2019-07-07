@@ -25,6 +25,7 @@ namespace STROOP.Utilities
         private enum PositionAngleTypeEnum
         {
             Custom,
+            Custom2,
             Mario,
             Holp,
             Camera,
@@ -117,6 +118,7 @@ namespace STROOP.Utilities
         }
 
         public static PositionAngle Custom = new PositionAngle(PositionAngleTypeEnum.Custom);
+        public static PositionAngle Custom2 = new PositionAngle(PositionAngleTypeEnum.Custom2);
         public static PositionAngle Mario = new PositionAngle(PositionAngleTypeEnum.Mario);
         public static PositionAngle Holp = new PositionAngle(PositionAngleTypeEnum.Holp);
         public static PositionAngle Selected = new PositionAngle(PositionAngleTypeEnum.Selected);
@@ -161,6 +163,10 @@ namespace STROOP.Utilities
             if (parts.Count == 1 && parts[0] == "custom")
             {
                 return Custom;
+            }
+            if (parts.Count == 1 && parts[0] == "custom2")
+            {
+                return Custom2;
             }
             else if (parts.Count == 1 && parts[0] == "mario")
             {
@@ -297,6 +303,8 @@ namespace STROOP.Utilities
                 {
                     case PositionAngleTypeEnum.Custom:
                         return SpecialConfig.CustomX;
+                    case PositionAngleTypeEnum.Custom2:
+                        return SpecialConfig.Custom2X;
                     case PositionAngleTypeEnum.Mario:
                         return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
                     case PositionAngleTypeEnum.Holp:
@@ -366,6 +374,8 @@ namespace STROOP.Utilities
                 {
                     case PositionAngleTypeEnum.Custom:
                         return SpecialConfig.CustomY;
+                    case PositionAngleTypeEnum.Custom2:
+                        return SpecialConfig.Custom2Y;
                     case PositionAngleTypeEnum.Mario:
                         return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                     case PositionAngleTypeEnum.Holp:
@@ -435,6 +445,8 @@ namespace STROOP.Utilities
                 {
                     case PositionAngleTypeEnum.Custom:
                         return SpecialConfig.CustomZ;
+                    case PositionAngleTypeEnum.Custom2:
+                        return SpecialConfig.Custom2Z;
                     case PositionAngleTypeEnum.Mario:
                         return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     case PositionAngleTypeEnum.Holp:
@@ -504,6 +516,8 @@ namespace STROOP.Utilities
                 {
                     case PositionAngleTypeEnum.Custom:
                         return SpecialConfig.CustomAngle;
+                    case PositionAngleTypeEnum.Custom2:
+                        return SpecialConfig.Custom2Angle;
                     case PositionAngleTypeEnum.Mario:
                         return Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     case PositionAngleTypeEnum.Holp:
@@ -683,6 +697,9 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Custom:
                     SpecialConfig.CustomX = value;
                     return true;
+                case PositionAngleTypeEnum.Custom2:
+                    SpecialConfig.Custom2X = value;
+                    return true;
                 case PositionAngleTypeEnum.Mario:
                     return SetMarioComponent((float)value, Coordinate.X);
                 case PositionAngleTypeEnum.Holp:
@@ -747,6 +764,9 @@ namespace STROOP.Utilities
             {
                 case PositionAngleTypeEnum.Custom:
                     SpecialConfig.CustomY = value;
+                    return true;
+                case PositionAngleTypeEnum.Custom2:
+                    SpecialConfig.Custom2Y = value;
                     return true;
                 case PositionAngleTypeEnum.Mario:
                     return SetMarioComponent((float)value, Coordinate.Y);
@@ -813,6 +833,9 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Custom:
                     SpecialConfig.CustomZ = value;
                     return true;
+                case PositionAngleTypeEnum.Custom2:
+                    SpecialConfig.Custom2Z = value;
+                    return true;
                 case PositionAngleTypeEnum.Mario:
                     return SetMarioComponent((float)value, Coordinate.Z);
                 case PositionAngleTypeEnum.Holp:
@@ -878,6 +901,9 @@ namespace STROOP.Utilities
             {
                 case PositionAngleTypeEnum.Custom:
                     SpecialConfig.CustomAngle = value;
+                    return true;
+                case PositionAngleTypeEnum.Custom2:
+                    SpecialConfig.Custom2Angle = value;
                     return true;
                 case PositionAngleTypeEnum.Mario:
                     return Config.Stream.SetValue(valueUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
