@@ -15,6 +15,7 @@ using System.Xml;
 using System.Net;
 using STROOP.Structs.Configurations;
 using STROOP.Controls;
+using STROOP.Models;
 
 namespace STROOP.Utilities
 {
@@ -1445,6 +1446,35 @@ namespace STROOP.Utilities
             pendulumSwingTable.FillInExtended();
 
             return pendulumSwingTable;
+        }
+
+        public static PendulumVertexTable OpenPendulumVertexTable(string path)
+        {
+            PendulumVertexTable pendulumVertexTable = new PendulumVertexTable();
+            List<string> lines = DialogUtilities.ReadFileLines(path);
+            foreach (string line in lines)
+            {
+                List<string> parts = ParsingUtilities.ParseStringList(line);
+                int angle = ParsingUtilities.ParseIntNullable(parts[0]).Value;
+                List<TriangleShape> tris = new List<TriangleShape>();
+                for (int i = 1; i < parts.Count; i += 9)
+                {
+                    int v1x = ParsingUtilities.ParseIntNullable(parts[i + 0]).Value;
+                    int v1y = ParsingUtilities.ParseIntNullable(parts[i + 1]).Value;
+                    int v1z = ParsingUtilities.ParseIntNullable(parts[i + 2]).Value;
+                    int v2x = ParsingUtilities.ParseIntNullable(parts[i + 3]).Value;
+                    int v2y = ParsingUtilities.ParseIntNullable(parts[i + 4]).Value;
+                    int v2z = ParsingUtilities.ParseIntNullable(parts[i + 5]).Value;
+                    int v3x = ParsingUtilities.ParseIntNullable(parts[i + 6]).Value;
+                    int v3y = ParsingUtilities.ParseIntNullable(parts[i + 7]).Value;
+                    int v3z = ParsingUtilities.ParseIntNullable(parts[i + 8]).Value;
+                    TriangleShape tri = new TriangleShape(v1x, v1y, v1z, v2x, v2y, v2z, v3x, v3y, v3z);
+                    tris.Add(tri);
+                }
+                PendulumVertexTable.PendulumVertexData data = new PendulumVertexTable.PendulumVertexData(angle, tris);
+                pendulumVertexTable.Add(data);
+            }
+            return pendulumVertexTable;
         }
 
         public static WaypointTable OpenWaypointTable(string path)
