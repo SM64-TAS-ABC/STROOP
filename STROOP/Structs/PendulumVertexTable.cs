@@ -9,21 +9,16 @@ namespace STROOP.Structs
 {
     public class PendulumVertexTable
     {
-        public class PendulumVertexData
-        {
-            public readonly int Angle;
-            public readonly List<TriangleShape> Tris;
+        private Dictionary<int, List<TriangleShape>> _dictionary;
 
-            public PendulumVertexData(int angle, List<TriangleShape> tris)
-            {
-                Angle = angle;
-                Tris = tris;
-            }
+        public PendulumVertexTable()
+        {
+            _dictionary = new Dictionary<int, List<TriangleShape>>();
         }
         
-        public void Add(PendulumVertexData data)
+        public void Add(int angle, List<TriangleShape> tris)
         {
-
+            _dictionary[angle] = tris;
         }
     }
 }

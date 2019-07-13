@@ -1471,8 +1471,7 @@ namespace STROOP.Utilities
                     TriangleShape tri = new TriangleShape(v1x, v1y, v1z, v2x, v2y, v2z, v3x, v3y, v3z);
                     tris.Add(tri);
                 }
-                PendulumVertexTable.PendulumVertexData data = new PendulumVertexTable.PendulumVertexData(angle, tris);
-                pendulumVertexTable.Add(data);
+                pendulumVertexTable.Add(angle, tris);
             }
             return pendulumVertexTable;
         }
