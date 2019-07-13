@@ -41,7 +41,7 @@ namespace STROOP.Ttc
          *  next RNG value and returns that new value,
          *  exactly mimicking the in-game RNG.
          */
-        public ushort PollRNG()
+        public virtual ushort PollRNG()
         {
             _index = (_index + 1) % 65114;
             return GetRng();

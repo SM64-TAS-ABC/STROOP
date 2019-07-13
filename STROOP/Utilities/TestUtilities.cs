@@ -18,12 +18,54 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            MappingConfig.OpenMapping();
+            TestSomething16();
         }
 
         public static void TestSomethingElse()
         {
             Config.Print(TtcMain.FindHandMovement());
+        }
+
+        public static void TestSomething16()
+        {
+            int angle1 = 21163;
+            int angle2 = 25973;
+
+            TtcPendulum pendulum = new TtcPendulum(new TtcRng2(), 1, -56745, 0, 42, 0);
+            int startTimer = 35192;
+            for (int i = 0; i < 20000; i++)
+            {
+                int timer = startTimer + i;
+                int accelerationDirection = pendulum._accelerationDirection;
+                int accelerationMagnitude = pendulum._accelerationMagnitude;
+                int angularVelocity = pendulum._angularVelocity;
+                int angle = pendulum._angle;
+                int amplitude = (int)WatchVariableSpecialUtilities.GetPendulumAmplitude(
+                    accelerationDirection, accelerationMagnitude, angularVelocity, angle);
+                string index = TableConfig.PendulumSwings.GetPendulumSwingIndexExtended(amplitude);
+
+                string success = "";
+                int angleUshort = (int)MoreMath.NormalizeAngleDouble(angle);
+                if (angleUshort > angle1 && angleUshort < angle2 &&
+                    TableConfig.PendulumVertexes.HasVertexWithY(angle, -2434))
+                {
+                    success = "*******************************";
+                }
+
+                Config.Print(
+                    "[{0}] [{1}]: {2}, {3}, {4}, {5} | {6}, {7} {8}",
+                    i,
+                    timer,
+                    accelerationDirection,
+                    accelerationMagnitude,
+                    angularVelocity,
+                    angle,
+                    amplitude,
+                    index,
+                    success);
+
+                pendulum.Update();
+            }
         }
 
         public static void TestSomething15()

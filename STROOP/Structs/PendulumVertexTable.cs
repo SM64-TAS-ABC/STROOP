@@ -1,4 +1,5 @@
 ﻿using STROOP.Models;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,13 @@ namespace STROOP.Structs
         public void Add(int angle, List<TriangleShape> tris)
         {
             _dictionary[angle] = tris;
+        }
+
+        public bool HasVertexWithY(int angle, int y)
+        {
+            angle = MoreMath.NormalizeAngleTruncated(angle);
+            List<TriangleShape> tris = _dictionary[angle];
+            return tris.Any(tri => tri.Y1 == y || tri.Y2 == y || tri.Y3 == y);
         }
     }
 }
