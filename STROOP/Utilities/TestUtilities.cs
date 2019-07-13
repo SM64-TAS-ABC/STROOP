@@ -18,12 +18,71 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            TestSomething16();
+            TestSomething17();
         }
 
         public static void TestSomethingElse()
         {
             Config.Print(TtcMain.FindHandMovement());
+        }
+
+        public static void TestSomething17()
+        {
+            List<int> initialAngles = new List<int>()
+            {
+                153584,
+                284656,
+                88048,
+                284736,
+                153664,
+                88512,
+                88128,
+                219120,
+            };
+
+            List<int> initialAccMags = new List<int>() { 13, 42 };
+
+            foreach (int initialAngle in initialAngles)
+            {
+                foreach (int initialAccMag in initialAccMags)
+                {
+                    TtcPendulum pendulum = new TtcPendulum(new TtcRng(0), 1, -56745, 0, 42, 0);
+                    int startTimer = 35192;
+                    for (int i = 0; i < 20000; i++)
+                    {
+                        int timer = startTimer + i;
+                        int accelerationDirection = pendulum._accelerationDirection;
+                        int accelerationMagnitude = pendulum._accelerationMagnitude;
+                        int angularVelocity = pendulum._angularVelocity;
+                        int angle = pendulum._angle;
+                        int amplitude = (int)WatchVariableSpecialUtilities.GetPendulumAmplitude(
+                            accelerationDirection, accelerationMagnitude, angularVelocity, angle);
+                        string index = TableConfig.PendulumSwings.GetPendulumSwingIndexExtended(amplitude);
+
+                        string success = "";
+                        int angleUshort = (int)MoreMath.NormalizeAngleDouble(angle);
+                        if (/*angleUshort > angle1 && angleUshort < angle2 &&*/
+                            TableConfig.PendulumVertexes.HasVertexWithY(angle, -2434))
+                        {
+                            success = "*******************************";
+                        }
+
+                        Config.Print(
+                            "[{0}] [{1}]: {2}, {3}, {4}, {5} | {6}, {7} {8}",
+                            i,
+                            timer,
+                            accelerationDirection,
+                            accelerationMagnitude,
+                            angularVelocity,
+                            angle,
+                            amplitude,
+                            index,
+                            success);
+
+                        pendulum.Update();
+                    }
+                }
+            }
         }
 
         public static void TestSomething16()
