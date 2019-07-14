@@ -115,68 +115,68 @@ namespace STROOP.Ttc
             List<TtcObject> rngObjects = new List<TtcObject>();
             for (int i = 0; i < 6; i++)
             {
-                rngObjects.Add(new TtcRotatingBlock(rng, TtcObjectConfig.TtcRotatingBlockAddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcRotatingBlock(rng, TtcObjectConfig.TtcRotatingBlockAddress + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcRotatingTriangularPrism(rng, TtcObjectConfig.TtcRotatingTriangularPrismAddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcRotatingTriangularPrism(rng, TtcObjectConfig.TtcRotatingTriangularPrismAddress + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 4; i++)
             {
-                rngObjects.Add(new TtcPendulum(rng, TtcObjectConfig.TtcPendulumAddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcPendulum(rng, TtcObjectConfig.TtcPendulumAddress + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 5; i++)
             {
-                rngObjects.Add(new TtcTreadmill(rng, TtcObjectConfig.TtcTreadmill1AddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcTreadmill(rng, TtcObjectConfig.TtcTreadmill1Address + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 12; i++)
             {
-                rngObjects.Add(new TtcPusher(rng, TtcObjectConfig.TtcPusherAddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcPusher(rng, TtcObjectConfig.TtcPusherAddress + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 5; i++)
             {
-                rngObjects.Add(new TtcCog(rng, TtcObjectConfig.TtcCog1AddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcCog(rng, TtcObjectConfig.TtcCog1Address + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcSpinningTriangle(rng, TtcObjectConfig.TtcSpinningTriangleAddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcSpinningTriangle(rng, TtcObjectConfig.TtcSpinningTriangleAddress + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 1; i++)
             {
-                rngObjects.Add(new TtcPitBlock(rng, TtcObjectConfig.TtcPitBlockAddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcPitBlock(rng, TtcObjectConfig.TtcPitBlockAddress + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcHand(rng, TtcObjectConfig.TtcHandAddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcHand(rng, TtcObjectConfig.TtcHandAddress + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 14; i++)
             {
-                rngObjects.Add(new TtcSpinner(rng, TtcObjectConfig.TtcSpinnerAddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcSpinner(rng, TtcObjectConfig.TtcSpinnerAddress + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 6; i++)
             {
-                rngObjects.Add(new TtcWheel(rng, TtcObjectConfig.TtcWheelAddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcWheel(rng, TtcObjectConfig.TtcWheelAddress + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcElevator(rng, TtcObjectConfig.TtcElevatorAddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcElevator(rng, TtcObjectConfig.TtcElevatorAddress + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 1; i++)
             {
-                rngObjects.Add(new TtcCog(rng, TtcObjectConfig.TtcCog2AddressUS + getOffset(i)).SetIndex(i + 6));
+                rngObjects.Add(new TtcCog(rng, TtcObjectConfig.TtcCog2Address + getOffset(i)).SetIndex(i + 6));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcTreadmill(rng, TtcObjectConfig.TtcTreadmill2AddressUS + getOffset(i)).SetIndex(i + 6));
+                rngObjects.Add(new TtcTreadmill(rng, TtcObjectConfig.TtcTreadmill2Address + getOffset(i)).SetIndex(i + 6));
             }
             for (int i = 0; i < 1; i++)
             {
-                rngObjects.Add(new TtcThwomp(rng, TtcObjectConfig.TtcThwompAddressUS + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcThwomp(rng, TtcObjectConfig.TtcThwompAddress + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                if (i == 0) rngObjects.Add(new TtcAmp(rng, TtcObjectConfig.TtcAmp1AddressUS).SetIndex(i + 1));
-                if (i == 1) rngObjects.Add(new TtcAmp(rng, TtcObjectConfig.TtcAmp2AddressUS).SetIndex(i + 1));
+                if (i == 0) rngObjects.Add(new TtcAmp(rng, TtcObjectConfig.TtcAmp1Address).SetIndex(i + 1));
+                if (i == 1) rngObjects.Add(new TtcAmp(rng, TtcObjectConfig.TtcAmp2Address).SetIndex(i + 1));
             }
             List<ObjectDataModel> bobombs = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Bob-omb");
             bobombs.Sort((obj1, obj2) =>
