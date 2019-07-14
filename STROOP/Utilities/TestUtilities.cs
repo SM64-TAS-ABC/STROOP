@@ -18,7 +18,7 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            TestSomething17();
+            MovementCalculator.CalculateMovementForTtmHolp();
         }
 
         public static void TestSomethingElse()
