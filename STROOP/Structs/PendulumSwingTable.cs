@@ -88,7 +88,7 @@ namespace STROOP.Structs
 
         public void FillInExtended()
         {
-            int range = 100;
+            int range = 2000;
 
             List<int> startingIndexes = new List<int>();
             for (int i = 0; i < range; i++)

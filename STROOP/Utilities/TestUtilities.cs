@@ -26,29 +26,108 @@ namespace STROOP.Utilities
             Config.Print(TtcMain.FindHandMovement());
         }
 
+        public static void TestSomething18()
+        {
+            List<int> initialAngles = new List<int>() { 22976, 22592, 22512 };
+
+            int range = 10;
+            List<int> extendedAngles = new List<int>();
+            for (int i = -1 * range; i <= range; i++)
+            {
+                if (i == 0) continue;
+                foreach (int initialAngle in initialAngles)
+                {
+                    int angle = i * 65536 + initialAngle;
+                    extendedAngles.Add(angle);
+                }
+            }
+
+            List<int> allAngles = new List<int>();
+            foreach (int extendedAngle in extendedAngles)
+            {
+                for (int i = 0; i < 16; i++)
+                {
+                    int angle = extendedAngle + i;
+                    allAngles.Add(angle);
+                }
+            }
+
+            string output = "";
+            foreach (int angle in allAngles)
+            {
+                string index = TableConfig.PendulumSwings.GetPendulumSwingIndexExtended(angle);
+                string index1, index2;
+                int hyphenIndex = index.LastIndexOf('-');
+                if (hyphenIndex == -1)
+                {
+                    index1 = "0";
+                    index2 = "0";
+                }
+                else
+                {
+                    index1 = index.Substring(0, hyphenIndex);
+                    index2 = index.Substring(hyphenIndex + 1);
+                }
+                output += angle + "\t" + index + "\t" + index1 + "\t" + index2 + "\r\n";
+            }
+            InfoForm.ShowValue(output);
+        }
+
         public static void TestSomething17()
         {
             List<int> initialAngles = new List<int>()
             {
-                153584,
-                284656,
-                88048,
-                284736,
-                153664,
-                88512,
-                88128,
-                219120,
+                88527,
+                88052,
+                88055,
+                153595,
+                153599,
+                -174096,
+                -108082,
+                -42929,
+                219202,
+                -43016,
+                154049,
+                284746,
+                -42940,
+                284670,
+                88519,
+                -567228,
+                -174005,
+                -174014,
+                -42555,
+                88516,
+                153675,
+                -42545,
+                547279,
+                -42942,
+                88141,
+                -173627,
+                88143,
+                350284,
+                547274,
+                219121,
+                677959,
+                481349,
+                -108476,
+                -42939,
+                153585,
+                -43017,
+                -305162,
+                -108558,
+                219125,
             };
-
             List<int> initialAccMags = new List<int>() { 13, 42 };
 
+            string output = "";
             foreach (int initialAngle in initialAngles)
             {
                 foreach (int initialAccMag in initialAccMags)
                 {
-                    TtcPendulum pendulum = new TtcPendulum(new TtcRng(0), 1, -56745, 0, 42, 0);
+                    int initialAccDir = initialAngle > 0 ? -1 : 1;
+                    TtcPendulum2 pendulum = new TtcPendulum2(new TtcRng(0), initialAccDir, initialAngle, 0, initialAccMag, 0);
                     int startTimer = 35192;
-                    for (int i = 0; i < 20000; i++)
+                    for (int i = 0; i < 2000; i++)
                     {
                         int timer = startTimer + i;
                         int accelerationDirection = pendulum._accelerationDirection;
@@ -59,30 +138,27 @@ namespace STROOP.Utilities
                             accelerationDirection, accelerationMagnitude, angularVelocity, angle);
                         string index = TableConfig.PendulumSwings.GetPendulumSwingIndexExtended(amplitude);
 
-                        string success = "";
-                        int angleUshort = (int)MoreMath.NormalizeAngleDouble(angle);
-                        if (/*angleUshort > angle1 && angleUshort < angle2 &&*/
-                            TableConfig.PendulumVertexes.HasVertexWithY(angle, -2434))
+                        bool success = MoreMath.NormalizeAngleTruncated(angle) == 30416;
+                        if (success)
                         {
-                            success = "*******************************";
+                            output += String.Format(
+                                "{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\r\n",
+                                i,
+                                timer,
+                                initialAngle,
+                                accelerationDirection,
+                                accelerationMagnitude,
+                                angularVelocity,
+                                angle,
+                                amplitude,
+                                index);
                         }
-
-                        Config.Print(
-                            "[{0}] [{1}]: {2}, {3}, {4}, {5} | {6}, {7} {8}",
-                            i,
-                            timer,
-                            accelerationDirection,
-                            accelerationMagnitude,
-                            angularVelocity,
-                            angle,
-                            amplitude,
-                            index,
-                            success);
 
                         pendulum.Update();
                     }
                 }
             }
+            InfoForm.ShowValue(output);
         }
 
         public static void TestSomething16()
