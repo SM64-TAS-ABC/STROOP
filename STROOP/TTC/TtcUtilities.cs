@@ -115,68 +115,68 @@ namespace STROOP.Ttc
             List<TtcObject> rngObjects = new List<TtcObject>();
             for (int i = 0; i < 6; i++)
             {
-                rngObjects.Add(new TtcRotatingBlock(rng, 0x8033D488 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcRotatingBlock(rng, TtcObjectConfig.TtcRotatingBlockAddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcRotatingTriangularPrism(rng, 0x8033E2C8 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcRotatingTriangularPrism(rng, TtcObjectConfig.TtcRotatingTriangularPrismAddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 4; i++)
             {
-                rngObjects.Add(new TtcPendulum(rng, 0x8033E788 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcPendulum(rng, TtcObjectConfig.TtcPendulumAddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 5; i++)
             {
-                rngObjects.Add(new TtcTreadmill(rng, 0x8033F108 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcTreadmill(rng, TtcObjectConfig.TtcTreadmill1AddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 12; i++)
             {
-                rngObjects.Add(new TtcPusher(rng, 0x8033FCE8 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcPusher(rng, TtcObjectConfig.TtcPusherAddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 5; i++)
             {
-                rngObjects.Add(new TtcCog(rng, 0x80341968 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcCog(rng, TtcObjectConfig.TtcCog1AddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcSpinningTriangle(rng, 0x80342548 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcSpinningTriangle(rng, TtcObjectConfig.TtcSpinningTriangleAddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 1; i++)
             {
-                rngObjects.Add(new TtcPitBlock(rng, 0x80342A08 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcPitBlock(rng, TtcObjectConfig.TtcPitBlockAddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcHand(rng, 0x80342C68 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcHand(rng, TtcObjectConfig.TtcHandAddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 14; i++)
             {
-                rngObjects.Add(new TtcSpinner(rng, 0x80343128 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcSpinner(rng, TtcObjectConfig.TtcSpinnerAddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 6; i++)
             {
-                rngObjects.Add(new TtcWheel(rng, 0x80345268 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcWheel(rng, TtcObjectConfig.TtcWheelAddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcElevator(rng, 0x80347608 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcElevator(rng, TtcObjectConfig.TtcElevatorAddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 1; i++)
             {
-                rngObjects.Add(new TtcCog(rng, 0x8034B3C8 + getOffset(i)).SetIndex(i + 6));
+                rngObjects.Add(new TtcCog(rng, TtcObjectConfig.TtcCog2AddressUS + getOffset(i)).SetIndex(i + 6));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcTreadmill(rng, 0x8034D508 + getOffset(i)).SetIndex(i + 6));
+                rngObjects.Add(new TtcTreadmill(rng, TtcObjectConfig.TtcTreadmill2AddressUS + getOffset(i)).SetIndex(i + 6));
             }
             for (int i = 0; i < 1; i++)
             {
-                rngObjects.Add(new TtcThwomp(rng, 0x8034E808 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcThwomp(rng, TtcObjectConfig.TtcThwompAddressUS + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                if (i == 0) rngObjects.Add(new TtcAmp(rng, 0x80347AC8).SetIndex(i + 1));
-                if (i == 1) rngObjects.Add(new TtcAmp(rng, 0x8034A328).SetIndex(i + 1));
+                if (i == 0) rngObjects.Add(new TtcAmp(rng, TtcObjectConfig.TtcAmp1AddressUS).SetIndex(i + 1));
+                if (i == 1) rngObjects.Add(new TtcAmp(rng, TtcObjectConfig.TtcAmp2AddressUS).SetIndex(i + 1));
             }
             List<ObjectDataModel> bobombs = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Bob-omb");
             bobombs.Sort((obj1, obj2) =>
