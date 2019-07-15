@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -84,6 +85,28 @@ namespace STROOP.Structs
                 return _extendedAmplitudeDictionary[amplitude];
 
             return Double.NaN.ToString();
+        }
+
+        public (int, int)? GetPendulumSwingIndexExtendedPair(int amplitude)
+        {
+            string index = GetPendulumSwingIndexExtended(amplitude);
+            if (index == Double.NaN.ToString()) return null;
+            int hyphenIndex = index.LastIndexOf('-');
+
+            int? primaryIndex, secondaryIndex;
+            if (hyphenIndex == -1 || hyphenIndex == 0)
+            {
+                primaryIndex = ParsingUtilities.ParseIntNullable(index);
+                secondaryIndex = 0;
+            }
+            else
+            {
+                primaryIndex = ParsingUtilities.ParseIntNullable(index.Substring(0, hyphenIndex));
+                secondaryIndex = ParsingUtilities.ParseIntNullable(index.Substring(hyphenIndex + 1));
+            }
+
+            if (primaryIndex == null | secondaryIndex == null) return null;
+            return (primaryIndex.Value, secondaryIndex.Value);
         }
 
         public void FillInExtended()
