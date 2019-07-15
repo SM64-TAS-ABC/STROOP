@@ -39,6 +39,12 @@ namespace STROOP.Ttc
             }
         }
 
+        public int GetMaxDustFrame()
+        {
+            if (_dustFrames.Count == 0) return 0;
+            return _dustFrames.Max();
+        }
+
         public override string ToString()
         {
             return _id + OPENER + _dustFrames.Contains(_currentFrame) + CLOSER;

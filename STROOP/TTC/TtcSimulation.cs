@@ -64,6 +64,11 @@ namespace STROOP.Ttc
             return new TtcSaveState(_rng.GetRng(), _rngObjects);
         }
 
+        public TtcSimulation Clone()
+        {
+            return new TtcSimulation(GetSaveState());
+        }
+
         public void AddDustFrames(List<int> dustFrames)
         {
             TtcDust dust = (TtcDust)_rngObjects.FirstOrDefault(obj => obj is TtcDust);
@@ -424,6 +429,89 @@ namespace STROOP.Ttc
         public ushort GetRng()
         {
             return _rng.GetRng();
+        }
+
+        public TtcPendulum GetReentryPendulum()
+        {
+            return _rngObjects[10] as TtcPendulum;
+        }
+
+        public void FindIdealReentryManipulationGivenDustFrames(List<int> dustFrames)
+        {
+            int phase1Limit = 1000;
+
+            int maxDustFrame = dustFrames.Count == 0 ? 0 : dustFrames.Max();
+            int frame = _startingFrame;
+            while (frame < _startingFrame + phase1Limit)
+            {
+                frame++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                // Check if pendulum will do height swing after all dust has been made
+                TtcPendulum pendulum = GetReentryPendulum();
+                if (frame > maxDustFrame &&
+                    pendulum._accelerationDirection == -1 &&
+                    pendulum._accelerationMagnitude == 13 &&
+                    pendulum._angularVelocity == 0 &&
+                    pendulum._waitingTimer == 0 &&
+                    pendulum._angle == 42748)
+                {
+                    TtcSimulation simulation = new TtcSimulation(GetSaveState(), frame, new List<int>());
+                    simulation.FindIdealReentryManipulationGivenFrame1(dustFrames, frame);
+                }
+            }
+        }
+
+        // Frame 1 is the frame at the start of the pendulum swing that lets Mario get the right height
+        public void FindIdealReentryManipulationGivenFrame1(List<int> dustFrames, int frame1)
+        {
+            int phase2Limit = 1000;
+
+            int frame = _startingFrame;
+            while (frame < _startingFrame + phase2Limit)
+            {
+                frame++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                    // TODO: add in other RNG factors (bob-omb, kicking, dust)
+                }
+
+                // Check if pendulum will do height swing after all dust has been made
+                TtcPendulum pendulum = GetReentryPendulum();
+                if (frame > frame1 + 0 &&
+                    pendulum._accelerationDirection == -1 &&
+                    pendulum._accelerationMagnitude == 42 &&
+                    pendulum._angularVelocity == 0 &&
+                    pendulum._waitingTimer == 0 &&
+                    pendulum._angle == 42748)
+                {
+                    TtcSimulation simulation = new TtcSimulation(GetSaveState(), frame, new List<int>());
+                    simulation.FindIdealReentryManipulationGivenFrame2(dustFrames, frame1, frame);
+                }
+            }
+        }
+
+        // Frame 1 is the frame at the start of the pendulum swing that lets Mario get wall displacement
+        public void FindIdealReentryManipulationGivenFrame2(List<int> dustFrames, int frame1, int frame2)
+        {
+            int frame = _startingFrame;
+            while (true)
+            {
+                frame++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                    
+
+                }
+            }
         }
     }
 

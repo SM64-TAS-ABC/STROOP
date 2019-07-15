@@ -310,6 +310,21 @@ namespace STROOP.Ttc
             }
             return dustFrames;
         }
+
+        public static void FindIdealReentryManipulation()
+        {
+            TtcSaveState saveState = new TtcSaveState();
+            int startingFrame = MupenUtilities.GetFrameCount();
+            List<List<int>> dustFramesLists = GetDustFrameLists(startingFrame + 2, 25, 25);
+
+            Config.Print("START FindIdealReentryManipulation");
+            foreach (List<int> dustFrames in dustFramesLists)
+            {
+                TtcSimulation simulation = new TtcSimulation(saveState, startingFrame, dustFrames);
+                simulation.FindIdealReentryManipulationGivenDustFrames(dustFrames);
+            }
+            Config.Print("END FindIdealReentryManipulation");
+        }
     }
 
 }
