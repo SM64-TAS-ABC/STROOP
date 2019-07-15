@@ -105,7 +105,7 @@ namespace STROOP.Structs
                 secondaryIndex = ParsingUtilities.ParseIntNullable(index.Substring(hyphenIndex + 1));
             }
 
-            if (primaryIndex == null | secondaryIndex == null) return null;
+            if (primaryIndex == null || secondaryIndex == null) return null;
             return (primaryIndex.Value, secondaryIndex.Value);
         }
 
