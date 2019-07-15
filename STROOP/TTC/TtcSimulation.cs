@@ -446,6 +446,16 @@ namespace STROOP.Ttc
             return _rngObjects[10] as TtcPendulum;
         }
 
+        public TtcBobomb GetFirstBobomb()
+        {
+            return _rngObjects[67] as TtcBobomb;
+        }
+
+        public TtcBobomb GetSecondBobomb()
+        {
+            return _rngObjects[68] as TtcBobomb;
+        }
+
         // Given dust, goes forward and spawns height swings to investigate
         public void FindIdealReentryManipulationGivenDustFrames(List<int> dustFrames)
         {
@@ -483,21 +493,87 @@ namespace STROOP.Ttc
         {
             int phase2Limit = 1000;
 
+            TtcPendulum pendulum = GetReentryPendulum();
+            int counter = 0;
             int frame = _startingFrame;
             while (frame < _startingFrame + phase2Limit)
             {
+                counter++;
                 frame++;
                 foreach (TtcObject rngObject in _rngObjects)
                 {
                     rngObject.SetFrame(frame);
                     rngObject.Update();
-                    // TODO: add in other RNG factors (bob-omb, kicking, dust)
+                }
+
+                // bob-omb 2 start
+                if (counter == 19)
+                {
+                    TtcBobomb bobomb = GetSecondBobomb();
+                    bobomb.SetWithinMarioRange(1);
+                }
+
+                // bob-omb 2 end
+                if (counter == 258)
+                {
+                    TtcBobomb bobomb = GetSecondBobomb();
+                    bobomb.SetWithinMarioRange(0);
+                }
+
+                // bob-omb 1 start
+                if (counter == 154)
+                {
+                    TtcBobomb bobomb = GetFirstBobomb();
+                    bobomb.SetWithinMarioRange(1);
+                }
+
+                // bob-omb 1 end
+                if (counter == 162)
+                {
+                    TtcBobomb bobomb = GetFirstBobomb();
+                    bobomb.SetWithinMarioRange(0);
+                }
+
+                // coin 2
+                if (counter == 258)
+                {
+                    _rng.PollRNG(3);
+                }
+
+                // coin 1
+                if (counter == 162)
+                {
+                    _rng.PollRNG(3);
+                }
+
+                // dust frames
+                if (counter >= 84 && counter <= 95 && counter != 93)
+                {
+                    _rng.PollRNG(4);
+                }
+
+                // bob-omb 2 fuse smoke
+                if ((counter >= 99 && counter <= 211 && counter % 8 == 3) ||
+                    (counter >= 219 && counter <= 257 && counter % 2 == 1))
+                {
+                    _rng.PollRNG(3);
+                }
+
+                // bob-omb 1 fuse smoke
+                if (counter >= 156 && counter <= 162 && counter % 2 == 0)
+                {
+                    _rng.PollRNG(3);
+                }
+
+                // pendulum must have enough waiting frames
+                if (counter == 162)
+                {
+                    bool pendulumQualifies = pendulum._waitingTimer >= 17;
+                    if (!pendulumQualifies) return;
                 }
 
                 // Check if pendulum will do wall push swing
-                TtcPendulum pendulum = GetReentryPendulum();
-                if (frame > frame1 + 0 &&
-                    pendulum._accelerationDirection == -1 &&
+                if (pendulum._accelerationDirection == -1 &&
                     pendulum._accelerationMagnitude == 42 &&
                     pendulum._angularVelocity == 0 &&
                     pendulum._waitingTimer == 0 &&
