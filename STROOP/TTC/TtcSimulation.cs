@@ -493,6 +493,7 @@ namespace STROOP.Ttc
         // Frame 1 is the frame at the start of the pendulum swing that lets Mario get the right height
         public void FindIdealReentryManipulationGivenFrame1(List<int> dustFrames, int frame1)
         {
+            //Config.Print("TRY\t{0}\t{1}", frame1, "[" + string.Join(",", dustFrames) + "]");
             int phase2Limit = 1000;
 
             TtcPendulum pendulum = GetReentryPendulum();
@@ -567,7 +568,7 @@ namespace STROOP.Ttc
                 if (counter == 162)
                 {
                     bool pendulumQualifies = pendulum._waitingTimer >= 17;
-                    //if (!pendulumQualifies) return;
+                    if (!pendulumQualifies) return;
                 }
 
                 // Check if pendulum will do wall push swing
@@ -581,7 +582,7 @@ namespace STROOP.Ttc
                     simulation.FindIdealReentryManipulationGivenFrame2(dustFrames, frame1, frame);
                 }
 
-                Config.Print(frame + "\t" + _rng.GetIndex() + "\t" + GetSaveState());
+                //Config.Print(frame + "\t" + _rng.GetIndex() + "\t" + GetSaveState());
             }
         }
 
@@ -589,6 +590,7 @@ namespace STROOP.Ttc
         // Frame 2 is the frame at the start of the pendulum swing that lets Mario get wall displacement
         public void FindIdealReentryManipulationGivenFrame2(List<int> dustFrames, int frame1, int frame2)
         {
+            Config.Print("ATTEMPT\t{0}\t{1}\t{2}", frame1, frame2, "[" + string.Join(",", dustFrames) + "]");
             int counter = 0;
             int frame = _startingFrame;
             while (true)
@@ -625,7 +627,8 @@ namespace STROOP.Ttc
                         (spinner._angle >= min + 32768 && spinner._angle <= max + 32768);
                     if (!spinnerQualifies) return;
 
-                    Config.Print("{0}\t{1}\t{2}", frame1, frame2, "[" + string.Join(",", dustFrames) + "]");
+                    List<int> inputDustFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
+                    Config.Print("**************SUCCESS\t{0}\t{1}\t{2}\t", frame1, frame2, "[" + string.Join(",", inputDustFrames) + "]");
                     return;
                 }
             }

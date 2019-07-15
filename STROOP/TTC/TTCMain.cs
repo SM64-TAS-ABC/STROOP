@@ -315,7 +315,8 @@ namespace STROOP.Ttc
         {
             TtcSaveState saveState = new TtcSaveState();
             int startingFrame = MupenUtilities.GetFrameCount();
-            List<List<int>> dustFramesLists = GetDustFrameLists(startingFrame + 2, 25, 0);
+            List<List<int>> dustFramesLists = GetDustFrameLists(startingFrame + 2, 25, 25);
+            dustFramesLists = new List<List<int>>() { new List<int>() { 42157, 42160, 42162, 42175 } };
 
             Config.Print("START FindIdealReentryManipulation");
             foreach (List<int> dustFrames in dustFramesLists)
