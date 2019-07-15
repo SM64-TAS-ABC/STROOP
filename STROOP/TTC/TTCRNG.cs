@@ -47,6 +47,14 @@ namespace STROOP.Ttc
             return GetRng();
         }
 
+        public void PollRNG(int number)
+        {
+            for (int i = 0; i < number; i++)
+            {
+                PollRNG();
+            }
+        }
+
         /** Sets the RNG/index using an inputted index.
          */
         public void SetIndex(int index)

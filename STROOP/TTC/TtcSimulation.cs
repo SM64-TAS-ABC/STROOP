@@ -426,6 +426,16 @@ namespace STROOP.Ttc
             return _rngObjects[37] as TtcHand;
         }
 
+        public TtcHand GetLowerHand()
+        {
+            return _rngObjects[38] as TtcHand;
+        }
+
+        public TtcSpinner GetLowestSpinner()
+        {
+            return _rngObjects[47] as TtcSpinner;
+        }
+
         public ushort GetRng()
         {
             return _rng.GetRng();
@@ -436,6 +446,7 @@ namespace STROOP.Ttc
             return _rngObjects[10] as TtcPendulum;
         }
 
+        // Given dust, goes forward and spawns height swings to investigate
         public void FindIdealReentryManipulationGivenDustFrames(List<int> dustFrames)
         {
             int phase1Limit = 1000;
@@ -466,6 +477,7 @@ namespace STROOP.Ttc
             }
         }
 
+        // Given frame 1, goes forward and spawns wall push swings to investigate
         // Frame 1 is the frame at the start of the pendulum swing that lets Mario get the right height
         public void FindIdealReentryManipulationGivenFrame1(List<int> dustFrames, int frame1)
         {
@@ -482,7 +494,7 @@ namespace STROOP.Ttc
                     // TODO: add in other RNG factors (bob-omb, kicking, dust)
                 }
 
-                // Check if pendulum will do height swing after all dust has been made
+                // Check if pendulum will do wall push swing
                 TtcPendulum pendulum = GetReentryPendulum();
                 if (frame > frame1 + 0 &&
                     pendulum._accelerationDirection == -1 &&
@@ -497,19 +509,48 @@ namespace STROOP.Ttc
             }
         }
 
-        // Frame 1 is the frame at the start of the pendulum swing that lets Mario get wall displacement
+        // Investigates a wall push swing to see if it qualifies
+        // Frame 2 is the frame at the start of the pendulum swing that lets Mario get wall displacement
         public void FindIdealReentryManipulationGivenFrame2(List<int> dustFrames, int frame1, int frame2)
         {
+            int counter = 0;
             int frame = _startingFrame;
             while (true)
             {
+                counter++;
                 frame++;
                 foreach (TtcObject rngObject in _rngObjects)
                 {
                     rngObject.SetFrame(frame);
                     rngObject.Update();
-                    
+                }
 
+                if (counter == 66)
+                {
+                    _rng.PollRNG(80);
+                }
+
+                if (counter == 77)
+                {
+                    TtcHand hand = GetLowerHand();
+                    int min = 36700;
+                    int max = 39400;
+                    bool handQualifies = hand._angle >= min && hand._angle <= max;
+                    if (!handQualifies) return;
+                }
+
+                if (counter == 122)
+                {
+                    TtcSpinner spinner = GetLowestSpinner();
+                    int min = 12600;
+                    int max = 14700;
+                    bool spinnerQualifies =
+                        (spinner._angle >= min && spinner._angle <= max) ||
+                        (spinner._angle >= min + 32768 && spinner._angle <= max + 32768);
+                    if (!spinnerQualifies) return;
+
+                    Config.Print("{0}\t{1}\t{2}", frame1, frame2, "[" + string.Join(",", dustFrames) + "]");
+                    return;
                 }
             }
         }
