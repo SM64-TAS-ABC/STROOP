@@ -462,9 +462,11 @@ namespace STROOP.Ttc
             int phase1Limit = 1000;
 
             int maxDustFrame = dustFrames.Count == 0 ? 0 : dustFrames.Max();
+            int counter = 0;
             int frame = _startingFrame;
             while (frame < _startingFrame + phase1Limit)
             {
+                counter++;
                 frame++;
                 foreach (TtcObject rngObject in _rngObjects)
                 {
@@ -502,6 +504,14 @@ namespace STROOP.Ttc
                 frame++;
                 foreach (TtcObject rngObject in _rngObjects)
                 {
+                    if (counter == 162 && rngObject == GetFirstBobomb())
+                    {
+                        _rng.PollRNG(3);
+                    }
+                    if (counter == 258 && rngObject == GetSecondBobomb())
+                    {
+                        _rng.PollRNG(3);
+                    }
                     rngObject.SetFrame(frame);
                     rngObject.Update();
                 }
@@ -534,18 +544,6 @@ namespace STROOP.Ttc
                     bobomb.SetWithinMarioRange(0);
                 }
 
-                // coin 2
-                if (counter == 258)
-                {
-                    _rng.PollRNG(3);
-                }
-
-                // coin 1
-                if (counter == 162)
-                {
-                    _rng.PollRNG(3);
-                }
-
                 // dust frames
                 if (counter >= 84 && counter <= 95 && counter != 93)
                 {
@@ -569,7 +567,7 @@ namespace STROOP.Ttc
                 if (counter == 162)
                 {
                     bool pendulumQualifies = pendulum._waitingTimer >= 17;
-                    if (!pendulumQualifies) return;
+                    //if (!pendulumQualifies) return;
                 }
 
                 // Check if pendulum will do wall push swing
@@ -582,6 +580,8 @@ namespace STROOP.Ttc
                     TtcSimulation simulation = new TtcSimulation(GetSaveState(), frame, new List<int>());
                     simulation.FindIdealReentryManipulationGivenFrame2(dustFrames, frame1, frame);
                 }
+
+                Config.Print(frame + "\t" + _rng.GetIndex() + "\t" + GetSaveState());
             }
         }
 
