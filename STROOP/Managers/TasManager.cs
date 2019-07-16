@@ -100,6 +100,10 @@ namespace STROOP.Managers
 
             Button buttonTasPasteSchedule = splitContainerTasTable.Panel1.Controls["buttonTasPasteSchedule"] as Button;
             buttonTasPasteSchedule.Click += (sender, e) => SetScheduler(Clipboard.GetText());
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonTasPasteSchedule,
+                new List<string>() { "TTC Reentry Schedule" },
+                new List<Action>() { () => SetTtcReentrySchedule() });
 
             _waitingGlobalTimer = 0;
             _waitingDateTime = DateTime.Now;
@@ -254,6 +258,10 @@ namespace STROOP.Managers
                 schedule[globalTimer] = (x, y, z, angle, doubleList);
             }
 
+            SetScheduler(schedule);
+        }
+
+        private void SetScheduler(Dictionary<uint, (double, double, double, double, List<double>)> schedule) {
             PositionAngle.Schedule = schedule;
             SpecialConfig.PointPosPA = PositionAngle.Scheduler;
             SpecialConfig.PointAnglePA = PositionAngle.Scheduler;
@@ -291,6 +299,24 @@ namespace STROOP.Managers
                 WatchVariableControl control = precursor.CreateWatchVariableControl();
                 AddVariable(control);
             }
+        }
+
+        private void SetTtcReentrySchedule()
+        {
+            Dictionary<uint, (double, double, double, double, List<double>)> schedule =
+                new Dictionary<uint, (double, double, double, double, List<double>)>()
+                {
+                    [43816] = (-1378.91674804688f, -2434f, -1423.35168457031f, 39648, new List<double>()),
+                    [43817] = (-1305.64807128906f, -2414f, -1353.34362792969f, 39648, new List<double>()),
+                    [43818] = (-1308.1162109375f, -2398f, -1352.724609375f, 39648, new List<double>()),
+                    [43819] = (-1278.701171875f, -2386f, -1314.79345703125f, 39648, new List<double>()),
+                    [43820] = (-1249.2861328125f, -2377.2001953125f, -1276.8623046875f, 39648, new List<double>()),
+                    [43821] = (-1219.87109375f, -2371.6005859375f, -1238.93115234375f, 39648, new List<double>()),
+                    [43822] = (-1190.4560546875f, -2369.2001953125f, -1201f, 39648, new List<double>()),
+                    [43823] = (-1190.4560546875f, -2370f, -1201f, 39648, new List<double>()),
+                    [43824] = (-455.207397460938f, -2374f, -457.235229492188f, 39648, new List<double>()),
+                };
+            SetScheduler(schedule);
         }
 
         public override void Update(bool updateView)
