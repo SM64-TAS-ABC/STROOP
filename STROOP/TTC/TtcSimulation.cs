@@ -580,7 +580,7 @@ namespace STROOP.Ttc
                 // pendulum must have enough waiting frames
                 if (counter == 162)
                 {
-                    bool pendulumQualifies = pendulum._waitingTimer >= 17;
+                    bool pendulumQualifies = pendulum._waitingTimer >= 18;
                     if (!pendulumQualifies) return;
                 }
 
@@ -617,11 +617,25 @@ namespace STROOP.Ttc
                     rngObject.Update();
                 }
 
+                // bob-omb 1 is in range
+                if (counter == 63)
+                {
+                    GetFirstBobomb().SetWithinMarioRange(1);
+                }
+
+                // collecting star particles
                 if (counter == 66)
                 {
                     _rng.PollRNG(80);
                 }
 
+                // bob-omb 2 is in range
+                if (counter == 70)
+                {
+                    GetSecondBobomb().SetWithinMarioRange(1);
+                }
+
+                // hand is in position
                 if (counter == 77)
                 {
                     TtcHand hand = GetLowerHand();
@@ -631,14 +645,17 @@ namespace STROOP.Ttc
                     if (!handQualifies) return;
                 }
 
+                // spinner is in position
                 if (counter == 122)
                 {
                     TtcSpinner spinner = GetLowestSpinner();
                     int min = 12600;
                     int max = 14700;
-                    bool spinnerQualifies =
+                    bool spinnerAngleQualifies =
                         (spinner._angle >= min && spinner._angle <= max) ||
                         (spinner._angle >= min + 32768 && spinner._angle <= max + 32768);
+                    bool spinnerDirectionQualifies = spinner._direction == -1;
+                    bool spinnerQualifies = spinnerAngleQualifies && spinnerDirectionQualifies;
                     if (!spinnerQualifies) return;
 
                     List<int> inputDustFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
