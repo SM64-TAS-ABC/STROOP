@@ -497,6 +497,11 @@ namespace STROOP.Ttc
             int phase2Limit = 1000;
 
             TtcPendulum pendulum = GetReentryPendulum();
+            TtcBobomb firstBobomb = GetFirstBobomb();
+            TtcBobomb secondBobomb = GetSecondBobomb();
+            TtcBobomb thirdBobomb = null;
+            TtcBobomb fourthBobomb = null;
+
             int counter = 0;
             int frame = _startingFrame;
             while (frame < _startingFrame + phase2Limit)
@@ -505,11 +510,13 @@ namespace STROOP.Ttc
                 frame++;
                 foreach (TtcObject rngObject in _rngObjects)
                 {
-                    if (counter == 162 && rngObject == GetFirstBobomb())
+                    // coin for bobomb 1
+                    if (counter == 162 && rngObject == firstBobomb)
                     {
                         _rng.PollRNG(3);
                     }
-                    if (counter == 258 && rngObject == GetSecondBobomb())
+                    // coin for bobomb 2
+                    if (counter == 258 && rngObject == secondBobomb)
                     {
                         _rng.PollRNG(3);
                     }
@@ -520,29 +527,35 @@ namespace STROOP.Ttc
                 // bob-omb 2 start
                 if (counter == 19)
                 {
-                    TtcBobomb bobomb = GetSecondBobomb();
-                    bobomb.SetWithinMarioRange(1);
+                    secondBobomb.SetWithinMarioRange(1);
                 }
 
-                // bob-omb 2 end
+                // bob-omb 2 end, bob-omb 4 start
                 if (counter == 258)
                 {
-                    TtcBobomb bobomb = GetSecondBobomb();
-                    bobomb.SetWithinMarioRange(0);
+                    _rngObjects.Remove(secondBobomb);
+                    fourthBobomb = new TtcBobomb(_rng, 0, 0); // starts outside range
+                    _rngObjects.Insert(68, fourthBobomb);
                 }
 
                 // bob-omb 1 start
                 if (counter == 154)
                 {
-                    TtcBobomb bobomb = GetFirstBobomb();
-                    bobomb.SetWithinMarioRange(1);
+                    firstBobomb.SetWithinMarioRange(1);
                 }
 
-                // bob-omb 1 end
+                // bob-omb 1 end, bob-omb 3 start
                 if (counter == 162)
                 {
-                    TtcBobomb bobomb = GetFirstBobomb();
-                    bobomb.SetWithinMarioRange(0);
+                    _rngObjects.Remove(firstBobomb);
+                    thirdBobomb = new TtcBobomb(_rng, 0, 1); // starts inside range
+                    _rngObjects.Insert(68, thirdBobomb);
+                }
+
+                // bob-omb 3 exiting range
+                if (counter == 363)
+                {
+                    thirdBobomb.SetWithinMarioRange(0);
                 }
 
                 // dust frames
@@ -572,7 +585,8 @@ namespace STROOP.Ttc
                 }
 
                 // Check if pendulum will do wall push swing
-                if (pendulum._accelerationDirection == -1 &&
+                if (counter > 363 + 15 &&
+                    pendulum._accelerationDirection == -1 &&
                     pendulum._accelerationMagnitude == 42 &&
                     pendulum._angularVelocity == 0 &&
                     pendulum._waitingTimer == 0 &&
@@ -590,7 +604,7 @@ namespace STROOP.Ttc
         // Frame 2 is the frame at the start of the pendulum swing that lets Mario get wall displacement
         public void FindIdealReentryManipulationGivenFrame2(List<int> dustFrames, int frame1, int frame2)
         {
-            Config.Print("ATTEMPT\t{0}\t{1}\t{2}", frame1, frame2, "[" + string.Join(",", dustFrames) + "]");
+            //Config.Print("ATTEMPT\t{0}\t{1}\t{2}", frame1, frame2, "[" + string.Join(",", dustFrames) + "]");
             int counter = 0;
             int frame = _startingFrame;
             while (true)
@@ -628,7 +642,7 @@ namespace STROOP.Ttc
                     if (!spinnerQualifies) return;
 
                     List<int> inputDustFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
-                    Config.Print("**************SUCCESS\t{0}\t{1}\t{2}\t", frame1, frame2, "[" + string.Join(",", inputDustFrames) + "]");
+                    Config.Print("SUCCESS\t{0}\t{1}\t{2}\t", frame1, frame2, "[" + string.Join(",", inputDustFrames) + "]");
                     return;
                 }
             }
