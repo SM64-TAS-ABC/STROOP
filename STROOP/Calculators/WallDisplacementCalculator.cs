@@ -15,6 +15,12 @@ namespace STROOP.Structs
     public static class WallDisplacementCalculator
     {
         public static (float newMarioX, float newMarioZ) HandleWallDisplacement(
+            float marioX, float marioY, float marioZ, TriangleDataModel surf, float radius, float offsetY)
+        {
+            return HandleWallDisplacement(marioX, marioY, marioZ, new List<TriangleDataModel>() { surf }, radius, offsetY);
+        }
+
+        public static (float newMarioX, float newMarioZ) HandleWallDisplacement(
             float marioX, float marioY, float marioZ, List<TriangleDataModel> surfs, float radius, float offsetY)
         {
             float offset;

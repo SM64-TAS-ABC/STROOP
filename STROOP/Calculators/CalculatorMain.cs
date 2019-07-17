@@ -525,8 +525,20 @@ namespace STROOP.Structs
 
             TriangleDataModel tri = new TriangleDataModel(0x8015F910);
 
-            (float newX, float newZ) = WallDisplacementCalculator.HandleWallDisplacement(qstepX, qstepY, qstepZ, new List<TriangleDataModel>() { tri }, 50, 150);
-            Config.Print("{0},{1}", (double)newX, (double)newZ);
+            float x = qstepX;
+            float y = qstepY;
+            float z = qstepZ;
+            for (int i = 0; i < 5; i++)
+            {
+                (float dispX, float dispZ) = WallDisplacementCalculator.HandleWallDisplacement(x, y, z, tri, 50, 150);
+                bool match = dispX == displacedX && dispZ == displacedZ;
+                Config.Print(
+                    "({0},{1}) => ({2},{3}), goal was ({4},{5}), match={6}",
+                    (double)x, (double)z, (double)dispX, (double)dispZ, (double)displacedX, (double)displacedZ, match);
+
+                x -= 0.0001f;
+                z -= 0.0001f;
+            }
         }
     }
 }
