@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs
 {
-    public static class MovementCalculator
+    public static class AirMovementCalculator
     {
         public static MarioState ApplyInput(MarioState marioState, Input input)
         {

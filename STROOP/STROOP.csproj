@@ -557,7 +557,7 @@
     <Compile Include="Utilities\TestUtilities.cs" />
     <Compile Include="Utilities\DemoCounterUtilities.cs" />
     <Compile Include="Utilities\TtcSpeedSettingUtilities.cs" />
-    <Compile Include="Calculators\MovementCalculator.cs" />
+    <Compile Include="Calculators\AirMovementCalculator.cs" />
     <Compile Include="Utilities\VarHackSpecialUtilities.cs" />
     <Compile Include="Utilities\WatchVariableSpecialDictionary.cs" />
     <Compile Include="Utilities\WatchVariableSelectionUtilities.cs" />

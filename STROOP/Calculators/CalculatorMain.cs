@@ -61,7 +61,7 @@ namespace STROOP.Structs
             while (queue.Count != 0)
             {
                 MarioState dequeue = queue.Dequeue();
-                List<MarioState> nextStates = inputs.ConvertAll(input => MovementCalculator.ApplyInput(dequeue, input));
+                List<MarioState> nextStates = inputs.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input));
                 foreach (MarioState state in nextStates)
                 {
                     if (alreadySeen.Contains(state)) continue;
@@ -152,7 +152,7 @@ namespace STROOP.Structs
             while (queue.Count != 0)
             {
                 MarioState dequeue = queue.Dequeue();
-                List<MarioState> nextStates = inputs.ConvertAll(input => MovementCalculator.ApplyInput(dequeue, input));
+                List<MarioState> nextStates = inputs.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input));
                 nextStates = nextStates.ConvertAll(state => state.WithCameraAngle(cameraAngles[state.Index]));
                 foreach (MarioState state in nextStates)
                 {
@@ -234,7 +234,7 @@ namespace STROOP.Structs
             while (queue.Count != 0)
             {
                 MarioState dequeue = queue.Dequeue();
-                List<MarioState> nextStates = inputs.ConvertAll(input => MovementCalculator.ApplyInput(dequeue, input));
+                List<MarioState> nextStates = inputs.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input));
                 foreach (MarioState state in nextStates)
                 {
                     if (alreadySeen.Contains(state)) continue;
@@ -327,7 +327,7 @@ namespace STROOP.Structs
             while (queue.Count != 0)
             {
                 MarioState dequeue = queue.Dequeue();
-                List<MarioState> nextStates = inputs.ConvertAll(input => MovementCalculator.ApplyInput(dequeue, input));
+                List<MarioState> nextStates = inputs.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input));
                 foreach (MarioState state in nextStates)
                 {
                     if (alreadySeen.Contains(state)) continue;
@@ -356,7 +356,7 @@ namespace STROOP.Structs
                     }
 
                     int numFramesRemaining = ((int)state.YSpeed + 34) / 4;
-                    float expectedX = MovementCalculator.ComputePosition(state.X, state.XSpeed, numFramesRemaining);
+                    float expectedX = AirMovementCalculator.ComputePosition(state.X, state.XSpeed, numFramesRemaining);
                     float expectedDiff = Math.Abs(expectedX - goalX);
                     float threshold = (float)Math.Pow(2, numFramesRemaining) * 2;
                     if (expectedDiff > threshold) continue;
@@ -449,7 +449,7 @@ namespace STROOP.Structs
             while (queue.Count != 0)
             {
                 MarioState dequeue = queue.Dequeue();
-                List<MarioState> nextStates = inputs.ConvertAll(input => MovementCalculator.ApplyInput(dequeue, input));
+                List<MarioState> nextStates = inputs.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input));
                 nextStates = nextStates.ConvertAll(state => state.WithCameraAngle(cameraAngles[state.Index]));
                 foreach (MarioState state in nextStates)
                 {

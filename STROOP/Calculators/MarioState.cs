@@ -93,7 +93,7 @@ namespace STROOP.Structs
             }
             else
             {
-                return PreviousState.GetLineage() + "\n" + ToStringWithInput();
+                return PreviousState.GetLineage() + "\r\n" + ToStringWithInput();
             }
         }
 
