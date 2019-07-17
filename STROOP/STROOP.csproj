@@ -115,6 +115,8 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculators\CalculatorUtilities.cs" />
+    <Compile Include="Calculators\CalculatorMain.cs" />
     <Compile Include="Calculators\Input.cs" />
     <Compile Include="Calculators\MarioState.cs" />
     <Compile Include="Controls\BetterSplitContainer.cs">
