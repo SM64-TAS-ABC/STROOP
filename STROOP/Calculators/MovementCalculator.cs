@@ -13,185 +13,12 @@ namespace STROOP.Structs
 {
     public static class MovementCalculator
     {
-        /*
-        def computeAirSpeed(mario): # 8026a554
-            perpSpeed = 0
-            if windyAirSpeed(mario):
-                return
-            if mario.action == MarioAction.longJump:
-                maxSpeed = 48
-            else:
-                maxSpeed = 32
-            mario.hspeed = approachHSpeed(mario.hspeed, 0, 0.35, 0.35)
-            if mario.input[0]: # tilting analog stick
-                mario.hspeed += (mario.analogTilt/32)*1.5*cosTable(mario.h_0x24 - mario.euler.yaw)
-                perpSpeed = sinTable(mario.h_0x24 - mario.euler.yaw)*(mario.analogTilt/32)*10
-            if mario.hspeed > maxSpeed:
-                mario.hspeed -= 1
-            if mario.hspeed < -16:
-                mario.hspeed += 2
-            mario.specialXSpeed = sinTable(mario.euler.yaw)*mario.hspeed
-            mario.specialZSpeed = cosTable(mario.euler.yaw)*mario.hspeed
-            mario.specialXSpeed += perpSpeed*sinTable(mario.euler.yaw + 0x4000)
-            mario.specialZSpeed += perpSpeed*cosTable(mario.euler.yaw + 0x4000)
-            mario.velocity.x = mario.specialXSpeed
-            mario.velocity.z = mario.specialZSpeed
-
-        def airMove(mario,a1): #80256940
-            finalValue = 0
-            mario.wallTri = None
-            newPos = mario.pos #stored @ sp24
-            for i in range(4):
-                newPos += (mario.vel/4)
-                value = checkAirQframe(mario,newPos,a1)
-                if value != 0: # note that a 2 followed by 0s will give 2
-                    finalValue = value
-                if value  in [1,3,4,6]:
-                    break
-            if 0 <= mario.vel.y:
-                mario.fallPeak = mario.pos.y
-            sw(mario+0x14,fn8025167c(mario))
-            if mario.action != 0x10880899:
-                mario.determineGravity()
-            applyWind(mario)
-            mario.obj.pos = mario.pos.copy() #via copyVector
-            setSignedShortVector(mario.obj+0x1a,0,short(mario+0x2e),0)
-            return finalValue
-
-        def approachHSpeed(speed,maxSpeed,a2,a3):   #8037A8B4
-            # f12 current hspeed
-            # f14 max hspeed
-            # a2,a3 floats
-            if speed < maxSpeed:
-                return min(maxSpeed, speed+a2)
-            else:
-                return max(maxSpeed, speed-a3)
-        */
-
-        private class Input
+        public static MarioState ApplyInput(MarioState marioState, Input input)
         {
-            public readonly int X;
-            public readonly int Y;
-
-            public Input(int x, int y)
-            {
-                X = x;
-                Y = y;
-            }
-
-            public float GetScaledMagnitude()
-            {
-                return MoreMath.GetScaledInputMagnitude(X, Y, false);
-            }
-
-            public override string ToString()
-            {
-                return String.Format("({0},{1})", X, -1 * Y);
-            }
-        }
-
-        private class MarioState
-        {
-            public readonly float X;
-            public readonly float Y;
-            public readonly float Z;
-            public readonly float XSpeed;
-            public readonly float YSpeed;
-            public readonly float ZSpeed;
-            public readonly float HSpeed;
-            public readonly ushort MarioAngle;
-            public readonly ushort CameraAngle;
-
-            public readonly MarioState PreviousState;
-            public readonly Input LastInput;
-            public readonly int Index;
-
-            public MarioState(
-                float x, float y, float z,
-                float xSpeed, float ySpeed, float zSpeed, float hSpeed,
-                ushort marioAngle, ushort cameraAngle,
-                MarioState previousState, Input lastInput, int index)
-            {
-                X = x;
-                Y = y;
-                Z = z;
-                XSpeed = xSpeed;
-                YSpeed = ySpeed;
-                ZSpeed = zSpeed;
-                HSpeed = hSpeed;
-                MarioAngle = marioAngle;
-                CameraAngle = cameraAngle;
-
-                PreviousState = previousState;
-                LastInput = lastInput;
-                Index = index;
-            }
-
-            public MarioState ApplyInput(Input input)
-            {
-                MarioState withHSpeed = ComputeAirHSpeed(this, input);
-                MarioState moved = AirMove(withHSpeed);
-                MarioState withYSpeed = ComputeAirYSpeed(moved);
-                return withYSpeed;
-            }
-
-            public override string ToString()
-            {
-                return String.Format(
-                    "pos=({0},{1},{2}) spd=({3},{4},{5}) hspd={6}",
-                    (double)X, (double)Y, (double)Z,
-                    (double)XSpeed, (double)YSpeed, (double)ZSpeed, (double)HSpeed);
-            }
-
-            public string ToStringWithInput()
-            {
-                string inputString = LastInput != null ? LastInput + " to " : "";
-                return inputString + ToString();
-            }
-
-            private List<object> GetFields()
-            {
-                return new List<object>()
-                {
-                    X, Y, Z,
-                    XSpeed, YSpeed, ZSpeed, HSpeed,
-                    MarioAngle, CameraAngle,
-                };
-            }
-
-            public override bool Equals(object obj)
-            {
-                if (!(obj is MarioState)) return false;
-                MarioState other = obj as MarioState;
-                return Enumerable.SequenceEqual(
-                    GetFields(), other.GetFields());
-            }
-
-            public override int GetHashCode()
-            {
-                return GetFields().GetHashCode();
-            }
-
-            public string GetLineage()
-            {
-                if (PreviousState == null)
-                {
-                    return ToStringWithInput();
-                }
-                else
-                {
-                    return PreviousState.GetLineage() + "\n" + ToStringWithInput();
-                }
-            }
-
-            public MarioState WithCameraAngle(ushort cameraAngle)
-            {
-                return new MarioState(
-                    X, Y, Z,
-                    XSpeed, YSpeed, ZSpeed, HSpeed,
-                    MarioAngle, cameraAngle,
-                    PreviousState, LastInput, Index);
-            }
+            MarioState withHSpeed = ComputeAirHSpeed(marioState, input);
+            MarioState moved = AirMove(withHSpeed);
+            MarioState withYSpeed = ComputeAirYSpeed(moved);
+            return withYSpeed;
         }
 
         private static MarioState AirMove(MarioState initialState)
@@ -358,7 +185,7 @@ namespace STROOP.Structs
             while (queue.Count != 0)
             {
                 MarioState dequeue = queue.Dequeue();
-                List<MarioState> nextStates = inputs.ConvertAll(input => dequeue.ApplyInput(input));
+                List<MarioState> nextStates = inputs.ConvertAll(input => ApplyInput(dequeue, input));
                 foreach (MarioState state in nextStates)
                 {
                     if (alreadySeen.Contains(state)) continue;
@@ -449,7 +276,7 @@ namespace STROOP.Structs
             while (queue.Count != 0)
             {
                 MarioState dequeue = queue.Dequeue();
-                List<MarioState> nextStates = inputs.ConvertAll(input => dequeue.ApplyInput(input));
+                List<MarioState> nextStates = inputs.ConvertAll(input => ApplyInput(dequeue, input));
                 nextStates = nextStates.ConvertAll(state => state.WithCameraAngle(cameraAngles[state.Index]));
                 foreach (MarioState state in nextStates)
                 {
@@ -531,7 +358,7 @@ namespace STROOP.Structs
             while (queue.Count != 0)
             {
                 MarioState dequeue = queue.Dequeue();
-                List<MarioState> nextStates = inputs.ConvertAll(input => dequeue.ApplyInput(input));
+                List<MarioState> nextStates = inputs.ConvertAll(input => ApplyInput(dequeue, input));
                 foreach (MarioState state in nextStates)
                 {
                     if (alreadySeen.Contains(state)) continue;
@@ -624,7 +451,7 @@ namespace STROOP.Structs
             while (queue.Count != 0)
             {
                 MarioState dequeue = queue.Dequeue();
-                List<MarioState> nextStates = inputs.ConvertAll(input => dequeue.ApplyInput(input));
+                List<MarioState> nextStates = inputs.ConvertAll(input => ApplyInput(dequeue, input));
                 foreach (MarioState state in nextStates)
                 {
                     if (alreadySeen.Contains(state)) continue;
@@ -746,7 +573,7 @@ namespace STROOP.Structs
             while (queue.Count != 0)
             {
                 MarioState dequeue = queue.Dequeue();
-                List<MarioState> nextStates = inputs.ConvertAll(input => dequeue.ApplyInput(input));
+                List<MarioState> nextStates = inputs.ConvertAll(input => ApplyInput(dequeue, input));
                 nextStates = nextStates.ConvertAll(state => state.WithCameraAngle(cameraAngles[state.Index]));
                 foreach (MarioState state in nextStates)
                 {
