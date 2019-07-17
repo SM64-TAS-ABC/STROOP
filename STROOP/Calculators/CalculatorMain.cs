@@ -482,7 +482,7 @@ namespace STROOP.Structs
             System.Diagnostics.Trace.WriteLine("Done");
         }
 
-        public static void CalculateWallDisplacement()
+        public static List<(float, float)> GetSuccessFloatPositions()
         {
             // initial
             float startX = -1378.91674804688f;
@@ -520,25 +520,95 @@ namespace STROOP.Structs
             float displacedZSpeed = 0f;
             float displacedHSpeed = 0f;
 
+            // closest starting position that works
+            float closestX = -1378.91381835938f;
+            float closestY = -2434f;
+            float closestZ = -1423.34875488281f;
+            float closestXSpeed = -3.67686033248901f;
+            float closestYSpeed = 0f;
+            float closestZSpeed = -4.74138116836548f;
+            float closestHSpeed = 6f;
+
+            // farthest starting position that is within range (doesn't work)
+            float farthestX = -1379.22241210938f;
+            float farthestY = -2434f;
+            float farthestZ = -1423.65734863281f;
+            float farthestXSpeed = 0f;
+            float farthestYSpeed = 0f;
+            float farthestZSpeed = 0f;
+            float farthestHSpeed = 0f;
+
             ushort marioAngle = 39655;
             ushort cameraAngle = 7142;
 
             TriangleDataModel tri = new TriangleDataModel(0x8015F910);
 
-            float x = qstepX;
-            float y = qstepY;
-            float z = qstepZ;
-            for (int i = 0; i < 5; i++)
+            List<(float, float)> successPositions = new List<(float, float)>();
+            int numAttempts = 0;
+            int numSuccesses = 0;
+            for (float lineX = closestX, lineZ = closestZ; lineX >= farthestX; lineX -= 0.0001f, lineZ -= 0.0001f)
             {
-                (float dispX, float dispZ) = WallDisplacementCalculator.HandleWallDisplacement(x, y, z, tri, 50, 150);
-                bool match = dispX == displacedX && dispZ == displacedZ;
-                Config.Print(
-                    "({0},{1}) => ({2},{3}), goal was ({4},{5}), match={6}",
-                    (double)x, (double)z, (double)dispX, (double)dispZ, (double)displacedX, (double)displacedZ, match);
+                List<float> pointXs = new List<float>();
 
-                x -= 0.0001f;
-                z -= 0.0001f;
+                float temp = lineX;
+                pointXs.Add(temp);
+
+                temp = lineX;
+                for (int i = 0; i < 10; i++)
+                {
+                    temp -= 0.0001f;
+                    pointXs.Add(temp);
+                }
+
+                temp = lineX;
+                for (int i = 0; i < 10; i++)
+                {
+                    temp += 0.0001f;
+                    pointXs.Add(temp);
+                }
+
+                float pointZ = lineZ;
+                foreach (float pointX in pointXs)
+                {
+                    MarioState pointState = new MarioState(
+                        pointX,
+                        startY,
+                        pointZ,
+                        startXSpeed,
+                        startYSpeed,
+                        startZSpeed,
+                        startHSpeed,
+                        marioAngle,
+                        cameraAngle,
+                        null,
+                        null,
+                        0);
+                    Input input = new Input(32, -124);
+                    MarioState movedState = AirMovementCalculator.ApplyInput(pointState, input, 1);
+                    (float dispX, float dispZ) = WallDisplacementCalculator.HandleWallDisplacement(
+                        movedState.X, movedState.Y, movedState.Z, tri, 50, 150);
+                    bool match = dispX == displacedX && dispZ == displacedZ;
+
+                    if (match)
+                    {
+                        successPositions.Add((pointX, pointZ));
+                        /*
+                        Config.Print(
+                            "({0},{1}) => ({2},{3}) match={4}",
+                            (double)pointX, (double)pointZ, (double)dispX, (double)dispZ, match);
+                        */
+                    }
+                    
+                    numAttempts++;
+                    if (match) numSuccesses++;
+                }
             }
+
+            /*
+            Config.Print("numAttempts = " + numAttempts);
+            Config.Print("numSuccesses = " + numSuccesses);
+            */
+            return successPositions;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            CalculatorMain.CalculateWallDisplacement();
+            CalculatorMain.GetSuccessFloatPositions();
         }
 
         public static void TestSomethingElse()
