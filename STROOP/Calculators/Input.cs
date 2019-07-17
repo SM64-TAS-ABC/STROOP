@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs
 {
+    // Y value is inputted and stored in sm64 convention
+    // Y value is displayed in mupen convention
     public class Input
     {
         public readonly int X;
