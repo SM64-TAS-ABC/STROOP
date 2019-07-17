@@ -510,6 +510,7 @@
     <Compile Include="Utilities\FlyingUtilities.cs" />
     <Compile Include="Utilities\InGameFunctionCall.cs" />
     <Compile Include="Utilities\MathOperationUtilities.cs" />
+    <Compile Include="Utilities\WallDisplacementCalculator.cs" />
     <Compile Include="Utilities\SegmentationUtilities.cs" />
     <Compile Include="Utilities\BoolUtilities.cs" />
     <Compile Include="Utilities\CamHackUtilities.cs" />
