@@ -491,6 +491,14 @@ namespace STROOP.Structs
             float startZSpeed = 0f;
             float startHSpeed = 0f;
 
+            float qstepX = -1378.22241210938f;
+            float qstepY = -2429f;
+            float qstepZ = -1423.42932128906f;
+            float qstepXSpeed = 2.7774920463562f;
+            float qstepYSpeed = -4f;
+            float qstepZSpeed = -0.310500144958496f;
+            float qstepHSpeed = -1.45670866966248f;
+
             float endX = -1376.13940429688f;
             float endY = -2414f;
             float endZ = -1423.66223144531f;
@@ -518,7 +526,7 @@ namespace STROOP.Structs
 
             Input input = new Input(32, -124);
 
-            MarioState endState = AirMovementCalculator.ApplyInput(marioState, input);
+            MarioState endState = AirMovementCalculator.ApplyInput(marioState, input, 1);
             Config.Print(endState);
         }
     }

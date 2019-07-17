@@ -13,10 +13,10 @@ namespace STROOP.Structs
 {
     public static class AirMovementCalculator
     {
-        public static MarioState ApplyInput(MarioState marioState, Input input)
+        public static MarioState ApplyInput(MarioState marioState, Input input, int numQSteps = 4)
         {
             MarioState withHSpeed = ComputeAirHSpeed(marioState, input);
-            MarioState moved = AirMove(withHSpeed);
+            MarioState moved = AirMove(withHSpeed, numQSteps);
             MarioState withYSpeed = ComputeAirYSpeed(moved);
             return withYSpeed;
         }
