@@ -1,5 +1,6 @@
 ﻿using STROOP.Forms;
 using STROOP.Managers;
+using STROOP.Models;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
@@ -483,6 +484,7 @@ namespace STROOP.Structs
 
         public static void CalculateWallDisplacement()
         {
+            // initial
             float startX = -1378.91674804688f;
             float startY = -2434f;
             float startZ = -1423.35168457031f;
@@ -491,14 +493,7 @@ namespace STROOP.Structs
             float startZSpeed = 0f;
             float startHSpeed = 0f;
 
-            float qstepX = -1378.22241210938f;
-            float qstepY = -2429f;
-            float qstepZ = -1423.42932128906f;
-            float qstepXSpeed = 2.7774920463562f;
-            float qstepYSpeed = -4f;
-            float qstepZSpeed = -0.310500144958496f;
-            float qstepHSpeed = -1.45670866966248f;
-
+            // after all 4 q steps (no wall displacement)
             float endX = -1376.13940429688f;
             float endY = -2414f;
             float endZ = -1423.66223144531f;
@@ -507,27 +502,31 @@ namespace STROOP.Structs
             float endZSpeed = -0.310500144958496f;
             float endHSpeed = -1.45670866966248f;
 
+            // after 1 q step (no wall displacement)
+            float qstepX = -1378.22241210938f;
+            float qstepY = -2429f;
+            float qstepZ = -1423.42932128906f;
+            float qstepXSpeed = 2.7774920463562f;
+            float qstepYSpeed = -4f;
+            float qstepZSpeed = -0.310500144958496f;
+            float qstepHSpeed = -1.45670866966248f;
+
+            // after 1 q step and wall displacement
+            float displacedX = -1307.73107910156f;
+            float displacedY = -2429f;
+            float displacedZ = -1353.11071777344f;
+            float displacedXSpeed = 0f;
+            float displacedYSpeed = -4f;
+            float displacedZSpeed = 0f;
+            float displacedHSpeed = 0f;
+
             ushort marioAngle = 39655;
             ushort cameraAngle = 7142;
 
-            MarioState marioState = new MarioState(
-                startX,
-                startY,
-                startZ,
-                startXSpeed,
-                startYSpeed,
-                startZSpeed,
-                startHSpeed,
-                marioAngle,
-                cameraAngle,
-                null,
-                null,
-                0);
+            TriangleDataModel tri = new TriangleDataModel(0x8015F910);
 
-            Input input = new Input(32, -124);
-
-            MarioState endState = AirMovementCalculator.ApplyInput(marioState, input, 1);
-            Config.Print(endState);
+            (float newX, float newZ) = WallDisplacementCalculator.HandleWallDisplacement(qstepX, qstepY, qstepZ, new List<TriangleDataModel>() { tri }, 50, 150);
+            Config.Print("{0},{1}", (double)newX, (double)newZ);
         }
     }
 }
