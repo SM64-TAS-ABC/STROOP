@@ -510,7 +510,7 @@
     <Compile Include="Utilities\FlyingUtilities.cs" />
     <Compile Include="Utilities\InGameFunctionCall.cs" />
     <Compile Include="Utilities\MathOperationUtilities.cs" />
-    <Compile Include="Utilities\WallDisplacementCalculator.cs" />
+    <Compile Include="Calculators\WallDisplacementCalculator.cs" />
     <Compile Include="Utilities\SegmentationUtilities.cs" />
     <Compile Include="Utilities\BoolUtilities.cs" />
     <Compile Include="Utilities\CamHackUtilities.cs" />
@@ -553,7 +553,7 @@
     <Compile Include="Utilities\TestUtilities.cs" />
     <Compile Include="Utilities\DemoCounterUtilities.cs" />
     <Compile Include="Utilities\TtcSpeedSettingUtilities.cs" />
-    <Compile Include="Utilities\MovementCalculator.cs" />
+    <Compile Include="Calculators\MovementCalculator.cs" />
     <Compile Include="Utilities\VarHackSpecialUtilities.cs" />
     <Compile Include="Utilities\WatchVariableSpecialDictionary.cs" />
     <Compile Include="Utilities\WatchVariableSelectionUtilities.cs" />
