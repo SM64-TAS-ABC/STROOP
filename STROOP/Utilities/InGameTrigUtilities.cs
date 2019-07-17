@@ -74,30 +74,30 @@ namespace STROOP.Utilities
             if (0 <= yComp)
                 if (0 <= xComp)
                     if (yComp <= xComp)
-                        returnValue = InGameATan45Degrees(yComp, xComp);
+                        returnValue = InGameATanLookup(yComp, xComp);
                     else
-                        returnValue = 0x4000 - InGameATan45Degrees(xComp, yComp);
+                        returnValue = 0x4000 - InGameATanLookup(xComp, yComp);
                 else
                     if (-xComp < yComp)
-                    returnValue = 0x4000 + InGameATan45Degrees(-xComp, yComp);
+                    returnValue = 0x4000 + InGameATanLookup(-xComp, yComp);
                 else
-                    returnValue = 0x8000 - InGameATan45Degrees(yComp, -xComp);
+                    returnValue = 0x8000 - InGameATanLookup(yComp, -xComp);
             else
                 if (xComp < 0)
                     if (-yComp < -xComp)
-                        returnValue = 0x8000 + InGameATan45Degrees(-yComp, -xComp);
+                        returnValue = 0x8000 + InGameATanLookup(-yComp, -xComp);
                     else
-                        returnValue = 0xC000 - InGameATan45Degrees(-xComp, -yComp);
+                        returnValue = 0xC000 - InGameATanLookup(-xComp, -yComp);
                 else
                     if (xComp < -yComp)
-                        returnValue = 0xC000 + InGameATan45Degrees(xComp, -yComp);
+                        returnValue = 0xC000 + InGameATanLookup(xComp, -yComp);
                     else
-                        returnValue = 0x10000 - InGameATan45Degrees(-yComp, xComp);
+                        returnValue = 0x10000 - InGameATanLookup(-yComp, xComp);
 
             return (ushort)returnValue;
         }
 
-        private static ushort InGameATan45Degrees(float yComp, float xComp)
+        private static ushort InGameATanLookup(float yComp, float xComp)
         {
             //  if f14 == 0:
             //     return short(0x8038b000)
@@ -114,7 +114,5 @@ namespace STROOP.Utilities
             //int index = (int)(offset / 2);
             //return arcSineData[index];
         }
-
-
     }
 } 
