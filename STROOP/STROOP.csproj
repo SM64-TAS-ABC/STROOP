@@ -119,6 +119,7 @@
     <Compile Include="Calculators\CalculatorMain.cs" />
     <Compile Include="Calculators\Input.cs" />
     <Compile Include="Calculators\MarioState.cs" />
+    <Compile Include="Calculators\ObjectDisplacementCalculator.cs" />
     <Compile Include="Controls\BetterSplitContainer.cs">
       <SubType>Component</SubType>
     </Compile>
