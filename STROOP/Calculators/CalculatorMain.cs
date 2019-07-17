@@ -480,5 +480,46 @@ namespace STROOP.Structs
             }
             System.Diagnostics.Trace.WriteLine("Done");
         }
+
+        public static void CalculateWallDisplacement()
+        {
+            float startX = -1378.91674804688f;
+            float startY = -2434f;
+            float startZ = -1423.35168457031f;
+            float startXSpeed = 0f;
+            float startYSpeed = 20f;
+            float startZSpeed = 0f;
+            float startHSpeed = 0f;
+
+            float endX = -1376.13940429688f;
+            float endY = -2414f;
+            float endZ = -1423.66223144531f;
+            float endXSpeed = 2.7774920463562f;
+            float endYSpeed = 16f;
+            float endZSpeed = -0.310500144958496f;
+            float endHSpeed = -1.45670866966248f;
+
+            ushort marioAngle = 39655;
+            ushort cameraAngle = 7142;
+
+            MarioState marioState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                marioAngle,
+                cameraAngle,
+                null,
+                null,
+                0);
+
+            Input input = new Input(32, -124);
+
+            MarioState endState = AirMovementCalculator.ApplyInput(marioState, input);
+            Config.Print(endState);
+        }
     }
 }

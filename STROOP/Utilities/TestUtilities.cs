@@ -18,7 +18,7 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            TtcMain.FindIdealReentryManipulation();
+            CalculatorMain.CalculateWallDisplacement();
         }
 
         public static void TestSomethingElse()

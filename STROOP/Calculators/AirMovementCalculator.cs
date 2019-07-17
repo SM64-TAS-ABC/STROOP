@@ -21,13 +21,13 @@ namespace STROOP.Structs
             return withYSpeed;
         }
 
-        private static MarioState AirMove(MarioState initialState)
+        public static MarioState AirMove(MarioState initialState, int numQSteps = 4)
         {
             float newX = initialState.X;
             float newY = initialState.Y;
             float newZ = initialState.Z;
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < numQSteps; i++)
             {
                 newX += initialState.XSpeed / 4;
                 newY += initialState.YSpeed / 4;
