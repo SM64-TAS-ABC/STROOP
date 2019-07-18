@@ -651,15 +651,15 @@ namespace STROOP.Structs
 
         public static void TestGetObjectDisplacement()
         {
-            float marioX = -1514.42236328125f;
+            float marioX = -1462.44079589844f;
             float marioY = -4003f;
-            float marioZ = -1238.63757324219f;
+            float marioZ = -1196.89099121094f;
             float marioRadius = 37;
 
             float bobombX = -1538.07922363281f;
             float bobombY = -4003f;
             float bobombZ = -1257.61840820313f;
-            float bobombRadius = 65 * 1.0f;
+            float bobombRadius = 65 * 1.2f;
 
             float padding = -5;
 
