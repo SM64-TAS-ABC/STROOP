@@ -635,5 +635,18 @@ namespace STROOP.Structs
                 marioState = GroundMovementCalculator.ApplyInput(marioState, input);
             }
         }
+
+        public static void TestObjectDisplacementCode()
+        {
+            float marioX = -1431.61889648438f;
+            float marioY = -4003f;
+            float marioZ = -1318.10009765625f;
+            ushort marioAngle = 53906;
+
+            (float x, float y, float z) = ObjectCalculator.GetRelativePosition(
+                marioX, marioY, marioZ, marioAngle, 0, 60, 100);
+
+            Config.Print("{0},{1},{2}", (double)x, (double)y, (double)z);
+        }
     }
 }

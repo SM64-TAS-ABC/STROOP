@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs
 {
-    public static class ObjectDisplacementCalculator
+    public static class ObjectCalculator
     {
-        public static (float newMarioX, float newMarioZ) HandleObjectDisplacement(
+        public static (float newMarioX, float newMarioZ) ApplyDisplacement(
             float marioX, float marioZ, float marioRadius, short marioAngle,
             float objectX, float objectZ, float objectRadius, float padding)
         {
@@ -41,6 +41,19 @@ namespace STROOP.Structs
                 return (newMarioX, newMarioZ);
             }
             return (marioX, marioZ);
+        }
+
+        public static (float objectX, float objectY, float objectZ) GetRelativePosition(
+            float marioX, float marioY, float marioZ, ushort marioAngle,
+            float dleft, float dy, float dforward)
+        {
+            float facingZ = InGameTrigUtilities.InGameCosine(marioAngle);
+            float facingX = InGameTrigUtilities.InGameSine(marioAngle);
+
+            float dz = dforward * facingZ - dleft * facingX;
+            float dx = dforward * facingX + dleft * facingZ;
+
+            return (marioX + dx, marioY + dy, marioZ + dz);
         }
     }
 }

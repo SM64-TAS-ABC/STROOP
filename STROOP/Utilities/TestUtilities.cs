@@ -18,7 +18,7 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            CalculatorMain.TestWalkingCode();
+            CalculatorMain.TestObjectDisplacementCode();
         }
 
         public static void TestSomethingElse()
