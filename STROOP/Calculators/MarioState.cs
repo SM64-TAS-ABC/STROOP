@@ -48,6 +48,14 @@ namespace STROOP.Structs
             Index = index;
         }
 
+        public MutableMarioState GetMutableMarioState(Input input)
+        {
+            return new MutableMarioState(
+                X, Y, Z,
+                XSpeed, YSpeed, ZSpeed, HSpeed,
+                MarioAngle, CameraAngle, input);
+        }
+
         public override string ToString()
         {
             return String.Format(

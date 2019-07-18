@@ -13,39 +13,61 @@ namespace STROOP.Structs
 {
     public static class GroundMovementCalculator
     {
-        public static MarioState ApplyInput(MarioState marioState, Input input, int numQSteps = 4)
+        // act_hold_walking
+        public static MarioState ApplyInput(MarioState initialState, Input input)
         {
-            /*
-            if (m->input & INPUT_UNKNOWN_5)
-                return set_mario_action(m, ACT_HOLD_DECELERATING, 0);
+            MutableMarioState mutableMarioState = initialState.GetMutableMarioState(input);
+            mutableMarioState.IntendedMagnitude *= 0.4f;
+            UpdateWalkingSpeed(mutableMarioState);
+            PerformGroundStep(mutableMarioState);
+            MarioState finalState = mutableMarioState.GetMarioState(initialState, input);
+            return finalState;
+        }
 
-            if (m->input & INPUT_Z_PRESSED)
-                return drop_and_set_mario_action(m, ACT_CROUCH_SLIDE, 0);
+        // update_walking_speed
+        private static void UpdateWalkingSpeed(MutableMarioState marioState)
+        {
+            float maxTargetSpeed;
+            float targetSpeed;
 
-                m->intendedMag *= 0.4f;
+            bool slowSurface = false;
+            if (slowSurface)
+                maxTargetSpeed = 24.0f;
+            else
+                maxTargetSpeed = 32.0f;
 
-            update_walking_speed(m);
+            targetSpeed = marioState.IntendedMagnitude < maxTargetSpeed ? marioState.IntendedMagnitude : maxTargetSpeed;
 
-            switch (perform_ground_step(m))
+            if (marioState.HSpeed <= 0.0f)
+                marioState.HSpeed += 1.1f;
+            else if (marioState.HSpeed <= targetSpeed)
+                marioState.HSpeed += 1.1f - marioState.HSpeed / 43.0f;
+
+            if (marioState.HSpeed > 48.0f)
+                marioState.HSpeed = 48.0f;
+
+            marioState.MarioAngle = MoreMath.NormalizeAngleUshort(
+                marioState.IntendedAngle - CalculatorUtilities.ApproachInt(
+                    MoreMath.NormalizeAngleShort(marioState.IntendedAngle - marioState.MarioAngle), 0, 0x800, 0x800));
+            ApplySlopeAccel(marioState);
+        }
+
+        // apply_slope_accel
+        private static void ApplySlopeAccel(MutableMarioState marioState)
+        {
+            marioState.XSpeed = marioState.HSpeed * InGameTrigUtilities.InGameSine(marioState.MarioAngle);
+            marioState.YSpeed = 0.0f;
+            marioState.ZSpeed = marioState.HSpeed * InGameTrigUtilities.InGameCosine(marioState.MarioAngle);
+        }
+
+        // perform_ground_step
+        private static void PerformGroundStep(MutableMarioState marioState)
+        {
+            for (int i = 0; i < 4; i++)
             {
-            case GROUND_STEP_LEFT_GROUND:
-                set_mario_action(m, ACT_HOLD_FREEFALL, 0);
-                break;
-
-            case GROUND_STEP_HIT_WALL:
-                if (m->forwardVel > 16.0f)
-                    mario_set_forward_vel(m, 16.0f);
-                break;
+                marioState.X = marioState.X + marioState.XSpeed / 4.0f;
+                marioState.Z = marioState.Z + marioState.ZSpeed / 4.0f;
             }
-
-            func_8026570C(m);
-
-            if (0.4f * m->intendedMag - m->forwardVel > 10.0f)
-                m->particleFlags |= PARTICLE_DUST;
-
-            return FALSE;
-            */
-            return null;
         }
     }
 }

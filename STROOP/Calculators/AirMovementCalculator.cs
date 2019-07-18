@@ -49,6 +49,7 @@ namespace STROOP.Structs
                 initialState.Index);
         }
 
+        // update_air_without_turn
         private static MarioState ComputeAirHSpeed(MarioState initialState, Input input)
         {
             bool longJump = false;
