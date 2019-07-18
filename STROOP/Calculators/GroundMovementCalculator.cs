@@ -42,6 +42,8 @@ namespace STROOP.Structs
                 marioState.HSpeed += 1.1f;
             else if (marioState.HSpeed <= targetSpeed)
                 marioState.HSpeed += 1.1f - marioState.HSpeed / 43.0f;
+            else
+                marioState.HSpeed -= 1.0f;
 
             if (marioState.HSpeed > 48.0f)
                 marioState.HSpeed = 48.0f;

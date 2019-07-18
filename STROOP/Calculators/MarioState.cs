@@ -59,9 +59,9 @@ namespace STROOP.Structs
         public override string ToString()
         {
             return String.Format(
-                "pos=({0},{1},{2}) spd=({3},{4},{5}) hspd={6}",
+                "pos=({0},{1},{2}) spd=({3},{4},{5}) hspd={6} angle={7}",
                 (double)X, (double)Y, (double)Z,
-                (double)XSpeed, (double)YSpeed, (double)ZSpeed, (double)HSpeed);
+                (double)XSpeed, (double)YSpeed, (double)ZSpeed, (double)HSpeed, MarioAngle);
         }
 
         public string ToStringWithInput()

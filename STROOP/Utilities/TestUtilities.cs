@@ -18,7 +18,7 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            CalculatorMain.GetSuccessFloatPositions();
+            CalculatorMain.TestWalkingCode();
         }
 
         public static void TestSomethingElse()

@@ -610,5 +610,30 @@ namespace STROOP.Structs
             */
             return successPositions;
         }
+
+        public static void TestWalkingCode()
+        {
+            float startX = -7390.01953125f;
+            float startY = -3153f;
+            float startZ = 3936.21435546875f;
+            float startXSpeed = 7.88103151321411f;
+            float startYSpeed = 0f;
+            float startZSpeed = -15.0203580856323f;
+            float startHSpeed = 16.9623641967773f;
+            ushort startMarioAngle = 27738;
+            ushort startCameraAngle = 0;
+
+            MarioState marioState = new MarioState(
+                startX, startY, startZ,
+                startXSpeed, startYSpeed, startZSpeed, startHSpeed,
+                startMarioAngle, startCameraAngle, null, null, 0);
+            Input input = new Input(23, 26);
+
+            for (int i = 0; i < 10; i++)
+            {
+                Config.Print(i + ": " + marioState);
+                marioState = GroundMovementCalculator.ApplyInput(marioState, input);
+            }
+        }
     }
 }
