@@ -667,5 +667,52 @@ namespace STROOP.Structs
                 marioX, marioZ, marioRadius, 0, bobombX, bobombZ, bobombRadius, padding);
             Config.Print("{0},{1}", (double)x, (double)z);
         }
+
+        public static void TestCombined()
+        {
+            float marioX = -918.42724609375f;
+            float marioY = -2434f;
+            float marioZ = -1730.48791503906f;
+            float marioXSpeed = 1.16657888889313f;
+            float marioYSpeed = 0f;
+            float marioZSpeed = 5.46906852722168f;
+            float marioHSpeed = 5.59210300445557f;
+            ushort marioAngle = 2206;
+            ushort cameraAngle = 4132;
+
+            float objX = -897.566040039063f;
+            float objZ = -1632.68811035156f;
+
+            int inputX = -14;
+            int inputY = -48;
+
+            MarioState marioState = new MarioState(
+                marioX, marioY, marioZ,
+                marioXSpeed, marioYSpeed, marioZSpeed, marioHSpeed,
+                marioAngle, cameraAngle, null, null, 0);
+            Input input = new Input(inputX, inputY);
+
+            // walking
+            MarioState afterWalkingTemp = GroundMovementCalculator.ApplyInput(marioState, input);
+            MarioState afterWalking = afterWalkingTemp.WithPosition(marioState.X, marioState.Y, marioState.Z);
+
+            // displacement
+            (float afterDisplacementX, float afterDisplacementZ) =
+                ObjectCalculator.GetObjectDisplacement(
+                    afterWalking.X, afterWalking.Z, 37, afterWalking.MarioAngle,
+                    objX, objZ, 65 * 1.2f, -5);
+
+            // relative position
+            (float relX, float relY, float relZ) = ObjectCalculator.GetRelativePosition(
+                afterDisplacementX, afterWalking.Y, afterDisplacementZ,
+                afterWalking.MarioAngle, 0, 60, 100);
+
+            MarioState finalState = new MarioState(
+                afterDisplacementX, afterWalking.Y, afterDisplacementZ,
+                afterWalking.XSpeed, afterWalking.YSpeed, afterWalking.ZSpeed, afterWalking.HSpeed,
+                afterWalking.MarioAngle, cameraAngle, null, null, 0);
+            Config.Print(finalState);
+            Config.Print("{0},{1},{2}", (double)relX, (double)relY, (double)relZ);
+        }
     }
 }

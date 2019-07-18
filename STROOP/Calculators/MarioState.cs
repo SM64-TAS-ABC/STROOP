@@ -113,5 +113,14 @@ namespace STROOP.Structs
                 MarioAngle, cameraAngle,
                 PreviousState, LastInput, Index);
         }
+
+        public MarioState WithPosition(float x, float y, float z)
+        {
+            return new MarioState(
+                x, y, z,
+                XSpeed, YSpeed, ZSpeed, HSpeed,
+                MarioAngle, CameraAngle,
+                PreviousState, LastInput, Index);
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace STROOP.Structs
     public static class ObjectCalculator
     {
         public static (float newMarioX, float newMarioZ) GetObjectDisplacement(
-            float marioX, float marioZ, float marioRadius, short marioAngle,
+            float marioX, float marioZ, float marioRadius, ushort marioAngle,
             float objectX, float objectZ, float objectRadius, float padding)
         {
             float minDistance = objectRadius + marioRadius + padding;
@@ -31,7 +31,7 @@ namespace STROOP.Structs
                 float newMarioZ;
 
                 if (distance == 0.0f)
-                    pushAngle = marioAngle;
+                    pushAngle = (short)marioAngle;
                 else
                     pushAngle = (short)InGameTrigUtilities.InGameATan(offsetZ, offsetX);
 
