@@ -14,7 +14,7 @@ namespace STROOP.Structs
 {
     public static class ObjectCalculator
     {
-        public static (float newMarioX, float newMarioZ) ApplyDisplacement(
+        public static (float newMarioX, float newMarioZ) GetObjectDisplacement(
             float marioX, float marioZ, float marioRadius, short marioAngle,
             float objectX, float objectZ, float objectRadius, float padding)
         {

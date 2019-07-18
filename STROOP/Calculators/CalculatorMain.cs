@@ -636,7 +636,7 @@ namespace STROOP.Structs
             }
         }
 
-        public static void TestObjectDisplacementCode()
+        public static void TestGetRelativePosition()
         {
             float marioX = -1431.61889648438f;
             float marioY = -4003f;
@@ -647,6 +647,25 @@ namespace STROOP.Structs
                 marioX, marioY, marioZ, marioAngle, 0, 60, 100);
 
             Config.Print("{0},{1},{2}", (double)x, (double)y, (double)z);
+        }
+
+        public static void TestGetObjectDisplacement()
+        {
+            float marioX = -1514.42236328125f;
+            float marioY = -4003f;
+            float marioZ = -1238.63757324219f;
+            float marioRadius = 37;
+
+            float bobombX = -1538.07922363281f;
+            float bobombY = -4003f;
+            float bobombZ = -1257.61840820313f;
+            float bobombRadius = 65 * 1.0f;
+
+            float padding = -5;
+
+            (float x, float z) = ObjectCalculator.GetObjectDisplacement(
+                marioX, marioZ, marioRadius, 0, bobombX, bobombZ, bobombRadius, padding);
+            Config.Print("{0},{1}", (double)x, (double)z);
         }
     }
 }
