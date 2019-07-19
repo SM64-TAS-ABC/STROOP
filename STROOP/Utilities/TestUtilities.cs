@@ -35,7 +35,12 @@ namespace STROOP.Utilities
         {
             uint marioObj = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
             short animation = Config.Stream.GetInt16(marioObj + 0x40);
-            (float x, float y, float z) = HolpCalculator.GetHolp(animation);
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+
+            (float x, float y, float z) = HolpCalculator.GetHolp(animation, marioX, marioY, marioZ, marioAngle);
             SpecialConfig.CustomX = x;
             SpecialConfig.CustomY = y;
             SpecialConfig.CustomZ = z;

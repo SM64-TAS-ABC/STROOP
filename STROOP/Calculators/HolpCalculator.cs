@@ -108,8 +108,26 @@ namespace STROOP.Structs
         public static (float x, float y, float z) GetHolp(int index)
         {
             if (!_dictionary.ContainsKey(index)) return (float.NaN, float.NaN, float.NaN);
-            (double x, double y, double z) = _dictionary[index];
-            return ((float)x, (float)y, (float)z);
+            (double xOffset, double yOffset, double zOffset) = _dictionary[index];
+            return ((float)xOffset, (float)yOffset, (float)zOffset);
+        }
+
+        public static (float x, float y, float z) GetHolp(
+            int index, float marioX, float marioY, float marioZ, ushort marioAngle)
+        {
+            if (!_dictionary.ContainsKey(index)) return (float.NaN, float.NaN, float.NaN);
+            (double xOffset, double yOffset, double zOffset) = _dictionary[index];
+
+            double vectorMagnitude = MoreMath.GetHypotenuse(xOffset, zOffset);
+            double vectorAngle = MoreMath.AngleTo_AngleUnits(xOffset, zOffset);
+            double rotatedAngle = vectorAngle + MoreMath.NormalizeAngleTruncated(marioAngle);
+            (double rotatedX, double rotatedZ) = MoreMath.GetComponentsFromVector(vectorMagnitude, rotatedAngle);
+
+            double offsetX = rotatedX + marioX;
+            double offsetY = yOffset + marioY;
+            double offsetZ = rotatedZ + marioZ;
+
+            return ((float)offsetX, (float)offsetY, (float)offsetZ);
         }
 
     }
