@@ -905,7 +905,7 @@ namespace STROOP.Structs
             bool boolValue = IsInSortedPositions(
                 successPositions, (-1379.0001f, 0f));
 
-            List<List<int>> angleDiffsList = GetAngleDiffsList(7, 96, 4);
+            List<List<int>> angleDiffsList = GetAngleDiffsList(7, 96, 5);
             angleDiffsList.ForEach(list => list.Add(0));
             // List<int> angleDiffs = new List<int>() { 89, 92, 96, 91, 88, 90, 92, 2048 };
 
@@ -915,7 +915,7 @@ namespace STROOP.Structs
                 List<int> angleDiffs = angleDiffsList[i];
                 (float x, float z) = MoveIntoSpot(angleDiffs);
                 float diff = IsInSortedPositions2(successPositions, (x, z));
-                if (diff < 0.0003f)
+                if (diff < 0.0002f)
                 {
                     Config.Print("{0}: [{1}] ({2},{3})", i, (double)diff, (double)x, (double)z);
                     MoveIntoSpot(angleDiffs, true);
@@ -1004,7 +1004,7 @@ namespace STROOP.Structs
                         {
                             Config.Print(
                                 "{0} {1} {2} {3} {4}",
-                                43234 + j,
+                                43235 + j,
                                 (double)marioX,
                                 (double)m2.Y,
                                 (double)marioZ,
@@ -1015,7 +1015,7 @@ namespace STROOP.Structs
                     {
                         Config.Print(
                             "{0} {1} {2} {3} {4}",
-                            43236 + i,
+                            43237 + i,
                             (double)marioX,
                             (double)m2.Y,
                             (double)marioZ,
