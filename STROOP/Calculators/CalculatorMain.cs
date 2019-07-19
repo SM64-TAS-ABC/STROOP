@@ -608,8 +608,11 @@ namespace STROOP.Structs
             Config.Print("numAttempts = " + numAttempts);
             Config.Print("numSuccesses = " + numSuccesses);
             */
+            successPositions.Sort((a, b) => Math.Sign(a.Item1 - b.Item1));
             return successPositions;
         }
+
+
 
         public static void TestWalkingCode()
         {
@@ -810,8 +813,74 @@ namespace STROOP.Structs
             }
         }
 
+        public static bool IsInSortedPositions(
+            List<(float, float)> positions, (float, float) position)
+        {
+            return IsInSortedPositions(positions, position, 0, positions.Count - 1);
+        }
+
+        public static bool IsInSortedPositions(
+            List<(float, float)> positions, (float, float) position, int startIndex, int endIndex)
+        {
+            if (startIndex > endIndex) return false;
+
+            int midIndex = (startIndex + endIndex) / 2;
+            (float midValue1, float midValue2) = positions[midIndex];
+            if (position.Item1 > midValue1)
+            {
+                return IsInSortedPositions(positions, position, midIndex + 1, endIndex);
+            }
+            else if (position.Item1 < midValue1)
+            {
+                return IsInSortedPositions(positions, position, startIndex, midIndex - 1);
+            }
+            else
+            {
+                return position.Item2 == midValue2;
+            }
+        }
+
+        public static List<List<int>> GetAngleDiffsList(int length, int range)
+        {
+            List<int> angleDiffs = new List<int>();
+            for (int i = -1 * range; i <= range; i++)
+            {
+                int angleDiff = i * 16;
+                angleDiffs.Add(angleDiff);
+            }
+
+            List<List<int>> output = new List<List<int>>();
+            GetAngleDiffsListRecursion(output, new List<int>(), length, angleDiffs);
+            return output;
+        }
+
+        public static void GetAngleDiffsListRecursion(
+            List<List<int>> output, List<int> state, int length, List<int> values)
+        {
+            if (state.Count == length)
+            {
+                List<int> temp = new List<int>(state);
+                output.Add(temp);
+                return;
+            }
+
+            foreach (int value in values)
+            {
+                state.Add(value);
+                GetAngleDiffsListRecursion(output, state, length, values);
+                state.RemoveAt(state.Count - 1);
+            }
+        }
+
         public static void TestBruteForceMovingToSpot()
         {
+            List<(float, float)> successPositions = GetSuccessFloatPositions();
+
+            bool boolValue = IsInSortedPositions(
+                successPositions, (-1379.0001f, 0f));
+
+            List<List<int>> angleDiffsList = GetAngleDiffsList(3, 2);
+
             List<int> angles = new List<int>()
             {
                 30442,
