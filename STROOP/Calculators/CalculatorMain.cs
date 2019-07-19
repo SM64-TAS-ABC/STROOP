@@ -919,6 +919,7 @@ namespace STROOP.Structs
                 {
                     Config.Print("{0}: [{1}] ({2},{3})", i, (double)diff, (double)x, (double)z);
                     MoveIntoSpot(angleDiffs, true);
+                    Config.Print();
                 }
             }
             Config.Print("END BRUTE FORCE");
@@ -952,7 +953,14 @@ namespace STROOP.Structs
                 marioBobombState = ApplyInputToMarioBobombState(marioBobombState, angleDiffs[i]);
                 if (print)
                 {
-                    Config.Print((43226 + i) + ": " + marioBobombState);
+                    //Config.Print((43226 + i) + ": " + marioBobombState);
+                    Config.Print(
+                        "{0} {1} {2} {3} {4}",
+                        (43227 + i),
+                        (double)marioBobombState.MarioState.X,
+                        (double)marioBobombState.MarioState.Y,
+                        (double)marioBobombState.MarioState.Z,
+                        (double)marioBobombState.MarioState.MarioAngle);
                 }
             }
             //Config.Print(marioBobombState);
@@ -987,6 +995,33 @@ namespace STROOP.Structs
                 (marioX, marioZ) = ObjectCalculator.GetObjectDisplacement(
                     marioX, marioZ, marioRadius, 0, bobombX, bobombZ, bobombRadius, padding);
                 //Config.Print("{0}: ({1},{2})", i, (double)marioX, (double)marioZ);
+
+                if (print)
+                {
+                    if (i == 1)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            Config.Print(
+                                "{0} {1} {2} {3} {4}",
+                                43234 + j,
+                                (double)marioX,
+                                (double)m2.Y,
+                                (double)marioZ,
+                                (double)m2.MarioAngle);
+                        }
+                    }
+                    else
+                    {
+                        Config.Print(
+                            "{0} {1} {2} {3} {4}",
+                            43236 + i,
+                            (double)marioX,
+                            (double)m2.Y,
+                            (double)marioZ,
+                            (double)m2.MarioAngle);
+                    }
+                }
             }
 
             return (marioX, marioZ);
