@@ -835,11 +835,16 @@ namespace STROOP.Structs
                 angleDiffs.Add(angleDiff);
             }
 
-            (float x, float z) = MoveIntoSpot(angleDiffs);
-            Config.Print("{0},{1}", x, z);
+            angleDiffs = new List<int>()
+            {
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+            };
+
+            (float x, float z) = MoveIntoSpot(angleDiffs, true);
+            Config.Print("{0},{1}", (double)x, (double)z);
         }
 
-        public static (float x, float z) MoveIntoSpot(List<int> angleDiffs)
+        public static (float x, float z) MoveIntoSpot(List<int> angleDiffs, bool print = false)
         {
             float startX = -1323.72937011719f;
             float startY = -2434f;
@@ -868,9 +873,13 @@ namespace STROOP.Structs
             {
                 prevMarioBobombState = marioBobombState;
                 marioBobombState = ApplyInputToMarioBobombState(marioBobombState, angleDiffs[counter]);
+                if (print)
+                {
+                    Config.Print((43226 + counter) + ": " + marioBobombState);
+                }
                 counter++;
             }
-            Config.Print(marioBobombState);
+            //Config.Print(marioBobombState);
 
             MarioState m = prevMarioBobombState.MarioState;
             (float holpX, float holpY, float holpZ) = HolpCalculator.GetHolp(58, m.X, m.Y, m.Z, m.MarioAngle);
@@ -901,7 +910,7 @@ namespace STROOP.Structs
                 float bobombRadius = 65 * (1f + 0.2f * i);
                 (marioX, marioZ) = ObjectCalculator.GetObjectDisplacement(
                     marioX, marioZ, marioRadius, 0, bobombX, bobombZ, bobombRadius, padding);
-                Config.Print("{0}: ({1},{2})", i, (double)marioX, (double)marioZ);
+                //Config.Print("{0}: ({1},{2})", i, (double)marioX, (double)marioZ);
             }
 
             return (marioX, marioZ);
