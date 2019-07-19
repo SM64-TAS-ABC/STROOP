@@ -16,6 +16,11 @@ namespace STROOP.Utilities
 {
     public static class TestUtilities
     {
+        public static void Update()
+        {
+            //Update1();
+        }
+
         public static void TestSomething()
         {
             CalculatorMain.TestCombined();
@@ -24,6 +29,16 @@ namespace STROOP.Utilities
         public static void TestSomethingElse()
         {
             TtcMain.TestReentryPhase1();
+        }
+
+        public static void Update1()
+        {
+            uint marioObj = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+            short animation = Config.Stream.GetInt16(marioObj + 0x40);
+            (float x, float y, float z) = HolpCalculator.GetHolp(animation);
+            SpecialConfig.CustomX = x;
+            SpecialConfig.CustomY = y;
+            SpecialConfig.CustomZ = z;
         }
 
         public static void TestSomething18()
