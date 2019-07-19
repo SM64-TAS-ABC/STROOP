@@ -598,7 +598,7 @@ namespace STROOP.Structs
                             (double)pointX, (double)pointZ, (double)dispX, (double)dispZ, match);
                         */
                     }
-                    
+
                     numAttempts++;
                     if (match) numSuccesses++;
                 }
@@ -611,8 +611,6 @@ namespace STROOP.Structs
             successPositions.Sort((a, b) => Math.Sign(a.Item1 - b.Item1));
             return successPositions;
         }
-
-
 
         public static void TestWalkingCode()
         {
