@@ -48,6 +48,29 @@ namespace STROOP.Structs
             IntendedMagnitude = input.GetScaledMagnitude();
         }
 
+        public MutableMarioState(
+            float x,
+            float y,
+            float z,
+            float xSpeed,
+            float ySpeed,
+            float zSpeed,
+            float hSpeed,
+            ushort marioAngle,
+            int angleDiff)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+            XSpeed = xSpeed;
+            YSpeed = ySpeed;
+            ZSpeed = zSpeed;
+            HSpeed = hSpeed;
+            MarioAngle = marioAngle;
+            IntendedAngle = MoreMath.NormalizeAngleUshort(marioAngle + angleDiff);
+            IntendedMagnitude = 32;
+        }
+
         public MarioState GetMarioState(MarioState previousState, Input lastInput)
         {
             return new MarioState(

@@ -808,7 +808,103 @@ namespace STROOP.Structs
                     marioX, marioZ, marioRadius, 0, bobombX, bobombZ, bobombRadius, padding);
                 Config.Print("{0}: ({1},{2})", i, (double)marioX, (double)marioZ);
             }
+        }
 
+        public static void TestBruteForceMovingToSpot()
+        {
+            List<int> angles = new List<int>()
+            {
+                30442,
+                30531,
+                30623,
+                30719,
+                30810,
+                30898,
+                30988,
+                31080,
+                31174,
+                31238,
+            };
+
+            List<int> angleDiffs = new List<int>();
+            for (int i = 0; i < angles.Count - 1; i++)
+            {
+                int angle1 = angles[i];
+                int angle2 = angles[i + 1];
+                int angleDiff = angle2 - angle1;
+                angleDiffs.Add(angleDiff);
+            }
+
+            (float x, float z) = MoveIntoSpot(angleDiffs);
+            Config.Print("{0},{1}", x, z);
+        }
+
+        public static (float x, float z) MoveIntoSpot(List<int> angleDiffs)
+        {
+            float startX = -1323.72937011719f;
+            float startY = -2434f;
+            float startZ = -1579.7392578125f;
+            float startXSpeed = 2.64395904541016f;
+            float startYSpeed = 0f;
+            float startZSpeed = -11.6073894500732f;
+            float startHSpeed = 11.9047050476074f;
+            ushort startAngle = 30442;
+
+            float objStartX = -1301.52001953125f;
+            float objStartZ = -1677.24182128906f;
+
+            int INDEX_START = 0;
+
+            MarioState marioState = new MarioState(
+                startX, startY, startZ,
+                startXSpeed, startYSpeed, startZSpeed, startHSpeed,
+                startAngle, 0, null, null, 0);
+            MarioBobombState marioBobombState = new MarioBobombState(
+                marioState, objStartX, objStartZ);
+
+            MarioBobombState prevMarioBobombState = null;
+            int counter = 0;
+            for (int i = INDEX_START + 1; i < 9; i++)
+            {
+                prevMarioBobombState = marioBobombState;
+                marioBobombState = ApplyInputToMarioBobombState(marioBobombState, angleDiffs[counter]);
+                counter++;
+            }
+            Config.Print(marioBobombState);
+
+            MarioState m = prevMarioBobombState.MarioState;
+            (float holpX, float holpY, float holpZ) = HolpCalculator.GetHolp(58, m.X, m.Y, m.Z, m.MarioAngle);
+
+            MarioState m2 = marioBobombState.MarioState;
+            float marioX = m2.X;
+            float marioY = m2.Y;
+            float marioZ = m2.Z;
+            ushort marioAngle = m2.MarioAngle;
+            float marioRadius = 37;
+
+            float bobombX = holpX;
+            float bobombY = holpY;
+            float bobombZ = holpZ;
+
+            float padding = -5;
+
+            for (int i = 1; i <= 4; i++)
+            {
+                if (i == 2)
+                {
+                    ushort bobombAngle = m.MarioAngle;
+                    float delX = 5 * InGameTrigUtilities.InGameSine(bobombAngle);
+                    float delZ = 5 * InGameTrigUtilities.InGameCosine(bobombAngle);
+                    bobombX += delX;
+                    bobombZ += delZ;
+                }
+                float bobombRadius = 65 * (1f + 0.2f * i);
+                (marioX, marioZ) = ObjectCalculator.GetObjectDisplacement(
+                    marioX, marioZ, marioRadius, 0, bobombX, bobombZ, bobombRadius, padding);
+                Config.Print("{0}: ({1},{2})", i, (double)marioX, (double)marioZ);
+            }
+
+            return (marioX, marioZ);
         }
 
         public class MarioBobombState
@@ -858,6 +954,38 @@ namespace STROOP.Structs
                 afterDisplacementX, afterWalking.Y, afterDisplacementZ,
                 afterWalking.XSpeed, afterWalking.YSpeed, afterWalking.ZSpeed, afterWalking.HSpeed,
                 afterWalking.MarioAngle, nextCameraAngle, null, null, 0);
+            MarioBobombState finalMarioBobombState = new MarioBobombState(finalMarioState, relX, relZ);
+            return finalMarioBobombState;
+        }
+
+        public static MarioBobombState ApplyInputToMarioBobombState(
+            MarioBobombState initialState, int angleDiff)
+        {
+            // get vars
+            MarioState marioState = initialState.MarioState;
+            float objX = initialState.ObjX;
+            float objZ = initialState.ObjZ;
+
+            // walking
+            MarioState afterWalkingTemp = GroundMovementCalculator.ApplyInput(marioState, angleDiff);
+            // doesn't move due to ceiling
+            MarioState afterWalking = afterWalkingTemp.WithPosition(marioState.X, marioState.Y, marioState.Z);
+
+            // displacement
+            (float afterDisplacementX, float afterDisplacementZ) =
+                ObjectCalculator.GetObjectDisplacement(
+                    afterWalking.X, afterWalking.Z, 37, afterWalking.MarioAngle,
+                    objX, objZ, 65 * 1.2f, -5);
+
+            // relative position
+            (float relX, float relY, float relZ) = ObjectCalculator.GetRelativePosition(
+                afterDisplacementX, afterWalking.Y, afterDisplacementZ,
+                afterWalking.MarioAngle, 0, 60, 100);
+
+            MarioState finalMarioState = new MarioState(
+                afterDisplacementX, afterWalking.Y, afterDisplacementZ,
+                afterWalking.XSpeed, afterWalking.YSpeed, afterWalking.ZSpeed, afterWalking.HSpeed,
+                afterWalking.MarioAngle, 0, null, null, 0);
             MarioBobombState finalMarioBobombState = new MarioBobombState(finalMarioState, relX, relZ);
             return finalMarioBobombState;
         }

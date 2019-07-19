@@ -24,6 +24,16 @@ namespace STROOP.Structs
             return finalState;
         }
 
+        public static MarioState ApplyInput(MarioState initialState, int angleDiff)
+        {
+            MutableMarioState mutableMarioState = initialState.GetMutableMarioState(angleDiff);
+            mutableMarioState.IntendedMagnitude *= 0.4f;
+            UpdateWalkingSpeed(mutableMarioState);
+            PerformGroundStep(mutableMarioState);
+            MarioState finalState = mutableMarioState.GetMarioState(initialState, null);
+            return finalState;
+        }
+
         // update_walking_speed
         private static void UpdateWalkingSpeed(MutableMarioState marioState)
         {

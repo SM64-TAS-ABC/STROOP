@@ -56,6 +56,14 @@ namespace STROOP.Structs
                 MarioAngle, CameraAngle, input);
         }
 
+        public MutableMarioState GetMutableMarioState(int angleDiff)
+        {
+            return new MutableMarioState(
+                X, Y, Z,
+                XSpeed, YSpeed, ZSpeed, HSpeed,
+                MarioAngle, angleDiff);
+        }
+
         public override string ToString()
         {
             return String.Format(
