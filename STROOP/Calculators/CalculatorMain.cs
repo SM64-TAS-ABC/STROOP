@@ -838,12 +838,39 @@ namespace STROOP.Structs
             }
         }
 
-        public static List<List<int>> GetAngleDiffsList(int length, int range)
+        public static float IsInSortedPositions2(
+            List<(float, float)> positions, (float, float) position)
+        {
+            return IsInSortedPositions2(positions, position, 0, positions.Count - 1);
+        }
+
+        public static float IsInSortedPositions2(
+            List<(float, float)> positions, (float, float) position, int startIndex, int endIndex)
+        {
+            if (startIndex > endIndex) return float.MaxValue;
+
+            int midIndex = (startIndex + endIndex) / 2;
+            (float midValue1, float midValue2) = positions[midIndex];
+            if (position.Item1 > midValue1)
+            {
+                return IsInSortedPositions2(positions, position, midIndex + 1, endIndex);
+            }
+            else if (position.Item1 < midValue1)
+            {
+                return IsInSortedPositions2(positions, position, startIndex, midIndex - 1);
+            }
+            else
+            {
+                return Math.Abs(position.Item2 - midValue2);
+            }
+        }
+
+        public static List<List<int>> GetAngleDiffsList(int length, int mid, int range)
         {
             List<int> angleDiffs = new List<int>();
             for (int i = -1 * range; i <= range; i++)
             {
-                int angleDiff = i * 16;
+                int angleDiff = mid + i * 16;
                 angleDiffs.Add(angleDiff);
             }
 
@@ -872,43 +899,29 @@ namespace STROOP.Structs
 
         public static void TestBruteForceMovingToSpot()
         {
+            Config.Print("START BRUTE FORCE");
             List<(float, float)> successPositions = GetSuccessFloatPositions();
 
             bool boolValue = IsInSortedPositions(
                 successPositions, (-1379.0001f, 0f));
 
-            List<List<int>> angleDiffsList = GetAngleDiffsList(3, 2);
+            List<List<int>> angleDiffsList = GetAngleDiffsList(7, 96, 4);
+            angleDiffsList.ForEach(list => list.Add(0));
+            // List<int> angleDiffs = new List<int>() { 89, 92, 96, 91, 88, 90, 92, 2048 };
 
-            List<int> angles = new List<int>()
+            //float minDiff = float.MaxValue;
+            for (int i = 0; i < angleDiffsList.Count; i++)
             {
-                30442,
-                30531,
-                30623,
-                30719,
-                30810,
-                30898,
-                30988,
-                31080,
-                31174,
-                31238,
-            };
-
-            List<int> angleDiffs = new List<int>();
-            for (int i = 0; i < angles.Count - 1; i++)
-            {
-                int angle1 = angles[i];
-                int angle2 = angles[i + 1];
-                int angleDiff = angle2 - angle1;
-                angleDiffs.Add(angleDiff);
+                List<int> angleDiffs = angleDiffsList[i];
+                (float x, float z) = MoveIntoSpot(angleDiffs);
+                float diff = IsInSortedPositions2(successPositions, (x, z));
+                if (diff < 0.0003f)
+                {
+                    Config.Print("{0}: [{1}] ({2},{3})", i, (double)diff, (double)x, (double)z);
+                    MoveIntoSpot(angleDiffs, true);
+                }
             }
-
-            angleDiffs = new List<int>()
-            {
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-            };
-
-            (float x, float z) = MoveIntoSpot(angleDiffs, true);
-            Config.Print("{0},{1}", (double)x, (double)z);
+            Config.Print("END BRUTE FORCE");
         }
 
         public static (float x, float z) MoveIntoSpot(List<int> angleDiffs, bool print = false)
@@ -925,8 +938,6 @@ namespace STROOP.Structs
             float objStartX = -1301.52001953125f;
             float objStartZ = -1677.24182128906f;
 
-            int INDEX_START = 0;
-
             MarioState marioState = new MarioState(
                 startX, startY, startZ,
                 startXSpeed, startYSpeed, startZSpeed, startHSpeed,
@@ -935,16 +946,14 @@ namespace STROOP.Structs
                 marioState, objStartX, objStartZ);
 
             MarioBobombState prevMarioBobombState = null;
-            int counter = 0;
-            for (int i = INDEX_START + 1; i < 9; i++)
+            for (int i = 0; i < 8; i++)
             {
                 prevMarioBobombState = marioBobombState;
-                marioBobombState = ApplyInputToMarioBobombState(marioBobombState, angleDiffs[counter]);
+                marioBobombState = ApplyInputToMarioBobombState(marioBobombState, angleDiffs[i]);
                 if (print)
                 {
-                    Config.Print((43226 + counter) + ": " + marioBobombState);
+                    Config.Print((43226 + i) + ": " + marioBobombState);
                 }
-                counter++;
             }
             //Config.Print(marioBobombState);
 
