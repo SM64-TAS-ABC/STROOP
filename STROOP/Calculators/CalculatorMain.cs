@@ -714,5 +714,152 @@ namespace STROOP.Structs
             Config.Print(finalState);
             Config.Print("{0},{1},{2}", (double)relX, (double)relY, (double)relZ);
         }
+
+        public static void TestMovementTowardsSpot()
+        {
+            float startX = -1323.72937011719f;
+            float startY = -2434f;
+            float startZ = -1579.7392578125f;
+            float startXSpeed = 2.64395904541016f;
+            float startYSpeed = 0f;
+            float startZSpeed = -11.6073894500732f;
+            float startHSpeed = 11.9047050476074f;
+            ushort startAngle = 30442;
+            List<ushort> cameraAngles = new List<ushort>()
+            {
+                7997,
+                8089,
+                8185,
+                8276,
+                8364,
+                8454,
+                8546,
+                8640,
+                8704,
+                8983,
+                9007,
+                9007,
+                9007,
+                9050,
+                9138,
+                9225,
+                9249,
+                9249,
+                9249,
+                9249,
+                9249,
+                9249,
+                9249,
+            };
+            int INDEX_START = 0;
+
+            float objStartX = -1301.52001953125f;
+            float objStartZ = -1677.24182128906f;
+
+            int inputX = 127;
+            int inputY = 87;
+
+            MarioState marioState = new MarioState(
+                startX, startY, startZ,
+                startXSpeed, startYSpeed, startZSpeed, startHSpeed,
+                startAngle, cameraAngles[INDEX_START], null, null, 0);
+            MarioBobombState marioBobombState = new MarioBobombState(
+                marioState, objStartX, objStartZ);
+
+            Input input = new Input(inputX, inputY);
+
+            MarioBobombState prevMarioBobombState = null;
+            for (int i = INDEX_START + 1; i < 9; i++)
+            {
+                ushort nextCameraAngle = cameraAngles[i];
+                prevMarioBobombState = marioBobombState;
+                marioBobombState = ApplyInputToMarioBobombState(marioBobombState, input, nextCameraAngle);
+            }
+            Config.Print(marioBobombState);
+
+            MarioState m = prevMarioBobombState.MarioState;
+            (float holpX, float holpY, float holpZ) = HolpCalculator.GetHolp(58, m.X, m.Y, m.Z, m.MarioAngle);
+
+            MarioState m2 = marioBobombState.MarioState;
+            float marioX = m2.X;
+            float marioY = m2.Y;
+            float marioZ = m2.Z;
+            ushort marioAngle = m2.MarioAngle;
+            float marioRadius = 37;
+
+            float bobombX = holpX;
+            float bobombY = holpY;
+            float bobombZ = holpZ;
+
+            float padding = -5;
+
+            for (int i = 1; i <= 4; i++)
+            {
+                if (i == 2)
+                {
+                    ushort bobombAngle = m.MarioAngle;
+                    float delX = 5 * InGameTrigUtilities.InGameSine(bobombAngle);
+                    float delZ = 5 * InGameTrigUtilities.InGameCosine(bobombAngle);
+                    bobombX += delX;
+                    bobombZ += delZ;
+                }
+                float bobombRadius = 65 * (1f + 0.2f * i);
+                (marioX, marioZ) = ObjectCalculator.GetObjectDisplacement(
+                    marioX, marioZ, marioRadius, 0, bobombX, bobombZ, bobombRadius, padding);
+                Config.Print("{0}: ({1},{2})", i, (double)marioX, (double)marioZ);
+            }
+
+        }
+
+        public class MarioBobombState
+        {
+            public readonly MarioState MarioState;
+            public readonly float ObjX;
+            public readonly float ObjZ;
+
+            public MarioBobombState(MarioState marioState, float objX, float objZ)
+            {
+                MarioState = marioState;
+                ObjX = objX;
+                ObjZ = objZ;
+            }
+
+            public override string ToString()
+            {
+                return String.Format("{0} obj=({1},{2})", MarioState, (double)ObjX, (double)ObjZ);
+            }
+        }
+
+        public static MarioBobombState ApplyInputToMarioBobombState(
+            MarioBobombState initialState, Input input, ushort nextCameraAngle)
+        {
+            // get vars
+            MarioState marioState = initialState.MarioState;
+            float objX = initialState.ObjX;
+            float objZ = initialState.ObjZ;
+
+            // walking
+            MarioState afterWalkingTemp = GroundMovementCalculator.ApplyInput(marioState, input);
+            // doesn't move due to ceiling
+            MarioState afterWalking = afterWalkingTemp.WithPosition(marioState.X, marioState.Y, marioState.Z); 
+
+            // displacement
+            (float afterDisplacementX, float afterDisplacementZ) =
+                ObjectCalculator.GetObjectDisplacement(
+                    afterWalking.X, afterWalking.Z, 37, afterWalking.MarioAngle,
+                    objX, objZ, 65 * 1.2f, -5);
+
+            // relative position
+            (float relX, float relY, float relZ) = ObjectCalculator.GetRelativePosition(
+                afterDisplacementX, afterWalking.Y, afterDisplacementZ,
+                afterWalking.MarioAngle, 0, 60, 100);
+
+            MarioState finalMarioState = new MarioState(
+                afterDisplacementX, afterWalking.Y, afterDisplacementZ,
+                afterWalking.XSpeed, afterWalking.YSpeed, afterWalking.ZSpeed, afterWalking.HSpeed,
+                afterWalking.MarioAngle, nextCameraAngle, null, null, 0);
+            MarioBobombState finalMarioBobombState = new MarioBobombState(finalMarioState, relX, relZ);
+            return finalMarioBobombState;
+        }
     }
 }

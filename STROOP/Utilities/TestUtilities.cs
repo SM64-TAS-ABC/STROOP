@@ -23,7 +23,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            CalculatorMain.TestCombined();
+            CalculatorMain.TestMovementTowardsSpot();
         }
 
         public static void TestSomethingElse()
