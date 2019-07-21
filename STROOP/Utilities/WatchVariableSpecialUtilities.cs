@@ -2953,7 +2953,13 @@ namespace STROOP.Structs
                 {
                     return new TtcSaveState().ToString();
                 },
-                DEFAULT_SETTER));            
+                (string saveStateString, uint dummy) =>
+                {
+                    TtcSaveState saveState = new TtcSaveState(saveStateString);
+                    TtcUtilities.ApplySaveState(saveState);
+                    return true;
+                }
+            ));
 
             // Area vars
 
