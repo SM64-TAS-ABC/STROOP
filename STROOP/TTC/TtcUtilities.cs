@@ -371,6 +371,20 @@ namespace STROOP.Ttc
             }
             return addresses;
         }
+
+        public static void ApplySaveState(TtcSaveState saveState)
+        {
+            (TtcRng rng, List<TtcObject> objects) = CreateRngObjectsFromSaveState(saveState);
+            List<uint> addresses = GetObjectAddresses();
+            if (objects.Count != addresses.Count + 1)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            for (int i = 0; i < addresses.Count; i++)
+            {
+                objects[i].ApplyToAddress(addresses[i]);
+            }
+        }
     }
 
 }

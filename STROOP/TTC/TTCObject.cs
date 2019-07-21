@@ -76,6 +76,11 @@ namespace STROOP.Ttc
             this._currentFrame = currentFrame;
         }
 
+        public virtual void ApplyToAddress(uint address)
+        {
+
+        }
+
         /** Returns an angle between 0 and 65535 inclusive
          *  by using mods.
          */
