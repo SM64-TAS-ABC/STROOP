@@ -286,6 +286,91 @@ namespace STROOP.Ttc
 
             return (rng, rngObjects);
         }
+
+        public static List<uint> GetObjectAddresses()
+        {
+            List<uint> addresses = new List<uint>();
+            Func<int, uint> getOffset = (int i) => (uint)i * 0x260;
+            for (int i = 0; i < 6; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcRotatingBlockAddress + getOffset(i));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcRotatingTriangularPrismAddress + getOffset(i));
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcPendulumAddress + getOffset(i));
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcTreadmill1Address + getOffset(i));
+            }
+            for (int i = 0; i < 12; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcPusherAddress + getOffset(i));
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcCog1Address + getOffset(i));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcSpinningTriangleAddress + getOffset(i));
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcPitBlockAddress + getOffset(i));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcHandAddress + getOffset(i));
+            }
+            for (int i = 0; i < 14; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcSpinnerAddress + getOffset(i));
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcWheelAddress + getOffset(i));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcElevatorAddress + getOffset(i));
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcCog2Address + getOffset(i));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcTreadmill2Address + getOffset(i));
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                addresses.Add(TtcObjectConfig.TtcThwompAddress + getOffset(i));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                if (i == 0) addresses.Add(TtcObjectConfig.TtcAmp1Address);
+                if (i == 1) addresses.Add(TtcObjectConfig.TtcAmp2Address);
+            }
+            List<ObjectDataModel> bobombs = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Bob-omb");
+            bobombs.Sort((obj1, obj2) =>
+            {
+                string label1 = Config.ObjectSlotsManager.GetSlotLabelFromObject(obj1);
+                string label2 = Config.ObjectSlotsManager.GetSlotLabelFromObject(obj2);
+                int pos1 = ParsingUtilities.ParseInt(label1);
+                int pos2 = ParsingUtilities.ParseInt(label2);
+                return pos1 - pos2;
+            });
+            for (int i = 0; i < bobombs.Count; i++)
+            {
+                addresses.Add(bobombs[i].Address);
+            }
+            return addresses;
+        }
     }
 
 }

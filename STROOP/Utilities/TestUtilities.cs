@@ -23,12 +23,21 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            CalculatorMain.TestBruteForceMovingToSpot();
+            TestSomething19();
         }
 
         public static void TestSomethingElse()
         {
             TtcMain.TestReentryPhase1();
+        }
+
+        public static void TestSomething19()
+        {
+            List<uint> addresses = TtcUtilities.GetObjectAddresses();
+            for (int i = 0; i < addresses.Count; i++)
+            {
+                Config.Print(i + "\t" + HexUtilities.FormatValue(addresses[i]));
+            }
         }
 
         public static void Update1()
