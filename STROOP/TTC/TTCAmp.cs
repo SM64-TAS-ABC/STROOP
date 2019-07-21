@@ -54,5 +54,11 @@ namespace STROOP.Ttc
         {
             return new List<object>() { _state, _angle };
         }
+
+        public override void ApplyToAddress(uint address)
+        {
+            Config.Stream.SetValue(_state, address + 0x14C);
+            Config.Stream.SetValue(_angle, address + 0xC8);
+        }
     }
 }

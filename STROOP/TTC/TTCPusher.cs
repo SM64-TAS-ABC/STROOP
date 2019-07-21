@@ -157,6 +157,13 @@ namespace STROOP.Ttc
             return new List<object>() { _timerMax, _countdown, _state, _timer };
         }
 
+        public override void ApplyToAddress(uint address)
+        {
+            Config.Stream.SetValue(_timerMax, address + 0xF4);
+            Config.Stream.SetValue(_countdown, address + 0xF8);
+            Config.Stream.SetValue(_state, address + 0x14C);
+            Config.Stream.SetValue(_timer, address + 0x154);
+        }
     }
 
 }

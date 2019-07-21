@@ -115,6 +115,15 @@ namespace STROOP.Ttc
             };
         }
 
+        public override void ApplyToAddress(uint address)
+        {
+            Config.Stream.SetValue(_angle, address + 0xD4);
+            Config.Stream.SetValue(_timerMax, address + 0xF4);
+            Config.Stream.SetValue(_targetAngle, address + 0xF8);
+            Config.Stream.SetValue(_displacement, address + 0xFC);
+            Config.Stream.SetValue(_directionCountdown, address + 0x104);
+            Config.Stream.SetValue(_timer, address + 0x154);
+        }
     }
 
 }

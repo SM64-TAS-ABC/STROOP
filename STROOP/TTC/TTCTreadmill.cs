@@ -100,6 +100,14 @@ namespace STROOP.Ttc
             return new List<object>() { _subType, _currentSpeed, _targetSpeed, _timerMax, _timer };
         }
 
+        public override void ApplyToAddress(uint address)
+        {
+            Config.Stream.SetValue(_subType, address + 0x144);
+            Config.Stream.SetValue((float)_currentSpeed, address + 0xFC);
+            Config.Stream.SetValue((float)_targetSpeed, address + 0x100);
+            Config.Stream.SetValue(_timerMax, address + 0x104);
+            Config.Stream.SetValue(_timer, address + 0x154);
+        }
     }
 
 }

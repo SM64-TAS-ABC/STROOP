@@ -107,6 +107,14 @@ namespace STROOP.Ttc
                 _accelerationDirection, _accelerationMagnitude, _angularVelocity, _angle);
         }
 
+        public override void ApplyToAddress(uint address)
+        {
+            Config.Stream.SetValue((float)_accelerationDirection, address + 0xF4);
+            Config.Stream.SetValue((float)_angle, address + 0xF8);
+            Config.Stream.SetValue((float)_angularVelocity, address + 0xFC);
+            Config.Stream.SetValue((float)_accelerationMagnitude, address + 0x100);
+            Config.Stream.SetValue(_waitingTimer, address + 0x104);
+        }
     }
 
 }

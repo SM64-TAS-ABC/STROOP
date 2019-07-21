@@ -92,6 +92,13 @@ namespace STROOP.Ttc
             return new List<object>() { _angle, _direction, _timerMax, _timer };
         }
 
+        public override void ApplyToAddress(uint address)
+        {
+            Config.Stream.SetValue(_angle, address + 0xD0);
+            Config.Stream.SetValue(_direction, address + 0xF4);
+            Config.Stream.SetValue(_timerMax, address + 0xF8);
+            Config.Stream.SetValue(_timer, address + 0x154);
+        }
     }
 
 

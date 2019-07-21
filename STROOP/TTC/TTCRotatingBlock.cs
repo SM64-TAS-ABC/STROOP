@@ -66,6 +66,11 @@ namespace STROOP.Ttc
             return new List<object>() { _timerMax, _timer };
         }
 
+        public override void ApplyToAddress(uint address)
+        {
+            Config.Stream.SetValue(_timerMax, address + 0xFC);
+            Config.Stream.SetValue(_timer, address + 0x154);
+        }
     }
 
 

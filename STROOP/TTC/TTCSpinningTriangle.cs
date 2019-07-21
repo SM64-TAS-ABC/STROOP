@@ -66,6 +66,12 @@ namespace STROOP.Ttc
             return new List<object>() { _angle, _currentAngularVelocity, _targetAngularVelocity };
         }
 
+        public override void ApplyToAddress(uint address)
+        {
+            Config.Stream.SetValue(_angle, address + 0xD4);
+            Config.Stream.SetValue((float)_currentAngularVelocity, address + 0xF8);
+            Config.Stream.SetValue((float)_targetAngularVelocity, address + 0xFC);
+        }
     }
 
 

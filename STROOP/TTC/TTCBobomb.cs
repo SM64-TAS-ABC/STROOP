@@ -86,6 +86,10 @@ namespace STROOP.Ttc
             return new List<object>() { _blinkingTimer, _withinMarioRange };
         }
 
+        public override void ApplyToAddress(uint address)
+        {
+            Config.Stream.SetValue(_blinkingTimer, address + 0xF4);
+        }
     }
 
 }
