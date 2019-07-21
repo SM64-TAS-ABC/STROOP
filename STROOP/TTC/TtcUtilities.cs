@@ -380,6 +380,8 @@ namespace STROOP.Ttc
             {
                 throw new ArgumentOutOfRangeException();
             }
+
+            Config.Stream.SetValue(rng.GetRng(), MiscConfig.RngAddress);
             for (int i = 0; i < addresses.Count; i++)
             {
                 objects[i].ApplyToAddress(addresses[i]);

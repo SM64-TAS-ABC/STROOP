@@ -30,6 +30,7 @@ namespace STROOP.Ttc
 
         public TtcSaveState(string saveStateString)
         {
+            saveStateString = saveStateString.Trim();
             _bytes = new List<byte>();
             for (int i = 0; i < saveStateString.Length; i += 2)
             {
