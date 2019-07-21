@@ -64,9 +64,19 @@ namespace STROOP.Ttc
             return new TtcSaveState(_rng.GetRng(), _rngObjects);
         }
 
+        public string GetSaveStateString()
+        {
+            return GetSaveState().ToString();
+        }
+
         public TtcSimulation Clone()
         {
             return new TtcSimulation(GetSaveState());
+        }
+
+        public override string ToString()
+        {
+            return _rng + " " + string.Join(" ", _rngObjects);
         }
 
         public void AddDustFrames(List<int> dustFrames)
@@ -413,6 +423,19 @@ namespace STROOP.Ttc
                 }
 
                 if (_currentFrame == endingFrame) return;
+            }
+        }
+
+        public void SimulateNumFrames(int numFrames)
+        {
+            for (int i = 0; i < numFrames; i++)
+            {
+                _currentFrame++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(_currentFrame);
+                    rngObject.Update();
+                }
             }
         }
 

@@ -23,12 +23,28 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            TestSomething19();
+            TestSomething20();
         }
 
         public static void TestSomethingElse()
         {
-            TtcMain.TestReentryPhase1();
+            TestSomething21();
+        }
+
+        public static void TestSomething21()
+        {
+            TtcSimulation simulation = new TtcSimulation(new TtcSaveState());
+            Clipboard.SetText(simulation.ToString());
+        }
+
+        public static void TestSomething20()
+        {
+            TtcSimulation simulation = new TtcSimulation(new TtcSaveState());
+            for (int i = 0; i <= 100; i++)
+            {
+                Config.Print("{0}\t{1}\t{2}", i, simulation.GetSaveStateString(), simulation);
+                simulation.SimulateNumFrames(1);
+            }
         }
 
         public static void TestSomething19()

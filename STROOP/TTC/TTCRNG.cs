@@ -69,6 +69,10 @@ namespace STROOP.Ttc
             _index = RngIndexer.GetRngIndex(rngValue);
         }
 
+        public override string ToString()
+        {
+            return string.Format("Rng({0})[{1}]", GetRng(), GetIndex());
+        }
     }
 
 
