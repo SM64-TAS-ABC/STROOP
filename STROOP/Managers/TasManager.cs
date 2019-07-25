@@ -99,11 +99,11 @@ namespace STROOP.Managers
             buttonTasTakeMarioAngle.Click += (sender, e) => TakeInfo(angle: true);
 
             Button buttonTasPasteSchedule = splitContainerTasTable.Panel1.Controls["buttonTasPasteSchedule"] as Button;
-            buttonTasPasteSchedule.Click += (sender, e) => SetScheduler(Clipboard.GetText());
+            buttonTasPasteSchedule.Click += (sender, e) => SetScheduler(Clipboard.GetText(), false);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTasPasteSchedule,
-                new List<string>() { "TTC Reentry Schedule" },
-                new List<Action>() { () => SetTtcReentrySchedule() });
+                new List<string>() { "Paste Schedule as Floats", "TTC Reentry Schedule" },
+                new List<Action>() { () => SetScheduler(Clipboard.GetText(), true), () => SetTtcReentrySchedule() });
 
             _waitingGlobalTimer = 0;
             _waitingDateTime = DateTime.Now;
@@ -230,7 +230,7 @@ namespace STROOP.Managers
                 new List<VariableGroup>() { VariableGroup.TAS, VariableGroup.Custom });
         }
 
-        public void SetScheduler(string text)
+        public void SetScheduler(string text, bool useFloats)
         {
             List<string> lines = text.Split('\n').ToList();
             List<List<string>> linePartsList = lines.ConvertAll(line => ParsingUtilities.ParseStringList(line));
@@ -249,10 +249,20 @@ namespace STROOP.Managers
                 double z = lineParts.Count >= 4 ? ParsingUtilities.ParseDoubleNullable(lineParts[3]) ?? Double.NaN : Double.NaN;
                 double angle = lineParts.Count >= 5 ? ParsingUtilities.ParseDoubleNullable(lineParts[4]) ?? Double.NaN : Double.NaN;
 
+                if (useFloats)
+                {
+                    x = (float)x;
+                    y = (float)y;
+                    z = (float)z;
+                    angle = (float)angle;
+                }
+
                 List<double> doubleList = new List<double>();
                 for (int i = 5; i < lineParts.Count; i++)
                 {
-                    doubleList.Add(ParsingUtilities.ParseDoubleNullable(lineParts[i]) ?? Double.NaN);
+                    double value = ParsingUtilities.ParseDoubleNullable(lineParts[i]) ?? Double.NaN;
+                    if (useFloats) value = (float)value;
+                    doubleList.Add(value);
                 }
 
                 schedule[globalTimer] = (x, y, z, angle, doubleList);

@@ -174,7 +174,7 @@ namespace STROOP.Managers
 
             List<string> variableNames = GetCurrentVariableNames();
             List<string> variableValueRowStrings = _recordedValues.ToList()
-                .ConvertAll(pair => pair.Key + "\t" + String.Join("\t", pair.Value));
+                .ConvertAll(pair => (pair.Key + 1) + "\t" + String.Join("\t", pair.Value));
             string variableValueText =
                 "Timer\t" + String.Join("\t", variableNames) +"\r\n" +
                 String.Join("\r\n", variableValueRowStrings);
