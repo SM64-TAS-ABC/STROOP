@@ -12,12 +12,12 @@ namespace STROOP.Utilities
     public class PositionAngle
     {
         private readonly PositionAngleTypeEnum PosAngleType;
-        public readonly uint? Address;
-        public readonly int? Index;
-        public readonly PositionAngle PosPA;
-        public readonly PositionAngle AnglePA;
-        public readonly List<Func<double>> Getters;
-        public readonly List<Func<double, bool>> Setters;
+        private readonly uint? Address;
+        private readonly int? Index;
+        private readonly PositionAngle PosPA;
+        private readonly PositionAngle AnglePA;
+        private readonly List<Func<double>> Getters;
+        private readonly List<Func<double, bool>> Setters;
 
         public static Dictionary<uint, (double, double, double, double, List<double>)> Schedule =
             new Dictionary<uint, (double, double, double, double, List<double>)>();
