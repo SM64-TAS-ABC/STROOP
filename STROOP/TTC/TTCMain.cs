@@ -211,15 +211,16 @@ namespace STROOP.Ttc
             int maxDustFrames = 6;
             int minDustFrames = 0;
 
-            //int numFramesMin = 120;
-            //int numFramesMax = 7000;
+            int numFramesMin = 120;
+            int numFramesMax = 7000;
 
-            int numFramesMin = 0;
-            int numFramesMax = 3000;
+            //int numFramesMin = 0;
+            //int numFramesMax = 3000;
 
             List<List<int>> dustFrameLists = GetDustFrameLists(earliestDustFrame, dustFrameRange, maxDustFrames, minDustFrames);
             int counter = 0;
             List<string> outputStrings = new List<string>();
+            Config.Print("Starting brute force...");
             foreach (List<int> dustFrames in dustFrameLists)
             {
                 counter++;
