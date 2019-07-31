@@ -23,12 +23,17 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            TestSomething20();
+            TestSomething22();
         }
 
         public static void TestSomethingElse()
         {
             TestSomething21();
+        }
+
+        public static void TestSomething22()
+        {
+            TtcMain.FindIdealCogManipulation();
         }
 
         public static void TestSomething21()

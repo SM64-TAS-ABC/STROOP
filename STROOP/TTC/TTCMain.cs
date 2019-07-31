@@ -203,17 +203,19 @@ namespace STROOP.Ttc
 
         public static void FindIdealCogManipulation()
         {
-            // 221076 = start
-            int earliestDustFrame = MupenUtilities.GetFrameCount() + 2;
+            TtcSaveState saveState = new TtcSaveState();
+            int startFrame = MupenUtilities.GetFrameCount();
+            int earliestDustFrame = startFrame + 2;
+
             int dustFrameRange = 40;
             int maxDustFrames = 6;
-            int minDustFrames = 6;
+            int minDustFrames = 0;
 
-            int numFramesMin = 120;
-            int numFramesMax = 7000;
+            //int numFramesMin = 120;
+            //int numFramesMax = 7000;
 
-            //int numFramesMin = 0;
-            //int numFramesMax = 3000;
+            int numFramesMin = 0;
+            int numFramesMax = 3000;
 
             List<List<int>> dustFrameLists = GetDustFrameLists(earliestDustFrame, dustFrameRange, maxDustFrames, minDustFrames);
             int counter = 0;
@@ -230,7 +232,7 @@ namespace STROOP.Ttc
                         counter, dustFrameLists.Count, percentString);
                 }
 
-                TtcSimulation simulation = new TtcSimulation(dustFrames);
+                TtcSimulation simulation = new TtcSimulation(saveState, startFrame, dustFrames);
                 int? idealCogConfigurationFrame = simulation.FindIdealCogConfiguration(numFramesMin, numFramesMax);
                 if (idealCogConfigurationFrame.HasValue)
                 {

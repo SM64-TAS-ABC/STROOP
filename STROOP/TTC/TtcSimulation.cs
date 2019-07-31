@@ -193,8 +193,8 @@ namespace STROOP.Ttc
                         cogConfigurations[4].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
                         cogConfigurations[5].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity;
 
-                    if (upperCogGoal && lowerCogGoal)
-                    //if (upperCogPreGoal)
+                    //if (upperCogGoal && lowerCogGoal)
+                    if (upperCogPreGoal)
                     {
                         return frame;
                     }
