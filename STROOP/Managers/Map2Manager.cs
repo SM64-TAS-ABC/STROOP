@@ -474,8 +474,9 @@ namespace STROOP.Managers
             }
             CeilingTriangleMapObject.Show = (ceilingTriangle != 0x00);
 
-            //List<TriangleDataModel> cogFloorTris = TriangleUtilities.GetObjectTrianglesForObject(0x80341E28)
-            List<TriangleDataModel> cogFloorTris = TriangleUtilities.GetTrianglesInRange(0x8016DE30, 20)
+            uint upperCogAddress = RomVersionConfig.Switch(0x80341E28, 0x80340AB8);
+            List<TriangleDataModel> cogFloorTris = TriangleUtilities.GetObjectTrianglesForObject(upperCogAddress)
+            //List<TriangleDataModel> cogFloorTris = TriangleUtilities.GetTrianglesInRange(0x8016DE30, 20)
                 .FindAll(tri => tri.Classification == TriangleClassification.Floor);
             for (int i = 0; i < _cogFloorTris.Count; i++)
             {
@@ -490,8 +491,9 @@ namespace STROOP.Managers
                 }
             }
 
-            //List<TriangleDataModel> cog2FloorTris = TriangleUtilities.GetObjectTrianglesForObject(0x80342088)
-            List<TriangleDataModel> cog2FloorTris = TriangleUtilities.GetTrianglesInRange(0x8016E1F0, 20)
+            uint lowerCogAddress = RomVersionConfig.Switch(0x80342088, 0x80340D18);
+            List<TriangleDataModel> cog2FloorTris = TriangleUtilities.GetObjectTrianglesForObject(lowerCogAddress)
+            //List<TriangleDataModel> cog2FloorTris = TriangleUtilities.GetTrianglesInRange(0x8016E1F0, 20)
                 .FindAll(tri => tri.Classification == TriangleClassification.Floor);
             for (int i = 0; i < _cog2FloorTris.Count; i++)
             {
@@ -507,7 +509,7 @@ namespace STROOP.Managers
             }
 
             List<TriangleShape> cogWallTris = TriangleUtilities.GetWallTriangleHitboxComponents(
-                TriangleUtilities.GetObjectTrianglesForObject(0x80341E28)
+                TriangleUtilities.GetObjectTrianglesForObject(upperCogAddress)
                     .FindAll(tri => tri.Classification == TriangleClassification.Wall));
             for (int i = 0; i < _cogWallTris.Count; i++)
             {
