@@ -120,6 +120,44 @@ namespace STROOP.Ttc
             return null;
         }
 
+        public static List<List<int>> FindDualPendulumManipulation(int numIterations)
+        {
+            TtcSaveState currentSaveState = new TtcSaveState();
+            int currentStartFrame = MupenUtilities.GetFrameCount();
+
+            List<List<int>> dustFrameLists = new List<List<int>>();
+            for (int i = 0; i < numIterations; i++)
+            {
+                (bool success, TtcSaveState saveState, int relativeEndFrame, List<int> relativeDustFrames) =
+                    FindDualPendulumManipulation(currentSaveState);
+                if (!success) break;
+
+                List<int> absoluteDustFrames = relativeDustFrames.ConvertAll(rel => rel + currentStartFrame - 2);
+                dustFrameLists.Add(absoluteDustFrames);
+
+                currentSaveState = saveState;
+                currentStartFrame += relativeEndFrame;
+            }
+            return dustFrameLists;
+        }
+
+        public static (bool success, TtcSaveState savestate, int endFrame, List<int> dustFrames)
+            FindDualPendulumManipulation(TtcSaveState saveState)
+        {
+            List<List<int>> dustFrameLists = GetDustFrameLists(2, 25, 25);
+            foreach (List<int> dustFrames in dustFrameLists)
+            {
+                TtcSimulation simulation = new TtcSimulation(saveState);
+                simulation.AddDustFrames(dustFrames);
+                (bool success, TtcSaveState savestate, int endFrame) = simulation.FindDualPendulumManipulation();
+                if (success)
+                {
+                    return (success, savestate, endFrame, dustFrames);
+                }
+            }
+            return (false, null, 0, null);
+        }
+
         public static void FindIdealHandManipulation()
         {
             HandManipulationProgress startingProgress =

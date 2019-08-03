@@ -259,6 +259,67 @@ namespace STROOP.Ttc
             return (false, null, 0);
         }
 
+        public (bool success, TtcSaveState saveState, int endFrame) FindDualPendulumManipulation()
+        {
+            TtcPendulum pendulum1 = GetClosePendulum();
+            int? pendulum1SwingIndexBaselineNullable = pendulum1.GetSwingIndex();
+            if (!pendulum1SwingIndexBaselineNullable.HasValue) return (false, null, 0);
+            int pendulum1SwingIndexBaseline = pendulum1SwingIndexBaselineNullable.Value;
+            
+            TtcPendulum pendulum2 = GetFarPendulum();
+            int? pendulum2SwingIndexBaselineNullable = pendulum2.GetSwingIndex();
+            if (!pendulum2SwingIndexBaselineNullable.HasValue) return (false, null, 0);
+            int pendulum2SwingIndexBaseline = pendulum2SwingIndexBaselineNullable.Value;
+
+            int frame = _startingFrame;
+            int counter = 0;
+            while (frame < _startingFrame + 300)
+            {
+                frame++;
+                counter++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                int? pendulum1SwingIndexNullable = pendulum1.GetSwingIndex();
+                if (!pendulum1SwingIndexNullable.HasValue) return (false, null, 0);
+                int pendulum1SwingIndex = pendulum1SwingIndexNullable.Value;
+                int pendulum1Countdown = pendulum1.GetCountdown();
+
+                int? pendulum2SwingIndexNullable = pendulum2.GetSwingIndex();
+                if (!pendulum2SwingIndexNullable.HasValue) return (false, null, 0);
+                int pendulum2SwingIndex = pendulum2SwingIndexNullable.Value;
+                int pendulum2Countdown = pendulum2.GetCountdown();
+
+                // check if pendulum changed index
+                if (pendulum1SwingIndex != pendulum1SwingIndexBaseline || pendulum2SwingIndex != pendulum2SwingIndexBaseline)
+                {
+                    // if pendulum is moving wrong way or has waiting timer, abort
+                    if (pendulum1SwingIndex < pendulum1SwingIndexBaseline ||
+                        pendulum2SwingIndex < pendulum2SwingIndexBaseline ||
+                        pendulum1._waitingTimer > 0 ||
+                        pendulum2._waitingTimer > 0)
+                    {
+                        return (false, null, 0);
+                    }
+
+                    // if we're in a safe zone, return
+                    if (pendulum1Countdown >= 15 && pendulum2Countdown >= 15)
+                    {
+                        return (true, GetSaveState(), frame);
+                    }
+
+                    // update baseline to allow for more iterations
+                    pendulum1SwingIndexBaseline = pendulum1SwingIndex;
+                    pendulum2SwingIndexBaseline = pendulum2SwingIndex;
+                }
+            }
+
+            return (false, null, 0);
+        }
+
         private class CogConfiguration
         {
             public readonly int UpperCogAngle;

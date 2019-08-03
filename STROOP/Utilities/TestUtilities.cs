@@ -23,7 +23,10 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            TtcMain.FindPendulumSyncingManipulation();
+            List<List<int>> dustFrameLists = TtcMain.FindDualPendulumManipulation(50);
+            List<string> outputList = dustFrameLists.ConvertAll(dustFrameList => "[" + String.Join(", ", dustFrameList) + "]");
+            string output = String.Join("\r\n", outputList);
+            InfoForm.ShowValue(output);
         }
 
         public static void TestSomethingElse()

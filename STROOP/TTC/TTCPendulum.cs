@@ -107,6 +107,17 @@ namespace STROOP.Ttc
                 _accelerationDirection, _accelerationMagnitude, _angularVelocity, _angle);
         }
 
+        public int? GetSwingIndex()
+        {
+            return TableConfig.PendulumSwings.GetPendulumSwingIndex(GetAmplitude());
+        }
+
+        public int GetCountdown()
+        {
+            return WatchVariableSpecialUtilities.GetPendulumCountdown(
+                _accelerationDirection, _accelerationMagnitude, _angularVelocity, _angle, _waitingTimer);
+        }
+
         public override void ApplyToAddress(uint address)
         {
             Config.Stream.SetValue((float)_accelerationDirection, address + 0xF4);
