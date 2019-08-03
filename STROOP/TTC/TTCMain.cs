@@ -120,12 +120,13 @@ namespace STROOP.Ttc
             return null;
         }
 
-        public static List<List<int>> FindDualPendulumManipulation(int numIterations)
+        public static Dictionary<int, List<int>> FindDualPendulumManipulation(int numIterations)
         {
             TtcSaveState currentSaveState = new TtcSaveState();
             int currentStartFrame = MupenUtilities.GetFrameCount();
 
-            List<List<int>> dustFrameLists = new List<List<int>>();
+
+            Dictionary<int, List<int>> dustFrameLists = new Dictionary<int, List<int>>();
             for (int i = 0; i < numIterations; i++)
             {
                 (bool success, TtcSaveState saveState, int relativeEndFrame, List<int> relativeDustFrames) =
@@ -133,7 +134,8 @@ namespace STROOP.Ttc
                 if (!success) break;
 
                 List<int> absoluteDustFrames = relativeDustFrames.ConvertAll(rel => rel + currentStartFrame - 2);
-                dustFrameLists.Add(absoluteDustFrames);
+                dustFrameLists[currentStartFrame] = absoluteDustFrames;
+                Config.Print(currentStartFrame + ":\t[" + string.Join(",", absoluteDustFrames) + "]");
 
                 currentSaveState = saveState;
                 currentStartFrame += relativeEndFrame;

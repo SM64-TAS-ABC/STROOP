@@ -23,15 +23,22 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            List<List<int>> dustFrameLists = TtcMain.FindDualPendulumManipulation(50);
-            List<string> outputList = dustFrameLists.ConvertAll(dustFrameList => "[" + String.Join(", ", dustFrameList) + "]");
-            string output = String.Join("\r\n", outputList);
-            InfoForm.ShowValue(output);
+            TestSomething23();
         }
 
         public static void TestSomethingElse()
         {
             TestSomething21();
+        }
+
+        public static void TestSomething23()
+        {
+            List<string> outputList = TtcMain.FindDualPendulumManipulation(50).ToList().ConvertAll(pair =>
+            {
+                return pair.Key + ":\t[" + string.Join(",", pair.Value) + "]";
+            });
+            string output = String.Join("\r\n", outputList);
+            InfoForm.ShowValue(output);
         }
 
         public static void TestSomething22()
