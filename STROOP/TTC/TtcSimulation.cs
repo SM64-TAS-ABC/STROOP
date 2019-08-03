@@ -444,6 +444,11 @@ namespace STROOP.Ttc
             return _rngObjects[8] as TtcPendulum;
         }
 
+        public TtcPendulum GetFarPendulum()
+        {
+            return _rngObjects[9] as TtcPendulum;
+        }
+
         public TtcHand GetUpperHand()
         {
             return _rngObjects[37] as TtcHand;
@@ -686,6 +691,36 @@ namespace STROOP.Ttc
                     return;
                 }
             }
+        }
+
+        public int? FindPendulumSyncingManipulation()
+        {
+            int limit = 500;
+
+            int counter = 0;
+            _currentFrame = _startingFrame;
+            while (_currentFrame < _startingFrame + limit)
+            {
+                counter++;
+                _currentFrame++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(_currentFrame);
+                    rngObject.Update();
+                }
+
+                TtcPendulum pendulum1 = GetClosePendulum();
+                TtcPendulum pendulum2 = GetFarPendulum();
+                if (pendulum1._accelerationDirection == pendulum2._accelerationDirection &&
+                    pendulum1._accelerationMagnitude == pendulum2._accelerationMagnitude &&
+                    pendulum1._angularVelocity == pendulum2._angularVelocity &&
+                    pendulum1._waitingTimer == pendulum2._waitingTimer &&
+                    pendulum1._angle == pendulum2._angle)
+                {
+                    return _currentFrame;
+                }
+            }
+            return null;
         }
     }
 

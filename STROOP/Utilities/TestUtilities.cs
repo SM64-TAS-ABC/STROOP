@@ -23,7 +23,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            TestSomething22();
+            TtcMain.FindPendulumSyncingManipulation();
         }
 
         public static void TestSomethingElse()

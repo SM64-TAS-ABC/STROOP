@@ -314,6 +314,12 @@ namespace STROOP.Ttc
             return dustFrames;
         }
 
+        private static string FormatDustFrames(List<int> dustFrames)
+        {
+            List<int> dustFrameInputs = dustFrames.ConvertAll(dust => dust - 2);
+            return "[" + string.Join(",", dustFrameInputs) + "]";
+        }
+
         public static void FindIdealReentryManipulation()
         {
             TtcSaveState saveState = new TtcSaveState();
@@ -337,6 +343,25 @@ namespace STROOP.Ttc
             TtcSaveState savestate = new TtcSaveState(savestateString);
             TtcSimulation simulation = new TtcSimulation(savestate, startFrame, new List<int>());
             simulation.FindIdealReentryManipulationGivenFrame1(new List<int>(), startFrame);
+        }
+
+        public static void FindPendulumSyncingManipulation()
+        {
+            TtcSaveState saveState = new TtcSaveState();
+            int startingFrame = MupenUtilities.GetFrameCount();
+            List<List<int>> dustFramesLists = GetDustFrameLists(startingFrame + 2, 25, 25);
+
+            Config.Print("START FindPendulumSyncingManipulation");
+            foreach (List<int> dustFrames in dustFramesLists)
+            {
+                TtcSimulation simulation = new TtcSimulation(saveState, startingFrame, dustFrames);
+                int? syncingFrame = simulation.FindPendulumSyncingManipulation();
+                if (syncingFrame.HasValue)
+                {
+                    Config.Print(syncingFrame.Value + "\t" + FormatDustFrames(dustFrames));
+                }
+            }
+            Config.Print("END FindPendulumSyncingManipulation");
         }
     }
 
