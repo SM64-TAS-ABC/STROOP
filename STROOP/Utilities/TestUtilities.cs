@@ -23,12 +23,40 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            TestSomething23();
+            TestSomething24();
         }
 
         public static void TestSomethingElse()
         {
             TestSomething21();
+        }
+
+        public static void TestSomething24()
+        {
+            int range = 100;
+            int range2 = 10000;
+
+            List<int> goodAngles = new List<int>() { 27408, 27424, 27440, 27456, 27472 };
+
+            for (int i = 0; i < range; i++)
+            {
+                int initialIndex = 305 + i;
+                int initialAngle = TableConfig.PendulumSwings.GetPendulumAmplitude(initialIndex);
+                TtcPendulum2 pendulum = new TtcPendulum2(new TtcRng(0), -1 * Math.Sign(initialAngle), initialAngle, 0, 13, 0);
+                for (int j = 0; j < range2; j++)
+                {
+                    pendulum.Update();
+                    int angle = pendulum._angle;
+                    int angleTruncated = MoreMath.NormalizeAngleTruncated(angle);
+                    string index = pendulum.GetSwingIndexExtended();
+                    if (goodAngles.Contains(angleTruncated))
+                    {
+                        Config.Print(
+                            "i={0}, j={1}, initialIndex={2}, initialAngle={3}, angle={4}, angleTruncated={5}, index={6}",
+                            i, j, initialIndex, initialAngle, angle, angleTruncated, index);
+                    }
+                }
+            }
         }
 
         public static void TestSomething23()

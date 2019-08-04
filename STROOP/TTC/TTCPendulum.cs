@@ -112,6 +112,11 @@ namespace STROOP.Ttc
             return TableConfig.PendulumSwings.GetPendulumSwingIndex(GetAmplitude());
         }
 
+        public string GetSwingIndexExtended()
+        {
+            return TableConfig.PendulumSwings.GetPendulumSwingIndexExtended(GetAmplitude());
+        }
+
         public int GetCountdown()
         {
             return WatchVariableSpecialUtilities.GetPendulumCountdown(
