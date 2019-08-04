@@ -164,6 +164,16 @@ namespace STROOP.Ttc
             Config.Stream.SetValue(_state, address + 0x14C);
             Config.Stream.SetValue(_timer, address + 0x154);
         }
+
+        public bool IsExtended()
+        {
+            return _state == 2 || (_state == 3 && _timer < 33);
+        }
+
+        public bool IsRetracting()
+        {
+            return _state == 3 && _timer >= 33;
+        }
     }
 
 }

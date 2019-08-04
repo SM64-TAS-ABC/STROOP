@@ -354,7 +354,7 @@ namespace STROOP.Ttc
             return dustFrames;
         }
 
-        private static string FormatDustFrames(List<int> dustFrames)
+        public static string FormatDustFrames(List<int> dustFrames)
         {
             List<int> dustFrameInputs = dustFrames.ConvertAll(dust => dust - 2);
             return "[" + string.Join(",", dustFrameInputs) + "]";
@@ -402,6 +402,21 @@ namespace STROOP.Ttc
                 }
             }
             Config.Print("END FindPendulumSyncingManipulation");
+        }
+
+        public static void FindMovingBarManipulation()
+        {
+            TtcSaveState saveState = new TtcSaveState();
+            int startingFrame = MupenUtilities.GetFrameCount();
+            List<List<int>> dustFramesLists = GetDustFrameLists(startingFrame + 2, 25, 25);
+
+            Config.Print("START FindMovingBarManipulation");
+            foreach (List<int> dustFrames in dustFramesLists)
+            {
+                TtcSimulation simulation = new TtcSimulation(saveState, startingFrame, dustFrames);
+                simulation.FindMovingBarManipulationGivenDustFrames(dustFrames);
+            }
+            Config.Print("END FindMovingBarManipulation");
         }
     }
 

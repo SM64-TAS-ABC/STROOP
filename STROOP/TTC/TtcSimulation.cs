@@ -545,6 +545,16 @@ namespace STROOP.Ttc
             return _rngObjects[68] as TtcBobomb;
         }
 
+        public TtcPusher GetMiddlePusher()
+        {
+            return _rngObjects[19] as TtcPusher;
+        }
+
+        public TtcPusher GetUpperPusher()
+        {
+            return _rngObjects[20] as TtcPusher;
+        }
+
         // Given dust, goes forward and spawns height swings to investigate
         public void FindIdealReentryManipulationGivenDustFrames(List<int> dustFrames)
         {
@@ -783,6 +793,89 @@ namespace STROOP.Ttc
             }
             return null;
         }
-    }
 
+        public void FindMovingBarManipulationGivenDustFrames(List<int> dustFrames)
+        {
+            int limit = 1000;
+
+            TtcPendulum closePendulum = GetClosePendulum();
+            TtcPendulum farPendulum = GetFarPendulum();
+
+            int maxDustFrame = dustFrames.Count == 0 ? 0 : dustFrames.Max();
+            int counter = 0;
+            int frame = _startingFrame;
+            while (frame < _startingFrame + limit)
+            {
+                counter++;
+                frame++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                if (frame > maxDustFrame &&
+                    farPendulum._accelerationDirection == -1 &&
+                    farPendulum._accelerationMagnitude == 13 &&
+                    farPendulum._angularVelocity == 0 &&
+                    farPendulum._waitingTimer == 0 &&
+                    farPendulum._angle == 34440)
+                {
+                    TtcSimulation simulation = new TtcSimulation(GetSaveState(), frame, new List<int>());
+                    simulation.FindMovingBarManipulationGivenFrame1(dustFrames, frame);
+                }
+
+                (int, int)? closePair = TableConfig.PendulumSwings.GetPendulumSwingIndexExtendedPair(closePendulum.GetAmplitude());
+                (int, int)? farPair = TableConfig.PendulumSwings.GetPendulumSwingIndexExtendedPair(farPendulum.GetAmplitude());
+                if (!closePair.HasValue || !farPair.HasValue) return;
+                (int c1, int c2) = closePair.Value;
+                (int f1, int f2) = farPair.Value;
+                if (c1 != 306) return;
+                if (f1 != 310) return;
+            }
+        }
+
+        public void FindMovingBarManipulationGivenFrame1(List<int> dustFrames, int frame1)
+        {
+            TtcPendulum closePendulum = GetClosePendulum();
+            TtcPendulum farPendulum = GetFarPendulum();
+            TtcPusher middlePusher = GetMiddlePusher();
+            TtcPusher upperPusher = GetUpperPusher();
+
+            int? pendulumAngleCounter = null;
+
+            int counter = 0;
+            int frame = _startingFrame;
+            while (true)
+            {
+                counter++;
+                frame++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                if (counter == 142)
+                {
+                    if (!middlePusher.IsExtended()) return;
+                }
+
+                if (middlePusher.IsRetracting() &&
+                    middlePusher._timer < 50 &&
+                    closePendulum._angle == 27477 &&
+                    upperPusher.IsExtended())
+                {
+                    pendulumAngleCounter = counter;
+                    Config.Print("SUCCESS\t{0}\t{1}\t", frame1, TtcMain.FormatDustFrames(dustFrames));
+                }
+
+                if (counter == 300)
+                {
+                    return;
+                }
+            }
+        }
+
+    }
 }

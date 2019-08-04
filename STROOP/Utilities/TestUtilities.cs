@@ -23,7 +23,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            TestSomething24();
+            TtcMain.FindMovingBarManipulation();
         }
 
         public static void TestSomethingElse()
