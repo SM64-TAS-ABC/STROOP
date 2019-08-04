@@ -861,13 +861,14 @@ namespace STROOP.Ttc
                     if (!middlePusher.IsExtended()) return;
                 }
 
-                if (middlePusher.IsRetracting() &&
+                if (counter > 142 &&
+                    middlePusher.IsRetracting() &&
                     middlePusher._timer < 50 &&
                     closePendulum._angle == 27477 &&
                     upperPusher.IsExtended())
                 {
                     pendulumAngleCounter = counter;
-                    Config.Print("SUCCESS\t{0}\t{1}\t", frame1, TtcMain.FormatDustFrames(dustFrames));
+                    Config.Print("SUCCESS\t{0}\t{1}\t{2}", frame1, frame, TtcMain.FormatDustFrames(dustFrames));
                 }
 
                 if (counter == 300)
