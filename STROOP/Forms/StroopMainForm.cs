@@ -510,7 +510,6 @@ namespace STROOP
             TableConfig.Missions = XmlConfigParser.OpenMissionTable(@"Config/Missions.xml");
             TableConfig.CourseData = XmlConfigParser.OpenCourseDataTable(@"Config/CourseData.xml");
             TableConfig.FlyGuyData = new FlyGuyDataTable();
-            TableConfig.PendulumVertexes = XmlConfigParser.OpenPendulumVertexTable(@"Resources/pendulum_vertices.txt");
 
             loadingForm.UpdateStatus("Creating Managers", statusNum++);
             CreateManagers();
