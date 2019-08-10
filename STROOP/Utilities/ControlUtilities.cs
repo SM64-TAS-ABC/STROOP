@@ -119,14 +119,14 @@ namespace STROOP.Utilities
             List<Point> positionList = buttonList.ConvertAll(
                 button => new Point(button.Location.X, button.Location.Y));
 
-            ToolStripMenuItem itemLeft = new ToolStripMenuItem("Face Left");
-            ToolStripMenuItem itemRight = new ToolStripMenuItem("Face Right");
-            ToolStripMenuItem itemUp = new ToolStripMenuItem("Face Up");
-            ToolStripMenuItem itemDown = new ToolStripMenuItem("Face Down");
-            ToolStripMenuItem itemUpLeft = new ToolStripMenuItem("Face Up-Left");
-            ToolStripMenuItem itemDownLeft = new ToolStripMenuItem("Face Down-Left");
-            ToolStripMenuItem itemUpRight = new ToolStripMenuItem("Face Up-Right");
-            ToolStripMenuItem itemDownRight = new ToolStripMenuItem("Face Down-Right");
+            ToolStripMenuItem itemLeft = new ToolStripMenuItem("Face Left (49152)");
+            ToolStripMenuItem itemRight = new ToolStripMenuItem("Face Right (16384)");
+            ToolStripMenuItem itemUp = new ToolStripMenuItem("Face Up (32768)");
+            ToolStripMenuItem itemDown = new ToolStripMenuItem("Face Down (0)");
+            ToolStripMenuItem itemUpLeft = new ToolStripMenuItem("Face Up-Left (40960)");
+            ToolStripMenuItem itemDownLeft = new ToolStripMenuItem("Face Down-Left (57344)");
+            ToolStripMenuItem itemUpRight = new ToolStripMenuItem("Face Up-Right (24576)");
+            ToolStripMenuItem itemDownRight = new ToolStripMenuItem("Face Down-Right (8192)");
             ToolStripMenuItem itemInverted = new ToolStripMenuItem("Inverted");
             int lastDirection = 0;
 
