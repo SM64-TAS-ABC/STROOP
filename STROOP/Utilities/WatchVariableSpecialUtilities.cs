@@ -1084,6 +1084,17 @@ namespace STROOP.Structs
                     return Config.Stream.SetValue(newLastReleaseTime, objAddress + ObjectConfig.HootLastReleaseTimeOffset);
                 }));
 
+            // Object specific vars - Power Star
+
+            _dictionary.Add("PowerStarMissionName",
+                ((uint objAddress) =>
+                {
+                    int courseIndex = Config.Stream.GetInt16(MiscConfig.LevelIndexAddress);
+                    int missionIndex = Config.Stream.GetByte(objAddress + ObjectConfig.PowerStarMissionIndex);
+                    return TableConfig.Missions.GetInGameMissionName(courseIndex, missionIndex);
+                },
+                DEFAULT_SETTER));
+
             // Mario vars
 
             _dictionary.Add("RotationDisplacementX",

@@ -129,5 +129,7 @@ namespace STROOP.Structs
         public static readonly uint BitfsPlatformGroupTimerOffset = 0xF4;
 
         public static readonly uint HootLastReleaseTimeOffset = 0x110;
+
+        public static readonly uint PowerStarMissionIndex = 0x188;
     }
 }

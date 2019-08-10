@@ -46,7 +46,7 @@ namespace STROOP.Structs
         public string GetInGameMissionName(int inGameCourseIndex, int inGameMissionIndex)
         {
             if (_inGameTable.ContainsKey((inGameCourseIndex, inGameMissionIndex)))
-                return _table[(inGameCourseIndex, inGameMissionIndex)].MissionName;
+                return _inGameTable[(inGameCourseIndex, inGameMissionIndex)].MissionName;
 
             return "(unknown mission name)";
         }
