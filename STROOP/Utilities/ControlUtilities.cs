@@ -154,10 +154,11 @@ namespace STROOP.Utilities
                 for (int i = 0; i < buttonList.Count; i++)
                 {
                     int sign = inverted ? -1 : 1;
-                    int newDirection = MoreMath.NonNegativeModulus(direction + i * sign, buttonList.Count);
-                    Point newPoint = positionList[newDirection];
-                    Button button = buttonList[i];
-                    button.Location = newPoint;
+                    int positionIndex = MoreMath.NonNegativeModulus(i * sign, buttonList.Count);
+                    int buttonIndex = MoreMath.NonNegativeModulus(direction + i, buttonList.Count);
+                    Point point = positionList[positionIndex];
+                    Button button = buttonList[buttonIndex];
+                    button.Location = point;
                 }
             };
 
