@@ -1582,11 +1582,15 @@ namespace STROOP.Utilities
             {
                 int courseIndex = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("courseIndex")).Value);
                 int missionIndex = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("missionIndex")).Value);
+                int inGameCourseIndex = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("inGameCourseIndex")).Value);
+                int inGameMissionIndex = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("inGameMissionIndex")).Value);
                 string missionName = element.Attribute(XName.Get("missionName")).Value;
                 missionTable.Add(new MissionTable.MissionReference()
                 {
                     CourseIndex = courseIndex,
                     MissionIndex = missionIndex,
+                    InGameCourseIndex = inGameCourseIndex,
+                    InGameMissionIndex = inGameMissionIndex,
                     MissionName = missionName,
                 });
             }

@@ -12,6 +12,8 @@ namespace STROOP.Structs
         {
             public int CourseIndex;
             public int MissionIndex;
+            public int InGameCourseIndex;
+            public int InGameMissionIndex;
             public string MissionName;
 
             public override int GetHashCode()
@@ -21,6 +23,7 @@ namespace STROOP.Structs
         }
 
         Dictionary<(int, int), MissionReference> _table = new Dictionary<(int, int), MissionReference>();
+        Dictionary<(int, int), MissionReference> _inGameTable = new Dictionary<(int, int), MissionReference>();
 
         public MissionTable()
         {
@@ -29,6 +32,7 @@ namespace STROOP.Structs
         public void Add(MissionReference missionRef)
         {
             _table.Add((missionRef.CourseIndex, missionRef.MissionIndex), missionRef);
+            _inGameTable.Add((missionRef.InGameCourseIndex, missionRef.InGameMissionIndex), missionRef);
         }
 
         public string GetMissionName(int courseIndex, int missionIndex)
@@ -37,6 +41,14 @@ namespace STROOP.Structs
                 return _table[(courseIndex, missionIndex)].MissionName;
 
             return null;
+        }
+
+        public string GetInGameMissionName(int inGameCourseIndex, int inGameMissionIndex)
+        {
+            if (_inGameTable.ContainsKey((inGameCourseIndex, inGameMissionIndex)))
+                return _table[(inGameCourseIndex, inGameMissionIndex)].MissionName;
+
+            return "(unknown mission name)";
         }
     }
 }
