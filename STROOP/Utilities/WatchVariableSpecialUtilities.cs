@@ -1090,7 +1090,7 @@ namespace STROOP.Structs
                 ((uint objAddress) =>
                 {
                     int courseIndex = Config.Stream.GetInt16(MiscConfig.LevelIndexAddress);
-                    int missionIndex = Config.Stream.GetByte(objAddress + ObjectConfig.PowerStarMissionIndex);
+                    int missionIndex = Config.Stream.GetByte(objAddress + ObjectConfig.PowerStarMissionIndexOffset);
                     return TableConfig.Missions.GetInGameMissionName(courseIndex, missionIndex);
                 },
                 DEFAULT_SETTER));

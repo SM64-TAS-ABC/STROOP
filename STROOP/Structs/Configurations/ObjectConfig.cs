@@ -130,6 +130,6 @@ namespace STROOP.Structs
 
         public static readonly uint HootLastReleaseTimeOffset = 0x110;
 
-        public static readonly uint PowerStarMissionIndex = 0x188;
+        public static readonly uint PowerStarMissionIndexOffset = 0x188;
     }
 }
