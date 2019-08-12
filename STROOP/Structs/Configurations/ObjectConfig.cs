@@ -121,6 +121,9 @@ namespace STROOP.Structs
         public static readonly uint ScuttlebugPhaseOffset = 0x150;
         public static readonly uint ScuttlebugTargetAngleOffset = 0x162;
 
+        public static readonly uint GoombaCountdownOffset = 0xFC;
+        public static readonly uint GoombaTargetAngleOffset = 0x100;
+
         public static uint SignGraphicsId { get => RomVersionConfig.Switch(SignGraphicsIdUS, SignGraphicsIdJP, SignGraphicsIdSH); }
         public static readonly uint SignGraphicsIdUS = 0x800F8C4C;
         public static readonly uint SignGraphicsIdJP = 0x800F5DCC;

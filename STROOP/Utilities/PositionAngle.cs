@@ -39,6 +39,7 @@ namespace STROOP.Utilities
             Selected,
             Moneybag,
             MoneybagHome,
+            GoombaProjection,
             Ghost,
             Tri,
             Wall,
@@ -61,6 +62,7 @@ namespace STROOP.Utilities
                 posAngleType == PositionAngleTypeEnum.ObjHome ||
                 posAngleType == PositionAngleTypeEnum.ObjGfx ||
                 posAngleType == PositionAngleTypeEnum.ObjScale ||
+                posAngleType == PositionAngleTypeEnum.GoombaProjection ||
                 posAngleType == PositionAngleTypeEnum.Tri;
         }
 
@@ -140,6 +142,8 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.ObjGfx, address: address);
         public static PositionAngle ObjScale(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.ObjScale, address: address);
+        public static PositionAngle GoombaProjection(uint address) =>
+            new PositionAngle(PositionAngleTypeEnum.GoombaProjection, address: address);
         public static PositionAngle Tri(uint address, int index) =>
             new PositionAngle(PositionAngleTypeEnum.Tri, address: address, index: index);
         public static PositionAngle Wall(int index) =>
@@ -228,6 +232,12 @@ namespace STROOP.Utilities
             else if (parts.Count == 1 && parts[0] == "moneybaghome")
             {
                 return MoneybagHome;
+            }
+            else if (parts.Count == 2 && parts[0] == "goombaprojection")
+            {
+                uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
+                if (!address.HasValue) return null;
+                return GoombaProjection(address.Value);
             }
             else if (parts.Count == 1 && parts[0] == "ghost")
             {
@@ -336,6 +346,8 @@ namespace STROOP.Utilities
                         return GetObjectValue("Moneybag", CoordinateAngle.X);
                     case PositionAngleTypeEnum.MoneybagHome:
                         return GetObjectValue("Moneybag", CoordinateAngle.X, home: true);
+                    case PositionAngleTypeEnum.GoombaProjection:
+                        return GetGoombaProjection(Address.Value).x;
                     case PositionAngleTypeEnum.Ghost:
                         return GetObjectValue("Mario Ghost", CoordinateAngle.X, gfx: true);
                     case PositionAngleTypeEnum.Tri:
@@ -407,6 +419,8 @@ namespace STROOP.Utilities
                         return GetObjectValue("Moneybag", CoordinateAngle.Y);
                     case PositionAngleTypeEnum.MoneybagHome:
                         return GetObjectValue("Moneybag", CoordinateAngle.Y, home: true);
+                    case PositionAngleTypeEnum.GoombaProjection:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.YOffset);
                     case PositionAngleTypeEnum.Ghost:
                         return GetObjectValue("Mario Ghost", CoordinateAngle.Y, gfx: true);
                     case PositionAngleTypeEnum.Tri:
@@ -478,6 +492,8 @@ namespace STROOP.Utilities
                         return GetObjectValue("Moneybag", CoordinateAngle.Z);
                     case PositionAngleTypeEnum.MoneybagHome:
                         return GetObjectValue("Moneybag", CoordinateAngle.Z, home: true);
+                    case PositionAngleTypeEnum.GoombaProjection:
+                        return GetGoombaProjection(Address.Value).z;
                     case PositionAngleTypeEnum.Ghost:
                         return GetObjectValue("Mario Ghost", CoordinateAngle.Z, gfx: true);
                     case PositionAngleTypeEnum.Tri:
@@ -549,6 +565,8 @@ namespace STROOP.Utilities
                         return GetObjectValue("Moneybag", CoordinateAngle.Angle);
                     case PositionAngleTypeEnum.MoneybagHome:
                         return GetObjectValue("Moneybag", CoordinateAngle.Angle, home: true);
+                    case PositionAngleTypeEnum.GoombaProjection:
+                        return MoreMath.NormalizeAngleUshort(Config.Stream.GetInt32(Address.Value + ObjectConfig.GoombaTargetAngleOffset));
                     case PositionAngleTypeEnum.Ghost:
                         return GetObjectValue("Mario Ghost", CoordinateAngle.Angle, gfx: true);
                     case PositionAngleTypeEnum.Tri:
@@ -609,6 +627,16 @@ namespace STROOP.Utilities
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private static (double x, double z) GetGoombaProjection(uint address)
+        {
+            double startX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+            double startZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+            double hSpeed = Config.Stream.GetSingle(address + ObjectConfig.HSpeedOffset);
+            int countdown = Config.Stream.GetInt32(address + ObjectConfig.GoombaCountdownOffset);
+            ushort targetAngle = MoreMath.NormalizeAngleUshort(Config.Stream.GetInt32(address + ObjectConfig.GoombaTargetAngleOffset));
+            return MoreMath.AddVectorToPoint(hSpeed * countdown, targetAngle, startX, startZ);
         }
 
         private static double GetTriangleVertexComponent(uint address, int index, Coordinate coordinate)
@@ -731,6 +759,8 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.X);
                 case PositionAngleTypeEnum.MoneybagHome:
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.X, home: true);
+                case PositionAngleTypeEnum.GoombaProjection:
+                    return false;
                 case PositionAngleTypeEnum.Ghost:
                     return SetObjectValue(value, "Mario Ghost", CoordinateAngle.X, gfx: true);
                 case PositionAngleTypeEnum.Tri:
@@ -799,6 +829,8 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.Y);
                 case PositionAngleTypeEnum.MoneybagHome:
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.Y, home: true);
+                case PositionAngleTypeEnum.GoombaProjection:
+                    return false;
                 case PositionAngleTypeEnum.Ghost:
                     return SetObjectValue(value, "Mario Ghost", CoordinateAngle.Y, gfx: true);
                 case PositionAngleTypeEnum.Tri:
@@ -867,6 +899,8 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.Z);
                 case PositionAngleTypeEnum.MoneybagHome:
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.Z, home: true);
+                case PositionAngleTypeEnum.GoombaProjection:
+                    return false;
                 case PositionAngleTypeEnum.Ghost:
                     return SetObjectValue(value, "Mario Ghost", CoordinateAngle.Z, gfx: true);
                 case PositionAngleTypeEnum.Tri:
@@ -944,6 +978,8 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.Angle);
                 case PositionAngleTypeEnum.MoneybagHome:
                     return SetObjectValue(value, "Moneybag", CoordinateAngle.Angle, home: true);
+                case PositionAngleTypeEnum.GoombaProjection:
+                    return false;
                 case PositionAngleTypeEnum.Ghost:
                     return SetObjectValue(value, "Mario Ghost", CoordinateAngle.Angle, gfx: true);
                 case PositionAngleTypeEnum.Tri:
