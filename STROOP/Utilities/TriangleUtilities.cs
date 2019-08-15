@@ -89,6 +89,19 @@ namespace STROOP.Utilities
             infoForm.Show();
         }
 
+        public static void AnnihilateAllTrianglesButDeathBarriers()
+        {
+            List<uint> triangleAddresses = GetLevelTriangleAddresses();
+            triangleAddresses.ForEach(address =>
+            {
+                short type = Config.Stream.GetInt16(address + TriangleOffsetsConfig.SurfaceType);
+                if (type != 0x0A)
+                {
+                    ButtonUtilities.AnnihilateTriangle(address);
+                }
+            });
+        }
+
         public static void NeutralizeTriangles(TriangleClassification? classification = null)
         {
             List<uint> triangleAddresses = GetLevelTriangleAddresses();

@@ -130,8 +130,15 @@ namespace STROOP.Managers
                     () => ButtonUtilities.NeutralizeTriangle(_triangleAddress, true),
                 });
 
-            (splitContainerTriangles.Panel1.Controls["buttonAnnihilateTriangle"] as Button).Click
-                += (sender, e) => ButtonUtilities.AnnihilateTriangle(_triangleAddress);
+            Button buttonAnnihilateTriangle = splitContainerTriangles.Panel1.Controls["buttonAnnihilateTriangle"] as Button;
+            buttonAnnihilateTriangle.Click += (sender, e) => ButtonUtilities.AnnihilateTriangle(_triangleAddress);
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonAnnihilateTriangle,
+                new List<string>() { "Annihilate All Tri But Death Barriers" },
+                new List<Action>()
+                {
+                    () => TriangleUtilities.AnnihilateAllTrianglesButDeathBarriers(),
+                });
 
             var trianglePosGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTrianglePos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
