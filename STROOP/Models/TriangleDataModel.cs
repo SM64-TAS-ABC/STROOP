@@ -198,6 +198,16 @@ namespace STROOP.Models
             return Math.Max(X1, Math.Max(X2, X3));
         }
 
+        public short GetMinY()
+        {
+            return Math.Min(Y1, Math.Min(Y2, Y3));
+        }
+
+        public short GetMaxY()
+        {
+            return Math.Max(Y1, Math.Max(Y2, Y3));
+        }
+
         public short GetMinZ()
         {
             return Math.Min(Z1, Math.Min(Z2, Z3));

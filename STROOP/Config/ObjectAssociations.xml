@@ -1121,6 +1121,16 @@
     <SpawnCode gfxId="0xD9"/>
     <Image path="Pushable Block.png"/>
     <MapImage path="Pushable Block Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MinXCoordinate">X Min</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MaxXCoordinate">X Max</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MinYCoordinate">Y Min</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MaxYCoordinate">Y Max</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MinZCoordinate">Z Min</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MaxZCoordinate">Z Max</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="RangeXCoordinate">X Range</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="RangeYCoordinate">Y Range</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="RangeZCoordinate">Z Range</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="FarthestCoordinateDistance">Farthest Dist</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001548" name="Heave-Ho">
     <SpawnCode gfxId="0x59"/>

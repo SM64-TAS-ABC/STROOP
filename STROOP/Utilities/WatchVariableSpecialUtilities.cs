@@ -7,6 +7,7 @@ using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace STROOP.Structs
 {
@@ -1092,6 +1093,110 @@ namespace STROOP.Structs
                     int courseIndex = Config.Stream.GetInt16(MiscConfig.LevelIndexAddress);
                     int missionIndex = Config.Stream.GetByte(objAddress + ObjectConfig.PowerStarMissionIndexOffset);
                     return TableConfig.Missions.GetInGameMissionName(courseIndex, missionIndex);
+                },
+                DEFAULT_SETTER));
+
+            // Object specific vars - Pushable Block
+
+            _dictionary.Add("MinXCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Min(tri => tri.GetMinX());
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MaxXCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Max(tri => tri.GetMaxX());
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("RangeXCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Max(tri => tri.GetMaxX()) - tris.Min(tri => tri.GetMinX());
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MinYCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Min(tri => tri.GetMinY());
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MaxYCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Max(tri => tri.GetMaxY());
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("RangeYCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Max(tri => tri.GetMaxY()) - tris.Min(tri => tri.GetMinY());
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MinZCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Min(tri => tri.GetMinZ());
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MaxZCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Max(tri => tri.GetMaxZ());
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("RangeZCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Max(tri => tri.GetMaxZ()) - tris.Min(tri => tri.GetMinZ());
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("FarthestCoordinateDistance",
+                ((uint objAddress) =>
+                {
+                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+
+                    List<(int, int, int)> coordinates = new List<(int, int, int)>();
+                    tris.ForEach(tri =>
+                    {
+                        coordinates.Add((tri.X1, tri.Y1, tri.Z1));
+                        coordinates.Add((tri.X2, tri.Y2, tri.Z2));
+                        coordinates.Add((tri.X3, tri.Y3, tri.Z3));
+                    });
+                    return coordinates.Max(coord => MoreMath.GetDistanceBetween(objX, objY, objZ, coord.Item1, coord.Item2, coord.Item3));
                 },
                 DEFAULT_SETTER));
 
