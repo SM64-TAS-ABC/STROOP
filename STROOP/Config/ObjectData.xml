@@ -244,9 +244,9 @@
   <Data groupList="Transformation" type="float" offset="0x254" base="Object">Transform [2][3]</Data>
   <Data groupList="Transformation" type="float" offset="0x258" base="Object">Transform [3][3]</Data>
 
-  <Data groupList="Intermediate" type="float" offset="0x2C" base="Object">Scale Width</Data>
-  <Data groupList="Intermediate" type="float" offset="0x30" base="Object">Scale Height</Data>
-  <Data groupList="Intermediate" type="float" offset="0x34" base="Object">Scale Depth</Data>
+  <Data groupList="Intermediate" type="float" offset="0x2C" base="Object" coord="X">Scale Width</Data>
+  <Data groupList="Intermediate" type="float" offset="0x30" base="Object" coord="Y">Scale Height</Data>
+  <Data groupList="Intermediate" type="float" offset="0x34" base="Object" coord="Z">Scale Depth</Data>
   
   <Data groupList="Basic" type="float" offset="0x164" base="Object" coord="X">Home X</Data>
   <Data groupList="Basic" type="float" offset="0x168" base="Object" coord="Y">Home Y</Data>
