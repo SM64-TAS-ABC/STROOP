@@ -46,18 +46,7 @@ namespace STROOP.Models
             Y3 = y3;
             Z3 = z3;
 
-            List<double> v12 = new List<double>() { X2 - X1, Y2 - Y1, Z2 - Z1 };
-            List<double> v13 = new List<double>() { X3 - X1, Y3 - Y1, Z3 - Z1 };
-
-            double normXUnscaled = v12[1] * v13[2] - v12[2] * v13[1];
-            double normYUnscaled = v12[2] * v13[0] - v12[0] * v13[2];
-            double normZUnscaled = v12[0] * v13[1] - v12[1] * v13[0];
-
-            double magnitude = Math.Sqrt(normXUnscaled * normXUnscaled + normYUnscaled * normYUnscaled + normZUnscaled * normZUnscaled);
-            NormX = normXUnscaled / magnitude;
-            NormY = normYUnscaled / magnitude;
-            NormZ = normZUnscaled / magnitude;
-            NormOffset = -1 * (NormX * X1 + NormY * Y1 + NormZ * Z1);
+            (NormX, NormY, NormZ, NormOffset) = TriangleUtilities.GetNorms(X1, Y1, Z1, X2, Y2, Z2, X3, Y3, Z3);
         }
 
         public double GetY(double x, double z)

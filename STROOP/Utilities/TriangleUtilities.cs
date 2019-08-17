@@ -278,5 +278,24 @@ namespace STROOP.Utilities
 
             return (floorTris, wallTris);
         }
+
+        public static (float normX, float normY, float normZ, float normOffset) GetNorms(
+            double x1, double y1, double z1, double x2, double y2, double z2, double x3, double y3, double z3)
+        {
+            List<double> v12 = new List<double>() { x2 - x1, y2 - y1, z2 - z1 };
+            List<double> v13 = new List<double>() { x3 - x1, y3 - y1, z3 - z1 };
+
+            double normXUnscaled = v12[1] * v13[2] - v12[2] * v13[1];
+            double normYUnscaled = v12[2] * v13[0] - v12[0] * v13[2];
+            double normZUnscaled = v12[0] * v13[1] - v12[1] * v13[0];
+
+            double magnitude = Math.Sqrt(normXUnscaled * normXUnscaled + normYUnscaled * normYUnscaled + normZUnscaled * normZUnscaled);
+            double normX = normXUnscaled / magnitude;
+            double normY = normYUnscaled / magnitude;
+            double normZ = normZUnscaled / magnitude;
+            double normOffset = -1 * (normX * x1 + normY * y1 + normZ * z1);
+
+            return ((float)normX, (float)normY, (float)normZ, (float)normOffset);
+        }
     }
 } 

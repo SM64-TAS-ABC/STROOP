@@ -101,8 +101,14 @@ namespace STROOP.Managers
             _radioButtonTriOther = splitContainerTriangles.Panel1.Controls["radioButtonTriOther"] as RadioButton;
             _radioButtonTriOther.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Other);
 
-            (splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label).Click
-                += (sender, e) => ShowTriangleCoordinates();
+            Label labelTriangleSelection = splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label;
+            ControlUtilities.AddContextMenuStripFunctions(
+                labelTriangleSelection,
+                new List<string>() { "Update Norms" },
+                new List<Action>()
+                {
+                    () => UpdateNorms(),
+                });
 
             (splitContainerTriangles.Panel1.Controls["buttonGotoV1"] as Button).Click
                 += (sender, e) => ButtonUtilities.GotoTriangle(_triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
@@ -264,6 +270,18 @@ namespace STROOP.Managers
                     () => TriangleUtilities.DisableCamCollision(TriangleClassification.Floor),
                     () => TriangleUtilities.DisableCamCollision(TriangleClassification.Ceiling),
                 });
+        }
+
+        private void UpdateNorms()
+        {
+            if (_triangleAddress == 0) return;
+            TriangleDataModel tri = new TriangleDataModel(_triangleAddress);
+            (float normX, float normY, float normZ, float normOffset) =
+                TriangleUtilities.GetNorms(tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+            Config.Stream.SetValue(normX, _triangleAddress + TriangleOffsetsConfig.NormX);
+            Config.Stream.SetValue(normY, _triangleAddress + TriangleOffsetsConfig.NormY);
+            Config.Stream.SetValue(normZ, _triangleAddress + TriangleOffsetsConfig.NormZ);
+            Config.Stream.SetValue(normOffset, _triangleAddress + TriangleOffsetsConfig.NormOffset);
         }
 
         private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)
