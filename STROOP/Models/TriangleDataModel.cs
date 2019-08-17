@@ -218,6 +218,36 @@ namespace STROOP.Models
             return Math.Max(Z1, Math.Max(Z2, Z3));
         }
 
+        public int GetRangeX()
+        {
+            return GetMaxX() - GetMinX();
+        }
+
+        public int GetRangeY()
+        {
+            return GetMaxY() - GetMinY();
+        }
+
+        public int GetRangeZ()
+        {
+            return GetMaxZ() - GetMinZ();
+        }
+
+        public double GetMidpointX()
+        {
+            return (GetMinX() + GetMaxX()) / 2.0;
+        }
+
+        public double GetMidpointY()
+        {
+            return (GetMinY() + GetMaxY()) / 2.0;
+        }
+
+        public double GetMidpointZ()
+        {
+            return (GetMinZ() + GetMaxZ()) / 2.0;
+        }
+
         public int GetClosestVertex()
         {
             float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);

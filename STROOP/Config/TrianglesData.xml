@@ -95,6 +95,19 @@
   <Data groupList="Advanced" base="None" specialType="ObjectNodeCount" color="Grey">Object Node Count</Data>
   <Data groupList="Advanced" type="int" offsetUS="0x8036116C" offsetJP="0x8035FDFC" base="Relative" color="Grey">Total Node Count</Data>
 
+  <Data groupList="Advanced" base="Triangle" specialType="TriMinX" color="Blue">X Min</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="TriMaxX" color="Blue">X Max</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="TriMinY" color="Blue">Y Min</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="TriMaxY" color="Blue">Y Max</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="TriMinZ" color="Blue">Z Min</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="TriMaxZ" color="Blue">Z Max</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="TriRangeX" coord="X" color="Blue">X Range</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="TriRangeY" coord="Y" color="Blue">Y Range</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="TriRangeZ" coord="Z" color="Blue">Z Range</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="TriMidpointX" coord="X" color="Blue">X Midpoint</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="TriMidpointY" coord="Y" color="Blue">Y Midpoint</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="TriMidpointZ" coord="Z" color="Blue">Z Midpoint</Data>
+
   <Data groupList="Advanced" base="Triangle" specialType="XDistTriV1ToMario" color="Purple" coord="X">XDist to V1</Data>
   <Data groupList="Advanced" base="Triangle" specialType="YDistTriV1ToMario" color="Purple" coord="Y">YDist to V1</Data>
   <Data groupList="Advanced" base="Triangle" specialType="ZDistTriV1ToMario" color="Purple" coord="Z">ZDist to V1</Data>

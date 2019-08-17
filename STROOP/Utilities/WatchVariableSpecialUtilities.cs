@@ -2132,6 +2132,90 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("TriMinX",
+                ((uint triAddress) =>
+                {
+                    return new TriangleDataModel(triAddress).GetMinX();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriMaxX",
+                ((uint triAddress) =>
+                {
+                    return new TriangleDataModel(triAddress).GetMaxX();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriMinY",
+                ((uint triAddress) =>
+                {
+                    return new TriangleDataModel(triAddress).GetMinY();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriMaxY",
+                ((uint triAddress) =>
+                {
+                    return new TriangleDataModel(triAddress).GetMaxY();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriMinZ",
+                ((uint triAddress) =>
+                {
+                    return new TriangleDataModel(triAddress).GetMinZ();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriMaxZ",
+                ((uint triAddress) =>
+                {
+                    return new TriangleDataModel(triAddress).GetMaxZ();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriRangeX",
+                ((uint triAddress) =>
+                {
+                    return new TriangleDataModel(triAddress).GetRangeX();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriRangeY",
+                ((uint triAddress) =>
+                {
+                    return new TriangleDataModel(triAddress).GetRangeY();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriRangeZ",
+                ((uint triAddress) =>
+                {
+                    return new TriangleDataModel(triAddress).GetRangeZ();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriMidpointX",
+                ((uint triAddress) =>
+                {
+                    return new TriangleDataModel(triAddress).GetMidpointX();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriMidpointY",
+                ((uint triAddress) =>
+                {
+                    return new TriangleDataModel(triAddress).GetMidpointY();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriMidpointZ",
+                ((uint triAddress) =>
+                {
+                    return new TriangleDataModel(triAddress).GetMidpointZ();
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("DistanceToLine12",
                 ((uint triAddress) =>
                 {
