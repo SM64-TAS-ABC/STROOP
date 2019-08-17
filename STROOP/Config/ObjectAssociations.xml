@@ -1130,6 +1130,9 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="RangeXCoordinate">X Range</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="RangeYCoordinate">Y Range</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="RangeZCoordinate">Z Range</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MidpointXCoordinate">X Midpoint</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MidpointYCoordinate">Y Midpoint</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MidpointZCoordinate">Z Midpoint</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FarthestCoordinateDistance">Farthest Dist</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001548" name="Heave-Ho">

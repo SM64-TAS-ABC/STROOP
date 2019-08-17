@@ -1116,15 +1116,6 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
-            _dictionary.Add("RangeXCoordinate",
-                ((uint objAddress) =>
-                {
-                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
-                    if (tris.Count == 0) return double.NaN;
-                    return tris.Max(tri => tri.GetMaxX()) - tris.Min(tri => tri.GetMinX());
-                },
-                DEFAULT_SETTER));
-
             _dictionary.Add("MinYCoordinate",
                 ((uint objAddress) =>
                 {
@@ -1140,15 +1131,6 @@ namespace STROOP.Structs
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxY());
-                },
-                DEFAULT_SETTER));
-
-            _dictionary.Add("RangeYCoordinate",
-                ((uint objAddress) =>
-                {
-                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
-                    if (tris.Count == 0) return double.NaN;
-                    return tris.Max(tri => tri.GetMaxY()) - tris.Min(tri => tri.GetMinY());
                 },
                 DEFAULT_SETTER));
 
@@ -1170,12 +1152,57 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("RangeXCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Max(tri => tri.GetMaxX()) - tris.Min(tri => tri.GetMinX());
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("RangeYCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Max(tri => tri.GetMaxY()) - tris.Min(tri => tri.GetMinY());
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("RangeZCoordinate",
                 ((uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxZ()) - tris.Min(tri => tri.GetMinZ());
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MidpointXCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return (tris.Max(tri => tri.GetMaxX()) + tris.Min(tri => tri.GetMinX())) / 2.0;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MidpointYCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return (tris.Max(tri => tri.GetMaxY()) + tris.Min(tri => tri.GetMinY())) / 2.0;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MidpointZCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return (tris.Max(tri => tri.GetMaxZ()) + tris.Min(tri => tri.GetMinZ())) / 2.0;
                 },
                 DEFAULT_SETTER));
 
