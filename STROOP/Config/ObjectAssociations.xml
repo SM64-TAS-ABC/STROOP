@@ -2507,6 +2507,19 @@
     <SpawnCode gfxId="0xc9"/>
     <Image path="Cannon Lid.png"/>
     <MapImage path="Cannon Lid Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MinXCoordinate">X Min</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MaxXCoordinate">X Max</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MinYCoordinate">Y Min</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MaxYCoordinate">Y Max</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MinZCoordinate">Z Min</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MaxZCoordinate">Z Max</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="RangeXCoordinate" coord="X">X Range</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="RangeYCoordinate" coord="Y">Y Range</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="RangeZCoordinate" coord="Z">Z Range</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MidpointXCoordinate" coord="X">X Midpoint</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MidpointYCoordinate" coord="Y">Y Midpoint</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MidpointZCoordinate" coord="Z">Z Midpoint</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="FarthestCoordinateDistance">Farthest Dist</Data>
   </Object>
   <Object behaviorScriptAddress="0x130032A8" name="Whirlpool">
     <SpawnCode gfxId="0x57"/>

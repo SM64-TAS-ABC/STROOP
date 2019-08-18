@@ -1096,7 +1096,7 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
-            // Object specific vars - Pushable Block
+            // Object specific vars - Coordinates
 
             _dictionary.Add("MinXCoordinate",
                 ((uint objAddress) =>
