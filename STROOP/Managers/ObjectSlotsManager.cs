@@ -313,7 +313,9 @@ namespace STROOP.Managers
             // Update slots
             UpdateSlots(sortedObjects);
 
-            SelectedObjects = DataModels.Objects.Where(o => o != null && SelectedSlotsAddresses.Contains(o.Address)).ToList();
+            List<ObjectDataModel> objs = DataModels.Objects.Where(o => o != null && SelectedSlotsAddresses.Contains(o.Address)).ToList();
+            objs.Sort((obj1, obj2) => SelectedSlotsAddresses.IndexOf(obj1.Address) - SelectedSlotsAddresses.IndexOf(obj2.Address));
+            SelectedObjects = objs;
         }
 
         private void UpdateSlots(IEnumerable<ObjectDataModel> sortedObjects)
