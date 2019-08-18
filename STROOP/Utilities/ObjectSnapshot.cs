@@ -11,7 +11,7 @@ namespace STROOP.Utilities
 {
     public class ObjectSnapshot
     {
-        public static ObjectSnapshot StoredObjectSnapshot;
+        public static List<ObjectSnapshot> StoredObjectSnapshotList;
 
         private readonly List<uint> uintValues;
 

@@ -228,17 +228,20 @@ namespace STROOP
             ToolStripMenuItem itemCopyObject = new ToolStripMenuItem("Copy Object");
             itemCopyObject.Click += (sender, e) =>
             {
-                ObjectSnapshot.StoredObjectSnapshot = new ObjectSnapshot(CurrentObject.Address);
+                ObjectSnapshot.StoredObjectSnapshotList = getObjects().ConvertAll(obj => new ObjectSnapshot(obj.Address));
             };
 
             ToolStripMenuItem itemPasteObject = new ToolStripMenuItem("Paste Object");
             itemPasteObject.Click += (sender, e) =>
             {
-                if (ObjectSnapshot.StoredObjectSnapshot == null) return;
-                getObjects().ForEach(obj =>
+                if (ObjectSnapshot.StoredObjectSnapshotList.Count == 0) return;
+                List<ObjectDataModel> objects = getObjects();
+                for (int i = 0; i < objects.Count; i++)
                 {
-                    ObjectSnapshot.StoredObjectSnapshot.Apply(obj.Address, false);
-                });
+                    ObjectDataModel obj = objects[i];
+                    ObjectSnapshot snapshot = ObjectSnapshot.StoredObjectSnapshotList[i % ObjectSnapshot.StoredObjectSnapshotList.Count];
+                    snapshot.Apply(obj.Address, false);
+                }
             };
 
             ContextMenuStrip = new ContextMenuStrip();
