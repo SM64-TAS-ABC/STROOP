@@ -109,6 +109,7 @@ namespace STROOP.Structs
                     "Copy with Spaces",
                     "Copy with Tabs",
                     "Copy with Line Breaks",
+                    "Copy with Names",
                     "Copy for Code",
                 },
                 new List<Action>()
@@ -117,6 +118,12 @@ namespace STROOP.Structs
                     () => copyValues(getVars(), " "),
                     () => copyValues(getVars(), "\t"),
                     () => copyValues(getVars(), "\r\n"),
+                    () =>
+                    {
+                        List<string> lines = getVars().ConvertAll(
+                            watchVar => watchVar.VarName + "\t" + watchVar.GetValue(false));
+                        Clipboard.SetText(String.Join("\r\n", lines));
+                    },
                     () =>
                     {
                         List<WatchVariableControl> watchVars = getVars();
