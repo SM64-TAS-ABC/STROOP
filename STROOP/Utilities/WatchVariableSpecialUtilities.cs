@@ -2080,6 +2080,19 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("MarioCell",
+                ((uint dummy) =>
+                {
+                    short marioX = (short)Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    short marioZ = (short)Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    int LEVEL_BOUNDARY_MAX = 0x2000;
+                    int CELL_SIZE = 0x400;
+                    int cellX = ((marioX + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
+                    int cellZ = ((marioZ + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
+                    return string.Format("X:{0},Z:{1}", cellX, cellZ);
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("ObjectTriCount",
                 ((uint dummy) =>
                 {
