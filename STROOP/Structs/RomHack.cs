@@ -67,11 +67,14 @@ namespace STROOP.Structs
             if (suspendStream)
                 Config.Stream.Suspend();
 
-            foreach (var address in _payload)
+            foreach (var (address, data) in _payload)
             {
+                // Hacks are entered as big endian; we need to swap the address endianess before writing 
+                var fixedAddress = EndiannessUtilities.SwapAddressEndianness(address, data.Length);
+
                 // Read original memory before replacing
-                originalMemory.Add(new Tuple<uint, byte[]>(address.Item1, Config.Stream.ReadRam((UIntPtr)address.Item1, address.Item2.Length, EndiannessType.Big)));
-                success &= Config.Stream.WriteRam(address.Item2, address.Item1, EndiannessType.Big);
+                originalMemory.Add(new Tuple<uint, byte[]>(fixedAddress, Config.Stream.ReadRam((UIntPtr)fixedAddress, data.Length, EndiannessType.Big)));
+                success &= Config.Stream.WriteRam(data, fixedAddress, EndiannessType.Big);
             }
 
             if (suspendStream)
