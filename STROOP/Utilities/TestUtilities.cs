@@ -23,12 +23,55 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            TtcMain.FindMovingBarManipulation();
+            TestSomething25();
         }
 
         public static void TestSomethingElse()
         {
             TestSomething21();
+        }
+        public static void TestSomething25()
+        {
+            List<double> doubleList = new List<double>()
+            {
+                2,
+                5.94287109375,
+                13.38134765625,
+                26.20458984375,
+                44.599609375,
+                62.783203125,
+                71.255859375,
+                73.255859375,
+                75.255859375,
+                77.255859375,
+                79.255859375,
+            };
+
+            int startX = 6765;
+            int startZ = 4152;
+
+            foreach (double dist in doubleList)
+            {
+                Dictionary<(int, int), int> dictionary = new Dictionary<(int, int), int>();
+
+                for (int angle = 0; angle <= 16384; angle++)
+                {
+                    (double x, double z) = MoreMath.AddVectorToPoint(dist, angle, startX, startZ);
+                    int xInt = (int)x;
+                    int zInt = (int)z;
+
+                    if (!dictionary.ContainsKey((xInt, zInt)))
+                    {
+                        dictionary[(xInt, zInt)] = 0;
+                    }
+                    dictionary[(xInt, zInt)]++;
+                }
+
+                foreach (KeyValuePair<(int, int), int> pairs in dictionary.ToList())
+                {
+                    Config.Print("{0}: ({1},{2}) => {3}", dist, pairs.Key.Item1, pairs.Key.Item2, pairs.Value);
+                }
+            }
         }
 
         public static void TestSomething24()
