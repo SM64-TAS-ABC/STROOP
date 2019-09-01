@@ -1227,6 +1227,33 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            // Object specific vars - Rolling Log
+
+            _dictionary.Add("RollingLogDistLimit",
+                ((uint objAddress) =>
+                {
+                    float distLimitSquared = Config.Stream.GetSingle(objAddress + ObjectConfig.RollingLogDistLimitSquaredOffset);
+                    double distLimit = Math.Sqrt(distLimitSquared);
+                    return distLimit;
+                },
+                (double newDistLimit, uint objAddress) =>
+                {
+                    double newDistLimitSquared = newDistLimit * newDistLimit;
+                    return Config.Stream.SetValue((float)newDistLimitSquared, objAddress + ObjectConfig.RollingLogDistLimitSquaredOffset);
+                }));
+
+            _dictionary.Add("RollingLogDist",
+                ((uint objAddress) =>
+                {
+                    float x = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float z = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float xCenter = Config.Stream.GetSingle(objAddress + ObjectConfig.RollingLogXCenterOffset);
+                    float zCenter = Config.Stream.GetSingle(objAddress + ObjectConfig.RollingLogZCenterOffset);
+                    double dist = MoreMath.GetDistanceBetween(xCenter, zCenter, x, z);
+                    return dist;
+                },
+                DEFAULT_SETTER));
+
             // Mario vars
 
             _dictionary.Add("RotationDisplacementX",

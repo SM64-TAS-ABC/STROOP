@@ -134,5 +134,9 @@ namespace STROOP.Structs
         public static readonly uint HootLastReleaseTimeOffset = 0x110;
 
         public static readonly uint PowerStarMissionIndexOffset = 0x188;
+
+        public static readonly uint RollingLogXCenterOffset = 0xF8;
+        public static readonly uint RollingLogZCenterOffset = 0xFC;
+        public static readonly uint RollingLogDistLimitSquaredOffset = 0xF4;
     }
 }

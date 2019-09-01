@@ -2956,9 +2956,11 @@
     <SpawnCode gfxId="0x35"/>
     <Image path="Rolling Log TTM.png"/>
     <MapImage path="Rolling Log Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">Dist Limit Squared</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">X Center</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Z Center</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">Dist Limit Squared</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="RollingLogDistLimit">Dist Limit</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="RollingLogDist">Dist</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003F78" name="Volcano Crusher">
     <SpawnCode gfxId="0x53"/>
@@ -2968,9 +2970,11 @@
     <SpawnCode gfxId="0x39"/>
     <Image path="Rolling Log LLL.png"/>
     <MapImage path="Rolling Log Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">Dist Limit Squared</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">X Center</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Z Center</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">Dist Limit Squared</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="RollingLogDistLimit">Dist Limit</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="RollingLogDist">Dist</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003FDC" name="1-Up (Impartial to Mario)">
     <SpawnCode gfxId="0xD4"/>
