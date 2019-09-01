@@ -118,11 +118,12 @@ namespace STROOP
                 labelVersionNumber,
                 new List<string>()
                 {
-                    "Enable TASer Settings",
                     "Open Mapping",
+                    "Expand RAM Size",
                     "Show MHS Vars",
                     "Download Latest STROOP Release",
                     "Show All Helpful Hints",
+                    "Enable TASer Settings",
                     "Add Gfx Vertices",
                     "Show Skribblio Words",
                     "Show Image Form",
@@ -131,16 +132,11 @@ namespace STROOP
                 },
                 new List<Action>()
                 {
+                    () => MappingConfig.OpenMapping(),
                     () =>
                     {
                         Config.RamSize = 0x800000;
-                        checkBoxUseRomHack.Checked = true;
-                        splitContainerTas.Panel1Collapsed = true;
-                        splitContainerTas.Panel2Collapsed = false;
-                        Config.TasManager.ShowTaserVariables();
-                        tabControlMain.SelectedTab = tabPageTas;
                     },
-                    () => MappingConfig.OpenMapping(),
                     () =>
                     {
                         string varFilePath = @"Config/MhsData.xml";
@@ -154,6 +150,15 @@ namespace STROOP
                     },
                     () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
                     () => HelpfulHintUtilities.ShowAllHelpfulHints(),
+                    () =>
+                    {
+                        Config.RamSize = 0x800000;
+                        checkBoxUseRomHack.Checked = true;
+                        splitContainerTas.Panel1Collapsed = true;
+                        splitContainerTas.Panel2Collapsed = false;
+                        Config.TasManager.ShowTaserVariables();
+                        tabControlMain.SelectedTab = tabPageTas;
+                    },
                     () => TestUtilities.AddGraphicsTriangleVerticesToTriangleTab(),
                     () => SkribblioUtilities.ShowWords(),
                     () =>
