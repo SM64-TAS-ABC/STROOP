@@ -12,8 +12,8 @@ namespace STROOP.Utilities
 {
     class DolphinProcessIO : WindowsProcessRamIO
     {
-        public DolphinProcessIO(Process process, Emulator emulator, uint ramSize)
-            : base(process, emulator, ramSize) { }
+        public DolphinProcessIO(Process process, Emulator emulator)
+            : base(process, emulator) { }
 
         protected override void CalculateOffset()
         {

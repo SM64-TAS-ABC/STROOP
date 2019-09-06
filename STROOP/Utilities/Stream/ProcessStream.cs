@@ -69,10 +69,10 @@ namespace STROOP.Utilities
             throw obj.Exception;
         }
 
-        private readonly Dictionary<Type, Func<Process, Emulator, uint, IEmuRamIO>> _ioCreationTable = new Dictionary<Type, Func<Process, Emulator, uint, IEmuRamIO>>()
+        private readonly Dictionary<Type, Func<Process, Emulator, IEmuRamIO>> _ioCreationTable = new Dictionary<Type, Func<Process, Emulator, IEmuRamIO>>()
         {
-            { typeof(WindowsProcessRamIO),  (p, e, s) => new WindowsProcessRamIO(p, e, s) },
-            { typeof(DolphinProcessIO),     (p, e, s) => new DolphinProcessIO(p, e, s) },
+            { typeof(WindowsProcessRamIO),  (p, e) => new WindowsProcessRamIO(p, e) },
+            { typeof(DolphinProcessIO),     (p, e) => new DolphinProcessIO(p, e) },
         };
 
         [DllImport("user32.dll")]
@@ -123,13 +123,13 @@ namespace STROOP.Utilities
 
         public bool OpenSTFile(string fileName)
         {
-            StFileIO fileIO = new StFileIO(fileName, Config.RamSize);
+            StFileIO fileIO = new StFileIO(fileName);
             return SwitchIO(fileIO);
         }
 
         public bool SwitchProcess(Process newProcess, Emulator emulator)
         {
-            IEmuRamIO newIo = newProcess != null ? _ioCreationTable[emulator.IOType](newProcess, emulator, Config.RamSize) : null;
+            IEmuRamIO newIo = newProcess != null ? _ioCreationTable[emulator.IOType](newProcess, emulator) : null;
             return SwitchIO(newIo);
         }
 

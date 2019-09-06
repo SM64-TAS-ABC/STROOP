@@ -1,4 +1,5 @@
 ﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,8 +12,6 @@ namespace STROOP.Utilities
 {
     public abstract class BaseProcessIO : IEmuRamIO
     {
-        protected uint _ramSize;
-
         public abstract event EventHandler OnClose;
 
         protected abstract bool WriteFunc(UIntPtr address, byte[] buffer);
@@ -27,9 +26,8 @@ namespace STROOP.Utilities
         public abstract bool Suspend();
         public abstract bool Resume();
 
-        public BaseProcessIO(uint ramSize)
+        public BaseProcessIO()
         {
-            _ramSize = ramSize;
         }
 
         public bool ReadRelative(uint address, byte[] buffer, EndiannessType endianness)
@@ -71,7 +69,7 @@ namespace STROOP.Utilities
         {
             // Safety bounds check
             if (address.ToUInt64() < BaseOffset.ToUInt64()
-                || address.ToUInt64() + (uint)buffer.Length >= BaseOffset.ToUInt64() + _ramSize)
+                || address.ToUInt64() + (uint)buffer.Length >= BaseOffset.ToUInt64() + Config.RamSize)
                 return false;
             
             if (Endianness == endianness)

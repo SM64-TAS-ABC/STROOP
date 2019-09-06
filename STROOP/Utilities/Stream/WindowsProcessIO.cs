@@ -26,11 +26,10 @@ namespace STROOP.Utilities
 
         public override event EventHandler OnClose;
 
-        public WindowsProcessRamIO(Process process, Emulator emulator, uint ramSize) : base(ramSize)
+        public WindowsProcessRamIO(Process process, Emulator emulator) : base()
         {
             _process = process;
             _emulator = emulator;
-            _ramSize = ramSize;
 
             _process.EnableRaisingEvents = true;
 

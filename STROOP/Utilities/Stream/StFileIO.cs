@@ -27,10 +27,9 @@ namespace STROOP.Utilities
 
         private byte[] _data;
 
-        public StFileIO(string path, uint ramSize) : base(ramSize)
+        public StFileIO(string path) : base()
         {
             _path = path;
-
             LoadMemory();
         }
 
