@@ -26,6 +26,7 @@ namespace STROOP.Structs
         Collision,
         Movement,
         Transformation,
+        Coordinate,
 
         HolpMario,
         HolpPoint,

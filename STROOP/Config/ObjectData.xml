@@ -264,4 +264,19 @@
   <Data groupList="Advanced" type="int" offset="0x18C" base="Object">Action 2</Data>
   <Data groupList="Advanced" type="int" offset="0x150" base="Object">Sub Action</Data>
   <Data groupList="Basic" type="int" offset="0x154" base="Object">Timer</Data>
+
+  <Data groupList="Coordinate" base="Object" specialType="MinXCoordinate" color="Blue">X Min</Data>
+  <Data groupList="Coordinate" base="Object" specialType="MaxXCoordinate" color="Blue">X Max</Data>
+  <Data groupList="Coordinate" base="Object" specialType="MinYCoordinate" color="Blue">Y Min</Data>
+  <Data groupList="Coordinate" base="Object" specialType="MaxYCoordinate" color="Blue">Y Max</Data>
+  <Data groupList="Coordinate" base="Object" specialType="MinZCoordinate" color="Blue">Z Min</Data>
+  <Data groupList="Coordinate" base="Object" specialType="MaxZCoordinate" color="Blue">Z Max</Data>
+  <Data groupList="Coordinate" base="Object" specialType="RangeXCoordinate" coord="X" color="Blue">X Range</Data>
+  <Data groupList="Coordinate" base="Object" specialType="RangeYCoordinate" coord="Y" color="Blue">Y Range</Data>
+  <Data groupList="Coordinate" base="Object" specialType="RangeZCoordinate" coord="Z" color="Blue">Z Range</Data>
+  <Data groupList="Coordinate" base="Object" specialType="MidpointXCoordinate" coord="X" color="Blue">X Midpoint</Data>
+  <Data groupList="Coordinate" base="Object" specialType="MidpointYCoordinate" coord="Y" color="Blue">Y Midpoint</Data>
+  <Data groupList="Coordinate" base="Object" specialType="MidpointZCoordinate" coord="Z" color="Blue">Z Midpoint</Data>
+  <Data groupList="Coordinate" base="Object" specialType="FarthestCoordinateDistance" color="Blue">Farthest Dist</Data>
+  
 </VarData>

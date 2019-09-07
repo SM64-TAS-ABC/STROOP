@@ -153,6 +153,7 @@ namespace STROOP.Managers
                 VariableGroup.Collision,
                 VariableGroup.Movement,
                 VariableGroup.Transformation,
+                VariableGroup.Coordinate,
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
