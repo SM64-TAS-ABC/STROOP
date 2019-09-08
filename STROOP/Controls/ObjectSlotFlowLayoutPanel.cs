@@ -24,8 +24,16 @@ namespace STROOP.Controls
                 if (address.HasValue) Config.ObjectSlotsManager.SelectSlotByAddress(address.Value);
             };
 
+            ToolStripMenuItem itemSelectMarkedSlots = new ToolStripMenuItem("Select Marked Slots");
+            itemSelectMarkedSlots.Click += (sender, e) =>
+            {
+                Config.ObjectSlotsManager.SelectedSlotsAddresses.Clear();
+                Config.ObjectSlotsManager.SelectedSlotsAddresses.AddRange(Config.ObjectSlotsManager.MarkedSlotsAddresses);
+            };
+
             ContextMenuStrip = new ContextMenuStrip();
             ContextMenuStrip.Items.Add(itemSelectCopiedAddress);
+            ContextMenuStrip.Items.Add(itemSelectMarkedSlots);
         }
     }
 }

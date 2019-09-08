@@ -37,11 +37,11 @@ namespace STROOP.Managers
         Dictionary<uint, Tuple<int?, int?>> _lockedSlotIndices = new Dictionary<uint, Tuple<int?, int?>>();
         public bool LabelsLocked = false;
 
-        public List<uint> SelectedSlotsAddresses = new List<uint>();
-        public List<uint> SelectedOnMapSlotsAddresses = new List<uint>();
-        public List<uint> SelectedOnMap2SlotsAddresses = new List<uint>();
-        public List<uint> ShowHomeOnMap2SlotsAddresses = new List<uint>();
-        public List<uint> MarkedSlotsAddresses = new List<uint>();
+        public readonly List<uint> SelectedSlotsAddresses = new List<uint>();
+        public readonly List<uint> SelectedOnMapSlotsAddresses = new List<uint>();
+        public readonly List<uint> SelectedOnMap2SlotsAddresses = new List<uint>();
+        public readonly List<uint> ShowHomeOnMap2SlotsAddresses = new List<uint>();
+        public readonly List<uint> MarkedSlotsAddresses = new List<uint>();
 
         public List<ObjectDataModel> SelectedObjects = new List<ObjectDataModel>();
 
