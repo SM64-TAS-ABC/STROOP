@@ -28,7 +28,6 @@ namespace STROOPUnitTests.Mocks
 
 
         public MockEmuIO(EndiannessType endianness)
-            : base(Config.RamSize)
         {
             _endianness = endianness;
             Clear();
