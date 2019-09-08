@@ -13,9 +13,9 @@
   <Data groupList="Basic" base="None" specialType="DeltaYawIntendedFacing" subclass="Angle" display="short" color="Red">DYaw Intend-Face</Data>
 
   <Data groupList="Advanced" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative" color="Green">Global Timer</Data>
+  <Data groupList="Advanced" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" offsetSH="0x8038BBC0" base="Relative" color="Green">RNG Value</Data>
+  <Data groupList="Advanced" base="None" specialType="RngIndex" color="Green">RNG Index</Data>
   <Data groupList="Advanced" type="ushort" offset="0x1F4" base="Camera" subclass="Angle" yaw="true" color="Green">Cent Angle</Data>
-  <Data groupList="Advanced" type="sbyte" offset="0x02" base="InputBuffered" color="Green">Buffered X</Data>
-  <Data groupList="Advanced" type="sbyte" offset="0x03" base="InputBuffered" color="Green">Buffered Y</Data>
   <Data groupList="Advanced" type="sbyte" offset="0x02" base="InputCurrent" color="Green">Current X</Data>
   <Data groupList="Advanced" type="sbyte" offset="0x03" base="InputCurrent" color="Green">Current Y</Data>
 
