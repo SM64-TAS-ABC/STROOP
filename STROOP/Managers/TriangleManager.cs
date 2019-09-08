@@ -111,16 +111,13 @@ namespace STROOP.Managers
                 });
 
             (splitContainerTriangles.Panel1.Controls["buttonGotoV1"] as Button).Click
-                += (sender, e) => ButtonUtilities.GotoTriangle(_triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GotoTriangleVertex(_triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
             (splitContainerTriangles.Panel1.Controls["buttonGotoV2"] as Button).Click
-                += (sender, e) => ButtonUtilities.GotoTriangle(_triangleAddress, 2, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GotoTriangleVertex(_triangleAddress, 2, _useMisalignmentOffsetCheckbox.Checked);
             (splitContainerTriangles.Panel1.Controls["buttonGotoV3"] as Button).Click
-                += (sender, e) => ButtonUtilities.GotoTriangle(_triangleAddress, 3, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GotoTriangleVertex(_triangleAddress, 3, _useMisalignmentOffsetCheckbox.Checked);
             (splitContainerTriangles.Panel1.Controls["buttonGotoVClosest"] as Button).Click += (sender, e) =>
-            {
-                int closestVertex = WatchVariableSpecialUtilities.GetClosestTriangleVertexIndex(_triangleAddress);
-                ButtonUtilities.GotoTriangle(_triangleAddress, closestVertex, _useMisalignmentOffsetCheckbox.Checked);
-            };
+                ButtonUtilities.GotoTriangleVertexClosest(_triangleAddress, _useMisalignmentOffsetCheckbox.Checked);
 
             (splitContainerTriangles.Panel1.Controls["buttonRetrieveTriangle"] as Button).Click
                 += (sender, e) => ButtonUtilities.RetrieveTriangle(_triangleAddress);

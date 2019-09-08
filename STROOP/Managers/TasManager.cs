@@ -70,13 +70,25 @@ namespace STROOP.Managers
             buttonTasStorePosition.Click += (sender, e) => StoreInfo(x: true, y: true, z: true);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTasStorePosition,
-                new List<string>() { "Store Position", "Store Lateral Position", "Store X", "Store Y", "Store Z" },
-                new List<Action>() {
+                new List<string>()
+                {
+                    "Store Position",
+                    "Store Lateral Position",
+                    "Store X",
+                    "Store Y",
+                    "Store Z",
+                    "Go to Closest Floor Vertex",
+                    "Go to Closest Floor Vertex Misalignment",
+                },
+                new List<Action>()
+                {
                     () => StoreInfo(x: true, y: true, z: true),
                     () => StoreInfo(x: true, z: true),
                     () => StoreInfo(x: true),
                     () => StoreInfo(y: true),
                     () => StoreInfo(z: true),
+                    () => ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), false),
+                    () => ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), true),
                 });
 
             Button buttonTasStoreAngle = splitContainerTasTable.Panel1.Controls["buttonTasStoreAngle"] as Button;

@@ -830,7 +830,13 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool GotoTriangle(uint triangleAddress, int vertex, bool _useMisalignmentOffset = false)
+        public static bool GotoTriangleVertexClosest(uint triangleAddress, bool useMisalignmentOffset = false)
+        {
+            int closestVertex = WatchVariableSpecialUtilities.GetClosestTriangleVertexIndex(triangleAddress);
+            return GotoTriangleVertex(triangleAddress, closestVertex, useMisalignmentOffset);
+        }
+
+        public static bool GotoTriangleVertex(uint triangleAddress, int vertex, bool _useMisalignmentOffset = false)
         {
             if (triangleAddress == 0x0000)
                 return false;
