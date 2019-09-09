@@ -2465,6 +2465,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombSpaceBetween">Space Between</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="HDistObjToMario">HDist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="BobombHomeRadiusDiff">Home Radius Diff</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Blinking Timer</Data>
   </Object>
@@ -3558,8 +3559,8 @@
   <Object behaviorScriptAddress="0x13004770" name="Goomba Triplet Spawner" subType="0">
     <SpawnCode gfxId="0x00"/>
     <Image path="Goomba Triplet Spawner.png"/>
-    <Data groupList="ObjectSpecific" base="Object" specialType="GoombaTripletLoadingDistanceDiff">Load Dist Diff</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="GoombaTripletUnloadingDistanceDiff">Unload Dist Diff</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="GoombaTripletLoadingRadiusDiff">Load Dist Diff</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="GoombaTripletUnloadingRadiusDiff">Unload Dist Diff</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x14F" base="Object" subclass="Boolean">Goombas Loaded</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x18A" mask="0x01" base="Object" subclass="Boolean">Goomba 1 Dead</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x18A" mask="0x02" base="Object" subclass="Boolean">Goomba 2 Dead</Data>

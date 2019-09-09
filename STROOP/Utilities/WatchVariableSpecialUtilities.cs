@@ -931,6 +931,16 @@ namespace STROOP.Structs
                     return marioPos.SetValues(x: newMarioX, z: newMarioZ);
                 }));
 
+            _dictionary.Add("BobombHomeRadiusDiff",
+                ((uint objAddress) =>
+                {
+                    return GetRadiusDiff(PositionAngle.Mario, PositionAngle.ObjHome(objAddress), 400);
+                },
+                (double dist, uint objAddress) =>
+                {
+                    return SetRadiusDiff(PositionAngle.Mario, PositionAngle.ObjHome(objAddress), 400, dist);
+                }));
+
             // Object specific vars - Chuckya
 
             _dictionary.Add("ChuckyaAngleMod1024",
@@ -962,46 +972,24 @@ namespace STROOP.Structs
 
             // Object specific vars - Goomba Triplet Spawner
 
-            _dictionary.Add("GoombaTripletLoadingDistanceDiff",
+            _dictionary.Add("GoombaTripletLoadingRadiusDiff",
                 ((uint objAddress) =>
                 {
-                    PositionAngle marioPos = PositionAngle.Mario;
-                    PositionAngle objPos = PositionAngle.Obj(objAddress);
-                    double dist = MoreMath.GetDistanceBetween(
-                        marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
-                    double distDiff = dist - 3000;
-                    return distDiff;
+                    return GetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), 3000);
                 },
-                (double distDiff, uint objAddress) =>
+                (double dist, uint objAddress) =>
                 {
-                    PositionAngle marioPos = PositionAngle.Mario;
-                    PositionAngle objPos = PositionAngle.Obj(objAddress);
-                    double distAway = distDiff + 3000;
-                    (double newMarioX, double newMarioY, double newMarioZ) =
-                        MoreMath.ExtrapolateLine3D(
-                            objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
-                    return marioPos.SetValues(x: newMarioX, y: newMarioY, z: newMarioZ);
+                    return SetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), 3000, dist);
                 }));
 
-            _dictionary.Add("GoombaTripletUnloadingDistanceDiff",
+            _dictionary.Add("GoombaTripletUnloadingRadiusDiff",
                 ((uint objAddress) =>
                 {
-                    PositionAngle marioPos = PositionAngle.Mario;
-                    PositionAngle objPos = PositionAngle.Obj(objAddress);
-                    double dist = MoreMath.GetDistanceBetween(
-                        marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
-                    double distDiff = dist - 4000;
-                    return distDiff;
+                    return GetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), 4000);
                 },
-                (double distDiff, uint objAddress) =>
+                (double dist, uint objAddress) =>
                 {
-                    PositionAngle marioPos = PositionAngle.Mario;
-                    PositionAngle objPos = PositionAngle.Obj(objAddress);
-                    double distAway = distDiff + 4000;
-                    (double newMarioX, double newMarioY, double newMarioZ) =
-                        MoreMath.ExtrapolateLine3D(
-                            objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
-                    return marioPos.SetValues(x: newMarioX, y: newMarioY, z: newMarioZ);
+                    return SetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), 4000, dist);
                 }));
 
             // Object specific vars - BitFS Platform
@@ -3497,6 +3485,24 @@ namespace STROOP.Structs
             float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
             double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
             return hSlidingSpeed;
+        }
+
+        // Radius distance utility methods
+
+        private static double GetRadiusDiff(PositionAngle self, PositionAngle point, double radius)
+        {
+            double dist = MoreMath.GetDistanceBetween(
+                self.X, self.Y, self.Z, point.X, point.Y, point.Z);
+            return dist - radius;
+        }
+
+        private static bool SetRadiusDiff(PositionAngle self, PositionAngle point, double radius, double value)
+        {
+            double totalDist = radius + value;
+            (double newSelfX, double newSelfY, double newSelfZ) =
+                MoreMath.ExtrapolateLine3D(
+                    point.X, point.Y, point.Z, self.X, self.Y, self.Z, totalDist);
+            return self.SetValues(x: newSelfX, y: newSelfY, z: newSelfZ);
         }
 
         // Object specific utilitiy methods
