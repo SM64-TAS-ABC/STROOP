@@ -53,9 +53,14 @@ namespace STROOP.Utilities
             double newMarioZ = GetCoordinateInPu(z, puZIndex);
 
             bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
             success &= Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
             success &= Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
             success &= Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
@@ -86,8 +91,10 @@ namespace STROOP.Utilities
             double newCamY = GetCoordinateInPu(cameraY, newPuY);
             double newCamZ = GetCoordinateInPu(cameraZ, newPuZ);
 
-            // Set new mario + camera position
             bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
             success &= Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
             success &= Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
             success &= Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
@@ -97,6 +104,8 @@ namespace STROOP.Utilities
                 success &= Config.Stream.SetValue((float)newCamY, CameraConfig.StructAddress + CameraConfig.YOffset);
                 success &= Config.Stream.SetValue((float)newCamZ, CameraConfig.StructAddress + CameraConfig.ZOffset);
             }
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
