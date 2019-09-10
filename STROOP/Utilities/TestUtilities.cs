@@ -23,13 +23,19 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            TestSomething25();
+            TestSomething26();
         }
 
         public static void TestSomethingElse()
         {
             TestSomething21();
         }
+
+        public static void TestSomething26()
+        {
+            InGameFunctionCall.WriteInGameFunctionCall(0x8024975C, 9);
+        }
+
         public static void TestSomething25()
         {
             List<double> doubleList = new List<double>()
