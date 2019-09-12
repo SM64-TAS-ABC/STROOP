@@ -362,6 +362,7 @@ namespace STROOP.Managers
             }
 
             SetCustomTriangleAddress(newAddress);
+            _addressBox.SelectionLength = 0;
         }
 
         public TriangleDataModel GetTriangleStruct(uint address)
