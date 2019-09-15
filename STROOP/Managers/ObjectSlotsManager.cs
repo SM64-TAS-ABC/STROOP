@@ -26,7 +26,7 @@ namespace STROOP.Managers
         public enum TabType { Object, Map, Map2, Model, Memory, Custom, TAS, CamHack, Other };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex };
-        public enum SelectionMethodType { Clicked, Held, StoodOn };
+        public enum SelectionMethodType { Clicked, Held, StoodOn, Floor, Wall, Ceiling };
         public enum ClickType { ObjectClick, MapClick, Map2Click, Map2HomeClick, ModelClick, MemoryClick, CamHackClick, MarkClick };
 
         public uint? HoveredObjectAdress;
@@ -285,23 +285,7 @@ namespace STROOP.Managers
 
         public void Update()
         {
-            SelectionMethodType selectionMethodType = (SelectionMethodType)_gui.SelectionMethodComboBox.SelectedItem;
-            switch (selectionMethodType)
-            {
-                case SelectionMethodType.Clicked:
-                    // do nothing
-                    break;
-                case SelectionMethodType.Held:
-                    SelectedSlotsAddresses.Clear();
-                    uint heldObjectAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
-                    if (heldObjectAddress != 0) SelectedSlotsAddresses.Add(heldObjectAddress);
-                    break;
-                case SelectionMethodType.StoodOn:
-                    SelectedSlotsAddresses.Clear();
-                    uint stoodOnObjectAddress = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);
-                    if (stoodOnObjectAddress != 0) SelectedSlotsAddresses.Add(stoodOnObjectAddress);
-                    break;
-            }
+            UpdateSelectionMethod();
 
             LabelMethod = (SlotLabelType)_gui.LabelMethodComboBox.SelectedItem;
             SortMethod = (SortMethodType) _gui.SortMethodComboBox.SelectedItem;
@@ -341,6 +325,48 @@ namespace STROOP.Managers
             List<ObjectDataModel> objs = DataModels.Objects.Where(o => o != null && SelectedSlotsAddresses.Contains(o.Address)).ToList();
             objs.Sort((obj1, obj2) => SelectedSlotsAddresses.IndexOf(obj1.Address) - SelectedSlotsAddresses.IndexOf(obj2.Address));
             SelectedObjects = objs;
+        }
+
+        private void UpdateSelectionMethod()
+        {
+            SelectionMethodType selectionMethodType = (SelectionMethodType)_gui.SelectionMethodComboBox.SelectedItem;
+            switch (selectionMethodType)
+            {
+                case SelectionMethodType.Clicked:
+                    // do nothing
+                    break;
+                case SelectionMethodType.Held:
+                    SelectedSlotsAddresses.Clear();
+                    uint heldObjectAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
+                    if (heldObjectAddress != 0) SelectedSlotsAddresses.Add(heldObjectAddress);
+                    break;
+                case SelectionMethodType.StoodOn:
+                    SelectedSlotsAddresses.Clear();
+                    uint stoodOnObjectAddress = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);
+                    if (stoodOnObjectAddress != 0) SelectedSlotsAddresses.Add(stoodOnObjectAddress);
+                    break;
+                case SelectionMethodType.Floor:
+                    SelectedSlotsAddresses.Clear();
+                    uint floorTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                    if (floorTriangleAddress == 0) break;
+                    uint floorObjectAddress = Config.Stream.GetUInt32(floorTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
+                    if (floorObjectAddress != 0) SelectedSlotsAddresses.Add(floorObjectAddress);
+                    break;
+                case SelectionMethodType.Wall:
+                    SelectedSlotsAddresses.Clear();
+                    uint wallTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+                    if (wallTriangleAddress == 0) break;
+                    uint wallObjectAddress = Config.Stream.GetUInt32(wallTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
+                    if (wallObjectAddress != 0) SelectedSlotsAddresses.Add(wallObjectAddress);
+                    break;
+                case SelectionMethodType.Ceiling:
+                    SelectedSlotsAddresses.Clear();
+                    uint ceilingTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
+                    if (ceilingTriangleAddress == 0) break;
+                    uint ceilingObjectAddress = Config.Stream.GetUInt32(ceilingTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
+                    if (ceilingObjectAddress != 0) SelectedSlotsAddresses.Add(ceilingObjectAddress);
+                    break;
+            }
         }
 
         private void UpdateSlots(IEnumerable<ObjectDataModel> sortedObjects)
