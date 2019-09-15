@@ -189,6 +189,11 @@ namespace STROOP.Managers
             if (selectedSlot.CurrentObject == null)
                 return;
 
+            if (click == ClickType.ObjectClick)
+            {
+                _gui.SelectionMethodComboBox.SelectedItem = SelectionMethodType.Clicked;
+            }
+
             if (click == ClickType.ModelClick)
             {
                 uint currentModelObjectAddress = Config.ModelManager.ModelObjectAddress;
@@ -280,6 +285,24 @@ namespace STROOP.Managers
 
         public void Update()
         {
+            SelectionMethodType selectionMethodType = (SelectionMethodType)_gui.SelectionMethodComboBox.SelectedItem;
+            switch (selectionMethodType)
+            {
+                case SelectionMethodType.Clicked:
+                    // do nothing
+                    break;
+                case SelectionMethodType.Held:
+                    SelectedSlotsAddresses.Clear();
+                    uint heldObjectAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
+                    if (heldObjectAddress != 0) SelectedSlotsAddresses.Add(heldObjectAddress);
+                    break;
+                case SelectionMethodType.StoodOn:
+                    SelectedSlotsAddresses.Clear();
+                    uint stoodOnObjectAddress = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);
+                    if (stoodOnObjectAddress != 0) SelectedSlotsAddresses.Add(stoodOnObjectAddress);
+                    break;
+            }
+
             LabelMethod = (SlotLabelType)_gui.LabelMethodComboBox.SelectedItem;
             SortMethod = (SortMethodType) _gui.SortMethodComboBox.SelectedItem;
 
