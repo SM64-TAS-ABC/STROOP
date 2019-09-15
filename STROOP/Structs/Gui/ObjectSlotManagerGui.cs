@@ -41,6 +41,7 @@ namespace STROOP.Structs
         public TabControl TabControl;
         public ComboBox SortMethodComboBox;
         public ComboBox LabelMethodComboBox;
+        public ComboBox SelectionMethodComboBox;
         public ObjectSlotFlowLayoutPanel FlowLayoutContainer;
 
         ~ObjectSlotManagerGui()

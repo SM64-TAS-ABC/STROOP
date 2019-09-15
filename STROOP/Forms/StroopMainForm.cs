@@ -432,6 +432,7 @@ namespace STROOP
             _slotManagerGui.FlowLayoutContainer = WatchVariablePanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
+            _slotManagerGui.SelectionMethodComboBox = comboBoxSelectionMethod;
             Config.ObjectSlotsManager = new ObjectSlotsManager(_slotManagerGui, tabControlMain);
         }
 

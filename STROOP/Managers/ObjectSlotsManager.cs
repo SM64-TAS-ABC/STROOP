@@ -25,7 +25,8 @@ namespace STROOP.Managers
 
         public enum TabType { Object, Map, Map2, Model, Memory, Custom, TAS, CamHack, Other };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
-        public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
+        public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex };
+        public enum SelectionMethodType { Clicked, Held, StoodOn };
         public enum ClickType { ObjectClick, MapClick, Map2Click, Map2HomeClick, ModelClick, MemoryClick, CamHackClick, MarkClick };
 
         public uint? HoveredObjectAdress;
@@ -59,6 +60,7 @@ namespace STROOP.Managers
             // Add SortMethods adn LabelMethods
             _gui.SortMethodComboBox.DataSource = Enum.GetValues(typeof(SortMethodType));
             _gui.LabelMethodComboBox.DataSource = Enum.GetValues(typeof(SlotLabelType));
+            _gui.SelectionMethodComboBox.DataSource = Enum.GetValues(typeof(SelectionMethodType));
 
             _gui.TabControl.Selected += TabControl_Selected;
             TabControl_Selected(this, new TabControlEventArgs(_gui.TabControl.SelectedTab, -1, TabControlAction.Selected));
