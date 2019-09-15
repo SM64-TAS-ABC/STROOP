@@ -439,7 +439,7 @@ namespace STROOP.Controls
             {
                 UnselectAllVariables();
             }
-            _watchVarControls.ForEach(watchVarControl => watchVarControl.UpdateControl());
+            GetCurrentVariableControls().ForEach(watchVarControl => watchVarControl.UpdateControl());
         }
 
         private bool ShouldShow(WatchVariableControl watchVarControl)
