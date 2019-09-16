@@ -2605,6 +2605,7 @@
     <Data groupList="ObjectSpecific" type="uint" display="byte" offset="0xF4" base="Object" useHex="true">Spawn Obj Graphic</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Radius</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectSpawnerRadiusDiff">Radius Diff</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003614" name="Bob-omb Spawner" spawnObj="0x13003174">
     <SpawnCode gfxId="0x00"/>
@@ -2614,6 +2615,7 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0x18A" base="Object" subclass="Boolean" invertBool="true">Bob-omb Has Coin</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Radius</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectSpawnerRadiusDiff">Radius Diff</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003614" name="Snowman's Body Spawner" spawnObj="0x13003CE4">
     <SpawnCode gfxId="0x00"/>
@@ -2622,6 +2624,7 @@
     <Data groupList="ObjectSpecific" type="uint" display="byte" offset="0xF4" base="Object" useHex="true">Spawn Obj Graphic</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Radius</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectSpawnerRadiusDiff">Radius Diff</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003614" name="Yoshi Spawner" spawnObj="0x13004538">
     <SpawnCode gfxId="0x00"/>
@@ -2630,6 +2633,7 @@
     <Data groupList="ObjectSpecific" type="uint" display="byte" offset="0xF4" base="Object" useHex="true">Spawn Obj Graphic</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Radius</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectSpawnerRadiusDiff">Radius Diff</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300362C" name="Small Bully">
     <SpawnCode gfxId="0x56"/>

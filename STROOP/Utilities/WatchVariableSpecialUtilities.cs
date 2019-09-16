@@ -1242,6 +1242,20 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            // Object specific vars - Object Spawner
+
+            _dictionary.Add("ObjectSpawnerRadiusDiff",
+                ((uint objAddress) =>
+                {
+                    float radius = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectSpawnerRadiusOffset);
+                    return GetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), radius);
+                },
+                (double dist, uint objAddress) =>
+                {
+                    float radius = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectSpawnerRadiusOffset);
+                    return SetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), radius, dist);
+                }));
+
             // Mario vars
 
             _dictionary.Add("RotationDisplacementX",
