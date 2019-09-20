@@ -292,40 +292,7 @@ namespace STROOP
 
             Map3Gui map3Gui = new Map3Gui()
             {
-                GLControl = glControlMap3,
-
-                MapIdLabel = labelMap2Id,
-                MapNameLabel = labelMap2Name,
-                MapSubNameLabel = labelMap2SubName,
-                PuValueLabel = labelMap2PuValue,
-                QpuValueLabel = labelMap2QpuValue,
-                YNormValueLabel = labelMap2YNormValue,
-
-                MapIconSizeTrackbar = trackBarMap2IconSize,
-                MapShowInactiveObjects = checkBoxMap2ShowInactive,
-                MapShowMario = checkBoxMap2ShowMario,
-                MapShowHolp = checkBoxMap2ShowHolp,
-                MapShowIntendedNextPosition = checkBoxMap2ShowIntendedNextPosition,
-                MapShowPoint = checkBoxMap2ShowPoint,
-                MapShowCamera = checkBoxMap2ShowCamera,
-                MapShowFloorTriangle = checkBoxMap2ShowFloor,
-                MapShowCeilingTriangle = checkBoxMap2ShowCeiling,
-
-                MapBoundsUpButton = buttonMap2BoundsUp,
-                MapBoundsDownButton = buttonMap2BoundsDown,
-                MapBoundsLeftButton = buttonMap2BoundsLeft,
-                MapBoundsRightButton = buttonMap2BoundsRight,
-                MapBoundsUpLeftButton = buttonMap2BoundsUpLeft,
-                MapBoundsUpRightButton = buttonMap2BoundsUpRight,
-                MapBoundsDownLeftButton = buttonMap2BoundsDownLeft,
-                MapBoundsDownRightButton = buttonMap2BoundsDownRight,
-                MapBoundsPositionTextBox = textBoxMap2BoundsPosition,
-
-                MapBoundsZoomInButton = buttonMap2BoundsZoomIn,
-                MapBoundsZoomOutButton = buttonMap2BoundsZoomOut,
-                MapBoundsZoomTextBox = textBoxMap2BoundsZoom,
-
-                MapArtificialMarioYLabelTextBox = textBoxMap2ArtificialMarioYLabel
+                GLControl = glControlMap3
             };
 
             Map2Gui map2Gui = new Map2Gui()

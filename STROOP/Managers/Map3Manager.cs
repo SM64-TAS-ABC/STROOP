@@ -43,7 +43,7 @@ namespace STROOP.Managers
             // Create new graphics control
             _mapGraphics = new Map3Graphics(_mapGui.GLControl);
             _mapGraphics.Load();
-            _mapGraphics.IconSize = _mapGui.MapIconSizeTrackbar.Value;
+            _mapGraphics.IconSize = 50;
 
             _isLoaded = true;
 
@@ -130,7 +130,7 @@ namespace STROOP.Managers
             // Calculate mario's location on the OpenGl control
             var mapView = _mapGraphics.MapView;
             _marioMapObj.LocationOnContol = CalculateLocationOnControl(marioCoord, mapView);
-            _marioMapObj.Draw = _mapGui.MapShowMario.Checked;
+            _marioMapObj.Draw = true;
 
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
             _mapGraphics.Control.Invalidate();
