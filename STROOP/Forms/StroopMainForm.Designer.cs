@@ -819,6 +819,7 @@ namespace STROOP
             this.checkBoxMap2ShowCamera = new System.Windows.Forms.CheckBox();
             this.trackBarMap2IconSize = new System.Windows.Forms.TrackBar();
             this.glControlMap2 = new OpenTK.GLControl();
+            this.tabPageMap3 = new System.Windows.Forms.TabPage();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.checkedListBoxObjectSlotOverlaysToShow = new System.Windows.Forms.CheckedListBox();
             this.checkedListBoxSavedSettings = new System.Windows.Forms.CheckedListBox();
@@ -1500,7 +1501,41 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.tabPageMap3 = new System.Windows.Forms.TabPage();
+            this.splitContainerMap3 = new STROOP.BetterSplitContainer();
+            this.label8 = new System.Windows.Forms.Label();
+            this.betterTextbox1 = new STROOP.BetterTextbox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.betterTextbox2 = new STROOP.BetterTextbox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.betterTextbox3 = new STROOP.BetterTextbox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.glControlMap3 = new OpenTK.GLControl();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1790,6 +1825,7 @@ namespace STROOP
             this.splitContainerMap2.SuspendLayout();
             this.groupBoxMap2Bounds.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMap2IconSize)).BeginInit();
+            this.tabPageMap3.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
             this.groupBoxPositionControllerRelativeAngle.SuspendLayout();
             this.groupBoxFPS.SuspendLayout();
@@ -1939,6 +1975,12 @@ namespace STROOP
             this.splitContainerSoundSoundEffect.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap3)).BeginInit();
+            this.splitContainerMap3.Panel1.SuspendLayout();
+            this.splitContainerMap3.Panel2.SuspendLayout();
+            this.splitContainerMap3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -5669,7 +5711,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 491F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 492F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9399,7 +9441,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(415, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(418, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11451,6 +11493,17 @@ namespace STROOP
             this.glControlMap2.VSync = false;
             this.glControlMap2.Load += new System.EventHandler(this.glControlMap2_Load);
             // 
+            // tabPageMap3
+            // 
+            this.tabPageMap3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMap3.Controls.Add(this.splitContainerMap3);
+            this.tabPageMap3.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap3.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMap3.Name = "tabPageMap3";
+            this.tabPageMap3.Size = new System.Drawing.Size(915, 463);
+            this.tabPageMap3.TabIndex = 35;
+            this.tabPageMap3.Text = "Map3";
+            // 
             // tabPageOptions
             // 
             this.tabPageOptions.AutoScroll = true;
@@ -11761,7 +11814,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 683;
+            this.splitContainerMemory.SplitterDistance = 686;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11802,7 +11855,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(683, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(686, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -12019,7 +12072,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(683, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(686, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -12048,7 +12101,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(582, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(585, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12061,7 +12114,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(223, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(220, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -13215,7 +13268,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(306, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -13247,7 +13300,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(317, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(300, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -13303,7 +13356,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(317, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(300, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -17899,7 +17952,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -19083,7 +19136,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(28, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(29, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -19471,15 +19524,395 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // tabPageMap3
+            // splitContainerMap3
             // 
-            this.tabPageMap3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageMap3.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMap3.Name = "tabPageMap3";
-            this.tabPageMap3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMap3.Size = new System.Drawing.Size(915, 463);
-            this.tabPageMap3.TabIndex = 35;
-            this.tabPageMap3.Text = "Map3";
+            this.splitContainerMap3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMap3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMap3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerMap3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerMap3.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerMap3.Name = "splitContainerMap3";
+            // 
+            // splitContainerMap3.Panel1
+            // 
+            this.splitContainerMap3.Panel1.Controls.Add(this.label8);
+            this.splitContainerMap3.Panel1.Controls.Add(this.betterTextbox1);
+            this.splitContainerMap3.Panel1.Controls.Add(this.label10);
+            this.splitContainerMap3.Panel1.Controls.Add(this.label11);
+            this.splitContainerMap3.Panel1.Controls.Add(this.label12);
+            this.splitContainerMap3.Panel1.Controls.Add(this.label13);
+            this.splitContainerMap3.Panel1.Controls.Add(this.label14);
+            this.splitContainerMap3.Panel1.Controls.Add(this.label15);
+            this.splitContainerMap3.Panel1.Controls.Add(this.label16);
+            this.splitContainerMap3.Panel1.Controls.Add(this.label17);
+            this.splitContainerMap3.Panel1.Controls.Add(this.label18);
+            this.splitContainerMap3.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox1);
+            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox2);
+            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox3);
+            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox4);
+            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox5);
+            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox6);
+            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox7);
+            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox8);
+            this.splitContainerMap3.Panel1.Controls.Add(this.trackBar1);
+            this.splitContainerMap3.Panel1MinSize = 0;
+            // 
+            // splitContainerMap3.Panel2
+            // 
+            this.splitContainerMap3.Panel2.BackColor = System.Drawing.Color.Black;
+            this.splitContainerMap3.Panel2.Controls.Add(this.glControlMap3);
+            this.splitContainerMap3.Panel2MinSize = 0;
+            this.splitContainerMap3.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerMap3.SplitterDistance = 226;
+            this.splitContainerMap3.SplitterWidth = 1;
+            this.splitContainerMap3.TabIndex = 18;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(2, 370);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 13);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "QPU [X:Y:Z]:";
+            // 
+            // betterTextbox1
+            // 
+            this.betterTextbox1.Location = new System.Drawing.Point(103, 323);
+            this.betterTextbox1.Name = "betterTextbox1";
+            this.betterTextbox1.Size = new System.Drawing.Size(87, 20);
+            this.betterTextbox1.TabIndex = 33;
+            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(5, 48);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 13);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Icon Size:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(73, 392);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(40, 13);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "1.0000";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 392);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(46, 13);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "[9:1:1:2]";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(73, 370);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(37, 13);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "[0:0:0]";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(73, 352);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(37, 13);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "[0:0:0]";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(3, 18);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(81, 13);
+            this.label15.TabIndex = 33;
+            this.label15.Text = "Map Sub Name";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(3, 2);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(67, 13);
+            this.label16.TabIndex = 33;
+            this.label16.Text = "Map Name";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(10, 352);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(61, 13);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "PU [X:Y:Z]:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(17, 327);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(85, 13);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "Artificial Mario Y:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.betterTextbox2);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.betterTextbox3);
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.button10);
+            this.groupBox1.Controls.Add(this.button11);
+            this.groupBox1.Controls.Add(this.button12);
+            this.groupBox1.Location = new System.Drawing.Point(8, 174);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(185, 146);
+            this.groupBox1.TabIndex = 31;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Map Bounds";
+            // 
+            // betterTextbox2
+            // 
+            this.betterTextbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox2.Location = new System.Drawing.Point(140, 70);
+            this.betterTextbox2.Name = "betterTextbox2";
+            this.betterTextbox2.Size = new System.Drawing.Size(42, 20);
+            this.betterTextbox2.TabIndex = 33;
+            this.betterTextbox2.Text = "50";
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(140, 16);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(42, 42);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Z+";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(140, 100);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(42, 42);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "Z-";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(87, 100);
+            this.button3.Margin = new System.Windows.Forms.Padding(0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(42, 42);
+            this.button3.TabIndex = 32;
+            this.button3.Text = "DR";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // betterTextbox3
+            // 
+            this.betterTextbox3.Location = new System.Drawing.Point(45, 70);
+            this.betterTextbox3.Name = "betterTextbox3";
+            this.betterTextbox3.Size = new System.Drawing.Size(42, 20);
+            this.betterTextbox3.TabIndex = 27;
+            this.betterTextbox3.Text = "100";
+            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(87, 58);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(42, 42);
+            this.button4.TabIndex = 31;
+            this.button4.Text = "R";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(87, 16);
+            this.button5.Margin = new System.Windows.Forms.Padding(0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(42, 42);
+            this.button5.TabIndex = 30;
+            this.button5.Text = "UR";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(45, 16);
+            this.button6.Margin = new System.Windows.Forms.Padding(0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(42, 42);
+            this.button6.TabIndex = 29;
+            this.button6.Text = "U";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(45, 100);
+            this.button7.Margin = new System.Windows.Forms.Padding(0);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(42, 42);
+            this.button7.TabIndex = 28;
+            this.button7.Text = "D";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(3, 100);
+            this.button10.Margin = new System.Windows.Forms.Padding(0);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(42, 42);
+            this.button10.TabIndex = 27;
+            this.button10.Text = "DL";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(3, 58);
+            this.button11.Margin = new System.Windows.Forms.Padding(0);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(42, 42);
+            this.button11.TabIndex = 26;
+            this.button11.Text = "L";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(3, 16);
+            this.button12.Margin = new System.Windows.Forms.Padding(0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(42, 42);
+            this.button12.TabIndex = 25;
+            this.button12.Text = "UL";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(117, 72);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(82, 17);
+            this.checkBox1.TabIndex = 19;
+            this.checkBox1.Text = "Show Mario";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(117, 92);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(85, 17);
+            this.checkBox2.TabIndex = 19;
+            this.checkBox2.Text = "Show HOLP";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(8, 72);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(94, 17);
+            this.checkBox3.TabIndex = 19;
+            this.checkBox3.Text = "Show Inactive";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(8, 92);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(94, 17);
+            this.checkBox4.TabIndex = 19;
+            this.checkBox4.Text = "Show Floor Tri";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(8, 152);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(80, 17);
+            this.checkBox5.TabIndex = 19;
+            this.checkBox5.Text = "Show Point";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(8, 132);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(163, 17);
+            this.checkBox6.TabIndex = 19;
+            this.checkBox6.Text = "Show Intended Next Position";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(8, 112);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(102, 17);
+            this.checkBox7.TabIndex = 19;
+            this.checkBox7.Text = "Show Ceiling Tri";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(117, 112);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(92, 17);
+            this.checkBox8.TabIndex = 19;
+            this.checkBox8.Text = "Show Camera";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(59, 38);
+            this.trackBar1.Maximum = 100;
+            this.trackBar1.Minimum = 15;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(104, 45);
+            this.trackBar1.TabIndex = 32;
+            this.trackBar1.TickFrequency = 10;
+            this.trackBar1.Value = 40;
+            // 
+            // glControlMap3
+            // 
+            this.glControlMap3.BackColor = System.Drawing.Color.Black;
+            this.glControlMap3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.glControlMap3.Location = new System.Drawing.Point(0, 0);
+            this.glControlMap3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.glControlMap3.Name = "glControlMap3";
+            this.glControlMap3.Size = new System.Drawing.Size(686, 461);
+            this.glControlMap3.TabIndex = 0;
+            this.glControlMap3.VSync = false;
             // 
             // StroopMainForm
             // 
@@ -19844,6 +20277,7 @@ namespace STROOP
             this.groupBoxMap2Bounds.ResumeLayout(false);
             this.groupBoxMap2Bounds.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMap2IconSize)).EndInit();
+            this.tabPageMap3.ResumeLayout(false);
             this.tabPageOptions.ResumeLayout(false);
             this.tabPageOptions.PerformLayout();
             this.groupBoxPositionControllerRelativeAngle.ResumeLayout(false);
@@ -20047,6 +20481,14 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.splitContainerMap3.Panel1.ResumeLayout(false);
+            this.splitContainerMap3.Panel1.PerformLayout();
+            this.splitContainerMap3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap3)).EndInit();
+            this.splitContainerMap3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -21511,6 +21953,41 @@ namespace STROOP
         private ComboBox comboBoxSelectionMethod;
         private Label labelSelectionMethod;
         private TabPage tabPageMap3;
+        private BetterSplitContainer splitContainerMap3;
+        private Label label8;
+        private BetterTextbox betterTextbox1;
+        private Label label10;
+        private Label label11;
+        private Label label12;
+        private Label label13;
+        private Label label14;
+        private Label label15;
+        private Label label16;
+        private Label label17;
+        private Label label18;
+        private GroupBox groupBox1;
+        private BetterTextbox betterTextbox2;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private BetterTextbox betterTextbox3;
+        private Button button4;
+        private Button button5;
+        private Button button6;
+        private Button button7;
+        private Button button10;
+        private Button button11;
+        private Button button12;
+        private CheckBox checkBox1;
+        private CheckBox checkBox2;
+        private CheckBox checkBox3;
+        private CheckBox checkBox4;
+        private CheckBox checkBox5;
+        private CheckBox checkBox6;
+        private CheckBox checkBox7;
+        private CheckBox checkBox8;
+        private TrackBar trackBar1;
+        private OpenTK.GLControl glControlMap3;
     }
 }
 
