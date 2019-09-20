@@ -32,6 +32,7 @@ namespace STROOP.Structs.Configurations
         public static HudManager HudManager;
         public static MapManager MapManager;
         public static Map2Manager Map2Manager;
+        public static Map3Manager Map3Manager;
         public static ModelManager ModelManager;
         public static MarioManager MarioManager;
         public static MiscManager MiscManager;

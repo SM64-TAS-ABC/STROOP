@@ -19913,6 +19913,7 @@ namespace STROOP
             this.glControlMap3.Size = new System.Drawing.Size(686, 461);
             this.glControlMap3.TabIndex = 0;
             this.glControlMap3.VSync = false;
+            this.glControlMap3.Load += new System.EventHandler(this.glControlMap3_Load);
             // 
             // StroopMainForm
             // 

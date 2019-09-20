@@ -18,6 +18,7 @@ using STROOP.Forms;
 using STROOP.Models;
 using STROOP.Structs.Gui;
 using STROOP.Map2;
+using STROOP.Map3;
 
 namespace STROOP
 {
@@ -289,6 +290,44 @@ namespace STROOP
                 ComboBoxMapColorMethod = comboBoxMapColorMethod
             };
 
+            Map3Gui map3Gui = new Map3Gui()
+            {
+                GLControl = glControlMap3,
+
+                MapIdLabel = labelMap2Id,
+                MapNameLabel = labelMap2Name,
+                MapSubNameLabel = labelMap2SubName,
+                PuValueLabel = labelMap2PuValue,
+                QpuValueLabel = labelMap2QpuValue,
+                YNormValueLabel = labelMap2YNormValue,
+
+                MapIconSizeTrackbar = trackBarMap2IconSize,
+                MapShowInactiveObjects = checkBoxMap2ShowInactive,
+                MapShowMario = checkBoxMap2ShowMario,
+                MapShowHolp = checkBoxMap2ShowHolp,
+                MapShowIntendedNextPosition = checkBoxMap2ShowIntendedNextPosition,
+                MapShowPoint = checkBoxMap2ShowPoint,
+                MapShowCamera = checkBoxMap2ShowCamera,
+                MapShowFloorTriangle = checkBoxMap2ShowFloor,
+                MapShowCeilingTriangle = checkBoxMap2ShowCeiling,
+
+                MapBoundsUpButton = buttonMap2BoundsUp,
+                MapBoundsDownButton = buttonMap2BoundsDown,
+                MapBoundsLeftButton = buttonMap2BoundsLeft,
+                MapBoundsRightButton = buttonMap2BoundsRight,
+                MapBoundsUpLeftButton = buttonMap2BoundsUpLeft,
+                MapBoundsUpRightButton = buttonMap2BoundsUpRight,
+                MapBoundsDownLeftButton = buttonMap2BoundsDownLeft,
+                MapBoundsDownRightButton = buttonMap2BoundsDownRight,
+                MapBoundsPositionTextBox = textBoxMap2BoundsPosition,
+
+                MapBoundsZoomInButton = buttonMap2BoundsZoomIn,
+                MapBoundsZoomOutButton = buttonMap2BoundsZoomOut,
+                MapBoundsZoomTextBox = textBoxMap2BoundsZoom,
+
+                MapArtificialMarioYLabelTextBox = textBoxMap2ArtificialMarioYLabel
+            };
+
             Map2Gui map2Gui = new Map2Gui()
             {
                 GLControl = glControlMap2,
@@ -391,6 +430,7 @@ namespace STROOP
             // Create managers
             Config.MapManager = new MapManager();
             Config.Map2Manager = new Map2Manager(map2Gui);
+            Config.Map3Manager = new Map3Manager(map3Gui);
 
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
@@ -584,6 +624,7 @@ namespace STROOP
                 Config.M64Manager.Update(tabControlMain.SelectedTab == tabPageM64);
                 Config.MapManager?.Update();
                 Config.Map2Manager?.Update();
+                Config.Map3Manager.Update(tabControlMain.SelectedTab == tabPageMap3);
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();
                 Config.HackManager.Update();
@@ -691,6 +732,17 @@ namespace STROOP
                 }
             });
             Config.Map2Manager.Load();
+        }
+
+        private async void glControlMap3_Load(object sender, EventArgs e)
+        {
+            await Task.Run(() => {
+                while (Config.Map2Manager == null)
+                {
+                    Task.Delay(1).Wait();
+                }
+            });
+            Config.Map3Manager.Load();
         }
 
         private async void glControlModelView_Load(object sender, EventArgs e)
