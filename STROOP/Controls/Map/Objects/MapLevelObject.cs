@@ -135,7 +135,7 @@ namespace STROOP.Controls.Map.Objects
         private void ChangeCurrentMap(MapLayout map)
         {
             // Don't change the map if it isn't different
-            if (_currentMap == map)
+            if (map.Equals(_currentMap))
                 return;
 
             _layout.ChangeImage(map.MapImage);

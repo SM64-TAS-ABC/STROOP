@@ -795,7 +795,7 @@ namespace STROOP.Managers
         private void ChangeCurrentMap(MapLayout map)
         {
             // Don't change the map if it isn't different
-            if (_currentMap == map)
+            if (map.Equals(_currentMap))
                 return;
 
             // Change and set a new map

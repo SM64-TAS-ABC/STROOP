@@ -9,7 +9,7 @@ using STROOP.Structs.Configurations;
 
 namespace STROOP.Structs
 {
-    public struct MapLayout : IComparable
+    public class MapLayout : IComparable
     {
         public string ImagePath;
         public BackgroundImage? Background;
@@ -23,24 +23,12 @@ namespace STROOP.Structs
         public float Y;
         public string Name;
         public string SubName;
-
-        public static bool operator ==(MapLayout a, MapLayout b)
-        {
-            return (a.ImagePath == b.ImagePath && a.Area == b.Area && a.Level == b.Level && a.Y == b.Y
-                && a.LoadingPoint == b.LoadingPoint && a.MissionLayout == b.MissionLayout);
-        }
-
-        public static bool operator !=(MapLayout a, MapLayout b)
-        {
-            return !(a == b);
-        }
         
-        public override bool Equals(object other)
+        public override bool Equals(object obj)
         {
-            if (!(other is MapLayout))
-                return false;
-
-            return (this == (MapLayout) other);
+            if (!(obj is MapLayout)) return false;
+            MapLayout other = (MapLayout)obj;
+            return Id == other.Id;
         }
 
         public override int GetHashCode()
