@@ -76,7 +76,7 @@ namespace STROOP.Map3
             foreach (var mapObj in _mapObjects)
             {
                 // Draw the map object
-                mapObj.DrawOnControl(this);
+                mapObj.DrawOnControl();
             }
 
             Control.SwapBuffers();
@@ -208,7 +208,6 @@ namespace STROOP.Map3
 
         public void AddMapObject(Map3Object mapObj)
         {
-            mapObj.Load(this);
             _mapObjects.Add(mapObj);
         }
 

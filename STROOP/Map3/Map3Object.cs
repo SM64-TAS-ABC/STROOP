@@ -15,16 +15,23 @@ namespace STROOP.Map3
 {
     public class Map3Object : IDisposable
     {
+        public readonly Map3Graphics Graphics;
+        public readonly Func<Image> ImageFunction;
         public Image Image;
         public int TextureId;
 
-        public Map3Object(Image image, PointF location = new PointF())
+        public Map3Object(Map3Graphics graphics, Func<Image> imageFunction)
         {
-            Image = image;
+            Graphics = graphics;
+            ImageFunction = imageFunction;
+            Image = null;
+            TextureId = -1;
         }
 
-        public void DrawOnControl(Map3Graphics graphics)
+        public void DrawOnControl()
         {
+            UpdateImage();
+
             // Update map object
             (double x, double y, double z, double angle) = GetPositionAngle();
             float relX = (float)PuUtilities.GetRelativeCoordinate(x);
@@ -37,8 +44,8 @@ namespace STROOP.Map3
             float alpha = 1;
 
             // Calculate location on the OpenGl control
-            PointF locationOnContol = Config.Map3Manager.CalculateLocationOnControl(new PointF(relX, relZ), graphics.MapView);
-            SizeF size = graphics.ScaleImageSize(Image.Size, iconSize);
+            PointF locationOnContol = Config.Map3Manager.CalculateLocationOnControl(new PointF(relX, relZ), Graphics.MapView);
+            SizeF size = Graphics.ScaleImageSize(Image.Size, iconSize);
 
             // Place and rotate texture to correct location on control
             GL.LoadIdentity();
@@ -64,9 +71,15 @@ namespace STROOP.Map3
             return PositionAngle.Mario.GetValues();
         }
 
-        public void Load(Map3Graphics graphics)
+        public void UpdateImage()
         {
-            TextureId = graphics.LoadTexture(Image as Bitmap);
+            Image image = ImageFunction();
+            if (image != Image)
+            {
+                Image = image;
+                GL.DeleteTexture(TextureId);
+                TextureId = Graphics.LoadTexture(image as Bitmap);
+            }
         }
 
         public void Dispose()
