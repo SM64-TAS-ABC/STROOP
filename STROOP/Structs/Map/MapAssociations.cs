@@ -93,5 +93,11 @@ namespace STROOP.Structs
         {
             return _backgroundImageDictionary.Values.ToList();
         }
+
+        public MapLayout GetGridlines()
+        {
+            var mapKey = new Tuple<byte, byte>(255, 1);
+            return _maps[mapKey][0];
+        }
     }
 }

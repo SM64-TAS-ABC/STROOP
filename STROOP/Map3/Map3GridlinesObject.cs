@@ -16,7 +16,7 @@ namespace STROOP.Map3
     public class Map3GridlinesObject : Map3IconRectangleObject
     {
         public Map3GridlinesObject(Map3Graphics graphics)
-            : base(graphics, () => Config.MapAssociations.GetBestMap(22, 1, 1, 1, 0).MapImage)
+            : base(graphics, () => Config.MapAssociations.GetGridlines().MapImage)
         {
         }
 
