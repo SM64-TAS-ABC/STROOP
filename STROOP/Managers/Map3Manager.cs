@@ -43,7 +43,6 @@ namespace STROOP.Managers
             // Create new graphics control
             _mapGraphics = new Map3Graphics(_mapGui.GLControl);
             _mapGraphics.Load();
-            _mapGraphics.IconSize = 50;
 
             _isLoaded = true;
 
@@ -71,7 +70,6 @@ namespace STROOP.Managers
             _marioMapObj.Y = y;
             _marioMapObj.Z = z;
             _marioMapObj.Rotation = rot;
-            _marioMapObj.Show = true;
 
             // Get level and area
             byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);

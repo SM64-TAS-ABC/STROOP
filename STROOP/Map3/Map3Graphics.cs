@@ -20,23 +20,10 @@ namespace STROOP.Map3
         int _mapBackgroundTex = -1;
         Size _mapImageSize;
         List<Map3Object> _mapObjects = new List<Map3Object>();
-        float _renderIconSize = 30;
         int _iconSize = 30;
 
         public RectangleF MapView;
         public GLControl Control;
-        public int IconSize
-        {
-            set
-            {
-                _iconSize = value;
-                SetRenderIconSize();
-            }
-            get
-            {
-                return _iconSize;
-            }
-        }
 
         public Map3Graphics(GLControl control)
         {
@@ -103,11 +90,6 @@ namespace STROOP.Map3
             SetMapView();
         }
 
-        private void SetRenderIconSize()
-        {
-            _renderIconSize = Math.Min(Control.Height, Control.Width) / 500f * IconSize;
-        }
-
         public SizeF ScaleImageSize(Size imageSize, float desiredSize)
         {
             float scale = Math.Max(imageSize.Height / desiredSize, imageSize.Width / desiredSize);
@@ -123,7 +105,6 @@ namespace STROOP.Map3
 
             GL.Ortho(0, w, h, 0, -1, 1); // Bottom-left corner pixel has coordinate (0, 0)
             GL.Viewport(0, 0, w, h); // Use all of the glControl painting area
-            SetRenderIconSize();
         }
 
         private void SetMapView()

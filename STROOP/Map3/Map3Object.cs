@@ -25,7 +25,6 @@ namespace STROOP.Map3
         public float Rotation;
         public bool UsesRotation;
         public bool Transparent = false;
-        public bool Show = false;
 
         public int TextureId;
 
@@ -38,7 +37,7 @@ namespace STROOP.Map3
 
         public void DrawOnControl(Map3Graphics graphics)
         {
-            graphics.DrawTexture(TextureId, LocationOnContol, graphics.ScaleImageSize(Image.Size, graphics.IconSize),
+            graphics.DrawTexture(TextureId, LocationOnContol, graphics.ScaleImageSize(Image.Size, 50),
                 UsesRotation ? Rotation : 0, Transparent ? 0.5f : 1.0f);
         }
 
