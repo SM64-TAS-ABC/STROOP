@@ -17,13 +17,6 @@ namespace STROOP.Controls
     {
         public ObjectSlotFlowLayoutPanel()
         {
-            ToolStripMenuItem itemSelectCopiedAddress = new ToolStripMenuItem("Select Copied Address");
-            itemSelectCopiedAddress.Click += (sender, e) =>
-            {
-                uint? address = ParsingUtilities.ParseHexNullable(Clipboard.GetText());
-                if (address.HasValue) Config.ObjectSlotsManager.SelectSlotByAddress(address.Value);
-            };
-
             ToolStripMenuItem itemSelectMarkedSlots = new ToolStripMenuItem("Select Marked Slots");
             itemSelectMarkedSlots.Click += (sender, e) =>
             {
@@ -31,9 +24,30 @@ namespace STROOP.Controls
                 Config.ObjectSlotsManager.SelectedSlotsAddresses.AddRange(Config.ObjectSlotsManager.MarkedSlotsAddresses);
             };
 
+            ToolStripMenuItem itemSelectCopiedAddress = new ToolStripMenuItem("Select Copied Address");
+            itemSelectCopiedAddress.Click += (sender, e) =>
+            {
+                uint? address = ParsingUtilities.ParseHexNullable(Clipboard.GetText());
+                if (address.HasValue) Config.ObjectSlotsManager.SelectSlotByAddress(address.Value);
+            };
+
+            ToolStripMenuItem itemClearMarkedSlots = new ToolStripMenuItem("Clear Marked Slots");
+            itemClearMarkedSlots.Click += (sender, e) =>
+            {
+                Config.ObjectSlotsManager.MarkedSlotsAddresses.Clear();
+            };
+
+            ToolStripMenuItem itemClearSelectedSlots = new ToolStripMenuItem("Clear Selected Slots");
+            itemClearSelectedSlots.Click += (sender, e) =>
+            {
+                Config.ObjectSlotsManager.SelectedSlotsAddresses.Clear();
+            };
+
             ContextMenuStrip = new ContextMenuStrip();
-            ContextMenuStrip.Items.Add(itemSelectCopiedAddress);
             ContextMenuStrip.Items.Add(itemSelectMarkedSlots);
+            ContextMenuStrip.Items.Add(itemSelectCopiedAddress);
+            ContextMenuStrip.Items.Add(itemClearMarkedSlots);
+            ContextMenuStrip.Items.Add(itemClearSelectedSlots);
         }
     }
 }
