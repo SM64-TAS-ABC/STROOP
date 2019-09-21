@@ -18,7 +18,6 @@ namespace STROOP.Map3
     {
         int _mapTex = -1;
         int _mapBackgroundTex = -1;
-        Size _mapImageSize;
         List<Map3Object> _mapObjects = new List<Map3Object>();
 
         public RectangleF MapView;
@@ -157,7 +156,6 @@ namespace STROOP.Map3
             int oldTex = _mapTex;
 
             _mapTex = LoadTexture(map as Bitmap);
-            _mapImageSize = map.Size;
             SetMapView();
 
             // Delete old map image
