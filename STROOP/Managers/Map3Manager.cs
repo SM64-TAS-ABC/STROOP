@@ -132,7 +132,6 @@ namespace STROOP.Managers
 
             // Change and set a new map
             _mapGraphics.SetMap(map.MapImage);
-            _mapGraphics.SetBackground(map.BackgroundImage);
 
             _currentMap = map;
         }

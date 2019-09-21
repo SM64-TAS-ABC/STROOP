@@ -16,8 +16,6 @@ namespace STROOP.Map3
 {
     public class Map3Graphics
     {
-        int _mapTex = -1;
-        int _mapBackgroundTex = -1;
         List<Map3Object> _mapObjects = new List<Map3Object>();
 
         public RectangleF MapView;
@@ -63,18 +61,6 @@ namespace STROOP.Map3
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
             GL.MatrixMode(MatrixMode.Modelview);
-
-            if (_mapBackgroundTex != -1)
-            {
-                //DrawTexture(_mapBackgroundTex, new PointF(Control.Width / 2, Control.Height / 2), Control.Size);
-            }
-
-            // Don't draw if no map is loaded
-            if (_mapTex == -1)
-            {
-                Control.SwapBuffers();
-                return;
-            }
 
             // Draw map image
             //DrawTexture(_mapTex, new PointF(MapView.X + MapView.Width / 2, MapView.Y + MapView.Height / 2), MapView.Size);
@@ -131,38 +117,9 @@ namespace STROOP.Map3
             MapView = new RectangleF(marginH / 2, marginV / 2, Control.Width - marginH, Control.Height - marginV);
         }
 
-        public void SetBackground(Image background)
-        {
-            int oldTex = _mapBackgroundTex;
-
-            if (background != null)
-            {
-                _mapBackgroundTex = LoadTexture(background as Bitmap);
-            }
-            else
-            {
-                _mapBackgroundTex = -1;
-            }
-
-            // Delete old map image
-            if (oldTex != -1)
-            {
-                GL.DeleteTexture(oldTex);
-            }
-        }
-
         public void SetMap(Image map)
         {
-            int oldTex = _mapTex;
-
-            _mapTex = LoadTexture(map as Bitmap);
             SetMapView();
-
-            // Delete old map image
-            if (oldTex != -1)
-            {
-                GL.DeleteTexture(oldTex);
-            }
         }
 
         public void DrawTexture(int texId, PointF loc, SizeF size, float angle = 0, float alpha = 1)
