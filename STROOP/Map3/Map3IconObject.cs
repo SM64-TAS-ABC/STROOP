@@ -27,7 +27,7 @@ namespace STROOP.Map3
             TextureId = -1;
         }
 
-        protected void DrawTexture(int texId, PointF loc, SizeF size, float angle, float alpha)
+        protected void DrawTexture(PointF loc, SizeF size, float angle, float alpha)
         {
             // Place and rotate texture to correct location on control
             GL.LoadIdentity();
@@ -36,7 +36,7 @@ namespace STROOP.Map3
             GL.Color4(1.0, 1.0, 1.0, alpha);
 
             // Start drawing texture
-            GL.BindTexture(TextureTarget.Texture2D, texId);
+            GL.BindTexture(TextureTarget.Texture2D, TextureId);
             GL.Begin(PrimitiveType.Quads);
 
             // Set drawing coordinates

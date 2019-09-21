@@ -113,27 +113,6 @@ namespace STROOP.Map3
             MapView = new RectangleF(marginH / 2, marginV / 2, Control.Width - marginH, Control.Height - marginV);
         }
 
-        public void DrawTexture(int texId, PointF loc, SizeF size, float angle = 0, float alpha = 1)
-        {
-            // Place and rotate texture to correct location on control
-            GL.LoadIdentity();
-            GL.Translate(new Vector3(loc.X, loc.Y, 0));
-            GL.Rotate(360 - angle, Vector3.UnitZ);
-            GL.Color4(1.0, 1.0, 1.0, alpha);
-
-            // Start drawing texture
-            GL.BindTexture(TextureTarget.Texture2D, texId);
-            GL.Begin(PrimitiveType.Quads);
-
-            // Set drawing coordinates
-            GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(-size.Width / 2, size.Height / 2);
-            GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(size.Width / 2, size.Height / 2);
-            GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(size.Width / 2, -size.Height / 2);
-            GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-size.Width / 2, -size.Height / 2);
-
-            GL.End();
-        }
-
         public int LoadTexture(Bitmap bmp)
         {
             // Create texture and id

@@ -45,7 +45,7 @@ namespace STROOP.Map3
 
             SizeF size = Graphics.ScaleImageSize(Image.Size, iconSize);
 
-            DrawTexture(TextureId, new PointF(xPosPixels, zPosPixels), size, angleDegrees, alpha);
+            DrawTexture(new PointF(xPosPixels, zPosPixels), size, angleDegrees, alpha);
         }
 
         protected abstract (double x, double y, double z, double angle) GetPositionAngle();
