@@ -24,7 +24,9 @@ namespace STROOP.Map3
         {
             UpdateImage();
 
-            (PointF loc, SizeF size) = GetDimensions();
+            RectangleF rectangle = GetDimensions();
+            PointF loc = rectangle.Location;
+            SizeF size = rectangle.Size;
             int angle = 0;
             int alpha = 1;
 
@@ -47,6 +49,6 @@ namespace STROOP.Map3
             GL.End();
         }
 
-        protected abstract (PointF location, SizeF size) GetDimensions();
+        protected abstract RectangleF GetDimensions();
     }
 }

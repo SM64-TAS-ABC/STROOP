@@ -364,6 +364,7 @@
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Map3\Map3Graphics.cs" />
+    <Compile Include="Map3\Map3GridlinesObject.cs" />
     <Compile Include="Map3\Map3Gui.cs" />
     <Compile Include="Map3\Map3MapObject.cs" />
     <Compile Include="Map3\Map3IconRectangleObject.cs" />

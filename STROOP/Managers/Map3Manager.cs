@@ -26,6 +26,7 @@ namespace STROOP.Managers
         List<MapLayout> _currentMapList = null;
         Map3Graphics _mapGraphics;
 
+        Map3Object _gridlines;
         Map3Object _map;
         Map3Object _marioMapObj;
 
@@ -43,6 +44,7 @@ namespace STROOP.Managers
             _mapGraphics = new Map3Graphics(_mapGui.GLControl);
             _mapGraphics.Load();
 
+            _gridlines = new Map3GridlinesObject(_mapGraphics);
             _map = new Map3MapObject(_mapGraphics);
             _marioMapObj = new Map3MarioObject(_mapGraphics);
 
@@ -52,6 +54,7 @@ namespace STROOP.Managers
             ChangeCurrentMap(Config.MapAssociations.DefaultMap);
 
             // Add map objects
+            _mapGraphics.AddMapObject(_gridlines);
             _mapGraphics.AddMapObject(_map);
             _mapGraphics.AddMapObject(_marioMapObj);
         }
