@@ -9,6 +9,7 @@ using OpenTK.Graphics.OpenGL;
 using STROOP.Utilities;
 using STROOP.Structs.Configurations;
 using STROOP.Structs;
+using OpenTK;
 
 namespace STROOP.Map3
 {
@@ -52,8 +53,32 @@ namespace STROOP.Map3
             Z = z;
             Rotation = rot;
 
-            graphics.DrawTexture(TextureId, LocationOnContol, graphics.ScaleImageSize(Image.Size, 50),
-                UsesRotation ? Rotation : 0, Transparent ? 0.5f : 1.0f);
+            // Calculate mario's location on the OpenGl control
+            var marioCoord = new PointF(RelX, RelZ);
+            var mapView = graphics.MapView;
+            LocationOnContol = Config.Map3Manager.CalculateLocationOnControl(marioCoord, mapView);
+
+            SizeF size = graphics.ScaleImageSize(Image.Size, 50);
+            float alpha = 1;
+            float angle = Rotation;
+
+            // Place and rotate texture to correct location on control
+            GL.LoadIdentity();
+            GL.Translate(new Vector3(LocationOnContol.X, LocationOnContol.Y, 0));
+            GL.Rotate(360 - angle, Vector3.UnitZ);
+            GL.Color4(1.0, 1.0, 1.0, alpha);
+
+            // Start drawing texture
+            GL.BindTexture(TextureTarget.Texture2D, TextureId);
+            GL.Begin(PrimitiveType.Quads);
+
+            // Set drawing coordinates
+            GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(-size.Width / 2, size.Height / 2);
+            GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(size.Width / 2, size.Height / 2);
+            GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(size.Width / 2, -size.Height / 2);
+            GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-size.Width / 2, -size.Height / 2);
+
+            GL.End();
         }
 
         public void Load(Map3Graphics graphics)

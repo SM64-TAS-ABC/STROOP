@@ -88,8 +88,6 @@ namespace STROOP.Managers
                     _currentMapList = _currentMapList.Where((map) => !map.MissionLayout.HasValue).ToList();
             }
 
-            var marioCoord = new PointF(_marioMapObj.RelX, _marioMapObj.RelZ);
-
             // Filter out all maps that are lower than Mario
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float relMarioY = (float)PuUtilities.GetRelativeCoordinate(marioY);
@@ -113,10 +111,6 @@ namespace STROOP.Managers
                 ChangeCurrentMap(bestMap);
             }
 
-            // Calculate mario's location on the OpenGl control
-            var mapView = _mapGraphics.MapView;
-            _marioMapObj.LocationOnContol = CalculateLocationOnControl(marioCoord, mapView);
-
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
             _mapGraphics.Control.Invalidate();
         }
@@ -133,8 +127,7 @@ namespace STROOP.Managers
 
             _currentMap = map;
         }
-
-        private PointF CalculateLocationOnControl(PointF mapLoc, RectangleF mapView)
+        public PointF CalculateLocationOnControl(PointF mapLoc, RectangleF mapView)
         {
             PointF locCtrl = new PointF();
             locCtrl.X = mapView.X + (mapLoc.X - _currentMap.Coordinates.X)
