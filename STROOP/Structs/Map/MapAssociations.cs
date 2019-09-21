@@ -58,6 +58,16 @@ namespace STROOP.Structs
             return bestMap;
         }
 
+        public MapLayout GetBestMap()
+        {
+            byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);
+            byte area = Config.Stream.GetByte(MiscConfig.AreaAddress);
+            ushort loadingPoint = Config.Stream.GetUInt16(MiscConfig.LoadingPointAddress);
+            ushort missionLayout = Config.Stream.GetUInt16(MiscConfig.MissionAddress);
+            float y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            return GetBestMap(level, area, loadingPoint, missionLayout, y);
+        }
+
         public List<MapLayout> GetAllMaps()
         {
             List<MapLayout> maps = _maps.Values.SelectMany(list => list).ToList();
