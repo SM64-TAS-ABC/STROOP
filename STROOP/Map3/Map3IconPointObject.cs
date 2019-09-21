@@ -37,31 +37,15 @@ namespace STROOP.Map3
 
             float xOffsetInGameUnits = relX - Graphics.XMin;
             float xOffsetPixels = xOffsetInGameUnits * Graphics.ConversionScale;
-            float xPixels = Graphics.MapView.X + xOffsetPixels;
+            float xPosPixels = Graphics.MapView.X + xOffsetPixels;
 
             float zOffsetInGameUnits = relZ - Graphics.ZMin;
             float zOffsetPixels = zOffsetInGameUnits * Graphics.ConversionScale;
-            float zPixels = Graphics.MapView.Y + zOffsetPixels;
+            float zPosPixels = Graphics.MapView.Y + zOffsetPixels;
 
             SizeF size = Graphics.ScaleImageSize(Image.Size, iconSize);
 
-            // Place and rotate texture to correct location on control
-            GL.LoadIdentity();
-            GL.Translate(new Vector3(xPixels, zPixels, 0));
-            GL.Rotate(360 - angleDegrees, Vector3.UnitZ);
-            GL.Color4(1.0, 1.0, 1.0, alpha);
-
-            // Start drawing texture
-            GL.BindTexture(TextureTarget.Texture2D, TextureId);
-            GL.Begin(PrimitiveType.Quads);
-
-            // Set drawing coordinates
-            GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(-size.Width / 2, size.Height / 2);
-            GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(size.Width / 2, size.Height / 2);
-            GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(size.Width / 2, -size.Height / 2);
-            GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-size.Width / 2, -size.Height / 2);
-
-            GL.End();
+            DrawTexture(TextureId, new PointF(xPosPixels, zPosPixels), size, angleDegrees, alpha);
         }
 
         protected abstract (double x, double y, double z, double angle) GetPositionAngle();
