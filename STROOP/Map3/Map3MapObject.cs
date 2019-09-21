@@ -22,25 +22,20 @@ namespace STROOP.Map3
 
         protected override (PointF loc, SizeF size) GetDimensions()
         {
-            int xMin = -8191;
-            int xMax = 8192;
-            int zMin = -8191;
-            int zMax = 8192;
-            float conversionScale = Graphics.MapView.Width / (xMax - xMin);
             RectangleF coordinates = Config.MapAssociations.GetBestMap().Coordinates;
 
-            float xScale = coordinates.Width / (xMax - xMin);
+            float xScale = coordinates.Width / (Graphics.XMax - Graphics.XMin);
             float mapWidth = xScale * Graphics.MapView.Width;
 
-            float yScale = coordinates.Height / (zMax - zMin);
+            float yScale = coordinates.Height / (Graphics.ZMax - Graphics.ZMin);
             float mapHeight = yScale * Graphics.MapView.Height;
 
-            float xOffsetInGameUnits = (coordinates.X - xMin) + coordinates.Width / 2;
-            float xOffsetPixels = xOffsetInGameUnits * conversionScale;
+            float xOffsetInGameUnits = (coordinates.X - Graphics.XMin) + coordinates.Width / 2;
+            float xOffsetPixels = xOffsetInGameUnits * Graphics.ConversionScale;
             float xCenter = Graphics.MapView.X + xOffsetPixels;
 
-            float yOffsetInGameUnits = (coordinates.Y - zMin) + coordinates.Height / 2;
-            float yOffsetPixels = yOffsetInGameUnits * conversionScale;
+            float yOffsetInGameUnits = (coordinates.Y - Graphics.ZMin) + coordinates.Height / 2;
+            float yOffsetPixels = yOffsetInGameUnits * Graphics.ConversionScale;
             float yCenter = Graphics.MapView.Y + yOffsetPixels;
 
             // Calculate where the map image should be drawn

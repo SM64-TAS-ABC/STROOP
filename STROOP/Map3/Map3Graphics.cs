@@ -22,6 +22,15 @@ namespace STROOP.Map3
         List<Map3Object> _mapObjects = new List<Map3Object>();
 
         public RectangleF MapView;
+        public int XMin = -8191;
+        public int XMax = 8192;
+        public int ZMin = -8191;
+        public int ZMax = 8192;
+        public float ConversionScale
+        {
+            get => MapView.Width / (XMax - XMin);
+        }
+
         public GLControl Control;
 
         public Map3Graphics(GLControl control)

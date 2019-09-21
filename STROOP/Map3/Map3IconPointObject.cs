@@ -35,13 +35,19 @@ namespace STROOP.Map3
             int iconSize = 50;
             float alpha = 1;
 
-            // Calculate location on the OpenGl control
-            PointF locationOnContol = Config.Map3Manager.CalculateLocationOnControl(new PointF(relX, relZ), Graphics.MapView);
+            float xOffsetInGameUnits = relX - Graphics.XMin;
+            float xOffsetPixels = xOffsetInGameUnits * Graphics.ConversionScale;
+            float xPixels = Graphics.MapView.X + xOffsetPixels;
+
+            float zOffsetInGameUnits = relZ - Graphics.ZMin;
+            float zOffsetPixels = zOffsetInGameUnits * Graphics.ConversionScale;
+            float zPixels = Graphics.MapView.Y + zOffsetPixels;
+
             SizeF size = Graphics.ScaleImageSize(Image.Size, iconSize);
 
             // Place and rotate texture to correct location on control
             GL.LoadIdentity();
-            GL.Translate(new Vector3(locationOnContol.X, locationOnContol.Y, 0));
+            GL.Translate(new Vector3(xPixels, zPixels, 0));
             GL.Rotate(360 - angleDegrees, Vector3.UnitZ);
             GL.Color4(1.0, 1.0, 1.0, alpha);
 
