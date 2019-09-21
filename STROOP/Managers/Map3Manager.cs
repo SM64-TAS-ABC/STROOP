@@ -22,7 +22,6 @@ namespace STROOP.Managers
         public MapLayout map;
         byte _currentLevel, _currentArea;
         ushort _currentLoadingPoint, _currentMissionLayout;
-        MapLayout _currentMap;
         List<MapLayout> _currentMapList = null;
         Map3Graphics _mapGraphics;
 
@@ -126,23 +125,8 @@ namespace STROOP.Managers
 
         private void ChangeCurrentMap(MapLayout map)
         {
-            // Don't change the map if it isn't different
-            if (map.Equals(_currentMap))
-                return;
-
             // Change and set a new map
             _mapGraphics.SetMap(map.MapImage);
-
-            _currentMap = map;
-        }
-        public PointF CalculateLocationOnControl(PointF mapLoc, RectangleF mapView)
-        {
-            PointF locCtrl = new PointF();
-            locCtrl.X = mapView.X + (mapLoc.X - _currentMap.Coordinates.X)
-                * (mapView.Width / _currentMap.Coordinates.Width);
-            locCtrl.Y = mapView.Y + (mapLoc.Y - _currentMap.Coordinates.Y)
-                * (mapView.Height / _currentMap.Coordinates.Height);
-            return locCtrl;
         }
     }
 }
