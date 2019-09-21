@@ -26,6 +26,7 @@ namespace STROOP.Map3
 
             // Update map object
             (double x, double y, double z, double angle) = GetPositionAngle();
+            if (double.IsNaN(angle)) angle = 0;
             float relX = (float)PuUtilities.GetRelativeCoordinate(x);
             float relY = (float)PuUtilities.GetRelativeCoordinate(y);
             float relZ = (float)PuUtilities.GetRelativeCoordinate(z);

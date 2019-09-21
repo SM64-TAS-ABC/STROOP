@@ -370,6 +370,7 @@
     <Compile Include="Map3\Map3MapObject.cs" />
     <Compile Include="Map3\Map3IconRectangleObject.cs" />
     <Compile Include="Map3\Map3IconPointObject.cs" />
+    <Compile Include="Map3\Map3HolpObject.cs" />
     <Compile Include="Map3\Map3MarioObject.cs" />
     <Compile Include="Map3\Map3IconObject.cs" />
     <Compile Include="Map3\Map3Object.cs" />
