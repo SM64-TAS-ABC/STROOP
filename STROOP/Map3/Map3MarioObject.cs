@@ -13,7 +13,7 @@ using OpenTK;
 
 namespace STROOP.Map3
 {
-    public class Map3MarioObject : Map3IconObject
+    public class Map3MarioObject : Map3IconPointObject
     {
         public Map3MarioObject(Map3Graphics graphics)
             : base(graphics, () => Config.ObjectAssociations.MarioMapImage)

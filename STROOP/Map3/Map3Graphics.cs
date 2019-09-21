@@ -20,7 +20,6 @@ namespace STROOP.Map3
         int _mapBackgroundTex = -1;
         Size _mapImageSize;
         List<Map3Object> _mapObjects = new List<Map3Object>();
-        int _iconSize = 30;
 
         public RectangleF MapView;
         public GLControl Control;
