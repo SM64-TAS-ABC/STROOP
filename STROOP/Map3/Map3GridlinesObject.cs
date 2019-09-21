@@ -20,9 +20,13 @@ namespace STROOP.Map3
         {
         }
 
-        protected override RectangleF GetDimensions()
+        protected override (PointF loc, SizeF size) GetDimensions()
         {
-            return Graphics.MapView;
+            return (
+                new PointF(
+                    Graphics.MapView.X + Graphics.MapView.Width / 2,
+                    Graphics.MapView.Y + Graphics.MapView.Height / 2),
+                Graphics.MapView.Size);
         }
     }
 }
