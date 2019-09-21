@@ -13,17 +13,16 @@ using OpenTK;
 
 namespace STROOP.Map3
 {
-    public abstract class Map3Object : IDisposable
+    public class Map3MarioObject : Map3IconObject
     {
-        protected readonly Map3Graphics Graphics;
-
-        public Map3Object(Map3Graphics graphics)
+        public Map3MarioObject(Map3Graphics graphics)
+            : base(graphics, () => Config.ObjectAssociations.MarioMapImage)
         {
-            Graphics = graphics;
         }
 
-        public abstract void DrawOnControl();
-
-        public abstract void Dispose();
+        protected override (double x, double y, double z, double angle) GetPositionAngle()
+        {
+            return PositionAngle.Mario.GetValues();
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace STROOP.Managers
             // Create new graphics control
             _mapGraphics = new Map3Graphics(_mapGui.GLControl);
             _mapGraphics.Load();
-            _marioMapObj = new Map3Object(_mapGraphics, () => Config.ObjectAssociations.MarioMapImage);
+            _marioMapObj = new Map3MarioObject(_mapGraphics);
 
             _isLoaded = true;
 

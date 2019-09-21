@@ -365,6 +365,8 @@
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Map3\Map3Graphics.cs" />
     <Compile Include="Map3\Map3Gui.cs" />
+    <Compile Include="Map3\Map3MarioObject.cs" />
+    <Compile Include="Map3\Map3IconObject.cs" />
     <Compile Include="Map3\Map3Object.cs" />
     <Compile Include="Models\PanModel.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
