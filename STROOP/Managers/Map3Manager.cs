@@ -25,6 +25,7 @@ namespace STROOP.Managers
         Map3Object _gridlines;
         Map3Object _map;
         Map3Object _holpMapObj;
+        Map3Object _cameraMapObj;
         Map3Object _marioMapObj;
 
         Map3Gui _mapGui;
@@ -45,6 +46,7 @@ namespace STROOP.Managers
             _gridlines = new Map3GridlinesObject(_mapGraphics);
             _map = new Map3MapObject(_mapGraphics);
             _holpMapObj = new Map3HolpObject(_mapGraphics);
+            _cameraMapObj = new Map3CameraObject(_mapGraphics);
             _marioMapObj = new Map3MarioObject(_mapGraphics);
 
             _isLoaded = true;
@@ -54,6 +56,7 @@ namespace STROOP.Managers
             _mapGraphics.AddMapObject(_gridlines);
             _mapGraphics.AddMapObject(_map);
             _mapGraphics.AddMapObject(_holpMapObj);
+            _mapGraphics.AddMapObject(_cameraMapObj);
             _mapGraphics.AddMapObject(_marioMapObj);
         }
 

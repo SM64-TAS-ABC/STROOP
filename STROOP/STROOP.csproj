@@ -367,6 +367,7 @@
     <Compile Include="Map3\Map3GridlinesObject.cs" />
     <Compile Include="Map3\Map3Gui.cs" />
     <Compile Include="Map3\Map3BackgroundObject.cs" />
+    <Compile Include="Map3\Map3CameraObject.cs" />
     <Compile Include="Map3\Map3MapObject.cs" />
     <Compile Include="Map3\Map3IconRectangleObject.cs" />
     <Compile Include="Map3\Map3IconPointObject.cs" />
