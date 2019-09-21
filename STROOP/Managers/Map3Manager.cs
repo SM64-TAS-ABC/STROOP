@@ -19,10 +19,6 @@ namespace STROOP.Managers
 {
     public class Map3Manager
     {
-        public MapLayout map;
-        byte _currentLevel, _currentArea;
-        ushort _currentLoadingPoint, _currentMissionLayout;
-        List<MapLayout> _currentMapList = null;
         Map3Graphics _mapGraphics;
 
         Map3Object _background;
