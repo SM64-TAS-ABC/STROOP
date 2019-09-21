@@ -67,7 +67,7 @@ namespace STROOP.Map3
 
             if (_mapBackgroundTex != -1)
             {
-                DrawTexture(_mapBackgroundTex, new PointF(Control.Width / 2, Control.Height / 2), Control.Size);
+                //DrawTexture(_mapBackgroundTex, new PointF(Control.Width / 2, Control.Height / 2), Control.Size);
             }
 
             // Don't draw if no map is loaded

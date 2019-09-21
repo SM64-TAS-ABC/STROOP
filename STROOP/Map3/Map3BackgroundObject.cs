@@ -13,10 +13,10 @@ using OpenTK;
 
 namespace STROOP.Map3
 {
-    public class Map3GridlinesObject : Map3IconRectangleObject
+    public class Map3BackgroundObject : Map3IconRectangleObject
     {
-        public Map3GridlinesObject(Map3Graphics graphics)
-            : base(graphics, () => Config.MapAssociations.GetGridlines().MapImage)
+        public Map3BackgroundObject(Map3Graphics graphics)
+            : base(graphics, () => Config.MapAssociations.GetBestMap().BackgroundImage)
         {
         }
 
