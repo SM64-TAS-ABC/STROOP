@@ -19,7 +19,7 @@ namespace STROOP.Map3
         int _mapTex = -1;
         int _mapBackgroundTex = -1;
         Size _mapImageSize;
-        List<Map3BaseObject> _mapObjects = new List<Map3BaseObject>();
+        List<Map3Object> _mapObjects = new List<Map3Object>();
         float _renderIconSize = 30;
         int _iconSize = 30;
 
@@ -243,13 +243,13 @@ namespace STROOP.Map3
             return id;
         }
 
-        public void AddMapObject(Map3BaseObject mapObj)
+        public void AddMapObject(Map3Object mapObj)
         {
             mapObj.Load(this);
             _mapObjects.Add(mapObj);
         }
 
-        public void RemoveMapObject(Map3BaseObject mapObj)
+        public void RemoveMapObject(Map3Object mapObj)
         {
             _mapObjects.Remove(mapObj);
             mapObj?.Dispose();

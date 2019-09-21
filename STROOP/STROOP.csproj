@@ -363,11 +363,9 @@
     <Compile Include="Managers\PaintingManager.cs" />
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
-    <Compile Include="Map3\Map3BaseObject.cs" />
     <Compile Include="Map3\Map3Graphics.cs" />
     <Compile Include="Map3\Map3Gui.cs" />
     <Compile Include="Map3\Map3Object.cs" />
-    <Compile Include="Map3\TriangleMap3Object.cs" />
     <Compile Include="Models\PanModel.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
     <Compile Include="Structs\Configurations\TtcObjectConfig.cs" />
