@@ -35,7 +35,6 @@ namespace STROOP.Managers
             _mapGui = mapGui;
 
             _marioMapObj = new Map3Object(Config.ObjectAssociations.MarioMapImage);
-            _marioMapObj.UsesRotation = true;
         }
 
         public void Load()
