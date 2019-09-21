@@ -24,7 +24,8 @@ namespace STROOP.Map3
         {
             float xCenter = Graphics.MapView.X + Graphics.MapView.Width / 2;
             float yCenter = Graphics.MapView.Y + Graphics.MapView.Height / 2;
-            return (new PointF(xCenter, yCenter), Graphics.MapView.Size);
+            float length = Math.Max(Graphics.Control.Width, Graphics.Control.Height);
+            return (new PointF(xCenter, yCenter), new SizeF(length, length));
         }
     }
 }
