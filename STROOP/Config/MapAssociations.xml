@@ -35,8 +35,13 @@
     <Image path="White Background.png"/>
   </Background>
 
-  <Map name="Transparent" id="000" level="255" area="255">
+  <Map name="Transparent" id="000" level="255" area="0">
     <Image path="Transparent.png"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" />
+    <BackgroundImage name="Transparent Background"/>
+  </Map>
+  <Map name="Gridlines" id="001" level="255" area="1">
+    <Image path="Gridlines.png"/>
     <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" />
     <BackgroundImage name="Transparent Background"/>
   </Map>
