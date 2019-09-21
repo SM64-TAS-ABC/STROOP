@@ -110,16 +110,14 @@ namespace STROOP.Map3
         {
             // Calculate scale of "zoom" view (make sure image fits fully within the region, 
             // it is at a maximum size, and the aspect ration is maintained 
-            float hScale = ((float)Control.Width) / _mapImageSize.Width;
-            float vScale = ((float)Control.Height) / _mapImageSize.Height;
-            float scale = Math.Min(hScale, vScale);
+            float minLength = Math.Min(Control.Width, Control.Height);
 
             float marginV = 0;
             float marginH = 0;
-            if (hScale > vScale)
-                marginH = (Control.Width - scale * _mapImageSize.Width);
+            if (Control.Width > Control.Height)
+                marginH = Control.Width - minLength;
             else
-                marginV = (Control.Height - scale * _mapImageSize.Height);
+                marginV = Control.Height - minLength;
 
             // Calculate where the map image should be drawn
             MapView = new RectangleF(marginH / 2, marginV / 2, Control.Width - marginH, Control.Height - marginV);
