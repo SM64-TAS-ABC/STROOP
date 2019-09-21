@@ -594,6 +594,11 @@ namespace STROOP.Utilities
             }
         }
 
+        public (double x, double y, double z, double angle) GetValues()
+        {
+            return (X, Y, Z, Angle);
+        }
+
         public double GetAdditionalValue(int index)
         {
             if (PosAngleType != PositionAngleTypeEnum.Schedule) return Double.NaN;
