@@ -86,12 +86,8 @@ namespace STROOP.Map3
             DrawTexture(_mapTex, new PointF(MapView.X + MapView.Width / 2, MapView.Y + MapView.Height / 2), MapView.Size);
 
             // Loop through and draw all map objects
-            foreach (var mapObj in _mapObjects.OrderBy((mapObj) => mapObj.GetDepthScore()))
+            foreach (var mapObj in _mapObjects)
             {
-                // Make sure we want to show the map object
-                if (!mapObj.Draw)
-                    continue;
-
                 // Draw the map object
                 mapObj.DrawOnControl(this);
             }
@@ -181,20 +177,6 @@ namespace STROOP.Map3
             if (oldTex != -1)
             {
                 GL.DeleteTexture(oldTex);
-            }
-        }
-
-        struct Vertex2d
-        {
-            public Vector2 TexCoord;
-            public Vector3 Normal;
-            public Vector3 Position;
-
-            public Vertex2d(Vector2 texCoord, Vector2 position)
-            {
-                TexCoord = texCoord;
-                Normal = Vector3.UnitX;
-                Position = new Vector3(position.X, position.Y, 0);
             }
         }
 

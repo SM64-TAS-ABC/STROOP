@@ -12,8 +12,6 @@ namespace STROOP.Map3
 {
     public class Map3Object : IDisposable
     {
-        public bool Draw;
-        public int Depth;
         public Image Image;
         public PointF LocationOnContol;
         public float X;
@@ -31,12 +29,11 @@ namespace STROOP.Map3
 
         public int TextureId;
 
-        public Map3Object(Image image, int depth = 0, PointF location = new PointF())
+        public Map3Object(Image image, PointF location = new PointF())
         {
             Image = image;
             X = location.X;
             Y = location.Y;
-            Depth = depth;
         }
 
         public void DrawOnControl(Map3Graphics graphics)
@@ -53,11 +50,6 @@ namespace STROOP.Map3
         public void Dispose()
         {
             GL.DeleteTexture(TextureId);
-        }
-
-        public double GetDepthScore()
-        {
-            return Y + Depth * 65536d;
         }
     }
 }

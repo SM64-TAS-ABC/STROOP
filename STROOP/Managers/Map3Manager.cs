@@ -34,7 +34,7 @@ namespace STROOP.Managers
         {
             _mapGui = mapGui;
 
-            _marioMapObj = new Map3Object(Config.ObjectAssociations.MarioMapImage, 1);
+            _marioMapObj = new Map3Object(Config.ObjectAssociations.MarioMapImage);
             _marioMapObj.UsesRotation = true;
         }
 
@@ -130,7 +130,6 @@ namespace STROOP.Managers
             // Calculate mario's location on the OpenGl control
             var mapView = _mapGraphics.MapView;
             _marioMapObj.LocationOnContol = CalculateLocationOnControl(marioCoord, mapView);
-            _marioMapObj.Draw = true;
 
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
             _mapGraphics.Control.Invalidate();
