@@ -43,9 +43,15 @@ namespace STROOP.Map3
             float zOffsetPixels = zOffsetInGameUnits * Graphics.ConversionScale;
             float zPosPixels = Graphics.MapView.Y + zOffsetPixels;
 
-            SizeF size = Graphics.ScaleImageSize(Image.Size, iconSize);
+            SizeF size = ScaleImageSize(Image.Size, iconSize);
 
             DrawTexture(new PointF(xPosPixels, zPosPixels), size, angleDegrees, alpha);
+        }
+
+        private static SizeF ScaleImageSize(Size imageSize, float desiredSize)
+        {
+            float scale = Math.Max(imageSize.Height / desiredSize, imageSize.Width / desiredSize);
+            return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
         }
 
         protected abstract (double x, double y, double z, double angle) GetPositionAngle();

@@ -10,6 +10,7 @@ using STROOP.Utilities;
 using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
+using System.Drawing.Imaging;
 
 namespace STROOP.Map3
 {
@@ -55,8 +56,32 @@ namespace STROOP.Map3
             {
                 Image = image;
                 GL.DeleteTexture(TextureId);
-                TextureId = Graphics.LoadTexture(image as Bitmap);
+                TextureId = LoadTexture(image as Bitmap);
             }
+        }
+
+        private static int LoadTexture(Bitmap bmp)
+        {
+            // Create texture and id
+            int id = GL.GenTexture();
+            GL.BindTexture(TextureTarget.Texture2D, id);
+
+            // Set Bi-Linear Texture Filtering
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapNearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+
+            // Get data from bitmap image
+            BitmapData bmp_data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+            // Store bitmap data as OpenGl texture
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, bmp.Width, bmp.Height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, bmp_data.Scan0);
+
+            bmp.UnlockBits(bmp_data);
+
+            // Generate mipmaps for texture filtering
+            GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
+
+            return id;
         }
 
         public override void Dispose()

@@ -16,7 +16,8 @@ namespace STROOP.Map3
 {
     public class Map3Graphics
     {
-        List<Map3Object> _mapObjects = new List<Map3Object>();
+        public readonly GLControl Control;
+        private readonly List<Map3Object> _mapObjects = new List<Map3Object>();
 
         public RectangleF MapView;
         public int XMin = -8191;
@@ -27,8 +28,6 @@ namespace STROOP.Map3
         {
             get => MapView.Width / (XMax - XMin);
         }
-
-        public GLControl Control;
 
         public Map3Graphics(GLControl control)
         {
@@ -54,7 +53,7 @@ namespace STROOP.Map3
             UpdateMapView();
         }
 
-        public void OnPaint()
+        private void OnPaint()
         {
             Control.MakeCurrent();
 
@@ -72,17 +71,11 @@ namespace STROOP.Map3
             Control.SwapBuffers();
         }
 
-        public void OnResize()
+        private void OnResize()
         {
             Control.MakeCurrent();
             UpdateViewport();
             UpdateMapView();
-        }
-
-        public SizeF ScaleImageSize(Size imageSize, float desiredSize)
-        {
-            float scale = Math.Max(imageSize.Height / desiredSize, imageSize.Width / desiredSize);
-            return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
         }
 
         private void UpdateViewport()
@@ -111,30 +104,6 @@ namespace STROOP.Map3
 
             // Calculate where the map image should be drawn
             MapView = new RectangleF(marginH / 2, marginV / 2, Control.Width - marginH, Control.Height - marginV);
-        }
-
-        public int LoadTexture(Bitmap bmp)
-        {
-            // Create texture and id
-            int id = GL.GenTexture();
-            GL.BindTexture(TextureTarget.Texture2D, id);
-
-            // Set Bi-Linear Texture Filtering
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.LinearMipmapNearest);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
-
-            // Get data from bitmap image
-            BitmapData bmp_data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-
-            // Store bitmap data as OpenGl texture
-            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, bmp.Width, bmp.Height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, bmp_data.Scan0);
-
-            bmp.UnlockBits(bmp_data);
-
-            // Generate mipmaps for texture filtering
-            GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
-
-            return id;
         }
 
         public void AddMapObject(Map3Object mapObj)
