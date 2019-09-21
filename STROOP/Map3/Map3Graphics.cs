@@ -40,8 +40,8 @@ namespace STROOP.Map3
             Control.MakeCurrent();
             Control.Context.LoadAll();
 
-            Control.Paint += OnPaint;
-            Control.Resize += OnResize;
+            Control.Paint += (sender, e) => OnPaint();
+            Control.Resize += (sender, e) => OnResize();
 
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
             GL.Enable(EnableCap.Texture2D);
@@ -50,20 +50,16 @@ namespace STROOP.Map3
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
 
-            SetupViewport();
+            UpdateViewport();
         }
 
-        public void OnPaint(object sender, EventArgs e)
+        public void OnPaint()
         {
             Control.MakeCurrent();
 
             // Set default background color (clear drawing area)
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
             GL.MatrixMode(MatrixMode.Modelview);
-
-            // Draw map image
-            //DrawTexture(_mapTex, new PointF(MapView.X + MapView.Width / 2, MapView.Y + MapView.Height / 2), MapView.Size);
 
             // Loop through and draw all map objects
             foreach (Map3Object mapObj in _mapObjects)
@@ -75,12 +71,11 @@ namespace STROOP.Map3
             Control.SwapBuffers();
         }
 
-        public void OnResize(object sender, EventArgs e)
+        public void OnResize()
         {
             Control.MakeCurrent();
-
-            SetupViewport();
-            SetMapView();
+            UpdateViewport();
+            UpdateMapView();
         }
 
         public SizeF ScaleImageSize(Size imageSize, float desiredSize)
@@ -89,7 +84,7 @@ namespace STROOP.Map3
             return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
         }
 
-        private void SetupViewport()
+        private void UpdateViewport()
         {
             int w = Control.Width;
             int h = Control.Height;
@@ -100,7 +95,7 @@ namespace STROOP.Map3
             GL.Viewport(0, 0, w, h); // Use all of the glControl painting area
         }
 
-        private void SetMapView()
+        private void UpdateMapView()
         {
             // Calculate scale of "zoom" view (make sure image fits fully within the region, 
             // it is at a maximum size, and the aspect ration is maintained 
@@ -119,7 +114,7 @@ namespace STROOP.Map3
 
         public void SetMap(Image map)
         {
-            SetMapView();
+            UpdateMapView();
         }
 
         public void DrawTexture(int texId, PointF loc, SizeF size, float angle = 0, float alpha = 1)
