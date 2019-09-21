@@ -26,34 +26,25 @@ namespace STROOP.Map3
             int xMax = 8192;
             int zMin = -8191;
             int zMax = 8192;
-
-            float scale = Graphics.MapView.Width / (xMax - xMin);
-
+            float conversionScale = Graphics.MapView.Width / (xMax - xMin);
             RectangleF coordinates = Config.MapAssociations.GetBestMap().Coordinates;
+
             float xScale = coordinates.Width / (xMax - xMin);
             float mapWidth = xScale * Graphics.MapView.Width;
+
             float yScale = coordinates.Height / (zMax - zMin);
             float mapHeight = yScale * Graphics.MapView.Height;
 
             float xOffsetInGameUnits = (coordinates.X - xMin) + coordinates.Width / 2;
-            float xOffsetPixels = xOffsetInGameUnits * scale;
+            float xOffsetPixels = xOffsetInGameUnits * conversionScale;
             float xCenter = Graphics.MapView.X + xOffsetPixels;
 
             float yOffsetInGameUnits = (coordinates.Y - zMin) + coordinates.Height / 2;
-            float yOffsetPixels = yOffsetInGameUnits * scale;
+            float yOffsetPixels = yOffsetInGameUnits * conversionScale;
             float yCenter = Graphics.MapView.Y + yOffsetPixels;
 
-            //mapWidth = 50;
-            //mapHeight = 50;
-
             // Calculate where the map image should be drawn
-            return (
-                new PointF(
-                    xCenter,
-                    yCenter),
-                new SizeF(
-                    mapWidth,
-                    mapHeight));
+            return (new PointF(xCenter, yCenter), new SizeF(mapWidth, mapHeight));
         }
     }
 }
