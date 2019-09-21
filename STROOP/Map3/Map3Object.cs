@@ -7,6 +7,8 @@ using System.Drawing;
 using STROOP.Controls.Map;
 using OpenTK.Graphics.OpenGL;
 using STROOP.Utilities;
+using STROOP.Structs.Configurations;
+using STROOP.Structs;
 
 namespace STROOP.Map3
 {
@@ -37,6 +39,19 @@ namespace STROOP.Map3
 
         public void DrawOnControl(Map3Graphics graphics)
         {
+            // Get Mario position and rotation
+            float x = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            ushort marioFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            float rot = (float)MoreMath.AngleUnitsToDegrees(marioFacing);
+
+            // Update Mario map object
+            X = x;
+            Y = y;
+            Z = z;
+            Rotation = rot;
+
             graphics.DrawTexture(TextureId, LocationOnContol, graphics.ScaleImageSize(Image.Size, 50),
                 UsesRotation ? Rotation : 0, Transparent ? 0.5f : 1.0f);
         }

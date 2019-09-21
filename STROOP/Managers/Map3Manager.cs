@@ -58,19 +58,6 @@ namespace STROOP.Managers
             if (!updateView) return;
             if (!_isLoaded) return;
 
-            // Get Mario position and rotation
-            float x = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            ushort marioFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-            float rot = (float)MoreMath.AngleUnitsToDegrees(marioFacing);
-
-            // Update Mario map object
-            _marioMapObj.X = x;
-            _marioMapObj.Y = y;
-            _marioMapObj.Z = z;
-            _marioMapObj.Rotation = rot;
-
             // Get level and area
             byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);
             byte area = Config.Stream.GetByte(MiscConfig.AreaAddress);
@@ -104,8 +91,9 @@ namespace STROOP.Managers
             var marioCoord = new PointF(_marioMapObj.RelX, _marioMapObj.RelZ);
 
             // Filter out all maps that are lower than Mario
-            float marioY = _marioMapObj.RelY;
-            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= marioY).ToList();
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float relMarioY = (float)PuUtilities.GetRelativeCoordinate(marioY);
+            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= relMarioY).ToList();
 
             // If no map is available display the default image
             if (mapListYFiltered.Count <= 0)
