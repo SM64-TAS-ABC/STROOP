@@ -13,7 +13,7 @@ using OpenTK;
 
 namespace STROOP.Map3
 {
-    public abstract class Map3MapObject : Map3IconRectangleObject
+    public class Map3MapObject : Map3IconRectangleObject
     {
         public Map3MapObject(Map3Graphics graphics)
             : base(graphics, () => Config.MapAssociations.GetBestMap().MapImage)

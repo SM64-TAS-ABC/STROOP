@@ -25,6 +25,8 @@ namespace STROOP.Managers
         MapLayout _currentMap;
         List<MapLayout> _currentMapList = null;
         Map3Graphics _mapGraphics;
+
+        Map3Object _map;
         Map3Object _marioMapObj;
 
         Map3Gui _mapGui;
@@ -40,6 +42,8 @@ namespace STROOP.Managers
             // Create new graphics control
             _mapGraphics = new Map3Graphics(_mapGui.GLControl);
             _mapGraphics.Load();
+
+            _map = new Map3MapObject(_mapGraphics);
             _marioMapObj = new Map3MarioObject(_mapGraphics);
 
             _isLoaded = true;
@@ -47,7 +51,8 @@ namespace STROOP.Managers
             // Set the default map
             ChangeCurrentMap(Config.MapAssociations.DefaultMap);
 
-            // Add Mario's map object
+            // Add map objects
+            _mapGraphics.AddMapObject(_map);
             _mapGraphics.AddMapObject(_marioMapObj);
         }
 

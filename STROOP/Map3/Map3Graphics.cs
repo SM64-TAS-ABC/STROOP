@@ -69,10 +69,10 @@ namespace STROOP.Map3
             }
 
             // Draw map image
-            DrawTexture(_mapTex, new PointF(MapView.X + MapView.Width / 2, MapView.Y + MapView.Height / 2), MapView.Size);
+            //DrawTexture(_mapTex, new PointF(MapView.X + MapView.Width / 2, MapView.Y + MapView.Height / 2), MapView.Size);
 
             // Loop through and draw all map objects
-            foreach (var mapObj in _mapObjects)
+            foreach (Map3Object mapObj in _mapObjects)
             {
                 // Draw the map object
                 mapObj.DrawOnControl();
