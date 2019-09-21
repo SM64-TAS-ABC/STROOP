@@ -51,6 +51,7 @@ namespace STROOP.Map3
             GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
 
             UpdateViewport();
+            UpdateMapView();
         }
 
         public void OnPaint()
@@ -110,11 +111,6 @@ namespace STROOP.Map3
 
             // Calculate where the map image should be drawn
             MapView = new RectangleF(marginH / 2, marginV / 2, Control.Width - marginH, Control.Height - marginV);
-        }
-
-        public void SetMap(Image map)
-        {
-            UpdateMapView();
         }
 
         public void DrawTexture(int texId, PointF loc, SizeF size, float angle = 0, float alpha = 1)
