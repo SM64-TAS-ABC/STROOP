@@ -292,7 +292,64 @@ namespace STROOP
 
             Map3Gui map3Gui = new Map3Gui()
             {
-                GLControl = glControlMap3
+                GLControl = glControlMap3,
+
+                checkBoxMap3OptionsTrackMario = checkBoxMap3OptionsTrackMario,
+                checkBoxMap3OptionsTrackHolp = checkBoxMap3OptionsTrackHolp,
+                checkBoxMap3OptionsTrackCamera = checkBoxMap3OptionsTrackCamera,
+                checkBoxMap3OptionsTrackFloorTri = checkBoxMap3OptionsTrackFloorTri,
+                checkBoxMap3OptionsTrackCeilingTri = checkBoxMap3OptionsTrackCeilingTri,
+                checkBoxMap3OptionsTrackGridlines = checkBoxMap3OptionsTrackGridlines,
+                
+                buttonMap3OptionsAddNewTracker = buttonMap3OptionsAddNewTracker,
+                buttonMap3OptionsClearAllTrackers = buttonMap3OptionsClearAllTrackers,
+                buttonMap3OptionsTrackAllObjects = buttonMap3OptionsTrackAllObjects,
+                buttonMap3OptionsTrackMarkedObjects = buttonMap3OptionsTrackMarkedObjects,
+
+                comboBoxMap3OptionsLevel = comboBoxMap3OptionsLevel,
+                comboBoxMap3OptionsBackground = comboBoxMap3OptionsBackground,
+
+                radioButtonMap3ControllersScaleCourseDefault = radioButtonMap3ControllersScaleCourseDefault,
+                radioButtonMap3ControllersScaleMaxCourseSize = radioButtonMap3ControllersScaleMaxCourseSize,
+                radioButtonMap3ControllersScaleCustom = radioButtonMap3ControllersScaleCustom,
+                textBoxMap3ControllersScaleCustom = textBoxMap3ControllersScaleCustom,
+
+                textBoxMap3ControllersScaleChange = textBoxMap3ControllersScaleChange,
+                buttonMap3ControllersScaleMinus = buttonMap3ControllersScaleMinus,
+                buttonMap3ControllersScalePlus = buttonMap3ControllersScalePlus,
+
+                radioButtonMap3ControllersCenterBestFit = radioButtonMap3ControllersCenterBestFit,
+                radioButtonMap3ControllersCenterOrigin = radioButtonMap3ControllersCenterOrigin,
+                radioButtonMap3ControllersCenterCustom = radioButtonMap3ControllersCenterCustom,
+                textBoxMap3ControllersCenterCustom = textBoxMap3ControllersCenterCustom,
+
+                textBoxMap3ControllersCenterChange = textBoxMap3ControllersCenterChange,
+                buttonMap3ControllersCenterUp = buttonMap3ControllersCenterUp,
+                buttonMap3ControllersCenterUpRight = buttonMap3ControllersCenterUpRight,
+                buttonMap3ControllersCenterRight = buttonMap3ControllersCenterRight,
+                buttonMap3ControllersCenterDownRight = buttonMap3ControllersCenterDownRight,
+                buttonMap3ControllersCenterDown = buttonMap3ControllersCenterDown,
+                buttonMap3ControllersCenterDownLeft = buttonMap3ControllersCenterDownLeft,
+                buttonMap3ControllersCenterLeft = buttonMap3ControllersCenterLeft,
+                buttonMap3ControllersCenterUpLeft = buttonMap3ControllersCenterUpLeft,
+
+                radioButtonMap3ControllersAngle0 = radioButtonMap3ControllersAngle0,
+                radioButtonMap3ControllersAngle16384 = radioButtonMap3ControllersAngle16384,
+                radioButtonMap3ControllersAngle32768 = radioButtonMap3ControllersAngle32768,
+                radioButtonMap3ControllersAngle49152 = radioButtonMap3ControllersAngle49152,
+                radioButtonMap3ControllersAngleCustom = radioButtonMap3ControllersAngleCustom,
+                textBoxMap3ControllersAngleCustom = textBoxMap3ControllersAngleCustom,
+
+                textBoxMap3ControllersAngleChange = textBoxMap3ControllersAngleChange,
+                buttonMap3ControllersAngleCCW = buttonMap3ControllersAngleCCW,
+                buttonMap3ControllersAngleCW = buttonMap3ControllersAngleCW,
+
+                labelMap3DataMapName = labelMap3DataMapName,
+                labelMap3DataMapSubName = labelMap3DataMapSubName,
+                labelMap3DataPuCoordinateValues = labelMap3DataPuCoordinateValues,
+                labelMap3DataQpuCoordinateValues = labelMap3DataQpuCoordinateValues,
+                labelMap3DataId = labelMap3DataId,
+                labelMap3DataYNorm = labelMap3DataYNorm,
             };
 
             Map2Gui map2Gui = new Map2Gui()
