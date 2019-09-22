@@ -21,12 +21,14 @@ namespace STROOP.Map3
         {
             float relX = (float)PuUtilities.GetRelativeCoordinate(x);
             float relZ = (float)PuUtilities.GetRelativeCoordinate(z);
+            float xOffset = relX - Config.Map3Graphics.MapViewCenterXValue;
+            float zOffset = relZ - Config.Map3Graphics.MapViewCenterZValue;
             (float xOffsetRotated, float zOffsetRotated) =
                 ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
-                    relX,
-                    relZ,
-                    Config.Map3Graphics.MapViewCenterXValue,
-                    Config.Map3Graphics.MapViewCenterZValue,
+                    xOffset,
+                    zOffset,
+                    0,
+                    0,
                     Config.Map3Graphics.MapViewAngleValue);
             float xOffsetPixels = xOffsetRotated * Config.Map3Graphics.MapViewScaleValue;
             float zOffsetPixels = zOffsetRotated * Config.Map3Graphics.MapViewScaleValue;
