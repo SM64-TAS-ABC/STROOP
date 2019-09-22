@@ -1545,7 +1545,7 @@ namespace STROOP
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxMap3Scale = new System.Windows.Forms.GroupBox();
             this.betterTextbox6 = new STROOP.BetterTextbox();
             this.betterTextbox7 = new STROOP.BetterTextbox();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
@@ -1555,14 +1555,14 @@ namespace STROOP
             this.button17 = new System.Windows.Forms.Button();
             this.tabPageMap3Data = new System.Windows.Forms.TabPage();
             this.mapTrackerFlowLayoutPanel1 = new STROOP.Controls.Map.Trackers.MapTrackerFlowLayoutPanel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.labelMap3DataQpuCoordinates = new System.Windows.Forms.Label();
+            this.labelMap3DataYNorm = new System.Windows.Forms.Label();
+            this.labelMap3DataId = new System.Windows.Forms.Label();
+            this.labelMap3DataQpuCoordinateValues = new System.Windows.Forms.Label();
+            this.labelMap3DataPuCoordinateValues = new System.Windows.Forms.Label();
+            this.labelMap3DataMapSubName = new System.Windows.Forms.Label();
+            this.labelMap3DataMapName = new System.Windows.Forms.Label();
+            this.labelMap3DataPuCoordinates = new System.Windows.Forms.Label();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -2015,7 +2015,7 @@ namespace STROOP
             this.tabPageMap3Controllers.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBoxMap3Scale.SuspendLayout();
             this.tabPageMap3Data.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -19801,7 +19801,7 @@ namespace STROOP
             this.tabPageMap3Controllers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPageMap3Controllers.Controls.Add(this.groupBox1);
             this.tabPageMap3Controllers.Controls.Add(this.groupBox2);
-            this.tabPageMap3Controllers.Controls.Add(this.groupBox3);
+            this.tabPageMap3Controllers.Controls.Add(this.groupBoxMap3Scale);
             this.tabPageMap3Controllers.Location = new System.Drawing.Point(4, 22);
             this.tabPageMap3Controllers.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageMap3Controllers.Name = "tabPageMap3Controllers";
@@ -20069,21 +20069,21 @@ namespace STROOP
             this.button15.TabIndex = 39;
             this.button15.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // groupBoxMap3Scale
             // 
-            this.groupBox3.Controls.Add(this.betterTextbox6);
-            this.groupBox3.Controls.Add(this.betterTextbox7);
-            this.groupBox3.Controls.Add(this.radioButton9);
-            this.groupBox3.Controls.Add(this.radioButton10);
-            this.groupBox3.Controls.Add(this.button16);
-            this.groupBox3.Controls.Add(this.radioButton11);
-            this.groupBox3.Controls.Add(this.button17);
-            this.groupBox3.Location = new System.Drawing.Point(3, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(258, 80);
-            this.groupBox3.TabIndex = 38;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Scale";
+            this.groupBoxMap3Scale.Controls.Add(this.betterTextbox6);
+            this.groupBoxMap3Scale.Controls.Add(this.betterTextbox7);
+            this.groupBoxMap3Scale.Controls.Add(this.radioButton9);
+            this.groupBoxMap3Scale.Controls.Add(this.radioButton10);
+            this.groupBoxMap3Scale.Controls.Add(this.button16);
+            this.groupBoxMap3Scale.Controls.Add(this.radioButton11);
+            this.groupBoxMap3Scale.Controls.Add(this.button17);
+            this.groupBoxMap3Scale.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxMap3Scale.Name = "groupBoxMap3Scale";
+            this.groupBoxMap3Scale.Size = new System.Drawing.Size(258, 80);
+            this.groupBoxMap3Scale.TabIndex = 38;
+            this.groupBoxMap3Scale.TabStop = false;
+            this.groupBoxMap3Scale.Text = "Scale";
             // 
             // betterTextbox6
             // 
@@ -20160,14 +20160,14 @@ namespace STROOP
             this.tabPageMap3Data.AutoScroll = true;
             this.tabPageMap3Data.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMap3Data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap3Data.Controls.Add(this.label11);
-            this.tabPageMap3Data.Controls.Add(this.label13);
-            this.tabPageMap3Data.Controls.Add(this.label14);
-            this.tabPageMap3Data.Controls.Add(this.label15);
-            this.tabPageMap3Data.Controls.Add(this.label16);
-            this.tabPageMap3Data.Controls.Add(this.label17);
-            this.tabPageMap3Data.Controls.Add(this.label18);
-            this.tabPageMap3Data.Controls.Add(this.label19);
+            this.tabPageMap3Data.Controls.Add(this.labelMap3DataQpuCoordinates);
+            this.tabPageMap3Data.Controls.Add(this.labelMap3DataYNorm);
+            this.tabPageMap3Data.Controls.Add(this.labelMap3DataId);
+            this.tabPageMap3Data.Controls.Add(this.labelMap3DataQpuCoordinateValues);
+            this.tabPageMap3Data.Controls.Add(this.labelMap3DataPuCoordinateValues);
+            this.tabPageMap3Data.Controls.Add(this.labelMap3DataMapSubName);
+            this.tabPageMap3Data.Controls.Add(this.labelMap3DataMapName);
+            this.tabPageMap3Data.Controls.Add(this.labelMap3DataPuCoordinates);
             this.tabPageMap3Data.Location = new System.Drawing.Point(4, 22);
             this.tabPageMap3Data.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageMap3Data.Name = "tabPageMap3Data";
@@ -20187,79 +20187,79 @@ namespace STROOP
             this.mapTrackerFlowLayoutPanel1.TabIndex = 0;
             this.mapTrackerFlowLayoutPanel1.WrapContents = false;
             // 
-            // label11
+            // labelMap3DataQpuCoordinates
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(5, 67);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 13);
-            this.label11.TabIndex = 56;
-            this.label11.Text = "QPU [X:Y:Z]:";
+            this.labelMap3DataQpuCoordinates.AutoSize = true;
+            this.labelMap3DataQpuCoordinates.Location = new System.Drawing.Point(5, 67);
+            this.labelMap3DataQpuCoordinates.Name = "labelMap3DataQpuCoordinates";
+            this.labelMap3DataQpuCoordinates.Size = new System.Drawing.Size(69, 13);
+            this.labelMap3DataQpuCoordinates.TabIndex = 56;
+            this.labelMap3DataQpuCoordinates.Text = "QPU [X:Y:Z]:";
             // 
-            // label13
+            // labelMap3DataYNorm
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(76, 87);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(40, 13);
-            this.label13.TabIndex = 37;
-            this.label13.Text = "1.0000";
+            this.labelMap3DataYNorm.AutoSize = true;
+            this.labelMap3DataYNorm.Location = new System.Drawing.Point(76, 87);
+            this.labelMap3DataYNorm.Name = "labelMap3DataYNorm";
+            this.labelMap3DataYNorm.Size = new System.Drawing.Size(40, 13);
+            this.labelMap3DataYNorm.TabIndex = 37;
+            this.labelMap3DataYNorm.Text = "1.0000";
             // 
-            // label14
+            // labelMap3DataId
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 87);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(46, 13);
-            this.label14.TabIndex = 38;
-            this.label14.Text = "[9:1:1:2]";
+            this.labelMap3DataId.AutoSize = true;
+            this.labelMap3DataId.Location = new System.Drawing.Point(13, 87);
+            this.labelMap3DataId.Name = "labelMap3DataId";
+            this.labelMap3DataId.Size = new System.Drawing.Size(46, 13);
+            this.labelMap3DataId.TabIndex = 38;
+            this.labelMap3DataId.Text = "[9:1:1:2]";
             // 
-            // label15
+            // labelMap3DataQpuCoordinateValues
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(76, 67);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 13);
-            this.label15.TabIndex = 39;
-            this.label15.Text = "[0:0:0]";
+            this.labelMap3DataQpuCoordinateValues.AutoSize = true;
+            this.labelMap3DataQpuCoordinateValues.Location = new System.Drawing.Point(76, 67);
+            this.labelMap3DataQpuCoordinateValues.Name = "labelMap3DataQpuCoordinateValues";
+            this.labelMap3DataQpuCoordinateValues.Size = new System.Drawing.Size(37, 13);
+            this.labelMap3DataQpuCoordinateValues.TabIndex = 39;
+            this.labelMap3DataQpuCoordinateValues.Text = "[0:0:0]";
             // 
-            // label16
+            // labelMap3DataPuCoordinateValues
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(76, 47);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(37, 13);
-            this.label16.TabIndex = 40;
-            this.label16.Text = "[0:0:0]";
+            this.labelMap3DataPuCoordinateValues.AutoSize = true;
+            this.labelMap3DataPuCoordinateValues.Location = new System.Drawing.Point(76, 47);
+            this.labelMap3DataPuCoordinateValues.Name = "labelMap3DataPuCoordinateValues";
+            this.labelMap3DataPuCoordinateValues.Size = new System.Drawing.Size(37, 13);
+            this.labelMap3DataPuCoordinateValues.TabIndex = 40;
+            this.labelMap3DataPuCoordinateValues.Text = "[0:0:0]";
             // 
-            // label17
+            // labelMap3DataMapSubName
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(7, 23);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(81, 13);
-            this.label17.TabIndex = 52;
-            this.label17.Text = "Map Sub Name";
+            this.labelMap3DataMapSubName.AutoSize = true;
+            this.labelMap3DataMapSubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMap3DataMapSubName.Location = new System.Drawing.Point(7, 23);
+            this.labelMap3DataMapSubName.Name = "labelMap3DataMapSubName";
+            this.labelMap3DataMapSubName.Size = new System.Drawing.Size(81, 13);
+            this.labelMap3DataMapSubName.TabIndex = 52;
+            this.labelMap3DataMapSubName.Text = "Map Sub Name";
             // 
-            // label18
+            // labelMap3DataMapName
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(7, 7);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(67, 13);
-            this.label18.TabIndex = 54;
-            this.label18.Text = "Map Name";
+            this.labelMap3DataMapName.AutoSize = true;
+            this.labelMap3DataMapName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMap3DataMapName.Location = new System.Drawing.Point(7, 7);
+            this.labelMap3DataMapName.Name = "labelMap3DataMapName";
+            this.labelMap3DataMapName.Size = new System.Drawing.Size(67, 13);
+            this.labelMap3DataMapName.TabIndex = 54;
+            this.labelMap3DataMapName.Text = "Map Name";
             // 
-            // label19
+            // labelMap3DataPuCoordinates
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(13, 47);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(61, 13);
-            this.label19.TabIndex = 41;
-            this.label19.Text = "PU [X:Y:Z]:";
+            this.labelMap3DataPuCoordinates.AutoSize = true;
+            this.labelMap3DataPuCoordinates.Location = new System.Drawing.Point(13, 47);
+            this.labelMap3DataPuCoordinates.Name = "labelMap3DataPuCoordinates";
+            this.labelMap3DataPuCoordinates.Size = new System.Drawing.Size(61, 13);
+            this.labelMap3DataPuCoordinates.TabIndex = 41;
+            this.labelMap3DataPuCoordinates.Text = "PU [X:Y:Z]:";
             // 
             // StroopMainForm
             // 
@@ -20844,8 +20844,8 @@ namespace STROOP
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBoxMap3Scale.ResumeLayout(false);
+            this.groupBoxMap3Scale.PerformLayout();
             this.tabPageMap3Data.ResumeLayout(false);
             this.tabPageMap3Data.PerformLayout();
             this.ResumeLayout(false);
@@ -22356,7 +22356,7 @@ namespace STROOP
         private Button button13;
         private Button button14;
         private Button button15;
-        private GroupBox groupBox3;
+        private GroupBox groupBoxMap3Scale;
         private BetterTextbox betterTextbox6;
         private BetterTextbox betterTextbox7;
         private RadioButton radioButton9;
@@ -22365,14 +22365,14 @@ namespace STROOP
         private RadioButton radioButton11;
         private Button button17;
         private TabPage tabPageMap3Data;
-        private Label label11;
-        private Label label13;
-        private Label label14;
-        private Label label15;
-        private Label label16;
-        private Label label17;
-        private Label label18;
-        private Label label19;
+        private Label labelMap3DataQpuCoordinates;
+        private Label labelMap3DataYNorm;
+        private Label labelMap3DataId;
+        private Label labelMap3DataQpuCoordinateValues;
+        private Label labelMap3DataPuCoordinateValues;
+        private Label labelMap3DataMapSubName;
+        private Label labelMap3DataMapName;
+        private Label labelMap3DataPuCoordinates;
         private MapTrackerFlowLayoutPanel mapTrackerFlowLayoutPanel1;
     }
 }
