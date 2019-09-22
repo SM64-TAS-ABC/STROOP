@@ -23,14 +23,17 @@ namespace STROOP.Map3
 
         protected void DrawTriangle(List<(int x, int z)> vertices, Color color)
         {
+            List<(float x, float z)> veriticesForControl =
+                vertices.ConvertAll(vertex => Map3Utilities.ConvertCoordsForControl(vertex.x, vertex.z));
+
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
             GL.Color4(color);
             GL.Begin(PrimitiveType.Triangles);
-            GL.Vertex2(vertices[0].x, vertices[0].z);
-            GL.Vertex2(vertices[1].x, vertices[1].z);
-            GL.Vertex2(vertices[2].x, vertices[2].z);
+            GL.Vertex2(veriticesForControl[0].x, veriticesForControl[0].z);
+            GL.Vertex2(veriticesForControl[1].x, veriticesForControl[1].z);
+            GL.Vertex2(veriticesForControl[2].x, veriticesForControl[2].z);
             GL.End();
             GL.Color4(1, 1, 1, 1.0f);
         }
