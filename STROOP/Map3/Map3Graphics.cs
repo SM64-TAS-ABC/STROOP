@@ -159,7 +159,7 @@ namespace STROOP.Map3
 
             if (MapViewScale != Map3Scale.Custom)
             {
-                Config.Map3Gui.textBoxMap3ControllersScaleCustom.SubmitText(MapViewScaleValue.ToString());
+                Config.Map3Gui.textBoxMap3ControllersScaleCustom.SubmitTextLoosely(MapViewScaleValue.ToString());
             }
         }
 
@@ -207,7 +207,7 @@ namespace STROOP.Map3
 
             if (MapViewCenter != Map3Center.Custom)
             {
-                Config.Map3Gui.textBoxMap3ControllersCenterCustom.SubmitText(MapViewCenterXValue + "," + MapViewCenterZValue);
+                Config.Map3Gui.textBoxMap3ControllersCenterCustom.SubmitTextLoosely(MapViewCenterXValue + "," + MapViewCenterZValue);
             }
         }
 
@@ -247,7 +247,7 @@ namespace STROOP.Map3
 
             if (MapViewAngle != Map3Angle.Custom)
             {
-                Config.Map3Gui.textBoxMap3ControllersAngleCustom.SubmitText(MapViewAngleValue.ToString());
+                Config.Map3Gui.textBoxMap3ControllersAngleCustom.SubmitTextLoosely(MapViewAngleValue.ToString());
             }
         }
 

@@ -63,21 +63,30 @@ namespace STROOP.Managers
             Config.Map3Graphics.AddMapObject(_ceilingMapObj);
             Config.Map3Graphics.AddMapObject(_objMapObj);
 
+            InitializeControls();
+        }
+
+        private void InitializeControls()
+        {
+            // ComboBox for Level
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
             List<object> mapLayoutChoices = new List<object>() { "Recommended" };
             mapLayouts.ForEach(mapLayout => mapLayoutChoices.Add(mapLayout));
             Config.Map3Gui.comboBoxMap3OptionsLevel.DataSource = mapLayoutChoices;
 
+            // ComboBox for Background
             List<BackgroundImage> backgroundImages = Config.MapAssociations.GetAllBackgroundImages();
             List<object> backgroundImageChoices = new List<object>() { "Recommended" };
             backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
             Config.Map3Gui.comboBoxMap3OptionsBackground.DataSource = backgroundImageChoices;
 
+            // Buttons for Changing Scale
             Config.Map3Gui.buttonMap3ControllersScaleMinus.Click += (sender, e) =>
                 Config.Map3Graphics.ChangeScale(-1, Config.Map3Gui.textBoxMap3ControllersScaleChange.Text);
             Config.Map3Gui.buttonMap3ControllersScalePlus.Click += (sender, e) =>
                 Config.Map3Graphics.ChangeScale(1, Config.Map3Gui.textBoxMap3ControllersScaleChange.Text);
 
+            // Buttons for Changing Center
             Config.Map3Gui.buttonMap3ControllersCenterUp.Click += (sender, e) =>
                 Config.Map3Graphics.ChangeCenter(0, -1, Config.Map3Gui.textBoxMap3ControllersCenterChange.Text);
             Config.Map3Gui.buttonMap3ControllersCenterDown.Click += (sender, e) =>
@@ -95,10 +104,25 @@ namespace STROOP.Managers
             Config.Map3Gui.buttonMap3ControllersCenterDownRight.Click += (sender, e) =>
                 Config.Map3Graphics.ChangeCenter(1, 1, Config.Map3Gui.textBoxMap3ControllersCenterChange.Text);
 
+            // Buttons for Changing Angle
             Config.Map3Gui.buttonMap3ControllersAngleCCW.Click += (sender, e) =>
                 Config.Map3Graphics.ChangeAngle(1, Config.Map3Gui.textBoxMap3ControllersAngleChange.Text);
             Config.Map3Gui.buttonMap3ControllersAngleCW.Click += (sender, e) =>
                 Config.Map3Graphics.ChangeAngle(-1, Config.Map3Gui.textBoxMap3ControllersAngleChange.Text);
+
+            // TextBoxes for Custom Values
+            Config.Map3Gui.textBoxMap3ControllersScaleCustom.AddEnterAction(() =>
+            {
+                Config.Map3Gui.radioButtonMap3ControllersScaleCustom.Checked = true;
+            });
+            Config.Map3Gui.textBoxMap3ControllersCenterCustom.AddEnterAction(() =>
+            {
+                Config.Map3Gui.radioButtonMap3ControllersCenterCustom.Checked = true;
+            });
+            Config.Map3Gui.textBoxMap3ControllersAngleCustom.AddEnterAction(() =>
+            {
+                Config.Map3Gui.radioButtonMap3ControllersAngleCustom.Checked = true;
+            });
         }
 
         public void Update(bool updateView)

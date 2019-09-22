@@ -52,6 +52,12 @@ namespace STROOP
             LastSubmittedText = text;
         }
 
+        /** The same as SubmitText, but is a NOOP if the text is already submitted. */
+        public void SubmitTextLoosely(string text)
+        {
+            if (text != LastSubmittedText) SubmitText(text);
+        }
+
         public void Reset()
         {
             this.Text = LastSubmittedText;
