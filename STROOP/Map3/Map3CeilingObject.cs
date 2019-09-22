@@ -20,6 +20,8 @@ namespace STROOP.Map3
         public Map3CeilingObject()
             : base()
         {
+            Color = Color.Red;
+            Opacity = 0.5;
         }
 
         public override void DrawOnControl()
@@ -27,7 +29,7 @@ namespace STROOP.Map3
             uint triAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
             if (triAddress == 0) return;
             TriangleDataModel tri = new TriangleDataModel(triAddress);
-            DrawTriangle(tri.Get2DVertices(), Color.Red);
+            DrawTriangle(tri.Get2DVertices());
         }
     }
 }

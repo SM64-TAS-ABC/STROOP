@@ -15,6 +15,9 @@ namespace STROOP.Map3
 {
     public abstract class Map3Object : IDisposable
     {
+        public Color Color = SystemColors.Control;
+        public double Opacity = 1;
+
         public Map3Object()
         {
         }

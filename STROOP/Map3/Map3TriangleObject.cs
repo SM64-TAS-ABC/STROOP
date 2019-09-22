@@ -21,7 +21,7 @@ namespace STROOP.Map3
         {
         }
 
-        protected void DrawTriangle(List<(int x, int z)> vertices, Color color)
+        protected void DrawTriangle(List<(int x, int z)> vertices)
         {
             List<(float x, float z)> veriticesForControl =
                 vertices.ConvertAll(vertex => Map3Utilities.ConvertCoordsForControl(vertex.x, vertex.z));
@@ -29,7 +29,7 @@ namespace STROOP.Map3
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
-            GL.Color4(color);
+            GL.Color4(Color);
             GL.Begin(PrimitiveType.Triangles);
             GL.Vertex2(veriticesForControl[0].x, veriticesForControl[0].z);
             GL.Vertex2(veriticesForControl[1].x, veriticesForControl[1].z);

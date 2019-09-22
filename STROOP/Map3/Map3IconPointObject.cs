@@ -34,7 +34,6 @@ namespace STROOP.Map3
 
             // Additional stats
             int iconSize = 50;
-            float alpha = 1;
 
             float xOffsetInGameUnits = relX - Config.Map3Graphics.XMin;
             float xOffsetPixels = xOffsetInGameUnits * Config.Map3Graphics.ConversionScale;
@@ -46,7 +45,7 @@ namespace STROOP.Map3
 
             SizeF size = ScaleImageSize(Image.Size, iconSize);
 
-            DrawTexture(new PointF(xPosPixels, zPosPixels), size, angleDegrees, alpha);
+            DrawTexture(new PointF(xPosPixels, zPosPixels), size, angleDegrees);
         }
 
         private static SizeF ScaleImageSize(Size imageSize, float desiredSize)

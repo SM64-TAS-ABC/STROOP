@@ -26,9 +26,8 @@ namespace STROOP.Map3
 
             (PointF loc, SizeF size) = GetDimensions();
             int angle = 0;
-            int alpha = 1;
 
-            DrawTexture(loc, size, angle, alpha);
+            DrawTexture(loc, size, angle);
         }
 
         protected abstract (PointF loc, SizeF size) GetDimensions();
