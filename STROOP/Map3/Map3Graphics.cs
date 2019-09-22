@@ -212,6 +212,21 @@ namespace STROOP.Map3
             }
         }
 
+        public void ChangeScale(int sign, string value)
+        {
+
+        }
+
+        public void ChangeCenter(int xSign, int zSign, string value)
+        {
+
+        }
+
+        public void ChangeAngle(int sign, string value)
+        {
+
+        }
+
         public void AddMapObject(Map3Object mapObj)
         {
             _mapObjects.Add(mapObj);

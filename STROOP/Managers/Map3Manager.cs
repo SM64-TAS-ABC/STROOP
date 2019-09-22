@@ -72,6 +72,33 @@ namespace STROOP.Managers
             List<object> backgroundImageChoices = new List<object>() { "Recommended" };
             backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
             Config.Map3Gui.comboBoxMap3OptionsBackground.DataSource = backgroundImageChoices;
+
+            Config.Map3Gui.buttonMap3ControllersScaleMinus.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeScale(-1, Config.Map3Gui.textBoxMap3ControllersScaleChange.Text);
+            Config.Map3Gui.buttonMap3ControllersScalePlus.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeScale(1, Config.Map3Gui.textBoxMap3ControllersScaleChange.Text);
+
+            Config.Map3Gui.buttonMap3ControllersCenterUp.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeCenter(0, 1, Config.Map3Gui.textBoxMap3ControllersCenterChange.Text);
+            Config.Map3Gui.buttonMap3ControllersCenterDown.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeCenter(0, -1, Config.Map3Gui.textBoxMap3ControllersCenterChange.Text);
+            Config.Map3Gui.buttonMap3ControllersCenterLeft.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeCenter(-1, 0, Config.Map3Gui.textBoxMap3ControllersCenterChange.Text);
+            Config.Map3Gui.buttonMap3ControllersCenterRight.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeCenter(1, 0, Config.Map3Gui.textBoxMap3ControllersCenterChange.Text);
+            Config.Map3Gui.buttonMap3ControllersCenterUpLeft.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeCenter(-1, 1, Config.Map3Gui.textBoxMap3ControllersCenterChange.Text);
+            Config.Map3Gui.buttonMap3ControllersCenterUpRight.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeCenter(1, 1, Config.Map3Gui.textBoxMap3ControllersCenterChange.Text);
+            Config.Map3Gui.buttonMap3ControllersCenterDownLeft.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeCenter(-1, -1, Config.Map3Gui.textBoxMap3ControllersCenterChange.Text);
+            Config.Map3Gui.buttonMap3ControllersCenterDownRight.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeCenter(1, -1, Config.Map3Gui.textBoxMap3ControllersCenterChange.Text);
+
+            Config.Map3Gui.buttonMap3ControllersAngleCCW.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeAngle(1, Config.Map3Gui.textBoxMap3ControllersAngleChange.Text);
+            Config.Map3Gui.buttonMap3ControllersAngleCW.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeAngle(-1, Config.Map3Gui.textBoxMap3ControllersAngleChange.Text);
         }
 
         public void Update(bool updateView)
