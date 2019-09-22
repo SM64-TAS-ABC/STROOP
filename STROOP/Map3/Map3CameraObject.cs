@@ -15,8 +15,8 @@ namespace STROOP.Map3
 {
     public class Map3CameraObject : Map3IconPointObject
     {
-        public Map3CameraObject(Map3Graphics graphics)
-            : base(graphics, () => Config.ObjectAssociations.CameraMapImage)
+        public Map3CameraObject()
+            : base(() => Config.ObjectAssociations.CameraMapImage)
         {
         }
 

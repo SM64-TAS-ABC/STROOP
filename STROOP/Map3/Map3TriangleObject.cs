@@ -16,8 +16,8 @@ namespace STROOP.Map3
 {
     public abstract class Map3TriangleObject : Map3Object
     {
-        public Map3TriangleObject(Map3Graphics graphics)
-            : base(graphics)
+        public Map3TriangleObject()
+            : base()
         {
         }
 

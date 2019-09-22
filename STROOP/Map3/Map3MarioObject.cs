@@ -15,8 +15,8 @@ namespace STROOP.Map3
 {
     public class Map3MarioObject : Map3IconPointObject
     {
-        public Map3MarioObject(Map3Graphics graphics)
-            : base(graphics, () => Config.ObjectAssociations.MarioMapImage)
+        public Map3MarioObject()
+            : base(() => Config.ObjectAssociations.MarioMapImage)
         {
         }
 

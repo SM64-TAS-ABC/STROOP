@@ -15,16 +15,16 @@ namespace STROOP.Map3
 {
     public class Map3GridlinesObject : Map3IconRectangleObject
     {
-        public Map3GridlinesObject(Map3Graphics graphics)
-            : base(graphics, () => Config.MapAssociations.GetGridlines().MapImage)
+        public Map3GridlinesObject()
+            : base(() => Config.MapAssociations.GetGridlines().MapImage)
         {
         }
 
         protected override (PointF loc, SizeF size) GetDimensions()
         {
-            float xCenter = Graphics.MapView.X + Graphics.MapView.Width / 2;
-            float yCenter = Graphics.MapView.Y + Graphics.MapView.Height / 2;
-            return (new PointF(xCenter, yCenter), Graphics.MapView.Size);
+            float xCenter = Config.Map3Graphics.MapView.X + Config.Map3Graphics.MapView.Width / 2;
+            float yCenter = Config.Map3Graphics.MapView.Y + Config.Map3Graphics.MapView.Height / 2;
+            return (new PointF(xCenter, yCenter), Config.Map3Graphics.MapView.Size);
         }
     }
 }

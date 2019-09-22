@@ -15,16 +15,16 @@ namespace STROOP.Map3
 {
     public class Map3BackgroundObject : Map3IconRectangleObject
     {
-        public Map3BackgroundObject(Map3Graphics graphics)
-            : base(graphics, () => Config.MapAssociations.GetBestMap().BackgroundImage)
+        public Map3BackgroundObject()
+            : base(() => Config.MapAssociations.GetBestMap().BackgroundImage)
         {
         }
 
         protected override (PointF loc, SizeF size) GetDimensions()
         {
-            float xCenter = Graphics.MapView.X + Graphics.MapView.Width / 2;
-            float yCenter = Graphics.MapView.Y + Graphics.MapView.Height / 2;
-            float length = Math.Max(Graphics.Control.Width, Graphics.Control.Height);
+            float xCenter = Config.Map3Graphics.MapView.X + Config.Map3Graphics.MapView.Width / 2;
+            float yCenter = Config.Map3Graphics.MapView.Y + Config.Map3Graphics.MapView.Height / 2;
+            float length = Math.Max(Config.Map3Graphics.Control.Width, Config.Map3Graphics.Control.Height);
             return (new PointF(xCenter, yCenter), new SizeF(length, length));
         }
     }

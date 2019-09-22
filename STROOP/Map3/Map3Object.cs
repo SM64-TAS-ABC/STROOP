@@ -15,11 +15,8 @@ namespace STROOP.Map3
 {
     public abstract class Map3Object : IDisposable
     {
-        protected readonly Map3Graphics Graphics;
-
-        public Map3Object(Map3Graphics graphics)
+        public Map3Object()
         {
-            Graphics = graphics;
         }
 
         public abstract void DrawOnControl();

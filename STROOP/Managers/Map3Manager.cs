@@ -19,8 +19,6 @@ namespace STROOP.Managers
 {
     public class Map3Manager
     {
-        Map3Graphics _mapGraphics;
-
         Map3Object _background;
         Map3Object _gridlines;
         Map3Object _map;
@@ -40,26 +38,26 @@ namespace STROOP.Managers
         public void Load()
         {
             // Create new graphics control
-            _mapGraphics = new Map3Graphics(_mapGui.GLControl);
-            _mapGraphics.Load();
+            Config.Map3Graphics = new Map3Graphics(_mapGui.GLControl);
+            Config.Map3Graphics.Load();
             _isLoaded = true;
 
-            _background = new Map3BackgroundObject(_mapGraphics);
-            _gridlines = new Map3GridlinesObject(_mapGraphics);
-            _map = new Map3MapObject(_mapGraphics);
-            _holpMapObj = new Map3HolpObject(_mapGraphics);
-            _cameraMapObj = new Map3CameraObject(_mapGraphics);
-            _marioMapObj = new Map3MarioObject(_mapGraphics);
-            _floorMapObj = new Map3FloorObject(_mapGraphics);
+            _background = new Map3BackgroundObject();
+            _gridlines = new Map3GridlinesObject();
+            _map = new Map3MapObject();
+            _holpMapObj = new Map3HolpObject();
+            _cameraMapObj = new Map3CameraObject();
+            _marioMapObj = new Map3MarioObject();
+            _floorMapObj = new Map3FloorObject();
 
             // Add map objects
-            _mapGraphics.AddMapObject(_background);
-            _mapGraphics.AddMapObject(_gridlines);
-            _mapGraphics.AddMapObject(_map);
-            _mapGraphics.AddMapObject(_holpMapObj);
-            _mapGraphics.AddMapObject(_cameraMapObj);
-            _mapGraphics.AddMapObject(_marioMapObj);
-            _mapGraphics.AddMapObject(_floorMapObj);
+            Config.Map3Graphics.AddMapObject(_background);
+            Config.Map3Graphics.AddMapObject(_gridlines);
+            Config.Map3Graphics.AddMapObject(_map);
+            Config.Map3Graphics.AddMapObject(_holpMapObj);
+            Config.Map3Graphics.AddMapObject(_cameraMapObj);
+            Config.Map3Graphics.AddMapObject(_marioMapObj);
+            Config.Map3Graphics.AddMapObject(_floorMapObj);
         }
 
         public void Update(bool updateView)
@@ -68,7 +66,7 @@ namespace STROOP.Managers
             if (!_isLoaded) return;
 
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
-            _mapGraphics.Control.Invalidate();
+            Config.Map3Graphics.Control.Invalidate();
         }
     }
 }

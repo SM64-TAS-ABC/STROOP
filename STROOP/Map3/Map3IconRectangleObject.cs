@@ -15,8 +15,8 @@ namespace STROOP.Map3
 {
     public abstract class Map3IconRectangleObject : Map3IconObject
     {
-        public Map3IconRectangleObject(Map3Graphics graphics, Func<Image> imageFunction)
-            : base(graphics, imageFunction)
+        public Map3IconRectangleObject(Func<Image> imageFunction)
+            : base(imageFunction)
         {
         }
 

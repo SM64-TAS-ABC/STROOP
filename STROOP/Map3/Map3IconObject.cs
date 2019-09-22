@@ -20,8 +20,8 @@ namespace STROOP.Map3
         protected Image Image;
         protected int TextureId;
 
-        public Map3IconObject(Map3Graphics graphics, Func<Image> imageFunction)
-            : base(graphics)
+        public Map3IconObject(Func<Image> imageFunction)
+            : base()
         {
             ImageFunction = imageFunction;
             Image = null;

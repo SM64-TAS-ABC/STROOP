@@ -15,8 +15,8 @@ namespace STROOP.Map3
 {
     public class Map3HolpObject : Map3IconPointObject
     {
-        public Map3HolpObject(Map3Graphics graphics)
-            : base(graphics, () => Config.ObjectAssociations.HolpImage)
+        public Map3HolpObject()
+            : base(() => Config.ObjectAssociations.HolpImage)
         {
         }
 

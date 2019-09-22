@@ -15,8 +15,8 @@ namespace STROOP.Map3
 {
     public abstract class Map3IconPointObject : Map3IconObject
     {
-        public Map3IconPointObject(Map3Graphics graphics, Func<Image> imageFunction)
-            : base(graphics, imageFunction)
+        public Map3IconPointObject(Func<Image> imageFunction)
+            : base(imageFunction)
         {
         }
 
@@ -36,13 +36,13 @@ namespace STROOP.Map3
             int iconSize = 50;
             float alpha = 1;
 
-            float xOffsetInGameUnits = relX - Graphics.XMin;
-            float xOffsetPixels = xOffsetInGameUnits * Graphics.ConversionScale;
-            float xPosPixels = Graphics.MapView.X + xOffsetPixels;
+            float xOffsetInGameUnits = relX - Config.Map3Graphics.XMin;
+            float xOffsetPixels = xOffsetInGameUnits * Config.Map3Graphics.ConversionScale;
+            float xPosPixels = Config.Map3Graphics.MapView.X + xOffsetPixels;
 
-            float zOffsetInGameUnits = relZ - Graphics.ZMin;
-            float zOffsetPixels = zOffsetInGameUnits * Graphics.ConversionScale;
-            float zPosPixels = Graphics.MapView.Y + zOffsetPixels;
+            float zOffsetInGameUnits = relZ - Config.Map3Graphics.ZMin;
+            float zOffsetPixels = zOffsetInGameUnits * Config.Map3Graphics.ConversionScale;
+            float zPosPixels = Config.Map3Graphics.MapView.Y + zOffsetPixels;
 
             SizeF size = ScaleImageSize(Image.Size, iconSize);
 

@@ -1,5 +1,6 @@
 ﻿using STROOP.Controls.Map;
 using STROOP.Managers;
+using STROOP.Map3;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace STROOP.Structs.Configurations
         public static TabControlEx TabControlMain;
         public static Label DebugText;
         public static MapGui MapGui;
+        public static Map3Graphics Map3Graphics;
 
         public static CameraManager CameraManager;
         public static DebugManager DebugManager;
