@@ -849,20 +849,20 @@ namespace STROOP
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.betterTextbox3 = new STROOP.BetterTextbox();
-            this.betterTextbox5 = new STROOP.BetterTextbox();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.button6 = new System.Windows.Forms.Button();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.button7 = new System.Windows.Forms.Button();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.groupBoxMap3ControllersCenter = new System.Windows.Forms.GroupBox();
+            this.textBoxMap3ControllersCenterCustom = new STROOP.BetterTextbox();
+            this.textBoxMap3ControllersCenterChange = new STROOP.BetterTextbox();
+            this.radioButtonMap3ControllersCenterOrigin = new System.Windows.Forms.RadioButton();
+            this.buttonMap3ControllersCenterDownRight = new System.Windows.Forms.Button();
+            this.radioButtonMap3ControllersCenterBestFit = new System.Windows.Forms.RadioButton();
+            this.buttonMap3ControllersCenterRight = new System.Windows.Forms.Button();
+            this.radioButtonMap3ControllersCenterCustom = new System.Windows.Forms.RadioButton();
+            this.buttonMap3ControllersCenterUpLeft = new System.Windows.Forms.Button();
+            this.buttonMap3ControllersCenterLeft = new System.Windows.Forms.Button();
+            this.buttonMap3ControllersCenterDownLeft = new System.Windows.Forms.Button();
+            this.buttonMap3ControllersCenterDown = new System.Windows.Forms.Button();
+            this.buttonMap3ControllersCenterUpRight = new System.Windows.Forms.Button();
+            this.buttonMap3ControllersCenterUp = new System.Windows.Forms.Button();
             this.groupBoxMap3ControllersScale = new System.Windows.Forms.GroupBox();
             this.textBoxMap3ControllersScaleCustom = new STROOP.BetterTextbox();
             this.textBoxMap3ControllersScaleChange = new STROOP.BetterTextbox();
@@ -1865,7 +1865,7 @@ namespace STROOP
             this.tabPageMap3Options.SuspendLayout();
             this.tabPageMap3Controllers.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxMap3ControllersCenter.SuspendLayout();
             this.groupBoxMap3ControllersScale.SuspendLayout();
             this.tabPageMap3Data.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
@@ -11768,7 +11768,7 @@ namespace STROOP
             this.tabPageMap3Controllers.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMap3Controllers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPageMap3Controllers.Controls.Add(this.groupBox1);
-            this.tabPageMap3Controllers.Controls.Add(this.groupBox2);
+            this.tabPageMap3Controllers.Controls.Add(this.groupBoxMap3ControllersCenter);
             this.tabPageMap3Controllers.Controls.Add(this.groupBoxMap3ControllersScale);
             this.tabPageMap3Controllers.Location = new System.Drawing.Point(4, 22);
             this.tabPageMap3Controllers.Margin = new System.Windows.Forms.Padding(0);
@@ -11885,157 +11885,157 @@ namespace STROOP
             this.radioButton5.Text = "32768";
             this.radioButton5.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // groupBoxMap3ControllersCenter
             // 
-            this.groupBox2.Controls.Add(this.betterTextbox3);
-            this.groupBox2.Controls.Add(this.betterTextbox5);
-            this.groupBox2.Controls.Add(this.radioButton6);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.radioButton7);
-            this.groupBox2.Controls.Add(this.button7);
-            this.groupBox2.Controls.Add(this.radioButton8);
-            this.groupBox2.Controls.Add(this.button10);
-            this.groupBox2.Controls.Add(this.button11);
-            this.groupBox2.Controls.Add(this.button12);
-            this.groupBox2.Controls.Add(this.button13);
-            this.groupBox2.Controls.Add(this.button14);
-            this.groupBox2.Controls.Add(this.button15);
-            this.groupBox2.Location = new System.Drawing.Point(3, 84);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(258, 80);
-            this.groupBox2.TabIndex = 38;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Center";
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.textBoxMap3ControllersCenterCustom);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.textBoxMap3ControllersCenterChange);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.radioButtonMap3ControllersCenterOrigin);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterDownRight);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.radioButtonMap3ControllersCenterBestFit);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterRight);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.radioButtonMap3ControllersCenterCustom);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterUpLeft);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterLeft);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterDownLeft);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterDown);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterUpRight);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterUp);
+            this.groupBoxMap3ControllersCenter.Location = new System.Drawing.Point(3, 84);
+            this.groupBoxMap3ControllersCenter.Name = "groupBoxMap3ControllersCenter";
+            this.groupBoxMap3ControllersCenter.Size = new System.Drawing.Size(258, 80);
+            this.groupBoxMap3ControllersCenter.TabIndex = 38;
+            this.groupBoxMap3ControllersCenter.TabStop = false;
+            this.groupBoxMap3ControllersCenter.Text = "Center";
             // 
-            // betterTextbox3
+            // textBoxMap3ControllersCenterCustom
             // 
-            this.betterTextbox3.Location = new System.Drawing.Point(67, 50);
-            this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(50, 20);
-            this.betterTextbox3.TabIndex = 34;
-            this.betterTextbox3.Text = "0,0";
-            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMap3ControllersCenterCustom.Location = new System.Drawing.Point(67, 50);
+            this.textBoxMap3ControllersCenterCustom.Name = "textBoxMap3ControllersCenterCustom";
+            this.textBoxMap3ControllersCenterCustom.Size = new System.Drawing.Size(50, 20);
+            this.textBoxMap3ControllersCenterCustom.TabIndex = 34;
+            this.textBoxMap3ControllersCenterCustom.Text = "0,0";
+            this.textBoxMap3ControllersCenterCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox5
+            // textBoxMap3ControllersCenterChange
             // 
-            this.betterTextbox5.Location = new System.Drawing.Point(163, 33);
-            this.betterTextbox5.Name = "betterTextbox5";
-            this.betterTextbox5.Size = new System.Drawing.Size(50, 20);
-            this.betterTextbox5.TabIndex = 34;
-            this.betterTextbox5.Text = "100";
-            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMap3ControllersCenterChange.Location = new System.Drawing.Point(163, 33);
+            this.textBoxMap3ControllersCenterChange.Name = "textBoxMap3ControllersCenterChange";
+            this.textBoxMap3ControllersCenterChange.Size = new System.Drawing.Size(50, 20);
+            this.textBoxMap3ControllersCenterChange.TabIndex = 34;
+            this.textBoxMap3ControllersCenterChange.Text = "100";
+            this.textBoxMap3ControllersCenterChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // radioButton6
+            // radioButtonMap3ControllersCenterOrigin
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(9, 33);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(52, 17);
-            this.radioButton6.TabIndex = 12;
-            this.radioButton6.Text = "Origin";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButtonMap3ControllersCenterOrigin.AutoSize = true;
+            this.radioButtonMap3ControllersCenterOrigin.Location = new System.Drawing.Point(9, 33);
+            this.radioButtonMap3ControllersCenterOrigin.Name = "radioButtonMap3ControllersCenterOrigin";
+            this.radioButtonMap3ControllersCenterOrigin.Size = new System.Drawing.Size(52, 17);
+            this.radioButtonMap3ControllersCenterOrigin.TabIndex = 12;
+            this.radioButtonMap3ControllersCenterOrigin.Text = "Origin";
+            this.radioButtonMap3ControllersCenterOrigin.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // buttonMap3ControllersCenterDownRight
             // 
-            this.button6.BackgroundImage = global::STROOP.Properties.Resources.image_downright;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.Location = new System.Drawing.Point(214, 55);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(25, 25);
-            this.button6.TabIndex = 39;
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonMap3ControllersCenterDownRight.BackgroundImage = global::STROOP.Properties.Resources.image_downright;
+            this.buttonMap3ControllersCenterDownRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMap3ControllersCenterDownRight.Location = new System.Drawing.Point(214, 55);
+            this.buttonMap3ControllersCenterDownRight.Name = "buttonMap3ControllersCenterDownRight";
+            this.buttonMap3ControllersCenterDownRight.Size = new System.Drawing.Size(25, 25);
+            this.buttonMap3ControllersCenterDownRight.TabIndex = 39;
+            this.buttonMap3ControllersCenterDownRight.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // radioButtonMap3ControllersCenterBestFit
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Checked = true;
-            this.radioButton7.Location = new System.Drawing.Point(9, 15);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(60, 17);
-            this.radioButton7.TabIndex = 11;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Best Fit";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButtonMap3ControllersCenterBestFit.AutoSize = true;
+            this.radioButtonMap3ControllersCenterBestFit.Checked = true;
+            this.radioButtonMap3ControllersCenterBestFit.Location = new System.Drawing.Point(9, 15);
+            this.radioButtonMap3ControllersCenterBestFit.Name = "radioButtonMap3ControllersCenterBestFit";
+            this.radioButtonMap3ControllersCenterBestFit.Size = new System.Drawing.Size(60, 17);
+            this.radioButtonMap3ControllersCenterBestFit.TabIndex = 11;
+            this.radioButtonMap3ControllersCenterBestFit.TabStop = true;
+            this.radioButtonMap3ControllersCenterBestFit.Text = "Best Fit";
+            this.radioButtonMap3ControllersCenterBestFit.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // buttonMap3ControllersCenterRight
             // 
-            this.button7.BackgroundImage = global::STROOP.Properties.Resources.image_right;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button7.Location = new System.Drawing.Point(214, 30);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(25, 25);
-            this.button7.TabIndex = 39;
-            this.button7.UseVisualStyleBackColor = true;
+            this.buttonMap3ControllersCenterRight.BackgroundImage = global::STROOP.Properties.Resources.image_right;
+            this.buttonMap3ControllersCenterRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMap3ControllersCenterRight.Location = new System.Drawing.Point(214, 30);
+            this.buttonMap3ControllersCenterRight.Name = "buttonMap3ControllersCenterRight";
+            this.buttonMap3ControllersCenterRight.Size = new System.Drawing.Size(25, 25);
+            this.buttonMap3ControllersCenterRight.TabIndex = 39;
+            this.buttonMap3ControllersCenterRight.UseVisualStyleBackColor = true;
             // 
-            // radioButton8
+            // radioButtonMap3ControllersCenterCustom
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(9, 51);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(63, 17);
-            this.radioButton8.TabIndex = 13;
-            this.radioButton8.Text = "Custom:";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.radioButtonMap3ControllersCenterCustom.AutoSize = true;
+            this.radioButtonMap3ControllersCenterCustom.Location = new System.Drawing.Point(9, 51);
+            this.radioButtonMap3ControllersCenterCustom.Name = "radioButtonMap3ControllersCenterCustom";
+            this.radioButtonMap3ControllersCenterCustom.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonMap3ControllersCenterCustom.TabIndex = 13;
+            this.radioButtonMap3ControllersCenterCustom.Text = "Custom:";
+            this.radioButtonMap3ControllersCenterCustom.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // buttonMap3ControllersCenterUpLeft
             // 
-            this.button10.BackgroundImage = global::STROOP.Properties.Resources.image_upleft;
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button10.Location = new System.Drawing.Point(137, 5);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(25, 25);
-            this.button10.TabIndex = 39;
-            this.button10.UseVisualStyleBackColor = true;
+            this.buttonMap3ControllersCenterUpLeft.BackgroundImage = global::STROOP.Properties.Resources.image_upleft;
+            this.buttonMap3ControllersCenterUpLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMap3ControllersCenterUpLeft.Location = new System.Drawing.Point(137, 5);
+            this.buttonMap3ControllersCenterUpLeft.Name = "buttonMap3ControllersCenterUpLeft";
+            this.buttonMap3ControllersCenterUpLeft.Size = new System.Drawing.Size(25, 25);
+            this.buttonMap3ControllersCenterUpLeft.TabIndex = 39;
+            this.buttonMap3ControllersCenterUpLeft.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // buttonMap3ControllersCenterLeft
             // 
-            this.button11.BackgroundImage = global::STROOP.Properties.Resources.image_left;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button11.Location = new System.Drawing.Point(137, 30);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(25, 25);
-            this.button11.TabIndex = 39;
-            this.button11.UseVisualStyleBackColor = true;
+            this.buttonMap3ControllersCenterLeft.BackgroundImage = global::STROOP.Properties.Resources.image_left;
+            this.buttonMap3ControllersCenterLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMap3ControllersCenterLeft.Location = new System.Drawing.Point(137, 30);
+            this.buttonMap3ControllersCenterLeft.Name = "buttonMap3ControllersCenterLeft";
+            this.buttonMap3ControllersCenterLeft.Size = new System.Drawing.Size(25, 25);
+            this.buttonMap3ControllersCenterLeft.TabIndex = 39;
+            this.buttonMap3ControllersCenterLeft.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // buttonMap3ControllersCenterDownLeft
             // 
-            this.button12.BackgroundImage = global::STROOP.Properties.Resources.image_downleft;
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button12.Location = new System.Drawing.Point(137, 55);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(25, 25);
-            this.button12.TabIndex = 39;
-            this.button12.UseVisualStyleBackColor = true;
+            this.buttonMap3ControllersCenterDownLeft.BackgroundImage = global::STROOP.Properties.Resources.image_downleft;
+            this.buttonMap3ControllersCenterDownLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMap3ControllersCenterDownLeft.Location = new System.Drawing.Point(137, 55);
+            this.buttonMap3ControllersCenterDownLeft.Name = "buttonMap3ControllersCenterDownLeft";
+            this.buttonMap3ControllersCenterDownLeft.Size = new System.Drawing.Size(25, 25);
+            this.buttonMap3ControllersCenterDownLeft.TabIndex = 39;
+            this.buttonMap3ControllersCenterDownLeft.UseVisualStyleBackColor = true;
             // 
-            // button13
+            // buttonMap3ControllersCenterDown
             // 
-            this.button13.BackgroundImage = global::STROOP.Properties.Resources.image_down;
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button13.Location = new System.Drawing.Point(176, 55);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(25, 25);
-            this.button13.TabIndex = 39;
-            this.button13.UseVisualStyleBackColor = true;
+            this.buttonMap3ControllersCenterDown.BackgroundImage = global::STROOP.Properties.Resources.image_down;
+            this.buttonMap3ControllersCenterDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMap3ControllersCenterDown.Location = new System.Drawing.Point(176, 55);
+            this.buttonMap3ControllersCenterDown.Name = "buttonMap3ControllersCenterDown";
+            this.buttonMap3ControllersCenterDown.Size = new System.Drawing.Size(25, 25);
+            this.buttonMap3ControllersCenterDown.TabIndex = 39;
+            this.buttonMap3ControllersCenterDown.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // buttonMap3ControllersCenterUpRight
             // 
-            this.button14.BackgroundImage = global::STROOP.Properties.Resources.image_upright;
-            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button14.Location = new System.Drawing.Point(214, 5);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(25, 25);
-            this.button14.TabIndex = 39;
-            this.button14.UseVisualStyleBackColor = true;
+            this.buttonMap3ControllersCenterUpRight.BackgroundImage = global::STROOP.Properties.Resources.image_upright;
+            this.buttonMap3ControllersCenterUpRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMap3ControllersCenterUpRight.Location = new System.Drawing.Point(214, 5);
+            this.buttonMap3ControllersCenterUpRight.Name = "buttonMap3ControllersCenterUpRight";
+            this.buttonMap3ControllersCenterUpRight.Size = new System.Drawing.Size(25, 25);
+            this.buttonMap3ControllersCenterUpRight.TabIndex = 39;
+            this.buttonMap3ControllersCenterUpRight.UseVisualStyleBackColor = true;
             // 
-            // button15
+            // buttonMap3ControllersCenterUp
             // 
-            this.button15.BackgroundImage = global::STROOP.Properties.Resources.image_up;
-            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button15.Location = new System.Drawing.Point(176, 5);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(25, 25);
-            this.button15.TabIndex = 39;
-            this.button15.UseVisualStyleBackColor = true;
+            this.buttonMap3ControllersCenterUp.BackgroundImage = global::STROOP.Properties.Resources.image_up;
+            this.buttonMap3ControllersCenterUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMap3ControllersCenterUp.Location = new System.Drawing.Point(176, 5);
+            this.buttonMap3ControllersCenterUp.Name = "buttonMap3ControllersCenterUp";
+            this.buttonMap3ControllersCenterUp.Size = new System.Drawing.Size(25, 25);
+            this.buttonMap3ControllersCenterUp.TabIndex = 39;
+            this.buttonMap3ControllersCenterUp.UseVisualStyleBackColor = true;
             // 
             // groupBoxMap3ControllersScale
             // 
@@ -20639,8 +20639,8 @@ namespace STROOP
             this.tabPageMap3Controllers.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxMap3ControllersCenter.ResumeLayout(false);
+            this.groupBoxMap3ControllersCenter.PerformLayout();
             this.groupBoxMap3ControllersScale.ResumeLayout(false);
             this.groupBoxMap3ControllersScale.PerformLayout();
             this.tabPageMap3Data.ResumeLayout(false);
@@ -22342,20 +22342,20 @@ namespace STROOP
         private RadioButton radioButton3;
         private RadioButton radioButton4;
         private RadioButton radioButton5;
-        private GroupBox groupBox2;
-        private BetterTextbox betterTextbox3;
-        private BetterTextbox betterTextbox5;
-        private RadioButton radioButton6;
-        private Button button6;
-        private RadioButton radioButton7;
-        private Button button7;
-        private RadioButton radioButton8;
-        private Button button10;
-        private Button button11;
-        private Button button12;
-        private Button button13;
-        private Button button14;
-        private Button button15;
+        private GroupBox groupBoxMap3ControllersCenter;
+        private BetterTextbox textBoxMap3ControllersCenterCustom;
+        private BetterTextbox textBoxMap3ControllersCenterChange;
+        private RadioButton radioButtonMap3ControllersCenterOrigin;
+        private Button buttonMap3ControllersCenterDownRight;
+        private RadioButton radioButtonMap3ControllersCenterBestFit;
+        private Button buttonMap3ControllersCenterRight;
+        private RadioButton radioButtonMap3ControllersCenterCustom;
+        private Button buttonMap3ControllersCenterUpLeft;
+        private Button buttonMap3ControllersCenterLeft;
+        private Button buttonMap3ControllersCenterDownLeft;
+        private Button buttonMap3ControllersCenterDown;
+        private Button buttonMap3ControllersCenterUpRight;
+        private Button buttonMap3ControllersCenterUp;
         private GroupBox groupBoxMap3ControllersScale;
         private BetterTextbox textBoxMap3ControllersScaleCustom;
         private BetterTextbox textBoxMap3ControllersScaleChange;
