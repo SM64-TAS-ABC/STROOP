@@ -148,11 +148,22 @@ namespace STROOP.Utilities
             return (p1X + scaledX, p1Z + scaledZ);
         }
 
+        /** p2 is pivot. */
         public static (double x, double z) RotatePointAboutPointToAngle(
             double p1X, double p1Z, double p2X, double p2Z, double finalAngle)
         {
             double dist = GetDistanceBetween(p1X, p1Z, p2X, p2Z);
             (double xDiff, double zDiff) = GetComponentsFromVector(dist, finalAngle);
+            return (p2X + xDiff, p2Z + zDiff);
+        }
+
+        /** p2 is pivot. */
+        public static (double x, double z) RotatePointAboutPointAnAngularDistance(
+            double p1X, double p1Z, double p2X, double p2Z, double angularDistance)
+        {
+            double dist = GetDistanceBetween(p1X, p1Z, p2X, p2Z);
+            double angle = AngleTo_AngleUnits(p1X, p1Z, p2X, p2Z);
+            (double xDiff, double zDiff) = GetComponentsFromVector(dist, angle + angularDistance);
             return (p2X + xDiff, p2Z + zDiff);
         }
 

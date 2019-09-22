@@ -134,8 +134,28 @@ namespace STROOP.Map3
                 case Map3Scale.MaxCourseSize:
                     RectangleF rectangle = MapViewScale == Map3Scale.CourseDefault ?
                         Map3Utilities.GetMapLayout().Coordinates : MAX_COURSE_SIZE;
+                    List<(float, float)> coordinates = new List<(float, float)>()
+                    {
+                        (rectangle.Left, rectangle.Top),
+                        (rectangle.Right, rectangle.Top),
+                        (rectangle.Left, rectangle.Bottom),
+                        (rectangle.Right, rectangle.Bottom),
+                    };
+                    List<(float, float)> rotatedCoordinates = coordinates.ConvertAll(coord =>
+                    {
+                        (float x, float z) = coord;
+                        (double rotatedX, double rotatedZ) = MoreMath.RotatePointAboutPointAnAngularDistance(
+                            x, z, 0, 0, Config.Map3Graphics.MapViewAngleValue - 32768);
+                        return ((float)rotatedX, (float)rotatedZ);
+                    });
+                    float rotatedXMax = rotatedCoordinates.Max(coord => coord.Item1);
+                    float rotatedXMin = rotatedCoordinates.Min(coord => coord.Item1);
+                    float rotatedZMax = rotatedCoordinates.Max(coord => coord.Item2);
+                    float rotatedZMin = rotatedCoordinates.Min(coord => coord.Item2);
+                    float rotatedWidth = rotatedXMax - rotatedXMin;
+                    float rotatedHeight = rotatedZMax - rotatedZMin;
                     MapViewScaleValue = Math.Min(
-                        Control.Width / rectangle.Width, Control.Height / rectangle.Height);
+                        Control.Width / rotatedWidth, Control.Height / rotatedHeight);
                     break;
                 case Map3Scale.Custom:
                     MapViewScaleValue = ParsingUtilities.ParseFloatNullable(

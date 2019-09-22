@@ -23,10 +23,9 @@ namespace STROOP.Map3
         public override void DrawOnControl()
         {
             UpdateImage();
-
             (PointF loc, SizeF size) = GetDimensions();
-            int angle = 0;
-
+            float angle = (this is Map3BackgroundObject) ?
+                0 : Map3Utilities.ConvertAngleForControl(0);
             DrawTexture(loc, size, angle);
         }
 
