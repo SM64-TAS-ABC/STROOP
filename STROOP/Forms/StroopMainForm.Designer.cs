@@ -839,16 +839,16 @@ namespace STROOP
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.tabPageMap3Controllers = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.betterTextbox1 = new STROOP.BetterTextbox();
-            this.betterTextbox2 = new STROOP.BetterTextbox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.button5 = new System.Windows.Forms.Button();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.groupBoxMap3ControllersAngle = new System.Windows.Forms.GroupBox();
+            this.textBoxMap3ControllersAngleChange = new STROOP.BetterTextbox();
+            this.textBoxMap3ControllersAngleCustom = new STROOP.BetterTextbox();
+            this.buttonMap3ControllersAngleCCW = new System.Windows.Forms.Button();
+            this.radioButtonMap3ControllersAngle49152 = new System.Windows.Forms.RadioButton();
+            this.buttonMap3ControllersAngleCW = new System.Windows.Forms.Button();
+            this.radioButtonMap3ControllersAngle16384 = new System.Windows.Forms.RadioButton();
+            this.radioButtonMap3ControllersAngle0 = new System.Windows.Forms.RadioButton();
+            this.radioButtonMap3ControllersAngleCustom = new System.Windows.Forms.RadioButton();
+            this.radioButtonMap3ControllersAngle32768 = new System.Windows.Forms.RadioButton();
             this.groupBoxMap3ControllersCenter = new System.Windows.Forms.GroupBox();
             this.textBoxMap3ControllersCenterCustom = new STROOP.BetterTextbox();
             this.textBoxMap3ControllersCenterChange = new STROOP.BetterTextbox();
@@ -1864,7 +1864,7 @@ namespace STROOP
             this.tabControlMap3.SuspendLayout();
             this.tabPageMap3Options.SuspendLayout();
             this.tabPageMap3Controllers.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxMap3ControllersAngle.SuspendLayout();
             this.groupBoxMap3ControllersCenter.SuspendLayout();
             this.groupBoxMap3ControllersScale.SuspendLayout();
             this.tabPageMap3Data.SuspendLayout();
@@ -11767,7 +11767,7 @@ namespace STROOP
             this.tabPageMap3Controllers.AutoScroll = true;
             this.tabPageMap3Controllers.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMap3Controllers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap3Controllers.Controls.Add(this.groupBox1);
+            this.tabPageMap3Controllers.Controls.Add(this.groupBoxMap3ControllersAngle);
             this.tabPageMap3Controllers.Controls.Add(this.groupBoxMap3ControllersCenter);
             this.tabPageMap3Controllers.Controls.Add(this.groupBoxMap3ControllersScale);
             this.tabPageMap3Controllers.Location = new System.Drawing.Point(4, 22);
@@ -11777,113 +11777,113 @@ namespace STROOP
             this.tabPageMap3Controllers.TabIndex = 1;
             this.tabPageMap3Controllers.Text = "Controllers";
             // 
-            // groupBox1
+            // groupBoxMap3ControllersAngle
             // 
-            this.groupBox1.Controls.Add(this.betterTextbox1);
-            this.groupBox1.Controls.Add(this.betterTextbox2);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.radioButton5);
-            this.groupBox1.Location = new System.Drawing.Point(3, 165);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(258, 116);
-            this.groupBox1.TabIndex = 38;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Angle";
+            this.groupBoxMap3ControllersAngle.Controls.Add(this.textBoxMap3ControllersAngleChange);
+            this.groupBoxMap3ControllersAngle.Controls.Add(this.textBoxMap3ControllersAngleCustom);
+            this.groupBoxMap3ControllersAngle.Controls.Add(this.buttonMap3ControllersAngleCCW);
+            this.groupBoxMap3ControllersAngle.Controls.Add(this.radioButtonMap3ControllersAngle49152);
+            this.groupBoxMap3ControllersAngle.Controls.Add(this.buttonMap3ControllersAngleCW);
+            this.groupBoxMap3ControllersAngle.Controls.Add(this.radioButtonMap3ControllersAngle16384);
+            this.groupBoxMap3ControllersAngle.Controls.Add(this.radioButtonMap3ControllersAngle0);
+            this.groupBoxMap3ControllersAngle.Controls.Add(this.radioButtonMap3ControllersAngleCustom);
+            this.groupBoxMap3ControllersAngle.Controls.Add(this.radioButtonMap3ControllersAngle32768);
+            this.groupBoxMap3ControllersAngle.Location = new System.Drawing.Point(3, 165);
+            this.groupBoxMap3ControllersAngle.Name = "groupBoxMap3ControllersAngle";
+            this.groupBoxMap3ControllersAngle.Size = new System.Drawing.Size(258, 116);
+            this.groupBoxMap3ControllersAngle.TabIndex = 38;
+            this.groupBoxMap3ControllersAngle.TabStop = false;
+            this.groupBoxMap3ControllersAngle.Text = "Angle";
             // 
-            // betterTextbox1
+            // textBoxMap3ControllersAngleChange
             // 
-            this.betterTextbox1.Location = new System.Drawing.Point(165, 51);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(50, 20);
-            this.betterTextbox1.TabIndex = 34;
-            this.betterTextbox1.Text = "8192";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMap3ControllersAngleChange.Location = new System.Drawing.Point(165, 51);
+            this.textBoxMap3ControllersAngleChange.Name = "textBoxMap3ControllersAngleChange";
+            this.textBoxMap3ControllersAngleChange.Size = new System.Drawing.Size(50, 20);
+            this.textBoxMap3ControllersAngleChange.TabIndex = 34;
+            this.textBoxMap3ControllersAngleChange.Text = "8192";
+            this.textBoxMap3ControllersAngleChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox2
+            // textBoxMap3ControllersAngleCustom
             // 
-            this.betterTextbox2.Location = new System.Drawing.Point(67, 86);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(50, 20);
-            this.betterTextbox2.TabIndex = 34;
-            this.betterTextbox2.Text = "0";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMap3ControllersAngleCustom.Location = new System.Drawing.Point(67, 86);
+            this.textBoxMap3ControllersAngleCustom.Name = "textBoxMap3ControllersAngleCustom";
+            this.textBoxMap3ControllersAngleCustom.Size = new System.Drawing.Size(50, 20);
+            this.textBoxMap3ControllersAngleCustom.TabIndex = 34;
+            this.textBoxMap3ControllersAngleCustom.Text = "0";
+            this.textBoxMap3ControllersAngleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button4
+            // buttonMap3ControllersAngleCCW
             // 
-            this.button4.BackgroundImage = global::STROOP.Properties.Resources.image_counterclockwise;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.Location = new System.Drawing.Point(127, 42);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(35, 35);
-            this.button4.TabIndex = 39;
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonMap3ControllersAngleCCW.BackgroundImage = global::STROOP.Properties.Resources.image_counterclockwise;
+            this.buttonMap3ControllersAngleCCW.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMap3ControllersAngleCCW.Location = new System.Drawing.Point(127, 42);
+            this.buttonMap3ControllersAngleCCW.Name = "buttonMap3ControllersAngleCCW";
+            this.buttonMap3ControllersAngleCCW.Size = new System.Drawing.Size(35, 35);
+            this.buttonMap3ControllersAngleCCW.TabIndex = 39;
+            this.buttonMap3ControllersAngleCCW.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radioButtonMap3ControllersAngle49152
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(9, 69);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(55, 17);
-            this.radioButton1.TabIndex = 12;
-            this.radioButton1.Text = "49152";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonMap3ControllersAngle49152.AutoSize = true;
+            this.radioButtonMap3ControllersAngle49152.Location = new System.Drawing.Point(9, 69);
+            this.radioButtonMap3ControllersAngle49152.Name = "radioButtonMap3ControllersAngle49152";
+            this.radioButtonMap3ControllersAngle49152.Size = new System.Drawing.Size(55, 17);
+            this.radioButtonMap3ControllersAngle49152.TabIndex = 12;
+            this.radioButtonMap3ControllersAngle49152.Text = "49152";
+            this.radioButtonMap3ControllersAngle49152.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // buttonMap3ControllersAngleCW
             // 
-            this.button5.BackgroundImage = global::STROOP.Properties.Resources.image_clockwise;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.Location = new System.Drawing.Point(218, 42);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(35, 35);
-            this.button5.TabIndex = 39;
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonMap3ControllersAngleCW.BackgroundImage = global::STROOP.Properties.Resources.image_clockwise;
+            this.buttonMap3ControllersAngleCW.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMap3ControllersAngleCW.Location = new System.Drawing.Point(218, 42);
+            this.buttonMap3ControllersAngleCW.Name = "buttonMap3ControllersAngleCW";
+            this.buttonMap3ControllersAngleCW.Size = new System.Drawing.Size(35, 35);
+            this.buttonMap3ControllersAngleCW.TabIndex = 39;
+            this.buttonMap3ControllersAngleCW.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioButtonMap3ControllersAngle16384
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(9, 33);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(55, 17);
-            this.radioButton2.TabIndex = 12;
-            this.radioButton2.Text = "16384";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonMap3ControllersAngle16384.AutoSize = true;
+            this.radioButtonMap3ControllersAngle16384.Location = new System.Drawing.Point(9, 33);
+            this.radioButtonMap3ControllersAngle16384.Name = "radioButtonMap3ControllersAngle16384";
+            this.radioButtonMap3ControllersAngle16384.Size = new System.Drawing.Size(55, 17);
+            this.radioButtonMap3ControllersAngle16384.TabIndex = 12;
+            this.radioButtonMap3ControllersAngle16384.Text = "16384";
+            this.radioButtonMap3ControllersAngle16384.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioButtonMap3ControllersAngle0
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(9, 15);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(31, 17);
-            this.radioButton3.TabIndex = 11;
-            this.radioButton3.Text = "0";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButtonMap3ControllersAngle0.AutoSize = true;
+            this.radioButtonMap3ControllersAngle0.Location = new System.Drawing.Point(9, 15);
+            this.radioButtonMap3ControllersAngle0.Name = "radioButtonMap3ControllersAngle0";
+            this.radioButtonMap3ControllersAngle0.Size = new System.Drawing.Size(31, 17);
+            this.radioButtonMap3ControllersAngle0.TabIndex = 11;
+            this.radioButtonMap3ControllersAngle0.Text = "0";
+            this.radioButtonMap3ControllersAngle0.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // radioButtonMap3ControllersAngleCustom
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(9, 87);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(63, 17);
-            this.radioButton4.TabIndex = 13;
-            this.radioButton4.Text = "Custom:";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButtonMap3ControllersAngleCustom.AutoSize = true;
+            this.radioButtonMap3ControllersAngleCustom.Location = new System.Drawing.Point(9, 87);
+            this.radioButtonMap3ControllersAngleCustom.Name = "radioButtonMap3ControllersAngleCustom";
+            this.radioButtonMap3ControllersAngleCustom.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonMap3ControllersAngleCustom.TabIndex = 13;
+            this.radioButtonMap3ControllersAngleCustom.Text = "Custom:";
+            this.radioButtonMap3ControllersAngleCustom.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // radioButtonMap3ControllersAngle32768
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Checked = true;
-            this.radioButton5.Location = new System.Drawing.Point(9, 51);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(55, 17);
-            this.radioButton5.TabIndex = 13;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "32768";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButtonMap3ControllersAngle32768.AutoSize = true;
+            this.radioButtonMap3ControllersAngle32768.Checked = true;
+            this.radioButtonMap3ControllersAngle32768.Location = new System.Drawing.Point(9, 51);
+            this.radioButtonMap3ControllersAngle32768.Name = "radioButtonMap3ControllersAngle32768";
+            this.radioButtonMap3ControllersAngle32768.Size = new System.Drawing.Size(55, 17);
+            this.radioButtonMap3ControllersAngle32768.TabIndex = 13;
+            this.radioButtonMap3ControllersAngle32768.TabStop = true;
+            this.radioButtonMap3ControllersAngle32768.Text = "32768";
+            this.radioButtonMap3ControllersAngle32768.UseVisualStyleBackColor = true;
             // 
             // groupBoxMap3ControllersCenter
             // 
@@ -20637,8 +20637,8 @@ namespace STROOP
             this.tabPageMap3Options.ResumeLayout(false);
             this.tabPageMap3Options.PerformLayout();
             this.tabPageMap3Controllers.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxMap3ControllersAngle.ResumeLayout(false);
+            this.groupBoxMap3ControllersAngle.PerformLayout();
             this.groupBoxMap3ControllersCenter.ResumeLayout(false);
             this.groupBoxMap3ControllersCenter.PerformLayout();
             this.groupBoxMap3ControllersScale.ResumeLayout(false);
@@ -22332,16 +22332,16 @@ namespace STROOP
         private CheckBox checkBox7;
         private CheckBox checkBox8;
         private TabPage tabPageMap3Controllers;
-        private GroupBox groupBox1;
-        private BetterTextbox betterTextbox1;
-        private BetterTextbox betterTextbox2;
-        private Button button4;
-        private RadioButton radioButton1;
-        private Button button5;
-        private RadioButton radioButton2;
-        private RadioButton radioButton3;
-        private RadioButton radioButton4;
-        private RadioButton radioButton5;
+        private GroupBox groupBoxMap3ControllersAngle;
+        private BetterTextbox textBoxMap3ControllersAngleChange;
+        private BetterTextbox textBoxMap3ControllersAngleCustom;
+        private Button buttonMap3ControllersAngleCCW;
+        private RadioButton radioButtonMap3ControllersAngle49152;
+        private Button buttonMap3ControllersAngleCW;
+        private RadioButton radioButtonMap3ControllersAngle16384;
+        private RadioButton radioButtonMap3ControllersAngle0;
+        private RadioButton radioButtonMap3ControllersAngleCustom;
+        private RadioButton radioButtonMap3ControllersAngle32768;
         private GroupBox groupBoxMap3ControllersCenter;
         private BetterTextbox textBoxMap3ControllersCenterCustom;
         private BetterTextbox textBoxMap3ControllersCenterChange;
