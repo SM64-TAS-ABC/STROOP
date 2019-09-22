@@ -214,17 +214,31 @@ namespace STROOP.Map3
 
         public void ChangeScale(int sign, string value)
         {
-
+            float? parsed = ParsingUtilities.ParseFloatNullable(value);
+            if (!parsed.HasValue) return;
+            Config.Map3Gui.radioButtonMap3ControllersScaleCustom.Checked = true;
+            float newScaleValue = MapViewScaleValue + sign * parsed.Value;
+            Config.Map3Gui.textBoxMap3ControllersScaleCustom.SubmitText(newScaleValue.ToString());
         }
 
         public void ChangeCenter(int xSign, int zSign, string value)
         {
-
+            float? parsed = ParsingUtilities.ParseFloatNullable(value);
+            if (!parsed.HasValue) return;
+            Config.Map3Gui.radioButtonMap3ControllersCenterCustom.Checked = true;
+            float newCenterXValue = MapViewCenterXValue + xSign * parsed.Value;
+            float newCenterZValue = MapViewCenterZValue + zSign * parsed.Value;
+            Config.Map3Gui.textBoxMap3ControllersCenterCustom.SubmitText(newCenterXValue + "," + newCenterZValue);
         }
 
         public void ChangeAngle(int sign, string value)
         {
-
+            float? parsed = ParsingUtilities.ParseFloatNullable(value);
+            if (!parsed.HasValue) return;
+            Config.Map3Gui.radioButtonMap3ControllersAngleCustom.Checked = true;
+            float newAngleValue = MapViewAngleValue + sign * parsed.Value;
+            newAngleValue = (float)MoreMath.NormalizeAngleDouble(newAngleValue);
+            Config.Map3Gui.textBoxMap3ControllersAngleCustom.SubmitText(newAngleValue.ToString());
         }
 
         public void AddMapObject(Map3Object mapObj)
