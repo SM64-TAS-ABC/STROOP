@@ -19,6 +19,7 @@ namespace STROOP.Map3
             : base()
         {
         }
+
         protected override Image GetImage()
         {
             return Config.ObjectAssociations.CameraMapImage;
