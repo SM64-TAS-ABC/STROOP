@@ -43,7 +43,7 @@ namespace STROOP
 
         public new bool Show = false;
 
-        enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION, MAP2_SELECTION, MODEL_SELECTION };
+        enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION, MAP2_SELECTION, MAP3_SELECTION, MODEL_SELECTION };
         SelectionType _selectionType = SelectionType.NOT_SELECTED;
 
         int prevHeight;
@@ -476,6 +476,10 @@ namespace STROOP
                     e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
                     break;
 
+                case SelectionType.MAP3_SELECTION:
+                    e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
+                    break;
+
                 case SelectionType.NOT_SELECTED:
                     // do nothing
                     break;
@@ -626,6 +630,12 @@ namespace STROOP
 
                 case ObjectSlotsManager.TabType.Map2:
                     selectionType = Show ? SelectionType.MAP2_SELECTION
+                        : SelectionType.NOT_SELECTED;
+                    break;
+
+                case ObjectSlotsManager.TabType.Map3:
+                    selectionType = address.HasValue && Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses.Contains(address.Value)
+                        ? SelectionType.MAP3_SELECTION
                         : SelectionType.NOT_SELECTED;
                     break;
 
