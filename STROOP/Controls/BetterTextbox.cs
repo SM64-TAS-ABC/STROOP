@@ -16,7 +16,7 @@ namespace STROOP
 {
     public class BetterTextbox : TextBox
     {
-        private string lastSubmittedText;
+        public string LastSubmittedText;
 
         public override string Text
         {
@@ -26,9 +26,9 @@ namespace STROOP
             }
             set
             {
-                if (lastSubmittedText == null)
+                if (LastSubmittedText == null)
                 {
-                    lastSubmittedText = value;
+                    LastSubmittedText = value;
                 }
                 base.Text = value;
             }
@@ -36,7 +36,7 @@ namespace STROOP
 
         public BetterTextbox()
         {
-            AddLostFocusAction(() => lastSubmittedText = this.Text);
+            AddLostFocusAction(() => LastSubmittedText = this.Text);
             AddDoubleClickAction(() => this.SelectAll());
             AddEnterAction(() => Parent.Focus());
             AddEscapeAction(() =>
@@ -48,7 +48,7 @@ namespace STROOP
 
         public void Reset()
         {
-            this.Text = lastSubmittedText;
+            this.Text = LastSubmittedText;
         }
 
         public void AddEnterAction(Action enterAction)
