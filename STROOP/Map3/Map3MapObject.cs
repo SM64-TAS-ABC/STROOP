@@ -27,12 +27,12 @@ namespace STROOP.Map3
 
         protected override (PointF loc, SizeF size) GetDimensions()
         {
-            RectangleF coordinates = Map3Utilities.GetMapLayout().Coordinates;
-            float coordinatesCenterX = coordinates.X + coordinates.Width / 2;
-            float coordinatesCenterZ = coordinates.Y + coordinates.Height / 2;
-            (float centerX, float centerZ) = Map3Utilities.ConvertCoordsForControl(coordinatesCenterX, coordinatesCenterZ);
-            float sizeX = coordinates.Width * Config.Map3Graphics.MapViewScaleValue;
-            float sizeZ = coordinates.Height * Config.Map3Graphics.MapViewScaleValue;
+            RectangleF rectangle = Map3Utilities.GetMapLayout().Coordinates;
+            float rectangleCenterX = rectangle.X + rectangle.Width / 2;
+            float rectangleCenterZ = rectangle.Y + rectangle.Height / 2;
+            (float centerX, float centerZ) = Map3Utilities.ConvertCoordsForControl(rectangleCenterX, rectangleCenterZ);
+            float sizeX = rectangle.Width * Config.Map3Graphics.MapViewScaleValue;
+            float sizeZ = rectangle.Height * Config.Map3Graphics.MapViewScaleValue;
             return (new PointF(centerX, centerZ), new SizeF(sizeX, sizeZ));
         }
     }

@@ -132,10 +132,10 @@ namespace STROOP.Map3
             {
                 case Map3Scale.CourseDefault:
                 case Map3Scale.MaxCourseSize:
-                    RectangleF coordinates = MapViewScale == Map3Scale.CourseDefault ?
+                    RectangleF rectangle = MapViewScale == Map3Scale.CourseDefault ?
                         Map3Utilities.GetMapLayout().Coordinates : MAX_COURSE_SIZE;
                     MapViewScaleValue = Math.Min(
-                        Control.Width / coordinates.Width, Control.Height / coordinates.Height);
+                        Control.Width / rectangle.Width, Control.Height / rectangle.Height);
                     break;
                 case Map3Scale.Custom:
                     MapViewScaleValue = ParsingUtilities.ParseFloatNullable(
@@ -147,10 +147,10 @@ namespace STROOP.Map3
             switch (MapViewCenter)
             {
                 case Map3Center.BestFit:
-                    RectangleF coordinates = MapViewScale == Map3Scale.CourseDefault ?
+                    RectangleF rectangle = MapViewScale == Map3Scale.CourseDefault ?
                         Map3Utilities.GetMapLayout().Coordinates : MAX_COURSE_SIZE;
-                    MapViewCenterXValue = coordinates.X + coordinates.Width / 2;
-                    MapViewCenterZValue = coordinates.Y + coordinates.Height / 2;
+                    MapViewCenterXValue = rectangle.X + rectangle.Width / 2;
+                    MapViewCenterZValue = rectangle.Y + rectangle.Height / 2;
                     break;
                 case Map3Center.Origin:
                     MapViewCenterXValue = 0;
