@@ -34,6 +34,11 @@ namespace STROOP.Map3
         private static readonly float DEFAULT_MAP_VIEW_CENTER_Z_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_ANGLE_VALUE = 32768;
 
+        public float MapViewScaleValue = DEFAULT_MAP_VIEW_SCALE_VALUE;
+        public float MapViewCenterXValue = DEFAULT_MAP_VIEW_CENTER_X_VALUE;
+        public float MapViewCenterZValue = DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
+        public float MapViewAngleValue = DEFAULT_MAP_VIEW_ANGLE_VALUE;
+
         public static readonly int MAX_COURSE_SIZE_X_MIN = -8191;
         public static readonly int MAX_COURSE_SIZE_X_MAX = 8192;
         public static readonly int MAX_COURSE_SIZE_Z_MIN = -8191;
@@ -133,75 +138,71 @@ namespace STROOP.Map3
             else
                 MapViewAngle = Map3Angle.Custom;
 
-            float mapViewScaleValue;
             switch (MapViewScale)
             {
                 case Map3Scale.CourseDefault:
                 case Map3Scale.MaxCourseSize:
                     RectangleF coordinates = MapViewScale == Map3Scale.CourseDefault ?
                         Map3Utilities.GetMapLayout().Coordinates : MAX_COURSE_SIZE;
-                    mapViewScaleValue = Math.Min(
+                    MapViewScaleValue = Math.Min(
                         Control.Width / coordinates.Width, Control.Height / coordinates.Height);
                     break;
                 case Map3Scale.Custom:
-                    mapViewScaleValue = ParsingUtilities.ParseFloatNullable(
+                    MapViewScaleValue = ParsingUtilities.ParseFloatNullable(
                         Config.Map3Gui.textBoxMap3ControllersScaleCustom.LastSubmittedText)
                         ?? DEFAULT_MAP_VIEW_SCALE_VALUE;
                     break;
             }
 
-            float mapViewCenterXValue;
-            float mapViewCenterZValue;
             switch (MapViewCenter)
             {
                 case Map3Center.BestFit:
                     RectangleF coordinates = MapViewScale == Map3Scale.CourseDefault ?
                         Map3Utilities.GetMapLayout().Coordinates : MAX_COURSE_SIZE;
-                    mapViewCenterXValue = coordinates.X + coordinates.Width / 2;
-                    mapViewCenterZValue = coordinates.Y + coordinates.Height / 2;
+                    MapViewCenterXValue = coordinates.X + coordinates.Width / 2;
+                    MapViewCenterZValue = coordinates.Y + coordinates.Height / 2;
                     break;
                 case Map3Center.Origin:
-                    mapViewCenterXValue = 0;
-                    mapViewCenterZValue = 0;
+                    MapViewCenterXValue = 0;
+                    MapViewCenterZValue = 0;
                     break;
                 case Map3Center.Custom:
                     List<string> stringValues = ParsingUtilities.ParseStringList(
                         Config.Map3Gui.textBoxMap3ControllersCenterCustom.LastSubmittedText);
                     if (stringValues.Count >= 2)
                     {
-                        mapViewCenterXValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_CENTER_X_VALUE;
-                        mapViewCenterZValue = ParsingUtilities.ParseFloatNullable(stringValues[1]) ?? DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
+                        MapViewCenterXValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_CENTER_X_VALUE;
+                        MapViewCenterZValue = ParsingUtilities.ParseFloatNullable(stringValues[1]) ?? DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
                     }
                     else if (stringValues.Count == 1)
                     {
-                        mapViewCenterXValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_CENTER_X_VALUE;
-                        mapViewCenterZValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
+                        MapViewCenterXValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_CENTER_X_VALUE;
+                        MapViewCenterZValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
                     }
                     else
                     {
-                        mapViewCenterXValue = DEFAULT_MAP_VIEW_CENTER_X_VALUE;
-                        mapViewCenterZValue = DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
+                        MapViewCenterXValue = DEFAULT_MAP_VIEW_CENTER_X_VALUE;
+                        MapViewCenterZValue = DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
                     }
                     break;
             }
 
-            float mapViewAngleValue;
             switch (MapViewAngle)
             {
                 case Map3Angle.Angle0:
-                    mapViewAngleValue = 0;
+                    MapViewAngleValue = 0;
                     break;
                 case Map3Angle.Angle16384:
-                    mapViewAngleValue = 16384;
+                    MapViewAngleValue = 16384;
                     break;
                 case Map3Angle.Angle32768:
-                    mapViewAngleValue = 32768;
+                    MapViewAngleValue = 32768;
                     break;
                 case Map3Angle.Angle49152:
-                    mapViewAngleValue = 49152;
+                    MapViewAngleValue = 49152;
                     break;
                 case Map3Angle.Custom:
-                    mapViewAngleValue = ParsingUtilities.ParseFloatNullable(
+                    MapViewAngleValue = ParsingUtilities.ParseFloatNullable(
                         Config.Map3Gui.textBoxMap3ControllersAngleCustom.LastSubmittedText)
                         ?? DEFAULT_MAP_VIEW_ANGLE_VALUE;
                     break;
