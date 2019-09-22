@@ -16,8 +16,12 @@ namespace STROOP.Map3
     public class Map3CameraObject : Map3IconPointObject
     {
         public Map3CameraObject()
-            : base(() => Config.ObjectAssociations.CameraMapImage)
+            : base()
         {
+        }
+        protected override Image GetImage()
+        {
+            return Config.ObjectAssociations.CameraMapImage;
         }
 
         protected override (double x, double y, double z, double angle) GetPositionAngle()

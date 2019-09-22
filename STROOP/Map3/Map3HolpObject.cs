@@ -16,8 +16,12 @@ namespace STROOP.Map3
     public class Map3HolpObject : Map3IconPointObject
     {
         public Map3HolpObject()
-            : base(() => Config.ObjectAssociations.HolpImage)
+            : base()
         {
+        }
+        protected override Image GetImage()
+        {
+            return Config.ObjectAssociations.HolpImage;
         }
 
         protected override (double x, double y, double z, double angle) GetPositionAngle()

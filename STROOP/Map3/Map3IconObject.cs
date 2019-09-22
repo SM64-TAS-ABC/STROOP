@@ -16,14 +16,12 @@ namespace STROOP.Map3
 {
     public abstract class Map3IconObject : Map3Object
     {
-        private readonly Func<Image> ImageFunction;
         protected Image Image;
         protected int TextureId;
 
-        public Map3IconObject(Func<Image> imageFunction)
+        public Map3IconObject()
             : base()
         {
-            ImageFunction = imageFunction;
             Image = null;
             TextureId = -1;
         }
@@ -49,9 +47,11 @@ namespace STROOP.Map3
             GL.End();
         }
 
+        protected abstract Image GetImage();
+
         protected void UpdateImage()
         {
-            Image image = ImageFunction();
+            Image image = GetImage();
             if (image != Image)
             {
                 Image = image;

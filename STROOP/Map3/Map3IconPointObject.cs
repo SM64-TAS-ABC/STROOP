@@ -15,8 +15,8 @@ namespace STROOP.Map3
 {
     public abstract class Map3IconPointObject : Map3IconObject
     {
-        public Map3IconPointObject(Func<Image> imageFunction)
-            : base(imageFunction)
+        public Map3IconPointObject()
+            : base()
         {
         }
 

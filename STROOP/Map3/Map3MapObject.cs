@@ -16,8 +16,12 @@ namespace STROOP.Map3
     public class Map3MapObject : Map3IconRectangleObject
     {
         public Map3MapObject()
-            : base(() => Config.MapAssociations.GetBestMap().MapImage)
+            : base()
         {
+        }
+        protected override Image GetImage()
+        {
+            return Config.MapAssociations.GetBestMap().MapImage;
         }
 
         protected override (PointF loc, SizeF size) GetDimensions()

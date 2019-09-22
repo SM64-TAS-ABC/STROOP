@@ -16,8 +16,12 @@ namespace STROOP.Map3
     public class Map3MarioObject : Map3IconPointObject
     {
         public Map3MarioObject()
-            : base(() => Config.ObjectAssociations.MarioMapImage)
+            : base()
         {
+        }
+        protected override Image GetImage()
+        {
+            return Config.ObjectAssociations.MarioMapImage;
         }
 
         protected override (double x, double y, double z, double angle) GetPositionAngle()

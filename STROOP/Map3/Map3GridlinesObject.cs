@@ -16,8 +16,12 @@ namespace STROOP.Map3
     public class Map3GridlinesObject : Map3IconRectangleObject
     {
         public Map3GridlinesObject()
-            : base(() => Config.MapAssociations.GetGridlines().MapImage)
+            : base()
         {
+        }
+        protected override Image GetImage()
+        {
+            return Config.MapAssociations.GetGridlines().MapImage;
         }
 
         protected override (PointF loc, SizeF size) GetDimensions()
