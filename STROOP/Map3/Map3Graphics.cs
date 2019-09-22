@@ -12,6 +12,7 @@ using System.Drawing.Imaging;
 using STROOP.Structs;
 using STROOP.Controls.Map;
 using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 
 namespace STROOP.Map3
 {
@@ -27,6 +28,17 @@ namespace STROOP.Map3
         private Map3Scale MapViewScale;
         private Map3Center MapViewCenter;
         private Map3Angle MapViewAngle;
+
+        public static readonly int MAX_COURSE_SIZE_X_MIN = -8191;
+        public static readonly int MAX_COURSE_SIZE_X_MAX = 8192;
+        public static readonly int MAX_COURSE_SIZE_Z_MIN = -8191;
+        public static readonly int MAX_COURSE_SIZE_Z_MAX = 8192;
+        public static readonly RectangleF MAX_COURSE_SIZE =
+            new RectangleF(
+                MAX_COURSE_SIZE_X_MIN,
+                MAX_COURSE_SIZE_Z_MIN,
+                MAX_COURSE_SIZE_X_MAX - MAX_COURSE_SIZE_X_MIN,
+                MAX_COURSE_SIZE_Z_MAX - MAX_COURSE_SIZE_Z_MIN);
 
         public RectangleF MapView;
         public int XMin = -8191;
@@ -115,6 +127,64 @@ namespace STROOP.Map3
                 MapViewAngle = Map3Angle.Angle49152;
             else
                 MapViewAngle = Map3Angle.Custom;
+
+            float mapViewScaleValue;
+            switch (MapViewScale)
+            {
+                case Map3Scale.CourseDefault:
+                case Map3Scale.MaxCourseSize:
+                    RectangleF coordinates = MapViewScale == Map3Scale.CourseDefault ?
+                        Map3Utilities.GetMapLayout().Coordinates : MAX_COURSE_SIZE;
+                    mapViewScaleValue = Math.Min(
+                        Control.Width / coordinates.Width, Control.Height / coordinates.Height);
+                    break;
+                case Map3Scale.Custom:
+                    mapViewScaleValue = ParsingUtilities.ParseFloatNullable(
+                        Config.Map3Gui.textBoxMap3ControllersScaleCustom.LastSubmittedText) ?? 1;
+                    break;
+            }
+
+            float xCenter;
+            float zCenter;
+            switch (MapViewCenter)
+            {
+                case Map3Center.BestFit:
+                    RectangleF coordinates = MapViewScale == Map3Scale.CourseDefault ?
+                        Map3Utilities.GetMapLayout().Coordinates : MAX_COURSE_SIZE;
+                    xCenter = coordinates.X + coordinates.Width / 2;
+                    zCenter = coordinates.Y + coordinates.Height / 2;
+                    break;
+                case Map3Center.Origin:
+                    xCenter = 0;
+                    zCenter = 0;
+                    break;
+                case Map3Center.Custom:
+                    List<string> stringValues = ParsingUtilities.ParseStringList(
+                        Config.Map3Gui.textBoxMap3ControllersCenterCustom.LastSubmittedText);
+                    if (stringValues.Count >= 2)
+                    {
+                        xCenter = ParsingUtilities.ParseFloat(stringValues[0]);
+                        zCenter = ParsingUtilities.ParseFloat(stringValues[1]);
+                    }
+                    else if (stringValues.Count == 1)
+                    {
+                        xCenter = ParsingUtilities.ParseFloat(stringValues[0]);
+                        zCenter = ParsingUtilities.ParseFloat(stringValues[0]);
+                    }
+                    else
+                    {
+                        xCenter = 0;
+                        zCenter = 0;
+                    }
+                    break;
+            }
+
+
+
+
+
+
+
 
             // Calculate scale of "zoom" view (make sure image fits fully within the region, 
             // it is at a maximum size, and the aspect ration is maintained 

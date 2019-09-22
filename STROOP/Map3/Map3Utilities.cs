@@ -37,5 +37,18 @@ namespace STROOP.Map3
             float scale = Math.Max(imageSize.Height / desiredSize, imageSize.Width / desiredSize);
             return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
         }
+
+        public static MapLayout GetMapLayout()
+        {
+            object mapLayoutChoice = Config.Map3Gui.comboBoxMap3OptionsLevel.SelectedItem;
+            if (mapLayoutChoice is MapLayout mapLayout)
+            {
+                return mapLayout;
+            }
+            else
+            {
+                return Config.MapAssociations.GetBestMap();
+            }
+        }
     }
 }
