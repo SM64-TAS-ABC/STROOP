@@ -518,6 +518,8 @@ namespace STROOP.Utilities
             assoc.IntendedNextPositionImage = Image.FromFile(mapImageDir + intendedNextPositionImagePath);
             assoc.CameraMapImage = Image.FromFile(mapImageDir + cameraMapImagePath);
 
+            assoc.AddEmptyAssociation(); // Need to do this after Empty Image is set
+
             assoc.TriangleFloorImage = Image.FromFile(mapImageDir + triangleFloorImagePath);
             assoc.TriangleWallImage = Image.FromFile(mapImageDir + triangleWallImagePath);
             assoc.TriangleCeilingImage = Image.FromFile(mapImageDir + triangleCeilingImagePath);

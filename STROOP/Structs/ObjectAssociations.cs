@@ -13,18 +13,7 @@ namespace STROOP.Structs
 {
     public class ObjectAssociations
     {
-        HashSet<ObjectBehaviorAssociation> _objAssoc = new HashSet<ObjectBehaviorAssociation>()
-        {
-            new ObjectBehaviorAssociation()
-            {
-                Name = "Uninitialized Object",
-                Criteria = new BehaviorCriteria()
-                {
-                    BehaviorAddress = 0x0000,
-                },
-                RotatesOnMap = false
-            }
-        };
+        HashSet<ObjectBehaviorAssociation> _objAssoc = new HashSet<ObjectBehaviorAssociation>();
         List<SpawnHack> _spawnHacks = new List<SpawnHack>();
 
         Image _defaultImage;
@@ -95,6 +84,22 @@ namespace STROOP.Structs
         public bool AddAssociation(ObjectBehaviorAssociation objAsooc)
         {
             return _objAssoc.Add(objAsooc);
+        }
+
+        public bool AddEmptyAssociation()
+        {
+            return AddAssociation(
+                new ObjectBehaviorAssociation()
+                {
+                    Name = "Uninitialized Object",
+                    Criteria = new BehaviorCriteria()
+                    {
+                        BehaviorAddress = 0x0000,
+                    },
+                    RotatesOnMap = false,
+                    Image = EmptyImage,
+                    MapImage = EmptyImage,
+                });
         }
 
         public void AddSpawnHack(SpawnHack hack)
