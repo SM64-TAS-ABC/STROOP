@@ -40,7 +40,6 @@ namespace STROOP.Map3
             Control.Context.LoadAll();
 
             Control.Paint += (sender, e) => OnPaint();
-            Control.Resize += (sender, e) => OnResize();
 
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
             GL.Enable(EnableCap.Texture2D);
@@ -48,14 +47,13 @@ namespace STROOP.Map3
             GL.EnableClientState(ArrayCap.VertexArray);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
-
-            UpdateViewport();
-            UpdateMapView();
         }
 
         private void OnPaint()
         {
             Control.MakeCurrent();
+            UpdateViewport();
+            UpdateMapView();
 
             // Set default background color (clear drawing area)
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
@@ -69,13 +67,6 @@ namespace STROOP.Map3
             }
 
             Control.SwapBuffers();
-        }
-
-        private void OnResize()
-        {
-            Control.MakeCurrent();
-            UpdateViewport();
-            UpdateMapView();
         }
 
         private void UpdateViewport()
