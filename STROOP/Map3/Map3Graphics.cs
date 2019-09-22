@@ -208,14 +208,24 @@ namespace STROOP.Map3
                     break;
             }
 
+            if (MapViewScale != Map3Scale.Custom)
+            {
+                Config.Map3Gui.textBoxMap3ControllersScaleCustom.Text = MapViewScaleValue.ToString();
+            }
+            if (MapViewCenter != Map3Center.Custom)
+            {
+                Config.Map3Gui.textBoxMap3ControllersCenterCustom.Text = MapViewCenterXValue + "," + MapViewCenterZValue;
+            }
+            if (MapViewAngle != Map3Angle.Custom)
+            {
+                Config.Map3Gui.textBoxMap3ControllersAngleCustom.Text = MapViewAngleValue.ToString();
+            }
 
 
 
-
-
-        // Calculate scale of "zoom" view (make sure image fits fully within the region, 
-        // it is at a maximum size, and the aspect ration is maintained 
-        float minLength = Math.Min(Control.Width, Control.Height);
+            // Calculate scale of "zoom" view (make sure image fits fully within the region, 
+            // it is at a maximum size, and the aspect ration is maintained 
+            float minLength = Math.Min(Control.Width, Control.Height);
 
             float marginV = 0;
             float marginH = 0;
