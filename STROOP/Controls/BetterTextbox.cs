@@ -46,6 +46,12 @@ namespace STROOP
             });
         }
 
+        public void SubmitText(string text)
+        {
+            Text = text;
+            LastSubmittedText = text;
+        }
+
         public void Reset()
         {
             this.Text = LastSubmittedText;

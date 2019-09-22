@@ -210,15 +210,15 @@ namespace STROOP.Map3
 
             if (MapViewScale != Map3Scale.Custom)
             {
-                Config.Map3Gui.textBoxMap3ControllersScaleCustom.Text = MapViewScaleValue.ToString();
+                Config.Map3Gui.textBoxMap3ControllersScaleCustom.SubmitText(MapViewScaleValue.ToString());
             }
             if (MapViewCenter != Map3Center.Custom)
             {
-                Config.Map3Gui.textBoxMap3ControllersCenterCustom.Text = MapViewCenterXValue + "," + MapViewCenterZValue;
+                Config.Map3Gui.textBoxMap3ControllersCenterCustom.SubmitText(MapViewCenterXValue + "," + MapViewCenterZValue);
             }
             if (MapViewAngle != Map3Angle.Custom)
             {
-                Config.Map3Gui.textBoxMap3ControllersAngleCustom.Text = MapViewAngleValue.ToString();
+                Config.Map3Gui.textBoxMap3ControllersAngleCustom.SubmitText(MapViewAngleValue.ToString());
             }
 
 
