@@ -20,14 +20,27 @@ namespace STROOP.Map3
         {
         }
 
+        private MapLayout GetMapLayout()
+        {
+            object mapLayoutChoice = Config.Map3Gui.comboBoxMap3OptionsLevel.SelectedItem;
+            if (mapLayoutChoice is MapLayout mapLayout)
+            {
+                return mapLayout;
+            }
+            else
+            {
+                return Config.MapAssociations.GetBestMap();
+            }
+        }
+
         protected override Image GetImage()
         {
-            return Config.MapAssociations.GetBestMap().MapImage;
+            return GetMapLayout().MapImage;
         }
 
         protected override (PointF loc, SizeF size) GetDimensions()
         {
-            RectangleF coordinates = Config.MapAssociations.GetBestMap().Coordinates;
+            RectangleF coordinates = GetMapLayout().Coordinates;
 
             float xScale = coordinates.Width / (Config.Map3Graphics.XMax - Config.Map3Graphics.XMin);
             float mapWidth = xScale * Config.Map3Graphics.MapView.Width;

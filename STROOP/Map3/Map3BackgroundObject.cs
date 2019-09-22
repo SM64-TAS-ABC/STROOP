@@ -22,7 +22,15 @@ namespace STROOP.Map3
 
         protected override Image GetImage()
         {
-            return Config.MapAssociations.GetBestMap().BackgroundImage;
+            object backgroundChoice = Config.Map3Gui.comboBoxMap3OptionsBackground.SelectedItem;
+            if (backgroundChoice is BackgroundImage background)
+            {
+                return background.Image;
+            }
+            else
+            {
+                return Config.MapAssociations.GetBestMap().BackgroundImage;
+            }
         }
 
         protected override (PointF loc, SizeF size) GetDimensions()

@@ -62,6 +62,16 @@ namespace STROOP.Managers
             Config.Map3Graphics.AddMapObject(_floorMapObj);
             Config.Map3Graphics.AddMapObject(_ceilingMapObj);
             Config.Map3Graphics.AddMapObject(_objMapObj);
+
+            List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
+            List<object> mapLayoutChoices = new List<object>() { "Recommended" };
+            mapLayouts.ForEach(mapLayout => mapLayoutChoices.Add(mapLayout));
+            Config.Map3Gui.comboBoxMap3OptionsLevel.DataSource = mapLayoutChoices;
+
+            List<BackgroundImage> backgroundImages = Config.MapAssociations.GetAllBackgroundImages();
+            List<object> backgroundImageChoices = new List<object>() { "Recommended" };
+            backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
+            Config.Map3Gui.comboBoxMap3OptionsBackground.DataSource = backgroundImageChoices;
         }
 
         public void Update(bool updateView)
