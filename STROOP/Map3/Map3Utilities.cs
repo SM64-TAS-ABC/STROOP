@@ -16,6 +16,7 @@ namespace STROOP.Map3
 {
     public static class Map3Utilities
     {
+        /** Takes in in-game coordinates, outputs control coordinates. */
         public static (float x, float z) ConvertCoordsForControl(float x, float z)
         {
             float relX = (float)PuUtilities.GetRelativeCoordinate(x);
@@ -27,6 +28,14 @@ namespace STROOP.Map3
             float centerX = Config.Map3Graphics.Control.Width / 2 + xOffsetPixels;
             float centerZ = Config.Map3Graphics.Control.Height / 2 + zOffsetPixels;
             return (centerX, centerZ);
+        }
+
+        /** Takes in in-game angle, outputs control angle. */
+        public static float ConvertAngleForControl(double angle)
+        {
+            angle += Config.Map3Graphics.MapViewAngleValue - 32768;
+            if (double.IsNaN(angle)) angle = 0;
+            return (float)MoreMath.AngleUnitsToDegrees(angle);
         }
 
         public static SizeF ScaleImageSize(Size imageSize, float desiredSize)

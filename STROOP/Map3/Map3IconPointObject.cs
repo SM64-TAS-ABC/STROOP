@@ -27,8 +27,7 @@ namespace STROOP.Map3
             // Update map object
             (double x, double y, double z, double angle) = GetPositionAngle();
             (float xPosPixels, float zPosPixels) = Map3Utilities.ConvertCoordsForControl((float)x, (float)z);
-            if (double.IsNaN(angle)) angle = 0;
-            float angleDegrees = (float)MoreMath.AngleUnitsToDegrees(angle);
+            float angleDegrees = Map3Utilities.ConvertAngleForControl(angle);
             SizeF size = Map3Utilities.ScaleImageSize(Image.Size, Size);
             DrawTexture(new PointF(xPosPixels, zPosPixels), size, angleDegrees);
         }
