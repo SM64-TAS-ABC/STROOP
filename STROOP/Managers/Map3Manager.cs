@@ -27,6 +27,7 @@ namespace STROOP.Managers
         Map3Object _marioMapObj;
         Map3Object _floorMapObj;
         Map3Object _ceilingMapObj;
+        Map3Object _objMapObj;
 
         Map3Gui _mapGui;
         bool _isLoaded = false;
@@ -51,6 +52,7 @@ namespace STROOP.Managers
             _marioMapObj = new Map3MarioObject();
             _floorMapObj = new Map3FloorObject();
             _ceilingMapObj = new Map3CeilingObject();
+            _objMapObj = new Map3ObjectObject(0x803408C8);
 
             // Add map objects
             Config.Map3Graphics.AddMapObject(_background);
@@ -61,6 +63,7 @@ namespace STROOP.Managers
             Config.Map3Graphics.AddMapObject(_marioMapObj);
             Config.Map3Graphics.AddMapObject(_floorMapObj);
             Config.Map3Graphics.AddMapObject(_ceilingMapObj);
+            Config.Map3Graphics.AddMapObject(_objMapObj);
         }
 
         public void Update(bool updateView)

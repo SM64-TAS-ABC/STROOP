@@ -370,6 +370,7 @@
     <Compile Include="Map3\Map3BackgroundObject.cs" />
     <Compile Include="Map3\Map3CameraObject.cs" />
     <Compile Include="Map3\Map3FloorObject.cs" />
+    <Compile Include="Map3\Map3ObjectObject.cs" />
     <Compile Include="Map3\Map3Utilities.cs" />
     <Compile Include="Map3\Map3TriangleObject.cs" />
     <Compile Include="Map3\Map3MapObject.cs" />
