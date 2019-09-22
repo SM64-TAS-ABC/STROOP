@@ -50,16 +50,6 @@ namespace STROOP.Map3
                 MAX_COURSE_SIZE_X_MAX - MAX_COURSE_SIZE_X_MIN,
                 MAX_COURSE_SIZE_Z_MAX - MAX_COURSE_SIZE_Z_MIN);
 
-        public RectangleF MapView;
-        public int XMin = -8191;
-        public int XMax = 8192;
-        public int ZMin = -8191;
-        public int ZMax = 8192;
-        public float ConversionScale
-        {
-            get => MapView.Width / (XMax - XMin);
-        }
-
         public Map3Graphics(GLControl control)
         {
             Control = control;
@@ -220,22 +210,6 @@ namespace STROOP.Map3
             {
                 Config.Map3Gui.textBoxMap3ControllersAngleCustom.SubmitText(MapViewAngleValue.ToString());
             }
-
-
-
-            // Calculate scale of "zoom" view (make sure image fits fully within the region, 
-            // it is at a maximum size, and the aspect ration is maintained 
-            float minLength = Math.Min(Control.Width, Control.Height);
-
-            float marginV = 0;
-            float marginH = 0;
-            if (Control.Width > Control.Height)
-                marginH = Control.Width - minLength;
-            else
-                marginV = Control.Height - minLength;
-
-            // Calculate where the map image should be drawn
-            MapView = new RectangleF(marginH / 2, marginV / 2, Control.Width - marginH, Control.Height - marginV);
         }
 
         public void AddMapObject(Map3Object mapObj)

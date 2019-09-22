@@ -35,8 +35,8 @@ namespace STROOP.Map3
 
         protected override (PointF loc, SizeF size) GetDimensions()
         {
-            float xCenter = Config.Map3Graphics.MapView.X + Config.Map3Graphics.MapView.Width / 2;
-            float yCenter = Config.Map3Graphics.MapView.Y + Config.Map3Graphics.MapView.Height / 2;
+            float xCenter = Config.Map3Graphics.Control.Width / 2;
+            float yCenter = Config.Map3Graphics.Control.Height / 2;
             float length = Math.Max(Config.Map3Graphics.Control.Width, Config.Map3Graphics.Control.Height);
             return (new PointF(xCenter, yCenter), new SizeF(length, length));
         }
