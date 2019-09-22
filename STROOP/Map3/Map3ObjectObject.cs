@@ -18,12 +18,14 @@ namespace STROOP.Map3
     {
         private readonly uint ObjAddress;
         private readonly ObjectDataModel Obj;
+        private readonly PositionAngle PosAngle;
 
         public Map3ObjectObject(uint objAddress)
             : base()
         {
             ObjAddress = objAddress;
             Obj = new ObjectDataModel(objAddress);
+            PosAngle = PositionAngle.Obj(objAddress);
         }
 
         protected override Image GetImage()
@@ -34,7 +36,7 @@ namespace STROOP.Map3
 
         protected override (double x, double y, double z, double angle) GetPositionAngle()
         {
-            return PositionAngle.Obj(ObjAddress).GetValues();
+            return PosAngle.GetValues();
         }
     }
 }
