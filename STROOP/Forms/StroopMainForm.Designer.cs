@@ -820,6 +820,8 @@ namespace STROOP
             this.trackBarMap2IconSize = new System.Windows.Forms.TrackBar();
             this.glControlMap2 = new OpenTK.GLControl();
             this.tabPageMap3 = new System.Windows.Forms.TabPage();
+            this.splitContainerMap3 = new STROOP.BetterSplitContainer();
+            this.glControlMap3 = new OpenTK.GLControl();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.checkedListBoxObjectSlotOverlaysToShow = new System.Windows.Forms.CheckedListBox();
             this.checkedListBoxSavedSettings = new System.Windows.Forms.CheckedListBox();
@@ -1501,32 +1503,16 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.splitContainerMap3 = new STROOP.BetterSplitContainer();
+            this.betterSplitContainer1 = new STROOP.BetterSplitContainer();
+            this.tabControlMap3 = new System.Windows.Forms.TabControl();
+            this.tabPageMap3Options = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.betterTextbox1 = new STROOP.BetterTextbox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.betterTextbox2 = new STROOP.BetterTextbox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.betterTextbox3 = new STROOP.BetterTextbox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
@@ -1534,8 +1520,49 @@ namespace STROOP
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.glControlMap3 = new OpenTK.GLControl();
+            this.tabPageMap3Controllers = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.betterTextbox1 = new STROOP.BetterTextbox();
+            this.betterTextbox2 = new STROOP.BetterTextbox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.button5 = new System.Windows.Forms.Button();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.betterTextbox3 = new STROOP.BetterTextbox();
+            this.betterTextbox5 = new STROOP.BetterTextbox();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.button6 = new System.Windows.Forms.Button();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.button7 = new System.Windows.Forms.Button();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.betterTextbox6 = new STROOP.BetterTextbox();
+            this.betterTextbox7 = new STROOP.BetterTextbox();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
+            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.button16 = new System.Windows.Forms.Button();
+            this.radioButton11 = new System.Windows.Forms.RadioButton();
+            this.button17 = new System.Windows.Forms.Button();
+            this.tabPageMap3Data = new System.Windows.Forms.TabPage();
+            this.mapTrackerFlowLayoutPanel1 = new STROOP.Controls.Map.Trackers.MapTrackerFlowLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1826,6 +1853,10 @@ namespace STROOP
             this.groupBoxMap2Bounds.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMap2IconSize)).BeginInit();
             this.tabPageMap3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap3)).BeginInit();
+            this.splitContainerMap3.Panel1.SuspendLayout();
+            this.splitContainerMap3.Panel2.SuspendLayout();
+            this.splitContainerMap3.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
             this.groupBoxPositionControllerRelativeAngle.SuspendLayout();
             this.groupBoxFPS.SuspendLayout();
@@ -1975,12 +2006,17 @@ namespace STROOP
             this.splitContainerSoundSoundEffect.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap3)).BeginInit();
-            this.splitContainerMap3.Panel1.SuspendLayout();
-            this.splitContainerMap3.Panel2.SuspendLayout();
-            this.splitContainerMap3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer1)).BeginInit();
+            this.betterSplitContainer1.Panel1.SuspendLayout();
+            this.betterSplitContainer1.Panel2.SuspendLayout();
+            this.betterSplitContainer1.SuspendLayout();
+            this.tabControlMap3.SuspendLayout();
+            this.tabPageMap3Options.SuspendLayout();
+            this.tabPageMap3Controllers.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.tabPageMap3Data.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -5711,7 +5747,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 492F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 493F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9441,7 +9477,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(418, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(421, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11504,6 +11540,42 @@ namespace STROOP
             this.tabPageMap3.TabIndex = 35;
             this.tabPageMap3.Text = "Map3";
             // 
+            // splitContainerMap3
+            // 
+            this.splitContainerMap3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMap3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMap3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerMap3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerMap3.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerMap3.Name = "splitContainerMap3";
+            // 
+            // splitContainerMap3.Panel1
+            // 
+            this.splitContainerMap3.Panel1.Controls.Add(this.betterSplitContainer1);
+            this.splitContainerMap3.Panel1MinSize = 0;
+            // 
+            // splitContainerMap3.Panel2
+            // 
+            this.splitContainerMap3.Panel2.BackColor = System.Drawing.Color.Black;
+            this.splitContainerMap3.Panel2.Controls.Add(this.glControlMap3);
+            this.splitContainerMap3.Panel2MinSize = 0;
+            this.splitContainerMap3.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerMap3.SplitterDistance = 355;
+            this.splitContainerMap3.SplitterWidth = 1;
+            this.splitContainerMap3.TabIndex = 18;
+            // 
+            // glControlMap3
+            // 
+            this.glControlMap3.BackColor = System.Drawing.Color.Black;
+            this.glControlMap3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.glControlMap3.Location = new System.Drawing.Point(0, 0);
+            this.glControlMap3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.glControlMap3.Name = "glControlMap3";
+            this.glControlMap3.Size = new System.Drawing.Size(557, 461);
+            this.glControlMap3.TabIndex = 0;
+            this.glControlMap3.VSync = false;
+            this.glControlMap3.Load += new System.EventHandler(this.glControlMap3_Load);
+            // 
             // tabPageOptions
             // 
             this.tabPageOptions.AutoScroll = true;
@@ -11814,7 +11886,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 686;
+            this.splitContainerMemory.SplitterDistance = 689;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11855,7 +11927,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(686, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(689, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -12072,7 +12144,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(686, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(689, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -12101,7 +12173,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(585, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(588, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12114,7 +12186,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(220, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(217, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -13268,7 +13340,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(306, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(289, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -13300,7 +13372,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(300, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(283, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -13356,7 +13428,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(300, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(283, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -17952,7 +18024,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -19136,7 +19208,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(29, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(30, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -19524,396 +19596,670 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // splitContainerMap3
+            // betterSplitContainer1
             // 
-            this.splitContainerMap3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerMap3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerMap3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerMap3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerMap3.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerMap3.Name = "splitContainerMap3";
+            this.betterSplitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.betterSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.betterSplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.betterSplitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.betterSplitContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.betterSplitContainer1.Name = "betterSplitContainer1";
+            this.betterSplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainerMap3.Panel1
+            // betterSplitContainer1.Panel1
             // 
-            this.splitContainerMap3.Panel1.Controls.Add(this.label8);
-            this.splitContainerMap3.Panel1.Controls.Add(this.betterTextbox1);
-            this.splitContainerMap3.Panel1.Controls.Add(this.label10);
-            this.splitContainerMap3.Panel1.Controls.Add(this.label11);
-            this.splitContainerMap3.Panel1.Controls.Add(this.label12);
-            this.splitContainerMap3.Panel1.Controls.Add(this.label13);
-            this.splitContainerMap3.Panel1.Controls.Add(this.label14);
-            this.splitContainerMap3.Panel1.Controls.Add(this.label15);
-            this.splitContainerMap3.Panel1.Controls.Add(this.label16);
-            this.splitContainerMap3.Panel1.Controls.Add(this.label17);
-            this.splitContainerMap3.Panel1.Controls.Add(this.label18);
-            this.splitContainerMap3.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox1);
-            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox2);
-            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox3);
-            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox4);
-            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox5);
-            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox6);
-            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox7);
-            this.splitContainerMap3.Panel1.Controls.Add(this.checkBox8);
-            this.splitContainerMap3.Panel1.Controls.Add(this.trackBar1);
-            this.splitContainerMap3.Panel1MinSize = 0;
+            this.betterSplitContainer1.Panel1.Controls.Add(this.tabControlMap3);
+            this.betterSplitContainer1.Panel1MinSize = 0;
             // 
-            // splitContainerMap3.Panel2
+            // betterSplitContainer1.Panel2
             // 
-            this.splitContainerMap3.Panel2.BackColor = System.Drawing.Color.Black;
-            this.splitContainerMap3.Panel2.Controls.Add(this.glControlMap3);
-            this.splitContainerMap3.Panel2MinSize = 0;
-            this.splitContainerMap3.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerMap3.SplitterDistance = 226;
-            this.splitContainerMap3.SplitterWidth = 1;
-            this.splitContainerMap3.TabIndex = 18;
+            this.betterSplitContainer1.Panel2.Controls.Add(this.mapTrackerFlowLayoutPanel1);
+            this.betterSplitContainer1.Panel2MinSize = 0;
+            this.betterSplitContainer1.Size = new System.Drawing.Size(355, 463);
+            this.betterSplitContainer1.SplitterDistance = 320;
+            this.betterSplitContainer1.SplitterWidth = 1;
+            this.betterSplitContainer1.TabIndex = 41;
+            // 
+            // tabControlMap3
+            // 
+            this.tabControlMap3.Controls.Add(this.tabPageMap3Options);
+            this.tabControlMap3.Controls.Add(this.tabPageMap3Controllers);
+            this.tabControlMap3.Controls.Add(this.tabPageMap3Data);
+            this.tabControlMap3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlMap3.Location = new System.Drawing.Point(0, 0);
+            this.tabControlMap3.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControlMap3.Name = "tabControlMap3";
+            this.tabControlMap3.SelectedIndex = 0;
+            this.tabControlMap3.Size = new System.Drawing.Size(353, 318);
+            this.tabControlMap3.TabIndex = 39;
+            // 
+            // tabPageMap3Options
+            // 
+            this.tabPageMap3Options.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMap3Options.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMap3Options.Controls.Add(this.comboBox1);
+            this.tabPageMap3Options.Controls.Add(this.comboBox2);
+            this.tabPageMap3Options.Controls.Add(this.label8);
+            this.tabPageMap3Options.Controls.Add(this.label10);
+            this.tabPageMap3Options.Controls.Add(this.button1);
+            this.tabPageMap3Options.Controls.Add(this.button2);
+            this.tabPageMap3Options.Controls.Add(this.button3);
+            this.tabPageMap3Options.Controls.Add(this.checkBox2);
+            this.tabPageMap3Options.Controls.Add(this.checkBox3);
+            this.tabPageMap3Options.Controls.Add(this.checkBox4);
+            this.tabPageMap3Options.Controls.Add(this.checkBox5);
+            this.tabPageMap3Options.Controls.Add(this.checkBox6);
+            this.tabPageMap3Options.Controls.Add(this.checkBox7);
+            this.tabPageMap3Options.Controls.Add(this.checkBox8);
+            this.tabPageMap3Options.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap3Options.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMap3Options.Name = "tabPageMap3Options";
+            this.tabPageMap3Options.Size = new System.Drawing.Size(345, 292);
+            this.tabPageMap3Options.TabIndex = 3;
+            this.tabPageMap3Options.Text = "Options";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Location = new System.Drawing.Point(88, 201);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(236, 21);
+            this.comboBox1.TabIndex = 13;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.Location = new System.Drawing.Point(88, 176);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(236, 21);
+            this.comboBox2.TabIndex = 13;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(2, 370);
+            this.label8.Location = new System.Drawing.Point(14, 204);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 13);
-            this.label8.TabIndex = 35;
-            this.label8.Text = "QPU [X:Y:Z]:";
-            // 
-            // betterTextbox1
-            // 
-            this.betterTextbox1.Location = new System.Drawing.Point(103, 323);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(87, 20);
-            this.betterTextbox1.TabIndex = 33;
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label8.Size = new System.Drawing.Size(68, 13);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Background:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 48);
+            this.label10.Location = new System.Drawing.Point(46, 179);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(54, 13);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Icon Size:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(73, 392);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 13);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "1.0000";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 392);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(46, 13);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "[9:1:1:2]";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(73, 370);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(37, 13);
-            this.label13.TabIndex = 11;
-            this.label13.Text = "[0:0:0]";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(73, 352);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(37, 13);
-            this.label14.TabIndex = 11;
-            this.label14.Text = "[0:0:0]";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(3, 18);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(81, 13);
-            this.label15.TabIndex = 33;
-            this.label15.Text = "Map Sub Name";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(3, 2);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 13);
-            this.label16.TabIndex = 33;
-            this.label16.Text = "Map Name";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 352);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(61, 13);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "PU [X:Y:Z]:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(17, 327);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(85, 13);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "Artificial Mario Y:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.betterTextbox2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.betterTextbox3);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button10);
-            this.groupBox1.Controls.Add(this.button11);
-            this.groupBox1.Controls.Add(this.button12);
-            this.groupBox1.Location = new System.Drawing.Point(8, 174);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(185, 146);
-            this.groupBox1.TabIndex = 31;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Map Bounds";
-            // 
-            // betterTextbox2
-            // 
-            this.betterTextbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox2.Location = new System.Drawing.Point(140, 70);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox2.TabIndex = 33;
-            this.betterTextbox2.Text = "50";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label10.Size = new System.Drawing.Size(36, 13);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Level:";
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(140, 16);
+            this.button1.Location = new System.Drawing.Point(124, 75);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 42);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Z+";
+            this.button1.Size = new System.Drawing.Size(135, 25);
+            this.button1.TabIndex = 40;
+            this.button1.Text = "Track Selected Objects";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(140, 100);
+            this.button2.Location = new System.Drawing.Point(124, 45);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(42, 42);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Z-";
+            this.button2.Size = new System.Drawing.Size(135, 25);
+            this.button2.TabIndex = 40;
+            this.button2.Text = "Clear All Trackers";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(87, 100);
+            this.button3.Location = new System.Drawing.Point(124, 15);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(42, 42);
-            this.button3.TabIndex = 32;
-            this.button3.Text = "DR";
+            this.button3.Size = new System.Drawing.Size(135, 25);
+            this.button3.TabIndex = 41;
+            this.button3.Text = "Add New Tracker";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // betterTextbox3
-            // 
-            this.betterTextbox3.Location = new System.Drawing.Point(45, 70);
-            this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox3.TabIndex = 27;
-            this.betterTextbox3.Text = "100";
-            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(87, 58);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(42, 42);
-            this.button4.TabIndex = 31;
-            this.button4.Text = "R";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(87, 16);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(42, 42);
-            this.button5.TabIndex = 30;
-            this.button5.Text = "UR";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(45, 16);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(42, 42);
-            this.button6.TabIndex = 29;
-            this.button6.Text = "U";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(45, 100);
-            this.button7.Margin = new System.Windows.Forms.Padding(0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(42, 42);
-            this.button7.TabIndex = 28;
-            this.button7.Text = "D";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(3, 100);
-            this.button10.Margin = new System.Windows.Forms.Padding(0);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(42, 42);
-            this.button10.TabIndex = 27;
-            this.button10.Text = "DL";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(3, 58);
-            this.button11.Margin = new System.Windows.Forms.Padding(0);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(42, 42);
-            this.button11.TabIndex = 26;
-            this.button11.Text = "L";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(3, 16);
-            this.button12.Margin = new System.Windows.Forms.Padding(0);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(42, 42);
-            this.button12.TabIndex = 25;
-            this.button12.Text = "UL";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(117, 72);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(82, 17);
-            this.checkBox1.TabIndex = 19;
-            this.checkBox1.Text = "Show Mario";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(117, 92);
+            this.checkBox2.Location = new System.Drawing.Point(14, 134);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(85, 17);
+            this.checkBox2.Size = new System.Drawing.Size(97, 17);
             this.checkBox2.TabIndex = 19;
-            this.checkBox2.Text = "Show HOLP";
+            this.checkBox2.Text = "Track Gridlines";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(8, 72);
+            this.checkBox3.Location = new System.Drawing.Point(14, 94);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(94, 17);
+            this.checkBox3.Size = new System.Drawing.Size(103, 17);
             this.checkBox3.TabIndex = 19;
-            this.checkBox3.Text = "Show Inactive";
+            this.checkBox3.Text = "Track Ceiling Tri";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(8, 92);
+            this.checkBox4.Location = new System.Drawing.Point(14, 74);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(94, 17);
+            this.checkBox4.Size = new System.Drawing.Size(95, 17);
             this.checkBox4.TabIndex = 19;
-            this.checkBox4.Text = "Show Floor Tri";
+            this.checkBox4.Text = "Track Floor Tri";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(8, 152);
+            this.checkBox5.Location = new System.Drawing.Point(14, 54);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(80, 17);
+            this.checkBox5.Size = new System.Drawing.Size(93, 17);
             this.checkBox5.TabIndex = 19;
-            this.checkBox5.Text = "Show Point";
+            this.checkBox5.Text = "Track Camera";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(8, 132);
+            this.checkBox6.Location = new System.Drawing.Point(14, 114);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(163, 17);
+            this.checkBox6.Size = new System.Drawing.Size(107, 17);
             this.checkBox6.TabIndex = 19;
-            this.checkBox6.Text = "Show Intended Next Position";
+            this.checkBox6.Text = "Track All Objects";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(8, 112);
+            this.checkBox7.Location = new System.Drawing.Point(14, 34);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(102, 17);
+            this.checkBox7.Size = new System.Drawing.Size(86, 17);
             this.checkBox7.TabIndex = 19;
-            this.checkBox7.Text = "Show Ceiling Tri";
+            this.checkBox7.Text = "Track HOLP";
             this.checkBox7.UseVisualStyleBackColor = true;
             // 
             // checkBox8
             // 
             this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(117, 112);
+            this.checkBox8.Location = new System.Drawing.Point(14, 14);
             this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(92, 17);
+            this.checkBox8.Size = new System.Drawing.Size(83, 17);
             this.checkBox8.TabIndex = 19;
-            this.checkBox8.Text = "Show Camera";
+            this.checkBox8.Text = "Track Mario";
             this.checkBox8.UseVisualStyleBackColor = true;
             // 
-            // trackBar1
+            // tabPageMap3Controllers
             // 
-            this.trackBar1.Location = new System.Drawing.Point(59, 38);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Minimum = 15;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 45);
-            this.trackBar1.TabIndex = 32;
-            this.trackBar1.TickFrequency = 10;
-            this.trackBar1.Value = 40;
+            this.tabPageMap3Controllers.AutoScroll = true;
+            this.tabPageMap3Controllers.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMap3Controllers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMap3Controllers.Controls.Add(this.groupBox1);
+            this.tabPageMap3Controllers.Controls.Add(this.groupBox2);
+            this.tabPageMap3Controllers.Controls.Add(this.groupBox3);
+            this.tabPageMap3Controllers.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap3Controllers.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMap3Controllers.Name = "tabPageMap3Controllers";
+            this.tabPageMap3Controllers.Size = new System.Drawing.Size(345, 292);
+            this.tabPageMap3Controllers.TabIndex = 1;
+            this.tabPageMap3Controllers.Text = "Controllers";
             // 
-            // glControlMap3
+            // groupBox1
             // 
-            this.glControlMap3.BackColor = System.Drawing.Color.Black;
-            this.glControlMap3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.glControlMap3.Location = new System.Drawing.Point(0, 0);
-            this.glControlMap3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.glControlMap3.Name = "glControlMap3";
-            this.glControlMap3.Size = new System.Drawing.Size(686, 461);
-            this.glControlMap3.TabIndex = 0;
-            this.glControlMap3.VSync = false;
-            this.glControlMap3.Load += new System.EventHandler(this.glControlMap3_Load);
+            this.groupBox1.Controls.Add(this.betterTextbox1);
+            this.groupBox1.Controls.Add(this.betterTextbox2);
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.radioButton3);
+            this.groupBox1.Controls.Add(this.radioButton4);
+            this.groupBox1.Controls.Add(this.radioButton5);
+            this.groupBox1.Location = new System.Drawing.Point(3, 165);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(258, 116);
+            this.groupBox1.TabIndex = 38;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Angle";
+            // 
+            // betterTextbox1
+            // 
+            this.betterTextbox1.Location = new System.Drawing.Point(165, 51);
+            this.betterTextbox1.Name = "betterTextbox1";
+            this.betterTextbox1.Size = new System.Drawing.Size(50, 20);
+            this.betterTextbox1.TabIndex = 34;
+            this.betterTextbox1.Text = "8192";
+            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox2
+            // 
+            this.betterTextbox2.Location = new System.Drawing.Point(67, 86);
+            this.betterTextbox2.Name = "betterTextbox2";
+            this.betterTextbox2.Size = new System.Drawing.Size(50, 20);
+            this.betterTextbox2.TabIndex = 34;
+            this.betterTextbox2.Text = "0";
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImage = global::STROOP.Properties.Resources.image_counterclockwise;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button4.Location = new System.Drawing.Point(127, 42);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(35, 35);
+            this.button4.TabIndex = 39;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(9, 69);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(55, 17);
+            this.radioButton1.TabIndex = 12;
+            this.radioButton1.Text = "49152";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.BackgroundImage = global::STROOP.Properties.Resources.image_clockwise;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button5.Location = new System.Drawing.Point(218, 42);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(35, 35);
+            this.button5.TabIndex = 39;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(9, 33);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(55, 17);
+            this.radioButton2.TabIndex = 12;
+            this.radioButton2.Text = "16384";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(9, 15);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(31, 17);
+            this.radioButton3.TabIndex = 11;
+            this.radioButton3.Text = "0";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(9, 87);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(63, 17);
+            this.radioButton4.TabIndex = 13;
+            this.radioButton4.Text = "Custom:";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Checked = true;
+            this.radioButton5.Location = new System.Drawing.Point(9, 51);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(55, 17);
+            this.radioButton5.TabIndex = 13;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "32768";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.betterTextbox3);
+            this.groupBox2.Controls.Add(this.betterTextbox5);
+            this.groupBox2.Controls.Add(this.radioButton6);
+            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Controls.Add(this.radioButton7);
+            this.groupBox2.Controls.Add(this.button7);
+            this.groupBox2.Controls.Add(this.radioButton8);
+            this.groupBox2.Controls.Add(this.button10);
+            this.groupBox2.Controls.Add(this.button11);
+            this.groupBox2.Controls.Add(this.button12);
+            this.groupBox2.Controls.Add(this.button13);
+            this.groupBox2.Controls.Add(this.button14);
+            this.groupBox2.Controls.Add(this.button15);
+            this.groupBox2.Location = new System.Drawing.Point(3, 84);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(258, 80);
+            this.groupBox2.TabIndex = 38;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Center";
+            // 
+            // betterTextbox3
+            // 
+            this.betterTextbox3.Location = new System.Drawing.Point(67, 50);
+            this.betterTextbox3.Name = "betterTextbox3";
+            this.betterTextbox3.Size = new System.Drawing.Size(50, 20);
+            this.betterTextbox3.TabIndex = 34;
+            this.betterTextbox3.Text = "0,0";
+            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox5
+            // 
+            this.betterTextbox5.Location = new System.Drawing.Point(163, 33);
+            this.betterTextbox5.Name = "betterTextbox5";
+            this.betterTextbox5.Size = new System.Drawing.Size(50, 20);
+            this.betterTextbox5.TabIndex = 34;
+            this.betterTextbox5.Text = "100";
+            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(9, 33);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(52, 17);
+            this.radioButton6.TabIndex = 12;
+            this.radioButton6.Text = "Origin";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.BackgroundImage = global::STROOP.Properties.Resources.image_downright;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button6.Location = new System.Drawing.Point(214, 55);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(25, 25);
+            this.button6.TabIndex = 39;
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Checked = true;
+            this.radioButton7.Location = new System.Drawing.Point(9, 15);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(60, 17);
+            this.radioButton7.TabIndex = 11;
+            this.radioButton7.TabStop = true;
+            this.radioButton7.Text = "Best Fit";
+            this.radioButton7.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.BackgroundImage = global::STROOP.Properties.Resources.image_right;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button7.Location = new System.Drawing.Point(214, 30);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(25, 25);
+            this.button7.TabIndex = 39;
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // radioButton8
+            // 
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Location = new System.Drawing.Point(9, 51);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(63, 17);
+            this.radioButton8.TabIndex = 13;
+            this.radioButton8.Text = "Custom:";
+            this.radioButton8.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.BackgroundImage = global::STROOP.Properties.Resources.image_upleft;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button10.Location = new System.Drawing.Point(137, 5);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(25, 25);
+            this.button10.TabIndex = 39;
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.BackgroundImage = global::STROOP.Properties.Resources.image_left;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button11.Location = new System.Drawing.Point(137, 30);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(25, 25);
+            this.button11.TabIndex = 39;
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.BackgroundImage = global::STROOP.Properties.Resources.image_downleft;
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button12.Location = new System.Drawing.Point(137, 55);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(25, 25);
+            this.button12.TabIndex = 39;
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            this.button13.BackgroundImage = global::STROOP.Properties.Resources.image_down;
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button13.Location = new System.Drawing.Point(176, 55);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(25, 25);
+            this.button13.TabIndex = 39;
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            this.button14.BackgroundImage = global::STROOP.Properties.Resources.image_upright;
+            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button14.Location = new System.Drawing.Point(214, 5);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(25, 25);
+            this.button14.TabIndex = 39;
+            this.button14.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.BackgroundImage = global::STROOP.Properties.Resources.image_up;
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button15.Location = new System.Drawing.Point(176, 5);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(25, 25);
+            this.button15.TabIndex = 39;
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.betterTextbox6);
+            this.groupBox3.Controls.Add(this.betterTextbox7);
+            this.groupBox3.Controls.Add(this.radioButton9);
+            this.groupBox3.Controls.Add(this.radioButton10);
+            this.groupBox3.Controls.Add(this.button16);
+            this.groupBox3.Controls.Add(this.radioButton11);
+            this.groupBox3.Controls.Add(this.button17);
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(258, 80);
+            this.groupBox3.TabIndex = 38;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Scale";
+            // 
+            // betterTextbox6
+            // 
+            this.betterTextbox6.Location = new System.Drawing.Point(67, 50);
+            this.betterTextbox6.Name = "betterTextbox6";
+            this.betterTextbox6.Size = new System.Drawing.Size(50, 20);
+            this.betterTextbox6.TabIndex = 34;
+            this.betterTextbox6.Text = "0";
+            this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox7
+            // 
+            this.betterTextbox7.Location = new System.Drawing.Point(165, 33);
+            this.betterTextbox7.Name = "betterTextbox7";
+            this.betterTextbox7.Size = new System.Drawing.Size(50, 20);
+            this.betterTextbox7.TabIndex = 34;
+            this.betterTextbox7.Text = "1.10";
+            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // radioButton9
+            // 
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.Location = new System.Drawing.Point(9, 33);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(104, 17);
+            this.radioButton9.TabIndex = 12;
+            this.radioButton9.Text = "Max Course Size";
+            this.radioButton9.UseVisualStyleBackColor = true;
+            // 
+            // radioButton10
+            // 
+            this.radioButton10.AutoSize = true;
+            this.radioButton10.Checked = true;
+            this.radioButton10.Location = new System.Drawing.Point(9, 15);
+            this.radioButton10.Name = "radioButton10";
+            this.radioButton10.Size = new System.Drawing.Size(95, 17);
+            this.radioButton10.TabIndex = 11;
+            this.radioButton10.TabStop = true;
+            this.radioButton10.Text = "Course Default";
+            this.radioButton10.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.BackgroundImage = global::STROOP.Properties.Resources.image_minus;
+            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button16.Location = new System.Drawing.Point(127, 24);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(35, 35);
+            this.button16.TabIndex = 39;
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // radioButton11
+            // 
+            this.radioButton11.AutoSize = true;
+            this.radioButton11.Location = new System.Drawing.Point(9, 51);
+            this.radioButton11.Name = "radioButton11";
+            this.radioButton11.Size = new System.Drawing.Size(63, 17);
+            this.radioButton11.TabIndex = 13;
+            this.radioButton11.Text = "Custom:";
+            this.radioButton11.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            this.button17.BackgroundImage = global::STROOP.Properties.Resources.image_plus;
+            this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button17.Location = new System.Drawing.Point(218, 24);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(35, 35);
+            this.button17.TabIndex = 39;
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // tabPageMap3Data
+            // 
+            this.tabPageMap3Data.AutoScroll = true;
+            this.tabPageMap3Data.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMap3Data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMap3Data.Controls.Add(this.label11);
+            this.tabPageMap3Data.Controls.Add(this.label13);
+            this.tabPageMap3Data.Controls.Add(this.label14);
+            this.tabPageMap3Data.Controls.Add(this.label15);
+            this.tabPageMap3Data.Controls.Add(this.label16);
+            this.tabPageMap3Data.Controls.Add(this.label17);
+            this.tabPageMap3Data.Controls.Add(this.label18);
+            this.tabPageMap3Data.Controls.Add(this.label19);
+            this.tabPageMap3Data.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap3Data.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMap3Data.Name = "tabPageMap3Data";
+            this.tabPageMap3Data.Size = new System.Drawing.Size(345, 292);
+            this.tabPageMap3Data.TabIndex = 2;
+            this.tabPageMap3Data.Text = "Data";
+            // 
+            // mapTrackerFlowLayoutPanel1
+            // 
+            this.mapTrackerFlowLayoutPanel1.AutoScroll = true;
+            this.mapTrackerFlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapTrackerFlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.mapTrackerFlowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.mapTrackerFlowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.mapTrackerFlowLayoutPanel1.Name = "mapTrackerFlowLayoutPanel1";
+            this.mapTrackerFlowLayoutPanel1.Size = new System.Drawing.Size(353, 140);
+            this.mapTrackerFlowLayoutPanel1.TabIndex = 0;
+            this.mapTrackerFlowLayoutPanel1.WrapContents = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(5, 67);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(69, 13);
+            this.label11.TabIndex = 56;
+            this.label11.Text = "QPU [X:Y:Z]:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(76, 87);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(40, 13);
+            this.label13.TabIndex = 37;
+            this.label13.Text = "1.0000";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(13, 87);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(46, 13);
+            this.label14.TabIndex = 38;
+            this.label14.Text = "[9:1:1:2]";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(76, 67);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.TabIndex = 39;
+            this.label15.Text = "[0:0:0]";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(76, 47);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(37, 13);
+            this.label16.TabIndex = 40;
+            this.label16.Text = "[0:0:0]";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(7, 23);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(81, 13);
+            this.label17.TabIndex = 52;
+            this.label17.Text = "Map Sub Name";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(7, 7);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(67, 13);
+            this.label18.TabIndex = 54;
+            this.label18.Text = "Map Name";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(13, 47);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(61, 13);
+            this.label19.TabIndex = 41;
+            this.label19.Text = "PU [X:Y:Z]:";
             // 
             // StroopMainForm
             // 
@@ -20279,6 +20625,10 @@ namespace STROOP
             this.groupBoxMap2Bounds.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMap2IconSize)).EndInit();
             this.tabPageMap3.ResumeLayout(false);
+            this.splitContainerMap3.Panel1.ResumeLayout(false);
+            this.splitContainerMap3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap3)).EndInit();
+            this.splitContainerMap3.ResumeLayout(false);
             this.tabPageOptions.ResumeLayout(false);
             this.tabPageOptions.PerformLayout();
             this.groupBoxPositionControllerRelativeAngle.ResumeLayout(false);
@@ -20482,14 +20832,22 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.splitContainerMap3.Panel1.ResumeLayout(false);
-            this.splitContainerMap3.Panel1.PerformLayout();
-            this.splitContainerMap3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap3)).EndInit();
-            this.splitContainerMap3.ResumeLayout(false);
+            this.betterSplitContainer1.Panel1.ResumeLayout(false);
+            this.betterSplitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer1)).EndInit();
+            this.betterSplitContainer1.ResumeLayout(false);
+            this.tabControlMap3.ResumeLayout(false);
+            this.tabPageMap3Options.ResumeLayout(false);
+            this.tabPageMap3Options.PerformLayout();
+            this.tabPageMap3Controllers.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.tabPageMap3Data.ResumeLayout(false);
+            this.tabPageMap3Data.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -21955,31 +22313,17 @@ namespace STROOP
         private Label labelSelectionMethod;
         private TabPage tabPageMap3;
         private BetterSplitContainer splitContainerMap3;
+        private OpenTK.GLControl glControlMap3;
+        private BetterSplitContainer betterSplitContainer1;
+        private TabControl tabControlMap3;
+        private TabPage tabPageMap3Options;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
         private Label label8;
-        private BetterTextbox betterTextbox1;
         private Label label10;
-        private Label label11;
-        private Label label12;
-        private Label label13;
-        private Label label14;
-        private Label label15;
-        private Label label16;
-        private Label label17;
-        private Label label18;
-        private GroupBox groupBox1;
-        private BetterTextbox betterTextbox2;
         private Button button1;
         private Button button2;
         private Button button3;
-        private BetterTextbox betterTextbox3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-        private Button button10;
-        private Button button11;
-        private Button button12;
-        private CheckBox checkBox1;
         private CheckBox checkBox2;
         private CheckBox checkBox3;
         private CheckBox checkBox4;
@@ -21987,8 +22331,49 @@ namespace STROOP
         private CheckBox checkBox6;
         private CheckBox checkBox7;
         private CheckBox checkBox8;
-        private TrackBar trackBar1;
-        private OpenTK.GLControl glControlMap3;
+        private TabPage tabPageMap3Controllers;
+        private GroupBox groupBox1;
+        private BetterTextbox betterTextbox1;
+        private BetterTextbox betterTextbox2;
+        private Button button4;
+        private RadioButton radioButton1;
+        private Button button5;
+        private RadioButton radioButton2;
+        private RadioButton radioButton3;
+        private RadioButton radioButton4;
+        private RadioButton radioButton5;
+        private GroupBox groupBox2;
+        private BetterTextbox betterTextbox3;
+        private BetterTextbox betterTextbox5;
+        private RadioButton radioButton6;
+        private Button button6;
+        private RadioButton radioButton7;
+        private Button button7;
+        private RadioButton radioButton8;
+        private Button button10;
+        private Button button11;
+        private Button button12;
+        private Button button13;
+        private Button button14;
+        private Button button15;
+        private GroupBox groupBox3;
+        private BetterTextbox betterTextbox6;
+        private BetterTextbox betterTextbox7;
+        private RadioButton radioButton9;
+        private RadioButton radioButton10;
+        private Button button16;
+        private RadioButton radioButton11;
+        private Button button17;
+        private TabPage tabPageMap3Data;
+        private Label label11;
+        private Label label13;
+        private Label label14;
+        private Label label15;
+        private Label label16;
+        private Label label17;
+        private Label label18;
+        private Label label19;
+        private MapTrackerFlowLayoutPanel mapTrackerFlowLayoutPanel1;
     }
 }
 
