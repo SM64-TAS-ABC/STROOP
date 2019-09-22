@@ -29,18 +29,16 @@ namespace STROOP.Managers
         Map3Object _ceilingMapObj;
         Map3Object _objMapObj;
 
-        Map3Gui _mapGui;
         bool _isLoaded = false;
 
-        public Map3Manager(Map3Gui mapGui)
+        public Map3Manager()
         {
-            _mapGui = mapGui;
         }
 
         public void Load()
         {
             // Create new graphics control
-            Config.Map3Graphics = new Map3Graphics(_mapGui.GLControl);
+            Config.Map3Graphics = new Map3Graphics(Config.Map3Gui.GLControl);
             Config.Map3Graphics.Load();
             _isLoaded = true;
 

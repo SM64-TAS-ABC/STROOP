@@ -290,7 +290,7 @@ namespace STROOP
                 ComboBoxMapColorMethod = comboBoxMapColorMethod
             };
 
-            Map3Gui map3Gui = new Map3Gui()
+            Config.Map3Gui = new Map3Gui()
             {
                 GLControl = glControlMap3,
 
@@ -454,7 +454,7 @@ namespace STROOP
             // Create managers
             Config.MapManager = new MapManager();
             Config.Map2Manager = new Map2Manager(map2Gui);
-            Config.Map3Manager = new Map3Manager(map3Gui);
+            Config.Map3Manager = new Map3Manager();
 
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
