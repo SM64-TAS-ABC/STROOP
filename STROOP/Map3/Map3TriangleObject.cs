@@ -29,7 +29,7 @@ namespace STROOP.Map3
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
-            GL.Color4(Color);
+            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
             GL.Begin(PrimitiveType.Triangles);
             GL.Vertex2(veriticesForControl[0].x, veriticesForControl[0].z);
             GL.Vertex2(veriticesForControl[1].x, veriticesForControl[1].z);
