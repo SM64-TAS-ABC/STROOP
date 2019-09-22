@@ -31,5 +31,11 @@ namespace STROOP.Map3
 
             return (xPosPixels, zPosPixels);
         }
+
+        public static SizeF ScaleImageSize(Size imageSize, float desiredSize)
+        {
+            float scale = Math.Max(imageSize.Height / desiredSize, imageSize.Width / desiredSize);
+            return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
+        }
     }
 }
