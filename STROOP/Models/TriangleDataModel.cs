@@ -248,6 +248,14 @@ namespace STROOP.Models
             return (GetMinZ() + GetMaxZ()) / 2.0;
         }
 
+        public List<(int, int)> Get2DVertices()
+        {
+            return new List<(int, int)>()
+            {
+                (X1, Z1), (X2, Z2), (X3, Z3)
+            };
+        }
+
         public int GetClosestVertex()
         {
             float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);

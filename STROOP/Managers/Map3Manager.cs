@@ -27,6 +27,7 @@ namespace STROOP.Managers
         Map3Object _holpMapObj;
         Map3Object _cameraMapObj;
         Map3Object _marioMapObj;
+        Map3Object _floorMapObj;
 
         Map3Gui _mapGui;
         bool _isLoaded = false;
@@ -49,6 +50,7 @@ namespace STROOP.Managers
             _holpMapObj = new Map3HolpObject(_mapGraphics);
             _cameraMapObj = new Map3CameraObject(_mapGraphics);
             _marioMapObj = new Map3MarioObject(_mapGraphics);
+            _floorMapObj = new Map3FloorObject(_mapGraphics);
 
             // Add map objects
             _mapGraphics.AddMapObject(_background);
@@ -57,6 +59,7 @@ namespace STROOP.Managers
             _mapGraphics.AddMapObject(_holpMapObj);
             _mapGraphics.AddMapObject(_cameraMapObj);
             _mapGraphics.AddMapObject(_marioMapObj);
+            _mapGraphics.AddMapObject(_floorMapObj);
         }
 
         public void Update(bool updateView)
