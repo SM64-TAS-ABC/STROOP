@@ -20,16 +20,13 @@ namespace STROOP.Map3
         {
             float relX = (float)PuUtilities.GetRelativeCoordinate(x);
             float relZ = (float)PuUtilities.GetRelativeCoordinate(z);
-
-            float xOffsetInGameUnits = relX - Config.Map3Graphics.XMin;
-            float xOffsetPixels = xOffsetInGameUnits * Config.Map3Graphics.ConversionScale;
-            float xPosPixels = Config.Map3Graphics.MapView.X + xOffsetPixels;
-
-            float zOffsetInGameUnits = relZ - Config.Map3Graphics.ZMin;
-            float zOffsetPixels = zOffsetInGameUnits * Config.Map3Graphics.ConversionScale;
-            float zPosPixels = Config.Map3Graphics.MapView.Y + zOffsetPixels;
-
-            return (xPosPixels, zPosPixels);
+            float xOffset = relX - Config.Map3Graphics.MapViewCenterXValue;
+            float zOffset = relZ - Config.Map3Graphics.MapViewCenterZValue;
+            float xOffsetPixels = xOffset * Config.Map3Graphics.MapViewScaleValue;
+            float zOffsetPixels = zOffset * Config.Map3Graphics.MapViewScaleValue;
+            float centerX = Config.Map3Graphics.Control.Width / 2 + xOffsetPixels;
+            float centerZ = Config.Map3Graphics.Control.Height / 2 + zOffsetPixels;
+            return (centerX, centerZ);
         }
 
         public static SizeF ScaleImageSize(Size imageSize, float desiredSize)
