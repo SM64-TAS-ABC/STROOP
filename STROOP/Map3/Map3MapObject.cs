@@ -28,6 +28,20 @@ namespace STROOP.Map3
         protected override (PointF loc, SizeF size) GetDimensions()
         {
             RectangleF coordinates = Map3Utilities.GetMapLayout().Coordinates;
+            float coordinatesCenterX = coordinates.X + coordinates.Width / 2;
+            float coordinatesCenterZ = coordinates.Y + coordinates.Height / 2;
+            float xOffset = coordinatesCenterX - Config.Map3Graphics.MapViewCenterXValue;
+            float zOffset = coordinatesCenterZ - Config.Map3Graphics.MapViewCenterZValue;
+            float xOffsetPixels = xOffset * Config.Map3Graphics.MapViewScaleValue;
+            float zOffsetPixels = zOffset * Config.Map3Graphics.MapViewScaleValue;
+            float centerX = Config.Map3Graphics.Control.Width / 2 + xOffsetPixels;
+            float centerZ = Config.Map3Graphics.Control.Height / 2 + zOffsetPixels;
+            float sizeX = coordinates.Width * Config.Map3Graphics.MapViewScaleValue;
+            float sizeZ = coordinates.Height * Config.Map3Graphics.MapViewScaleValue;
+            return (new PointF(centerX, centerZ), new SizeF(sizeX, sizeZ));
+
+            /*
+            RectangleF coordinates = Map3Utilities.GetMapLayout().Coordinates;
 
             float xScale = coordinates.Width / (Config.Map3Graphics.XMax - Config.Map3Graphics.XMin);
             float mapWidth = xScale * Config.Map3Graphics.MapView.Width;
@@ -45,6 +59,7 @@ namespace STROOP.Map3
 
             // Calculate where the map image should be drawn
             return (new PointF(xCenter, yCenter), new SizeF(mapWidth, mapHeight));
+            */
         }
     }
 }
