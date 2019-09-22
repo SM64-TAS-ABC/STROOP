@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using STROOP.Structs;
 using STROOP.Controls.Map;
+using STROOP.Structs.Configurations;
 
 namespace STROOP.Map3
 {
@@ -18,6 +19,14 @@ namespace STROOP.Map3
     {
         public readonly GLControl Control;
         private readonly List<Map3Object> _mapObjects = new List<Map3Object>();
+
+        private enum Map3Scale { CourseDefault, MaxCourseSize, Custom };
+        private enum Map3Center { BestFit, Origin, Custom };
+        private enum Map3Angle { Angle0, Angle16384, Angle32768, Angle49152, Custom };
+
+        private Map3Scale MapViewScale;
+        private Map3Center MapViewCenter;
+        private Map3Angle MapViewAngle;
 
         public RectangleF MapView;
         public int XMin = -8191;
@@ -82,6 +91,31 @@ namespace STROOP.Map3
 
         private void UpdateMapView()
         {
+            if (Config.Map3Gui.radioButtonMap3ControllersScaleCourseDefault.Checked)
+                MapViewScale = Map3Scale.CourseDefault;
+            else if (Config.Map3Gui.radioButtonMap3ControllersScaleMaxCourseSize.Checked)
+                MapViewScale = Map3Scale.MaxCourseSize;
+            else
+                MapViewScale = Map3Scale.Custom;
+
+            if (Config.Map3Gui.radioButtonMap3ControllersCenterBestFit.Checked)
+                MapViewCenter = Map3Center.BestFit;
+            else if (Config.Map3Gui.radioButtonMap3ControllersCenterOrigin.Checked)
+                MapViewCenter = Map3Center.Origin;
+            else
+                MapViewCenter = Map3Center.Custom;
+
+            if (Config.Map3Gui.radioButtonMap3ControllersAngle0.Checked)
+                MapViewAngle = Map3Angle.Angle0;
+            else if (Config.Map3Gui.radioButtonMap3ControllersAngle16384.Checked)
+                MapViewAngle = Map3Angle.Angle16384;
+            else if(Config.Map3Gui.radioButtonMap3ControllersAngle32768.Checked)
+                MapViewAngle = Map3Angle.Angle32768;
+            else if(Config.Map3Gui.radioButtonMap3ControllersAngle49152.Checked)
+                MapViewAngle = Map3Angle.Angle49152;
+            else
+                MapViewAngle = Map3Angle.Custom;
+
             // Calculate scale of "zoom" view (make sure image fits fully within the region, 
             // it is at a maximum size, and the aspect ration is maintained 
             float minLength = Math.Min(Control.Width, Control.Height);
