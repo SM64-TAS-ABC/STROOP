@@ -32,9 +32,6 @@ namespace STROOP.Map3
             float relZ = (float)PuUtilities.GetRelativeCoordinate(z);
             float angleDegrees = (float)MoreMath.AngleUnitsToDegrees(angle);
 
-            // Additional stats
-            int iconSize = 50;
-
             float xOffsetInGameUnits = relX - Config.Map3Graphics.XMin;
             float xOffsetPixels = xOffsetInGameUnits * Config.Map3Graphics.ConversionScale;
             float xPosPixels = Config.Map3Graphics.MapView.X + xOffsetPixels;
@@ -43,7 +40,7 @@ namespace STROOP.Map3
             float zOffsetPixels = zOffsetInGameUnits * Config.Map3Graphics.ConversionScale;
             float zPosPixels = Config.Map3Graphics.MapView.Y + zOffsetPixels;
 
-            SizeF size = ScaleImageSize(Image.Size, iconSize);
+            SizeF size = ScaleImageSize(Image.Size, Size);
 
             DrawTexture(new PointF(xPosPixels, zPosPixels), size, angleDegrees);
         }
