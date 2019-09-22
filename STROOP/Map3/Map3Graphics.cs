@@ -265,8 +265,12 @@ namespace STROOP.Map3
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
             Config.Map3Gui.radioButtonMap3ControllersCenterCustom.Checked = true;
-            float newCenterXValue = MapViewCenterXValue + xSign * parsed.Value;
-            float newCenterZValue = MapViewCenterZValue + zSign * parsed.Value;
+            float xOffset = xSign * parsed.Value;
+            float zOffset = zSign * parsed.Value;
+            (float xOffsetRotated, float zOffsetRotated) = ((float, float)) MoreMath.RotatePointAboutPointAnAngularDistance(
+                xOffset, zOffset, 0, 0, -1 * Config.Map3Graphics.MapViewAngleValue);
+            float newCenterXValue = MapViewCenterXValue + xOffsetRotated;
+            float newCenterZValue = MapViewCenterZValue + zOffsetRotated;
             Config.Map3Gui.textBoxMap3ControllersCenterCustom.SubmitText(newCenterXValue + "," + newCenterZValue);
         }
 
