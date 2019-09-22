@@ -41,6 +41,7 @@ namespace STROOP.Managers
             // Create new graphics control
             _mapGraphics = new Map3Graphics(_mapGui.GLControl);
             _mapGraphics.Load();
+            _isLoaded = true;
 
             _background = new Map3BackgroundObject(_mapGraphics);
             _gridlines = new Map3GridlinesObject(_mapGraphics);
@@ -48,8 +49,6 @@ namespace STROOP.Managers
             _holpMapObj = new Map3HolpObject(_mapGraphics);
             _cameraMapObj = new Map3CameraObject(_mapGraphics);
             _marioMapObj = new Map3MarioObject(_mapGraphics);
-
-            _isLoaded = true;
 
             // Add map objects
             _mapGraphics.AddMapObject(_background);
