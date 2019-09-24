@@ -880,7 +880,7 @@ namespace STROOP
             this.labelMap3DataMapSubName = new System.Windows.Forms.Label();
             this.labelMap3DataMapName = new System.Windows.Forms.Label();
             this.labelMap3DataPuCoordinates = new System.Windows.Forms.Label();
-            this.flowLayoutPanelMap3Trackers = new STROOP.Controls.Map.Trackers.MapTrackerFlowLayoutPanel();
+            this.flowLayoutPanelMap3Trackers = new Map3TrackerFlowLayoutPanel();
             this.glControlMap3 = new OpenTK.GLControl();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.checkedListBoxObjectSlotOverlaysToShow = new System.Windows.Forms.CheckedListBox();
@@ -22408,7 +22408,7 @@ namespace STROOP
         private Label labelMap3DataMapSubName;
         private Label labelMap3DataMapName;
         private Label labelMap3DataPuCoordinates;
-        private MapTrackerFlowLayoutPanel flowLayoutPanelMap3Trackers;
+        private Map3TrackerFlowLayoutPanel flowLayoutPanelMap3Trackers;
         private Button buttonMap3OptionsTrackMarkedObjects;
         private CheckBox checkBoxMap3OptionsTrackCurrentUnit;
         private CheckBox checkBoxMap3OptionsTrackUnitGridlines;

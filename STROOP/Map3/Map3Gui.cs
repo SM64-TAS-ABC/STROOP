@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpenTK.Graphics.OpenGL;
 using OpenTK;
+using STROOP.Controls.Map.Trackers;
 
 namespace STROOP.Map3
 {
     public class Map3Gui
     {
-        // GLControl
-        public GLControl GLControl;
+        // Major Controls
+        public GLControl glControlMap3;
+        public Map3TrackerFlowLayoutPanel flowLayoutPanelMap3Trackers;
 
 
 
