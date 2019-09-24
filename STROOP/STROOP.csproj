@@ -372,6 +372,8 @@
     <Compile Include="Map3\Map3CameraObject.cs" />
     <Compile Include="Map3\Map3FloorObject.cs" />
     <Compile Include="Map3\Map3ObjectObject.cs" />
+    <Compile Include="Map3\Map3CurrentCellObject.cs" />
+    <Compile Include="Map3\Map3QuadObject.cs" />
     <Compile Include="Map3\Map3UnitGridlinesObject.cs" />
     <Compile Include="Map3\Map3Utilities.cs" />
     <Compile Include="Map3\Map3TriangleObject.cs" />

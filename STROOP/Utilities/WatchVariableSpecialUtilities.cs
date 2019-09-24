@@ -2112,12 +2112,7 @@ namespace STROOP.Structs
             _dictionary.Add("MarioCell",
                 ((uint dummy) =>
                 {
-                    short marioX = (short)Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                    short marioZ = (short)Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                    int LEVEL_BOUNDARY_MAX = 0x2000;
-                    int CELL_SIZE = 0x400;
-                    int cellX = ((marioX + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
-                    int cellZ = ((marioZ + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
+                    (int cellX, int cellZ) = GetMarioCell();
                     return string.Format("X:{0},Z:{1}", cellX, cellZ);
                 },
                 DEFAULT_SETTER));
@@ -4057,7 +4052,7 @@ namespace STROOP.Structs
 
         // Triangle methods
 
-        static short lower_cell_index(short t)
+        private static short lower_cell_index(short t)
         {
             short index;
 
@@ -4080,7 +4075,7 @@ namespace STROOP.Structs
             return index;
         }
 
-        static short upper_cell_index(short t)
+        private static short upper_cell_index(short t)
         {
             short index;
 
@@ -4101,6 +4096,17 @@ namespace STROOP.Structs
 
             // Potentially < 0, but since lower index is >= 0, not exploitable
             return index;
+        }
+
+        public static (int cellX, int cellZ) GetMarioCell()
+        {
+            short marioX = (short)Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            short marioZ = (short)Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            int LEVEL_BOUNDARY_MAX = 0x2000;
+            int CELL_SIZE = 0x400;
+            int cellX = ((marioX + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
+            int cellZ = ((marioZ + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
+            return (cellX, cellZ);
         }
     }
 }
