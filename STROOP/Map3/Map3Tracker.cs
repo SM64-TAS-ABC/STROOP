@@ -21,7 +21,7 @@ namespace STROOP.Map3
     public partial class Map3Tracker : UserControl
     {
         public readonly List<Map3Object> MapObjectList;
-        public readonly List<MapSemaphore> SemaphoreList;
+        public readonly List<Map3Semaphore> SemaphoreList;
 
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
         private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
@@ -31,9 +31,11 @@ namespace STROOP.Map3
             List<Map3Semaphore> semaphoreList)
         {
             InitializeComponent();
+
+            MapObjectList = new List<Map3Object>(mapObjectList);
+            SemaphoreList = new List<Map3Semaphore>(semaphoreList);
+
             /*
-            MapObjectList = new List<MapObject>(mapObjectList);
-            SemaphoreList = new List<MapSemaphore>(semaphoreList);
             MapObjectList.ForEach(obj =>
             {
                 obj.Tracker = this;
@@ -279,17 +281,15 @@ namespace STROOP.Map3
 
         public void UpdateTracker()
         {
-            /*
             if (SemaphoreList.Any(semaphore => !semaphore.IsUsed))
             {
-                _flowLayoutPanel.RemoveControl(this);
+                Config.Map3Gui.flowLayoutPanelMap3Trackers.RemoveControl(this);
             }
-            */
         }
 
         public void CleanUp()
         {
-            //MapObjectList.ForEach(obj => obj.Tracked = false);
+            MapObjectList.ForEach(obj => obj.Dispose());
             SemaphoreList.ForEach(semaphore => semaphore.IsUsed = false);
         }
     }

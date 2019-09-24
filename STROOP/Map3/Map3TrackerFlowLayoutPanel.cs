@@ -75,6 +75,14 @@ namespace STROOP.Map3
             {
                 tracker.UpdateTracker();
             }
+
+            List<Map3Object> objs = new List<Map3Object>();
+            foreach (Map3Tracker tracker in Controls)
+            {
+                objs.AddRange(tracker.MapObjectList);
+            }
+            objs.ForEach(obj => obj.DrawOnControl());
+
             /*
             List<MapObject> listOrderOnTop = new List<MapObject>();
             List<MapObject> listOrderOnBottom = new List<MapObject>();
