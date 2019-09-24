@@ -91,7 +91,7 @@ namespace STROOP.Map3
             List<Map3Object> objs = new List<Map3Object>();
             foreach (Map3Tracker tracker in Controls)
             {
-                if (tracker.Visible)
+                if (tracker.IsVisible)
                 {
                     objs.AddRange(tracker.MapObjectList);
                 }

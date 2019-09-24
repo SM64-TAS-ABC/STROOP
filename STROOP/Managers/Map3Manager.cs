@@ -150,11 +150,12 @@ namespace STROOP.Managers
             if (!updateView) return;
             if (!_isLoaded) return;
 
-            UpdateData();
+            UpdateControlsBasedOnSemaphores();
+            UpdateDataTab();
             Config.Map3Gui.GLControl.Invalidate();
         }
 
-        private void UpdateData()
+        private void UpdateDataTab()
         {
             float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -184,6 +185,29 @@ namespace STROOP.Managers
             Config.Map3Gui.labelMap3DataQpuCoordinateValues.Text = string.Format("[{0}:{1}:{2}]", qpuX, qpuY, qpuZ);
             Config.Map3Gui.labelMap3DataId.Text = string.Format("[{0}:{1}:{2}:{3}]", level, area, loadingPoint, missionLayout);
             Config.Map3Gui.labelMap3DataYNorm.Text = yNorm?.ToString() ?? "(none)";
+        }
+
+        private void UpdateControlsBasedOnSemaphores()
+        {
+            Config.Map3Gui.checkBoxMap3OptionsTrackMario.Checked = Map3SemaphoreManager.Mario.IsUsed;
+            Config.Map3Gui.checkBoxMap3OptionsTrackHolp.Checked = Map3SemaphoreManager.Holp.IsUsed;
+            Config.Map3Gui.checkBoxMap3OptionsTrackCamera.Checked = Map3SemaphoreManager.Camera.IsUsed;
+            Config.Map3Gui.checkBoxMap3OptionsTrackFloorTri.Checked = Map3SemaphoreManager.FloorTri.IsUsed;
+            Config.Map3Gui.checkBoxMap3OptionsTrackCeilingTri.Checked = Map3SemaphoreManager.CeilingTri.IsUsed;
+            Config.Map3Gui.checkBoxMap3OptionsTrackCellGridlines.Checked = Map3SemaphoreManager.CellGridlines.IsUsed;
+            Config.Map3Gui.checkBoxMap3OptionsTrackCurrentCell.Checked = Map3SemaphoreManager.CurrentCell.IsUsed;
+            Config.Map3Gui.checkBoxMap3OptionsTrackUnitGridlines.Checked = Map3SemaphoreManager.UnitGridlines.IsUsed;
+            Config.Map3Gui.checkBoxMap3OptionsTrackCurrentUnit.Checked = Map3SemaphoreManager.CurrentUnit.IsUsed;
+
+            /*
+            List<uint> toBeUnselected = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
+                .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
+                .FindAll(index => index.HasValue)
+                .ConvertAll(index => index.Value)
+                .FindAll(index => !MapSemaphoreManager.Objects[index].IsUsed)
+                .ConvertAll(index => ObjectUtilities.GetObjectAddress(index));
+            toBeUnselected.ForEach(address => Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses.Remove(address));
+            */
         }
     }
 }

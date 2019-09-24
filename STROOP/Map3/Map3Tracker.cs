@@ -26,7 +26,7 @@ namespace STROOP.Map3
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
         private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
 
-        public bool Visible;
+        public bool IsVisible;
 
         public Map3Tracker(
             List<Map3Object> mapObjectList,
@@ -37,7 +37,7 @@ namespace STROOP.Map3
             MapObjectList = new List<Map3Object>(mapObjectList);
             SemaphoreList = new List<Map3Semaphore>(semaphoreList);
 
-            Visible = true;
+            IsVisible = true;
 
             /*
             MapObjectList.ForEach(obj =>
@@ -236,8 +236,8 @@ namespace STROOP.Map3
 
         private void pictureBoxEye_Click(object sender, EventArgs e)
         {
-            Visible = !Visible;
-            pictureBoxEye.BackgroundImage = Visible ? ImageEyeOpen : ImageEyeClosed;
+            IsVisible = !IsVisible;
+            pictureBoxEye.BackgroundImage = IsVisible ? ImageEyeOpen : ImageEyeClosed;
         }
 
         private void pictureBoxUpArrow_Click(object sender, EventArgs e)
