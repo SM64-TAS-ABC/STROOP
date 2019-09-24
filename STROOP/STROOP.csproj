@@ -385,6 +385,15 @@
     <Compile Include="Map3\Map3MarioObject.cs" />
     <Compile Include="Map3\Map3IconObject.cs" />
     <Compile Include="Map3\Map3Object.cs" />
+    <Compile Include="Map3\Map3Tracker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Map3\Map3Tracker.Designer.cs">
+      <DependentUpon>Map3Tracker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map3\Map3TrackerFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Models\PanModel.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
     <Compile Include="Structs\Configurations\TtcObjectConfig.cs" />
@@ -816,6 +825,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\VariableBitForm.resx">
       <DependentUpon>VariableBitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Map3\Map3Tracker.resx">
+      <DependentUpon>Map3Tracker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
