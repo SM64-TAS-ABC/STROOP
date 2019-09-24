@@ -279,7 +279,7 @@ namespace STROOP.Map3
             */
         }
 
-        public void UpdateTracker()
+        public void MaybeRemoveTracker()
         {
             if (SemaphoreList.Any(semaphore => !semaphore.IsUsed))
             {
