@@ -19,19 +19,29 @@ namespace STROOP.Map3
         public Map3UnitGridlinesObject()
             : base()
         {
-            Size = 3;
+            Size = 1;
             Color = Color.Black;
         }
 
         protected override List<(float x, float z)> GetVertices()
         {
-            return new List<(float x, float z)>()
+            int xMin = (int)Config.Map3Graphics.MapViewXMin - 10;
+            int xMax = (int)Config.Map3Graphics.MapViewXMax + 10;
+            int zMin = (int)Config.Map3Graphics.MapViewZMin - 10;
+            int zMax = (int)Config.Map3Graphics.MapViewZMax + 10;
+
+            List<(float x, float z)> vertices = new List<(float x, float z)>();
+            for (int x = xMin; x <= xMax; x += 1)
             {
-                (-8192, -8192),
-                (8192, 8192),
-                (-8192, 8192),
-                (8192, -8192),
-            };
+                vertices.Add((x, zMin));
+                vertices.Add((x, zMax));
+            }
+            for (int z = zMin; z <= zMax; z += 1)
+            {
+                vertices.Add((xMin, z));
+                vertices.Add((xMax, z));
+            }
+            return vertices;
         }
     }
 }

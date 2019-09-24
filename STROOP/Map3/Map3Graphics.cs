@@ -40,6 +40,12 @@ namespace STROOP.Map3
         public float MapViewCenterZValue = DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
         public float MapViewAngleValue = DEFAULT_MAP_VIEW_ANGLE_VALUE;
 
+        public float MapViewRadius { get => (float)MoreMath.GetHypotenuse(Control.Width / 2, Control.Height / 2) / MapViewScaleValue; }
+        public float MapViewXMin { get => MapViewCenterXValue - MapViewRadius; }
+        public float MapViewXMax { get => MapViewCenterXValue + MapViewRadius; }
+        public float MapViewZMin { get => MapViewCenterZValue - MapViewRadius; }
+        public float MapViewZMax { get => MapViewCenterZValue + MapViewRadius; }
+
         public static readonly int MAX_COURSE_SIZE_X_MIN = -8191;
         public static readonly int MAX_COURSE_SIZE_X_MAX = 8192;
         public static readonly int MAX_COURSE_SIZE_Z_MIN = -8191;
