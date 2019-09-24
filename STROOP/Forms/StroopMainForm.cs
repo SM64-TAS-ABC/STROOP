@@ -299,8 +299,11 @@ namespace STROOP
                 checkBoxMap3OptionsTrackCamera = checkBoxMap3OptionsTrackCamera,
                 checkBoxMap3OptionsTrackFloorTri = checkBoxMap3OptionsTrackFloorTri,
                 checkBoxMap3OptionsTrackCeilingTri = checkBoxMap3OptionsTrackCeilingTri,
-                checkBoxMap3OptionsTrackGridlines = checkBoxMap3OptionsTrackGridlines,
-                
+                checkBoxMap3OptionsTrackCellGridlines = checkBoxMap3OptionsTrackCellGridlines,
+                checkBoxMap3OptionsTrackCurrentCell = checkBoxMap3OptionsTrackCurrentCell,
+                checkBoxMap3OptionsTrackUnitGridlines = checkBoxMap3OptionsTrackUnitGridlines,
+                checkBoxMap3OptionsTrackCurrentUnit = checkBoxMap3OptionsTrackCurrentUnit,
+
                 buttonMap3OptionsAddNewTracker = buttonMap3OptionsAddNewTracker,
                 buttonMap3OptionsClearAllTrackers = buttonMap3OptionsClearAllTrackers,
                 buttonMap3OptionsTrackAllObjects = buttonMap3OptionsTrackAllObjects,

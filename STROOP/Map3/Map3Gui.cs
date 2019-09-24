@@ -22,7 +22,10 @@ namespace STROOP.Map3
         public CheckBox checkBoxMap3OptionsTrackCamera;
         public CheckBox checkBoxMap3OptionsTrackFloorTri;
         public CheckBox checkBoxMap3OptionsTrackCeilingTri;
-        public CheckBox checkBoxMap3OptionsTrackGridlines;
+        public CheckBox checkBoxMap3OptionsTrackCellGridlines;
+        public CheckBox checkBoxMap3OptionsTrackCurrentCell;
+        public CheckBox checkBoxMap3OptionsTrackUnitGridlines;
+        public CheckBox checkBoxMap3OptionsTrackCurrentUnit;
 
         // Options - Buttons
         public Button buttonMap3OptionsAddNewTracker;
