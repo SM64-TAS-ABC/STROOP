@@ -91,7 +91,10 @@ namespace STROOP.Map3
             List<Map3Object> objs = new List<Map3Object>();
             foreach (Map3Tracker tracker in Controls)
             {
-                objs.AddRange(tracker.MapObjectList);
+                if (tracker.Visible)
+                {
+                    objs.AddRange(tracker.MapObjectList);
+                }
             }
             objs.ForEach(obj => obj.DrawOnControl());
 

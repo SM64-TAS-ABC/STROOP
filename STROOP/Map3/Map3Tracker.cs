@@ -26,6 +26,8 @@ namespace STROOP.Map3
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
         private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
 
+        public bool Visible;
+
         public Map3Tracker(
             List<Map3Object> mapObjectList,
             List<Map3Semaphore> semaphoreList)
@@ -34,6 +36,8 @@ namespace STROOP.Map3
 
             MapObjectList = new List<Map3Object>(mapObjectList);
             SemaphoreList = new List<Map3Semaphore>(semaphoreList);
+
+            Visible = true;
 
             /*
             MapObjectList.ForEach(obj =>
@@ -227,33 +231,23 @@ namespace STROOP.Map3
 
         private void pictureBoxRedX_Click(object sender, EventArgs e)
         {
-            /*
-            _flowLayoutPanel.RemoveControl(this);
-            */
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.RemoveControl(this);
         }
 
         private void pictureBoxEye_Click(object sender, EventArgs e)
         {
-            /*
-            bool oldShown = MapObjectList.Any(obj => obj.Shown);
-            bool newShown = !oldShown;
-            MapObjectList.ForEach(obj => obj.Shown = newShown);
-            pictureBoxEye.BackgroundImage = newShown ? ImageEyeOpen : ImageEyeClosed;
-            */
+            Visible = !Visible;
+            pictureBoxEye.BackgroundImage = Visible ? ImageEyeOpen : ImageEyeClosed;
         }
 
         private void pictureBoxUpArrow_Click(object sender, EventArgs e)
         {
-            /*
-            _flowLayoutPanel.MoveUpControl(this);
-            */
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.MoveUpControl(this);
         }
 
         private void pictureBoxDownArrow_Click(object sender, EventArgs e)
         {
-            /*
-            _flowLayoutPanel.MoveDownControl(this);
-            */
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.MoveDownControl(this);
         }
 
         public void UpdateName(string name)
