@@ -36,5 +36,10 @@ namespace STROOP.Map3
         {
             return "Floor Tri";
         }
+
+        public override Image GetImage()
+        {
+            return Config.ObjectAssociations.TriangleFloorImage;
+        }
     }
 }

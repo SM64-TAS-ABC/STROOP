@@ -20,7 +20,7 @@ namespace STROOP.Map3
         {
         }
 
-        protected override Image GetImage()
+        public override Image GetImage()
         {
             return Map3Utilities.GetMapLayout().MapImage;
         }

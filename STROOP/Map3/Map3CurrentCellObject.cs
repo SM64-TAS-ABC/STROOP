@@ -43,5 +43,10 @@ namespace STROOP.Map3
         {
             return "Current Cell";
         }
+
+        public override Image GetImage()
+        {
+            return Config.ObjectAssociations.EmptyImage;
+        }
     }
 }

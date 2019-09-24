@@ -48,5 +48,10 @@ namespace STROOP.Map3
         {
             return "Unit Gridlines";
         }
+
+        public override Image GetImage()
+        {
+            return Config.ObjectAssociations.EmptyImage;
+        }
     }
 }

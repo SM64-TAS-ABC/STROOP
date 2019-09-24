@@ -36,5 +36,10 @@ namespace STROOP.Map3
         {
             return "Ceiling Tri";
         }
+
+        public override Image GetImage()
+        {
+            return Config.ObjectAssociations.TriangleCeilingImage;
+        }
     }
 }

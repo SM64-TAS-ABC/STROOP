@@ -28,7 +28,7 @@ namespace STROOP.Map3
             PosAngle = PositionAngle.Obj(objAddress);
         }
 
-        protected override Image GetImage()
+        public override Image GetImage()
         {
             Obj.Update();
             return Obj.BehaviorAssociation.MapImage;

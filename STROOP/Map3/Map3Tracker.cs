@@ -280,6 +280,7 @@ namespace STROOP.Map3
         public void UpdateControl()
         {
             textBoxName.Text = string.Join(", ", MapObjectList.ConvertAll(obj => obj.GetName()));
+            pictureBoxPicture.Image = MapObjectList[0].GetImage(); // TODO fix this
 
             if (SemaphoreList.Any(semaphore => !semaphore.IsUsed))
             {

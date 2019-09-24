@@ -20,7 +20,7 @@ namespace STROOP.Map3
         {
         }
 
-        protected override Image GetImage()
+        public override Image GetImage()
         {
             object backgroundChoice = Config.Map3Gui.comboBoxMap3OptionsBackground.SelectedItem;
             if (backgroundChoice is BackgroundImage background)

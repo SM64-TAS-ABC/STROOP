@@ -47,8 +47,6 @@ namespace STROOP.Map3
             GL.End();
         }
 
-        protected abstract Image GetImage();
-
         protected void UpdateImage()
         {
             Image image = GetImage();
