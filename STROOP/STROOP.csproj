@@ -364,6 +364,7 @@
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Map3\Map3CeilingObject.cs" />
+    <Compile Include="Map3\Map3CurrentUnitObject.cs" />
     <Compile Include="Map3\Map3Graphics.cs" />
     <Compile Include="Map3\Map3LineObject.cs" />
     <Compile Include="Map3\Map3CellGridlinesObject.cs" />

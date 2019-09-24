@@ -22,6 +22,7 @@ namespace STROOP.Managers
         Map3Object _backgroundMapObj;
         Map3Object _mapMapObj;
         Map3Object _currentCellMapObj;
+        Map3Object _currentUnitMapObj;
         Map3Object _cellGridlinesMapObj;
         Map3Object _unitGridlinesMapObj;
         Map3Object _holpMapObj;
@@ -47,6 +48,7 @@ namespace STROOP.Managers
             _backgroundMapObj = new Map3BackgroundObject();
             _mapMapObj = new Map3MapObject();
             _currentCellMapObj = new Map3CurrentCellObject();
+            _currentUnitMapObj = new Map3CurrentUnitObject();
             _cellGridlinesMapObj = new Map3CellGridlinesObject();
             _unitGridlinesMapObj = new Map3UnitGridlinesObject();
             _holpMapObj = new Map3HolpObject();
@@ -60,6 +62,7 @@ namespace STROOP.Managers
             Config.Map3Graphics.AddMapObject(_backgroundMapObj);
             Config.Map3Graphics.AddMapObject(_mapMapObj);
             Config.Map3Graphics.AddMapObject(_currentCellMapObj);
+            Config.Map3Graphics.AddMapObject(_currentUnitMapObj);
             Config.Map3Graphics.AddMapObject(_cellGridlinesMapObj);
             Config.Map3Graphics.AddMapObject(_unitGridlinesMapObj);
             Config.Map3Graphics.AddMapObject(_holpMapObj);
