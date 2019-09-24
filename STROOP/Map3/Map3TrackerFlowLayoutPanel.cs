@@ -19,6 +19,15 @@ namespace STROOP.Map3
     {
         private readonly Object _objectLock = new Object();
 
+        private Map3Object _mapObjMap;
+        private Map3Object _mapObjBackground;
+
+        public void Initialize(Map3Object mapObjMap, Map3Object mapObjBackground)
+        {
+            _mapObjMap = mapObjMap;
+            _mapObjBackground = mapObjBackground;
+        }
+
         public void MoveUpControl(Map3Tracker mapTracker)
         {
             lock (_objectLock)
@@ -68,13 +77,16 @@ namespace STROOP.Map3
                 }
             }
         }
-        
+
         public void UpdateControls()
         {
             foreach (Map3Tracker tracker in Controls)
             {
                 tracker.UpdateTracker();
             }
+
+            _mapObjBackground.DrawOnControl();
+            _mapObjMap.DrawOnControl();
 
             List<Map3Object> objs = new List<Map3Object>();
             foreach (Map3Tracker tracker in Controls)

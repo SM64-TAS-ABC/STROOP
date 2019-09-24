@@ -13,7 +13,7 @@ using OpenTK;
 
 namespace STROOP.Map3
 {
-    public abstract class Map3Object : IDisposable
+    public abstract class Map3Object
     {
         public float Size = 50;
         public double Opacity = 1;
@@ -25,7 +25,5 @@ namespace STROOP.Map3
         }
 
         public abstract void DrawOnControl();
-
-        public virtual void Dispose() { }
     }
 }

@@ -44,25 +44,15 @@ namespace STROOP.Managers
             Config.Map3Graphics.Load();
             _isLoaded = true;
 
-            // Add map objects
-            Config.Map3Graphics.AddMapObject(_mapObjBackground);
-            Config.Map3Graphics.AddMapObject(_mapObjMap);
-            Config.Map3Graphics.AddMapObject(_mapObjCurrentCell);
-            Config.Map3Graphics.AddMapObject(_mapObjCurrentUnit);
-            Config.Map3Graphics.AddMapObject(_mapObjCellGridlines);
-            Config.Map3Graphics.AddMapObject(_mapObjUnitGridlines);
-            Config.Map3Graphics.AddMapObject(_mapObjHolp);
-            Config.Map3Graphics.AddMapObject(_mapObjCamera);
-            Config.Map3Graphics.AddMapObject(_mapObjMario);
-            Config.Map3Graphics.AddMapObject(_mapObjFloorTri);
-            Config.Map3Graphics.AddMapObject(_mapObjCeilingTri);
-
             InitializeControls();
             InitializeSemaphores();
         }
 
         private void InitializeControls()
         {
+            // FlowLayoutPanel
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.Initialize(_mapObjMap, _mapObjBackground);
+
             // ComboBox for Level
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
             List<object> mapLayoutChoices = new List<object>() { "Recommended" };

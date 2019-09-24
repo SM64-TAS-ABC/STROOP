@@ -289,7 +289,6 @@ namespace STROOP.Map3
 
         public void CleanUp()
         {
-            MapObjectList.ForEach(obj => obj.Dispose());
             SemaphoreList.ForEach(semaphore => semaphore.IsUsed = false);
         }
     }

@@ -18,8 +18,6 @@ namespace STROOP.Map3
 {
     public class Map3Graphics
     {
-        private readonly List<Map3Object> _mapObjects = new List<Map3Object>();
-
         private enum Map3Scale { CourseDefault, MaxCourseSize, Custom };
         private enum Map3Center { BestFit, Origin, Custom };
         private enum Map3Angle { Angle0, Angle16384, Angle32768, Angle49152, Custom };
@@ -86,12 +84,7 @@ namespace STROOP.Map3
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.MatrixMode(MatrixMode.Modelview);
 
-            // Loop through and draw all map objects
-            foreach (Map3Object mapObj in _mapObjects)
-            {
-                // Draw the map object
-                mapObj.DrawOnControl();
-            }
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.UpdateControls();
 
             Config.Map3Gui.GLControl.SwapBuffers();
         }
@@ -287,17 +280,6 @@ namespace STROOP.Map3
             float newAngleValue = MapViewAngleValue + sign * parsed.Value;
             newAngleValue = (float)MoreMath.NormalizeAngleDouble(newAngleValue);
             Config.Map3Gui.textBoxMap3ControllersAngleCustom.SubmitText(newAngleValue.ToString());
-        }
-
-        public void AddMapObject(Map3Object mapObj)
-        {
-            _mapObjects.Add(mapObj);
-        }
-
-        public void RemoveMapObject(Map3Object mapObj)
-        {
-            _mapObjects.Remove(mapObj);
-            mapObj?.Dispose();
         }
     }
 }
