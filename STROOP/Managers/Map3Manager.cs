@@ -106,9 +106,9 @@ namespace STROOP.Managers
 
             // Buttons for Changing Angle
             Config.Map3Gui.buttonMap3ControllersAngleCCW.Click += (sender, e) =>
-                Config.Map3Graphics.ChangeAngle(1, Config.Map3Gui.textBoxMap3ControllersAngleChange.Text);
-            Config.Map3Gui.buttonMap3ControllersAngleCW.Click += (sender, e) =>
                 Config.Map3Graphics.ChangeAngle(-1, Config.Map3Gui.textBoxMap3ControllersAngleChange.Text);
+            Config.Map3Gui.buttonMap3ControllersAngleCW.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeAngle(1, Config.Map3Gui.textBoxMap3ControllersAngleChange.Text);
 
             // TextBoxes for Custom Values
             Config.Map3Gui.textBoxMap3ControllersScaleCustom.AddEnterAction(() =>

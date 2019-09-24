@@ -29,7 +29,7 @@ namespace STROOP.Map3
                     zOffset,
                     0,
                     0,
-                    Config.Map3Graphics.MapViewAngleValue);
+                    -1 * Config.Map3Graphics.MapViewAngleValue);
             float xOffsetPixels = xOffsetRotated * Config.Map3Graphics.MapViewScaleValue;
             float zOffsetPixels = zOffsetRotated * Config.Map3Graphics.MapViewScaleValue;
             float centerX = Config.Map3Graphics.Control.Width / 2 + xOffsetPixels;
@@ -40,7 +40,7 @@ namespace STROOP.Map3
         /** Takes in in-game angle, outputs control angle. */
         public static float ConvertAngleForControl(double angle)
         {
-            angle += Config.Map3Graphics.MapViewAngleValue - 32768;
+            angle += 32768 - Config.Map3Graphics.MapViewAngleValue;
             if (double.IsNaN(angle)) angle = 0;
             return (float)MoreMath.AngleUnitsToDegrees(angle);
         }
