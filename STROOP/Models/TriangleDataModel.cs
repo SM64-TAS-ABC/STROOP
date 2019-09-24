@@ -248,9 +248,9 @@ namespace STROOP.Models
             return (GetMinZ() + GetMaxZ()) / 2.0;
         }
 
-        public List<(int, int)> Get2DVertices()
+        public List<(float, float)> Get2DVertices()
         {
-            return new List<(int, int)>()
+            return new List<(float, float)>()
             {
                 (X1, Z1), (X2, Z2), (X3, Z3)
             };

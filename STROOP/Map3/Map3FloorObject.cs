@@ -24,12 +24,12 @@ namespace STROOP.Map3
             Opacity = 0.5;
         }
 
-        public override void DrawOnControl()
+        protected override List<(float x, float z)> GetVertices()
         {
             uint triAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-            if (triAddress == 0) return;
+            if (triAddress == 0) return new List<(float x, float z)>();
             TriangleDataModel tri = new TriangleDataModel(triAddress);
-            DrawTriangle(tri.Get2DVertices());
+            return tri.Get2DVertices();
         }
     }
 }

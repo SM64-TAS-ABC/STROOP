@@ -21,8 +21,9 @@ namespace STROOP.Map3
         {
         }
 
-        protected void DrawTriangle(List<(int x, int z)> vertices)
+        public override void DrawOnControl()
         {
+            List<(float x, float z)> vertices = GetVertices();
             List<(float x, float z)> veriticesForControl =
                 vertices.ConvertAll(vertex => Map3Utilities.ConvertCoordsForControl(vertex.x, vertex.z));
 
@@ -31,12 +32,15 @@ namespace STROOP.Map3
             GL.LoadIdentity();
             GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
             GL.Begin(PrimitiveType.Triangles);
-            GL.Vertex2(veriticesForControl[0].x, veriticesForControl[0].z);
-            GL.Vertex2(veriticesForControl[1].x, veriticesForControl[1].z);
-            GL.Vertex2(veriticesForControl[2].x, veriticesForControl[2].z);
+            foreach ((float x, float z) in veriticesForControl)
+            {
+                GL.Vertex2(x, z);
+            }
             GL.End();
             GL.Color4(1, 1, 1, 1.0f);
         }
+
+        protected abstract List<(float x, float z)> GetVertices();
 
         public override void Dispose()
         {
