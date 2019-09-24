@@ -1,5 +1,6 @@
 using STROOP.Controls;
 using STROOP.Controls.Map.Trackers;
+using STROOP.Map3;
 using System.Windows.Forms;
 
 namespace STROOP

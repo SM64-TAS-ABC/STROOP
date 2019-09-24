@@ -16,18 +16,18 @@ using STROOP.Interfaces;
 using STROOP.Controls.Map.Objects;
 using STROOP.Controls.Map.Semaphores;
 
-namespace STROOP.Controls.Map.Trackers
+namespace STROOP.Map3
 {
     public partial class Map3Tracker : UserControl
     {
-        public readonly List<MapObject> MapObjectList;
+        public readonly List<Map3Object> MapObjectList;
         public readonly List<MapSemaphore> SemaphoreList;
 
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
         private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
 
         public Map3Tracker(
-            List<MapObject> mapObjectList,
+            List<Map3Object> mapObjectList,
             List<MapSemaphore> semaphoreList)
         {
             InitializeComponent();
@@ -289,7 +289,7 @@ namespace STROOP.Controls.Map.Trackers
 
         public void CleanUp()
         {
-            MapObjectList.ForEach(obj => obj.Tracked = false);
+            //MapObjectList.ForEach(obj => obj.Tracked = false);
             SemaphoreList.ForEach(semaphore => semaphore.IsUsed = false);
         }
     }

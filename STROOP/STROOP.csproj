@@ -394,6 +394,8 @@
     <Compile Include="Map3\Map3TrackerFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Map3\Map3Semaphore.cs" />
+    <Compile Include="Map3\Map3SemaphoreManager.cs" />
     <Compile Include="Models\PanModel.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
     <Compile Include="Structs\Configurations\TtcObjectConfig.cs" />

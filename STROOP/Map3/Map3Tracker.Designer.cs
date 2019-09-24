@@ -1,4 +1,7 @@
-﻿namespace STROOP.Controls.Map.Trackers
+﻿using STROOP.Controls;
+using STROOP.Controls.Map.Trackers;
+
+namespace STROOP.Map3
 {
     partial class Map3Tracker
     {
