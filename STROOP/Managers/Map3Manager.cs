@@ -19,20 +19,19 @@ namespace STROOP.Managers
 {
     public class Map3Manager
     {
-        Map3Object _backgroundMapObj;
-        Map3Object _mapMapObj;
-        Map3Object _currentCellMapObj;
-        Map3Object _currentUnitMapObj;
-        Map3Object _cellGridlinesMapObj;
-        Map3Object _unitGridlinesMapObj;
-        Map3Object _holpMapObj;
-        Map3Object _cameraMapObj;
-        Map3Object _marioMapObj;
-        Map3Object _floorMapObj;
-        Map3Object _ceilingMapObj;
-        Map3Object _objMapObj;
+        private Map3Object _mapObjBackground = new Map3BackgroundObject();
+        private Map3Object _mapObjMap = new Map3MapObject();
+        private Map3Object _mapObjCurrentCell = new Map3CurrentCellObject();
+        private Map3Object _mapObjCurrentUnit = new Map3CurrentUnitObject();
+        private Map3Object _mapObjCellGridlines = new Map3CellGridlinesObject();
+        private Map3Object _mapObjUnitGridlines = new Map3UnitGridlinesObject();
+        private Map3Object _mapObjHolp = new Map3HolpObject();
+        private Map3Object _mapObjCamera = new Map3CameraObject();
+        private Map3Object _mapObjMario = new Map3MarioObject();
+        private Map3Object _mapObjFloorTri = new Map3FloorObject();
+        private Map3Object _mapObjCeilingTri = new Map3CeilingObject();
 
-        bool _isLoaded = false;
+        private bool _isLoaded = false;
 
         public Map3Manager()
         {
@@ -45,34 +44,21 @@ namespace STROOP.Managers
             Config.Map3Graphics.Load();
             _isLoaded = true;
 
-            _backgroundMapObj = new Map3BackgroundObject();
-            _mapMapObj = new Map3MapObject();
-            _currentCellMapObj = new Map3CurrentCellObject();
-            _currentUnitMapObj = new Map3CurrentUnitObject();
-            _cellGridlinesMapObj = new Map3CellGridlinesObject();
-            _unitGridlinesMapObj = new Map3UnitGridlinesObject();
-            _holpMapObj = new Map3HolpObject();
-            _cameraMapObj = new Map3CameraObject();
-            _marioMapObj = new Map3MarioObject();
-            _floorMapObj = new Map3FloorObject();
-            _ceilingMapObj = new Map3CeilingObject();
-            _objMapObj = new Map3ObjectObject(0x803408C8);
-
             // Add map objects
-            Config.Map3Graphics.AddMapObject(_backgroundMapObj);
-            Config.Map3Graphics.AddMapObject(_mapMapObj);
-            Config.Map3Graphics.AddMapObject(_currentCellMapObj);
-            Config.Map3Graphics.AddMapObject(_currentUnitMapObj);
-            Config.Map3Graphics.AddMapObject(_cellGridlinesMapObj);
-            Config.Map3Graphics.AddMapObject(_unitGridlinesMapObj);
-            Config.Map3Graphics.AddMapObject(_holpMapObj);
-            Config.Map3Graphics.AddMapObject(_cameraMapObj);
-            Config.Map3Graphics.AddMapObject(_marioMapObj);
-            Config.Map3Graphics.AddMapObject(_floorMapObj);
-            Config.Map3Graphics.AddMapObject(_ceilingMapObj);
-            Config.Map3Graphics.AddMapObject(_objMapObj);
+            Config.Map3Graphics.AddMapObject(_mapObjBackground);
+            Config.Map3Graphics.AddMapObject(_mapObjMap);
+            Config.Map3Graphics.AddMapObject(_mapObjCurrentCell);
+            Config.Map3Graphics.AddMapObject(_mapObjCurrentUnit);
+            Config.Map3Graphics.AddMapObject(_mapObjCellGridlines);
+            Config.Map3Graphics.AddMapObject(_mapObjUnitGridlines);
+            Config.Map3Graphics.AddMapObject(_mapObjHolp);
+            Config.Map3Graphics.AddMapObject(_mapObjCamera);
+            Config.Map3Graphics.AddMapObject(_mapObjMario);
+            Config.Map3Graphics.AddMapObject(_mapObjFloorTri);
+            Config.Map3Graphics.AddMapObject(_mapObjCeilingTri);
 
             InitializeControls();
+            InitializeSemaphores();
         }
 
         private void InitializeControls()
@@ -132,6 +118,41 @@ namespace STROOP.Managers
             {
                 Config.Map3Gui.radioButtonMap3ControllersAngleCustom.Checked = true;
             });
+        }
+
+        private void InitializeSemaphores()
+        {
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackMario, Map3SemaphoreManager.Mario, _mapObjMario, true);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackHolp, Map3SemaphoreManager.Holp, _mapObjHolp, false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCamera, Map3SemaphoreManager.Camera, _mapObjCamera, false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackFloorTri, Map3SemaphoreManager.FloorTri, _mapObjFloorTri, false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCeilingTri, Map3SemaphoreManager.CeilingTri, _mapObjCeilingTri, false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCellGridlines, Map3SemaphoreManager.CellGridlines, _mapObjCellGridlines, false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentCell, Map3SemaphoreManager.CurrentCell, _mapObjCurrentCell, false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackUnitGridlines, Map3SemaphoreManager.UnitGridlines, _mapObjUnitGridlines, false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentUnit, Map3SemaphoreManager.CurrentUnit, _mapObjCurrentUnit, false);
+        }
+
+        private void InitializeCheckboxSemaphore(
+            CheckBox checkBox, Map3Semaphore semaphore, Map3Object mapObj, bool startAsOn)
+        {
+            Action clickAction = () =>
+            {
+                semaphore.Toggle();
+                if (semaphore.IsUsed)
+                {
+                    Map3Tracker tracker = new Map3Tracker(
+                        new List<Map3Object>() { mapObj },
+                        new List<Map3Semaphore>() { semaphore });
+                    Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                }
+            };
+            checkBox.Click += (sender, e) => clickAction();
+            if (startAsOn)
+            {
+                checkBox.Checked = true;
+                clickAction();
+            }
         }
 
         public void Update(bool updateView)

@@ -28,7 +28,7 @@ namespace STROOP.Map3
 
         public Map3Tracker(
             List<Map3Object> mapObjectList,
-            List<MapSemaphore> semaphoreList)
+            List<Map3Semaphore> semaphoreList)
         {
             InitializeComponent();
             /*
