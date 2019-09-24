@@ -26,6 +26,6 @@ namespace STROOP.Map3
 
         public abstract void DrawOnControl();
 
-        public abstract void Dispose();
+        public virtual void Dispose() { }
     }
 }

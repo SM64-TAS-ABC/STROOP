@@ -42,9 +42,5 @@ namespace STROOP.Map3
         }
 
         protected abstract List<(float x, float z)> GetVertices();
-
-        public override void Dispose()
-        {
-        }
     }
 }
