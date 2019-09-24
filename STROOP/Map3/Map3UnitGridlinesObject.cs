@@ -14,7 +14,7 @@ using System.Drawing.Imaging;
 
 namespace STROOP.Map3
 {
-    public class Map3UnitGridlinesObject : Map3LinesObject
+    public class Map3UnitGridlinesObject : Map3LineObject
     {
         public Map3UnitGridlinesObject()
             : base()

@@ -14,9 +14,9 @@ using System.Drawing.Imaging;
 
 namespace STROOP.Map3
 {
-    public abstract class Map3LinesObject : Map3Object
+    public abstract class Map3LineObject : Map3Object
     {
-        public Map3LinesObject()
+        public Map3LineObject()
             : base()
         {
         }

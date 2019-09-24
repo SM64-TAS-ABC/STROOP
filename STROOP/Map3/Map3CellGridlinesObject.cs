@@ -13,7 +13,7 @@ using OpenTK;
 
 namespace STROOP.Map3
 {
-    public class Map3CellGridlinesObject : Map3LinesObject
+    public class Map3CellGridlinesObject : Map3LineObject
     {
         public Map3CellGridlinesObject()
             : base()
