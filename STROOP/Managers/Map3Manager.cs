@@ -19,16 +19,16 @@ namespace STROOP.Managers
 {
     public class Map3Manager
     {
-        Map3Object _background;
-        Map3Object _gridlines;
-        Map3Object _map;
+        Map3Object _backgroundMapObj;
+        Map3Object _mapMapObj;
+        Map3Object _cellGridlinesMapObj;
+        Map3Object _unitGridlinesMapObj;
         Map3Object _holpMapObj;
         Map3Object _cameraMapObj;
         Map3Object _marioMapObj;
         Map3Object _floorMapObj;
         Map3Object _ceilingMapObj;
         Map3Object _objMapObj;
-        Map3Object _unitGridlinesMapObj;
 
         bool _isLoaded = false;
 
@@ -43,28 +43,28 @@ namespace STROOP.Managers
             Config.Map3Graphics.Load();
             _isLoaded = true;
 
-            _background = new Map3BackgroundObject();
-            _gridlines = new Map3GridlinesObject();
-            _map = new Map3MapObject();
+            _backgroundMapObj = new Map3BackgroundObject();
+            _mapMapObj = new Map3MapObject();
+            _cellGridlinesMapObj = new Map3CellGridlinesObject();
+            _unitGridlinesMapObj = new Map3UnitGridlinesObject();
             _holpMapObj = new Map3HolpObject();
             _cameraMapObj = new Map3CameraObject();
             _marioMapObj = new Map3MarioObject();
             _floorMapObj = new Map3FloorObject();
             _ceilingMapObj = new Map3CeilingObject();
             _objMapObj = new Map3ObjectObject(0x803408C8);
-            _unitGridlinesMapObj = new Map3UnitGridlinesObject();
 
             // Add map objects
-            Config.Map3Graphics.AddMapObject(_background);
-            Config.Map3Graphics.AddMapObject(_gridlines);
-            Config.Map3Graphics.AddMapObject(_map);
+            Config.Map3Graphics.AddMapObject(_backgroundMapObj);
+            Config.Map3Graphics.AddMapObject(_mapMapObj);
+            Config.Map3Graphics.AddMapObject(_cellGridlinesMapObj);
+            Config.Map3Graphics.AddMapObject(_unitGridlinesMapObj);
             Config.Map3Graphics.AddMapObject(_holpMapObj);
             Config.Map3Graphics.AddMapObject(_cameraMapObj);
             Config.Map3Graphics.AddMapObject(_marioMapObj);
             Config.Map3Graphics.AddMapObject(_floorMapObj);
             Config.Map3Graphics.AddMapObject(_ceilingMapObj);
             Config.Map3Graphics.AddMapObject(_objMapObj);
-            Config.Map3Graphics.AddMapObject(_unitGridlinesMapObj);
 
             InitializeControls();
         }

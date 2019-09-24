@@ -366,7 +366,7 @@
     <Compile Include="Map3\Map3CeilingObject.cs" />
     <Compile Include="Map3\Map3Graphics.cs" />
     <Compile Include="Map3\Map3LinesObject.cs" />
-    <Compile Include="Map3\Map3GridlinesObject.cs" />
+    <Compile Include="Map3\Map3CellGridlinesObject.cs" />
     <Compile Include="Map3\Map3Gui.cs" />
     <Compile Include="Map3\Map3BackgroundObject.cs" />
     <Compile Include="Map3\Map3CameraObject.cs" />
