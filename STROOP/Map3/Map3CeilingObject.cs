@@ -31,5 +31,10 @@ namespace STROOP.Map3
             TriangleDataModel tri = new TriangleDataModel(triAddress);
             return tri.Get2DVertices();
         }
+
+        public override string GetName()
+        {
+            return "Ceiling Tri";
+        }
     }
 }

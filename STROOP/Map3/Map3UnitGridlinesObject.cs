@@ -43,5 +43,10 @@ namespace STROOP.Map3
             }
             return vertices;
         }
+
+        public override string GetName()
+        {
+            return "Unit Gridlines";
+        }
     }
 }

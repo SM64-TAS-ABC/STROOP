@@ -29,5 +29,10 @@ namespace STROOP.Map3
         {
             return PositionAngle.Camera.GetValues();
         }
+
+        public override string GetName()
+        {
+            return "Camera";
+        }
     }
 }

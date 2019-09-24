@@ -40,5 +40,10 @@ namespace STROOP.Map3
             float length = Math.Max(Config.Map3Gui.GLControl.Width, Config.Map3Gui.GLControl.Height);
             return (new PointF(xCenter, yCenter), new SizeF(length, length));
         }
+
+        public override string GetName()
+        {
+            return "Background";
+        }
     }
 }

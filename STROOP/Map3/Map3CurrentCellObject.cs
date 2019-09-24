@@ -38,5 +38,10 @@ namespace STROOP.Map3
                 (xMax, zMin),
             };
         }
+
+        public override string GetName()
+        {
+            return "Current Cell";
+        }
     }
 }

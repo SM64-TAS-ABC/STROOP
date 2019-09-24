@@ -35,5 +35,10 @@ namespace STROOP.Map3
             float sizeZ = rectangle.Height * Config.Map3Graphics.MapViewScaleValue;
             return (new PointF(centerX, centerZ), new SizeF(sizeX, sizeZ));
         }
+
+        public override string GetName()
+        {
+            return "Map";
+        }
     }
 }

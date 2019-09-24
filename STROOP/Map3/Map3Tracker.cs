@@ -32,12 +32,16 @@ namespace STROOP.Map3
             List<Map3Object> mapObjectList,
             List<Map3Semaphore> semaphoreList)
         {
+            if (mapObjectList.Count < 1) throw new ArgumentOutOfRangeException();
+
             InitializeComponent();
 
             MapObjectList = new List<Map3Object>(mapObjectList);
             SemaphoreList = new List<Map3Semaphore>(semaphoreList);
 
             IsVisible = true;
+
+            UpdateControl();
 
             /*
             MapObjectList.ForEach(obj =>
@@ -273,8 +277,10 @@ namespace STROOP.Map3
             */
         }
 
-        public void MaybeRemoveTracker()
+        public void UpdateControl()
         {
+            textBoxName.Text = string.Join(", ", MapObjectList.ConvertAll(obj => obj.GetName()));
+
             if (SemaphoreList.Any(semaphore => !semaphore.IsUsed))
             {
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.RemoveControl(this);

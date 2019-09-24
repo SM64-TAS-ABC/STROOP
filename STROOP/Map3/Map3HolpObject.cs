@@ -29,5 +29,10 @@ namespace STROOP.Map3
         {
             return PositionAngle.Holp.GetValues();
         }
+
+        public override string GetName()
+        {
+            return "HOLP";
+        }
     }
 }

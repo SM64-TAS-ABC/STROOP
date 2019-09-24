@@ -37,5 +37,10 @@ namespace STROOP.Map3
             }
             return vertices;
         }
+
+        public override string GetName()
+        {
+            return "Cell Gridlines";
+        }
     }
 }

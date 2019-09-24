@@ -82,7 +82,7 @@ namespace STROOP.Map3
         {
             foreach (Map3Tracker tracker in Controls)
             {
-                tracker.MaybeRemoveTracker();
+                tracker.UpdateControl();
             }
 
             _mapObjBackground.DrawOnControl();

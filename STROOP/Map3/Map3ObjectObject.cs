@@ -38,5 +38,10 @@ namespace STROOP.Map3
         {
             return PosAngle.GetValues();
         }
+
+        public override string GetName()
+        {
+            return "Object"; // TODO change this
+        }
     }
 }
