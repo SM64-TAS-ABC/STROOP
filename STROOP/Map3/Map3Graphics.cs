@@ -18,7 +18,6 @@ namespace STROOP.Map3
 {
     public class Map3Graphics
     {
-        public readonly GLControl Control;
         private readonly List<Map3Object> _mapObjects = new List<Map3Object>();
 
         private enum Map3Scale { CourseDefault, MaxCourseSize, Custom };
@@ -40,7 +39,8 @@ namespace STROOP.Map3
         public float MapViewCenterZValue = DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
         public float MapViewAngleValue = DEFAULT_MAP_VIEW_ANGLE_VALUE;
 
-        public float MapViewRadius { get => (float)MoreMath.GetHypotenuse(Control.Width / 2, Control.Height / 2) / MapViewScaleValue; }
+        public float MapViewRadius { get => (float)MoreMath.GetHypotenuse(
+            Config.Map3Gui.GLControl.Width / 2, Config.Map3Gui.GLControl.Height / 2) / MapViewScaleValue; }
         public float MapViewXMin { get => MapViewCenterXValue - MapViewRadius; }
         public float MapViewXMax { get => MapViewCenterXValue + MapViewRadius; }
         public float MapViewZMin { get => MapViewCenterZValue - MapViewRadius; }
@@ -57,17 +57,16 @@ namespace STROOP.Map3
                 MAX_COURSE_SIZE_X_MAX - MAX_COURSE_SIZE_X_MIN,
                 MAX_COURSE_SIZE_Z_MAX - MAX_COURSE_SIZE_Z_MIN);
 
-        public Map3Graphics(GLControl control)
+        public Map3Graphics()
         {
-            Control = control;
         }
 
         public void Load()
         {
-            Control.MakeCurrent();
-            Control.Context.LoadAll();
+            Config.Map3Gui.GLControl.MakeCurrent();
+            Config.Map3Gui.GLControl.Context.LoadAll();
 
-            Control.Paint += (sender, e) => OnPaint();
+            Config.Map3Gui.GLControl.Paint += (sender, e) => OnPaint();
 
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
             GL.Enable(EnableCap.Texture2D);
@@ -79,7 +78,7 @@ namespace STROOP.Map3
 
         private void OnPaint()
         {
-            Control.MakeCurrent();
+            Config.Map3Gui.GLControl.MakeCurrent();
             UpdateViewport();
             UpdateMapView();
 
@@ -94,13 +93,13 @@ namespace STROOP.Map3
                 mapObj.DrawOnControl();
             }
 
-            Control.SwapBuffers();
+            Config.Map3Gui.GLControl.SwapBuffers();
         }
 
         private void UpdateViewport()
         {
-            int w = Control.Width;
-            int h = Control.Height;
+            int w = Config.Map3Gui.GLControl.Width;
+            int h = Config.Map3Gui.GLControl.Height;
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
 
@@ -154,7 +153,7 @@ namespace STROOP.Map3
                     float rotatedWidth = rotatedXMax - rotatedXMin;
                     float rotatedHeight = rotatedZMax - rotatedZMin;
                     MapViewScaleValue = Math.Min(
-                        Control.Width / rotatedWidth, Control.Height / rotatedHeight);
+                        Config.Map3Gui.GLControl.Width / rotatedWidth, Config.Map3Gui.GLControl.Height / rotatedHeight);
                     break;
                 case Map3Scale.Custom:
                     MapViewScaleValue = ParsingUtilities.ParseFloatNullable(

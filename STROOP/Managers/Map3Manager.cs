@@ -41,7 +41,7 @@ namespace STROOP.Managers
         public void Load()
         {
             // Create new graphics control
-            Config.Map3Graphics = new Map3Graphics(Config.Map3Gui.glControlMap3);
+            Config.Map3Graphics = new Map3Graphics();
             Config.Map3Graphics.Load();
             _isLoaded = true;
 
@@ -140,7 +140,7 @@ namespace STROOP.Managers
             if (!_isLoaded) return;
 
             UpdateData();
-            Config.Map3Graphics.Control.Invalidate();
+            Config.Map3Gui.GLControl.Invalidate();
         }
 
         private void UpdateData()

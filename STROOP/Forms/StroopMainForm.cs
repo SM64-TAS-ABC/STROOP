@@ -292,7 +292,7 @@ namespace STROOP
 
             Config.Map3Gui = new Map3Gui()
             {
-                glControlMap3 = glControlMap3,
+                GLControl = glControlMap3,
                 flowLayoutPanelMap3Trackers = flowLayoutPanelMap3Trackers,
 
                 checkBoxMap3OptionsTrackMario = checkBoxMap3OptionsTrackMario,
