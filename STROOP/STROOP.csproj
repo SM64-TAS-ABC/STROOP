@@ -146,10 +146,10 @@
     <Compile Include="Controls\Map\Objects\MapTriangleObject.cs" />
     <Compile Include="Controls\Map\Semaphores\MapSemaphoreManager.cs" />
     <Compile Include="Controls\Map\Semaphores\MapSemaphore.cs" />
-    <Compile Include="Controls\Map\Trackers\ColorSelector.cs">
+    <Compile Include="Controls\ColorSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Map\Trackers\ColorSelector.Designer.cs">
+    <Compile Include="Controls\ColorSelector.Designer.cs">
       <DependentUpon>ColorSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ObjectSlotFlowLayoutPanel.cs">
@@ -677,7 +677,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="Controls\Map\Trackers\ColorSelector.resx">
+    <EmbeddedResource Include="Controls\ColorSelector.resx">
       <DependentUpon>ColorSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Map\Trackers\MapTracker.resx">

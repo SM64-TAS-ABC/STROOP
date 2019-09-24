@@ -15,7 +15,7 @@ using System.Drawing.Drawing2D;
 using STROOP.Interfaces;
 using STROOP.Controls.Map.Objects;
 
-namespace STROOP.Controls.Map.Trackers
+namespace STROOP.Controls
 {
     public partial class ColorSelector : UserControl
     {

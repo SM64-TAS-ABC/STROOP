@@ -1,4 +1,4 @@
-﻿namespace STROOP.Controls.Map.Trackers
+﻿namespace STROOP.Controls
 {
     partial class ColorSelector
     {

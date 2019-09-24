@@ -49,7 +49,7 @@ namespace STROOP.Map3
             this.labelSize = new System.Windows.Forms.Label();
             this.labelOpacity = new System.Windows.Forms.Label();
             this.pictureBoxCog = new System.Windows.Forms.PictureBox();
-            this.colorSelector = new STROOP.Controls.Map.Trackers.ColorSelector();
+            this.colorSelector = new STROOP.Controls.ColorSelector();
             this.comboBoxDisplayType = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
