@@ -35,9 +35,13 @@ namespace STROOP.Map3
             return float.PositiveInfinity;
         }
 
-        public virtual bool ShouldDisplay()
+        public virtual bool ShouldDisplay(MapTrackerVisibilityType visiblityType)
         {
             return true;
+        }
+
+        public virtual void NotifyStoreBehaviorCritera()
+        {
         }
     }
 }

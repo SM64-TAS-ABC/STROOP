@@ -20,13 +20,14 @@ namespace STROOP.Map3
 {
     public partial class Map3Tracker : UserControl
     {
-        private readonly List<Map3Object> MapObjectList;
-        private readonly List<Map3Semaphore> SemaphoreList;
+        private readonly List<Map3Object> _mapObjectList;
+        private readonly List<Map3Semaphore> _semaphoreList;
 
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
         private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
 
         public bool IsVisible;
+        private MapTrackerVisibilityType _currentVisiblityType;
 
         public Map3Tracker(
             List<Map3Object> mapObjectList,
@@ -36,10 +37,20 @@ namespace STROOP.Map3
 
             InitializeComponent();
 
-            MapObjectList = new List<Map3Object>(mapObjectList);
-            SemaphoreList = new List<Map3Semaphore>(semaphoreList);
+            _mapObjectList = new List<Map3Object>(mapObjectList);
+            _semaphoreList = new List<Map3Semaphore>(semaphoreList);
 
             IsVisible = true;
+            _currentVisiblityType = MapTrackerVisibilityType.VisibleWhenLoaded;
+
+            tableLayoutPanel.BorderWidth = 2;
+            tableLayoutPanel.ShowBorder = true;
+
+            comboBoxVisibilityType.DataSource = Enum.GetValues(typeof(MapTrackerVisibilityType));
+            comboBoxVisibilityType.SelectedItem = MapTrackerVisibilityType.VisibleWhenLoaded;
+
+            comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
+            comboBoxOrderType.SelectedItem = MapTrackerOrderType.OrderByY;
 
             UpdateControl();
 
@@ -71,14 +82,6 @@ namespace STROOP.Map3
 
         private void MapTracker_Load(object sender, EventArgs e)
         {
-            tableLayoutPanel.BorderWidth = 2;
-            tableLayoutPanel.ShowBorder = true;
-
-            comboBoxVisibilityType.DataSource = Enum.GetValues(typeof(MapTrackerVisibilityType));
-            comboBoxVisibilityType.SelectedItem = MapTrackerVisibilityType.VisibleWhenLoaded;
-
-            comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
-            comboBoxOrderType.SelectedItem = MapTrackerOrderType.OrderByY;
             /*
             comboBoxDisplayType.DataSource = Enum.GetValues(typeof(MapTrackerDisplayType));
 
@@ -102,7 +105,8 @@ namespace STROOP.Map3
 
         public List<Map3Object> GetMapObjectsToDisplay()
         {
-            return MapObjectList.FindAll(mapObj => mapObj.ShouldDisplay());
+            return _mapObjectList.FindAll(mapObj => mapObj.ShouldDisplay(
+                (MapTrackerVisibilityType)comboBoxVisibilityType.SelectedItem));
         }
 
         public MapTrackerOrderType GetOrderType()
@@ -280,10 +284,23 @@ namespace STROOP.Map3
 
         public void UpdateControl()
         {
-            textBoxName.Text = string.Join(", ", MapObjectList.ConvertAll(obj => obj.GetName()));
-            pictureBoxPicture.Image = MapObjectList[0].GetImage(); // TODO fix this
+            textBoxName.Text = string.Join(", ", _mapObjectList.ConvertAll(obj => obj.GetName()));
+            pictureBoxPicture.Image = _mapObjectList[0].GetImage(); // TODO fix this
 
-            if (SemaphoreList.Any(semaphore => !semaphore.IsUsed))
+            MapTrackerVisibilityType currentVisibilityType = (MapTrackerVisibilityType)comboBoxVisibilityType.SelectedValue;
+            if (currentVisibilityType != _currentVisiblityType)
+            {
+                if (currentVisibilityType == MapTrackerVisibilityType.VisibleWhenThisBhvrIsLoaded)
+                {
+                    foreach (Map3Object mapObj in _mapObjectList)
+                    {
+                        mapObj.NotifyStoreBehaviorCritera();
+                    }
+                }
+                _currentVisiblityType = currentVisibilityType;
+            }
+
+            if (_semaphoreList.Any(semaphore => !semaphore.IsUsed))
             {
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.RemoveControl(this);
             }
@@ -291,7 +308,7 @@ namespace STROOP.Map3
 
         public void CleanUp()
         {
-            SemaphoreList.ForEach(semaphore => semaphore.IsUsed = false);
+            _semaphoreList.ForEach(semaphore => semaphore.IsUsed = false);
         }
     }
 }
