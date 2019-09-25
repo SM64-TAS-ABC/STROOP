@@ -78,13 +78,19 @@ namespace STROOP.Map3
             }
         }
 
+        public void UpdateControl()
+        {
+            lock (_objectLock)
+            {
+                foreach (Map3Tracker tracker in Controls)
+                {
+                    tracker.UpdateControl();
+                }
+            }
+        }
+
         public void DrawOnControl()
         {
-            foreach (Map3Tracker tracker in Controls)
-            {
-                tracker.UpdateControl();
-            }
-
             _mapObjBackground.DrawOnControl();
             _mapObjMap.DrawOnControl();
             
