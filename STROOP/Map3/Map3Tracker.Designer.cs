@@ -194,8 +194,10 @@ namespace STROOP.Map3
             this.textBoxName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxName.Location = new System.Drawing.Point(4, 73);
+            this.textBoxName.Multiline = true;
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(62, 13);
+            this.tableLayoutPanel.SetRowSpan(this.textBoxName, 2);
+            this.textBoxName.Size = new System.Drawing.Size(63, 39);
             this.textBoxName.TabIndex = 10;
             this.textBoxName.Text = "Mario";
             this.textBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
