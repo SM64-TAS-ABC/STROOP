@@ -49,8 +49,8 @@ namespace STROOP.Map3
             this.labelSize = new System.Windows.Forms.Label();
             this.labelOpacity = new System.Windows.Forms.Label();
             this.pictureBoxCog = new System.Windows.Forms.PictureBox();
-            this.colorSelector = new STROOP.Controls.ColorSelector();
             this.comboBoxDisplayType = new System.Windows.Forms.ComboBox();
+            this.colorSelector = new STROOP.Controls.ColorSelector();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
@@ -74,7 +74,7 @@ namespace STROOP.Map3
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutPanel.Controls.Add(this.pictureBoxDownArrow, 4, 3);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxUpArrow, 4, 2);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxRedX, 4, 0);
@@ -91,8 +91,8 @@ namespace STROOP.Map3
             this.tableLayoutPanel.Controls.Add(this.labelSize, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.labelOpacity, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxCog, 4, 4);
-            this.tableLayoutPanel.Controls.Add(this.colorSelector, 3, 3);
-            this.tableLayoutPanel.Controls.Add(this.comboBoxDisplayType, 3, 4);
+            this.tableLayoutPanel.Controls.Add(this.comboBoxDisplayType, 3, 3);
+            this.tableLayoutPanel.Controls.Add(this.colorSelector, 1, 4);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -102,6 +102,7 @@ namespace STROOP.Map3
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.ShowBorder = false;
             this.tableLayoutPanel.Size = new System.Drawing.Size(334, 116);
             this.tableLayoutPanel.TabIndex = 40;
@@ -310,35 +311,37 @@ namespace STROOP.Map3
             this.pictureBoxCog.TabIndex = 17;
             this.pictureBoxCog.TabStop = false;
             // 
-            // colorSelector
-            // 
-            this.colorSelector.BackColor = System.Drawing.Color.Transparent;
-            this.colorSelector.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.colorSelector.Location = new System.Drawing.Point(190, 70);
-            this.colorSelector.Margin = new System.Windows.Forms.Padding(0);
-            this.colorSelector.Name = "colorSelector";
-            this.colorSelector.SelectedColor = System.Drawing.SystemColors.Control;
-            this.colorSelector.Size = new System.Drawing.Size(106, 22);
-            this.colorSelector.TabIndex = 38;
-            // 
             // comboBoxDisplayType
             // 
             this.comboBoxDisplayType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxDisplayType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDisplayType.Location = new System.Drawing.Point(192, 95);
+            this.comboBoxDisplayType.Location = new System.Drawing.Point(192, 72);
             this.comboBoxDisplayType.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxDisplayType.Name = "comboBoxDisplayType";
             this.comboBoxDisplayType.Size = new System.Drawing.Size(102, 21);
             this.comboBoxDisplayType.TabIndex = 39;
             // 
-            // MapTracker
+            // colorSelector
+            // 
+            this.colorSelector.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel.SetColumnSpan(this.colorSelector, 2);
+            this.colorSelector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.colorSelector.Location = new System.Drawing.Point(70, 93);
+            this.colorSelector.Margin = new System.Windows.Forms.Padding(0);
+            this.colorSelector.Name = "colorSelector";
+            this.colorSelector.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.colorSelector.SelectedColor = System.Drawing.SystemColors.Control;
+            this.colorSelector.Size = new System.Drawing.Size(119, 22);
+            this.colorSelector.TabIndex = 38;
+            // 
+            // Map3Tracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tableLayoutPanel);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "MapTracker";
+            this.Name = "Map3Tracker";
             this.Size = new System.Drawing.Size(334, 116);
             this.Load += new System.EventHandler(this.MapTracker_Load);
             this.tableLayoutPanel.ResumeLayout(false);
