@@ -34,5 +34,10 @@ namespace STROOP.Map3
         {
             return "Mario";
         }
+
+        public override float GetY()
+        {
+            return (float)PositionAngle.Mario.Y;
+        }
     }
 }

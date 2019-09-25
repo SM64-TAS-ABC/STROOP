@@ -34,5 +34,10 @@ namespace STROOP.Map3
         {
             return "HOLP";
         }
+
+        public override float GetY()
+        {
+            return (float)PositionAngle.Holp.Y;
+        }
     }
 }
