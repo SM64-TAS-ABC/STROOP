@@ -25,7 +25,7 @@ namespace STROOP.Map3
             return Map3Utilities.GetMapLayout().MapImage;
         }
 
-        protected override (PointF loc, SizeF size) GetDimensions()
+        protected override List<(PointF loc, SizeF size)> GetDimensions()
         {
             RectangleF rectangle = Map3Utilities.GetMapLayout().Coordinates;
             float rectangleCenterX = rectangle.X + rectangle.Width / 2;
@@ -33,7 +33,8 @@ namespace STROOP.Map3
             (float centerX, float centerZ) = Map3Utilities.ConvertCoordsForControl(rectangleCenterX, rectangleCenterZ);
             float sizeX = rectangle.Width * Config.Map3Graphics.MapViewScaleValue;
             float sizeZ = rectangle.Height * Config.Map3Graphics.MapViewScaleValue;
-            return (new PointF(centerX, centerZ), new SizeF(sizeX, sizeZ));
+            (PointF loc, SizeF size) dimension = (new PointF(centerX, centerZ), new SizeF(sizeX, sizeZ));
+            return new List<(PointF loc, SizeF size)>() { dimension };
         }
 
         public override string GetName()

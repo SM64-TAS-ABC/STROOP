@@ -33,12 +33,13 @@ namespace STROOP.Map3
             }
         }
 
-        protected override (PointF loc, SizeF size) GetDimensions()
+        protected override List<(PointF loc, SizeF size)> GetDimensions()
         {
             float xCenter = Config.Map3Gui.GLControl.Width / 2;
             float yCenter = Config.Map3Gui.GLControl.Height / 2;
             float length = Math.Max(Config.Map3Gui.GLControl.Width, Config.Map3Gui.GLControl.Height);
-            return (new PointF(xCenter, yCenter), new SizeF(length, length));
+            (PointF loc, SizeF size) dimension = (new PointF(xCenter, yCenter), new SizeF(length, length));
+            return new List<(PointF loc, SizeF size)>() { dimension };
         }
 
         public override string GetName()
