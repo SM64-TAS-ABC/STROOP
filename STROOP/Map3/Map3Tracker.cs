@@ -71,10 +71,9 @@ namespace STROOP.Map3
 
         private void MapTracker_Load(object sender, EventArgs e)
         {
-            /*
             tableLayoutPanel.BorderWidth = 2;
             tableLayoutPanel.ShowBorder = true;
-
+/*
             comboBoxVisibilityType.DataSource = Enum.GetValues(typeof(MapTrackerVisibilityType));
             comboBoxVisibilityType.SelectedItem = MapTrackerVisibilityType.VisibleWhenLoaded;
 
