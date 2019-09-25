@@ -31,6 +31,8 @@ namespace STROOP.Managers
         private Map3Object _mapObjFloorTri = new Map3FloorObject();
         private Map3Object _mapObjCeilingTri = new Map3CeilingObject();
 
+        private List<int> _currentObjIndexes = new List<int>();
+
         private bool _isLoaded = false;
 
         public Map3Manager()
@@ -154,6 +156,7 @@ namespace STROOP.Managers
             if (!updateView) return;
             if (!_isLoaded) return;
 
+            UpdateBasedOnObjectsSelectedOnMap();
             UpdateControlsBasedOnSemaphores();
             UpdateDataTab();
             Config.Map3Gui.GLControl.Invalidate();
@@ -191,8 +194,40 @@ namespace STROOP.Managers
             Config.Map3Gui.labelMap3DataYNorm.Text = yNorm?.ToString() ?? "(none)";
         }
 
+        private void UpdateBasedOnObjectsSelectedOnMap()
+        {
+            // Determine which obj slots have been checked/unchecked since the last update
+            List<int> currentObjIndexes = Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses
+                .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
+                .FindAll(address => address.HasValue)
+                .ConvertAll(address => address.Value);
+            List<int> toBeRemovedIndexes = _currentObjIndexes.FindAll(i => !currentObjIndexes.Contains(i));
+            List<int> toBeAddedIndexes = currentObjIndexes.FindAll(i => !_currentObjIndexes.Contains(i));
+            _currentObjIndexes = currentObjIndexes;
+
+            // Newly unchecked slots have their semaphore turned off
+            foreach (int index in toBeRemovedIndexes)
+            {
+                Map3Semaphore semaphore = Map3SemaphoreManager.Objects[index];
+                semaphore.IsUsed = false;
+            }
+
+            // Newly checked slots have their semaphore turned on and a tracker is created
+            foreach (int index in toBeAddedIndexes)
+            {
+                uint address = ObjectUtilities.GetObjectAddress(index);
+                Map3Object mapObj = new Map3ObjectObject(address);
+                Map3Semaphore semaphore = Map3SemaphoreManager.Objects[index];
+                semaphore.IsUsed = true;
+                Map3Tracker tracker = new Map3Tracker(
+                    new List<Map3Object>() { mapObj }, new List<Map3Semaphore>() { semaphore });
+                Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+            }
+        }
+
         private void UpdateControlsBasedOnSemaphores()
         {
+            // Update checkboxes when tracker is deleted
             Config.Map3Gui.checkBoxMap3OptionsTrackMario.Checked = Map3SemaphoreManager.Mario.IsUsed;
             Config.Map3Gui.checkBoxMap3OptionsTrackHolp.Checked = Map3SemaphoreManager.Holp.IsUsed;
             Config.Map3Gui.checkBoxMap3OptionsTrackCamera.Checked = Map3SemaphoreManager.Camera.IsUsed;
@@ -203,15 +238,14 @@ namespace STROOP.Managers
             Config.Map3Gui.checkBoxMap3OptionsTrackUnitGridlines.Checked = Map3SemaphoreManager.UnitGridlines.IsUsed;
             Config.Map3Gui.checkBoxMap3OptionsTrackCurrentUnit.Checked = Map3SemaphoreManager.CurrentUnit.IsUsed;
 
-            /*
-            List<uint> toBeUnselected = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
+            // Update object slots when tracker is deleted
+            Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses
                 .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
                 .FindAll(index => index.HasValue)
                 .ConvertAll(index => index.Value)
-                .FindAll(index => !MapSemaphoreManager.Objects[index].IsUsed)
-                .ConvertAll(index => ObjectUtilities.GetObjectAddress(index));
-            toBeUnselected.ForEach(address => Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses.Remove(address));
-            */
+                .FindAll(index => !Map3SemaphoreManager.Objects[index].IsUsed)
+                .ConvertAll(index => ObjectUtilities.GetObjectAddress(index))
+                .ForEach(address => Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses.Remove(address));
         }
     }
 }
