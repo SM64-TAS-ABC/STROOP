@@ -20,8 +20,8 @@ namespace STROOP.Map3
 {
     public partial class Map3Tracker : UserControl
     {
-        public readonly List<Map3Object> MapObjectList;
-        public readonly List<Map3Semaphore> SemaphoreList;
+        private readonly List<Map3Object> MapObjectList;
+        private readonly List<Map3Semaphore> SemaphoreList;
 
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
         private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
@@ -98,6 +98,11 @@ namespace STROOP.Map3
                 });
             pictureBoxCog.Click += (se, ev) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
             */
+        }
+
+        public List<Map3Object> GetMapObjectsToDisplay()
+        {
+            return MapObjectList.FindAll(mapObj => mapObj.ShouldDisplay());
         }
 
         public MapTrackerOrderType GetOrderType()

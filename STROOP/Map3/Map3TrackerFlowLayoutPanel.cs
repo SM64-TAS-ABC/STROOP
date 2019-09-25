@@ -106,13 +106,13 @@ namespace STROOP.Map3
                     switch (mapTracker.GetOrderType())
                     {
                         case MapTrackerOrderType.OrderOnTop:
-                            listOrderOnTop.AddRange(mapTracker.MapObjectList);
+                            listOrderOnTop.AddRange(mapTracker.GetMapObjectsToDisplay());
                             break;
                         case MapTrackerOrderType.OrderOnBottom:
-                            listOrderOnBottom.AddRange(mapTracker.MapObjectList);
+                            listOrderOnBottom.AddRange(mapTracker.GetMapObjectsToDisplay());
                             break;
                         case MapTrackerOrderType.OrderByY:
-                            listOrderByY.AddRange(mapTracker.MapObjectList);
+                            listOrderByY.AddRange(mapTracker.GetMapObjectsToDisplay());
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();

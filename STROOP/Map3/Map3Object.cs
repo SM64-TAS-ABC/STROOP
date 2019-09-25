@@ -34,5 +34,10 @@ namespace STROOP.Map3
         {
             return float.PositiveInfinity;
         }
+
+        public virtual bool ShouldDisplay()
+        {
+            return true;
+        }
     }
 }
