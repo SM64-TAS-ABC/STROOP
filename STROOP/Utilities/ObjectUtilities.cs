@@ -44,6 +44,12 @@ namespace STROOP.Utilities
             return ObjectSlotsConfig.ObjectSlotsStartAddress + (uint)index * ObjectConfig.StructSize;
         }
 
+        public static List<uint> GetAllObjectAddresses()
+        {
+            return Enumerable.Range(0, ObjectSlotsConfig.MaxSlots).ToList()
+                .ConvertAll(index => GetObjectAddress(index));
+        }
+
         public static uint? GetCollisionObject(uint objAddress, int collisionIndex)
         {
             if (collisionIndex < 1 || collisionIndex > 4)

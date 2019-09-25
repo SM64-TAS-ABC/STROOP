@@ -67,6 +67,15 @@ namespace STROOP.Managers
             backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
             Config.Map3Gui.comboBoxMap3OptionsBackground.DataSource = backgroundImageChoices;
 
+            // Buttons on Options
+            Config.Map3Gui.buttonMap3OptionsAddNewTracker.Click += (sender, e) => { }; //TODO implement this
+            Config.Map3Gui.buttonMap3OptionsClearAllTrackers.Click += (sender, e) =>
+                Config.Map3Gui.flowLayoutPanelMap3Trackers.ClearControls();
+            Config.Map3Gui.buttonMap3OptionsTrackAllObjects.Click += (sender, e) =>
+                TrackMultipleObjects(ObjectUtilities.GetAllObjectAddresses());
+            Config.Map3Gui.buttonMap3OptionsTrackMarkedObjects.Click += (sender, e) =>
+                TrackMultipleObjects(Config.ObjectSlotsManager.MarkedSlotsAddresses);
+
             // Buttons for Changing Scale
             Config.Map3Gui.buttonMap3ControllersScaleMinus.Click += (sender, e) =>
                 Config.Map3Graphics.ChangeScale(-1, Config.Map3Gui.textBoxMap3ControllersScaleChange.Text);
@@ -258,6 +267,24 @@ namespace STROOP.Managers
                 .FindAll(index => !Map3SemaphoreManager.Objects[index].IsUsed)
                 .ConvertAll(index => ObjectUtilities.GetObjectAddress(index))
                 .ForEach(address => Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses.Remove(address));
+        }
+
+        private void TrackMultipleObjects(List<uint> addresses)
+        {
+            if (addresses.Count == 0) return;
+            List<Map3Object> mapObjs = addresses
+                .ConvertAll(address => new Map3ObjectObject(address) as Map3Object);
+            List<int> indexes = addresses
+                .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
+                .FindAll(index => index.HasValue)
+                .ConvertAll(index => index.Value);
+            List<Map3Semaphore> semaphores = indexes
+                .ConvertAll(index => Map3SemaphoreManager.Objects[index]);
+            semaphores.ForEach(semaphore => semaphore.IsUsed = true);
+            Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses.AddRange(addresses);
+            _currentObjIndexes.AddRange(indexes);
+            Map3Tracker tracker = new Map3Tracker(mapObjs, semaphores);
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
         }
     }
 }
