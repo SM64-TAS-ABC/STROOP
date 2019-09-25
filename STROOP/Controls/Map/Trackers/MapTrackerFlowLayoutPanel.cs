@@ -92,7 +92,7 @@ namespace STROOP.Controls.Map.Trackers
                         case MapTrackerOrderType.OrderOnBottom:
                             listOrderOnBottom.AddRange(mapTracker.MapObjectList);
                             break;
-                        case MapTrackerOrderType.OrderByDepth:
+                        case MapTrackerOrderType.OrderByY:
                             listOrderByDepth.AddRange(mapTracker.MapObjectList);
                             break;
                         default:

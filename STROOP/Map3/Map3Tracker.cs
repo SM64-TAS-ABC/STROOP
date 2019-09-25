@@ -73,13 +73,13 @@ namespace STROOP.Map3
         {
             tableLayoutPanel.BorderWidth = 2;
             tableLayoutPanel.ShowBorder = true;
-/*
+
             comboBoxVisibilityType.DataSource = Enum.GetValues(typeof(MapTrackerVisibilityType));
             comboBoxVisibilityType.SelectedItem = MapTrackerVisibilityType.VisibleWhenLoaded;
 
             comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
-            comboBoxOrderType.SelectedItem = MapTrackerOrderType.OrderByDepth;
-
+            comboBoxOrderType.SelectedItem = MapTrackerOrderType.OrderByY;
+            /*
             comboBoxDisplayType.DataSource = Enum.GetValues(typeof(MapTrackerDisplayType));
 
             ControlUtilities.AddContextMenuStripFunctions(
@@ -102,10 +102,7 @@ namespace STROOP.Map3
 
         public MapTrackerOrderType GetOrderType()
         {
-            return MapTrackerOrderType.OrderByDepth;
-            /*
             return (MapTrackerOrderType) comboBoxOrderType.SelectedItem;
-            */
         }
 
         private void trackBarSize_ValueChanged(object sender, EventArgs e)

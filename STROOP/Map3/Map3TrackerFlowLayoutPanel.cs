@@ -87,27 +87,16 @@ namespace STROOP.Map3
 
             _mapObjBackground.DrawOnControl();
             _mapObjMap.DrawOnControl();
-
-            List<Map3Object> objs = new List<Map3Object>();
-            foreach (Map3Tracker tracker in Controls)
-            {
-                if (tracker.IsVisible)
-                {
-                    objs.AddRange(tracker.MapObjectList);
-                }
-            }
-            objs.ForEach(obj => obj.DrawOnControl());
-
-            /*
-            List<MapObject> listOrderOnTop = new List<MapObject>();
-            List<MapObject> listOrderOnBottom = new List<MapObject>();
-            List<MapObject> listOrderByDepth = new List<MapObject>();
+            
+            List<Map3Object> listOrderOnTop = new List<Map3Object>();
+            List<Map3Object> listOrderOnBottom = new List<Map3Object>();
+            List<Map3Object> listOrderByY = new List<Map3Object>();
 
             lock (_objectLock)
             {
-                foreach (MapTracker mapTracker in Controls)
+                foreach (Map3Tracker mapTracker in Controls)
                 {
-                    if (!mapTracker.Visible) continue;
+                    if (!mapTracker.IsVisible) continue;
                     switch (mapTracker.GetOrderType())
                     {
                         case MapTrackerOrderType.OrderOnTop:
@@ -116,8 +105,8 @@ namespace STROOP.Map3
                         case MapTrackerOrderType.OrderOnBottom:
                             listOrderOnBottom.AddRange(mapTracker.MapObjectList);
                             break;
-                        case MapTrackerOrderType.OrderByDepth:
-                            listOrderByDepth.AddRange(mapTracker.MapObjectList);
+                        case MapTrackerOrderType.OrderByY:
+                            listOrderByY.AddRange(mapTracker.MapObjectList);
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();
@@ -126,22 +115,22 @@ namespace STROOP.Map3
             }
 
             listOrderOnTop.Reverse();
+            listOrderOnBottom.Reverse();
+            listOrderByY.Reverse();
+            listOrderByY.Sort((obj1, obj2) => obj1.GetY().CompareTo(obj2.GetY()));
 
-            for (int i = 0; i < listOrderByDepth.Count; i++)
+            foreach (Map3Object obj in listOrderOnBottom)
             {
-                listOrderByDepth[i].DisplayLayer = 0;
+                obj.DrawOnControl();
             }
-
-            for (int i = 0; i < listOrderOnTop.Count; i++)
+            foreach (Map3Object obj in listOrderByY)
             {
-                listOrderOnTop[i].DisplayLayer = i + 1;
+                obj.DrawOnControl();
             }
-
-            for (int i = 0; i < listOrderOnBottom.Count; i++)
+            foreach (Map3Object obj in listOrderOnTop)
             {
-                listOrderOnBottom[i].DisplayLayer = -1 * (i + 1);
+                obj.DrawOnControl();
             }
-            */
         }
 
     }
