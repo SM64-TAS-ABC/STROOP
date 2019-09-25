@@ -90,6 +90,18 @@ namespace STROOP.Managers
                 Config.Map3Graphics.ChangeCenter(-1, 1, Config.Map3Gui.textBoxMap3ControllersCenterChange.Text);
             Config.Map3Gui.buttonMap3ControllersCenterDownRight.Click += (sender, e) =>
                 Config.Map3Graphics.ChangeCenter(1, 1, Config.Map3Gui.textBoxMap3ControllersCenterChange.Text);
+            ControlUtilities.AddContextMenuStripFunctions(
+                Config.Map3Gui.groupBoxMap3ControllersCenter,
+                new List<string>() { "Center on Mario" },
+                new List<Action>()
+                {
+                    () =>
+                    {
+                        float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        Config.Map3Graphics.SetCustomCenter(marioX + "," + marioZ);
+                    }
+                });
 
             // Buttons for Changing Angle
             Config.Map3Gui.buttonMap3ControllersAngleCCW.Click += (sender, e) =>

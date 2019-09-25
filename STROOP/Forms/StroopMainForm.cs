@@ -314,6 +314,10 @@ namespace STROOP
                 comboBoxMap3OptionsLevel = comboBoxMap3OptionsLevel,
                 comboBoxMap3OptionsBackground = comboBoxMap3OptionsBackground,
 
+                groupBoxMap3ControllersScale = groupBoxMap3ControllersScale,
+                groupBoxMap3ControllersCenter = groupBoxMap3ControllersCenter,
+                groupBoxMap3ControllersAngle = groupBoxMap3ControllersAngle,
+
                 radioButtonMap3ControllersScaleCourseDefault = radioButtonMap3ControllersScaleCourseDefault,
                 radioButtonMap3ControllersScaleMaxCourseSize = radioButtonMap3ControllersScaleMaxCourseSize,
                 radioButtonMap3ControllersScaleCustom = radioButtonMap3ControllersScaleCustom,

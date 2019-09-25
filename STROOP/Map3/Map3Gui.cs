@@ -42,6 +42,11 @@ namespace STROOP.Map3
 
 
 
+        // Controllers - GroupBoxes
+        public GroupBox groupBoxMap3ControllersScale;
+        public GroupBox groupBoxMap3ControllersCenter;
+        public GroupBox groupBoxMap3ControllersAngle;
+
         // Controllers - Scale - Left
         public RadioButton radioButtonMap3ControllersScaleCourseDefault;
         public RadioButton radioButtonMap3ControllersScaleMaxCourseSize;

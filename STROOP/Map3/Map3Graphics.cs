@@ -284,5 +284,23 @@ namespace STROOP.Map3
             newAngleValue = (float)MoreMath.NormalizeAngleDouble(newAngleValue);
             Config.Map3Gui.textBoxMap3ControllersAngleCustom.SubmitText(newAngleValue.ToString());
         }
+
+        public void SetCustomScale(string value)
+        {
+            Config.Map3Gui.radioButtonMap3ControllersScaleCustom.Checked = true;
+            Config.Map3Gui.textBoxMap3ControllersScaleCustom.SubmitText(value);
+        }
+
+        public void SetCustomCenter(string value)
+        {
+            Config.Map3Gui.radioButtonMap3ControllersCenterCustom.Checked = true;
+            Config.Map3Gui.textBoxMap3ControllersCenterCustom.SubmitText(value);
+        }
+
+        public void SetCustomAngle(string value)
+        {
+            Config.Map3Gui.radioButtonMap3ControllersAngleCustom.Checked = true;
+            Config.Map3Gui.textBoxMap3ControllersAngleCustom.SubmitText(value);
+        }
     }
 }
