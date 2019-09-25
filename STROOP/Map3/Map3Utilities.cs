@@ -19,10 +19,10 @@ namespace STROOP.Map3
         /** Takes in in-game coordinates, outputs control coordinates. */
         public static (float x, float z) ConvertCoordsForControl(float x, float z)
         {
-            float relX = (float)PuUtilities.GetRelativeCoordinate(x);
-            float relZ = (float)PuUtilities.GetRelativeCoordinate(z);
-            float xOffset = relX - Config.Map3Graphics.MapViewCenterXValue;
-            float zOffset = relZ - Config.Map3Graphics.MapViewCenterZValue;
+            x = Config.Map3Graphics.MapViewEnablePuView ? x : (float)PuUtilities.GetRelativeCoordinate(x);
+            z = Config.Map3Graphics.MapViewEnablePuView ? z : (float)PuUtilities.GetRelativeCoordinate(z);
+            float xOffset = x - Config.Map3Graphics.MapViewCenterXValue;
+            float zOffset = z - Config.Map3Graphics.MapViewCenterZValue;
             (float xOffsetRotated, float zOffsetRotated) =
                 ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
                     xOffset,
@@ -62,6 +62,28 @@ namespace STROOP.Map3
             {
                 return Config.MapAssociations.GetBestMap();
             }
+        }
+
+        public static List<(float x, float z)> GetPuCenters()
+        {
+            int xMin = ((((int)Config.Map3Graphics.MapViewXMin) / 65536) - 1) * 65536;
+            int xMax = ((((int)Config.Map3Graphics.MapViewXMax) / 65536) + 1) * 65536;
+            int zMin = ((((int)Config.Map3Graphics.MapViewZMin) / 65536) - 1) * 65536;
+            int zMax = ((((int)Config.Map3Graphics.MapViewZMax) / 65536) + 1) * 65536;
+            List<(float x, float z)> centers = new List<(float x, float z)>();
+            for (int x = xMin; x <= xMax; x += 65536)
+            {
+                for (int z = zMin; z <= zMax; z += 65536)
+                {
+                    centers.Add((x, z));
+                }
+            }
+            return centers;
+        }
+
+        public static List<(float x, float z)> GetPuCoordinates(float relX, float relZ)
+        {
+            return GetPuCenters().ConvertAll(center => (center.x + relX, center.z + relZ));
         }
     }
 }
