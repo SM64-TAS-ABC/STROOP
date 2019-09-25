@@ -28,6 +28,7 @@ namespace STROOP.Map3
         public CheckBox checkBoxMap3OptionsTrackCurrentCell;
         public CheckBox checkBoxMap3OptionsTrackUnitGridlines;
         public CheckBox checkBoxMap3OptionsTrackCurrentUnit;
+        public CheckBox checkBoxMap3OptionsEnablePuView;
 
         // Options - Buttons
         public Button buttonMap3OptionsAddNewTracker;
