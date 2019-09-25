@@ -833,6 +833,7 @@ namespace STROOP
             this.buttonMap3OptionsTrackAllObjects = new System.Windows.Forms.Button();
             this.buttonMap3OptionsClearAllTrackers = new System.Windows.Forms.Button();
             this.buttonMap3OptionsAddNewTracker = new System.Windows.Forms.Button();
+            this.checkBoxMap3OptionsEnablePuView = new System.Windows.Forms.CheckBox();
             this.checkBoxMap3OptionsTrackCurrentUnit = new System.Windows.Forms.CheckBox();
             this.checkBoxMap3OptionsTrackCellGridlines = new System.Windows.Forms.CheckBox();
             this.checkBoxMap3OptionsTrackUnitGridlines = new System.Windows.Forms.CheckBox();
@@ -1567,7 +1568,6 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.checkBoxMap3OptionsEnablePuView = new System.Windows.Forms.CheckBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -5752,7 +5752,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 499F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9482,7 +9482,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(439, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(442, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11565,7 +11565,7 @@ namespace STROOP
             this.splitContainerMap3.Panel2.Controls.Add(this.glControlMap3);
             this.splitContainerMap3.Panel2MinSize = 0;
             this.splitContainerMap3.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerMap3.SplitterDistance = 355;
+            this.splitContainerMap3.SplitterDistance = 357;
             this.splitContainerMap3.SplitterWidth = 1;
             this.splitContainerMap3.TabIndex = 18;
             // 
@@ -11588,7 +11588,7 @@ namespace STROOP
             // 
             this.betterSplitContainer1.Panel2.Controls.Add(this.flowLayoutPanelMap3Trackers);
             this.betterSplitContainer1.Panel2MinSize = 0;
-            this.betterSplitContainer1.Size = new System.Drawing.Size(355, 463);
+            this.betterSplitContainer1.Size = new System.Drawing.Size(357, 463);
             this.betterSplitContainer1.SplitterDistance = 320;
             this.betterSplitContainer1.SplitterWidth = 1;
             this.betterSplitContainer1.TabIndex = 41;
@@ -11603,7 +11603,7 @@ namespace STROOP
             this.tabControlMap3.Margin = new System.Windows.Forms.Padding(0);
             this.tabControlMap3.Name = "tabControlMap3";
             this.tabControlMap3.SelectedIndex = 0;
-            this.tabControlMap3.Size = new System.Drawing.Size(353, 318);
+            this.tabControlMap3.Size = new System.Drawing.Size(355, 318);
             this.tabControlMap3.TabIndex = 39;
             // 
             // tabPageMap3Options
@@ -11631,7 +11631,7 @@ namespace STROOP
             this.tabPageMap3Options.Location = new System.Drawing.Point(4, 22);
             this.tabPageMap3Options.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageMap3Options.Name = "tabPageMap3Options";
-            this.tabPageMap3Options.Size = new System.Drawing.Size(345, 292);
+            this.tabPageMap3Options.Size = new System.Drawing.Size(347, 292);
             this.tabPageMap3Options.TabIndex = 3;
             this.tabPageMap3Options.Text = "Options";
             // 
@@ -11710,6 +11710,16 @@ namespace STROOP
             this.buttonMap3OptionsAddNewTracker.TabIndex = 41;
             this.buttonMap3OptionsAddNewTracker.Text = "Add New Tracker";
             this.buttonMap3OptionsAddNewTracker.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMap3OptionsEnablePuView
+            // 
+            this.checkBoxMap3OptionsEnablePuView.AutoSize = true;
+            this.checkBoxMap3OptionsEnablePuView.Location = new System.Drawing.Point(148, 174);
+            this.checkBoxMap3OptionsEnablePuView.Name = "checkBoxMap3OptionsEnablePuView";
+            this.checkBoxMap3OptionsEnablePuView.Size = new System.Drawing.Size(103, 17);
+            this.checkBoxMap3OptionsEnablePuView.TabIndex = 19;
+            this.checkBoxMap3OptionsEnablePuView.Text = "Enable PU View";
+            this.checkBoxMap3OptionsEnablePuView.UseVisualStyleBackColor = true;
             // 
             // checkBoxMap3OptionsTrackCurrentUnit
             // 
@@ -12264,7 +12274,7 @@ namespace STROOP
             this.flowLayoutPanelMap3Trackers.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelMap3Trackers.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanelMap3Trackers.Name = "flowLayoutPanelMap3Trackers";
-            this.flowLayoutPanelMap3Trackers.Size = new System.Drawing.Size(353, 140);
+            this.flowLayoutPanelMap3Trackers.Size = new System.Drawing.Size(355, 140);
             this.flowLayoutPanelMap3Trackers.TabIndex = 0;
             this.flowLayoutPanelMap3Trackers.WrapContents = false;
             // 
@@ -12275,7 +12285,7 @@ namespace STROOP
             this.glControlMap3.Location = new System.Drawing.Point(0, 0);
             this.glControlMap3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap3.Name = "glControlMap3";
-            this.glControlMap3.Size = new System.Drawing.Size(557, 461);
+            this.glControlMap3.Size = new System.Drawing.Size(555, 461);
             this.glControlMap3.TabIndex = 0;
             this.glControlMap3.VSync = false;
             this.glControlMap3.Load += new System.EventHandler(this.glControlMap3_Load);
@@ -12590,7 +12600,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 707;
+            this.splitContainerMemory.SplitterDistance = 710;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12631,7 +12641,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(707, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(710, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -12848,7 +12858,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(707, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(710, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -12877,7 +12887,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(606, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(609, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12890,7 +12900,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(199, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(196, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -14044,7 +14054,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(187, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(170, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -14076,7 +14086,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(181, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(164, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -14132,7 +14142,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(181, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(164, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -18728,7 +18738,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -19912,7 +19922,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(36, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(37, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -20299,16 +20309,6 @@ namespace STROOP
             this.trackBarObjSlotSize.TickFrequency = 10;
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
-            // 
-            // checkBoxMap3OptionsEnablePuView
-            // 
-            this.checkBoxMap3OptionsEnablePuView.AutoSize = true;
-            this.checkBoxMap3OptionsEnablePuView.Location = new System.Drawing.Point(148, 174);
-            this.checkBoxMap3OptionsEnablePuView.Name = "checkBoxMap3OptionsEnablePuView";
-            this.checkBoxMap3OptionsEnablePuView.Size = new System.Drawing.Size(103, 17);
-            this.checkBoxMap3OptionsEnablePuView.TabIndex = 19;
-            this.checkBoxMap3OptionsEnablePuView.Text = "Enable PU View";
-            this.checkBoxMap3OptionsEnablePuView.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
