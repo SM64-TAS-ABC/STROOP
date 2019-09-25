@@ -108,6 +108,10 @@ namespace STROOP.Managers
             {
                 Config.Map3Gui.radioButtonMap3ControllersAngleCustom.Checked = true;
             });
+
+            // CheckBox for Enable PU View
+            Config.Map3Gui.checkBoxMap3OptionsEnablePuView.Click += (sender, e) =>
+                Config.Map3Graphics.MapViewEnablePuView = Config.Map3Gui.checkBoxMap3OptionsEnablePuView.Checked;
         }
 
         private void InitializeSemaphores()
