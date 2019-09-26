@@ -58,7 +58,11 @@ namespace STROOP.Map3
             comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
             comboBoxOrderType.SelectedItem = MapTrackerOrderType.OrderByY;
 
+            SetSize(null);
+            SetOpacity(null);
+
             textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
+            textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
 
             InitializeCogContextMenuStrip();
 
@@ -79,7 +83,6 @@ namespace STROOP.Map3
             SetRotates(MapObjectList.FirstOrDefault()?.Rotates);
             SetColor(MapObjectList.FirstOrDefault()?.MyColor);
 
-            textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
             comboBoxVisibilityType.SelectedValueChanged += (sender, e) =>
                 SetVisibilityType((MapTrackerVisibilityType)comboBoxVisibilityType.SelectedItem);
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
@@ -291,45 +294,25 @@ namespace STROOP.Map3
 
         private void trackBarOpacity_ValueChanged(object sender, EventArgs e)
         {
-            /*
-            SetOpacity(trackBarOpacity.Value, false);
-            */
+            SetOpacity((byte)trackBarOpacity.Value);
         }
 
         private void textBoxOpacity_EnterAction()
         {
-            /*
-            SetOpacity(ParsingUtilities.ParseFloatNullable(textBoxOpacity.Text), false);
-            */
+            SetOpacity(ParsingUtilities.ParseByteNullable(textBoxOpacity.Text));
         }
 
-        // opacityNullable is from 0 to 100, or null if controls should be refreshed
-        private void SetOpacity(float? opacityNullable, bool scaled)
+        /** null if controls should be refreshed */
+        private void SetOpacity(byte? opacityNullable)
         {
-            /*
-            if (opacityNullable.HasValue && scaled)
+            bool updateMapObjs = opacityNullable != null;
+            byte opacity = opacityNullable ?? _mapObjectList[0].OpacityByte;
+            if (updateMapObjs)
             {
-                opacityNullable = opacityNullable.Value * 100;
+                _mapObjectList.ForEach(mapObj => mapObj.OpacityByte = opacity);
             }
-
-            float backupValue = 100;
-            float? oldValue = MapObjectList.FirstOrDefault()?.Opacity;
-            if (oldValue.HasValue)
-            {
-                backupValue = oldValue.Value * 100;
-            }
-
-            float opacity = opacityNullable ?? backupValue;
-            if (opacity < 0) opacity = 0;
-            if (opacity > 100) opacity = 100;
-            float scaledOpacity = opacity / 100;
-            MapObjectList.ForEach(obj =>
-            {
-                obj.Opacity = scaledOpacity;
-            });
             ControlUtilities.SetTrackBarValueCapped(trackBarOpacity, opacity);
             textBoxOpacity.Text = opacity.ToString();
-            */
         }
 
         private void checkBoxRotates_CheckedChanged(object sender, EventArgs e)

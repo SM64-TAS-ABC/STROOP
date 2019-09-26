@@ -17,7 +17,11 @@ namespace STROOP.Map3
     {
         public float Size = 50;
         public double Opacity = 1;
-        public byte OpacityByte { get => (byte)(Opacity * 255); }
+        public byte OpacityByte
+        {
+            get => (byte)(Opacity * 255);
+            set => Opacity = value / 255f;
+        }
         public Color Color = SystemColors.Control;
 
         public Map3Object()
