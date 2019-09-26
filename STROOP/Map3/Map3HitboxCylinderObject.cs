@@ -23,8 +23,8 @@ namespace STROOP.Map3
         {
             _posAngle = posAngle;
 
-            Color = Color.Red;
             Opacity = 0.5;
+            Color = Color.Red;
         }
 
         protected override (float centerX, float centerZ, float radius) GetDimensions()

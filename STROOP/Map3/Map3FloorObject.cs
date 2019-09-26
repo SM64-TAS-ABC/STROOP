@@ -20,8 +20,8 @@ namespace STROOP.Map3
         public Map3FloorObject()
             : base()
         {
-            Color = Color.Blue;
             Opacity = 0.5;
+            Color = Color.Blue;
         }
 
         protected override List<(float x, float z)> GetVertices()

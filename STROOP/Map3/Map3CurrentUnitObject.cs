@@ -19,8 +19,8 @@ namespace STROOP.Map3
         public Map3CurrentUnitObject()
             : base()
         {
-            Color = Color.Purple;
             Opacity = 0.5;
+            Color = Color.Purple;
         }
 
         protected override List<(float x, float z)> GetVertices()

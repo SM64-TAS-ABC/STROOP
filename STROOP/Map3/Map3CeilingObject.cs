@@ -20,8 +20,8 @@ namespace STROOP.Map3
         public Map3CeilingObject()
             : base()
         {
-            Color = Color.Red;
             Opacity = 0.5;
+            Color = Color.Red;
         }
 
         protected override List<(float x, float z)> GetVertices()

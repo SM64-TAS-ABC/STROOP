@@ -19,8 +19,8 @@ namespace STROOP.Map3
         public Map3CurrentCellObject()
             : base()
         {
-            Color = Color.Yellow;
             Opacity = 0.5;
+            Color = Color.Yellow;
         }
 
         protected override List<(float x, float z)> GetVertices()
