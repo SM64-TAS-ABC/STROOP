@@ -49,7 +49,6 @@ namespace STROOP.Map3
             this.labelSize = new System.Windows.Forms.Label();
             this.labelOpacity = new System.Windows.Forms.Label();
             this.pictureBoxCog = new System.Windows.Forms.PictureBox();
-            this.comboBoxDisplayType = new System.Windows.Forms.ComboBox();
             this.colorSelector = new STROOP.Controls.ColorSelector();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
@@ -80,8 +79,8 @@ namespace STROOP.Map3
             this.tableLayoutPanel.Controls.Add(this.pictureBoxRedX, 4, 0);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxEye, 4, 1);
             this.tableLayoutPanel.Controls.Add(this.comboBoxVisibilityType, 3, 1);
-            this.tableLayoutPanel.Controls.Add(this.comboBoxOrderType, 3, 2);
-            this.tableLayoutPanel.Controls.Add(this.checkBoxRotates, 3, 0);
+            this.tableLayoutPanel.Controls.Add(this.comboBoxOrderType, 3, 0);
+            this.tableLayoutPanel.Controls.Add(this.checkBoxRotates, 3, 2);
             this.tableLayoutPanel.Controls.Add(this.textBoxName, 0, 3);
             this.tableLayoutPanel.Controls.Add(this.panelPicture, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.trackBarOpacity, 1, 3);
@@ -91,7 +90,6 @@ namespace STROOP.Map3
             this.tableLayoutPanel.Controls.Add(this.labelSize, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.labelOpacity, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxCog, 4, 4);
-            this.tableLayoutPanel.Controls.Add(this.comboBoxDisplayType, 3, 3);
             this.tableLayoutPanel.Controls.Add(this.colorSelector, 1, 4);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -169,7 +167,7 @@ namespace STROOP.Map3
             // 
             this.comboBoxOrderType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxOrderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOrderType.Location = new System.Drawing.Point(192, 49);
+            this.comboBoxOrderType.Location = new System.Drawing.Point(192, 3);
             this.comboBoxOrderType.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxOrderType.Name = "comboBoxOrderType";
             this.comboBoxOrderType.Size = new System.Drawing.Size(102, 21);
@@ -179,7 +177,7 @@ namespace STROOP.Map3
             // 
             this.checkBoxRotates.AutoSize = true;
             this.checkBoxRotates.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxRotates.Location = new System.Drawing.Point(193, 4);
+            this.checkBoxRotates.Location = new System.Drawing.Point(193, 50);
             this.checkBoxRotates.Name = "checkBoxRotates";
             this.checkBoxRotates.Size = new System.Drawing.Size(100, 16);
             this.checkBoxRotates.TabIndex = 16;
@@ -313,16 +311,6 @@ namespace STROOP.Map3
             this.pictureBoxCog.TabIndex = 17;
             this.pictureBoxCog.TabStop = false;
             // 
-            // comboBoxDisplayType
-            // 
-            this.comboBoxDisplayType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxDisplayType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDisplayType.Location = new System.Drawing.Point(192, 72);
-            this.comboBoxDisplayType.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxDisplayType.Name = "comboBoxDisplayType";
-            this.comboBoxDisplayType.Size = new System.Drawing.Size(102, 21);
-            this.comboBoxDisplayType.TabIndex = 39;
-            // 
             // colorSelector
             // 
             this.colorSelector.BackColor = System.Drawing.Color.Transparent;
@@ -382,6 +370,5 @@ namespace STROOP.Map3
         private System.Windows.Forms.Label labelSize;
         private System.Windows.Forms.Label labelOpacity;
         private ColorSelector colorSelector;
-        private System.Windows.Forms.ComboBox comboBoxDisplayType;
     }
 }
