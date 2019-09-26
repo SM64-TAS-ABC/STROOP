@@ -333,7 +333,6 @@ namespace STROOP.Map3
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Map3Tracker";
             this.Size = new System.Drawing.Size(334, 116);
-            this.Load += new System.EventHandler(this.MapTracker_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).EndInit();

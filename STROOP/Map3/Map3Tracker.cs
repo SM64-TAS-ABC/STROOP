@@ -69,29 +69,6 @@ namespace STROOP.Map3
             InitializeCogContextMenuStrip();
 
             UpdateControl();
-
-            /*
-            MapObjectList.ForEach(obj =>
-            {
-                obj.Tracker = this;
-                obj.Tracked = true;
-                obj.Shown = true;
-                obj.Opacity = 1;
-            });
-
-            UpdateName(MapObjectList.FirstOrDefault()?.Name);
-            UpdateImage(MapObjectList.FirstOrDefault()?.BitmapImage);
-            UpdateBackColor(MapObjectList.FirstOrDefault()?.BackColor);
-            SetRotates(MapObjectList.FirstOrDefault()?.Rotates);
-            SetColor(MapObjectList.FirstOrDefault()?.MyColor);
-
-            comboBoxVisibilityType.SelectedValueChanged += (sender, e) =>
-                SetVisibilityType((MapTrackerVisibilityType)comboBoxVisibilityType.SelectedItem);
-            colorSelector.AddColorChangeAction((Color color) => SetColor(color));
-
-            SetSize(MapObjectList.FirstOrDefault()?.DefaultSize);
-            SetOpacity(MapObjectList.FirstOrDefault()?.DefaultOpacity, true);
-            */
         }
 
         private void InitializeCogContextMenuStrip()
@@ -237,29 +214,6 @@ namespace STROOP.Map3
             pictureBoxCog.Click += (se, ev) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
         }
 
-        private void MapTracker_Load(object sender, EventArgs e)
-        {
-            /*
-            comboBoxDisplayType.DataSource = Enum.GetValues(typeof(MapTrackerDisplayType));
-
-            ControlUtilities.AddContextMenuStripFunctions(
-                pictureBoxCog,
-                new List<string>()
-                {
-                    "Hitbox Cylinder",
-                    "Tangibility Radius",
-                    "Draw Distance Radius",
-                },
-                new List<Action>()
-                {
-                    () => { },
-                    () => { },
-                    () => { },
-                });
-            pictureBoxCog.Click += (se, ev) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
-            */
-        }
-
         public List<Map3Object> GetMapObjectsToDisplay()
         {
             return _mapObjectList.FindAll(mapObj => mapObj.ShouldDisplay(
@@ -268,7 +222,7 @@ namespace STROOP.Map3
 
         public MapTrackerOrderType GetOrderType()
         {
-            return (MapTrackerOrderType) comboBoxOrderType.SelectedItem;
+            return (MapTrackerOrderType)comboBoxOrderType.SelectedItem;
         }
 
         private void trackBarSize_ValueChanged(object sender, EventArgs e)
@@ -348,17 +302,6 @@ namespace STROOP.Map3
             colorSelector.SelectedColor = color;
         }
 
-        public void SetVisibilityType(MapTrackerVisibilityType visibilityType)
-        {
-            /*
-            comboBoxVisibilityType.SelectedItem = visibilityType;
-            MapObjectList.ForEach(obj =>
-            {
-                obj.VisibilityType = visibilityType;
-            });
-            */
-        }
-
         private void pictureBoxRedX_Click(object sender, EventArgs e)
         {
             Config.Map3Gui.flowLayoutPanelMap3Trackers.RemoveControl(this);
@@ -378,29 +321,6 @@ namespace STROOP.Map3
         private void pictureBoxDownArrow_Click(object sender, EventArgs e)
         {
             Config.Map3Gui.flowLayoutPanelMap3Trackers.MoveDownControl(this);
-        }
-
-        public void UpdateName(string name)
-        {
-            /*
-            textBoxName.Text = name ?? "(Unknown)";
-            */
-        }
-
-        public void UpdateImage(Bitmap image)
-        {
-            /*
-            pictureBoxPicture.Image = image == null ? null : new Bitmap(image);
-            */
-        }
-
-        public void UpdateBackColor(Color? colorNullable)
-        {
-            /*
-            Color color = colorNullable ?? ObjectSlotsConfig.VacantSlotColor;
-            panelPicture.BackColor = color;
-            pictureBoxPicture.BackColor = color.Lighten(0.7);
-            */
         }
 
         public void UpdateControl()
