@@ -60,9 +60,11 @@ namespace STROOP.Map3
 
             SetSize(null);
             SetOpacity(null);
+            SetColor(null);
 
             textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
             textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
+            colorSelector.AddColorChangeAction((Color color) => SetColor(color));
 
             InitializeCogContextMenuStrip();
 
@@ -334,16 +336,16 @@ namespace STROOP.Map3
             */
         }
 
-        public void SetColor(Color? color)
+        /** null if controls should be refreshed */
+        public void SetColor(Color? colorNullable)
         {
-            /*
-            if (!color.HasValue) return;
-            colorSelector.SelectedColor = color.Value;
-            MapObjectList.ForEach(obj =>
+            bool updateMapObjs = colorNullable != null;
+            Color color = colorNullable ?? _mapObjectList[0].Color;
+            if (updateMapObjs)
             {
-                obj.MyColor = color.Value;
-            });
-            */
+                _mapObjectList.ForEach(mapObj => mapObj.Color = color);
+            }
+            colorSelector.SelectedColor = color;
         }
 
         public void SetVisibilityType(MapTrackerVisibilityType visibilityType)
