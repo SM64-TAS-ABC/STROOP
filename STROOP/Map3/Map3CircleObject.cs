@@ -16,7 +16,7 @@ namespace STROOP.Map3
 {
     public abstract class Map3CircleObject : Map3Object
     {
-        private readonly static int NUM_POINTS = 8;
+        private readonly static int NUM_POINTS = 256;
 
         public Map3CircleObject()
             : base()
@@ -42,6 +42,7 @@ namespace STROOP.Map3
             {
                 GL.Vertex2(x, z);
             }
+            GL.Vertex2(controlPoints[0].pointX, controlPoints[0].pointZ);
             GL.End();
             GL.Color4(1, 1, 1, 1.0f);
         }

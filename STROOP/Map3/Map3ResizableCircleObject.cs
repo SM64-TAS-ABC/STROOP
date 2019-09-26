@@ -14,7 +14,7 @@ using System.Drawing.Imaging;
 
 namespace STROOP.Map3
 {
-    public abstract class Map3ResizableCircleObject : Map3CircleObject
+    public class Map3ResizableCircleObject : Map3CircleObject
     {
         private readonly PositionAngle _posAngle;
 
@@ -22,11 +22,29 @@ namespace STROOP.Map3
             : base()
         {
             _posAngle = posAngle;
+
+            Color = Color.Red;
+            Opacity = 0.5;
         }
 
         protected override (float centerX, float centerZ, float radius) GetDimensions()
         {
             return ((float)_posAngle.X, (float)_posAngle.Z, Size);
+        }
+
+        public override Image GetImage()
+        {
+            return Config.ObjectAssociations.TriangleWallImage;
+        }
+
+        public override string GetName()
+        {
+            return "Circle for " + _posAngle.GetMapName();
+        }
+
+        public override float GetY()
+        {
+            return (float)_posAngle.Y;
         }
     }
 }

@@ -299,6 +299,25 @@ namespace STROOP.Utilities
             return String.Join(" ", parts);
         }
 
+        public string GetMapName()
+        {
+            switch (PosAngleType)
+            {
+                case PositionAngleTypeEnum.Mario:
+                    return "Mario";
+                case PositionAngleTypeEnum.Holp:
+                    return "HOLP";
+                case PositionAngleTypeEnum.Camera:
+                    return "Camera";
+                case PositionAngleTypeEnum.Obj:
+                    return "Obj";
+                case PositionAngleTypeEnum.ObjHome:
+                    return "Obj Home";
+                default:
+                    return "(no name)";
+            }
+        }
+
 
 
 

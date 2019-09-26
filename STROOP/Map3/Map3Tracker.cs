@@ -29,6 +29,11 @@ namespace STROOP.Map3
         public bool IsVisible;
         private MapTrackerVisibilityType _currentVisiblityType;
 
+        public Map3Tracker(Map3Object mapObj)
+            : this(new List<Map3Object>() { mapObj }, new List<Map3Semaphore>() { })
+        {
+        }
+
         public Map3Tracker(
             List<Map3Object> mapObjectList,
             List<Map3Semaphore> semaphoreList)
@@ -75,7 +80,17 @@ namespace STROOP.Map3
                     () => { },
                     () => { },
                     () => { },
-                    () => { },
+                    () =>
+                    {
+                        foreach (Map3Object mapObj in _mapObjectList)
+                        {
+                            PositionAngle posAngle = mapObj.GetPositionAngle();
+                            if (posAngle == null) continue;
+                            Map3Object newMapObj = new Map3ResizableCircleObject(posAngle);
+                            Map3Tracker tracker = new Map3Tracker(newMapObj);
+                            Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        }
+                    },
                     () => { },
                     () => { },
                     () => { },
