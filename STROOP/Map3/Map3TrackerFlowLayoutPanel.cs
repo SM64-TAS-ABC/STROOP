@@ -123,7 +123,7 @@ namespace STROOP.Map3
             listOrderOnTop.Reverse();
             listOrderOnBottom.Reverse();
             listOrderByY.Reverse();
-            listOrderByY.Sort((obj1, obj2) => obj1.GetY().CompareTo(obj2.GetY()));
+            listOrderByY = listOrderByY.OrderBy(obj => obj.GetY()).ToList();
 
             foreach (Map3Object obj in listOrderOnBottom)
             {
