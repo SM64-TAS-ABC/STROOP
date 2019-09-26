@@ -29,16 +29,17 @@ namespace STROOP.Map3
         public bool IsVisible;
         private MapTrackerVisibilityType _currentVisiblityType;
 
-        public Map3Tracker(Map3Object mapObj)
-            : this(new List<Map3Object>() { mapObj }, new List<Map3Semaphore>() { })
+        public Map3Tracker(Map3Object mapObj, List<Map3Semaphore> semaphoreList = null)
+            : this(new List<Map3Object>() { mapObj }, semaphoreList)
         {
         }
 
         public Map3Tracker(
             List<Map3Object> mapObjectList,
-            List<Map3Semaphore> semaphoreList)
+            List<Map3Semaphore> semaphoreList = null)
         {
             if (mapObjectList.Count < 1) throw new ArgumentOutOfRangeException();
+            semaphoreList = semaphoreList ?? new List<Map3Semaphore>();
 
             InitializeComponent();
 
@@ -77,40 +78,43 @@ namespace STROOP.Map3
                 },
                 new List<Action>()
                 {
-                    () =>
+                    () => // Add Tracker for Hitbox Cylinder
                     {
                         foreach (Map3Object mapObj in _mapObjectList)
                         {
                             PositionAngle posAngle = mapObj.GetPositionAngle();
                             if (posAngle == null) continue;
+                            if (!posAngle.IsObjectOrMario()) continue;
                             Map3Object newMapObj = new Map3HitboxCylinderObject(posAngle);
                             Map3Tracker tracker = new Map3Tracker(newMapObj);
                             Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                         }
                     },
-                    () =>
+                    () => // Add Tracker for Tangibility Sphere
                     {
                         foreach (Map3Object mapObj in _mapObjectList)
                         {
                             PositionAngle posAngle = mapObj.GetPositionAngle();
                             if (posAngle == null) continue;
+                            if (!posAngle.IsObjectOrMario()) continue;
                             Map3Object newMapObj = new Map3TangibilitySphereObject(posAngle);
                             Map3Tracker tracker = new Map3Tracker(newMapObj);
                             Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                         }
                     },
-                    () =>
+                    () => // Add Tracker for Draw Distance Sphere
                     {
                         foreach (Map3Object mapObj in _mapObjectList)
                         {
                             PositionAngle posAngle = mapObj.GetPositionAngle();
                             if (posAngle == null) continue;
+                            if (!posAngle.IsObjectOrMario()) continue;
                             Map3Object newMapObj = new Map3DrawDistanceSphereObject(posAngle);
                             Map3Tracker tracker = new Map3Tracker(newMapObj);
                             Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                         }
                     },
-                    () =>
+                    () => // Add Tracker for Resizable Cylinder
                     {
                         foreach (Map3Object mapObj in _mapObjectList)
                         {
@@ -121,7 +125,7 @@ namespace STROOP.Map3
                             Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                         }
                     },
-                    () =>
+                    () => // Add Tracker for Resizable Sphere
                     {
                         foreach (Map3Object mapObj in _mapObjectList)
                         {
@@ -133,7 +137,18 @@ namespace STROOP.Map3
                         }
                     },
                     () => { },
-                    () => { },
+                    () => // Add Tracker for Home
+                    {
+                        foreach (Map3Object mapObj in _mapObjectList)
+                        {
+                            PositionAngle posAngle = mapObj.GetPositionAngle();
+                            if (posAngle == null) continue;
+                            if (!posAngle.IsObject()) continue;
+                            Map3Object newMapObj = new Map3HomeObject(posAngle.GetObjAddress());
+                            Map3Tracker tracker = new Map3Tracker(newMapObj);
+                            Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        }
+                    },
                     () => { },
                     () => { },
                     () => { },

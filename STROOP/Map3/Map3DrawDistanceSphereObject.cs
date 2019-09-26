@@ -29,7 +29,7 @@ namespace STROOP.Map3
 
         protected override (float centerX, float centerZ, float radius) GetDimensions()
         {
-            uint objAddress = _posAngle.GetObjAddress().Value;
+            uint objAddress = _posAngle.GetObjAddress();
             float tangibleDist = Config.Stream.GetSingle(objAddress + ObjectConfig.DrawDistOffset);
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float thisY = (float)_posAngle.Y;

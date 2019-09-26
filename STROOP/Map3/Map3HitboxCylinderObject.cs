@@ -29,7 +29,7 @@ namespace STROOP.Map3
 
         protected override (float centerX, float centerZ, float radius) GetDimensions()
         {
-            uint objAddress = _posAngle.GetObjAddress().Value;
+            uint objAddress = _posAngle.GetObjAddress();
             float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
             return ((float)_posAngle.X, (float)_posAngle.Z, hitboxRadius);
         }

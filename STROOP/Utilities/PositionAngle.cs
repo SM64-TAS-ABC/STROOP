@@ -318,16 +318,27 @@ namespace STROOP.Utilities
             }
         }
 
-        public uint? GetObjAddress()
+        public bool IsObject()
+        {
+            return PosAngleType == PositionAngleTypeEnum.Obj;
+        }
+
+        public bool IsObjectOrMario()
+        {
+            return PosAngleType == PositionAngleTypeEnum.Obj ||
+                PosAngleType == PositionAngleTypeEnum.Mario;
+        }
+
+        public uint GetObjAddress()
         {
             switch (PosAngleType)
             {
                 case PositionAngleTypeEnum.Obj:
-                    return Address;
+                    return Address.Value;
                 case PositionAngleTypeEnum.Mario:
                     return Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
                 default:
-                    return null;
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
