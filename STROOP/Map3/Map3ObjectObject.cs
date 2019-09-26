@@ -16,54 +16,52 @@ namespace STROOP.Map3
 {
     public class Map3ObjectObject : Map3IconPointObject
     {
-        private readonly uint ObjAddress;
-        private readonly ObjectDataModel Obj;
-        private readonly PositionAngle PosAngle;
+        private readonly ObjectDataModel _obj;
+        private readonly PositionAngle _posAngle;
 
         private BehaviorCriteria? _behaviorCriteriaToDisplay;
 
         public Map3ObjectObject(uint objAddress)
             : base()
         {
-            ObjAddress = objAddress;
-            Obj = new ObjectDataModel(objAddress);
-            PosAngle = PositionAngle.Obj(objAddress);
+            _obj = new ObjectDataModel(objAddress);
+            _posAngle = PositionAngle.Obj(objAddress);
 
             _behaviorCriteriaToDisplay = null;
         }
 
         public override Image GetImage()
         {
-            Obj.Update();
-            return Obj.BehaviorAssociation.MapImage;
+            _obj.Update();
+            return _obj.BehaviorAssociation.MapImage;
         }
 
         public override PositionAngle GetPositionAngle()
         {
-            return PosAngle;
+            return _posAngle;
         }
 
         public override string GetName()
         {
-            return "Object"; // TODO change this
+            return _posAngle.GetMapName();
         }
 
         public override float GetY()
         {
-            return (float)PosAngle.Y;
+            return (float)_posAngle.Y;
         }
 
         public override bool ShouldDisplay(MapTrackerVisibilityType visiblityType)
         {
-            Obj.Update();
+            _obj.Update();
             switch (visiblityType)
             {
                 case MapTrackerVisibilityType.VisibleAlways:
                     return true;
                 case MapTrackerVisibilityType.VisibleWhenLoaded:
-                    return Obj.IsActive;
+                    return _obj.IsActive;
                 case MapTrackerVisibilityType.VisibleWhenThisBhvrIsLoaded:
-                    return Obj.IsActive && BehaviorCriteria.HasSameAssociation(Obj.BehaviorCriteria, _behaviorCriteriaToDisplay);
+                    return _obj.IsActive && BehaviorCriteria.HasSameAssociation(_obj.BehaviorCriteria, _behaviorCriteriaToDisplay);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -71,8 +69,8 @@ namespace STROOP.Map3
 
         public override void NotifyStoreBehaviorCritera()
         {
-            Obj.Update();
-            _behaviorCriteriaToDisplay = Obj.BehaviorCriteria;
+            _obj.Update();
+            _behaviorCriteriaToDisplay = _obj.BehaviorCriteria;
         }
     }
 }

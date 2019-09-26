@@ -52,5 +52,10 @@ namespace STROOP.Map3
         {
             return null;
         }
+
+        public override string ToString()
+        {
+            return GetName();
+        }
     }
 }

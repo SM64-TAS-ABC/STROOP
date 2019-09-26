@@ -16,16 +16,12 @@ namespace STROOP.Map3
 {
     public class Map3HomeObject : Map3IconPointObject
     {
-        private readonly uint ObjAddress;
-        private readonly PositionAngle ObjPosAngle;
-        private readonly PositionAngle HomePosAngle;
+        private readonly PositionAngle _posAngle;
 
         public Map3HomeObject(uint objAddress)
             : base()
         {
-            ObjAddress = objAddress;
-            ObjPosAngle = PositionAngle.Obj(objAddress);
-            HomePosAngle = PositionAngle.ObjHome(objAddress);
+            _posAngle = PositionAngle.ObjHome(objAddress);
         }
 
         public override Image GetImage()
@@ -35,17 +31,17 @@ namespace STROOP.Map3
 
         public override PositionAngle GetPositionAngle()
         {
-            return HomePosAngle;
+            return _posAngle;
         }
 
         public override string GetName()
         {
-            return "Home for " + ObjPosAngle.GetMapName();
+            return _posAngle.GetMapName();
         }
 
         public override float GetY()
         {
-            return (float)HomePosAngle.Y;
+            return (float)_posAngle.Y;
         }
     }
 }

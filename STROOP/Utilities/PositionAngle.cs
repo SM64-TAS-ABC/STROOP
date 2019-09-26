@@ -310,12 +310,20 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Camera:
                     return "Camera";
                 case PositionAngleTypeEnum.Obj:
-                    return "Obj";
+                    return GetMapNameForObject(Address.Value);
                 case PositionAngleTypeEnum.ObjHome:
-                    return "Obj Home";
+                    return "Home for " + GetMapNameForObject(Address.Value);
                 default:
                     return "(no name)";
             }
+        }
+
+        private static string GetMapNameForObject(uint address)
+        {
+            ObjectDataModel obj = new ObjectDataModel(address, true);
+            string objectName = Config.ObjectAssociations.GetObjectName(obj.BehaviorCriteria);
+            string slotLabel = Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(address, true);
+            return string.Format("[{0}] {1}", slotLabel, objectName);
         }
 
         public bool IsObject()

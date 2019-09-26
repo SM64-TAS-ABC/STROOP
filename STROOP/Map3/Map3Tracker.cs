@@ -431,5 +431,10 @@ namespace STROOP.Map3
         {
             _semaphoreList.ForEach(semaphore => semaphore.IsUsed = false);
         }
+
+        public override string ToString()
+        {
+            return string.Join(", ", _mapObjectList);
+        }
     }
 }
