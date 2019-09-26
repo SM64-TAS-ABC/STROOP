@@ -58,105 +58,7 @@ namespace STROOP.Map3
             comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
             comboBoxOrderType.SelectedItem = MapTrackerOrderType.OrderByY;
 
-            ControlUtilities.AddContextMenuStripFunctions(
-                pictureBoxCog,
-                new List<string>()
-                {
-                    "Add Tracker for Hitbox Cylinder",
-                    "Add Tracker for Tangibility Sphere",
-                    "Add Tracker for Draw Distance Sphere",
-                    "Add Tracker for Resizable Cylinder",
-                    "Add Tracker for Resizable Sphere",
-                    null,
-                    "Add Tracker for Home",
-                    "Add Tracker for Custom Cylinder for Home",
-                    "Add Tracker for Custom Sphere for Home",
-                    null,
-                    "Add Tracker for Floor Triangles",
-                    "Add Tracker for Wall Triangles",
-                    "Add Tracker for Ceiling Triangles",
-                },
-                new List<Action>()
-                {
-                    () => // Add Tracker for Hitbox Cylinder
-                    {
-                        foreach (Map3Object mapObj in _mapObjectList)
-                        {
-                            PositionAngle posAngle = mapObj.GetPositionAngle();
-                            if (posAngle == null) continue;
-                            if (!posAngle.IsObjectOrMario()) continue;
-                            Map3Object newMapObj = new Map3HitboxCylinderObject(posAngle);
-                            Map3Tracker tracker = new Map3Tracker(newMapObj);
-                            Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
-                        }
-                    },
-                    () => // Add Tracker for Tangibility Sphere
-                    {
-                        foreach (Map3Object mapObj in _mapObjectList)
-                        {
-                            PositionAngle posAngle = mapObj.GetPositionAngle();
-                            if (posAngle == null) continue;
-                            if (!posAngle.IsObjectOrMario()) continue;
-                            Map3Object newMapObj = new Map3TangibilitySphereObject(posAngle);
-                            Map3Tracker tracker = new Map3Tracker(newMapObj);
-                            Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
-                        }
-                    },
-                    () => // Add Tracker for Draw Distance Sphere
-                    {
-                        foreach (Map3Object mapObj in _mapObjectList)
-                        {
-                            PositionAngle posAngle = mapObj.GetPositionAngle();
-                            if (posAngle == null) continue;
-                            if (!posAngle.IsObjectOrMario()) continue;
-                            Map3Object newMapObj = new Map3DrawDistanceSphereObject(posAngle);
-                            Map3Tracker tracker = new Map3Tracker(newMapObj);
-                            Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
-                        }
-                    },
-                    () => // Add Tracker for Resizable Cylinder
-                    {
-                        foreach (Map3Object mapObj in _mapObjectList)
-                        {
-                            PositionAngle posAngle = mapObj.GetPositionAngle();
-                            if (posAngle == null) continue;
-                            Map3Object newMapObj = new Map3ResizableCylinderObject(posAngle);
-                            Map3Tracker tracker = new Map3Tracker(newMapObj);
-                            Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
-                        }
-                    },
-                    () => // Add Tracker for Resizable Sphere
-                    {
-                        foreach (Map3Object mapObj in _mapObjectList)
-                        {
-                            PositionAngle posAngle = mapObj.GetPositionAngle();
-                            if (posAngle == null) continue;
-                            Map3Object newMapObj = new Map3ResizableSphereObject(posAngle);
-                            Map3Tracker tracker = new Map3Tracker(newMapObj);
-                            Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
-                        }
-                    },
-                    () => { },
-                    () => // Add Tracker for Home
-                    {
-                        foreach (Map3Object mapObj in _mapObjectList)
-                        {
-                            PositionAngle posAngle = mapObj.GetPositionAngle();
-                            if (posAngle == null) continue;
-                            if (!posAngle.IsObject()) continue;
-                            Map3Object newMapObj = new Map3HomeObject(posAngle.GetObjAddress());
-                            Map3Tracker tracker = new Map3Tracker(newMapObj);
-                            Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
-                        }
-                    },
-                    () => { },
-                    () => { },
-                    () => { },
-                    () => { },
-                    () => { },
-                    () => { },
-                });
-            pictureBoxCog.Click += (se, ev) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
+            InitializeCogContextMenuStrip();
 
             UpdateControl();
 
@@ -184,6 +86,113 @@ namespace STROOP.Map3
             SetSize(MapObjectList.FirstOrDefault()?.DefaultSize);
             SetOpacity(MapObjectList.FirstOrDefault()?.DefaultOpacity, true);
             */
+        }
+
+        private void InitializeCogContextMenuStrip()
+        {
+            ToolStripMenuItem itemHitboxCylinder = new ToolStripMenuItem("Add Tracker for Hitbox Cylinder");
+            itemHitboxCylinder.Click += (sender, e) =>
+            {
+                foreach (Map3Object mapObj in _mapObjectList)
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) continue;
+                    if (!posAngle.IsObjectOrMario()) continue;
+                    Map3Object newMapObj = new Map3HitboxCylinderObject(posAngle);
+                    Map3Tracker tracker = new Map3Tracker(newMapObj);
+                    Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                }
+            };
+
+            ToolStripMenuItem itemTangibilitySphere = new ToolStripMenuItem("Add Tracker for Tangibility Sphere");
+            itemTangibilitySphere.Click += (sender, e) =>
+            {
+                foreach (Map3Object mapObj in _mapObjectList)
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) continue;
+                    if (!posAngle.IsObjectOrMario()) continue;
+                    Map3Object newMapObj = new Map3TangibilitySphereObject(posAngle);
+                    Map3Tracker tracker = new Map3Tracker(newMapObj);
+                    Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                }
+            };
+
+            ToolStripMenuItem itemDrawDistanceSphere = new ToolStripMenuItem("Add Tracker for Draw Distance Sphere");
+            itemDrawDistanceSphere.Click += (sender, e) =>
+            {
+                foreach (Map3Object mapObj in _mapObjectList)
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) continue;
+                    if (!posAngle.IsObjectOrMario()) continue;
+                    Map3Object newMapObj = new Map3DrawDistanceSphereObject(posAngle);
+                    Map3Tracker tracker = new Map3Tracker(newMapObj);
+                    Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                }
+            };
+
+            ToolStripMenuItem itemResizableCylinder = new ToolStripMenuItem("Add Tracker for Resizable Cylinder");
+            itemResizableCylinder.Click += (sender, e) =>
+            {
+                foreach (Map3Object mapObj in _mapObjectList)
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) continue;
+                    Map3Object newMapObj = new Map3ResizableCylinderObject(posAngle);
+                    Map3Tracker tracker = new Map3Tracker(newMapObj);
+                    Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                }
+            };
+
+            ToolStripMenuItem itemResizableSphere = new ToolStripMenuItem("Add Tracker for Resizable Sphere");
+            itemResizableSphere.Click += (sender, e) =>
+            {
+                foreach (Map3Object mapObj in _mapObjectList)
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) continue;
+                    Map3Object newMapObj = new Map3ResizableSphereObject(posAngle);
+                    Map3Tracker tracker = new Map3Tracker(newMapObj);
+                    Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                }
+            };
+
+            ToolStripMenuItem itemHome = new ToolStripMenuItem("Add Tracker for Home");
+            itemHome.Click += (sender, e) =>
+            {
+                foreach (Map3Object mapObj in _mapObjectList)
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) continue;
+                    if (!posAngle.IsObject()) continue;
+                    Map3Object newMapObj = new Map3HomeObject(posAngle.GetObjAddress());
+                    Map3Tracker tracker = new Map3Tracker(newMapObj);
+                    Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                }
+            };
+
+            ToolStripMenuItem itemResizableCylinderForHome = new ToolStripMenuItem("Add Tracker for Resizable Cylinder for Home");
+            ToolStripMenuItem itemResizableSphereForHome = new ToolStripMenuItem("Add Tracker for Resizable Sphere for Home");
+            ToolStripMenuItem itemFloorTriangles = new ToolStripMenuItem("Add Tracker for Floor Triangles");
+            ToolStripMenuItem itemWallTriangles = new ToolStripMenuItem("Add Tracker for Wall Triangles");
+            ToolStripMenuItem itemCeilingTriangles = new ToolStripMenuItem("Add Tracker for Ceiling Triangles");
+
+            pictureBoxCog.ContextMenuStrip = new ContextMenuStrip();
+            pictureBoxCog.ContextMenuStrip.Items.Add(itemHitboxCylinder);
+            pictureBoxCog.ContextMenuStrip.Items.Add(itemTangibilitySphere);
+            pictureBoxCog.ContextMenuStrip.Items.Add(itemDrawDistanceSphere);
+            pictureBoxCog.ContextMenuStrip.Items.Add(itemResizableCylinder);
+            pictureBoxCog.ContextMenuStrip.Items.Add(itemResizableSphere);
+            pictureBoxCog.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            pictureBoxCog.ContextMenuStrip.Items.Add(itemHome);
+            pictureBoxCog.ContextMenuStrip.Items.Add(itemResizableCylinderForHome);
+            pictureBoxCog.ContextMenuStrip.Items.Add(itemResizableSphereForHome);
+            pictureBoxCog.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            pictureBoxCog.ContextMenuStrip.Items.Add(itemFloorTriangles);
+            pictureBoxCog.ContextMenuStrip.Items.Add(itemWallTriangles);
+            pictureBoxCog.ContextMenuStrip.Items.Add(itemCeilingTriangles);
+            pictureBoxCog.Click += (se, ev) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
         }
 
         private void MapTracker_Load(object sender, EventArgs e)
