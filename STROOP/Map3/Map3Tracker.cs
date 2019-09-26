@@ -52,6 +52,38 @@ namespace STROOP.Map3
             comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
             comboBoxOrderType.SelectedItem = MapTrackerOrderType.OrderByY;
 
+            ControlUtilities.AddContextMenuStripFunctions(
+                pictureBoxCog,
+                new List<string>()
+                {
+                    "Add Tracker for Hitbox Cylinder",
+                    "Add Tracker for Tangibility Sphere",
+                    "Add Tracker for Draw Distance Sphere",
+                    "Add Tracker for Custom Cylinder",
+                    "Add Tracker for Custom Sphere",
+                    "Add Tracker for Home",
+                    "Add Tracker for Custom Cylinder for Home",
+                    "Add Tracker for Custom Sphere for Home",
+                    "Add Tracker for Floor Triangles",
+                    "Add Tracker for Wall Triangles",
+                    "Add Tracker for Ceiling Triangles",
+                },
+                new List<Action>()
+                {
+                    () => { },
+                    () => { },
+                    () => { },
+                    () => { },
+                    () => { },
+                    () => { },
+                    () => { },
+                    () => { },
+                    () => { },
+                    () => { },
+                    () => { },
+                });
+            pictureBoxCog.Click += (se, ev) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
+
             UpdateControl();
 
             /*
