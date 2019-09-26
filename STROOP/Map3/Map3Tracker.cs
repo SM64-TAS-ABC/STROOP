@@ -58,6 +58,8 @@ namespace STROOP.Map3
             comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
             comboBoxOrderType.SelectedItem = MapTrackerOrderType.OrderByY;
 
+            textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
+
             InitializeCogContextMenuStrip();
 
             UpdateControl();
@@ -78,7 +80,6 @@ namespace STROOP.Map3
             SetColor(MapObjectList.FirstOrDefault()?.MyColor);
 
             textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
-            textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
             comboBoxVisibilityType.SelectedValueChanged += (sender, e) =>
                 SetVisibilityType((MapTrackerVisibilityType)comboBoxVisibilityType.SelectedItem);
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
@@ -195,7 +196,7 @@ namespace STROOP.Map3
             };
 
             ToolStripMenuItem itemResizableSphereForHome = new ToolStripMenuItem("Add Tracker for Resizable Sphere for Home");
-            itemResizableCylinderForHome.Click += (sender, e) =>
+            itemResizableSphereForHome.Click += (sender, e) =>
             {
                 List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
@@ -267,41 +268,25 @@ namespace STROOP.Map3
 
         private void trackBarSize_ValueChanged(object sender, EventArgs e)
         {
-            /*
             SetSize(trackBarSize.Value);
-            */
         }
 
         private void textBoxSize_EnterAction()
         {
-            /*
             SetSize(ParsingUtilities.ParseFloatNullable(textBoxSize.Text));
-            */
         }
 
-        // sizeNullable is from 0 to 100, or null if controls should be refreshed
+        /** null if controls should be refreshed */
         private void SetSize(float? sizeNullable)
         {
-            /*
-            float scale = 0.2f;
-
-            float backupValue = 50;
-            float? oldValue = MapObjectList.FirstOrDefault()?.Size;
-            if (oldValue.HasValue)
+            bool updateMapObjs = sizeNullable != null;
+            float size = sizeNullable ?? _mapObjectList[0].Size;
+            if (updateMapObjs)
             {
-                backupValue = oldValue.Value / scale * 100;
+                _mapObjectList.ForEach(mapObj => mapObj.Size = size);
             }
-
-            float size = sizeNullable ?? backupValue;
-            if (size < 0) size = 0;
-            float scaledSize = (size / 100) * scale;
-            MapObjectList.ForEach(obj =>
-            {
-                obj.Size = scaledSize;
-            });
             ControlUtilities.SetTrackBarValueCapped(trackBarSize, size);
             textBoxSize.Text = size.ToString();
-            */
         }
 
         private void trackBarOpacity_ValueChanged(object sender, EventArgs e)

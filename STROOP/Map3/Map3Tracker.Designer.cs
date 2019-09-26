@@ -74,7 +74,7 @@ namespace STROOP.Map3
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel.Controls.Add(this.pictureBoxDownArrow, 4, 3);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxUpArrow, 4, 2);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxRedX, 4, 0);
@@ -197,7 +197,7 @@ namespace STROOP.Map3
             this.textBoxName.Multiline = true;
             this.textBoxName.Name = "textBoxName";
             this.tableLayoutPanel.SetRowSpan(this.textBoxName, 2);
-            this.textBoxName.Size = new System.Drawing.Size(63, 39);
+            this.textBoxName.Size = new System.Drawing.Size(62, 39);
             this.textBoxName.TabIndex = 10;
             this.textBoxName.Text = "Mario";
             this.textBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -235,12 +235,12 @@ namespace STROOP.Map3
             this.tableLayoutPanel.SetColumnSpan(this.trackBarOpacity, 2);
             this.trackBarOpacity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trackBarOpacity.Location = new System.Drawing.Point(73, 73);
-            this.trackBarOpacity.Maximum = 100;
+            this.trackBarOpacity.Maximum = 255;
             this.trackBarOpacity.Name = "trackBarOpacity";
             this.trackBarOpacity.Size = new System.Drawing.Size(113, 16);
             this.trackBarOpacity.TabIndex = 19;
             this.trackBarOpacity.TickFrequency = 10;
-            this.trackBarOpacity.Value = 40;
+            this.trackBarOpacity.Value = 255;
             this.trackBarOpacity.ValueChanged += new System.EventHandler(this.trackBarOpacity_ValueChanged);
             // 
             // trackBarSize
@@ -248,12 +248,12 @@ namespace STROOP.Map3
             this.tableLayoutPanel.SetColumnSpan(this.trackBarSize, 2);
             this.trackBarSize.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trackBarSize.Location = new System.Drawing.Point(73, 27);
-            this.trackBarSize.Maximum = 100;
+            this.trackBarSize.Maximum = 1000;
             this.trackBarSize.Name = "trackBarSize";
             this.trackBarSize.Size = new System.Drawing.Size(113, 16);
             this.trackBarSize.TabIndex = 19;
             this.trackBarSize.TickFrequency = 10;
-            this.trackBarSize.Value = 40;
+            this.trackBarSize.Value = 100;
             this.trackBarSize.ValueChanged += new System.EventHandler(this.trackBarSize_ValueChanged);
             // 
             // textBoxSize
@@ -265,7 +265,7 @@ namespace STROOP.Map3
             this.textBoxSize.Name = "textBoxSize";
             this.textBoxSize.Size = new System.Drawing.Size(62, 20);
             this.textBoxSize.TabIndex = 35;
-            this.textBoxSize.Text = "1024";
+            this.textBoxSize.Text = "100";
             this.textBoxSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxOpacity
@@ -277,7 +277,7 @@ namespace STROOP.Map3
             this.textBoxOpacity.Name = "textBoxOpacity";
             this.textBoxOpacity.Size = new System.Drawing.Size(62, 20);
             this.textBoxOpacity.TabIndex = 35;
-            this.textBoxOpacity.Text = "1024";
+            this.textBoxOpacity.Text = "255";
             this.textBoxOpacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelSize
