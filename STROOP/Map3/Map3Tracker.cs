@@ -86,12 +86,22 @@ namespace STROOP.Map3
                         {
                             PositionAngle posAngle = mapObj.GetPositionAngle();
                             if (posAngle == null) continue;
-                            Map3Object newMapObj = new Map3ResizableCircleObject(posAngle);
+                            Map3Object newMapObj = new Map3ResizableCylinderObject(posAngle);
                             Map3Tracker tracker = new Map3Tracker(newMapObj);
                             Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                         }
                     },
-                    () => { },
+                    () =>
+                    {
+                        foreach (Map3Object mapObj in _mapObjectList)
+                        {
+                            PositionAngle posAngle = mapObj.GetPositionAngle();
+                            if (posAngle == null) continue;
+                            Map3Object newMapObj = new Map3ResizableSphereObject(posAngle);
+                            Map3Tracker tracker = new Map3Tracker(newMapObj);
+                            Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        }
+                    },
                     () => { },
                     () => { },
                     () => { },

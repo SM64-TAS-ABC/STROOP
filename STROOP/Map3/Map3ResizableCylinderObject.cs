@@ -14,11 +14,11 @@ using System.Drawing.Imaging;
 
 namespace STROOP.Map3
 {
-    public class Map3ResizableCircleObject : Map3CircleObject
+    public class Map3ResizableCylinderObject : Map3CircleObject
     {
         private readonly PositionAngle _posAngle;
 
-        public Map3ResizableCircleObject(PositionAngle posAngle)
+        public Map3ResizableCylinderObject(PositionAngle posAngle)
             : base()
         {
             _posAngle = posAngle;
@@ -39,7 +39,7 @@ namespace STROOP.Map3
 
         public override string GetName()
         {
-            return "Circle for " + _posAngle.GetMapName();
+            return "Cylinder for " + _posAngle.GetMapName();
         }
 
         public override float GetY()
