@@ -25,9 +25,9 @@ namespace STROOP.Map3
             return Config.ObjectAssociations.MarioMapImage;
         }
 
-        protected override (double x, double y, double z, double angle) GetPositionAngle()
+        public override PositionAngle GetPositionAngle()
         {
-            return PositionAngle.Mario.GetValues();
+            return PositionAngle.Mario;
         }
 
         public override string GetName()

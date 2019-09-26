@@ -38,9 +38,9 @@ namespace STROOP.Map3
             return Obj.BehaviorAssociation.MapImage;
         }
 
-        protected override (double x, double y, double z, double angle) GetPositionAngle()
+        public override PositionAngle GetPositionAngle()
         {
-            return PosAngle.GetValues();
+            return PosAngle;
         }
 
         public override string GetName()

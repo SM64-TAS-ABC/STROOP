@@ -25,9 +25,9 @@ namespace STROOP.Map3
             return Config.ObjectAssociations.HolpImage;
         }
 
-        protected override (double x, double y, double z, double angle) GetPositionAngle()
+        public override PositionAngle GetPositionAngle()
         {
-            return PositionAngle.Holp.GetValues();
+            return PositionAngle.Holp;
         }
 
         public override string GetName()

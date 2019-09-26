@@ -43,5 +43,10 @@ namespace STROOP.Map3
         public virtual void NotifyStoreBehaviorCritera()
         {
         }
+
+        public virtual PositionAngle GetPositionAngle()
+        {
+            return null;
+        }
     }
 }

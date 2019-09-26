@@ -25,9 +25,9 @@ namespace STROOP.Map3
             return Config.ObjectAssociations.CameraMapImage;
         }
 
-        protected override (double x, double y, double z, double angle) GetPositionAngle()
+        public override PositionAngle GetPositionAngle()
         {
-            return PositionAngle.Camera.GetValues();
+            return PositionAngle.Camera;
         }
 
         public override string GetName()
