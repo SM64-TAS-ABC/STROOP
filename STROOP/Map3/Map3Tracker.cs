@@ -77,7 +77,17 @@ namespace STROOP.Map3
                 },
                 new List<Action>()
                 {
-                    () => { },
+                    () =>
+                    {
+                        foreach (Map3Object mapObj in _mapObjectList)
+                        {
+                            PositionAngle posAngle = mapObj.GetPositionAngle();
+                            if (posAngle == null) continue;
+                            Map3Object newMapObj = new Map3HitboxCylinderObject(posAngle);
+                            Map3Tracker tracker = new Map3Tracker(newMapObj);
+                            Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        }
+                    },
                     () => { },
                     () => { },
                     () =>
