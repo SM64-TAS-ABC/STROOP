@@ -28,7 +28,7 @@ namespace STROOP.Map3
                 0 : Map3Utilities.ConvertAngleForControl(0);
             foreach ((PointF loc, SizeF size) in dimensions)
             {
-                DrawTexture(loc, size, angle);
+                Map3Utilities.DrawTexture(TextureId, loc, size, angle, Opacity);
             }
         }
 

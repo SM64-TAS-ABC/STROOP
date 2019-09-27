@@ -29,7 +29,7 @@ namespace STROOP.Map3
             (float xPosPixels, float zPosPixels) = Map3Utilities.ConvertCoordsForControl((float)x, (float)z);
             float angleDegrees = Map3Utilities.ConvertAngleForControl(angle);
             SizeF size = Map3Utilities.ScaleImageSize(Image.Size, Size);
-            DrawTexture(new PointF(xPosPixels, zPosPixels), size, angleDegrees);
+            Map3Utilities.DrawTexture(TextureId, new PointF(xPosPixels, zPosPixels), size, angleDegrees, Opacity);
         }
     }
 }
