@@ -19,17 +19,20 @@ namespace STROOP.Managers
 {
     public class Map3Manager
     {
-        private Map3Object _mapObjBackground = new Map3BackgroundObject();
         private Map3Object _mapObjMap = new Map3MapObject();
-        private Map3Object _mapObjCurrentCell = new Map3CurrentCellObject();
-        private Map3Object _mapObjCurrentUnit = new Map3CurrentUnitObject();
-        private Map3Object _mapObjCellGridlines = new Map3CellGridlinesObject();
-        private Map3Object _mapObjUnitGridlines = new Map3UnitGridlinesObject();
+        private Map3Object _mapObjBackground = new Map3BackgroundObject();
+
+        private Map3Object _mapObjMario = new Map3MarioObject();
         private Map3Object _mapObjHolp = new Map3HolpObject();
         private Map3Object _mapObjCamera = new Map3CameraObject();
-        private Map3Object _mapObjMario = new Map3MarioObject();
         private Map3Object _mapObjFloorTri = new Map3FloorObject();
         private Map3Object _mapObjCeilingTri = new Map3CeilingObject();
+        private Map3Object _mapObjCellGridlines = new Map3CellGridlinesObject();
+        private Map3Object _mapObjCurrentCell = new Map3CurrentCellObject();
+        private Map3Object _mapObjUnitGridlines = new Map3UnitGridlinesObject();
+        private Map3Object _mapObjCurrentUnit = new Map3CurrentUnitObject();
+        private Map3Object _mapObjSelf = new Map3SelfObject();
+        private Map3Object _mapObjPoint = new Map3PointObject();
 
         private List<int> _currentObjIndexes = new List<int>();
 
@@ -148,6 +151,8 @@ namespace STROOP.Managers
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentCell, Map3SemaphoreManager.CurrentCell, _mapObjCurrentCell, false);
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackUnitGridlines, Map3SemaphoreManager.UnitGridlines, _mapObjUnitGridlines, false);
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentUnit, Map3SemaphoreManager.CurrentUnit, _mapObjCurrentUnit, false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackSelf, Map3SemaphoreManager.Self, _mapObjSelf, false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackPoint, Map3SemaphoreManager.Point, _mapObjPoint, false);
         }
 
         private void InitializeCheckboxSemaphore(
@@ -258,6 +263,8 @@ namespace STROOP.Managers
             Config.Map3Gui.checkBoxMap3OptionsTrackCurrentCell.Checked = Map3SemaphoreManager.CurrentCell.IsUsed;
             Config.Map3Gui.checkBoxMap3OptionsTrackUnitGridlines.Checked = Map3SemaphoreManager.UnitGridlines.IsUsed;
             Config.Map3Gui.checkBoxMap3OptionsTrackCurrentUnit.Checked = Map3SemaphoreManager.CurrentUnit.IsUsed;
+            Config.Map3Gui.checkBoxMap3OptionsTrackSelf.Checked = Map3SemaphoreManager.Self.IsUsed;
+            Config.Map3Gui.checkBoxMap3OptionsTrackPoint.Checked = Map3SemaphoreManager.Point.IsUsed;
 
             // Update object slots when tracker is deleted
             Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses
