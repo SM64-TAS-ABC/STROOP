@@ -18,8 +18,8 @@ namespace STROOP.Map3
         public Map3CellGridlinesObject()
             : base()
         {
-            Size = 3;
-            Color = Color.Black;
+            OutlineWidth = 3;
+            OutlineColor = Color.Black;
         }
 
         protected override List<(float x, float z)> GetVertices()

@@ -23,6 +23,8 @@ namespace STROOP.Map3
 
         public override void DrawOnControl()
         {
+            if (OutlineWidth == 0) return;
+
             List<(float x, float z)> vertices = GetVertices();
             List<(float x, float z)> veriticesForControl =
                 vertices.ConvertAll(vertex => Map3Utilities.ConvertCoordsForControl(vertex.x, vertex.z));
@@ -30,8 +32,8 @@ namespace STROOP.Map3
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
-            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
-            GL.LineWidth(Size);
+            GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, OpacityByte);
+            GL.LineWidth(OutlineWidth);
             GL.Begin(PrimitiveType.Lines);
             foreach ((float x, float z) in veriticesForControl)
             {

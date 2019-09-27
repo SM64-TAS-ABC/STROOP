@@ -27,7 +27,7 @@ namespace STROOP.Map3
             get => (int)(Opacity * 100);
             set => Opacity = value / 100.0;
         }
-        public float outlineWidth = 1;
+        public float OutlineWidth = 1;
         public Color Color = SystemColors.Control;
         public Color OutlineColor = Color.Black;
 

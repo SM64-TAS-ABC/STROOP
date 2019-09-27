@@ -289,10 +289,10 @@ namespace STROOP.Map3
         private void SetOutlineWidth(float? outlineWidthNullable)
         {
             bool updateMapObjs = outlineWidthNullable != null;
-            float outlineWidth = outlineWidthNullable ?? _mapObjectList[0].outlineWidth;
+            float outlineWidth = outlineWidthNullable ?? _mapObjectList[0].OutlineWidth;
             if (updateMapObjs)
             {
-                _mapObjectList.ForEach(mapObj => mapObj.outlineWidth = outlineWidth);
+                _mapObjectList.ForEach(mapObj => mapObj.OutlineWidth = outlineWidth);
             }
             ControlUtilities.SetTrackBarValueCapped(trackBarOutlineWidth, outlineWidth);
             textBoxOutlineWidth.Text = outlineWidth.ToString();
