@@ -304,6 +304,9 @@ namespace STROOP
                 checkBoxMap3OptionsTrackCurrentCell = checkBoxMap3OptionsTrackCurrentCell,
                 checkBoxMap3OptionsTrackUnitGridlines = checkBoxMap3OptionsTrackUnitGridlines,
                 checkBoxMap3OptionsTrackCurrentUnit = checkBoxMap3OptionsTrackCurrentUnit,
+                checkBoxMap3OptionsTrackNextPositions = checkBoxMap3OptionsTrackNextPositions,
+                checkBoxMap3OptionsTrackSelf = checkBoxMap3OptionsTrackSelf,
+                checkBoxMap3OptionsTrackPoint = checkBoxMap3OptionsTrackPoint,
                 checkBoxMap3OptionsEnablePuView = checkBoxMap3OptionsEnablePuView,
 
                 buttonMap3OptionsAddNewTracker = buttonMap3OptionsAddNewTracker,
