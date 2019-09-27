@@ -50,6 +50,11 @@ namespace STROOP.Map3
             this.labelOpacity = new System.Windows.Forms.Label();
             this.pictureBoxCog = new System.Windows.Forms.PictureBox();
             this.colorSelector = new STROOP.Controls.ColorSelector();
+            this.colorSelectorOutline = new STROOP.Controls.ColorSelector();
+            this.labelOutlineWidth = new System.Windows.Forms.Label();
+            this.textBoxOutlineWidth = new STROOP.BetterTextbox();
+            this.trackBarOutlineWidth = new System.Windows.Forms.TrackBar();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
@@ -60,6 +65,8 @@ namespace STROOP.Map3
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarOutlineWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -73,7 +80,9 @@ namespace STROOP.Map3
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanel.Controls.Add(this.trackBarOutlineWidth, 0, 5);
+            this.tableLayoutPanel.Controls.Add(this.colorSelectorOutline, 3, 4);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxDownArrow, 4, 3);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxUpArrow, 4, 2);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxRedX, 4, 0);
@@ -89,20 +98,23 @@ namespace STROOP.Map3
             this.tableLayoutPanel.Controls.Add(this.textBoxOpacity, 2, 2);
             this.tableLayoutPanel.Controls.Add(this.labelSize, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.labelOpacity, 1, 2);
-            this.tableLayoutPanel.Controls.Add(this.pictureBoxCog, 4, 4);
-            this.tableLayoutPanel.Controls.Add(this.colorSelector, 1, 4);
+            this.tableLayoutPanel.Controls.Add(this.colorSelector, 3, 3);
+            this.tableLayoutPanel.Controls.Add(this.pictureBoxCog, 4, 5);
+            this.tableLayoutPanel.Controls.Add(this.labelOutlineWidth, 1, 4);
+            this.tableLayoutPanel.Controls.Add(this.textBoxOutlineWidth, 2, 4);
+            this.tableLayoutPanel.Controls.Add(this.pictureBox1, 4, 4);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.RowCount = 5;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel.RowCount = 6;
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel.ShowBorder = false;
-            this.tableLayoutPanel.Size = new System.Drawing.Size(334, 116);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(334, 128);
             this.tableLayoutPanel.TabIndex = 40;
             // 
             // pictureBoxDownArrow
@@ -110,9 +122,9 @@ namespace STROOP.Map3
             this.pictureBoxDownArrow.BackgroundImage = global::STROOP.Properties.Resources.Down_Arrow;
             this.pictureBoxDownArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxDownArrow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxDownArrow.Location = new System.Drawing.Point(300, 73);
+            this.pictureBoxDownArrow.Location = new System.Drawing.Point(300, 67);
             this.pictureBoxDownArrow.Name = "pictureBoxDownArrow";
-            this.pictureBoxDownArrow.Size = new System.Drawing.Size(30, 16);
+            this.pictureBoxDownArrow.Size = new System.Drawing.Size(30, 14);
             this.pictureBoxDownArrow.TabIndex = 12;
             this.pictureBoxDownArrow.TabStop = false;
             this.pictureBoxDownArrow.Click += new System.EventHandler(this.pictureBoxDownArrow_Click);
@@ -122,9 +134,9 @@ namespace STROOP.Map3
             this.pictureBoxUpArrow.BackgroundImage = global::STROOP.Properties.Resources.Up_Arrow;
             this.pictureBoxUpArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxUpArrow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxUpArrow.Location = new System.Drawing.Point(300, 50);
+            this.pictureBoxUpArrow.Location = new System.Drawing.Point(300, 46);
             this.pictureBoxUpArrow.Name = "pictureBoxUpArrow";
-            this.pictureBoxUpArrow.Size = new System.Drawing.Size(30, 16);
+            this.pictureBoxUpArrow.Size = new System.Drawing.Size(30, 14);
             this.pictureBoxUpArrow.TabIndex = 12;
             this.pictureBoxUpArrow.TabStop = false;
             this.pictureBoxUpArrow.Click += new System.EventHandler(this.pictureBoxUpArrow_Click);
@@ -136,7 +148,7 @@ namespace STROOP.Map3
             this.pictureBoxRedX.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxRedX.Location = new System.Drawing.Point(300, 4);
             this.pictureBoxRedX.Name = "pictureBoxRedX";
-            this.pictureBoxRedX.Size = new System.Drawing.Size(30, 16);
+            this.pictureBoxRedX.Size = new System.Drawing.Size(30, 14);
             this.pictureBoxRedX.TabIndex = 12;
             this.pictureBoxRedX.TabStop = false;
             this.pictureBoxRedX.Click += new System.EventHandler(this.pictureBoxRedX_Click);
@@ -146,9 +158,9 @@ namespace STROOP.Map3
             this.pictureBoxEye.BackgroundImage = global::STROOP.Properties.Resources.image_eye_open2;
             this.pictureBoxEye.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxEye.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxEye.Location = new System.Drawing.Point(300, 27);
+            this.pictureBoxEye.Location = new System.Drawing.Point(300, 25);
             this.pictureBoxEye.Name = "pictureBoxEye";
-            this.pictureBoxEye.Size = new System.Drawing.Size(30, 16);
+            this.pictureBoxEye.Size = new System.Drawing.Size(30, 14);
             this.pictureBoxEye.TabIndex = 12;
             this.pictureBoxEye.TabStop = false;
             this.pictureBoxEye.Click += new System.EventHandler(this.pictureBoxEye_Click);
@@ -157,7 +169,7 @@ namespace STROOP.Map3
             // 
             this.comboBoxVisibilityType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxVisibilityType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxVisibilityType.Location = new System.Drawing.Point(192, 26);
+            this.comboBoxVisibilityType.Location = new System.Drawing.Point(192, 24);
             this.comboBoxVisibilityType.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxVisibilityType.Name = "comboBoxVisibilityType";
             this.comboBoxVisibilityType.Size = new System.Drawing.Size(102, 21);
@@ -177,9 +189,10 @@ namespace STROOP.Map3
             // 
             this.checkBoxRotates.AutoSize = true;
             this.checkBoxRotates.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxRotates.Location = new System.Drawing.Point(193, 50);
+            this.checkBoxRotates.Location = new System.Drawing.Point(193, 46);
+            this.checkBoxRotates.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.checkBoxRotates.Name = "checkBoxRotates";
-            this.checkBoxRotates.Size = new System.Drawing.Size(100, 16);
+            this.checkBoxRotates.Size = new System.Drawing.Size(103, 17);
             this.checkBoxRotates.TabIndex = 16;
             this.checkBoxRotates.Text = "Rotates";
             this.checkBoxRotates.UseVisualStyleBackColor = true;
@@ -191,11 +204,11 @@ namespace STROOP.Map3
             this.textBoxName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxName.Location = new System.Drawing.Point(4, 73);
+            this.textBoxName.Location = new System.Drawing.Point(4, 67);
             this.textBoxName.Multiline = true;
             this.textBoxName.Name = "textBoxName";
-            this.tableLayoutPanel.SetRowSpan(this.textBoxName, 2);
-            this.textBoxName.Size = new System.Drawing.Size(62, 39);
+            this.tableLayoutPanel.SetRowSpan(this.textBoxName, 3);
+            this.textBoxName.Size = new System.Drawing.Size(62, 57);
             this.textBoxName.TabIndex = 10;
             this.textBoxName.Text = "Mario";
             this.textBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -209,7 +222,7 @@ namespace STROOP.Map3
             this.panelPicture.Margin = new System.Windows.Forms.Padding(2);
             this.panelPicture.Name = "panelPicture";
             this.tableLayoutPanel.SetRowSpan(this.panelPicture, 3);
-            this.panelPicture.Size = new System.Drawing.Size(64, 64);
+            this.panelPicture.Size = new System.Drawing.Size(64, 58);
             this.panelPicture.TabIndex = 18;
             // 
             // pictureBoxPicture
@@ -223,7 +236,7 @@ namespace STROOP.Map3
             this.pictureBoxPicture.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxPicture.MaximumSize = new System.Drawing.Size(133, 130);
             this.pictureBoxPicture.Name = "pictureBoxPicture";
-            this.pictureBoxPicture.Size = new System.Drawing.Size(58, 58);
+            this.pictureBoxPicture.Size = new System.Drawing.Size(58, 52);
             this.pictureBoxPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPicture.TabIndex = 0;
             this.pictureBoxPicture.TabStop = false;
@@ -232,10 +245,10 @@ namespace STROOP.Map3
             // 
             this.tableLayoutPanel.SetColumnSpan(this.trackBarOpacity, 2);
             this.trackBarOpacity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBarOpacity.Location = new System.Drawing.Point(73, 73);
+            this.trackBarOpacity.Location = new System.Drawing.Point(73, 67);
             this.trackBarOpacity.Maximum = 255;
             this.trackBarOpacity.Name = "trackBarOpacity";
-            this.trackBarOpacity.Size = new System.Drawing.Size(113, 16);
+            this.trackBarOpacity.Size = new System.Drawing.Size(113, 14);
             this.trackBarOpacity.TabIndex = 19;
             this.trackBarOpacity.TickFrequency = 10;
             this.trackBarOpacity.Value = 255;
@@ -245,10 +258,10 @@ namespace STROOP.Map3
             // 
             this.tableLayoutPanel.SetColumnSpan(this.trackBarSize, 2);
             this.trackBarSize.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBarSize.Location = new System.Drawing.Point(73, 27);
+            this.trackBarSize.Location = new System.Drawing.Point(73, 25);
             this.trackBarSize.Maximum = 1000;
             this.trackBarSize.Name = "trackBarSize";
-            this.trackBarSize.Size = new System.Drawing.Size(113, 16);
+            this.trackBarSize.Size = new System.Drawing.Size(113, 14);
             this.trackBarSize.TabIndex = 19;
             this.trackBarSize.TickFrequency = 10;
             this.trackBarSize.Value = 100;
@@ -271,7 +284,7 @@ namespace STROOP.Map3
             this.textBoxOpacity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxOpacity.Location = new System.Drawing.Point(124, 50);
+            this.textBoxOpacity.Location = new System.Drawing.Point(124, 46);
             this.textBoxOpacity.Name = "textBoxOpacity";
             this.textBoxOpacity.Size = new System.Drawing.Size(62, 20);
             this.textBoxOpacity.TabIndex = 35;
@@ -282,7 +295,7 @@ namespace STROOP.Map3
             // 
             this.labelSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelSize.AutoSize = true;
-            this.labelSize.Location = new System.Drawing.Point(72, 10);
+            this.labelSize.Location = new System.Drawing.Point(72, 8);
             this.labelSize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSize.Name = "labelSize";
             this.labelSize.Size = new System.Drawing.Size(30, 13);
@@ -293,7 +306,7 @@ namespace STROOP.Map3
             // 
             this.labelOpacity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelOpacity.AutoSize = true;
-            this.labelOpacity.Location = new System.Drawing.Point(72, 56);
+            this.labelOpacity.Location = new System.Drawing.Point(72, 50);
             this.labelOpacity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelOpacity.Name = "labelOpacity";
             this.labelOpacity.Size = new System.Drawing.Size(46, 13);
@@ -305,24 +318,81 @@ namespace STROOP.Map3
             this.pictureBoxCog.BackgroundImage = global::STROOP.Properties.Resources.cog;
             this.pictureBoxCog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxCog.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxCog.Location = new System.Drawing.Point(300, 96);
+            this.pictureBoxCog.Location = new System.Drawing.Point(300, 109);
             this.pictureBoxCog.Name = "pictureBoxCog";
-            this.pictureBoxCog.Size = new System.Drawing.Size(30, 16);
+            this.pictureBoxCog.Size = new System.Drawing.Size(30, 15);
             this.pictureBoxCog.TabIndex = 17;
             this.pictureBoxCog.TabStop = false;
             // 
             // colorSelector
             // 
             this.colorSelector.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel.SetColumnSpan(this.colorSelector, 2);
             this.colorSelector.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.colorSelector.Location = new System.Drawing.Point(70, 93);
+            this.colorSelector.Location = new System.Drawing.Point(190, 64);
             this.colorSelector.Margin = new System.Windows.Forms.Padding(0);
             this.colorSelector.Name = "colorSelector";
             this.colorSelector.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.colorSelector.SelectedColor = System.Drawing.SystemColors.Control;
-            this.colorSelector.Size = new System.Drawing.Size(119, 22);
+            this.colorSelector.Size = new System.Drawing.Size(106, 20);
             this.colorSelector.TabIndex = 38;
+            // 
+            // colorSelectorOutline
+            // 
+            this.colorSelectorOutline.BackColor = System.Drawing.Color.Transparent;
+            this.colorSelectorOutline.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.colorSelectorOutline.Location = new System.Drawing.Point(190, 85);
+            this.colorSelectorOutline.Margin = new System.Windows.Forms.Padding(0);
+            this.colorSelectorOutline.Name = "colorSelectorOutline";
+            this.colorSelectorOutline.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.colorSelectorOutline.SelectedColor = System.Drawing.SystemColors.Control;
+            this.colorSelectorOutline.Size = new System.Drawing.Size(106, 20);
+            this.colorSelectorOutline.TabIndex = 39;
+            // 
+            // labelOutlineWidth
+            // 
+            this.labelOutlineWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelOutlineWidth.AutoSize = true;
+            this.labelOutlineWidth.Location = new System.Drawing.Point(72, 92);
+            this.labelOutlineWidth.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelOutlineWidth.Name = "labelOutlineWidth";
+            this.labelOutlineWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelOutlineWidth.TabIndex = 40;
+            this.labelOutlineWidth.Text = "Width:";
+            // 
+            // textBoxOutlineWidth
+            // 
+            this.textBoxOutlineWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxOutlineWidth.Location = new System.Drawing.Point(124, 88);
+            this.textBoxOutlineWidth.Name = "textBoxOutlineWidth";
+            this.textBoxOutlineWidth.Size = new System.Drawing.Size(62, 20);
+            this.textBoxOutlineWidth.TabIndex = 41;
+            this.textBoxOutlineWidth.Text = "1";
+            this.textBoxOutlineWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // trackBarOutlineWidth
+            // 
+            this.tableLayoutPanel.SetColumnSpan(this.trackBarOutlineWidth, 2);
+            this.trackBarOutlineWidth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBarOutlineWidth.Location = new System.Drawing.Point(73, 109);
+            this.trackBarOutlineWidth.Maximum = 255;
+            this.trackBarOutlineWidth.Name = "trackBarOutlineWidth";
+            this.trackBarOutlineWidth.Size = new System.Drawing.Size(113, 15);
+            this.trackBarOutlineWidth.TabIndex = 42;
+            this.trackBarOutlineWidth.TickFrequency = 10;
+            this.trackBarOutlineWidth.Value = 255;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::STROOP.Properties.Resources.cog;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Location = new System.Drawing.Point(300, 88);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 14);
+            this.pictureBox1.TabIndex = 43;
+            this.pictureBox1.TabStop = false;
             // 
             // Map3Tracker
             // 
@@ -332,7 +402,7 @@ namespace STROOP.Map3
             this.Controls.Add(this.tableLayoutPanel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Map3Tracker";
-            this.Size = new System.Drawing.Size(334, 116);
+            this.Size = new System.Drawing.Size(334, 128);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).EndInit();
@@ -344,6 +414,8 @@ namespace STROOP.Map3
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarOutlineWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -369,5 +441,10 @@ namespace STROOP.Map3
         private System.Windows.Forms.Label labelSize;
         private System.Windows.Forms.Label labelOpacity;
         private ColorSelector colorSelector;
+        private System.Windows.Forms.TrackBar trackBarOutlineWidth;
+        private ColorSelector colorSelectorOutline;
+        private System.Windows.Forms.Label labelOutlineWidth;
+        private BetterTextbox textBoxOutlineWidth;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
