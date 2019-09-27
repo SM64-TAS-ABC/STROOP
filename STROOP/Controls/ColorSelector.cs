@@ -29,7 +29,7 @@ namespace STROOP.Controls
             {
                 Color originalColor = SelectedColor;
                 panelColorSelector.BackColor = value;
-                textBoxColorSelector.Text = ColorUtilities.ConvertColorToDecimal(value);
+                textBoxColorSelector.SubmitText(ColorUtilities.ConvertColorToDecimal(value));
                 if (value != originalColor)
                 {
                     _colorChangeActions.ForEach(action => action(value));

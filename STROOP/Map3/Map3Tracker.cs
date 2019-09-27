@@ -62,11 +62,13 @@ namespace STROOP.Map3
             SetOpacity(null);
             SetOutlineWidth(null);
             SetColor(null);
+            SetOutlineColor(null);
 
             textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
             textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
             textBoxOutlineWidth.AddEnterAction(() => textBoxOutlineWidth_EnterAction());
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
+            colorSelectorOutline.AddColorChangeAction((Color color) => SetOutlineColor(color));
 
             InitializePlusContextMenuStrip();
 
@@ -325,6 +327,18 @@ namespace STROOP.Map3
                 _mapObjectList.ForEach(mapObj => mapObj.Color = color);
             }
             colorSelector.SelectedColor = color;
+        }
+
+        /** null if controls should be refreshed */
+        public void SetOutlineColor(Color? outlineColorNullable)
+        {
+            bool updateMapObjs = outlineColorNullable != null;
+            Color outlineColor = outlineColorNullable ?? _mapObjectList[0].OutlineColor;
+            if (updateMapObjs)
+            {
+                _mapObjectList.ForEach(mapObj => mapObj.OutlineColor = outlineColor);
+            }
+            colorSelectorOutline.SelectedColor = outlineColor;
         }
 
         private void pictureBoxRedX_Click(object sender, EventArgs e)
