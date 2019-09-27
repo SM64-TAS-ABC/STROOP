@@ -367,6 +367,7 @@
     <Compile Include="Map3\Map3HitboxCylinderObject.cs" />
     <Compile Include="Map3\Map3DrawDistanceSphereObject.cs" />
     <Compile Include="Map3\Map3HomeObject.cs" />
+    <Compile Include="Map3\Map3NextPositionsObject.cs" />
     <Compile Include="Map3\Map3PointObject.cs" />
     <Compile Include="Map3\Map3SelfObject.cs" />
     <Compile Include="Map3\Map3TangibilitySphereObject.cs" />

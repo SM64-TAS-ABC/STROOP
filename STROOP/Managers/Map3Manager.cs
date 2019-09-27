@@ -31,6 +31,7 @@ namespace STROOP.Managers
         private Map3Object _mapObjCurrentCell = new Map3CurrentCellObject();
         private Map3Object _mapObjUnitGridlines = new Map3UnitGridlinesObject();
         private Map3Object _mapObjCurrentUnit = new Map3CurrentUnitObject();
+        private Map3Object _mapObjNextPositions = new Map3NextPositionsObject();
         private Map3Object _mapObjSelf = new Map3SelfObject();
         private Map3Object _mapObjPoint = new Map3PointObject();
 
@@ -151,6 +152,7 @@ namespace STROOP.Managers
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentCell, Map3SemaphoreManager.CurrentCell, _mapObjCurrentCell, false);
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackUnitGridlines, Map3SemaphoreManager.UnitGridlines, _mapObjUnitGridlines, false);
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentUnit, Map3SemaphoreManager.CurrentUnit, _mapObjCurrentUnit, false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackNextPositions, Map3SemaphoreManager.NextPositions, _mapObjNextPositions, false);
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackSelf, Map3SemaphoreManager.Self, _mapObjSelf, false);
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackPoint, Map3SemaphoreManager.Point, _mapObjPoint, false);
         }
@@ -263,6 +265,7 @@ namespace STROOP.Managers
             Config.Map3Gui.checkBoxMap3OptionsTrackCurrentCell.Checked = Map3SemaphoreManager.CurrentCell.IsUsed;
             Config.Map3Gui.checkBoxMap3OptionsTrackUnitGridlines.Checked = Map3SemaphoreManager.UnitGridlines.IsUsed;
             Config.Map3Gui.checkBoxMap3OptionsTrackCurrentUnit.Checked = Map3SemaphoreManager.CurrentUnit.IsUsed;
+            Config.Map3Gui.checkBoxMap3OptionsTrackNextPositions.Checked = Map3SemaphoreManager.NextPositions.IsUsed;
             Config.Map3Gui.checkBoxMap3OptionsTrackSelf.Checked = Map3SemaphoreManager.Self.IsUsed;
             Config.Map3Gui.checkBoxMap3OptionsTrackPoint.Checked = Map3SemaphoreManager.Point.IsUsed;
 

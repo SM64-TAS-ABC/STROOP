@@ -21,6 +21,7 @@ namespace STROOP.Map3
         public static Map3Semaphore CurrentCell = new Map3Semaphore();
         public static Map3Semaphore UnitGridlines = new Map3Semaphore();
         public static Map3Semaphore CurrentUnit = new Map3Semaphore();
+        public static Map3Semaphore NextPositions = new Map3Semaphore();
         public static Map3Semaphore Self = new Map3Semaphore();
         public static Map3Semaphore Point = new Map3Semaphore();
 
