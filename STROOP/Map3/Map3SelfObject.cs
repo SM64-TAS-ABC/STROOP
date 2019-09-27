@@ -27,7 +27,7 @@ namespace STROOP.Map3
 
         public override PositionAngle GetPositionAngle()
         {
-            return SpecialConfig.SelfPA;
+            return PositionAngle.Self;
         }
 
         public override string GetName()
@@ -37,7 +37,7 @@ namespace STROOP.Map3
 
         public override float GetY()
         {
-            return (float)SpecialConfig.SelfY;
+            return (float)PositionAngle.Self.Y;
         }
     }
 }

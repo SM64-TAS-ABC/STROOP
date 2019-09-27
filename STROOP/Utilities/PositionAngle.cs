@@ -325,6 +325,10 @@ namespace STROOP.Utilities
                     return GetMapNameForObject(Address.Value);
                 case PositionAngleTypeEnum.ObjHome:
                     return "Home for " + GetMapNameForObject(Address.Value);
+                case PositionAngleTypeEnum.Self:
+                    return "Self";
+                case PositionAngleTypeEnum.Point:
+                    return "Point";
                 default:
                     return "(no name)";
             }
