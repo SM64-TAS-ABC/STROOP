@@ -81,5 +81,10 @@ namespace STROOP.Map3
 
             return id;
         }
+
+        public override void CleanUp()
+        {
+            GL.DeleteTexture(TextureId);
+        }
     }
 }
