@@ -121,6 +121,33 @@ namespace STROOP.Managers
                 Config.Map3Graphics.ChangeAngle(-1, Config.Map3Gui.textBoxMap3ControllersAngleChange.Text);
             Config.Map3Gui.buttonMap3ControllersAngleCW.Click += (sender, e) =>
                 Config.Map3Graphics.ChangeAngle(1, Config.Map3Gui.textBoxMap3ControllersAngleChange.Text);
+            ControlUtilities.AddContextMenuStripFunctions(
+                Config.Map3Gui.groupBoxMap3ControllersAngle,
+                new List<string>()
+                {
+                    "Use Mario Angle",
+                    "Use Camera Angle",
+                    "Use Centripetal Angle",
+                },
+                new List<Action>()
+                {
+                    () =>
+                    {
+                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                        Config.Map3Graphics.SetCustomAngle(marioAngle.ToString());
+                    },
+                    () =>
+                    {
+                        ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+                        Config.Map3Graphics.SetCustomAngle(cameraAngle.ToString());
+                    },
+                    () =>
+                    {
+                        ushort centripetalAngle = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset);
+                        double centripetalAngleReversed = MoreMath.ReverseAngle(centripetalAngle);
+                        Config.Map3Graphics.SetCustomAngle(centripetalAngleReversed.ToString());
+                    },
+                });
 
             // TextBoxes for Custom Values
             Config.Map3Gui.textBoxMap3ControllersScaleCustom.AddEnterAction(() =>
