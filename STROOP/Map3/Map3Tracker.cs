@@ -66,12 +66,12 @@ namespace STROOP.Map3
             textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
 
-            InitializeCogContextMenuStrip();
+            InitializePlusContextMenuStrip();
 
             UpdateControl();
         }
 
-        private void InitializeCogContextMenuStrip()
+        private void InitializePlusContextMenuStrip()
         {
             ToolStripMenuItem itemHitboxCylinder = new ToolStripMenuItem("Add Tracker for Hitbox Cylinder");
             itemHitboxCylinder.Click += (sender, e) =>
@@ -197,21 +197,21 @@ namespace STROOP.Map3
             ToolStripMenuItem itemWallTriangles = new ToolStripMenuItem("Add Tracker for Wall Triangles");
             ToolStripMenuItem itemCeilingTriangles = new ToolStripMenuItem("Add Tracker for Ceiling Triangles");
 
-            pictureBoxCog.ContextMenuStrip = new ContextMenuStrip();
-            pictureBoxCog.ContextMenuStrip.Items.Add(itemHitboxCylinder);
-            pictureBoxCog.ContextMenuStrip.Items.Add(itemTangibilitySphere);
-            pictureBoxCog.ContextMenuStrip.Items.Add(itemDrawDistanceSphere);
-            pictureBoxCog.ContextMenuStrip.Items.Add(itemResizableCylinder);
-            pictureBoxCog.ContextMenuStrip.Items.Add(itemResizableSphere);
-            pictureBoxCog.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            pictureBoxCog.ContextMenuStrip.Items.Add(itemHome);
-            pictureBoxCog.ContextMenuStrip.Items.Add(itemResizableCylinderForHome);
-            pictureBoxCog.ContextMenuStrip.Items.Add(itemResizableSphereForHome);
-            pictureBoxCog.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            pictureBoxCog.ContextMenuStrip.Items.Add(itemFloorTriangles);
-            pictureBoxCog.ContextMenuStrip.Items.Add(itemWallTriangles);
-            pictureBoxCog.ContextMenuStrip.Items.Add(itemCeilingTriangles);
-            pictureBoxCog.Click += (se, ev) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
+            pictureBoxPlus.ContextMenuStrip = new ContextMenuStrip();
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemHitboxCylinder);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemTangibilitySphere);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemDrawDistanceSphere);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemResizableCylinder);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemResizableSphere);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemHome);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemResizableCylinderForHome);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemResizableSphereForHome);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemFloorTriangles);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemWallTriangles);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemCeilingTriangles);
+            pictureBoxPlus.Click += (sender, e) => pictureBoxPlus.ContextMenuStrip.Show(Cursor.Position);
         }
 
         public List<Map3Object> GetMapObjectsToDisplay()

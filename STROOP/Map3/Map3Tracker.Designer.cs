@@ -48,7 +48,7 @@ namespace STROOP.Map3
             this.textBoxOpacity = new STROOP.BetterTextbox();
             this.labelSize = new System.Windows.Forms.Label();
             this.labelOpacity = new System.Windows.Forms.Label();
-            this.pictureBoxCog = new System.Windows.Forms.PictureBox();
+            this.pictureBoxPlus = new System.Windows.Forms.PictureBox();
             this.colorSelector = new STROOP.Controls.ColorSelector();
             this.colorSelectorOutline = new STROOP.Controls.ColorSelector();
             this.labelOutlineWidth = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@ namespace STROOP.Map3
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOutlineWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -99,7 +99,7 @@ namespace STROOP.Map3
             this.tableLayoutPanel.Controls.Add(this.labelSize, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.labelOpacity, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.colorSelector, 3, 3);
-            this.tableLayoutPanel.Controls.Add(this.pictureBoxCog, 4, 5);
+            this.tableLayoutPanel.Controls.Add(this.pictureBoxPlus, 4, 5);
             this.tableLayoutPanel.Controls.Add(this.labelOutlineWidth, 1, 4);
             this.tableLayoutPanel.Controls.Add(this.textBoxOutlineWidth, 2, 4);
             this.tableLayoutPanel.Controls.Add(this.pictureBox1, 4, 4);
@@ -313,16 +313,16 @@ namespace STROOP.Map3
             this.labelOpacity.TabIndex = 37;
             this.labelOpacity.Text = "Opacity:";
             // 
-            // pictureBoxCog
+            // pictureBoxPlus
             // 
-            this.pictureBoxCog.BackgroundImage = global::STROOP.Properties.Resources.cog;
-            this.pictureBoxCog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxCog.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxCog.Location = new System.Drawing.Point(300, 109);
-            this.pictureBoxCog.Name = "pictureBoxCog";
-            this.pictureBoxCog.Size = new System.Drawing.Size(30, 15);
-            this.pictureBoxCog.TabIndex = 17;
-            this.pictureBoxCog.TabStop = false;
+            this.pictureBoxPlus.BackgroundImage = global::STROOP.Properties.Resources.image_plus;
+            this.pictureBoxPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxPlus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxPlus.Location = new System.Drawing.Point(300, 109);
+            this.pictureBoxPlus.Name = "pictureBoxPlus";
+            this.pictureBoxPlus.Size = new System.Drawing.Size(30, 15);
+            this.pictureBoxPlus.TabIndex = 17;
+            this.pictureBoxPlus.TabStop = false;
             // 
             // colorSelector
             // 
@@ -413,7 +413,7 @@ namespace STROOP.Map3
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOutlineWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -431,7 +431,7 @@ namespace STROOP.Map3
         private System.Windows.Forms.ComboBox comboBoxVisibilityType;
         private System.Windows.Forms.ComboBox comboBoxOrderType;
         private System.Windows.Forms.CheckBox checkBoxRotates;
-        private System.Windows.Forms.PictureBox pictureBoxCog;
+        private System.Windows.Forms.PictureBox pictureBoxPlus;
         private System.Windows.Forms.Panel panelPicture;
         private IntPictureBox pictureBoxPicture;
         private System.Windows.Forms.TrackBar trackBarOpacity;
