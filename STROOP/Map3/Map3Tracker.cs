@@ -60,10 +60,12 @@ namespace STROOP.Map3
 
             SetSize(null);
             SetOpacity(null);
+            SetOutlineWidth(null);
             SetColor(null);
 
             textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
             textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
+            textBoxOutlineWidth.AddEnterAction(() => textBoxOutlineWidth_EnterAction());
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
 
             InitializePlusContextMenuStrip();
@@ -269,6 +271,29 @@ namespace STROOP.Map3
             }
             ControlUtilities.SetTrackBarValueCapped(trackBarOpacity, opacity);
             textBoxOpacity.Text = opacity.ToString();
+        }
+
+        private void trackBarOutlineWidth_ValueChanged(object sender, EventArgs e)
+        {
+            SetOutlineWidth(trackBarOutlineWidth.Value);
+        }
+
+        private void textBoxOutlineWidth_EnterAction()
+        {
+            SetOutlineWidth(ParsingUtilities.ParseFloatNullable(textBoxOutlineWidth.Text));
+        }
+
+        /** null if controls should be refreshed */
+        private void SetOutlineWidth(float? outlineWidthNullable)
+        {
+            bool updateMapObjs = outlineWidthNullable != null;
+            float outlineWidth = outlineWidthNullable ?? _mapObjectList[0].outlineWidth;
+            if (updateMapObjs)
+            {
+                _mapObjectList.ForEach(mapObj => mapObj.outlineWidth = outlineWidth);
+            }
+            ControlUtilities.SetTrackBarValueCapped(trackBarOutlineWidth, outlineWidth);
+            textBoxOutlineWidth.Text = outlineWidth.ToString();
         }
 
         private void checkBoxRotates_CheckedChanged(object sender, EventArgs e)

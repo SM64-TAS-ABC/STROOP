@@ -382,6 +382,7 @@ namespace STROOP.Map3
             this.trackBarOutlineWidth.TabIndex = 42;
             this.trackBarOutlineWidth.TickFrequency = 10;
             this.trackBarOutlineWidth.Value = 255;
+            this.trackBarOutlineWidth.ValueChanged += new System.EventHandler(this.trackBarOutlineWidth_ValueChanged);
             // 
             // pictureBox1
             // 
