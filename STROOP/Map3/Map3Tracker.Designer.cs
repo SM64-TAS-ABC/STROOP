@@ -80,7 +80,7 @@ namespace STROOP.Map3
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
             this.tableLayoutPanel.Controls.Add(this.trackBarOutlineWidth, 0, 5);
             this.tableLayoutPanel.Controls.Add(this.colorSelectorOutline, 3, 4);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxDownArrow, 4, 3);
@@ -122,12 +122,12 @@ namespace STROOP.Map3
             this.tableLayoutPanel.SetColumnSpan(this.trackBarOutlineWidth, 2);
             this.trackBarOutlineWidth.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trackBarOutlineWidth.Location = new System.Drawing.Point(73, 109);
-            this.trackBarOutlineWidth.Maximum = 255;
             this.trackBarOutlineWidth.Name = "trackBarOutlineWidth";
             this.trackBarOutlineWidth.Size = new System.Drawing.Size(113, 15);
             this.trackBarOutlineWidth.TabIndex = 42;
             this.trackBarOutlineWidth.TickFrequency = 10;
-            this.trackBarOutlineWidth.Value = 255;
+            this.trackBarOutlineWidth.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarOutlineWidth.Value = 1;
             this.trackBarOutlineWidth.ValueChanged += new System.EventHandler(this.trackBarOutlineWidth_ValueChanged);
             // 
             // colorSelectorOutline
@@ -271,12 +271,12 @@ namespace STROOP.Map3
             this.tableLayoutPanel.SetColumnSpan(this.trackBarOpacity, 2);
             this.trackBarOpacity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trackBarOpacity.Location = new System.Drawing.Point(73, 67);
-            this.trackBarOpacity.Maximum = 255;
+            this.trackBarOpacity.Maximum = 100;
             this.trackBarOpacity.Name = "trackBarOpacity";
             this.trackBarOpacity.Size = new System.Drawing.Size(113, 14);
             this.trackBarOpacity.TabIndex = 19;
-            this.trackBarOpacity.TickFrequency = 10;
-            this.trackBarOpacity.Value = 255;
+            this.trackBarOpacity.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarOpacity.Value = 100;
             this.trackBarOpacity.ValueChanged += new System.EventHandler(this.trackBarOpacity_ValueChanged);
             // 
             // trackBarSize
@@ -284,11 +284,11 @@ namespace STROOP.Map3
             this.tableLayoutPanel.SetColumnSpan(this.trackBarSize, 2);
             this.trackBarSize.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trackBarSize.Location = new System.Drawing.Point(73, 25);
-            this.trackBarSize.Maximum = 1000;
+            this.trackBarSize.Maximum = 100;
             this.trackBarSize.Name = "trackBarSize";
             this.trackBarSize.Size = new System.Drawing.Size(113, 14);
             this.trackBarSize.TabIndex = 19;
-            this.trackBarSize.TickFrequency = 10;
+            this.trackBarSize.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarSize.Value = 100;
             this.trackBarSize.ValueChanged += new System.EventHandler(this.trackBarSize_ValueChanged);
             // 
@@ -313,7 +313,7 @@ namespace STROOP.Map3
             this.textBoxOpacity.Name = "textBoxOpacity";
             this.textBoxOpacity.Size = new System.Drawing.Size(62, 20);
             this.textBoxOpacity.TabIndex = 35;
-            this.textBoxOpacity.Text = "255";
+            this.textBoxOpacity.Text = "100";
             this.textBoxOpacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelSize

@@ -254,22 +254,22 @@ namespace STROOP.Map3
 
         private void trackBarOpacity_ValueChanged(object sender, EventArgs e)
         {
-            SetOpacity((byte)trackBarOpacity.Value);
+            SetOpacity(trackBarOpacity.Value);
         }
 
         private void textBoxOpacity_EnterAction()
         {
-            SetOpacity(ParsingUtilities.ParseByteNullable(textBoxOpacity.Text));
+            SetOpacity(ParsingUtilities.ParseIntNullable(textBoxOpacity.Text));
         }
 
         /** null if controls should be refreshed */
-        private void SetOpacity(byte? opacityNullable)
+        private void SetOpacity(int? opacityNullable)
         {
             bool updateMapObjs = opacityNullable != null;
-            byte opacity = opacityNullable ?? _mapObjectList[0].OpacityByte;
+            int opacity = opacityNullable ?? _mapObjectList[0].OpacityPercent;
             if (updateMapObjs)
             {
-                _mapObjectList.ForEach(mapObj => mapObj.OpacityByte = opacity);
+                _mapObjectList.ForEach(mapObj => mapObj.OpacityPercent = opacity);
             }
             ControlUtilities.SetTrackBarValueCapped(trackBarOpacity, opacity);
             textBoxOpacity.Text = opacity.ToString();
