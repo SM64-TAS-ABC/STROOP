@@ -30,6 +30,10 @@ namespace STROOP.Structs
         public Image HomeImage;
         public Image IntendedNextPositionImage;
         public Image MarioMapImage;
+        public Image BlueMarioMapImage;
+        public Image GreenMarioMapImage;
+        public Image OrangeMarioMapImage;
+        public Image PurpleMarioMapImage;
         public Image TriangleFloorImage;
         public Image TriangleWallImage;
         public Image TriangleCeilingImage;
@@ -243,6 +247,10 @@ namespace STROOP.Structs
             EmptyImage?.Dispose();
             MarioImage?.Dispose();
             MarioMapImage?.Dispose();
+            BlueMarioMapImage?.Dispose();
+            GreenMarioMapImage?.Dispose();
+            OrangeMarioMapImage?.Dispose();
+            PurpleMarioMapImage?.Dispose();
             HolpImage?.Dispose();
             HomeImage?.Dispose();
             HudImage?.Dispose();

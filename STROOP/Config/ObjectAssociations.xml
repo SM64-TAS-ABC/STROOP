@@ -21,6 +21,18 @@
   <IntendedNextPosition>
     <MapImage path="Intended Next Position.png"/>
   </IntendedNextPosition>
+  <BlueMario>
+    <MapImage path="Mario Blue.png"/>
+  </BlueMario>
+  <GreenMario>
+    <MapImage path="Mario Green.png"/>
+  </GreenMario>
+  <OrangeMario>
+    <MapImage path="Mario Orange.png"/>
+  </OrangeMario>
+  <PurpleMario>
+    <MapImage path="Mario Purple.png"/>
+  </PurpleMario>
   <TriangleFloor>
     <MapImage path="Triangle Floor.png"/>
   </TriangleFloor>

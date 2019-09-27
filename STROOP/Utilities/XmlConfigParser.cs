@@ -231,6 +231,7 @@ namespace STROOP.Utilities
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", overlayImageDir = "",
                 marioImagePath = "", holpMapImagePath = "", homeMapImagePath = "", intendedNextPositionImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
+                blueMarioMapImagePath = "", greenMarioMapImagePath = "", orangeMarioMapImagePath = "", purpleMarioMapImagePath = "",
                 triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "",
                 selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
                 stoodOnOverlayImagePath = "", riddenOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
@@ -300,6 +301,22 @@ namespace STROOP.Utilities
 
                     case "Holp":
                         holpMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "BlueMario":
+                        blueMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "GreenMario":
+                        greenMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "OrangeMario":
+                        orangeMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "PurpleMario":
+                        purpleMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "Home":
@@ -517,6 +534,10 @@ namespace STROOP.Utilities
             assoc.HomeImage = Image.FromFile(mapImageDir + homeMapImagePath);
             assoc.IntendedNextPositionImage = Image.FromFile(mapImageDir + intendedNextPositionImagePath);
             assoc.CameraMapImage = Image.FromFile(mapImageDir + cameraMapImagePath);
+            assoc.BlueMarioMapImage = Image.FromFile(mapImageDir + blueMarioMapImagePath);
+            assoc.GreenMarioMapImage = Image.FromFile(mapImageDir + greenMarioMapImagePath);
+            assoc.OrangeMarioMapImage = Image.FromFile(mapImageDir + orangeMarioMapImagePath);
+            assoc.PurpleMarioMapImage = Image.FromFile(mapImageDir + purpleMarioMapImagePath);
 
             assoc.AddEmptyAssociation(); // Need to do this after Empty Image is set
 
