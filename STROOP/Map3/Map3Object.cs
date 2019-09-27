@@ -37,10 +37,6 @@ namespace STROOP.Map3
 
         public abstract void DrawOnControl();
 
-        public virtual void CleanUp()
-        {
-        }
-
         public abstract string GetName();
 
         public abstract Image GetImage();
