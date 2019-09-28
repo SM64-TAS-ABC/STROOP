@@ -10,6 +10,7 @@ using STROOP.Utilities;
 using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
+using System.Windows.Forms;
 
 namespace STROOP.Map3
 {
@@ -31,6 +32,8 @@ namespace STROOP.Map3
         public Color Color = SystemColors.Control;
         public Color OutlineColor = Color.Black;
         public bool ShowTriUnits = false;
+
+        protected ContextMenuStrip _contextMenuStrip = null;
 
         public Map3Object()
         {
@@ -64,6 +67,19 @@ namespace STROOP.Map3
         public override string ToString()
         {
             return GetName();
+        }
+
+        public virtual ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem("There are no additional options");
+                item.Enabled = false;
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(item);
+            }
+
+            return _contextMenuStrip;
         }
     }
 }

@@ -56,7 +56,7 @@ namespace STROOP.Map3
             this.pictureBoxPlus = new System.Windows.Forms.PictureBox();
             this.labelOutlineWidth = new System.Windows.Forms.Label();
             this.textBoxOutlineWidth = new STROOP.BetterTextbox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCog = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOutlineWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
@@ -68,7 +68,7 @@ namespace STROOP.Map3
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -105,7 +105,7 @@ namespace STROOP.Map3
             this.tableLayoutPanel.Controls.Add(this.pictureBoxPlus, 4, 5);
             this.tableLayoutPanel.Controls.Add(this.labelOutlineWidth, 1, 4);
             this.tableLayoutPanel.Controls.Add(this.textBoxOutlineWidth, 2, 4);
-            this.tableLayoutPanel.Controls.Add(this.pictureBox1, 4, 4);
+            this.tableLayoutPanel.Controls.Add(this.pictureBoxCog, 4, 4);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -413,16 +413,16 @@ namespace STROOP.Map3
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::STROOP.Properties.Resources.cog;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(298, 86);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 18);
-            this.pictureBox1.TabIndex = 43;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxCog.BackgroundImage = global::STROOP.Properties.Resources.cog;
+            this.pictureBoxCog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxCog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxCog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxCog.Location = new System.Drawing.Point(298, 86);
+            this.pictureBoxCog.Margin = new System.Windows.Forms.Padding(1);
+            this.pictureBoxCog.Name = "pictureBox1";
+            this.pictureBoxCog.Size = new System.Drawing.Size(34, 18);
+            this.pictureBoxCog.TabIndex = 43;
+            this.pictureBoxCog.TabStop = false;
             // 
             // Map3Tracker
             // 
@@ -445,7 +445,7 @@ namespace STROOP.Map3
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -475,7 +475,7 @@ namespace STROOP.Map3
         private ColorSelector colorSelectorOutline;
         private System.Windows.Forms.Label labelOutlineWidth;
         private BetterTextbox textBoxOutlineWidth;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxCog;
         private System.Windows.Forms.CheckBox checkBoxShowTriUnits;
     }
 }

@@ -76,6 +76,9 @@ namespace STROOP.Map3
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
             colorSelectorOutline.AddColorChangeAction((Color color) => SetOutlineColor(color));
 
+            pictureBoxCog.ContextMenuStrip = _mapObjectList[0].GetContextMenuStrip();
+            pictureBoxCog.Click += (sender, e) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
+
             InitializePlusContextMenuStrip();
 
             UpdateControl();

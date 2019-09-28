@@ -10,14 +10,18 @@ using STROOP.Utilities;
 using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
+using System.Windows.Forms;
 
 namespace STROOP.Map3
 {
     public class Map3NextPositionsObject : Map3Object
     {
-        private int _fullStepTexture = -1;
-        private int _quarterStepTexture = -1;
+        private int _redMarioTex = -1;
+        private int _blueMarioTex = -1;
+        private int _orangeMarioText = -1;
 
+        private bool _useColoredMarios = true;
+        private bool _showQuarterSteps = true;
         private double _numFrames = 4;
 
         public Map3NextPositionsObject()
@@ -42,14 +46,19 @@ namespace STROOP.Map3
 
         public override void DrawOnControl()
         {
-            if (_fullStepTexture == -1)
+            if (_redMarioTex == -1)
             {
-                _fullStepTexture = Map3Utilities.LoadTexture(
+                _redMarioTex = Map3Utilities.LoadTexture(
+                    Config.ObjectAssociations.MarioMapImage as Bitmap);
+            }
+            if (_blueMarioTex == -1)
+            {
+                _blueMarioTex = Map3Utilities.LoadTexture(
                     Config.ObjectAssociations.BlueMarioMapImage as Bitmap);
             }
-            if (_quarterStepTexture == -1)
+            if (_orangeMarioText == -1)
             {
-                _quarterStepTexture = Map3Utilities.LoadTexture(
+                _orangeMarioText = Map3Utilities.LoadTexture(
                     Config.ObjectAssociations.OrangeMarioMapImage as Bitmap);
             }
 
@@ -69,10 +78,39 @@ namespace STROOP.Map3
             SizeF size = Map3Utilities.ScaleImageSize(Config.ObjectAssociations.BlueMarioMapImage.Size, Size);
             for (int i = positionsOnControl.Count - 1; i >= 0; i--)
             {
-                int tex = (i % 4 == 3) ? _fullStepTexture : _quarterStepTexture;
+                int tex = (i % 4 == 3) ? _blueMarioTex : _orangeMarioText;
                 PointF point = new PointF(positionsOnControl[i].Item1, positionsOnControl[i].Item2);
                 Map3Utilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
             }
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                ToolStripMenuItem itemToggleUseColoredMarios = new ToolStripMenuItem("Toggle Use Colored Marios");
+                itemToggleUseColoredMarios.Click += (sender, e) => _useColoredMarios = !_useColoredMarios;
+
+                ToolStripMenuItem itemToggleShowQuarterSteps = new ToolStripMenuItem("Toggle Show Quarter Steps");
+                itemToggleShowQuarterSteps.Click += (sender, e) => _showQuarterSteps = !_showQuarterSteps;
+
+                ToolStripMenuItem itemSetNumFrames = new ToolStripMenuItem("Set Num Frames...");
+                itemSetNumFrames.Click += (sender, e) =>
+                {
+                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter num frames to the nearest 1/4th.");
+                    double? numFramesNullable = ParsingUtilities.ParseDoubleNullable(text);
+                    if (!numFramesNullable.HasValue) return;
+                    double numFrames = numFramesNullable.Value;
+                    _numFrames = numFrames;
+                };
+
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemToggleUseColoredMarios);
+                _contextMenuStrip.Items.Add(itemToggleShowQuarterSteps);
+                _contextMenuStrip.Items.Add(itemSetNumFrames);
+            }
+
+            return _contextMenuStrip;
         }
     }
 }
