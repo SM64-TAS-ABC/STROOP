@@ -438,6 +438,7 @@ namespace STROOP.Map3
         public void UpdateControl()
         {
             textBoxName.Text = string.Join(", ", _mapObjectList.ConvertAll(obj => obj.GetName()));
+
             List<Image> images = _mapObjectList.ConvertAll(mapObj => mapObj.GetImage());
             if (!images.SequenceEqual(_images))
             {
@@ -457,6 +458,8 @@ namespace STROOP.Map3
                 }
                 _currentVisiblityType = currentVisibilityType;
             }
+
+            _mapObjectList.ForEach(mapObj => mapObj.Update());
 
             if (_semaphoreList.Any(semaphore => !semaphore.IsUsed))
             {

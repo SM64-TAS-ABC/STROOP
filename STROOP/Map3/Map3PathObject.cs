@@ -31,8 +31,6 @@ namespace STROOP.Map3
 
         public override void DrawOnControl()
         {
-            UpdateDictionary();
-
             if (OutlineWidth == 0) return;
 
             List<(float x, float z)> vertices = _dictionary.Values.ToList();
@@ -53,7 +51,7 @@ namespace STROOP.Map3
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        private void UpdateDictionary()
+        public override void Update()
         {
             uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
             float x = (float)_posAngle.X;

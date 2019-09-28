@@ -81,5 +81,9 @@ namespace STROOP.Map3
 
             return _contextMenuStrip;
         }
+
+        public virtual void Update()
+        {
+        }
     }
 }
