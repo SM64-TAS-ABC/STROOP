@@ -92,11 +92,21 @@ namespace STROOP.Map3
         {
             if (_contextMenuStrip == null)
             {
-                ToolStripMenuItem itemToggleUseColoredMarios = new ToolStripMenuItem("Toggle Use Colored Marios");
-                itemToggleUseColoredMarios.Click += (sender, e) => _useColoredMarios = !_useColoredMarios;
+                ToolStripMenuItem itemUseColoredMarios = new ToolStripMenuItem("Use Colored Marios");
+                itemUseColoredMarios.Click += (sender, e) =>
+                {
+                    _useColoredMarios = !_useColoredMarios;
+                    itemUseColoredMarios.Checked = _useColoredMarios;
+                };
+                itemUseColoredMarios.Checked = _useColoredMarios;
 
-                ToolStripMenuItem itemToggleShowQuarterSteps = new ToolStripMenuItem("Toggle Show Quarter Steps");
-                itemToggleShowQuarterSteps.Click += (sender, e) => _showQuarterSteps = !_showQuarterSteps;
+                ToolStripMenuItem itemShowQuarterSteps = new ToolStripMenuItem("Show Quarter Steps");
+                itemShowQuarterSteps.Click += (sender, e) =>
+                {
+                    _showQuarterSteps = !_showQuarterSteps;
+                    itemShowQuarterSteps.Checked = _showQuarterSteps;
+                };
+                itemShowQuarterSteps.Checked = _showQuarterSteps;
 
                 ToolStripMenuItem itemSetNumFrames = new ToolStripMenuItem("Set Num Frames...");
                 itemSetNumFrames.Click += (sender, e) =>
@@ -109,8 +119,8 @@ namespace STROOP.Map3
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(itemToggleUseColoredMarios);
-                _contextMenuStrip.Items.Add(itemToggleShowQuarterSteps);
+                _contextMenuStrip.Items.Add(itemUseColoredMarios);
+                _contextMenuStrip.Items.Add(itemShowQuarterSteps);
                 _contextMenuStrip.Items.Add(itemSetNumFrames);
             }
 
