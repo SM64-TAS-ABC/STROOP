@@ -1,4 +1,5 @@
-﻿using STROOP.Models;
+﻿using STROOP.Extensions;
+using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System;
@@ -85,6 +86,32 @@ namespace STROOP.Utilities
             byte? processGroup = obj?.CurrentProcessGroup;
             Color color = ObjectSlotsConfig.GetProcessingGroupColor(processGroup);
             return color;
+        }
+
+        public static Image CreateMultiObjectImage(List<BehaviorCriteria> criterias, int width, int height)
+        {
+            Image multiBitmap = new Bitmap(width, height);
+            using (Graphics gfx = Graphics.FromImage(multiBitmap))
+            {
+                int count = criterias.Count();
+                int numCols = (int)Math.Ceiling(Math.Sqrt(count));
+                int numRows = (int)Math.Ceiling(count / (double)numCols);
+                int imageSize = Math.Min(width, height) / numCols;
+                foreach (int row in Enumerable.Range(0, numRows))
+                {
+                    foreach (int col in Enumerable.Range(0, numCols))
+                    {
+                        int index = row * numCols + col;
+                        if (index >= count) break;
+                        Image image = Config.ObjectAssociations.GetObjectImage(criterias[index], false);
+                        Rectangle rect = new Rectangle(col * imageSize, row * imageSize, imageSize, imageSize);
+                        Rectangle zoomedRect = rect.Zoom(image.Size);
+                        gfx.DrawImage(image, zoomedRect);
+                    }
+                }
+            }
+
+            return multiBitmap;
         }
     }
 }

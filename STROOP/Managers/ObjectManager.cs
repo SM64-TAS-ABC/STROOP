@@ -522,7 +522,7 @@ namespace STROOP.Managers
             }
             else
             {
-                IEnumerable<BehaviorCriteria> newBehaviors = _objects.Select(o => o.BehaviorCriteria);
+                List<BehaviorCriteria> newBehaviors = _objects.ConvertAll(o => o.BehaviorCriteria);
 
                 // Find new generalized criteria
                 BehaviorCriteria? multiBehavior = _objects.First().BehaviorCriteria;
@@ -554,7 +554,7 @@ namespace STROOP.Managers
                 {
                     // Generate new image
                     _multiImage?.Dispose();
-                    _multiImage = CreateMultiObjectImage(newBehaviors);
+                    _multiImage = ObjectUtilities.CreateMultiObjectImage(newBehaviors, 256, 256);
 
                     _lastBehaviors = newBehaviors.ToList();
                 }
@@ -566,32 +566,6 @@ namespace STROOP.Managers
                 SlotPos = "";
                 _objAddressLabelValue.Text = "";
             }
-        }
-
-        private Image CreateMultiObjectImage(IEnumerable<BehaviorCriteria> criterias)
-        {
-            Image multiBitmap = new Bitmap(256, 256);
-            using (Graphics gfx = Graphics.FromImage(multiBitmap))
-            {
-                int count = criterias.Count();
-                int numCols = (int)Math.Ceiling(Math.Sqrt(count));
-                int numRows = (int)Math.Ceiling(count / (double)numCols);
-                int imageSize = 256 / numCols;
-                foreach (int row in Enumerable.Range(0, numRows))
-                {
-                    foreach (int col in Enumerable.Range(0, numCols))
-                    {
-                        int index = row * numCols + col;
-                        if (index >= count) break;
-                        Image image = Config.ObjectAssociations.GetObjectImage(criterias.ElementAt(index), false);
-                        Rectangle rect = new Rectangle(col * imageSize, row * imageSize, imageSize, imageSize);
-                        Rectangle zoomedRect = rect.Zoom(image.Size);
-                        gfx.DrawImage(image, zoomedRect);
-                    }
-                }
-            }
-
-            return multiBitmap;
         }
     }
 }
