@@ -375,8 +375,8 @@ namespace STROOP.Structs
             itemSetCascadingValues.Click += (sender, e) =>
             {
                 List<WatchVariableControl> controls = getVars();
-                object value1 = DialogUtilities.GetStringFromDialog();
-                object value2 = DialogUtilities.GetStringFromDialog();
+                object value1 = DialogUtilities.GetStringFromDialog(labelText: "Base Value:");
+                object value2 = DialogUtilities.GetStringFromDialog(labelText: "Offset Value:");
                 if (value1 == null || value2 == null) return;
                 double? number1 = ParsingUtilities.ParseDoubleNullable(value1);
                 double? number2 = ParsingUtilities.ParseDoubleNullable(value2);

@@ -12,20 +12,25 @@ namespace STROOP.Forms
     {
         public string StringValue;
 
-        public ValueForm(string initialText = "")
+        public ValueForm(
+            string textBoxText = "",
+            string labelText = "Enter Value:",
+            string buttonText = "Okay")
         {
             InitializeComponent();
-            betterTextbox1.Text = initialText;
+            textBox1.Text = textBoxText;
+            label1.Text = labelText;
+            button1.Text = buttonText;
 
             Action okayAction = () =>
             {
-                StringValue = betterTextbox1.Text;
+                StringValue = textBox1.Text;
                 DialogResult = DialogResult.OK;
                 Close();
             };
 
             button1.Click += (sender, e) => okayAction();
-            betterTextbox1.AddEnterAction(okayAction);
+            textBox1.AddEnterAction(okayAction);
         }
     }
 }

@@ -155,9 +155,12 @@ namespace STROOP.Structs
             }
         }
 
-        public static string GetStringFromDialog(string initialText = "")
+        public static string GetStringFromDialog(
+            string textBoxText = "",
+            string labelText = "Enter Value:",
+            string buttonText = "Okay")
         {
-            ValueForm valueForm = new ValueForm(initialText);
+            ValueForm valueForm = new ValueForm(textBoxText, labelText, buttonText);
             if (valueForm.ShowDialog() == DialogResult.OK)
                 return valueForm.StringValue;
             return null;
