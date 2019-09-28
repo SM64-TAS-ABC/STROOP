@@ -32,6 +32,8 @@ namespace STROOP.Map3
         private MapTrackerVisibilityType _currentVisiblityType;
         private bool _showTriUnits;
 
+        private string _customName;
+
         public Map3Tracker(Map3Object mapObj, List<Map3Semaphore> semaphoreList = null)
             : this(new List<Map3Object>() { mapObj }, semaphoreList)
         {
@@ -54,6 +56,14 @@ namespace STROOP.Map3
             _isVisible = true;
             _currentVisiblityType = MapTrackerVisibilityType.VisibleWhenLoaded;
             _showTriUnits = false;
+
+            _customName = null;
+            textBoxName.AddEnterAction(() => _customName = textBoxName.Text);
+            textBoxName.AddLostFocusAction(() => _customName = textBoxName.Text);
+            textBoxName.ContextMenuStrip = new ContextMenuStrip();
+            ToolStripMenuItem itemResetCustomName = new ToolStripMenuItem("Reset Custom Name");
+            itemResetCustomName.Click += (sender, e) => _customName = null;
+            textBoxName.ContextMenuStrip.Items.Add(itemResetCustomName);
 
             tableLayoutPanel.BorderWidth = 2;
             tableLayoutPanel.ShowBorder = true;
@@ -437,7 +447,7 @@ namespace STROOP.Map3
 
         public void UpdateControl()
         {
-            textBoxName.Text = string.Join(", ", _mapObjectList.ConvertAll(obj => obj.GetName()));
+            textBoxName.SubmitTextLoosely(_customName ?? string.Join(", ", _mapObjectList.ConvertAll(obj => obj.GetName())));
 
             List<Image> images = _mapObjectList.ConvertAll(mapObj => mapObj.GetImage());
             if (!images.SequenceEqual(_images))
