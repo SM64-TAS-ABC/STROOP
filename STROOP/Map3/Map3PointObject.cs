@@ -18,7 +18,7 @@ namespace STROOP.Map3
         public Map3PointObject()
             : base()
         {
-            Rotates = true;
+            InternalRotates = true;
         }
 
         public override Image GetImage()

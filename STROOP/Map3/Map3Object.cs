@@ -31,7 +31,14 @@ namespace STROOP.Map3
         public float OutlineWidth = 1;
         public Color Color = SystemColors.Control;
         public Color OutlineColor = Color.Black;
-        public bool Rotates = false;
+
+        public bool? CustomRotates = null;
+        public bool InternalRotates = false;
+        public bool Rotates
+        {
+            get => CustomRotates ?? InternalRotates;
+        }
+
         public bool ShowTriUnits = false;
 
         protected ContextMenuStrip _contextMenuStrip = null;

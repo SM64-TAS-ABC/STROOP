@@ -65,6 +65,11 @@ namespace STROOP.Map3
             itemResetCustomName.Click += (sender, e) => _customName = null;
             textBoxName.ContextMenuStrip.Items.Add(itemResetCustomName);
 
+            checkBoxRotates.ContextMenuStrip = new ContextMenuStrip();
+            ToolStripMenuItem itemResetCustomRotates = new ToolStripMenuItem("Reset Custom Rotates");
+            itemResetCustomRotates.Click += (sender, e) => _mapObjectList.ForEach(mapObj => mapObj.CustomRotates = null);
+            checkBoxRotates.ContextMenuStrip.Items.Add(itemResetCustomRotates);
+
             tableLayoutPanel.BorderWidth = 2;
             tableLayoutPanel.ShowBorder = true;
 
@@ -377,21 +382,8 @@ namespace STROOP.Map3
 
         private void checkBoxRotates_CheckedChanged(object sender, EventArgs e)
         {
-            /*
-            SetRotates(checkBoxRotates.Checked);
-            */
-        }
-
-        public void SetRotates(bool? rotates)
-        {
-            /*
-            if (!rotates.HasValue) return;
-            checkBoxRotates.Checked = rotates.Value;
-            MapObjectList.ForEach(obj =>
-            {
-                obj.Rotates = rotates.Value;
-            });
-            */
+            bool newCustomRotates = checkBoxRotates.Checked;
+            _mapObjectList.ForEach(mapObj => mapObj.CustomRotates = newCustomRotates);
         }
 
         /** null if controls should be refreshed */

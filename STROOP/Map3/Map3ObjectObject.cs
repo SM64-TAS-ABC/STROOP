@@ -27,7 +27,6 @@ namespace STROOP.Map3
             _obj = new ObjectDataModel(objAddress);
             _posAngle = PositionAngle.Obj(objAddress);
 
-            Rotates = true;
             _behaviorCriteriaToDisplay = null;
         }
 
@@ -77,7 +76,7 @@ namespace STROOP.Map3
         public override void Update()
         {
             _obj.Update();
-            Rotates = Config.ObjectAssociations.GetObjectMapRotates(_obj.BehaviorCriteria);
+            InternalRotates = Config.ObjectAssociations.GetObjectMapRotates(_obj.BehaviorCriteria);
         }
     }
 }
