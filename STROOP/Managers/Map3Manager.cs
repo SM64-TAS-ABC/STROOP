@@ -25,8 +25,8 @@ namespace STROOP.Managers
         private Map3Object _mapObjMario = new Map3MarioObject();
         private Map3Object _mapObjHolp = new Map3HolpObject();
         private Map3Object _mapObjCamera = new Map3CameraObject();
-        private Map3Object _mapObjFloorTri = new Map3FloorObject();
-        private Map3Object _mapObjCeilingTri = new Map3CeilingObject();
+        private Map3Object _mapObjFloorTri = new Map3MarioFloorObject();
+        private Map3Object _mapObjCeilingTri = new Map3MarioCeilingObject();
         private Map3Object _mapObjCellGridlines = new Map3CellGridlinesObject();
         private Map3Object _mapObjCurrentCell = new Map3CurrentCellObject();
         private Map3Object _mapObjUnitGridlines = new Map3UnitGridlinesObject();

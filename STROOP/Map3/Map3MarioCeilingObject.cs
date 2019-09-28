@@ -15,29 +15,29 @@ using STROOP.Models;
 
 namespace STROOP.Map3
 {
-    public class Map3FloorObject : Map3TriangleObject
+    public class Map3MarioCeilingObject : Map3TriangleObject
     {
-        public Map3FloorObject()
+        public Map3MarioCeilingObject()
             : base()
         {
             Opacity = 0.5;
-            Color = Color.Blue;
+            Color = Color.Red;
         }
 
         protected override List<List<(float x, float z)>> GetVertexLists()
         {
-            uint triAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            uint triAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
             return Map3Utilities.GetTriangleVertexLists(triAddress);
         }
 
         public override string GetName()
         {
-            return "Floor Tri";
+            return "Ceiling Tri";
         }
 
         public override Image GetImage()
         {
-            return Config.ObjectAssociations.TriangleFloorImage;
+            return Config.ObjectAssociations.TriangleCeilingImage;
         }
     }
 }
