@@ -23,9 +23,6 @@ namespace STROOP.Map3
             : base()
         {
             _objAddress = objAddress;
-
-            Opacity = 0.5;
-            Color = Color.Green;
         }
 
         protected override List<(float x1, float z1, float x2, float z2, bool xProjection)> GetWallData()

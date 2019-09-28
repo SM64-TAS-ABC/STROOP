@@ -19,6 +19,9 @@ namespace STROOP.Map3
         public Map3WallObject()
             : base()
         {
+            Size = 50;
+            Opacity = 0.5;
+            Color = Color.Green;
         }
 
         public override void DrawOnControl()
@@ -27,7 +30,7 @@ namespace STROOP.Map3
             foreach ((float x1, float z1, float x2, float z2, bool xProjection) in wallData)
             {
                 float angle = (float)MoreMath.AngleTo_Radians(x1, z1, x2, z2);
-                float projection = 50 / (float)Math.Abs(xProjection ? Math.Cos(angle) : Math.Sin(angle));
+                float projection = Size / (float)Math.Abs(xProjection ? Math.Cos(angle) : Math.Sin(angle));
                 List<List<(float x, float z)>> quads = new List<List<(float x, float z)>>();
                 Action<float, float> addQuad = (float xAdd, float zAdd) =>
                 {
