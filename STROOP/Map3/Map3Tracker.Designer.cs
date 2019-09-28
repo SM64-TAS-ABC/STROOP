@@ -81,7 +81,7 @@ namespace STROOP.Map3
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel.Controls.Add(this.checkBoxShowTriUnits, 0, 5);
             this.tableLayoutPanel.Controls.Add(this.trackBarOutlineWidth, 0, 5);
             this.tableLayoutPanel.Controls.Add(this.colorSelectorOutline, 3, 3);
@@ -167,7 +167,7 @@ namespace STROOP.Map3
             this.pictureBoxDownArrow.Location = new System.Drawing.Point(298, 65);
             this.pictureBoxDownArrow.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBoxDownArrow.Name = "pictureBoxDownArrow";
-            this.pictureBoxDownArrow.Size = new System.Drawing.Size(35, 18);
+            this.pictureBoxDownArrow.Size = new System.Drawing.Size(34, 18);
             this.pictureBoxDownArrow.TabIndex = 12;
             this.pictureBoxDownArrow.TabStop = false;
             this.pictureBoxDownArrow.Click += new System.EventHandler(this.pictureBoxDownArrow_Click);
@@ -181,7 +181,7 @@ namespace STROOP.Map3
             this.pictureBoxUpArrow.Location = new System.Drawing.Point(298, 44);
             this.pictureBoxUpArrow.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBoxUpArrow.Name = "pictureBoxUpArrow";
-            this.pictureBoxUpArrow.Size = new System.Drawing.Size(35, 18);
+            this.pictureBoxUpArrow.Size = new System.Drawing.Size(34, 18);
             this.pictureBoxUpArrow.TabIndex = 12;
             this.pictureBoxUpArrow.TabStop = false;
             this.pictureBoxUpArrow.Click += new System.EventHandler(this.pictureBoxUpArrow_Click);
@@ -195,7 +195,7 @@ namespace STROOP.Map3
             this.pictureBoxRedX.Location = new System.Drawing.Point(298, 2);
             this.pictureBoxRedX.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBoxRedX.Name = "pictureBoxRedX";
-            this.pictureBoxRedX.Size = new System.Drawing.Size(35, 18);
+            this.pictureBoxRedX.Size = new System.Drawing.Size(34, 18);
             this.pictureBoxRedX.TabIndex = 12;
             this.pictureBoxRedX.TabStop = false;
             this.pictureBoxRedX.Click += new System.EventHandler(this.pictureBoxRedX_Click);
@@ -209,7 +209,7 @@ namespace STROOP.Map3
             this.pictureBoxEye.Location = new System.Drawing.Point(298, 23);
             this.pictureBoxEye.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBoxEye.Name = "pictureBoxEye";
-            this.pictureBoxEye.Size = new System.Drawing.Size(35, 18);
+            this.pictureBoxEye.Size = new System.Drawing.Size(34, 18);
             this.pictureBoxEye.TabIndex = 12;
             this.pictureBoxEye.TabStop = false;
             this.pictureBoxEye.Click += new System.EventHandler(this.pictureBoxEye_Click);
@@ -384,7 +384,7 @@ namespace STROOP.Map3
             this.pictureBoxPlus.Location = new System.Drawing.Point(298, 107);
             this.pictureBoxPlus.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBoxPlus.Name = "pictureBoxPlus";
-            this.pictureBoxPlus.Size = new System.Drawing.Size(35, 19);
+            this.pictureBoxPlus.Size = new System.Drawing.Size(34, 19);
             this.pictureBoxPlus.TabIndex = 17;
             this.pictureBoxPlus.TabStop = false;
             // 
@@ -419,7 +419,7 @@ namespace STROOP.Map3
             this.pictureBox1.Location = new System.Drawing.Point(298, 86);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 18);
+            this.pictureBox1.Size = new System.Drawing.Size(34, 18);
             this.pictureBox1.TabIndex = 43;
             this.pictureBox1.TabStop = false;
             // 
