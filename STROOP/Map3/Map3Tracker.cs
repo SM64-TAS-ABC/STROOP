@@ -251,6 +251,20 @@ namespace STROOP.Map3
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemPath = new ToolStripMenuItem("Add Tracker for Path");
+            itemPath.Click += (sender, e) =>
+            {
+                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    return (Map3Object)new Map3PathObject(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+            };
+
             pictureBoxPlus.ContextMenuStrip = new ContextMenuStrip();
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemHitboxCylinder);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemTangibilitySphere);
@@ -265,6 +279,8 @@ namespace STROOP.Map3
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemFloorTriangles);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemWallTriangles);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemCeilingTriangles);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemPath);
             pictureBoxPlus.Click += (sender, e) => pictureBoxPlus.ContextMenuStrip.Show(Cursor.Position);
         }
 
