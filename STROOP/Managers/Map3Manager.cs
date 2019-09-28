@@ -85,6 +85,24 @@ namespace STROOP.Managers
                 Config.Map3Graphics.ChangeScale(-1, Config.Map3Gui.textBoxMap3ControllersScaleChange.Text);
             Config.Map3Gui.buttonMap3ControllersScalePlus.Click += (sender, e) =>
                 Config.Map3Graphics.ChangeScale(1, Config.Map3Gui.textBoxMap3ControllersScaleChange.Text);
+            ControlUtilities.AddContextMenuStripFunctions(
+                Config.Map3Gui.groupBoxMap3ControllersScale,
+                new List<string>()
+                {
+                    "Very Small Unit Squares",
+                    "Small Unit Squares",
+                    "Medium Unit Squares",
+                    "Big Unit Squares",
+                    "Very Big Unit Squares",
+                },
+                new List<Action>()
+                {
+                    () => Config.Map3Graphics.SetCustomScale(6),
+                    () => Config.Map3Graphics.SetCustomScale(12),
+                    () => Config.Map3Graphics.SetCustomScale(18),
+                    () => Config.Map3Graphics.SetCustomScale(24),
+                    () => Config.Map3Graphics.SetCustomScale(40),
+                });
 
             // Buttons for Changing Center
             Config.Map3Gui.buttonMap3ControllersCenterUp.Click += (sender, e) =>
@@ -134,18 +152,18 @@ namespace STROOP.Managers
                     () =>
                     {
                         ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-                        Config.Map3Graphics.SetCustomAngle(marioAngle.ToString());
+                        Config.Map3Graphics.SetCustomAngle(marioAngle);
                     },
                     () =>
                     {
                         ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
-                        Config.Map3Graphics.SetCustomAngle(cameraAngle.ToString());
+                        Config.Map3Graphics.SetCustomAngle(cameraAngle);
                     },
                     () =>
                     {
                         ushort centripetalAngle = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset);
                         double centripetalAngleReversed = MoreMath.ReverseAngle(centripetalAngle);
-                        Config.Map3Graphics.SetCustomAngle(centripetalAngleReversed.ToString());
+                        Config.Map3Graphics.SetCustomAngle(centripetalAngleReversed);
                     },
                 });
 

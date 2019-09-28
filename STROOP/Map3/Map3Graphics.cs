@@ -252,7 +252,7 @@ namespace STROOP.Map3
             }
         }
 
-        public void ChangeScale(int sign, string value)
+        public void ChangeScale(int sign, object value)
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
@@ -261,7 +261,7 @@ namespace STROOP.Map3
             Config.Map3Gui.textBoxMap3ControllersScaleCustom.SubmitText(newScaleValue.ToString());
         }
 
-        public void ChangeCenter(int xSign, int zSign, string value)
+        public void ChangeCenter(int xSign, int zSign, object value)
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
@@ -275,7 +275,7 @@ namespace STROOP.Map3
             Config.Map3Gui.textBoxMap3ControllersCenterCustom.SubmitText(newCenterXValue + "," + newCenterZValue);
         }
 
-        public void ChangeAngle(int sign, string value)
+        public void ChangeAngle(int sign, object value)
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
@@ -285,22 +285,22 @@ namespace STROOP.Map3
             Config.Map3Gui.textBoxMap3ControllersAngleCustom.SubmitText(newAngleValue.ToString());
         }
 
-        public void SetCustomScale(string value)
+        public void SetCustomScale(object value)
         {
             Config.Map3Gui.radioButtonMap3ControllersScaleCustom.Checked = true;
-            Config.Map3Gui.textBoxMap3ControllersScaleCustom.SubmitText(value);
+            Config.Map3Gui.textBoxMap3ControllersScaleCustom.SubmitText(value.ToString());
         }
 
-        public void SetCustomCenter(string value)
+        public void SetCustomCenter(object value)
         {
             Config.Map3Gui.radioButtonMap3ControllersCenterCustom.Checked = true;
-            Config.Map3Gui.textBoxMap3ControllersCenterCustom.SubmitText(value);
+            Config.Map3Gui.textBoxMap3ControllersCenterCustom.SubmitText(value.ToString());
         }
 
-        public void SetCustomAngle(string value)
+        public void SetCustomAngle(object value)
         {
             Config.Map3Gui.radioButtonMap3ControllersAngleCustom.Checked = true;
-            Config.Map3Gui.textBoxMap3ControllersAngleCustom.SubmitText(value);
+            Config.Map3Gui.textBoxMap3ControllersAngleCustom.SubmitText(value.ToString());
         }
     }
 }
