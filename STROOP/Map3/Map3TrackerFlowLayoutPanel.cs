@@ -102,7 +102,6 @@ namespace STROOP.Map3
             {
                 foreach (Map3Tracker mapTracker in Controls)
                 {
-                    if (!mapTracker.IsVisible) continue;
                     switch (mapTracker.GetOrderType())
                     {
                         case MapTrackerOrderType.OrderOnTop:

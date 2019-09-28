@@ -26,7 +26,7 @@ namespace STROOP.Map3
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
         private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
 
-        public bool IsVisible;
+        private bool _isVisible;
         private MapTrackerVisibilityType _currentVisiblityType;
 
         public Map3Tracker(Map3Object mapObj, List<Map3Semaphore> semaphoreList = null)
@@ -46,7 +46,7 @@ namespace STROOP.Map3
             _mapObjectList = new List<Map3Object>(mapObjectList);
             _semaphoreList = new List<Map3Semaphore>(semaphoreList);
 
-            IsVisible = true;
+            _isVisible = true;
             _currentVisiblityType = MapTrackerVisibilityType.VisibleWhenLoaded;
 
             tableLayoutPanel.BorderWidth = 2;
@@ -220,6 +220,7 @@ namespace STROOP.Map3
 
         public List<Map3Object> GetMapObjectsToDisplay()
         {
+            if (!_isVisible) return new List<Map3Object>();
             return _mapObjectList.FindAll(mapObj => mapObj.ShouldDisplay(
                 (MapTrackerVisibilityType)comboBoxVisibilityType.SelectedItem));
         }
@@ -348,8 +349,8 @@ namespace STROOP.Map3
 
         private void pictureBoxEye_Click(object sender, EventArgs e)
         {
-            IsVisible = !IsVisible;
-            pictureBoxEye.BackgroundImage = IsVisible ? ImageEyeOpen : ImageEyeClosed;
+            _isVisible = !_isVisible;
+            pictureBoxEye.BackgroundImage = _isVisible ? ImageEyeOpen : ImageEyeClosed;
         }
 
         private void pictureBoxUpArrow_Click(object sender, EventArgs e)
