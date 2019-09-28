@@ -18,6 +18,7 @@ namespace STROOP.Map3
         public Map3SelfObject()
             : base()
         {
+            Rotates = true;
         }
 
         public override Image GetImage()

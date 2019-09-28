@@ -469,6 +469,9 @@ namespace STROOP.Map3
                 _currentVisiblityType = currentVisibilityType;
             }
 
+            checkBoxRotates.CheckState = BoolUtilities.GetCheckState(
+                _mapObjectList.ConvertAll(mapObj => mapObj.Rotates));
+
             _mapObjectList.ForEach(mapObj => mapObj.Update());
 
             if (_semaphoreList.Any(semaphore => !semaphore.IsUsed))
