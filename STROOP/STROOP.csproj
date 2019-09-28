@@ -364,6 +364,7 @@
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Map3\Map3CustomCeilingObject.cs" />
+    <Compile Include="Map3\Map3CustomWallObject.cs" />
     <Compile Include="Map3\Map3CustomPointsObject.cs" />
     <Compile Include="Map3\Map3MarioCeilingObject.cs" />
     <Compile Include="Map3\Map3HitboxCylinderObject.cs" />

@@ -102,7 +102,11 @@ namespace STROOP.Managers
                     },
                     () =>
                     {
-
+                        string text = DialogUtilities.GetStringFromDialog(labelText: "Enter triangle addresses as hex uints.");
+                        Map3Object mapObj = Map3CustomWallObject.Create(text);
+                        if (mapObj == null) return;
+                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                     () =>
                     {

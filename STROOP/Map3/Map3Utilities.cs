@@ -185,5 +185,15 @@ namespace STROOP.Map3
             }
             return quadList;
         }
+
+        public static (float x1, float z1, float x2, float z2, bool xProjection) GetWallDataFromTri(TriangleDataModel tri)
+        {
+            if (tri.X1 == tri.X2 && tri.Z1 == tri.Z2)
+                return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection);
+            if (tri.X1 == tri.X3 && tri.Z1 == tri.Z3)
+                return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
+            else
+                return (tri.X2, tri.Z2, tri.X3, tri.Z3, tri.XProjection);
+        }
     }
 }

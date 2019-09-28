@@ -29,15 +29,7 @@ namespace STROOP.Map3
         {
             return TriangleUtilities.GetObjectTrianglesForObject(_objAddress)
                 .FindAll(tri => tri.IsWall())
-                .ConvertAll(tri =>
-                {
-                    if (tri.X1 == tri.X2 && tri.Z1 == tri.Z2)
-                        return ((float)tri.X1, (float)tri.Z1, (float)tri.X3, (float)tri.Z3, tri.XProjection);
-                    if (tri.X1 == tri.X3 && tri.Z1 == tri.Z3)
-                        return ((float)tri.X1, (float)tri.Z1, (float)tri.X2, (float)tri.Z2, tri.XProjection);
-                    else
-                        return ((float)tri.X2, (float)tri.Z2, (float)tri.X3, (float)tri.Z3, tri.XProjection);
-                });
+                .ConvertAll(tri => Map3Utilities.GetWallDataFromTri(tri));
         }
 
         public override string GetName()
