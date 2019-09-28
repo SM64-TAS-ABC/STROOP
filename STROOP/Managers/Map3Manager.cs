@@ -72,7 +72,26 @@ namespace STROOP.Managers
             Config.Map3Gui.comboBoxMap3OptionsBackground.DataSource = backgroundImageChoices;
 
             // Buttons on Options
-            Config.Map3Gui.buttonMap3OptionsAddNewTracker.Click += (sender, e) => { }; //TODO implement this
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                Config.Map3Gui.buttonMap3OptionsAddNewTracker,
+                new List<string>()
+                {
+                    "Add Tracker for Custom Points",
+                },
+                new List<Action>()
+                {
+                    () =>
+                    {
+                        string text = DialogUtilities.GetStringFromDialog(labelText: "Enter points as pairs of integers.");
+                        Map3Object mapObj = Map3CustomPointsObject.Create(text);
+                        if (mapObj == null) return;
+                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                    },
+                });
+            Config.Map3Gui.buttonMap3OptionsAddNewTracker.Click += (sender, e) =>
+                Config.Map3Gui.buttonMap3OptionsAddNewTracker.ContextMenuStrip.Show(Cursor.Position);
             Config.Map3Gui.buttonMap3OptionsClearAllTrackers.Click += (sender, e) =>
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.ClearControls();
             Config.Map3Gui.buttonMap3OptionsTrackAllObjects.Click += (sender, e) =>

@@ -145,5 +145,45 @@ namespace STROOP.Map3
                 return new TriangleDataModel(triAddress).Get2DVertices();
             });
         }
+        
+        public static List<List<(float x, float z)>> ConvertUnitPointsToQuads(List<(int x, int z)> unitPoints)
+        {
+            List<List<(float x, float z)>> quadList = new List<List<(float x, float z)>>();
+            Action<int, int, int, int> addQuad = (int xBase, int zBase, int xAdd, int zAdd) =>
+            {
+                quadList.Add(new List<(float, float)>()
+                {
+                    (xBase, zBase),
+                    (xBase + xAdd, zBase),
+                    (xBase + xAdd, zBase + zAdd),
+                    (xBase, zBase + zAdd),
+                });
+            };
+            foreach ((int x, int z) in unitPoints)
+            {
+                if (x == 0 && z == 0)
+                {
+                    addQuad(x, z, 1, 1);
+                    addQuad(x, z, 1, -1);
+                    addQuad(x, z, -1, 1);
+                    addQuad(x, z, -1, -1);
+                }
+                else if (x == 0)
+                {
+                    addQuad(x, z, 1, Math.Sign(z));
+                    addQuad(x, z, -1, Math.Sign(z));
+                }
+                else if (z == 0)
+                {
+                    addQuad(x, z, Math.Sign(x), 1);
+                    addQuad(x, z, Math.Sign(x), -1);
+                }
+                else
+                {
+                    addQuad(x, z, Math.Sign(x), Math.Sign(z));
+                }
+            }
+            return quadList;
+        }
     }
 }

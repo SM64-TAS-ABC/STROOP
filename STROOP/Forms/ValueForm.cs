@@ -30,7 +30,6 @@ namespace STROOP.Forms
             };
 
             button1.Click += (sender, e) => okayAction();
-            textBox1.AddEnterAction(okayAction);
         }
     }
 }

@@ -103,42 +103,7 @@ namespace STROOP.Map3
                 return points;
             }).SelectMany(points => points).Distinct().ToList();
 
-            List<List<(float x, float z)>> quadList = new List<List<(float x, float z)>>();
-            Action<int, int, int, int> addQuad = (int xBase, int zBase, int xAdd, int zAdd) =>
-            {
-                quadList.Add(new List<(float, float)>()
-                {
-                    (xBase, zBase),
-                    (xBase + xAdd, zBase),
-                    (xBase + xAdd, zBase + zAdd),
-                    (xBase, zBase + zAdd),
-                });
-            };
-            foreach ((int x, int z) in unitPoints)
-            {
-                if (x == 0 && z == 0)
-                {
-                    addQuad(x, z, 1, 1);
-                    addQuad(x, z, 1, -1);
-                    addQuad(x, z, -1, 1);
-                    addQuad(x, z, -1, -1);
-                }
-                else if (x == 0)
-                {
-                    addQuad(x, z, 1, Math.Sign(z));
-                    addQuad(x, z, -1, Math.Sign(z));
-                }
-                else if (z == 0)
-                {
-                    addQuad(x, z, Math.Sign(x), 1);
-                    addQuad(x, z, Math.Sign(x), -1);
-                }
-                else
-                {
-                    addQuad(x, z, Math.Sign(x), Math.Sign(z));
-                }
-            }
-
+            List<List<(float x, float z)>> quadList = Map3Utilities.ConvertUnitPointsToQuads(unitPoints);
             List<List<(float x, float z)>> quadListForControl =
                 quadList.ConvertAll(quad => quad.ConvertAll(
                     vertex => Map3Utilities.ConvertCoordsForControl(vertex.x, vertex.z)));
