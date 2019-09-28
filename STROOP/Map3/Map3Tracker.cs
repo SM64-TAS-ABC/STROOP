@@ -215,6 +215,19 @@ namespace STROOP.Map3
             };
 
             ToolStripMenuItem itemWallTriangles = new ToolStripMenuItem("Add Tracker for Wall Triangles");
+            itemWallTriangles.Click += (sender, e) =>
+            {
+                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObject()) return null;
+                    return (Map3Object)new Map3ObjectWallObject(posAngle.GetObjAddress());
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+            };
 
             ToolStripMenuItem itemCeilingTriangles = new ToolStripMenuItem("Add Tracker for Ceiling Triangles");
             itemCeilingTriangles.Click += (sender, e) =>

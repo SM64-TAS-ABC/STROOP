@@ -368,6 +368,7 @@
     <Compile Include="Map3\Map3DrawDistanceSphereObject.cs" />
     <Compile Include="Map3\Map3HomeObject.cs" />
     <Compile Include="Map3\Map3ObjectCeilingObject.cs" />
+    <Compile Include="Map3\Map3ObjectWallObject.cs" />
     <Compile Include="Map3\Map3ObjectFloorObject.cs" />
     <Compile Include="Map3\Map3NextPositionsObject.cs" />
     <Compile Include="Map3\Map3PointObject.cs" />
