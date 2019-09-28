@@ -23,20 +23,22 @@ namespace STROOP.Map3
             Color = Color.Yellow;
         }
 
-        protected override List<(float x, float z)> GetVertices()
+        protected override List<List<(float x, float z)>> GetQuadList()
         {
             (int cellX, int cellZ) = WatchVariableSpecialUtilities.GetMarioCell();
             int xMin = (cellX - 8) * 1024;
             int xMax = xMin + 1024;
             int zMin = (cellZ - 8) * 1024;
             int zMax = zMin + 1024;
-            return new List<(float x, float z)>()
-            {
-                (xMin, zMin),
-                (xMin, zMax),
-                (xMax, zMax),
-                (xMax, zMin),
-            };
+            List<(float x, float z)> quad =
+                new List<(float x, float z)>()
+                {
+                    (xMin, zMin),
+                    (xMin, zMax),
+                    (xMax, zMax),
+                    (xMax, zMin),
+                };
+            return new List<List<(float x, float z)>>() { quad };
         }
 
         public override string GetName()

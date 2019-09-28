@@ -23,7 +23,7 @@ namespace STROOP.Map3
             Color = Color.Purple;
         }
 
-        protected override List<(float x, float z)> GetVertices()
+        protected override List<List<(float x, float z)>> GetQuadList()
         {
             float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
@@ -32,13 +32,15 @@ namespace STROOP.Map3
             int zMin = (short)marioZ;
             int zMax = zMin + (marioZ >= 0 ? 1 : -1);
 
-            return new List<(float x, float z)>()
-            {
-                (xMin, zMin),
-                (xMin, zMax),
-                (xMax, zMax),
-                (xMax, zMin),
-            };
+            List<(float x, float z)> quad =
+                new List<(float x, float z)>()
+                {
+                    (xMin, zMin),
+                    (xMin, zMax),
+                    (xMax, zMax),
+                    (xMax, zMin),
+                };
+            return new List<List<(float x, float z)>>() { quad };
         }
 
         public override string GetName()
