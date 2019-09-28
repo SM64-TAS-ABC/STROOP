@@ -73,5 +73,11 @@ namespace STROOP.Map3
             _obj.Update();
             _behaviorCriteriaToDisplay = _obj.BehaviorCriteria;
         }
+
+        public override void Update()
+        {
+            _obj.Update();
+            Rotates = Config.ObjectAssociations.GetObjectMapRotates(_obj.BehaviorCriteria);
+        }
     }
 }
