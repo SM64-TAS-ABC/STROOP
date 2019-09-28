@@ -126,6 +126,9 @@
     <Compile Include="Controls\BetterSplitContainer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\TrackBarEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\TabControlEx.cs">
       <SubType>Component</SubType>
     </Compile>
