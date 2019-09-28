@@ -433,6 +433,14 @@ namespace STROOP.Map3
             Config.Map3Gui.flowLayoutPanelMap3Trackers.MoveDownControl(this);
         }
 
+        public void SetGlobalIconSize(float size)
+        {
+            if (_mapObjectList.Any(mapObj => mapObj.ParticipatesInGlobalIconSize()))
+            {
+                SetSize(size);
+            }
+        }
+
         public void UpdateControl()
         {
             textBoxName.SubmitTextLoosely(_customName ?? string.Join(", ", _mapObjectList.ConvertAll(obj => obj.GetName())));

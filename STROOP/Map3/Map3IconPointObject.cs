@@ -31,5 +31,10 @@ namespace STROOP.Map3
             SizeF size = Map3Utilities.ScaleImageSizeForControl(Image.Size, Size);
             Map3Utilities.DrawTexture(TextureId, new PointF(xPosPixels, zPosPixels), size, angleDegrees, Opacity);
         }
+
+        public override bool ParticipatesInGlobalIconSize()
+        {
+            return true;
+        }
     }
 }

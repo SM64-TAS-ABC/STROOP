@@ -231,6 +231,15 @@ namespace STROOP.Managers
                 Config.Map3Graphics.MapViewEnablePuView = Config.Map3Gui.checkBoxMap3OptionsEnablePuView.Checked;
             Config.Map3Gui.checkBoxMap3OptionsScaleIconSizes.Click += (sender, e) =>
                 Config.Map3Graphics.MapViewScaleIconSizes = Config.Map3Gui.checkBoxMap3OptionsScaleIconSizes.Checked;
+
+            // Global Icon Size
+            Config.Map3Gui.textBoxMap3OptionsGlobalIconSize.AddEnterAction(() =>
+            {
+                float? parsed = ParsingUtilities.ParseFloatNullable(
+                    Config.Map3Gui.textBoxMap3OptionsGlobalIconSize.Text);
+                if (!parsed.HasValue) return;
+                Config.Map3Gui.flowLayoutPanelMap3Trackers.SetGlobalIconSize(parsed.Value);
+            });
         }
 
         private void InitializeSemaphores()

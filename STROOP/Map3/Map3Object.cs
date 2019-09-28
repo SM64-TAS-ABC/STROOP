@@ -93,5 +93,10 @@ namespace STROOP.Map3
         public virtual void Update()
         {
         }
+
+        public virtual bool ParticipatesInGlobalIconSize()
+        {
+            return false;
+        }
     }
 }

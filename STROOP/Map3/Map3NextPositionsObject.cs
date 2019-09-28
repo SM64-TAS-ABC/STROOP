@@ -126,5 +126,10 @@ namespace STROOP.Map3
 
             return _contextMenuStrip;
         }
+
+        public override bool ParticipatesInGlobalIconSize()
+        {
+            return true;
+        }
     }
 }

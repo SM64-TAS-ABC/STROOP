@@ -138,5 +138,15 @@ namespace STROOP.Map3
             }
         }
 
+        public void SetGlobalIconSize(float size)
+        {
+            lock (_objectLock)
+            {
+                foreach (Map3Tracker tracker in Controls)
+                {
+                    tracker.SetGlobalIconSize(size);
+                }
+            }
+        }
     }
 }
