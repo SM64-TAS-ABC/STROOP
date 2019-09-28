@@ -80,6 +80,8 @@ namespace STROOP.Map3
             List<List<(float x, float z)>> triVertexLists = GetVertexLists();
             List<(int x, int z)> unitPoints = triVertexLists.ConvertAll(vertexList =>
             {
+                if (vertexList.Count == 0) return new List<(int x, int z)>();
+
                 int xMin = (int)Math.Max(vertexList.Min(vertex => vertex.x), Config.Map3Graphics.MapViewXMin);
                 int xMax = (int)Math.Min(vertexList.Max(vertex => vertex.x), Config.Map3Graphics.MapViewXMax);
                 int zMin = (int)Math.Max(vertexList.Min(vertex => vertex.z), Config.Map3Graphics.MapViewZMin);
