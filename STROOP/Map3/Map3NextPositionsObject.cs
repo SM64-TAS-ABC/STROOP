@@ -75,7 +75,7 @@ namespace STROOP.Map3
                 pos => Map3Utilities.ConvertCoordsForControl(pos.Item1, pos.Item2));
 
             float angleDegrees = Map3Utilities.ConvertAngleForControl(marioAngle);
-            SizeF size = Map3Utilities.ScaleImageSize(Config.ObjectAssociations.BlueMarioMapImage.Size, Size);
+            SizeF size = Map3Utilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size);
             int fullStepTex = _useColoredMarios ? _blueMarioTex : _redMarioTex;
             int quarterStepTex = _useColoredMarios ? _orangeMarioText : _redMarioTex;
             for (int i = positionsOnControl.Count - 1; i >= 0; i--)

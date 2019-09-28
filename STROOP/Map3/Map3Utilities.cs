@@ -46,9 +46,9 @@ namespace STROOP.Map3
             return (float)MoreMath.AngleUnitsToDegrees(angle);
         }
 
-        public static SizeF ScaleImageSize(Size imageSize, float desiredSize)
+        public static SizeF ScaleImageSizeForControl(Size imageSize, float radius)
         {
-            float scale = Math.Max(imageSize.Height / desiredSize, imageSize.Width / desiredSize);
+            float scale = Math.Max(imageSize.Height / (2 * radius), imageSize.Width / (2 * radius));
             return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
         }
 
