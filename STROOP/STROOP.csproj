@@ -368,6 +368,7 @@
     <Compile Include="Map3\Map3HitboxCylinderObject.cs" />
     <Compile Include="Map3\Map3DrawDistanceSphereObject.cs" />
     <Compile Include="Map3\Map3HomeObject.cs" />
+    <Compile Include="Map3\Map3CustomFloorObject.cs" />
     <Compile Include="Map3\Map3ObjectCeilingObject.cs" />
     <Compile Include="Map3\Map3ObjectWallObject.cs" />
     <Compile Include="Map3\Map3ObjectFloorObject.cs" />

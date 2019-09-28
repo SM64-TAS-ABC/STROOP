@@ -78,6 +78,7 @@ namespace STROOP.Managers
                 new List<string>()
                 {
                     "Add Tracker for Custom Points",
+                    "Add Tracker for Custom Floor Tris",
                 },
                 new List<Action>()
                 {
@@ -85,6 +86,14 @@ namespace STROOP.Managers
                     {
                         string text = DialogUtilities.GetStringFromDialog(labelText: "Enter points as pairs of integers.");
                         Map3Object mapObj = Map3CustomPointsObject.Create(text);
+                        if (mapObj == null) return;
+                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                    },
+                    () =>
+                    {
+                        string text = DialogUtilities.GetStringFromDialog(labelText: "Enter triangle addresses as hex uints.");
+                        Map3Object mapObj = Map3CustomFloorObject.Create(text);
                         if (mapObj == null) return;
                         Map3Tracker tracker = new Map3Tracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
