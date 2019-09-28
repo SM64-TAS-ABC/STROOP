@@ -232,12 +232,12 @@ namespace STROOP.Map3
             this.textBoxName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxName.Location = new System.Drawing.Point(2, 65);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(1);
+            this.textBoxName.Location = new System.Drawing.Point(2, 64);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(1, 0, 0, 1);
             this.textBoxName.Multiline = true;
             this.textBoxName.Name = "textBoxName";
             this.tableLayoutPanel.SetRowSpan(this.textBoxName, 3);
-            this.textBoxName.Size = new System.Drawing.Size(66, 61);
+            this.textBoxName.Size = new System.Drawing.Size(67, 62);
             this.textBoxName.TabIndex = 10;
             this.textBoxName.Text = "Mario";
             this.textBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -247,11 +247,11 @@ namespace STROOP.Map3
             this.panelPicture.BackColor = System.Drawing.Color.Red;
             this.panelPicture.Controls.Add(this.pictureBoxPicture);
             this.panelPicture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPicture.Location = new System.Drawing.Point(3, 3);
-            this.panelPicture.Margin = new System.Windows.Forms.Padding(2);
+            this.panelPicture.Location = new System.Drawing.Point(2, 2);
+            this.panelPicture.Margin = new System.Windows.Forms.Padding(1, 1, 0, 0);
             this.panelPicture.Name = "panelPicture";
             this.tableLayoutPanel.SetRowSpan(this.panelPicture, 3);
-            this.panelPicture.Size = new System.Drawing.Size(64, 58);
+            this.panelPicture.Size = new System.Drawing.Size(67, 61);
             this.panelPicture.TabIndex = 18;
             // 
             // pictureBoxPicture
@@ -265,7 +265,7 @@ namespace STROOP.Map3
             this.pictureBoxPicture.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxPicture.MaximumSize = new System.Drawing.Size(133, 130);
             this.pictureBoxPicture.Name = "pictureBoxPicture";
-            this.pictureBoxPicture.Size = new System.Drawing.Size(58, 52);
+            this.pictureBoxPicture.Size = new System.Drawing.Size(61, 55);
             this.pictureBoxPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPicture.TabIndex = 0;
             this.pictureBoxPicture.TabStop = false;
