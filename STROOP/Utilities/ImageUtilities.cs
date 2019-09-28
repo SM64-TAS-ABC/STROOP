@@ -1,4 +1,5 @@
-﻿using STROOP.Structs;
+﻿using STROOP.Extensions;
+using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,31 @@ namespace STROOP.Utilities
 {
     public static class ImageUtilities
     {
+        public static Image CreateMultiImage(List<Image> images, int width, int height)
+        {
+            Image multiBitmap = new Bitmap(width, height);
+            using (Graphics gfx = Graphics.FromImage(multiBitmap))
+            {
+                int count = images.Count();
+                int numCols = (int)Math.Ceiling(Math.Sqrt(count));
+                int numRows = (int)Math.Ceiling(count / (double)numCols);
+                int imageSize = Math.Min(width, height) / numCols;
+                foreach (int row in Enumerable.Range(0, numRows))
+                {
+                    foreach (int col in Enumerable.Range(0, numCols))
+                    {
+                        int index = row * numCols + col;
+                        if (index >= count) break;
+                        Image image = images[index];
+                        Rectangle rect = new Rectangle(col * imageSize, row * imageSize, imageSize, imageSize);
+                        Rectangle zoomedRect = rect.Zoom(image.Size);
+                        gfx.DrawImage(image, zoomedRect);
+                    }
+                }
+            }
+            return multiBitmap;
+        }
+
         public static Image ChangeTransparency(Image image, byte alpha)
         {
             Bitmap originalBitmap = new Bitmap(image);

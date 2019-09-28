@@ -20,11 +20,13 @@ namespace STROOP.Map3
 {
     public partial class Map3Tracker : UserControl
     {
+        private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
+        private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
+
         private readonly List<Map3Object> _mapObjectList;
         private readonly List<Map3Semaphore> _semaphoreList;
 
-        private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
-        private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
+        private List<Image> _images;
 
         private bool _isVisible;
         private MapTrackerVisibilityType _currentVisiblityType;
@@ -46,6 +48,8 @@ namespace STROOP.Map3
 
             _mapObjectList = new List<Map3Object>(mapObjectList);
             _semaphoreList = new List<Map3Semaphore>(semaphoreList);
+
+            _images = new List<Image>();
 
             _isVisible = true;
             _currentVisiblityType = MapTrackerVisibilityType.VisibleWhenLoaded;
@@ -415,7 +419,12 @@ namespace STROOP.Map3
         public void UpdateControl()
         {
             textBoxName.Text = string.Join(", ", _mapObjectList.ConvertAll(obj => obj.GetName()));
-            pictureBoxPicture.Image = _mapObjectList[0].GetImage(); // TODO fix this
+            List<Image> images = _mapObjectList.ConvertAll(mapObj => mapObj.GetImage());
+            if (!images.SequenceEqual(_images))
+            {
+                _images = images;
+                pictureBoxPicture.Image = ImageUtilities.CreateMultiImage(images, 256, 256);
+            }
 
             MapTrackerVisibilityType currentVisibilityType = (MapTrackerVisibilityType)comboBoxVisibilityType.SelectedValue;
             if (currentVisibilityType != _currentVisiblityType)

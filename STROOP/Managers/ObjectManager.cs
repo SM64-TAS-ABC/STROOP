@@ -554,7 +554,9 @@ namespace STROOP.Managers
                 {
                     // Generate new image
                     _multiImage?.Dispose();
-                    _multiImage = ObjectUtilities.CreateMultiObjectImage(newBehaviors, 256, 256);
+                    List<Image> images = newBehaviors.ConvertAll(
+                        criteria => Config.ObjectAssociations.GetObjectImage(criteria, false));
+                    _multiImage = ImageUtilities.CreateMultiImage(images, 256, 256);
 
                     _lastBehaviors = newBehaviors.ToList();
                 }
