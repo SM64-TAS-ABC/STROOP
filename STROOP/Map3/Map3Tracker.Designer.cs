@@ -246,7 +246,6 @@ namespace STROOP.Map3
             this.checkBoxRotates.TabIndex = 16;
             this.checkBoxRotates.Text = "Rotates";
             this.checkBoxRotates.UseVisualStyleBackColor = true;
-            this.checkBoxRotates.CheckedChanged += new System.EventHandler(this.checkBoxRotates_CheckedChanged);
             // 
             // textBoxName
             // 
