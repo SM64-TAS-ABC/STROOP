@@ -31,6 +31,7 @@ namespace STROOP.Map3
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Map3Tracker));
             this.tableLayoutPanel = new STROOP.Controls.BorderedTableLayoutPanel();
             this.checkBoxShowTriUnits = new System.Windows.Forms.CheckBox();
             this.trackBarOutlineWidth = new System.Windows.Forms.TrackBar();
@@ -377,7 +378,7 @@ namespace STROOP.Map3
             // 
             // pictureBoxPlus
             // 
-            this.pictureBoxPlus.BackgroundImage = global::STROOP.Properties.Resources.image_plus;
+            this.pictureBoxPlus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxPlus.BackgroundImage")));
             this.pictureBoxPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxPlus.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxPlus.Dock = System.Windows.Forms.DockStyle.Fill;
