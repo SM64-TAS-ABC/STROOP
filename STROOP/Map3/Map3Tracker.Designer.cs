@@ -320,9 +320,7 @@ namespace STROOP.Map3
             // 
             // textBoxSize
             // 
-            this.textBoxSize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSize.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxSize.Location = new System.Drawing.Point(121, 1);
             this.textBoxSize.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxSize.Name = "textBoxSize";
@@ -333,9 +331,7 @@ namespace STROOP.Map3
             // 
             // textBoxOpacity
             // 
-            this.textBoxOpacity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxOpacity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxOpacity.Location = new System.Drawing.Point(121, 43);
             this.textBoxOpacity.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxOpacity.Name = "textBoxOpacity";
@@ -404,9 +400,7 @@ namespace STROOP.Map3
             // 
             // textBoxOutlineWidth
             // 
-            this.textBoxOutlineWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxOutlineWidth.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxOutlineWidth.Location = new System.Drawing.Point(121, 85);
             this.textBoxOutlineWidth.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxOutlineWidth.Name = "textBoxOutlineWidth";
