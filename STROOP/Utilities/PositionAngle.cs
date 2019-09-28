@@ -334,7 +334,7 @@ namespace STROOP.Utilities
             }
         }
 
-        private static string GetMapNameForObject(uint address)
+        public static string GetMapNameForObject(uint address)
         {
             ObjectDataModel obj = new ObjectDataModel(address, true);
             string objectName = Config.ObjectAssociations.GetObjectName(obj.BehaviorCriteria);
