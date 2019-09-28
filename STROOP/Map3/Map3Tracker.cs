@@ -28,6 +28,7 @@ namespace STROOP.Map3
 
         private bool _isVisible;
         private MapTrackerVisibilityType _currentVisiblityType;
+        private bool _showTriUnits;
 
         public Map3Tracker(Map3Object mapObj, List<Map3Semaphore> semaphoreList = null)
             : this(new List<Map3Object>() { mapObj }, semaphoreList)
@@ -48,6 +49,7 @@ namespace STROOP.Map3
 
             _isVisible = true;
             _currentVisiblityType = MapTrackerVisibilityType.VisibleWhenLoaded;
+            _showTriUnits = false;
 
             tableLayoutPanel.BorderWidth = 2;
             tableLayoutPanel.ShowBorder = true;
@@ -368,6 +370,12 @@ namespace STROOP.Map3
                 _mapObjectList.ForEach(mapObj => mapObj.OutlineColor = outlineColor);
             }
             colorSelectorOutline.SelectedColor = outlineColor;
+        }
+
+        private void CheckBoxShowTriUnits_CheckedChanged(object sender, EventArgs e)
+        {
+            _showTriUnits = checkBoxShowTriUnits.Checked;
+            _mapObjectList.ForEach(mapObj => mapObj.ShowTriUnits = _showTriUnits);
         }
 
         private void pictureBoxRedX_Click(object sender, EventArgs e)
