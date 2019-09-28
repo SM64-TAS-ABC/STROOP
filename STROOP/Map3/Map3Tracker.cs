@@ -198,8 +198,36 @@ namespace STROOP.Map3
             };
 
             ToolStripMenuItem itemFloorTriangles = new ToolStripMenuItem("Add Tracker for Floor Triangles");
+            itemFloorTriangles.Click += (sender, e) =>
+            {
+                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObject()) return null;
+                    return (Map3Object)new Map3ObjectFloorObject(posAngle.GetObjAddress());
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemWallTriangles = new ToolStripMenuItem("Add Tracker for Wall Triangles");
+
             ToolStripMenuItem itemCeilingTriangles = new ToolStripMenuItem("Add Tracker for Ceiling Triangles");
+            itemCeilingTriangles.Click += (sender, e) =>
+            {
+                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObject()) return null;
+                    return (Map3Object)new Map3ObjectCeilingObject(posAngle.GetObjAddress());
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+            };
 
             pictureBoxPlus.ContextMenuStrip = new ContextMenuStrip();
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemHitboxCylinder);
