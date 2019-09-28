@@ -14,11 +14,11 @@ using System.Drawing.Imaging;
 
 namespace STROOP.Map3
 {
-    public class Map3ResizableSphereObject : Map3CircleObject
+    public class Map3CustomSphereObject : Map3CircleObject
     {
         private readonly PositionAngle _posAngle;
 
-        public Map3ResizableSphereObject(PositionAngle posAngle)
+        public Map3CustomSphereObject(PositionAngle posAngle)
             : base()
         {
             _posAngle = posAngle;

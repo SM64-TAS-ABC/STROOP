@@ -375,8 +375,8 @@
     <Compile Include="Map3\Map3WallObject.cs" />
     <Compile Include="Map3\Map3SelfObject.cs" />
     <Compile Include="Map3\Map3TangibilitySphereObject.cs" />
-    <Compile Include="Map3\Map3ResizableSphereObject.cs" />
-    <Compile Include="Map3\Map3ResizableCylinderObject.cs" />
+    <Compile Include="Map3\Map3CustomSphereObject.cs" />
+    <Compile Include="Map3\Map3CustomCylinderObject.cs" />
     <Compile Include="Map3\Map3CurrentUnitObject.cs" />
     <Compile Include="Map3\Map3Graphics.cs" />
     <Compile Include="Map3\Map3LineObject.cs" />
