@@ -238,8 +238,17 @@ namespace STROOP.Managers
                 float? parsed = ParsingUtilities.ParseFloatNullable(
                     Config.Map3Gui.textBoxMap3OptionsGlobalIconSize.Text);
                 if (!parsed.HasValue) return;
-                Config.Map3Gui.flowLayoutPanelMap3Trackers.SetGlobalIconSize(parsed.Value);
+                SetGlobalIconSize(parsed.Value);
             });
+            Config.Map3Gui.trackBarMap3OptionsGlobalIconSize.ValueChanged += (sender, e) =>
+                SetGlobalIconSize(Config.Map3Gui.trackBarMap3OptionsGlobalIconSize.Value);
+        }
+
+        private void SetGlobalIconSize(float size)
+        {
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.SetGlobalIconSize(size);
+            Config.Map3Gui.textBoxMap3OptionsGlobalIconSize.SubmitText(size.ToString());
+            ControlUtilities.SetTrackBarValueCapped(Config.Map3Gui.trackBarMap3OptionsGlobalIconSize, size);
         }
 
         private void InitializeSemaphores()
