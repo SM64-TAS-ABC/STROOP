@@ -240,15 +240,17 @@ namespace STROOP.Managers
                 if (!parsed.HasValue) return;
                 SetGlobalIconSize(parsed.Value);
             });
-            Config.Map3Gui.trackBarMap3OptionsGlobalIconSize.ValueChanged += (sender, e) =>
-                SetGlobalIconSize(Config.Map3Gui.trackBarMap3OptionsGlobalIconSize.Value);
+            Config.Map3Gui.trackBarMap3OptionsGlobalIconSize.AddManualChangeAction(() =>
+                SetGlobalIconSize(Config.Map3Gui.trackBarMap3OptionsGlobalIconSize.Value));
         }
 
         private void SetGlobalIconSize(float size)
         {
             Config.Map3Gui.flowLayoutPanelMap3Trackers.SetGlobalIconSize(size);
             Config.Map3Gui.textBoxMap3OptionsGlobalIconSize.SubmitText(size.ToString());
+            Config.Map3Gui.trackBarMap3OptionsGlobalIconSize.StartChangingByCode();
             ControlUtilities.SetTrackBarValueCapped(Config.Map3Gui.trackBarMap3OptionsGlobalIconSize, size);
+            Config.Map3Gui.trackBarMap3OptionsGlobalIconSize.StopChangingByCode();
         }
 
         private void InitializeSemaphores()

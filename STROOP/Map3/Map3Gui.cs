@@ -37,7 +37,7 @@ namespace STROOP.Map3
         // Options - Global Icon Size
         public Label labelMap3OptionsGlobalIconSize;
         public BetterTextbox textBoxMap3OptionsGlobalIconSize;
-        public TrackBar trackBarMap3OptionsGlobalIconSize;
+        public TrackBarEx trackBarMap3OptionsGlobalIconSize;
 
         // Options - Buttons
         public Button buttonMap3OptionsAddNewTracker;

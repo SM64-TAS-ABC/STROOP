@@ -1571,7 +1571,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.trackBarMap3OptionsGlobalIconSize = new System.Windows.Forms.TrackBar();
+            this.trackBarMap3OptionsGlobalIconSize = new TrackBarEx();
             this.checkBoxMap3OptionsScaleIconSizes = new System.Windows.Forms.CheckBox();
             this.textBoxMap3OptionsGlobalIconSize = new STROOP.BetterTextbox();
             this.labelMap3OptionsGlobalIconSize = new System.Windows.Forms.Label();
@@ -22520,7 +22520,7 @@ namespace STROOP
         private Label labelMap3OptionsGlobalIconSize;
         private BetterTextbox textBoxMap3OptionsGlobalIconSize;
         private CheckBox checkBoxMap3OptionsScaleIconSizes;
-        private TrackBar trackBarMap3OptionsGlobalIconSize;
+        private TrackBarEx trackBarMap3OptionsGlobalIconSize;
     }
 }
 
