@@ -38,6 +38,7 @@ namespace STROOP.Map3
         public float MapViewAngleValue = DEFAULT_MAP_VIEW_ANGLE_VALUE;
 
         public bool MapViewEnablePuView = false;
+        public bool MapViewScaleIconSizes = false;
 
         public float MapViewRadius { get => (float)MoreMath.GetHypotenuse(
             Config.Map3Gui.GLControl.Width / 2, Config.Map3Gui.GLControl.Height / 2) / MapViewScaleValue; }

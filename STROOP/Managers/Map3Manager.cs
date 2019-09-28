@@ -72,7 +72,6 @@ namespace STROOP.Managers
             Config.Map3Gui.comboBoxMap3OptionsBackground.DataSource = backgroundImageChoices;
 
             // Buttons on Options
-
             ControlUtilities.AddContextMenuStripFunctions(
                 Config.Map3Gui.buttonMap3OptionsAddNewTracker,
                 new List<string>()
@@ -227,9 +226,11 @@ namespace STROOP.Managers
                 Config.Map3Gui.radioButtonMap3ControllersAngleCustom.Checked = true;
             });
 
-            // CheckBox for Enable PU View
+            // Additional Checkboxes
             Config.Map3Gui.checkBoxMap3OptionsEnablePuView.Click += (sender, e) =>
                 Config.Map3Graphics.MapViewEnablePuView = Config.Map3Gui.checkBoxMap3OptionsEnablePuView.Checked;
+            Config.Map3Gui.checkBoxMap3OptionsScaleIconSizes.Click += (sender, e) =>
+                Config.Map3Graphics.MapViewScaleIconSizes = Config.Map3Gui.checkBoxMap3OptionsScaleIconSizes.Checked;
         }
 
         private void InitializeSemaphores()

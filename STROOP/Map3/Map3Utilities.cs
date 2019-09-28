@@ -46,9 +46,11 @@ namespace STROOP.Map3
             return (float)MoreMath.AngleUnitsToDegrees(angle);
         }
 
-        public static SizeF ScaleImageSizeForControl(Size imageSize, float radius)
+        public static SizeF ScaleImageSizeForControl(Size imageSize, float desiredRadius)
         {
-            float scale = Math.Max(imageSize.Height / (2 * radius), imageSize.Width / (2 * radius));
+            float desiredDiameter = desiredRadius * 2;
+            if (Config.Map3Graphics.MapViewScaleIconSizes) desiredDiameter *= Config.Map3Graphics.MapViewScaleValue;
+            float scale = Math.Max(imageSize.Height / desiredDiameter, imageSize.Width / desiredDiameter);
             return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
         }
 

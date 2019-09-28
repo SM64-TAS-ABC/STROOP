@@ -16,7 +16,7 @@ namespace STROOP.Map3
 {
     public abstract class Map3Object
     {
-        public float Size = 50;
+        public float Size = 25;
         public double Opacity = 1;
         public byte OpacityByte
         {
