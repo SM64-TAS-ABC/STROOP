@@ -82,10 +82,10 @@ namespace STROOP.Map3
             {
                 if (vertexList.Count == 0) return new List<(int x, int z)>();
 
-                int xMin = (int)Math.Max(vertexList.Min(vertex => vertex.x), Config.Map3Graphics.MapViewXMin);
-                int xMax = (int)Math.Min(vertexList.Max(vertex => vertex.x), Config.Map3Graphics.MapViewXMax);
-                int zMin = (int)Math.Max(vertexList.Min(vertex => vertex.z), Config.Map3Graphics.MapViewZMin);
-                int zMax = (int)Math.Min(vertexList.Max(vertex => vertex.z), Config.Map3Graphics.MapViewZMax);
+                int xMin = (int)Math.Max(vertexList.Min(vertex => vertex.x), Config.Map3Graphics.MapViewXMin - 1);
+                int xMax = (int)Math.Min(vertexList.Max(vertex => vertex.x), Config.Map3Graphics.MapViewXMax + 1);
+                int zMin = (int)Math.Max(vertexList.Min(vertex => vertex.z), Config.Map3Graphics.MapViewZMin - 1);
+                int zMax = (int)Math.Min(vertexList.Max(vertex => vertex.z), Config.Map3Graphics.MapViewZMax + 1);
 
                 List<(int x, int z)> points = new List<(int x, int z)>();
                 for (int x = xMin; x <= xMax; x++)
