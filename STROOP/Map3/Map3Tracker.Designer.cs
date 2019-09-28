@@ -32,6 +32,7 @@ namespace STROOP.Map3
         private void InitializeComponent()
         {
             this.tableLayoutPanel = new STROOP.Controls.BorderedTableLayoutPanel();
+            this.checkBoxShowTriUnits = new System.Windows.Forms.CheckBox();
             this.trackBarOutlineWidth = new System.Windows.Forms.TrackBar();
             this.colorSelectorOutline = new STROOP.Controls.ColorSelector();
             this.pictureBoxDownArrow = new System.Windows.Forms.PictureBox();
@@ -55,7 +56,6 @@ namespace STROOP.Map3
             this.labelOutlineWidth = new System.Windows.Forms.Label();
             this.textBoxOutlineWidth = new STROOP.BetterTextbox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.checkBoxShowTriUnits = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOutlineWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
@@ -81,7 +81,7 @@ namespace STROOP.Map3
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel.Controls.Add(this.checkBoxShowTriUnits, 0, 5);
             this.tableLayoutPanel.Controls.Add(this.trackBarOutlineWidth, 0, 5);
             this.tableLayoutPanel.Controls.Add(this.colorSelectorOutline, 3, 3);
@@ -119,6 +119,18 @@ namespace STROOP.Map3
             this.tableLayoutPanel.Size = new System.Drawing.Size(334, 128);
             this.tableLayoutPanel.TabIndex = 40;
             // 
+            // checkBoxShowTriUnits
+            // 
+            this.checkBoxShowTriUnits.AutoSize = true;
+            this.checkBoxShowTriUnits.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxShowTriUnits.Location = new System.Drawing.Point(193, 109);
+            this.checkBoxShowTriUnits.Margin = new System.Windows.Forms.Padding(3, 3, 0, 1);
+            this.checkBoxShowTriUnits.Name = "checkBoxShowTriUnits";
+            this.checkBoxShowTriUnits.Size = new System.Drawing.Size(103, 17);
+            this.checkBoxShowTriUnits.TabIndex = 44;
+            this.checkBoxShowTriUnits.Text = "Show Tri Units";
+            this.checkBoxShowTriUnits.UseVisualStyleBackColor = true;
+            // 
             // trackBarOutlineWidth
             // 
             this.tableLayoutPanel.SetColumnSpan(this.trackBarOutlineWidth, 2);
@@ -150,9 +162,11 @@ namespace STROOP.Map3
             this.pictureBoxDownArrow.BackgroundImage = global::STROOP.Properties.Resources.Down_Arrow;
             this.pictureBoxDownArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxDownArrow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxDownArrow.Location = new System.Drawing.Point(300, 67);
+            this.pictureBoxDownArrow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxDownArrow.Location = new System.Drawing.Point(298, 65);
+            this.pictureBoxDownArrow.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBoxDownArrow.Name = "pictureBoxDownArrow";
-            this.pictureBoxDownArrow.Size = new System.Drawing.Size(30, 14);
+            this.pictureBoxDownArrow.Size = new System.Drawing.Size(34, 18);
             this.pictureBoxDownArrow.TabIndex = 12;
             this.pictureBoxDownArrow.TabStop = false;
             this.pictureBoxDownArrow.Click += new System.EventHandler(this.pictureBoxDownArrow_Click);
@@ -162,9 +176,11 @@ namespace STROOP.Map3
             this.pictureBoxUpArrow.BackgroundImage = global::STROOP.Properties.Resources.Up_Arrow;
             this.pictureBoxUpArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxUpArrow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxUpArrow.Location = new System.Drawing.Point(300, 46);
+            this.pictureBoxUpArrow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxUpArrow.Location = new System.Drawing.Point(298, 44);
+            this.pictureBoxUpArrow.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBoxUpArrow.Name = "pictureBoxUpArrow";
-            this.pictureBoxUpArrow.Size = new System.Drawing.Size(30, 14);
+            this.pictureBoxUpArrow.Size = new System.Drawing.Size(34, 18);
             this.pictureBoxUpArrow.TabIndex = 12;
             this.pictureBoxUpArrow.TabStop = false;
             this.pictureBoxUpArrow.Click += new System.EventHandler(this.pictureBoxUpArrow_Click);
@@ -174,9 +190,11 @@ namespace STROOP.Map3
             this.pictureBoxRedX.BackgroundImage = global::STROOP.Properties.Resources.Red_X;
             this.pictureBoxRedX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxRedX.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxRedX.Location = new System.Drawing.Point(300, 4);
+            this.pictureBoxRedX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxRedX.Location = new System.Drawing.Point(298, 2);
+            this.pictureBoxRedX.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBoxRedX.Name = "pictureBoxRedX";
-            this.pictureBoxRedX.Size = new System.Drawing.Size(30, 14);
+            this.pictureBoxRedX.Size = new System.Drawing.Size(34, 18);
             this.pictureBoxRedX.TabIndex = 12;
             this.pictureBoxRedX.TabStop = false;
             this.pictureBoxRedX.Click += new System.EventHandler(this.pictureBoxRedX_Click);
@@ -186,9 +204,11 @@ namespace STROOP.Map3
             this.pictureBoxEye.BackgroundImage = global::STROOP.Properties.Resources.image_eye_open2;
             this.pictureBoxEye.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxEye.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxEye.Location = new System.Drawing.Point(300, 25);
+            this.pictureBoxEye.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxEye.Location = new System.Drawing.Point(298, 23);
+            this.pictureBoxEye.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBoxEye.Name = "pictureBoxEye";
-            this.pictureBoxEye.Size = new System.Drawing.Size(30, 14);
+            this.pictureBoxEye.Size = new System.Drawing.Size(34, 18);
             this.pictureBoxEye.TabIndex = 12;
             this.pictureBoxEye.TabStop = false;
             this.pictureBoxEye.Click += new System.EventHandler(this.pictureBoxEye_Click);
@@ -363,9 +383,11 @@ namespace STROOP.Map3
             this.pictureBoxPlus.BackgroundImage = global::STROOP.Properties.Resources.image_plus;
             this.pictureBoxPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxPlus.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxPlus.Location = new System.Drawing.Point(300, 109);
+            this.pictureBoxPlus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxPlus.Location = new System.Drawing.Point(298, 107);
+            this.pictureBoxPlus.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBoxPlus.Name = "pictureBoxPlus";
-            this.pictureBoxPlus.Size = new System.Drawing.Size(30, 15);
+            this.pictureBoxPlus.Size = new System.Drawing.Size(34, 19);
             this.pictureBoxPlus.TabIndex = 17;
             this.pictureBoxPlus.TabStop = false;
             // 
@@ -398,23 +420,13 @@ namespace STROOP.Map3
             this.pictureBox1.BackgroundImage = global::STROOP.Properties.Resources.cog;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(300, 88);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(298, 86);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 14);
+            this.pictureBox1.Size = new System.Drawing.Size(34, 18);
             this.pictureBox1.TabIndex = 43;
             this.pictureBox1.TabStop = false;
-            // 
-            // checkBoxShowTriUnits
-            // 
-            this.checkBoxShowTriUnits.AutoSize = true;
-            this.checkBoxShowTriUnits.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxShowTriUnits.Location = new System.Drawing.Point(193, 109);
-            this.checkBoxShowTriUnits.Margin = new System.Windows.Forms.Padding(3, 3, 0, 1);
-            this.checkBoxShowTriUnits.Name = "checkBoxShowTriUnits";
-            this.checkBoxShowTriUnits.Size = new System.Drawing.Size(103, 17);
-            this.checkBoxShowTriUnits.TabIndex = 44;
-            this.checkBoxShowTriUnits.Text = "Show Tri Units";
-            this.checkBoxShowTriUnits.UseVisualStyleBackColor = true;
             // 
             // Map3Tracker
             // 
