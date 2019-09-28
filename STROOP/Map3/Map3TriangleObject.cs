@@ -23,9 +23,10 @@ namespace STROOP.Map3
 
         public override void DrawOnControl()
         {
-            List<(float x, float z)> vertices = GetVertices();
-            List<(float x, float z)> veriticesForControl =
-                vertices.ConvertAll(vertex => Map3Utilities.ConvertCoordsForControl(vertex.x, vertex.z));
+            List<List<(float x, float z)>> vertexLists = GetVertexLists();
+            List<List<(float x, float z)>> vertexListsForControl =
+                vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
+                    vertex => Map3Utilities.ConvertCoordsForControl(vertex.x, vertex.z)));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -34,9 +35,12 @@ namespace STROOP.Map3
             // Draw triangle
             GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
             GL.Begin(PrimitiveType.Triangles);
-            foreach ((float x, float z) in veriticesForControl)
+            foreach (List<(float x, float z)> vertexList in vertexListsForControl)
             {
-                GL.Vertex2(x, z);
+                foreach ((float x, float z) in vertexList)
+                {
+                    GL.Vertex2(x, z);
+                }
             }
             GL.End();
 
@@ -45,17 +49,20 @@ namespace STROOP.Map3
             {
                 GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
                 GL.LineWidth(OutlineWidth);
-                GL.Begin(PrimitiveType.LineLoop);
-                foreach ((float x, float z) in veriticesForControl)
+                foreach (List<(float x, float z)> vertexList in vertexListsForControl)
                 {
-                    GL.Vertex2(x, z);
+                    GL.Begin(PrimitiveType.LineLoop);
+                    foreach ((float x, float z) in vertexList)
+                    {
+                        GL.Vertex2(x, z);
+                    }
+                    GL.End();
                 }
-                GL.End();
             }
 
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        protected abstract List<(float x, float z)> GetVertices();
+        protected abstract List<List<(float x, float z)>> GetVertexLists();
     }
 }

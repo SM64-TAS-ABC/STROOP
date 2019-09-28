@@ -11,6 +11,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using STROOP.Models;
 
 namespace STROOP.Map3
 {
@@ -129,6 +130,20 @@ namespace STROOP.Map3
             GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-size.Width / 2, -size.Height / 2);
 
             GL.End();
+        }
+
+        public static List<List<(float x, float z)>> GetTriangleVertexLists(uint triAddresses)
+        {
+            return GetTriangleVertexLists(new List<uint>() { triAddresses });
+        }
+
+        public static List<List<(float x, float z)>> GetTriangleVertexLists(List<uint> triAddresses)
+        {
+            return triAddresses.ConvertAll(triAddress =>
+            {
+                if (triAddress == 0) return new List<(float, float)>();
+                return new TriangleDataModel(triAddress).Get2DVertices();
+            });
         }
     }
 }
