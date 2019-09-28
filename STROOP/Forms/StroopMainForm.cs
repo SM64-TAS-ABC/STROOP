@@ -308,6 +308,11 @@ namespace STROOP
                 checkBoxMap3OptionsTrackSelf = checkBoxMap3OptionsTrackSelf,
                 checkBoxMap3OptionsTrackPoint = checkBoxMap3OptionsTrackPoint,
                 checkBoxMap3OptionsEnablePuView = checkBoxMap3OptionsEnablePuView,
+                checkBoxMap3OptionsScaleIconSizes = checkBoxMap3OptionsScaleIconSizes,
+
+                labelMap3OptionsGlobalIconSize = labelMap3OptionsGlobalIconSize,
+                textBoxMap3OptionsGlobalIconSize = textBoxMap3OptionsGlobalIconSize,
+                trackBarMap3OptionsGlobalIconSize = trackBarMap3OptionsGlobalIconSize,
 
                 buttonMap3OptionsAddNewTracker = buttonMap3OptionsAddNewTracker,
                 buttonMap3OptionsClearAllTrackers = buttonMap3OptionsClearAllTrackers,

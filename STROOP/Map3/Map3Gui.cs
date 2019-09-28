@@ -32,6 +32,12 @@ namespace STROOP.Map3
         public CheckBox checkBoxMap3OptionsTrackSelf;
         public CheckBox checkBoxMap3OptionsTrackPoint;
         public CheckBox checkBoxMap3OptionsEnablePuView;
+        public CheckBox checkBoxMap3OptionsScaleIconSizes;
+
+        // Options - Global Icon Size
+        public Label labelMap3OptionsGlobalIconSize;
+        public BetterTextbox textBoxMap3OptionsGlobalIconSize;
+        public TrackBar trackBarMap3OptionsGlobalIconSize;
 
         // Options - Buttons
         public Button buttonMap3OptionsAddNewTracker;
