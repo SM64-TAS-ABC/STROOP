@@ -371,6 +371,7 @@
     <Compile Include="Map3\Map3ObjectFloorObject.cs" />
     <Compile Include="Map3\Map3NextPositionsObject.cs" />
     <Compile Include="Map3\Map3PointObject.cs" />
+    <Compile Include="Map3\Map3WallObject.cs" />
     <Compile Include="Map3\Map3SelfObject.cs" />
     <Compile Include="Map3\Map3TangibilitySphereObject.cs" />
     <Compile Include="Map3\Map3ResizableSphereObject.cs" />
