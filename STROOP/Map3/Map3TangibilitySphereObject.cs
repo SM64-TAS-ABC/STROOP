@@ -41,7 +41,7 @@ namespace STROOP.Map3
 
         public override Image GetImage()
         {
-            return Config.ObjectAssociations.TriangleWallImage;
+            return Config.ObjectAssociations.SphereImage;
         }
 
         public override string GetName()
