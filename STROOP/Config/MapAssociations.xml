@@ -40,11 +40,6 @@
     <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" />
     <BackgroundImage name="Transparent Background"/>
   </Map>
-  <Map name="Gridlines" id="001" level="255" area="1">
-    <Image path="Gridlines.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" />
-    <BackgroundImage name="Transparent Background"/>
-  </Map>
   <Map name="Castle Grounds" id="00A" level="16" area="1">
     <Image path="Castle Grounds.png"/>
     <Coordinates x1="-8191" x2="8192" z1="-8085" z2="6813"/>
