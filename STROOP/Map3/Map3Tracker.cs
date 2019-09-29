@@ -60,6 +60,7 @@ namespace STROOP.Map3
             _customName = null;
             textBoxName.AddEnterAction(() => _customName = textBoxName.Text);
             textBoxName.AddLostFocusAction(() => _customName = textBoxName.Text);
+            textBoxName.AddDoubleClickAction(() => textBoxName.SelectAll());
             textBoxName.ContextMenuStrip = new ContextMenuStrip();
             ToolStripMenuItem itemResetCustomName = new ToolStripMenuItem("Reset Custom Name");
             itemResetCustomName.Click += (sender, e) => _customName = null;
