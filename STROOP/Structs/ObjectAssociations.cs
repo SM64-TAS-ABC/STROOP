@@ -38,6 +38,15 @@ namespace STROOP.Structs
         public Image TriangleWallImage;
         public Image TriangleCeilingImage;
         public Image TriangleOtherImage;
+        public Image CellGridlinesImage;
+        public Image CurrentCellImage;
+        public Image UnitGridlinesImage;
+        public Image CurrentUnitImage;
+        public Image NextPositionsImage;
+        public Image CylinderImage;
+        public Image SphereImage;
+        public Image PathImage;
+        public Image CustomPointsImage;
 
         public Color MarioColor;
         public Color HudColor;
@@ -262,6 +271,15 @@ namespace STROOP.Structs
             TriangleWallImage?.Dispose();
             TriangleCeilingImage?.Dispose();
             TriangleOtherImage?.Dispose();
+            CellGridlinesImage?.Dispose();
+            CurrentCellImage?.Dispose();
+            UnitGridlinesImage?.Dispose();
+            CurrentUnitImage?.Dispose();
+            NextPositionsImage?.Dispose();
+            CylinderImage?.Dispose();
+            SphereImage?.Dispose();
+            PathImage?.Dispose();
+            CustomPointsImage?.Dispose();
         }
     }
 }

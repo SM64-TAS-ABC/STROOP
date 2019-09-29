@@ -233,6 +233,8 @@ namespace STROOP.Utilities
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 blueMarioMapImagePath = "", greenMarioMapImagePath = "", orangeMarioMapImagePath = "", purpleMarioMapImagePath = "",
                 triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "",
+                cellGridlinesImagePath = "", currentCellImagePath = "", unitGridlinesImagePath = "", currentUnitImagePath = "",
+                nextPositionsImagePath = "", cylinderImagePath = "", sphereImagePath = "", pathImagePath = "", customPointsImagePath = "",
                 selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
                 stoodOnOverlayImagePath = "", riddenOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
                 usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "", cameraHackOverlayImagePath = "",
@@ -341,6 +343,42 @@ namespace STROOP.Utilities
 
                     case "TriangleOther":
                         triangleOtherImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "CellGridlines":
+                        cellGridlinesImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "CurrentCell":
+                        currentCellImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "UnitGridlines":
+                        unitGridlinesImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "CurrentUnit":
+                        currentUnitImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "NextPositions":
+                        nextPositionsImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "Cylinder":
+                        cylinderImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "Sphere":
+                        sphereImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "Path":
+                        pathImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "CustomPoints":
+                        customPointsImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "Overlays":
@@ -545,6 +583,16 @@ namespace STROOP.Utilities
             assoc.TriangleWallImage = Image.FromFile(mapImageDir + triangleWallImagePath);
             assoc.TriangleCeilingImage = Image.FromFile(mapImageDir + triangleCeilingImagePath);
             assoc.TriangleOtherImage = Image.FromFile(mapImageDir + triangleOtherImagePath);
+
+            assoc.CellGridlinesImage = Image.FromFile(mapImageDir + cellGridlinesImagePath);
+            assoc.CurrentCellImage = Image.FromFile(mapImageDir + currentCellImagePath);
+            assoc.UnitGridlinesImage = Image.FromFile(mapImageDir + unitGridlinesImagePath);
+            assoc.CurrentUnitImage = Image.FromFile(mapImageDir + currentUnitImagePath);
+            assoc.NextPositionsImage = Image.FromFile(mapImageDir + nextPositionsImagePath);
+            assoc.CylinderImage = Image.FromFile(mapImageDir + cylinderImagePath);
+            assoc.SphereImage = Image.FromFile(mapImageDir + sphereImagePath);
+            assoc.PathImage = Image.FromFile(mapImageDir + pathImagePath);
+            assoc.CustomPointsImage = Image.FromFile(mapImageDir + customPointsImagePath);
 
             assoc.MarioBehavior = marioBehavior;
 
