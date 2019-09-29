@@ -34,7 +34,7 @@ namespace STROOP.Map3
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Map3Tracker));
             this.tableLayoutPanel = new STROOP.Controls.BorderedTableLayoutPanel();
             this.checkBoxShowTriUnits = new System.Windows.Forms.CheckBox();
-            this.trackBarOutlineWidth = new System.Windows.Forms.TrackBar();
+            this.trackBarOutlineWidth = new TrackBarEx();
             this.colorSelectorOutline = new STROOP.Controls.ColorSelector();
             this.pictureBoxDownArrow = new System.Windows.Forms.PictureBox();
             this.pictureBoxUpArrow = new System.Windows.Forms.PictureBox();
@@ -46,8 +46,8 @@ namespace STROOP.Map3
             this.textBoxName = new STROOP.BetterTextbox();
             this.panelPicture = new System.Windows.Forms.Panel();
             this.pictureBoxPicture = new STROOP.Controls.IntPictureBox();
-            this.trackBarOpacity = new System.Windows.Forms.TrackBar();
-            this.trackBarSize = new System.Windows.Forms.TrackBar();
+            this.trackBarOpacity = new TrackBarEx();
+            this.trackBarSize = new TrackBarEx();
             this.textBoxSize = new STROOP.BetterTextbox();
             this.textBoxOpacity = new STROOP.BetterTextbox();
             this.labelSize = new System.Windows.Forms.Label();
@@ -145,7 +145,6 @@ namespace STROOP.Map3
             this.trackBarOutlineWidth.TickFrequency = 10;
             this.trackBarOutlineWidth.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarOutlineWidth.Value = 1;
-            this.trackBarOutlineWidth.ValueChanged += new System.EventHandler(this.trackBarOutlineWidth_ValueChanged);
             // 
             // colorSelectorOutline
             // 
@@ -303,7 +302,6 @@ namespace STROOP.Map3
             this.trackBarOpacity.TabIndex = 19;
             this.trackBarOpacity.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarOpacity.Value = 100;
-            this.trackBarOpacity.ValueChanged += new System.EventHandler(this.trackBarOpacity_ValueChanged);
             // 
             // trackBarSize
             // 
@@ -317,7 +315,6 @@ namespace STROOP.Map3
             this.trackBarSize.TabIndex = 19;
             this.trackBarSize.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarSize.Value = 100;
-            this.trackBarSize.ValueChanged += new System.EventHandler(this.trackBarSize_ValueChanged);
             // 
             // textBoxSize
             // 
@@ -463,14 +460,14 @@ namespace STROOP.Map3
         private System.Windows.Forms.PictureBox pictureBoxPlus;
         private System.Windows.Forms.Panel panelPicture;
         private IntPictureBox pictureBoxPicture;
-        private System.Windows.Forms.TrackBar trackBarOpacity;
-        private System.Windows.Forms.TrackBar trackBarSize;
+        private TrackBarEx trackBarOpacity;
+        private TrackBarEx trackBarSize;
         private BetterTextbox textBoxSize;
         private BetterTextbox textBoxOpacity;
         private System.Windows.Forms.Label labelSize;
         private System.Windows.Forms.Label labelOpacity;
         private ColorSelector colorSelector;
-        private System.Windows.Forms.TrackBar trackBarOutlineWidth;
+        private TrackBarEx trackBarOutlineWidth;
         private ColorSelector colorSelectorOutline;
         private System.Windows.Forms.Label labelOutlineWidth;
         private BetterTextbox textBoxOutlineWidth;

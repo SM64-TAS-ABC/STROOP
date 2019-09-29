@@ -89,8 +89,11 @@ namespace STROOP.Map3
             SetOutlineColor(null);
 
             textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
+            trackBarSize.AddManualChangeAction(() => trackBarSize_ValueChanged());
             textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
+            trackBarOpacity.AddManualChangeAction(() => trackBarOpacity_ValueChanged());
             textBoxOutlineWidth.AddEnterAction(() => textBoxOutlineWidth_EnterAction());
+            trackBarOutlineWidth.AddManualChangeAction(() => trackBarOutlineWidth_ValueChanged());
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
             colorSelectorOutline.AddColorChangeAction((Color color) => SetOutlineColor(color));
 
@@ -314,7 +317,7 @@ namespace STROOP.Map3
             return (MapTrackerOrderType)comboBoxOrderType.SelectedItem;
         }
 
-        private void trackBarSize_ValueChanged(object sender, EventArgs e)
+        private void trackBarSize_ValueChanged()
         {
             SetSize(trackBarSize.Value);
         }
@@ -333,11 +336,13 @@ namespace STROOP.Map3
             {
                 _mapObjectList.ForEach(mapObj => mapObj.Size = size);
             }
+            textBoxSize.SubmitText(size.ToString());
+            trackBarSize.StartChangingByCode();
             ControlUtilities.SetTrackBarValueCapped(trackBarSize, size);
-            textBoxSize.Text = size.ToString();
+            trackBarSize.StopChangingByCode();
         }
 
-        private void trackBarOpacity_ValueChanged(object sender, EventArgs e)
+        private void trackBarOpacity_ValueChanged()
         {
             SetOpacity(trackBarOpacity.Value);
         }
@@ -356,11 +361,13 @@ namespace STROOP.Map3
             {
                 _mapObjectList.ForEach(mapObj => mapObj.OpacityPercent = opacity);
             }
+            textBoxOpacity.SubmitText(opacity.ToString());
+            trackBarOpacity.StartChangingByCode();
             ControlUtilities.SetTrackBarValueCapped(trackBarOpacity, opacity);
-            textBoxOpacity.Text = opacity.ToString();
+            trackBarOpacity.StopChangingByCode();
         }
 
-        private void trackBarOutlineWidth_ValueChanged(object sender, EventArgs e)
+        private void trackBarOutlineWidth_ValueChanged()
         {
             SetOutlineWidth(trackBarOutlineWidth.Value);
         }
@@ -379,8 +386,10 @@ namespace STROOP.Map3
             {
                 _mapObjectList.ForEach(mapObj => mapObj.OutlineWidth = outlineWidth);
             }
+            textBoxOutlineWidth.SubmitText(outlineWidth.ToString());
+            trackBarOutlineWidth.StartChangingByCode();
             ControlUtilities.SetTrackBarValueCapped(trackBarOutlineWidth, outlineWidth);
-            textBoxOutlineWidth.Text = outlineWidth.ToString();
+            trackBarOutlineWidth.StopChangingByCode();
         }
 
         /** null if controls should be refreshed */
