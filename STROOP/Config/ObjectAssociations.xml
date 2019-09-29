@@ -45,6 +45,33 @@
   <TriangleOther>
     <MapImage path="Triangle Other.png"/>
   </TriangleOther>
+  <CellGridlines>
+    <MapImage path="Cell Gridlines.png"/>
+  </CellGridlines>
+  <CurrentCell>
+    <MapImage path="Current Cell.png"/>
+  </CurrentCell>
+  <UnitGridlines>
+    <MapImage path="Unit Gridlines.png"/>
+  </UnitGridlines>
+  <CurrentUnit>
+    <MapImage path="Current Unit.png"/>
+  </CurrentUnit>
+  <NextPositions>
+    <MapImage path="Next Positions.png"/>
+  </NextPositions>
+  <Cylinder>
+    <MapImage path="Cylinder.png"/>
+  </Cylinder>
+  <Sphere>
+    <MapImage path="Sphere.png"/>
+  </Sphere>
+  <Path>
+    <MapImage path="Path.png"/>
+  </Path>
+  <CustomPoints>
+    <MapImage path="Custom Points.png"/>
+  </CustomPoints>
   <Hud>
     <Image path="HUD.png"/>
     <Color>#aaaaaa</Color>
