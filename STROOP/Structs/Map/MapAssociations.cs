@@ -68,6 +68,15 @@ namespace STROOP.Structs
             return GetBestMap(level, area, loadingPoint, missionLayout, y);
         }
 
+        public (byte level, byte area, ushort loadingPoint, ushort missionLayout) GetCurrentLocationStats()
+        {
+            byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);
+            byte area = Config.Stream.GetByte(MiscConfig.AreaAddress);
+            ushort loadingPoint = Config.Stream.GetUInt16(MiscConfig.LoadingPointAddress);
+            ushort missionLayout = Config.Stream.GetUInt16(MiscConfig.MissionAddress);
+            return (level, area, loadingPoint, missionLayout);
+        }
+
         public List<MapLayout> GetAllMaps()
         {
             List<MapLayout> maps = _maps.Values.SelectMany(list => list).ToList();

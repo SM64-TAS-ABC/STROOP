@@ -18,12 +18,16 @@ namespace STROOP.Map3
     {
         private readonly PositionAngle _posAngle;
         private readonly Dictionary<uint, (float x, float z)> _dictionary;
+        private (byte level, byte area, ushort loadingPoint, ushort missionLayout) _currentLocationStats;
+        private bool _resetPathOnLevelChange;
 
         public Map3PathObject(PositionAngle posAngle)
             : base()
         {
             _posAngle = posAngle;
             _dictionary = new Dictionary<uint, (float x, float z)>();
+            _currentLocationStats = Config.MapAssociations.GetCurrentLocationStats();
+            _resetPathOnLevelChange = false;
 
             OutlineWidth = 3;
             OutlineColor = Color.Red;
@@ -53,6 +57,17 @@ namespace STROOP.Map3
 
         public override void Update()
         {
+            (byte level, byte area, ushort loadingPoint, ushort missionLayout) currentLocationStats =
+                Config.MapAssociations.GetCurrentLocationStats();
+            if (currentLocationStats != _currentLocationStats)
+            {
+                _currentLocationStats = currentLocationStats;
+                if (_resetPathOnLevelChange)
+                {
+                    _dictionary.Clear();
+                }
+            }
+
             uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
             float x = (float)_posAngle.X;
             float z = (float)_posAngle.Z;
@@ -68,8 +83,17 @@ namespace STROOP.Map3
             {
                 ToolStripMenuItem itemResetPath = new ToolStripMenuItem("Reset Path");
                 itemResetPath.Click += (sender, e) => _dictionary.Clear();
+
+                ToolStripMenuItem itemResetPathOnLevelChange = new ToolStripMenuItem("Reset Path on Level Change");
+                itemResetPathOnLevelChange.Click += (sender, e) =>
+                {
+                    _resetPathOnLevelChange = !_resetPathOnLevelChange;
+                    itemResetPathOnLevelChange.Checked = _resetPathOnLevelChange;
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemResetPath);
+                _contextMenuStrip.Items.Add(itemResetPathOnLevelChange);
             }
 
             return _contextMenuStrip;
