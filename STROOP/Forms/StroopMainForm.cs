@@ -334,6 +334,9 @@ namespace STROOP
                 textBoxMap3ControllersScaleChange = textBoxMap3ControllersScaleChange,
                 buttonMap3ControllersScaleMinus = buttonMap3ControllersScaleMinus,
                 buttonMap3ControllersScalePlus = buttonMap3ControllersScalePlus,
+                textBoxMap3ControllersScaleChange2 = textBoxMap3ControllersScaleChange2,
+                buttonMap3ControllersScaleDivide = buttonMap3ControllersScaleDivide,
+                buttonMap3ControllersScaleTimes = buttonMap3ControllersScaleTimes,
 
                 radioButtonMap3ControllersCenterBestFit = radioButtonMap3ControllersCenterBestFit,
                 radioButtonMap3ControllersCenterOrigin = radioButtonMap3ControllersCenterOrigin,

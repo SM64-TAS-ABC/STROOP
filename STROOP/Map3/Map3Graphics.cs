@@ -262,6 +262,15 @@ namespace STROOP.Map3
             Config.Map3Gui.textBoxMap3ControllersScaleCustom.SubmitText(newScaleValue.ToString());
         }
 
+        public void ChangeScale2(int power, object value)
+        {
+            float? parsed = ParsingUtilities.ParseFloatNullable(value);
+            if (!parsed.HasValue) return;
+            Config.Map3Gui.radioButtonMap3ControllersScaleCustom.Checked = true;
+            float newScaleValue = MapViewScaleValue * (float)Math.Pow(parsed.Value, power);
+            Config.Map3Gui.textBoxMap3ControllersScaleCustom.SubmitText(newScaleValue.ToString());
+        }
+
         public void ChangeCenter(int xSign, int zSign, object value)
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);

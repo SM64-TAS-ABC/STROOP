@@ -130,6 +130,10 @@ namespace STROOP.Managers
                 Config.Map3Graphics.ChangeScale(-1, Config.Map3Gui.textBoxMap3ControllersScaleChange.Text);
             Config.Map3Gui.buttonMap3ControllersScalePlus.Click += (sender, e) =>
                 Config.Map3Graphics.ChangeScale(1, Config.Map3Gui.textBoxMap3ControllersScaleChange.Text);
+            Config.Map3Gui.buttonMap3ControllersScaleDivide.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeScale2(-1, Config.Map3Gui.textBoxMap3ControllersScaleChange2.Text);
+            Config.Map3Gui.buttonMap3ControllersScaleTimes.Click += (sender, e) =>
+                Config.Map3Graphics.ChangeScale2(1, Config.Map3Gui.textBoxMap3ControllersScaleChange2.Text);
             ControlUtilities.AddContextMenuStripFunctions(
                 Config.Map3Gui.groupBoxMap3ControllersScale,
                 new List<string>()

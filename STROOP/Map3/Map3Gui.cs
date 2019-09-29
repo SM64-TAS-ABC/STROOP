@@ -66,6 +66,9 @@ namespace STROOP.Map3
         public BetterTextbox textBoxMap3ControllersScaleChange;
         public Button buttonMap3ControllersScaleMinus;
         public Button buttonMap3ControllersScalePlus;
+        public BetterTextbox textBoxMap3ControllersScaleChange2;
+        public Button buttonMap3ControllersScaleDivide;
+        public Button buttonMap3ControllersScaleTimes;
 
         // Controllers - Center - Left
         public RadioButton radioButtonMap3ControllersCenterBestFit;
