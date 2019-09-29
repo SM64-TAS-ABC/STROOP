@@ -20,6 +20,8 @@ namespace STROOP.Map3
         private readonly Dictionary<uint, (float x, float z)> _dictionary;
         private (byte level, byte area, ushort loadingPoint, ushort missionLayout) _currentLocationStats;
         private bool _resetPathOnLevelChange;
+        private int _numSkips;
+        private List<uint> _skippedKeys;
 
         public Map3PathObject(PositionAngle posAngle)
             : base()
@@ -28,7 +30,10 @@ namespace STROOP.Map3
             _dictionary = new Dictionary<uint, (float x, float z)>();
             _currentLocationStats = Config.MapAssociations.GetCurrentLocationStats();
             _resetPathOnLevelChange = false;
+            _numSkips = 0;
+            _skippedKeys = new List<uint>();
 
+            Size = 5;
             OutlineWidth = 3;
             OutlineColor = Color.Red;
         }
@@ -65,6 +70,8 @@ namespace STROOP.Map3
                 if (_resetPathOnLevelChange)
                 {
                     _dictionary.Clear();
+                    _numSkips = (int)Size;
+                    _skippedKeys.Clear();
                 }
             }
 
@@ -73,7 +80,18 @@ namespace STROOP.Map3
             float z = (float)_posAngle.Z;
             if (!_dictionary.ContainsKey(globalTimer))
             {
-                _dictionary[globalTimer] = (x, z);
+                if (_numSkips > 0)
+                {
+                    if (!_skippedKeys.Contains(globalTimer))
+                    {
+                        _skippedKeys.Add(globalTimer);
+                        _numSkips--;
+                    }
+                }
+                else
+                {
+                    _dictionary[globalTimer] = (x, z);
+                }
             }
         }
 
