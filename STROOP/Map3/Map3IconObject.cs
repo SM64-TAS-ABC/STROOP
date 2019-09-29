@@ -28,7 +28,7 @@ namespace STROOP.Map3
 
         protected void UpdateImage()
         {
-            Image image = GetImage();
+            Image image = GetImage() ?? Config.ObjectAssociations.EmptyImage;
             if (image != Image)
             {
                 Image = image;
