@@ -190,12 +190,12 @@ namespace STROOP.Map3
 
         public static (float x1, float z1, float x2, float z2, bool xProjection) GetWallDataFromTri(TriangleDataModel tri)
         {
-            if (tri.X1 == tri.X2 && tri.Z1 == tri.Z2)
+            if (tri.X1 == tri.X2 && tri.Z1 == tri.Z2) // v2 is redundant
                 return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection);
-            if (tri.X1 == tri.X3 && tri.Z1 == tri.Z3)
+            if (tri.X1 == tri.X3 && tri.Z1 == tri.Z3) // v3 is redundant
                 return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
-            else
-                return (tri.X2, tri.Z2, tri.X3, tri.Z3, tri.XProjection);
+            else // v2 == v3, so v3 is redundant
+                return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
         }
     }
 }
