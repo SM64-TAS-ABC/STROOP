@@ -64,7 +64,10 @@ namespace STROOP.Map3
         {
             (byte level, byte area, ushort loadingPoint, ushort missionLayout) currentLocationStats =
                 Config.MapAssociations.GetCurrentLocationStats();
-            if (currentLocationStats != _currentLocationStats)
+            if (currentLocationStats.level != _currentLocationStats.level ||
+                currentLocationStats.area != _currentLocationStats.area ||
+                currentLocationStats.loadingPoint != _currentLocationStats.loadingPoint ||
+                currentLocationStats.missionLayout != _currentLocationStats.missionLayout)
             {
                 _currentLocationStats = currentLocationStats;
                 if (_resetPathOnLevelChange)
