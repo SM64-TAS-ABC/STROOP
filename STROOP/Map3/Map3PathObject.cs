@@ -22,6 +22,7 @@ namespace STROOP.Map3
         private bool _resetPathOnLevelChange;
         private int _numSkips;
         private List<uint> _skippedKeys;
+        private bool _isPaused;
 
         public Map3PathObject(PositionAngle posAngle)
             : base()
@@ -32,6 +33,7 @@ namespace STROOP.Map3
             _resetPathOnLevelChange = false;
             _numSkips = 0;
             _skippedKeys = new List<uint>();
+            _isPaused = false;
 
             Size = 5;
             OutlineWidth = 3;
@@ -78,22 +80,25 @@ namespace STROOP.Map3
                 }
             }
 
-            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-            float x = (float)_posAngle.X;
-            float z = (float)_posAngle.Z;
-            if (!_dictionary.ContainsKey(globalTimer))
+            if (!_isPaused)
             {
-                if (_numSkips > 0)
+                uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                float x = (float)_posAngle.X;
+                float z = (float)_posAngle.Z;
+                if (!_dictionary.ContainsKey(globalTimer))
                 {
-                    if (!_skippedKeys.Contains(globalTimer))
+                    if (_numSkips > 0)
                     {
-                        _skippedKeys.Add(globalTimer);
-                        _numSkips--;
+                        if (!_skippedKeys.Contains(globalTimer))
+                        {
+                            _skippedKeys.Add(globalTimer);
+                            _numSkips--;
+                        }
                     }
-                }
-                else
-                {
-                    _dictionary[globalTimer] = (x, z);
+                    else
+                    {
+                        _dictionary[globalTimer] = (x, z);
+                    }
                 }
             }
         }
@@ -112,9 +117,17 @@ namespace STROOP.Map3
                     itemResetPathOnLevelChange.Checked = _resetPathOnLevelChange;
                 };
 
+                ToolStripMenuItem itemPause = new ToolStripMenuItem("Pause");
+                itemPause.Click += (sender, e) =>
+                {
+                    _isPaused = !_isPaused;
+                    itemPause.Checked = _isPaused;
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemResetPath);
                 _contextMenuStrip.Items.Add(itemResetPathOnLevelChange);
+                _contextMenuStrip.Items.Add(itemPause);
             }
 
             return _contextMenuStrip;
