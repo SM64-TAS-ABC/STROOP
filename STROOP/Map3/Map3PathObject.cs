@@ -22,6 +22,7 @@ namespace STROOP.Map3
         private bool _resetPathOnLevelChange;
         private int _numSkips;
         private List<uint> _skippedKeys;
+        private bool _useBlending;
         private bool _isPaused;
 
         public Map3PathObject(PositionAngle posAngle)
@@ -33,6 +34,7 @@ namespace STROOP.Map3
             _resetPathOnLevelChange = false;
             _numSkips = 0;
             _skippedKeys = new List<uint>();
+            _useBlending = false;
             _isPaused = false;
 
             Size = 50;
@@ -54,9 +56,23 @@ namespace STROOP.Map3
             GL.LineWidth(OutlineWidth);
             for (int i = 0; i < veriticesForControl.Count - 1; i++)
             {
+                Color color = OutlineColor;
+                if (_useBlending)
+                {
+                    int distFromEnd = veriticesForControl.Count - i - 2;
+                    if (distFromEnd < Size)
+                    {
+                        color = ColorUtilities.InterpolateColor(
+                            OutlineColor, Color, distFromEnd / (double)Size);
+                    }
+                    else
+                    {
+                        color = Color;
+                    }
+                }
                 (float x1, float z1) = veriticesForControl[i];
                 (float x2, float z2) = veriticesForControl[i + 1];
-                GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, OpacityByte);
+                GL.Color4(color.R, color.G, color.B, OpacityByte);
                 GL.Begin(PrimitiveType.Lines);
                 GL.Vertex2(x1, z1);
                 GL.Vertex2(x2, z2);
@@ -120,6 +136,13 @@ namespace STROOP.Map3
                     itemResetPathOnLevelChange.Checked = _resetPathOnLevelChange;
                 };
 
+                ToolStripMenuItem itemUseBlending = new ToolStripMenuItem("Use Blending");
+                itemUseBlending.Click += (sender, e) =>
+                {
+                    _useBlending = !_useBlending;
+                    itemUseBlending.Checked = _useBlending;
+                };
+
                 ToolStripMenuItem itemPause = new ToolStripMenuItem("Pause");
                 itemPause.Click += (sender, e) =>
                 {
@@ -130,6 +153,7 @@ namespace STROOP.Map3
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemResetPath);
                 _contextMenuStrip.Items.Add(itemResetPathOnLevelChange);
+                _contextMenuStrip.Items.Add(itemUseBlending);
                 _contextMenuStrip.Items.Add(itemPause);
             }
 
