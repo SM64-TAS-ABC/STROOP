@@ -27,6 +27,7 @@ namespace STROOP.Map3
         public Map3NextPositionsObject()
             : base()
         {
+            InternalRotates = true;
         }
 
         public override Image GetImage()
@@ -74,7 +75,7 @@ namespace STROOP.Map3
             List<(float, float)> positionsOnControl = positions.ConvertAll(
                 pos => Map3Utilities.ConvertCoordsForControl(pos.Item1, pos.Item2));
 
-            float angleDegrees = Map3Utilities.ConvertAngleForControl(marioAngle);
+            float angleDegrees = Rotates ? Map3Utilities.ConvertAngleForControl(marioAngle) : 0;
             SizeF size = Map3Utilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size);
             int fullStepTex = _useColoredMarios ? _blueMarioTex : _redMarioTex;
             int quarterStepTex = _useColoredMarios ? _orangeMarioText : _redMarioTex;
