@@ -35,7 +35,7 @@ namespace STROOP.Map3
             _skippedKeys = new List<uint>();
             _isPaused = false;
 
-            Size = 5;
+            Size = 50;
             OutlineWidth = 3;
             OutlineColor = Color.Red;
         }
@@ -51,14 +51,17 @@ namespace STROOP.Map3
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
-            GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, OpacityByte);
             GL.LineWidth(OutlineWidth);
-            GL.Begin(PrimitiveType.LineStrip);
-            foreach ((float x, float z) in veriticesForControl)
+            for (int i = 0; i < veriticesForControl.Count - 1; i++)
             {
-                GL.Vertex2(x, z);
+                (float x1, float z1) = veriticesForControl[i];
+                (float x2, float z2) = veriticesForControl[i + 1];
+                GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, OpacityByte);
+                GL.Begin(PrimitiveType.Lines);
+                GL.Vertex2(x1, z1);
+                GL.Vertex2(x2, z2);
+                GL.End();
             }
-            GL.End();
             GL.Color4(1, 1, 1, 1.0f);
         }
 
@@ -75,7 +78,7 @@ namespace STROOP.Map3
                 if (_resetPathOnLevelChange)
                 {
                     _dictionary.Clear();
-                    _numSkips = (int)Size;
+                    _numSkips = 5;
                     _skippedKeys.Clear();
                 }
             }
