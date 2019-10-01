@@ -19,19 +19,6 @@ namespace STROOP.Managers
 {
     public class Map3Manager
     {
-        private Map3Object _mapObjMario = new Map3MarioObject();
-        private Map3Object _mapObjHolp = new Map3HolpObject();
-        private Map3Object _mapObjCamera = new Map3CameraObject();
-        private Map3Object _mapObjFloorTri = new Map3MarioFloorObject();
-        private Map3Object _mapObjCeilingTri = new Map3MarioCeilingObject();
-        private Map3Object _mapObjCellGridlines = new Map3CellGridlinesObject();
-        private Map3Object _mapObjCurrentCell = new Map3CurrentCellObject();
-        private Map3Object _mapObjUnitGridlines = new Map3UnitGridlinesObject();
-        private Map3Object _mapObjCurrentUnit = new Map3CurrentUnitObject();
-        private Map3Object _mapObjNextPositions = new Map3NextPositionsObject();
-        private Map3Object _mapObjSelf = new Map3SelfObject();
-        private Map3Object _mapObjPoint = new Map3PointObject();
-
         private List<int> _currentObjIndexes = new List<int>();
 
         private bool _isLoaded = false;
@@ -256,32 +243,36 @@ namespace STROOP.Managers
 
         private void InitializeSemaphores()
         {
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackMario, Map3SemaphoreManager.Mario, _mapObjMario, true);
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackHolp, Map3SemaphoreManager.Holp, _mapObjHolp, false);
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCamera, Map3SemaphoreManager.Camera, _mapObjCamera, false);
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackFloorTri, Map3SemaphoreManager.FloorTri, _mapObjFloorTri, false);
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCeilingTri, Map3SemaphoreManager.CeilingTri, _mapObjCeilingTri, false);
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCellGridlines, Map3SemaphoreManager.CellGridlines, _mapObjCellGridlines, false);
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentCell, Map3SemaphoreManager.CurrentCell, _mapObjCurrentCell, false);
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackUnitGridlines, Map3SemaphoreManager.UnitGridlines, _mapObjUnitGridlines, false);
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentUnit, Map3SemaphoreManager.CurrentUnit, _mapObjCurrentUnit, false);
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackNextPositions, Map3SemaphoreManager.NextPositions, _mapObjNextPositions, false);
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackSelf, Map3SemaphoreManager.Self, _mapObjSelf, false);
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackPoint, Map3SemaphoreManager.Point, _mapObjPoint, false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackMario, Map3SemaphoreManager.Mario, () => new Map3MarioObject(), true);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackHolp, Map3SemaphoreManager.Holp, () => new Map3HolpObject(), false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCamera, Map3SemaphoreManager.Camera, () => new Map3CameraObject(), false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackFloorTri, Map3SemaphoreManager.FloorTri, () => new Map3MarioFloorObject(), false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCeilingTri, Map3SemaphoreManager.CeilingTri, () => new Map3MarioCeilingObject(), false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCellGridlines, Map3SemaphoreManager.CellGridlines, () => new Map3CellGridlinesObject(), false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentCell, Map3SemaphoreManager.CurrentCell, () => new Map3CurrentCellObject(), false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackUnitGridlines, Map3SemaphoreManager.UnitGridlines, () => new Map3UnitGridlinesObject(), false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentUnit, Map3SemaphoreManager.CurrentUnit, () => new Map3CurrentUnitObject(), false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackNextPositions, Map3SemaphoreManager.NextPositions, () => new Map3NextPositionsObject(), false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackSelf, Map3SemaphoreManager.Self, () => new Map3SelfObject(), false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackPoint, Map3SemaphoreManager.Point, () => new Map3PointObject(), false);
         }
 
         private void InitializeCheckboxSemaphore(
-            CheckBox checkBox, Map3Semaphore semaphore, Map3Object mapObj, bool startAsOn)
+            CheckBox checkBox, Map3Semaphore semaphore, Func<Map3Object> mapObjFunc, bool startAsOn)
         {
+            Action<bool> addTrackerAction = (bool withSemaphore) =>
+            {
+                Map3Tracker tracker = new Map3Tracker(
+                    new List<Map3Object>() { mapObjFunc() },
+                    withSemaphore ? new List<Map3Semaphore>() { semaphore } : new List<Map3Semaphore>());
+                Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+            };
             Action clickAction = () =>
             {
                 semaphore.Toggle();
                 if (semaphore.IsUsed)
                 {
-                    Map3Tracker tracker = new Map3Tracker(
-                        new List<Map3Object>() { mapObj },
-                        new List<Map3Semaphore>() { semaphore });
-                    Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                    addTrackerAction(true);
                 }
             };
             checkBox.Click += (sender, e) => clickAction();
@@ -290,6 +281,11 @@ namespace STROOP.Managers
                 checkBox.Checked = true;
                 clickAction();
             }
+
+            checkBox.ContextMenuStrip = new ContextMenuStrip();
+            ToolStripMenuItem item = new ToolStripMenuItem("Add Additional Tracker");
+            item.Click += (sender, e) => addTrackerAction(false);
+            checkBox.ContextMenuStrip.Items.Add(item);
         }
 
         public void Update(bool updateView)
