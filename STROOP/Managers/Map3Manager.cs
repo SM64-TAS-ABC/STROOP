@@ -19,9 +19,6 @@ namespace STROOP.Managers
 {
     public class Map3Manager
     {
-        private Map3Object _mapObjMap = new Map3MapObject();
-        private Map3Object _mapObjBackground = new Map3BackgroundObject();
-
         private Map3Object _mapObjMario = new Map3MarioObject();
         private Map3Object _mapObjHolp = new Map3HolpObject();
         private Map3Object _mapObjCamera = new Map3CameraObject();
@@ -57,7 +54,7 @@ namespace STROOP.Managers
         private void InitializeControls()
         {
             // FlowLayoutPanel
-            Config.Map3Gui.flowLayoutPanelMap3Trackers.Initialize(_mapObjMap, _mapObjBackground);
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.Initialize(new Map3MapObject(), new Map3BackgroundObject());
 
             // ComboBox for Level
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
