@@ -108,8 +108,8 @@ namespace STROOP.Map3
 
         private void InitializeTrackBarContextMenuStrips()
         {
-            List<int> maxValues = new List<int>() { 10, 100, 1000, 10000 };
-            Action<TrackBar> initializeContextMenuStrip = (TrackBar trackBar) =>
+            List<int> maxValues = new List<int>() { 10, 100, 1000, 10000, 100000 };
+            Action<TrackBar, Action> initializeContextMenuStrip = (TrackBar trackBar, Action resetAction) =>
             {
                 trackBar.ContextMenuStrip = new ContextMenuStrip();
                 List<ToolStripMenuItem> items = maxValues.ConvertAll(
@@ -121,14 +121,15 @@ namespace STROOP.Map3
                     item.Click += (sender, e) =>
                     {
                         trackBar.Maximum = maxValue;
+                        resetAction();
                         items.ForEach(it => it.Checked = it == item);
                     };
                     if (trackBar.Maximum == maxValue) item.Checked = true;
                     trackBar.ContextMenuStrip.Items.Add(item);
                 };
             };
-            initializeContextMenuStrip(trackBarSize);
-            initializeContextMenuStrip(trackBarOutlineWidth);
+            initializeContextMenuStrip(trackBarSize, () => SetSize(null));
+            initializeContextMenuStrip(trackBarOutlineWidth, () => SetOutlineWidth(null));
         }
 
         private void InitializePlusContextMenuStrip()
