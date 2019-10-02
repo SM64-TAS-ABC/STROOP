@@ -100,9 +100,35 @@ namespace STROOP.Map3
             pictureBoxCog.ContextMenuStrip = _mapObjectList[0].GetContextMenuStrip();
             pictureBoxCog.Click += (sender, e) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
 
+            InitializeTrackBarContextMenuStrips();
             InitializePlusContextMenuStrip();
 
             UpdateControl();
+        }
+
+        private void InitializeTrackBarContextMenuStrips()
+        {
+            List<int> maxValues = new List<int>() { 10, 100, 1000, 10000 };
+            Action<TrackBar> initializeContextMenuStrip = (TrackBar trackBar) =>
+            {
+                trackBar.ContextMenuStrip = new ContextMenuStrip();
+                List<ToolStripMenuItem> items = maxValues.ConvertAll(
+                    maxValue => new ToolStripMenuItem("Max of " + maxValue));
+                for (int i = 0; i < items.Count; i++)
+                {
+                    int maxValue = maxValues[i];
+                    ToolStripMenuItem item = items[i];
+                    item.Click += (sender, e) =>
+                    {
+                        trackBar.Maximum = maxValue;
+                        items.ForEach(it => it.Checked = it == item);
+                    };
+                    if (trackBar.Maximum == maxValue) item.Checked = true;
+                    trackBar.ContextMenuStrip.Items.Add(item);
+                };
+            };
+            initializeContextMenuStrip(trackBarSize);
+            initializeContextMenuStrip(trackBarOutlineWidth);
         }
 
         private void InitializePlusContextMenuStrip()
