@@ -26,7 +26,7 @@ namespace STROOP.Managers
         public enum TabType { Object, Map, Map2, Map3, Model, Memory, Custom, TAS, CamHack, Other };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex };
-        public enum SelectionMethodType { Clicked, Held, StoodOn, Floor, Wall, Ceiling };
+        public enum SelectionMethodType { Clicked, Held, StoodOn, Floor, Wall, Ceiling, Closest };
         public enum ClickType { ObjectClick, MapClick, Map2Click, Map2HomeClick, Map3Click, ModelClick, MemoryClick, CamHackClick, MarkClick };
 
         public uint? HoveredObjectAdress;
@@ -376,6 +376,10 @@ namespace STROOP.Managers
                     if (ceilingTriangleAddress == 0) break;
                     uint ceilingObjectAddress = Config.Stream.GetUInt32(ceilingTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
                     if (ceilingObjectAddress != 0) SelectedSlotsAddresses.Add(ceilingObjectAddress);
+                    break;
+                case SelectionMethodType.Closest:
+                    SelectedSlotsAddresses.Clear();
+                    SelectedSlotsAddresses.Add(DataModels.Mario.ClosestObject);
                     break;
             }
         }
