@@ -59,6 +59,7 @@ namespace STROOP.Structs.Configurations
         public static VarHackManager VarHackManager;
         public static CamHackManager CamHackManager;
         public static MemoryManager MemoryManager;
+        public static SearchManager SearchManager;
         public static CoinManager CoinManager;
         public static GfxManager GfxManager;
         public static PaintingManager PaintingManager;
