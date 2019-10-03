@@ -179,6 +179,7 @@ namespace STROOP.Managers
             _labelSearchNumResults.Text = _dictionary.Count.ToString() + " Results";
 
             _dataGridViewSearch.Rows.Clear();
+            if (_dictionary.Count > 10000) return;
             _dictionary.Keys.ToList().ForEach(key =>
             {
                 _dataGridViewSearch.Rows.Add(HexUtilities.FormatValue(key), _dictionary[key]);
