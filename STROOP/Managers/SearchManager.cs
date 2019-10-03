@@ -129,13 +129,14 @@ namespace STROOP.Managers
             _memoryType = TypeUtilities.StringToType[memoryTypeString];
             int memoryTypeSize = TypeUtilities.TypeSize[_memoryType];
 
-            object searchValue = ParsingUtilities.ParseValueNullable(_textBoxSearchValue.Text, _memoryType);
+            (object searchValue1, object searchValue2) = ParseSearchValue(_textBoxSearchValue.Text, _memoryType);
+            object oldMemoryValue = null;
 
             _dictionary.Clear();
             for (uint address = 0x80000000; address < 0x80000000 + Config.RamSize - memoryTypeSize; address += (uint)memoryTypeSize)
             {
                 object memoryValue = Config.Stream.GetValue(_memoryType, address);
-                if (Equals(memoryValue, searchValue))
+                if (ValueQualifies(memoryValue, oldMemoryValue, searchValue1, searchValue2, _memoryType))
                 {
                     _dictionary[address] = memoryValue;
                 }
