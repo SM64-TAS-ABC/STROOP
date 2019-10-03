@@ -140,10 +140,12 @@ namespace STROOP.Managers
         {
             (object searchValue1, object searchValue2) = ParseSearchValue(_textBoxSearchValue.Text, _memoryType);
 
-            List<uint> addresses = _dictionary.Keys.ToList();
+            List<KeyValuePair<uint, object>> pairs = _dictionary.ToList();
             _dictionary.Clear();
-            foreach (uint address in addresses)
+            foreach (KeyValuePair<uint, object> pair in pairs)
             {
+                uint address = pair.Key;
+                object oldMemoryValue = pair.Value;
                 object memoryValue = Config.Stream.GetValue(_memoryType, address);
                 if (Equals(memoryValue, searchValue1))
                 {
@@ -179,7 +181,7 @@ namespace STROOP.Managers
             }
         }
 
-        private bool ValueQualifies(object memoryValue, object searchValue, object searchValue2 = null)
+        private bool ValueQualifies(Type type, object memoryValue, object oldMemoryValue, object searchValue, object searchValue2 = null)
         {
             return false;
         }
