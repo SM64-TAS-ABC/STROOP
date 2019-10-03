@@ -39,6 +39,8 @@ namespace STROOP.Managers
         private readonly Button _buttonSearchFirstScan;
         private readonly Button _buttonSearchNextScan;
         private readonly Label _labelSearchNumResults;
+        private readonly Button _buttonSearchAddSelectedAsVars;
+        private readonly Button _buttonSearchAddAllAsVars;
         private readonly DataGridView _dataGridViewSearch;
 
         public SearchManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
@@ -65,6 +67,10 @@ namespace STROOP.Managers
             _buttonSearchNextScan.Click += (sender, e) => DoNextScan();
 
             _labelSearchNumResults = splitContainerSearchOptions.Panel1.Controls["labelSearchNumResults"] as Label;
+
+            _buttonSearchAddSelectedAsVars = splitContainerSearchOptions.Panel1.Controls["buttonSearchAddSelectedAsVars"] as Button;
+
+            _buttonSearchAddAllAsVars = splitContainerSearchOptions.Panel1.Controls["buttonSearchAddAllAsVars"] as Button;
 
             _dataGridViewSearch = splitContainerSearchOptions.Panel2.Controls["dataGridViewSearch"] as DataGridView;
         }
