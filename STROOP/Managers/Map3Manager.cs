@@ -290,8 +290,11 @@ namespace STROOP.Managers
 
         public void Update(bool updateView)
         {
-            if (!updateView) return;
             if (!_isLoaded) return;
+
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.UpdateControl();
+
+            if (!updateView) return;
 
             UpdateBasedOnObjectsSelectedOnMap();
             UpdateControlsBasedOnSemaphores();
