@@ -121,13 +121,13 @@ namespace STROOP.Managers
             _memoryType = TypeUtilities.StringToType[memoryTypeString];
             int memoryTypeSize = TypeUtilities.TypeSize[_memoryType];
 
-            (object searchValue1, object searchValue2) = ParseSearchValue(_textBoxSearchValue.Text, _memoryType);
+            object searchValue = ParsingUtilities.ParseValueNullable(_textBoxSearchValue.Text, _memoryType);
 
             _dictionary.Clear();
             for (uint address = 0x80000000; address < 0x80000000 + Config.RamSize - memoryTypeSize; address += (uint)memoryTypeSize)
             {
                 object memoryValue = Config.Stream.GetValue(_memoryType, address);
-                if (Equals(memoryValue, searchValue1))
+                if (Equals(memoryValue, searchValue))
                 {
                     _dictionary[address] = memoryValue;
                 }
@@ -147,7 +147,7 @@ namespace STROOP.Managers
                 uint address = pair.Key;
                 object oldMemoryValue = pair.Value;
                 object memoryValue = Config.Stream.GetValue(_memoryType, address);
-                if (Equals(memoryValue, searchValue1))
+                if (ValueQualifies(memoryValue, oldMemoryValue, searchValue1, searchValue2, _memoryType))
                 {
                     _dictionary[address] = memoryValue;
                 }
@@ -181,9 +181,9 @@ namespace STROOP.Managers
             }
         }
 
-        private bool ValueQualifies(Type type, object memoryValue, object oldMemoryValue, object searchValue, object searchValue2 = null)
+        private bool ValueQualifies(object memoryValue, object oldMemoryValue, object searchValue1, object searchValue2, Type type)
         {
-            return false;
+            return Equals(memoryValue, searchValue1);
         }
 
         private void UpdateControlsBasedOnDictionary()
