@@ -176,7 +176,7 @@ namespace STROOP.Managers
 
         private void UpdateControlsBasedOnDictionary()
         {
-            _labelSearchNumResults.Text = _dictionary.Count.ToString();
+            _labelSearchNumResults.Text = _dictionary.Count.ToString() + " Results";
 
             _dataGridViewSearch.Rows.Clear();
             _dictionary.Keys.ToList().ForEach(key =>
