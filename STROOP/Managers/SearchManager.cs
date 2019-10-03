@@ -248,7 +248,392 @@ namespace STROOP.Managers
                         throw new ArgumentOutOfRangeException();
                 }
             }
-            return Equals(memoryObject, searchObject1);
+            if (type == typeof(sbyte))
+            {
+                sbyte? memoryValue = ParsingUtilities.ParseSByteNullable(memoryObject);
+                if (!memoryValue.HasValue) return false;
+                sbyte? oldMemoryValue = ParsingUtilities.ParseSByteNullable(oldMemoryObject);
+                sbyte? searchValue1 = ParsingUtilities.ParseSByteNullable(searchObject1);
+                sbyte? searchValue2 = ParsingUtilities.ParseSByteNullable(searchObject2);
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                switch (valueRelationship)
+                {
+                    case ValueRelationship.EqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.GreaterThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value > searchValue1.Value;
+                    case ValueRelationship.LessThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value < searchValue1.Value;
+                    case ValueRelationship.GreaterThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value >= searchValue1.Value;
+                    case ValueRelationship.LessThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value <= searchValue1.Value;
+                    case ValueRelationship.Changed:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value != oldMemoryValue.Value;
+                    case ValueRelationship.DidNotChange:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value;
+                    case ValueRelationship.Increased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value > oldMemoryValue.Value;
+                    case ValueRelationship.Decreased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value < oldMemoryValue.Value;
+                    case ValueRelationship.IncreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value + searchValue1.Value;
+                    case ValueRelationship.DecreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value - searchValue1.Value;
+                    case ValueRelationship.BetweenExclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value < memoryValue.Value && memoryValue.Value < searchValue2.Value;
+                    case ValueRelationship.BetweenInclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.EverythingPasses:
+                        return true;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            if (type == typeof(short))
+            {
+                short? memoryValue = ParsingUtilities.ParseShortNullable(memoryObject);
+                if (!memoryValue.HasValue) return false;
+                short? oldMemoryValue = ParsingUtilities.ParseShortNullable(oldMemoryObject);
+                short? searchValue1 = ParsingUtilities.ParseShortNullable(searchObject1);
+                short? searchValue2 = ParsingUtilities.ParseShortNullable(searchObject2);
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                switch (valueRelationship)
+                {
+                    case ValueRelationship.EqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.GreaterThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value > searchValue1.Value;
+                    case ValueRelationship.LessThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value < searchValue1.Value;
+                    case ValueRelationship.GreaterThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value >= searchValue1.Value;
+                    case ValueRelationship.LessThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value <= searchValue1.Value;
+                    case ValueRelationship.Changed:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value != oldMemoryValue.Value;
+                    case ValueRelationship.DidNotChange:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value;
+                    case ValueRelationship.Increased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value > oldMemoryValue.Value;
+                    case ValueRelationship.Decreased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value < oldMemoryValue.Value;
+                    case ValueRelationship.IncreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value + searchValue1.Value;
+                    case ValueRelationship.DecreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value - searchValue1.Value;
+                    case ValueRelationship.BetweenExclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value < memoryValue.Value && memoryValue.Value < searchValue2.Value;
+                    case ValueRelationship.BetweenInclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.EverythingPasses:
+                        return true;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            if (type == typeof(ushort))
+            {
+                ushort? memoryValue = ParsingUtilities.ParseUShortNullable(memoryObject);
+                if (!memoryValue.HasValue) return false;
+                ushort? oldMemoryValue = ParsingUtilities.ParseUShortNullable(oldMemoryObject);
+                ushort? searchValue1 = ParsingUtilities.ParseUShortNullable(searchObject1);
+                ushort? searchValue2 = ParsingUtilities.ParseUShortNullable(searchObject2);
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                switch (valueRelationship)
+                {
+                    case ValueRelationship.EqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.GreaterThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value > searchValue1.Value;
+                    case ValueRelationship.LessThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value < searchValue1.Value;
+                    case ValueRelationship.GreaterThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value >= searchValue1.Value;
+                    case ValueRelationship.LessThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value <= searchValue1.Value;
+                    case ValueRelationship.Changed:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value != oldMemoryValue.Value;
+                    case ValueRelationship.DidNotChange:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value;
+                    case ValueRelationship.Increased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value > oldMemoryValue.Value;
+                    case ValueRelationship.Decreased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value < oldMemoryValue.Value;
+                    case ValueRelationship.IncreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value + searchValue1.Value;
+                    case ValueRelationship.DecreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value - searchValue1.Value;
+                    case ValueRelationship.BetweenExclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value < memoryValue.Value && memoryValue.Value < searchValue2.Value;
+                    case ValueRelationship.BetweenInclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.EverythingPasses:
+                        return true;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            if (type == typeof(int))
+            {
+                int? memoryValue = ParsingUtilities.ParseIntNullable(memoryObject);
+                if (!memoryValue.HasValue) return false;
+                int? oldMemoryValue = ParsingUtilities.ParseIntNullable(oldMemoryObject);
+                int? searchValue1 = ParsingUtilities.ParseIntNullable(searchObject1);
+                int? searchValue2 = ParsingUtilities.ParseIntNullable(searchObject2);
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                switch (valueRelationship)
+                {
+                    case ValueRelationship.EqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.GreaterThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value > searchValue1.Value;
+                    case ValueRelationship.LessThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value < searchValue1.Value;
+                    case ValueRelationship.GreaterThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value >= searchValue1.Value;
+                    case ValueRelationship.LessThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value <= searchValue1.Value;
+                    case ValueRelationship.Changed:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value != oldMemoryValue.Value;
+                    case ValueRelationship.DidNotChange:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value;
+                    case ValueRelationship.Increased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value > oldMemoryValue.Value;
+                    case ValueRelationship.Decreased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value < oldMemoryValue.Value;
+                    case ValueRelationship.IncreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value + searchValue1.Value;
+                    case ValueRelationship.DecreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value - searchValue1.Value;
+                    case ValueRelationship.BetweenExclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value < memoryValue.Value && memoryValue.Value < searchValue2.Value;
+                    case ValueRelationship.BetweenInclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.EverythingPasses:
+                        return true;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            if (type == typeof(uint))
+            {
+                uint? memoryValue = ParsingUtilities.ParseUIntNullable(memoryObject);
+                if (!memoryValue.HasValue) return false;
+                uint? oldMemoryValue = ParsingUtilities.ParseUIntNullable(oldMemoryObject);
+                uint? searchValue1 = ParsingUtilities.ParseUIntNullable(searchObject1);
+                uint? searchValue2 = ParsingUtilities.ParseUIntNullable(searchObject2);
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                switch (valueRelationship)
+                {
+                    case ValueRelationship.EqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.GreaterThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value > searchValue1.Value;
+                    case ValueRelationship.LessThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value < searchValue1.Value;
+                    case ValueRelationship.GreaterThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value >= searchValue1.Value;
+                    case ValueRelationship.LessThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value <= searchValue1.Value;
+                    case ValueRelationship.Changed:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value != oldMemoryValue.Value;
+                    case ValueRelationship.DidNotChange:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value;
+                    case ValueRelationship.Increased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value > oldMemoryValue.Value;
+                    case ValueRelationship.Decreased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value < oldMemoryValue.Value;
+                    case ValueRelationship.IncreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value + searchValue1.Value;
+                    case ValueRelationship.DecreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value - searchValue1.Value;
+                    case ValueRelationship.BetweenExclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value < memoryValue.Value && memoryValue.Value < searchValue2.Value;
+                    case ValueRelationship.BetweenInclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.EverythingPasses:
+                        return true;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            if (type == typeof(float))
+            {
+                float? memoryValue = ParsingUtilities.ParseFloatNullable(memoryObject);
+                if (!memoryValue.HasValue) return false;
+                float? oldMemoryValue = ParsingUtilities.ParseFloatNullable(oldMemoryObject);
+                float? searchValue1 = ParsingUtilities.ParseFloatNullable(searchObject1);
+                float? searchValue2 = ParsingUtilities.ParseFloatNullable(searchObject2);
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                switch (valueRelationship)
+                {
+                    case ValueRelationship.EqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.GreaterThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value > searchValue1.Value;
+                    case ValueRelationship.LessThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value < searchValue1.Value;
+                    case ValueRelationship.GreaterThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value >= searchValue1.Value;
+                    case ValueRelationship.LessThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value <= searchValue1.Value;
+                    case ValueRelationship.Changed:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value != oldMemoryValue.Value;
+                    case ValueRelationship.DidNotChange:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value;
+                    case ValueRelationship.Increased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value > oldMemoryValue.Value;
+                    case ValueRelationship.Decreased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value < oldMemoryValue.Value;
+                    case ValueRelationship.IncreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value + searchValue1.Value;
+                    case ValueRelationship.DecreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value - searchValue1.Value;
+                    case ValueRelationship.BetweenExclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value < memoryValue.Value && memoryValue.Value < searchValue2.Value;
+                    case ValueRelationship.BetweenInclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.EverythingPasses:
+                        return true;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            if (type == typeof(double))
+            {
+                double? memoryValue = ParsingUtilities.ParseDoubleNullable(memoryObject);
+                if (!memoryValue.HasValue) return false;
+                double? oldMemoryValue = ParsingUtilities.ParseDoubleNullable(oldMemoryObject);
+                double? searchValue1 = ParsingUtilities.ParseDoubleNullable(searchObject1);
+                double? searchValue2 = ParsingUtilities.ParseDoubleNullable(searchObject2);
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                switch (valueRelationship)
+                {
+                    case ValueRelationship.EqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.GreaterThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value > searchValue1.Value;
+                    case ValueRelationship.LessThan:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value < searchValue1.Value;
+                    case ValueRelationship.GreaterThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value >= searchValue1.Value;
+                    case ValueRelationship.LessThanOrEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value <= searchValue1.Value;
+                    case ValueRelationship.Changed:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value != oldMemoryValue.Value;
+                    case ValueRelationship.DidNotChange:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value;
+                    case ValueRelationship.Increased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value > oldMemoryValue.Value;
+                    case ValueRelationship.Decreased:
+                        if (!oldMemoryValue.HasValue) return false;
+                        return memoryValue.Value < oldMemoryValue.Value;
+                    case ValueRelationship.IncreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value + searchValue1.Value;
+                    case ValueRelationship.DecreasedBy:
+                        if (!oldMemoryValue.HasValue || !searchValue1.HasValue) return false;
+                        return memoryValue.Value == oldMemoryValue.Value - searchValue1.Value;
+                    case ValueRelationship.BetweenExclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value < memoryValue.Value && memoryValue.Value < searchValue2.Value;
+                    case ValueRelationship.BetweenInclusive:
+                        if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
+                        return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.EverythingPasses:
+                        return true;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            throw new ArgumentOutOfRangeException();
         }
     }
 }
