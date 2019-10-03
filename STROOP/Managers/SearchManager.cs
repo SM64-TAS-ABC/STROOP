@@ -31,6 +31,7 @@ namespace STROOP.Managers
         };
 
         private readonly Dictionary<uint, object> _dictionary;
+        private Type _memoryType;
 
         private readonly ComboBox _comboBoxSearchMemoryType;
         private readonly ComboBox _comboBoxValueRelationship;
@@ -44,6 +45,7 @@ namespace STROOP.Managers
             : base(null, watchVariablePanel)
         {
             _dictionary = new Dictionary<uint, object>();
+            _memoryType = typeof(byte);
 
             SplitContainer splitContainerSearch = tabControl.Controls["splitContainerSearch"] as SplitContainer;
             SplitContainer splitContainerSearchOptions = splitContainerSearch.Panel1.Controls["splitContainerSearchOptions"] as SplitContainer;
@@ -70,15 +72,15 @@ namespace STROOP.Managers
         private void DoFirstScan()
         {
             string memoryTypeString = (string)_comboBoxSearchMemoryType.SelectedItem;
-            Type memoryType = TypeUtilities.StringToType[memoryTypeString];
-            int memoryTypeSize = TypeUtilities.TypeSize[memoryType];
+            _memoryType = TypeUtilities.StringToType[memoryTypeString];
+            int memoryTypeSize = TypeUtilities.TypeSize[_memoryType];
 
-            object searchValue = ParsingUtilities.ParseValueNullable(_textBoxSearchValue.Text, memoryType);
+            object searchValue = ParsingUtilities.ParseValueNullable(_textBoxSearchValue.Text, _memoryType);
 
             _dictionary.Clear();
             for (uint address = 0; address < Config.RamSize - memoryTypeSize; address += (uint)memoryTypeSize)
             {
-                object memoryValue = Config.Stream.GetValue(memoryType, address);
+                object memoryValue = Config.Stream.GetValue(_memoryType, address);
                 if (Equals(memoryValue, searchValue))
                 {
                     _dictionary[address] = memoryValue;
@@ -90,18 +92,13 @@ namespace STROOP.Managers
 
         private void DoNextScan()
         {
-            string memoryTypeString = (string)_comboBoxSearchMemoryType.SelectedItem;
-            Type memoryType = TypeUtilities.StringToType[memoryTypeString];
-            int memoryTypeSize = TypeUtilities.TypeSize[memoryType];
-
-            object searchValue = ParsingUtilities.ParseValueNullable(_textBoxSearchValue.Text, memoryType);
-            List<KeyValuePair<uint, object>> dictionaryKeyValues = _dictionary.ToList();
+            object searchValue = ParsingUtilities.ParseValueNullable(_textBoxSearchValue.Text, _memoryType);
+            List<uint> addresses = _dictionary.Keys.ToList();
 
             _dictionary.Clear();
-            foreach (KeyValuePair<uint, object> pair in dictionaryKeyValues)
+            foreach (uint address in addresses)
             {
-                uint address = pair.Key;
-                object memoryValue = Config.Stream.GetValue(memoryType, address);
+                object memoryValue = Config.Stream.GetValue(_memoryType, address);
                 if (Equals(memoryValue, searchValue))
                 {
                     _dictionary[address] = memoryValue;
