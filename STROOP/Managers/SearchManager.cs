@@ -35,6 +35,7 @@ namespace STROOP.Managers
         private readonly BetterTextbox _textBoxSearchValue;
         private readonly Button _buttonSearchFirstScan;
         private readonly Button _buttonSearchNextScan;
+        private readonly Label _labelSearchNumResults;
         private readonly DataGridView _dataGridViewSearch;
 
         public SearchManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
@@ -56,6 +57,8 @@ namespace STROOP.Managers
 
             _buttonSearchNextScan = splitContainerSearchOptions.Panel1.Controls["buttonSearchNextScan"] as Button;
 
+            _labelSearchNumResults = splitContainerSearchOptions.Panel1.Controls["labelSearchNumResults"] as Label;
+
             _dataGridViewSearch = splitContainerSearchOptions.Panel2.Controls["dataGridViewSearch"] as DataGridView;
         }
 
@@ -76,13 +79,14 @@ namespace STROOP.Managers
                 }
             }
 
-            StringBuilder stringBuilder = new StringBuilder();
+            _labelSearchNumResults.Text = dictionary.Count.ToString();
+
+            _dataGridViewSearch.Rows.Clear();
             dictionary.Keys.ToList().ForEach(key =>
             {
                 object value = dictionary[key];
-                stringBuilder.Append(HexUtilities.FormatValue(key) + " => " + value + "\r\n");
+                _dataGridViewSearch.Rows.Add("0x80" + HexUtilities.FormatValue(key, 6, false), value);
             });
-            InfoForm.ShowValue(stringBuilder.ToString());
         }
 
         public override void Update(bool updateView)
