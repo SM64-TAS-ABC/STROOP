@@ -35,15 +35,22 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -1567,6 +1574,13 @@ namespace STROOP
             this.listBoxSoundSoundEffect = new System.Windows.Forms.ListBox();
             this.textBoxSoundSoundEffect = new STROOP.BetterTextbox();
             this.buttonSoundPlaySoundEffect = new System.Windows.Forms.Button();
+            this.tabPageSearch = new System.Windows.Forms.TabPage();
+            this.splitContainerSearch = new STROOP.BetterSplitContainer();
+            this.splitContainerSearchOptions = new STROOP.BetterSplitContainer();
+            this.comboBoxSearchMemoryType = new System.Windows.Forms.ComboBox();
+            this.textBoxSearchValue = new STROOP.BetterTextbox();
+            this.buttonSearchFirstScan = new System.Windows.Forms.Button();
+            this.watchVariablePanelSearch = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxSelectionMethod = new System.Windows.Forms.ComboBox();
             this.labelSelectionMethod = new System.Windows.Forms.Label();
@@ -1578,28 +1592,15 @@ namespace STROOP
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.tabPageSearch = new System.Windows.Forms.TabPage();
-            this.betterSplitContainer2 = new STROOP.BetterSplitContainer();
-            this.betterSplitContainer3 = new STROOP.BetterSplitContainer();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.betterTextbox1 = new STROOP.BetterTextbox();
-            this.betterTextbox2 = new STROOP.BetterTextbox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.watchVariableFlowLayoutPanel1 = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.buttonSearchNextScan = new System.Windows.Forms.Button();
+            this.comboBoxValueRelationship = new System.Windows.Forms.ComboBox();
+            this.dataGridViewSearch = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -2053,16 +2054,18 @@ namespace STROOP
             this.splitContainerSoundSoundEffect.Panel1.SuspendLayout();
             this.splitContainerSoundSoundEffect.Panel2.SuspendLayout();
             this.splitContainerSoundSoundEffect.SuspendLayout();
+            this.tabPageSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerSearch)).BeginInit();
+            this.splitContainerSearch.Panel1.SuspendLayout();
+            this.splitContainerSearch.Panel2.SuspendLayout();
+            this.splitContainerSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerSearchOptions)).BeginInit();
+            this.splitContainerSearchOptions.Panel1.SuspendLayout();
+            this.splitContainerSearchOptions.Panel2.SuspendLayout();
+            this.splitContainerSearchOptions.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.tabPageSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer2)).BeginInit();
-            this.betterSplitContainer2.Panel1.SuspendLayout();
-            this.betterSplitContainer2.Panel2.SuspendLayout();
-            this.betterSplitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer3)).BeginInit();
-            this.betterSplitContainer3.Panel1.SuspendLayout();
-            this.betterSplitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -5794,7 +5797,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 505F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 506F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9524,7 +9527,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(457, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(460, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -9558,14 +9561,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -9586,14 +9589,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -12752,7 +12755,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 725;
+            this.splitContainerMemory.SplitterDistance = 728;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12793,7 +12796,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(725, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(728, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -13010,7 +13013,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(725, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(728, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -13039,7 +13042,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(624, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(627, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -13052,7 +13055,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(181, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(178, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -14206,7 +14209,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -14238,7 +14241,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(385, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -14294,7 +14297,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(385, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -16546,14 +16549,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -16573,46 +16576,46 @@ namespace STROOP
             // 
             // rngIndex
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle27;
             this.rngIndex.HeaderText = "RNG Index";
             this.rngIndex.MinimumWidth = 2;
             this.rngIndex.Name = "rngIndex";
             // 
             // rngValue
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle28;
             this.rngValue.HeaderText = "RNG Value";
             this.rngValue.MinimumWidth = 2;
             this.rngValue.Name = "rngValue";
             // 
             // rngToGo
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle29;
             this.rngToGo.HeaderText = "RNG To Go";
             this.rngToGo.MinimumWidth = 2;
             this.rngToGo.Name = "rngToGo";
             // 
             // coinHSpeed
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle30;
             this.coinHSpeed.HeaderText = "Coin HSpeed";
             this.coinHSpeed.Name = "coinHSpeed";
             // 
             // coinVSpeed
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle31;
             this.coinVSpeed.HeaderText = "Coin VSpeed";
             this.coinVSpeed.Name = "coinVSpeed";
             // 
             // coinAngle
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle32;
             this.coinAngle.HeaderText = "Coin Angle";
             this.coinAngle.MinimumWidth = 2;
             this.coinAngle.Name = "coinAngle";
@@ -18890,7 +18893,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -20074,7 +20077,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(42, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(43, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -20334,6 +20337,111 @@ namespace STROOP
             this.buttonSoundPlaySoundEffect.Text = "Play Sound Effect";
             this.buttonSoundPlaySoundEffect.UseVisualStyleBackColor = true;
             // 
+            // tabPageSearch
+            // 
+            this.tabPageSearch.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageSearch.Controls.Add(this.splitContainerSearch);
+            this.tabPageSearch.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSearch.Name = "tabPageSearch";
+            this.tabPageSearch.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSearch.Size = new System.Drawing.Size(915, 463);
+            this.tabPageSearch.TabIndex = 36;
+            this.tabPageSearch.Text = "Search";
+            // 
+            // splitContainerSearch
+            // 
+            this.splitContainerSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerSearch.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainerSearch.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerSearch.Name = "splitContainerSearch";
+            // 
+            // splitContainerSearch.Panel1
+            // 
+            this.splitContainerSearch.Panel1.AutoScroll = true;
+            this.splitContainerSearch.Panel1.Controls.Add(this.splitContainerSearchOptions);
+            this.splitContainerSearch.Panel1MinSize = 0;
+            // 
+            // splitContainerSearch.Panel2
+            // 
+            this.splitContainerSearch.Panel2.Controls.Add(this.watchVariablePanelSearch);
+            this.splitContainerSearch.Panel2MinSize = 0;
+            this.splitContainerSearch.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerSearch.SplitterDistance = 564;
+            this.splitContainerSearch.SplitterWidth = 1;
+            this.splitContainerSearch.TabIndex = 38;
+            // 
+            // splitContainerSearchOptions
+            // 
+            this.splitContainerSearchOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerSearchOptions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerSearchOptions.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerSearchOptions.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerSearchOptions.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerSearchOptions.Name = "splitContainerSearchOptions";
+            this.splitContainerSearchOptions.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerSearchOptions.Panel1
+            // 
+            this.splitContainerSearchOptions.Panel1.AutoScroll = true;
+            this.splitContainerSearchOptions.Panel1.Controls.Add(this.comboBoxValueRelationship);
+            this.splitContainerSearchOptions.Panel1.Controls.Add(this.comboBoxSearchMemoryType);
+            this.splitContainerSearchOptions.Panel1.Controls.Add(this.textBoxSearchValue);
+            this.splitContainerSearchOptions.Panel1.Controls.Add(this.buttonSearchNextScan);
+            this.splitContainerSearchOptions.Panel1.Controls.Add(this.buttonSearchFirstScan);
+            this.splitContainerSearchOptions.Panel1MinSize = 0;
+            // 
+            // splitContainerSearchOptions.Panel2
+            // 
+            this.splitContainerSearchOptions.Panel2.Controls.Add(this.dataGridViewSearch);
+            this.splitContainerSearchOptions.Panel2MinSize = 0;
+            this.splitContainerSearchOptions.Size = new System.Drawing.Size(564, 457);
+            this.splitContainerSearchOptions.SplitterDistance = 100;
+            this.splitContainerSearchOptions.SplitterWidth = 1;
+            this.splitContainerSearchOptions.TabIndex = 38;
+            // 
+            // comboBoxSearchMemoryType
+            // 
+            this.comboBoxSearchMemoryType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSearchMemoryType.Location = new System.Drawing.Point(69, 24);
+            this.comboBoxSearchMemoryType.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxSearchMemoryType.Name = "comboBoxSearchMemoryType";
+            this.comboBoxSearchMemoryType.Size = new System.Drawing.Size(113, 21);
+            this.comboBoxSearchMemoryType.TabIndex = 36;
+            // 
+            // textBoxSearchValue
+            // 
+            this.textBoxSearchValue.Location = new System.Drawing.Point(69, 65);
+            this.textBoxSearchValue.Name = "textBoxSearchValue";
+            this.textBoxSearchValue.Size = new System.Drawing.Size(113, 20);
+            this.textBoxSearchValue.TabIndex = 34;
+            this.textBoxSearchValue.Text = "0x00000000";
+            this.textBoxSearchValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonSearchFirstScan
+            // 
+            this.buttonSearchFirstScan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonSearchFirstScan.Location = new System.Drawing.Point(216, 64);
+            this.buttonSearchFirstScan.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSearchFirstScan.Name = "buttonSearchFirstScan";
+            this.buttonSearchFirstScan.Size = new System.Drawing.Size(86, 21);
+            this.buttonSearchFirstScan.TabIndex = 20;
+            this.buttonSearchFirstScan.Text = "First Scan";
+            this.buttonSearchFirstScan.UseVisualStyleBackColor = true;
+            // 
+            // watchVariablePanelSearch
+            // 
+            this.watchVariablePanelSearch.AutoScroll = true;
+            this.watchVariablePanelSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelSearch.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelSearch.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelSearch.Name = "watchVariablePanelSearch";
+            this.watchVariablePanelSearch.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelSearch.Size = new System.Drawing.Size(342, 455);
+            this.watchVariablePanelSearch.TabIndex = 7;
+            // 
             // groupBoxObjects
             // 
             this.groupBoxObjects.Controls.Add(this.comboBoxSelectionMethod);
@@ -20461,283 +20569,103 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // tabPageSearch
+            // buttonSearchNextScan
             // 
-            this.tabPageSearch.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageSearch.Controls.Add(this.betterSplitContainer2);
-            this.tabPageSearch.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSearch.Name = "tabPageSearch";
-            this.tabPageSearch.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSearch.Size = new System.Drawing.Size(915, 463);
-            this.tabPageSearch.TabIndex = 36;
-            this.tabPageSearch.Text = "Search";
+            this.buttonSearchNextScan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonSearchNextScan.Location = new System.Drawing.Point(306, 64);
+            this.buttonSearchNextScan.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSearchNextScan.Name = "buttonSearchNextScan";
+            this.buttonSearchNextScan.Size = new System.Drawing.Size(86, 21);
+            this.buttonSearchNextScan.TabIndex = 20;
+            this.buttonSearchNextScan.Text = "Next Scan";
+            this.buttonSearchNextScan.UseVisualStyleBackColor = true;
             // 
-            // betterSplitContainer2
+            // comboBoxValueRelationship
             // 
-            this.betterSplitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.betterSplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.betterSplitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.betterSplitContainer2.Location = new System.Drawing.Point(3, 3);
-            this.betterSplitContainer2.Margin = new System.Windows.Forms.Padding(0);
-            this.betterSplitContainer2.Name = "betterSplitContainer2";
+            this.comboBoxValueRelationship.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxValueRelationship.Location = new System.Drawing.Point(226, 24);
+            this.comboBoxValueRelationship.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxValueRelationship.Name = "comboBoxValueRelationship";
+            this.comboBoxValueRelationship.Size = new System.Drawing.Size(127, 21);
+            this.comboBoxValueRelationship.TabIndex = 36;
             // 
-            // betterSplitContainer2.Panel1
+            // dataGridViewSearch
             // 
-            this.betterSplitContainer2.Panel1.AutoScroll = true;
-            this.betterSplitContainer2.Panel1.Controls.Add(this.betterSplitContainer3);
-            this.betterSplitContainer2.Panel1MinSize = 0;
+            this.dataGridViewSearch.AllowUserToAddRows = false;
+            this.dataGridViewSearch.AllowUserToDeleteRows = false;
+            this.dataGridViewSearch.AllowUserToOrderColumns = true;
+            this.dataGridViewSearch.AllowUserToResizeRows = false;
+            this.dataGridViewSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.dataGridViewSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13});
+            this.dataGridViewSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewSearch.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewSearch.MultiSelect = false;
+            this.dataGridViewSearch.Name = "dataGridViewSearch";
+            this.dataGridViewSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewSearch.Size = new System.Drawing.Size(562, 354);
+            this.dataGridViewSearch.TabIndex = 4;
             // 
-            // betterSplitContainer2.Panel2
+            // dataGridViewTextBoxColumn8
             // 
-            this.betterSplitContainer2.Panel2.Controls.Add(this.watchVariableFlowLayoutPanel1);
-            this.betterSplitContainer2.Panel2MinSize = 0;
-            this.betterSplitContainer2.Size = new System.Drawing.Size(909, 457);
-            this.betterSplitContainer2.SplitterDistance = 725;
-            this.betterSplitContainer2.SplitterWidth = 1;
-            this.betterSplitContainer2.TabIndex = 38;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle18;
+            this.dataGridViewTextBoxColumn8.HeaderText = "RNG Index";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
-            // betterSplitContainer3
+            // dataGridViewTextBoxColumn9
             // 
-            this.betterSplitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.betterSplitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.betterSplitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.betterSplitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.betterSplitContainer3.Margin = new System.Windows.Forms.Padding(0);
-            this.betterSplitContainer3.Name = "betterSplitContainer3";
-            this.betterSplitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle19;
+            this.dataGridViewTextBoxColumn9.HeaderText = "RNG Value";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
-            // betterSplitContainer3.Panel1
+            // dataGridViewTextBoxColumn10
             // 
-            this.betterSplitContainer3.Panel1.AutoScroll = true;
-            this.betterSplitContainer3.Panel1.Controls.Add(this.comboBox1);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.checkBox1);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.label8);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.label10);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.checkBox2);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.betterTextbox1);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.betterTextbox2);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.checkBox3);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.checkBox4);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.button1);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.button2);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.button3);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.checkBox5);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.button4);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.button5);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.button6);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.checkBox6);
-            this.betterSplitContainer3.Panel1.Controls.Add(this.checkBox7);
-            this.betterSplitContainer3.Panel1MinSize = 0;
-            this.betterSplitContainer3.Panel2MinSize = 0;
-            this.betterSplitContainer3.Size = new System.Drawing.Size(723, 455);
-            this.betterSplitContainer3.SplitterDistance = 100;
-            this.betterSplitContainer3.SplitterWidth = 1;
-            this.betterSplitContainer3.TabIndex = 38;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dataGridViewTextBoxColumn10.HeaderText = "RNG To Go";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
-            // comboBox1
+            // dataGridViewTextBoxColumn11
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Location = new System.Drawing.Point(527, 3);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(55, 21);
-            this.comboBox1.TabIndex = 36;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle21;
+            this.dataGridViewTextBoxColumn11.HeaderText = "Coin HSpeed";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
-            // checkBox1
+            // dataGridViewTextBoxColumn12
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(573, 32);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(42, 17);
-            this.checkBox1.TabIndex = 35;
-            this.checkBox1.Text = "Obj";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dataGridViewTextBoxColumn12.HeaderText = "Coin VSpeed";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             // 
-            // label8
+            // dataGridViewTextBoxColumn13
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 33);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Memory Size:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 7);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(75, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Base Address:";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(527, 32);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(45, 17);
-            this.checkBox2.TabIndex = 35;
-            this.checkBox2.Text = "Hex";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // betterTextbox1
-            // 
-            this.betterTextbox1.Location = new System.Drawing.Point(80, 30);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(84, 20);
-            this.betterTextbox1.TabIndex = 34;
-            this.betterTextbox1.Text = "0x260";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextbox2
-            // 
-            this.betterTextbox2.Location = new System.Drawing.Point(80, 4);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(84, 20);
-            this.betterTextbox2.TabIndex = 34;
-            this.betterTextbox2.Text = "0x00000000";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Checked = true;
-            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point(170, 32);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(94, 17);
-            this.checkBox3.TabIndex = 35;
-            this.checkBox3.Text = "Rel Addresses";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Checked = true;
-            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox4.Location = new System.Drawing.Point(401, 6);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(105, 17);
-            this.checkBox4.TabIndex = 35;
-            this.checkBox4.Text = "Use Obj Address";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Location = new System.Drawing.Point(641, 3);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(21, 21);
-            this.button1.TabIndex = 20;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Location = new System.Drawing.Point(617, 3);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(21, 21);
-            this.button2.TabIndex = 20;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.Location = new System.Drawing.Point(641, 29);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(21, 21);
-            this.button3.TabIndex = 20;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Checked = true;
-            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox5.Location = new System.Drawing.Point(401, 32);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(110, 17);
-            this.checkBox5.TabIndex = 35;
-            this.checkBox5.Text = "Highlight Obj Vars";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button4.Location = new System.Drawing.Point(325, 29);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(61, 21);
-            this.button4.TabIndex = 20;
-            this.button4.Text = "Paste Obj";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button5.Location = new System.Drawing.Point(266, 29);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(58, 21);
-            this.button5.TabIndex = 20;
-            this.button5.Text = "Copy Obj";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button6.Location = new System.Drawing.Point(617, 29);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(21, 21);
-            this.button6.TabIndex = 20;
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Checked = true;
-            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox6.Location = new System.Drawing.Point(267, 6);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(124, 17);
-            this.checkBox6.TabIndex = 35;
-            this.checkBox6.Text = "Update Continuously";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Checked = true;
-            this.checkBox7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox7.Location = new System.Drawing.Point(170, 6);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(84, 17);
-            this.checkBox7.TabIndex = 35;
-            this.checkBox7.Text = "Little Endian";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // watchVariableFlowLayoutPanel1
-            // 
-            this.watchVariableFlowLayoutPanel1.AutoScroll = true;
-            this.watchVariableFlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariableFlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariableFlowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.watchVariableFlowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariableFlowLayoutPanel1.Name = "watchVariableFlowLayoutPanel1";
-            this.watchVariableFlowLayoutPanel1.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariableFlowLayoutPanel1.Size = new System.Drawing.Size(181, 455);
-            this.watchVariableFlowLayoutPanel1.TabIndex = 7;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dataGridViewTextBoxColumn13.HeaderText = "Coin Angle";
+            this.dataGridViewTextBoxColumn13.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             // 
             // StroopMainForm
             // 
@@ -21324,18 +21252,20 @@ namespace STROOP
             this.splitContainerSoundSoundEffect.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSoundSoundEffect)).EndInit();
             this.splitContainerSoundSoundEffect.ResumeLayout(false);
+            this.tabPageSearch.ResumeLayout(false);
+            this.splitContainerSearch.Panel1.ResumeLayout(false);
+            this.splitContainerSearch.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerSearch)).EndInit();
+            this.splitContainerSearch.ResumeLayout(false);
+            this.splitContainerSearchOptions.Panel1.ResumeLayout(false);
+            this.splitContainerSearchOptions.Panel1.PerformLayout();
+            this.splitContainerSearchOptions.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerSearchOptions)).EndInit();
+            this.splitContainerSearchOptions.ResumeLayout(false);
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.tabPageSearch.ResumeLayout(false);
-            this.betterSplitContainer2.Panel1.ResumeLayout(false);
-            this.betterSplitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer2)).EndInit();
-            this.betterSplitContainer2.ResumeLayout(false);
-            this.betterSplitContainer3.Panel1.ResumeLayout(false);
-            this.betterSplitContainer3.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer3)).EndInit();
-            this.betterSplitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -22877,27 +22807,21 @@ namespace STROOP
         private Button buttonMap3ControllersScaleDivide;
         private Button buttonMap3ControllersScaleTimes;
         private TabPage tabPageSearch;
-        private BetterSplitContainer betterSplitContainer2;
-        private BetterSplitContainer betterSplitContainer3;
-        private ComboBox comboBox1;
-        private CheckBox checkBox1;
-        private Label label8;
-        private Label label10;
-        private CheckBox checkBox2;
-        private BetterTextbox betterTextbox1;
-        private BetterTextbox betterTextbox2;
-        private CheckBox checkBox3;
-        private CheckBox checkBox4;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private CheckBox checkBox5;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private CheckBox checkBox6;
-        private CheckBox checkBox7;
-        private WatchVariableFlowLayoutPanel watchVariableFlowLayoutPanel1;
+        private BetterSplitContainer splitContainerSearch;
+        private BetterSplitContainer splitContainerSearchOptions;
+        private ComboBox comboBoxSearchMemoryType;
+        private BetterTextbox textBoxSearchValue;
+        private Button buttonSearchFirstScan;
+        private WatchVariableFlowLayoutPanel watchVariablePanelSearch;
+        private ComboBox comboBoxValueRelationship;
+        private Button buttonSearchNextScan;
+        private DataGridView dataGridViewSearch;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
     }
 }
 
