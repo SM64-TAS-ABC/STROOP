@@ -20417,7 +20417,6 @@ namespace STROOP
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
             this.WatchVariablePanelObjects.Size = new System.Drawing.Size(919, 155);
             this.WatchVariablePanelObjects.TabIndex = 0;
-            this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
             // trackBarObjSlotSize
             // 

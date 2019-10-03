@@ -723,39 +723,6 @@ namespace STROOP
 
         }
 
-        private async void WatchVariablePanelObjects_Resize(object sender, EventArgs e)
-        {
-            _resizeTimeLeft = 500;
-            if (_resizing)
-                return;
-
-            _resizing = true;
-            WatchVariablePanelObjects.Visible = false;
-            WatchVariablePanelObject.Visible = false;
-            WatchVariablePanelMario.Visible = false;
-            if (Config.MapManager != null && Config.MapManager.IsLoaded)
-                Config.MapManager.Visible = false;
-            if (Config.ModelManager != null && Config.ModelManager.IsLoaded)
-                Config.ModelManager.Visible = false;
-            await Task.Run(() =>
-            {
-                while (_resizeTimeLeft > 0)
-                {
-                    Task.Delay(100).Wait();
-                    _resizeTimeLeft -= 100;
-                }
-            });
-            WatchVariablePanelObjects.Visible = true;
-            WatchVariablePanelObject.Visible = true;
-            WatchVariablePanelMario.Visible = true;
-            if (Config.MapManager != null && Config.MapManager.IsLoaded)
-                Config.MapManager.Visible = true;
-            if (Config.ModelManager != null && Config.ModelManager.IsLoaded)
-                Config.ModelManager.Visible = true;
-
-            _resizing = false;
-        }
-
         private async void glControlMap_Load(object sender, EventArgs e)
         {
             await Task.Run(() => {
