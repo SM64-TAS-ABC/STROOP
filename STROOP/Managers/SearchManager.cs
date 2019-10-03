@@ -121,13 +121,13 @@ namespace STROOP.Managers
             _memoryType = TypeUtilities.StringToType[memoryTypeString];
             int memoryTypeSize = TypeUtilities.TypeSize[_memoryType];
 
-            object searchValue = ParsingUtilities.ParseValueNullable(_textBoxSearchValue.Text, _memoryType);
+            (object searchValue1, object searchValue2) = ParseSearchValue(_textBoxSearchValue.Text, _memoryType);
 
             _dictionary.Clear();
             for (uint address = 0x80000000; address < 0x80000000 + Config.RamSize - memoryTypeSize; address += (uint)memoryTypeSize)
             {
                 object memoryValue = Config.Stream.GetValue(_memoryType, address);
-                if (Equals(memoryValue, searchValue))
+                if (Equals(memoryValue, searchValue1))
                 {
                     _dictionary[address] = memoryValue;
                 }
@@ -138,20 +138,50 @@ namespace STROOP.Managers
 
         private void DoNextScan()
         {
-            object searchValue = ParsingUtilities.ParseValueNullable(_textBoxSearchValue.Text, _memoryType);
-            List<uint> addresses = _dictionary.Keys.ToList();
+            (object searchValue1, object searchValue2) = ParseSearchValue(_textBoxSearchValue.Text, _memoryType);
 
+            List<uint> addresses = _dictionary.Keys.ToList();
             _dictionary.Clear();
             foreach (uint address in addresses)
             {
                 object memoryValue = Config.Stream.GetValue(_memoryType, address);
-                if (Equals(memoryValue, searchValue))
+                if (Equals(memoryValue, searchValue1))
                 {
                     _dictionary[address] = memoryValue;
                 }
             }
 
             UpdateControlsBasedOnDictionary();
+        }
+
+        private (object searchValue1, object searchValue2) ParseSearchValue(string text, Type type)
+        {
+            ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+            switch (valueRelationship)
+            {
+                case ValueRelationship.EqualTo:
+                case ValueRelationship.GreaterThan:
+                case ValueRelationship.LessThan:
+                case ValueRelationship.Increased:
+                case ValueRelationship.Decreased:
+                case ValueRelationship.IncreasedBy:
+                case ValueRelationship.DecreasedBy:
+                case ValueRelationship.Unknown:
+                    return (ParsingUtilities.ParseValueNullable(text, type), null);
+                case ValueRelationship.Between:
+                    List<string> stringValues = ParsingUtilities.ParseStringList(text);
+                    string stringValue1 = stringValues.Count >= 1 ? stringValues[0] : null;
+                    string stringValue2 = stringValues.Count >= 2 ? stringValues[1] : null;
+                    return (ParsingUtilities.ParseValueNullable(stringValue1, type),
+                        ParsingUtilities.ParseValueNullable(stringValue2, type));
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private bool ValueQualifies(object memoryValue, object searchValue, object searchValue2 = null)
+        {
+            return false;
         }
 
         private void UpdateControlsBasedOnDictionary()
