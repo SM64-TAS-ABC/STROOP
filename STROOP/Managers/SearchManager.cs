@@ -30,6 +30,8 @@ namespace STROOP.Managers
             Unknown,
         };
 
+        private readonly Dictionary<uint, object> _dictionary;
+
         private readonly ComboBox _comboBoxSearchMemoryType;
         private readonly ComboBox _comboBoxValueRelationship;
         private readonly BetterTextbox _textBoxSearchValue;
@@ -41,6 +43,8 @@ namespace STROOP.Managers
         public SearchManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(null, watchVariablePanel)
         {
+            _dictionary = new Dictionary<uint, object>();
+
             SplitContainer splitContainerSearch = tabControl.Controls["splitContainerSearch"] as SplitContainer;
             SplitContainer splitContainerSearchOptions = splitContainerSearch.Panel1.Controls["splitContainerSearchOptions"] as SplitContainer;
 
@@ -56,6 +60,7 @@ namespace STROOP.Managers
             _buttonSearchFirstScan.Click += (sender, e) => DoFirstScan();
 
             _buttonSearchNextScan = splitContainerSearchOptions.Panel1.Controls["buttonSearchNextScan"] as Button;
+            _buttonSearchNextScan.Click += (sender, e) => DoNextScan();
 
             _labelSearchNumResults = splitContainerSearchOptions.Panel1.Controls["labelSearchNumResults"] as Label;
 
@@ -68,24 +73,54 @@ namespace STROOP.Managers
             Type memoryType = TypeUtilities.StringToType[memoryTypeString];
             int memoryTypeSize = TypeUtilities.TypeSize[memoryType];
 
-            Dictionary<uint, object> dictionary = new Dictionary<uint, object>();
             object searchValue = ParsingUtilities.ParseValueNullable(_textBoxSearchValue.Text, memoryType);
+
+            _dictionary.Clear();
             for (uint address = 0; address < Config.RamSize - memoryTypeSize; address += (uint)memoryTypeSize)
             {
                 object memoryValue = Config.Stream.GetValue(memoryType, address);
                 if (Equals(memoryValue, searchValue))
                 {
-                    dictionary[address] = memoryValue;
+                    _dictionary[address] = memoryValue;
                 }
             }
 
-            _labelSearchNumResults.Text = dictionary.Count.ToString();
+            UpdateControlsBasedOnDictionary();
+        }
+
+        private void DoNextScan()
+        {
+            string memoryTypeString = (string)_comboBoxSearchMemoryType.SelectedItem;
+            Type memoryType = TypeUtilities.StringToType[memoryTypeString];
+            int memoryTypeSize = TypeUtilities.TypeSize[memoryType];
+
+            object searchValue = ParsingUtilities.ParseValueNullable(_textBoxSearchValue.Text, memoryType);
+            List<KeyValuePair<uint, object>> dictionaryKeyValues = _dictionary.ToList();
+
+            _dictionary.Clear();
+            foreach (KeyValuePair<uint, object> pair in dictionaryKeyValues)
+            {
+                uint address = pair.Key;
+                object memoryValue = Config.Stream.GetValue(memoryType, address);
+                if (Equals(memoryValue, searchValue))
+                {
+                    _dictionary[address] = memoryValue;
+                }
+            }
+
+            UpdateControlsBasedOnDictionary();
+        }
+
+        private void UpdateControlsBasedOnDictionary()
+        {
+            _labelSearchNumResults.Text = _dictionary.Count.ToString();
 
             _dataGridViewSearch.Rows.Clear();
-            dictionary.Keys.ToList().ForEach(key =>
+            _dictionary.Keys.ToList().ForEach(key =>
             {
-                object value = dictionary[key];
-                _dataGridViewSearch.Rows.Add("0x80" + HexUtilities.FormatValue(key, 6, false), value);
+                _dataGridViewSearch.Rows.Add(
+                    "0x80" + HexUtilities.FormatValue(key, 6, false),
+                    _dictionary[key]);
             });
         }
 
