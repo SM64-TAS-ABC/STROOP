@@ -124,7 +124,7 @@ namespace STROOP.Managers
             object searchValue = ParsingUtilities.ParseValueNullable(_textBoxSearchValue.Text, _memoryType);
 
             _dictionary.Clear();
-            for (uint address = 0; address < Config.RamSize - memoryTypeSize; address += (uint)memoryTypeSize)
+            for (uint address = 0x80000000; address < 0x80000000 + Config.RamSize - memoryTypeSize; address += (uint)memoryTypeSize)
             {
                 object memoryValue = Config.Stream.GetValue(_memoryType, address);
                 if (Equals(memoryValue, searchValue))
@@ -161,9 +161,7 @@ namespace STROOP.Managers
             _dataGridViewSearch.Rows.Clear();
             _dictionary.Keys.ToList().ForEach(key =>
             {
-                _dataGridViewSearch.Rows.Add(
-                    "0x80" + HexUtilities.FormatValue(key, 6, false),
-                    _dictionary[key]);
+                _dataGridViewSearch.Rows.Add(HexUtilities.FormatValue(key), _dictionary[key]);
             });
         }
 
