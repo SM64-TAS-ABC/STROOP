@@ -569,6 +569,26 @@ namespace STROOP.Utilities
                 table.FirstDisplayedScrollingRowIndex = row;
         }
 
+        public static List<DataGridViewRow> GetTableAllRows(DataGridView table)
+        {
+            List<DataGridViewRow> rows = new List<DataGridViewRow>();
+            foreach (DataGridViewRow row in table.Rows)
+            {
+                rows.Add(row);
+            }
+            return rows;
+        }
+
+        public static List<DataGridViewRow> GetTableSelectedRows(DataGridView table)
+        {
+            List<DataGridViewRow> rows = new List<DataGridViewRow>();
+            foreach (DataGridViewRow row in table.SelectedRows)
+            {
+                rows.Add(row);
+            }
+            return rows;
+        }
+
         public static TabPage GetTab(Control control)
         {
             while (control != null && !(control is TabPage))

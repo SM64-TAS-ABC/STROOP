@@ -21,12 +21,12 @@ namespace STROOP.Utilities
                 return uint.Parse(str.Substring(prefixPos + 2), NumberStyles.HexNumber);
         }
 
-        public static uint? ParseHexNullable(string str)
+        public static uint? ParseHexNullable(object obj)
         {
-            if (str == null) return null;
+            if (obj == null) return null;
             try
             {
-                uint parsed = ParseHex(str);
+                uint parsed = ParseHex(obj.ToString());
                 return parsed;
             }
             catch (Exception)

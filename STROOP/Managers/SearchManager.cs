@@ -69,10 +69,50 @@ namespace STROOP.Managers
             _labelSearchNumResults = splitContainerSearchOptions.Panel1.Controls["labelSearchNumResults"] as Label;
 
             _buttonSearchAddSelectedAsVars = splitContainerSearchOptions.Panel1.Controls["buttonSearchAddSelectedAsVars"] as Button;
+            _buttonSearchAddSelectedAsVars.Click += (sender, e) => AddTableRowsAsVars(ControlUtilities.GetTableSelectedRows(_dataGridViewSearch));
 
             _buttonSearchAddAllAsVars = splitContainerSearchOptions.Panel1.Controls["buttonSearchAddAllAsVars"] as Button;
+            _buttonSearchAddAllAsVars.Click += (sender, e) => AddTableRowsAsVars(ControlUtilities.GetTableAllRows(_dataGridViewSearch));
 
             _dataGridViewSearch = splitContainerSearchOptions.Panel2.Controls["dataGridViewSearch"] as DataGridView;
+        }
+
+        private void AddTableRowsAsVars(List<DataGridViewRow> rows)
+        {
+            List<WatchVariableControl> controls = new List<WatchVariableControl>();
+            foreach (DataGridViewRow row in rows)
+            {
+                uint? addressNullable = ParsingUtilities.ParseHexNullable(row.Cells[0].Value);
+                if (!addressNullable.HasValue) continue;
+                uint address = addressNullable.Value;
+
+                string typeString = TypeUtilities.TypeToString[_memoryType];
+                WatchVariable watchVar = new WatchVariable(
+                    memoryTypeName: typeString,
+                    specialType: null,
+                    baseAddressType: BaseAddressTypeEnum.Relative,
+                    offsetUS: address,
+                    offsetJP: address,
+                    offsetSH: address,
+                    offsetDefault: null,
+                    mask: null,
+                    shift: null);
+                WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
+                    name: typeString + " " + HexUtilities.FormatValue(address),
+                    watchVar: watchVar,
+                    subclass: WatchVariableSubclass.Number,
+                    backgroundColor: null,
+                    displayType: null,
+                    roundingLimit: null,
+                    useHex: null,
+                    invertBool: null,
+                    isYaw: null,
+                    coordinate: null,
+                    groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                WatchVariableControl control = precursor.CreateWatchVariableControl();
+                controls.Add(control);
+            }
+            AddVariables(controls);
         }
 
         private void DoFirstScan()
