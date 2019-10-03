@@ -1,4 +1,5 @@
 ﻿using STROOP.Controls;
+using STROOP.Forms;
 using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
@@ -16,18 +17,72 @@ namespace STROOP.Managers
 {
     public class SearchManager : DataManager
     {
+        private enum ValueRelationship
+        {
+            EqualTo,
+            Between,
+            GreaterThan,
+            LessThan,
+            Increased,
+            Decreased,
+            IncreasedBy,
+            DecreasedBy,
+            Unknown,
+        };
+
+        private readonly ComboBox _comboBoxSearchMemoryType;
+        private readonly ComboBox _comboBoxValueRelationship;
+        private readonly BetterTextbox _textBoxSearchValue;
+        private readonly Button _buttonSearchFirstScan;
+        private readonly Button _buttonSearchNextScan;
+        private readonly DataGridView _dataGridViewSearch;
+
         public SearchManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(null, watchVariablePanel)
         {
             SplitContainer splitContainerSearch = tabControl.Controls["splitContainerSearch"] as SplitContainer;
             SplitContainer splitContainerSearchOptions = splitContainerSearch.Panel1.Controls["splitContainerSearchOptions"] as SplitContainer;
 
-            ComboBox comboBoxSearchMemoryType = splitContainerSearchOptions.Panel1.Controls["comboBoxSearchMemoryType"] as ComboBox;
-            ComboBox comboBoxValueRelationship = splitContainerSearchOptions.Panel1.Controls["comboBoxValueRelationship"] as ComboBox;
-            BetterTextbox textBoxSearchValue = splitContainerSearchOptions.Panel1.Controls["textBoxSearchValue"] as BetterTextbox;
-            Button buttonSearchFirstScan = splitContainerSearchOptions.Panel1.Controls["buttonSearchFirstScan"] as Button;
-            Button buttonSearchNextScan = splitContainerSearchOptions.Panel1.Controls["buttonSearchNextScan"] as Button;
-            DataGridView dataGridViewSearch = splitContainerSearchOptions.Panel2.Controls["dataGridViewSearch"] as DataGridView;
+            _comboBoxSearchMemoryType = splitContainerSearchOptions.Panel1.Controls["comboBoxSearchMemoryType"] as ComboBox;
+            _comboBoxSearchMemoryType.DataSource = TypeUtilities.InGameTypeList;
+
+            _comboBoxValueRelationship = splitContainerSearchOptions.Panel1.Controls["comboBoxValueRelationship"] as ComboBox;
+            _comboBoxValueRelationship.DataSource = Enum.GetValues(typeof(ValueRelationship));
+
+            _textBoxSearchValue = splitContainerSearchOptions.Panel1.Controls["textBoxSearchValue"] as BetterTextbox;
+
+            _buttonSearchFirstScan = splitContainerSearchOptions.Panel1.Controls["buttonSearchFirstScan"] as Button;
+            _buttonSearchFirstScan.Click += (sender, e) => DoFirstScan();
+
+            _buttonSearchNextScan = splitContainerSearchOptions.Panel1.Controls["buttonSearchNextScan"] as Button;
+
+            _dataGridViewSearch = splitContainerSearchOptions.Panel2.Controls["dataGridViewSearch"] as DataGridView;
+        }
+
+        private void DoFirstScan()
+        {
+            string memoryTypeString = (string)_comboBoxSearchMemoryType.SelectedItem;
+            Type memoryType = TypeUtilities.StringToType[memoryTypeString];
+            int memoryTypeSize = TypeUtilities.TypeSize[memoryType];
+
+            Dictionary<uint, object> dictionary = new Dictionary<uint, object>();
+            object searchValue = ParsingUtilities.ParseValueNullable(_textBoxSearchValue.Text, memoryType);
+            for (uint address = 0; address < Config.RamSize - memoryTypeSize; address += (uint)memoryTypeSize)
+            {
+                object memoryValue = Config.Stream.GetValue(memoryType, address);
+                if (Equals(memoryValue, searchValue))
+                {
+                    dictionary[address] = memoryValue;
+                }
+            }
+
+            StringBuilder stringBuilder = new StringBuilder();
+            dictionary.Keys.ToList().ForEach(key =>
+            {
+                object value = dictionary[key];
+                stringBuilder.Append(HexUtilities.FormatValue(key) + " => " + value + "\r\n");
+            });
+            InfoForm.ShowValue(stringBuilder.ToString());
         }
 
         public override void Update(bool updateView)

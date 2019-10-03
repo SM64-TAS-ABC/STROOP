@@ -253,6 +253,19 @@ namespace STROOP.Utilities
             return ParseBoolNullable(obj) ?? false;
         }
 
+        public static object ParseValueNullable(object obj, Type type)
+        {
+            if (type == typeof(byte)) return ParseByteNullable(obj);
+            if (type == typeof(sbyte)) return ParseSByteNullable(obj);
+            if (type == typeof(short)) return ParseShortNullable(obj);
+            if (type == typeof(ushort)) return ParseUShortNullable(obj);
+            if (type == typeof(int)) return ParseIntNullable(obj);
+            if (type == typeof(uint)) return ParseUIntNullable(obj);
+            if (type == typeof(float)) return ParseFloatNullable(obj);
+            if (type == typeof(double)) return ParseDoubleNullable(obj);
+            return null;
+        }
+
         public static List<string> ParseStringList(string text, bool replaceCharacters = true)
         {
             if (text == null || text == "")
