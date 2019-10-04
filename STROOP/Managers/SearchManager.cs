@@ -70,6 +70,7 @@ namespace STROOP.Managers
 
             _comboBoxSearchMemoryType = splitContainerSearchOptions.Panel1.Controls["comboBoxSearchMemoryType"] as ComboBox;
             _comboBoxSearchMemoryType.DataSource = TypeUtilities.InGameTypeList;
+            _comboBoxSearchMemoryType.SelectedItem = "short";
 
             _comboBoxSearchValueRelationship = splitContainerSearchOptions.Panel1.Controls["comboBoxSearchValueRelationship"] as ComboBox;
             _comboBoxSearchValueRelationship.DataSource = Enum.GetValues(typeof(ValueRelationship));
