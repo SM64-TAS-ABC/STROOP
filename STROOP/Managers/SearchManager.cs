@@ -93,6 +93,7 @@ namespace STROOP.Managers
             _progressBarSearch = splitContainerSearchOptions.Panel1.Controls["progressBarSearch"] as ProgressBar;
 
             _labelSearchProgress = splitContainerSearchOptions.Panel1.Controls["labelSearchProgress"] as Label;
+            _labelSearchProgress.Visible = false;
 
             _dataGridViewSearch = splitContainerSearchOptions.Panel2.Controls["dataGridViewSearch"] as DataGridView;
         }
@@ -145,6 +146,7 @@ namespace STROOP.Managers
             object oldMemoryValue = null;
 
             _dictionary.Clear();
+            StartProgressBar();
             for (uint address = 0x80000000; address < 0x80000000 + Config.RamSize - memoryTypeSize; address += (uint)memoryTypeSize)
             {
                 object memoryValue = Config.Stream.GetValue(_memoryType, address);
@@ -152,7 +154,14 @@ namespace STROOP.Managers
                 {
                     _dictionary[address] = memoryValue;
                 }
+
+                int offset = (int)(address - 0x80000000);
+                if (offset % 1024 == 0)
+                {
+                    SetProgressCount(offset, (int)Config.RamSize);
+                }
             }
+            StopProgressBar();
 
             UpdateControlsBasedOnDictionary();
         }
@@ -163,8 +172,10 @@ namespace STROOP.Managers
 
             List<KeyValuePair<uint, object>> pairs = _dictionary.ToList();
             _dictionary.Clear();
-            foreach (KeyValuePair<uint, object> pair in pairs)
+            StartProgressBar();
+            for (int i = 0; i < pairs.Count; i++)
             {
+                KeyValuePair<uint, object> pair = pairs[i];
                 uint address = pair.Key;
                 object oldMemoryValue = pair.Value;
                 object memoryValue = Config.Stream.GetValue(_memoryType, address);
@@ -172,7 +183,20 @@ namespace STROOP.Managers
                 {
                     _dictionary[address] = memoryValue;
                 }
+
+                if (pairs.Count > 10000)
+                {
+                    if (i % 1024 == 0)
+                    {
+                        SetProgressCount(i, pairs.Count);
+                    }
+                }
+                else
+                {
+                    SetProgressCount(i, pairs.Count);
+                }
             }
+            StopProgressBar();
 
             UpdateControlsBasedOnDictionary();
         }
@@ -196,6 +220,34 @@ namespace STROOP.Managers
             {
                 _dataGridViewSearch.Rows.Add(HexUtilities.FormatValue(key), _dictionary[key]);
             });
+        }
+
+        private void StartProgressBar()
+        {
+            _labelSearchProgress.Visible = true;
+            _labelSearchProgress.Update();
+        }
+
+        private void StopProgressBar()
+        {
+            _labelSearchProgress.Visible = false;
+            _labelSearchProgress.Update();
+            _progressBarSearch.Value = 0;
+            _progressBarSearch.Update();
+        }
+
+        private void SetProgressCount(int value, int maximum)
+        {
+            string maximumString = maximum.ToString();
+            string valueString = string.Format("{0:D" + maximumString.Length + "}", value);
+            double percent = Math.Round(100d * value / maximum, 1);
+            string percentString = percent.ToString("N1");
+            _labelSearchProgress.Text = string.Format(
+                "{0}% ({1} / {2})", percentString, valueString, maximumString);
+            _labelSearchProgress.Update();
+            _progressBarSearch.Maximum = maximum;
+            _progressBarSearch.Value = value;
+            _progressBarSearch.Update();
         }
 
         public override void Update(bool updateView)
