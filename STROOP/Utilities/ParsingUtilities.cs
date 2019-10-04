@@ -255,6 +255,10 @@ namespace STROOP.Utilities
 
         public static object ParseValueNullable(object obj, Type type)
         {
+            if (obj != null && obj.ToString().StartsWith("0x"))
+            {
+                obj = ParseHexNullable(obj);
+            }
             if (type == typeof(byte)) return ParseByteNullable(obj);
             if (type == typeof(sbyte)) return ParseSByteNullable(obj);
             if (type == typeof(short)) return ParseShortNullable(obj);
