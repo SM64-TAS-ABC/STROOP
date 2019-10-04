@@ -1573,12 +1573,15 @@ namespace STROOP
             this.tabPageSearch = new System.Windows.Forms.TabPage();
             this.splitContainerSearch = new STROOP.BetterSplitContainer();
             this.splitContainerSearchOptions = new STROOP.BetterSplitContainer();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.buttonSearchAddAllAsVars = new System.Windows.Forms.Button();
             this.buttonSearchAddSelectedAsVars = new System.Windows.Forms.Button();
             this.labelSearchNumResults = new System.Windows.Forms.Label();
             this.comboBoxValueRelationship = new System.Windows.Forms.ComboBox();
             this.comboBoxSearchMemoryType = new System.Windows.Forms.ComboBox();
             this.textBoxSearchValue = new STROOP.BetterTextbox();
+            this.buttonSearchUndoScan = new System.Windows.Forms.Button();
+            this.buttonSearchClearResults = new System.Windows.Forms.Button();
             this.buttonSearchNextScan = new System.Windows.Forms.Button();
             this.buttonSearchFirstScan = new System.Windows.Forms.Button();
             this.dataGridViewSearch = new System.Windows.Forms.DataGridView();
@@ -5792,7 +5795,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 517F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 520F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9522,7 +9525,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(493, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(409, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -12750,7 +12753,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 761;
+            this.splitContainerMemory.SplitterDistance = 770;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12791,7 +12794,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(761, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(770, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -13008,7 +13011,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(761, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(770, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -13037,7 +13040,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(660, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(669, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -13050,7 +13053,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(145, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(136, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -14204,7 +14207,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(187, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(136, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -14236,7 +14239,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(181, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(130, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -14292,7 +14295,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(181, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(130, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -18888,7 +18891,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -20072,7 +20075,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(54, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(57, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -20347,7 +20350,7 @@ namespace STROOP
             // 
             this.splitContainerSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainerSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerSearch.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainerSearch.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerSearch.Location = new System.Drawing.Point(3, 3);
             this.splitContainerSearch.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainerSearch.Name = "splitContainerSearch";
@@ -20363,7 +20366,7 @@ namespace STROOP
             this.splitContainerSearch.Panel2.Controls.Add(this.watchVariablePanelSearch);
             this.splitContainerSearch.Panel2MinSize = 0;
             this.splitContainerSearch.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerSearch.SplitterDistance = 508;
+            this.splitContainerSearch.SplitterDistance = 457;
             this.splitContainerSearch.SplitterWidth = 1;
             this.splitContainerSearch.TabIndex = 38;
             // 
@@ -20380,12 +20383,15 @@ namespace STROOP
             // splitContainerSearchOptions.Panel1
             // 
             this.splitContainerSearchOptions.Panel1.AutoScroll = true;
+            this.splitContainerSearchOptions.Panel1.Controls.Add(this.progressBar1);
             this.splitContainerSearchOptions.Panel1.Controls.Add(this.buttonSearchAddAllAsVars);
             this.splitContainerSearchOptions.Panel1.Controls.Add(this.buttonSearchAddSelectedAsVars);
             this.splitContainerSearchOptions.Panel1.Controls.Add(this.labelSearchNumResults);
             this.splitContainerSearchOptions.Panel1.Controls.Add(this.comboBoxValueRelationship);
             this.splitContainerSearchOptions.Panel1.Controls.Add(this.comboBoxSearchMemoryType);
             this.splitContainerSearchOptions.Panel1.Controls.Add(this.textBoxSearchValue);
+            this.splitContainerSearchOptions.Panel1.Controls.Add(this.buttonSearchUndoScan);
+            this.splitContainerSearchOptions.Panel1.Controls.Add(this.buttonSearchClearResults);
             this.splitContainerSearchOptions.Panel1.Controls.Add(this.buttonSearchNextScan);
             this.splitContainerSearchOptions.Panel1.Controls.Add(this.buttonSearchFirstScan);
             this.splitContainerSearchOptions.Panel1MinSize = 0;
@@ -20394,18 +20400,26 @@ namespace STROOP
             // 
             this.splitContainerSearchOptions.Panel2.Controls.Add(this.dataGridViewSearch);
             this.splitContainerSearchOptions.Panel2MinSize = 0;
-            this.splitContainerSearchOptions.Size = new System.Drawing.Size(508, 457);
-            this.splitContainerSearchOptions.SplitterDistance = 100;
+            this.splitContainerSearchOptions.Size = new System.Drawing.Size(457, 457);
+            this.splitContainerSearchOptions.SplitterDistance = 101;
             this.splitContainerSearchOptions.SplitterWidth = 1;
             this.splitContainerSearchOptions.TabIndex = 38;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(2, 77);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(451, 20);
+            this.progressBar1.TabIndex = 42;
             // 
             // buttonSearchAddAllAsVars
             // 
             this.buttonSearchAddAllAsVars.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonSearchAddAllAsVars.Location = new System.Drawing.Point(394, 51);
+            this.buttonSearchAddAllAsVars.Location = new System.Drawing.Point(336, 1);
             this.buttonSearchAddAllAsVars.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSearchAddAllAsVars.Name = "buttonSearchAddAllAsVars";
-            this.buttonSearchAddAllAsVars.Size = new System.Drawing.Size(86, 37);
+            this.buttonSearchAddAllAsVars.Size = new System.Drawing.Size(118, 34);
             this.buttonSearchAddAllAsVars.TabIndex = 38;
             this.buttonSearchAddAllAsVars.Text = "Add All as Vars";
             this.buttonSearchAddAllAsVars.UseVisualStyleBackColor = true;
@@ -20413,10 +20427,10 @@ namespace STROOP
             // buttonSearchAddSelectedAsVars
             // 
             this.buttonSearchAddSelectedAsVars.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonSearchAddSelectedAsVars.Location = new System.Drawing.Point(394, 10);
+            this.buttonSearchAddSelectedAsVars.Location = new System.Drawing.Point(336, 39);
             this.buttonSearchAddSelectedAsVars.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSearchAddSelectedAsVars.Name = "buttonSearchAddSelectedAsVars";
-            this.buttonSearchAddSelectedAsVars.Size = new System.Drawing.Size(86, 37);
+            this.buttonSearchAddSelectedAsVars.Size = new System.Drawing.Size(118, 34);
             this.buttonSearchAddSelectedAsVars.TabIndex = 38;
             this.buttonSearchAddSelectedAsVars.Text = "Add Selected as Vars";
             this.buttonSearchAddSelectedAsVars.UseVisualStyleBackColor = true;
@@ -20424,45 +20438,66 @@ namespace STROOP
             // labelSearchNumResults
             // 
             this.labelSearchNumResults.AutoSize = true;
-            this.labelSearchNumResults.Location = new System.Drawing.Point(285, 30);
+            this.labelSearchNumResults.Location = new System.Drawing.Point(3, 56);
             this.labelSearchNumResults.MinimumSize = new System.Drawing.Size(80, 2);
             this.labelSearchNumResults.Name = "labelSearchNumResults";
             this.labelSearchNumResults.Size = new System.Drawing.Size(80, 13);
             this.labelSearchNumResults.TabIndex = 37;
             this.labelSearchNumResults.Text = "0 Results";
-            this.labelSearchNumResults.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // comboBoxValueRelationship
             // 
             this.comboBoxValueRelationship.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxValueRelationship.Location = new System.Drawing.Point(147, 24);
+            this.comboBoxValueRelationship.Location = new System.Drawing.Point(156, 2);
             this.comboBoxValueRelationship.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxValueRelationship.Name = "comboBoxValueRelationship";
-            this.comboBoxValueRelationship.Size = new System.Drawing.Size(127, 21);
+            this.comboBoxValueRelationship.Size = new System.Drawing.Size(175, 21);
             this.comboBoxValueRelationship.TabIndex = 36;
             // 
             // comboBoxSearchMemoryType
             // 
             this.comboBoxSearchMemoryType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSearchMemoryType.Location = new System.Drawing.Point(14, 24);
+            this.comboBoxSearchMemoryType.Location = new System.Drawing.Point(2, 2);
             this.comboBoxSearchMemoryType.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSearchMemoryType.Name = "comboBoxSearchMemoryType";
-            this.comboBoxSearchMemoryType.Size = new System.Drawing.Size(113, 21);
+            this.comboBoxSearchMemoryType.Size = new System.Drawing.Size(148, 21);
             this.comboBoxSearchMemoryType.TabIndex = 36;
             // 
             // textBoxSearchValue
             // 
-            this.textBoxSearchValue.Location = new System.Drawing.Point(14, 65);
+            this.textBoxSearchValue.Location = new System.Drawing.Point(3, 28);
             this.textBoxSearchValue.Name = "textBoxSearchValue";
-            this.textBoxSearchValue.Size = new System.Drawing.Size(113, 20);
+            this.textBoxSearchValue.Size = new System.Drawing.Size(147, 20);
             this.textBoxSearchValue.TabIndex = 34;
-            this.textBoxSearchValue.Text = "0x00000000";
+            this.textBoxSearchValue.Text = "100";
             this.textBoxSearchValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonSearchUndoScan
+            // 
+            this.buttonSearchUndoScan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonSearchUndoScan.Location = new System.Drawing.Point(155, 52);
+            this.buttonSearchUndoScan.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSearchUndoScan.Name = "buttonSearchUndoScan";
+            this.buttonSearchUndoScan.Size = new System.Drawing.Size(86, 21);
+            this.buttonSearchUndoScan.TabIndex = 20;
+            this.buttonSearchUndoScan.Text = "Undo Scan";
+            this.buttonSearchUndoScan.UseVisualStyleBackColor = true;
+            // 
+            // buttonSearchClearResults
+            // 
+            this.buttonSearchClearResults.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonSearchClearResults.Location = new System.Drawing.Point(245, 52);
+            this.buttonSearchClearResults.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSearchClearResults.Name = "buttonSearchClearResults";
+            this.buttonSearchClearResults.Size = new System.Drawing.Size(86, 21);
+            this.buttonSearchClearResults.TabIndex = 20;
+            this.buttonSearchClearResults.Text = "Clear Results";
+            this.buttonSearchClearResults.UseVisualStyleBackColor = true;
             // 
             // buttonSearchNextScan
             // 
             this.buttonSearchNextScan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonSearchNextScan.Location = new System.Drawing.Point(227, 64);
+            this.buttonSearchNextScan.Location = new System.Drawing.Point(245, 27);
             this.buttonSearchNextScan.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSearchNextScan.Name = "buttonSearchNextScan";
             this.buttonSearchNextScan.Size = new System.Drawing.Size(86, 21);
@@ -20473,7 +20508,7 @@ namespace STROOP
             // buttonSearchFirstScan
             // 
             this.buttonSearchFirstScan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonSearchFirstScan.Location = new System.Drawing.Point(137, 64);
+            this.buttonSearchFirstScan.Location = new System.Drawing.Point(155, 27);
             this.buttonSearchFirstScan.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSearchFirstScan.Name = "buttonSearchFirstScan";
             this.buttonSearchFirstScan.Size = new System.Drawing.Size(86, 21);
@@ -20505,7 +20540,7 @@ namespace STROOP
             this.dataGridViewSearch.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridViewSearch.Name = "dataGridViewSearch";
             this.dataGridViewSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSearch.Size = new System.Drawing.Size(506, 354);
+            this.dataGridViewSearch.Size = new System.Drawing.Size(455, 353);
             this.dataGridViewSearch.TabIndex = 4;
             // 
             // Address
@@ -20535,7 +20570,7 @@ namespace STROOP
             this.watchVariablePanelSearch.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelSearch.Name = "watchVariablePanelSearch";
             this.watchVariablePanelSearch.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelSearch.Size = new System.Drawing.Size(398, 455);
+            this.watchVariablePanelSearch.Size = new System.Drawing.Size(449, 455);
             this.watchVariablePanelSearch.TabIndex = 7;
             // 
             // groupBoxObjects
@@ -22819,6 +22854,9 @@ namespace STROOP
         private Label labelSearchNumResults;
         private Button buttonSearchAddAllAsVars;
         private Button buttonSearchAddSelectedAsVars;
+        private ProgressBar progressBar1;
+        private Button buttonSearchUndoScan;
+        private Button buttonSearchClearResults;
     }
 }
 
