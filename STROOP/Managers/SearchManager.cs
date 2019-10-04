@@ -39,6 +39,7 @@ namespace STROOP.Managers
         };
 
         private readonly Dictionary<uint, object> _dictionary;
+        private readonly Dictionary<uint, object> _undoDictionary;
         private Type _memoryType;
 
         private readonly ComboBox _comboBoxSearchMemoryType;
@@ -59,6 +60,7 @@ namespace STROOP.Managers
             : base(null, watchVariablePanel)
         {
             _dictionary = new Dictionary<uint, object>();
+            _undoDictionary = new Dictionary<uint, object>();
             _memoryType = typeof(byte);
 
             SplitContainer splitContainerSearch = tabControl.Controls["splitContainerSearch"] as SplitContainer;
@@ -87,6 +89,7 @@ namespace STROOP.Managers
             _buttonSearchAddAllAsVars.Click += (sender, e) => AddTableRowsAsVars(ControlUtilities.GetTableAllRows(_dataGridViewSearch));
 
             _buttonSearchUndoScan = splitContainerSearchOptions.Panel1.Controls["buttonSearchUndoScan"] as Button;
+            _buttonSearchUndoScan.Click += (sender, e) => UndoScan();
 
             _buttonSearchClearResults = splitContainerSearchOptions.Panel1.Controls["buttonSearchClearResults"] as Button;
             _buttonSearchClearResults.Click += (sender, e) => ClearResults();
@@ -146,6 +149,7 @@ namespace STROOP.Managers
             (object searchValue1, object searchValue2) = ParseSearchValue(_textBoxSearchValue.Text, _memoryType);
             object oldMemoryValue = null;
 
+            TransferDictionary(_dictionary, _undoDictionary);
             _dictionary.Clear();
             StartProgressBar();
             for (uint address = 0x80000000; address < 0x80000000 + Config.RamSize - memoryTypeSize; address += (uint)memoryTypeSize)
@@ -172,6 +176,7 @@ namespace STROOP.Managers
             (object searchValue1, object searchValue2) = ParseSearchValue(_textBoxSearchValue.Text, _memoryType);
 
             List<KeyValuePair<uint, object>> pairs = _dictionary.ToList();
+            TransferDictionary(_dictionary, _undoDictionary);
             _dictionary.Clear();
             StartProgressBar();
             for (int i = 0; i < pairs.Count; i++)
@@ -254,6 +259,21 @@ namespace STROOP.Managers
             _progressBarSearch.Maximum = maximum;
             _progressBarSearch.Value = value;
             _progressBarSearch.Update();
+        }
+
+        private void TransferDictionary(Dictionary<uint, object> sender, Dictionary<uint, object> receiver)
+        {
+            receiver.Clear();
+            foreach (uint key in sender.Keys)
+            {
+                receiver[key] = sender[key];
+            }
+        }
+
+        private void UndoScan()
+        {
+            TransferDictionary(_undoDictionary, _dictionary);
+            UpdateControlsBasedOnDictionary();
         }
 
         public override void Update(bool updateView)
