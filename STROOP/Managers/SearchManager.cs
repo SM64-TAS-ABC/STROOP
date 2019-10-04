@@ -42,13 +42,17 @@ namespace STROOP.Managers
         private Type _memoryType;
 
         private readonly ComboBox _comboBoxSearchMemoryType;
-        private readonly ComboBox _comboBoxValueRelationship;
+        private readonly ComboBox _comboBoxSearchValueRelationship;
         private readonly BetterTextbox _textBoxSearchValue;
         private readonly Button _buttonSearchFirstScan;
         private readonly Button _buttonSearchNextScan;
         private readonly Label _labelSearchNumResults;
         private readonly Button _buttonSearchAddSelectedAsVars;
         private readonly Button _buttonSearchAddAllAsVars;
+        private readonly Button _buttonSearchUndoScan;
+        private readonly Button _buttonSearchClearResults;
+        private readonly ProgressBar _progressBarSearch;
+        private readonly Label _labelSearchProgress;
         private readonly DataGridView _dataGridViewSearch;
 
         public SearchManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
@@ -63,8 +67,8 @@ namespace STROOP.Managers
             _comboBoxSearchMemoryType = splitContainerSearchOptions.Panel1.Controls["comboBoxSearchMemoryType"] as ComboBox;
             _comboBoxSearchMemoryType.DataSource = TypeUtilities.InGameTypeList;
 
-            _comboBoxValueRelationship = splitContainerSearchOptions.Panel1.Controls["comboBoxValueRelationship"] as ComboBox;
-            _comboBoxValueRelationship.DataSource = Enum.GetValues(typeof(ValueRelationship));
+            _comboBoxSearchValueRelationship = splitContainerSearchOptions.Panel1.Controls["comboBoxSearchValueRelationship"] as ComboBox;
+            _comboBoxSearchValueRelationship.DataSource = Enum.GetValues(typeof(ValueRelationship));
 
             _textBoxSearchValue = splitContainerSearchOptions.Panel1.Controls["textBoxSearchValue"] as BetterTextbox;
 
@@ -81,6 +85,14 @@ namespace STROOP.Managers
 
             _buttonSearchAddAllAsVars = splitContainerSearchOptions.Panel1.Controls["buttonSearchAddAllAsVars"] as Button;
             _buttonSearchAddAllAsVars.Click += (sender, e) => AddTableRowsAsVars(ControlUtilities.GetTableAllRows(_dataGridViewSearch));
+
+            _buttonSearchUndoScan = splitContainerSearchOptions.Panel1.Controls["buttonSearchUndoScan"] as Button;
+
+            _buttonSearchClearResults = splitContainerSearchOptions.Panel1.Controls["buttonSearchClearResults"] as Button;
+
+            _progressBarSearch = splitContainerSearchOptions.Panel1.Controls["progressBarSearch"] as ProgressBar;
+
+            _labelSearchProgress = splitContainerSearchOptions.Panel1.Controls["labelSearchProgress"] as Label;
 
             _dataGridViewSearch = splitContainerSearchOptions.Panel2.Controls["dataGridViewSearch"] as DataGridView;
         }
@@ -202,7 +214,7 @@ namespace STROOP.Managers
                 byte? oldMemoryValue = ParsingUtilities.ParseByteNullable(oldMemoryObject);
                 byte? searchValue1 = ParsingUtilities.ParseByteNullable(searchObject1);
                 byte? searchValue2 = ParsingUtilities.ParseByteNullable(searchObject2);
-                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxSearchValueRelationship.SelectedItem;
                 switch (valueRelationship)
                 {
                     case ValueRelationship.EqualTo:
@@ -257,7 +269,7 @@ namespace STROOP.Managers
                 sbyte? oldMemoryValue = ParsingUtilities.ParseSByteNullable(oldMemoryObject);
                 sbyte? searchValue1 = ParsingUtilities.ParseSByteNullable(searchObject1);
                 sbyte? searchValue2 = ParsingUtilities.ParseSByteNullable(searchObject2);
-                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxSearchValueRelationship.SelectedItem;
                 switch (valueRelationship)
                 {
                     case ValueRelationship.EqualTo:
@@ -312,7 +324,7 @@ namespace STROOP.Managers
                 short? oldMemoryValue = ParsingUtilities.ParseShortNullable(oldMemoryObject);
                 short? searchValue1 = ParsingUtilities.ParseShortNullable(searchObject1);
                 short? searchValue2 = ParsingUtilities.ParseShortNullable(searchObject2);
-                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxSearchValueRelationship.SelectedItem;
                 switch (valueRelationship)
                 {
                     case ValueRelationship.EqualTo:
@@ -367,7 +379,7 @@ namespace STROOP.Managers
                 ushort? oldMemoryValue = ParsingUtilities.ParseUShortNullable(oldMemoryObject);
                 ushort? searchValue1 = ParsingUtilities.ParseUShortNullable(searchObject1);
                 ushort? searchValue2 = ParsingUtilities.ParseUShortNullable(searchObject2);
-                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxSearchValueRelationship.SelectedItem;
                 switch (valueRelationship)
                 {
                     case ValueRelationship.EqualTo:
@@ -422,7 +434,7 @@ namespace STROOP.Managers
                 int? oldMemoryValue = ParsingUtilities.ParseIntNullable(oldMemoryObject);
                 int? searchValue1 = ParsingUtilities.ParseIntNullable(searchObject1);
                 int? searchValue2 = ParsingUtilities.ParseIntNullable(searchObject2);
-                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxSearchValueRelationship.SelectedItem;
                 switch (valueRelationship)
                 {
                     case ValueRelationship.EqualTo:
@@ -477,7 +489,7 @@ namespace STROOP.Managers
                 uint? oldMemoryValue = ParsingUtilities.ParseUIntNullable(oldMemoryObject);
                 uint? searchValue1 = ParsingUtilities.ParseUIntNullable(searchObject1);
                 uint? searchValue2 = ParsingUtilities.ParseUIntNullable(searchObject2);
-                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxSearchValueRelationship.SelectedItem;
                 switch (valueRelationship)
                 {
                     case ValueRelationship.EqualTo:
@@ -532,7 +544,7 @@ namespace STROOP.Managers
                 float? oldMemoryValue = ParsingUtilities.ParseFloatNullable(oldMemoryObject);
                 float? searchValue1 = ParsingUtilities.ParseFloatNullable(searchObject1);
                 float? searchValue2 = ParsingUtilities.ParseFloatNullable(searchObject2);
-                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxSearchValueRelationship.SelectedItem;
                 switch (valueRelationship)
                 {
                     case ValueRelationship.EqualTo:
@@ -587,7 +599,7 @@ namespace STROOP.Managers
                 double? oldMemoryValue = ParsingUtilities.ParseDoubleNullable(oldMemoryObject);
                 double? searchValue1 = ParsingUtilities.ParseDoubleNullable(searchObject1);
                 double? searchValue2 = ParsingUtilities.ParseDoubleNullable(searchObject2);
-                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxValueRelationship.SelectedItem;
+                ValueRelationship valueRelationship = (ValueRelationship)_comboBoxSearchValueRelationship.SelectedItem;
                 switch (valueRelationship)
                 {
                     case ValueRelationship.EqualTo:
