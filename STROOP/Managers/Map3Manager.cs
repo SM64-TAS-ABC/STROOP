@@ -251,7 +251,7 @@ namespace STROOP.Managers
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCellGridlines, Map3SemaphoreManager.CellGridlines, () => new Map3CellGridlinesObject(), false);
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentCell, Map3SemaphoreManager.CurrentCell, () => new Map3CurrentCellObject(), false);
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackUnitGridlines, Map3SemaphoreManager.UnitGridlines, () => new Map3UnitGridlinesObject(), false);
-            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentUnit, Map3SemaphoreManager.CurrentUnit, () => new Map3CurrentUnitObject(), false);
+            InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackCurrentUnit, Map3SemaphoreManager.CurrentUnit, () => new Map3CurrentUnitObject(PositionAngle.Mario), false);
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackNextPositions, Map3SemaphoreManager.NextPositions, () => new Map3NextPositionsObject(), false);
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackSelf, Map3SemaphoreManager.Self, () => new Map3SelfObject(), false);
             InitializeCheckboxSemaphore(Config.Map3Gui.checkBoxMap3OptionsTrackPoint, Map3SemaphoreManager.Point, () => new Map3PointObject(), false);

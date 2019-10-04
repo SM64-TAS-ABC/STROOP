@@ -16,21 +16,25 @@ namespace STROOP.Map3
 {
     public class Map3CurrentUnitObject : Map3QuadObject
     {
-        public Map3CurrentUnitObject()
+        private readonly PositionAngle _posAngle;
+
+        public Map3CurrentUnitObject(PositionAngle posAngle)
             : base()
         {
+            _posAngle = posAngle;
+
             Opacity = 0.5;
             Color = Color.Purple;
         }
 
         protected override List<List<(float x, float z)>> GetQuadList()
         {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            int xMin = (short)marioX;
-            int xMax = xMin + (marioX >= 0 ? 1 : -1);
-            int zMin = (short)marioZ;
-            int zMax = zMin + (marioZ >= 0 ? 1 : -1);
+            float posAngleX = (float)_posAngle.X;
+            float posAngleZ = (float)_posAngle.Z;
+            int xMin = (short)posAngleX;
+            int xMax = xMin + (posAngleX >= 0 ? 1 : -1);
+            int zMin = (short)posAngleZ;
+            int zMax = zMin + (posAngleZ >= 0 ? 1 : -1);
 
             List<(float x, float z)> quad =
                 new List<(float x, float z)>()
@@ -45,7 +49,7 @@ namespace STROOP.Map3
 
         public override string GetName()
         {
-            return "Current Unit";
+            return "Current Unit for " + _posAngle.GetMapName();
         }
 
         public override Image GetImage()
