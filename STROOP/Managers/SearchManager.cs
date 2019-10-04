@@ -41,6 +41,7 @@ namespace STROOP.Managers
         private readonly Dictionary<uint, object> _dictionary;
         private readonly Dictionary<uint, object> _undoDictionary;
         private Type _memoryType;
+        private bool _useHex;
 
         private readonly ComboBox _comboBoxSearchMemoryType;
         private readonly ComboBox _comboBoxSearchValueRelationship;
@@ -62,6 +63,7 @@ namespace STROOP.Managers
             _dictionary = new Dictionary<uint, object>();
             _undoDictionary = new Dictionary<uint, object>();
             _memoryType = typeof(byte);
+            _useHex = false;
 
             SplitContainer splitContainerSearch = tabControl.Controls["splitContainerSearch"] as SplitContainer;
             SplitContainer splitContainerSearchOptions = splitContainerSearch.Panel1.Controls["splitContainerSearchOptions"] as SplitContainer;
@@ -129,7 +131,7 @@ namespace STROOP.Managers
                     backgroundColor: null,
                     displayType: null,
                     roundingLimit: null,
-                    useHex: null,
+                    useHex: _useHex ? true : (bool?)null,
                     invertBool: null,
                     isYaw: null,
                     coordinate: null,
@@ -145,6 +147,7 @@ namespace STROOP.Managers
             string memoryTypeString = (string)_comboBoxSearchMemoryType.SelectedItem;
             _memoryType = TypeUtilities.StringToType[memoryTypeString];
             int memoryTypeSize = TypeUtilities.TypeSize[_memoryType];
+            _useHex = _textBoxSearchValue.Text.StartsWith("0x");
 
             (object searchValue1, object searchValue2) = ParseSearchValue(_textBoxSearchValue.Text, _memoryType);
             object oldMemoryValue = null;
@@ -229,7 +232,9 @@ namespace STROOP.Managers
             if (_dictionary.Count > 10000) return;
             _dictionary.Keys.ToList().ForEach(key =>
             {
-                _dataGridViewSearch.Rows.Add(HexUtilities.FormatValue(key), _dictionary[key]);
+                _dataGridViewSearch.Rows.Add(
+                    HexUtilities.FormatValue(key),
+                    _useHex ? HexUtilities.FormatValue(_dictionary[key]) : _dictionary[key]);
             });
         }
 
