@@ -89,6 +89,7 @@ namespace STROOP.Managers
             _buttonSearchUndoScan = splitContainerSearchOptions.Panel1.Controls["buttonSearchUndoScan"] as Button;
 
             _buttonSearchClearResults = splitContainerSearchOptions.Panel1.Controls["buttonSearchClearResults"] as Button;
+            _buttonSearchClearResults.Click += (sender, e) => ClearResults();
 
             _progressBarSearch = splitContainerSearchOptions.Panel1.Controls["progressBarSearch"] as ProgressBar;
 
@@ -210,10 +211,15 @@ namespace STROOP.Managers
                 ParsingUtilities.ParseValueNullable(stringValue2, type));
         }
 
+        private void ClearResults()
+        {
+            _dictionary.Clear();
+            UpdateControlsBasedOnDictionary();
+        }
+
         private void UpdateControlsBasedOnDictionary()
         {
             _labelSearchNumResults.Text = _dictionary.Count.ToString() + " Results";
-
             _dataGridViewSearch.Rows.Clear();
             if (_dictionary.Count > 10000) return;
             _dictionary.Keys.ToList().ForEach(key =>
