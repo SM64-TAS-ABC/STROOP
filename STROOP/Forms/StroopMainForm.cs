@@ -130,6 +130,7 @@ namespace STROOP
                     "Show Image Form",
                     "Test Something",
                     "Test Something Else",
+                    "Format Subtitles",
                 },
                 new List<Action>()
                 {
@@ -169,6 +170,7 @@ namespace STROOP
                     },
                     () => TestUtilities.TestSomething(),
                     () => TestUtilities.TestSomethingElse(),
+                    () => SubtitleUtilities.FormatSubtitlesFromClipboard(),
                 });
 
             ControlUtilities.AddCheckableContextMenuStripFunctions(
