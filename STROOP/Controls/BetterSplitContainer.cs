@@ -11,21 +11,41 @@ using STROOP.Structs;
 using STROOP.Controls;
 using STROOP.Extensions;
 using System.Drawing.Drawing2D;
+using STROOP.Forms;
 
 namespace STROOP
 {
     public class BetterSplitContainer : SplitContainer
     {
+        private int? _initialSplitterDistance;
+
         public BetterSplitContainer()
         {
+            _initialSplitterDistance = null;
+
             MouseDown += splitCont_MouseDown;
             MouseUp += splitCont_MouseUp;
             MouseMove += splitCont_MouseMove;
+            DoubleClick += splitCont_DoubleClick;
+        }
+
+        //assign this to the SplitContainer's MouseDown event
+        private void splitCont_DoubleClick(object sender, EventArgs e)
+        {
+            if (_initialSplitterDistance.HasValue)
+            {
+                SplitterDistance = _initialSplitterDistance.Value;
+            }
         }
 
         //assign this to the SplitContainer's MouseDown event
         private void splitCont_MouseDown(object sender, MouseEventArgs e)
         {
+            if (!_initialSplitterDistance.HasValue)
+            {
+                _initialSplitterDistance = SplitterDistance;
+            }
+
             // This disables the normal move behavior
             ((SplitContainer)sender).IsSplitterFixed = true;
         }
