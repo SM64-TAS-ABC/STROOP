@@ -655,7 +655,7 @@ namespace STROOP.Managers
         public void Update(bool updateView)
         {
             // Koopa better camera
-            if (false)
+            if (TestingConfig.UpdateCamHackAngle)
             {
                 int koopaTurnAngle = 1536;
                 uint koopaAddress = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);

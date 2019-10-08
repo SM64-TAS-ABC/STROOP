@@ -181,6 +181,7 @@ namespace STROOP
                     "Show Invisible Objects as Signs",
                     "Show Cog Tris",
                     "Show Shapes",
+                    "Update Cam Hack Angle",
                 },
                 new List<Func<bool>>()
                 {
@@ -203,6 +204,11 @@ namespace STROOP
                     {
                         TestingConfig.ShowShapes = !TestingConfig.ShowShapes;
                         return TestingConfig.ShowShapes;
+                    },
+                    () =>
+                    {
+                        TestingConfig.UpdateCamHackAngle = !TestingConfig.UpdateCamHackAngle;
+                        return TestingConfig.UpdateCamHackAngle;
                     },
                 });
 

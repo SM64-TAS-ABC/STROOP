@@ -37,8 +37,9 @@ namespace STROOP.Map3
             _useBlending = false;
             _isPaused = false;
 
-            Size = 50;
+            Size = 300;
             OutlineWidth = 3;
+            Color = Color.Yellow;
             OutlineColor = Color.Red;
         }
 

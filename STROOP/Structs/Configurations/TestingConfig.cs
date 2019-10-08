@@ -11,5 +11,6 @@ namespace STROOP.Structs.Configurations
         public static bool ShowInvisibleObjectsAsSigns = false;
         public static bool ShowCogTris = false;
         public static bool ShowShapes = false;
+        public static bool UpdateCamHackAngle = false;
     }
 }
