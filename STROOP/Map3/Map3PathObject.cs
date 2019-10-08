@@ -133,9 +133,15 @@ namespace STROOP.Map3
                 itemResetPathBeyondCurrentGlobalTimer.Click += (sender, e) =>
                 {
                     uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                    foreach (uint key in _dictionary.Keys.ToList())
+                    Dictionary<uint, (float x, float z)> tempDictionary = new Dictionary<uint, (float x, float z)>();
+                    foreach (uint key in _dictionary.Keys)
                     {
-                        if (key > globalTimer) _dictionary.Remove(key);
+                        tempDictionary[key] = _dictionary[key];
+                    }
+                    _dictionary.Clear();
+                    foreach (uint key in tempDictionary.Keys)
+                    {
+                        if (key <= globalTimer) _dictionary[key] = tempDictionary[key];
                     }
                 };
 
