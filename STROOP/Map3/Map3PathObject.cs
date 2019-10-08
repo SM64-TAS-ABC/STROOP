@@ -34,7 +34,7 @@ namespace STROOP.Map3
             _resetPathOnLevelChange = false;
             _numSkips = 0;
             _skippedKeys = new List<uint>();
-            _useBlending = false;
+            _useBlending = true;
             _isPaused = false;
 
             Size = 300;
@@ -152,6 +152,7 @@ namespace STROOP.Map3
                     _resetPathOnLevelChange = !_resetPathOnLevelChange;
                     itemResetPathOnLevelChange.Checked = _resetPathOnLevelChange;
                 };
+                itemResetPathOnLevelChange.Checked = _resetPathOnLevelChange;
 
                 ToolStripMenuItem itemUseBlending = new ToolStripMenuItem("Use Blending");
                 itemUseBlending.Click += (sender, e) =>
@@ -159,6 +160,7 @@ namespace STROOP.Map3
                     _useBlending = !_useBlending;
                     itemUseBlending.Checked = _useBlending;
                 };
+                itemUseBlending.Checked = _useBlending;
 
                 ToolStripMenuItem itemPause = new ToolStripMenuItem("Pause");
                 itemPause.Click += (sender, e) =>
@@ -166,6 +168,7 @@ namespace STROOP.Map3
                     _isPaused = !_isPaused;
                     itemPause.Checked = _isPaused;
                 };
+                itemPause.Checked = _isPaused;
 
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemResetPath);
