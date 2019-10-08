@@ -658,7 +658,7 @@ namespace STROOP.Managers
             if (false)
             {
                 int koopaTurnAngle = 1536;
-                uint koopaAddress = 0x8034E0E8;
+                uint koopaAddress = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
                 ushort koopaAngle = Config.Stream.GetUInt16(koopaAddress + ObjectConfig.YawFacingOffset);
                 uint cameraHackAngleAddress = 0x803E001E;
                 ushort cameraHackAngle = Config.Stream.GetUInt16(cameraHackAngleAddress);

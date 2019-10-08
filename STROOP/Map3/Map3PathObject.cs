@@ -129,6 +129,16 @@ namespace STROOP.Map3
                 ToolStripMenuItem itemResetPath = new ToolStripMenuItem("Reset Path");
                 itemResetPath.Click += (sender, e) => _dictionary.Clear();
 
+                ToolStripMenuItem itemResetPathBeyondCurrentGlobalTimer = new ToolStripMenuItem("Reset Path Beyond Current Global Timer");
+                itemResetPathBeyondCurrentGlobalTimer.Click += (sender, e) =>
+                {
+                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    foreach (uint key in _dictionary.Keys.ToList())
+                    {
+                        if (key > globalTimer) _dictionary.Remove(key);
+                    }
+                };
+
                 ToolStripMenuItem itemResetPathOnLevelChange = new ToolStripMenuItem("Reset Path on Level Change");
                 itemResetPathOnLevelChange.Click += (sender, e) =>
                 {
@@ -152,6 +162,7 @@ namespace STROOP.Map3
 
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemResetPath);
+                _contextMenuStrip.Items.Add(itemResetPathBeyondCurrentGlobalTimer);
                 _contextMenuStrip.Items.Add(itemResetPathOnLevelChange);
                 _contextMenuStrip.Items.Add(itemUseBlending);
                 _contextMenuStrip.Items.Add(itemPause);
