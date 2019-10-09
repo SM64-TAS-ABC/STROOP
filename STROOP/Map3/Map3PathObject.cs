@@ -24,6 +24,7 @@ namespace STROOP.Map3
         private List<uint> _skippedKeys;
         private bool _useBlending;
         private bool _isPaused;
+        private uint _highestGlobalTimerValue;
 
         public Map3PathObject(PositionAngle posAngle)
             : base()
@@ -36,6 +37,7 @@ namespace STROOP.Map3
             _skippedKeys = new List<uint>();
             _useBlending = true;
             _isPaused = false;
+            _highestGlobalTimerValue = 0;
 
             Size = 300;
             OutlineWidth = 3;
@@ -105,6 +107,25 @@ namespace STROOP.Map3
                 uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                 float x = (float)_posAngle.X;
                 float z = (float)_posAngle.Z;
+
+                if (globalTimer < _highestGlobalTimerValue)
+                {
+                    Dictionary<uint, (float x, float z)> tempDictionary = new Dictionary<uint, (float x, float z)>();
+                    foreach (uint key in _dictionary.Keys)
+                    {
+                        tempDictionary[key] = _dictionary[key];
+                    }
+                    _dictionary.Clear();
+                    foreach (uint key in tempDictionary.Keys)
+                    {
+                        if (key <= globalTimer)
+                        {
+                            _dictionary[key] = tempDictionary[key];
+                            _highestGlobalTimerValue = key;
+                        }
+                    }
+                }
+
                 if (!_dictionary.ContainsKey(globalTimer))
                 {
                     if (_numSkips > 0)
@@ -118,6 +139,7 @@ namespace STROOP.Map3
                     else
                     {
                         _dictionary[globalTimer] = (x, z);
+                        _highestGlobalTimerValue = globalTimer;
                     }
                 }
             }
@@ -129,22 +151,6 @@ namespace STROOP.Map3
             {
                 ToolStripMenuItem itemResetPath = new ToolStripMenuItem("Reset Path");
                 itemResetPath.Click += (sender, e) => _dictionary.Clear();
-
-                ToolStripMenuItem itemResetPathBeyondCurrentGlobalTimer = new ToolStripMenuItem("Reset Path Beyond Current Global Timer");
-                itemResetPathBeyondCurrentGlobalTimer.Click += (sender, e) =>
-                {
-                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                    Dictionary<uint, (float x, float z)> tempDictionary = new Dictionary<uint, (float x, float z)>();
-                    foreach (uint key in _dictionary.Keys)
-                    {
-                        tempDictionary[key] = _dictionary[key];
-                    }
-                    _dictionary.Clear();
-                    foreach (uint key in tempDictionary.Keys)
-                    {
-                        if (key <= globalTimer) _dictionary[key] = tempDictionary[key];
-                    }
-                };
 
                 ToolStripMenuItem itemResetPathOnLevelChange = new ToolStripMenuItem("Reset Path on Level Change");
                 itemResetPathOnLevelChange.Click += (sender, e) =>
@@ -172,7 +178,6 @@ namespace STROOP.Map3
 
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemResetPath);
-                _contextMenuStrip.Items.Add(itemResetPathBeyondCurrentGlobalTimer);
                 _contextMenuStrip.Items.Add(itemResetPathOnLevelChange);
                 _contextMenuStrip.Items.Add(itemUseBlending);
                 _contextMenuStrip.Items.Add(itemPause);
