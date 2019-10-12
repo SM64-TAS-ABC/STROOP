@@ -64,7 +64,9 @@ namespace STROOP.Managers
                     "Add Tracker for Custom Floor Tris",
                     "Add Tracker for Custom Wall Tris",
                     "Add Tracker for Custom Ceiling Tris",
+                    "Add Tracker for Level Floor Tris",
                     "Add Tracker for Level Wall Tris",
+                    "Add Tracker for Level Ceiling Tris",
                 },
                 new List<Action>()
                 {
@@ -102,7 +104,19 @@ namespace STROOP.Managers
                     },
                     () =>
                     {
+                        Map3Object mapObj = new Map3LevelFloorObject();
+                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                    },
+                    () =>
+                    {
                         Map3Object mapObj = new Map3LevelWallObject();
+                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                    },
+                    () =>
+                    {
+                        Map3Object mapObj = new Map3LevelCeilingObject();
                         Map3Tracker tracker = new Map3Tracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },

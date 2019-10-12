@@ -367,6 +367,8 @@
     <Compile Include="Managers\PaintingManager.cs" />
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
+    <Compile Include="Map3\Map3LevelCeilingObject.cs" />
+    <Compile Include="Map3\Map3LevelFloorObject.cs" />
     <Compile Include="Map3\Map3LevelWallObject.cs" />
     <Compile Include="Map3\Map3PathObject.cs" />
     <Compile Include="Map3\Map3CustomCeilingObject.cs" />
