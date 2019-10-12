@@ -64,6 +64,7 @@ namespace STROOP.Managers
                     "Add Tracker for Custom Floor Tris",
                     "Add Tracker for Custom Wall Tris",
                     "Add Tracker for Custom Ceiling Tris",
+                    "Add Tracker for Level Wall Tris",
                 },
                 new List<Action>()
                 {
@@ -96,6 +97,12 @@ namespace STROOP.Managers
                         string text = DialogUtilities.GetStringFromDialog(labelText: "Enter triangle addresses as hex uints.");
                         Map3Object mapObj = Map3CustomCeilingObject.Create(text);
                         if (mapObj == null) return;
+                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                    },
+                    () =>
+                    {
+                        Map3Object mapObj = new Map3LevelWallObject();
                         Map3Tracker tracker = new Map3Tracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
