@@ -23,6 +23,7 @@ namespace STROOP.Utilities
         protected override UIntPtr BaseOffset => _baseOffset;
 
         public override string Name => _process.ProcessName;
+        public override Process Process => _process;
 
         public override event EventHandler OnClose;
 

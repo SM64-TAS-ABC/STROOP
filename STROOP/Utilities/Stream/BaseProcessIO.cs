@@ -22,6 +22,7 @@ namespace STROOP.Utilities
         public abstract bool IsSuspended { get; }
 
         public abstract string Name { get; }
+        public abstract Process Process { get; }
 
         public abstract bool Suspend();
         public abstract bool Resume();

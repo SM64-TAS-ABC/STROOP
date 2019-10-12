@@ -7,6 +7,7 @@ using STROOP.Structs;
 using ICSharpCode.SharpZipLib.GZip;
 using System.IO;
 using STROOP.Structs.Configurations;
+using System.Diagnostics;
 
 namespace STROOP.Utilities
 {
@@ -24,6 +25,7 @@ namespace STROOP.Utilities
         protected override EndiannessType Endianness => EndiannessType.Little;
 
         public override string Name => System.IO.Path.GetFileName(_path);
+        public override Process Process => null;
 
         private byte[] _data;
 
