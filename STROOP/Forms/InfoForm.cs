@@ -81,7 +81,7 @@ namespace STROOP.Forms
         public void SetTriangles(List<TriangleDataModel> triangleList)
         {
             this.Text = "Triangle Info";
-            textBoxTitle.Text = "Triangles";
+            textBoxTitle.Text = triangleList.Count + " Triangles";
             textBoxTriangleInfo.Text = TriangleDataModel.GetFieldNameString() + "\n" + String.Join("\n", triangleList);
         }
 
