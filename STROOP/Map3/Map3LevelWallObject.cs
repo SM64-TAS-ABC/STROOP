@@ -19,6 +19,7 @@ namespace STROOP.Map3
     public class Map3LevelWallObject : Map3WallObject
     {
         private List<uint> _triAddressList;
+        private bool _removeCurrentTri;
 
         public Map3LevelWallObject()
             : base()
@@ -26,6 +27,7 @@ namespace STROOP.Map3
             _triAddressList = TriangleUtilities.GetLevelTriangles()
                 .FindAll(tri => tri.IsWall())
                 .ConvertAll(tri => tri.Address);
+            _removeCurrentTri = false;
 
             Opacity = 0.5;
             Color = Color.Green;
@@ -48,11 +50,37 @@ namespace STROOP.Map3
                         .FindAll(tri => tri.IsWall())
                         .ConvertAll(tri => tri.Address);
                 };
+
+                ToolStripMenuItem itemRemoveCurrentTri = new ToolStripMenuItem("Remove Current Tri");
+                itemRemoveCurrentTri.Click += (sender, e) =>
+                {
+                    _removeCurrentTri = !_removeCurrentTri;
+                    itemRemoveCurrentTri.Checked = _removeCurrentTri;
+                };
+
+                ToolStripMenuItem itemShowTriData = new ToolStripMenuItem("Show Tri Data");
+                itemShowTriData.Click += (sender, e) =>
+                {
+                    List<TriangleDataModel> tris = _triAddressList.ConvertAll(address => new TriangleDataModel(address));
+                    TriangleUtilities.ShowTriangles(tris);
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemReset);
+                _contextMenuStrip.Items.Add(itemRemoveCurrentTri);
+                _contextMenuStrip.Items.Add(itemShowTriData);
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void Update()
+        {
+            if (_removeCurrentTri)
+            {
+                uint currentTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+                _triAddressList.Remove(currentTri);
+            }
         }
 
         public override string GetName()
