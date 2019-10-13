@@ -53,6 +53,7 @@ namespace STROOP.Map3
                     _triAddressList.AddRange(TriangleUtilities.GetLevelTriangles()
                         .FindAll(tri => tri.IsCeiling())
                         .ConvertAll(tri => tri.Address));
+                    _triangleListForm?.RefreshAndSort();
                 };
 
                 ToolStripMenuItem itemRemoveCurrentTri = new ToolStripMenuItem("Remove Current Tri");
@@ -97,8 +98,12 @@ namespace STROOP.Map3
         {
             if (_removeCurrentTri)
             {
-                uint currentTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
-                _triAddressList.Remove(currentTri);
+                uint currentTriAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
+                if (_triAddressList.Contains(currentTriAddress))
+                {
+                    _triAddressList.Remove(currentTriAddress);
+                    _triangleListForm?.RefreshDataGridViewAfterRemoval();
+                }
             }
         }
 

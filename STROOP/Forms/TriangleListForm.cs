@@ -26,13 +26,14 @@ namespace STROOP.Forms
             _triAddressList = triAddressList;
 
             Text = classification + " Triangle List";
+            labelNumTriangles.Text = _triAddressList.Count + " Triangles";
             FormClosing += (sender, e) => TriangleListFormClosing();
-            buttonSort.Click += (sender, e) => Sort();
+            buttonSort.Click += (sender, e) => RefreshAndSort();
             buttonAnnihilate.Click += (sender, e) => Annihilate();
             buttonInject.Click += (sender, e) => Inject();
             buttonRemove.Click += (sender, e) => Remove();
 
-            Sort();
+            RefreshAndSort();
         }
 
         private void TriangleListFormClosing()
@@ -40,7 +41,7 @@ namespace STROOP.Forms
             _levelTriangleObject.NullifyTriangleListForm();
         }
 
-        private void Sort()
+        public void RefreshAndSort()
         {
             dataGridView.Rows.Clear();
             List<(uint address, double dist)> dataList =_triAddressList.ConvertAll(address =>
@@ -52,8 +53,9 @@ namespace STROOP.Forms
             dataList = Enumerable.OrderBy(dataList, data => data.dist).ToList();
             dataList.ForEach(data =>
             {
-                dataGridView.Rows.Add(HexUtilities.FormatValue(data.address), data.dist);
+                dataGridView.Rows.Add(HexUtilities.FormatValue(data.address), Math.Round(data.dist, 3));
             });
+            labelNumTriangles.Text = _triAddressList.Count + " Triangles";
         }
 
         private void Annihilate()
@@ -93,6 +95,7 @@ namespace STROOP.Forms
                     dataGridView.Rows.Remove(row);
                 }
             });
+            labelNumTriangles.Text = _triAddressList.Count + " Triangles";
         }
     }
 }
