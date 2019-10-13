@@ -181,6 +181,12 @@
     <Compile Include="Forms\ImageForm.Designer.cs">
       <DependentUpon>ImageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TriangleListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TriangleListForm.Designer.cs">
+      <DependentUpon>TriangleListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ValueForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -721,6 +727,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImageForm.resx">
       <DependentUpon>ImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TriangleListForm.resx">
+      <DependentUpon>TriangleListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ValueForm.resx">
       <DependentUpon>ValueForm.cs</DependentUpon>
