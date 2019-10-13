@@ -14,6 +14,7 @@ namespace STROOP.Forms
     {
         private readonly Map3LevelTriangleObjectI _levelTriangleObject;
         private readonly List<uint> _triAddressList;
+        private long _lastRemoveTime;
 
         public TriangleListForm(
             Map3LevelTriangleObjectI levelTriangleObject, 
@@ -24,6 +25,7 @@ namespace STROOP.Forms
 
             _levelTriangleObject = levelTriangleObject;
             _triAddressList = triAddressList;
+            _lastRemoveTime = 0;
 
             Text = classification + " Triangle List";
             labelNumTriangles.Text = _triAddressList.Count + " Triangles";
@@ -75,6 +77,14 @@ namespace STROOP.Forms
 
         private void Remove()
         {
+            long removeTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+            if (removeTime < _lastRemoveTime + 1000)
+            {
+                DialogUtilities.DisplayMessage("Attempted to remove twice in 1 second.", "Warning");
+                return;
+            }
+            _lastRemoveTime = removeTime;
+
             List<DataGridViewRow> rows = ControlUtilities.GetTableSelectedRows(dataGridView);
             rows.ForEach(row =>
             {
