@@ -37,10 +37,10 @@
             this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonSort = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Distance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelNumTriangles = new System.Windows.Forms.Label();
             this.buttonAnnihilate = new System.Windows.Forms.Button();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Distance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -128,24 +128,6 @@
             this.dataGridView.Size = new System.Drawing.Size(325, 121);
             this.dataGridView.TabIndex = 5;
             // 
-            // Address
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Address.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Address.HeaderText = "Address";
-            this.Address.MinimumWidth = 2;
-            this.Address.Name = "Address";
-            this.Address.ReadOnly = true;
-            // 
-            // Distance
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Distance.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Distance.HeaderText = "Distance";
-            this.Distance.MinimumWidth = 2;
-            this.Distance.Name = "Distance";
-            this.Distance.ReadOnly = true;
-            // 
             // labelNumTriangles
             // 
             this.labelNumTriangles.AutoSize = true;
@@ -167,6 +149,22 @@
             this.buttonAnnihilate.TabIndex = 9;
             this.buttonAnnihilate.Text = "Annihilate";
             this.buttonAnnihilate.UseVisualStyleBackColor = true;
+            // 
+            // Address
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Address.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Address.HeaderText = "Address";
+            this.Address.MinimumWidth = 2;
+            this.Address.Name = "Address";
+            // 
+            // Distance
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Distance.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Distance.HeaderText = "Distance";
+            this.Distance.MinimumWidth = 2;
+            this.Distance.Name = "Distance";
             // 
             // TriangleListForm
             // 
@@ -196,8 +194,8 @@
         private System.Windows.Forms.Button buttonInject;
         private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.Button buttonSort;
+        private System.Windows.Forms.Button buttonAnnihilate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn Distance;
-        private System.Windows.Forms.Button buttonAnnihilate;
     }
 }
