@@ -19,7 +19,7 @@ namespace STROOP.Map3
 {
     public class Map3LevelCeilingObject : Map3TriangleObject, Map3LevelTriangleObjectI
     {
-        private List<uint> _triAddressList;
+        private readonly List<uint> _triAddressList;
         private bool _removeCurrentTri;
         private TriangleListForm _triangleListForm;
 
@@ -49,9 +49,10 @@ namespace STROOP.Map3
                 ToolStripMenuItem itemReset = new ToolStripMenuItem("Reset");
                 itemReset.Click += (sender, e) =>
                 {
-                    _triAddressList = TriangleUtilities.GetLevelTriangles()
+                    _triAddressList.Clear();
+                    _triAddressList.AddRange(TriangleUtilities.GetLevelTriangles()
                         .FindAll(tri => tri.IsCeiling())
-                        .ConvertAll(tri => tri.Address);
+                        .ConvertAll(tri => tri.Address));
                 };
 
                 ToolStripMenuItem itemRemoveCurrentTri = new ToolStripMenuItem("Remove Current Tri");
@@ -72,7 +73,8 @@ namespace STROOP.Map3
                 itemOpenForm.Click += (sender, e) =>
                 {
                     if (_triangleListForm != null) return;
-                    _triangleListForm = new TriangleListForm(this, TriangleClassification.Ceiling);
+                    _triangleListForm = new TriangleListForm(
+                        this, TriangleClassification.Ceiling, _triAddressList);
                     _triangleListForm.Show();
                 };
 
