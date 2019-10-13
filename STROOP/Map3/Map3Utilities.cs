@@ -194,8 +194,19 @@ namespace STROOP.Map3
                 return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection);
             if (tri.X1 == tri.X3 && tri.Z1 == tri.Z3) // v3 is redundant
                 return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
-            else // v2 == v3, so v3 is redundant
+            if (tri.X2 == tri.X3 && tri.Z2 == tri.Z3) // v3 is redundant
                 return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
+
+            double dist12 = MoreMath.GetDistanceBetween(tri.X1, tri.Z1, tri.X2, tri.Z2);
+            double dist13 = MoreMath.GetDistanceBetween(tri.X1, tri.Z1, tri.X3, tri.Z3);
+            double dist23 = MoreMath.GetDistanceBetween(tri.X2, tri.Z2, tri.X3, tri.Z3);
+
+            if (dist12 >= dist13 && dist12 >= dist23)
+                return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
+            else if (dist13 >= dist23)
+                return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection);
+            else
+                return (tri.X2, tri.Z2, tri.X3, tri.Z3, tri.XProjection);
         }
     }
 }
