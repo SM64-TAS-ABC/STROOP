@@ -867,6 +867,7 @@ namespace STROOP
             this.groupBoxMap3ControllersCenter = new System.Windows.Forms.GroupBox();
             this.textBoxMap3ControllersCenterCustom = new STROOP.BetterTextbox();
             this.textBoxMap3ControllersCenterChange = new STROOP.BetterTextbox();
+            this.radioButtonMap3ControllersCenterMario = new System.Windows.Forms.RadioButton();
             this.radioButtonMap3ControllersCenterOrigin = new System.Windows.Forms.RadioButton();
             this.buttonMap3ControllersCenterDownRight = new System.Windows.Forms.Button();
             this.radioButtonMap3ControllersCenterBestFit = new System.Windows.Forms.RadioButton();
@@ -1600,6 +1601,7 @@ namespace STROOP
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.radioButtonMap3ControllersAngleMario = new System.Windows.Forms.RadioButton();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -5796,7 +5798,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 523F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 526F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9526,7 +9528,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(418, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(427, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11953,22 +11955,23 @@ namespace STROOP
             this.groupBoxMap3ControllersAngle.Controls.Add(this.textBoxMap3ControllersAngleChange);
             this.groupBoxMap3ControllersAngle.Controls.Add(this.textBoxMap3ControllersAngleCustom);
             this.groupBoxMap3ControllersAngle.Controls.Add(this.buttonMap3ControllersAngleCCW);
+            this.groupBoxMap3ControllersAngle.Controls.Add(this.radioButtonMap3ControllersAngleMario);
             this.groupBoxMap3ControllersAngle.Controls.Add(this.radioButtonMap3ControllersAngle49152);
             this.groupBoxMap3ControllersAngle.Controls.Add(this.buttonMap3ControllersAngleCW);
             this.groupBoxMap3ControllersAngle.Controls.Add(this.radioButtonMap3ControllersAngle16384);
             this.groupBoxMap3ControllersAngle.Controls.Add(this.radioButtonMap3ControllersAngle0);
             this.groupBoxMap3ControllersAngle.Controls.Add(this.radioButtonMap3ControllersAngleCustom);
             this.groupBoxMap3ControllersAngle.Controls.Add(this.radioButtonMap3ControllersAngle32768);
-            this.groupBoxMap3ControllersAngle.Location = new System.Drawing.Point(3, 165);
+            this.groupBoxMap3ControllersAngle.Location = new System.Drawing.Point(3, 162);
             this.groupBoxMap3ControllersAngle.Name = "groupBoxMap3ControllersAngle";
-            this.groupBoxMap3ControllersAngle.Size = new System.Drawing.Size(337, 116);
+            this.groupBoxMap3ControllersAngle.Size = new System.Drawing.Size(337, 120);
             this.groupBoxMap3ControllersAngle.TabIndex = 38;
             this.groupBoxMap3ControllersAngle.TabStop = false;
             this.groupBoxMap3ControllersAngle.Text = "Angle";
             // 
             // textBoxMap3ControllersAngleChange
             // 
-            this.textBoxMap3ControllersAngleChange.Location = new System.Drawing.Point(226, 51);
+            this.textBoxMap3ControllersAngleChange.Location = new System.Drawing.Point(226, 55);
             this.textBoxMap3ControllersAngleChange.Name = "textBoxMap3ControllersAngleChange";
             this.textBoxMap3ControllersAngleChange.Size = new System.Drawing.Size(66, 20);
             this.textBoxMap3ControllersAngleChange.TabIndex = 34;
@@ -11977,7 +11980,7 @@ namespace STROOP
             // 
             // textBoxMap3ControllersAngleCustom
             // 
-            this.textBoxMap3ControllersAngleCustom.Location = new System.Drawing.Point(67, 86);
+            this.textBoxMap3ControllersAngleCustom.Location = new System.Drawing.Point(67, 93);
             this.textBoxMap3ControllersAngleCustom.Name = "textBoxMap3ControllersAngleCustom";
             this.textBoxMap3ControllersAngleCustom.Size = new System.Drawing.Size(117, 20);
             this.textBoxMap3ControllersAngleCustom.TabIndex = 34;
@@ -11988,7 +11991,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersAngleCCW.BackgroundImage = global::STROOP.Properties.Resources.image_counterclockwise;
             this.buttonMap3ControllersAngleCCW.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersAngleCCW.Location = new System.Drawing.Point(188, 42);
+            this.buttonMap3ControllersAngleCCW.Location = new System.Drawing.Point(188, 46);
             this.buttonMap3ControllersAngleCCW.Name = "buttonMap3ControllersAngleCCW";
             this.buttonMap3ControllersAngleCCW.Size = new System.Drawing.Size(35, 35);
             this.buttonMap3ControllersAngleCCW.TabIndex = 39;
@@ -11997,7 +12000,7 @@ namespace STROOP
             // radioButtonMap3ControllersAngle49152
             // 
             this.radioButtonMap3ControllersAngle49152.AutoSize = true;
-            this.radioButtonMap3ControllersAngle49152.Location = new System.Drawing.Point(9, 69);
+            this.radioButtonMap3ControllersAngle49152.Location = new System.Drawing.Point(9, 62);
             this.radioButtonMap3ControllersAngle49152.Name = "radioButtonMap3ControllersAngle49152";
             this.radioButtonMap3ControllersAngle49152.Size = new System.Drawing.Size(55, 17);
             this.radioButtonMap3ControllersAngle49152.TabIndex = 12;
@@ -12008,7 +12011,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersAngleCW.BackgroundImage = global::STROOP.Properties.Resources.image_clockwise;
             this.buttonMap3ControllersAngleCW.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersAngleCW.Location = new System.Drawing.Point(295, 42);
+            this.buttonMap3ControllersAngleCW.Location = new System.Drawing.Point(295, 46);
             this.buttonMap3ControllersAngleCW.Name = "buttonMap3ControllersAngleCW";
             this.buttonMap3ControllersAngleCW.Size = new System.Drawing.Size(35, 35);
             this.buttonMap3ControllersAngleCW.TabIndex = 39;
@@ -12017,7 +12020,7 @@ namespace STROOP
             // radioButtonMap3ControllersAngle16384
             // 
             this.radioButtonMap3ControllersAngle16384.AutoSize = true;
-            this.radioButtonMap3ControllersAngle16384.Location = new System.Drawing.Point(9, 33);
+            this.radioButtonMap3ControllersAngle16384.Location = new System.Drawing.Point(9, 30);
             this.radioButtonMap3ControllersAngle16384.Name = "radioButtonMap3ControllersAngle16384";
             this.radioButtonMap3ControllersAngle16384.Size = new System.Drawing.Size(55, 17);
             this.radioButtonMap3ControllersAngle16384.TabIndex = 12;
@@ -12027,7 +12030,7 @@ namespace STROOP
             // radioButtonMap3ControllersAngle0
             // 
             this.radioButtonMap3ControllersAngle0.AutoSize = true;
-            this.radioButtonMap3ControllersAngle0.Location = new System.Drawing.Point(9, 15);
+            this.radioButtonMap3ControllersAngle0.Location = new System.Drawing.Point(9, 14);
             this.radioButtonMap3ControllersAngle0.Name = "radioButtonMap3ControllersAngle0";
             this.radioButtonMap3ControllersAngle0.Size = new System.Drawing.Size(31, 17);
             this.radioButtonMap3ControllersAngle0.TabIndex = 11;
@@ -12037,7 +12040,7 @@ namespace STROOP
             // radioButtonMap3ControllersAngleCustom
             // 
             this.radioButtonMap3ControllersAngleCustom.AutoSize = true;
-            this.radioButtonMap3ControllersAngleCustom.Location = new System.Drawing.Point(9, 87);
+            this.radioButtonMap3ControllersAngleCustom.Location = new System.Drawing.Point(9, 94);
             this.radioButtonMap3ControllersAngleCustom.Name = "radioButtonMap3ControllersAngleCustom";
             this.radioButtonMap3ControllersAngleCustom.Size = new System.Drawing.Size(63, 17);
             this.radioButtonMap3ControllersAngleCustom.TabIndex = 13;
@@ -12048,7 +12051,7 @@ namespace STROOP
             // 
             this.radioButtonMap3ControllersAngle32768.AutoSize = true;
             this.radioButtonMap3ControllersAngle32768.Checked = true;
-            this.radioButtonMap3ControllersAngle32768.Location = new System.Drawing.Point(9, 51);
+            this.radioButtonMap3ControllersAngle32768.Location = new System.Drawing.Point(9, 46);
             this.radioButtonMap3ControllersAngle32768.Name = "radioButtonMap3ControllersAngle32768";
             this.radioButtonMap3ControllersAngle32768.Size = new System.Drawing.Size(55, 17);
             this.radioButtonMap3ControllersAngle32768.TabIndex = 13;
@@ -12060,6 +12063,7 @@ namespace STROOP
             // 
             this.groupBoxMap3ControllersCenter.Controls.Add(this.textBoxMap3ControllersCenterCustom);
             this.groupBoxMap3ControllersCenter.Controls.Add(this.textBoxMap3ControllersCenterChange);
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.radioButtonMap3ControllersCenterMario);
             this.groupBoxMap3ControllersCenter.Controls.Add(this.radioButtonMap3ControllersCenterOrigin);
             this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterDownRight);
             this.groupBoxMap3ControllersCenter.Controls.Add(this.radioButtonMap3ControllersCenterBestFit);
@@ -12071,16 +12075,16 @@ namespace STROOP
             this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterDown);
             this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterUpRight);
             this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterUp);
-            this.groupBoxMap3ControllersCenter.Location = new System.Drawing.Point(3, 84);
+            this.groupBoxMap3ControllersCenter.Location = new System.Drawing.Point(3, 74);
             this.groupBoxMap3ControllersCenter.Name = "groupBoxMap3ControllersCenter";
-            this.groupBoxMap3ControllersCenter.Size = new System.Drawing.Size(337, 80);
+            this.groupBoxMap3ControllersCenter.Size = new System.Drawing.Size(337, 87);
             this.groupBoxMap3ControllersCenter.TabIndex = 38;
             this.groupBoxMap3ControllersCenter.TabStop = false;
             this.groupBoxMap3ControllersCenter.Text = "Center";
             // 
             // textBoxMap3ControllersCenterCustom
             // 
-            this.textBoxMap3ControllersCenterCustom.Location = new System.Drawing.Point(67, 50);
+            this.textBoxMap3ControllersCenterCustom.Location = new System.Drawing.Point(67, 61);
             this.textBoxMap3ControllersCenterCustom.Name = "textBoxMap3ControllersCenterCustom";
             this.textBoxMap3ControllersCenterCustom.Size = new System.Drawing.Size(117, 20);
             this.textBoxMap3ControllersCenterCustom.TabIndex = 34;
@@ -12089,17 +12093,27 @@ namespace STROOP
             // 
             // textBoxMap3ControllersCenterChange
             // 
-            this.textBoxMap3ControllersCenterChange.Location = new System.Drawing.Point(226, 33);
+            this.textBoxMap3ControllersCenterChange.Location = new System.Drawing.Point(226, 36);
             this.textBoxMap3ControllersCenterChange.Name = "textBoxMap3ControllersCenterChange";
             this.textBoxMap3ControllersCenterChange.Size = new System.Drawing.Size(66, 20);
             this.textBoxMap3ControllersCenterChange.TabIndex = 34;
             this.textBoxMap3ControllersCenterChange.Text = "100";
             this.textBoxMap3ControllersCenterChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // radioButtonMap3ControllersCenterMario
+            // 
+            this.radioButtonMap3ControllersCenterMario.AutoSize = true;
+            this.radioButtonMap3ControllersCenterMario.Location = new System.Drawing.Point(9, 46);
+            this.radioButtonMap3ControllersCenterMario.Name = "radioButtonMap3ControllersCenterMario";
+            this.radioButtonMap3ControllersCenterMario.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonMap3ControllersCenterMario.TabIndex = 12;
+            this.radioButtonMap3ControllersCenterMario.Text = "Mario";
+            this.radioButtonMap3ControllersCenterMario.UseVisualStyleBackColor = true;
+            // 
             // radioButtonMap3ControllersCenterOrigin
             // 
             this.radioButtonMap3ControllersCenterOrigin.AutoSize = true;
-            this.radioButtonMap3ControllersCenterOrigin.Location = new System.Drawing.Point(9, 33);
+            this.radioButtonMap3ControllersCenterOrigin.Location = new System.Drawing.Point(9, 30);
             this.radioButtonMap3ControllersCenterOrigin.Name = "radioButtonMap3ControllersCenterOrigin";
             this.radioButtonMap3ControllersCenterOrigin.Size = new System.Drawing.Size(52, 17);
             this.radioButtonMap3ControllersCenterOrigin.TabIndex = 12;
@@ -12110,7 +12124,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersCenterDownRight.BackgroundImage = global::STROOP.Properties.Resources.image_downright;
             this.buttonMap3ControllersCenterDownRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterDownRight.Location = new System.Drawing.Point(293, 55);
+            this.buttonMap3ControllersCenterDownRight.Location = new System.Drawing.Point(293, 58);
             this.buttonMap3ControllersCenterDownRight.Name = "buttonMap3ControllersCenterDownRight";
             this.buttonMap3ControllersCenterDownRight.Size = new System.Drawing.Size(25, 25);
             this.buttonMap3ControllersCenterDownRight.TabIndex = 39;
@@ -12120,7 +12134,7 @@ namespace STROOP
             // 
             this.radioButtonMap3ControllersCenterBestFit.AutoSize = true;
             this.radioButtonMap3ControllersCenterBestFit.Checked = true;
-            this.radioButtonMap3ControllersCenterBestFit.Location = new System.Drawing.Point(9, 15);
+            this.radioButtonMap3ControllersCenterBestFit.Location = new System.Drawing.Point(9, 14);
             this.radioButtonMap3ControllersCenterBestFit.Name = "radioButtonMap3ControllersCenterBestFit";
             this.radioButtonMap3ControllersCenterBestFit.Size = new System.Drawing.Size(60, 17);
             this.radioButtonMap3ControllersCenterBestFit.TabIndex = 11;
@@ -12132,7 +12146,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersCenterRight.BackgroundImage = global::STROOP.Properties.Resources.image_right;
             this.buttonMap3ControllersCenterRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterRight.Location = new System.Drawing.Point(293, 30);
+            this.buttonMap3ControllersCenterRight.Location = new System.Drawing.Point(293, 33);
             this.buttonMap3ControllersCenterRight.Name = "buttonMap3ControllersCenterRight";
             this.buttonMap3ControllersCenterRight.Size = new System.Drawing.Size(25, 25);
             this.buttonMap3ControllersCenterRight.TabIndex = 39;
@@ -12141,7 +12155,7 @@ namespace STROOP
             // radioButtonMap3ControllersCenterCustom
             // 
             this.radioButtonMap3ControllersCenterCustom.AutoSize = true;
-            this.radioButtonMap3ControllersCenterCustom.Location = new System.Drawing.Point(9, 51);
+            this.radioButtonMap3ControllersCenterCustom.Location = new System.Drawing.Point(9, 62);
             this.radioButtonMap3ControllersCenterCustom.Name = "radioButtonMap3ControllersCenterCustom";
             this.radioButtonMap3ControllersCenterCustom.Size = new System.Drawing.Size(63, 17);
             this.radioButtonMap3ControllersCenterCustom.TabIndex = 13;
@@ -12152,7 +12166,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersCenterUpLeft.BackgroundImage = global::STROOP.Properties.Resources.image_upleft;
             this.buttonMap3ControllersCenterUpLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterUpLeft.Location = new System.Drawing.Point(200, 5);
+            this.buttonMap3ControllersCenterUpLeft.Location = new System.Drawing.Point(200, 8);
             this.buttonMap3ControllersCenterUpLeft.Name = "buttonMap3ControllersCenterUpLeft";
             this.buttonMap3ControllersCenterUpLeft.Size = new System.Drawing.Size(25, 25);
             this.buttonMap3ControllersCenterUpLeft.TabIndex = 39;
@@ -12162,7 +12176,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersCenterLeft.BackgroundImage = global::STROOP.Properties.Resources.image_left;
             this.buttonMap3ControllersCenterLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterLeft.Location = new System.Drawing.Point(200, 30);
+            this.buttonMap3ControllersCenterLeft.Location = new System.Drawing.Point(200, 33);
             this.buttonMap3ControllersCenterLeft.Name = "buttonMap3ControllersCenterLeft";
             this.buttonMap3ControllersCenterLeft.Size = new System.Drawing.Size(25, 25);
             this.buttonMap3ControllersCenterLeft.TabIndex = 39;
@@ -12172,7 +12186,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersCenterDownLeft.BackgroundImage = global::STROOP.Properties.Resources.image_downleft;
             this.buttonMap3ControllersCenterDownLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterDownLeft.Location = new System.Drawing.Point(200, 55);
+            this.buttonMap3ControllersCenterDownLeft.Location = new System.Drawing.Point(200, 58);
             this.buttonMap3ControllersCenterDownLeft.Name = "buttonMap3ControllersCenterDownLeft";
             this.buttonMap3ControllersCenterDownLeft.Size = new System.Drawing.Size(25, 25);
             this.buttonMap3ControllersCenterDownLeft.TabIndex = 39;
@@ -12182,7 +12196,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersCenterDown.BackgroundImage = global::STROOP.Properties.Resources.image_down;
             this.buttonMap3ControllersCenterDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterDown.Location = new System.Drawing.Point(246, 55);
+            this.buttonMap3ControllersCenterDown.Location = new System.Drawing.Point(246, 58);
             this.buttonMap3ControllersCenterDown.Name = "buttonMap3ControllersCenterDown";
             this.buttonMap3ControllersCenterDown.Size = new System.Drawing.Size(25, 25);
             this.buttonMap3ControllersCenterDown.TabIndex = 39;
@@ -12192,7 +12206,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersCenterUpRight.BackgroundImage = global::STROOP.Properties.Resources.image_upright;
             this.buttonMap3ControllersCenterUpRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterUpRight.Location = new System.Drawing.Point(293, 5);
+            this.buttonMap3ControllersCenterUpRight.Location = new System.Drawing.Point(293, 8);
             this.buttonMap3ControllersCenterUpRight.Name = "buttonMap3ControllersCenterUpRight";
             this.buttonMap3ControllersCenterUpRight.Size = new System.Drawing.Size(25, 25);
             this.buttonMap3ControllersCenterUpRight.TabIndex = 39;
@@ -12202,7 +12216,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersCenterUp.BackgroundImage = global::STROOP.Properties.Resources.image_up;
             this.buttonMap3ControllersCenterUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterUp.Location = new System.Drawing.Point(246, 5);
+            this.buttonMap3ControllersCenterUp.Location = new System.Drawing.Point(246, 8);
             this.buttonMap3ControllersCenterUp.Name = "buttonMap3ControllersCenterUp";
             this.buttonMap3ControllersCenterUp.Size = new System.Drawing.Size(25, 25);
             this.buttonMap3ControllersCenterUp.TabIndex = 39;
@@ -12222,14 +12236,14 @@ namespace STROOP
             this.groupBoxMap3ControllersScale.Controls.Add(this.buttonMap3ControllersScalePlus);
             this.groupBoxMap3ControllersScale.Location = new System.Drawing.Point(3, 3);
             this.groupBoxMap3ControllersScale.Name = "groupBoxMap3ControllersScale";
-            this.groupBoxMap3ControllersScale.Size = new System.Drawing.Size(337, 80);
+            this.groupBoxMap3ControllersScale.Size = new System.Drawing.Size(337, 70);
             this.groupBoxMap3ControllersScale.TabIndex = 38;
             this.groupBoxMap3ControllersScale.TabStop = false;
             this.groupBoxMap3ControllersScale.Text = "Scale";
             // 
             // textBoxMap3ControllersScaleCustom
             // 
-            this.textBoxMap3ControllersScaleCustom.Location = new System.Drawing.Point(67, 50);
+            this.textBoxMap3ControllersScaleCustom.Location = new System.Drawing.Point(67, 45);
             this.textBoxMap3ControllersScaleCustom.Name = "textBoxMap3ControllersScaleCustom";
             this.textBoxMap3ControllersScaleCustom.Size = new System.Drawing.Size(117, 20);
             this.textBoxMap3ControllersScaleCustom.TabIndex = 34;
@@ -12238,7 +12252,7 @@ namespace STROOP
             // 
             // textBoxMap3ControllersScaleChange2
             // 
-            this.textBoxMap3ControllersScaleChange2.Location = new System.Drawing.Point(226, 48);
+            this.textBoxMap3ControllersScaleChange2.Location = new System.Drawing.Point(226, 42);
             this.textBoxMap3ControllersScaleChange2.Name = "textBoxMap3ControllersScaleChange2";
             this.textBoxMap3ControllersScaleChange2.Size = new System.Drawing.Size(66, 20);
             this.textBoxMap3ControllersScaleChange2.TabIndex = 34;
@@ -12247,7 +12261,7 @@ namespace STROOP
             // 
             // textBoxMap3ControllersScaleChange
             // 
-            this.textBoxMap3ControllersScaleChange.Location = new System.Drawing.Point(226, 19);
+            this.textBoxMap3ControllersScaleChange.Location = new System.Drawing.Point(226, 16);
             this.textBoxMap3ControllersScaleChange.Name = "textBoxMap3ControllersScaleChange";
             this.textBoxMap3ControllersScaleChange.Size = new System.Drawing.Size(66, 20);
             this.textBoxMap3ControllersScaleChange.TabIndex = 34;
@@ -12257,7 +12271,7 @@ namespace STROOP
             // radioButtonMap3ControllersScaleMaxCourseSize
             // 
             this.radioButtonMap3ControllersScaleMaxCourseSize.AutoSize = true;
-            this.radioButtonMap3ControllersScaleMaxCourseSize.Location = new System.Drawing.Point(9, 33);
+            this.radioButtonMap3ControllersScaleMaxCourseSize.Location = new System.Drawing.Point(9, 30);
             this.radioButtonMap3ControllersScaleMaxCourseSize.Name = "radioButtonMap3ControllersScaleMaxCourseSize";
             this.radioButtonMap3ControllersScaleMaxCourseSize.Size = new System.Drawing.Size(104, 17);
             this.radioButtonMap3ControllersScaleMaxCourseSize.TabIndex = 12;
@@ -12268,7 +12282,7 @@ namespace STROOP
             // 
             this.radioButtonMap3ControllersScaleCourseDefault.AutoSize = true;
             this.radioButtonMap3ControllersScaleCourseDefault.Checked = true;
-            this.radioButtonMap3ControllersScaleCourseDefault.Location = new System.Drawing.Point(9, 15);
+            this.radioButtonMap3ControllersScaleCourseDefault.Location = new System.Drawing.Point(9, 14);
             this.radioButtonMap3ControllersScaleCourseDefault.Name = "radioButtonMap3ControllersScaleCourseDefault";
             this.radioButtonMap3ControllersScaleCourseDefault.Size = new System.Drawing.Size(95, 17);
             this.radioButtonMap3ControllersScaleCourseDefault.TabIndex = 11;
@@ -12280,7 +12294,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersScaleDivide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMap3ControllersScaleDivide.BackgroundImage")));
             this.buttonMap3ControllersScaleDivide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersScaleDivide.Location = new System.Drawing.Point(200, 45);
+            this.buttonMap3ControllersScaleDivide.Location = new System.Drawing.Point(200, 39);
             this.buttonMap3ControllersScaleDivide.Name = "buttonMap3ControllersScaleDivide";
             this.buttonMap3ControllersScaleDivide.Size = new System.Drawing.Size(25, 25);
             this.buttonMap3ControllersScaleDivide.TabIndex = 39;
@@ -12290,7 +12304,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersScaleMinus.BackgroundImage = global::STROOP.Properties.Resources.image_minus;
             this.buttonMap3ControllersScaleMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersScaleMinus.Location = new System.Drawing.Point(200, 16);
+            this.buttonMap3ControllersScaleMinus.Location = new System.Drawing.Point(200, 13);
             this.buttonMap3ControllersScaleMinus.Name = "buttonMap3ControllersScaleMinus";
             this.buttonMap3ControllersScaleMinus.Size = new System.Drawing.Size(25, 25);
             this.buttonMap3ControllersScaleMinus.TabIndex = 39;
@@ -12299,7 +12313,7 @@ namespace STROOP
             // radioButtonMap3ControllersScaleCustom
             // 
             this.radioButtonMap3ControllersScaleCustom.AutoSize = true;
-            this.radioButtonMap3ControllersScaleCustom.Location = new System.Drawing.Point(9, 51);
+            this.radioButtonMap3ControllersScaleCustom.Location = new System.Drawing.Point(9, 46);
             this.radioButtonMap3ControllersScaleCustom.Name = "radioButtonMap3ControllersScaleCustom";
             this.radioButtonMap3ControllersScaleCustom.Size = new System.Drawing.Size(63, 17);
             this.radioButtonMap3ControllersScaleCustom.TabIndex = 13;
@@ -12310,7 +12324,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersScaleTimes.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMap3ControllersScaleTimes.BackgroundImage")));
             this.buttonMap3ControllersScaleTimes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersScaleTimes.Location = new System.Drawing.Point(293, 45);
+            this.buttonMap3ControllersScaleTimes.Location = new System.Drawing.Point(293, 39);
             this.buttonMap3ControllersScaleTimes.Name = "buttonMap3ControllersScaleTimes";
             this.buttonMap3ControllersScaleTimes.Size = new System.Drawing.Size(25, 25);
             this.buttonMap3ControllersScaleTimes.TabIndex = 39;
@@ -12320,7 +12334,7 @@ namespace STROOP
             // 
             this.buttonMap3ControllersScalePlus.BackgroundImage = global::STROOP.Properties.Resources.image_plus;
             this.buttonMap3ControllersScalePlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersScalePlus.Location = new System.Drawing.Point(293, 16);
+            this.buttonMap3ControllersScalePlus.Location = new System.Drawing.Point(293, 13);
             this.buttonMap3ControllersScalePlus.Name = "buttonMap3ControllersScalePlus";
             this.buttonMap3ControllersScalePlus.Size = new System.Drawing.Size(25, 25);
             this.buttonMap3ControllersScalePlus.TabIndex = 39;
@@ -12754,7 +12768,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 779;
+            this.splitContainerMemory.SplitterDistance = 788;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12795,7 +12809,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(779, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(788, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -13012,7 +13026,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(779, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(788, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -13041,7 +13055,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(678, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(687, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -13054,7 +13068,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(127, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(118, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -14208,7 +14222,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(85, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(34, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -14240,7 +14254,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(79, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(28, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -14296,7 +14310,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(79, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(28, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -18892,7 +18906,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -20076,7 +20090,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(60, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(63, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -20711,6 +20725,16 @@ namespace STROOP
             this.trackBarObjSlotSize.TickFrequency = 10;
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
+            // 
+            // radioButtonMap3ControllersAngleMario
+            // 
+            this.radioButtonMap3ControllersAngleMario.AutoSize = true;
+            this.radioButtonMap3ControllersAngleMario.Location = new System.Drawing.Point(9, 78);
+            this.radioButtonMap3ControllersAngleMario.Name = "radioButtonMap3ControllersAngleMario";
+            this.radioButtonMap3ControllersAngleMario.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonMap3ControllersAngleMario.TabIndex = 12;
+            this.radioButtonMap3ControllersAngleMario.Text = "Mario";
+            this.radioButtonMap3ControllersAngleMario.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -22870,6 +22894,8 @@ namespace STROOP
         private Button buttonSearchUndoScan;
         private Button buttonSearchClearResults;
         private Label labelSearchProgress;
+        private RadioButton radioButtonMap3ControllersCenterMario;
+        private RadioButton radioButtonMap3ControllersAngleMario;
     }
 }
 
