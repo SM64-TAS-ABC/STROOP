@@ -73,6 +73,7 @@ namespace STROOP.Map3
         // Controllers - Center - Left
         public RadioButton radioButtonMap3ControllersCenterBestFit;
         public RadioButton radioButtonMap3ControllersCenterOrigin;
+        public RadioButton radioButtonMap3ControllersCenterMario;
         public RadioButton radioButtonMap3ControllersCenterCustom;
         public BetterTextbox textBoxMap3ControllersCenterCustom;
 
@@ -96,6 +97,7 @@ namespace STROOP.Map3
         public RadioButton radioButtonMap3ControllersAngle16384;
         public RadioButton radioButtonMap3ControllersAngle32768;
         public RadioButton radioButtonMap3ControllersAngle49152;
+        public RadioButton radioButtonMap3ControllersAngleMario;
         public RadioButton radioButtonMap3ControllersAngleCustom;
         public BetterTextbox textBoxMap3ControllersAngleCustom;
 

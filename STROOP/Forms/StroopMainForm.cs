@@ -348,6 +348,7 @@ namespace STROOP
 
                 radioButtonMap3ControllersCenterBestFit = radioButtonMap3ControllersCenterBestFit,
                 radioButtonMap3ControllersCenterOrigin = radioButtonMap3ControllersCenterOrigin,
+                radioButtonMap3ControllersCenterMario = radioButtonMap3ControllersCenterMario,
                 radioButtonMap3ControllersCenterCustom = radioButtonMap3ControllersCenterCustom,
                 textBoxMap3ControllersCenterCustom = textBoxMap3ControllersCenterCustom,
 
@@ -365,6 +366,7 @@ namespace STROOP
                 radioButtonMap3ControllersAngle16384 = radioButtonMap3ControllersAngle16384,
                 radioButtonMap3ControllersAngle32768 = radioButtonMap3ControllersAngle32768,
                 radioButtonMap3ControllersAngle49152 = radioButtonMap3ControllersAngle49152,
+                radioButtonMap3ControllersAngleMario = radioButtonMap3ControllersAngleMario,
                 radioButtonMap3ControllersAngleCustom = radioButtonMap3ControllersAngleCustom,
                 textBoxMap3ControllersAngleCustom = textBoxMap3ControllersAngleCustom,
 

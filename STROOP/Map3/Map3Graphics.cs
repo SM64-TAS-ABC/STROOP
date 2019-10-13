@@ -19,8 +19,8 @@ namespace STROOP.Map3
     public class Map3Graphics
     {
         private enum Map3Scale { CourseDefault, MaxCourseSize, Custom };
-        private enum Map3Center { BestFit, Origin, Custom };
-        private enum Map3Angle { Angle0, Angle16384, Angle32768, Angle49152, Custom };
+        private enum Map3Center { BestFit, Origin, Mario, Custom };
+        private enum Map3Angle { Angle0, Angle16384, Angle32768, Angle49152, Mario, Custom };
 
         private Map3Scale MapViewScale;
         private Map3Center MapViewCenter;
@@ -170,6 +170,8 @@ namespace STROOP.Map3
                 MapViewCenter = Map3Center.BestFit;
             else if (Config.Map3Gui.radioButtonMap3ControllersCenterOrigin.Checked)
                 MapViewCenter = Map3Center.Origin;
+            else if (Config.Map3Gui.radioButtonMap3ControllersCenterMario.Checked)
+                MapViewCenter = Map3Center.Mario;
             else
                 MapViewCenter = Map3Center.Custom;
 
@@ -182,8 +184,12 @@ namespace STROOP.Map3
                     MapViewCenterZValue = rectangle.Y + rectangle.Height / 2;
                     break;
                 case Map3Center.Origin:
-                    MapViewCenterXValue = 0;
-                    MapViewCenterZValue = 0;
+                    MapViewCenterXValue = 0.5f;
+                    MapViewCenterZValue = 0.5f;
+                    break;
+                case Map3Center.Mario:
+                    MapViewCenterXValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    MapViewCenterZValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     break;
                 case Map3Center.Custom:
                     List<string> stringValues = ParsingUtilities.ParseStringList(
@@ -222,6 +228,8 @@ namespace STROOP.Map3
                 MapViewAngle = Map3Angle.Angle32768;
             else if (Config.Map3Gui.radioButtonMap3ControllersAngle49152.Checked)
                 MapViewAngle = Map3Angle.Angle49152;
+            else if (Config.Map3Gui.radioButtonMap3ControllersAngleMario.Checked)
+                MapViewAngle = Map3Angle.Mario;
             else
                 MapViewAngle = Map3Angle.Custom;
 
@@ -238,6 +246,9 @@ namespace STROOP.Map3
                     break;
                 case Map3Angle.Angle49152:
                     MapViewAngleValue = 49152;
+                    break;
+                case Map3Angle.Mario:
+                    MapViewAngleValue = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     break;
                 case Map3Angle.Custom:
                     MapViewAngleValue = ParsingUtilities.ParseFloatNullable(
