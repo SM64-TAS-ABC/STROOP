@@ -256,6 +256,14 @@ namespace STROOP.Models
             };
         }
 
+        public double GetDistToMidpoint()
+        {
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            return MoreMath.GetDistanceBetween(marioX, marioY, marioZ, GetMidpointX(), GetMidpointY(), GetMidpointZ());
+        }
+
         public int GetClosestVertex()
         {
             float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);

@@ -24,13 +24,55 @@ namespace STROOP.Forms
             _levelTriangleObject = levelTriangleObject;
             _triAddressList = triAddressList;
 
-            FormClosing += (sender, e) => TriangleListFormClosing();
             Text = classification + " Triangle List";
+            FormClosing += (sender, e) => TriangleListFormClosing();
+            buttonSort.Click += (sender, e) => Sort();
+            buttonAnnihilate.Click += (sender, e) => Annihilate();
+            buttonInject.Click += (sender, e) => Inject();
+            buttonRemove.Click += (sender, e) => Remove();
+
+            Sort();
         }
 
         private void TriangleListFormClosing()
         {
             _levelTriangleObject.NullifyTriangleListForm();
+        }
+
+        private void Sort()
+        {
+            dataGridView.Rows.Clear();
+            List<(uint address, double dist)> dataList =_triAddressList.ConvertAll(address =>
+            {
+                TriangleDataModel tri = new TriangleDataModel(address);
+                double dist = tri.GetDistToMidpoint();
+                return (address, dist);
+            });
+            Enumerable.OrderBy(dataList, data => data.dist);
+            dataList.ForEach(data =>
+            {
+                dataGridView.Rows.Add(HexUtilities.FormatValue(data.address), data.dist);
+            });
+        }
+
+        private void Annihilate()
+        {
+
+        }
+
+        private void Inject()
+        {
+
+        }
+
+        private void Remove()
+        {
+
+        }
+
+        public void RefreshDataGridViewAfterRemoval()
+        {
+
         }
     }
 }
