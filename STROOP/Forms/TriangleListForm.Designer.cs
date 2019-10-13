@@ -33,15 +33,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TriangleListForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridViewSearch = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonSort = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.buttonAnnihilate = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Distance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelNumTriangles = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -50,11 +50,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.Controls.Add(this.button3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridViewSearch, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonSort, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonRemove, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonAnnihilate, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.labelNumTriangles, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -66,25 +66,43 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(325, 181);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // label1
+            // buttonSort
             // 
-            this.label1.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.label1, 3);
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(319, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Num Triangles";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.buttonSort.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSort.Location = new System.Drawing.Point(3, 33);
+            this.buttonSort.Name = "buttonSort";
+            this.buttonSort.Size = new System.Drawing.Size(102, 24);
+            this.buttonSort.TabIndex = 8;
+            this.buttonSort.Text = "Sort";
+            this.buttonSort.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewSearch
+            // buttonRemove
             // 
-            this.dataGridViewSearch.AllowUserToAddRows = false;
-            this.dataGridViewSearch.AllowUserToDeleteRows = false;
-            this.dataGridViewSearch.AllowUserToOrderColumns = true;
-            this.dataGridViewSearch.AllowUserToResizeRows = false;
-            this.dataGridViewSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.buttonRemove.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonRemove.Location = new System.Drawing.Point(219, 33);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(103, 24);
+            this.buttonRemove.TabIndex = 7;
+            this.buttonRemove.Text = "Remove";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            // 
+            // buttonAnnihilate
+            // 
+            this.buttonAnnihilate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAnnihilate.Location = new System.Drawing.Point(111, 33);
+            this.buttonAnnihilate.Name = "buttonAnnihilate";
+            this.buttonAnnihilate.Size = new System.Drawing.Size(102, 24);
+            this.buttonAnnihilate.TabIndex = 6;
+            this.buttonAnnihilate.Text = "Annihilate";
+            this.buttonAnnihilate.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToOrderColumns = true;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -92,49 +110,19 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Address,
             this.Distance});
-            this.tableLayoutPanel1.SetColumnSpan(this.dataGridViewSearch, 3);
-            this.dataGridViewSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewSearch.Location = new System.Drawing.Point(0, 60);
-            this.dataGridViewSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridViewSearch.Name = "dataGridViewSearch";
-            this.dataGridViewSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSearch.Size = new System.Drawing.Size(325, 121);
-            this.dataGridViewSearch.TabIndex = 5;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(111, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 24);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Annihilate";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(219, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 24);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Remove";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(3, 33);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 24);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Sort";
-            this.button3.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView, 3);
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.Location = new System.Drawing.Point(0, 60);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(325, 121);
+            this.dataGridView.TabIndex = 5;
             // 
             // Address
             // 
@@ -154,6 +142,18 @@
             this.Distance.Name = "Distance";
             this.Distance.ReadOnly = true;
             // 
+            // labelNumTriangles
+            // 
+            this.labelNumTriangles.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.labelNumTriangles, 3);
+            this.labelNumTriangles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelNumTriangles.Location = new System.Drawing.Point(3, 0);
+            this.labelNumTriangles.Name = "labelNumTriangles";
+            this.labelNumTriangles.Size = new System.Drawing.Size(319, 30);
+            this.labelNumTriangles.TabIndex = 0;
+            this.labelNumTriangles.Text = "Num Triangles";
+            this.labelNumTriangles.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // TriangleListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,7 +169,7 @@
             this.Text = "Triangle List";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -177,11 +177,11 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridViewSearch;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelNumTriangles;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Button buttonSort;
+        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Button buttonAnnihilate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn Distance;
     }
