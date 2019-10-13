@@ -48,7 +48,7 @@ namespace STROOP.Managers
             refreshButtonRoot.Click += RefreshButton_Click;
             refreshButtonObject.Click += RefreshButtonObject_Click;
             dumpButton.Click += DumpButton_Click;
-            hitboxViewButton.Click += HitboxView_Click;
+            hitboxViewButton.Click += (sender, e) => InjectHitboxViewCode();
             _tabControl = tabControl;
 
             foreach (WatchVariableControlPrecursor precursor in GfxNode.GetCommonVariables())
@@ -65,7 +65,7 @@ namespace STROOP.Managers
         // and it's put here in the GFX tab by a lack of a better place. The hacks in the hack tab are
         // constantly reapplied when memory is changed, which doesn't work with this hack which initializes 
         // variables that are later changed.
-        public static void HitboxView_Click(object sender, EventArgs args)
+        public void InjectHitboxViewCode()
         {
             RomHack hck = null;
             try

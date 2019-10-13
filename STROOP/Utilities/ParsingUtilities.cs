@@ -12,8 +12,9 @@ namespace STROOP.Utilities
     public static class ParsingUtilities
     {
 
-        public static uint ParseHex(string str)
+        public static uint ParseHex(object obj)
         {
+            string str = obj.ToString();
             int prefixPos = str.IndexOf("0x");
             if (prefixPos == -1)
                 return uint.Parse(str, NumberStyles.HexNumber);

@@ -1,6 +1,7 @@
 ﻿using STROOP.Map3;
 using STROOP.Models;
 using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,7 @@ namespace STROOP.Forms
                 double dist = tri.GetDistToMidpoint();
                 return (address, dist);
             });
-            Enumerable.OrderBy(dataList, data => data.dist);
+            dataList = Enumerable.OrderBy(dataList, data => data.dist).ToList();
             dataList.ForEach(data =>
             {
                 dataGridView.Rows.Add(HexUtilities.FormatValue(data.address), data.dist);
@@ -57,22 +58,41 @@ namespace STROOP.Forms
 
         private void Annihilate()
         {
-
+            List<DataGridViewRow> rows = ControlUtilities.GetTableSelectedRows(dataGridView);
+            rows.ForEach(row =>
+            {
+                uint address = ParsingUtilities.ParseHex(row.Cells[0].Value);
+                ButtonUtilities.AnnihilateTriangle(address);
+            });
         }
 
         private void Inject()
         {
-
+            Config.GfxManager.InjectHitboxViewCode();
         }
 
         private void Remove()
         {
-
+            List<DataGridViewRow> rows = ControlUtilities.GetTableSelectedRows(dataGridView);
+            rows.ForEach(row =>
+            {
+                uint address = ParsingUtilities.ParseHex(row.Cells[0].Value);
+                _triAddressList.Remove(address);
+            });
+            RefreshDataGridViewAfterRemoval();
         }
 
         public void RefreshDataGridViewAfterRemoval()
         {
-
+            List<DataGridViewRow> rows = ControlUtilities.GetTableAllRows(dataGridView);
+            rows.ForEach(row =>
+            {
+                uint address = ParsingUtilities.ParseHex(row.Cells[0].Value);
+                if (!_triAddressList.Contains(address))
+                {
+                    dataGridView.Rows.Remove(row);
+                }
+            });
         }
     }
 }
