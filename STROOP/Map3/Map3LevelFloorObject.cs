@@ -13,13 +13,15 @@ using OpenTK;
 using System.Drawing.Imaging;
 using STROOP.Models;
 using System.Windows.Forms;
+using STROOP.Forms;
 
 namespace STROOP.Map3
 {
-    public class Map3LevelFloorObject : Map3TriangleObject
+    public class Map3LevelFloorObject : Map3TriangleObject, Map3LevelTriangleObjectI
     {
         private List<uint> _triAddressList;
         private bool _removeCurrentTri;
+        private TriangleListForm _triangleListForm;
 
         public Map3LevelFloorObject()
             : base()
@@ -28,6 +30,7 @@ namespace STROOP.Map3
                 .FindAll(tri => tri.IsFloor())
                 .ConvertAll(tri => tri.Address);
             _removeCurrentTri = false;
+            _triangleListForm = null;
 
             Opacity = 0.5;
             Color = Color.Blue;
@@ -65,13 +68,27 @@ namespace STROOP.Map3
                     TriangleUtilities.ShowTriangles(tris);
                 };
 
+                ToolStripMenuItem itemOpenForm = new ToolStripMenuItem("Open Form");
+                itemOpenForm.Click += (sender, e) =>
+                {
+                    if (_triangleListForm != null) return;
+                    _triangleListForm = new TriangleListForm(this, TriangleClassification.Floor);
+                    _triangleListForm.Show();
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemReset);
                 _contextMenuStrip.Items.Add(itemRemoveCurrentTri);
                 _contextMenuStrip.Items.Add(itemShowTriData);
+                _contextMenuStrip.Items.Add(itemOpenForm);
             }
 
             return _contextMenuStrip;
+        }
+
+        public void NullifyTriangleListForm()
+        {
+            _triangleListForm = null;
         }
 
         public override void Update()
