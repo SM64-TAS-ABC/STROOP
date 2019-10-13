@@ -65,7 +65,7 @@ namespace STROOP.Managers
         // and it's put here in the GFX tab by a lack of a better place. The hacks in the hack tab are
         // constantly reapplied when memory is changed, which doesn't work with this hack which initializes 
         // variables that are later changed.
-        private void HitboxView_Click(object sender, EventArgs args)
+        public static void HitboxView_Click(object sender, EventArgs args)
         {
             RomHack hck = null;
             try
