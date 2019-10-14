@@ -352,6 +352,7 @@ namespace STROOP
                 radioButtonMap3ControllersCenterCustom = radioButtonMap3ControllersCenterCustom,
                 textBoxMap3ControllersCenterCustom = textBoxMap3ControllersCenterCustom,
 
+                checkBoxMap3ControllersCenterChangeByPixels = checkBoxMap3ControllersCenterChangeByPixels,
                 textBoxMap3ControllersCenterChange = textBoxMap3ControllersCenterChange,
                 buttonMap3ControllersCenterUp = buttonMap3ControllersCenterUp,
                 buttonMap3ControllersCenterUpRight = buttonMap3ControllersCenterUpRight,

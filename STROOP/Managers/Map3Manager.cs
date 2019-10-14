@@ -240,6 +240,8 @@ namespace STROOP.Managers
                 Config.Map3Graphics.MapViewEnablePuView = Config.Map3Gui.checkBoxMap3OptionsEnablePuView.Checked;
             Config.Map3Gui.checkBoxMap3OptionsScaleIconSizes.Click += (sender, e) =>
                 Config.Map3Graphics.MapViewScaleIconSizes = Config.Map3Gui.checkBoxMap3OptionsScaleIconSizes.Checked;
+            Config.Map3Gui.checkBoxMap3ControllersCenterChangeByPixels.Click += (sender, e) =>
+                Config.Map3Graphics.MapViewCenterChangeByPixels = Config.Map3Gui.checkBoxMap3ControllersCenterChangeByPixels.Checked;
 
             // Global Icon Size
             Config.Map3Gui.textBoxMap3OptionsGlobalIconSize.AddEnterAction(() =>

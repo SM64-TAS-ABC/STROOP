@@ -78,6 +78,7 @@ namespace STROOP.Map3
         public BetterTextbox textBoxMap3ControllersCenterCustom;
 
         // Controllers - Center - Right
+        public CheckBox checkBoxMap3ControllersCenterChangeByPixels;
         public BetterTextbox textBoxMap3ControllersCenterChange;
         public Button buttonMap3ControllersCenterUp;
         public Button buttonMap3ControllersCenterUpRight;

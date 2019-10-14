@@ -1604,6 +1604,7 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.radioButtonMap3ControllersAngleCamera = new System.Windows.Forms.RadioButton();
             this.radioButtonMap3ControllersAngleCentripetal = new System.Windows.Forms.RadioButton();
+            this.checkBoxMap3ControllersCenterChangeByPixels = new System.Windows.Forms.CheckBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -12075,6 +12076,7 @@ namespace STROOP
             // 
             // groupBoxMap3ControllersCenter
             // 
+            this.groupBoxMap3ControllersCenter.Controls.Add(this.checkBoxMap3ControllersCenterChangeByPixels);
             this.groupBoxMap3ControllersCenter.Controls.Add(this.textBoxMap3ControllersCenterCustom);
             this.groupBoxMap3ControllersCenter.Controls.Add(this.textBoxMap3ControllersCenterChange);
             this.groupBoxMap3ControllersCenter.Controls.Add(this.radioButtonMap3ControllersCenterMario);
@@ -20760,6 +20762,18 @@ namespace STROOP
             this.radioButtonMap3ControllersAngleCentripetal.Text = "Centripetal";
             this.radioButtonMap3ControllersAngleCentripetal.UseVisualStyleBackColor = true;
             // 
+            // checkBoxMap3ControllersCenterChangeByPixels
+            // 
+            this.checkBoxMap3ControllersCenterChangeByPixels.AutoSize = true;
+            this.checkBoxMap3ControllersCenterChangeByPixels.Checked = true;
+            this.checkBoxMap3ControllersCenterChangeByPixels.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMap3ControllersCenterChangeByPixels.Location = new System.Drawing.Point(91, 15);
+            this.checkBoxMap3ControllersCenterChangeByPixels.Name = "checkBoxMap3ControllersCenterChangeByPixels";
+            this.checkBoxMap3ControllersCenterChangeByPixels.Size = new System.Drawing.Size(107, 17);
+            this.checkBoxMap3ControllersCenterChangeByPixels.TabIndex = 40;
+            this.checkBoxMap3ControllersCenterChangeByPixels.Text = "Change by Pixels";
+            this.checkBoxMap3ControllersCenterChangeByPixels.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -22922,6 +22936,7 @@ namespace STROOP
         private RadioButton radioButtonMap3ControllersAngleMario;
         private RadioButton radioButtonMap3ControllersAngleCentripetal;
         private RadioButton radioButtonMap3ControllersAngleCamera;
+        private CheckBox checkBoxMap3ControllersCenterChangeByPixels;
     }
 }
 

@@ -39,6 +39,7 @@ namespace STROOP.Map3
 
         public bool MapViewEnablePuView = false;
         public bool MapViewScaleIconSizes = false;
+        public bool MapViewCenterChangeByPixels = true;
 
         public float MapViewRadius { get => (float)MoreMath.GetHypotenuse(
             Config.Map3Gui.GLControl.Width / 2, Config.Map3Gui.GLControl.Height / 2) / MapViewScaleValue; }
@@ -301,8 +302,9 @@ namespace STROOP.Map3
             float zOffset = zSign * parsed.Value;
             (float xOffsetRotated, float zOffsetRotated) = ((float, float)) MoreMath.RotatePointAboutPointAnAngularDistance(
                 xOffset, zOffset, 0, 0, Config.Map3Graphics.MapViewAngleValue);
-            float newCenterXValue = MapViewCenterXValue + xOffsetRotated;
-            float newCenterZValue = MapViewCenterZValue + zOffsetRotated;
+            float multiplier = MapViewCenterChangeByPixels ? 1 / MapViewScaleValue : 1;
+            float newCenterXValue = MapViewCenterXValue + xOffsetRotated * multiplier;
+            float newCenterZValue = MapViewCenterZValue + zOffsetRotated * multiplier;
             Config.Map3Gui.textBoxMap3ControllersCenterCustom.SubmitText(newCenterXValue + "," + newCenterZValue);
         }
 
