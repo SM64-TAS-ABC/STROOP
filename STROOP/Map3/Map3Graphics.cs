@@ -193,6 +193,14 @@ namespace STROOP.Map3
                     MapViewCenterZValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     break;
                 case Map3Center.Custom:
+                    PositionAngle posAngle = PositionAngle.FromString(
+                        Config.Map3Gui.textBoxMap3ControllersCenterCustom.LastSubmittedText);
+                    if (posAngle != null)
+                    {
+                        MapViewCenterXValue = (float)posAngle.X;
+                        MapViewCenterZValue = (float)posAngle.Z;
+                        break;
+                    }
                     List<string> stringValues = ParsingUtilities.ParseStringList(
                         Config.Map3Gui.textBoxMap3ControllersCenterCustom.LastSubmittedText);
                     if (stringValues.Count >= 2)
@@ -263,6 +271,13 @@ namespace STROOP.Map3
                         Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset));
                     break;
                 case Map3Angle.Custom:
+                    PositionAngle posAngle = PositionAngle.FromString(
+                        Config.Map3Gui.textBoxMap3ControllersAngleCustom.LastSubmittedText);
+                    if (posAngle != null)
+                    {
+                        MapViewAngleValue = (float)posAngle.Angle;
+                        break;
+                    }
                     MapViewAngleValue = ParsingUtilities.ParseFloatNullable(
                         Config.Map3Gui.textBoxMap3ControllersAngleCustom.LastSubmittedText)
                         ?? DEFAULT_MAP_VIEW_ANGLE_VALUE;
