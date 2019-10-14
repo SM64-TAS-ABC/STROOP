@@ -367,6 +367,8 @@ namespace STROOP
                 radioButtonMap3ControllersAngle32768 = radioButtonMap3ControllersAngle32768,
                 radioButtonMap3ControllersAngle49152 = radioButtonMap3ControllersAngle49152,
                 radioButtonMap3ControllersAngleMario = radioButtonMap3ControllersAngleMario,
+                radioButtonMap3ControllersAngleCamera = radioButtonMap3ControllersAngleCamera,
+                radioButtonMap3ControllersAngleCentripetal = radioButtonMap3ControllersAngleCentripetal,
                 radioButtonMap3ControllersAngleCustom = radioButtonMap3ControllersAngleCustom,
                 textBoxMap3ControllersAngleCustom = textBoxMap3ControllersAngleCustom,
 

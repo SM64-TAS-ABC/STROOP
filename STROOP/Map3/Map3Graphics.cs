@@ -20,7 +20,7 @@ namespace STROOP.Map3
     {
         private enum Map3Scale { CourseDefault, MaxCourseSize, Custom };
         private enum Map3Center { BestFit, Origin, Mario, Custom };
-        private enum Map3Angle { Angle0, Angle16384, Angle32768, Angle49152, Mario, Custom };
+        private enum Map3Angle { Angle0, Angle16384, Angle32768, Angle49152, Mario, Camera, Centripetal, Custom };
 
         private Map3Scale MapViewScale;
         private Map3Center MapViewCenter;
@@ -230,6 +230,10 @@ namespace STROOP.Map3
                 MapViewAngle = Map3Angle.Angle49152;
             else if (Config.Map3Gui.radioButtonMap3ControllersAngleMario.Checked)
                 MapViewAngle = Map3Angle.Mario;
+            else if (Config.Map3Gui.radioButtonMap3ControllersAngleCamera.Checked)
+                MapViewAngle = Map3Angle.Camera;
+            else if (Config.Map3Gui.radioButtonMap3ControllersAngleCentripetal.Checked)
+                MapViewAngle = Map3Angle.Centripetal;
             else
                 MapViewAngle = Map3Angle.Custom;
 
@@ -249,6 +253,13 @@ namespace STROOP.Map3
                     break;
                 case Map3Angle.Mario:
                     MapViewAngleValue = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    break;
+                case Map3Angle.Camera:
+                    MapViewAngleValue = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+                    break;
+                case Map3Angle.Centripetal:
+                    MapViewAngleValue = (float)MoreMath.ReverseAngle(
+                        Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset));
                     break;
                 case Map3Angle.Custom:
                     MapViewAngleValue = ParsingUtilities.ParseFloatNullable(
