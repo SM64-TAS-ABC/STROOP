@@ -142,12 +142,12 @@
   </Map>
   <Map name="Hazy Maze Cave" id="06A" level="7" area="1">
     <Image path="HMC 1.png"/>
-    <Coordinates x1="-8089" x2="7680" z1="-8191" z2="8064"/>
+    <Coordinates x1="-8089" x2="7578" z1="-8191" z2="8064"/>
     <BackgroundImage name="Black Background"/>
   </Map>
   <Map name="Hazy Maze Cave" id="06B" level="7" area="1">
     <Image path="HMC 2.png"/>
-    <Coordinates x1="-8089" x2="7680" z1="-8191" z2="8064" y="-1023"/>
+    <Coordinates x1="-8089" x2="7578" z1="-8191" z2="8064" y="-1023"/>
     <BackgroundImage name="Black Background"/>
   </Map>
   <Map name="Lethal Lava Land" id="07A" level="22" area="1">
