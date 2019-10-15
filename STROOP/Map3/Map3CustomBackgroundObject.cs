@@ -10,6 +10,8 @@ using STROOP.Utilities;
 using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
+using System.Windows.Forms;
+using STROOP.Forms;
 
 namespace STROOP.Map3
 {
@@ -40,6 +42,32 @@ namespace STROOP.Map3
         public override string GetName()
         {
             return "Custom Background";
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                List<BackgroundImage> backgroundImages = Config.MapAssociations.GetAllBackgroundImages();
+                List<object> backgroundImageChoices = new List<object>() { "Recommended" };
+                backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
+
+                ToolStripMenuItem itemSelectMap = new ToolStripMenuItem("Select Background");
+                itemSelectMap.Click += (sender, e) =>
+                {
+                    SelectionForm form = new SelectionForm();
+                    form.Initialize(
+                        "Select a Background",
+                        "Set Background",
+                        backgroundImageChoices,
+                        backgroundChoice => _backgroundChoice = backgroundChoice);
+                    form.Show();
+                };
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemSelectMap);
+            }
+
+            return _contextMenuStrip;
         }
     }
 }
