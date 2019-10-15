@@ -67,6 +67,19 @@ namespace STROOP.Map3
             }
         }
 
+        public static Image GetBackgroundImage(object backgroundChoice = null)
+        {
+            backgroundChoice = backgroundChoice ?? Config.Map3Gui.comboBoxMap3OptionsBackground.SelectedItem;
+            if (backgroundChoice is BackgroundImage background)
+            {
+                return background.Image;
+            }
+            else
+            {
+                return Config.MapAssociations.GetBestMap().BackgroundImage;
+            }
+        }
+
         public static List<(float x, float z)> GetPuCenters()
         {
             int xMin = ((((int)Config.Map3Graphics.MapViewXMin) / 65536) - 1) * 65536;

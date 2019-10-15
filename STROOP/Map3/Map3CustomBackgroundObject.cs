@@ -13,16 +13,19 @@ using OpenTK;
 
 namespace STROOP.Map3
 {
-    public class Map3BackgroundObject : Map3IconRectangleObject
+    public class Map3CustomBackgroundObject : Map3IconRectangleObject
     {
-        public Map3BackgroundObject()
+        private object _backgroundChoice;
+
+        public Map3CustomBackgroundObject()
             : base()
         {
+            _backgroundChoice = "Recommended";
         }
 
         public override Image GetImage()
         {
-            return Map3Utilities.GetBackgroundImage();
+            return Map3Utilities.GetBackgroundImage(_backgroundChoice);
         }
 
         protected override List<(PointF loc, SizeF size)> GetDimensions()
@@ -36,7 +39,7 @@ namespace STROOP.Map3
 
         public override string GetName()
         {
-            return "Background";
+            return "Custom Background";
         }
     }
 }
