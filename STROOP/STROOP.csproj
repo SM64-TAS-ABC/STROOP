@@ -377,6 +377,7 @@
     <Compile Include="Map3\Map3LevelFloorObject.cs" />
     <Compile Include="Map3\Map3LevelTriangleObjectI.cs" />
     <Compile Include="Map3\Map3LevelWallObject.cs" />
+    <Compile Include="Map3\Map3CustomMapObject.cs" />
     <Compile Include="Map3\Map3PathObject.cs" />
     <Compile Include="Map3\Map3CustomCeilingObject.cs" />
     <Compile Include="Map3\Map3CustomWallObject.cs" />

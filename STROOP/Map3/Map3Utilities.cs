@@ -54,9 +54,9 @@ namespace STROOP.Map3
             return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
         }
 
-        public static MapLayout GetMapLayout()
+        public static MapLayout GetMapLayout(object mapLayoutChoice = null)
         {
-            object mapLayoutChoice = Config.Map3Gui.comboBoxMap3OptionsLevel.SelectedItem;
+            mapLayoutChoice = mapLayoutChoice ?? Config.Map3Gui.comboBoxMap3OptionsLevel.SelectedItem;
             if (mapLayoutChoice is MapLayout mapLayout)
             {
                 return mapLayout;
