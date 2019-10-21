@@ -27,11 +27,14 @@
     <Tab>Misc</Tab>
     <Tab>Custom</Tab>
     <Tab>TAS</Tab>
-    <Tab>Map</Tab>
-    <Tab>Map2</Tab>
     <Tab>Map3</Tab>
     <Tab>Options</Tab>
     <Tab>Memory</Tab>
+    <Tab>Cells</Tab>
+  </TabOrder>
+  <RemovedTabs>
+    <Tab>Map</Tab>
+    <Tab>Map2</Tab>
     <Tab>PU</Tab>
     <Tab>Area</Tab>
     <Tab>Model</Tab>
@@ -51,7 +54,5 @@
     <Tab>Painting</Tab>
     <Tab>Sound</Tab>
     <Tab>Testing</Tab>
-  </TabOrder>
-  <RemovedTabs>
   </RemovedTabs>
 </SavedSettings>
