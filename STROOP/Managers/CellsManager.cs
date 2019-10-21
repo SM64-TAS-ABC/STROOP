@@ -123,7 +123,8 @@ namespace STROOP.Managers
             while (address != 0)
             {
                 uint triAddress = Config.Stream.GetUInt32(address + 4);
-                string triAddressString = HexUtilities.FormatValue(triAddress);
+                short y1 = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Y1);
+                string triAddressString = HexUtilities.FormatValue(triAddress) + " (y1 = " + y1 + ")";
                 TreeNode subNode = new TreeNode(triAddressString);
                 subNode.Tag = triAddress;
                 nodes.Add(subNode);
