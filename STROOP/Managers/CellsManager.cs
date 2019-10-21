@@ -19,8 +19,8 @@ namespace STROOP.Managers
         private Button _buttonCellsBuildTree;
         private TreeView _treeViewCells;
 
-        public CellsManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
-            : base(null, watchVariablePanel)
+        public CellsManager(string varFilePath, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
+            : base(varFilePath, watchVariablePanel)
         {
             SplitContainer splitContainerCells = tabControl.Controls["splitContainerCells"] as SplitContainer;
             SplitContainer splitContainerCellsControls = splitContainerCells.Panel1.Controls["splitContainerCellsControls"] as SplitContainer;
