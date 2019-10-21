@@ -43,16 +43,16 @@ namespace STROOP.Managers
         private TreeNode GetTreeNodeForPartition(bool staticPartition)
         {
             string name = staticPartition ? "Static Cells" : "Dynamic Cells";
-            uint address = staticPartition ? 0x8038BE98 : 0x8038D698;
+            uint partitionAddress = staticPartition ? 0x8038BE98 : 0x8038D698;
             TreeNode node = new TreeNode(name);
             for (int z = 0; z < 16; z++)
             {
-                node.Nodes.Add(GetTreeNodeForZ(address, z));
+                node.Nodes.Add(GetTreeNodeForZ(partitionAddress, z));
             }
             return node;
         }
 
-        private TreeNode GetTreeNodeForZ(uint address, int z)
+        private TreeNode GetTreeNodeForZ(uint partitionAddress, int z)
         {
             int lowerBound = -8192 + z * 1024;
             int upperBound = lowerBound + 1024;
@@ -60,12 +60,12 @@ namespace STROOP.Managers
             TreeNode node = new TreeNode(name);
             for (int x = 0; x < 16; x++)
             {
-                node.Nodes.Add(GetTreeNodeForX(address, z, x));
+                node.Nodes.Add(GetTreeNodeForX(partitionAddress, z, x));
             }
             return node;
         }
 
-        private TreeNode GetTreeNodeForX(uint address, int z, int x)
+        private TreeNode GetTreeNodeForX(uint partitionAddress, int z, int x)
         {
             int lowerBound = -8192 + x * 1024;
             int upperBound = lowerBound + 1024;
@@ -73,15 +73,29 @@ namespace STROOP.Managers
             TreeNode node = new TreeNode(name);
             for (int type = 0; type < 3; type++)
             {
-                node.Nodes.Add(GetTreeNodeForType(address, z, x, type));
+                node.Nodes.Add(GetTreeNodeForType(partitionAddress, z, x, type));
             }
             return node;
         }
 
-        private TreeNode GetTreeNodeForType(uint address, int z, int x, int type)
+        private TreeNode GetTreeNodeForType(uint partitionAddress, int z, int x, int type)
         {
-            string name = address + " " + z + " " + x + " " + type;
-            return new TreeNode(name);
+            int typeSize = 2 * 4;
+            int xSize = 3 * typeSize;
+            int zSize = 16 * xSize;
+            uint address = (uint)(partitionAddress + z * zSize + x * xSize + type * typeSize);
+            address = Config.Stream.GetUInt32(address);
+
+            string name = type == 0 ? "Floors" : type == 1 ? "Ceilings" : "Walls";
+            TreeNode node = new TreeNode(name);
+            while (address != 0)
+            {
+                uint triAddress = Config.Stream.GetUInt32(address + 4);
+                string triAddressString = HexUtilities.FormatValue(triAddress);
+                node.Nodes.Add(new TreeNode(triAddressString));
+                address = Config.Stream.GetUInt32(address);
+            }
+            return node;
         }
 
         public override void Update(bool updateView)
