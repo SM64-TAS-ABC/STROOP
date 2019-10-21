@@ -33,5 +33,13 @@ namespace STROOP.Structs.Configurations
         public static uint ExertionForceTableAddress { get => RomVersionConfig.Switch(ExertionForceTableAddressUS, ExertionForceTableAddressJP); }
         public static readonly uint ExertionForceTableAddressUS = 0x8032DD38;
         public static readonly uint ExertionForceTableAddressJP = 0x8032CDD8;
+
+        public static uint StaticTrianglePartitionAddress { get => RomVersionConfig.Switch(StaticTrianglePartitionAddressUS, StaticTrianglePartitionAddressJP); }
+        public static readonly uint StaticTrianglePartitionAddressUS = 0x8038BE98;
+        public static readonly uint StaticTrianglePartitionAddressJP = 0x8038BE98;
+
+        public static uint DynamicTrianglePartitionAddress { get => RomVersionConfig.Switch(DynamicTrianglePartitionAddressUS, DynamicTrianglePartitionAddressJP); }
+        public static readonly uint DynamicTrianglePartitionAddressUS = 0x8038D698;
+        public static readonly uint DynamicTrianglePartitionAddressJP = 0x8038D698;
     }
 }

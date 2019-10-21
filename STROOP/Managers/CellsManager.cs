@@ -53,7 +53,7 @@ namespace STROOP.Managers
 
         private TreeNode GetTreeNodeForPartition(bool staticPartition)
         {
-            uint partitionAddress = staticPartition ? 0x8038BE98 : 0x8038D698;
+            uint partitionAddress = staticPartition ? TriangleConfig.StaticTrianglePartitionAddress : TriangleConfig.DynamicTrianglePartitionAddress;
 
             List<TreeNode> nodes = new List<TreeNode>();
             int sum = 0;
