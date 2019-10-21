@@ -35,20 +35,30 @@ namespace STROOP.Managers
 
         private void BuildTree()
         {
+            _treeViewCells.BeginUpdate();
             _treeViewCells.Nodes.Clear();
             _treeViewCells.Nodes.Add(GetTreeNodeForPartition(true));
             _treeViewCells.Nodes.Add(GetTreeNodeForPartition(false));
+            _treeViewCells.EndUpdate();
         }
 
         private TreeNode GetTreeNodeForPartition(bool staticPartition)
         {
-            string name = staticPartition ? "Static Cells" : "Dynamic Cells";
             uint partitionAddress = staticPartition ? 0x8038BE98 : 0x8038D698;
-            TreeNode node = new TreeNode(name);
+
+            List<TreeNode> nodes = new List<TreeNode>();
+            int sum = 0;
             for (int z = 0; z < 16; z++)
             {
-                node.Nodes.Add(GetTreeNodeForZ(partitionAddress, z));
+                TreeNode subNode = GetTreeNodeForZ(partitionAddress, z);
+                nodes.Add(subNode);
+                sum += (int)subNode.Tag;
             }
+
+            string name = (staticPartition ? "Static Cells" : "Dynamic Cells") + " [" + sum + "]";
+            TreeNode node = new TreeNode(name);
+            node.Tag = sum;
+            node.Nodes.AddRange(nodes.ToArray());
             return node;
         }
 
@@ -56,12 +66,20 @@ namespace STROOP.Managers
         {
             int lowerBound = -8192 + z * 1024;
             int upperBound = lowerBound + 1024;
-            string name = "z = " + z + " (" + lowerBound + " < z < " + upperBound + ")";
-            TreeNode node = new TreeNode(name);
+
+            List<TreeNode> nodes = new List<TreeNode>();
+            int sum = 0;
             for (int x = 0; x < 16; x++)
             {
-                node.Nodes.Add(GetTreeNodeForX(partitionAddress, z, x));
+                TreeNode subNode = GetTreeNodeForX(partitionAddress, z, x);
+                nodes.Add(subNode);
+                sum += (int)subNode.Tag;
             }
+
+            string name = "Z:" + z + " (" + lowerBound + " < z < " + upperBound + ") [" + sum + "]";
+            TreeNode node = new TreeNode(name);
+            node.Tag = sum;
+            node.Nodes.AddRange(nodes.ToArray());
             return node;
         }
 
@@ -69,12 +87,20 @@ namespace STROOP.Managers
         {
             int lowerBound = -8192 + x * 1024;
             int upperBound = lowerBound + 1024;
-            string name = "x = " + x + " (" + lowerBound + " < x < " + upperBound + ")";
-            TreeNode node = new TreeNode(name);
+
+            List<TreeNode> nodes = new List<TreeNode>();
+            int sum = 0;
             for (int type = 0; type < 3; type++)
             {
-                node.Nodes.Add(GetTreeNodeForType(partitionAddress, z, x, type));
+                TreeNode subNode = GetTreeNodeForType(partitionAddress, z, x, type);
+                nodes.Add(subNode);
+                sum += (int)subNode.Tag;
             }
+
+            string name = "X:" + x + " (" + lowerBound + " < x < " + upperBound + ") [" + sum + "]";
+            TreeNode node = new TreeNode(name);
+            node.Tag = sum;
+            node.Nodes.AddRange(nodes.ToArray());
             return node;
         }
 
@@ -86,15 +112,19 @@ namespace STROOP.Managers
             uint address = (uint)(partitionAddress + z * zSize + x * xSize + type * typeSize);
             address = Config.Stream.GetUInt32(address);
 
-            string name = type == 0 ? "Floors" : type == 1 ? "Ceilings" : "Walls";
-            TreeNode node = new TreeNode(name);
+            List<TreeNode> nodes = new List<TreeNode>();
             while (address != 0)
             {
                 uint triAddress = Config.Stream.GetUInt32(address + 4);
                 string triAddressString = HexUtilities.FormatValue(triAddress);
-                node.Nodes.Add(new TreeNode(triAddressString));
+                nodes.Add(new TreeNode(triAddressString));
                 address = Config.Stream.GetUInt32(address);
             }
+
+            string name = (type == 0 ? "Floors" : type == 1 ? "Ceilings" : "Walls") + " [" + nodes.Count + "]";
+            TreeNode node = new TreeNode(name);
+            node.Tag = nodes.Count;
+            node.Nodes.AddRange(nodes.ToArray());
             return node;
         }
 

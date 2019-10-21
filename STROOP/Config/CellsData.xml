@@ -5,6 +5,10 @@
   <Data type="uint" offset="0x60" base="Mario" subclass="Triangle" color="Yellow">Wall Triangle</Data>
   <Data type="uint" offset="0x64" base="Mario" subclass="Triangle" color="Yellow">Ceiling Triangle</Data>
 
+  <Data type="int" offsetUS="0x80361174" offsetJP="0x8035FE04" base="Relative" color="Grey">Level Node Count</Data>
+  <Data base="None" specialType="ObjectNodeCount" color="Grey">Object Node Count</Data>
+  <Data type="int" offsetUS="0x8036116C" offsetJP="0x8035FDFC" base="Relative" color="Grey">Total Node Count</Data>
+
   <Data base="None" specialType="MarioCell" subclass="String" color="Grey">Mario Cell</Data>
   <Data base="CellsTriangle" specialType="TriangleCells" subclass="String" color="Grey">Cells</Data>
 
