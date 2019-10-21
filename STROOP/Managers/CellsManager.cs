@@ -31,6 +31,13 @@ namespace STROOP.Managers
             _buttonCellsBuildTree.Click += (sender, e) => BuildTree();
 
             _treeViewCells = splitContainerCellsControls.Panel2.Controls["treeViewCells"] as TreeView;
+            _treeViewCells.AfterSelect += (sender, e) => SetTriangleAddress();
+        }
+
+        private void SetTriangleAddress()
+        {
+            object tag = _treeViewCells.SelectedNode.Tag;
+            TriangleAddress = tag is uint uintTag ? uintTag : (uint?)null;
         }
 
         private void BuildTree()
@@ -117,7 +124,9 @@ namespace STROOP.Managers
             {
                 uint triAddress = Config.Stream.GetUInt32(address + 4);
                 string triAddressString = HexUtilities.FormatValue(triAddress);
-                nodes.Add(new TreeNode(triAddressString));
+                TreeNode subNode = new TreeNode(triAddressString);
+                subNode.Tag = triAddress;
+                nodes.Add(subNode);
                 address = Config.Stream.GetUInt32(address);
             }
 
