@@ -367,6 +367,7 @@
     </Compile>
     <Compile Include="LoadingHandler.cs" />
     <Compile Include="Managers\Map3Manager.cs" />
+    <Compile Include="Managers\CellsManager.cs" />
     <Compile Include="Managers\SearchManager.cs" />
     <Compile Include="Managers\SoundManager.cs" />
     <Compile Include="Managers\VariableAdder.cs" />
