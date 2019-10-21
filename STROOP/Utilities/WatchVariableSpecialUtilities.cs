@@ -2159,6 +2159,17 @@ namespace STROOP.Structs
                     return true;
                 }));
 
+            _dictionary.Add("CurrentCellsTriangleAddress",
+                ((uint dummy) =>
+                {
+                    return Config.CellsManager.TriangleAddress;
+                },
+                (uint address, uint dummy) =>
+                {
+                    Config.CellsManager.TriangleAddress = address;
+                    return true;
+                }));
+
             _dictionary.Add("ObjectNodeCount",
                 ((uint dummy) =>
                 {

@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VarData>
 
+  <Data base="None" specialType="CurrentCellsTriangleAddress" subclass="Triangle" color="Pink">Current Address</Data>
+
   <Data type="uint" offset="0x68" base="Mario" subclass="Triangle" color="Yellow">Floor Triangle</Data>
   <Data type="uint" offset="0x60" base="Mario" subclass="Triangle" color="Yellow">Wall Triangle</Data>
   <Data type="uint" offset="0x64" base="Mario" subclass="Triangle" color="Yellow">Ceiling Triangle</Data>

@@ -110,8 +110,8 @@ namespace STROOP.Structs
 
                 case BaseAddressTypeEnum.CellsTriangle:
                     {
-                        uint? triangleAddress = Config.CellsManager.TriangleAddress;
-                        return triangleAddress.HasValue ? new List<uint>() { triangleAddress.Value } : BaseAddressListEmpty;
+                        uint triangleAddress = Config.CellsManager.TriangleAddress;
+                        return triangleAddress != 0 ? new List<uint>() { triangleAddress } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.CellsTriangleExertionForceTable:

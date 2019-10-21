@@ -16,7 +16,7 @@ namespace STROOP.Managers
 {
     public class CellsManager : DataManager
     {
-        public uint? TriangleAddress;
+        public uint TriangleAddress;
 
         private Button _buttonCellsBuildTree;
         private TreeView _treeViewCells;
@@ -24,6 +24,8 @@ namespace STROOP.Managers
         public CellsManager(string varFilePath, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(varFilePath, watchVariablePanel)
         {
+            TriangleAddress = 0;
+
             SplitContainer splitContainerCells = tabControl.Controls["splitContainerCells"] as SplitContainer;
             SplitContainer splitContainerCellsControls = splitContainerCells.Panel1.Controls["splitContainerCellsControls"] as SplitContainer;
 
@@ -37,7 +39,7 @@ namespace STROOP.Managers
         private void SetTriangleAddress()
         {
             object tag = _treeViewCells.SelectedNode.Tag;
-            TriangleAddress = tag is uint uintTag ? uintTag : (uint?)null;
+            TriangleAddress = tag is uint uintTag ? uintTag : 0;
         }
 
         private void BuildTree()
