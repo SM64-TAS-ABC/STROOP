@@ -64,7 +64,7 @@ namespace STROOP.Managers
                 sum += (int)subNode.Tag;
             }
 
-            string name = (staticPartition ? "Static Cells" : "Dynamic Cells") + " [" + sum + "]";
+            string name = (staticPartition ? "Static Triangles" : "Dynamic Triangles") + " [" + sum + "]";
             TreeNode node = new TreeNode(name);
             node.Tag = sum;
             node.Nodes.AddRange(nodes.ToArray());
