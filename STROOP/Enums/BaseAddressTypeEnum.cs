@@ -27,6 +27,8 @@ namespace STROOP.Structs
         ProcessGroup,
         Triangle,
         TriangleExertionForceTable,
+        CellsTriangle,
+        CellsTriangleExertionForceTable,
         Floor,
         Wall,
         Ceiling,

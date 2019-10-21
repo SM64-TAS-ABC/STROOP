@@ -108,6 +108,20 @@ namespace STROOP.Structs
                             return TriangleConfig.ExertionForceTableAddress + 2 * exertionForceIndex;
                         });
 
+                case BaseAddressTypeEnum.CellsTriangle:
+                    {
+                        uint? triangleAddress = Config.CellsManager.TriangleAddress;
+                        return triangleAddress.HasValue ? new List<uint>() { triangleAddress.Value } : BaseAddressListEmpty;
+                    }
+
+                case BaseAddressTypeEnum.CellsTriangleExertionForceTable:
+                    return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.CellsTriangle)
+                        .ConvertAll(triangleAddress =>
+                        {
+                            uint exertionForceIndex = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionForceIndex);
+                            return TriangleConfig.ExertionForceTableAddress + 2 * exertionForceIndex;
+                        });
+
                 case BaseAddressTypeEnum.Floor:
                     {
                         uint floorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);

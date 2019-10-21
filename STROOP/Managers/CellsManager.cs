@@ -16,6 +16,8 @@ namespace STROOP.Managers
 {
     public class CellsManager : DataManager
     {
+        public uint? TriangleAddress;
+
         private Button _buttonCellsBuildTree;
         private TreeView _treeViewCells;
 
