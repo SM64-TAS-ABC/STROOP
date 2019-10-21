@@ -1608,6 +1608,9 @@ namespace STROOP
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.splitContainerCellsControls = new STROOP.BetterSplitContainer();
+            this.buttonCellsBuildTree = new System.Windows.Forms.Button();
+            this.treeViewCells = new System.Windows.Forms.TreeView();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -2073,10 +2076,15 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearch)).BeginInit();
             this.tabPageCells.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCells)).BeginInit();
+            this.splitContainerCells.Panel1.SuspendLayout();
             this.splitContainerCells.Panel2.SuspendLayout();
             this.splitContainerCells.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCellsControls)).BeginInit();
+            this.splitContainerCellsControls.Panel1.SuspendLayout();
+            this.splitContainerCellsControls.Panel2.SuspendLayout();
+            this.splitContainerCellsControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -5809,7 +5817,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 529F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 530F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9539,7 +9547,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(436, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(439, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -12824,7 +12832,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 797;
+            this.splitContainerMemory.SplitterDistance = 800;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12865,7 +12873,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(797, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(800, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -13082,7 +13090,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(797, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(800, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -13111,7 +13119,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(696, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(699, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -13124,7 +13132,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(109, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(106, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -18962,7 +18970,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -20146,7 +20154,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(66, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(67, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -20678,6 +20686,7 @@ namespace STROOP
             // splitContainerCells.Panel1
             // 
             this.splitContainerCells.Panel1.AutoScroll = true;
+            this.splitContainerCells.Panel1.Controls.Add(this.splitContainerCellsControls);
             this.splitContainerCells.Panel1MinSize = 0;
             // 
             // splitContainerCells.Panel2
@@ -20685,7 +20694,7 @@ namespace STROOP
             this.splitContainerCells.Panel2.Controls.Add(this.watchVariablePanelCells);
             this.splitContainerCells.Panel2MinSize = 0;
             this.splitContainerCells.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerCells.SplitterDistance = 328;
+            this.splitContainerCells.SplitterDistance = 303;
             this.splitContainerCells.SplitterWidth = 1;
             this.splitContainerCells.TabIndex = 35;
             // 
@@ -20698,7 +20707,7 @@ namespace STROOP
             this.watchVariablePanelCells.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelCells.Name = "watchVariablePanelCells";
             this.watchVariablePanelCells.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelCells.Size = new System.Drawing.Size(578, 455);
+            this.watchVariablePanelCells.Size = new System.Drawing.Size(603, 455);
             this.watchVariablePanelCells.TabIndex = 3;
             // 
             // groupBoxObjects
@@ -20827,6 +20836,51 @@ namespace STROOP
             this.trackBarObjSlotSize.TickFrequency = 10;
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
+            // 
+            // splitContainerCellsControls
+            // 
+            this.splitContainerCellsControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerCellsControls.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerCellsControls.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerCellsControls.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerCellsControls.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerCellsControls.Name = "splitContainerCellsControls";
+            this.splitContainerCellsControls.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerCellsControls.Panel1
+            // 
+            this.splitContainerCellsControls.Panel1.AutoScroll = true;
+            this.splitContainerCellsControls.Panel1.Controls.Add(this.buttonCellsBuildTree);
+            this.splitContainerCellsControls.Panel1MinSize = 0;
+            // 
+            // splitContainerCellsControls.Panel2
+            // 
+            this.splitContainerCellsControls.Panel2.Controls.Add(this.treeViewCells);
+            this.splitContainerCellsControls.Panel2MinSize = 0;
+            this.splitContainerCellsControls.Size = new System.Drawing.Size(303, 457);
+            this.splitContainerCellsControls.SplitterDistance = 78;
+            this.splitContainerCellsControls.SplitterWidth = 1;
+            this.splitContainerCellsControls.TabIndex = 39;
+            // 
+            // buttonCellsBuildTree
+            // 
+            this.buttonCellsBuildTree.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonCellsBuildTree.Location = new System.Drawing.Point(30, 24);
+            this.buttonCellsBuildTree.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCellsBuildTree.Name = "buttonCellsBuildTree";
+            this.buttonCellsBuildTree.Size = new System.Drawing.Size(87, 32);
+            this.buttonCellsBuildTree.TabIndex = 20;
+            this.buttonCellsBuildTree.Text = "Build Tree";
+            this.buttonCellsBuildTree.UseVisualStyleBackColor = true;
+            // 
+            // treeViewCells
+            // 
+            this.treeViewCells.BackColor = System.Drawing.SystemColors.Control;
+            this.treeViewCells.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewCells.Location = new System.Drawing.Point(0, 0);
+            this.treeViewCells.Name = "treeViewCells";
+            this.treeViewCells.Size = new System.Drawing.Size(301, 376);
+            this.treeViewCells.TabIndex = 1;
             // 
             // StroopMainForm
             // 
@@ -21425,12 +21479,17 @@ namespace STROOP
             this.splitContainerSearchOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearch)).EndInit();
             this.tabPageCells.ResumeLayout(false);
+            this.splitContainerCells.Panel1.ResumeLayout(false);
             this.splitContainerCells.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCells)).EndInit();
             this.splitContainerCells.ResumeLayout(false);
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.splitContainerCellsControls.Panel1.ResumeLayout(false);
+            this.splitContainerCellsControls.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCellsControls)).EndInit();
+            this.splitContainerCellsControls.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -22998,6 +23057,9 @@ namespace STROOP
         private TabPage tabPageCells;
         private BetterSplitContainer splitContainerCells;
         private WatchVariableFlowLayoutPanel watchVariablePanelCells;
+        private BetterSplitContainer splitContainerCellsControls;
+        private Button buttonCellsBuildTree;
+        private TreeView treeViewCells;
     }
 }
 
