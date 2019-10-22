@@ -30,7 +30,6 @@
     <Tab>Map3</Tab>
     <Tab>Options</Tab>
     <Tab>Memory</Tab>
-    <Tab>Cells</Tab>
   </TabOrder>
   <RemovedTabs>
     <Tab>Map</Tab>
@@ -46,13 +45,12 @@
     <Tab>Var Hack</Tab>
     <Tab>Search</Tab>
     <Tab>Disassembly</Tab>
-    <Tab>Decompiler</Tab>
-    <Tab>Scripts</Tab>
     <Tab>Coin</Tab>
     <Tab>Snow</Tab>
     <Tab>Main Save</Tab>
     <Tab>Painting</Tab>
     <Tab>Sound</Tab>
+    <Tab>Cells</Tab>
     <Tab>Testing</Tab>
   </RemovedTabs>
 </SavedSettings>
