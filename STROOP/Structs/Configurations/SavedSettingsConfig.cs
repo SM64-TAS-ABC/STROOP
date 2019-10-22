@@ -255,10 +255,10 @@ namespace STROOP.Structs.Configurations
             List<TabPage> removedTabs =
                 ControlUtilities.GetTabPages(Config.TabControlMain)
                 .FindAll(tab => InitiallySavedRemovedTabs.Contains(tab.Text));
-            removedTabs.ForEach(tab => RemoveTab(tab));
+            removedTabs.ForEach(tab => RemoveTab(tab, shouldSave: false));
         }
 
-        public static void RemoveTab(TabPage removeTab)
+        public static void RemoveTab(TabPage removeTab, bool shouldSave = true)
         {
             TabPage previousTab = Config.TabControlMain.PreviousTab;
             TabPage currentTab = Config.TabControlMain.SelectedTab;
@@ -266,7 +266,7 @@ namespace STROOP.Structs.Configurations
             Config.TabControlMain.TabPages.Remove(removeTab);
             if (removeTab == currentTab && Config.TabControlMain.TabPages.Contains(previousTab))
                 Config.TabControlMain.SelectedTab = previousTab;
-            Save();
+            if (shouldSave) Save();
         }
 
         public static void AddTab(TabPage tab)

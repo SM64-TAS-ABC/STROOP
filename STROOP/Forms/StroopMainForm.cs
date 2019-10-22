@@ -72,10 +72,12 @@ namespace STROOP
             Config.StroopMainForm = this;
             Config.TabControlMain = tabControlMain;
             Config.DebugText = labelDebugText;
+
             SavedSettingsConfig.StoreRecommendedTabOrder();
             SavedSettingsConfig.InvokeInitiallySavedTabOrder();
             Config.TabControlMain.SelectedIndex = 0;
             InitializeTabRemoval();
+            SavedSettingsConfig.InvokeInitiallySavedRemovedTabs();
 
             SetupViews();
 
@@ -109,8 +111,6 @@ namespace STROOP
                 SavedSettingsConfig.GetRemovedTabItems().ForEach(
                     item => buttonTabAdd.ContextMenuStrip.Items.Add(item));
             };
-
-            SavedSettingsConfig.InvokeInitiallySavedRemovedTabs();
         }
 
         private void SetUpContextMenuStrips()
