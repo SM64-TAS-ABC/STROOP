@@ -83,15 +83,8 @@ namespace STROOP.Controls
 
             if (specialType != null)
             {
-                if (baseAddressType != BaseAddressTypeEnum.None &&
-                    baseAddressType != BaseAddressTypeEnum.Object &&
-                    baseAddressType != BaseAddressTypeEnum.ProcessGroup &&
-                    baseAddressType != BaseAddressTypeEnum.Ghost &&
-                    baseAddressType != BaseAddressTypeEnum.LastCoin &&
-                    baseAddressType != BaseAddressTypeEnum.File &&
-                    baseAddressType != BaseAddressTypeEnum.MainSave &&
-                    baseAddressType != BaseAddressTypeEnum.Triangle &&
-                    baseAddressType != BaseAddressTypeEnum.CellsTriangle)
+                if (baseAddressType == BaseAddressTypeEnum.Relative ||
+                    baseAddressType == BaseAddressTypeEnum.Absolute)
                 {
                     throw new ArgumentOutOfRangeException("Special var cannot have base address type " + baseAddressType);
                 }
