@@ -105,12 +105,14 @@ namespace STROOP
             };
 
             buttonTabAdd.ContextMenuStrip = new ContextMenuStrip();
-            buttonTabAdd.ContextMenuStrip.Opening += (se, ev) =>
+            Action openingFunction = () =>
             {
                 buttonTabAdd.ContextMenuStrip.Items.Clear();
                 SavedSettingsConfig.GetRemovedTabItems().ForEach(
                     item => buttonTabAdd.ContextMenuStrip.Items.Add(item));
             };
+            buttonTabAdd.ContextMenuStrip.Opening += (se, ev) => openingFunction();
+            openingFunction();
         }
 
         private void SetUpContextMenuStrips()
