@@ -122,6 +122,7 @@ namespace STROOP
                 new List<string>()
                 {
                     "Open Mapping",
+                    "Inject Hitbox View Code",
                     "Expand RAM Size",
                     "Show MHS Vars",
                     "Download Latest STROOP Release",
@@ -137,6 +138,7 @@ namespace STROOP
                 new List<Action>()
                 {
                     () => MappingConfig.OpenMapping(),
+                    () => Config.GfxManager.InjectHitboxViewCode(),
                     () =>
                     {
                         Config.RamSize = 0x800000;
