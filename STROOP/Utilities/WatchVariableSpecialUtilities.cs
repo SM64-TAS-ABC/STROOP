@@ -3291,6 +3291,7 @@ namespace STROOP.Structs
                 },
                 (PositionAngle posAngle, uint dummy) =>
                 {
+                    if (posAngle.DependsOnSelf()) return false;
                     SpecialConfig.SelfPosPA = posAngle;
                     return true;
                 }));
@@ -3332,6 +3333,7 @@ namespace STROOP.Structs
                 },
                 (PositionAngle posAngle, uint dummy) =>
                 {
+                    if (posAngle.DependsOnSelf()) return false;
                     SpecialConfig.SelfAnglePA = posAngle;
                     return true;
                 }));

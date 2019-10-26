@@ -372,6 +372,15 @@ namespace STROOP.Utilities
                 PosAngleType == PositionAngleTypeEnum.Point;
         }
 
+        public bool DependsOnSelf()
+        {
+            if (PosAngleType == PositionAngleTypeEnum.Tri)
+            {
+                return Index == 0 || Index == 4;
+            }
+            return false;
+        }
+
 
 
 
