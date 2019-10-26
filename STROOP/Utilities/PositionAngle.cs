@@ -14,6 +14,7 @@ namespace STROOP.Utilities
         private readonly PositionAngleTypeEnum PosAngleType;
         private readonly uint? Address;
         private readonly int? Index;
+        private readonly double? Frame;
         private readonly PositionAngle PosPA;
         private readonly PositionAngle AnglePA;
         private readonly List<Func<double>> Getters;
@@ -46,6 +47,8 @@ namespace STROOP.Utilities
             Floor,
             Ceiling,
             Snow,
+            QFrame,
+            GFrame,
             Schedule,
             Hybrid,
             Functions,
@@ -77,10 +80,17 @@ namespace STROOP.Utilities
                 posAngleType == PositionAngleTypeEnum.Snow;
         }
 
+        private bool ShouldHaveFrame(PositionAngleTypeEnum posAngleType)
+        {
+            return posAngleType == PositionAngleTypeEnum.QFrame ||
+                posAngleType == PositionAngleTypeEnum.GFrame;
+        }
+
         private PositionAngle(
             PositionAngleTypeEnum posAngleType,
             uint? address = null,
             int? index = null,
+            double? frame = null,
             PositionAngle posPA = null,
             PositionAngle anglePA = null,
             List<Func<double>> getters = null,
@@ -89,6 +99,7 @@ namespace STROOP.Utilities
             PosAngleType = posAngleType;
             Address = address;
             Index = index;
+            Frame = frame;
             PosPA = posPA;
             AnglePA = anglePA;
             Getters = getters;
@@ -100,6 +111,10 @@ namespace STROOP.Utilities
 
             bool shouldHaveIndex = ShouldHaveIndex(posAngleType);
             if (index.HasValue != shouldHaveIndex)
+                throw new ArgumentOutOfRangeException();
+
+            bool shouldHaveFrame = ShouldHaveFrame(posAngleType);
+            if (frame.HasValue != shouldHaveFrame)
                 throw new ArgumentOutOfRangeException();
 
             bool shouldHavePAs = PosAngleType == PositionAngleTypeEnum.Hybrid;
@@ -158,6 +173,10 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.Ceiling, index: index);
         public static PositionAngle Snow(int index) =>
             new PositionAngle(PositionAngleTypeEnum.Snow, index: index);
+        public static PositionAngle QFrame(double frame) =>
+            new PositionAngle(PositionAngleTypeEnum.QFrame, frame: frame);
+        public static PositionAngle GFrame(double frame) =>
+            new PositionAngle(PositionAngleTypeEnum.GFrame, frame: frame);
         public static PositionAngle Hybrid(PositionAngle posPA, PositionAngle anglePA) =>
             new PositionAngle(PositionAngleTypeEnum.Hybrid, posPA: posPA, anglePA: anglePA);
         public static PositionAngle Functions(List<Func<double>> getters, List<Func<double, bool>> setters) =>
@@ -284,6 +303,18 @@ namespace STROOP.Utilities
                 if (!index.HasValue || index.Value < 0) return null;
                 return Snow(index.Value);
             }
+            else if (parts.Count == 2 && parts[0] == "qframe")
+            {
+                double? frame = ParsingUtilities.ParseDoubleNullable(parts[1]);
+                if (!frame.HasValue) return null;
+                return QFrame(frame.Value);
+            }
+            else if (parts.Count == 2 && parts[0] == "gframe")
+            {
+                double? frame = ParsingUtilities.ParseDoubleNullable(parts[1]);
+                if (!frame.HasValue) return null;
+                return GFrame(frame.Value);
+            }
             else if (parts.Count == 1 && parts[0] == "self")
             {
                 return Self;
@@ -306,6 +337,7 @@ namespace STROOP.Utilities
             parts.Add(PosAngleType);
             if (Address.HasValue) parts.Add(HexUtilities.FormatValue(Address.Value, 8));
             if (Index.HasValue) parts.Add(Index.Value);
+            if (Frame.HasValue) parts.Add(Frame.Value);
             if (PosPA != null) parts.Add("[" + PosPA + "]");
             if (AnglePA != null) parts.Add("[" + AnglePA + "]");
             return String.Join(" ", parts);
@@ -445,6 +477,10 @@ namespace STROOP.Utilities
                             Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.X);
                     case PositionAngleTypeEnum.Snow:
                         return GetSnowComponent(Index.Value, Coordinate.X);
+                    case PositionAngleTypeEnum.QFrame:
+                        return GetQFrameComponent(Frame.Value, Coordinate.X);
+                    case PositionAngleTypeEnum.GFrame:
+                        return GetGFrameComponent(Frame.Value, Coordinate.X);
                     case PositionAngleTypeEnum.Schedule:
                         uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item1;
@@ -522,6 +558,10 @@ namespace STROOP.Utilities
                             Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.Snow:
                         return GetSnowComponent(Index.Value, Coordinate.Y);
+                    case PositionAngleTypeEnum.QFrame:
+                        return GetQFrameComponent(Frame.Value, Coordinate.Y);
+                    case PositionAngleTypeEnum.GFrame:
+                        return GetGFrameComponent(Frame.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.Schedule:
                         uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item2;
@@ -599,6 +639,10 @@ namespace STROOP.Utilities
                             Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.Snow:
                         return GetSnowComponent(Index.Value, Coordinate.Z);
+                    case PositionAngleTypeEnum.QFrame:
+                        return GetQFrameComponent(Frame.Value, Coordinate.Z);
+                    case PositionAngleTypeEnum.GFrame:
+                        return GetGFrameComponent(Frame.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.Schedule:
                         uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item3;
@@ -672,6 +716,10 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Ceiling:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Snow:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.QFrame:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.GFrame:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Schedule:
                         uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
@@ -818,6 +866,57 @@ namespace STROOP.Utilities
             }
         }
 
+        private static double GetQFrameComponent(double frame, Coordinate coordinate)
+        {
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            ushort angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+
+            (double pointX, double pointZ) = MoreMath.AddVectorToPoint(hSpeed * frame, angle, marioX, marioZ);
+            double pointY = marioY;
+
+            switch (coordinate)
+            {
+                case Coordinate.X:
+                    return pointX;
+                case Coordinate.Y:
+                    return pointY;
+                case Coordinate.Z:
+                    return pointZ;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private static double GetGFrameComponent(double gFrame, Coordinate coordinate)
+        {
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            ushort angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+
+            double frame = gFrame - globalTimer;
+            (double pointX, double pointZ) = MoreMath.AddVectorToPoint(hSpeed * frame, angle, marioX, marioZ);
+            double pointY = marioY;
+
+            switch (coordinate)
+            {
+                case Coordinate.X:
+                    return pointX;
+                case Coordinate.Y:
+                    return pointY;
+                case Coordinate.Z:
+                    return pointZ;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+
 
 
         public bool SetX(double value)
@@ -879,6 +978,10 @@ namespace STROOP.Utilities
                         (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.X);
                 case PositionAngleTypeEnum.Snow:
                     return SetSnowComponent((int)value, Index.Value, Coordinate.X);
+                case PositionAngleTypeEnum.QFrame:
+                    return false;
+                case PositionAngleTypeEnum.GFrame:
+                    return false;
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
@@ -953,6 +1056,10 @@ namespace STROOP.Utilities
                         (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Y);
                 case PositionAngleTypeEnum.Snow:
                     return SetSnowComponent((int)value, Index.Value, Coordinate.Y);
+                case PositionAngleTypeEnum.QFrame:
+                    return false;
+                case PositionAngleTypeEnum.GFrame:
+                    return false;
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
@@ -1027,6 +1134,10 @@ namespace STROOP.Utilities
                         (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Z);
                 case PositionAngleTypeEnum.Snow:
                     return SetSnowComponent((int)value, Index.Value, Coordinate.Z);
+                case PositionAngleTypeEnum.QFrame:
+                    return false;
+                case PositionAngleTypeEnum.GFrame:
+                    return false;
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
@@ -1106,6 +1217,10 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Ceiling:
                     return false;
                 case PositionAngleTypeEnum.Snow:
+                    return false;
+                case PositionAngleTypeEnum.QFrame:
+                    return false;
+                case PositionAngleTypeEnum.GFrame:
                     return false;
                 case PositionAngleTypeEnum.Schedule:
                     return false;
