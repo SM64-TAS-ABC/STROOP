@@ -201,25 +201,77 @@ namespace STROOP.Map3
             return quadList;
         }
 
-        public static (float x1, float z1, float x2, float z2, bool xProjection) GetWallDataFromTri(TriangleDataModel tri)
+        public static (float x1, float z1, float x2, float z2, bool xProjection) GetWallDataFromTri(
+            TriangleDataModel tri, float? heightNullable = null)
         {
-            if (tri.X1 == tri.X2 && tri.Z1 == tri.Z2) // v2 is redundant
-                return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection);
-            if (tri.X1 == tri.X3 && tri.Z1 == tri.Z3) // v3 is redundant
-                return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
-            if (tri.X2 == tri.X3 && tri.Z2 == tri.Z3) // v3 is redundant
-                return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
+            if (!heightNullable.HasValue)
+            {
+                if (tri.X1 == tri.X2 && tri.Z1 == tri.Z2) // v2 is redundant
+                    return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection);
+                if (tri.X1 == tri.X3 && tri.Z1 == tri.Z3) // v3 is redundant
+                    return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
+                if (tri.X2 == tri.X3 && tri.Z2 == tri.Z3) // v3 is redundant
+                    return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
 
-            double dist12 = MoreMath.GetDistanceBetween(tri.X1, tri.Z1, tri.X2, tri.Z2);
-            double dist13 = MoreMath.GetDistanceBetween(tri.X1, tri.Z1, tri.X3, tri.Z3);
-            double dist23 = MoreMath.GetDistanceBetween(tri.X2, tri.Z2, tri.X3, tri.Z3);
+                double dist12 = MoreMath.GetDistanceBetween(tri.X1, tri.Z1, tri.X2, tri.Z2);
+                double dist13 = MoreMath.GetDistanceBetween(tri.X1, tri.Z1, tri.X3, tri.Z3);
+                double dist23 = MoreMath.GetDistanceBetween(tri.X2, tri.Z2, tri.X3, tri.Z3);
 
-            if (dist12 >= dist13 && dist12 >= dist23)
-                return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
-            else if (dist13 >= dist23)
-                return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection);
-            else
-                return (tri.X2, tri.Z2, tri.X3, tri.Z3, tri.XProjection);
+                if (dist12 >= dist13 && dist12 >= dist23)
+                    return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
+                else if (dist13 >= dist23)
+                    return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection);
+                else
+                    return (tri.X2, tri.Z2, tri.X3, tri.Z3, tri.XProjection);
+            }
+
+            float height = heightNullable.Value;
+            (float pointAX, float pointAZ) = GetHeightOnLine(height, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
+            (float pointBX, float pointBZ) = GetHeightOnLine(height, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
+            (float pointCX, float pointCZ) = GetHeightOnLine(height, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+
+            List<(float x, float z)> points = new List<(float x, float z)>();
+            if (!float.IsNaN(pointAX) && !float.IsNaN(pointAZ)) points.Add((pointAX, pointAZ));
+            if (!float.IsNaN(pointBX) && !float.IsNaN(pointBZ)) points.Add((pointBX, pointBZ));
+            if (!float.IsNaN(pointCX) && !float.IsNaN(pointCZ)) points.Add((pointCX, pointCZ));
+
+            if (points.Count == 3)
+            {
+                double distAB = MoreMath.GetDistanceBetween(pointAX, pointAZ, pointBX, pointBZ);
+                double distAC = MoreMath.GetDistanceBetween(pointAX, pointAZ, pointCX, pointCZ);
+                double distBC = MoreMath.GetDistanceBetween(pointBX, pointBZ, pointCX, pointCZ);
+                if (distAB >= distAC && distAB >= distBC)
+                {
+                    points.RemoveAt(2); // AB is biggest, so remove C
+                }
+                else if (distAC >= distBC)
+                {
+                    points.RemoveAt(1); // AC is biggest, so remove B
+                }
+                else
+                {
+                    points.RemoveAt(0); // BC is biggest, so remove A
+                }
+            }
+            
+            if (points.Count == 2)
+            {
+                return (points[0].x, points[0].z, points[1].x, points[1].z, tri.XProjection);
+            }
+
+            throw new Exception();
+        }
+
+        private static (float x, float z) GetHeightOnLine(
+            float height, float x1, float y1, float z1, float x2, float y2, float z2)
+        {
+            if (y1 == y2 || height < Math.Min(y1, y2) || height > Math.Max(y1, y2))
+                return (float.NaN, float.NaN);
+
+            float p = (height - y1) / (y2 - y1);
+            float px = x1 + p * (x2 - x1);
+            float pz = z1 + p * (z2 - z1);
+            return (px, pz);
         }
     }
 }
