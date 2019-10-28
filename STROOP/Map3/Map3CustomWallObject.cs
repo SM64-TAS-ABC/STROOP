@@ -44,7 +44,9 @@ namespace STROOP.Map3
         protected override List<(float x1, float z1, float x2, float z2, bool xProjection)> GetWallData()
         {
             return _triAddressList.ConvertAll(address => new TriangleDataModel(address))
-                .ConvertAll(tri => Map3Utilities.GetWallDataFromTri(tri));
+                .ConvertAll(tri => Map3Utilities.GetWallDataFromTri(tri))
+                .FindAll(wallDataNullable => wallDataNullable.HasValue)
+                .ConvertAll(wallDataNullable => wallDataNullable.Value);
         }
 
         public override string GetName()

@@ -29,7 +29,9 @@ namespace STROOP.Map3
         {
             return TriangleUtilities.GetObjectTrianglesForObject(_objAddress)
                 .FindAll(tri => tri.IsWall())
-                .ConvertAll(tri => Map3Utilities.GetWallDataFromTri(tri));
+                .ConvertAll(tri => Map3Utilities.GetWallDataFromTri(tri))
+                .FindAll(wallDataNullable => wallDataNullable.HasValue)
+                .ConvertAll(wallDataNullable => wallDataNullable.Value);
         }
 
         public override string GetName()

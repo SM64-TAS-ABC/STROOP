@@ -201,7 +201,7 @@ namespace STROOP.Map3
             return quadList;
         }
 
-        public static (float x1, float z1, float x2, float z2, bool xProjection) GetWallDataFromTri(
+        public static (float x1, float z1, float x2, float z2, bool xProjection)? GetWallDataFromTri(
             TriangleDataModel tri, float? heightNullable = null)
         {
             if (!heightNullable.HasValue)
@@ -259,7 +259,7 @@ namespace STROOP.Map3
                 return (points[0].x, points[0].z, points[1].x, points[1].z, tri.XProjection);
             }
 
-            throw new Exception();
+            return null;
         }
 
         private static (float x, float z) GetHeightOnLine(
