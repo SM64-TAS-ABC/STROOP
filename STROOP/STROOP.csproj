@@ -188,7 +188,7 @@
       <DependentUpon>TriangleListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormManager.cs" />
-    <Compile Include="Forms\IForm.cs" />
+    <Compile Include="Forms\IUpdatableForm.cs" />
     <Compile Include="Forms\ValueForm.cs">
       <SubType>Form</SubType>
     </Compile>

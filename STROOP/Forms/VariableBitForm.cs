@@ -15,12 +15,11 @@ using STROOP.Models;
 
 namespace STROOP.Forms
 {
-    public partial class VariableBitForm : Form
+    public partial class VariableBitForm : Form, IUpdatableForm
     {
         private readonly string _varName;
         private readonly WatchVariable _watchVar;
         private readonly List<uint> _fixedAddressList;
-        private readonly Timer _timer;
         private readonly BindingList<ByteModel> _bytes;
         private readonly List<ByteModel> _reversedBytes;
 
@@ -32,9 +31,10 @@ namespace STROOP.Forms
             _varName = varName;
             _watchVar = watchVar;
             _fixedAddressList = fixedAddressList;
-            _timer = new Timer { Interval = 30 };
 
             InitializeComponent();
+            FormManager.AddForm(this);
+            FormClosing += (sender, e) => FormManager.RemoveForm(this);
 
             _textBoxVarName.Text = _varName;
             _bytes = new BindingList<ByteModel>();
@@ -61,12 +61,9 @@ namespace STROOP.Forms
                 new List<bool>() { false, true },
                 boolValue => _showFloatComponents = boolValue,
                 false);
-
-            _timer.Tick += (s, e) => UpdateForm();
-            _timer.Start();
         }
 
-        private void UpdateForm()
+        public void UpdateForm()
         {
             if (!_hasDoneColoring)
             {
@@ -74,7 +71,7 @@ namespace STROOP.Forms
                 _hasDoneColoring = true;
             }
 
-            List<object> values = _watchVar.GetValues();
+            List<object> values = _watchVar.GetValues(_fixedAddressList);
             if (values.Count == 0) return;
             object value = values[0];
             if (!TypeUtilities.IsNumber(value))

@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace STROOP.Forms
 {
-    public partial class VariablePopOutForm : Form
+    public partial class VariablePopOutForm : Form, IUpdatableForm
     {
         public static int? WIDTH = null;
         public static int? HEIGHT = null;
@@ -23,6 +23,9 @@ namespace STROOP.Forms
         public VariablePopOutForm()
         {
             InitializeComponent();
+            FormManager.AddForm(this);
+            FormClosing += (sender, e) => FormManager.RemoveForm(this);
+
             if (WIDTH.HasValue) Width = WIDTH.Value;
             if (HEIGHT.HasValue) Height = HEIGHT.Value;
             Resize += (sender, e) =>
@@ -86,19 +89,9 @@ namespace STROOP.Forms
                     SetDesktopLocation(MousePosition.X - _dragX, MousePosition.Y - _dragY);
                 }
             };
-
-            // set up timer
-            Timer timer = new Timer { Interval = 10 };
-            timer.Tick += (s, e) => UpdateForm();
-            timer.Start();
-
-            FormClosed += (sender, e) =>
-            {
-                timer.Stop();
-            };
         }
 
-        private void UpdateForm()
+        public void UpdateForm()
         {
             _watchVariablePanel.UpdatePanel();
         }

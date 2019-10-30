@@ -13,21 +13,21 @@ namespace STROOP.Structs
 {
     public static class FormManager
     {
-        private static List<IForm> _forms = new List<IForm>();
+        private static List<IUpdatableForm> _forms = new List<IUpdatableForm>();
 
-        public static void AddForm(IForm form)
+        public static void AddForm(IUpdatableForm form)
         {
             _forms.Add(form);
         }
 
-        public static void RemoveForm(IForm form)
+        public static void RemoveForm(IUpdatableForm form)
         {
             _forms.Remove(form);
         }
 
         public static void Update()
         {
-            foreach (IForm form in _forms)
+            foreach (IUpdatableForm form in _forms)
             {
                 form.UpdateForm();
             }

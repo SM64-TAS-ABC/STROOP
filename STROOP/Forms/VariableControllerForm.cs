@@ -15,7 +15,7 @@ using STROOP.Structs.Configurations;
 
 namespace STROOP.Forms
 {
-    public partial class VariableControllerForm : Form
+    public partial class VariableControllerForm : Form, IUpdatableForm
     {
         private static readonly Color COLOR_BLUE = Color.FromArgb(220, 255, 255);
         private static readonly Color COLOR_RED = Color.FromArgb(255, 220, 220);
@@ -42,6 +42,8 @@ namespace STROOP.Forms
             _fixedAddressLists = fixedAddressLists;
 
             InitializeComponent();
+            FormManager.AddForm(this);
+            FormClosing += (sender, e) => FormManager.RemoveForm(this);
 
             _textBoxVarName.Text = String.Join(",", _varNames);
 
@@ -127,10 +129,6 @@ namespace STROOP.Forms
 
             _textBoxCurrentValue.BackColor = GetColorForCheckState(BoolUtilities.GetCheckState(
                 fixedAddressLists.ConvertAll(fixedAddressList => fixedAddressList != null)));
-
-            Timer timer = new Timer { Interval = 30 };
-            timer.Tick += (s, e) => UpdateForm();
-            timer.Start();
         }
 
         private string GetValues()
@@ -168,7 +166,7 @@ namespace STROOP.Forms
             }
         }
 
-        private void UpdateForm()
+        public void UpdateForm()
         {
             _textBoxCurrentValue.Text = GetValues();
             List<bool> lockedBools = new List<bool>();

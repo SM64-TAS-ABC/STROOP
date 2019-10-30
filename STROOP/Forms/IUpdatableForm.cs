@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs
 {
-    public interface IForm
+    public interface IUpdatableForm
     {
         void UpdateForm();
     }
