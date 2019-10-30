@@ -696,6 +696,7 @@ namespace STROOP
                 Config.InjectionManager.Update();
                 Config.HackManager.Update();
                 WatchVariableLockManager.Update();
+                FormManager.Update();
                 TestUtilities.Update();
             }));
         }
