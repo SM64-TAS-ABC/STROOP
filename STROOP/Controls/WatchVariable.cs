@@ -170,12 +170,12 @@ namespace STROOP.Controls
         {
             List<uint> addressList = addresses ?? AddressList;
             if (addressList.Count == 0) return false;
-            if (addressList.Count != values.Count) return false;
+            int minCount = Math.Min(addressList.Count, values.Count);
 
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
             bool success = true;
-            for (int i = 0; i < addressList.Count; i++)
+            for (int i = 0; i < minCount; i++)
             {
                 if (values[i] == null) continue;
                 success &= _setterFunction(values[i], addressList[i]);

@@ -907,6 +907,17 @@ namespace STROOP.Controls
             return WatchVarWrapper.GetValue(useRounding, handleFormatting, FixedAddressList);
         }
 
+        public bool SetValueOfValues(object value, int index)
+        {
+            List<object> values = new List<object>();
+            for (int i = 0; i < index; i++)
+            {
+                values.Add(null);
+            }
+            values.Add(value);
+            return SetValues(values);
+        }
+
         public bool SetValues(List<object> values)
         {
             bool success = WatchVarWrapper.SetValues(values, FixedAddressList);

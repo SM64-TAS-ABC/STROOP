@@ -28,7 +28,7 @@ namespace STROOP.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            foreach (var posAddressAngle in posAngles)
+            foreach (var posAngle in posAngles)
             {
                 float currentXValue = xValue;
                 float currentYValue = yValue;
@@ -41,15 +41,15 @@ namespace STROOP.Utilities
                 if (change == Change.ADD)
                 {
                     if (handleScaling) HandleScaling(ref currentXValue, ref currentZValue);
-                    HandleRelativeAngle(ref currentXValue, ref currentZValue, useRelative, posAddressAngle.Angle);
+                    HandleRelativeAngle(ref currentXValue, ref currentZValue, useRelative, posAngle.Angle);
 
                     if (currentXValue == 0) ignoreX = true;
                     if (currentYValue == 0) ignoreY = true;
                     if (currentZValue == 0) ignoreZ = true;
 
-                    currentXValue += (float)posAddressAngle.X;
-                    currentYValue += (float)posAddressAngle.Y;
-                    currentZValue += (float)posAddressAngle.Z;
+                    currentXValue += (float)posAngle.X;
+                    currentYValue += (float)posAngle.Y;
+                    currentZValue += (float)posAngle.Z;
                 }
 
                 if (change == Change.MULTIPLY)
@@ -58,24 +58,24 @@ namespace STROOP.Utilities
                     if (currentYValue == 1) ignoreY = true;
                     if (currentZValue == 1) ignoreZ = true;
 
-                    currentXValue *= (float)posAddressAngle.X;
-                    currentYValue *= (float)posAddressAngle.Y;
-                    currentZValue *= (float)posAddressAngle.Z;
+                    currentXValue *= (float)posAngle.X;
+                    currentYValue *= (float)posAngle.Y;
+                    currentZValue *= (float)posAngle.Z;
                 }
 
                 if ((!affects.HasValue || affects.Value.affectX) && !ignoreX)
                 {
-                    success &= posAddressAngle.SetX(currentXValue);
+                    success &= posAngle.SetX(currentXValue);
                 }
 
                 if ((!affects.HasValue || affects.Value.affectY) && !ignoreY)
                 {
-                    success &= posAddressAngle.SetY(currentYValue);
+                    success &= posAngle.SetY(currentYValue);
                 }
 
                 if ((!affects.HasValue || affects.Value.affectZ) && !ignoreZ)
                 {
-                    success &= posAddressAngle.SetZ(currentZValue);
+                    success &= posAngle.SetZ(currentZValue);
                 }
             }
 
@@ -616,9 +616,8 @@ namespace STROOP.Utilities
             return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
-        public static bool TranslatePosAngle(PositionAngle posAngle, float xOffset, float yOffset, float zOffset, bool useRelative)
+        public static bool TranslatePosAngle(List<PositionAngle> posAngles, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAngle> posAngles = new List<PositionAngle> { posAngle };
             return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 

@@ -4,6 +4,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -18,30 +19,6 @@ namespace STROOP.Forms
 
         public void Initialize(List<WatchVariableControl> controls)
         {
-            if (controls.Count < 3) return;
-
-            List<Func<double>> getters =
-                new List<Func<double>>()
-                {
-                    () => ParsingUtilities.ParseDouble(controls[0].GetValue(handleFormatting: false)),
-                    () => ParsingUtilities.ParseDouble(controls[1].GetValue(handleFormatting: false)),
-                    () => ParsingUtilities.ParseDouble(controls[2].GetValue(handleFormatting: false)),
-                };
-            if (controls.Count >= 4)
-                getters.Add(() => ParsingUtilities.ParseDouble(controls[3].GetValue(handleFormatting: false)));
-
-            List<Func<double, bool>> setters =
-                new List<Func<double, bool>>()
-                {
-                    (double value) => controls[0].SetValue(value),
-                    (double value) => controls[1].SetValue(value),
-                    (double value) => controls[2].SetValue(value),
-                };
-            if (controls.Count >= 4)
-                setters.Add((double value) => controls[3].SetValue(value));
-
-            PositionAngle posAngle = PositionAngle.Functions(getters, setters);
-                    
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
                 true,
@@ -61,8 +38,43 @@ namespace STROOP.Forms
                 groupBoxVar.Controls["checkBoxVarRelative"] as CheckBox,
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
+                    if (controls.Count < 3) return;
+
+                    List<List<object>> valueLists = new List<List<object>>()
+                    {
+                        controls[0].GetValues(handleFormatting: false),
+                        controls[1].GetValues(handleFormatting: false),
+                        controls[2].GetValues(handleFormatting: false),
+                    };
+                    if (controls.Count >= 4)
+                    {
+                        valueLists.Add(controls[3].GetValues(handleFormatting: false));
+                    }
+                    int minCount = valueLists.Min(valueList => valueList.Count);
+
+                    List<PositionAngle> posAngles = new List<PositionAngle>();
+                    for (int i = 0; i < minCount; i++)
+                    {
+                        int index = i;
+                        List<Func<double>> getters = new List<Func<double>>()
+                        {
+                            () => ParsingUtilities.ParseDouble(valueLists[0][index]),
+                            () => ParsingUtilities.ParseDouble(valueLists[1][index]),
+                            () => ParsingUtilities.ParseDouble(valueLists[2][index]),
+                            () => controls.Count >= 4 ? ParsingUtilities.ParseDouble(valueLists[3][index]) : double.NaN,
+                        };
+                        List<Func<double, bool>> setters = new List<Func<double, bool>>()
+                        {
+                            (double value) => controls[0].SetValueOfValues(value, index),
+                            (double value) => controls[1].SetValueOfValues(value, index),
+                            (double value) => controls[2].SetValueOfValues(value, index),
+                            (double value) => controls.Count >= 4 ? controls[3].SetValueOfValues(value, index) : true,
+                        };
+                        PositionAngle posAngle = PositionAngle.Functions(getters, setters);
+                        posAngles.Add(posAngle);
+                    }
                     ButtonUtilities.TranslatePosAngle(
-                        posAngle,
+                        posAngles,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
