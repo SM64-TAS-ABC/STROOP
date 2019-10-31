@@ -157,6 +157,12 @@ namespace STROOP.Controls
                 address => _setterFunction(value, address))
                     .Aggregate(true, (b1, b2) => b1 && b2);
             if (!streamAlreadySuspended) Config.Stream.Resume();
+
+            if (success)
+            {
+                WatchVariableLockManager.UpdateLockValues(this, value, addresses);
+            }
+
             return success;
         }
 
@@ -175,6 +181,12 @@ namespace STROOP.Controls
                 success &= _setterFunction(values[i], addressList[i]);
             }
             if (!streamAlreadySuspended) Config.Stream.Resume();
+
+            if (success)
+            {
+                WatchVariableLockManager.UpdateLockValues(this, values, addresses);
+            }
+
             return success;
         }
 
