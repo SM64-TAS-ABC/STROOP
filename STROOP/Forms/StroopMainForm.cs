@@ -24,7 +24,7 @@ namespace STROOP
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v0.3.0d";
+        const string _version = "v1.0.0";
         
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         List<InputImageGui> _inputImageGuiList = new List<Structs.InputImageGui>();
