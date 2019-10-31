@@ -897,9 +897,21 @@ namespace STROOP.Controls
             return WatchVarWrapper.GetMemoryType();
         }
 
+        public List<object> GetValues(bool useRounding = false, bool handleFormatting = true)
+        {
+            return WatchVarWrapper.GetValues(useRounding, handleFormatting, FixedAddressList);
+        }
+
         public object GetValue(bool useRounding = false, bool handleFormatting = true)
         {
             return WatchVarWrapper.GetValue(useRounding, handleFormatting, FixedAddressList);
+        }
+
+        public bool SetValues(List<object> values)
+        {
+            bool success = WatchVarWrapper.SetValues(values, FixedAddressList);
+            if (!success) FlashColor(FAILURE_COLOR);
+            return success;
         }
 
         public bool SetValue(object value)

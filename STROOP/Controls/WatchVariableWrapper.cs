@@ -303,6 +303,16 @@ namespace STROOP.Controls
             return values;
         }
 
+        public List<object> GetValues(
+            bool handleRounding = true,
+            bool handleFormatting = true,
+            List<uint> addresses = null)
+        {
+            List<object> values = GetVerifiedValues(addresses);
+            values = values.ConvertAll(value => ConvertValue(value, handleRounding, handleFormatting));
+            return values;
+        }
+
         public object GetValue(
             bool handleRounding = true,
             bool handleFormatting = true,
@@ -331,6 +341,12 @@ namespace STROOP.Controls
             if (handleFormatting) value = HandleHexDisplaying(value);
             if (handleFormatting) value = HandleObjectDisplaying(value);
             return value;
+        }
+
+        public bool SetValues(List<object> values, List<uint> addresses = null)
+        {
+            values = values.ConvertAll(value => UnconvertValue(value));
+            return WatchVar.SetValues(values, addresses);
         }
 
         public bool SetValue(object value, List<uint> addresses = null)
