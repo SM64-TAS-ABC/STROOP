@@ -289,12 +289,16 @@ namespace STROOP.Structs.Configurations
             items.Add(itemRestoreAllTabs);
             items.Add(new ToolStripSeparator());
 
+            List<ToolStripMenuItem> tabItems = new List<ToolStripMenuItem>();
             foreach (TabPage tab in _removedTabs)
             {
                 ToolStripMenuItem item = new ToolStripMenuItem(tab.Text + " Tab");
                 item.Click += (sender, e) => AddTab(tab);
-                items.Add(item);
+                tabItems.Add(item);
             }
+            tabItems.Sort((item1, item2) => item1.Text.CompareTo(item2.Text));
+            tabItems.ForEach(item => items.Add(item));
+
             return items;
         }
 
