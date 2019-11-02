@@ -26,7 +26,7 @@ namespace STROOP.Managers
         public enum TabType { Object, Map, Map2, Map3, Model, Memory, Custom, TAS, CamHack, Other };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex };
-        public enum SelectionMethodType { Clicked, Held, StoodOn, Floor, Wall, Ceiling, Closest };
+        public enum SelectionMethodType { Clicked, Held, StoodOn, Interaction, Used, Floor, Wall, Ceiling, Closest };
         public enum ClickType { ObjectClick, MapClick, Map2Click, Map2HomeClick, Map3Click, ModelClick, MemoryClick, CamHackClick, MarkClick };
 
         public uint? HoveredObjectAdress;
@@ -355,6 +355,16 @@ namespace STROOP.Managers
                     SelectedSlotsAddresses.Clear();
                     uint stoodOnObjectAddress = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);
                     if (stoodOnObjectAddress != 0) SelectedSlotsAddresses.Add(stoodOnObjectAddress);
+                    break;
+                case SelectionMethodType.Interaction:
+                    SelectedSlotsAddresses.Clear();
+                    uint interactionObjectAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.InteractionObjectPointerOffset);
+                    if (interactionObjectAddress != 0) SelectedSlotsAddresses.Add(interactionObjectAddress);
+                    break;
+                case SelectionMethodType.Used:
+                    SelectedSlotsAddresses.Clear();
+                    uint usedObjectAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.UsedObjectPointerOffset);
+                    if (usedObjectAddress != 0) SelectedSlotsAddresses.Add(usedObjectAddress);
                     break;
                 case SelectionMethodType.Floor:
                     SelectedSlotsAddresses.Clear();
