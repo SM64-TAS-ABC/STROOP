@@ -179,6 +179,12 @@ namespace STROOP.Structs
                         return paintingAddress != null ? new List<uint>() { paintingAddress.Value } : BaseAddressListEmpty;
                     }
 
+                case BaseAddressTypeEnum.Music:
+                    {
+                        uint? musicAddress = Config.MusicManager.GetMusicAddress();
+                        return musicAddress != null ? new List<uint>() { musicAddress.Value } : BaseAddressListEmpty;
+                    }
+
                 case BaseAddressTypeEnum.LastCoin:
                     {
                         List<uint> coinAddresses = Config.ObjectSlotsManager.GetLoadedObjectsWithPredicate(
