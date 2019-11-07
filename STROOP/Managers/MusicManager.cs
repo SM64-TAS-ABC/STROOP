@@ -13,28 +13,29 @@ namespace STROOP.Managers
 {
     public class MusicManager : DataManager
     {
-        private ListBox _listBoxPainting;
+        private ListBox _listBoxMusic;
 
         public MusicManager(string varFilePath, WatchVariableFlowLayoutPanel variables, TabPage tabPage)
             : base(varFilePath, variables)
         {
-            /*
-            SplitContainer splitContainer = tabPage.Controls["splitContainerPainting"] as SplitContainer;
-            _listBoxPainting = splitContainer.Panel1.Controls["listBoxPainting"] as ListBox;
-            foreach (PaintingData paintingData in paintingDataList)
+            SplitContainer splitContainer = tabPage.Controls["splitContainerMusic"] as SplitContainer;
+            _listBoxMusic = splitContainer.Panel1.Controls["listBoxMusic"] as ListBox;
+            for (int i = 0; i < 3; i++)
             {
-                _listBoxPainting.Items.Add(paintingData);
+                _listBoxMusic.Items.Add(i);
             }
-            */
         }
 
         public uint? GetMusicAddress()
         {
+            object value = _listBoxMusic.SelectedItem;
+            if (value is int intValue)
+            {
+                uint baseAddress = 0x80222A18;
+                uint size = 0x140;
+                uint address = (uint)(baseAddress + intValue * size);
+            }
             return null;
-            /*
-            PaintingData paintingData = _listBoxPainting.SelectedItem as PaintingData;
-            return paintingData?.GetAddress();
-            */
         }
 
         public override void Update(bool updateView)
