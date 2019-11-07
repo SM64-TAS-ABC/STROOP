@@ -34,7 +34,7 @@ namespace STROOP.Managers
                 uint baseAddress = 0x80222A18;
                 uint size = 0x140;
                 uint address = (uint)(baseAddress + intValue * size);
-                return address;
+                return Config.Stream.GetUInt32(address);
             }
             return null;
         }
