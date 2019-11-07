@@ -30,6 +30,7 @@
     <Tab>Map3</Tab>
     <Tab>Options</Tab>
     <Tab>Memory</Tab>
+    <Tab>Music</Tab>
   </TabOrder>
   <RemovedTabs>
     <Tab>Map</Tab>
