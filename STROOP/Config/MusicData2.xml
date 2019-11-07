@@ -1,40 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VarData>
-  <Data base="Painting" offset="0x0" type="short">ID</Data>
-  <Data base="Painting" offset="0x2" type="sbyte">Face Count</Data>
-  <Data base="Painting" offset="0x3" type="sbyte">Ripple Type</Data>
-  <Data base="Painting" offset="0x4" type="sbyte">Last Floor</Data>
-  <Data base="Painting" offset="0x5" type="sbyte">Current Floor</Data>
-  <Data base="Painting" offset="0x6" type="sbyte">Floor Entered</Data>
-  <Data base="Painting" offset="0x7" type="sbyte">Ripple Status</Data>
+  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x01">Enabled</Data>
+  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x02">Finished</Data>
+  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x04">Muted</Data>
+  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x08">seqDmaInProgress</Data>
+  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x10">bankDmaInProgress</Data>
 
-  <Data base="Painting" offset="0x8" type="float">X Rotation</Data>
-  <Data base="Painting" offset="0xC" type="float">Y Rotation</Data>
-  
-  <Data base="Painting" offset="0x10" type="float">X</Data>
-  <Data base="Painting" offset="0x14" type="float">Y</Data>
-  <Data base="Painting" offset="0x18" type="float">Z</Data>
+  <Data base="Music" offset="0x001" type="sbyte">seqVariation</Data>
+  <Data base="Music" offset="0x002" type="byte">state</Data>
+  <Data base="Music" offset="0x003" type="byte">noteAllocPolicy</Data>
+  <Data base="Music" offset="0x004" type="byte">muteBehavior</Data>
+  <Data base="Music" offset="0x005" type="byte">seqId</Data>
 
-  <Data base="Painting" offset="0x1C" type="float">Current Ripple Magnitude</Data>
-  <Data base="Painting" offset="0x20" type="float">Passive Ripple Magnitude</Data>
-  <Data base="Painting" offset="0x24" type="float">Entry Ripple Magnitude</Data>
+  <Data base="Music" offset="0x008" type="byte">loadingBankNumInstruments</Data>
+  <Data base="Music" offset="0x009" type="byte">loadingBankNumDrums</Data>
 
-  <Data base="Painting" offset="0x28" type="float">Current Ripple Rate</Data>
-  <Data base="Painting" offset="0x2C" type="float">Passive Ripple Rate</Data>
-  <Data base="Painting" offset="0x30" type="float">Entry Ripple Rate</Data>
+  <Data base="Music" offset="0x00A" type="ushort">tempo</Data>
+  <Data base="Music" offset="0x00C" type="ushort">tempoAcc</Data>
+  <Data base="Music" offset="0x00E" type="ushort">fadeTimer</Data>
+  <Data base="Music" offset="0x010" type="short">transposition</Data>
+  <Data base="Music" offset="0x012" type="ushort">delay</Data>
 
-  <Data base="Painting" offset="0x34" type="float">Dispersion Factor</Data>
-  <Data base="Painting" offset="0x38" type="float">Passive Dispersion Factor</Data>
-  <Data base="Painting" offset="0x3C" type="float">Entry Dispersion Factor</Data>
-
-  <Data base="Painting" offset="0x40" type="float">Ripple Timer</Data>
-  <Data base="Painting" offset="0x44" type="float">Horizontal Ripple Spot</Data>
-  <Data base="Painting" offset="0x48" type="float">Vertical Ripple Spot</Data>
-
-  <Data base="Painting" offset="0x6C" type="sbyte">Ripple Trigger</Data>
-  <Data base="Painting" offset="0x6D" type="byte">Brightness</Data>
-  <Data base="Painting" offset="0x6E" type="sbyte">Last Mario Under Painting</Data>
-  <Data base="Painting" offset="0x6F" type="sbyte">Current Mario Under Painting</Data>
-  <Data base="Painting" offset="0x70" type="sbyte">New Mario Under Painting</Data>
-  <Data base="Painting" offset="0x74" type="float">Size</Data>
+  <Data base="Music" offset="0x018" type="float">fadeVolume</Data>
+  <Data base="Music" offset="0x01C" type="float">fadeVelocity</Data>
+  <Data base="Music" offset="0x020" type="float">volume</Data>
+  <Data base="Music" offset="0x024" type="float">muteVolumeScale</Data>
 </VarData>
