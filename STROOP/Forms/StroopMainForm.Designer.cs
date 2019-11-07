@@ -1611,7 +1611,7 @@ namespace STROOP
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPageMusic = new System.Windows.Forms.TabPage();
             this.splitContainerMusic = new STROOP.BetterSplitContainer();
             this.listBoxMusic = new System.Windows.Forms.ListBox();
             this.watchVariablePanelMusic = new STROOP.Controls.WatchVariableFlowLayoutPanel();
@@ -2089,7 +2089,7 @@ namespace STROOP
             this.splitContainerCellsControls.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.tabPage1.SuspendLayout();
+            this.tabPageMusic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMusic)).BeginInit();
             this.splitContainerMusic.Panel1.SuspendLayout();
             this.splitContainerMusic.Panel2.SuspendLayout();
@@ -2462,7 +2462,7 @@ namespace STROOP
             this.tabControlMain.Controls.Add(this.tabPageSound);
             this.tabControlMain.Controls.Add(this.tabPageSearch);
             this.tabControlMain.Controls.Add(this.tabPageCells);
-            this.tabControlMain.Controls.Add(this.tabPage1);
+            this.tabControlMain.Controls.Add(this.tabPageMusic);
             this.tabControlMain.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
@@ -20893,16 +20893,16 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // tabPage1
+            // tabPageMusic
             // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.splitContainerMusic);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(915, 463);
-            this.tabPage1.TabIndex = 38;
-            this.tabPage1.Text = "Music";
+            this.tabPageMusic.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMusic.Controls.Add(this.splitContainerMusic);
+            this.tabPageMusic.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMusic.Name = "tabPageMusic";
+            this.tabPageMusic.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMusic.Size = new System.Drawing.Size(915, 463);
+            this.tabPageMusic.TabIndex = 38;
+            this.tabPageMusic.Text = "Music";
             // 
             // splitContainerMusic
             // 
@@ -21558,7 +21558,7 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.tabPage1.ResumeLayout(false);
+            this.tabPageMusic.ResumeLayout(false);
             this.splitContainerMusic.Panel1.ResumeLayout(false);
             this.splitContainerMusic.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMusic)).EndInit();
@@ -23133,7 +23133,7 @@ namespace STROOP
         private BetterSplitContainer splitContainerCellsControls;
         private Button buttonCellsBuildTree;
         private TreeView treeViewCells;
-        private TabPage tabPage1;
+        private TabPage tabPageMusic;
         private BetterSplitContainer splitContainerMusic;
         private ListBox listBoxMusic;
         private WatchVariableFlowLayoutPanel watchVariablePanelMusic;
