@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VarData>
-  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x01">Enabled</Data>
-  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x02">Finished</Data>
-  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x04">Muted</Data>
-  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x08">seqDmaInProgress</Data>
-  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x10">bankDmaInProgress</Data>
+  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x80">Enabled</Data>
+  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x40">Finished</Data>
+  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x20">Muted</Data>
+  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x10">seqDmaInProgress</Data>
+  <Data base="Music" offset="0x000" type="byte" subclass="Boolean" mask="0x08">bankDmaInProgress</Data>
 
   <Data base="Music" offset="0x001" type="sbyte">seqVariation</Data>
   <Data base="Music" offset="0x002" type="byte">state</Data>
