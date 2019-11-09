@@ -90,10 +90,11 @@ namespace STROOP.Controls
             ToolStripMenuItem openSaveClearItem = new ToolStripMenuItem("Open / Save / Clear ...");
             ControlUtilities.AddDropDownItems(
                 openSaveClearItem,
-                new List<string>() { "Open", "Save in Place", "Save As", "Clear" },
+                new List<string>() { "Open", "Open as Pop Out", "Save in Place", "Save As", "Clear" },
                 new List<Action>()
                 {
                     () => OpenVariables(),
+                    () => OpenVariablesAsPopOut(),
                     () => SaveVariablesInPlace(),
                     () => SaveVariables(),
                     () => ClearVariables(),
@@ -300,6 +301,18 @@ namespace STROOP.Controls
         {
             List<XElement> elements = DialogUtilities.OpenXmlElements(FileType.StroopVariables);
             OpenVariables(elements);
+        }
+
+        public void OpenVariablesAsPopOut()
+        {
+            List<XElement> elements = DialogUtilities.OpenXmlElements(FileType.StroopVariables);
+            if (elements.Count == 0) return;
+            List<WatchVariableControlPrecursor> precursors =
+                elements.ConvertAll(element => new WatchVariableControlPrecursor(element));
+            List<WatchVariableControl> controls = precursors.ConvertAll(p => p.CreateWatchVariableControl());
+            VariablePopOutForm form = new VariablePopOutForm();
+            form.Initialize(controls);
+            form.ShowForm();
         }
 
         public void OpenVariables(List<XElement> elements)
