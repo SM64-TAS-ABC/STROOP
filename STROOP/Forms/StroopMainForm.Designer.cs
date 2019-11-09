@@ -1615,6 +1615,7 @@ namespace STROOP
             this.splitContainerMusic = new STROOP.BetterSplitContainer();
             this.listBoxMusic = new System.Windows.Forms.ListBox();
             this.watchVariablePanelMusic = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.checkBoxMemoryReaderHex = new System.Windows.Forms.CheckBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -18260,6 +18261,7 @@ namespace STROOP
             // 
             // groupBoxMemoryReader
             // 
+            this.groupBoxMemoryReader.Controls.Add(this.checkBoxMemoryReaderHex);
             this.groupBoxMemoryReader.Controls.Add(this.comboBoxMemoryReaderTypeValue);
             this.groupBoxMemoryReader.Controls.Add(this.textBoxMemoryReaderCountValue);
             this.groupBoxMemoryReader.Controls.Add(this.buttonMemoryReaderRead);
@@ -18267,7 +18269,7 @@ namespace STROOP
             this.groupBoxMemoryReader.Controls.Add(this.textBoxMemoryReaderAddressValue);
             this.groupBoxMemoryReader.Controls.Add(this.labelMemoryReaderAddressLabel);
             this.groupBoxMemoryReader.Controls.Add(this.labelMemoryReaderTypeLabel);
-            this.groupBoxMemoryReader.Location = new System.Drawing.Point(610, 278);
+            this.groupBoxMemoryReader.Location = new System.Drawing.Point(171, 11);
             this.groupBoxMemoryReader.Name = "groupBoxMemoryReader";
             this.groupBoxMemoryReader.Size = new System.Drawing.Size(144, 125);
             this.groupBoxMemoryReader.TabIndex = 40;
@@ -18295,10 +18297,10 @@ namespace STROOP
             // 
             // buttonMemoryReaderRead
             // 
-            this.buttonMemoryReaderRead.Location = new System.Drawing.Point(14, 92);
+            this.buttonMemoryReaderRead.Location = new System.Drawing.Point(57, 92);
             this.buttonMemoryReaderRead.Margin = new System.Windows.Forms.Padding(2);
             this.buttonMemoryReaderRead.Name = "buttonMemoryReaderRead";
-            this.buttonMemoryReaderRead.Size = new System.Drawing.Size(117, 23);
+            this.buttonMemoryReaderRead.Size = new System.Drawing.Size(71, 23);
             this.buttonMemoryReaderRead.TabIndex = 16;
             this.buttonMemoryReaderRead.Text = "Read";
             this.buttonMemoryReaderRead.UseVisualStyleBackColor = true;
@@ -20950,6 +20952,16 @@ namespace STROOP
             this.watchVariablePanelMusic.Size = new System.Drawing.Size(753, 455);
             this.watchVariablePanelMusic.TabIndex = 7;
             // 
+            // checkBoxMemoryReaderHex
+            // 
+            this.checkBoxMemoryReaderHex.AutoSize = true;
+            this.checkBoxMemoryReaderHex.Location = new System.Drawing.Point(11, 95);
+            this.checkBoxMemoryReaderHex.Name = "checkBoxMemoryReaderHex";
+            this.checkBoxMemoryReaderHex.Size = new System.Drawing.Size(45, 17);
+            this.checkBoxMemoryReaderHex.TabIndex = 30;
+            this.checkBoxMemoryReaderHex.Text = "Hex";
+            this.checkBoxMemoryReaderHex.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -23137,6 +23149,7 @@ namespace STROOP
         private BetterSplitContainer splitContainerMusic;
         private ListBox listBoxMusic;
         private WatchVariableFlowLayoutPanel watchVariablePanelMusic;
+        private CheckBox checkBoxMemoryReaderHex;
     }
 }
 
