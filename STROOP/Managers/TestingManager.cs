@@ -150,6 +150,7 @@ namespace STROOP.Managers
         ComboBox _comboBoxMemoryReaderTypeValue;
         BetterTextbox _textBoxMemoryReaderAddressValue;
         BetterTextbox _textBoxMemoryReaderCountValue;
+        CheckBox _checkBoxMemoryReaderHex;
         Button _buttonMemoryReaderRead;
 
         // TTC Simulator
@@ -353,19 +354,19 @@ namespace STROOP.Managers
             _comboBoxMemoryReaderTypeValue = _groupBoxMemoryReader.Controls["comboBoxMemoryReaderTypeValue"] as ComboBox;
             _textBoxMemoryReaderAddressValue = _groupBoxMemoryReader.Controls["textBoxMemoryReaderAddressValue"] as BetterTextbox;
             _textBoxMemoryReaderCountValue = _groupBoxMemoryReader.Controls["textBoxMemoryReaderCountValue"] as BetterTextbox;
+            _checkBoxMemoryReaderHex = _groupBoxMemoryReader.Controls["checkBoxMemoryReaderHex"] as CheckBox;
             _buttonMemoryReaderRead = _groupBoxMemoryReader.Controls["buttonMemoryReaderRead"] as Button;
 
             _comboBoxMemoryReaderTypeValue.DataSource = TypeUtilities.StringToType.Keys.ToList();
 
             _buttonMemoryReaderRead.Click += (sender, e) =>
             {
-                bool showHex = KeyboardUtilities.IsCtrlHeld();
+                bool showHex = _checkBoxMemoryReaderHex.Checked;
                 uint address = ParsingUtilities.ParseHex(_textBoxMemoryReaderAddressValue.Text);
                 int count = ParsingUtilities.ParseInt(_textBoxMemoryReaderCountValue.Text);
                 string typeString = _comboBoxMemoryReaderTypeValue.SelectedValue as string;
                 Type type = TypeUtilities.StringToType[typeString];
                 int typeSize = TypeUtilities.TypeSize[type];
-                Type unsignedByteType = TypeUtilities.UnsignedByteType[typeSize];
                 List <object> values = new List<object>();
                 for (int i = 0; i < count; i++)
                 {
@@ -373,9 +374,7 @@ namespace STROOP.Managers
                     object value = Config.Stream.GetValue(type, addr);
                     if (showHex)
                     {
-                        object hexNumber = Config.Stream.GetValue(unsignedByteType, addr);
-                        string hexString = HexUtilities.FormatValue(hexNumber, 2 * typeSize);
-                        value = hexString + "\t" + value;
+                        value = HexUtilities.FormatMemory(value, 2 * typeSize);
                     }
                     values.Add(value);
                 }
