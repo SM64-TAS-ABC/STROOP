@@ -62,19 +62,35 @@ namespace STROOP.Controls
         {
             if (!(obj is WatchVariableLock)) return false;
             WatchVariableLock other = (WatchVariableLock)obj;
-            return this.IsSpecial == other.IsSpecial &&
-                   this.MemoryType == other.MemoryType &&
+
+            bool sameAddress = this.Address == other.Address &&
                    this.ByteCount == other.ByteCount &&
+                   this.MemoryType == other.MemoryType;
+
+            WatchVariableLock lock1 = this.Address < other.Address ? this : other;
+            WatchVariableLock lock2 = this.Address < other.Address ? other : this;
+            bool closeAddress = lock1.Address + 2 == lock2.Address &&
+                (lock1.MemoryType == typeof(uint) || lock1.MemoryType == typeof(int)) &&
+                (lock2.MemoryType == typeof(ushort) || lock2.MemoryType == typeof(short));
+
+            return (sameAddress || closeAddress) &&
+                   this.IsSpecial == other.IsSpecial &&
                    this.Mask == other.Mask &&
-                   this.Address == other.Address &&
                    this.SpecialType == other.SpecialType;
         }
 
         public bool EqualsMemorySignature(uint address, Type type, uint? mask)
         {
-            return IsSpecial == false &&
-                Address == address &&
-                MemoryType == type &&
+            bool sameAddress = this.Address == address && this.MemoryType == type;
+
+            (uint address1, Type type1) = Address < address ? (Address, MemoryType) : (address, type);
+            (uint address2, Type type2) = Address < address ? (address, type) : (Address, MemoryType);
+            bool closeAddress = address1 + 2 == address2 &&
+                (type1 == typeof(uint) || type1 == typeof(int)) &&
+                (type2 == typeof(ushort) || type2 == typeof(short));
+
+            return (sameAddress || closeAddress) &&
+                IsSpecial == false &&
                 Mask == mask;
         }
 
