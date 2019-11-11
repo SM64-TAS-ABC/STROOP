@@ -373,7 +373,7 @@ namespace STROOP.Utilities
                 value = (byte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRam(new byte[] { value }, (UIntPtr)address, EndiannessType.Little, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(byte), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(byte), mask, shift);
             return returnValue;
         }
 
@@ -389,7 +389,7 @@ namespace STROOP.Utilities
                 value = (sbyte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRam(new byte[] { (byte)value }, (UIntPtr)address, EndiannessType.Little, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(sbyte), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(sbyte), mask, shift);
             return returnValue;
         }
 
@@ -405,7 +405,7 @@ namespace STROOP.Utilities
                 value = (short)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(short), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(short), mask, shift);
             return returnValue;
         }
 
@@ -421,7 +421,7 @@ namespace STROOP.Utilities
                 value = (ushort)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(ushort), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(ushort), mask, shift);
             return returnValue;
         }
 
@@ -437,7 +437,7 @@ namespace STROOP.Utilities
                 value = (int)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(int), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(int), mask, shift);
             return returnValue;
         }
 
@@ -453,14 +453,14 @@ namespace STROOP.Utilities
                 value = (uint)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(uint), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(uint), mask, shift);
             return returnValue;
         }
 
         public bool SetValue(float value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(float), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(float), mask, shift);
             return returnValue;
         }
 
@@ -472,7 +472,7 @@ namespace STROOP.Utilities
             byte[] bytesSwapped = bytes2.Concat(bytes1).ToArray();
 
             bool returnValue = WriteRam(bytesSwapped, (UIntPtr)address, EndiannessType.Little, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(double), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(double), mask, shift);
             return returnValue;
         }
 

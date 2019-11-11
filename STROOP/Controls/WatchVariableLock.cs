@@ -20,6 +20,7 @@ namespace STROOP.Controls
         public readonly Type MemoryType;
         public readonly int? ByteCount;
         public readonly uint? Mask;
+        public readonly int? Shift;
         public readonly uint Address;
         public readonly string SpecialType;
         public readonly Func<object, uint, bool> SetterFunction;
@@ -32,6 +33,7 @@ namespace STROOP.Controls
             Type memoryType,
             int? byteCount,
             uint? mask,
+            int? shift,
             uint address,
             string specialType,
             Func<object, uint, bool> setterFunction,
@@ -41,6 +43,7 @@ namespace STROOP.Controls
             MemoryType = memoryType;
             ByteCount = byteCount;
             Mask = mask;
+            Shift = shift;
             Address = address;
             SpecialType = specialType;
             SetterFunction = setterFunction;
@@ -76,10 +79,11 @@ namespace STROOP.Controls
             return (sameAddress || closeAddress) &&
                    this.IsSpecial == other.IsSpecial &&
                    this.Mask == other.Mask &&
+                   this.Shift == other.Shift &&
                    this.SpecialType == other.SpecialType;
         }
 
-        public bool EqualsMemorySignature(uint address, Type type, uint? mask)
+        public bool EqualsMemorySignature(uint address, Type type, uint? mask, int? shift)
         {
             bool sameAddress = this.Address == address && this.MemoryType == type;
 
@@ -91,7 +95,8 @@ namespace STROOP.Controls
 
             return (sameAddress || closeAddress) &&
                 IsSpecial == false &&
-                Mask == mask;
+                Mask == mask &&
+                Shift == shift;
         }
 
         public override int GetHashCode()

@@ -200,7 +200,7 @@ namespace STROOP.Controls
             for (int i = 0; i < values.Count; i++)
             {
                 locks.Add(new WatchVariableLock(
-                    IsSpecial, MemoryType, ByteCount, Mask, addressList[i], SpecialType, _setterFunction, values[i]));
+                    IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], SpecialType, _setterFunction, values[i]));
             }
             return locks;
         }
