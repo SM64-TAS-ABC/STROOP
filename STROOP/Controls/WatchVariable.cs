@@ -37,9 +37,8 @@ namespace STROOP.Controls
         private readonly Func<uint, object> _getterFunction;
         private readonly Func<object, uint, bool> _setterFunction;
 
-        public bool IsSpecial { get { return SpecialType != null; } }
-
-        private bool UseAbsoluteAddressing { get { return BaseAddressType == BaseAddressTypeEnum.Absolute; } }
+        public bool IsSpecial { get => SpecialType != null; }
+        public bool UseAbsoluteAddressing { get => BaseAddressType == BaseAddressTypeEnum.Absolute; }
 
         public uint Offset
         {
@@ -59,18 +58,12 @@ namespace STROOP.Controls
 
         public List<uint> BaseAddressList
         {
-            get
-            {
-                return WatchVariableUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType);
-            }
+            get => WatchVariableUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType);
         }
 
         public List<uint> AddressList
         {
-            get
-            {
-                return BaseAddressList.ConvertAll(baseAddress => baseAddress + Offset);
-            }
+            get => BaseAddressList.ConvertAll(baseAddress => baseAddress + Offset);
         }
 
         public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
