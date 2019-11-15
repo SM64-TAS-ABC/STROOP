@@ -234,7 +234,7 @@ namespace STROOP.Utilities
                 blueMarioMapImagePath = "", greenMarioMapImagePath = "", orangeMarioMapImagePath = "", purpleMarioMapImagePath = "",
                 triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "",
                 cellGridlinesImagePath = "", currentCellImagePath = "", unitGridlinesImagePath = "", currentUnitImagePath = "",
-                nextPositionsImagePath = "", cylinderImagePath = "", sphereImagePath = "", pathImagePath = "", customPointsImagePath = "",
+                nextPositionsImagePath = "", cylinderImagePath = "", sphereImagePath = "", pathImagePath = "", customPointsImagePath = "", customGridlinesImagePath = "",
                 selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
                 stoodOnOverlayImagePath = "", riddenOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
                 usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "", cameraHackOverlayImagePath = "",
@@ -379,6 +379,10 @@ namespace STROOP.Utilities
 
                     case "CustomPoints":
                         customPointsImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "CustomGridlines":
+                        customGridlinesImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "Overlays":
@@ -593,6 +597,7 @@ namespace STROOP.Utilities
             assoc.SphereImage = Image.FromFile(mapImageDir + sphereImagePath);
             assoc.PathImage = Image.FromFile(mapImageDir + pathImagePath);
             assoc.CustomPointsImage = Image.FromFile(mapImageDir + customPointsImagePath);
+            assoc.CustomGridlinesImage = Image.FromFile(mapImageDir + customGridlinesImagePath);
 
             assoc.MarioBehavior = marioBehavior;
 

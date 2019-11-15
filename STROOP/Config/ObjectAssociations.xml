@@ -72,6 +72,9 @@
   <CustomPoints>
     <MapImage path="Custom Points.png"/>
   </CustomPoints>
+  <CustomGridlines>
+    <MapImage path="Custom Gridlines.png"/>
+  </CustomGridlines>
   <Hud>
     <Image path="HUD.png"/>
     <Color>#aaaaaa</Color>

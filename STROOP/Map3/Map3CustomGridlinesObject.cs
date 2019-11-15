@@ -49,7 +49,7 @@ namespace STROOP.Map3
 
         public override Image GetImage()
         {
-            return Config.ObjectAssociations.CellGridlinesImage;
+            return Config.ObjectAssociations.CustomGridlinesImage;
         }
     }
 }

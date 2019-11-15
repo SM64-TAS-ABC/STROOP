@@ -47,6 +47,7 @@ namespace STROOP.Structs
         public Image SphereImage;
         public Image PathImage;
         public Image CustomPointsImage;
+        public Image CustomGridlinesImage;
 
         public Color MarioColor;
         public Color HudColor;
@@ -280,6 +281,7 @@ namespace STROOP.Structs
             SphereImage?.Dispose();
             PathImage?.Dispose();
             CustomPointsImage?.Dispose();
+            CustomGridlinesImage?.Dispose();
         }
     }
 }
