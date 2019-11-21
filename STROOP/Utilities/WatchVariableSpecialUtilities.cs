@@ -2270,7 +2270,8 @@ namespace STROOP.Structs
                         marioPos.X, marioPos.Z,
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
-                        triStruct.X3, triStruct.Z3, 1, 2);
+                        triStruct.X3, triStruct.Z3, 1, 2,
+                        new TriangleDataModel(triAddress).Classification);
                     return signedDistToLine12;
                 },
                 (double dist, uint triAddress) =>
@@ -2281,7 +2282,8 @@ namespace STROOP.Structs
                         marioPos.X, marioPos.Z,
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
-                        triStruct.X3, triStruct.Z3, 1, 2);
+                        triStruct.X3, triStruct.Z3, 1, 2,
+                        new TriangleDataModel(triAddress).Classification);
 
                     double missingDist = dist - signedDistToLine12;
                     double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
@@ -2303,7 +2305,8 @@ namespace STROOP.Structs
                         marioPos.X, marioPos.Z,
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
-                        triStruct.X3, triStruct.Z3, 2, 3);
+                        triStruct.X3, triStruct.Z3, 2, 3,
+                        new TriangleDataModel(triAddress).Classification);
                     return signedDistToLine23;
                 },
                 (double dist, uint triAddress) =>
@@ -2314,7 +2317,8 @@ namespace STROOP.Structs
                         marioPos.X, marioPos.Z,
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
-                        triStruct.X3, triStruct.Z3, 2, 3);
+                        triStruct.X3, triStruct.Z3, 2, 3,
+                        new TriangleDataModel(triAddress).Classification);
 
                     double missingDist = dist - signedDistToLine23;
                     double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
@@ -2336,7 +2340,8 @@ namespace STROOP.Structs
                         marioPos.X, marioPos.Z,
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
-                        triStruct.X3, triStruct.Z3, 3, 1);
+                        triStruct.X3, triStruct.Z3, 3, 1,
+                        new TriangleDataModel(triAddress).Classification);
                     return signedDistToLine31;
                 },
                 (double dist, uint triAddress) =>
@@ -2347,7 +2352,8 @@ namespace STROOP.Structs
                         marioPos.X, marioPos.Z,
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
-                        triStruct.X3, triStruct.Z3, 3, 1);
+                        triStruct.X3, triStruct.Z3, 3, 1,
+                        new TriangleDataModel(triAddress).Classification);
 
                     double missingDist = dist - signedDistToLine31;
                     double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
