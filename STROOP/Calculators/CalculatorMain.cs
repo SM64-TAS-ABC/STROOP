@@ -1109,5 +1109,71 @@ namespace STROOP.Structs
             MarioBobombState finalMarioBobombState = new MarioBobombState(finalMarioState, relX, relZ);
             return finalMarioBobombState;
         }
+
+        public static void CalculateTylerChallenge()
+        {
+            float startX = 0f;
+            float startY = 251.947235107422f;
+            float startZ = -12.3211631774902f;
+            float startXSpeed = 0f;
+            float startYSpeed = 7.99412536621094f;
+            float startZSpeed = 2.85620307922363f;
+            float startHSpeed = 2.85620307922363f;
+
+            ushort marioAngle = 0;
+            ushort cameraAngle = 32768;
+
+            MarioState startState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                marioAngle,
+                cameraAngle,
+                null,
+                null,
+                0);
+
+            int lastIndex = -1;
+            List<Input> inputs = CalculatorUtilities.GetInputRange(0, 0, -65, 65);
+            float bestDiff = 1;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            HashSet<MarioState> alreadySeen = new HashSet<MarioState>();
+            queue.Enqueue(startState);
+
+            while (queue.Count != 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+                List<MarioState> nextStates = inputs.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input));
+                foreach (MarioState state in nextStates)
+                {
+                    if (alreadySeen.Contains(state)) continue;
+
+                    if (state.Index != lastIndex)
+                    {
+                        if (state.Index == 5) return;
+                        lastIndex = state.Index;
+                        Config.Print("Now at index " + lastIndex);
+                    }
+
+                    float diff = (float)MoreMath.GetDistanceBetween(state.X, state.Z, 0, 0);
+
+                    if (diff < bestDiff)
+                    {
+                        bestDiff = diff;
+                        Config.Print("New best diff of " + diff);
+                        Config.Print(state.GetLineage());
+                        Config.Print();
+                    }
+
+                    alreadySeen.Add(state);
+                    queue.Enqueue(state);
+                }
+            }
+            Config.Print("FAILED");
+        }
     }
 }
