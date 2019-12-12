@@ -200,7 +200,7 @@ namespace STROOP.Utilities
         }
 
         public static bool RotateObjects(List<ObjectDataModel> objects,
-            int yawOffset, int pitchOffset, int rollOffset, bool includeMario)
+            int yawOffset, int pitchOffset, int rollOffset, bool includeMario, bool rotateAroundCenter)
         {
             if (!objects.Any())
                 return false;
@@ -209,7 +209,7 @@ namespace STROOP.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            foreach (var obj in objects)
+            foreach (ObjectDataModel obj in objects)
             {
                 ushort yawFacing, pitchFacing, rollFacing, yawMoving, pitchMoving, rollMoving;
                 yawFacing = Config.Stream.GetUInt16(obj.Address + ObjectConfig.YawFacingOffset);
@@ -234,7 +234,22 @@ namespace STROOP.Utilities
                 success &= Config.Stream.SetValue(rollMoving, obj.Address + ObjectConfig.RollMovingOffset);
             }
 
-            if (includeMario && objects.Count > 0 && yawOffset != 0)
+            if (rotateAroundCenter && yawOffset != 0)
+            {
+                float centerX = objects.Average(obj => obj.X);
+                float centerZ = objects.Average(obj => obj.Z);
+
+                foreach (ObjectDataModel obj in objects)
+                {
+                    (double newX, double newZ) =
+                        MoreMath.RotatePointAboutPointAnAngularDistance(
+                            obj.X, obj.Z, centerX, centerZ, yawOffset);
+                    success &= Config.Stream.SetValue((float)newX, obj.Address + ObjectConfig.XOffset);
+                    success &= Config.Stream.SetValue((float)newZ, obj.Address + ObjectConfig.ZOffset);
+                }
+            }
+
+            if (includeMario && yawOffset != 0)
             {
                 PositionAngle obj = PositionAngle.Obj(objects[0].Address);
                 PositionAngle mario = PositionAngle.Mario;
