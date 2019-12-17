@@ -210,7 +210,7 @@ namespace STROOP.Utilities
             badVertexPairIndexes.ForEach(index => vertexPairs.RemoveAt(index));
 
             List<TriangleShape> triShapes = new List<TriangleShape>();
-            foreach (var ((x1,z1),(x2,z2),proj) in vertexPairs)
+            foreach (var ((x1, z1), (x2, z2), proj) in vertexPairs)
             {
                 double angle = MoreMath.AngleTo_AngleUnits(x1, z1, x2, z2);
                 double projAngle = proj ? 16384 : 0;
@@ -296,6 +296,55 @@ namespace STROOP.Utilities
             double normOffset = -1 * (normX * x1 + normY * y1 + normZ * z1);
 
             return ((float)normX, (float)normY, (float)normZ, (float)normOffset);
+        }
+
+        public static TriangleDataModel FindFloor(float floatX, float floatY, float floatZ)
+        {
+            int LEVEL_BOUNDARY_MAX = 0x2000;
+            int CELL_SIZE = 0x400;
+
+            short shortX = (short)floatX;
+            short shortY = (short)floatY;
+            short shortZ = (short)floatZ;
+            
+            if (shortX <= -LEVEL_BOUNDARY_MAX || shortX >= LEVEL_BOUNDARY_MAX)
+            {
+                return null;
+            }
+            if (shortZ <= -LEVEL_BOUNDARY_MAX || shortZ >= LEVEL_BOUNDARY_MAX)
+            {
+                return null;
+            }
+
+            int cellX = ((shortX + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0xF;
+            int cellZ = ((shortZ + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0xF;
+
+            TriangleDataModel staticTri = FindFloorFromList(shortX, shortY, shortZ, cellX, cellZ, true);
+            TriangleDataModel dynamicTri = FindFloorFromList(shortX, shortY, shortZ, cellX, cellZ, false);
+
+            return null; // REMOVE THIS
+        }
+
+        private static TriangleDataModel FindFloorFromList(short shortX, short shortY, short shortZ, int cellX, int cellZ, bool isStaticParition)
+        {
+            uint partitionAddress = isStaticParition ? TriangleConfig.StaticTrianglePartitionAddress : TriangleConfig.DynamicTrianglePartitionAddress;
+            int type = 0;
+
+            int typeSize = 2 * 4;
+            int xSize = 3 * typeSize;
+            int zSize = 16 * xSize;
+            uint address = (uint)(partitionAddress + cellZ * zSize + cellX * xSize + type * typeSize);
+            address = Config.Stream.GetUInt32(address);
+
+            while (address != 0)
+            {
+                uint triAddress = Config.Stream.GetUInt32(address + 4);
+                TriangleDataModel tri = new TriangleDataModel(triAddress);
+                if (tri.IsPointInsideAndAboveTriangle(shortX, shortY, shortZ)) return tri;
+                address = Config.Stream.GetUInt32(address);
+            }
+
+            return null;
         }
     }
 } 

@@ -293,5 +293,19 @@ namespace STROOP.Models
         {
             return (-x * normX - z * normZ - normOffset) / normY;
         }
+
+        public bool IsPointInsideAndAboveTriangle(double doubleX, double doubleY, double doubleZ)
+        {
+            short shortX = (short)doubleX;
+            short shortY = (short)doubleY;
+            short shortZ = (short)doubleZ;
+
+            if (!MoreMath.IsPointInsideTriangle(shortX, shortZ, X1, Z1, X2, Z2, X3, Z3)) return false;
+            
+            double heightOnTriangle = GetHeightOnTriangle(shortX, shortZ, NormX, NormY, NormZ, NormOffset);
+            if (shortY < heightOnTriangle - 78) return false;
+
+            return true;
+        }
     }
 }
