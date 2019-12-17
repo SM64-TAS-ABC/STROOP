@@ -322,7 +322,13 @@ namespace STROOP.Utilities
             TriangleDataModel staticTri = FindFloorFromList(shortX, shortY, shortZ, cellX, cellZ, true);
             TriangleDataModel dynamicTri = FindFloorFromList(shortX, shortY, shortZ, cellX, cellZ, false);
 
-            return null; // REMOVE THIS
+            if (staticTri == null && dynamicTri == null) return null;
+            if (staticTri == null) return dynamicTri;
+            if (dynamicTri == null) return staticTri;
+
+            double yOnStaticTri = staticTri.GetHeightOnTriangle(shortX, shortZ);
+            double yOnDynamicTri = dynamicTri.GetHeightOnTriangle(shortX, shortZ);
+            return yOnDynamicTri > yOnStaticTri ? dynamicTri : staticTri;
         }
 
         private static TriangleDataModel FindFloorFromList(short shortX, short shortY, short shortZ, int cellX, int cellZ, bool isStaticParition)
