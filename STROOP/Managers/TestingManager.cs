@@ -668,6 +668,22 @@ namespace STROOP.Managers
                 }
             }
 
+            if (TestingConfig.UpdateFloorTri)
+            {
+                uint koopaAddress = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
+                if (koopaAddress == 0) return;
+                float koopaX = Config.Stream.GetSingle(koopaAddress + ObjectConfig.XOffset);
+                float koopaY = Config.Stream.GetSingle(koopaAddress + ObjectConfig.YOffset);
+                float koopaZ = Config.Stream.GetSingle(koopaAddress + ObjectConfig.ZOffset);
+                TriangleDataModel koopaTri = TriangleUtilities.FindFloor(koopaX, koopaY, koopaZ);
+                byte room = koopaTri.Room;
+
+                //Config.Stream.SetValue((int)room, koopaAddress + ObjectConfig.NativeRoomOffset);
+
+                uint marioTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                Config.Stream.SetValue(room, marioTri + TriangleOffsetsConfig.Room);
+            }
+
             // panning cam hack
             if (false)
             {

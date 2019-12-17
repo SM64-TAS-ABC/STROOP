@@ -188,6 +188,7 @@ namespace STROOP
                     "Show Cog Tris",
                     "Show Shapes",
                     "Update Cam Hack Angle",
+                    "Update Floor Tri",
                 },
                 new List<Func<bool>>()
                 {
@@ -215,6 +216,11 @@ namespace STROOP
                     {
                         TestingConfig.UpdateCamHackAngle = !TestingConfig.UpdateCamHackAngle;
                         return TestingConfig.UpdateCamHackAngle;
+                    },
+                    () =>
+                    {
+                        TestingConfig.UpdateFloorTri = !TestingConfig.UpdateFloorTri;
+                        return TestingConfig.UpdateFloorTri;
                     },
                 });
 
