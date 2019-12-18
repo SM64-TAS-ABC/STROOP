@@ -18,6 +18,10 @@ namespace STROOP.Structs
         public static readonly uint YOffset = 0x40;
         public static readonly uint ZOffset = 0x44;
 
+        public static readonly uint XSpeedOffset = 0x48;
+        public static readonly uint YSpeedOffset = 0x4C;
+        public static readonly uint ZSpeedOffset = 0x50;
+
         public static readonly uint FacingYawOffset = 0x2E;
         public static readonly uint FacingPitchOffset = 0x2C;
         public static readonly uint FacingRollOffset = 0x30;

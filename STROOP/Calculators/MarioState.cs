@@ -48,6 +48,23 @@ namespace STROOP.Structs
             Index = index;
         }
 
+        public static MarioState CreateMarioState()
+        {
+            return new MarioState(
+                x: Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset),
+                y: Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset),
+                z: Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset),
+                xSpeed: Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XSpeedOffset),
+                ySpeed: Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset),
+                zSpeed: Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZSpeedOffset),
+                hSpeed: Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset),
+                marioAngle: Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset),
+                cameraAngle: Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset),
+                previousState: null,
+                lastInput: null,
+                index: 0);
+        }
+
         public MutableMarioState GetMutableMarioState(Input input)
         {
             return new MutableMarioState(

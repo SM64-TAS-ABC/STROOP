@@ -28,19 +28,22 @@ namespace STROOP.Map3
         public override void DrawOnControl()
         {
             float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
             ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-            (double x1, double z1) = MoreMath.AddVectorToPoint(100, marioAngle + 0, marioX, marioZ);
-            (double x2, double z2) = MoreMath.AddVectorToPoint(100, marioAngle + 16384, marioX, marioZ);
-            (double x3, double z3) = MoreMath.AddVectorToPoint(100, marioAngle + 32768, marioX, marioZ);
-            (double x4, double z4) = MoreMath.AddVectorToPoint(100, marioAngle + 49152, marioX, marioZ);
-            DrawCircles((float)x1, (float)z1, 20);
-            DrawCircles((float)x2, (float)z2, 20);
-            DrawCircles((float)x3, (float)z3, 20);
-            DrawCircles((float)x4, (float)z4, 20);
+
+            MarioState marioState = MarioState.CreateMarioState();
+            MarioState MarioStateForward = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Forward);
+            MarioState MarioStateBackward = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Backward);
+            MarioState MarioStateLeft = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Left);
+            MarioState MarioStateRight = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Right);
+            DrawCircles(MarioStateForward.X, MarioStateForward.Z, 20, Color.Blue);
+            DrawCircles(MarioStateBackward.X, MarioStateBackward.Z, 20, Color.Orange);
+            DrawCircles(MarioStateLeft.X, MarioStateLeft.Z, 20, Color.Purple);
+            DrawCircles(MarioStateRight.X, MarioStateRight.Z, 20, Color.Red);
         }
 
-        private void DrawCircles(float centerX, float centerZ, float radius)
+        private void DrawCircles(float centerX, float centerZ, float radius, Color color)
         {
             (float controlCenterX, float controlCenterZ) = Map3Utilities.ConvertCoordsForControl(centerX, centerZ);
             float controlRadius = radius * Config.Map3Graphics.MapViewScaleValue;
@@ -53,7 +56,8 @@ namespace STROOP.Map3
             GL.LoadIdentity();
 
             // Draw circle
-            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+            //GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+            GL.Color4(color.R, color.G, color.B, OpacityByte);
             GL.Begin(PrimitiveType.TriangleFan);
             GL.Vertex2(controlCenterX, controlCenterZ);
             foreach ((float x, float z) in controlPoints)

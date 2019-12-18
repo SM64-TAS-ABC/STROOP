@@ -21,6 +21,14 @@ namespace STROOP.Structs
             return withYSpeed;
         }
 
+        public static MarioState ApplyInput(MarioState marioState, RelativeDirection direction)
+        {
+            MarioState withHSpeed = ComputeAirHSpeed(marioState, direction);
+            MarioState moved = AirMove(withHSpeed);
+            MarioState withYSpeed = ComputeAirYSpeed(moved);
+            return withYSpeed;
+        }
+
         public static MarioState AirMove(MarioState initialState, int numQSteps = 4)
         {
             float newX = initialState.X;
@@ -90,6 +98,66 @@ namespace STROOP.Structs
                 initialState.CameraAngle,
                 initialState,
                 input,
+                initialState.Index + 1);
+        }
+
+        // update_air_without_turn
+        private static MarioState ComputeAirHSpeed(MarioState initialState, RelativeDirection direction)
+        {
+            bool longJump = false;
+            int maxSpeed = longJump ? 48 : 32;
+
+            ushort marioAngle = initialState.MarioAngle;
+            int deltaAngleIntendedFacing;
+            switch (direction)
+            {
+                case RelativeDirection.Forward:
+                    deltaAngleIntendedFacing = 0;
+                    break;
+                case RelativeDirection.Backward:
+                    deltaAngleIntendedFacing = 32768;
+                    break;
+                case RelativeDirection.Left:
+                    deltaAngleIntendedFacing = 16384;
+                    break;
+                case RelativeDirection.Right:
+                    deltaAngleIntendedFacing = 49152;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            float inputScaledMagnitude = 32;
+
+            float perpSpeed = 0;
+            float newHSpeed = ApproachHSpeed(initialState.HSpeed, 0, 0.35f, 0.35f);
+            if (inputScaledMagnitude > 0)
+            {
+                newHSpeed += (inputScaledMagnitude / 32) * 1.5f * InGameTrigUtilities.InGameCosine(deltaAngleIntendedFacing);
+                perpSpeed = InGameTrigUtilities.InGameSine(deltaAngleIntendedFacing) * (inputScaledMagnitude / 32) * 10;
+            }
+
+            if (newHSpeed > maxSpeed) newHSpeed -= 1;
+            if (newHSpeed < -16) newHSpeed += 2;
+
+            float newSlidingXSpeed = InGameTrigUtilities.InGameSine(marioAngle) * newHSpeed;
+            float newSlidingZSpeed = InGameTrigUtilities.InGameCosine(marioAngle) * newHSpeed;
+            newSlidingXSpeed += perpSpeed * InGameTrigUtilities.InGameSine(marioAngle + 0x4000);
+            newSlidingZSpeed += perpSpeed * InGameTrigUtilities.InGameCosine(marioAngle + 0x4000);
+            float newXSpeed = newSlidingXSpeed;
+            float newZSpeed = newSlidingZSpeed;
+
+            return new MarioState(
+                initialState.X,
+                initialState.Y,
+                initialState.Z,
+                newXSpeed,
+                initialState.YSpeed,
+                newZSpeed,
+                newHSpeed,
+                initialState.MarioAngle,
+                initialState.CameraAngle,
+                initialState,
+                null,
                 initialState.Index + 1);
         }
 
