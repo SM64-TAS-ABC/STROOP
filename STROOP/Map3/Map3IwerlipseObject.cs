@@ -11,12 +11,16 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace STROOP.Map3
 {
     public class Map3IwerlipseObject : Map3Object
     {
         private readonly static int NUM_POINTS = 256;
+
+        private bool _lockPositions = false;
+        private MarioState _marioState = null;
 
         public Map3IwerlipseObject()
             : base()
@@ -35,13 +39,16 @@ namespace STROOP.Map3
 
         private void DrawOnControl(int numQSteps)
         {
-            MarioState marioState = MarioState.CreateMarioState();
-            MarioState marioStateCenter = AirMovementCalculator.ApplyInputRepeatedly(marioState, RelativeDirection.Center, numQSteps);
-            MarioState marioStateForward = AirMovementCalculator.ApplyInputRepeatedly(marioState, RelativeDirection.Forward, numQSteps);
-            MarioState marioStateBackward = AirMovementCalculator.ApplyInputRepeatedly(marioState, RelativeDirection.Backward, numQSteps);
-            MarioState marioStateLeft = AirMovementCalculator.ApplyInputRepeatedly(marioState, RelativeDirection.Left, numQSteps);
+            if (!_lockPositions)
+            {
+                _marioState = MarioState.CreateMarioState();
+            }
+            MarioState marioStateCenter = AirMovementCalculator.ApplyInputRepeatedly(_marioState, RelativeDirection.Center, numQSteps);
+            MarioState marioStateForward = AirMovementCalculator.ApplyInputRepeatedly(_marioState, RelativeDirection.Forward, numQSteps);
+            MarioState marioStateBackward = AirMovementCalculator.ApplyInputRepeatedly(_marioState, RelativeDirection.Backward, numQSteps);
+            MarioState marioStateLeft = AirMovementCalculator.ApplyInputRepeatedly(_marioState, RelativeDirection.Left, numQSteps);
 
-            ushort marioAngle = marioState.MarioAngle;
+            ushort marioAngle = _marioState.MarioAngle;
             (float cx, float cz) = (marioStateCenter.X, marioStateCenter.Z);
             (float fx, float fz) = (marioStateForward.X, marioStateForward.Z);
             (float bx, float bz) = (marioStateBackward.X, marioStateBackward.Z);
@@ -117,6 +124,25 @@ namespace STROOP.Map3
         public override Image GetImage()
         {
             return Config.ObjectAssociations.PathImage;
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                ToolStripMenuItem itemLockPositions = new ToolStripMenuItem("Lock Positions");
+                itemLockPositions.Click += (sender, e) =>
+                {
+                    _lockPositions = !_lockPositions;
+                    itemLockPositions.Checked = _lockPositions;
+                };
+                itemLockPositions.Checked = _lockPositions;
+
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemLockPositions);
+            }
+
+            return _contextMenuStrip;
         }
     }
 }
