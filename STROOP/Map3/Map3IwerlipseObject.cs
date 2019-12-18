@@ -45,12 +45,10 @@ namespace STROOP.Map3
             double forwardDist = MoreMath.GetDistanceBetween(cx, cz, fx, fz);
             double backwardDist = MoreMath.GetDistanceBetween(cx, cz, bx, bz);
 
-            Config.SetDebugText("sideDist = " + sideDist + ", forwardDist = " + forwardDist);
-
             (float controlCenterX, float controlCenterZ) = Map3Utilities.ConvertCoordsForControl(cx, cz);
             List<(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS).ToList()
                 .ConvertAll(index => (index / (float)NUM_POINTS) * 65536)
-                .ConvertAll(angle => GetEllipsePoint(cx, cz, sideDist, forwardDist, 0, angle))
+                .ConvertAll(angle => GetEllipsePoint(cx, cz, sideDist, forwardDist, marioAngle, angle))
                 .ConvertAll(point => Map3Utilities.ConvertCoordsForControl((float)point.x, (float)point.z));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
@@ -87,11 +85,23 @@ namespace STROOP.Map3
         private (double x, double z) GetEllipsePoint(
             double centerX, double centerZ, double sidewaysDist, double forwardDist, double rotatedAngle, double angle)
         {
-            double angleRadians = MoreMath.AngleUnitsToRadians(angle);
-            double term1 = forwardDist * Math.Cos(angleRadians);
-            double term2 = sidewaysDist * Math.Sin(angleRadians);
-            double radius = MoreMath.GetHypotenuse(term1, term2);
-            return MoreMath.AddVectorToPoint(radius, angle, centerX, centerZ);
+            double a = sidewaysDist;
+            double b = forwardDist;
+            double c = Math.Sqrt(a * a - b * b);
+            double e = c / a;
+
+            double angleRadians = MoreMath.AngleUnitsToRadians(angle - rotatedAngle);
+            double term1 = b * Math.Sin(angleRadians);
+            double term2 = a * Math.Cos(angleRadians);
+            double r = (a * b) / MoreMath.GetHypotenuse(term1, term2);
+
+
+
+            //double angleRadians = MoreMath.AngleUnitsToRadians(angle);
+            //double term1 = forwardDist * Math.Cos(angleRadians);
+            //double term2 = sidewaysDist * Math.Sin(angleRadians);
+            //double radius = MoreMath.GetHypotenuse(term1, term2);
+            return MoreMath.AddVectorToPoint(r, angle, centerX, centerZ);
         }
 
         public override string GetName()
