@@ -687,14 +687,14 @@ namespace STROOP.Utilities
 
         public static bool MarioChangeVspd(float vspdOffset)
         {
-            float vspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+            float vspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
             vspd += vspdOffset;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(vspd, MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+            success &= Config.Stream.SetValue(vspd, MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;

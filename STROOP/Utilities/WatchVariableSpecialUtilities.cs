@@ -1428,20 +1428,20 @@ namespace STROOP.Structs
             _dictionary.Add("TrajectoryRemainingHeight",
                 ((uint dummy) =>
                 {
-                    float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+                    float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
                     double remainingHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                     return remainingHeight;
                 },
                 (double newRemainingHeight, uint dummy) =>
                 {
                     double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newRemainingHeight);
-                    return Config.Stream.SetValue((float)initialVSpeed, MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+                    return Config.Stream.SetValue((float)initialVSpeed, MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
                 }));
 
             _dictionary.Add("TrajectoryPeakHeight",
                 ((uint dummy) =>
                 {
-                    float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+                    float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
                     double remainingHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                     float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double peakHeight = marioY + remainingHeight;
@@ -1452,7 +1452,7 @@ namespace STROOP.Structs
                     float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double newRemainingHeight = newPeakHeight - marioY;
                     double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newRemainingHeight);
-                    return Config.Stream.SetValue((float)initialVSpeed, MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+                    return Config.Stream.SetValue((float)initialVSpeed, MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
                 }));
 
             _dictionary.Add("DoubleJumpVerticalSpeed",

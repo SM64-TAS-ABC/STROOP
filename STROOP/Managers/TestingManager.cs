@@ -550,7 +550,7 @@ namespace STROOP.Managers
                     Y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset),
                     Z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset),
                     Angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset),
-                    Vspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset),
+                    Vspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset),
                     Hspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset),
                 };
             }
@@ -870,7 +870,7 @@ namespace STROOP.Managers
 
                 if (frame == 10476)
                 {
-                    Config.Stream.SetValue((float)0, MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+                    Config.Stream.SetValue((float)0, MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
                 }
 
                 if (frame == 10060)
