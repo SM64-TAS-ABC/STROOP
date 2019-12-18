@@ -70,6 +70,7 @@ namespace STROOP.Managers
                     "Add Tracker for Custom Map",
                     "Add Tracker for Custom Background",
                     "Add Tracker for Custom Gridlines",
+                    "Add Tracker for Iwerlipses",
                 },
                 new List<Action>()
                 {
@@ -138,6 +139,12 @@ namespace STROOP.Managers
                     () =>
                     {
                         Map3Object mapObj = new Map3CustomGridlinesObject();
+                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                    },
+                    () =>
+                    {
+                        Map3Object mapObj = new Map3IwerlipseObject();
                         Map3Tracker tracker = new Map3Tracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
