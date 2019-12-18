@@ -15,5 +15,6 @@ namespace STROOP.Structs
         Backward,
         Left,
         Right,
+        Center,
     };
 }

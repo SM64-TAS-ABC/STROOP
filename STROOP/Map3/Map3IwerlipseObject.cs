@@ -28,13 +28,14 @@ namespace STROOP.Map3
         public override void DrawOnControl()
         {
             MarioState marioState = MarioState.CreateMarioState();
+            MarioState marioStateCenter = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Center);
             MarioState marioStateForward = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Forward);
             MarioState marioStateBackward = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Backward);
             MarioState marioStateLeft = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Left);
             MarioState marioStateRight = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Right);
 
             ushort marioAngle = marioState.MarioAngle;
-            (float cx, float cz) = (marioState.X, marioState.Z);
+            (float cx, float cz) = (marioStateCenter.X, marioStateCenter.Z);
             (float fx, float fz) = (marioStateForward.X, marioStateForward.Z);
             (float bx, float bz) = (marioStateBackward.X, marioStateBackward.Z);
             (float lx, float lz) = (marioStateLeft.X, marioStateLeft.Z);
@@ -43,6 +44,8 @@ namespace STROOP.Map3
             double sideDist = MoreMath.GetDistanceBetween(cx, cz, lx, lz);
             double forwardDist = MoreMath.GetDistanceBetween(cx, cz, fx, fz);
             double backwardDist = MoreMath.GetDistanceBetween(cx, cz, bx, bz);
+
+            Config.SetDebugText("sideDist = " + sideDist + ", forwardDist = " + forwardDist);
 
             (float controlCenterX, float controlCenterZ) = Map3Utilities.ConvertCoordsForControl(cx, cz);
             List<(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS).ToList()

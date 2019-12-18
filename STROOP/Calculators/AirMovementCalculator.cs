@@ -123,10 +123,13 @@ namespace STROOP.Structs
                 case RelativeDirection.Right:
                     deltaAngleIntendedFacing = 49152;
                     break;
+                case RelativeDirection.Center:
+                    deltaAngleIntendedFacing = 0;
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            float inputScaledMagnitude = 32;
+            float inputScaledMagnitude = direction == RelativeDirection.Center ? 0 : 32;
 
             float perpSpeed = 0;
             float newHSpeed = ApproachHSpeed(initialState.HSpeed, 0, 0.35f, 0.35f);
