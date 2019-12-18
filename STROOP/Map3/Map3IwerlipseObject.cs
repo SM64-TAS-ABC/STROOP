@@ -21,11 +21,27 @@ namespace STROOP.Map3
         public Map3IwerlipseObject()
             : base()
         {
+            Opacity = 0.5;
+            Color = Color.Red;
         }
 
         public override void DrawOnControl()
         {
-            (float centerX, float centerZ, float radius) = GetDimensions();
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            (double x1, double z1) = MoreMath.AddVectorToPoint(100, marioAngle + 0, marioX, marioZ);
+            (double x2, double z2) = MoreMath.AddVectorToPoint(100, marioAngle + 16384, marioX, marioZ);
+            (double x3, double z3) = MoreMath.AddVectorToPoint(100, marioAngle + 32768, marioX, marioZ);
+            (double x4, double z4) = MoreMath.AddVectorToPoint(100, marioAngle + 49152, marioX, marioZ);
+            DrawCircles((float)x1, (float)z1, 20);
+            DrawCircles((float)x2, (float)z2, 20);
+            DrawCircles((float)x3, (float)z3, 20);
+            DrawCircles((float)x4, (float)z4, 20);
+        }
+
+        private void DrawCircles(float centerX, float centerZ, float radius)
+        {
             (float controlCenterX, float controlCenterZ) = Map3Utilities.ConvertCoordsForControl(centerX, centerZ);
             float controlRadius = radius * Config.Map3Graphics.MapViewScaleValue;
             List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS).ToList()
@@ -61,13 +77,6 @@ namespace STROOP.Map3
             }
 
             GL.Color4(1, 1, 1, 1.0f);
-        }
-
-        private (float centerX, float centerZ, float radius) GetDimensions()
-        {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            return (marioX, marioZ, 100);
         }
 
         public override string GetName()
