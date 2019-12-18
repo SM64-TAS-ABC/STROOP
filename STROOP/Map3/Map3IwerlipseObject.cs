@@ -32,23 +32,27 @@ namespace STROOP.Map3
             MarioState marioStateForward = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Forward);
             MarioState marioStateBackward = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Backward);
             MarioState marioStateLeft = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Left);
-            MarioState marioStateRight = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Right);
 
             ushort marioAngle = marioState.MarioAngle;
             (float cx, float cz) = (marioStateCenter.X, marioStateCenter.Z);
             (float fx, float fz) = (marioStateForward.X, marioStateForward.Z);
             (float bx, float bz) = (marioStateBackward.X, marioStateBackward.Z);
             (float lx, float lz) = (marioStateLeft.X, marioStateLeft.Z);
-            (float rx, float rz) = (marioStateRight.X, marioStateRight.Z);
 
             double sideDist = MoreMath.GetDistanceBetween(cx, cz, lx, lz);
             double forwardDist = MoreMath.GetDistanceBetween(cx, cz, fx, fz);
             double backwardDist = MoreMath.GetDistanceBetween(cx, cz, bx, bz);
 
+            DrawOnControl(cx, cz, sideDist, forwardDist, marioAngle, Color.Red);
+            DrawOnControl(cx, cz, sideDist, backwardDist, marioAngle, Color.Blue);
+        }
+
+        private void DrawOnControl(float cx, float cz, double sideDist, double forwardDist, double rotatedAngle, Color color)
+        {
             (float controlCenterX, float controlCenterZ) = Map3Utilities.ConvertCoordsForControl(cx, cz);
             List<(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS).ToList()
                 .ConvertAll(index => (index / (float)NUM_POINTS) * 65536)
-                .ConvertAll(angle => GetEllipsePoint(cx, cz, sideDist, forwardDist, marioAngle, angle))
+                .ConvertAll(angle => GetEllipsePoint(cx, cz, sideDist, forwardDist, rotatedAngle, angle))
                 .ConvertAll(point => Map3Utilities.ConvertCoordsForControl((float)point.x, (float)point.z));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
@@ -56,7 +60,7 @@ namespace STROOP.Map3
             GL.LoadIdentity();
 
             // Draw circle
-            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+            GL.Color4(color.R, color.G, color.B, OpacityByte);
             GL.Begin(PrimitiveType.TriangleFan);
             GL.Vertex2(controlCenterX, controlCenterZ);
             foreach ((float x, float z) in controlPoints)
@@ -88,7 +92,6 @@ namespace STROOP.Map3
             double a = sidewaysDist;
             double b = forwardDist;
             double c = Math.Sqrt(a * a - b * b);
-            double e = c / a;
 
             double angleRadians = MoreMath.AngleUnitsToRadians(angle - rotatedAngle);
             double term1 = b * Math.Sin(angleRadians);
