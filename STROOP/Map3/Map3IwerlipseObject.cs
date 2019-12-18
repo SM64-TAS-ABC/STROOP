@@ -21,19 +21,24 @@ namespace STROOP.Map3
 
         private bool _lockPositions = false;
         private MarioState _marioState = null;
+        private bool _showQuarterSteps = true;
 
         public Map3IwerlipseObject()
             : base()
         {
+            Size = 12;
             Opacity = 0.5;
             Color = Color.Red;
         }
 
         public override void DrawOnControl()
         {
-            for (int i = 1; i <= 12; i++)
+            for (int i = 1; i <= Size; i++)
             {
-                DrawOnControl(i);
+                if (i % 4 == 0 || _showQuarterSteps)
+                {
+                    DrawOnControl(i);
+                }
             }
         }
 
@@ -131,8 +136,17 @@ namespace STROOP.Map3
                 };
                 itemLockPositions.Checked = _lockPositions;
 
+                ToolStripMenuItem itemShowQuarterSteps = new ToolStripMenuItem("Show Quarter Steps");
+                itemShowQuarterSteps.Click += (sender, e) =>
+                {
+                    _showQuarterSteps = !_showQuarterSteps;
+                    itemShowQuarterSteps.Checked = _showQuarterSteps;
+                };
+                itemShowQuarterSteps.Checked = _showQuarterSteps;
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemLockPositions);
+                _contextMenuStrip.Items.Add(itemShowQuarterSteps);
             }
 
             return _contextMenuStrip;
