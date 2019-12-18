@@ -58,16 +58,10 @@ namespace STROOP.Map3
             double forwardDist = MoreMath.GetDistanceBetween(cx, cz, fx, fz);
             double backwardDist = MoreMath.GetDistanceBetween(cx, cz, bx, bz);
 
-            DrawOnControl(cx, cz, sideDist, forwardDist, marioAngle, Color.Red);
-            DrawOnControl(cx, cz, sideDist, backwardDist, marioAngle, Color.Blue);
-        }
-
-        private void DrawOnControl(float cx, float cz, double sideDist, double forwardDist, double rotatedAngle, Color color)
-        {
             (float controlCenterX, float controlCenterZ) = Map3Utilities.ConvertCoordsForControl(cx, cz);
             List<(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS).ToList()
                 .ConvertAll(index => (index / (float)NUM_POINTS) * 65536)
-                .ConvertAll(angle => GetEllipsePoint(cx, cz, sideDist, forwardDist, rotatedAngle, angle))
+                .ConvertAll(angle => GetEllipsePoint(cx, cz, sideDist, forwardDist, backwardDist, marioAngle, angle))
                 .ConvertAll(point => Map3Utilities.ConvertCoordsForControl((float)point.x, (float)point.z));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
@@ -75,7 +69,7 @@ namespace STROOP.Map3
             GL.LoadIdentity();
 
             // Draw circle
-            GL.Color4(color.R, color.G, color.B, OpacityByte);
+            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
             GL.Begin(PrimitiveType.TriangleFan);
             GL.Vertex2(controlCenterX, controlCenterZ);
             foreach ((float x, float z) in controlPoints)
@@ -102,13 +96,12 @@ namespace STROOP.Map3
         }
 
         private (double x, double z) GetEllipsePoint(
-            double centerX, double centerZ, double sidewaysDist, double forwardDist, double rotatedAngle, double angle)
+            double centerX, double centerZ, double sidewaysDist, double forwardDist, double backwardDist, double marioAngle, double angle)
         {
             double a = sidewaysDist;
-            double b = forwardDist;
-            double c = Math.Sqrt(a * a - b * b);
+            double b = MoreMath.GetAngleDistance(marioAngle, angle) < 16384 ? forwardDist : backwardDist;
 
-            double angleRadians = MoreMath.AngleUnitsToRadians(angle - rotatedAngle);
+            double angleRadians = MoreMath.AngleUnitsToRadians(angle - marioAngle);
             double term1 = b * Math.Sin(angleRadians);
             double term2 = a * Math.Cos(angleRadians);
             double r = (a * b) / MoreMath.GetHypotenuse(term1, term2);
