@@ -72,7 +72,7 @@ namespace STROOP.Map3
 
         public override string GetName()
         {
-            return "Iwerlipse";
+            return "Iwerlipses";
         }
 
         public override Image GetImage()
