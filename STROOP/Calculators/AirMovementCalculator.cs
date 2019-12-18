@@ -21,12 +21,23 @@ namespace STROOP.Structs
             return withYSpeed;
         }
 
-        public static MarioState ApplyInput(MarioState marioState, RelativeDirection direction)
+        public static MarioState ApplyInput(MarioState marioState, RelativeDirection direction, int numQSteps = 4)
         {
             MarioState withHSpeed = ComputeAirHSpeed(marioState, direction);
-            MarioState moved = AirMove(withHSpeed);
+            MarioState moved = AirMove(withHSpeed, numQSteps);
             MarioState withYSpeed = ComputeAirYSpeed(moved);
             return withYSpeed;
+        }
+
+        public static MarioState ApplyInputRepeatedly(MarioState marioState, RelativeDirection direction, int numQSteps)
+        {
+            int numFrames = numQSteps / 4;
+            int remainderQSteps = numQSteps % 4;
+            for (int i = 0; i < numFrames; i++)
+            {
+                marioState = ApplyInput(marioState, direction);
+            }
+            return remainderQSteps == 0 ? marioState : ApplyInput(marioState, direction, remainderQSteps);
         }
 
         public static MarioState AirMove(MarioState initialState, int numQSteps = 4)

@@ -27,11 +27,19 @@ namespace STROOP.Map3
 
         public override void DrawOnControl()
         {
+            for (int i = 1; i <= 12; i++)
+            {
+                DrawOnControl(i);
+            }
+        }
+
+        private void DrawOnControl(int numQSteps)
+        {
             MarioState marioState = MarioState.CreateMarioState();
-            MarioState marioStateCenter = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Center);
-            MarioState marioStateForward = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Forward);
-            MarioState marioStateBackward = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Backward);
-            MarioState marioStateLeft = AirMovementCalculator.ApplyInput(marioState, RelativeDirection.Left);
+            MarioState marioStateCenter = AirMovementCalculator.ApplyInputRepeatedly(marioState, RelativeDirection.Center, numQSteps);
+            MarioState marioStateForward = AirMovementCalculator.ApplyInputRepeatedly(marioState, RelativeDirection.Forward, numQSteps);
+            MarioState marioStateBackward = AirMovementCalculator.ApplyInputRepeatedly(marioState, RelativeDirection.Backward, numQSteps);
+            MarioState marioStateLeft = AirMovementCalculator.ApplyInputRepeatedly(marioState, RelativeDirection.Left, numQSteps);
 
             ushort marioAngle = marioState.MarioAngle;
             (float cx, float cz) = (marioStateCenter.X, marioStateCenter.Z);
