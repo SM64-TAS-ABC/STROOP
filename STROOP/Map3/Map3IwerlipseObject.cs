@@ -95,12 +95,6 @@ namespace STROOP.Map3
             double term2 = a * Math.Cos(angleRadians);
             double r = (a * b) / MoreMath.GetHypotenuse(term1, term2);
 
-
-
-            //double angleRadians = MoreMath.AngleUnitsToRadians(angle);
-            //double term1 = forwardDist * Math.Cos(angleRadians);
-            //double term2 = sidewaysDist * Math.Sin(angleRadians);
-            //double radius = MoreMath.GetHypotenuse(term1, term2);
             return MoreMath.AddVectorToPoint(r, angle, centerX, centerZ);
         }
 
