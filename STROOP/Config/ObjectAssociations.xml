@@ -60,6 +60,9 @@
   <NextPositions>
     <MapImage path="Next Positions.png"/>
   </NextPositions>
+  <Iwerlipses>
+    <MapImage path="Iwerlipses.png"/>
+  </Iwerlipses>
   <Cylinder>
     <MapImage path="Cylinder.png"/>
   </Cylinder>

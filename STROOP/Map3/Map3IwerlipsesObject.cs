@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace STROOP.Map3
 {
-    public class Map3IwerlipseObject : Map3Object
+    public class Map3IwerlipsesObject : Map3Object
     {
         private readonly static int NUM_POINTS = 256;
 
@@ -23,7 +23,7 @@ namespace STROOP.Map3
         private MarioState _marioState = null;
         private bool _showQuarterSteps = true;
 
-        public Map3IwerlipseObject()
+        public Map3IwerlipsesObject()
             : base()
         {
             Size = 12;
@@ -121,7 +121,7 @@ namespace STROOP.Map3
 
         public override Image GetImage()
         {
-            return Config.ObjectAssociations.PathImage;
+            return Config.ObjectAssociations.IwerlipsesImage;
         }
 
         public override ContextMenuStrip GetContextMenuStrip()

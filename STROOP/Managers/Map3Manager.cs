@@ -144,7 +144,7 @@ namespace STROOP.Managers
                     },
                     () =>
                     {
-                        Map3Object mapObj = new Map3IwerlipseObject();
+                        Map3Object mapObj = new Map3IwerlipsesObject();
                         Map3Tracker tracker = new Map3Tracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },

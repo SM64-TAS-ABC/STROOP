@@ -378,7 +378,7 @@
     <Compile Include="Managers\PaintingManager.cs" />
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
-    <Compile Include="Map3\Map3IwerlipseObject.cs" />
+    <Compile Include="Map3\Map3IwerlipsesObject.cs" />
     <Compile Include="Map3\Map3CustomGridlinesObject.cs" />
     <Compile Include="Map3\Map3CustomBackgroundObject.cs" />
     <Compile Include="Map3\Map3LevelCeilingObject.cs" />
