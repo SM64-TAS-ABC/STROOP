@@ -502,6 +502,7 @@ namespace STROOP
             Config.MapManager = new MapManager();
             Config.Map2Manager = new Map2Manager(map2Gui);
             Config.Map3Manager = new Map3Manager();
+            Config.Map4Manager = new Map4Manager();
 
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
@@ -699,9 +700,10 @@ namespace STROOP
                 Config.CellsManager.Update(tabControlMain.SelectedTab == tabPageCells);
                 Config.CoinManager.Update(tabControlMain.SelectedTab == tabPageCoin);
                 Config.M64Manager.Update(tabControlMain.SelectedTab == tabPageM64);
-                Config.MapManager?.Update();
+                //Config.MapManager?.Update();
                 Config.Map2Manager?.Update();
                 Config.Map3Manager.Update(tabControlMain.SelectedTab == tabPageMap3);
+                Config.Map4Manager?.Update();
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();
                 Config.HackManager.Update();
@@ -759,6 +761,7 @@ namespace STROOP
 
         private async void glControlMap_Load(object sender, EventArgs e)
         {
+            /*
             await Task.Run(() => {
                 while (Config.MapManager == null)
                 {
@@ -766,6 +769,7 @@ namespace STROOP
                 }
             });
             Config.MapManager.Load();
+            */
         }
 
         private async void glControlMap2_Load(object sender, EventArgs e)
@@ -788,6 +792,17 @@ namespace STROOP
                 }
             });
             Config.Map3Manager.Load();
+        }
+
+        private async void glControlMap4_Load(object sender, EventArgs e)
+        {
+            await Task.Run(() => {
+                while (Config.Map4Manager == null)
+                {
+                    Task.Delay(1).Wait();
+                }
+            });
+            Config.Map4Manager.Load();
         }
 
         private async void glControlModelView_Load(object sender, EventArgs e)

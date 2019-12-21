@@ -20977,6 +20977,7 @@ namespace STROOP
             this.glControlMap4.TabIndex = 1;
             this.glControlMap4.Visible = false;
             this.glControlMap4.VSync = false;
+            this.glControlMap4.Load += new System.EventHandler(this.glControlMap4_Load);
             // 
             // checkBoxMap3OptionsEnable3D
             // 
