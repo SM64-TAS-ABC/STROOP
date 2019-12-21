@@ -16,6 +16,11 @@ using STROOP.Controls.Map;
 using STROOP.Controls.Map.Objects;
 using STROOP.Controls.Map.Trackers;
 using STROOP.Controls.Map.Semaphores;
+using STROOP.Map3.Map;
+using STROOP.Map3.Map.Graphics;
+using STROOP.Map3.Map.Objects;
+using STROOP.Map3.Map.Semaphores;
+using STROOP.Map3.Map.Trackers;
 
 namespace STROOP.Managers
 {
@@ -24,20 +29,20 @@ namespace STROOP.Managers
         public bool IsLoaded { get; private set; }
         public bool Visible { get => _graphics.Visible; set => _graphics.Visible = value; }
 
-        private MapGraphics _graphics;
+        private Map4Graphics _graphics;
 
         #region Objects
-        private MapLevelObject _mapObjLevel;
+        private Map4LevelObject _mapObjLevel;
 
-        private MapMarioObject _mapObjMario = new MapMarioObject();
-        private MapHolpObject _mapObjHolp = new MapHolpObject();
-        private MapCameraObject _mapObjCamera = new MapCameraObject();
+        private Map4MarioObject _mapObjMario = new Map4MarioObject();
+        private Map4HolpObject _mapObjHolp = new Map4HolpObject();
+        private Map4CameraObject _mapObjCamera = new Map4CameraObject();
 
-        private MapFloorTriObject _mapObjFloorTri = new MapFloorTriObject();
-        private MapWallTriObject _mapObjWallTri = new MapWallTriObject();
-        private MapCeilingTriObject _mapObjCeilTri = new MapCeilingTriObject();
+        private Map4FloorTriObject _mapObjFloorTri = new Map4FloorTriObject();
+        private Map4WallTriObject _mapObjWallTri = new Map4WallTriObject();
+        private Map4CeilingTriObject _mapObjCeilTri = new Map4CeilingTriObject();
 
-        private List<MapSm64Object> _mapSm64Objs = new List<MapSm64Object>();
+        private List<Map4Sm64Object> _mapSm64Objs = new List<Map4Sm64Object>();
         private List<int> _currentMapSm64ObjIndexes;
         #endregion
 
@@ -49,9 +54,9 @@ namespace STROOP.Managers
         public void Load()
         {
             // Create new graphics control
-            _graphics = new MapGraphics(Config.MapGui.GLControl);
+            _graphics = new Map4Graphics(Config.Map3Gui.GLControl3D);
             _graphics.Load();
-            Config.MapController = new MapController(_graphics);
+            Config.Map4Controller = new Map4Controller(_graphics);
 
             IsLoaded = true;
 
@@ -61,23 +66,23 @@ namespace STROOP.Managers
             Config.MapGui.CheckBoxMapGameCamOrientation.CheckedChanged += (sender, e) =>
             {
                 if (Config.MapGui.CheckBoxMapGameCamOrientation.Checked)
-                    Config.MapController.CameraMode = MapController.MapCameraMode.Game;
+                    Config.Map4Controller.CameraMode = Map4Controller.MapCameraMode.Game;
                 else
-                    Config.MapController.CameraMode = MapController.MapCameraMode.Fly;
+                    Config.Map4Controller.CameraMode = Map4Controller.MapCameraMode.Fly;
             };
 
-            Config.MapGui.RadioButtonScaleCourseDefault.Click += (sender, e) => Config.MapController.ScaleMode = MapController.MapScaleMode.CourseDefault;
-            Config.MapGui.RadioButtonScaleMaxCourseSize.Click += (sender, e) => Config.MapController.ScaleMode = MapController.MapScaleMode.MaxCourseSize;
-            Config.MapGui.RadioButtonScaleCustom.Click += (sender, e) => Config.MapController.ScaleMode = MapController.MapScaleMode.Custom;
+            Config.MapGui.RadioButtonScaleCourseDefault.Click += (sender, e) => Config.Map4Controller.ScaleMode = Map4Controller.MapScaleMode.CourseDefault;
+            Config.MapGui.RadioButtonScaleMaxCourseSize.Click += (sender, e) => Config.Map4Controller.ScaleMode = Map4Controller.MapScaleMode.MaxCourseSize;
+            Config.MapGui.RadioButtonScaleCustom.Click += (sender, e) => Config.Map4Controller.ScaleMode = Map4Controller.MapScaleMode.Custom;
 
-            Config.MapGui.RadioButtonCenterBestFit.Click += (sender, e) => Config.MapController.CenterMode = MapController.MapCenterMode.BestFit;
-            Config.MapGui.RadioButtonCenterOrigin.Click += (sender, e) => Config.MapController.CenterMode = MapController.MapCenterMode.Origin;
-            Config.MapGui.RadioButtonCenterCustom.Click += (sender, e) => Config.MapController.CenterMode = MapController.MapCenterMode.Custom;
+            Config.MapGui.RadioButtonCenterBestFit.Click += (sender, e) => Config.Map4Controller.CenterMode = Map4Controller.MapCenterMode.BestFit;
+            Config.MapGui.RadioButtonCenterOrigin.Click += (sender, e) => Config.Map4Controller.CenterMode = Map4Controller.MapCenterMode.Origin;
+            Config.MapGui.RadioButtonCenterCustom.Click += (sender, e) => Config.Map4Controller.CenterMode = Map4Controller.MapCenterMode.Custom;
 
-            Config.MapGui.RadioButtonAngle0.Click += (sender, e) => Config.MapController.MapAngle = 0;
-            Config.MapGui.RadioButtonAngle16384.Click += (sender, e) => Config.MapController.MapAngle = (float)Math.PI / 2;
-            Config.MapGui.RadioButtonAngle32768.Click += (sender, e) => Config.MapController.MapAngle = (float)Math.PI;
-            Config.MapGui.RadioButtonAngle49152.Click += (sender, e) => Config.MapController.MapAngle = (float)(3 * Math.PI / 2);
+            Config.MapGui.RadioButtonAngle0.Click += (sender, e) => Config.Map4Controller.MapAngle = 0;
+            Config.MapGui.RadioButtonAngle16384.Click += (sender, e) => Config.Map4Controller.MapAngle = (float)Math.PI / 2;
+            Config.MapGui.RadioButtonAngle32768.Click += (sender, e) => Config.Map4Controller.MapAngle = (float)Math.PI;
+            Config.MapGui.RadioButtonAngle49152.Click += (sender, e) => Config.Map4Controller.MapAngle = (float)(3 * Math.PI / 2);
 
             /*
             _mapGui.ButtonAddNewTracker.Click += (sender, e) =>
@@ -87,20 +92,20 @@ namespace STROOP.Managers
             Config.MapGui.ButtonClearAllTrackers.Click += (sender, e) => Config.MapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
             // Test
-            _mapObjLevel = new MapLevelObject();
-            Config.MapController.AddMapObject(_mapObjLevel);
-            Config.MapController.AddMapObject(_mapObjMario);
-            Config.MapController.AddMapObject(_mapObjHolp);
-            Config.MapController.AddMapObject(_mapObjCamera);
+            _mapObjLevel = new Map4LevelObject();
+            Config.Map4Controller.AddMapObject(_mapObjLevel);
+            Config.Map4Controller.AddMapObject(_mapObjMario);
+            Config.Map4Controller.AddMapObject(_mapObjHolp);
+            Config.Map4Controller.AddMapObject(_mapObjCamera);
 
             _mapSm64Objs = Enumerable.Range(0, ObjectSlotsConfig.MaxSlots).ToList()
-                .ConvertAll(i => new MapSm64Object(i));
-            _mapSm64Objs.ForEach(obj => Config.MapController.AddMapObject(obj));
+                .ConvertAll(i => new Map4Sm64Object(i));
+            _mapSm64Objs.ForEach(obj => Config.Map4Controller.AddMapObject(obj));
 
-            Config.MapController.AddMapObject(_mapObjFloorTri);
-            Config.MapController.AddMapObject(_mapObjWallTri);
-            Config.MapController.AddMapObject(_mapObjCeilTri);
-
+            Config.Map4Controller.AddMapObject(_mapObjFloorTri);
+            Config.Map4Controller.AddMapObject(_mapObjWallTri);
+            Config.Map4Controller.AddMapObject(_mapObjCeilTri);
+            /*
             InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackMario, MapSemaphoreManager.Mario, _mapObjMario, true);
             InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackHolp, MapSemaphoreManager.Holp, _mapObjHolp, false);
             InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackCamera, MapSemaphoreManager.Camera, _mapObjCamera, false);
@@ -108,7 +113,7 @@ namespace STROOP.Managers
             InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackFloorTriangle, MapSemaphoreManager.FloorTri, _mapObjFloorTri, false);
             InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackWallTriangle, MapSemaphoreManager.WallTri, _mapObjWallTri, false);
             InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackCeilingTriangle, MapSemaphoreManager.CeilingTri, _mapObjCeilTri, false);
-
+            */
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
             List<object> mapLayoutChoices = new List<object>() { "Recommended" };
             mapLayouts.ForEach(mapLayout => mapLayoutChoices.Add(mapLayout));
@@ -179,12 +184,12 @@ namespace STROOP.Managers
             // Newly checked slots have their semaphore turned on and a tracker is created
             foreach (int index in toBeAddedIndexes)
             {
-                MapSm64Object sm64Obj = _mapSm64Objs[index];
-                MapSemaphore semaphore = MapSemaphoreManager.Objects[index];
-                semaphore.IsUsed = true;
-                MapTracker tracker = new MapTracker(
-                    Config.MapGui.MapTrackerFlowLayoutPanel, new List<MapObject>() { sm64Obj }, new List<MapSemaphore>() { semaphore });
-                Config.MapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
+                //Map4Sm64Object sm64Obj = _mapSm64Objs[index];
+                //Map4Semaphore semaphore = Map4SemaphoreManager.Objects[index];
+                //semaphore.IsUsed = true;
+                //Map4Tracker tracker = new Map4Tracker(
+                //    Config.MapGui.MapTrackerFlowLayoutPanel, new List<Map4Object>() { sm64Obj }, new List<Map4Semaphore>() { semaphore });
+                //Config.MapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
             }
         }
 
@@ -235,10 +240,10 @@ namespace STROOP.Managers
                 return;
 
             if (Config.MapGui.ComboBoxMapColorMethod.SelectedItem != null)
-                _mapObjLevel.ColorMethod = (MapLevelObject.ColorMethodType)Config.MapGui.ComboBoxMapColorMethod.SelectedItem;
+                _mapObjLevel.ColorMethod = (Map4LevelObject.ColorMethodType)Config.MapGui.ComboBoxMapColorMethod.SelectedItem;
 
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
-            Config.MapController.Update();
+            Config.Map4Controller.Update();
 
             // Update labels
             /*_mapGui.PuValueLabel.Text = string.Format("[{0}:{1}:{2}]", puX, puY, puZ);

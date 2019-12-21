@@ -27,7 +27,7 @@ namespace STROOP.Map3.Map
         public enum MapScaleMode { CourseDefault, MaxCourseSize, Custom };
         public enum MapCenterMode { BestFit, Origin, Custom };
 
-        public MapCameraMode CameraMode { get; set; } = MapCameraMode.TopDown;
+        public MapCameraMode CameraMode { get; set; } = MapCameraMode.Game;
         public MapScaleMode ScaleMode { get; set; } = MapScaleMode.CourseDefault;
         public MapCenterMode CenterMode { get; set; } = MapCenterMode.BestFit;
 
