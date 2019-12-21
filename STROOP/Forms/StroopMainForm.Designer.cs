@@ -1617,6 +1617,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.glControlMap4 = new OpenTK.GLControl();
+            this.checkBoxMap3OptionsEnable3D = new System.Windows.Forms.CheckBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -11689,16 +11690,17 @@ namespace STROOP
             this.tabPageMap3Options.AutoScroll = true;
             this.tabPageMap3Options.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMap3Options.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap3Options.Controls.Add(this.labelMap3OptionsGlobalIconSize);
-            this.tabPageMap3Options.Controls.Add(this.textBoxMap3OptionsGlobalIconSize);
             this.tabPageMap3Options.Controls.Add(this.comboBoxMap3OptionsBackground);
             this.tabPageMap3Options.Controls.Add(this.comboBoxMap3OptionsLevel);
+            this.tabPageMap3Options.Controls.Add(this.textBoxMap3OptionsGlobalIconSize);
+            this.tabPageMap3Options.Controls.Add(this.labelMap3OptionsGlobalIconSize);
             this.tabPageMap3Options.Controls.Add(this.labelMap3OptionsBackground);
             this.tabPageMap3Options.Controls.Add(this.labelMap3OptionsLevel);
             this.tabPageMap3Options.Controls.Add(this.buttonMap3OptionsTrackMarkedObjects);
             this.tabPageMap3Options.Controls.Add(this.buttonMap3OptionsTrackAllObjects);
             this.tabPageMap3Options.Controls.Add(this.buttonMap3OptionsClearAllTrackers);
             this.tabPageMap3Options.Controls.Add(this.buttonMap3OptionsAddNewTracker);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsEnable3D);
             this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsScaleIconSizes);
             this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsEnablePuView);
             this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackPoint);
@@ -11724,7 +11726,7 @@ namespace STROOP
             // labelMap3OptionsGlobalIconSize
             // 
             this.labelMap3OptionsGlobalIconSize.AutoSize = true;
-            this.labelMap3OptionsGlobalIconSize.Location = new System.Drawing.Point(143, 162);
+            this.labelMap3OptionsGlobalIconSize.Location = new System.Drawing.Point(143, 179);
             this.labelMap3OptionsGlobalIconSize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMap3OptionsGlobalIconSize.Name = "labelMap3OptionsGlobalIconSize";
             this.labelMap3OptionsGlobalIconSize.Size = new System.Drawing.Size(87, 13);
@@ -11733,7 +11735,7 @@ namespace STROOP
             // 
             // textBoxMap3OptionsGlobalIconSize
             // 
-            this.textBoxMap3OptionsGlobalIconSize.Location = new System.Drawing.Point(228, 159);
+            this.textBoxMap3OptionsGlobalIconSize.Location = new System.Drawing.Point(228, 176);
             this.textBoxMap3OptionsGlobalIconSize.Name = "textBoxMap3OptionsGlobalIconSize";
             this.textBoxMap3OptionsGlobalIconSize.Size = new System.Drawing.Size(65, 20);
             this.textBoxMap3OptionsGlobalIconSize.TabIndex = 43;
@@ -11819,7 +11821,7 @@ namespace STROOP
             // checkBoxMap3OptionsScaleIconSizes
             // 
             this.checkBoxMap3OptionsScaleIconSizes.AutoSize = true;
-            this.checkBoxMap3OptionsScaleIconSizes.Location = new System.Drawing.Point(148, 136);
+            this.checkBoxMap3OptionsScaleIconSizes.Location = new System.Drawing.Point(148, 154);
             this.checkBoxMap3OptionsScaleIconSizes.Name = "checkBoxMap3OptionsScaleIconSizes";
             this.checkBoxMap3OptionsScaleIconSizes.Size = new System.Drawing.Size(105, 17);
             this.checkBoxMap3OptionsScaleIconSizes.TabIndex = 19;
@@ -11829,7 +11831,7 @@ namespace STROOP
             // checkBoxMap3OptionsEnablePuView
             // 
             this.checkBoxMap3OptionsEnablePuView.AutoSize = true;
-            this.checkBoxMap3OptionsEnablePuView.Location = new System.Drawing.Point(148, 118);
+            this.checkBoxMap3OptionsEnablePuView.Location = new System.Drawing.Point(148, 136);
             this.checkBoxMap3OptionsEnablePuView.Name = "checkBoxMap3OptionsEnablePuView";
             this.checkBoxMap3OptionsEnablePuView.Size = new System.Drawing.Size(103, 17);
             this.checkBoxMap3OptionsEnablePuView.TabIndex = 19;
@@ -11958,7 +11960,7 @@ namespace STROOP
             // 
             // trackBarMap3OptionsGlobalIconSize
             // 
-            this.trackBarMap3OptionsGlobalIconSize.Location = new System.Drawing.Point(174, 180);
+            this.trackBarMap3OptionsGlobalIconSize.Location = new System.Drawing.Point(174, 197);
             this.trackBarMap3OptionsGlobalIconSize.Margin = new System.Windows.Forms.Padding(0);
             this.trackBarMap3OptionsGlobalIconSize.Maximum = 100;
             this.trackBarMap3OptionsGlobalIconSize.Name = "trackBarMap3OptionsGlobalIconSize";
@@ -20976,6 +20978,16 @@ namespace STROOP
             this.glControlMap4.Visible = false;
             this.glControlMap4.VSync = false;
             // 
+            // checkBoxMap3OptionsEnable3D
+            // 
+            this.checkBoxMap3OptionsEnable3D.AutoSize = true;
+            this.checkBoxMap3OptionsEnable3D.Location = new System.Drawing.Point(148, 118);
+            this.checkBoxMap3OptionsEnable3D.Name = "checkBoxMap3OptionsEnable3D";
+            this.checkBoxMap3OptionsEnable3D.Size = new System.Drawing.Size(76, 17);
+            this.checkBoxMap3OptionsEnable3D.TabIndex = 19;
+            this.checkBoxMap3OptionsEnable3D.Text = "Enable 3D";
+            this.checkBoxMap3OptionsEnable3D.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -23165,6 +23177,7 @@ namespace STROOP
         private WatchVariableFlowLayoutPanel watchVariablePanelMusic;
         private CheckBox checkBoxMemoryReaderHex;
         private OpenTK.GLControl glControlMap4;
+        private CheckBox checkBoxMap3OptionsEnable3D;
     }
 }
 
