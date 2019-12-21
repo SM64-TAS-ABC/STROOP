@@ -103,16 +103,16 @@ namespace STROOP.Map3.Map.Graphics
             }
 
             // Get visible map graphics items
-            IEnumerable<Map4GraphicsItem> drawItems;
+            List<Map4GraphicsItem> drawItems;
             lock (_mapItemsLock)
             {
-                drawItems = _mapItems.Where(o => o.Visible); // && o.DrawOnCameraTypes.Contains(Camera.GetType()));
+                drawItems = _mapItems.FindAll(o => o.Visible); // && o.DrawOnCameraTypes.Contains(Camera.GetType()));
             }
             
-            IEnumerable<Map4GraphicsItem> drawItemsPerspective, drawItemsOverlay, drawItemsBackground;
-            drawItemsPerspective = drawItems.Where(i => i.Type == Map4GraphicsItem.DrawType.Perspective);
-            drawItemsOverlay = drawItems.Where(i => i.Type == Map4GraphicsItem.DrawType.Overlay).OrderBy(i => i.Depth);
-            drawItemsBackground = drawItems.Where(i => i.Type == Map4GraphicsItem.DrawType.Background);
+            List<Map4GraphicsItem> drawItemsPerspective, drawItemsOverlay, drawItemsBackground;
+            drawItemsPerspective = drawItems.FindAll(i => i.Type == Map4GraphicsItem.DrawType.Perspective);
+            drawItemsOverlay = drawItems.FindAll(i => i.Type == Map4GraphicsItem.DrawType.Overlay).OrderBy(i => i.Depth).ToList();
+            drawItemsBackground = drawItems.FindAll(i => i.Type == Map4GraphicsItem.DrawType.Background);
 
             // Setup Background
             GL.Disable(EnableCap.DepthTest);

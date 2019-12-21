@@ -95,16 +95,16 @@ namespace STROOP.Managers
             _mapObjLevel = new Map4LevelObject();
             Config.Map4Controller.AddMapObject(_mapObjLevel);
             Config.Map4Controller.AddMapObject(_mapObjMario);
-            Config.Map4Controller.AddMapObject(_mapObjHolp);
-            Config.Map4Controller.AddMapObject(_mapObjCamera);
+            //Config.Map4Controller.AddMapObject(_mapObjHolp);
+            //Config.Map4Controller.AddMapObject(_mapObjCamera);
 
-            _mapSm64Objs = Enumerable.Range(0, ObjectSlotsConfig.MaxSlots).ToList()
-                .ConvertAll(i => new Map4Sm64Object(i));
-            _mapSm64Objs.ForEach(obj => Config.Map4Controller.AddMapObject(obj));
+            //_mapSm64Objs = Enumerable.Range(0, ObjectSlotsConfig.MaxSlots).ToList()
+            //    .ConvertAll(i => new Map4Sm64Object(i));
+            //_mapSm64Objs.ForEach(obj => Config.Map4Controller.AddMapObject(obj));
 
             Config.Map4Controller.AddMapObject(_mapObjFloorTri);
-            Config.Map4Controller.AddMapObject(_mapObjWallTri);
-            Config.Map4Controller.AddMapObject(_mapObjCeilTri);
+            //Config.Map4Controller.AddMapObject(_mapObjWallTri);
+            //Config.Map4Controller.AddMapObject(_mapObjCeilTri);
             /*
             InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackMario, MapSemaphoreManager.Mario, _mapObjMario, true);
             InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackHolp, MapSemaphoreManager.Holp, _mapObjHolp, false);
@@ -123,6 +123,14 @@ namespace STROOP.Managers
             List<object> backgroundImageChoices = new List<object>() { "Recommended" };
             backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
             Config.MapGui.ComboBoxBackground.DataSource = backgroundImageChoices;
+
+            _mapObjMario.Shown = true;
+            _mapObjMario.Displayed = true;
+            _mapObjMario.Tracked = true;
+
+            _mapObjFloorTri.Shown = true;
+            _mapObjFloorTri.Displayed = true;
+            _mapObjFloorTri.Tracked = true;
         }
 
         private void InitializeCheckboxSemaphore(
