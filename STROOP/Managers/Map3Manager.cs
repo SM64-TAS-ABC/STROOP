@@ -383,7 +383,7 @@ namespace STROOP.Managers
             MapLayout map = Config.MapAssociations.GetBestMap();
 
             Config.Map3Gui.labelMap3DataMapName.Text = map.Name;
-            Config.Map3Gui.labelMap3DataMapSubName.Text = (map.SubName != null) ? map.SubName : "";
+            Config.Map3Gui.labelMap3DataMapSubName.Text = map.SubName ?? "";
             Config.Map3Gui.labelMap3DataPuCoordinateValues.Text = string.Format("[{0}:{1}:{2}]", puX, puY, puZ);
             Config.Map3Gui.labelMap3DataQpuCoordinateValues.Text = string.Format("[{0}:{1}:{2}]", qpuX, qpuY, qpuZ);
             Config.Map3Gui.labelMap3DataId.Text = string.Format("[{0}:{1}:{2}:{3}]", level, area, loadingPoint, missionLayout);
