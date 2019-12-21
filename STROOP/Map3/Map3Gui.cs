@@ -13,7 +13,8 @@ namespace STROOP.Map3
     public class Map3Gui
     {
         // Major Controls
-        public GLControl GLControl;
+        public GLControl GLControl2D;
+        public GLControl GLControl3D;
         public Map3TrackerFlowLayoutPanel flowLayoutPanelMap3Trackers;
 
 
@@ -32,6 +33,7 @@ namespace STROOP.Map3
         public CheckBox checkBoxMap3OptionsTrackSelf;
         public CheckBox checkBoxMap3OptionsTrackPoint;
         public CheckBox checkBoxMap3OptionsEnablePuView;
+        public CheckBox checkBoxMap3OptionsEnable3D;
         public CheckBox checkBoxMap3OptionsScaleIconSizes;
 
         // Options - Global Icon Size

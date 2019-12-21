@@ -27,9 +27,9 @@ namespace STROOP.Map3
 
         protected override List<(PointF loc, SizeF size)> GetDimensions()
         {
-            float xCenter = Config.Map3Gui.GLControl.Width / 2;
-            float yCenter = Config.Map3Gui.GLControl.Height / 2;
-            float length = Math.Max(Config.Map3Gui.GLControl.Width, Config.Map3Gui.GLControl.Height);
+            float xCenter = Config.Map3Gui.GLControl2D.Width / 2;
+            float yCenter = Config.Map3Gui.GLControl2D.Height / 2;
+            float length = Math.Max(Config.Map3Gui.GLControl2D.Width, Config.Map3Gui.GLControl2D.Height);
             (PointF loc, SizeF size) dimension = (new PointF(xCenter, yCenter), new SizeF(length, length));
             return new List<(PointF loc, SizeF size)>() { dimension };
         }

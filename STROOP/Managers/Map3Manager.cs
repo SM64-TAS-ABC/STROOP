@@ -350,7 +350,7 @@ namespace STROOP.Managers
             UpdateBasedOnObjectsSelectedOnMap();
             UpdateControlsBasedOnSemaphores();
             UpdateDataTab();
-            Config.Map3Gui.GLControl.Invalidate();
+            Config.Map3Gui.GLControl2D.Invalidate();
         }
 
         private void UpdateDataTab()

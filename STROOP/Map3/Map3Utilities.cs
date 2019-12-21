@@ -33,8 +33,8 @@ namespace STROOP.Map3
                     -1 * Config.Map3Graphics.MapViewAngleValue);
             float xOffsetPixels = xOffsetRotated * Config.Map3Graphics.MapViewScaleValue;
             float zOffsetPixels = zOffsetRotated * Config.Map3Graphics.MapViewScaleValue;
-            float centerX = Config.Map3Gui.GLControl.Width / 2 + xOffsetPixels;
-            float centerZ = Config.Map3Gui.GLControl.Height / 2 + zOffsetPixels;
+            float centerX = Config.Map3Gui.GLControl2D.Width / 2 + xOffsetPixels;
+            float centerZ = Config.Map3Gui.GLControl2D.Height / 2 + zOffsetPixels;
             return (centerX, centerZ);
         }
 

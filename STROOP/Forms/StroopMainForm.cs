@@ -312,7 +312,8 @@ namespace STROOP
 
             Config.Map3Gui = new Map3Gui()
             {
-                GLControl = glControlMap3,
+                GLControl2D = glControlMap3,
+                GLControl3D = glControlMap4,
                 flowLayoutPanelMap3Trackers = flowLayoutPanelMap3Trackers,
 
                 checkBoxMap3OptionsTrackMario = checkBoxMap3OptionsTrackMario,
@@ -328,6 +329,7 @@ namespace STROOP
                 checkBoxMap3OptionsTrackSelf = checkBoxMap3OptionsTrackSelf,
                 checkBoxMap3OptionsTrackPoint = checkBoxMap3OptionsTrackPoint,
                 checkBoxMap3OptionsEnablePuView = checkBoxMap3OptionsEnablePuView,
+                checkBoxMap3OptionsEnable3D = checkBoxMap3OptionsEnable3D,
                 checkBoxMap3OptionsScaleIconSizes = checkBoxMap3OptionsScaleIconSizes,
 
                 labelMap3OptionsGlobalIconSize = labelMap3OptionsGlobalIconSize,
