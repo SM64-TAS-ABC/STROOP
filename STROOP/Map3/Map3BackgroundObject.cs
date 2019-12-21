@@ -18,6 +18,7 @@ namespace STROOP.Map3
         public Map3BackgroundObject()
             : base()
         {
+            InternalRotates = false;
         }
 
         public override Image GetImage()

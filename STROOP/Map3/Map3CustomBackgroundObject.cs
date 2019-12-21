@@ -22,6 +22,7 @@ namespace STROOP.Map3
         public Map3CustomBackgroundObject()
             : base()
         {
+            InternalRotates = false;
             _backgroundChoice = "Recommended";
         }
 

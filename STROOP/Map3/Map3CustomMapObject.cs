@@ -22,6 +22,7 @@ namespace STROOP.Map3
         public Map3CustomMapObject()
             : base()
         {
+            InternalRotates = true;
             _mapLayoutChoice = "Recommended";
         }
 

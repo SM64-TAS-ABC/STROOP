@@ -24,8 +24,7 @@ namespace STROOP.Map3
         {
             UpdateImage();
             List<(PointF loc, SizeF size)> dimensions = GetDimensions();
-            float angle = (this is Map3BackgroundObject || this is Map3CustomBackgroundObject) ?
-                0 : Map3Utilities.ConvertAngleForControl(0);
+            float angle = InternalRotates ? Map3Utilities.ConvertAngleForControl(0) : 0; 
             foreach ((PointF loc, SizeF size) in dimensions)
             {
                 Map3Utilities.DrawTexture(TextureId, loc, size, angle, Opacity);
