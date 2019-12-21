@@ -700,7 +700,7 @@ namespace STROOP
                 Config.CellsManager.Update(tabControlMain.SelectedTab == tabPageCells);
                 Config.CoinManager.Update(tabControlMain.SelectedTab == tabPageCoin);
                 Config.M64Manager.Update(tabControlMain.SelectedTab == tabPageM64);
-                //Config.MapManager?.Update();
+                Config.MapManager?.Update();
                 Config.Map2Manager?.Update();
                 Config.Map3Manager.Update(tabControlMain.SelectedTab == tabPageMap3);
                 Config.Map4Manager?.Update();
@@ -761,7 +761,6 @@ namespace STROOP
 
         private async void glControlMap_Load(object sender, EventArgs e)
         {
-            /*
             await Task.Run(() => {
                 while (Config.MapManager == null)
                 {
@@ -769,7 +768,6 @@ namespace STROOP
                 }
             });
             Config.MapManager.Load();
-            */
         }
 
         private async void glControlMap2_Load(object sender, EventArgs e)
