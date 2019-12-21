@@ -16,14 +16,14 @@ using System.Diagnostics;
 
 namespace STROOP.Controls.Map.Graphics
 {
-    public class MapGraphics : IDisposable
+    public class Map4Graphics : IDisposable
     {
         const string VertexShaderPath = @"Resources\Shaders\VertexShader.glsl";
         const string FragmentShaderPath = @"Resources\Shaders\FragmentShader.glsl";
         const string ShaderLogPath = @"Resources\Shaders\ShaderLog.txt";
 
 
-        public IMapCamera Camera { get; set; }
+        public IMap4Camera Camera { get; set; }
         public float AspectRatio => Control.AspectRatio;
         public float NormalizedWidth => AspectRatio <= 1.0f ? 1.0f : (float) Control.Width / Control.Height;
         public float NormalizedHeight => AspectRatio >= 1.0f ? 1.0f : (float) Control.Height / Control.Width;
@@ -35,7 +35,7 @@ namespace STROOP.Controls.Map.Graphics
         public event EventHandler OnSizeChanged;
 
         Matrix4 _identityView = Matrix4.Identity;
-        List <MapGraphicsItem> _mapItems = new List<MapGraphicsItem>();
+        List <Map4GraphicsItem> _mapItems = new List<Map4GraphicsItem>();
         Object _mapItemsLock = new object();
         public GLControl Control { get; }
 
@@ -49,9 +49,9 @@ namespace STROOP.Controls.Map.Graphics
         int _glAttributeColor = 2;
         int _glAttributeTexCoords = 3;
 
-        public GraphicsUtilities Utilities { get; private set; }
+        public Map4GraphicsUtilities Utilities { get; private set; }
 
-        public MapGraphics(GLControl control)
+        public Map4Graphics(GLControl control)
         {
             Control = control;
         }
@@ -80,7 +80,7 @@ namespace STROOP.Controls.Map.Graphics
             GL.Viewport(Control.DisplayRectangle);
 
             // Create utilties for GraphicsItems to use
-            Utilities = new GraphicsUtilities(this);
+            Utilities = new Map4GraphicsUtilities(this);
 
             Control.Paint += OnPaint;
             Control.Resize += OnResize;
@@ -102,16 +102,16 @@ namespace STROOP.Controls.Map.Graphics
             }
 
             // Get visible map graphics items
-            IEnumerable<MapGraphicsItem> drawItems;
+            IEnumerable<Map4GraphicsItem> drawItems;
             lock (_mapItemsLock)
             {
                 drawItems = _mapItems.Where(o => o.Visible); // && o.DrawOnCameraTypes.Contains(Camera.GetType()));
             }
             
-            IEnumerable<MapGraphicsItem> drawItemsPerspective, drawItemsOverlay, drawItemsBackground;
-            drawItemsPerspective = drawItems.Where(i => i.Type == MapGraphicsItem.DrawType.Perspective);
-            drawItemsOverlay = drawItems.Where(i => i.Type == MapGraphicsItem.DrawType.Overlay).OrderBy(i => i.Depth);
-            drawItemsBackground = drawItems.Where(i => i.Type == MapGraphicsItem.DrawType.Background);
+            IEnumerable<Map4GraphicsItem> drawItemsPerspective, drawItemsOverlay, drawItemsBackground;
+            drawItemsPerspective = drawItems.Where(i => i.Type == Map4GraphicsItem.DrawType.Perspective);
+            drawItemsOverlay = drawItems.Where(i => i.Type == Map4GraphicsItem.DrawType.Overlay).OrderBy(i => i.Depth);
+            drawItemsBackground = drawItems.Where(i => i.Type == Map4GraphicsItem.DrawType.Background);
 
             // Setup Background
             GL.Disable(EnableCap.DepthTest);
@@ -188,7 +188,7 @@ namespace STROOP.Controls.Map.Graphics
             Control.Invalidate();
         }
 
-        public void AddMapItem(MapGraphicsItem mapItem)
+        public void AddMapItem(Map4GraphicsItem mapItem)
         {
             if (_error)
                 return;
@@ -203,7 +203,7 @@ namespace STROOP.Controls.Map.Graphics
             }
         }
 
-        public void RemoveMapObject(MapGraphicsItem mapItem)
+        public void RemoveMapObject(Map4GraphicsItem mapItem)
         {
             lock (_mapItemsLock)
             {
@@ -291,7 +291,7 @@ namespace STROOP.Controls.Map.Graphics
                 {
                     lock (_mapItemsLock)
                     {
-                        foreach (MapGraphicsItem item in _mapItems)
+                        foreach (Map4GraphicsItem item in _mapItems)
                             item.Unload(this);
 
                         GL.DetachShader(_shaderProgram, _vertexShader);
