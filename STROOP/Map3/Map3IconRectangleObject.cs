@@ -20,7 +20,7 @@ namespace STROOP.Map3
         {
         }
 
-        public override void DrawOnControl()
+        public override void DrawOn2DControl()
         {
             UpdateImage();
             List<(PointF loc, SizeF size)> dimensions = GetDimensions();

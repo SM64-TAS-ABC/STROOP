@@ -45,7 +45,7 @@ namespace STROOP.Map3
             OutlineColor = Color.Red;
         }
 
-        public override void DrawOnControl()
+        public override void DrawOn2DControl()
         {
             if (OutlineWidth == 0) return;
 

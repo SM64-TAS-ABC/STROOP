@@ -91,8 +91,8 @@ namespace STROOP.Map3
 
         public void DrawOnControl()
         {
-            _mapObjBackground.DrawOnControl();
-            _mapObjMap.DrawOnControl();
+            _mapObjBackground.DrawOn2DControl();
+            _mapObjMap.DrawOn2DControl();
             
             List<Map3Object> listOrderOnTop = new List<Map3Object>();
             List<Map3Object> listOrderOnBottom = new List<Map3Object>();
@@ -126,15 +126,15 @@ namespace STROOP.Map3
 
             foreach (Map3Object obj in listOrderOnBottom)
             {
-                obj.DrawOnControl();
+                obj.DrawOn2DControl();
             }
             foreach (Map3Object obj in listOrderByY)
             {
-                obj.DrawOnControl();
+                obj.DrawOn2DControl();
             }
             foreach (Map3Object obj in listOrderOnTop)
             {
-                obj.DrawOnControl();
+                obj.DrawOn2DControl();
             }
         }
 

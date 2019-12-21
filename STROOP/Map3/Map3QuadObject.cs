@@ -21,7 +21,7 @@ namespace STROOP.Map3
         {
         }
 
-        public override void DrawOnControl()
+        public override void DrawOn2DControl()
         {
             List<List<(float x, float z)>> quadList = GetQuadList();
             List<List<(float x, float z)>> quadListForControl =

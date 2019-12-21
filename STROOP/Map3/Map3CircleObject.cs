@@ -23,7 +23,7 @@ namespace STROOP.Map3
         {
         }
 
-        public override void DrawOnControl()
+        public override void DrawOn2DControl()
         {
             (float centerX, float centerZ, float radius) = GetDimensions();
             (float controlCenterX, float controlCenterZ) = Map3Utilities.ConvertCoordsForControl(centerX, centerZ);

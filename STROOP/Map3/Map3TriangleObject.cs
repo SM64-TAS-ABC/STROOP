@@ -21,19 +21,19 @@ namespace STROOP.Map3
         {
         }
 
-        public override void DrawOnControl()
+        public override void DrawOn2DControl()
         {
             if (ShowTriUnits)
             {
-                DrawOnControlWithUnits();
+                DrawOn2DControlWithUnits();
             }
             else
             {
-                DrawOnControlWithoutUnits();
+                DrawOn2DControlWithoutUnits();
             }
         }
 
-        private void DrawOnControlWithoutUnits()
+        private void DrawOn2DControlWithoutUnits()
         {
             List<List<(float x, float z)>> vertexLists = GetVertexLists();
             List<List<(float x, float z)>> vertexListsForControl =
@@ -75,7 +75,7 @@ namespace STROOP.Map3
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        private void DrawOnControlWithUnits()
+        private void DrawOn2DControlWithUnits()
         {
             List<List<(float x, float z)>> triVertexLists = GetVertexLists();
             List<(int x, int z)> unitPoints = triVertexLists.ConvertAll(vertexList =>

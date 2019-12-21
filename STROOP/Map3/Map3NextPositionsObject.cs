@@ -45,7 +45,7 @@ namespace STROOP.Map3
             return (float)PositionAngle.Mario.Y;
         }
 
-        public override void DrawOnControl()
+        public override void DrawOn2DControl()
         {
             if (_redMarioTex == -1)
             {

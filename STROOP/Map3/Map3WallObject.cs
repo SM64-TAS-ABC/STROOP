@@ -24,7 +24,7 @@ namespace STROOP.Map3
             Color = Color.Green;
         }
 
-        public override void DrawOnControl()
+        public override void DrawOn2DControl()
         {
             List<(float x1, float z1, float x2, float z2, bool xProjection)> wallData = GetWallData();
             foreach ((float x1, float z1, float x2, float z2, bool xProjection) in wallData)

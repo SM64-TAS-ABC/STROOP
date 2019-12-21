@@ -31,7 +31,7 @@ namespace STROOP.Map3
             Color = Color.Red;
         }
 
-        public override void DrawOnControl()
+        public override void DrawOn2DControl()
         {
             for (int i = 1; i <= Size; i++)
             {

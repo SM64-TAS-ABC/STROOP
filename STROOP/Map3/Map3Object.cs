@@ -47,7 +47,7 @@ namespace STROOP.Map3
         {
         }
 
-        public abstract void DrawOnControl();
+        public abstract void DrawOn2DControl();
 
         public abstract string GetName();
 
