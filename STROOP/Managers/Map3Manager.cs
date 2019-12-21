@@ -264,6 +264,11 @@ namespace STROOP.Managers
             });
 
             // Additional Checkboxes
+            Config.Map3Gui.checkBoxMap3OptionsEnable3D.Click += (sender, e) =>
+            {
+                Config.Map3Gui.GLControl2D.Visible = !Config.Map3Gui.checkBoxMap3OptionsEnable3D.Checked;
+                Config.Map3Gui.GLControl3D.Visible = Config.Map3Gui.checkBoxMap3OptionsEnable3D.Checked;
+            };
             Config.Map3Gui.checkBoxMap3OptionsEnablePuView.Click += (sender, e) =>
                 Config.Map3Graphics.MapViewEnablePuView = Config.Map3Gui.checkBoxMap3OptionsEnablePuView.Checked;
             Config.Map3Gui.checkBoxMap3OptionsScaleIconSizes.Click += (sender, e) =>
