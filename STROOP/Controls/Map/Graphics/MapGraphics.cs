@@ -13,6 +13,7 @@ using STROOP.Structs;
 using STROOP.Controls.Map.Graphics.Items;
 using System.IO;
 using System.Diagnostics;
+using STROOP.Map3.Map.Graphics;
 
 namespace STROOP.Controls.Map.Graphics
 {

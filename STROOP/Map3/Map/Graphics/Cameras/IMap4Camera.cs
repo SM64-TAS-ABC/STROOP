@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
 
-namespace STROOP.Controls.Map.Graphics
+namespace STROOP.Map3.Map.Graphics
 {
     public interface IMap4Camera
     {

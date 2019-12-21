@@ -1,4 +1,5 @@
-﻿using STROOP.Forms;
+﻿using STROOP.Controls;
+using STROOP.Forms;
 using STROOP.Interfaces;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-namespace STROOP.Controls.Map.Trackers
+namespace STROOP.Map3.Map.Trackers
 {
     public class Map4TrackerFlowLayoutPanel : NoTearFlowLayoutPanel
     {

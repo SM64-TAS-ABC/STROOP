@@ -1,6 +1,8 @@
 ﻿using STROOP.Controls.Map.Graphics;
 using STROOP.Controls.Map.Graphics.Items;
 using STROOP.Controls.Map.Trackers;
+using STROOP.Map3.Map.Graphics.Items;
+using STROOP.Map3.Map.Trackers;
 using STROOP.Structs;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STROOP.Controls.Map
+namespace STROOP.Map3.Map
 {
     public abstract class Map4Object
     {

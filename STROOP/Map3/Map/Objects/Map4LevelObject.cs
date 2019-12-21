@@ -12,8 +12,10 @@ using System.Drawing;
 using STROOP.Controls.Map.Graphics;
 using OpenTK;
 using OpenTK.Graphics;
+using STROOP.Map3.Map.Graphics.Items;
+using STROOP.Map3.Map.Graphics;
 
-namespace STROOP.Controls.Map.Objects
+namespace STROOP.Map3.Map.Objects
 {
     class Map4LevelObject : Map4Object
     {

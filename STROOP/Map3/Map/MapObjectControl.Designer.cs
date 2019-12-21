@@ -1,4 +1,4 @@
-﻿namespace STROOP.Controls.Map
+﻿namespace STROOP.Map3.Map
 {
     partial class Map4ObjectControl
     {

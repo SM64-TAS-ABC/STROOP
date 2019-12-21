@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using OpenTK;
 
-namespace STROOP.Controls.Map.Graphics.Items
+namespace STROOP.Map3.Map.Graphics.Items
 {
     class Map4GraphicsBackgroundItem : Map4GraphicsItem
     {

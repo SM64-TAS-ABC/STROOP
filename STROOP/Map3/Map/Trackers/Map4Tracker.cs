@@ -15,8 +15,9 @@ using System.Drawing.Drawing2D;
 using STROOP.Interfaces;
 using STROOP.Controls.Map.Objects;
 using STROOP.Controls.Map.Semaphores;
+using STROOP.Map3.Map.Semaphores;
 
-namespace STROOP.Controls.Map.Trackers
+namespace STROOP.Map3.Map.Trackers
 {
     public partial class Map4Tracker : UserControl
     {

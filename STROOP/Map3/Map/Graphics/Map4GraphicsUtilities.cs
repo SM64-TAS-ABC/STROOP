@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STROOP.Controls.Map.Graphics
+namespace STROOP.Map3.Map.Graphics
 {
     public class Map4GraphicsUtilities
     {

@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STROOP.Controls.Map.Semaphores
+namespace STROOP.Map3.Map.Semaphores
 {
     public class Map4Semaphore
     {

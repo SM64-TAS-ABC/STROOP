@@ -7,7 +7,7 @@ using OpenTK.Graphics.OpenGL;
 using System.Drawing;
 using OpenTK;
 
-namespace STROOP.Controls.Map.Graphics.Items
+namespace STROOP.Map3.Map.Graphics.Items
 {
     class Map4GraphicsImageItem : Map4GraphicsItem
     {

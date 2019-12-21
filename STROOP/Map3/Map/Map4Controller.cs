@@ -15,8 +15,10 @@ using STROOP.Controls.Map.Graphics;
 using STROOP.Controls.Map.Graphics.Items;
 using STROOP.Models;
 using OpenTK.Input;
+using STROOP.Map3.Map.Graphics;
+using STROOP.Map3.Map.Graphics.Items;
 
-namespace STROOP.Controls.Map
+namespace STROOP.Map3.Map
 {
     public class Map4Controller
     {

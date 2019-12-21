@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STROOP.Controls.Map.Graphics.Items
+namespace STROOP.Map3.Map.Graphics.Items
 {
     class Map4GraphicsTrianglesItem : Map4GraphicsItem
     {

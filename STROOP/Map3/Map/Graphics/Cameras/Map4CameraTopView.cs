@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STROOP.Controls.Map.Graphics
+namespace STROOP.Map3.Map.Graphics
 {
     class Map4CameraTopView : IMap4Camera
     {

@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using STROOP.Map3.Map.Graphics.Items;
 
-namespace STROOP.Controls.Map.Objects
+namespace STROOP.Map3.Map.Objects
 {
     public abstract class Map4IconObject : Map4Object
     {

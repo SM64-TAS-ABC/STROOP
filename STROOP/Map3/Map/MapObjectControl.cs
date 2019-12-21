@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace STROOP.Controls.Map
+namespace STROOP.Map3.Map
 {
     public partial class Map4ObjectControl : UserControl
     {

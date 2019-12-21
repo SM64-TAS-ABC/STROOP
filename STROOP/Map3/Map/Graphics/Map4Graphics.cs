@@ -13,8 +13,9 @@ using STROOP.Structs;
 using STROOP.Controls.Map.Graphics.Items;
 using System.IO;
 using System.Diagnostics;
+using STROOP.Map3.Map.Graphics.Items;
 
-namespace STROOP.Controls.Map.Graphics
+namespace STROOP.Map3.Map.Graphics
 {
     public class Map4Graphics : IDisposable
     {

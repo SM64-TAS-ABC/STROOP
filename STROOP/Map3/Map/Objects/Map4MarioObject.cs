@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using STROOP.Controls.Map.Graphics.Items;
+using STROOP.Map3.Map.Graphics.Items;
 using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 
-namespace STROOP.Controls.Map.Objects
+namespace STROOP.Map3.Map.Objects
 {
     class Map4MarioObject : Map4IconObject
     {

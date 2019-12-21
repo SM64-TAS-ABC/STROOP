@@ -2,6 +2,8 @@
 using OpenTK.Graphics;
 using STROOP.Controls.Map.Graphics;
 using STROOP.Controls.Map.Graphics.Items;
+using STROOP.Map3.Map.Graphics;
+using STROOP.Map3.Map.Graphics.Items;
 using STROOP.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STROOP.Controls.Map.Objects
+namespace STROOP.Map3.Map.Objects
 {
     abstract class Map4TriangleObject : Map4Object
     {

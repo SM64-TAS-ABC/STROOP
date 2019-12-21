@@ -9,7 +9,7 @@ using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 
-namespace STROOP.Controls.Map.Objects
+namespace STROOP.Map3.Map.Objects
 {
     class Map4FloorTriObject : Map4TriangleObject
     {

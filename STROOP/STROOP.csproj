@@ -732,7 +732,6 @@
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
     <None Include="app.manifest" />
-    <None Include="Map3\Map\MapTab.cd" />
     <None Include="Mappings\MappingJP.map">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
