@@ -371,6 +371,7 @@
     <Compile Include="LoadingHandler.cs" />
     <Compile Include="Managers\Map3Manager.cs" />
     <Compile Include="Managers\CellsManager.cs" />
+    <Compile Include="Managers\Map4Manager.cs" />
     <Compile Include="Managers\MusicManager.cs" />
     <Compile Include="Managers\SearchManager.cs" />
     <Compile Include="Managers\SoundManager.cs" />

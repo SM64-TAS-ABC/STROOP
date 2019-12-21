@@ -1,6 +1,7 @@
 ﻿using STROOP.Controls.Map;
 using STROOP.Managers;
 using STROOP.Map3;
+using STROOP.Map3.Map;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace STROOP.Structs.Configurations
         public static ObjectAssociations ObjectAssociations;
         public static MapAssociations MapAssociations;
         public static MapController MapController;
+        public static Map4Controller Map4Controller;
         public static StroopMainForm StroopMainForm;
         public static TabControlEx TabControlMain;
         public static Label DebugText;
