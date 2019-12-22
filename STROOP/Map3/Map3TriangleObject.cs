@@ -38,11 +38,47 @@ namespace STROOP.Map3
             GL.DeleteBuffer(buffer);
         }
 
+        public void DrawOn3DControl2()
+        {
+            List<List<(float x, float y, float z, Color color)>> triData = GetTriangles()
+                .ConvertAll(tri => new List<(float x, float y, float z, Color color)>()
+                {
+                    (tri.X1, tri.Y1, tri.Z1, GetColorForTri(tri)),
+                    (tri.X2, tri.Y2, tri.Z2, GetColorForTri(tri)),
+                    (tri.X3, tri.Y3, tri.Z3, GetColorForTri(tri)),
+                });
+            Map4Vertex[] vertexArray = triData.SelectMany(vertexList => vertexList).ToList()
+                .ConvertAll(vertex => new Map4Vertex(new Vector3(vertex.x, vertex.y, vertex.z), vertex.color)).ToArray();
+
+            int buffer = GL.GenBuffer();
+            GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArray.Length * Map4Vertex.Size), vertexArray, BufferUsageHint.DynamicDraw);
+            Config.Map4Graphics.BindVertices();
+            GL.DrawArrays(PrimitiveType.Triangles, 0, vertexArray.Length);
+            GL.DeleteBuffer(buffer);
+        }
+
         protected List<List<(float x, float y, float z)>> GetVertexLists()
         {
             return GetTriangles().ConvertAll(tri => tri.Get3DVertices());
         }
 
         protected abstract List<TriangleDataModel> GetTriangles();
+
+        private static Color GetColorForTri(TriangleDataModel tri)
+        {
+            switch (tri.Classification)
+            {
+                case TriangleClassification.Wall:
+                    return tri.XProjection ? Color.DarkGreen : Color.LightGreen;
+                case TriangleClassification.Floor:
+                    return Color.Blue;
+                case TriangleClassification.Ceiling:
+                    return Color.Red;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }
