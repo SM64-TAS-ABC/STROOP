@@ -2,6 +2,7 @@
 using STROOP.Managers;
 using STROOP.Map3;
 using STROOP.Map3.Map;
+using STROOP.Map3.Map.Graphics;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace STROOP.Structs.Configurations
         public static MapGui MapGui;
         public static Map3Graphics Map3Graphics;
         public static Map3Gui Map3Gui;
+        public static Map4Graphics Map4Graphics;
 
         public static CameraManager CameraManager;
         public static DebugManager DebugManager;

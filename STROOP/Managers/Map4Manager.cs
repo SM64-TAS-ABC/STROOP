@@ -27,9 +27,7 @@ namespace STROOP.Managers
     public class Map4Manager
     {
         public bool IsLoaded { get; private set; }
-        public bool Visible { get => _graphics.Visible; set => _graphics.Visible = value; }
-
-        private Map4Graphics _graphics;
+        public bool Visible { get => Config.Map4Graphics.Visible; set => Config.Map4Graphics.Visible = value; }
 
         #region Objects
         private Map4LevelObject _mapObjLevel;
@@ -54,9 +52,9 @@ namespace STROOP.Managers
         public void Load()
         {
             // Create new graphics control
-            _graphics = new Map4Graphics(Config.Map3Gui.GLControl3D);
-            _graphics.Load();
-            Config.Map4Controller = new Map4Controller(_graphics);
+            Config.Map4Graphics = new Map4Graphics(Config.Map3Gui.GLControl3D);
+            Config.Map4Graphics.Load();
+            Config.Map4Controller = new Map4Controller(Config.Map4Graphics);
 
             IsLoaded = true;
 

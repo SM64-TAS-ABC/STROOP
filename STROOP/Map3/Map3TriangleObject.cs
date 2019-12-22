@@ -145,6 +145,16 @@ namespace STROOP.Map3
             GL.Color4(1, 1, 1, 1.0f);
         }
 
+        public override void DrawOn3DControl()
+        {
+            /*
+            GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
+            Config.Map4Graphics.BindVertices();
+            GL.DrawArrays(PrimitiveType.Triangles, 0, _loadedVertices.Length);
+            */
+        }
+
         protected abstract List<List<(float x, float z)>> GetVertexLists();
     }
 }
