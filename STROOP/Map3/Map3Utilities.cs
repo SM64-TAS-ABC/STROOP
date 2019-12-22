@@ -38,6 +38,13 @@ namespace STROOP.Map3
             return (centerX, centerZ);
         }
 
+        /** Takes in in-game coordinates, outputs control coordinates. */
+        public static (float x, float y, float z) ConvertCoordsForControl(float x, float y, float z)
+        {
+            (float convertedX, float convertedZ) = ConvertCoordsForControl(x, z);
+            return (convertedX, y, convertedZ);
+        }
+
         /** Takes in in-game angle, outputs control angle. */
         public static float ConvertAngleForControl(double angle)
         {
@@ -147,17 +154,17 @@ namespace STROOP.Map3
             GL.End();
         }
 
-        public static List<List<(float x, float z)>> GetTriangleVertexLists(uint triAddresses)
+        public static List<List<(float x, float y, float z)>> GetTriangleVertexLists(uint triAddresses)
         {
             return GetTriangleVertexLists(new List<uint>() { triAddresses });
         }
 
-        public static List<List<(float x, float z)>> GetTriangleVertexLists(List<uint> triAddresses)
+        public static List<List<(float x, float y, float z)>> GetTriangleVertexLists(List<uint> triAddresses)
         {
             return triAddresses.ConvertAll(triAddress =>
             {
-                if (triAddress == 0) return new List<(float, float)>();
-                return new TriangleDataModel(triAddress).Get2DVertices();
+                if (triAddress == 0) return new List<(float, float, float)>();
+                return new TriangleDataModel(triAddress).Get3DVertices();
             });
         }
         

@@ -35,10 +35,10 @@ namespace STROOP.Map3
 
         private void DrawOn2DControlWithoutUnits()
         {
-            List<List<(float x, float z)>> vertexLists = GetVertexLists();
-            List<List<(float x, float z)>> vertexListsForControl =
+            List<List<(float x, float y, float z)>> vertexLists = GetVertexLists();
+            List<List<(float x, float y, float z)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
-                    vertex => Map3Utilities.ConvertCoordsForControl(vertex.x, vertex.z)));
+                    vertex => Map3Utilities.ConvertCoordsForControl(vertex.x, vertex.y, vertex.z)));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -47,9 +47,9 @@ namespace STROOP.Map3
             // Draw triangle
             GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
             GL.Begin(PrimitiveType.Triangles);
-            foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+            foreach (List<(float x, float y, float z)> vertexList in vertexListsForControl)
             {
-                foreach ((float x, float z) in vertexList)
+                foreach ((float x, float y, float z) in vertexList)
                 {
                     GL.Vertex2(x, z);
                 }
@@ -61,10 +61,10 @@ namespace STROOP.Map3
             {
                 GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
                 GL.LineWidth(OutlineWidth);
-                foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+                foreach (List<(float x, float y, float z)> vertexList in vertexListsForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z) in vertexList)
+                    foreach ((float x, float y, float z) in vertexList)
                     {
                         GL.Vertex2(x, z);
                     }
@@ -77,7 +77,7 @@ namespace STROOP.Map3
 
         private void DrawOn2DControlWithUnits()
         {
-            List<List<(float x, float z)>> triVertexLists = GetVertexLists();
+            List<List<(float x, float y, float z)>> triVertexLists = GetVertexLists();
             List<(int x, int z)> unitPoints = triVertexLists.ConvertAll(vertexList =>
             {
                 if (vertexList.Count == 0) return new List<(int x, int z)>();
@@ -155,6 +155,6 @@ namespace STROOP.Map3
             */
         }
 
-        protected abstract List<List<(float x, float z)>> GetVertexLists();
+        protected abstract List<List<(float x, float y, float z)>> GetVertexLists();
     }
 }

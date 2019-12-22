@@ -24,7 +24,7 @@ namespace STROOP.Map3
             Color = Color.Red;
         }
 
-        protected override List<List<(float x, float z)>> GetVertexLists()
+        protected override List<List<(float x, float y, float z)>> GetVertexLists()
         {
             uint triAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
             return Map3Utilities.GetTriangleVertexLists(triAddress);

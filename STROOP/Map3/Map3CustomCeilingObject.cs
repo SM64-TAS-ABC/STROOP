@@ -41,7 +41,7 @@ namespace STROOP.Map3
             return new Map3CustomCeilingObject(uintList);
         }
 
-        protected override List<List<(float x, float z)>> GetVertexLists()
+        protected override List<List<(float x, float y, float z)>> GetVertexLists()
         {
             return Map3Utilities.GetTriangleVertexLists(_triAddressList);
         }

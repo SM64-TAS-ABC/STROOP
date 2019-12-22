@@ -36,10 +36,10 @@ namespace STROOP.Map3
             Color = Color.Red;
         }
 
-        protected override List<List<(float x, float z)>> GetVertexLists()
+        protected override List<List<(float x, float y, float z)>> GetVertexLists()
         {
             return _triAddressList.ConvertAll(address => new TriangleDataModel(address))
-                .ConvertAll(tri => tri.Get2DVertices());
+                .ConvertAll(tri => tri.Get3DVertices());
         }
 
         public override ContextMenuStrip GetContextMenuStrip()
