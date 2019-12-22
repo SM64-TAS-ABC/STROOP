@@ -45,9 +45,9 @@ namespace STROOP.Map3.Map.Objects
 
             _triGraphics.SetTriangles(new Map4Vertex[]
             {
-                new Map4Vertex(new Vector3(tri.X1, tri.Y1, tri.Z1), color),
-                new Map4Vertex(new Vector3(tri.X2, tri.Y2, tri.Z2), color),
-                new Map4Vertex(new Vector3(tri.X3, tri.Y3, tri.Z3), color),
+                new Map4Vertex(new Vector3(tri.X1, tri.Y1 + 100, tri.Z1), color), //TODO remove these 100s
+                new Map4Vertex(new Vector3(tri.X2, tri.Y2 + 100, tri.Z2), color),
+                new Map4Vertex(new Vector3(tri.X3, tri.Y3 + 100, tri.Z3), color),
             });
         }
     }

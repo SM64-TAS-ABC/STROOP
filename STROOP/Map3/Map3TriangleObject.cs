@@ -160,6 +160,8 @@ namespace STROOP.Map3
             int buffer = GL.GenBuffer();
             GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
             GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArray.Length * Map4Vertex.Size),
+                vertexArray, BufferUsageHint.DynamicDraw);
             Config.Map4Graphics.BindVertices();
             GL.DrawArrays(PrimitiveType.Triangles, 0, vertexArray.Length);
             GL.DeleteBuffer(buffer);
