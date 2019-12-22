@@ -154,18 +154,15 @@ namespace STROOP.Map3
             GL.End();
         }
 
-        public static List<List<(float x, float y, float z)>> GetTriangleVertexLists(uint triAddresses)
+        public static List<TriangleDataModel> GetTriangles(uint triAddresses)
         {
-            return GetTriangleVertexLists(new List<uint>() { triAddresses });
+            return GetTriangles(new List<uint>() { triAddresses });
         }
 
-        public static List<List<(float x, float y, float z)>> GetTriangleVertexLists(List<uint> triAddresses)
+        public static List<TriangleDataModel> GetTriangles(List<uint> triAddresses)
         {
-            return triAddresses.ConvertAll(triAddress =>
-            {
-                if (triAddress == 0) return new List<(float, float, float)>();
-                return new TriangleDataModel(triAddress).Get3DVertices();
-            });
+            return triAddresses.FindAll(triAddress => triAddress != 0)
+                .ConvertAll(triAddress => new TriangleDataModel(triAddress));
         }
         
         public static List<List<(float x, float z)>> ConvertUnitPointsToQuads(List<(int x, int z)> unitPoints)

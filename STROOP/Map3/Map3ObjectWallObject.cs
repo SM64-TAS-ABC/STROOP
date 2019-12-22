@@ -39,11 +39,10 @@ namespace STROOP.Map3
                 .ConvertAll(wallDataNullable => wallDataNullable.Value);
         }
 
-        protected override List<List<(float x, float y, float z)>> GetVertexLists()
+        protected override List<TriangleDataModel> GetTriangles()
         {
             return TriangleUtilities.GetObjectTrianglesForObject(_objAddress)
-                .FindAll(tri => tri.IsWall())
-                .ConvertAll(tri => tri.Get3DVertices());
+                .FindAll(tri => tri.IsWall());
         }
 
         public override string GetName()

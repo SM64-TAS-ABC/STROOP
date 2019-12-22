@@ -28,11 +28,10 @@ namespace STROOP.Map3
             Color = Color.Blue;
         }
 
-        protected override List<List<(float x, float y, float z)>> GetVertexLists()
+        protected override List<TriangleDataModel> GetTriangles()
         {
             return TriangleUtilities.GetObjectTrianglesForObject(_objAddress)
-                .FindAll(tri => tri.IsFloor())
-                .ConvertAll(tri => tri.Get3DVertices());
+                .FindAll(tri => tri.IsFloor());
         }
 
         public override string GetName()

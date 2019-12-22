@@ -12,6 +12,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using STROOP.Map3.Map.Graphics;
+using STROOP.Models;
 
 namespace STROOP.Map3
 {
@@ -37,6 +38,11 @@ namespace STROOP.Map3
             GL.DeleteBuffer(buffer);
         }
 
-        protected abstract List<List<(float x, float y, float z)>> GetVertexLists();
+        protected List<List<(float x, float y, float z)>> GetVertexLists()
+        {
+            return GetTriangles().ConvertAll(tri => tri.Get3DVertices());
+        }
+
+        protected abstract List<TriangleDataModel> GetTriangles();
     }
 }
