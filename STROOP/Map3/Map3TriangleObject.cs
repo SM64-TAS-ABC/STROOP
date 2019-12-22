@@ -25,21 +25,6 @@ namespace STROOP.Map3
 
         public override void DrawOn3DControl()
         {
-            List<List<(float x, float y, float z)>> vertexLists = GetVertexLists();
-            Map4Vertex[] vertexArray = vertexLists.SelectMany(vertexList => vertexList).ToList()
-                .ConvertAll(vertex => new Map4Vertex(new Vector3(vertex.x, vertex.y, vertex.z), Color4)).ToArray();
-
-            int buffer = GL.GenBuffer();
-            GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
-            GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
-            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArray.Length * Map4Vertex.Size), vertexArray, BufferUsageHint.DynamicDraw);
-            Config.Map4Graphics.BindVertices();
-            GL.DrawArrays(PrimitiveType.Triangles, 0, vertexArray.Length);
-            GL.DeleteBuffer(buffer);
-        }
-
-        public void DrawOn3DControl2()
-        {
             List<List<(float x, float y, float z, Color color)>> triData = GetTriangles()
                 .ConvertAll(tri => new List<(float x, float y, float z, Color color)>()
                 {
@@ -48,7 +33,8 @@ namespace STROOP.Map3
                     (tri.X3, tri.Y3, tri.Z3, GetColorForTri(tri)),
                 });
             Map4Vertex[] vertexArray = triData.SelectMany(vertexList => vertexList).ToList()
-                .ConvertAll(vertex => new Map4Vertex(new Vector3(vertex.x, vertex.y, vertex.z), vertex.color)).ToArray();
+                .ConvertAll(vertex => new Map4Vertex(new Vector3(
+                    vertex.x, vertex.y, vertex.z), UseAutomaticColoring() ? vertex.color : Color)).ToArray();
 
             int buffer = GL.GenBuffer();
             GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
@@ -65,6 +51,11 @@ namespace STROOP.Map3
         }
 
         protected abstract List<TriangleDataModel> GetTriangles();
+
+        protected virtual bool UseAutomaticColoring()
+        {
+            return false;
+        }
 
         private static Color GetColorForTri(TriangleDataModel tri)
         {
