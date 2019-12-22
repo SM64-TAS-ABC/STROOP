@@ -28,13 +28,13 @@ namespace STROOP.Map3
             List<List<(float x, float y, float z, Color color)>> triData = GetTriangles()
                 .ConvertAll(tri => new List<(float x, float y, float z, Color color)>()
                 {
-                    (tri.X1, tri.Y1, tri.Z1, GetColorForTri(tri)),
-                    (tri.X2, tri.Y2, tri.Z2, GetColorForTri(tri)),
-                    (tri.X3, tri.Y3, tri.Z3, GetColorForTri(tri)),
+                    (tri.X1, tri.Y1, tri.Z1, ColorUtilities.AddAlpha(GetColorForTri(tri), OpacityByte)),
+                    (tri.X2, tri.Y2, tri.Z2, ColorUtilities.AddAlpha(GetColorForTri(tri), OpacityByte)),
+                    (tri.X3, tri.Y3, tri.Z3, ColorUtilities.AddAlpha(GetColorForTri(tri), OpacityByte)),
                 });
             Map4Vertex[] vertexArray = triData.SelectMany(vertexList => vertexList).ToList()
                 .ConvertAll(vertex => new Map4Vertex(new Vector3(
-                    vertex.x, vertex.y, vertex.z), UseAutomaticColoring() ? vertex.color : Color)).ToArray();
+                    vertex.x, vertex.y, vertex.z), UseAutomaticColoring() ? vertex.color : Color4)).ToArray();
 
             int buffer = GL.GenBuffer();
             GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);

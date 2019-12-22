@@ -128,5 +128,10 @@ namespace STROOP.Utilities
             if (colorDialog.ShowDialog() == DialogResult.OK) return colorDialog.Color;
             return null;
         }
+
+        public static Color AddAlpha(Color color, byte alpha)
+        {
+            return Color.FromArgb(alpha, color.R, color.G, color.B);
+        }
     }
 }
