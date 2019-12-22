@@ -11,6 +11,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
+using OpenTK.Graphics;
 
 namespace STROOP.Map3
 {
@@ -30,6 +31,7 @@ namespace STROOP.Map3
         }
         public float OutlineWidth = 1;
         public Color Color = SystemColors.Control;
+        public Color4 Color4 { get => new Color4(Color.R, Color.G, Color.B, OpacityByte); }
         public Color OutlineColor = Color.Black;
 
         public bool? CustomRotates = null;

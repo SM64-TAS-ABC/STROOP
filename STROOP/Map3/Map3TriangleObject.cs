@@ -149,12 +149,13 @@ namespace STROOP.Map3
         public override void DrawOn3DControl()
         {
             List<List<(float x, float y, float z)>> vertexList = GetVertexLists();
+            if (vertexList.Count == 0 || vertexList[0].Count == 0) return;
 
             Map4Vertex[] vertexArray = new Map4Vertex[]
             {
-                new Map4Vertex(new Vector3(vertexList[0][0].x, vertexList[0][0].y, vertexList[0][0].z), Color),
-                new Map4Vertex(new Vector3(vertexList[0][1].x, vertexList[0][1].y, vertexList[0][1].z), Color),
-                new Map4Vertex(new Vector3(vertexList[0][2].x, vertexList[0][2].y, vertexList[0][2].z), Color),
+                new Map4Vertex(new Vector3(vertexList[0][0].x, vertexList[0][0].y, vertexList[0][0].z), Color4),
+                new Map4Vertex(new Vector3(vertexList[0][1].x, vertexList[0][1].y, vertexList[0][1].z), Color4),
+                new Map4Vertex(new Vector3(vertexList[0][2].x, vertexList[0][2].y, vertexList[0][2].z), Color4),
             };
 
             int buffer = GL.GenBuffer();
