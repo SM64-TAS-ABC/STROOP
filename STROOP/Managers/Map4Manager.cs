@@ -126,9 +126,9 @@ namespace STROOP.Managers
             _mapObjMario.Displayed = true;
             _mapObjMario.Tracked = true;
 
-            _mapObjFloorTri.Shown = true;
-            _mapObjFloorTri.Displayed = true;
-            _mapObjFloorTri.Tracked = true;
+            //_mapObjFloorTri.Shown = true;
+            //_mapObjFloorTri.Displayed = true;
+            //_mapObjFloorTri.Tracked = true;
         }
 
         private void InitializeCheckboxSemaphore(

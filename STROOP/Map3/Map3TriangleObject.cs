@@ -11,6 +11,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using STROOP.Map3.Map.Graphics;
 
 namespace STROOP.Map3
 {
@@ -147,12 +148,21 @@ namespace STROOP.Map3
 
         public override void DrawOn3DControl()
         {
-            /*
+            List<List<(float x, float y, float z)>> vertexList = GetVertexLists();
+
+            Map4Vertex[] vertexArray = new Map4Vertex[]
+            {
+                new Map4Vertex(new Vector3(vertexList[0][0].x, vertexList[0][0].y, vertexList[0][0].z), Color),
+                new Map4Vertex(new Vector3(vertexList[0][1].x, vertexList[0][1].y, vertexList[0][1].z), Color),
+                new Map4Vertex(new Vector3(vertexList[0][2].x, vertexList[0][2].y, vertexList[0][2].z), Color),
+            };
+
+            int buffer = GL.GenBuffer();
             GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
-            GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
             Config.Map4Graphics.BindVertices();
-            GL.DrawArrays(PrimitiveType.Triangles, 0, _loadedVertices.Length);
-            */
+            GL.DrawArrays(PrimitiveType.Triangles, 0, vertexArray.Length);
+            GL.DeleteBuffer(buffer);
         }
 
         protected abstract List<List<(float x, float y, float z)>> GetVertexLists();
