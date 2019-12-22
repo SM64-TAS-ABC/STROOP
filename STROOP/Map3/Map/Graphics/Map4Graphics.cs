@@ -46,7 +46,7 @@ namespace STROOP.Map3.Map.Graphics
         int _shaderProgram;
         int _vertexShader, _fragmentShader;
 
-        int _glUniformView;
+        public int GLUniformView;
         int _glAttributePosition = 1;
         int _glAttributeColor = 2;
         int _glAttributeTexCoords = 3;
@@ -122,7 +122,7 @@ namespace STROOP.Map3.Map.Graphics
             foreach (var mapItem in drawItemsBackground)
             {
                 Matrix4 viewMatrix = mapItem.GetModelMatrix(this);
-                GL.UniformMatrix4(_glUniformView, false, ref viewMatrix);
+                GL.UniformMatrix4(GLUniformView, false, ref viewMatrix);
                 mapItem.Draw(this);
             }
 
@@ -134,7 +134,7 @@ namespace STROOP.Map3.Map.Graphics
             foreach (var mapItem in drawItemsPerspective)
             {
                 Matrix4 viewMatrix = mapItem.GetModelMatrix(this) * Camera.Matrix;
-                GL.UniformMatrix4(_glUniformView, false, ref viewMatrix);
+                GL.UniformMatrix4(GLUniformView, false, ref viewMatrix);
                 mapItem.Draw(this);
             }
 
@@ -150,7 +150,7 @@ namespace STROOP.Map3.Map.Graphics
             // Draw 2D
             foreach (var mapItem in drawItemsOverlay) {
                 Matrix4 viewMatrix = mapItem.GetModelMatrix(this);
-                GL.UniformMatrix4(_glUniformView, false, ref viewMatrix);
+                GL.UniformMatrix4(GLUniformView, false, ref viewMatrix);
                  mapItem.Draw(this);
             }
 
@@ -281,7 +281,7 @@ namespace STROOP.Map3.Map.Graphics
             GL.UseProgram(_shaderProgram);
 
             // Get uniform locatinos
-            _glUniformView = GL.GetUniformLocation(_shaderProgram, "view");
+            GLUniformView = GL.GetUniformLocation(_shaderProgram, "view");
         }
 
         #region IDisposable Support

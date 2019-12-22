@@ -53,6 +53,11 @@ namespace STROOP.Map3
         {
         }
 
+        public virtual Matrix4 GetModelMatrix()
+        {
+            return Matrix4.Identity;
+        }
+
         public abstract string GetName();
 
         public abstract Image GetImage();

@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using OpenTK;
+using OpenTK.Graphics.OpenGL;
 
 namespace STROOP.Map3
 {
@@ -152,6 +154,8 @@ namespace STROOP.Map3
 
             foreach (Map3Object obj in list)
             {
+                Matrix4 viewMatrix = obj.GetModelMatrix() * Config.Map4Graphics.Camera.Matrix;
+                GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
                 obj.DrawOn3DControl();
             }
         }
