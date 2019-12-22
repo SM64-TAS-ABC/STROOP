@@ -59,14 +59,15 @@ namespace STROOP.Map3
 
         private static Color GetColorForTri(TriangleDataModel tri)
         {
+            double clampedNormY = MoreMath.Clamp(tri.NormY, -1, 1);
             switch (tri.Classification)
             {
                 case TriangleClassification.Wall:
-                    return tri.XProjection ? Color.DarkGreen : Color.LightGreen;
+                    return tri.XProjection ? Color.FromArgb(58, 116, 58) : Color.FromArgb(116, 203, 116);
                 case TriangleClassification.Floor:
-                    return Color.Blue;
+                    return Color.FromArgb(130, 130, 231).Darken(0.6 * (1 - clampedNormY));
                 case TriangleClassification.Ceiling:
-                    return Color.Red;
+                    return Color.FromArgb(231, 130, 130).Darken(0.6 * (clampedNormY + 1));
                 default:
                     throw new ArgumentOutOfRangeException();
             }
