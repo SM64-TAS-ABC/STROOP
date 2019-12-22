@@ -14,6 +14,7 @@ using STROOP.Controls.Map.Graphics.Items;
 using System.IO;
 using System.Diagnostics;
 using STROOP.Map3.Map.Graphics.Items;
+using STROOP.Structs.Configurations;
 
 namespace STROOP.Map3.Map.Graphics
 {
@@ -135,7 +136,9 @@ namespace STROOP.Map3.Map.Graphics
                 Matrix4 viewMatrix = mapItem.GetModelMatrix(this) * Camera.Matrix;
                 GL.UniformMatrix4(_glUniformView, false, ref viewMatrix);
                 mapItem.Draw(this);
-            } 
+            }
+
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOn3DControl();
 
             // Setup 2D
             GL.Disable(EnableCap.DepthTest);

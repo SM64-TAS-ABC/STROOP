@@ -88,7 +88,7 @@ namespace STROOP.Map3
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.MatrixMode(MatrixMode.Modelview);
 
-            Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOnControl();
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOn2DControl();
 
             Config.Map3Gui.GLControl2D.SwapBuffers();
         }

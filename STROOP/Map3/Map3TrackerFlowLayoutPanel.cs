@@ -89,7 +89,7 @@ namespace STROOP.Map3
             }
         }
 
-        public void DrawOnControl()
+        public void DrawOn2DControl()
         {
             _mapObjBackground.DrawOn2DControl();
             _mapObjMap.DrawOn2DControl();
@@ -135,6 +135,24 @@ namespace STROOP.Map3
             foreach (Map3Object obj in listOrderOnTop)
             {
                 obj.DrawOn2DControl();
+            }
+        }
+
+        public void DrawOn3DControl()
+        {
+            List<Map3Object> list = new List<Map3Object>();
+
+            lock (_objectLock)
+            {
+                foreach (Map3Tracker mapTracker in Controls)
+                {
+                    list.AddRange(mapTracker.GetMapObjectsToDisplay());
+                }
+            }
+
+            foreach (Map3Object obj in list)
+            {
+                obj.DrawOn3DControl();
             }
         }
 
