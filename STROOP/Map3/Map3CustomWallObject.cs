@@ -54,6 +54,11 @@ namespace STROOP.Map3
                 .ConvertAll(wallDataNullable => wallDataNullable.Value);
         }
 
+        protected override List<List<(float x, float y, float z)>> GetVertexLists()
+        {
+            return Map3Utilities.GetTriangleVertexLists(_triAddressList);
+        }
+
         public override string GetName()
         {
             return "Custom Wall Tris";

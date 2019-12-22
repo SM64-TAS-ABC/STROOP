@@ -48,6 +48,12 @@ namespace STROOP.Map3
                 .ConvertAll(wallDataNullable => wallDataNullable.Value);
         }
 
+        protected override List<List<(float x, float y, float z)>> GetVertexLists()
+        {
+            return _triAddressList.ConvertAll(address => new TriangleDataModel(address))
+                .ConvertAll(tri => tri.Get3DVertices());
+        }
+
         public override ContextMenuStrip GetContextMenuStrip()
         {
             if (_contextMenuStrip == null)

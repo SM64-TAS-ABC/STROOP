@@ -14,7 +14,7 @@ using System.Drawing.Imaging;
 
 namespace STROOP.Map3
 {
-    public abstract class Map3WallObject : Map3Object
+    public abstract class Map3WallObject : Map3TriangleObject
     {
         public Map3WallObject()
             : base()
