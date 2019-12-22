@@ -15,7 +15,7 @@ using STROOP.Models;
 
 namespace STROOP.Map3
 {
-    public class Map3MarioCeilingObject : Map3TriangleObject
+    public class Map3MarioCeilingObject : Map3HorizontalTriangleObject
     {
         public Map3MarioCeilingObject()
             : base()

@@ -15,7 +15,7 @@ using STROOP.Models;
 
 namespace STROOP.Map3
 {
-    public class Map3ObjectFloorObject : Map3TriangleObject
+    public class Map3ObjectFloorObject : Map3HorizontalTriangleObject
     {
         private readonly uint _objAddress;
 

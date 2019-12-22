@@ -17,7 +17,7 @@ using STROOP.Forms;
 
 namespace STROOP.Map3
 {
-    public class Map3LevelCeilingObject : Map3TriangleObject, Map3LevelTriangleObjectI
+    public class Map3LevelCeilingObject : Map3HorizontalTriangleObject, Map3LevelTriangleObjectI
     {
         private readonly List<uint> _triAddressList;
         private bool _removeCurrentTri;

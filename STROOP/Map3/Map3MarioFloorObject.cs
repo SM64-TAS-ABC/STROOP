@@ -15,7 +15,7 @@ using STROOP.Models;
 
 namespace STROOP.Map3
 {
-    public class Map3MarioFloorObject : Map3TriangleObject
+    public class Map3MarioFloorObject : Map3HorizontalTriangleObject
     {
         public Map3MarioFloorObject()
             : base()

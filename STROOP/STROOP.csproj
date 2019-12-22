@@ -379,6 +379,7 @@
     <Compile Include="Managers\PaintingManager.cs" />
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
+    <Compile Include="Map3\Map3TriangleObject.cs" />
     <Compile Include="Map3\Map3IwerlipsesObject.cs" />
     <Compile Include="Map3\Map3CustomGridlinesObject.cs" />
     <Compile Include="Map3\Map3CustomBackgroundObject.cs" />
@@ -420,7 +421,7 @@
     <Compile Include="Map3\Map3QuadObject.cs" />
     <Compile Include="Map3\Map3UnitGridlinesObject.cs" />
     <Compile Include="Map3\Map3Utilities.cs" />
-    <Compile Include="Map3\Map3TriangleObject.cs" />
+    <Compile Include="Map3\Map3HorizontalTriangleObject.cs" />
     <Compile Include="Map3\Map3MapObject.cs" />
     <Compile Include="Map3\Map3IconRectangleObject.cs" />
     <Compile Include="Map3\Map3IconPointObject.cs" />
