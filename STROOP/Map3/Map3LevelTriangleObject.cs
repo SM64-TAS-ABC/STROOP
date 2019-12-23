@@ -26,6 +26,8 @@ namespace STROOP.Map3
         {
             _triAddressList = TriangleUtilities.GetLevelTriangles()
                 .ConvertAll(tri => tri.Address);
+
+            OutlineWidth = 2;
         }
 
         protected override bool UseAutomaticColoring()

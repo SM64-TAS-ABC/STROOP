@@ -35,14 +35,32 @@ namespace STROOP.Map3
             Map4Vertex[] vertexArray = triData.SelectMany(vertexList => vertexList).ToList()
                 .ConvertAll(vertex => new Map4Vertex(new Vector3(
                     vertex.x, vertex.y, vertex.z), UseAutomaticColoring() ? vertex.color : Color4)).ToArray();
+            List<Map4Vertex[]> vertexArray2 = triData.ConvertAll(
+                vertexList => vertexList.ConvertAll(vertex => new Map4Vertex(new Vector3(
+                    vertex.x, vertex.y, vertex.z), OutlineColor)).ToArray());
 
-            int buffer = GL.GenBuffer();
+            int buffer1 = GL.GenBuffer();
             GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
-            GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, buffer1);
             GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArray.Length * Map4Vertex.Size), vertexArray, BufferUsageHint.DynamicDraw);
             Config.Map4Graphics.BindVertices();
             GL.DrawArrays(PrimitiveType.Triangles, 0, vertexArray.Length);
-            GL.DeleteBuffer(buffer);
+            GL.DeleteBuffer(buffer1);
+
+            if (OutlineWidth != 0)
+            {
+                vertexArray2.ForEach(vertexes =>
+                {
+                    int buffer2 = GL.GenBuffer();
+                    GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+                    GL.BindBuffer(BufferTarget.ArrayBuffer, buffer2);
+                    GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map4Vertex.Size), vertexes, BufferUsageHint.DynamicDraw);
+                    GL.LineWidth(OutlineWidth);
+                    Config.Map4Graphics.BindVertices();
+                    GL.DrawArrays(PrimitiveType.LineLoop, 0, vertexes.Length);
+                    GL.DeleteBuffer(buffer2);
+                });
+            }
         }
 
         protected List<List<(float x, float y, float z)>> GetVertexLists()
