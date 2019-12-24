@@ -91,13 +91,10 @@ namespace STROOP.Map3
             }
         }
 
-        protected static (float x, float y, float z) OffsetVertex((float x, float y, float z) vertex, float offset, int index)
+        protected static (float x, float y, float z) OffsetVertex(
+            (float x, float y, float z) vertex, float xOffset, float yOffset, float zOffset)
         {
-            if (index < 0 || index > 2) throw new ArgumentOutOfRangeException();
-            float x = (index == 0) ? vertex.x + offset : vertex.x;
-            float y = (index == 1) ? vertex.y + offset : vertex.y;
-            float z = (index == 2) ? vertex.z + offset : vertex.z;
-            return (x, y, z);
+            return (vertex.x + xOffset, vertex.y + yOffset, vertex.z + zOffset);
         }
     }
 }
