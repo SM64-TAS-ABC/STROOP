@@ -75,7 +75,7 @@ namespace STROOP.Map3
             return false;
         }
 
-        private static Color GetColorForTri(TriangleDataModel tri)
+        protected static Color GetColorForTri(TriangleDataModel tri)
         {
             double clampedNormY = MoreMath.Clamp(tri.NormY, -1, 1);
             switch (tri.Classification)
