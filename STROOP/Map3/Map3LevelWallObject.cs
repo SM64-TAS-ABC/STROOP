@@ -38,7 +38,7 @@ namespace STROOP.Map3
             Color = Color.Green;
         }
 
-        protected override List<(float x1, float z1, float x2, float z2, bool xProjection)> GetWallData()
+        protected override List<(float x1, float z1, float x2, float z2, bool xProjection)> Get2DWallData()
         {
             float marioHeight = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : (float?)null;

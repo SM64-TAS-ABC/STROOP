@@ -148,22 +148,12 @@ namespace STROOP.Map3
 
         public override void DrawOn3DControl()
         {
-            List<List<(float x, float y, float z)>> topSurfaces = GetTriangles()
-                .ConvertAll(tri => new List<(float x, float y, float z)>()
-                {
-                    (tri.X1, tri.Y1, tri.Z1),
-                    (tri.X2, tri.Y2, tri.Z2),
-                    (tri.X3, tri.Y3, tri.Z3),
-                });
+            List<List<(float x, float y, float z)>> topSurfaces = GetVertexLists();
 
-            (float x, float y, float z) OffsetVertex((float x, float y, float z) vertex, float offset)
-            {
-                return (vertex.x, vertex.y + offset, vertex.z);
-            }
             List<List<(float x, float y, float z)>> bottomSurfaces =
                 topSurfaces.ConvertAll(topSurface =>
                     topSurface.ConvertAll(vertex =>
-                        OffsetVertex(vertex, -1 * Size)));
+                        OffsetVertex(vertex, -1 * Size, 1)));
 
             List<List<(float x, float y, float z)>> GetSideSurfaces(int index1, int index2) =>
                 topSurfaces.ConvertAll(topSurface =>
@@ -171,8 +161,8 @@ namespace STROOP.Map3
                     {
                         topSurface[index1],
                         topSurface[index2],
-                        OffsetVertex(topSurface[index2], -1 * Size),
-                        OffsetVertex(topSurface[index1], -1 * Size),
+                        OffsetVertex(topSurface[index2], -1 * Size, 1),
+                        OffsetVertex(topSurface[index1], -1 * Size, 1),
                     });
             List<List<(float x, float y, float z)>> side1Surfaces = GetSideSurfaces(0, 1);
             List<List<(float x, float y, float z)>> side2Surfaces = GetSideSurfaces(1, 2);

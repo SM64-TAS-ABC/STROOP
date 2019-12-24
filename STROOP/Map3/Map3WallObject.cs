@@ -26,7 +26,7 @@ namespace STROOP.Map3
 
         public override void DrawOn2DControl()
         {
-            List<(float x1, float z1, float x2, float z2, bool xProjection)> wallData = GetWallData();
+            List<(float x1, float z1, float x2, float z2, bool xProjection)> wallData = Get2DWallData();
             foreach ((float x1, float z1, float x2, float z2, bool xProjection) in wallData)
             {
                 float angle = (float)MoreMath.AngleTo_Radians(x1, z1, x2, z2);
@@ -93,6 +93,6 @@ namespace STROOP.Map3
             }
         }
 
-        protected abstract List<(float x1, float z1, float x2, float z2, bool xProjection)> GetWallData();
+        protected abstract List<(float x1, float z1, float x2, float z2, bool xProjection)> Get2DWallData();
     }
 }
