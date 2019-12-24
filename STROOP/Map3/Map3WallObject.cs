@@ -13,6 +13,7 @@ using OpenTK;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using STROOP.Models;
+using STROOP.Map3.Map.Graphics;
 
 namespace STROOP.Map3
 {
@@ -128,31 +129,35 @@ namespace STROOP.Map3
 
             return contextMenuStrip;
         }
-        /*
+
         public override void DrawOn3DControl()
         {
             float relativeHeight = _relativeHeight ?? 0;
             List<TriangleDataModel> tris = GetTriangles();
 
-            List<List<(float x, float y, float z)>> mainSurfaces =
+            List<List<(float x, float y, float z)>> centerSurfaces =
                 tris.ConvertAll(tri => tri.Get3DVertices()
-                    .ConvertAll(vertex => OffsetVertex(vertex, relativeHeight, 1)));
+                    .ConvertAll(vertex => OffsetVertex(vertex, 0, relativeHeight, 0)));
 
-            List<List<(float x, float y, float z)>> frontSurfaces =
+            List<List<(float x, float y, float z)>> GetFrontOrBackSurfaces(bool front) =>
                 tris.ConvertAll(tri =>
                 {
                     //float angle = (float)MoreMath.AngleTo_Radians(x1, z1, x2, z2);
                     //float projection = Size / (float)Math.Abs(xProjection ? Math.Cos(angle) : Math.Sin(angle));
                     bool xProjection = tri.XProjection;
-                    int projectionIndex = xProjection ? 0 : 2;
-                    float projectionDist = 50;
+                    float projectionDist = front ? 50 : -50;
+                    float xOffset = xProjection ? projectionDist : 0;
+                    float yOffset = relativeHeight;
+                    float zOffset = xProjection ? 0 : projectionDist;
                     return tri.Get3DVertices().ConvertAll(vertex =>
                     {
-                        return OffsetVertex(vertex, projectionDist, projectionIndex);
+                        return OffsetVertex(vertex, xOffset, yOffset, zOffset);
                     });
-
                 });
+            List<List<(float x, float y, float z)>> frontSurfaces = GetFrontOrBackSurfaces(true);
+            List<List<(float x, float y, float z)>> backSurfaces = GetFrontOrBackSurfaces(false);
 
+            /*
             List<List<(float x, float y, float z)>> frontSurfaces = GetVertexLists();
 
             List<List<(float x, float y, float z)>> topSurfaces = GetVertexLists();
@@ -174,13 +179,11 @@ namespace STROOP.Map3
             List<List<(float x, float y, float z)>> side1Surfaces = GetSideSurfaces(0, 1);
             List<List<(float x, float y, float z)>> side2Surfaces = GetSideSurfaces(1, 2);
             List<List<(float x, float y, float z)>> side3Surfaces = GetSideSurfaces(2, 0);
-
+            */
             List<List<(float x, float y, float z)>> allSurfaces =
-                topSurfaces
-                .Concat(bottomSurfaces)
-                .Concat(side1Surfaces)
-                .Concat(side2Surfaces)
-                .Concat(side3Surfaces)
+                centerSurfaces
+                .Concat(frontSurfaces)
+                .Concat(backSurfaces)
                 .ToList();
 
             List<Map4Vertex[]> vertexArray1 = allSurfaces.ConvertAll(
@@ -215,6 +218,6 @@ namespace STROOP.Map3
                     GL.DeleteBuffer(buffer);
                 });
             }
-        }*/
+        }
     }
 }
