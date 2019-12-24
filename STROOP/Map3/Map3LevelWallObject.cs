@@ -22,7 +22,6 @@ namespace STROOP.Map3
         private readonly List<uint> _triAddressList;
         private bool _removeCurrentTri;
         private TriangleListForm _triangleListForm;
-        private float? _relativeHeight;
 
         public Map3LevelWallObject()
             : base()
@@ -32,20 +31,6 @@ namespace STROOP.Map3
                 .ConvertAll(tri => tri.Address);
             _removeCurrentTri = false;
             _triangleListForm = null;
-            _relativeHeight = null;
-
-            Opacity = 0.5;
-            Color = Color.Green;
-        }
-
-        protected override List<(float x1, float z1, float x2, float z2, bool xProjection)> Get2DWallData()
-        {
-            float marioHeight = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : (float?)null;
-            return _triAddressList.ConvertAll(address => new TriangleDataModel(address))
-                .ConvertAll(tri => Map3Utilities.GetWallDataFromTri(tri, height))
-                .FindAll(wallDataNullable => wallDataNullable.HasValue)
-                .ConvertAll(wallDataNullable => wallDataNullable.Value);
         }
 
         protected override List<TriangleDataModel> GetTriangles()
@@ -90,29 +75,13 @@ namespace STROOP.Map3
                     _triangleListForm.Show();
                 };
 
-                ToolStripMenuItem itemSetRelativeHeight = new ToolStripMenuItem("Set Relative Height");
-                itemSetRelativeHeight.Click += (sender, e) =>
-                {
-                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter relative height of wall hitbox compared to wall triangle.");
-                    float? relativeHeightNullable = ParsingUtilities.ParseFloatNullable(text);
-                    if (!relativeHeightNullable.HasValue) return;
-                    _relativeHeight = relativeHeightNullable.Value;
-                };
-
-                ToolStripMenuItem itemClearRelativeHeight = new ToolStripMenuItem("Clear Relative Height");
-                itemClearRelativeHeight.Click += (sender, e) =>
-                {
-                    _relativeHeight = null;
-                };
-
-                _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(itemReset);
-                _contextMenuStrip.Items.Add(itemRemoveCurrentTri);
-                _contextMenuStrip.Items.Add(itemShowTriData);
-                _contextMenuStrip.Items.Add(itemOpenForm);
-                _contextMenuStrip.Items.Add(new ToolStripSeparator());
-                _contextMenuStrip.Items.Add(itemSetRelativeHeight);
-                _contextMenuStrip.Items.Add(itemClearRelativeHeight);
+                BetterContextMenuStrip contextMenuStrip = CreateWallContextMenuStrip();
+                contextMenuStrip.AddToBeginningList(itemReset);
+                contextMenuStrip.AddToBeginningList(itemRemoveCurrentTri);
+                contextMenuStrip.AddToBeginningList(itemShowTriData);
+                contextMenuStrip.AddToBeginningList(itemOpenForm);
+                contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
+                _contextMenuStrip = contextMenuStrip;
             }
 
             return _contextMenuStrip;

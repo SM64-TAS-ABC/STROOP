@@ -11,17 +11,32 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace STROOP.Map3
 {
     public abstract class Map3WallObject : Map3TriangleObject
     {
+        private float? _relativeHeight;
+
         public Map3WallObject()
             : base()
         {
             Size = 50;
             Opacity = 0.5;
             Color = Color.Green;
+
+            _relativeHeight = null;
+        }
+
+        protected List<(float x1, float z1, float x2, float z2, bool xProjection)> Get2DWallData()
+        {
+            float marioHeight = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : (float?)null;
+            return GetTriangles()
+                .ConvertAll(tri => Map3Utilities.GetWallDataFromTri(tri, height))
+                .FindAll(wallDataNullable => wallDataNullable.HasValue)
+                .ConvertAll(wallDataNullable => wallDataNullable.Value);
         }
 
         public override void DrawOn2DControl()
@@ -93,6 +108,28 @@ namespace STROOP.Map3
             }
         }
 
-        protected abstract List<(float x1, float z1, float x2, float z2, bool xProjection)> Get2DWallData();
+        protected BetterContextMenuStrip CreateWallContextMenuStrip()
+        {
+            ToolStripMenuItem itemSetRelativeHeight = new ToolStripMenuItem("Set Relative Height");
+            itemSetRelativeHeight.Click += (sender, e) =>
+            {
+                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter relative height of wall hitbox compared to wall triangle.");
+                float? relativeHeightNullable = ParsingUtilities.ParseFloatNullable(text);
+                if (!relativeHeightNullable.HasValue) return;
+                _relativeHeight = relativeHeightNullable.Value;
+            };
+
+            ToolStripMenuItem itemClearRelativeHeight = new ToolStripMenuItem("Clear Relative Height");
+            itemClearRelativeHeight.Click += (sender, e) =>
+            {
+                _relativeHeight = null;
+            };
+
+            BetterContextMenuStrip contextMenuStrip = new BetterContextMenuStrip();
+            contextMenuStrip.AddToEndingList(itemSetRelativeHeight);
+            contextMenuStrip.AddToEndingList(itemClearRelativeHeight);
+
+            return contextMenuStrip;
+        }
     }
 }
