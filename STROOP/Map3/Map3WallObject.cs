@@ -142,10 +142,10 @@ namespace STROOP.Map3
             List<List<(float x, float y, float z)>> GetFrontOrBackSurfaces(bool front) =>
                 tris.ConvertAll(tri =>
                 {
-                    //float angle = (float)MoreMath.AngleTo_Radians(x1, z1, x2, z2);
-                    //float projection = Size / (float)Math.Abs(xProjection ? Math.Cos(angle) : Math.Sin(angle));
                     bool xProjection = tri.XProjection;
-                    float projectionDist = front ? 50 : -50;
+                    float angle = (float)Math.Atan2(tri.NormX, tri.NormZ);
+                    float projectionMag = Size / (float)Math.Abs(xProjection ? Math.Sin(angle) : Math.Cos(angle));
+                    float projectionDist = front ? projectionMag : -1 * projectionMag;
                     float xOffset = xProjection ? projectionDist : 0;
                     float yOffset = relativeHeight;
                     float zOffset = xProjection ? 0 : projectionDist;
@@ -161,9 +161,10 @@ namespace STROOP.Map3
                 tris.ConvertAll(tri =>
                 {
                     bool xProjection = tri.XProjection;
-                    float projectionDist = 50;
-                    float xOffsetMag = xProjection ? projectionDist : 0;
-                    float zOffsetMag = xProjection ? 0 : projectionDist;
+                    float angle = (float)Math.Atan2(tri.NormX, tri.NormZ);
+                    float projectionMag = Size / (float)Math.Abs(xProjection ? Math.Sin(angle) : Math.Cos(angle));
+                    float xOffsetMag = xProjection ? projectionMag : 0;
+                    float zOffsetMag = xProjection ? 0 : projectionMag;
                     List<(float x, float y, float z)> vertices = tri.Get3DVertices();
                     return new List<(float x, float y, float z)>()
                     {
