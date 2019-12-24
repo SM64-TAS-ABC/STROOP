@@ -157,33 +157,33 @@ namespace STROOP.Map3
             List<List<(float x, float y, float z)>> frontSurfaces = GetFrontOrBackSurfaces(true);
             List<List<(float x, float y, float z)>> backSurfaces = GetFrontOrBackSurfaces(false);
 
-            /*
-            List<List<(float x, float y, float z)>> frontSurfaces = GetVertexLists();
-
-            List<List<(float x, float y, float z)>> topSurfaces = GetVertexLists();
-
-            List<List<(float x, float y, float z)>> bottomSurfaces =
-                topSurfaces.ConvertAll(topSurface =>
-                    topSurface.ConvertAll(vertex =>
-                        OffsetVertex(vertex, -1 * Size, 1)));
-
             List<List<(float x, float y, float z)>> GetSideSurfaces(int index1, int index2) =>
-                topSurfaces.ConvertAll(topSurface =>
-                    new List<(float x, float y, float z)>()
+                tris.ConvertAll(tri =>
+                {
+                    bool xProjection = tri.XProjection;
+                    float projectionDist = 50;
+                    float xOffsetMag = xProjection ? projectionDist : 0;
+                    float zOffsetMag = xProjection ? 0 : projectionDist;
+                    List<(float x, float y, float z)> vertices = tri.Get3DVertices();
+                    return new List<(float x, float y, float z)>()
                     {
-                        topSurface[index1],
-                        topSurface[index2],
-                        OffsetVertex(topSurface[index2], -1 * Size, 1),
-                        OffsetVertex(topSurface[index1], -1 * Size, 1),
-                    });
+                        OffsetVertex(vertices[index1], xOffsetMag, relativeHeight, zOffsetMag),
+                        OffsetVertex(vertices[index2], xOffsetMag, relativeHeight, zOffsetMag),
+                        OffsetVertex(vertices[index2], -1 * xOffsetMag, relativeHeight, -1 * zOffsetMag),
+                        OffsetVertex(vertices[index1], -1 * xOffsetMag, relativeHeight, -1 * zOffsetMag),
+                    };
+                });
             List<List<(float x, float y, float z)>> side1Surfaces = GetSideSurfaces(0, 1);
             List<List<(float x, float y, float z)>> side2Surfaces = GetSideSurfaces(1, 2);
             List<List<(float x, float y, float z)>> side3Surfaces = GetSideSurfaces(2, 0);
-            */
+
             List<List<(float x, float y, float z)>> allSurfaces =
                 centerSurfaces
                 .Concat(frontSurfaces)
                 .Concat(backSurfaces)
+                .Concat(side1Surfaces)
+                .Concat(side2Surfaces)
+                .Concat(side3Surfaces)
                 .ToList();
 
             List<Map4Vertex[]> vertexArray1 = allSurfaces.ConvertAll(
