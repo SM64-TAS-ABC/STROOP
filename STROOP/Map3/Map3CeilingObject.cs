@@ -20,6 +20,7 @@ namespace STROOP.Map3
         public Map3CeilingObject()
             : base()
         {
+            Size = 160;
             Opacity = 0.5;
             Color = Color.Red;
         }

@@ -163,7 +163,7 @@ namespace STROOP.Map3
             List<List<(float x, float y, float z)>> bottomSurfaces =
                 topSurfaces.ConvertAll(topSurface =>
                     topSurface.ConvertAll(vertex =>
-                        OffsetVertex(vertex, -78)));
+                        OffsetVertex(vertex, -1 * Size)));
 
             List<List<(float x, float y, float z)>> GetSideSurfaces(int index1, int index2) =>
                 topSurfaces.ConvertAll(topSurface =>
@@ -171,8 +171,8 @@ namespace STROOP.Map3
                     {
                         topSurface[index1],
                         topSurface[index2],
-                        OffsetVertex(topSurface[index2], -78),
-                        OffsetVertex(topSurface[index1], -78),
+                        OffsetVertex(topSurface[index2], -1 * Size),
+                        OffsetVertex(topSurface[index1], -1 * Size),
                     });
             List<List<(float x, float y, float z)>> side1Surfaces = GetSideSurfaces(0, 1);
             List<List<(float x, float y, float z)>> side2Surfaces = GetSideSurfaces(1, 2);

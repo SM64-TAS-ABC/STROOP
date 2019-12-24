@@ -20,6 +20,7 @@ namespace STROOP.Map3
         public Map3FloorObject()
             : base()
         {
+            Size = 78;
             Opacity = 0.5;
             Color = Color.Blue;
         }
