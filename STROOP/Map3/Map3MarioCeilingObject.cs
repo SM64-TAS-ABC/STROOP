@@ -15,13 +15,11 @@ using STROOP.Models;
 
 namespace STROOP.Map3
 {
-    public class Map3MarioCeilingObject : Map3HorizontalTriangleObject
+    public class Map3MarioCeilingObject : Map3CeilingObject
     {
         public Map3MarioCeilingObject()
             : base()
         {
-            Opacity = 0.5;
-            Color = Color.Red;
         }
 
         protected override List<TriangleDataModel> GetTriangles()

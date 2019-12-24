@@ -16,7 +16,7 @@ using STROOP.Map3.Map.Graphics;
 
 namespace STROOP.Map3
 {
-    public class Map3ObjectFloorObject : Map3HorizontalTriangleObject
+    public class Map3ObjectFloorObject : Map3FloorObject
     {
         private readonly uint _objAddress;
 
@@ -24,9 +24,6 @@ namespace STROOP.Map3
             : base()
         {
             _objAddress = objAddress;
-
-            Opacity = 0.5;
-            Color = Color.Blue;
         }
 
         protected override List<TriangleDataModel> GetTriangles()

@@ -17,7 +17,7 @@ using STROOP.Forms;
 
 namespace STROOP.Map3
 {
-    public class Map3LevelFloorObject : Map3HorizontalTriangleObject, Map3LevelTriangleObjectI
+    public class Map3LevelFloorObject : Map3FloorObject, Map3LevelTriangleObjectI
     {
         private readonly List<uint> _triAddressList;
         private bool _removeCurrentTri;
@@ -31,9 +31,6 @@ namespace STROOP.Map3
                 .ConvertAll(tri => tri.Address);
             _removeCurrentTri = false;
             _triangleListForm = null;
-
-            Opacity = 0.5;
-            Color = Color.Blue;
         }
 
         protected override List<TriangleDataModel> GetTriangles()

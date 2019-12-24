@@ -15,7 +15,7 @@ using STROOP.Models;
 
 namespace STROOP.Map3
 {
-    public class Map3CustomCeilingObject : Map3HorizontalTriangleObject
+    public class Map3CustomCeilingObject : Map3CeilingObject
     {
         private readonly List<uint> _triAddressList;
 
@@ -23,9 +23,6 @@ namespace STROOP.Map3
             : base()
         {
             _triAddressList = triAddressList;
-
-            Opacity = 0.5;
-            Color = Color.Red;
         }
 
         public static Map3CustomCeilingObject Create(string text)

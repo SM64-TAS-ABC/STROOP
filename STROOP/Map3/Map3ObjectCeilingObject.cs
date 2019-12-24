@@ -15,7 +15,7 @@ using STROOP.Models;
 
 namespace STROOP.Map3
 {
-    public class Map3ObjectCeilingObject : Map3HorizontalTriangleObject
+    public class Map3ObjectCeilingObject : Map3CeilingObject
     {
         private readonly uint _objAddress;
 
@@ -23,9 +23,6 @@ namespace STROOP.Map3
             : base()
         {
             _objAddress = objAddress;
-
-            Opacity = 0.5;
-            Color = Color.Red;
         }
 
         protected override List<TriangleDataModel> GetTriangles()

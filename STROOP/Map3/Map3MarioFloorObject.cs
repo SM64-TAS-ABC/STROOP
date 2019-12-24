@@ -15,13 +15,11 @@ using STROOP.Models;
 
 namespace STROOP.Map3
 {
-    public class Map3MarioFloorObject : Map3HorizontalTriangleObject
+    public class Map3MarioFloorObject : Map3FloorObject
     {
         public Map3MarioFloorObject()
             : base()
         {
-            Opacity = 0.5;
-            Color = Color.Blue;
         }
 
         protected override List<TriangleDataModel> GetTriangles()

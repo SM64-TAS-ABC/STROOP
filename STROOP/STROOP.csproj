@@ -379,7 +379,9 @@
     <Compile Include="Managers\PaintingManager.cs" />
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
+    <Compile Include="Map3\Map3CeilingObject.cs" />
     <Compile Include="Map3\Map3LevelTriangleObject.cs" />
+    <Compile Include="Map3\Map3FloorObject.cs" />
     <Compile Include="Map3\Map3TriangleObject.cs" />
     <Compile Include="Map3\Map3IwerlipsesObject.cs" />
     <Compile Include="Map3\Map3CustomGridlinesObject.cs" />

@@ -15,7 +15,7 @@ using STROOP.Models;
 
 namespace STROOP.Map3
 {
-    public class Map3CustomFloorObject : Map3HorizontalTriangleObject
+    public class Map3CustomFloorObject : Map3FloorObject
     {
         private readonly List<uint> _triAddressList;
 
@@ -23,9 +23,6 @@ namespace STROOP.Map3
             : base()
         {
             _triAddressList = triAddressList;
-
-            Opacity = 0.5;
-            Color = Color.Blue;
         }
 
         public static Map3CustomFloorObject Create(string text)
