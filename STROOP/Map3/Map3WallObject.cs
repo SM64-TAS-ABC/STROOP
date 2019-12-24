@@ -29,19 +29,15 @@ namespace STROOP.Map3
             _relativeHeight = null;
         }
 
-        protected List<(float x1, float z1, float x2, float z2, bool xProjection)> Get2DWallData()
+        public override void DrawOn2DControl()
         {
             float marioHeight = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : (float?)null;
-            return GetTriangles()
-                .ConvertAll(tri => Map3Utilities.GetWallDataFromTri(tri, height))
+            List<(float x1, float z1, float x2, float z2, bool xProjection)> wallData = GetTriangles()
+                .ConvertAll(tri => Map3Utilities.Get2DWallDataFromTri(tri, height))
                 .FindAll(wallDataNullable => wallDataNullable.HasValue)
                 .ConvertAll(wallDataNullable => wallDataNullable.Value);
-        }
 
-        public override void DrawOn2DControl()
-        {
-            List<(float x1, float z1, float x2, float z2, bool xProjection)> wallData = Get2DWallData();
             foreach ((float x1, float z1, float x2, float z2, bool xProjection) in wallData)
             {
                 float angle = (float)MoreMath.AngleTo_Radians(x1, z1, x2, z2);

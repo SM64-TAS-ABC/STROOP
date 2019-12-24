@@ -205,7 +205,7 @@ namespace STROOP.Map3
             return quadList;
         }
 
-        public static (float x1, float z1, float x2, float z2, bool xProjection)? GetWallDataFromTri(
+        public static (float x1, float z1, float x2, float z2, bool xProjection)? Get2DWallDataFromTri(
             TriangleDataModel tri, float? heightNullable = null)
         {
             if (!heightNullable.HasValue)
