@@ -41,7 +41,7 @@ namespace STROOP.Managers
         private void InitializeControls()
         {
             // FlowLayoutPanel
-            Config.Map3Gui.flowLayoutPanelMap3Trackers.Initialize(new Map3MapObject(), new Map3BackgroundObject());
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.Initialize(new Map3MapObject(), new Map3CurrentBackgroundObject());
 
             // ComboBox for Level
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();

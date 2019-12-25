@@ -380,6 +380,7 @@
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Map3\Map3CeilingObject.cs" />
+    <Compile Include="Map3\Map3BackgroundObject.cs" />
     <Compile Include="Map3\Map3SphereObject.cs" />
     <Compile Include="Map3\Map3CylinderObject.cs" />
     <Compile Include="Map3\Map3HitboxHackTriangleObject.cs" />
@@ -417,7 +418,7 @@
     <Compile Include="Map3\Map3LineObject.cs" />
     <Compile Include="Map3\Map3CellGridlinesObject.cs" />
     <Compile Include="Map3\Map3Gui.cs" />
-    <Compile Include="Map3\Map3BackgroundObject.cs" />
+    <Compile Include="Map3\Map3CurrentBackgroundObject.cs" />
     <Compile Include="Map3\Map3CameraObject.cs" />
     <Compile Include="Map3\Map3MarioFloorObject.cs" />
     <Compile Include="Map3\Map3ObjectObject.cs" />

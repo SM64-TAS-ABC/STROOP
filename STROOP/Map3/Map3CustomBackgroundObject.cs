@@ -15,29 +15,19 @@ using STROOP.Forms;
 
 namespace STROOP.Map3
 {
-    public class Map3CustomBackgroundObject : Map3IconRectangleObject
+    public class Map3CustomBackgroundObject : Map3BackgroundObject
     {
         private object _backgroundChoice;
 
         public Map3CustomBackgroundObject()
             : base()
         {
-            InternalRotates = false;
             _backgroundChoice = "Recommended";
         }
 
         public override Image GetImage()
         {
             return Map3Utilities.GetBackgroundImage(_backgroundChoice);
-        }
-
-        protected override List<(PointF loc, SizeF size)> GetDimensions()
-        {
-            float xCenter = Config.Map3Gui.GLControl2D.Width / 2;
-            float yCenter = Config.Map3Gui.GLControl2D.Height / 2;
-            float length = Math.Max(Config.Map3Gui.GLControl2D.Width, Config.Map3Gui.GLControl2D.Height);
-            (PointF loc, SizeF size) dimension = (new PointF(xCenter, yCenter), new SizeF(length, length));
-            return new List<(PointF loc, SizeF size)>() { dimension };
         }
 
         public override string GetName()
