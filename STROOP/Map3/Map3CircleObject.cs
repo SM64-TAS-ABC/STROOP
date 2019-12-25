@@ -21,6 +21,8 @@ namespace STROOP.Map3
         public Map3CircleObject()
             : base()
         {
+            Opacity = 0.5;
+            Color = Color.Red;
         }
 
         public override void DrawOn2DControl()
