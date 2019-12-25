@@ -17,7 +17,7 @@ namespace STROOP.Map3
     public class Map3PathObject : Map3Object
     {
         private readonly PositionAngle _posAngle;
-        private readonly Dictionary<uint, (float x, float z)> _dictionary;
+        private readonly Dictionary<uint, (float x, float y, float z)> _dictionary;
         private (byte level, byte area, ushort loadingPoint, ushort missionLayout) _currentLocationStats;
         private bool _resetPathOnLevelChange;
         private int _numSkips;
@@ -30,7 +30,7 @@ namespace STROOP.Map3
             : base()
         {
             _posAngle = posAngle;
-            _dictionary = new Dictionary<uint, (float x, float z)>();
+            _dictionary = new Dictionary<uint, (float x, float y, float z)>();
             _currentLocationStats = Config.MapAssociations.GetCurrentLocationStats();
             _resetPathOnLevelChange = false;
             _numSkips = 0;
@@ -49,7 +49,7 @@ namespace STROOP.Map3
         {
             if (OutlineWidth == 0) return;
 
-            List<(float x, float z)> vertices = _dictionary.Values.ToList();
+            List<(float x, float y, float z)> vertices = _dictionary.Values.ToList();
             List<(float x, float z)> veriticesForControl =
                 vertices.ConvertAll(vertex => Map3Utilities.ConvertCoordsForControl(vertex.x, vertex.z));
 
@@ -106,11 +106,12 @@ namespace STROOP.Map3
             {
                 uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                 float x = (float)_posAngle.X;
+                float y = (float)_posAngle.Y;
                 float z = (float)_posAngle.Z;
 
                 if (globalTimer < _highestGlobalTimerValue)
                 {
-                    Dictionary<uint, (float x, float z)> tempDictionary = new Dictionary<uint, (float x, float z)>();
+                    Dictionary<uint, (float x, float y, float z)> tempDictionary = new Dictionary<uint, (float x, float y, float z)>();
                     foreach (uint key in _dictionary.Keys)
                     {
                         tempDictionary[key] = _dictionary[key];
@@ -138,7 +139,7 @@ namespace STROOP.Map3
                     }
                     else
                     {
-                        _dictionary[globalTimer] = (x, z);
+                        _dictionary[globalTimer] = (x, y, z);
                         _highestGlobalTimerValue = globalTimer;
                     }
                 }
