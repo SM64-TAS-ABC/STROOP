@@ -11,6 +11,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using STROOP.Map3.Map.Graphics;
 
 namespace STROOP.Map3
 {
@@ -61,6 +62,44 @@ namespace STROOP.Map3
             }
 
             GL.Color4(1, 1, 1, 1.0f);
+        }
+
+        public override void DrawOn3DControl()
+        {
+            List<List<(float x, float y, float z)>> quadList = GetQuadList();
+
+            List<Map4Vertex[]> vertexArrayForSurfaces = quadList.ConvertAll(
+                vertexList => vertexList.ConvertAll(vertex => new Map4Vertex(new Vector3(
+                    vertex.x, vertex.y, vertex.z), Color4)).ToArray());
+            List<Map4Vertex[]> vertexArrayForEdges = quadList.ConvertAll(
+                vertexList => vertexList.ConvertAll(vertex => new Map4Vertex(new Vector3(
+                    vertex.x, vertex.y, vertex.z), OutlineColor)).ToArray());
+
+            vertexArrayForSurfaces.ForEach(vertexes =>
+            {
+                int buffer = GL.GenBuffer();
+                GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+                GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
+                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map4Vertex.Size), vertexes, BufferUsageHint.DynamicDraw);
+                Config.Map4Graphics.BindVertices();
+                GL.DrawArrays(PrimitiveType.Polygon, 0, vertexes.Length);
+                GL.DeleteBuffer(buffer);
+            });
+
+            if (OutlineWidth != 0)
+            {
+                vertexArrayForEdges.ForEach(vertexes =>
+                {
+                    int buffer = GL.GenBuffer();
+                    GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+                    GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
+                    GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map4Vertex.Size), vertexes, BufferUsageHint.DynamicDraw);
+                    GL.LineWidth(OutlineWidth);
+                    Config.Map4Graphics.BindVertices();
+                    GL.DrawArrays(PrimitiveType.LineLoop, 0, vertexes.Length);
+                    GL.DeleteBuffer(buffer);
+                });
+            }
         }
 
         protected abstract List<List<(float x, float y, float z)>> GetQuadList();
