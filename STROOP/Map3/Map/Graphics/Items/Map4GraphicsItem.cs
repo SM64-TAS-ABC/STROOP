@@ -18,17 +18,7 @@ namespace STROOP.Map3.Map.Graphics.Items
 
         public virtual Bitmap BitmapImage { get; set; }
 
-        /// <summary>
-        /// Drawing type
-        /// </summary>
-        public enum DrawType
-        {
-            Perspective,
-            Overlay,
-            Background,
-        };
-
-        public abstract DrawType Type { get; }
+        public abstract Map3DrawType Type { get; }
 
         /// <summary>
         /// List of camera types the object should be drawn on

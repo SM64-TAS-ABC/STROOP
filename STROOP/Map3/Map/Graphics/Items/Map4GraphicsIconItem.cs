@@ -48,7 +48,7 @@ namespace STROOP.Map3.Map.Graphics.Items
 
         public override float? Depth => Position.Y + 0x10000 * DisplayLayer;
 
-        public override DrawType Type => DrawType.Overlay;
+        public override Map3DrawType Type => Map3DrawType.Overlay;
 
         public Map4GraphicsIconItem(Bitmap image) : base(false)
         {

@@ -39,7 +39,7 @@ namespace STROOP.Map3.Map.Graphics.Items
 
         public override float? Depth => float.MaxValue;
 
-        public override DrawType Type => DrawType.Perspective;
+        public override Map3DrawType Type => Map3DrawType.Perspective;
 
         public Map4GraphicsImageItem(Bitmap image) : base(true)
         {

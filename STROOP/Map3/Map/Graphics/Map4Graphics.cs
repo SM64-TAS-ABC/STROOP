@@ -111,9 +111,9 @@ namespace STROOP.Map3.Map.Graphics
             }
             
             List<Map4GraphicsItem> drawItemsPerspective, drawItemsOverlay, drawItemsBackground;
-            drawItemsPerspective = drawItems.FindAll(i => i.Type == Map4GraphicsItem.DrawType.Perspective);
-            drawItemsOverlay = drawItems.FindAll(i => i.Type == Map4GraphicsItem.DrawType.Overlay).OrderBy(i => i.Depth).ToList();
-            drawItemsBackground = drawItems.FindAll(i => i.Type == Map4GraphicsItem.DrawType.Background);
+            drawItemsPerspective = drawItems.FindAll(i => i.Type == Map3DrawType.Perspective);
+            drawItemsOverlay = drawItems.FindAll(i => i.Type == Map3DrawType.Overlay).OrderBy(i => i.Depth).ToList();
+            drawItemsBackground = drawItems.FindAll(i => i.Type == Map3DrawType.Background);
 
             // Setup Background
             GL.Disable(EnableCap.DepthTest);

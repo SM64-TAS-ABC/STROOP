@@ -31,7 +31,7 @@ namespace STROOP.Map3.Map.Graphics.Items
             }
         }
 
-        public override DrawType Type => DrawType.Perspective;
+        public override Map3DrawType Type => Map3DrawType.Perspective;
 
         public Map4GraphicsTrianglesItem() : base(false)
         {

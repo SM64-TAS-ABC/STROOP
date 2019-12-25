@@ -33,7 +33,7 @@ namespace STROOP.Map3.Map.Graphics.Items
 
         public override float? Depth => null;
 
-        public override DrawType Type => DrawType.Background;
+        public override Map3DrawType Type => Map3DrawType.Background;
 
         public Map4GraphicsBackgroundItem(Bitmap image) : base(true)
         {
