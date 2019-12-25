@@ -105,7 +105,7 @@ namespace STROOP.Map3
 
         public override Image GetImage()
         {
-            return Config.ObjectAssociations.HolpImage;
+            return Config.ObjectAssociations.HitboxHackTrisImage;
         }
 
         public override void Update()

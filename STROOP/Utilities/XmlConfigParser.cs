@@ -232,7 +232,7 @@ namespace STROOP.Utilities
                 marioImagePath = "", holpMapImagePath = "", homeMapImagePath = "", intendedNextPositionImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 blueMarioMapImagePath = "", greenMarioMapImagePath = "", orangeMarioMapImagePath = "", purpleMarioMapImagePath = "",
-                triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "",
+                triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "", hitboxHackTrisImagePath = "",
                 cellGridlinesImagePath = "", currentCellImagePath = "", unitGridlinesImagePath = "", currentUnitImagePath = "",
                 nextPositionsImagePath = "", iwerlipsesImagePath = "", cylinderImagePath = "", sphereImagePath = "",
                 pathImagePath = "", customPointsImagePath = "", customGridlinesImagePath = "",
@@ -344,6 +344,10 @@ namespace STROOP.Utilities
 
                     case "TriangleOther":
                         triangleOtherImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "HitboxHackTris":
+                        hitboxHackTrisImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "CellGridlines":
@@ -592,6 +596,7 @@ namespace STROOP.Utilities
             assoc.TriangleWallImage = Image.FromFile(mapImageDir + triangleWallImagePath);
             assoc.TriangleCeilingImage = Image.FromFile(mapImageDir + triangleCeilingImagePath);
             assoc.TriangleOtherImage = Image.FromFile(mapImageDir + triangleOtherImagePath);
+            assoc.HitboxHackTrisImage = Image.FromFile(mapImageDir + hitboxHackTrisImagePath);
 
             assoc.CellGridlinesImage = Image.FromFile(mapImageDir + cellGridlinesImagePath);
             assoc.CurrentCellImage = Image.FromFile(mapImageDir + currentCellImagePath);
