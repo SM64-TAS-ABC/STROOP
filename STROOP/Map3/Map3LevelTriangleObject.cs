@@ -20,13 +20,14 @@ namespace STROOP.Map3
 {
     public class Map3LevelTriangleObject : Map3TriangleObject
     {
-        private readonly List<uint> _triAddressList;
+        private readonly List<uint> _levelTriAddressList;
+        private readonly List<uint> _objTriAddressList;
 
         public Map3LevelTriangleObject()
             : base()
         {
-            _triAddressList = TriangleUtilities.GetLevelTriangles()
-                .ConvertAll(tri => tri.Address);
+            _levelTriAddressList = TriangleUtilities.GetLevelTriangles().ConvertAll(tri => tri.Address);
+            _objTriAddressList = TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address);
 
             OutlineWidth = 2;
         }
@@ -94,7 +95,7 @@ namespace STROOP.Map3
 
         protected override List<TriangleDataModel> GetTriangles()
         {
-            return Map3Utilities.GetTriangles(_triAddressList);
+            return Map3Utilities.GetTriangles(_levelTriAddressList.Concat(_objTriAddressList).ToList());
         }
 
         public override string GetName()
@@ -109,12 +110,20 @@ namespace STROOP.Map3
 
         public override void Update()
         {
+            int numAllTriangles = Config.Stream.GetInt32(0x80361170);
             int numLevelTriangles = Config.Stream.GetInt32(0x80361178);
-            if (_triAddressList.Count != numLevelTriangles)
+            int numObjTriangles = numAllTriangles - numLevelTriangles;
+
+            if (_levelTriAddressList.Count != numLevelTriangles)
             {
-                _triAddressList.Clear();
-                _triAddressList.AddRange(TriangleUtilities.GetLevelTriangles()
-                    .ConvertAll(tri => tri.Address));
+                _levelTriAddressList.Clear();
+                _levelTriAddressList.AddRange(TriangleUtilities.GetLevelTriangles().ConvertAll(tri => tri.Address));
+            }
+
+            if (_objTriAddressList.Count != numObjTriangles)
+            {
+                _objTriAddressList.Clear();
+                _objTriAddressList.AddRange(TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address));
             }
         }
     }
