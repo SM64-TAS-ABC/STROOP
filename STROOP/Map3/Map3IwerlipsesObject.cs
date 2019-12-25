@@ -12,6 +12,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+using STROOP.Map3.Map.Graphics;
 
 namespace STROOP.Map3
 {
@@ -37,12 +38,12 @@ namespace STROOP.Map3
             {
                 if (i % 4 == 0 || _showQuarterSteps)
                 {
-                    DrawOnControl(i);
+                    DrawOn2DControl(i);
                 }
             }
         }
 
-        private void DrawOnControl(int numQSteps)
+        private void DrawOn2DControl(int numQSteps)
         {
             if (!_lockPositions)
             {
@@ -98,6 +99,75 @@ namespace STROOP.Map3
             }
 
             GL.Color4(1, 1, 1, 1.0f);
+        }
+
+        public override void DrawOn3DControl()
+        {
+            for (int i = 1; i <= Size; i++)
+            {
+                if (i % 4 == 0 || _showQuarterSteps)
+                {
+                    DrawOn3DControl(i);
+                }
+            }
+        }
+
+        private void DrawOn3DControl(int numQSteps)
+        {
+            if (!_lockPositions)
+            {
+                _marioState = MarioState.CreateMarioState();
+            }
+            MarioState marioStateCenter = AirMovementCalculator.ApplyInputRepeatedly(_marioState, RelativeDirection.Center, numQSteps);
+            MarioState marioStateForward = AirMovementCalculator.ApplyInputRepeatedly(_marioState, RelativeDirection.Forward, numQSteps);
+            MarioState marioStateBackward = AirMovementCalculator.ApplyInputRepeatedly(_marioState, RelativeDirection.Backward, numQSteps);
+            MarioState marioStateLeft = AirMovementCalculator.ApplyInputRepeatedly(_marioState, RelativeDirection.Left, numQSteps);
+
+            ushort marioAngle = _marioState.MarioAngle;
+            (float cx, float cz) = (marioStateCenter.X, marioStateCenter.Z);
+            (float fx, float fz) = (marioStateForward.X, marioStateForward.Z);
+            (float bx, float bz) = (marioStateBackward.X, marioStateBackward.Z);
+            (float lx, float lz) = (marioStateLeft.X, marioStateLeft.Z);
+
+            double sideDist = MoreMath.GetDistanceBetween(cx, cz, lx, lz);
+            double forwardDist = MoreMath.GetDistanceBetween(cx, cz, fx, fz);
+            double backwardDist = MoreMath.GetDistanceBetween(cx, cz, bx, bz);
+
+            List<(float x, float y, float z)> points = Enumerable.Range(0, NUM_POINTS).ToList()
+                .ConvertAll(index => (index / (float)NUM_POINTS) * 65536)
+                .ConvertAll(angle => GetEllipsePoint(cx, cz, sideDist, forwardDist, backwardDist, marioAngle, angle))
+                .ConvertAll(point => ((float)point.x, (float)marioStateCenter.Y, (float)point.z));
+
+            Map4Vertex[] vertexArrayForSurfaces = points.ConvertAll(
+                vertex => new Map4Vertex(new Vector3(
+                    vertex.x, vertex.y, vertex.z), Color4)).ToArray();
+            Map4Vertex[] vertexArrayForEdges = points.ConvertAll(
+                vertex => new Map4Vertex(new Vector3(
+                    vertex.x, vertex.y, vertex.z), OutlineColor)).ToArray();
+
+            {
+                int buffer = GL.GenBuffer();
+                GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+                GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
+                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArrayForSurfaces.Length * Map4Vertex.Size),
+                    vertexArrayForSurfaces, BufferUsageHint.DynamicDraw);
+                Config.Map4Graphics.BindVertices();
+                GL.DrawArrays(PrimitiveType.Polygon, 0, vertexArrayForSurfaces.Length);
+                GL.DeleteBuffer(buffer);
+            }
+
+            if (OutlineWidth != 0)
+            {
+                int buffer = GL.GenBuffer();
+                GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+                GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
+                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArrayForEdges.Length * Map4Vertex.Size),
+                    vertexArrayForEdges, BufferUsageHint.DynamicDraw);
+                GL.LineWidth(OutlineWidth);
+                Config.Map4Graphics.BindVertices();
+                GL.DrawArrays(PrimitiveType.LineLoop, 0, vertexArrayForEdges.Length);
+                GL.DeleteBuffer(buffer);
+            }
         }
 
         private (double x, double z) GetEllipsePoint(
