@@ -11,6 +11,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
+using STROOP.Map3.Map.Graphics;
 
 namespace STROOP.Map3
 {
@@ -82,6 +83,51 @@ namespace STROOP.Map3
                 GL.End();
             }
             GL.Color4(1, 1, 1, 1.0f);
+        }
+
+        public override void DrawOn3DControl()
+        {
+            if (OutlineWidth == 0) return;
+
+            List<(float x, float y, float z)> vertices = _dictionary.Values.ToList();
+            List<Map4Vertex[]> vertexArrayList = new List<Map4Vertex[]>();
+            for (int i = 0; i < vertices.Count - 1; i++)
+            {
+                Color color = OutlineColor;
+                if (_useBlending)
+                {
+                    int distFromEnd = vertices.Count - i - 2;
+                    if (distFromEnd < Size)
+                    {
+                        color = ColorUtilities.InterpolateColor(
+                            OutlineColor, Color, distFromEnd / (double)Size);
+                    }
+                    else
+                    {
+                        color = Color;
+                    }
+                }
+                (float x1, float y1, float z1) = vertices[i];
+                (float x2, float y2, float z2) = vertices[i + 1];
+
+                vertexArrayList.Add(new Map4Vertex[]
+                {
+                    new Map4Vertex(new Vector3(x1, y1, z1), color),
+                    new Map4Vertex(new Vector3(x2, y2, z2), color),
+                });
+            }
+
+            vertexArrayList.ForEach(vertexes =>
+            {
+                int buffer = GL.GenBuffer();
+                GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+                GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
+                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map4Vertex.Size), vertexes, BufferUsageHint.DynamicDraw);
+                GL.LineWidth(OutlineWidth);
+                Config.Map4Graphics.BindVertices();
+                GL.DrawArrays(PrimitiveType.Lines, 0, vertexes.Length);
+                GL.DeleteBuffer(buffer);
+            });
         }
 
         public override void Update()
