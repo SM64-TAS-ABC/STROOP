@@ -18,12 +18,12 @@ using STROOP.Map3.Map.Graphics;
 
 namespace STROOP.Map3
 {
-    public class Map3LevelTriangleObject : Map3TriangleObject
+    public class Map3HitboxHackTriangleObject : Map3TriangleObject
     {
         private readonly List<uint> _levelTriAddressList;
         private readonly List<uint> _objTriAddressList;
 
-        public Map3LevelTriangleObject()
+        public Map3HitboxHackTriangleObject()
             : base()
         {
             _levelTriAddressList = TriangleUtilities.GetLevelTriangles().ConvertAll(tri => tri.Address);

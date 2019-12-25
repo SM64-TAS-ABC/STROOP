@@ -67,7 +67,7 @@ namespace STROOP.Managers
                     "Add Tracker for Level Floor Tris",
                     "Add Tracker for Level Wall Tris",
                     "Add Tracker for Level Ceiling Tris",
-                    "Add Tracker for Level Tris",
+                    "Add Tracker for Hitbox Hack Tris",
                     "Add Tracker for Custom Map",
                     "Add Tracker for Custom Background",
                     "Add Tracker for Custom Gridlines",
@@ -127,7 +127,7 @@ namespace STROOP.Managers
                     },
                     () =>
                     {
-                        Map3Object mapObj = new Map3LevelTriangleObject();
+                        Map3Object mapObj = new Map3HitboxHackTriangleObject();
                         Map3Tracker tracker = new Map3Tracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
