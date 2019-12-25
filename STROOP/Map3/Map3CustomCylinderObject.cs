@@ -18,6 +18,9 @@ namespace STROOP.Map3
     {
         private readonly PositionAngle _posAngle;
 
+        private float _relativeMinY = 0;
+        private float _relativeMaxY = 100;
+
         public Map3CustomCylinderObject(PositionAngle posAngle)
             : base()
         {
@@ -26,9 +29,10 @@ namespace STROOP.Map3
             Size = 1000;
         }
 
-        protected override (float centerX, float centerZ, float radius) GetDimensions()
+        protected override (float centerX, float centerZ, float radius, float minY, float maxY) Get3DDimensions()
         {
-            return ((float)_posAngle.X, (float)_posAngle.Z, Size);
+            float y = GetY();
+            return ((float)_posAngle.X, (float)_posAngle.Z, Size, y + _relativeMinY, y + _relativeMaxY);
         }
 
         public override Image GetImage()

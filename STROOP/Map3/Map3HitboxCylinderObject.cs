@@ -24,11 +24,16 @@ namespace STROOP.Map3
             _posAngle = posAngle;
         }
 
-        protected override (float centerX, float centerZ, float radius) GetDimensions()
+        protected override (float centerX, float centerZ, float radius, float minY, float maxY) Get3DDimensions()
         {
             uint objAddress = _posAngle.GetObjAddress();
+            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
             float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
-            return ((float)_posAngle.X, (float)_posAngle.Z, hitboxRadius);
+            float hitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeightOffset);
+            float hitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+            float hitboxMinY = objY - hitboxDownOffset;
+            float hitboxMaxY = hitboxMinY + hitboxHeight;
+            return ((float)_posAngle.X, (float)_posAngle.Z, hitboxRadius, hitboxMinY, hitboxMaxY);
         }
 
         public override Image GetImage()

@@ -24,7 +24,7 @@ namespace STROOP.Map3
             _posAngle = posAngle;
         }
 
-        protected override (float centerX, float centerZ, float radius) GetDimensions()
+        protected override (float centerX, float centerZ, float radius) Get2DDimensions()
         {
             uint objAddress = _posAngle.GetObjAddress();
             float tangibleDist = Config.Stream.GetSingle(objAddress + ObjectConfig.TangibleDistOffset);

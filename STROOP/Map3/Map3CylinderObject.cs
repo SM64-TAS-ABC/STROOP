@@ -20,5 +20,13 @@ namespace STROOP.Map3
             : base()
         {
         }
+
+        protected override (float centerX, float centerZ, float radius) Get2DDimensions()
+        {
+            (float centerX, float centerZ, float radius, float minY, float maxY) = Get3DDimensions();
+            return (centerX, centerZ, radius);
+        }
+
+        protected abstract (float centerX, float centerZ, float radius, float minY, float maxY) Get3DDimensions();
     }
 }

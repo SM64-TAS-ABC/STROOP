@@ -27,7 +27,7 @@ namespace STROOP.Map3
 
         public override void DrawOn2DControl()
         {
-            (float centerX, float centerZ, float radius) = GetDimensions();
+            (float centerX, float centerZ, float radius) = Get2DDimensions();
             (float controlCenterX, float controlCenterZ) = Map3Utilities.ConvertCoordsForControl(centerX, centerZ);
             float controlRadius = radius * Config.Map3Graphics.MapViewScaleValue;
             List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS).ToList()
@@ -65,6 +65,6 @@ namespace STROOP.Map3
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        protected abstract (float centerX, float centerZ, float radius) GetDimensions();
+        protected abstract (float centerX, float centerZ, float radius) Get2DDimensions();
     }
 }

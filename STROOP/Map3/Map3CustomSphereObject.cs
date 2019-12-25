@@ -26,7 +26,7 @@ namespace STROOP.Map3
             Size = 1000;
         }
 
-        protected override (float centerX, float centerZ, float radius) GetDimensions()
+        protected override (float centerX, float centerZ, float radius) Get2DDimensions()
         {
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float thisY = (float)_posAngle.Y;
