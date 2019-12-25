@@ -176,14 +176,14 @@ namespace STROOP.Map3
                 .Concat(side3Surfaces)
                 .ToList();
 
-            List<Map4Vertex[]> vertexArray1 = allSurfaces.ConvertAll(
+            List<Map4Vertex[]> vertexArrayForSurfaces = allSurfaces.ConvertAll(
                 vertexList => vertexList.ConvertAll(vertex => new Map4Vertex(new Vector3(
                     vertex.x, vertex.y, vertex.z), Color4)).ToArray());
-            List<Map4Vertex[]> vertexArray2 = allSurfaces.ConvertAll(
+            List<Map4Vertex[]> vertexArrayForEdges = allSurfaces.ConvertAll(
                 vertexList => vertexList.ConvertAll(vertex => new Map4Vertex(new Vector3(
                     vertex.x, vertex.y, vertex.z), OutlineColor)).ToArray());
 
-            vertexArray1.ForEach(vertexes =>
+            vertexArrayForSurfaces.ForEach(vertexes =>
             {
                 int buffer = GL.GenBuffer();
                 GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
@@ -196,7 +196,7 @@ namespace STROOP.Map3
 
             if (OutlineWidth != 0)
             {
-                vertexArray2.ForEach(vertexes =>
+                vertexArrayForEdges.ForEach(vertexes =>
                 {
                     int buffer = GL.GenBuffer();
                     GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);

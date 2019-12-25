@@ -33,28 +33,36 @@ namespace STROOP.Map3
         public override void DrawOn3DControl()
         {
             (float centerX, float centerZ, float radius, float minY, float maxY) = Get3DDimensions();
-            List<(float x, float y, float z)> points = Enumerable.Range(0, NUM_POINTS).ToList()
-                .ConvertAll(index => (index / (float)NUM_POINTS) * 65536)
-                .ConvertAll(angle =>
-                {
-                    (float x, float z) = ((float, float))MoreMath.AddVectorToPoint(radius, angle, centerX, centerZ);
-                    return (x, maxY, z);
-                });
 
-            Map4Vertex[] vertexes = points.ConvertAll(
-                vertex => new Map4Vertex(new Vector3(
-                    vertex.x, vertex.y, vertex.z), Color4)).ToArray();
+            Map4Vertex[] GetBaseVertices(float height)
+            {
+                List<(float x, float y, float z)> points = Enumerable.Range(0, NUM_POINTS).ToList()
+                    .ConvertAll(index => (index / (float)NUM_POINTS) * 65536)
+                    .ConvertAll(angle =>
+                    {
+                        (float x, float z) = ((float, float))MoreMath.AddVectorToPoint(radius, angle, centerX, centerZ);
+                        return (x, height, z);
+                    });
+                return points.ConvertAll(
+                    vertex => new Map4Vertex(new Vector3(
+                        vertex.x, vertex.y, vertex.z), Color4)).ToArray();
+            }
+            List<Map4Vertex[]> vertexArrayForSurfaces = new List<Map4Vertex[]>()
+            {
+                GetBaseVertices(maxY),
+                GetBaseVertices(minY),
+            };
 
-            //vertexArray1.ForEach(vertexes =>
-            //{
-            int buffer = GL.GenBuffer();
+            vertexArrayForSurfaces.ForEach(vertexes =>
+            {
+                int buffer = GL.GenBuffer();
                 GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
                 GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map4Vertex.Size), vertexes, BufferUsageHint.DynamicDraw);
                 Config.Map4Graphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Polygon, 0, vertexes.Length);
                 GL.DeleteBuffer(buffer);
-            //});
+            });
 
 
 
