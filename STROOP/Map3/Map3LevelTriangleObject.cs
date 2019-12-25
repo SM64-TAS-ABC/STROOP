@@ -45,25 +45,6 @@ namespace STROOP.Map3
             return Map3Utilities.GetTriangles(_triAddressList);
         }
 
-        public override ContextMenuStrip GetContextMenuStrip()
-        {
-            if (_contextMenuStrip == null)
-            {
-                ToolStripMenuItem itemReset = new ToolStripMenuItem("Reset");
-                itemReset.Click += (sender, e) =>
-                {
-                    _triAddressList.Clear();
-                    _triAddressList.AddRange(TriangleUtilities.GetLevelTriangles()
-                        .ConvertAll(tri => tri.Address));
-                };
-
-                _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(itemReset);
-            }
-
-            return _contextMenuStrip;
-        }
-
         public override string GetName()
         {
             return "Level Tris";
@@ -72,6 +53,17 @@ namespace STROOP.Map3
         public override Image GetImage()
         {
             return Config.ObjectAssociations.HolpImage;
+        }
+
+        public override void Update()
+        {
+            int numLevelTriangles = Config.Stream.GetInt32(0x80361178);
+            if (_triAddressList.Count != numLevelTriangles)
+            {
+                _triAddressList.Clear();
+                _triAddressList.AddRange(TriangleUtilities.GetLevelTriangles()
+                    .ConvertAll(tri => tri.Address));
+            }
         }
     }
 }
