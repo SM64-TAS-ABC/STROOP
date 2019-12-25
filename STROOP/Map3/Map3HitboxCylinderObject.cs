@@ -14,7 +14,7 @@ using System.Drawing.Imaging;
 
 namespace STROOP.Map3
 {
-    public class Map3HitboxCylinderObject : Map3CircleObject
+    public class Map3HitboxCylinderObject : Map3CylinderObject
     {
         private readonly PositionAngle _posAngle;
 

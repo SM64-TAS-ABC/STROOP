@@ -14,7 +14,7 @@ using System.Drawing.Imaging;
 
 namespace STROOP.Map3
 {
-    public class Map3CustomSphereObject : Map3CircleObject
+    public class Map3CustomSphereObject : Map3SphereObject
     {
         private readonly PositionAngle _posAngle;
 
