@@ -26,14 +26,9 @@ namespace STROOP.Map3
             Size = 1000;
         }
 
-        protected override (float centerX, float centerZ, float radius) Get2DDimensions()
+        protected override (float centerX, float centerY, float centerZ, float radius3D) Get3DDimensions()
         {
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float thisY = (float)_posAngle.Y;
-            float yDiff = marioY - thisY;
-            float radiusSquared = Size * Size - yDiff * yDiff;
-            float radius = radiusSquared >= 0 ? (float)Math.Sqrt(radiusSquared) : 0;
-            return ((float)_posAngle.X, (float)_posAngle.Z, radius);
+            return ((float)_posAngle.X, (float)_posAngle.Y, (float)_posAngle.Z, Size);
         }
 
         public override Image GetImage()
