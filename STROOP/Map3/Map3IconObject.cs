@@ -36,5 +36,10 @@ namespace STROOP.Map3
                 TextureId = Map3Utilities.LoadTexture(image as Bitmap);
             }
         }
+
+        public override Map3DrawType GetDrawType()
+        {
+            return Map3DrawType.Overlay;
+        }
     }
 }

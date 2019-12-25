@@ -103,5 +103,10 @@ namespace STROOP.Map3
         }
 
         protected abstract List<List<(float x, float y, float z)>> GetQuadList();
+
+        public override Map3DrawType GetDrawType()
+        {
+            return Map3DrawType.Perspective;
+        }
     }
 }

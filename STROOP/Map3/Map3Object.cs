@@ -64,6 +64,8 @@ namespace STROOP.Map3
 
         public abstract Image GetImage();
 
+        public abstract Map3DrawType GetDrawType();
+
         public virtual float GetY()
         {
             return float.PositiveInfinity;

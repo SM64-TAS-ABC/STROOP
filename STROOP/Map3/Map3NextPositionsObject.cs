@@ -132,5 +132,10 @@ namespace STROOP.Map3
         {
             return true;
         }
+
+        public override Map3DrawType GetDrawType()
+        {
+            return Map3DrawType.Overlay;
+        }
     }
 }

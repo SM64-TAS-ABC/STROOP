@@ -44,5 +44,10 @@ namespace STROOP.Map3
         }
 
         protected abstract List<(float x, float z)> GetVertices();
+
+        public override Map3DrawType GetDrawType()
+        {
+            return Map3DrawType.Perspective;
+        }
     }
 }

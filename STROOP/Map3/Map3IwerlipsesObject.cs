@@ -221,5 +221,10 @@ namespace STROOP.Map3
 
             return _contextMenuStrip;
         }
+
+        public override Map3DrawType GetDrawType()
+        {
+            return Map3DrawType.Perspective;
+        }
     }
 }

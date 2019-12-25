@@ -67,5 +67,10 @@ namespace STROOP.Map3
         }
 
         protected abstract (float centerX, float centerZ, float radius) Get2DDimensions();
+
+        public override Map3DrawType GetDrawType()
+        {
+            return Map3DrawType.Perspective;
+        }
     }
 }

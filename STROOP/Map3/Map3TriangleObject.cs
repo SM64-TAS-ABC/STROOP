@@ -35,5 +35,10 @@ namespace STROOP.Map3
         {
             return (vertex.x + xOffset, vertex.y + yOffset, vertex.z + zOffset);
         }
+
+        public override Map3DrawType GetDrawType()
+        {
+            return Map3DrawType.Perspective;
+        }
     }
 }

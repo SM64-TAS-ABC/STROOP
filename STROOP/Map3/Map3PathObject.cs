@@ -242,5 +242,10 @@ namespace STROOP.Map3
         {
             return Config.ObjectAssociations.PathImage;
         }
+
+        public override Map3DrawType GetDrawType()
+        {
+            return Map3DrawType.Perspective;
+        }
     }
 }
