@@ -23,7 +23,7 @@ namespace STROOP.Map3
 
         public override void DrawOn2DControl()
         {
-            List<List<(float x, float z)>> quadList = GetQuadList();
+            List<List<(float x, float y, float z)>> quadList = GetQuadList();
             List<List<(float x, float z)>> quadListForControl =
                 quadList.ConvertAll(quad => quad.ConvertAll(
                     vertex => Map3Utilities.ConvertCoordsForControl(vertex.x, vertex.z)));
@@ -63,6 +63,6 @@ namespace STROOP.Map3
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        protected abstract List<List<(float x, float z)>> GetQuadList();
+        protected abstract List<List<(float x, float y, float z)>> GetQuadList();
     }
 }

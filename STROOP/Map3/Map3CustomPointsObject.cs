@@ -49,7 +49,7 @@ namespace STROOP.Map3
             return new Map3CustomPointsObject(unitPoints);
         }
 
-        protected override List<List<(float x, float z)>> GetQuadList()
+        protected override List<List<(float x, float y, float z)>> GetQuadList()
         {
             return Map3Utilities.ConvertUnitPointsToQuads(_unitPoints);
         }

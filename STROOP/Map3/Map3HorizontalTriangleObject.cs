@@ -106,7 +106,7 @@ namespace STROOP.Map3
                 return points;
             }).SelectMany(points => points).Distinct().ToList();
 
-            List<List<(float x, float z)>> quadList = Map3Utilities.ConvertUnitPointsToQuads(unitPoints);
+            List<List<(float x, float y, float z)>> quadList = Map3Utilities.ConvertUnitPointsToQuads(unitPoints);
             List<List<(float x, float z)>> quadListForControl =
                 quadList.ConvertAll(quad => quad.ConvertAll(
                     vertex => Map3Utilities.ConvertCoordsForControl(vertex.x, vertex.z)));

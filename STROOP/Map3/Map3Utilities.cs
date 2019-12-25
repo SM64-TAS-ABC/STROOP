@@ -165,17 +165,17 @@ namespace STROOP.Map3
                 .ConvertAll(triAddress => new TriangleDataModel(triAddress));
         }
         
-        public static List<List<(float x, float z)>> ConvertUnitPointsToQuads(List<(int x, int z)> unitPoints)
+        public static List<List<(float x, float y, float z)>> ConvertUnitPointsToQuads(List<(int x, int z)> unitPoints)
         {
-            List<List<(float x, float z)>> quadList = new List<List<(float x, float z)>>();
+            List<List<(float x, float y, float z)>> quadList = new List<List<(float x, float y, float z)>>();
             Action<int, int, int, int> addQuad = (int xBase, int zBase, int xAdd, int zAdd) =>
             {
-                quadList.Add(new List<(float, float)>()
+                quadList.Add(new List<(float x, float y, float z)>()
                 {
-                    (xBase, zBase),
-                    (xBase + xAdd, zBase),
-                    (xBase + xAdd, zBase + zAdd),
-                    (xBase, zBase + zAdd),
+                    (xBase, 0, zBase),
+                    (xBase + xAdd, 0, zBase),
+                    (xBase + xAdd, 0, zBase + zAdd),
+                    (xBase, 0, zBase + zAdd),
                 });
             };
             foreach ((int x, int z) in unitPoints)
