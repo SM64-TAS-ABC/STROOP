@@ -16,7 +16,8 @@ namespace STROOP.Map3
 {
     public abstract class Map3CircleObject : Map3Object
     {
-        protected readonly static int NUM_POINTS = 256;
+        protected readonly static int NUM_POINTS_2D = 256;
+        protected readonly static int NUM_POINTS_3D = 16;
 
         public Map3CircleObject()
             : base()
@@ -30,8 +31,8 @@ namespace STROOP.Map3
             (float centerX, float centerZ, float radius) = Get2DDimensions();
             (float controlCenterX, float controlCenterZ) = Map3Utilities.ConvertCoordsForControl(centerX, centerZ);
             float controlRadius = radius * Config.Map3Graphics.MapViewScaleValue;
-            List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS).ToList()
-                .ConvertAll(index => (index / (float)NUM_POINTS) * 65536)
+            List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS_2D).ToList()
+                .ConvertAll(index => (index / (float)NUM_POINTS_2D) * 65536)
                 .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(controlRadius, angle, controlCenterX, controlCenterZ));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
