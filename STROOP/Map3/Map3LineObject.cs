@@ -11,6 +11,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using STROOP.Map3.Map.Graphics;
 
 namespace STROOP.Map3
 {
@@ -41,6 +42,28 @@ namespace STROOP.Map3
             }
             GL.End();
             GL.Color4(1, 1, 1, 1.0f);
+        }
+
+        public override void DrawOn3DControl()
+        {
+            if (OutlineWidth == 0) return;
+
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            List<(float x, float z)> vertexList = GetVertices();
+
+            Map4Vertex[] vertexArrayForEdges =
+                vertexList.ConvertAll(vertex => new Map4Vertex(new Vector3(
+                    vertex.x, marioY, vertex.z), OutlineColor)).ToArray();
+
+            int buffer = GL.GenBuffer();
+            GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArrayForEdges.Length * Map4Vertex.Size),
+                vertexArrayForEdges, BufferUsageHint.DynamicDraw);
+            GL.LineWidth(OutlineWidth);
+            Config.Map4Graphics.BindVertices();
+            GL.DrawArrays(PrimitiveType.Lines, 0, vertexArrayForEdges.Length);
+            GL.DeleteBuffer(buffer);
         }
 
         protected abstract List<(float x, float z)> GetVertices();
