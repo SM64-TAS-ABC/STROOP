@@ -44,5 +44,10 @@ namespace STROOP.Map3
                 controlCenter => (new PointF(controlCenter.x, controlCenter.z), new SizeF(sizeX, sizeZ)));
             return dimensions;
         }
+
+        public override void DrawOn3DControl()
+        {
+            // do nothing
+        }
     }
 }

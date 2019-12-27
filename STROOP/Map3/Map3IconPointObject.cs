@@ -34,5 +34,10 @@ namespace STROOP.Map3
         {
             return true;
         }
+
+        public override void DrawOn3DControl()
+        {
+            // TODO: fill this in
+        }
     }
 }

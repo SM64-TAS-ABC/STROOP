@@ -137,5 +137,10 @@ namespace STROOP.Map3
         {
             return Map3DrawType.Overlay;
         }
+
+        public override void DrawOn3DControl()
+        {
+            // TODO: fill this in
+        }
     }
 }

@@ -51,9 +51,7 @@ namespace STROOP.Map3
 
         public abstract void DrawOn2DControl();
 
-        public virtual void DrawOn3DControl() // TODO make abstract
-        {
-        }
+        public abstract void DrawOn3DControl();
 
         public virtual Matrix4 GetModelMatrix()
         {
