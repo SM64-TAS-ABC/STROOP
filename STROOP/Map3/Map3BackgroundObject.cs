@@ -38,10 +38,17 @@ namespace STROOP.Map3
 
         private Map4Vertex[] GetVertices()
         {
-            float leftBound = -1;
-            float rightBound = 1;
-            float upperBound = 1;
-            float lowerBound = -1;
+            float width = Config.Map3Gui.GLControl3D.Width;
+            float height = Config.Map3Gui.GLControl3D.Height;
+            bool widthIsMin = width <= height;
+            float ratio = Math.Max(width, height) / Math.Min(width, height);
+            float widthMultiplier = widthIsMin ? ratio : 1;
+            float heightMultiplier = widthIsMin ? 1 : ratio;
+
+            float leftBound = -1 * widthMultiplier;
+            float rightBound = 1 * widthMultiplier;
+            float upperBound = 1 * heightMultiplier;
+            float lowerBound = -1 * heightMultiplier;
 
             return new Map4Vertex[]
             {
