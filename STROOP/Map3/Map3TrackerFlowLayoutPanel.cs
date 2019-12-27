@@ -23,11 +23,13 @@ namespace STROOP.Map3
 
         private Map3Object _mapObjMap;
         private Map3Object _mapObjBackground;
+        private Map3Object _mapObjHitboxHackTris;
 
-        public void Initialize(Map3Object mapObjMap, Map3Object mapObjBackground)
+        public void Initialize(Map3Object mapObjMap, Map3Object mapObjBackground, Map3Object mapObjHitboxHackTris)
         {
             _mapObjMap = mapObjMap;
             _mapObjBackground = mapObjBackground;
+            _mapObjHitboxHackTris = mapObjHitboxHackTris;
         }
 
         public void MoveUpControl(Map3Tracker mapTracker)
@@ -171,7 +173,9 @@ namespace STROOP.Map3
             listOrderOnBottom.Reverse();
             listOrderByY.Reverse();
             listOrderByY = listOrderByY.OrderBy(obj => obj.GetY()).ToList();
+
             List<Map3Object> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
+            listCombined.Insert(0, _mapObjHitboxHackTris);
 
             List<Map3Object> listBackground = listCombined.FindAll(obj => obj.GetDrawType() == Map3DrawType.Background);
             List<Map3Object> listPerspective = listCombined.FindAll(obj => obj.GetDrawType() == Map3DrawType.Perspective);
