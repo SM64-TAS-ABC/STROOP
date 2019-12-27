@@ -156,6 +156,8 @@ namespace STROOP.Map3.Map.Graphics
                  mapItem.Draw(this);
             }
 
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOn3DControl(Map3DrawType.Overlay);
+
             error = GL.GetError();
             if (error != ErrorCode.NoError)
                 Debugger.Break();
