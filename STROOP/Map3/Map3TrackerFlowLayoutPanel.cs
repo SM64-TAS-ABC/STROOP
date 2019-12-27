@@ -84,6 +84,10 @@ namespace STROOP.Map3
 
         public void UpdateControl()
         {
+            _mapObjMap.Update();
+            _mapObjBackground.Update();
+            _mapObjHitboxHackTris.Update();
+
             lock (_objectLock)
             {
                 foreach (Map3Tracker tracker in Controls)
