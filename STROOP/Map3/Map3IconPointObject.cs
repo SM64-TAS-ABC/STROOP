@@ -10,6 +10,7 @@ using STROOP.Utilities;
 using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
+using STROOP.Map3.Map.Graphics;
 
 namespace STROOP.Map3
 {
@@ -35,9 +36,75 @@ namespace STROOP.Map3
             return true;
         }
 
+
+
+
+
+
+
+        public override Matrix4 GetModelMatrix()
+        {
+
+            SizeF _imageNormalizedSize = new SizeF(
+                Image.Width >= Image.Height ? 1.0f : (float) Image.Width / Image.Height,
+                Image.Width <= Image.Height ? 1.0f : (float) Image.Height / Image.Width);
+
+
+            PositionAngle posAngle = GetPositionAngle();
+            float angle = (float)MoreMath.AngleUnitsToRadians(posAngle.Angle);
+            Vector3 pos = new Vector3((float)posAngle.X, (float)posAngle.Y, (float)posAngle.Z);
+
+            float size = Size / 100;
+            return Matrix4.CreateScale(
+                size * _imageNormalizedSize.Width,
+                size * _imageNormalizedSize.Height,
+                1)
+                * Matrix4.CreateRotationZ(angle)
+                * Matrix4.CreateScale(1.0f / Config.Map4Graphics.NormalizedWidth, 1.0f, 1.0f / Config.Map4Graphics.NormalizedHeight)
+                * Matrix4.CreateTranslation(Config.Map4Graphics.Utilities.GetPositionOnViewFromCoordinate(pos));
+        }
+
+
+
+
+        static readonly Map4Vertex[] _vertices = new Map4Vertex[]
+        {
+            new Map4Vertex(new Vector3(-1, -1, 0), new Vector2(0, 1)),
+            new Map4Vertex(new Vector3(1, -1, 0),  new Vector2(1, 1)),
+            new Map4Vertex(new Vector3(-1, 1, 0),  new Vector2(0, 0)),
+            new Map4Vertex(new Vector3(1, 1, 0),   new Vector2(1, 0)),
+            new Map4Vertex(new Vector3(-1, 1, 0),  new Vector2(0, 0)),
+            new Map4Vertex(new Vector3(1, -1, 0),  new Vector2(1, 1)),
+        };
+
+
+
+
+
         public override void DrawOn3DControl()
         {
-            // TODO(Map3): fill this in
+
+            int _vertexBuffer = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(_vertices.Length * Map4Vertex.Size),
+                _vertices, BufferUsageHint.StaticDraw);
+
+
+
+            GL.BindTexture(TextureTarget.Texture2D, TextureId);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
+            Config.Map4Graphics.BindVertices();
+            GL.DrawArrays(PrimitiveType.Triangles, 0, _vertices.Length);
+
+
+
+
+
+
+
+            GL.DeleteBuffer(_vertexBuffer);
+
+
         }
     }
 }

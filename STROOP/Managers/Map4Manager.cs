@@ -92,7 +92,7 @@ namespace STROOP.Managers
             // Test
             _mapObjLevel = new Map4LevelObject();
             Config.Map4Controller.AddMapObject(_mapObjLevel);
-            Config.Map4Controller.AddMapObject(_mapObjMario);
+            //Config.Map4Controller.AddMapObject(_mapObjMario);
             //Config.Map4Controller.AddMapObject(_mapObjHolp);
             //Config.Map4Controller.AddMapObject(_mapObjCamera);
 
