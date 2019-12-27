@@ -179,6 +179,7 @@ namespace STROOP.Map3
             listOrderByY = listOrderByY.OrderBy(obj => obj.GetY()).ToList();
 
             List<Map3Object> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
+            listCombined.Insert(0, _mapObjBackground);
             listCombined.Insert(0, _mapObjHitboxHackTris);
 
             List<Map3Object> listDrawType = listCombined.FindAll(obj => obj.GetDrawType() == drawType);

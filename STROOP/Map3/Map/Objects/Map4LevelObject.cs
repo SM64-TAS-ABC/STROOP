@@ -29,7 +29,7 @@ namespace STROOP.Map3.Map.Objects
         MapLayout _currentMap;
         Bitmap _currentBackground;
 
-        public override IEnumerable<Map4GraphicsItem> GraphicsItems => new List<Map4GraphicsItem>() { _background, /* _layout, _triangles */ };
+        public override IEnumerable<Map4GraphicsItem> GraphicsItems => new List<Map4GraphicsItem>() { /*_background,*/ /* _layout, _triangles */ };
 
         public override Bitmap BitmapImage
         {
