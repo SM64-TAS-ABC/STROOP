@@ -126,6 +126,8 @@ namespace STROOP.Map3.Map.Graphics
                 mapItem.Draw(this);
             }
 
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOn3DControl(Map3DrawType.Background);
+
             // Setup 3D
             GL.Enable(EnableCap.DepthTest);
             GL.DepthMask(true);
@@ -138,7 +140,7 @@ namespace STROOP.Map3.Map.Graphics
                 mapItem.Draw(this);
             }
 
-            Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOn3DControl();
+            Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOn3DControl(Map3DrawType.Perspective);
 
             // Setup 2D
             GL.Disable(EnableCap.DepthTest);

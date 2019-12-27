@@ -146,7 +146,7 @@ namespace STROOP.Map3
             }
         }
 
-        public void DrawOn3DControl()
+        public void DrawOn3DControl(Map3DrawType drawType)
         {
             List<Map3Object> listOrderOnTop = new List<Map3Object>();
             List<Map3Object> listOrderOnBottom = new List<Map3Object>();
@@ -181,13 +181,11 @@ namespace STROOP.Map3
             List<Map3Object> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
             listCombined.Insert(0, _mapObjHitboxHackTris);
 
-            List<Map3Object> listBackground = listCombined.FindAll(obj => obj.GetDrawType() == Map3DrawType.Background);
-            List<Map3Object> listPerspective = listCombined.FindAll(obj => obj.GetDrawType() == Map3DrawType.Perspective);
-            List<Map3Object> listOverlay = listCombined.FindAll(obj => obj.GetDrawType() == Map3DrawType.Overlay);
-
-            foreach (Map3Object obj in listPerspective)
+            List<Map3Object> listDrawType = listCombined.FindAll(obj => obj.GetDrawType() == drawType);
+            foreach (Map3Object obj in listDrawType)
             {
-                Matrix4 viewMatrix = obj.GetModelMatrix() * Config.Map4Graphics.Camera.Matrix;
+                Matrix4 viewMatrix = drawType == Map3DrawType.Perspective ?
+                    obj.GetModelMatrix() * Config.Map4Graphics.Camera.Matrix : obj.GetModelMatrix();
                 GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
                 obj.DrawOn3DControl();
             }
