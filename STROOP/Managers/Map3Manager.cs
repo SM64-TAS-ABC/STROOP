@@ -42,7 +42,7 @@ namespace STROOP.Managers
         {
             // FlowLayoutPanel
             Config.Map3Gui.flowLayoutPanelMap3Trackers.Initialize(
-                new Map3MapObject(), new Map3CurrentBackgroundObject(), new Map3HitboxHackTriangleObject());
+                new Map3CurrentMapObject(), new Map3CurrentBackgroundObject(), new Map3HitboxHackTriangleObject());
 
             // ComboBox for Level
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();

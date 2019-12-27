@@ -13,7 +13,7 @@ using OpenTK;
 
 namespace STROOP.Map3
 {
-    public class Map3MapObject : Map3IconRectangleObject
+    public abstract class Map3MapObject : Map3IconRectangleObject
     {
         public Map3MapObject()
             : base()
@@ -21,14 +21,16 @@ namespace STROOP.Map3
             InternalRotates = true;
         }
 
+        public abstract MapLayout GetMapLayout();
+
         public override Image GetImage()
         {
-            return Map3Utilities.GetMapLayout().MapImage;
+            return GetMapLayout().MapImage;
         }
 
         protected override List<(PointF loc, SizeF size)> GetDimensions()
         {
-            RectangleF rectangle = Map3Utilities.GetMapLayout().Coordinates;
+            RectangleF rectangle = GetMapLayout().Coordinates;
             float rectangleCenterX = rectangle.X + rectangle.Width / 2;
             float rectangleCenterZ = rectangle.Y + rectangle.Height / 2;
             List<(float x, float z)> rectangleCenters = Config.Map3Graphics.MapViewEnablePuView ?
@@ -41,11 +43,6 @@ namespace STROOP.Map3
             List<(PointF loc, SizeF size)> dimensions = controlCenters.ConvertAll(
                 controlCenter => (new PointF(controlCenter.x, controlCenter.z), new SizeF(sizeX, sizeZ)));
             return dimensions;
-        }
-
-        public override string GetName()
-        {
-            return "Map";
         }
     }
 }

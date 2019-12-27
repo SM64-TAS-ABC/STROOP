@@ -381,6 +381,7 @@
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Map3\Map3CeilingObject.cs" />
     <Compile Include="Map3\Map3BackgroundObject.cs" />
+    <Compile Include="Map3\Map3MapObject.cs" />
     <Compile Include="Map3\Map3DrawType.cs" />
     <Compile Include="Map3\Map3SphereObject.cs" />
     <Compile Include="Map3\Map3CylinderObject.cs" />
@@ -429,7 +430,7 @@
     <Compile Include="Map3\Map3UnitGridlinesObject.cs" />
     <Compile Include="Map3\Map3Utilities.cs" />
     <Compile Include="Map3\Map3HorizontalTriangleObject.cs" />
-    <Compile Include="Map3\Map3MapObject.cs" />
+    <Compile Include="Map3\Map3CurrentMapObject.cs" />
     <Compile Include="Map3\Map3IconRectangleObject.cs" />
     <Compile Include="Map3\Map3IconPointObject.cs" />
     <Compile Include="Map3\Map3HolpObject.cs" />
