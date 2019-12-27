@@ -41,5 +41,10 @@ namespace STROOP.Map3
         {
             return Map3DrawType.Overlay;
         }
+
+        public override void Update()
+        {
+            UpdateImage();
+        }
     }
 }

@@ -22,8 +22,6 @@ namespace STROOP.Map3
 
         public override void DrawOn2DControl()
         {
-            UpdateImage();
-
             // Update map object
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
             (float xPosPixels, float zPosPixels) = Map3Utilities.ConvertCoordsForControl((float)x, (float)z);

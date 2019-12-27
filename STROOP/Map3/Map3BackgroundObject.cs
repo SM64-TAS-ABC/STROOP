@@ -48,7 +48,6 @@ namespace STROOP.Map3
 
         public override void DrawOn3DControl()
         {
-
             int buffer = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
             GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(_vertices.Length * Map4Vertex.Size),

@@ -22,7 +22,6 @@ namespace STROOP.Map3
 
         public override void DrawOn2DControl()
         {
-            UpdateImage();
             List<(PointF loc, SizeF size)> dimensions = GetDimensions();
             float angle = InternalRotates ? Map3Utilities.ConvertAngleForControl(0) : 0; 
             foreach ((PointF loc, SizeF size) in dimensions)

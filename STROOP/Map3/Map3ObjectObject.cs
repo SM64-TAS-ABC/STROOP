@@ -75,6 +75,7 @@ namespace STROOP.Map3
 
         public override void Update()
         {
+            base.Update();
             _obj.Update();
             InternalRotates = Config.ObjectAssociations.GetObjectMapRotates(_obj.BehaviorCriteria);
         }
