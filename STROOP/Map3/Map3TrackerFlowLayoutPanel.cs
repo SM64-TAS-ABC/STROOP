@@ -142,17 +142,42 @@ namespace STROOP.Map3
 
         public void DrawOn3DControl()
         {
-            List<Map3Object> list = new List<Map3Object>();
+            List<Map3Object> listOrderOnTop = new List<Map3Object>();
+            List<Map3Object> listOrderOnBottom = new List<Map3Object>();
+            List<Map3Object> listOrderByY = new List<Map3Object>();
 
             lock (_objectLock)
             {
                 foreach (Map3Tracker mapTracker in Controls)
                 {
-                    list.AddRange(mapTracker.GetMapObjectsToDisplay());
+                    switch (mapTracker.GetOrderType())
+                    {
+                        case MapTrackerOrderType.OrderOnTop:
+                            listOrderOnTop.AddRange(mapTracker.GetMapObjectsToDisplay());
+                            break;
+                        case MapTrackerOrderType.OrderOnBottom:
+                            listOrderOnBottom.AddRange(mapTracker.GetMapObjectsToDisplay());
+                            break;
+                        case MapTrackerOrderType.OrderByY:
+                            listOrderByY.AddRange(mapTracker.GetMapObjectsToDisplay());
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
                 }
             }
 
-            foreach (Map3Object obj in list)
+            listOrderOnTop.Reverse();
+            listOrderOnBottom.Reverse();
+            listOrderByY.Reverse();
+            listOrderByY = listOrderByY.OrderBy(obj => obj.GetY()).ToList();
+            List<Map3Object> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
+
+            List<Map3Object> listBackground = listCombined.FindAll(obj => obj.GetDrawType() == Map3DrawType.Background);
+            List<Map3Object> listPerspective = listCombined.FindAll(obj => obj.GetDrawType() == Map3DrawType.Perspective);
+            List<Map3Object> listOverlay = listCombined.FindAll(obj => obj.GetDrawType() == Map3DrawType.Overlay);
+
+            foreach (Map3Object obj in listPerspective)
             {
                 Matrix4 viewMatrix = obj.GetModelMatrix() * Config.Map4Graphics.Camera.Matrix;
                 GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
