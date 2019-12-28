@@ -297,6 +297,23 @@ namespace STROOP.Structs
                     }
                 ));
             }
+
+            _dictionary.Add("Map3DMode",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Map3DMode.ToString();
+                },
+                (string value, uint dummy) =>
+                {
+                    try
+                    {
+                        SpecialConfig.Map3DMode = (Map3DMode)Enum.Parse(typeof(Map3DMode), value, true);
+                        return true;
+                    }
+                    catch (Exception) {}
+                    return false;
+                }
+            ));
         }
 
         public static void AddGeneratedEntriesToDictionary()

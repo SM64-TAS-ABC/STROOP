@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VarData>
+  <Data base="None" specialType="Map3DMode" subclass="String">Mode</Data>
+
   <Data base="None" specialType="Map3DCameraX">Camera X</Data>
   <Data base="None" specialType="Map3DCameraY">Camera Y</Data>
   <Data base="None" specialType="Map3DCameraZ">Camera Z</Data>

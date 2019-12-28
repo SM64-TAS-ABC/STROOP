@@ -187,6 +187,7 @@ namespace STROOP.Structs.Configurations
 
         // Map3D
 
+        public static Map3DMode Map3DMode = Map3DMode.InGame;
         public static float Map3DCameraX = 0;
         public static float Map3DCameraY = 0;
         public static float Map3DCameraZ = 0;
