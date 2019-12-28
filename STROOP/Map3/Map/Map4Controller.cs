@@ -113,11 +113,48 @@ namespace STROOP.Map3.Map
 
         public void CameraGameUpdate()
         {
-            _perspectiveCamera.Position = new Vector3(DataModels.Camera.X, DataModels.Camera.Y, DataModels.Camera.Z);
+            double cameraX = 0;
+            double cameraY = 0;
+            double cameraZ = 0;
+            double cameraYaw = 0;
+            double cameraPitch = 0;
+            double cameraRoll = 0;
+
+            switch (SpecialConfig.Map3DMode)
+            {
+                case Map3DMode.InGame:
+                    cameraX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
+                    cameraY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
+                    cameraZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
+                    cameraYaw = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+                    cameraPitch = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingPitchOffset);
+                    cameraRoll = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingRollOffset);
+                    break;
+                case Map3DMode.CameraPosAndFocus:
+                    break;
+                case Map3DMode.CameraPosAndAngle:
+                    break;
+                case Map3DMode.FollowFocusRelativeAngle:
+                    break;
+                case Map3DMode.FollowFocusAbsoluteAngle:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+
+
+
+
+
+
+
+
+            _perspectiveCamera.Position = new Vector3((float)cameraX, (float)cameraY, (float)cameraZ);
             _perspectiveCamera.SetRotation(
-                (float)MoreMath.AngleUnitsToRadians(DataModels.Camera.FacingYaw), 
-                (float)MoreMath.AngleUnitsToRadians(DataModels.Camera.FacingPitch),
-                (float)MoreMath.AngleUnitsToRadians(DataModels.Camera.FacingRoll));
+                (float)MoreMath.AngleUnitsToRadians(cameraYaw), 
+                (float)MoreMath.AngleUnitsToRadians(cameraPitch),
+                (float)MoreMath.AngleUnitsToRadians(cameraRoll));
             //_perspectiveCamera.SetLookTarget(new Vector3(), Vector3.UnitY);
             _perspectiveCamera.FOV = DataModels.Camera.FOV / 180 * (float) Math.PI;
         }
