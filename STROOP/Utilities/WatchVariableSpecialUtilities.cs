@@ -310,7 +310,7 @@ namespace STROOP.Structs
                         SpecialConfig.Map3DMode = (Map3DMode)Enum.Parse(typeof(Map3DMode), value, true);
                         return true;
                     }
-                    catch (Exception) {}
+                    catch (Exception) { }
                     return false;
                 }
             ));

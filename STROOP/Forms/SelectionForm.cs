@@ -1,6 +1,7 @@
 ﻿using STROOP.Controls;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -188,6 +189,24 @@ namespace STROOP.Forms
                             terrainType.Value,
                             Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
                     }
+                });
+            selectionForm.Show();
+        }
+
+        public static void ShowMap3DModeSelectionForm()
+        {
+            SelectionForm selectionForm = new SelectionForm();
+            selectionForm.Initialize(
+                "Select a Mode",
+                "Set Mode",
+                EnumUtilities.GetEnumStrings<Map3DMode>(typeof(Map3DMode)),
+                modeString =>
+                {
+                    try
+                    {
+                        SpecialConfig.Map3DMode = (Map3DMode)Enum.Parse(typeof(Map3DMode), modeString, true);
+                    }
+                    catch (Exception) { }
                 });
             selectionForm.Show();
         }

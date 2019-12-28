@@ -644,6 +644,7 @@
     <Compile Include="Enums\AngleUnitType.cs" />
     <Compile Include="Utilities\AnimationUtilities.cs" />
     <Compile Include="Utilities\EasingUtilities.cs" />
+    <Compile Include="Utilities\EnumUtilities.cs" />
     <Compile Include="Utilities\FlyingUtilities.cs" />
     <Compile Include="Utilities\InGameFunctionCall.cs" />
     <Compile Include="Utilities\MathOperationUtilities.cs" />

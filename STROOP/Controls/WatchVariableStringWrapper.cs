@@ -58,6 +58,10 @@ namespace STROOP.Controls
                     itemSelectValue.Click += (sender, e) => SelectionForm.ShowAreaTerrainDescriptionSelectionForm();
                     addedClickAction = true;
                     break;
+                case "Map3DMode":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowMap3DModeSelectionForm();
+                    addedClickAction = true;
+                    break;
             }
 
             if (addedClickAction)
