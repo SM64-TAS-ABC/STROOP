@@ -23,6 +23,7 @@ namespace STROOP.Structs
             AddLiteralEntriesToDictionary();
             AddGeneratedEntriesToDictionary();
             AddPanEntriesToDictionary();
+            AddMap3DEntriesToDictionary();
         }
 
         public static (Func<uint, object> getter, Func<object, uint, bool> setter)
@@ -235,6 +236,66 @@ namespace STROOP.Structs
                         setter(doubleValue);
                         return true;
                     }));
+            }
+        }
+
+        public static void AddMap3DEntriesToDictionary()
+        {
+            List<(string, Func<float>, Action<float>)> doubleEntries =
+                new List<(string, Func<float>, Action<float>)>()
+                {
+                    ("Map3DCameraX", () => SpecialConfig.Map3DCameraX, (float value) => SpecialConfig.Map3DCameraX = value),
+                    ("Map3DCameraY", () => SpecialConfig.Map3DCameraY, (float value) => SpecialConfig.Map3DCameraY = value),
+                    ("Map3DCameraZ", () => SpecialConfig.Map3DCameraZ, (float value) => SpecialConfig.Map3DCameraZ = value),
+                    ("Map3DCameraYaw", () => SpecialConfig.Map3DCameraYaw, (float value) => SpecialConfig.Map3DCameraYaw = value),
+                    ("Map3DCameraPitch", () => SpecialConfig.Map3DCameraPitch, (float value) => SpecialConfig.Map3DCameraPitch = value),
+                    ("Map3DCameraRoll", () => SpecialConfig.Map3DCameraRoll, (float value) => SpecialConfig.Map3DCameraRoll = value),
+                    ("Map3DFocusX", () => SpecialConfig.Map3DFocusX, (float value) => SpecialConfig.Map3DFocusX = value),
+                    ("Map3DFocusY", () => SpecialConfig.Map3DFocusY, (float value) => SpecialConfig.Map3DFocusY = value),
+                    ("Map3DFocusZ", () => SpecialConfig.Map3DFocusZ, (float value) => SpecialConfig.Map3DFocusZ = value),
+                    ("Map3DFollowingRadius", () => SpecialConfig.Map3DFollowingRadius, (float value) => SpecialConfig.Map3DFollowingRadius = value),
+                    ("Map3DFollowingYOffset", () => SpecialConfig.Map3DFollowingYOffset, (float value) => SpecialConfig.Map3DFollowingYOffset = value),
+                    ("Map3DFollowingYaw", () => SpecialConfig.Map3DFollowingYaw, (float value) => SpecialConfig.Map3DFollowingYaw = value),
+                    ("Map3DFOV", () => SpecialConfig.Map3DFOV, (float value) => SpecialConfig.Map3DFOV = value),
+                };
+
+            foreach ((string key, Func<float> getter, Action<float> setter) in doubleEntries)
+            {
+                _dictionary.Add(key,
+                    ((uint dummy) =>
+                    {
+                        return getter();
+                    },
+                    (float floatValue, uint dummy) =>
+                    {
+                        setter(floatValue);
+                        return true;
+                    }
+                ));
+            }
+
+            List<(string, Func<string>, Action<PositionAngle>)> posAngleEntries =
+                new List<(string, Func<string>, Action<PositionAngle>)>()
+                {
+                    ("Map3DCameraPosPA", () => SpecialConfig.Map3DCameraPosPA.ToString(), (PositionAngle value) => SpecialConfig.Map3DCameraPosPA = value),
+                    ("Map3DCameraAnglePA", () => SpecialConfig.Map3DCameraAnglePA.ToString(), (PositionAngle value) => SpecialConfig.Map3DCameraAnglePA = value),
+                    ("Map3DFocusPosPA", () => SpecialConfig.Map3DFocusPosPA.ToString(), (PositionAngle value) => SpecialConfig.Map3DFocusPosPA = value),
+                    ("Map3DFocusAnglePA", () => SpecialConfig.Map3DFocusAnglePA.ToString(), (PositionAngle value) => SpecialConfig.Map3DFocusAnglePA = value),
+                };
+
+            foreach ((string key, Func<string> getter, Action<PositionAngle> setter) in posAngleEntries)
+            {
+                _dictionary.Add(key,
+                    ((uint dummy) =>
+                    {
+                        return getter();
+                    },
+                    (PositionAngle posAngle, uint dummy) =>
+                    {
+                        setter(posAngle);
+                        return true;
+                    }
+                ));
             }
         }
 

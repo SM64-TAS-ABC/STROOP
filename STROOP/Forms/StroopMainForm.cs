@@ -503,7 +503,7 @@ namespace STROOP
             // Create managers
             Config.MapManager = new MapManager();
             Config.Map2Manager = new Map2Manager(map2Gui);
-            Config.Map3Manager = new Map3Manager(@"Config/WaterData.xml");
+            Config.Map3Manager = new Map3Manager(@"Config/Map3DVars.xml");
             Config.Map4Manager = new Map4Manager();
 
             Config.ModelManager = new ModelManager(tabPageModel);

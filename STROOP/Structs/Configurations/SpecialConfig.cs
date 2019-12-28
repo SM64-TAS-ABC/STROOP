@@ -184,5 +184,25 @@ namespace STROOP.Structs.Configurations
         // Mupen vars
 
         public static int MupenLagOffset = 0;
+
+        // Map3D
+
+        public static float Map3DCameraX = 0;
+        public static float Map3DCameraY = 0;
+        public static float Map3DCameraZ = 0;
+        public static float Map3DCameraYaw = 0;
+        public static float Map3DCameraPitch = 0;
+        public static float Map3DCameraRoll = 0;
+        public static float Map3DFocusX = 0;
+        public static float Map3DFocusY = 0;
+        public static float Map3DFocusZ = 0;
+        public static PositionAngle Map3DCameraPosPA = PositionAngle.None;
+        public static PositionAngle Map3DCameraAnglePA = PositionAngle.None;
+        public static PositionAngle Map3DFocusPosPA = PositionAngle.None;
+        public static PositionAngle Map3DFocusAnglePA = PositionAngle.None;
+        public static float Map3DFollowingRadius = 0;
+        public static float Map3DFollowingYOffset = 0;
+        public static float Map3DFollowingYaw = 0;
+        public static float Map3DFOV = 0;
     }
 }

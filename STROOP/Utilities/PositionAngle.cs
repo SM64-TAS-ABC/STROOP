@@ -54,6 +54,7 @@ namespace STROOP.Utilities
             Functions,
             Self,
             Point,
+            None,
         }
 
         public bool IsSelected
@@ -151,6 +152,7 @@ namespace STROOP.Utilities
         public static PositionAngle Scheduler = new PositionAngle(PositionAngleTypeEnum.Schedule);
         public static PositionAngle Self = new PositionAngle(PositionAngleTypeEnum.Self);
         public static PositionAngle Point = new PositionAngle(PositionAngleTypeEnum.Point);
+        public static PositionAngle None = new PositionAngle(PositionAngleTypeEnum.None);
 
         public static PositionAngle Obj(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.Obj, address: address);
@@ -413,6 +415,11 @@ namespace STROOP.Utilities
             return false;
         }
 
+        public bool IsNone()
+        {
+            return PosAngleType == PositionAngleTypeEnum.None;
+        }
+
 
 
 
@@ -493,6 +500,7 @@ namespace STROOP.Utilities
                         return SpecialConfig.SelfPA.X;
                     case PositionAngleTypeEnum.Point:
                         return SpecialConfig.PointPA.X;
+                    case PositionAngleTypeEnum.None:
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -574,6 +582,7 @@ namespace STROOP.Utilities
                         return SpecialConfig.SelfPA.Y;
                     case PositionAngleTypeEnum.Point:
                         return SpecialConfig.PointPA.Y;
+                    case PositionAngleTypeEnum.None:
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -655,6 +664,7 @@ namespace STROOP.Utilities
                         return SpecialConfig.SelfPA.Z;
                     case PositionAngleTypeEnum.Point:
                         return SpecialConfig.PointPA.Z;
+                    case PositionAngleTypeEnum.None:
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -734,6 +744,7 @@ namespace STROOP.Utilities
                         return SpecialConfig.SelfPA.Angle;
                     case PositionAngleTypeEnum.Point:
                         return SpecialConfig.PointPA.Angle;
+                    case PositionAngleTypeEnum.None:
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -992,6 +1003,7 @@ namespace STROOP.Utilities
                     return SpecialConfig.SelfPA.SetX(value);
                 case PositionAngleTypeEnum.Point:
                     return SpecialConfig.PointPA.SetX(value);
+                case PositionAngleTypeEnum.None:
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -1070,6 +1082,7 @@ namespace STROOP.Utilities
                     return SpecialConfig.SelfPA.SetY(value);
                 case PositionAngleTypeEnum.Point:
                     return SpecialConfig.PointPA.SetY(value);
+                case PositionAngleTypeEnum.None:
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -1148,6 +1161,7 @@ namespace STROOP.Utilities
                     return SpecialConfig.SelfPA.SetZ(value);
                 case PositionAngleTypeEnum.Point:
                     return SpecialConfig.PointPA.SetZ(value);
+                case PositionAngleTypeEnum.None:
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -1233,6 +1247,7 @@ namespace STROOP.Utilities
                     return SpecialConfig.SelfPA.SetAngle(value);
                 case PositionAngleTypeEnum.Point:
                     return SpecialConfig.PointPA.SetAngle(value);
+                case PositionAngleTypeEnum.None:
                 default:
                     throw new ArgumentOutOfRangeException();
             }

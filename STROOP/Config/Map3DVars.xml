@@ -12,10 +12,10 @@
   <Data base="None" specialType="Map3DFocusY">Focus Y</Data>
   <Data base="None" specialType="Map3DFocusZ">Focus Z</Data>
 
-  <Data base="None" specialType="Map3DCameraPosPA">Camera Pos PA</Data>
-  <Data base="None" specialType="Map3DCameraAnglePA">Camera Angle PA</Data>
-  <Data base="None" specialType="Map3DFocusPosPA">Focus Pos PA</Data>
-  <Data base="None" specialType="Map3DFocusAnglePA">Focus Angle PA</Data>
+  <Data base="None" specialType="Map3DCameraPosPA" subclass="String">Camera Pos PA</Data>
+  <Data base="None" specialType="Map3DCameraAnglePA" subclass="String">Camera Angle PA</Data>
+  <Data base="None" specialType="Map3DFocusPosPA" subclass="String">Focus Pos PA</Data>
+  <Data base="None" specialType="Map3DFocusAnglePA" subclass="String">Focus Angle PA</Data>
 
   <Data base="None" specialType="Map3DFollowingRadius">Following Radius</Data>
   <Data base="None" specialType="Map3DFollowingYOffset">Following Y Offset</Data>
