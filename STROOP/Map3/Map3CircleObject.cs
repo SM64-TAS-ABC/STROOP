@@ -17,7 +17,7 @@ namespace STROOP.Map3
     public abstract class Map3CircleObject : Map3Object
     {
         protected readonly static int NUM_POINTS_2D = 256;
-        protected readonly static int NUM_POINTS_3D = 16;
+        protected readonly static int NUM_POINTS_3D = 64;
 
         public Map3CircleObject()
             : base()
