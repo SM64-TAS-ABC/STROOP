@@ -127,8 +127,14 @@ namespace STROOP.Map3.Map
                     SpecialConfig.Map3DFocusZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
                     break;
                 case Map3DMode.CameraPosAndFocus:
+                    SpecialConfig.Map3DCameraYaw = (float)MoreMath.AngleTo_AngleUnits(
+                        SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraZ, SpecialConfig.Map3DFocusX, SpecialConfig.Map3DFocusZ);
+                    SpecialConfig.Map3DCameraPitch = (float)MoreMath.GetPitch(
+                        SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ,
+                        SpecialConfig.Map3DFocusX, SpecialConfig.Map3DFocusY, SpecialConfig.Map3DFocusZ);
                     break;
                 case Map3DMode.CameraPosAndAngle:
+                    // do nothing, as we use whatever vars are stored
                     break;
                 case Map3DMode.FollowFocusRelativeAngle:
                     break;

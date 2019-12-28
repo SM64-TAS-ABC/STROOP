@@ -418,6 +418,12 @@ namespace STROOP.Utilities
             return EulerToCylindrical_AngleUnits(x - pivotX, y - pivotY, z - pivotZ);
         }
 
+        public static double GetPitch(double startX, double startY, double startZ, double endX, double endY, double endZ)
+        {
+            (double radius, double theta, double phi) = EulerToSpherical_AngleUnits(endX - startX, endY - startY, endZ - startZ);
+            return phi;
+        }
+
         public static double RadiansToAngleUnits(double radians)
         {
             double angleUnits = radians / (2 * Math.PI) * 65536;
