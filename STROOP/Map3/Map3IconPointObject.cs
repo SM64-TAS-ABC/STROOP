@@ -53,26 +53,30 @@ namespace STROOP.Map3
                 * Matrix4.CreateTranslation(Config.Map4Graphics.Utilities.GetPositionOnViewFromCoordinate(pos));
         }
 
-        static readonly Map4Vertex[] _vertices = new Map4Vertex[]
+        private Map4Vertex[] GetVertices()
         {
-            new Map4Vertex(new Vector3(-1, -1, 0), new Vector2(0, 1)),
-            new Map4Vertex(new Vector3(1, -1, 0),  new Vector2(1, 1)),
-            new Map4Vertex(new Vector3(-1, 1, 0),  new Vector2(0, 0)),
-            new Map4Vertex(new Vector3(1, 1, 0),   new Vector2(1, 0)),
-            new Map4Vertex(new Vector3(-1, 1, 0),  new Vector2(0, 0)),
-            new Map4Vertex(new Vector3(1, -1, 0),  new Vector2(1, 1)),
-        };
+            return new Map4Vertex[]
+            {
+                new Map4Vertex(new Vector3(-1, -1, 0), Color4, new Vector2(0, 1)),
+                new Map4Vertex(new Vector3(1, -1, 0), Color4, new Vector2(1, 1)),
+                new Map4Vertex(new Vector3(-1, 1, 0), Color4, new Vector2(0, 0)),
+                new Map4Vertex(new Vector3(1, 1, 0), Color4, new Vector2(1, 0)),
+                new Map4Vertex(new Vector3(-1, 1, 0), Color4,  new Vector2(0, 0)),
+                new Map4Vertex(new Vector3(1, -1, 0), Color4, new Vector2(1, 1)),
+            };
+        }
 
         public override void DrawOn3DControl()
         {
+            Map4Vertex[] vertices = GetVertices();
             int vertexBuffer = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
-            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(_vertices.Length * Map4Vertex.Size),
-                _vertices, BufferUsageHint.StaticDraw);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Map4Vertex.Size),
+                vertices, BufferUsageHint.StaticDraw);
             GL.BindTexture(TextureTarget.Texture2D, TextureId);
             GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
             Config.Map4Graphics.BindVertices();
-            GL.DrawArrays(PrimitiveType.Triangles, 0, _vertices.Length);
+            GL.DrawArrays(PrimitiveType.Triangles, 0, vertices.Length);
             GL.DeleteBuffer(vertexBuffer);
         }
     }
