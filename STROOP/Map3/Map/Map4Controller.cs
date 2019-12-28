@@ -113,6 +113,32 @@ namespace STROOP.Map3.Map
 
         public void CameraGameUpdate()
         {
+            void updateCameraAngles()
+            {
+                SpecialConfig.Map3DCameraYaw = (float)MoreMath.AngleTo_AngleUnits(
+                    SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraZ, SpecialConfig.Map3DFocusX, SpecialConfig.Map3DFocusZ);
+                SpecialConfig.Map3DCameraPitch = (float)MoreMath.GetPitch(
+                    SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ,
+                    SpecialConfig.Map3DFocusX, SpecialConfig.Map3DFocusY, SpecialConfig.Map3DFocusZ);
+            }
+
+            if (!SpecialConfig.Map3DCameraPosPA.IsNone())
+            {
+                SpecialConfig.Map3DCameraX = (float)SpecialConfig.Map3DCameraPosPA.X;
+                SpecialConfig.Map3DCameraY = (float)SpecialConfig.Map3DCameraPosPA.Y;
+                SpecialConfig.Map3DCameraZ = (float)SpecialConfig.Map3DCameraPosPA.Z;
+            }
+            if (!SpecialConfig.Map3DCameraAnglePA.IsNone())
+            {
+                SpecialConfig.Map3DCameraYaw = (float)SpecialConfig.Map3DCameraAnglePA.Angle;
+            }
+            if (!SpecialConfig.Map3DFocusPosPA.IsNone())
+            {
+                SpecialConfig.Map3DFocusX = (float)SpecialConfig.Map3DFocusPosPA.X;
+                SpecialConfig.Map3DFocusY = (float)SpecialConfig.Map3DFocusPosPA.Y;
+                SpecialConfig.Map3DFocusZ = (float)SpecialConfig.Map3DFocusPosPA.Z;
+            }
+
             switch (SpecialConfig.Map3DMode)
             {
                 case Map3DMode.InGame:
@@ -127,30 +153,35 @@ namespace STROOP.Map3.Map
                     SpecialConfig.Map3DFocusZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
                     break;
                 case Map3DMode.CameraPosAndFocus:
-                    SpecialConfig.Map3DCameraYaw = (float)MoreMath.AngleTo_AngleUnits(
-                        SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraZ, SpecialConfig.Map3DFocusX, SpecialConfig.Map3DFocusZ);
-                    SpecialConfig.Map3DCameraPitch = (float)MoreMath.GetPitch(
-                        SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ,
-                        SpecialConfig.Map3DFocusX, SpecialConfig.Map3DFocusY, SpecialConfig.Map3DFocusZ);
+                    updateCameraAngles();
                     break;
                 case Map3DMode.CameraPosAndAngle:
                     // do nothing, as we use whatever vars are stored
                     break;
                 case Map3DMode.FollowFocusRelativeAngle:
+                    double angleOffset = SpecialConfig.Map3DFocusAnglePA.IsNone() ? 0 : SpecialConfig.Map3DFocusAnglePA.Angle;
+                    (SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraZ) =
+                        ((float, float))MoreMath.AddVectorToPoint(
+                            SpecialConfig.Map3DFollowingRadius,
+                            MoreMath.ReverseAngle(SpecialConfig.Map3DFollowingYaw + angleOffset),
+                            SpecialConfig.Map3DFocusX,
+                            SpecialConfig.Map3DFocusZ);
+                    SpecialConfig.Map3DCameraY = SpecialConfig.Map3DFocusY + SpecialConfig.Map3DFollowingYOffset;
+                    updateCameraAngles();
                     break;
                 case Map3DMode.FollowFocusAbsoluteAngle:
+                    (SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraZ) =
+                        ((float, float))MoreMath.AddVectorToPoint(
+                            SpecialConfig.Map3DFollowingRadius,
+                            MoreMath.ReverseAngle(SpecialConfig.Map3DFollowingYaw),
+                            SpecialConfig.Map3DFocusX,
+                            SpecialConfig.Map3DFocusZ);
+                    SpecialConfig.Map3DCameraY = SpecialConfig.Map3DFocusY + SpecialConfig.Map3DFollowingYOffset;
+                    updateCameraAngles();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
-
-
-
-
-
-
-
 
             _perspectiveCamera.Position = new Vector3(SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ);
             _perspectiveCamera.SetRotation(
