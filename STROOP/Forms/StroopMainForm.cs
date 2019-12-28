@@ -397,6 +397,8 @@ namespace STROOP
                 labelMap3DataQpuCoordinateValues = labelMap3DataQpuCoordinateValues,
                 labelMap3DataId = labelMap3DataId,
                 labelMap3DataYNorm = labelMap3DataYNorm,
+
+                watchVariablePanel3DVars = watchVariablePanel3DVars,
             };
 
             Map2Gui map2Gui = new Map2Gui()
@@ -501,7 +503,7 @@ namespace STROOP
             // Create managers
             Config.MapManager = new MapManager();
             Config.Map2Manager = new Map2Manager(map2Gui);
-            Config.Map3Manager = new Map3Manager();
+            Config.Map3Manager = new Map3Manager(@"Config/WaterData.xml");
             Config.Map4Manager = new Map4Manager();
 
             Config.ModelManager = new ModelManager(tabPageModel);

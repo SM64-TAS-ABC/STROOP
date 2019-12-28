@@ -14,16 +14,18 @@ using OpenTK.Graphics.OpenGL;
 using STROOP.Structs.Configurations;
 using STROOP.Controls.Map;
 using STROOP.Map3;
+using STROOP.Controls;
 
 namespace STROOP.Managers
 {
-    public class Map3Manager
+    public class Map3Manager : DataManager
     {
         private List<int> _currentObjIndexes = new List<int>();
 
         private bool _isLoaded = false;
 
-        public Map3Manager()
+        public Map3Manager(string varFilePath)
+            : base(varFilePath, Config.Map3Gui.watchVariablePanel3DVars)
         {
         }
 
@@ -360,6 +362,7 @@ namespace STROOP.Managers
 
             if (!updateView) return;
 
+            base.Update(updateView);
             UpdateBasedOnObjectsSelectedOnMap();
             UpdateControlsBasedOnSemaphores();
             UpdateDataTab();

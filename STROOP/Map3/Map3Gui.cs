@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using OpenTK.Graphics.OpenGL;
 using OpenTK;
 using STROOP.Controls.Map.Trackers;
+using STROOP.Controls;
 
 namespace STROOP.Map3
 {
@@ -120,5 +121,10 @@ namespace STROOP.Map3
         public Label labelMap3DataQpuCoordinateValues;
         public Label labelMap3DataId;
         public Label labelMap3DataYNorm;
+
+
+
+        // 3D Vars
+        public WatchVariableFlowLayoutPanel watchVariablePanel3DVars;
     }
 }
