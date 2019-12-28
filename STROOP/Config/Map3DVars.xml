@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VarData>
+  <Data base="None" specialType="Map3DCameraX">Camera X</Data>
+  <Data base="None" specialType="Map3DCameraY">Camera Y</Data>
+  <Data base="None" specialType="Map3DCameraZ">Camera Z</Data>
+  
+  <Data base="None" specialType="Map3DCameraYaw">Camera Yaw</Data>
+  <Data base="None" specialType="Map3DCameraPitch">Camera Pitch</Data>
+  <Data base="None" specialType="Map3DCameraRoll">Camera Roll</Data>
+  
+  <Data base="None" specialType="Map3DFocusX">Focus X</Data>
+  <Data base="None" specialType="Map3DFocusY">Focus Y</Data>
+  <Data base="None" specialType="Map3DFocusZ">Focus Z</Data>
+
+  <Data base="None" specialType="Map3DCameraPosPA">Camera Pos PA</Data>
+  <Data base="None" specialType="Map3DCameraAnglePA">Camera Angle PA</Data>
+  <Data base="None" specialType="Map3DFocusPosPA">Focus Pos PA</Data>
+  <Data base="None" specialType="Map3DFocusAnglePA">Focus Angle PA</Data>
+
+  <Data base="None" specialType="Map3DFollowingRadius">Following Radius</Data>
+  <Data base="None" specialType="Map3DFollowingYOffset">Following Y Offset</Data>
+  <Data base="None" specialType="Map3DFollowingYaw">Following Yaw</Data>
+
+  <Data base="None" specialType="Map3DFOV">FOV</Data>
+</VarData>
