@@ -52,12 +52,12 @@ namespace STROOP.Map3
 
             return new Map4Vertex[]
             {
-                new Map4Vertex(new Vector3(leftBound, lowerBound, 0), new Vector2(0, 1)),
-                new Map4Vertex(new Vector3(rightBound, lowerBound, 0),  new Vector2(1, 1)),
-                new Map4Vertex(new Vector3(leftBound, upperBound, 0),  new Vector2(0, 0)),
-                new Map4Vertex(new Vector3(rightBound, upperBound, 0),   new Vector2(1, 0)),
-                new Map4Vertex(new Vector3(leftBound, upperBound, 0),  new Vector2(0, 0)),
-                new Map4Vertex(new Vector3(rightBound, lowerBound, 0),  new Vector2(1, 1)),
+                new Map4Vertex(new Vector3(leftBound, lowerBound, 0), Color4, new Vector2(0, 1)),
+                new Map4Vertex(new Vector3(rightBound, lowerBound, 0), Color4, new Vector2(1, 1)),
+                new Map4Vertex(new Vector3(leftBound, upperBound, 0), Color4, new Vector2(0, 0)),
+                new Map4Vertex(new Vector3(rightBound, upperBound, 0), Color4, new Vector2(1, 0)),
+                new Map4Vertex(new Vector3(leftBound, upperBound, 0), Color4, new Vector2(0, 0)),
+                new Map4Vertex(new Vector3(rightBound, lowerBound, 0), Color4, new Vector2(1, 1)),
             };
         }
 
