@@ -1501,6 +1501,13 @@ namespace STROOP.Utilities
         {
             HandleScaling(ref thetaOffset, ref phiOffset);
 
+            if (SpecialConfig.Map3DMode == Map3DMode.CameraPosAndAngle)
+            {
+                SpecialConfig.Map3DCameraYaw += thetaOffset;
+                SpecialConfig.Map3DCameraPitch += phiOffset;
+                return true;
+            }
+
             (double newX, double newY, double newZ) =
                 MoreMath.OffsetSphericallyAboutPivot(
                     SpecialConfig.Map3DFocusX, SpecialConfig.Map3DFocusY, SpecialConfig.Map3DFocusZ,
