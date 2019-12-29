@@ -465,5 +465,13 @@ namespace STROOP.Controls
             List<string> varNames = _watchVarControls.ConvertAll(control => control.VarName);
             return String.Join(",", varNames);
         }
+
+        public void ColorVarsUsingFunction(Func<WatchVariableControl, Color> getColor)
+        {
+            foreach (WatchVariableControl control in _watchVarControls)
+            {
+                control.BaseColor = getColor(control);
+            }
+        }
     }
 }

@@ -366,6 +366,7 @@ namespace STROOP.Managers
             UpdateBasedOnObjectsSelectedOnMap();
             UpdateControlsBasedOnSemaphores();
             UpdateDataTab();
+            UpdateVarColors();
             Config.Map3Gui.GLControl2D.Invalidate();
         }
 
@@ -474,6 +475,41 @@ namespace STROOP.Managers
             _currentObjIndexes.AddRange(indexes);
             Map3Tracker tracker = new Map3Tracker(mapObjs, semaphores);
             Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+        }
+
+        private static readonly List<string> inGameColoredVars = new List<string>() { };
+        private static readonly List<string> cameraPosAndFocusColoredVars = new List<string>()
+        {
+            "Camera X", "Camera Y", "Camera Z", "Focus X", "Focus Y", "Focus Z",
+        };
+        private static readonly List<string> cameraPosAndAngleColoredVars = new List<string>()
+        {
+            "Camera X", "Camera Y", "Camera Z", "Camera Yaw", "Camera Pitch", "Camera Roll",
+        };
+        private static readonly List<string> followFocusRelativeAngleColoredVars = new List<string>()
+        {
+            "Focus Pos PA", "Focus Angle PA", "Following Radius", "Following Y Offset", "Following Yaw",
+        };
+        private static readonly List<string> followFocusAbsoluteAngleColoredVars = new List<string>()
+        {
+            "Focus Pos PA", "Following Radius", "Following Y Offset", "Following Yaw",
+        };
+        private static readonly Dictionary<Map3DMode, List<string>> coloredVarsMap =
+            new Dictionary<Map3DMode, List<string>>()
+            {
+                [Map3DMode.InGame] = inGameColoredVars,
+                [Map3DMode.CameraPosAndFocus] = cameraPosAndFocusColoredVars,
+                [Map3DMode.CameraPosAndAngle] = cameraPosAndAngleColoredVars,
+                [Map3DMode.FollowFocusRelativeAngle] = followFocusRelativeAngleColoredVars,
+                [Map3DMode.FollowFocusAbsoluteAngle] = followFocusAbsoluteAngleColoredVars,
+            };
+
+        private void UpdateVarColors()
+        {
+            List<string> coloredVarNames = coloredVarsMap[SpecialConfig.Map3DMode];
+            _variablePanel.ColorVarsUsingFunction(
+                control => coloredVarNames.Contains(control.VarName) ?
+                ColorUtilities.GetColorFromString("Red") : SystemColors.Control);
         }
     }
 }
