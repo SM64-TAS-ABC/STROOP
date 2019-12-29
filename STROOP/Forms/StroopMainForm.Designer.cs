@@ -1675,20 +1675,20 @@ namespace STROOP
             this.button40 = new System.Windows.Forms.Button();
             this.button41 = new System.Windows.Forms.Button();
             this.button42 = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.betterTextbox10 = new STROOP.BetterTextbox();
-            this.button43 = new System.Windows.Forms.Button();
-            this.button44 = new System.Windows.Forms.Button();
-            this.button45 = new System.Windows.Forms.Button();
-            this.betterTextbox11 = new STROOP.BetterTextbox();
-            this.button46 = new System.Windows.Forms.Button();
-            this.button47 = new System.Windows.Forms.Button();
-            this.button48 = new System.Windows.Forms.Button();
-            this.button49 = new System.Windows.Forms.Button();
-            this.button50 = new System.Windows.Forms.Button();
-            this.button51 = new System.Windows.Forms.Button();
-            this.button52 = new System.Windows.Forms.Button();
+            this.groupBoxMapCameraPosition = new System.Windows.Forms.GroupBox();
+            this.checkBoxMapCameraPositionRelative = new System.Windows.Forms.CheckBox();
+            this.textBoxMapCameraPositionY = new STROOP.BetterTextbox();
+            this.buttonMapCameraPositionYp = new System.Windows.Forms.Button();
+            this.buttonMapCameraPositionYn = new System.Windows.Forms.Button();
+            this.buttonMapCameraPositionXpZp = new System.Windows.Forms.Button();
+            this.textBoxMapCameraPositionXZ = new STROOP.BetterTextbox();
+            this.buttonMapCameraPositionXp = new System.Windows.Forms.Button();
+            this.buttonMapCameraPositionXpZn = new System.Windows.Forms.Button();
+            this.buttonMapCameraPositionZn = new System.Windows.Forms.Button();
+            this.buttonMapCameraPositionZp = new System.Windows.Forms.Button();
+            this.buttonMapCameraPositionXnZp = new System.Windows.Forms.Button();
+            this.buttonMapCameraPositionXn = new System.Windows.Forms.Button();
+            this.buttonMapCameraPositionXnZn = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -2174,7 +2174,7 @@ namespace STROOP
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.groupBoxMapCameraPosition.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -21102,7 +21102,7 @@ namespace STROOP
             this.tabPageMap33DControllers.Controls.Add(this.groupBox2);
             this.tabPageMap33DControllers.Controls.Add(this.groupBox3);
             this.tabPageMap33DControllers.Controls.Add(this.groupBox4);
-            this.tabPageMap33DControllers.Controls.Add(this.groupBox5);
+            this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapCameraPosition);
             this.tabPageMap33DControllers.Location = new System.Drawing.Point(4, 22);
             this.tabPageMap33DControllers.Name = "tabPageMap33DControllers";
             this.tabPageMap33DControllers.Padding = new System.Windows.Forms.Padding(3);
@@ -21700,158 +21700,158 @@ namespace STROOP
             this.button42.Text = "θ-ϕ-";
             this.button42.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
+            // groupBoxMapCameraPosition
             // 
-            this.groupBox5.Controls.Add(this.checkBox3);
-            this.groupBox5.Controls.Add(this.betterTextbox10);
-            this.groupBox5.Controls.Add(this.button43);
-            this.groupBox5.Controls.Add(this.button44);
-            this.groupBox5.Controls.Add(this.button45);
-            this.groupBox5.Controls.Add(this.betterTextbox11);
-            this.groupBox5.Controls.Add(this.button46);
-            this.groupBox5.Controls.Add(this.button47);
-            this.groupBox5.Controls.Add(this.button48);
-            this.groupBox5.Controls.Add(this.button49);
-            this.groupBox5.Controls.Add(this.button50);
-            this.groupBox5.Controls.Add(this.button51);
-            this.groupBox5.Controls.Add(this.button52);
-            this.groupBox5.Location = new System.Drawing.Point(5, 6);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(185, 146);
-            this.groupBox5.TabIndex = 37;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Camera Position";
+            this.groupBoxMapCameraPosition.Controls.Add(this.checkBoxMapCameraPositionRelative);
+            this.groupBoxMapCameraPosition.Controls.Add(this.textBoxMapCameraPositionY);
+            this.groupBoxMapCameraPosition.Controls.Add(this.buttonMapCameraPositionYp);
+            this.groupBoxMapCameraPosition.Controls.Add(this.buttonMapCameraPositionYn);
+            this.groupBoxMapCameraPosition.Controls.Add(this.buttonMapCameraPositionXpZp);
+            this.groupBoxMapCameraPosition.Controls.Add(this.textBoxMapCameraPositionXZ);
+            this.groupBoxMapCameraPosition.Controls.Add(this.buttonMapCameraPositionXp);
+            this.groupBoxMapCameraPosition.Controls.Add(this.buttonMapCameraPositionXpZn);
+            this.groupBoxMapCameraPosition.Controls.Add(this.buttonMapCameraPositionZn);
+            this.groupBoxMapCameraPosition.Controls.Add(this.buttonMapCameraPositionZp);
+            this.groupBoxMapCameraPosition.Controls.Add(this.buttonMapCameraPositionXnZp);
+            this.groupBoxMapCameraPosition.Controls.Add(this.buttonMapCameraPositionXn);
+            this.groupBoxMapCameraPosition.Controls.Add(this.buttonMapCameraPositionXnZn);
+            this.groupBoxMapCameraPosition.Location = new System.Drawing.Point(5, 6);
+            this.groupBoxMapCameraPosition.Name = "groupBoxMapCameraPosition";
+            this.groupBoxMapCameraPosition.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxMapCameraPosition.TabIndex = 37;
+            this.groupBoxMapCameraPosition.TabStop = false;
+            this.groupBoxMapCameraPosition.Text = "Camera Position";
             // 
-            // checkBox3
+            // checkBoxMapCameraPositionRelative
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(120, 0);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(65, 17);
-            this.checkBox3.TabIndex = 37;
-            this.checkBox3.Text = "Relative";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBoxMapCameraPositionRelative.AutoSize = true;
+            this.checkBoxMapCameraPositionRelative.Location = new System.Drawing.Point(120, 0);
+            this.checkBoxMapCameraPositionRelative.Name = "checkBoxMapCameraPositionRelative";
+            this.checkBoxMapCameraPositionRelative.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxMapCameraPositionRelative.TabIndex = 37;
+            this.checkBoxMapCameraPositionRelative.Text = "Relative";
+            this.checkBoxMapCameraPositionRelative.UseVisualStyleBackColor = true;
             // 
-            // betterTextbox10
+            // textBoxMapCameraPositionY
             // 
-            this.betterTextbox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox10.Location = new System.Drawing.Point(140, 70);
-            this.betterTextbox10.Name = "betterTextbox10";
-            this.betterTextbox10.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox10.TabIndex = 33;
-            this.betterTextbox10.Text = "100";
-            this.betterTextbox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapCameraPositionY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMapCameraPositionY.Location = new System.Drawing.Point(140, 70);
+            this.textBoxMapCameraPositionY.Name = "textBoxMapCameraPositionY";
+            this.textBoxMapCameraPositionY.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMapCameraPositionY.TabIndex = 33;
+            this.textBoxMapCameraPositionY.Text = "100";
+            this.textBoxMapCameraPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button43
+            // buttonMapCameraPositionYp
             // 
-            this.button43.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button43.Location = new System.Drawing.Point(140, 16);
-            this.button43.Margin = new System.Windows.Forms.Padding(0);
-            this.button43.Name = "button43";
-            this.button43.Size = new System.Drawing.Size(42, 42);
-            this.button43.TabIndex = 35;
-            this.button43.Text = "Y+";
-            this.button43.UseVisualStyleBackColor = true;
+            this.buttonMapCameraPositionYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapCameraPositionYp.Location = new System.Drawing.Point(140, 16);
+            this.buttonMapCameraPositionYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraPositionYp.Name = "buttonMapCameraPositionYp";
+            this.buttonMapCameraPositionYp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraPositionYp.TabIndex = 35;
+            this.buttonMapCameraPositionYp.Text = "Y+";
+            this.buttonMapCameraPositionYp.UseVisualStyleBackColor = true;
             // 
-            // button44
+            // buttonMapCameraPositionYn
             // 
-            this.button44.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button44.Location = new System.Drawing.Point(140, 100);
-            this.button44.Margin = new System.Windows.Forms.Padding(0);
-            this.button44.Name = "button44";
-            this.button44.Size = new System.Drawing.Size(42, 42);
-            this.button44.TabIndex = 34;
-            this.button44.Text = "Y-";
-            this.button44.UseVisualStyleBackColor = true;
+            this.buttonMapCameraPositionYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapCameraPositionYn.Location = new System.Drawing.Point(140, 100);
+            this.buttonMapCameraPositionYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraPositionYn.Name = "buttonMapCameraPositionYn";
+            this.buttonMapCameraPositionYn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraPositionYn.TabIndex = 34;
+            this.buttonMapCameraPositionYn.Text = "Y-";
+            this.buttonMapCameraPositionYn.UseVisualStyleBackColor = true;
             // 
-            // button45
+            // buttonMapCameraPositionXpZp
             // 
-            this.button45.Location = new System.Drawing.Point(87, 100);
-            this.button45.Margin = new System.Windows.Forms.Padding(0);
-            this.button45.Name = "button45";
-            this.button45.Size = new System.Drawing.Size(42, 42);
-            this.button45.TabIndex = 32;
-            this.button45.Text = "X+Z+";
-            this.button45.UseVisualStyleBackColor = true;
+            this.buttonMapCameraPositionXpZp.Location = new System.Drawing.Point(87, 100);
+            this.buttonMapCameraPositionXpZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraPositionXpZp.Name = "buttonMapCameraPositionXpZp";
+            this.buttonMapCameraPositionXpZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraPositionXpZp.TabIndex = 32;
+            this.buttonMapCameraPositionXpZp.Text = "X+Z+";
+            this.buttonMapCameraPositionXpZp.UseVisualStyleBackColor = true;
             // 
-            // betterTextbox11
+            // textBoxMapCameraPositionXZ
             // 
-            this.betterTextbox11.Location = new System.Drawing.Point(45, 70);
-            this.betterTextbox11.Name = "betterTextbox11";
-            this.betterTextbox11.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox11.TabIndex = 27;
-            this.betterTextbox11.Text = "100";
-            this.betterTextbox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapCameraPositionXZ.Location = new System.Drawing.Point(45, 70);
+            this.textBoxMapCameraPositionXZ.Name = "textBoxMapCameraPositionXZ";
+            this.textBoxMapCameraPositionXZ.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMapCameraPositionXZ.TabIndex = 27;
+            this.textBoxMapCameraPositionXZ.Text = "100";
+            this.textBoxMapCameraPositionXZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button46
+            // buttonMapCameraPositionXp
             // 
-            this.button46.Location = new System.Drawing.Point(87, 58);
-            this.button46.Margin = new System.Windows.Forms.Padding(0);
-            this.button46.Name = "button46";
-            this.button46.Size = new System.Drawing.Size(42, 42);
-            this.button46.TabIndex = 31;
-            this.button46.Text = "X+";
-            this.button46.UseVisualStyleBackColor = true;
+            this.buttonMapCameraPositionXp.Location = new System.Drawing.Point(87, 58);
+            this.buttonMapCameraPositionXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraPositionXp.Name = "buttonMapCameraPositionXp";
+            this.buttonMapCameraPositionXp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraPositionXp.TabIndex = 31;
+            this.buttonMapCameraPositionXp.Text = "X+";
+            this.buttonMapCameraPositionXp.UseVisualStyleBackColor = true;
             // 
-            // button47
+            // buttonMapCameraPositionXpZn
             // 
-            this.button47.Location = new System.Drawing.Point(87, 16);
-            this.button47.Margin = new System.Windows.Forms.Padding(0);
-            this.button47.Name = "button47";
-            this.button47.Size = new System.Drawing.Size(42, 42);
-            this.button47.TabIndex = 30;
-            this.button47.Text = "X+Z-";
-            this.button47.UseVisualStyleBackColor = true;
+            this.buttonMapCameraPositionXpZn.Location = new System.Drawing.Point(87, 16);
+            this.buttonMapCameraPositionXpZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraPositionXpZn.Name = "buttonMapCameraPositionXpZn";
+            this.buttonMapCameraPositionXpZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraPositionXpZn.TabIndex = 30;
+            this.buttonMapCameraPositionXpZn.Text = "X+Z-";
+            this.buttonMapCameraPositionXpZn.UseVisualStyleBackColor = true;
             // 
-            // button48
+            // buttonMapCameraPositionZn
             // 
-            this.button48.Location = new System.Drawing.Point(45, 16);
-            this.button48.Margin = new System.Windows.Forms.Padding(0);
-            this.button48.Name = "button48";
-            this.button48.Size = new System.Drawing.Size(42, 42);
-            this.button48.TabIndex = 29;
-            this.button48.Text = "Z-";
-            this.button48.UseVisualStyleBackColor = true;
+            this.buttonMapCameraPositionZn.Location = new System.Drawing.Point(45, 16);
+            this.buttonMapCameraPositionZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraPositionZn.Name = "buttonMapCameraPositionZn";
+            this.buttonMapCameraPositionZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraPositionZn.TabIndex = 29;
+            this.buttonMapCameraPositionZn.Text = "Z-";
+            this.buttonMapCameraPositionZn.UseVisualStyleBackColor = true;
             // 
-            // button49
+            // buttonMapCameraPositionZp
             // 
-            this.button49.Location = new System.Drawing.Point(45, 100);
-            this.button49.Margin = new System.Windows.Forms.Padding(0);
-            this.button49.Name = "button49";
-            this.button49.Size = new System.Drawing.Size(42, 42);
-            this.button49.TabIndex = 28;
-            this.button49.Text = "Z+";
-            this.button49.UseVisualStyleBackColor = true;
+            this.buttonMapCameraPositionZp.Location = new System.Drawing.Point(45, 100);
+            this.buttonMapCameraPositionZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraPositionZp.Name = "buttonMapCameraPositionZp";
+            this.buttonMapCameraPositionZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraPositionZp.TabIndex = 28;
+            this.buttonMapCameraPositionZp.Text = "Z+";
+            this.buttonMapCameraPositionZp.UseVisualStyleBackColor = true;
             // 
-            // button50
+            // buttonMapCameraPositionXnZp
             // 
-            this.button50.Location = new System.Drawing.Point(3, 100);
-            this.button50.Margin = new System.Windows.Forms.Padding(0);
-            this.button50.Name = "button50";
-            this.button50.Size = new System.Drawing.Size(42, 42);
-            this.button50.TabIndex = 27;
-            this.button50.Text = "X-Z+";
-            this.button50.UseVisualStyleBackColor = true;
+            this.buttonMapCameraPositionXnZp.Location = new System.Drawing.Point(3, 100);
+            this.buttonMapCameraPositionXnZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraPositionXnZp.Name = "buttonMapCameraPositionXnZp";
+            this.buttonMapCameraPositionXnZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraPositionXnZp.TabIndex = 27;
+            this.buttonMapCameraPositionXnZp.Text = "X-Z+";
+            this.buttonMapCameraPositionXnZp.UseVisualStyleBackColor = true;
             // 
-            // button51
+            // buttonMapCameraPositionXn
             // 
-            this.button51.Location = new System.Drawing.Point(3, 58);
-            this.button51.Margin = new System.Windows.Forms.Padding(0);
-            this.button51.Name = "button51";
-            this.button51.Size = new System.Drawing.Size(42, 42);
-            this.button51.TabIndex = 26;
-            this.button51.Text = "X-";
-            this.button51.UseVisualStyleBackColor = true;
+            this.buttonMapCameraPositionXn.Location = new System.Drawing.Point(3, 58);
+            this.buttonMapCameraPositionXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraPositionXn.Name = "buttonMapCameraPositionXn";
+            this.buttonMapCameraPositionXn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraPositionXn.TabIndex = 26;
+            this.buttonMapCameraPositionXn.Text = "X-";
+            this.buttonMapCameraPositionXn.UseVisualStyleBackColor = true;
             // 
-            // button52
+            // buttonMapCameraPositionXnZn
             // 
-            this.button52.Location = new System.Drawing.Point(3, 16);
-            this.button52.Margin = new System.Windows.Forms.Padding(0);
-            this.button52.Name = "button52";
-            this.button52.Size = new System.Drawing.Size(42, 42);
-            this.button52.TabIndex = 25;
-            this.button52.Text = "X-Z-";
-            this.button52.UseVisualStyleBackColor = true;
+            this.buttonMapCameraPositionXnZn.Location = new System.Drawing.Point(3, 16);
+            this.buttonMapCameraPositionXnZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraPositionXnZn.Name = "buttonMapCameraPositionXnZn";
+            this.buttonMapCameraPositionXnZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraPositionXnZn.TabIndex = 25;
+            this.buttonMapCameraPositionXnZn.Text = "X-Z-";
+            this.buttonMapCameraPositionXnZn.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -22476,8 +22476,8 @@ namespace STROOP
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.groupBoxMapCameraPosition.ResumeLayout(false);
+            this.groupBoxMapCameraPosition.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -24112,20 +24112,20 @@ namespace STROOP
         private Button button40;
         private Button button41;
         private Button button42;
-        private GroupBox groupBox5;
-        private CheckBox checkBox3;
-        private BetterTextbox betterTextbox10;
-        private Button button43;
-        private Button button44;
-        private Button button45;
-        private BetterTextbox betterTextbox11;
-        private Button button46;
-        private Button button47;
-        private Button button48;
-        private Button button49;
-        private Button button50;
-        private Button button51;
-        private Button button52;
+        private GroupBox groupBoxMapCameraPosition;
+        private CheckBox checkBoxMapCameraPositionRelative;
+        private BetterTextbox textBoxMapCameraPositionY;
+        private Button buttonMapCameraPositionYp;
+        private Button buttonMapCameraPositionYn;
+        private Button buttonMapCameraPositionXpZp;
+        private BetterTextbox textBoxMapCameraPositionXZ;
+        private Button buttonMapCameraPositionXp;
+        private Button buttonMapCameraPositionXpZn;
+        private Button buttonMapCameraPositionZn;
+        private Button buttonMapCameraPositionZp;
+        private Button buttonMapCameraPositionXnZp;
+        private Button buttonMapCameraPositionXn;
+        private Button buttonMapCameraPositionXnZn;
     }
 }
 
