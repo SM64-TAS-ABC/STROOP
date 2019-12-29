@@ -1648,20 +1648,20 @@ namespace STROOP
             this.button20 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.betterTextbox6 = new STROOP.BetterTextbox();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.betterTextbox7 = new STROOP.BetterTextbox();
-            this.button26 = new System.Windows.Forms.Button();
-            this.button27 = new System.Windows.Forms.Button();
-            this.button28 = new System.Windows.Forms.Button();
-            this.button29 = new System.Windows.Forms.Button();
-            this.button30 = new System.Windows.Forms.Button();
-            this.button31 = new System.Windows.Forms.Button();
-            this.button32 = new System.Windows.Forms.Button();
+            this.groupBoxMapFocusPosition = new System.Windows.Forms.GroupBox();
+            this.checkBoxMapFocusPositionRelative = new System.Windows.Forms.CheckBox();
+            this.textBoxMapFocusPositionY = new STROOP.BetterTextbox();
+            this.buttonMapFocusPositionYp = new System.Windows.Forms.Button();
+            this.buttonMapFocusPositionYn = new System.Windows.Forms.Button();
+            this.buttonMapFocusPositionXpZp = new System.Windows.Forms.Button();
+            this.textBoxMapFocusPositionXZ = new STROOP.BetterTextbox();
+            this.buttonMapFocusPositionXp = new System.Windows.Forms.Button();
+            this.buttonMapFocusPositionXpZn = new System.Windows.Forms.Button();
+            this.buttonMapFocusPositionZn = new System.Windows.Forms.Button();
+            this.buttonMapFocusPositionZp = new System.Windows.Forms.Button();
+            this.buttonMapFocusPositionXnZp = new System.Windows.Forms.Button();
+            this.buttonMapFocusPositionXn = new System.Windows.Forms.Button();
+            this.buttonMapFocusPositionXnZn = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.betterTextbox8 = new STROOP.BetterTextbox();
             this.button33 = new System.Windows.Forms.Button();
@@ -2172,7 +2172,7 @@ namespace STROOP
             this.tabPageMap33DControllers.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBoxMapFocusPosition.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBoxMapCameraPosition.SuspendLayout();
             this.SuspendLayout();
@@ -21100,7 +21100,7 @@ namespace STROOP
             this.tabPageMap33DControllers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPageMap33DControllers.Controls.Add(this.groupBox1);
             this.tabPageMap33DControllers.Controls.Add(this.groupBox2);
-            this.tabPageMap33DControllers.Controls.Add(this.groupBox3);
+            this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapFocusPosition);
             this.tabPageMap33DControllers.Controls.Add(this.groupBox4);
             this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapCameraPosition);
             this.tabPageMap33DControllers.Location = new System.Drawing.Point(4, 22);
@@ -21405,158 +21405,158 @@ namespace STROOP
             this.button22.Text = "θ+ϕ+";
             this.button22.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // groupBoxMapFocusPosition
             // 
-            this.groupBox3.Controls.Add(this.checkBox2);
-            this.groupBox3.Controls.Add(this.betterTextbox6);
-            this.groupBox3.Controls.Add(this.button23);
-            this.groupBox3.Controls.Add(this.button24);
-            this.groupBox3.Controls.Add(this.button25);
-            this.groupBox3.Controls.Add(this.betterTextbox7);
-            this.groupBox3.Controls.Add(this.button26);
-            this.groupBox3.Controls.Add(this.button27);
-            this.groupBox3.Controls.Add(this.button28);
-            this.groupBox3.Controls.Add(this.button29);
-            this.groupBox3.Controls.Add(this.button30);
-            this.groupBox3.Controls.Add(this.button31);
-            this.groupBox3.Controls.Add(this.button32);
-            this.groupBox3.Location = new System.Drawing.Point(199, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(185, 146);
-            this.groupBox3.TabIndex = 39;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Focus Position";
+            this.groupBoxMapFocusPosition.Controls.Add(this.checkBoxMapFocusPositionRelative);
+            this.groupBoxMapFocusPosition.Controls.Add(this.textBoxMapFocusPositionY);
+            this.groupBoxMapFocusPosition.Controls.Add(this.buttonMapFocusPositionYp);
+            this.groupBoxMapFocusPosition.Controls.Add(this.buttonMapFocusPositionYn);
+            this.groupBoxMapFocusPosition.Controls.Add(this.buttonMapFocusPositionXpZp);
+            this.groupBoxMapFocusPosition.Controls.Add(this.textBoxMapFocusPositionXZ);
+            this.groupBoxMapFocusPosition.Controls.Add(this.buttonMapFocusPositionXp);
+            this.groupBoxMapFocusPosition.Controls.Add(this.buttonMapFocusPositionXpZn);
+            this.groupBoxMapFocusPosition.Controls.Add(this.buttonMapFocusPositionZn);
+            this.groupBoxMapFocusPosition.Controls.Add(this.buttonMapFocusPositionZp);
+            this.groupBoxMapFocusPosition.Controls.Add(this.buttonMapFocusPositionXnZp);
+            this.groupBoxMapFocusPosition.Controls.Add(this.buttonMapFocusPositionXn);
+            this.groupBoxMapFocusPosition.Controls.Add(this.buttonMapFocusPositionXnZn);
+            this.groupBoxMapFocusPosition.Location = new System.Drawing.Point(199, 6);
+            this.groupBoxMapFocusPosition.Name = "groupBoxMapFocusPosition";
+            this.groupBoxMapFocusPosition.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxMapFocusPosition.TabIndex = 39;
+            this.groupBoxMapFocusPosition.TabStop = false;
+            this.groupBoxMapFocusPosition.Text = "Focus Position";
             // 
-            // checkBox2
+            // checkBoxMapFocusPositionRelative
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(120, 0);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(65, 17);
-            this.checkBox2.TabIndex = 37;
-            this.checkBox2.Text = "Relative";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxMapFocusPositionRelative.AutoSize = true;
+            this.checkBoxMapFocusPositionRelative.Location = new System.Drawing.Point(120, 0);
+            this.checkBoxMapFocusPositionRelative.Name = "checkBoxMapFocusPositionRelative";
+            this.checkBoxMapFocusPositionRelative.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxMapFocusPositionRelative.TabIndex = 37;
+            this.checkBoxMapFocusPositionRelative.Text = "Relative";
+            this.checkBoxMapFocusPositionRelative.UseVisualStyleBackColor = true;
             // 
-            // betterTextbox6
+            // textBoxMapFocusPositionY
             // 
-            this.betterTextbox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox6.Location = new System.Drawing.Point(140, 70);
-            this.betterTextbox6.Name = "betterTextbox6";
-            this.betterTextbox6.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox6.TabIndex = 33;
-            this.betterTextbox6.Text = "100";
-            this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapFocusPositionY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMapFocusPositionY.Location = new System.Drawing.Point(140, 70);
+            this.textBoxMapFocusPositionY.Name = "textBoxMapFocusPositionY";
+            this.textBoxMapFocusPositionY.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMapFocusPositionY.TabIndex = 33;
+            this.textBoxMapFocusPositionY.Text = "100";
+            this.textBoxMapFocusPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button23
+            // buttonMapFocusPositionYp
             // 
-            this.button23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button23.Location = new System.Drawing.Point(140, 16);
-            this.button23.Margin = new System.Windows.Forms.Padding(0);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(42, 42);
-            this.button23.TabIndex = 35;
-            this.button23.Text = "Y+";
-            this.button23.UseVisualStyleBackColor = true;
+            this.buttonMapFocusPositionYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapFocusPositionYp.Location = new System.Drawing.Point(140, 16);
+            this.buttonMapFocusPositionYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusPositionYp.Name = "buttonMapFocusPositionYp";
+            this.buttonMapFocusPositionYp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusPositionYp.TabIndex = 35;
+            this.buttonMapFocusPositionYp.Text = "Y+";
+            this.buttonMapFocusPositionYp.UseVisualStyleBackColor = true;
             // 
-            // button24
+            // buttonMapFocusPositionYn
             // 
-            this.button24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button24.Location = new System.Drawing.Point(140, 100);
-            this.button24.Margin = new System.Windows.Forms.Padding(0);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(42, 42);
-            this.button24.TabIndex = 34;
-            this.button24.Text = "Y-";
-            this.button24.UseVisualStyleBackColor = true;
+            this.buttonMapFocusPositionYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapFocusPositionYn.Location = new System.Drawing.Point(140, 100);
+            this.buttonMapFocusPositionYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusPositionYn.Name = "buttonMapFocusPositionYn";
+            this.buttonMapFocusPositionYn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusPositionYn.TabIndex = 34;
+            this.buttonMapFocusPositionYn.Text = "Y-";
+            this.buttonMapFocusPositionYn.UseVisualStyleBackColor = true;
             // 
-            // button25
+            // buttonMapFocusPositionXpZp
             // 
-            this.button25.Location = new System.Drawing.Point(87, 100);
-            this.button25.Margin = new System.Windows.Forms.Padding(0);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(42, 42);
-            this.button25.TabIndex = 32;
-            this.button25.Text = "X+Z+";
-            this.button25.UseVisualStyleBackColor = true;
+            this.buttonMapFocusPositionXpZp.Location = new System.Drawing.Point(87, 100);
+            this.buttonMapFocusPositionXpZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusPositionXpZp.Name = "buttonMapFocusPositionXpZp";
+            this.buttonMapFocusPositionXpZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusPositionXpZp.TabIndex = 32;
+            this.buttonMapFocusPositionXpZp.Text = "X+Z+";
+            this.buttonMapFocusPositionXpZp.UseVisualStyleBackColor = true;
             // 
-            // betterTextbox7
+            // textBoxMapFocusPositionXZ
             // 
-            this.betterTextbox7.Location = new System.Drawing.Point(45, 70);
-            this.betterTextbox7.Name = "betterTextbox7";
-            this.betterTextbox7.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox7.TabIndex = 27;
-            this.betterTextbox7.Text = "100";
-            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapFocusPositionXZ.Location = new System.Drawing.Point(45, 70);
+            this.textBoxMapFocusPositionXZ.Name = "textBoxMapFocusPositionXZ";
+            this.textBoxMapFocusPositionXZ.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMapFocusPositionXZ.TabIndex = 27;
+            this.textBoxMapFocusPositionXZ.Text = "100";
+            this.textBoxMapFocusPositionXZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button26
+            // buttonMapFocusPositionXp
             // 
-            this.button26.Location = new System.Drawing.Point(87, 58);
-            this.button26.Margin = new System.Windows.Forms.Padding(0);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(42, 42);
-            this.button26.TabIndex = 31;
-            this.button26.Text = "X+";
-            this.button26.UseVisualStyleBackColor = true;
+            this.buttonMapFocusPositionXp.Location = new System.Drawing.Point(87, 58);
+            this.buttonMapFocusPositionXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusPositionXp.Name = "buttonMapFocusPositionXp";
+            this.buttonMapFocusPositionXp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusPositionXp.TabIndex = 31;
+            this.buttonMapFocusPositionXp.Text = "X+";
+            this.buttonMapFocusPositionXp.UseVisualStyleBackColor = true;
             // 
-            // button27
+            // buttonMapFocusPositionXpZn
             // 
-            this.button27.Location = new System.Drawing.Point(87, 16);
-            this.button27.Margin = new System.Windows.Forms.Padding(0);
-            this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(42, 42);
-            this.button27.TabIndex = 30;
-            this.button27.Text = "X+Z-";
-            this.button27.UseVisualStyleBackColor = true;
+            this.buttonMapFocusPositionXpZn.Location = new System.Drawing.Point(87, 16);
+            this.buttonMapFocusPositionXpZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusPositionXpZn.Name = "buttonMapFocusPositionXpZn";
+            this.buttonMapFocusPositionXpZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusPositionXpZn.TabIndex = 30;
+            this.buttonMapFocusPositionXpZn.Text = "X+Z-";
+            this.buttonMapFocusPositionXpZn.UseVisualStyleBackColor = true;
             // 
-            // button28
+            // buttonMapFocusPositionZn
             // 
-            this.button28.Location = new System.Drawing.Point(45, 16);
-            this.button28.Margin = new System.Windows.Forms.Padding(0);
-            this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(42, 42);
-            this.button28.TabIndex = 29;
-            this.button28.Text = "Z-";
-            this.button28.UseVisualStyleBackColor = true;
+            this.buttonMapFocusPositionZn.Location = new System.Drawing.Point(45, 16);
+            this.buttonMapFocusPositionZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusPositionZn.Name = "buttonMapFocusPositionZn";
+            this.buttonMapFocusPositionZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusPositionZn.TabIndex = 29;
+            this.buttonMapFocusPositionZn.Text = "Z-";
+            this.buttonMapFocusPositionZn.UseVisualStyleBackColor = true;
             // 
-            // button29
+            // buttonMapFocusPositionZp
             // 
-            this.button29.Location = new System.Drawing.Point(45, 100);
-            this.button29.Margin = new System.Windows.Forms.Padding(0);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(42, 42);
-            this.button29.TabIndex = 28;
-            this.button29.Text = "Z+";
-            this.button29.UseVisualStyleBackColor = true;
+            this.buttonMapFocusPositionZp.Location = new System.Drawing.Point(45, 100);
+            this.buttonMapFocusPositionZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusPositionZp.Name = "buttonMapFocusPositionZp";
+            this.buttonMapFocusPositionZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusPositionZp.TabIndex = 28;
+            this.buttonMapFocusPositionZp.Text = "Z+";
+            this.buttonMapFocusPositionZp.UseVisualStyleBackColor = true;
             // 
-            // button30
+            // buttonMapFocusPositionXnZp
             // 
-            this.button30.Location = new System.Drawing.Point(3, 100);
-            this.button30.Margin = new System.Windows.Forms.Padding(0);
-            this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(42, 42);
-            this.button30.TabIndex = 27;
-            this.button30.Text = "X-Z+";
-            this.button30.UseVisualStyleBackColor = true;
+            this.buttonMapFocusPositionXnZp.Location = new System.Drawing.Point(3, 100);
+            this.buttonMapFocusPositionXnZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusPositionXnZp.Name = "buttonMapFocusPositionXnZp";
+            this.buttonMapFocusPositionXnZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusPositionXnZp.TabIndex = 27;
+            this.buttonMapFocusPositionXnZp.Text = "X-Z+";
+            this.buttonMapFocusPositionXnZp.UseVisualStyleBackColor = true;
             // 
-            // button31
+            // buttonMapFocusPositionXn
             // 
-            this.button31.Location = new System.Drawing.Point(3, 58);
-            this.button31.Margin = new System.Windows.Forms.Padding(0);
-            this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(42, 42);
-            this.button31.TabIndex = 26;
-            this.button31.Text = "X-";
-            this.button31.UseVisualStyleBackColor = true;
+            this.buttonMapFocusPositionXn.Location = new System.Drawing.Point(3, 58);
+            this.buttonMapFocusPositionXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusPositionXn.Name = "buttonMapFocusPositionXn";
+            this.buttonMapFocusPositionXn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusPositionXn.TabIndex = 26;
+            this.buttonMapFocusPositionXn.Text = "X-";
+            this.buttonMapFocusPositionXn.UseVisualStyleBackColor = true;
             // 
-            // button32
+            // buttonMapFocusPositionXnZn
             // 
-            this.button32.Location = new System.Drawing.Point(3, 16);
-            this.button32.Margin = new System.Windows.Forms.Padding(0);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(42, 42);
-            this.button32.TabIndex = 25;
-            this.button32.Text = "X-Z-";
-            this.button32.UseVisualStyleBackColor = true;
+            this.buttonMapFocusPositionXnZn.Location = new System.Drawing.Point(3, 16);
+            this.buttonMapFocusPositionXnZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusPositionXnZn.Name = "buttonMapFocusPositionXnZn";
+            this.buttonMapFocusPositionXnZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusPositionXnZn.TabIndex = 25;
+            this.buttonMapFocusPositionXnZn.Text = "X-Z-";
+            this.buttonMapFocusPositionXnZn.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -22472,8 +22472,8 @@ namespace STROOP
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBoxMapFocusPosition.ResumeLayout(false);
+            this.groupBoxMapFocusPosition.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBoxMapCameraPosition.ResumeLayout(false);
@@ -24085,20 +24085,20 @@ namespace STROOP
         private Button button20;
         private Button button21;
         private Button button22;
-        private GroupBox groupBox3;
-        private CheckBox checkBox2;
-        private BetterTextbox betterTextbox6;
-        private Button button23;
-        private Button button24;
-        private Button button25;
-        private BetterTextbox betterTextbox7;
-        private Button button26;
-        private Button button27;
-        private Button button28;
-        private Button button29;
-        private Button button30;
-        private Button button31;
-        private Button button32;
+        private GroupBox groupBoxMapFocusPosition;
+        private CheckBox checkBoxMapFocusPositionRelative;
+        private BetterTextbox textBoxMapFocusPositionY;
+        private Button buttonMapFocusPositionYp;
+        private Button buttonMapFocusPositionYn;
+        private Button buttonMapFocusPositionXpZp;
+        private BetterTextbox textBoxMapFocusPositionXZ;
+        private Button buttonMapFocusPositionXp;
+        private Button buttonMapFocusPositionXpZn;
+        private Button buttonMapFocusPositionZn;
+        private Button buttonMapFocusPositionZp;
+        private Button buttonMapFocusPositionXnZp;
+        private Button buttonMapFocusPositionXn;
+        private Button buttonMapFocusPositionXnZn;
         private GroupBox groupBox4;
         private BetterTextbox betterTextbox8;
         private Button button33;
