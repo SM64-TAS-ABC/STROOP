@@ -296,6 +296,136 @@ namespace STROOP.Managers
             });
             Config.Map3Gui.trackBarMap3OptionsGlobalIconSize.AddManualChangeAction(() =>
                 SetGlobalIconSize(Config.Map3Gui.trackBarMap3OptionsGlobalIconSize.Value));
+
+            // 3D Controllers
+
+            ControlUtilities.InitializeThreeDimensionController(
+                CoordinateSystem.Euler,
+                true,
+                Config.Map3Gui.groupBoxMapCameraPosition,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["buttonMapCameraPositionXn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["buttonMapCameraPositionXp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["buttonMapCameraPositionZn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["buttonMapCameraPositionZp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["buttonMapCameraPositionXnZn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["buttonMapCameraPositionXnZp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["buttonMapCameraPositionXpZn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["buttonMapCameraPositionXpZp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["buttonMapCameraPositionYp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["buttonMapCameraPositionYn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["textBoxMapCameraPositionXZ"] as TextBox,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["textBoxMapCameraPositionY"] as TextBox,
+                Config.Map3Gui.groupBoxMapCameraPosition.Controls["checkBoxMapCameraPositionRelative"] as CheckBox,
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
+                {
+                    ButtonUtilities.TranslateMapCameraPosition(
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
+                        useRelative);
+                });
+
+            ControlUtilities.InitializeThreeDimensionController(
+                CoordinateSystem.Spherical,
+                false,
+                Config.Map3Gui.groupBoxMapCameraSpherical,
+                Config.Map3Gui.groupBoxMapCameraSpherical.Controls["buttonMapCameraSphericalTn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraSpherical.Controls["buttonMapCameraSphericalTp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraSpherical.Controls["buttonMapCameraSphericalPn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraSpherical.Controls["buttonMapCameraSphericalPp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraSpherical.Controls["buttonMapCameraSphericalTnPn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraSpherical.Controls["buttonMapCameraSphericalTnPp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraSpherical.Controls["buttonMapCameraSphericalTpPn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraSpherical.Controls["buttonMapCameraSphericalTpPp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraSpherical.Controls["buttonMapCameraSphericalRn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraSpherical.Controls["buttonMapCameraSphericalRp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraSpherical.Controls["textBoxMapCameraSphericalTP"] as TextBox,
+                Config.Map3Gui.groupBoxMapCameraSpherical.Controls["textBoxMapCameraSphericalR"] as TextBox,
+                null /* checkbox */,
+                (float hOffset, float vOffset, float nOffset, bool _) =>
+                {
+                    ButtonUtilities.TranslateMapCameraSpherical(
+                        -1 * nOffset,
+                        hOffset,
+                        vOffset);
+                });
+
+            ControlUtilities.InitializeThreeDimensionController(
+                CoordinateSystem.Euler,
+                true,
+                Config.Map3Gui.groupBoxMapFocusPosition,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["buttonMapFocusPositionXn"] as Button,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["buttonMapFocusPositionXp"] as Button,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["buttonMapFocusPositionZn"] as Button,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["buttonMapFocusPositionZp"] as Button,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["buttonMapFocusPositionXnZn"] as Button,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["buttonMapFocusPositionXnZp"] as Button,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["buttonMapFocusPositionXpZn"] as Button,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["buttonMapFocusPositionXpZp"] as Button,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["buttonMapFocusPositionYp"] as Button,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["buttonMapFocusPositionYn"] as Button,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["textBoxMapFocusPositionXZ"] as TextBox,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["textBoxMapFocusPositionY"] as TextBox,
+                Config.Map3Gui.groupBoxMapFocusPosition.Controls["checkBoxMapFocusPositionRelative"] as CheckBox,
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
+                {
+                    ButtonUtilities.TranslateMapFocusPosition(
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
+                        useRelative);
+                });
+
+            ControlUtilities.InitializeThreeDimensionController(
+                CoordinateSystem.Spherical,
+                false,
+                Config.Map3Gui.groupBoxMapFocusSpherical,
+                Config.Map3Gui.groupBoxMapFocusSpherical.Controls["buttonMapFocusSphericalTn"] as Button,
+                Config.Map3Gui.groupBoxMapFocusSpherical.Controls["buttonMapFocusSphericalTp"] as Button,
+                Config.Map3Gui.groupBoxMapFocusSpherical.Controls["buttonMapFocusSphericalPp"] as Button,
+                Config.Map3Gui.groupBoxMapFocusSpherical.Controls["buttonMapFocusSphericalPn"] as Button,
+                Config.Map3Gui.groupBoxMapFocusSpherical.Controls["buttonMapFocusSphericalTnPp"] as Button,
+                Config.Map3Gui.groupBoxMapFocusSpherical.Controls["buttonMapFocusSphericalTnPn"] as Button,
+                Config.Map3Gui.groupBoxMapFocusSpherical.Controls["buttonMapFocusSphericalTpPp"] as Button,
+                Config.Map3Gui.groupBoxMapFocusSpherical.Controls["buttonMapFocusSphericalTpPn"] as Button,
+                Config.Map3Gui.groupBoxMapFocusSpherical.Controls["buttonMapFocusSphericalRp"] as Button,
+                Config.Map3Gui.groupBoxMapFocusSpherical.Controls["buttonMapFocusSphericalRn"] as Button,
+                Config.Map3Gui.groupBoxMapFocusSpherical.Controls["textBoxMapFocusSphericalTP"] as TextBox,
+                Config.Map3Gui.groupBoxMapFocusSpherical.Controls["textBoxMapFocusSphericalR"] as TextBox,
+                null /* checkbox */,
+                (float hOffset, float vOffset, float nOffset, bool _) =>
+                {
+                    ButtonUtilities.TranslateMapFocusSpherical(
+                        nOffset,
+                        hOffset,
+                        vOffset);
+                });
+
+            ControlUtilities.InitializeThreeDimensionController(
+                CoordinateSystem.Euler,
+                true,
+                Config.Map3Gui.groupBoxMapCameraFocus,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["buttonMapCameraFocusXn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["buttonMapCameraFocusXp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["buttonMapCameraFocusZn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["buttonMapCameraFocusZp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["buttonMapCameraFocusXnZn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["buttonMapCameraFocusXnZp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["buttonMapCameraFocusXpZn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["buttonMapCameraFocusXpZp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["buttonMapCameraFocusYp"] as Button,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["buttonMapCameraFocusYn"] as Button,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["textBoxMapCameraFocusXZ"] as TextBox,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["textBoxMapCameraFocusY"] as TextBox,
+                Config.Map3Gui.groupBoxMapCameraFocus.Controls["checkBoxMapCameraFocusRelative"] as CheckBox,
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
+                {
+                    ButtonUtilities.TranslateMapCameraFocus(
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
+                        useRelative);
+                });
         }
 
         private void SetGlobalIconSize(float size)
