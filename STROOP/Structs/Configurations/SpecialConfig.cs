@@ -201,8 +201,8 @@ namespace STROOP.Structs.Configurations
         public static PositionAngle Map3DCameraAnglePA = PositionAngle.None;
         public static PositionAngle Map3DFocusPosPA = PositionAngle.None;
         public static PositionAngle Map3DFocusAnglePA = PositionAngle.None;
-        public static float Map3DFollowingRadius = 0;
-        public static float Map3DFollowingYOffset = 0;
+        public static float Map3DFollowingRadius = 1000;
+        public static float Map3DFollowingYOffset = 1000;
         public static float Map3DFollowingYaw = 0;
         public static float Map3DFOV = 0;
     }
