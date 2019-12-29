@@ -1621,20 +1621,20 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.tabPageMap33DControllers = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.betterTextbox1 = new STROOP.BetterTextbox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.betterTextbox2 = new STROOP.BetterTextbox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.groupBoxMapCameraFocus = new System.Windows.Forms.GroupBox();
+            this.checkBoxMapCameraFocusRelative = new System.Windows.Forms.CheckBox();
+            this.textBoxMapCameraFocusY = new STROOP.BetterTextbox();
+            this.buttonMapCameraFocusYp = new System.Windows.Forms.Button();
+            this.buttonMapCameraFocusYn = new System.Windows.Forms.Button();
+            this.buttonMapCameraFocusXpZp = new System.Windows.Forms.Button();
+            this.textBoxMapCameraFocusXZ = new STROOP.BetterTextbox();
+            this.buttonMapCameraFocusXp = new System.Windows.Forms.Button();
+            this.buttonMapCameraFocusXpZn = new System.Windows.Forms.Button();
+            this.buttonMapCameraFocusZn = new System.Windows.Forms.Button();
+            this.buttonMapCameraFocusZp = new System.Windows.Forms.Button();
+            this.buttonMapCameraFocusXnZp = new System.Windows.Forms.Button();
+            this.buttonMapCameraFocusXn = new System.Windows.Forms.Button();
+            this.buttonMapCameraFocusXnZn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.betterTextbox3 = new STROOP.BetterTextbox();
             this.button13 = new System.Windows.Forms.Button();
@@ -2170,7 +2170,7 @@ namespace STROOP
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             this.tabPageMap33DControllers.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxMapCameraFocus.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBoxMapFocusPosition.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -21098,7 +21098,7 @@ namespace STROOP
             this.tabPageMap33DControllers.AutoScroll = true;
             this.tabPageMap33DControllers.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMap33DControllers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap33DControllers.Controls.Add(this.groupBox1);
+            this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapCameraFocus);
             this.tabPageMap33DControllers.Controls.Add(this.groupBox2);
             this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapFocusPosition);
             this.tabPageMap33DControllers.Controls.Add(this.groupBox4);
@@ -21110,158 +21110,158 @@ namespace STROOP
             this.tabPageMap33DControllers.TabIndex = 5;
             this.tabPageMap33DControllers.Text = "3D Controllers";
             // 
-            // groupBox1
+            // groupBoxMapCameraFocus
             // 
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.betterTextbox1);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.betterTextbox2);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button10);
-            this.groupBox1.Controls.Add(this.button11);
-            this.groupBox1.Controls.Add(this.button12);
-            this.groupBox1.Location = new System.Drawing.Point(102, 310);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(185, 146);
-            this.groupBox1.TabIndex = 40;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Camera && Focus";
+            this.groupBoxMapCameraFocus.Controls.Add(this.checkBoxMapCameraFocusRelative);
+            this.groupBoxMapCameraFocus.Controls.Add(this.textBoxMapCameraFocusY);
+            this.groupBoxMapCameraFocus.Controls.Add(this.buttonMapCameraFocusYp);
+            this.groupBoxMapCameraFocus.Controls.Add(this.buttonMapCameraFocusYn);
+            this.groupBoxMapCameraFocus.Controls.Add(this.buttonMapCameraFocusXpZp);
+            this.groupBoxMapCameraFocus.Controls.Add(this.textBoxMapCameraFocusXZ);
+            this.groupBoxMapCameraFocus.Controls.Add(this.buttonMapCameraFocusXp);
+            this.groupBoxMapCameraFocus.Controls.Add(this.buttonMapCameraFocusXpZn);
+            this.groupBoxMapCameraFocus.Controls.Add(this.buttonMapCameraFocusZn);
+            this.groupBoxMapCameraFocus.Controls.Add(this.buttonMapCameraFocusZp);
+            this.groupBoxMapCameraFocus.Controls.Add(this.buttonMapCameraFocusXnZp);
+            this.groupBoxMapCameraFocus.Controls.Add(this.buttonMapCameraFocusXn);
+            this.groupBoxMapCameraFocus.Controls.Add(this.buttonMapCameraFocusXnZn);
+            this.groupBoxMapCameraFocus.Location = new System.Drawing.Point(102, 310);
+            this.groupBoxMapCameraFocus.Name = "groupBoxMapCameraFocus";
+            this.groupBoxMapCameraFocus.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxMapCameraFocus.TabIndex = 40;
+            this.groupBoxMapCameraFocus.TabStop = false;
+            this.groupBoxMapCameraFocus.Text = "Camera && Focus";
             // 
-            // checkBox1
+            // checkBoxMapCameraFocusRelative
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(120, 0);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(65, 17);
-            this.checkBox1.TabIndex = 37;
-            this.checkBox1.Text = "Relative";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxMapCameraFocusRelative.AutoSize = true;
+            this.checkBoxMapCameraFocusRelative.Location = new System.Drawing.Point(120, 0);
+            this.checkBoxMapCameraFocusRelative.Name = "checkBoxMapCameraFocusRelative";
+            this.checkBoxMapCameraFocusRelative.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxMapCameraFocusRelative.TabIndex = 37;
+            this.checkBoxMapCameraFocusRelative.Text = "Relative";
+            this.checkBoxMapCameraFocusRelative.UseVisualStyleBackColor = true;
             // 
-            // betterTextbox1
+            // textBoxMapCameraFocusY
             // 
-            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox1.Location = new System.Drawing.Point(140, 70);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox1.TabIndex = 33;
-            this.betterTextbox1.Text = "100";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapCameraFocusY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMapCameraFocusY.Location = new System.Drawing.Point(140, 70);
+            this.textBoxMapCameraFocusY.Name = "textBoxMapCameraFocusY";
+            this.textBoxMapCameraFocusY.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMapCameraFocusY.TabIndex = 33;
+            this.textBoxMapCameraFocusY.Text = "100";
+            this.textBoxMapCameraFocusY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button1
+            // buttonMapCameraFocusYp
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(140, 16);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 42);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Y+";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonMapCameraFocusYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapCameraFocusYp.Location = new System.Drawing.Point(140, 16);
+            this.buttonMapCameraFocusYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraFocusYp.Name = "buttonMapCameraFocusYp";
+            this.buttonMapCameraFocusYp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraFocusYp.TabIndex = 35;
+            this.buttonMapCameraFocusYp.Text = "Y+";
+            this.buttonMapCameraFocusYp.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonMapCameraFocusYn
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(140, 100);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(42, 42);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Y-";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonMapCameraFocusYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapCameraFocusYn.Location = new System.Drawing.Point(140, 100);
+            this.buttonMapCameraFocusYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraFocusYn.Name = "buttonMapCameraFocusYn";
+            this.buttonMapCameraFocusYn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraFocusYn.TabIndex = 34;
+            this.buttonMapCameraFocusYn.Text = "Y-";
+            this.buttonMapCameraFocusYn.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonMapCameraFocusXpZp
             // 
-            this.button3.Location = new System.Drawing.Point(87, 100);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(42, 42);
-            this.button3.TabIndex = 32;
-            this.button3.Text = "X+Z+";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonMapCameraFocusXpZp.Location = new System.Drawing.Point(87, 100);
+            this.buttonMapCameraFocusXpZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraFocusXpZp.Name = "buttonMapCameraFocusXpZp";
+            this.buttonMapCameraFocusXpZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraFocusXpZp.TabIndex = 32;
+            this.buttonMapCameraFocusXpZp.Text = "X+Z+";
+            this.buttonMapCameraFocusXpZp.UseVisualStyleBackColor = true;
             // 
-            // betterTextbox2
+            // textBoxMapCameraFocusXZ
             // 
-            this.betterTextbox2.Location = new System.Drawing.Point(45, 70);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox2.TabIndex = 27;
-            this.betterTextbox2.Text = "100";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapCameraFocusXZ.Location = new System.Drawing.Point(45, 70);
+            this.textBoxMapCameraFocusXZ.Name = "textBoxMapCameraFocusXZ";
+            this.textBoxMapCameraFocusXZ.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMapCameraFocusXZ.TabIndex = 27;
+            this.textBoxMapCameraFocusXZ.Text = "100";
+            this.textBoxMapCameraFocusXZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button4
+            // buttonMapCameraFocusXp
             // 
-            this.button4.Location = new System.Drawing.Point(87, 58);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(42, 42);
-            this.button4.TabIndex = 31;
-            this.button4.Text = "X+";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonMapCameraFocusXp.Location = new System.Drawing.Point(87, 58);
+            this.buttonMapCameraFocusXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraFocusXp.Name = "buttonMapCameraFocusXp";
+            this.buttonMapCameraFocusXp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraFocusXp.TabIndex = 31;
+            this.buttonMapCameraFocusXp.Text = "X+";
+            this.buttonMapCameraFocusXp.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // buttonMapCameraFocusXpZn
             // 
-            this.button5.Location = new System.Drawing.Point(87, 16);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(42, 42);
-            this.button5.TabIndex = 30;
-            this.button5.Text = "X+Z-";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonMapCameraFocusXpZn.Location = new System.Drawing.Point(87, 16);
+            this.buttonMapCameraFocusXpZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraFocusXpZn.Name = "buttonMapCameraFocusXpZn";
+            this.buttonMapCameraFocusXpZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraFocusXpZn.TabIndex = 30;
+            this.buttonMapCameraFocusXpZn.Text = "X+Z-";
+            this.buttonMapCameraFocusXpZn.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // buttonMapCameraFocusZn
             // 
-            this.button6.Location = new System.Drawing.Point(45, 16);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(42, 42);
-            this.button6.TabIndex = 29;
-            this.button6.Text = "Z-";
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonMapCameraFocusZn.Location = new System.Drawing.Point(45, 16);
+            this.buttonMapCameraFocusZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraFocusZn.Name = "buttonMapCameraFocusZn";
+            this.buttonMapCameraFocusZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraFocusZn.TabIndex = 29;
+            this.buttonMapCameraFocusZn.Text = "Z-";
+            this.buttonMapCameraFocusZn.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // buttonMapCameraFocusZp
             // 
-            this.button7.Location = new System.Drawing.Point(45, 100);
-            this.button7.Margin = new System.Windows.Forms.Padding(0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(42, 42);
-            this.button7.TabIndex = 28;
-            this.button7.Text = "Z+";
-            this.button7.UseVisualStyleBackColor = true;
+            this.buttonMapCameraFocusZp.Location = new System.Drawing.Point(45, 100);
+            this.buttonMapCameraFocusZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraFocusZp.Name = "buttonMapCameraFocusZp";
+            this.buttonMapCameraFocusZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraFocusZp.TabIndex = 28;
+            this.buttonMapCameraFocusZp.Text = "Z+";
+            this.buttonMapCameraFocusZp.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // buttonMapCameraFocusXnZp
             // 
-            this.button10.Location = new System.Drawing.Point(3, 100);
-            this.button10.Margin = new System.Windows.Forms.Padding(0);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(42, 42);
-            this.button10.TabIndex = 27;
-            this.button10.Text = "X-Z+";
-            this.button10.UseVisualStyleBackColor = true;
+            this.buttonMapCameraFocusXnZp.Location = new System.Drawing.Point(3, 100);
+            this.buttonMapCameraFocusXnZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraFocusXnZp.Name = "buttonMapCameraFocusXnZp";
+            this.buttonMapCameraFocusXnZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraFocusXnZp.TabIndex = 27;
+            this.buttonMapCameraFocusXnZp.Text = "X-Z+";
+            this.buttonMapCameraFocusXnZp.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // buttonMapCameraFocusXn
             // 
-            this.button11.Location = new System.Drawing.Point(3, 58);
-            this.button11.Margin = new System.Windows.Forms.Padding(0);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(42, 42);
-            this.button11.TabIndex = 26;
-            this.button11.Text = "X-";
-            this.button11.UseVisualStyleBackColor = true;
+            this.buttonMapCameraFocusXn.Location = new System.Drawing.Point(3, 58);
+            this.buttonMapCameraFocusXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraFocusXn.Name = "buttonMapCameraFocusXn";
+            this.buttonMapCameraFocusXn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraFocusXn.TabIndex = 26;
+            this.buttonMapCameraFocusXn.Text = "X-";
+            this.buttonMapCameraFocusXn.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // buttonMapCameraFocusXnZn
             // 
-            this.button12.Location = new System.Drawing.Point(3, 16);
-            this.button12.Margin = new System.Windows.Forms.Padding(0);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(42, 42);
-            this.button12.TabIndex = 25;
-            this.button12.Text = "X-Z-";
-            this.button12.UseVisualStyleBackColor = true;
+            this.buttonMapCameraFocusXnZn.Location = new System.Drawing.Point(3, 16);
+            this.buttonMapCameraFocusXnZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapCameraFocusXnZn.Name = "buttonMapCameraFocusXnZn";
+            this.buttonMapCameraFocusXnZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapCameraFocusXnZn.TabIndex = 25;
+            this.buttonMapCameraFocusXnZn.Text = "X-Z-";
+            this.buttonMapCameraFocusXnZn.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -22468,8 +22468,8 @@ namespace STROOP
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
             this.tabPageMap33DControllers.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxMapCameraFocus.ResumeLayout(false);
+            this.groupBoxMapCameraFocus.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBoxMapFocusPosition.ResumeLayout(false);
@@ -24058,20 +24058,20 @@ namespace STROOP
         private TabPage tabPageMap33DVars;
         private WatchVariableFlowLayoutPanel watchVariablePanel3DVars;
         private TabPage tabPageMap33DControllers;
-        private GroupBox groupBox1;
-        private CheckBox checkBox1;
-        private BetterTextbox betterTextbox1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private BetterTextbox betterTextbox2;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-        private Button button10;
-        private Button button11;
-        private Button button12;
+        private GroupBox groupBoxMapCameraFocus;
+        private CheckBox checkBoxMapCameraFocusRelative;
+        private BetterTextbox textBoxMapCameraFocusY;
+        private Button buttonMapCameraFocusYp;
+        private Button buttonMapCameraFocusYn;
+        private Button buttonMapCameraFocusXpZp;
+        private BetterTextbox textBoxMapCameraFocusXZ;
+        private Button buttonMapCameraFocusXp;
+        private Button buttonMapCameraFocusXpZn;
+        private Button buttonMapCameraFocusZn;
+        private Button buttonMapCameraFocusZp;
+        private Button buttonMapCameraFocusXnZp;
+        private Button buttonMapCameraFocusXn;
+        private Button buttonMapCameraFocusXnZn;
         private GroupBox groupBox2;
         private BetterTextbox betterTextbox3;
         private Button button13;
