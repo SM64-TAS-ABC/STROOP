@@ -399,6 +399,12 @@ namespace STROOP
                 labelMap3DataYNorm = labelMap3DataYNorm,
 
                 watchVariablePanel3DVars = watchVariablePanel3DVars,
+
+                groupBoxMapCameraPosition = groupBoxMapCameraPosition,
+                groupBoxMapFocusPosition = groupBoxMapFocusPosition,
+                groupBoxMapCameraSpherical = groupBoxMapCameraSpherical,
+                groupBoxMapFocusSpherical = groupBoxMapFocusSpherical,
+                groupBoxMapCameraFocus = groupBoxMapCameraFocus,
             };
 
             Map2Gui map2Gui = new Map2Gui()

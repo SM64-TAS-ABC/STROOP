@@ -126,5 +126,13 @@ namespace STROOP.Map3
 
         // 3D Vars
         public WatchVariableFlowLayoutPanel watchVariablePanel3DVars;
+
+        // 3D GroupBoxes
+
+        public GroupBox groupBoxMapCameraPosition;
+        public GroupBox groupBoxMapFocusPosition;
+        public GroupBox groupBoxMapCameraSpherical;
+        public GroupBox groupBoxMapFocusSpherical;
+        public GroupBox groupBoxMapCameraFocus;
     }
 }
