@@ -1470,7 +1470,8 @@ namespace STROOP.Utilities
 
         public static bool TranslateMapCameraPosition(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            return false;
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.MapCamera };
+            return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool TranslateMapCameraSpherical(float radiusOffset, float thetaOffset, float phiOffset)
@@ -1480,7 +1481,8 @@ namespace STROOP.Utilities
 
         public static bool TranslateMapFocusPosition(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            return false;
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.MapFocus };
+            return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool TranslateMapFocusSpherical(float radiusOffset, float thetaOffset, float phiOffset)
@@ -1490,7 +1492,8 @@ namespace STROOP.Utilities
 
         public static bool TranslateMapCameraFocus(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            return false;
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.MapCamera, PositionAngle.MapFocus };
+            return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
     }
 }
