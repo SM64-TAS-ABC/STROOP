@@ -1499,7 +1499,19 @@ namespace STROOP.Utilities
 
         public static bool TranslateMapFocusSpherical(float radiusOffset, float thetaOffset, float phiOffset)
         {
-            return false;
+            HandleScaling(ref thetaOffset, ref phiOffset);
+
+            (double newX, double newY, double newZ) =
+                MoreMath.OffsetSphericallyAboutPivot(
+                    SpecialConfig.Map3DFocusX, SpecialConfig.Map3DFocusY, SpecialConfig.Map3DFocusZ,
+                    radiusOffset, thetaOffset, phiOffset,
+                    SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ);
+
+            SpecialConfig.Map3DFocusX = (float)newX;
+            SpecialConfig.Map3DFocusY = (float)newY;
+            SpecialConfig.Map3DFocusZ = (float)newZ;
+
+            return true;
         }
 
         public static bool TranslateMapCameraFocus(float xOffset, float yOffset, float zOffset, bool useRelative)
