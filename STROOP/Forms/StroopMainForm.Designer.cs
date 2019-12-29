@@ -921,19 +921,19 @@ namespace STROOP
             this.buttonMapCameraFocusXnZp = new System.Windows.Forms.Button();
             this.buttonMapCameraFocusXn = new System.Windows.Forms.Button();
             this.buttonMapCameraFocusXnZn = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.betterTextbox3 = new STROOP.BetterTextbox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.betterTextbox5 = new STROOP.BetterTextbox();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
+            this.groupBoxMapFocusSpherical = new System.Windows.Forms.GroupBox();
+            this.textBoxMapFocusSphericalR = new STROOP.BetterTextbox();
+            this.buttonMapFocusSphericalRp = new System.Windows.Forms.Button();
+            this.buttonMapFocusSphericalRn = new System.Windows.Forms.Button();
+            this.buttonMapFocusSphericalTnPn = new System.Windows.Forms.Button();
+            this.textBoxMapFocusSphericalTP = new STROOP.BetterTextbox();
+            this.buttonMapFocusSphericalTn = new System.Windows.Forms.Button();
+            this.buttonMapFocusSphericalTnPp = new System.Windows.Forms.Button();
+            this.buttonMapFocusSphericalPp = new System.Windows.Forms.Button();
+            this.buttonMapFocusSphericalPn = new System.Windows.Forms.Button();
+            this.buttonMapFocusSphericalTpPn = new System.Windows.Forms.Button();
+            this.buttonMapFocusSphericalTp = new System.Windows.Forms.Button();
+            this.buttonMapFocusSphericalTpPp = new System.Windows.Forms.Button();
             this.groupBoxMapFocusPosition = new System.Windows.Forms.GroupBox();
             this.checkBoxMapFocusPositionRelative = new System.Windows.Forms.CheckBox();
             this.textBoxMapFocusPositionY = new STROOP.BetterTextbox();
@@ -1998,7 +1998,7 @@ namespace STROOP
             this.tabPageMap33DVars.SuspendLayout();
             this.tabPageMap33DControllers.SuspendLayout();
             this.groupBoxMapCameraFocus.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxMapFocusSpherical.SuspendLayout();
             this.groupBoxMapFocusPosition.SuspendLayout();
             this.groupBoxMapCameraSpherical.SuspendLayout();
             this.groupBoxMapCameraPosition.SuspendLayout();
@@ -12633,7 +12633,7 @@ namespace STROOP
             this.tabPageMap33DControllers.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMap33DControllers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapCameraFocus);
-            this.tabPageMap33DControllers.Controls.Add(this.groupBox2);
+            this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapFocusSpherical);
             this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapFocusPosition);
             this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapCameraSpherical);
             this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapCameraPosition);
@@ -12797,147 +12797,147 @@ namespace STROOP
             this.buttonMapCameraFocusXnZn.Text = "X-Z-";
             this.buttonMapCameraFocusXnZn.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // groupBoxMapFocusSpherical
             // 
-            this.groupBox2.Controls.Add(this.betterTextbox3);
-            this.groupBox2.Controls.Add(this.button13);
-            this.groupBox2.Controls.Add(this.button14);
-            this.groupBox2.Controls.Add(this.button15);
-            this.groupBox2.Controls.Add(this.betterTextbox5);
-            this.groupBox2.Controls.Add(this.button16);
-            this.groupBox2.Controls.Add(this.button17);
-            this.groupBox2.Controls.Add(this.button18);
-            this.groupBox2.Controls.Add(this.button19);
-            this.groupBox2.Controls.Add(this.button20);
-            this.groupBox2.Controls.Add(this.button21);
-            this.groupBox2.Controls.Add(this.button22);
-            this.groupBox2.Location = new System.Drawing.Point(199, 158);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(185, 146);
-            this.groupBox2.TabIndex = 38;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Focus Spherical";
+            this.groupBoxMapFocusSpherical.Controls.Add(this.textBoxMapFocusSphericalR);
+            this.groupBoxMapFocusSpherical.Controls.Add(this.buttonMapFocusSphericalRp);
+            this.groupBoxMapFocusSpherical.Controls.Add(this.buttonMapFocusSphericalRn);
+            this.groupBoxMapFocusSpherical.Controls.Add(this.buttonMapFocusSphericalTnPn);
+            this.groupBoxMapFocusSpherical.Controls.Add(this.textBoxMapFocusSphericalTP);
+            this.groupBoxMapFocusSpherical.Controls.Add(this.buttonMapFocusSphericalTn);
+            this.groupBoxMapFocusSpherical.Controls.Add(this.buttonMapFocusSphericalTnPp);
+            this.groupBoxMapFocusSpherical.Controls.Add(this.buttonMapFocusSphericalPp);
+            this.groupBoxMapFocusSpherical.Controls.Add(this.buttonMapFocusSphericalPn);
+            this.groupBoxMapFocusSpherical.Controls.Add(this.buttonMapFocusSphericalTpPn);
+            this.groupBoxMapFocusSpherical.Controls.Add(this.buttonMapFocusSphericalTp);
+            this.groupBoxMapFocusSpherical.Controls.Add(this.buttonMapFocusSphericalTpPp);
+            this.groupBoxMapFocusSpherical.Location = new System.Drawing.Point(199, 158);
+            this.groupBoxMapFocusSpherical.Name = "groupBoxMapFocusSpherical";
+            this.groupBoxMapFocusSpherical.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxMapFocusSpherical.TabIndex = 38;
+            this.groupBoxMapFocusSpherical.TabStop = false;
+            this.groupBoxMapFocusSpherical.Text = "Focus Spherical";
             // 
-            // betterTextbox3
+            // textBoxMapFocusSphericalR
             // 
-            this.betterTextbox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox3.Location = new System.Drawing.Point(140, 70);
-            this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox3.TabIndex = 33;
-            this.betterTextbox3.Text = "100";
-            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapFocusSphericalR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMapFocusSphericalR.Location = new System.Drawing.Point(140, 70);
+            this.textBoxMapFocusSphericalR.Name = "textBoxMapFocusSphericalR";
+            this.textBoxMapFocusSphericalR.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMapFocusSphericalR.TabIndex = 33;
+            this.textBoxMapFocusSphericalR.Text = "100";
+            this.textBoxMapFocusSphericalR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button13
+            // buttonMapFocusSphericalRp
             // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.Location = new System.Drawing.Point(140, 16);
-            this.button13.Margin = new System.Windows.Forms.Padding(0);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(42, 42);
-            this.button13.TabIndex = 35;
-            this.button13.Text = "R+";
-            this.button13.UseVisualStyleBackColor = true;
+            this.buttonMapFocusSphericalRp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapFocusSphericalRp.Location = new System.Drawing.Point(140, 16);
+            this.buttonMapFocusSphericalRp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusSphericalRp.Name = "buttonMapFocusSphericalRp";
+            this.buttonMapFocusSphericalRp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusSphericalRp.TabIndex = 35;
+            this.buttonMapFocusSphericalRp.Text = "R+";
+            this.buttonMapFocusSphericalRp.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // buttonMapFocusSphericalRn
             // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button14.Location = new System.Drawing.Point(140, 100);
-            this.button14.Margin = new System.Windows.Forms.Padding(0);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(42, 42);
-            this.button14.TabIndex = 34;
-            this.button14.Text = "R-";
-            this.button14.UseVisualStyleBackColor = true;
+            this.buttonMapFocusSphericalRn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapFocusSphericalRn.Location = new System.Drawing.Point(140, 100);
+            this.buttonMapFocusSphericalRn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusSphericalRn.Name = "buttonMapFocusSphericalRn";
+            this.buttonMapFocusSphericalRn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusSphericalRn.TabIndex = 34;
+            this.buttonMapFocusSphericalRn.Text = "R-";
+            this.buttonMapFocusSphericalRn.UseVisualStyleBackColor = true;
             // 
-            // button15
+            // buttonMapFocusSphericalTnPn
             // 
-            this.button15.Location = new System.Drawing.Point(87, 100);
-            this.button15.Margin = new System.Windows.Forms.Padding(0);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(42, 42);
-            this.button15.TabIndex = 32;
-            this.button15.Text = "θ-ϕ-";
-            this.button15.UseVisualStyleBackColor = true;
+            this.buttonMapFocusSphericalTnPn.Location = new System.Drawing.Point(87, 100);
+            this.buttonMapFocusSphericalTnPn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusSphericalTnPn.Name = "buttonMapFocusSphericalTnPn";
+            this.buttonMapFocusSphericalTnPn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusSphericalTnPn.TabIndex = 32;
+            this.buttonMapFocusSphericalTnPn.Text = "θ-ϕ-";
+            this.buttonMapFocusSphericalTnPn.UseVisualStyleBackColor = true;
             // 
-            // betterTextbox5
+            // textBoxMapFocusSphericalTP
             // 
-            this.betterTextbox5.Location = new System.Drawing.Point(45, 70);
-            this.betterTextbox5.Name = "betterTextbox5";
-            this.betterTextbox5.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox5.TabIndex = 27;
-            this.betterTextbox5.Text = "1024";
-            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapFocusSphericalTP.Location = new System.Drawing.Point(45, 70);
+            this.textBoxMapFocusSphericalTP.Name = "textBoxMapFocusSphericalTP";
+            this.textBoxMapFocusSphericalTP.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMapFocusSphericalTP.TabIndex = 27;
+            this.textBoxMapFocusSphericalTP.Text = "1024";
+            this.textBoxMapFocusSphericalTP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button16
+            // buttonMapFocusSphericalTn
             // 
-            this.button16.Location = new System.Drawing.Point(87, 58);
-            this.button16.Margin = new System.Windows.Forms.Padding(0);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(42, 42);
-            this.button16.TabIndex = 31;
-            this.button16.Text = "θ-";
-            this.button16.UseVisualStyleBackColor = true;
+            this.buttonMapFocusSphericalTn.Location = new System.Drawing.Point(87, 58);
+            this.buttonMapFocusSphericalTn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusSphericalTn.Name = "buttonMapFocusSphericalTn";
+            this.buttonMapFocusSphericalTn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusSphericalTn.TabIndex = 31;
+            this.buttonMapFocusSphericalTn.Text = "θ-";
+            this.buttonMapFocusSphericalTn.UseVisualStyleBackColor = true;
             // 
-            // button17
+            // buttonMapFocusSphericalTnPp
             // 
-            this.button17.Location = new System.Drawing.Point(87, 16);
-            this.button17.Margin = new System.Windows.Forms.Padding(0);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(42, 42);
-            this.button17.TabIndex = 30;
-            this.button17.Text = "θ-ϕ+";
-            this.button17.UseVisualStyleBackColor = true;
+            this.buttonMapFocusSphericalTnPp.Location = new System.Drawing.Point(87, 16);
+            this.buttonMapFocusSphericalTnPp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusSphericalTnPp.Name = "buttonMapFocusSphericalTnPp";
+            this.buttonMapFocusSphericalTnPp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusSphericalTnPp.TabIndex = 30;
+            this.buttonMapFocusSphericalTnPp.Text = "θ-ϕ+";
+            this.buttonMapFocusSphericalTnPp.UseVisualStyleBackColor = true;
             // 
-            // button18
+            // buttonMapFocusSphericalPp
             // 
-            this.button18.Location = new System.Drawing.Point(45, 16);
-            this.button18.Margin = new System.Windows.Forms.Padding(0);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(42, 42);
-            this.button18.TabIndex = 29;
-            this.button18.Text = "ϕ+";
-            this.button18.UseVisualStyleBackColor = true;
+            this.buttonMapFocusSphericalPp.Location = new System.Drawing.Point(45, 16);
+            this.buttonMapFocusSphericalPp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusSphericalPp.Name = "buttonMapFocusSphericalPp";
+            this.buttonMapFocusSphericalPp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusSphericalPp.TabIndex = 29;
+            this.buttonMapFocusSphericalPp.Text = "ϕ+";
+            this.buttonMapFocusSphericalPp.UseVisualStyleBackColor = true;
             // 
-            // button19
+            // buttonMapFocusSphericalPn
             // 
-            this.button19.Location = new System.Drawing.Point(45, 100);
-            this.button19.Margin = new System.Windows.Forms.Padding(0);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(42, 42);
-            this.button19.TabIndex = 28;
-            this.button19.Text = "ϕ-";
-            this.button19.UseVisualStyleBackColor = true;
+            this.buttonMapFocusSphericalPn.Location = new System.Drawing.Point(45, 100);
+            this.buttonMapFocusSphericalPn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusSphericalPn.Name = "buttonMapFocusSphericalPn";
+            this.buttonMapFocusSphericalPn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusSphericalPn.TabIndex = 28;
+            this.buttonMapFocusSphericalPn.Text = "ϕ-";
+            this.buttonMapFocusSphericalPn.UseVisualStyleBackColor = true;
             // 
-            // button20
+            // buttonMapFocusSphericalTpPn
             // 
-            this.button20.Location = new System.Drawing.Point(3, 100);
-            this.button20.Margin = new System.Windows.Forms.Padding(0);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(42, 42);
-            this.button20.TabIndex = 27;
-            this.button20.Text = "θ+ϕ-";
-            this.button20.UseVisualStyleBackColor = true;
+            this.buttonMapFocusSphericalTpPn.Location = new System.Drawing.Point(3, 100);
+            this.buttonMapFocusSphericalTpPn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusSphericalTpPn.Name = "buttonMapFocusSphericalTpPn";
+            this.buttonMapFocusSphericalTpPn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusSphericalTpPn.TabIndex = 27;
+            this.buttonMapFocusSphericalTpPn.Text = "θ+ϕ-";
+            this.buttonMapFocusSphericalTpPn.UseVisualStyleBackColor = true;
             // 
-            // button21
+            // buttonMapFocusSphericalTp
             // 
-            this.button21.Location = new System.Drawing.Point(3, 58);
-            this.button21.Margin = new System.Windows.Forms.Padding(0);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(42, 42);
-            this.button21.TabIndex = 26;
-            this.button21.Text = "θ+";
-            this.button21.UseVisualStyleBackColor = true;
+            this.buttonMapFocusSphericalTp.Location = new System.Drawing.Point(3, 58);
+            this.buttonMapFocusSphericalTp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusSphericalTp.Name = "buttonMapFocusSphericalTp";
+            this.buttonMapFocusSphericalTp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusSphericalTp.TabIndex = 26;
+            this.buttonMapFocusSphericalTp.Text = "θ+";
+            this.buttonMapFocusSphericalTp.UseVisualStyleBackColor = true;
             // 
-            // button22
+            // buttonMapFocusSphericalTpPp
             // 
-            this.button22.Location = new System.Drawing.Point(3, 16);
-            this.button22.Margin = new System.Windows.Forms.Padding(0);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(42, 42);
-            this.button22.TabIndex = 25;
-            this.button22.Text = "θ+ϕ+";
-            this.button22.UseVisualStyleBackColor = true;
+            this.buttonMapFocusSphericalTpPp.Location = new System.Drawing.Point(3, 16);
+            this.buttonMapFocusSphericalTpPp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapFocusSphericalTpPp.Name = "buttonMapFocusSphericalTpPp";
+            this.buttonMapFocusSphericalTpPp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapFocusSphericalTpPp.TabIndex = 25;
+            this.buttonMapFocusSphericalTpPp.Text = "θ+ϕ+";
+            this.buttonMapFocusSphericalTpPp.UseVisualStyleBackColor = true;
             // 
             // groupBoxMapFocusPosition
             // 
@@ -22242,8 +22242,8 @@ namespace STROOP
             this.tabPageMap33DControllers.ResumeLayout(false);
             this.groupBoxMapCameraFocus.ResumeLayout(false);
             this.groupBoxMapCameraFocus.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxMapFocusSpherical.ResumeLayout(false);
+            this.groupBoxMapFocusSpherical.PerformLayout();
             this.groupBoxMapFocusPosition.ResumeLayout(false);
             this.groupBoxMapFocusPosition.PerformLayout();
             this.groupBoxMapCameraSpherical.ResumeLayout(false);
@@ -24072,19 +24072,19 @@ namespace STROOP
         private Button buttonMapCameraFocusXnZp;
         private Button buttonMapCameraFocusXn;
         private Button buttonMapCameraFocusXnZn;
-        private GroupBox groupBox2;
-        private BetterTextbox betterTextbox3;
-        private Button button13;
-        private Button button14;
-        private Button button15;
-        private BetterTextbox betterTextbox5;
-        private Button button16;
-        private Button button17;
-        private Button button18;
-        private Button button19;
-        private Button button20;
-        private Button button21;
-        private Button button22;
+        private GroupBox groupBoxMapFocusSpherical;
+        private BetterTextbox textBoxMapFocusSphericalR;
+        private Button buttonMapFocusSphericalRp;
+        private Button buttonMapFocusSphericalRn;
+        private Button buttonMapFocusSphericalTnPn;
+        private BetterTextbox textBoxMapFocusSphericalTP;
+        private Button buttonMapFocusSphericalTn;
+        private Button buttonMapFocusSphericalTnPp;
+        private Button buttonMapFocusSphericalPp;
+        private Button buttonMapFocusSphericalPn;
+        private Button buttonMapFocusSphericalTpPn;
+        private Button buttonMapFocusSphericalTp;
+        private Button buttonMapFocusSphericalTpPp;
         private GroupBox groupBoxMapFocusPosition;
         private CheckBox checkBoxMapFocusPositionRelative;
         private BetterTextbox textBoxMapFocusPositionY;
