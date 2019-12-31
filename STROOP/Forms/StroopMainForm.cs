@@ -323,12 +323,12 @@ namespace STROOP
                 buttonMapControllersAngleCCW = buttonMapControllersAngleCCW,
                 buttonMapControllersAngleCW = buttonMapControllersAngleCW,
 
-                labelMapDataMapName = labelMap3DataMapName,
-                labelMapDataMapSubName = labelMap3DataMapSubName,
-                labelMapDataPuCoordinateValues = labelMap3DataPuCoordinateValues,
-                labelMapDataQpuCoordinateValues = labelMap3DataQpuCoordinateValues,
-                labelMapDataId = labelMap3DataId,
-                labelMapDataYNorm = labelMap3DataYNorm,
+                labelMapDataMapName = labelMapDataMapName,
+                labelMapDataMapSubName = labelMapDataMapSubName,
+                labelMapDataPuCoordinateValues = labelMapDataPuCoordinateValues,
+                labelMapDataQpuCoordinateValues = labelMapDataQpuCoordinateValues,
+                labelMapDataId = labelMapDataId,
+                labelMapDataYNorm = labelMapDataYNorm,
 
                 watchVariablePanelMap3DVars = watchVariablePanelMap3DVars,
 

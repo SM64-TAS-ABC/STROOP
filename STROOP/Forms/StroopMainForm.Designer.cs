@@ -800,18 +800,18 @@ namespace STROOP
             this.radioButtonMapControllersScaleCustom = new System.Windows.Forms.RadioButton();
             this.buttonMapControllersScaleTimes = new System.Windows.Forms.Button();
             this.buttonMapControllersScalePlus = new System.Windows.Forms.Button();
-            this.tabPageMap3Data = new System.Windows.Forms.TabPage();
-            this.labelMap3DataQpuCoordinates = new System.Windows.Forms.Label();
-            this.labelMap3DataYNorm = new System.Windows.Forms.Label();
-            this.labelMap3DataId = new System.Windows.Forms.Label();
-            this.labelMap3DataQpuCoordinateValues = new System.Windows.Forms.Label();
-            this.labelMap3DataPuCoordinateValues = new System.Windows.Forms.Label();
-            this.labelMap3DataMapSubName = new System.Windows.Forms.Label();
-            this.labelMap3DataMapName = new System.Windows.Forms.Label();
-            this.labelMap3DataPuCoordinates = new System.Windows.Forms.Label();
-            this.tabPageMap33DVars = new System.Windows.Forms.TabPage();
+            this.tabPageMapData = new System.Windows.Forms.TabPage();
+            this.labelMapDataQpuCoordinates = new System.Windows.Forms.Label();
+            this.labelMapDataYNorm = new System.Windows.Forms.Label();
+            this.labelMapDataId = new System.Windows.Forms.Label();
+            this.labelMapDataQpuCoordinateValues = new System.Windows.Forms.Label();
+            this.labelMapDataPuCoordinateValues = new System.Windows.Forms.Label();
+            this.labelMapDataMapSubName = new System.Windows.Forms.Label();
+            this.labelMapDataMapName = new System.Windows.Forms.Label();
+            this.labelMapDataPuCoordinates = new System.Windows.Forms.Label();
+            this.tabPageMap3DVars = new System.Windows.Forms.TabPage();
             this.watchVariablePanelMap3DVars = new STROOP.Controls.WatchVariableFlowLayoutPanel();
-            this.tabPageMap33DControllers = new System.Windows.Forms.TabPage();
+            this.tabPageMap3DControllers = new System.Windows.Forms.TabPage();
             this.textBoxMapFov = new STROOP.BetterTextbox();
             this.labelMapFov = new System.Windows.Forms.Label();
             this.trackBarMapFov = new STROOP.TrackBarEx();
@@ -1879,9 +1879,9 @@ namespace STROOP
             this.groupBoxMapControllersAngle.SuspendLayout();
             this.groupBoxMapControllersCenter.SuspendLayout();
             this.groupBoxMapControllersScale.SuspendLayout();
-            this.tabPageMap3Data.SuspendLayout();
-            this.tabPageMap33DVars.SuspendLayout();
-            this.tabPageMap33DControllers.SuspendLayout();
+            this.tabPageMapData.SuspendLayout();
+            this.tabPageMap3DVars.SuspendLayout();
+            this.tabPageMap3DControllers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapFov)).BeginInit();
             this.groupBoxMapCameraFocus.SuspendLayout();
             this.groupBoxMapFocusSpherical.SuspendLayout();
@@ -10565,9 +10565,9 @@ namespace STROOP
             // 
             this.tabControlMap3.Controls.Add(this.tabPageMapOptions);
             this.tabControlMap3.Controls.Add(this.tabPageMapControllers);
-            this.tabControlMap3.Controls.Add(this.tabPageMap3Data);
-            this.tabControlMap3.Controls.Add(this.tabPageMap33DVars);
-            this.tabControlMap3.Controls.Add(this.tabPageMap33DControllers);
+            this.tabControlMap3.Controls.Add(this.tabPageMapData);
+            this.tabControlMap3.Controls.Add(this.tabPageMap3DVars);
+            this.tabControlMap3.Controls.Add(this.tabPageMap3DControllers);
             this.tabControlMap3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlMap3.Location = new System.Drawing.Point(0, 0);
             this.tabControlMap3.Margin = new System.Windows.Forms.Padding(0);
@@ -11331,111 +11331,111 @@ namespace STROOP
             this.buttonMapControllersScalePlus.TabIndex = 39;
             this.buttonMapControllersScalePlus.UseVisualStyleBackColor = true;
             // 
-            // tabPageMap3Data
+            // tabPageMapData
             // 
-            this.tabPageMap3Data.AutoScroll = true;
-            this.tabPageMap3Data.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageMap3Data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap3Data.Controls.Add(this.labelMap3DataQpuCoordinates);
-            this.tabPageMap3Data.Controls.Add(this.labelMap3DataYNorm);
-            this.tabPageMap3Data.Controls.Add(this.labelMap3DataId);
-            this.tabPageMap3Data.Controls.Add(this.labelMap3DataQpuCoordinateValues);
-            this.tabPageMap3Data.Controls.Add(this.labelMap3DataPuCoordinateValues);
-            this.tabPageMap3Data.Controls.Add(this.labelMap3DataMapSubName);
-            this.tabPageMap3Data.Controls.Add(this.labelMap3DataMapName);
-            this.tabPageMap3Data.Controls.Add(this.labelMap3DataPuCoordinates);
-            this.tabPageMap3Data.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMap3Data.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageMap3Data.Name = "tabPageMap3Data";
-            this.tabPageMap3Data.Size = new System.Drawing.Size(347, 292);
-            this.tabPageMap3Data.TabIndex = 2;
-            this.tabPageMap3Data.Text = "Data";
+            this.tabPageMapData.AutoScroll = true;
+            this.tabPageMapData.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMapData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMapData.Controls.Add(this.labelMapDataQpuCoordinates);
+            this.tabPageMapData.Controls.Add(this.labelMapDataYNorm);
+            this.tabPageMapData.Controls.Add(this.labelMapDataId);
+            this.tabPageMapData.Controls.Add(this.labelMapDataQpuCoordinateValues);
+            this.tabPageMapData.Controls.Add(this.labelMapDataPuCoordinateValues);
+            this.tabPageMapData.Controls.Add(this.labelMapDataMapSubName);
+            this.tabPageMapData.Controls.Add(this.labelMapDataMapName);
+            this.tabPageMapData.Controls.Add(this.labelMapDataPuCoordinates);
+            this.tabPageMapData.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMapData.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMapData.Name = "tabPageMapData";
+            this.tabPageMapData.Size = new System.Drawing.Size(347, 292);
+            this.tabPageMapData.TabIndex = 2;
+            this.tabPageMapData.Text = "Data";
             // 
-            // labelMap3DataQpuCoordinates
+            // labelMapDataQpuCoordinates
             // 
-            this.labelMap3DataQpuCoordinates.AutoSize = true;
-            this.labelMap3DataQpuCoordinates.Location = new System.Drawing.Point(5, 67);
-            this.labelMap3DataQpuCoordinates.Name = "labelMap3DataQpuCoordinates";
-            this.labelMap3DataQpuCoordinates.Size = new System.Drawing.Size(69, 13);
-            this.labelMap3DataQpuCoordinates.TabIndex = 56;
-            this.labelMap3DataQpuCoordinates.Text = "QPU [X:Y:Z]:";
+            this.labelMapDataQpuCoordinates.AutoSize = true;
+            this.labelMapDataQpuCoordinates.Location = new System.Drawing.Point(5, 67);
+            this.labelMapDataQpuCoordinates.Name = "labelMapDataQpuCoordinates";
+            this.labelMapDataQpuCoordinates.Size = new System.Drawing.Size(69, 13);
+            this.labelMapDataQpuCoordinates.TabIndex = 56;
+            this.labelMapDataQpuCoordinates.Text = "QPU [X:Y:Z]:";
             // 
-            // labelMap3DataYNorm
+            // labelMapDataYNorm
             // 
-            this.labelMap3DataYNorm.AutoSize = true;
-            this.labelMap3DataYNorm.Location = new System.Drawing.Point(76, 87);
-            this.labelMap3DataYNorm.Name = "labelMap3DataYNorm";
-            this.labelMap3DataYNorm.Size = new System.Drawing.Size(40, 13);
-            this.labelMap3DataYNorm.TabIndex = 37;
-            this.labelMap3DataYNorm.Text = "1.0000";
+            this.labelMapDataYNorm.AutoSize = true;
+            this.labelMapDataYNorm.Location = new System.Drawing.Point(76, 87);
+            this.labelMapDataYNorm.Name = "labelMapDataYNorm";
+            this.labelMapDataYNorm.Size = new System.Drawing.Size(40, 13);
+            this.labelMapDataYNorm.TabIndex = 37;
+            this.labelMapDataYNorm.Text = "1.0000";
             // 
-            // labelMap3DataId
+            // labelMapDataId
             // 
-            this.labelMap3DataId.AutoSize = true;
-            this.labelMap3DataId.Location = new System.Drawing.Point(13, 87);
-            this.labelMap3DataId.Name = "labelMap3DataId";
-            this.labelMap3DataId.Size = new System.Drawing.Size(46, 13);
-            this.labelMap3DataId.TabIndex = 38;
-            this.labelMap3DataId.Text = "[9:1:1:2]";
+            this.labelMapDataId.AutoSize = true;
+            this.labelMapDataId.Location = new System.Drawing.Point(13, 87);
+            this.labelMapDataId.Name = "labelMapDataId";
+            this.labelMapDataId.Size = new System.Drawing.Size(46, 13);
+            this.labelMapDataId.TabIndex = 38;
+            this.labelMapDataId.Text = "[9:1:1:2]";
             // 
-            // labelMap3DataQpuCoordinateValues
+            // labelMapDataQpuCoordinateValues
             // 
-            this.labelMap3DataQpuCoordinateValues.AutoSize = true;
-            this.labelMap3DataQpuCoordinateValues.Location = new System.Drawing.Point(76, 67);
-            this.labelMap3DataQpuCoordinateValues.Name = "labelMap3DataQpuCoordinateValues";
-            this.labelMap3DataQpuCoordinateValues.Size = new System.Drawing.Size(37, 13);
-            this.labelMap3DataQpuCoordinateValues.TabIndex = 39;
-            this.labelMap3DataQpuCoordinateValues.Text = "[0:0:0]";
+            this.labelMapDataQpuCoordinateValues.AutoSize = true;
+            this.labelMapDataQpuCoordinateValues.Location = new System.Drawing.Point(76, 67);
+            this.labelMapDataQpuCoordinateValues.Name = "labelMapDataQpuCoordinateValues";
+            this.labelMapDataQpuCoordinateValues.Size = new System.Drawing.Size(37, 13);
+            this.labelMapDataQpuCoordinateValues.TabIndex = 39;
+            this.labelMapDataQpuCoordinateValues.Text = "[0:0:0]";
             // 
-            // labelMap3DataPuCoordinateValues
+            // labelMapDataPuCoordinateValues
             // 
-            this.labelMap3DataPuCoordinateValues.AutoSize = true;
-            this.labelMap3DataPuCoordinateValues.Location = new System.Drawing.Point(76, 47);
-            this.labelMap3DataPuCoordinateValues.Name = "labelMap3DataPuCoordinateValues";
-            this.labelMap3DataPuCoordinateValues.Size = new System.Drawing.Size(37, 13);
-            this.labelMap3DataPuCoordinateValues.TabIndex = 40;
-            this.labelMap3DataPuCoordinateValues.Text = "[0:0:0]";
+            this.labelMapDataPuCoordinateValues.AutoSize = true;
+            this.labelMapDataPuCoordinateValues.Location = new System.Drawing.Point(76, 47);
+            this.labelMapDataPuCoordinateValues.Name = "labelMapDataPuCoordinateValues";
+            this.labelMapDataPuCoordinateValues.Size = new System.Drawing.Size(37, 13);
+            this.labelMapDataPuCoordinateValues.TabIndex = 40;
+            this.labelMapDataPuCoordinateValues.Text = "[0:0:0]";
             // 
-            // labelMap3DataMapSubName
+            // labelMapDataMapSubName
             // 
-            this.labelMap3DataMapSubName.AutoSize = true;
-            this.labelMap3DataMapSubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMap3DataMapSubName.Location = new System.Drawing.Point(7, 23);
-            this.labelMap3DataMapSubName.Name = "labelMap3DataMapSubName";
-            this.labelMap3DataMapSubName.Size = new System.Drawing.Size(81, 13);
-            this.labelMap3DataMapSubName.TabIndex = 52;
-            this.labelMap3DataMapSubName.Text = "Map Sub Name";
+            this.labelMapDataMapSubName.AutoSize = true;
+            this.labelMapDataMapSubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMapDataMapSubName.Location = new System.Drawing.Point(7, 23);
+            this.labelMapDataMapSubName.Name = "labelMapDataMapSubName";
+            this.labelMapDataMapSubName.Size = new System.Drawing.Size(81, 13);
+            this.labelMapDataMapSubName.TabIndex = 52;
+            this.labelMapDataMapSubName.Text = "Map Sub Name";
             // 
-            // labelMap3DataMapName
+            // labelMapDataMapName
             // 
-            this.labelMap3DataMapName.AutoSize = true;
-            this.labelMap3DataMapName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMap3DataMapName.Location = new System.Drawing.Point(7, 7);
-            this.labelMap3DataMapName.Name = "labelMap3DataMapName";
-            this.labelMap3DataMapName.Size = new System.Drawing.Size(67, 13);
-            this.labelMap3DataMapName.TabIndex = 54;
-            this.labelMap3DataMapName.Text = "Map Name";
+            this.labelMapDataMapName.AutoSize = true;
+            this.labelMapDataMapName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMapDataMapName.Location = new System.Drawing.Point(7, 7);
+            this.labelMapDataMapName.Name = "labelMapDataMapName";
+            this.labelMapDataMapName.Size = new System.Drawing.Size(67, 13);
+            this.labelMapDataMapName.TabIndex = 54;
+            this.labelMapDataMapName.Text = "Map Name";
             // 
-            // labelMap3DataPuCoordinates
+            // labelMapDataPuCoordinates
             // 
-            this.labelMap3DataPuCoordinates.AutoSize = true;
-            this.labelMap3DataPuCoordinates.Location = new System.Drawing.Point(13, 47);
-            this.labelMap3DataPuCoordinates.Name = "labelMap3DataPuCoordinates";
-            this.labelMap3DataPuCoordinates.Size = new System.Drawing.Size(61, 13);
-            this.labelMap3DataPuCoordinates.TabIndex = 41;
-            this.labelMap3DataPuCoordinates.Text = "PU [X:Y:Z]:";
+            this.labelMapDataPuCoordinates.AutoSize = true;
+            this.labelMapDataPuCoordinates.Location = new System.Drawing.Point(13, 47);
+            this.labelMapDataPuCoordinates.Name = "labelMapDataPuCoordinates";
+            this.labelMapDataPuCoordinates.Size = new System.Drawing.Size(61, 13);
+            this.labelMapDataPuCoordinates.TabIndex = 41;
+            this.labelMapDataPuCoordinates.Text = "PU [X:Y:Z]:";
             // 
-            // tabPageMap33DVars
+            // tabPageMap3DVars
             // 
-            this.tabPageMap33DVars.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageMap33DVars.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap33DVars.Controls.Add(this.watchVariablePanelMap3DVars);
-            this.tabPageMap33DVars.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMap33DVars.Name = "tabPageMap33DVars";
-            this.tabPageMap33DVars.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMap33DVars.Size = new System.Drawing.Size(347, 292);
-            this.tabPageMap33DVars.TabIndex = 4;
-            this.tabPageMap33DVars.Text = "3D Vars";
+            this.tabPageMap3DVars.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMap3DVars.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMap3DVars.Controls.Add(this.watchVariablePanelMap3DVars);
+            this.tabPageMap3DVars.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap3DVars.Name = "tabPageMap3DVars";
+            this.tabPageMap3DVars.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMap3DVars.Size = new System.Drawing.Size(347, 292);
+            this.tabPageMap3DVars.TabIndex = 4;
+            this.tabPageMap3DVars.Text = "3D Vars";
             // 
             // watchVariablePanelMap3DVars
             // 
@@ -11449,25 +11449,25 @@ namespace STROOP
             this.watchVariablePanelMap3DVars.Size = new System.Drawing.Size(339, 284);
             this.watchVariablePanelMap3DVars.TabIndex = 6;
             // 
-            // tabPageMap33DControllers
+            // tabPageMap3DControllers
             // 
-            this.tabPageMap33DControllers.AutoScroll = true;
-            this.tabPageMap33DControllers.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageMap33DControllers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap33DControllers.Controls.Add(this.textBoxMapFov);
-            this.tabPageMap33DControllers.Controls.Add(this.labelMapFov);
-            this.tabPageMap33DControllers.Controls.Add(this.trackBarMapFov);
-            this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapCameraFocus);
-            this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapFocusSpherical);
-            this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapFocusPosition);
-            this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapCameraSpherical);
-            this.tabPageMap33DControllers.Controls.Add(this.groupBoxMapCameraPosition);
-            this.tabPageMap33DControllers.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMap33DControllers.Name = "tabPageMap33DControllers";
-            this.tabPageMap33DControllers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMap33DControllers.Size = new System.Drawing.Size(347, 292);
-            this.tabPageMap33DControllers.TabIndex = 5;
-            this.tabPageMap33DControllers.Text = "3D Controllers";
+            this.tabPageMap3DControllers.AutoScroll = true;
+            this.tabPageMap3DControllers.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMap3DControllers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMap3DControllers.Controls.Add(this.textBoxMapFov);
+            this.tabPageMap3DControllers.Controls.Add(this.labelMapFov);
+            this.tabPageMap3DControllers.Controls.Add(this.trackBarMapFov);
+            this.tabPageMap3DControllers.Controls.Add(this.groupBoxMapCameraFocus);
+            this.tabPageMap3DControllers.Controls.Add(this.groupBoxMapFocusSpherical);
+            this.tabPageMap3DControllers.Controls.Add(this.groupBoxMapFocusPosition);
+            this.tabPageMap3DControllers.Controls.Add(this.groupBoxMapCameraSpherical);
+            this.tabPageMap3DControllers.Controls.Add(this.groupBoxMapCameraPosition);
+            this.tabPageMap3DControllers.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap3DControllers.Name = "tabPageMap3DControllers";
+            this.tabPageMap3DControllers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMap3DControllers.Size = new System.Drawing.Size(347, 292);
+            this.tabPageMap3DControllers.TabIndex = 5;
+            this.tabPageMap3DControllers.Text = "3D Controllers";
             // 
             // textBoxMapFov
             // 
@@ -21062,11 +21062,11 @@ namespace STROOP
             this.groupBoxMapControllersCenter.PerformLayout();
             this.groupBoxMapControllersScale.ResumeLayout(false);
             this.groupBoxMapControllersScale.PerformLayout();
-            this.tabPageMap3Data.ResumeLayout(false);
-            this.tabPageMap3Data.PerformLayout();
-            this.tabPageMap33DVars.ResumeLayout(false);
-            this.tabPageMap33DControllers.ResumeLayout(false);
-            this.tabPageMap33DControllers.PerformLayout();
+            this.tabPageMapData.ResumeLayout(false);
+            this.tabPageMapData.PerformLayout();
+            this.tabPageMap3DVars.ResumeLayout(false);
+            this.tabPageMap3DControllers.ResumeLayout(false);
+            this.tabPageMap3DControllers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapFov)).EndInit();
             this.groupBoxMapCameraFocus.ResumeLayout(false);
             this.groupBoxMapCameraFocus.PerformLayout();
@@ -22726,15 +22726,15 @@ namespace STROOP
         private Button buttonMapControllersScaleMinus;
         private RadioButton radioButtonMapControllersScaleCustom;
         private Button buttonMapControllersScalePlus;
-        private TabPage tabPageMap3Data;
-        private Label labelMap3DataQpuCoordinates;
-        private Label labelMap3DataYNorm;
-        private Label labelMap3DataId;
-        private Label labelMap3DataQpuCoordinateValues;
-        private Label labelMap3DataPuCoordinateValues;
-        private Label labelMap3DataMapSubName;
-        private Label labelMap3DataMapName;
-        private Label labelMap3DataPuCoordinates;
+        private TabPage tabPageMapData;
+        private Label labelMapDataQpuCoordinates;
+        private Label labelMapDataYNorm;
+        private Label labelMapDataId;
+        private Label labelMapDataQpuCoordinateValues;
+        private Label labelMapDataPuCoordinateValues;
+        private Label labelMapDataMapSubName;
+        private Label labelMapDataMapName;
+        private Label labelMapDataPuCoordinates;
         private MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
         private Button buttonMapOptionsTrackMarkedObjects;
         private CheckBox checkBoxMapOptionsTrackCurrentUnit;
@@ -22788,9 +22788,9 @@ namespace STROOP
         private CheckBox checkBoxMemoryReaderHex;
         private OpenTK.GLControl glControlMap3D;
         private CheckBox checkBoxMapOptionsEnable3D;
-        private TabPage tabPageMap33DVars;
+        private TabPage tabPageMap3DVars;
         private WatchVariableFlowLayoutPanel watchVariablePanelMap3DVars;
-        private TabPage tabPageMap33DControllers;
+        private TabPage tabPageMap3DControllers;
         private GroupBox groupBoxMapCameraFocus;
         private CheckBox checkBoxMapCameraFocusRelative;
         private BetterTextbox textBoxMapCameraFocusY;
