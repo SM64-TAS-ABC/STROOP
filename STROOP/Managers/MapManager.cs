@@ -93,7 +93,7 @@ namespace STROOP.Managers
                         string text = DialogUtilities.GetStringFromDialog(labelText: "Enter points as pairs of integers.");
                         MapObject mapObj = MapCustomPointsObject.Create(text);
                         if (mapObj == null) return;
-                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        MapTracker tracker = new MapTracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                     () =>
@@ -101,7 +101,7 @@ namespace STROOP.Managers
                         string text = DialogUtilities.GetStringFromDialog(labelText: "Enter triangle addresses as hex uints.");
                         MapObject mapObj = MapCustomFloorObject.Create(text);
                         if (mapObj == null) return;
-                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        MapTracker tracker = new MapTracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                     () =>
@@ -109,7 +109,7 @@ namespace STROOP.Managers
                         string text = DialogUtilities.GetStringFromDialog(labelText: "Enter triangle addresses as hex uints.");
                         MapObject mapObj = MapCustomWallObject.Create(text);
                         if (mapObj == null) return;
-                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        MapTracker tracker = new MapTracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                     () =>
@@ -117,55 +117,55 @@ namespace STROOP.Managers
                         string text = DialogUtilities.GetStringFromDialog(labelText: "Enter triangle addresses as hex uints.");
                         MapObject mapObj = MapCustomCeilingObject.Create(text);
                         if (mapObj == null) return;
-                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        MapTracker tracker = new MapTracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapLevelFloorObject();
-                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        MapTracker tracker = new MapTracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapLevelWallObject();
-                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        MapTracker tracker = new MapTracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapLevelCeilingObject();
-                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        MapTracker tracker = new MapTracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapHitboxHackTriangleObject();
-                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        MapTracker tracker = new MapTracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapCustomMapObject();
-                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        MapTracker tracker = new MapTracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapCustomBackgroundObject();
-                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        MapTracker tracker = new MapTracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapCustomGridlinesObject();
-                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        MapTracker tracker = new MapTracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapIwerlipsesObject();
-                        Map3Tracker tracker = new Map3Tracker(mapObj);
+                        MapTracker tracker = new MapTracker(mapObj);
                         Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
                     },
                 });
@@ -484,7 +484,7 @@ namespace STROOP.Managers
         {
             Action<bool> addTrackerAction = (bool withSemaphore) =>
             {
-                Map3Tracker tracker = new Map3Tracker(
+                MapTracker tracker = new MapTracker(
                     new List<MapObject>() { mapObjFunc() },
                     withSemaphore ? new List<MapSemaphore>() { semaphore } : new List<MapSemaphore>());
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
@@ -592,7 +592,7 @@ namespace STROOP.Managers
                 MapObject mapObj = new MapObjectObject(address);
                 MapSemaphore semaphore = MapSemaphoreManager.Objects[index];
                 semaphore.IsUsed = true;
-                Map3Tracker tracker = new Map3Tracker(
+                MapTracker tracker = new MapTracker(
                     new List<MapObject>() { mapObj }, new List<MapSemaphore>() { semaphore });
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             }
@@ -638,7 +638,7 @@ namespace STROOP.Managers
             semaphores.ForEach(semaphore => semaphore.IsUsed = true);
             Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses.AddRange(addresses);
             _currentObjIndexes.AddRange(indexes);
-            Map3Tracker tracker = new Map3Tracker(mapObjs, semaphores);
+            MapTracker tracker = new MapTracker(mapObjs, semaphores);
             Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
         }
 

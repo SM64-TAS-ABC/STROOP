@@ -2,7 +2,7 @@
 
 namespace STROOP.Map3
 {
-    partial class Map3Tracker
+    partial class MapTracker
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace STROOP.Map3
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Map3Tracker));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapTracker));
             this.tableLayoutPanel = new STROOP.Controls.BorderedTableLayoutPanel();
             this.checkBoxShowTriUnits = new System.Windows.Forms.CheckBox();
             this.trackBarOutlineWidth = new STROOP.TrackBarEx();

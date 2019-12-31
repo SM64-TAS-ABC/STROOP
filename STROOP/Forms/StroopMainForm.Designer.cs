@@ -883,7 +883,7 @@ namespace STROOP
             this.buttonMapCameraPositionXnZp = new System.Windows.Forms.Button();
             this.buttonMapCameraPositionXn = new System.Windows.Forms.Button();
             this.buttonMapCameraPositionXnZn = new System.Windows.Forms.Button();
-            this.flowLayoutPanelMap3Trackers = new STROOP.Map3.Map3TrackerFlowLayoutPanel();
+            this.flowLayoutPanelMap3Trackers = new STROOP.Map3.MapTrackerFlowLayoutPanel();
             this.glControlMap4 = new OpenTK.GLControl();
             this.glControlMap3 = new OpenTK.GLControl();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
@@ -22735,7 +22735,7 @@ namespace STROOP
         private Label labelMap3DataMapSubName;
         private Label labelMap3DataMapName;
         private Label labelMap3DataPuCoordinates;
-        private Map3TrackerFlowLayoutPanel flowLayoutPanelMap3Trackers;
+        private MapTrackerFlowLayoutPanel flowLayoutPanelMap3Trackers;
         private Button buttonMap3OptionsTrackMarkedObjects;
         private CheckBox checkBoxMap3OptionsTrackCurrentUnit;
         private CheckBox checkBoxMap3OptionsTrackUnitGridlines;

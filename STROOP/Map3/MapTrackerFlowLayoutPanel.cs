@@ -17,9 +17,9 @@ using OpenTK.Graphics.OpenGL;
 
 namespace STROOP.Map3
 {
-    public class Map3TrackerFlowLayoutPanel : NoTearFlowLayoutPanel
+    public class MapTrackerFlowLayoutPanel : NoTearFlowLayoutPanel
     {
-        private readonly Object _objectLock = new Object();
+        private readonly object _objectLock = new object();
 
         private MapObject _mapObjMap;
         private MapObject _mapObjBackground;
@@ -32,7 +32,7 @@ namespace STROOP.Map3
             _mapObjHitboxHackTris = mapObjHitboxHackTris;
         }
 
-        public void MoveUpControl(Map3Tracker mapTracker)
+        public void MoveUpControl(MapTracker mapTracker)
         {
             lock (_objectLock)
             {
@@ -43,7 +43,7 @@ namespace STROOP.Map3
             }
         }
 
-        public void MoveDownControl(Map3Tracker mapTracker)
+        public void MoveDownControl(MapTracker mapTracker)
         {
             lock (_objectLock)
             {
@@ -54,7 +54,7 @@ namespace STROOP.Map3
             }
         }
 
-        public void RemoveControl(Map3Tracker mapTracker)
+        public void RemoveControl(MapTracker mapTracker)
         {
             lock (_objectLock)
             {
@@ -63,7 +63,7 @@ namespace STROOP.Map3
             }
         }
 
-        public void AddNewControl(Map3Tracker mapTracker)
+        public void AddNewControl(MapTracker mapTracker)
         {
             lock (_objectLock)
             {
@@ -77,7 +77,7 @@ namespace STROOP.Map3
             {
                 while (Controls.Count > 0)
                 {
-                    RemoveControl(Controls[0] as Map3Tracker);
+                    RemoveControl(Controls[0] as MapTracker);
                 }
             }
         }
@@ -90,7 +90,7 @@ namespace STROOP.Map3
 
             lock (_objectLock)
             {
-                foreach (Map3Tracker tracker in Controls)
+                foreach (MapTracker tracker in Controls)
                 {
                     tracker.UpdateControl();
                 }
@@ -108,7 +108,7 @@ namespace STROOP.Map3
 
             lock (_objectLock)
             {
-                foreach (Map3Tracker mapTracker in Controls)
+                foreach (MapTracker mapTracker in Controls)
                 {
                     switch (mapTracker.GetOrderType())
                     {
@@ -154,7 +154,7 @@ namespace STROOP.Map3
 
             lock (_objectLock)
             {
-                foreach (Map3Tracker mapTracker in Controls)
+                foreach (MapTracker mapTracker in Controls)
                 {
                     switch (mapTracker.GetOrderType())
                     {
@@ -196,7 +196,7 @@ namespace STROOP.Map3
         {
             lock (_objectLock)
             {
-                foreach (Map3Tracker tracker in Controls)
+                foreach (MapTracker tracker in Controls)
                 {
                     tracker.SetGlobalIconSize(size);
                 }

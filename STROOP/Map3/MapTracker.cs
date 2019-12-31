@@ -16,7 +16,7 @@ using STROOP.Interfaces;
 
 namespace STROOP.Map3
 {
-    public partial class Map3Tracker : UserControl
+    public partial class MapTracker : UserControl
     {
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
         private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
@@ -32,12 +32,12 @@ namespace STROOP.Map3
 
         private string _customName;
 
-        public Map3Tracker(MapObject mapObj, List<MapSemaphore> semaphoreList = null)
+        public MapTracker(MapObject mapObj, List<MapSemaphore> semaphoreList = null)
             : this(new List<MapObject>() { mapObj }, semaphoreList)
         {
         }
 
-        public Map3Tracker(
+        public MapTracker(
             List<MapObject> mapObjectList,
             List<MapSemaphore> semaphoreList = null)
         {
@@ -143,7 +143,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapHitboxCylinderObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
@@ -158,7 +158,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapTangibilitySphereObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
@@ -173,7 +173,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapDrawDistanceSphereObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
@@ -187,7 +187,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapCustomCylinderObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
@@ -201,7 +201,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapCustomSphereObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
@@ -216,7 +216,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapHomeObject(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
@@ -232,7 +232,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapCustomCylinderObject(homePosAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
@@ -248,7 +248,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapCustomSphereObject(homePosAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
@@ -263,7 +263,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapObjectFloorObject(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
@@ -278,7 +278,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapObjectWallObject(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
@@ -293,7 +293,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapObjectCeilingObject(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
@@ -307,7 +307,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapCurrentUnitObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
@@ -321,7 +321,7 @@ namespace STROOP.Map3
                     return (MapObject)new MapPathObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
-                Map3Tracker tracker = new Map3Tracker(newMapObjs);
+                MapTracker tracker = new MapTracker(newMapObjs);
                 Config.Map3Gui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
             };
 
