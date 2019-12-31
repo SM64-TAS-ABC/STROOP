@@ -1,7 +1,6 @@
 ﻿using STROOP.Managers;
-using STROOP.Map3;
-using STROOP.Map3.Map;
-using STROOP.Map3.Map.Graphics;
+using STROOP.Map;
+using STROOP.Map.Map3D;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;

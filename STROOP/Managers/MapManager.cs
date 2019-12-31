@@ -12,10 +12,8 @@ using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using STROOP.Structs.Configurations;
-using STROOP.Map3;
-using STROOP.Controls;
-using STROOP.Map3.Map.Graphics;
-using STROOP.Map3.Map;
+using STROOP.Map;
+using STROOP.Map.Map3D;
 
 namespace STROOP.Managers
 {

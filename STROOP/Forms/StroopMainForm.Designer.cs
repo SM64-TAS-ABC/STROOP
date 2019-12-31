@@ -1,5 +1,5 @@
 using STROOP.Controls;
-using STROOP.Map3;
+using STROOP.Map;
 using System.Windows.Forms;
 
 namespace STROOP
@@ -883,7 +883,7 @@ namespace STROOP
             this.buttonMapCameraPositionXnZp = new System.Windows.Forms.Button();
             this.buttonMapCameraPositionXn = new System.Windows.Forms.Button();
             this.buttonMapCameraPositionXnZn = new System.Windows.Forms.Button();
-            this.flowLayoutPanelMap3Trackers = new STROOP.Map3.MapTrackerFlowLayoutPanel();
+            this.flowLayoutPanelMap3Trackers = new STROOP.Map.MapTrackerFlowLayoutPanel();
             this.glControlMap4 = new OpenTK.GLControl();
             this.glControlMap3 = new OpenTK.GLControl();
             this.tabPageOptions = new System.Windows.Forms.TabPage();

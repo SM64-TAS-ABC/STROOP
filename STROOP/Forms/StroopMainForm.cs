@@ -17,7 +17,7 @@ using STROOP.Controls;
 using STROOP.Forms;
 using STROOP.Models;
 using STROOP.Structs.Gui;
-using STROOP.Map3;
+using STROOP.Map;
 
 namespace STROOP
 {

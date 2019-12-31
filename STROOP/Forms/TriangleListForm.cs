@@ -1,4 +1,4 @@
-﻿using STROOP.Map3;
+﻿using STROOP.Map;
 using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
