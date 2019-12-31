@@ -199,7 +199,7 @@ namespace STROOP.Map3
             vertexArrayForSurfaces.ForEach(vertexes =>
             {
                 int buffer = GL.GenBuffer();
-                GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+                GL.BindTexture(TextureTarget.Texture2D, Map4GraphicsUtilities.WhiteTexture);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
                 GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map4Vertex.Size), vertexes, BufferUsageHint.DynamicDraw);
                 Config.Map4Graphics.BindVertices();
@@ -212,7 +212,7 @@ namespace STROOP.Map3
                 vertexArrayForEdges.ForEach(vertexes =>
                 {
                     int buffer = GL.GenBuffer();
-                    GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+                    GL.BindTexture(TextureTarget.Texture2D, Map4GraphicsUtilities.WhiteTexture);
                     GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
                     GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map4Vertex.Size), vertexes, BufferUsageHint.DynamicDraw);
                     GL.LineWidth(OutlineWidth);

@@ -44,8 +44,6 @@ namespace STROOP.Map3.Map.Graphics
         int _glAttributeColor = 2;
         int _glAttributeTexCoords = 3;
 
-        public Map4GraphicsUtilities Utilities { get; private set; }
-
         public Map4Graphics()
         {
         }
@@ -71,9 +69,6 @@ namespace STROOP.Map3.Map.Graphics
 
             // Set viewport
             GL.Viewport(Config.Map3Gui.GLControl3D.DisplayRectangle);
-
-            // Create utilties for GraphicsItems to use
-            Utilities = new Map4GraphicsUtilities();
 
             Config.Map3Gui.GLControl3D.Paint += OnPaint;
             Config.Map3Gui.GLControl3D.Resize += OnResize;

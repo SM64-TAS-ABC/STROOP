@@ -56,7 +56,7 @@ namespace STROOP.Map3
             GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
 
             int buffer1 = GL.GenBuffer();
-            GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+            GL.BindTexture(TextureTarget.Texture2D, Map4GraphicsUtilities.WhiteTexture);
             GL.BindBuffer(BufferTarget.ArrayBuffer, buffer1);
             GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArray.Length * Map4Vertex.Size), vertexArray, BufferUsageHint.DynamicDraw);
             Config.Map4Graphics.BindVertices();
@@ -68,7 +68,7 @@ namespace STROOP.Map3
                 vertexArray2.ForEach(vertexes =>
                 {
                     int buffer2 = GL.GenBuffer();
-                    GL.BindTexture(TextureTarget.Texture2D, Config.Map4Graphics.Utilities.WhiteTexture);
+                    GL.BindTexture(TextureTarget.Texture2D, Map4GraphicsUtilities.WhiteTexture);
                     GL.BindBuffer(BufferTarget.ArrayBuffer, buffer2);
                     GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map4Vertex.Size), vertexes, BufferUsageHint.DynamicDraw);
                     GL.LineWidth(OutlineWidth);
