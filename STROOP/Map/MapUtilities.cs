@@ -28,7 +28,7 @@ namespace STROOP.Map
 
         public static Vector3 GetPositionOnViewFromCoordinate(Vector3 pos)
         {
-            Vector4 vec = Vector4.Transform(new Vector4(pos, 1), Config.Map4Camera.Matrix);
+            Vector4 vec = Vector4.Transform(new Vector4(pos, 1), Config.Map3DCamera.Matrix);
             vec.X /= vec.W;
             vec.Y /= vec.W;
             vec.Z = 0;
@@ -38,21 +38,21 @@ namespace STROOP.Map
         /** Takes in in-game coordinates, outputs control coordinates. */
         public static (float x, float z) ConvertCoordsForControl(float x, float z)
         {
-            x = Config.Map3Graphics.MapViewEnablePuView ? x : (float)PuUtilities.GetRelativeCoordinate(x);
-            z = Config.Map3Graphics.MapViewEnablePuView ? z : (float)PuUtilities.GetRelativeCoordinate(z);
-            float xOffset = x - Config.Map3Graphics.MapViewCenterXValue;
-            float zOffset = z - Config.Map3Graphics.MapViewCenterZValue;
+            x = Config.MapGraphics.MapViewEnablePuView ? x : (float)PuUtilities.GetRelativeCoordinate(x);
+            z = Config.MapGraphics.MapViewEnablePuView ? z : (float)PuUtilities.GetRelativeCoordinate(z);
+            float xOffset = x - Config.MapGraphics.MapViewCenterXValue;
+            float zOffset = z - Config.MapGraphics.MapViewCenterZValue;
             (float xOffsetRotated, float zOffsetRotated) =
                 ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
                     xOffset,
                     zOffset,
                     0,
                     0,
-                    -1 * Config.Map3Graphics.MapViewAngleValue);
-            float xOffsetPixels = xOffsetRotated * Config.Map3Graphics.MapViewScaleValue;
-            float zOffsetPixels = zOffsetRotated * Config.Map3Graphics.MapViewScaleValue;
-            float centerX = Config.Map3Gui.GLControl2D.Width / 2 + xOffsetPixels;
-            float centerZ = Config.Map3Gui.GLControl2D.Height / 2 + zOffsetPixels;
+                    -1 * Config.MapGraphics.MapViewAngleValue);
+            float xOffsetPixels = xOffsetRotated * Config.MapGraphics.MapViewScaleValue;
+            float zOffsetPixels = zOffsetRotated * Config.MapGraphics.MapViewScaleValue;
+            float centerX = Config.MapGui.GLControl2D.Width / 2 + xOffsetPixels;
+            float centerZ = Config.MapGui.GLControl2D.Height / 2 + zOffsetPixels;
             return (centerX, centerZ);
         }
 
@@ -66,7 +66,7 @@ namespace STROOP.Map
         /** Takes in in-game angle, outputs control angle. */
         public static float ConvertAngleForControl(double angle)
         {
-            angle += 32768 - Config.Map3Graphics.MapViewAngleValue;
+            angle += 32768 - Config.MapGraphics.MapViewAngleValue;
             if (double.IsNaN(angle)) angle = 0;
             return (float)MoreMath.AngleUnitsToDegrees(angle);
         }
@@ -74,14 +74,14 @@ namespace STROOP.Map
         public static SizeF ScaleImageSizeForControl(Size imageSize, float desiredRadius)
         {
             float desiredDiameter = desiredRadius * 2;
-            if (Config.Map3Graphics.MapViewScaleIconSizes) desiredDiameter *= Config.Map3Graphics.MapViewScaleValue;
+            if (Config.MapGraphics.MapViewScaleIconSizes) desiredDiameter *= Config.MapGraphics.MapViewScaleValue;
             float scale = Math.Max(imageSize.Height / desiredDiameter, imageSize.Width / desiredDiameter);
             return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
         }
 
         public static MapLayout GetMapLayout(object mapLayoutChoice = null)
         {
-            mapLayoutChoice = mapLayoutChoice ?? Config.Map3Gui.comboBoxMap3OptionsLevel.SelectedItem;
+            mapLayoutChoice = mapLayoutChoice ?? Config.MapGui.comboBoxMap3OptionsLevel.SelectedItem;
             if (mapLayoutChoice is MapLayout mapLayout)
             {
                 return mapLayout;
@@ -94,7 +94,7 @@ namespace STROOP.Map
 
         public static Image GetBackgroundImage(object backgroundChoice = null)
         {
-            backgroundChoice = backgroundChoice ?? Config.Map3Gui.comboBoxMap3OptionsBackground.SelectedItem;
+            backgroundChoice = backgroundChoice ?? Config.MapGui.comboBoxMap3OptionsBackground.SelectedItem;
             if (backgroundChoice is BackgroundImage background)
             {
                 return background.Image;
@@ -107,10 +107,10 @@ namespace STROOP.Map
 
         public static List<(float x, float z)> GetPuCenters()
         {
-            int xMin = ((((int)Config.Map3Graphics.MapViewXMin) / 65536) - 1) * 65536;
-            int xMax = ((((int)Config.Map3Graphics.MapViewXMax) / 65536) + 1) * 65536;
-            int zMin = ((((int)Config.Map3Graphics.MapViewZMin) / 65536) - 1) * 65536;
-            int zMax = ((((int)Config.Map3Graphics.MapViewZMax) / 65536) + 1) * 65536;
+            int xMin = ((((int)Config.MapGraphics.MapViewXMin) / 65536) - 1) * 65536;
+            int xMax = ((((int)Config.MapGraphics.MapViewXMax) / 65536) + 1) * 65536;
+            int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
+            int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
             List<(float x, float z)> centers = new List<(float x, float z)>();
             for (int x = xMin; x <= xMax; x += 65536)
             {

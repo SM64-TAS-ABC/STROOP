@@ -24,10 +24,10 @@ namespace STROOP.Map
 
         protected override List<(float x, float z)> GetVertices()
         {
-            int xMin = (int)Config.Map3Graphics.MapViewXMin - 10;
-            int xMax = (int)Config.Map3Graphics.MapViewXMax + 10;
-            int zMin = (int)Config.Map3Graphics.MapViewZMin - 10;
-            int zMax = (int)Config.Map3Graphics.MapViewZMax + 10;
+            int xMin = (int)Config.MapGraphics.MapViewXMin - 10;
+            int xMax = (int)Config.MapGraphics.MapViewXMax + 10;
+            int zMin = (int)Config.MapGraphics.MapViewZMin - 10;
+            int zMax = (int)Config.MapGraphics.MapViewZMax + 10;
 
             List<(float x, float z)> vertices = new List<(float x, float z)>();
             for (int x = xMin; x <= xMax; x += 1)

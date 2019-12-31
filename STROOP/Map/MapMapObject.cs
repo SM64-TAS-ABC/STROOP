@@ -32,13 +32,13 @@ namespace STROOP.Map
             RectangleF rectangle = GetMapLayout().Coordinates;
             float rectangleCenterX = rectangle.X + rectangle.Width / 2;
             float rectangleCenterZ = rectangle.Y + rectangle.Height / 2;
-            List<(float x, float z)> rectangleCenters = Config.Map3Graphics.MapViewEnablePuView ?
+            List<(float x, float z)> rectangleCenters = Config.MapGraphics.MapViewEnablePuView ?
                 MapUtilities.GetPuCoordinates(rectangleCenterX, rectangleCenterZ) :
                 new List<(float x, float z)>() { (rectangleCenterX, rectangleCenterZ) };
             List<(float x, float z)> controlCenters = rectangleCenters.ConvertAll(
                 rectangleCenter => MapUtilities.ConvertCoordsForControl(rectangleCenter.x, rectangleCenter.z));
-            float sizeX = rectangle.Width * Config.Map3Graphics.MapViewScaleValue;
-            float sizeZ = rectangle.Height * Config.Map3Graphics.MapViewScaleValue;
+            float sizeX = rectangle.Width * Config.MapGraphics.MapViewScaleValue;
+            float sizeZ = rectangle.Height * Config.MapGraphics.MapViewScaleValue;
             List<(PointF loc, SizeF size)> dimensions = controlCenters.ConvertAll(
                 controlCenter => (new PointF(controlCenter.x, controlCenter.z), new SizeF(sizeX, sizeZ)));
             return dimensions;

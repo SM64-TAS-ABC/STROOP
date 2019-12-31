@@ -23,9 +23,9 @@ namespace STROOP.Map
 
         protected override List<(PointF loc, SizeF size)> GetDimensions()
         {
-            float xCenter = Config.Map3Gui.GLControl2D.Width / 2;
-            float yCenter = Config.Map3Gui.GLControl2D.Height / 2;
-            float length = Math.Max(Config.Map3Gui.GLControl2D.Width, Config.Map3Gui.GLControl2D.Height);
+            float xCenter = Config.MapGui.GLControl2D.Width / 2;
+            float yCenter = Config.MapGui.GLControl2D.Height / 2;
+            float length = Math.Max(Config.MapGui.GLControl2D.Width, Config.MapGui.GLControl2D.Height);
             (PointF loc, SizeF size) dimension = (new PointF(xCenter, yCenter), new SizeF(length, length));
             return new List<(PointF loc, SizeF size)>() { dimension };
         }
@@ -37,8 +37,8 @@ namespace STROOP.Map
 
         private Map3DVertex[] GetVertices()
         {
-            float width = Config.Map3Gui.GLControl3D.Width;
-            float height = Config.Map3Gui.GLControl3D.Height;
+            float width = Config.MapGui.GLControl3D.Width;
+            float height = Config.MapGui.GLControl3D.Height;
             bool widthIsMin = width <= height;
             float ratio = Math.Max(width, height) / Math.Min(width, height);
             float widthMultiplier = widthIsMin ? ratio : 1;
@@ -65,7 +65,7 @@ namespace STROOP.Map
             Map3DVertex[] vertices = GetVertices();
 
             Matrix4 viewMatrix = GetModelMatrix();
-            GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
+            GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
 
             int buffer = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
@@ -73,7 +73,7 @@ namespace STROOP.Map
                 vertices, BufferUsageHint.StaticDraw);
             GL.BindTexture(TextureTarget.Texture2D, TextureId);
             GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
-            Config.Map4Graphics.BindVertices();
+            Config.Map3DGraphics.BindVertices();
             GL.DrawArrays(PrimitiveType.Triangles, 0, vertices.Length);
             GL.DeleteBuffer(buffer);
         }

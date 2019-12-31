@@ -52,14 +52,14 @@ namespace STROOP.Map
                 vertexList => vertexList.ConvertAll(vertex => new Map3DVertex(new Vector3(
                     vertex.x, vertex.y, vertex.z), OutlineColor)).ToArray());
 
-            Matrix4 viewMatrix = GetModelMatrix() * Config.Map4Camera.Matrix;
-            GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
+            Matrix4 viewMatrix = GetModelMatrix() * Config.Map3DCamera.Matrix;
+            GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
 
             int buffer1 = GL.GenBuffer();
             GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
             GL.BindBuffer(BufferTarget.ArrayBuffer, buffer1);
             GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArray.Length * Map3DVertex.Size), vertexArray, BufferUsageHint.DynamicDraw);
-            Config.Map4Graphics.BindVertices();
+            Config.Map3DGraphics.BindVertices();
             GL.DrawArrays(PrimitiveType.Triangles, 0, vertexArray.Length);
             GL.DeleteBuffer(buffer1);
 
@@ -72,7 +72,7 @@ namespace STROOP.Map
                     GL.BindBuffer(BufferTarget.ArrayBuffer, buffer2);
                     GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map3DVertex.Size), vertexes, BufferUsageHint.DynamicDraw);
                     GL.LineWidth(OutlineWidth);
-                    Config.Map4Graphics.BindVertices();
+                    Config.Map3DGraphics.BindVertices();
                     GL.DrawArrays(PrimitiveType.LineLoop, 0, vertexes.Length);
                     GL.DeleteBuffer(buffer2);
                 });

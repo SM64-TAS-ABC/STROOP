@@ -29,7 +29,7 @@ namespace STROOP.Map
         {
             (float centerX, float centerZ, float radius) = Get2DDimensions();
             (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControl(centerX, centerZ);
-            float controlRadius = radius * Config.Map3Graphics.MapViewScaleValue;
+            float controlRadius = radius * Config.MapGraphics.MapViewScaleValue;
             List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS_2D).ToList()
                 .ConvertAll(index => (index / (float)NUM_POINTS_2D) * 65536)
                 .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(controlRadius, angle, controlCenterX, controlCenterZ));

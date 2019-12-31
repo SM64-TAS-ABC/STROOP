@@ -32,13 +32,13 @@ namespace STROOP.Map.Map3D
 
         public Map3DCamera()
         {
-            Config.Map4Graphics.OnSizeChanged += (sender, e) => UpdateProjection();
+            Config.Map3DGraphics.OnSizeChanged += (sender, e) => UpdateProjection();
             UpdateProjection();
         }
 
         private void UpdateProjection()
         {
-            _projection = Matrix4.CreatePerspectiveFieldOfView(FOV, Config.Map4Graphics.AspectRatio, 0.1f, 0x8000);
+            _projection = Matrix4.CreatePerspectiveFieldOfView(FOV, Config.Map3DGraphics.AspectRatio, 0.1f, 0x8000);
         }
 
         public void SetLookTarget(Vector3 target, Vector3 up)

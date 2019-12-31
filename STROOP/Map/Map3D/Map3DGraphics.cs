@@ -23,13 +23,13 @@ namespace STROOP.Map.Map3D
         const string FragmentShaderPath = @"Resources\Shaders\FragmentShader.glsl";
         const string ShaderLogPath = @"Resources\Shaders\ShaderLog.txt";
 
-        public float AspectRatio => Config.Map3Gui.GLControl3D.AspectRatio;
-        public float NormalizedWidth => AspectRatio <= 1.0f ? 1.0f : (float)Config.Map3Gui.GLControl3D.Width / Config.Map3Gui.GLControl3D.Height;
-        public float NormalizedHeight => AspectRatio >= 1.0f ? 1.0f : (float)Config.Map3Gui.GLControl3D.Height / Config.Map3Gui.GLControl3D.Width;
-        public Size Size => Config.Map3Gui.GLControl3D.Size;
-        public float Width => Config.Map3Gui.GLControl3D.Width;
-        public float Height => Config.Map3Gui.GLControl3D.Height;
-        public bool Visible { get => Config.Map3Gui.GLControl3D.Visible; set => Config.Map3Gui.GLControl3D.Visible = value; }
+        public float AspectRatio => Config.MapGui.GLControl3D.AspectRatio;
+        public float NormalizedWidth => AspectRatio <= 1.0f ? 1.0f : (float)Config.MapGui.GLControl3D.Width / Config.MapGui.GLControl3D.Height;
+        public float NormalizedHeight => AspectRatio >= 1.0f ? 1.0f : (float)Config.MapGui.GLControl3D.Height / Config.MapGui.GLControl3D.Width;
+        public Size Size => Config.MapGui.GLControl3D.Size;
+        public float Width => Config.MapGui.GLControl3D.Width;
+        public float Height => Config.MapGui.GLControl3D.Height;
+        public bool Visible { get => Config.MapGui.GLControl3D.Visible; set => Config.MapGui.GLControl3D.Visible = value; }
 
         public event EventHandler OnSizeChanged;
 
@@ -51,10 +51,10 @@ namespace STROOP.Map.Map3D
 
         public void Load()
         {
-            Config.Map4Camera = new Map3DCamera();
+            Config.Map3DCamera = new Map3DCamera();
 
-            Config.Map3Gui.GLControl3D.MakeCurrent();
-            Config.Map3Gui.GLControl3D.Context.LoadAll();
+            Config.MapGui.GLControl3D.MakeCurrent();
+            Config.MapGui.GLControl3D.Context.LoadAll();
 
             CheckVersion();
             if (_error)
@@ -71,26 +71,26 @@ namespace STROOP.Map.Map3D
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             // Set viewport
-            GL.Viewport(Config.Map3Gui.GLControl3D.DisplayRectangle);
+            GL.Viewport(Config.MapGui.GLControl3D.DisplayRectangle);
 
-            Config.Map3Gui.GLControl3D.Paint += OnPaint;
-            Config.Map3Gui.GLControl3D.Resize += OnResize;
+            Config.MapGui.GLControl3D.Paint += OnPaint;
+            Config.MapGui.GLControl3D.Resize += OnResize;
         }
 
         public void OnPaint(object sender, EventArgs e)
         {
             UpdateCamera();
 
-            Config.Map3Gui.GLControl3D.MakeCurrent();
+            Config.MapGui.GLControl3D.MakeCurrent();
 
             // Set default background color (clear drawing area)
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.Disable(EnableCap.CullFace);
 
             // Make sure we have a camera
-            if (_error || Config.Map4Camera == null)
+            if (_error || Config.Map3DCamera == null)
             {
-                Config.Map3Gui.GLControl3D.SwapBuffers();
+                Config.MapGui.GLControl3D.SwapBuffers();
                 return;
             }
             
@@ -98,14 +98,14 @@ namespace STROOP.Map.Map3D
             GL.Disable(EnableCap.DepthTest);
 
             // Draw background
-            Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOn3DControl(MapDrawType.Background);
+            Config.MapGui.flowLayoutPanelMap3Trackers.DrawOn3DControl(MapDrawType.Background);
 
             // Setup 3D
             GL.Enable(EnableCap.DepthTest);
             GL.DepthMask(true);
 
             // Draw 3D
-            Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOn3DControl(MapDrawType.Perspective);
+            Config.MapGui.flowLayoutPanelMap3Trackers.DrawOn3DControl(MapDrawType.Perspective);
 
             // Setup 2D
             GL.Disable(EnableCap.DepthTest);
@@ -115,7 +115,7 @@ namespace STROOP.Map.Map3D
                 Debugger.Break();
 
             // Draw 2D
-            Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOn3DControl(MapDrawType.Overlay);
+            Config.MapGui.flowLayoutPanelMap3Trackers.DrawOn3DControl(MapDrawType.Overlay);
 
             error = GL.GetError();
             if (error != ErrorCode.NoError)
@@ -130,7 +130,7 @@ namespace STROOP.Map.Map3D
             if (error != ErrorCode.NoError)
                 Debugger.Break();
 
-            Config.Map3Gui.GLControl3D.SwapBuffers();
+            Config.MapGui.GLControl3D.SwapBuffers();
         }
 
         public void BindVertices()
@@ -145,14 +145,14 @@ namespace STROOP.Map.Map3D
 
         void OnResize(object sender, EventArgs e)
         {
-            GL.Viewport(Config.Map3Gui.GLControl3D.DisplayRectangle);
+            GL.Viewport(Config.MapGui.GLControl3D.DisplayRectangle);
             OnSizeChanged?.Invoke(sender, e);
             Invalidate();
         }
 
         public void Invalidate()
         {
-            Config.Map3Gui.GLControl3D.Invalidate();
+            Config.MapGui.GLControl3D.Invalidate();
         }
 
         private void CheckVersion()
@@ -326,12 +326,12 @@ namespace STROOP.Map.Map3D
                     throw new ArgumentOutOfRangeException();
             }
 
-            Config.Map4Camera.Position = new Vector3(SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ);
-            Config.Map4Camera.SetRotation(
+            Config.Map3DCamera.Position = new Vector3(SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ);
+            Config.Map3DCamera.SetRotation(
                 (float)MoreMath.AngleUnitsToRadians(SpecialConfig.Map3DCameraYaw),
                 (float)MoreMath.AngleUnitsToRadians(SpecialConfig.Map3DCameraPitch),
                 (float)MoreMath.AngleUnitsToRadians(SpecialConfig.Map3DCameraRoll));
-            Config.Map4Camera.FOV = SpecialConfig.Map3DFOV / 180 * (float)Math.PI;
+            Config.Map3DCamera.FOV = SpecialConfig.Map3DFOV / 180 * (float)Math.PI;
         }
 
         /*

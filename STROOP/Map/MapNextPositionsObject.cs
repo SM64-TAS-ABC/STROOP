@@ -69,7 +69,7 @@ namespace STROOP.Map
                 (float x, float y, float z, float angle, int tex) = dataPoint;
 
                 Matrix4 viewMatrix = GetModelMatrix(x, y, z, angle);
-                GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
+                GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
 
                 Map3DVertex[] vertices = GetVertices();
                 int vertexBuffer = GL.GenBuffer();
@@ -78,7 +78,7 @@ namespace STROOP.Map
                     vertices, BufferUsageHint.StaticDraw);
                 GL.BindTexture(TextureTarget.Texture2D, tex);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
-                Config.Map4Graphics.BindVertices();
+                Config.Map3DGraphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Triangles, 0, vertices.Length);
                 GL.DeleteBuffer(vertexBuffer);
             }
@@ -97,7 +97,7 @@ namespace STROOP.Map
             float size = Size / 200;
             return Matrix4.CreateScale(size * _imageNormalizedSize.Width, size * _imageNormalizedSize.Height, 1)
                 * Matrix4.CreateRotationZ(angle)
-                * Matrix4.CreateScale(1.0f / Config.Map4Graphics.NormalizedWidth, 1.0f / Config.Map4Graphics.NormalizedHeight, 1)
+                * Matrix4.CreateScale(1.0f / Config.Map3DGraphics.NormalizedWidth, 1.0f / Config.Map3DGraphics.NormalizedHeight, 1)
                 * Matrix4.CreateTranslation(MapUtilities.GetPositionOnViewFromCoordinate(pos));
         }
         

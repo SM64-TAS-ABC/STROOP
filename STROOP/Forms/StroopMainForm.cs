@@ -241,7 +241,7 @@ namespace STROOP
 
         private void CreateManagers()
         {
-            Config.Map3Gui = new MapGui()
+            Config.MapGui = new MapGui()
             {
                 GLControl2D = glControlMap3,
                 GLControl3D = glControlMap4,
@@ -405,7 +405,7 @@ namespace STROOP
             };
 
             // Create managers
-            Config.Map3Manager = new MapManager(@"Config/Map3DVars.xml");
+            Config.MapManager = new MapManager(@"Config/Map3DVars.xml");
 
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
@@ -603,7 +603,7 @@ namespace STROOP
                 Config.CellsManager.Update(tabControlMain.SelectedTab == tabPageCells);
                 Config.CoinManager.Update(tabControlMain.SelectedTab == tabPageCoin);
                 Config.M64Manager.Update(tabControlMain.SelectedTab == tabPageM64);
-                Config.Map3Manager.Update(tabControlMain.SelectedTab == tabPageMap);
+                Config.MapManager.Update(tabControlMain.SelectedTab == tabPageMap);
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();
                 Config.HackManager.Update();
@@ -662,23 +662,23 @@ namespace STROOP
         private async void glControlMap3_Load(object sender, EventArgs e)
         {
             await Task.Run(() => {
-                while (Config.Map3Manager == null)
+                while (Config.MapManager == null)
                 {
                     Task.Delay(1).Wait();
                 }
             });
-            Config.Map3Manager.Load2D();
+            Config.MapManager.Load2D();
         }
 
         private async void glControlMap4_Load(object sender, EventArgs e)
         {
             await Task.Run(() => {
-                while (Config.Map3Manager == null)
+                while (Config.MapManager == null)
                 {
                     Task.Delay(1).Wait();
                 }
             });
-            Config.Map3Manager.Load3D();
+            Config.MapManager.Load3D();
         }
 
         private async void glControlModelView_Load(object sender, EventArgs e)
