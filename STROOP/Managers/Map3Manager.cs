@@ -47,8 +47,6 @@ namespace STROOP.Managers
             // Create new graphics control
             Config.Map4Graphics = new Map4Graphics();
             Config.Map4Graphics.Load();
-            Config.Map4Controller = new Map4Controller();
-            Config.Map4Camera = new Map4Camera();
             _isLoaded3D = true;
         }
 
@@ -529,7 +527,7 @@ namespace STROOP.Managers
 
             if (Config.Map3Gui.checkBoxMap3OptionsEnable3D.Checked)
             {
-                Config.Map4Controller.Update();
+                Config.Map3Gui.GLControl3D.Invalidate();
             }
             else
             {

@@ -411,7 +411,6 @@
     <Compile Include="Map3\Map\Map4Camera.cs" />
     <Compile Include="Map3\Map\Map4Graphics.cs" />
     <Compile Include="Map3\Map\Map4Vertex.cs" />
-    <Compile Include="Map3\Map\Map4Controller.cs" />
     <Compile Include="Models\PanModel.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
     <Compile Include="Structs\Configurations\TtcObjectConfig.cs" />
