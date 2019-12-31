@@ -67,6 +67,10 @@ namespace STROOP.Map3
             foreach (var dataPoint in data)
             {
                 (float x, float y, float z, float angle, int tex) = dataPoint;
+
+                Matrix4 viewMatrix = GetModelMatrix(x, y, z, angle);
+                GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
+
                 Map4Vertex[] vertices = GetVertices();
                 int vertexBuffer = GL.GenBuffer();
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
@@ -79,8 +83,8 @@ namespace STROOP.Map3
                 GL.DeleteBuffer(vertexBuffer);
             }
         }
-        /*
-        public override Matrix4 GetModelMatrix(float x, float y, float z, float ang)
+        
+        public Matrix4 GetModelMatrix(float x, float y, float z, float ang)
         {
             Image image = Config.ObjectAssociations.BlueMarioMapImage;
             SizeF _imageNormalizedSize = new SizeF(
@@ -96,7 +100,7 @@ namespace STROOP.Map3
                 * Matrix4.CreateScale(1.0f / Config.Map4Graphics.NormalizedWidth, 1.0f / Config.Map4Graphics.NormalizedHeight, 1)
                 * Matrix4.CreateTranslation(Config.Map4Graphics.Utilities.GetPositionOnViewFromCoordinate(pos));
         }
-        */
+        
         private Map4Vertex[] GetVertices()
         {
             return new Map4Vertex[]
