@@ -659,7 +659,7 @@ namespace STROOP
 
         }
 
-        private async void glControlMap3_Load(object sender, EventArgs e)
+        private async void glControlMap2D_Load(object sender, EventArgs e)
         {
             await Task.Run(() => {
                 while (Config.MapManager == null)
@@ -670,7 +670,7 @@ namespace STROOP
             Config.MapManager.Load2D();
         }
 
-        private async void glControlMap4_Load(object sender, EventArgs e)
+        private async void glControlMap3D_Load(object sender, EventArgs e)
         {
             await Task.Run(() => {
                 while (Config.MapManager == null)

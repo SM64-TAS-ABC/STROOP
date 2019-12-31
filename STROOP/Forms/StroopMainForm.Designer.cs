@@ -12266,7 +12266,7 @@ namespace STROOP
             this.glControlMap3D.TabIndex = 1;
             this.glControlMap3D.Visible = false;
             this.glControlMap3D.VSync = false;
-            this.glControlMap3D.Load += new System.EventHandler(this.glControlMap4_Load);
+            this.glControlMap3D.Load += new System.EventHandler(this.glControlMap3D_Load);
             // 
             // glControlMap2D
             // 
@@ -12278,7 +12278,7 @@ namespace STROOP
             this.glControlMap2D.Size = new System.Drawing.Size(555, 461);
             this.glControlMap2D.TabIndex = 0;
             this.glControlMap2D.VSync = false;
-            this.glControlMap2D.Load += new System.EventHandler(this.glControlMap3_Load);
+            this.glControlMap2D.Load += new System.EventHandler(this.glControlMap2D_Load);
             // 
             // tabPageOptions
             // 
