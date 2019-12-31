@@ -180,7 +180,7 @@ namespace STROOP.Map
 
             List<MapObject> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
             listCombined.Insert(0, _mapObjBackground);
-            if (!Config.MapGui.checkBoxMap3OptionsDisable3DHitboxHackTris.Checked)
+            if (!Config.MapGui.checkBoxMapOptionsDisable3DHitboxHackTris.Checked)
             {
                 listCombined.Insert(0, _mapObjHitboxHackTris);
             }

@@ -25,7 +25,7 @@ namespace STROOP.Managers
         private bool _isLoaded3D = false;
 
         public MapManager(string varFilePath)
-            : base(varFilePath, Config.MapGui.watchVariablePanel3DVars)
+            : base(varFilePath, Config.MapGui.watchVariablePanelMap3DVars)
         {
         }
 
@@ -51,24 +51,24 @@ namespace STROOP.Managers
         private void InitializeControls()
         {
             // FlowLayoutPanel
-            Config.MapGui.flowLayoutPanelMap3Trackers.Initialize(
+            Config.MapGui.flowLayoutPanelMapTrackers.Initialize(
                 new MapCurrentMapObject(), new MapCurrentBackgroundObject(), new MapHitboxHackTriangleObject());
 
             // ComboBox for Level
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
             List<object> mapLayoutChoices = new List<object>() { "Recommended" };
             mapLayouts.ForEach(mapLayout => mapLayoutChoices.Add(mapLayout));
-            Config.MapGui.comboBoxMap3OptionsLevel.DataSource = mapLayoutChoices;
+            Config.MapGui.comboBoxMapOptionsLevel.DataSource = mapLayoutChoices;
 
             // ComboBox for Background
             List<BackgroundImage> backgroundImages = Config.MapAssociations.GetAllBackgroundImages();
             List<object> backgroundImageChoices = new List<object>() { "Recommended" };
             backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
-            Config.MapGui.comboBoxMap3OptionsBackground.DataSource = backgroundImageChoices;
+            Config.MapGui.comboBoxMapOptionsBackground.DataSource = backgroundImageChoices;
 
             // Buttons on Options
             ControlUtilities.AddContextMenuStripFunctions(
-                Config.MapGui.buttonMap3OptionsAddNewTracker,
+                Config.MapGui.buttonMapOptionsAddNewTracker,
                 new List<string>()
                 {
                     "Add Tracker for Custom Points",
@@ -92,7 +92,7 @@ namespace STROOP.Managers
                         MapObject mapObj = MapCustomPointsObject.Create(text);
                         if (mapObj == null) return;
                         MapTracker tracker = new MapTracker(mapObj);
-                        Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
                     () =>
                     {
@@ -100,7 +100,7 @@ namespace STROOP.Managers
                         MapObject mapObj = MapCustomFloorObject.Create(text);
                         if (mapObj == null) return;
                         MapTracker tracker = new MapTracker(mapObj);
-                        Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
                     () =>
                     {
@@ -108,7 +108,7 @@ namespace STROOP.Managers
                         MapObject mapObj = MapCustomWallObject.Create(text);
                         if (mapObj == null) return;
                         MapTracker tracker = new MapTracker(mapObj);
-                        Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
                     () =>
                     {
@@ -116,77 +116,77 @@ namespace STROOP.Managers
                         MapObject mapObj = MapCustomCeilingObject.Create(text);
                         if (mapObj == null) return;
                         MapTracker tracker = new MapTracker(mapObj);
-                        Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapLevelFloorObject();
                         MapTracker tracker = new MapTracker(mapObj);
-                        Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapLevelWallObject();
                         MapTracker tracker = new MapTracker(mapObj);
-                        Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapLevelCeilingObject();
                         MapTracker tracker = new MapTracker(mapObj);
-                        Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapHitboxHackTriangleObject();
                         MapTracker tracker = new MapTracker(mapObj);
-                        Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapCustomMapObject();
                         MapTracker tracker = new MapTracker(mapObj);
-                        Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapCustomBackgroundObject();
                         MapTracker tracker = new MapTracker(mapObj);
-                        Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapCustomGridlinesObject();
                         MapTracker tracker = new MapTracker(mapObj);
-                        Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
                     () =>
                     {
                         MapObject mapObj = new MapIwerlipsesObject();
                         MapTracker tracker = new MapTracker(mapObj);
-                        Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
                 });
-            Config.MapGui.buttonMap3OptionsAddNewTracker.Click += (sender, e) =>
-                Config.MapGui.buttonMap3OptionsAddNewTracker.ContextMenuStrip.Show(Cursor.Position);
-            Config.MapGui.buttonMap3OptionsClearAllTrackers.Click += (sender, e) =>
-                Config.MapGui.flowLayoutPanelMap3Trackers.ClearControls();
-            Config.MapGui.buttonMap3OptionsTrackAllObjects.Click += (sender, e) =>
+            Config.MapGui.buttonMapOptionsAddNewTracker.Click += (sender, e) =>
+                Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Show(Cursor.Position);
+            Config.MapGui.buttonMapOptionsClearAllTrackers.Click += (sender, e) =>
+                Config.MapGui.flowLayoutPanelMapTrackers.ClearControls();
+            Config.MapGui.buttonMapOptionsTrackAllObjects.Click += (sender, e) =>
                 TrackMultipleObjects(ObjectUtilities.GetAllObjectAddresses());
-            Config.MapGui.buttonMap3OptionsTrackMarkedObjects.Click += (sender, e) =>
+            Config.MapGui.buttonMapOptionsTrackMarkedObjects.Click += (sender, e) =>
                 TrackMultipleObjects(Config.ObjectSlotsManager.MarkedSlotsAddresses);
 
             // Buttons for Changing Scale
-            Config.MapGui.buttonMap3ControllersScaleMinus.Click += (sender, e) =>
-                Config.MapGraphics.ChangeScale(-1, Config.MapGui.textBoxMap3ControllersScaleChange.Text);
-            Config.MapGui.buttonMap3ControllersScalePlus.Click += (sender, e) =>
-                Config.MapGraphics.ChangeScale(1, Config.MapGui.textBoxMap3ControllersScaleChange.Text);
-            Config.MapGui.buttonMap3ControllersScaleDivide.Click += (sender, e) =>
-                Config.MapGraphics.ChangeScale2(-1, Config.MapGui.textBoxMap3ControllersScaleChange2.Text);
-            Config.MapGui.buttonMap3ControllersScaleTimes.Click += (sender, e) =>
-                Config.MapGraphics.ChangeScale2(1, Config.MapGui.textBoxMap3ControllersScaleChange2.Text);
+            Config.MapGui.buttonMapControllersScaleMinus.Click += (sender, e) =>
+                Config.MapGraphics.ChangeScale(-1, Config.MapGui.textBoxMapControllersScaleChange.Text);
+            Config.MapGui.buttonMapControllersScalePlus.Click += (sender, e) =>
+                Config.MapGraphics.ChangeScale(1, Config.MapGui.textBoxMapControllersScaleChange.Text);
+            Config.MapGui.buttonMapControllersScaleDivide.Click += (sender, e) =>
+                Config.MapGraphics.ChangeScale2(-1, Config.MapGui.textBoxMapControllersScaleChange2.Text);
+            Config.MapGui.buttonMapControllersScaleTimes.Click += (sender, e) =>
+                Config.MapGraphics.ChangeScale2(1, Config.MapGui.textBoxMapControllersScaleChange2.Text);
             ControlUtilities.AddContextMenuStripFunctions(
-                Config.MapGui.groupBoxMap3ControllersScale,
+                Config.MapGui.groupBoxMapControllersScale,
                 new List<string>()
                 {
                     "Very Small Unit Squares",
@@ -205,24 +205,24 @@ namespace STROOP.Managers
                 });
 
             // Buttons for Changing Center
-            Config.MapGui.buttonMap3ControllersCenterUp.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(0, -1, Config.MapGui.textBoxMap3ControllersCenterChange.Text);
-            Config.MapGui.buttonMap3ControllersCenterDown.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(0, 1, Config.MapGui.textBoxMap3ControllersCenterChange.Text);
-            Config.MapGui.buttonMap3ControllersCenterLeft.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(-1, 0, Config.MapGui.textBoxMap3ControllersCenterChange.Text);
-            Config.MapGui.buttonMap3ControllersCenterRight.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(1, 0, Config.MapGui.textBoxMap3ControllersCenterChange.Text);
-            Config.MapGui.buttonMap3ControllersCenterUpLeft.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(-1, -1, Config.MapGui.textBoxMap3ControllersCenterChange.Text);
-            Config.MapGui.buttonMap3ControllersCenterUpRight.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(1, -1, Config.MapGui.textBoxMap3ControllersCenterChange.Text);
-            Config.MapGui.buttonMap3ControllersCenterDownLeft.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(-1, 1, Config.MapGui.textBoxMap3ControllersCenterChange.Text);
-            Config.MapGui.buttonMap3ControllersCenterDownRight.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(1, 1, Config.MapGui.textBoxMap3ControllersCenterChange.Text);
+            Config.MapGui.buttonMapControllersCenterUp.Click += (sender, e) =>
+                Config.MapGraphics.ChangeCenter(0, -1, Config.MapGui.textBoxMapControllersCenterChange.Text);
+            Config.MapGui.buttonMapControllersCenterDown.Click += (sender, e) =>
+                Config.MapGraphics.ChangeCenter(0, 1, Config.MapGui.textBoxMapControllersCenterChange.Text);
+            Config.MapGui.buttonMapControllersCenterLeft.Click += (sender, e) =>
+                Config.MapGraphics.ChangeCenter(-1, 0, Config.MapGui.textBoxMapControllersCenterChange.Text);
+            Config.MapGui.buttonMapControllersCenterRight.Click += (sender, e) =>
+                Config.MapGraphics.ChangeCenter(1, 0, Config.MapGui.textBoxMapControllersCenterChange.Text);
+            Config.MapGui.buttonMapControllersCenterUpLeft.Click += (sender, e) =>
+                Config.MapGraphics.ChangeCenter(-1, -1, Config.MapGui.textBoxMapControllersCenterChange.Text);
+            Config.MapGui.buttonMapControllersCenterUpRight.Click += (sender, e) =>
+                Config.MapGraphics.ChangeCenter(1, -1, Config.MapGui.textBoxMapControllersCenterChange.Text);
+            Config.MapGui.buttonMapControllersCenterDownLeft.Click += (sender, e) =>
+                Config.MapGraphics.ChangeCenter(-1, 1, Config.MapGui.textBoxMapControllersCenterChange.Text);
+            Config.MapGui.buttonMapControllersCenterDownRight.Click += (sender, e) =>
+                Config.MapGraphics.ChangeCenter(1, 1, Config.MapGui.textBoxMapControllersCenterChange.Text);
             ControlUtilities.AddContextMenuStripFunctions(
-                Config.MapGui.groupBoxMap3ControllersCenter,
+                Config.MapGui.groupBoxMapControllersCenter,
                 new List<string>() { "Center on Mario" },
                 new List<Action>()
                 {
@@ -235,12 +235,12 @@ namespace STROOP.Managers
                 });
 
             // Buttons for Changing Angle
-            Config.MapGui.buttonMap3ControllersAngleCCW.Click += (sender, e) =>
-                Config.MapGraphics.ChangeAngle(-1, Config.MapGui.textBoxMap3ControllersAngleChange.Text);
-            Config.MapGui.buttonMap3ControllersAngleCW.Click += (sender, e) =>
-                Config.MapGraphics.ChangeAngle(1, Config.MapGui.textBoxMap3ControllersAngleChange.Text);
+            Config.MapGui.buttonMapControllersAngleCCW.Click += (sender, e) =>
+                Config.MapGraphics.ChangeAngle(-1, Config.MapGui.textBoxMapControllersAngleChange.Text);
+            Config.MapGui.buttonMapControllersAngleCW.Click += (sender, e) =>
+                Config.MapGraphics.ChangeAngle(1, Config.MapGui.textBoxMapControllersAngleChange.Text);
             ControlUtilities.AddContextMenuStripFunctions(
-                Config.MapGui.groupBoxMap3ControllersAngle,
+                Config.MapGui.groupBoxMapControllersAngle,
                 new List<string>()
                 {
                     "Use Mario Angle",
@@ -268,42 +268,42 @@ namespace STROOP.Managers
                 });
 
             // TextBoxes for Custom Values
-            Config.MapGui.textBoxMap3ControllersScaleCustom.AddEnterAction(() =>
+            Config.MapGui.textBoxMapControllersScaleCustom.AddEnterAction(() =>
             {
-                Config.MapGui.radioButtonMap3ControllersScaleCustom.Checked = true;
+                Config.MapGui.radioButtonMapControllersScaleCustom.Checked = true;
             });
-            Config.MapGui.textBoxMap3ControllersCenterCustom.AddEnterAction(() =>
+            Config.MapGui.textBoxMapControllersCenterCustom.AddEnterAction(() =>
             {
-                Config.MapGui.radioButtonMap3ControllersCenterCustom.Checked = true;
+                Config.MapGui.radioButtonMapControllersCenterCustom.Checked = true;
             });
-            Config.MapGui.textBoxMap3ControllersAngleCustom.AddEnterAction(() =>
+            Config.MapGui.textBoxMapControllersAngleCustom.AddEnterAction(() =>
             {
-                Config.MapGui.radioButtonMap3ControllersAngleCustom.Checked = true;
+                Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
             });
 
             // Additional Checkboxes
-            Config.MapGui.checkBoxMap3OptionsEnable3D.Click += (sender, e) =>
+            Config.MapGui.checkBoxMapOptionsEnable3D.Click += (sender, e) =>
             {
-                Config.MapGui.GLControl2D.Visible = !Config.MapGui.checkBoxMap3OptionsEnable3D.Checked;
-                Config.MapGui.GLControl3D.Visible = Config.MapGui.checkBoxMap3OptionsEnable3D.Checked;
+                Config.MapGui.GLControl2D.Visible = !Config.MapGui.checkBoxMapOptionsEnable3D.Checked;
+                Config.MapGui.GLControl3D.Visible = Config.MapGui.checkBoxMapOptionsEnable3D.Checked;
             };
-            Config.MapGui.checkBoxMap3OptionsEnablePuView.Click += (sender, e) =>
-                Config.MapGraphics.MapViewEnablePuView = Config.MapGui.checkBoxMap3OptionsEnablePuView.Checked;
-            Config.MapGui.checkBoxMap3OptionsScaleIconSizes.Click += (sender, e) =>
-                Config.MapGraphics.MapViewScaleIconSizes = Config.MapGui.checkBoxMap3OptionsScaleIconSizes.Checked;
-            Config.MapGui.checkBoxMap3ControllersCenterChangeByPixels.Click += (sender, e) =>
-                Config.MapGraphics.MapViewCenterChangeByPixels = Config.MapGui.checkBoxMap3ControllersCenterChangeByPixels.Checked;
+            Config.MapGui.checkBoxMapOptionsEnablePuView.Click += (sender, e) =>
+                Config.MapGraphics.MapViewEnablePuView = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked;
+            Config.MapGui.checkBoxMapOptionsScaleIconSizes.Click += (sender, e) =>
+                Config.MapGraphics.MapViewScaleIconSizes = Config.MapGui.checkBoxMapOptionsScaleIconSizes.Checked;
+            Config.MapGui.checkBoxMapControllersCenterChangeByPixels.Click += (sender, e) =>
+                Config.MapGraphics.MapViewCenterChangeByPixels = Config.MapGui.checkBoxMapControllersCenterChangeByPixels.Checked;
 
             // Global Icon Size
-            Config.MapGui.textBoxMap3OptionsGlobalIconSize.AddEnterAction(() =>
+            Config.MapGui.textBoxMapOptionsGlobalIconSize.AddEnterAction(() =>
             {
                 float? parsed = ParsingUtilities.ParseFloatNullable(
-                    Config.MapGui.textBoxMap3OptionsGlobalIconSize.Text);
+                    Config.MapGui.textBoxMapOptionsGlobalIconSize.Text);
                 if (!parsed.HasValue) return;
                 SetGlobalIconSize(parsed.Value);
             });
-            Config.MapGui.trackBarMap3OptionsGlobalIconSize.AddManualChangeAction(() =>
-                SetGlobalIconSize(Config.MapGui.trackBarMap3OptionsGlobalIconSize.Value));
+            Config.MapGui.trackBarMapOptionsGlobalIconSize.AddManualChangeAction(() =>
+                SetGlobalIconSize(Config.MapGui.trackBarMapOptionsGlobalIconSize.Value));
 
             // 3D Controllers
             ControlUtilities.InitializeThreeDimensionController(
@@ -454,27 +454,27 @@ namespace STROOP.Managers
 
         private void SetGlobalIconSize(float size)
         {
-            Config.MapGui.flowLayoutPanelMap3Trackers.SetGlobalIconSize(size);
-            Config.MapGui.textBoxMap3OptionsGlobalIconSize.SubmitText(size.ToString());
-            Config.MapGui.trackBarMap3OptionsGlobalIconSize.StartChangingByCode();
-            ControlUtilities.SetTrackBarValueCapped(Config.MapGui.trackBarMap3OptionsGlobalIconSize, size);
-            Config.MapGui.trackBarMap3OptionsGlobalIconSize.StopChangingByCode();
+            Config.MapGui.flowLayoutPanelMapTrackers.SetGlobalIconSize(size);
+            Config.MapGui.textBoxMapOptionsGlobalIconSize.SubmitText(size.ToString());
+            Config.MapGui.trackBarMapOptionsGlobalIconSize.StartChangingByCode();
+            ControlUtilities.SetTrackBarValueCapped(Config.MapGui.trackBarMapOptionsGlobalIconSize, size);
+            Config.MapGui.trackBarMapOptionsGlobalIconSize.StopChangingByCode();
         }
 
         private void InitializeSemaphores()
         {
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMap3OptionsTrackMario, MapSemaphoreManager.Mario, () => new MapMarioObject(), true);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMap3OptionsTrackHolp, MapSemaphoreManager.Holp, () => new MapHolpObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMap3OptionsTrackCamera, MapSemaphoreManager.Camera, () => new MapCameraObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMap3OptionsTrackFloorTri, MapSemaphoreManager.FloorTri, () => new MapMarioFloorObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMap3OptionsTrackCeilingTri, MapSemaphoreManager.CeilingTri, () => new MapMarioCeilingObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMap3OptionsTrackCellGridlines, MapSemaphoreManager.CellGridlines, () => new MapCellGridlinesObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMap3OptionsTrackCurrentCell, MapSemaphoreManager.CurrentCell, () => new MapCurrentCellObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMap3OptionsTrackUnitGridlines, MapSemaphoreManager.UnitGridlines, () => new MapUnitGridlinesObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMap3OptionsTrackCurrentUnit, MapSemaphoreManager.CurrentUnit, () => new MapCurrentUnitObject(PositionAngle.Mario), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMap3OptionsTrackNextPositions, MapSemaphoreManager.NextPositions, () => new MapNextPositionsObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMap3OptionsTrackSelf, MapSemaphoreManager.Self, () => new MapSelfObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMap3OptionsTrackPoint, MapSemaphoreManager.Point, () => new MapPointObject(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackMario, MapSemaphoreManager.Mario, () => new MapMarioObject(), true);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackHolp, MapSemaphoreManager.Holp, () => new MapHolpObject(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCamera, MapSemaphoreManager.Camera, () => new MapCameraObject(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackFloorTri, MapSemaphoreManager.FloorTri, () => new MapMarioFloorObject(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCeilingTri, MapSemaphoreManager.CeilingTri, () => new MapMarioCeilingObject(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCellGridlines, MapSemaphoreManager.CellGridlines, () => new MapCellGridlinesObject(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCurrentCell, MapSemaphoreManager.CurrentCell, () => new MapCurrentCellObject(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackUnitGridlines, MapSemaphoreManager.UnitGridlines, () => new MapUnitGridlinesObject(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCurrentUnit, MapSemaphoreManager.CurrentUnit, () => new MapCurrentUnitObject(PositionAngle.Mario), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackNextPositions, MapSemaphoreManager.NextPositions, () => new MapNextPositionsObject(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackSelf, MapSemaphoreManager.Self, () => new MapSelfObject(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackPoint, MapSemaphoreManager.Point, () => new MapPointObject(), false);
         }
 
         private void InitializeCheckboxSemaphore(
@@ -485,7 +485,7 @@ namespace STROOP.Managers
                 MapTracker tracker = new MapTracker(
                     new List<MapObject>() { mapObjFunc() },
                     withSemaphore ? new List<MapSemaphore>() { semaphore } : new List<MapSemaphore>());
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
             Action clickAction = () =>
             {
@@ -511,9 +511,9 @@ namespace STROOP.Managers
         public override void Update(bool updateView)
         {
             if (!_isLoaded2D) return;
-            if (Config.MapGui.checkBoxMap3OptionsEnable3D.Checked && !_isLoaded3D) return;
+            if (Config.MapGui.checkBoxMapOptionsEnable3D.Checked && !_isLoaded3D) return;
 
-            Config.MapGui.flowLayoutPanelMap3Trackers.UpdateControl();
+            Config.MapGui.flowLayoutPanelMapTrackers.UpdateControl();
 
             if (!updateView) return;
 
@@ -523,7 +523,7 @@ namespace STROOP.Managers
             UpdateDataTab();
             UpdateVarColors();
 
-            if (Config.MapGui.checkBoxMap3OptionsEnable3D.Checked)
+            if (Config.MapGui.checkBoxMapOptionsEnable3D.Checked)
             {
                 Config.MapGui.GLControl3D.Invalidate();
             }
@@ -557,12 +557,12 @@ namespace STROOP.Managers
 
             MapLayout map = Config.MapAssociations.GetBestMap();
 
-            Config.MapGui.labelMap3DataMapName.Text = map.Name;
-            Config.MapGui.labelMap3DataMapSubName.Text = map.SubName ?? "";
-            Config.MapGui.labelMap3DataPuCoordinateValues.Text = string.Format("[{0}:{1}:{2}]", puX, puY, puZ);
-            Config.MapGui.labelMap3DataQpuCoordinateValues.Text = string.Format("[{0}:{1}:{2}]", qpuX, qpuY, qpuZ);
-            Config.MapGui.labelMap3DataId.Text = string.Format("[{0}:{1}:{2}:{3}]", level, area, loadingPoint, missionLayout);
-            Config.MapGui.labelMap3DataYNorm.Text = yNorm?.ToString() ?? "(none)";
+            Config.MapGui.labelMapDataMapName.Text = map.Name;
+            Config.MapGui.labelMapDataMapSubName.Text = map.SubName ?? "";
+            Config.MapGui.labelMapDataPuCoordinateValues.Text = string.Format("[{0}:{1}:{2}]", puX, puY, puZ);
+            Config.MapGui.labelMapDataQpuCoordinateValues.Text = string.Format("[{0}:{1}:{2}]", qpuX, qpuY, qpuZ);
+            Config.MapGui.labelMapDataId.Text = string.Format("[{0}:{1}:{2}:{3}]", level, area, loadingPoint, missionLayout);
+            Config.MapGui.labelMapDataYNorm.Text = yNorm?.ToString() ?? "(none)";
         }
 
         private void UpdateBasedOnObjectsSelectedOnMap()
@@ -592,25 +592,25 @@ namespace STROOP.Managers
                 semaphore.IsUsed = true;
                 MapTracker tracker = new MapTracker(
                     new List<MapObject>() { mapObj }, new List<MapSemaphore>() { semaphore });
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             }
         }
 
         private void UpdateControlsBasedOnSemaphores()
         {
             // Update checkboxes when tracker is deleted
-            Config.MapGui.checkBoxMap3OptionsTrackMario.Checked = MapSemaphoreManager.Mario.IsUsed;
-            Config.MapGui.checkBoxMap3OptionsTrackHolp.Checked = MapSemaphoreManager.Holp.IsUsed;
-            Config.MapGui.checkBoxMap3OptionsTrackCamera.Checked = MapSemaphoreManager.Camera.IsUsed;
-            Config.MapGui.checkBoxMap3OptionsTrackFloorTri.Checked = MapSemaphoreManager.FloorTri.IsUsed;
-            Config.MapGui.checkBoxMap3OptionsTrackCeilingTri.Checked = MapSemaphoreManager.CeilingTri.IsUsed;
-            Config.MapGui.checkBoxMap3OptionsTrackCellGridlines.Checked = MapSemaphoreManager.CellGridlines.IsUsed;
-            Config.MapGui.checkBoxMap3OptionsTrackCurrentCell.Checked = MapSemaphoreManager.CurrentCell.IsUsed;
-            Config.MapGui.checkBoxMap3OptionsTrackUnitGridlines.Checked = MapSemaphoreManager.UnitGridlines.IsUsed;
-            Config.MapGui.checkBoxMap3OptionsTrackCurrentUnit.Checked = MapSemaphoreManager.CurrentUnit.IsUsed;
-            Config.MapGui.checkBoxMap3OptionsTrackNextPositions.Checked = MapSemaphoreManager.NextPositions.IsUsed;
-            Config.MapGui.checkBoxMap3OptionsTrackSelf.Checked = MapSemaphoreManager.Self.IsUsed;
-            Config.MapGui.checkBoxMap3OptionsTrackPoint.Checked = MapSemaphoreManager.Point.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackMario.Checked = MapSemaphoreManager.Mario.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackHolp.Checked = MapSemaphoreManager.Holp.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackCamera.Checked = MapSemaphoreManager.Camera.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackFloorTri.Checked = MapSemaphoreManager.FloorTri.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackCeilingTri.Checked = MapSemaphoreManager.CeilingTri.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackCellGridlines.Checked = MapSemaphoreManager.CellGridlines.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackCurrentCell.Checked = MapSemaphoreManager.CurrentCell.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackUnitGridlines.Checked = MapSemaphoreManager.UnitGridlines.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackCurrentUnit.Checked = MapSemaphoreManager.CurrentUnit.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackNextPositions.Checked = MapSemaphoreManager.NextPositions.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackSelf.Checked = MapSemaphoreManager.Self.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackPoint.Checked = MapSemaphoreManager.Point.IsUsed;
 
             // Update object slots when tracker is deleted
             Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses
@@ -637,7 +637,7 @@ namespace STROOP.Managers
             Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses.AddRange(addresses);
             _currentObjIndexes.AddRange(indexes);
             MapTracker tracker = new MapTracker(mapObjs, semaphores);
-            Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+            Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
         }
 
         private static readonly List<string> inGameColoredVars = new List<string>() { };

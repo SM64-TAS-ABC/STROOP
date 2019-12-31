@@ -87,7 +87,7 @@ namespace STROOP.Map
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.MatrixMode(MatrixMode.Modelview);
 
-            Config.MapGui.flowLayoutPanelMap3Trackers.DrawOn2DControl();
+            Config.MapGui.flowLayoutPanelMapTrackers.DrawOn2DControl();
 
             Config.MapGui.GLControl2D.SwapBuffers();
         }
@@ -112,9 +112,9 @@ namespace STROOP.Map
 
         private void UpdateScale()
         {
-            if (Config.MapGui.radioButtonMap3ControllersScaleCourseDefault.Checked)
+            if (Config.MapGui.radioButtonMapControllersScaleCourseDefault.Checked)
                 MapViewScale = Map3Scale.CourseDefault;
-            else if (Config.MapGui.radioButtonMap3ControllersScaleMaxCourseSize.Checked)
+            else if (Config.MapGui.radioButtonMapControllersScaleMaxCourseSize.Checked)
                 MapViewScale = Map3Scale.MaxCourseSize;
             else
                 MapViewScale = Map3Scale.Custom;
@@ -153,24 +153,24 @@ namespace STROOP.Map
                     break;
                 case Map3Scale.Custom:
                     MapViewScaleValue = ParsingUtilities.ParseFloatNullable(
-                        Config.MapGui.textBoxMap3ControllersScaleCustom.LastSubmittedText)
+                        Config.MapGui.textBoxMapControllersScaleCustom.LastSubmittedText)
                         ?? DEFAULT_MAP_VIEW_SCALE_VALUE;
                     break;
             }
 
             if (MapViewScale != Map3Scale.Custom)
             {
-                Config.MapGui.textBoxMap3ControllersScaleCustom.SubmitTextLoosely(MapViewScaleValue.ToString());
+                Config.MapGui.textBoxMapControllersScaleCustom.SubmitTextLoosely(MapViewScaleValue.ToString());
             }
         }
 
         private void UpdateCenter()
         {
-            if (Config.MapGui.radioButtonMap3ControllersCenterBestFit.Checked)
+            if (Config.MapGui.radioButtonMapControllersCenterBestFit.Checked)
                 MapViewCenter = Map3Center.BestFit;
-            else if (Config.MapGui.radioButtonMap3ControllersCenterOrigin.Checked)
+            else if (Config.MapGui.radioButtonMapControllersCenterOrigin.Checked)
                 MapViewCenter = Map3Center.Origin;
-            else if (Config.MapGui.radioButtonMap3ControllersCenterMario.Checked)
+            else if (Config.MapGui.radioButtonMapControllersCenterMario.Checked)
                 MapViewCenter = Map3Center.Mario;
             else
                 MapViewCenter = Map3Center.Custom;
@@ -193,7 +193,7 @@ namespace STROOP.Map
                     break;
                 case Map3Center.Custom:
                     PositionAngle posAngle = PositionAngle.FromString(
-                        Config.MapGui.textBoxMap3ControllersCenterCustom.LastSubmittedText);
+                        Config.MapGui.textBoxMapControllersCenterCustom.LastSubmittedText);
                     if (posAngle != null)
                     {
                         MapViewCenterXValue = (float)posAngle.X;
@@ -201,7 +201,7 @@ namespace STROOP.Map
                         break;
                     }
                     List<string> stringValues = ParsingUtilities.ParseStringList(
-                        Config.MapGui.textBoxMap3ControllersCenterCustom.LastSubmittedText);
+                        Config.MapGui.textBoxMapControllersCenterCustom.LastSubmittedText);
                     if (stringValues.Count >= 2)
                     {
                         MapViewCenterXValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_CENTER_X_VALUE;
@@ -222,25 +222,25 @@ namespace STROOP.Map
 
             if (MapViewCenter != Map3Center.Custom)
             {
-                Config.MapGui.textBoxMap3ControllersCenterCustom.SubmitTextLoosely(MapViewCenterXValue + "," + MapViewCenterZValue);
+                Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(MapViewCenterXValue + "," + MapViewCenterZValue);
             }
         }
 
         private void UpdateAngle()
         {
-            if (Config.MapGui.radioButtonMap3ControllersAngle0.Checked)
+            if (Config.MapGui.radioButtonMapControllersAngle0.Checked)
                 MapViewAngle = Map3Angle.Angle0;
-            else if (Config.MapGui.radioButtonMap3ControllersAngle16384.Checked)
+            else if (Config.MapGui.radioButtonMapControllersAngle16384.Checked)
                 MapViewAngle = Map3Angle.Angle16384;
-            else if (Config.MapGui.radioButtonMap3ControllersAngle32768.Checked)
+            else if (Config.MapGui.radioButtonMapControllersAngle32768.Checked)
                 MapViewAngle = Map3Angle.Angle32768;
-            else if (Config.MapGui.radioButtonMap3ControllersAngle49152.Checked)
+            else if (Config.MapGui.radioButtonMapControllersAngle49152.Checked)
                 MapViewAngle = Map3Angle.Angle49152;
-            else if (Config.MapGui.radioButtonMap3ControllersAngleMario.Checked)
+            else if (Config.MapGui.radioButtonMapControllersAngleMario.Checked)
                 MapViewAngle = Map3Angle.Mario;
-            else if (Config.MapGui.radioButtonMap3ControllersAngleCamera.Checked)
+            else if (Config.MapGui.radioButtonMapControllersAngleCamera.Checked)
                 MapViewAngle = Map3Angle.Camera;
-            else if (Config.MapGui.radioButtonMap3ControllersAngleCentripetal.Checked)
+            else if (Config.MapGui.radioButtonMapControllersAngleCentripetal.Checked)
                 MapViewAngle = Map3Angle.Centripetal;
             else
                 MapViewAngle = Map3Angle.Custom;
@@ -271,21 +271,21 @@ namespace STROOP.Map
                     break;
                 case Map3Angle.Custom:
                     PositionAngle posAngle = PositionAngle.FromString(
-                        Config.MapGui.textBoxMap3ControllersAngleCustom.LastSubmittedText);
+                        Config.MapGui.textBoxMapControllersAngleCustom.LastSubmittedText);
                     if (posAngle != null)
                     {
                         MapViewAngleValue = (float)posAngle.Angle;
                         break;
                     }
                     MapViewAngleValue = ParsingUtilities.ParseFloatNullable(
-                        Config.MapGui.textBoxMap3ControllersAngleCustom.LastSubmittedText)
+                        Config.MapGui.textBoxMapControllersAngleCustom.LastSubmittedText)
                         ?? DEFAULT_MAP_VIEW_ANGLE_VALUE;
                     break;
             }
 
             if (MapViewAngle != Map3Angle.Custom)
             {
-                Config.MapGui.textBoxMap3ControllersAngleCustom.SubmitTextLoosely(MapViewAngleValue.ToString());
+                Config.MapGui.textBoxMapControllersAngleCustom.SubmitTextLoosely(MapViewAngleValue.ToString());
             }
         }
 
@@ -293,25 +293,25 @@ namespace STROOP.Map
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
-            Config.MapGui.radioButtonMap3ControllersScaleCustom.Checked = true;
+            Config.MapGui.radioButtonMapControllersScaleCustom.Checked = true;
             float newScaleValue = MapViewScaleValue + sign * parsed.Value;
-            Config.MapGui.textBoxMap3ControllersScaleCustom.SubmitText(newScaleValue.ToString());
+            Config.MapGui.textBoxMapControllersScaleCustom.SubmitText(newScaleValue.ToString());
         }
 
         public void ChangeScale2(int power, object value)
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
-            Config.MapGui.radioButtonMap3ControllersScaleCustom.Checked = true;
+            Config.MapGui.radioButtonMapControllersScaleCustom.Checked = true;
             float newScaleValue = MapViewScaleValue * (float)Math.Pow(parsed.Value, power);
-            Config.MapGui.textBoxMap3ControllersScaleCustom.SubmitText(newScaleValue.ToString());
+            Config.MapGui.textBoxMapControllersScaleCustom.SubmitText(newScaleValue.ToString());
         }
 
         public void ChangeCenter(int xSign, int zSign, object value)
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
-            Config.MapGui.radioButtonMap3ControllersCenterCustom.Checked = true;
+            Config.MapGui.radioButtonMapControllersCenterCustom.Checked = true;
             float xOffset = xSign * parsed.Value;
             float zOffset = zSign * parsed.Value;
             (float xOffsetRotated, float zOffsetRotated) = ((float, float)) MoreMath.RotatePointAboutPointAnAngularDistance(
@@ -319,35 +319,35 @@ namespace STROOP.Map
             float multiplier = MapViewCenterChangeByPixels ? 1 / MapViewScaleValue : 1;
             float newCenterXValue = MapViewCenterXValue + xOffsetRotated * multiplier;
             float newCenterZValue = MapViewCenterZValue + zOffsetRotated * multiplier;
-            Config.MapGui.textBoxMap3ControllersCenterCustom.SubmitText(newCenterXValue + "," + newCenterZValue);
+            Config.MapGui.textBoxMapControllersCenterCustom.SubmitText(newCenterXValue + "," + newCenterZValue);
         }
 
         public void ChangeAngle(int sign, object value)
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
-            Config.MapGui.radioButtonMap3ControllersAngleCustom.Checked = true;
+            Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
             float newAngleValue = MapViewAngleValue + sign * parsed.Value;
             newAngleValue = (float)MoreMath.NormalizeAngleDouble(newAngleValue);
-            Config.MapGui.textBoxMap3ControllersAngleCustom.SubmitText(newAngleValue.ToString());
+            Config.MapGui.textBoxMapControllersAngleCustom.SubmitText(newAngleValue.ToString());
         }
 
         public void SetCustomScale(object value)
         {
-            Config.MapGui.radioButtonMap3ControllersScaleCustom.Checked = true;
-            Config.MapGui.textBoxMap3ControllersScaleCustom.SubmitText(value.ToString());
+            Config.MapGui.radioButtonMapControllersScaleCustom.Checked = true;
+            Config.MapGui.textBoxMapControllersScaleCustom.SubmitText(value.ToString());
         }
 
         public void SetCustomCenter(object value)
         {
-            Config.MapGui.radioButtonMap3ControllersCenterCustom.Checked = true;
-            Config.MapGui.textBoxMap3ControllersCenterCustom.SubmitText(value.ToString());
+            Config.MapGui.radioButtonMapControllersCenterCustom.Checked = true;
+            Config.MapGui.textBoxMapControllersCenterCustom.SubmitText(value.ToString());
         }
 
         public void SetCustomAngle(object value)
         {
-            Config.MapGui.radioButtonMap3ControllersAngleCustom.Checked = true;
-            Config.MapGui.textBoxMap3ControllersAngleCustom.SubmitText(value.ToString());
+            Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
+            Config.MapGui.textBoxMapControllersAngleCustom.SubmitText(value.ToString());
         }
     }
 }

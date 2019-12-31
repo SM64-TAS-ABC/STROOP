@@ -144,7 +144,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             ToolStripMenuItem itemTangibilitySphere = new ToolStripMenuItem("Add Tracker for Tangibility Sphere");
@@ -159,7 +159,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             ToolStripMenuItem itemDrawDistanceSphere = new ToolStripMenuItem("Add Tracker for Draw Distance Sphere");
@@ -174,7 +174,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             ToolStripMenuItem itemCustomCylinder = new ToolStripMenuItem("Add Tracker for Custom Cylinder");
@@ -188,7 +188,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             ToolStripMenuItem itemCustomSphere = new ToolStripMenuItem("Add Tracker for Custom Sphere");
@@ -202,7 +202,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             ToolStripMenuItem itemHome = new ToolStripMenuItem("Add Tracker for Home");
@@ -217,7 +217,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             ToolStripMenuItem itemCustomCylinderForHome = new ToolStripMenuItem("Add Tracker for Custom Cylinder for Home");
@@ -233,7 +233,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             ToolStripMenuItem itemCustomSphereForHome = new ToolStripMenuItem("Add Tracker for Custom Sphere for Home");
@@ -249,7 +249,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             ToolStripMenuItem itemFloorTriangles = new ToolStripMenuItem("Add Tracker for Floor Triangles");
@@ -264,7 +264,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             ToolStripMenuItem itemWallTriangles = new ToolStripMenuItem("Add Tracker for Wall Triangles");
@@ -279,7 +279,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             ToolStripMenuItem itemCeilingTriangles = new ToolStripMenuItem("Add Tracker for Ceiling Triangles");
@@ -294,7 +294,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             ToolStripMenuItem itemCurrentUnit = new ToolStripMenuItem("Add Tracker for Current Unit");
@@ -308,7 +308,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             ToolStripMenuItem itemPath = new ToolStripMenuItem("Add Tracker for Path");
@@ -322,7 +322,7 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
-                Config.MapGui.flowLayoutPanelMap3Trackers.AddNewControl(tracker);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
             pictureBoxPlus.ContextMenuStrip = new ContextMenuStrip();
@@ -464,7 +464,7 @@ namespace STROOP.Map
 
         private void pictureBoxRedX_Click(object sender, EventArgs e)
         {
-            Config.MapGui.flowLayoutPanelMap3Trackers.RemoveControl(this);
+            Config.MapGui.flowLayoutPanelMapTrackers.RemoveControl(this);
         }
 
         private void pictureBoxEye_Click(object sender, EventArgs e)
@@ -475,12 +475,12 @@ namespace STROOP.Map
 
         private void pictureBoxUpArrow_Click(object sender, EventArgs e)
         {
-            Config.MapGui.flowLayoutPanelMap3Trackers.MoveUpControl(this);
+            Config.MapGui.flowLayoutPanelMapTrackers.MoveUpControl(this);
         }
 
         private void pictureBoxDownArrow_Click(object sender, EventArgs e)
         {
-            Config.MapGui.flowLayoutPanelMap3Trackers.MoveDownControl(this);
+            Config.MapGui.flowLayoutPanelMapTrackers.MoveDownControl(this);
         }
 
         public void SetGlobalIconSize(float size)
@@ -522,7 +522,7 @@ namespace STROOP.Map
 
             if (_semaphoreList.Any(semaphore => !semaphore.IsUsed))
             {
-                Config.MapGui.flowLayoutPanelMap3Trackers.RemoveControl(this);
+                Config.MapGui.flowLayoutPanelMapTrackers.RemoveControl(this);
             }
         }
 

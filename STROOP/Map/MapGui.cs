@@ -15,117 +15,117 @@ namespace STROOP.Map
         // Major Controls
         public GLControl GLControl2D;
         public GLControl GLControl3D;
-        public MapTrackerFlowLayoutPanel flowLayoutPanelMap3Trackers;
+        public MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
 
 
 
         // Options - CheckBoxes
-        public CheckBox checkBoxMap3OptionsTrackMario;
-        public CheckBox checkBoxMap3OptionsTrackHolp;
-        public CheckBox checkBoxMap3OptionsTrackCamera;
-        public CheckBox checkBoxMap3OptionsTrackFloorTri;
-        public CheckBox checkBoxMap3OptionsTrackCeilingTri;
-        public CheckBox checkBoxMap3OptionsTrackCellGridlines;
-        public CheckBox checkBoxMap3OptionsTrackCurrentCell;
-        public CheckBox checkBoxMap3OptionsTrackUnitGridlines;
-        public CheckBox checkBoxMap3OptionsTrackCurrentUnit;
-        public CheckBox checkBoxMap3OptionsTrackNextPositions;
-        public CheckBox checkBoxMap3OptionsTrackSelf;
-        public CheckBox checkBoxMap3OptionsTrackPoint;
-        public CheckBox checkBoxMap3OptionsEnable3D;
-        public CheckBox checkBoxMap3OptionsDisable3DHitboxHackTris;
-        public CheckBox checkBoxMap3OptionsEnablePuView;
-        public CheckBox checkBoxMap3OptionsScaleIconSizes;
+        public CheckBox checkBoxMapOptionsTrackMario;
+        public CheckBox checkBoxMapOptionsTrackHolp;
+        public CheckBox checkBoxMapOptionsTrackCamera;
+        public CheckBox checkBoxMapOptionsTrackFloorTri;
+        public CheckBox checkBoxMapOptionsTrackCeilingTri;
+        public CheckBox checkBoxMapOptionsTrackCellGridlines;
+        public CheckBox checkBoxMapOptionsTrackCurrentCell;
+        public CheckBox checkBoxMapOptionsTrackUnitGridlines;
+        public CheckBox checkBoxMapOptionsTrackCurrentUnit;
+        public CheckBox checkBoxMapOptionsTrackNextPositions;
+        public CheckBox checkBoxMapOptionsTrackSelf;
+        public CheckBox checkBoxMapOptionsTrackPoint;
+        public CheckBox checkBoxMapOptionsEnable3D;
+        public CheckBox checkBoxMapOptionsDisable3DHitboxHackTris;
+        public CheckBox checkBoxMapOptionsEnablePuView;
+        public CheckBox checkBoxMapOptionsScaleIconSizes;
 
         // Options - Global Icon Size
-        public Label labelMap3OptionsGlobalIconSize;
-        public BetterTextbox textBoxMap3OptionsGlobalIconSize;
-        public TrackBarEx trackBarMap3OptionsGlobalIconSize;
+        public Label labelMapOptionsGlobalIconSize;
+        public BetterTextbox textBoxMapOptionsGlobalIconSize;
+        public TrackBarEx trackBarMapOptionsGlobalIconSize;
 
         // Options - Buttons
-        public Button buttonMap3OptionsAddNewTracker;
-        public Button buttonMap3OptionsClearAllTrackers;
-        public Button buttonMap3OptionsTrackAllObjects;
-        public Button buttonMap3OptionsTrackMarkedObjects;
+        public Button buttonMapOptionsAddNewTracker;
+        public Button buttonMapOptionsClearAllTrackers;
+        public Button buttonMapOptionsTrackAllObjects;
+        public Button buttonMapOptionsTrackMarkedObjects;
 
         // Options - ComboBoxes
-        public ComboBox comboBoxMap3OptionsLevel;
-        public ComboBox comboBoxMap3OptionsBackground;
+        public ComboBox comboBoxMapOptionsLevel;
+        public ComboBox comboBoxMapOptionsBackground;
 
 
 
         // Controllers - GroupBoxes
-        public GroupBox groupBoxMap3ControllersScale;
-        public GroupBox groupBoxMap3ControllersCenter;
-        public GroupBox groupBoxMap3ControllersAngle;
+        public GroupBox groupBoxMapControllersScale;
+        public GroupBox groupBoxMapControllersCenter;
+        public GroupBox groupBoxMapControllersAngle;
 
         // Controllers - Scale - Left
-        public RadioButton radioButtonMap3ControllersScaleCourseDefault;
-        public RadioButton radioButtonMap3ControllersScaleMaxCourseSize;
-        public RadioButton radioButtonMap3ControllersScaleCustom;
-        public BetterTextbox textBoxMap3ControllersScaleCustom;
+        public RadioButton radioButtonMapControllersScaleCourseDefault;
+        public RadioButton radioButtonMapControllersScaleMaxCourseSize;
+        public RadioButton radioButtonMapControllersScaleCustom;
+        public BetterTextbox textBoxMapControllersScaleCustom;
 
         // Controllers - Scale - Right
-        public BetterTextbox textBoxMap3ControllersScaleChange;
-        public Button buttonMap3ControllersScaleMinus;
-        public Button buttonMap3ControllersScalePlus;
-        public BetterTextbox textBoxMap3ControllersScaleChange2;
-        public Button buttonMap3ControllersScaleDivide;
-        public Button buttonMap3ControllersScaleTimes;
+        public BetterTextbox textBoxMapControllersScaleChange;
+        public Button buttonMapControllersScaleMinus;
+        public Button buttonMapControllersScalePlus;
+        public BetterTextbox textBoxMapControllersScaleChange2;
+        public Button buttonMapControllersScaleDivide;
+        public Button buttonMapControllersScaleTimes;
 
         // Controllers - Center - Left
-        public RadioButton radioButtonMap3ControllersCenterBestFit;
-        public RadioButton radioButtonMap3ControllersCenterOrigin;
-        public RadioButton radioButtonMap3ControllersCenterMario;
-        public RadioButton radioButtonMap3ControllersCenterCustom;
-        public BetterTextbox textBoxMap3ControllersCenterCustom;
+        public RadioButton radioButtonMapControllersCenterBestFit;
+        public RadioButton radioButtonMapControllersCenterOrigin;
+        public RadioButton radioButtonMapControllersCenterMario;
+        public RadioButton radioButtonMapControllersCenterCustom;
+        public BetterTextbox textBoxMapControllersCenterCustom;
 
         // Controllers - Center - Right
-        public CheckBox checkBoxMap3ControllersCenterChangeByPixels;
-        public BetterTextbox textBoxMap3ControllersCenterChange;
-        public Button buttonMap3ControllersCenterUp;
-        public Button buttonMap3ControllersCenterUpRight;
-        public Button buttonMap3ControllersCenterRight;
-        public Button buttonMap3ControllersCenterDownRight;
-        public Button buttonMap3ControllersCenterDown;
-        public Button buttonMap3ControllersCenterDownLeft;
-        public Button buttonMap3ControllersCenterLeft;
-        public Button buttonMap3ControllersCenterUpLeft;
+        public CheckBox checkBoxMapControllersCenterChangeByPixels;
+        public BetterTextbox textBoxMapControllersCenterChange;
+        public Button buttonMapControllersCenterUp;
+        public Button buttonMapControllersCenterUpRight;
+        public Button buttonMapControllersCenterRight;
+        public Button buttonMapControllersCenterDownRight;
+        public Button buttonMapControllersCenterDown;
+        public Button buttonMapControllersCenterDownLeft;
+        public Button buttonMapControllersCenterLeft;
+        public Button buttonMapControllersCenterUpLeft;
 
 
 
 
 
         // Controllers - Angle - Left
-        public RadioButton radioButtonMap3ControllersAngle0;
-        public RadioButton radioButtonMap3ControllersAngle16384;
-        public RadioButton radioButtonMap3ControllersAngle32768;
-        public RadioButton radioButtonMap3ControllersAngle49152;
-        public RadioButton radioButtonMap3ControllersAngleMario;
-        public RadioButton radioButtonMap3ControllersAngleCamera;
-        public RadioButton radioButtonMap3ControllersAngleCentripetal;
-        public RadioButton radioButtonMap3ControllersAngleCustom;
-        public BetterTextbox textBoxMap3ControllersAngleCustom;
+        public RadioButton radioButtonMapControllersAngle0;
+        public RadioButton radioButtonMapControllersAngle16384;
+        public RadioButton radioButtonMapControllersAngle32768;
+        public RadioButton radioButtonMapControllersAngle49152;
+        public RadioButton radioButtonMapControllersAngleMario;
+        public RadioButton radioButtonMapControllersAngleCamera;
+        public RadioButton radioButtonMapControllersAngleCentripetal;
+        public RadioButton radioButtonMapControllersAngleCustom;
+        public BetterTextbox textBoxMapControllersAngleCustom;
 
         // Controllers - Angle - Right
-        public BetterTextbox textBoxMap3ControllersAngleChange;
-        public Button buttonMap3ControllersAngleCCW;
-        public Button buttonMap3ControllersAngleCW;
+        public BetterTextbox textBoxMapControllersAngleChange;
+        public Button buttonMapControllersAngleCCW;
+        public Button buttonMapControllersAngleCW;
 
 
 
         // Data
-        public Label labelMap3DataMapName;
-        public Label labelMap3DataMapSubName;
-        public Label labelMap3DataPuCoordinateValues;
-        public Label labelMap3DataQpuCoordinateValues;
-        public Label labelMap3DataId;
-        public Label labelMap3DataYNorm;
+        public Label labelMapDataMapName;
+        public Label labelMapDataMapSubName;
+        public Label labelMapDataPuCoordinateValues;
+        public Label labelMapDataQpuCoordinateValues;
+        public Label labelMapDataId;
+        public Label labelMapDataYNorm;
 
 
 
         // 3D Vars
-        public WatchVariableFlowLayoutPanel watchVariablePanel3DVars;
+        public WatchVariableFlowLayoutPanel watchVariablePanelMap3DVars;
 
         // 3D GroupBoxes
         public GroupBox groupBoxMapCameraPosition;

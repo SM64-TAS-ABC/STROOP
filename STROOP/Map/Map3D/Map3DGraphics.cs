@@ -98,14 +98,14 @@ namespace STROOP.Map.Map3D
             GL.Disable(EnableCap.DepthTest);
 
             // Draw background
-            Config.MapGui.flowLayoutPanelMap3Trackers.DrawOn3DControl(MapDrawType.Background);
+            Config.MapGui.flowLayoutPanelMapTrackers.DrawOn3DControl(MapDrawType.Background);
 
             // Setup 3D
             GL.Enable(EnableCap.DepthTest);
             GL.DepthMask(true);
 
             // Draw 3D
-            Config.MapGui.flowLayoutPanelMap3Trackers.DrawOn3DControl(MapDrawType.Perspective);
+            Config.MapGui.flowLayoutPanelMapTrackers.DrawOn3DControl(MapDrawType.Perspective);
 
             // Setup 2D
             GL.Disable(EnableCap.DepthTest);
@@ -115,7 +115,7 @@ namespace STROOP.Map.Map3D
                 Debugger.Break();
 
             // Draw 2D
-            Config.MapGui.flowLayoutPanelMap3Trackers.DrawOn3DControl(MapDrawType.Overlay);
+            Config.MapGui.flowLayoutPanelMapTrackers.DrawOn3DControl(MapDrawType.Overlay);
 
             error = GL.GetError();
             if (error != ErrorCode.NoError)

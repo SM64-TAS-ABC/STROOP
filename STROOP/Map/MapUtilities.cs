@@ -81,7 +81,7 @@ namespace STROOP.Map
 
         public static MapLayout GetMapLayout(object mapLayoutChoice = null)
         {
-            mapLayoutChoice = mapLayoutChoice ?? Config.MapGui.comboBoxMap3OptionsLevel.SelectedItem;
+            mapLayoutChoice = mapLayoutChoice ?? Config.MapGui.comboBoxMapOptionsLevel.SelectedItem;
             if (mapLayoutChoice is MapLayout mapLayout)
             {
                 return mapLayout;
@@ -94,7 +94,7 @@ namespace STROOP.Map
 
         public static Image GetBackgroundImage(object backgroundChoice = null)
         {
-            backgroundChoice = backgroundChoice ?? Config.MapGui.comboBoxMap3OptionsBackground.SelectedItem;
+            backgroundChoice = backgroundChoice ?? Config.MapGui.comboBoxMapOptionsBackground.SelectedItem;
             if (backgroundChoice is BackgroundImage background)
             {
                 return background.Image;
