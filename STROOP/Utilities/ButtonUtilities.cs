@@ -10,6 +10,7 @@ using STROOP.Managers;
 using STROOP.Models;
 using STROOP.Forms;
 using System.Diagnostics;
+using STROOP.Map;
 
 namespace STROOP.Utilities
 {
@@ -1470,12 +1471,14 @@ namespace STROOP.Utilities
 
         public static bool TranslateMapCameraPosition(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
+            MapUtilities.MaybeChangeMapCameraMode();
             List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.MapCamera };
             return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool TranslateMapCameraSpherical(float radiusOffset, float thetaOffset, float phiOffset)
         {
+            MapUtilities.MaybeChangeMapCameraMode();
             HandleScaling(ref thetaOffset, ref phiOffset);
 
             (double newX, double newY, double newZ) =
@@ -1493,12 +1496,14 @@ namespace STROOP.Utilities
 
         public static bool TranslateMapFocusPosition(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
+            MapUtilities.MaybeChangeMapCameraMode();
             List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.MapFocus };
             return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool TranslateMapFocusSpherical(float radiusOffset, float thetaOffset, float phiOffset)
         {
+            MapUtilities.MaybeChangeMapCameraMode();
             HandleScaling(ref thetaOffset, ref phiOffset);
 
             if (SpecialConfig.Map3DMode == Map3DMode.CameraPosAndAngle)
@@ -1523,6 +1528,7 @@ namespace STROOP.Utilities
 
         public static bool TranslateMapCameraFocus(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
+            MapUtilities.MaybeChangeMapCameraMode();
             List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.MapCamera, PositionAngle.MapFocus };
             return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }

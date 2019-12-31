@@ -295,5 +295,13 @@ namespace STROOP.Map
             float pz = z1 + p * (z2 - z1);
             return (px, pz);
         }
+
+        public static void MaybeChangeMapCameraMode()
+        {
+            if (SpecialConfig.Map3DMode == Map3DMode.InGame)
+            {
+                SpecialConfig.Map3DMode = Map3DMode.CameraPosAndFocus;
+            }
+        }
     }
 }

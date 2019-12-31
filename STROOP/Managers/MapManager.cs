@@ -437,6 +437,7 @@ namespace STROOP.Managers
             // FOV
             Config.MapGui.trackBarMapFov.ValueChanged += (sender, e) =>
             {
+                MapUtilities.MaybeChangeMapCameraMode();
                 SpecialConfig.Map3DFOV = Config.MapGui.trackBarMapFov.Value;
                 Config.MapGui.textBoxMapFov.Text = Config.MapGui.trackBarMapFov.Value.ToString();
             };
@@ -446,6 +447,7 @@ namespace STROOP.Managers
                 float parsed = ParsingUtilities.ParseFloat(Config.MapGui.textBoxMapFov.Text);
                 if (parsed > 0 && parsed < 180)
                 {
+                    MapUtilities.MaybeChangeMapCameraMode();
                     SpecialConfig.Map3DFOV = parsed;
                     ControlUtilities.SetTrackBarValueCapped(Config.MapGui.trackBarMapFov, parsed);
                 }
