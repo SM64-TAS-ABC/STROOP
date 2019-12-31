@@ -23,13 +23,13 @@ namespace STROOP.Map.Map3D
         const string FragmentShaderPath = @"Resources\Shaders\FragmentShader.glsl";
         const string ShaderLogPath = @"Resources\Shaders\ShaderLog.txt";
 
-        public float AspectRatio => Config.MapGui.GLControl3D.AspectRatio;
-        public float NormalizedWidth => AspectRatio <= 1.0f ? 1.0f : (float)Config.MapGui.GLControl3D.Width / Config.MapGui.GLControl3D.Height;
-        public float NormalizedHeight => AspectRatio >= 1.0f ? 1.0f : (float)Config.MapGui.GLControl3D.Height / Config.MapGui.GLControl3D.Width;
-        public Size Size => Config.MapGui.GLControl3D.Size;
-        public float Width => Config.MapGui.GLControl3D.Width;
-        public float Height => Config.MapGui.GLControl3D.Height;
-        public bool Visible { get => Config.MapGui.GLControl3D.Visible; set => Config.MapGui.GLControl3D.Visible = value; }
+        public float AspectRatio => Config.MapGui.GLControlMap3D.AspectRatio;
+        public float NormalizedWidth => AspectRatio <= 1.0f ? 1.0f : (float)Config.MapGui.GLControlMap3D.Width / Config.MapGui.GLControlMap3D.Height;
+        public float NormalizedHeight => AspectRatio >= 1.0f ? 1.0f : (float)Config.MapGui.GLControlMap3D.Height / Config.MapGui.GLControlMap3D.Width;
+        public Size Size => Config.MapGui.GLControlMap3D.Size;
+        public float Width => Config.MapGui.GLControlMap3D.Width;
+        public float Height => Config.MapGui.GLControlMap3D.Height;
+        public bool Visible { get => Config.MapGui.GLControlMap3D.Visible; set => Config.MapGui.GLControlMap3D.Visible = value; }
 
         public event EventHandler OnSizeChanged;
 
@@ -53,8 +53,8 @@ namespace STROOP.Map.Map3D
         {
             Config.Map3DCamera = new Map3DCamera();
 
-            Config.MapGui.GLControl3D.MakeCurrent();
-            Config.MapGui.GLControl3D.Context.LoadAll();
+            Config.MapGui.GLControlMap3D.MakeCurrent();
+            Config.MapGui.GLControlMap3D.Context.LoadAll();
 
             CheckVersion();
             if (_error)
@@ -71,17 +71,17 @@ namespace STROOP.Map.Map3D
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             // Set viewport
-            GL.Viewport(Config.MapGui.GLControl3D.DisplayRectangle);
+            GL.Viewport(Config.MapGui.GLControlMap3D.DisplayRectangle);
 
-            Config.MapGui.GLControl3D.Paint += OnPaint;
-            Config.MapGui.GLControl3D.Resize += OnResize;
+            Config.MapGui.GLControlMap3D.Paint += OnPaint;
+            Config.MapGui.GLControlMap3D.Resize += OnResize;
         }
 
         public void OnPaint(object sender, EventArgs e)
         {
             UpdateCamera();
 
-            Config.MapGui.GLControl3D.MakeCurrent();
+            Config.MapGui.GLControlMap3D.MakeCurrent();
 
             // Set default background color (clear drawing area)
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
@@ -90,7 +90,7 @@ namespace STROOP.Map.Map3D
             // Make sure we have a camera
             if (_error || Config.Map3DCamera == null)
             {
-                Config.MapGui.GLControl3D.SwapBuffers();
+                Config.MapGui.GLControlMap3D.SwapBuffers();
                 return;
             }
             
@@ -130,7 +130,7 @@ namespace STROOP.Map.Map3D
             if (error != ErrorCode.NoError)
                 Debugger.Break();
 
-            Config.MapGui.GLControl3D.SwapBuffers();
+            Config.MapGui.GLControlMap3D.SwapBuffers();
         }
 
         public void BindVertices()
@@ -145,14 +145,14 @@ namespace STROOP.Map.Map3D
 
         void OnResize(object sender, EventArgs e)
         {
-            GL.Viewport(Config.MapGui.GLControl3D.DisplayRectangle);
+            GL.Viewport(Config.MapGui.GLControlMap3D.DisplayRectangle);
             OnSizeChanged?.Invoke(sender, e);
             Invalidate();
         }
 
         public void Invalidate()
         {
-            Config.MapGui.GLControl3D.Invalidate();
+            Config.MapGui.GLControlMap3D.Invalidate();
         }
 
         private void CheckVersion()

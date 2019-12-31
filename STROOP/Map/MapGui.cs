@@ -13,8 +13,8 @@ namespace STROOP.Map
     public class MapGui
     {
         // Major Controls
-        public GLControl GLControl2D;
-        public GLControl GLControl3D;
+        public GLControl GLControlMap2D;
+        public GLControl GLControlMap3D;
         public MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
 
 

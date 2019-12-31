@@ -41,7 +41,7 @@ namespace STROOP.Map
         public bool MapViewCenterChangeByPixels = true;
 
         public float MapViewRadius { get => (float)MoreMath.GetHypotenuse(
-            Config.MapGui.GLControl2D.Width / 2, Config.MapGui.GLControl2D.Height / 2) / MapViewScaleValue; }
+            Config.MapGui.GLControlMap2D.Width / 2, Config.MapGui.GLControlMap2D.Height / 2) / MapViewScaleValue; }
         public float MapViewXMin { get => MapViewCenterXValue - MapViewRadius; }
         public float MapViewXMax { get => MapViewCenterXValue + MapViewRadius; }
         public float MapViewZMin { get => MapViewCenterZValue - MapViewRadius; }
@@ -64,10 +64,10 @@ namespace STROOP.Map
 
         public void Load()
         {
-            Config.MapGui.GLControl2D.MakeCurrent();
-            Config.MapGui.GLControl2D.Context.LoadAll();
+            Config.MapGui.GLControlMap2D.MakeCurrent();
+            Config.MapGui.GLControlMap2D.Context.LoadAll();
 
-            Config.MapGui.GLControl2D.Paint += (sender, e) => OnPaint();
+            Config.MapGui.GLControlMap2D.Paint += (sender, e) => OnPaint();
 
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
             GL.Enable(EnableCap.Texture2D);
@@ -79,7 +79,7 @@ namespace STROOP.Map
 
         private void OnPaint()
         {
-            Config.MapGui.GLControl2D.MakeCurrent();
+            Config.MapGui.GLControlMap2D.MakeCurrent();
             UpdateViewport();
             UpdateMapView();
 
@@ -89,13 +89,13 @@ namespace STROOP.Map
 
             Config.MapGui.flowLayoutPanelMapTrackers.DrawOn2DControl();
 
-            Config.MapGui.GLControl2D.SwapBuffers();
+            Config.MapGui.GLControlMap2D.SwapBuffers();
         }
 
         private void UpdateViewport()
         {
-            int w = Config.MapGui.GLControl2D.Width;
-            int h = Config.MapGui.GLControl2D.Height;
+            int w = Config.MapGui.GLControlMap2D.Width;
+            int h = Config.MapGui.GLControlMap2D.Height;
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
 
@@ -149,7 +149,7 @@ namespace STROOP.Map
                     float rotatedWidth = rotatedXMax - rotatedXMin;
                     float rotatedHeight = rotatedZMax - rotatedZMin;
                     MapViewScaleValue = Math.Min(
-                        Config.MapGui.GLControl2D.Width / rotatedWidth, Config.MapGui.GLControl2D.Height / rotatedHeight);
+                        Config.MapGui.GLControlMap2D.Width / rotatedWidth, Config.MapGui.GLControlMap2D.Height / rotatedHeight);
                     break;
                 case Map3Scale.Custom:
                     MapViewScaleValue = ParsingUtilities.ParseFloatNullable(

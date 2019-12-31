@@ -243,9 +243,9 @@ namespace STROOP
         {
             Config.MapGui = new MapGui()
             {
-                GLControl2D = glControlMap3,
-                GLControl3D = glControlMap4,
-                flowLayoutPanelMapTrackers = flowLayoutPanelMap3Trackers,
+                GLControlMap2D = glControlMap2D,
+                GLControlMap3D = glControlMap3D,
+                flowLayoutPanelMapTrackers = flowLayoutPanelMapTrackers,
 
                 checkBoxMapOptionsTrackMario = checkBoxMap3OptionsTrackMario,
                 checkBoxMapOptionsTrackHolp = checkBoxMap3OptionsTrackHolp,
@@ -330,7 +330,7 @@ namespace STROOP
                 labelMapDataId = labelMap3DataId,
                 labelMapDataYNorm = labelMap3DataYNorm,
 
-                watchVariablePanelMap3DVars = watchVariablePanel3DVars,
+                watchVariablePanelMap3DVars = watchVariablePanelMap3DVars,
 
                 groupBoxMapCameraPosition = groupBoxMapCameraPosition,
                 groupBoxMapFocusPosition = groupBoxMapFocusPosition,

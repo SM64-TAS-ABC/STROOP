@@ -810,7 +810,7 @@ namespace STROOP
             this.labelMap3DataMapName = new System.Windows.Forms.Label();
             this.labelMap3DataPuCoordinates = new System.Windows.Forms.Label();
             this.tabPageMap33DVars = new System.Windows.Forms.TabPage();
-            this.watchVariablePanel3DVars = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.watchVariablePanelMap3DVars = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageMap33DControllers = new System.Windows.Forms.TabPage();
             this.textBoxMapFov = new STROOP.BetterTextbox();
             this.labelMapFov = new System.Windows.Forms.Label();
@@ -883,9 +883,9 @@ namespace STROOP
             this.buttonMapCameraPositionXnZp = new System.Windows.Forms.Button();
             this.buttonMapCameraPositionXn = new System.Windows.Forms.Button();
             this.buttonMapCameraPositionXnZn = new System.Windows.Forms.Button();
-            this.flowLayoutPanelMap3Trackers = new STROOP.Map.MapTrackerFlowLayoutPanel();
-            this.glControlMap4 = new OpenTK.GLControl();
-            this.glControlMap3 = new OpenTK.GLControl();
+            this.flowLayoutPanelMapTrackers = new STROOP.Map.MapTrackerFlowLayoutPanel();
+            this.glControlMap3D = new OpenTK.GLControl();
+            this.glControlMap2D = new OpenTK.GLControl();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.checkedListBoxObjectSlotOverlaysToShow = new System.Windows.Forms.CheckedListBox();
             this.checkedListBoxSavedSettings = new System.Windows.Forms.CheckedListBox();
@@ -10529,8 +10529,8 @@ namespace STROOP
             // splitContainerMap.Panel2
             // 
             this.splitContainerMap.Panel2.BackColor = System.Drawing.Color.Black;
-            this.splitContainerMap.Panel2.Controls.Add(this.glControlMap4);
-            this.splitContainerMap.Panel2.Controls.Add(this.glControlMap3);
+            this.splitContainerMap.Panel2.Controls.Add(this.glControlMap3D);
+            this.splitContainerMap.Panel2.Controls.Add(this.glControlMap2D);
             this.splitContainerMap.Panel2MinSize = 0;
             this.splitContainerMap.Size = new System.Drawing.Size(915, 463);
             this.splitContainerMap.SplitterDistance = 357;
@@ -10554,7 +10554,7 @@ namespace STROOP
             // 
             // betterSplitContainer1.Panel2
             // 
-            this.betterSplitContainer1.Panel2.Controls.Add(this.flowLayoutPanelMap3Trackers);
+            this.betterSplitContainer1.Panel2.Controls.Add(this.flowLayoutPanelMapTrackers);
             this.betterSplitContainer1.Panel2MinSize = 0;
             this.betterSplitContainer1.Size = new System.Drawing.Size(357, 463);
             this.betterSplitContainer1.SplitterDistance = 320;
@@ -11429,7 +11429,7 @@ namespace STROOP
             // 
             this.tabPageMap33DVars.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMap33DVars.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap33DVars.Controls.Add(this.watchVariablePanel3DVars);
+            this.tabPageMap33DVars.Controls.Add(this.watchVariablePanelMap3DVars);
             this.tabPageMap33DVars.Location = new System.Drawing.Point(4, 22);
             this.tabPageMap33DVars.Name = "tabPageMap33DVars";
             this.tabPageMap33DVars.Padding = new System.Windows.Forms.Padding(3);
@@ -11439,15 +11439,15 @@ namespace STROOP
             // 
             // watchVariablePanel3DVars
             // 
-            this.watchVariablePanel3DVars.AutoScroll = true;
-            this.watchVariablePanel3DVars.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanel3DVars.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanel3DVars.Location = new System.Drawing.Point(3, 3);
-            this.watchVariablePanel3DVars.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanel3DVars.Name = "watchVariablePanel3DVars";
-            this.watchVariablePanel3DVars.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanel3DVars.Size = new System.Drawing.Size(339, 284);
-            this.watchVariablePanel3DVars.TabIndex = 6;
+            this.watchVariablePanelMap3DVars.AutoScroll = true;
+            this.watchVariablePanelMap3DVars.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelMap3DVars.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelMap3DVars.Location = new System.Drawing.Point(3, 3);
+            this.watchVariablePanelMap3DVars.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelMap3DVars.Name = "watchVariablePanel3DVars";
+            this.watchVariablePanelMap3DVars.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelMap3DVars.Size = new System.Drawing.Size(339, 284);
+            this.watchVariablePanelMap3DVars.TabIndex = 6;
             // 
             // tabPageMap33DControllers
             // 
@@ -12245,40 +12245,40 @@ namespace STROOP
             // 
             // flowLayoutPanelMap3Trackers
             // 
-            this.flowLayoutPanelMap3Trackers.AutoScroll = true;
-            this.flowLayoutPanelMap3Trackers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelMap3Trackers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelMap3Trackers.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanelMap3Trackers.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanelMap3Trackers.Name = "flowLayoutPanelMap3Trackers";
-            this.flowLayoutPanelMap3Trackers.Size = new System.Drawing.Size(355, 140);
-            this.flowLayoutPanelMap3Trackers.TabIndex = 0;
-            this.flowLayoutPanelMap3Trackers.WrapContents = false;
+            this.flowLayoutPanelMapTrackers.AutoScroll = true;
+            this.flowLayoutPanelMapTrackers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelMapTrackers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanelMapTrackers.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanelMapTrackers.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelMapTrackers.Name = "flowLayoutPanelMap3Trackers";
+            this.flowLayoutPanelMapTrackers.Size = new System.Drawing.Size(355, 140);
+            this.flowLayoutPanelMapTrackers.TabIndex = 0;
+            this.flowLayoutPanelMapTrackers.WrapContents = false;
             // 
             // glControlMap4
             // 
-            this.glControlMap4.BackColor = System.Drawing.Color.Black;
-            this.glControlMap4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.glControlMap4.Location = new System.Drawing.Point(0, 0);
-            this.glControlMap4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.glControlMap4.Name = "glControlMap4";
-            this.glControlMap4.Size = new System.Drawing.Size(555, 461);
-            this.glControlMap4.TabIndex = 1;
-            this.glControlMap4.Visible = false;
-            this.glControlMap4.VSync = false;
-            this.glControlMap4.Load += new System.EventHandler(this.glControlMap4_Load);
+            this.glControlMap3D.BackColor = System.Drawing.Color.Black;
+            this.glControlMap3D.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.glControlMap3D.Location = new System.Drawing.Point(0, 0);
+            this.glControlMap3D.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.glControlMap3D.Name = "glControlMap4";
+            this.glControlMap3D.Size = new System.Drawing.Size(555, 461);
+            this.glControlMap3D.TabIndex = 1;
+            this.glControlMap3D.Visible = false;
+            this.glControlMap3D.VSync = false;
+            this.glControlMap3D.Load += new System.EventHandler(this.glControlMap4_Load);
             // 
             // glControlMap3
             // 
-            this.glControlMap3.BackColor = System.Drawing.Color.Black;
-            this.glControlMap3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.glControlMap3.Location = new System.Drawing.Point(0, 0);
-            this.glControlMap3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.glControlMap3.Name = "glControlMap3";
-            this.glControlMap3.Size = new System.Drawing.Size(555, 461);
-            this.glControlMap3.TabIndex = 0;
-            this.glControlMap3.VSync = false;
-            this.glControlMap3.Load += new System.EventHandler(this.glControlMap3_Load);
+            this.glControlMap2D.BackColor = System.Drawing.Color.Black;
+            this.glControlMap2D.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.glControlMap2D.Location = new System.Drawing.Point(0, 0);
+            this.glControlMap2D.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.glControlMap2D.Name = "glControlMap3";
+            this.glControlMap2D.Size = new System.Drawing.Size(555, 461);
+            this.glControlMap2D.TabIndex = 0;
+            this.glControlMap2D.VSync = false;
+            this.glControlMap2D.Load += new System.EventHandler(this.glControlMap3_Load);
             // 
             // tabPageOptions
             // 
@@ -22676,7 +22676,7 @@ namespace STROOP
         private Label labelSelectionMethod;
         private TabPage tabPageMap;
         private BetterSplitContainer splitContainerMap;
-        private OpenTK.GLControl glControlMap3;
+        private OpenTK.GLControl glControlMap2D;
         private BetterSplitContainer betterSplitContainer1;
         private TabControl tabControlMap3;
         private TabPage tabPageMap3Options;
@@ -22735,7 +22735,7 @@ namespace STROOP
         private Label labelMap3DataMapSubName;
         private Label labelMap3DataMapName;
         private Label labelMap3DataPuCoordinates;
-        private MapTrackerFlowLayoutPanel flowLayoutPanelMap3Trackers;
+        private MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
         private Button buttonMap3OptionsTrackMarkedObjects;
         private CheckBox checkBoxMap3OptionsTrackCurrentUnit;
         private CheckBox checkBoxMap3OptionsTrackUnitGridlines;
@@ -22786,10 +22786,10 @@ namespace STROOP
         private ListBox listBoxMusic;
         private WatchVariableFlowLayoutPanel watchVariablePanelMusic;
         private CheckBox checkBoxMemoryReaderHex;
-        private OpenTK.GLControl glControlMap4;
+        private OpenTK.GLControl glControlMap3D;
         private CheckBox checkBoxMap3OptionsEnable3D;
         private TabPage tabPageMap33DVars;
-        private WatchVariableFlowLayoutPanel watchVariablePanel3DVars;
+        private WatchVariableFlowLayoutPanel watchVariablePanelMap3DVars;
         private TabPage tabPageMap33DControllers;
         private GroupBox groupBoxMapCameraFocus;
         private CheckBox checkBoxMapCameraFocusRelative;
