@@ -729,23 +729,23 @@ namespace STROOP
             this.watchVariablePanelTas = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new STROOP.BetterSplitContainer();
-            this.betterSplitContainer1 = new STROOP.BetterSplitContainer();
+            this.splitContainerMapLeft = new STROOP.BetterSplitContainer();
             this.tabControlMap3 = new System.Windows.Forms.TabControl();
-            this.tabPageMap3Options = new System.Windows.Forms.TabPage();
+            this.tabPageMapOptions = new System.Windows.Forms.TabPage();
             this.comboBoxMapOptionsBackground = new System.Windows.Forms.ComboBox();
             this.comboBoxMapOptionsLevel = new System.Windows.Forms.ComboBox();
             this.textBoxMapOptionsGlobalIconSize = new STROOP.BetterTextbox();
             this.labelMapOptionsGlobalIconSize = new System.Windows.Forms.Label();
             this.labelMapOptionsBackground = new System.Windows.Forms.Label();
             this.labelMapOptionsLevel = new System.Windows.Forms.Label();
-            this.buttonMap3OptionsTrackMarkedObjects = new System.Windows.Forms.Button();
-            this.buttonMap3OptionsTrackAllObjects = new System.Windows.Forms.Button();
-            this.buttonMap3OptionsClearAllTrackers = new System.Windows.Forms.Button();
-            this.buttonMap3OptionsAddNewTracker = new System.Windows.Forms.Button();
-            this.checkBoxMap3OptionsDisable3DHitboxHackTris = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsEnable3D = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsScaleIconSizes = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsEnablePuView = new System.Windows.Forms.CheckBox();
+            this.buttonMapOptionsTrackMarkedObjects = new System.Windows.Forms.Button();
+            this.buttonMapOptionsTrackAllObjects = new System.Windows.Forms.Button();
+            this.buttonMapOptionsClearAllTrackers = new System.Windows.Forms.Button();
+            this.buttonMapOptionsAddNewTracker = new System.Windows.Forms.Button();
+            this.checkBoxMapOptionsDisable3DHitboxHackTris = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsEnable3D = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsScaleIconSizes = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsEnablePuView = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackPoint = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackSelf = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackNextPositions = new System.Windows.Forms.CheckBox();
@@ -1868,12 +1868,12 @@ namespace STROOP
             this.splitContainerMap.Panel1.SuspendLayout();
             this.splitContainerMap.Panel2.SuspendLayout();
             this.splitContainerMap.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer1)).BeginInit();
-            this.betterSplitContainer1.Panel1.SuspendLayout();
-            this.betterSplitContainer1.Panel2.SuspendLayout();
-            this.betterSplitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMapLeft)).BeginInit();
+            this.splitContainerMapLeft.Panel1.SuspendLayout();
+            this.splitContainerMapLeft.Panel2.SuspendLayout();
+            this.splitContainerMapLeft.SuspendLayout();
             this.tabControlMap3.SuspendLayout();
-            this.tabPageMap3Options.SuspendLayout();
+            this.tabPageMapOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapOptionsGlobalIconSize)).BeginInit();
             this.tabPageMap3Controllers.SuspendLayout();
             this.groupBoxMap3ControllersAngle.SuspendLayout();
@@ -10523,7 +10523,7 @@ namespace STROOP
             // 
             // splitContainerMap.Panel1
             // 
-            this.splitContainerMap.Panel1.Controls.Add(this.betterSplitContainer1);
+            this.splitContainerMap.Panel1.Controls.Add(this.splitContainerMapLeft);
             this.splitContainerMap.Panel1MinSize = 0;
             // 
             // splitContainerMap.Panel2
@@ -10537,33 +10537,33 @@ namespace STROOP
             this.splitContainerMap.SplitterWidth = 1;
             this.splitContainerMap.TabIndex = 18;
             // 
-            // betterSplitContainer1
+            // splitContainerMapLeft
             // 
-            this.betterSplitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.betterSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.betterSplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.betterSplitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.betterSplitContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.betterSplitContainer1.Name = "betterSplitContainer1";
-            this.betterSplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainerMapLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMapLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMapLeft.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerMapLeft.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerMapLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerMapLeft.Name = "splitContainerMapLeft";
+            this.splitContainerMapLeft.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // betterSplitContainer1.Panel1
+            // splitContainerMapLeft.Panel1
             // 
-            this.betterSplitContainer1.Panel1.Controls.Add(this.tabControlMap3);
-            this.betterSplitContainer1.Panel1MinSize = 0;
+            this.splitContainerMapLeft.Panel1.Controls.Add(this.tabControlMap3);
+            this.splitContainerMapLeft.Panel1MinSize = 0;
             // 
-            // betterSplitContainer1.Panel2
+            // splitContainerMapLeft.Panel2
             // 
-            this.betterSplitContainer1.Panel2.Controls.Add(this.flowLayoutPanelMapTrackers);
-            this.betterSplitContainer1.Panel2MinSize = 0;
-            this.betterSplitContainer1.Size = new System.Drawing.Size(357, 463);
-            this.betterSplitContainer1.SplitterDistance = 320;
-            this.betterSplitContainer1.SplitterWidth = 1;
-            this.betterSplitContainer1.TabIndex = 41;
+            this.splitContainerMapLeft.Panel2.Controls.Add(this.flowLayoutPanelMapTrackers);
+            this.splitContainerMapLeft.Panel2MinSize = 0;
+            this.splitContainerMapLeft.Size = new System.Drawing.Size(357, 463);
+            this.splitContainerMapLeft.SplitterDistance = 320;
+            this.splitContainerMapLeft.SplitterWidth = 1;
+            this.splitContainerMapLeft.TabIndex = 41;
             // 
             // tabControlMap3
             // 
-            this.tabControlMap3.Controls.Add(this.tabPageMap3Options);
+            this.tabControlMap3.Controls.Add(this.tabPageMapOptions);
             this.tabControlMap3.Controls.Add(this.tabPageMap3Controllers);
             this.tabControlMap3.Controls.Add(this.tabPageMap3Data);
             this.tabControlMap3.Controls.Add(this.tabPageMap33DVars);
@@ -10576,44 +10576,44 @@ namespace STROOP
             this.tabControlMap3.Size = new System.Drawing.Size(355, 318);
             this.tabControlMap3.TabIndex = 39;
             // 
-            // tabPageMap3Options
+            // tabPageMapOptions
             // 
-            this.tabPageMap3Options.AutoScroll = true;
-            this.tabPageMap3Options.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageMap3Options.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap3Options.Controls.Add(this.comboBoxMapOptionsBackground);
-            this.tabPageMap3Options.Controls.Add(this.comboBoxMapOptionsLevel);
-            this.tabPageMap3Options.Controls.Add(this.textBoxMapOptionsGlobalIconSize);
-            this.tabPageMap3Options.Controls.Add(this.labelMapOptionsGlobalIconSize);
-            this.tabPageMap3Options.Controls.Add(this.labelMapOptionsBackground);
-            this.tabPageMap3Options.Controls.Add(this.labelMapOptionsLevel);
-            this.tabPageMap3Options.Controls.Add(this.buttonMap3OptionsTrackMarkedObjects);
-            this.tabPageMap3Options.Controls.Add(this.buttonMap3OptionsTrackAllObjects);
-            this.tabPageMap3Options.Controls.Add(this.buttonMap3OptionsClearAllTrackers);
-            this.tabPageMap3Options.Controls.Add(this.buttonMap3OptionsAddNewTracker);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsDisable3DHitboxHackTris);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsEnable3D);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsScaleIconSizes);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsEnablePuView);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackPoint);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackSelf);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackNextPositions);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCurrentUnit);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCellGridlines);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackUnitGridlines);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCeilingTri);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCurrentCell);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackFloorTri);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCamera);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackHolp);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackMario);
-            this.tabPageMap3Options.Controls.Add(this.trackBarMapOptionsGlobalIconSize);
-            this.tabPageMap3Options.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMap3Options.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageMap3Options.Name = "tabPageMap3Options";
-            this.tabPageMap3Options.Size = new System.Drawing.Size(347, 292);
-            this.tabPageMap3Options.TabIndex = 3;
-            this.tabPageMap3Options.Text = "Options";
+            this.tabPageMapOptions.AutoScroll = true;
+            this.tabPageMapOptions.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMapOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMapOptions.Controls.Add(this.comboBoxMapOptionsBackground);
+            this.tabPageMapOptions.Controls.Add(this.comboBoxMapOptionsLevel);
+            this.tabPageMapOptions.Controls.Add(this.textBoxMapOptionsGlobalIconSize);
+            this.tabPageMapOptions.Controls.Add(this.labelMapOptionsGlobalIconSize);
+            this.tabPageMapOptions.Controls.Add(this.labelMapOptionsBackground);
+            this.tabPageMapOptions.Controls.Add(this.labelMapOptionsLevel);
+            this.tabPageMapOptions.Controls.Add(this.buttonMapOptionsTrackMarkedObjects);
+            this.tabPageMapOptions.Controls.Add(this.buttonMapOptionsTrackAllObjects);
+            this.tabPageMapOptions.Controls.Add(this.buttonMapOptionsClearAllTrackers);
+            this.tabPageMapOptions.Controls.Add(this.buttonMapOptionsAddNewTracker);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsDisable3DHitboxHackTris);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsEnable3D);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsScaleIconSizes);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsEnablePuView);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackPoint);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackSelf);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackNextPositions);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackCurrentUnit);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackCellGridlines);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackUnitGridlines);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackCeilingTri);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackCurrentCell);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackFloorTri);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackCamera);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackHolp);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackMario);
+            this.tabPageMapOptions.Controls.Add(this.trackBarMapOptionsGlobalIconSize);
+            this.tabPageMapOptions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMapOptions.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMapOptions.Name = "tabPageMapOptions";
+            this.tabPageMapOptions.Size = new System.Drawing.Size(347, 292);
+            this.tabPageMapOptions.TabIndex = 3;
+            this.tabPageMapOptions.Text = "Options";
             // 
             // comboBoxMapOptionsBackground
             // 
@@ -10670,85 +10670,85 @@ namespace STROOP
             this.labelMapOptionsLevel.TabIndex = 12;
             this.labelMapOptionsLevel.Text = "Level:";
             // 
-            // buttonMap3OptionsTrackMarkedObjects
+            // buttonMapOptionsTrackMarkedObjects
             // 
-            this.buttonMap3OptionsTrackMarkedObjects.Location = new System.Drawing.Point(148, 87);
-            this.buttonMap3OptionsTrackMarkedObjects.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMap3OptionsTrackMarkedObjects.Name = "buttonMap3OptionsTrackMarkedObjects";
-            this.buttonMap3OptionsTrackMarkedObjects.Size = new System.Drawing.Size(135, 25);
-            this.buttonMap3OptionsTrackMarkedObjects.TabIndex = 40;
-            this.buttonMap3OptionsTrackMarkedObjects.Text = "Track Marked Objects";
-            this.buttonMap3OptionsTrackMarkedObjects.UseVisualStyleBackColor = true;
+            this.buttonMapOptionsTrackMarkedObjects.Location = new System.Drawing.Point(148, 87);
+            this.buttonMapOptionsTrackMarkedObjects.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapOptionsTrackMarkedObjects.Name = "buttonMapOptionsTrackMarkedObjects";
+            this.buttonMapOptionsTrackMarkedObjects.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapOptionsTrackMarkedObjects.TabIndex = 40;
+            this.buttonMapOptionsTrackMarkedObjects.Text = "Track Marked Objects";
+            this.buttonMapOptionsTrackMarkedObjects.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3OptionsTrackAllObjects
+            // buttonMapOptionsTrackAllObjects
             // 
-            this.buttonMap3OptionsTrackAllObjects.Location = new System.Drawing.Point(148, 59);
-            this.buttonMap3OptionsTrackAllObjects.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMap3OptionsTrackAllObjects.Name = "buttonMap3OptionsTrackAllObjects";
-            this.buttonMap3OptionsTrackAllObjects.Size = new System.Drawing.Size(135, 25);
-            this.buttonMap3OptionsTrackAllObjects.TabIndex = 40;
-            this.buttonMap3OptionsTrackAllObjects.Text = "Track All Objects";
-            this.buttonMap3OptionsTrackAllObjects.UseVisualStyleBackColor = true;
+            this.buttonMapOptionsTrackAllObjects.Location = new System.Drawing.Point(148, 59);
+            this.buttonMapOptionsTrackAllObjects.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapOptionsTrackAllObjects.Name = "buttonMapOptionsTrackAllObjects";
+            this.buttonMapOptionsTrackAllObjects.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapOptionsTrackAllObjects.TabIndex = 40;
+            this.buttonMapOptionsTrackAllObjects.Text = "Track All Objects";
+            this.buttonMapOptionsTrackAllObjects.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3OptionsClearAllTrackers
+            // buttonMapOptionsClearAllTrackers
             // 
-            this.buttonMap3OptionsClearAllTrackers.Location = new System.Drawing.Point(148, 31);
-            this.buttonMap3OptionsClearAllTrackers.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMap3OptionsClearAllTrackers.Name = "buttonMap3OptionsClearAllTrackers";
-            this.buttonMap3OptionsClearAllTrackers.Size = new System.Drawing.Size(135, 25);
-            this.buttonMap3OptionsClearAllTrackers.TabIndex = 40;
-            this.buttonMap3OptionsClearAllTrackers.Text = "Clear All Trackers";
-            this.buttonMap3OptionsClearAllTrackers.UseVisualStyleBackColor = true;
+            this.buttonMapOptionsClearAllTrackers.Location = new System.Drawing.Point(148, 31);
+            this.buttonMapOptionsClearAllTrackers.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapOptionsClearAllTrackers.Name = "buttonMapOptionsClearAllTrackers";
+            this.buttonMapOptionsClearAllTrackers.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapOptionsClearAllTrackers.TabIndex = 40;
+            this.buttonMapOptionsClearAllTrackers.Text = "Clear All Trackers";
+            this.buttonMapOptionsClearAllTrackers.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3OptionsAddNewTracker
+            // buttonMapOptionsAddNewTracker
             // 
-            this.buttonMap3OptionsAddNewTracker.Location = new System.Drawing.Point(148, 3);
-            this.buttonMap3OptionsAddNewTracker.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMap3OptionsAddNewTracker.Name = "buttonMap3OptionsAddNewTracker";
-            this.buttonMap3OptionsAddNewTracker.Size = new System.Drawing.Size(135, 25);
-            this.buttonMap3OptionsAddNewTracker.TabIndex = 41;
-            this.buttonMap3OptionsAddNewTracker.Text = "Add New Tracker";
-            this.buttonMap3OptionsAddNewTracker.UseVisualStyleBackColor = true;
+            this.buttonMapOptionsAddNewTracker.Location = new System.Drawing.Point(148, 3);
+            this.buttonMapOptionsAddNewTracker.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapOptionsAddNewTracker.Name = "buttonMapOptionsAddNewTracker";
+            this.buttonMapOptionsAddNewTracker.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapOptionsAddNewTracker.TabIndex = 41;
+            this.buttonMapOptionsAddNewTracker.Text = "Add New Tracker";
+            this.buttonMapOptionsAddNewTracker.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsDisable3DHitboxHackTris
+            // checkBoxMapOptionsDisable3DHitboxHackTris
             // 
-            this.checkBoxMap3OptionsDisable3DHitboxHackTris.AutoSize = true;
-            this.checkBoxMap3OptionsDisable3DHitboxHackTris.Location = new System.Drawing.Point(148, 133);
-            this.checkBoxMap3OptionsDisable3DHitboxHackTris.Name = "checkBoxMap3OptionsDisable3DHitboxHackTris";
-            this.checkBoxMap3OptionsDisable3DHitboxHackTris.Size = new System.Drawing.Size(160, 17);
-            this.checkBoxMap3OptionsDisable3DHitboxHackTris.TabIndex = 19;
-            this.checkBoxMap3OptionsDisable3DHitboxHackTris.Text = "Disable 3D Hitbox Hack Tris";
-            this.checkBoxMap3OptionsDisable3DHitboxHackTris.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsDisable3DHitboxHackTris.AutoSize = true;
+            this.checkBoxMapOptionsDisable3DHitboxHackTris.Location = new System.Drawing.Point(148, 133);
+            this.checkBoxMapOptionsDisable3DHitboxHackTris.Name = "checkBoxMapOptionsDisable3DHitboxHackTris";
+            this.checkBoxMapOptionsDisable3DHitboxHackTris.Size = new System.Drawing.Size(160, 17);
+            this.checkBoxMapOptionsDisable3DHitboxHackTris.TabIndex = 19;
+            this.checkBoxMapOptionsDisable3DHitboxHackTris.Text = "Disable 3D Hitbox Hack Tris";
+            this.checkBoxMapOptionsDisable3DHitboxHackTris.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsEnable3D
+            // checkBoxMapOptionsEnable3D
             // 
-            this.checkBoxMap3OptionsEnable3D.AutoSize = true;
-            this.checkBoxMap3OptionsEnable3D.Location = new System.Drawing.Point(148, 115);
-            this.checkBoxMap3OptionsEnable3D.Name = "checkBoxMap3OptionsEnable3D";
-            this.checkBoxMap3OptionsEnable3D.Size = new System.Drawing.Size(76, 17);
-            this.checkBoxMap3OptionsEnable3D.TabIndex = 19;
-            this.checkBoxMap3OptionsEnable3D.Text = "Enable 3D";
-            this.checkBoxMap3OptionsEnable3D.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsEnable3D.AutoSize = true;
+            this.checkBoxMapOptionsEnable3D.Location = new System.Drawing.Point(148, 115);
+            this.checkBoxMapOptionsEnable3D.Name = "checkBoxMapOptionsEnable3D";
+            this.checkBoxMapOptionsEnable3D.Size = new System.Drawing.Size(76, 17);
+            this.checkBoxMapOptionsEnable3D.TabIndex = 19;
+            this.checkBoxMapOptionsEnable3D.Text = "Enable 3D";
+            this.checkBoxMapOptionsEnable3D.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsScaleIconSizes
+            // checkBoxMapOptionsScaleIconSizes
             // 
-            this.checkBoxMap3OptionsScaleIconSizes.AutoSize = true;
-            this.checkBoxMap3OptionsScaleIconSizes.Location = new System.Drawing.Point(148, 169);
-            this.checkBoxMap3OptionsScaleIconSizes.Name = "checkBoxMap3OptionsScaleIconSizes";
-            this.checkBoxMap3OptionsScaleIconSizes.Size = new System.Drawing.Size(105, 17);
-            this.checkBoxMap3OptionsScaleIconSizes.TabIndex = 19;
-            this.checkBoxMap3OptionsScaleIconSizes.Text = "Scale Icon Sizes";
-            this.checkBoxMap3OptionsScaleIconSizes.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsScaleIconSizes.AutoSize = true;
+            this.checkBoxMapOptionsScaleIconSizes.Location = new System.Drawing.Point(148, 169);
+            this.checkBoxMapOptionsScaleIconSizes.Name = "checkBoxMapOptionsScaleIconSizes";
+            this.checkBoxMapOptionsScaleIconSizes.Size = new System.Drawing.Size(105, 17);
+            this.checkBoxMapOptionsScaleIconSizes.TabIndex = 19;
+            this.checkBoxMapOptionsScaleIconSizes.Text = "Scale Icon Sizes";
+            this.checkBoxMapOptionsScaleIconSizes.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsEnablePuView
+            // checkBoxMapOptionsEnablePuView
             // 
-            this.checkBoxMap3OptionsEnablePuView.AutoSize = true;
-            this.checkBoxMap3OptionsEnablePuView.Location = new System.Drawing.Point(148, 151);
-            this.checkBoxMap3OptionsEnablePuView.Name = "checkBoxMap3OptionsEnablePuView";
-            this.checkBoxMap3OptionsEnablePuView.Size = new System.Drawing.Size(103, 17);
-            this.checkBoxMap3OptionsEnablePuView.TabIndex = 19;
-            this.checkBoxMap3OptionsEnablePuView.Text = "Enable PU View";
-            this.checkBoxMap3OptionsEnablePuView.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsEnablePuView.AutoSize = true;
+            this.checkBoxMapOptionsEnablePuView.Location = new System.Drawing.Point(148, 151);
+            this.checkBoxMapOptionsEnablePuView.Name = "checkBoxMapOptionsEnablePuView";
+            this.checkBoxMapOptionsEnablePuView.Size = new System.Drawing.Size(103, 17);
+            this.checkBoxMapOptionsEnablePuView.TabIndex = 19;
+            this.checkBoxMapOptionsEnablePuView.Text = "Enable PU View";
+            this.checkBoxMapOptionsEnablePuView.UseVisualStyleBackColor = true;
             // 
             // checkBoxMapOptionsTrackPoint
             // 
@@ -21047,13 +21047,13 @@ namespace STROOP
             this.splitContainerMap.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).EndInit();
             this.splitContainerMap.ResumeLayout(false);
-            this.betterSplitContainer1.Panel1.ResumeLayout(false);
-            this.betterSplitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer1)).EndInit();
-            this.betterSplitContainer1.ResumeLayout(false);
+            this.splitContainerMapLeft.Panel1.ResumeLayout(false);
+            this.splitContainerMapLeft.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMapLeft)).EndInit();
+            this.splitContainerMapLeft.ResumeLayout(false);
             this.tabControlMap3.ResumeLayout(false);
-            this.tabPageMap3Options.ResumeLayout(false);
-            this.tabPageMap3Options.PerformLayout();
+            this.tabPageMapOptions.ResumeLayout(false);
+            this.tabPageMapOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapOptionsGlobalIconSize)).EndInit();
             this.tabPageMap3Controllers.ResumeLayout(false);
             this.groupBoxMap3ControllersAngle.ResumeLayout(false);
@@ -22677,16 +22677,16 @@ namespace STROOP
         private TabPage tabPageMap;
         private BetterSplitContainer splitContainerMap;
         private OpenTK.GLControl glControlMap2D;
-        private BetterSplitContainer betterSplitContainer1;
+        private BetterSplitContainer splitContainerMapLeft;
         private TabControl tabControlMap3;
-        private TabPage tabPageMap3Options;
+        private TabPage tabPageMapOptions;
         private ComboBox comboBoxMapOptionsBackground;
         private ComboBox comboBoxMapOptionsLevel;
         private Label labelMapOptionsBackground;
         private Label labelMapOptionsLevel;
-        private Button buttonMap3OptionsTrackAllObjects;
-        private Button buttonMap3OptionsClearAllTrackers;
-        private Button buttonMap3OptionsAddNewTracker;
+        private Button buttonMapOptionsTrackAllObjects;
+        private Button buttonMapOptionsClearAllTrackers;
+        private Button buttonMapOptionsAddNewTracker;
         private CheckBox checkBoxMapOptionsTrackCellGridlines;
         private CheckBox checkBoxMapOptionsTrackCeilingTri;
         private CheckBox checkBoxMapOptionsTrackFloorTri;
@@ -22736,17 +22736,17 @@ namespace STROOP
         private Label labelMap3DataMapName;
         private Label labelMap3DataPuCoordinates;
         private MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
-        private Button buttonMap3OptionsTrackMarkedObjects;
+        private Button buttonMapOptionsTrackMarkedObjects;
         private CheckBox checkBoxMapOptionsTrackCurrentUnit;
         private CheckBox checkBoxMapOptionsTrackUnitGridlines;
         private CheckBox checkBoxMapOptionsTrackCurrentCell;
-        private CheckBox checkBoxMap3OptionsEnablePuView;
+        private CheckBox checkBoxMapOptionsEnablePuView;
         private CheckBox checkBoxMapOptionsTrackPoint;
         private CheckBox checkBoxMapOptionsTrackSelf;
         private CheckBox checkBoxMapOptionsTrackNextPositions;
         private Label labelMapOptionsGlobalIconSize;
         private BetterTextbox textBoxMapOptionsGlobalIconSize;
-        private CheckBox checkBoxMap3OptionsScaleIconSizes;
+        private CheckBox checkBoxMapOptionsScaleIconSizes;
         private TrackBarEx trackBarMapOptionsGlobalIconSize;
         private BetterTextbox textBoxMap3ControllersScaleChange2;
         private Button buttonMap3ControllersScaleDivide;
@@ -22787,7 +22787,7 @@ namespace STROOP
         private WatchVariableFlowLayoutPanel watchVariablePanelMusic;
         private CheckBox checkBoxMemoryReaderHex;
         private OpenTK.GLControl glControlMap3D;
-        private CheckBox checkBoxMap3OptionsEnable3D;
+        private CheckBox checkBoxMapOptionsEnable3D;
         private TabPage tabPageMap33DVars;
         private WatchVariableFlowLayoutPanel watchVariablePanelMap3DVars;
         private TabPage tabPageMap33DControllers;
@@ -22859,7 +22859,7 @@ namespace STROOP
         private Button buttonMapCameraPositionXnZp;
         private Button buttonMapCameraPositionXn;
         private Button buttonMapCameraPositionXnZn;
-        private CheckBox checkBoxMap3OptionsDisable3DHitboxHackTris;
+        private CheckBox checkBoxMapOptionsDisable3DHitboxHackTris;
         private BetterTextbox textBoxMapFov;
         private Label labelMapFov;
         private TrackBarEx trackBarMapFov;
