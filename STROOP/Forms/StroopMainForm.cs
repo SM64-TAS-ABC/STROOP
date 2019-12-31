@@ -17,7 +17,6 @@ using STROOP.Controls;
 using STROOP.Forms;
 using STROOP.Models;
 using STROOP.Structs.Gui;
-using STROOP.Map2;
 using STROOP.Map3;
 
 namespace STROOP
@@ -242,74 +241,6 @@ namespace STROOP
 
         private void CreateManagers()
         {
-            // Create map manager
-            Config.MapGui = new MapGui()
-            {
-                // Main controls
-                GLControl = glControlMap,
-                MapTrackerFlowLayoutPanel = flowLayoutPanelMapTrackers,
-                TabControlView = tabControlMap,
-
-                // Controls in options tab
-                TabPageOptions = tabPageMapOptions,
-                CheckBoxTrackMario = checkBoxMapControlsTrackMario,
-                CheckBoxTrackHolp = checkBoxMapControlsTrackHolp,
-                CheckBoxTrackCamera = checkBoxMapControlsTrackCamera,
-                CheckBoxTrackFloorTriangle = checkBoxMapControlsTrackFloorTriangle,
-                CheckBoxTrackWallTriangle = checkBoxMapControlsTrackWallTriangle,
-                CheckBoxTrackCeilingTriangle = checkBoxMapControlsTrackCeilingTriangle,
-                CheckBoxTrackAllObjects = checkBoxMapControlsTrackAllObjects,
-                CheckBoxTrackGridlines = checkBoxMapControlsTrackGridlines,
-
-                ButtonAddNewTracker = buttonMapControlsAddNewTracker,
-                ButtonClearAllTrackers = buttonMapControlsClearAllTrackers,
-                ButtonTrackSelectedObjects = buttonMapControlsTrackSelectedObjects,
-
-                ComboBoxLevel = comboBoxMapOptionsLevel,
-                ComboBoxBackground = comboBoxMapOptionsBackground,
-
-                // Controls in 2D tab
-                TabPage2D = tabPageMap2D,
-                RadioButtonScaleCourseDefault = radioButtonMapControlsScaleCourseDefault,
-                RadioButtonScaleMaxCourseSize = radioButtonMapControlsScaleMaxCourseSize,
-                RadioButtonScaleCustom = radioButtonMapControlsScaleCustom,
-                TextBoxScaleCustom = betterTextboxMapControlsScaleCustom,
-
-                ButtonCenterScaleChangeMinus = buttonMapControlsScaleChangeMinus,
-                ButtonCenterScaleChangePlus = buttonMapControlsScaleChangePlus,
-                TextBoxScaleChange = betterTextboxMapControlsScaleChange,
-
-                RadioButtonCenterBestFit = radioButtonMapControlsCenterBestFit,
-                RadioButtonCenterOrigin = radioButtonMapControlsCenterOrigin,
-                RadioButtonCenterCustom = radioButtonMapControlsCenterCustom,
-                TextBoxCenterCustom = betterTextboxMapControlsCenterCustom,
-
-                ButtonCenterChangeUp = buttonMapControlsCenterChangeUp,
-                ButtonCenterChangeDown = buttonMapControlsCenterChangeDown,
-                ButtonCenterChangeLeft = buttonMapControlsCenterChangeLeft,
-                ButtonCenterChangeRight = buttonMapControlsCenterChangeRight,
-                ButtonCenterChangeUpLeft = buttonMapControlsCenterChangeUpLeft,
-                ButtonCenterChangeUpRight = buttonMapControlsCenterChangeUpRight,
-                ButtonCenterChangeDownLeft = buttonMapControlsCenterChangeDownLeft,
-                ButtonCenterChangeDownRight = buttonMapControlsCenterChangeDownRight,
-
-                RadioButtonAngle0 = radioButtonMapControlsAngle0,
-                RadioButtonAngle16384 = radioButtonMapControlsAngle16384,
-                RadioButtonAngle32768 = radioButtonMapControlsAngle32768,
-                RadioButtonAngle49152 = radioButtonMapControlsAngle49152,
-                RadioButtonAngleCustom = radioButtonMapControlsAngleCustom,
-                TextBoxAngleCustom = betterTextboxMapControlsAngleCustom,
-
-                ButtonAngleChangeCounterclockwise = buttonMapControlsAngleChangeCounterclockwise,
-                ButtonAngleChangeClockwise = buttonMapControlsAngleChangeClockwise,
-                TextBoxAngleChange = betterTextboxMapControlsAngleChange,
-
-                // Controls in the 3D map tab
-                TabPage3D = tabPageMap3D,
-                CheckBoxMapGameCamOrientation = checkBoxMapGameCamOrientation,
-                ComboBoxMapColorMethod = comboBoxMapColorMethod
-            };
-
             Config.Map3Gui = new Map3Gui()
             {
                 GLControl2D = glControlMap3,
@@ -407,44 +338,7 @@ namespace STROOP
                 groupBoxMapCameraFocus = groupBoxMapCameraFocus,
             };
 
-            Map2Gui map2Gui = new Map2Gui()
-            {
-                GLControl = glControlMap2,
-
-                MapIdLabel = labelMap2Id,
-                MapNameLabel = labelMap2Name,
-                MapSubNameLabel = labelMap2SubName,
-                PuValueLabel = labelMap2PuValue,
-                QpuValueLabel = labelMap2QpuValue,
-                YNormValueLabel = labelMap2YNormValue,
-
-                MapIconSizeTrackbar = trackBarMap2IconSize,
-                MapShowInactiveObjects = checkBoxMap2ShowInactive,
-                MapShowMario = checkBoxMap2ShowMario,
-                MapShowHolp = checkBoxMap2ShowHolp,
-                MapShowIntendedNextPosition = checkBoxMap2ShowIntendedNextPosition,
-                MapShowPoint = checkBoxMap2ShowPoint,
-                MapShowCamera = checkBoxMap2ShowCamera,
-                MapShowFloorTriangle = checkBoxMap2ShowFloor,
-                MapShowCeilingTriangle = checkBoxMap2ShowCeiling,
-
-                MapBoundsUpButton = buttonMap2BoundsUp,
-                MapBoundsDownButton = buttonMap2BoundsDown,
-                MapBoundsLeftButton = buttonMap2BoundsLeft,
-                MapBoundsRightButton = buttonMap2BoundsRight,
-                MapBoundsUpLeftButton = buttonMap2BoundsUpLeft,
-                MapBoundsUpRightButton = buttonMap2BoundsUpRight,
-                MapBoundsDownLeftButton = buttonMap2BoundsDownLeft,
-                MapBoundsDownRightButton = buttonMap2BoundsDownRight,
-                MapBoundsPositionTextBox = textBoxMap2BoundsPosition,
-
-                MapBoundsZoomInButton = buttonMap2BoundsZoomIn,
-                MapBoundsZoomOutButton = buttonMap2BoundsZoomOut,
-                MapBoundsZoomTextBox = textBoxMap2BoundsZoom,
-
-                MapArtificialMarioYLabelTextBox = textBoxMap2ArtificialMarioYLabel
-            };
-
+            
             M64Gui m64Gui = new M64Gui()
             {
                 LabelFileName = labelM64FileName,
@@ -507,8 +401,6 @@ namespace STROOP
             };
 
             // Create managers
-            Config.MapManager = new MapManager();
-            Config.Map2Manager = new Map2Manager(map2Gui);
             Config.Map3Manager = new Map3Manager(@"Config/Map3DVars.xml");
             Config.Map4Manager = new Map4Manager();
 
@@ -708,8 +600,6 @@ namespace STROOP
                 Config.CellsManager.Update(tabControlMain.SelectedTab == tabPageCells);
                 Config.CoinManager.Update(tabControlMain.SelectedTab == tabPageCoin);
                 Config.M64Manager.Update(tabControlMain.SelectedTab == tabPageM64);
-                Config.MapManager?.Update();
-                Config.Map2Manager?.Update();
                 Config.Map3Manager.Update(tabControlMain.SelectedTab == tabPageMap3);
                 Config.Map4Manager?.Update();
                 Config.ModelManager?.Update();
@@ -767,32 +657,10 @@ namespace STROOP
 
         }
 
-        private async void glControlMap_Load(object sender, EventArgs e)
-        {
-            await Task.Run(() => {
-                while (Config.MapManager == null)
-                {
-                    Task.Delay(1).Wait();
-                }
-            });
-            Config.MapManager.Load();
-        }
-
-        private async void glControlMap2_Load(object sender, EventArgs e)
-        {
-            await Task.Run(() => {
-                while (Config.Map2Manager == null)
-                {
-                    Task.Delay(1).Wait();
-                }
-            });
-            Config.Map2Manager.Load();
-        }
-
         private async void glControlMap3_Load(object sender, EventArgs e)
         {
             await Task.Run(() => {
-                while (Config.Map2Manager == null)
+                while (Config.Map3Manager == null)
                 {
                     Task.Delay(1).Wait();
                 }

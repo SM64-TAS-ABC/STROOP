@@ -1,5 +1,4 @@
 ﻿using OpenTK;
-using STROOP.Controls.Map.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -65,7 +64,7 @@ namespace STROOP.Map3.Map.Graphics.Items
 
         protected static List<Type> CameraTypeAny = new List<Type>()
         {
-            typeof(MapCameraTopView),
+            typeof(Map4CameraTopView),
 
         };
     }

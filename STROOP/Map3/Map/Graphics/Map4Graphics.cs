@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
 using STROOP.Structs;
-using STROOP.Controls.Map.Graphics.Items;
 using System.IO;
 using System.Diagnostics;
 using STROOP.Map3.Map.Graphics.Items;

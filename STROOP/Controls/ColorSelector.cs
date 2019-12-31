@@ -13,7 +13,6 @@ using System.Xml.Linq;
 using STROOP.Structs.Configurations;
 using System.Drawing.Drawing2D;
 using STROOP.Interfaces;
-using STROOP.Controls.Map.Objects;
 
 namespace STROOP.Controls
 {

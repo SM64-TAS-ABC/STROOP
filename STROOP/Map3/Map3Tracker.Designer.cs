@@ -1,5 +1,4 @@
 ﻿using STROOP.Controls;
-using STROOP.Controls.Map.Trackers;
 
 namespace STROOP.Map3
 {

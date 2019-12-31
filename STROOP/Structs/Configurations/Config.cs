@@ -1,5 +1,4 @@
-﻿using STROOP.Controls.Map;
-using STROOP.Managers;
+﻿using STROOP.Managers;
 using STROOP.Map3;
 using STROOP.Map3.Map;
 using STROOP.Map3.Map.Graphics;
@@ -22,12 +21,10 @@ namespace STROOP.Structs.Configurations
         public static ProcessStream Stream;
         public static ObjectAssociations ObjectAssociations;
         public static MapAssociations MapAssociations;
-        public static MapController MapController;
         public static Map4Controller Map4Controller;
         public static StroopMainForm StroopMainForm;
         public static TabControlEx TabControlMain;
         public static Label DebugText;
-        public static MapGui MapGui;
         public static Map3Graphics Map3Graphics;
         public static Map3Gui Map3Gui;
         public static Map4Graphics Map4Graphics;
@@ -37,8 +34,6 @@ namespace STROOP.Structs.Configurations
         public static DisassemblyManager DisassemblyManager;
         public static HackManager HackManager;
         public static HudManager HudManager;
-        public static MapManager MapManager;
-        public static Map2Manager Map2Manager;
         public static Map3Manager Map3Manager;
         public static Map4Manager Map4Manager;
         public static ModelManager ModelManager;

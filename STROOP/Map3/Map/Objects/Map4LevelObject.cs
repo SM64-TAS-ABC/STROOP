@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using STROOP.Controls.Map.Graphics.Items;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using STROOP.Models;
 using System.Drawing;
-using STROOP.Controls.Map.Graphics;
 using OpenTK;
 using OpenTK.Graphics;
 using STROOP.Map3.Map.Graphics.Items;
@@ -59,11 +57,11 @@ namespace STROOP.Map3.Map.Objects
             MapLayout bestMap = Config.MapAssociations.GetBestMap(
                 level.Index, level.Area, level.LoadingPoint, level.MissionLayout, marioRelY);
 
-            object mapLayoutChoice = Config.MapGui.ComboBoxLevel.SelectedItem;
-            if (mapLayoutChoice is MapLayout)
-            {
-                bestMap = (MapLayout)mapLayoutChoice;
-            }
+            //object mapLayoutChoice = Config.MapGui.ComboBoxLevel.SelectedItem;
+            //if (mapLayoutChoice is MapLayout)
+            //{
+            //    bestMap = (MapLayout)mapLayoutChoice;
+            //}
 
             ChangeCurrentMap(bestMap);
         }
@@ -75,15 +73,15 @@ namespace STROOP.Map3.Map.Objects
             MapLayout bestMap = Config.MapAssociations.GetBestMap(
                 level.Index, level.Area, level.LoadingPoint, level.MissionLayout, marioRelY);
 
-            object backgroundChoice = Config.MapGui.ComboBoxBackground.SelectedItem;
-            if (backgroundChoice is BackgroundImage background)
-            {
-                ChangeBackground(background.Image);
-            }
-            else
-            {
-                ChangeBackground(bestMap.BackgroundImage);
-            }
+            //object backgroundChoice = Config.MapGui.ComboBoxBackground.SelectedItem;
+            //if (backgroundChoice is BackgroundImage background)
+            //{
+            //    ChangeBackground(background.Image);
+            //}
+            //else
+            //{
+            //    ChangeBackground(bestMap.BackgroundImage);
+            //}
         }
 
         void UpdateTriangles()

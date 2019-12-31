@@ -13,8 +13,6 @@ using System.Xml.Linq;
 using STROOP.Structs.Configurations;
 using System.Drawing.Drawing2D;
 using STROOP.Interfaces;
-using STROOP.Controls.Map.Objects;
-using STROOP.Controls.Map.Semaphores;
 using STROOP.Map3.Map.Semaphores;
 
 namespace STROOP.Map3.Map.Trackers

@@ -15,7 +15,6 @@ using STROOP.Structs.Configurations;
 using STROOP.Models;
 using static STROOP.Managers.ObjectSlotsManager;
 using System.Windows.Input;
-using STROOP.Map2;
 
 namespace STROOP
 {
@@ -706,59 +705,6 @@ namespace STROOP
 
             if (redraw)
                 Invalidate();
-
-            UpdateMapObject();
-        }
-
-        private void UpdateMapObject()
-        {
-            if (!Config.Map2Manager.IsLoaded || CurrentObject == null)
-                return;
-
-            Dictionary<uint, Map2Object> _mapObjects = Config.Map2Manager._mapObjectDictionary;
-            BehaviorCriteria behaviorCriteria = CurrentObject.BehaviorCriteria;
-            uint objAddress = CurrentObject.Address;
-
-            // Update image
-            var mapObjImage = Config.ObjectAssociations.GetObjectMapImage(behaviorCriteria);
-            var mapObjRotates = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
-            if (!_mapObjects.ContainsKey(objAddress))
-            {
-                var mapObj = new Map2Object(mapObjImage);
-                mapObj.UsesRotation = mapObjRotates;
-                _mapObjects.Add(objAddress, mapObj);
-                Config.Map2Manager.AddMapObject(mapObj);
-            }
-            else if (_mapObjects[objAddress].Image != mapObjImage)
-            {
-                Config.Map2Manager.RemoveMapObject(_mapObjects[objAddress]);
-                var mapObj = new Map2Object(mapObjImage);
-                mapObj.UsesRotation = mapObjRotates;
-                _mapObjects[objAddress] = mapObj;
-                Config.Map2Manager.AddMapObject(mapObj);
-            }
-            
-            if (CurrentObject.SegmentedBehavior ==
-                   (Config.ObjectAssociations.MarioBehavior & 0x00FFFFFF) +
-                   Config.ObjectAssociations.BehaviorBankStart)
-            {
-                _mapObjects[objAddress].Show = false;
-            }
-            else
-            {
-                // Update map object coordinates and rotation
-                var mapObj = _mapObjects[objAddress];
-                mapObj.Show = Config.ObjectSlotsManager.SelectedOnMap2SlotsAddresses.Contains(objAddress);
-                Show = _mapObjects[objAddress].Show;
-                mapObj.X = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                mapObj.Y = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                mapObj.Z = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-                mapObj.IsActive = CurrentObject.IsActive;
-                mapObj.Transparent = !mapObj.IsActive;
-                ushort objYaw = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
-                mapObj.Rotation = (float)MoreMath.AngleUnitsToDegrees(objYaw);
-                mapObj.UsesRotation = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
-            }
         }
 
         public override string ToString()

@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using STROOP.Controls.Map.Graphics.Items;
 using STROOP.Map3.Map.Graphics.Items;
 using STROOP.Models;
 using STROOP.Structs;

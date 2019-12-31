@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using STROOP.Controls.Map;
 using OpenTK.Graphics.OpenGL;
 using STROOP.Utilities;
 using STROOP.Structs.Configurations;

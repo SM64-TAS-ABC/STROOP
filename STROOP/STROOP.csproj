@@ -138,17 +138,6 @@
     <Compile Include="Controls\MainSaveTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Map\Graphics\Cameras\MapPerspectiveCamera.cs" />
-    <Compile Include="Controls\Map\Objects\MapSm64Object.cs" />
-    <Compile Include="Controls\Map\Objects\MapWallTriObject.cs" />
-    <Compile Include="Controls\Map\Objects\MapFloorTriObject.cs" />
-    <Compile Include="Controls\Map\Objects\MapCeilingTriObject.cs" />
-    <Compile Include="Controls\Map\Objects\MapHolpObject.cs" />
-    <Compile Include="Controls\Map\Objects\MapIconObject.cs" />
-    <Compile Include="Controls\Map\Objects\MapCameraObject.cs" />
-    <Compile Include="Controls\Map\Objects\MapTriangleObject.cs" />
-    <Compile Include="Controls\Map\Semaphores\MapSemaphoreManager.cs" />
-    <Compile Include="Controls\Map\Semaphores\MapSemaphore.cs" />
     <Compile Include="Controls\ColorSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -234,15 +223,6 @@
       <DependentUpon>VariableBitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IUpdatable.cs" />
-    <Compile Include="Controls\Map\Trackers\MapTracker.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\Map\Trackers\MapTracker.Designer.cs">
-      <DependentUpon>MapTracker.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Map\Trackers\MapTrackerFlowLayoutPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Controls\WatchVariableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -255,26 +235,6 @@
     <Compile Include="Controls\VarHackContainer.Designer.cs">
       <DependentUpon>VarHackContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Map\Graphics\Cameras\IMapCamera.cs" />
-    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsImageItem.cs" />
-    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsItem.cs" />
-    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsTrianglesItem.cs" />
-    <Compile Include="Controls\Map\Graphics\Cameras\MapCameraTopView.cs" />
-    <Compile Include="Controls\Map\Graphics\MapGraphics.cs" />
-    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsBackgroundItem.cs" />
-    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsIconItem.cs" />
-    <Compile Include="Controls\Map\Graphics\GraphicsUtilities.cs" />
-    <Compile Include="Controls\Map\Graphics\Vertex.cs" />
-    <Compile Include="Controls\Map\MapController.cs" />
-    <Compile Include="Controls\Map\MapObjectControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\Map\MapObjectControl.Designer.cs">
-      <DependentUpon>MapObjectControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Map\Objects\MapLevelObject.cs" />
-    <Compile Include="Controls\Map\Objects\MapMarioObject.cs" />
-    <Compile Include="Controls\Map\Objects\MapObject.cs" />
     <Compile Include="Controls\NoTearFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -557,7 +517,6 @@
     <Compile Include="Managers\MiscManager.cs" />
     <Compile Include="Managers\DataManager.cs" />
     <Compile Include="Managers\DisassemblyManager.cs" />
-    <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Managers\CameraManager.cs" />
     <Compile Include="Managers\MarioManager.cs" />
     <Compile Include="Managers\ObjectManager.cs" />
@@ -570,12 +529,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
-    <Compile Include="Map2\Map2Object.cs" />
-    <Compile Include="Map2\Map2Gui.cs" />
-    <Compile Include="Managers\Map2Manager.cs" />
-    <Compile Include="Map2\TriangleMap2Object.cs" />
-    <Compile Include="Map2\Map2BaseObject.cs" />
-    <Compile Include="Map2\Map2Graphics.cs" />
     <Compile Include="Models\CameraDataModel.cs" />
     <Compile Include="Models\MarioDataModel.cs" />
     <Compile Include="Models\DataModels.cs" />
@@ -629,7 +582,6 @@
     <Compile Include="Structs\Configurations\TriangleOffsetsConfig.cs" />
     <Compile Include="Structs\Emulator.cs" />
     <Compile Include="Structs\GameScript.cs" />
-    <Compile Include="Structs\Gui\MapGui.cs" />
     <Compile Include="Structs\Gui\ObjectSlotManagerGui.cs" />
     <Compile Include="Structs\Map\MapLayout.cs" />
     <Compile Include="Structs\Map\MapAssociations.cs" />
@@ -753,7 +705,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\lock_blue.png" />
-    <None Include="Controls\Map\MapTab.cd" />
     <None Include="Resources\cog.png" />
     <None Include="Resources\image_eye_closed2.png" />
     <None Include="Resources\image_eye_open2.png" />
@@ -777,17 +728,11 @@
     <EmbeddedResource Include="Controls\ColorSelector.resx">
       <DependentUpon>ColorSelector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Map\Trackers\MapTracker.resx">
-      <DependentUpon>MapTracker.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\WatchVariableControl.resx">
       <DependentUpon>WatchVariableControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\VarHackContainer.resx">
       <DependentUpon>VarHackContainer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Map\MapObjectControl.resx">
-      <DependentUpon>MapObjectControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImageForm.resx">
       <DependentUpon>ImageForm.cs</DependentUpon>

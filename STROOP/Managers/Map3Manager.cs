@@ -12,7 +12,6 @@ using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using STROOP.Structs.Configurations;
-using STROOP.Controls.Map;
 using STROOP.Map3;
 using STROOP.Controls;
 

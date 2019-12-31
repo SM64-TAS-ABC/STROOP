@@ -1,7 +1,5 @@
 ﻿using OpenTK;
 using OpenTK.Graphics;
-using STROOP.Controls.Map.Graphics;
-using STROOP.Controls.Map.Graphics.Items;
 using STROOP.Map3.Map.Graphics;
 using STROOP.Map3.Map.Graphics.Items;
 using STROOP.Models;
