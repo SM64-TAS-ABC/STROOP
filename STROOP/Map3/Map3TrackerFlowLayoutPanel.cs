@@ -180,7 +180,10 @@ namespace STROOP.Map3
 
             List<Map3Object> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
             listCombined.Insert(0, _mapObjBackground);
-            listCombined.Insert(0, _mapObjHitboxHackTris);
+            if (!Config.Map3Gui.checkBoxMap3OptionsDisable3DHitboxHackTris.Checked)
+            {
+                listCombined.Insert(0, _mapObjHitboxHackTris);
+            }
 
             List<Map3Object> listDrawType = listCombined.FindAll(obj => obj.GetDrawType() == drawType);
             foreach (Map3Object obj in listDrawType)

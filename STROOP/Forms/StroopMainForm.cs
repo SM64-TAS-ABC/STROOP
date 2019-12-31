@@ -259,8 +259,9 @@ namespace STROOP
                 checkBoxMap3OptionsTrackNextPositions = checkBoxMap3OptionsTrackNextPositions,
                 checkBoxMap3OptionsTrackSelf = checkBoxMap3OptionsTrackSelf,
                 checkBoxMap3OptionsTrackPoint = checkBoxMap3OptionsTrackPoint,
-                checkBoxMap3OptionsEnablePuView = checkBoxMap3OptionsEnablePuView,
                 checkBoxMap3OptionsEnable3D = checkBoxMap3OptionsEnable3D,
+                checkBoxMap3OptionsDisable3DHitboxHackTris = checkBoxMap3OptionsDisable3DHitboxHackTris,
+                checkBoxMap3OptionsEnablePuView = checkBoxMap3OptionsEnablePuView,
                 checkBoxMap3OptionsScaleIconSizes = checkBoxMap3OptionsScaleIconSizes,
 
                 labelMap3OptionsGlobalIconSize = labelMap3OptionsGlobalIconSize,
