@@ -773,22 +773,22 @@ namespace STROOP
             this.radioButtonMap3ControllersAngle0 = new System.Windows.Forms.RadioButton();
             this.radioButtonMap3ControllersAngleCustom = new System.Windows.Forms.RadioButton();
             this.radioButtonMap3ControllersAngle32768 = new System.Windows.Forms.RadioButton();
-            this.groupBoxMap3ControllersCenter = new System.Windows.Forms.GroupBox();
-            this.checkBoxMap3ControllersCenterChangeByPixels = new System.Windows.Forms.CheckBox();
-            this.textBoxMap3ControllersCenterCustom = new STROOP.BetterTextbox();
-            this.textBoxMap3ControllersCenterChange = new STROOP.BetterTextbox();
-            this.radioButtonMap3ControllersCenterMario = new System.Windows.Forms.RadioButton();
-            this.radioButtonMap3ControllersCenterOrigin = new System.Windows.Forms.RadioButton();
-            this.buttonMap3ControllersCenterDownRight = new System.Windows.Forms.Button();
-            this.radioButtonMap3ControllersCenterBestFit = new System.Windows.Forms.RadioButton();
-            this.buttonMap3ControllersCenterRight = new System.Windows.Forms.Button();
-            this.radioButtonMap3ControllersCenterCustom = new System.Windows.Forms.RadioButton();
-            this.buttonMap3ControllersCenterUpLeft = new System.Windows.Forms.Button();
-            this.buttonMap3ControllersCenterLeft = new System.Windows.Forms.Button();
-            this.buttonMap3ControllersCenterDownLeft = new System.Windows.Forms.Button();
-            this.buttonMap3ControllersCenterDown = new System.Windows.Forms.Button();
-            this.buttonMap3ControllersCenterUpRight = new System.Windows.Forms.Button();
-            this.buttonMap3ControllersCenterUp = new System.Windows.Forms.Button();
+            this.groupBoxMapControllersCenter = new System.Windows.Forms.GroupBox();
+            this.checkBoxMapControllersCenterChangeByPixels = new System.Windows.Forms.CheckBox();
+            this.textBoxMapControllersCenterCustom = new STROOP.BetterTextbox();
+            this.textBoxMapControllersCenterChange = new STROOP.BetterTextbox();
+            this.radioButtonMapControllersCenterMario = new System.Windows.Forms.RadioButton();
+            this.radioButtonMapControllersCenterOrigin = new System.Windows.Forms.RadioButton();
+            this.buttonMapControllersCenterDownRight = new System.Windows.Forms.Button();
+            this.radioButtonMapControllersCenterBestFit = new System.Windows.Forms.RadioButton();
+            this.buttonMapControllersCenterRight = new System.Windows.Forms.Button();
+            this.radioButtonMapControllersCenterCustom = new System.Windows.Forms.RadioButton();
+            this.buttonMapControllersCenterUpLeft = new System.Windows.Forms.Button();
+            this.buttonMapControllersCenterLeft = new System.Windows.Forms.Button();
+            this.buttonMapControllersCenterDownLeft = new System.Windows.Forms.Button();
+            this.buttonMapControllersCenterDown = new System.Windows.Forms.Button();
+            this.buttonMapControllersCenterUpRight = new System.Windows.Forms.Button();
+            this.buttonMapControllersCenterUp = new System.Windows.Forms.Button();
             this.groupBoxMapControllersScale = new System.Windows.Forms.GroupBox();
             this.textBoxMapControllersScaleCustom = new STROOP.BetterTextbox();
             this.textBoxMapControllersScaleChange2 = new STROOP.BetterTextbox();
@@ -1877,7 +1877,7 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapOptionsGlobalIconSize)).BeginInit();
             this.tabPageMapControllers.SuspendLayout();
             this.groupBoxMap3ControllersAngle.SuspendLayout();
-            this.groupBoxMap3ControllersCenter.SuspendLayout();
+            this.groupBoxMapControllersCenter.SuspendLayout();
             this.groupBoxMapControllersScale.SuspendLayout();
             this.tabPageMap3Data.SuspendLayout();
             this.tabPageMap33DVars.SuspendLayout();
@@ -10887,7 +10887,7 @@ namespace STROOP
             this.tabPageMapControllers.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMapControllers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPageMapControllers.Controls.Add(this.groupBoxMap3ControllersAngle);
-            this.tabPageMapControllers.Controls.Add(this.groupBoxMap3ControllersCenter);
+            this.tabPageMapControllers.Controls.Add(this.groupBoxMapControllersCenter);
             this.tabPageMapControllers.Controls.Add(this.groupBoxMapControllersScale);
             this.tabPageMapControllers.Location = new System.Drawing.Point(4, 22);
             this.tabPageMapControllers.Margin = new System.Windows.Forms.Padding(0);
@@ -11037,181 +11037,181 @@ namespace STROOP
             this.radioButtonMap3ControllersAngle32768.Text = "32768";
             this.radioButtonMap3ControllersAngle32768.UseVisualStyleBackColor = true;
             // 
-            // groupBoxMap3ControllersCenter
+            // groupBoxMapControllersCenter
             // 
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.checkBoxMap3ControllersCenterChangeByPixels);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.textBoxMap3ControllersCenterCustom);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.textBoxMap3ControllersCenterChange);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.radioButtonMap3ControllersCenterMario);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.radioButtonMap3ControllersCenterOrigin);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterDownRight);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.radioButtonMap3ControllersCenterBestFit);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterRight);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.radioButtonMap3ControllersCenterCustom);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterUpLeft);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterLeft);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterDownLeft);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterDown);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterUpRight);
-            this.groupBoxMap3ControllersCenter.Controls.Add(this.buttonMap3ControllersCenterUp);
-            this.groupBoxMap3ControllersCenter.Location = new System.Drawing.Point(3, 73);
-            this.groupBoxMap3ControllersCenter.Name = "groupBoxMap3ControllersCenter";
-            this.groupBoxMap3ControllersCenter.Size = new System.Drawing.Size(328, 87);
-            this.groupBoxMap3ControllersCenter.TabIndex = 38;
-            this.groupBoxMap3ControllersCenter.TabStop = false;
-            this.groupBoxMap3ControllersCenter.Text = "Center";
+            this.groupBoxMapControllersCenter.Controls.Add(this.checkBoxMapControllersCenterChangeByPixels);
+            this.groupBoxMapControllersCenter.Controls.Add(this.textBoxMapControllersCenterCustom);
+            this.groupBoxMapControllersCenter.Controls.Add(this.textBoxMapControllersCenterChange);
+            this.groupBoxMapControllersCenter.Controls.Add(this.radioButtonMapControllersCenterMario);
+            this.groupBoxMapControllersCenter.Controls.Add(this.radioButtonMapControllersCenterOrigin);
+            this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterDownRight);
+            this.groupBoxMapControllersCenter.Controls.Add(this.radioButtonMapControllersCenterBestFit);
+            this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterRight);
+            this.groupBoxMapControllersCenter.Controls.Add(this.radioButtonMapControllersCenterCustom);
+            this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterUpLeft);
+            this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterLeft);
+            this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterDownLeft);
+            this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterDown);
+            this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterUpRight);
+            this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterUp);
+            this.groupBoxMapControllersCenter.Location = new System.Drawing.Point(3, 73);
+            this.groupBoxMapControllersCenter.Name = "groupBoxMapControllersCenter";
+            this.groupBoxMapControllersCenter.Size = new System.Drawing.Size(328, 87);
+            this.groupBoxMapControllersCenter.TabIndex = 38;
+            this.groupBoxMapControllersCenter.TabStop = false;
+            this.groupBoxMapControllersCenter.Text = "Center";
             // 
-            // checkBoxMap3ControllersCenterChangeByPixels
+            // checkBoxMapControllersCenterChangeByPixels
             // 
-            this.checkBoxMap3ControllersCenterChangeByPixels.AutoSize = true;
-            this.checkBoxMap3ControllersCenterChangeByPixels.Checked = true;
-            this.checkBoxMap3ControllersCenterChangeByPixels.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMap3ControllersCenterChangeByPixels.Location = new System.Drawing.Point(91, 15);
-            this.checkBoxMap3ControllersCenterChangeByPixels.Name = "checkBoxMap3ControllersCenterChangeByPixels";
-            this.checkBoxMap3ControllersCenterChangeByPixels.Size = new System.Drawing.Size(107, 17);
-            this.checkBoxMap3ControllersCenterChangeByPixels.TabIndex = 40;
-            this.checkBoxMap3ControllersCenterChangeByPixels.Text = "Change by Pixels";
-            this.checkBoxMap3ControllersCenterChangeByPixels.UseVisualStyleBackColor = true;
+            this.checkBoxMapControllersCenterChangeByPixels.AutoSize = true;
+            this.checkBoxMapControllersCenterChangeByPixels.Checked = true;
+            this.checkBoxMapControllersCenterChangeByPixels.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMapControllersCenterChangeByPixels.Location = new System.Drawing.Point(91, 15);
+            this.checkBoxMapControllersCenterChangeByPixels.Name = "checkBoxMapControllersCenterChangeByPixels";
+            this.checkBoxMapControllersCenterChangeByPixels.Size = new System.Drawing.Size(107, 17);
+            this.checkBoxMapControllersCenterChangeByPixels.TabIndex = 40;
+            this.checkBoxMapControllersCenterChangeByPixels.Text = "Change by Pixels";
+            this.checkBoxMapControllersCenterChangeByPixels.UseVisualStyleBackColor = true;
             // 
-            // textBoxMap3ControllersCenterCustom
+            // textBoxMapControllersCenterCustom
             // 
-            this.textBoxMap3ControllersCenterCustom.Location = new System.Drawing.Point(67, 61);
-            this.textBoxMap3ControllersCenterCustom.Name = "textBoxMap3ControllersCenterCustom";
-            this.textBoxMap3ControllersCenterCustom.Size = new System.Drawing.Size(117, 20);
-            this.textBoxMap3ControllersCenterCustom.TabIndex = 34;
-            this.textBoxMap3ControllersCenterCustom.Text = "0,0";
-            this.textBoxMap3ControllersCenterCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapControllersCenterCustom.Location = new System.Drawing.Point(67, 61);
+            this.textBoxMapControllersCenterCustom.Name = "textBoxMapControllersCenterCustom";
+            this.textBoxMapControllersCenterCustom.Size = new System.Drawing.Size(117, 20);
+            this.textBoxMapControllersCenterCustom.TabIndex = 34;
+            this.textBoxMapControllersCenterCustom.Text = "0,0";
+            this.textBoxMapControllersCenterCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBoxMap3ControllersCenterChange
+            // textBoxMapControllersCenterChange
             // 
-            this.textBoxMap3ControllersCenterChange.Location = new System.Drawing.Point(226, 36);
-            this.textBoxMap3ControllersCenterChange.Name = "textBoxMap3ControllersCenterChange";
-            this.textBoxMap3ControllersCenterChange.Size = new System.Drawing.Size(66, 20);
-            this.textBoxMap3ControllersCenterChange.TabIndex = 34;
-            this.textBoxMap3ControllersCenterChange.Text = "100";
-            this.textBoxMap3ControllersCenterChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapControllersCenterChange.Location = new System.Drawing.Point(226, 36);
+            this.textBoxMapControllersCenterChange.Name = "textBoxMapControllersCenterChange";
+            this.textBoxMapControllersCenterChange.Size = new System.Drawing.Size(66, 20);
+            this.textBoxMapControllersCenterChange.TabIndex = 34;
+            this.textBoxMapControllersCenterChange.Text = "100";
+            this.textBoxMapControllersCenterChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // radioButtonMap3ControllersCenterMario
+            // radioButtonMapControllersCenterMario
             // 
-            this.radioButtonMap3ControllersCenterMario.AutoSize = true;
-            this.radioButtonMap3ControllersCenterMario.Location = new System.Drawing.Point(9, 46);
-            this.radioButtonMap3ControllersCenterMario.Name = "radioButtonMap3ControllersCenterMario";
-            this.radioButtonMap3ControllersCenterMario.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonMap3ControllersCenterMario.TabIndex = 12;
-            this.radioButtonMap3ControllersCenterMario.Text = "Mario";
-            this.radioButtonMap3ControllersCenterMario.UseVisualStyleBackColor = true;
+            this.radioButtonMapControllersCenterMario.AutoSize = true;
+            this.radioButtonMapControllersCenterMario.Location = new System.Drawing.Point(9, 46);
+            this.radioButtonMapControllersCenterMario.Name = "radioButtonMapControllersCenterMario";
+            this.radioButtonMapControllersCenterMario.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonMapControllersCenterMario.TabIndex = 12;
+            this.radioButtonMapControllersCenterMario.Text = "Mario";
+            this.radioButtonMapControllersCenterMario.UseVisualStyleBackColor = true;
             // 
-            // radioButtonMap3ControllersCenterOrigin
+            // radioButtonMapControllersCenterOrigin
             // 
-            this.radioButtonMap3ControllersCenterOrigin.AutoSize = true;
-            this.radioButtonMap3ControllersCenterOrigin.Location = new System.Drawing.Point(9, 30);
-            this.radioButtonMap3ControllersCenterOrigin.Name = "radioButtonMap3ControllersCenterOrigin";
-            this.radioButtonMap3ControllersCenterOrigin.Size = new System.Drawing.Size(52, 17);
-            this.radioButtonMap3ControllersCenterOrigin.TabIndex = 12;
-            this.radioButtonMap3ControllersCenterOrigin.Text = "Origin";
-            this.radioButtonMap3ControllersCenterOrigin.UseVisualStyleBackColor = true;
+            this.radioButtonMapControllersCenterOrigin.AutoSize = true;
+            this.radioButtonMapControllersCenterOrigin.Location = new System.Drawing.Point(9, 30);
+            this.radioButtonMapControllersCenterOrigin.Name = "radioButtonMapControllersCenterOrigin";
+            this.radioButtonMapControllersCenterOrigin.Size = new System.Drawing.Size(52, 17);
+            this.radioButtonMapControllersCenterOrigin.TabIndex = 12;
+            this.radioButtonMapControllersCenterOrigin.Text = "Origin";
+            this.radioButtonMapControllersCenterOrigin.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3ControllersCenterDownRight
+            // buttonMapControllersCenterDownRight
             // 
-            this.buttonMap3ControllersCenterDownRight.BackgroundImage = global::STROOP.Properties.Resources.image_downright;
-            this.buttonMap3ControllersCenterDownRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterDownRight.Location = new System.Drawing.Point(293, 58);
-            this.buttonMap3ControllersCenterDownRight.Name = "buttonMap3ControllersCenterDownRight";
-            this.buttonMap3ControllersCenterDownRight.Size = new System.Drawing.Size(25, 25);
-            this.buttonMap3ControllersCenterDownRight.TabIndex = 39;
-            this.buttonMap3ControllersCenterDownRight.UseVisualStyleBackColor = true;
+            this.buttonMapControllersCenterDownRight.BackgroundImage = global::STROOP.Properties.Resources.image_downright;
+            this.buttonMapControllersCenterDownRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersCenterDownRight.Location = new System.Drawing.Point(293, 58);
+            this.buttonMapControllersCenterDownRight.Name = "buttonMapControllersCenterDownRight";
+            this.buttonMapControllersCenterDownRight.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersCenterDownRight.TabIndex = 39;
+            this.buttonMapControllersCenterDownRight.UseVisualStyleBackColor = true;
             // 
-            // radioButtonMap3ControllersCenterBestFit
+            // radioButtonMapControllersCenterBestFit
             // 
-            this.radioButtonMap3ControllersCenterBestFit.AutoSize = true;
-            this.radioButtonMap3ControllersCenterBestFit.Checked = true;
-            this.radioButtonMap3ControllersCenterBestFit.Location = new System.Drawing.Point(9, 14);
-            this.radioButtonMap3ControllersCenterBestFit.Name = "radioButtonMap3ControllersCenterBestFit";
-            this.radioButtonMap3ControllersCenterBestFit.Size = new System.Drawing.Size(60, 17);
-            this.radioButtonMap3ControllersCenterBestFit.TabIndex = 11;
-            this.radioButtonMap3ControllersCenterBestFit.TabStop = true;
-            this.radioButtonMap3ControllersCenterBestFit.Text = "Best Fit";
-            this.radioButtonMap3ControllersCenterBestFit.UseVisualStyleBackColor = true;
+            this.radioButtonMapControllersCenterBestFit.AutoSize = true;
+            this.radioButtonMapControllersCenterBestFit.Checked = true;
+            this.radioButtonMapControllersCenterBestFit.Location = new System.Drawing.Point(9, 14);
+            this.radioButtonMapControllersCenterBestFit.Name = "radioButtonMapControllersCenterBestFit";
+            this.radioButtonMapControllersCenterBestFit.Size = new System.Drawing.Size(60, 17);
+            this.radioButtonMapControllersCenterBestFit.TabIndex = 11;
+            this.radioButtonMapControllersCenterBestFit.TabStop = true;
+            this.radioButtonMapControllersCenterBestFit.Text = "Best Fit";
+            this.radioButtonMapControllersCenterBestFit.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3ControllersCenterRight
+            // buttonMapControllersCenterRight
             // 
-            this.buttonMap3ControllersCenterRight.BackgroundImage = global::STROOP.Properties.Resources.image_right;
-            this.buttonMap3ControllersCenterRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterRight.Location = new System.Drawing.Point(293, 33);
-            this.buttonMap3ControllersCenterRight.Name = "buttonMap3ControllersCenterRight";
-            this.buttonMap3ControllersCenterRight.Size = new System.Drawing.Size(25, 25);
-            this.buttonMap3ControllersCenterRight.TabIndex = 39;
-            this.buttonMap3ControllersCenterRight.UseVisualStyleBackColor = true;
+            this.buttonMapControllersCenterRight.BackgroundImage = global::STROOP.Properties.Resources.image_right;
+            this.buttonMapControllersCenterRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersCenterRight.Location = new System.Drawing.Point(293, 33);
+            this.buttonMapControllersCenterRight.Name = "buttonMapControllersCenterRight";
+            this.buttonMapControllersCenterRight.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersCenterRight.TabIndex = 39;
+            this.buttonMapControllersCenterRight.UseVisualStyleBackColor = true;
             // 
-            // radioButtonMap3ControllersCenterCustom
+            // radioButtonMapControllersCenterCustom
             // 
-            this.radioButtonMap3ControllersCenterCustom.AutoSize = true;
-            this.radioButtonMap3ControllersCenterCustom.Location = new System.Drawing.Point(9, 62);
-            this.radioButtonMap3ControllersCenterCustom.Name = "radioButtonMap3ControllersCenterCustom";
-            this.radioButtonMap3ControllersCenterCustom.Size = new System.Drawing.Size(63, 17);
-            this.radioButtonMap3ControllersCenterCustom.TabIndex = 13;
-            this.radioButtonMap3ControllersCenterCustom.Text = "Custom:";
-            this.radioButtonMap3ControllersCenterCustom.UseVisualStyleBackColor = true;
+            this.radioButtonMapControllersCenterCustom.AutoSize = true;
+            this.radioButtonMapControllersCenterCustom.Location = new System.Drawing.Point(9, 62);
+            this.radioButtonMapControllersCenterCustom.Name = "radioButtonMapControllersCenterCustom";
+            this.radioButtonMapControllersCenterCustom.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonMapControllersCenterCustom.TabIndex = 13;
+            this.radioButtonMapControllersCenterCustom.Text = "Custom:";
+            this.radioButtonMapControllersCenterCustom.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3ControllersCenterUpLeft
+            // buttonMapControllersCenterUpLeft
             // 
-            this.buttonMap3ControllersCenterUpLeft.BackgroundImage = global::STROOP.Properties.Resources.image_upleft;
-            this.buttonMap3ControllersCenterUpLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterUpLeft.Location = new System.Drawing.Point(200, 8);
-            this.buttonMap3ControllersCenterUpLeft.Name = "buttonMap3ControllersCenterUpLeft";
-            this.buttonMap3ControllersCenterUpLeft.Size = new System.Drawing.Size(25, 25);
-            this.buttonMap3ControllersCenterUpLeft.TabIndex = 39;
-            this.buttonMap3ControllersCenterUpLeft.UseVisualStyleBackColor = true;
+            this.buttonMapControllersCenterUpLeft.BackgroundImage = global::STROOP.Properties.Resources.image_upleft;
+            this.buttonMapControllersCenterUpLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersCenterUpLeft.Location = new System.Drawing.Point(200, 8);
+            this.buttonMapControllersCenterUpLeft.Name = "buttonMapControllersCenterUpLeft";
+            this.buttonMapControllersCenterUpLeft.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersCenterUpLeft.TabIndex = 39;
+            this.buttonMapControllersCenterUpLeft.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3ControllersCenterLeft
+            // buttonMapControllersCenterLeft
             // 
-            this.buttonMap3ControllersCenterLeft.BackgroundImage = global::STROOP.Properties.Resources.image_left;
-            this.buttonMap3ControllersCenterLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterLeft.Location = new System.Drawing.Point(200, 33);
-            this.buttonMap3ControllersCenterLeft.Name = "buttonMap3ControllersCenterLeft";
-            this.buttonMap3ControllersCenterLeft.Size = new System.Drawing.Size(25, 25);
-            this.buttonMap3ControllersCenterLeft.TabIndex = 39;
-            this.buttonMap3ControllersCenterLeft.UseVisualStyleBackColor = true;
+            this.buttonMapControllersCenterLeft.BackgroundImage = global::STROOP.Properties.Resources.image_left;
+            this.buttonMapControllersCenterLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersCenterLeft.Location = new System.Drawing.Point(200, 33);
+            this.buttonMapControllersCenterLeft.Name = "buttonMapControllersCenterLeft";
+            this.buttonMapControllersCenterLeft.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersCenterLeft.TabIndex = 39;
+            this.buttonMapControllersCenterLeft.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3ControllersCenterDownLeft
+            // buttonMapControllersCenterDownLeft
             // 
-            this.buttonMap3ControllersCenterDownLeft.BackgroundImage = global::STROOP.Properties.Resources.image_downleft;
-            this.buttonMap3ControllersCenterDownLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterDownLeft.Location = new System.Drawing.Point(200, 58);
-            this.buttonMap3ControllersCenterDownLeft.Name = "buttonMap3ControllersCenterDownLeft";
-            this.buttonMap3ControllersCenterDownLeft.Size = new System.Drawing.Size(25, 25);
-            this.buttonMap3ControllersCenterDownLeft.TabIndex = 39;
-            this.buttonMap3ControllersCenterDownLeft.UseVisualStyleBackColor = true;
+            this.buttonMapControllersCenterDownLeft.BackgroundImage = global::STROOP.Properties.Resources.image_downleft;
+            this.buttonMapControllersCenterDownLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersCenterDownLeft.Location = new System.Drawing.Point(200, 58);
+            this.buttonMapControllersCenterDownLeft.Name = "buttonMapControllersCenterDownLeft";
+            this.buttonMapControllersCenterDownLeft.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersCenterDownLeft.TabIndex = 39;
+            this.buttonMapControllersCenterDownLeft.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3ControllersCenterDown
+            // buttonMapControllersCenterDown
             // 
-            this.buttonMap3ControllersCenterDown.BackgroundImage = global::STROOP.Properties.Resources.image_down;
-            this.buttonMap3ControllersCenterDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterDown.Location = new System.Drawing.Point(246, 58);
-            this.buttonMap3ControllersCenterDown.Name = "buttonMap3ControllersCenterDown";
-            this.buttonMap3ControllersCenterDown.Size = new System.Drawing.Size(25, 25);
-            this.buttonMap3ControllersCenterDown.TabIndex = 39;
-            this.buttonMap3ControllersCenterDown.UseVisualStyleBackColor = true;
+            this.buttonMapControllersCenterDown.BackgroundImage = global::STROOP.Properties.Resources.image_down;
+            this.buttonMapControllersCenterDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersCenterDown.Location = new System.Drawing.Point(246, 58);
+            this.buttonMapControllersCenterDown.Name = "buttonMapControllersCenterDown";
+            this.buttonMapControllersCenterDown.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersCenterDown.TabIndex = 39;
+            this.buttonMapControllersCenterDown.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3ControllersCenterUpRight
+            // buttonMapControllersCenterUpRight
             // 
-            this.buttonMap3ControllersCenterUpRight.BackgroundImage = global::STROOP.Properties.Resources.image_upright;
-            this.buttonMap3ControllersCenterUpRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterUpRight.Location = new System.Drawing.Point(293, 8);
-            this.buttonMap3ControllersCenterUpRight.Name = "buttonMap3ControllersCenterUpRight";
-            this.buttonMap3ControllersCenterUpRight.Size = new System.Drawing.Size(25, 25);
-            this.buttonMap3ControllersCenterUpRight.TabIndex = 39;
-            this.buttonMap3ControllersCenterUpRight.UseVisualStyleBackColor = true;
+            this.buttonMapControllersCenterUpRight.BackgroundImage = global::STROOP.Properties.Resources.image_upright;
+            this.buttonMapControllersCenterUpRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersCenterUpRight.Location = new System.Drawing.Point(293, 8);
+            this.buttonMapControllersCenterUpRight.Name = "buttonMapControllersCenterUpRight";
+            this.buttonMapControllersCenterUpRight.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersCenterUpRight.TabIndex = 39;
+            this.buttonMapControllersCenterUpRight.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3ControllersCenterUp
+            // buttonMapControllersCenterUp
             // 
-            this.buttonMap3ControllersCenterUp.BackgroundImage = global::STROOP.Properties.Resources.image_up;
-            this.buttonMap3ControllersCenterUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersCenterUp.Location = new System.Drawing.Point(246, 8);
-            this.buttonMap3ControllersCenterUp.Name = "buttonMap3ControllersCenterUp";
-            this.buttonMap3ControllersCenterUp.Size = new System.Drawing.Size(25, 25);
-            this.buttonMap3ControllersCenterUp.TabIndex = 39;
-            this.buttonMap3ControllersCenterUp.UseVisualStyleBackColor = true;
+            this.buttonMapControllersCenterUp.BackgroundImage = global::STROOP.Properties.Resources.image_up;
+            this.buttonMapControllersCenterUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersCenterUp.Location = new System.Drawing.Point(246, 8);
+            this.buttonMapControllersCenterUp.Name = "buttonMapControllersCenterUp";
+            this.buttonMapControllersCenterUp.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersCenterUp.TabIndex = 39;
+            this.buttonMapControllersCenterUp.UseVisualStyleBackColor = true;
             // 
             // groupBoxMapControllersScale
             // 
@@ -21058,8 +21058,8 @@ namespace STROOP
             this.tabPageMapControllers.ResumeLayout(false);
             this.groupBoxMap3ControllersAngle.ResumeLayout(false);
             this.groupBoxMap3ControllersAngle.PerformLayout();
-            this.groupBoxMap3ControllersCenter.ResumeLayout(false);
-            this.groupBoxMap3ControllersCenter.PerformLayout();
+            this.groupBoxMapControllersCenter.ResumeLayout(false);
+            this.groupBoxMapControllersCenter.PerformLayout();
             this.groupBoxMapControllersScale.ResumeLayout(false);
             this.groupBoxMapControllersScale.PerformLayout();
             this.tabPageMap3Data.ResumeLayout(false);
@@ -22704,20 +22704,20 @@ namespace STROOP
         private RadioButton radioButtonMap3ControllersAngle0;
         private RadioButton radioButtonMap3ControllersAngleCustom;
         private RadioButton radioButtonMap3ControllersAngle32768;
-        private GroupBox groupBoxMap3ControllersCenter;
-        private BetterTextbox textBoxMap3ControllersCenterCustom;
-        private BetterTextbox textBoxMap3ControllersCenterChange;
-        private RadioButton radioButtonMap3ControllersCenterOrigin;
-        private Button buttonMap3ControllersCenterDownRight;
-        private RadioButton radioButtonMap3ControllersCenterBestFit;
-        private Button buttonMap3ControllersCenterRight;
-        private RadioButton radioButtonMap3ControllersCenterCustom;
-        private Button buttonMap3ControllersCenterUpLeft;
-        private Button buttonMap3ControllersCenterLeft;
-        private Button buttonMap3ControllersCenterDownLeft;
-        private Button buttonMap3ControllersCenterDown;
-        private Button buttonMap3ControllersCenterUpRight;
-        private Button buttonMap3ControllersCenterUp;
+        private GroupBox groupBoxMapControllersCenter;
+        private BetterTextbox textBoxMapControllersCenterCustom;
+        private BetterTextbox textBoxMapControllersCenterChange;
+        private RadioButton radioButtonMapControllersCenterOrigin;
+        private Button buttonMapControllersCenterDownRight;
+        private RadioButton radioButtonMapControllersCenterBestFit;
+        private Button buttonMapControllersCenterRight;
+        private RadioButton radioButtonMapControllersCenterCustom;
+        private Button buttonMapControllersCenterUpLeft;
+        private Button buttonMapControllersCenterLeft;
+        private Button buttonMapControllersCenterDownLeft;
+        private Button buttonMapControllersCenterDown;
+        private Button buttonMapControllersCenterUpRight;
+        private Button buttonMapControllersCenterUp;
         private GroupBox groupBoxMapControllersScale;
         private BetterTextbox textBoxMapControllersScaleCustom;
         private BetterTextbox textBoxMapControllersScaleChange;
@@ -22770,11 +22770,11 @@ namespace STROOP
         private Button buttonSearchUndoScan;
         private Button buttonSearchClearResults;
         private Label labelSearchProgress;
-        private RadioButton radioButtonMap3ControllersCenterMario;
+        private RadioButton radioButtonMapControllersCenterMario;
         private RadioButton radioButtonMap3ControllersAngleMario;
         private RadioButton radioButtonMap3ControllersAngleCentripetal;
         private RadioButton radioButtonMap3ControllersAngleCamera;
-        private CheckBox checkBoxMap3ControllersCenterChangeByPixels;
+        private CheckBox checkBoxMapControllersCenterChangeByPixels;
         private TabPage tabPageCells;
         private BetterSplitContainer splitContainerCells;
         private WatchVariableFlowLayoutPanel watchVariablePanelCells;
