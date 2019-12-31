@@ -12,7 +12,6 @@ using System.Drawing.Imaging;
 using STROOP.Structs;
 using System.IO;
 using System.Diagnostics;
-using STROOP.Map3.Map.Graphics.Items;
 using STROOP.Structs.Configurations;
 
 namespace STROOP.Map3.Map.Graphics
@@ -36,7 +35,6 @@ namespace STROOP.Map3.Map.Graphics
         public event EventHandler OnSizeChanged;
 
         Matrix4 _identityView = Matrix4.Identity;
-        List <Map4GraphicsItem> _mapItems = new List<Map4GraphicsItem>();
         Object _mapItemsLock = new object();
         public GLControl Control { get; }
 
@@ -101,30 +99,11 @@ namespace STROOP.Map3.Map.Graphics
                 Control.SwapBuffers();
                 return;
             }
-
-            // Get visible map graphics items
-            List<Map4GraphicsItem> drawItems;
-            lock (_mapItemsLock)
-            {
-                drawItems = _mapItems.FindAll(o => o.Visible); // && o.DrawOnCameraTypes.Contains(Camera.GetType()));
-            }
             
-            List<Map4GraphicsItem> drawItemsPerspective, drawItemsOverlay, drawItemsBackground;
-            drawItemsPerspective = drawItems.FindAll(i => i.Type == Map3DrawType.Perspective);
-            drawItemsOverlay = drawItems.FindAll(i => i.Type == Map3DrawType.Overlay).OrderBy(i => i.Depth).ToList();
-            drawItemsBackground = drawItems.FindAll(i => i.Type == Map3DrawType.Background);
-
             // Setup Background
             GL.Disable(EnableCap.DepthTest);
 
             // Draw background
-            foreach (var mapItem in drawItemsBackground)
-            {
-                Matrix4 viewMatrix = mapItem.GetModelMatrix(this);
-                GL.UniformMatrix4(GLUniformView, false, ref viewMatrix);
-                mapItem.Draw(this);
-            }
-
             Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOn3DControl(Map3DrawType.Background);
 
             // Setup 3D
@@ -132,13 +111,6 @@ namespace STROOP.Map3.Map.Graphics
             GL.DepthMask(true);
 
             // Draw 3D
-            foreach (var mapItem in drawItemsPerspective)
-            {
-                Matrix4 viewMatrix = mapItem.GetModelMatrix(this) * Camera.Matrix;
-                GL.UniformMatrix4(GLUniformView, false, ref viewMatrix);
-                mapItem.Draw(this);
-            }
-
             Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOn3DControl(Map3DrawType.Perspective);
 
             // Setup 2D
@@ -149,12 +121,6 @@ namespace STROOP.Map3.Map.Graphics
                 Debugger.Break();
 
             // Draw 2D
-            foreach (var mapItem in drawItemsOverlay) {
-                Matrix4 viewMatrix = mapItem.GetModelMatrix(this);
-                GL.UniformMatrix4(GLUniformView, false, ref viewMatrix);
-                 mapItem.Draw(this);
-            }
-
             Config.Map3Gui.flowLayoutPanelMap3Trackers.DrawOn3DControl(Map3DrawType.Overlay);
 
             error = GL.GetError();
@@ -193,30 +159,6 @@ namespace STROOP.Map3.Map.Graphics
         public void Invalidate()
         {
             Control.Invalidate();
-        }
-
-        public void AddMapItem(Map4GraphicsItem mapItem)
-        {
-            if (_error)
-                return;
-
-            lock (_mapItemsLock)
-            {
-                if (disposedValue)
-                    return;
-
-                mapItem.Load(this);
-                _mapItems.Add(mapItem);
-            }
-        }
-
-        public void RemoveMapObject(Map4GraphicsItem mapItem)
-        {
-            lock (_mapItemsLock)
-            {
-                mapItem.Unload(this);
-                _mapItems.Remove(mapItem);
-            }
         }
 
         private void CheckVersion()
@@ -298,14 +240,10 @@ namespace STROOP.Map3.Map.Graphics
                 {
                     lock (_mapItemsLock)
                     {
-                        foreach (Map4GraphicsItem item in _mapItems)
-                            item.Unload(this);
-
                         GL.DetachShader(_shaderProgram, _vertexShader);
                         GL.DetachShader(_shaderProgram, _fragmentShader);
                         GL.DeleteShader(_vertexShader);
                         GL.DeleteShader(_fragmentShader);
-
                     }
                 }
 

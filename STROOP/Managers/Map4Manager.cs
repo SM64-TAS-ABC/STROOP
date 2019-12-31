@@ -13,9 +13,6 @@ using OpenTK.Graphics.OpenGL;
 using STROOP.Structs.Configurations;
 using STROOP.Map3.Map;
 using STROOP.Map3.Map.Graphics;
-using STROOP.Map3.Map.Objects;
-using STROOP.Map3.Map.Semaphores;
-using STROOP.Map3.Map.Trackers;
 
 namespace STROOP.Managers
 {
@@ -24,24 +21,8 @@ namespace STROOP.Managers
         public bool IsLoaded { get; private set; }
         public bool Visible { get => Config.Map4Graphics.Visible; set => Config.Map4Graphics.Visible = value; }
 
-        #region Objects
-        private Map4LevelObject _mapObjLevel;
-
-        private Map4MarioObject _mapObjMario = new Map4MarioObject();
-        private Map4HolpObject _mapObjHolp = new Map4HolpObject();
-        private Map4CameraObject _mapObjCamera = new Map4CameraObject();
-
-        private Map4FloorTriObject _mapObjFloorTri = new Map4FloorTriObject();
-        private Map4WallTriObject _mapObjWallTri = new Map4WallTriObject();
-        private Map4CeilingTriObject _mapObjCeilTri = new Map4CeilingTriObject();
-
-        private List<Map4Sm64Object> _mapSm64Objs = new List<Map4Sm64Object>();
-        private List<int> _currentMapSm64ObjIndexes;
-        #endregion
-
         public Map4Manager()
         {
-            _currentMapSm64ObjIndexes = new List<int>();
         }
 
         public void Load()
@@ -85,8 +66,8 @@ namespace STROOP.Managers
             //Config.MapGui.ButtonClearAllTrackers.Click += (sender, e) => Config.MapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
             // Test
-            _mapObjLevel = new Map4LevelObject();
-            Config.Map4Controller.AddMapObject(_mapObjLevel);
+            //_mapObjLevel = new Map4LevelObject();
+            //Config.Map4Controller.AddMapObject(_mapObjLevel);
             //Config.Map4Controller.AddMapObject(_mapObjMario);
             //Config.Map4Controller.AddMapObject(_mapObjHolp);
             //Config.Map4Controller.AddMapObject(_mapObjCamera);
@@ -95,7 +76,7 @@ namespace STROOP.Managers
             //    .ConvertAll(i => new Map4Sm64Object(i));
             //_mapSm64Objs.ForEach(obj => Config.Map4Controller.AddMapObject(obj));
 
-            Config.Map4Controller.AddMapObject(_mapObjFloorTri);
+            //Config.Map4Controller.AddMapObject(_mapObjFloorTri);
             //Config.Map4Controller.AddMapObject(_mapObjWallTri);
             //Config.Map4Controller.AddMapObject(_mapObjCeilTri);
             /*
@@ -117,9 +98,9 @@ namespace STROOP.Managers
             backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
             //Config.MapGui.ComboBoxBackground.DataSource = backgroundImageChoices;
 
-            _mapObjMario.Shown = true;
-            _mapObjMario.Displayed = true;
-            _mapObjMario.Tracked = true;
+            //_mapObjMario.Shown = true;
+            //_mapObjMario.Displayed = true;
+            //_mapObjMario.Tracked = true;
 
             //_mapObjFloorTri.Shown = true;
             //_mapObjFloorTri.Displayed = true;

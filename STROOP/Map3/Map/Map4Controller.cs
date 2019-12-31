@@ -14,7 +14,6 @@ using STROOP.Structs.Configurations;
 using STROOP.Models;
 using OpenTK.Input;
 using STROOP.Map3.Map.Graphics;
-using STROOP.Map3.Map.Graphics.Items;
 
 namespace STROOP.Map3.Map
 {
@@ -33,7 +32,6 @@ namespace STROOP.Map3.Map
         public float MapScale;
         public PointF MapCenter;
 
-        List<Map4Object> _mapObjects = new List<Map4Object>();
         Map4Graphics _graphics;
         Map4Camera _perspectiveCamera;
 
@@ -42,26 +40,9 @@ namespace STROOP.Map3.Map
             _graphics = graphics;
             _perspectiveCamera = new Map4Camera(graphics);
         }
-        
-        public void AddMapObject(Map4Object mapObj)
-        {
-            _mapObjects.Add(mapObj);
-            foreach (Map4GraphicsItem graphicsItem in mapObj.GraphicsItems)
-                _graphics.AddMapItem(graphicsItem);
-        }
-
-        public void RemoveMapObject(Map4Object mapObj)
-        {
-            _mapObjects.Remove(mapObj);
-            foreach (Map4GraphicsItem graphicsItem in mapObj.GraphicsItems)
-                _graphics.RemoveMapObject(graphicsItem);
-        }
 
         public void Update()
         {
-            foreach (Map4Object obj in _mapObjects)
-                obj.Update();
-
             UpdateCamera();
 
             _graphics.Invalidate();
