@@ -409,10 +409,10 @@
     </Compile>
     <Compile Include="Map3\Map3Semaphore.cs" />
     <Compile Include="Map3\Map3SemaphoreManager.cs" />
-    <Compile Include="Map3\Map\Graphics\Cameras\Map4Camera.cs" />
-    <Compile Include="Map3\Map\Graphics\Map4GraphicsUtilities.cs" />
-    <Compile Include="Map3\Map\Graphics\Map4Graphics.cs" />
-    <Compile Include="Map3\Map\Graphics\Map4Vertex.cs" />
+    <Compile Include="Map3\Map\Map4Camera.cs" />
+    <Compile Include="Map3\Map\Map4GraphicsUtilities.cs" />
+    <Compile Include="Map3\Map\Map4Graphics.cs" />
+    <Compile Include="Map3\Map\Map4Vertex.cs" />
     <Compile Include="Map3\Map\Map4Controller.cs" />
     <Compile Include="Models\PanModel.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
