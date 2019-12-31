@@ -447,8 +447,6 @@
     <Compile Include="Map3\Map\Trackers\Map4TrackerFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Map3\Model\Map5Graphics.cs" />
-    <Compile Include="Map3\Model\Map5Manager.cs" />
     <Compile Include="Models\PanModel.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
     <Compile Include="Structs\Configurations\TtcObjectConfig.cs" />
