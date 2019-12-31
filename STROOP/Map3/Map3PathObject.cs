@@ -116,7 +116,7 @@ namespace STROOP.Map3
                 });
             }
 
-            Matrix4 viewMatrix = GetModelMatrix() * Config.Map4Graphics.Camera.Matrix;
+            Matrix4 viewMatrix = GetModelMatrix() * Config.Map4Camera.Matrix;
             GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
 
             vertexArrayList.ForEach(vertexes =>

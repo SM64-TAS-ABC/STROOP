@@ -28,6 +28,7 @@ namespace STROOP.Structs.Configurations
         public static Map3Graphics Map3Graphics;
         public static Map3Gui Map3Gui;
         public static Map4Graphics Map4Graphics;
+        public static Map4Camera Map4Camera;
 
         public static CameraManager CameraManager;
         public static DebugManager DebugManager;

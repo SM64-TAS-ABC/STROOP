@@ -19,24 +19,8 @@ namespace STROOP.Map3.Map
 {
     public class Map4Controller
     {
-
-        public enum MapCameraMode { TopDown, Fly, Game, }
-        public enum MapScaleMode { CourseDefault, MaxCourseSize, Custom };
-        public enum MapCenterMode { BestFit, Origin, Custom };
-
-        public MapCameraMode CameraMode { get; set; } = MapCameraMode.Game;
-        public MapScaleMode ScaleMode { get; set; } = MapScaleMode.CourseDefault;
-        public MapCenterMode CenterMode { get; set; } = MapCenterMode.BestFit;
-
-        public float MapAngle;
-        public float MapScale;
-        public PointF MapCenter;
-
-        Map4Camera _perspectiveCamera;
-
         public Map4Controller()
         {
-            _perspectiveCamera = new Map4Camera();
         }
 
         public void Update()
@@ -46,12 +30,6 @@ namespace STROOP.Map3.Map
         }
 
         public void UpdateCamera()
-        {
-            Config.Map4Graphics.Camera = _perspectiveCamera;
-            CameraGameUpdate();
-        }
-
-        public void CameraGameUpdate()
         {
             void updateCameraAngles()
             {
@@ -124,41 +102,12 @@ namespace STROOP.Map3.Map
                     throw new ArgumentOutOfRangeException();
             }
 
-            _perspectiveCamera.Position = new Vector3(SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ);
-            _perspectiveCamera.SetRotation(
+            Config.Map4Camera.Position = new Vector3(SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ);
+            Config.Map4Camera.SetRotation(
                 (float)MoreMath.AngleUnitsToRadians(SpecialConfig.Map3DCameraYaw), 
                 (float)MoreMath.AngleUnitsToRadians(SpecialConfig.Map3DCameraPitch),
                 (float)MoreMath.AngleUnitsToRadians(SpecialConfig.Map3DCameraRoll));
-            _perspectiveCamera.FOV = SpecialConfig.Map3DFOV / 180 * (float) Math.PI;
-        }
-
-        public void CameraTopDownUpdate() {
-            // Update center
-            /* (CenterMode)
-            {
-                case MapCenterMode.BestFit:
-                    break;
-                case MapCenterMode.Origin:
-                    // Use (0,0) as center
-                    MapCenter = new PointF(0.0f, 0.0f);
-                    break;
-                case MapCenterMode.Custom:
-                    // Center updated manually
-                    break;
-            }
-
-            // Update scale
-            switch (ScaleMode)
-            {
-                case MapScaleMode.CourseDefault:
-                    break;
-                case MapScaleMode.MaxCourseSize:
-                    _graphics.
-                    break;
-                case MapScaleMode.Custom:
-                    // Scale updated manually
-                    break;
-            }*/
+            Config.Map4Camera.FOV = SpecialConfig.Map3DFOV / 180 * (float) Math.PI;
         }
 
         volatile bool _mousePressedWithin = false;

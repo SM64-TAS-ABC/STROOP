@@ -22,20 +22,17 @@ namespace STROOP.Map3.Map.Graphics
         const string FragmentShaderPath = @"Resources\Shaders\FragmentShader.glsl";
         const string ShaderLogPath = @"Resources\Shaders\ShaderLog.txt";
 
-
-        public Map4Camera Camera { get; set; }
-        public float AspectRatio => Control.AspectRatio;
-        public float NormalizedWidth => AspectRatio <= 1.0f ? 1.0f : (float) Control.Width / Control.Height;
-        public float NormalizedHeight => AspectRatio >= 1.0f ? 1.0f : (float) Control.Height / Control.Width;
-        public Size Size => Control.Size;
-        public float Width => Control.Width;
-        public float Height => Control.Height;
-        public bool Visible { get => Control.Visible; set => Control.Visible = value; }
+        public float AspectRatio => Config.Map3Gui.GLControl3D.AspectRatio;
+        public float NormalizedWidth => AspectRatio <= 1.0f ? 1.0f : (float)Config.Map3Gui.GLControl3D.Width / Config.Map3Gui.GLControl3D.Height;
+        public float NormalizedHeight => AspectRatio >= 1.0f ? 1.0f : (float)Config.Map3Gui.GLControl3D.Height / Config.Map3Gui.GLControl3D.Width;
+        public Size Size => Config.Map3Gui.GLControl3D.Size;
+        public float Width => Config.Map3Gui.GLControl3D.Width;
+        public float Height => Config.Map3Gui.GLControl3D.Height;
+        public bool Visible { get => Config.Map3Gui.GLControl3D.Visible; set => Config.Map3Gui.GLControl3D.Visible = value; }
 
         public event EventHandler OnSizeChanged;
 
         object _mapItemsLock = new object();
-        public GLControl Control { get; }
 
         bool _error = false;
 
@@ -49,16 +46,14 @@ namespace STROOP.Map3.Map.Graphics
 
         public Map4GraphicsUtilities Utilities { get; private set; }
 
-        public Map4Graphics(GLControl control)
+        public Map4Graphics()
         {
-            Control = control;
         }
 
         public void Load()
         {
-
-            Control.MakeCurrent();
-            Control.Context.LoadAll();
+            Config.Map3Gui.GLControl3D.MakeCurrent();
+            Config.Map3Gui.GLControl3D.Context.LoadAll();
 
             CheckVersion();
             if (_error)
@@ -75,27 +70,27 @@ namespace STROOP.Map3.Map.Graphics
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             // Set viewport
-            GL.Viewport(Control.DisplayRectangle);
+            GL.Viewport(Config.Map3Gui.GLControl3D.DisplayRectangle);
 
             // Create utilties for GraphicsItems to use
             Utilities = new Map4GraphicsUtilities();
 
-            Control.Paint += OnPaint;
-            Control.Resize += OnResize;
+            Config.Map3Gui.GLControl3D.Paint += OnPaint;
+            Config.Map3Gui.GLControl3D.Resize += OnResize;
         }
 
         public void OnPaint(object sender, EventArgs e)
         {
-            Control.MakeCurrent();
+            Config.Map3Gui.GLControl3D.MakeCurrent();
 
             // Set default background color (clear drawing area)
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.Disable(EnableCap.CullFace);
 
             // Make sure we have a camera
-            if (_error || Camera == null)
+            if (_error || Config.Map4Camera == null)
             {
-                Control.SwapBuffers();
+                Config.Map3Gui.GLControl3D.SwapBuffers();
                 return;
             }
             
@@ -135,7 +130,7 @@ namespace STROOP.Map3.Map.Graphics
             if (error != ErrorCode.NoError)
                 Debugger.Break();
 
-            Control.SwapBuffers();
+            Config.Map3Gui.GLControl3D.SwapBuffers();
         }
 
         public void BindVertices()
@@ -150,14 +145,14 @@ namespace STROOP.Map3.Map.Graphics
 
         void OnResize(object sender, EventArgs e)
         {
-            GL.Viewport(Control.DisplayRectangle);
+            GL.Viewport(Config.Map3Gui.GLControl3D.DisplayRectangle);
             OnSizeChanged?.Invoke(sender, e);
             Invalidate();
         }
 
         public void Invalidate()
         {
-            Control.Invalidate();
+            Config.Map3Gui.GLControl3D.Invalidate();
         }
 
         private void CheckVersion()

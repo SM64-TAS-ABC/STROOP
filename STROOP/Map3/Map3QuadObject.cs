@@ -74,7 +74,7 @@ namespace STROOP.Map3
                 vertexList => vertexList.ConvertAll(vertex => new Map4Vertex(new Vector3(
                     vertex.x, vertex.y, vertex.z), OutlineColor)).ToArray());
 
-            Matrix4 viewMatrix = GetModelMatrix() * Config.Map4Graphics.Camera.Matrix;
+            Matrix4 viewMatrix = GetModelMatrix() * Config.Map4Camera.Matrix;
             GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
 
             vertexArrayForSurfaces.ForEach(vertexes =>

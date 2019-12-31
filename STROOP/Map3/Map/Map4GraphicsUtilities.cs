@@ -28,7 +28,7 @@ namespace STROOP.Map3.Map.Graphics
 
         public Vector3 GetPositionOnViewFromCoordinate(Vector3 pos)
         {
-            Vector4 vec = Vector4.Transform(new Vector4(pos, 1), Config.Map4Graphics.Camera.Matrix);
+            Vector4 vec = Vector4.Transform(new Vector4(pos, 1), Config.Map4Camera.Matrix);
             vec.X /= vec.W;
             vec.Y /= vec.W;
             vec.Z = 0;
