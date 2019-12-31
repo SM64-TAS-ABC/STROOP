@@ -669,7 +669,7 @@ namespace STROOP
                     Task.Delay(1).Wait();
                 }
             });
-            Config.Map3Manager.Load();
+            Config.Map3Manager.Load2D();
         }
 
         private async void glControlMap4_Load(object sender, EventArgs e)
@@ -680,7 +680,7 @@ namespace STROOP
                     Task.Delay(1).Wait();
                 }
             });
-            Config.Map4Manager.Load();
+            Config.Map4Manager.Load3D();
         }
 
         private async void glControlModelView_Load(object sender, EventArgs e)

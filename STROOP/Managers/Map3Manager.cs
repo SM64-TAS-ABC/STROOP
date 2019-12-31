@@ -21,19 +21,19 @@ namespace STROOP.Managers
     {
         private List<int> _currentObjIndexes = new List<int>();
 
-        private bool _isLoaded = false;
+        private bool _isLoaded2D = false;
 
         public Map3Manager(string varFilePath)
             : base(varFilePath, Config.Map3Gui.watchVariablePanel3DVars)
         {
         }
 
-        public void Load()
+        public void Load2D()
         {
             // Create new graphics control
             Config.Map3Graphics = new Map3Graphics();
             Config.Map3Graphics.Load();
-            _isLoaded = true;
+            _isLoaded2D = true;
 
             InitializeControls();
             InitializeSemaphores();
@@ -499,9 +499,9 @@ namespace STROOP.Managers
             checkBox.ContextMenuStrip.Items.Add(item);
         }
 
-        public void Update(bool updateView)
+        public override void Update(bool updateView)
         {
-            if (!_isLoaded) return;
+            if (!_isLoaded2D) return;
 
             Config.Map3Gui.flowLayoutPanelMap3Trackers.UpdateControl();
 

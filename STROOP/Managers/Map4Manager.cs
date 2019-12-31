@@ -18,14 +18,13 @@ namespace STROOP.Managers
 {
     public class Map4Manager
     {
-        public bool IsLoaded { get; private set; }
-        public bool Visible { get => Config.Map4Graphics.Visible; set => Config.Map4Graphics.Visible = value; }
+        private bool _isLoaded3D = false;
 
         public Map4Manager()
         {
         }
 
-        public void Load()
+        public void Load3D()
         {
             // Create new graphics control
             Config.Map4Graphics = new Map4Graphics();
@@ -33,12 +32,12 @@ namespace STROOP.Managers
             Config.Map4Controller = new Map4Controller();
             Config.Map4Camera = new Map4Camera();
 
-            IsLoaded = true;
+            _isLoaded3D = true;
         }
 
         public void Update()
         {
-            if (!IsLoaded)
+            if (!_isLoaded3D)
                 return;
             Config.Map4Controller.Update();
         }
