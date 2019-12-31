@@ -24,7 +24,7 @@ namespace STROOP.Map3.Map.Graphics
         const string ShaderLogPath = @"Resources\Shaders\ShaderLog.txt";
 
 
-        public IMap4Camera Camera { get; set; }
+        public Map4Camera Camera { get; set; }
         public float AspectRatio => Control.AspectRatio;
         public float NormalizedWidth => AspectRatio <= 1.0f ? 1.0f : (float) Control.Width / Control.Height;
         public float NormalizedHeight => AspectRatio >= 1.0f ? 1.0f : (float) Control.Height / Control.Width;

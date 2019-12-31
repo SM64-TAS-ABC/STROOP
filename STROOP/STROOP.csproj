@@ -409,8 +409,6 @@
     </Compile>
     <Compile Include="Map3\Map3Semaphore.cs" />
     <Compile Include="Map3\Map3SemaphoreManager.cs" />
-    <Compile Include="Map3\Map\Graphics\Cameras\IMap4Camera.cs" />
-    <Compile Include="Map3\Map\Graphics\Cameras\Map4CameraTopView.cs" />
     <Compile Include="Map3\Map\Graphics\Cameras\Map4Camera.cs" />
     <Compile Include="Map3\Map\Graphics\Map4GraphicsUtilities.cs" />
     <Compile Include="Map3\Map\Graphics\Items\Map4GraphicsBackgroundItem.cs" />

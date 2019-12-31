@@ -35,13 +35,11 @@ namespace STROOP.Map3.Map
 
         List<Map4Object> _mapObjects = new List<Map4Object>();
         Map4Graphics _graphics;
-        Map4CameraTopView _topCamera;
         Map4Camera _perspectiveCamera;
 
         public Map4Controller(Map4Graphics graphics)
         {
             _graphics = graphics;
-            _topCamera = new Map4CameraTopView(graphics);
             _perspectiveCamera = new Map4Camera(graphics);
         }
         

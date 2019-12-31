@@ -65,7 +65,7 @@ namespace STROOP.Map3.Map.Graphics.Items
 
         public override Matrix4 GetModelMatrix(Map4Graphics graphics)
         {
-            float _yDepth = graphics.Camera is Map4CameraTopView ? -0x2000 : Y + 20f;
+            float _yDepth = Y + 20f;
             return Matrix4.CreateScale(Region.Width, 1.0f, Region.Height) 
                 * Matrix4.CreateTranslation(Region.Location.X, _yDepth, Region.Location.Y);
         }

@@ -64,7 +64,7 @@ namespace STROOP.Map3.Map.Graphics.Items
 
         protected static List<Type> CameraTypeAny = new List<Type>()
         {
-            typeof(Map4CameraTopView),
+            typeof(Map4Camera),
 
         };
     }

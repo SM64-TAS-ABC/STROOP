@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace STROOP.Map3.Map.Graphics
 {
-    class Map4Camera : IMap4Camera
+    public class Map4Camera
     {
         Map4Graphics _graphics;
         public Vector3 Position { get; set; }
