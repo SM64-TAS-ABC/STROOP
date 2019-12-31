@@ -759,7 +759,7 @@ namespace STROOP
             this.checkBoxMapOptionsTrackHolp = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackMario = new System.Windows.Forms.CheckBox();
             this.trackBarMapOptionsGlobalIconSize = new STROOP.TrackBarEx();
-            this.tabPageMap3Controllers = new System.Windows.Forms.TabPage();
+            this.tabPageMapControllers = new System.Windows.Forms.TabPage();
             this.groupBoxMap3ControllersAngle = new System.Windows.Forms.GroupBox();
             this.textBoxMap3ControllersAngleChange = new STROOP.BetterTextbox();
             this.textBoxMap3ControllersAngleCustom = new STROOP.BetterTextbox();
@@ -789,17 +789,17 @@ namespace STROOP
             this.buttonMap3ControllersCenterDown = new System.Windows.Forms.Button();
             this.buttonMap3ControllersCenterUpRight = new System.Windows.Forms.Button();
             this.buttonMap3ControllersCenterUp = new System.Windows.Forms.Button();
-            this.groupBoxMap3ControllersScale = new System.Windows.Forms.GroupBox();
-            this.textBoxMap3ControllersScaleCustom = new STROOP.BetterTextbox();
-            this.textBoxMap3ControllersScaleChange2 = new STROOP.BetterTextbox();
-            this.textBoxMap3ControllersScaleChange = new STROOP.BetterTextbox();
-            this.radioButtonMap3ControllersScaleMaxCourseSize = new System.Windows.Forms.RadioButton();
-            this.radioButtonMap3ControllersScaleCourseDefault = new System.Windows.Forms.RadioButton();
-            this.buttonMap3ControllersScaleDivide = new System.Windows.Forms.Button();
-            this.buttonMap3ControllersScaleMinus = new System.Windows.Forms.Button();
-            this.radioButtonMap3ControllersScaleCustom = new System.Windows.Forms.RadioButton();
-            this.buttonMap3ControllersScaleTimes = new System.Windows.Forms.Button();
-            this.buttonMap3ControllersScalePlus = new System.Windows.Forms.Button();
+            this.groupBoxMapControllersScale = new System.Windows.Forms.GroupBox();
+            this.textBoxMapControllersScaleCustom = new STROOP.BetterTextbox();
+            this.textBoxMapControllersScaleChange2 = new STROOP.BetterTextbox();
+            this.textBoxMapControllersScaleChange = new STROOP.BetterTextbox();
+            this.radioButtonMapControllersScaleMaxCourseSize = new System.Windows.Forms.RadioButton();
+            this.radioButtonMapControllersScaleCourseDefault = new System.Windows.Forms.RadioButton();
+            this.buttonMapControllersScaleDivide = new System.Windows.Forms.Button();
+            this.buttonMapControllersScaleMinus = new System.Windows.Forms.Button();
+            this.radioButtonMapControllersScaleCustom = new System.Windows.Forms.RadioButton();
+            this.buttonMapControllersScaleTimes = new System.Windows.Forms.Button();
+            this.buttonMapControllersScalePlus = new System.Windows.Forms.Button();
             this.tabPageMap3Data = new System.Windows.Forms.TabPage();
             this.labelMap3DataQpuCoordinates = new System.Windows.Forms.Label();
             this.labelMap3DataYNorm = new System.Windows.Forms.Label();
@@ -1875,10 +1875,10 @@ namespace STROOP
             this.tabControlMap3.SuspendLayout();
             this.tabPageMapOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapOptionsGlobalIconSize)).BeginInit();
-            this.tabPageMap3Controllers.SuspendLayout();
+            this.tabPageMapControllers.SuspendLayout();
             this.groupBoxMap3ControllersAngle.SuspendLayout();
             this.groupBoxMap3ControllersCenter.SuspendLayout();
-            this.groupBoxMap3ControllersScale.SuspendLayout();
+            this.groupBoxMapControllersScale.SuspendLayout();
             this.tabPageMap3Data.SuspendLayout();
             this.tabPageMap33DVars.SuspendLayout();
             this.tabPageMap33DControllers.SuspendLayout();
@@ -10564,7 +10564,7 @@ namespace STROOP
             // tabControlMap3
             // 
             this.tabControlMap3.Controls.Add(this.tabPageMapOptions);
-            this.tabControlMap3.Controls.Add(this.tabPageMap3Controllers);
+            this.tabControlMap3.Controls.Add(this.tabPageMapControllers);
             this.tabControlMap3.Controls.Add(this.tabPageMap3Data);
             this.tabControlMap3.Controls.Add(this.tabPageMap33DVars);
             this.tabControlMap3.Controls.Add(this.tabPageMap33DControllers);
@@ -10881,20 +10881,20 @@ namespace STROOP
             this.trackBarMapOptionsGlobalIconSize.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarMapOptionsGlobalIconSize.Value = 100;
             // 
-            // tabPageMap3Controllers
+            // tabPageMapControllers
             // 
-            this.tabPageMap3Controllers.AutoScroll = true;
-            this.tabPageMap3Controllers.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageMap3Controllers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap3Controllers.Controls.Add(this.groupBoxMap3ControllersAngle);
-            this.tabPageMap3Controllers.Controls.Add(this.groupBoxMap3ControllersCenter);
-            this.tabPageMap3Controllers.Controls.Add(this.groupBoxMap3ControllersScale);
-            this.tabPageMap3Controllers.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMap3Controllers.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageMap3Controllers.Name = "tabPageMap3Controllers";
-            this.tabPageMap3Controllers.Size = new System.Drawing.Size(347, 292);
-            this.tabPageMap3Controllers.TabIndex = 1;
-            this.tabPageMap3Controllers.Text = "Controllers";
+            this.tabPageMapControllers.AutoScroll = true;
+            this.tabPageMapControllers.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMapControllers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMapControllers.Controls.Add(this.groupBoxMap3ControllersAngle);
+            this.tabPageMapControllers.Controls.Add(this.groupBoxMap3ControllersCenter);
+            this.tabPageMapControllers.Controls.Add(this.groupBoxMapControllersScale);
+            this.tabPageMapControllers.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMapControllers.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMapControllers.Name = "tabPageMapControllers";
+            this.tabPageMapControllers.Size = new System.Drawing.Size(347, 292);
+            this.tabPageMapControllers.TabIndex = 1;
+            this.tabPageMapControllers.Text = "Controllers";
             // 
             // groupBoxMap3ControllersAngle
             // 
@@ -11213,123 +11213,123 @@ namespace STROOP
             this.buttonMap3ControllersCenterUp.TabIndex = 39;
             this.buttonMap3ControllersCenterUp.UseVisualStyleBackColor = true;
             // 
-            // groupBoxMap3ControllersScale
+            // groupBoxMapControllersScale
             // 
-            this.groupBoxMap3ControllersScale.Controls.Add(this.textBoxMap3ControllersScaleCustom);
-            this.groupBoxMap3ControllersScale.Controls.Add(this.textBoxMap3ControllersScaleChange2);
-            this.groupBoxMap3ControllersScale.Controls.Add(this.textBoxMap3ControllersScaleChange);
-            this.groupBoxMap3ControllersScale.Controls.Add(this.radioButtonMap3ControllersScaleMaxCourseSize);
-            this.groupBoxMap3ControllersScale.Controls.Add(this.radioButtonMap3ControllersScaleCourseDefault);
-            this.groupBoxMap3ControllersScale.Controls.Add(this.buttonMap3ControllersScaleDivide);
-            this.groupBoxMap3ControllersScale.Controls.Add(this.buttonMap3ControllersScaleMinus);
-            this.groupBoxMap3ControllersScale.Controls.Add(this.radioButtonMap3ControllersScaleCustom);
-            this.groupBoxMap3ControllersScale.Controls.Add(this.buttonMap3ControllersScaleTimes);
-            this.groupBoxMap3ControllersScale.Controls.Add(this.buttonMap3ControllersScalePlus);
-            this.groupBoxMap3ControllersScale.Location = new System.Drawing.Point(3, 2);
-            this.groupBoxMap3ControllersScale.Name = "groupBoxMap3ControllersScale";
-            this.groupBoxMap3ControllersScale.Size = new System.Drawing.Size(328, 70);
-            this.groupBoxMap3ControllersScale.TabIndex = 38;
-            this.groupBoxMap3ControllersScale.TabStop = false;
-            this.groupBoxMap3ControllersScale.Text = "Scale";
+            this.groupBoxMapControllersScale.Controls.Add(this.textBoxMapControllersScaleCustom);
+            this.groupBoxMapControllersScale.Controls.Add(this.textBoxMapControllersScaleChange2);
+            this.groupBoxMapControllersScale.Controls.Add(this.textBoxMapControllersScaleChange);
+            this.groupBoxMapControllersScale.Controls.Add(this.radioButtonMapControllersScaleMaxCourseSize);
+            this.groupBoxMapControllersScale.Controls.Add(this.radioButtonMapControllersScaleCourseDefault);
+            this.groupBoxMapControllersScale.Controls.Add(this.buttonMapControllersScaleDivide);
+            this.groupBoxMapControllersScale.Controls.Add(this.buttonMapControllersScaleMinus);
+            this.groupBoxMapControllersScale.Controls.Add(this.radioButtonMapControllersScaleCustom);
+            this.groupBoxMapControllersScale.Controls.Add(this.buttonMapControllersScaleTimes);
+            this.groupBoxMapControllersScale.Controls.Add(this.buttonMapControllersScalePlus);
+            this.groupBoxMapControllersScale.Location = new System.Drawing.Point(3, 2);
+            this.groupBoxMapControllersScale.Name = "groupBoxMapControllersScale";
+            this.groupBoxMapControllersScale.Size = new System.Drawing.Size(328, 70);
+            this.groupBoxMapControllersScale.TabIndex = 38;
+            this.groupBoxMapControllersScale.TabStop = false;
+            this.groupBoxMapControllersScale.Text = "Scale";
             // 
-            // textBoxMap3ControllersScaleCustom
+            // textBoxMapControllersScaleCustom
             // 
-            this.textBoxMap3ControllersScaleCustom.Location = new System.Drawing.Point(67, 45);
-            this.textBoxMap3ControllersScaleCustom.Name = "textBoxMap3ControllersScaleCustom";
-            this.textBoxMap3ControllersScaleCustom.Size = new System.Drawing.Size(117, 20);
-            this.textBoxMap3ControllersScaleCustom.TabIndex = 34;
-            this.textBoxMap3ControllersScaleCustom.Text = "0";
-            this.textBoxMap3ControllersScaleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapControllersScaleCustom.Location = new System.Drawing.Point(67, 45);
+            this.textBoxMapControllersScaleCustom.Name = "textBoxMapControllersScaleCustom";
+            this.textBoxMapControllersScaleCustom.Size = new System.Drawing.Size(117, 20);
+            this.textBoxMapControllersScaleCustom.TabIndex = 34;
+            this.textBoxMapControllersScaleCustom.Text = "0";
+            this.textBoxMapControllersScaleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBoxMap3ControllersScaleChange2
+            // textBoxMapControllersScaleChange2
             // 
-            this.textBoxMap3ControllersScaleChange2.Location = new System.Drawing.Point(226, 42);
-            this.textBoxMap3ControllersScaleChange2.Name = "textBoxMap3ControllersScaleChange2";
-            this.textBoxMap3ControllersScaleChange2.Size = new System.Drawing.Size(66, 20);
-            this.textBoxMap3ControllersScaleChange2.TabIndex = 34;
-            this.textBoxMap3ControllersScaleChange2.Text = "1.5";
-            this.textBoxMap3ControllersScaleChange2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapControllersScaleChange2.Location = new System.Drawing.Point(226, 42);
+            this.textBoxMapControllersScaleChange2.Name = "textBoxMapControllersScaleChange2";
+            this.textBoxMapControllersScaleChange2.Size = new System.Drawing.Size(66, 20);
+            this.textBoxMapControllersScaleChange2.TabIndex = 34;
+            this.textBoxMapControllersScaleChange2.Text = "1.5";
+            this.textBoxMapControllersScaleChange2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBoxMap3ControllersScaleChange
+            // textBoxMapControllersScaleChange
             // 
-            this.textBoxMap3ControllersScaleChange.Location = new System.Drawing.Point(226, 16);
-            this.textBoxMap3ControllersScaleChange.Name = "textBoxMap3ControllersScaleChange";
-            this.textBoxMap3ControllersScaleChange.Size = new System.Drawing.Size(66, 20);
-            this.textBoxMap3ControllersScaleChange.TabIndex = 34;
-            this.textBoxMap3ControllersScaleChange.Text = "0.01";
-            this.textBoxMap3ControllersScaleChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapControllersScaleChange.Location = new System.Drawing.Point(226, 16);
+            this.textBoxMapControllersScaleChange.Name = "textBoxMapControllersScaleChange";
+            this.textBoxMapControllersScaleChange.Size = new System.Drawing.Size(66, 20);
+            this.textBoxMapControllersScaleChange.TabIndex = 34;
+            this.textBoxMapControllersScaleChange.Text = "0.01";
+            this.textBoxMapControllersScaleChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // radioButtonMap3ControllersScaleMaxCourseSize
+            // radioButtonMapControllersScaleMaxCourseSize
             // 
-            this.radioButtonMap3ControllersScaleMaxCourseSize.AutoSize = true;
-            this.radioButtonMap3ControllersScaleMaxCourseSize.Location = new System.Drawing.Point(9, 30);
-            this.radioButtonMap3ControllersScaleMaxCourseSize.Name = "radioButtonMap3ControllersScaleMaxCourseSize";
-            this.radioButtonMap3ControllersScaleMaxCourseSize.Size = new System.Drawing.Size(104, 17);
-            this.radioButtonMap3ControllersScaleMaxCourseSize.TabIndex = 12;
-            this.radioButtonMap3ControllersScaleMaxCourseSize.Text = "Max Course Size";
-            this.radioButtonMap3ControllersScaleMaxCourseSize.UseVisualStyleBackColor = true;
+            this.radioButtonMapControllersScaleMaxCourseSize.AutoSize = true;
+            this.radioButtonMapControllersScaleMaxCourseSize.Location = new System.Drawing.Point(9, 30);
+            this.radioButtonMapControllersScaleMaxCourseSize.Name = "radioButtonMapControllersScaleMaxCourseSize";
+            this.radioButtonMapControllersScaleMaxCourseSize.Size = new System.Drawing.Size(104, 17);
+            this.radioButtonMapControllersScaleMaxCourseSize.TabIndex = 12;
+            this.radioButtonMapControllersScaleMaxCourseSize.Text = "Max Course Size";
+            this.radioButtonMapControllersScaleMaxCourseSize.UseVisualStyleBackColor = true;
             // 
-            // radioButtonMap3ControllersScaleCourseDefault
+            // radioButtonMapControllersScaleCourseDefault
             // 
-            this.radioButtonMap3ControllersScaleCourseDefault.AutoSize = true;
-            this.radioButtonMap3ControllersScaleCourseDefault.Checked = true;
-            this.radioButtonMap3ControllersScaleCourseDefault.Location = new System.Drawing.Point(9, 14);
-            this.radioButtonMap3ControllersScaleCourseDefault.Name = "radioButtonMap3ControllersScaleCourseDefault";
-            this.radioButtonMap3ControllersScaleCourseDefault.Size = new System.Drawing.Size(95, 17);
-            this.radioButtonMap3ControllersScaleCourseDefault.TabIndex = 11;
-            this.radioButtonMap3ControllersScaleCourseDefault.TabStop = true;
-            this.radioButtonMap3ControllersScaleCourseDefault.Text = "Course Default";
-            this.radioButtonMap3ControllersScaleCourseDefault.UseVisualStyleBackColor = true;
+            this.radioButtonMapControllersScaleCourseDefault.AutoSize = true;
+            this.radioButtonMapControllersScaleCourseDefault.Checked = true;
+            this.radioButtonMapControllersScaleCourseDefault.Location = new System.Drawing.Point(9, 14);
+            this.radioButtonMapControllersScaleCourseDefault.Name = "radioButtonMapControllersScaleCourseDefault";
+            this.radioButtonMapControllersScaleCourseDefault.Size = new System.Drawing.Size(95, 17);
+            this.radioButtonMapControllersScaleCourseDefault.TabIndex = 11;
+            this.radioButtonMapControllersScaleCourseDefault.TabStop = true;
+            this.radioButtonMapControllersScaleCourseDefault.Text = "Course Default";
+            this.radioButtonMapControllersScaleCourseDefault.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3ControllersScaleDivide
+            // buttonMapControllersScaleDivide
             // 
-            this.buttonMap3ControllersScaleDivide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMap3ControllersScaleDivide.BackgroundImage")));
-            this.buttonMap3ControllersScaleDivide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersScaleDivide.Location = new System.Drawing.Point(200, 39);
-            this.buttonMap3ControllersScaleDivide.Name = "buttonMap3ControllersScaleDivide";
-            this.buttonMap3ControllersScaleDivide.Size = new System.Drawing.Size(25, 25);
-            this.buttonMap3ControllersScaleDivide.TabIndex = 39;
-            this.buttonMap3ControllersScaleDivide.UseVisualStyleBackColor = true;
+            this.buttonMapControllersScaleDivide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMapControllersScaleDivide.BackgroundImage")));
+            this.buttonMapControllersScaleDivide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersScaleDivide.Location = new System.Drawing.Point(200, 39);
+            this.buttonMapControllersScaleDivide.Name = "buttonMapControllersScaleDivide";
+            this.buttonMapControllersScaleDivide.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersScaleDivide.TabIndex = 39;
+            this.buttonMapControllersScaleDivide.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3ControllersScaleMinus
+            // buttonMapControllersScaleMinus
             // 
-            this.buttonMap3ControllersScaleMinus.BackgroundImage = global::STROOP.Properties.Resources.image_minus;
-            this.buttonMap3ControllersScaleMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersScaleMinus.Location = new System.Drawing.Point(200, 13);
-            this.buttonMap3ControllersScaleMinus.Name = "buttonMap3ControllersScaleMinus";
-            this.buttonMap3ControllersScaleMinus.Size = new System.Drawing.Size(25, 25);
-            this.buttonMap3ControllersScaleMinus.TabIndex = 39;
-            this.buttonMap3ControllersScaleMinus.UseVisualStyleBackColor = true;
+            this.buttonMapControllersScaleMinus.BackgroundImage = global::STROOP.Properties.Resources.image_minus;
+            this.buttonMapControllersScaleMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersScaleMinus.Location = new System.Drawing.Point(200, 13);
+            this.buttonMapControllersScaleMinus.Name = "buttonMapControllersScaleMinus";
+            this.buttonMapControllersScaleMinus.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersScaleMinus.TabIndex = 39;
+            this.buttonMapControllersScaleMinus.UseVisualStyleBackColor = true;
             // 
-            // radioButtonMap3ControllersScaleCustom
+            // radioButtonMapControllersScaleCustom
             // 
-            this.radioButtonMap3ControllersScaleCustom.AutoSize = true;
-            this.radioButtonMap3ControllersScaleCustom.Location = new System.Drawing.Point(9, 46);
-            this.radioButtonMap3ControllersScaleCustom.Name = "radioButtonMap3ControllersScaleCustom";
-            this.radioButtonMap3ControllersScaleCustom.Size = new System.Drawing.Size(63, 17);
-            this.radioButtonMap3ControllersScaleCustom.TabIndex = 13;
-            this.radioButtonMap3ControllersScaleCustom.Text = "Custom:";
-            this.radioButtonMap3ControllersScaleCustom.UseVisualStyleBackColor = true;
+            this.radioButtonMapControllersScaleCustom.AutoSize = true;
+            this.radioButtonMapControllersScaleCustom.Location = new System.Drawing.Point(9, 46);
+            this.radioButtonMapControllersScaleCustom.Name = "radioButtonMapControllersScaleCustom";
+            this.radioButtonMapControllersScaleCustom.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonMapControllersScaleCustom.TabIndex = 13;
+            this.radioButtonMapControllersScaleCustom.Text = "Custom:";
+            this.radioButtonMapControllersScaleCustom.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3ControllersScaleTimes
+            // buttonMapControllersScaleTimes
             // 
-            this.buttonMap3ControllersScaleTimes.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMap3ControllersScaleTimes.BackgroundImage")));
-            this.buttonMap3ControllersScaleTimes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersScaleTimes.Location = new System.Drawing.Point(293, 39);
-            this.buttonMap3ControllersScaleTimes.Name = "buttonMap3ControllersScaleTimes";
-            this.buttonMap3ControllersScaleTimes.Size = new System.Drawing.Size(25, 25);
-            this.buttonMap3ControllersScaleTimes.TabIndex = 39;
-            this.buttonMap3ControllersScaleTimes.UseVisualStyleBackColor = true;
+            this.buttonMapControllersScaleTimes.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMapControllersScaleTimes.BackgroundImage")));
+            this.buttonMapControllersScaleTimes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersScaleTimes.Location = new System.Drawing.Point(293, 39);
+            this.buttonMapControllersScaleTimes.Name = "buttonMapControllersScaleTimes";
+            this.buttonMapControllersScaleTimes.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersScaleTimes.TabIndex = 39;
+            this.buttonMapControllersScaleTimes.UseVisualStyleBackColor = true;
             // 
-            // buttonMap3ControllersScalePlus
+            // buttonMapControllersScalePlus
             // 
-            this.buttonMap3ControllersScalePlus.BackgroundImage = global::STROOP.Properties.Resources.image_plus;
-            this.buttonMap3ControllersScalePlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMap3ControllersScalePlus.Location = new System.Drawing.Point(293, 13);
-            this.buttonMap3ControllersScalePlus.Name = "buttonMap3ControllersScalePlus";
-            this.buttonMap3ControllersScalePlus.Size = new System.Drawing.Size(25, 25);
-            this.buttonMap3ControllersScalePlus.TabIndex = 39;
-            this.buttonMap3ControllersScalePlus.UseVisualStyleBackColor = true;
+            this.buttonMapControllersScalePlus.BackgroundImage = global::STROOP.Properties.Resources.image_plus;
+            this.buttonMapControllersScalePlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersScalePlus.Location = new System.Drawing.Point(293, 13);
+            this.buttonMapControllersScalePlus.Name = "buttonMapControllersScalePlus";
+            this.buttonMapControllersScalePlus.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersScalePlus.TabIndex = 39;
+            this.buttonMapControllersScalePlus.UseVisualStyleBackColor = true;
             // 
             // tabPageMap3Data
             // 
@@ -21055,13 +21055,13 @@ namespace STROOP
             this.tabPageMapOptions.ResumeLayout(false);
             this.tabPageMapOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapOptionsGlobalIconSize)).EndInit();
-            this.tabPageMap3Controllers.ResumeLayout(false);
+            this.tabPageMapControllers.ResumeLayout(false);
             this.groupBoxMap3ControllersAngle.ResumeLayout(false);
             this.groupBoxMap3ControllersAngle.PerformLayout();
             this.groupBoxMap3ControllersCenter.ResumeLayout(false);
             this.groupBoxMap3ControllersCenter.PerformLayout();
-            this.groupBoxMap3ControllersScale.ResumeLayout(false);
-            this.groupBoxMap3ControllersScale.PerformLayout();
+            this.groupBoxMapControllersScale.ResumeLayout(false);
+            this.groupBoxMapControllersScale.PerformLayout();
             this.tabPageMap3Data.ResumeLayout(false);
             this.tabPageMap3Data.PerformLayout();
             this.tabPageMap33DVars.ResumeLayout(false);
@@ -22693,7 +22693,7 @@ namespace STROOP
         private CheckBox checkBoxMapOptionsTrackCamera;
         private CheckBox checkBoxMapOptionsTrackHolp;
         private CheckBox checkBoxMapOptionsTrackMario;
-        private TabPage tabPageMap3Controllers;
+        private TabPage tabPageMapControllers;
         private GroupBox groupBoxMap3ControllersAngle;
         private BetterTextbox textBoxMap3ControllersAngleChange;
         private BetterTextbox textBoxMap3ControllersAngleCustom;
@@ -22718,14 +22718,14 @@ namespace STROOP
         private Button buttonMap3ControllersCenterDown;
         private Button buttonMap3ControllersCenterUpRight;
         private Button buttonMap3ControllersCenterUp;
-        private GroupBox groupBoxMap3ControllersScale;
-        private BetterTextbox textBoxMap3ControllersScaleCustom;
-        private BetterTextbox textBoxMap3ControllersScaleChange;
-        private RadioButton radioButtonMap3ControllersScaleMaxCourseSize;
-        private RadioButton radioButtonMap3ControllersScaleCourseDefault;
-        private Button buttonMap3ControllersScaleMinus;
-        private RadioButton radioButtonMap3ControllersScaleCustom;
-        private Button buttonMap3ControllersScalePlus;
+        private GroupBox groupBoxMapControllersScale;
+        private BetterTextbox textBoxMapControllersScaleCustom;
+        private BetterTextbox textBoxMapControllersScaleChange;
+        private RadioButton radioButtonMapControllersScaleMaxCourseSize;
+        private RadioButton radioButtonMapControllersScaleCourseDefault;
+        private Button buttonMapControllersScaleMinus;
+        private RadioButton radioButtonMapControllersScaleCustom;
+        private Button buttonMapControllersScalePlus;
         private TabPage tabPageMap3Data;
         private Label labelMap3DataQpuCoordinates;
         private Label labelMap3DataYNorm;
@@ -22748,9 +22748,9 @@ namespace STROOP
         private BetterTextbox textBoxMapOptionsGlobalIconSize;
         private CheckBox checkBoxMapOptionsScaleIconSizes;
         private TrackBarEx trackBarMapOptionsGlobalIconSize;
-        private BetterTextbox textBoxMap3ControllersScaleChange2;
-        private Button buttonMap3ControllersScaleDivide;
-        private Button buttonMap3ControllersScaleTimes;
+        private BetterTextbox textBoxMapControllersScaleChange2;
+        private Button buttonMapControllersScaleDivide;
+        private Button buttonMapControllersScaleTimes;
         private TabPage tabPageSearch;
         private BetterSplitContainer splitContainerSearch;
         private BetterSplitContainer splitContainerSearchOptions;
