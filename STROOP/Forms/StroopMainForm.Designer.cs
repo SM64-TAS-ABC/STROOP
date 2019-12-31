@@ -749,15 +749,15 @@ namespace STROOP
             this.checkBoxMap3OptionsTrackPoint = new System.Windows.Forms.CheckBox();
             this.checkBoxMap3OptionsTrackSelf = new System.Windows.Forms.CheckBox();
             this.checkBoxMap3OptionsTrackNextPositions = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsTrackCurrentUnit = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsTrackCellGridlines = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsTrackUnitGridlines = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsTrackCeilingTri = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsTrackCurrentCell = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsTrackFloorTri = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsTrackCamera = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsTrackHolp = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsTrackMario = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackCurrentUnit = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackCellGridlines = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackUnitGridlines = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackCeilingTri = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackCurrentCell = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackFloorTri = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackCamera = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackHolp = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackMario = new System.Windows.Forms.CheckBox();
             this.trackBarMap3OptionsGlobalIconSize = new STROOP.TrackBarEx();
             this.tabPageMap3Controllers = new System.Windows.Forms.TabPage();
             this.groupBoxMap3ControllersAngle = new System.Windows.Forms.GroupBox();
@@ -10598,15 +10598,15 @@ namespace STROOP
             this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackPoint);
             this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackSelf);
             this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackNextPositions);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackCurrentUnit);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackCellGridlines);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackUnitGridlines);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackCeilingTri);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackCurrentCell);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackFloorTri);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackCamera);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackHolp);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackMario);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCurrentUnit);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCellGridlines);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackUnitGridlines);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCeilingTri);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCurrentCell);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackFloorTri);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCamera);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackHolp);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackMario);
             this.tabPageMap3Options.Controls.Add(this.trackBarMap3OptionsGlobalIconSize);
             this.tabPageMap3Options.Location = new System.Drawing.Point(4, 22);
             this.tabPageMap3Options.Margin = new System.Windows.Forms.Padding(0);
@@ -10782,93 +10782,93 @@ namespace STROOP
             // 
             // checkBoxMap3OptionsTrackCurrentUnit
             // 
-            this.checkBoxMap3OptionsTrackCurrentUnit.AutoSize = true;
-            this.checkBoxMap3OptionsTrackCurrentUnit.Location = new System.Drawing.Point(14, 151);
-            this.checkBoxMap3OptionsTrackCurrentUnit.Name = "checkBoxMap3OptionsTrackCurrentUnit";
-            this.checkBoxMap3OptionsTrackCurrentUnit.Size = new System.Drawing.Size(113, 17);
-            this.checkBoxMap3OptionsTrackCurrentUnit.TabIndex = 19;
-            this.checkBoxMap3OptionsTrackCurrentUnit.Text = "Track Current Unit";
-            this.checkBoxMap3OptionsTrackCurrentUnit.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsTrackCurrentUnit.AutoSize = true;
+            this.checkBoxMapOptionsTrackCurrentUnit.Location = new System.Drawing.Point(14, 151);
+            this.checkBoxMapOptionsTrackCurrentUnit.Name = "checkBoxMap3OptionsTrackCurrentUnit";
+            this.checkBoxMapOptionsTrackCurrentUnit.Size = new System.Drawing.Size(113, 17);
+            this.checkBoxMapOptionsTrackCurrentUnit.TabIndex = 19;
+            this.checkBoxMapOptionsTrackCurrentUnit.Text = "Track Current Unit";
+            this.checkBoxMapOptionsTrackCurrentUnit.UseVisualStyleBackColor = true;
             // 
             // checkBoxMap3OptionsTrackCellGridlines
             // 
-            this.checkBoxMap3OptionsTrackCellGridlines.AutoSize = true;
-            this.checkBoxMap3OptionsTrackCellGridlines.Location = new System.Drawing.Point(14, 97);
-            this.checkBoxMap3OptionsTrackCellGridlines.Name = "checkBoxMap3OptionsTrackCellGridlines";
-            this.checkBoxMap3OptionsTrackCellGridlines.Size = new System.Drawing.Size(117, 17);
-            this.checkBoxMap3OptionsTrackCellGridlines.TabIndex = 19;
-            this.checkBoxMap3OptionsTrackCellGridlines.Text = "Track Cell Gridlines";
-            this.checkBoxMap3OptionsTrackCellGridlines.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsTrackCellGridlines.AutoSize = true;
+            this.checkBoxMapOptionsTrackCellGridlines.Location = new System.Drawing.Point(14, 97);
+            this.checkBoxMapOptionsTrackCellGridlines.Name = "checkBoxMap3OptionsTrackCellGridlines";
+            this.checkBoxMapOptionsTrackCellGridlines.Size = new System.Drawing.Size(117, 17);
+            this.checkBoxMapOptionsTrackCellGridlines.TabIndex = 19;
+            this.checkBoxMapOptionsTrackCellGridlines.Text = "Track Cell Gridlines";
+            this.checkBoxMapOptionsTrackCellGridlines.UseVisualStyleBackColor = true;
             // 
             // checkBoxMap3OptionsTrackUnitGridlines
             // 
-            this.checkBoxMap3OptionsTrackUnitGridlines.AutoSize = true;
-            this.checkBoxMap3OptionsTrackUnitGridlines.Location = new System.Drawing.Point(14, 133);
-            this.checkBoxMap3OptionsTrackUnitGridlines.Name = "checkBoxMap3OptionsTrackUnitGridlines";
-            this.checkBoxMap3OptionsTrackUnitGridlines.Size = new System.Drawing.Size(119, 17);
-            this.checkBoxMap3OptionsTrackUnitGridlines.TabIndex = 19;
-            this.checkBoxMap3OptionsTrackUnitGridlines.Text = "Track Unit Gridlines";
-            this.checkBoxMap3OptionsTrackUnitGridlines.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsTrackUnitGridlines.AutoSize = true;
+            this.checkBoxMapOptionsTrackUnitGridlines.Location = new System.Drawing.Point(14, 133);
+            this.checkBoxMapOptionsTrackUnitGridlines.Name = "checkBoxMap3OptionsTrackUnitGridlines";
+            this.checkBoxMapOptionsTrackUnitGridlines.Size = new System.Drawing.Size(119, 17);
+            this.checkBoxMapOptionsTrackUnitGridlines.TabIndex = 19;
+            this.checkBoxMapOptionsTrackUnitGridlines.Text = "Track Unit Gridlines";
+            this.checkBoxMapOptionsTrackUnitGridlines.UseVisualStyleBackColor = true;
             // 
             // checkBoxMap3OptionsTrackCeilingTri
             // 
-            this.checkBoxMap3OptionsTrackCeilingTri.AutoSize = true;
-            this.checkBoxMap3OptionsTrackCeilingTri.Location = new System.Drawing.Point(14, 79);
-            this.checkBoxMap3OptionsTrackCeilingTri.Name = "checkBoxMap3OptionsTrackCeilingTri";
-            this.checkBoxMap3OptionsTrackCeilingTri.Size = new System.Drawing.Size(103, 17);
-            this.checkBoxMap3OptionsTrackCeilingTri.TabIndex = 19;
-            this.checkBoxMap3OptionsTrackCeilingTri.Text = "Track Ceiling Tri";
-            this.checkBoxMap3OptionsTrackCeilingTri.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsTrackCeilingTri.AutoSize = true;
+            this.checkBoxMapOptionsTrackCeilingTri.Location = new System.Drawing.Point(14, 79);
+            this.checkBoxMapOptionsTrackCeilingTri.Name = "checkBoxMap3OptionsTrackCeilingTri";
+            this.checkBoxMapOptionsTrackCeilingTri.Size = new System.Drawing.Size(103, 17);
+            this.checkBoxMapOptionsTrackCeilingTri.TabIndex = 19;
+            this.checkBoxMapOptionsTrackCeilingTri.Text = "Track Ceiling Tri";
+            this.checkBoxMapOptionsTrackCeilingTri.UseVisualStyleBackColor = true;
             // 
             // checkBoxMap3OptionsTrackCurrentCell
             // 
-            this.checkBoxMap3OptionsTrackCurrentCell.AutoSize = true;
-            this.checkBoxMap3OptionsTrackCurrentCell.Location = new System.Drawing.Point(14, 115);
-            this.checkBoxMap3OptionsTrackCurrentCell.Name = "checkBoxMap3OptionsTrackCurrentCell";
-            this.checkBoxMap3OptionsTrackCurrentCell.Size = new System.Drawing.Size(111, 17);
-            this.checkBoxMap3OptionsTrackCurrentCell.TabIndex = 19;
-            this.checkBoxMap3OptionsTrackCurrentCell.Text = "Track Current Cell";
-            this.checkBoxMap3OptionsTrackCurrentCell.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsTrackCurrentCell.AutoSize = true;
+            this.checkBoxMapOptionsTrackCurrentCell.Location = new System.Drawing.Point(14, 115);
+            this.checkBoxMapOptionsTrackCurrentCell.Name = "checkBoxMap3OptionsTrackCurrentCell";
+            this.checkBoxMapOptionsTrackCurrentCell.Size = new System.Drawing.Size(111, 17);
+            this.checkBoxMapOptionsTrackCurrentCell.TabIndex = 19;
+            this.checkBoxMapOptionsTrackCurrentCell.Text = "Track Current Cell";
+            this.checkBoxMapOptionsTrackCurrentCell.UseVisualStyleBackColor = true;
             // 
             // checkBoxMap3OptionsTrackFloorTri
             // 
-            this.checkBoxMap3OptionsTrackFloorTri.AutoSize = true;
-            this.checkBoxMap3OptionsTrackFloorTri.Location = new System.Drawing.Point(14, 61);
-            this.checkBoxMap3OptionsTrackFloorTri.Name = "checkBoxMap3OptionsTrackFloorTri";
-            this.checkBoxMap3OptionsTrackFloorTri.Size = new System.Drawing.Size(95, 17);
-            this.checkBoxMap3OptionsTrackFloorTri.TabIndex = 19;
-            this.checkBoxMap3OptionsTrackFloorTri.Text = "Track Floor Tri";
-            this.checkBoxMap3OptionsTrackFloorTri.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsTrackFloorTri.AutoSize = true;
+            this.checkBoxMapOptionsTrackFloorTri.Location = new System.Drawing.Point(14, 61);
+            this.checkBoxMapOptionsTrackFloorTri.Name = "checkBoxMap3OptionsTrackFloorTri";
+            this.checkBoxMapOptionsTrackFloorTri.Size = new System.Drawing.Size(95, 17);
+            this.checkBoxMapOptionsTrackFloorTri.TabIndex = 19;
+            this.checkBoxMapOptionsTrackFloorTri.Text = "Track Floor Tri";
+            this.checkBoxMapOptionsTrackFloorTri.UseVisualStyleBackColor = true;
             // 
             // checkBoxMap3OptionsTrackCamera
             // 
-            this.checkBoxMap3OptionsTrackCamera.AutoSize = true;
-            this.checkBoxMap3OptionsTrackCamera.Location = new System.Drawing.Point(14, 43);
-            this.checkBoxMap3OptionsTrackCamera.Name = "checkBoxMap3OptionsTrackCamera";
-            this.checkBoxMap3OptionsTrackCamera.Size = new System.Drawing.Size(93, 17);
-            this.checkBoxMap3OptionsTrackCamera.TabIndex = 19;
-            this.checkBoxMap3OptionsTrackCamera.Text = "Track Camera";
-            this.checkBoxMap3OptionsTrackCamera.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsTrackCamera.AutoSize = true;
+            this.checkBoxMapOptionsTrackCamera.Location = new System.Drawing.Point(14, 43);
+            this.checkBoxMapOptionsTrackCamera.Name = "checkBoxMap3OptionsTrackCamera";
+            this.checkBoxMapOptionsTrackCamera.Size = new System.Drawing.Size(93, 17);
+            this.checkBoxMapOptionsTrackCamera.TabIndex = 19;
+            this.checkBoxMapOptionsTrackCamera.Text = "Track Camera";
+            this.checkBoxMapOptionsTrackCamera.UseVisualStyleBackColor = true;
             // 
             // checkBoxMap3OptionsTrackHolp
             // 
-            this.checkBoxMap3OptionsTrackHolp.AutoSize = true;
-            this.checkBoxMap3OptionsTrackHolp.Location = new System.Drawing.Point(14, 25);
-            this.checkBoxMap3OptionsTrackHolp.Name = "checkBoxMap3OptionsTrackHolp";
-            this.checkBoxMap3OptionsTrackHolp.Size = new System.Drawing.Size(86, 17);
-            this.checkBoxMap3OptionsTrackHolp.TabIndex = 19;
-            this.checkBoxMap3OptionsTrackHolp.Text = "Track HOLP";
-            this.checkBoxMap3OptionsTrackHolp.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsTrackHolp.AutoSize = true;
+            this.checkBoxMapOptionsTrackHolp.Location = new System.Drawing.Point(14, 25);
+            this.checkBoxMapOptionsTrackHolp.Name = "checkBoxMap3OptionsTrackHolp";
+            this.checkBoxMapOptionsTrackHolp.Size = new System.Drawing.Size(86, 17);
+            this.checkBoxMapOptionsTrackHolp.TabIndex = 19;
+            this.checkBoxMapOptionsTrackHolp.Text = "Track HOLP";
+            this.checkBoxMapOptionsTrackHolp.UseVisualStyleBackColor = true;
             // 
             // checkBoxMap3OptionsTrackMario
             // 
-            this.checkBoxMap3OptionsTrackMario.AutoSize = true;
-            this.checkBoxMap3OptionsTrackMario.Location = new System.Drawing.Point(14, 7);
-            this.checkBoxMap3OptionsTrackMario.Name = "checkBoxMap3OptionsTrackMario";
-            this.checkBoxMap3OptionsTrackMario.Size = new System.Drawing.Size(83, 17);
-            this.checkBoxMap3OptionsTrackMario.TabIndex = 19;
-            this.checkBoxMap3OptionsTrackMario.Text = "Track Mario";
-            this.checkBoxMap3OptionsTrackMario.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsTrackMario.AutoSize = true;
+            this.checkBoxMapOptionsTrackMario.Location = new System.Drawing.Point(14, 7);
+            this.checkBoxMapOptionsTrackMario.Name = "checkBoxMap3OptionsTrackMario";
+            this.checkBoxMapOptionsTrackMario.Size = new System.Drawing.Size(83, 17);
+            this.checkBoxMapOptionsTrackMario.TabIndex = 19;
+            this.checkBoxMapOptionsTrackMario.Text = "Track Mario";
+            this.checkBoxMapOptionsTrackMario.UseVisualStyleBackColor = true;
             // 
             // trackBarMap3OptionsGlobalIconSize
             // 
@@ -22687,12 +22687,12 @@ namespace STROOP
         private Button buttonMap3OptionsTrackAllObjects;
         private Button buttonMap3OptionsClearAllTrackers;
         private Button buttonMap3OptionsAddNewTracker;
-        private CheckBox checkBoxMap3OptionsTrackCellGridlines;
-        private CheckBox checkBoxMap3OptionsTrackCeilingTri;
-        private CheckBox checkBoxMap3OptionsTrackFloorTri;
-        private CheckBox checkBoxMap3OptionsTrackCamera;
-        private CheckBox checkBoxMap3OptionsTrackHolp;
-        private CheckBox checkBoxMap3OptionsTrackMario;
+        private CheckBox checkBoxMapOptionsTrackCellGridlines;
+        private CheckBox checkBoxMapOptionsTrackCeilingTri;
+        private CheckBox checkBoxMapOptionsTrackFloorTri;
+        private CheckBox checkBoxMapOptionsTrackCamera;
+        private CheckBox checkBoxMapOptionsTrackHolp;
+        private CheckBox checkBoxMapOptionsTrackMario;
         private TabPage tabPageMap3Controllers;
         private GroupBox groupBoxMap3ControllersAngle;
         private BetterTextbox textBoxMap3ControllersAngleChange;
@@ -22737,9 +22737,9 @@ namespace STROOP
         private Label labelMap3DataPuCoordinates;
         private MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
         private Button buttonMap3OptionsTrackMarkedObjects;
-        private CheckBox checkBoxMap3OptionsTrackCurrentUnit;
-        private CheckBox checkBoxMap3OptionsTrackUnitGridlines;
-        private CheckBox checkBoxMap3OptionsTrackCurrentCell;
+        private CheckBox checkBoxMapOptionsTrackCurrentUnit;
+        private CheckBox checkBoxMapOptionsTrackUnitGridlines;
+        private CheckBox checkBoxMapOptionsTrackCurrentCell;
         private CheckBox checkBoxMap3OptionsEnablePuView;
         private CheckBox checkBoxMap3OptionsTrackPoint;
         private CheckBox checkBoxMap3OptionsTrackSelf;
