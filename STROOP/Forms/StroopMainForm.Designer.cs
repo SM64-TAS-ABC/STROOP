@@ -730,7 +730,7 @@ namespace STROOP
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new STROOP.BetterSplitContainer();
             this.splitContainerMapLeft = new STROOP.BetterSplitContainer();
-            this.tabControlMap3 = new System.Windows.Forms.TabControl();
+            this.tabControlMap = new System.Windows.Forms.TabControl();
             this.tabPageMapOptions = new System.Windows.Forms.TabPage();
             this.comboBoxMapOptionsBackground = new System.Windows.Forms.ComboBox();
             this.comboBoxMapOptionsLevel = new System.Windows.Forms.ComboBox();
@@ -1872,7 +1872,7 @@ namespace STROOP
             this.splitContainerMapLeft.Panel1.SuspendLayout();
             this.splitContainerMapLeft.Panel2.SuspendLayout();
             this.splitContainerMapLeft.SuspendLayout();
-            this.tabControlMap3.SuspendLayout();
+            this.tabControlMap.SuspendLayout();
             this.tabPageMapOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapOptionsGlobalIconSize)).BeginInit();
             this.tabPageMapControllers.SuspendLayout();
@@ -10549,7 +10549,7 @@ namespace STROOP
             // 
             // splitContainerMapLeft.Panel1
             // 
-            this.splitContainerMapLeft.Panel1.Controls.Add(this.tabControlMap3);
+            this.splitContainerMapLeft.Panel1.Controls.Add(this.tabControlMap);
             this.splitContainerMapLeft.Panel1MinSize = 0;
             // 
             // splitContainerMapLeft.Panel2
@@ -10561,20 +10561,20 @@ namespace STROOP
             this.splitContainerMapLeft.SplitterWidth = 1;
             this.splitContainerMapLeft.TabIndex = 41;
             // 
-            // tabControlMap3
+            // tabControlMap
             // 
-            this.tabControlMap3.Controls.Add(this.tabPageMapOptions);
-            this.tabControlMap3.Controls.Add(this.tabPageMapControllers);
-            this.tabControlMap3.Controls.Add(this.tabPageMapData);
-            this.tabControlMap3.Controls.Add(this.tabPageMap3DVars);
-            this.tabControlMap3.Controls.Add(this.tabPageMap3DControllers);
-            this.tabControlMap3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlMap3.Location = new System.Drawing.Point(0, 0);
-            this.tabControlMap3.Margin = new System.Windows.Forms.Padding(0);
-            this.tabControlMap3.Name = "tabControlMap3";
-            this.tabControlMap3.SelectedIndex = 0;
-            this.tabControlMap3.Size = new System.Drawing.Size(355, 318);
-            this.tabControlMap3.TabIndex = 39;
+            this.tabControlMap.Controls.Add(this.tabPageMapOptions);
+            this.tabControlMap.Controls.Add(this.tabPageMapControllers);
+            this.tabControlMap.Controls.Add(this.tabPageMapData);
+            this.tabControlMap.Controls.Add(this.tabPageMap3DVars);
+            this.tabControlMap.Controls.Add(this.tabPageMap3DControllers);
+            this.tabControlMap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlMap.Location = new System.Drawing.Point(0, 0);
+            this.tabControlMap.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControlMap.Name = "tabControlMap";
+            this.tabControlMap.SelectedIndex = 0;
+            this.tabControlMap.Size = new System.Drawing.Size(355, 318);
+            this.tabControlMap.TabIndex = 39;
             // 
             // tabPageMapOptions
             // 
@@ -21051,7 +21051,7 @@ namespace STROOP
             this.splitContainerMapLeft.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMapLeft)).EndInit();
             this.splitContainerMapLeft.ResumeLayout(false);
-            this.tabControlMap3.ResumeLayout(false);
+            this.tabControlMap.ResumeLayout(false);
             this.tabPageMapOptions.ResumeLayout(false);
             this.tabPageMapOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapOptionsGlobalIconSize)).EndInit();
@@ -22678,7 +22678,7 @@ namespace STROOP
         private BetterSplitContainer splitContainerMap;
         private OpenTK.GLControl glControlMap2D;
         private BetterSplitContainer splitContainerMapLeft;
-        private TabControl tabControlMap3;
+        private TabControl tabControlMap;
         private TabPage tabPageMapOptions;
         private ComboBox comboBoxMapOptionsBackground;
         private ComboBox comboBoxMapOptionsLevel;
