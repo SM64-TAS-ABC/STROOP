@@ -298,9 +298,9 @@ namespace STROOP.Map
 
         public static void MaybeChangeMapCameraMode()
         {
-            if (SpecialConfig.Map3DMode == Map3DMode.InGame)
+            if (SpecialConfig.Map3DMode == Map3DCameraMode.InGame)
             {
-                SpecialConfig.Map3DMode = Map3DMode.CameraPosAndFocus;
+                SpecialConfig.Map3DMode = Map3DCameraMode.CameraPosAndFocus;
             }
         }
     }

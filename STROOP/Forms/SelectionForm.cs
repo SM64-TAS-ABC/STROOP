@@ -199,12 +199,12 @@ namespace STROOP.Forms
             selectionForm.Initialize(
                 "Select a Mode",
                 "Set Mode",
-                EnumUtilities.GetEnumStrings<Map3DMode>(typeof(Map3DMode)),
+                EnumUtilities.GetEnumStrings<Map3DCameraMode>(typeof(Map3DCameraMode)),
                 modeString =>
                 {
                     try
                     {
-                        SpecialConfig.Map3DMode = (Map3DMode)Enum.Parse(typeof(Map3DMode), modeString, true);
+                        SpecialConfig.Map3DMode = (Map3DCameraMode)Enum.Parse(typeof(Map3DCameraMode), modeString, true);
                     }
                     catch (Exception) { }
                 });

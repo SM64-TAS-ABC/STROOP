@@ -659,14 +659,14 @@ namespace STROOP.Managers
         {
             "Focus Pos PA", "Following Radius", "Following Y Offset", "Following Yaw", "FOV",
         };
-        private static readonly Dictionary<Map3DMode, List<string>> coloredVarsMap =
-            new Dictionary<Map3DMode, List<string>>()
+        private static readonly Dictionary<Map3DCameraMode, List<string>> coloredVarsMap =
+            new Dictionary<Map3DCameraMode, List<string>>()
             {
-                [Map3DMode.InGame] = inGameColoredVars,
-                [Map3DMode.CameraPosAndFocus] = cameraPosAndFocusColoredVars,
-                [Map3DMode.CameraPosAndAngle] = cameraPosAndAngleColoredVars,
-                [Map3DMode.FollowFocusRelativeAngle] = followFocusRelativeAngleColoredVars,
-                [Map3DMode.FollowFocusAbsoluteAngle] = followFocusAbsoluteAngleColoredVars,
+                [Map3DCameraMode.InGame] = inGameColoredVars,
+                [Map3DCameraMode.CameraPosAndFocus] = cameraPosAndFocusColoredVars,
+                [Map3DCameraMode.CameraPosAndAngle] = cameraPosAndAngleColoredVars,
+                [Map3DCameraMode.FollowFocusRelativeAngle] = followFocusRelativeAngleColoredVars,
+                [Map3DCameraMode.FollowFocusAbsoluteAngle] = followFocusAbsoluteAngleColoredVars,
             };
 
         private void UpdateVarColors()

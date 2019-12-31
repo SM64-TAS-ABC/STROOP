@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs
 {
-    public enum MapTrackerDisplayType
+    public enum Map3DCameraMode
     {
-        Icon,
-        Point,
-        HitboxCylinder,
-        TangibilitySphere,
-        DrawDistanceSphere,
+        InGame,
+        CameraPosAndFocus,
+        CameraPosAndAngle,
+        FollowFocusRelativeAngle,
+        FollowFocusAbsoluteAngle,
     };
 }

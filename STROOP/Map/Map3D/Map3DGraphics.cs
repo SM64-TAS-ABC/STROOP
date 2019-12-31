@@ -283,7 +283,7 @@ namespace STROOP.Map.Map3D
 
             switch (SpecialConfig.Map3DMode)
             {
-                case Map3DMode.InGame:
+                case Map3DCameraMode.InGame:
                     SpecialConfig.Map3DCameraX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
                     SpecialConfig.Map3DCameraY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
                     SpecialConfig.Map3DCameraZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
@@ -295,13 +295,13 @@ namespace STROOP.Map.Map3D
                     SpecialConfig.Map3DFocusZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
                     SpecialConfig.Map3DFOV = Config.Stream.GetSingle(CameraConfig.FOVAddress);
                     break;
-                case Map3DMode.CameraPosAndFocus:
+                case Map3DCameraMode.CameraPosAndFocus:
                     updateCameraAngles();
                     break;
-                case Map3DMode.CameraPosAndAngle:
+                case Map3DCameraMode.CameraPosAndAngle:
                     // do nothing, as we use whatever vars are stored
                     break;
-                case Map3DMode.FollowFocusRelativeAngle:
+                case Map3DCameraMode.FollowFocusRelativeAngle:
                     double angleOffset = SpecialConfig.Map3DFocusAnglePA.IsNone() ? 0 : SpecialConfig.Map3DFocusAnglePA.Angle;
                     (SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraZ) =
                         ((float, float))MoreMath.AddVectorToPoint(
@@ -312,7 +312,7 @@ namespace STROOP.Map.Map3D
                     SpecialConfig.Map3DCameraY = SpecialConfig.Map3DFocusY + SpecialConfig.Map3DFollowingYOffset;
                     updateCameraAngles();
                     break;
-                case Map3DMode.FollowFocusAbsoluteAngle:
+                case Map3DCameraMode.FollowFocusAbsoluteAngle:
                     (SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraZ) =
                         ((float, float))MoreMath.AddVectorToPoint(
                             SpecialConfig.Map3DFollowingRadius,

@@ -158,11 +158,10 @@
     <Compile Include="Enums\PaintingListTypeEnum.cs" />
     <Compile Include="Enums\FrameInputRelationType.cs" />
     <Compile Include="Enums\CellSelectionType.cs" />
-    <Compile Include="Enums\MapTrackerDisplayType.cs" />
     <Compile Include="Enums\InputDisplayTypeEnum.cs" />
     <Compile Include="Enums\CoinParamsOrder.cs" />
     <Compile Include="Enums\AddToTabTypeEnum.cs" />
-    <Compile Include="Enums\Map3DMode.cs" />
+    <Compile Include="Enums\Map3DCameraMode.cs" />
     <Compile Include="Enums\RelativeDirection.cs" />
     <Compile Include="Enums\RomVersionSelection.cs" />
     <Compile Include="Extensions\FormExtensions.cs" />

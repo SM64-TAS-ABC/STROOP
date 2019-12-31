@@ -1506,7 +1506,7 @@ namespace STROOP.Utilities
             MapUtilities.MaybeChangeMapCameraMode();
             HandleScaling(ref thetaOffset, ref phiOffset);
 
-            if (SpecialConfig.Map3DMode == Map3DMode.CameraPosAndAngle)
+            if (SpecialConfig.Map3DMode == Map3DCameraMode.CameraPosAndAngle)
             {
                 SpecialConfig.Map3DCameraYaw += thetaOffset;
                 SpecialConfig.Map3DCameraPitch += phiOffset;
