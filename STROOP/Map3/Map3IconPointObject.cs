@@ -68,6 +68,10 @@ namespace STROOP.Map3
         public override void DrawOn3DControl()
         {
             Map4Vertex[] vertices = GetVertices();
+
+            Matrix4 viewMatrix = GetModelMatrix();
+            GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
+
             int vertexBuffer = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
             GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Map4Vertex.Size),

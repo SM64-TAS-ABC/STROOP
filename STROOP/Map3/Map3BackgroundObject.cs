@@ -64,6 +64,9 @@ namespace STROOP.Map3
         {
             Map4Vertex[] vertices = GetVertices();
 
+            Matrix4 viewMatrix = GetModelMatrix();
+            GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
+
             int buffer = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
             GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Map4Vertex.Size),

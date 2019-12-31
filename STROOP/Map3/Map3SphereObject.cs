@@ -72,6 +72,9 @@ namespace STROOP.Map3
                 }
             }
 
+            Matrix4 viewMatrix = GetModelMatrix() * Config.Map4Graphics.Camera.Matrix;
+            GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
+
             vertexArrayForSurfaces.ForEach(vertexes =>
             {
                 int buffer = GL.GenBuffer();

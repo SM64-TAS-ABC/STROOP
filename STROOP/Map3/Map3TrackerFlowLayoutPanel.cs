@@ -188,9 +188,6 @@ namespace STROOP.Map3
             List<Map3Object> listDrawType = listCombined.FindAll(obj => obj.GetDrawType() == drawType);
             foreach (Map3Object obj in listDrawType)
             {
-                Matrix4 viewMatrix = drawType == Map3DrawType.Perspective ?
-                    obj.GetModelMatrix() * Config.Map4Graphics.Camera.Matrix : obj.GetModelMatrix();
-                GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
                 obj.DrawOn3DControl();
             }
         }
