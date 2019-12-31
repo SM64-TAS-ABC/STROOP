@@ -98,7 +98,7 @@ namespace STROOP.Map3
             return Matrix4.CreateScale(size * _imageNormalizedSize.Width, size * _imageNormalizedSize.Height, 1)
                 * Matrix4.CreateRotationZ(angle)
                 * Matrix4.CreateScale(1.0f / Config.Map4Graphics.NormalizedWidth, 1.0f / Config.Map4Graphics.NormalizedHeight, 1)
-                * Matrix4.CreateTranslation(Map4GraphicsUtilities.GetPositionOnViewFromCoordinate(pos));
+                * Matrix4.CreateTranslation(Map3Utilities.GetPositionOnViewFromCoordinate(pos));
         }
         
         private Map4Vertex[] GetVertices()

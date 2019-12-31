@@ -16,6 +16,25 @@ namespace STROOP.Map3
 {
     public static class Map3Utilities
     {
+        public static int WhiteTexture { get; }
+        private static readonly byte[] _whiteTexData = new byte[] { 0xFF };
+
+        static Map3Utilities()
+        {
+            WhiteTexture = GL.GenTexture();
+            GL.BindTexture(TextureTarget.Texture2D, WhiteTexture);
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 1, 1, 0, OpenTK.Graphics.OpenGL.PixelFormat.Luminance, PixelType.UnsignedByte, _whiteTexData);
+        }
+
+        public static Vector3 GetPositionOnViewFromCoordinate(Vector3 pos)
+        {
+            Vector4 vec = Vector4.Transform(new Vector4(pos, 1), Config.Map4Camera.Matrix);
+            vec.X /= vec.W;
+            vec.Y /= vec.W;
+            vec.Z = 0;
+            return vec.Xyz;
+        }
+
         /** Takes in in-game coordinates, outputs control coordinates. */
         public static (float x, float z) ConvertCoordsForControl(float x, float z)
         {

@@ -410,7 +410,6 @@
     <Compile Include="Map3\Map3Semaphore.cs" />
     <Compile Include="Map3\Map3SemaphoreManager.cs" />
     <Compile Include="Map3\Map\Map4Camera.cs" />
-    <Compile Include="Map3\Map\Map4GraphicsUtilities.cs" />
     <Compile Include="Map3\Map\Map4Graphics.cs" />
     <Compile Include="Map3\Map\Map4Vertex.cs" />
     <Compile Include="Map3\Map\Map4Controller.cs" />

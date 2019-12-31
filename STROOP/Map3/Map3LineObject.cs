@@ -58,7 +58,7 @@ namespace STROOP.Map3
             GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
 
             int buffer = GL.GenBuffer();
-            GL.BindTexture(TextureTarget.Texture2D, Map4GraphicsUtilities.WhiteTexture);
+            GL.BindTexture(TextureTarget.Texture2D, Map3Utilities.WhiteTexture);
             GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
             GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArrayForEdges.Length * Map4Vertex.Size),
                 vertexArrayForEdges, BufferUsageHint.DynamicDraw);
