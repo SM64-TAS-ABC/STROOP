@@ -24,8 +24,8 @@ namespace STROOP.Structs.Configurations
         public static StroopMainForm StroopMainForm;
         public static TabControlEx TabControlMain;
         public static Label DebugText;
-        public static Map3Graphics Map3Graphics;
-        public static Map3Gui Map3Gui;
+        public static MapGraphics Map3Graphics;
+        public static MapGui Map3Gui;
         public static Map4Graphics Map4Graphics;
         public static Map4Camera Map4Camera;
 
@@ -34,7 +34,7 @@ namespace STROOP.Structs.Configurations
         public static DisassemblyManager DisassemblyManager;
         public static HackManager HackManager;
         public static HudManager HudManager;
-        public static Map3Manager Map3Manager;
+        public static MapManager Map3Manager;
         public static ModelManager ModelManager;
         public static MarioManager MarioManager;
         public static MiscManager MiscManager;

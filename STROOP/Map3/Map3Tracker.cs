@@ -21,8 +21,8 @@ namespace STROOP.Map3
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
         private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
 
-        private readonly List<Map3Object> _mapObjectList;
-        private readonly List<Map3Semaphore> _semaphoreList;
+        private readonly List<MapObject> _mapObjectList;
+        private readonly List<MapSemaphore> _semaphoreList;
 
         private List<Image> _images;
 
@@ -32,22 +32,22 @@ namespace STROOP.Map3
 
         private string _customName;
 
-        public Map3Tracker(Map3Object mapObj, List<Map3Semaphore> semaphoreList = null)
-            : this(new List<Map3Object>() { mapObj }, semaphoreList)
+        public Map3Tracker(MapObject mapObj, List<MapSemaphore> semaphoreList = null)
+            : this(new List<MapObject>() { mapObj }, semaphoreList)
         {
         }
 
         public Map3Tracker(
-            List<Map3Object> mapObjectList,
-            List<Map3Semaphore> semaphoreList = null)
+            List<MapObject> mapObjectList,
+            List<MapSemaphore> semaphoreList = null)
         {
             if (mapObjectList.Count < 1) throw new ArgumentOutOfRangeException();
-            semaphoreList = semaphoreList ?? new List<Map3Semaphore>();
+            semaphoreList = semaphoreList ?? new List<MapSemaphore>();
 
             InitializeComponent();
 
-            _mapObjectList = new List<Map3Object>(mapObjectList);
-            _semaphoreList = new List<Map3Semaphore>(semaphoreList);
+            _mapObjectList = new List<MapObject>(mapObjectList);
+            _semaphoreList = new List<MapSemaphore>(semaphoreList);
 
             _images = new List<Image>();
 
@@ -135,12 +135,12 @@ namespace STROOP.Map3
             ToolStripMenuItem itemHitboxCylinder = new ToolStripMenuItem("Add Tracker for Hitbox Cylinder");
             itemHitboxCylinder.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObjectOrMario()) return null;
-                    return (Map3Object)new Map3HitboxCylinderObject(posAngle);
+                    return (MapObject)new MapHitboxCylinderObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -150,12 +150,12 @@ namespace STROOP.Map3
             ToolStripMenuItem itemTangibilitySphere = new ToolStripMenuItem("Add Tracker for Tangibility Sphere");
             itemTangibilitySphere.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObjectOrMario()) return null;
-                    return (Map3Object)new Map3TangibilitySphereObject(posAngle);
+                    return (MapObject)new MapTangibilitySphereObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -165,12 +165,12 @@ namespace STROOP.Map3
             ToolStripMenuItem itemDrawDistanceSphere = new ToolStripMenuItem("Add Tracker for Draw Distance Sphere");
             itemDrawDistanceSphere.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObjectOrMario()) return null;
-                    return (Map3Object)new Map3DrawDistanceSphereObject(posAngle);
+                    return (MapObject)new MapDrawDistanceSphereObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -180,11 +180,11 @@ namespace STROOP.Map3
             ToolStripMenuItem itemCustomCylinder = new ToolStripMenuItem("Add Tracker for Custom Cylinder");
             itemCustomCylinder.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (Map3Object)new Map3CustomCylinderObject(posAngle);
+                    return (MapObject)new MapCustomCylinderObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -194,11 +194,11 @@ namespace STROOP.Map3
             ToolStripMenuItem itemCustomSphere = new ToolStripMenuItem("Add Tracker for Custom Sphere");
             itemCustomSphere.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (Map3Object)new Map3CustomSphereObject(posAngle);
+                    return (MapObject)new MapCustomSphereObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -208,12 +208,12 @@ namespace STROOP.Map3
             ToolStripMenuItem itemHome = new ToolStripMenuItem("Add Tracker for Home");
             itemHome.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (Map3Object)new Map3HomeObject(posAngle.GetObjAddress());
+                    return (MapObject)new MapHomeObject(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -223,13 +223,13 @@ namespace STROOP.Map3
             ToolStripMenuItem itemCustomCylinderForHome = new ToolStripMenuItem("Add Tracker for Custom Cylinder for Home");
             itemCustomCylinderForHome.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
                     PositionAngle homePosAngle = PositionAngle.ObjHome(posAngle.GetObjAddress());
-                    return (Map3Object)new Map3CustomCylinderObject(homePosAngle);
+                    return (MapObject)new MapCustomCylinderObject(homePosAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -239,13 +239,13 @@ namespace STROOP.Map3
             ToolStripMenuItem itemCustomSphereForHome = new ToolStripMenuItem("Add Tracker for Custom Sphere for Home");
             itemCustomSphereForHome.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
                     PositionAngle homePosAngle = PositionAngle.ObjHome(posAngle.GetObjAddress());
-                    return (Map3Object)new Map3CustomSphereObject(homePosAngle);
+                    return (MapObject)new MapCustomSphereObject(homePosAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -255,12 +255,12 @@ namespace STROOP.Map3
             ToolStripMenuItem itemFloorTriangles = new ToolStripMenuItem("Add Tracker for Floor Triangles");
             itemFloorTriangles.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (Map3Object)new Map3ObjectFloorObject(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectFloorObject(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -270,12 +270,12 @@ namespace STROOP.Map3
             ToolStripMenuItem itemWallTriangles = new ToolStripMenuItem("Add Tracker for Wall Triangles");
             itemWallTriangles.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (Map3Object)new Map3ObjectWallObject(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectWallObject(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -285,12 +285,12 @@ namespace STROOP.Map3
             ToolStripMenuItem itemCeilingTriangles = new ToolStripMenuItem("Add Tracker for Ceiling Triangles");
             itemCeilingTriangles.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (Map3Object)new Map3ObjectCeilingObject(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectCeilingObject(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -300,11 +300,11 @@ namespace STROOP.Map3
             ToolStripMenuItem itemCurrentUnit = new ToolStripMenuItem("Add Tracker for Current Unit");
             itemCurrentUnit.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (Map3Object)new Map3CurrentUnitObject(posAngle);
+                    return (MapObject)new MapCurrentUnitObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -314,11 +314,11 @@ namespace STROOP.Map3
             ToolStripMenuItem itemPath = new ToolStripMenuItem("Add Tracker for Path");
             itemPath.Click += (sender, e) =>
             {
-                List<Map3Object> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (Map3Object)new Map3PathObject(posAngle);
+                    return (MapObject)new MapPathObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 Map3Tracker tracker = new Map3Tracker(newMapObjs);
@@ -345,9 +345,9 @@ namespace STROOP.Map3
             pictureBoxPlus.Click += (sender, e) => pictureBoxPlus.ContextMenuStrip.Show(Cursor.Position);
         }
 
-        public List<Map3Object> GetMapObjectsToDisplay()
+        public List<MapObject> GetMapObjectsToDisplay()
         {
-            if (!_isVisible) return new List<Map3Object>();
+            if (!_isVisible) return new List<MapObject>();
             return _mapObjectList.FindAll(mapObj => mapObj.ShouldDisplay(
                 (MapTrackerVisibilityType)comboBoxVisibilityType.SelectedItem));
         }
@@ -507,7 +507,7 @@ namespace STROOP.Map3
             {
                 if (currentVisibilityType == MapTrackerVisibilityType.VisibleWhenThisBhvrIsLoaded)
                 {
-                    foreach (Map3Object mapObj in _mapObjectList)
+                    foreach (MapObject mapObj in _mapObjectList)
                     {
                         mapObj.NotifyStoreBehaviorCritera();
                     }

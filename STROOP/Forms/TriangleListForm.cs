@@ -12,12 +12,12 @@ namespace STROOP.Forms
 {
     public partial class TriangleListForm : Form
     {
-        private readonly Map3LevelTriangleObjectI _levelTriangleObject;
+        private readonly MapLevelTriangleObjectI _levelTriangleObject;
         private readonly List<uint> _triAddressList;
         private long _lastRemoveTime;
 
         public TriangleListForm(
-            Map3LevelTriangleObjectI levelTriangleObject, 
+            MapLevelTriangleObjectI levelTriangleObject, 
             TriangleClassification classification,
             List<uint> triAddressList)
         {

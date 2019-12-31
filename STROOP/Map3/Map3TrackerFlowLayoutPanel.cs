@@ -21,11 +21,11 @@ namespace STROOP.Map3
     {
         private readonly Object _objectLock = new Object();
 
-        private Map3Object _mapObjMap;
-        private Map3Object _mapObjBackground;
-        private Map3Object _mapObjHitboxHackTris;
+        private MapObject _mapObjMap;
+        private MapObject _mapObjBackground;
+        private MapObject _mapObjHitboxHackTris;
 
-        public void Initialize(Map3Object mapObjMap, Map3Object mapObjBackground, Map3Object mapObjHitboxHackTris)
+        public void Initialize(MapObject mapObjMap, MapObject mapObjBackground, MapObject mapObjHitboxHackTris)
         {
             _mapObjMap = mapObjMap;
             _mapObjBackground = mapObjBackground;
@@ -102,9 +102,9 @@ namespace STROOP.Map3
             _mapObjBackground.DrawOn2DControl();
             _mapObjMap.DrawOn2DControl();
             
-            List<Map3Object> listOrderOnTop = new List<Map3Object>();
-            List<Map3Object> listOrderOnBottom = new List<Map3Object>();
-            List<Map3Object> listOrderByY = new List<Map3Object>();
+            List<MapObject> listOrderOnTop = new List<MapObject>();
+            List<MapObject> listOrderOnBottom = new List<MapObject>();
+            List<MapObject> listOrderByY = new List<MapObject>();
 
             lock (_objectLock)
             {
@@ -132,25 +132,25 @@ namespace STROOP.Map3
             listOrderByY.Reverse();
             listOrderByY = listOrderByY.OrderBy(obj => obj.GetY()).ToList();
 
-            foreach (Map3Object obj in listOrderOnBottom)
+            foreach (MapObject obj in listOrderOnBottom)
             {
                 obj.DrawOn2DControl();
             }
-            foreach (Map3Object obj in listOrderByY)
+            foreach (MapObject obj in listOrderByY)
             {
                 obj.DrawOn2DControl();
             }
-            foreach (Map3Object obj in listOrderOnTop)
+            foreach (MapObject obj in listOrderOnTop)
             {
                 obj.DrawOn2DControl();
             }
         }
 
-        public void DrawOn3DControl(Map3DrawType drawType)
+        public void DrawOn3DControl(MapDrawType drawType)
         {
-            List<Map3Object> listOrderOnTop = new List<Map3Object>();
-            List<Map3Object> listOrderOnBottom = new List<Map3Object>();
-            List<Map3Object> listOrderByY = new List<Map3Object>();
+            List<MapObject> listOrderOnTop = new List<MapObject>();
+            List<MapObject> listOrderOnBottom = new List<MapObject>();
+            List<MapObject> listOrderByY = new List<MapObject>();
 
             lock (_objectLock)
             {
@@ -178,15 +178,15 @@ namespace STROOP.Map3
             listOrderByY.Reverse();
             listOrderByY = listOrderByY.OrderBy(obj => obj.GetY()).ToList();
 
-            List<Map3Object> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
+            List<MapObject> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
             listCombined.Insert(0, _mapObjBackground);
             if (!Config.Map3Gui.checkBoxMap3OptionsDisable3DHitboxHackTris.Checked)
             {
                 listCombined.Insert(0, _mapObjHitboxHackTris);
             }
 
-            List<Map3Object> listDrawType = listCombined.FindAll(obj => obj.GetDrawType() == drawType);
-            foreach (Map3Object obj in listDrawType)
+            List<MapObject> listDrawType = listCombined.FindAll(obj => obj.GetDrawType() == drawType);
+            foreach (MapObject obj in listDrawType)
             {
                 obj.DrawOn3DControl();
             }

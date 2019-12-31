@@ -241,7 +241,7 @@ namespace STROOP
 
         private void CreateManagers()
         {
-            Config.Map3Gui = new Map3Gui()
+            Config.Map3Gui = new MapGui()
             {
                 GLControl2D = glControlMap3,
                 GLControl3D = glControlMap4,
@@ -405,7 +405,7 @@ namespace STROOP
             };
 
             // Create managers
-            Config.Map3Manager = new Map3Manager(@"Config/Map3DVars.xml");
+            Config.Map3Manager = new MapManager(@"Config/Map3DVars.xml");
 
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
