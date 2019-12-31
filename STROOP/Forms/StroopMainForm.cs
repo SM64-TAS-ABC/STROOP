@@ -406,7 +406,6 @@ namespace STROOP
 
             // Create managers
             Config.Map3Manager = new Map3Manager(@"Config/Map3DVars.xml");
-            Config.Map4Manager = new Map4Manager();
 
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
@@ -605,7 +604,6 @@ namespace STROOP
                 Config.CoinManager.Update(tabControlMain.SelectedTab == tabPageCoin);
                 Config.M64Manager.Update(tabControlMain.SelectedTab == tabPageM64);
                 Config.Map3Manager.Update(tabControlMain.SelectedTab == tabPageMap3);
-                Config.Map4Manager?.Update();
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();
                 Config.HackManager.Update();
@@ -675,12 +673,12 @@ namespace STROOP
         private async void glControlMap4_Load(object sender, EventArgs e)
         {
             await Task.Run(() => {
-                while (Config.Map4Manager == null)
+                while (Config.Map3Manager == null)
                 {
                     Task.Delay(1).Wait();
                 }
             });
-            Config.Map4Manager.Load3D();
+            Config.Map3Manager.Load3D();
         }
 
         private async void glControlModelView_Load(object sender, EventArgs e)

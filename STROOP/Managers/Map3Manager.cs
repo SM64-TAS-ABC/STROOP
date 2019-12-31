@@ -14,6 +14,8 @@ using OpenTK.Graphics.OpenGL;
 using STROOP.Structs.Configurations;
 using STROOP.Map3;
 using STROOP.Controls;
+using STROOP.Map3.Map.Graphics;
+using STROOP.Map3.Map;
 
 namespace STROOP.Managers
 {
@@ -22,6 +24,7 @@ namespace STROOP.Managers
         private List<int> _currentObjIndexes = new List<int>();
 
         private bool _isLoaded2D = false;
+        private bool _isLoaded3D = false;
 
         public Map3Manager(string varFilePath)
             : base(varFilePath, Config.Map3Gui.watchVariablePanel3DVars)
@@ -37,6 +40,16 @@ namespace STROOP.Managers
 
             InitializeControls();
             InitializeSemaphores();
+        }
+
+        public void Load3D()
+        {
+            // Create new graphics control
+            Config.Map4Graphics = new Map4Graphics();
+            Config.Map4Graphics.Load();
+            Config.Map4Controller = new Map4Controller();
+            Config.Map4Camera = new Map4Camera();
+            _isLoaded3D = true;
         }
 
         private void InitializeControls()
@@ -502,6 +515,7 @@ namespace STROOP.Managers
         public override void Update(bool updateView)
         {
             if (!_isLoaded2D) return;
+            if (Config.Map3Gui.checkBoxMap3OptionsEnable3D.Checked && !_isLoaded3D) return;
 
             Config.Map3Gui.flowLayoutPanelMap3Trackers.UpdateControl();
 
@@ -512,7 +526,15 @@ namespace STROOP.Managers
             UpdateControlsBasedOnSemaphores();
             UpdateDataTab();
             UpdateVarColors();
-            Config.Map3Gui.GLControl2D.Invalidate();
+
+            if (Config.Map3Gui.checkBoxMap3OptionsEnable3D.Checked)
+            {
+                Config.Map4Controller.Update();
+            }
+            else
+            {
+                Config.Map3Gui.GLControl2D.Invalidate();
+            }
         }
 
         private void UpdateDataTab()
