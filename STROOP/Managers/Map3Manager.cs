@@ -297,7 +297,6 @@ namespace STROOP.Managers
                 SetGlobalIconSize(Config.Map3Gui.trackBarMap3OptionsGlobalIconSize.Value));
 
             // 3D Controllers
-
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
                 true,
@@ -425,6 +424,23 @@ namespace STROOP.Managers
                         -1 * vOffset,
                         useRelative);
                 });
+
+            // FOV
+            Config.Map3Gui.trackBarMapFov.ValueChanged += (sender, e) =>
+            {
+                SpecialConfig.Map3DFOV = Config.Map3Gui.trackBarMapFov.Value;
+                Config.Map3Gui.textBoxMapFov.Text = Config.Map3Gui.trackBarMapFov.Value.ToString();
+            };
+
+            Config.Map3Gui.textBoxMapFov.AddEnterAction(() =>
+            {
+                float parsed = ParsingUtilities.ParseFloat(Config.Map3Gui.textBoxMapFov.Text);
+                if (parsed > 0 && parsed < 180)
+                {
+                    SpecialConfig.Map3DFOV = parsed;
+                    ControlUtilities.SetTrackBarValueCapped(Config.Map3Gui.trackBarMapFov, parsed);
+                }
+            });
         }
 
         private void SetGlobalIconSize(float size)

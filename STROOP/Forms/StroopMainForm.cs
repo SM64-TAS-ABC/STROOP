@@ -337,6 +337,9 @@ namespace STROOP
                 groupBoxMapCameraSpherical = groupBoxMapCameraSpherical,
                 groupBoxMapFocusSpherical = groupBoxMapFocusSpherical,
                 groupBoxMapCameraFocus = groupBoxMapCameraFocus,
+
+                textBoxMapFov = textBoxMapFov,
+                trackBarMapFov = trackBarMapFov,
             };
 
             
