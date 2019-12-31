@@ -34,18 +34,18 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -732,12 +732,12 @@ namespace STROOP
             this.betterSplitContainer1 = new STROOP.BetterSplitContainer();
             this.tabControlMap3 = new System.Windows.Forms.TabControl();
             this.tabPageMap3Options = new System.Windows.Forms.TabPage();
-            this.comboBoxMap3OptionsBackground = new System.Windows.Forms.ComboBox();
-            this.comboBoxMap3OptionsLevel = new System.Windows.Forms.ComboBox();
-            this.textBoxMap3OptionsGlobalIconSize = new STROOP.BetterTextbox();
-            this.labelMap3OptionsGlobalIconSize = new System.Windows.Forms.Label();
-            this.labelMap3OptionsBackground = new System.Windows.Forms.Label();
-            this.labelMap3OptionsLevel = new System.Windows.Forms.Label();
+            this.comboBoxMapOptionsBackground = new System.Windows.Forms.ComboBox();
+            this.comboBoxMapOptionsLevel = new System.Windows.Forms.ComboBox();
+            this.textBoxMapOptionsGlobalIconSize = new STROOP.BetterTextbox();
+            this.labelMapOptionsGlobalIconSize = new System.Windows.Forms.Label();
+            this.labelMapOptionsBackground = new System.Windows.Forms.Label();
+            this.labelMapOptionsLevel = new System.Windows.Forms.Label();
             this.buttonMap3OptionsTrackMarkedObjects = new System.Windows.Forms.Button();
             this.buttonMap3OptionsTrackAllObjects = new System.Windows.Forms.Button();
             this.buttonMap3OptionsClearAllTrackers = new System.Windows.Forms.Button();
@@ -746,9 +746,9 @@ namespace STROOP
             this.checkBoxMap3OptionsEnable3D = new System.Windows.Forms.CheckBox();
             this.checkBoxMap3OptionsScaleIconSizes = new System.Windows.Forms.CheckBox();
             this.checkBoxMap3OptionsEnablePuView = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsTrackPoint = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsTrackSelf = new System.Windows.Forms.CheckBox();
-            this.checkBoxMap3OptionsTrackNextPositions = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackPoint = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackSelf = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackNextPositions = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackCurrentUnit = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackCellGridlines = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackUnitGridlines = new System.Windows.Forms.CheckBox();
@@ -758,7 +758,7 @@ namespace STROOP
             this.checkBoxMapOptionsTrackCamera = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackHolp = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackMario = new System.Windows.Forms.CheckBox();
-            this.trackBarMap3OptionsGlobalIconSize = new STROOP.TrackBarEx();
+            this.trackBarMapOptionsGlobalIconSize = new STROOP.TrackBarEx();
             this.tabPageMap3Controllers = new System.Windows.Forms.TabPage();
             this.groupBoxMap3ControllersAngle = new System.Windows.Forms.GroupBox();
             this.textBoxMap3ControllersAngleChange = new STROOP.BetterTextbox();
@@ -1874,7 +1874,7 @@ namespace STROOP
             this.betterSplitContainer1.SuspendLayout();
             this.tabControlMap3.SuspendLayout();
             this.tabPageMap3Options.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarMap3OptionsGlobalIconSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapOptionsGlobalIconSize)).BeginInit();
             this.tabPageMap3Controllers.SuspendLayout();
             this.groupBoxMap3ControllersAngle.SuspendLayout();
             this.groupBoxMap3ControllersCenter.SuspendLayout();
@@ -5792,7 +5792,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 540F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 541F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9522,7 +9522,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(430, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(433, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -9556,14 +9556,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -9584,14 +9584,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -10581,12 +10581,12 @@ namespace STROOP
             this.tabPageMap3Options.AutoScroll = true;
             this.tabPageMap3Options.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMap3Options.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap3Options.Controls.Add(this.comboBoxMap3OptionsBackground);
-            this.tabPageMap3Options.Controls.Add(this.comboBoxMap3OptionsLevel);
-            this.tabPageMap3Options.Controls.Add(this.textBoxMap3OptionsGlobalIconSize);
-            this.tabPageMap3Options.Controls.Add(this.labelMap3OptionsGlobalIconSize);
-            this.tabPageMap3Options.Controls.Add(this.labelMap3OptionsBackground);
-            this.tabPageMap3Options.Controls.Add(this.labelMap3OptionsLevel);
+            this.tabPageMap3Options.Controls.Add(this.comboBoxMapOptionsBackground);
+            this.tabPageMap3Options.Controls.Add(this.comboBoxMapOptionsLevel);
+            this.tabPageMap3Options.Controls.Add(this.textBoxMapOptionsGlobalIconSize);
+            this.tabPageMap3Options.Controls.Add(this.labelMapOptionsGlobalIconSize);
+            this.tabPageMap3Options.Controls.Add(this.labelMapOptionsBackground);
+            this.tabPageMap3Options.Controls.Add(this.labelMapOptionsLevel);
             this.tabPageMap3Options.Controls.Add(this.buttonMap3OptionsTrackMarkedObjects);
             this.tabPageMap3Options.Controls.Add(this.buttonMap3OptionsTrackAllObjects);
             this.tabPageMap3Options.Controls.Add(this.buttonMap3OptionsClearAllTrackers);
@@ -10595,9 +10595,9 @@ namespace STROOP
             this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsEnable3D);
             this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsScaleIconSizes);
             this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsEnablePuView);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackPoint);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackSelf);
-            this.tabPageMap3Options.Controls.Add(this.checkBoxMap3OptionsTrackNextPositions);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackPoint);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackSelf);
+            this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackNextPositions);
             this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCurrentUnit);
             this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCellGridlines);
             this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackUnitGridlines);
@@ -10607,7 +10607,7 @@ namespace STROOP
             this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackCamera);
             this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackHolp);
             this.tabPageMap3Options.Controls.Add(this.checkBoxMapOptionsTrackMario);
-            this.tabPageMap3Options.Controls.Add(this.trackBarMap3OptionsGlobalIconSize);
+            this.tabPageMap3Options.Controls.Add(this.trackBarMapOptionsGlobalIconSize);
             this.tabPageMap3Options.Location = new System.Drawing.Point(4, 22);
             this.tabPageMap3Options.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageMap3Options.Name = "tabPageMap3Options";
@@ -10615,60 +10615,60 @@ namespace STROOP
             this.tabPageMap3Options.TabIndex = 3;
             this.tabPageMap3Options.Text = "Options";
             // 
-            // comboBoxMap3OptionsBackground
+            // comboBoxMapOptionsBackground
             // 
-            this.comboBoxMap3OptionsBackground.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMap3OptionsBackground.Location = new System.Drawing.Point(87, 265);
-            this.comboBoxMap3OptionsBackground.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxMap3OptionsBackground.Name = "comboBoxMap3OptionsBackground";
-            this.comboBoxMap3OptionsBackground.Size = new System.Drawing.Size(236, 21);
-            this.comboBoxMap3OptionsBackground.TabIndex = 13;
+            this.comboBoxMapOptionsBackground.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMapOptionsBackground.Location = new System.Drawing.Point(87, 265);
+            this.comboBoxMapOptionsBackground.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxMapOptionsBackground.Name = "comboBoxMapOptionsBackground";
+            this.comboBoxMapOptionsBackground.Size = new System.Drawing.Size(236, 21);
+            this.comboBoxMapOptionsBackground.TabIndex = 13;
             // 
-            // comboBoxMap3OptionsLevel
+            // comboBoxMapOptionsLevel
             // 
-            this.comboBoxMap3OptionsLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMap3OptionsLevel.Location = new System.Drawing.Point(87, 240);
-            this.comboBoxMap3OptionsLevel.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxMap3OptionsLevel.Name = "comboBoxMap3OptionsLevel";
-            this.comboBoxMap3OptionsLevel.Size = new System.Drawing.Size(236, 21);
-            this.comboBoxMap3OptionsLevel.TabIndex = 13;
+            this.comboBoxMapOptionsLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMapOptionsLevel.Location = new System.Drawing.Point(87, 240);
+            this.comboBoxMapOptionsLevel.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxMapOptionsLevel.Name = "comboBoxMapOptionsLevel";
+            this.comboBoxMapOptionsLevel.Size = new System.Drawing.Size(236, 21);
+            this.comboBoxMapOptionsLevel.TabIndex = 13;
             // 
-            // textBoxMap3OptionsGlobalIconSize
+            // textBoxMapOptionsGlobalIconSize
             // 
-            this.textBoxMap3OptionsGlobalIconSize.Location = new System.Drawing.Point(228, 191);
-            this.textBoxMap3OptionsGlobalIconSize.Name = "textBoxMap3OptionsGlobalIconSize";
-            this.textBoxMap3OptionsGlobalIconSize.Size = new System.Drawing.Size(65, 20);
-            this.textBoxMap3OptionsGlobalIconSize.TabIndex = 43;
-            this.textBoxMap3OptionsGlobalIconSize.Text = "100";
-            this.textBoxMap3OptionsGlobalIconSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapOptionsGlobalIconSize.Location = new System.Drawing.Point(228, 191);
+            this.textBoxMapOptionsGlobalIconSize.Name = "textBoxMapOptionsGlobalIconSize";
+            this.textBoxMapOptionsGlobalIconSize.Size = new System.Drawing.Size(65, 20);
+            this.textBoxMapOptionsGlobalIconSize.TabIndex = 43;
+            this.textBoxMapOptionsGlobalIconSize.Text = "100";
+            this.textBoxMapOptionsGlobalIconSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // labelMap3OptionsGlobalIconSize
+            // labelMapOptionsGlobalIconSize
             // 
-            this.labelMap3OptionsGlobalIconSize.AutoSize = true;
-            this.labelMap3OptionsGlobalIconSize.Location = new System.Drawing.Point(143, 194);
-            this.labelMap3OptionsGlobalIconSize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMap3OptionsGlobalIconSize.Name = "labelMap3OptionsGlobalIconSize";
-            this.labelMap3OptionsGlobalIconSize.Size = new System.Drawing.Size(87, 13);
-            this.labelMap3OptionsGlobalIconSize.TabIndex = 44;
-            this.labelMap3OptionsGlobalIconSize.Text = "Global Icon Size:";
+            this.labelMapOptionsGlobalIconSize.AutoSize = true;
+            this.labelMapOptionsGlobalIconSize.Location = new System.Drawing.Point(143, 194);
+            this.labelMapOptionsGlobalIconSize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapOptionsGlobalIconSize.Name = "labelMapOptionsGlobalIconSize";
+            this.labelMapOptionsGlobalIconSize.Size = new System.Drawing.Size(87, 13);
+            this.labelMapOptionsGlobalIconSize.TabIndex = 44;
+            this.labelMapOptionsGlobalIconSize.Text = "Global Icon Size:";
             // 
-            // labelMap3OptionsBackground
+            // labelMapOptionsBackground
             // 
-            this.labelMap3OptionsBackground.AutoSize = true;
-            this.labelMap3OptionsBackground.Location = new System.Drawing.Point(13, 268);
-            this.labelMap3OptionsBackground.Name = "labelMap3OptionsBackground";
-            this.labelMap3OptionsBackground.Size = new System.Drawing.Size(68, 13);
-            this.labelMap3OptionsBackground.TabIndex = 12;
-            this.labelMap3OptionsBackground.Text = "Background:";
+            this.labelMapOptionsBackground.AutoSize = true;
+            this.labelMapOptionsBackground.Location = new System.Drawing.Point(13, 268);
+            this.labelMapOptionsBackground.Name = "labelMapOptionsBackground";
+            this.labelMapOptionsBackground.Size = new System.Drawing.Size(68, 13);
+            this.labelMapOptionsBackground.TabIndex = 12;
+            this.labelMapOptionsBackground.Text = "Background:";
             // 
-            // labelMap3OptionsLevel
+            // labelMapOptionsLevel
             // 
-            this.labelMap3OptionsLevel.AutoSize = true;
-            this.labelMap3OptionsLevel.Location = new System.Drawing.Point(45, 243);
-            this.labelMap3OptionsLevel.Name = "labelMap3OptionsLevel";
-            this.labelMap3OptionsLevel.Size = new System.Drawing.Size(36, 13);
-            this.labelMap3OptionsLevel.TabIndex = 12;
-            this.labelMap3OptionsLevel.Text = "Level:";
+            this.labelMapOptionsLevel.AutoSize = true;
+            this.labelMapOptionsLevel.Location = new System.Drawing.Point(45, 243);
+            this.labelMapOptionsLevel.Name = "labelMapOptionsLevel";
+            this.labelMapOptionsLevel.Size = new System.Drawing.Size(36, 13);
+            this.labelMapOptionsLevel.TabIndex = 12;
+            this.labelMapOptionsLevel.Text = "Level:";
             // 
             // buttonMap3OptionsTrackMarkedObjects
             // 
@@ -10750,136 +10750,136 @@ namespace STROOP
             this.checkBoxMap3OptionsEnablePuView.Text = "Enable PU View";
             this.checkBoxMap3OptionsEnablePuView.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsTrackPoint
+            // checkBoxMapOptionsTrackPoint
             // 
-            this.checkBoxMap3OptionsTrackPoint.AutoSize = true;
-            this.checkBoxMap3OptionsTrackPoint.Location = new System.Drawing.Point(14, 205);
-            this.checkBoxMap3OptionsTrackPoint.Name = "checkBoxMap3OptionsTrackPoint";
-            this.checkBoxMap3OptionsTrackPoint.Size = new System.Drawing.Size(81, 17);
-            this.checkBoxMap3OptionsTrackPoint.TabIndex = 19;
-            this.checkBoxMap3OptionsTrackPoint.Text = "Track Point";
-            this.checkBoxMap3OptionsTrackPoint.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsTrackPoint.AutoSize = true;
+            this.checkBoxMapOptionsTrackPoint.Location = new System.Drawing.Point(14, 205);
+            this.checkBoxMapOptionsTrackPoint.Name = "checkBoxMapOptionsTrackPoint";
+            this.checkBoxMapOptionsTrackPoint.Size = new System.Drawing.Size(81, 17);
+            this.checkBoxMapOptionsTrackPoint.TabIndex = 19;
+            this.checkBoxMapOptionsTrackPoint.Text = "Track Point";
+            this.checkBoxMapOptionsTrackPoint.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsTrackSelf
+            // checkBoxMapOptionsTrackSelf
             // 
-            this.checkBoxMap3OptionsTrackSelf.AutoSize = true;
-            this.checkBoxMap3OptionsTrackSelf.Location = new System.Drawing.Point(14, 187);
-            this.checkBoxMap3OptionsTrackSelf.Name = "checkBoxMap3OptionsTrackSelf";
-            this.checkBoxMap3OptionsTrackSelf.Size = new System.Drawing.Size(75, 17);
-            this.checkBoxMap3OptionsTrackSelf.TabIndex = 19;
-            this.checkBoxMap3OptionsTrackSelf.Text = "Track Self";
-            this.checkBoxMap3OptionsTrackSelf.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsTrackSelf.AutoSize = true;
+            this.checkBoxMapOptionsTrackSelf.Location = new System.Drawing.Point(14, 187);
+            this.checkBoxMapOptionsTrackSelf.Name = "checkBoxMapOptionsTrackSelf";
+            this.checkBoxMapOptionsTrackSelf.Size = new System.Drawing.Size(75, 17);
+            this.checkBoxMapOptionsTrackSelf.TabIndex = 19;
+            this.checkBoxMapOptionsTrackSelf.Text = "Track Self";
+            this.checkBoxMapOptionsTrackSelf.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsTrackNextPositions
+            // checkBoxMapOptionsTrackNextPositions
             // 
-            this.checkBoxMap3OptionsTrackNextPositions.AutoSize = true;
-            this.checkBoxMap3OptionsTrackNextPositions.Location = new System.Drawing.Point(14, 169);
-            this.checkBoxMap3OptionsTrackNextPositions.Name = "checkBoxMap3OptionsTrackNextPositions";
-            this.checkBoxMap3OptionsTrackNextPositions.Size = new System.Drawing.Size(124, 17);
-            this.checkBoxMap3OptionsTrackNextPositions.TabIndex = 19;
-            this.checkBoxMap3OptionsTrackNextPositions.Text = "Track Next Positions";
-            this.checkBoxMap3OptionsTrackNextPositions.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsTrackNextPositions.AutoSize = true;
+            this.checkBoxMapOptionsTrackNextPositions.Location = new System.Drawing.Point(14, 169);
+            this.checkBoxMapOptionsTrackNextPositions.Name = "checkBoxMapOptionsTrackNextPositions";
+            this.checkBoxMapOptionsTrackNextPositions.Size = new System.Drawing.Size(124, 17);
+            this.checkBoxMapOptionsTrackNextPositions.TabIndex = 19;
+            this.checkBoxMapOptionsTrackNextPositions.Text = "Track Next Positions";
+            this.checkBoxMapOptionsTrackNextPositions.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsTrackCurrentUnit
+            // checkBoxMapOptionsTrackCurrentUnit
             // 
             this.checkBoxMapOptionsTrackCurrentUnit.AutoSize = true;
             this.checkBoxMapOptionsTrackCurrentUnit.Location = new System.Drawing.Point(14, 151);
-            this.checkBoxMapOptionsTrackCurrentUnit.Name = "checkBoxMap3OptionsTrackCurrentUnit";
+            this.checkBoxMapOptionsTrackCurrentUnit.Name = "checkBoxMapOptionsTrackCurrentUnit";
             this.checkBoxMapOptionsTrackCurrentUnit.Size = new System.Drawing.Size(113, 17);
             this.checkBoxMapOptionsTrackCurrentUnit.TabIndex = 19;
             this.checkBoxMapOptionsTrackCurrentUnit.Text = "Track Current Unit";
             this.checkBoxMapOptionsTrackCurrentUnit.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsTrackCellGridlines
+            // checkBoxMapOptionsTrackCellGridlines
             // 
             this.checkBoxMapOptionsTrackCellGridlines.AutoSize = true;
             this.checkBoxMapOptionsTrackCellGridlines.Location = new System.Drawing.Point(14, 97);
-            this.checkBoxMapOptionsTrackCellGridlines.Name = "checkBoxMap3OptionsTrackCellGridlines";
+            this.checkBoxMapOptionsTrackCellGridlines.Name = "checkBoxMapOptionsTrackCellGridlines";
             this.checkBoxMapOptionsTrackCellGridlines.Size = new System.Drawing.Size(117, 17);
             this.checkBoxMapOptionsTrackCellGridlines.TabIndex = 19;
             this.checkBoxMapOptionsTrackCellGridlines.Text = "Track Cell Gridlines";
             this.checkBoxMapOptionsTrackCellGridlines.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsTrackUnitGridlines
+            // checkBoxMapOptionsTrackUnitGridlines
             // 
             this.checkBoxMapOptionsTrackUnitGridlines.AutoSize = true;
             this.checkBoxMapOptionsTrackUnitGridlines.Location = new System.Drawing.Point(14, 133);
-            this.checkBoxMapOptionsTrackUnitGridlines.Name = "checkBoxMap3OptionsTrackUnitGridlines";
+            this.checkBoxMapOptionsTrackUnitGridlines.Name = "checkBoxMapOptionsTrackUnitGridlines";
             this.checkBoxMapOptionsTrackUnitGridlines.Size = new System.Drawing.Size(119, 17);
             this.checkBoxMapOptionsTrackUnitGridlines.TabIndex = 19;
             this.checkBoxMapOptionsTrackUnitGridlines.Text = "Track Unit Gridlines";
             this.checkBoxMapOptionsTrackUnitGridlines.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsTrackCeilingTri
+            // checkBoxMapOptionsTrackCeilingTri
             // 
             this.checkBoxMapOptionsTrackCeilingTri.AutoSize = true;
             this.checkBoxMapOptionsTrackCeilingTri.Location = new System.Drawing.Point(14, 79);
-            this.checkBoxMapOptionsTrackCeilingTri.Name = "checkBoxMap3OptionsTrackCeilingTri";
+            this.checkBoxMapOptionsTrackCeilingTri.Name = "checkBoxMapOptionsTrackCeilingTri";
             this.checkBoxMapOptionsTrackCeilingTri.Size = new System.Drawing.Size(103, 17);
             this.checkBoxMapOptionsTrackCeilingTri.TabIndex = 19;
             this.checkBoxMapOptionsTrackCeilingTri.Text = "Track Ceiling Tri";
             this.checkBoxMapOptionsTrackCeilingTri.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsTrackCurrentCell
+            // checkBoxMapOptionsTrackCurrentCell
             // 
             this.checkBoxMapOptionsTrackCurrentCell.AutoSize = true;
             this.checkBoxMapOptionsTrackCurrentCell.Location = new System.Drawing.Point(14, 115);
-            this.checkBoxMapOptionsTrackCurrentCell.Name = "checkBoxMap3OptionsTrackCurrentCell";
+            this.checkBoxMapOptionsTrackCurrentCell.Name = "checkBoxMapOptionsTrackCurrentCell";
             this.checkBoxMapOptionsTrackCurrentCell.Size = new System.Drawing.Size(111, 17);
             this.checkBoxMapOptionsTrackCurrentCell.TabIndex = 19;
             this.checkBoxMapOptionsTrackCurrentCell.Text = "Track Current Cell";
             this.checkBoxMapOptionsTrackCurrentCell.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsTrackFloorTri
+            // checkBoxMapOptionsTrackFloorTri
             // 
             this.checkBoxMapOptionsTrackFloorTri.AutoSize = true;
             this.checkBoxMapOptionsTrackFloorTri.Location = new System.Drawing.Point(14, 61);
-            this.checkBoxMapOptionsTrackFloorTri.Name = "checkBoxMap3OptionsTrackFloorTri";
+            this.checkBoxMapOptionsTrackFloorTri.Name = "checkBoxMapOptionsTrackFloorTri";
             this.checkBoxMapOptionsTrackFloorTri.Size = new System.Drawing.Size(95, 17);
             this.checkBoxMapOptionsTrackFloorTri.TabIndex = 19;
             this.checkBoxMapOptionsTrackFloorTri.Text = "Track Floor Tri";
             this.checkBoxMapOptionsTrackFloorTri.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsTrackCamera
+            // checkBoxMapOptionsTrackCamera
             // 
             this.checkBoxMapOptionsTrackCamera.AutoSize = true;
             this.checkBoxMapOptionsTrackCamera.Location = new System.Drawing.Point(14, 43);
-            this.checkBoxMapOptionsTrackCamera.Name = "checkBoxMap3OptionsTrackCamera";
+            this.checkBoxMapOptionsTrackCamera.Name = "checkBoxMapOptionsTrackCamera";
             this.checkBoxMapOptionsTrackCamera.Size = new System.Drawing.Size(93, 17);
             this.checkBoxMapOptionsTrackCamera.TabIndex = 19;
             this.checkBoxMapOptionsTrackCamera.Text = "Track Camera";
             this.checkBoxMapOptionsTrackCamera.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsTrackHolp
+            // checkBoxMapOptionsTrackHolp
             // 
             this.checkBoxMapOptionsTrackHolp.AutoSize = true;
             this.checkBoxMapOptionsTrackHolp.Location = new System.Drawing.Point(14, 25);
-            this.checkBoxMapOptionsTrackHolp.Name = "checkBoxMap3OptionsTrackHolp";
+            this.checkBoxMapOptionsTrackHolp.Name = "checkBoxMapOptionsTrackHolp";
             this.checkBoxMapOptionsTrackHolp.Size = new System.Drawing.Size(86, 17);
             this.checkBoxMapOptionsTrackHolp.TabIndex = 19;
             this.checkBoxMapOptionsTrackHolp.Text = "Track HOLP";
             this.checkBoxMapOptionsTrackHolp.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMap3OptionsTrackMario
+            // checkBoxMapOptionsTrackMario
             // 
             this.checkBoxMapOptionsTrackMario.AutoSize = true;
             this.checkBoxMapOptionsTrackMario.Location = new System.Drawing.Point(14, 7);
-            this.checkBoxMapOptionsTrackMario.Name = "checkBoxMap3OptionsTrackMario";
+            this.checkBoxMapOptionsTrackMario.Name = "checkBoxMapOptionsTrackMario";
             this.checkBoxMapOptionsTrackMario.Size = new System.Drawing.Size(83, 17);
             this.checkBoxMapOptionsTrackMario.TabIndex = 19;
             this.checkBoxMapOptionsTrackMario.Text = "Track Mario";
             this.checkBoxMapOptionsTrackMario.UseVisualStyleBackColor = true;
             // 
-            // trackBarMap3OptionsGlobalIconSize
+            // trackBarMapOptionsGlobalIconSize
             // 
-            this.trackBarMap3OptionsGlobalIconSize.Location = new System.Drawing.Point(174, 215);
-            this.trackBarMap3OptionsGlobalIconSize.Margin = new System.Windows.Forms.Padding(0);
-            this.trackBarMap3OptionsGlobalIconSize.Maximum = 100;
-            this.trackBarMap3OptionsGlobalIconSize.Name = "trackBarMap3OptionsGlobalIconSize";
-            this.trackBarMap3OptionsGlobalIconSize.Size = new System.Drawing.Size(119, 45);
-            this.trackBarMap3OptionsGlobalIconSize.TabIndex = 42;
-            this.trackBarMap3OptionsGlobalIconSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarMap3OptionsGlobalIconSize.Value = 100;
+            this.trackBarMapOptionsGlobalIconSize.Location = new System.Drawing.Point(174, 215);
+            this.trackBarMapOptionsGlobalIconSize.Margin = new System.Windows.Forms.Padding(0);
+            this.trackBarMapOptionsGlobalIconSize.Maximum = 100;
+            this.trackBarMapOptionsGlobalIconSize.Name = "trackBarMapOptionsGlobalIconSize";
+            this.trackBarMapOptionsGlobalIconSize.Size = new System.Drawing.Size(119, 45);
+            this.trackBarMapOptionsGlobalIconSize.TabIndex = 42;
+            this.trackBarMapOptionsGlobalIconSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarMapOptionsGlobalIconSize.Value = 100;
             // 
             // tabPageMap3Controllers
             // 
@@ -11437,14 +11437,14 @@ namespace STROOP
             this.tabPageMap33DVars.TabIndex = 4;
             this.tabPageMap33DVars.Text = "3D Vars";
             // 
-            // watchVariablePanel3DVars
+            // watchVariablePanelMap3DVars
             // 
             this.watchVariablePanelMap3DVars.AutoScroll = true;
             this.watchVariablePanelMap3DVars.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelMap3DVars.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.watchVariablePanelMap3DVars.Location = new System.Drawing.Point(3, 3);
             this.watchVariablePanelMap3DVars.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelMap3DVars.Name = "watchVariablePanel3DVars";
+            this.watchVariablePanelMap3DVars.Name = "watchVariablePanelMap3DVars";
             this.watchVariablePanelMap3DVars.Padding = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelMap3DVars.Size = new System.Drawing.Size(339, 284);
             this.watchVariablePanelMap3DVars.TabIndex = 6;
@@ -12243,38 +12243,38 @@ namespace STROOP
             this.buttonMapCameraPositionXnZn.Text = "X-Z-";
             this.buttonMapCameraPositionXnZn.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanelMap3Trackers
+            // flowLayoutPanelMapTrackers
             // 
             this.flowLayoutPanelMapTrackers.AutoScroll = true;
             this.flowLayoutPanelMapTrackers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelMapTrackers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelMapTrackers.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelMapTrackers.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanelMapTrackers.Name = "flowLayoutPanelMap3Trackers";
+            this.flowLayoutPanelMapTrackers.Name = "flowLayoutPanelMapTrackers";
             this.flowLayoutPanelMapTrackers.Size = new System.Drawing.Size(355, 140);
             this.flowLayoutPanelMapTrackers.TabIndex = 0;
             this.flowLayoutPanelMapTrackers.WrapContents = false;
             // 
-            // glControlMap4
+            // glControlMap3D
             // 
             this.glControlMap3D.BackColor = System.Drawing.Color.Black;
             this.glControlMap3D.Dock = System.Windows.Forms.DockStyle.Fill;
             this.glControlMap3D.Location = new System.Drawing.Point(0, 0);
             this.glControlMap3D.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.glControlMap3D.Name = "glControlMap4";
+            this.glControlMap3D.Name = "glControlMap3D";
             this.glControlMap3D.Size = new System.Drawing.Size(555, 461);
             this.glControlMap3D.TabIndex = 1;
             this.glControlMap3D.Visible = false;
             this.glControlMap3D.VSync = false;
             this.glControlMap3D.Load += new System.EventHandler(this.glControlMap4_Load);
             // 
-            // glControlMap3
+            // glControlMap2D
             // 
             this.glControlMap2D.BackColor = System.Drawing.Color.Black;
             this.glControlMap2D.Dock = System.Windows.Forms.DockStyle.Fill;
             this.glControlMap2D.Location = new System.Drawing.Point(0, 0);
             this.glControlMap2D.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.glControlMap2D.Name = "glControlMap3";
+            this.glControlMap2D.Name = "glControlMap2D";
             this.glControlMap2D.Size = new System.Drawing.Size(555, 461);
             this.glControlMap2D.TabIndex = 0;
             this.glControlMap2D.VSync = false;
@@ -12590,7 +12590,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 697;
+            this.splitContainerMemory.SplitterDistance = 700;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12631,7 +12631,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(697, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(700, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -12848,7 +12848,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(697, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(700, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -12877,7 +12877,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(596, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(599, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12890,7 +12890,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(209, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(206, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -14044,7 +14044,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(238, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(221, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -14076,7 +14076,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(232, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(215, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -14132,7 +14132,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(232, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(215, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -16384,14 +16384,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -16411,46 +16411,46 @@ namespace STROOP
             // 
             // rngIndex
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle16;
             this.rngIndex.HeaderText = "RNG Index";
             this.rngIndex.MinimumWidth = 2;
             this.rngIndex.Name = "rngIndex";
             // 
             // rngValue
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle17;
             this.rngValue.HeaderText = "RNG Value";
             this.rngValue.MinimumWidth = 2;
             this.rngValue.Name = "rngValue";
             // 
             // rngToGo
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle18;
             this.rngToGo.HeaderText = "RNG To Go";
             this.rngToGo.MinimumWidth = 2;
             this.rngToGo.Name = "rngToGo";
             // 
             // coinHSpeed
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle19;
             this.coinHSpeed.HeaderText = "Coin HSpeed";
             this.coinHSpeed.Name = "coinHSpeed";
             // 
             // coinVSpeed
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle20;
             this.coinVSpeed.HeaderText = "Coin VSpeed";
             this.coinVSpeed.Name = "coinVSpeed";
             // 
             // coinAngle
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle21;
             this.coinAngle.HeaderText = "Coin Angle";
             this.coinAngle.MinimumWidth = 2;
             this.coinAngle.Name = "coinAngle";
@@ -18739,7 +18739,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -19923,7 +19923,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(33, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(34, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -20382,14 +20382,14 @@ namespace STROOP
             this.dataGridViewSearch.AllowUserToOrderColumns = true;
             this.dataGridViewSearch.AllowUserToResizeRows = false;
             this.dataGridViewSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Address,
@@ -20404,8 +20404,8 @@ namespace STROOP
             // 
             // Address
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Address.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Address.DefaultCellStyle = dataGridViewCellStyle23;
             this.Address.HeaderText = "Address";
             this.Address.MinimumWidth = 2;
             this.Address.Name = "Address";
@@ -20413,8 +20413,8 @@ namespace STROOP
             // 
             // Value
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Value.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Value.DefaultCellStyle = dataGridViewCellStyle24;
             this.Value.HeaderText = "Value";
             this.Value.MinimumWidth = 2;
             this.Value.Name = "Value";
@@ -21054,7 +21054,7 @@ namespace STROOP
             this.tabControlMap3.ResumeLayout(false);
             this.tabPageMap3Options.ResumeLayout(false);
             this.tabPageMap3Options.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarMap3OptionsGlobalIconSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapOptionsGlobalIconSize)).EndInit();
             this.tabPageMap3Controllers.ResumeLayout(false);
             this.groupBoxMap3ControllersAngle.ResumeLayout(false);
             this.groupBoxMap3ControllersAngle.PerformLayout();
@@ -22680,10 +22680,10 @@ namespace STROOP
         private BetterSplitContainer betterSplitContainer1;
         private TabControl tabControlMap3;
         private TabPage tabPageMap3Options;
-        private ComboBox comboBoxMap3OptionsBackground;
-        private ComboBox comboBoxMap3OptionsLevel;
-        private Label labelMap3OptionsBackground;
-        private Label labelMap3OptionsLevel;
+        private ComboBox comboBoxMapOptionsBackground;
+        private ComboBox comboBoxMapOptionsLevel;
+        private Label labelMapOptionsBackground;
+        private Label labelMapOptionsLevel;
         private Button buttonMap3OptionsTrackAllObjects;
         private Button buttonMap3OptionsClearAllTrackers;
         private Button buttonMap3OptionsAddNewTracker;
@@ -22741,13 +22741,13 @@ namespace STROOP
         private CheckBox checkBoxMapOptionsTrackUnitGridlines;
         private CheckBox checkBoxMapOptionsTrackCurrentCell;
         private CheckBox checkBoxMap3OptionsEnablePuView;
-        private CheckBox checkBoxMap3OptionsTrackPoint;
-        private CheckBox checkBoxMap3OptionsTrackSelf;
-        private CheckBox checkBoxMap3OptionsTrackNextPositions;
-        private Label labelMap3OptionsGlobalIconSize;
-        private BetterTextbox textBoxMap3OptionsGlobalIconSize;
+        private CheckBox checkBoxMapOptionsTrackPoint;
+        private CheckBox checkBoxMapOptionsTrackSelf;
+        private CheckBox checkBoxMapOptionsTrackNextPositions;
+        private Label labelMapOptionsGlobalIconSize;
+        private BetterTextbox textBoxMapOptionsGlobalIconSize;
         private CheckBox checkBoxMap3OptionsScaleIconSizes;
-        private TrackBarEx trackBarMap3OptionsGlobalIconSize;
+        private TrackBarEx trackBarMapOptionsGlobalIconSize;
         private BetterTextbox textBoxMap3ControllersScaleChange2;
         private Button buttonMap3ControllersScaleDivide;
         private Button buttonMap3ControllersScaleTimes;
