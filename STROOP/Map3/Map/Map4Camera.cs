@@ -1,5 +1,6 @@
 ﻿using OpenTK;
 using STROOP.Extensions;
+using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,6 @@ namespace STROOP.Map3.Map.Graphics
 {
     public class Map4Camera
     {
-        Map4Graphics _graphics;
         public Vector3 Position { get; set; }
 
         private float _fov = (float)Math.PI / 4.0f;
@@ -30,16 +30,15 @@ namespace STROOP.Map3.Map.Graphics
 
         public Matrix4 Matrix => GetCameraMatrix();
 
-        public Map4Camera(Map4Graphics graphics)
+        public Map4Camera()
         {
-            _graphics = graphics;
-            graphics.OnSizeChanged += (sender, e) => UpdateProjection();
+            Config.Map4Graphics.OnSizeChanged += (sender, e) => UpdateProjection();
             UpdateProjection();
         }
 
         private void UpdateProjection()
         {
-            _projection = Matrix4.CreatePerspectiveFieldOfView(FOV, _graphics.AspectRatio, 0.1f, 0x8000);
+            _projection = Matrix4.CreatePerspectiveFieldOfView(FOV, Config.Map4Graphics.AspectRatio, 0.1f, 0x8000);
         }
 
         public void SetLookTarget(Vector3 target, Vector3 up)

@@ -30,7 +30,7 @@ namespace STROOP.Managers
             // Create new graphics control
             Config.Map4Graphics = new Map4Graphics(Config.Map3Gui.GLControl3D);
             Config.Map4Graphics.Load();
-            Config.Map4Controller = new Map4Controller(Config.Map4Graphics);
+            Config.Map4Controller = new Map4Controller();
 
             IsLoaded = true;
 

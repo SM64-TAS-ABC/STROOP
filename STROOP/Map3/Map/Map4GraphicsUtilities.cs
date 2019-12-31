@@ -2,6 +2,7 @@
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using STROOP.Extensions;
+using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,15 +16,11 @@ namespace STROOP.Map3.Map.Graphics
 {
     public class Map4GraphicsUtilities
     {
-        Map4Graphics _graphics;
-
         public int WhiteTexture { get; }
         private readonly byte[] _whiteTexData = new byte[] { 0xFF };
 
-        public Map4GraphicsUtilities(Map4Graphics graphics)
+        public Map4GraphicsUtilities()
         {
-            _graphics = graphics;
-
             WhiteTexture = GL.GenTexture();
             GL.BindTexture(TextureTarget.Texture2D, WhiteTexture);
             GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 1, 1, 0, OpenTK.Graphics.OpenGL.PixelFormat.Luminance, PixelType.UnsignedByte, _whiteTexData);
@@ -31,7 +28,7 @@ namespace STROOP.Map3.Map.Graphics
 
         public Vector3 GetPositionOnViewFromCoordinate(Vector3 pos)
         {
-            Vector4 vec = Vector4.Transform(new Vector4(pos, 1), _graphics.Camera.Matrix);
+            Vector4 vec = Vector4.Transform(new Vector4(pos, 1), Config.Map4Graphics.Camera.Matrix);
             vec.X /= vec.W;
             vec.Y /= vec.W;
             vec.Z = 0;

@@ -34,8 +34,7 @@ namespace STROOP.Map3.Map.Graphics
 
         public event EventHandler OnSizeChanged;
 
-        Matrix4 _identityView = Matrix4.Identity;
-        Object _mapItemsLock = new object();
+        object _mapItemsLock = new object();
         public GLControl Control { get; }
 
         bool _error = false;
@@ -79,7 +78,7 @@ namespace STROOP.Map3.Map.Graphics
             GL.Viewport(Control.DisplayRectangle);
 
             // Create utilties for GraphicsItems to use
-            Utilities = new Map4GraphicsUtilities(this);
+            Utilities = new Map4GraphicsUtilities();
 
             Control.Paint += OnPaint;
             Control.Resize += OnResize;

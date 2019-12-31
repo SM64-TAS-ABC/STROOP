@@ -32,25 +32,22 @@ namespace STROOP.Map3.Map
         public float MapScale;
         public PointF MapCenter;
 
-        Map4Graphics _graphics;
         Map4Camera _perspectiveCamera;
 
-        public Map4Controller(Map4Graphics graphics)
+        public Map4Controller()
         {
-            _graphics = graphics;
-            _perspectiveCamera = new Map4Camera(graphics);
+            _perspectiveCamera = new Map4Camera();
         }
 
         public void Update()
         {
             UpdateCamera();
-
-            _graphics.Invalidate();
+            Config.Map4Graphics.Invalidate();
         }
 
         public void UpdateCamera()
         {
-            _graphics.Camera = _perspectiveCamera;
+            Config.Map4Graphics.Camera = _perspectiveCamera;
             CameraGameUpdate();
         }
 
