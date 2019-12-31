@@ -46,6 +46,68 @@ namespace STROOP.Map3
 
         public override void DrawOn2DControl()
         {
+            List<(float x, float y, float z, float angle, int tex)> data = GetData();
+            data.Reverse();
+            foreach (var dataPoint in data)
+            {
+                (float x, float y, float z, float angle, int tex) = dataPoint;
+                (float x, float z) positionOnControl = Map3Utilities.ConvertCoordsForControl(x, z);
+                float angleDegrees = Rotates ? Map3Utilities.ConvertAngleForControl(angle) : 0;
+                SizeF size = Map3Utilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size);
+                PointF point = new PointF(positionOnControl.x, positionOnControl.z);
+                Map3Utilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
+            }
+        }
+
+        public override void DrawOn3DControl()
+        {
+            /*
+            public  positions = GetNextPositions();
+
+            Map4Vertex[] vertices = GetVertices();
+            int vertexBuffer = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Map4Vertex.Size),
+                vertices, BufferUsageHint.StaticDraw);
+            GL.BindTexture(TextureTarget.Texture2D, TextureId);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
+            Config.Map4Graphics.BindVertices();
+            GL.DrawArrays(PrimitiveType.Triangles, 0, vertices.Length);
+            GL.DeleteBuffer(vertexBuffer);
+            */
+        }
+
+        public List<(float x, float y, float z, float angle, int tex)> GetData()
+        {
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioYSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
+            float marioHSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+
+            List<(float x, float z)> points2D = Enumerable.Range(0, (int)(_numFrames * 4)).ToList()
+                .ConvertAll(index => 0.25 + index / 4.0)
+                .ConvertAll(frameStep => ((float x, float z))MoreMath.AddVectorToPoint(
+                    frameStep * marioHSpeed, marioAngle, marioX, marioZ));
+
+            int fullStepTex = _useColoredMarios ? _blueMarioTex : _redMarioTex;
+            int quarterStepTex = _useColoredMarios ? _orangeMarioText : _redMarioTex;
+            List<(float x, float y, float z, float angle, int tex)> data =
+                new List<(float x, float y, float z, float angle, int tex)>();
+            for (int i = 0; i < points2D.Count; i++)
+            {
+                bool isFullStep = i % 4 == 3;
+                if (!isFullStep && !_showQuarterSteps) continue;
+                (float x, float z) = points2D[i];
+                int tex = isFullStep ? fullStepTex : quarterStepTex;
+                data.Add((x, marioY, z, marioAngle, tex));
+            }
+            return data;
+        }
+
+        public override void Update()
+        {
             if (_redMarioTex == -1)
             {
                 _redMarioTex = Map3Utilities.LoadTexture(
@@ -60,31 +122,6 @@ namespace STROOP.Map3
             {
                 _orangeMarioText = Map3Utilities.LoadTexture(
                     Config.ObjectAssociations.OrangeMarioMapImage as Bitmap);
-            }
-
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            float marioHSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-            List<(float, float)> positions =
-                Enumerable.Range(0, (int)(_numFrames * 4)).ToList()
-                .ConvertAll(index => 0.25 + index / 4.0)
-                .ConvertAll(frameStep => ((float, float))MoreMath.AddVectorToPoint(
-                    frameStep * marioHSpeed, marioAngle, marioX, marioZ));
-            List<(float, float)> positionsOnControl = positions.ConvertAll(
-                pos => Map3Utilities.ConvertCoordsForControl(pos.Item1, pos.Item2));
-
-            float angleDegrees = Rotates ? Map3Utilities.ConvertAngleForControl(marioAngle) : 0;
-            SizeF size = Map3Utilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size);
-            int fullStepTex = _useColoredMarios ? _blueMarioTex : _redMarioTex;
-            int quarterStepTex = _useColoredMarios ? _orangeMarioText : _redMarioTex;
-            for (int i = positionsOnControl.Count - 1; i >= 0; i--)
-            {
-                bool isFullStep = i % 4 == 3;
-                if (!isFullStep && !_showQuarterSteps) continue;
-                int tex = isFullStep ? fullStepTex : quarterStepTex;
-                PointF point = new PointF(positionsOnControl[i].Item1, positionsOnControl[i].Item2);
-                Map3Utilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
             }
         }
 
@@ -135,11 +172,6 @@ namespace STROOP.Map3
         public override Map3DrawType GetDrawType()
         {
             return Map3DrawType.Overlay;
-        }
-
-        public override void DrawOn3DControl()
-        {
-            // TODO(Map3): fill this in
         }
     }
 }
