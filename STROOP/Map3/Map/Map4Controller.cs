@@ -71,42 +71,8 @@ namespace STROOP.Map3.Map
 
         public void UpdateCamera()
         {
-            IMap4Camera camera = null;
-
-            // Select camera type
-            switch (CameraMode)
-            {
-                case MapCameraMode.TopDown:
-                    camera = _topCamera;
-                    break;
-
-                case MapCameraMode.Fly:
-                    camera = _perspectiveCamera;
-                    break;
-
-                case MapCameraMode.Game:
-                    camera = _perspectiveCamera;
-                    break;
-            }
-
-            // Update camera
-            if (_graphics.Camera != camera)
-                _graphics.Camera = camera;
-
-            switch (CameraMode)
-            {
-                case MapCameraMode.TopDown:
-                    CameraTopDownUpdate();
-                    break;
-
-                case MapCameraMode.Fly:
-                    //CameraFlyUpdate();
-                    break;
-
-                case MapCameraMode.Game:
-                    CameraGameUpdate();
-                    break;
-            }
+            _graphics.Camera = _perspectiveCamera;
+            CameraGameUpdate();
         }
 
         public void CameraGameUpdate()
