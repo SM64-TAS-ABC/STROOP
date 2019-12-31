@@ -164,35 +164,35 @@ namespace STROOP.Managers
             //}
         }
 
-        private void UpdateBasedOnObjectsSelectedOnMap()
-        {
-            // Determine which obj slots have been checked/unchecked since the last update
-            List<int> currentSm64ObjIndexes = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
-                .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
-                .FindAll(address => address.HasValue)
-                .ConvertAll(address => address.Value);
-            List<int> toBeRemovedIndexes = _currentMapSm64ObjIndexes.FindAll(i => !currentSm64ObjIndexes.Contains(i));
-            List<int> toBeAddedIndexes = currentSm64ObjIndexes.FindAll(i => !_currentMapSm64ObjIndexes.Contains(i));
-            _currentMapSm64ObjIndexes = currentSm64ObjIndexes;
+        //private void UpdateBasedOnObjectsSelectedOnMap()
+        //{
+        //    // Determine which obj slots have been checked/unchecked since the last update
+        //    List<int> currentSm64ObjIndexes = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
+        //        .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
+        //        .FindAll(address => address.HasValue)
+        //        .ConvertAll(address => address.Value);
+        //    List<int> toBeRemovedIndexes = _currentMapSm64ObjIndexes.FindAll(i => !currentSm64ObjIndexes.Contains(i));
+        //    List<int> toBeAddedIndexes = currentSm64ObjIndexes.FindAll(i => !_currentMapSm64ObjIndexes.Contains(i));
+        //    _currentMapSm64ObjIndexes = currentSm64ObjIndexes;
 
-            // Newly unchecked slots have their semaphore turned off
-            foreach (int index in toBeRemovedIndexes)
-            {
-                //MapSemaphore semaphore = MapSemaphoreManager.Objects[index];
-                //semaphore.IsUsed = false;
-            }
+        //    // Newly unchecked slots have their semaphore turned off
+        //    foreach (int index in toBeRemovedIndexes)
+        //    {
+        //        //MapSemaphore semaphore = MapSemaphoreManager.Objects[index];
+        //        //semaphore.IsUsed = false;
+        //    }
 
-            // Newly checked slots have their semaphore turned on and a tracker is created
-            foreach (int index in toBeAddedIndexes)
-            {
-                //Map4Sm64Object sm64Obj = _mapSm64Objs[index];
-                //Map4Semaphore semaphore = Map4SemaphoreManager.Objects[index];
-                //semaphore.IsUsed = true;
-                //Map4Tracker tracker = new Map4Tracker(
-                //    Config.MapGui.MapTrackerFlowLayoutPanel, new List<Map4Object>() { sm64Obj }, new List<Map4Semaphore>() { semaphore });
-                //Config.MapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
-            }
-        }
+        //    // Newly checked slots have their semaphore turned on and a tracker is created
+        //    foreach (int index in toBeAddedIndexes)
+        //    {
+        //        //Map4Sm64Object sm64Obj = _mapSm64Objs[index];
+        //        //Map4Semaphore semaphore = Map4SemaphoreManager.Objects[index];
+        //        //semaphore.IsUsed = true;
+        //        //Map4Tracker tracker = new Map4Tracker(
+        //        //    Config.MapGui.MapTrackerFlowLayoutPanel, new List<Map4Object>() { sm64Obj }, new List<Map4Semaphore>() { semaphore });
+        //        //Config.MapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
+        //    }
+        //}
 
         private void UpdateControlsBasedOnSemaphores()
         {
