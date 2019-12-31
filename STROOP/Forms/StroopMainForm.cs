@@ -603,7 +603,7 @@ namespace STROOP
                 Config.CellsManager.Update(tabControlMain.SelectedTab == tabPageCells);
                 Config.CoinManager.Update(tabControlMain.SelectedTab == tabPageCoin);
                 Config.M64Manager.Update(tabControlMain.SelectedTab == tabPageM64);
-                Config.Map3Manager.Update(tabControlMain.SelectedTab == tabPageMap3);
+                Config.Map3Manager.Update(tabControlMain.SelectedTab == tabPageMap);
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();
                 Config.HackManager.Update();

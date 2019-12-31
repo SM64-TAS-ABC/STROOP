@@ -23,7 +23,7 @@ namespace STROOP.Managers
         /// </summary>
         const int DefaultSlotSize = 36;
 
-        public enum TabType { Object, Map3, Model, Memory, Custom, TAS, CamHack, Other };
+        public enum TabType { Object, Map, Model, Memory, Custom, TAS, CamHack, Other };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex };
         public enum SelectionMethodType { Clicked, Held, StoodOn, Interaction, Used, Floor, Wall, Ceiling, Closest };
@@ -85,7 +85,7 @@ namespace STROOP.Managers
         private static readonly Dictionary<string, TabType> TabNameToTabType = new Dictionary<string, TabType>()
         {
             ["Object"] = TabType.Object,
-            ["Map3"] = TabType.Map3,
+            ["Map"] = TabType.Map,
             ["Model"] = TabType.Model,
             ["Memory"] = TabType.Memory,
             ["Custom"] = TabType.Custom,
@@ -146,7 +146,7 @@ namespace STROOP.Managers
                 {
                     case TabType.CamHack:
                         return ClickType.CamHackClick;
-                    case TabType.Map3:
+                    case TabType.Map:
                         return ClickType.Map3Click;
                     case TabType.Model:
                         return ClickType.ModelClick;
@@ -166,7 +166,7 @@ namespace STROOP.Managers
         private bool ShouldToggle(bool isCtrlKeyHeld, bool isAltKeyHeld)
         {
             bool isTogglingTab =
-                ActiveTab == TabType.Map3 ||
+                ActiveTab == TabType.Map ||
                 ActiveTab == TabType.CamHack;
             bool isToggleState = isAltKeyHeld ? true : isTogglingTab;
             return isToggleState != isCtrlKeyHeld;

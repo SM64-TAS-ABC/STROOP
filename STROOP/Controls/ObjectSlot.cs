@@ -616,7 +616,7 @@ namespace STROOP
             SelectionType selectionType;
             switch (_manager.ActiveTab)
             {
-                case TabType.Map3:
+                case TabType.Map:
                     selectionType = address.HasValue && Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses.Contains(address.Value)
                         ? SelectionType.MAP3_SELECTION
                         : SelectionType.NOT_SELECTED;
