@@ -645,19 +645,19 @@ namespace STROOP.Managers
         private static readonly List<string> inGameColoredVars = new List<string>() { };
         private static readonly List<string> cameraPosAndFocusColoredVars = new List<string>()
         {
-            "Camera X", "Camera Y", "Camera Z", "Focus X", "Focus Y", "Focus Z",
+            "Camera X", "Camera Y", "Camera Z", "Focus X", "Focus Y", "Focus Z", "FOV",
         };
         private static readonly List<string> cameraPosAndAngleColoredVars = new List<string>()
         {
-            "Camera X", "Camera Y", "Camera Z", "Camera Yaw", "Camera Pitch", "Camera Roll",
+            "Camera X", "Camera Y", "Camera Z", "Camera Yaw", "Camera Pitch", "Camera Roll", "FOV",
         };
         private static readonly List<string> followFocusRelativeAngleColoredVars = new List<string>()
         {
-            "Focus Pos PA", "Focus Angle PA", "Following Radius", "Following Y Offset", "Following Yaw",
+            "Focus Pos PA", "Focus Angle PA", "Following Radius", "Following Y Offset", "Following Yaw", "FOV",
         };
         private static readonly List<string> followFocusAbsoluteAngleColoredVars = new List<string>()
         {
-            "Focus Pos PA", "Following Radius", "Following Y Offset", "Following Yaw",
+            "Focus Pos PA", "Following Radius", "Following Y Offset", "Following Yaw", "FOV",
         };
         private static readonly Dictionary<Map3DMode, List<string>> coloredVarsMap =
             new Dictionary<Map3DMode, List<string>>()
@@ -673,8 +673,10 @@ namespace STROOP.Managers
         {
             List<string> coloredVarNames = coloredVarsMap[SpecialConfig.Map3DMode];
             _variablePanel.ColorVarsUsingFunction(
-                control => coloredVarNames.Contains(control.VarName) ?
-                ColorUtilities.GetColorFromString("Red") : SystemColors.Control);
+                control =>
+                    control.VarName == "Mode" ? ColorUtilities.GetColorFromString("Green") :
+                    coloredVarNames.Contains(control.VarName) ? ColorUtilities.GetColorFromString("Red") :
+                    SystemColors.Control);
         }
     }
 }
