@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace STROOP.Map3.Map.Graphics
 {
-    class Map4PerspectiveCamera : IMap4Camera
+    class Map4Camera : IMap4Camera
     {
         Map4Graphics _graphics;
         public Vector3 Position { get; set; }
@@ -30,7 +30,7 @@ namespace STROOP.Map3.Map.Graphics
 
         public Matrix4 Matrix => GetCameraMatrix();
 
-        public Map4PerspectiveCamera(Map4Graphics graphics)
+        public Map4Camera(Map4Graphics graphics)
         {
             _graphics = graphics;
             graphics.OnSizeChanged += (sender, e) => UpdateProjection();
