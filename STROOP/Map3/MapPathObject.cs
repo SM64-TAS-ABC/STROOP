@@ -89,7 +89,7 @@ namespace STROOP.Map3
             if (OutlineWidth == 0) return;
 
             List<(float x, float y, float z)> vertices = _dictionary.Values.ToList();
-            List<Map4Vertex[]> vertexArrayList = new List<Map4Vertex[]>();
+            List<Map3DVertex[]> vertexArrayList = new List<Map3DVertex[]>();
             for (int i = 0; i < vertices.Count - 1; i++)
             {
                 Color color = OutlineColor;
@@ -109,10 +109,10 @@ namespace STROOP.Map3
                 (float x1, float y1, float z1) = vertices[i];
                 (float x2, float y2, float z2) = vertices[i + 1];
 
-                vertexArrayList.Add(new Map4Vertex[]
+                vertexArrayList.Add(new Map3DVertex[]
                 {
-                    new Map4Vertex(new Vector3(x1, y1, z1), color),
-                    new Map4Vertex(new Vector3(x2, y2, z2), color),
+                    new Map3DVertex(new Vector3(x1, y1, z1), color),
+                    new Map3DVertex(new Vector3(x2, y2, z2), color),
                 });
             }
 
@@ -124,7 +124,7 @@ namespace STROOP.Map3
                 int buffer = GL.GenBuffer();
                 GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
-                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map4Vertex.Size), vertexes, BufferUsageHint.DynamicDraw);
+                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map3DVertex.Size), vertexes, BufferUsageHint.DynamicDraw);
                 GL.LineWidth(OutlineWidth);
                 Config.Map4Graphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Lines, 0, vertexes.Length);

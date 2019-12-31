@@ -26,8 +26,8 @@ namespace STROOP.Structs.Configurations
         public static Label DebugText;
         public static MapGraphics Map3Graphics;
         public static MapGui Map3Gui;
-        public static Map4Graphics Map4Graphics;
-        public static Map4Camera Map4Camera;
+        public static Map3DGraphics Map4Graphics;
+        public static Map3DCamera Map4Camera;
 
         public static CameraManager CameraManager;
         public static DebugManager DebugManager;

@@ -17,7 +17,7 @@ using STROOP.Utilities;
 
 namespace STROOP.Map3.Map.Graphics
 {
-    public class Map4Graphics : IDisposable
+    public class Map3DGraphics : IDisposable
     {
         const string VertexShaderPath = @"Resources\Shaders\VertexShader.glsl";
         const string FragmentShaderPath = @"Resources\Shaders\FragmentShader.glsl";
@@ -45,13 +45,13 @@ namespace STROOP.Map3.Map.Graphics
         int _glAttributeColor = 2;
         int _glAttributeTexCoords = 3;
 
-        public Map4Graphics()
+        public Map3DGraphics()
         {
         }
 
         public void Load()
         {
-            Config.Map4Camera = new Map4Camera();
+            Config.Map4Camera = new Map3DCamera();
 
             Config.Map3Gui.GLControl3D.MakeCurrent();
             Config.Map3Gui.GLControl3D.Context.LoadAll();
@@ -136,11 +136,11 @@ namespace STROOP.Map3.Map.Graphics
         public void BindVertices()
         {
             GL.EnableVertexAttribArray(_glAttributePosition);
-            GL.VertexAttribPointer(_glAttributePosition, 3, VertexAttribPointerType.Float, false, Map4Vertex.Size, Map4Vertex.IndexPosition);
+            GL.VertexAttribPointer(_glAttributePosition, 3, VertexAttribPointerType.Float, false, Map3DVertex.Size, Map3DVertex.IndexPosition);
             GL.EnableVertexAttribArray(_glAttributeColor);
-            GL.VertexAttribPointer(_glAttributeColor, 4, VertexAttribPointerType.Float, false, Map4Vertex.Size, Map4Vertex.IndexColor);
+            GL.VertexAttribPointer(_glAttributeColor, 4, VertexAttribPointerType.Float, false, Map3DVertex.Size, Map3DVertex.IndexColor);
             GL.EnableVertexAttribArray(_glAttributeTexCoords);
-            GL.VertexAttribPointer(_glAttributeTexCoords, 2, VertexAttribPointerType.Float, false, Map4Vertex.Size, Map4Vertex.IndexTexCoord);
+            GL.VertexAttribPointer(_glAttributeTexCoords, 2, VertexAttribPointerType.Float, false, Map3DVertex.Size, Map3DVertex.IndexTexCoord);
         }
 
         void OnResize(object sender, EventArgs e)

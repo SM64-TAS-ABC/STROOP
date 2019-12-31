@@ -50,8 +50,8 @@ namespace STROOP.Map3
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             List<(float x, float z)> vertexList = GetVertices();
 
-            Map4Vertex[] vertexArrayForEdges =
-                vertexList.ConvertAll(vertex => new Map4Vertex(new Vector3(
+            Map3DVertex[] vertexArrayForEdges =
+                vertexList.ConvertAll(vertex => new Map3DVertex(new Vector3(
                     vertex.x, marioY, vertex.z), OutlineColor)).ToArray();
 
             Matrix4 viewMatrix = GetModelMatrix() * Config.Map4Camera.Matrix;
@@ -60,7 +60,7 @@ namespace STROOP.Map3
             int buffer = GL.GenBuffer();
             GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
             GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
-            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArrayForEdges.Length * Map4Vertex.Size),
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArrayForEdges.Length * Map3DVertex.Size),
                 vertexArrayForEdges, BufferUsageHint.DynamicDraw);
             GL.LineWidth(OutlineWidth);
             Config.Map4Graphics.BindVertices();

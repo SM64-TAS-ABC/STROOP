@@ -35,7 +35,7 @@ namespace STROOP.Map3
             return MapDrawType.Background;
         }
 
-        private Map4Vertex[] GetVertices()
+        private Map3DVertex[] GetVertices()
         {
             float width = Config.Map3Gui.GLControl3D.Width;
             float height = Config.Map3Gui.GLControl3D.Height;
@@ -49,27 +49,27 @@ namespace STROOP.Map3
             float upperBound = 1 * heightMultiplier;
             float lowerBound = -1 * heightMultiplier;
 
-            return new Map4Vertex[]
+            return new Map3DVertex[]
             {
-                new Map4Vertex(new Vector3(leftBound, lowerBound, 0), Color4, new Vector2(0, 1)),
-                new Map4Vertex(new Vector3(rightBound, lowerBound, 0), Color4, new Vector2(1, 1)),
-                new Map4Vertex(new Vector3(leftBound, upperBound, 0), Color4, new Vector2(0, 0)),
-                new Map4Vertex(new Vector3(rightBound, upperBound, 0), Color4, new Vector2(1, 0)),
-                new Map4Vertex(new Vector3(leftBound, upperBound, 0), Color4, new Vector2(0, 0)),
-                new Map4Vertex(new Vector3(rightBound, lowerBound, 0), Color4, new Vector2(1, 1)),
+                new Map3DVertex(new Vector3(leftBound, lowerBound, 0), Color4, new Vector2(0, 1)),
+                new Map3DVertex(new Vector3(rightBound, lowerBound, 0), Color4, new Vector2(1, 1)),
+                new Map3DVertex(new Vector3(leftBound, upperBound, 0), Color4, new Vector2(0, 0)),
+                new Map3DVertex(new Vector3(rightBound, upperBound, 0), Color4, new Vector2(1, 0)),
+                new Map3DVertex(new Vector3(leftBound, upperBound, 0), Color4, new Vector2(0, 0)),
+                new Map3DVertex(new Vector3(rightBound, lowerBound, 0), Color4, new Vector2(1, 1)),
             };
         }
 
         public override void DrawOn3DControl()
         {
-            Map4Vertex[] vertices = GetVertices();
+            Map3DVertex[] vertices = GetVertices();
 
             Matrix4 viewMatrix = GetModelMatrix();
             GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
 
             int buffer = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
-            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Map4Vertex.Size),
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Map3DVertex.Size),
                 vertices, BufferUsageHint.StaticDraw);
             GL.BindTexture(TextureTarget.Texture2D, TextureId);
             GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);

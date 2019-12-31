@@ -49,7 +49,7 @@ namespace STROOP.Map3
                 return (startX + (float)relX, startY + (float)relY, startZ + (float)relZ);
             }
 
-            List<Map4Vertex[]> vertexArrayForSurfaces = new List<Map4Vertex[]>();
+            List<Map3DVertex[]> vertexArrayForSurfaces = new List<Map3DVertex[]>();
             for (int p = 0; p < phiValues.Count - 1; p++)
             {
                 float phi1 = phiValues[p];
@@ -65,8 +65,8 @@ namespace STROOP.Map3
                         GetSpherePoint(radius3D, theta2, phi2, centerX, centerY, centerZ),
                         GetSpherePoint(radius3D, theta2, phi1, centerX, centerY, centerZ),
                     };
-                    Map4Vertex[] pointsArray = pointsList.ConvertAll(
-                        vertex => new Map4Vertex(new Vector3(
+                    Map3DVertex[] pointsArray = pointsList.ConvertAll(
+                        vertex => new Map3DVertex(new Vector3(
                             vertex.x, vertex.y, vertex.z), Color4)).ToArray();
                     vertexArrayForSurfaces.Add(pointsArray);
                 }
@@ -80,7 +80,7 @@ namespace STROOP.Map3
                 int buffer = GL.GenBuffer();
                 GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
-                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map4Vertex.Size), vertexes, BufferUsageHint.DynamicDraw);
+                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map3DVertex.Size), vertexes, BufferUsageHint.DynamicDraw);
                 Config.Map4Graphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Polygon, 0, vertexes.Length);
                 GL.DeleteBuffer(buffer);

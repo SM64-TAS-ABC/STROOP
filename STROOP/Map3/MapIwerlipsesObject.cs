@@ -137,11 +137,11 @@ namespace STROOP.Map3
                 .ConvertAll(angle => GetEllipsePoint(cx, cz, sideDist, forwardDist, backwardDist, marioAngle, angle))
                 .ConvertAll(point => ((float)point.x, (float)marioStateCenter.Y, (float)point.z));
 
-            Map4Vertex[] vertexArrayForSurfaces = points.ConvertAll(
-                vertex => new Map4Vertex(new Vector3(
+            Map3DVertex[] vertexArrayForSurfaces = points.ConvertAll(
+                vertex => new Map3DVertex(new Vector3(
                     vertex.x, vertex.y, vertex.z), Color4)).ToArray();
-            Map4Vertex[] vertexArrayForEdges = points.ConvertAll(
-                vertex => new Map4Vertex(new Vector3(
+            Map3DVertex[] vertexArrayForEdges = points.ConvertAll(
+                vertex => new Map3DVertex(new Vector3(
                     vertex.x, vertex.y, vertex.z), OutlineColor)).ToArray();
 
             Matrix4 viewMatrix = GetModelMatrix() * Config.Map4Camera.Matrix;
@@ -151,7 +151,7 @@ namespace STROOP.Map3
                 int buffer = GL.GenBuffer();
                 GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
-                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArrayForSurfaces.Length * Map4Vertex.Size),
+                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArrayForSurfaces.Length * Map3DVertex.Size),
                     vertexArrayForSurfaces, BufferUsageHint.DynamicDraw);
                 Config.Map4Graphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Polygon, 0, vertexArrayForSurfaces.Length);
@@ -163,7 +163,7 @@ namespace STROOP.Map3
                 int buffer = GL.GenBuffer();
                 GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
-                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArrayForEdges.Length * Map4Vertex.Size),
+                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArrayForEdges.Length * Map3DVertex.Size),
                     vertexArrayForEdges, BufferUsageHint.DynamicDraw);
                 GL.LineWidth(OutlineWidth);
                 Config.Map4Graphics.BindVertices();

@@ -45,7 +45,7 @@ namespace STROOP.Managers
         public void Load3D()
         {
             // Create new graphics control
-            Config.Map4Graphics = new Map4Graphics();
+            Config.Map4Graphics = new Map3DGraphics();
             Config.Map4Graphics.Load();
             _isLoaded3D = true;
         }

@@ -71,10 +71,10 @@ namespace STROOP.Map3
                 Matrix4 viewMatrix = GetModelMatrix(x, y, z, angle);
                 GL.UniformMatrix4(Config.Map4Graphics.GLUniformView, false, ref viewMatrix);
 
-                Map4Vertex[] vertices = GetVertices();
+                Map3DVertex[] vertices = GetVertices();
                 int vertexBuffer = GL.GenBuffer();
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
-                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Map4Vertex.Size),
+                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Map3DVertex.Size),
                     vertices, BufferUsageHint.StaticDraw);
                 GL.BindTexture(TextureTarget.Texture2D, tex);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
@@ -101,16 +101,16 @@ namespace STROOP.Map3
                 * Matrix4.CreateTranslation(MapUtilities.GetPositionOnViewFromCoordinate(pos));
         }
         
-        private Map4Vertex[] GetVertices()
+        private Map3DVertex[] GetVertices()
         {
-            return new Map4Vertex[]
+            return new Map3DVertex[]
             {
-                new Map4Vertex(new Vector3(-1, -1, 0), Color4, new Vector2(0, 1)),
-                new Map4Vertex(new Vector3(1, -1, 0), Color4, new Vector2(1, 1)),
-                new Map4Vertex(new Vector3(-1, 1, 0), Color4, new Vector2(0, 0)),
-                new Map4Vertex(new Vector3(1, 1, 0), Color4, new Vector2(1, 0)),
-                new Map4Vertex(new Vector3(-1, 1, 0), Color4,  new Vector2(0, 0)),
-                new Map4Vertex(new Vector3(1, -1, 0), Color4, new Vector2(1, 1)),
+                new Map3DVertex(new Vector3(-1, -1, 0), Color4, new Vector2(0, 1)),
+                new Map3DVertex(new Vector3(1, -1, 0), Color4, new Vector2(1, 1)),
+                new Map3DVertex(new Vector3(-1, 1, 0), Color4, new Vector2(0, 0)),
+                new Map3DVertex(new Vector3(1, 1, 0), Color4, new Vector2(1, 0)),
+                new Map3DVertex(new Vector3(-1, 1, 0), Color4,  new Vector2(0, 0)),
+                new Map3DVertex(new Vector3(1, -1, 0), Color4, new Vector2(1, 1)),
             };
         }
 
