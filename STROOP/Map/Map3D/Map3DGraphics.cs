@@ -343,8 +343,9 @@ namespace STROOP.Map.Map3D
         private bool _isTranslating = false;
         private int _translateStartMouseX = 0;
         private int _translateStartMouseY = 0;
-        private float _translateStartCenterX = 0;
-        private float _translateStartCenterZ = 0;
+        private float _translateStartPositionX = 0;
+        private float _translateStartPositionY = 0;
+        private float _translateStartPositionZ = 0;
 
         private bool _isRotating = false;
         private int _rotateStartMouseX = 0;
@@ -360,6 +361,9 @@ namespace STROOP.Map.Map3D
                     _isTranslating = true;
                     _translateStartMouseX = e.X;
                     _translateStartMouseY = e.Y;
+                    _translateStartPositionX = SpecialConfig.Map3DCameraX;
+                    _translateStartPositionY = SpecialConfig.Map3DCameraY;
+                    _translateStartPositionZ = SpecialConfig.Map3DCameraZ;
                     break;
                 case MouseButtons.Right:
                     _isRotating = true;
@@ -388,7 +392,18 @@ namespace STROOP.Map.Map3D
         {
             if (_isTranslating)
             {
-
+                float scale = 20;
+                int pixelDiffX = e.X - _translateStartMouseX;
+                int pixelDiffY = e.Y - _translateStartMouseY;
+                float unitDiffX = pixelDiffX * scale;
+                float unitDiffY = pixelDiffY * scale;
+                (float rotX, float rotY, float rotZ) =
+                    ((float, float, float))MoreMath.TranslateRelatively(
+                        SpecialConfig.Map3DCameraYaw, SpecialConfig.Map3DCameraPitch, SpecialConfig.Map3DCameraRoll,
+                        unitDiffX, unitDiffY, 0);
+                SpecialConfig.Map3DCameraX = _translateStartPositionX - rotX;
+                SpecialConfig.Map3DCameraY = _translateStartPositionY + rotY;
+                SpecialConfig.Map3DCameraZ = _translateStartPositionZ - rotZ;
             }
 
             if (_isRotating)

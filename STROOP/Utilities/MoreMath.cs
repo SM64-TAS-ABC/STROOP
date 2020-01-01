@@ -890,5 +890,14 @@ namespace STROOP.Utilities
             }
             return builder.ToString();
         }
+
+        /** relX = how much right, relY = how much up, relZ = how much towards the camera */
+        public static (double x, double y, double z) TranslateRelatively(
+            double yaw, double pitch, double roll, double relX, double relY, double relZ)
+        {
+            // TODO: actually make this work
+            (double x, double z) = RotatePointAboutPointAnAngularDistance(relX, relZ, 0, 0, yaw);
+            return (x, relY, z);
+        }
     }
 }
