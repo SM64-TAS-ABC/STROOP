@@ -363,6 +363,11 @@ namespace STROOP.Map
         private float _translateStartCenterX = 0;
         private float _translateStartCenterZ = 0;
 
+        private bool _isRotating = false;
+        private int _rotateStartMouseX = 0;
+        private int _rotateStartMouseY = 0;
+        private float _rotateStartAngle = 0;
+
         private void OnMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             switch (e.Button)
@@ -375,6 +380,10 @@ namespace STROOP.Map
                     _translateStartCenterZ = MapViewCenterZValue;
                     break;
                 case MouseButtons.Right:
+                    _isRotating = true;
+                    _rotateStartMouseX = e.X;
+                    _rotateStartMouseY = e.Y;
+                    _rotateStartAngle = MapViewAngleValue;
                     break;
             }
         }
@@ -387,6 +396,7 @@ namespace STROOP.Map
                     _isTranslating = false;
                     break;
                 case MouseButtons.Right:
+                    _isRotating = false;
                     break;
             }
         }
@@ -402,6 +412,14 @@ namespace STROOP.Map
                 float newCenterX = _translateStartCenterX - unitDiffX;
                 float newCenterZ = _translateStartCenterZ - unitDiffY;
                 SetCustomCenter(newCenterX + "," + newCenterZ);
+            }
+
+            if (_isRotating)
+            {
+                float angleToMouse = (float)MoreMath.AngleTo_AngleUnits(
+                    _rotateStartMouseX, _rotateStartMouseY, e.X, e.Y) * -1 + 32768;
+                float newAngle = _rotateStartAngle + angleToMouse;
+                SetCustomAngle(newAngle);
             }
         }
 
