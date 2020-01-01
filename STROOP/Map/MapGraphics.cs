@@ -74,6 +74,7 @@ namespace STROOP.Map
             Config.MapGui.GLControlMap2D.MouseUp += OnMouseUp;
             Config.MapGui.GLControlMap2D.MouseMove += OnMouseMove;
             Config.MapGui.GLControlMap2D.MouseWheel += OnScroll;
+            Config.MapGui.GLControlMap2D.DoubleClick += OnDoubleClick;
             Config.MapGui.GLControlMap2D.Cursor = Cursors.Hand;
 
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
@@ -429,6 +430,13 @@ namespace STROOP.Map
         private void OnScroll(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             ChangeScale2(e.Delta > 0 ? 1 : -1, 1.1);
+        }
+
+        private void OnDoubleClick(object sender, EventArgs e)
+        {
+            Config.MapGui.radioButtonMapControllersScaleCourseDefault.Checked = true;
+            Config.MapGui.radioButtonMapControllersCenterBestFit.Checked = true;
+            Config.MapGui.radioButtonMapControllersAngle32768.Checked = true;
         }
     }
 }
