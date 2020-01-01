@@ -409,8 +409,11 @@ namespace STROOP.Map
                 int pixelDiffY = e.Y - _translateStartMouseY;
                 float unitDiffX = pixelDiffX / MapViewScaleValue;
                 float unitDiffY = pixelDiffY / MapViewScaleValue;
-                float newCenterX = _translateStartCenterX - unitDiffX;
-                float newCenterZ = _translateStartCenterZ - unitDiffY;
+                (float rotatedX, float rotatedY) = ((float, float))
+                    MoreMath.RotatePointAboutPointAnAngularDistance(
+                        unitDiffX, unitDiffY, 0, 0, MapViewAngleValue);
+                float newCenterX = _translateStartCenterX - rotatedX;
+                float newCenterZ = _translateStartCenterZ - rotatedY;
                 SetCustomCenter(newCenterX + "," + newCenterZ);
             }
 
