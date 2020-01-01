@@ -420,7 +420,14 @@ namespace STROOP.Map.Map3D
 
         private void OnScroll(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-
+            int multiplier = e.Delta > 0 ? 1 : -1;
+            (float rotX, float rotY, float rotZ) =
+                ((float, float, float))MoreMath.TranslateRelatively(
+                    SpecialConfig.Map3DCameraYaw, SpecialConfig.Map3DCameraPitch, SpecialConfig.Map3DCameraRoll,
+                    0, 0, multiplier * 100);
+            SpecialConfig.Map3DCameraX -= rotX;
+            SpecialConfig.Map3DCameraY += rotY;
+            SpecialConfig.Map3DCameraZ -= rotZ;
         }
 
         /*
