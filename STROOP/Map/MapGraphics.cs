@@ -73,6 +73,7 @@ namespace STROOP.Map
             Config.MapGui.GLControlMap2D.MouseDown += OnMouseDown;
             Config.MapGui.GLControlMap2D.MouseUp += OnMouseUp;
             Config.MapGui.GLControlMap2D.MouseMove += OnMouseMove;
+            Config.MapGui.GLControlMap2D.MouseWheel += OnScroll;
             Config.MapGui.GLControlMap2D.Cursor = Cursors.Hand;
 
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
@@ -402,6 +403,11 @@ namespace STROOP.Map
                 float newCenterZ = _translateStartCenterZ - unitDiffY;
                 SetCustomCenter(newCenterX + "," + newCenterZ);
             }
+        }
+
+        private void OnScroll(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            ChangeScale2(e.Delta > 0 ? 1 : -1, 1.1);
         }
     }
 }
