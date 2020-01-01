@@ -75,6 +75,12 @@ namespace STROOP.Map.Map3D
 
             Config.MapGui.GLControlMap3D.Paint += OnPaint;
             Config.MapGui.GLControlMap3D.Resize += OnResize;
+
+            Config.MapGui.GLControlMap2D.MouseDown += OnMouseDown;
+            Config.MapGui.GLControlMap2D.MouseUp += OnMouseUp;
+            Config.MapGui.GLControlMap2D.MouseMove += OnMouseMove;
+            Config.MapGui.GLControlMap2D.MouseWheel += OnScroll;
+            Config.MapGui.GLControlMap2D.Cursor = Cursors.Hand;
         }
 
         public void OnPaint(object sender, EventArgs e)
@@ -332,6 +338,65 @@ namespace STROOP.Map.Map3D
                 (float)MoreMath.AngleUnitsToRadians(SpecialConfig.Map3DCameraPitch),
                 (float)MoreMath.AngleUnitsToRadians(SpecialConfig.Map3DCameraRoll));
             Config.Map3DCamera.FOV = SpecialConfig.Map3DFOV / 180 * (float)Math.PI;
+        }
+
+        private bool _isTranslating = false;
+        private int _translateStartMouseX = 0;
+        private int _translateStartMouseY = 0;
+        private float _translateStartCenterX = 0;
+        private float _translateStartCenterZ = 0;
+
+        private bool _isRotating = false;
+        private int _rotateStartMouseX = 0;
+        private int _rotateStartMouseY = 0;
+        private float _rotateStartAngle = 0;
+
+        private void OnMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    _isTranslating = true;
+                    _translateStartMouseX = e.X;
+                    _translateStartMouseY = e.Y;
+                    break;
+                case MouseButtons.Right:
+                    _isRotating = true;
+                    _rotateStartMouseX = e.X;
+                    _rotateStartMouseY = e.Y;
+                    break;
+            }
+        }
+
+        private void OnMouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    _isTranslating = false;
+                    break;
+                case MouseButtons.Right:
+                    _isRotating = false;
+                    break;
+            }
+        }
+
+        private void OnMouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (_isTranslating)
+            {
+
+            }
+
+            if (_isRotating)
+            {
+
+            }
+        }
+
+        private void OnScroll(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+
         }
 
         /*
