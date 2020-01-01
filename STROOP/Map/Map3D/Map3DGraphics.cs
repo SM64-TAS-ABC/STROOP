@@ -404,7 +404,7 @@ namespace STROOP.Map.Map3D
 
                 SpecialConfig.Map3DMode = Map3DCameraMode.CameraPosAndAngle;
                 SpecialConfig.Map3DCameraX = _translateStartPositionX - rotX;
-                SpecialConfig.Map3DCameraY = _translateStartPositionY + rotY;
+                SpecialConfig.Map3DCameraY = _translateStartPositionY - rotY;
                 SpecialConfig.Map3DCameraZ = _translateStartPositionZ - rotZ;
             }
 
@@ -431,9 +431,9 @@ namespace STROOP.Map.Map3D
                     0, 0, multiplier * 100);
 
             SpecialConfig.Map3DMode = Map3DCameraMode.CameraPosAndAngle;
-            SpecialConfig.Map3DCameraX -= rotX;
+            SpecialConfig.Map3DCameraX += rotX;
             SpecialConfig.Map3DCameraY += rotY;
-            SpecialConfig.Map3DCameraZ -= rotZ;
+            SpecialConfig.Map3DCameraZ += rotZ;
         }
     }
 }

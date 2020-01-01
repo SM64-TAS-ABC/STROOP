@@ -897,39 +897,10 @@ namespace STROOP.Utilities
         public static (double x, double y, double z) TranslateRelatively(
             double yaw, double pitch, double roll, double relX, double relY, double relZ)
         {
-            float yawRadians = (float)AngleUnitsToRadians(yaw);
-            float pitchRadians = (float)AngleUnitsToRadians(pitch);
-            float rollRadians = (float)AngleUnitsToRadians(roll);
-            /*
-            Matrix4 rotation = (Matrix4.CreateRotationZ(rollRadians)
-                * Matrix4.CreateRotationX(pitchRadians)
-                * Matrix4.CreateRotationY(yawRadians + (float)Math.PI)).Inverted();
-            Matrix4 position = Matrix4.CreateTranslation((float)relX, (float)relY, (float)relZ);
-            Matrix4 result = rotation * position;
-            return (result.M11, result.M22, result.M33);
-            */
-
-            /*
-            Matrix3 rotation = (Matrix3.CreateRotationZ(rollRadians)
-                * Matrix3.CreateRotationX(pitchRadians)
-                * Matrix3.CreateRotationY(yawRadians + (float)Math.PI)).Inverted();
-            Matrix3 position = Matrix3.CreateScale((float)relX, (float)relY, (float)relZ);
-            Matrix3 result = rotation * position;
-            return (result.M11, result.M22, result.M33);
-            */
-
-            /*
-            Matrix3 rotation = Matrix3.CreateRotationZ(yawRadians)
-                * Matrix3.CreateRotationX(pitchRadians)
-                * Matrix3.CreateRotationY(rollRadians);
-            Matrix3 position = Matrix3.CreateScale((float)relX, (float)relY, (float)relZ);
-            Matrix3 result = rotation * position;
-            return (result.M11, result.M22, result.M33);
-            */
-
-            // TODO: actually make this work
-            (double x, double z) = RotatePointAboutPointAnAngularDistance(relX, relZ, 0, 0, yaw);
-            return (x, relY, z);
+            (double fx, double fy, double fz) = SphericalToEuler_AngleUnits(relZ, yaw, pitch);
+            (double sx, double sy, double sz) = SphericalToEuler_AngleUnits(relX, yaw - 16384, 0);
+            (double vx, double vy, double vz) = SphericalToEuler_AngleUnits(relY, yaw, pitch - 16384);
+            return (fx + sx + vx, fy + sy + vy, fz + sz + vz);
         }
     }
 }
