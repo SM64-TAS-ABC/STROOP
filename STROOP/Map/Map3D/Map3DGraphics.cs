@@ -80,6 +80,7 @@ namespace STROOP.Map.Map3D
             Config.MapGui.GLControlMap3D.MouseUp += OnMouseUp;
             Config.MapGui.GLControlMap3D.MouseMove += OnMouseMove;
             Config.MapGui.GLControlMap3D.MouseWheel += OnScroll;
+            Config.MapGui.GLControlMap3D.DoubleClick += OnDoubleClick;
             Config.MapGui.GLControlMap3D.Cursor = Cursors.Hand;
         }
 
@@ -434,6 +435,11 @@ namespace STROOP.Map.Map3D
             SpecialConfig.Map3DCameraX += rotX;
             SpecialConfig.Map3DCameraY += rotY;
             SpecialConfig.Map3DCameraZ += rotZ;
+        }
+
+        private void OnDoubleClick(object sender, EventArgs e)
+        {
+            SpecialConfig.Map3DMode = Map3DCameraMode.InGame;
         }
     }
 }
