@@ -76,11 +76,11 @@ namespace STROOP.Map.Map3D
             Config.MapGui.GLControlMap3D.Paint += OnPaint;
             Config.MapGui.GLControlMap3D.Resize += OnResize;
 
-            Config.MapGui.GLControlMap2D.MouseDown += OnMouseDown;
-            Config.MapGui.GLControlMap2D.MouseUp += OnMouseUp;
-            Config.MapGui.GLControlMap2D.MouseMove += OnMouseMove;
-            Config.MapGui.GLControlMap2D.MouseWheel += OnScroll;
-            Config.MapGui.GLControlMap2D.Cursor = Cursors.Hand;
+            Config.MapGui.GLControlMap3D.MouseDown += OnMouseDown;
+            Config.MapGui.GLControlMap3D.MouseUp += OnMouseUp;
+            Config.MapGui.GLControlMap3D.MouseMove += OnMouseMove;
+            Config.MapGui.GLControlMap3D.MouseWheel += OnScroll;
+            Config.MapGui.GLControlMap3D.Cursor = Cursors.Hand;
         }
 
         public void OnPaint(object sender, EventArgs e)
