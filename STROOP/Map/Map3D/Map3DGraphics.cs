@@ -349,7 +349,8 @@ namespace STROOP.Map.Map3D
         private bool _isRotating = false;
         private int _rotateStartMouseX = 0;
         private int _rotateStartMouseY = 0;
-        private float _rotateStartAngle = 0;
+        private float _rotateStartYaw = 0;
+        private float _rotateStartPitch = 0;
 
         private void OnMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -364,6 +365,8 @@ namespace STROOP.Map.Map3D
                     _isRotating = true;
                     _rotateStartMouseX = e.X;
                     _rotateStartMouseY = e.Y;
+                    _rotateStartYaw = SpecialConfig.Map3DCameraYaw;
+                    _rotateStartPitch = SpecialConfig.Map3DCameraPitch;
                     break;
             }
         }
@@ -390,7 +393,13 @@ namespace STROOP.Map.Map3D
 
             if (_isRotating)
             {
-
+                float scale = 50;
+                int pixelDiffX = e.X - _rotateStartMouseX;
+                int pixelDiffY = e.Y - _rotateStartMouseY;
+                float angleDiffX = pixelDiffX * scale;
+                float angleDiffY = pixelDiffY * scale;
+                SpecialConfig.Map3DCameraYaw = _rotateStartYaw + angleDiffX;
+                SpecialConfig.Map3DCameraPitch = _rotateStartPitch + angleDiffY;
             }
         }
 
