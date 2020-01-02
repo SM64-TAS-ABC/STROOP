@@ -300,7 +300,7 @@ namespace STROOP.Map.Map3D
                     SpecialConfig.Map3DFocusX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
                     SpecialConfig.Map3DFocusY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
                     SpecialConfig.Map3DFocusZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
-                    SpecialConfig.Map3DFOV = Config.Stream.GetSingle(CameraConfig.FOVAddress);
+                    SpecialConfig.Map3DFOV = (float)MoreMath.Clamp(Config.Stream.GetSingle(CameraConfig.FOVAddress), 1, 179);
                     break;
                 case Map3DCameraMode.CameraPosAndFocus:
                     updateCameraAngles();
