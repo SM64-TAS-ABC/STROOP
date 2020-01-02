@@ -10,6 +10,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -47,6 +48,36 @@ namespace STROOP.Map
         public override float GetY()
         {
             return (float)_posAngle.Y;
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                ToolStripMenuItem itemSetRelativeMinY = new ToolStripMenuItem("Set Relative Min Y...");
+                itemSetRelativeMinY.Click += (sender, e) =>
+                {
+                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter a number.");
+                    float? relativeMinY = ParsingUtilities.ParseFloatNullable(text);
+                    if (!relativeMinY.HasValue) return;
+                    _relativeMinY = relativeMinY.Value;
+                };
+
+                ToolStripMenuItem itemSetRelativeMaxY = new ToolStripMenuItem("Set Relative Max Y...");
+                itemSetRelativeMaxY.Click += (sender, e) =>
+                {
+                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter a number.");
+                    float? relativeMaxY = ParsingUtilities.ParseFloatNullable(text);
+                    if (!relativeMaxY.HasValue) return;
+                    _relativeMaxY = relativeMaxY.Value;
+                };
+
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemSetRelativeMinY);
+                _contextMenuStrip.Items.Add(itemSetRelativeMaxY);
+            }
+
+            return _contextMenuStrip;
         }
     }
 }
