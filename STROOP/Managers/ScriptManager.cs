@@ -13,54 +13,18 @@ namespace STROOP.Managers
 {
     public class ScriptManager : DataManager
     {
-        public ScriptManager(string varFilePath, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
+        private CheckBox _checkBoxScriptRunScript;
+        private Button _buttonScriptInstructions;
+        private RichTextBoxEx _richTextBoxScript;
+
+        public ScriptManager(string varFilePath, TabPage tabPage, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(varFilePath, watchVariablePanel)
         {
-            //SplitContainer splitContainerFile = tabControl.Controls["splitContainerPu"] as SplitContainer;
-
-            //_puController = splitContainerFile.Panel1.Controls["groupBoxPuController"] as GroupBox;
-
-            //// Pu Controller initialize and register click events
-            //_puController.Controls["buttonPuConHome"].Click += (sender, e) => PuUtilities.SetMarioPu(0, 0, 0);
-            //_puController.Controls["buttonPuConZnQpu"].Click += (sender, e) => PuUtilities.TranslateMarioPu(0, 0, -4);
-            //_puController.Controls["buttonPuConZpQpu"].Click += (sender, e) => PuUtilities.TranslateMarioPu(0, 0, 4);
-            //_puController.Controls["buttonPuConXnQpu"].Click += (sender, e) => PuUtilities.TranslateMarioPu(-4, 0, 0);
-            //_puController.Controls["buttonPuConXpQpu"].Click += (sender, e) => PuUtilities.TranslateMarioPu(4, 0, 0);
-            //_puController.Controls["buttonPuConZnPu"].Click += (sender, e) => PuUtilities.TranslateMarioPu(0, 0, -1);
-            //_puController.Controls["buttonPuConZpPu"].Click += (sender, e) => PuUtilities.TranslateMarioPu(0, 0, 1);
-            //_puController.Controls["buttonPuConXnPu"].Click += (sender, e) => PuUtilities.TranslateMarioPu(-1, 0, 0);
-            //_puController.Controls["buttonPuConXpPu"].Click += (sender, e) => PuUtilities.TranslateMarioPu(1, 0, 0);
-
-            //GroupBox groupBoxMarioPu = splitContainerFile.Panel1.Controls["groupBoxMarioPu"] as GroupBox;
-
-            //ControlUtilities.InitializeThreeDimensionController(
-            //    CoordinateSystem.Euler,
-            //    false,
-            //    groupBoxMarioPu,
-            //    groupBoxMarioPu.Controls["buttonMarioPuXn"] as Button,
-            //    groupBoxMarioPu.Controls["buttonMarioPuXp"] as Button,
-            //    groupBoxMarioPu.Controls["buttonMarioPuZn"] as Button,
-            //    groupBoxMarioPu.Controls["buttonMarioPuZp"] as Button,
-            //    groupBoxMarioPu.Controls["buttonMarioPuXnZn"] as Button,
-            //    groupBoxMarioPu.Controls["buttonMarioPuXnZp"] as Button,
-            //    groupBoxMarioPu.Controls["buttonMarioPuXpZn"] as Button,
-            //    groupBoxMarioPu.Controls["buttonMarioPuXpZp"] as Button,
-            //    groupBoxMarioPu.Controls["buttonMarioPuYp"] as Button,
-            //    groupBoxMarioPu.Controls["buttonMarioPuYn"] as Button,
-            //    groupBoxMarioPu.Controls["textBoxMarioPuXZ"] as TextBox,
-            //    groupBoxMarioPu.Controls["textBoxMarioPuY"] as TextBox,
-            //    groupBoxMarioPu.Controls["checkBoxMarioPuQpu"] as CheckBox,
-            //    (float hOffset, float vOffset, float nOffset, bool useQpu) =>
-            //    {
-            //        int hOffsetInt = ParsingUtilities.ParseInt(hOffset);
-            //        int vOffsetInt = ParsingUtilities.ParseInt(vOffset);
-            //        int nOffsetInt = ParsingUtilities.ParseInt(nOffset);
-            //        int multiplier = useQpu ? 4 : 1;
-            //        PuUtilities.TranslateMarioPu(
-            //            hOffsetInt * multiplier,
-            //            nOffsetInt * multiplier,
-            //            -1 * vOffsetInt * multiplier);
-            //    });
+            SplitContainer splitContainer = tabPage.Controls["splitContainerScript"] as SplitContainer;
+            SplitContainer splitContainerLeft = splitContainer.Panel1.Controls["splitContainerScriptLeft"] as SplitContainer;
+            _checkBoxScriptRunScript = splitContainerLeft.Panel1.Controls["checkBoxScriptRunScript"] as CheckBox;
+            _buttonScriptInstructions = splitContainerLeft.Panel1.Controls["buttonScriptInstructions"] as Button;
+            _richTextBoxScript = splitContainerLeft.Panel2.Controls["richTextBoxScript"] as RichTextBoxEx;
         }
 
         public override void Update(bool updateView)
