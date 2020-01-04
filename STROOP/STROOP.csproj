@@ -413,6 +413,8 @@
     <Compile Include="Map\Map3D\Map3DGraphics.cs" />
     <Compile Include="Map\Map3D\Map3DVertex.cs" />
     <Compile Include="Models\PanModel.cs" />
+    <Compile Include="Script\TokenScript.cs" />
+    <Compile Include="Script\Token.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
     <Compile Include="Structs\Configurations\TtcObjectConfig.cs" />
     <Compile Include="Structs\Configurations\PaintingConfig.cs" />
