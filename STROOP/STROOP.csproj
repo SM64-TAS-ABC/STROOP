@@ -332,6 +332,7 @@
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Managers\CellsManager.cs" />
     <Compile Include="Managers\MusicManager.cs" />
+    <Compile Include="Managers\ScriptManager.cs" />
     <Compile Include="Managers\SearchManager.cs" />
     <Compile Include="Managers\SoundManager.cs" />
     <Compile Include="Managers\VariableAdder.cs" />
@@ -743,6 +744,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\CellsData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\ScriptData.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

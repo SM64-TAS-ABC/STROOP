@@ -437,6 +437,7 @@ namespace STROOP
             Config.GfxManager = new GfxManager(tabPageGfx, watchVariablePanelGfx);
             Config.PaintingManager = new PaintingManager(@"Config/PaintingData.xml", watchVariablePanelPainting, tabPagePainting);
             Config.MusicManager = new MusicManager(@"Config/MusicData2.xml", watchVariablePanelMusic, tabPageMusic);
+            Config.ScriptManager = new ScriptManager(@"Config/ScriptData.xml", tabPageScript, watchVariablePanelScript);
             Config.SoundManager = new SoundManager(tabPageSound);
 
             Config.DisassemblyManager = new DisassemblyManager(tabPageDisassembly);
@@ -604,6 +605,7 @@ namespace STROOP
                 Config.CoinManager.Update(tabControlMain.SelectedTab == tabPageCoin);
                 Config.M64Manager.Update(tabControlMain.SelectedTab == tabPageM64);
                 Config.MapManager.Update(tabControlMain.SelectedTab == tabPageMap);
+                Config.ScriptManager.Update(tabControlMain.SelectedTab == tabPageScript);
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();
                 Config.HackManager.Update();

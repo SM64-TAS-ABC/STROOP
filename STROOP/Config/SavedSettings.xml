@@ -31,6 +31,7 @@
     <Tab>Options</Tab>
     <Tab>Memory</Tab>
     <Tab>Music</Tab>
+    <Tab>Script</Tab>
   </TabOrder>
   <RemovedTabs>
     <Tab>PU</Tab>

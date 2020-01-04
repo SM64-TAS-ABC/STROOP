@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VarData>
+
+  <Data type="float" offset="0x3C" base="Mario" color="Red" coord="X">Mario X</Data>
+  <Data type="float" offset="0x40" base="Mario" color="Red" coord="Y">Mario Y</Data>
+  <Data type="float" offset="0x44" base="Mario" color="Red" coord="Z">Mario Z</Data>
+  <Data type="float" offset="0x4C" base="Mario" color="Red">Mario V Speed</Data>
+  <Data type="float" offset="0x54" base="Mario" color="Red">Mario H Speed</Data>
+  <Data type="ushort" offset="0x2E" base="Mario" subclass="Angle" yaw="true" color="Red">Yaw Facing</Data>
+  <Data type="ushort" offset="0x24" base="Mario" subclass="Angle" yaw="true" color="Red">Yaw Intended</Data>
+
+  <Data type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative" color="Green">Global Timer</Data>
+  <Data type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" offsetSH="0x8038BBC0" base="Relative" color="Green">RNG Value</Data>
+  <Data base="None" specialType="RngIndex" color="Green">RNG Index</Data>
+  <Data type="ushort" offset="0x1F4" base="Camera" subclass="Angle" yaw="true" color="Green">Cent Angle</Data>
+  <Data type="sbyte" offset="0x02" base="InputCurrent" color="Green">Current X</Data>
+  <Data type="sbyte" offset="0x03" base="InputCurrent" color="Green">Current Y</Data>
+
+</VarData>
