@@ -14,13 +14,13 @@ using OpenTK.Graphics;
 
 namespace STROOP.Script
 {
-    public class BinOpNode : Node
+    public class BinaryOpNode : Node
     {
         private Node _left;
         private Token _token;
         private Node _right;
 
-        public BinOpNode(Node left, Token token, Node right)
+        public BinaryOpNode(Node left, Token token, Node right)
         {
             _left = left;
             _token = token;

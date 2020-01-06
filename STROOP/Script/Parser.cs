@@ -42,7 +42,17 @@ namespace STROOP.Script
         public Node GetFactor()
         {
             Token token = _currentToken;
-            if (token.Type == TokenType.NUMBER)
+            if (token.Type == TokenType.ADD)
+            {
+                Eat(TokenType.ADD);
+                return new UnaryOpNode(token, GetFactor());
+            }
+            else if (token.Type == TokenType.SUBTRACT)
+            {
+                Eat(TokenType.SUBTRACT);
+                return new UnaryOpNode(token, GetFactor());
+            }
+            else if (token.Type == TokenType.NUMBER)
             {
                 Eat(TokenType.NUMBER);
                 return new NumberNode(token);
@@ -72,7 +82,7 @@ namespace STROOP.Script
                 {
                     Eat(TokenType.DIVIDE);
                 }
-                node = new BinOpNode(node, token, GetFactor());
+                node = new BinaryOpNode(node, token, GetFactor());
             }
 
             return node;
@@ -94,7 +104,7 @@ namespace STROOP.Script
                 {
                     Eat(TokenType.SUBTRACT);
                 }
-                node = new BinOpNode(node, token, GetTerm());
+                node = new BinaryOpNode(node, token, GetTerm());
             }
 
             return node;
