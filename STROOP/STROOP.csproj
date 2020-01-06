@@ -413,7 +413,11 @@
     <Compile Include="Map\Map3D\Map3DGraphics.cs" />
     <Compile Include="Map\Map3D\Map3DVertex.cs" />
     <Compile Include="Models\PanModel.cs" />
+    <Compile Include="Script\Node.cs" />
+    <Compile Include="Script\NumberNode.cs" />
+    <Compile Include="Script\BinOpNode.cs" />
     <Compile Include="Script\Token.cs" />
+    <Compile Include="Script\Parser.cs" />
     <Compile Include="Script\TokenType.cs" />
     <Compile Include="Script\Tokenizer.cs" />
     <Compile Include="Script\TokenScript.cs" />
