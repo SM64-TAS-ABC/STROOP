@@ -39,12 +39,12 @@ namespace STROOP.Script
                 case TokenType.SUBTRACT:
                     {
                         (double num1, double num2) = GetBothNumbers();
-                        return num1 + num2;
+                        return num1 - num2;
                     }
                 case TokenType.MULTIPLY:
                     {
                         (double num1, double num2) = GetBothNumbers();
-                        return num1 + num2;
+                        return num1 * num2;
                     }
                 case TokenType.DIVIDE:
                     {

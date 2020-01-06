@@ -35,7 +35,9 @@ namespace STROOP.Script
                     if (token.Type == TokenType.EOF) break;
                     tokens.Add(token);
                 }
-                InfoForm.ShowValue(string.Join(",", tokens), "Tokenizer Results", tokens.Count + " tokens");
+                Parser parser = new Parser(text);
+                object result = parser.Parse().GetValue();
+                InfoForm.ShowValue(string.Join(",", tokens) + "\r\n\r\n" + result, "Tokenizer Results", tokens.Count + " tokens");
             }
             catch (Exception e)
             {
