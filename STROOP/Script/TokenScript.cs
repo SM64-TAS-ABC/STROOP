@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
 using OpenTK.Graphics;
+using STROOP.Forms;
 
 namespace STROOP.Script
 {
@@ -22,9 +23,24 @@ namespace STROOP.Script
         {
         }
 
-        public void SetScript(string script)
+        public void SetScript(string text)
         {
-            // set script
+            try
+            {
+                Tokenizer tokenizer = new Tokenizer(text);
+                List<Token> tokens = new List<Token>();
+                while (true)
+                {
+                    Token token = tokenizer.GetNextToken();
+                    if (token.Type == TokenType.EOF) break;
+                    tokens.Add(token);
+                }
+                InfoForm.ShowValue(string.Join(",", tokens), "Tokenizer Results", tokens.Count + " tokens");
+            }
+            catch (Exception e)
+            {
+                InfoForm.ShowValue(e.Message, "Error", "Error");
+            }
         }
 
         public void SetIsEnabled(bool isEnabled)

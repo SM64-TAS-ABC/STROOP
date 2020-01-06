@@ -14,8 +14,20 @@ using OpenTK.Graphics;
 
 namespace STROOP.Script
 {
-    public abstract class Token
+    public class Token
     {
-        
+        public readonly TokenType Type;
+        public readonly object Value;
+
+        public Token(TokenType type, object value)
+        {
+            Type = type;
+            Value = value;
+        }
+
+        public override string ToString()
+        {
+            return "[" + Type + "," + Value + "]";
+        }
     }
 }
