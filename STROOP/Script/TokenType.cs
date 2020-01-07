@@ -13,6 +13,10 @@ namespace STROOP.Script
     {
         EOF,
 
+        ID,
+
+        IF,
+
         NUMBER,
 
         ADD,
@@ -22,5 +26,8 @@ namespace STROOP.Script
 
         LEFT_PAREN,
         RIGHT_PAREN,
+
+        ASSIGN,
+        SEMI,
     };
 }

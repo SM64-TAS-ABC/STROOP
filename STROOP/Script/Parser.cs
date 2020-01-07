@@ -62,6 +62,7 @@ namespace STROOP.Script
                 Eat(TokenType.LEFT_PAREN);
                 Node node = GetExpression();
                 Eat(TokenType.RIGHT_PAREN);
+                return node;
             }
             throw new Exception("cannot get factor of token with type: " + token.Type);
         }

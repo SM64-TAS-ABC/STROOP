@@ -40,6 +40,16 @@ namespace STROOP.Script
             }
         }
 
+        private char? Peek()
+        {
+            int peekIndex = _index + 1;
+            if (peekIndex >= _text.Length)
+            {
+                return null;
+            }
+            return _text[peekIndex];
+        }
+
         private void SkipWhiteSpace()
         {
             while (_currentChar.HasValue && char.IsWhiteSpace(_currentChar.Value))
@@ -64,6 +74,28 @@ namespace STROOP.Script
             return parsed.Value;
         }
 
+        private static readonly Dictionary<string, Token> RESERVED_WORDS =
+            new Dictionary<string, Token>()
+            {
+                ["if"] = new Token(TokenType.IF, "if"),
+            };
+
+        private Token GetId()
+        {
+            string result = "";
+            while (_currentChar.HasValue && char.IsLetterOrDigit(_currentChar.Value))
+            {
+                result += _currentChar.Value;
+                Advance();
+            }
+
+            if (RESERVED_WORDS.ContainsKey(result))
+            {
+                return RESERVED_WORDS[result];
+            }
+            return new Token(TokenType.ID, result);
+        }
+
         public Token GetNextToken()
         {
             while (_currentChar.HasValue)
@@ -71,11 +103,29 @@ namespace STROOP.Script
                 if (char.IsWhiteSpace(_currentChar.Value))
                 {
                     SkipWhiteSpace();
+                    if (!_currentChar.HasValue) return new Token(TokenType.EOF, null);
                 }
 
                 if (char.IsDigit(_currentChar.Value))
                 {
                     return new Token(TokenType.NUMBER, GetNumber());
+                }
+
+                if (char.IsLetter(_currentChar.Value))
+                {
+                    return GetId();
+                }
+
+                if (_currentChar == '=')
+                {
+                    Advance();
+                    return new Token(TokenType.ASSIGN, "=");
+                }
+
+                if (_currentChar == ';')
+                {
+                    Advance();
+                    return new Token(TokenType.SEMI, ";");
                 }
 
                 if (_currentChar == '+')
