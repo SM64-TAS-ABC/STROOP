@@ -64,6 +64,10 @@ namespace STROOP.Script
                 Eat(TokenType.RIGHT_PAREN);
                 return node;
             }
+            else if (token.Type == TokenType.ID)
+            {
+                return GetVariable();
+            }
             throw new Exception("cannot get factor of token with type: " + token.Type);
         }
 
@@ -111,9 +115,54 @@ namespace STROOP.Script
             return node;
         }
 
+        public Node GetProgram()
+        {
+            return GetCompoundStatement();
+        }
+
+        public Node GetCompoundStatement()
+        {
+            Node node = GetStatement();
+            List<Node> results = new List<Node>() { node };
+
+            while (_currentToken.Type != TokenType.EOF)
+            {
+                results.Add(GetStatement());
+            }
+
+            return new CompoundStatementNode(results);
+        }
+
+        public Node GetStatement()
+        {
+            if (_currentToken.Type == TokenType.ID)
+            {
+                return GetAssignmentStatement();
+            }
+
+            throw new Exception("cannot start a statement with type: " + _currentToken.Type);
+        }
+
+        public Node GetAssignmentStatement()
+        {
+            Node left = GetVariable();
+            Token token = _currentToken;
+            Eat(TokenType.ASSIGN);
+            Node right = GetExpression();
+            Eat(TokenType.SEMI);
+            return new AssignNode(left, token, right);
+        }
+
+        public Node GetVariable()
+        {
+            Node node = new VarNode(_currentToken);
+            Eat(TokenType.ID);
+            return node;
+        }
+
         public Node Parse()
         {
-            return GetExpression();
+            return GetProgram();
         }
     }
 }

@@ -16,11 +16,11 @@ namespace STROOP.Script
 {
     public class CompoundStatementNode : Node
     {
-        private List<Token> _statementList;
+        private List<Node> _statementList;
 
-        public CompoundStatementNode()
+        public CompoundStatementNode(List<Node> statementList)
         {
-            _statementList = new List<Token>();
+            _statementList = new List<Node>(statementList);
         }
 
         public override object Evaluate()
