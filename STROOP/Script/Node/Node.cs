@@ -17,5 +17,10 @@ namespace STROOP.Script
     public abstract class Node
     {
         public abstract object Evaluate();
+
+        public virtual string GetName()
+        {
+            throw new Exception("GetName not implemented");
+        }
     }
 }

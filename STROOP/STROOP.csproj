@@ -420,6 +420,7 @@
     <Compile Include="Script\Node\Node.cs" />
     <Compile Include="Script\Node\NumberNode.cs" />
     <Compile Include="Script\Node\BinaryOpNode.cs" />
+    <Compile Include="Script\SymbolTable.cs" />
     <Compile Include="Script\Token.cs" />
     <Compile Include="Script\Parser.cs" />
     <Compile Include="Script\TokenType.cs" />

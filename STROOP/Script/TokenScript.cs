@@ -27,6 +27,7 @@ namespace STROOP.Script
         {
             try
             {
+                SymbolTable.Reset();
                 Tokenizer tokenizer = new Tokenizer(text);
                 List<Token> tokens = new List<Token>();
                 while (true)
@@ -37,7 +38,14 @@ namespace STROOP.Script
                 }
                 Parser parser = new Parser(text);
                 object result = parser.Parse().Evaluate();
-                InfoForm.ShowValue(string.Join(",", tokens) + "\r\n\r\n" + result, "Tokenizer Results", tokens.Count + " tokens");
+                InfoForm.ShowValue(
+                    string.Join(",", tokens)
+                        + "\r\n\r\n"
+                        + result
+                        + "\r\n\r\n"
+                        + SymbolTable.GetString(),
+                    "Tokenizer Results",
+                    tokens.Count + " tokens");
             }
             catch (Exception e)
             {

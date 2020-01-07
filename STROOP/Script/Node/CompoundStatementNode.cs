@@ -25,7 +25,12 @@ namespace STROOP.Script
 
         public override object Evaluate()
         {
-            return null;
+            List<object> values = new List<object>();
+            foreach (Node statement in _statementList)
+            {
+                values.Add(statement.Evaluate());
+            }
+            return string.Join(",", values);
         }
     }
 }

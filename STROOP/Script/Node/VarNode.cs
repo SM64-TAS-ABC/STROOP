@@ -27,6 +27,15 @@ namespace STROOP.Script
 
         public override object Evaluate()
         {
+            if (!SymbolTable.Has(_value))
+            {
+                throw new Exception("SymbolTable does not have key: " + _value);
+            }
+            return SymbolTable.Get(_value);
+        }
+
+        public override string GetName()
+        {
             return _value;
         }
     }

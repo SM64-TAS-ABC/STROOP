@@ -29,7 +29,10 @@ namespace STROOP.Script
 
         public override object Evaluate()
         {
-            return null;
+            string key = _left.GetName();
+            object value = _right.Evaluate();
+            SymbolTable.Set(key, value);
+            return (key, value);
         }
     }
 }

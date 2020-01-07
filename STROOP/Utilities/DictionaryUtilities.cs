@@ -22,5 +22,15 @@ namespace STROOP.Utilities
             });
             return reverseDictionary;
         }
+
+        public static string GetString<K,V>(Dictionary<K,V> dictionary)
+        {
+            List<string> entries = new List<string>();
+            foreach (var entry in dictionary)
+            {
+                entries.Add("(" + entry.Key + "," + entry.Value + ")");
+            }
+            return "[" + string.Join(",", entries) + "]";
+        }
     }
 }
