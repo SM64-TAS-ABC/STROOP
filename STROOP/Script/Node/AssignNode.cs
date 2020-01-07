@@ -16,11 +16,11 @@ namespace STROOP.Script
 {
     public class AssignNode : Node
     {
-        private Node _left;
+        private VarNode _left;
         private Token _token;
         private Node _right;
 
-        public AssignNode(Node left, Token token, Node right)
+        public AssignNode(VarNode left, Token token, Node right)
         {
             _left = left;
             _token = token;

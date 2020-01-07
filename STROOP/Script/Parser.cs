@@ -145,7 +145,7 @@ namespace STROOP.Script
 
         public Node GetAssignmentStatement()
         {
-            Node left = GetVariable();
+            VarNode left = GetVariable();
             Token token = _currentToken;
             Eat(TokenType.ASSIGN);
             Node right = GetExpression();
@@ -153,9 +153,9 @@ namespace STROOP.Script
             return new AssignNode(left, token, right);
         }
 
-        public Node GetVariable()
+        public VarNode GetVariable()
         {
-            Node node = new VarNode(_currentToken);
+            VarNode node = new VarNode(_currentToken);
             Eat(TokenType.ID);
             return node;
         }

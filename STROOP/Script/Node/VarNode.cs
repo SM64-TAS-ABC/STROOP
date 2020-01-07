@@ -34,7 +34,7 @@ namespace STROOP.Script
             return SymbolTable.Get(_value);
         }
 
-        public override string GetName()
+        public string GetName()
         {
             return _value;
         }
