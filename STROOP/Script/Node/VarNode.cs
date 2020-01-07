@@ -25,7 +25,7 @@ namespace STROOP.Script
             _value = _token.Value.ToString();
         }
 
-        public override object GetValue()
+        public override object Evaluate()
         {
             return _value;
         }

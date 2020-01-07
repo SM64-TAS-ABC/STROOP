@@ -27,7 +27,7 @@ namespace STROOP.Script
             _value = parsed.Value;
         }
 
-        public override object GetValue()
+        public override object Evaluate()
         {
             return _value;
         }

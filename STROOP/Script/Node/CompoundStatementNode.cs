@@ -23,7 +23,7 @@ namespace STROOP.Script
             _statementList = new List<Token>();
         }
 
-        public override object GetValue()
+        public override object Evaluate()
         {
             return null;
         }

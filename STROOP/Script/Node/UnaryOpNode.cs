@@ -25,7 +25,7 @@ namespace STROOP.Script
             _child = child;
         }
 
-        public override object GetValue()
+        public override object Evaluate()
         {
             switch (_token.Type)
             {
@@ -44,8 +44,8 @@ namespace STROOP.Script
 
         private double GetNumber()
         {
-            double? num = ParsingUtilities.ParseDoubleNullable(_child.GetValue());
-            if (!num.HasValue) throw new Exception("could not parse into number: " + _child.GetValue());
+            double? num = ParsingUtilities.ParseDoubleNullable(_child.Evaluate());
+            if (!num.HasValue) throw new Exception("could not parse into number: " + _child.Evaluate());
             return num.Value;
         }
     }

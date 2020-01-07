@@ -27,7 +27,7 @@ namespace STROOP.Script
             _right = right;
         }
 
-        public override object GetValue()
+        public override object Evaluate()
         {
             return null;
         }

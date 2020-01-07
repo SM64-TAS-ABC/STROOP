@@ -16,6 +16,6 @@ namespace STROOP.Script
 {
     public abstract class Node
     {
-        public abstract object GetValue();
+        public abstract object Evaluate();
     }
 }
