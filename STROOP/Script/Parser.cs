@@ -33,9 +33,7 @@ namespace STROOP.Script
             }
             else
             {
-                throw new Exception(
-                    "cannot eat when current token type does not match given type: "
-                    + _currentToken.Type + " vs " + type);
+                throw new Exception("expected " + type + " but found " + _currentToken.Type);
             }
         }
 

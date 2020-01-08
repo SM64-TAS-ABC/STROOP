@@ -66,10 +66,22 @@ namespace STROOP.Script
                 result += _currentChar.Value;
                 Advance();
             }
+
+            if (_currentChar == '.')
+            {
+                result += _currentChar.Value;
+                Advance();
+                while (_currentChar.HasValue && char.IsDigit(_currentChar.Value))
+                {
+                    result += _currentChar.Value;
+                    Advance();
+                }
+            }
+
             double? parsed = ParsingUtilities.ParseDoubleNullable(result);
             if (!parsed.HasValue)
             {
-                throw new Exception("failed to parse double");
+                throw new Exception("failed to parse double: " + result);
             }
             return parsed.Value;
         }
