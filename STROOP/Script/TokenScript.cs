@@ -18,6 +18,7 @@ namespace STROOP.Script
     public class TokenScript
     {
         private bool _isEnabled = false;
+        private string _text = "";
 
         public TokenScript()
         {
@@ -25,10 +26,26 @@ namespace STROOP.Script
 
         public void SetScript(string text)
         {
+            _text = text;
+        }
+
+        public void SetIsEnabled(bool isEnabled)
+        {
+            _isEnabled = isEnabled;
+        }
+
+        public void Update()
+        {
+            if (!_isEnabled) return;
+            Run();
+        }
+
+        public void Run()
+        {
             try
             {
                 SymbolTable.Reset();
-                Tokenizer tokenizer = new Tokenizer(text);
+                Tokenizer tokenizer = new Tokenizer(_text);
                 List<Token> tokens = new List<Token>();
                 while (true)
                 {
@@ -36,7 +53,7 @@ namespace STROOP.Script
                     if (token.Type == TokenType.EOF) break;
                     tokens.Add(token);
                 }
-                Parser parser = new Parser(text);
+                Parser parser = new Parser(_text);
                 object result = parser.Parse().Evaluate();
                 InfoForm.ShowValue(
                     string.Join(",", tokens)
@@ -51,18 +68,6 @@ namespace STROOP.Script
             {
                 InfoForm.ShowValue(e.Message, "Error", "Error");
             }
-        }
-
-        public void SetIsEnabled(bool isEnabled)
-        {
-            _isEnabled = isEnabled;
-        }
-
-        public void Update()
-        {
-            if (!_isEnabled) return;
-
-            // run script
         }
     }
 }

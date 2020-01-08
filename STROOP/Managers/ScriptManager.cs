@@ -15,8 +15,10 @@ namespace STROOP.Managers
 {
     public class ScriptManager : DataManager
     {
-        private CheckBox _checkBoxScriptRunScript;
+        private CheckBox _checkBoxScriptRunContinuously;
+        private Button _buttonScriptRunOnce;
         private Button _buttonScriptInstructions;
+        private Button _buttonScriptExamples;
         private RichTextBoxEx _richTextBoxScript;
 
         private TokenScript _script;
@@ -26,19 +28,28 @@ namespace STROOP.Managers
         {
             SplitContainer splitContainer = tabPage.Controls["splitContainerScript"] as SplitContainer;
             SplitContainer splitContainerLeft = splitContainer.Panel1.Controls["splitContainerScriptLeft"] as SplitContainer;
-            _checkBoxScriptRunScript = splitContainerLeft.Panel1.Controls["checkBoxScriptRunScript"] as CheckBox;
+            _checkBoxScriptRunContinuously = splitContainerLeft.Panel1.Controls["checkBoxScriptRunContinuously"] as CheckBox;
+            _buttonScriptRunOnce = splitContainerLeft.Panel1.Controls["buttonScriptRunOnce"] as Button;
             _buttonScriptInstructions = splitContainerLeft.Panel1.Controls["buttonScriptInstructions"] as Button;
+            _buttonScriptExamples = splitContainerLeft.Panel1.Controls["buttonScriptExamples"] as Button;
             _richTextBoxScript = splitContainerLeft.Panel2.Controls["richTextBoxScript"] as RichTextBoxEx;
 
             _script = new TokenScript();
 
-            _checkBoxScriptRunScript.Click += (sender, e) =>
+            _checkBoxScriptRunContinuously.Click += (sender, e) =>
             {
-                if (_checkBoxScriptRunScript.Checked)
+                if (_checkBoxScriptRunContinuously.Checked)
                 {
                     _script.SetScript(_richTextBoxScript.Text);
                 }
-                _script.SetIsEnabled(_checkBoxScriptRunScript.Checked);
+                _script.SetIsEnabled(_checkBoxScriptRunContinuously.Checked);
+                _richTextBoxScript.ReadOnly = _checkBoxScriptRunContinuously.Checked;
+            };
+
+            _buttonScriptRunOnce.Click += (sender, e) =>
+            {
+                _script.SetScript(_richTextBoxScript.Text);
+                _script.Run();
             };
 
             _buttonScriptInstructions.Click += (sender, e) =>
@@ -47,6 +58,14 @@ namespace STROOP.Managers
                     "To use the script tab, we must first implement the script tab.",
                     "Instructions",
                     "Instructions");
+            };
+
+            _buttonScriptExamples.Click += (sender, e) =>
+            {
+                InfoForm.ShowValue(
+                    "Here's where I'd put some examples... if I had any!!!",
+                    "Examples",
+                    "Examples");
             };
         }
 
