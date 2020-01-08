@@ -71,10 +71,10 @@
             // 
             // buttonOk
             // 
-            this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonOk.Location = new System.Drawing.Point(121, 155);
+            this.buttonOk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonOk.Location = new System.Drawing.Point(3, 155);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.Size = new System.Drawing.Size(311, 24);
             this.buttonOk.TabIndex = 0;
             this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
