@@ -58,6 +58,25 @@ namespace STROOP.Script
             }
         }
 
+        private void SkipSlashStarComment()
+        {
+            while (_currentChar.HasValue && !(_currentChar == '*' && Peek() == '/'))
+            {
+                Advance();
+            }
+            Advance();
+            Advance();
+        }
+
+        private void SkipSlashSlashComment()
+        {
+            while (_currentChar.HasValue && _currentChar != '\n')
+            {
+                Advance();
+            }
+            Advance();
+        }
+
         private double GetNumber()
         {
             string result = "";
@@ -113,12 +132,30 @@ namespace STROOP.Script
         {
             while (_currentChar.HasValue)
             {
+                // Perform any skips
                 if (char.IsWhiteSpace(_currentChar.Value))
                 {
                     SkipWhiteSpace();
-                    if (!_currentChar.HasValue) return new Token(TokenType.EOF, null);
+                    continue;
                 }
 
+                if (_currentChar == '/' && Peek() == '*')
+                {
+                    Advance();
+                    Advance();
+                    SkipSlashStarComment();
+                    continue;
+                }
+
+                if (_currentChar == '/' && Peek() == '/')
+                {
+                    Advance();
+                    Advance();
+                    SkipSlashSlashComment();
+                    continue;
+                }
+
+                // Parse the current character
                 if (char.IsDigit(_currentChar.Value))
                 {
                     return new Token(TokenType.NUMBER, GetNumber());
