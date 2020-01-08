@@ -14,13 +14,13 @@ using OpenTK.Graphics;
 
 namespace STROOP.Script
 {
-    public class AssignNode : Node
+    public class DeclareAssignNode : Node
     {
         private VarNode _left;
         private Token _token;
         private Node _right;
 
-        public AssignNode(VarNode left, Token token, Node right)
+        public DeclareAssignNode(VarNode left, Token token, Node right)
         {
             _left = left;
             _token = token;
@@ -31,9 +31,9 @@ namespace STROOP.Script
         {
             string key = _left.GetName();
             object value = _right.Evaluate();
-            if (!SymbolTable.Has(key))
+            if (SymbolTable.Has(key))
             {
-                throw new Exception("cannot assign un-declared var: " + key);
+                throw new Exception("cannot re-declare declared var: " + key);
             }
             SymbolTable.Set(key, value);
             return (key, value);

@@ -139,6 +139,10 @@ namespace STROOP.Script
             {
                 return GetAssignmentStatement();
             }
+            if (_currentToken.Type == TokenType.VAR)
+            {
+                return GetDeclarationAssignStatement();
+            }
 
             throw new Exception("cannot start a statement with type: " + _currentToken.Type);
         }
@@ -151,6 +155,17 @@ namespace STROOP.Script
             Node right = GetExpression();
             Eat(TokenType.SEMI);
             return new AssignNode(left, token, right);
+        }
+
+        public Node GetDeclarationAssignStatement()
+        {
+            Eat(TokenType.VAR);
+            VarNode left = GetVariable();
+            Token token = _currentToken;
+            Eat(TokenType.ASSIGN);
+            Node right = GetExpression();
+            Eat(TokenType.SEMI);
+            return new DeclareAssignNode(left, token, right);
         }
 
         public VarNode GetVariable()
