@@ -16,6 +16,7 @@ namespace STROOP.Script
         ID,
 
         IF,
+        VAR,
 
         NUMBER,
 

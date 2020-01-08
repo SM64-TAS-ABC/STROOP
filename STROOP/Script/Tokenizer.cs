@@ -78,6 +78,7 @@ namespace STROOP.Script
             new Dictionary<string, Token>()
             {
                 ["if"] = new Token(TokenType.IF, "if"),
+                ["var"] = new Token(TokenType.VAR, "var"),
             };
 
         private Token GetId()
