@@ -416,7 +416,7 @@
     <Compile Include="Script\Node\DeclareFunctionNode.cs" />
     <Compile Include="Script\Node\DeclareAssignNode.cs" />
     <Compile Include="Script\Node\FunctionParamListNode.cs" />
-    <Compile Include="Script\Node\FunctionParamNode.cs" />
+    <Compile Include="Script\Node\TopLevelElementListNode.cs" />
     <Compile Include="Script\Node\VarNode.cs" />
     <Compile Include="Script\Node\StatementListNode.cs" />
     <Compile Include="Script\Node\AssignNode.cs" />

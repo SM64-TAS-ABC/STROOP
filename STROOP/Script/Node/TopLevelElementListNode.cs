@@ -14,21 +14,23 @@ using OpenTK.Graphics;
 
 namespace STROOP.Script
 {
-    public class FunctionParamNode : Node
+    public class TopLevelElementListNode : Node
     {
-        private Token _token;
-        private string _value;
+        private List<Node> _elementList;
 
-        public FunctionParamNode(Token token)
+        public TopLevelElementListNode(List<Node> elementList)
         {
-            _token = token;
-            _value = _token.Value.ToString();
+            _elementList = new List<Node>(elementList);
         }
 
         public override object Evaluate()
         {
-            // TODO
-            return null;
+            List<object> values = new List<object>();
+            foreach (Node element in _elementList)
+            {
+                values.Add(element.Evaluate());
+            }
+            return string.Join(",", values);
         }
     }
 }

@@ -16,9 +16,9 @@ namespace STROOP.Script
 {
     public class FunctionParamListNode : Node
     {
-        private List<FunctionParamNode> _paramList;
+        private List<VarNode> _paramList;
 
-        public FunctionParamListNode(List<FunctionParamNode> paramList)
+        public FunctionParamListNode(List<VarNode> paramList)
         {
             _paramList = paramList;
         }

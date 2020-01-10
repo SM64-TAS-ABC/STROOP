@@ -215,6 +215,24 @@ namespace STROOP.Script
                     return new Token(TokenType.RIGHT_PAREN, ")");
                 }
 
+                if (_currentChar == '{')
+                {
+                    Advance();
+                    return new Token(TokenType.LEFT_BRACE, "{");
+                }
+
+                if (_currentChar == '}')
+                {
+                    Advance();
+                    return new Token(TokenType.RIGHT_BRACE, "}");
+                }
+
+                if (_currentChar == ',')
+                {
+                    Advance();
+                    return new Token(TokenType.COMMA, ",");
+                }
+
                 throw new Exception("unknown char encountered: " + _currentChar);
             }
 

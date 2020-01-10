@@ -16,11 +16,11 @@ namespace STROOP.Script
 {
     public class DeclareFunctionNode : Node
     {
-        private Token _name;
+        private VarNode _name;
         private FunctionParamListNode _paramList;
         private StatementListNode _statementList;
 
-        public DeclareFunctionNode(Token name, FunctionParamListNode paramList, StatementListNode statementList)
+        public DeclareFunctionNode(VarNode name, FunctionParamListNode paramList, StatementListNode statementList)
         {
             _name = name;
             _paramList = paramList;

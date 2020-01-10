@@ -29,7 +29,11 @@ namespace STROOP.Script
         LEFT_PAREN,
         RIGHT_PAREN,
 
+        LEFT_BRACE,
+        RIGHT_BRACE,
+
         ASSIGN,
         SEMI,
+        COMMA,
     };
 }
