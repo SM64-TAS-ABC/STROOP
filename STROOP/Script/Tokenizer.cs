@@ -110,6 +110,7 @@ namespace STROOP.Script
             {
                 ["if"] = new Token(TokenType.IF, "if"),
                 ["var"] = new Token(TokenType.VAR, "var"),
+                ["function"] = new Token(TokenType.FUNCTION, "function"),
             };
 
         private Token GetId()
@@ -212,6 +213,24 @@ namespace STROOP.Script
                 {
                     Advance();
                     return new Token(TokenType.RIGHT_PAREN, ")");
+                }
+
+                if (_currentChar == '{')
+                {
+                    Advance();
+                    return new Token(TokenType.LEFT_BRACE, "{");
+                }
+
+                if (_currentChar == '}')
+                {
+                    Advance();
+                    return new Token(TokenType.RIGHT_BRACE, "}");
+                }
+
+                if (_currentChar == ',')
+                {
+                    Advance();
+                    return new Token(TokenType.COMMA, ",");
                 }
 
                 throw new Exception("unknown char encountered: " + _currentChar);
