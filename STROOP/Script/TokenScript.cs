@@ -62,34 +62,6 @@ namespace STROOP.Script
                 string value = outputItems[i + 1];
                 Config.ScriptManager.SetVariableValueByName(name, value);
             }
-            return;
-
-            //try
-            //{
-            //    SymbolTable.Reset();
-            //    Tokenizer tokenizer = new Tokenizer(_text);
-            //    List<Token> tokens = new List<Token>();
-            //    while (true)
-            //    {
-            //        Token token = tokenizer.GetNextToken();
-            //        if (token.Type == TokenType.EOF) break;
-            //        tokens.Add(token);
-            //    }
-            //    Parser parser = new Parser(_text);
-            //    object result = parser.Parse().Evaluate();
-            //    InfoForm.ShowValue(
-            //        string.Join(",", tokens)
-            //            + "\r\n\r\n"
-            //            + result
-            //            + "\r\n\r\n"
-            //            + SymbolTable.GetString(),
-            //        "Tokenizer Results",
-            //        tokens.Count + " tokens");
-            //}
-            //catch (Exception e)
-            //{
-            //    InfoForm.ShowValue(e.Message, "Error", "Error");
-            //}
         }
     }
 }
