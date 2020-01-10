@@ -17,6 +17,7 @@ namespace STROOP.Script
 
         IF,
         VAR,
+        FUNCTION,
 
         NUMBER,
 

@@ -115,20 +115,17 @@ namespace STROOP.Script
 
         public Node GetProgram()
         {
-            return GetCompoundStatement();
+            return GetStatementList();
         }
 
-        public Node GetCompoundStatement()
+        public Node GetStatementList()
         {
-            Node node = GetStatement();
-            List<Node> results = new List<Node>() { node };
-
+            List<Node> statementList = new List<Node>();
             while (_currentToken.Type != TokenType.EOF)
             {
-                results.Add(GetStatement());
+                statementList.Add(GetStatement());
             }
-
-            return new StatementListNode(results);
+            return new StatementListNode(statementList);
         }
 
         public Node GetStatement()

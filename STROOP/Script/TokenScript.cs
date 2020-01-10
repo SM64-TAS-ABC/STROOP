@@ -36,8 +36,10 @@ namespace STROOP.Script
 
         public void Update()
         {
-            if (!_isEnabled) return;
-            Run();
+            if (_isEnabled)
+            {
+                Run();
+            }
         }
 
         public void Run()

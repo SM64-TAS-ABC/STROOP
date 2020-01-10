@@ -110,6 +110,7 @@ namespace STROOP.Script
             {
                 ["if"] = new Token(TokenType.IF, "if"),
                 ["var"] = new Token(TokenType.VAR, "var"),
+                ["function"] = new Token(TokenType.FUNCTION, "function"),
             };
 
         private Token GetId()
