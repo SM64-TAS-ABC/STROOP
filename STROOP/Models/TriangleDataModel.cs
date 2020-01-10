@@ -250,7 +250,7 @@ namespace STROOP.Models
 
         public List<(float x, float z)> Get2DVertices()
         {
-            return new List<(float, float)>()
+            return new List<(float, float)>
             {
                 (X1, Z1), (X2, Z2), (X3, Z3)
             };
@@ -258,7 +258,7 @@ namespace STROOP.Models
 
         public List<(float x, float y, float z)> Get3DVertices()
         {
-            return new List<(float, float, float)>()
+            return new List<(float, float, float)>
             {
                 (X1, Y1, Z1), (X2, Y2, Z2), (X3, Y3, Z3)
             };

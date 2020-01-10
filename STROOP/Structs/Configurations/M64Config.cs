@@ -24,7 +24,7 @@ namespace STROOP.Structs
         public static readonly int PasteWarningLimit = 10000;
 
         public static readonly int HeaderSize = 0x400;
-        public static readonly byte[] SignatureBytes = new byte[] { 0x4D, 0x36, 0x34, 0x1A };
+        public static readonly byte[] SignatureBytes = { 0x4D, 0x36, 0x34, 0x1A };
 
         public static readonly ushort CountryCodeUS = 69;
         public static readonly ushort CountryCodeJP = 74;

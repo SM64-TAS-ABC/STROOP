@@ -22,16 +22,12 @@ namespace STROOP
         private Image _onImage;
         private Image _offImage;
 
-        public FileHatLocationPictureBox()
-        {
-        }
-
         public void Initialize(HatLocation definingHatLocation, Image onImage, Image offImage)
         {
             _definingHatLocation = definingHatLocation;
             _onImage = onImage;
             _offImage = offImage;
-            base.Initialize(0, 0);
+            Initialize(0, 0);
         }
 
         private HatLocation? GetCurrentHatLocation()

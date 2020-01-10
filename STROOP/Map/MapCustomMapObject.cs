@@ -39,7 +39,7 @@ namespace STROOP.Map
             if (_contextMenuStrip == null)
             {
                 List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
-                List<object> mapLayoutChoices = new List<object>() { "Recommended" };
+                List<object> mapLayoutChoices = new List<object> { "Recommended" };
                 mapLayouts.ForEach(mapLayout => mapLayoutChoices.Add(mapLayout));
 
                 ToolStripMenuItem itemSelectMap = new ToolStripMenuItem("Select Map");

@@ -16,7 +16,7 @@ namespace STROOP.Structs
         public static readonly int MaxSlots = 240;
 
         private static readonly Dictionary<byte, Color> ProcessingGroupsColor =
-            new Dictionary<byte, Color>()
+            new Dictionary<byte, Color>
             {
                 [0x0B] = Color.FromArgb(255, 000, 165), // pink
                 [0x09] = Color.FromArgb(255, 000, 000), // red
@@ -27,7 +27,7 @@ namespace STROOP.Structs
                 [0x02] = Color.FromArgb(000, 255, 233), // light blue
                 [0x06] = Color.FromArgb(000, 021, 255), // dark blue
                 [0x08] = Color.FromArgb(128, 000, 255), // purple
-                [0x0C] = Color.FromArgb(155, 095, 028), // brown
+                [0x0C] = Color.FromArgb(155, 095, 028)  // brown
             };
         public static readonly Color VacantSlotColor = Color.FromArgb(170, 170, 170); // grey
         public static Color GetProcessingGroupColor(byte? group)

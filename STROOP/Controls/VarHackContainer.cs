@@ -353,7 +353,7 @@ namespace STROOP.Controls
             byte[] signedBytes = BitConverter.GetBytes(signed);
             WriteBytes(signedBytes, bytes, VarHackConfig.SignedOffset, true);
 
-            byte[] typeBytes = new byte[] { typeByte };
+            byte[] typeBytes = { typeByte };
             WriteBytes(typeBytes, bytes, VarHackConfig.TypeOffset, true);
 
             return bytes;

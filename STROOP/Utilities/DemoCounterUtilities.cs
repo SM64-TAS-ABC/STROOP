@@ -138,7 +138,7 @@ namespace STROOP.Structs
 
         public static List<string> GetDescriptions()
         {
-            return new List<string>()
+            return new List<string>
             {
                 "Bowser 1",
                 "WF",
@@ -146,7 +146,7 @@ namespace STROOP.Structs
                 "BBH",
                 "JRB",
                 "HMC",
-                "PSS",
+                "PSS"
             };
         }
 

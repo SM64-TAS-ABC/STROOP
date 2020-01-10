@@ -38,7 +38,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething25()
         {
-            List<double> doubleList = new List<double>()
+            List<double> doubleList = new List<double>
             {
                 2,
                 5.94287109375,
@@ -50,7 +50,7 @@ namespace STROOP.Utilities
                 73.255859375,
                 75.255859375,
                 77.255859375,
-                79.255859375,
+                79.255859375
             };
 
             int startX = 6765;
@@ -85,7 +85,7 @@ namespace STROOP.Utilities
             int range = 100;
             int range2 = 10000;
 
-            List<int> goodAngles = new List<int>() { 27408, 27424, 27440, 27456, 27472 };
+            List<int> goodAngles = new List<int> { 27408, 27424, 27440, 27456, 27472 };
 
             for (int i = 0; i < range; i++)
             {
@@ -165,7 +165,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething18()
         {
-            List<int> initialAngles = new List<int>() { 22976, 22592, 22512 };
+            List<int> initialAngles = new List<int> { 22976, 22592, 22512 };
 
             int range = 10;
             List<int> extendedAngles = new List<int>();
@@ -212,7 +212,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething17()
         {
-            List<int> initialAngles = new List<int>()
+            List<int> initialAngles = new List<int>
             {
                 88527,
                 88052,
@@ -252,9 +252,9 @@ namespace STROOP.Utilities
                 -43017,
                 -305162,
                 -108558,
-                219125,
+                219125
             };
-            List<int> initialAccMags = new List<int>() { 13, 42 };
+            List<int> initialAccMags = new List<int> { 13, 42 };
 
             string output = "";
             foreach (int initialAngle in initialAngles)
@@ -460,10 +460,10 @@ namespace STROOP.Utilities
 
             public List<PendulumSwing> GetSuccessors()
             {
-                return new List<PendulumSwing>()
+                return new List<PendulumSwing>
                 {
                     new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 13), 13, this),
-                    new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 42), 42, this),
+                    new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 42), 42, this)
                 };
             }
 
@@ -483,11 +483,11 @@ namespace STROOP.Utilities
             uint triangleAddress = Config.TriangleManager.TriangleAddress;
             if (triangleAddress == 0) return;
             TriangleDataModel triangle = new TriangleDataModel(triangleAddress);
-            List<List<short>> triangleVertices = new List<List<short>>()
+            List<List<short>> triangleVertices = new List<List<short>>
             {
-                new List<short>() { triangle.X1, triangle.Y1, triangle.Z1 },
-                new List<short>() { triangle.X2, triangle.Y2, triangle.Z2 },
-                new List<short>() { triangle.X3, triangle.Y3, triangle.Z3 },
+                new List<short> { triangle.X1, triangle.Y1, triangle.Z1 },
+                new List<short> { triangle.X2, triangle.Y2, triangle.Z2 },
+                new List<short> { triangle.X3, triangle.Y3, triangle.Z3 }
             };
 
             int structSize = numVertices * 0x10;
@@ -546,7 +546,7 @@ namespace STROOP.Utilities
                                 invertBool: null,
                                 isYaw: null,
                                 coordinate: null,
-                                groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                                groupList: new List<VariableGroup> { VariableGroup.Custom });
                             precursors.Add(precursor);
                         }
 
@@ -637,7 +637,7 @@ namespace STROOP.Utilities
         {
             List<VariableAdder> variableAdderList = Config.GetVariableAdders();
             string output = "";
-            variableAdderList.ForEach(varAdder => output += varAdder.ToString() + " " + varAdder.TabIndex + "\r\n");
+            variableAdderList.ForEach(varAdder => output += varAdder + " " + varAdder.TabIndex + "\r\n");
             InfoForm.ShowValue(output);
         }
 
@@ -651,7 +651,7 @@ namespace STROOP.Utilities
             InfoForm.ShowValue(String.Join("\r\n", output));
         }
 
-        public static List<double> marioPositions1 = new List<double>()
+        public static List<double> marioPositions1 = new List<double>
         {
             -5625.607422,-5598.169922,-5570.271484,-5541.921875,-5513.130859,-5483.910156,-5454.267578,
             -5424.214844,-5393.761719,-5362.916016,-5331.6875,-5300.085938,-5268.119141,-5235.794922,
@@ -666,10 +666,10 @@ namespace STROOP.Utilities
             -3430.87793,-3399.107422,-3366.975586,-3335.84375,-3304.335938,-3272.460938,-3240.227539,
             -3208.994141,-3177.386719,-3145.415039,-3113.086914,-3081.758789,-3050.058594,-3017.996094,
             -2986.933594,-2955.493164,-2923.683594,-2891.513672,-2860.34375,-2828.798828,-2796.887695,
-            -2764.619141,-2733.350586,-2701.708984,-2669.703125,-2638.697266,-2638.697266,
+            -2764.619141,-2733.350586,-2701.708984,-2669.703125,-2638.697266,-2638.697266
         };
 
-        public static List<double> marioPositions2 = new List<double>()
+        public static List<double> marioPositions2 = new List<double>
         {
             -5575.169922,-5547.271484,-5518.921875,-5490.130859,-5460.910156,-5431.267578,
             -5401.214844,-5370.761719,-5339.916016,-5308.6875,-5277.085938,-5245.119141,-5212.794922,
@@ -680,7 +680,7 @@ namespace STROOP.Utilities
             -4294.425781,-4263.378906,-4231.953125,-4200.158203,-4168.003906,-4136.849609,-4105.318359,
             -4073.421143,-4041.165283,-4009.909424,-3978.280518,-3946.287354,-3913.938721,-3882.590088,
             -3850.870361,-3818.78833,-3787.706299,-3756.247314,-3724.419189,-3692.231689,-3661.044189,
-            -3629.481689,-3597.552979,-3565.266846,-3533.980713,-3502.32251,-3470.300049,-3439.277588,
+            -3629.481689,-3597.552979,-3565.266846,-3533.980713,-3502.32251,-3470.300049,-3439.277588
         };
 
         public static void TestScuttlebugDrops()
@@ -785,7 +785,7 @@ namespace STROOP.Utilities
             }
         }
 
-        private static List<int[]> unitCoordinates_ = new List<int[]>()
+        private static List<int[]> unitCoordinates_ = new List<int[]>
         {
             new int[] {5,13},
             new int[] {5,12},
@@ -848,7 +848,7 @@ namespace STROOP.Utilities
             new int[] {4,2},
             new int[] {5,2},
             new int[] {6,2},
-            new int[] {6,1},
+            new int[] {6,1}
         };
     }
 } 

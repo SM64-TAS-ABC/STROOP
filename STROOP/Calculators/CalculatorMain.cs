@@ -106,7 +106,7 @@ namespace STROOP.Structs
             ushort marioAngle = 24066;
 
             Dictionary<int, ushort> cameraAngles =
-                new Dictionary<int, ushort>()
+                new Dictionary<int, ushort>
                 {
                     //[0] = 32707,
                     [0] = 32768,
@@ -115,7 +115,7 @@ namespace STROOP.Structs
                     [3] = 32972,
                     [4] = 33063,
                     [5] = 33135,
-                    [6] = 33216,
+                    [6] = 33216
                 };
 
             float goalX = 374.529907226563f;
@@ -404,7 +404,7 @@ namespace STROOP.Structs
             ushort marioAngle = 16455;
 
             Dictionary<int, ushort> cameraAngles =
-                new Dictionary<int, ushort>()
+                new Dictionary<int, ushort>
                 {
                     [0] = 28563,
                     [1] = 28552,
@@ -412,7 +412,7 @@ namespace STROOP.Structs
                     [3] = 28533,
                     [4] = 28524,
                     [5] = 28514,
-                    [6] = 28500,
+                    [6] = 28500
                 };
 
             float goalX = 1060.860229f;
@@ -726,7 +726,7 @@ namespace STROOP.Structs
             float startZSpeed = -11.6073894500732f;
             float startHSpeed = 11.9047050476074f;
             ushort startAngle = 30442;
-            List<ushort> cameraAngles = new List<ushort>()
+            List<ushort> cameraAngles = new List<ushort>
             {
                 7997,
                 8089,
@@ -750,7 +750,7 @@ namespace STROOP.Structs
                 9249,
                 9249,
                 9249,
-                9249,
+                9249
             };
             int INDEX_START = 0;
 

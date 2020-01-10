@@ -70,7 +70,7 @@ namespace STROOP.Utilities
             Cmd_37 = 0x37,
         };
 
-        static readonly Dictionary<BehaviorCommandType, int> BehaviorCommandLength = new Dictionary<BehaviorCommandType, int>()
+        static readonly Dictionary<BehaviorCommandType, int> BehaviorCommandLength = new Dictionary<BehaviorCommandType, int>
         {
             { BehaviorCommandType.Start, 4 },
             { BehaviorCommandType.Cmd_01, 4 },
@@ -127,10 +127,10 @@ namespace STROOP.Utilities
             { BehaviorCommandType.Cmd_34, 4 },
             { BehaviorCommandType.Cmd_35, 4 },
             { BehaviorCommandType.Cmd_36, 8 },
-            { BehaviorCommandType.Cmd_37, 8 },
+            { BehaviorCommandType.Cmd_37, 8 }
         };
 
-        static Dictionary<short, string> OffsetNames = new Dictionary<short, string>()
+        static Dictionary<short, string> OffsetNames = new Dictionary<short, string>
         {
             {0x8C, "flags"},
             {0x9C, "collision_timer"},
@@ -141,7 +141,7 @@ namespace STROOP.Utilities
             {0xB0, "y_speed"},
             {0xB4, "z_speed"},
             {0xB8, "h_speed"},
-            {0xE4, "gravity"},
+            {0xE4, "gravity"}
         };
 
         private static string GetOffsetName(short offset)

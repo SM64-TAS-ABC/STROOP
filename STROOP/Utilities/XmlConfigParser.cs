@@ -50,7 +50,7 @@ namespace STROOP.Utilities
             PositionControllerRelativityConfig.CustomAngle = 32768;
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
             schemaSet.Add("http://tempuri.org/ConfigSchema.xsd", "ConfigSchema.xsd");
             schemaSet.Compile();
@@ -68,7 +68,7 @@ namespace STROOP.Utilities
                         {
                             string special = subElement.Attribute(XName.Get("special")) != null ?
                                 subElement.Attribute(XName.Get("special")).Value : null;
-                            Config.Emulators.Add(new Emulator()
+                            Config.Emulators.Add(new Emulator
                             {
                                 Name = subElement.Attribute(XName.Get("name")).Value,
                                 ProcessName = subElement.Attribute(XName.Get("processName")).Value,
@@ -77,7 +77,7 @@ namespace STROOP.Utilities
                                     ? subElement.Attribute(XName.Get("offsetDll")).Value : null,
                                 Endianness = subElement.Attribute(XName.Get("endianness")).Value == "big" 
                                     ? EndiannessType.Big : EndiannessType.Little,
-                                IOType = special == "dolphin" ? typeof(DolphinProcessIO) : typeof(WindowsProcessRamIO),
+                                IOType = special == "dolphin" ? typeof(DolphinProcessIO) : typeof(WindowsProcessRamIO)
                             });
                         }
                         break;
@@ -99,7 +99,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
             schemaSet.Add("http://tempuri.org/ConfigSchema.xsd", "ConfigSchema.xsd");
             schemaSet.Compile();
@@ -191,7 +191,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
             schemaSet.Add("http://tempuri.org/CameraDataSchema.xsd", schemaFile);
             schemaSet.Compile();
@@ -218,7 +218,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
             schemaSet.Add("http://tempuri.org/ObjectAssociationsSchema.xsd", "ObjectAssociationsSchema.xsd");
             schemaSet.Compile();
@@ -522,7 +522,7 @@ namespace STROOP.Utilities
                                 ParsingUtilities.ParseHex(spawnElement.Attribute(XName.Get("gfxId")).Value) : 0);
                             byte spawnExtra = (byte)(spawnElement.Attribute(XName.Get("extra")) != null ? 
                                 ParsingUtilities.ParseHex(spawnElement.Attribute(XName.Get("extra")).Value) : (byte)(subType.HasValue ? subType : 0));
-                            assoc.AddSpawnHack(new SpawnHack()
+                            assoc.AddSpawnHack(new SpawnHack
                             {
                                 Name = name,
                                 Behavior = behaviorSegmented,
@@ -547,21 +547,21 @@ namespace STROOP.Utilities
                             precursors.Add(precursor);
                         }
 
-                        var newBehavior = new ObjectBehaviorAssociation()
+                        var newBehavior = new ObjectBehaviorAssociation
                         {
-                            Criteria = new BehaviorCriteria()
+                            Criteria = new BehaviorCriteria
                             {
                                 BehaviorAddress = behaviorSegmented,
                                 GfxId = gfxId,
                                 SubType = subType,
                                 Appearance = appearance,
-                                SpawnObj = spawnObj,
+                                SpawnObj = spawnObj
                             },
                             ImagePath = imagePath,
                             MapImagePath = mapImagePath,
                             Name = name,
                             RotatesOnMap = rotates,
-                            Precursors = precursors,
+                            Precursors = precursors
                         };
 
                         if (!assoc.AddAssociation(newBehavior))
@@ -640,7 +640,7 @@ namespace STROOP.Utilities
 
             foreach (var obj in assoc.BehaviorAssociations)
             {
-                if (obj.ImagePath == null || obj.ImagePath == "")
+                if (string.IsNullOrEmpty(obj.ImagePath))
                     continue;
 
                 using (var preLoad = Image.FromFile(imageDir + obj.ImagePath))
@@ -648,7 +648,7 @@ namespace STROOP.Utilities
                     float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
                     obj.Image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
                 }
-                if (obj.MapImagePath == "" || obj.MapImagePath == null)
+                if (string.IsNullOrWhiteSpace(obj.MapImagePath))
                 {
                     obj.MapImage = obj.Image;
                 }
@@ -716,7 +716,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
             schemaSet.Add("http://tempuri.org/InputImageAssociationsSchema.xsd", "InputImageAssociationsSchema.xsd");
             schemaSet.Compile();
@@ -833,7 +833,7 @@ namespace STROOP.Utilities
 
             // Load Images
             // TODO: Exceptions
-            return new InputImageGui()
+            return new InputImageGui
             {
                 InputDisplayType = inputDisplayType,
 
@@ -868,7 +868,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
             schemaSet.Add("http://tempuri.org/FileImageAssociationsSchema.xsd", "FileImageAssociationsSchema.xsd");
             schemaSet.Compile();
@@ -1150,7 +1150,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
             schemaSet.Add("http://tempuri.org/MapAssociationsSchema.xsd", "MapAssociationsSchema.xsd");
             schemaSet.Compile();
@@ -1175,7 +1175,7 @@ namespace STROOP.Utilities
                                     assoc.BackgroundImageFolderPath = subElement.Value;
                                     break;
                                 case "DefaultImage":
-                                    var defaultMap = new MapLayout() { ImagePath = subElement.Value };
+                                    var defaultMap = new MapLayout { ImagePath = subElement.Value };
                                     assoc.DefaultMap = defaultMap;
                                     break;
                                 case "DefaultCoordinates":
@@ -1195,10 +1195,10 @@ namespace STROOP.Utilities
                             string name = element.Attribute(XName.Get("name")).Value;
                             string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                             Bitmap image = Image.FromFile(assoc.BackgroundImageFolderPath + imagePath) as Bitmap;
-                            BackgroundImage backgroundImage = new BackgroundImage()
+                            BackgroundImage backgroundImage = new BackgroundImage
                             {
                                 Name = name,
-                                Image = image,
+                                Image = image
                             };
                             assoc.AddBackgroundImage(backgroundImage);
                         }
@@ -1233,7 +1233,7 @@ namespace STROOP.Utilities
 
                             var coordinates = new RectangleF(x1, z1, x2 - x1, z2 - z1);
 
-                            MapLayout map = new MapLayout()
+                            MapLayout map = new MapLayout
                             {
                                 Id = id,
                                 Level = level,
@@ -1245,7 +1245,7 @@ namespace STROOP.Utilities
                                 Y = y,
                                 Name = name,
                                 SubName = subName,
-                                Background = backgroundImage,
+                                Background = backgroundImage
                             };
 
                             assoc.AddAssociation(map);
@@ -1263,7 +1263,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
             schemaSet.Add("http://tempuri.org/ScriptsSchema.xsd", "ScriptsSchema.xsd");
             schemaSet.Compile();
@@ -1311,7 +1311,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ScriptsSchema.xsd", "ScriptsSchema.xsd");
             schemaSet.Compile();
 
@@ -1362,7 +1362,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ActionTableSchema.xsd", "ActionTableSchema.xsd");
             schemaSet.Compile();
 
@@ -1394,7 +1394,7 @@ namespace STROOP.Utilities
                             ParsingUtilities.ParseHex(element.Attribute(XName.Get("afterUncloneValue")).Value) : (uint?) null;
                         uint? handsfreeValue = element.Attribute(XName.Get("handsfreeValue")) != null ?
                             ParsingUtilities.ParseHex(element.Attribute(XName.Get("handsfreeValue")).Value) : (uint?)null;
-                        actionTable?.Add(new ActionTable.ActionReference()
+                        actionTable?.Add(new ActionTable.ActionReference
                         {
                             Action = actionValue,
                             ActionName = actionName,
@@ -1415,7 +1415,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/AnimationTableSchema.xsd", "AnimationTableSchema.xsd");
             schemaSet.Compile();
 
@@ -1427,7 +1427,7 @@ namespace STROOP.Utilities
             {
                 int animationValue = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("value")).Value);
                 string animationName = element.Attribute(XName.Get("name")).Value;
-                animationTable.Add(new AnimationTable.AnimationReference()
+                animationTable.Add(new AnimationTable.AnimationReference
                 {
                     AnimationValue = animationValue,
                     AnimationName = animationName
@@ -1443,7 +1443,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/TriangleInfoTableSchema.xsd", "TriangleInfoTableSchema.xsd");
             schemaSet.Compile();
 
@@ -1459,12 +1459,12 @@ namespace STROOP.Utilities
                     element.Attribute(XName.Get("slipperiness")).Value);
                 bool exertion = bool.Parse(element.Attribute(XName.Get("exertion")).Value);
 
-                table?.Add(new TriangleInfoTable.TriangleInfoReference()
+                table?.Add(new TriangleInfoTable.TriangleInfoReference
                 {
                     Type = type,
                     Description = description,
                     Slipperiness = slipperiness,
-                    Exertion = exertion,
+                    Exertion = exertion
                 });
             }
 
@@ -1477,7 +1477,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/CourseDataTableSchema.xsd", "CourseDataTableSchema.xsd");
             schemaSet.Compile();
 
@@ -1492,7 +1492,7 @@ namespace STROOP.Utilities
                 string shortName = element.Attribute(XName.Get("shortName")).Value;
                 byte maxCoinsWithoutGlitches = (byte)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("maxCoinsWithoutGlitches")).Value);
                 byte maxCoinsWithGlitches = (byte)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("maxCoinsWithGlitches")).Value);
-                courseDataTable.Add(new CourseDataTable.CourseDataReference()
+                courseDataTable.Add(new CourseDataTable.CourseDataReference
                 {
                     Index = index,
                     FullName = fullName,
@@ -1511,7 +1511,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/PendulumSwingTableSchema.xsd", "PendulumSwingTableSchema.xsd");
             schemaSet.Compile();
 
@@ -1523,7 +1523,7 @@ namespace STROOP.Utilities
             {
                 int index = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("index")).Value);
                 int amplitude = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("amplitude")).Value);
-                pendulumSwingTable.Add(new PendulumSwingTable.PendulumSwingReference()
+                pendulumSwingTable.Add(new PendulumSwingTable.PendulumSwingReference
                 {
                     Index = index,
                     Amplitude = amplitude
@@ -1568,7 +1568,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/WaypointTableSchema.xsd", "WaypointTableSchema.xsd");
             schemaSet.Compile();
 
@@ -1583,12 +1583,12 @@ namespace STROOP.Utilities
                 short x = (short)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("x")).Value);
                 short y = (short)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("y")).Value);
                 short z = (short)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("z")).Value);
-                waypoints.Add(new WaypointTable.WaypointReference()
+                waypoints.Add(new WaypointTable.WaypointReference
                 {
                     Index = index,
                     X = x,
                     Y = y,
-                    Z = z,
+                    Z = z
                 });
             }
 
@@ -1600,7 +1600,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/WaypointTableSchema.xsd", "WaypointTableSchema.xsd");
             schemaSet.Compile();
 
@@ -1615,12 +1615,12 @@ namespace STROOP.Utilities
                 double x = ParsingUtilities.ParseDouble(element.Attribute(XName.Get("x")).Value);
                 double y = ParsingUtilities.ParseDouble(element.Attribute(XName.Get("y")).Value);
                 double z = ParsingUtilities.ParseDouble(element.Attribute(XName.Get("z")).Value);
-                points.Add(new PointTable.PointReference()
+                points.Add(new PointTable.PointReference
                 {
                     Index = index,
                     X = x,
                     Y = y,
-                    Z = z,
+                    Z = z
                 });
             }
 
@@ -1632,7 +1632,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/WaypointTableSchema.xsd", "WaypointTableSchema.xsd");
             schemaSet.Compile();
 
@@ -1657,7 +1657,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/MissionTableSchema.xsd", "MissionTableSchema.xsd");
             schemaSet.Compile();
 
@@ -1672,13 +1672,13 @@ namespace STROOP.Utilities
                 int inGameCourseIndex = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("inGameCourseIndex")).Value);
                 int inGameMissionIndex = (int)ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("inGameMissionIndex")).Value);
                 string missionName = element.Attribute(XName.Get("missionName")).Value;
-                missionTable.Add(new MissionTable.MissionReference()
+                missionTable.Add(new MissionTable.MissionReference
                 {
                     CourseIndex = courseIndex,
                     MissionIndex = missionIndex,
                     InGameCourseIndex = inGameCourseIndex,
                     InGameMissionIndex = inGameMissionIndex,
-                    MissionName = missionName,
+                    MissionName = missionName
                 });
             }
 
@@ -1692,7 +1692,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ValueListSchema.xsd", "ValueListSchema.xsd");
             schemaSet.Compile();
 
@@ -1718,7 +1718,7 @@ namespace STROOP.Utilities
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
-            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            var schemaSet = new XmlSchemaSet { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ValueListSchema.xsd", "ValueListSchema.xsd");
             schemaSet.Compile();
 

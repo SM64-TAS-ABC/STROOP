@@ -200,7 +200,7 @@ namespace STROOP.Managers
                 short y = Config.Stream.GetInt16(modelPtr + 0x02);
                 short z = Config.Stream.GetInt16(modelPtr + 0x04);
                 modelPtr += 0x06;
-                vertices.Add(new short[3] { x, y, z });
+                vertices.Add(new short[] { x, y, z });
             }
 
             return vertices;

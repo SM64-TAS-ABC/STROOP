@@ -172,10 +172,10 @@ namespace STROOP.Structs
 
             public List<PendulumSwing> GetSuccessors()
             {
-                return new List<PendulumSwing>()
+                return new List<PendulumSwing>
                 {
                     new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 13), 13, this, PrimaryIndex, SecondaryIndex + 1),
-                    new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 42), 42, this, PrimaryIndex, SecondaryIndex + 1),
+                    new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 42), 42, this, PrimaryIndex, SecondaryIndex + 1)
                 };
             }
 

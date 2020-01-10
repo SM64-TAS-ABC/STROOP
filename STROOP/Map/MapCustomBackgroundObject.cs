@@ -39,7 +39,7 @@ namespace STROOP.Map
             if (_contextMenuStrip == null)
             {
                 List<BackgroundImage> backgroundImages = Config.MapAssociations.GetAllBackgroundImages();
-                List<object> backgroundImageChoices = new List<object>() { "Recommended" };
+                List<object> backgroundImageChoices = new List<object> { "Recommended" };
                 backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
 
                 ToolStripMenuItem itemSelectMap = new ToolStripMenuItem("Select Background");

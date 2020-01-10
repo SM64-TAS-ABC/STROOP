@@ -201,7 +201,7 @@ namespace STROOP.Managers
             // Should only happen when memory is invalid (for example when the US setting is used on a JP ROM)
             if (node == null) return new TreeNode("Invalid Gfx Node"); 
 
-            TreeNode res = new TreeNode(node.Name, node.Children.Select(x => GfxToTreeNode(x)).ToArray());
+            TreeNode res = new TreeNode(node.Name, node.Children.Select(GfxToTreeNode).ToArray());
             res.Tag = node;
             return res;
         }
@@ -351,7 +351,7 @@ namespace STROOP.Managers
             { 0x802771BC, "Mario eyes" },
             { 0x802774F4, "Mario hand" },
             { 0x8029DBD4, "Current room" },
-            { 0x8029DB48, "Fully opaque" },
+            { 0x8029DB48, "Fully opaque" }
             
 
         };
@@ -364,7 +364,7 @@ namespace STROOP.Managers
             { 0x80276C0C, "Mario eyes" },
             { 0x80276F44, "Mario hand" },
             { 0x8029D458, "Current room" },
-            { 0x8029D3CC, "Fully opaque" },
+            { 0x8029D3CC, "Fully opaque" }
         };
 
 
@@ -433,7 +433,7 @@ namespace STROOP.Managers
             { 0x802775CC, "Mario hand / foot scaler"},
             { 0x80277D6C, "Mirror Mario inside out"},
             { 0x80277294, "Mario torso tilter"},
-            { 0x802773A4, "C-up head rotation" },
+            { 0x802773A4, "C-up head rotation" }
         };
 
         public static readonly Dictionary<uint, string> DictionaryJP = new Dictionary<uint, string>
@@ -451,7 +451,7 @@ namespace STROOP.Managers
             { 0x8027701C, "Mario hand / foot scaler"},
             { 0x802777BC, "Mirror Mario inside out"},
             { 0x80276CE4, "Mario torso tilter"},
-            { 0x80276DF4, "C-up head rotation" },
+            { 0x80276DF4, "C-up head rotation" }
         };
 
         public override string Name {

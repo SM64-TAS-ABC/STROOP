@@ -15,7 +15,7 @@ namespace STROOP.Managers
     public class InjectionManager
     {
         ScriptParser _parser;
-        readonly byte[] byteUintFF = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
+        readonly byte[] byteUintFF = { 0xFF, 0xFF, 0xFF, 0xFF };
         CheckBox _useRomHackChecBox;
       
         uint _freeMemPtr;

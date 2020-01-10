@@ -37,22 +37,22 @@ namespace STROOP.Managers
         private static readonly int TABLE_INDEX_Y_INPUT = 7;
 
         private static readonly List<VariableGroup> ALL_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Advanced,
                 VariableGroup.TAS,
                 VariableGroup.Point,
-                VariableGroup.Scheduler,
+                VariableGroup.Scheduler
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Advanced,
                 VariableGroup.Point,
-                VariableGroup.Scheduler,
+                VariableGroup.Scheduler
             };
 
         public TasManager(string varFilePath, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
@@ -70,7 +70,7 @@ namespace STROOP.Managers
             buttonTasStorePosition.Click += (sender, e) => StoreInfo(x: true, y: true, z: true);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTasStorePosition,
-                new List<string>()
+                new List<string>
                 {
                     "Store Position",
                     "Store Lateral Position",
@@ -78,9 +78,9 @@ namespace STROOP.Managers
                     "Store Y",
                     "Store Z",
                     "Go to Closest Floor Vertex",
-                    "Go to Closest Floor Vertex Misalignment",
+                    "Go to Closest Floor Vertex Misalignment"
                 },
-                new List<Action>()
+                new List<Action>
                 {
                     () => StoreInfo(x: true, y: true, z: true),
                     () => StoreInfo(x: true, z: true),
@@ -88,7 +88,7 @@ namespace STROOP.Managers
                     () => StoreInfo(y: true),
                     () => StoreInfo(z: true),
                     () => ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), false),
-                    () => ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), true),
+                    () => ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), true)
                 });
 
             Button buttonTasStoreAngle = splitContainerTasTable.Panel1.Controls["buttonTasStoreAngle"] as Button;
@@ -98,13 +98,13 @@ namespace STROOP.Managers
             buttonTasTakePosition.Click += (sender, e) => TakeInfo(x: true, y: true, z: true);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTasTakePosition,
-                new List<string>() { "Take Position", "Take Lateral Position", "Take X", "Take Y", "Take Z" },
-                new List<Action>() {
+                new List<string> { "Take Position", "Take Lateral Position", "Take X", "Take Y", "Take Z" },
+                new List<Action> {
                     () => TakeInfo(x: true, y: true, z: true),
                     () => TakeInfo(x: true, z: true),
                     () => TakeInfo(x: true),
                     () => TakeInfo(y: true),
-                    () => TakeInfo(z: true),
+                    () => TakeInfo(z: true)
                 });
 
             Button buttonTasTakeMarioAngle = splitContainerTasTable.Panel1.Controls["buttonTasTakeAngle"] as Button;
@@ -114,8 +114,8 @@ namespace STROOP.Managers
             buttonTasPasteSchedule.Click += (sender, e) => SetScheduler(Clipboard.GetText(), false);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTasPasteSchedule,
-                new List<string>() { "Paste Schedule as Floats", "TTC Reentry Schedule" },
-                new List<Action>() { () => SetScheduler(Clipboard.GetText(), true), () => SetTtcReentrySchedule() });
+                new List<string> { "Paste Schedule as Floats", "TTC Reentry Schedule" },
+                new List<Action> { () => SetScheduler(Clipboard.GetText(), true), SetTtcReentrySchedule });
 
             _waitingGlobalTimer = 0;
             _waitingDateTime = DateTime.Now;
@@ -215,9 +215,9 @@ namespace STROOP.Managers
             _dataDictionary.Clear();
             _rowDictionary.Clear();
 
-            List<string> newInstructions = new List<string>()
+            List<string> newInstructions = new List<string>
             {
-                "(1)", "(2)", "(3)", "(4)", "(5)",
+                "(1)", "(2)", "(3)", "(4)", "(5)"
             };
             _richTextBoxTasInstructions.Text = String.Join("\r\n", newInstructions);
         }
@@ -239,7 +239,7 @@ namespace STROOP.Managers
         public void ShowTaserVariables()
         {
             _variablePanel.ShowOnlyVariableGroups(
-                new List<VariableGroup>() { VariableGroup.TAS, VariableGroup.Custom });
+                new List<VariableGroup> { VariableGroup.TAS, VariableGroup.Custom });
         }
 
         public void SetScheduler(string text, bool useFloats)
@@ -317,7 +317,7 @@ namespace STROOP.Managers
                         invertBool: null,
                         isYaw: null,
                         coordinate: null,
-                        groupList: new List<VariableGroup>() { VariableGroup.Scheduler });
+                        groupList: new List<VariableGroup> { VariableGroup.Scheduler });
                 WatchVariableControl control = precursor.CreateWatchVariableControl();
                 AddVariable(control);
             }
@@ -326,7 +326,7 @@ namespace STROOP.Managers
         private void SetTtcReentrySchedule()
         {
             Dictionary<uint, (double, double, double, double, List<double>)> schedule =
-                new Dictionary<uint, (double, double, double, double, List<double>)>()
+                new Dictionary<uint, (double, double, double, double, List<double>)>(
                 {
                     [43816] = (-1378.91674804688f, -2434f, -1423.35168457031f, 39648, new List<double>()),
                     [43817] = (-1305.64807128906f, -2414f, -1353.34362792969f, 39648, new List<double>()),
@@ -336,7 +336,7 @@ namespace STROOP.Managers
                     [43821] = (-1219.87109375f, -2371.6005859375f, -1238.93115234375f, 39648, new List<double>()),
                     [43822] = (-1190.4560546875f, -2369.2001953125f, -1201f, 39648, new List<double>()),
                     [43823] = (-1190.4560546875f, -2370f, -1201f, 39648, new List<double>()),
-                    [43824] = (-455.207397460938f, -2374f, -457.235229492188f, 39648, new List<double>()),
+                    [43824] = (-455.207397460938f, -2374f, -457.235229492188f, 39648, new List<double>())
                 };
             SetScheduler(schedule);
         }
@@ -409,13 +409,13 @@ namespace STROOP.Managers
                 currentRow.Cells[TABLE_INDEX_X_INPUT].Value = xInput;
                 currentRow.Cells[TABLE_INDEX_Y_INPUT].Value = -1 * yInput;
 
-                List<string> newInstructions = new List<string>()
+                List<string> newInstructions = new List<string>
                 {
                     "(1) Set input to (" + xInput + "," + (-1 * yInput) + ")",
                     "(2) Frame advance",
                     "(3) Savestate",
                     "(4) Frame advance",
-                    "(5) Revert",
+                    "(5) Revert"
                 };
                 _richTextBoxTasInstructions.Text = String.Join("\r\n", newInstructions);
             }

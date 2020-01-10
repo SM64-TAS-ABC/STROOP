@@ -15,7 +15,7 @@ namespace STROOP.Managers
     public class MarioManager : DataManager
     {
         private static readonly List<VariableGroup> ALL_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
@@ -23,14 +23,14 @@ namespace STROOP.Managers
                 VariableGroup.HolpMario,
                 VariableGroup.HolpPoint,
                 VariableGroup.Trajectory,
-                VariableGroup.Hacks,
+                VariableGroup.Hacks
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
-                VariableGroup.Intermediate,
+                VariableGroup.Intermediate
             };
 
         public MarioManager(string varFilePath, Control marioControl, WatchVariableFlowLayoutPanel variableTable)
@@ -102,59 +102,47 @@ namespace STROOP.Managers
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedXn"] as Button,
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedXp"] as Button,
                 marioSlidingSpeedGroupBox.Controls["textBoxMarioSlidingSpeedX"] as TextBox,
-                (float value) =>
-                {
-                    ButtonUtilities.MarioChangeSlidingSpeedX(value);
-                });
+                ButtonUtilities.MarioChangeSlidingSpeedX);
             ControlUtilities.InitializeScalarController(
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedZn"] as Button,
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedZp"] as Button,
                 marioSlidingSpeedGroupBox.Controls["textBoxMarioSlidingSpeedZ"] as TextBox,
-                (float value) =>
-                {
-                    ButtonUtilities.MarioChangeSlidingSpeedZ(value);
-                });
+                ButtonUtilities.MarioChangeSlidingSpeedZ);
             ControlUtilities.InitializeScalarController(
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedHn"] as Button,
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedHp"] as Button,
                 marioSlidingSpeedGroupBox.Controls["textBoxMarioSlidingSpeedH"] as TextBox,
-                (float value) =>
-                {
-                    ButtonUtilities.MarioChangeSlidingSpeedH(value);
-                });
+                ButtonUtilities.MarioChangeSlidingSpeedH);
             ControlUtilities.InitializeScalarController(
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedYawN"] as Button,
                 marioSlidingSpeedGroupBox.Controls["buttonMarioSlidingSpeedYawP"] as Button,
                 marioSlidingSpeedGroupBox.Controls["textBoxMarioSlidingSpeedYaw"] as TextBox,
-                (float value) =>
-                {
-                    ButtonUtilities.MarioChangeSlidingSpeedYaw(value);
-                });
+                ButtonUtilities.MarioChangeSlidingSpeedYaw);
 
             Button buttonMarioHOLPGoto = splitContainerMario.Panel1.Controls["buttonMarioHOLPGoto"] as Button;
             buttonMarioHOLPGoto.Click += (sender, e) => ButtonUtilities.GotoHOLP();
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonMarioHOLPGoto,
-                new List<string>() { "Goto HOLP", "Goto HOLP Laterally", "Goto HOLP X", "Goto HOLP Y", "Goto HOLP Z" },
-                new List<Action>() {
+                new List<string> { "Goto HOLP", "Goto HOLP Laterally", "Goto HOLP X", "Goto HOLP Y", "Goto HOLP Z" },
+                new List<Action> {
                     () => ButtonUtilities.GotoHOLP((true, true, true)),
                     () => ButtonUtilities.GotoHOLP((true, false, true)),
                     () => ButtonUtilities.GotoHOLP((true, false, false)),
                     () => ButtonUtilities.GotoHOLP((false, true, false)),
-                    () => ButtonUtilities.GotoHOLP((false, false, true)),
+                    () => ButtonUtilities.GotoHOLP((false, false, true))
                 });
 
             Button buttonMarioHOLPRetrieve = splitContainerMario.Panel1.Controls["buttonMarioHOLPRetrieve"] as Button;
             buttonMarioHOLPRetrieve.Click += (sender, e) => ButtonUtilities.RetrieveHOLP();
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonMarioHOLPRetrieve,
-                new List<string>() { "Retrieve HOLP", "Retrieve HOLP Laterally", "Retrieve HOLP X", "Retrieve HOLP Y", "Retrieve HOLP Z" },
-                new List<Action>() {
+                new List<string> { "Retrieve HOLP", "Retrieve HOLP Laterally", "Retrieve HOLP X", "Retrieve HOLP Y", "Retrieve HOLP Z" },
+                new List<Action> {
                     () => ButtonUtilities.RetrieveHOLP((true, true, true)),
                     () => ButtonUtilities.RetrieveHOLP((true, false, true)),
                     () => ButtonUtilities.RetrieveHOLP((true, false, false)),
                     () => ButtonUtilities.RetrieveHOLP((false, true, false)),
-                    () => ButtonUtilities.RetrieveHOLP((false, false, true)),
+                    () => ButtonUtilities.RetrieveHOLP((false, false, true))
                 });
 
             var marioHOLPGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioHOLP"] as GroupBox;

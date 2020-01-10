@@ -23,7 +23,6 @@ namespace STROOP.Map
         private readonly List<uint> _objTriAddressList;
 
         public MapHitboxHackTriangleObject()
-            : base()
         {
             _levelTriAddressList = TriangleUtilities.GetLevelTriangles().ConvertAll(tri => tri.Address);
             _objTriAddressList = TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address);
@@ -39,11 +38,11 @@ namespace STROOP.Map
         public override void DrawOn3DControl()
         {
             List<List<(float x, float y, float z, Color color)>> triData = GetTriangles()
-                .ConvertAll(tri => new List<(float x, float y, float z, Color color)>()
+                .ConvertAll(tri => new List<(float x, float y, float z, Color color)>(
                 {
                     (tri.X1, tri.Y1, tri.Z1, ColorUtilities.AddAlpha(GetColorForTri(tri), OpacityByte)),
                     (tri.X2, tri.Y2, tri.Z2, ColorUtilities.AddAlpha(GetColorForTri(tri), OpacityByte)),
-                    (tri.X3, tri.Y3, tri.Z3, ColorUtilities.AddAlpha(GetColorForTri(tri), OpacityByte)),
+                    (tri.X3, tri.Y3, tri.Z3, ColorUtilities.AddAlpha(GetColorForTri(tri), OpacityByte))
                 });
             Map3DVertex[] vertexArray = triData.SelectMany(vertexList => vertexList).ToList()
                 .ConvertAll(vertex => new Map3DVertex(new Vector3(

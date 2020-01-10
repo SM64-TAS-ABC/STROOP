@@ -378,7 +378,7 @@ namespace STROOP.Controls
             {
                 _watchVariablePanel.UnselectAllVariables();
                 SelectionForm.ShowDataManagerSelectionForm(
-                    new List<WatchVariableControl>() { this });
+                    new List<WatchVariableControl> { this });
             }
             else if (isNKeyHeld)
             {
@@ -540,7 +540,7 @@ namespace STROOP.Controls
             if (_settingsLevel < WatchVariableControlSettingsManager.GetSettingsLevel())
             {
                 WatchVariableControlSettingsManager.GetSettingsToApply(_settingsLevel)
-                    .ForEach(settings => ApplySettings(settings));
+                    .ForEach(ApplySettings);
                 _settingsLevel = WatchVariableControlSettingsManager.GetSettingsLevel();
             }
         }
@@ -743,7 +743,7 @@ namespace STROOP.Controls
             return WatchVarPrecursor.CreateWatchVariableControl(
                 VarName,
                 _baseColor,
-                new List<VariableGroup>() { VariableGroup.Custom },
+                new List<VariableGroup> { VariableGroup.Custom },
                 FixedAddressList);
         }
 
@@ -757,7 +757,7 @@ namespace STROOP.Controls
 
         public void AddToTab(DataManager dataManager, AddToTabTypeEnum? addToTabTypeNullable = null)
         {
-            AddVarsToTab(new List<WatchVariableControl>() { this }, dataManager, addToTabTypeNullable);
+            AddVarsToTab(new List<WatchVariableControl> { this }, dataManager, addToTabTypeNullable);
         }
 
         public static void AddVarsToTab(
@@ -773,8 +773,8 @@ namespace STROOP.Controls
                 List<List<uint>> addressesLists =
                     addToTabType == AddToTabTypeEnum.IndividualSpliced
                             || addToTabType == AddToTabTypeEnum.IndividualGrouped
-                        ? addressList.ConvertAll(address => new List<uint>() { address })
-                        : new List<List<uint>>() { addressList };
+                        ? addressList.ConvertAll(address => new List<uint> { address })
+                        : new List<List<uint>> { addressList };
                 for (int i = 0; i < addressesLists.Count; i++)
                 {
                     string name = watchVar.VarName;
@@ -788,7 +788,7 @@ namespace STROOP.Controls
                         watchVar.WatchVarPrecursor.CreateWatchVariableControl(
                             name,
                             watchVar._baseColor,
-                            new List<VariableGroup>() { VariableGroup.Custom },
+                            new List<VariableGroup> { VariableGroup.Custom },
                             constructorAddressList);
                     newVarList.Add(newControl);
                 }

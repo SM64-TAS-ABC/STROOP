@@ -57,7 +57,7 @@ namespace STROOP.Utilities
         {
             try
             {
-                var log = String.Format("{0}\n{1}\n{2}\n", e.Message, e.TargetSite.ToString(), e.StackTrace);
+                var log = String.Format("{0}\n{1}\n{2}\n", e.Message, e.TargetSite, e.StackTrace);
                 File.AppendAllText("error.txt", log);
             }
             catch (Exception) { }
@@ -69,10 +69,10 @@ namespace STROOP.Utilities
             throw obj.Exception;
         }
 
-        private readonly Dictionary<Type, Func<Process, Emulator, IEmuRamIO>> _ioCreationTable = new Dictionary<Type, Func<Process, Emulator, IEmuRamIO>>()
+        private readonly Dictionary<Type, Func<Process, Emulator, IEmuRamIO>> _ioCreationTable = new Dictionary<Type, Func<Process, Emulator, IEmuRamIO>>
         {
             { typeof(WindowsProcessRamIO),  (p, e) => new WindowsProcessRamIO(p, e) },
-            { typeof(DolphinProcessIO),     (p, e) => new DolphinProcessIO(p, e) },
+            { typeof(DolphinProcessIO),     (p, e) => new DolphinProcessIO(p, e) }
         };
 
         [DllImport("user32.dll")]

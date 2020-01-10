@@ -15,21 +15,21 @@ namespace STROOP.Managers
     public class SnowManager : DataManager
     {
         private static readonly List<VariableGroup> ALL_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
                 VariableGroup.Advanced,
-                VariableGroup.Snow,
+                VariableGroup.Snow
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
                 VariableGroup.Advanced,
-                VariableGroup.Snow,
+                VariableGroup.Snow
             };
 
         private short _numSnowParticles;
@@ -91,17 +91,17 @@ namespace STROOP.Managers
         private List<WatchVariableControl> GetSnowParticleControls(int index)
         {
             uint structOffset = (uint)index * SnowConfig.ParticleStructSize;
-            List<uint> offsets = new List<uint>()
+            List<uint> offsets = new List<uint>
             {
                 structOffset + SnowConfig.XOffset,
                 structOffset + SnowConfig.YOffset,
-                structOffset + SnowConfig.ZOffset,
+                structOffset + SnowConfig.ZOffset
             };
-            List<string> names = new List<string>()
+            List<string> names = new List<string>
             {
                 String.Format("Particle {0} X", index),
                 String.Format("Particle {0} Y", index),
-                String.Format("Particle {0} Z", index),
+                String.Format("Particle {0} Z", index)
             };
 
             List<WatchVariableControl> controls = new List<WatchVariableControl>();

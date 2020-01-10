@@ -37,7 +37,7 @@ namespace STROOP.Managers
 
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonVarHackAddNewVariable,
-                new List<string>()
+                new List<string>
                 {
                     "RNG Index",
                     "Floor YNorm",
@@ -46,9 +46,9 @@ namespace STROOP.Managers
                     "Mario Action",
                     "Mario Animation",
                     "DYaw Intended - Facing",
-                    "DYaw Intended - Facing (HAU)",
+                    "DYaw Intended - Facing (HAU)"
                 },
-                new List<Action>()
+                new List<Action>
                 {
                     () => AddVariable("RngIndex"),
                     () => AddVariable("FloorYNorm"),
@@ -57,7 +57,7 @@ namespace STROOP.Managers
                     () => AddVariable("MarioAction"),
                     () => AddVariable("MarioAnimation"),
                     () => AddVariable("DYawIntendFacing"),
-                    () => AddVariable("DYawIntendFacingHau"),
+                    () => AddVariable("DYawIntendFacingHau")
                 });
 
             Button buttonVarHackOpenVars =
@@ -108,11 +108,11 @@ namespace STROOP.Managers
 
             ControlUtilities.AddContextMenuStripFunctions(
                 _buttonEnableDisableRomHack,
-                new List<string>() { "1f Delay Hack (Standard)", "0f Delay Hack (Experimental)" },
-                new List<Action>()
+                new List<string> { "1f Delay Hack (Standard)", "0f Delay Hack (Experimental)" },
+                new List<Action>
                 {
                     () => VarHackConfig.ShowVarRomHack.LoadPayload(),
-                    () => VarHackConfig.ShowVarRomHack2.LoadPayload(),
+                    () => VarHackConfig.ShowVarRomHack2.LoadPayload()
                 });
 
             // Middle buttons

@@ -104,7 +104,7 @@ namespace STROOP.Utilities
 
             // Implement ToolStripMenu
 
-            List<Button> buttonList = new List<Button>()
+            List<Button> buttonList = new List<Button>
             {
                 buttonSquareUp,
                 buttonSquareUpRight,
@@ -113,7 +113,7 @@ namespace STROOP.Utilities
                 buttonSquareDown,
                 buttonSquareDownLeft,
                 buttonSquareLeft,
-                buttonSquareUpLeft,
+                buttonSquareUpLeft
             };
 
             List<Point> positionList = buttonList.ConvertAll(
@@ -131,7 +131,7 @@ namespace STROOP.Utilities
             int lastDirection = 0;
 
             List<ToolStripMenuItem> itemList =
-                new List<ToolStripMenuItem>()
+                new List<ToolStripMenuItem>
                 {
                     itemUp,
                     itemUpRight,
@@ -140,7 +140,7 @@ namespace STROOP.Utilities
                     itemDown,
                     itemDownLeft,
                     itemLeft,
-                    itemUpLeft,
+                    itemUpLeft
                 };
 
             Action<int, bool> SetFacingDirection = (int direction, bool inverted) =>

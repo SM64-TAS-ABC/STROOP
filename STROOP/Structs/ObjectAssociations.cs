@@ -105,16 +105,16 @@ namespace STROOP.Structs
         public bool AddEmptyAssociation()
         {
             return AddAssociation(
-                new ObjectBehaviorAssociation()
+                new ObjectBehaviorAssociation
                 {
                     Name = "Uninitialized Object",
-                    Criteria = new BehaviorCriteria()
+                    Criteria = new BehaviorCriteria
                     {
-                        BehaviorAddress = 0x0000,
+                        BehaviorAddress = 0x0000
                     },
                     RotatesOnMap = false,
                     Image = EmptyImage,
-                    MapImage = EmptyImage,
+                    MapImage = EmptyImage
                 });
         }
 

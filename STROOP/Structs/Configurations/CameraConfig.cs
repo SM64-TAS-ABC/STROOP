@@ -73,12 +73,12 @@ namespace STROOP.Structs.Configurations
         {
             get
             {
-                return new List<uint>()
+                return new List<uint>
                 {
                     FovFunctionAwakeAddress,
                     FovFunctionSleepingAddress,
                     FovFunctionUseDoorAddress,
-                    FovFunctionCollectStarAddress,
+                    FovFunctionCollectStarAddress
                 };
             }
         }
@@ -87,12 +87,12 @@ namespace STROOP.Structs.Configurations
         {
             get
             {
-                return new List<uint>()
+                return new List<uint>
                 {
                     FovFunctionAwakeValue,
                     FovFunctionSleepingValue,
                     FovFunctionUseDoorValue,
-                    FovFunctionCollectStarValue,
+                    FovFunctionCollectStarValue
                 };
             }
         }

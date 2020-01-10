@@ -98,7 +98,7 @@ namespace STROOP.Managers
             }
             set
             {
-                if (_objectNameTextBox.Text != value)
+                if (_objectNameTextBox.Text != value) // this seems redundant
                     _objectNameTextBox.Text = value;
             }
         }
@@ -127,7 +127,7 @@ namespace STROOP.Managers
             }
             set
             {
-                if (_objectImagePictureBox.Image != value)
+                if (_objectImagePictureBox.Image != value) // this seems redundant
                     _objectImagePictureBox.Image = value;
             }
         }
@@ -143,7 +143,7 @@ namespace STROOP.Managers
         }
 
         private static readonly List<VariableGroup> ALL_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
@@ -153,15 +153,15 @@ namespace STROOP.Managers
                 VariableGroup.Collision,
                 VariableGroup.Movement,
                 VariableGroup.Transformation,
-                VariableGroup.Coordinate,
+                VariableGroup.Coordinate
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
-                VariableGroup.ObjectSpecific,
+                VariableGroup.ObjectSpecific
             };
 
         public ObjectManager(string varFilePath, Control objectControl, WatchVariableFlowLayoutPanel variableTable)
@@ -188,52 +188,52 @@ namespace STROOP.Managers
             goToButton.Click += (sender, e) => ButtonUtilities.GotoObjects(_objects);
             ControlUtilities.AddContextMenuStripFunctions(
                 goToButton,
-                new List<string>() { "Goto", "Goto Laterally", "Goto X", "Goto Y", "Goto Z" },
-                new List<Action>() {
+                new List<string> { "Goto", "Goto Laterally", "Goto X", "Goto Y", "Goto Z" },
+                new List<Action> {
                     () => ButtonUtilities.GotoObjects(_objects, (true, true, true)),
                     () => ButtonUtilities.GotoObjects(_objects, (true, false, true)),
                     () => ButtonUtilities.GotoObjects(_objects, (true, false, false)),
                     () => ButtonUtilities.GotoObjects(_objects, (false, true, false)),
-                    () => ButtonUtilities.GotoObjects(_objects, (false, false, true)),
+                    () => ButtonUtilities.GotoObjects(_objects, (false, false, true))
                 });
 
             var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
             retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_objects);
             ControlUtilities.AddContextMenuStripFunctions(
                 retrieveButton,
-                new List<string>() { "Retrieve", "Retrieve Laterally", "Retrieve X", "Retrieve Y", "Retrieve Z" },
-                new List<Action>() {
+                new List<string> { "Retrieve", "Retrieve Laterally", "Retrieve X", "Retrieve Y", "Retrieve Z" },
+                new List<Action> {
                     () => ButtonUtilities.RetrieveObjects(_objects, (true, true, true)),
                     () => ButtonUtilities.RetrieveObjects(_objects, (true, false, true)),
                     () => ButtonUtilities.RetrieveObjects(_objects, (true, false, false)),
                     () => ButtonUtilities.RetrieveObjects(_objects, (false, true, false)),
-                    () => ButtonUtilities.RetrieveObjects(_objects, (false, false, true)),
+                    () => ButtonUtilities.RetrieveObjects(_objects, (false, false, true))
                 });
 
             var goToHomeButton = objPanel.Controls["buttonObjGotoHome"] as Button;
             goToHomeButton.Click += (sender, e) => ButtonUtilities.GotoObjectsHome(_objects);
             ControlUtilities.AddContextMenuStripFunctions(
                 goToHomeButton,
-                new List<string>() { "Goto Home", "Goto Home Laterally", "Goto Home X", "Goto Home Y", "Goto Home Z" },
-                new List<Action>() {
+                new List<string> { "Goto Home", "Goto Home Laterally", "Goto Home X", "Goto Home Y", "Goto Home Z" },
+                new List<Action> {
                     () => ButtonUtilities.GotoObjectsHome(_objects, (true, true, true)),
                     () => ButtonUtilities.GotoObjectsHome(_objects, (true, false, true)),
                     () => ButtonUtilities.GotoObjectsHome(_objects, (true, false, false)),
                     () => ButtonUtilities.GotoObjectsHome(_objects, (false, true, false)),
-                    () => ButtonUtilities.GotoObjectsHome(_objects, (false, false, true)),
+                    () => ButtonUtilities.GotoObjectsHome(_objects, (false, false, true))
                 });
 
             var retrieveHomeButton = objPanel.Controls["buttonObjRetrieveHome"] as Button;
             retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_objects);
             ControlUtilities.AddContextMenuStripFunctions(
                 retrieveHomeButton,
-                new List<string>() { "Retrieve Home", "Retrieve Home Laterally", "Retrieve Home X", "Retrieve Home Y", "Retrieve Home Z" },
-                new List<Action>() {
+                new List<string> { "Retrieve Home", "Retrieve Home Laterally", "Retrieve Home X", "Retrieve Home Y", "Retrieve Home Z" },
+                new List<Action> {
                     () => ButtonUtilities.RetrieveObjectsHome(_objects, (true, true, true)),
                     () => ButtonUtilities.RetrieveObjectsHome(_objects, (true, false, true)),
                     () => ButtonUtilities.RetrieveObjectsHome(_objects, (true, false, false)),
                     () => ButtonUtilities.RetrieveObjectsHome(_objects, (false, true, false)),
-                    () => ButtonUtilities.RetrieveObjectsHome(_objects, (false, false, true)),
+                    () => ButtonUtilities.RetrieveObjectsHome(_objects, (false, false, true))
                 });
 
             _releaseButton = objPanel.Controls["buttonObjRelease"] as BinaryButton;
@@ -247,11 +247,11 @@ namespace STROOP.Managers
                     || o.ReleaseStatus == ObjectConfig.ReleaseStatusDroppedValue));
             ControlUtilities.AddContextMenuStripFunctions(
                 _releaseButton,
-                new List<string>() { "Release by Throwing", "Release by Dropping", "UnRelease" },
-                new List<Action>() {
+                new List<string> { "Release by Throwing", "Release by Dropping", "UnRelease" },
+                new List<Action> {
                     () => ButtonUtilities.ReleaseObject(_objects, true),
                     () => ButtonUtilities.ReleaseObject(_objects, false),
-                    () => ButtonUtilities.UnReleaseObject(_objects),
+                    () => ButtonUtilities.UnReleaseObject(_objects)
                 });
 
             _interactButton = objPanel.Controls["buttonObjInteract"] as BinaryButton;
@@ -263,10 +263,10 @@ namespace STROOP.Managers
                 () => _objects.Count > 0 && _objects.All(o => o.InteractionStatus != 0));
             ControlUtilities.AddContextMenuStripFunctions(
                 _interactButton,
-                new List<string>() { "Interact", "UnInteract" },
-                new List<Action>() {
+                new List<string> { "Interact", "UnInteract" },
+                new List<Action> {
                     () => ButtonUtilities.InteractObject(_objects),
-                    () => ButtonUtilities.UnInteractObject(_objects),
+                    () => ButtonUtilities.UnInteractObject(_objects)
                 });
 
             _cloneButton = objPanel.Controls["buttonObjClone"] as BinaryButton;
@@ -278,17 +278,17 @@ namespace STROOP.Managers
                 () => _objects.Count > 0 && _objects.FirstOrDefault().Address == DataModels.Mario.HeldObject);
             ControlUtilities.AddContextMenuStripFunctions(
                 _cloneButton,
-                new List<string>() {
+                new List<string> {
                     "Clone with Action Update",
                     "Clone without Action Update",
                     "UnClone with Action Update",
-                    "UnClone without Action Update",
+                    "UnClone without Action Update"
                 },
-                new List<Action>() {
+                new List<Action> {
                     () => ButtonUtilities.CloneObject(_objects.FirstOrDefault(), true),
                     () => ButtonUtilities.CloneObject(_objects.FirstOrDefault(), false),
                     () => ButtonUtilities.UnCloneObject(true),
-                    () => ButtonUtilities.UnCloneObject(false),
+                    () => ButtonUtilities.UnCloneObject(false)
                 });
 
             _unloadButton = objPanel.Controls["buttonObjUnload"] as BinaryButton;
@@ -300,10 +300,10 @@ namespace STROOP.Managers
                 () => _objects.Count > 0 && _objects.All(o => !o.IsActive));
             ControlUtilities.AddContextMenuStripFunctions(
                 _unloadButton,
-                new List<string>() { "Unload", "Revive" },
-                new List<Action>() {
+                new List<string> { "Unload", "Revive" },
+                new List<Action> {
                     () => ButtonUtilities.UnloadObject(_objects),
-                    () => ButtonUtilities.ReviveObject(_objects),
+                    () => ButtonUtilities.ReviveObject(_objects)
                 });
 
             _rideButton = objPanel.Controls["buttonObjRide"] as BinaryButton;
@@ -315,18 +315,19 @@ namespace STROOP.Managers
                 () => _objects.Count > 0 && _objects.FirstOrDefault().Address == DataModels.Mario.RiddenObject);
             ControlUtilities.AddContextMenuStripFunctions(
                 _rideButton,
-                new List<string>() {
+                new List<string> {
                     "Ride with Action Update",
                     "Ride without Action Update",
                     "UnRide with Action Update",
-                    "UnRide without Action Update",
+                    "UnRide without Action Update"
                 },
-                new List<Action>() {
+                new List<Action> {
                     () => ButtonUtilities.RideObject(_objects.FirstOrDefault(), true),
                     () => ButtonUtilities.RideObject(_objects.FirstOrDefault(), false),
                     () => ButtonUtilities.UnRideObject(true),
-                    () => ButtonUtilities.UnRideObject(false),
-        });
+                    () => ButtonUtilities.UnRideObject(false)
+                }
+            );
 
             Button ukikipediaButton = objPanel.Controls["buttonObjUkikipedia"] as Button;
             ukikipediaButton.Click += (sender, e) => ButtonUtilities.UkikipediaObject(_objects.FirstOrDefault());

@@ -184,8 +184,8 @@ namespace STROOP.Utilities
             pX = PuUtilities.GetRelativeCoordinate(pX);
             pZ = PuUtilities.GetRelativeCoordinate(pZ);
 
-            double[] vX = new double[] { v1X, v2X, v3X };
-            double[] vZ = new double[] { v1Z, v2Z, v3Z };
+            double[] vX = { v1X, v2X, v3X };
+            double[] vZ = { v1Z, v2Z, v3Z };
 
             double p1X = vX[p1Index - 1];
             double p1Z = vZ[p1Index - 1];

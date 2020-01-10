@@ -33,10 +33,10 @@ namespace STROOP.Managers
             Label labelCamHackMode = splitContainer.Panel1.Controls["labelCamHackMode"] as Label;
             ControlUtilities.AddContextMenuStripFunctions(
                 labelCamHackMode,
-                new List<string>() { "Download Camera Hack ROM" },
-                new List<Action>()
+                new List<string> { "Download Camera Hack ROM" },
+                new List<Action>
                 {
-                    () => System.Diagnostics.Process.Start("http://download1436.mediafire.com/t3unklq170ag/hdd377v5794u319/Camera+Hack+ROM.z64"),
+                    () => System.Diagnostics.Process.Start("http://download1436.mediafire.com/t3unklq170ag/hdd377v5794u319/Camera+Hack+ROM.z64")
                 });
 
         _mode0RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode0"] as RadioButton;
@@ -291,7 +291,7 @@ namespace STROOP.Managers
                 CreatePanVar(String.Format("Pan{0} Cam Radius End", index), String.Format("Pan{0}RadiusEnd", index), "Blue"),
 
                 CreatePanVar(String.Format("Pan{0} FOV Start", index), String.Format("Pan{0}FOVStart", index), "Pink"),
-                CreatePanVar(String.Format("Pan{0} FOV End", index), String.Format("Pan{0}FOVEnd", index), "Pink"),
+                CreatePanVar(String.Format("Pan{0} FOV End", index), String.Format("Pan{0}FOVEnd", index), "Pink")
             };
         }
 

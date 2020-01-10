@@ -13,7 +13,7 @@ namespace STROOP.Structs
 {
     public static class TypeUtilities
     {
-        public readonly static Dictionary<string, Type> StringToType = new Dictionary<string, Type>()
+        public readonly static Dictionary<string, Type> StringToType = new Dictionary<string, Type>
         {
             { "byte", typeof(byte) },
             { "sbyte", typeof(sbyte) },
@@ -24,10 +24,10 @@ namespace STROOP.Structs
             { "long", typeof(long) },
             { "ulong", typeof(ulong) },
             { "float", typeof(float) },
-            { "double", typeof(double) },
+            { "double", typeof(double) }
         };
 
-        public readonly static Dictionary<Type, string> TypeToString = new Dictionary<Type, string>()
+        public readonly static Dictionary<Type, string> TypeToString = new Dictionary<Type, string>
         {
             { typeof(byte), "byte" },
             { typeof(sbyte), "sbyte" },
@@ -38,10 +38,10 @@ namespace STROOP.Structs
             { typeof(long), "long" },
             { typeof(ulong), "ulong" },
             { typeof(float), "float" },
-            { typeof(double), "double" },
+            { typeof(double), "double" }
         };
 
-        public readonly static Dictionary<Type, int> TypeSize = new Dictionary<Type, int>()
+        public readonly static Dictionary<Type, int> TypeSize = new Dictionary<Type, int>
         {
             {typeof(byte), 1},
             {typeof(sbyte), 1},
@@ -52,10 +52,10 @@ namespace STROOP.Structs
             {typeof(long), 8},
             {typeof(ulong), 8},
             {typeof(float), 4},
-            {typeof(double), 8},
+            {typeof(double), 8}
         };
 
-        public readonly static Dictionary<Type, bool> TypeSign = new Dictionary<Type, bool>()
+        public readonly static Dictionary<Type, bool> TypeSign = new Dictionary<Type, bool>
         {
             {typeof(byte), false},
             {typeof(sbyte), true},
@@ -66,19 +66,19 @@ namespace STROOP.Structs
             {typeof(long), true},
             {typeof(ulong), false},
             {typeof(float), true},
-            {typeof(double), true},
+            {typeof(double), true}
         };
 
-        public readonly static Dictionary<int, Type> UnsignedByteType = new Dictionary<int, Type>()
+        public readonly static Dictionary<int, Type> UnsignedByteType = new Dictionary<int, Type>
         {
             {1, typeof(byte)},
             {2, typeof(ushort)},
             {4, typeof(uint)},
-            {8, typeof(ulong)},
+            {8, typeof(ulong)}
         };
 
         public readonly static List<string> SimpleTypeList =
-            new List<string>()
+            new List<string>
             {
                 "byte",
                 "sbyte",
@@ -86,11 +86,11 @@ namespace STROOP.Structs
                 "ushort",
                 "int",
                 "uint",
-                "float",
+                "float"
             };
 
         public readonly static List<string> InGameTypeList =
-            new List<string>()
+            new List<string>
             {
                 "byte",
                 "sbyte",
@@ -99,7 +99,7 @@ namespace STROOP.Structs
                 "int",
                 "uint",
                 "float",
-                "double",
+                "double"
             };
 
         public static object ConvertBytes(Type type, string hexString, bool littleEndian)

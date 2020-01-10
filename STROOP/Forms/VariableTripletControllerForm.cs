@@ -40,11 +40,11 @@ namespace STROOP.Forms
                 {
                     if (controls.Count < 3) return;
 
-                    List<List<object>> valueLists = new List<List<object>>()
+                    List<List<object>> valueLists = new List<List<object>>
                     {
                         controls[0].GetValues(handleFormatting: false),
                         controls[1].GetValues(handleFormatting: false),
-                        controls[2].GetValues(handleFormatting: false),
+                        controls[2].GetValues(handleFormatting: false)
                     };
                     if (controls.Count >= 4)
                     {
@@ -56,19 +56,19 @@ namespace STROOP.Forms
                     for (int i = 0; i < minCount; i++)
                     {
                         int index = i;
-                        List<Func<double>> getters = new List<Func<double>>()
+                        List<Func<double>> getters = new List<Func<double>>
                         {
                             () => ParsingUtilities.ParseDouble(valueLists[0][index]),
                             () => ParsingUtilities.ParseDouble(valueLists[1][index]),
                             () => ParsingUtilities.ParseDouble(valueLists[2][index]),
-                            () => controls.Count >= 4 ? ParsingUtilities.ParseDouble(valueLists[3][index]) : double.NaN,
+                            () => controls.Count >= 4 ? ParsingUtilities.ParseDouble(valueLists[3][index]) : double.NaN
                         };
-                        List<Func<double, bool>> setters = new List<Func<double, bool>>()
+                        List<Func<double, bool>> setters = new List<Func<double, bool>>
                         {
                             (double value) => controls[0].SetValueOfValues(value, index),
                             (double value) => controls[1].SetValueOfValues(value, index),
                             (double value) => controls[2].SetValueOfValues(value, index),
-                            (double value) => controls.Count >= 4 ? controls[3].SetValueOfValues(value, index) : true,
+                            (double value) => controls.Count >= 4 ? controls[3].SetValueOfValues(value, index) : true
                         };
                         PositionAngle posAngle = PositionAngle.Functions(getters, setters);
                         posAngles.Add(posAngle);

@@ -33,7 +33,7 @@ namespace STROOP.Map
         private string _customName;
 
         public MapTracker(MapObject mapObj, List<MapSemaphore> semaphoreList = null)
-            : this(new List<MapObject>() { mapObj }, semaphoreList)
+            : this(new List<MapObject> { mapObj }, semaphoreList)
         {
         }
 
@@ -58,7 +58,7 @@ namespace STROOP.Map
             _customName = null;
             textBoxName.AddEnterAction(() => _customName = textBoxName.Text);
             textBoxName.AddLostFocusAction(() => _customName = textBoxName.Text);
-            textBoxName.AddDoubleClickAction(() => textBoxName.SelectAll());
+            textBoxName.AddDoubleClickAction(textBoxName.SelectAll);
             textBoxName.ContextMenuStrip = new ContextMenuStrip();
             ToolStripMenuItem itemResetCustomName = new ToolStripMenuItem("Reset Custom Name");
             itemResetCustomName.Click += (sender, e) => _customName = null;
@@ -86,12 +86,12 @@ namespace STROOP.Map
             SetColor(null);
             SetOutlineColor(null);
 
-            textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
-            trackBarSize.AddManualChangeAction(() => trackBarSize_ValueChanged());
-            textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
-            trackBarOpacity.AddManualChangeAction(() => trackBarOpacity_ValueChanged());
-            textBoxOutlineWidth.AddEnterAction(() => textBoxOutlineWidth_EnterAction());
-            trackBarOutlineWidth.AddManualChangeAction(() => trackBarOutlineWidth_ValueChanged());
+            textBoxSize.AddEnterAction(textBoxSize_EnterAction);
+            trackBarSize.AddManualChangeAction(trackBarSize_ValueChanged);
+            textBoxOpacity.AddEnterAction(textBoxOpacity_EnterAction);
+            trackBarOpacity.AddManualChangeAction(trackBarOpacity_ValueChanged);
+            textBoxOutlineWidth.AddEnterAction(textBoxOutlineWidth_EnterAction);
+            trackBarOutlineWidth.AddManualChangeAction(trackBarOutlineWidth_ValueChanged);
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
             colorSelectorOutline.AddColorChangeAction((Color color) => SetOutlineColor(color));
 
@@ -106,7 +106,7 @@ namespace STROOP.Map
 
         private void InitializeTrackBarContextMenuStrips()
         {
-            List<int> maxValues = new List<int>() { 10, 100, 1000, 10000, 100000 };
+            List<int> maxValues = new List<int> { 10, 100, 1000, 10000, 100000 };
             Action<TrackBar, Action> initializeContextMenuStrip = (TrackBar trackBar, Action resetAction) =>
             {
                 trackBar.ContextMenuStrip = new ContextMenuStrip();
@@ -124,7 +124,7 @@ namespace STROOP.Map
                     };
                     if (trackBar.Maximum == maxValue) item.Checked = true;
                     trackBar.ContextMenuStrip.Items.Add(item);
-                };
+                }
             };
             initializeContextMenuStrip(trackBarSize, () => SetSize(null));
             initializeContextMenuStrip(trackBarOutlineWidth, () => SetOutlineWidth(null));

@@ -91,23 +91,23 @@ namespace STROOP.M64
 
         private List<object> GetOriginalValues()
         {
-            return new List<object>()
+            return new List<object>
             {
                 _X, _Y,
                 _A, _B, _Z, _S, _R,
                 _C_Up, _C_Down, _C_Left, _C_Right,
-                _L, _D_Up, _D_Down, _D_Left, _D_Right,
+                _L, _D_Up, _D_Down, _D_Left, _D_Right
             };
         }
 
         private List<object> GetCurrentValues()
         {
-            return new List<object>()
+            return new List<object>
             {
                 X, Y,
                 A, B, Z, S, R,
                 C_Up, C_Down, C_Left, C_Right,
-                L, D_Up, D_Down, D_Left, D_Right,
+                L, D_Up, D_Down, D_Left, D_Right
             };
         }
 

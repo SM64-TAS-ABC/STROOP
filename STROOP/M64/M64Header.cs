@@ -267,7 +267,7 @@ namespace STROOP.M64
 
         private List<bool> GetControllerBoolList()
         {
-            return new List<bool>()
+            return new List<bool>
             {
                 Controller1Present,
                 Controller2Present,
@@ -280,7 +280,7 @@ namespace STROOP.M64
                 Controller1RumblePak,
                 Controller2RumblePak,
                 Controller3RumblePak,
-                Controller4RumblePak,
+                Controller4RumblePak
             };
         }
 

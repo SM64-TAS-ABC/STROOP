@@ -54,12 +54,12 @@ namespace STROOP.Structs
 
         public static List<string> GetDescriptions()
         {
-            return new List<string>()
+            return new List<string>
             {
                 "Slow",
                 "Fast",
                 "Random",
-                "Still",
+                "Still"
             };
         }
 

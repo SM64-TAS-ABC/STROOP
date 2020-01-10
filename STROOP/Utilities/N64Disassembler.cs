@@ -368,7 +368,7 @@ namespace STROOP.Utilities
             (i) => { return "Unk"; },
             (i) => { return "Unk"; },
             (i) => { return "Unk"; },
-            (i) => { return "Unk"; },
+            (i) => { return "Unk"; }
         };
 
         private static string disassembleCop0(Instruction i)

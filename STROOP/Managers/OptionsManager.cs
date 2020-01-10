@@ -20,7 +20,7 @@ namespace STROOP.Managers
 
         public OptionsManager(TabPage tabControl, Control cogControl)
         {
-            _savedSettingsTextList = new List<string>()
+            _savedSettingsTextList = new List<string>
             {
                 "Display Yaw Angles as Unsigned",
                 "Variable Values Flush Right",
@@ -34,10 +34,10 @@ namespace STROOP.Managers
                 "Display as Hex Uses Memory",
                 "Neutralize Triangles with 0x15",
                 "Cloning Updates Holp Type",
-                "Use In-Game Trig for Angle Logic",
+                "Use In-Game Trig for Angle Logic"
             };
 
-            _savedSettingsGetterList = new List<Func<bool>>()
+            _savedSettingsGetterList = new List<Func<bool>>
             {
                 () => SavedSettingsConfig.DisplayYawAnglesAsUnsigned,
                 () => SavedSettingsConfig.VariableValuesFlushRight,
@@ -51,10 +51,10 @@ namespace STROOP.Managers
                 () => SavedSettingsConfig.DisplayAsHexUsesMemory,
                 () => SavedSettingsConfig.NeutralizeTrianglesWith0x15,
                 () => SavedSettingsConfig.CloningUpdatesHolpType,
-                () => SavedSettingsConfig.UseInGameTrigForAngleLogic,
+                () => SavedSettingsConfig.UseInGameTrigForAngleLogic
             };
 
-            _savedSettingsSetterList = new List<Action<bool>>()
+            _savedSettingsSetterList = new List<Action<bool>>
             {
                 (bool value) => SavedSettingsConfig.DisplayYawAnglesAsUnsigned = value,
                 (bool value) => SavedSettingsConfig.VariableValuesFlushRight = value,
@@ -68,7 +68,7 @@ namespace STROOP.Managers
                 (bool value) => SavedSettingsConfig.DisplayAsHexUsesMemory = value,
                 (bool value) => SavedSettingsConfig.NeutralizeTrianglesWith0x15 = value,
                 (bool value) => SavedSettingsConfig.CloningUpdatesHolpType = value,
-                (bool value) => SavedSettingsConfig.UseInGameTrigForAngleLogic = value,
+                (bool value) => SavedSettingsConfig.UseInGameTrigForAngleLogic = value
             };
 
             _savedSettingsCheckedListBox = tabControl.Controls["checkedListBoxSavedSettings"] as CheckedListBox;
@@ -147,8 +147,7 @@ namespace STROOP.Managers
                 groupBoxPositionControllerRelativeAngle.Controls["textBoxPositionControllerRelativeAngleCustom"] as BetterTextbox;
             textBoxPositionControllerRelativeAngleCustom.LostFocus += (sender, e) =>
             {
-                double value;
-                if (double.TryParse((sender as TextBox).Text, out value))
+                if (double.TryParse((sender as TextBox).Text, out double value))
                 {
                     PositionControllerRelativityConfig.CustomAngle = value;
                 }
@@ -159,7 +158,7 @@ namespace STROOP.Managers
             };
 
             // object slot overlays
-            List<string> objectSlotOverlayTextList = new List<string>()
+            List<string> objectSlotOverlayTextList = new List<string>
             {
                 "Held Object",
                 "Stood On Object",
@@ -174,10 +173,10 @@ namespace STROOP.Managers
                 "Ceiling Object",
                 "Collision Object",
                 "Parent Object",
-                "Child Object",
+                "Child Object"
             };
 
-            List<Func<bool>> objectSlotOverlayGetterList = new List<Func<bool>>()
+            List<Func<bool>> objectSlotOverlayGetterList = new List<Func<bool>>
             {
                 () => OverlayConfig.ShowOverlayHeldObject,
                 () => OverlayConfig.ShowOverlayStoodOnObject,
@@ -192,10 +191,10 @@ namespace STROOP.Managers
                 () => OverlayConfig.ShowOverlayCeilingObject,
                 () => OverlayConfig.ShowOverlayCollisionObject,
                 () => OverlayConfig.ShowOverlayParentObject,
-                () => OverlayConfig.ShowOverlayChildObject,
+                () => OverlayConfig.ShowOverlayChildObject
             };
 
-            List<Action<bool>> objectSlotOverlaySetterList = new List<Action<bool>>()
+            List<Action<bool>> objectSlotOverlaySetterList = new List<Action<bool>>
             {
                 (bool value) => OverlayConfig.ShowOverlayHeldObject = value,
                 (bool value) => OverlayConfig.ShowOverlayStoodOnObject = value,
@@ -210,7 +209,7 @@ namespace STROOP.Managers
                 (bool value) => OverlayConfig.ShowOverlayCeilingObject = value,
                 (bool value) => OverlayConfig.ShowOverlayCollisionObject = value,
                 (bool value) => OverlayConfig.ShowOverlayParentObject = value,
-                (bool value) => OverlayConfig.ShowOverlayChildObject = value,
+                (bool value) => OverlayConfig.ShowOverlayChildObject = value
             };
 
             CheckedListBox checkedListBoxObjectSlotOverlaysToShow = tabControl.Controls["checkedListBoxObjectSlotOverlaysToShow"] as CheckedListBox;
@@ -234,11 +233,11 @@ namespace STROOP.Managers
             };
             ControlUtilities.AddContextMenuStripFunctions(
                 checkedListBoxObjectSlotOverlaysToShow,
-                new List<string>() { "Set All On", "Set All Off" },
-                new List<Action>()
+                new List<string> { "Set All On", "Set All Off" },
+                new List<Action>
                 {
                     () => setAllObjectSlotOverlays(true),
-                    () => setAllObjectSlotOverlays(false),
+                    () => setAllObjectSlotOverlays(false)
                 });
 
             // FPS
@@ -247,8 +246,7 @@ namespace STROOP.Managers
             betterTextboxFPS.AddLostFocusAction(
                 () =>
                 {
-                    uint value;
-                    if (uint.TryParse(betterTextboxFPS.Text, out value))
+                    if (uint.TryParse(betterTextboxFPS.Text, out uint value))
                     {
                         RefreshRateConfig.RefreshRateFreq = value;
                     }

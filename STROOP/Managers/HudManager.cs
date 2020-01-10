@@ -41,19 +41,19 @@ namespace STROOP.Managers
 
             ControlUtilities.AddContextMenuStripFunctions(
                 _turnOnOffHudButton,
-                new List<string>()
+                new List<string>
                 {
                     "Disable HUD by Changing Level Index",
                     "Enable HUD by Changing Level Index",
                     "Disable HUD by Removing Function",
-                    "Enable HUD by Removing Function",
+                    "Enable HUD by Removing Function"
                 },
-                new List<Action>()
+                new List<Action>
                 {
                     () => ButtonUtilities.SetHudVisibility(false, true),
                     () => ButtonUtilities.SetHudVisibility(true, true),
                     () => ButtonUtilities.SetHudVisibility(false, false),
-                    () => ButtonUtilities.SetHudVisibility(true, false),
+                    () => ButtonUtilities.SetHudVisibility(true, false)
                 });
 
             _checkBoxFullHP = splitContainerHud.Panel1.Controls["checkBoxFullHP"] as CheckBox;

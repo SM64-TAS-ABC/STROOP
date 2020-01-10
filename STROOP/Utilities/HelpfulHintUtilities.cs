@@ -13,7 +13,7 @@ namespace STROOP.Structs
     public static class HelpfulHintUtilities
     {
         private static readonly List<string> _helpfulHints =
-            new List<string>()
+            new List<string>
             {
                 // Right clicking
                 "Right click on object slots to access object functions from any tab, e.g. \"Goto\", \"Clone\", \"Unload\".",

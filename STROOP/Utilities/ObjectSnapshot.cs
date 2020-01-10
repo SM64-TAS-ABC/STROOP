@@ -15,15 +15,15 @@ namespace STROOP.Utilities
 
         private readonly List<uint> uintValues;
 
-        private static readonly List<uint> _primaryVariables = new List<uint>()
+        private static readonly List<uint> _primaryVariables = new List<uint>
         {
             ObjectConfig.NextLinkOffset,
             ObjectConfig.PreviousLinkOffset,
             ObjectConfig.ProcessedNextLinkOffset,
-            ObjectConfig.ProcessedPreviousLinkOffset,
+            ObjectConfig.ProcessedPreviousLinkOffset
         };
 
-        private static readonly List<uint> _secondaryVariables = new List<uint>()
+        private static readonly List<uint> _secondaryVariables = new List<uint>
         {
             ObjectConfig.NextLinkOffset,
             ObjectConfig.PreviousLinkOffset,
@@ -40,7 +40,7 @@ namespace STROOP.Utilities
             ObjectConfig.RollFacingOffsetUInt,
             ObjectConfig.YawMovingOffsetUInt,
             ObjectConfig.PitchMovingOffsetUInt,
-            ObjectConfig.RollMovingOffsetUInt,
+            ObjectConfig.RollMovingOffsetUInt
         };
 
         public ObjectSnapshot(uint address)

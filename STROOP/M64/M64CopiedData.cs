@@ -55,15 +55,15 @@ namespace STROOP.M64
 
         public static readonly M64CopiedData OneEmptyFrame =
             new M64CopiedData(0, 0, null, null, "One Empty Frame",
-                new List<M64CopiedFrame>() { M64CopiedFrame.OneEmptyFrame });
+                new List<M64CopiedFrame> { M64CopiedFrame.OneEmptyFrame });
 
         public static readonly M64CopiedData OnePauseFrame =
             new M64CopiedData(0, 0, null, null, "One Pause Frame",
-                new List<M64CopiedFrame>() { M64CopiedFrame.OnePauseFrame });
+                new List<M64CopiedFrame> { M64CopiedFrame.OnePauseFrame });
 
         public static readonly M64CopiedData OnePauseFrameOverwrite =
             new M64CopiedData(0, 0, null, null, "One Empty Frame",
-                new List<M64CopiedFrame>() { M64CopiedFrame.OnePauseFrameOverwrite });
+                new List<M64CopiedFrame> { M64CopiedFrame.OnePauseFrameOverwrite });
 
         public void Apply(List<M64InputFrame> inputs)
         {
@@ -76,13 +76,13 @@ namespace STROOP.M64
 
         public void Apply(M64InputFrame input)
         {
-            Apply(new List<M64InputFrame>() { input });
+            Apply(new List<M64InputFrame> { input });
         }
 
         public override string ToString()
         {
             if (_customName != null) return _customName;
-            return String.Format(
+            return string.Format(
                 "{0}f [{1}] {2}-{3} @{4}",
                 _totalFrames, _typeString, _startFrame, _endFrame, _fileName);
         }

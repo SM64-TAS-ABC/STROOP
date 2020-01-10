@@ -37,8 +37,8 @@ namespace STROOP.Managers
             }
         }
 
-        private List<PaintingData> paintingDataList =
-            new List<PaintingData>()
+        private readonly List<PaintingData> paintingDataList =
+            new List<PaintingData>
             {
                 new PaintingData("BoB", PaintingListTypeEnum.Castle, 0),
                 new PaintingData("WF", PaintingListTypeEnum.Castle, 2),
@@ -55,7 +55,7 @@ namespace STROOP.Managers
                 new PaintingData("THI Tiny", PaintingListTypeEnum.Castle, 9),
                 new PaintingData("THI Huge", PaintingListTypeEnum.Castle, 13),
                 new PaintingData("TTC", PaintingListTypeEnum.Castle, 11),
-                new PaintingData("CotMC", PaintingListTypeEnum.HMC, 0),
+                new PaintingData("CotMC", PaintingListTypeEnum.HMC, 0)
             };
 
         private ListBox _listBoxPainting;

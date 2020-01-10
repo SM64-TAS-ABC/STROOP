@@ -273,7 +273,7 @@ namespace STROOP.Utilities
 
         public static List<string> ParseStringList(string text, bool replaceCharacters = true)
         {
-            if (text == null || text == "")
+            if (string.IsNullOrEmpty(text))
             {
                 return new List<string>();
             }

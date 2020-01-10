@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace STROOP.Utilities
 {
-    public class DecompilerFunctionUtilities
+    public static class DecompilerFunctionUtilities
     {
-        static readonly byte[] ReturnBytes = new byte[] { 0x08, 0x00, 0xE0, 0x03 };
+        static readonly byte[] ReturnBytes = { 0x08, 0x00, 0xE0, 0x03 };
         static readonly int MaximumInstructions = 1000;
 
         public static int? FindEndAddress(uint startAddress, byte[] ramState)
@@ -28,7 +28,7 @@ namespace STROOP.Utilities
                     return null;
             }
 
-            instructionCount += 2; // 
+            instructionCount += 2;
 
             return instructionCount;
         }

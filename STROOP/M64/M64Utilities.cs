@@ -17,7 +17,7 @@ namespace STROOP.M64
     public static class M64Utilities
     {
         public static readonly Dictionary<string, int> InputHeaderTextToIndex =
-            new Dictionary<string, int>()
+            new Dictionary<string, int>
             {
                 ["X"] = 0,
                 ["Y"] = 1,
@@ -43,7 +43,7 @@ namespace STROOP.M64
         public static readonly List<string> ButtonNameList = InputHeaderTexts.Skip(2).ToList();
 
         public static readonly List<Func<M64InputFrame, bool>> IsButtonPressedFunctionList =
-            new List<Func<M64InputFrame, bool>>()
+            new List<Func<M64InputFrame, bool>>
             {
                 input => input.A,
                 input => input.B,
@@ -144,7 +144,7 @@ namespace STROOP.M64
         }
 
         public static readonly List<(string, int, Color)> ColumnParameters =
-            new List<(string, int, Color)>()
+            new List<(string, int, Color)>
             {
                 ("Frame", M64Config.TextColumnFillWeight, M64Config.FrameColumnColor),
                 ("Id", M64Config.TextColumnFillWeight, M64Config.FrameColumnColor),
