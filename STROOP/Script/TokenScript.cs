@@ -44,6 +44,13 @@ namespace STROOP.Script
 
         public void Run()
         {
+            using (ScriptEngine engine = new ScriptEngine("{16d51579-a30b-4c8b-a276-0ff4dc41e755}"))
+            {
+                object o = engine.Eval(_text) ?? "(no output)";
+                InfoForm.ShowValue(o);
+            }
+            return;
+
             try
             {
                 SymbolTable.Reset();
