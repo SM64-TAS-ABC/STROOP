@@ -14,11 +14,11 @@ using OpenTK.Graphics;
 
 namespace STROOP.Script
 {
-    public class CompoundStatementNode : Node
+    public class StatementListNode : Node
     {
         private List<Node> _statementList;
 
-        public CompoundStatementNode(List<Node> statementList)
+        public StatementListNode(List<Node> statementList)
         {
             _statementList = new List<Node>(statementList);
         }

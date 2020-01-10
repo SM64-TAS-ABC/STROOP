@@ -128,7 +128,7 @@ namespace STROOP.Script
                 results.Add(GetStatement());
             }
 
-            return new CompoundStatementNode(results);
+            return new StatementListNode(results);
         }
 
         public Node GetStatement()
