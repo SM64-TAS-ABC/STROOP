@@ -446,6 +446,18 @@ namespace STROOP.Controls
             return GetCurrentVariableControls().ConvertAll(control => control.VarName);
         }
 
+        public List<(string, object)> GetCurrentVariableNamesAndValues(bool useRounding = false, bool handleFormatting = true)
+        {
+            return GetCurrentVariableControls().ConvertAll(control => (control.VarName, control.GetValue(useRounding, handleFormatting)));
+        }
+
+        public bool SetVariableValueByName(string name, object value)
+        {
+            WatchVariableControl control = GetCurrentVariableControls().FirstOrDefault(c => c.VarName == name);
+            if (control == null) return false;
+            return control.SetValue(value);
+        }
+
         public void UpdatePanel()
         {
             if (!ContainsFocus)
