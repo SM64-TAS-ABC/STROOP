@@ -37,6 +37,13 @@ namespace STROOP.Script
             }
         }
 
+        public VarNode GetVariable()
+        {
+            VarNode node = new VarNode(_currentToken);
+            Eat(TokenType.ID);
+            return node;
+        }
+
         public Node GetFactor()
         {
             Token token = _currentToken;
@@ -113,35 +120,6 @@ namespace STROOP.Script
             return node;
         }
 
-        public Node GetProgram()
-        {
-            return GetStatementList();
-        }
-
-        public Node GetStatementList()
-        {
-            List<Node> statementList = new List<Node>();
-            while (_currentToken.Type != TokenType.EOF)
-            {
-                statementList.Add(GetStatement());
-            }
-            return new StatementListNode(statementList);
-        }
-
-        public Node GetStatement()
-        {
-            if (_currentToken.Type == TokenType.ID)
-            {
-                return GetAssignmentStatement();
-            }
-            if (_currentToken.Type == TokenType.VAR)
-            {
-                return GetDeclarationAssignStatement();
-            }
-
-            throw new Exception("cannot start a statement with type: " + _currentToken.Type);
-        }
-
         public Node GetAssignmentStatement()
         {
             VarNode left = GetVariable();
@@ -163,11 +141,33 @@ namespace STROOP.Script
             return new DeclareAssignNode(left, token, right);
         }
 
-        public VarNode GetVariable()
+        public Node GetStatement()
         {
-            VarNode node = new VarNode(_currentToken);
-            Eat(TokenType.ID);
-            return node;
+            if (_currentToken.Type == TokenType.ID)
+            {
+                return GetAssignmentStatement();
+            }
+            if (_currentToken.Type == TokenType.VAR)
+            {
+                return GetDeclarationAssignStatement();
+            }
+
+            throw new Exception("cannot start a statement with type: " + _currentToken.Type);
+        }
+
+        public Node GetStatementList()
+        {
+            List<Node> statementList = new List<Node>();
+            while (_currentToken.Type != TokenType.EOF)
+            {
+                statementList.Add(GetStatement());
+            }
+            return new StatementListNode(statementList);
+        }
+
+        public Node GetProgram()
+        {
+            return GetStatementList();
         }
 
         public Node Parse()
