@@ -15,13 +15,13 @@ namespace STROOP.Managers
 {
     public class ScriptManager : DataManager
     {
-        private CheckBox _checkBoxScriptRunContinuously;
-        private Button _buttonScriptRunOnce;
-        private Button _buttonScriptInstructions;
-        private Button _buttonScriptExamples;
-        private RichTextBoxEx _richTextBoxScript;
+        private readonly CheckBox _checkBoxScriptRunContinuously;
+        private readonly Button _buttonScriptRunOnce;
+        private readonly Button _buttonScriptInstructions;
+        private readonly Button _buttonScriptExamples;
+        private readonly RichTextBoxEx _richTextBoxScript;
 
-        private TokenScript _script;
+        private readonly TokenScript _script;
 
         public ScriptManager(string varFilePath, TabPage tabPage, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(varFilePath, watchVariablePanel)
