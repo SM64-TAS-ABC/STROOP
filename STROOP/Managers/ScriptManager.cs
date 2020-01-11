@@ -55,7 +55,7 @@ namespace STROOP.Managers
             _buttonScriptInstructions.Click += (sender, e) =>
             {
                 InfoForm.ShowValue(
-                    "To use the script tab, we must first implement the script tab.",
+                    string.Join("\r\n", _instructions),
                     "Instructions",
                     "Instructions");
             };
@@ -81,7 +81,23 @@ namespace STROOP.Managers
             base.Update(updateView);
         }
 
-        private List<string> _exampleNames = new List<string>()
+        private readonly List<string> _instructions = new List<string>()
+        {
+            @"The Script Tab can be used to set variables in a custom way defined by you.",
+            @"Specifically, you write JavaScript code on the left, which can both read from and write to the variables on the right.",
+            @"So if you want to read from or write to a variable, you must first add it to this tab.",
+            @"",
+            @"Within your JavaScript code, there are 2 implicit objects that you have access to.",
+            @"The first of these is INPUT, which can be used to read from the variables.",
+            @"For example, to get the value for Mario’s X position, just write INPUT[""Mario X""].",
+            @"The second of these is OUTPUT, which can be used to write to the variables.",
+            @"For example, to write a value v to Mario’s X position, just write OUTPUT[""Mario X""] = v.",
+            @"",
+            @"You can run your script continuously (runs once per STROOP frame) or just once.",
+            @"To see some examples of scripts you can write, click on the Examples button.",
+        };
+
+        private readonly List<string> _exampleNames = new List<string>()
         {
             "Set Mario's X value",
             "Set Mario's X value using Mario's Z value",
@@ -89,7 +105,7 @@ namespace STROOP.Managers
             "Set 3 scuttlebug Y speed values using a custom function",
         };
 
-        private List<List<string>> _exampleLines = new List<List<string>>()
+        private readonly List<List<string>> _exampleLines = new List<List<string>>()
         {
             new List<string>()
             {
