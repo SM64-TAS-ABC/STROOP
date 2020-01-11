@@ -60,13 +60,16 @@ namespace STROOP.Managers
                     "Instructions");
             };
 
-            _buttonScriptExamples.Click += (sender, e) =>
+            _buttonScriptExamples.ContextMenuStrip = new ContextMenuStrip();
+            for (int i = 0; i < _exampleNames.Count; i++)
             {
-                InfoForm.ShowValue(
-                    "Here's where I'd put some examples... if I had any!!!",
-                    "Examples",
-                    "Examples");
-            };
+                ToolStripMenuItem item = new ToolStripMenuItem(_exampleNames[i]);
+                string text = string.Join("\r\n", _exampleLines[i]);
+                item.Click += (sender, e) => _richTextBoxScript.Text = text;
+                _buttonScriptExamples.ContextMenuStrip.Items.Add(item);
+            }
+            _buttonScriptExamples.Click += (sender, e) =>
+                _buttonScriptExamples.ContextMenuStrip.Show(Cursor.Position);
         }
 
         public override void Update(bool updateView)
@@ -77,5 +80,45 @@ namespace STROOP.Managers
 
             base.Update(updateView);
         }
+
+        private List<string> _exampleNames = new List<string>()
+        {
+            "Set Mario's X value",
+            "Set Mario's X value using Mario's Z value",
+            "Contrain Mario's X value to within a range",
+            "Set 3 scuttlebug Y speed values using a custom function",
+        };
+
+        private List<List<string>> _exampleLines = new List<List<string>>()
+        {
+            new List<string>()
+            {
+                @"// Sets Mario X to 6000",
+                @"OUTPUT[""Mario X""] = 6000;",
+            },
+            new List<string>()
+            {
+                @"// Sets Mario X to Mario Z",
+                @"OUTPUT[""Mario X""] = INPUT[""Mario Z""];",
+            },
+            new List<string>()
+            {
+                @"// Keeps Mario's X between 6000 and 7000",
+                @"if (INPUT[""Mario X""] > 7000) OUTPUT[""Mario X""] = 7000;",
+                @"if (INPUT[""Mario X""] < 6000) OUTPUT[""Mario X""] = 6000;",
+            },
+            new List<string>()
+            {
+                @"// Sets 3 scuttlebug Y speeds to 20",
+                @"// Assumes you have variables ""Scuttlebug Y Speed 1"",",
+                @"// ""Scuttlebug Y Speed 2"", ""Scuttlebug Y Speed 3""",
+                @"function setYSpeed(index) {",
+                @"  OUTPUT[""Scuttlebug Y Speed "" + index] = 20;",
+                @"}",
+                @"for (var i = 1; i <= 3; i++) {",
+                @"  setYSpeed(i);",
+                @"}",
+            },
+        };
     }
 }
