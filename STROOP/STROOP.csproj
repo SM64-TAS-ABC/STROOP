@@ -426,31 +426,31 @@
     <Compile Include="Structs\PendulumVertexTable.cs" />
     <Compile Include="Structs\TriangleInfoTable.cs" />
     <Compile Include="Structs\PointTable.cs" />
-    <Compile Include="Ttc\TtcPendulum2.cs" />
-    <Compile Include="Ttc\TtcRng2.cs" />
-    <Compile Include="Ttc\TtcSaveStateByteIterator.cs" />
-    <Compile Include="Ttc\TtcUtilities.cs" />
-    <Compile Include="Ttc\TtcSimulation.cs" />
-    <Compile Include="Ttc\TtcRng.cs" />
-    <Compile Include="Ttc\TtcMain.cs" />
-    <Compile Include="Ttc\TtcSaveState.cs" />
-    <Compile Include="Ttc\TtcWheel.cs" />
-    <Compile Include="Ttc\TtcTreadmill.cs" />
-    <Compile Include="Ttc\TtcThwomp.cs" />
-    <Compile Include="Ttc\TtcSpinningTriangle.cs" />
-    <Compile Include="Ttc\TtcSpinner.cs" />
-    <Compile Include="Ttc\TtcRotatingTriangularPrism.cs" />
-    <Compile Include="Ttc\TtcPusher.cs" />
-    <Compile Include="Ttc\TtcRotatingBlock.cs" />
-    <Compile Include="Ttc\TtcPitBlock.cs" />
-    <Compile Include="Ttc\TtcPendulum.cs" />
-    <Compile Include="Ttc\TtcHand.cs" />
-    <Compile Include="Ttc\TtcElevator.cs" />
-    <Compile Include="Ttc\TtcDust.cs" />
-    <Compile Include="Ttc\TtcCog.cs" />
-    <Compile Include="Ttc\TtcBobomb.cs" />
-    <Compile Include="Ttc\TtcAmp.cs" />
-    <Compile Include="Ttc\TtcObject.cs" />
+    <Compile Include="TTC\TtcPendulum2.cs" />
+    <Compile Include="TTC\TtcRng2.cs" />
+    <Compile Include="TTC\TtcSaveStateByteIterator.cs" />
+    <Compile Include="TTC\TtcUtilities.cs" />
+    <Compile Include="TTC\TtcSimulation.cs" />
+    <Compile Include="TTC\TTCRNG.cs" />
+    <Compile Include="TTC\TTCMain.cs" />
+    <Compile Include="TTC\TtcSaveState.cs" />
+    <Compile Include="TTC\TTCWheel.cs" />
+    <Compile Include="TTC\TTCTreadmill.cs" />
+    <Compile Include="TTC\TTCThwomp.cs" />
+    <Compile Include="TTC\TTCSpinningTriangle.cs" />
+    <Compile Include="TTC\TTCSpinner.cs" />
+    <Compile Include="TTC\TTCRotatingTriangularPrism.cs" />
+    <Compile Include="TTC\TTCPusher.cs" />
+    <Compile Include="TTC\TTCRotatingBlock.cs" />
+    <Compile Include="TTC\TTCPitBlock.cs" />
+    <Compile Include="TTC\TTCPendulum.cs" />
+    <Compile Include="TTC\TTCHand.cs" />
+    <Compile Include="TTC\TTCElevator.cs" />
+    <Compile Include="TTC\TTCDust.cs" />
+    <Compile Include="TTC\TTCCog.cs" />
+    <Compile Include="TTC\TTCBobomb.cs" />
+    <Compile Include="TTC\TTCAmp.cs" />
+    <Compile Include="TTC\TTCObject.cs" />
     <Compile Include="M64\M64CopiedFrame.cs" />
     <Compile Include="M64\M64File.cs" />
     <Compile Include="M64\M64InputCell.cs" />
@@ -1014,21 +1014,21 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>del "$(TargetDir)OpenTK.dll.config"
-del "$(TargetDir)OpenTK.GLControl.xml"
-del "$(TargetDir)OpenTK.xml"
-del "$(TargetDir)STROOP.exe.config"
-</PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>xcopy /E /Y /I "$(ProjectDir)Resources" "$(TargetDir)Resources" /D</PreBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
+    <ItemGroup>
+      <RESOURCES Include="$(ProjectDir)Resources\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(RESOURCES)"
+          DestinationFiles="$(TargetDir)Resources\%(RecursiveDir)%(Filename)%(Extension)"
+          SkipUnchangedFiles="true" />
   </Target>
   <Target Name="AfterBuild">
+    <Delete Files="$(TargetDir)OpenTK.dll.config" />
+    <Delete Files="$(TargetDir)OpenTK.GLControl.xml" />
+    <Delete Files="$(TargetDir)OpenTK.xml" />
+    <Delete Files="$(TargetDir)STROOP.exe.config" />
   </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
   -->
 </Project>

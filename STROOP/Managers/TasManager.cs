@@ -326,7 +326,7 @@ namespace STROOP.Managers
         private void SetTtcReentrySchedule()
         {
             Dictionary<uint, (double, double, double, double, List<double>)> schedule =
-                new Dictionary<uint, (double, double, double, double, List<double>)>(
+                new Dictionary<uint, (double, double, double, double, List<double>)>
                 {
                     [43816] = (-1378.91674804688f, -2434f, -1423.35168457031f, 39648, new List<double>()),
                     [43817] = (-1305.64807128906f, -2414f, -1353.34362792969f, 39648, new List<double>()),

@@ -74,7 +74,7 @@ namespace STROOP.Forms
 
             textBoxTriangleInfo.Text = String.Join(
                 "\r\n",
-                uniqueVertexList.ConvertAll(StringifyCoordinate);
+                uniqueVertexList.ConvertAll(StringifyCoordinate));
         }
 
         public void SetTriangles(List<TriangleDataModel> triangleList)

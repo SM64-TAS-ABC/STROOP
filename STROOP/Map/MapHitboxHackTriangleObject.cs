@@ -38,7 +38,7 @@ namespace STROOP.Map
         public override void DrawOn3DControl()
         {
             List<List<(float x, float y, float z, Color color)>> triData = GetTriangles()
-                .ConvertAll(tri => new List<(float x, float y, float z, Color color)>(
+                .ConvertAll(tri => new List<(float x, float y, float z, Color color)>
                 {
                     (tri.X1, tri.Y1, tri.Z1, ColorUtilities.AddAlpha(GetColorForTri(tri), OpacityByte)),
                     (tri.X2, tri.Y2, tri.Z2, ColorUtilities.AddAlpha(GetColorForTri(tri), OpacityByte)),
