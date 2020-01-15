@@ -50,7 +50,8 @@ namespace STROOP.Script
             List<string> inputItems = new List<string>();
             foreach ((string name, object value) in inputData)
             {
-                inputItems.Add("\"" + name + "\":\"" + value + "\"");
+                string valueMark = value is string ? "\"" : "";
+                inputItems.Add("\"" + name + "\":" + valueMark + value + valueMark);
             }
             string beforeLine = "var INPUT = {" + string.Join(",", inputItems) + "}; var OUTPUT = {};" + "\r\n";
             string afterLine = "\r\n" + @"var OUTPUT_STRING = """"; for (var OUTPUT_STRING_NAME in OUTPUT) OUTPUT_STRING += OUTPUT_STRING_NAME + ""\r\n"" + OUTPUT[OUTPUT_STRING_NAME] + ""\r\n""; OUTPUT_STRING";
