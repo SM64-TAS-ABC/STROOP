@@ -29,27 +29,27 @@ namespace STROOP.Managers
 
             ControlUtilities.AddContextMenuStripFunctions(
                 textBoxActionDescription,
-                new List<string>() { "Select Action", "Free Movement Action", "Open Action Form" },
-                new List<Action>()
+                new List<string> { "Select Action", "Free Movement Action", "Open Action Form" },
+                new List<Action>
                 {
-                    () => SelectionForm.ShowActionDescriptionSelectionForm(),
+                    SelectionForm.ShowActionDescriptionSelectionForm,
                     () => Config.Stream.SetValue(MarioConfig.FreeMovementAction, MarioConfig.StructAddress + MarioConfig.ActionOffset),
-                    () => new ActionForm().Show(),
+                    () => new ActionForm().Show()
                 });
 
             ControlUtilities.AddContextMenuStripFunctions(
                 textBoxAnimationDescription,
-                new List<string>() { "Select Animation", "Replace Animation" },
-                new List<Action>()
+                new List<string> { "Select Animation", "Replace Animation" },
+                new List<Action>
                 {
-                    () => SelectionForm.ShowAnimationDescriptionSelectionForm(),
+                    SelectionForm.ShowAnimationDescriptionSelectionForm,
                     () =>
                     {
                         int? animationToBeReplaced = SelectionForm.GetAnimation("Choose Animation to Be Replaced", "Select Animation");
                         int? animationToReplaceIt = SelectionForm.GetAnimation("Choose Animation to Replace It", "Select Animation");
                         if (animationToBeReplaced == null || animationToReplaceIt == null) return;
                         AnimationUtilities.ReplaceAnimation(animationToBeReplaced.Value, animationToReplaceIt.Value);
-                    },
+                    }
                 });
         }
 

@@ -156,12 +156,12 @@ namespace STROOP.Map
 
             List<List<(float x, float y, float z)>> GetSideSurfaces(int index1, int index2) =>
                 topSurfaces.ConvertAll(topSurface =>
-                    new List<(float x, float y, float z)>()
+                    new List<(float x, float y, float z)>
                     {
                         topSurface[index1],
                         topSurface[index2],
                         OffsetVertex(topSurface[index2], 0, -1 * Size, 0),
-                        OffsetVertex(topSurface[index1], 0, -1 * Size, 0),
+                        OffsetVertex(topSurface[index1], 0, -1 * Size, 0)
                     });
             List<List<(float x, float y, float z)>> side1Surfaces = GetSideSurfaces(0, 1);
             List<List<(float x, float y, float z)>> side2Surfaces = GetSideSurfaces(1, 2);

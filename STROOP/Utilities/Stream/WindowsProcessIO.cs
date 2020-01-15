@@ -79,7 +79,7 @@ namespace STROOP.Utilities
                     ?.FirstOrDefault(d => d.ModuleName == _emulator.Dll);
 
                 if (dll == null)
-                    throw new ArgumentNullException("Could not find ");
+                    throw new ArgumentNullException("dll");
 
                 dllOffset = dll.BaseAddress;
             }

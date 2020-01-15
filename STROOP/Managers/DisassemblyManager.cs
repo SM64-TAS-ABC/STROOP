@@ -105,7 +105,7 @@ namespace STROOP.Managers
 
                 // Replace "span's"
                 string searchText = "<span class='dis-reg-";
-                int findIndex = _output.Text.IndexOf(searchText); ;
+                int findIndex = _output.Text.IndexOf(searchText);
                 while (findIndex >= 0) {
                     _output.ReadOnly = false;
                     _output.Select(findIndex, _output.Text.IndexOf('>', findIndex) - findIndex + 1);
@@ -120,7 +120,7 @@ namespace STROOP.Managers
                 }
 
                 searchText = "<span class='dis-address-jump'>";
-                findIndex = _output.Text.IndexOf(searchText); ;
+                findIndex = _output.Text.IndexOf(searchText);
                 while (findIndex >= 0) {
                     _output.ReadOnly = false;
                     _output.Select(findIndex, searchText.Length);

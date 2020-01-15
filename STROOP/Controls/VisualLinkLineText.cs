@@ -82,7 +82,7 @@ namespace STROOP.Controls
 
             var a = new VisualLinkLineText(Text, ParentVisualLine, length, _clicked)
             {
-                RequireControlModifierForClick = RequireControlModifierForClick,
+                RequireControlModifierForClick = RequireControlModifierForClick
             };
             return a;
         }

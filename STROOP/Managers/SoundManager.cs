@@ -69,7 +69,7 @@ namespace STROOP.Managers
             if (!updateView) return;
         }
 
-        private List<uint> _soundEffects = new List<uint>()
+        private readonly List<uint> _soundEffects = new List<uint>
         {
             0x0400,
             0x0408,
@@ -620,7 +620,7 @@ namespace STROOP.Managers
             0x9066,
             0x9067,
             0x9069,
-            0x906B,
+            0x906B
         };
     }
 }

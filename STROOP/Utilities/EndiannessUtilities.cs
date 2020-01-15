@@ -70,7 +70,7 @@ namespace STROOP.Utilities
             return (address & 0x03) != 0;
         }
 
-        static readonly byte[] _bytesToAlignment = new byte[] { 0x00, 0x03, 0x02, 0x01 };
+        static readonly byte[] _bytesToAlignment = { 0x00, 0x03, 0x02, 0x01 };
         public static int NumberOfBytesToAlignment(UIntPtr address)
         {
             return _bytesToAlignment[address.ToUInt64() & 0x03];

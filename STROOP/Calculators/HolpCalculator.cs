@@ -14,7 +14,7 @@ namespace STROOP.Structs
 {
     public static class HolpCalculator
     {
-        private static List<(int, double, double, double)> _data = new List<(int, double, double, double)>()
+        private static readonly List<(int, double, double, double)> _data = new List<(int, double, double, double)>
         {
             (0,-13.852560043335,82.7928466796875,43.2764892578125),
             (1,-13.8603839874268,84.1005249023438,43.2064208984375),
@@ -91,7 +91,7 @@ namespace STROOP.Structs
             (72,-13.9819869995117,77.0831298828125,44.716552734375),
             (73,-13.9631118774414,78.2352905273438,44.156494140625),
             (74,-13.8647117614746,79.316162109375,43.736083984375),
-            (75,-13.8919486999512,80.1707763671875,43.3465576171875),
+            (75,-13.8919486999512,80.1707763671875,43.3465576171875)
         };
 
         private static Dictionary<int, (double, double, double)> _dictionary;

@@ -118,7 +118,7 @@ namespace STROOP
         {
             ControlUtilities.AddContextMenuStripFunctions(
                 labelVersionNumber,
-                new List<string>()
+                new List<string>
                 {
                     "Open Mapping",
                     "Inject Hitbox View Code",
@@ -133,9 +133,9 @@ namespace STROOP
                     "Show Image Form",
                     "Test Something",
                     "Test Something Else",
-                    "Format Subtitles",
+                    "Format Subtitles"
                 },
-                new List<Action>()
+                new List<Action>
                 {
                     () => MappingConfig.OpenMapping(),
                     () => Config.GfxManager.InjectHitboxViewCode(),
@@ -175,21 +175,21 @@ namespace STROOP
                     },
                     () => TestUtilities.TestSomething(),
                     () => TestUtilities.TestSomethingElse(),
-                    () => SubtitleUtilities.FormatSubtitlesFromClipboard(),
+                    () => SubtitleUtilities.FormatSubtitlesFromClipboard()
                 });
 
             ControlUtilities.AddCheckableContextMenuStripFunctions(
                 labelVersionNumber,
-                new List<string>()
+                new List<string>
                 {
                     "Disable Locking",
                     "Show Invisible Objects as Signs",
                     "Show Cog Tris",
                     "Show Shapes",
                     "Update Cam Hack Angle",
-                    "Update Floor Tri",
+                    "Update Floor Tri"
                 },
-                new List<Func<bool>>()
+                new List<Func<bool>>
                 {
                     () =>
                     {
@@ -220,28 +220,28 @@ namespace STROOP
                     {
                         TestingConfig.UpdateFloorTri = !TestingConfig.UpdateFloorTri;
                         return TestingConfig.UpdateFloorTri;
-                    },
+                    }
                 });
 
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonMoveTabLeft,
-                new List<string>() { "Restore Recommended Tab Order" },
-                new List<Action>() { () => SavedSettingsConfig.InvokeRecommendedTabOrder() });
+                new List<string> { "Restore Recommended Tab Order" },
+                new List<Action> { () => SavedSettingsConfig.InvokeRecommendedTabOrder() });
 
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonMoveTabRight,
-                new List<string>() { "Restore Recommended Tab Order" },
-                new List<Action>() { () => SavedSettingsConfig.InvokeRecommendedTabOrder() });
+                new List<string> { "Restore Recommended Tab Order" },
+                new List<Action> { () => SavedSettingsConfig.InvokeRecommendedTabOrder() });
 
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonDisconnect,
-                new List<string>() { "Save as Savestate" },
-                new List<Action>() { () => saveAsSavestate() });
+                new List<string> { "Save as Savestate" },
+                new List<Action> { () => saveAsSavestate() });
         }
 
         private void CreateManagers()
         {
-            Config.MapGui = new MapGui()
+            Config.MapGui = new MapGui
             {
                 GLControlMap2D = glControlMap2D,
                 GLControlMap3D = glControlMap3D,
@@ -343,7 +343,7 @@ namespace STROOP
             };
 
             
-            M64Gui m64Gui = new M64Gui()
+            M64Gui m64Gui = new M64Gui
             {
                 LabelFileName = labelM64FileName,
                 LabelNumInputsValue = labelM64NumInputsValue,
@@ -401,7 +401,7 @@ namespace STROOP
                 TextBoxQuickDuplicationTotalIterations = textBoxM64QuickDuplicationTotalIterations,
                 ButtonQuickDuplicationDuplicate = buttonM64QuickDuplicationDuplicate,
 
-                ButtonAddPauseBufferFrames = buttonM64AddPauseBufferFrames,
+                ButtonAddPauseBufferFrames = buttonM64AddPauseBufferFrames
             };
 
             // Create managers

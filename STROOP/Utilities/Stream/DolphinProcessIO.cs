@@ -58,7 +58,7 @@ namespace STROOP.Utilities
                 }
             }
             if (_baseOffset.ToUInt64() == 0)
-                throw new ArgumentNullException("Dolphin running, but emulator hasn't started");
+              throw new InvalidOperationException("Dolphin running, but emulator hasn't started");
 
             _baseOffset = (UIntPtr)(_baseOffset.ToUInt64() + _emulator.RamStart);
         }

@@ -97,7 +97,7 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Triangle:
                     {
                         uint triangleAddress = Config.TriangleManager.TriangleAddress;
-                        return triangleAddress != 0 ? new List<uint>() { triangleAddress } : BaseAddressListEmpty;
+                        return triangleAddress != 0 ? new List<uint> { triangleAddress } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.TriangleExertionForceTable:
@@ -111,7 +111,7 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.CellsTriangle:
                     {
                         uint triangleAddress = Config.CellsManager.TriangleAddress;
-                        return triangleAddress != 0 ? new List<uint>() { triangleAddress } : BaseAddressListEmpty;
+                        return triangleAddress != 0 ? new List<uint> { triangleAddress } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.CellsTriangleExertionForceTable:
@@ -125,19 +125,19 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Floor:
                     {
                         uint floorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-                        return floorAddress != 0 ? new List<uint>() { floorAddress } : BaseAddressListEmpty;
+                        return floorAddress != 0 ? new List<uint> { floorAddress } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.Wall:
                     {
                         uint wallAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
-                        return wallAddress != 0 ? new List<uint>() { wallAddress } : BaseAddressListEmpty;
+                        return wallAddress != 0 ? new List<uint> { wallAddress } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.Ceiling:
                     {
                         uint ceilingAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
-                        return ceilingAddress != 0 ? new List<uint>() { ceilingAddress } : BaseAddressListEmpty;
+                        return ceilingAddress != 0 ? new List<uint> { ceilingAddress } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.InputCurrent:
@@ -164,7 +164,7 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Water:
                     {
                         uint waterAddress = Config.Stream.GetUInt32(MiscConfig.WaterPointerAddress);
-                        return waterAddress != 0 ? new List<uint>() { waterAddress } : BaseAddressListEmpty;
+                        return waterAddress != 0 ? new List<uint> { waterAddress } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.Snow:
@@ -176,13 +176,13 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Painting:
                     {
                         uint? paintingAddress = Config.PaintingManager.GetPaintingAddress();
-                        return paintingAddress != null ? new List<uint>() { paintingAddress.Value } : BaseAddressListEmpty;
+                        return paintingAddress != null ? new List<uint> { paintingAddress.Value } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.Music:
                     {
                         uint? musicAddress = Config.MusicManager.GetMusicAddress();
-                        return musicAddress != null ? new List<uint>() { musicAddress.Value } : BaseAddressListEmpty;
+                        return musicAddress != null ? new List<uint> { musicAddress.Value } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.LastCoin:
@@ -190,7 +190,7 @@ namespace STROOP.Structs
                         List<uint> coinAddresses = Config.ObjectSlotsManager.GetLoadedObjectsWithPredicate(
                             o => o.BehaviorAssociation?.Name == "Yellow Coin" || o.BehaviorAssociation?.Name == "Blue Coin")
                             .ConvertAll(objectDataModel => objectDataModel.Address);
-                        return coinAddresses.Count > 0 ? new List<uint>() { coinAddresses.Last() } : BaseAddressListEmpty;
+                        return coinAddresses.Count > 0 ? new List<uint> { coinAddresses.Last() } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.Ghost:
@@ -206,7 +206,7 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.GfxNode:
                     {
                         GfxNode node  = Config.GfxManager.SelectedNode;
-                        return node != null ? new List<uint>() { node.Address } : BaseAddressListEmpty;
+                        return node != null ? new List<uint> { node.Address } : BaseAddressListEmpty;
                     }
                 case BaseAddressTypeEnum.GhostHack:
                     return new List<uint>

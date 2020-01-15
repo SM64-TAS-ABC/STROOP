@@ -46,15 +46,15 @@ namespace STROOP.Map
                     vertex => new Map3DVertex(new Vector3(
                         vertex.x, vertex.y, vertex.z), color)).ToArray();
             }
-            List<Map3DVertex[]> vertexArrayForBases = new List<Map3DVertex[]>()
+            List<Map3DVertex[]> vertexArrayForBases = new List<Map3DVertex[]>
             {
                 GetBaseVertices(maxY, Color4),
-                GetBaseVertices(minY, Color4),
+                GetBaseVertices(minY, Color4)
             };
-            List<Map3DVertex[]> vertexArrayForEdges = new List<Map3DVertex[]>()
+            List<Map3DVertex[]> vertexArrayForEdges = new List<Map3DVertex[]>
             {
                 GetBaseVertices(maxY, OutlineColor),
-                GetBaseVertices(minY, OutlineColor),
+                GetBaseVertices(minY, OutlineColor)
             };
 
             List<(float x, float z)> points2D = Enumerable.Range(0, NUM_POINTS_2D).ToList()
@@ -70,7 +70,7 @@ namespace STROOP.Map
                     new Map3DVertex(new Vector3(x1, maxY, z1), Color4),
                     new Map3DVertex(new Vector3(x2, maxY, z2), Color4),
                     new Map3DVertex(new Vector3(x2, minY, z2), Color4),
-                    new Map3DVertex(new Vector3(x1, minY, z1), Color4),
+                    new Map3DVertex(new Vector3(x1, minY, z1), Color4)
                 });
             }
 

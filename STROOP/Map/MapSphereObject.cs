@@ -58,12 +58,12 @@ namespace STROOP.Map
                 {
                     float theta1 = thetaValues[t];
                     float theta2 = thetaValues[(t + 1) % thetaValues.Count];
-                    List<(float x, float y, float z)> pointsList = new List<(float x, float y, float z)>()
+                    List<(float x, float y, float z)> pointsList = new List<(float x, float y, float z)>
                     {
                         GetSpherePoint(radius3D, theta1, phi1, centerX, centerY, centerZ),
                         GetSpherePoint(radius3D, theta1, phi2, centerX, centerY, centerZ),
                         GetSpherePoint(radius3D, theta2, phi2, centerX, centerY, centerZ),
-                        GetSpherePoint(radius3D, theta2, phi1, centerX, centerY, centerZ),
+                        GetSpherePoint(radius3D, theta2, phi1, centerX, centerY, centerZ)
                     };
                     Map3DVertex[] pointsArray = pointsList.ConvertAll(
                         vertex => new Map3DVertex(new Vector3(

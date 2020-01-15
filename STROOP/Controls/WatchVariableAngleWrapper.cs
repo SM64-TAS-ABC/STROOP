@@ -103,7 +103,7 @@ namespace STROOP.Controls
                     AngleUnitType.HAU,
                     AngleUnitType.Degrees,
                     AngleUnitType.Radians,
-                    AngleUnitType.Revolutions,
+                    AngleUnitType.Revolutions
                 },
                 (AngleUnitType angleUnitType) => { _angleUnitType = angleUnitType; },
                 _angleUnitType);

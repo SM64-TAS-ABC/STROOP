@@ -375,7 +375,7 @@ namespace STROOP
 
         private List<bool> GetCurrentOverlayValues()
         {
-            return new List<bool>()
+            return new List<bool>
             {
                 _drawSelectedOverlay,
                 _drawStoodOnOverlay,
@@ -398,7 +398,7 @@ namespace STROOP
                 _drawCollision2Overlay,
                 _drawCollision3Overlay,
                 _drawCollision4Overlay,
-                _drawMarkedOverlay,
+                _drawMarkedOverlay
             };
         }
 

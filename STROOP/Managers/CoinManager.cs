@@ -186,8 +186,7 @@ namespace STROOP.Managers
 
                 if (!_checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup.Checked)
                 {
-                    coinTrajectories = coinTrajectories.FindAll(
-                        coinTrajectory => filter.Qualifies(coinTrajectory));
+                    coinTrajectories = coinTrajectories.FindAll(filter.Qualifies);
                 }
 
                 List<double> hSpeedList = coinTrajectories.ConvertAll(

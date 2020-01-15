@@ -194,27 +194,27 @@ namespace STROOP.Controls
 
         public List<string> GetVarInfo()
         {
-            return new List<string>()
+            return new List<string>
             {
                 _watchVarControl.VarName,
                 GetClass(),
                 WatchVar.GetTypeDescription(),
                 WatchVar.GetBaseOffsetDescription(),
                 WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
-                WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList),
+                WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList)
             };
         }
 
         public static List<string> GetVarInfoLabels()
         {
-            return new List<string>()
+            return new List<string>
             {
                 "Name",
                 "Class",
                 "Type",
                 "Base + Offset",
                 "N64 Address",
-                "Emulator Address",
+                "Emulator Address"
             };
         }
 

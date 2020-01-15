@@ -76,17 +76,17 @@ namespace STROOP.Structs
 
         public static OpenFileDialog CreateOpenFileDialog(FileType fileType)
         {
-            return new OpenFileDialog()
+            return new OpenFileDialog
             {
-                Filter = GetFilterString(fileType),
+                Filter = GetFilterString(fileType)
             };
         }
 
         public static SaveFileDialog CreateSaveFileDialog(FileType fileType)
         {
-            return new SaveFileDialog()
+            return new SaveFileDialog
             {
-                Filter = GetFilterString(fileType),
+                Filter = GetFilterString(fileType)
             };
         }
 

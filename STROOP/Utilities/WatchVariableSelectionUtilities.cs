@@ -34,16 +34,16 @@ namespace STROOP.Structs
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight...");
             ControlUtilities.AddDropDownItems(
                 itemHighlight,
-                new List<string>() { "Highlight", "Don't Highlight" },
-                new List<Action>()
+                new List<string> { "Highlight", "Don't Highlight" },
+                new List<Action>
                 {
                     () => apply(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: true)),
-                    () => apply(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: false)),
+                    () => apply(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: false))
                 });
             ToolStripMenuItem itemHighlightColor = new ToolStripMenuItem("Color...");
             ControlUtilities.AddDropDownItems(
                 itemHighlightColor,
-                new List<string>()
+                new List<string>
                 {
                     "Red",
                     "Orange",
@@ -54,9 +54,9 @@ namespace STROOP.Structs
                     "Pink",
                     "Brown",
                     "Black",
-                    "White",
+                    "White"
                 },
-                new List<Action>()
+                new List<Action>
                 {
                     () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Red)),
                     () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Orange)),
@@ -67,29 +67,29 @@ namespace STROOP.Structs
                     () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Pink)),
                     () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Brown)),
                     () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.Black)),
-                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.White)),
+                    () => apply(new WatchVariableControlSettings(changeHighlightColor: true, newHighlightColor: Color.White))
                 });
             itemHighlight.DropDownItems.Add(itemHighlightColor);
 
             ToolStripMenuItem itemLock = new ToolStripMenuItem("Lock...");
             ControlUtilities.AddDropDownItems(
                 itemLock,
-                new List<string>() { "Lock", "Don't Lock" },
-                new List<Action>()
+                new List<string> { "Lock", "Don't Lock" },
+                new List<Action>
                 {
                     () => apply(new WatchVariableControlSettings(changeLocked: true, newLocked: true)),
-                    () => apply(new WatchVariableControlSettings(changeLocked: true, newLocked: false)),
+                    () => apply(new WatchVariableControlSettings(changeLocked: true, newLocked: false))
                 });
 
             ToolStripMenuItem itemFixAddress = new ToolStripMenuItem("Fix Address...");
             ControlUtilities.AddDropDownItems(
                 itemFixAddress,
-                new List<string>() { "Default", "Fix Address", "Don't Fix Address" },
-                new List<Action>()
+                new List<string> { "Default", "Fix Address", "Don't Fix Address" },
+                new List<Action>
                 {
                     () => apply(new WatchVariableControlSettings(changeFixedAddress: true, changeFixedAddressToDefault: true)),
                     () => apply(new WatchVariableControlSettings(changeFixedAddress: true, newFixedAddress: true)),
-                    () => apply(new WatchVariableControlSettings(changeFixedAddress: true, newFixedAddress: false)),
+                    () => apply(new WatchVariableControlSettings(changeFixedAddress: true, newFixedAddress: false))
                 });
 
             ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy...");
@@ -200,23 +200,23 @@ namespace STROOP.Structs
             ToolStripMenuItem itemDisplayAsHex = new ToolStripMenuItem("Display as Hex...");
             ControlUtilities.AddDropDownItems(
                 itemDisplayAsHex,
-                new List<string>() { "Default", "Hex", "Decimal" },
-                new List<Action>()
+                new List<string> { "Default", "Hex", "Decimal" },
+                new List<Action>
                 {
                     () => apply(new WatchVariableControlSettings(changeDisplayAsHex: true, changeDisplayAsHexToDefault: true)),
                     () => apply(new WatchVariableControlSettings(changeDisplayAsHex: true, newDisplayAsHex: true)),
-                    () => apply(new WatchVariableControlSettings(changeDisplayAsHex: true, newDisplayAsHex: false)),
+                    () => apply(new WatchVariableControlSettings(changeDisplayAsHex: true, newDisplayAsHex: false))
                 });
 
             ToolStripMenuItem itemAngleSigned = new ToolStripMenuItem("Angle: Signed...");
             ControlUtilities.AddDropDownItems(
                 itemAngleSigned,
-                new List<string>() { "Default", "Unsigned", "Signed" },
-                new List<Action>()
+                new List<string> { "Default", "Unsigned", "Signed" },
+                new List<Action>
                 {
                     () => apply(new WatchVariableControlSettings(changeAngleSigned: true, changeAngleSignedToDefault: true)),
                     () => apply(new WatchVariableControlSettings(changeAngleSigned: true, newAngleSigned: false)),
-                    () => apply(new WatchVariableControlSettings(changeAngleSigned: true, newAngleSigned: true)),
+                    () => apply(new WatchVariableControlSettings(changeAngleSigned: true, newAngleSigned: true))
                 });
 
             ToolStripMenuItem itemAngleUnits = new ToolStripMenuItem("Angle: Units...");
@@ -245,45 +245,45 @@ namespace STROOP.Structs
             ToolStripMenuItem itemAngleTruncateToMultipleOf16 = new ToolStripMenuItem("Angle: Truncate to Multiple of 16...");
             ControlUtilities.AddDropDownItems(
                 itemAngleTruncateToMultipleOf16,
-                new List<string>() { "Default", "Truncate to Multiple of 16", "Don't Truncate to Multiple of 16" },
-                new List<Action>()
+                new List<string> { "Default", "Truncate to Multiple of 16", "Don't Truncate to Multiple of 16" },
+                new List<Action>
                 {
                     () => apply(new WatchVariableControlSettings(changeAngleTruncateToMultipleOf16: true, changeAngleTruncateToMultipleOf16ToDefault: true)),
                     () => apply(new WatchVariableControlSettings(changeAngleTruncateToMultipleOf16: true, newAngleTruncateToMultipleOf16: true)),
-                    () => apply(new WatchVariableControlSettings(changeAngleTruncateToMultipleOf16: true, newAngleTruncateToMultipleOf16: false)),
+                    () => apply(new WatchVariableControlSettings(changeAngleTruncateToMultipleOf16: true, newAngleTruncateToMultipleOf16: false))
                 });
 
             ToolStripMenuItem itemAngleConstrainToOneRevolution = new ToolStripMenuItem("Angle: Constrain to One Revolution...");
             ControlUtilities.AddDropDownItems(
                 itemAngleConstrainToOneRevolution,
-                new List<string>() { "Default", "Constrain to One Revolution", "Don't Constrain to One Revolution" },
-                new List<Action>()
+                new List<string> { "Default", "Constrain to One Revolution", "Don't Constrain to One Revolution" },
+                new List<Action>
                 {
                     () => apply(new WatchVariableControlSettings(changeAngleConstrainToOneRevolution: true, changeAngleConstrainToOneRevolutionToDefault: true)),
                     () => apply(new WatchVariableControlSettings(changeAngleConstrainToOneRevolution: true, newAngleConstrainToOneRevolution: true)),
-                    () => apply(new WatchVariableControlSettings(changeAngleConstrainToOneRevolution: true, newAngleConstrainToOneRevolution: false)),
+                    () => apply(new WatchVariableControlSettings(changeAngleConstrainToOneRevolution: true, newAngleConstrainToOneRevolution: false))
                 });
 
             ToolStripMenuItem itemAngleReverse = new ToolStripMenuItem("Angle: Reverse...");
             ControlUtilities.AddDropDownItems(
                 itemAngleReverse,
-                new List<string>() { "Default", "Reverse", "Don't Reverse" },
-                new List<Action>()
+                new List<string> { "Default", "Reverse", "Don't Reverse" },
+                new List<Action>
                 {
                     () => apply(new WatchVariableControlSettings(changeAngleReverse: true, changeAngleReverseToDefault: true)),
                     () => apply(new WatchVariableControlSettings(changeAngleReverse: true, newAngleReverse: true)),
-                    () => apply(new WatchVariableControlSettings(changeAngleReverse: true, newAngleReverse: false)),
+                    () => apply(new WatchVariableControlSettings(changeAngleReverse: true, newAngleReverse: false))
                 });
 
             ToolStripMenuItem itemAngleDisplayAsHex = new ToolStripMenuItem("Angle: Display as Hex...");
             ControlUtilities.AddDropDownItems(
                 itemAngleDisplayAsHex,
-                new List<string>() { "Default", "Hex", "Decimal" },
-                new List<Action>()
+                new List<string> { "Default", "Hex", "Decimal" },
+                new List<Action>
                 {
                     () => apply(new WatchVariableControlSettings(changeAngleDisplayAsHex: true, changeAngleDisplayAsHexToDefault: true)),
                     () => apply(new WatchVariableControlSettings(changeAngleDisplayAsHex: true, newAngleDisplayAsHex: true)),
-                    () => apply(new WatchVariableControlSettings(changeAngleDisplayAsHex: true, newAngleDisplayAsHex: false)),
+                    () => apply(new WatchVariableControlSettings(changeAngleDisplayAsHex: true, newAngleDisplayAsHex: false))
                 });
 
             ToolStripMenuItem itemShowVariableXml = new ToolStripMenuItem("Show Variable XML");
@@ -356,19 +356,19 @@ namespace STROOP.Structs
             ToolStripMenuItem itemAddVariables = new ToolStripMenuItem("Add Variable(s)...");
             ControlUtilities.AddDropDownItems(
                 itemAddVariables,
-                new List<string>()
+                new List<string>
                 {
                     "Addition",
                     "Subtraction",
                     "Multiplication",
-                    "Division",
+                    "Division"
                 },
-                new List<Action>()
+                new List<Action>
                 {
                     () => createVariable(MathOperation.Add),
                     () => createVariable(MathOperation.Subtract),
                     () => createVariable(MathOperation.Multiply),
-                    () => createVariable(MathOperation.Divide),
+                    () => createVariable(MathOperation.Divide)
                 });
 
             ToolStripMenuItem itemSetCascadingValues = new ToolStripMenuItem("Set Cascading Values");
@@ -429,12 +429,12 @@ namespace STROOP.Structs
             ToolStripMenuItem itemMove = new ToolStripMenuItem("Move...");
             ControlUtilities.AddDropDownItems(
                 itemMove,
-                new List<string>() { "Start Move", "End Move", "Clear Move" },
-                new List<Action>()
+                new List<string> { "Start Move", "End Move", "Clear Move" },
+                new List<Action>
                 {
                     () => panel.NotifyOfReorderingStart(getVars()),
                     () => panel.NotifyOfReorderingEnd(getVars()),
-                    () => panel.NotifyOfReorderingClear(),
+                    panel.NotifyOfReorderingClear
                 });
 
             ToolStripMenuItem itemRemove = new ToolStripMenuItem("Remove");
@@ -486,7 +486,7 @@ namespace STROOP.Structs
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
             itemAddToCustomTab.Click += (sender, e) => WatchVariableControl.AddVarsToTab(getVars(), Config.CustomManager);
 
-            return new List<ToolStripItem>()
+            return new List<ToolStripItem>
             {
                 itemHighlight,
                 itemLock,
@@ -518,7 +518,7 @@ namespace STROOP.Structs
                 itemOpenTripletController,
                 itemOpenPopOut,
                 itemAddToTab,
-                itemAddToCustomTab,
+                itemAddToCustomTab
             };
         }
         

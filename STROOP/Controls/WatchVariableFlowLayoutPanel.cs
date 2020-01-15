@@ -90,14 +90,14 @@ namespace STROOP.Controls
             ToolStripMenuItem openSaveClearItem = new ToolStripMenuItem("Open / Save / Clear ...");
             ControlUtilities.AddDropDownItems(
                 openSaveClearItem,
-                new List<string>() { "Open", "Open as Pop Out", "Save in Place", "Save As", "Clear" },
-                new List<Action>()
+                new List<string> { "Open", "Open as Pop Out", "Save in Place", "Save As", "Clear" },
+                new List<Action>
                 {
                     () => OpenVariables(),
                     () => OpenVariablesAsPopOut(),
                     () => SaveVariablesInPlace(),
                     () => SaveVariables(),
-                    () => ClearVariables(),
+                    () => ClearVariables()
                 });
 
             ToolStripMenuItem doToAllVariablesItem = new ToolStripMenuItem("Do to all variables...");
@@ -175,7 +175,7 @@ namespace STROOP.Controls
         {
             lock (_objectLock)
             {
-                AddVariables(new List<WatchVariableControl>() { watchVarControl });
+                AddVariables(new List<WatchVariableControl> { watchVarControl });
             }
         }
 
@@ -195,7 +195,7 @@ namespace STROOP.Controls
         public void RemoveVariable(WatchVariableControl watchVarControl)
         {
             // No need to lock, since this calls into a method that locks
-            RemoveVariables(new List<WatchVariableControl>() { watchVarControl });
+            RemoveVariables(new List<WatchVariableControl> { watchVarControl });
         }
 
         public void RemoveVariables(List<WatchVariableControl> watchVarControls)
@@ -224,7 +224,7 @@ namespace STROOP.Controls
 
         public void ShowOnlyVariableGroup(VariableGroup visibleVarGroup)
         {
-            ShowOnlyVariableGroups(new List<VariableGroup>() { visibleVarGroup });
+            ShowOnlyVariableGroups(new List<VariableGroup> { visibleVarGroup });
         }
 
         public void ShowOnlyVariableGroups(List<VariableGroup> visibleVarGroups)
@@ -339,11 +339,11 @@ namespace STROOP.Controls
         {
             if (_reorderingWatchVarControls.Count == 0)
             {
-                NotifyOfReorderingStart(new List<WatchVariableControl>() { watchVarControl });
+                NotifyOfReorderingStart(new List<WatchVariableControl> { watchVarControl });
             }
             else
             {
-                NotifyOfReorderingEnd(new List<WatchVariableControl>() { watchVarControl });
+                NotifyOfReorderingEnd(new List<WatchVariableControl> { watchVarControl });
             }
         }
 

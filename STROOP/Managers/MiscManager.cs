@@ -17,20 +17,20 @@ namespace STROOP.Managers
         CheckBox _checkBoxTurnOffMusic;
 
         private static readonly List<VariableGroup> ALL_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
                 VariableGroup.Advanced,
-                VariableGroup.Coin,
+                VariableGroup.Coin
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
-                VariableGroup.Advanced,
+                VariableGroup.Advanced
             };
 
         public MiscManager(string varFilePath, WatchVariableFlowLayoutPanel variableTable, Control miscControl)
@@ -66,7 +66,7 @@ namespace STROOP.Managers
             buttonMiscGoToCourse.Click += (sender, e) => buttonMiscGoToCourse.ContextMenuStrip.Show(Cursor.Position);
         }
 
-        private static readonly List<CourseToGoTo> _coursesToGoTo = new List<CourseToGoTo>()
+        private static readonly List<CourseToGoTo> _coursesToGoTo = new List<CourseToGoTo>
         {
             new CourseToGoTo(09, "Bob-omb Battlefield"),
             new CourseToGoTo(24, "Whomp's Fortress"),
@@ -103,7 +103,7 @@ namespace STROOP.Managers
             new CourseToGoTo(16, "Castle Grounds"),
             new CourseToGoTo(26, "Castle Courtyard"),
 
-            new CourseToGoTo(25, "Ending Cutscene"),
+            new CourseToGoTo(25, "Ending Cutscene")
         };
 
         private class CourseToGoTo

@@ -283,13 +283,13 @@ namespace STROOP.Models
                 Config.ObjectAssociations.AlignJPBehavior(SegmentedBehavior),
                 SegmentedBehavior); // Shindou objects are the same as U
 
-            BehaviorCriteria = new BehaviorCriteria()
+            BehaviorCriteria = new BehaviorCriteria
             {
                 BehaviorAddress = behaviorAddress,
                 GfxId = _gfxId,
                 SubType = _subType,
                 Appearance = _appearance,
-                SpawnObj = _spawnObj,
+                SpawnObj = _spawnObj
             };
 
             BehaviorAssociation = Config.ObjectAssociations.FindObjectAssociation(BehaviorCriteria);

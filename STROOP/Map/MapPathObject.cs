@@ -112,7 +112,7 @@ namespace STROOP.Map
                 vertexArrayList.Add(new Map3DVertex[]
                 {
                     new Map3DVertex(new Vector3(x1, y1, z1), color),
-                    new Map3DVertex(new Vector3(x2, y2, z2), color),
+                    new Map3DVertex(new Vector3(x2, y2, z2), color)
                 });
             }
 

@@ -27,9 +27,9 @@ namespace STROOP.Forms
 
         public VariableControllerForm(
             string varName, WatchVariableWrapper watchVarWrapper, List<uint> fixedAddressList) :
-                this (new List<string>() { varName },
-                      new List<WatchVariableWrapper>() { watchVarWrapper },
-                      new List<List<uint>>() { fixedAddressList })
+                this (new List<string> { varName },
+                      new List<WatchVariableWrapper> { watchVarWrapper },
+                      new List<List<uint>> { fixedAddressList })
         {
 
         }
@@ -66,8 +66,8 @@ namespace STROOP.Forms
             addTimer2.Tick += (s, e) => { addAction(true); };
             ControlUtilities.AddContextMenuStripFunctions(
                 _buttonAdd,
-                new List<string>() { "Start Continuous Add", "Stop Continuous Add" },
-                new List<Action>() { () => addTimer2.Start(), () => addTimer2.Stop() });
+                new List<string> { "Start Continuous Add", "Stop Continuous Add" },
+                new List<Action> { addTimer2.Start, addTimer2.Stop });
 
             Timer subtractTimer = new Timer { Interval = 30 };
             subtractTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) addAction(false); };
@@ -78,8 +78,8 @@ namespace STROOP.Forms
             subtractTimer2.Tick += (s, e) => { addAction(false); };
             ControlUtilities.AddContextMenuStripFunctions(
                 _buttonSubtract,
-                new List<string>() { "Start Continuous Subtract", "Stop Continuous Subtract" },
-                new List<Action>() { () => subtractTimer2.Start(), () => subtractTimer2.Stop() });
+                new List<string> { "Start Continuous Subtract", "Stop Continuous Subtract" },
+                new List<Action> { subtractTimer2.Start, subtractTimer2.Stop });
 
             ToolStripMenuItem itemInvertedAdd = new ToolStripMenuItem("Inverted");
             ToolStripMenuItem itemInvertedSubtract = new ToolStripMenuItem("Inverted");

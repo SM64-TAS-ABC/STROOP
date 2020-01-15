@@ -17,7 +17,7 @@ namespace STROOP.Map
     public static class MapUtilities
     {
         public static int WhiteTexture { get; }
-        private static readonly byte[] _whiteTexData = new byte[] { 0xFF };
+        private static readonly byte[] _whiteTexData = { 0xFF };
 
         static MapUtilities()
         {
@@ -174,7 +174,7 @@ namespace STROOP.Map
 
         public static List<TriangleDataModel> GetTriangles(uint triAddresses)
         {
-            return GetTriangles(new List<uint>() { triAddresses });
+            return GetTriangles(new List<uint> { triAddresses });
         }
 
         public static List<TriangleDataModel> GetTriangles(List<uint> triAddresses)
@@ -188,12 +188,12 @@ namespace STROOP.Map
             List<List<(float x, float y, float z)>> quadList = new List<List<(float x, float y, float z)>>();
             Action<int, int, int, int> addQuad = (int xBase, int zBase, int xAdd, int zAdd) =>
             {
-                quadList.Add(new List<(float x, float y, float z)>()
+                quadList.Add(new List<(float x, float y, float z)>
                 {
                     (xBase, 0, zBase),
                     (xBase + xAdd, 0, zBase),
                     (xBase + xAdd, 0, zBase + zAdd),
-                    (xBase, 0, zBase + zAdd),
+                    (xBase, 0, zBase + zAdd)
                 });
             };
             foreach ((int x, int z) in unitPoints)

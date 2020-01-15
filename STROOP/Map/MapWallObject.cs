@@ -46,12 +46,12 @@ namespace STROOP.Map
                 List<List<(float x, float z)>> quads = new List<List<(float x, float z)>>();
                 Action<float, float> addQuad = (float xAdd, float zAdd) =>
                 {
-                    quads.Add(new List<(float x, float z)>()
+                    quads.Add(new List<(float x, float z)>
                     {
                         (x1, z1),
                         (x1 + xAdd, z1 + zAdd),
                         (x2 + xAdd, z2 + zAdd),
-                        (x2, z2),
+                        (x2, z2)
                     });
                 };
                 if (xProjection)
@@ -165,12 +165,12 @@ namespace STROOP.Map
                     float xOffsetMag = xProjection ? projectionMag : 0;
                     float zOffsetMag = xProjection ? 0 : projectionMag;
                     List<(float x, float y, float z)> vertices = tri.Get3DVertices();
-                    return new List<(float x, float y, float z)>()
+                    return new List<(float x, float y, float z)>
                     {
                         OffsetVertex(vertices[index1], xOffsetMag, relativeHeight, zOffsetMag),
                         OffsetVertex(vertices[index2], xOffsetMag, relativeHeight, zOffsetMag),
                         OffsetVertex(vertices[index2], -1 * xOffsetMag, relativeHeight, -1 * zOffsetMag),
-                        OffsetVertex(vertices[index1], -1 * xOffsetMag, relativeHeight, -1 * zOffsetMag),
+                        OffsetVertex(vertices[index1], -1 * xOffsetMag, relativeHeight, -1 * zOffsetMag)
                     };
                 });
             List<List<(float x, float y, float z)>> side1Surfaces = GetSideSurfaces(0, 1);

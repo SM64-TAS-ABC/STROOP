@@ -22,7 +22,7 @@ namespace STROOP.Utilities
             float xValue, float yValue, float zValue, Change change, bool useRelative = false, bool handleScaling = true,
             (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            if (posAngles.Count() == 0)
+            if (!posAngles.Any())
                 return false;
 
             bool success = true;
@@ -639,7 +639,7 @@ namespace STROOP.Utilities
 
         public static bool RetrieveSnow(int index)
         {
-            List<PositionAngle> posAngles = new List<PositionAngle>() { PositionAngle.Snow(index) };
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Snow(index) };
 
             float xDestination = DataModels.Mario.X;
             float yDestination = DataModels.Mario.Y;
@@ -652,7 +652,7 @@ namespace STROOP.Utilities
 
         public static bool TranslateSnow(int index, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAngle> posAngles = new List<PositionAngle>() { PositionAngle.Snow(index) };
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Snow(index) };
             return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 

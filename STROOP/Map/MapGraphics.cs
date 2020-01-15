@@ -128,7 +128,7 @@ namespace STROOP.Map
                 MapViewScale = MapScale.Custom;
 
             if (MapViewScale == MapScale.CourseDefault) MapViewScaleWasCourseDefault = true;
-            if (MapViewScale == MapScale.MaxCourseSize) MapViewScaleWasCourseDefault = false;
+            else if (MapViewScale == MapScale.MaxCourseSize) MapViewScaleWasCourseDefault = false;
 
             switch (MapViewScale)
             {
@@ -136,12 +136,12 @@ namespace STROOP.Map
                 case MapScale.MaxCourseSize:
                     RectangleF rectangle = MapViewScale == MapScale.CourseDefault ?
                         MapUtilities.GetMapLayout().Coordinates : MAX_COURSE_SIZE;
-                    List<(float, float)> coordinates = new List<(float, float)>()
+                    List<(float, float)> coordinates = new List<(float, float)>
                     {
                         (rectangle.Left, rectangle.Top),
                         (rectangle.Right, rectangle.Top),
                         (rectangle.Left, rectangle.Bottom),
-                        (rectangle.Right, rectangle.Bottom),
+                        (rectangle.Right, rectangle.Bottom)
                     };
                     List<(float, float)> rotatedCoordinates = coordinates.ConvertAll(coord =>
                     {

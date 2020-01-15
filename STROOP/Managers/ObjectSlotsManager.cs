@@ -71,7 +71,7 @@ namespace STROOP.Managers
                 objectSlot.Click += (sender, e) => OnSlotClick(sender, e);
                 ObjectSlots.Add(objectSlot);
                 _gui.FlowLayoutContainer.Controls.Add(objectSlot);
-            };
+            }
 
             SlotLabelsForObjects = new ReadOnlyDictionary<ObjectDataModel, string>(_slotLabels);
         }
@@ -82,7 +82,7 @@ namespace STROOP.Managers
                 objSlot.Size = new Size(newSize, newSize);
         }
 
-        private static readonly Dictionary<string, TabType> TabNameToTabType = new Dictionary<string, TabType>()
+        private static readonly Dictionary<string, TabType> TabNameToTabType = new Dictionary<string, TabType>
         {
             ["Object"] = TabType.Object,
             ["Map"] = TabType.Map,
@@ -90,7 +90,7 @@ namespace STROOP.Managers
             ["Memory"] = TabType.Memory,
             ["Custom"] = TabType.Custom,
             ["TAS"] = TabType.TAS,
-            ["Cam Hack"] = TabType.CamHack,
+            ["Cam Hack"] = TabType.CamHack
         };
         private void TabControl_Selected(object sender, TabControlEventArgs e)
         {
@@ -307,7 +307,7 @@ namespace STROOP.Managers
                     sortedObjects = activeObjects.Concat(inActiveObjects);
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException("Uknown sort method type");
+                    throw new ArgumentOutOfRangeException("Unknown sort method type");
             }
 
             // Update slots

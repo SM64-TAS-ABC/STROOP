@@ -63,19 +63,19 @@ namespace STROOP.Managers
         }
 
         private static readonly List<VariableGroup> ALL_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
-                VariableGroup.Advanced,
+                VariableGroup.Advanced
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
-                VariableGroup.Advanced,
+                VariableGroup.Advanced
             };
 
         public TriangleManager(Control tabControl, string varFilePath, WatchVariableFlowLayoutPanel watchVariablePanel)
@@ -104,10 +104,10 @@ namespace STROOP.Managers
             Label labelTriangleSelection = splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label;
             ControlUtilities.AddContextMenuStripFunctions(
                 labelTriangleSelection,
-                new List<string>() { "Update Norms" },
-                new List<Action>()
+                new List<string> { "Update Norms" },
+                new List<Action>
                 {
-                    () => UpdateNorms(),
+                    () => UpdateNorms()
                 });
 
             (splitContainerTriangles.Panel1.Controls["buttonGotoV1"] as Button).Click
@@ -126,21 +126,21 @@ namespace STROOP.Managers
             buttonNeutralizeTriangle.Click += (sender, e) => ButtonUtilities.NeutralizeTriangle(_triangleAddress);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonNeutralizeTriangle,
-                new List<string>() { "Neutralize", "Neutralize with 0", "Neutralize with 0x15" },
-                new List<Action>() {
+                new List<string> { "Neutralize", "Neutralize with 0", "Neutralize with 0x15" },
+                new List<Action> {
                     () => ButtonUtilities.NeutralizeTriangle(_triangleAddress),
                     () => ButtonUtilities.NeutralizeTriangle(_triangleAddress, false),
-                    () => ButtonUtilities.NeutralizeTriangle(_triangleAddress, true),
+                    () => ButtonUtilities.NeutralizeTriangle(_triangleAddress, true)
                 });
 
             Button buttonAnnihilateTriangle = splitContainerTriangles.Panel1.Controls["buttonAnnihilateTriangle"] as Button;
             buttonAnnihilateTriangle.Click += (sender, e) => ButtonUtilities.AnnihilateTriangle(_triangleAddress);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonAnnihilateTriangle,
-                new List<string>() { "Annihilate All Tri But Death Barriers" },
-                new List<Action>()
+                new List<string> { "Annihilate All Tri But Death Barriers" },
+                new List<Action>
                 {
-                    () => TriangleUtilities.AnnihilateAllTrianglesButDeathBarriers(),
+                    () => TriangleUtilities.AnnihilateAllTrianglesButDeathBarriers()
                 });
 
             var trianglePosGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTrianglePos"] as GroupBox;
@@ -207,11 +207,11 @@ namespace STROOP.Managers
             buttonTriangleShowObjTris.Click += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetObjectTriangles());
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTriangleShowObjTris,
-                new List<string>() { "Show All Object Tris", "Show Selected Object Tris" },
-                new List<Action>()
+                new List<string> { "Show All Object Tris", "Show Selected Object Tris" },
+                new List<Action>
                 {
                     () => TriangleUtilities.ShowTriangles(TriangleUtilities.GetObjectTriangles()),
-                    () => TriangleUtilities.ShowTriangles(TriangleUtilities.GetSelectedObjectTriangles()),
+                    () => TriangleUtilities.ShowTriangles(TriangleUtilities.GetSelectedObjectTriangles())
                 });
 
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowAllTris"] as Button).Click
@@ -222,7 +222,7 @@ namespace STROOP.Managers
 
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTriangleNeutralizeAllTriangles,
-                new List<string>() {
+                new List<string> {
                     "Neutralize All Triangles",
                     "Neutralize Wall Triangles",
                     "Neutralize Floor Triangles",
@@ -232,7 +232,7 @@ namespace STROOP.Managers
                     "Neutralize Sleeping",
                     "Neutralize Loading Zones"
                 },
-                new List<Action>() {
+                new List<Action> {
                     () => TriangleUtilities.NeutralizeTriangles(),
                     () => TriangleUtilities.NeutralizeTriangles(TriangleClassification.Wall),
                     () => TriangleUtilities.NeutralizeTriangles(TriangleClassification.Floor),
@@ -245,7 +245,7 @@ namespace STROOP.Managers
                         TriangleUtilities.NeutralizeTriangles(0x1C);
                         TriangleUtilities.NeutralizeTriangles(0x1D);
                         TriangleUtilities.NeutralizeTriangles(0x1E);
-                    },
+                    }
                 });
 
             var buttonTriangleDisableAllCamCollision = splitContainerTriangles.Panel1.Controls["buttonTriangleDisableAllCamCollision"] as Button;
@@ -253,19 +253,19 @@ namespace STROOP.Managers
 
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTriangleDisableAllCamCollision,
-                new List<string>()
+                new List<string>
                 {
                     "Disable Cam Collision for All Triangles",
                     "Disable Cam Collision for Wall Triangles",
                     "Disable Cam Collision for Floor Triangles",
-                    "Disable Cam Collision for Ceiling Triangles",
+                    "Disable Cam Collision for Ceiling Triangles"
                 },
-                new List<Action>()
+                new List<Action>
                 {
                     () => TriangleUtilities.DisableCamCollision(),
                     () => TriangleUtilities.DisableCamCollision(TriangleClassification.Wall),
                     () => TriangleUtilities.DisableCamCollision(TriangleClassification.Floor),
-                    () => TriangleUtilities.DisableCamCollision(TriangleClassification.Ceiling),
+                    () => TriangleUtilities.DisableCamCollision(TriangleClassification.Ceiling)
                 });
         }
 

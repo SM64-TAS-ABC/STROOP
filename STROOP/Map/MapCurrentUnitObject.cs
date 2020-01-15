@@ -37,14 +37,14 @@ namespace STROOP.Map
             int zMax = zMin + (posAngleZ >= 0 ? 1 : -1);
 
             List<(float x, float y, float z)> quad =
-                new List<(float x, float y, float z)>()
+                new List<(float x, float y, float z)>
                 {
                     (xMin, marioY, zMin),
                     (xMin, marioY, zMax),
                     (xMax, marioY, zMax),
-                    (xMax, marioY, zMin),
+                    (xMax, marioY, zMin)
                 };
-            return new List<List<(float x, float y, float z)>>() { quad };
+            return new List<List<(float x, float y, float z)>> { quad };
         }
 
         public override string GetName()

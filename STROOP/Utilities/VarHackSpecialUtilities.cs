@@ -54,18 +54,12 @@ namespace STROOP.Structs
 
                 case "MarioAction":
                     name = "Action " + VarHackConfig.EscapeChar;
-                    getterFunction = () =>
-                    {
-                        return TableConfig.MarioActions.GetActionName();
-                    };
+                    getterFunction = TableConfig.MarioActions.GetActionName;
                     break;
 
                 case "MarioAnimation":
                     name = "Animation " + VarHackConfig.EscapeChar;
-                    getterFunction = () =>
-                    {
-                        return TableConfig.MarioAnimations.GetAnimationName();
-                    };
+                    getterFunction = TableConfig.MarioAnimations.GetAnimationName;
                     break;
 
                 case "DYawIntendFacing":
@@ -82,9 +76,6 @@ namespace STROOP.Structs
                     {
                         return FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing() / 16);
                     };
-                    break;
-
-                default:
                     break;
             }
 

@@ -42,8 +42,7 @@ namespace STROOP.Utilities
             if (NumQualifiedCoinsMinNullable.HasValue)
             {
                 int numQualifiedCoinsMin = NumQualifiedCoinsMinNullable.Value;
-                int numQualifiedCoins = coinTrajectoryList.FindAll(
-                    coinTrajectory => Qualifies(coinTrajectory)).Count;
+                int numQualifiedCoins = coinTrajectoryList.Count(Qualifies);
                 if (numQualifiedCoins < numQualifiedCoinsMin) return false;
             }
             return true;

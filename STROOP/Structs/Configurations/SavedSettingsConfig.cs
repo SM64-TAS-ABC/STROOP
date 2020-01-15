@@ -334,7 +334,7 @@ namespace STROOP.Structs.Configurations
                 new XElement("CloningUpdatesHolpType", _cloningUpdatesHolpType),
                 new XElement("UseInGameTrigForAngleLogic", _useInGameTrigForAngleLogic),
                 tabOrderXElement,
-                removedTabsXElement,
+                removedTabsXElement
             };
         }
 

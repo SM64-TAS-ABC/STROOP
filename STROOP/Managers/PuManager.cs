@@ -16,19 +16,19 @@ namespace STROOP.Managers
         GroupBox _puController;
 
         private static readonly List<VariableGroup> ALL_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
-                VariableGroup.Advanced,
+                VariableGroup.Advanced
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
-            new List<VariableGroup>()
+            new List<VariableGroup>
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
-                VariableGroup.Advanced,
+                VariableGroup.Advanced
             };
 
         public PuManager(string varFilePath, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)

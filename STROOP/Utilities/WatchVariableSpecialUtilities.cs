@@ -164,14 +164,14 @@ namespace STROOP.Structs
         public static void AddPanEntriesToDictionary()
         {
             List<(string, Func<double>, Action<double>)> entries =
-                new List<(string, Func<double>, Action<double>)>()
+                new List<(string, Func<double>, Action<double>)>
                 {
                     ("NumPans", () => SpecialConfig.NumPans, (double value) => SpecialConfig.NumPans = value),
                     ("CurrentPan", () => SpecialConfig.CurrentPan, (double value) => {}),
                     ("PanCamPos", () => SpecialConfig.PanCamPos, (double value) => SpecialConfig.PanCamPos = value),
                     ("PanCamAngle", () => SpecialConfig.PanCamAngle, (double value) => SpecialConfig.PanCamAngle = value),
                     ("PanCamRotation", () => SpecialConfig.PanCamRotation, (double value) => SpecialConfig.PanCamRotation = value),
-                    ("PanFOV", () => SpecialConfig.PanFOV, (double value) => SpecialConfig.PanFOV = value),
+                    ("PanFOV", () => SpecialConfig.PanFOV, (double value) => SpecialConfig.PanFOV = value)
                 };
 
             foreach ((string key, Func<double> getter, Action<double> setter) in entries)
@@ -192,7 +192,7 @@ namespace STROOP.Structs
         public static void AddPanEntriesToDictionary(int index)
         {
             List<(string, Func<double>, Action<double>)> entries =
-                new List<(string, Func<double>, Action<double>)>()
+                new List<(string, Func<double>, Action<double>)>
                 {
                     (String.Format("Pan{0}GlobalTimer", index), () => SpecialConfig.PanModels[index].PanGlobalTimer, (double value) => SpecialConfig.PanModels[index].PanGlobalTimer = value),
                     (String.Format("Pan{0}StartTime", index), () => SpecialConfig.PanModels[index].PanStartTime, (double value) => SpecialConfig.PanModels[index].PanStartTime = value),
@@ -221,7 +221,7 @@ namespace STROOP.Structs
                     (String.Format("Pan{0}RadiusEnd", index), () => SpecialConfig.PanModels[index].PanRadiusEnd, (double value) => SpecialConfig.PanModels[index].PanRadiusEnd = value),
 
                     (String.Format("Pan{0}FOVStart", index), () => SpecialConfig.PanModels[index].PanFOVStart, (double value) => SpecialConfig.PanModels[index].PanFOVStart = value),
-                    (String.Format("Pan{0}FOVEnd", index), () => SpecialConfig.PanModels[index].PanFOVEnd, (double value) => SpecialConfig.PanModels[index].PanFOVEnd = value),
+                    (String.Format("Pan{0}FOVEnd", index), () => SpecialConfig.PanModels[index].PanFOVEnd, (double value) => SpecialConfig.PanModels[index].PanFOVEnd = value)
                 };
 
             foreach ((string key, Func<double> getter, Action<double> setter) in entries)
@@ -242,7 +242,7 @@ namespace STROOP.Structs
         public static void AddMap3DEntriesToDictionary()
         {
             List<(string, Func<float>, Action<float>)> doubleEntries =
-                new List<(string, Func<float>, Action<float>)>()
+                new List<(string, Func<float>, Action<float>)>
                 {
                     ("Map3DCameraX", () => SpecialConfig.Map3DCameraX, (float value) => SpecialConfig.Map3DCameraX = value),
                     ("Map3DCameraY", () => SpecialConfig.Map3DCameraY, (float value) => SpecialConfig.Map3DCameraY = value),
@@ -256,7 +256,7 @@ namespace STROOP.Structs
                     ("Map3DFollowingRadius", () => SpecialConfig.Map3DFollowingRadius, (float value) => SpecialConfig.Map3DFollowingRadius = value),
                     ("Map3DFollowingYOffset", () => SpecialConfig.Map3DFollowingYOffset, (float value) => SpecialConfig.Map3DFollowingYOffset = value),
                     ("Map3DFollowingYaw", () => SpecialConfig.Map3DFollowingYaw, (float value) => SpecialConfig.Map3DFollowingYaw = value),
-                    ("Map3DFOV", () => SpecialConfig.Map3DFOV, (float value) => SpecialConfig.Map3DFOV = value),
+                    ("Map3DFOV", () => SpecialConfig.Map3DFOV, (float value) => SpecialConfig.Map3DFOV = value)
                 };
 
             foreach ((string key, Func<float> getter, Action<float> setter) in doubleEntries)
@@ -275,12 +275,12 @@ namespace STROOP.Structs
             }
 
             List<(string, Func<string>, Action<PositionAngle>)> posAngleEntries =
-                new List<(string, Func<string>, Action<PositionAngle>)>()
+                new List<(string, Func<string>, Action<PositionAngle>)>
                 {
                     ("Map3DCameraPosPA", () => SpecialConfig.Map3DCameraPosPA.ToString(), (PositionAngle value) => SpecialConfig.Map3DCameraPosPA = value),
                     ("Map3DCameraAnglePA", () => SpecialConfig.Map3DCameraAnglePA.ToString(), (PositionAngle value) => SpecialConfig.Map3DCameraAnglePA = value),
                     ("Map3DFocusPosPA", () => SpecialConfig.Map3DFocusPosPA.ToString(), (PositionAngle value) => SpecialConfig.Map3DFocusPosPA = value),
-                    ("Map3DFocusAnglePA", () => SpecialConfig.Map3DFocusAnglePA.ToString(), (PositionAngle value) => SpecialConfig.Map3DFocusAnglePA = value),
+                    ("Map3DFocusAnglePA", () => SpecialConfig.Map3DFocusAnglePA.ToString(), (PositionAngle value) => SpecialConfig.Map3DFocusAnglePA = value)
                 };
 
             foreach ((string key, Func<string> getter, Action<PositionAngle> setter) in posAngleEntries)
@@ -319,7 +319,7 @@ namespace STROOP.Structs
         public static void AddGeneratedEntriesToDictionary()
         {
             List<Func<uint, PositionAngle>> posAngleFuncs =
-                new List<Func<uint, PositionAngle>>()
+                new List<Func<uint, PositionAngle>>
                 {
                     (uint address) => PositionAngle.Custom,
                     (uint address) => PositionAngle.Mario,
@@ -332,11 +332,11 @@ namespace STROOP.Structs
                     (uint address) => PositionAngle.Tri(address, 2),
                     (uint address) => PositionAngle.Tri(address, 3),
                     (uint address) => SpecialConfig.PointPA,
-                    (uint address) => SpecialConfig.SelfPA,
+                    (uint address) => SpecialConfig.SelfPA
                 };
 
             List<string> posAngleStrings =
-                new List<string>()
+                new List<string>
                 {
                     "Custom",
                     "Mario",
@@ -349,7 +349,7 @@ namespace STROOP.Structs
                     "TriV2",
                     "TriV3",
                     "Point",
-                    "Self",
+                    "Self"
                 };
 
             for (int i = 0; i < posAngleFuncs.Count; i++)
@@ -363,9 +363,9 @@ namespace STROOP.Structs
                     Func<uint, PositionAngle> func2 = posAngleFuncs[j];
                     string string2 = posAngleStrings[j];
 
-                    List<string> distTypes = new List<string>() { "X", "Y", "Z", "H", "", "F", "S" };
+                    List<string> distTypes = new List<string> { "X", "Y", "Z", "H", "", "F", "S" };
                     List<Func<PositionAngle, PositionAngle, double>> distGetters =
-                        new List<Func<PositionAngle, PositionAngle, double>>()
+                        new List<Func<PositionAngle, PositionAngle, double>>
                         {
                             (PositionAngle p1, PositionAngle p2) => PositionAngle.GetXDistance(p1, p2),
                             (PositionAngle p1, PositionAngle p2) => PositionAngle.GetYDistance(p1, p2),
@@ -373,10 +373,10 @@ namespace STROOP.Structs
                             (PositionAngle p1, PositionAngle p2) => PositionAngle.GetHDistance(p1, p2),
                             (PositionAngle p1, PositionAngle p2) => PositionAngle.GetDistance(p1, p2),
                             (PositionAngle p1, PositionAngle p2) => PositionAngle.GetFDistance(p1, p2),
-                            (PositionAngle p1, PositionAngle p2) => PositionAngle.GetSDistance(p1, p2),
+                            (PositionAngle p1, PositionAngle p2) => PositionAngle.GetSDistance(p1, p2)
                         };
                     List<Func<PositionAngle, PositionAngle, double, bool>> distSetters =
-                        new List<Func<PositionAngle, PositionAngle, double, bool>>()
+                        new List<Func<PositionAngle, PositionAngle, double, bool>>
                         {
                             (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetXDistance(p1, p2, dist),
                             (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetYDistance(p1, p2, dist),
@@ -384,7 +384,7 @@ namespace STROOP.Structs
                             (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetHDistance(p1, p2, dist),
                             (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetDistance(p1, p2, dist),
                             (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetFDistance(p1, p2, dist),
-                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetSDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetSDistance(p1, p2, dist)
                         };
 
                     for (int k = 0; k < distTypes.Count; k++)
@@ -2457,7 +2457,7 @@ namespace STROOP.Structs
                 (double angleDiff, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
                     double newMarioAngleDouble = angleV1ToV2 + angleDiff;
@@ -4044,42 +4044,42 @@ namespace STROOP.Structs
             {
                 Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset),
                 Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset),
-                Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset),
+                Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset)
             };
 
             float[] platformPos = new float[]
             {
                 Config.Stream.GetSingle(stoodOnObject + ObjectConfig.XOffset),
                 Config.Stream.GetSingle(stoodOnObject + ObjectConfig.YOffset),
-                Config.Stream.GetSingle(stoodOnObject + ObjectConfig.ZOffset),
+                Config.Stream.GetSingle(stoodOnObject + ObjectConfig.ZOffset)
             };
 
             float[] currentObjectOffset = new float[]
             {
                 currentObjectPos[0] - platformPos[0],
                 currentObjectPos[1] - platformPos[1],
-                currentObjectPos[2] - platformPos[2],
+                currentObjectPos[2] - platformPos[2]
             };
 
             short[] platformAngularVelocity = new short[]
             {
                 (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.PitchVelocityOffset),
                 (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.YawVelocityOffset),
-                (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.RollVelocityOffset),
+                (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.RollVelocityOffset)
             };
 
             short[] platformFacingAngle = new short[]
             {
                 Config.Stream.GetInt16(stoodOnObject + ObjectConfig.PitchFacingOffset),
                 Config.Stream.GetInt16(stoodOnObject + ObjectConfig.YawFacingOffset),
-                Config.Stream.GetInt16(stoodOnObject + ObjectConfig.RollFacingOffset),
+                Config.Stream.GetInt16(stoodOnObject + ObjectConfig.RollFacingOffset)
             };
 
             short[] rotation = new short[]
             {
                 (short)(platformFacingAngle[0] - platformAngularVelocity[0]),
                 (short)(platformFacingAngle[1] - platformAngularVelocity[1]),
-                (short)(platformFacingAngle[2] - platformAngularVelocity[2]),
+                (short)(platformFacingAngle[2] - platformAngularVelocity[2])
             };
 
             float[,] displaceMatrix = new float[4,4];
@@ -4100,7 +4100,7 @@ namespace STROOP.Structs
             {
                 newObjectOffset[0] - currentObjectOffset[0],
                 newObjectOffset[1] - currentObjectOffset[1],
-                newObjectOffset[2] - currentObjectOffset[2],
+                newObjectOffset[2] - currentObjectOffset[2]
             };
 
             return (netDisplacement[0], netDisplacement[1], netDisplacement[2]);

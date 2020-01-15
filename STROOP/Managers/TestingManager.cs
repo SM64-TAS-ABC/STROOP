@@ -432,13 +432,13 @@ namespace STROOP.Managers
             switch (_scuttlebugMission)
             {
                 case ScuttlebugMission.BBHBalconyEye:
-                    return new List<uint>() { 0x803441C8, 0x80344428, 0x80344B48 };
+                    return new List<uint> { 0x803441C8, 0x80344428, 0x80344B48 };
                 case ScuttlebugMission.BBHMerryGoRound:
-                    return new List<uint>() { 0x803441C8 };
+                    return new List<uint> { 0x803441C8 };
                 case ScuttlebugMission.HMCAmazing:
-                    return new List<uint>() { 0x803408C8 };
+                    return new List<uint> { 0x803408C8 };
                 case ScuttlebugMission.HMCRedCoins:
-                    return new List<uint>() { 0x803422E8 };
+                    return new List<uint> { 0x803422E8 };
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -544,20 +544,20 @@ namespace STROOP.Managers
 
             public static VarState GetCurrent()
             {
-                return new VarStateMario()
+                return new VarStateMario
                 {
                     X = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset),
                     Y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset),
                     Z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset),
                     Angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset),
                     Vspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset),
-                    Hspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset),
+                    Hspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset)
                 };
             }
 
             public static List<string> VarNames()
             {
-                return new List<string>()
+                return new List<string>
                 {
                     "X", "Y", "Z", "Angle", "Vspd", "Hspd"
                 };
@@ -565,7 +565,7 @@ namespace STROOP.Managers
 
             public override List<Object> VarValues()
             {
-                return new List<Object>()
+                return new List<Object>
                 {
                     X, Y, Z, Angle, Vspd, Hspd
                 };
@@ -600,15 +600,15 @@ namespace STROOP.Managers
 
             public static VarStatePenguin GetCurrent()
             {
-                return new VarStatePenguin()
+                return new VarStatePenguin
                 {
-                    Progress = TableConfig.RacingPenguinWaypoints.GetProgress(RomVersionConfig.Switch(0x80348448, 0x803451F8)),
+                    Progress = TableConfig.RacingPenguinWaypoints.GetProgress(RomVersionConfig.Switch(0x80348448, 0x803451F8))
                 };
             }
 
             public static List<string> VarNames()
             {
-                return new List<string>()
+                return new List<string>
                 {
                     "Progress"
                 };
@@ -616,7 +616,7 @@ namespace STROOP.Managers
 
             public override List<Object> VarValues()
             {
-                return new List<Object>()
+                return new List<Object>
                 {
                     Progress
                 };
@@ -918,7 +918,7 @@ namespace STROOP.Managers
         {
             string clipboardText = Clipboard.GetText();
             List<string> parsedStrings = ParsingUtilities.ParseStringList(clipboardText);
-            List<TextBox> textboxes = new List<TextBox>() { _betterTextboxGotoX, _betterTextboxGotoY, _betterTextboxGotoZ };
+            List<TextBox> textboxes = new List<TextBox> { _betterTextboxGotoX, _betterTextboxGotoY, _betterTextboxGotoZ };
             for (int i = 0; i < parsedStrings.Count && i < textboxes.Count; i++)
             {
                 textboxes[i].Text = parsedStrings[i];
@@ -928,7 +928,7 @@ namespace STROOP.Managers
 
         private void StateTransferInstructions()
         {
-            List<string> instructionList = new List<string>()
+            List<string> instructionList = new List<string>
             {
                 "This is a tool for having one m64 file start with the same state",
                 "(i.e. RNG, global timer, HOLP, etc) as another m64 file.",
@@ -942,7 +942,7 @@ namespace STROOP.Managers
                 "(6) Make sure you're selecting the correct mission.",
                 "(7) Pause the emulator.",
                 "(8) Press the Apply button in the State Transfer box in STROOP.",
-                "(9) Start a new m64 from snapshot.",
+                "(9) Start a new m64 from snapshot."
             };
             string instructions = String.Join("\r\n", instructionList);
             InfoForm.ShowValue(instructions, "State Transfer", "Instructions");
@@ -1051,7 +1051,7 @@ namespace STROOP.Managers
 
         private static int _rollingRocksScheduleIndexOffset = -8582;
         private static int _rollingRocksScheduleIndex = 47;
-        private static List<(int, double?, double?, double?, double?, string)> _rollingRocksScheduleList = new List<(int, double?, double?, double?, double?, string)>() {
+        private static List<(int, double?, double?, double?, double?, string)> _rollingRocksScheduleList = new List<(int, double?, double?, double?, double?, string)> {
             (6431,-3075.048,-4929.741,-1614.7,null,"T0 up to T1"),
             (6508,-3444.3,-5082.954,-1614.7,null,"T1 left to T2"),
             (6646,-3444.3,-4874.296,-2182.7,null,"up on T2"),
@@ -1136,7 +1136,7 @@ namespace STROOP.Managers
             (10554,-5288.326,2840,-6887.377,null,"DR observed"),
             (10566,-5112.072,2888,-6730.258,null,"star collect"),
             (10571,-5112.072,2810,-6730.258,null,"star land"),
-            (10682,-5112.072,2810,-6730.258,null,"black frame"),
+            (10682,-5112.072,2810,-6730.258,null,"black frame")
         };
 
         private static List<(int, double)> _plushRacingPenguinProgress = new List<(int, double)> {

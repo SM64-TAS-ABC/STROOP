@@ -157,7 +157,7 @@ namespace STROOP.Managers
             Action<bool> pasteAction = (bool spareSecondary) =>
             {
                 if (!Address.HasValue || _objectSnapshot == null) return;
-                List<uint> addresses = new List<uint>() { Address.Value };
+                List<uint> addresses = new List<uint> { Address.Value };
                 if (KeyboardUtilities.IsCtrlHeld())
                 {
                     addresses = Config.ObjectSlotsManager.SelectedObjects.ConvertAll(obj => obj.Address);
@@ -167,15 +167,15 @@ namespace STROOP.Managers
             _buttonMemoryPasteObject.Click += (sender, e) => pasteAction(false);
             ControlUtilities.AddContextMenuStripFunctions(
                 _buttonMemoryPasteObject,
-                new List<string>()
+                new List<string>
                 {
                     "Paste Object without Primary Variables",
-                    "Paste Object without Secondary Variables",
+                    "Paste Object without Secondary Variables"
                 },
-                new List<Action>()
+                new List<Action>
                 {
                     () => pasteAction(false),
-                    () => pasteAction(true),
+                    () => pasteAction(true)
                 });
 
             _buttonMemoryMoveUpOnce.Click += (sender, e) => ScrollMemory(-1);
@@ -275,7 +275,7 @@ namespace STROOP.Managers
             if (isAltKeyHeld)
             {
                 List<List<WatchVariableControlPrecursor>> precursorLists =
-                    new List<List<WatchVariableControlPrecursor>>()
+                    new List<List<WatchVariableControlPrecursor>>
                         { _objectPrecursors, _objectSpecificPrecursors };
                 _currentValueTexts.ForEach(valueText =>
                     valueText.AddOverlappedIfSelected(index, precursorLists));
@@ -363,7 +363,7 @@ namespace STROOP.Managers
                     List<WatchVariableControlPrecursor> overlapped = GetOverlapped(precursors);
                     overlapped.ForEach(precursor => Config.MemoryManager.AddVariable(
                         precursor.CreateWatchVariableControl(
-                            newVariableGroupList: new List<VariableGroup>() { VariableGroup.Custom })));
+                            newVariableGroupList: new List<VariableGroup> { VariableGroup.Custom })));
                 });
             }
 

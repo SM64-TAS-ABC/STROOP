@@ -69,7 +69,7 @@ namespace STROOP.Managers
             // Buttons on Options
             ControlUtilities.AddContextMenuStripFunctions(
                 Config.MapGui.buttonMapOptionsAddNewTracker,
-                new List<string>()
+                new List<string>
                 {
                     "Add Tracker for Custom Points",
                     "Add Tracker for Custom Floor Tris",
@@ -83,9 +83,9 @@ namespace STROOP.Managers
                     "Add Tracker for Custom Background",
                     "Add Tracker for Custom Gridlines",
                     "Add Tracker for PU Gridlines",
-                    "Add Tracker for Iwerlipses",
+                    "Add Tracker for Iwerlipses"
                 },
-                new List<Action>()
+                new List<Action>
                 {
                     () =>
                     {
@@ -172,7 +172,7 @@ namespace STROOP.Managers
                         MapObject mapObj = new MapIwerlipsesObject();
                         MapTracker tracker = new MapTracker(mapObj);
                         Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
-                    },
+                    }
                 });
             Config.MapGui.buttonMapOptionsAddNewTracker.Click += (sender, e) =>
                 Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Show(Cursor.Position);
@@ -194,21 +194,21 @@ namespace STROOP.Managers
                 Config.MapGraphics.ChangeScale2(1, Config.MapGui.textBoxMapControllersScaleChange2.Text);
             ControlUtilities.AddContextMenuStripFunctions(
                 Config.MapGui.groupBoxMapControllersScale,
-                new List<string>()
+                new List<string>
                 {
                     "Very Small Unit Squares",
                     "Small Unit Squares",
                     "Medium Unit Squares",
                     "Big Unit Squares",
-                    "Very Big Unit Squares",
+                    "Very Big Unit Squares"
                 },
-                new List<Action>()
+                new List<Action>
                 {
                     () => Config.MapGraphics.SetCustomScale(6),
                     () => Config.MapGraphics.SetCustomScale(12),
                     () => Config.MapGraphics.SetCustomScale(18),
                     () => Config.MapGraphics.SetCustomScale(24),
-                    () => Config.MapGraphics.SetCustomScale(40),
+                    () => Config.MapGraphics.SetCustomScale(40)
                 });
 
             // Buttons for Changing Center
@@ -578,7 +578,7 @@ namespace STROOP.Managers
         {
             // Determine which obj slots have been checked/unchecked since the last update
             List<int> currentObjIndexes = Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses
-                .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
+                .ConvertAll(ObjectUtilities.GetObjectIndex)
                 .FindAll(address => address.HasValue)
                 .ConvertAll(address => address.Value);
             List<int> toBeRemovedIndexes = _currentObjIndexes.FindAll(i => !currentObjIndexes.Contains(i));
@@ -600,7 +600,7 @@ namespace STROOP.Managers
                 MapSemaphore semaphore = MapSemaphoreManager.Objects[index];
                 semaphore.IsUsed = true;
                 MapTracker tracker = new MapTracker(
-                    new List<MapObject>() { mapObj }, new List<MapSemaphore>() { semaphore });
+                    new List<MapObject> { mapObj }, new List<MapSemaphore> { semaphore });
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             }
         }
@@ -623,11 +623,11 @@ namespace STROOP.Managers
 
             // Update object slots when tracker is deleted
             Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses
-                .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
+                .ConvertAll(ObjectUtilities.GetObjectIndex)
                 .FindAll(index => index.HasValue)
                 .ConvertAll(index => index.Value)
                 .FindAll(index => !MapSemaphoreManager.Objects[index].IsUsed)
-                .ConvertAll(index => ObjectUtilities.GetObjectAddress(index))
+                .ConvertAll(ObjectUtilities.GetObjectAddress)
                 .ForEach(address => Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses.Remove(address));
         }
 
@@ -637,7 +637,7 @@ namespace STROOP.Managers
             List<MapObject> mapObjs = addresses
                 .ConvertAll(address => new MapObjectObject(address) as MapObject);
             List<int> indexes = addresses
-                .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
+                .ConvertAll(ObjectUtilities.GetObjectIndex)
                 .FindAll(index => index.HasValue)
                 .ConvertAll(index => index.Value);
             List<MapSemaphore> semaphores = indexes
@@ -649,31 +649,31 @@ namespace STROOP.Managers
             Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
         }
 
-        private static readonly List<string> inGameColoredVars = new List<string>() { };
-        private static readonly List<string> cameraPosAndFocusColoredVars = new List<string>()
+        private static readonly List<string> inGameColoredVars = new List<string>();
+        private static readonly List<string> cameraPosAndFocusColoredVars = new List<string>
         {
-            "Camera X", "Camera Y", "Camera Z", "Focus X", "Focus Y", "Focus Z", "FOV",
+            "Camera X", "Camera Y", "Camera Z", "Focus X", "Focus Y", "Focus Z", "FOV"
         };
-        private static readonly List<string> cameraPosAndAngleColoredVars = new List<string>()
+        private static readonly List<string> cameraPosAndAngleColoredVars = new List<string>
         {
-            "Camera X", "Camera Y", "Camera Z", "Camera Yaw", "Camera Pitch", "Camera Roll", "FOV",
+            "Camera X", "Camera Y", "Camera Z", "Camera Yaw", "Camera Pitch", "Camera Roll", "FOV"
         };
-        private static readonly List<string> followFocusRelativeAngleColoredVars = new List<string>()
+        private static readonly List<string> followFocusRelativeAngleColoredVars = new List<string>
         {
-            "Focus Pos PA", "Focus Angle PA", "Following Radius", "Following Y Offset", "Following Yaw", "FOV",
+            "Focus Pos PA", "Focus Angle PA", "Following Radius", "Following Y Offset", "Following Yaw", "FOV"
         };
-        private static readonly List<string> followFocusAbsoluteAngleColoredVars = new List<string>()
+        private static readonly List<string> followFocusAbsoluteAngleColoredVars = new List<string>
         {
-            "Focus Pos PA", "Following Radius", "Following Y Offset", "Following Yaw", "FOV",
+            "Focus Pos PA", "Following Radius", "Following Y Offset", "Following Yaw", "FOV"
         };
         private static readonly Dictionary<Map3DCameraMode, List<string>> coloredVarsMap =
-            new Dictionary<Map3DCameraMode, List<string>>()
+            new Dictionary<Map3DCameraMode, List<string>>
             {
                 [Map3DCameraMode.InGame] = inGameColoredVars,
                 [Map3DCameraMode.CameraPosAndFocus] = cameraPosAndFocusColoredVars,
                 [Map3DCameraMode.CameraPosAndAngle] = cameraPosAndAngleColoredVars,
                 [Map3DCameraMode.FollowFocusRelativeAngle] = followFocusRelativeAngleColoredVars,
-                [Map3DCameraMode.FollowFocusAbsoluteAngle] = followFocusAbsoluteAngleColoredVars,
+                [Map3DCameraMode.FollowFocusAbsoluteAngle] = followFocusAbsoluteAngleColoredVars
             };
 
         private void UpdateVarColors()

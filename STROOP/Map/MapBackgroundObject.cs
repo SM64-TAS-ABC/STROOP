@@ -27,7 +27,7 @@ namespace STROOP.Map
             float yCenter = Config.MapGui.GLControlMap2D.Height / 2;
             float length = Math.Max(Config.MapGui.GLControlMap2D.Width, Config.MapGui.GLControlMap2D.Height);
             (PointF loc, SizeF size) dimension = (new PointF(xCenter, yCenter), new SizeF(length, length));
-            return new List<(PointF loc, SizeF size)>() { dimension };
+            return new List<(PointF loc, SizeF size)> { dimension };
         }
 
         public override MapDrawType GetDrawType()
@@ -56,7 +56,7 @@ namespace STROOP.Map
                 new Map3DVertex(new Vector3(leftBound, upperBound, 0), Color4, new Vector2(0, 0)),
                 new Map3DVertex(new Vector3(rightBound, upperBound, 0), Color4, new Vector2(1, 0)),
                 new Map3DVertex(new Vector3(leftBound, upperBound, 0), Color4, new Vector2(0, 0)),
-                new Map3DVertex(new Vector3(rightBound, lowerBound, 0), Color4, new Vector2(1, 1)),
+                new Map3DVertex(new Vector3(rightBound, lowerBound, 0), Color4, new Vector2(1, 1))
             };
         }
 

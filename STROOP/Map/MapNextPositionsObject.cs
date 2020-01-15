@@ -110,7 +110,7 @@ namespace STROOP.Map
                 new Map3DVertex(new Vector3(-1, 1, 0), Color4, new Vector2(0, 0)),
                 new Map3DVertex(new Vector3(1, 1, 0), Color4, new Vector2(1, 0)),
                 new Map3DVertex(new Vector3(-1, 1, 0), Color4,  new Vector2(0, 0)),
-                new Map3DVertex(new Vector3(1, -1, 0), Color4, new Vector2(1, 1)),
+                new Map3DVertex(new Vector3(1, -1, 0), Color4, new Vector2(1, 1))
             };
         }
 

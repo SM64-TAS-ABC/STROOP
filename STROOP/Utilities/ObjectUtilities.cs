@@ -48,7 +48,7 @@ namespace STROOP.Utilities
         public static List<uint> GetAllObjectAddresses()
         {
             return Enumerable.Range(0, ObjectSlotsConfig.MaxSlots).ToList()
-                .ConvertAll(index => GetObjectAddress(index));
+                .ConvertAll(GetObjectAddress);
         }
 
         public static uint? GetCollisionObject(uint objAddress, int collisionIndex)

@@ -9,7 +9,7 @@ namespace STROOP.Utilities
     public static class ColorUtilities
     {
         public static readonly Dictionary<string, string> ColorToParamsDictionary =
-            new Dictionary<string, string>()
+            new Dictionary<string, string>
             {
                 ["Red"] = "#FFD7D7",
                 ["Orange"] = "#FFE2B7",
@@ -19,7 +19,7 @@ namespace STROOP.Utilities
                 ["Blue"] = "#CADDFF",
                 ["Purple"] = "#E5CCFF",
                 ["Pink"] = "#FFCCFF",
-                ["Grey"] = "#D0D0D0",
+                ["Grey"] = "#D0D0D0"
             };
 
         public static readonly List<Color> ColorList =

@@ -14,7 +14,7 @@ namespace STROOP.Structs
     public static class SkribblioUtilities
     {
         private static readonly List<string> _words =
-            new List<string>()
+            new List<string>
             {
                 // Mission Names
                 "Big Bob-omb on the Summit",
@@ -962,7 +962,7 @@ namespace STROOP.Structs
                 "Bounce",
                 "Adventure",
                 "Knock",
-                "Linguine",
+                "Linguine"
             };
 
         public static void ShowWords()
