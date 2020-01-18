@@ -303,6 +303,11 @@ namespace STROOP.Utilities
             return ParseStringList(text).ConvertAll(stringValue => ParseIntNullable(stringValue));
         }
 
+        public static List<double?> ParseDoubleList(string text)
+        {
+            return ParseStringList(text).ConvertAll(stringValue => ParseDoubleNullable(stringValue));
+        }
+
         public static byte? ParseByteRoundingWrapping(object value)
         {
             double? doubleValue = ParseDoubleNullable(value.ToString());

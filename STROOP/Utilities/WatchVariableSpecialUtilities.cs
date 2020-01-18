@@ -1739,6 +1739,28 @@ namespace STROOP.Structs
                     return Config.Stream.SetValue((float)newPeakHeight, MarioConfig.StructAddress + MarioConfig.PeakHeightOffset);
                 }));
 
+            _dictionary.Add("FSDistPointToSelf",
+                ((uint dummy) =>
+                {
+                    double fDist = PositionAngle.GetFDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
+                    double sDist = PositionAngle.GetSDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
+                    return "(" + fDist + "," + sDist + ")";
+                },
+                (string value, uint dummy) =>
+                {
+                    List<double?> values = ParsingUtilities.ParseDoubleList(value);
+                    if (values.Count < 2) return false;
+                    if (!values[0].HasValue || !values[1].HasValue) return false;
+                    double fDist = values[0].Value;
+                    double sDist = values[1].Value;
+                    (double relX, double relZ) =
+                        MoreMath.RotatePointAboutPointAnAngularDistance(
+                            sDist, -1 * fDist, 0, 0, SpecialConfig.PointAngle);
+                    SpecialConfig.SelfPA.SetX(SpecialConfig.PointX + relX);
+                    SpecialConfig.SelfPA.SetZ(SpecialConfig.PointZ + relZ);
+                    return true;
+                }));
+
             _dictionary.Add("WalkingDistance",
                 ((uint dummy) =>
                 {
