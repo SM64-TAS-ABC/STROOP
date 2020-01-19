@@ -17,7 +17,7 @@ namespace STROOP.Script
 {
     public class TokenScript
     {
-        private readonly ScriptEngine engine = new ScriptEngine(ScriptEngine.ChakraClsid);
+        private ScriptEngine _engine;
 
         private bool _isEnabled = false;
         private string _text = "";
@@ -55,7 +55,7 @@ namespace STROOP.Script
             }
             string beforeLine = "var INPUT = {" + string.Join(",", inputItems) + "}; var OUTPUT = {};" + "\r\n";
             string afterLine = "\r\n" + @"var OUTPUT_STRING = """"; for (var OUTPUT_STRING_NAME in OUTPUT) OUTPUT_STRING += OUTPUT_STRING_NAME + ""\r\n"" + OUTPUT[OUTPUT_STRING_NAME] + ""\r\n""; OUTPUT_STRING";
-            string result = engine.Eval(beforeLine + _text + afterLine)?.ToString() ?? "";
+            string result = GetEngine().Eval(beforeLine + _text + afterLine)?.ToString() ?? "";
             List<string> outputItems = result.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             for (int i = 0; i < outputItems.Count - 1; i += 2)
             {
@@ -63,6 +63,16 @@ namespace STROOP.Script
                 string value = outputItems[i + 1];
                 Config.ScriptManager.SetVariableValueByName(name, value);
             }
+        }
+
+        // Lazily create script engine because it breaks wine
+        private ScriptEngine GetEngine()
+        {
+            if (_engine == null)
+            {
+                _engine = new ScriptEngine(ScriptEngine.ChakraClsid);
+            }
+            return _engine;
         }
     }
 }
