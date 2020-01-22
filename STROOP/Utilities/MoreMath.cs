@@ -902,5 +902,17 @@ namespace STROOP.Utilities
             (double vx, double vy, double vz) = SphericalToEuler_AngleUnits(relY, yaw, pitch - 16384);
             return (fx + sx + vx, fy + sy + vy, fz + sz + vz);
         }
+
+        public static float GetFloatInterval(float value)
+        {
+            value = Math.Abs(value);
+            float interval = 262144;
+            while (true)
+            {
+                float testValue = value + (interval / 2);
+                if (value == testValue) return interval;
+                interval /= 2;
+            }
+        }
     }
 }

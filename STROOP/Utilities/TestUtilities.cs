@@ -23,12 +23,94 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            CalculatorMain.CalculateTylerChallenge();
+            TestSomething27();
         }
 
         public static void TestSomethingElse()
         {
             TestSomething21();
+        }
+
+        public static void TestSomething28()
+        {
+            (float x, float y, float z) = (-89.9566192626953f, 2253f, 7003f);
+            uint wallAddress1 = 0x801A6110;
+            uint wallAddress2 = 0x801A60E0;
+            TriangleDataModel tri1 = new TriangleDataModel(wallAddress1);
+            TriangleDataModel tri2 = new TriangleDataModel(wallAddress2);
+            List<TriangleDataModel> tris = new List<TriangleDataModel>() { tri1, tri2 };
+            int numCollisions = WallDisplacementCalculator.GetNumWallCollisions(x, y, z, tris, 50, 60);
+            Config.SetDebugText("numCollisions = " + numCollisions);
+        }
+
+        public static void TestSomething27()
+        {
+            uint wallAddress1 = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            uint wallAddress2 = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+            TriangleDataModel tri1 = new TriangleDataModel(wallAddress1);
+            TriangleDataModel tri2 = new TriangleDataModel(wallAddress2);
+            List<TriangleDataModel> tris = new List<TriangleDataModel>() { tri1, tri2 };
+
+            bool containsVertex(TriangleDataModel tri, int x0, int y0, int z0)
+            {
+                if (tri.X1 == x0 && tri.Y1 == y0 && tri.Z1 == z0) return true;
+                if (tri.X2 == x0 && tri.Y2 == y0 && tri.Z2 == z0) return true;
+                if (tri.X3 == x0 && tri.Y3 == y0 && tri.Z3 == z0) return true;
+                return false;
+            }
+
+            List<(int x, int y, int z)> vertices = new List<(int x, int y, int z)>();
+            if (containsVertex(tri2, tri1.X1, tri1.Y1, tri1.Z1)) vertices.Add((tri1.X1, tri1.Y1, tri1.Z1));
+            if (containsVertex(tri2, tri1.X2, tri1.Y2, tri1.Z2)) vertices.Add((tri1.X2, tri1.Y2, tri1.Z2));
+            if (containsVertex(tri2, tri1.X3, tri1.Y3, tri1.Z3)) vertices.Add((tri1.X3, tri1.Y3, tri1.Z3));
+            if (vertices.Count < 2) return;
+
+            (int x1, int y1, int z1) = vertices[0];
+            (int x2, int y2, int z2) = vertices[1];
+
+            int sign;
+            int start;
+            int end;
+            bool wIsX;
+            if (x1 != x2)
+            {
+                wIsX = true;
+                start = x1;
+                end = x2;
+                sign = Math.Sign(x2 - x1);
+            }
+            else if (z1 != z2)
+            {
+                wIsX = false;
+                start = z1;
+                end = z2;
+                sign = Math.Sign(z2 - z1);
+            }
+            else
+            {
+                return;
+            }
+
+            List<(double x, double y, double z)> zeroCollisionPoints = new List<(double x, double y, double z)>();
+
+            int[] numCollisions = new int[3];
+            for (float w = start; sign > 0 ? w <= end : w >= end; w += sign * Math.Max(MoreMath.GetFloatInterval(w), 0.00001f))
+            {
+                float proportion = (w - start) / (end - start);
+                float x = wIsX ? w : x1 + proportion * (x2 - x1);
+                float y = y1 + proportion * (y2 - y1) - 150;
+                float z = !wIsX ? w : z1 + proportion * (z2 - z1);
+                int count = WallDisplacementCalculator.GetNumWallCollisions(x, y, z, tris, 50, 150);
+                numCollisions[count]++;
+                if (count == 0)
+                {
+                    zeroCollisionPoints.Add((x, y, z));
+                }
+            }
+
+            InfoForm.ShowValue(string.Join("\r\n", zeroCollisionPoints));
+
+            Config.SetDebugText(string.Format("[0]={0}, [1]={1}, [2]={2}", numCollisions[0], numCollisions[1], numCollisions[2]));
         }
 
         public static void TestSomething26()
