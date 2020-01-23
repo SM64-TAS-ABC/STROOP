@@ -20,6 +20,9 @@ namespace STROOP.Structs
         public readonly float YSpeed;
         public readonly float ZSpeed;
         public readonly float HSpeed;
+        public readonly float SlidingSpeedX;
+        public readonly float SlidingSpeedZ;
+        public readonly ushort SlidingAngle;
         public readonly ushort MarioAngle;
         public readonly ushort CameraAngle;
 
@@ -30,6 +33,7 @@ namespace STROOP.Structs
         public MarioState(
             float x, float y, float z,
             float xSpeed, float ySpeed, float zSpeed, float hSpeed,
+            float slidingSpeedX, float slidingSpeedZ, ushort slidingAngle,
             ushort marioAngle, ushort cameraAngle,
             MarioState previousState, Input lastInput, int index)
         {
@@ -40,6 +44,9 @@ namespace STROOP.Structs
             YSpeed = ySpeed;
             ZSpeed = zSpeed;
             HSpeed = hSpeed;
+            SlidingSpeedX = slidingSpeedX;
+            SlidingSpeedZ = slidingSpeedZ;
+            SlidingAngle = slidingAngle;
             MarioAngle = marioAngle;
             CameraAngle = cameraAngle;
 
@@ -58,6 +65,9 @@ namespace STROOP.Structs
                 ySpeed: Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset),
                 zSpeed: Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZSpeedOffset),
                 hSpeed: Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset),
+                slidingSpeedX: Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset),
+                slidingSpeedZ: Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset),
+                slidingAngle: Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset),
                 marioAngle: Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset),
                 cameraAngle: Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset),
                 previousState: null,
@@ -70,6 +80,7 @@ namespace STROOP.Structs
             return new MutableMarioState(
                 X, Y, Z,
                 XSpeed, YSpeed, ZSpeed, HSpeed,
+                SlidingSpeedX, SlidingSpeedZ, SlidingAngle,
                 MarioAngle, CameraAngle, input);
         }
 
@@ -78,15 +89,18 @@ namespace STROOP.Structs
             return new MutableMarioState(
                 X, Y, Z,
                 XSpeed, YSpeed, ZSpeed, HSpeed,
+                SlidingSpeedX, SlidingSpeedZ, SlidingAngle,
                 MarioAngle, angleDiff);
         }
 
         public override string ToString()
         {
             return String.Format(
-                "pos=({0},{1},{2}) spd=({3},{4},{5}) hspd={6} angle={7}",
+                "pos=({0},{1},{2}) spd=({3},{4},{5}) slide=({6},{7}) slideAngle={8} hspd={9} angle={10}",
                 (double)X, (double)Y, (double)Z,
-                (double)XSpeed, (double)YSpeed, (double)ZSpeed, (double)HSpeed, MarioAngle);
+                (double)XSpeed, (double)YSpeed, (double)ZSpeed,
+                (double)SlidingSpeedX, (double)SlidingSpeedZ, SlidingAngle,
+                (double)HSpeed, MarioAngle);
         }
 
         public string ToStringWithInput()
@@ -101,6 +115,7 @@ namespace STROOP.Structs
                 {
                     X, Y, Z,
                     XSpeed, YSpeed, ZSpeed, HSpeed,
+                    SlidingSpeedX, SlidingSpeedZ, SlidingAngle,
                     MarioAngle, CameraAngle,
                 };
         }
@@ -135,6 +150,7 @@ namespace STROOP.Structs
             return new MarioState(
                 X, Y, Z,
                 XSpeed, YSpeed, ZSpeed, HSpeed,
+                SlidingSpeedX, SlidingSpeedZ, SlidingAngle,
                 MarioAngle, cameraAngle,
                 PreviousState, LastInput, Index);
         }
@@ -144,6 +160,7 @@ namespace STROOP.Structs
             return new MarioState(
                 x, y, z,
                 XSpeed, YSpeed, ZSpeed, HSpeed,
+                SlidingSpeedX, SlidingSpeedZ, SlidingAngle,
                 MarioAngle, CameraAngle,
                 PreviousState, LastInput, Index);
         }

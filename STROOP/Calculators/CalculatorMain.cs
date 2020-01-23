@@ -37,18 +37,21 @@ namespace STROOP.Structs
             int zRadius = 10;
 
             MarioState startState = new MarioState(
-                            startX,
-                            startY,
-                            startZ,
-                            startXSpeed,
-                            startYSpeed,
-                            startZSpeed,
-                            startHSpeed,
-                            marioAngle,
-                            cameraAngle,
-                            null,
-                            null,
-                            0);
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                0,
+                0,
+                0,
+                marioAngle,
+                cameraAngle,
+                null,
+                null,
+                0);
 
             int lastIndex = -1;
             List<Input> inputs = CalculatorUtilities.GetInputRange(xInput - xRadius, xInput + xRadius, zInput - zRadius, zInput + zRadius);
@@ -135,6 +138,9 @@ namespace STROOP.Structs
                 startYSpeed,
                 startZSpeed,
                 startHSpeed,
+                0,
+                0,
+                0,
                 marioAngle,
                 cameraAngles[0],
                 null,
@@ -219,6 +225,9 @@ namespace STROOP.Structs
                 startYSpeed,
                 startZSpeed,
                 startHSpeed,
+                0,
+                0,
+                0,
                 marioAngle,
                 cameraAngle,
                 null,
@@ -308,6 +317,9 @@ namespace STROOP.Structs
                 startYSpeed,
                 startZSpeed,
                 startHSpeed,
+                0,
+                0,
+                0,
                 marioAngle,
                 cameraAngle,
                 null,
@@ -432,6 +444,9 @@ namespace STROOP.Structs
                 startYSpeed,
                 startZSpeed,
                 startHSpeed,
+                0,
+                0,
+                0,
                 marioAngle,
                 cameraAngles[0],
                 null,
@@ -578,6 +593,9 @@ namespace STROOP.Structs
                         startYSpeed,
                         startZSpeed,
                         startHSpeed,
+                        0,
+                        0,
+                        0,
                         marioAngle,
                         cameraAngle,
                         null,
@@ -627,6 +645,7 @@ namespace STROOP.Structs
             MarioState marioState = new MarioState(
                 startX, startY, startZ,
                 startXSpeed, startYSpeed, startZSpeed, startHSpeed,
+                0, 0, 0,
                 startMarioAngle, startCameraAngle, null, null, 0);
             Input input = new Input(23, 26);
 
@@ -690,6 +709,7 @@ namespace STROOP.Structs
             MarioState marioState = new MarioState(
                 marioX, marioY, marioZ,
                 marioXSpeed, marioYSpeed, marioZSpeed, marioHSpeed,
+                0, 0, 0,
                 marioAngle, cameraAngle, null, null, 0);
             Input input = new Input(inputX, inputY);
 
@@ -711,6 +731,7 @@ namespace STROOP.Structs
             MarioState finalState = new MarioState(
                 afterDisplacementX, afterWalking.Y, afterDisplacementZ,
                 afterWalking.XSpeed, afterWalking.YSpeed, afterWalking.ZSpeed, afterWalking.HSpeed,
+                afterWalking.SlidingSpeedX, afterWalking.SlidingSpeedZ, afterWalking.SlidingAngle,
                 afterWalking.MarioAngle, cameraAngle, null, null, 0);
             Config.Print(finalState);
             Config.Print("{0},{1},{2}", (double)relX, (double)relY, (double)relZ);
@@ -763,6 +784,7 @@ namespace STROOP.Structs
             MarioState marioState = new MarioState(
                 startX, startY, startZ,
                 startXSpeed, startYSpeed, startZSpeed, startHSpeed,
+                0, 0, 0,
                 startAngle, cameraAngles[INDEX_START], null, null, 0);
             MarioBobombState marioBobombState = new MarioBobombState(
                 marioState, objStartX, objStartZ);
@@ -942,6 +964,7 @@ namespace STROOP.Structs
             MarioState marioState = new MarioState(
                 startX, startY, startZ,
                 startXSpeed, startYSpeed, startZSpeed, startHSpeed,
+                0, 0, 0,
                 startAngle, 0, null, null, 0);
             MarioBobombState marioBobombState = new MarioBobombState(
                 marioState, objStartX, objStartZ);
@@ -1073,6 +1096,7 @@ namespace STROOP.Structs
             MarioState finalMarioState = new MarioState(
                 afterDisplacementX, afterWalking.Y, afterDisplacementZ,
                 afterWalking.XSpeed, afterWalking.YSpeed, afterWalking.ZSpeed, afterWalking.HSpeed,
+                afterWalking.SlidingSpeedX, afterWalking.SlidingSpeedZ, afterWalking.SlidingAngle,
                 afterWalking.MarioAngle, nextCameraAngle, null, null, 0);
             MarioBobombState finalMarioBobombState = new MarioBobombState(finalMarioState, relX, relZ);
             return finalMarioBobombState;
@@ -1105,6 +1129,7 @@ namespace STROOP.Structs
             MarioState finalMarioState = new MarioState(
                 afterDisplacementX, afterWalking.Y, afterDisplacementZ,
                 afterWalking.XSpeed, afterWalking.YSpeed, afterWalking.ZSpeed, afterWalking.HSpeed,
+                afterWalking.SlidingSpeedX, afterWalking.SlidingSpeedZ, afterWalking.SlidingAngle,
                 afterWalking.MarioAngle, 0, null, null, 0);
             MarioBobombState finalMarioBobombState = new MarioBobombState(finalMarioState, relX, relZ);
             return finalMarioBobombState;
@@ -1131,6 +1156,9 @@ namespace STROOP.Structs
                 startYSpeed,
                 startZSpeed,
                 startHSpeed,
+                0,
+                0,
+                0,
                 marioAngle,
                 cameraAngle,
                 null,

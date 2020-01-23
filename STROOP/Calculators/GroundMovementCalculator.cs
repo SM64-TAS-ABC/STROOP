@@ -81,5 +81,83 @@ namespace STROOP.Structs
                 marioState.Z = marioState.Z + marioState.ZSpeed / 4.0f;
             }
         }
+
+        //public static void PerformButtSlideMovement(MutableMarioState marioState)
+        //{
+        //    short intendedDYaw = marioState.IntendedAngle - m->slideYaw;
+        //    f32 forward = coss(intendedDYaw);
+
+        //    //! 10k glitch
+        //    if (forward < 0.0f && m->forwardVel >= 0.0f)
+        //    {
+        //        forward *= 0.5f + 0.5f * m->forwardVel / 100.0f;
+        //    }
+
+        //    oldSpeed = sqrt(slideVelX ^ 2 + slideVelZ ^ 2);
+
+        //    m->slideVelX += m->slideVelZ * (m->intendedMag / 32.0f) * sins(intendedDYaw) * 0.05f;
+        //    m->slideVelZ -= m->slideVelX * (m->intendedMag / 32.0f) * sins(intendedDYaw) * 0.05f;
+
+        //    newSpeed = sqrt(slideVelX ^ 2 + slideVelZ ^ 2);
+
+        //    if (oldSpeed > 0.0f && newSpeed > 0.0f)
+        //    {
+        //        m->slideVelX = m->slideVelX * oldSpeed / newSpeed;
+        //        m->slideVelZ = m->slideVelZ * oldSpeed / newSpeed;
+        //    }
+
+        //    s16 slopeAngle = atan2s(floor->normal.z, floor->normal.x);
+        //    m->slideVelX += 10.0f * floor->normal.y * sins(slopeAngle);
+        //    m->slideVelZ += 10.0f * floor->normal.y * coss(slopeAngle);
+
+        //    f32 lossFactor = (m->intendedMag / 32.0f * forward * 0.02f + 0.98f);
+        //    m->slideVelX *= lossFactor;
+        //    m->slideVelZ *= lossFactor;
+
+        //    m->slideYaw = atan2s(m->slideVelZ, m->slideVelX);
+
+        //    facingDYaw = m->faceAngle[1] - m->slideYaw;
+        //    newFacingDYaw = facingDYaw;
+
+        //    //! -0x4000 not handled - can slide down a slope while facing perpendicular to it
+        //    if (newFacingDYaw > 0 && newFacingDYaw <= 0x4000)
+        //    {
+        //        if ((newFacingDYaw -= 0x200) < 0)
+        //            newFacingDYaw = 0;
+        //    }
+        //    else if (newFacingDYaw > -0x4000 && newFacingDYaw < 0)
+        //    {
+        //        if ((newFacingDYaw += 0x200) > 0)
+        //            newFacingDYaw = 0;
+        //    }
+        //    else if (newFacingDYaw > 0x4000 && newFacingDYaw < 0x8000)
+        //    {
+        //        if ((newFacingDYaw += 0x200) > 0x8000)
+        //            newFacingDYaw = 0x8000;
+        //    }
+        //    else if (newFacingDYaw > -0x8000 && newFacingDYaw < -0x4000)
+        //    {
+        //        if ((newFacingDYaw -= 0x200) < -0x8000)
+        //            newFacingDYaw = -0x8000;
+        //    }
+
+        //    m->faceAngle[1] = m->slideYaw + newFacingDYaw;
+
+        //    m->vel[0] = m->slideVelX;
+        //    m->vel[1] = 0.0f;
+        //    m->vel[2] = m->slideVelZ;
+
+        //    m->forwardVel = sqrtf(m->slideVelX * m->slideVelX + m->slideVelZ * m->slideVelZ);
+        //    if (m->forwardVel > 100.0f)
+        //    {
+        //        m->slideVelX *= 100.0f / m->forwardVel;
+        //        m->slideVelZ *= 100.0f / m->forwardVel;
+        //    }
+
+        //    if (newFacingDYaw < -0x4000 || newFacingDYaw > 0x4000)
+        //    {
+        //        m->forwardVel *= -1.0f;
+        //    }
+        //}
     }
 }
