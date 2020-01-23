@@ -1203,5 +1203,47 @@ namespace STROOP.Structs
             }
             Config.Print("FAILED");
         }
+
+        public static void TestButtSlide()
+        {
+            float startX = 3139.8564453125f;
+            float startY = 1992.29418945313f;
+            float startZ = -568.216857910156f;
+            float startXSpeed = 0f;
+            float startYSpeed = 0f;
+            float startZSpeed = 0f;
+            float startHSpeed = 0f;
+            float startXSlidingSpeed = 0f;
+            float startZSlidingSpeed = 0f;
+            ushort startYawMoving = 60692;
+            ushort startYawFacing = 60692;
+            ushort startCentAngle = 21678;
+
+            MarioState marioState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                startXSlidingSpeed,
+                startZSlidingSpeed,
+                startYawMoving,
+                startYawFacing,
+                startCentAngle,
+                null,
+                null,
+                0);
+
+            Input input = new Input(0, 0);
+
+            TriangleDataModel floor = new TriangleDataModel(0x80198DA0);
+            TriangleDataModel wall = new TriangleDataModel(0x801962E0);
+            List<TriangleDataModel> walls = new List<TriangleDataModel>() { wall };
+
+            MarioState next = GroundMovementCalculator.ApplyInputForButtSliding(marioState, input, floor, walls);
+            Config.Print("next = " + next);
+        }
     }
 }
