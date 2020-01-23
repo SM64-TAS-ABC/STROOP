@@ -1,5 +1,6 @@
 ﻿using STROOP.Forms;
 using STROOP.Managers;
+using STROOP.Models;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
@@ -82,82 +83,88 @@ namespace STROOP.Structs
             }
         }
 
-        //public static void PerformButtSlideMovement(MutableMarioState marioState)
-        //{
-        //    short intendedDYaw = marioState.IntendedAngle - m->slideYaw;
-        //    f32 forward = coss(intendedDYaw);
+        public static void PerformButtSlideMovement(MutableMarioState marioState, TriangleDataModel floor)
+        {
+            short intendedDYaw = MoreMath.NormalizeAngleShort(marioState.IntendedAngle - marioState.SlidingAngle);
+            float forward = InGameTrigUtilities.InGameCosine(intendedDYaw);
 
-        //    //! 10k glitch
-        //    if (forward < 0.0f && m->forwardVel >= 0.0f)
-        //    {
-        //        forward *= 0.5f + 0.5f * m->forwardVel / 100.0f;
-        //    }
+            //! 10k glitch
+            if (forward < 0.0f && marioState.HSpeed >= 0.0f)
+            {
+                forward *= 0.5f + 0.5f * marioState.HSpeed / 100.0f;
+            }
 
-        //    oldSpeed = sqrt(slideVelX ^ 2 + slideVelZ ^ 2);
+            float oldSpeed = (float)Math.Sqrt(
+                marioState.SlidingSpeedX * marioState.SlidingSpeedX +
+                marioState.SlidingSpeedZ * marioState.SlidingSpeedZ);
 
-        //    m->slideVelX += m->slideVelZ * (m->intendedMag / 32.0f) * sins(intendedDYaw) * 0.05f;
-        //    m->slideVelZ -= m->slideVelX * (m->intendedMag / 32.0f) * sins(intendedDYaw) * 0.05f;
+            marioState.SlidingSpeedX += marioState.SlidingSpeedZ * (marioState.IntendedMagnitude / 32.0f) * InGameTrigUtilities.InGameSine(intendedDYaw) * 0.05f;
+            marioState.SlidingSpeedZ -= marioState.SlidingSpeedX * (marioState.IntendedMagnitude / 32.0f) * InGameTrigUtilities.InGameSine(intendedDYaw) * 0.05f;
 
-        //    newSpeed = sqrt(slideVelX ^ 2 + slideVelZ ^ 2);
+            float newSpeed = (float)Math.Sqrt(
+                marioState.SlidingSpeedX * marioState.SlidingSpeedX +
+                marioState.SlidingSpeedZ * marioState.SlidingSpeedZ);
 
-        //    if (oldSpeed > 0.0f && newSpeed > 0.0f)
-        //    {
-        //        m->slideVelX = m->slideVelX * oldSpeed / newSpeed;
-        //        m->slideVelZ = m->slideVelZ * oldSpeed / newSpeed;
-        //    }
+            if (oldSpeed > 0.0f && newSpeed > 0.0f)
+            {
+                marioState.SlidingSpeedX = marioState.SlidingSpeedX * oldSpeed / newSpeed;
+                marioState.SlidingSpeedZ = marioState.SlidingSpeedZ * oldSpeed / newSpeed;
+            }
 
-        //    s16 slopeAngle = atan2s(floor->normal.z, floor->normal.x);
-        //    m->slideVelX += 10.0f * floor->normal.y * sins(slopeAngle);
-        //    m->slideVelZ += 10.0f * floor->normal.y * coss(slopeAngle);
+            short slopeAngle = MoreMath.NormalizeAngleShort(InGameTrigUtilities.InGameATan(floor.NormZ, floor.NormX));
+            marioState.SlidingSpeedX += 10.0f * floor.NormY * InGameTrigUtilities.InGameSine(slopeAngle);
+            marioState.SlidingSpeedZ += 10.0f * floor.NormY * InGameTrigUtilities.InGameCosine(slopeAngle);
 
-        //    f32 lossFactor = (m->intendedMag / 32.0f * forward * 0.02f + 0.98f);
-        //    m->slideVelX *= lossFactor;
-        //    m->slideVelZ *= lossFactor;
+            float lossFactor = (marioState.IntendedMagnitude / 32.0f * forward * 0.02f + 0.98f);
+            marioState.SlidingSpeedX *= lossFactor;
+            marioState.SlidingSpeedZ *= lossFactor;
 
-        //    m->slideYaw = atan2s(m->slideVelZ, m->slideVelX);
+            marioState.SlidingAngle = InGameTrigUtilities.InGameATan(marioState.SlidingSpeedZ, marioState.SlidingSpeedX);
 
-        //    facingDYaw = m->faceAngle[1] - m->slideYaw;
-        //    newFacingDYaw = facingDYaw;
+            short facingDYaw = MoreMath.NormalizeAngleShort(marioState.MarioAngle - marioState.SlidingAngle);
+            int newFacingDYaw = facingDYaw;
 
-        //    //! -0x4000 not handled - can slide down a slope while facing perpendicular to it
-        //    if (newFacingDYaw > 0 && newFacingDYaw <= 0x4000)
-        //    {
-        //        if ((newFacingDYaw -= 0x200) < 0)
-        //            newFacingDYaw = 0;
-        //    }
-        //    else if (newFacingDYaw > -0x4000 && newFacingDYaw < 0)
-        //    {
-        //        if ((newFacingDYaw += 0x200) > 0)
-        //            newFacingDYaw = 0;
-        //    }
-        //    else if (newFacingDYaw > 0x4000 && newFacingDYaw < 0x8000)
-        //    {
-        //        if ((newFacingDYaw += 0x200) > 0x8000)
-        //            newFacingDYaw = 0x8000;
-        //    }
-        //    else if (newFacingDYaw > -0x8000 && newFacingDYaw < -0x4000)
-        //    {
-        //        if ((newFacingDYaw -= 0x200) < -0x8000)
-        //            newFacingDYaw = -0x8000;
-        //    }
+            //! -0x4000 not handled - can slide down a slope while facing perpendicular to it
+            if (newFacingDYaw > 0 && newFacingDYaw <= 0x4000)
+            {
+                if ((newFacingDYaw -= 0x200) < 0)
+                    newFacingDYaw = 0;
+            }
+            else if (newFacingDYaw > -0x4000 && newFacingDYaw < 0)
+            {
+                if ((newFacingDYaw += 0x200) > 0)
+                    newFacingDYaw = 0;
+            }
+            else if (newFacingDYaw > 0x4000 && newFacingDYaw < 0x8000)
+            {
+                if ((newFacingDYaw += 0x200) > 0x8000)
+                    newFacingDYaw = 0x8000;
+            }
+            else if (newFacingDYaw > -0x8000 && newFacingDYaw < -0x4000)
+            {
+                if ((newFacingDYaw -= 0x200) < -0x8000)
+                    newFacingDYaw = -0x8000;
+            }
 
-        //    m->faceAngle[1] = m->slideYaw + newFacingDYaw;
+            marioState.MarioAngle = MoreMath.NormalizeAngleUshort(marioState.SlidingAngle + newFacingDYaw);
 
-        //    m->vel[0] = m->slideVelX;
-        //    m->vel[1] = 0.0f;
-        //    m->vel[2] = m->slideVelZ;
+            marioState.XSpeed = marioState.SlidingSpeedX;
+            marioState.YSpeed = 0.0f;
+            marioState.ZSpeed = marioState.SlidingSpeedZ;
 
-        //    m->forwardVel = sqrtf(m->slideVelX * m->slideVelX + m->slideVelZ * m->slideVelZ);
-        //    if (m->forwardVel > 100.0f)
-        //    {
-        //        m->slideVelX *= 100.0f / m->forwardVel;
-        //        m->slideVelZ *= 100.0f / m->forwardVel;
-        //    }
+            marioState.HSpeed = (float)Math.Sqrt(
+                marioState.SlidingSpeedX * marioState.SlidingSpeedX +
+                marioState.SlidingSpeedZ * marioState.SlidingSpeedZ);
+            if (marioState.HSpeed > 100.0f)
+            {
+                marioState.SlidingSpeedX *= 100.0f / marioState.HSpeed;
+                marioState.SlidingSpeedZ *= 100.0f / marioState.HSpeed;
+            }
 
-        //    if (newFacingDYaw < -0x4000 || newFacingDYaw > 0x4000)
-        //    {
-        //        m->forwardVel *= -1.0f;
-        //    }
-        //}
+            if (newFacingDYaw < -0x4000 || newFacingDYaw > 0x4000)
+            {
+                marioState.HSpeed *= -1.0f;
+            }
+        }
     }
 }
