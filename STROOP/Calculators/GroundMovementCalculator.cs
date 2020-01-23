@@ -83,6 +83,40 @@ namespace STROOP.Structs
             }
         }
 
+        public static MarioState ApplyInputForButtSliding(
+            MarioState marioState, Input input, TriangleDataModel floor, List<TriangleDataModel> walls)
+        {
+            MutableMarioState mutableMarioState = marioState.GetMutableMarioState(input);
+            PerformGroundStep(mutableMarioState, floor, walls);
+            PerformButtSlideMovement(mutableMarioState, floor);
+            return mutableMarioState.GetMarioState(marioState, input);
+        }
+
+        private static void PerformGroundStep(
+            MutableMarioState marioState, TriangleDataModel floor, List<TriangleDataModel> walls)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                float intendedPosX = marioState.X + floor.NormY * (marioState.XSpeed / 4.0f);
+                float intendedPosZ = marioState.Z + floor.NormY * (marioState.ZSpeed / 4.0f);
+                float intendedPosY = marioState.Y;
+                PerformGroundQuarterStep(marioState, intendedPosX, intendedPosY, intendedPosZ, floor, walls);
+            }
+        }
+
+        private static void PerformGroundQuarterStep(
+            MutableMarioState marioState, float intendedPosX, float intendedPosY, float intendedPosZ,
+            TriangleDataModel floor, List<TriangleDataModel> walls)
+        {
+            (intendedPosX, intendedPosZ) =
+                WallDisplacementCalculator.HandleWallDisplacement(
+                    intendedPosX, intendedPosY, intendedPosZ, walls, 50, 60);
+            float floorHeight = floor.GetTruncatedHeightOnTriangle(intendedPosX, intendedPosZ);
+            marioState.X = intendedPosX;
+            marioState.Y = floorHeight;
+            marioState.Z = intendedPosZ;
+        }
+
         public static void PerformButtSlideMovement(MutableMarioState marioState, TriangleDataModel floor)
         {
             short intendedDYaw = MoreMath.NormalizeAngleShort(marioState.IntendedAngle - marioState.SlidingAngle);

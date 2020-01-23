@@ -293,7 +293,14 @@ namespace STROOP.Models
 
         public double GetHeightOnTriangle(double x, double z)
         {
-            return (-x * NormX - z * NormZ - NormOffset) / NormY;
+            return -(x * NormX + NormZ * z + NormOffset) / NormY;
+        }
+
+        public float GetTruncatedHeightOnTriangle(double doubleX, double doubleZ)
+        {
+            int x = (int)doubleX;
+            int z = (int)doubleZ;
+            return -(x * NormX + NormZ * z + NormOffset) / NormY;
         }
 
         public static double GetHeightOnTriangle(
