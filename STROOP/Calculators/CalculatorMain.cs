@@ -1206,18 +1206,18 @@ namespace STROOP.Structs
 
         public static void TestButtSlide()
         {
-            float startX = 3139.8564453125f;
-            float startY = 1992.29418945313f;
-            float startZ = -568.216857910156f;
-            float startXSpeed = 0f;
+            float startX = 3197.20825195313f;
+            float startY = 2050.4931640625f;
+            float startZ = -905.573181152344f;
+            float startXSpeed = -6.24985647201538f;
             float startYSpeed = 0f;
-            float startZSpeed = 0f;
-            float startHSpeed = 0f;
-            float startXSlidingSpeed = 0f;
-            float startZSlidingSpeed = 0f;
-            ushort startYawMoving = 60692;
-            ushort startYawFacing = 60692;
-            ushort startCentAngle = 21678;
+            float startZSpeed = 12.3971395492554f;
+            float startHSpeed = 13.8834352493286f;
+            float startXSlidingSpeed = -6.24985647201538f;
+            float startZSlidingSpeed = 12.3971395492554f;
+            ushort startYawMoving = 60667;
+            ushort startYawFacing = 60667;
+            ushort startCentAngle = 21196;
 
             MarioState marioState = new MarioState(
                 startX,
@@ -1242,8 +1242,11 @@ namespace STROOP.Structs
             TriangleDataModel wall = new TriangleDataModel(0x801962E0);
             List<TriangleDataModel> walls = new List<TriangleDataModel>() { wall };
 
-            MarioState next = GroundMovementCalculator.ApplyInputForButtSliding(marioState, input, floor, walls);
-            Config.Print("next = " + next);
+            for (int i = 0; i < 20; i++)
+            {
+                Config.Print("next" + i + " = " + marioState);
+                marioState = GroundMovementCalculator.PerformButtSlide(marioState, input, floor, walls);
+            }
         }
     }
 }
