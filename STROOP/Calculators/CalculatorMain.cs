@@ -1206,18 +1206,18 @@ namespace STROOP.Structs
 
         public static void TestButtSlide()
         {
-            float startX = 3205.33203125f;
-            float startY = 2093.90405273438f;
-            float startZ = -1174.55505371094f;
-            float startXSpeed = -7.25897264480591f;
+            float startX = 3182.2568359375f;
+            float startY = 2087.14599609375f;
+            float startZ = -1143.09411621094f;
+            float startXSpeed = -4.60398626327515f;
             float startYSpeed = 0f;
-            float startZSpeed = 13.6249094009399f;
-            float startHSpeed = 15.437967300415f;
-            float startXSlidingSpeed = -7.25897264480591f;
-            float startZSlidingSpeed = 13.6249094009399f;
-            ushort startYawMoving = 60427;
-            ushort startYawFacing = 60427;
-            ushort startCentAngle = 19649;
+            float startZSpeed = 16.3799514770508f;
+            float startHSpeed = 17.014684677124f;
+            float startXSlidingSpeed = -4.60398626327515f;
+            float startZSlidingSpeed = 16.3799514770508f;
+            ushort startYawMoving = 62676;
+            ushort startYawFacing = 62676;
+            ushort startCentAngle = 19725;
 
             float goalY = 2322.00244140625f;
 
@@ -1237,6 +1237,7 @@ namespace STROOP.Structs
                 null,
                 null,
                 0);
+            startState = MarioState.CreateMarioState();
 
             Input input = new Input(0, 0);
 
@@ -1245,8 +1246,8 @@ namespace STROOP.Structs
             List<TriangleDataModel> walls = new List<TriangleDataModel>() { wall };
 
             /////////////////////////////////
-            int indexRadius = 16;
-            int spreadMultiplier = 10;
+            int indexRadius = 10;
+            int spreadMultiplier = 20;
             /////////////////////////////////
             List<int> angleDiffs = Enumerable.Range(0, 2 * indexRadius + 1).ToList().ConvertAll(
                 index => spreadMultiplier * 16 * (index - indexRadius));
@@ -1274,7 +1275,7 @@ namespace STROOP.Structs
                     Config.Print("new best min of " + min + " using " + dequeue.GetLineage());
                 }
 
-                if (dequeue.Index > 5) continue;
+                if (dequeue.Index >= 4) continue;
                 List<MarioState> successors = angleDiffs.ConvertAll(
                     angleDiff => GroundMovementCalculator.PerformButtSlide(dequeue, angleDiff, floor, walls));
                 successors.ForEach(successor => queue.Enqueue(successor));
