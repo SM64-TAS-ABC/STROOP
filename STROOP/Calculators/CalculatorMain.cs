@@ -1315,5 +1315,99 @@ namespace STROOP.Structs
             }
             return heights;
         }
+
+        public static void CalculateMovementForCcmWallGap()
+        {
+            float startX = 3122f;
+            float startY = 2294.47412109375f;
+            float startZ = -904.069885253906f;
+            float startXSpeed = -5.59027242660522f;
+            float startYSpeed = 25.04638671875f;
+            float startZSpeed = 10.3451957702637f;
+            float startHSpeed = 11.6010656356812f;
+            float startXSlidingSpeed = -5.59027242660522f;
+            float startZSlidingSpeed = 10.3451957702637f;
+            ushort startYawMoving = 62083;
+            ushort startYawFacing = 62083;
+            ushort startCentAngle = 20073;
+
+            Dictionary<int, ushort> cameraAngles =
+                new Dictionary<int, ushort>()
+                {
+                    [0] = 20073,
+                    [1] = 20081,
+                    [2] = 20097,
+                    [3] = 20102,
+                    [4] = 20115,
+                    [5] = 20128,
+                    [6] = 20140,
+                };
+
+            float goalX = 3122;
+            float goalY = 2322.00244140625f;
+            float goalZ = -854.901306152344f;
+
+            int xInput = -19;
+            int zInput = 18;
+            int xRadius = 5;
+            int zRadius = 5;
+
+            MarioState startState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                startXSlidingSpeed,
+                startZSlidingSpeed,
+                startYawMoving,
+                startYawFacing,
+                startCentAngle,
+                null,
+                null,
+                0);
+
+            int lastIndex = -1;
+            List<Input> inputs = CalculatorUtilities.GetInputRange(xInput - xRadius, xInput + xRadius, zInput - zRadius, zInput + zRadius);
+            float bestDiff = float.MaxValue;
+            MarioState bestState = null;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            queue.Enqueue(startState);
+
+            while (queue.Count > 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+                int numQSteps = dequeue.Index == 4 ? 3 : 4;
+                List<MarioState> nextStates = inputs.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input, numQSteps));
+                nextStates = nextStates.ConvertAll(state => state.WithCameraAngle(cameraAngles[state.Index]));
+                foreach (MarioState state in nextStates)
+                {
+                    if (state.Index > 5) continue;
+
+                    if (state.Index != lastIndex)
+                    {
+                        lastIndex = state.Index;
+                        Config.Print("Now at index " + lastIndex);
+                    }
+
+                    if (state.Index == 5)
+                    {
+                        float diff = (float)MoreMath.GetDistanceBetween(state.X, state.Z, goalX, goalZ);
+
+                        if (diff < bestDiff)
+                        {
+                            bestDiff = diff;
+                            bestState = state;
+                            Config.Print("Diff of " + bestDiff + " is: " + bestState.GetLineage());
+                        }
+                    }
+
+                    queue.Enqueue(state);
+                }
+            }
+            Config.Print("DONE");
+        }
     }
 }
