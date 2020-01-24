@@ -90,6 +90,13 @@ namespace STROOP.Structs
             return mutableMarioState.GetMarioState(marioState, input);
         }
 
+        public static MarioState PerformButtSlide(MarioState marioState, int angleDiff, TriangleDataModel floor, List<TriangleDataModel> walls)
+        {
+            MutableMarioState mutableMarioState = marioState.GetMutableMarioState(angleDiff);
+            common_slide_action_with_jump(mutableMarioState, floor, walls);
+            return mutableMarioState.GetMarioState(marioState, new Input(angleDiff, 0));
+        }
+
         private static void common_slide_action_with_jump(MutableMarioState marioState, TriangleDataModel floor, List<TriangleDataModel> walls)
         {
             update_sliding(marioState, 4.0f, floor, walls);

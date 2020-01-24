@@ -1206,20 +1206,22 @@ namespace STROOP.Structs
 
         public static void TestButtSlide()
         {
-            float startX = 3197.20825195313f;
-            float startY = 2050.4931640625f;
-            float startZ = -905.573181152344f;
-            float startXSpeed = -6.24985647201538f;
+            float startX = 3205.33203125f;
+            float startY = 2093.90405273438f;
+            float startZ = -1174.55505371094f;
+            float startXSpeed = -7.25897264480591f;
             float startYSpeed = 0f;
-            float startZSpeed = 12.3971395492554f;
-            float startHSpeed = 13.8834352493286f;
-            float startXSlidingSpeed = -6.24985647201538f;
-            float startZSlidingSpeed = 12.3971395492554f;
-            ushort startYawMoving = 60667;
-            ushort startYawFacing = 60667;
-            ushort startCentAngle = 21196;
+            float startZSpeed = 13.6249094009399f;
+            float startHSpeed = 15.437967300415f;
+            float startXSlidingSpeed = -7.25897264480591f;
+            float startZSlidingSpeed = 13.6249094009399f;
+            ushort startYawMoving = 60427;
+            ushort startYawFacing = 60427;
+            ushort startCentAngle = 19649;
 
-            MarioState marioState = new MarioState(
+            float goalY = 2322.00244140625f;
+
+            MarioState startState = new MarioState(
                 startX,
                 startY,
                 startZ,
@@ -1242,16 +1244,42 @@ namespace STROOP.Structs
             TriangleDataModel wall = new TriangleDataModel(0x801962E0);
             List<TriangleDataModel> walls = new List<TriangleDataModel>() { wall };
 
-            for (int i = 0; i < 20; i++)
-            {
-                //Config.Print("next" + i + " = " + marioState);
-                marioState = GroundMovementCalculator.PerformButtSlide(marioState, input, floor, walls);
-            }
+            /////////////////////////////////
+            int indexRadius = 16;
+            int spreadMultiplier = 10;
+            /////////////////////////////////
+            List<int> angleDiffs = Enumerable.Range(0, 2 * indexRadius + 1).ToList().ConvertAll(
+                index => spreadMultiplier * 16 * (index - indexRadius));
 
-            float y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-            List<float> heights = GetPossibleHeights(y, hSpeed);
-            InfoForm.ShowValue(string.Join("\r\n", heights));
+            Queue<MarioState> queue = new Queue<MarioState>();
+            queue.Enqueue(startState);
+
+            float bestMin = float.MaxValue;
+            int currentIndex = 0;
+
+            while (queue.Count > 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+                if (dequeue.Index != currentIndex)
+                {
+                    currentIndex = dequeue.Index;
+                    Config.Print("now at index " + currentIndex);
+                }
+
+                List<float> heights = GetPossibleHeights(dequeue.Y, dequeue.HSpeed);
+                float min = heights.Min(height => Math.Abs(height - goalY));
+                if (min < bestMin)
+                {
+                    bestMin = min;
+                    Config.Print("new best min of " + min + " using " + dequeue.GetLineage());
+                }
+
+                if (dequeue.Index > 5) continue;
+                List<MarioState> successors = angleDiffs.ConvertAll(
+                    angleDiff => GroundMovementCalculator.PerformButtSlide(dequeue, angleDiff, floor, walls));
+                successors.ForEach(successor => queue.Enqueue(successor));
+            }
+            Config.Print("DONE");
         }
 
         private static List<float> GetPossibleHeights(float initialY, float hSpeed)
