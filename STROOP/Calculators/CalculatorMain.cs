@@ -1244,9 +1244,47 @@ namespace STROOP.Structs
 
             for (int i = 0; i < 20; i++)
             {
-                Config.Print("next" + i + " = " + marioState);
+                //Config.Print("next" + i + " = " + marioState);
                 marioState = GroundMovementCalculator.PerformButtSlide(marioState, input, floor, walls);
             }
+
+            float y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            List<float> heights = GetPossibleHeights(y, hSpeed);
+            InfoForm.ShowValue(string.Join("\r\n", heights));
+        }
+
+        private static List<float> GetPossibleHeights(float initialY, float hSpeed)
+        {
+            float initialYSpeed = 42 + hSpeed / 4;
+            List<float> heights = new List<float>();
+            for (int numAHeldFrames = 1; numAHeldFrames < 20; numAHeldFrames++)
+            {
+                float y = initialY;
+                float ySpeed = initialYSpeed;
+                for (int frame = 0; y >= initialY; frame++)
+                {
+                    y += ySpeed / 4;
+                    if (ySpeed < 0) heights.Add(y);
+                    y += ySpeed / 4;
+                    if (ySpeed < 0) heights.Add(y);
+                    y += ySpeed / 4;
+                    if (ySpeed < 0) heights.Add(y);
+                    y += ySpeed / 4;
+                    if (ySpeed < 0) heights.Add(y);
+
+                    if (frame >= numAHeldFrames && ySpeed > 20) // fast gravity
+                    {
+                        ySpeed /= 4;
+                    }
+                    else // slow gravity
+                    {
+                        ySpeed -= 4;
+                        if (ySpeed < -75) ySpeed = -75;
+                    }
+                }
+            }
+            return heights;
         }
     }
 }
