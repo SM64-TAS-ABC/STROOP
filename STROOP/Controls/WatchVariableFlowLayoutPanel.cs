@@ -87,6 +87,38 @@ namespace STROOP.Controls
             ToolStripMenuItem fixVerticalScrollItem = new ToolStripMenuItem("Fix Vertical Scroll");
             fixVerticalScrollItem.Click += (sender, e) => FixVerticalScroll();
 
+            ToolStripMenuItem addCustomVariableItem = new ToolStripMenuItem("Add Custom Variable");
+            addCustomVariableItem.Click += (sender, e) =>
+            {
+                string specialType = WatchVariableSpecialUtilities.AddCustomEntry();
+                WatchVariable watchVariable =
+                    new WatchVariable(
+                        memoryTypeName: null,
+                        specialType: specialType,
+                        baseAddressType: BaseAddressTypeEnum.None,
+                        offsetUS: null,
+                        offsetJP: null,
+                        offsetSH: null,
+                        offsetDefault: null,
+                        mask: null,
+                        shift: null);
+                WatchVariableControlPrecursor precursor =
+                    new WatchVariableControlPrecursor(
+                        name: specialType,
+                        watchVar: watchVariable,
+                        subclass: WatchVariableSubclass.Number,
+                        backgroundColor: null,
+                        displayType: null,
+                        roundingLimit: null,
+                        useHex: null,
+                        invertBool: null,
+                        isYaw: null,
+                        coordinate: null,
+                        groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                WatchVariableControl control = precursor.CreateWatchVariableControl();
+                AddVariable(control);
+            };
+
             ToolStripMenuItem openSaveClearItem = new ToolStripMenuItem("Open / Save / Clear ...");
             ControlUtilities.AddDropDownItems(
                 openSaveClearItem,
@@ -115,6 +147,7 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(clearAllButHighlightedItem);
             ContextMenuStrip.Items.Add(fixVerticalScrollItem);
+            ContextMenuStrip.Items.Add(addCustomVariableItem);
             ContextMenuStrip.Items.Add(openSaveClearItem);
             ContextMenuStrip.Items.Add(doToAllVariablesItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);

@@ -149,6 +149,30 @@ namespace STROOP.Structs
             return specialType;
         }
 
+        private static int _numCustomEntries = 0;
+
+        public static string AddCustomEntry()
+        {
+            int index = _numCustomEntries;
+            _numCustomEntries++;
+            SpecialConfig.CustomValues.Add(0);
+            string specialType = "Custom" + index;
+
+            _dictionary.Add(specialType,
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.CustomValues[index];
+                },
+                (double value, uint dummy) =>
+                {
+                    SpecialConfig.CustomValues[index] = value;
+                    return true;
+                }
+            ));
+
+            return specialType;
+        }
+
         public static string AddSchedulerEntry(int index)
         {
             string specialType = "Scheduler" + index;
