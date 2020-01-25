@@ -32,7 +32,7 @@ namespace STROOP.Map
 
             Size = 300;
             OutlineWidth = 3;
-            OutlineColor = Color.Red;
+            OutlineColor = Color.Yellow;
         }
 
         protected override List<(float x, float z)> GetVertices()
