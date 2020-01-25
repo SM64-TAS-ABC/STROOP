@@ -300,13 +300,19 @@ namespace STROOP.Map
             ToolStripMenuItem itemArrow = new ToolStripMenuItem("Add Tracker for Arrow");
             itemArrow.Click += (sender, e) =>
             {
+                string yawOffsetString = DialogUtilities.GetStringFromDialog(labelText: "Enter the offset (in hex) of the yaw variable in the object struct:");
+                if (yawOffsetString == null) return;
+                uint yawOffset = ParsingUtilities.ParseHexNullable(yawOffsetString) ?? 0;
+                string numBytesString = DialogUtilities.GetStringFromDialog(labelText: "Enter the number of bytes of the yaw variable:");
+                if (numBytesString == null) return;
+                int numBytes = ParsingUtilities.ParseInt(numBytesString);
                 List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObjectOrMario()) return null;
                     uint objAddress = posAngle.GetObjAddress();
-                    return (MapObject)new MapObjectArrowObject(objAddress, 0x100, 4);
+                    return (MapObject)new MapObjectArrowObject(objAddress, yawOffset, numBytes);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
