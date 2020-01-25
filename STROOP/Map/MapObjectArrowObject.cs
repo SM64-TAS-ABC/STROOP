@@ -25,7 +25,7 @@ namespace STROOP.Map
             _yawOffset = yawOffset;
             _numBytes = numBytes;
 
-            Size = 100;
+            Size = 300;
             OutlineWidth = 3;
             OutlineColor = Color.Red;
         }
@@ -40,9 +40,23 @@ namespace STROOP.Map
             (float arrowHeadX, float arrowHeadZ) =
                 ((float, float))MoreMath.AddVectorToPoint(Size, yaw, x, z);
 
+            float arrowSideSize = 100;
+            (float pointSide1X, float pointSide1Z) =
+                ((float, float))MoreMath.AddVectorToPoint(arrowSideSize, yaw + 32768 + 8192, arrowHeadX, arrowHeadZ);
+            (float pointSide2X, float pointSide2Z) =
+                ((float, float))MoreMath.AddVectorToPoint(arrowSideSize, yaw + 32768 - 8192, arrowHeadX, arrowHeadZ);
+
             List<(float x, float z)> vertices = new List<(float x, float z)>();
+
             vertices.Add((x, z));
             vertices.Add((arrowHeadX, arrowHeadZ));
+
+            vertices.Add((arrowHeadX, arrowHeadZ));
+            vertices.Add((pointSide1X, pointSide1Z));
+
+            vertices.Add((arrowHeadX, arrowHeadZ));
+            vertices.Add((pointSide2X, pointSide2Z));
+
             return vertices;
         }
 
