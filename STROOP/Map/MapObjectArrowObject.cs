@@ -71,7 +71,7 @@ namespace STROOP.Map
 
         public override Image GetImage()
         {
-            return Config.ObjectAssociations.HolpImage;
+            return Config.ObjectAssociations.ArrowImage;
         }
 
         public override ContextMenuStrip GetContextMenuStrip()

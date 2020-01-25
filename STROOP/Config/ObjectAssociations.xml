@@ -63,6 +63,9 @@
   <NextPositions>
     <MapImage path="Next Positions.png"/>
   </NextPositions>
+  <Arrow>
+    <MapImage path="Arrow.png"/>
+  </Arrow>
   <Iwerlipses>
     <MapImage path="Iwerlipses.png"/>
   </Iwerlipses>
