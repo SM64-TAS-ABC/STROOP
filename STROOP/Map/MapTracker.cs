@@ -297,6 +297,22 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemArrow = new ToolStripMenuItem("Add Tracker for Arrow");
+            itemArrow.Click += (sender, e) =>
+            {
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
+                    uint objAddress = posAngle.GetObjAddress();
+                    return (MapObject)new MapObjectArrowObject(objAddress, 0x100, 4);
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                MapTracker tracker = new MapTracker(newMapObjs);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemCurrentUnit = new ToolStripMenuItem("Add Tracker for Current Unit");
             itemCurrentUnit.Click += (sender, e) =>
             {
@@ -340,6 +356,7 @@ namespace STROOP.Map
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemWallTriangles);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemCeilingTriangles);
             pictureBoxPlus.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemArrow);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemCurrentUnit);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemPath);
             pictureBoxPlus.Click += (sender, e) => pictureBoxPlus.ContextMenuStrip.Show(Cursor.Position);

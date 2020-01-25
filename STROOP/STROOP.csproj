@@ -341,6 +341,7 @@
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Map\MapCeilingObject.cs" />
     <Compile Include="Map\MapBackgroundObject.cs" />
+    <Compile Include="Map\MapObjectArrowObject.cs" />
     <Compile Include="Map\MapMapObject.cs" />
     <Compile Include="Map\MapDrawType.cs" />
     <Compile Include="Map\MapSphereObject.cs" />
