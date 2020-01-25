@@ -25,8 +25,7 @@ namespace STROOP.Controls
         public readonly string SpecialType;
         public readonly Func<object, uint, bool> SetterFunction;
 
-        private object _value;
-        public object Value { get { return _value; } }
+        public object Value { get; private set; }
 
         public WatchVariableLock(
             bool isSpecial,
@@ -48,17 +47,17 @@ namespace STROOP.Controls
             SpecialType = specialType;
             SetterFunction = setterFunction;
 
-            _value = value;
+            Value = value;
         }
 
         public void Invoke()
         {
-            SetterFunction(_value, Address);
+            SetterFunction(Value, Address);
         }
 
         public void UpdateLockValue(object value)
         {
-            _value = value;
+            Value = value;
         }
 
         public override bool Equals(object obj)
