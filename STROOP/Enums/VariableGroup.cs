@@ -35,5 +35,6 @@ namespace STROOP.Structs
         Point,
         Coin,
         Hacks,
+        Rng,
     };
 }

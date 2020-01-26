@@ -687,6 +687,34 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("ObjectRngIndex",
+                ((uint objAddress) =>
+                {
+                    ushort coinRngValue = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawMovingOffset);
+                    int coinRngIndex = RngIndexer.GetRngIndex(coinRngValue);
+                    return coinRngIndex;
+                },
+                (int rngIndex, uint objAddress) =>
+                {
+                    ushort coinRngValue = RngIndexer.GetRngValue(rngIndex);
+                    return Config.Stream.SetValue(coinRngValue, objAddress + ObjectConfig.YawMovingOffset);
+                }));
+
+            _dictionary.Add("ObjectRngIndexDiff",
+                ((uint objAddress) =>
+                {
+                    ushort coinRngValue = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawMovingOffset);
+                    int coinRngIndex = RngIndexer.GetRngIndex(coinRngValue);
+                    int rngIndexDiff = coinRngIndex - SpecialConfig.GoalRngIndex;
+                    return rngIndexDiff;
+                },
+                (int rngIndexDiff, uint objAddress) =>
+                {
+                    int coinRngIndex = SpecialConfig.GoalRngIndex + rngIndexDiff;
+                    ushort coinRngValue = RngIndexer.GetRngValue(coinRngIndex);
+                    return Config.Stream.SetValue(coinRngValue, objAddress + ObjectConfig.YawMovingOffset);
+                }));
+
             // Object specific vars - Pendulum
 
             _dictionary.Add("PendulumCountdown",

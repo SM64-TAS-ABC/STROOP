@@ -154,6 +154,7 @@ namespace STROOP.Managers
                 VariableGroup.Movement,
                 VariableGroup.Transformation,
                 VariableGroup.Coordinate,
+                VariableGroup.Rng,
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =

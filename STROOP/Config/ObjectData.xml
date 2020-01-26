@@ -278,5 +278,9 @@
   <Data groupList="Coordinate" base="Object" specialType="MidpointYCoordinate" coord="Y" color="Blue">Y Midpoint</Data>
   <Data groupList="Coordinate" base="Object" specialType="MidpointZCoordinate" coord="Z" color="Blue">Z Midpoint</Data>
   <Data groupList="Coordinate" base="Object" specialType="FarthestCoordinateDistance" color="Blue">Farthest Dist</Data>
+
+  <Data groupList="Rng" type="ushort" offset="0xCA" base="Object" color="Orange">Object RNG Value</Data>
+  <Data groupList="Rng" base="Object" specialType="ObjectRngIndex" color="Orange">Object RNG Index</Data>
+  <Data groupList="Rng" base="Object" specialType="ObjectRngIndexDiff" color="Orange">Object RNG Index Diff</Data>
   
 </VarData>
