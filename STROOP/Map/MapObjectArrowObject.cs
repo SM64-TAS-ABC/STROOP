@@ -35,9 +35,10 @@ namespace STROOP.Map
             OutlineColor = Color.Yellow;
         }
 
-        protected override List<(float x, float z)> GetVertices()
+        protected override List<(float x, float y, float z)> GetVertices()
         {
             float x = Config.Stream.GetSingle(_objAddress + ObjectConfig.XOffset);
+            float y = Config.Stream.GetSingle(_objAddress + ObjectConfig.YOffset);
             float z = Config.Stream.GetSingle(_objAddress + ObjectConfig.ZOffset);
             uint yaw = _numBytes == 2 ?
                 Config.Stream.GetUInt16(_objAddress + _yawOffset) :
@@ -50,16 +51,16 @@ namespace STROOP.Map
             (float pointSide2X, float pointSide2Z) =
                 ((float, float))MoreMath.AddVectorToPoint(_arrowHeadSideLength, yaw + 32768 - 8192, arrowHeadX, arrowHeadZ);
 
-            List<(float x, float z)> vertices = new List<(float x, float z)>();
+            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
 
-            vertices.Add((x, z));
-            vertices.Add((arrowHeadX, arrowHeadZ));
+            vertices.Add((x, y, z));
+            vertices.Add((arrowHeadX, y, arrowHeadZ));
 
-            vertices.Add((arrowHeadX, arrowHeadZ));
-            vertices.Add((pointSide1X, pointSide1Z));
+            vertices.Add((arrowHeadX, y, arrowHeadZ));
+            vertices.Add((pointSide1X, y, pointSide1Z));
 
-            vertices.Add((arrowHeadX, arrowHeadZ));
-            vertices.Add((pointSide2X, pointSide2Z));
+            vertices.Add((arrowHeadX, y, arrowHeadZ));
+            vertices.Add((pointSide2X, y, pointSide2Z));
 
             return vertices;
         }

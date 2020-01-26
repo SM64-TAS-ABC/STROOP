@@ -21,18 +21,20 @@ namespace STROOP.Map
             OutlineColor = Color.Black;
         }
 
-        protected override List<(float x, float z)> GetVertices()
+        protected override List<(float x, float y, float z)> GetVertices()
         {
-            List<(float x, float z)> vertices = new List<(float x, float z)>();
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+
+            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             for (int x = -8192; x <= 8192; x += 1024)
             {
-                vertices.Add((x, -8192));
-                vertices.Add((x, 8192));
+                vertices.Add((x, marioY, - 8192));
+                vertices.Add((x, marioY, 8192));
             }
             for (int z = -8192; z <= 8192; z += 1024)
             {
-                vertices.Add((-8192, z));
-                vertices.Add((8192, z));
+                vertices.Add((-8192, marioY, z));
+                vertices.Add((8192, marioY, z));
             }
             return vertices;
         }

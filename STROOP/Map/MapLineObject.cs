@@ -25,7 +25,7 @@ namespace STROOP.Map
         {
             if (OutlineWidth == 0) return;
 
-            List<(float x, float z)> vertices = GetVertices();
+            List<(float x, float y, float z)> vertices = GetVertices();
             List<(float x, float z)> veriticesForControl =
                 vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z));
 
@@ -47,12 +47,11 @@ namespace STROOP.Map
         {
             if (OutlineWidth == 0) return;
 
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            List<(float x, float z)> vertexList = GetVertices();
+            List<(float x, float y, float z)> vertexList = GetVertices();
 
             Map3DVertex[] vertexArrayForEdges =
                 vertexList.ConvertAll(vertex => new Map3DVertex(new Vector3(
-                    vertex.x, marioY, vertex.z), OutlineColor)).ToArray();
+                    vertex.x, vertex.y, vertex.z), OutlineColor)).ToArray();
 
             Matrix4 viewMatrix = GetModelMatrix() * Config.Map3DCamera.Matrix;
             GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
@@ -68,7 +67,7 @@ namespace STROOP.Map
             GL.DeleteBuffer(buffer);
         }
 
-        protected abstract List<(float x, float z)> GetVertices();
+        protected abstract List<(float x, float y, float z)> GetVertices();
 
         public override MapDrawType GetDrawType()
         {
