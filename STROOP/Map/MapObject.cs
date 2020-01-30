@@ -108,5 +108,9 @@ namespace STROOP.Map
         {
             return false;
         }
+
+        public virtual void ApplySettings(MapObjectSettings settings)
+        {
+        }
     }
 }
