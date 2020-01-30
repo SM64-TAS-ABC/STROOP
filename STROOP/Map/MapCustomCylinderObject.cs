@@ -60,7 +60,9 @@ namespace STROOP.Map
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter a number.");
                     float? relativeMinY = ParsingUtilities.ParseFloatNullable(text);
                     if (!relativeMinY.HasValue) return;
-                    _relativeMinY = relativeMinY.Value;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        customCylinderChangeRelativeMinY: true, customCylinderNewRelativeMinY: relativeMinY.Value);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
 
                 ToolStripMenuItem itemSetRelativeMaxY = new ToolStripMenuItem("Set Relative Max Y...");
@@ -69,7 +71,9 @@ namespace STROOP.Map
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter a number.");
                     float? relativeMaxY = ParsingUtilities.ParseFloatNullable(text);
                     if (!relativeMaxY.HasValue) return;
-                    _relativeMaxY = relativeMaxY.Value;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        customCylinderChangeRelativeMaxY: true, customCylinderNewRelativeMaxY: relativeMaxY.Value);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
@@ -78,6 +82,19 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            if (settings.CustomCylinderChangeRelativeMinY)
+            {
+                _relativeMinY = settings.CustomCylinderNewRelativeMinY;
+            }
+
+            if (settings.CustomCylinderChangeRelativeMaxY)
+            {
+                _relativeMaxY = settings.CustomCylinderNewRelativeMaxY;
+            }
         }
     }
 }

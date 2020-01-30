@@ -368,6 +368,16 @@ namespace STROOP.Map
             pictureBoxPlus.Click += (sender, e) => pictureBoxPlus.ContextMenuStrip.Show(Cursor.Position);
         }
 
+        public bool ContainsMapObject(MapObject mapObject)
+        {
+            return _mapObjectList.Contains(mapObject);
+        }
+
+        public void ApplySettings(MapObjectSettings settings)
+        {
+            _mapObjectList.ForEach(mapObj => mapObj.ApplySettings(settings));
+        }
+
         public List<MapObject> GetMapObjectsToDisplay()
         {
             if (!_isVisible) return new List<MapObject>();

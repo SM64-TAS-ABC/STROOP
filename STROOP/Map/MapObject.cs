@@ -112,5 +112,14 @@ namespace STROOP.Map
         public virtual void ApplySettings(MapObjectSettings settings)
         {
         }
+
+        protected MapTracker GetParentMapTracker()
+        {
+            foreach (MapTracker mapTracker in Config.MapGui.flowLayoutPanelMapTrackers.Controls)
+            {
+                if (mapTracker.ContainsMapObject(this)) return mapTracker;
+            }
+            return null;
+        }
     }
 }
