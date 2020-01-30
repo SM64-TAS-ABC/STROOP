@@ -85,7 +85,9 @@ namespace STROOP.Map
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the side length of the arrow head:");
                     float? arrowHeadSideLength = ParsingUtilities.ParseFloatNullable(text);
                     if (!arrowHeadSideLength.HasValue) return;
-                    _arrowHeadSideLength = arrowHeadSideLength.Value;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        arrowChangeHeadSideLength: true, arrowNewHeadSideLength: arrowHeadSideLength.Value);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
@@ -93,6 +95,16 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ArrowChangeHeadSideLength)
+            {
+                _arrowHeadSideLength = settings.ArrowNewHeadSideLength;
+            }
         }
     }
 }

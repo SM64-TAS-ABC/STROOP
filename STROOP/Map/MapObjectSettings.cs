@@ -25,6 +25,9 @@ namespace STROOP.Map
         public readonly bool WallChangeRelativeHeight;
         public readonly float? WallNewRelativeHeight;
 
+        public readonly bool ArrowChangeHeadSideLength;
+        public readonly float ArrowNewHeadSideLength;
+
         public MapObjectSettings(
             bool customCylinderChangeRelativeMinY = false,
             float customCylinderNewRelativeMinY = 0,
@@ -33,7 +36,10 @@ namespace STROOP.Map
             float customCylinderNewRelativeMaxY = 0,
 
             bool wallChangeRelativeHeight = false,
-            float? wallNewRelativeHeight = null)
+            float? wallNewRelativeHeight = null,
+
+            bool arrowChangeHeadSideLength = false,
+            float arrowNewHeadSideLength = 0)
         {
             CustomCylinderChangeRelativeMinY = customCylinderChangeRelativeMinY;
             CustomCylinderNewRelativeMinY = customCylinderNewRelativeMinY;
@@ -43,6 +49,9 @@ namespace STROOP.Map
 
             WallChangeRelativeHeight = wallChangeRelativeHeight;
             WallNewRelativeHeight = wallNewRelativeHeight;
+
+            ArrowChangeHeadSideLength = arrowChangeHeadSideLength;
+            ArrowNewHeadSideLength = arrowNewHeadSideLength;
         }
     }
 }
