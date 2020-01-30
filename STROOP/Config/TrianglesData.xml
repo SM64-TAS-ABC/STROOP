@@ -89,6 +89,7 @@
   <Data groupList="Advanced" type="int" offsetUS="0x80361170" offsetJP="0x8035FE00" base="Relative" color="Grey">Total Tri Count</Data>
 
   <Data groupList="Advanced" base="Triangle" specialType="CurrentTriangleIndex" color="Grey">Current Tri Index</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="CurrentTriangleObjectIndex" color="Grey">Current Tri Obj Index</Data>
   <Data groupList="Advanced" base="Triangle" specialType="CurrentTriangleAddress" subclass="Triangle" color="Grey">Current Tri Address</Data>
 
   <Data groupList="Advanced" type="uint" offsetUS="0x8038EE98" offsetJP="0x8038EE98" base="Relative" subclass="Address" color="Grey">Node List Pointer</Data>

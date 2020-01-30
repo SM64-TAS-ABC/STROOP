@@ -2302,6 +2302,24 @@ namespace STROOP.Structs
                     return true;
                 }));
 
+            _dictionary.Add("CurrentTriangleObjectIndex",
+                ((uint triAddress) =>
+                {
+                    uint objAddress = Config.Stream.GetUInt32(triAddress + TriangleOffsetsConfig.AssociatedObject);
+                    if (objAddress == 0) return double.NaN;
+                    List<TriangleDataModel> objTris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    for (int i = 0; i < objTris.Count; i++)
+                    {
+                        if (objTris[i].Address == triAddress) return i;
+                    }
+                    return double.NaN;
+                },
+                (int index, uint triAddress) =>
+                {
+                    return false;
+                }
+            ));
+
             _dictionary.Add("CurrentTriangleAddress",
                 ((uint triAddress) =>
                 {
