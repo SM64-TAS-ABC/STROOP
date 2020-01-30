@@ -14,6 +14,7 @@ namespace STROOP.Utilities
         private readonly PositionAngleTypeEnum PosAngleType;
         private readonly uint? Address;
         private readonly int? Index;
+        private readonly int? Index2;
         private readonly double? Frame;
         private readonly PositionAngle PosPA;
         private readonly PositionAngle AnglePA;
@@ -45,6 +46,7 @@ namespace STROOP.Utilities
             GoombaProjection,
             Ghost,
             Tri,
+            ObjTri,
             Wall,
             Floor,
             Ceiling,
@@ -71,12 +73,14 @@ namespace STROOP.Utilities
                 posAngleType == PositionAngleTypeEnum.ObjGfx ||
                 posAngleType == PositionAngleTypeEnum.ObjScale ||
                 posAngleType == PositionAngleTypeEnum.GoombaProjection ||
-                posAngleType == PositionAngleTypeEnum.Tri;
+                posAngleType == PositionAngleTypeEnum.Tri ||
+                posAngleType == PositionAngleTypeEnum.ObjTri;
         }
 
         private bool ShouldHaveIndex(PositionAngleTypeEnum posAngleType)
         {
             return posAngleType == PositionAngleTypeEnum.Tri ||
+                posAngleType == PositionAngleTypeEnum.ObjTri ||
                 posAngleType == PositionAngleTypeEnum.Wall ||
                 posAngleType == PositionAngleTypeEnum.Floor ||
                 posAngleType == PositionAngleTypeEnum.Ceiling ||
@@ -93,6 +97,7 @@ namespace STROOP.Utilities
             PositionAngleTypeEnum posAngleType,
             uint? address = null,
             int? index = null,
+            int? index2 = null,
             double? frame = null,
             PositionAngle posPA = null,
             PositionAngle anglePA = null,
@@ -102,6 +107,7 @@ namespace STROOP.Utilities
             PosAngleType = posAngleType;
             Address = address;
             Index = index;
+            Index2 = index2;
             Frame = frame;
             PosPA = posPA;
             AnglePA = anglePA;
@@ -114,6 +120,10 @@ namespace STROOP.Utilities
 
             bool shouldHaveIndex = ShouldHaveIndex(posAngleType);
             if (index.HasValue != shouldHaveIndex)
+                throw new ArgumentOutOfRangeException();
+
+            bool shouldHaveIndex2 = PosAngleType == PositionAngleTypeEnum.ObjTri;
+            if (index2.HasValue != shouldHaveIndex2)
                 throw new ArgumentOutOfRangeException();
 
             bool shouldHaveFrame = ShouldHaveFrame(posAngleType);
@@ -171,6 +181,8 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.GoombaProjection, address: address);
         public static PositionAngle Tri(uint address, int index) =>
             new PositionAngle(PositionAngleTypeEnum.Tri, address: address, index: index);
+        public static PositionAngle ObjTri(uint address, int index, int index2) =>
+            new PositionAngle(PositionAngleTypeEnum.ObjTri, address: address, index: index, index2: index2);
         public static PositionAngle Wall(int index) =>
             new PositionAngle(PositionAngleTypeEnum.Wall, index: index);
         public static PositionAngle Floor(int index) =>
@@ -293,6 +305,16 @@ namespace STROOP.Utilities
                 // 4 = point on triangle
                 return Tri(address.Value, index.Value);
             }
+            else if (parts.Count == 4 && parts[0] == "objtri")
+            {
+                uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
+                if (!address.HasValue) return null;
+                int? index = ParsingUtilities.ParseIntNullable(parts[2]);
+                if (!index.HasValue) return null;
+                int? index2 = ParsingUtilities.ParseIntNullable(parts[3]);
+                if (!index2.HasValue || index2.Value < 0 || index2.Value > 4) return null;
+                return ObjTri(address.Value, index.Value, index2.Value);
+            }
             else if (parts.Count == 2 && parts[0] == "wall")
             {
                 int? index = ParsingUtilities.ParseIntNullable(parts[1]);
@@ -351,6 +373,7 @@ namespace STROOP.Utilities
             parts.Add(PosAngleType);
             if (Address.HasValue) parts.Add(HexUtilities.FormatValue(Address.Value, 8));
             if (Index.HasValue) parts.Add(Index.Value);
+            if (Index2.HasValue) parts.Add(Index2.Value);
             if (Frame.HasValue) parts.Add(Frame.Value);
             if (PosPA != null) parts.Add("[" + PosPA + "]");
             if (AnglePA != null) parts.Add("[" + AnglePA + "]");
@@ -489,6 +512,12 @@ namespace STROOP.Utilities
                         return GetObjectValue("Mario Ghost", CoordinateAngle.X, gfx: true);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.X);
+                    case PositionAngleTypeEnum.ObjTri:
+                        {
+                            uint? triAddress = TriangleUtilities.GetTriangleAddressOfObjectTriangleIndex(Address.Value, Index.Value);
+                            if (!triAddress.HasValue) return double.NaN;
+                            return GetTriangleVertexComponent(triAddress.Value, Index2.Value, Coordinate.X);
+                        }
                     case PositionAngleTypeEnum.Wall:
                         return GetTriangleVertexComponent(
                             Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.X);
@@ -575,6 +604,12 @@ namespace STROOP.Utilities
                         return GetObjectValue("Mario Ghost", CoordinateAngle.Y, gfx: true);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.Y);
+                    case PositionAngleTypeEnum.ObjTri:
+                        {
+                            uint? triAddress = TriangleUtilities.GetTriangleAddressOfObjectTriangleIndex(Address.Value, Index.Value);
+                            if (!triAddress.HasValue) return double.NaN;
+                            return GetTriangleVertexComponent(triAddress.Value, Index2.Value, Coordinate.Y);
+                        }
                     case PositionAngleTypeEnum.Wall:
                         return GetTriangleVertexComponent(
                             Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.Y);
@@ -661,6 +696,12 @@ namespace STROOP.Utilities
                         return GetObjectValue("Mario Ghost", CoordinateAngle.Z, gfx: true);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.Z);
+                    case PositionAngleTypeEnum.ObjTri:
+                        {
+                            uint? triAddress = TriangleUtilities.GetTriangleAddressOfObjectTriangleIndex(Address.Value, Index.Value);
+                            if (!triAddress.HasValue) return double.NaN;
+                            return GetTriangleVertexComponent(triAddress.Value, Index2.Value, Coordinate.Z);
+                        }
                     case PositionAngleTypeEnum.Wall:
                         return GetTriangleVertexComponent(
                             Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.Z);
@@ -747,6 +788,8 @@ namespace STROOP.Utilities
                         return GetObjectValue("Mario Ghost", CoordinateAngle.Angle, gfx: true);
                     case PositionAngleTypeEnum.Tri:
                         return Double.NaN;
+                    case PositionAngleTypeEnum.ObjTri:
+                        return double.NaN;
                     case PositionAngleTypeEnum.Wall:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Floor:
@@ -1012,6 +1055,12 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, "Mario Ghost", CoordinateAngle.X, gfx: true);
                 case PositionAngleTypeEnum.Tri:
                     return SetTriangleVertexComponent((short)value, Address.Value, Index.Value, Coordinate.X);
+                case PositionAngleTypeEnum.ObjTri:
+                    {
+                        uint? triAddress = TriangleUtilities.GetTriangleAddressOfObjectTriangleIndex(Address.Value, Index.Value);
+                        if (!triAddress.HasValue) return false;
+                        return SetTriangleVertexComponent((short)value, triAddress.Value, Index2.Value, Coordinate.X);
+                    }
                 case PositionAngleTypeEnum.Wall:
                     return SetTriangleVertexComponent(
                         (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.X);
@@ -1097,6 +1146,12 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, "Mario Ghost", CoordinateAngle.Y, gfx: true);
                 case PositionAngleTypeEnum.Tri:
                     return SetTriangleVertexComponent((short)value, Address.Value, Index.Value, Coordinate.Y);
+                case PositionAngleTypeEnum.ObjTri:
+                    {
+                        uint? triAddress = TriangleUtilities.GetTriangleAddressOfObjectTriangleIndex(Address.Value, Index.Value);
+                        if (!triAddress.HasValue) return false;
+                        return SetTriangleVertexComponent((short)value, triAddress.Value, Index2.Value, Coordinate.Y);
+                    }
                 case PositionAngleTypeEnum.Wall:
                     return SetTriangleVertexComponent(
                         (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.Y);
@@ -1182,6 +1237,12 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, "Mario Ghost", CoordinateAngle.Z, gfx: true);
                 case PositionAngleTypeEnum.Tri:
                     return SetTriangleVertexComponent((short)value, Address.Value, Index.Value, Coordinate.Z);
+                case PositionAngleTypeEnum.ObjTri:
+                    {
+                        uint? triAddress = TriangleUtilities.GetTriangleAddressOfObjectTriangleIndex(Address.Value, Index.Value);
+                        if (!triAddress.HasValue) return false;
+                        return SetTriangleVertexComponent((short)value, triAddress.Value, Index2.Value, Coordinate.Z);
+                    }
                 case PositionAngleTypeEnum.Wall:
                     return SetTriangleVertexComponent(
                         (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.Z);
@@ -1275,6 +1336,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Ghost:
                     return SetObjectValue(value, "Mario Ghost", CoordinateAngle.Angle, gfx: true);
                 case PositionAngleTypeEnum.Tri:
+                    return false;
+                case PositionAngleTypeEnum.ObjTri:
                     return false;
                 case PositionAngleTypeEnum.Wall:
                     return false;

@@ -43,6 +43,13 @@ namespace STROOP.Utilities
             return GetObjectTriangles().FindAll(tri => tri.AssociatedObject == objAddress);
         }
 
+        public static uint? GetTriangleAddressOfObjectTriangleIndex(uint objAddress, int index)
+        {
+            List<TriangleDataModel> objTris = GetObjectTrianglesForObject(objAddress);
+            if (index < 0 || index >= objTris.Count) return null;
+            return objTris[index].Address;
+        }
+
         public static List<TriangleDataModel> GetSelectedObjectTriangles()
         {
             List<TriangleDataModel> allObjectTriangles = GetObjectTriangles();
