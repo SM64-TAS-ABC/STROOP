@@ -22,18 +22,27 @@ namespace STROOP.Map
         public readonly bool CustomCylinderChangeRelativeMaxY;
         public readonly float CustomCylinderNewRelativeMaxY;
 
+        public readonly bool WallChangeRelativeHeight;
+        public readonly float? WallNewRelativeHeight;
+
         public MapObjectSettings(
             bool customCylinderChangeRelativeMinY = false,
             float customCylinderNewRelativeMinY = 0,
 
             bool customCylinderChangeRelativeMaxY = false,
-            float customCylinderNewRelativeMaxY = 0)
+            float customCylinderNewRelativeMaxY = 0,
+
+            bool wallChangeRelativeHeight = false,
+            float? wallNewRelativeHeight = null)
         {
             CustomCylinderChangeRelativeMinY = customCylinderChangeRelativeMinY;
             CustomCylinderNewRelativeMinY = customCylinderNewRelativeMinY;
 
             CustomCylinderChangeRelativeMaxY = customCylinderChangeRelativeMaxY;
             CustomCylinderNewRelativeMaxY = customCylinderNewRelativeMaxY;
+
+            WallChangeRelativeHeight = wallChangeRelativeHeight;
+            WallNewRelativeHeight = wallNewRelativeHeight;
         }
     }
 }

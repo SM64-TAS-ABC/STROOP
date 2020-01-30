@@ -113,13 +113,17 @@ namespace STROOP.Map
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter relative height of wall hitbox compared to wall triangle.");
                 float? relativeHeightNullable = ParsingUtilities.ParseFloatNullable(text);
                 if (!relativeHeightNullable.HasValue) return;
-                _relativeHeight = relativeHeightNullable.Value;
+                MapObjectSettings settings = new MapObjectSettings(
+                    wallChangeRelativeHeight: true, wallNewRelativeHeight: relativeHeightNullable.Value);
+                GetParentMapTracker().ApplySettings(settings);
             };
 
             ToolStripMenuItem itemClearRelativeHeight = new ToolStripMenuItem("Clear Relative Height");
             itemClearRelativeHeight.Click += (sender, e) =>
             {
-                _relativeHeight = null;
+                MapObjectSettings settings = new MapObjectSettings(
+                    wallChangeRelativeHeight: true, wallNewRelativeHeight: null);
+                GetParentMapTracker().ApplySettings(settings);
             };
 
             BetterContextMenuStrip contextMenuStrip = new BetterContextMenuStrip();
@@ -127,6 +131,16 @@ namespace STROOP.Map
             contextMenuStrip.AddToEndingList(itemClearRelativeHeight);
 
             return contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.WallChangeRelativeHeight)
+            {
+                _relativeHeight = settings.WallNewRelativeHeight;
+            }
         }
 
         public override void DrawOn3DControl()

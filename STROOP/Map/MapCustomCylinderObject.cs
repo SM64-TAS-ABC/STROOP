@@ -86,6 +86,8 @@ namespace STROOP.Map
 
         public override void ApplySettings(MapObjectSettings settings)
         {
+            base.ApplySettings(settings);
+
             if (settings.CustomCylinderChangeRelativeMinY)
             {
                 _relativeMinY = settings.CustomCylinderNewRelativeMinY;
