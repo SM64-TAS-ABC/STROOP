@@ -95,6 +95,7 @@ namespace STROOP.Map
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
             colorSelectorOutline.AddColorChangeAction((Color color) => SetOutlineColor(color));
 
+            _mapObjectList.ForEach(mapObj => mapObj.GetContextMenuStrip()); // avoids null pointer exceptions
             pictureBoxCog.ContextMenuStrip = _mapObjectList[0].GetContextMenuStrip();
             pictureBoxCog.Click += (sender, e) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
 

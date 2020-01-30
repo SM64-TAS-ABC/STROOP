@@ -28,6 +28,17 @@ namespace STROOP.Map
         public readonly bool ArrowChangeHeadSideLength;
         public readonly float ArrowNewHeadSideLength;
 
+        public readonly bool PathDoReset;
+
+        public readonly bool PathChangeResetPathOnLevelChange;
+        public readonly bool PathNewResetPathOnLevelChange;
+
+        public readonly bool PathChangeUseBlending;
+        public readonly bool PathNewUseBlending;
+
+        public readonly bool PathChangePaused;
+        public readonly bool PathNewPaused;
+
         public MapObjectSettings(
             bool customCylinderChangeRelativeMinY = false,
             float customCylinderNewRelativeMinY = 0,
@@ -39,7 +50,18 @@ namespace STROOP.Map
             float? wallNewRelativeHeight = null,
 
             bool arrowChangeHeadSideLength = false,
-            float arrowNewHeadSideLength = 0)
+            float arrowNewHeadSideLength = 0,
+
+            bool pathDoReset = false,
+
+            bool pathChangeResetPathOnLevelChange = false,
+            bool pathNewResetPathOnLevelChange = false,
+
+            bool pathChangeUseBlending = false,
+            bool pathNewUseBlending = false,
+
+            bool pathChangePaused = false,
+            bool pathNewPaused = false)
         {
             CustomCylinderChangeRelativeMinY = customCylinderChangeRelativeMinY;
             CustomCylinderNewRelativeMinY = customCylinderNewRelativeMinY;
@@ -52,6 +74,17 @@ namespace STROOP.Map
 
             ArrowChangeHeadSideLength = arrowChangeHeadSideLength;
             ArrowNewHeadSideLength = arrowNewHeadSideLength;
+
+            PathDoReset = pathDoReset;
+
+            PathChangeResetPathOnLevelChange = pathChangeResetPathOnLevelChange;
+            PathNewResetPathOnLevelChange = pathNewResetPathOnLevelChange;
+
+            PathChangeUseBlending = pathChangeUseBlending;
+            PathNewUseBlending = pathNewUseBlending;
+
+            PathChangePaused = pathChangePaused;
+            PathNewPaused = pathNewPaused;
         }
     }
 }

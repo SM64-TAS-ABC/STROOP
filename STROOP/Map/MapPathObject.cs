@@ -26,6 +26,10 @@ namespace STROOP.Map
         private bool _isPaused;
         private uint _highestGlobalTimerValue;
 
+        private ToolStripMenuItem _itemResetPathOnLevelChange;
+        private ToolStripMenuItem _itemUseBlending;
+        private ToolStripMenuItem _itemPause;
+
         public MapPathObject(PositionAngle posAngle)
             : base()
         {
@@ -199,40 +203,78 @@ namespace STROOP.Map
             if (_contextMenuStrip == null)
             {
                 ToolStripMenuItem itemResetPath = new ToolStripMenuItem("Reset Path");
-                itemResetPath.Click += (sender, e) => _dictionary.Clear();
-
-                ToolStripMenuItem itemResetPathOnLevelChange = new ToolStripMenuItem("Reset Path on Level Change");
-                itemResetPathOnLevelChange.Click += (sender, e) =>
+                itemResetPath.Click += (sender, e) =>
                 {
-                    _resetPathOnLevelChange = !_resetPathOnLevelChange;
-                    itemResetPathOnLevelChange.Checked = _resetPathOnLevelChange;
+                    MapObjectSettings settings = new MapObjectSettings(pathDoReset: true);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
-                itemResetPathOnLevelChange.Checked = _resetPathOnLevelChange;
 
-                ToolStripMenuItem itemUseBlending = new ToolStripMenuItem("Use Blending");
-                itemUseBlending.Click += (sender, e) =>
+                _itemResetPathOnLevelChange = new ToolStripMenuItem("Reset Path on Level Change");
+                _itemResetPathOnLevelChange.Click += (sender, e) =>
                 {
-                    _useBlending = !_useBlending;
-                    itemUseBlending.Checked = _useBlending;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        pathChangeResetPathOnLevelChange: true,
+                        pathNewResetPathOnLevelChange: !_resetPathOnLevelChange);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
-                itemUseBlending.Checked = _useBlending;
+                _itemResetPathOnLevelChange.Checked = _resetPathOnLevelChange;
 
-                ToolStripMenuItem itemPause = new ToolStripMenuItem("Pause");
-                itemPause.Click += (sender, e) =>
+                _itemUseBlending = new ToolStripMenuItem("Use Blending");
+                _itemUseBlending.Click += (sender, e) =>
                 {
-                    _isPaused = !_isPaused;
-                    itemPause.Checked = _isPaused;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        pathChangeUseBlending: true,
+                        pathNewUseBlending: !_useBlending);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
-                itemPause.Checked = _isPaused;
+                _itemUseBlending.Checked = _useBlending;
+
+                _itemPause = new ToolStripMenuItem("Pause");
+                _itemPause.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        pathChangePaused: true,
+                        pathNewPaused: !_isPaused);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemPause.Checked = _isPaused;
 
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemResetPath);
-                _contextMenuStrip.Items.Add(itemResetPathOnLevelChange);
-                _contextMenuStrip.Items.Add(itemUseBlending);
-                _contextMenuStrip.Items.Add(itemPause);
+                _contextMenuStrip.Items.Add(_itemResetPathOnLevelChange);
+                _contextMenuStrip.Items.Add(_itemUseBlending);
+                _contextMenuStrip.Items.Add(_itemPause);
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.PathDoReset)
+            {
+                _dictionary.Clear();
+            }
+
+            if (settings.PathChangeResetPathOnLevelChange)
+            {
+                _resetPathOnLevelChange = settings.PathNewResetPathOnLevelChange;
+                _itemResetPathOnLevelChange.Checked = _resetPathOnLevelChange;
+            }
+
+            if (settings.PathChangeUseBlending)
+            {
+                _useBlending = settings.PathNewUseBlending;
+                _itemUseBlending.Checked = _useBlending;
+            }
+
+            if (settings.PathChangePaused)
+            {
+                _isPaused = settings.PathNewPaused;
+                _itemPause.Checked = _isPaused;
+            }
         }
 
         public override string GetName()
