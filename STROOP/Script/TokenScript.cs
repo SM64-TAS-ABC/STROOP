@@ -53,9 +53,9 @@ namespace STROOP.Script
                 string valueMark = value is string ? "\"" : "";
                 inputItems.Add("\"" + name + "\":" + valueMark + value + valueMark);
             }
-            string beforeLine = "var INPUT = {" + string.Join(",", inputItems) + "}; var OUTPUT = {};" + "\r\n";
-            string afterLine = "\r\n" + @"var OUTPUT_STRING = """"; for (var OUTPUT_STRING_NAME in OUTPUT) OUTPUT_STRING += OUTPUT_STRING_NAME + ""\r\n"" + OUTPUT[OUTPUT_STRING_NAME] + ""\r\n""; OUTPUT_STRING";
-            string result = GetEngine().Eval(beforeLine + _text + afterLine)?.ToString() ?? "";
+            string beforeLine = "var INPUT = {" + string.Join(",", inputItems) + "}; var OUTPUT = {};";
+            string afterLine = @"var OUTPUT_STRING = """"; for (var OUTPUT_STRING_NAME in OUTPUT) OUTPUT_STRING += OUTPUT_STRING_NAME + ""\r\n"" + OUTPUT[OUTPUT_STRING_NAME] + ""\r\n""; OUTPUT_STRING";
+            string result = GetEngine().Eval(beforeLine + "\r\n" + _text + "\r\n" + afterLine)?.ToString() ?? "";
             List<string> outputItems = result.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             for (int i = 0; i < outputItems.Count - 1; i += 2)
             {
