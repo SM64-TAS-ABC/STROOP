@@ -31,10 +31,12 @@
   <Data groupList="Basic" type="short" offset="0x16" base="Triangle" coord="X">X3</Data>
   <Data groupList="Basic" type="short" offset="0x18" base="Triangle" coord="Y">Y3</Data>
   <Data groupList="Basic" type="short" offset="0x1A" base="Triangle" coord="Z">Z3</Data>
+  
   <Data groupList="Intermediate" type="float" offset="0x3C" base="Mario" color="Red" coord="X">Mario X</Data>
   <Data groupList="Intermediate" type="float" offset="0x40" base="Mario" color="Red" coord="Y">Mario Y</Data>
   <Data groupList="Intermediate" type="float" offset="0x44" base="Mario" color="Red" coord="Z">Mario Z</Data>
-  <Data groupList="Intermediate" base="Triangle" specialType="ClosestVertex" subclass="String" color="Purple">Closest Vertex</Data>
+  
+  <Data groupList="Intermediate" base="Triangle" specialType="ClosestVertexIndex" color="Purple">Closest Vertex</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="ClosestVertexX" color="Purple" coord="X">Closest Vertex X</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="ClosestVertexY" color="Purple" coord="Y">Closest Vertex Y</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="ClosestVertexZ" color="Purple" coord="Z">Closest Vertex Z</Data>

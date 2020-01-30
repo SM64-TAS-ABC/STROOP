@@ -1949,10 +1949,10 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
-            _dictionary.Add("ClosestVertex",
+            _dictionary.Add("ClosestVertexIndex",
                 ((uint triAddress) =>
                 {
-                    return "V" + GetClosestTriangleVertexIndex(triAddress);
+                    return GetClosestTriangleVertexIndex(triAddress);
                 },
                 DEFAULT_SETTER));
 
