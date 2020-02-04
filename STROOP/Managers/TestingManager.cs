@@ -657,11 +657,13 @@ namespace STROOP.Managers
             if (TestingConfig.UpdateCamHackAngle)
             {
                 int koopaTurnAngle = 1536;
+                int threshold = 4608;
+
                 uint koopaAddress = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
                 ushort koopaAngle = Config.Stream.GetUInt16(koopaAddress + ObjectConfig.YawFacingOffset);
                 uint cameraHackAngleAddress = 0x803E001E;
                 ushort cameraHackAngle = Config.Stream.GetUInt16(cameraHackAngleAddress);
-                if (MoreMath.GetAngleDistance(koopaAngle, cameraHackAngle) > 2 * koopaTurnAngle)
+                if (MoreMath.GetAngleDistance(koopaAngle, cameraHackAngle) > threshold)
                 {
                     ushort newCameraHackAngle = (ushort)MoreMath.RotateAngleTowards(cameraHackAngle, koopaAngle, koopaTurnAngle);
                     Config.Stream.SetValue(newCameraHackAngle, cameraHackAngleAddress);
