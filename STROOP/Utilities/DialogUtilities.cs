@@ -181,5 +181,13 @@ namespace STROOP.Structs
             return lines;
         }
 
+        public static Image GetImage()
+        {
+            OpenFileDialog openFileDialog = CreateOpenFileDialog(FileType.Image);
+            DialogResult result = openFileDialog.ShowDialog();
+            if (result != DialogResult.OK) return null;
+            string fileName = openFileDialog.FileName;
+            return Image.FromFile(fileName);
+        }
     }
 }
