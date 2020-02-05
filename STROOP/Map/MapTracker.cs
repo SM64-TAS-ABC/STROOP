@@ -65,14 +65,17 @@ namespace STROOP.Map
             };
             itemUseTopDownImage.Click += (sender, e) =>
             {
+                _mapObjectList.ForEach(mapObj => mapObj.SetIconType(MapTrackerIconType.TopDownImage));
                 pictureBoxItems.ForEach(item => item.Checked = item == itemUseTopDownImage);
             };
             itemUseObjectSlotImage.Click += (sender, e) =>
             {
+                _mapObjectList.ForEach(mapObj => mapObj.SetIconType(MapTrackerIconType.ObjectSlotImage));
                 pictureBoxItems.ForEach(item => item.Checked = item == itemUseObjectSlotImage);
             };
             itemUseCustomImage.Click += (sender, e) =>
             {
+                _mapObjectList.ForEach(mapObj => mapObj.SetIconType(MapTrackerIconType.CustomImage));
                 pictureBoxItems.ForEach(item => item.Checked = item == itemUseCustomImage);
             };
             itemUseTopDownImage.Checked = true;

@@ -77,6 +77,10 @@ namespace STROOP.Map
         {
         }
 
+        public virtual void SetIconType(MapTrackerIconType iconType, Image image = null)
+        {
+        }
+
         public virtual PositionAngle GetPositionAngle()
         {
             return null;
