@@ -19,7 +19,7 @@ namespace STROOP.Map
         {
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.HolpImage;
         }

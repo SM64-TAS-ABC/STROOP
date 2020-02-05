@@ -22,7 +22,7 @@ namespace STROOP.Map
 
         public abstract MapLayout GetMapLayout();
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return GetMapLayout().MapImage;
         }

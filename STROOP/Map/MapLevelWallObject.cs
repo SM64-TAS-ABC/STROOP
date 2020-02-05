@@ -109,7 +109,7 @@ namespace STROOP.Map
             return "Level Wall Tris";
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.TriangleWallImage;
         }

@@ -35,7 +35,7 @@ namespace STROOP.Map
             return ((float)_posAngle.X, (float)_posAngle.Z, Size, y + _relativeMinY, y + _relativeMaxY);
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.CylinderImage;
         }

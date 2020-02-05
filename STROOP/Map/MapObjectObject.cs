@@ -29,7 +29,7 @@ namespace STROOP.Map
             _behaviorCriteriaToDisplay = null;
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             _obj.Update();
             return _obj.BehaviorAssociation.MapImage;

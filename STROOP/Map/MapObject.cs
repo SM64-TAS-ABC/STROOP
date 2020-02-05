@@ -59,7 +59,19 @@ namespace STROOP.Map
 
         public abstract string GetName();
 
-        public abstract Image GetImage();
+        protected Image _customImage = null;
+        public abstract Image GetInternalImage();
+        public Image GetImage() { return _customImage ?? GetInternalImage(); }
+
+        protected MapTrackerIconType _iconType = MapTrackerIconType.TopDownImage;
+        public virtual void SetIconType(MapTrackerIconType iconType, Image image = null)
+        {
+            if ((iconType == MapTrackerIconType.CustomImage) != (image != null))
+                throw new ArgumentOutOfRangeException();
+
+            _iconType = iconType;
+            _customImage = image;
+        }
 
         public abstract MapDrawType GetDrawType();
 
@@ -74,10 +86,6 @@ namespace STROOP.Map
         }
 
         public virtual void NotifyStoreBehaviorCritera()
-        {
-        }
-
-        public virtual void SetIconType(MapTrackerIconType iconType, Image image = null)
         {
         }
 

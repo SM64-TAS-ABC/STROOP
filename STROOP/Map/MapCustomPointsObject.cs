@@ -58,7 +58,7 @@ namespace STROOP.Map
             return "Custom Points";
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.CustomPointsImage;
         }

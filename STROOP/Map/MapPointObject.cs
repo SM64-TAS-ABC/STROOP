@@ -20,7 +20,7 @@ namespace STROOP.Map
             InternalRotates = true;
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.MarioMapImage;
         }

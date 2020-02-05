@@ -35,7 +35,7 @@ namespace STROOP.Map
             return "Ceiling Tris for " + PositionAngle.GetMapNameForObject(_objAddress);
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.TriangleCeilingImage;
         }

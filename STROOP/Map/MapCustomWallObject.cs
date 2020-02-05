@@ -48,7 +48,7 @@ namespace STROOP.Map
             return "Custom Wall Tris";
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.TriangleWallImage;
         }

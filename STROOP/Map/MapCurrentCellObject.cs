@@ -46,7 +46,7 @@ namespace STROOP.Map
             return "Current Cell";
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.CurrentCellImage;
         }

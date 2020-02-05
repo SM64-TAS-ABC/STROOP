@@ -105,7 +105,7 @@ namespace STROOP.Map
             return "Level Tris";
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.HitboxHackTrisImage;
         }

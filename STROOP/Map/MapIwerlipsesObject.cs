@@ -191,7 +191,7 @@ namespace STROOP.Map
             return "Iwerlipses";
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.IwerlipsesImage;
         }

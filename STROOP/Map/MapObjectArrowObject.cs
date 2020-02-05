@@ -70,7 +70,7 @@ namespace STROOP.Map
             return "Object Arrow";
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.ArrowImage;
         }

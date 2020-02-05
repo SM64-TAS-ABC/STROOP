@@ -282,7 +282,7 @@ namespace STROOP.Map
             return "Path for " + _posAngle.GetMapName();
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.PathImage;
         }

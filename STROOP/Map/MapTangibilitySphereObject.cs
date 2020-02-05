@@ -30,7 +30,7 @@ namespace STROOP.Map
             return ((float)_posAngle.X, (float)_posAngle.Y, (float)_posAngle.Z, tangibleDist);
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.SphereImage;
         }

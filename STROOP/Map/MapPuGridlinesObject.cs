@@ -50,7 +50,7 @@ namespace STROOP.Map
             return "PU Gridlines";
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.UnitGridlinesImage;
         }

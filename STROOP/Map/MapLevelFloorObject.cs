@@ -107,7 +107,7 @@ namespace STROOP.Map
             return "Level Floor Tris";
         }
 
-        public override Image GetImage()
+        public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.TriangleFloorImage;
         }
