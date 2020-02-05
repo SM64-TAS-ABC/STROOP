@@ -55,6 +55,14 @@ namespace STROOP.Map
             _currentVisiblityType = MapTrackerVisibilityType.VisibleWhenLoaded;
             _showTriUnits = false;
 
+            pictureBoxPicture.ContextMenuStrip = new ContextMenuStrip();
+            ToolStripMenuItem itemUseTopDownImage = new ToolStripMenuItem("Use Top Down Image");
+            ToolStripMenuItem itemUseObjectSlotImage = new ToolStripMenuItem("Use Object Slot Image");
+            ToolStripMenuItem itemUseCustomImage = new ToolStripMenuItem("Use Custom Image");
+            pictureBoxPicture.ContextMenuStrip.Items.Add(itemUseTopDownImage);
+            pictureBoxPicture.ContextMenuStrip.Items.Add(itemUseObjectSlotImage);
+            pictureBoxPicture.ContextMenuStrip.Items.Add(itemUseCustomImage);
+
             _customName = null;
             textBoxName.AddEnterAction(() => _customName = textBoxName.Text);
             textBoxName.AddLostFocusAction(() => _customName = textBoxName.Text);
