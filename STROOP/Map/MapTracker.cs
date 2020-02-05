@@ -59,6 +59,23 @@ namespace STROOP.Map
             ToolStripMenuItem itemUseTopDownImage = new ToolStripMenuItem("Use Top Down Image");
             ToolStripMenuItem itemUseObjectSlotImage = new ToolStripMenuItem("Use Object Slot Image");
             ToolStripMenuItem itemUseCustomImage = new ToolStripMenuItem("Use Custom Image");
+            List<ToolStripMenuItem> pictureBoxItems = new List<ToolStripMenuItem>()
+            {
+                itemUseTopDownImage, itemUseObjectSlotImage, itemUseCustomImage
+            };
+            itemUseTopDownImage.Click += (sender, e) =>
+            {
+                pictureBoxItems.ForEach(item => item.Checked = item == itemUseTopDownImage);
+            };
+            itemUseObjectSlotImage.Click += (sender, e) =>
+            {
+                pictureBoxItems.ForEach(item => item.Checked = item == itemUseObjectSlotImage);
+            };
+            itemUseCustomImage.Click += (sender, e) =>
+            {
+                pictureBoxItems.ForEach(item => item.Checked = item == itemUseCustomImage);
+            };
+            itemUseTopDownImage.Checked = true;
             pictureBoxPicture.ContextMenuStrip.Items.Add(itemUseTopDownImage);
             pictureBoxPicture.ContextMenuStrip.Items.Add(itemUseObjectSlotImage);
             pictureBoxPicture.ContextMenuStrip.Items.Add(itemUseCustomImage);
