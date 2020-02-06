@@ -23,6 +23,12 @@ namespace STROOP.Map
 
         public override void DrawOn2DControl()
         {
+            List<MapPathObject> paths = new List<MapPathObject>();
+            foreach (MapTracker mapTracker in Config.MapGui.flowLayoutPanelMapTrackers.Controls)
+            {
+                paths.AddRange(mapTracker.GetMapObjsOfType<MapPathObject>());
+            }
+
             if (OutlineWidth == 0) return;
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();

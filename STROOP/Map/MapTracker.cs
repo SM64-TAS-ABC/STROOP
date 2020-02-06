@@ -404,6 +404,16 @@ namespace STROOP.Map
             return _mapObjectList.Contains(mapObject);
         }
 
+        public List<T> GetMapObjsOfType<T>()
+        {
+            List<T> output = new List<T>();
+            foreach (MapObject mapObj in _mapObjectList)
+            {
+                if (mapObj is T mapObjT) output.Add(mapObjT);
+            }
+            return output;
+        }
+
         public void ApplySettings(MapObjectSettings settings)
         {
             _mapObjectList.ForEach(mapObj => mapObj.ApplySettings(settings));
