@@ -345,6 +345,7 @@
     <Compile Include="Map\MapObjectArrowObject.cs" />
     <Compile Include="Map\MapMapObject.cs" />
     <Compile Include="Map\MapDrawType.cs" />
+    <Compile Include="Map\MapAggregatedPathObject.cs" />
     <Compile Include="Map\MapSphereObject.cs" />
     <Compile Include="Map\MapCylinderObject.cs" />
     <Compile Include="Map\MapHitboxHackTriangleObject.cs" />
