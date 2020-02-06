@@ -49,6 +49,49 @@ namespace STROOP.Map
             OutlineColor = Color.Red;
         }
 
+        public List<MapPathObjectSegment> GetSegments()
+        {
+            List<MapPathObjectSegment> segments = new List<MapPathObjectSegment>();
+
+            if (OutlineWidth == 0) return segments;
+
+            List<(float x, float y, float z)> vertices = _dictionary.Values.ToList();
+            List<(float x, float z)> veriticesForControl =
+                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z));
+
+            for (int i = 0; i < veriticesForControl.Count - 1; i++)
+            {
+                Color color = OutlineColor;
+                if (_useBlending)
+                {
+                    int distFromEnd = veriticesForControl.Count - i - 2;
+                    if (distFromEnd < Size)
+                    {
+                        color = ColorUtilities.InterpolateColor(
+                            OutlineColor, Color, distFromEnd / (double)Size);
+                    }
+                    else
+                    {
+                        color = Color;
+                    }
+                }
+                (float x1, float z1) = veriticesForControl[i];
+                (float x2, float z2) = veriticesForControl[i + 1];
+                MapPathObjectSegment segment = new MapPathObjectSegment(
+                    index: i,
+                    startX: x1,
+                    startZ: z1,
+                    endX: x2,
+                    endZ: z2,
+                    lineWidth: OutlineWidth,
+                    color: color,
+                    opacity: OpacityByte);
+                segments.Add(segment);
+            }
+
+            return segments;
+        }
+
         public override void DrawOn2DControl()
         {
             if (OutlineWidth == 0) return;
