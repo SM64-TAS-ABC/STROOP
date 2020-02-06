@@ -16,7 +16,7 @@ namespace STROOP.Map
 {
     public class MapAggregatedPathObject : MapObject
     {
-        public MapAggregatedPathObject(PositionAngle posAngle)
+        public MapAggregatedPathObject()
             : base()
         {
         }
