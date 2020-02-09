@@ -26,7 +26,7 @@ namespace STROOP.Map
             List<MapPathObject> paths = new List<MapPathObject>();
             foreach (MapTracker mapTracker in Config.MapGui.flowLayoutPanelMapTrackers.Controls)
             {
-                paths.AddRange(mapTracker.GetMapObjsOfType<MapPathObject>());
+                paths.AddRange(mapTracker.GetMapPathObjects());
             }
             List<List<MapPathObjectSegment>> segmentLists = paths.ConvertAll(path => path.GetSegments());
             int maxCount = segmentLists.Max(list => list.Count);
