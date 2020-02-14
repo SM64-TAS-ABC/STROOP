@@ -39,6 +39,9 @@ namespace STROOP.Map
         public readonly bool PathChangePaused;
         public readonly bool PathNewPaused;
 
+        public readonly bool PathChangeModulo;
+        public readonly int PathNewModulo;
+
         public MapObjectSettings(
             bool customCylinderChangeRelativeMinY = false,
             float customCylinderNewRelativeMinY = 0,
@@ -61,7 +64,10 @@ namespace STROOP.Map
             bool pathNewUseBlending = false,
 
             bool pathChangePaused = false,
-            bool pathNewPaused = false)
+            bool pathNewPaused = false,
+
+            bool pathChangeModulo = false,
+            int pathNewModulo = 0)
         {
             CustomCylinderChangeRelativeMinY = customCylinderChangeRelativeMinY;
             CustomCylinderNewRelativeMinY = customCylinderNewRelativeMinY;
@@ -85,6 +91,9 @@ namespace STROOP.Map
 
             PathChangePaused = pathChangePaused;
             PathNewPaused = pathNewPaused;
+
+            PathChangeModulo = pathChangeModulo;
+            PathNewModulo = pathNewModulo;
         }
     }
 }

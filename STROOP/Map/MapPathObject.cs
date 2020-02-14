@@ -25,6 +25,7 @@ namespace STROOP.Map
         private bool _useBlending;
         private bool _isPaused;
         private uint _highestGlobalTimerValue;
+        private int _modulo;
 
         private ToolStripMenuItem _itemResetPathOnLevelChange;
         private ToolStripMenuItem _itemUseBlending;
@@ -42,6 +43,7 @@ namespace STROOP.Map
             _useBlending = true;
             _isPaused = false;
             _highestGlobalTimerValue = 0;
+            _modulo = 1;
 
             Size = 300;
             OutlineWidth = 3;
@@ -222,7 +224,7 @@ namespace STROOP.Map
                     }
                 }
 
-                if (!_dictionary.ContainsKey(globalTimer))
+                if (!_dictionary.ContainsKey(globalTimer) && globalTimer % _modulo == 0)
                 {
                     if (_numSkips > 0)
                     {
@@ -282,11 +284,23 @@ namespace STROOP.Map
                 };
                 _itemPause.Checked = _isPaused;
 
+                ToolStripMenuItem itemSetModulo = new ToolStripMenuItem("Set Modulo");
+                itemSetModulo.Click += (sender, e) =>
+                {
+                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter modulo.");
+                    int? moduloNullable = ParsingUtilities.ParseIntNullable(text);
+                    if (!moduloNullable.HasValue) return;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        pathChangeModulo: true, pathNewModulo: moduloNullable.Value);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemResetPath);
                 _contextMenuStrip.Items.Add(_itemResetPathOnLevelChange);
                 _contextMenuStrip.Items.Add(_itemUseBlending);
                 _contextMenuStrip.Items.Add(_itemPause);
+                _contextMenuStrip.Items.Add(itemSetModulo);
             }
 
             return _contextMenuStrip;
@@ -317,6 +331,11 @@ namespace STROOP.Map
             {
                 _isPaused = settings.PathNewPaused;
                 _itemPause.Checked = _isPaused;
+            }
+
+            if (settings.PathChangeModulo)
+            {
+                _modulo = settings.PathNewModulo;
             }
         }
 
