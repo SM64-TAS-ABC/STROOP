@@ -49,6 +49,7 @@ namespace STROOP.Managers
                     _gui.DataGridViewInputs.Parent.Focus();
                 }
             };
+            ControlUtilities.SetTableDoubleBuffered(_gui.DataGridViewInputs, true);
 
             _m64File = new M64File(_gui);
             _gui.DataGridViewInputs.DataSource = _m64File.Inputs;
