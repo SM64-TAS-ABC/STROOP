@@ -50,8 +50,23 @@ namespace STROOP.Managers
 
         byte[] _copiedFile;
 
+        private static readonly List<VariableGroup> ALL_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Intermediate,
+                VariableGroup.Advanced,
+            };
+
+        private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Intermediate,
+            };
+
         public FileManager(string varFilePath, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanelFile, FileImageGui gui)
-            : base(varFilePath, watchVariablePanelFile)
+            : base(varFilePath, watchVariablePanelFile, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             _tabControl = tabControl;
             _gui = gui;
