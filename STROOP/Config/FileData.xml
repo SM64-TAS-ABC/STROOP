@@ -22,6 +22,18 @@
   <Data type="byte" offset="0x18" base="File" mask="0x7F" color="LightBlue">THI Stars</Data>
   <Data type="byte" offset="0x19" base="File" mask="0x7F" color="LightBlue">TTC Stars</Data>
   <Data type="byte" offset="0x1A" base="File" mask="0x7F" color="LightBlue">RR Stars</Data>
+  
+  <Data type="byte" offset="0x08" base="File" mask="0x7F" color="Orange">Castle Stars</Data>
+  <Data type="byte" offset="0x20" base="File" mask="0x7F" color="Orange">TotWC Stars</Data>
+  <Data type="byte" offset="0x1F" base="File" mask="0x7F" color="Orange">CotMC Stars</Data>
+  <Data type="byte" offset="0x21" base="File" mask="0x7F" color="Orange">VCutM Stars</Data>
+  <Data type="byte" offset="0x1E" base="File" mask="0x7F" color="Orange">PSS Stars</Data>
+  <Data type="byte" offset="0x23" base="File" mask="0x7F" color="Orange">SA Stars</Data>
+  <Data type="byte" offset="0x22" base="File" mask="0x7F" color="Orange">WMotR Stars</Data>
+  <Data type="byte" offset="0x1B" base="File" mask="0x7F" color="Orange">BitDW Stars</Data>
+  <Data type="byte" offset="0x1C" base="File" mask="0x7F" color="Orange">BitFS Stars</Data>
+  <Data type="byte" offset="0x1D" base="File" mask="0x7F" color="Orange">BitS Stars</Data>
+  <Data type="byte" offset="0x24" base="File" mask="0x7F" color="Orange">Cake Stars</Data>
 
   <Data type="byte" offset="0x20" base="File" subclass="Boolean" mask="0x01" color="Blue">TotWC Star</Data>
   <Data type="byte" offset="0x1F" base="File" subclass="Boolean" mask="0x01" color="Blue">CotMC Star</Data>
