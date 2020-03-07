@@ -126,6 +126,7 @@ namespace STROOP
                     "Expand RAM Size",
                     "Show MHS Vars",
                     "Download Latest STROOP Release",
+                    "Documentation",
                     "Show All Helpful Hints",
                     "Enable TASer Settings",
                     "Add Gfx Vertices",
@@ -156,6 +157,7 @@ namespace STROOP
                         form.ShowForm();
                     },
                     () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
+                    () => Process.Start("https://ukikipedia.net/wiki/STROOP"),
                     () => HelpfulHintUtilities.ShowAllHelpfulHints(),
                     () =>
                     {
