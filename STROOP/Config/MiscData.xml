@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VarData>
+
   <Data groupList="Basic" type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" offsetSH="0x8030CD04" base="Relative">Global Timer</Data>
   <Data groupList="Basic" base="None" specialType="GlobalTimerMod64">Global Timer Mod 64</Data>
   <Data groupList="Basic,Coin" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" offsetSH="0x8038BBC0" base="Relative">RNG Value</Data>
@@ -69,6 +70,10 @@
   <Data groupList="Advanced" type="short" offsetUS="0x8033B23C" offsetJP="0x80339ECC" base="Relative" color="Grey">Transition Black Fade</Data>
   <Data groupList="Advanced" type="short" offsetUS="0x8038B8A4" offsetJP="0x8038B8A4" base="Relative" color="Grey">Transition White Fade</Data>
   <Data groupList="Advanced" type="short" offsetUS="0x8033B254" offsetJP="0x80339EE4" base="Relative" color="Grey">Transition Shrinking</Data>
+
+  <Data groupList="Intermediate" type="uint" offsetUS="0x8033B06C" offsetJP="0x8033B06C" base="Relative" subclass="Address" color="Orange">Gfx Buffer Start</Data>
+  <Data groupList="Intermediate" type="uint" offsetUS="0x8033B070" offsetJP="0x8033B070" base="Relative" subclass="Address" color="Orange">Gfx Buffer End</Data>
+  <Data groupList="Intermediate" base="None" specialType="GfxBufferSpace" color="Orange">Gfx Buffer Space</Data>
 
   <Data groupList="Advanced" type="int" offset="0x802F0000" base="Relative" useHex="true" color="Pink">ROM Version Tell</Data>
 </VarData>

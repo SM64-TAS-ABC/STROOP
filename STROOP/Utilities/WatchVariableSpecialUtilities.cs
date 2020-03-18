@@ -3414,6 +3414,15 @@ namespace STROOP.Structs
                 }
             ));
 
+            _dictionary.Add("GfxBufferSpace",
+                ((uint dummy) =>
+                {
+                    uint gfxBufferStart = Config.Stream.GetUInt32(0x8033B06C);
+                    uint gfxBufferEnd = Config.Stream.GetUInt32(0x8033B070);
+                    return gfxBufferEnd - gfxBufferStart;
+                },
+                DEFAULT_SETTER));
+
             // Area vars
 
             _dictionary.Add("CurrentAreaIndexMario",
