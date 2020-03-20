@@ -801,7 +801,7 @@ namespace STROOP.Structs
             Config.Print(marioBobombState);
 
             MarioState m = prevMarioBobombState.MarioState;
-            (float holpX, float holpY, float holpZ) = HolpCalculator.GetHolp(58, m.X, m.Y, m.Z, m.MarioAngle);
+            (float holpX, float holpY, float holpZ) = HolpCalculator.GetHolpForWalking(58, m.X, m.Y, m.Z, m.MarioAngle);
 
             MarioState m2 = marioBobombState.MarioState;
             float marioX = m2.X;
@@ -989,7 +989,7 @@ namespace STROOP.Structs
             //Config.Print(marioBobombState);
 
             MarioState m = prevMarioBobombState.MarioState;
-            (float holpX, float holpY, float holpZ) = HolpCalculator.GetHolp(58, m.X, m.Y, m.Z, m.MarioAngle);
+            (float holpX, float holpY, float holpZ) = HolpCalculator.GetHolpForWalking(58, m.X, m.Y, m.Z, m.MarioAngle);
 
             MarioState m2 = marioBobombState.MarioState;
             float marioX = m2.X;

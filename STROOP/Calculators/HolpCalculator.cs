@@ -14,7 +14,7 @@ namespace STROOP.Structs
 {
     public static class HolpCalculator
     {
-        private static List<(int, double, double, double)> _data = new List<(int, double, double, double)>()
+        private static List<(int, double, double, double)> _dataForWalking = new List<(int, double, double, double)>()
         {
             (0,-13.852560043335,82.7928466796875,43.2764892578125),
             (1,-13.8603839874268,84.1005249023438,43.2064208984375),
@@ -94,29 +94,29 @@ namespace STROOP.Structs
             (75,-13.8919486999512,80.1707763671875,43.3465576171875),
         };
 
-        private static Dictionary<int, (double, double, double)> _dictionary;
+        private static Dictionary<int, (double, double, double)> _dictionaryForWalking;
 
         static HolpCalculator()
         {
-            _dictionary = new Dictionary<int, (double, double, double)>();
-            foreach ((int index, double x, double y, double z) in _data)
+            _dictionaryForWalking = new Dictionary<int, (double, double, double)>();
+            foreach ((int index, double x, double y, double z) in _dataForWalking)
             {
-                _dictionary[index] = (x, y, z);
+                _dictionaryForWalking[index] = (x, y, z);
             }
         }
 
-        public static (float x, float y, float z) GetHolp(int index)
+        public static (float x, float y, float z) GetHolpForWalking(int index)
         {
-            if (!_dictionary.ContainsKey(index)) return (float.NaN, float.NaN, float.NaN);
-            (double xOffset, double yOffset, double zOffset) = _dictionary[index];
+            if (!_dictionaryForWalking.ContainsKey(index)) return (float.NaN, float.NaN, float.NaN);
+            (double xOffset, double yOffset, double zOffset) = _dictionaryForWalking[index];
             return ((float)xOffset, (float)yOffset, (float)zOffset);
         }
 
-        public static (float x, float y, float z) GetHolp(
+        public static (float x, float y, float z) GetHolpForWalking(
             int index, float marioX, float marioY, float marioZ, ushort marioAngle)
         {
-            if (!_dictionary.ContainsKey(index)) return (float.NaN, float.NaN, float.NaN);
-            (double xOffset, double yOffset, double zOffset) = _dictionary[index];
+            if (!_dictionaryForWalking.ContainsKey(index)) return (float.NaN, float.NaN, float.NaN);
+            (double xOffset, double yOffset, double zOffset) = _dictionaryForWalking[index];
 
             double vectorMagnitude = MoreMath.GetHypotenuse(xOffset, zOffset);
             double vectorAngle = MoreMath.AngleTo_AngleUnits(xOffset, zOffset);

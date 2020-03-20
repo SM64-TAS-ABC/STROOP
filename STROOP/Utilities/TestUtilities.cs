@@ -239,7 +239,7 @@ namespace STROOP.Utilities
             float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
             ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
-            (float x, float y, float z) = HolpCalculator.GetHolp(animation, marioX, marioY, marioZ, marioAngle);
+            (float x, float y, float z) = HolpCalculator.GetHolpForWalking(animation, marioX, marioY, marioZ, marioAngle);
             SpecialConfig.CustomX = x;
             SpecialConfig.CustomY = y;
             SpecialConfig.CustomZ = z;
