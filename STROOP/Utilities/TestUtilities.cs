@@ -18,7 +18,7 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
-            //Update1();
+            //Update2();
         }
 
         public static void TestSomething()
@@ -29,6 +29,22 @@ namespace STROOP.Utilities
         public static void TestSomethingElse()
         {
             TestSomething21();
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+
+        public static void Update2()
+        {
+            uint marioObj = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+            int animationTimerValue = Config.Stream.GetInt16(marioObj + MarioObjectConfig.AnimationTimerOffset);
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            (float holpX, float holpY, float holpZ) = HolpCalculator.GetHolpForStanding(animationTimerValue, marioX, marioY, marioZ, marioAngle);
+            SpecialConfig.CustomX = holpX;
+            SpecialConfig.CustomY = holpY;
+            SpecialConfig.CustomZ = holpZ;
         }
 
         public static void TestSomething28()
