@@ -23,7 +23,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            CalculatorMain.CalculateMovementForCcmWallGap();
+            CalculatorMain.CalculateMovementForBobombSoftlockGoomba();
         }
 
         public static void TestSomethingElse()

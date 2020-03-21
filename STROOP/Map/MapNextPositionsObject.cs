@@ -123,10 +123,20 @@ namespace STROOP.Map
             float marioHSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
             ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
+            float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+            float multiplier = 1;
+            if (marioY == floorY) // on the ground
+            {
+                uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                float yNorm = Config.Stream.GetSingle(floorTri + TriangleOffsetsConfig.NormY);
+                multiplier = yNorm;
+            }
+            float effectiveSpeed = marioHSpeed * multiplier;
+
             List<(float x, float z)> points2D = Enumerable.Range(0, (int)(_numFrames * 4)).ToList()
                 .ConvertAll(index => 0.25 + index / 4.0)
                 .ConvertAll(frameStep => ((float x, float z))MoreMath.AddVectorToPoint(
-                    frameStep * marioHSpeed, marioAngle, marioX, marioZ));
+                    frameStep * effectiveSpeed, marioAngle, marioX, marioZ));
 
             int fullStepTex = _useColoredMarios ? _blueMarioTex : _redMarioTex;
             int quarterStepTex = _useColoredMarios ? _orangeMarioText : _redMarioTex;

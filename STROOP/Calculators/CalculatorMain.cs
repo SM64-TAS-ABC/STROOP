@@ -1409,5 +1409,200 @@ namespace STROOP.Structs
             }
             Config.Print("DONE");
         }
+
+        public static void CalculateMovementForBobombSoftlock()
+        {
+            float startX = -5867.13623046875f;
+            float startY = 380.164794921875f;
+            float startZ = 5501.29931640625f;
+            float startXSpeed = 0.593941569328308f;
+            float startYSpeed = -1.07592010498047f;
+            float startZSpeed = 3.81162405014038f;
+            float startHSpeed = 3.17501330375671f;
+            float startXSlidingSpeed = 0.593941569328308f;
+            float startZSlidingSpeed = 3.81162405014038f;
+            ushort startYawMoving = 60856;
+            ushort startYawFacing = 60856;
+            ushort startCentAngle = 47052;
+
+            Dictionary<int, ushort> cameraAngles =
+                new Dictionary<int, ushort>()
+                {
+                    [0] = 47052,
+                    [1] = 47052,
+                    [2] = 47052,
+                    [3] = 47052,
+                    [4] = 47072,
+                    [5] = 47072,
+                    [6] = 47072,
+                    [7] = 47072,
+                    [8] = 47072,
+                    [9] = 47072,
+                    [10] = 47072,
+                };
+
+            float goalX = -5857.476563f;
+            float goalY = 128f;
+            float goalZ = 5512.975098f;
+
+            int xInput = -16;
+            int zInput = 45;
+            int xRadius = 3;
+            int zRadius = 3;
+
+            MarioState startState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                startXSlidingSpeed,
+                startZSlidingSpeed,
+                startYawMoving,
+                startYawFacing,
+                startCentAngle,
+                null,
+                null,
+                0);
+
+            int lastIndex = -1;
+            List<Input> inputs = CalculatorUtilities.GetInputRange(xInput - xRadius, xInput + xRadius, zInput - zRadius, zInput + zRadius);
+            float bestDiff = float.MaxValue;
+            MarioState bestState = null;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            queue.Enqueue(startState);
+
+            while (queue.Count > 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+
+                if (dequeue.Index != lastIndex)
+                {
+                    lastIndex = dequeue.Index;
+                    Config.Print("Now at index " + lastIndex);
+                }
+
+                if (dequeue.Index == 4)
+                {
+                    MarioState state5 = AirMovementCalculator.ApplyInput(dequeue, new Input(0, 0));
+                    MarioState state6 = AirMovementCalculator.ApplyInput(state5, new Input(0, 0));
+                    MarioState state7 = AirMovementCalculator.ApplyInput(state6, new Input(0, 0));
+                    MarioState state8 = AirMovementCalculator.ApplyInput(state7, new Input(0, 0));
+                    MarioState state9 = AirMovementCalculator.ApplyInput(state8, new Input(0, 0));
+                    MarioState state10 = AirMovementCalculator.ApplyInput(state9, new Input(0, 0));
+                    MarioState state11 = AirMovementCalculator.ApplyInput(state10, new Input(0, 0));
+
+                    if (state11.HSpeed != 0) continue;
+
+                    float diff = (float)MoreMath.GetDistanceBetween(state11.X, state11.Z, goalX, goalZ);
+                    if (diff < bestDiff)
+                    {
+                        bestDiff = diff;
+                        bestState = state11;
+                        Config.Print("Diff of " + bestDiff + " is: " + bestState.GetLineage());
+                    }
+
+                    continue;
+                }
+
+                List<MarioState> nextStates = inputs.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input));
+                nextStates = nextStates.ConvertAll(state => state.WithCameraAngle(cameraAngles[state.Index]));
+                nextStates = ControlUtilities.Randomize(nextStates);
+                nextStates.ForEach(state => queue.Enqueue(state));
+            }
+            Config.Print("DONE");
+        }
+
+        public static void CalculateMovementForBobombSoftlockGoomba()
+        {
+            float startX = -5504.3388671875f;
+            float startY = 368.588073730469f;
+            float startZ = 5443.33837890625f;
+            float startXSpeed = 1.67060232162476f;
+            float startYSpeed = -18.9632110595703f;
+            float startZSpeed = 15.7245416641235f;
+            float startHSpeed = 15.8130369186401f;
+            float startXSlidingSpeed = 1.67060232162476f;
+            float startZSlidingSpeed = 15.7245416641235f;
+            ushort startYawMoving = 1106;
+            ushort startYawFacing = 1106;
+            ushort startCentAngle = 1106;
+
+            Dictionary<int, ushort> cameraAngles =
+                new Dictionary<int, ushort>()
+                {
+                    [0] = 1106,
+                    [1] = 1106,
+                    [2] = 1106,
+                    [3] = 1106,
+                    [4] = 1106,
+                    [5] = 1106,
+                };
+
+            float goalX = -5496.86669921875f;
+            float goalY = 268.735046386719f;
+            float goalZ = 5506.06005859375f;
+
+            int xInput = 0;
+            int zInput = -38;
+            int xRadius = 9;
+            int zRadius = 4;
+
+            MarioState startState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                startXSlidingSpeed,
+                startZSlidingSpeed,
+                startYawMoving,
+                startYawFacing,
+                startCentAngle,
+                null,
+                null,
+                0);
+
+            int lastIndex = -1;
+            List<Input> inputs = CalculatorUtilities.GetInputRange(xInput - xRadius, xInput + xRadius, zInput - zRadius, zInput + zRadius);
+            float bestDiff = float.MaxValue;
+            MarioState bestState = null;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            queue.Enqueue(startState);
+
+            while (queue.Count > 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+
+                if (dequeue.Index != lastIndex)
+                {
+                    lastIndex = dequeue.Index;
+                    Config.Print("Now at index " + lastIndex);
+                }
+
+                if (dequeue.Index == 4)
+                {
+                    float diff = Math.Abs(dequeue.Z - goalZ);
+                    if (diff <= bestDiff)
+                    {
+                        bestDiff = diff;
+                        bestState = dequeue;
+                        Config.Print("Diff of " + bestDiff + " is: " + bestState.GetLineage());
+                    }
+
+                    continue;
+                }
+
+                List<MarioState> nextStates = inputs.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input));
+                nextStates = nextStates.ConvertAll(state => state.WithCameraAngle(cameraAngles[state.Index]));
+                nextStates = ControlUtilities.Randomize(nextStates);
+                nextStates.ForEach(state => queue.Enqueue(state));
+            }
+            Config.Print("DONE");
+        }
     }
 }
