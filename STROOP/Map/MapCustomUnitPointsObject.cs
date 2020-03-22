@@ -13,11 +13,11 @@ using System.Drawing.Imaging;
 
 namespace STROOP.Map
 {
-    public class MapCustomPointsObject : MapQuadObject
+    public class MapCustomUnitPointsObject : MapQuadObject
     {
         private readonly List<(int x, int z)> _unitPoints;
 
-        public MapCustomPointsObject(List<(int x, int z)> unitPoints)
+        public MapCustomUnitPointsObject(List<(int x, int z)> unitPoints)
             : base()
         {
             _unitPoints = unitPoints;
@@ -26,7 +26,7 @@ namespace STROOP.Map
             Color = Color.Orange;
         }
 
-        public static MapCustomPointsObject Create(string text)
+        public static MapCustomUnitPointsObject Create(string text)
         {
             if (text == null) return null;
             List<int?> nullableIntList = ParsingUtilities.ParseStringList(text)
@@ -45,7 +45,7 @@ namespace STROOP.Map
             {
                 unitPoints.Add((intList[i], intList[i + 1]));
             }
-            return new MapCustomPointsObject(unitPoints);
+            return new MapCustomUnitPointsObject(unitPoints);
         }
 
         protected override List<List<(float x, float y, float z)>> GetQuadList()

@@ -363,7 +363,7 @@
     <Compile Include="Map\MapPathObject.cs" />
     <Compile Include="Map\MapCustomCeilingObject.cs" />
     <Compile Include="Map\MapCustomWallObject.cs" />
-    <Compile Include="Map\MapCustomPointsObject.cs" />
+    <Compile Include="Map\MapCustomUnitPointsObject.cs" />
     <Compile Include="Map\MapMarioCeilingObject.cs" />
     <Compile Include="Map\MapHitboxCylinderObject.cs" />
     <Compile Include="Map\MapDrawDistanceSphereObject.cs" />
