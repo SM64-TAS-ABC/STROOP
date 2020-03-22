@@ -922,5 +922,10 @@ namespace STROOP.Utilities
                 interval /= 2;
             }
         }
+
+        public static float GetNextFloat(float value)
+        {
+            return value + GetFloatInterval(value);
+        }
     }
 }

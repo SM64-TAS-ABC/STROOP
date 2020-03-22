@@ -376,6 +376,7 @@
     <Compile Include="Map\MapNextPositionsObject.cs" />
     <Compile Include="Map\MapPointObject.cs" />
     <Compile Include="Map\MapPuGridlinesObject.cs" />
+    <Compile Include="Map\MapFloatGridlinesObject.cs" />
     <Compile Include="Map\MapWallObject.cs" />
     <Compile Include="Map\MapSelfObject.cs" />
     <Compile Include="Map\MapTangibilitySphereObject.cs" />

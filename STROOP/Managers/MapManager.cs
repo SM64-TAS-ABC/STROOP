@@ -85,6 +85,7 @@ namespace STROOP.Managers
                     "Add Tracker for Custom Gridlines",
                     "Add Tracker for Aggregated Path",
                     "Add Tracker for PU Gridlines",
+                    "Add Tracker for Float Gridlines",
                     "Add Tracker for Iwerlipses",
                 },
                 new List<Action>()
@@ -180,6 +181,12 @@ namespace STROOP.Managers
                     () =>
                     {
                         MapObject mapObj = new MapPuGridlinesObject();
+                        MapTracker tracker = new MapTracker(mapObj);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+                    },
+                    () =>
+                    {
+                        MapObject mapObj = new MapFloatGridlinesObject();
                         MapTracker tracker = new MapTracker(mapObj);
                         Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     },
