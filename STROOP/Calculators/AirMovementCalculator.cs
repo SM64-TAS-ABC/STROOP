@@ -55,6 +55,11 @@ namespace STROOP.Structs
             float newY = initialState.Y;
             float newZ = initialState.Z;
 
+            if (wallTris != null)
+            {
+                (newX, newZ) = WallDisplacementCalculator.HandleWallDisplacement(newX, newY, newZ, wallTris, 50, 60);
+            }
+
             for (int i = 0; i < numQSteps; i++)
             {
                 newX += initialState.XSpeed / 4;
@@ -63,6 +68,7 @@ namespace STROOP.Structs
 
                 if (wallTris != null)
                 {
+                    (newX, newZ) = WallDisplacementCalculator.HandleWallDisplacement(newX, newY, newZ, wallTris, 50, 150);
                     (newX, newZ) = WallDisplacementCalculator.HandleWallDisplacement(newX, newY, newZ, wallTris, 50, 30);
                 }
             }

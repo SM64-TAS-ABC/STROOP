@@ -1618,18 +1618,18 @@ namespace STROOP.Structs
 
         public static void CalculateMovementForLLLPoleSoftlock()
         {
-            float startX = 1276.52429199219f;
-            float startY = 4452.04296875f;
-            float startZ = -2479.77734375f;
-            float startXSpeed = 13.6523675918579f;
-            float startYSpeed = 1.5f;
-            float startZSpeed = -15.5348262786865f;
-            float startHSpeed = 18.3137493133545f;
-            float startXSlidingSpeed = 13.6523675918579f;
-            float startZSlidingSpeed = -15.5348262786865f;
+            float startX = 1280.70056152344f;
+            float startY = 4464.54296875f;
+            float startZ = -2482.5f;
+            float startXSpeed = 13.7614297866821f;
+            float startYSpeed = 14f;
+            float startZSpeed = -15.9914541244507f;
+            float startHSpeed = 18.5792484283447f;
+            float startXSlidingSpeed = 13.7614297866821f;
+            float startZSlidingSpeed = -15.9914541244507f;
             ushort startYawMoving = 59938;
             ushort startYawFacing = 20218;
-            ushort startCentAngle = 59708;
+            ushort startCentAngle = 59680;
 
             float poleX = 1413f;
             float poleY = 3222f;
@@ -1656,7 +1656,7 @@ namespace STROOP.Structs
                 0);
 
             int lastIndex = -1;
-            List<int> angleDiffs = GetAngleDiffs(13016, 16, 15);
+            List<int> angleDiffs = GetAngleDiffs(14500, 14, 3);
             //List<int> angleDiffs = GetAngleDiffs((int)SpecialConfig.CustomX, 0);
             float bestDiff = float.MaxValue;
             MarioState bestState = null;
@@ -1685,16 +1685,17 @@ namespace STROOP.Structs
                     (double sidewaysDist, double forwardsDist) =
                         MoreMath.GetSidewaysAndForwardsDist(poleX, poleZ, dequeue.X, dequeue.Z, 34384);
                     float goalSideways = -0.0041583f;
-                    float diff = (float)Math.Abs(sidewaysDist - goalSideways);
-                    float threshold = 0.0005f;
-                    //float threshold = bestDiff;
+                    //float diff = (float)Math.Abs(sidewaysDist - goalSideways);
+                    float diff = (float)MoreMath.GetDistanceBetween(dequeue.X, dequeue.Z, 1355.78442382813, -2556.30688476563);
+                    //float threshold = 0.002f;
+                    float threshold = bestDiff;
                     if (diff <= threshold && !endingPositions.Contains((dequeue.X, dequeue.Y, dequeue.Z)))
                     {
                         endingPositions.Add((dequeue.X, dequeue.Y, dequeue.Z));
                         bestDiff = diff;
                         bestState = dequeue;
-                        //Config.Print("Diff of " + bestDiff + " is: " + bestState.GetLineage());
-                        Config.Print("{0},{1},{2}", (double)dequeue.X, (double)dequeue.Y, (double)dequeue.Z);
+                        Config.Print("Diff of " + bestDiff + " is: " + bestState.GetLineage());
+                        //Config.Print("{0},{1},{2}", (double)dequeue.X, (double)dequeue.Y, (double)dequeue.Z);
                     }
 
                     continue;
