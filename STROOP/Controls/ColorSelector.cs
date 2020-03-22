@@ -47,8 +47,10 @@ namespace STROOP.Controls
 
             panelColorSelector.Click += (sender, e) =>
             {
+                Config.MapManager.PauseMapUpdating = true;
                 Color? newColor = ColorUtilities.GetColorFromDialog(SelectedColor);
                 if (newColor.HasValue) SelectedColor = newColor.Value;
+                Config.MapManager.PauseMapUpdating = false;
             };
         }
 

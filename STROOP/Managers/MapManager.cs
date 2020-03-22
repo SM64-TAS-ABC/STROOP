@@ -21,6 +21,7 @@ namespace STROOP.Managers
     {
         private List<int> _currentObjIndexes = new List<int>();
 
+        public bool PauseMapUpdating = false;
         private bool _isLoaded2D = false;
         private bool _isLoaded3D = false;
 
@@ -555,13 +556,16 @@ namespace STROOP.Managers
             UpdateDataTab();
             UpdateVarColors();
 
-            if (Config.MapGui.checkBoxMapOptionsEnable3D.Checked)
+            if (!PauseMapUpdating)
             {
-                Config.MapGui.GLControlMap3D.Invalidate();
-            }
-            else
-            {
-                Config.MapGui.GLControlMap2D.Invalidate();
+                if (Config.MapGui.checkBoxMapOptionsEnable3D.Checked)
+                {
+                    Config.MapGui.GLControlMap3D.Invalidate();
+                }
+                else
+                {
+                    Config.MapGui.GLControlMap2D.Invalidate();
+                }
             }
         }
 
