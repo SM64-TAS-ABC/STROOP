@@ -55,7 +55,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Custom Points";
+            return "Custom Unit Points";
         }
 
         public override Image GetInternalImage()

@@ -72,6 +72,7 @@ namespace STROOP.Managers
                 new List<string>()
                 {
                     "Add Tracker for Custom Unit Points",
+                    "Add Tracker for Custom Circle Points",
                     "Add Tracker for Custom Floor Tris",
                     "Add Tracker for Custom Wall Tris",
                     "Add Tracker for Custom Ceiling Tris",
@@ -92,6 +93,14 @@ namespace STROOP.Managers
                     {
                         string text = DialogUtilities.GetStringFromDialog(labelText: "Enter points as pairs of integers.");
                         MapObject mapObj = MapCustomUnitPointsObject.Create(text);
+                        if (mapObj == null) return;
+                        MapTracker tracker = new MapTracker(mapObj);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+                    },
+                    () =>
+                    {
+                        string text = DialogUtilities.GetStringFromDialog(labelText: "Enter points as pairs of floats.");
+                        MapObject mapObj = MapCustomCirclePointsObject.Create(text);
                         if (mapObj == null) return;
                         MapTracker tracker = new MapTracker(mapObj);
                         Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
