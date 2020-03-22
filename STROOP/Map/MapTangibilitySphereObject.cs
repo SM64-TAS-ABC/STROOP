@@ -23,11 +23,14 @@ namespace STROOP.Map
             _posAngle = posAngle;
         }
 
-        protected override (float centerX, float centerY, float centerZ, float radius3D) Get3DDimensions()
+        protected override List<(float centerX, float centerY, float centerZ, float radius3D)> Get3DDimensions()
         {
             uint objAddress = _posAngle.GetObjAddress();
             float tangibleDist = Config.Stream.GetSingle(objAddress + ObjectConfig.TangibleDistOffset);
-            return ((float)_posAngle.X, (float)_posAngle.Y, (float)_posAngle.Z, tangibleDist);
+            return new List<(float centerX, float centerY, float centerZ, float radius3D)>()
+            {
+                ((float)_posAngle.X, (float)_posAngle.Y, (float)_posAngle.Z, tangibleDist)
+            };
         }
 
         public override Image GetInternalImage()

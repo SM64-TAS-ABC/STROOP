@@ -25,9 +25,12 @@ namespace STROOP.Map
             Size = 1000;
         }
 
-        protected override (float centerX, float centerY, float centerZ, float radius3D) Get3DDimensions()
+        protected override List<(float centerX, float centerY, float centerZ, float radius3D)> Get3DDimensions()
         {
-            return ((float)_posAngle.X, (float)_posAngle.Y, (float)_posAngle.Z, Size);
+            return new List<(float centerX, float centerY, float centerZ, float radius3D)>()
+            {
+                ((float)_posAngle.X, (float)_posAngle.Y, (float)_posAngle.Z, Size)
+            };
         }
 
         public override Image GetInternalImage()

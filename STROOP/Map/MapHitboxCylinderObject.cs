@@ -23,7 +23,7 @@ namespace STROOP.Map
             _posAngle = posAngle;
         }
 
-        protected override (float centerX, float centerZ, float radius, float minY, float maxY) Get3DDimensions()
+        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
         {
             uint objAddress = _posAngle.GetObjAddress();
             float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
@@ -32,7 +32,10 @@ namespace STROOP.Map
             float hitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
             float hitboxMinY = objY - hitboxDownOffset;
             float hitboxMaxY = hitboxMinY + hitboxHeight;
-            return ((float)_posAngle.X, (float)_posAngle.Z, hitboxRadius, hitboxMinY, hitboxMaxY);
+            return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>()
+            {
+                ((float)_posAngle.X, (float)_posAngle.Z, hitboxRadius, hitboxMinY, hitboxMaxY)
+            };
         }
 
         public override Image GetInternalImage()
