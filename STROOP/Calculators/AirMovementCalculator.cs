@@ -1,5 +1,6 @@
 ﻿using STROOP.Forms;
 using STROOP.Managers;
+using STROOP.Models;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
@@ -13,10 +14,18 @@ namespace STROOP.Structs
 {
     public static class AirMovementCalculator
     {
-        public static MarioState ApplyInput(MarioState marioState, Input input, int numQSteps = 4)
+        public static MarioState ApplyInput(MarioState marioState, Input input, int numQSteps = 4, List<TriangleDataModel> wallTris = null)
         {
             MarioState withHSpeed = ComputeAirHSpeed(marioState, input);
-            MarioState moved = AirMove(withHSpeed, numQSteps);
+            MarioState moved = AirMove(withHSpeed, numQSteps, wallTris);
+            MarioState withYSpeed = ComputeAirYSpeed(moved);
+            return withYSpeed;
+        }
+
+        public static MarioState ApplyInput(MarioState marioState, int angleDiff, int numQSteps = 4, List<TriangleDataModel> wallTris = null)
+        {
+            MarioState withHSpeed = ComputeAirHSpeed(marioState, angleDiff);
+            MarioState moved = AirMove(withHSpeed, numQSteps, wallTris);
             MarioState withYSpeed = ComputeAirYSpeed(moved);
             return withYSpeed;
         }
@@ -40,7 +49,7 @@ namespace STROOP.Structs
             return remainderQSteps == 0 ? marioState : ApplyInput(marioState, direction, remainderQSteps);
         }
 
-        public static MarioState AirMove(MarioState initialState, int numQSteps = 4)
+        public static MarioState AirMove(MarioState initialState, int numQSteps = 4, List<TriangleDataModel> wallTris = null)
         {
             float newX = initialState.X;
             float newY = initialState.Y;
@@ -51,6 +60,11 @@ namespace STROOP.Structs
                 newX += initialState.XSpeed / 4;
                 newY += initialState.YSpeed / 4;
                 newZ += initialState.ZSpeed / 4;
+
+                if (wallTris != null)
+                {
+                    (newX, newZ) = WallDisplacementCalculator.HandleWallDisplacement(newX, newY, newZ, wallTris, 50, 30);
+                }
             }
 
             return new MarioState(
@@ -69,6 +83,52 @@ namespace STROOP.Structs
                 initialState.PreviousState,
                 initialState.LastInput,
                 initialState.Index);
+        }
+
+        // update_air_without_turn
+        private static MarioState ComputeAirHSpeed(MarioState initialState, int angleDiff)
+        {
+            bool longJump = false;
+            int maxSpeed = longJump ? 48 : 32;
+
+            ushort marioAngle = initialState.MarioAngle;
+            int deltaAngleIntendedFacing = angleDiff;
+            float inputScaledMagnitude = 32;
+
+            float perpSpeed = 0;
+            float newHSpeed = ApproachHSpeed(initialState.HSpeed, 0, 0.35f, 0.35f);
+            if (inputScaledMagnitude > 0)
+            {
+                newHSpeed += (inputScaledMagnitude / 32) * 1.5f * InGameTrigUtilities.InGameCosine(deltaAngleIntendedFacing);
+                perpSpeed = InGameTrigUtilities.InGameSine(deltaAngleIntendedFacing) * (inputScaledMagnitude / 32) * 10;
+            }
+
+            if (newHSpeed > maxSpeed) newHSpeed -= 1;
+            if (newHSpeed < -16) newHSpeed += 2;
+
+            float newSlidingXSpeed = InGameTrigUtilities.InGameSine(marioAngle) * newHSpeed;
+            float newSlidingZSpeed = InGameTrigUtilities.InGameCosine(marioAngle) * newHSpeed;
+            newSlidingXSpeed += perpSpeed * InGameTrigUtilities.InGameSine(marioAngle + 0x4000);
+            newSlidingZSpeed += perpSpeed * InGameTrigUtilities.InGameCosine(marioAngle + 0x4000);
+            float newXSpeed = newSlidingXSpeed;
+            float newZSpeed = newSlidingZSpeed;
+
+            return new MarioState(
+                initialState.X,
+                initialState.Y,
+                initialState.Z,
+                newXSpeed,
+                initialState.YSpeed,
+                newZSpeed,
+                newHSpeed,
+                initialState.SlidingSpeedX,
+                initialState.SlidingSpeedZ,
+                initialState.SlidingAngle,
+                initialState.MarioAngle,
+                initialState.CameraAngle,
+                initialState,
+                new Input(angleDiff, 0),
+                initialState.Index + 1);
         }
 
         // update_air_without_turn

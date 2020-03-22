@@ -62,6 +62,14 @@ namespace STROOP.Utilities
             return (-1 * xComponent, zComponent);
         }
 
+        public static (double sidewaysDist, double forwardsDist) GetSidewaysAndForwardsDist(
+            double x1, double z1, double x2, double z2, double baseAngle)
+        {
+            double hDist = GetDistanceBetween(x1, z1, x2, z2);
+            double angle = AngleTo_AngleUnits(x1, z1, x2, z2);
+            return GetComponentsFromVectorRelatively(hDist, angle, baseAngle);
+        }
+
         public static (double xDist, double zDist) GetAbsoluteComponents(
             double sidewaysDist, double forwardsDist, double relativeAngle)
         {

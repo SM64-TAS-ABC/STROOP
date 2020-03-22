@@ -887,6 +887,17 @@ namespace STROOP.Structs
             }
         }
 
+        public static List<int> GetAngleDiffs(int mid, int range, int multiplier = 1)
+        {
+            List<int> angleDiffs = new List<int>();
+            for (int i = -1 * range; i <= range; i++)
+            {
+                int angleDiff = mid + i * multiplier * 16;
+                angleDiffs.Add(angleDiff);
+            }
+            return angleDiffs;
+        }
+
         public static List<List<int>> GetAngleDiffsList(int length, int mid, int range)
         {
             List<int> angleDiffs = new List<int>();
@@ -1599,6 +1610,98 @@ namespace STROOP.Structs
 
                 List<MarioState> nextStates = inputs.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input));
                 nextStates = nextStates.ConvertAll(state => state.WithCameraAngle(cameraAngles[state.Index]));
+                nextStates = ControlUtilities.Randomize(nextStates);
+                nextStates.ForEach(state => queue.Enqueue(state));
+            }
+            Config.Print("DONE");
+        }
+
+        public static void CalculateMovementForLLLPoleSoftlock()
+        {
+            float startX = 1276.52429199219f;
+            float startY = 4452.04296875f;
+            float startZ = -2479.77734375f;
+            float startXSpeed = 13.6523675918579f;
+            float startYSpeed = 1.5f;
+            float startZSpeed = -15.5348262786865f;
+            float startHSpeed = 18.3137493133545f;
+            float startXSlidingSpeed = 13.6523675918579f;
+            float startZSlidingSpeed = -15.5348262786865f;
+            ushort startYawMoving = 59938;
+            ushort startYawFacing = 20218;
+            ushort startCentAngle = 59708;
+
+            float poleX = 1413f;
+            float poleY = 3222f;
+            float poleZ = -2190f;
+
+            uint wallAddress = 0x8019AB30;
+            List<TriangleDataModel> walls = new List<TriangleDataModel>() { new TriangleDataModel(wallAddress) }; 
+
+            MarioState startState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                startXSlidingSpeed,
+                startZSlidingSpeed,
+                startYawMoving,
+                startYawFacing,
+                startCentAngle,
+                null,
+                null,
+                0);
+
+            int lastIndex = -1;
+            List<int> angleDiffs = GetAngleDiffs(13016, 16, 15);
+            //List<int> angleDiffs = GetAngleDiffs((int)SpecialConfig.CustomX, 0);
+            float bestDiff = float.MaxValue;
+            MarioState bestState = null;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            queue.Enqueue(startState);
+
+            List<(float x, float y, float z)> endingPositions = new List<(float x, float y, float z)>();
+
+            while (queue.Count > 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+
+                if (dequeue.Index != lastIndex)
+                {
+                    lastIndex = dequeue.Index;
+                    Config.Print("Now at index " + lastIndex);
+                }
+
+                if (dequeue.Index == 4)
+                {
+                    dequeue = dequeue.WithDive();
+                }
+
+                if (dequeue.Index == 5)
+                {
+                    (double sidewaysDist, double forwardsDist) =
+                        MoreMath.GetSidewaysAndForwardsDist(poleX, poleZ, dequeue.X, dequeue.Z, 34384);
+                    float goalSideways = -0.0041583f;
+                    float diff = (float)Math.Abs(sidewaysDist - goalSideways);
+                    float threshold = 0.0005f;
+                    //float threshold = bestDiff;
+                    if (diff <= threshold && !endingPositions.Contains((dequeue.X, dequeue.Y, dequeue.Z)))
+                    {
+                        endingPositions.Add((dequeue.X, dequeue.Y, dequeue.Z));
+                        bestDiff = diff;
+                        bestState = dequeue;
+                        //Config.Print("Diff of " + bestDiff + " is: " + bestState.GetLineage());
+                        Config.Print("{0},{1},{2}", (double)dequeue.X, (double)dequeue.Y, (double)dequeue.Z);
+                    }
+
+                    continue;
+                }
+
+                List<MarioState> nextStates = angleDiffs.ConvertAll(
+                    angleDiff => AirMovementCalculator.ApplyInput(dequeue, angleDiff, wallTris: walls));
                 nextStates = ControlUtilities.Randomize(nextStates);
                 nextStates.ForEach(state => queue.Enqueue(state));
             }
