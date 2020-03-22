@@ -23,7 +23,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            CalculatorMain.CalculateMovementForCCMPenguinSoftlock();
+            TestSomething29();
         }
 
         public static void TestSomethingElse()
@@ -32,6 +32,50 @@ namespace STROOP.Utilities
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
+
+        public static void TestSomething29()
+        {
+            float x1 = -2105.274658203125f;
+            float z1 = 856.53839111328125f;
+            float x2 = -2105.279541015625f;
+            float z2 = 856.53619384765625f;
+
+            float y = -1916f;
+
+            TriangleDataModel wallTri1 = new TriangleDataModel(0x801A8FC0);
+            TriangleDataModel wallTri2 = new TriangleDataModel(0x801A8FF0);
+            List<TriangleDataModel> wallTris = new List<TriangleDataModel>() { wallTri1, wallTri2 };
+
+            float xMin = Math.Min(x1, x2);
+            float zMin = Math.Min(z1, z2);
+            float xMax = Math.Max(x1, x2);
+            float zMax = Math.Max(z1, z2);
+
+            HashSet<(float x, float z)> points = new HashSet<(float x, float z)>();
+            HashSet<(float x, float z)> disps = new HashSet<(float x, float z)>();
+            for (float x = xMin; x <= xMax; x = MoreMath.GetNextFloat(x))
+            {
+                for (float z = zMin; z <= zMax; z = MoreMath.GetNextFloat(z))
+                {
+                    points.Add((x, z));
+                    (float dispX, float dispZ) = WallDisplacementCalculator.HandleWallDisplacement(x, y, z, wallTris, 50, 0);
+                    if (!disps.Contains((dispX, dispZ)))
+                    {
+                        disps.Add((dispX, dispZ));
+                    }
+                }
+            }
+            Config.Print("POINTS");
+            foreach ((float x, float z) in points)
+            {
+                Config.Print("{0},{1}", (double)x, (double)z);
+            }
+            Config.Print("DISPS");
+            foreach ((float x, float z) in disps)
+            {
+                Config.Print("{0},{1}", (double)x, (double)z);
+            }
+        }
 
         public static void Update2()
         {
