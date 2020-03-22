@@ -23,7 +23,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            CalculatorMain.CalculateMovementForLLLPoleSoftlock();
+            CalculatorMain.CalculateMovementForCCMPenguinSoftlock();
         }
 
         public static void TestSomethingElse()

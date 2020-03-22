@@ -1708,5 +1708,102 @@ namespace STROOP.Structs
             }
             Config.Print("DONE");
         }
+
+        public static void CalculateMovementForCCMPenguinSoftlock()
+        {
+            float startX = 3170.953125f;
+            float startY = -4382f;
+            float startZ = -370.703369140625f;
+            float startXSpeed = 1.92227721214294f;
+            float startYSpeed = -42f;
+            float startZSpeed = 8.9207706451416f;
+            float startHSpeed = -0.620457470417023f;
+            float startXSlidingSpeed = 1.92227721214294f;
+            float startZSlidingSpeed = 8.9207706451416f;
+            ushort startYawMoving = 33417;
+            ushort startYawFacing = 50668;
+            ushort startCentAngle = 28319;
+
+            float penguinX = 3211.611328125f;
+            float penguinY = -4806.134765625f;
+            float penguinZ = -460.21923828125f;
+
+            uint wallAddress1 = 0x8019B470;
+            uint wallAddress2 = 0x8019B2F0;
+            List<TriangleDataModel> walls =
+                new List<TriangleDataModel>()
+                {
+                    new TriangleDataModel(wallAddress1),
+                    new TriangleDataModel(wallAddress2),
+                };
+
+            MarioState startState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                startXSlidingSpeed,
+                startZSlidingSpeed,
+                startYawMoving,
+                startYawFacing,
+                startCentAngle,
+                null,
+                null,
+                0);
+
+            int lastIndex = -1;
+            List<int> angleDiffs = GetAngleDiffs(-2800, 5, 3);
+            //List<int> angleDiffs = GetAngleDiffs((int)SpecialConfig.CustomX, 0);
+            float bestDiff = float.MaxValue;
+            MarioState bestState = null;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            queue.Enqueue(startState);
+
+            List<(float x, float y, float z)> endingPositions = new List<(float x, float y, float z)>();
+
+            while (queue.Count > 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+
+                if (dequeue.Index != lastIndex)
+                {
+                    lastIndex = dequeue.Index;
+                    Config.Print("Now at index " + lastIndex);
+                }
+
+                if (dequeue.Index == 4)
+                {
+                    dequeue = dequeue.WithDive();
+                }
+
+                if (dequeue.Index == 6)
+                {
+                    float xDistToMario = -1 * (dequeue.X - penguinX);
+                    float zDistToMario = dequeue.Z - penguinZ;
+                    float diff = Math.Abs(xDistToMario - zDistToMario);
+                    //float threshold = 0.002f;
+                    float threshold = bestDiff;
+                    if (diff <= threshold && !endingPositions.Contains((dequeue.X, dequeue.Y, dequeue.Z)))
+                    {
+                        endingPositions.Add((dequeue.X, dequeue.Y, dequeue.Z));
+                        bestDiff = diff;
+                        bestState = dequeue;
+                        Config.Print("Diff of " + bestDiff + " is: " + bestState.GetLineage());
+                        //Config.Print("{0},{1},{2}", (double)dequeue.X, (double)dequeue.Y, (double)dequeue.Z);
+                    }
+
+                    continue;
+                }
+
+                List<MarioState> nextStates = angleDiffs.ConvertAll(
+                    angleDiff => AirMovementCalculator.ApplyInput(dequeue, angleDiff, wallTris: walls));
+                nextStates = ControlUtilities.Randomize(nextStates);
+                nextStates.ForEach(state => queue.Enqueue(state));
+            }
+            Config.Print("DONE");
+        }
     }
 }
