@@ -61,6 +61,7 @@ namespace STROOP.Structs
             return (marioX, marioZ);
         }
 
+        // cur_obj_set_pos_relative
         public static (float objectX, float objectY, float objectZ) GetRelativePosition(
             float marioX, float marioY, float marioZ, ushort marioAngle,
             float dleft, float dy, float dforward)
