@@ -113,7 +113,7 @@ namespace STROOP.Managers
             for (int i = 0; i < _checkList.Items.Count; i++)
             {
                 var hack = (RomHack) _checkList.Items[i];
-                hack.UpdateEnabledStatus();
+                //hack.UpdateEnabledStatus();
 
                 if (_checkList.GetItemChecked(i) != hack.Enabled)
                     _checkList.SetItemChecked(i, hack.Enabled);
