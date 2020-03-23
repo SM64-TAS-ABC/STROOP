@@ -683,7 +683,7 @@ namespace STROOP.Structs
 
             float padding = -5;
 
-            (float x, float z) = ObjectCalculator.GetObjectDisplacement(
+            (float x, float z) = ObjectCalculator.GetHardObjectDisplacement(
                 marioX, marioZ, marioRadius, 0, bobombX, bobombZ, bobombRadius, padding);
             Config.Print("{0},{1}", (double)x, (double)z);
         }
@@ -719,7 +719,7 @@ namespace STROOP.Structs
 
             // displacement
             (float afterDisplacementX, float afterDisplacementZ) =
-                ObjectCalculator.GetObjectDisplacement(
+                ObjectCalculator.GetHardObjectDisplacement(
                     afterWalking.X, afterWalking.Z, 37, afterWalking.MarioAngle,
                     objX, objZ, 65 * 1.2f, -5);
 
@@ -827,7 +827,7 @@ namespace STROOP.Structs
                     bobombZ += delZ;
                 }
                 float bobombRadius = 65 * (1f + 0.2f * i);
-                (marioX, marioZ) = ObjectCalculator.GetObjectDisplacement(
+                (marioX, marioZ) = ObjectCalculator.GetHardObjectDisplacement(
                     marioX, marioZ, marioRadius, 0, bobombX, bobombZ, bobombRadius, padding);
                 Config.Print("{0}: ({1},{2})", i, (double)marioX, (double)marioZ);
             }
@@ -1026,7 +1026,7 @@ namespace STROOP.Structs
                     bobombZ += delZ;
                 }
                 float bobombRadius = 65 * (1f + 0.2f * i);
-                (marioX, marioZ) = ObjectCalculator.GetObjectDisplacement(
+                (marioX, marioZ) = ObjectCalculator.GetHardObjectDisplacement(
                     marioX, marioZ, marioRadius, 0, bobombX, bobombZ, bobombRadius, padding);
                 //Config.Print("{0}: ({1},{2})", i, (double)marioX, (double)marioZ);
 
@@ -1095,7 +1095,7 @@ namespace STROOP.Structs
 
             // displacement
             (float afterDisplacementX, float afterDisplacementZ) =
-                ObjectCalculator.GetObjectDisplacement(
+                ObjectCalculator.GetHardObjectDisplacement(
                     afterWalking.X, afterWalking.Z, 37, afterWalking.MarioAngle,
                     objX, objZ, 65 * 1.2f, -5);
 
@@ -1128,7 +1128,7 @@ namespace STROOP.Structs
 
             // displacement
             (float afterDisplacementX, float afterDisplacementZ) =
-                ObjectCalculator.GetObjectDisplacement(
+                ObjectCalculator.GetHardObjectDisplacement(
                     afterWalking.X, afterWalking.Z, 37, afterWalking.MarioAngle,
                     objX, objZ, 65 * 1.2f, -5);
 

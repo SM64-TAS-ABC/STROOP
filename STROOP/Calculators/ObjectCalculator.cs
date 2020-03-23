@@ -14,7 +14,8 @@ namespace STROOP.Structs
 {
     public static class ObjectCalculator
     {
-        public static (float newMarioX, float newMarioZ) GetObjectDisplacement(
+        // push_mario_out_of_object
+        public static (float newMarioX, float newMarioZ) GetHardObjectDisplacement(
             float marioX, float marioZ, float marioRadius, ushort marioAngle,
             float objectX, float objectZ, float objectRadius, float padding)
         {
@@ -40,6 +41,23 @@ namespace STROOP.Structs
 
                 return (newMarioX, newMarioZ);
             }
+            return (marioX, marioZ);
+        }
+
+        // cur_obj_push_mario_away
+        public static (float newMarioX, float newMarioZ) GetSoftObjectDisplacement(
+            float marioX, float marioZ, float objX, float objZ, float radius)
+        {
+            float marioRelX = marioX - objX;
+            float marioRelZ = marioZ - objZ;
+            float marioDist = (float)Math.Sqrt(marioRelX * marioRelX + marioRelZ * marioRelZ);
+
+            if (marioDist < radius)
+            {
+                marioX += (radius - marioDist) / radius * marioRelX;
+                marioZ += (radius - marioDist) / radius * marioRelZ;
+            }
+
             return (marioX, marioZ);
         }
 
