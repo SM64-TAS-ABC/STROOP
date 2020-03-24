@@ -76,7 +76,7 @@ namespace STROOP.Utilities
             if (_emulator != null && _emulator.Dll != null)
             {
                 ProcessModule dll = _process.Modules.Cast<ProcessModule>()
-                    ?.FirstOrDefault(d => d.ModuleName == _emulator.Dll);
+                    ?.FirstOrDefault(d => d.ModuleName.Equals(_emulator.Dll, StringComparison.OrdinalIgnoreCase));
 
                 if (dll == null)
                     throw new ArgumentNullException("Could not find ");
