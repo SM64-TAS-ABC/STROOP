@@ -16,8 +16,8 @@ namespace STROOP.Utilities
         private readonly int? Index;
         private readonly int? Index2;
         private readonly double? Frame;
-        private readonly PositionAngle PosPA;
-        private readonly PositionAngle AnglePA;
+        private readonly PositionAngle PosAngle1;
+        private readonly PositionAngle PosAngle2;
         private readonly List<Func<double>> Getters;
         private readonly List<Func<double, bool>> Setters;
 
@@ -55,6 +55,7 @@ namespace STROOP.Utilities
             GFrame,
             Schedule,
             Hybrid,
+            Trunc,
             Functions,
             Self,
             Point,
@@ -99,8 +100,8 @@ namespace STROOP.Utilities
             int? index = null,
             int? index2 = null,
             double? frame = null,
-            PositionAngle posPA = null,
-            PositionAngle anglePA = null,
+            PositionAngle posAngle1 = null,
+            PositionAngle posAngle2 = null,
             List<Func<double>> getters = null,
             List<Func<double, bool>> setters = null)
         {
@@ -109,8 +110,8 @@ namespace STROOP.Utilities
             Index = index;
             Index2 = index2;
             Frame = frame;
-            PosPA = posPA;
-            AnglePA = anglePA;
+            PosAngle1 = posAngle1;
+            PosAngle2 = posAngle2;
             Getters = getters;
             Setters = setters;
 
@@ -130,12 +131,16 @@ namespace STROOP.Utilities
             if (frame.HasValue != shouldHaveFrame)
                 throw new ArgumentOutOfRangeException();
 
-            bool shouldHavePAs = PosAngleType == PositionAngleTypeEnum.Hybrid;
-            if ((posPA != null) != shouldHavePAs)
+            bool shouldHavePosAngle1 =
+                PosAngleType == PositionAngleTypeEnum.Hybrid ||
+                PosAngleType == PositionAngleTypeEnum.Trunc;
+            if ((posAngle1 != null) != shouldHavePosAngle1)
                 throw new ArgumentOutOfRangeException();
-            if ((anglePA != null) != shouldHavePAs)
+
+            bool shouldHavePosAngle2 = PosAngleType == PositionAngleTypeEnum.Hybrid;
+            if ((posAngle2 != null) != shouldHavePosAngle2)
                 throw new ArgumentOutOfRangeException();
-            
+
             bool shouldHaveGetters = PosAngleType == PositionAngleTypeEnum.Functions;
             if ((getters != null) != shouldHaveGetters)
                 throw new ArgumentOutOfRangeException();
@@ -195,8 +200,10 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.QFrame, frame: frame);
         public static PositionAngle GFrame(double frame) =>
             new PositionAngle(PositionAngleTypeEnum.GFrame, frame: frame);
-        public static PositionAngle Hybrid(PositionAngle posPA, PositionAngle anglePA) =>
-            new PositionAngle(PositionAngleTypeEnum.Hybrid, posPA: posPA, anglePA: anglePA);
+        public static PositionAngle Hybrid(PositionAngle posAngle1, PositionAngle posAngle2) =>
+            new PositionAngle(PositionAngleTypeEnum.Hybrid, posAngle1: posAngle1, posAngle2: posAngle2);
+        public static PositionAngle Trunc(PositionAngle posAngle) =>
+            new PositionAngle(PositionAngleTypeEnum.Trunc, posAngle1: posAngle);
         public static PositionAngle Functions(List<Func<double>> getters, List<Func<double, bool>> setters) =>
             new PositionAngle(PositionAngleTypeEnum.Functions, getters: getters, setters: setters);
 
@@ -257,7 +264,7 @@ namespace STROOP.Utilities
                 if (!address.HasValue) return null;
                 return ObjHome(address.Value);
             }
-            else if (parts.Count == 2 && 
+            else if (parts.Count == 2 &&
                 (parts[0] == "objgfx" || parts[0] == "objectgfx" || parts[0] == "objgraphics" || parts[0] == "objectgraphics"))
             {
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
@@ -351,6 +358,12 @@ namespace STROOP.Utilities
                 if (!frame.HasValue) return null;
                 return GFrame(frame.Value);
             }
+            else if (parts.Count >= 1 && parts[0] == "trunc")
+            {
+                PositionAngle posAngle = FromString(string.Join(" ", parts.Skip(1)));
+                if (posAngle == null) return null;
+                return Trunc(posAngle);
+            }
             else if (parts.Count == 1 && parts[0] == "self")
             {
                 return Self;
@@ -375,8 +388,8 @@ namespace STROOP.Utilities
             if (Index.HasValue) parts.Add(Index.Value);
             if (Index2.HasValue) parts.Add(Index2.Value);
             if (Frame.HasValue) parts.Add(Frame.Value);
-            if (PosPA != null) parts.Add("[" + PosPA + "]");
-            if (AnglePA != null) parts.Add("[" + AnglePA + "]");
+            if (PosAngle1 != null) parts.Add("[" + PosAngle1 + "]");
+            if (PosAngle2 != null) parts.Add("[" + PosAngle2 + "]");
             return String.Join(" ", parts);
         }
 
@@ -538,9 +551,11 @@ namespace STROOP.Utilities
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item1;
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
-                        return PosPA.X;
+                        return PosAngle1.X;
                     case PositionAngleTypeEnum.Functions:
                         return Getters[0]();
+                    case PositionAngleTypeEnum.Trunc:
+                        return (int)PosAngle1.X;
                     case PositionAngleTypeEnum.Self:
                         return SpecialConfig.SelfPA.X;
                     case PositionAngleTypeEnum.Point:
@@ -630,9 +645,11 @@ namespace STROOP.Utilities
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item2;
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
-                        return PosPA.Y;
+                        return PosAngle1.Y;
                     case PositionAngleTypeEnum.Functions:
                         return Getters[1]();
+                    case PositionAngleTypeEnum.Trunc:
+                        return (int)PosAngle1.Y;
                     case PositionAngleTypeEnum.Self:
                         return SpecialConfig.SelfPA.Y;
                     case PositionAngleTypeEnum.Point:
@@ -722,9 +739,11 @@ namespace STROOP.Utilities
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item3;
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
-                        return PosPA.Z;
+                        return PosAngle1.Z;
                     case PositionAngleTypeEnum.Functions:
                         return Getters[2]();
+                    case PositionAngleTypeEnum.Trunc:
+                        return (int)PosAngle1.Z;
                     case PositionAngleTypeEnum.Self:
                         return SpecialConfig.SelfPA.Z;
                     case PositionAngleTypeEnum.Point:
@@ -807,10 +826,12 @@ namespace STROOP.Utilities
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item4;
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
-                        return AnglePA.Angle;
+                        return PosAngle2.Angle;
                     case PositionAngleTypeEnum.Functions:
                         if (Getters.Count >= 4) return Getters[3]();
                         return Double.NaN;
+                    case PositionAngleTypeEnum.Trunc:
+                        return MoreMath.NormalizeAngleTruncated(PosAngle1.Angle);
                     case PositionAngleTypeEnum.Self:
                         return SpecialConfig.SelfPA.Angle;
                     case PositionAngleTypeEnum.Point:
@@ -1079,9 +1100,11 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
-                    return PosPA.SetX(value);
+                    return PosAngle1.SetX(value);
                 case PositionAngleTypeEnum.Functions:
                     return Setters[0](value);
+                case PositionAngleTypeEnum.Trunc:
+                    return PosAngle1.SetX(value);
                 case PositionAngleTypeEnum.Self:
                     return SpecialConfig.SelfPA.SetX(value);
                 case PositionAngleTypeEnum.Point:
@@ -1170,9 +1193,11 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
-                    return PosPA.SetY(value);
+                    return PosAngle1.SetY(value);
                 case PositionAngleTypeEnum.Functions:
                     return Setters[1](value);
+                case PositionAngleTypeEnum.Trunc:
+                    return PosAngle1.SetY(value);
                 case PositionAngleTypeEnum.Self:
                     return SpecialConfig.SelfPA.SetY(value);
                 case PositionAngleTypeEnum.Point:
@@ -1261,9 +1286,11 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
-                    return PosPA.SetZ(value);
+                    return PosAngle1.SetZ(value);
                 case PositionAngleTypeEnum.Functions:
                     return Setters[2](value);
+                case PositionAngleTypeEnum.Trunc:
+                    return PosAngle1.SetZ(value);
                 case PositionAngleTypeEnum.Self:
                     return SpecialConfig.SelfPA.SetZ(value);
                 case PositionAngleTypeEnum.Point:
@@ -1354,10 +1381,12 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
-                    return AnglePA.SetAngle(value);
+                    return PosAngle2.SetAngle(value);
                 case PositionAngleTypeEnum.Functions:
                     if (Setters.Count >= 4) return Setters[3](value);
                     return false;
+                case PositionAngleTypeEnum.Trunc:
+                    return PosAngle1.SetAngle(value);
                 case PositionAngleTypeEnum.Self:
                     return SpecialConfig.SelfPA.SetAngle(value);
                 case PositionAngleTypeEnum.Point:
