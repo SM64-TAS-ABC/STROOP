@@ -177,7 +177,10 @@ namespace STROOP
             itemUkikipedia.Click += (sender, e) => ButtonUtilities.UkikipediaObject(CurrentObject);
 
             ToolStripMenuItem itemCopyAddress = new ToolStripMenuItem("Copy Address");
-            itemCopyAddress.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(CurrentObject.Address));
+            itemCopyAddress.Click += (sender, e) =>
+            {
+                Clipboard.SetText(string.Join(",", getObjects().ConvertAll(obj => HexUtilities.FormatValue(obj.Address))));
+            };
 
             ToolStripMenuItem itemCopyPosition = new ToolStripMenuItem("Copy Position");
             itemCopyPosition.Click += (sender, e) => Clipboard.SetText(
