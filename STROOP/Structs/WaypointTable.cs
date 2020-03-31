@@ -23,13 +23,16 @@ namespace STROOP.Structs
             }
         }
 
-        Dictionary<short, WaypointReference> _waypointDictionary;
-        Dictionary<WaypointReference, double> _distanceDictionary;
-        Dictionary<WaypointReference, WaypointReference?> _previousWaypointDictionary;
-        Dictionary<WaypointReference, WaypointReference?> _nextWaypointDictionary;
+        private Dictionary<short, WaypointReference> _waypointDictionary;
+        private Dictionary<WaypointReference, double> _distanceDictionary;
+        private Dictionary<WaypointReference, WaypointReference?> _previousWaypointDictionary;
+        private Dictionary<WaypointReference, WaypointReference?> _nextWaypointDictionary;
+        private int _maxIndex = -1;
 
         public WaypointTable(List<WaypointReference> waypoints)
         {
+            _maxIndex = waypoints.Max(wp => wp.Index);
+
             _waypointDictionary = new Dictionary<short, WaypointReference>();
             foreach (WaypointReference waypointRef in waypoints)
             {
@@ -112,6 +115,17 @@ namespace STROOP.Structs
             double totalDistance = previousDistance + planeDistance;
 
             return totalDistance;
+        }
+
+        public (int x, int y, int z) GetWaypoint(int index)
+        {
+            WaypointReference wp = _waypointDictionary[(short)index];
+            return (wp.X, wp.Y, wp.Z);
+        }
+
+        public int GetMaxIndex()
+        {
+            return _maxIndex;
         }
     }
 }

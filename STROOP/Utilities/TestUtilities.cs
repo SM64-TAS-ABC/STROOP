@@ -18,7 +18,7 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
-            //Update2();
+            Update3Ktq1Waypoints();
         }
 
         public static void TestSomething()
@@ -32,6 +32,11 @@ namespace STROOP.Utilities
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
+
+        public static void Update3Ktq1Waypoints()
+        {
+            
+        }
 
         public static void TestSomething29()
         {
