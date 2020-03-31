@@ -51,13 +51,20 @@ namespace STROOP.Map
             OutlineColor = Color.Red;
         }
 
+        private List<(float x, float y, float z)> GetDictionaryValues()
+        {
+            return _dictionary.Keys.ToList()
+                .FindAll(key => key % _modulo == 0)
+                .ConvertAll(key => _dictionary[key]);
+        }
+
         public List<MapPathObjectSegment> GetSegments()
         {
             List<MapPathObjectSegment> segments = new List<MapPathObjectSegment>();
 
             if (OutlineWidth == 0) return segments;
 
-            List<(float x, float y, float z)> vertices = _dictionary.Values.ToList();
+            List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<(float x, float z)> veriticesForControl =
                 vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z));
 
@@ -98,7 +105,7 @@ namespace STROOP.Map
         {
             if (OutlineWidth == 0) return;
 
-            List<(float x, float y, float z)> vertices = _dictionary.Values.ToList();
+            List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<(float x, float z)> veriticesForControl =
                 vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z));
 
@@ -137,7 +144,7 @@ namespace STROOP.Map
         {
             if (OutlineWidth == 0) return;
 
-            List<(float x, float y, float z)> vertices = _dictionary.Values.ToList();
+            List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<Map3DVertex[]> vertexArrayList = new List<Map3DVertex[]>();
             for (int i = 0; i < vertices.Count - 1; i++)
             {
