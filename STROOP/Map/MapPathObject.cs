@@ -231,7 +231,7 @@ namespace STROOP.Map
                     }
                 }
 
-                if (!_dictionary.ContainsKey(globalTimer) && globalTimer % _modulo == 0)
+                if (!_dictionary.ContainsKey(globalTimer))
                 {
                     if (_numSkips > 0)
                     {
@@ -296,7 +296,7 @@ namespace STROOP.Map
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter modulo.");
                     int? moduloNullable = ParsingUtilities.ParseIntNullable(text);
-                    if (!moduloNullable.HasValue) return;
+                    if (!moduloNullable.HasValue || moduloNullable.Value <= 0) return;
                     MapObjectSettings settings = new MapObjectSettings(
                         pathChangeModulo: true, pathNewModulo: moduloNullable.Value);
                     GetParentMapTracker().ApplySettings(settings);
