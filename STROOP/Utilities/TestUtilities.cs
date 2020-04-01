@@ -18,7 +18,7 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
-            Update3Ktq1Waypoints();
+            //Update3Ktq1Waypoints();
         }
 
         public static void TestSomething()
@@ -33,9 +33,38 @@ namespace STROOP.Utilities
 
         ///////////////////////////////////////////////////////////////////////////////////////////
 
+        private static List<uint> ktqWaypointAddresses = new List<uint>()
+        {
+            0x803441C8,0x80344428,0x80344688,0x803448E8,0x80344B48,0x80344DA8,
+            0x80345008,0x80345268,0x80341E28,0x803538C8,0x80353408,0x803544A8,
+            0x80342548,0x803422E8,0x80353FE8,0x8034E5A8,0x80354708,0x80353B28,
+            0x803427A8,0x80342088,0x80353D88,0x8034F8A8,0x80354248,0x80353668,
+            0x80354968,0x80354BC8,0x80354E28,0x80355088,0x803552E8,0x80355548,
+            0x803557A8,0x80355A08,0x80355C68,0x80355EC8,0x80356128,0x80356388,
+        };
+
         public static void Update3Ktq1Waypoints()
         {
-            
+            uint ktqAddress = 0x8034E0E8;
+            uint waypointAddress = Config.Stream.GetUInt32(ktqAddress + ObjectConfig.WaypointOffset);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+
+            foreach (uint address in ktqWaypointAddresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                float scale = isCurrent ? 4 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
         }
 
         public static void TestSomething29()
