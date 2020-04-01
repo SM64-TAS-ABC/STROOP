@@ -18,12 +18,12 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
-            //Update3Ktq1Waypoints();
+            //UpdateMipsWaypoints();
         }
 
         public static void TestSomething()
         {
-            TestSomething29();
+            SetMipsWaypoints();
         }
 
         public static void TestSomethingElse()
@@ -31,9 +31,269 @@ namespace STROOP.Utilities
             TestSomething21();
         }
 
+        private static List<int> _mipsData = new List<int>()
+        {
+             -1831, -1177, -1178,
+             -1810, -1177,   284,
+             -2210, -1192,   715,
+             -3505, -1279,   715,
+             -3968, -1279,   -31,
+             -4021, -1381, -1242,
+             -3674, -1379,  -962,
+             -3813, -1279,   -41,
+             -3628, -1279,   755,
+             -2210, -1192,   715,
+             -1810, -1177,   284,
+             -1842, -1177, -1078,
+             -1604, -1177, -1445,
+             -1463, -1210, -2231,
+             -1515, -1279, -3094,
+             -2019, -1279, -3077,
+             -2559, -1279, -3043,
+             -2957, -1279, -2747,
+             -3031, -1262, -1947,
+             -2846, -1262, -1321,
+             -3005, -1197, -1874,
+             -2967, -1279, -2582,
+             -2559, -1279, -3043,
+             -1984, -1262, -3068,
+             -1432, -1262, -3038,
+             -1387, -1254, -2541,
+             -1541, -1177, -1446,
+              -894, -1223, -1421,
+              -306, -1279, -1601,
+              -192, -1279, -2196,
+              -187, -1279, -1662,
+              -805, -1238, -1406,
+             -1549, -1177, -1446,
+             -1092, -1279, -3188,
+              -593, -1279, -3175,
+              -200, -1279, -2940,
+              -216, -1279, -2139,
+              -214, -1279, -2432,
+              -160, -1283, -2900,
+              -640, -1283, -3220,
+             -1469, -1279, -3108,
+        };
+
+        private static List<uint> _mipsAddresses = new List<uint>()
+        {
+            0x803408C8,0x803435E8,0x80346308,0x80344B48,0x80343AA8,0x8033FCE8,
+            0x80345008,0x80340D88,0x803401A8,0x80340408,0x80340B28,0x8033FA88,
+            0x8033FF48,0x80344DA8,0x80343848,0x80340668,0x80347608,0x80347AC8,
+            0x80346EE8,0x80346A28,0x803473A8,0x803486A8,0x80346C88,0x80347148,
+            0x80348448,0x80347F88,0x80345268,0x80348908,0x80347868,0x80348B68,
+            0x803481E8,0x80347D28,0x80348DC8,0x80349028,0x80349288,0x803494E8,
+            0x80349748,0x803499A8,0x80349C08,0x80349E68,0x8034A0C8,
+        };
+
+        public static void UpdateMipsWaypoints()
+        {
+            uint mipsAddress = 0x80341968;
+            int action = Config.Stream.GetInt32(mipsAddress + 0x14C);
+            uint waypointAddress = Config.Stream.GetUInt32(mipsAddress + ObjectConfig.WaypointOffset);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+
+            Dictionary<uint, float> sizes = new Dictionary<uint, float>();
+
+            bool anyAreEnlarged = false;
+            foreach (uint address in _mipsAddresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                if (isCurrent) anyAreEnlarged = true;
+                float scale = isCurrent ? 4 : 1;
+                sizes[address] = scale;
+            }
+
+            if (!anyAreEnlarged && action != 0)
+            {
+                uint wpAddress = Config.Stream.GetUInt32(mipsAddress + 0xFC);
+                short x = Config.Stream.GetInt16(wpAddress + 0x2);
+                short y = Config.Stream.GetInt16(wpAddress + 0x4);
+                short z = Config.Stream.GetInt16(wpAddress + 0x6);
+                foreach (uint address in _mipsAddresses)
+                {
+                    float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                    float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                    float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                    if (redCoinX == x && redCoinY == y && redCoinZ == z)
+                    {
+                        sizes[address] = 4;
+                    }
+                }
+            }
+
+            Config.Stream.Suspend();
+            foreach (uint address in sizes.Keys)
+            {
+                Config.Stream.SetValue(sizes[address], address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(sizes[address], address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(sizes[address], address + ObjectConfig.ScaleDepthOffset);
+            }
+            Config.Stream.Resume();
+        }
+
+        public static void SetMipsWaypoints()
+        {
+            for (int i = 0; i < _mipsAddresses.Count; i++)
+            {
+                Config.Stream.SetValue((float)_mipsData[3 * i + 0], _mipsAddresses[i] + ObjectConfig.XOffset);
+                Config.Stream.SetValue((float)_mipsData[3 * i + 1], _mipsAddresses[i] + ObjectConfig.YOffset);
+                Config.Stream.SetValue((float)_mipsData[3 * i + 2], _mipsAddresses[i] + ObjectConfig.ZOffset);
+            }
+        }
+
         ///////////////////////////////////////////////////////////////////////////////////////////
 
-        private static List<uint> ktqWaypointAddresses = new List<uint>()
+        private static List<int> _racingPenguinData = new List<int>()
+        {
+            -4762,  6660, -6143,
+            -4133,  6455, -6100,
+            -2000,  6100, -5944,
+            -1200,  6033, -5833,
+             1022,  5611, -6033,
+             3833,  5033, -6233,
+             6055,  4598, -5766,
+             6677,  4462, -4877,
+             6277,  4417, -3344,
+             4788,  4280, -1844,
+             2211,  4086,  -555,
+              522,  3687,  -222,
+             -724,  3443,  -466,
+            -1350,  3302, -1288,
+            -1255,  3039, -3000,
+            -2233,  2785, -4533,
+            -3288,  2622, -4820,
+            -4266,  2480, -4555,
+            -4900,  2333, -3944,
+            -5066,  2175, -2977,
+            -4833,  2018, -1999,
+            -4122,  1866, -1366,
+            -3200,  1736, -1088,
+             -222,  1027, -1200,
+             1333,   761, -1733,
+             2488,   562, -2944,
+             2977,   361, -4988,
+             3754,   329, -5689,
+             5805,    86, -5980,
+             6566,  -449, -4133,
+             6689, -1119,  -888,
+             6688, -2127,  1200,
+             6666, -2573,  3555,
+             6600, -2667,  4333,
+             6366, -2832,  5722,
+             5844, -3021,  6355,
+             2955, -3394,  6255,
+             1788, -3512,  5988,
+              -89, -3720,  5188,
+             -732, -3910,  4144,
+             -722, -4095,  2688,
+            -1333, -4198,  1255,
+            -2377, -4302,   788,
+            -4500, -4684,   277,
+            -5466, -4790,    11,
+            -6044, -4860,  -333,
+            -6388, -5079, -1155,
+            -6510, -5389, -2666,
+            -6476, -5555, -3622,
+            -6488, -5684, -4777,
+            -6488, -5829, -6088,
+            -6507, -5841, -6400,
+        };
+
+        private static List<uint> _racingPenguinAddresses = new List<uint>()
+        {
+            0x803506E8,0x80344428,0x80340B28,0x80340D88,0x803454C8,0x803494E8,
+            0x8034B168,0x8034EA68,0x8034D768,0x8034A7E8,0x80340FE8,0x8034E5A8,
+            0x80346C88,0x80345008,0x8034B888,0x80343AA8,0x80341708,0x80349E68,
+            0x8034F8A8,0x80341968,0x8034ECC8,0x80349028,0x80349C08,0x80350BA8,
+            0x8034D048,0x8034EF28,0x80346A28,0x8034AF08,0x803414A8,0x80346EE8,
+            0x8034E348,0x80351EA8,0x803525C8,0x80341248,0x80352A88,0x80345BE8,
+            0x80351788,0x8034E808,0x8034B628,0x803441C8,0x80343848,0x80343F68,
+            0x80350E08,0x80352F48,0x803519E8,0x80351528,0x80353408,0x80350228,
+            0x80353B28,0x8034FD68,0x80353668,0x80352CE8,
+        };
+
+        public static void UpdateRacingPenguinWaypoints()
+        {
+            uint objAddress = 0x80347868;
+            uint waypointAddress = Config.Stream.GetUInt32(objAddress + ObjectConfig.WaypointOffset);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+
+            foreach (uint address in _racingPenguinAddresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                float scale = isCurrent ? 4 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
+        }
+
+        public static void SetRacingPenguinWaypoints()
+        {
+            for (int i = 0; i < _racingPenguinAddresses.Count; i++)
+            {
+                Config.Stream.SetValue((float)_racingPenguinData[3 * i + 0], _racingPenguinAddresses[i] + ObjectConfig.XOffset);
+                Config.Stream.SetValue((float)_racingPenguinData[3 * i + 1], _racingPenguinAddresses[i] + ObjectConfig.YOffset);
+                Config.Stream.SetValue((float)_racingPenguinData[3 * i + 2], _racingPenguinAddresses[i] + ObjectConfig.ZOffset);
+            }
+        }
+
+        private static List<uint> ktq2WaypointAddresses = new List<uint>()
+        {
+            0x8034ECC8,0x80347AC8,0x8034E0E8,0x80346568,0x8034FB08,0x8034ACA8,
+            0x8034FD68,0x8034A7E8,0x80349288,0x80344688,0x80347148,0x8034DE88,
+        };
+
+        public static void SetKtq2Waypoints()
+        {
+            for (int i = 0; i <= TableConfig.KoopaTheQuick2Waypoints.GetMaxIndex(); i++)
+            {
+                Config.Stream.SetValue((float)TableConfig.KoopaTheQuick2Waypoints.GetWaypoint(i).x, ktq2WaypointAddresses[i] + ObjectConfig.XOffset);
+                Config.Stream.SetValue((float)TableConfig.KoopaTheQuick2Waypoints.GetWaypoint(i).y, ktq2WaypointAddresses[i] + ObjectConfig.YOffset);
+                Config.Stream.SetValue((float)TableConfig.KoopaTheQuick2Waypoints.GetWaypoint(i).z, ktq2WaypointAddresses[i] + ObjectConfig.ZOffset);
+            }
+        }
+
+        public static void Update4Ktq2Waypoints()
+        {
+            uint ktqAddress = 0x803460A8;
+            uint waypointAddress = Config.Stream.GetUInt32(ktqAddress + ObjectConfig.WaypointOffset);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+
+            foreach (uint address in ktq2WaypointAddresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                float scale = isCurrent ? 4 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
+        }
+
+        private static List<uint> ktq1WaypointAddresses = new List<uint>()
         {
             0x803441C8,0x80344428,0x80344688,0x803448E8,0x80344B48,0x80344DA8,
             0x80345008,0x80345268,0x80341E28,0x803538C8,0x80353408,0x803544A8,
@@ -51,7 +311,7 @@ namespace STROOP.Utilities
             short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
             short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
 
-            foreach (uint address in ktqWaypointAddresses)
+            foreach (uint address in ktq1WaypointAddresses)
             {
                 float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
                 float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
