@@ -18,7 +18,7 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
-            //UpdateMipsWaypoints();
+            //UpdateYoshiWaypoints();
         }
 
         public static void TestSomething()
@@ -29,6 +29,36 @@ namespace STROOP.Utilities
         public static void TestSomethingElse()
         {
             TestSomething21();
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+
+        public static void UpdateYoshiWaypoints()
+        {
+            uint yoshiAddress = 0x80344428;
+            List<uint> redCoinAddresses = new List<uint>()
+            {
+                0x8034C208,0x8034D9C8,0x8034CB88,0x8034CDE8
+            };
+
+            float homeX = Config.Stream.GetSingle(yoshiAddress + ObjectConfig.HomeXOffset);
+            float homeY = Config.Stream.GetSingle(yoshiAddress + ObjectConfig.HomeYOffset);
+            float homeZ = Config.Stream.GetSingle(yoshiAddress + ObjectConfig.HomeZOffset);
+
+            foreach (uint address in redCoinAddresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == homeX && redCoinY == homeY && redCoinZ == homeZ;
+                float scale = isCurrent ? 4 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
         }
 
         private static List<int> _mipsData = new List<int>()
@@ -147,8 +177,6 @@ namespace STROOP.Utilities
                 Config.Stream.SetValue((float)_mipsData[3 * i + 2], _mipsAddresses[i] + ObjectConfig.ZOffset);
             }
         }
-
-        ///////////////////////////////////////////////////////////////////////////////////////////
 
         private static List<int> _racingPenguinData = new List<int>()
         {
