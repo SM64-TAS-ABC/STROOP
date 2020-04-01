@@ -18,7 +18,7 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
-            //UpdateYoshiWaypoints();
+            //UpdateKleptoWaypoints();
         }
 
         public static void TestSomething()
@@ -32,6 +32,31 @@ namespace STROOP.Utilities
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
+
+        private static List<uint> kleptoAddresses = new List<uint>() { 0x80349E68, 0x80348DC8, 0x8034D2A8 };
+        private static List<float> kleptoData = new List<float>()
+        {
+            2200.0f, 1250.0f, -2820.0f,
+            -6200.0f, 1250.0f, -2800.0f,
+            -6200.0f, 1250.0f, 1150.0f,
+        };
+
+        public static void UpdateKleptoWaypoints()
+        {
+            uint kleptoAddress = 0x803454C8;
+            short destination = Config.Stream.GetInt16(kleptoAddress + 0x1AC);
+            for (int i = 0; i < kleptoAddresses.Count; i++)
+            {
+                float scale = i == destination ? 4 : 1;
+                uint address = kleptoAddresses[i];
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
+        }
 
         public static void UpdateYoshiWaypoints()
         {
