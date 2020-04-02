@@ -18,12 +18,12 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
-            //UpdateKleptoWaypoints();
+            //UpdateMipsWaypoints();
         }
 
         public static void TestSomething()
         {
-            SetMipsWaypoints();
+            SetThiTinyWaypoints();
         }
 
         public static void TestSomethingElse()
@@ -32,6 +32,118 @@ namespace STROOP.Utilities
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
+
+        private static List<short> _thiHugeBowlingBallWaypoints = new List<short>()
+        {
+            -4786,101,-2166,
+            -5000,81,-2753,
+            -5040,33,-3846,
+            -4966,38,-4966,
+            -4013,-259,-4893,
+            -2573,-1019,-4780,
+            -1053,-1399,-4806,
+            760,-1637,-4833,
+            2866,-2047,-4886,
+            3386,-6546,-4833,
+        };
+
+        private static List<short> _thiTinyBowlingBallWaypoints = new List<short>()
+        {
+            -1476,29,-680,
+            -1492,14,-1072,
+            -1500,3,-1331,
+            -1374,-17,-1527,
+            -1178,-83,-1496,
+            -292,-424,-1425,
+            250,-491,-1433,
+            862,-613,-1449,
+            1058,-1960,-1449,
+        };
+
+        private static List<uint> _thiHugeAddresses = new List<uint>()
+        {
+            0x80346C88,0x8034F8A8,0x8034ECC8,0x8034E0E8,0x80342C68,0x803454C8,0x8034DC28,0x8034EF28,0x8034FB08,0x8034FD68
+        };
+
+        private static List<uint> _thiTinyAddresses = new List<uint>()
+        {
+            0x80342A08,0x8034F648,0x8033D948,0x803414A8,0x8034E808,0x80346A28,0x80347868,0x8034A7E8,0x80341BC8
+        };
+
+        public static void UpdateThiTinyWaypoints()
+        {
+            uint bowlingBallAddress = 0x80341E28;
+            uint waypointAddress = Config.Stream.GetUInt32(bowlingBallAddress + 0x100);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+
+            foreach (uint address in _thiTinyAddresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                float scale = isCurrent ? 2 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
+        }
+
+        private static void SetThiTinyWaypoints()
+        {
+            for (int i = 0; i < _thiTinyAddresses.Count; i++)
+            {
+                Config.Stream.SetValue((float)_thiTinyBowlingBallWaypoints[3 * i + 0], _thiTinyAddresses[i] + ObjectConfig.XOffset);
+                Config.Stream.SetValue((float)_thiTinyBowlingBallWaypoints[3 * i + 1], _thiTinyAddresses[i] + ObjectConfig.YOffset);
+                Config.Stream.SetValue((float)_thiTinyBowlingBallWaypoints[3 * i + 2], _thiTinyAddresses[i] + ObjectConfig.ZOffset);
+            }
+        }
+
+        public static void UpdateThiHugeWaypoints()
+        {
+            uint bowlingBallAddress = 0x8034D9C8;
+            uint waypointAddress = Config.Stream.GetUInt32(bowlingBallAddress + 0x100);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+
+            foreach (uint address in _thiHugeAddresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                float scale = isCurrent ? 4 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
+        }
+
+        private static void SetThiHugeWaypoints()
+        {
+            for (int i = 0; i < _thiHugeAddresses.Count; i++)
+            {
+                Config.Stream.SetValue((float)_thiHugeBowlingBallWaypoints[3 * i + 0], _thiHugeAddresses[i] + ObjectConfig.XOffset);
+                Config.Stream.SetValue((float)_thiHugeBowlingBallWaypoints[3 * i + 1], _thiHugeAddresses[i] + ObjectConfig.YOffset);
+                Config.Stream.SetValue((float)_thiHugeBowlingBallWaypoints[3 * i + 2], _thiHugeAddresses[i] + ObjectConfig.ZOffset);
+            }
+        }
+
+        private static void ConvertHexList()
+        {
+            List<uint> output = ParsingUtilities.ParseHexList(Clipboard.GetText());
+            List<short> output2 = output.ConvertAll(o => (short)o);
+            InfoForm.ShowValue(string.Join(",", output2));
+        }
 
         private static List<uint> kleptoAddresses = new List<uint>() { 0x80349E68, 0x80348DC8, 0x8034D2A8 };
         private static List<float> kleptoData = new List<float>()
@@ -161,7 +273,7 @@ namespace STROOP.Utilities
                 float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 if (isCurrent) anyAreEnlarged = true;
-                float scale = isCurrent ? 4 : 1;
+                float scale = isCurrent ? 3 : 1;
                 sizes[address] = scale;
             }
 
@@ -178,7 +290,7 @@ namespace STROOP.Utilities
                     float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
                     if (redCoinX == x && redCoinY == y && redCoinZ == z)
                     {
-                        sizes[address] = 4;
+                        sizes[address] = 3;
                     }
                 }
             }
