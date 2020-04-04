@@ -18,12 +18,12 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
-            //UpdateMipsWaypoints();
+            //UpdateEel2Waypoints();
         }
 
         public static void TestSomething()
         {
-            SetThiTinyWaypoints();
+            SetEel2Waypoints();
         }
 
         public static void TestSomethingElse()
@@ -32,6 +32,389 @@ namespace STROOP.Utilities
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
+
+        private static List<int> _eel2Waypoints = new List<int>()
+        {
+              5381,     0,  2758,
+              5803, -3130,  3036,
+              4876, -3045,  2706,
+              4313, -3246,  2736,
+              3792, -3413,  3668,
+              4971, -3130,  3688,
+              5392, -3130,  3326,
+              6341, -3130,  2450,
+              9431, -3130,  1400,
+        };
+
+        private static List<uint> _eel2Addresses = new List<uint>()
+        {
+            0x8035AAC8,0x8035F6C8,0x8035E168,0x80357DA8,0x80359A28,0x8035CC08,0x80357428,0x80359C88,0x80341248
+        };
+
+        private static void UpdateEel2Waypoints()
+        {
+            uint eelAddress = 0x8034EF28;
+            uint waypointAddress = Config.Stream.GetUInt32(eelAddress + 0x100);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            //if (waypointAddress == 0x80108824)
+            //{
+            //    waypointX = 5300;
+            //    waypointY = -3800;
+            //    waypointZ = 1200;
+            //}
+
+            foreach (uint address in _eel2Addresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                float scale = isCurrent ? 4 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
+        }
+
+        private static void SetEel2Waypoints()
+        {
+            for (int i = 0; i < _eel2Addresses.Count; i++)
+            {
+                Config.Stream.SetValue((float)_eel2Waypoints[3 * i + 0], _eel2Addresses[i] + ObjectConfig.XOffset);
+                Config.Stream.SetValue((float)_eel2Waypoints[3 * i + 1], _eel2Addresses[i] + ObjectConfig.YOffset);
+                Config.Stream.SetValue((float)_eel2Waypoints[3 * i + 2], _eel2Addresses[i] + ObjectConfig.ZOffset);
+            }
+        }
+
+        private static List<int> _eel1Waypoints = new List<int>()
+        {
+              5300, -3800,  1200,
+              3700, -3600,  1700,
+              3400, -3400,  3500,
+              3900, -3600,  4400,
+              5300, -3800,  4400,
+              6200, -4000,  2700,
+        };
+
+        private static List<uint> _eel1Addresses = new List<uint>()
+        {
+            0x80341248,0x80340FE8,0x80340D88,0x80340B28,0x803408C8,0x80340668
+        };
+
+        private static void UpdateEel1Waypoints()
+        {
+            uint eelAddress = 0x8034E808;
+            uint waypointAddress = Config.Stream.GetUInt32(eelAddress + 0x100);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            if (waypointAddress == 0x80108824)
+            {
+                waypointX = 5300;
+                waypointY = -3800;
+                waypointZ = 1200;
+            }
+
+            foreach (uint address in _eel1Addresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                float scale = isCurrent ? 4 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
+        }
+
+        private static void SetEel1Waypoints()
+        {
+            for (int i = 0; i < _eel1Addresses.Count; i++)
+            {
+                Config.Stream.SetValue((float)_eel1Waypoints[3 * i + 0], _eel1Addresses[i] + ObjectConfig.XOffset);
+                Config.Stream.SetValue((float)_eel1Waypoints[3 * i + 1], _eel1Addresses[i] + ObjectConfig.YOffset);
+                Config.Stream.SetValue((float)_eel1Waypoints[3 * i + 2], _eel1Addresses[i] + ObjectConfig.ZOffset);
+            }
+        }
+
+        private static List<int> _snowmanWaypoints = new List<int>()
+        {
+              2501,  2662,  -975,
+              2533,  2560,  -800,
+              2566,  2300,  -500,
+              2600,  1884,   733,
+              2466,  1647,  1835,
+              2000,  1483,  2233,
+               766,  1321,  2400,
+              -872,  1190,  2033,
+             -3072,  1097,  1300,
+             -3805,   882,  -366,
+             -3758,   819, -1513,
+             -3145,   786, -2426,
+             -1658,   546, -2853,
+              -138,   300, -3000,
+              1966,  -192, -2800,
+              3066,  -456, -2800,
+              3933,  -461, -2999,
+              4266,  -188, -3433,
+              3901,  -402, -3800,
+              3133,  -579, -3866,
+              2033,  -855, -3800,
+               766, -1073, -3633,
+             -1100, -1142, -3744,
+             -2318, -1188, -3658,
+             -3318, -1228, -3375,
+             -4010, -1267, -2802,
+             -4470, -1368, -2151,
+             -4679, -1358, -1321,
+             -4770, -1333,  -648,
+             -4847, -1351,    40,
+        };
+
+        private static List<uint> _snowmanAddresses = new List<uint>()
+        {
+            0x803454C8,0x803448E8,0x80344688,0x80344428,0x803441C8,0x80343F68,
+            0x80343AA8,0x80343848,0x8034BAE8,0x8034A0C8,0x8034D768,0x80349E68,
+            0x8034A328,0x8034ACA8,0x8034DE88,0x8034BFA8,0x80349748,0x8034D9C8,
+            0x8034E0E8,0x8034B628,0x803499A8,0x8034B168,0x8034D048,0x8034C928,
+            0x8034A588,0x8034C468,0x8034B888,0x8034DC28,0x8034D2A8,0x8034BD48,
+        };
+
+        public static void UpdateSnowmanWaypoints()
+        {
+            uint bowlingBallAddress = 0x803467C8;
+            uint waypointAddress = Config.Stream.GetUInt32(bowlingBallAddress + 0x100);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+
+            foreach (uint address in _snowmanAddresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                float scale = isCurrent ? 4 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
+        }
+
+        private static void SetSnowmanWaypoints()
+        {
+            for (int i = 0; i < _snowmanAddresses.Count; i++)
+            {
+                Config.Stream.SetValue((float)_snowmanWaypoints[3 * i + 0], _snowmanAddresses[i] + ObjectConfig.XOffset);
+                Config.Stream.SetValue((float)_snowmanWaypoints[3 * i + 1], _snowmanAddresses[i] + ObjectConfig.YOffset);
+                Config.Stream.SetValue((float)_snowmanWaypoints[3 * i + 2], _snowmanAddresses[i] + ObjectConfig.ZOffset);
+            }
+        }
+
+        private static List<int> _bobUpperBowlingBallWaypoints = new List<int>()
+        {
+              1535,  3839, -5561,
+              1514,  3804, -5886,
+              1927,  3827, -6232,
+              2717,  3715, -6740,
+              3113,  3668, -6918,
+              3503,  3638, -6783,
+              4863,  3354, -5954,
+              5081,  3221, -5754,
+              5118,  3209, -5481,
+              5147,  3185, -3712,
+              5016,  3149, -3370,
+              4609,  3137, -3118,
+              3075,  2909, -2345,
+              2784,  1634, -2237,
+              1926,  1505, -1139,
+               517,   773,  -438,
+             -1275,   179,   -83,
+             -2089,     5,   -24,
+        };
+
+        private static List<uint> _bobUpperBowlingBallAddresses = new List<uint>()
+        {
+            0x80345268,0x80345008,0x80344DA8,0x80344B48,0x803448E8,0x80344688,
+            0x80344428,0x803441C8,0x80342548,0x80353668,0x80353B28,0x80342088,
+            0x8034E348,0x80352F48,0x80353D88,0x80353408,0x803538C8,0x80354248,
+        };
+
+        public static void UpdateBobUpperWaypoints()
+        {
+            uint bowlingBallAddress = 0x80355A08;
+            uint waypointAddress = Config.Stream.GetUInt32(bowlingBallAddress + 0x100);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+
+            foreach (uint address in _bobUpperBowlingBallAddresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                float scale = isCurrent ? 4 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
+        }
+
+        private static void SetBobUpperWaypoints()
+        {
+            for (int i = 0; i < _bobUpperBowlingBallAddresses.Count; i++)
+            {
+                Config.Stream.SetValue((float)_bobUpperBowlingBallWaypoints[3 * i + 0], _bobUpperBowlingBallAddresses[i] + ObjectConfig.XOffset);
+                Config.Stream.SetValue((float)_bobUpperBowlingBallWaypoints[3 * i + 1], _bobUpperBowlingBallAddresses[i] + ObjectConfig.YOffset);
+                Config.Stream.SetValue((float)_bobUpperBowlingBallWaypoints[3 * i + 2], _bobUpperBowlingBallAddresses[i] + ObjectConfig.ZOffset);
+            }
+        }
+
+        private static List<int> _bobLowerBowlingBallWaypoints = new List<int>()
+        {
+               524,  2825, -5400,
+               399,  2597, -5725,
+               499,  2567, -5975,
+               699,  2556, -6150,
+               949,  2548, -6250,
+              1549,  2525, -6600,
+              2575,  2482, -7125,
+              2975,  2466, -7425,
+              3275,  2433, -7450,
+              3800,  2337, -6950,
+              4125,  2279, -6775,
+              5310,  2119, -6500,
+              5635,  2062, -6340,
+              6010,  2004, -5730,
+              5955,  1987, -5270,
+              5540,  1947, -4330,
+              5549,  1933, -4060,
+              6014,  1906, -3198,
+              5740,  1876, -2651,
+              5273,  1840, -2467,
+              3983,  1728, -2218,
+              3640,  1682, -2072,
+              3395,  1683, -1501,
+              3211,  1676, -1190,
+              2961,  1665,  -920,
+               654,   640,  -758,
+             -1618,     0,  -939,
+        };
+
+        private static List<uint> _bobLowerBowlingBallAddresses = new List<uint>()
+        {
+            0x80357DA8,0x80356128,0x80356388,0x80357688,0x803565E8,0x80354BC8,
+            0x80344688,0x803448E8,0x80344B48,0x80344DA8,0x80345008,0x80345268,
+            0x80358988,0x80352F48,0x803531A8,0x80353D88,0x803427A8,0x80353668,
+            0x80341E28,0x8034F648,0x80353FE8,0x80354968,0x8035AAC8,0x8035A608,
+            0x8035A3A8,0x8035A148,0x80359EE8,
+        };
+
+        public static void UpdateBobLowerWaypoints()
+        {
+            uint bowlingBallAddress = 0x80353B28;
+            uint waypointAddress = Config.Stream.GetUInt32(bowlingBallAddress + 0x100);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+
+            foreach (uint address in _bobLowerBowlingBallAddresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                float scale = isCurrent ? 4 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
+        }
+
+        private static void SetBobLowerWaypoints()
+        {
+            for (int i = 0; i < _bobLowerBowlingBallAddresses.Count; i++)
+            {
+                Config.Stream.SetValue((float)_bobLowerBowlingBallWaypoints[3 * i + 0], _bobLowerBowlingBallAddresses[i] + ObjectConfig.XOffset);
+                Config.Stream.SetValue((float)_bobLowerBowlingBallWaypoints[3 * i + 1], _bobLowerBowlingBallAddresses[i] + ObjectConfig.YOffset);
+                Config.Stream.SetValue((float)_bobLowerBowlingBallWaypoints[3 * i + 2], _bobLowerBowlingBallAddresses[i] + ObjectConfig.ZOffset);
+            }
+        }
+
+        private static List<int> _ttmWaypoints = new List<int>()
+        {
+             -1541,   514, -2125,
+              -843,   410, -2302,
+              -792,   357, -3132,
+              -211,   189, -3153,
+               474,   -31, -2635,
+               944,  -136, -3098,
+              1391,  -157, -3484,
+              1999,  -378, -3257,
+              2475,  -600, -2692,
+              3445,  -952, -2115,
+              3926,  -984,  -681,
+              4281, -3326,   460,
+        };
+
+        private static List<uint> _ttmAddresses = new List<uint>()
+        {
+            0x80342EC8,0x80342C68,0x80342A08,0x803427A8,0x80342548,0x803422E8,
+            0x80342088,0x8034E808,0x80353B28,0x803506E8,0x80350BA8,0x80354708,
+        };
+
+        public static void UpdateTtmTinyWaypoints()
+        {
+            uint bowlingBallAddress = 0x80356388;
+            uint waypointAddress = Config.Stream.GetUInt32(bowlingBallAddress + 0x100);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+
+            foreach (uint address in _ttmAddresses)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                float scale = isCurrent ? 4 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
+        }
+
+        private static void SetTtmWaypoints()
+        {
+            for (int i = 0; i < _ttmAddresses.Count; i++)
+            {
+                Config.Stream.SetValue((float)_ttmWaypoints[3 * i + 0], _ttmAddresses[i] + ObjectConfig.XOffset);
+                Config.Stream.SetValue((float)_ttmWaypoints[3 * i + 1], _ttmAddresses[i] + ObjectConfig.YOffset);
+                Config.Stream.SetValue((float)_ttmWaypoints[3 * i + 2], _ttmAddresses[i] + ObjectConfig.ZOffset);
+            }
+        }
 
         private static List<short> _thiHugeBowlingBallWaypoints = new List<short>()
         {
