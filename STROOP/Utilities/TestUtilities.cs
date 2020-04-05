@@ -18,7 +18,7 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
-            //UpdateEel2Waypoints();
+            //UpdateMoneybagHome();
         }
 
         public static void TestSomething()
@@ -32,6 +32,40 @@ namespace STROOP.Utilities
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
+
+        private static void UpdateMoneybagHome()
+        {
+            uint coinAddress = 0x8034D2A8;
+
+            Config.Stream.Suspend();
+            ObjectDataModel obj = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Moneybag").FirstOrDefault();
+            if (obj != null)
+            {
+                uint moneybagAddress = obj.Address;
+                float homeX = Config.Stream.GetSingle(moneybagAddress + ObjectConfig.HomeXOffset);
+                float homeY = Config.Stream.GetSingle(moneybagAddress + ObjectConfig.HomeYOffset);
+                float homeZ = Config.Stream.GetSingle(moneybagAddress + ObjectConfig.HomeZOffset);
+                Config.Stream.SetValue(homeX, coinAddress + ObjectConfig.XOffset);
+                Config.Stream.SetValue(homeY, coinAddress + ObjectConfig.YOffset);
+                Config.Stream.SetValue(homeZ, coinAddress + ObjectConfig.ZOffset);
+            }
+            Config.Stream.Resume();
+        }
+
+        private static void UpdateScuttlebugHome()
+        {
+            uint coinAddress = 0x8034F188;
+            uint scuttlebugAddress = 0x80344B48;
+
+            Config.Stream.Suspend();
+            float homeX = Config.Stream.GetSingle(scuttlebugAddress + ObjectConfig.HomeXOffset);
+            float homeY = Config.Stream.GetSingle(scuttlebugAddress + ObjectConfig.HomeYOffset);
+            float homeZ = Config.Stream.GetSingle(scuttlebugAddress + ObjectConfig.HomeZOffset);
+            Config.Stream.SetValue(homeX, coinAddress + ObjectConfig.XOffset);
+            Config.Stream.SetValue(homeY, coinAddress + ObjectConfig.YOffset);
+            Config.Stream.SetValue(homeZ, coinAddress + ObjectConfig.ZOffset);
+            Config.Stream.Resume();
+        }
 
         private static List<int> _eel2Waypoints = new List<int>()
         {
