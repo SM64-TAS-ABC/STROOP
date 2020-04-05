@@ -127,6 +127,13 @@ namespace STROOP
                     this, ClickType.MemoryClick, false, false, Config.MemoryManager.Tab);
             };
 
+            ToolStripMenuItem itemSelectInCurrentTab = new ToolStripMenuItem("Select in Current Tab");
+            itemSelectInCurrentTab.Click += (sender, e) =>
+            {
+                Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
+                    this, ClickType.ObjectClick, false, false, null);
+            };
+
             Func<List<ObjectDataModel>> getObjects = () => KeyboardUtilities.IsCtrlHeld()
                 ? Config.ObjectSlotsManager.SelectedObjects
                 : new List<ObjectDataModel>() { CurrentObject };
@@ -249,6 +256,7 @@ namespace STROOP
             ContextMenuStrip = new ContextMenuStrip();
             ContextMenuStrip.Items.Add(itemSelectInObjectTab);
             ContextMenuStrip.Items.Add(itemSelectInMemoryTab);
+            ContextMenuStrip.Items.Add(itemSelectInCurrentTab);
             ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ContextMenuStrip.Items.Add(itemGoto);
             ContextMenuStrip.Items.Add(itemRetrieve);
