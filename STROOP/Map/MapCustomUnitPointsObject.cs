@@ -29,13 +29,13 @@ namespace STROOP.Map
         public static MapCustomUnitPointsObject Create(string text)
         {
             if (text == null) return null;
-            List<int?> nullableIntList = ParsingUtilities.ParseStringList(text)
-                .ConvertAll(word => ParsingUtilities.ParseIntNullable(word));
-            if (nullableIntList.Any(nullableInt => !nullableInt.HasValue))
+            List<double?> nullableDoubleList = ParsingUtilities.ParseStringList(text)
+                .ConvertAll(word => ParsingUtilities.ParseDoubleNullable(word));
+            if (nullableDoubleList.Any(nullableDouble => !nullableDouble.HasValue))
             {
                 return null;
             }
-            List<int> intList = nullableIntList.ConvertAll(nullableInt => nullableInt.Value);
+            List<int> intList = nullableDoubleList.ConvertAll(nullableDouble => (int)nullableDouble.Value);
             if (intList.Count % 2 != 0)
             {
                 return null;

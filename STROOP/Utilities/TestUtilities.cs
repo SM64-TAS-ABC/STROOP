@@ -23,7 +23,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            SetEel2Waypoints();
+            TestLllFloorGaps();
         }
 
         public static void TestSomethingElse()
@@ -32,6 +32,27 @@ namespace STROOP.Utilities
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
+
+        public static void TestLllFloorGaps()
+        {
+            Config.Print("START");
+            List<(int x, int z)> gaps = new List<(int x, int z)>();
+            int y = 2721;
+            for (int x = -787; x <= 583; x++)
+            {
+                Config.Print("x = " + x);
+                for (int z = -2942; z <= -2473; z++)
+                {
+                    TriangleDataModel tri = TriangleUtilities.FindFloor(x, y, z);
+                    if (tri == null) gaps.Add((x, z));
+                }
+            }
+            foreach ((int x, int z) in gaps)
+            {
+                Config.Print("{0}.5, {1}.5", x, z);
+            }
+            Config.Print("END");
+        }
 
         private static void UpdateMoneybagHome()
         {
