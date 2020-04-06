@@ -211,14 +211,14 @@ namespace STROOP.Forms
             selectionForm.Show();
         }
 
-        public static void ShowDataManagerSelectionForm(List<WatchVariableControl> controls)
+        public static void ShowDataManagerSelectionForm(List<WatchVariableControl> controls, AddToTabTypeEnum addToTabType)
         {
             SelectionForm selectionForm = new SelectionForm();
             selectionForm.Initialize(
                 "Select a Tab",
                 "Add Variable(s) to Tab",
                 Config.GetVariableAdders(),
-                variableAdder => WatchVariableControl.AddVarsToTab(controls, variableAdder));
+                variableAdder => WatchVariableControl.AddVarsToTab(controls, variableAdder, addToTabType));
             selectionForm.Show();
         }
     }

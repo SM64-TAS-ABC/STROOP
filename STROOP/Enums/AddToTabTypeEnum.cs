@@ -13,7 +13,7 @@ namespace STROOP.Structs
     {
         Regular,
         Fixed,
-        IndividualSpliced,
-        IndividualGrouped,
+        GroupedByVariable,
+        GroupedByBaseAddress,
     };
 }

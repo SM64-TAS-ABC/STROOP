@@ -374,12 +374,6 @@ namespace STROOP.Controls
                 _watchVariablePanel.UnselectAllVariables();
                 AddToTab(Config.MemoryManager);
             }
-            else if (isPKeyHeld)
-            {
-                _watchVariablePanel.UnselectAllVariables();
-                SelectionForm.ShowDataManagerSelectionForm(
-                    new List<WatchVariableControl>() { this });
-            }
             else if (isNKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
@@ -749,8 +743,8 @@ namespace STROOP.Controls
 
         private static AddToTabTypeEnum GetAddToTabType()
         {
-            if (Keyboard.IsKeyDown(Key.A)) return AddToTabTypeEnum.IndividualSpliced;
-            if (Keyboard.IsKeyDown(Key.G)) return AddToTabTypeEnum.IndividualGrouped;
+            if (Keyboard.IsKeyDown(Key.A)) return AddToTabTypeEnum.GroupedByVariable;
+            if (Keyboard.IsKeyDown(Key.G)) return AddToTabTypeEnum.GroupedByBaseAddress;
             if (Keyboard.IsKeyDown(Key.F)) return AddToTabTypeEnum.Fixed;
             return AddToTabTypeEnum.Regular;
         }
@@ -771,8 +765,8 @@ namespace STROOP.Controls
                 List<WatchVariableControl> newVarList = new List<WatchVariableControl>();
                 List<uint> addressList = watchVar.FixedAddressList ?? watchVar.WatchVarWrapper.GetCurrentAddresses();
                 List<List<uint>> addressesLists =
-                    addToTabType == AddToTabTypeEnum.IndividualSpliced
-                            || addToTabType == AddToTabTypeEnum.IndividualGrouped
+                    addToTabType == AddToTabTypeEnum.GroupedByVariable
+                            || addToTabType == AddToTabTypeEnum.GroupedByBaseAddress
                         ? addressList.ConvertAll(address => new List<uint>() { address })
                         : new List<List<uint>>() { addressList };
                 for (int i = 0; i < addressesLists.Count; i++)
@@ -781,8 +775,8 @@ namespace STROOP.Controls
                     if (addressesLists.Count > 1) name += " " + (i + 1);
                     bool useFixed =
                         addToTabType == AddToTabTypeEnum.Fixed ||
-                        addToTabType == AddToTabTypeEnum.IndividualSpliced ||
-                        addToTabType == AddToTabTypeEnum.IndividualGrouped;
+                        addToTabType == AddToTabTypeEnum.GroupedByVariable ||
+                        addToTabType == AddToTabTypeEnum.GroupedByBaseAddress;
                     List<uint> constructorAddressList = useFixed ? addressesLists[i] : null;
                     WatchVariableControl newControl =
                         watchVar.WatchVarPrecursor.CreateWatchVariableControl(
@@ -796,7 +790,7 @@ namespace STROOP.Controls
                 newVarListList.Add(newVarList);
             }
 
-            if (addToTabType == AddToTabTypeEnum.IndividualGrouped)
+            if (addToTabType == AddToTabTypeEnum.GroupedByBaseAddress)
             {
                 int maxListLength = newVarListList.Max(list => list.Count);
                 for (int i = 0; i < maxListLength; i++)
