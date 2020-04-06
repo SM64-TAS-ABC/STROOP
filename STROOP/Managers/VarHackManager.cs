@@ -15,7 +15,7 @@ namespace STROOP.Managers
     public class VarHackManager : VariableAdder
     {
         private readonly VarHackFlowLayoutPanel _varHackPanel;
-        private readonly BinaryButton _buttonEnableDisableRomHack;
+        private readonly Button _buttonEnableDisableRomHack;
 
         private readonly BetterTextbox _textBoxXPosValue;
         private readonly BetterTextbox _textBoxYPosValue;
@@ -99,12 +99,7 @@ namespace STROOP.Managers
 
             _buttonEnableDisableRomHack =
                 splitContainerVarHack.Panel1.Controls["buttonEnableDisableRomHack"] as BinaryButton;
-            _buttonEnableDisableRomHack.Initialize(
-                "Enable ROM Hack",
-                "Disable ROM Hack",
-                () => VarHackConfig.ShowVarRomHack.LoadPayload(),
-                () => VarHackConfig.ShowVarRomHack.ClearPayload(),
-                () => VarHackConfig.ShowVarRomHack.Enabled);
+            _buttonEnableDisableRomHack.Click += (sender, e) => VarHackConfig.ShowVarRomHack.LoadPayload();
 
             ControlUtilities.AddContextMenuStripFunctions(
                 _buttonEnableDisableRomHack,
@@ -240,8 +235,6 @@ namespace STROOP.Managers
             _varHackPanel.UpdateControls();
 
             if (!updateView) return;
-
-            _buttonEnableDisableRomHack.UpdateButton();
         }
     }
 }
