@@ -120,7 +120,10 @@ namespace STROOP.Structs
         public static void Update()
         {
             if (LockConfig.LockingDisabled) return;
+            bool shouldSuspend = _lockList.Count >= 2;
+            if (shouldSuspend) Config.Stream.Suspend();
             _lockList.ForEach(varLock => varLock.Invoke());
+            if (shouldSuspend) Config.Stream.Resume();
         }
 
     };
