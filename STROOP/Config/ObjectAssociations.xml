@@ -2815,6 +2815,17 @@
     <Image path="Bowling Ball.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003A58" name="Bowling Ball (Spawned)">
+    <Data groupList="ObjectSpecific" type="short" offset="0x00" base="Waypoint">Prev WP Index</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x02" base="Waypoint" coord="X">Prev WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x04" base="Waypoint" coord="Y">Prev WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x06" base="Waypoint" coord="Z">Prev WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x08" base="Waypoint">Next WP Index</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0A" base="Waypoint" coord="X">Next WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0C" base="Waypoint" coord="Y">Next WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0E" base="Waypoint" coord="Z">Next WP Z</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
     <SpawnCode gfxId="0xB4"/>
     <Image path="Bowling Ball.png"/>
   </Object>
@@ -2912,6 +2923,17 @@
     <SpawnCode gfxId="0xD2"/>
     <Image path="Snowman's Body.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x1AF" base="Object" subclass="Boolean">Checkpoint Gotten</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x00" base="Waypoint">Prev WP Index</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x02" base="Waypoint" coord="X">Prev WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x04" base="Waypoint" coord="Y">Prev WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x06" base="Waypoint" coord="Z">Prev WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x08" base="Waypoint">Next WP Index</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0A" base="Waypoint" coord="X">Next WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0C" base="Waypoint" coord="Y">Next WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0E" base="Waypoint" coord="Z">Next WP Z</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003D0C" name="Snowman's Head">
     <SpawnCode gfxId="0x37"/>
@@ -4157,6 +4179,17 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Star on Tail</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x153" base="Object" subclass="Boolean">Saw Mario</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x178" base="Object">Phase</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x00" base="Waypoint">Prev WP Index</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x02" base="Waypoint" coord="X">Prev WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x04" base="Waypoint" coord="Y">Prev WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x06" base="Waypoint" coord="Z">Prev WP Z</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x08" base="Waypoint">Next WP Index</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0A" base="Waypoint" coord="X">Next WP X</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0C" base="Waypoint" coord="Y">Next WP Y</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x0E" base="Waypoint" coord="Z">Next WP Z</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004F78" name="Unagi Hitbox">
     <SpawnCode gfxId="0x00"/>
