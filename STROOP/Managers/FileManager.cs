@@ -476,7 +476,7 @@ namespace STROOP.Managers
             short numStars = CalculateNumStars();
             Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.StarCountOffset);
             Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.StarDisplayOffset);
-            Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.CheckedStarCountOffset);
+            Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.PreviousStarCountOffset);
         }
 
         public ushort GetChecksum(uint? nullableFileAddress = null)

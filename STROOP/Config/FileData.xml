@@ -4,7 +4,7 @@
   
   <Data groupList="Basic" type="short" offset="0xAA" base="Mario" color="Yellow">Star Count</Data>
   <Data groupList="Basic" type="short" offset="0xF4" base="Mario" color="Yellow">Star Display</Data>
-  <Data groupList="Basic" type="short" offset="0xB8" base="Mario" color="Yellow">Checked Star Count</Data>
+  <Data groupList="Basic" type="short" offset="0xB8" base="Mario" color="Yellow">Previous Star Count</Data>
   <Data groupList="Basic" base="File" specialType="StarsInFile" color="Yellow">Stars in File</Data>
 
   <Data groupList="Basic" type="byte" offset="0x0C" base="File" mask="0x7F" color="LightBlue">BoB Stars</Data>
