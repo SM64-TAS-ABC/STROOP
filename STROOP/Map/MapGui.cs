@@ -35,6 +35,7 @@ namespace STROOP.Map
         public CheckBox checkBoxMapOptionsEnable3D;
         public CheckBox checkBoxMapOptionsDisable3DHitboxHackTris;
         public CheckBox checkBoxMapOptionsEnablePuView;
+        public CheckBox checkBoxMapOptionsReverseMapControls;
         public CheckBox checkBoxMapOptionsScaleIconSizes;
 
         // Options - Global Icon Size
@@ -45,8 +46,6 @@ namespace STROOP.Map
         // Options - Buttons
         public Button buttonMapOptionsAddNewTracker;
         public Button buttonMapOptionsClearAllTrackers;
-        public Button buttonMapOptionsTrackAllObjects;
-        public Button buttonMapOptionsTrackMarkedObjects;
 
         // Options - ComboBoxes
         public ComboBox comboBoxMapOptionsLevel;

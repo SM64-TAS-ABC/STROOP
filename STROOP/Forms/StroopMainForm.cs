@@ -264,6 +264,7 @@ namespace STROOP
                 checkBoxMapOptionsEnable3D = checkBoxMapOptionsEnable3D,
                 checkBoxMapOptionsDisable3DHitboxHackTris = checkBoxMapOptionsDisable3DHitboxHackTris,
                 checkBoxMapOptionsEnablePuView = checkBoxMapOptionsEnablePuView,
+                checkBoxMapOptionsReverseMapControls = checkBoxMapOptionsReverseMapControls,
                 checkBoxMapOptionsScaleIconSizes = checkBoxMapOptionsScaleIconSizes,
 
                 labelMapOptionsGlobalIconSize = labelMapOptionsGlobalIconSize,
@@ -272,8 +273,6 @@ namespace STROOP
 
                 buttonMapOptionsAddNewTracker = buttonMapOptionsAddNewTracker,
                 buttonMapOptionsClearAllTrackers = buttonMapOptionsClearAllTrackers,
-                buttonMapOptionsTrackAllObjects = buttonMapOptionsTrackAllObjects,
-                buttonMapOptionsTrackMarkedObjects = buttonMapOptionsTrackMarkedObjects,
 
                 comboBoxMapOptionsLevel = comboBoxMapOptionsLevel,
                 comboBoxMapOptionsBackground = comboBoxMapOptionsBackground,

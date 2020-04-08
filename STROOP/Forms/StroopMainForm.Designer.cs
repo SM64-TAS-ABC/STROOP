@@ -216,6 +216,7 @@ namespace STROOP
             this.tabPageHud = new System.Windows.Forms.TabPage();
             this.splitContainerHud = new STROOP.BetterSplitContainer();
             this.checkBoxFullHP = new System.Windows.Forms.CheckBox();
+            this.button99Coins = new System.Windows.Forms.Button();
             this.buttonGameOver = new System.Windows.Forms.Button();
             this.button100CoinStar = new System.Windows.Forms.Button();
             this.buttonStandardHud = new System.Windows.Forms.Button();
@@ -738,8 +739,6 @@ namespace STROOP
             this.labelMapOptionsGlobalIconSize = new System.Windows.Forms.Label();
             this.labelMapOptionsBackground = new System.Windows.Forms.Label();
             this.labelMapOptionsLevel = new System.Windows.Forms.Label();
-            this.buttonMapOptionsTrackMarkedObjects = new System.Windows.Forms.Button();
-            this.buttonMapOptionsTrackAllObjects = new System.Windows.Forms.Button();
             this.buttonMapOptionsClearAllTrackers = new System.Windows.Forms.Button();
             this.buttonMapOptionsAddNewTracker = new System.Windows.Forms.Button();
             this.checkBoxMapOptionsDisable3DHitboxHackTris = new System.Windows.Forms.CheckBox();
@@ -1606,7 +1605,7 @@ namespace STROOP
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.button99Coins = new System.Windows.Forms.Button();
+            this.checkBoxMapOptionsReverseMapControls = new System.Windows.Forms.CheckBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -4083,6 +4082,15 @@ namespace STROOP
             this.checkBoxFullHP.Text = "Full HP";
             this.checkBoxFullHP.UseVisualStyleBackColor = true;
             // 
+            // button99Coins
+            // 
+            this.button99Coins.Location = new System.Drawing.Point(3, 150);
+            this.button99Coins.Name = "button99Coins";
+            this.button99Coins.Size = new System.Drawing.Size(93, 24);
+            this.button99Coins.TabIndex = 6;
+            this.button99Coins.Text = "99 Coins";
+            this.button99Coins.UseVisualStyleBackColor = true;
+            // 
             // buttonGameOver
             // 
             this.buttonGameOver.Location = new System.Drawing.Point(3, 125);
@@ -5813,7 +5821,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 544F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 545F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9543,7 +9551,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(442, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(445, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -10608,13 +10616,12 @@ namespace STROOP
             this.tabPageMapOptions.Controls.Add(this.labelMapOptionsGlobalIconSize);
             this.tabPageMapOptions.Controls.Add(this.labelMapOptionsBackground);
             this.tabPageMapOptions.Controls.Add(this.labelMapOptionsLevel);
-            this.tabPageMapOptions.Controls.Add(this.buttonMapOptionsTrackMarkedObjects);
-            this.tabPageMapOptions.Controls.Add(this.buttonMapOptionsTrackAllObjects);
             this.tabPageMapOptions.Controls.Add(this.buttonMapOptionsClearAllTrackers);
             this.tabPageMapOptions.Controls.Add(this.buttonMapOptionsAddNewTracker);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsDisable3DHitboxHackTris);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsEnable3D);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsScaleIconSizes);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsReverseMapControls);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsEnablePuView);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackPoint);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackSelf);
@@ -10656,7 +10663,7 @@ namespace STROOP
             // 
             // textBoxMapOptionsGlobalIconSize
             // 
-            this.textBoxMapOptionsGlobalIconSize.Location = new System.Drawing.Point(228, 191);
+            this.textBoxMapOptionsGlobalIconSize.Location = new System.Drawing.Point(228, 173);
             this.textBoxMapOptionsGlobalIconSize.Name = "textBoxMapOptionsGlobalIconSize";
             this.textBoxMapOptionsGlobalIconSize.Size = new System.Drawing.Size(65, 20);
             this.textBoxMapOptionsGlobalIconSize.TabIndex = 43;
@@ -10666,7 +10673,7 @@ namespace STROOP
             // labelMapOptionsGlobalIconSize
             // 
             this.labelMapOptionsGlobalIconSize.AutoSize = true;
-            this.labelMapOptionsGlobalIconSize.Location = new System.Drawing.Point(143, 194);
+            this.labelMapOptionsGlobalIconSize.Location = new System.Drawing.Point(143, 176);
             this.labelMapOptionsGlobalIconSize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapOptionsGlobalIconSize.Name = "labelMapOptionsGlobalIconSize";
             this.labelMapOptionsGlobalIconSize.Size = new System.Drawing.Size(87, 13);
@@ -10691,29 +10698,9 @@ namespace STROOP
             this.labelMapOptionsLevel.TabIndex = 12;
             this.labelMapOptionsLevel.Text = "Level:";
             // 
-            // buttonMapOptionsTrackMarkedObjects
-            // 
-            this.buttonMapOptionsTrackMarkedObjects.Location = new System.Drawing.Point(148, 87);
-            this.buttonMapOptionsTrackMarkedObjects.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapOptionsTrackMarkedObjects.Name = "buttonMapOptionsTrackMarkedObjects";
-            this.buttonMapOptionsTrackMarkedObjects.Size = new System.Drawing.Size(135, 25);
-            this.buttonMapOptionsTrackMarkedObjects.TabIndex = 40;
-            this.buttonMapOptionsTrackMarkedObjects.Text = "Track Marked Objects";
-            this.buttonMapOptionsTrackMarkedObjects.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapOptionsTrackAllObjects
-            // 
-            this.buttonMapOptionsTrackAllObjects.Location = new System.Drawing.Point(148, 59);
-            this.buttonMapOptionsTrackAllObjects.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapOptionsTrackAllObjects.Name = "buttonMapOptionsTrackAllObjects";
-            this.buttonMapOptionsTrackAllObjects.Size = new System.Drawing.Size(135, 25);
-            this.buttonMapOptionsTrackAllObjects.TabIndex = 40;
-            this.buttonMapOptionsTrackAllObjects.Text = "Track All Objects";
-            this.buttonMapOptionsTrackAllObjects.UseVisualStyleBackColor = true;
-            // 
             // buttonMapOptionsClearAllTrackers
             // 
-            this.buttonMapOptionsClearAllTrackers.Location = new System.Drawing.Point(148, 31);
+            this.buttonMapOptionsClearAllTrackers.Location = new System.Drawing.Point(148, 38);
             this.buttonMapOptionsClearAllTrackers.Margin = new System.Windows.Forms.Padding(0);
             this.buttonMapOptionsClearAllTrackers.Name = "buttonMapOptionsClearAllTrackers";
             this.buttonMapOptionsClearAllTrackers.Size = new System.Drawing.Size(135, 25);
@@ -10723,7 +10710,7 @@ namespace STROOP
             // 
             // buttonMapOptionsAddNewTracker
             // 
-            this.buttonMapOptionsAddNewTracker.Location = new System.Drawing.Point(148, 3);
+            this.buttonMapOptionsAddNewTracker.Location = new System.Drawing.Point(148, 10);
             this.buttonMapOptionsAddNewTracker.Margin = new System.Windows.Forms.Padding(0);
             this.buttonMapOptionsAddNewTracker.Name = "buttonMapOptionsAddNewTracker";
             this.buttonMapOptionsAddNewTracker.Size = new System.Drawing.Size(135, 25);
@@ -10734,7 +10721,7 @@ namespace STROOP
             // checkBoxMapOptionsDisable3DHitboxHackTris
             // 
             this.checkBoxMapOptionsDisable3DHitboxHackTris.AutoSize = true;
-            this.checkBoxMapOptionsDisable3DHitboxHackTris.Location = new System.Drawing.Point(148, 133);
+            this.checkBoxMapOptionsDisable3DHitboxHackTris.Location = new System.Drawing.Point(148, 97);
             this.checkBoxMapOptionsDisable3DHitboxHackTris.Name = "checkBoxMapOptionsDisable3DHitboxHackTris";
             this.checkBoxMapOptionsDisable3DHitboxHackTris.Size = new System.Drawing.Size(160, 17);
             this.checkBoxMapOptionsDisable3DHitboxHackTris.TabIndex = 19;
@@ -10744,7 +10731,7 @@ namespace STROOP
             // checkBoxMapOptionsEnable3D
             // 
             this.checkBoxMapOptionsEnable3D.AutoSize = true;
-            this.checkBoxMapOptionsEnable3D.Location = new System.Drawing.Point(148, 115);
+            this.checkBoxMapOptionsEnable3D.Location = new System.Drawing.Point(148, 79);
             this.checkBoxMapOptionsEnable3D.Name = "checkBoxMapOptionsEnable3D";
             this.checkBoxMapOptionsEnable3D.Size = new System.Drawing.Size(76, 17);
             this.checkBoxMapOptionsEnable3D.TabIndex = 19;
@@ -10754,7 +10741,7 @@ namespace STROOP
             // checkBoxMapOptionsScaleIconSizes
             // 
             this.checkBoxMapOptionsScaleIconSizes.AutoSize = true;
-            this.checkBoxMapOptionsScaleIconSizes.Location = new System.Drawing.Point(148, 169);
+            this.checkBoxMapOptionsScaleIconSizes.Location = new System.Drawing.Point(148, 151);
             this.checkBoxMapOptionsScaleIconSizes.Name = "checkBoxMapOptionsScaleIconSizes";
             this.checkBoxMapOptionsScaleIconSizes.Size = new System.Drawing.Size(105, 17);
             this.checkBoxMapOptionsScaleIconSizes.TabIndex = 19;
@@ -10764,7 +10751,7 @@ namespace STROOP
             // checkBoxMapOptionsEnablePuView
             // 
             this.checkBoxMapOptionsEnablePuView.AutoSize = true;
-            this.checkBoxMapOptionsEnablePuView.Location = new System.Drawing.Point(148, 151);
+            this.checkBoxMapOptionsEnablePuView.Location = new System.Drawing.Point(148, 115);
             this.checkBoxMapOptionsEnablePuView.Name = "checkBoxMapOptionsEnablePuView";
             this.checkBoxMapOptionsEnablePuView.Size = new System.Drawing.Size(103, 17);
             this.checkBoxMapOptionsEnablePuView.TabIndex = 19;
@@ -10893,7 +10880,7 @@ namespace STROOP
             // 
             // trackBarMapOptionsGlobalIconSize
             // 
-            this.trackBarMapOptionsGlobalIconSize.Location = new System.Drawing.Point(174, 215);
+            this.trackBarMapOptionsGlobalIconSize.Location = new System.Drawing.Point(174, 197);
             this.trackBarMapOptionsGlobalIconSize.Margin = new System.Windows.Forms.Padding(0);
             this.trackBarMapOptionsGlobalIconSize.Maximum = 100;
             this.trackBarMapOptionsGlobalIconSize.Name = "trackBarMapOptionsGlobalIconSize";
@@ -12611,7 +12598,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 709;
+            this.splitContainerMemory.SplitterDistance = 712;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12652,7 +12639,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(709, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(712, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -12869,7 +12856,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(709, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(712, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -12898,7 +12885,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(608, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(611, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12911,7 +12898,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(197, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(194, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -14065,7 +14052,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(357, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(340, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -14097,7 +14084,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(351, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(334, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -14153,7 +14140,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(351, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(334, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -18760,7 +18747,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -19944,7 +19931,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(37, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(38, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -20861,14 +20848,15 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // button99Coins
+            // checkBoxMapOptionsReverseMapControls
             // 
-            this.button99Coins.Location = new System.Drawing.Point(3, 150);
-            this.button99Coins.Name = "button99Coins";
-            this.button99Coins.Size = new System.Drawing.Size(93, 24);
-            this.button99Coins.TabIndex = 6;
-            this.button99Coins.Text = "99 Coins";
-            this.button99Coins.UseVisualStyleBackColor = true;
+            this.checkBoxMapOptionsReverseMapControls.AutoSize = true;
+            this.checkBoxMapOptionsReverseMapControls.Location = new System.Drawing.Point(148, 133);
+            this.checkBoxMapOptionsReverseMapControls.Name = "checkBoxMapOptionsReverseMapControls";
+            this.checkBoxMapOptionsReverseMapControls.Size = new System.Drawing.Size(131, 17);
+            this.checkBoxMapOptionsReverseMapControls.TabIndex = 19;
+            this.checkBoxMapOptionsReverseMapControls.Text = "Reverse Map Controls";
+            this.checkBoxMapOptionsReverseMapControls.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -22855,7 +22843,6 @@ namespace STROOP
         private ComboBox comboBoxMapOptionsLevel;
         private Label labelMapOptionsBackground;
         private Label labelMapOptionsLevel;
-        private Button buttonMapOptionsTrackAllObjects;
         private Button buttonMapOptionsClearAllTrackers;
         private Button buttonMapOptionsAddNewTracker;
         private CheckBox checkBoxMapOptionsTrackCellGridlines;
@@ -22907,7 +22894,6 @@ namespace STROOP
         private Label labelMapDataMapName;
         private Label labelMapDataPuCoordinates;
         private MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
-        private Button buttonMapOptionsTrackMarkedObjects;
         private CheckBox checkBoxMapOptionsTrackCurrentUnit;
         private CheckBox checkBoxMapOptionsTrackUnitGridlines;
         private CheckBox checkBoxMapOptionsTrackCurrentCell;
@@ -23044,6 +23030,7 @@ namespace STROOP
         private Button buttonScriptExamples;
         private Button buttonScriptRunOnce;
         private Button button99Coins;
+        private CheckBox checkBoxMapOptionsReverseMapControls;
     }
 }
 
