@@ -68,6 +68,19 @@ namespace STROOP.Managers
             Config.MapGui.comboBoxMapOptionsBackground.DataSource = backgroundImageChoices;
 
             // Buttons on Options
+
+            ToolStripMenuItem itemAllObjects = new ToolStripMenuItem("Add Tracker for All Objects");
+            itemAllObjects.Click += (sender, e) =>
+            {
+                TrackMultipleObjects(ObjectUtilities.GetAllObjectAddresses());
+            };
+
+            ToolStripMenuItem itemMarkedObjects = new ToolStripMenuItem("Add Tracker for Marked Objects");
+            itemMarkedObjects.Click += (sender, e) =>
+            {
+                TrackMultipleObjects(Config.ObjectSlotsManager.MarkedSlotsAddresses);
+            };
+
             ToolStripMenuItem itemUnitPoints = new ToolStripMenuItem("Add Tracker for Custom Unit Points");
             itemUnitPoints.Click += (sender, e) =>
             {
@@ -208,6 +221,8 @@ namespace STROOP.Managers
             };
 
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip = new ContextMenuStrip();
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemAllObjects);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMarkedObjects);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemUnitPoints);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCirclePoints);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomFloorTris);
@@ -229,10 +244,6 @@ namespace STROOP.Managers
                 Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Show(Cursor.Position);
             Config.MapGui.buttonMapOptionsClearAllTrackers.Click += (sender, e) =>
                 Config.MapGui.flowLayoutPanelMapTrackers.ClearControls();
-            Config.MapGui.buttonMapOptionsTrackAllObjects.Click += (sender, e) =>
-                TrackMultipleObjects(ObjectUtilities.GetAllObjectAddresses());
-            Config.MapGui.buttonMapOptionsTrackMarkedObjects.Click += (sender, e) =>
-                TrackMultipleObjects(Config.ObjectSlotsManager.MarkedSlotsAddresses);
 
             // Buttons for Changing Scale
             Config.MapGui.buttonMapControllersScaleMinus.Click += (sender, e) =>
