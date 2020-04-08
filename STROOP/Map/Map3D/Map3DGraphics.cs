@@ -396,6 +396,8 @@ namespace STROOP.Map.Map3D
                 float scale = 20;
                 int pixelDiffX = e.X - _translateStartMouseX;
                 int pixelDiffY = e.Y - _translateStartMouseY;
+                pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
+                pixelDiffY = MapUtilities.MaybeReverse(pixelDiffY);
                 float unitDiffX = pixelDiffX * scale;
                 float unitDiffY = pixelDiffY * scale;
                 (float rotX, float rotY, float rotZ) =
@@ -414,6 +416,8 @@ namespace STROOP.Map.Map3D
                 float scale = 50;
                 int pixelDiffX = e.X - _rotateStartMouseX;
                 int pixelDiffY = e.Y - _rotateStartMouseY;
+                pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
+                pixelDiffY = MapUtilities.MaybeReverse(pixelDiffY);
                 float angleDiffX = pixelDiffX * scale;
                 float angleDiffY = pixelDiffY * scale;
 

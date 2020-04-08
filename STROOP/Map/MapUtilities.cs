@@ -303,5 +303,10 @@ namespace STROOP.Map
                 SpecialConfig.Map3DMode = Map3DCameraMode.CameraPosAndFocus;
             }
         }
+
+        public static int MaybeReverse(int value)
+        {
+            return Config.MapGui.checkBoxMapOptionsReverseMapControls.Checked ? -1 * value : value;
+        }
     }
 }

@@ -408,6 +408,8 @@ namespace STROOP.Map
             {
                 int pixelDiffX = e.X - _translateStartMouseX;
                 int pixelDiffY = e.Y - _translateStartMouseY;
+                pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
+                pixelDiffY = MapUtilities.MaybeReverse(pixelDiffY);
                 float unitDiffX = pixelDiffX / MapViewScaleValue;
                 float unitDiffY = pixelDiffY / MapViewScaleValue;
                 (float rotatedX, float rotatedY) = ((float, float))
@@ -421,7 +423,7 @@ namespace STROOP.Map
             if (_isRotating)
             {
                 float angleToMouse = (float)MoreMath.AngleTo_AngleUnits(
-                    _rotateStartMouseX, _rotateStartMouseY, e.X, e.Y) * -1 + 32768;
+                    _rotateStartMouseX, _rotateStartMouseY, e.X, e.Y) * MapUtilities.MaybeReverse(-1) + 32768;
                 float newAngle = _rotateStartAngle + angleToMouse;
                 SetCustomAngle(newAngle);
             }
