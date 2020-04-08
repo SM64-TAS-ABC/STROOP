@@ -264,7 +264,7 @@ namespace STROOP
                 checkBoxMapOptionsEnable3D = checkBoxMapOptionsEnable3D,
                 checkBoxMapOptionsDisable3DHitboxHackTris = checkBoxMapOptionsDisable3DHitboxHackTris,
                 checkBoxMapOptionsEnablePuView = checkBoxMapOptionsEnablePuView,
-                checkBoxMapOptionsReverseMapControls = checkBoxMapOptionsReverseMapControls,
+                checkBoxMapOptionsReverseDragging = checkBoxMapOptionsReverseDragging,
                 checkBoxMapOptionsScaleIconSizes = checkBoxMapOptionsScaleIconSizes,
 
                 labelMapOptionsGlobalIconSize = labelMapOptionsGlobalIconSize,
