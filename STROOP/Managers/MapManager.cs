@@ -111,7 +111,6 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-
             ToolStripMenuItem itemCustomWallTris = new ToolStripMenuItem("Add Tracker for Custom Wall Tris");
             itemCustomWallTris.Click += (sender, e) =>
             {
