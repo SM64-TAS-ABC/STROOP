@@ -466,7 +466,7 @@ namespace STROOP.Utilities
             return valueAction;
         }
 
-        private static (List<ToolStripMenuItem>, Action<T>) CreateCheckableItems<T>(
+        public static (List<ToolStripMenuItem>, Action<T>) CreateCheckableItems<T>(
             List<string> itemNames,
             List<T> itemValues,
             Action<T> setterAction,
