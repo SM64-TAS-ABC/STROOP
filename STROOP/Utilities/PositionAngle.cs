@@ -455,7 +455,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Point:
                     return "Point";
                 default:
-                    return "(no name)";
+                    return ToString();
             }
         }
 

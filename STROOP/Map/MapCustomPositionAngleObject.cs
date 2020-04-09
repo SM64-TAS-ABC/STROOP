@@ -36,7 +36,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Custom PositionAngle";
+            return _posAngle.GetMapName();
         }
 
         public override float GetY()
