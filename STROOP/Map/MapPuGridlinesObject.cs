@@ -80,21 +80,33 @@ namespace STROOP.Map
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-                        int xMin = ((((int)Config.MapGraphics.MapViewXMin) / 16384) - 1) * 16384 - 8192;
-                        int xMax = ((((int)Config.MapGraphics.MapViewXMax) / 16384) + 1) * 16384 + 8192;
-                        int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 16384) - 1) * 16384 - 8192;
-                        int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 16384) + 1) * 16384 + 8192;
+                        int xMin = ((((int)Config.MapGraphics.MapViewXMin) / 65536) - 1) * 65536;
+                        int xMax = ((((int)Config.MapGraphics.MapViewXMax) / 65536) + 1) * 65536;
+                        int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
+                        int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                        for (int x = xMin; x <= xMax; x += 16384)
+                        for (int x = xMin; x <= xMax; x += 65536)
                         {
-                            vertices.Add((x, marioY, zMin));
-                            vertices.Add((x, marioY, zMax));
-                        }
-                        for (int z = zMin; z <= zMax; z += 16384)
-                        {
-                            vertices.Add((xMin, marioY, z));
-                            vertices.Add((xMax, marioY, z));
+                            for (int z = zMin; z <= zMax; z += 65536)
+                            {
+                                float x1 = x - 8192;
+                                float x2 = x + 8192;
+                                float z1 = z - 8192;
+                                float z2 = z + 8192;
+
+                                vertices.Add((x1, marioY, z1));
+                                vertices.Add((x1, marioY, z2));
+
+                                vertices.Add((x2, marioY, z1));
+                                vertices.Add((x2, marioY, z2));
+
+                                vertices.Add((x1, marioY, z1));
+                                vertices.Add((x2, marioY, z1));
+
+                                vertices.Add((x1, marioY, z2));
+                                vertices.Add((x2, marioY, z2));
+                            }
                         }
                         return vertices;
                     }
