@@ -240,6 +240,7 @@ namespace STROOP.Utilities
 
         public static PositionAngle FromString(string stringValue)
         {
+            if (stringValue == null) return null;
             stringValue = stringValue.ToLower();
             List<string> parts = ParsingUtilities.ParseStringList(stringValue);
 
