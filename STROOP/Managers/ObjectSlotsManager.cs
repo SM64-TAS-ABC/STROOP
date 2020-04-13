@@ -29,7 +29,7 @@ namespace STROOP.Managers
         public enum SelectionMethodType { Clicked, Held, StoodOn, Interaction, Used, Floor, Wall, Ceiling, Closest };
         public enum ClickType { ObjectClick, MapClick, ModelClick, MemoryClick, CamHackClick, MarkClick };
 
-        public uint? HoveredObjectAdress;
+        public uint? HoveredObjectAddress;
 
         public List<ObjectSlot> ObjectSlots;
 

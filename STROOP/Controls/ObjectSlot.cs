@@ -92,7 +92,7 @@ namespace STROOP
             this.MouseEnter += (s, e) =>
             {
                 IsHovering = true;
-                _manager.HoveredObjectAdress = CurrentObject?.Address;
+                _manager.HoveredObjectAddress = CurrentObject?.Address;
                 _mouseEnteredState = MouseStateType.Over;
                 _mouseState = MouseStateType.Over;
                 UpdateColors();
@@ -100,7 +100,7 @@ namespace STROOP
             this.MouseLeave += (s, e) =>
             {
                 IsHovering = false;
-                _manager.HoveredObjectAdress = null;
+                _manager.HoveredObjectAddress = null;
                 _mouseEnteredState = MouseStateType.None;
                 _mouseState = MouseStateType.None;
                 UpdateColors();
@@ -560,7 +560,7 @@ namespace STROOP
                 _drawFloorOverlay = OverlayConfig.ShowOverlayFloorObject && address == DataModels.Mario.FloorTriangle?.AssociatedObject;
                 _drawCeilingOverlay = OverlayConfig.ShowOverlayCeilingObject && address == DataModels.Mario.CeilingTriangle?.AssociatedObject;
 
-                uint? hoveredAddress = Config.ObjectSlotsManager.HoveredObjectAdress;
+                uint? hoveredAddress = Config.ObjectSlotsManager.HoveredObjectAddress;
                 if (hoveredAddress.HasValue)
                 {
                     ObjectDataModel hoveredObject = new ObjectDataModel(hoveredAddress.Value);
