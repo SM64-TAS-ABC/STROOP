@@ -113,15 +113,14 @@ namespace STROOP.Managers
             bool isCtrlKeyHeld = KeyboardUtilities.IsCtrlHeld();
             bool isShiftKeyHeld = KeyboardUtilities.IsShiftHeld();
             bool isAltKeyHeld = KeyboardUtilities.IsAltHeld();
-            bool isHKeyHeld = Keyboard.IsKeyDown(Key.H);
 
-            DoSlotClickUsingInput(selectedSlot, isCtrlKeyHeld, isShiftKeyHeld, isAltKeyHeld, isHKeyHeld);
+            DoSlotClickUsingInput(selectedSlot, isCtrlKeyHeld, isShiftKeyHeld, isAltKeyHeld);
         }
 
         private void DoSlotClickUsingInput(
-            ObjectSlot selectedSlot, bool isCtrlKeyHeld, bool isShiftKeyHeld, bool isAltKeyHeld, bool isHKeyHeld)
+            ObjectSlot selectedSlot, bool isCtrlKeyHeld, bool isShiftKeyHeld, bool isAltKeyHeld)
         {
-            ClickType click = GetClickType(isAltKeyHeld, isHKeyHeld);
+            ClickType click = GetClickType(isAltKeyHeld);
             bool shouldToggle = ShouldToggle(isCtrlKeyHeld, isAltKeyHeld);
             bool shouldExtendRange = isShiftKeyHeld;
             TabPage tabDestination = GetTabDestination(isAltKeyHeld);
@@ -131,10 +130,10 @@ namespace STROOP.Managers
         public void SelectSlotByAddress(uint address)
         {
             ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.CurrentObject.Address == address);
-            if (slot != null) DoSlotClickUsingInput(slot, false, false, false, false);
+            if (slot != null) DoSlotClickUsingInput(slot, false, false, false);
         }
 
-        private ClickType GetClickType(bool isAltKeyHeld, bool isHKeyHeld)
+        private ClickType GetClickType(bool isAltKeyHeld)
         {
             if (isAltKeyHeld)
             {
