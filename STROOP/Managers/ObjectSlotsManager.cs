@@ -39,7 +39,7 @@ namespace STROOP.Managers
         public bool LabelsLocked = false;
 
         public readonly List<uint> SelectedSlotsAddresses = new List<uint>();
-        public readonly List<uint> SelectedOnMap3SlotsAddresses = new List<uint>();
+        public readonly List<uint> SelectedOnMapSlotsAddresses = new List<uint>();
         public readonly List<uint> MarkedSlotsAddresses = new List<uint>();
 
         public List<ObjectDataModel> SelectedObjects = new List<ObjectDataModel>();
@@ -216,7 +216,7 @@ namespace STROOP.Managers
                         selection = SelectedSlotsAddresses;
                         break;
                     case ClickType.Map3Click:
-                        selection = SelectedOnMap3SlotsAddresses;
+                        selection = SelectedOnMapSlotsAddresses;
                         break;
                     case ClickType.MarkClick:
                         selection = MarkedSlotsAddresses;

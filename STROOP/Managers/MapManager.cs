@@ -653,7 +653,7 @@ namespace STROOP.Managers
         private void UpdateBasedOnObjectsSelectedOnMap()
         {
             // Determine which obj slots have been checked/unchecked since the last update
-            List<int> currentObjIndexes = Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses
+            List<int> currentObjIndexes = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
                 .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
                 .FindAll(address => address.HasValue)
                 .ConvertAll(address => address.Value);
@@ -698,13 +698,13 @@ namespace STROOP.Managers
             Config.MapGui.checkBoxMapOptionsTrackPoint.Checked = MapSemaphoreManager.Point.IsUsed;
 
             // Update object slots when tracker is deleted
-            Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses
+            Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
                 .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
                 .FindAll(index => index.HasValue)
                 .ConvertAll(index => index.Value)
                 .FindAll(index => !MapSemaphoreManager.Objects[index].IsUsed)
                 .ConvertAll(index => ObjectUtilities.GetObjectAddress(index))
-                .ForEach(address => Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses.Remove(address));
+                .ForEach(address => Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses.Remove(address));
         }
 
         private void TrackMultipleObjects(List<uint> addresses)
@@ -719,7 +719,7 @@ namespace STROOP.Managers
             List<MapSemaphore> semaphores = indexes
                 .ConvertAll(index => MapSemaphoreManager.Objects[index]);
             semaphores.ForEach(semaphore => semaphore.IsUsed = true);
-            Config.ObjectSlotsManager.SelectedOnMap3SlotsAddresses.AddRange(addresses);
+            Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses.AddRange(addresses);
             _currentObjIndexes.AddRange(indexes);
             MapTracker tracker = new MapTracker(mapObjs, semaphores);
             Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
