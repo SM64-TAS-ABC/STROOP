@@ -573,6 +573,7 @@ namespace STROOP
             {
                 UpdateComboBoxes();
                 DataModels.Update();
+                FormManager.Update();
                 Config.ObjectSlotsManager.Update();
                 Config.ObjectManager.Update(tabControlMain.SelectedTab == tabPageObject);
                 Config.MarioManager.Update(tabControlMain.SelectedTab == tabPageMario);
@@ -611,7 +612,6 @@ namespace STROOP
                 Config.InjectionManager.Update();
                 Config.HackManager.Update();
                 WatchVariableLockManager.Update();
-                FormManager.Update();
                 TestUtilities.Update();
             }));
         }
