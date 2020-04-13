@@ -2222,6 +2222,70 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("SelfNormalDistAway",
+                ((uint triAddress) =>
+                {
+                    PositionAngle self = PositionAngle.Self;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double normalDistAway =
+                        self.X * triStruct.NormX +
+                        self.Y * triStruct.NormY +
+                        self.Z * triStruct.NormZ +
+                        triStruct.NormOffset;
+                    return normalDistAway;
+                },
+                (double distAway, uint triAddress) =>
+                {
+                    PositionAngle self = PositionAngle.Self;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+
+                    double missingDist = distAway -
+                        self.X * triStruct.NormX -
+                        self.Y * triStruct.NormY -
+                        self.Z * triStruct.NormZ -
+                        triStruct.NormOffset;
+
+                    double xDiff = missingDist * triStruct.NormX;
+                    double yDiff = missingDist * triStruct.NormY;
+                    double zDiff = missingDist * triStruct.NormZ;
+
+                    double newSelfX = self.X + xDiff;
+                    double newSelfY = self.Y + yDiff;
+                    double newSelfZ = self.Z + zDiff;
+
+                    return self.SetValues(x: newSelfX, y: newSelfY, z: newSelfZ);
+                }
+            ));
+
+            _dictionary.Add("SelfVerticalDistAway",
+                ((uint triAddress) =>
+                {
+                    PositionAngle selfPos = PositionAngle.Self;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double verticalDistAway =
+                        selfPos.Y + (selfPos.X * triStruct.NormX + selfPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
+                    return verticalDistAway;
+                },
+                (double distAbove, uint triAddress) =>
+                {
+                    PositionAngle selfPos = PositionAngle.Self;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double newSelfY = distAbove - (selfPos.X * triStruct.NormX + selfPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
+                    selfPos.SetY(newSelfY);
+                    return true;
+                }
+            ));
+
+            _dictionary.Add("SelfHeightOnTriangle",
+                ((uint triAddress) =>
+                {
+                    PositionAngle selfPos = PositionAngle.Self;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double heightOnTriangle = triStruct.GetHeightOnTriangle(selfPos.X, selfPos.Z);
+                    return heightOnTriangle;
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("MaxHSpeedUphill",
                 ((uint triAddress) =>
                 {
@@ -2540,6 +2604,114 @@ namespace STROOP.Structs
                     double newMarioZ = marioPos.Z + zDiff;
                     return marioPos.SetValues(x: newMarioX, z: newMarioZ);
                 }));
+
+            _dictionary.Add("SelfDistanceToLine12",
+                ((uint triAddress) =>
+                {
+                    PositionAngle selfPos = PositionAngle.Self;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
+                        selfPos.X, selfPos.Z,
+                        triStruct.X1, triStruct.Z1,
+                        triStruct.X2, triStruct.Z2,
+                        triStruct.X3, triStruct.Z3, 1, 2,
+                        new TriangleDataModel(triAddress).Classification);
+                    return signedDistToLine12;
+                },
+                (double dist, uint triAddress) =>
+                {
+                    PositionAngle selfPos = PositionAngle.Self;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
+                        selfPos.X, selfPos.Z,
+                        triStruct.X1, triStruct.Z1,
+                        triStruct.X2, triStruct.Z2,
+                        triStruct.X3, triStruct.Z3, 1, 2,
+                        new TriangleDataModel(triAddress).Classification);
+
+                    double missingDist = dist - signedDistToLine12;
+                    double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                    bool floorTri = MoreMath.IsPointLeftOfLine(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                    double inwardAngle = floorTri ? MoreMath.RotateAngleCCW(lineAngle, 16384) : MoreMath.RotateAngleCW(lineAngle, 16384);
+
+                    (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
+                    double newSelfX = selfPos.X + xDiff;
+                    double newSelfZ = selfPos.Z + zDiff;
+                    return selfPos.SetValues(x: newSelfX, z: newSelfZ);
+                }
+            ));
+
+            _dictionary.Add("SelfDistanceToLine23",
+                ((uint triAddress) =>
+                {
+                    PositionAngle selfPos = PositionAngle.Self;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
+                        selfPos.X, selfPos.Z,
+                        triStruct.X1, triStruct.Z1,
+                        triStruct.X2, triStruct.Z2,
+                        triStruct.X3, triStruct.Z3, 2, 3,
+                        new TriangleDataModel(triAddress).Classification);
+                    return signedDistToLine23;
+                },
+                (double dist, uint triAddress) =>
+                {
+                    PositionAngle selfPos = PositionAngle.Self;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
+                        selfPos.X, selfPos.Z,
+                        triStruct.X1, triStruct.Z1,
+                        triStruct.X2, triStruct.Z2,
+                        triStruct.X3, triStruct.Z3, 2, 3,
+                        new TriangleDataModel(triAddress).Classification);
+
+                    double missingDist = dist - signedDistToLine23;
+                    double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
+                    bool floorTri = MoreMath.IsPointLeftOfLine(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                    double inwardAngle = floorTri ? MoreMath.RotateAngleCCW(lineAngle, 16384) : MoreMath.RotateAngleCW(lineAngle, 16384);
+
+                    (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
+                    double newSelfX = selfPos.X + xDiff;
+                    double newSelfZ = selfPos.Z + zDiff;
+                    return selfPos.SetValues(x: newSelfX, z: newSelfZ);
+                }
+            ));
+
+            _dictionary.Add("SelfDistanceToLine31",
+                ((uint triAddress) =>
+                {
+                    PositionAngle selfPos = PositionAngle.Self;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
+                        selfPos.X, selfPos.Z,
+                        triStruct.X1, triStruct.Z1,
+                        triStruct.X2, triStruct.Z2,
+                        triStruct.X3, triStruct.Z3, 3, 1,
+                        new TriangleDataModel(triAddress).Classification);
+                    return signedDistToLine31;
+                },
+                (double dist, uint triAddress) =>
+                {
+                    PositionAngle selfPos = PositionAngle.Self;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
+                        selfPos.X, selfPos.Z,
+                        triStruct.X1, triStruct.Z1,
+                        triStruct.X2, triStruct.Z2,
+                        triStruct.X3, triStruct.Z3, 3, 1,
+                        new TriangleDataModel(triAddress).Classification);
+
+                    double missingDist = dist - signedDistToLine31;
+                    double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
+                    bool floorTri = MoreMath.IsPointLeftOfLine(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                    double inwardAngle = floorTri ? MoreMath.RotateAngleCCW(lineAngle, 16384) : MoreMath.RotateAngleCW(lineAngle, 16384);
+
+                    (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
+                    double newSelfX = selfPos.X + xDiff;
+                    double newSelfZ = selfPos.Z + zDiff;
+                    return selfPos.SetValues(x: newSelfX, z: newSelfZ);
+                }
+            ));
 
             _dictionary.Add("DeltaAngleLine12",
                 ((uint triAddress) =>
