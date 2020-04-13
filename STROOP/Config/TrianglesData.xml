@@ -156,4 +156,11 @@
   <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleLine31" subclass="Angle" display="short" color="LightBlue">DAngle Line31</Data>
   <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleLine13" subclass="Angle" display="short" color="LightBlue">DAngle Line13</Data>
 
+  <Data groupList="Self" base="Triangle" specialType="NormalDistAway" color="Orange">Self Normal Dist Away</Data>
+  <Data groupList="Self" base="Triangle" specialType="VerticalDistAway" color="Orange">Self Vertical Dist Away</Data>
+  <Data groupList="Self" base="Triangle" specialType="HeightOnTriangle" color="Orange">Self Height On Triangle</Data>
+  <Data groupList="Self" base="Triangle" specialType="DistanceToLine12" color="Orange">Self Dist to Line12</Data>
+  <Data groupList="Self" base="Triangle" specialType="DistanceToLine23" color="Orange">Self Dist to Line23</Data>
+  <Data groupList="Self" base="Triangle" specialType="DistanceToLine31" color="Orange">Self Dist to Line31</Data>
+
 </VarData>
