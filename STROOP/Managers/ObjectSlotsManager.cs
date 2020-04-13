@@ -27,7 +27,7 @@ namespace STROOP.Managers
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex };
         public enum SelectionMethodType { Clicked, Held, StoodOn, Interaction, Used, Floor, Wall, Ceiling, Closest };
-        public enum ClickType { ObjectClick, Map3Click, ModelClick, MemoryClick, CamHackClick, MarkClick };
+        public enum ClickType { ObjectClick, MapClick, ModelClick, MemoryClick, CamHackClick, MarkClick };
 
         public uint? HoveredObjectAdress;
 
@@ -147,7 +147,7 @@ namespace STROOP.Managers
                     case TabType.CamHack:
                         return ClickType.CamHackClick;
                     case TabType.Map:
-                        return ClickType.Map3Click;
+                        return ClickType.MapClick;
                     case TabType.Model:
                         return ClickType.ModelClick;
                     case TabType.Memory:
@@ -215,7 +215,7 @@ namespace STROOP.Managers
                     case ClickType.MemoryClick:
                         selection = SelectedSlotsAddresses;
                         break;
-                    case ClickType.Map3Click:
+                    case ClickType.MapClick:
                         selection = SelectedOnMapSlotsAddresses;
                         break;
                     case ClickType.MarkClick:
