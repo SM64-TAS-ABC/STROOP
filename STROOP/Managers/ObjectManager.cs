@@ -215,26 +215,65 @@ namespace STROOP.Managers
             goToHomeButton.Click += (sender, e) => ButtonUtilities.GotoObjectsHome(_objects);
             ControlUtilities.AddContextMenuStripFunctions(
                 goToHomeButton,
-                new List<string>() { "Goto Home", "Goto Home Laterally", "Goto Home X", "Goto Home Y", "Goto Home Z" },
-                new List<Action>() {
+                new List<string>()
+                {
+                    "Goto Home",
+                    "Goto Home Laterally",
+                    "Goto Home X",
+                    "Goto Home Y",
+                    "Goto Home Z",
+                    null,
+                    "Object Goto Home",
+                    "Object Goto Home Laterally",
+                    "Object Goto Home X",
+                    "Object Goto Home Y",
+                    "Object Goto Home Z",
+                },
+                new List<Action>()
+                {
                     () => ButtonUtilities.GotoObjectsHome(_objects, (true, true, true)),
                     () => ButtonUtilities.GotoObjectsHome(_objects, (true, false, true)),
                     () => ButtonUtilities.GotoObjectsHome(_objects, (true, false, false)),
                     () => ButtonUtilities.GotoObjectsHome(_objects, (false, true, false)),
                     () => ButtonUtilities.GotoObjectsHome(_objects, (false, false, true)),
+                    () => { },
+                    () => ButtonUtilities.ObjectGotoObjectsHome(_objects, (true, true, true)),
+                    () => ButtonUtilities.ObjectGotoObjectsHome(_objects, (true, false, true)),
+                    () => ButtonUtilities.ObjectGotoObjectsHome(_objects, (true, false, false)),
+                    () => ButtonUtilities.ObjectGotoObjectsHome(_objects, (false, true, false)),
+                    () => ButtonUtilities.ObjectGotoObjectsHome(_objects, (false, false, true)),
                 });
 
             var retrieveHomeButton = objPanel.Controls["buttonObjRetrieveHome"] as Button;
             retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_objects);
             ControlUtilities.AddContextMenuStripFunctions(
                 retrieveHomeButton,
-                new List<string>() { "Retrieve Home", "Retrieve Home Laterally", "Retrieve Home X", "Retrieve Home Y", "Retrieve Home Z" },
+                new List<string>()
+                {
+                    "Retrieve Home",
+                    "Retrieve Home Laterally",
+                    "Retrieve Home X",
+                    "Retrieve Home Y",
+                    "Retrieve Home Z",
+                    null,
+                    "Retrieve Home to Object",
+                    "Retrieve Home Laterally to Object",
+                    "Retrieve Home X to Object",
+                    "Retrieve Home Y to Object",
+                    "Retrieve Home Z to Object",
+                },
                 new List<Action>() {
                     () => ButtonUtilities.RetrieveObjectsHome(_objects, (true, true, true)),
                     () => ButtonUtilities.RetrieveObjectsHome(_objects, (true, false, true)),
                     () => ButtonUtilities.RetrieveObjectsHome(_objects, (true, false, false)),
                     () => ButtonUtilities.RetrieveObjectsHome(_objects, (false, true, false)),
                     () => ButtonUtilities.RetrieveObjectsHome(_objects, (false, false, true)),
+                    () => { },
+                    () => ButtonUtilities.RetrieveObjectsHomeToObject(_objects, (true, true, true)),
+                    () => ButtonUtilities.RetrieveObjectsHomeToObject(_objects, (true, false, true)),
+                    () => ButtonUtilities.RetrieveObjectsHomeToObject(_objects, (true, false, false)),
+                    () => ButtonUtilities.RetrieveObjectsHomeToObject(_objects, (false, true, false)),
+                    () => ButtonUtilities.RetrieveObjectsHomeToObject(_objects, (false, false, true)),
                 });
 
             _releaseButton = objPanel.Controls["buttonObjRelease"] as BinaryButton;

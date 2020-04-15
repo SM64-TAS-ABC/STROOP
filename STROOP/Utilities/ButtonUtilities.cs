@@ -287,8 +287,35 @@ namespace STROOP.Utilities
             return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, affects: affects);
         }
 
+        public static bool ObjectGotoObjectsHome(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
+        {
+            if (!objects.Any())
+                return false;
+
+            List<PositionAngle> objPoses = objects.ConvertAll(o => PositionAngle.Obj(o.Address));
+            List<PositionAngle> objHomes = objects.ConvertAll(o => PositionAngle.ObjHome(o.Address));
+
+            bool success = true;
+            for (int i = 0; i < objPoses.Count; i++)
+            {
+                PositionAngle objPos = objPoses[i];
+                PositionAngle objHome = objHomes[i];
+                success &= ChangeValues(
+                    new List<PositionAngle>() { objPos },
+                    (float)objHome.X,
+                    (float)objHome.Y,
+                    (float)objHome.Z,
+                    Change.SET,
+                    affects: affects);
+            }
+            return success;
+        }
+
         public static bool RetrieveObjectsHome(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
+            if (!objects.Any())
+                return false;
+
             List<PositionAngle> posAngles =
                 objects.ConvertAll(o => PositionAngle.ObjHome(o.Address));
 
@@ -299,6 +326,30 @@ namespace STROOP.Utilities
             HandleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
             return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, affects: affects);
+        }
+
+        public static bool RetrieveObjectsHomeToObject(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
+        {
+            if (!objects.Any())
+                return false;
+
+            List<PositionAngle> objPoses = objects.ConvertAll(o => PositionAngle.Obj(o.Address));
+            List<PositionAngle> objHomes = objects.ConvertAll(o => PositionAngle.ObjHome(o.Address));
+
+            bool success = true;
+            for (int i = 0; i < objPoses.Count; i++)
+            {
+                PositionAngle objPos = objPoses[i];
+                PositionAngle objHome = objHomes[i];
+                success &= ChangeValues(
+                    new List<PositionAngle>() { objHome },
+                    (float)objPos.X,
+                    (float)objPos.Y,
+                    (float)objPos.Z,
+                    Change.SET,
+                    affects: affects);
+            }
+            return success;
         }
 
         public static bool CloneObject(ObjectDataModel obj, bool updateAction = true)
