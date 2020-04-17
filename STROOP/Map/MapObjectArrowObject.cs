@@ -19,7 +19,10 @@ namespace STROOP.Map
         private readonly uint _yawOffset;
         private readonly int _numBytes;
 
+        private bool _useSpeedForArrowLength;
         private float _arrowHeadSideLength;
+
+        private ToolStripMenuItem _itemUseSpeedForArrowLength;
 
         public MapObjectArrowObject(uint objAddress, uint yawOffset, int numBytes)
             : base()
@@ -28,6 +31,7 @@ namespace STROOP.Map
             _yawOffset = yawOffset;
             _numBytes = numBytes;
 
+            _useSpeedForArrowLength = false;
             _arrowHeadSideLength = 100;
 
             Size = 300;
@@ -43,8 +47,11 @@ namespace STROOP.Map
             uint yaw = _numBytes == 2 ?
                 Config.Stream.GetUInt16(_objAddress + _yawOffset) :
                 Config.Stream.GetUInt32(_objAddress + _yawOffset);
+            float size = _useSpeedForArrowLength
+                ? Config.Stream.GetSingle(_objAddress + ObjectConfig.HSpeedOffset)
+                : Size;
             (float arrowHeadX, float arrowHeadZ) =
-                ((float, float))MoreMath.AddVectorToPoint(Size, yaw, x, z);
+                ((float, float))MoreMath.AddVectorToPoint(size, yaw, x, z);
 
             (float pointSide1X, float pointSide1Z) =
                 ((float, float))MoreMath.AddVectorToPoint(_arrowHeadSideLength, yaw + 32768 + 8192, arrowHeadX, arrowHeadZ);
@@ -79,6 +86,16 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
+                _itemUseSpeedForArrowLength = new ToolStripMenuItem("Use Speed For Arrow Length");
+                _itemUseSpeedForArrowLength.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        arrowChangeUseSpeedForLength: true,
+                        arrowNewUseSpeedForLength: !_useSpeedForArrowLength);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemUseSpeedForArrowLength.Checked = _useSpeedForArrowLength;
+
                 ToolStripMenuItem itemSetArrowHeadSideLength = new ToolStripMenuItem("Set Arrow Head Side Length");
                 itemSetArrowHeadSideLength.Click += (sender, e) =>
                 {
@@ -91,6 +108,7 @@ namespace STROOP.Map
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(_itemUseSpeedForArrowLength);
                 _contextMenuStrip.Items.Add(itemSetArrowHeadSideLength);
             }
 
@@ -100,6 +118,12 @@ namespace STROOP.Map
         public override void ApplySettings(MapObjectSettings settings)
         {
             base.ApplySettings(settings);
+
+            if (settings.ArrowChangeUseSpeedForLength)
+            {
+                _useSpeedForArrowLength = settings.ArrowNewUseSpeedForLength;
+                _itemUseSpeedForArrowLength.Checked = _useSpeedForArrowLength;
+            }
 
             if (settings.ArrowChangeHeadSideLength)
             {

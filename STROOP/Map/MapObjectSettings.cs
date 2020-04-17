@@ -25,6 +25,9 @@ namespace STROOP.Map
         public readonly bool WallChangeRelativeHeight;
         public readonly float? WallNewRelativeHeight;
 
+        public readonly bool ArrowChangeUseSpeedForLength;
+        public readonly bool ArrowNewUseSpeedForLength;
+
         public readonly bool ArrowChangeHeadSideLength;
         public readonly float ArrowNewHeadSideLength;
 
@@ -52,6 +55,9 @@ namespace STROOP.Map
             bool wallChangeRelativeHeight = false,
             float? wallNewRelativeHeight = null,
 
+            bool arrowChangeUseSpeedForLength = false,
+            bool arrowNewUseSpeedForLength = false,
+
             bool arrowChangeHeadSideLength = false,
             float arrowNewHeadSideLength = 0,
 
@@ -77,6 +83,9 @@ namespace STROOP.Map
 
             WallChangeRelativeHeight = wallChangeRelativeHeight;
             WallNewRelativeHeight = wallNewRelativeHeight;
+
+            ArrowChangeUseSpeedForLength = arrowChangeUseSpeedForLength;
+            ArrowNewUseSpeedForLength = arrowNewUseSpeedForLength;
 
             ArrowChangeHeadSideLength = arrowChangeHeadSideLength;
             ArrowNewHeadSideLength = arrowNewHeadSideLength;
