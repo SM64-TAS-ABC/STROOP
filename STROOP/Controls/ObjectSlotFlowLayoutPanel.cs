@@ -43,11 +43,30 @@ namespace STROOP.Controls
                 Config.ObjectSlotsManager.SelectedSlotsAddresses.Clear();
             };
 
+            ToolStripMenuItem itemFixHorizontalScroll = new ToolStripMenuItem("Fix Horizontal Scroll");
+            itemFixHorizontalScroll.Click += (sender, e) =>
+            {
+                List<Control> controls = new List<Control>();
+                foreach (Control control in Controls)
+                {
+                    controls.Add(control);
+                }
+                while (Controls.Count > 0)
+                {
+                    Controls.RemoveAt(0);
+                }
+                foreach (Control control in controls)
+                {
+                    Controls.Add(control);
+                }
+            };
+
             ContextMenuStrip = new ContextMenuStrip();
             ContextMenuStrip.Items.Add(itemSelectMarkedSlots);
             ContextMenuStrip.Items.Add(itemSelectCopiedAddress);
             ContextMenuStrip.Items.Add(itemClearMarkedSlots);
             ContextMenuStrip.Items.Add(itemClearSelectedSlots);
+            ContextMenuStrip.Items.Add(itemFixHorizontalScroll);
         }
     }
 }
