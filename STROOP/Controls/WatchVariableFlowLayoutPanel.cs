@@ -156,8 +156,15 @@ namespace STROOP.Controls
             _filteringDropDownItems = _allGroups.ConvertAll(varGroup => CreateFilterItem(varGroup));
             UpdateFilterItemCheckedStatuses();
             _filteringDropDownItems.ForEach(item => filterVariablesItem.DropDownItems.Add(item));
-            filterVariablesItem.DropDown.AutoClose = false;
-            filterVariablesItem.DropDown.MouseLeave += (sender, e) => { filterVariablesItem.DropDown.Close(); };
+            filterVariablesItem.DropDown.MouseEnter += (sender, e) =>
+            {
+                filterVariablesItem.DropDown.AutoClose = false;
+            };
+            filterVariablesItem.DropDown.MouseLeave += (sender, e) =>
+            {
+                filterVariablesItem.DropDown.AutoClose = true;
+                filterVariablesItem.DropDown.Close();
+            };
 
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(clearAllButHighlightedItem);
