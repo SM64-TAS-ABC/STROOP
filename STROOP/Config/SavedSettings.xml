@@ -30,8 +30,7 @@
     <Tab>Map</Tab>
     <Tab>Options</Tab>
     <Tab>Memory</Tab>
-    <Tab>Music</Tab>
-    <Tab>Script</Tab>
+    <Tab>Warp</Tab>
   </TabOrder>
   <RemovedTabs>
     <Tab>PU</Tab>
@@ -52,5 +51,7 @@
     <Tab>Sound</Tab>
     <Tab>Cells</Tab>
     <Tab>Testing</Tab>
+    <Tab>Music</Tab>
+    <Tab>Script</Tab>
   </RemovedTabs>
 </SavedSettings>
