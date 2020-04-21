@@ -4516,5 +4516,17 @@ namespace STROOP.Structs
             }
             return numWarpNodes;
         }
+
+        public static List<uint> GetWarpNodeAddresses()
+        {
+            List<uint> addresses = new List<uint>();
+            uint address = GetWarpNodesAddress();
+            while (address != 0)
+            {
+                addresses.Add(address);
+                address = Config.Stream.GetUInt32(address + 0x8);
+            }
+            return addresses;
+        }
     }
 }

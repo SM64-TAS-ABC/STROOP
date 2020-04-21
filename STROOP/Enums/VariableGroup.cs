@@ -18,6 +18,7 @@ namespace STROOP.Structs
         ObjectSpecific,
         Scheduler,
         Snow,
+        WarpNode,
 
         NoGroup,
         Custom,

@@ -15,9 +15,27 @@ namespace STROOP.Managers
 {
     public class WarpManager : DataManager
     {
+        private List<uint> _warpNodeAddresses;
+
+        private static readonly List<VariableGroup> ALL_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.WarpNode,
+            };
+
+        private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.WarpNode,
+            };
+
         public WarpManager(string varFilePath, TabPage tabPage, WatchVariableFlowLayoutPanel watchVariablePanel)
-            : base(varFilePath, watchVariablePanel)
+            : base(varFilePath, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
+            _warpNodeAddresses = new List<uint>();
+
             /*
             SplitContainer splitContainer = tabPage.Controls["splitContainerScript"] as SplitContainer;
             SplitContainer splitContainerLeft = splitContainer.Panel1.Controls["splitContainerScriptLeft"] as SplitContainer;
@@ -69,30 +87,105 @@ namespace STROOP.Managers
         public override void Update(bool updateView)
         {
             if (!updateView) return;
-            /*
-            short numSnowParticles = Config.Stream.GetInt16(SnowConfig.CounterAddress);
-            if (numSnowParticles > _numSnowParticles) // need to add controls
+
+            List<uint> warpNodeAddresses = WatchVariableSpecialUtilities.GetWarpNodeAddresses();
+            if (!Enumerable.SequenceEqual(warpNodeAddresses, _warpNodeAddresses))
             {
-                for (int i = _numSnowParticles; i < numSnowParticles; i++)
-                {
-                    List<WatchVariableControl> snowParticle = GetSnowParticleControls(i);
-                    _snowParticleControls.Add(snowParticle);
-                    _variablePanel.AddVariables(snowParticle);
-                }
-                _numSnowParticles = numSnowParticles;
+                RemoveVariableGroup(VariableGroup.WarpNode);
+                AddVariables(GetWarpNodeVariables(warpNodeAddresses));
+                _warpNodeAddresses = warpNodeAddresses;
             }
-            else if (numSnowParticles < _numSnowParticles) // need to remove controls
-            {
-                for (int i = _numSnowParticles - 1; i >= numSnowParticles; i--)
-                {
-                    List<WatchVariableControl> snowParticle = _snowParticleControls[i];
-                    _snowParticleControls.Remove(snowParticle);
-                    _variablePanel.RemoveVariables(snowParticle);
-                }
-                _numSnowParticles = numSnowParticles;
-            }
-            */
+
             base.Update(updateView);
+        }
+
+        private List<WatchVariableControl> GetWarpNodeVariables(List<uint> addresses)
+        {
+            List<WatchVariableControl> controls = new List<WatchVariableControl>();
+            for (int i = 0; i < addresses.Count; i++)
+            {
+                uint address = addresses[i];
+                controls.AddRange(GetWarpNodeVariables(address, i));
+            }
+            return controls;
+        }
+
+        private List<WatchVariableControl> GetWarpNodeVariables(uint address, int index)
+        {
+            List<string> names = new List<string>()
+            {
+                string.Format("Warp {0} ID", index),
+                string.Format("Warp {0} Dest Level", index),
+                string.Format("Warp {0} Dest Area", index),
+                string.Format("Warp {0} Dest Node", index),
+                string.Format("Warp {0} Object", index),
+                string.Format("Warp {0} Next", index),
+            };
+            List<uint> offsets = new List<uint>()
+            {
+                address + 0x0,
+                address + 0x1,
+                address + 0x2,
+                address + 0x3,
+                address + 0x4,
+                address + 0x8,
+            };
+            List<string> types = new List<string>()
+            {
+                "byte",
+                "byte",
+                "byte",
+                "byte",
+                "uint",
+                "uint",
+            };
+            List<WatchVariableSubclass> subclasses = new List<WatchVariableSubclass>()
+            {
+                WatchVariableSubclass.Number,
+                WatchVariableSubclass.Number,
+                WatchVariableSubclass.Number,
+                WatchVariableSubclass.Number,
+                WatchVariableSubclass.Object,
+                WatchVariableSubclass.Address,
+            };
+            List<bool?> useHexes = new List<bool?>()
+            {
+                true,
+                null,
+                null,
+                true,
+                null,
+                null,
+            };
+
+            List<WatchVariableControl> controls = new List<WatchVariableControl>();
+            for (int i = 0; i < 6; i++)
+            {
+                WatchVariable watchVar = new WatchVariable(
+                    memoryTypeName: types[i],
+                    specialType: null,
+                    baseAddressType: BaseAddressTypeEnum.Relative,
+                    offsetUS: null,
+                    offsetJP: null,
+                    offsetSH: null,
+                    offsetDefault: offsets[i],
+                    mask: null,
+                    shift: null);
+                WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
+                    name: names[i],
+                    watchVar: watchVar,
+                    subclass: subclasses[i],
+                    backgroundColor: null,
+                    displayType: null,
+                    roundingLimit: null,
+                    useHex: useHexes[i],
+                    invertBool: null,
+                    isYaw: null,
+                    coordinate: null,
+                    groupList: new List<VariableGroup>() { VariableGroup.WarpNode });
+                controls.Add(precursor.CreateWatchVariableControl());
+            }
+            return controls;
         }
     }
 }
