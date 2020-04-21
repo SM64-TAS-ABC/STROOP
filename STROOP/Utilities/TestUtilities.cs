@@ -23,7 +23,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            TestLllFloorGaps();
+            TestWarpNodes();
         }
 
         public static void TestSomethingElse()
@@ -32,6 +32,25 @@ namespace STROOP.Utilities
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
+
+        public static void TestWarpNodes()
+        {
+            List<string> lines = new List<string>();
+            uint address = WatchVariableSpecialUtilities.GetWarpNodesAddress();
+            while (address != 0)
+            {
+                byte id = Config.Stream.GetByte(address + 0x0);
+                byte destLevel = Config.Stream.GetByte(address + 0x1);
+                byte destArea = Config.Stream.GetByte(address + 0x2);
+                byte destNode = Config.Stream.GetByte(address + 0x3);
+                uint obj = Config.Stream.GetUInt32(address + 0x4);
+                uint next = Config.Stream.GetUInt32(address + 0x8);
+                string line = id + " " + destLevel + " " + destArea + " " + destNode + " " + HexUtilities.FormatValue(obj) + " " + HexUtilities.FormatValue(next);
+                lines.Add(line);
+                address = next;
+            }
+            InfoForm.ShowValue(string.Join("\r\n", lines));
+        }
 
         public static void TestLllFloorGaps()
         {

@@ -3641,6 +3641,15 @@ namespace STROOP.Structs
                         terrainType, Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
                 }));
 
+            // Warp vars
+
+            _dictionary.Add("WarpNodesAddress",
+                ((uint dummy) =>
+                {
+                    return GetWarpNodesAddress();
+                },
+                DEFAULT_SETTER));
+
             // Custom point
 
             _dictionary.Add("SelfPosType",
@@ -4479,6 +4488,14 @@ namespace STROOP.Structs
             int cellX = ((marioX + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
             int cellZ = ((marioZ + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
             return (cellX, cellZ);
+        }
+
+        public static uint GetWarpNodesAddress()
+        {
+            uint gAreas = Config.Stream.GetUInt32(0x8032DDC8);
+            short currentAreaIndex = Config.Stream.GetInt16(0x8033BACA);
+            uint warpNodesAddress = Config.Stream.GetUInt32(gAreas + (uint)currentAreaIndex * AreaConfig.AreaStructSize + 0x14);
+            return warpNodesAddress;
         }
     }
 }
