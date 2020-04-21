@@ -1609,6 +1609,13 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.tabPageWarp = new System.Windows.Forms.TabPage();
+            this.splitContainerWarp = new STROOP.BetterSplitContainer();
+            this.splitContainerWarpLeft = new STROOP.BetterSplitContainer();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.watchVariablePanelWarp = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -2082,6 +2089,14 @@ namespace STROOP
             this.splitContainerScriptLeft.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            this.tabPageWarp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerWarp)).BeginInit();
+            this.splitContainerWarp.Panel1.SuspendLayout();
+            this.splitContainerWarp.Panel2.SuspendLayout();
+            this.splitContainerWarp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerWarpLeft)).BeginInit();
+            this.splitContainerWarpLeft.Panel1.SuspendLayout();
+            this.splitContainerWarpLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -20885,12 +20900,116 @@ namespace STROOP
             // tabPageWarp
             // 
             this.tabPageWarp.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageWarp.Controls.Add(this.splitContainerWarp);
             this.tabPageWarp.Location = new System.Drawing.Point(4, 22);
+            this.tabPageWarp.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageWarp.Name = "tabPageWarp";
-            this.tabPageWarp.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageWarp.Size = new System.Drawing.Size(915, 463);
             this.tabPageWarp.TabIndex = 40;
             this.tabPageWarp.Text = "Warp";
+            // 
+            // splitContainerWarp
+            // 
+            this.splitContainerWarp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerWarp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerWarp.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerWarp.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerWarp.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerWarp.Name = "splitContainerWarp";
+            // 
+            // splitContainerWarp.Panel1
+            // 
+            this.splitContainerWarp.Panel1.AutoScroll = true;
+            this.splitContainerWarp.Panel1.Controls.Add(this.splitContainerWarpLeft);
+            this.splitContainerWarp.Panel1MinSize = 0;
+            // 
+            // splitContainerWarp.Panel2
+            // 
+            this.splitContainerWarp.Panel2.Controls.Add(this.watchVariablePanelWarp);
+            this.splitContainerWarp.Panel2MinSize = 0;
+            this.splitContainerWarp.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerWarp.SplitterDistance = 457;
+            this.splitContainerWarp.SplitterWidth = 1;
+            this.splitContainerWarp.TabIndex = 40;
+            // 
+            // splitContainerWarpLeft
+            // 
+            this.splitContainerWarpLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerWarpLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerWarpLeft.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerWarpLeft.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerWarpLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerWarpLeft.Name = "splitContainerWarpLeft";
+            this.splitContainerWarpLeft.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerWarpLeft.Panel1
+            // 
+            this.splitContainerWarpLeft.Panel1.AutoScroll = true;
+            this.splitContainerWarpLeft.Panel1.Controls.Add(this.checkBox1);
+            this.splitContainerWarpLeft.Panel1.Controls.Add(this.button1);
+            this.splitContainerWarpLeft.Panel1.Controls.Add(this.button2);
+            this.splitContainerWarpLeft.Panel1.Controls.Add(this.button3);
+            this.splitContainerWarpLeft.Panel1MinSize = 0;
+            this.splitContainerWarpLeft.Panel2MinSize = 0;
+            this.splitContainerWarpLeft.Size = new System.Drawing.Size(457, 463);
+            this.splitContainerWarpLeft.SplitterDistance = 46;
+            this.splitContainerWarpLeft.SplitterWidth = 1;
+            this.splitContainerWarpLeft.TabIndex = 38;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(7, 15);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(109, 17);
+            this.checkBox1.TabIndex = 37;
+            this.checkBox1.Text = "Run Continuously";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.Location = new System.Drawing.Point(339, 9);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 28);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Examples";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.Location = new System.Drawing.Point(121, 9);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(105, 28);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Run Once";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.Location = new System.Drawing.Point(230, 9);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(105, 28);
+            this.button3.TabIndex = 20;
+            this.button3.Text = "Instructions";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // watchVariablePanelWarp
+            // 
+            this.watchVariablePanelWarp.AutoScroll = true;
+            this.watchVariablePanelWarp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelWarp.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelWarp.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelWarp.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelWarp.Name = "watchVariablePanelWarp";
+            this.watchVariablePanelWarp.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelWarp.Size = new System.Drawing.Size(455, 461);
+            this.watchVariablePanelWarp.TabIndex = 7;
             // 
             // StroopMainForm
             // 
@@ -21499,6 +21618,15 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.tabPageWarp.ResumeLayout(false);
+            this.splitContainerWarp.Panel1.ResumeLayout(false);
+            this.splitContainerWarp.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerWarp)).EndInit();
+            this.splitContainerWarp.ResumeLayout(false);
+            this.splitContainerWarpLeft.Panel1.ResumeLayout(false);
+            this.splitContainerWarpLeft.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerWarpLeft)).EndInit();
+            this.splitContainerWarpLeft.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -23068,6 +23196,13 @@ namespace STROOP
         private Label labelMapDataYNorm;
         private Label labelMapDataId;
         private TabPage tabPageWarp;
+        private BetterSplitContainer splitContainerWarp;
+        private BetterSplitContainer splitContainerWarpLeft;
+        private CheckBox checkBox1;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private WatchVariableFlowLayoutPanel watchVariablePanelWarp;
     }
 }
 
