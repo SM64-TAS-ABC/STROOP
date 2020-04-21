@@ -69,7 +69,29 @@ namespace STROOP.Managers
         public override void Update(bool updateView)
         {
             if (!updateView) return;
-
+            /*
+            short numSnowParticles = Config.Stream.GetInt16(SnowConfig.CounterAddress);
+            if (numSnowParticles > _numSnowParticles) // need to add controls
+            {
+                for (int i = _numSnowParticles; i < numSnowParticles; i++)
+                {
+                    List<WatchVariableControl> snowParticle = GetSnowParticleControls(i);
+                    _snowParticleControls.Add(snowParticle);
+                    _variablePanel.AddVariables(snowParticle);
+                }
+                _numSnowParticles = numSnowParticles;
+            }
+            else if (numSnowParticles < _numSnowParticles) // need to remove controls
+            {
+                for (int i = _numSnowParticles - 1; i >= numSnowParticles; i--)
+                {
+                    List<WatchVariableControl> snowParticle = _snowParticleControls[i];
+                    _snowParticleControls.Remove(snowParticle);
+                    _variablePanel.RemoveVariables(snowParticle);
+                }
+                _numSnowParticles = numSnowParticles;
+            }
+            */
             base.Update(updateView);
         }
     }

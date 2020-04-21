@@ -3650,6 +3650,13 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("NumWarpNodes",
+                ((uint dummy) =>
+                {
+                    return GetNumWarpNodes();
+                },
+                DEFAULT_SETTER));
+
             // Custom point
 
             _dictionary.Add("SelfPosType",
@@ -4496,6 +4503,18 @@ namespace STROOP.Structs
             short currentAreaIndex = Config.Stream.GetInt16(0x8033BACA);
             uint warpNodesAddress = Config.Stream.GetUInt32(gAreas + (uint)currentAreaIndex * AreaConfig.AreaStructSize + 0x14);
             return warpNodesAddress;
+        }
+
+        public static int GetNumWarpNodes()
+        {
+            uint address = GetWarpNodesAddress();
+            int numWarpNodes = 0;
+            while (address != 0)
+            {
+                numWarpNodes++;
+                address = Config.Stream.GetUInt32(address + 0x8);
+            }
+            return numWarpNodes;
         }
     }
 }
