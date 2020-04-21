@@ -65,6 +65,7 @@ namespace STROOP.Structs.Configurations
         public static PaintingManager PaintingManager;
         public static MusicManager MusicManager;
         public static ScriptManager ScriptManager;
+        public static WarpManager WarpManager;
         public static SoundManager SoundManager;
         public static M64Manager M64Manager;
 

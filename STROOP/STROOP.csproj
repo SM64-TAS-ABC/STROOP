@@ -333,6 +333,7 @@
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Managers\CellsManager.cs" />
     <Compile Include="Managers\MusicManager.cs" />
+    <Compile Include="Managers\WarpManager.cs" />
     <Compile Include="Managers\ScriptManager.cs" />
     <Compile Include="Managers\SearchManager.cs" />
     <Compile Include="Managers\SoundManager.cs" />
@@ -846,6 +847,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\Map3DVars.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\WarpData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\WaterData.xml">

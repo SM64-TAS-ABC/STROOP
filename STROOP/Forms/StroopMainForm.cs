@@ -440,6 +440,7 @@ namespace STROOP
             Config.MusicManager = new MusicManager(@"Config/MusicData2.xml", watchVariablePanelMusic, tabPageMusic);
             Config.ScriptManager = new ScriptManager(@"Config/ScriptData.xml", tabPageScript, watchVariablePanelScript);
             Config.SoundManager = new SoundManager(tabPageSound);
+            Config.WarpManager = new WarpManager(@"Config/WarpData.xml", tabPageWarp, watchVariablePanelWarp);
 
             Config.DisassemblyManager = new DisassemblyManager(tabPageDisassembly);
             Config.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
@@ -608,6 +609,7 @@ namespace STROOP
                 Config.M64Manager.Update(tabControlMain.SelectedTab == tabPageM64);
                 Config.MapManager.Update(tabControlMain.SelectedTab == tabPageMap);
                 Config.ScriptManager.Update(tabControlMain.SelectedTab == tabPageScript);
+                Config.WarpManager.Update(tabControlMain.SelectedTab == tabPageWarp);
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();
                 Config.HackManager.Update();
