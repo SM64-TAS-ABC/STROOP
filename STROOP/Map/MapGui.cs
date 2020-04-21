@@ -118,8 +118,8 @@ namespace STROOP.Map
         public Label labelMapDataMapSubName;
         public Label labelMapDataPuCoordinateValues;
         public Label labelMapDataQpuCoordinateValues;
-        public Label labelMapDataId;
-        public Label labelMapDataYNorm;
+        public Label labelMapDataIdValues;
+        public Label labelMapDataYNormValue;
 
 
 

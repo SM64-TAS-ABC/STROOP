@@ -328,8 +328,8 @@ namespace STROOP
                 labelMapDataMapSubName = labelMapDataMapSubName,
                 labelMapDataPuCoordinateValues = labelMapDataPuCoordinateValues,
                 labelMapDataQpuCoordinateValues = labelMapDataQpuCoordinateValues,
-                labelMapDataId = labelMapDataId,
-                labelMapDataYNorm = labelMapDataYNorm,
+                labelMapDataIdValues = labelMapDataIdValues,
+                labelMapDataYNormValue = labelMapDataYNormValue,
 
                 watchVariablePanelMap3DVars = watchVariablePanelMap3DVars,
 

@@ -646,8 +646,8 @@ namespace STROOP.Managers
             Config.MapGui.labelMapDataMapSubName.Text = map.SubName ?? "";
             Config.MapGui.labelMapDataPuCoordinateValues.Text = string.Format("[{0}:{1}:{2}]", puX, puY, puZ);
             Config.MapGui.labelMapDataQpuCoordinateValues.Text = string.Format("[{0}:{1}:{2}]", qpuX, qpuY, qpuZ);
-            Config.MapGui.labelMapDataId.Text = string.Format("[{0}:{1}:{2}:{3}]", level, area, loadingPoint, missionLayout);
-            Config.MapGui.labelMapDataYNorm.Text = yNorm?.ToString() ?? "(none)";
+            Config.MapGui.labelMapDataIdValues.Text = string.Format("[{0}:{1}:{2}:{3}]", level, area, loadingPoint, missionLayout);
+            Config.MapGui.labelMapDataYNormValue.Text = yNorm?.ToString() ?? "(none)";
         }
 
         private void UpdateBasedOnObjectsSelectedOnMap()
