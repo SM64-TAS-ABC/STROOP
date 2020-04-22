@@ -23,12 +23,12 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            TestWarpNodes();
+            Config.WarpManager.AllocateMemory();
         }
 
         public static void TestSomethingElse()
         {
-            TestSomething21();
+            Config.WarpManager.AllocateMemory3();
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
