@@ -87,6 +87,14 @@ namespace STROOP.Controls
             ToolStripMenuItem fixVerticalScrollItem = new ToolStripMenuItem("Fix Vertical Scroll");
             fixVerticalScrollItem.Click += (sender, e) => FixVerticalScroll();
 
+            ToolStripMenuItem addCustomVariableItem = new ToolStripMenuItem("Add Custom Variable");
+            addCustomVariableItem.Click += (sender, e) =>
+            {
+                VariableCreationForm form = new VariableCreationForm();
+                form.Initialize(this);
+                form.Show();
+            };
+
             ToolStripMenuItem addDummyVariableItem = new ToolStripMenuItem("Add Dummy Variable");
             addDummyVariableItem.Click += (sender, e) =>
             {
@@ -169,6 +177,7 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(clearAllButHighlightedItem);
             ContextMenuStrip.Items.Add(fixVerticalScrollItem);
+            ContextMenuStrip.Items.Add(addCustomVariableItem);
             ContextMenuStrip.Items.Add(addDummyVariableItem);
             ContextMenuStrip.Items.Add(openSaveClearItem);
             ContextMenuStrip.Items.Add(doToAllVariablesItem);
