@@ -195,18 +195,19 @@ namespace STROOP.Managers
 
         private readonly List<string> _instructions = new List<string>()
         {
-            @"The Script Tab can be used to set variables in a custom way defined by you.",
-            @"Specifically, you write JavaScript code on the left, which can both read from and write to the variables on the right.",
-            @"So if you want to read from or write to a variable, you must first add it to this tab.",
+            @"The ""Hook Up Teleporters"" button can be used to enable teleporters in courses without any teleporters.",
+            @"To use it properly, follow these instructions:",
             @"",
-            @"Within your JavaScript code, there are 2 implicit objects that you have access to.",
-            @"The first of these is INPUT, which can be used to read from the variables.",
-            @"For example, to get the value for Mario’s X position, just write INPUT[""Mario X""].",
-            @"The second of these is OUTPUT, which can be used to write to the variables.",
-            @"For example, to write a value v to Mario’s X position, just write OUTPUT[""Mario X""] = v.",
+            @"First, go to a course with working teleporters, like BoB.",
+            @"Select 2 teleporters that link to each other.",
+            @"Right click on one of the slots, and click ""Copy Object"" with control held.",
+            @"Go to the course where you would like to place the new teleporters.",
+            @"Select the first 2 vacant slots.",
+            @"Right click on one of the slots, and click ""Paste Object"" with control held.",
+            @"Press the left arrow button (on the top right) with control held until the teleporters are at the end of the dark blue slots.",
+            @"Click the ""Hook Up Teleporters"" button.",
             @"",
-            @"You can run your script continuously (runs once per STROOP frame) or just once.",
-            @"To see some examples of scripts you can write, click on the Examples button.",
+            @"Now the teleporters should link to each other, and you can place them wherever you want.",
         };
     }
 }
