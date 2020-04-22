@@ -23,7 +23,8 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            Config.WarpManager.HookUpTeleporters();
+            Form form = new VariableCreationForm();
+            form.Show();
         }
 
         public static void TestSomethingElse()
