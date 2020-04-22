@@ -32,7 +32,7 @@
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxBaseLabel = new System.Windows.Forms.TextBox();
             this.textBoxTypeLabel = new System.Windows.Forms.TextBox();
-            this.buttonOk = new System.Windows.Forms.Button();
+            this.buttonAddVariable = new System.Windows.Forms.Button();
             this.textBoxNameValue = new System.Windows.Forms.TextBox();
             this.textBoxNameLabel = new System.Windows.Forms.TextBox();
             this.textBoxOffsetLabel = new System.Windows.Forms.TextBox();
@@ -51,7 +51,7 @@
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelMain.Controls.Add(this.comboBoxBaseValue, 1, 2);
-            this.tableLayoutPanelMain.Controls.Add(this.buttonOk, 0, 4);
+            this.tableLayoutPanelMain.Controls.Add(this.buttonAddVariable, 0, 4);
             this.tableLayoutPanelMain.Controls.Add(this.textBoxNameLabel, 0, 0);
             this.tableLayoutPanelMain.Controls.Add(this.textBoxNameValue, 1, 0);
             this.tableLayoutPanelMain.Controls.Add(this.textBoxTypeLabel, 0, 1);
@@ -94,16 +94,16 @@
             this.textBoxTypeLabel.Text = "Type:";
             this.textBoxTypeLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // buttonOk
+            // buttonAddVariable
             // 
-            this.tableLayoutPanelMain.SetColumnSpan(this.buttonOk, 2);
-            this.buttonOk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonOk.Location = new System.Drawing.Point(3, 115);
-            this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(271, 25);
-            this.buttonOk.TabIndex = 0;
-            this.buttonOk.Text = "OK";
-            this.buttonOk.UseVisualStyleBackColor = true;
+            this.tableLayoutPanelMain.SetColumnSpan(this.buttonAddVariable, 2);
+            this.buttonAddVariable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAddVariable.Location = new System.Drawing.Point(3, 115);
+            this.buttonAddVariable.Name = "buttonAddVariable";
+            this.buttonAddVariable.Size = new System.Drawing.Size(271, 25);
+            this.buttonAddVariable.TabIndex = 0;
+            this.buttonAddVariable.Text = "Add Variable";
+            this.buttonAddVariable.UseVisualStyleBackColor = true;
             // 
             // textBoxNameValue
             // 
@@ -195,7 +195,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
-        private System.Windows.Forms.Button buttonOk;
+        private System.Windows.Forms.Button buttonAddVariable;
         private System.Windows.Forms.TextBox textBoxTypeLabel;
         private System.Windows.Forms.TextBox textBoxBaseLabel;
         private System.Windows.Forms.ComboBox comboBoxBaseValue;
