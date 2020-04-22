@@ -23,7 +23,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            Config.WarpManager.AllocateMemory();
+            Config.WarpManager.HookUpTeleporters();
         }
 
         public static void TestSomethingElse()

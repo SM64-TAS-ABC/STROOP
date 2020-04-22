@@ -36,52 +36,18 @@ namespace STROOP.Managers
         {
             _warpNodeAddresses = new List<uint>();
 
-            /*
-            SplitContainer splitContainer = tabPage.Controls["splitContainerScript"] as SplitContainer;
-            SplitContainer splitContainerLeft = splitContainer.Panel1.Controls["splitContainerScriptLeft"] as SplitContainer;
-            _checkBoxScriptRunContinuously = splitContainerLeft.Panel1.Controls["checkBoxScriptRunContinuously"] as CheckBox;
-            _buttonScriptRunOnce = splitContainerLeft.Panel1.Controls["buttonScriptRunOnce"] as Button;
-            _buttonScriptInstructions = splitContainerLeft.Panel1.Controls["buttonScriptInstructions"] as Button;
-            _buttonScriptExamples = splitContainerLeft.Panel1.Controls["buttonScriptExamples"] as Button;
-            _richTextBoxScript = splitContainerLeft.Panel2.Controls["richTextBoxScript"] as RichTextBoxEx;
-
-            _script = new TokenScript();
-
-            _checkBoxScriptRunContinuously.Click += (sender, e) =>
-            {
-                if (_checkBoxScriptRunContinuously.Checked)
-                {
-                    _script.SetScript(_richTextBoxScript.Text);
-                }
-                _script.SetIsEnabled(_checkBoxScriptRunContinuously.Checked);
-                _richTextBoxScript.ReadOnly = _checkBoxScriptRunContinuously.Checked;
-            };
-
-            _buttonScriptRunOnce.Click += (sender, e) =>
-            {
-                _script.SetScript(_richTextBoxScript.Text);
-                _script.Run();
-            };
-
-            _buttonScriptInstructions.Click += (sender, e) =>
+            SplitContainer splitContainerWarp = tabPage.Controls["splitContainerWarp"] as SplitContainer;
+            SplitContainer splitContainerWarpLeft = splitContainerWarp.Panel1.Controls["splitContainerWarpLeft"] as SplitContainer;
+            Button buttonWarpInstructions = splitContainerWarpLeft.Panel1.Controls["buttonWarpInstructions"] as Button;
+            Button buttonWarpHookUpTeleporters = splitContainerWarpLeft.Panel2.Controls["buttonWarpHookUpTeleporters"] as Button;
+            buttonWarpInstructions.Click += (sender, e) =>
             {
                 InfoForm.ShowValue(
                     string.Join("\r\n", _instructions),
                     "Instructions",
                     "Instructions");
             };
-
-            _buttonScriptExamples.ContextMenuStrip = new ContextMenuStrip();
-            for (int i = 0; i < _exampleNames.Count; i++)
-            {
-                ToolStripMenuItem item = new ToolStripMenuItem(_exampleNames[i]);
-                string text = string.Join("\r\n", _exampleLines[i]);
-                item.Click += (sender, e) => _richTextBoxScript.Text = text;
-                _buttonScriptExamples.ContextMenuStrip.Items.Add(item);
-            }
-            _buttonScriptExamples.Click += (sender, e) =>
-                _buttonScriptExamples.ContextMenuStrip.Show(Cursor.Position);
-                */
+            buttonWarpHookUpTeleporters.Click += (sender, e) => HookUpTeleporters();
         }
 
         public override void Update(bool updateView)
@@ -188,7 +154,7 @@ namespace STROOP.Managers
             return controls;
         }
 
-        public void AllocateMemory()
+        public void HookUpTeleporters()
         {
             uint mainSegmentEnd = 0x80367460;
             uint engineSegmentStart = 0x80378800;
@@ -226,5 +192,21 @@ namespace STROOP.Managers
 
             Config.Stream.SetValue(warpNode1Address, lastWarpNodeAddress + 0x8);
         }
+
+        private readonly List<string> _instructions = new List<string>()
+        {
+            @"The Script Tab can be used to set variables in a custom way defined by you.",
+            @"Specifically, you write JavaScript code on the left, which can both read from and write to the variables on the right.",
+            @"So if you want to read from or write to a variable, you must first add it to this tab.",
+            @"",
+            @"Within your JavaScript code, there are 2 implicit objects that you have access to.",
+            @"The first of these is INPUT, which can be used to read from the variables.",
+            @"For example, to get the value for Mario’s X position, just write INPUT[""Mario X""].",
+            @"The second of these is OUTPUT, which can be used to write to the variables.",
+            @"For example, to write a value v to Mario’s X position, just write OUTPUT[""Mario X""] = v.",
+            @"",
+            @"You can run your script continuously (runs once per STROOP frame) or just once.",
+            @"To see some examples of scripts you can write, click on the Examples button.",
+        };
     }
 }
