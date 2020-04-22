@@ -87,8 +87,8 @@ namespace STROOP.Controls
             ToolStripMenuItem fixVerticalScrollItem = new ToolStripMenuItem("Fix Vertical Scroll");
             fixVerticalScrollItem.Click += (sender, e) => FixVerticalScroll();
 
-            ToolStripMenuItem addCustomVariableItem = new ToolStripMenuItem("Add Custom Variable");
-            addCustomVariableItem.Click += (sender, e) =>
+            ToolStripMenuItem addDummyVariableItem = new ToolStripMenuItem("Add Dummy Variable");
+            addDummyVariableItem.Click += (sender, e) =>
             {
                 int numEntries = 1;
                 if (KeyboardUtilities.IsCtrlHeld())
@@ -103,7 +103,7 @@ namespace STROOP.Controls
                 List<WatchVariableControl> controls = new List<WatchVariableControl>();
                 for (int i = 0; i < numEntries; i++)
                 {
-                    string specialType = WatchVariableSpecialUtilities.AddCustomEntry();
+                    string specialType = WatchVariableSpecialUtilities.AddDummyEntry();
                     WatchVariable watchVariable =
                         new WatchVariable(
                             memoryTypeName: null,
@@ -169,7 +169,7 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(clearAllButHighlightedItem);
             ContextMenuStrip.Items.Add(fixVerticalScrollItem);
-            ContextMenuStrip.Items.Add(addCustomVariableItem);
+            ContextMenuStrip.Items.Add(addDummyVariableItem);
             ContextMenuStrip.Items.Add(openSaveClearItem);
             ContextMenuStrip.Items.Add(doToAllVariablesItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);

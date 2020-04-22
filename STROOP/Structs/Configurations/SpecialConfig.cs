@@ -208,6 +208,6 @@ namespace STROOP.Structs.Configurations
 
         // Custom Vars
 
-        public static readonly List<double> CustomValues = new List<double>();
+        public static readonly List<double> DummyValues = new List<double>();
     }
 }
