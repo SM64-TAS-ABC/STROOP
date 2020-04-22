@@ -185,7 +185,7 @@
             this.MinimizeBox = false;
             this.Name = "VariableCreationForm";
             this.ShowIcon = false;
-            this.Text = "Variable Info";
+            this.Text = "Variable Creation";
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tableLayoutPanelMain.PerformLayout();
             this.ResumeLayout(false);

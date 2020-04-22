@@ -18,7 +18,8 @@ namespace STROOP.Forms
         public VariableCreationForm()
         {
             InitializeComponent();
-
+            comboBoxTypeValue.DataSource = TypeUtilities.InGameTypeList;
+            comboBoxBaseValue.DataSource = Enum.GetValues(typeof(BaseAddressTypeEnum));
             buttonOk.Click += (sender, e) => Close();
         }
     }
