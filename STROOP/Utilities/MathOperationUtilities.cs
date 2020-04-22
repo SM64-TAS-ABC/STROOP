@@ -22,6 +22,8 @@ namespace STROOP.Utilities
                     return useX ? "×" : "*";
                 case MathOperation.Divide:
                     return useSlash ? "/" : "÷";
+                case MathOperation.Modulo:
+                    return "%";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -39,6 +41,8 @@ namespace STROOP.Utilities
                     return "Multiplication";
                 case MathOperation.Divide:
                     return "Division";
+                case MathOperation.Modulo:
+                    return "Modulo";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -56,6 +60,8 @@ namespace STROOP.Utilities
                     return "Product";
                 case MathOperation.Divide:
                     return "Quotient";
+                case MathOperation.Modulo:
+                    return "Modulo";
                 default:
                     throw new ArgumentOutOfRangeException();
             }

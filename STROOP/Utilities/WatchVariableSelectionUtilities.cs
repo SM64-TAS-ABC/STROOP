@@ -362,6 +362,7 @@ namespace STROOP.Structs
                     "Subtraction",
                     "Multiplication",
                     "Division",
+                    "Modulo",
                 },
                 new List<Action>()
                 {
@@ -369,6 +370,7 @@ namespace STROOP.Structs
                     () => createVariable(MathOperation.Subtract),
                     () => createVariable(MathOperation.Multiply),
                     () => createVariable(MathOperation.Divide),
+                    () => createVariable(MathOperation.Modulo),
                 });
 
             ToolStripMenuItem itemSetCascadingValues = new ToolStripMenuItem("Set Cascading Values");

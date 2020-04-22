@@ -141,7 +141,18 @@ namespace STROOP.Structs
                             }
                         }));
                     break;
-                
+
+                case MathOperation.Modulo:
+                    _dictionary.Add(specialType,
+                        ((uint dummy) =>
+                        {
+                            double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
+                            double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
+                            return value1 % value2;
+                        },
+                        DEFAULT_SETTER));
+                    break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }

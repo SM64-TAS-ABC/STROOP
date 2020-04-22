@@ -15,5 +15,6 @@ namespace STROOP.Structs
         Subtract,
         Multiply,
         Divide,
+        Modulo,
     };
 }
