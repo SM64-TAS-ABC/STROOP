@@ -190,61 +190,41 @@ namespace STROOP.Managers
 
         public void AllocateMemory()
         {
-            uint start = 0x80300000;
-            uint end = 0x80400000;
-            for (uint address = start; address < end; address += 4)
-            {
-                AllocateMemory2(address);
-            }
-        }
+            uint mainSegmentEnd = 0x80367460;
+            uint engineSegmentStart = 0x80378800;
 
-        public void AllocateMemory2(uint address)
-        {
-            uint sLevelPoolPointer = address;
-            uint sLevelPool = Config.Stream.GetUInt32(sLevelPoolPointer);
-            int size = 0xC;
+            uint lastWarpNodeAddress = WatchVariableSpecialUtilities.GetWarpNodeAddresses().LastOrDefault();
+            if (lastWarpNodeAddress == 0) return;
 
-            int totalSpace = Config.Stream.GetInt32(sLevelPool + 0x0);
-            int usedSpace = Config.Stream.GetInt32(sLevelPool + 0x4);
-            uint startPtr = Config.Stream.GetUInt32(sLevelPool + 0x8);
-            uint freePtr = Config.Stream.GetUInt32(sLevelPool + 0xC);
+            List<uint> objAddresses = Config.ObjectSlotsManager.SelectedObjects.ConvertAll(obj => obj.Address);
+            if (objAddresses.Count < 2) return;
 
-            if (totalSpace >= usedSpace &&
-                HexUtilities.FormatValue(startPtr, 8).StartsWith("0x80") &&
-                HexUtilities.FormatValue(freePtr, 8).StartsWith("0x80") &&
-                totalSpace != 0 &&
-                usedSpace != 0 &&
-                totalSpace % 4 == 0 &&
-                usedSpace % 4 == 0 &&
-                totalSpace > 0 &&
-                usedSpace > 0 &&
-                (double)totalSpace <= (double)usedSpace * 10000)
-            {
-                Config.Print(
-                    HexUtilities.FormatValue(address) + "\t" +
-                    HexUtilities.FormatValue(totalSpace) + "\t" +
-                    HexUtilities.FormatValue(usedSpace) + "\t" +
-                    HexUtilities.FormatValue(startPtr) + "\t" +
-                    HexUtilities.FormatValue(freePtr));
-            }
-        }
+            uint teleporter1Address = objAddresses[0];
+            uint teleporter2Address = objAddresses[1];
+            short teleporter1Id = Config.Stream.GetInt16(teleporter1Address + 0x188);
+            short teleporter2Id = Config.Stream.GetInt16(teleporter2Address + 0x188);
 
-        public void AllocateMemory3()
-        {
-            uint sLevelPoolPointer = 0x8038B8A0;
-            uint sLevelPool = Config.Stream.GetUInt32(sLevelPoolPointer);
-            int size = 0xC;
+            uint warpNode1Address = mainSegmentEnd;
+            uint warpNode2Address = mainSegmentEnd + 0xC;
 
-            int totalSpace = Config.Stream.GetInt32(sLevelPool + 0x0);
-            int usedSpace = Config.Stream.GetInt32(sLevelPool + 0x4);
-            uint startPtr = Config.Stream.GetUInt32(sLevelPool + 0x8);
-            uint freePtr = Config.Stream.GetUInt32(sLevelPool + 0xC);
+            byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);
+            byte area = Config.Stream.GetByte(MiscConfig.AreaAddress);
 
-            InfoForm.ShowValue(
-                HexUtilities.FormatValue(totalSpace) + " " +
-                HexUtilities.FormatValue(usedSpace) + " " +
-                HexUtilities.FormatValue(startPtr) + " " +
-                HexUtilities.FormatValue(freePtr));
+            Config.Stream.SetValue((byte)teleporter1Id, warpNode1Address + 0x0);
+            Config.Stream.SetValue(level, warpNode1Address + 0x1);
+            Config.Stream.SetValue(area, warpNode1Address + 0x2);
+            Config.Stream.SetValue((byte)teleporter2Id, warpNode1Address + 0x3);
+            Config.Stream.SetValue(teleporter1Address, warpNode1Address + 0x4);
+            Config.Stream.SetValue(warpNode2Address, warpNode1Address + 0x8);
+
+            Config.Stream.SetValue((byte)teleporter2Id, warpNode2Address + 0x0);
+            Config.Stream.SetValue(level, warpNode2Address + 0x1);
+            Config.Stream.SetValue(area, warpNode2Address + 0x2);
+            Config.Stream.SetValue((byte)teleporter1Id, warpNode2Address + 0x3);
+            Config.Stream.SetValue(teleporter2Address, warpNode2Address + 0x4);
+            Config.Stream.SetValue(0x00000000U, warpNode2Address + 0x8);
+
+            Config.Stream.SetValue(warpNode1Address, lastWarpNodeAddress + 0x8);
         }
     }
 }

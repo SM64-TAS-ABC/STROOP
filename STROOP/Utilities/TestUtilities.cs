@@ -28,7 +28,7 @@ namespace STROOP.Utilities
 
         public static void TestSomethingElse()
         {
-            Config.WarpManager.AllocateMemory3();
+            //Config.WarpManager.AllocateMemory3();
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
