@@ -206,7 +206,7 @@ namespace STROOP.Structs.Configurations
         public static float Map3DFollowingYaw = 0;
         public static float Map3DFOV = 0;
 
-        // Custom Vars
+        // Dummy Vars
 
         public static readonly List<double> DummyValues = new List<double>();
     }
