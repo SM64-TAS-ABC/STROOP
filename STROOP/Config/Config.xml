@@ -14,7 +14,7 @@
     <Emulator name="Project64 Debugger 2.4.0.9999" processName="Project64d" ramStart="0x20000000" endianness="little"/>
     <Emulator name="Project64" processName="Project64" ramStart="0x4BAF0000" endianness="little"/>
     <Emulator name="Dolphin" processName="Dolphin" ramStart="0xe6a180" endianness="big" special="dolphin"/>
-    <Emulator name="Mupen64Plus" processName="mupen64plus" ramStart="0x008FF142‬" endianness="little"/>
+    <Emulator name="Mupen64Plus" processName="mupen64plus" ramStart="0x008FF142" endianness="little"/>
   </Emulators>
 
   <!-- US, JP, or SH -->
