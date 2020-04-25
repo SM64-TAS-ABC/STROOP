@@ -412,7 +412,7 @@
   <Object behaviorScriptAddress="0x1300075C" name="Teleporter">
     <SpawnCode gfxId="0x00"/>
     <Image path="Teleport.png"/>
-    <Data groupList="ObjectSpecific" type="short" offset="0x188" base="Object">ID</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x188" base="Object" useHex="true">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000780" name="Warp">
     <Image path="Warp.png"/>

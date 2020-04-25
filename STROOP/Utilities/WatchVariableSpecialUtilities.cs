@@ -160,12 +160,9 @@ namespace STROOP.Structs
             return specialType;
         }
 
-        private static int _numDummyEntries = 0;
-
         public static string AddDummyEntry()
         {
-            int index = _numDummyEntries;
-            _numDummyEntries++;
+            int index = SpecialConfig.DummyValues.Count;
             SpecialConfig.DummyValues.Add(0);
             string specialType = "Dummy" + index;
 
@@ -182,11 +179,6 @@ namespace STROOP.Structs
             ));
 
             return specialType;
-        }
-
-        public static List<string> AddCustomEntries(int numEntries)
-        {
-            return Enumerable.Range(0, numEntries).ToList().ConvertAll(num => AddDummyEntry());
         }
 
         public static string AddSchedulerEntry(int index)
