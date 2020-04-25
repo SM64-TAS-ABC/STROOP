@@ -1805,5 +1805,26 @@ namespace STROOP.Structs
             }
             Config.Print("DONE");
         }
+
+        public static void TestBobomb()
+        {
+            BobombState bobomb = new BobombState(
+                x: -1900,
+                y: 0,
+                z: 3450,
+                xSpeed: 0,
+                ySpeed: 0,
+                zSpeed: 0,
+                hSpeed: 0,
+                yaw: 0,
+                homeX: -1900,
+                homeY: 0,
+                homeZ: 3450);
+            for (int i = 0; i < 1000; i++)
+            {
+                Config.Print("i={0} bobomb={1}", i, bobomb);
+                bobomb.bobomb_act_patrol();
+            }
+        }
     }
 }

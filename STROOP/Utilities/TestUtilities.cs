@@ -23,8 +23,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            Form form = new VariableCreationForm();
-            form.Show();
+            CalculatorMain.TestBobomb();
         }
 
         public static void TestSomethingElse()
