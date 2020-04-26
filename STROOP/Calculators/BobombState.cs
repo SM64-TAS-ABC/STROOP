@@ -181,11 +181,13 @@ namespace STROOP.Structs
         public override string ToString()
         {
             return string.Format(
-                "pos=({0},{1},{2}) speed=({3},{4},{5}) hSpeed={6} yaw={7} home=({8},{9},{10})",
+                "[{13}] pos=({0},{1},{2}) speed=({3},{4},{5}) hSpeed={6} yaw={7} home=({8},{9},{10}) distFromHome={11} angleFromHome={12}",
                 (double)X, (double)Y, (double)Z,
                 (double)XSpeed, (double)YSpeed, (double)ZSpeed,
                 (double)HSpeed, Yaw,
-                (double)HomeX, (double)HomeY, (double)HomeZ);
+                (double)HomeX, (double)HomeY, (double)HomeZ,
+                MoreMath.GetDistanceBetween(HomeX, HomeZ, X, Z),
+                MoreMath.AngleTo_AngleUnitsRounded(HomeX, HomeZ, X, Z), Timer);
         }
     }
 }

@@ -1827,20 +1827,56 @@ namespace STROOP.Structs
             }
         }
 
+        public static void TestBobomb3()
+        {
+            //// x=-1900 z=3450 yaw=23040 lastChangeTime=7069 mins=3 bestMins=3
+            //BobombState bobomb = new BobombState(
+            //    x: -1900,
+            //    y: 0,
+            //    z: 3450,
+            //    xSpeed: 0,
+            //    ySpeed: 0,
+            //    zSpeed: 0,
+            //    hSpeed: 0,
+            //    yaw: 9216,
+            //    homeX: -1900,
+            //    homeY: 0,
+            //    homeZ: 3450);
+            //for (int i = 0; i < 10000; i++)
+            //{
+            //    Config.Print("{0}: {1}", i, bobomb);
+            //    bobomb.bobomb_act_patrol();
+            //}
+
+            BobombState bobomb2 = new BobombState(
+                x: -1900,
+                y: 0,
+                z: 3450,
+                xSpeed: 0,
+                ySpeed: 0,
+                zSpeed: 0,
+                hSpeed: 0,
+                yaw: 9216,
+                homeX: -1900,
+                homeY: 0,
+                homeZ: 3450);
+            int lastChangeTime = GetLastAngleChangeTime(bobomb2, 10000);
+            Config.Print("lastChangeTime=" + lastChangeTime);
+        }
+
         public static void TestBobomb2()
         {
             List<string> superlatives = new List<string>();
             int bestMins = 0;
 
-            for (int xDiff = 0; xDiff < 100; xDiff++)
+            for (int xDiff = 0; xDiff < 100; xDiff += 20)
             {
-                for (int zDiff = 0; zDiff < 100; zDiff++)
+                for (int zDiff = 0; zDiff < 100; zDiff += 20)
                 {
-                    for (int aDiff = 0; aDiff < 65536; aDiff += 8192)
+                    for (int yaw = 0; yaw < 65536; yaw += 512)
                     {
                         float x = -1900 + xDiff;
                         float z = 3450 + zDiff;
-                        ushort yaw = MoreMath.NormalizeAngleUshort(0 + aDiff);
                         BobombState bobomb = new BobombState(
                             x: x,
                             y: 0,
@@ -1849,10 +1885,10 @@ namespace STROOP.Structs
                             ySpeed: 0,
                             zSpeed: 0,
                             hSpeed: 0,
-                            yaw: yaw,
-                            homeX: -1900,
+                            yaw: (ushort)yaw,
+                            homeX: x,
                             homeY: 0,
-                            homeZ: 3450);
+                            homeZ: z);
                         int lastChangeTime = GetLastAngleChangeTime(bobomb, 10000);
                         int mins = lastChangeTime / 30 / 60;
 
@@ -1882,17 +1918,24 @@ namespace STROOP.Structs
         {
             List<ushort> previousAngles = new List<ushort>();
             int lastAngleChangeTime = 0;
+            int lastTimer = 0;
             for (int i = 0; i < numIterations; i++)
             {
                 ushort angle = GetAngleToFarPoint(bobomb);
-                bool alreadyHaveIt = previousAngles.Any(prevAngle => Math.Abs(angle - prevAngle) < 1000);
+                bool alreadyHaveIt = previousAngles.Any(prevAngle => MoreMath.GetAngleDistance(angle, prevAngle) < 5000);
+                //Config.Print(
+                //    "Does {0} contain anything close to {1}? {2}",
+                //    previousAngles.Count == 0 ? "{}" : "{" + string.Join(",", previousAngles) + "}",
+                //    angle,
+                //    alreadyHaveIt);
                 if (!alreadyHaveIt)
                 {
                     previousAngles.Add(angle);
                     lastAngleChangeTime = i;
+                    lastTimer = bobomb.Timer;
                 }
             }
-            return lastAngleChangeTime;
+            return lastTimer;
         }
 
         public static ushort GetAngleToFarPoint(BobombState bobomb)
@@ -1901,6 +1944,7 @@ namespace STROOP.Structs
             while (true)
             {
                 bobomb.bobomb_act_patrol();
+                //Config.Print("bobomb = " + bobomb);
                 double dist = MoreMath.GetDistanceBetween(bobomb.HomeX, bobomb.HomeZ, bobomb.X, bobomb.Z);
                 dists.Add((bobomb.X, bobomb.Y, bobomb.Z, dist));
                 if (dists.Count >= 4) dists.RemoveAt(0);
@@ -1909,7 +1953,7 @@ namespace STROOP.Structs
                     double dist1 = dists[0].dist;
                     double dist2 = dists[1].dist;
                     double dist3 = dists[2].dist;
-                    if (dist2 > dist1 && dist2 > dist3)
+                    if (dist2 > dist1 && dist2 > dist3 && dist2 > 200)
                     {
                         return MoreMath.AngleTo_AngleUnitsRounded(
                             bobomb.HomeX, bobomb.HomeZ, dists[1].x, dists[1].z);
