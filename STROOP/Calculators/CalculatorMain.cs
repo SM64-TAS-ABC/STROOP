@@ -1826,5 +1826,96 @@ namespace STROOP.Structs
                 bobomb.bobomb_act_patrol();
             }
         }
+
+        public static void TestBobomb2()
+        {
+            List<string> superlatives = new List<string>();
+            int bestMins = 0;
+
+            for (int xDiff = 0; xDiff < 100; xDiff++)
+            {
+                for (int zDiff = 0; zDiff < 100; zDiff++)
+                {
+                    for (int aDiff = 0; aDiff < 65536; aDiff += 8192)
+                    {
+                        float x = -1900 + xDiff;
+                        float z = 3450 + zDiff;
+                        ushort yaw = MoreMath.NormalizeAngleUshort(0 + aDiff);
+                        BobombState bobomb = new BobombState(
+                            x: x,
+                            y: 0,
+                            z: z,
+                            xSpeed: 0,
+                            ySpeed: 0,
+                            zSpeed: 0,
+                            hSpeed: 0,
+                            yaw: yaw,
+                            homeX: -1900,
+                            homeY: 0,
+                            homeZ: 3450);
+                        int lastChangeTime = GetLastAngleChangeTime(bobomb, 10000);
+                        int mins = lastChangeTime / 30 / 60;
+
+                        if (mins > bestMins)
+                        {
+                            bestMins = mins;
+                        }
+
+                        string output = string.Format(
+                            "x={0} z={1} yaw={2} lastChangeTime={3} mins={4} bestMins={5}",
+                            x, z, yaw, lastChangeTime, mins, bestMins);
+                        Config.Print(output);
+                        if (mins > 10)
+                        {
+                            superlatives.Add(output);
+                        }
+                    }
+                }
+            }
+
+            Config.Print("SUPERLATIVES START");
+            superlatives.ForEach(output => Config.Print(output));
+            Config.Print("SUPERLATIVES END");
+        }
+
+        public static int GetLastAngleChangeTime(BobombState bobomb, int numIterations)
+        {
+            List<ushort> previousAngles = new List<ushort>();
+            int lastAngleChangeTime = 0;
+            for (int i = 0; i < numIterations; i++)
+            {
+                ushort angle = GetAngleToFarPoint(bobomb);
+                bool alreadyHaveIt = previousAngles.Any(prevAngle => Math.Abs(angle - prevAngle) < 1000);
+                if (!alreadyHaveIt)
+                {
+                    previousAngles.Add(angle);
+                    lastAngleChangeTime = i;
+                }
+            }
+            return lastAngleChangeTime;
+        }
+
+        public static ushort GetAngleToFarPoint(BobombState bobomb)
+        {
+            List<(float x, float y, float z, double dist)> dists = new List<(float x, float y, float z, double dist)>();
+            while (true)
+            {
+                bobomb.bobomb_act_patrol();
+                double dist = MoreMath.GetDistanceBetween(bobomb.HomeX, bobomb.HomeZ, bobomb.X, bobomb.Z);
+                dists.Add((bobomb.X, bobomb.Y, bobomb.Z, dist));
+                if (dists.Count >= 4) dists.RemoveAt(0);
+                if (dists.Count == 3)
+                {
+                    double dist1 = dists[0].dist;
+                    double dist2 = dists[1].dist;
+                    double dist3 = dists[2].dist;
+                    if (dist2 > dist1 && dist2 > dist3)
+                    {
+                        return MoreMath.AngleTo_AngleUnitsRounded(
+                            bobomb.HomeX, bobomb.HomeZ, dists[1].x, dists[1].z);
+                    }
+                }
+            }
+        }
     }
 }

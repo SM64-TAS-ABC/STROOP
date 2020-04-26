@@ -25,6 +25,8 @@ namespace STROOP.Structs
         public float HomeY;
         public float HomeZ;
 
+        public int Timer;
+
         public BobombState(
             float x,
             float y,
@@ -49,6 +51,8 @@ namespace STROOP.Structs
             HomeX = homeX;
             HomeY = homeY;
             HomeZ = homeZ;
+
+            Timer = 0;
         }
 
         public void bobomb_act_patrol()
@@ -56,6 +60,7 @@ namespace STROOP.Structs
             HSpeed = 5.0f;
             object_step();
             obj_return_home_if_safe();
+            Timer++;
         }
 
         public void object_step()
