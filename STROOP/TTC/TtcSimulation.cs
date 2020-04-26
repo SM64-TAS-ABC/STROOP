@@ -913,12 +913,9 @@ namespace STROOP.Ttc
             }
 
             List<string> outputLines = new List<string>();
-            int counter = 0;
             foreach (int frame in dictionary.Keys)
             {
                 List<int> pendulumState = dictionary[frame];
-                if (counter % 100 == 0) outputLines.Add(string.Format("{0}\t{1}", frame, string.Join("\t", pendulumState)));
-                counter++;
             }
             InfoForm.ShowValue(string.Join("\r\n", outputLines));
         }
