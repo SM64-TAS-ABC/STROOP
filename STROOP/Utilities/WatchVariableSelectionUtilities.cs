@@ -494,8 +494,17 @@ namespace STROOP.Structs
                     () => SelectionForm.ShowDataManagerSelectionForm(getVars(), AddToTabTypeEnum.GroupedByVariable),
                 });
 
-            ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
-            itemAddToCustomTab.Click += (sender, e) => WatchVariableControl.AddVarsToTab(getVars(), Config.CustomManager);
+            ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab...");
+            ControlUtilities.AddDropDownItems(
+                itemAddToCustomTab,
+                new List<string>() { "Regular", "Fixed", "Grouped by Base Address", "Grouped by Variable" },
+                new List<Action>()
+                {
+                    () => WatchVariableControl.AddVarsToTab(getVars(), Config.CustomManager, AddToTabTypeEnum.Regular),
+                    () => WatchVariableControl.AddVarsToTab(getVars(), Config.CustomManager, AddToTabTypeEnum.Fixed),
+                    () => WatchVariableControl.AddVarsToTab(getVars(), Config.CustomManager, AddToTabTypeEnum.GroupedByBaseAddress),
+                    () => WatchVariableControl.AddVarsToTab(getVars(), Config.CustomManager, AddToTabTypeEnum.GroupedByVariable),
+                });
 
             return new List<ToolStripItem>()
             {
