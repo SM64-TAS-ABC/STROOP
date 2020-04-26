@@ -418,6 +418,14 @@ namespace STROOP.Ttc
             }
             Config.Print("END FindMovingBarManipulation");
         }
+
+        public static void TestPendulumMovement()
+        {
+            ushort rngValue = 0;
+            int startingFrame = 0;
+            TtcSimulation simulation = new TtcSimulation(rngValue, startingFrame);
+            simulation.OutputPendulumData();
+        }
     }
 
 }

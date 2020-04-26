@@ -1,4 +1,5 @@
-﻿using STROOP.Models;
+﻿using STROOP.Forms;
+using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
@@ -878,5 +879,48 @@ namespace STROOP.Ttc
             }
         }
 
+        public void OutputPendulumData()
+        {
+            Dictionary<int, List<int>> dictionary = new Dictionary<int, List<int>>();
+            List<int> lastPendulumState = new List<int>() { 0, 0, 0, 0 };
+            dictionary.Add(0, lastPendulumState);
+
+            List<TtcPendulum> pendulums = new List<TtcPendulum>()
+            {
+                (TtcPendulum)_rngObjects[8],
+                (TtcPendulum)_rngObjects[9],
+                (TtcPendulum)_rngObjects[10],
+                (TtcPendulum)_rngObjects[11],
+            };
+
+            for (int i = 0; true; i++)
+            {
+                _currentFrame++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(_currentFrame);
+                    rngObject.Update();
+                }
+
+                List<int?> pendulumStateNullable = pendulums.ConvertAll(p => p.GetSwingIndex());
+                if (pendulumStateNullable.Any(index => !index.HasValue)) break;
+                List<int> pendulumState = pendulumStateNullable.ConvertAll(index => index.Value);
+                if (!Enumerable.SequenceEqual(lastPendulumState, pendulumState))
+                {
+                    dictionary.Add(_currentFrame, pendulumState);
+                    lastPendulumState = pendulumState;
+                }
+            }
+
+            List<string> outputLines = new List<string>();
+            int counter = 0;
+            foreach (int frame in dictionary.Keys)
+            {
+                List<int> pendulumState = dictionary[frame];
+                if (counter % 100 == 0) outputLines.Add(string.Format("{0}\t{1}", frame, string.Join("\t", pendulumState)));
+                counter++;
+            }
+            InfoForm.ShowValue(string.Join("\r\n", outputLines));
+        }
     }
 }

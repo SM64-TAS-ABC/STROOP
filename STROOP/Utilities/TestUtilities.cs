@@ -23,7 +23,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            CalculatorMain.TestBobomb2();
+            TtcMain.TestPendulumMovement();
         }
 
         public static void TestSomethingElse()
