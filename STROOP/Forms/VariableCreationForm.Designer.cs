@@ -30,15 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VariableCreationForm));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
-            this.textBoxBaseLabel = new System.Windows.Forms.TextBox();
-            this.textBoxTypeLabel = new System.Windows.Forms.TextBox();
+            this.comboBoxBaseValue = new System.Windows.Forms.ComboBox();
             this.buttonAddVariable = new System.Windows.Forms.Button();
-            this.textBoxNameValue = new System.Windows.Forms.TextBox();
             this.textBoxNameLabel = new System.Windows.Forms.TextBox();
+            this.textBoxNameValue = new System.Windows.Forms.TextBox();
+            this.textBoxTypeLabel = new System.Windows.Forms.TextBox();
+            this.textBoxBaseLabel = new System.Windows.Forms.TextBox();
             this.textBoxOffsetLabel = new System.Windows.Forms.TextBox();
             this.textBoxOffsetValue = new System.Windows.Forms.TextBox();
             this.comboBoxTypeValue = new System.Windows.Forms.ComboBox();
-            this.comboBoxBaseValue = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,17 +70,50 @@
             this.tableLayoutPanelMain.Size = new System.Drawing.Size(277, 143);
             this.tableLayoutPanelMain.TabIndex = 0;
             // 
-            // textBoxBaseLabel
+            // comboBoxBaseValue
             // 
-            this.textBoxBaseLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.comboBoxBaseValue.BackColor = System.Drawing.Color.White;
+            this.comboBoxBaseValue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxBaseValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBaseValue.FormattingEnabled = true;
+            this.comboBoxBaseValue.Location = new System.Drawing.Point(53, 59);
+            this.comboBoxBaseValue.Name = "comboBoxBaseValue";
+            this.comboBoxBaseValue.Size = new System.Drawing.Size(221, 21);
+            this.comboBoxBaseValue.TabIndex = 17;
+            // 
+            // buttonAddVariable
+            // 
+            this.tableLayoutPanelMain.SetColumnSpan(this.buttonAddVariable, 2);
+            this.buttonAddVariable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAddVariable.Location = new System.Drawing.Point(3, 115);
+            this.buttonAddVariable.Name = "buttonAddVariable";
+            this.buttonAddVariable.Size = new System.Drawing.Size(271, 25);
+            this.buttonAddVariable.TabIndex = 0;
+            this.buttonAddVariable.Text = "Add Variable";
+            this.buttonAddVariable.UseVisualStyleBackColor = true;
+            // 
+            // textBoxNameLabel
+            // 
+            this.textBoxNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBaseLabel.Location = new System.Drawing.Point(3, 59);
-            this.textBoxBaseLabel.Name = "textBoxBaseLabel";
-            this.textBoxBaseLabel.ReadOnly = true;
-            this.textBoxBaseLabel.Size = new System.Drawing.Size(44, 20);
-            this.textBoxBaseLabel.TabIndex = 15;
-            this.textBoxBaseLabel.Text = "Base:";
-            this.textBoxBaseLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxNameLabel.Location = new System.Drawing.Point(3, 3);
+            this.textBoxNameLabel.Name = "textBoxNameLabel";
+            this.textBoxNameLabel.ReadOnly = true;
+            this.textBoxNameLabel.Size = new System.Drawing.Size(44, 20);
+            this.textBoxNameLabel.TabIndex = 14;
+            this.textBoxNameLabel.Text = "Name:";
+            this.textBoxNameLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBoxNameValue
+            // 
+            this.textBoxNameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxNameValue.BackColor = System.Drawing.Color.White;
+            this.textBoxNameValue.Location = new System.Drawing.Point(53, 3);
+            this.textBoxNameValue.Name = "textBoxNameValue";
+            this.textBoxNameValue.Size = new System.Drawing.Size(221, 20);
+            this.textBoxNameValue.TabIndex = 11;
+            this.textBoxNameValue.Text = "My New Variable";
             // 
             // textBoxTypeLabel
             // 
@@ -94,39 +127,17 @@
             this.textBoxTypeLabel.Text = "Type:";
             this.textBoxTypeLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // buttonAddVariable
+            // textBoxBaseLabel
             // 
-            this.tableLayoutPanelMain.SetColumnSpan(this.buttonAddVariable, 2);
-            this.buttonAddVariable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonAddVariable.Location = new System.Drawing.Point(3, 115);
-            this.buttonAddVariable.Name = "buttonAddVariable";
-            this.buttonAddVariable.Size = new System.Drawing.Size(271, 25);
-            this.buttonAddVariable.TabIndex = 0;
-            this.buttonAddVariable.Text = "Add Variable";
-            this.buttonAddVariable.UseVisualStyleBackColor = true;
-            // 
-            // textBoxNameValue
-            // 
-            this.textBoxNameValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBoxBaseLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxNameValue.BackColor = System.Drawing.Color.White;
-            this.textBoxNameValue.Location = new System.Drawing.Point(53, 3);
-            this.textBoxNameValue.Name = "textBoxNameValue";
-            this.textBoxNameValue.Size = new System.Drawing.Size(221, 20);
-            this.textBoxNameValue.TabIndex = 11;
-            this.textBoxNameValue.Text = "My New Variable";
-            // 
-            // textBoxNameLabel
-            // 
-            this.textBoxNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxNameLabel.Location = new System.Drawing.Point(3, 3);
-            this.textBoxNameLabel.Name = "textBoxNameLabel";
-            this.textBoxNameLabel.ReadOnly = true;
-            this.textBoxNameLabel.Size = new System.Drawing.Size(44, 20);
-            this.textBoxNameLabel.TabIndex = 14;
-            this.textBoxNameLabel.Text = "Name:";
-            this.textBoxNameLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxBaseLabel.Location = new System.Drawing.Point(3, 59);
+            this.textBoxBaseLabel.Name = "textBoxBaseLabel";
+            this.textBoxBaseLabel.ReadOnly = true;
+            this.textBoxBaseLabel.Size = new System.Drawing.Size(44, 20);
+            this.textBoxBaseLabel.TabIndex = 15;
+            this.textBoxBaseLabel.Text = "Base:";
+            this.textBoxBaseLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxOffsetLabel
             // 
@@ -149,7 +160,7 @@
             this.textBoxOffsetValue.Name = "textBoxOffsetValue";
             this.textBoxOffsetValue.Size = new System.Drawing.Size(221, 20);
             this.textBoxOffsetValue.TabIndex = 10;
-            this.textBoxOffsetValue.Text = "0x100";
+            this.textBoxOffsetValue.Text = "0xF4";
             // 
             // comboBoxTypeValue
             // 
@@ -161,17 +172,6 @@
             this.comboBoxTypeValue.Name = "comboBoxTypeValue";
             this.comboBoxTypeValue.Size = new System.Drawing.Size(221, 21);
             this.comboBoxTypeValue.TabIndex = 16;
-            // 
-            // comboBoxBaseValue
-            // 
-            this.comboBoxBaseValue.BackColor = System.Drawing.Color.White;
-            this.comboBoxBaseValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxBaseValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBaseValue.FormattingEnabled = true;
-            this.comboBoxBaseValue.Location = new System.Drawing.Point(53, 59);
-            this.comboBoxBaseValue.Name = "comboBoxBaseValue";
-            this.comboBoxBaseValue.Size = new System.Drawing.Size(221, 21);
-            this.comboBoxBaseValue.TabIndex = 17;
             // 
             // VariableCreationForm
             // 

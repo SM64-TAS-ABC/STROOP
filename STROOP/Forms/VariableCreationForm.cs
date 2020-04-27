@@ -21,6 +21,10 @@ namespace STROOP.Forms
             InitializeComponent();
             comboBoxTypeValue.DataSource = TypeUtilities.InGameTypeList;
             comboBoxBaseValue.DataSource = Enum.GetValues(typeof(BaseAddressTypeEnum));
+            comboBoxTypeValue.SelectedIndex = TypeUtilities.InGameTypeList.IndexOf("int");
+            comboBoxBaseValue.SelectedIndex =
+                EnumUtilities.GetEnumValues<BaseAddressTypeEnum>(
+                    typeof(BaseAddressTypeEnum)).IndexOf(BaseAddressTypeEnum.Object);
         }
 
         public void Initialize(WatchVariableFlowLayoutPanel varPanel)
