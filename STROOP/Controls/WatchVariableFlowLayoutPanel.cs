@@ -399,6 +399,16 @@ namespace STROOP.Controls
                 FileType.StroopVariables, "VarData", GetCurrentVarXmlElements(), fileName);
         }
 
+        public void CopyVariables()
+        {
+            List<WatchVariableControl> controls = GetCurrentVariableControls();
+            if (controls.Count == 0) return;
+            string separator = "\t";
+            Clipboard.SetText(
+                string.Join(separator, controls.ConvertAll(
+                    control => control.GetValue(false))));
+        }
+
         public void NotifyOfReordering(WatchVariableControl watchVarControl)
         {
             if (_reorderingWatchVarControls.Count == 0)

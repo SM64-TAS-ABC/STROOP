@@ -44,6 +44,9 @@ namespace STROOP.Managers
             Button buttonSaveVars = splitContainerCustomControls.Panel1.Controls["buttonSaveVars"] as Button;
             buttonSaveVars.Click += (sender, e) => _variablePanel.SaveVariables();
 
+            Button buttonCopyVars = splitContainerCustomControls.Panel1.Controls["buttonCopyVars"] as Button;
+            buttonCopyVars.Click += (sender, e) => _variablePanel.CopyVariables();
+
             Button buttonClearVars = splitContainerCustomControls.Panel1.Controls["buttonClearVars"] as Button;
             buttonClearVars.Click += (sender, e) => _variablePanel.ClearVariables();
             ControlUtilities.AddContextMenuStripFunctions(
