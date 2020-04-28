@@ -10,6 +10,15 @@ namespace STROOP.Utilities
 {
     public static class CopyUtilities
     {
+        public static void AddContextMenuStripFunctions(
+            Control control, List<WatchVariableControl> controls)
+        {
+            ControlUtilities.AddContextMenuStripFunctions(
+                control,
+                GetCopyNames(),
+                GetCopyActions(controls));
+        }
+
         public static void AddDropDownItems(
             ToolStripMenuItem control, List<WatchVariableControl> controls)
         {
