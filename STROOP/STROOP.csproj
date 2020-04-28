@@ -155,6 +155,7 @@
     <Compile Include="Controls\WatchVariableTriangleWrapper.cs" />
     <Compile Include="Controls\WatchVariableStringWrapper.cs" />
     <Compile Include="Enums\CoordinateAngle.cs" />
+    <Compile Include="Enums\CopyTypeEnum.cs" />
     <Compile Include="Enums\MapTrackerIconType.cs" />
     <Compile Include="Enums\MathOperation.cs" />
     <Compile Include="Enums\PaintingListTypeEnum.cs" />

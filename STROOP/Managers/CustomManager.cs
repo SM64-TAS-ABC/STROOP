@@ -30,6 +30,8 @@ namespace STROOP.Managers
         private int _numGaps;
         private int _recordFreq;
 
+        private CopyTypeEnum _copyType = CopyTypeEnum.CopyWithTabs;
+
         public CustomManager(string varFilePath, Control customControl, WatchVariableFlowLayoutPanel variableTable)
             : base(varFilePath, variableTable)
         {
@@ -45,7 +47,17 @@ namespace STROOP.Managers
             buttonSaveVars.Click += (sender, e) => _variablePanel.SaveVariables();
 
             Button buttonCopyVars = splitContainerCustomControls.Panel1.Controls["buttonCopyVars"] as Button;
-            buttonCopyVars.Click += (sender, e) => _variablePanel.CopyVariables();
+            buttonCopyVars.Click += (sender, e) => CopyUtilities.Copy(_variablePanel.GetCurrentVariableControls(), _copyType);
+            buttonCopyVars.ContextMenuStrip = new ContextMenuStrip();
+            ToolStripMenuItem itemSetDefaultCopyType = new ToolStripMenuItem("Set Default Copy Type");
+            buttonCopyVars.ContextMenuStrip.Items.Add(itemSetDefaultCopyType);
+            buttonCopyVars.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            ControlUtilities.AddCheckableDropDownItems(
+                itemSetDefaultCopyType,
+                EnumUtilities.GetEnumStrings<CopyTypeEnum>(typeof(CopyTypeEnum)),
+                EnumUtilities.GetEnumValues<CopyTypeEnum>(typeof(CopyTypeEnum)),
+                copyType => _copyType = copyType,
+                _copyType);
             CopyUtilities.AddContextMenuStripFunctions(
                 buttonCopyVars, _variablePanel.GetCurrentVariableControls);
 

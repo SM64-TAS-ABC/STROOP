@@ -10,6 +10,12 @@ namespace STROOP.Utilities
 {
     public static class CopyUtilities
     {
+        public static void Copy(List<WatchVariableControl> vars, CopyTypeEnum copyType)
+        {
+            int index = EnumUtilities.GetEnumValues<CopyTypeEnum>(typeof(CopyTypeEnum)).IndexOf(copyType);
+            GetCopyActions(() => vars)[index]();
+        }
+
         public static void AddContextMenuStripFunctions(
             Control control, Func<List<WatchVariableControl>> getVars)
         {
