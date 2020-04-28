@@ -34,7 +34,7 @@ namespace STROOP.Utilities
                 GetCopyActions(getVars));
         }
 
-        private static List<string> GetCopyNames()
+        public static List<string> GetCopyNames()
         {
             return new List<string>()
             {

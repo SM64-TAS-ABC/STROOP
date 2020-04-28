@@ -54,7 +54,7 @@ namespace STROOP.Managers
             buttonCopyVars.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ControlUtilities.AddCheckableDropDownItems(
                 itemSetDefaultCopyType,
-                EnumUtilities.GetEnumStrings<CopyTypeEnum>(typeof(CopyTypeEnum)),
+                CopyUtilities.GetCopyNames(),
                 EnumUtilities.GetEnumValues<CopyTypeEnum>(typeof(CopyTypeEnum)),
                 copyType => _copyType = copyType,
                 _copyType);
