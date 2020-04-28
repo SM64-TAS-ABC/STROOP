@@ -575,6 +575,7 @@
     <Compile Include="Structs\SpawnHack.cs" />
     <Compile Include="Enums\AngleUnitType.cs" />
     <Compile Include="Utilities\AnimationUtilities.cs" />
+    <Compile Include="Utilities\CopyUtilities.cs" />
     <Compile Include="Utilities\EasingUtilities.cs" />
     <Compile Include="Utilities\EnumUtilities.cs" />
     <Compile Include="Utilities\FlyingUtilities.cs" />

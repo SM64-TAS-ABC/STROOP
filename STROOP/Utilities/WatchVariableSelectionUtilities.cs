@@ -15,7 +15,6 @@ namespace STROOP.Structs
 {
     public static class WatchVariableSelectionUtilities
     {
-
         public static List<ToolStripItem> CreateSelectionToolStripItems(
             Func<List<WatchVariableControl>> getVars,
             WatchVariableFlowLayoutPanel panel)
@@ -93,69 +92,7 @@ namespace STROOP.Structs
                 });
 
             ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy...");
-            Action<List<WatchVariableControl>, string> copyValues =
-                (List<WatchVariableControl> controls, string separator) =>
-            {
-                if (controls.Count == 0) return;
-                Clipboard.SetText(
-                    String.Join(separator, controls.ConvertAll(
-                        control => control.GetValue(false))));
-            };
-            ControlUtilities.AddDropDownItems(
-                itemCopy,
-                new List<string>()
-                {
-                    "Copy with Commas",
-                    "Copy with Spaces",
-                    "Copy with Tabs",
-                    "Copy with Line Breaks",
-                    "Copy with Names",
-                    "Copy for Code",
-                },
-                new List<Action>()
-                {
-                    () => copyValues(getVars(), ","),
-                    () => copyValues(getVars(), " "),
-                    () => copyValues(getVars(), "\t"),
-                    () => copyValues(getVars(), "\r\n"),
-                    () =>
-                    {
-                        List<string> lines = getVars().ConvertAll(
-                            watchVar => watchVar.VarName + "\t" + watchVar.GetValue(false));
-                        Clipboard.SetText(String.Join("\r\n", lines));
-                    },
-                    () =>
-                    {
-                        List<WatchVariableControl> watchVars = getVars();
-                        Func<string, string> varNameFunc;
-                        if (KeyboardUtilities.IsCtrlHeld())
-                        {
-                            string template = DialogUtilities.GetStringFromDialog("$");
-                            if (template == null) return;
-                            varNameFunc = varName => template.Replace("$", varName);
-                        }
-                        else
-                        {
-                            varNameFunc = varName => varName;
-                        }
-                        List<string> lines = new List<string>();
-                        foreach (WatchVariableControl watchVar in watchVars)
-                        {
-                            Type type = watchVar.GetMemoryType();
-                            string line = String.Format(
-                                "{0} {1} = {2}{3};",
-                                type != null ? TypeUtilities.TypeToString[watchVar.GetMemoryType()] : "double",
-                                varNameFunc(watchVar.VarName.Replace(" ", "")),
-                                watchVar.GetValue(false),
-                                type == typeof(float) ? "f" : "");
-                            lines.Add(line);
-                        }
-                        if (lines.Count > 0)
-                        {
-                            Clipboard.SetText(String.Join("\r\n", lines));
-                        }
-                    },
-                });
+            CopyUtilities.AddDropDownItems(itemCopy, getVars());
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) =>
