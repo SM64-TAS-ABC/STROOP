@@ -92,7 +92,7 @@ namespace STROOP.Structs
                 });
 
             ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy...");
-            CopyUtilities.AddDropDownItems(itemCopy, getVars());
+            CopyUtilities.AddDropDownItems(itemCopy, getVars);
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) =>

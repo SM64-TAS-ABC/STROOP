@@ -11,21 +11,21 @@ namespace STROOP.Utilities
     public static class CopyUtilities
     {
         public static void AddContextMenuStripFunctions(
-            Control control, List<WatchVariableControl> controls)
+            Control control, Func<List<WatchVariableControl>> getVars)
         {
             ControlUtilities.AddContextMenuStripFunctions(
                 control,
                 GetCopyNames(),
-                GetCopyActions(controls));
+                GetCopyActions(getVars));
         }
 
         public static void AddDropDownItems(
-            ToolStripMenuItem control, List<WatchVariableControl> controls)
+            ToolStripMenuItem control, Func<List<WatchVariableControl>> getVars)
         {
             ControlUtilities.AddDropDownItems(
                 control,
                 GetCopyNames(),
-                GetCopyActions(controls));
+                GetCopyActions(getVars));
         }
 
         private static List<string> GetCopyNames()
@@ -41,22 +41,27 @@ namespace STROOP.Utilities
             };
         }
 
-        private static List<Action> GetCopyActions(List<WatchVariableControl> controls)
+        private static List<Action> GetCopyActions(Func<List<WatchVariableControl>> getVars)
         {
             return new List<Action>()
             {
-                () => CopyWithSeparator(controls, ","),
-                () => CopyWithSeparator(controls, " "),
-                () => CopyWithSeparator(controls, "\t"),
-                () => CopyWithSeparator(controls, "\r\n"),
-                () => CopyWithNames(controls),
-                () => CopyForCode(controls),
+                () => CopyWithSeparator(getVars(), ","),
+                () => CopyWithSeparator(getVars(), " "),
+                () => CopyWithSeparator(getVars(), "\t"),
+                () => CopyWithSeparator(getVars(), "\r\n"),
+                () => CopyWithNames(getVars()),
+                () => CopyForCode(getVars()),
             };
         }
 
         private static void CopyWithSeparator(
             List<WatchVariableControl> controls, string separator)
         {
+            if (controls.Count == 0)
+            {
+                Clipboard.SetText("");
+                return;
+            }
             Clipboard.SetText(
                 string.Join(separator, controls.ConvertAll(
                     control => control.GetValue(
@@ -65,6 +70,11 @@ namespace STROOP.Utilities
 
         private static void CopyWithNames(List<WatchVariableControl> controls)
         {
+            if (controls.Count == 0)
+            {
+                Clipboard.SetText("");
+                return;
+            }
             List<string> lines = controls.ConvertAll(
                 watchVar => watchVar.VarName + "\t" + watchVar.GetValue(false));
             Clipboard.SetText(string.Join("\r\n", lines));
@@ -72,6 +82,11 @@ namespace STROOP.Utilities
 
         private static void CopyForCode(List<WatchVariableControl> controls)
         {
+            if (controls.Count == 0)
+            {
+                Clipboard.SetText("");
+                return;
+            }
             Func<string, string> varNameFunc;
             if (KeyboardUtilities.IsCtrlHeld())
             {
@@ -87,7 +102,7 @@ namespace STROOP.Utilities
             foreach (WatchVariableControl watchVar in controls)
             {
                 Type type = watchVar.GetMemoryType();
-                string line = String.Format(
+                string line = string.Format(
                     "{0} {1} = {2}{3};",
                     type != null ? TypeUtilities.TypeToString[watchVar.GetMemoryType()] : "double",
                     varNameFunc(watchVar.VarName.Replace(" ", "")),
@@ -97,7 +112,7 @@ namespace STROOP.Utilities
             }
             if (lines.Count > 0)
             {
-                Clipboard.SetText(String.Join("\r\n", lines));
+                Clipboard.SetText(string.Join("\r\n", lines));
             }
         }
     }
