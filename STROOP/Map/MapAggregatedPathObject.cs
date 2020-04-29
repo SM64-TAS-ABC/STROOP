@@ -29,6 +29,7 @@ namespace STROOP.Map
                 paths.AddRange(mapTracker.GetMapPathObjects());
             }
             List<List<MapPathObjectSegment>> segmentLists = paths.ConvertAll(path => path.GetSegments());
+            if (segmentLists.Count == 0) return;
             int maxCount = segmentLists.Max(list => list.Count);
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
