@@ -168,6 +168,31 @@ namespace STROOP.Utilities
             return TriangleClassification.Wall;
         }
 
+        public static void ConvertSurfaceTypes(TriangleClassificationExtended classification, short fromType, short toType)
+        {
+            GetLevelTriangles()
+                .FindAll(tri => TrianglePassesClassification(tri, classification))
+                .FindAll(tri => tri.SurfaceType == fromType)
+                .ForEach(tri => Config.Stream.SetValue(toType, tri.Address + TriangleOffsetsConfig.SurfaceType));
+        }
+
+        private static bool TrianglePassesClassification(TriangleDataModel tri, TriangleClassificationExtended classification)
+        {
+            switch (classification)
+            {
+                case TriangleClassificationExtended.FloorTris:
+                    return tri.Classification == TriangleClassification.Floor;
+                case TriangleClassificationExtended.WallTris:
+                    return tri.Classification == TriangleClassification.Wall;
+                case TriangleClassificationExtended.CeilingTris:
+                    return tri.Classification == TriangleClassification.Ceiling;
+                case TriangleClassificationExtended.AllTris:
+                    return true;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         public static List<TriangleShape> GetWallTriangleHitboxComponents(List<TriangleDataModel> wallTriangles)
         {
             List<((short, short), (short, short), bool)> vertexPairs =

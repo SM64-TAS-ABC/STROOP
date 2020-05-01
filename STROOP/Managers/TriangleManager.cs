@@ -268,6 +268,23 @@ namespace STROOP.Managers
                     () => TriangleUtilities.DisableCamCollision(TriangleClassification.Floor),
                     () => TriangleUtilities.DisableCamCollision(TriangleClassification.Ceiling),
                 });
+
+            GroupBox groupBoxTriangleTypeConversion = splitContainerTriangles.Panel1.Controls["groupBoxTriangleTypeConversion"] as GroupBox;
+            ComboBox comboBoxTriangleTypeConversionConvert = groupBoxTriangleTypeConversion.Controls["comboBoxTriangleTypeConversionConvert"] as ComboBox;
+            TextBox textBoxTriangleTypeConversionFromType = groupBoxTriangleTypeConversion.Controls["textBoxTriangleTypeConversionFromType"] as TextBox;
+            TextBox textBoxTriangleTypeConversionToType = groupBoxTriangleTypeConversion.Controls["textBoxTriangleTypeConversionToType"] as TextBox;
+            Button buttonTriangleTypeConversionConvert = groupBoxTriangleTypeConversion.Controls["buttonTriangleTypeConversionConvert"] as Button;
+
+            comboBoxTriangleTypeConversionConvert.DataSource = EnumUtilities.GetEnumValues<TriangleClassificationExtended>(typeof(TriangleClassificationExtended));
+
+            buttonTriangleTypeConversionConvert.Click += (sender, e) =>
+            {
+                TriangleClassificationExtended classification = (TriangleClassificationExtended)comboBoxTriangleTypeConversionConvert.SelectedItem;
+                short? fromType = (short?)ParsingUtilities.ParseHexNullable(textBoxTriangleTypeConversionFromType.Text);
+                short? toType = (short?)ParsingUtilities.ParseHexNullable(textBoxTriangleTypeConversionToType.Text);
+                if (!fromType.HasValue || !toType.HasValue) return;
+                TriangleUtilities.ConvertSurfaceTypes(classification, fromType.Value, toType.Value);
+            };
         }
 
         private void UpdateNorms()
