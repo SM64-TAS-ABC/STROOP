@@ -28,7 +28,8 @@ namespace STROOP.Map
             _levelTriAddressList = TriangleUtilities.GetLevelTriangles().ConvertAll(tri => tri.Address);
             _objTriAddressList = TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address);
 
-            OutlineWidth = 2;
+            Size = 40;
+            OutlineWidth = 0;
         }
 
         public override void DrawOn2DControl()
@@ -41,9 +42,9 @@ namespace STROOP.Map
             List<List<(float x, float y, float z, Color color)>> triData = GetTriangles()
                 .ConvertAll(tri => new List<(float x, float y, float z, Color color)>()
                 {
-                    (tri.X1, tri.Y1, tri.Z1, ColorUtilities.AddAlpha(GetColorForTri(tri), OpacityByte)),
-                    (tri.X2, tri.Y2, tri.Z2, ColorUtilities.AddAlpha(GetColorForTri(tri), OpacityByte)),
-                    (tri.X3, tri.Y3, tri.Z3, ColorUtilities.AddAlpha(GetColorForTri(tri), OpacityByte)),
+                    (tri.X1, tri.Y1, tri.Z1, ColorUtilities.AddAlpha(GetColorForTri(tri, 1), OpacityByte)),
+                    (tri.X2, tri.Y2, tri.Z2, ColorUtilities.AddAlpha(GetColorForTri(tri, 2), OpacityByte)),
+                    (tri.X3, tri.Y3, tri.Z3, ColorUtilities.AddAlpha(GetColorForTri(tri, 3), OpacityByte)),
                 });
             Map3DVertex[] vertexArray = triData.SelectMany(vertexList => vertexList).ToList()
                 .ConvertAll(vertex => new Map3DVertex(new Vector3(
@@ -79,17 +80,33 @@ namespace STROOP.Map
             }
         }
 
-        private static Color GetColorForTri(TriangleDataModel tri)
+        private Color GetColorForTri(TriangleDataModel tri, int vertex)
         {
             double clampedNormY = MoreMath.Clamp(tri.NormY, -1, 1);
+            Color color;
             switch (tri.Classification)
             {
                 case TriangleClassification.Wall:
-                    return tri.XProjection ? Color.FromArgb(58, 116, 58) : Color.FromArgb(116, 203, 116);
+                    color = tri.XProjection ? Color.FromArgb(58, 116, 58) : Color.FromArgb(116, 203, 116);
+                    break;
                 case TriangleClassification.Floor:
-                    return Color.FromArgb(130, 130, 231).Darken(0.6 * (1 - clampedNormY));
+                    color = Color.FromArgb(130, 130, 231).Darken(0.6 * (1 - clampedNormY));
+                    break;
                 case TriangleClassification.Ceiling:
-                    return Color.FromArgb(231, 130, 130).Darken(0.6 * (clampedNormY + 1));
+                    color = Color.FromArgb(231, 130, 130).Darken(0.6 * (clampedNormY + 1));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            double amount = MoreMath.Clamp(Size / 100, 0, 1);
+            switch (vertex)
+            {
+                case 1:
+                    return color.Lighten(amount);
+                case 2:
+                    return color;
+                case 3:
+                    return color.Darken(amount);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
