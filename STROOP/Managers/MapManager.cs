@@ -373,8 +373,13 @@ namespace STROOP.Managers
             // Additional Checkboxes
             Config.MapGui.checkBoxMapOptionsEnable3D.Click += (sender, e) =>
             {
-                Config.MapGui.GLControlMap2D.Visible = !Config.MapGui.checkBoxMapOptionsEnable3D.Checked;
-                Config.MapGui.GLControlMap3D.Visible = Config.MapGui.checkBoxMapOptionsEnable3D.Checked;
+                // Make the toBeVisible one visible first in order to avoid flicker.
+                (GLControl toBeVisible, GLControl toBeInvisible) =
+                    Config.MapGui.checkBoxMapOptionsEnable3D.Checked ?
+                        (Config.MapGui.GLControlMap3D, Config.MapGui.GLControlMap2D) :
+                        (Config.MapGui.GLControlMap2D, Config.MapGui.GLControlMap3D);
+                toBeVisible.Visible = true;
+                toBeInvisible.Visible = false;
             };
             Config.MapGui.checkBoxMapOptionsEnablePuView.Click += (sender, e) =>
                 Config.MapGraphics.MapViewEnablePuView = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked;
