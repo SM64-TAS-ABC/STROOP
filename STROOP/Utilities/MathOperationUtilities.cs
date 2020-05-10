@@ -10,57 +10,57 @@ namespace STROOP.Utilities
 {
     public static class MathOperationUtilities
     {
-        public static string GetSymbol(MathOperation operation, bool useX = true, bool useSlash = true)
+        public static string GetSymbol(BinaryMathOperation operation, bool useX = true, bool useSlash = true)
         {
             switch (operation)
             {
-                case MathOperation.Add:
+                case BinaryMathOperation.Add:
                     return "+";
-                case MathOperation.Subtract:
+                case BinaryMathOperation.Subtract:
                     return "-";
-                case MathOperation.Multiply:
+                case BinaryMathOperation.Multiply:
                     return useX ? "×" : "*";
-                case MathOperation.Divide:
+                case BinaryMathOperation.Divide:
                     return useSlash ? "/" : "÷";
-                case MathOperation.Modulo:
+                case BinaryMathOperation.Modulo:
                     return "%";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        public static string GetNoun(MathOperation operation)
+        public static string GetNoun(BinaryMathOperation operation)
         {
             switch (operation)
             {
-                case MathOperation.Add:
+                case BinaryMathOperation.Add:
                     return "Addition";
-                case MathOperation.Subtract:
+                case BinaryMathOperation.Subtract:
                     return "Subtraction";
-                case MathOperation.Multiply:
+                case BinaryMathOperation.Multiply:
                     return "Multiplication";
-                case MathOperation.Divide:
+                case BinaryMathOperation.Divide:
                     return "Division";
-                case MathOperation.Modulo:
+                case BinaryMathOperation.Modulo:
                     return "Modulo";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        public static string GetResultName(MathOperation operation)
+        public static string GetResultName(BinaryMathOperation operation)
         {
             switch (operation)
             {
-                case MathOperation.Add:
+                case BinaryMathOperation.Add:
                     return "Sum";
-                case MathOperation.Subtract:
+                case BinaryMathOperation.Subtract:
                     return "Difference";
-                case MathOperation.Multiply:
+                case BinaryMathOperation.Multiply:
                     return "Product";
-                case MathOperation.Divide:
+                case BinaryMathOperation.Divide:
                     return "Quotient";
-                case MathOperation.Modulo:
+                case BinaryMathOperation.Modulo:
                     return "Modulo";
                 default:
                     throw new ArgumentOutOfRangeException();

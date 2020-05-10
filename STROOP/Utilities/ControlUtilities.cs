@@ -405,7 +405,8 @@ namespace STROOP.Utilities
         {
             if (functionNames.Count != functions.Count) throw new ArgumentOutOfRangeException();
 
-            List<ToolStripMenuItem> items = functionNames.ConvertAll(name => new ToolStripMenuItem(name));
+            List<ToolStripItem> items = functionNames.ConvertAll(
+                name => name == null ? (ToolStripItem)new ToolStripSeparator() : new ToolStripMenuItem(name));
             for (int i = 0; i < items.Count; i++)
             {
                 Action action = functions[i];

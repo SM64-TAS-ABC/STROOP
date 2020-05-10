@@ -9,12 +9,11 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs
 {
-    public enum MathOperation
+    public enum AggregateMathOperation
     {
-        Add,
-        Subtract,
-        Multiply,
-        Divide,
-        Modulo,
+        Mean,
+        Median,
+        Min,
+        Max,
     };
 }

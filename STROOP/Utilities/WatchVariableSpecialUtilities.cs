@@ -35,14 +35,14 @@ namespace STROOP.Structs
                 throw new ArgumentOutOfRangeException();
         }
 
-        private static int _numCalculatedEntries = 0;
+        private static int _numBinaryMathOperationEntries = 0;
 
-        public static string AddCalculatedEntry(WatchVariableControl control1, WatchVariableControl control2, MathOperation operation)
+        public static string AddBinaryMathOperationEntry(WatchVariableControl control1, WatchVariableControl control2, BinaryMathOperation operation)
         {
-            string specialType = "Calculated" + _numCalculatedEntries;
+            string specialType = "BinaryMathOperation" + _numBinaryMathOperationEntries;
             switch (operation)
             {
-                case MathOperation.Add:
+                case BinaryMathOperation.Add:
                     _dictionary.Add(specialType,
                         ((uint dummy) =>
                         {
@@ -67,7 +67,7 @@ namespace STROOP.Structs
                         }));
                     break;
 
-                case MathOperation.Subtract:
+                case BinaryMathOperation.Subtract:
                     _dictionary.Add(specialType,
                         ((uint dummy) =>
                         {
@@ -92,7 +92,7 @@ namespace STROOP.Structs
                         }));
                     break;
 
-                case MathOperation.Multiply:
+                case BinaryMathOperation.Multiply:
                     _dictionary.Add(specialType,
                         ((uint dummy) =>
                         {
@@ -117,7 +117,7 @@ namespace STROOP.Structs
                         }));
                     break;
 
-                case MathOperation.Divide:
+                case BinaryMathOperation.Divide:
                     _dictionary.Add(specialType,
                         ((uint dummy) =>
                         {
@@ -142,7 +142,7 @@ namespace STROOP.Structs
                         }));
                     break;
 
-                case MathOperation.Modulo:
+                case BinaryMathOperation.Modulo:
                     _dictionary.Add(specialType,
                         ((uint dummy) =>
                         {
@@ -156,7 +156,73 @@ namespace STROOP.Structs
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            _numCalculatedEntries++;
+            _numBinaryMathOperationEntries++;
+            return specialType;
+        }
+
+        private static int _numAggregateMathOperationEntries = 0;
+
+        public static string AddAggregateMathOperationEntry(List<WatchVariableControl> controls, AggregateMathOperation operation)
+        {
+            string specialType = "AggregateMathOperation" + _numAggregateMathOperationEntries;
+            switch (operation)
+            {
+                case AggregateMathOperation.Mean:
+                    _dictionary.Add(specialType,
+                        ((uint dummy) =>
+                        {
+                            return controls
+                                .ConvertAll(control => control.GetValue(handleFormatting: false))
+                                .ConvertAll(value => ParsingUtilities.ParseDouble(value))
+                                .Average();
+                        },
+                        DEFAULT_SETTER));
+                    break;
+                case AggregateMathOperation.Median:
+                    _dictionary.Add(specialType,
+                        ((uint dummy) =>
+                        {
+                            List<double> doubleValues = controls
+                                .ConvertAll(control => control.GetValue(handleFormatting: false))
+                                .ConvertAll(value => ParsingUtilities.ParseDouble(value));
+                            doubleValues.Sort();
+                            if (doubleValues.Count % 2 == 1)
+                            {
+                                return doubleValues[doubleValues.Count / 2];
+                            }
+                            else
+                            {
+                                return (doubleValues[doubleValues.Count / 2 - 1] + doubleValues[doubleValues.Count / 2]) / 2;
+                            }
+                        },
+                        DEFAULT_SETTER));
+                    break;
+                case AggregateMathOperation.Min:
+                    _dictionary.Add(specialType,
+                        ((uint dummy) =>
+                        {
+                            return controls
+                                .ConvertAll(control => control.GetValue(handleFormatting: false))
+                                .ConvertAll(value => ParsingUtilities.ParseDouble(value))
+                                .Min();
+                        },
+                        DEFAULT_SETTER));
+                    break;
+                case AggregateMathOperation.Max:
+                    _dictionary.Add(specialType,
+                        ((uint dummy) =>
+                        {
+                            return controls
+                                .ConvertAll(control => control.GetValue(handleFormatting: false))
+                                .ConvertAll(value => ParsingUtilities.ParseDouble(value))
+                                .Max();
+                        },
+                        DEFAULT_SETTER));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            _numAggregateMathOperationEntries++;
             return specialType;
         }
 

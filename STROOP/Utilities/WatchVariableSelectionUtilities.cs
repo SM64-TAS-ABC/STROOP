@@ -251,7 +251,7 @@ namespace STROOP.Structs
                 infoForm.Show();
             };
 
-            Action<MathOperation> createVariable = (MathOperation operation) =>
+            void createBinaryMathOperationVariable (BinaryMathOperation operation)
             {
                 List<WatchVariableControl> controls = getVars();
                 if (controls.Count % 2 == 1) controls.RemoveAt(controls.Count - 1);
@@ -260,7 +260,7 @@ namespace STROOP.Structs
                 {
                     WatchVariableControl control1 = controls[i];
                     WatchVariableControl control2 = controls[i + controls.Count / 2];
-                    string specialType = WatchVariableSpecialUtilities.AddCalculatedEntry(control1, control2, operation);
+                    string specialType = WatchVariableSpecialUtilities.AddBinaryMathOperationEntry(control1, control2, operation);
 
                     WatchVariable watchVariable =
                         new WatchVariable(
@@ -289,7 +289,39 @@ namespace STROOP.Structs
                     WatchVariableControl control = precursor.CreateWatchVariableControl();
                     panel.AddVariable(control);
                 }
-            };
+            }
+            void createAggregateMathOperationVariable (AggregateMathOperation operation)
+            {
+                List<WatchVariableControl> controls = getVars();
+                if (controls.Count == 0) return;
+                string specialType = WatchVariableSpecialUtilities.AddAggregateMathOperationEntry(controls, operation);
+                WatchVariable watchVariable =
+                    new WatchVariable(
+                        memoryTypeName: null,
+                        specialType: specialType,
+                        baseAddressType: BaseAddressTypeEnum.None,
+                        offsetUS: null,
+                        offsetJP: null,
+                        offsetSH: null,
+                        offsetDefault: null,
+                        mask: null,
+                        shift: null);
+                WatchVariableControlPrecursor precursor =
+                    new WatchVariableControlPrecursor(
+                        name: operation.ToString(),
+                        watchVar: watchVariable,
+                        subclass: WatchVariableSubclass.Number,
+                        backgroundColor: null,
+                        displayType: null,
+                        roundingLimit: null,
+                        useHex: null,
+                        invertBool: null,
+                        isYaw: null,
+                        coordinate: null,
+                        groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                WatchVariableControl control = precursor.CreateWatchVariableControl();
+                panel.AddVariable(control);
+            }
             ToolStripMenuItem itemAddVariables = new ToolStripMenuItem("Add Variable(s)...");
             ControlUtilities.AddDropDownItems(
                 itemAddVariables,
@@ -300,14 +332,24 @@ namespace STROOP.Structs
                     "Multiplication",
                     "Division",
                     "Modulo",
+                    null,
+                    "Mean",
+                    "Median",
+                    "Min",
+                    "Max",
                 },
                 new List<Action>()
                 {
-                    () => createVariable(MathOperation.Add),
-                    () => createVariable(MathOperation.Subtract),
-                    () => createVariable(MathOperation.Multiply),
-                    () => createVariable(MathOperation.Divide),
-                    () => createVariable(MathOperation.Modulo),
+                    () => createBinaryMathOperationVariable(BinaryMathOperation.Add),
+                    () => createBinaryMathOperationVariable(BinaryMathOperation.Subtract),
+                    () => createBinaryMathOperationVariable(BinaryMathOperation.Multiply),
+                    () => createBinaryMathOperationVariable(BinaryMathOperation.Divide),
+                    () => createBinaryMathOperationVariable(BinaryMathOperation.Modulo),
+                    () => { },
+                    () => createAggregateMathOperationVariable(AggregateMathOperation.Mean),
+                    () => createAggregateMathOperationVariable(AggregateMathOperation.Median),
+                    () => createAggregateMathOperationVariable(AggregateMathOperation.Min),
+                    () => createAggregateMathOperationVariable(AggregateMathOperation.Max),
                 });
 
             ToolStripMenuItem itemSetCascadingValues = new ToolStripMenuItem("Set Cascading Values");
