@@ -90,6 +90,8 @@ namespace STROOP.Managers
 
             // initialize controls
 
+            ControlUtilities.SetTableDoubleBuffered(_dataGridViewCoin, true);
+
             _listBoxCoinObjects.DataSource = CoinObject.GetCoinObjects();
             _listBoxCoinObjects.ClearSelected();
             _listBoxCoinObjects.SelectedValueChanged += (sender, e) => ListBoxSelectionChange();
