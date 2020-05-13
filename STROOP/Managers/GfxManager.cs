@@ -94,13 +94,14 @@ namespace STROOP.Managers
         // This can contain vertices and triangles, but also draw settings like lighting and fog
         private void DumpButton_Click(object sender, EventArgs e)
         {
-            if (SelectedNode != null && (SelectedNode is GfxDisplayList || SelectedNode is GfxAnimationNode 
+            if (SelectedNode != null && (SelectedNode is GfxDisplayList || SelectedNode is GfxAnimationNode
                 || SelectedNode is GfxTranslatedModel || SelectedNode is GfxRotationNode))
             {
                 uint address = Config.Stream.GetUInt32(SelectedNode.Address + 0x14);
                 _outputTextBox.Text = Fast3DDecoder.DecodeList(SegmentationUtilities.DecodeSegmentedAddress(address));
 
-            } else
+            }
+            else
             {
                 MessageBox.Show("Select a display list node first");
             }
@@ -124,7 +125,7 @@ namespace STROOP.Managers
         // Build a GFX tree for every object that is selected in the object slot view
         private void RefreshButtonObject_Click(object sender, EventArgs e)
         {
-            
+
             List<uint> list = Config.ObjectSlotsManager.SelectedSlotsAddresses;
             if (list != null && list.Count > 0)
             {
@@ -146,7 +147,7 @@ namespace STROOP.Managers
          */
         private void _treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            GfxNode node = (GfxNode) e.Node.Tag;
+            GfxNode node = (GfxNode)e.Node.Tag;
             SelectedNode = node;
             UpdateSpecificVariables(SelectedNode);
         }
@@ -159,7 +160,7 @@ namespace STROOP.Managers
             _treeView.Nodes.Clear();
 
             // A pointer to the root node of the GFX tree is stored at offset 0x04 in a certain struct
-            var StructWithGfxRoot = Config.Stream.GetUInt32(RomVersionConfig.Switch(0x32DDCC, 0x32CE6C));
+            var StructWithGfxRoot = Config.Stream.GetUInt32(RomVersionConfig.Switch(0x8032DDCC, 0x8032CE6C));
 
             if (StructWithGfxRoot > 0x80000000u)
             {
@@ -171,13 +172,14 @@ namespace STROOP.Managers
 
         // By default, a new TreeNode is collapsed. If you expand all, then the treeview will be overwhelmed with 240 object nodes
         // This function allows to expand only the nodes a certain amount of levels deep while keeping the deeper ones collapsed
-        private void ExpandNodesUpTo(TreeNodeCollection nodes, int level) {
+        private void ExpandNodesUpTo(TreeNodeCollection nodes, int level)
+        {
             if (level <= 0) return;
 
             foreach (TreeNode node in nodes)
             {
                 node.Expand();
-                ExpandNodesUpTo(node.Nodes, level-1);
+                ExpandNodesUpTo(node.Nodes, level - 1);
             }
         }
 
@@ -199,7 +201,7 @@ namespace STROOP.Managers
         public TreeNode GfxToTreeNode(GfxNode node)
         {
             // Should only happen when memory is invalid (for example when the US setting is used on a JP ROM)
-            if (node == null) return new TreeNode("Invalid Gfx Node"); 
+            if (node == null) return new TreeNode("Invalid Gfx Node");
 
             TreeNode res = new TreeNode(node.Name, node.Children.Select(x => GfxToTreeNode(x)).ToArray());
             res.Tag = node;
@@ -241,7 +243,7 @@ namespace STROOP.Managers
                 case 0x01C: res = new GfxScalingNode(); break;
                 case 0x028: res = new GfxShadowNode(); break;
                 case 0x029: res = new GfxObjectParent(); break;
-                    //Todo: add 0x2F
+                //Todo: add 0x2F
                 case 0x103: res = new GfxProjection3D(); break;
                 case 0x10C: res = new GfxChildSelector(); break;
                 case 0x114: res = new GfxCamera(); break;
@@ -254,7 +256,7 @@ namespace STROOP.Managers
             res.Children = new List<GfxNode>();
 
             uint childAddress;
-            
+
             if (type == 0x018 || type == 0x029)
             {
                 // For some reason, the object parent has a null pointer as a child inbetween frames,
@@ -302,7 +304,7 @@ namespace STROOP.Managers
         }
 
         // Wrapper to make defining variables easier
-        protected static WatchVariableControlPrecursor gfxProperty(string name, string type, uint offset, 
+        protected static WatchVariableControlPrecursor gfxProperty(string name, string type, uint offset,
             Structs.WatchVariableSubclass subclass = Structs.WatchVariableSubclass.Number, uint? mask = null)
         {
             Color color = (offset <= 0x13)
@@ -342,38 +344,36 @@ namespace STROOP.Managers
 
     internal class GfxChildSelector : GfxNode
     {
-
-        public static readonly Dictionary<uint, string> DictionaryUS = new Dictionary<uint, string>
+        public static readonly List<(uint, uint, string)> functionNameList = new List<(uint, uint, string)>
         {
-            { 0x80277150, "Mario standing or moving" },
-            { 0x802776D8, "Vanish / metal cap" },
-            { 0x80277740, "Lost cap" },
-            { 0x802771BC, "Mario eyes" },
-            { 0x802774F4, "Mario hand" },
-            { 0x8029DBD4, "Current room" },
-            { 0x8029DB48, "Fully opaque" },
-            
-
+            ( 0x80277150, 0x80276BA0, "Mario standing or moving" ),
+            ( 0x802776D8, 0x80277128, "Vanish / metal cap" ),
+            ( 0x80277740, 0x80277190, "Lost cap" ),
+            ( 0x802771BC, 0x80276C0C, "Mario eyes" ),
+            ( 0x802774F4, 0x80276F44, "Mario hand" ),
+            ( 0x8029DBD4, 0x8029D458, "Current room" ),
+            ( 0x8029DB48, 0x8029D3CC, "Fully opaque" ),
         };
 
-        public static readonly Dictionary<uint, string> DictionaryJP = new Dictionary<uint, string>
+        private static string GetFunctionName(List<(uint, uint, string)> functionNameList, uint functionAddress)
         {
-            { 0x80276BA0, "Mario standing or moving" },
-            { 0x80277128, "Vanish / metal cap" },
-            { 0x80277190, "Lost cap" },
-            { 0x80276C0C, "Mario eyes" },
-            { 0x80276F44, "Mario hand" },
-            { 0x8029D458, "Current room" },
-            { 0x8029D3CC, "Fully opaque" },
-        };
+            foreach ((uint addressUS, uint addressJP, string functionName) in functionNameList)
+            {
+                uint address = RomVersionConfig.Switch(addressUS, addressJP);
+                if (address == functionAddress) return functionName;
+            }
+            return null;
+        }
 
-
-        public override string Name { get {
-                var currentDict = RomVersionConfig.Version == Structs.RomVersion.US ? DictionaryUS : DictionaryJP;
-                var function = Config.Stream.GetUInt32(Address + 0x14);
-                if (currentDict.ContainsKey(function)) return "Switch: " + currentDict[function];
-                return "Switch";
-            } }
+        public override string Name
+        {
+            get
+            {
+                var functionAddress = Config.Stream.GetUInt32(Address + 0x14);
+                string functionName = GetFunctionName(functionNameList, functionAddress);
+                return "Switch" + (functionName == null ? "" : ": " + functionName);
+            }
+        }
 
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
@@ -418,48 +418,41 @@ namespace STROOP.Managers
     internal class GfxGeoLayoutScript : GfxNode
     {
         // Todo: put these in external files and expand them
-        public static readonly Dictionary<uint, string> DictionaryUS = new Dictionary<uint, string>
+        public static readonly List<(uint, uint, string)> functionNameList = new List<(uint, uint, string)>
         {
-            { 0x802D01E0, "Water flow pause controller" },
-            { 0x802D1B70, "Waterfall drawer" },
-            { 0x8029D924, "Transparency controller" },  //makes peach / toad / dust particles transparent
-            { 0x802D104C, "Water rectangle drawer" },
-            { 0x802D1CDC, "SSL Pyramid sand flow" },
-            { 0x802761D0, "Snow controller" },
-            { 0x802CD1E8, "Overlay?" },
-            { 0x802D5D0C, "Painting wobble controller" },
-            { 0x802D5B98, "Painting drawer" },
-            { 0x80277B14, "Mirror Mario drawer"},
-            { 0x802775CC, "Mario hand / foot scaler"},
-            { 0x80277D6C, "Mirror Mario inside out"},
-            { 0x80277294, "Mario torso tilter"},
-            { 0x802773A4, "C-up head rotation" },
+            ( 0x802D01E0, 0x802CF700, "Water flow pause controller" ),
+            ( 0x802D1B70, 0x802D1090, "Waterfall drawer" ),
+            ( 0x8029D924, 0x8029D194, "Transparency controller" ),  //makes peach / toad / dust particles transparent
+            ( 0x802D104C, 0x802D11FC, "Water rectangle drawer" ),
+            ( 0x802D1CDC, 0x802D056C, "SSL Pyramid sand flow" ),
+            ( 0x802761D0, 0x80275C20, "Snow controller" ),
+            ( 0x802CD1E8, 0x802CC708, "Overlay?" ),
+            ( 0x802D5D0C, 0x802D522C, "Painting wobble controller" ),
+            ( 0x802D5B98, 0x802D50B8, "Painting drawer" ),
+            ( 0x80277B14, 0x80277564, "Mirror Mario drawer" ),
+            ( 0x802775CC, 0x8027701C, "Mario hand / foot scaler" ),
+            ( 0x80277D6C, 0x802777BC, "Mirror Mario inside out" ),
+            ( 0x80277294, 0x80276CE4, "Mario torso tilter" ),
+            ( 0x802773A4, 0x80276DF4, "C-up head rotation" ),
         };
 
-        public static readonly Dictionary<uint, string> DictionaryJP = new Dictionary<uint, string>
+        private static string GetFunctionName(List<(uint, uint, string)> functionNameList, uint functionAddress)
         {
-            { 0x802CF700, "Waterflow pause controller" },
-            { 0x802D1090, "Waterfall drawer" },
-            { 0x8029D194, "Transparency controller" },
-            { 0x802D11FC, "SSL Pyramid sand flow" },
-            { 0x802D056C, "Water rectangle drawer" },
-            { 0x80275C20, "Snow controller" },
-            { 0x802CC708, "Overlay?" },
-            { 0x802D522C, "Painting wobble controller" },
-            { 0x802D50B8, "Painting drawer" },
-            { 0x80277564, "Mirror Mario drawer" },
-            { 0x8027701C, "Mario hand / foot scaler"},
-            { 0x802777BC, "Mirror Mario inside out"},
-            { 0x80276CE4, "Mario torso tilter"},
-            { 0x80276DF4, "C-up head rotation" },
-        };
+            foreach ((uint addressUS, uint addressJP, string functionName) in functionNameList)
+            {
+                uint address = RomVersionConfig.Switch(addressUS, addressJP);
+                if (address == functionAddress) return functionName;
+            }
+            return null;
+        }
 
-        public override string Name {
-            get {
-                var currentDict = RomVersionConfig.Version == Structs.RomVersion.US ? DictionaryUS : DictionaryJP;
-                var function = Config.Stream.GetUInt32(Address + 0x14);
-                if (currentDict.ContainsKey(function)) return "Script: " + currentDict[function];
-                return "Script";
+        public override string Name
+        {
+            get
+            {
+                var functionAddress = Config.Stream.GetUInt32(Address + 0x14);
+                string functionName = GetFunctionName(functionNameList, functionAddress);
+                return "Script" + (functionName == null ? "" : ": " + functionName);
             }
         }
 
