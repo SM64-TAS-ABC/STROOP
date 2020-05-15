@@ -43,7 +43,11 @@ namespace STROOP.Controls
             _selectedWatchVarControls = new List<WatchVariableControl>();
             _reorderingWatchVarControls = new List<WatchVariableControl>();
 
-            Click += (sender, e) => UnselectAllVariables();
+            Click += (sender, e) =>
+            {
+                UnselectAllVariables();
+                StopEditing();
+            };
             ContextMenuStrip.Opening += (sender, e) => UnselectAllVariables();
         }
 
@@ -347,6 +351,14 @@ namespace STROOP.Controls
             foreach (WatchVariableControl control in _watchVarControls)
             {
                 control.UnselectText();
+            }
+        }
+
+        public void StopEditing()
+        {
+            foreach (WatchVariableControl control in _watchVarControls)
+            {
+                control.StopEditing();
             }
         }
 

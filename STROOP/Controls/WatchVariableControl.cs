@@ -959,6 +959,12 @@ namespace STROOP.Controls
             _valueTextBox.SelectionLength = 0;
         }
 
+        public void StopEditing()
+        {
+            EditMode = false;
+            RenameMode = false;
+        }
+
         public override string ToString()
         {
             return WatchVarPrecursor.ToString();
