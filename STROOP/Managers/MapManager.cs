@@ -739,6 +739,10 @@ namespace STROOP.Managers
             Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
         }
 
+        private static readonly List<string> speedVarNames = new List<string>()
+        {
+            "2D Scroll Speed", "3D Scroll Speed", "3D Translate Speed", "3D Rotate Speed",
+        };
         private static readonly List<string> inGameColoredVars = new List<string>() { };
         private static readonly List<string> cameraPosAndFocusColoredVars = new List<string>()
         {
@@ -773,6 +777,7 @@ namespace STROOP.Managers
                 control =>
                     control.VarName == "Mode" ? ColorUtilities.GetColorFromString("Green") :
                     coloredVarNames.Contains(control.VarName) ? ColorUtilities.GetColorFromString("Red") :
+                    speedVarNames.Contains(control.VarName) ? ColorUtilities.GetColorFromString("Grey") :
                     SystemColors.Control);
         }
     }

@@ -339,7 +339,7 @@ namespace STROOP.Structs
 
         public static void AddMap3DEntriesToDictionary()
         {
-            List<(string, Func<float>, Action<float>)> doubleEntries =
+            List<(string, Func<float>, Action<float>)> floatEntries =
                 new List<(string, Func<float>, Action<float>)>()
                 {
                     ("Map3DCameraX", () => SpecialConfig.Map3DCameraX, (float value) => SpecialConfig.Map3DCameraX = value),
@@ -357,7 +357,7 @@ namespace STROOP.Structs
                     ("Map3DFOV", () => SpecialConfig.Map3DFOV, (float value) => SpecialConfig.Map3DFOV = value),
                 };
 
-            foreach ((string key, Func<float> getter, Action<float> setter) in doubleEntries)
+            foreach ((string key, Func<float> getter, Action<float> setter) in floatEntries)
             {
                 _dictionary.Add(key,
                     ((uint dummy) =>
@@ -367,6 +367,30 @@ namespace STROOP.Structs
                     (float floatValue, uint dummy) =>
                     {
                         setter(floatValue);
+                        return true;
+                    }
+                ));
+            }
+
+            List<(string, Func<double>, Action<double>)> doubleEntries =
+                new List<(string, Func<double>, Action<double>)>()
+                {
+                    ("Map2DScrollSpeed", () => SpecialConfig.Map2DScrollSpeed, (double value) => SpecialConfig.Map2DScrollSpeed = value),
+                    ("Map3DScrollSpeed", () => SpecialConfig.Map3DScrollSpeed, (double value) => SpecialConfig.Map3DScrollSpeed = value),
+                    ("Map3DTranslateSpeed", () => SpecialConfig.Map3DTranslateSpeed, (double value) => SpecialConfig.Map3DTranslateSpeed = value),
+                    ("Map3DRotateSpeed", () => SpecialConfig.Map3DRotateSpeed, (double value) => SpecialConfig.Map3DRotateSpeed = value),
+                };
+
+            foreach ((string key, Func<double> getter, Action<double> setter) in doubleEntries)
+            {
+                _dictionary.Add(key,
+                    ((uint dummy) =>
+                    {
+                        return getter();
+                    },
+                    (double doubleValue, uint dummy) =>
+                    {
+                        setter(doubleValue);
                         return true;
                     }
                 ));

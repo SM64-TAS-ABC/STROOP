@@ -393,7 +393,7 @@ namespace STROOP.Map.Map3D
         {
             if (_isTranslating)
             {
-                float scale = 20;
+                float scale = (float)SpecialConfig.Map3DTranslateSpeed;
                 int pixelDiffX = e.X - _translateStartMouseX;
                 int pixelDiffY = e.Y - _translateStartMouseY;
                 pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
@@ -413,7 +413,7 @@ namespace STROOP.Map.Map3D
 
             if (_isRotating)
             {
-                float scale = 50;
+                float scale = (float)SpecialConfig.Map3DRotateSpeed;
                 int pixelDiffX = e.X - _rotateStartMouseX;
                 int pixelDiffY = e.Y - _rotateStartMouseY;
                 pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
@@ -433,7 +433,7 @@ namespace STROOP.Map.Map3D
             (float rotX, float rotY, float rotZ) =
                 ((float, float, float))MoreMath.TranslateRelatively(
                     SpecialConfig.Map3DCameraYaw, SpecialConfig.Map3DCameraPitch, SpecialConfig.Map3DCameraRoll,
-                    0, 0, multiplier * 100);
+                    0, 0, multiplier * SpecialConfig.Map3DScrollSpeed);
 
             SpecialConfig.Map3DMode = Map3DCameraMode.CameraPosAndAngle;
             SpecialConfig.Map3DCameraX += rotX;

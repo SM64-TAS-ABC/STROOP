@@ -24,4 +24,10 @@
   <Data base="None" specialType="Map3DFollowingYaw">Following Yaw</Data>
 
   <Data base="None" specialType="Map3DFOV">FOV</Data>
+
+  <Data base="None" specialType="Map2DScrollSpeed">2D Scroll Speed</Data>
+  <Data base="None" specialType="Map3DScrollSpeed">3D Scroll Speed</Data>
+  <Data base="None" specialType="Map3DTranslateSpeed">3D Translate Speed</Data>
+  <Data base="None" specialType="Map3DRotateSpeed">3D Rotate Speed</Data>
+
 </VarData>

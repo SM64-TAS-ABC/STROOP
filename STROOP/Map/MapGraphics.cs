@@ -431,7 +431,7 @@ namespace STROOP.Map
 
         private void OnScroll(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            ChangeScale2(e.Delta > 0 ? 1 : -1, 1.1);
+            ChangeScale2(e.Delta > 0 ? 1 : -1, SpecialConfig.Map2DScrollSpeed);
         }
 
         private void OnDoubleClick(object sender, EventArgs e)
