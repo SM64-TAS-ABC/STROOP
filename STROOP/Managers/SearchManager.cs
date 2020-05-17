@@ -20,6 +20,8 @@ namespace STROOP.Managers
         private enum ValueRelationship
         {
             EqualTo,
+            NotEqualTo,
+
             GreaterThan,
             LessThan,
             GreaterThanOrEqualTo,
@@ -304,6 +306,9 @@ namespace STROOP.Managers
                     case ValueRelationship.EqualTo:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.NotEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value != searchValue1.Value;
                     case ValueRelationship.GreaterThan:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value > searchValue1.Value;
@@ -359,6 +364,9 @@ namespace STROOP.Managers
                     case ValueRelationship.EqualTo:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.NotEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value != searchValue1.Value;
                     case ValueRelationship.GreaterThan:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value > searchValue1.Value;
@@ -414,6 +422,9 @@ namespace STROOP.Managers
                     case ValueRelationship.EqualTo:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.NotEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value != searchValue1.Value;
                     case ValueRelationship.GreaterThan:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value > searchValue1.Value;
@@ -469,6 +480,9 @@ namespace STROOP.Managers
                     case ValueRelationship.EqualTo:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.NotEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value != searchValue1.Value;
                     case ValueRelationship.GreaterThan:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value > searchValue1.Value;
@@ -524,6 +538,9 @@ namespace STROOP.Managers
                     case ValueRelationship.EqualTo:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.NotEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value != searchValue1.Value;
                     case ValueRelationship.GreaterThan:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value > searchValue1.Value;
@@ -579,6 +596,9 @@ namespace STROOP.Managers
                     case ValueRelationship.EqualTo:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.NotEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value != searchValue1.Value;
                     case ValueRelationship.GreaterThan:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value > searchValue1.Value;
@@ -634,6 +654,9 @@ namespace STROOP.Managers
                     case ValueRelationship.EqualTo:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.NotEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value != searchValue1.Value;
                     case ValueRelationship.GreaterThan:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value > searchValue1.Value;
@@ -689,6 +712,9 @@ namespace STROOP.Managers
                     case ValueRelationship.EqualTo:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value == searchValue1.Value;
+                    case ValueRelationship.NotEqualTo:
+                        if (!searchValue1.HasValue) return false;
+                        return memoryValue.Value != searchValue1.Value;
                     case ValueRelationship.GreaterThan:
                         if (!searchValue1.HasValue) return false;
                         return memoryValue.Value > searchValue1.Value;
