@@ -54,10 +54,10 @@ namespace STROOP.Structs.Configurations
         public static readonly uint FovFunctionUseDoorAddressJP = 0x8029A304;
         public static readonly uint FovFunctionUseDoorAddressEU = 0x80284B48;
 
-        public static uint FovFunctionCollectStarAddress { get => RomVersionConfig.Switch(FovFunctionCollectStarAddressUS, FovFunctionCollectStarAddressJP); }
+        public static uint FovFunctionCollectStarAddress { get => RomVersionConfig.Switch(FovFunctionCollectStarAddressUS, FovFunctionCollectStarAddressJP, null, FovFunctionCollectStarAddressEU); }
         public static readonly uint FovFunctionCollectStarAddressUS = 0x8029A984;
         public static readonly uint FovFunctionCollectStarAddressJP = 0x8029A268;
-
+        public static readonly uint FovFunctionCollectStarAddressEU = 0x80284AB8;
 
         public static uint FovFunctionAwakeValue { get => RomVersionConfig.Switch(FovFunctionAwakeValueUS, FovFunctionAwakeValueJP); }
         public static readonly uint FovFunctionAwakeValueUS = 0x0C0A2673;
