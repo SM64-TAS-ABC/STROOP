@@ -17,6 +17,7 @@ namespace STROOP.Structs.Configurations
         public static uint RomVersionTellValueUS = 0xC58400A4;
         public static uint RomVersionTellValueJP = 0x27BD0020;
         public static uint RomVersionTellValueSH = 0x8F250004;
+        public static uint RomVersionTellValueEU = 0x0C0BD4AC;
 
         public static void UpdateRomVersion(ComboBox comboBoxRomVersion)
         {
@@ -27,6 +28,7 @@ namespace STROOP.Structs.Configurations
                 case RomVersionSelection.AUTO_US:
                 case RomVersionSelection.AUTO_JP:
                 case RomVersionSelection.AUTO_SH:
+                case RomVersionSelection.AUTO_EU:
                     RomVersion? autoRomVersionNullable = GetRomVersionUsingTell();
                     if (!autoRomVersionNullable.HasValue) return;
                     RomVersion autoRomVersion = autoRomVersionNullable.Value;
@@ -44,6 +46,9 @@ namespace STROOP.Structs.Configurations
                             case RomVersion.SH:
                                 comboBoxRomVersion.SelectedItem = RomVersionSelection.AUTO_SH;
                                 break;
+                            case RomVersion.EU:
+                                comboBoxRomVersion.SelectedItem = RomVersionSelection.AUTO_EU;
+                                break;
                             default:
                                 throw new ArgumentOutOfRangeException();
                         }
@@ -58,6 +63,9 @@ namespace STROOP.Structs.Configurations
                 case RomVersionSelection.SH:
                     Version = RomVersion.SH;
                     break;
+                case RomVersionSelection.EU:
+                    Version = RomVersion.EU;
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -69,17 +77,18 @@ namespace STROOP.Structs.Configurations
             if (tell == RomVersionTellValueUS) return RomVersion.US;
             if (tell == RomVersionTellValueJP) return RomVersion.JP;
             if (tell == RomVersionTellValueSH) return RomVersion.SH;
+            if (tell == RomVersionTellValueEU) return RomVersion.EU;
             return RomVersion.US;
         }
 
-        public static uint Switch(uint? valUS = null, uint? valJP = null, uint? valSH = null)
+        public static uint Switch(uint? valUS = null, uint? valJP = null, uint? valSH = null, uint? valEU = null)
         {
-            uint address = SwitchOnly(valUS, valJP, valSH);
+            uint address = SwitchOnly(valUS, valJP, valSH, valEU);
             address = MappingConfig.HandleMapping(address);
             return address;
         }
 
-        private static uint SwitchOnly(uint? valUS = null, uint? valJP = null, uint? valSH = null)
+        private static uint SwitchOnly(uint? valUS = null, uint? valJP = null, uint? valSH = null, uint? valEU = null)
         {
             switch (Version)
             {
@@ -91,6 +100,9 @@ namespace STROOP.Structs.Configurations
                     break;
                 case RomVersion.SH:
                     if (valSH.HasValue) return valSH.Value;
+                    break;
+                case RomVersion.EU:
+                    if (valEU.HasValue) return valEU.Value;
                     break;
             }
             return 0;
