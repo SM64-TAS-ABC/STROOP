@@ -8,10 +8,11 @@ namespace STROOP.Structs.Configurations
 {
     public static class CameraConfig
     {
-        public static uint StructAddress { get => RomVersionConfig.Switch(StructAddressUS, StructAddressJP, StructAddressSH); }
+        public static uint StructAddress { get => RomVersionConfig.Switch(StructAddressUS, StructAddressJP, StructAddressSH, StructAddressEU); }
         public static readonly uint StructAddressUS = 0x8033C520;
         public static readonly uint StructAddressJP = 0x8033B1B0;
         public static readonly uint StructAddressSH = 0x8031EC78;
+        public static readonly uint StructAddressEU = 0x8030A7E0;
 
         public static readonly uint XOffset = 0x184;
         public static readonly uint YOffset = 0x188;
@@ -27,26 +28,31 @@ namespace STROOP.Structs.Configurations
         public static readonly uint MarioCamPossibleOffset = 0x165;
         public static readonly byte MarioCamPossibleMask = 0x04;
 
-        public static uint FOVAddress { get => RomVersionConfig.Switch(FOVAddressUS, FOVAddressJP); }
+        public static uint FOVAddress { get => RomVersionConfig.Switch(FOVAddressUS, FOVAddressJP, null, FOVAddressEU); }
         public static readonly uint FOVAddressUS = 0x8033C5A4;
         public static readonly uint FOVAddressJP = 0x8033B234;
+        public static readonly uint FOVAddressEU = 0x8030A924;
 
-        public static uint SecondaryObjectAddress { get => RomVersionConfig.Switch(SecondaryObjectAddressUS, SecondaryObjectAddressJP); }
+        public static uint SecondaryObjectAddress { get => RomVersionConfig.Switch(SecondaryObjectAddressUS, SecondaryObjectAddressJP, null, SecondaryObjectAddressEU); }
         public static readonly uint SecondaryObjectAddressUS = 0x8032DF30;
         public static readonly uint SecondaryObjectAddressJP = 0x8032CFD0;
+        public static readonly uint SecondaryObjectAddressEU = 0x802FA110;
 
 
-        public static uint FovFunctionAwakeAddress { get => RomVersionConfig.Switch(FovFunctionAwakeAddressUS, FovFunctionAwakeAddressJP); }
+        public static uint FovFunctionAwakeAddress { get => RomVersionConfig.Switch(FovFunctionAwakeAddressUS, FovFunctionAwakeAddressJP, null, FovFunctionAwakeAddressEU); }
         public static readonly uint FovFunctionAwakeAddressUS = 0x8029A7C8;
         public static readonly uint FovFunctionAwakeAddressJP = 0x8029A0AC;
+        public static readonly uint FovFunctionAwakeAddressEU = 0x802849C8;
 
-        public static uint FovFunctionSleepingAddress { get => RomVersionConfig.Switch(FovFunctionSleepingAddressUS, FovFunctionSleepingAddressJP); }
+        public static uint FovFunctionSleepingAddress { get => RomVersionConfig.Switch(FovFunctionSleepingAddressUS, FovFunctionSleepingAddressJP, null, FovFunctionSleepingAddressEU); }
         public static readonly uint FovFunctionSleepingAddressUS = 0x8029A774;
         public static readonly uint FovFunctionSleepingAddressJP = 0x8029A058;
+        public static readonly uint FovFunctionSleepingAddressEU = 0x80284974;
 
-        public static uint FovFunctionUseDoorAddress { get => RomVersionConfig.Switch(FovFunctionUseDoorAddressUS, FovFunctionUseDoorAddressJP); }
+        public static uint FovFunctionUseDoorAddress { get => RomVersionConfig.Switch(FovFunctionUseDoorAddressUS, FovFunctionUseDoorAddressJP, null, FovFunctionUseDoorAddressEU); }
         public static readonly uint FovFunctionUseDoorAddressUS = 0x8029AA20;
         public static readonly uint FovFunctionUseDoorAddressJP = 0x8029A304;
+        public static readonly uint FovFunctionUseDoorAddressEU = 0x80284B48;
 
         public static uint FovFunctionCollectStarAddress { get => RomVersionConfig.Switch(FovFunctionCollectStarAddressUS, FovFunctionCollectStarAddressJP); }
         public static readonly uint FovFunctionCollectStarAddressUS = 0x8029A984;
