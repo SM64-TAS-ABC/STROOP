@@ -29,6 +29,7 @@ namespace STROOP.Controls
         public readonly uint? OffsetUS;
         public readonly uint? OffsetJP;
         public readonly uint? OffsetSH;
+        public readonly uint? OffsetEU;
         public readonly uint? OffsetDefault;
 
         public readonly uint? Mask;
@@ -44,12 +45,13 @@ namespace STROOP.Controls
         {
             get
             {
-                if (OffsetUS.HasValue || OffsetJP.HasValue || OffsetSH.HasValue)
+                if (OffsetUS.HasValue || OffsetJP.HasValue || OffsetSH.HasValue || OffsetEU.HasValue)
                 {
                     return RomVersionConfig.Switch(
                         OffsetUS ?? 0,
                         OffsetJP ?? 0,
-                        OffsetSH ?? 0);
+                        OffsetSH ?? 0,
+                        OffsetEU ?? 0);
                 }
                 if (OffsetDefault.HasValue) return OffsetDefault.Value;
                 return 0;
@@ -67,9 +69,9 @@ namespace STROOP.Controls
         }
 
         public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
-            uint? offsetUS, uint? offsetJP, uint? offsetSH, uint? offsetDefault, uint? mask, int? shift)
+            uint? offsetUS, uint? offsetJP, uint? offsetSH, uint? offsetEU, uint? offsetDefault, uint? mask, int? shift)
         {
-            if (offsetDefault.HasValue && (offsetUS.HasValue || offsetJP.HasValue || offsetSH.HasValue))
+            if (offsetDefault.HasValue && (offsetUS.HasValue || offsetJP.HasValue || offsetSH.HasValue || offsetEU.HasValue))
             {
                 throw new ArgumentOutOfRangeException("Can't have both a default offset value and a rom-specific offset value");
             }
@@ -82,7 +84,7 @@ namespace STROOP.Controls
                     throw new ArgumentOutOfRangeException("Special var cannot have base address type " + baseAddressType);
                 }
 
-                if (offsetDefault.HasValue || offsetUS.HasValue || offsetJP.HasValue || offsetSH.HasValue)
+                if (offsetDefault.HasValue || offsetUS.HasValue || offsetJP.HasValue || offsetSH.HasValue || offsetEU.HasValue)
                 {
                     throw new ArgumentOutOfRangeException("Special var cannot have any type of offset");
                 }
@@ -98,6 +100,7 @@ namespace STROOP.Controls
             OffsetUS = offsetUS;
             OffsetJP = offsetJP;
             OffsetSH = offsetSH;
+            OffsetEU = offsetEU;
             OffsetDefault = offsetDefault;
 
             SpecialType = specialType;

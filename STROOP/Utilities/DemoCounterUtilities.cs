@@ -21,6 +21,7 @@ namespace STROOP.Structs
                 case RomVersion.JP:
                     return GetDemoCounterDescriptionJP(demoCounterNullable);
                 case RomVersion.SH:
+                case RomVersion.EU:
                     return "Unknown";
                 default:
                     throw new ArgumentOutOfRangeException();

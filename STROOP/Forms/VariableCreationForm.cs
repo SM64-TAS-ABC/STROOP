@@ -55,6 +55,7 @@ namespace STROOP.Forms
                 offsetUS: useOffsetDefault ? (uint?)null : offset,
                 offsetJP: useOffsetDefault ? (uint?)null : offset,
                 offsetSH: useOffsetDefault ? (uint?)null : offset,
+                offsetEU: useOffsetDefault ? (uint?)null : offset,
                 offsetDefault: useOffsetDefault ? offset : (uint?)null,
                 mask: null,
                 shift: null);

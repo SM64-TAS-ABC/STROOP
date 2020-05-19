@@ -124,6 +124,7 @@ namespace STROOP.Managers
                     offsetUS: address,
                     offsetJP: address,
                     offsetSH: address,
+                    offsetEU: address,
                     offsetDefault: null,
                     mask: null,
                     shift: null);

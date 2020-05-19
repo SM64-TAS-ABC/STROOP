@@ -67,6 +67,7 @@ namespace STROOP.Controls
             uint? offsetUS = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value);
             uint? offsetJP = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value);
             uint? offsetSH = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetSH"))?.Value);
+            uint? offsetEU = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetEU"))?.Value);
             uint? offsetDefault = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value);
             uint? mask = element.Attribute(XName.Get("mask")) != null ?
                 (uint?)ParsingUtilities.ParseHex(element.Attribute(XName.Get("mask")).Value) : null;
@@ -81,6 +82,7 @@ namespace STROOP.Controls
                     offsetUS,
                     offsetJP,
                     offsetSH,
+                    offsetEU,
                     offsetDefault,
                     mask,
                     shift);
@@ -254,6 +256,11 @@ namespace STROOP.Controls
                 xElement.Add(new XAttribute(
                     "offsetSH",
                     HexUtilities.FormatValue(WatchVar.OffsetSH.Value)));
+
+            if (WatchVar.OffsetEU != null)
+                xElement.Add(new XAttribute(
+                    "offsetEU`",
+                    HexUtilities.FormatValue(WatchVar.OffsetEU.Value)));
 
             if (WatchVar.MemoryTypeName != null)
                 xElement.Add(new XAttribute("type", WatchVar.MemoryTypeName));

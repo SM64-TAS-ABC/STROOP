@@ -1590,6 +1590,7 @@ namespace STROOP.Utilities
                                 offsetUS: null,
                                 offsetJP: null,
                                 offsetSH: null,
+                                offsetEU: null,
                                 offsetDefault: addresses[i],
                                 mask: null,
                                 shift: null);

@@ -302,6 +302,7 @@ namespace STROOP.Managers
                         offsetUS: null,
                         offsetJP: null,
                         offsetSH: null,
+                        offsetEU: null,
                         offsetDefault: null,
                         mask: null,
                         shift: null);
