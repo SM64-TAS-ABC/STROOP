@@ -62,7 +62,7 @@ namespace STROOP.Structs
         public uint SegmentTableUS = 0x8033B400;
         public uint SegmentTableJP = 0x8033A090;
         public uint SegmentTableSH = 0x8031DC58;
-        public uint SegmentTableEU = 0x0803096C8;
+        public uint SegmentTableEU = 0x803096C8;
         public uint BehaviorBankStart;
 
         Dictionary<Image, Image> _cachedBufferedObjectImages = new Dictionary<Image, Image>();
