@@ -8,10 +8,11 @@ namespace STROOP.Structs.Configurations
 {
     public static class FileConfig
     {
-        public static uint FileStructAddress { get => RomVersionConfig.Switch(FileStructAddressUS, FileStructAddressJP, FileStructAddressSH); }
+        public static uint FileStructAddress { get => RomVersionConfig.Switch(FileStructAddressUS, FileStructAddressJP, FileStructAddressSH, FileStructAddressEU); }
         public static readonly uint FileStructAddressUS = 0x80207700;
         public static readonly uint FileStructAddressJP = 0x80207B00;
         public static readonly uint FileStructAddressSH = 0x80203F00;
+        public static readonly uint FileStructAddressEU = 0x80202F00;
         
         public static readonly uint FileStructSize = 0x38;
 
