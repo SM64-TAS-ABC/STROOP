@@ -164,7 +164,6 @@ namespace STROOP
                     () =>
                     {
                         Config.RamSize = 0x800000;
-                        checkBoxUseRomHack.Checked = true;
                         splitContainerTas.Panel1Collapsed = true;
                         splitContainerTas.Panel2Collapsed = false;
                         Config.TasManager.ShowTaserVariables();
