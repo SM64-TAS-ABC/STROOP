@@ -124,6 +124,7 @@ namespace STROOP
                     "Inject Hitbox View Code",
                     "Free Movement Action",
                     "Expand RAM Size",
+                    "Save as Savestate",
                     "Show MHS Vars",
                     "Download Latest STROOP Release",
                     "Documentation",
@@ -145,6 +146,7 @@ namespace STROOP
                     {
                         Config.RamSize = 0x800000;
                     },
+                    () => saveAsSavestate(),
                     () =>
                     {
                         string varFilePath = @"Config/MhsData.xml";
@@ -234,11 +236,6 @@ namespace STROOP
                 buttonMoveTabRight,
                 new List<string>() { "Restore Recommended Tab Order" },
                 new List<Action>() { () => SavedSettingsConfig.InvokeRecommendedTabOrder() });
-
-            ControlUtilities.AddContextMenuStripFunctions(
-                buttonDisconnect,
-                new List<string>() { "Save as Savestate" },
-                new List<Action>() { () => saveAsSavestate() });
         }
 
         private void CreateManagers()
