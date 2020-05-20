@@ -20,9 +20,9 @@
   <Data groupList="Basic" base="None" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data groupList="Basic" base="None" specialType="PlayTime" subclass="String">Play Time</Data>
   <Data groupList="Basic" base="None" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
-  <Data groupList="Basic" type="uint" offsetUS="0x80361160" offsetJP="0x8035FDF0" base="Relative" subclass="Object">Currently Processed Obj</Data>
-  <Data groupList="Basic" type="short" offsetUS="0x8032DF08" offsetJP="0x8032CFA8" base="Relative">Animation Timer</Data>
-  <Data groupList="Basic" type="float" offsetUS="0x80336f98" offsetJP="0x80335DF8" base="Relative">Max Obj Render Dist</Data>
+  <Data groupList="Basic" type="uint" offsetUS="0x80361160" offsetJP="0x8035FDF0" offsetEU="0x8032ED90" base="Relative" subclass="Object">Currently Processed Obj</Data>
+  <Data groupList="Basic" type="short" offsetUS="0x8032DF08" offsetJP="0x8032CFA8" offsetEU="0x802FA0E8" base="Relative">Animation Timer</Data>
+  <Data groupList="Basic" type="float" offsetUS="0x80336f98" offsetJP="0x80335DF8" offsetEU="0x80304898" base="Relative">Max Obj Render Dist</Data>
 
   <Data groupList="Basic" type="byte" offsetUS="0x80222618" offsetJP="0x80222A18" base="Relative" subclass="Boolean" mask="0x20" invertBool="true">Music On</Data>
   <Data groupList="Basic" type="float" offsetUS="0x80222630" offsetJP="0x80222A30" base="Relative">Volume</Data>
