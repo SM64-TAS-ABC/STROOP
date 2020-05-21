@@ -24,8 +24,9 @@ namespace STROOP.Map
                 {
                     // Speed - 4 + 1.7 * normal.H
                     double slopeAccel = tri.SlopeAccel;
+                    double slopeDecel = 2.0 * tri.SlopeDecelValue;
                     double normalH = Math.Sqrt(tri.NormX * tri.NormX + tri.NormZ * tri.NormZ);
-                    return slopeAccel * normalH > 4;
+                    return slopeAccel * normalH > slopeDecel;
                 })
                 .ConvertAll(tri => tri.Address);
         }

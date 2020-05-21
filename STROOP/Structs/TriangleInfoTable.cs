@@ -111,6 +111,24 @@ namespace STROOP.Structs
             }
         }
 
+        public double GetSlopeDecelValue(short type)
+        {
+            short? slipperiness = GetSlipperiness(type);
+            switch (slipperiness)
+            {
+                case 0x00:
+                    return 0.2;
+                case 0x13:
+                    return 0.7;
+                case 0x14:
+                    return 2.0;
+                case 0x15:
+                    return 3.0;
+                default:
+                    return Double.NaN;
+            }
+        }
+
         public bool? GetExertion(short type)
         {
             if (!_typeTable.ContainsKey(type))
