@@ -93,6 +93,24 @@ namespace STROOP.Structs
             }
         }
 
+        public double GetSlopeAccel(short type)
+        {
+            short? slipperiness = GetSlipperiness(type);
+            switch (slipperiness)
+            {
+                case 0x00:
+                    return 5.3;
+                case 0x13:
+                    return 2.7;
+                case 0x14:
+                    return 1.7;
+                case 0x15:
+                    return 0.0;
+                default:
+                    return Double.NaN;
+            }
+        }
+
         public bool? GetExertion(short type)
         {
             if (!_typeTable.ContainsKey(type))
