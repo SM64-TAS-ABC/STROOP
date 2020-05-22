@@ -148,7 +148,7 @@ namespace STROOP.Structs
 
         public static void WriteFileBytes(string filePath, byte[] bytes)
         {
-            using (FileStream fs = File.Open(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+            using (FileStream fs = File.Open(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
             {
                 fs.Write(bytes, 0, bytes.Length);
                 fs.SetLength(bytes.Length);
