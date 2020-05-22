@@ -62,12 +62,12 @@ namespace STROOP.Structs
             short? slipperiness = GetSlipperiness(type);
             switch (slipperiness)
             {
-                case 0x00:
-                    return "Default";
                 case 0x13:
                     return "Slide";
                 case 0x14:
                     return "Slippery";
+                case 0x00:
+                    return "Default";
                 case 0x15:
                     return "Non-Slippery";
                 default:
@@ -80,12 +80,12 @@ namespace STROOP.Structs
             short? slipperiness = GetSlipperiness(type);
             switch (slipperiness)
             {
-                case 0x00:
-                    return 0.92;
                 case 0x13:
                     return 0.98;
                 case 0x14:
                     return 0.96;
+                case 0x00:
+                    return 0.92;
                 case 0x15:
                     return 0.92;
                 default:
@@ -98,11 +98,11 @@ namespace STROOP.Structs
             short? slipperiness = GetSlipperiness(type);
             switch (slipperiness)
             {
-                case 0x00:
-                    return 5.3;
                 case 0x13:
-                    return 2.7;
+                    return 5.3;
                 case 0x14:
+                    return 2.7;
+                case 0x00:
                     return 1.7;
                 case 0x15:
                     return 0.0;
@@ -116,11 +116,11 @@ namespace STROOP.Structs
             short? slipperiness = GetSlipperiness(type);
             switch (slipperiness)
             {
-                case 0x00:
-                    return 0.2;
                 case 0x13:
-                    return 0.7;
+                    return 0.2;
                 case 0x14:
+                    return 0.7;
+                case 0x00:
                     return 2.0;
                 case 0x15:
                     return 3.0;
