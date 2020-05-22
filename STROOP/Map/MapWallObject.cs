@@ -19,6 +19,7 @@ namespace STROOP.Map
     public abstract class MapWallObject : MapTriangleObject
     {
         private float? _relativeHeight;
+        private float? _absoluteHeight;
 
         public MapWallObject()
             : base()
@@ -28,12 +29,15 @@ namespace STROOP.Map
             Color = Color.Green;
 
             _relativeHeight = null;
+            _absoluteHeight = null;
         }
 
         public override void DrawOn2DControl()
         {
             float marioHeight = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : (float?)null;
+            height = height ?? _absoluteHeight;
+
             List<(float x1, float z1, float x2, float z2, bool xProjection)> wallData = GetTriangles()
                 .ConvertAll(tri => MapUtilities.Get2DWallDataFromTri(tri, height))
                 .FindAll(wallDataNullable => wallDataNullable.HasValue)
@@ -126,9 +130,30 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
+            ToolStripMenuItem itemSetAbsoluteHeight = new ToolStripMenuItem("Set Absolute Height");
+            itemSetAbsoluteHeight.Click += (sender, e) =>
+            {
+                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the height at which you want to see the wall triangles.");
+                float? absoluteHeightNullable = ParsingUtilities.ParseFloatNullable(text);
+                if (!absoluteHeightNullable.HasValue) return;
+                MapObjectSettings settings = new MapObjectSettings(
+                    wallChangeAbsoluteHeight: true, wallNewAbsoluteHeight: absoluteHeightNullable.Value);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
+            ToolStripMenuItem itemClearAbsoluteHeight = new ToolStripMenuItem("Clear Absolute Height");
+            itemClearAbsoluteHeight.Click += (sender, e) =>
+            {
+                MapObjectSettings settings = new MapObjectSettings(
+                    wallChangeAbsoluteHeight: true, wallNewAbsoluteHeight: null);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
             BetterContextMenuStrip contextMenuStrip = new BetterContextMenuStrip();
             contextMenuStrip.AddToEndingList(itemSetRelativeHeight);
             contextMenuStrip.AddToEndingList(itemClearRelativeHeight);
+            contextMenuStrip.AddToEndingList(itemSetAbsoluteHeight);
+            contextMenuStrip.AddToEndingList(itemClearAbsoluteHeight);
 
             return contextMenuStrip;
         }
@@ -140,6 +165,11 @@ namespace STROOP.Map
             if (settings.WallChangeRelativeHeight)
             {
                 _relativeHeight = settings.WallNewRelativeHeight;
+            }
+
+            if (settings.WallChangeAbsoluteHeight)
+            {
+                _absoluteHeight = settings.WallNewAbsoluteHeight;
             }
         }
 
