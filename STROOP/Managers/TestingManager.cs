@@ -461,7 +461,45 @@ namespace STROOP.Managers
             int zMax = (int)zMaxDouble.Value;
             int y = (int)yDouble.Value;
 
-            InfoForm.ShowValue(xMin + " " + xMax + " " + zMin + " " + zMax + " " + y);
+            List<TriangleDataModel> levelTris = TriangleUtilities.GetLevelTriangles();
+            List<TriangleDataModel> floorTris = levelTris.FindAll(tri => tri.IsFloor());
+            List<TriangleDataModel> ceilingTris = levelTris.FindAll(tri => tri.IsCeiling());
+
+            List<(double x, double z)> invisibleWallPoints = new List<(double x, double z)>();
+
+            for (int x = xMin; x <= xMax - 1; x++)
+            {
+                for (int z = zMin; z <= zMax - 1; z++)
+                {
+                    double x05 = x + 0.5;
+                    double z05 = z + 0.5;
+
+                    float highestFloorHeightBelow = float.NegativeInfinity;
+                    float highestCeilingHeightBelow = float.NegativeInfinity;
+
+                    floorTris.ForEach(tri =>
+                    {
+                        float? height = tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x05, z05);
+                        if (!height.HasValue || height.Value > y) return;
+                        highestFloorHeightBelow = Math.Max(highestFloorHeightBelow, height.Value);
+                    });
+
+                    ceilingTris.ForEach(tri =>
+                    {
+                        float? height = tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x05, z05);
+                        if (!height.HasValue || height.Value > y) return;
+                        highestCeilingHeightBelow = Math.Max(highestCeilingHeightBelow, height.Value);
+                    });
+
+                    bool isOutOfBounds = highestFloorHeightBelow == float.NegativeInfinity;
+                    bool isCeiling = highestCeilingHeightBelow > highestFloorHeightBelow;
+                    if (isOutOfBounds || isCeiling) invisibleWallPoints.Add((x05, z05));
+                }
+            }
+
+            List<string> lines = invisibleWallPoints.ConvertAll(point => point.x + "\t" + point.z);
+            string output = string.Join("\r\n", lines);
+            InfoForm.ShowValue(output, "Invisible Wall Points", "Invisible Wall Points");
         }
 
         private List<uint> GetScuttlebugAddresses()

@@ -326,5 +326,13 @@ namespace STROOP.Models
 
             return true;
         }
+
+        public float? GetTruncatedHeightOnTriangleIfInsideTriangle(double doubleX, double doubleZ)
+        {
+            short shortX = (short)doubleX;
+            short shortZ = (short)doubleZ;
+            if (!MoreMath.IsPointInsideTriangle(shortX, shortZ, X1, Z1, X2, Z2, X3, Z3)) return null;
+            return GetTruncatedHeightOnTriangle(doubleX, doubleZ);
+        }
     }
 }
