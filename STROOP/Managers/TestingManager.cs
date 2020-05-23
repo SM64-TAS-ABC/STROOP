@@ -168,6 +168,14 @@ namespace STROOP.Managers
         string _lastTtcSaveState;
         HashSet<string> _ttcSaveStates;
 
+        // Invisible Walls
+        TextBox _textBoxTestingInvisibleWallsXMin;
+        TextBox _textBoxTestingInvisibleWallsXMax;
+        TextBox _textBoxTestingInvisibleWallsZMin;
+        TextBox _textBoxTestingInvisibleWallsZMax;
+        TextBox _textBoxTestingInvisibleWallsY;
+        Button _buttonTestingInvisibleWallsCalculate;
+
         public TestingManager(TabPage tabControl)
         {
             // Conversion
@@ -425,6 +433,35 @@ namespace STROOP.Managers
                 _lastTtcSaveState = null;
                 _ttcSaveStates = new HashSet<string>();
             };
+
+            // Invisible Walls
+            GroupBox groupBoxTestingInvisibleWalls = tabControl.Controls["groupBoxTestingInvisibleWalls"] as GroupBox;
+            _textBoxTestingInvisibleWallsXMin = groupBoxTestingInvisibleWalls.Controls["textBoxTestingInvisibleWallsXMin"] as TextBox;
+            _textBoxTestingInvisibleWallsXMax = groupBoxTestingInvisibleWalls.Controls["textBoxTestingInvisibleWallsXMax"] as TextBox;
+            _textBoxTestingInvisibleWallsZMin = groupBoxTestingInvisibleWalls.Controls["textBoxTestingInvisibleWallsZMin"] as TextBox;
+            _textBoxTestingInvisibleWallsZMax = groupBoxTestingInvisibleWalls.Controls["textBoxTestingInvisibleWallsZMax"] as TextBox;
+            _textBoxTestingInvisibleWallsY = groupBoxTestingInvisibleWalls.Controls["textBoxTestingInvisibleWallsY"] as TextBox;
+            _buttonTestingInvisibleWallsCalculate = groupBoxTestingInvisibleWalls.Controls["buttonTestingInvisibleWallsCalculate"] as Button;
+            _buttonTestingInvisibleWallsCalculate.Click += (sender, e) => CalculateInvisibleWalls();
+        }
+
+        private void CalculateInvisibleWalls()
+        {
+            double? xMinDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsXMin.Text);
+            double? xMaxDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsXMax.Text);
+            double? zMinDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsZMin.Text);
+            double? zMaxDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsZMax.Text);
+            double? yDouble = ParsingUtilities.ParseDoubleNullable(_textBoxTestingInvisibleWallsY.Text);
+
+            if (!xMinDouble.HasValue || !xMaxDouble.HasValue || !zMinDouble.HasValue || !zMaxDouble.HasValue || !yDouble.HasValue) return;
+
+            int xMin = (int)xMinDouble.Value;
+            int xMax = (int)xMaxDouble.Value;
+            int zMin = (int)zMinDouble.Value;
+            int zMax = (int)zMaxDouble.Value;
+            int y = (int)yDouble.Value;
+
+            InfoForm.ShowValue(xMin + " " + xMax + " " + zMin + " " + zMax + " " + y);
         }
 
         private List<uint> GetScuttlebugAddresses()
