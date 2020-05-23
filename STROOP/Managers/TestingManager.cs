@@ -467,10 +467,12 @@ namespace STROOP.Managers
 
             List<(double x, double z)> invisibleWallPoints = new List<(double x, double z)>();
 
+            int counter = 0;
             for (int x = xMin; x <= xMax - 1; x++)
             {
                 for (int z = zMin; z <= zMax - 1; z++)
                 {
+                    counter++;
                     double x05 = x + 0.5;
                     double z05 = z + 0.5;
 
@@ -499,7 +501,7 @@ namespace STROOP.Managers
 
             List<string> lines = invisibleWallPoints.ConvertAll(point => point.x + "\t" + point.z);
             string output = string.Join("\r\n", lines);
-            InfoForm.ShowValue(output, "Invisible Wall Points", "Invisible Wall Points");
+            InfoForm.ShowValue(output, "Invisible Wall Points", "Invisible Wall Points (" + counter + " points checked)");
         }
 
         private List<uint> GetScuttlebugAddresses()
