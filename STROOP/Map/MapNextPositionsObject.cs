@@ -18,7 +18,7 @@ namespace STROOP.Map
     {
         private int _redMarioTex = -1;
         private int _blueMarioTex = -1;
-        private int _orangeMarioText = -1;
+        private int _orangeMarioTex = -1;
 
         private bool _useColoredMarios = true;
         private bool _showQuarterSteps = true;
@@ -139,7 +139,7 @@ namespace STROOP.Map
                     frameStep * effectiveSpeed, marioAngle, marioX, marioZ));
 
             int fullStepTex = _useColoredMarios ? _blueMarioTex : _redMarioTex;
-            int quarterStepTex = _useColoredMarios ? _orangeMarioText : _redMarioTex;
+            int quarterStepTex = _useColoredMarios ? _orangeMarioTex : _redMarioTex;
             List<(float x, float y, float z, float angle, int tex)> data =
                 new List<(float x, float y, float z, float angle, int tex)>();
             for (int i = 0; i < points2D.Count; i++)
@@ -165,9 +165,9 @@ namespace STROOP.Map
                 _blueMarioTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.BlueMarioMapImage as Bitmap);
             }
-            if (_orangeMarioText == -1)
+            if (_orangeMarioTex == -1)
             {
-                _orangeMarioText = MapUtilities.LoadTexture(
+                _orangeMarioTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.OrangeMarioMapImage as Bitmap);
             }
         }

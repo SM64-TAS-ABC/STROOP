@@ -16,7 +16,9 @@ namespace STROOP.Map
 {
     public class MapPreviousPositionsObject : MapObject
     {
-        private int _marioTex = -1;
+        private int _redMarioTex = -1;
+        private int _greenMarioTex = -1;
+        private int _orangeMarioTex = -1;
 
         public MapPreviousPositionsObject()
             : base()
@@ -42,7 +44,6 @@ namespace STROOP.Map
         public override void DrawOn2DControl()
         {
             List<(float x, float y, float z, float angle, int tex)> data = GetData();
-            data.Reverse();
             foreach (var dataPoint in data)
             {
                 (float x, float y, float z, float angle, int tex) = dataPoint;
@@ -110,36 +111,66 @@ namespace STROOP.Map
 
         public List<(float x, float y, float z, float angle, int tex)> GetData()
         {
-            float pos0X = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x128);
-            float pos0Y = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x12C);
-            float pos0Z = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x130);
-            float pos1X = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x158);
-            float pos1Y = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x15C);
-            float pos1Z = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x160);
-            float pos2X = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x188);
-            float pos2Y = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18C);
-            float pos2Z = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x190);
-            float pos3X = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1B8);
-            float pos3Y = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1BC);
-            float pos3Z = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C0);
+            float pos1X = Config.Stream.GetSingle(0x80372F00);
+            float pos1Y = Config.Stream.GetSingle(0x80372F04);
+            float pos1Z = Config.Stream.GetSingle(0x80372F08);
+            float pos2X = Config.Stream.GetSingle(0x80372F10);
+            float pos2Y = Config.Stream.GetSingle(0x80372F14);
+            float pos2Z = Config.Stream.GetSingle(0x80372F18);
+            float pos3X = Config.Stream.GetSingle(0x80372F20);
+            float pos3Y = Config.Stream.GetSingle(0x80372F24);
+            float pos3Z = Config.Stream.GetSingle(0x80372F28);
+            float pos4X = Config.Stream.GetSingle(0x80372F30);
+            float pos4Y = Config.Stream.GetSingle(0x80372F34);
+            float pos4Z = Config.Stream.GetSingle(0x80372F38);
+            float pos5X = Config.Stream.GetSingle(0x80372F40);
+            float pos5Y = Config.Stream.GetSingle(0x80372F44);
+            float pos5Z = Config.Stream.GetSingle(0x80372F48);
+            float pos6X = Config.Stream.GetSingle(0x80372F50);
+            float pos6Y = Config.Stream.GetSingle(0x80372F54);
+            float pos6Z = Config.Stream.GetSingle(0x80372F58);
+            float pos7X = Config.Stream.GetSingle(0x80372F60);
+            float pos7Y = Config.Stream.GetSingle(0x80372F64);
+            float pos7Z = Config.Stream.GetSingle(0x80372F68);
+            float pos8X = Config.Stream.GetSingle(0x80372F70);
+            float pos8Y = Config.Stream.GetSingle(0x80372F74);
+            float pos8Z = Config.Stream.GetSingle(0x80372F78);
+            float pos9X = Config.Stream.GetSingle(0x80372F80);
+            float pos9Y = Config.Stream.GetSingle(0x80372F84);
+            float pos9Z = Config.Stream.GetSingle(0x80372F88);
 
             ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
-            List<(float x, float y, float z, float angle, int tex)> data =
-                new List<(float x, float y, float z, float angle, int tex)>();
-            data.Add((pos0X, pos0Y, pos0Z, marioAngle, _marioTex));
-            data.Add((pos1X, pos1Y, pos1Z, marioAngle, _marioTex));
-            data.Add((pos2X, pos2Y, pos2Z, marioAngle, _marioTex));
-            data.Add((pos3X, pos3Y, pos3Z, marioAngle, _marioTex));
-            return data;
+            return new List<(float x, float y, float z, float angle, int tex)>()
+            {
+                (pos1X, pos1Y, pos1Z, marioAngle, _greenMarioTex),
+                (pos2X, pos2Y, pos2Z, marioAngle, _orangeMarioTex),
+                (pos3X, pos3Y, pos3Z, marioAngle, _greenMarioTex),
+                (pos4X, pos4Y, pos4Z, marioAngle, _orangeMarioTex),
+                (pos5X, pos5Y, pos5Z, marioAngle, _greenMarioTex),
+                (pos6X, pos6Y, pos6Z, marioAngle, _orangeMarioTex),
+                (pos7X, pos7Y, pos7Z, marioAngle, _greenMarioTex),
+                (pos8X, pos8Y, pos8Z, marioAngle, _orangeMarioTex),
+                (pos9X, pos9Y, pos9Z, marioAngle, _redMarioTex),
+            };
         }
 
         public override void Update()
         {
-            if (_marioTex == -1)
+            if (_redMarioTex == -1)
             {
-                _marioTex = MapUtilities.LoadTexture(
+                _redMarioTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.MarioMapImage as Bitmap);
+            }
+            if (_greenMarioTex == -1)
+            {
+                _greenMarioTex = MapUtilities.LoadTexture(
+                    Config.ObjectAssociations.GreenMarioMapImage as Bitmap);
+            }
+            if (_orangeMarioTex == -1)
+            {
+                _orangeMarioTex = MapUtilities.LoadTexture(
+                    Config.ObjectAssociations.OrangeMarioMapImage as Bitmap);
             }
         }
 
