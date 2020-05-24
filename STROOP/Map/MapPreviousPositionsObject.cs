@@ -53,6 +53,24 @@ namespace STROOP.Map
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
                 MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
             }
+
+            GL.BindTexture(TextureTarget.Texture2D, -1);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+            GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, OpacityByte);
+            GL.LineWidth(OutlineWidth);
+            GL.Begin(PrimitiveType.Lines);
+            for (int i = 0; i < data.Count - 1; i++)
+            {
+                (float x1, float y1, float z1, float angle1, int tex1) = data[i];
+                (float x2, float y2, float z2, float angle2, int tex2) = data[i + 1];
+                (float x, float z) vertex1ForControl = MapUtilities.ConvertCoordsForControl(x1, z1);
+                (float x, float z) vertex2ForControl = MapUtilities.ConvertCoordsForControl(x2, z2);
+                GL.Vertex2(vertex1ForControl.x, vertex1ForControl.z);
+                GL.Vertex2(vertex2ForControl.x, vertex2ForControl.z);
+            }
+            GL.End();
+            GL.Color4(1, 1, 1, 1.0f);
         }
 
         public override void DrawOn3DControl()
