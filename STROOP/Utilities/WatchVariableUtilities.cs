@@ -193,10 +193,6 @@ namespace STROOP.Structs
                         return coinAddresses.Count > 0 ? new List<uint>() { coinAddresses.Last() } : BaseAddressListEmpty;
                     }
 
-                case BaseAddressTypeEnum.Ghost:
-                    return Config.ObjectSlotsManager.GetLoadedObjectsWithName("Mario Ghost")
-                        .ConvertAll(objectDataModel => objectDataModel.Address);
-
                 case BaseAddressTypeEnum.HackedArea:
                     return new List<uint> { MiscConfig.HackedAreaAddress };
 

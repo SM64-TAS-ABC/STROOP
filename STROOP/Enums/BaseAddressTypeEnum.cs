@@ -45,7 +45,6 @@ namespace STROOP.Structs
         Music,
         LastCoin,
 
-        Ghost,
         HackedArea,
         CamHack,
         GfxNode,
