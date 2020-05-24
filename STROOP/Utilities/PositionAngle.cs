@@ -566,7 +566,7 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.GoombaProjection:
                         return GetGoombaProjection(Address.Value).x;
                     case PositionAngleTypeEnum.Ghost:
-                        return GetObjectValue("Mario Ghost", CoordinateAngle.X, gfx: true);
+                        return Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.XOffset);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.X);
                     case PositionAngleTypeEnum.ObjTri:
@@ -662,7 +662,7 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.GoombaProjection:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.YOffset);
                     case PositionAngleTypeEnum.Ghost:
-                        return GetObjectValue("Mario Ghost", CoordinateAngle.Y, gfx: true);
+                        return Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YOffset);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.ObjTri:
@@ -758,7 +758,7 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.GoombaProjection:
                         return GetGoombaProjection(Address.Value).z;
                     case PositionAngleTypeEnum.Ghost:
-                        return GetObjectValue("Mario Ghost", CoordinateAngle.Z, gfx: true);
+                        return Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.ZOffset);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.ObjTri:
@@ -854,7 +854,7 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.GoombaProjection:
                         return MoreMath.NormalizeAngleUshort(Config.Stream.GetInt32(Address.Value + ObjectConfig.GoombaTargetAngleOffset));
                     case PositionAngleTypeEnum.Ghost:
-                        return GetObjectValue("Mario Ghost", CoordinateAngle.Angle, gfx: true);
+                        return Config.Stream.GetUInt16(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawFacingOffset);
                     case PositionAngleTypeEnum.Tri:
                         return Double.NaN;
                     case PositionAngleTypeEnum.ObjTri:
@@ -1125,7 +1125,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.GoombaProjection:
                     return false;
                 case PositionAngleTypeEnum.Ghost:
-                    return SetObjectValue(value, "Mario Ghost", CoordinateAngle.X, gfx: true);
+                    return false;
                 case PositionAngleTypeEnum.Tri:
                     return SetTriangleVertexComponent((short)value, Address.Value, Index.Value, Coordinate.X);
                 case PositionAngleTypeEnum.ObjTri:
@@ -1221,7 +1221,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.GoombaProjection:
                     return false;
                 case PositionAngleTypeEnum.Ghost:
-                    return SetObjectValue(value, "Mario Ghost", CoordinateAngle.Y, gfx: true);
+                    return false;
                 case PositionAngleTypeEnum.Tri:
                     return SetTriangleVertexComponent((short)value, Address.Value, Index.Value, Coordinate.Y);
                 case PositionAngleTypeEnum.ObjTri:
@@ -1317,7 +1317,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.GoombaProjection:
                     return false;
                 case PositionAngleTypeEnum.Ghost:
-                    return SetObjectValue(value, "Mario Ghost", CoordinateAngle.Z, gfx: true);
+                    return false;
                 case PositionAngleTypeEnum.Tri:
                     return SetTriangleVertexComponent((short)value, Address.Value, Index.Value, Coordinate.Z);
                 case PositionAngleTypeEnum.ObjTri:
@@ -1422,7 +1422,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.GoombaProjection:
                     return false;
                 case PositionAngleTypeEnum.Ghost:
-                    return SetObjectValue(value, "Mario Ghost", CoordinateAngle.Angle, gfx: true);
+                    return false;
                 case PositionAngleTypeEnum.Tri:
                     return false;
                 case PositionAngleTypeEnum.ObjTri:

@@ -10,8 +10,8 @@ namespace STROOP.Structs.Configurations
     {
         public static readonly uint DataStartAddress = 0x80400490;
         public static readonly uint DataStructSize = 0x30;
-
         public static readonly uint NumFramesAddress = 0x804003FC;
+        public static uint CurrentGhostStruct { get => DataStartAddress + Config.Stream.GetUInt32(NumFramesAddress) * DataStructSize; }
 
         public static readonly uint XOffset = 0x00;
         public static readonly uint YOffset = 0x28;

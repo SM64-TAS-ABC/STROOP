@@ -211,7 +211,7 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.GhostHack:
                     return new List<uint>
                     {
-                        GhostHackConfig.DataStartAddress + Config.Stream.GetUInt32(GhostHackConfig.NumFramesAddress) * GhostHackConfig.DataStructSize
+                        GhostHackConfig.CurrentGhostStruct
                     };
 
                 default:
