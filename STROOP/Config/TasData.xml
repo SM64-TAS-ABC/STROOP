@@ -21,8 +21,6 @@
 
   <Data groupList="TAS" base="Mario" offset="0x54" type="float" color="Red">H Speed</Data>
   <Data groupList="TAS" base="Mario" offset="0x4C" type="float" color="Red">V Speed</Data>
-  <Data groupList="TAS" base="None" specialType="MovementHorizontal" color="Yellow">Delta Horizontal</Data>
-  <Data groupList="TAS" base="None" specialType="QFrameCountEstimate" color="Yellow">QFrames Est.</Data>
   <Data groupList="TAS" base="Mario" offset="0x2E" type="ushort" subclass="Angle" yaw="true" color="Red">Yaw Facing</Data>
   <Data groupList="TAS" base="Mario" offset="0x24" type="ushort" subclass="Angle" yaw="true" color="Red">Yaw Intended</Data>
   <Data groupList="TAS" base="None" display="short" specialType="DeltaYawIntendedFacing" subclass="Angle" color="Red">DYaw Intend-Face</Data>
