@@ -3878,6 +3878,44 @@ namespace STROOP.Structs
                     return SpecialConfig.PointAnglePA.SetAngle(doubleValue);
                 }));
 
+            // Ghost vars
+
+            _dictionary.Add("GhostActionDescription",
+                ((uint dummy) =>
+                {
+                    uint action = Config.Stream.GetUInt32(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.ActionOffset);
+                    return TableConfig.MarioActions.GetActionName(action);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("GhostDeltaHSpeed",
+                ((uint dummy) =>
+                {
+                    float marioHSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    float ghostHSpeed = Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.HSpeedOffset);
+                    return marioHSpeed - ghostHSpeed;
+                },
+                (float deltaHSpeed, uint dummy) =>
+                {
+                    float ghostHSpeed = Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.HSpeedOffset);
+                    float newMarioHSpeed = ghostHSpeed + deltaHSpeed;
+                    return Config.Stream.SetValue(newMarioHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                }));
+
+            _dictionary.Add("GhostDeltaYSpeed",
+                ((uint dummy) =>
+                {
+                    float marioYSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
+                    float ghostYSpeed = Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YSpeedOffset);
+                    return marioYSpeed - ghostYSpeed;
+                },
+                (float deltaYSpeed, uint dummy) =>
+                {
+                    float ghostYSpeed = Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YSpeedOffset);
+                    float newMarioYSpeed = ghostYSpeed + deltaYSpeed;
+                    return Config.Stream.SetValue(newMarioYSpeed, MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
+                }));
+
             // Mupen vars
 
             _dictionary.Add("MupenLag",
