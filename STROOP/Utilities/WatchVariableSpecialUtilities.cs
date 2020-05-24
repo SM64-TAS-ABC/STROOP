@@ -3945,6 +3945,17 @@ namespace STROOP.Structs
                 }
             ));
 
+            _dictionary.Add("HorizontalMovement",
+                ((uint dummy) =>
+                {
+                    float pos1X = Config.Stream.GetSingle(0x80372F00);
+                    float pos1Z = Config.Stream.GetSingle(0x80372F08);
+                    float pos9X = Config.Stream.GetSingle(0x80372F80);
+                    float pos9Z = Config.Stream.GetSingle(0x80372F88);
+                    return MoreMath.GetDistanceBetween(pos1X, pos1Z, pos9X, pos9Z);
+                },
+                DEFAULT_SETTER));
+
             // Mupen vars
 
             _dictionary.Add("MupenLag",
