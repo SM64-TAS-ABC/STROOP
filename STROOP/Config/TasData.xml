@@ -35,6 +35,16 @@
   <Data groupList="TAS" base="Ghost" offset="0x20" type="float" color="Purple">Ghost X</Data>
   <Data groupList="TAS" base="Ghost" offset="0x24" type="float" color="Purple">Ghost Y</Data>
   <Data groupList="TAS" base="Ghost" offset="0x28" type="float" color="Purple">Ghost Z</Data>
+
+  <Data groupList="TAS" base="GhostHack" offset="0x00" type="float" color="Purple">Ghost X</Data>
+  <Data groupList="TAS" base="GhostHack" offset="0x28" type="float" color="Purple">Ghost Y</Data>
+  <Data groupList="TAS" base="GhostHack" offset="0x08" type="float" color="Purple">Ghost Z</Data>
+  <Data groupList="TAS" base="GhostHack" offset="0x18" type="float" color="Purple">Ghost H Speed</Data>
+  <Data groupList="TAS" base="GhostHack" offset="0x1C" type="float" color="Purple">Ghost Y Speed</Data>
+  <Data groupList="TAS" base="GhostHack" offset="0x06" type="short" color="Purple">Ghost Yaw Facing</Data>
+  <Data groupList="TAS" base="GhostHack" offset="0x24" type="short" color="Purple">Ghost Yaw Intended</Data>
+  <Data groupList="TAS" base="GhostHack" offset="0x20" type="uint" useHex="true" color="Purple">Ghost Action</Data>
+
   <Data groupList="TAS" base="Relative" offset="0x804003FC" type="int" color="Purple">Ghost Frame</Data>
   <Data groupList="TAS" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative" color="Green">Global Timer</Data>
   <Data groupList="TAS" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative" color="Green">RNG Value</Data>

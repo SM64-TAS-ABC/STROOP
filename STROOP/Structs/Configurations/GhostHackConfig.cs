@@ -8,9 +8,8 @@ namespace STROOP.Structs.Configurations
 {
     public static class GhostHackConfig
     {
-        public static readonly uint MemoryAddress = 0x80400000;
-        public static readonly uint FrameDataStructSize = 0x10;
+        public static readonly uint DataStartAddress = 0x80400490;
+        public static readonly uint DataStructSize = 0x30;
         public static readonly uint NumFramesAddress = 0x804003FC;
-        public static readonly uint FrameOffset = 67;
     }
 }
