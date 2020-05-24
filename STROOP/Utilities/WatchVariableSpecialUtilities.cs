@@ -3916,6 +3916,35 @@ namespace STROOP.Structs
                     return Config.Stream.SetValue(newMarioYSpeed, MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
                 }));
 
+            _dictionary.Add("GhostDeltaYawFacing",
+                ((uint dummy) =>
+                {
+                    ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    ushort ghostYawFacing = Config.Stream.GetUInt16(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawFacingOffset);
+                    return MoreMath.NormalizeAngleShort(marioYawFacing - ghostYawFacing);
+                },
+                (short deltaYawFacing, uint dummy) =>
+                {
+                    ushort ghostYawFacing = Config.Stream.GetUInt16(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawFacingOffset);
+                    ushort newMarioYawFacing = MoreMath.NormalizeAngleUshort(ghostYawFacing + deltaYawFacing);
+                    return Config.Stream.SetValue(newMarioYawFacing, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                }));
+
+            _dictionary.Add("GhostDeltaYawIntended",
+                ((uint dummy) =>
+                {
+                    ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
+                    ushort ghostYawIntended = Config.Stream.GetUInt16(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawIntendedOffset);
+                    return MoreMath.NormalizeAngleShort(marioYawIntended - ghostYawIntended);
+                },
+                (short deltaYawIntended, uint dummy) =>
+                {
+                    ushort ghostYawIntended = Config.Stream.GetUInt16(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawIntendedOffset);
+                    ushort newMarioYawIntended = MoreMath.NormalizeAngleUshort(ghostYawIntended + deltaYawIntended);
+                    return Config.Stream.SetValue(newMarioYawIntended, MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
+                }
+            ));
+
             // Mupen vars
 
             _dictionary.Add("MupenLag",
