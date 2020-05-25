@@ -42,14 +42,7 @@ namespace STROOP.Map
             if (_contextMenuStrip == null)
             {
                 ToolStripMenuItem itemReset = new ToolStripMenuItem("Reset");
-                itemReset.Click += (sender, e) =>
-                {
-                    _triAddressList.Clear();
-                    _triAddressList.AddRange(TriangleUtilities.GetLevelTriangles()
-                        .FindAll(tri => tri.IsCeiling())
-                        .ConvertAll(tri => tri.Address));
-                    _triangleListForm?.RefreshAndSort();
-                };
+                itemReset.Click += (sender, e) => ResetTriangles();
 
                 ToolStripMenuItem itemRemoveCurrentTri = new ToolStripMenuItem("Remove Current Tri");
                 itemRemoveCurrentTri.Click += (sender, e) =>
@@ -82,6 +75,15 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        private void ResetTriangles()
+        {
+            _triAddressList.Clear();
+            _triAddressList.AddRange(TriangleUtilities.GetLevelTriangles()
+                .FindAll(tri => tri.IsCeiling())
+                .ConvertAll(tri => tri.Address));
+            _triangleListForm?.RefreshAndSort();
         }
 
         public void NullifyTriangleListForm()
