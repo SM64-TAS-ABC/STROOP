@@ -10826,11 +10826,11 @@ namespace STROOP
             // labelMapOptionsLevel
             // 
             this.labelMapOptionsLevel.AutoSize = true;
-            this.labelMapOptionsLevel.Location = new System.Drawing.Point(45, 243);
+            this.labelMapOptionsLevel.Location = new System.Drawing.Point(50, 243);
             this.labelMapOptionsLevel.Name = "labelMapOptionsLevel";
             this.labelMapOptionsLevel.Size = new System.Drawing.Size(36, 13);
             this.labelMapOptionsLevel.TabIndex = 12;
-            this.labelMapOptionsLevel.Text = "Level:";
+            this.labelMapOptionsLevel.Text = "Map:";
             // 
             // buttonMapOptionsClearAllTrackers
             // 
