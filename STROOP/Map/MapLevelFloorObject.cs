@@ -21,6 +21,8 @@ namespace STROOP.Map
         private readonly List<uint> _triAddressList;
         private bool _removeCurrentTri;
         private TriangleListForm _triangleListForm;
+        private bool _autoUpdate;
+        private int _numLevelTris;
 
         public MapLevelFloorObject()
             : base()
@@ -30,6 +32,8 @@ namespace STROOP.Map
                 .ConvertAll(tri => tri.Address);
             _removeCurrentTri = false;
             _triangleListForm = null;
+            _autoUpdate = true;
+            _numLevelTris = _triAddressList.Count;
         }
 
         protected override List<TriangleDataModel> GetTriangles()
@@ -41,6 +45,14 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
+                ToolStripMenuItem itemAutoUpdate = new ToolStripMenuItem("Auto Update");
+                itemAutoUpdate.Click += (sender, e) =>
+                {
+                    _autoUpdate = !_autoUpdate;
+                    itemAutoUpdate.Checked = _autoUpdate;
+                };
+                itemAutoUpdate.Checked = _autoUpdate;
+
                 ToolStripMenuItem itemReset = new ToolStripMenuItem("Reset");
                 itemReset.Click += (sender, e) => ResetTriangles();
 
@@ -68,6 +80,7 @@ namespace STROOP.Map
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemAutoUpdate);
                 _contextMenuStrip.Items.Add(itemReset);
                 _contextMenuStrip.Items.Add(itemRemoveCurrentTri);
                 _contextMenuStrip.Items.Add(itemShowTriData);
@@ -93,6 +106,16 @@ namespace STROOP.Map
 
         public override void Update()
         {
+            if (_autoUpdate)
+            {
+                int numLevelTriangles = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
+                if (_numLevelTris != numLevelTriangles)
+                {
+                    _numLevelTris = numLevelTriangles;
+                    ResetTriangles();
+                }
+            }
+
             if (_removeCurrentTri)
             {
                 uint currentTriAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
