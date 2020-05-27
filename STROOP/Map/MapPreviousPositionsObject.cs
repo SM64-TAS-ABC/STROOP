@@ -19,6 +19,8 @@ namespace STROOP.Map
         private int _redMarioTex = -1;
         private int _greenMarioTex = -1;
         private int _orangeMarioTex = -1;
+        private int _purpleMarioTex = -1;
+        private int _blueMarioTex = -1;
 
         public MapPreviousPositionsObject()
             : base()
@@ -161,47 +163,98 @@ namespace STROOP.Map
 
         public List<(float x, float y, float z, float angle, int tex)> GetData()
         {
-            float pos1X = Config.Stream.GetSingle(0x80372F00);
-            float pos1Y = Config.Stream.GetSingle(0x80372F04);
-            float pos1Z = Config.Stream.GetSingle(0x80372F08);
-            float pos2X = Config.Stream.GetSingle(0x80372F10);
-            float pos2Y = Config.Stream.GetSingle(0x80372F14);
-            float pos2Z = Config.Stream.GetSingle(0x80372F18);
-            float pos3X = Config.Stream.GetSingle(0x80372F20);
-            float pos3Y = Config.Stream.GetSingle(0x80372F24);
-            float pos3Z = Config.Stream.GetSingle(0x80372F28);
-            float pos4X = Config.Stream.GetSingle(0x80372F30);
-            float pos4Y = Config.Stream.GetSingle(0x80372F34);
-            float pos4Z = Config.Stream.GetSingle(0x80372F38);
-            float pos5X = Config.Stream.GetSingle(0x80372F40);
-            float pos5Y = Config.Stream.GetSingle(0x80372F44);
-            float pos5Z = Config.Stream.GetSingle(0x80372F48);
-            float pos6X = Config.Stream.GetSingle(0x80372F50);
-            float pos6Y = Config.Stream.GetSingle(0x80372F54);
-            float pos6Z = Config.Stream.GetSingle(0x80372F58);
-            float pos7X = Config.Stream.GetSingle(0x80372F60);
-            float pos7Y = Config.Stream.GetSingle(0x80372F64);
-            float pos7Z = Config.Stream.GetSingle(0x80372F68);
-            float pos8X = Config.Stream.GetSingle(0x80372F70);
-            float pos8Y = Config.Stream.GetSingle(0x80372F74);
-            float pos8Z = Config.Stream.GetSingle(0x80372F78);
-            float pos9X = Config.Stream.GetSingle(0x80372F80);
-            float pos9Y = Config.Stream.GetSingle(0x80372F84);
-            float pos9Z = Config.Stream.GetSingle(0x80372F88);
+            float pos01X = Config.Stream.GetSingle(0x80372F00);
+            float pos01Y = Config.Stream.GetSingle(0x80372F04);
+            float pos01Z = Config.Stream.GetSingle(0x80372F08);
+            float pos01A = Config.Stream.GetUInt16(0x80372F0E);
 
-            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            float pos02X = Config.Stream.GetSingle(0x80372F10);
+            float pos02Y = Config.Stream.GetSingle(0x80372F14);
+            float pos02Z = Config.Stream.GetSingle(0x80372F18);
+            float pos02A = Config.Stream.GetUInt16(0x80372F1E);
+
+            float pos03X = Config.Stream.GetSingle(0x80372F20);
+            float pos03Y = Config.Stream.GetSingle(0x80372F24);
+            float pos03Z = Config.Stream.GetSingle(0x80372F28);
+            float pos03A = Config.Stream.GetUInt16(0x80372F2E);
+
+            float pos04X = Config.Stream.GetSingle(0x80372F30);
+            float pos04Y = Config.Stream.GetSingle(0x80372F34);
+            float pos04Z = Config.Stream.GetSingle(0x80372F38);
+            float pos04A = Config.Stream.GetUInt16(0x80372F3E);
+
+            float pos05X = Config.Stream.GetSingle(0x80372F40);
+            float pos05Y = Config.Stream.GetSingle(0x80372F44);
+            float pos05Z = Config.Stream.GetSingle(0x80372F48);
+            float pos05A = Config.Stream.GetUInt16(0x80372F4E);
+
+            float pos06X = Config.Stream.GetSingle(0x80372F50);
+            float pos06Y = Config.Stream.GetSingle(0x80372F54);
+            float pos06Z = Config.Stream.GetSingle(0x80372F58);
+            float pos06A = Config.Stream.GetUInt16(0x80372F5E);
+
+            float pos07X = Config.Stream.GetSingle(0x80372F60);
+            float pos07Y = Config.Stream.GetSingle(0x80372F64);
+            float pos07Z = Config.Stream.GetSingle(0x80372F68);
+            float pos07A = Config.Stream.GetUInt16(0x80372F6E);
+
+            float pos08X = Config.Stream.GetSingle(0x80372F70);
+            float pos08Y = Config.Stream.GetSingle(0x80372F74);
+            float pos08Z = Config.Stream.GetSingle(0x80372F78);
+            float pos08A = Config.Stream.GetUInt16(0x80372F7E);
+
+            float pos09X = Config.Stream.GetSingle(0x80372F80);
+            float pos09Y = Config.Stream.GetSingle(0x80372F84);
+            float pos09Z = Config.Stream.GetSingle(0x80372F88);
+            float pos09A = Config.Stream.GetUInt16(0x80372F8E);
+
+            float pos10X = Config.Stream.GetSingle(0x80372F90);
+            float pos10Y = Config.Stream.GetSingle(0x80372F94);
+            float pos10Z = Config.Stream.GetSingle(0x80372F98);
+            float pos10A = Config.Stream.GetUInt16(0x80372F9E);
+
+            float pos11X = Config.Stream.GetSingle(0x80372FA0);
+            float pos11Y = Config.Stream.GetSingle(0x80372FA4);
+            float pos11Z = Config.Stream.GetSingle(0x80372FA8);
+            float pos11A = Config.Stream.GetUInt16(0x80372FAE);
+
+            float pos12X = Config.Stream.GetSingle(0x80372FB0);
+            float pos12Y = Config.Stream.GetSingle(0x80372FB4);
+            float pos12Z = Config.Stream.GetSingle(0x80372FB8);
+            float pos12A = Config.Stream.GetUInt16(0x80372FBE);
+
+            float pos13X = Config.Stream.GetSingle(0x80372FC0);
+            float pos13Y = Config.Stream.GetSingle(0x80372FC4);
+            float pos13Z = Config.Stream.GetSingle(0x80372FC8);
+            float pos13A = Config.Stream.GetUInt16(0x80372FCE);
+
+            float pos14X = Config.Stream.GetSingle(0x80372FD0);
+            float pos14Y = Config.Stream.GetSingle(0x80372FD4);
+            float pos14Z = Config.Stream.GetSingle(0x80372FD8);
+            float pos14A = Config.Stream.GetUInt16(0x80372FDE);
+
+            float pos15X = Config.Stream.GetSingle(0x80372FE0);
+            float pos15Y = Config.Stream.GetSingle(0x80372FE4);
+            float pos15Z = Config.Stream.GetSingle(0x80372FE8);
+            float pos15A = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
             return new List<(float x, float y, float z, float angle, int tex)>()
             {
-                (pos1X, pos1Y, pos1Z, marioAngle, _greenMarioTex),
-                (pos2X, pos2Y, pos2Z, marioAngle, _orangeMarioTex),
-                (pos3X, pos3Y, pos3Z, marioAngle, _greenMarioTex),
-                (pos4X, pos4Y, pos4Z, marioAngle, _orangeMarioTex),
-                (pos5X, pos5Y, pos5Z, marioAngle, _greenMarioTex),
-                (pos6X, pos6Y, pos6Z, marioAngle, _orangeMarioTex),
-                (pos7X, pos7Y, pos7Z, marioAngle, _greenMarioTex),
-                (pos8X, pos8Y, pos8Z, marioAngle, _orangeMarioTex),
-                (pos9X, pos9Y, pos9Z, marioAngle, _redMarioTex),
+                (pos01X, pos01Y, pos01Z, pos01A, _purpleMarioTex), // initial
+                (pos02X, pos02Y, pos02Z, pos02A, _blueMarioTex), // wall1
+                (pos03X, pos03Y, pos03Z, pos03A, _greenMarioTex), // wall2
+                (pos04X, pos04Y, pos04Z, pos04A, _orangeMarioTex), // qstep1
+                (pos05X, pos05Y, pos05Z, pos05A, _blueMarioTex), // wall1
+                (pos06X, pos06Y, pos06Z, pos06A, _greenMarioTex), // wall2
+                (pos07X, pos07Y, pos07Z, pos07A, _orangeMarioTex), //qstep2
+                (pos08X, pos08Y, pos08Z, pos08A, _blueMarioTex), // wall1
+                (pos09X, pos09Y, pos09Z, pos09A, _greenMarioTex), // wall2
+                (pos10X, pos10Y, pos10Z, pos10A, _orangeMarioTex), // qstep3
+                (pos11X, pos11Y, pos11Z, pos11A, _blueMarioTex), // wall1
+                (pos12X, pos12Y, pos12Z, pos12A, _greenMarioTex), // wall2
+                (pos13X, pos13Y, pos13Z, pos13A, _orangeMarioTex), // qstep4
+                (pos14X, pos14Y, pos14Z, pos14A, _blueMarioTex), // wall1
+                (pos15X, pos15Y, pos15Z, pos15A, _redMarioTex), // wall2
             };
         }
 
@@ -221,6 +274,16 @@ namespace STROOP.Map
             {
                 _orangeMarioTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.OrangeMarioMapImage as Bitmap);
+            }
+            if (_purpleMarioTex == -1)
+            {
+                _purpleMarioTex = MapUtilities.LoadTexture(
+                    Config.ObjectAssociations.PurpleMarioMapImage as Bitmap);
+            }
+            if (_blueMarioTex == -1)
+            {
+                _blueMarioTex = MapUtilities.LoadTexture(
+                    Config.ObjectAssociations.BlueMarioMapImage as Bitmap);
             }
         }
 
