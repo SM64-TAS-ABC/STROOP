@@ -1961,5 +1961,165 @@ namespace STROOP.Structs
                 }
             }
         }
+
+        public static void TestX()
+        {
+            float startX = -2474.70849609375f;
+            float startY = -1909.26416015625f;
+            float startZ = 3520.89599609375f;
+            float startXSpeed = 9.54115295410156f;
+            float startYSpeed = 2.07013988494873f;
+            float startZSpeed = 0f;
+            float startHSpeed = 9.54115295410156f;
+            float startXSlidingSpeed = 9.54115295410156f;
+            float startZSlidingSpeed = 0f;
+            ushort startYawMoving = 16384;
+            ushort startYawFacing = 16384;
+            ushort startCentAngle = 49152;
+
+            float goalX = -2436.54248046875f;
+            float goalZ = 4730.4560546875f;
+
+            int xInput = 0;
+            int zInput = 25;
+            int xRadius = 0;
+            int zRadius = 15;
+            List<Input> inputs = CalculatorUtilities.GetInputRange(xInput - xRadius, xInput + xRadius, zInput - zRadius, zInput + zRadius);
+
+            MarioState startState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                startXSlidingSpeed,
+                startZSlidingSpeed,
+                startYawMoving,
+                startYawFacing,
+                startCentAngle,
+                null,
+                null,
+                0);
+
+            int counter = 0;
+            int lastIndex = -1;
+            float bestDiff = float.MaxValue;
+            MarioState bestState = null;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            queue.Enqueue(startState);
+
+            while (queue.Count > 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+
+                if (dequeue.Index != lastIndex)
+                {
+                    lastIndex = dequeue.Index;
+                    Config.Print("Now at index " + lastIndex);
+                }
+
+                if (dequeue.Index == 4)
+                {
+                    counter++;
+                    float diff = Math.Abs(dequeue.X - goalX);
+                    if (diff <= bestDiff)
+                    {
+                        bestDiff = diff;
+                        bestState = dequeue;
+                        Config.Print("Diff of " + bestDiff + " is: " + bestState.GetLineage());
+                    }
+
+                    continue;
+                }
+
+                List<MarioState> nextStates = inputs.ConvertAll(
+                    input => AirMovementCalculator.ApplyInput(dequeue, input));
+                nextStates = ControlUtilities.Randomize(nextStates);
+                nextStates.ForEach(state => queue.Enqueue(state));
+            }
+            Config.Print("DONE having considered " + counter + " paths");
+        }
+
+        public static void TestZ()
+        {
+            float startX = -2436.54248046875f;
+            float startY = -1835.79418945313f;
+            float startZ = 4651.9716796875f;
+            float startXSpeed = 0f;
+            float startYSpeed = 18.0824966430664f;
+            float startZSpeed = 18.9386978149414f;
+            float startHSpeed = 18.9386978149414f;
+            float startXSlidingSpeed = 0f;
+            float startZSlidingSpeed = 18.9386978149414f;
+            ushort startYawMoving = 0;
+            ushort startYawFacing = 0;
+            ushort startCentAngle = 32768;
+
+            float goalX = -2436.54248046875f;
+            float goalZ = 4730.4560546875f;
+
+            int xInput = 0;
+            int zInput = 42;
+            int xRadius = 0;
+            int zRadius = 15;
+            List<Input> inputs = CalculatorUtilities.GetInputRange(xInput - xRadius, xInput + xRadius, zInput - zRadius, zInput + zRadius);
+
+            MarioState startState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                startXSlidingSpeed,
+                startZSlidingSpeed,
+                startYawMoving,
+                startYawFacing,
+                startCentAngle,
+                null,
+                null,
+                0);
+
+            int counter = 0;
+            int lastIndex = -1;
+            float bestDiff = float.MaxValue;
+            MarioState bestState = null;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            queue.Enqueue(startState);
+
+            while (queue.Count > 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+
+                if (dequeue.Index != lastIndex)
+                {
+                    lastIndex = dequeue.Index;
+                    Config.Print("Now at index " + lastIndex);
+                }
+
+                if (dequeue.Index == 4)
+                {
+                    counter++;
+                    float diff = Math.Abs(dequeue.Z - goalZ);
+                    if (diff <= bestDiff)
+                    {
+                        bestDiff = diff;
+                        bestState = dequeue;
+                        Config.Print("Diff of " + bestDiff + " is: " + bestState.GetLineage());
+                    }
+
+                    continue;
+                }
+
+                List<MarioState> nextStates = inputs.ConvertAll(
+                    input => AirMovementCalculator.ApplyInput(dequeue, input));
+                nextStates = ControlUtilities.Randomize(nextStates);
+                nextStates.ForEach(state => queue.Enqueue(state));
+            }
+            Config.Print("DONE having considered " + counter + " paths");
+        }
     }
 }
