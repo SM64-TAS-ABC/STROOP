@@ -23,7 +23,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            CalculatorMain.TestZ();
+            GetAllInGameAngles();
         }
 
         public static void TestSomethingElse()
@@ -32,6 +32,22 @@ namespace STROOP.Utilities
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
+
+        public static void GetAllInGameAngles()
+        {
+            List<int> inGameAngles = new List<int>();
+            List<int> allAngles = Enumerable.Range(0, 65536).ToList();
+            foreach (int angle in allAngles)
+            {
+                (double x, double z) = MoreMath.GetComponentsFromVector(1, angle);
+                int inGameAngle = InGameTrigUtilities.InGameAngleTo(x, z);
+                if (!inGameAngles.Contains(inGameAngle))
+                {
+                    inGameAngles.Add(inGameAngle);
+                }
+            }
+            InfoForm.ShowValue(string.Join(",", inGameAngles));
+        }
 
         public static void TestWarpNodes()
         {
