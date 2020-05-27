@@ -254,6 +254,17 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemLineSegment = new ToolStripMenuItem("Add Tracker for Line Segment");
+            itemLineSegment.Click += (sender, e) =>
+            {
+                string text1 = DialogUtilities.GetStringFromDialog(labelText: "Enter the first PositionAngle.");
+                string text2 = DialogUtilities.GetStringFromDialog(labelText: "Enter the second PositionAngle.");
+                MapObject mapObj = MapLineSegmentObject.Create(text1, text2);
+                if (mapObj == null) return;
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip = new ContextMenuStrip();
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemAllObjects);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMarkedObjects);
@@ -277,6 +288,7 @@ namespace STROOP.Managers
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomPositionAngle);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCUpFloorTris);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemPunchFloorTris);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemLineSegment);
 
             Config.MapGui.buttonMapOptionsAddNewTracker.Click += (sender, e) =>
                 Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Show(Cursor.Position);
