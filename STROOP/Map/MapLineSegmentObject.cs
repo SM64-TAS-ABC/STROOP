@@ -16,12 +16,14 @@ namespace STROOP.Map
     {
         private PositionAngle _posAngle1;
         private PositionAngle _posAngle2;
+        private float _backwardsSize;
 
         public MapLineSegmentObject(PositionAngle posAngle1, PositionAngle posAngle2)
             : base()
         {
             _posAngle1 = posAngle1;
             _posAngle2 = posAngle2;
+            _backwardsSize = 0;
 
             Size = 1;
             OutlineWidth = 3;
@@ -38,6 +40,10 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVertices()
         {
+            double angle = PositionAngle.GetAngleTo(_posAngle1, _posAngle2, false, false);
+            (double x1, double y1, double z1, double angle1) = _posAngle1.GetValues();
+            (double x2, double y2, double z2, double angle2) = _posAngle1.GetValues();
+
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             vertices.Add(((float)_posAngle1.X, (float)_posAngle1.Y, (float)_posAngle1.Z));
             vertices.Add(((float)_posAngle2.X, (float)_posAngle2.Y, (float)_posAngle2.Z));
