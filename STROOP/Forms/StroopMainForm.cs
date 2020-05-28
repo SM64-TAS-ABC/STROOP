@@ -865,7 +865,7 @@ namespace STROOP
 
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
         {
-            await ChangeObjectSlotSize(trackBarObjSlotSize.Value);
+            ChangeObjectSlotSize(trackBarObjSlotSize.Value);
         }
 
         private async void ChangeObjectSlotSize(int size)
