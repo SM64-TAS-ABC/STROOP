@@ -43,7 +43,7 @@ namespace STROOP.Map
         {
             (double x1, double y1, double z1, double angle1) = _posAngle1.GetValues();
             (double x2, double y2, double z2, double angle2) = _posAngle2.GetValues();
-            double dist = PositionAngle.GetDistance(_posAngle1, _posAngle2);
+            double dist = PositionAngle.GetHDistance(_posAngle1, _posAngle2);
             (double startX, double startZ) = MoreMath.ExtrapolateLine2D(x2, z2, x1, z1, dist + _backwardsSize);
             (double endX, double endZ) = MoreMath.ExtrapolateLine2D(x1, z1, x2, z2, dist + Size);
 
