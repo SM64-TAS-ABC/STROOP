@@ -137,22 +137,19 @@ namespace STROOP.Controls
 
         private void AddExternalContextMenuStripItems()
         {
-            ToolStripMenuItem itemPanelOptions = new ToolStripMenuItem("Panel Options");
-            itemPanelOptions.Click += (sender, e) =>
-            {
-                _watchVarControl.OpenPanelOptions(_contextMenuStrip.Bounds.Location);
-            };
-
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
             itemOpenController.Click += (sender, e) => ShowControllerForm();
+
+            ToolStripMenuItem itemOpenBitController = new ToolStripMenuItem("Open Bit Controller");
+            itemOpenBitController.Click += (sender, e) => ShowBitForm();
 
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
             itemAddToCustomTab.Click += (sender, e) =>
                 _watchVarControl.AddToTab(Config.CustomManager);
 
             _contextMenuStrip.AddToEndingList(new ToolStripSeparator());
-            _contextMenuStrip.AddToEndingList(itemPanelOptions);
             _contextMenuStrip.AddToEndingList(itemOpenController);
+            _contextMenuStrip.AddToEndingList(itemOpenBitController);
             _contextMenuStrip.AddToEndingList(itemAddToCustomTab);
         }
 
