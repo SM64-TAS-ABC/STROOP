@@ -73,6 +73,8 @@ namespace STROOP.Controls
                 (uint?)ParsingUtilities.ParseHex(element.Attribute(XName.Get("mask")).Value) : null;
             int? shift = element.Attribute(XName.Get("shift")) != null ?
                 int.Parse(element.Attribute(XName.Get("shift")).Value) : (int?)null;
+            bool handleMapping = (element.Attribute(XName.Get("handleMapping")) != null) ?
+                bool.Parse(element.Attribute(XName.Get("handleMapping")).Value) : true;
 
             WatchVar = 
                 new WatchVariable(
@@ -85,7 +87,8 @@ namespace STROOP.Controls
                     offsetEU,
                     offsetDefault,
                     mask,
-                    shift);
+                    shift,
+                    handleMapping);
 
             Name = element.Value;
             Subclass = WatchVariableUtilities.GetSubclass(element.Attribute(XName.Get("subclass"))?.Value);

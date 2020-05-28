@@ -58,7 +58,8 @@ namespace STROOP.Forms
                 offsetEU: useOffsetDefault ? (uint?)null : offset,
                 offsetDefault: useOffsetDefault ? offset : (uint?)null,
                 mask: null,
-                shift: null);
+                shift: null,
+                handleMapping: true);
             WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
                 name: name,
                 watchVar: watchVar,

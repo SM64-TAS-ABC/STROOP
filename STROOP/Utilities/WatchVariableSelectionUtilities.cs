@@ -273,7 +273,8 @@ namespace STROOP.Structs
                             offsetEU: null,
                             offsetDefault: null,
                             mask: null,
-                            shift: null);
+                            shift: null,
+                            handleMapping: true);
                     WatchVariableControlPrecursor precursor =
                         new WatchVariableControlPrecursor(
                             name: string.Format("{0} {1} {2}", control1.VarName, MathOperationUtilities.GetSymbol(operation), control2.VarName),
@@ -307,7 +308,8 @@ namespace STROOP.Structs
                         offsetEU: null,
                         offsetDefault: null,
                         mask: null,
-                        shift: null);
+                        shift: null,
+                        handleMapping: true);
                 WatchVariableControlPrecursor precursor =
                     new WatchVariableControlPrecursor(
                         name: operation.ToString(),

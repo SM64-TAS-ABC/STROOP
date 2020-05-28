@@ -137,7 +137,8 @@ namespace STROOP.Managers
                     offsetEU: null,
                     offsetDefault: offsets[i],
                     mask: null,
-                    shift: null);
+                    shift: null,
+                    handleMapping: true);
                 WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
                     name: names[i],
                     watchVar: watchVar,

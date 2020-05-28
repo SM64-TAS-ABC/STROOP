@@ -127,7 +127,8 @@ namespace STROOP.Managers
                     offsetEU: address,
                     offsetDefault: null,
                     mask: null,
-                    shift: null);
+                    shift: null,
+                    handleMapping: true);
                 WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
                     name: typeString + " " + HexUtilities.FormatValue(address),
                     watchVar: watchVar,

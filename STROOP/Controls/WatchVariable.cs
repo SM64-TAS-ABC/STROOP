@@ -34,6 +34,7 @@ namespace STROOP.Controls
 
         public readonly uint? Mask;
         public readonly int? Shift;
+        public readonly bool HandleMapping;
 
         private readonly Func<uint, object> _getterFunction;
         private readonly Func<object, uint, bool> _setterFunction;
@@ -69,7 +70,7 @@ namespace STROOP.Controls
         }
 
         public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
-            uint? offsetUS, uint? offsetJP, uint? offsetSH, uint? offsetEU, uint? offsetDefault, uint? mask, int? shift)
+            uint? offsetUS, uint? offsetJP, uint? offsetSH, uint? offsetEU, uint? offsetDefault, uint? mask, int? shift, bool handleMapping)
         {
             if (offsetDefault.HasValue && (offsetUS.HasValue || offsetJP.HasValue || offsetSH.HasValue || offsetEU.HasValue))
             {
@@ -113,6 +114,7 @@ namespace STROOP.Controls
 
             Mask = mask;
             Shift = shift;
+            HandleMapping = handleMapping;
             
             // Created getter/setter functions
             if (IsSpecial)

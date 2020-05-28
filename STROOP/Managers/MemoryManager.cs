@@ -419,7 +419,8 @@ namespace STROOP.Managers
                     offsetEU: null,
                     offsetDefault: offset,
                     mask: null,
-                    shift: null);
+                    shift: null,
+                    handleMapping: true);
                 return new WatchVariableControlPrecursor(
                     name: typeString + " " + HexUtilities.FormatValue(nameOffset),
                     watchVar: watchVar,
