@@ -121,6 +121,7 @@ namespace STROOP
                 new List<string>()
                 {
                     "Open Mapping",
+                    "Clear Mapping",
                     "Inject Hitbox View Code",
                     "Free Movement Action",
                     "Expand RAM Size",
@@ -140,6 +141,7 @@ namespace STROOP
                 new List<Action>()
                 {
                     () => MappingConfig.OpenMapping(),
+                    () => MappingConfig.ClearMapping(),
                     () => Config.GfxManager.InjectHitboxViewCode(),
                     () => Config.Stream.SetValue(MarioConfig.FreeMovementAction, MarioConfig.StructAddress + MarioConfig.ActionOffset),
                     () =>

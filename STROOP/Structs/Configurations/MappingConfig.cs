@@ -42,17 +42,16 @@ namespace STROOP.Structs.Configurations
         {
             OpenFileDialog openFileDialog = DialogUtilities.CreateOpenFileDialog(FileType.Mapping);
             DialogResult result = openFileDialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                string fileName = openFileDialog.FileName;
-                mappingCurrent = GetMappingDictionary(fileName);
-                mappingCurrentReversed = DictionaryUtilities.ReverseDictionary(mappingCurrent);
-            }
-            else
-            {
-                mappingCurrent = null;
-                mappingCurrentReversed = null;
-            }
+            if (result != DialogResult.OK) return;
+            string fileName = openFileDialog.FileName;
+            mappingCurrent = GetMappingDictionary(fileName);
+            mappingCurrentReversed = DictionaryUtilities.ReverseDictionary(mappingCurrent);
+        }
+
+        public static void ClearMapping()
+        {
+            mappingCurrent = null;
+            mappingCurrentReversed = null;
         }
 
         public static uint HandleMapping(uint address)
