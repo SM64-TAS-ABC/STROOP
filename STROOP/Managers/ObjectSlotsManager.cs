@@ -21,7 +21,7 @@ namespace STROOP.Managers
         /// <summary>
         /// The default size of the object slot UI element
         /// </summary>
-        const int DefaultSlotSize = 36;
+        public static readonly int DefaultSlotSize = 36;
 
         public enum TabType { Object, Map, Model, Memory, Custom, Warp, TAS, CamHack, Other };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };

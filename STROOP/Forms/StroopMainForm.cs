@@ -235,6 +235,17 @@ namespace STROOP
                 buttonMoveTabRight,
                 new List<string>() { "Restore Recommended Tab Order" },
                 new List<Action>() { () => SavedSettingsConfig.InvokeRecommendedTabOrder() });
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                trackBarObjSlotSize,
+                new List<string>() { "Reset to Default Object Slot Size" },
+                new List<Action>() {
+                    () =>
+                    {
+                        trackBarObjSlotSize.Value = ObjectSlotsManager.DefaultSlotSize;
+                        ChangeObjectSlotSize(ObjectSlotsManager.DefaultSlotSize);
+                    }
+                });
         }
 
         private void CreateManagers()
@@ -854,6 +865,11 @@ namespace STROOP
 
         private async void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
         {
+            await ChangeObjectSlotSize(trackBarObjSlotSize.Value);
+        }
+
+        private async void ChangeObjectSlotSize(int size)
+        {
             _resizeObjSlotTime = 500;
             if (_objSlotResizing)
                 return;
@@ -870,7 +886,7 @@ namespace STROOP
             });
 
             WatchVariablePanelObjects.Visible = false;
-            Config.ObjectSlotsManager.ChangeSlotSize(trackBarObjSlotSize.Value);
+            Config.ObjectSlotsManager.ChangeSlotSize(size);
             WatchVariablePanelObjects.Visible = true;
             _objSlotResizing = false;
         }

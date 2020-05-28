@@ -21106,7 +21106,7 @@ namespace STROOP
             this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
             this.trackBarObjSlotSize.TabIndex = 3;
             this.trackBarObjSlotSize.TickFrequency = 10;
-            this.trackBarObjSlotSize.Value = 40;
+            this.trackBarObjSlotSize.Value = 36;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
             // groupBoxTestingInvisibleWalls
