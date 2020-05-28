@@ -1,4 +1,5 @@
-﻿using STROOP.Managers;
+﻿using STROOP.Controls;
+using STROOP.Managers;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -80,5 +81,68 @@ namespace STROOP.Structs.Configurations
             return mappingCurrentReversed[name];
         }
 
+        public static List<WatchVariableControl> GetVariables()
+        {
+            if (mappingCurrent == null) return new List<WatchVariableControl>();
+
+            List<WatchVariableControl> controls = new List<WatchVariableControl>();
+            foreach (uint address in mappingCurrent.Keys)
+            {
+                string stringValue = mappingCurrent[address];
+                int markerIndex = stringValue.IndexOf("___");
+                if (markerIndex == -1) continue;
+                string varName = stringValue.Substring(0, markerIndex);
+                string suffix = stringValue.Substring(markerIndex + 3);
+                Type type = GetTypeFromSuffix(suffix);
+                if (type == null) continue;
+                string typeString = TypeUtilities.TypeToString[type];
+
+                WatchVariable watchVar = new WatchVariable(
+                    memoryTypeName: typeString,
+                    specialType: null,
+                    baseAddressType: BaseAddressTypeEnum.Relative,
+                    offsetUS: address,
+                    offsetJP: address,
+                    offsetSH: address,
+                    offsetEU: address,
+                    offsetDefault: null,
+                    mask: null,
+                    shift: null,
+                    handleMapping: false);
+                WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
+                    name: varName,
+                    watchVar: watchVar,
+                    subclass: WatchVariableSubclass.Number,
+                    backgroundColor: null,
+                    displayType: null,
+                    roundingLimit: null,
+                    useHex: null,
+                    invertBool: null,
+                    isYaw: null,
+                    coordinate: null,
+                    groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                WatchVariableControl control = precursor.CreateWatchVariableControl();
+                controls.Add(control);
+            }
+            return controls;
+        }
+
+        private static Type GetTypeFromSuffix(string suffix)
+        {
+            switch (suffix.ToLower())
+            {
+                case "s8": return typeof(sbyte);
+                case "u8": return typeof(byte);
+                case "s16": return typeof(short);
+                case "u16": return typeof(ushort);
+                case "s32": return typeof(int);
+                case "u32": return typeof(uint);
+                case "s64": return typeof(long);
+                case "u64": return typeof(ulong);
+                case "f32": return typeof(float);
+                case "f64": return typeof(double);
+                default: return null;
+            }
+        }
     }
 }
