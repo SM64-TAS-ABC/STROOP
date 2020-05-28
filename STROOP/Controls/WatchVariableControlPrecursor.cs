@@ -262,7 +262,7 @@ namespace STROOP.Controls
 
             if (WatchVar.OffsetEU != null)
                 xElement.Add(new XAttribute(
-                    "offsetEU`",
+                    "offsetEU",
                     HexUtilities.FormatValue(WatchVar.OffsetEU.Value)));
 
             if (WatchVar.MemoryTypeName != null)

@@ -88,7 +88,7 @@ namespace STROOP.Structs.Configurations
             return address;
         }
 
-        private static uint SwitchOnly(uint? valUS = null, uint? valJP = null, uint? valSH = null, uint? valEU = null)
+        public static uint SwitchOnly(uint? valUS = null, uint? valJP = null, uint? valSH = null, uint? valEU = null)
         {
             switch (Version)
             {

@@ -16,6 +16,8 @@ namespace STROOP.Forms
 {
     public partial class VariableCreationForm : Form
     {
+        private bool _disableMapping = false;
+
         public VariableCreationForm()
         {
             InitializeComponent();
@@ -25,6 +27,20 @@ namespace STROOP.Forms
             comboBoxBaseValue.SelectedIndex =
                 EnumUtilities.GetEnumValues<BaseAddressTypeEnum>(
                     typeof(BaseAddressTypeEnum)).IndexOf(BaseAddressTypeEnum.Object);
+            ControlUtilities.AddCheckableContextMenuStripFunctions(
+                buttonAddVariable,
+                new List<string>()
+                {
+                    "Disable Mapping",
+                },
+                new List<Func<bool>>()
+                {
+                    () =>
+                    {
+                        _disableMapping = !_disableMapping;
+                        return _disableMapping;
+                    },
+                });
         }
 
         public void Initialize(WatchVariableFlowLayoutPanel varPanel)
@@ -59,7 +75,7 @@ namespace STROOP.Forms
                 offsetDefault: useOffsetDefault ? offset : (uint?)null,
                 mask: null,
                 shift: null,
-                handleMapping: true);
+                handleMapping: !_disableMapping);
             WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
                 name: name,
                 watchVar: watchVar,

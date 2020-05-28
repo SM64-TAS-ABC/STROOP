@@ -48,11 +48,18 @@ namespace STROOP.Controls
             {
                 if (OffsetUS.HasValue || OffsetJP.HasValue || OffsetSH.HasValue || OffsetEU.HasValue)
                 {
-                    return RomVersionConfig.Switch(
-                        OffsetUS ?? 0,
-                        OffsetJP ?? 0,
-                        OffsetSH ?? 0,
-                        OffsetEU ?? 0);
+                    if (HandleMapping)
+                        return RomVersionConfig.Switch(
+                            OffsetUS ?? 0,
+                            OffsetJP ?? 0,
+                            OffsetSH ?? 0,
+                            OffsetEU ?? 0);
+                    else
+                        return RomVersionConfig.SwitchOnly(
+                            OffsetUS ?? 0,
+                            OffsetJP ?? 0,
+                            OffsetSH ?? 0,
+                            OffsetEU ?? 0);
                 }
                 if (OffsetDefault.HasValue) return OffsetDefault.Value;
                 return 0;
