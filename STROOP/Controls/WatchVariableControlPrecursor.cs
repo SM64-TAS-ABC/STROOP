@@ -279,6 +279,12 @@ namespace STROOP.Controls
                     "mask",
                     HexUtilities.FormatValue(WatchVar.Mask.Value, WatchVar.NibbleCount)));
 
+            if (WatchVar.Shift != null)
+                xElement.Add(new XAttribute("shift", WatchVar.Shift.Value));
+
+            if (WatchVar.HandleMapping == false)
+                xElement.Add(new XAttribute("handleMapping", WatchVar.HandleMapping));
+
             if (Subclass != WatchVariableSubclass.Number)
                 xElement.Add(new XAttribute("subclass", Subclass.ToString()));
 
