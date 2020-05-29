@@ -76,8 +76,8 @@ namespace STROOP
             _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawModelOverlay,
             _drawFloorOverlay, _drawWallOverlay, _drawCeilingOverlay,
             _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawChildOverlay,
-            _drawCollision1Overlay, _drawCollision2Overlay, _drawCollision3Overlay, _drawCollision4Overlay,
-            _drawMarkedOverlay;
+            _drawCollision1Overlay, _drawCollision2Overlay, _drawCollision3Overlay, _drawCollision4Overlay;
+        int? _drawMarkedOverlay;
 
         public ObjectSlot(ObjectSlotsManager manager, int index, ObjectSlotManagerGui gui, Size size)
         {
@@ -384,9 +384,9 @@ namespace STROOP
             UpdateColors();
         }
 
-        private List<bool> GetCurrentOverlayValues()
+        private List<object> GetCurrentOverlayValues()
         {
-            return new List<bool>()
+            return new List<object>()
             {
                 _drawSelectedOverlay,
                 _drawStoodOnOverlay,
@@ -465,8 +465,47 @@ namespace STROOP
 
             // TODO reorder object slots overlays
             // Draw Overlays
-            if (_drawMarkedOverlay)
-                e.Graphics.DrawImage(_gui.MarkedBlackObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawMarkedOverlay.HasValue)
+            {
+                switch (_drawMarkedOverlay.Value)
+                {
+                    case 1:
+                        e.Graphics.DrawImage(_gui.MarkedRedObjectOverlayImage, new Rectangle(new Point(), Size));
+                        break;
+                    case 2:
+                        e.Graphics.DrawImage(_gui.MarkedOrangeObjectOverlayImage, new Rectangle(new Point(), Size));
+                        break;
+                    case 3:
+                        e.Graphics.DrawImage(_gui.MarkedYellowObjectOverlayImage, new Rectangle(new Point(), Size));
+                        break;
+                    case 4:
+                        e.Graphics.DrawImage(_gui.MarkedGreenObjectOverlayImage, new Rectangle(new Point(), Size));
+                        break;
+                    case 5:
+                        e.Graphics.DrawImage(_gui.MarkedLightBlueObjectOverlayImage, new Rectangle(new Point(), Size));
+                        break;
+                    case 6:
+                        e.Graphics.DrawImage(_gui.MarkedBlueObjectOverlayImage, new Rectangle(new Point(), Size));
+                        break;
+                    case 7:
+                        e.Graphics.DrawImage(_gui.MarkedPurpleObjectOverlayImage, new Rectangle(new Point(), Size));
+                        break;
+                    case 8:
+                        e.Graphics.DrawImage(_gui.MarkedPinkObjectOverlayImage, new Rectangle(new Point(), Size));
+                        break;
+                    case 9:
+                        e.Graphics.DrawImage(_gui.MarkedGreyObjectOverlayImage, new Rectangle(new Point(), Size));
+                        break;
+                    case 0:
+                        e.Graphics.DrawImage(_gui.MarkedWhiteObjectOverlayImage, new Rectangle(new Point(), Size));
+                        break;
+                    case 10:
+                        e.Graphics.DrawImage(_gui.MarkedBlackObjectOverlayImage, new Rectangle(new Point(), Size));
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
             switch (_selectionType)
             {
                 case SelectionType.NORMAL_SELECTION:
@@ -535,7 +574,7 @@ namespace STROOP
             uint? address = CurrentObject?.Address;
 
             // Update Overlays
-            List<bool> prevOverlays = GetCurrentOverlayValues();
+            List<object> prevOverlays = GetCurrentOverlayValues();
             if (address.HasValue)
             {
                 _drawSelectedOverlay = _manager.SelectedSlotsAddresses.Contains(address.Value);
@@ -587,7 +626,8 @@ namespace STROOP
                 _drawCollision4Overlay = OverlayConfig.ShowOverlayCollisionObject && 
                     address == ObjectUtilities.GetCollisionObject(collisionObjAddress, 4);
 
-                _drawMarkedOverlay = _manager.MarkedSlotsAddresses.Contains(address.Value);
+                _drawMarkedOverlay = _manager.MarkedSlotsAddressesDictionary.ContainsKey(address.Value) ?
+                    _manager.MarkedSlotsAddressesDictionary[address.Value] : (int?)null;
             }
             else
             {
@@ -612,9 +652,9 @@ namespace STROOP
                 _drawCollision2Overlay = false;
                 _drawCollision3Overlay = false;
                 _drawCollision4Overlay = false;
-                _drawMarkedOverlay = false;
+                _drawMarkedOverlay = null;
             }
-            List<bool> overlays = GetCurrentOverlayValues();
+            List<object> overlays = GetCurrentOverlayValues();
 
             SelectionType selectionType;
             switch (_manager.ActiveTab)

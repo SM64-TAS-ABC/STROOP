@@ -125,7 +125,7 @@ namespace STROOP.Managers
             ObjectSlot selectedSlot, bool isCtrlKeyHeld, bool isShiftKeyHeld, bool isAltKeyHeld, int? numberHeld)
         {
             bool isMarking = isAltKeyHeld || numberHeld.HasValue;
-            int? markedColor = isAltKeyHeld ? 11 : numberHeld;
+            int? markedColor = isAltKeyHeld ? 10 : numberHeld;
             ClickType click = GetClickType(isMarking);
             bool shouldToggle = ShouldToggle(isCtrlKeyHeld, isMarking);
             bool shouldExtendRange = isShiftKeyHeld;
