@@ -242,7 +242,10 @@ namespace STROOP.Utilities
                 modelOverlayImagePath = "", floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "",
                 parentOverlayImagePath = "", parentUnusedOverlayImagePath = "", parentNoneOverlayImagePath = "", childOverlayImagePath = "",
                 collision1OverlayImagePath = "", collision2OverlayImagePath = "", collision3OverlayImagePath = "", collision4OverlayImagePath = "",
-                markedOverlayImagePath = "", homeOverlayImagePath = "";
+                markedOverlayImagePath = "", homeOverlayImagePath = "",
+                markedRedOverlayImagePath = "", markedOrangeOverlayImagePath = "", markedYellowOverlayImagePath = "", markedGreenOverlayImagePath = "",
+                markedLightBlueOverlayImagePath = "", markedBlueOverlayImagePath = "", markedPurpleOverlayImagePath = "", markedPinkOverlayImagePath = "",
+                markedBlackOverlayImagePath = "", markedGreyOverlayImagePath = "", markedWhiteOverlayImagePath = "";
             uint marioBehavior = 0;
 
             foreach (XElement element in doc.Root.Elements())
@@ -502,6 +505,50 @@ namespace STROOP.Utilities
                                 case "Home":
                                     homeOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
+
+                                case "MarkedRed":
+                                    markedRedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MarkedOrange":
+                                    markedOrangeOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MarkedYellow":
+                                    markedYellowOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MarkedGreen":
+                                    markedGreenOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MarkedLightBlue":
+                                    markedLightBlueOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MarkedBlue":
+                                    markedBlueOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MarkedPurple":
+                                    markedPurpleOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MarkedPink":
+                                    markedPinkOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MarkedBlack":
+                                    markedBlackOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MarkedGrey":
+                                    markedGreyOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MarkedWhite":
+                                    markedWhiteOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -640,8 +687,21 @@ namespace STROOP.Utilities
             objectSlotManagerGui.Collision2OverlayImage = Image.FromFile(overlayImageDir + collision2OverlayImagePath);
             objectSlotManagerGui.Collision3OverlayImage = Image.FromFile(overlayImageDir + collision3OverlayImagePath);
             objectSlotManagerGui.Collision4OverlayImage = Image.FromFile(overlayImageDir + collision4OverlayImagePath);
+
             objectSlotManagerGui.MarkedObjectOverlayImage = Image.FromFile(overlayImageDir + markedOverlayImagePath);
             objectSlotManagerGui.HomeOverlayImage = Image.FromFile(overlayImageDir + homeOverlayImagePath);
+
+            objectSlotManagerGui.MarkedRedObjectOverlayImage = Image.FromFile(overlayImageDir + markedRedOverlayImagePath);
+            objectSlotManagerGui.MarkedOrangeObjectOverlayImage = Image.FromFile(overlayImageDir + markedOrangeOverlayImagePath);
+            objectSlotManagerGui.MarkedYellowObjectOverlayImage = Image.FromFile(overlayImageDir + markedYellowOverlayImagePath);
+            objectSlotManagerGui.MarkedGreenObjectOverlayImage = Image.FromFile(overlayImageDir + markedGreenOverlayImagePath);
+            objectSlotManagerGui.MarkedLightBlueObjectOverlayImage = Image.FromFile(overlayImageDir + markedLightBlueOverlayImagePath);
+            objectSlotManagerGui.MarkedBlueObjectOverlayImage = Image.FromFile(overlayImageDir + markedBlueOverlayImagePath);
+            objectSlotManagerGui.MarkedPurpleObjectOverlayImage = Image.FromFile(overlayImageDir + markedPurpleOverlayImagePath);
+            objectSlotManagerGui.MarkedPinkObjectOverlayImage = Image.FromFile(overlayImageDir + markedPinkOverlayImagePath);
+            objectSlotManagerGui.MarkedBlackObjectOverlayImage = Image.FromFile(overlayImageDir + markedBlackOverlayImagePath);
+            objectSlotManagerGui.MarkedGreyObjectOverlayImage = Image.FromFile(overlayImageDir + markedGreyOverlayImagePath);
+            objectSlotManagerGui.MarkedWhiteObjectOverlayImage = Image.FromFile(overlayImageDir + markedWhiteOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
             {

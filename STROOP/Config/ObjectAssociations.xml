@@ -177,6 +177,39 @@
     <Home>
       <OverlayImage path="Home.png"/>
     </Home>
+    <MarkedRed>
+      <OverlayImage path="MarkedRed.png"/>
+    </MarkedRed>
+    <MarkedOrange>
+      <OverlayImage path="MarkedOrange.png"/>
+    </MarkedOrange>
+    <MarkedYellow>
+      <OverlayImage path="MarkedYellow.png"/>
+    </MarkedYellow>
+    <MarkedGreen>
+      <OverlayImage path="MarkedGreen.png"/>
+    </MarkedGreen>
+    <MarkedLightBlue>
+      <OverlayImage path="MarkedLightBlue.png"/>
+    </MarkedLightBlue>
+    <MarkedBlue>
+      <OverlayImage path="MarkedBlue.png"/>
+    </MarkedBlue>
+    <MarkedPurple>
+      <OverlayImage path="MarkedPurple.png"/>
+    </MarkedPurple>
+    <MarkedPink>
+      <OverlayImage path="MarkedPink.png"/>
+    </MarkedPink>
+    <MarkedBlack>
+      <OverlayImage path="MarkedBlack.png"/>
+    </MarkedBlack>
+    <MarkedGrey>
+      <OverlayImage path="MarkedGrey.png"/>
+    </MarkedGrey>
+    <MarkedWhite>
+      <OverlayImage path="MarkedWhite.png"/>
+    </MarkedWhite>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <SpawnCode gfxId="0xD5"/>

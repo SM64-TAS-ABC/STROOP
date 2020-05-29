@@ -34,8 +34,21 @@ namespace STROOP.Structs
         public Image Collision2OverlayImage;
         public Image Collision3OverlayImage;
         public Image Collision4OverlayImage;
+
         public Image MarkedObjectOverlayImage;
         public Image HomeOverlayImage;
+
+        public Image MarkedRedObjectOverlayImage;
+        public Image MarkedOrangeObjectOverlayImage;
+        public Image MarkedYellowObjectOverlayImage;
+        public Image MarkedGreenObjectOverlayImage;
+        public Image MarkedLightBlueObjectOverlayImage;
+        public Image MarkedBlueObjectOverlayImage;
+        public Image MarkedPurpleObjectOverlayImage;
+        public Image MarkedPinkObjectOverlayImage;
+        public Image MarkedBlackObjectOverlayImage;
+        public Image MarkedGreyObjectOverlayImage;
+        public Image MarkedWhiteObjectOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
