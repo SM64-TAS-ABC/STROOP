@@ -38,11 +38,10 @@
             this._watchVariablePanel.AutoScroll = true;
             this._watchVariablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._watchVariablePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this._watchVariablePanel.Location = new System.Drawing.Point(0, 0);
+            this._watchVariablePanel.Location = new System.Drawing.Point(2, 2);
             this._watchVariablePanel.Margin = new System.Windows.Forms.Padding(0);
             this._watchVariablePanel.Name = "_watchVariablePanel";
-            this._watchVariablePanel.Padding = new System.Windows.Forms.Padding(2);
-            this._watchVariablePanel.Size = new System.Drawing.Size(284, 174);
+            this._watchVariablePanel.Size = new System.Drawing.Size(280, 170);
             this._watchVariablePanel.TabIndex = 3;
             // 
             // VariablePopOutForm
@@ -56,6 +55,7 @@
             this.MaximumSize = new System.Drawing.Size(10000, 10000);
             this.MinimizeBox = false;
             this.Name = "VariablePopOutForm";
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowIcon = false;
             this.Text = "Variables";
             this.ResumeLayout(false);
