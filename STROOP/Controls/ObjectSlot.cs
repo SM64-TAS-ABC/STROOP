@@ -466,7 +466,7 @@ namespace STROOP
             // TODO reorder object slots overlays
             // Draw Overlays
             if (_drawMarkedOverlay)
-                e.Graphics.DrawImage(_gui.MarkedObjectOverlayImage, new Rectangle(new Point(), Size));
+                e.Graphics.DrawImage(_gui.MarkedBlackObjectOverlayImage, new Rectangle(new Point(), Size));
             switch (_selectionType)
             {
                 case SelectionType.NORMAL_SELECTION:

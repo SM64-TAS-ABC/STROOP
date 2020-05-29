@@ -171,12 +171,6 @@
     <Collision4>
       <OverlayImage path="Collision4.png"/>
     </Collision4>
-    <Marked>
-      <OverlayImage path="Marked.png"/>
-    </Marked>
-    <Home>
-      <OverlayImage path="Home.png"/>
-    </Home>
     <MarkedRed>
       <OverlayImage path="MarkedRed.png"/>
     </MarkedRed>

@@ -34,10 +34,6 @@ namespace STROOP.Structs
         public Image Collision2OverlayImage;
         public Image Collision3OverlayImage;
         public Image Collision4OverlayImage;
-
-        public Image MarkedObjectOverlayImage;
-        public Image HomeOverlayImage;
-
         public Image MarkedRedObjectOverlayImage;
         public Image MarkedOrangeObjectOverlayImage;
         public Image MarkedYellowObjectOverlayImage;
@@ -82,8 +78,17 @@ namespace STROOP.Structs
             Collision2OverlayImage?.Dispose();
             Collision3OverlayImage?.Dispose();
             Collision4OverlayImage?.Dispose();
-            MarkedObjectOverlayImage?.Dispose();
-            HomeOverlayImage?.Dispose();
+            MarkedRedObjectOverlayImage?.Dispose();
+            MarkedOrangeObjectOverlayImage?.Dispose();
+            MarkedYellowObjectOverlayImage?.Dispose();
+            MarkedGreenObjectOverlayImage?.Dispose();
+            MarkedLightBlueObjectOverlayImage?.Dispose();
+            MarkedBlueObjectOverlayImage?.Dispose();
+            MarkedPurpleObjectOverlayImage?.Dispose();
+            MarkedPinkObjectOverlayImage?.Dispose();
+            MarkedBlackObjectOverlayImage?.Dispose();
+            MarkedGreyObjectOverlayImage?.Dispose();
+            MarkedWhiteObjectOverlayImage?.Dispose();
         }
     }
 }

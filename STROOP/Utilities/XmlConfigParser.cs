@@ -242,7 +242,6 @@ namespace STROOP.Utilities
                 modelOverlayImagePath = "", floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "",
                 parentOverlayImagePath = "", parentUnusedOverlayImagePath = "", parentNoneOverlayImagePath = "", childOverlayImagePath = "",
                 collision1OverlayImagePath = "", collision2OverlayImagePath = "", collision3OverlayImagePath = "", collision4OverlayImagePath = "",
-                markedOverlayImagePath = "", homeOverlayImagePath = "",
                 markedRedOverlayImagePath = "", markedOrangeOverlayImagePath = "", markedYellowOverlayImagePath = "", markedGreenOverlayImagePath = "",
                 markedLightBlueOverlayImagePath = "", markedBlueOverlayImagePath = "", markedPurpleOverlayImagePath = "", markedPinkOverlayImagePath = "",
                 markedBlackOverlayImagePath = "", markedGreyOverlayImagePath = "", markedWhiteOverlayImagePath = "";
@@ -498,14 +497,6 @@ namespace STROOP.Utilities
                                     collision4OverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
-                                case "Marked":
-                                    markedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
-                                case "Home":
-                                    homeOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
                                 case "MarkedRed":
                                     markedRedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
@@ -687,10 +678,6 @@ namespace STROOP.Utilities
             objectSlotManagerGui.Collision2OverlayImage = Image.FromFile(overlayImageDir + collision2OverlayImagePath);
             objectSlotManagerGui.Collision3OverlayImage = Image.FromFile(overlayImageDir + collision3OverlayImagePath);
             objectSlotManagerGui.Collision4OverlayImage = Image.FromFile(overlayImageDir + collision4OverlayImagePath);
-
-            objectSlotManagerGui.MarkedObjectOverlayImage = Image.FromFile(overlayImageDir + markedOverlayImagePath);
-            objectSlotManagerGui.HomeOverlayImage = Image.FromFile(overlayImageDir + homeOverlayImagePath);
-
             objectSlotManagerGui.MarkedRedObjectOverlayImage = Image.FromFile(overlayImageDir + markedRedOverlayImagePath);
             objectSlotManagerGui.MarkedOrangeObjectOverlayImage = Image.FromFile(overlayImageDir + markedOrangeOverlayImagePath);
             objectSlotManagerGui.MarkedYellowObjectOverlayImage = Image.FromFile(overlayImageDir + markedYellowOverlayImagePath);
