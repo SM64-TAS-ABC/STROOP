@@ -3948,11 +3948,11 @@ namespace STROOP.Structs
             _dictionary.Add("HorizontalMovement",
                 ((uint dummy) =>
                 {
-                    float pos1X = Config.Stream.GetSingle(0x80372F00);
-                    float pos1Z = Config.Stream.GetSingle(0x80372F08);
-                    float pos9X = Config.Stream.GetSingle(0x80372F80);
-                    float pos9Z = Config.Stream.GetSingle(0x80372F88);
-                    return MoreMath.GetDistanceBetween(pos1X, pos1Z, pos9X, pos9Z);
+                    float pos01X = Config.Stream.GetSingle(0x80372F00);
+                    float pos01Z = Config.Stream.GetSingle(0x80372F08);
+                    float pos15X = Config.Stream.GetSingle(0x80372FE0);
+                    float pos15Z = Config.Stream.GetSingle(0x80372FE8);
+                    return MoreMath.GetDistanceBetween(pos01X, pos01Z, pos15X, pos15Z);
                 },
                 DEFAULT_SETTER));
 
