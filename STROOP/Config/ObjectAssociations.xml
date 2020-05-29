@@ -195,15 +195,15 @@
     <MarkedPink>
       <OverlayImage path="MarkedPink.png"/>
     </MarkedPink>
-    <MarkedBlack>
-      <OverlayImage path="MarkedBlack.png"/>
-    </MarkedBlack>
     <MarkedGrey>
       <OverlayImage path="MarkedGrey.png"/>
     </MarkedGrey>
     <MarkedWhite>
       <OverlayImage path="MarkedWhite.png"/>
     </MarkedWhite>
+    <MarkedBlack>
+      <OverlayImage path="MarkedBlack.png"/>
+    </MarkedBlack>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <SpawnCode gfxId="0xD5"/>

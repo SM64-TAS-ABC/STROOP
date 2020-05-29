@@ -244,7 +244,7 @@ namespace STROOP.Utilities
                 collision1OverlayImagePath = "", collision2OverlayImagePath = "", collision3OverlayImagePath = "", collision4OverlayImagePath = "",
                 markedRedOverlayImagePath = "", markedOrangeOverlayImagePath = "", markedYellowOverlayImagePath = "", markedGreenOverlayImagePath = "",
                 markedLightBlueOverlayImagePath = "", markedBlueOverlayImagePath = "", markedPurpleOverlayImagePath = "", markedPinkOverlayImagePath = "",
-                markedBlackOverlayImagePath = "", markedGreyOverlayImagePath = "", markedWhiteOverlayImagePath = "";
+                markedGreyOverlayImagePath = "", markedWhiteOverlayImagePath = "", markedBlackOverlayImagePath = "";
             uint marioBehavior = 0;
 
             foreach (XElement element in doc.Root.Elements())
@@ -529,16 +529,16 @@ namespace STROOP.Utilities
                                     markedPinkOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
-                                case "MarkedBlack":
-                                    markedBlackOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
-                                    break;
-
                                 case "MarkedGrey":
                                     markedGreyOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "MarkedWhite":
                                     markedWhiteOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "MarkedBlack":
+                                    markedBlackOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
                             }
                         }
@@ -686,9 +686,9 @@ namespace STROOP.Utilities
             objectSlotManagerGui.MarkedBlueObjectOverlayImage = Image.FromFile(overlayImageDir + markedBlueOverlayImagePath);
             objectSlotManagerGui.MarkedPurpleObjectOverlayImage = Image.FromFile(overlayImageDir + markedPurpleOverlayImagePath);
             objectSlotManagerGui.MarkedPinkObjectOverlayImage = Image.FromFile(overlayImageDir + markedPinkOverlayImagePath);
-            objectSlotManagerGui.MarkedBlackObjectOverlayImage = Image.FromFile(overlayImageDir + markedBlackOverlayImagePath);
             objectSlotManagerGui.MarkedGreyObjectOverlayImage = Image.FromFile(overlayImageDir + markedGreyOverlayImagePath);
             objectSlotManagerGui.MarkedWhiteObjectOverlayImage = Image.FromFile(overlayImageDir + markedWhiteOverlayImagePath);
+            objectSlotManagerGui.MarkedBlackObjectOverlayImage = Image.FromFile(overlayImageDir + markedBlackOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
             {

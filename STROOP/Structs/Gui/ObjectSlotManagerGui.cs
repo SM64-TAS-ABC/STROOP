@@ -42,9 +42,9 @@ namespace STROOP.Structs
         public Image MarkedBlueObjectOverlayImage;
         public Image MarkedPurpleObjectOverlayImage;
         public Image MarkedPinkObjectOverlayImage;
-        public Image MarkedBlackObjectOverlayImage;
         public Image MarkedGreyObjectOverlayImage;
         public Image MarkedWhiteObjectOverlayImage;
+        public Image MarkedBlackObjectOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
