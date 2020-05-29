@@ -117,21 +117,21 @@ namespace STROOP
             itemSelectInObjectTab.Click += (sender, e) =>
             {
                 Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
-                    this, ClickType.ObjectClick, false, false, Config.ObjectManager.Tab);
+                    this, ClickType.ObjectClick, false, false, Config.ObjectManager.Tab, null);
             };
 
             ToolStripMenuItem itemSelectInMemoryTab = new ToolStripMenuItem("Select in Memory Tab");
             itemSelectInMemoryTab.Click += (sender, e) =>
             {
                 Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
-                    this, ClickType.MemoryClick, false, false, Config.MemoryManager.Tab);
+                    this, ClickType.MemoryClick, false, false, Config.MemoryManager.Tab, null);
             };
 
             ToolStripMenuItem itemSelectInCurrentTab = new ToolStripMenuItem("Select in Current Tab");
             itemSelectInCurrentTab.Click += (sender, e) =>
             {
                 Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
-                    this, ClickType.ObjectClick, false, false, null);
+                    this, ClickType.ObjectClick, false, false, null, null);
             };
 
             Func<List<ObjectDataModel>> getObjects = () => KeyboardUtilities.IsCtrlHeld()

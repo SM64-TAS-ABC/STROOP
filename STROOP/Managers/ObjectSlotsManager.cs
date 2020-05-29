@@ -40,7 +40,9 @@ namespace STROOP.Managers
 
         public readonly List<uint> SelectedSlotsAddresses = new List<uint>();
         public readonly List<uint> SelectedOnMapSlotsAddresses = new List<uint>();
+
         public readonly List<uint> MarkedSlotsAddresses = new List<uint>();
+        public readonly Dictionary<uint, int> MarkedSlotsAddressesDictionary = new Dictionary<uint, int>();
 
         public List<ObjectDataModel> SelectedObjects = new List<ObjectDataModel>();
 
@@ -123,11 +125,12 @@ namespace STROOP.Managers
             ObjectSlot selectedSlot, bool isCtrlKeyHeld, bool isShiftKeyHeld, bool isAltKeyHeld, int? numberHeld)
         {
             bool isMarking = isAltKeyHeld || numberHeld.HasValue;
+            int? markedColor = isAltKeyHeld ? 11 : numberHeld;
             ClickType click = GetClickType(isMarking);
             bool shouldToggle = ShouldToggle(isCtrlKeyHeld, isMarking);
             bool shouldExtendRange = isShiftKeyHeld;
             TabPage tabDestination = GetTabDestination(isMarking);
-            DoSlotClickUsingSpecifications(selectedSlot, click, shouldToggle, shouldExtendRange, tabDestination);
+            DoSlotClickUsingSpecifications(selectedSlot, click, shouldToggle, shouldExtendRange, tabDestination, markedColor);
         }
 
         public void SelectSlotByAddress(uint address)
@@ -184,7 +187,7 @@ namespace STROOP.Managers
         }
 
         public void DoSlotClickUsingSpecifications(
-            ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, TabPage tabDestination)
+            ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, TabPage tabDestination, int? markedColor)
         {
             if (selectedSlot.CurrentObject == null)
                 return;
@@ -257,15 +260,29 @@ namespace STROOP.Managers
                 else
                 {
                     if (!shouldToggle)
+                    {
                         selection.Clear();
+                        if (selection == MarkedSlotsAddresses)
+                        {
+                            MarkedSlotsAddressesDictionary.Clear();
+                        }
+                    }
 
                     if (selection.Contains(selectedSlot.CurrentObject.Address))
                     {
                         selection.Remove(selectedSlot.CurrentObject.Address);
+                        if (selection == MarkedSlotsAddresses)
+                        {
+                            MarkedSlotsAddressesDictionary.Remove(selectedSlot.CurrentObject.Address);
+                        }
                     }
                     else
                     {
                         selection.Add(selectedSlot.CurrentObject.Address);
+                        if (selection == MarkedSlotsAddresses)
+                        {
+                            MarkedSlotsAddressesDictionary[selectedSlot.CurrentObject.Address] = markedColor.Value;
+                        }
                     }
                 }
             }

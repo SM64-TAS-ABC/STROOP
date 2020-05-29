@@ -19,6 +19,7 @@ namespace STROOP.Utilities
         public static void Update()
         {
             //UpdateMoneybagHome();
+            //Config.SetDebugText(DictionaryUtilities.GetString(Config.ObjectSlotsManager.MarkedSlotsAddressesDictionary));
         }
 
         public static void TestSomething()
