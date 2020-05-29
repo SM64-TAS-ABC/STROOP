@@ -108,7 +108,7 @@ namespace STROOP.Structs.Configurations
             return 0;
         }
 
-        public static ushort Switch(ushort? valUS = null, ushort? valJP = null, ushort? valSH = null)
+        public static ushort Switch(ushort? valUS = null, ushort? valJP = null, ushort? valSH = null, ushort? valEU = null)
         {
             switch (Version)
             {
@@ -120,6 +120,9 @@ namespace STROOP.Structs.Configurations
                     break;
                 case RomVersion.SH:
                     if (valSH.HasValue) return valSH.Value;
+                    break;
+                case RomVersion.EU:
+                    if (valEU.HasValue) return valEU.Value;
                     break;
             }
             return 0;
