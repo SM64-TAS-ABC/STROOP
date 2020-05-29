@@ -114,29 +114,31 @@ namespace STROOP.Managers
             bool isCtrlKeyHeld = KeyboardUtilities.IsCtrlHeld();
             bool isShiftKeyHeld = KeyboardUtilities.IsShiftHeld();
             bool isAltKeyHeld = KeyboardUtilities.IsAltHeld();
+            int? numberHeld = KeyboardUtilities.GetCurrentlyInputtedNumber();
 
-            DoSlotClickUsingInput(selectedSlot, isCtrlKeyHeld, isShiftKeyHeld, isAltKeyHeld);
+            DoSlotClickUsingInput(selectedSlot, isCtrlKeyHeld, isShiftKeyHeld, isAltKeyHeld, numberHeld);
         }
 
         private void DoSlotClickUsingInput(
-            ObjectSlot selectedSlot, bool isCtrlKeyHeld, bool isShiftKeyHeld, bool isAltKeyHeld)
+            ObjectSlot selectedSlot, bool isCtrlKeyHeld, bool isShiftKeyHeld, bool isAltKeyHeld, int? numberHeld)
         {
-            ClickType click = GetClickType(isAltKeyHeld);
-            bool shouldToggle = ShouldToggle(isCtrlKeyHeld, isAltKeyHeld);
+            bool isMarking = isAltKeyHeld || numberHeld.HasValue;
+            ClickType click = GetClickType(isMarking);
+            bool shouldToggle = ShouldToggle(isCtrlKeyHeld, isMarking);
             bool shouldExtendRange = isShiftKeyHeld;
-            TabPage tabDestination = GetTabDestination(isAltKeyHeld);
+            TabPage tabDestination = GetTabDestination(isMarking);
             DoSlotClickUsingSpecifications(selectedSlot, click, shouldToggle, shouldExtendRange, tabDestination);
         }
 
         public void SelectSlotByAddress(uint address)
         {
             ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.CurrentObject.Address == address);
-            if (slot != null) DoSlotClickUsingInput(slot, false, false, false);
+            if (slot != null) DoSlotClickUsingInput(slot, false, false, false, null);
         }
 
-        private ClickType GetClickType(bool isAltKeyHeld)
+        private ClickType GetClickType(bool isMarking)
         {
-            if (isAltKeyHeld)
+            if (isMarking)
             {
                 return ClickType.MarkClick;
             }
@@ -164,18 +166,18 @@ namespace STROOP.Managers
             }
         }
 
-        private bool ShouldToggle(bool isCtrlKeyHeld, bool isAltKeyHeld)
+        private bool ShouldToggle(bool isCtrlKeyHeld, bool isMarking)
         {
             bool isTogglingTab =
                 ActiveTab == TabType.Map ||
                 ActiveTab == TabType.CamHack;
-            bool isToggleState = isAltKeyHeld ? true : isTogglingTab;
+            bool isToggleState = isMarking ? true : isTogglingTab;
             return isToggleState != isCtrlKeyHeld;
         }
 
-        private TabPage GetTabDestination(bool isAltKeyHeld)
+        private TabPage GetTabDestination(bool isMarking)
         {
-            if (isAltKeyHeld) return null;
+            if (isMarking) return null;
             if (ActiveTab == TabType.Other) return Config.ObjectManager.Tab;
             if (ActiveTab == TabType.TAS && !SpecialConfig.IsSelectedPA) return Config.ObjectManager.Tab;
             return null;
