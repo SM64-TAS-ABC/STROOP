@@ -60,21 +60,21 @@ namespace STROOP.Structs.Configurations
         {
             if (mappingCurrent == null) return address;
 
-            Dictionary<uint, string> originalDictionary;
+            Dictionary<uint, string> mappingOriginal;
             switch (RomVersionConfig.Version)
             {
                 case RomVersion.US:
-                    originalDictionary = mappingUS;
+                    mappingOriginal = mappingUS;
                     break;
                 case RomVersion.JP:
-                    originalDictionary = mappingJP;
+                    mappingOriginal = mappingJP;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            if (!originalDictionary.ContainsKey(address)) return address;
-            string name = originalDictionary[address];
+            if (!mappingOriginal.ContainsKey(address)) return address;
+            string name = mappingOriginal[address];
             if (!mappingCurrentReversed.ContainsKey(name)) return address;
             return mappingCurrentReversed[name];
         }
@@ -83,14 +83,14 @@ namespace STROOP.Structs.Configurations
         {
             if (mappingCurrent == null) return address;
 
-            Dictionary<string, uint> originalDictionaryReversed;
+            Dictionary<string, uint> mappingOriginalReversed;
             switch (RomVersionConfig.Version)
             {
                 case RomVersion.US:
-                    originalDictionaryReversed = mappingUSReversed;
+                    mappingOriginalReversed = mappingUSReversed;
                     break;
                 case RomVersion.JP:
-                    originalDictionaryReversed = mappingJPReversed;
+                    mappingOriginalReversed = mappingJPReversed;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -98,8 +98,8 @@ namespace STROOP.Structs.Configurations
 
             if (!mappingCurrent.ContainsKey(address)) return address;
             string name = mappingCurrent[address];
-            if (!originalDictionaryReversed.ContainsKey(name)) return address;
-            return originalDictionaryReversed[name];
+            if (!mappingOriginalReversed.ContainsKey(name)) return address;
+            return mappingOriginalReversed[name];
         }
 
         public static List<WatchVariableControl> GetVariables()
