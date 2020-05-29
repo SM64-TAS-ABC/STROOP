@@ -1457,7 +1457,7 @@ namespace STROOP.Utilities
             InGameFunctionCall.WriteInGameFunctionCall(setMusic, 0, fileSelectMusic, 0);
             */
 
-            uint spawnStar = RomVersionConfig.Switch(0x802AB558, 0x802AACE4);
+            uint spawnStar = RomVersionConfig.SwitchMap(0x802AB558, 0x802AACE4);
             InGameFunctionCall.WriteInGameFunctionCall(spawnStar, 6);
         }
 

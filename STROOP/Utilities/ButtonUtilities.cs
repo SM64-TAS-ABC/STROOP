@@ -891,7 +891,7 @@ namespace STROOP.Utilities
 
         public static bool CoinStar100()
         {
-            uint spawnStar = RomVersionConfig.Switch(0x802AB558, 0x802AACE4);
+            uint spawnStar = RomVersionConfig.SwitchMap(0x802AB558, 0x802AACE4);
             InGameFunctionCall.WriteInGameFunctionCall(spawnStar, 6);
             return true;
         }

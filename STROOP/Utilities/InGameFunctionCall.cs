@@ -80,7 +80,7 @@ namespace STROOP.Structs
 
             // Erase self and return as if nothing happened:
             
-            uint memcpyAddress = RomVersionConfig.Switch(0x803273F0, 0x803264C0);
+            uint memcpyAddress = RomVersionConfig.SwitchMap(0x803273F0, 0x803264C0);
             const uint eraseBytes = 16 * 4 + maxArguments * 8; //fixed instructions + 2 instructions per argument
             WriteWords(ref currAddress, 0x3C1F8037, 0x37FFEB0C); //LI RA, 0x8037EB0C
             WriteRegisterAssign(ref currAddress, A0  , currAddress);

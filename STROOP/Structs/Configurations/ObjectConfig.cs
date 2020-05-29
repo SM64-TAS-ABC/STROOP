@@ -83,12 +83,12 @@ namespace STROOP.Structs
         public static readonly uint InitialReleaseStatusOffset = 0x1D4;
         public static readonly uint InteractionStatusOffset = 0x134;
 
-        public static uint ReleaseStatusThrownValue { get => RomVersionConfig.Switch(ReleaseStatusThrownValueUS, ReleaseStatusThrownValueJP, ReleaseStatusThrownValueSH); }
+        public static uint ReleaseStatusThrownValue { get => RomVersionConfig.SwitchMap(ReleaseStatusThrownValueUS, ReleaseStatusThrownValueJP, ReleaseStatusThrownValueSH); }
         public static readonly uint ReleaseStatusThrownValueUS = 0x800EE5F8;
         public static readonly uint ReleaseStatusThrownValueJP = 0x800EB778;
         public static readonly uint ReleaseStatusThrownValueSH = 0x800EB798;
 
-        public static uint ReleaseStatusDroppedValue { get => RomVersionConfig.Switch(ReleaseStatusDroppedValueUS, ReleaseStatusDroppedValueJP, ReleaseStatusDroppedValueSH); }
+        public static uint ReleaseStatusDroppedValue { get => RomVersionConfig.SwitchMap(ReleaseStatusDroppedValueUS, ReleaseStatusDroppedValueJP, ReleaseStatusDroppedValueSH); }
         public static readonly uint ReleaseStatusDroppedValueUS = 0x800EE5F0;
         public static readonly uint ReleaseStatusDroppedValueJP = 0x800EB770;
         public static readonly uint ReleaseStatusDroppedValueSH = 0x800EB790;
@@ -127,7 +127,7 @@ namespace STROOP.Structs
         public static readonly uint GoombaCountdownOffset = 0xFC;
         public static readonly uint GoombaTargetAngleOffset = 0x100;
 
-        public static uint SignGraphicsId { get => RomVersionConfig.Switch(SignGraphicsIdUS, SignGraphicsIdJP, SignGraphicsIdSH); }
+        public static uint SignGraphicsId { get => RomVersionConfig.SwitchMap(SignGraphicsIdUS, SignGraphicsIdJP, SignGraphicsIdSH); }
         public static readonly uint SignGraphicsIdUS = 0x800F8C4C;
         public static readonly uint SignGraphicsIdJP = 0x800F5DCC;
         public static readonly uint SignGraphicsIdSH = 0x800F5DEC;

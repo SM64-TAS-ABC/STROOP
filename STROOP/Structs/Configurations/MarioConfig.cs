@@ -9,7 +9,7 @@ namespace STROOP.Structs
 {
     public static class MarioConfig
     {
-        public static uint StructAddress { get => RomVersionConfig.Switch(StructAddressUS, StructAddressJP, StructAddressSH, StructAddressEU); }
+        public static uint StructAddress { get => RomVersionConfig.SwitchMap(StructAddressUS, StructAddressJP, StructAddressSH, StructAddressEU); }
         public static readonly uint StructAddressUS = 0x8033B170;
         public static readonly uint StructAddressJP = 0x80339E00;
         public static readonly uint StructAddressSH = 0x8031D9C0;
@@ -44,7 +44,7 @@ namespace STROOP.Structs
         public static readonly uint HolpZOffset = 0x260;
         public static readonly uint HolpTypeOffset = 0x24A;
 
-        public static uint StoodOnObjectPointerAddress { get => RomVersionConfig.Switch(StoodOnObjectPointerAddressUS, StoodOnObjectPointerAddressJP, StoodOnObjectPointerAddressSH, StoodOnObjectPointerAddressEU); }
+        public static uint StoodOnObjectPointerAddress { get => RomVersionConfig.SwitchMap(StoodOnObjectPointerAddressUS, StoodOnObjectPointerAddressJP, StoodOnObjectPointerAddressSH, StoodOnObjectPointerAddressEU); }
         public static readonly uint StoodOnObjectPointerAddressUS = 0x80330E34;
         public static readonly uint StoodOnObjectPointerAddressJP = 0x8032FED4;
         public static readonly uint StoodOnObjectPointerAddressSH = 0x80310564;

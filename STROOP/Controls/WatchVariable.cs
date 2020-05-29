@@ -49,7 +49,7 @@ namespace STROOP.Controls
                 if (OffsetUS.HasValue || OffsetJP.HasValue || OffsetSH.HasValue || OffsetEU.HasValue)
                 {
                     if (HandleMapping)
-                        return RomVersionConfig.Switch(
+                        return RomVersionConfig.SwitchMap(
                             OffsetUS ?? 0,
                             OffsetJP ?? 0,
                             OffsetSH ?? 0,

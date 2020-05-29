@@ -160,7 +160,7 @@ namespace STROOP.Managers
             _treeView.Nodes.Clear();
 
             // A pointer to the root node of the GFX tree is stored at offset 0x04 in a certain struct
-            var StructWithGfxRoot = Config.Stream.GetUInt32(RomVersionConfig.Switch(0x8032DDCC, 0x8032CE6C));
+            var StructWithGfxRoot = Config.Stream.GetUInt32(RomVersionConfig.SwitchMap(0x8032DDCC, 0x8032CE6C));
 
             if (StructWithGfxRoot > 0x80000000u)
             {
@@ -361,7 +361,7 @@ namespace STROOP.Managers
         {
             foreach ((uint addressUS, uint addressJP, string functionName) in functionNameList)
             {
-                uint address = RomVersionConfig.Switch(addressUS, addressJP);
+                uint address = RomVersionConfig.SwitchMap(addressUS, addressJP);
                 if (address == functionAddress) return functionName;
             }
             return null;
@@ -442,7 +442,7 @@ namespace STROOP.Managers
         {
             foreach ((uint addressUS, uint addressJP, string functionName) in functionNameList)
             {
-                uint address = RomVersionConfig.Switch(addressUS, addressJP);
+                uint address = RomVersionConfig.SwitchMap(addressUS, addressJP);
                 if (address == functionAddress) return functionName;
             }
             return null;

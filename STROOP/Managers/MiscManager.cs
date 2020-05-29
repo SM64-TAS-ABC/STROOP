@@ -60,7 +60,7 @@ namespace STROOP.Managers
             {
                 ToolStripMenuItem item = new ToolStripMenuItem(courseToGoTo.Name);
                 item.Click += (sender, e) => InGameFunctionCall.WriteInGameFunctionCall(
-                    RomVersionConfig.Switch(0x8024978C, 0x8024975C), (uint)courseToGoTo.Index);
+                    RomVersionConfig.SwitchMap(0x8024978C, 0x8024975C), (uint)courseToGoTo.Index);
                 buttonMiscGoToCourse.ContextMenuStrip.Items.Add(item);
             }
             buttonMiscGoToCourse.Click += (sender, e) => buttonMiscGoToCourse.ContextMenuStrip.Show(Cursor.Position);

@@ -39,25 +39,25 @@ namespace STROOP.Structs
         }
         public static readonly List<byte> ProcessingGroups = ProcessingGroupsColor.Keys.ToList();
 
-        public static uint ProcessGroupsStartAddress { get => RomVersionConfig.Switch(ProcessGroupsStartAddressUS, ProcessGroupsStartAddressJP, ProcessGroupsStartAddressSH, ProcessGroupsStartAddressEU); }
+        public static uint ProcessGroupsStartAddress { get => RomVersionConfig.SwitchMap(ProcessGroupsStartAddressUS, ProcessGroupsStartAddressJP, ProcessGroupsStartAddressSH, ProcessGroupsStartAddressEU); }
         public static readonly uint ProcessGroupsStartAddressUS = 0x8033CBE0;
         public static readonly uint ProcessGroupsStartAddressJP = 0x8033B870;
         public static readonly uint ProcessGroupsStartAddressSH = 0x80343428;
         public static readonly uint ProcessGroupsStartAddressEU = 0x8032EE98;
 
-        public static uint ObjectSlotsStartAddress { get => RomVersionConfig.Switch(ObjectSlotsStartAddressUS, ObjectSlotsStartAddressJP, ObjectSlotsStartAddressSH, ObjectSlotsStartAddressEU); }
+        public static uint ObjectSlotsStartAddress { get => RomVersionConfig.SwitchMap(ObjectSlotsStartAddressUS, ObjectSlotsStartAddressJP, ObjectSlotsStartAddressSH, ObjectSlotsStartAddressEU); }
         public static readonly uint ObjectSlotsStartAddressUS = 0x8033D488;
         public static readonly uint ObjectSlotsStartAddressJP = 0x8033C118;
         public static readonly uint ObjectSlotsStartAddressSH = 0x8031F648;
         public static readonly uint ObjectSlotsStartAddressEU = 0x8030B0B8;
 
-        public static uint VacantSlotsNodeAddress { get => RomVersionConfig.Switch(VacantSlotsNodeAddressUS, VacantSlotsNodeAddressJP, VacantSlotsNodeAddressSH, VacantSlotsNodeAddressEU); }
+        public static uint VacantSlotsNodeAddress { get => RomVersionConfig.SwitchMap(VacantSlotsNodeAddressUS, VacantSlotsNodeAddressJP, VacantSlotsNodeAddressSH, VacantSlotsNodeAddressEU); }
         public static readonly uint VacantSlotsNodeAddressUS = 0x803610F0;
         public static readonly uint VacantSlotsNodeAddressJP = 0x8035FD80;
         public static readonly uint VacantSlotsNodeAddressSH = 0x803432B0;
         public static readonly uint VacantSlotsNodeAddressEU = 0x8032ED20;
 
-        public static uint UnusedSlotAddress { get => RomVersionConfig.Switch(UnusedSlotAddressUS, UnusedSlotAddressJP, UnusedSlotAddressSH, UnusedSlotAddressEU); }
+        public static uint UnusedSlotAddress { get => RomVersionConfig.SwitchMap(UnusedSlotAddressUS, UnusedSlotAddressJP, UnusedSlotAddressSH, UnusedSlotAddressEU); }
         public static readonly uint UnusedSlotAddressUS = 0x80360E88;
         public static readonly uint UnusedSlotAddressJP = 0x8035FB18;
         public static readonly uint UnusedSlotAddressSH = 0x80343048;

@@ -40,7 +40,7 @@ namespace STROOP.Managers
                 if (musicIndexNullable == null) return;
                 int musicIndex = musicIndexNullable.Value;
                 if (musicIndex < 0 || musicIndex > 34) return;
-                uint setMusic = RomVersionConfig.Switch(0x80320544, 0x8031F690);
+                uint setMusic = RomVersionConfig.SwitchMap(0x80320544, 0x8031F690);
                 InGameFunctionCall.WriteInGameFunctionCall(setMusic, 0, (uint)musicIndex, 0);
             };
 
@@ -55,8 +55,8 @@ namespace STROOP.Managers
             };
             buttonSoundPlaySoundEffect.Click += (sender, e) =>
             {
-                uint setSound = RomVersionConfig.Switch(0x8031EB00, 0x8031DC78);
-                uint soundArg = RomVersionConfig.Switch(0x803331F0, 0x803320E0);
+                uint setSound = RomVersionConfig.SwitchMap(0x8031EB00, 0x8031DC78);
+                uint soundArg = RomVersionConfig.SwitchMap(0x803331F0, 0x803320E0);
                 uint? soundEffectNullable = ParsingUtilities.ParseHexNullable(textBoxSoundSoundEffect.Text);
                 if (!soundEffectNullable.HasValue) return;
                 uint soundEffect = soundEffectNullable.Value;

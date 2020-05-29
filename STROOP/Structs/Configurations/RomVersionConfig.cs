@@ -81,10 +81,17 @@ namespace STROOP.Structs.Configurations
             return RomVersion.US;
         }
 
-        public static uint Switch(uint? valUS = null, uint? valJP = null, uint? valSH = null, uint? valEU = null)
+        public static uint SwitchMap(uint? valUS = null, uint? valJP = null, uint? valSH = null, uint? valEU = null)
         {
             uint address = SwitchOnly(valUS, valJP, valSH, valEU);
             address = MappingConfig.HandleMapping(address);
+            return address;
+        }
+
+        public static uint SwitchReverseMap(uint? valUS = null, uint? valJP = null, uint? valSH = null, uint? valEU = null)
+        {
+            uint address = SwitchOnly(valUS, valJP, valSH, valEU);
+            address = MappingConfig.HandleReverseMapping(address);
             return address;
         }
 

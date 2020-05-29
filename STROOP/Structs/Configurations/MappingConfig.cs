@@ -14,7 +14,8 @@ namespace STROOP.Structs.Configurations
     {
         private static readonly Dictionary<uint, string> mappingUS = GetMappingDictionary(@"Mappings/MappingUS.map");
         private static readonly Dictionary<uint, string> mappingJP = GetMappingDictionary(@"Mappings/MappingJP.map");
-        private static readonly Dictionary<uint, string> mappingSH = GetMappingDictionary(@"Mappings/MappingUS.map"); // TODO: fix this
+        private static readonly Dictionary<string, uint> mappingUSReversed = DictionaryUtilities.ReverseDictionary(mappingUS);
+        private static readonly Dictionary<string, uint> mappingJPReversed = DictionaryUtilities.ReverseDictionary(mappingJP);
 
         private static Dictionary<uint, string> mappingCurrent = null;
         private static Dictionary<string, uint> mappingCurrentReversed = null;
@@ -68,9 +69,6 @@ namespace STROOP.Structs.Configurations
                 case RomVersion.JP:
                     originalDictionary = mappingJP;
                     break;
-                case RomVersion.SH:
-                    originalDictionary = mappingSH;
-                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -79,6 +77,29 @@ namespace STROOP.Structs.Configurations
             string name = originalDictionary[address];
             if (!mappingCurrentReversed.ContainsKey(name)) return address;
             return mappingCurrentReversed[name];
+        }
+
+        public static uint HandleReverseMapping(uint address)
+        {
+            if (mappingCurrent == null) return address;
+
+            Dictionary<string, uint> originalDictionaryReversed;
+            switch (RomVersionConfig.Version)
+            {
+                case RomVersion.US:
+                    originalDictionaryReversed = mappingUSReversed;
+                    break;
+                case RomVersion.JP:
+                    originalDictionaryReversed = mappingJPReversed;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            if (!mappingCurrent.ContainsKey(address)) return address;
+            string name = mappingCurrent[address];
+            if (!originalDictionaryReversed.ContainsKey(name)) return address;
+            return originalDictionaryReversed[name];
         }
 
         public static List<WatchVariableControl> GetVariables()

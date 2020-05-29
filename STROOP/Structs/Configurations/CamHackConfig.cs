@@ -8,7 +8,7 @@ namespace STROOP.Structs.Configurations
 {
     public static class CamHackConfig
     {
-        public static uint StructAddress { get => RomVersionConfig.Switch(StructAddressUS, StructAddressJP); }
+        public static uint StructAddress { get => RomVersionConfig.SwitchMap(StructAddressUS, StructAddressJP); }
         public static readonly uint StructAddressUS = 0x803E0000;
         public static readonly uint StructAddressJP = 0x803E0000;
 

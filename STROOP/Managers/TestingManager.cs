@@ -679,7 +679,7 @@ namespace STROOP.Managers
             {
                 return new VarStatePenguin()
                 {
-                    Progress = TableConfig.RacingPenguinWaypoints.GetProgress(RomVersionConfig.Switch(0x80348448, 0x803451F8)),
+                    Progress = TableConfig.RacingPenguinWaypoints.GetProgress(RomVersionConfig.SwitchMap(0x80348448, 0x803451F8)),
                 };
             }
 
