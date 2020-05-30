@@ -351,6 +351,7 @@
     <Compile Include="Managers\PaintingManager.cs" />
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
+    <Compile Include="Managers\QuarterFrameManager.cs" />
     <Compile Include="Map\MapCeilingObject.cs" />
     <Compile Include="Map\MapBackgroundObject.cs" />
     <Compile Include="Map\MapLineSegmentObject.cs" />

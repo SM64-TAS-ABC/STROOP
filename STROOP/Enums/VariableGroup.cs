@@ -38,5 +38,7 @@ namespace STROOP.Structs
         Hacks,
         Rng,
         Self,
+        QuarterFrameHack,
+        GhostHack,
     };
 }

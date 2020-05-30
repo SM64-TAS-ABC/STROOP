@@ -1,48 +1,110 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VarData>
-  <Data type="int" offset="0x104" base="HackedArea" useHex="true" color ="Yellow">Movement Action</Data>
-  <Data type="int" offset="0x108" base="HackedArea" color ="Purple">#0 result</Data>
-  <Data type="float" offset="0x10C" base="HackedArea">#0 water Y</Data>
-  <Data type="float" offset="0x110" base="HackedArea">#0 floor Y</Data>
-  <Data type="float" offset="0x114" base="HackedArea">#0 ceiling Y</Data>
-  <Data type="int" offset="0x118" base="HackedArea" useHex="true">#0 floor tri</Data>
-  <Data type="int" offset="0x11C" base="HackedArea" useHex="true">#0 ceiling tri</Data>
-  <Data type="int" offset="0x120" base="HackedArea" useHex="true">#0 low wall tri</Data>
-  <Data type="int" offset="0x124" base="HackedArea" useHex="true">#0 high wall tri</Data>
-  <Data type="float" offset="0x128" base="HackedArea" coord="X">#0 pos X</Data>
-  <Data type="float" offset="0x12C" base="HackedArea" coord="Y">#0 pos Y</Data>
-  <Data type="float" offset="0x130" base="HackedArea" coord="Z">#0 pos Z</Data>
-  <Data type="int" offset="0x138" base="HackedArea" color ="Purple">#1 result</Data>
-  <Data type="float" offset="0x13C" base="HackedArea">#1 water Y</Data>
-  <Data type="float" offset="0x140" base="HackedArea">#1 floor Y</Data>
-  <Data type="float" offset="0x144" base="HackedArea">#1 ceiling Y</Data>
-  <Data type="int" offset="0x148" base="HackedArea" useHex="true">#1 floor tri</Data>
-  <Data type="int" offset="0x14C" base="HackedArea" useHex="true">#1 ceiling tri</Data>
-  <Data type="int" offset="0x150" base="HackedArea" useHex="true">#1 low wall tri</Data>
-  <Data type="int" offset="0x154" base="HackedArea" useHex="true">#1 high wall tri</Data>
-  <Data type="float" offset="0x158" base="HackedArea" coord="X">#1 pos X</Data>
-  <Data type="float" offset="0x15C" base="HackedArea" coord="Y">#1 pos Y</Data>
-  <Data type="float" offset="0x160" base="HackedArea" coord="Z">#1 pos Z</Data>
-  <Data type="int" offset="0x168" base="HackedArea" color ="Purple">#2 result</Data>
-  <Data type="float" offset="0x16C" base="HackedArea">#2 water Y</Data>
-  <Data type="float" offset="0x170" base="HackedArea">#2 floor Y</Data>
-  <Data type="float" offset="0x174" base="HackedArea">#2 ceiling Y</Data>
-  <Data type="int" offset="0x178" base="HackedArea" useHex="true">#2 floor tri</Data>
-  <Data type="int" offset="0x17C" base="HackedArea" useHex="true">#2 ceiling tri</Data>
-  <Data type="int" offset="0x180" base="HackedArea" useHex="true">#2 low wall tri</Data>
-  <Data type="int" offset="0x184" base="HackedArea" useHex="true">#2 high wall tri</Data>
-  <Data type="float" offset="0x188" base="HackedArea" coord="X">#2 pos X</Data>
-  <Data type="float" offset="0x18C" base="HackedArea" coord="Y">#2 pos Y</Data>
-  <Data type="float" offset="0x190" base="HackedArea" coord="Z">#2 pos Z</Data>
-  <Data type="int" offset="0x198" base="HackedArea" color ="Purple">#3 result</Data>
-  <Data type="float" offset="0x19C" base="HackedArea">#3 water Y</Data>
-  <Data type="float" offset="0x1A0" base="HackedArea">#3 floor Y</Data>
-  <Data type="float" offset="0x1A4" base="HackedArea">#3 ceiling Y</Data>
-  <Data type="int" offset="0x1A8" base="HackedArea" useHex="true">#3 floor tri</Data>
-  <Data type="int" offset="0x1AC" base="HackedArea" useHex="true">#3 ceiling tri</Data>
-  <Data type="int" offset="0x1B0" base="HackedArea" useHex="true">#3 low wall tri</Data>
-  <Data type="int" offset="0x1B4" base="HackedArea" useHex="true">#3 high wall tri</Data>
-  <Data type="float" offset="0x1B8" base="HackedArea" coord="X">#3 pos X</Data>
-  <Data type="float" offset="0x1BC" base="HackedArea" coord="Y">#3 pos Y</Data>
-  <Data type="float" offset="0x1C0" base="HackedArea" coord="Z">#3 pos Z</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x104" base="HackedArea" useHex="true" color ="Yellow">Movement Action</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x108" base="HackedArea" color ="Purple">#0 result</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x10C" base="HackedArea">#0 water Y</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x110" base="HackedArea">#0 floor Y</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x114" base="HackedArea">#0 ceiling Y</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x118" base="HackedArea" useHex="true">#0 floor tri</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x11C" base="HackedArea" useHex="true">#0 ceiling tri</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x120" base="HackedArea" useHex="true">#0 low wall tri</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x124" base="HackedArea" useHex="true">#0 high wall tri</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x128" base="HackedArea" coord="X">#0 pos X</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x12C" base="HackedArea" coord="Y">#0 pos Y</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x130" base="HackedArea" coord="Z">#0 pos Z</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x138" base="HackedArea" color ="Purple">#1 result</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x13C" base="HackedArea">#1 water Y</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x140" base="HackedArea">#1 floor Y</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x144" base="HackedArea">#1 ceiling Y</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x148" base="HackedArea" useHex="true">#1 floor tri</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x14C" base="HackedArea" useHex="true">#1 ceiling tri</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x150" base="HackedArea" useHex="true">#1 low wall tri</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x154" base="HackedArea" useHex="true">#1 high wall tri</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x158" base="HackedArea" coord="X">#1 pos X</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x15C" base="HackedArea" coord="Y">#1 pos Y</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x160" base="HackedArea" coord="Z">#1 pos Z</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x168" base="HackedArea" color ="Purple">#2 result</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x16C" base="HackedArea">#2 water Y</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x170" base="HackedArea">#2 floor Y</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x174" base="HackedArea">#2 ceiling Y</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x178" base="HackedArea" useHex="true">#2 floor tri</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x17C" base="HackedArea" useHex="true">#2 ceiling tri</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x180" base="HackedArea" useHex="true">#2 low wall tri</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x184" base="HackedArea" useHex="true">#2 high wall tri</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x188" base="HackedArea" coord="X">#2 pos X</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x18C" base="HackedArea" coord="Y">#2 pos Y</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x190" base="HackedArea" coord="Z">#2 pos Z</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x198" base="HackedArea" color ="Purple">#3 result</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x19C" base="HackedArea">#3 water Y</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x1A0" base="HackedArea">#3 floor Y</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x1A4" base="HackedArea">#3 ceiling Y</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x1A8" base="HackedArea" useHex="true">#3 floor tri</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x1AC" base="HackedArea" useHex="true">#3 ceiling tri</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x1B0" base="HackedArea" useHex="true">#3 low wall tri</Data>
+  <Data groupList="QuarterFrameHack" type="int" offset="0x1B4" base="HackedArea" useHex="true">#3 high wall tri</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x1B8" base="HackedArea" coord="X">#3 pos X</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x1BC" base="HackedArea" coord="Y">#3 pos Y</Data>
+  <Data groupList="QuarterFrameHack" type="float" offset="0x1C0" base="HackedArea" coord="Z">#3 pos Z</Data>
+
+  <Data groupList="GhostHack" type="float" offset="0x80372F00" base="Relative" coord="X">Pos 1 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F04" base="Relative" coord="Y">Pos 1 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F08" base="Relative" coord="Z">Pos 1 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F0E" base="Relative">Pos 1 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F10" base="Relative" coord="X">Pos 2 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F14" base="Relative" coord="Y">Pos 2 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F18" base="Relative" coord="Z">Pos 2 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F1E" base="Relative">Pos 2 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F20" base="Relative" coord="X">Pos 3 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F24" base="Relative" coord="Y">Pos 3 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F28" base="Relative" coord="Z">Pos 3 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F2E" base="Relative">Pos 3 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F30" base="Relative" coord="X">Pos 4 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F34" base="Relative" coord="Y">Pos 4 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F38" base="Relative" coord="Z">Pos 4 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F3E" base="Relative">Pos 4 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F40" base="Relative" coord="X">Pos 5 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F44" base="Relative" coord="Y">Pos 5 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F48" base="Relative" coord="Z">Pos 5 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F4E" base="Relative">Pos 5 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F50" base="Relative" coord="X">Pos 6 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F54" base="Relative" coord="Y">Pos 6 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F58" base="Relative" coord="Z">Pos 6 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F5E" base="Relative">Pos 6 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F60" base="Relative" coord="X">Pos 7 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F64" base="Relative" coord="Y">Pos 7 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F68" base="Relative" coord="Z">Pos 7 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F6E" base="Relative">Pos 7 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F70" base="Relative" coord="X">Pos 8 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F74" base="Relative" coord="Y">Pos 8 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F78" base="Relative" coord="Z">Pos 8 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F7E" base="Relative">Pos 8 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F80" base="Relative" coord="X">Pos 9 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F84" base="Relative" coord="Y">Pos 9 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F88" base="Relative" coord="Z">Pos 9 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F8E" base="Relative">Pos 9 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F90" base="Relative" coord="X">Pos 10 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F94" base="Relative" coord="Y">Pos 10 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F98" base="Relative" coord="Z">Pos 10 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F9E" base="Relative">Pos 10 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FA0" base="Relative" coord="X">Pos 11 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FA4" base="Relative" coord="Y">Pos 11 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FA8" base="Relative" coord="Z">Pos 11 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372FAE" base="Relative">Pos 11 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FB0" base="Relative" coord="X">Pos 12 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FB4" base="Relative" coord="Y">Pos 12 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FB8" base="Relative" coord="Z">Pos 12 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372FBE" base="Relative">Pos 12 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FC0" base="Relative" coord="X">Pos 13 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FC4" base="Relative" coord="Y">Pos 13 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FC8" base="Relative" coord="Z">Pos 13 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372FCE" base="Relative">Pos 13 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FD0" base="Relative" coord="X">Pos 14 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FD4" base="Relative" coord="Y">Pos 14 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FD8" base="Relative" coord="Z">Pos 14 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372FDE" base="Relative">Pos 14 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FE0" base="Relative" coord="X">Pos 15 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FE4" base="Relative" coord="Y">Pos 15 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FE8" base="Relative" coord="Z">Pos 15 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372FEE" base="Relative">Pos 15 Angle</Data>
+
 </VarData>
