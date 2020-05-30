@@ -28,9 +28,8 @@
     <Tab>Custom</Tab>
     <Tab>TAS</Tab>
     <Tab>Map</Tab>
-    <Tab>Options</Tab>
     <Tab>Memory</Tab>
-    <Tab>Warp</Tab>
+    <Tab>Options</Tab>
   </TabOrder>
   <RemovedTabs>
     <Tab>PU</Tab>
@@ -53,5 +52,6 @@
     <Tab>Testing</Tab>
     <Tab>Music</Tab>
     <Tab>Script</Tab>
+    <Tab>Warp</Tab>
   </RemovedTabs>
 </SavedSettings>
