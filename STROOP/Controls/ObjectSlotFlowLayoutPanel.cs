@@ -35,6 +35,7 @@ namespace STROOP.Controls
             itemClearMarkedSlots.Click += (sender, e) =>
             {
                 Config.ObjectSlotsManager.MarkedSlotsAddresses.Clear();
+                Config.ObjectSlotsManager.MarkedSlotsAddressesDictionary.Clear();
             };
 
             ToolStripMenuItem itemClearSelectedSlots = new ToolStripMenuItem("Clear Selected Slots");
