@@ -230,7 +230,7 @@ namespace STROOP.Map
 
             if (MapViewCenter != MapCenter.Custom)
             {
-                Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(MapViewCenterXValue + "," + MapViewCenterZValue);
+                Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(MapViewCenterXValue + ";" + MapViewCenterZValue);
             }
         }
 
@@ -327,7 +327,7 @@ namespace STROOP.Map
             float multiplier = MapViewCenterChangeByPixels ? 1 / MapViewScaleValue : 1;
             float newCenterXValue = MapViewCenterXValue + xOffsetRotated * multiplier;
             float newCenterZValue = MapViewCenterZValue + zOffsetRotated * multiplier;
-            Config.MapGui.textBoxMapControllersCenterCustom.SubmitText(newCenterXValue + "," + newCenterZValue);
+            Config.MapGui.textBoxMapControllersCenterCustom.SubmitText(newCenterXValue + ";" + newCenterZValue);
         }
 
         public void ChangeAngle(int sign, object value)
@@ -417,7 +417,7 @@ namespace STROOP.Map
                         unitDiffX, unitDiffY, 0, 0, MapViewAngleValue);
                 float newCenterX = _translateStartCenterX - rotatedX;
                 float newCenterZ = _translateStartCenterZ - rotatedY;
-                SetCustomCenter(newCenterX + "," + newCenterZ);
+                SetCustomCenter(newCenterX + ";" + newCenterZ);
             }
 
             if (_isRotating)

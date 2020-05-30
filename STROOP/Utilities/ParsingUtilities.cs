@@ -284,6 +284,7 @@ namespace STROOP.Utilities
                     .Replace('\r', ' ')
                     .Replace('\t', ' ')
                     .Replace(',', ' ')
+                    .Replace(';', ' ')
                     .Replace('(', ' ')
                     .Replace(')', ' ');
             }
