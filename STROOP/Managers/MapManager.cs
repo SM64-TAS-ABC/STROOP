@@ -298,7 +298,9 @@ namespace STROOP.Managers
             itemLineSegment.Click += (sender, e) =>
             {
                 string text1 = DialogUtilities.GetStringFromDialog(labelText: "Enter the first PositionAngle.");
+                if (text1 == null) return;
                 string text2 = DialogUtilities.GetStringFromDialog(labelText: "Enter the second PositionAngle.");
+                if (text2 == null) return;
                 MapObject mapObj = MapLineSegmentObject.Create(text1, text2);
                 if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
