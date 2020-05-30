@@ -110,11 +110,7 @@ namespace STROOP.Structs.Configurations
             foreach (uint address in mappingCurrent.Keys)
             {
                 string stringValue = mappingCurrent[address];
-                int markerIndex = stringValue.IndexOf("___");
-                if (markerIndex == -1) continue;
-                string varName = stringValue.Substring(0, markerIndex);
-                string suffix = stringValue.Substring(markerIndex + 3);
-                Type type = GetTypeFromSuffix(suffix);
+                (Type type, string name) = GetInfoIfUserAddedWord(stringValue);
                 if (type == null) continue;
                 string typeString = TypeUtilities.TypeToString[type];
 
@@ -131,7 +127,7 @@ namespace STROOP.Structs.Configurations
                     shift: null,
                     handleMapping: false);
                 WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
-                    name: varName,
+                    name: name,
                     watchVar: watchVar,
                     subclass: WatchVariableSubclass.Number,
                     backgroundColor: null,
@@ -148,20 +144,59 @@ namespace STROOP.Structs.Configurations
             return controls;
         }
 
+        private static (Type type, string name) GetInfoIfUserAddedWord(string word)
+        {
+            if (_suffixes.Any(suff => word.EndsWith(suff)) &&
+                _ignoredWords.All(ignored => word != ignored))
+            {
+                string suffix = _suffixes.First(suff => word.EndsWith(suff));
+                Type type = GetTypeFromSuffix(suffix);
+                string name = word.Substring(0, word.Length - suffix.Length);
+                return (type, name);
+            }
+            return (null, null);
+        }
+
+        private static List<string> _suffixes = new List<string>()
+        {
+            "_s8",
+            "_u8",
+            "_s16",
+            "_u16",
+            "_s32",
+            "_u32",
+            "_s64",
+            "_u64",
+            "_f32",
+            "_f64",
+        };
+
+        private static List<string> _ignoredWords = new List<string>()
+        {
+            "m64_read_u8",
+            "m64_read_s16",
+            "m64_read_compressed_u16",
+            "string_to_u32",
+            "approach_s32",
+            "approach_f32",
+            "random_u16",
+            "gd_clamp_f32",
+        };
+
         private static Type GetTypeFromSuffix(string suffix)
         {
             switch (suffix.ToLower())
             {
-                case "s8": return typeof(sbyte);
-                case "u8": return typeof(byte);
-                case "s16": return typeof(short);
-                case "u16": return typeof(ushort);
-                case "s32": return typeof(int);
-                case "u32": return typeof(uint);
-                case "s64": return typeof(long);
-                case "u64": return typeof(ulong);
-                case "f32": return typeof(float);
-                case "f64": return typeof(double);
+                case "_s8": return typeof(sbyte);
+                case "_u8": return typeof(byte);
+                case "_s16": return typeof(short);
+                case "_u16": return typeof(ushort);
+                case "_s32": return typeof(int);
+                case "_u32": return typeof(uint);
+                case "_s64": return typeof(long);
+                case "_u64": return typeof(ulong);
+                case "_f32": return typeof(float);
+                case "_f64": return typeof(double);
                 default: return null;
             }
         }
