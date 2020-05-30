@@ -287,7 +287,7 @@ namespace STROOP.Utilities
                     .Replace('(', ' ')
                     .Replace(')', ' ');
             }
-            if (replaceCharacters)
+            if (replaceComma)
             {
                 text = text.Replace(',', ' ');
             }
