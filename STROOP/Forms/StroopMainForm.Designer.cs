@@ -34,18 +34,18 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -757,12 +757,7 @@ namespace STROOP
             this.checkBoxMapOptionsEnablePuView = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackPoint = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackSelf = new System.Windows.Forms.CheckBox();
-            this.checkBoxMapOptionsTrackNextPositions = new System.Windows.Forms.CheckBox();
-            this.checkBoxMapOptionsTrackCurrentUnit = new System.Windows.Forms.CheckBox();
-            this.checkBoxMapOptionsTrackCellGridlines = new System.Windows.Forms.CheckBox();
-            this.checkBoxMapOptionsTrackUnitGridlines = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackCeilingTri = new System.Windows.Forms.CheckBox();
-            this.checkBoxMapOptionsTrackCurrentCell = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackFloorTri = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackCamera = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackHolp = new System.Windows.Forms.CheckBox();
@@ -1430,6 +1425,18 @@ namespace STROOP
             this.checkBoxObjAtHOLPOn = new System.Windows.Forms.CheckBox();
             this.betterTextboxObjAtHOLP = new STROOP.BetterTextbox();
             this.labelObjAtHOLP = new System.Windows.Forms.Label();
+            this.groupBoxTestingInvisibleWalls = new System.Windows.Forms.GroupBox();
+            this.textBoxTestingInvisibleWallsY = new STROOP.BetterTextbox();
+            this.textBoxTestingInvisibleWallsZMin = new STROOP.BetterTextbox();
+            this.textBoxTestingInvisibleWallsZMax = new STROOP.BetterTextbox();
+            this.textBoxTestingInvisibleWallsXMax = new STROOP.BetterTextbox();
+            this.labelTestingInvisibleWallsY = new System.Windows.Forms.Label();
+            this.textBoxTestingInvisibleWallsXMin = new STROOP.BetterTextbox();
+            this.labelTestingInvisibleWallsZMin = new System.Windows.Forms.Label();
+            this.labelTestingInvisibleWallsZMax = new System.Windows.Forms.Label();
+            this.buttonTestingInvisibleWallsCalculate = new System.Windows.Forms.Button();
+            this.labelTestingInvisibleWallsXMax = new System.Windows.Forms.Label();
+            this.labelTestingInvisibleWallsXMin = new System.Windows.Forms.Label();
             this.groupBoxGoto = new System.Windows.Forms.GroupBox();
             this.betterTextboxGotoZ = new STROOP.BetterTextbox();
             this.betterTextboxGotoY = new STROOP.BetterTextbox();
@@ -1623,18 +1630,8 @@ namespace STROOP
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.groupBoxTestingInvisibleWalls = new System.Windows.Forms.GroupBox();
-            this.textBoxTestingInvisibleWallsZMin = new STROOP.BetterTextbox();
-            this.textBoxTestingInvisibleWallsXMax = new STROOP.BetterTextbox();
-            this.textBoxTestingInvisibleWallsXMin = new STROOP.BetterTextbox();
-            this.labelTestingInvisibleWallsZMin = new System.Windows.Forms.Label();
-            this.buttonTestingInvisibleWallsCalculate = new System.Windows.Forms.Button();
-            this.labelTestingInvisibleWallsXMax = new System.Windows.Forms.Label();
-            this.labelTestingInvisibleWallsXMin = new System.Windows.Forms.Label();
-            this.labelTestingInvisibleWallsZMax = new System.Windows.Forms.Label();
-            this.labelTestingInvisibleWallsY = new System.Windows.Forms.Label();
-            this.textBoxTestingInvisibleWallsZMax = new STROOP.BetterTextbox();
-            this.textBoxTestingInvisibleWallsY = new STROOP.BetterTextbox();
+            this.checkBoxMapOptionsTrackGhost = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackUnitGridlines = new System.Windows.Forms.CheckBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -2040,6 +2037,7 @@ namespace STROOP
             this.groupBoxObjAtObj.SuspendLayout();
             this.groupBoxObjAtHome.SuspendLayout();
             this.groupBoxObjAtHOLP.SuspendLayout();
+            this.groupBoxTestingInvisibleWalls.SuspendLayout();
             this.groupBoxGoto.SuspendLayout();
             this.tabPageSnow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSnow)).BeginInit();
@@ -2118,7 +2116,6 @@ namespace STROOP
             this.splitContainerWarpLeft.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.groupBoxTestingInvisibleWalls.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -5947,7 +5944,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 556F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 557F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9226,9 +9223,9 @@ namespace STROOP
             // 
             // textBoxM64PasteMultiplicity
             // 
-            this.textBoxM64PasteMultiplicity.Location = new System.Drawing.Point(77, 426);
+            this.textBoxM64PasteMultiplicity.Location = new System.Drawing.Point(91, 426);
             this.textBoxM64PasteMultiplicity.Name = "textBoxM64PasteMultiplicity";
-            this.textBoxM64PasteMultiplicity.Size = new System.Drawing.Size(63, 20);
+            this.textBoxM64PasteMultiplicity.Size = new System.Drawing.Size(60, 20);
             this.textBoxM64PasteMultiplicity.TabIndex = 34;
             this.textBoxM64PasteMultiplicity.Text = "1";
             this.textBoxM64PasteMultiplicity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -9389,7 +9386,7 @@ namespace STROOP
             // labelM64PasteMultiplicity
             // 
             this.labelM64PasteMultiplicity.AutoSize = true;
-            this.labelM64PasteMultiplicity.Location = new System.Drawing.Point(11, 429);
+            this.labelM64PasteMultiplicity.Location = new System.Drawing.Point(31, 429);
             this.labelM64PasteMultiplicity.Name = "labelM64PasteMultiplicity";
             this.labelM64PasteMultiplicity.Size = new System.Drawing.Size(58, 13);
             this.labelM64PasteMultiplicity.TabIndex = 14;
@@ -9675,7 +9672,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(406, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(409, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -9709,14 +9706,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -9737,14 +9734,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -10757,14 +10754,11 @@ namespace STROOP
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsScaleIconSizes);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsReverseDragging);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsEnablePuView);
-            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackPoint);
-            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackSelf);
-            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackNextPositions);
-            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackCurrentUnit);
-            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackCellGridlines);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackUnitGridlines);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackPoint);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackGhost);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackSelf);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackCeilingTri);
-            this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackCurrentCell);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackFloorTri);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackCamera);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapOptionsTrackHolp);
@@ -10828,7 +10822,7 @@ namespace STROOP
             this.labelMapOptionsLevel.AutoSize = true;
             this.labelMapOptionsLevel.Location = new System.Drawing.Point(50, 243);
             this.labelMapOptionsLevel.Name = "labelMapOptionsLevel";
-            this.labelMapOptionsLevel.Size = new System.Drawing.Size(36, 13);
+            this.labelMapOptionsLevel.Size = new System.Drawing.Size(31, 13);
             this.labelMapOptionsLevel.TabIndex = 12;
             this.labelMapOptionsLevel.Text = "Map:";
             // 
@@ -10905,7 +10899,7 @@ namespace STROOP
             // checkBoxMapOptionsTrackPoint
             // 
             this.checkBoxMapOptionsTrackPoint.AutoSize = true;
-            this.checkBoxMapOptionsTrackPoint.Location = new System.Drawing.Point(14, 205);
+            this.checkBoxMapOptionsTrackPoint.Location = new System.Drawing.Point(14, 97);
             this.checkBoxMapOptionsTrackPoint.Name = "checkBoxMapOptionsTrackPoint";
             this.checkBoxMapOptionsTrackPoint.Size = new System.Drawing.Size(81, 17);
             this.checkBoxMapOptionsTrackPoint.TabIndex = 19;
@@ -10915,77 +10909,27 @@ namespace STROOP
             // checkBoxMapOptionsTrackSelf
             // 
             this.checkBoxMapOptionsTrackSelf.AutoSize = true;
-            this.checkBoxMapOptionsTrackSelf.Location = new System.Drawing.Point(14, 187);
+            this.checkBoxMapOptionsTrackSelf.Location = new System.Drawing.Point(14, 79);
             this.checkBoxMapOptionsTrackSelf.Name = "checkBoxMapOptionsTrackSelf";
             this.checkBoxMapOptionsTrackSelf.Size = new System.Drawing.Size(75, 17);
             this.checkBoxMapOptionsTrackSelf.TabIndex = 19;
             this.checkBoxMapOptionsTrackSelf.Text = "Track Self";
             this.checkBoxMapOptionsTrackSelf.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMapOptionsTrackNextPositions
-            // 
-            this.checkBoxMapOptionsTrackNextPositions.AutoSize = true;
-            this.checkBoxMapOptionsTrackNextPositions.Location = new System.Drawing.Point(14, 169);
-            this.checkBoxMapOptionsTrackNextPositions.Name = "checkBoxMapOptionsTrackNextPositions";
-            this.checkBoxMapOptionsTrackNextPositions.Size = new System.Drawing.Size(124, 17);
-            this.checkBoxMapOptionsTrackNextPositions.TabIndex = 19;
-            this.checkBoxMapOptionsTrackNextPositions.Text = "Track Next Positions";
-            this.checkBoxMapOptionsTrackNextPositions.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMapOptionsTrackCurrentUnit
-            // 
-            this.checkBoxMapOptionsTrackCurrentUnit.AutoSize = true;
-            this.checkBoxMapOptionsTrackCurrentUnit.Location = new System.Drawing.Point(14, 151);
-            this.checkBoxMapOptionsTrackCurrentUnit.Name = "checkBoxMapOptionsTrackCurrentUnit";
-            this.checkBoxMapOptionsTrackCurrentUnit.Size = new System.Drawing.Size(113, 17);
-            this.checkBoxMapOptionsTrackCurrentUnit.TabIndex = 19;
-            this.checkBoxMapOptionsTrackCurrentUnit.Text = "Track Current Unit";
-            this.checkBoxMapOptionsTrackCurrentUnit.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMapOptionsTrackCellGridlines
-            // 
-            this.checkBoxMapOptionsTrackCellGridlines.AutoSize = true;
-            this.checkBoxMapOptionsTrackCellGridlines.Location = new System.Drawing.Point(14, 97);
-            this.checkBoxMapOptionsTrackCellGridlines.Name = "checkBoxMapOptionsTrackCellGridlines";
-            this.checkBoxMapOptionsTrackCellGridlines.Size = new System.Drawing.Size(117, 17);
-            this.checkBoxMapOptionsTrackCellGridlines.TabIndex = 19;
-            this.checkBoxMapOptionsTrackCellGridlines.Text = "Track Cell Gridlines";
-            this.checkBoxMapOptionsTrackCellGridlines.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMapOptionsTrackUnitGridlines
-            // 
-            this.checkBoxMapOptionsTrackUnitGridlines.AutoSize = true;
-            this.checkBoxMapOptionsTrackUnitGridlines.Location = new System.Drawing.Point(14, 133);
-            this.checkBoxMapOptionsTrackUnitGridlines.Name = "checkBoxMapOptionsTrackUnitGridlines";
-            this.checkBoxMapOptionsTrackUnitGridlines.Size = new System.Drawing.Size(119, 17);
-            this.checkBoxMapOptionsTrackUnitGridlines.TabIndex = 19;
-            this.checkBoxMapOptionsTrackUnitGridlines.Text = "Track Unit Gridlines";
-            this.checkBoxMapOptionsTrackUnitGridlines.UseVisualStyleBackColor = true;
-            // 
             // checkBoxMapOptionsTrackCeilingTri
             // 
             this.checkBoxMapOptionsTrackCeilingTri.AutoSize = true;
-            this.checkBoxMapOptionsTrackCeilingTri.Location = new System.Drawing.Point(14, 79);
+            this.checkBoxMapOptionsTrackCeilingTri.Location = new System.Drawing.Point(14, 133);
             this.checkBoxMapOptionsTrackCeilingTri.Name = "checkBoxMapOptionsTrackCeilingTri";
             this.checkBoxMapOptionsTrackCeilingTri.Size = new System.Drawing.Size(103, 17);
             this.checkBoxMapOptionsTrackCeilingTri.TabIndex = 19;
             this.checkBoxMapOptionsTrackCeilingTri.Text = "Track Ceiling Tri";
             this.checkBoxMapOptionsTrackCeilingTri.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMapOptionsTrackCurrentCell
-            // 
-            this.checkBoxMapOptionsTrackCurrentCell.AutoSize = true;
-            this.checkBoxMapOptionsTrackCurrentCell.Location = new System.Drawing.Point(14, 115);
-            this.checkBoxMapOptionsTrackCurrentCell.Name = "checkBoxMapOptionsTrackCurrentCell";
-            this.checkBoxMapOptionsTrackCurrentCell.Size = new System.Drawing.Size(111, 17);
-            this.checkBoxMapOptionsTrackCurrentCell.TabIndex = 19;
-            this.checkBoxMapOptionsTrackCurrentCell.Text = "Track Current Cell";
-            this.checkBoxMapOptionsTrackCurrentCell.UseVisualStyleBackColor = true;
-            // 
             // checkBoxMapOptionsTrackFloorTri
             // 
             this.checkBoxMapOptionsTrackFloorTri.AutoSize = true;
-            this.checkBoxMapOptionsTrackFloorTri.Location = new System.Drawing.Point(14, 61);
+            this.checkBoxMapOptionsTrackFloorTri.Location = new System.Drawing.Point(14, 115);
             this.checkBoxMapOptionsTrackFloorTri.Name = "checkBoxMapOptionsTrackFloorTri";
             this.checkBoxMapOptionsTrackFloorTri.Size = new System.Drawing.Size(95, 17);
             this.checkBoxMapOptionsTrackFloorTri.TabIndex = 19;
@@ -12763,7 +12707,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Padding = new System.Windows.Forms.Padding(2);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 674;
+            this.splitContainerMemory.SplitterDistance = 677;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12804,7 +12748,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(674, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(677, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -13021,7 +12965,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(674, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(677, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -13050,7 +12994,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(573, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(576, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -13062,7 +13006,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(228, 451);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(225, 451);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -14216,7 +14160,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(357, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -14248,7 +14192,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(351, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -14304,7 +14248,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(351, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -16556,14 +16500,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -16583,46 +16527,46 @@ namespace STROOP
             // 
             // rngIndex
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle16;
             this.rngIndex.HeaderText = "RNG Index";
             this.rngIndex.MinimumWidth = 2;
             this.rngIndex.Name = "rngIndex";
             // 
             // rngValue
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle17;
             this.rngValue.HeaderText = "RNG Value";
             this.rngValue.MinimumWidth = 2;
             this.rngValue.Name = "rngValue";
             // 
             // rngToGo
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle18;
             this.rngToGo.HeaderText = "RNG To Go";
             this.rngToGo.MinimumWidth = 2;
             this.rngToGo.Name = "rngToGo";
             // 
             // coinHSpeed
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle19;
             this.coinHSpeed.HeaderText = "Coin HSpeed";
             this.coinHSpeed.Name = "coinHSpeed";
             // 
             // coinVSpeed
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle20;
             this.coinVSpeed.HeaderText = "Coin VSpeed";
             this.coinVSpeed.Name = "coinVSpeed";
             // 
             // coinAngle
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle21;
             this.coinAngle.HeaderText = "Coin Angle";
             this.coinAngle.MinimumWidth = 2;
             this.coinAngle.Name = "coinAngle";
@@ -18447,6 +18391,131 @@ namespace STROOP
             this.labelObjAtHOLP.Text = "Obj:";
             this.labelObjAtHOLP.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // groupBoxTestingInvisibleWalls
+            // 
+            this.groupBoxTestingInvisibleWalls.Controls.Add(this.textBoxTestingInvisibleWallsY);
+            this.groupBoxTestingInvisibleWalls.Controls.Add(this.textBoxTestingInvisibleWallsZMin);
+            this.groupBoxTestingInvisibleWalls.Controls.Add(this.textBoxTestingInvisibleWallsZMax);
+            this.groupBoxTestingInvisibleWalls.Controls.Add(this.textBoxTestingInvisibleWallsXMax);
+            this.groupBoxTestingInvisibleWalls.Controls.Add(this.labelTestingInvisibleWallsY);
+            this.groupBoxTestingInvisibleWalls.Controls.Add(this.textBoxTestingInvisibleWallsXMin);
+            this.groupBoxTestingInvisibleWalls.Controls.Add(this.labelTestingInvisibleWallsZMin);
+            this.groupBoxTestingInvisibleWalls.Controls.Add(this.labelTestingInvisibleWallsZMax);
+            this.groupBoxTestingInvisibleWalls.Controls.Add(this.buttonTestingInvisibleWallsCalculate);
+            this.groupBoxTestingInvisibleWalls.Controls.Add(this.labelTestingInvisibleWallsXMax);
+            this.groupBoxTestingInvisibleWalls.Controls.Add(this.labelTestingInvisibleWallsXMin);
+            this.groupBoxTestingInvisibleWalls.Location = new System.Drawing.Point(6, 556);
+            this.groupBoxTestingInvisibleWalls.Name = "groupBoxTestingInvisibleWalls";
+            this.groupBoxTestingInvisibleWalls.Size = new System.Drawing.Size(126, 183);
+            this.groupBoxTestingInvisibleWalls.TabIndex = 40;
+            this.groupBoxTestingInvisibleWalls.TabStop = false;
+            this.groupBoxTestingInvisibleWalls.Text = "Invisible Walls";
+            // 
+            // textBoxTestingInvisibleWallsY
+            // 
+            this.textBoxTestingInvisibleWallsY.Location = new System.Drawing.Point(47, 118);
+            this.textBoxTestingInvisibleWallsY.Name = "textBoxTestingInvisibleWallsY";
+            this.textBoxTestingInvisibleWallsY.Size = new System.Drawing.Size(70, 20);
+            this.textBoxTestingInvisibleWallsY.TabIndex = 28;
+            this.textBoxTestingInvisibleWallsY.Text = "100";
+            this.textBoxTestingInvisibleWallsY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxTestingInvisibleWallsZMin
+            // 
+            this.textBoxTestingInvisibleWallsZMin.Location = new System.Drawing.Point(47, 67);
+            this.textBoxTestingInvisibleWallsZMin.Name = "textBoxTestingInvisibleWallsZMin";
+            this.textBoxTestingInvisibleWallsZMin.Size = new System.Drawing.Size(70, 20);
+            this.textBoxTestingInvisibleWallsZMin.TabIndex = 28;
+            this.textBoxTestingInvisibleWallsZMin.Text = "100";
+            this.textBoxTestingInvisibleWallsZMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxTestingInvisibleWallsZMax
+            // 
+            this.textBoxTestingInvisibleWallsZMax.Location = new System.Drawing.Point(47, 93);
+            this.textBoxTestingInvisibleWallsZMax.Name = "textBoxTestingInvisibleWallsZMax";
+            this.textBoxTestingInvisibleWallsZMax.Size = new System.Drawing.Size(70, 20);
+            this.textBoxTestingInvisibleWallsZMax.TabIndex = 28;
+            this.textBoxTestingInvisibleWallsZMax.Text = "100";
+            this.textBoxTestingInvisibleWallsZMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxTestingInvisibleWallsXMax
+            // 
+            this.textBoxTestingInvisibleWallsXMax.Location = new System.Drawing.Point(47, 42);
+            this.textBoxTestingInvisibleWallsXMax.Name = "textBoxTestingInvisibleWallsXMax";
+            this.textBoxTestingInvisibleWallsXMax.Size = new System.Drawing.Size(70, 20);
+            this.textBoxTestingInvisibleWallsXMax.TabIndex = 28;
+            this.textBoxTestingInvisibleWallsXMax.Text = "100";
+            this.textBoxTestingInvisibleWallsXMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelTestingInvisibleWallsY
+            // 
+            this.labelTestingInvisibleWallsY.AutoSize = true;
+            this.labelTestingInvisibleWallsY.Location = new System.Drawing.Point(9, 121);
+            this.labelTestingInvisibleWallsY.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelTestingInvisibleWallsY.Name = "labelTestingInvisibleWallsY";
+            this.labelTestingInvisibleWallsY.Size = new System.Drawing.Size(20, 13);
+            this.labelTestingInvisibleWallsY.TabIndex = 18;
+            this.labelTestingInvisibleWallsY.Text = "Y:";
+            // 
+            // textBoxTestingInvisibleWallsXMin
+            // 
+            this.textBoxTestingInvisibleWallsXMin.Location = new System.Drawing.Point(47, 16);
+            this.textBoxTestingInvisibleWallsXMin.Name = "textBoxTestingInvisibleWallsXMin";
+            this.textBoxTestingInvisibleWallsXMin.Size = new System.Drawing.Size(70, 20);
+            this.textBoxTestingInvisibleWallsXMin.TabIndex = 28;
+            this.textBoxTestingInvisibleWallsXMin.Text = "100";
+            this.textBoxTestingInvisibleWallsXMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelTestingInvisibleWallsZMin
+            // 
+            this.labelTestingInvisibleWallsZMin.AutoSize = true;
+            this.labelTestingInvisibleWallsZMin.Location = new System.Drawing.Point(9, 70);
+            this.labelTestingInvisibleWallsZMin.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelTestingInvisibleWallsZMin.Name = "labelTestingInvisibleWallsZMin";
+            this.labelTestingInvisibleWallsZMin.Size = new System.Drawing.Size(37, 13);
+            this.labelTestingInvisibleWallsZMin.TabIndex = 18;
+            this.labelTestingInvisibleWallsZMin.Text = "Z Min:";
+            // 
+            // labelTestingInvisibleWallsZMax
+            // 
+            this.labelTestingInvisibleWallsZMax.AutoSize = true;
+            this.labelTestingInvisibleWallsZMax.Location = new System.Drawing.Point(9, 96);
+            this.labelTestingInvisibleWallsZMax.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelTestingInvisibleWallsZMax.Name = "labelTestingInvisibleWallsZMax";
+            this.labelTestingInvisibleWallsZMax.Size = new System.Drawing.Size(40, 13);
+            this.labelTestingInvisibleWallsZMax.TabIndex = 18;
+            this.labelTestingInvisibleWallsZMax.Text = "Z Max:";
+            // 
+            // buttonTestingInvisibleWallsCalculate
+            // 
+            this.buttonTestingInvisibleWallsCalculate.Location = new System.Drawing.Point(5, 143);
+            this.buttonTestingInvisibleWallsCalculate.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTestingInvisibleWallsCalculate.Name = "buttonTestingInvisibleWallsCalculate";
+            this.buttonTestingInvisibleWallsCalculate.Size = new System.Drawing.Size(112, 34);
+            this.buttonTestingInvisibleWallsCalculate.TabIndex = 16;
+            this.buttonTestingInvisibleWallsCalculate.Text = "Calculate";
+            this.buttonTestingInvisibleWallsCalculate.UseVisualStyleBackColor = true;
+            // 
+            // labelTestingInvisibleWallsXMax
+            // 
+            this.labelTestingInvisibleWallsXMax.AutoSize = true;
+            this.labelTestingInvisibleWallsXMax.Location = new System.Drawing.Point(9, 45);
+            this.labelTestingInvisibleWallsXMax.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelTestingInvisibleWallsXMax.Name = "labelTestingInvisibleWallsXMax";
+            this.labelTestingInvisibleWallsXMax.Size = new System.Drawing.Size(40, 13);
+            this.labelTestingInvisibleWallsXMax.TabIndex = 18;
+            this.labelTestingInvisibleWallsXMax.Text = "X Max:";
+            // 
+            // labelTestingInvisibleWallsXMin
+            // 
+            this.labelTestingInvisibleWallsXMin.AutoSize = true;
+            this.labelTestingInvisibleWallsXMin.Location = new System.Drawing.Point(9, 19);
+            this.labelTestingInvisibleWallsXMin.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelTestingInvisibleWallsXMin.Name = "labelTestingInvisibleWallsXMin";
+            this.labelTestingInvisibleWallsXMin.Size = new System.Drawing.Size(37, 13);
+            this.labelTestingInvisibleWallsXMin.TabIndex = 18;
+            this.labelTestingInvisibleWallsXMin.Text = "X Min:";
+            // 
             // groupBoxGoto
             // 
             this.groupBoxGoto.Controls.Add(this.betterTextboxGotoZ);
@@ -18913,7 +18982,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -20097,7 +20166,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(25, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(26, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -20270,7 +20339,7 @@ namespace STROOP
             this.splitContainerSoundMusic.Panel2.Controls.Add(this.buttonSoundPlayMusic);
             this.splitContainerSoundMusic.Panel2MinSize = 0;
             this.splitContainerSoundMusic.Size = new System.Drawing.Size(422, 457);
-            this.splitContainerSoundMusic.SplitterDistance = 416;
+            this.splitContainerSoundMusic.SplitterDistance = 419;
             this.splitContainerSoundMusic.SplitterWidth = 1;
             this.splitContainerSoundMusic.TabIndex = 35;
             // 
@@ -20281,7 +20350,7 @@ namespace STROOP
             this.listBoxSoundMusic.FormattingEnabled = true;
             this.listBoxSoundMusic.Location = new System.Drawing.Point(0, 0);
             this.listBoxSoundMusic.Name = "listBoxSoundMusic";
-            this.listBoxSoundMusic.Size = new System.Drawing.Size(420, 414);
+            this.listBoxSoundMusic.Size = new System.Drawing.Size(420, 417);
             this.listBoxSoundMusic.TabIndex = 19;
             // 
             // textBoxSoundMusic
@@ -20324,7 +20393,7 @@ namespace STROOP
             this.splitContainerSoundSoundEffect.Panel2.Controls.Add(this.buttonSoundPlaySoundEffect);
             this.splitContainerSoundSoundEffect.Panel2MinSize = 0;
             this.splitContainerSoundSoundEffect.Size = new System.Drawing.Size(486, 457);
-            this.splitContainerSoundSoundEffect.SplitterDistance = 416;
+            this.splitContainerSoundSoundEffect.SplitterDistance = 419;
             this.splitContainerSoundSoundEffect.SplitterWidth = 1;
             this.splitContainerSoundSoundEffect.TabIndex = 35;
             // 
@@ -20335,7 +20404,7 @@ namespace STROOP
             this.listBoxSoundSoundEffect.FormattingEnabled = true;
             this.listBoxSoundSoundEffect.Location = new System.Drawing.Point(0, 0);
             this.listBoxSoundSoundEffect.Name = "listBoxSoundSoundEffect";
-            this.listBoxSoundSoundEffect.Size = new System.Drawing.Size(484, 414);
+            this.listBoxSoundSoundEffect.Size = new System.Drawing.Size(484, 417);
             this.listBoxSoundSoundEffect.TabIndex = 19;
             // 
             // textBoxSoundSoundEffect
@@ -20556,14 +20625,14 @@ namespace STROOP
             this.dataGridViewSearch.AllowUserToOrderColumns = true;
             this.dataGridViewSearch.AllowUserToResizeRows = false;
             this.dataGridViewSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Address,
@@ -20578,8 +20647,8 @@ namespace STROOP
             // 
             // Address
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Address.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Address.DefaultCellStyle = dataGridViewCellStyle23;
             this.Address.HeaderText = "Address";
             this.Address.MinimumWidth = 2;
             this.Address.Name = "Address";
@@ -20587,8 +20656,8 @@ namespace STROOP
             // 
             // Value
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Value.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Value.DefaultCellStyle = dataGridViewCellStyle24;
             this.Value.HeaderText = "Value";
             this.Value.MinimumWidth = 2;
             this.Value.Name = "Value";
@@ -21109,130 +21178,25 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 36;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // groupBoxTestingInvisibleWalls
+            // checkBoxMapOptionsTrackGhost
             // 
-            this.groupBoxTestingInvisibleWalls.Controls.Add(this.textBoxTestingInvisibleWallsY);
-            this.groupBoxTestingInvisibleWalls.Controls.Add(this.textBoxTestingInvisibleWallsZMin);
-            this.groupBoxTestingInvisibleWalls.Controls.Add(this.textBoxTestingInvisibleWallsZMax);
-            this.groupBoxTestingInvisibleWalls.Controls.Add(this.textBoxTestingInvisibleWallsXMax);
-            this.groupBoxTestingInvisibleWalls.Controls.Add(this.labelTestingInvisibleWallsY);
-            this.groupBoxTestingInvisibleWalls.Controls.Add(this.textBoxTestingInvisibleWallsXMin);
-            this.groupBoxTestingInvisibleWalls.Controls.Add(this.labelTestingInvisibleWallsZMin);
-            this.groupBoxTestingInvisibleWalls.Controls.Add(this.labelTestingInvisibleWallsZMax);
-            this.groupBoxTestingInvisibleWalls.Controls.Add(this.buttonTestingInvisibleWallsCalculate);
-            this.groupBoxTestingInvisibleWalls.Controls.Add(this.labelTestingInvisibleWallsXMax);
-            this.groupBoxTestingInvisibleWalls.Controls.Add(this.labelTestingInvisibleWallsXMin);
-            this.groupBoxTestingInvisibleWalls.Location = new System.Drawing.Point(6, 556);
-            this.groupBoxTestingInvisibleWalls.Name = "groupBoxTestingInvisibleWalls";
-            this.groupBoxTestingInvisibleWalls.Size = new System.Drawing.Size(126, 183);
-            this.groupBoxTestingInvisibleWalls.TabIndex = 40;
-            this.groupBoxTestingInvisibleWalls.TabStop = false;
-            this.groupBoxTestingInvisibleWalls.Text = "Invisible Walls";
+            this.checkBoxMapOptionsTrackGhost.AutoSize = true;
+            this.checkBoxMapOptionsTrackGhost.Location = new System.Drawing.Point(14, 61);
+            this.checkBoxMapOptionsTrackGhost.Name = "checkBoxMapOptionsTrackGhost";
+            this.checkBoxMapOptionsTrackGhost.Size = new System.Drawing.Size(85, 17);
+            this.checkBoxMapOptionsTrackGhost.TabIndex = 19;
+            this.checkBoxMapOptionsTrackGhost.Text = "Track Ghost";
+            this.checkBoxMapOptionsTrackGhost.UseVisualStyleBackColor = true;
             // 
-            // textBoxTestingInvisibleWallsZMin
+            // checkBoxMapOptionsTrackUnitGridlines
             // 
-            this.textBoxTestingInvisibleWallsZMin.Location = new System.Drawing.Point(47, 67);
-            this.textBoxTestingInvisibleWallsZMin.Name = "textBoxTestingInvisibleWallsZMin";
-            this.textBoxTestingInvisibleWallsZMin.Size = new System.Drawing.Size(70, 20);
-            this.textBoxTestingInvisibleWallsZMin.TabIndex = 28;
-            this.textBoxTestingInvisibleWallsZMin.Text = "100";
-            this.textBoxTestingInvisibleWallsZMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxTestingInvisibleWallsXMax
-            // 
-            this.textBoxTestingInvisibleWallsXMax.Location = new System.Drawing.Point(47, 42);
-            this.textBoxTestingInvisibleWallsXMax.Name = "textBoxTestingInvisibleWallsXMax";
-            this.textBoxTestingInvisibleWallsXMax.Size = new System.Drawing.Size(70, 20);
-            this.textBoxTestingInvisibleWallsXMax.TabIndex = 28;
-            this.textBoxTestingInvisibleWallsXMax.Text = "100";
-            this.textBoxTestingInvisibleWallsXMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxTestingInvisibleWallsXMin
-            // 
-            this.textBoxTestingInvisibleWallsXMin.Location = new System.Drawing.Point(47, 16);
-            this.textBoxTestingInvisibleWallsXMin.Name = "textBoxTestingInvisibleWallsXMin";
-            this.textBoxTestingInvisibleWallsXMin.Size = new System.Drawing.Size(70, 20);
-            this.textBoxTestingInvisibleWallsXMin.TabIndex = 28;
-            this.textBoxTestingInvisibleWallsXMin.Text = "100";
-            this.textBoxTestingInvisibleWallsXMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelTestingInvisibleWallsZMin
-            // 
-            this.labelTestingInvisibleWallsZMin.AutoSize = true;
-            this.labelTestingInvisibleWallsZMin.Location = new System.Drawing.Point(9, 70);
-            this.labelTestingInvisibleWallsZMin.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelTestingInvisibleWallsZMin.Name = "labelTestingInvisibleWallsZMin";
-            this.labelTestingInvisibleWallsZMin.Size = new System.Drawing.Size(37, 13);
-            this.labelTestingInvisibleWallsZMin.TabIndex = 18;
-            this.labelTestingInvisibleWallsZMin.Text = "Z Min:";
-            // 
-            // buttonTestingInvisibleWallsCalculate
-            // 
-            this.buttonTestingInvisibleWallsCalculate.Location = new System.Drawing.Point(5, 143);
-            this.buttonTestingInvisibleWallsCalculate.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTestingInvisibleWallsCalculate.Name = "buttonTestingInvisibleWallsCalculate";
-            this.buttonTestingInvisibleWallsCalculate.Size = new System.Drawing.Size(112, 34);
-            this.buttonTestingInvisibleWallsCalculate.TabIndex = 16;
-            this.buttonTestingInvisibleWallsCalculate.Text = "Calculate";
-            this.buttonTestingInvisibleWallsCalculate.UseVisualStyleBackColor = true;
-            // 
-            // labelTestingInvisibleWallsXMax
-            // 
-            this.labelTestingInvisibleWallsXMax.AutoSize = true;
-            this.labelTestingInvisibleWallsXMax.Location = new System.Drawing.Point(9, 45);
-            this.labelTestingInvisibleWallsXMax.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelTestingInvisibleWallsXMax.Name = "labelTestingInvisibleWallsXMax";
-            this.labelTestingInvisibleWallsXMax.Size = new System.Drawing.Size(40, 13);
-            this.labelTestingInvisibleWallsXMax.TabIndex = 18;
-            this.labelTestingInvisibleWallsXMax.Text = "X Max:";
-            // 
-            // labelTestingInvisibleWallsXMin
-            // 
-            this.labelTestingInvisibleWallsXMin.AutoSize = true;
-            this.labelTestingInvisibleWallsXMin.Location = new System.Drawing.Point(9, 19);
-            this.labelTestingInvisibleWallsXMin.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelTestingInvisibleWallsXMin.Name = "labelTestingInvisibleWallsXMin";
-            this.labelTestingInvisibleWallsXMin.Size = new System.Drawing.Size(37, 13);
-            this.labelTestingInvisibleWallsXMin.TabIndex = 18;
-            this.labelTestingInvisibleWallsXMin.Text = "X Min:";
-            // 
-            // labelTestingInvisibleWallsZMax
-            // 
-            this.labelTestingInvisibleWallsZMax.AutoSize = true;
-            this.labelTestingInvisibleWallsZMax.Location = new System.Drawing.Point(9, 96);
-            this.labelTestingInvisibleWallsZMax.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelTestingInvisibleWallsZMax.Name = "labelTestingInvisibleWallsZMax";
-            this.labelTestingInvisibleWallsZMax.Size = new System.Drawing.Size(40, 13);
-            this.labelTestingInvisibleWallsZMax.TabIndex = 18;
-            this.labelTestingInvisibleWallsZMax.Text = "Z Max:";
-            // 
-            // labelTestingInvisibleWallsY
-            // 
-            this.labelTestingInvisibleWallsY.AutoSize = true;
-            this.labelTestingInvisibleWallsY.Location = new System.Drawing.Point(9, 121);
-            this.labelTestingInvisibleWallsY.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelTestingInvisibleWallsY.Name = "labelTestingInvisibleWallsY";
-            this.labelTestingInvisibleWallsY.Size = new System.Drawing.Size(20, 13);
-            this.labelTestingInvisibleWallsY.TabIndex = 18;
-            this.labelTestingInvisibleWallsY.Text = "Y:";
-            // 
-            // textBoxTestingInvisibleWallsZMax
-            // 
-            this.textBoxTestingInvisibleWallsZMax.Location = new System.Drawing.Point(47, 93);
-            this.textBoxTestingInvisibleWallsZMax.Name = "textBoxTestingInvisibleWallsZMax";
-            this.textBoxTestingInvisibleWallsZMax.Size = new System.Drawing.Size(70, 20);
-            this.textBoxTestingInvisibleWallsZMax.TabIndex = 28;
-            this.textBoxTestingInvisibleWallsZMax.Text = "100";
-            this.textBoxTestingInvisibleWallsZMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxTestingInvisibleWallsY
-            // 
-            this.textBoxTestingInvisibleWallsY.Location = new System.Drawing.Point(47, 118);
-            this.textBoxTestingInvisibleWallsY.Name = "textBoxTestingInvisibleWallsY";
-            this.textBoxTestingInvisibleWallsY.Size = new System.Drawing.Size(70, 20);
-            this.textBoxTestingInvisibleWallsY.TabIndex = 28;
-            this.textBoxTestingInvisibleWallsY.Text = "100";
-            this.textBoxTestingInvisibleWallsY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.checkBoxMapOptionsTrackUnitGridlines.AutoSize = true;
+            this.checkBoxMapOptionsTrackUnitGridlines.Location = new System.Drawing.Point(14, 151);
+            this.checkBoxMapOptionsTrackUnitGridlines.Name = "checkBoxMapOptionsTrackUnitGridlines";
+            this.checkBoxMapOptionsTrackUnitGridlines.Size = new System.Drawing.Size(119, 17);
+            this.checkBoxMapOptionsTrackUnitGridlines.TabIndex = 19;
+            this.checkBoxMapOptionsTrackUnitGridlines.Text = "Track Unit Gridlines";
+            this.checkBoxMapOptionsTrackUnitGridlines.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -21762,6 +21726,8 @@ namespace STROOP
             this.groupBoxObjAtHome.PerformLayout();
             this.groupBoxObjAtHOLP.ResumeLayout(false);
             this.groupBoxObjAtHOLP.PerformLayout();
+            this.groupBoxTestingInvisibleWalls.ResumeLayout(false);
+            this.groupBoxTestingInvisibleWalls.PerformLayout();
             this.groupBoxGoto.ResumeLayout(false);
             this.groupBoxGoto.PerformLayout();
             this.tabPageSnow.ResumeLayout(false);
@@ -21852,8 +21818,6 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.groupBoxTestingInvisibleWalls.ResumeLayout(false);
-            this.groupBoxTestingInvisibleWalls.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -23234,7 +23198,6 @@ namespace STROOP
         private Label labelMapOptionsLevel;
         private Button buttonMapOptionsClearAllTrackers;
         private Button buttonMapOptionsAddNewTracker;
-        private CheckBox checkBoxMapOptionsTrackCellGridlines;
         private CheckBox checkBoxMapOptionsTrackCeilingTri;
         private CheckBox checkBoxMapOptionsTrackFloorTri;
         private CheckBox checkBoxMapOptionsTrackCamera;
@@ -23283,13 +23246,9 @@ namespace STROOP
         private Label labelMapDataMapName;
         private Label labelMapDataPuCoordinates;
         private MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
-        private CheckBox checkBoxMapOptionsTrackCurrentUnit;
-        private CheckBox checkBoxMapOptionsTrackUnitGridlines;
-        private CheckBox checkBoxMapOptionsTrackCurrentCell;
         private CheckBox checkBoxMapOptionsEnablePuView;
         private CheckBox checkBoxMapOptionsTrackPoint;
         private CheckBox checkBoxMapOptionsTrackSelf;
-        private CheckBox checkBoxMapOptionsTrackNextPositions;
         private Label labelMapOptionsGlobalIconSize;
         private BetterTextbox textBoxMapOptionsGlobalIconSize;
         private CheckBox checkBoxMapOptionsScaleIconSizes;
@@ -23449,6 +23408,8 @@ namespace STROOP
         private Button buttonTestingInvisibleWallsCalculate;
         private Label labelTestingInvisibleWallsXMax;
         private Label labelTestingInvisibleWallsXMin;
+        private CheckBox checkBoxMapOptionsTrackUnitGridlines;
+        private CheckBox checkBoxMapOptionsTrackGhost;
     }
 }
 

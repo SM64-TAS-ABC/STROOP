@@ -23,15 +23,13 @@ namespace STROOP.Map
         public CheckBox checkBoxMapOptionsTrackMario;
         public CheckBox checkBoxMapOptionsTrackHolp;
         public CheckBox checkBoxMapOptionsTrackCamera;
-        public CheckBox checkBoxMapOptionsTrackFloorTri;
-        public CheckBox checkBoxMapOptionsTrackCeilingTri;
-        public CheckBox checkBoxMapOptionsTrackCellGridlines;
-        public CheckBox checkBoxMapOptionsTrackCurrentCell;
-        public CheckBox checkBoxMapOptionsTrackUnitGridlines;
-        public CheckBox checkBoxMapOptionsTrackCurrentUnit;
-        public CheckBox checkBoxMapOptionsTrackNextPositions;
+        public CheckBox checkBoxMapOptionsTrackGhost;
         public CheckBox checkBoxMapOptionsTrackSelf;
         public CheckBox checkBoxMapOptionsTrackPoint;
+        public CheckBox checkBoxMapOptionsTrackFloorTri;
+        public CheckBox checkBoxMapOptionsTrackCeilingTri;
+        public CheckBox checkBoxMapOptionsTrackUnitGridlines;
+
         public CheckBox checkBoxMapOptionsEnable3D;
         public CheckBox checkBoxMapOptionsDisable3DHitboxHackTris;
         public CheckBox checkBoxMapOptionsEnablePuView;

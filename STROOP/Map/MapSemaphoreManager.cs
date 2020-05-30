@@ -15,15 +15,12 @@ namespace STROOP.Map
         public static MapSemaphore Mario = new MapSemaphore();
         public static MapSemaphore Holp = new MapSemaphore();
         public static MapSemaphore Camera = new MapSemaphore();
-        public static MapSemaphore FloorTri = new MapSemaphore();
-        public static MapSemaphore CeilingTri = new MapSemaphore();
-        public static MapSemaphore CellGridlines = new MapSemaphore();
-        public static MapSemaphore CurrentCell = new MapSemaphore();
-        public static MapSemaphore UnitGridlines = new MapSemaphore();
-        public static MapSemaphore CurrentUnit = new MapSemaphore();
-        public static MapSemaphore NextPositions = new MapSemaphore();
+        public static MapSemaphore Ghost = new MapSemaphore();
         public static MapSemaphore Self = new MapSemaphore();
         public static MapSemaphore Point = new MapSemaphore();
+        public static MapSemaphore FloorTri = new MapSemaphore();
+        public static MapSemaphore CeilingTri = new MapSemaphore();
+        public static MapSemaphore UnitGridlines = new MapSemaphore();
 
         public static List<MapSemaphore> Objects = new List<MapSemaphore>();
 

@@ -354,6 +354,7 @@
     <Compile Include="Map\MapCeilingObject.cs" />
     <Compile Include="Map\MapBackgroundObject.cs" />
     <Compile Include="Map\MapLineSegmentObject.cs" />
+    <Compile Include="Map\MapGhostObject.cs" />
     <Compile Include="Map\MapPunchFloorObject.cs" />
     <Compile Include="Map\MapCustomCirclePointsObject.cs" />
     <Compile Include="Map\MapCUpFloorObject.cs" />
