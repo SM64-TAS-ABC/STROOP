@@ -271,7 +271,7 @@ namespace STROOP.Utilities
             return null;
         }
 
-        public static List<string> ParseStringList(string text, bool replaceCharacters = true)
+        public static List<string> ParseStringList(string text, bool replaceCharacters = true, bool replaceComma = true)
         {
             if (text == null || text == "")
             {
@@ -283,10 +283,13 @@ namespace STROOP.Utilities
                     .Replace('\n', ' ')
                     .Replace('\r', ' ')
                     .Replace('\t', ' ')
-                    .Replace(',', ' ')
                     .Replace(';', ' ')
                     .Replace('(', ' ')
                     .Replace(')', ' ');
+            }
+            if (replaceCharacters)
+            {
+                text = text.Replace(',', ' ');
             }
             text = text.Trim();
             text = Regex.Replace(text, @"\s+", " ");

@@ -209,7 +209,7 @@ namespace STROOP.Map
                         break;
                     }
                     List<string> stringValues = ParsingUtilities.ParseStringList(
-                        Config.MapGui.textBoxMapControllersCenterCustom.LastSubmittedText);
+                        Config.MapGui.textBoxMapControllersCenterCustom.LastSubmittedText, replaceComma: false);
                     if (stringValues.Count >= 2)
                     {
                         MapViewCenterXValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_CENTER_X_VALUE;
