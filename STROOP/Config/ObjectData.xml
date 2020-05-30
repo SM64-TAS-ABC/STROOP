@@ -10,6 +10,7 @@
   <Data groupList="Basic" type="float" offset="0xB8" base="Object">H Speed</Data>
 
   <Data groupList="Basic" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
+  <Data groupList="Advanced" base="Object" specialType="ObjectInGameDeltaYaw">IG DYaw</Data>
   <Data groupList="Basic" type="int" display="short" offset="0xD0" base="Object" subclass="Angle">Pitch Facing</Data>
   <Data groupList="Basic" type="int" display="short" offset="0xD8" base="Object" subclass="Angle">Roll Facing</Data>
   <Data groupList="Basic" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>

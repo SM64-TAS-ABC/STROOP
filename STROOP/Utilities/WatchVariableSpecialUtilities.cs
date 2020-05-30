@@ -577,6 +577,14 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("ObjectInGameDeltaYaw",
+                ((uint objAddress) =>
+                {
+                    ushort objectAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                    return GetDeltaInGameAngle(objectAngle);
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("MarioHitboxAwayFromObject",
                 ((uint objAddress) =>
                 {
@@ -1871,6 +1879,14 @@ namespace STROOP.Structs
                 ((uint dummy) =>
                 {
                     return GetDeltaYawIntendedBackwards();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MarioInGameDeltaYaw",
+                ((uint dummy) =>
+                {
+                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    return GetDeltaInGameAngle(marioAngle);
                 },
                 DEFAULT_SETTER));
 
@@ -4698,6 +4714,15 @@ namespace STROOP.Structs
                 address = Config.Stream.GetUInt32(address + 0x8);
             }
             return addresses;
+        }
+
+        // In Game Angle Methods
+
+        public static int GetDeltaInGameAngle(ushort angle)
+        {
+            (double x, double z) = MoreMath.GetComponentsFromVector(1, angle);
+            int inGameAngle = InGameTrigUtilities.InGameAngleTo(x, z);
+            return angle - inGameAngle;
         }
     }
 }
