@@ -102,6 +102,10 @@ namespace STROOP.Structs.Configurations
             return mappingOriginalReversed[name];
         }
 
+        /**
+         *  Gets user added variables from the mapping,
+         *  assuming they're suffixed with "_f32", "_s16", etc.
+         */
         public static List<WatchVariableControl> GetVariables()
         {
             if (mappingCurrent == null) return new List<WatchVariableControl>();
