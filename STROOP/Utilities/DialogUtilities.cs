@@ -74,12 +74,17 @@ namespace STROOP.Structs
                 MessageBoxButtons.OK);
         }
 
-        public static OpenFileDialog CreateOpenFileDialog(FileType fileType)
+        public static OpenFileDialog CreateOpenFileDialog(FileType fileType, string path = null)
         {
-            return new OpenFileDialog()
+            OpenFileDialog dialog = new OpenFileDialog()
             {
                 Filter = GetFilterString(fileType),
             };
+            if (path != null)
+            {
+                dialog.InitialDirectory = path;
+            }
+            return dialog;
         }
 
         public static SaveFileDialog CreateSaveFileDialog(FileType fileType)
@@ -183,7 +188,8 @@ namespace STROOP.Structs
 
         public static Image GetImage()
         {
-            OpenFileDialog openFileDialog = CreateOpenFileDialog(FileType.Image);
+            string directory = Directory.GetCurrentDirectory() + "\\Resources\\Maps\\Object Images";
+            OpenFileDialog openFileDialog = CreateOpenFileDialog(FileType.Image, directory);
             DialogResult result = openFileDialog.ShowDialog();
             if (result != DialogResult.OK) return null;
             string fileName = openFileDialog.FileName;
