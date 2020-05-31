@@ -184,6 +184,12 @@
     </Compile>
     <Compile Include="Forms\FormManager.cs" />
     <Compile Include="Forms\IUpdatableForm.cs" />
+    <Compile Include="Forms\TabForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TabForm.Designer.cs">
+      <DependentUpon>TabForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ValueForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -728,6 +734,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TriangleListForm.resx">
       <DependentUpon>TriangleListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TabForm.resx">
+      <DependentUpon>TabForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ValueForm.resx">
       <DependentUpon>ValueForm.cs</DependentUpon>
