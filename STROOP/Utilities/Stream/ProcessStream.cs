@@ -239,9 +239,9 @@ namespace STROOP.Utilities
             return BitConverter.ToDouble(ReadRam((UIntPtr)address, 8, EndiannessType.Little, absoluteAddress), 0);
         }
 
-        public byte[] ReadRam(uint address, int length, EndiannessType endianness)
+        public byte[] ReadRam(uint address, int length, EndiannessType endianness, bool absoluteAddress = false)
         {
-             return ReadRam((UIntPtr) address, length, endianness, false);
+             return ReadRam((UIntPtr) address, length, endianness, absoluteAddress);
         }
         
         public byte[] ReadRam(UIntPtr address, int length, EndiannessType endianness, bool absoluteAddress = false)
@@ -297,6 +297,11 @@ namespace STROOP.Utilities
         public bool ReadProcessMemory(UIntPtr address, byte[] buffer, EndiannessType endianness)
         {
             return _io?.ReadAbsolute(address, buffer, endianness) ?? false;
+        }
+
+        public byte[] ReadAllMemory()
+        {
+            return _io?.ReadAllMemory();
         }
 
         public bool CheckReadonlyOff()

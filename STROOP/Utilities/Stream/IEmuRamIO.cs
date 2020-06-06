@@ -21,6 +21,7 @@ namespace STROOP.Utilities
         bool ReadAbsolute(UIntPtr address, byte[] buffer, EndiannessType endianness);
         bool WriteRelative(uint address, byte[] buffer, EndiannessType endianness);
         bool WriteAbsolute(UIntPtr address, byte[] buffer, EndiannessType endianness);
+        byte[] ReadAllMemory();
 
         UIntPtr GetAbsoluteAddress(uint n64Address, int size);
         uint GetRelativeAddress(UIntPtr absoluteAddress, int size);

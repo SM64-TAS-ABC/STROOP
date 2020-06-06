@@ -68,6 +68,22 @@ namespace STROOP.Utilities
             return ProcessWriteMemory(_processHandle, address, buffer, (IntPtr)buffer.Length, ref numOfBytes);
         }
 
+        public override byte[] ReadAllMemory()
+        {
+            List<byte> output = new List<byte>();
+            byte[] buffer = new byte[1];
+            int numBytes = 1;
+
+            for (uint address = 0; true; address++)
+            {
+                bool success = ProcessReadMemory(_processHandle, (UIntPtr)address, buffer, (IntPtr)buffer.Length, ref numBytes);
+                if (!success) break;
+                output.Add(buffer[0]);
+            }
+
+            return output.ToArray();
+        }
+
         protected virtual void CalculateOffset()
         {
             // Find DLL offset if needed

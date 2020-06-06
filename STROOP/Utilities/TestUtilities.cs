@@ -24,7 +24,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            GetAllInGameAngles();
+            SearchForRamStart();
         }
 
         public static void TestSomethingElse()
@@ -33,6 +33,29 @@ namespace STROOP.Utilities
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
+
+
+        public static void SearchForRamStart()
+        {
+            byte[] memory = Config.Stream.ReadAllMemory();
+            InfoForm.ShowValue(memory.Length);
+        }
+
+        public static void GetFirstBytes()
+        {
+            byte[] byteArray = Config.Stream.ReadRam(0x80000000, 100, EndiannessType.Little, false);
+            List<byte> byteList = byteArray.ToList();
+            string output = string.Join(" ", byteList);
+            InfoForm.ShowValue(output);
+        }
+
+        public static void LookForBytes()
+        {
+            byte[] byteArray = Config.Stream.ReadRam(0x80000000, 100, EndiannessType.Little, false);
+            List<byte> byteList = byteArray.ToList();
+            string output = string.Join(" ", byteList);
+            InfoForm.ShowValue(output);
+        }
 
         public static void GetAllInGameAngles()
         {
