@@ -393,7 +393,7 @@ namespace STROOP.Map
             this.labelOutlineWidth.Name = "labelOutlineWidth";
             this.labelOutlineWidth.Size = new System.Drawing.Size(42, 16);
             this.labelOutlineWidth.TabIndex = 40;
-            this.labelOutlineWidth.Text = "Width:";
+            this.labelOutlineWidth.Text = "Line:";
             // 
             // textBoxOutlineWidth
             // 
