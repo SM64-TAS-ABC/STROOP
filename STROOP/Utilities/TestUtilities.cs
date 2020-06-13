@@ -24,7 +24,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            SearchForRamStart();
+            SearchForBadWallTriangles();
         }
 
         public static void TestSomethingElse()
@@ -34,6 +34,11 @@ namespace STROOP.Utilities
 
         ///////////////////////////////////////////////////////////////////////////////////////////
 
+        public static void SearchForBadWallTriangles()
+        {
+            List<TriangleDataModel> wallTris = TriangleUtilities.GetLevelTriangles().FindAll(tri => tri.IsWall());
+            WatchVariableSpecialUtilities.GetMarioCell
+        }
 
         public static void SearchForRamStart()
         {

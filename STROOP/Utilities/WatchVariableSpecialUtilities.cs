@@ -4675,12 +4675,19 @@ namespace STROOP.Structs
 
         public static (int cellX, int cellZ) GetMarioCell()
         {
-            short marioX = (short)Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            short marioZ = (short)Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            return GetCell(marioX, marioZ);
+        }
+
+        public static (int cellX, int cellZ) GetCell(float floatX, float floatZ)
+        {
+            short x = (short)floatX;
+            short z = (short)floatZ;
             int LEVEL_BOUNDARY_MAX = 0x2000;
             int CELL_SIZE = 0x400;
-            int cellX = ((marioX + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
-            int cellZ = ((marioZ + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
+            int cellX = ((x + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
+            int cellZ = ((z + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
             return (cellX, cellZ);
         }
 
