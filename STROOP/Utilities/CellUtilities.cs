@@ -47,7 +47,7 @@ namespace STROOP.Structs
          * time). This function determines the lower cell for a given x/z position.
          * @param coord The coordinate to test
          */
-        private static short lower_cell_index(short coord) {
+        private static short lower_cell_index(short coord, bool buffer = true) {
             short index;
 
             // Move from range [-0x2000, 0x2000) to [0, 0x4000)
@@ -59,11 +59,15 @@ namespace STROOP.Structs
             // [0, 16)
             index = (short)(coord / 0x400);
 
-            // Include extra cell if close to boundary
-            //! Some wall checks are larger than the buffer, meaning wall checks can
-            //  miss walls that are near a cell border.
-            if (coord % 0x400 < 50) {
-                index -= 1;
+            if (buffer)
+            {
+                // Include extra cell if close to boundary
+                //! Some wall checks are larger than the buffer, meaning wall checks can
+                //  miss walls that are near a cell border.
+                if (coord % 0x400 < 50)
+                {
+                    index -= 1;
+                }
             }
 
             if (index < 0) {
@@ -79,7 +83,7 @@ namespace STROOP.Structs
          * time). This function determines the upper cell for a given x/z position.
          * @param coord The coordinate to test
          */
-        private static short upper_cell_index(short coord) {
+        private static short upper_cell_index(short coord, bool buffer = true) {
             short index;
 
             // Move from range [-0x2000, 0x2000) to [0, 0x4000)
@@ -91,11 +95,15 @@ namespace STROOP.Structs
             // [0, 16)
             index = (short)(coord / 0x400);
 
-            // Include extra cell if close to boundary
-            //! Some wall checks are larger than the buffer, meaning wall checks can
-            //  miss walls that are near a cell border.
-            if (coord % 0x400 > 0x400 - 50) {
-                index += 1;
+            if (buffer)
+            {
+                // Include extra cell if close to boundary
+                //! Some wall checks are larger than the buffer, meaning wall checks can
+                //  miss walls that are near a cell border.
+                if (coord % 0x400 > 0x400 - 50)
+                {
+                    index += 1;
+                }
             }
 
             if (index > 15) {
@@ -134,6 +142,28 @@ namespace STROOP.Structs
             List<(int x, int z)> cells = new List<(int x, int z)>();
             for (cellZ = minCellZ; cellZ <= maxCellZ; cellZ++) {
                 for (cellX = minCellX; cellX <= maxCellX; cellX++) {
+                    cells.Add((cellX, cellZ));
+                }
+            }
+            return cells;
+        }
+
+        public static List<(int x, int z)> GetCells(short minX, short maxX, short minZ, short maxZ)
+        {
+            short minCellX, minCellZ, maxCellX, maxCellZ;
+
+            short cellZ, cellX;
+
+            minCellX = lower_cell_index(minX, false);
+            maxCellX = upper_cell_index(maxX, false);
+            minCellZ = lower_cell_index(minZ, false);
+            maxCellZ = upper_cell_index(maxZ, false);
+
+            List<(int x, int z)> cells = new List<(int x, int z)>();
+            for (cellZ = minCellZ; cellZ <= maxCellZ; cellZ++)
+            {
+                for (cellX = minCellX; cellX <= maxCellX; cellX++)
+                {
                     cells.Add((cellX, cellZ));
                 }
             }

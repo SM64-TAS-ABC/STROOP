@@ -1,6 +1,7 @@
 ﻿using STROOP.Controls;
 using STROOP.Forms;
 using STROOP.Managers;
+using STROOP.Map;
 using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
@@ -37,7 +38,52 @@ namespace STROOP.Utilities
         public static void SearchForBadWallTriangles()
         {
             List<TriangleDataModel> wallTris = TriangleUtilities.GetLevelTriangles().FindAll(tri => tri.IsWall());
-            WatchVariableSpecialUtilities.GetMarioCell
+            wallTris = new List<TriangleDataModel>() { new TriangleDataModel(0x801A47C0) };
+
+            List<TriangleDataModel> badWallTris = new List<TriangleDataModel>();
+            foreach (TriangleDataModel wallTri in wallTris)
+            {
+                (float x1, float z1, float x2, float z2, bool xProjection) = MapUtilities.Get2DWallDataFromTri(wallTri).Value;
+               
+                float angle = (float)MoreMath.AngleTo_Radians(x1, z1, x2, z2);
+                float projectionDist = 50 / (float)Math.Abs(xProjection ? Math.Cos(angle) : Math.Sin(angle));
+                List<(float x, float z)> points = new List<(float x, float z)>();
+                Action<float, float> addPoint = (float xAdd, float zAdd) =>
+                {
+                    points.AddRange(new List<(float x, float z)>()
+                    {
+                        (x1, z1),
+                        (x1 + xAdd, z1 + zAdd),
+                        (x2 + xAdd, z2 + zAdd),
+                        (x2, z2),
+                    });
+                };
+                if (xProjection)
+                {
+                    addPoint(projectionDist, 0);
+                    addPoint(-1 * projectionDist, 0);
+                }
+                else
+                {
+                    addPoint(0, projectionDist);
+                    addPoint(0, -1 * projectionDist);
+                }
+
+                short xMin = (short)points.Min(p => p.x);
+                short xMax = (short)points.Max(p => p.x);
+                short zMin = (short)points.Min(p => p.z);
+                short zMax = (short)points.Max(p => p.z);
+
+                List<(int x, int z)> hitboxCells = CellUtilities.GetCells(xMin, xMax, zMin, zMax);
+                List<(int x, int z)> triCells = CellUtilities.GetCells(wallTri);
+                if (hitboxCells.Any(cell => !triCells.Contains(cell)))
+                {
+                    badWallTris.Add(wallTri);
+                }
+            }
+
+            List<string> addresses = badWallTris.ConvertAll(tri => HexUtilities.FormatValue(tri.Address));
+            InfoForm.ShowValue(string.Join(",", addresses));
         }
 
         public static void SearchForRamStart()
