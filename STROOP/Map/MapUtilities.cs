@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using STROOP.Models;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -307,6 +308,27 @@ namespace STROOP.Map
         public static int MaybeReverse(int value)
         {
             return Config.MapGui.checkBoxMapOptionsReverseDragging.Checked ? -1 * value : value;
+        }
+
+        public static void CreateTrackBarContextMenuStrip(TrackBar trackBar, Action resetAction)
+        {
+            List<int> maxValues = new List<int>() { 10, 100, 1000, 10000, 100000 };
+            trackBar.ContextMenuStrip = new ContextMenuStrip();
+            List<ToolStripMenuItem> items = maxValues.ConvertAll(
+                maxValue => new ToolStripMenuItem("Max of " + maxValue));
+            for (int i = 0; i < items.Count; i++)
+            {
+                int maxValue = maxValues[i];
+                ToolStripMenuItem item = items[i];
+                item.Click += (sender, e) =>
+                {
+                    trackBar.Maximum = maxValue;
+                    resetAction();
+                    items.ForEach(it => it.Checked = it == item);
+                };
+                if (trackBar.Maximum == maxValue) item.Checked = true;
+                trackBar.ContextMenuStrip.Items.Add(item);
+            }
         }
     }
 }

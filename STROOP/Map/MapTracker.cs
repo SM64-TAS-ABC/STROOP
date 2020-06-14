@@ -129,36 +129,11 @@ namespace STROOP.Map
             pictureBoxCog.ContextMenuStrip = _mapObjectList[0].GetContextMenuStrip();
             pictureBoxCog.Click += (sender, e) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
 
-            InitializeTrackBarContextMenuStrips();
+            MapUtilities.CreateTrackBarContextMenuStrip(trackBarSize, () => SetSize(null));
+            MapUtilities.CreateTrackBarContextMenuStrip(trackBarOutlineWidth, () => SetOutlineWidth(null));
             InitializePlusContextMenuStrip();
 
             UpdateControl();
-        }
-
-        private void InitializeTrackBarContextMenuStrips()
-        {
-            List<int> maxValues = new List<int>() { 10, 100, 1000, 10000, 100000 };
-            Action<TrackBar, Action> initializeContextMenuStrip = (TrackBar trackBar, Action resetAction) =>
-            {
-                trackBar.ContextMenuStrip = new ContextMenuStrip();
-                List<ToolStripMenuItem> items = maxValues.ConvertAll(
-                    maxValue => new ToolStripMenuItem("Max of " + maxValue));
-                for (int i = 0; i < items.Count; i++)
-                {
-                    int maxValue = maxValues[i];
-                    ToolStripMenuItem item = items[i];
-                    item.Click += (sender, e) =>
-                    {
-                        trackBar.Maximum = maxValue;
-                        resetAction();
-                        items.ForEach(it => it.Checked = it == item);
-                    };
-                    if (trackBar.Maximum == maxValue) item.Checked = true;
-                    trackBar.ContextMenuStrip.Items.Add(item);
-                };
-            };
-            initializeContextMenuStrip(trackBarSize, () => SetSize(null));
-            initializeContextMenuStrip(trackBarOutlineWidth, () => SetOutlineWidth(null));
         }
 
         private void InitializePlusContextMenuStrip()
