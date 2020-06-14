@@ -19,6 +19,7 @@ namespace STROOP.Map
         public static MapSemaphore Self = new MapSemaphore();
         public static MapSemaphore Point = new MapSemaphore();
         public static MapSemaphore FloorTri = new MapSemaphore();
+        public static MapSemaphore WallTri = new MapSemaphore();
         public static MapSemaphore CeilingTri = new MapSemaphore();
         public static MapSemaphore UnitGridlines = new MapSemaphore();
 

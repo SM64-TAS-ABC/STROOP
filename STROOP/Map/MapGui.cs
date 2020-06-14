@@ -27,6 +27,7 @@ namespace STROOP.Map
         public CheckBox checkBoxMapOptionsTrackSelf;
         public CheckBox checkBoxMapOptionsTrackPoint;
         public CheckBox checkBoxMapOptionsTrackFloorTri;
+        public CheckBox checkBoxMapOptionsTrackWallTri;
         public CheckBox checkBoxMapOptionsTrackCeilingTri;
         public CheckBox checkBoxMapOptionsTrackUnitGridlines;
 

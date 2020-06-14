@@ -361,6 +361,7 @@
     <Compile Include="Map\MapCeilingObject.cs" />
     <Compile Include="Map\MapBackgroundObject.cs" />
     <Compile Include="Map\MapAngleRangeObject.cs" />
+    <Compile Include="Map\MapMarioWallObject.cs" />
     <Compile Include="Map\MapLineSegmentObject.cs" />
     <Compile Include="Map\MapGhostObject.cs" />
     <Compile Include="Map\MapPunchFloorObject.cs" />

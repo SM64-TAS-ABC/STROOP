@@ -265,6 +265,7 @@ namespace STROOP
                 checkBoxMapOptionsTrackSelf = checkBoxMapOptionsTrackSelf,
                 checkBoxMapOptionsTrackPoint = checkBoxMapOptionsTrackPoint,
                 checkBoxMapOptionsTrackFloorTri = checkBoxMapOptionsTrackFloorTri,
+                checkBoxMapOptionsTrackWallTri = checkBoxMapOptionsTrackWallTri,
                 checkBoxMapOptionsTrackCeilingTri = checkBoxMapOptionsTrackCeilingTri,
                 checkBoxMapOptionsTrackUnitGridlines = checkBoxMapOptionsTrackUnitGridlines,
 
