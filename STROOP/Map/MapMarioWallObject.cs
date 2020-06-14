@@ -17,8 +17,6 @@ namespace STROOP.Map
 {
     public class MapMarioWallObject : MapWallObject
     {
-        private readonly List<uint> _triAddressList;
-
         public MapMarioWallObject()
             : base()
         {
