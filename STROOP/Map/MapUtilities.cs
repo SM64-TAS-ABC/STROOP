@@ -312,7 +312,7 @@ namespace STROOP.Map
 
         public static void CreateTrackBarContextMenuStrip(TrackBar trackBar, Action resetAction)
         {
-            List<int> maxValues = new List<int>() { 10, 100, 1000, 10000, 100000 };
+            List<int> maxValues = Enumerable.Range(1, 9).ToList().ConvertAll(p => (int)Math.Pow(10, p));
             trackBar.ContextMenuStrip = new ContextMenuStrip();
             List<ToolStripMenuItem> items = maxValues.ConvertAll(
                 maxValue => new ToolStripMenuItem("Max of " + maxValue));
