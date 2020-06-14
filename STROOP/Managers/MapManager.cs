@@ -485,6 +485,7 @@ namespace STROOP.Managers
             });
             Config.MapGui.trackBarMapOptionsGlobalIconSize.AddManualChangeAction(() =>
                 SetGlobalIconSize(Config.MapGui.trackBarMapOptionsGlobalIconSize.Value));
+            MapUtilities.CreateTrackBarContextMenuStrip(Config.MapGui.trackBarMapOptionsGlobalIconSize, () => { });
 
             // 3D Controllers
             ControlUtilities.InitializeThreeDimensionController(
