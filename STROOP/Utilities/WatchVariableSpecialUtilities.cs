@@ -2240,6 +2240,17 @@ namespace STROOP.Structs
                     return Config.Stream.SetValue(marioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                 }));
 
+            _dictionary.Add("WallKickPostAngle",
+                ((uint triAddress) =>
+                {
+                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    float normX = Config.Stream.GetSingle(triAddress + TriangleOffsetsConfig.NormX);
+                    float normZ = Config.Stream.GetSingle(triAddress + TriangleOffsetsConfig.NormZ);
+                    ushort wallAngle = InGameTrigUtilities.InGameATan(normZ, normX);
+                    return MoreMath.NormalizeAngleUshort(wallAngle - (marioAngle - wallAngle) + 32768);
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("DistanceAboveFloor",
                 ((uint dummy) =>
                 {
