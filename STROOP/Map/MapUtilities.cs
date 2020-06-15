@@ -310,7 +310,7 @@ namespace STROOP.Map
             return Config.MapGui.checkBoxMapOptionsReverseDragging.Checked ? -1 * value : value;
         }
 
-        public static void CreateTrackBarContextMenuStrip(TrackBar trackBar, Action resetAction)
+        public static void CreateTrackBarContextMenuStrip(TrackBar trackBar)
         {
             List<int> maxValues = Enumerable.Range(1, 9).ToList().ConvertAll(p => (int)Math.Pow(10, p));
             trackBar.ContextMenuStrip = new ContextMenuStrip();
@@ -323,7 +323,6 @@ namespace STROOP.Map
                 item.Click += (sender, e) =>
                 {
                     trackBar.Maximum = maxValue;
-                    resetAction();
                     items.ForEach(it => it.Checked = it == item);
                 };
                 if (trackBar.Maximum == maxValue) item.Checked = true;
