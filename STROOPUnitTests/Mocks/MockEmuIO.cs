@@ -67,5 +67,10 @@ namespace STROOPUnitTests.Mocks
             Array.Copy(buffer, 0, _buffer, address.ToUInt32() - Offset, buffer.Length);
             return true;
         }
+
+        public override byte[] ReadAllMemory()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
