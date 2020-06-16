@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace STROOP.Forms
 {
-    public partial class VariablePopOutForm : Form, IUpdatableForm, IVariableAdder
+    public partial class VariablePopOutForm : Form, IUpdatableForm
     {
         public static int? WIDTH = null;
         public static int? HEIGHT = null;
@@ -108,19 +108,36 @@ namespace STROOP.Forms
             _watchVariablePanel.UnselectText();
         }
 
-        public void AddVariable(WatchVariableControl watchVarControl)
+        public VariablePopOutFormHelper GetHelper()
         {
-            _watchVariablePanel.AddVariable(watchVarControl);
+            return new VariablePopOutFormHelper(_watchVariablePanel, Text);
         }
 
-        public void AddVariables(List<WatchVariableControl> watchVarControls)
+        public class VariablePopOutFormHelper : IVariableAdder
         {
-            _watchVariablePanel.AddVariables(watchVarControls);
-        }
+            private WatchVariableFlowLayoutPanel _watchVariablePanel;
+            private string _text;
 
-        public override string ToString()
-        {
-            return Text;
+            public VariablePopOutFormHelper(WatchVariableFlowLayoutPanel watchVariablePanel, string text)
+            {
+                _watchVariablePanel = watchVariablePanel;
+                _text = text;
+            }
+
+            public void AddVariable(WatchVariableControl watchVarControl)
+            {
+                _watchVariablePanel.AddVariable(watchVarControl);
+            }
+
+            public void AddVariables(List<WatchVariableControl> watchVarControls)
+            {
+                _watchVariablePanel.AddVariables(watchVarControls);
+            }
+
+            public override string ToString()
+            {
+                return _text;
+            }
         }
     }
 }

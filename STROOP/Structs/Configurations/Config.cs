@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static STROOP.Forms.VariablePopOutForm;
 
 namespace STROOP.Structs.Configurations
 {
@@ -76,7 +77,8 @@ namespace STROOP.Structs.Configurations
 
             // get popouts
             List<VariablePopOutForm> popouts = FormManager.GetPopOutForms();
-            variableAdders.AddRange(popouts);
+            List<VariablePopOutFormHelper> popoutHelpers = popouts.ConvertAll(popout => popout.GetHelper());
+            variableAdders.AddRange(popoutHelpers);
 
             // get tabs
             List<VariableAdder> tabVariableAdders =
