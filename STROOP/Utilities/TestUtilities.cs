@@ -1784,14 +1784,6 @@ namespace STROOP.Utilities
             TtcMain.TtcMainMethod();
         }
 
-        public static void TestSomething3()
-        {
-            List<VariableAdder> variableAdderList = Config.GetVariableAdders();
-            string output = "";
-            variableAdderList.ForEach(varAdder => output += varAdder.ToString() + " " + varAdder.TabIndex + "\r\n");
-            InfoForm.ShowValue(output);
-        }
-
         public static void TestSomething2()
         {
             List<string> output = new List<string>();

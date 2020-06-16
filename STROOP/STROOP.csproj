@@ -349,6 +349,7 @@
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Managers\CellsManager.cs" />
     <Compile Include="Managers\MusicManager.cs" />
+    <Compile Include="Managers\IVariableAdder.cs" />
     <Compile Include="Managers\WarpManager.cs" />
     <Compile Include="Managers\ScriptManager.cs" />
     <Compile Include="Managers\SearchManager.cs" />

@@ -69,12 +69,16 @@ namespace STROOP.Structs.Configurations
         public static SoundManager SoundManager;
         public static M64Manager M64Manager;
 
-        public static List<VariableAdder> GetVariableAdders()
+        public static List<IVariableAdder> GetVariableAdders()
         {
-            List<VariableAdder> variableAdderList =
+            List<IVariableAdder> variableAdders = new List<IVariableAdder>();
+
+            List<VariableAdder> tabVariableAdders =
                 ControlUtilities.GetFieldsOfType<VariableAdder>(typeof(Config), null);
-            variableAdderList.Sort((d1, d2) => d1.TabIndex - d2.TabIndex);
-            return variableAdderList;
+            tabVariableAdders.Sort((d1, d2) => d1.TabIndex - d2.TabIndex);
+            variableAdders.AddRange(tabVariableAdders);
+
+            return variableAdders;
         }
 
         public static void Print(object formatNullable = null, params object[] args)

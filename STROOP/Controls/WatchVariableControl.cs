@@ -755,7 +755,7 @@ namespace STROOP.Controls
         }
 
         public static void AddVarsToTab(
-            List<WatchVariableControl> watchVars, VariableAdder variableAdder, AddToTabTypeEnum? addToTabTypeNullable = null)
+            List<WatchVariableControl> watchVars, IVariableAdder variableAdder, AddToTabTypeEnum? addToTabTypeNullable = null)
         {
             List<List<WatchVariableControl>> newVarListList = new List<List<WatchVariableControl>>();
             AddToTabTypeEnum addToTabType = addToTabTypeNullable ?? GetAddToTabType();

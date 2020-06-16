@@ -12,7 +12,7 @@ using STROOP.Structs.Configurations;
 
 namespace STROOP.Managers
 {
-    public abstract class VariableAdder
+    public abstract class VariableAdder : IVariableAdder
     {
         public readonly TabPage Tab;
         public readonly string TabName;
