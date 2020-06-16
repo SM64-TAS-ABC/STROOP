@@ -1,4 +1,5 @@
-﻿using STROOP.Managers;
+﻿using STROOP.Forms;
+using STROOP.Managers;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
@@ -31,6 +32,12 @@ namespace STROOP.Structs
             {
                 form.UpdateForm();
             }
+        }
+
+        public static List<VariablePopOutForm> GetPopOutForms()
+        {
+            return _forms.FindAll(form => form is VariablePopOutForm)
+                .ConvertAll(form => form as VariablePopOutForm);
         }
     }
 }

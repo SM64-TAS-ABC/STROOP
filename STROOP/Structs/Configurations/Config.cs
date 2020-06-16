@@ -1,4 +1,5 @@
-﻿using STROOP.Managers;
+﻿using STROOP.Forms;
+using STROOP.Managers;
 using STROOP.Map;
 using STROOP.Map.Map3D;
 using STROOP.Utilities;
@@ -73,6 +74,11 @@ namespace STROOP.Structs.Configurations
         {
             List<IVariableAdder> variableAdders = new List<IVariableAdder>();
 
+            // get popouts
+            List<VariablePopOutForm> popouts = FormManager.GetPopOutForms();
+            variableAdders.AddRange(popouts);
+
+            // get tabs
             List<VariableAdder> tabVariableAdders =
                 ControlUtilities.GetFieldsOfType<VariableAdder>(typeof(Config), null);
             tabVariableAdders.Sort((d1, d2) => d1.TabIndex - d2.TabIndex);

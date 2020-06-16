@@ -1,4 +1,5 @@
 ﻿using STROOP.Controls;
+using STROOP.Managers;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System;
@@ -8,7 +9,7 @@ using System.Xml.Linq;
 
 namespace STROOP.Forms
 {
-    public partial class VariablePopOutForm : Form, IUpdatableForm
+    public partial class VariablePopOutForm : Form, IUpdatableForm, IVariableAdder
     {
         public static int? WIDTH = null;
         public static int? HEIGHT = null;
@@ -20,11 +21,16 @@ namespace STROOP.Forms
 
         private bool _alwaysOnTop = false;
 
+        private static int _instanceCouner = 0;
+
         public VariablePopOutForm()
         {
             InitializeComponent();
             FormManager.AddForm(this);
             FormClosing += (sender, e) => FormManager.RemoveForm(this);
+
+            _instanceCouner++;
+            Text = "Pop Out " + _instanceCouner;
 
             if (WIDTH.HasValue) Width = WIDTH.Value;
             if (HEIGHT.HasValue) Height = HEIGHT.Value;
@@ -102,5 +108,19 @@ namespace STROOP.Forms
             _watchVariablePanel.UnselectText();
         }
 
+        public void AddVariable(WatchVariableControl watchVarControl)
+        {
+            _watchVariablePanel.AddVariable(watchVarControl);
+        }
+
+        public void AddVariables(List<WatchVariableControl> watchVarControls)
+        {
+            _watchVariablePanel.AddVariables(watchVarControls);
+        }
+
+        public override string ToString()
+        {
+            return Text;
+        }
     }
 }
