@@ -218,8 +218,42 @@ namespace STROOP.Structs.Configurations
         public static float CompassArrowWidth = 50;
         public static float CompassMargin = 10;
         public static float CompassTextSize = 70;
-        public static float CompassCenterX { get => CompassMargin + CompassArrowHeight + CompassLineHeight + CompassLineWidth / 2; }
-        public static float CompassCenterZ { get => CompassMargin + CompassArrowHeight + CompassLineHeight + CompassLineWidth / 2; }
+        public static float CompassCenterX
+        {
+            get
+            {
+                float relCenterX = CompassMargin + CompassArrowHeight + CompassLineHeight + CompassLineWidth / 2;
+                switch (CompassPosition)
+                {
+                    case CompassPosition.TopLeft:
+                    case CompassPosition.BottomLeft:
+                        return relCenterX;
+                    case CompassPosition.TopRight:
+                    case CompassPosition.BottomRight:
+                        return Config.MapGui.GLControlMap2D.Width - relCenterX;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+        public static float CompassCenterZ
+        {
+            get
+            {
+                float relCenterZ = CompassMargin + CompassArrowHeight + CompassLineHeight + CompassLineWidth / 2;
+                switch (CompassPosition)
+                {
+                    case CompassPosition.TopLeft:
+                    case CompassPosition.TopRight:
+                        return relCenterZ;
+                    case CompassPosition.BottomLeft:
+                    case CompassPosition.BottomRight:
+                        return Config.MapGui.GLControlMap2D.Height - relCenterZ;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
 
         // Dummy Vars
 
