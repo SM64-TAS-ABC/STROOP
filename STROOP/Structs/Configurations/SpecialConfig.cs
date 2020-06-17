@@ -216,6 +216,8 @@ namespace STROOP.Structs.Configurations
         public static float CompassArrowHeight = 40;
         public static float CompassArrowWidth = 50;
         public static float CompassMargin = 10;
+        public static float CompassCenterX { get => CompassMargin + CompassArrowHeight + CompassLineHeight + CompassLineWidth / 2; }
+        public static float CompassCenterZ { get => CompassMargin + CompassArrowHeight + CompassLineHeight + CompassLineWidth / 2; }
 
         // Dummy Vars
 
