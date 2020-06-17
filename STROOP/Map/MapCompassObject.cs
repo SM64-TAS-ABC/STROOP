@@ -23,95 +23,27 @@ namespace STROOP.Map
 
         public override void DrawOn2DControl()
         {
-            float centerX = 0;
-            float centerZ = 0;
-            float arrowLineHeight = 200;
-            float arrowLineWidth = 20;
-            float arrowHeadHeight = 50;
-            float arrowHeadWidth = 50;
+            CompassArrow arrowUp = new CompassArrow(32768);
+            CompassArrow arrowLeft = new CompassArrow(49152);
+            CompassArrow arrowDown = new CompassArrow(0);
+            CompassArrow arrowRight = new CompassArrow(16384);
+            List<CompassArrow> arrows = new List<CompassArrow>() { arrowUp, arrowLeft, arrowDown, arrowRight };
 
-            List<(float x, float z)> points = new List<(float x, float z)>();
-            for (int angle = 0; angle < 65536; angle += 16384)
-            {
-                double angleUp = angle;
-                double angleDown = angle + 32768;
-                double angleLeft = angle + 16384;
-                double angleRight = angle - 16384;
-                double angleUpLeft = angle + 8192;
-                double angleUpRight = angle - 8192;
-                double angleDownLeft = angle + 24576;
-                double angleDownRight = angle - 24576;
+            List<(float x, float z)> outlinePoints = arrows.ConvertAll(arrow => arrow.GetOutlinePoints()).SelectMany(points => points).ToList();
 
-                (float x, float z) arrowBaseLeft = ((float, float))MoreMath.AddVectorToPoint(arrowLineWidth / Math.Sqrt(2), angleUpLeft, centerX, centerZ);
-                (float x, float z) arrowBaseRight = ((float, float))MoreMath.AddVectorToPoint(arrowLineWidth / Math.Sqrt(2), angleUpRight, centerX, centerZ);
-                (float x, float z) arrowHeadInnerCornerLeft = ((float, float))MoreMath.AddVectorToPoint(arrowLineHeight, angleUp, arrowBaseLeft.x, arrowBaseLeft.z);
-                (float x, float z) arrowHeadInnerCornerRight = ((float, float))MoreMath.AddVectorToPoint(arrowLineHeight, angleUp, arrowBaseRight.x, arrowBaseRight.z);
-                (float x, float z) arrowHeadCornerLeft = ((float, float))MoreMath.AddVectorToPoint((arrowHeadWidth - arrowLineWidth) / 2, angleLeft, arrowHeadInnerCornerLeft.x, arrowHeadInnerCornerLeft.z);
-                (float x, float z) arrowHeadCornerRight = ((float, float))MoreMath.AddVectorToPoint((arrowHeadWidth - arrowLineWidth) / 2, angleRight, arrowHeadInnerCornerRight.x, arrowHeadInnerCornerRight.z);
-                (float x, float z) arrowHeadPoint = ((float, float))MoreMath.AddVectorToPoint(arrowLineHeight + arrowHeadHeight, angleUp, centerX, centerZ);
-
-                points.AddRange(
-                    new List<(float x, float z)>()
-                    {
-                        arrowHeadInnerCornerRight,
-                        arrowHeadCornerRight,
-                        arrowHeadPoint,
-                        arrowHeadCornerLeft,
-                        arrowHeadInnerCornerLeft,
-                        arrowBaseLeft,
-                    });
-            }
-
-            List<(float x, float z)> pointsForControl =
-                points.ConvertAll(point => MapUtilities.ConvertCoordsForControl(point.x, point.z));
+            List<(float x, float z)> outlinePointsForControl =
+                outlinePoints.ConvertAll(point => MapUtilities.ConvertCoordsForControl(point.x, point.z));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
-            // Draw outline
-            if (OutlineWidth != 0)
-            {
-                GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
-                GL.LineWidth(OutlineWidth);
-                GL.Begin(PrimitiveType.LineLoop);
-                foreach ((float x, float z) in pointsForControl)
-                {
-                    GL.Vertex2(x, z);
-                }
-                GL.End();
-            }
-
-            GL.Color4(1, 1, 1, 1.0f);
-
-            /*
-            List<List<(float x, float y, float z)>> quadList = new List<List<(float x, float y, float z)>>()
-            {
-                new List<(float x, float y, float z)>()
-                {
-                    (1000, 0, 1000),
-                    (1000, 0, -1000),
-                    (-1000, 0, -1000),
-                    (-1000, 0, 1000),
-                }
-            };
-            List<List<(float x, float z)>> quadListForControl =
-                quadList.ConvertAll(quad => quad.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z)));
-
-            GL.BindTexture(TextureTarget.Texture2D, -1);
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
-
-            // Draw quad
+            // Draw polygon
             GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
-            GL.Begin(PrimitiveType.Quads);
-            foreach (List<(float x, float z)> quad in quadListForControl)
+            GL.Begin(PrimitiveType.Polygon);
+            foreach ((float x, float z) in outlinePointsForControl)
             {
-                foreach ((float x, float z) in quad)
-                {
-                    GL.Vertex2(x, z);
-                }
+                GL.Vertex2(x, z);
             }
             GL.End();
 
@@ -120,19 +52,15 @@ namespace STROOP.Map
             {
                 GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
                 GL.LineWidth(OutlineWidth);
-                foreach (List<(float x, float z)> quad in quadListForControl)
+                GL.Begin(PrimitiveType.LineLoop);
+                foreach ((float x, float z) in outlinePointsForControl)
                 {
-                    GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z) in quad)
-                    {
-                        GL.Vertex2(x, z);
-                    }
-                    GL.End();
+                    GL.Vertex2(x, z);
                 }
+                GL.End();
             }
 
             GL.Color4(1, 1, 1, 1.0f);
-            */
         }
 
         public override void DrawOn3DControl()
@@ -153,6 +81,57 @@ namespace STROOP.Map
         public override string GetName()
         {
             return "Compass";
+        }
+
+        public class CompassArrow
+        {
+            private static float centerX = 0;
+            private static float centerZ = 0;
+            private static float arrowLineHeight = 200;
+            private static float arrowLineWidth = 20;
+            private static float arrowHeadHeight = 50;
+            private static float arrowHeadWidth = 50;
+
+            public (float x, float z) ArrowBaseRight;
+            public (float x, float z) ArrowHeadInnerCornerRight;
+            public (float x, float z) ArrowHeadCornerRight;
+            public (float x, float z) ArrowHeadPoint;
+            public (float x, float z) ArrowHeadCornerLeft;
+            public (float x, float z) ArrowHeadInnerCornerLeft;
+            public (float x, float z) ArrowBaseLeft;
+
+            public CompassArrow(int angle)
+            {
+                double angleUp = angle;
+                double angleDown = angle + 32768;
+                double angleLeft = angle + 16384;
+                double angleRight = angle - 16384;
+                double angleUpLeft = angle + 8192;
+                double angleUpRight = angle - 8192;
+                double angleDownLeft = angle + 24576;
+                double angleDownRight = angle - 24576;
+
+                ArrowBaseLeft = ((float, float))MoreMath.AddVectorToPoint(arrowLineWidth / Math.Sqrt(2), angleUpLeft, centerX, centerZ);
+                ArrowBaseRight = ((float, float))MoreMath.AddVectorToPoint(arrowLineWidth / Math.Sqrt(2), angleUpRight, centerX, centerZ);
+                ArrowHeadInnerCornerLeft = ((float, float))MoreMath.AddVectorToPoint(arrowLineHeight, angleUp, ArrowBaseLeft.x, ArrowBaseLeft.z);
+                ArrowHeadInnerCornerRight = ((float, float))MoreMath.AddVectorToPoint(arrowLineHeight, angleUp, ArrowBaseRight.x, ArrowBaseRight.z);
+                ArrowHeadCornerLeft = ((float, float))MoreMath.AddVectorToPoint((arrowHeadWidth - arrowLineWidth) / 2, angleLeft, ArrowHeadInnerCornerLeft.x, ArrowHeadInnerCornerLeft.z);
+                ArrowHeadCornerRight = ((float, float))MoreMath.AddVectorToPoint((arrowHeadWidth - arrowLineWidth) / 2, angleRight, ArrowHeadInnerCornerRight.x, ArrowHeadInnerCornerRight.z);
+                ArrowHeadPoint = ((float, float))MoreMath.AddVectorToPoint(arrowLineHeight + arrowHeadHeight, angleUp, centerX, centerZ);
+            }
+
+            public List<(float x, float z)> GetOutlinePoints()
+            {
+                return new List<(float x, float z)>()
+                {
+                    ArrowHeadInnerCornerRight,
+                    ArrowHeadCornerRight,
+                    ArrowHeadPoint,
+                    ArrowHeadCornerLeft,
+                    ArrowHeadInnerCornerLeft,
+                    ArrowBaseLeft,
+                };
+            }
         }
     }
 }
