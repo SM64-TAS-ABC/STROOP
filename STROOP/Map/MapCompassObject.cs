@@ -27,6 +27,7 @@ namespace STROOP.Map
         public MapCompassObject()
             : base()
         {
+            Color = Color.White;
         }
 
         public override void DrawOn2DControl()
@@ -34,12 +35,12 @@ namespace STROOP.Map
             List<CompassArrow> arrows = Enumerable.Range(0, 4).ToList().ConvertAll(index => new CompassArrow(16384 * index));
 
             List<List<(float x, float z)>> triPoints = new List<List<(float x, float z)>>();
-            for (int i = 0; i < arrows.Count; i++)
+            foreach (CompassArrow arrow in arrows)
             {
-                CompassArrow arrow1 = arrows[i];
-                CompassArrow arrow2 = arrows[(i + 2) % 4];
-                triPoints.Add(new List<(float x, float z)>() { arrow1.ArrowHeadPoint, arrow1.ArrowHeadCornerLeft, arrow1.ArrowHeadCornerRight });
-                triPoints.Add(new List<(float x, float z)>() { arrow1.ArrowHeadInnerCornerRight, arrow1.ArrowHeadInnerCornerLeft, arrow2.ArrowHeadInnerCornerRight });
+                triPoints.Add(new List<(float x, float z)>() { arrow.ArrowHeadPoint, arrow.ArrowHeadCornerLeft, arrow.ArrowHeadCornerRight });
+                triPoints.Add(new List<(float x, float z)>() { arrow.ArrowHeadInnerCornerRight, arrow.ArrowHeadInnerCornerLeft, arrow.ArrowBaseLeft });
+                triPoints.Add(new List<(float x, float z)>() { arrow.ArrowBaseLeft, arrow.ArrowBaseRight, arrow.ArrowHeadInnerCornerRight });
+                triPoints.Add(new List<(float x, float z)>() { arrow.ArrowBaseRight, arrow.ArrowBaseLeft, (SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ) });
             }
             List<List<(float x, float z)>> triPointsForControl =
                 triPoints.ConvertAll(tri => tri.ConvertAll(
