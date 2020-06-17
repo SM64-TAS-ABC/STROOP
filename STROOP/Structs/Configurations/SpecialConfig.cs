@@ -214,10 +214,10 @@ namespace STROOP.Structs.Configurations
         public static CompassPosition CompassPosition;
         public static float CompassLineHeight = 50;
         public static float CompassLineWidth = 10;
-        public static float CompassArrowHeight = 40;
-        public static float CompassArrowWidth = 50;
+        public static float CompassArrowHeight = 50;
+        public static float CompassArrowWidth = 60;
         public static float CompassMargin = 10;
-        public static float CompassTextSize = 70;
+        public static float CompassTextSize = 80;
         public static float CompassCenterX
         {
             get
