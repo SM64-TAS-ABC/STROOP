@@ -24,6 +24,12 @@
   <Data base="None" specialType="Map3DFollowingYaw">Following Yaw</Data>
 
   <Data base="None" specialType="Map3DFOV">FOV</Data>
+  
+  <Data base="None" specialType="CompassLineHeight">Compass Line Height</Data>
+  <Data base="None" specialType="CompassLineWidth">Compass Line Width</Data>
+  <Data base="None" specialType="CompassArrowHeight">Compass Arrow Height</Data>
+  <Data base="None" specialType="CompassArrowWidth">Compass Arrow Width</Data>
+  <Data base="None" specialType="CompassMargin">Compass Margin</Data>
 
   <Data base="None" specialType="Map2DScrollSpeed">2D Scroll Speed</Data>
   <Data base="None" specialType="Map3DScrollSpeed">3D Scroll Speed</Data>

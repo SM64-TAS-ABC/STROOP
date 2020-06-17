@@ -211,6 +211,12 @@ namespace STROOP.Structs.Configurations
         public static double Map3DTranslateSpeed = 20;
         public static double Map3DRotateSpeed = 50;
 
+        public static float CompassLineHeight = 50;
+        public static float CompassLineWidth = 10;
+        public static float CompassArrowHeight = 40;
+        public static float CompassArrowWidth = 50;
+        public static float CompassMargin = 10;
+
         // Dummy Vars
 
         public static readonly List<double> DummyValues = new List<double>();

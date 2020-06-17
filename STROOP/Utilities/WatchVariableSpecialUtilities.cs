@@ -355,6 +355,12 @@ namespace STROOP.Structs
                     ("Map3DFollowingYOffset", () => SpecialConfig.Map3DFollowingYOffset, (float value) => SpecialConfig.Map3DFollowingYOffset = value),
                     ("Map3DFollowingYaw", () => SpecialConfig.Map3DFollowingYaw, (float value) => SpecialConfig.Map3DFollowingYaw = value),
                     ("Map3DFOV", () => SpecialConfig.Map3DFOV, (float value) => SpecialConfig.Map3DFOV = value),
+
+                    ("CompassLineHeight", () => SpecialConfig.CompassLineHeight, (float value) => SpecialConfig.CompassLineHeight = value),
+                    ("CompassLineWidth", () => SpecialConfig.CompassLineWidth, (float value) => SpecialConfig.CompassLineWidth = value),
+                    ("CompassArrowHeight", () => SpecialConfig.CompassArrowHeight, (float value) => SpecialConfig.CompassArrowHeight = value),
+                    ("CompassArrowWidth", () => SpecialConfig.CompassArrowWidth, (float value) => SpecialConfig.CompassArrowWidth = value),
+                    ("CompassMargin", () => SpecialConfig.CompassMargin, (float value) => SpecialConfig.CompassMargin = value),
                 };
 
             foreach ((string key, Func<float> getter, Action<float> setter) in floatEntries)

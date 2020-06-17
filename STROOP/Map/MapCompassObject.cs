@@ -90,22 +90,16 @@ namespace STROOP.Map
 
         public class CompassArrow
         {
-            private static float arrowLineHeight = 200;
-            private static float arrowLineWidth = 20;
-            private static float arrowHeadHeight = 50;
-            private static float arrowHeadWidth = 50;
-            private static float margin = 10;
+            private readonly float centerX = SpecialConfig.CompassMargin + SpecialConfig.CompassArrowHeight + SpecialConfig.CompassLineHeight + SpecialConfig.CompassLineWidth / 2;
+            private readonly float centerZ = SpecialConfig.CompassMargin + SpecialConfig.CompassArrowHeight + SpecialConfig.CompassLineHeight + SpecialConfig.CompassLineWidth / 2;
 
-            private static float centerX = margin + arrowHeadHeight + arrowLineHeight + arrowLineWidth / 2;
-            private static float centerZ = margin + arrowHeadHeight + arrowLineHeight + arrowLineWidth / 2;
-
-            public (float x, float z) ArrowBaseRight;
-            public (float x, float z) ArrowHeadInnerCornerRight;
-            public (float x, float z) ArrowHeadCornerRight;
-            public (float x, float z) ArrowHeadPoint;
-            public (float x, float z) ArrowHeadCornerLeft;
-            public (float x, float z) ArrowHeadInnerCornerLeft;
-            public (float x, float z) ArrowBaseLeft;
+            public readonly (float x, float z) ArrowBaseRight;
+            public readonly (float x, float z) ArrowHeadInnerCornerRight;
+            public readonly (float x, float z) ArrowHeadCornerRight;
+            public readonly (float x, float z) ArrowHeadPoint;
+            public readonly (float x, float z) ArrowHeadCornerLeft;
+            public readonly (float x, float z) ArrowHeadInnerCornerLeft;
+            public readonly (float x, float z) ArrowBaseLeft;
 
             public CompassArrow(int angle)
             {
@@ -118,13 +112,13 @@ namespace STROOP.Map
                 double angleDownLeft = angle + 24576;
                 double angleDownRight = angle - 24576;
 
-                ArrowBaseLeft = ((float, float))MoreMath.AddVectorToPoint(arrowLineWidth / Math.Sqrt(2), angleUpLeft, centerX, centerZ);
-                ArrowBaseRight = ((float, float))MoreMath.AddVectorToPoint(arrowLineWidth / Math.Sqrt(2), angleUpRight, centerX, centerZ);
-                ArrowHeadInnerCornerLeft = ((float, float))MoreMath.AddVectorToPoint(arrowLineHeight, angleUp, ArrowBaseLeft.x, ArrowBaseLeft.z);
-                ArrowHeadInnerCornerRight = ((float, float))MoreMath.AddVectorToPoint(arrowLineHeight, angleUp, ArrowBaseRight.x, ArrowBaseRight.z);
-                ArrowHeadCornerLeft = ((float, float))MoreMath.AddVectorToPoint((arrowHeadWidth - arrowLineWidth) / 2, angleLeft, ArrowHeadInnerCornerLeft.x, ArrowHeadInnerCornerLeft.z);
-                ArrowHeadCornerRight = ((float, float))MoreMath.AddVectorToPoint((arrowHeadWidth - arrowLineWidth) / 2, angleRight, ArrowHeadInnerCornerRight.x, ArrowHeadInnerCornerRight.z);
-                ArrowHeadPoint = ((float, float))MoreMath.AddVectorToPoint(arrowLineHeight + arrowHeadHeight, angleUp, centerX, centerZ);
+                ArrowBaseLeft = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineWidth / Math.Sqrt(2), angleUpLeft, centerX, centerZ);
+                ArrowBaseRight = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineWidth / Math.Sqrt(2), angleUpRight, centerX, centerZ);
+                ArrowHeadInnerCornerLeft = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight, angleUp, ArrowBaseLeft.x, ArrowBaseLeft.z);
+                ArrowHeadInnerCornerRight = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight, angleUp, ArrowBaseRight.x, ArrowBaseRight.z);
+                ArrowHeadCornerLeft = ((float, float))MoreMath.AddVectorToPoint((SpecialConfig.CompassArrowWidth - SpecialConfig.CompassLineWidth) / 2, angleLeft, ArrowHeadInnerCornerLeft.x, ArrowHeadInnerCornerLeft.z);
+                ArrowHeadCornerRight = ((float, float))MoreMath.AddVectorToPoint((SpecialConfig.CompassArrowWidth - SpecialConfig.CompassLineWidth) / 2, angleRight, ArrowHeadInnerCornerRight.x, ArrowHeadInnerCornerRight.z);
+                ArrowHeadPoint = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight + SpecialConfig.CompassArrowHeight, angleUp, centerX, centerZ);
             }
 
             public List<(float x, float z)> GetOutlinePoints()
