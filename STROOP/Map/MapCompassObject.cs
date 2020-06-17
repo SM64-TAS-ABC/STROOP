@@ -33,8 +33,12 @@ namespace STROOP.Map
                 triPoints.Add(new List<(float x, float z)>() { arrow1.ArrowHeadPoint, arrow1.ArrowHeadCornerLeft, arrow1.ArrowHeadCornerRight });
                 triPoints.Add(new List<(float x, float z)>() { arrow1.ArrowHeadInnerCornerRight, arrow1.ArrowHeadInnerCornerLeft, arrow2.ArrowHeadInnerCornerRight });
             }
+            List<List<(float x, float z)>> triPointsForControl =
+                triPoints.ConvertAll(tri => tri.ConvertAll(
+                    vertex => RotatePoint(vertex.x, vertex.z)));
 
             List<(float x, float z)> outlinePoints = arrows.ConvertAll(arrow => arrow.GetOutlinePoints()).SelectMany(points => points).ToList();
+            List<(float x, float z)> outlinePointsForControl = outlinePoints.ConvertAll(point => RotatePoint(point.x, point.z));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -43,7 +47,7 @@ namespace STROOP.Map
             // Draw polygon
             GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
             GL.Begin(PrimitiveType.Triangles);
-            foreach (List<(float x, float z)> tri in triPoints)
+            foreach (List<(float x, float z)> tri in triPointsForControl)
             {
                 foreach ((float x, float z) in tri)
                 {
@@ -58,7 +62,7 @@ namespace STROOP.Map
                 GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
                 GL.LineWidth(OutlineWidth);
                 GL.Begin(PrimitiveType.LineLoop);
-                foreach ((float x, float z) in outlinePoints)
+                foreach ((float x, float z) in outlinePointsForControl)
                 {
                     GL.Vertex2(x, z);
                 }
@@ -66,6 +70,12 @@ namespace STROOP.Map
             }
 
             GL.Color4(1, 1, 1, 1.0f);
+        }
+
+        private (float x, float z) RotatePoint(float x, float z)
+        {
+            return ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
+                x, z, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ, -1 * Config.MapGraphics.MapViewAngleValue);
         }
 
         public override void DrawOn3DControl()
