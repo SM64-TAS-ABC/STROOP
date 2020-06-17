@@ -427,22 +427,32 @@ namespace STROOP.Structs
                 ));
             }
 
-            _dictionary.Add("Map3DMode",
-                ((uint dummy) =>
+            List<(string, Func<string>, Action<string>)> stringEntries =
+                new List<(string, Func<string>, Action<string>)>()
                 {
-                    return SpecialConfig.Map3DMode.ToString();
-                },
-                (string value, uint dummy) =>
-                {
-                    try
+                    ("Map3DMode", () => SpecialConfig.Map3DMode.ToString(), (string value) => SpecialConfig.Map3DMode = (Map3DCameraMode)Enum.Parse(typeof(Map3DCameraMode), value, true)),
+                    ("CompassPosition", () => SpecialConfig.CompassPosition.ToString(), (string value) => SpecialConfig.CompassPosition = (CompassPosition)Enum.Parse(typeof(CompassPosition), value, true)),
+                };
+
+            foreach ((string key, Func<string> getter, Action<string> setter) in stringEntries)
+            {
+                _dictionary.Add(key,
+                    ((uint dummy) =>
                     {
-                        SpecialConfig.Map3DMode = (Map3DCameraMode)Enum.Parse(typeof(Map3DCameraMode), value, true);
-                        return true;
+                        return getter();
+                    },
+                    (string value, uint dummy) =>
+                    {
+                        try
+                        {
+                            setter(value);
+                            return true;
+                        }
+                        catch (Exception) { }
+                        return false;
                     }
-                    catch (Exception) { }
-                    return false;
-                }
-            ));
+                ));
+            }
         }
 
         public static void AddGeneratedEntriesToDictionary()

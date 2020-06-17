@@ -24,7 +24,8 @@
   <Data base="None" specialType="Map3DFollowingYaw">Following Yaw</Data>
 
   <Data base="None" specialType="Map3DFOV">FOV</Data>
-  
+
+  <Data base="None" specialType="CompassPosition" subclass="String">Compass Position</Data>
   <Data base="None" specialType="CompassLineHeight">Compass Line Height</Data>
   <Data base="None" specialType="CompassLineWidth">Compass Line Width</Data>
   <Data base="None" specialType="CompassArrowHeight">Compass Arrow Height</Data>
