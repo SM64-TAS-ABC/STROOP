@@ -16,6 +16,8 @@ namespace STROOP.Map
 {
     public class MapCompassObject : MapObject
     {
+        private int _letterTex = -1;
+
         public MapCompassObject()
             : base()
         {
@@ -69,6 +71,18 @@ namespace STROOP.Map
                 GL.End();
             }
 
+            GL.BindTexture(TextureTarget.Texture2D, _letterTex);
+            GL.Begin(PrimitiveType.Quads);
+
+            int realWidth = 100;
+            int realHeight = 100;
+            GL.TexCoord3(0.0f, 0.0f, 0f); GL.Vertex3(0f, 0f, 0f);
+            GL.TexCoord3(1.0f, 0.0f, 0f); GL.Vertex3(realWidth, 0f, 0f);
+            GL.TexCoord3(1.0f, 1.0f, 0f); GL.Vertex3(realWidth, realHeight, 0f);
+            GL.TexCoord3(0.0f, 1.0f, 0f); GL.Vertex3(0f, realHeight, 0f);
+
+            GL.End();
+
             GL.Color4(1, 1, 1, 1.0f);
         }
 
@@ -96,6 +110,20 @@ namespace STROOP.Map
         public override string GetName()
         {
             return "Compass";
+        }
+
+        public override void Update()
+        {
+            if (_letterTex == -1)
+            {
+                Bitmap bmp = new Bitmap(100, 100, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                Graphics gfx = Graphics.FromImage(bmp);
+                gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+                Font drawFont = new Font("Arial", 16);
+                SolidBrush drawBrush = new SolidBrush(Color.Black);
+                gfx.DrawString("X+", drawFont, drawBrush, new PointF(50, 50));
+                _letterTex = MapUtilities.LoadTexture(bmp);
+            }
         }
 
         public class CompassArrow
