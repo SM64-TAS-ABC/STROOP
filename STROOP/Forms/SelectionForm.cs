@@ -211,6 +211,24 @@ namespace STROOP.Forms
             selectionForm.Show();
         }
 
+        public static void ShowCompassPositionSelectionForm()
+        {
+            SelectionForm selectionForm = new SelectionForm();
+            selectionForm.Initialize(
+                "Select a Compass Position",
+                "Set Compass Position",
+                EnumUtilities.GetEnumStrings<CompassPosition>(typeof(CompassPosition)),
+                stringValue =>
+                {
+                    try
+                    {
+                        SpecialConfig.CompassPosition = (CompassPosition)Enum.Parse(typeof(CompassPosition), stringValue, true);
+                    }
+                    catch (Exception) { }
+                });
+            selectionForm.Show();
+        }
+
         public static void ShowDataManagerSelectionForm(List<WatchVariableControl> controls, AddToTabTypeEnum addToTabType)
         {
             SelectionForm selectionForm = new SelectionForm();

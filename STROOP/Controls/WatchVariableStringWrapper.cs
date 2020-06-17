@@ -62,6 +62,10 @@ namespace STROOP.Controls
                     itemSelectValue.Click += (sender, e) => SelectionForm.ShowMap3DModeSelectionForm();
                     addedClickAction = true;
                     break;
+                case "CompassPosition":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowCompassPositionSelectionForm();
+                    addedClickAction = true;
+                    break;
             }
 
             if (addedClickAction)
