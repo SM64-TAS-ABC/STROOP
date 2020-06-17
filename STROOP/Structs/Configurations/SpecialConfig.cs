@@ -232,6 +232,8 @@ namespace STROOP.Structs.Configurations
                     case CompassPosition.TopRight:
                     case CompassPosition.BottomRight:
                         return Config.MapGui.GLControlMap2D.Width - relCenterX;
+                    case CompassPosition.Center:
+                        return Config.MapGui.GLControlMap2D.Width / 2;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -250,6 +252,8 @@ namespace STROOP.Structs.Configurations
                     case CompassPosition.BottomLeft:
                     case CompassPosition.BottomRight:
                         return Config.MapGui.GLControlMap2D.Height - relCenterZ;
+                    case CompassPosition.Center:
+                        return Config.MapGui.GLControlMap2D.Height / 2;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
