@@ -375,6 +375,7 @@
     <Compile Include="Map\MapAggregatedPathObject.cs" />
     <Compile Include="Map\MapPathObjectSegment.cs" />
     <Compile Include="Map\MapCustomPositionAngleObject.cs" />
+    <Compile Include="Map\MapCompassObject.cs" />
     <Compile Include="Map\MapSphereObject.cs" />
     <Compile Include="Map\MapCylinderObject.cs" />
     <Compile Include="Map\MapHitboxHackTriangleObject.cs" />
