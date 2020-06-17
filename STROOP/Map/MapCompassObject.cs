@@ -33,13 +33,8 @@ namespace STROOP.Map
                 triPoints.Add(new List<(float x, float z)>() { arrow1.ArrowHeadPoint, arrow1.ArrowHeadCornerLeft, arrow1.ArrowHeadCornerRight });
                 triPoints.Add(new List<(float x, float z)>() { arrow1.ArrowHeadInnerCornerRight, arrow1.ArrowHeadInnerCornerLeft, arrow2.ArrowHeadInnerCornerRight });
             }
-            List<List<(float x, float z)>> triPointsForControl =
-                triPoints.ConvertAll(tri => tri.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z)));
 
             List<(float x, float z)> outlinePoints = arrows.ConvertAll(arrow => arrow.GetOutlinePoints()).SelectMany(points => points).ToList();
-            List<(float x, float z)> outlinePointsForControl =
-                outlinePoints.ConvertAll(point => MapUtilities.ConvertCoordsForControl(point.x, point.z));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
