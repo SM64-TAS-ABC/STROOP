@@ -74,7 +74,6 @@ namespace STROOP.Map
                 GL.End();
             }
 
-
             List<int> texs = new List<int>() { _texZP, _texXP, _texZM, _texXM };
             for (int i = 0; i < arrows.Count; i++)
             {
@@ -103,8 +102,6 @@ namespace STROOP.Map
 
                 GL.End();
             }
-
-
 
             GL.Color4(1, 1, 1, 1.0f);
         }
