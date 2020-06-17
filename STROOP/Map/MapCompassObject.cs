@@ -48,7 +48,7 @@ namespace STROOP.Map
             // Draw polygon
             GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
             GL.Begin(PrimitiveType.Triangles);
-            foreach (List<(float x, float z)> tri in triPointsForControl)
+            foreach (List<(float x, float z)> tri in triPoints)
             {
                 foreach ((float x, float z) in tri)
                 {
@@ -63,7 +63,7 @@ namespace STROOP.Map
                 GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
                 GL.LineWidth(OutlineWidth);
                 GL.Begin(PrimitiveType.LineLoop);
-                foreach ((float x, float z) in outlinePointsForControl)
+                foreach ((float x, float z) in outlinePoints)
                 {
                     GL.Vertex2(x, z);
                 }
@@ -95,12 +95,14 @@ namespace STROOP.Map
 
         public class CompassArrow
         {
-            private static float centerX = 0;
-            private static float centerZ = 0;
             private static float arrowLineHeight = 200;
             private static float arrowLineWidth = 20;
             private static float arrowHeadHeight = 50;
             private static float arrowHeadWidth = 50;
+            private static float margin = 10;
+
+            private static float centerX = margin + arrowHeadHeight + arrowLineHeight + arrowLineWidth / 2;
+            private static float centerZ = margin + arrowHeadHeight + arrowLineHeight + arrowLineWidth / 2;
 
             public (float x, float z) ArrowBaseRight;
             public (float x, float z) ArrowHeadInnerCornerRight;
