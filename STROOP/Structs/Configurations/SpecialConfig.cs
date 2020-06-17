@@ -216,13 +216,14 @@ namespace STROOP.Structs.Configurations
         public static float CompassLineWidth = 10;
         public static float CompassArrowHeight = 50;
         public static float CompassArrowWidth = 60;
-        public static float CompassMargin = 10;
+        public static float CompassHorizontalMargin = 10;
+        public static float CompassVerticalMargin = 10;
         public static float CompassTextSize = 80;
         public static float CompassCenterX
         {
             get
             {
-                float relCenterX = CompassMargin + CompassArrowHeight + CompassLineHeight + CompassLineWidth / 2;
+                float relCenterX = CompassHorizontalMargin + CompassArrowHeight + CompassLineHeight + CompassLineWidth / 2;
                 switch (CompassPosition)
                 {
                     case CompassPosition.TopLeft:
@@ -240,7 +241,7 @@ namespace STROOP.Structs.Configurations
         {
             get
             {
-                float relCenterZ = CompassMargin + CompassArrowHeight + CompassLineHeight + CompassLineWidth / 2;
+                float relCenterZ = CompassVerticalMargin + CompassArrowHeight + CompassLineHeight + CompassLineWidth / 2;
                 switch (CompassPosition)
                 {
                     case CompassPosition.TopLeft:

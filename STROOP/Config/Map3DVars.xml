@@ -30,7 +30,8 @@
   <Data base="None" specialType="CompassLineWidth">Compass Line Width</Data>
   <Data base="None" specialType="CompassArrowHeight">Compass Arrow Height</Data>
   <Data base="None" specialType="CompassArrowWidth">Compass Arrow Width</Data>
-  <Data base="None" specialType="CompassMargin">Compass Margin</Data>
+  <Data base="None" specialType="CompassHorizontalMargin">Compass H Margin</Data>
+  <Data base="None" specialType="CompassVerticalMargin">Compass V Margin</Data>
   <Data base="None" specialType="CompassTextSize">Compass Text Size</Data>
 
   <Data base="None" specialType="Map2DScrollSpeed">2D Scroll Speed</Data>
