@@ -361,6 +361,7 @@ namespace STROOP.Structs
                     ("CompassArrowHeight", () => SpecialConfig.CompassArrowHeight, (float value) => SpecialConfig.CompassArrowHeight = value),
                     ("CompassArrowWidth", () => SpecialConfig.CompassArrowWidth, (float value) => SpecialConfig.CompassArrowWidth = value),
                     ("CompassMargin", () => SpecialConfig.CompassMargin, (float value) => SpecialConfig.CompassMargin = value),
+                    ("CompassTextSize", () => SpecialConfig.CompassTextSize, (float value) => SpecialConfig.CompassTextSize = value),
                 };
 
             foreach ((string key, Func<float> getter, Action<float> setter) in floatEntries)

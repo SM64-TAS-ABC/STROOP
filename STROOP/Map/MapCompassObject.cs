@@ -16,7 +16,10 @@ namespace STROOP.Map
 {
     public class MapCompassObject : MapObject
     {
-        private int _letterTex = -1;
+        private int _texXP = -1;
+        private int _texXM = -1;
+        private int _texZP = -1;
+        private int _texZM = -1;
 
         public MapCompassObject()
             : base()
@@ -71,17 +74,37 @@ namespace STROOP.Map
                 GL.End();
             }
 
-            GL.BindTexture(TextureTarget.Texture2D, _letterTex);
-            GL.Begin(PrimitiveType.Quads);
 
-            int realWidth = 100;
-            int realHeight = 100;
-            GL.TexCoord3(0.0f, 0.0f, 0f); GL.Vertex3(0f, 0f, 0f);
-            GL.TexCoord3(1.0f, 0.0f, 0f); GL.Vertex3(realWidth, 0f, 0f);
-            GL.TexCoord3(1.0f, 1.0f, 0f); GL.Vertex3(realWidth, realHeight, 0f);
-            GL.TexCoord3(0.0f, 1.0f, 0f); GL.Vertex3(0f, realHeight, 0f);
+            List<int> texs = new List<int>() { _texZP, _texXP, _texZM, _texXM };
+            for (int i = 0; i < arrows.Count; i++)
+            {
+                CompassArrow arrow = arrows[i];
+                int tex = texs[i];
 
-            GL.End();
+                (float x, float z) arrowHeadCenter = arrow.ArrowHeadCenter;
+                arrowHeadCenter = RotatePoint(arrowHeadCenter.x, arrowHeadCenter.z);
+                PointF loc = new PointF(arrowHeadCenter.x, arrowHeadCenter.z);
+                SizeF size = new SizeF((int)SpecialConfig.CompassTextSize, (int)SpecialConfig.CompassTextSize);
+
+                // Place and rotate texture to correct location on control
+                GL.LoadIdentity();
+                GL.Translate(new Vector3(loc.X, loc.Y, 0));
+                GL.Color4(1.0, 1.0, 1.0, 1.0);
+
+                // Start drawing texture
+                GL.BindTexture(TextureTarget.Texture2D, tex);
+                GL.Begin(PrimitiveType.Quads);
+
+                // Set drawing coordinates
+                GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(-size.Width / 2, size.Height / 2);
+                GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(size.Width / 2, size.Height / 2);
+                GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(size.Width / 2, -size.Height / 2);
+                GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-size.Width / 2, -size.Height / 2);
+
+                GL.End();
+            }
+
+
 
             GL.Color4(1, 1, 1, 1.0f);
         }
@@ -114,16 +137,34 @@ namespace STROOP.Map
 
         public override void Update()
         {
-            if (_letterTex == -1)
+            if (_texXP == -1)
             {
-                Bitmap bmp = new Bitmap(100, 100, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-                Graphics gfx = Graphics.FromImage(bmp);
-                gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-                Font drawFont = new Font("Arial", 16);
-                SolidBrush drawBrush = new SolidBrush(Color.Black);
-                gfx.DrawString("X+", drawFont, drawBrush, new PointF(50, 50));
-                _letterTex = MapUtilities.LoadTexture(bmp);
+                _texXP = MapUtilities.LoadTexture(CreateTexture("X+"));
             }
+            if (_texXM == -1)
+            {
+                _texXM = MapUtilities.LoadTexture(CreateTexture("X-"));
+            }
+            if (_texZP == -1)
+            {
+                _texZP = MapUtilities.LoadTexture(CreateTexture("Z+"));
+            }
+            if (_texZM == -1)
+            {
+                _texZM = MapUtilities.LoadTexture(CreateTexture("Z-"));
+            }
+        }
+
+        private Bitmap CreateTexture(string text)
+        {
+            Bitmap bmp = new Bitmap(100, 100, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            Graphics gfx = Graphics.FromImage(bmp);
+            gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            Font drawFont = new Font("Arial", 16);
+            SolidBrush drawBrush = new SolidBrush(Color.Black);
+            SizeF stringSize = gfx.MeasureString(text, drawFont);
+            gfx.DrawString(text, drawFont, drawBrush, new PointF(50 - stringSize.Width / 2, 50 - stringSize.Height / 2));
+            return bmp;
         }
 
         public class CompassArrow
@@ -135,6 +176,7 @@ namespace STROOP.Map
             public readonly (float x, float z) ArrowHeadCornerLeft;
             public readonly (float x, float z) ArrowHeadInnerCornerLeft;
             public readonly (float x, float z) ArrowBaseLeft;
+            public readonly (float x, float z) ArrowHeadCenter;
 
             public CompassArrow(int angle)
             {
@@ -154,6 +196,7 @@ namespace STROOP.Map
                 ArrowHeadCornerLeft = ((float, float))MoreMath.AddVectorToPoint((SpecialConfig.CompassArrowWidth - SpecialConfig.CompassLineWidth) / 2, angleLeft, ArrowHeadInnerCornerLeft.x, ArrowHeadInnerCornerLeft.z);
                 ArrowHeadCornerRight = ((float, float))MoreMath.AddVectorToPoint((SpecialConfig.CompassArrowWidth - SpecialConfig.CompassLineWidth) / 2, angleRight, ArrowHeadInnerCornerRight.x, ArrowHeadInnerCornerRight.z);
                 ArrowHeadPoint = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight + SpecialConfig.CompassArrowHeight, angleUp, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ);
+                ArrowHeadCenter = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight + SpecialConfig.CompassArrowHeight * 0.45, angleUp, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ);
             }
 
             public List<(float x, float z)> GetOutlinePoints()
