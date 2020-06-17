@@ -25,15 +25,6 @@
 
   <Data base="None" specialType="Map3DFOV">FOV</Data>
 
-  <Data base="None" specialType="CompassPosition" subclass="String">Compass Position</Data>
-  <Data base="None" specialType="CompassLineHeight">Compass Line Height</Data>
-  <Data base="None" specialType="CompassLineWidth">Compass Line Width</Data>
-  <Data base="None" specialType="CompassArrowHeight">Compass Arrow Height</Data>
-  <Data base="None" specialType="CompassArrowWidth">Compass Arrow Width</Data>
-  <Data base="None" specialType="CompassHorizontalMargin">Compass H Margin</Data>
-  <Data base="None" specialType="CompassVerticalMargin">Compass V Margin</Data>
-  <Data base="None" specialType="CompassTextSize">Compass Text Size</Data>
-
   <Data base="None" specialType="Map2DScrollSpeed">2D Scroll Speed</Data>
   <Data base="None" specialType="Map3DScrollSpeed">3D Scroll Speed</Data>
   <Data base="None" specialType="Map3DTranslateSpeed">3D Translate Speed</Data>
