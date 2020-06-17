@@ -23,14 +23,21 @@ namespace STROOP.Map
 
         public override void DrawOn2DControl()
         {
-            CompassArrow arrowUp = new CompassArrow(32768);
-            CompassArrow arrowLeft = new CompassArrow(49152);
-            CompassArrow arrowDown = new CompassArrow(0);
-            CompassArrow arrowRight = new CompassArrow(16384);
-            List<CompassArrow> arrows = new List<CompassArrow>() { arrowUp, arrowLeft, arrowDown, arrowRight };
+            List<CompassArrow> arrows = Enumerable.Range(0, 4).ToList().ConvertAll(index => new CompassArrow(16384 * index));
+
+            List<List<(float x, float z)>> triPoints = new List<List<(float x, float z)>>();
+            for (int i = 0; i < arrows.Count; i++)
+            {
+                CompassArrow arrow1 = arrows[i];
+                CompassArrow arrow2 = arrows[(i + 2) % 4];
+                triPoints.Add(new List<(float x, float z)>() { arrow1.ArrowHeadPoint, arrow1.ArrowHeadCornerLeft, arrow1.ArrowHeadCornerRight });
+                triPoints.Add(new List<(float x, float z)>() { arrow1.ArrowHeadInnerCornerRight, arrow1.ArrowHeadInnerCornerLeft, arrow2.ArrowHeadInnerCornerRight });
+            }
+            List<List<(float x, float z)>> triPointsForControl =
+                triPoints.ConvertAll(tri => tri.ConvertAll(
+                    vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z)));
 
             List<(float x, float z)> outlinePoints = arrows.ConvertAll(arrow => arrow.GetOutlinePoints()).SelectMany(points => points).ToList();
-
             List<(float x, float z)> outlinePointsForControl =
                 outlinePoints.ConvertAll(point => MapUtilities.ConvertCoordsForControl(point.x, point.z));
 
@@ -40,10 +47,13 @@ namespace STROOP.Map
 
             // Draw polygon
             GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
-            GL.Begin(PrimitiveType.Polygon);
-            foreach ((float x, float z) in outlinePointsForControl)
+            GL.Begin(PrimitiveType.Triangles);
+            foreach (List<(float x, float z)> tri in triPointsForControl)
             {
-                GL.Vertex2(x, z);
+                foreach ((float x, float z) in tri)
+                {
+                    GL.Vertex2(x, z);
+                }
             }
             GL.End();
 
