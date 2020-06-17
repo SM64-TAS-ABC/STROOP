@@ -11,6 +11,9 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using STROOP.Map.Map3D;
+using System.Windows.Forms;
+using STROOP.Controls;
+using STROOP.Forms;
 
 namespace STROOP.Map
 {
@@ -162,6 +165,69 @@ namespace STROOP.Map
             SizeF stringSize = gfx.MeasureString(text, drawFont);
             gfx.DrawString(text, drawFont, drawBrush, new PointF(50 - stringSize.Width / 2, 50 - stringSize.Height / 2));
             return bmp;
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                ToolStripMenuItem itemOpenSettings = new ToolStripMenuItem("Open Settings");
+                itemOpenSettings.Click += (sender, e) =>
+                {
+                    List<(string specialType, string varName, WatchVariableSubclass subclass)> varData =
+                    new List<(string specialType, string varName, WatchVariableSubclass subclass)>()
+                        {
+                            ("CompassPosition", "Position", WatchVariableSubclass.String),
+                            ("CompassLineHeight", "Line Height", WatchVariableSubclass.Number),
+                            ("CompassLineWidth", "Line Width", WatchVariableSubclass.Number),
+                            ("CompassArrowHeight", "Arrow Height", WatchVariableSubclass.Number),
+                            ("CompassArrowWidth", "Arrow Width", WatchVariableSubclass.Number),
+                            ("CompassTextSize", "Text Size", WatchVariableSubclass.Number),
+                            ("CompassHorizontalMargin", "Horizontal Margin", WatchVariableSubclass.Number),
+                            ("CompassVerticalMargin", "Vertical Margin", WatchVariableSubclass.Number),
+                        };
+
+                    List<WatchVariableControl> controls = new List<WatchVariableControl>();
+                    foreach ((string specialType, string varName, WatchVariableSubclass subclass) in varData)
+                    {
+                        WatchVariable watchVar = new WatchVariable(
+                            memoryTypeName: null,
+                            specialType: specialType,
+                            baseAddressType: BaseAddressTypeEnum.None,
+                            offsetUS: null,
+                            offsetJP: null,
+                            offsetSH: null,
+                            offsetEU: null,
+                            offsetDefault: null,
+                            mask: null,
+                            shift: null,
+                            handleMapping: true);
+                        WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
+                            name: varName,
+                            watchVar: watchVar,
+                            subclass: subclass,
+                            backgroundColor: null,
+                            displayType: null,
+                            roundingLimit: null,
+                            useHex: null,
+                            invertBool: null,
+                            isYaw: null,
+                            coordinate: null,
+                            groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                        WatchVariableControl control = precursor.CreateWatchVariableControl();
+                        controls.Add(control);
+                    }
+
+                    VariablePopOutForm form = new VariablePopOutForm();
+                    form.Initialize(controls);
+                    form.ShowForm();
+                };
+
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemOpenSettings);
+            }
+
+            return _contextMenuStrip;
         }
 
         public class CompassArrow

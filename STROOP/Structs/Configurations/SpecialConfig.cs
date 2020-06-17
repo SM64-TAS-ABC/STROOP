@@ -216,9 +216,9 @@ namespace STROOP.Structs.Configurations
         public static float CompassLineWidth = 10;
         public static float CompassArrowHeight = 50;
         public static float CompassArrowWidth = 60;
+        public static float CompassTextSize = 80;
         public static float CompassHorizontalMargin = 10;
         public static float CompassVerticalMargin = 10;
-        public static float CompassTextSize = 80;
         public static float CompassCenterX
         {
             get
