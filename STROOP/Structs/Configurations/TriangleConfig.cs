@@ -12,13 +12,15 @@ namespace STROOP.Structs.Configurations
 
         public static readonly uint TriangleListPointerAddress = 0x8038EE9C;
 
-        public static uint LevelTriangleCountAddress { get => RomVersionConfig.SwitchMap(LevelTriangleCountAddressUS, LevelTriangleCountAddressJP); }
+        public static uint LevelTriangleCountAddress { get => RomVersionConfig.SwitchMap(LevelTriangleCountAddressUS, LevelTriangleCountAddressJP, LevelTriangleCountAddressSH); }
         public static readonly uint LevelTriangleCountAddressUS = 0x80361178;
         public static readonly uint LevelTriangleCountAddressJP = 0x8035FE08;
+        public static readonly uint LevelTriangleCountAddressSH = 0x80343338;
 
-        public static uint TotalTriangleCountAddress { get => RomVersionConfig.SwitchMap(TotalTriangleCountAddressUS, TotalTriangleCountAddressJP); }
+        public static uint TotalTriangleCountAddress { get => RomVersionConfig.SwitchMap(TotalTriangleCountAddressUS, TotalTriangleCountAddressJP, TotalTriangleCountAddressSH); }
         public static readonly uint TotalTriangleCountAddressUS = 0x80361170;
         public static readonly uint TotalTriangleCountAddressJP = 0x8035FE00;
+        public static readonly uint TotalTriangleCountAddressSH = 0x80343330;
 
         public static readonly uint NodeListPointerAddress = 0x8038EE98;
 
