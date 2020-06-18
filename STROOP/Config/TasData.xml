@@ -34,8 +34,8 @@
   <Data groupList="TAS" base="GhostHack" offset="0x08" type="float" color="Blue">Ghost Z</Data>
   <Data groupList="TAS" base="GhostHack" offset="0x18" type="float" color="Blue">Ghost H Speed</Data>
   <Data groupList="TAS" base="GhostHack" offset="0x1C" type="float" color="Blue">Ghost Y Speed</Data>
-  <Data groupList="TAS" base="GhostHack" offset="0x06" type="short" color="Blue">Ghost Yaw Facing</Data>
-  <Data groupList="TAS" base="GhostHack" offset="0x24" type="short" color="Blue">Ghost Yaw Intended</Data>
+  <Data groupList="TAS" base="GhostHack" offset="0x06" type="ushort" color="Blue">Ghost Yaw Facing</Data>
+  <Data groupList="TAS" base="GhostHack" offset="0x24" type="ushort" color="Blue">Ghost Yaw Intended</Data>
   <Data groupList="TAS" base="GhostHack" offset="0x20" type="uint" useHex="true" color="Blue">Ghost Action</Data>
   <Data groupList="TAS" base="None" specialType="GhostActionDescription" subclass="String" color="Blue">Ghost Action Desc.</Data>
   <Data groupList="TAS" base="Relative" offset="0x804003FC" type="int" color="Blue">Ghost Frame</Data>
