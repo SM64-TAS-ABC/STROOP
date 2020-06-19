@@ -221,7 +221,7 @@ namespace STROOP.Structs.Configurations
         public static float CompassDirectionTextSize = 80;
         public static float CompassAngleTextSize = 80;
         public static float CompassDirectionTextPosition = 0;
-        public static float CompassAngleTextPosition = 0;
+        public static float CompassAngleTextPosition = 50;
         public static float CompassShowDirectionText = 1;
         public static float CompassShowAngleText = 0;
         public static float CompassAngleTextSigned = 0;

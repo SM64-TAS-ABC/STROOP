@@ -85,33 +85,73 @@ namespace STROOP.Map
                 GL.End();
             }
 
-            List<int> texs = new List<int>() { _texZP, _texXP, _texZM, _texXM };
-            for (int i = 0; i < arrows.Count; i++)
+            // Draw direction labels
+            if (SpecialConfig.CompassShowDirectionText != 0)
             {
-                CompassArrow arrow = arrows[i];
-                int tex = texs[i];
+                List<int> directionTexs = new List<int>() { _texZP, _texXP, _texZM, _texXM };
+                for (int i = 0; i < arrows.Count; i++)
+                {
+                    CompassArrow arrow = arrows[i];
+                    int tex = directionTexs[i];
 
-                (float x, float z) arrowHeadCenter = arrow.ArrowHeadCenter;
-                arrowHeadCenter = RotatePoint(arrowHeadCenter.x, arrowHeadCenter.z);
-                PointF loc = new PointF(arrowHeadCenter.x, arrowHeadCenter.z);
-                SizeF size = new SizeF((int)SpecialConfig.CompassDirectionTextSize, (int)SpecialConfig.CompassDirectionTextSize);
+                    (float x, float z) textPosition = arrow.DirectionTextPosition;
+                    textPosition = RotatePoint(textPosition.x, textPosition.z);
+                    PointF loc = new PointF(textPosition.x, textPosition.z);
+                    SizeF size = new SizeF((int)SpecialConfig.CompassDirectionTextSize, (int)SpecialConfig.CompassDirectionTextSize);
 
-                // Place and rotate texture to correct location on control
-                GL.LoadIdentity();
-                GL.Translate(new Vector3(loc.X, loc.Y, 0));
-                GL.Color4(1.0, 1.0, 1.0, 1.0);
+                    // Place and rotate texture to correct location on control
+                    GL.LoadIdentity();
+                    GL.Translate(new Vector3(loc.X, loc.Y, 0));
+                    GL.Color4(1.0, 1.0, 1.0, 1.0);
 
-                // Start drawing texture
-                GL.BindTexture(TextureTarget.Texture2D, tex);
-                GL.Begin(PrimitiveType.Quads);
+                    // Start drawing texture
+                    GL.BindTexture(TextureTarget.Texture2D, tex);
+                    GL.Begin(PrimitiveType.Quads);
 
-                // Set drawing coordinates
-                GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(-size.Width / 2, size.Height / 2);
-                GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(size.Width / 2, size.Height / 2);
-                GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(size.Width / 2, -size.Height / 2);
-                GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-size.Width / 2, -size.Height / 2);
+                    // Set drawing coordinates
+                    GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(-size.Width / 2, size.Height / 2);
+                    GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(size.Width / 2, size.Height / 2);
+                    GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(size.Width / 2, -size.Height / 2);
+                    GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-size.Width / 2, -size.Height / 2);
 
-                GL.End();
+                    GL.End();
+                }
+            }
+
+            // Draw angle labels
+            if (SpecialConfig.CompassShowAngleText != 0)
+            {
+                List<int> angleTexs =
+                    SpecialConfig.CompassAngleTextSigned != 0 ?
+                    new List<int>() { _tex0, _tex16384, _texM32768, _texM16384 } :
+                    new List<int>() { _tex0, _tex16384, _tex32768, _tex49152 };
+                for (int i = 0; i < arrows.Count; i++)
+                {
+                    CompassArrow arrow = arrows[i];
+                    int tex = angleTexs[i];
+
+                    (float x, float z) textPosition = arrow.AngleTextPosition;
+                    textPosition = RotatePoint(textPosition.x, textPosition.z);
+                    PointF loc = new PointF(textPosition.x, textPosition.z);
+                    SizeF size = new SizeF((int)SpecialConfig.CompassAngleTextSize, (int)SpecialConfig.CompassAngleTextSize);
+
+                    // Place and rotate texture to correct location on control
+                    GL.LoadIdentity();
+                    GL.Translate(new Vector3(loc.X, loc.Y, 0));
+                    GL.Color4(1.0, 1.0, 1.0, 1.0);
+
+                    // Start drawing texture
+                    GL.BindTexture(TextureTarget.Texture2D, tex);
+                    GL.Begin(PrimitiveType.Quads);
+
+                    // Set drawing coordinates
+                    GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(-size.Width / 2, size.Height / 2);
+                    GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(size.Width / 2, size.Height / 2);
+                    GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(size.Width / 2, -size.Height / 2);
+                    GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-size.Width / 2, -size.Height / 2);
+
+                    GL.End();
+                }
             }
 
             GL.Color4(1, 1, 1, 1.0f);
@@ -164,27 +204,27 @@ namespace STROOP.Map
 
             if (_tex0 == -1)
             {
-                _texZM = MapUtilities.LoadTexture(CreateTexture("0"));
+                _tex0 = MapUtilities.LoadTexture(CreateTexture("0"));
             }
             if (_tex16384 == -1)
             {
-                _texZM = MapUtilities.LoadTexture(CreateTexture("16384"));
+                _tex16384 = MapUtilities.LoadTexture(CreateTexture("16384"));
             }
             if (_tex32768 == -1)
             {
-                _texZM = MapUtilities.LoadTexture(CreateTexture("32768"));
+                _tex32768 = MapUtilities.LoadTexture(CreateTexture("32768"));
             }
             if (_tex49152 == -1)
             {
-                _texZM = MapUtilities.LoadTexture(CreateTexture("49152"));
+                _tex49152 = MapUtilities.LoadTexture(CreateTexture("49152"));
             }
             if (_texM16384 == -1)
             {
-                _texZM = MapUtilities.LoadTexture(CreateTexture("-16384"));
+                _texM16384 = MapUtilities.LoadTexture(CreateTexture("-16384"));
             }
             if (_texM32768 == -1)
             {
-                _texZM = MapUtilities.LoadTexture(CreateTexture("-32768"));
+                _texM32768 = MapUtilities.LoadTexture(CreateTexture("-32768"));
             }
         }
 
@@ -285,7 +325,8 @@ namespace STROOP.Map
             public readonly (float x, float z) ArrowHeadCornerLeft;
             public readonly (float x, float z) ArrowHeadInnerCornerLeft;
             public readonly (float x, float z) ArrowBaseLeft;
-            public readonly (float x, float z) ArrowHeadCenter;
+            public readonly (float x, float z) DirectionTextPosition;
+            public readonly (float x, float z) AngleTextPosition;
 
             public CompassArrow(int angle)
             {
@@ -305,7 +346,8 @@ namespace STROOP.Map
                 ArrowHeadCornerLeft = ((float, float))MoreMath.AddVectorToPoint((SpecialConfig.CompassArrowWidth - SpecialConfig.CompassLineWidth) / 2, angleLeft, ArrowHeadInnerCornerLeft.x, ArrowHeadInnerCornerLeft.z);
                 ArrowHeadCornerRight = ((float, float))MoreMath.AddVectorToPoint((SpecialConfig.CompassArrowWidth - SpecialConfig.CompassLineWidth) / 2, angleRight, ArrowHeadInnerCornerRight.x, ArrowHeadInnerCornerRight.z);
                 ArrowHeadPoint = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight + SpecialConfig.CompassArrowHeight, angleUp, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ);
-                ArrowHeadCenter = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight + SpecialConfig.CompassArrowHeight * 0.45, angleUp, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ);
+                DirectionTextPosition = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight + SpecialConfig.CompassArrowHeight * 0.45 + SpecialConfig.CompassDirectionTextPosition, angleUp, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ);
+                AngleTextPosition = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight + SpecialConfig.CompassArrowHeight * 0.45 + SpecialConfig.CompassAngleTextPosition, angleUp, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ);
             }
 
             public List<(float x, float z)> GetOutlinePoints()
