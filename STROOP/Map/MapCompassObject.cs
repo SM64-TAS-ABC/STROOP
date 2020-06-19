@@ -24,6 +24,13 @@ namespace STROOP.Map
         private int _texZP = -1;
         private int _texZM = -1;
 
+        private int _tex0 = -1;
+        private int _tex16384 = -1;
+        private int _tex32768 = -1;
+        private int _tex49152 = -1;
+        private int _texM16384 = -1;
+        private int _texM32768 = -1;
+
         public MapCompassObject()
             : base()
         {
@@ -153,6 +160,31 @@ namespace STROOP.Map
             if (_texZM == -1)
             {
                 _texZM = MapUtilities.LoadTexture(CreateTexture("Z-"));
+            }
+
+            if (_tex0 == -1)
+            {
+                _texZM = MapUtilities.LoadTexture(CreateTexture("0"));
+            }
+            if (_tex16384 == -1)
+            {
+                _texZM = MapUtilities.LoadTexture(CreateTexture("16384"));
+            }
+            if (_tex32768 == -1)
+            {
+                _texZM = MapUtilities.LoadTexture(CreateTexture("32768"));
+            }
+            if (_tex49152 == -1)
+            {
+                _texZM = MapUtilities.LoadTexture(CreateTexture("49152"));
+            }
+            if (_texM16384 == -1)
+            {
+                _texZM = MapUtilities.LoadTexture(CreateTexture("-16384"));
+            }
+            if (_texM32768 == -1)
+            {
+                _texZM = MapUtilities.LoadTexture(CreateTexture("-32768"));
             }
         }
 
