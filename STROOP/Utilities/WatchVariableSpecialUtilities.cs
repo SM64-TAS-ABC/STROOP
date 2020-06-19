@@ -362,7 +362,13 @@ namespace STROOP.Structs
                     ("CompassArrowWidth", () => SpecialConfig.CompassArrowWidth, (float value) => SpecialConfig.CompassArrowWidth = value),
                     ("CompassHorizontalMargin", () => SpecialConfig.CompassHorizontalMargin, (float value) => SpecialConfig.CompassHorizontalMargin = value),
                     ("CompassVerticalMargin", () => SpecialConfig.CompassVerticalMargin, (float value) => SpecialConfig.CompassVerticalMargin = value),
-                    ("CompassTextSize", () => SpecialConfig.CompassTextSize, (float value) => SpecialConfig.CompassTextSize = value),
+                    ("CompassDirectionTextSize", () => SpecialConfig.CompassDirectionTextSize, (float value) => SpecialConfig.CompassDirectionTextSize = value),
+                    ("CompassAngleTextSize", () => SpecialConfig.CompassAngleTextSize, (float value) => SpecialConfig.CompassAngleTextSize = value),
+                    ("CompassDirectionTextPosition", () => SpecialConfig.CompassDirectionTextPosition, (float value) => SpecialConfig.CompassDirectionTextPosition = value),
+                    ("CompassAngleTextPosition", () => SpecialConfig.CompassAngleTextPosition, (float value) => SpecialConfig.CompassAngleTextPosition = value),
+                    ("CompassShowDirectionText", () => SpecialConfig.CompassShowDirectionText, (float value) => SpecialConfig.CompassShowDirectionText = value),
+                    ("CompassShowAngleText", () => SpecialConfig.CompassShowAngleText, (float value) => SpecialConfig.CompassShowAngleText = value),
+                    ("CompassAngleTextSigned", () => SpecialConfig.CompassAngleTextSigned, (float value) => SpecialConfig.CompassAngleTextSigned = value),
                 };
 
             foreach ((string key, Func<float> getter, Action<float> setter) in floatEntries)

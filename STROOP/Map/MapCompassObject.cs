@@ -87,7 +87,7 @@ namespace STROOP.Map
                 (float x, float z) arrowHeadCenter = arrow.ArrowHeadCenter;
                 arrowHeadCenter = RotatePoint(arrowHeadCenter.x, arrowHeadCenter.z);
                 PointF loc = new PointF(arrowHeadCenter.x, arrowHeadCenter.z);
-                SizeF size = new SizeF((int)SpecialConfig.CompassTextSize, (int)SpecialConfig.CompassTextSize);
+                SizeF size = new SizeF((int)SpecialConfig.CompassDirectionTextSize, (int)SpecialConfig.CompassDirectionTextSize);
 
                 // Place and rotate texture to correct location on control
                 GL.LoadIdentity();
@@ -179,13 +179,26 @@ namespace STROOP.Map
                     new List<(string specialType, string varName, WatchVariableSubclass subclass)>()
                         {
                             ("CompassPosition", "Position", WatchVariableSubclass.String),
+
                             ("CompassLineHeight", "Line Height", WatchVariableSubclass.Number),
                             ("CompassLineWidth", "Line Width", WatchVariableSubclass.Number),
+
                             ("CompassArrowHeight", "Arrow Height", WatchVariableSubclass.Number),
                             ("CompassArrowWidth", "Arrow Width", WatchVariableSubclass.Number),
-                            ("CompassTextSize", "Text Size", WatchVariableSubclass.Number),
+
                             ("CompassHorizontalMargin", "Horizontal Margin", WatchVariableSubclass.Number),
                             ("CompassVerticalMargin", "Vertical Margin", WatchVariableSubclass.Number),
+
+                            ("CompassDirectionTextSize", "Direction Text Size", WatchVariableSubclass.Number),
+                            ("CompassAngleTextSize", "Angle Text Size", WatchVariableSubclass.Number),
+
+                            ("CompassDirectionTextPosition", "Direction Text Position", WatchVariableSubclass.Number),
+                            ("CompassAngleTextPosition", "Angle Text Position", WatchVariableSubclass.Number),
+
+                            ("CompassShowDirectionText", "Show Direction Text", WatchVariableSubclass.Boolean),
+                            ("CompassShowAngleText", "Show Angle Text", WatchVariableSubclass.Boolean),
+
+                            ("CompassAngleTextSigned", "Angle Text Signed", WatchVariableSubclass.Boolean),
                         };
 
                     List<WatchVariableControl> controls = new List<WatchVariableControl>();
