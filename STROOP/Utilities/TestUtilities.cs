@@ -19,7 +19,7 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
-            //UpdateMoneybagHome();
+            //UpdateRacingPenguinWaypoints2();
             //Config.SetDebugText(DictionaryUtilities.GetString(Config.ObjectSlotsManager.MarkedSlotsAddressesDictionary));
         }
 
@@ -918,6 +918,43 @@ namespace STROOP.Utilities
             -6488, -5829, -6088,
             -6507, -5841, -6400,
         };
+
+        private static List<uint> _racingPenguinAddresses2 = new List<uint>()
+        {
+            0x80343F68,0x803441C8,0x80340FE8,0x80341248,0x803414A8,0x80346308,
+            0x803467C8,0x80346A28,0x80341968,0x80349288,0x803499A8,0x80341708,
+            0x803494E8,0x8034A588,0x80349748,0x80349E68,0x8034A328,0x8034F8A8,
+            0x8034FB08,0x8034FD68,0x8034FFC8,0x80350228,0x80350488,0x803506E8,
+            0x80350948,0x80350BA8,0x80350E08,0x80345008,0x80351068,0x803512C8,
+            0x80351528,0x80351788,0x803519E8,0x80351C48,0x80351EA8,0x80352108,
+            0x80352368,0x803525C8,0x80352828,0x80352A88,0x80352CE8,0x80352F48,
+            0x803531A8,0x80353408,0x80353668,0x803538C8,0x80353B28,0x80353D88,
+            0x80353FE8,0x80354248,0x803544A8,0x80354708,0x80354968
+        };
+
+        public static void UpdateRacingPenguinWaypoints2()
+        {
+            uint objAddress = 0x80347868;
+            uint waypointAddress = Config.Stream.GetUInt32(objAddress + ObjectConfig.WaypointOffset);
+            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+
+            foreach (uint address in _racingPenguinAddresses2)
+            {
+                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
+                float scale = isCurrent ? 4 : 1;
+
+                Config.Stream.Suspend();
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleWidthOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleHeightOffset);
+                Config.Stream.SetValue(scale, address + ObjectConfig.ScaleDepthOffset);
+                Config.Stream.Resume();
+            }
+        }
 
         private static List<uint> _racingPenguinAddresses = new List<uint>()
         {
