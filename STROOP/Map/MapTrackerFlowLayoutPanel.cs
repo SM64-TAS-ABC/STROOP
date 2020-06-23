@@ -38,7 +38,6 @@ namespace STROOP.Map
             {
                 int index = Controls.IndexOf(mapTracker);
                 int newIndex = numMoves == 0 ? 0 : Math.Max(index - numMoves, 0);
-                if (newIndex < 0) return;
                 Controls.SetChildIndex(mapTracker, newIndex);
             }
         }
@@ -49,7 +48,6 @@ namespace STROOP.Map
             {
                 int index = Controls.IndexOf(mapTracker);
                 int newIndex = numMoves == 0 ? Controls.Count - 1 : Math.Min(index + numMoves, Controls.Count - 1);
-                if (newIndex >= Controls.Count) return;
                 Controls.SetChildIndex(mapTracker, newIndex);
             }
         }
