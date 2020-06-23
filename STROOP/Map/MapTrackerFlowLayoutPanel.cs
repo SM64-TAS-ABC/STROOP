@@ -32,24 +32,24 @@ namespace STROOP.Map
             _mapObjHitboxHackTris = mapObjHitboxHackTris;
         }
 
-        public void MoveUpControl(MapTracker mapTracker)
+        public void MoveUpControl(MapTracker mapTracker, int numMoves)
         {
             lock (_objectLock)
             {
                 int index = Controls.IndexOf(mapTracker);
-                if (index == 0) return;
-                int newIndex = index - 1;
+                int newIndex = numMoves == 0 ? 0 : Math.Max(index - numMoves, 0);
+                if (newIndex < 0) return;
                 Controls.SetChildIndex(mapTracker, newIndex);
             }
         }
 
-        public void MoveDownControl(MapTracker mapTracker)
+        public void MoveDownControl(MapTracker mapTracker, int numMoves)
         {
             lock (_objectLock)
             {
                 int index = Controls.IndexOf(mapTracker);
-                if (index == Controls.Count - 1) return;
-                int newIndex = index + 1;
+                int newIndex = numMoves == 0 ? Controls.Count - 1 : Math.Min(index + numMoves, Controls.Count - 1);
+                if (newIndex >= Controls.Count) return;
                 Controls.SetChildIndex(mapTracker, newIndex);
             }
         }

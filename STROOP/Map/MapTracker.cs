@@ -539,12 +539,16 @@ namespace STROOP.Map
 
         private void pictureBoxUpArrow_Click(object sender, EventArgs e)
         {
-            Config.MapGui.flowLayoutPanelMapTrackers.MoveUpControl(this);
+            int numMoves = KeyboardUtilities.GetCurrentlyInputtedNumber() ?? 1;
+            if (KeyboardUtilities.IsCtrlHeld()) numMoves = 0;
+            Config.MapGui.flowLayoutPanelMapTrackers.MoveUpControl(this, numMoves);
         }
 
         private void pictureBoxDownArrow_Click(object sender, EventArgs e)
         {
-            Config.MapGui.flowLayoutPanelMapTrackers.MoveDownControl(this);
+            int numMoves = KeyboardUtilities.GetCurrentlyInputtedNumber() ?? 1;
+            if (KeyboardUtilities.IsCtrlHeld()) numMoves = 0;
+            Config.MapGui.flowLayoutPanelMapTrackers.MoveDownControl(this, numMoves);
         }
 
         public void SetGlobalIconSize(float size)
