@@ -235,7 +235,12 @@ namespace STROOP.Controls
                 {
                     shiftString = " right shifted by " + Shift.Value;
                 }
-                return MemoryTypeName + maskString + shiftString;
+                string byteCountString = "";
+                if (ByteCount.HasValue)
+                {
+                    byteCountString = " (" + ByteCount.Value + " bytes)";
+                }
+                return MemoryTypeName + maskString + shiftString + byteCountString;
             }
         }
 
