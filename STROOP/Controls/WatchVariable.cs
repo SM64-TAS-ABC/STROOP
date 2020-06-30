@@ -238,7 +238,8 @@ namespace STROOP.Controls
                 string byteCountString = "";
                 if (ByteCount.HasValue)
                 {
-                    byteCountString = " (" + ByteCount.Value + " bytes)";
+                    string pluralSuffix = ByteCount.Value == 1 ? "" : "s";
+                    byteCountString = string.Format(" ({0} byte{1})", ByteCount.Value, pluralSuffix);
                 }
                 return MemoryTypeName + maskString + shiftString + byteCountString;
             }
