@@ -368,8 +368,7 @@ namespace STROOP.Utilities
             }
 
             // Update HOLP type if it's 0
-            if (SavedSettingsConfig.CloningUpdatesHolpType &&
-                Config.Stream.GetByte(MarioConfig.StructAddress + MarioConfig.HolpTypeOffset) == 0)
+            if (SavedSettingsConfig.CloningUpdatesHolpType)
             {
                 success &= Config.Stream.SetValue((byte)1, MarioConfig.StructAddress + MarioConfig.HolpTypeOffset);
             }
