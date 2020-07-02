@@ -312,22 +312,21 @@ namespace STROOP.Utilities
         }
 
         public static (float normX, float normY, float normZ, float normOffset) GetNorms(
-            double x1, double y1, double z1, double x2, double y2, double z2, double x3, double y3, double z3)
+            int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3)
         {
-            List<double> v12 = new List<double>() { x2 - x1, y2 - y1, z2 - z1 };
-            List<double> v13 = new List<double>() { x3 - x1, y3 - y1, z3 - z1 };
+            float nx = (y2 - y1) * (z3 - z2) - (z2 - z1) * (y3 - y2);
+            float ny = (z2 - z1) * (x3 - x2) - (x2 - x1) * (z3 - z2);
+            float nz = (x2 - x1) * (y3 - y2) - (y2 - y1) * (x3 - x2);
+            float mag = (float)Math.Sqrt(nx * nx + ny * ny + nz * nz);
 
-            double normXUnscaled = v12[1] * v13[2] - v12[2] * v13[1];
-            double normYUnscaled = v12[2] * v13[0] - v12[0] * v13[2];
-            double normZUnscaled = v12[0] * v13[1] - v12[1] * v13[0];
+            mag = 1 / mag;
+            nx *= mag;
+            ny *= mag;
+            nz *= mag;
 
-            double magnitude = Math.Sqrt(normXUnscaled * normXUnscaled + normYUnscaled * normYUnscaled + normZUnscaled * normZUnscaled);
-            double normX = normXUnscaled / magnitude;
-            double normY = normYUnscaled / magnitude;
-            double normZ = normZUnscaled / magnitude;
-            double normOffset = -1 * (normX * x1 + normY * y1 + normZ * z1);
+            float originOffset = -(nx * x1 + ny * y1 + nz * z1);
 
-            return ((float)normX, (float)normY, (float)normZ, (float)normOffset);
+            return (nx, ny, nz, originOffset);
         }
 
         public static TriangleDataModel FindFloor(float floatX, float floatY, float floatZ)

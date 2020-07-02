@@ -46,7 +46,7 @@ namespace STROOP.Models
             Y3 = y3;
             Z3 = z3;
 
-            (NormX, NormY, NormZ, NormOffset) = TriangleUtilities.GetNorms(X1, Y1, Z1, X2, Y2, Z2, X3, Y3, Z3);
+            (NormX, NormY, NormZ, NormOffset) = TriangleUtilities.GetNorms((int)X1, (int)Y1, (int)Z1, (int)X2, (int)Y2, (int)Z2, (int)X3, (int)Y3, (int)Z3);
         }
 
         public double GetY(double x, double z)
