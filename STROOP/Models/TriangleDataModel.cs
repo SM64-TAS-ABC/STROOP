@@ -167,6 +167,20 @@ namespace STROOP.Models
             };
         }
 
+        public TriangleDataModel(int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3)
+        {
+            X1 = (short)x1;
+            Y1 = (short)y1;
+            Z1 = (short)z1;
+            X2 = (short)x2;
+            Y2 = (short)y2;
+            Z2 = (short)z2;
+            X3 = (short)x3;
+            Y3 = (short)y3;
+            Z3 = (short)z3;
+            (NormX, NormY, NormZ, NormOffset) = TriangleUtilities.GetNorms(x1, y1, z1, x2, y2, z2, x3, y3, z3);
+        }
+
         public override string ToString()
         {
             return String.Join("\t", FieldValueList);
