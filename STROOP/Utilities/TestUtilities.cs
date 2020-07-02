@@ -25,12 +25,10 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-
         }
 
         public static void TestSomethingElse()
         {
-            CalculatorMain.TestBobomb3();
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
@@ -1198,7 +1196,7 @@ namespace STROOP.Utilities
             List<(double x, double y, double z)> zeroCollisionPoints = new List<(double x, double y, double z)>();
 
             int[] numCollisions = new int[3];
-            for (float w = start; sign > 0 ? w <= end : w >= end; w += sign * Math.Max(MoreMath.GetFloatInterval(w), 0.00001f))
+            for (float w = start; sign > 0 ? w <= end : w >= end; w += sign * Math.Max(MoreMath.GetNextFloatInterval(w), 0.00001f))
             {
                 float proportion = (w - start) / (end - start);
                 float x = wIsX ? w : x1 + proportion * (x2 - x1);

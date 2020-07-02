@@ -180,6 +180,12 @@ namespace STROOP.Utilities
             return (p1X + scaledX, p1Z + scaledZ);
         }
 
+        public static double GetPositionAlongLine(double p1X, double p1Y, double p2X, double p2Y, double x)
+        {
+            double slope = (p2Y - p1Y) / (p2X - p1X);
+            return (x - p1X) * slope + p1Y;
+        }
+
         /** p2 is pivot. */
         public static (double x, double z) RotatePointAboutPointToAngle(
             double p1X, double p1Z, double p2X, double p2Z, double finalAngle)
@@ -933,7 +939,7 @@ namespace STROOP.Utilities
             return (fx + sx + vx, fy + sy + vy, fz + sz + vz);
         }
 
-        public static float GetFloatInterval(float value)
+        public static float GetNextFloatInterval(float value)
         {
             value = Math.Abs(value);
             float interval = 262144;
@@ -945,9 +951,26 @@ namespace STROOP.Utilities
             }
         }
 
+        public static float GetPreviousFloatInterval(float value)
+        {
+            value = Math.Abs(value);
+            float interval = 262144;
+            while (true)
+            {
+                float testValue = value - (interval / 2);
+                if (value == testValue) return interval;
+                interval /= 2;
+            }
+        }
+
         public static float GetNextFloat(float value)
         {
-            return value + GetFloatInterval(value);
+            return value + GetNextFloatInterval(value);
+        }
+
+        public static float GetPreviousFloat(float value)
+        {
+            return value - GetPreviousFloatInterval(value);
         }
     }
 }

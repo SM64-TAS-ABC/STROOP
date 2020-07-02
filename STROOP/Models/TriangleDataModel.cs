@@ -178,7 +178,13 @@ namespace STROOP.Models
             X3 = (short)x3;
             Y3 = (short)y3;
             Z3 = (short)z3;
+
             (NormX, NormY, NormZ, NormOffset) = TriangleUtilities.GetNorms(x1, y1, z1, x2, y2, z2, x3, y3, z3);
+
+            YMinMinus5 = (short)(MoreMath.Min(y1, y2, y3) - 5);
+            YMaxPlus5 = (short)(MoreMath.Max(y1, y2, y3) + 5);
+
+            XProjection = NormX < -0.707 || NormX > 0.707;
         }
 
         public override string ToString()
