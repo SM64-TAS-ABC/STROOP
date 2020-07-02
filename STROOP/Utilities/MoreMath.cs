@@ -12,6 +12,28 @@ namespace STROOP.Utilities
 {
     public static class MoreMath
     {
+        public static int Min(params int[] values)
+        {
+            if (values.Length == 0) return 0;
+            int min = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] < min) min = values[i];
+            }
+            return min;
+        }
+
+        public static int Max(params int[] values)
+        {
+            if (values.Length == 0) return 0;
+            int max = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > max) max = values[i];
+            }
+            return max;
+        }
+
         public static double GetHypotenuse(double x, double y)
         {
             return Math.Sqrt(x * x + y * y);

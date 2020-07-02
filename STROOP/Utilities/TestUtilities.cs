@@ -25,7 +25,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
-            SearchForBadWallTriangles();
+
         }
 
         public static void TestSomethingElse()
