@@ -456,6 +456,7 @@
     <Compile Include="Structs\Configurations\PaintingConfig.cs" />
     <Compile Include="Structs\Configurations\MappingConfig.cs" />
     <Compile Include="Structs\Configurations\SnowConfig.cs" />
+    <Compile Include="Structs\InputFrame.cs" />
     <Compile Include="Structs\Map\BackgroundImage.cs" />
     <Compile Include="Structs\MusicEntry.cs" />
     <Compile Include="Structs\MusicTable.cs" />
