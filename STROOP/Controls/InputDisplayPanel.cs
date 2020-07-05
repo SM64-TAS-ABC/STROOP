@@ -12,6 +12,7 @@ using STROOP.Controls;
 using STROOP.Extensions;
 using System.Drawing.Drawing2D;
 using STROOP.Structs.Configurations;
+using Accord.Video.FFMPEG;
 
 namespace STROOP
 {
@@ -20,6 +21,64 @@ namespace STROOP
         List<InputImageGui> _guiList;
         Dictionary<InputDisplayTypeEnum, InputImageGui> _guiDictionary;
         InputDisplayTypeEnum _inputDisplayType;
+        bool _isRecording = false;
+        RecordingSession _currentRecordingSession;
+
+        class RecordingSession : IDisposable
+        {
+            public VideoFileWriter VideoFileWriter { get; set; }
+            public int LastViCount { get; set; }
+            public InputFrame LastInputFrame { get; set; }
+            public Size Size { get; set; }
+
+            public RecordingSession(string filePath, Size imageSize)
+            {
+                Size = imageSize;
+                LastViCount = MupenUtilities.GetVICount();
+                LastInputFrame = InputFrame.GetCurrent();
+                VideoFileWriter = new VideoFileWriter();
+                VideoFileWriter.Open(filePath, Size.Width, Size.Height);
+            }
+
+            public void AddImage(Bitmap bitmap)
+            {
+                const double visPerSecond = 60;
+                int viCount = MupenUtilities.GetVICount();
+                LastViCount = viCount;
+
+                TimeSpan time = TimeSpan.FromSeconds((viCount - LastViCount) / visPerSecond);
+                VideoFileWriter.WriteVideoFrame(bitmap, time);
+            }
+
+            public void Stop()
+            {
+                VideoFileWriter.Close();
+            }
+
+            #region IDisposable Support
+            private bool disposedValue = false; // To detect redundant calls
+
+            protected virtual void Dispose(bool disposing)
+            {
+                if (!disposedValue)
+                {
+                    if (disposing)
+                    {
+                        VideoFileWriter?.Dispose();
+                    }
+                    
+                    disposedValue = true;
+                }
+            }
+
+            // This code added to correctly implement the disposable pattern.
+            public void Dispose()
+            {
+                Dispose(true);
+            }
+            #endregion
+        }
+
 
         object _gfxLock = new object();
 
@@ -55,6 +114,70 @@ namespace STROOP
 
             ContextMenuStrip = new ContextMenuStrip();
             items.ForEach(item => ContextMenuStrip.Items.Add(item));
+
+            var recordToolStrip = new ToolStripLabel("Recording: Start");
+            recordToolStrip.Click += RecordToolStrip_Click;
+            ContextMenuStrip.Items.Add(recordToolStrip);
+        }
+
+        private void RecordNewFrame()
+        {
+            Size size = _currentRecordingSession.Size;
+            using (Bitmap bitmap = new Bitmap(size.Width, size.Height))
+            {
+                this.DrawToBitmap(bitmap, new Rectangle(new Point(), this.Size));
+            }
+        }
+
+        public void RecordingUpdate()
+        {
+            if (!_isRecording)
+            {
+                return;
+            }
+
+            InputFrame inputs = InputFrame.GetCurrent();
+            if (inputs.Equals(_currentRecordingSession.LastInputFrame)) {
+                return;
+            }
+
+            RecordNewFrame();
+        }
+
+        private void RecordToolStrip_Click(object sender, EventArgs e)
+        {
+            var recordToolStrip = (sender as ToolStripLabel);
+            if (_isRecording)
+            {
+                recordToolStrip.Text = "Recording: Start";
+                _isRecording = false;
+
+                RecordNewFrame();
+                _currentRecordingSession.Stop();
+                _currentRecordingSession?.Dispose();
+            }
+            else
+            {
+                string path;
+
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Windows Movie|*.wmv";
+
+                    DialogResult result = saveFileDialog.ShowDialog();
+                    if (result != DialogResult.OK)
+                    {
+                        return;
+                    }
+
+                    path = saveFileDialog.FileName;
+                }
+
+                Assem.;/
+                _currentRecordingSession = new RecordingSession(path, this.Size);
+                recordToolStrip.Text = "Recording: Stop";
+                _isRecording = true;
+            }
         }
 
         private Color GetBackColor(InputDisplayTypeEnum inputDisplayType)

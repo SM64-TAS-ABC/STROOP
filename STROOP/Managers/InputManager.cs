@@ -36,6 +36,7 @@ namespace STROOP.Managers
             base.Update(updateView);
 
             _inputDisplayPanel.Invalidate();
+            _inputDisplayPanel.RecordingUpdate();
         }
     }
 }
