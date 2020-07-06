@@ -35,8 +35,8 @@ namespace STROOP.Managers
             if (!updateView) return;
             base.Update(updateView);
 
+            _inputDisplayPanel.UpdateInputs();
             _inputDisplayPanel.Invalidate();
-            _inputDisplayPanel.RecordingUpdate();
         }
     }
 }
