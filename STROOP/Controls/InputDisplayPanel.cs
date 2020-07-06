@@ -23,60 +23,65 @@ namespace STROOP
         InputDisplayTypeEnum _inputDisplayType;
         bool _isRecording = false;
         RecordingSession _currentRecordingSession;
+        InputFrame _currentInputs = null;
 
-        class RecordingSession : IDisposable
+        class RecordingSession
         {
-            public VideoFileWriter VideoFileWriter { get; set; }
+            public List<(int, InputFrame)> Inputs { get; set; } = new List<(int, InputFrame)>();
+
             public int LastViCount { get; set; }
             public InputFrame LastInputFrame { get; set; }
             public Size Size { get; set; }
 
-            public RecordingSession(string filePath, Size imageSize)
+            public RecordingSession(Size imageSize)
             {
-                Size = imageSize;
+                Size = new Size((imageSize.Width / 2) * 2, (imageSize.Height / 2) * 2);
                 LastViCount = MupenUtilities.GetVICount();
                 LastInputFrame = InputFrame.GetCurrent();
-                VideoFileWriter = new VideoFileWriter();
-                VideoFileWriter.Open(filePath, Size.Width, Size.Height);
             }
 
-            public void AddImage(Bitmap bitmap)
+            public void AddFrame(InputFrame inputs)
             {
                 const double visPerSecond = 60;
                 int viCount = MupenUtilities.GetVICount();
+
+                if (LastViCount == viCount) return;
+
+                int deltaVi = viCount - LastViCount;
+                TimeSpan time = TimeSpan.FromSeconds((deltaVi) / visPerSecond);
                 LastViCount = viCount;
 
-                TimeSpan time = TimeSpan.FromSeconds((viCount - LastViCount) / visPerSecond);
-                VideoFileWriter.WriteVideoFrame(bitmap, time);
+                Inputs.Add((deltaVi, inputs));
             }
 
-            public void Stop()
+            public void Render(string filePath, Control controlToRender, Action<InputFrame> setCurrentInput) 
             {
-                VideoFileWriter.Close();
-            }
-
-            #region IDisposable Support
-            private bool disposedValue = false; // To detect redundant calls
-
-            protected virtual void Dispose(bool disposing)
-            {
-                if (!disposedValue)
+                using (VideoFileWriter videoWriter = new VideoFileWriter()
                 {
-                    if (disposing)
-                    {
-                        VideoFileWriter?.Dispose();
-                    }
-                    
-                    disposedValue = true;
-                }
-            }
+                    Width = Size.Width,
+                    Height = Size.Height,
+                    FrameRate = 60,
+                    AudioCodec = AudioCodec.None,
+                })
+                {
+                    videoWriter.Open(filePath);
 
-            // This code added to correctly implement the disposable pattern.
-            public void Dispose()
-            {
-                Dispose(true);
+                    foreach ((int deltaVi, InputFrame inputs) in Inputs) {
+                        using (Bitmap bitmap = new Bitmap(Size.Width, Size.Height))
+                        {
+                            setCurrentInput(inputs);
+                            controlToRender.DrawToBitmap(bitmap, new Rectangle(new Point(), Size));
+
+                            for (int i = 0; i < deltaVi; i++)
+                            {
+                                videoWriter.WriteVideoFrame(bitmap);
+                            }
+                        }
+                    }
+
+                    videoWriter.Close();
+                };
             }
-            #endregion
         }
 
 
@@ -115,22 +120,14 @@ namespace STROOP
             ContextMenuStrip = new ContextMenuStrip();
             items.ForEach(item => ContextMenuStrip.Items.Add(item));
 
-            var recordToolStrip = new ToolStripLabel("Recording: Start");
+            var recordToolStrip = new ToolStripButton("Recording: Start");
             recordToolStrip.Click += RecordToolStrip_Click;
             ContextMenuStrip.Items.Add(recordToolStrip);
         }
 
-        private void RecordNewFrame()
+        public void UpdateInputs()
         {
-            Size size = _currentRecordingSession.Size;
-            using (Bitmap bitmap = new Bitmap(size.Width, size.Height))
-            {
-                this.DrawToBitmap(bitmap, new Rectangle(new Point(), this.Size));
-            }
-        }
-
-        public void RecordingUpdate()
-        {
+            _currentInputs = InputFrame.GetCurrent();
             if (!_isRecording)
             {
                 return;
@@ -141,25 +138,18 @@ namespace STROOP
                 return;
             }
 
-            RecordNewFrame();
+            _currentRecordingSession.AddFrame(inputs);
         }
 
         private void RecordToolStrip_Click(object sender, EventArgs e)
         {
-            var recordToolStrip = (sender as ToolStripLabel);
+            var recordToolStrip = (sender as ToolStripItem);
             if (_isRecording)
             {
                 recordToolStrip.Text = "Recording: Start";
                 _isRecording = false;
 
-                RecordNewFrame();
-                _currentRecordingSession.Stop();
-                _currentRecordingSession?.Dispose();
-            }
-            else
-            {
                 string path;
-
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
                     saveFileDialog.Filter = "Windows Movie|*.wmv";
@@ -167,14 +157,20 @@ namespace STROOP
                     DialogResult result = saveFileDialog.ShowDialog();
                     if (result != DialogResult.OK)
                     {
+                        _currentRecordingSession = null;
                         return;
                     }
 
                     path = saveFileDialog.FileName;
                 }
 
-                Assem.;/
-                _currentRecordingSession = new RecordingSession(path, this.Size);
+                _currentRecordingSession.AddFrame(InputFrame.GetCurrent());
+                _currentRecordingSession.Render(path, this, (i) => _currentInputs = i);
+                _currentRecordingSession = null;
+            }
+            else
+            {
+                _currentRecordingSession = new RecordingSession(this.Size);
                 recordToolStrip.Text = "Recording: Stop";
                 _isRecording = true;
             }
@@ -220,7 +216,8 @@ namespace STROOP
             Rectangle scaledRect = new Rectangle(new Point(), Size).Zoom(gui.ControllerImage.Size);
             e.Graphics.DrawImage(gui.ControllerImage, scaledRect);
             
-            InputFrame inputs = InputFrame.GetCurrent();
+            InputFrame inputs = _currentInputs;
+            if (inputs == null) return;
             
             if (inputs.IsButtonPressed_A) e.Graphics.DrawImage(gui.ButtonAImage, scaledRect);
             if (inputs.IsButtonPressed_B) e.Graphics.DrawImage(gui.ButtonBImage, scaledRect);
