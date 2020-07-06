@@ -56,15 +56,9 @@ namespace STROOP
 
             public void Render(string filePath, Control controlToRender, Action<InputFrame> setCurrentInput) 
             {
-                using (VideoFileWriter videoWriter = new VideoFileWriter()
+                using (VideoFileWriter videoWriter = new VideoFileWriter())
                 {
-                    Width = Size.Width,
-                    Height = Size.Height,
-                    FrameRate = 60,
-                    AudioCodec = AudioCodec.None,
-                })
-                {
-                    videoWriter.Open(filePath);
+                    videoWriter.Open(filePath, Size.Width, Size.Height, 60, VideoCodec.Default, Size.Width * Size.Height * 1000);
 
                     foreach ((int deltaVi, InputFrame inputs) in Inputs) {
                         using (Bitmap bitmap = new Bitmap(Size.Width, Size.Height))
@@ -117,12 +111,14 @@ namespace STROOP
                 item.Checked = inputDisplayType == _inputDisplayType;
             }
 
-            ContextMenuStrip = new ContextMenuStrip();
+            ContextMenuStrip = new ContextMenuStrip() { };
             items.ForEach(item => ContextMenuStrip.Items.Add(item));
 
             var recordToolStrip = new ToolStripButton("Recording: Start");
             recordToolStrip.Click += RecordToolStrip_Click;
             ContextMenuStrip.Items.Add(recordToolStrip);
+            ContextMenuStrip.AutoSize = false;
+            ContextMenuStrip.AutoSize = true;
         }
 
         public void UpdateInputs()
@@ -147,12 +143,14 @@ namespace STROOP
             if (_isRecording)
             {
                 recordToolStrip.Text = "Recording: Start";
+                ContextMenuStrip.AutoSize = false;
+                ContextMenuStrip.AutoSize = true;
                 _isRecording = false;
 
                 string path;
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    saveFileDialog.Filter = "Windows Movie|*.wmv";
+                    saveFileDialog.Filter = "Windows Movie|*.mp4";
 
                     DialogResult result = saveFileDialog.ShowDialog();
                     if (result != DialogResult.OK)
@@ -172,6 +170,8 @@ namespace STROOP
             {
                 _currentRecordingSession = new RecordingSession(this.Size);
                 recordToolStrip.Text = "Recording: Stop";
+                ContextMenuStrip.AutoSize = false;
+                ContextMenuStrip.AutoSize = true;
                 _isRecording = true;
             }
         }
