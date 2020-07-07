@@ -193,6 +193,9 @@
     <Compile Include="Controls\BetterSplitContainer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\DoubleBufferedTableLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\TrackBarEx.cs">
       <SubType>Component</SubType>
     </Compile>

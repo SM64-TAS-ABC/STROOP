@@ -378,7 +378,7 @@ namespace STROOP
             this.buttonFilePaste = new System.Windows.Forms.Button();
             this.buttonFileErase = new System.Windows.Forms.Button();
             this.buttonFileNumStars = new System.Windows.Forms.Button();
-            this.tableLayoutPanelFile = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelFile = new DoubleBufferedTableLayoutPanel();
             this.textBoxTableRow15Col10 = new STROOP.FileCoinScoreTextbox();
             this.textBoxTableRow14Col10 = new STROOP.FileCoinScoreTextbox();
             this.textBoxTableRow13Col10 = new STROOP.FileCoinScoreTextbox();
