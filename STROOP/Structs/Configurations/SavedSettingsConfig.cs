@@ -190,6 +190,7 @@ namespace STROOP.Structs.Configurations
                 if (IsLoaded) Save();
             }
         }
+        public static int TriangleVertexMultiplier => _useExtendedLevelBoundaries ? 4 : 1;
 
         public static List<TabPage> _recommendedTabOrder;
 

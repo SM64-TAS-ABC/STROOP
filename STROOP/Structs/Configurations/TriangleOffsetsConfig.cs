@@ -36,24 +36,24 @@ namespace STROOP.Structs.Configurations
         public static readonly byte NoCamCollisionMask = 0x02;
         public static readonly byte XProjectionMask = 0x08;
 
-        public static short GetX1(uint triAddress) => Config.Stream.GetInt16(triAddress + X1);
-        public static short GetY1(uint triAddress) => Config.Stream.GetInt16(triAddress + Y1);
-        public static short GetZ1(uint triAddress) => Config.Stream.GetInt16(triAddress + Z1);
-        public static short GetX2(uint triAddress) => Config.Stream.GetInt16(triAddress + X2);
-        public static short GetY2(uint triAddress) => Config.Stream.GetInt16(triAddress + Y2);
-        public static short GetZ2(uint triAddress) => Config.Stream.GetInt16(triAddress + Z2);
-        public static short GetX3(uint triAddress) => Config.Stream.GetInt16(triAddress + X3);
-        public static short GetY3(uint triAddress) => Config.Stream.GetInt16(triAddress + Y3);
-        public static short GetZ3(uint triAddress) => Config.Stream.GetInt16(triAddress + Z3);
+        public static short GetX1(uint triAddress) => (short)(SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetInt16(triAddress + X1));
+        public static short GetY1(uint triAddress) => (short)(SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetInt16(triAddress + Y1));
+        public static short GetZ1(uint triAddress) => (short)(SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetInt16(triAddress + Z1));
+        public static short GetX2(uint triAddress) => (short)(SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetInt16(triAddress + X2));
+        public static short GetY2(uint triAddress) => (short)(SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetInt16(triAddress + Y2));
+        public static short GetZ2(uint triAddress) => (short)(SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetInt16(triAddress + Z2));
+        public static short GetX3(uint triAddress) => (short)(SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetInt16(triAddress + X3));
+        public static short GetY3(uint triAddress) => (short)(SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetInt16(triAddress + Y3));
+        public static short GetZ3(uint triAddress) => (short)(SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetInt16(triAddress + Z3));
 
-        public static bool SetX1(short value, uint triAddress) => Config.Stream.SetValue(value, triAddress + X1);
-        public static bool SetY1(short value, uint triAddress) => Config.Stream.SetValue(value, triAddress + Y1);
-        public static bool SetZ1(short value, uint triAddress) => Config.Stream.SetValue(value, triAddress + Z1);
-        public static bool SetX2(short value, uint triAddress) => Config.Stream.SetValue(value, triAddress + X2);
-        public static bool SetY2(short value, uint triAddress) => Config.Stream.SetValue(value, triAddress + Y2);
-        public static bool SetZ2(short value, uint triAddress) => Config.Stream.SetValue(value, triAddress + Z2);
-        public static bool SetX3(short value, uint triAddress) => Config.Stream.SetValue(value, triAddress + X3);
-        public static bool SetY3(short value, uint triAddress) => Config.Stream.SetValue(value, triAddress + Y3);
-        public static bool SetZ3(short value, uint triAddress) => Config.Stream.SetValue(value, triAddress + Z3);
+        public static bool SetX1(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + X1);
+        public static bool SetY1(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + Y1);
+        public static bool SetZ1(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + Z1);
+        public static bool SetX2(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + X2);
+        public static bool SetY2(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + Y2);
+        public static bool SetZ2(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + Z2);
+        public static bool SetX3(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + X3);
+        public static bool SetY3(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + Y3);
+        public static bool SetZ3(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + Z3);
     }
 }
