@@ -35,6 +35,7 @@ namespace STROOP.Managers
                 "Neutralize Triangles with 0x15",
                 "Cloning Updates Holp Type",
                 "Use In-Game Trig for Angle Logic",
+                "Use Extended Level Boundaries",
             };
 
             _savedSettingsGetterList = new List<Func<bool>>()
@@ -52,6 +53,7 @@ namespace STROOP.Managers
                 () => SavedSettingsConfig.NeutralizeTrianglesWith0x15,
                 () => SavedSettingsConfig.CloningUpdatesHolpType,
                 () => SavedSettingsConfig.UseInGameTrigForAngleLogic,
+                () => SavedSettingsConfig.UseExtendedLevelBoundaries,
             };
 
             _savedSettingsSetterList = new List<Action<bool>>()
@@ -69,6 +71,7 @@ namespace STROOP.Managers
                 (bool value) => SavedSettingsConfig.NeutralizeTrianglesWith0x15 = value,
                 (bool value) => SavedSettingsConfig.CloningUpdatesHolpType = value,
                 (bool value) => SavedSettingsConfig.UseInGameTrigForAngleLogic = value,
+                (bool value) => SavedSettingsConfig.UseExtendedLevelBoundaries = value,
             };
 
             _savedSettingsCheckedListBox = tabControl.Controls["checkedListBoxSavedSettings"] as CheckedListBox;

@@ -179,6 +179,18 @@ namespace STROOP.Structs.Configurations
             }
         }
 
+        private static bool _useExtendedLevelBoundaries;
+        public static bool UseExtendedLevelBoundaries
+        {
+            get => _useExtendedLevelBoundaries;
+            set
+            {
+                if (_useExtendedLevelBoundaries == value) return;
+                _useExtendedLevelBoundaries = value;
+                if (IsLoaded) Save();
+            }
+        }
+
         public static List<TabPage> _recommendedTabOrder;
 
         public static void StoreRecommendedTabOrder()
@@ -333,6 +345,7 @@ namespace STROOP.Structs.Configurations
                 new XElement("NeutralizeTrianglesWith0x15", _neutralizeTrianglesWith0x15),
                 new XElement("CloningUpdatesHolpType", _cloningUpdatesHolpType),
                 new XElement("UseInGameTrigForAngleLogic", _useInGameTrigForAngleLogic),
+                new XElement("UseExtendedLevelBoundaries", _useExtendedLevelBoundaries),
                 tabOrderXElement,
                 removedTabsXElement,
             };
@@ -359,6 +372,7 @@ namespace STROOP.Structs.Configurations
             _neutralizeTrianglesWith0x15 = true;
             _cloningUpdatesHolpType = true;
             _useInGameTrigForAngleLogic = false;
+            _useExtendedLevelBoundaries = false;
             Save();
         }
     }

@@ -13,6 +13,7 @@
   <NeutralizeTrianglesWith0x15>true</NeutralizeTrianglesWith0x15>
   <CloningUpdatesHolpType>true</CloningUpdatesHolpType>
   <UseInGameTrigForAngleLogic>false</UseInGameTrigForAngleLogic>
+  <UseExtendedLevelBoundaries>false</UseExtendedLevelBoundaries>
   <TabOrder>
     <Tab>Object</Tab>
     <Tab>Mario</Tab>

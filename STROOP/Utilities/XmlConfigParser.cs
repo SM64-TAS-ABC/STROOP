@@ -151,6 +151,9 @@ namespace STROOP.Utilities
                     case "UseInGameTrigForAngleLogic":
                         SavedSettingsConfig.UseInGameTrigForAngleLogic = bool.Parse(element.Value);
                         break;
+                    case "UseExtendedLevelBoundaries":
+                        SavedSettingsConfig.UseExtendedLevelBoundaries = bool.Parse(element.Value);
+                        break;
 
                     case "TabOrder":
                         {
