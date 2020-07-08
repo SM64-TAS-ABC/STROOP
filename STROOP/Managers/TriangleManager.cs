@@ -69,6 +69,7 @@ namespace STROOP.Managers
                 VariableGroup.Intermediate,
                 VariableGroup.Advanced,
                 VariableGroup.Self,
+                VariableGroup.ExtendedLevelBoundaries,
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =

@@ -2989,6 +2989,96 @@ namespace STROOP.Structs
                         newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                 }));
 
+            _dictionary.Add("TriangleX1",
+                ((uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.GetX1(triAddress);
+                },
+                (short value, uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.SetX1(value, triAddress);
+                }));
+
+            _dictionary.Add("TriangleY1",
+                ((uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.GetY1(triAddress);
+                },
+                (short value, uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.SetY1(value, triAddress);
+                }));
+
+            _dictionary.Add("TriangleZ1",
+                ((uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.GetZ1(triAddress);
+                },
+                (short value, uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.SetZ1(value, triAddress);
+                }));
+
+            _dictionary.Add("TriangleX2",
+                ((uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.GetX2(triAddress);
+                },
+                (short value, uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.SetX2(value, triAddress);
+                }));
+
+            _dictionary.Add("TriangleY2",
+                ((uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.GetY2(triAddress);
+                },
+                (short value, uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.SetY2(value, triAddress);
+                }));
+
+            _dictionary.Add("TriangleZ2",
+                ((uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.GetZ2(triAddress);
+                },
+                (short value, uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.SetZ2(value, triAddress);
+                }));
+
+            _dictionary.Add("TriangleX3",
+                ((uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.GetX3(triAddress);
+                },
+                (short value, uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.SetX3(value, triAddress);
+                }));
+
+            _dictionary.Add("TriangleY3",
+                ((uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.GetY3(triAddress);
+                },
+                (short value, uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.SetY3(value, triAddress);
+                }));
+
+            _dictionary.Add("TriangleZ3",
+                ((uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.GetZ3(triAddress);
+                },
+                (short value, uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.SetZ3(value, triAddress);
+                }));
+
             // File vars
 
             _dictionary.Add("StarsInFile",

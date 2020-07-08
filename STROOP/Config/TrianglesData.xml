@@ -31,6 +31,16 @@
   <Data groupList="Basic" type="short" offset="0x16" base="Triangle" coord="X">X3</Data>
   <Data groupList="Basic" type="short" offset="0x18" base="Triangle" coord="Y">Y3</Data>
   <Data groupList="Basic" type="short" offset="0x1A" base="Triangle" coord="Z">Z3</Data>
+
+  <Data groupList="ExtendedLevelBoundaries" specialType="TriangleX1" base="Triangle" color="Orange" coord="X">X1</Data>
+  <Data groupList="ExtendedLevelBoundaries" specialType="TriangleY1" base="Triangle" color="Orange" coord="Y">Y1</Data>
+  <Data groupList="ExtendedLevelBoundaries" specialType="TriangleZ1" base="Triangle" color="Orange" coord="Z">Z1</Data>
+  <Data groupList="ExtendedLevelBoundaries" specialType="TriangleX2" base="Triangle" color="Orange" coord="X">X2</Data>
+  <Data groupList="ExtendedLevelBoundaries" specialType="TriangleY2" base="Triangle" color="Orange" coord="Y">Y2</Data>
+  <Data groupList="ExtendedLevelBoundaries" specialType="TriangleZ2" base="Triangle" color="Orange" coord="Z">Z2</Data>
+  <Data groupList="ExtendedLevelBoundaries" specialType="TriangleX3" base="Triangle" color="Orange" coord="X">X3</Data>
+  <Data groupList="ExtendedLevelBoundaries" specialType="TriangleY3" base="Triangle" color="Orange" coord="Y">Y3</Data>
+  <Data groupList="ExtendedLevelBoundaries" specialType="TriangleZ3" base="Triangle" color="Orange" coord="Z">Z3</Data>
   
   <Data groupList="Intermediate" type="float" offset="0x3C" base="Mario" color="Red" coord="X">Mario X</Data>
   <Data groupList="Intermediate" type="float" offset="0x40" base="Mario" color="Red" coord="Y">Mario Y</Data>
