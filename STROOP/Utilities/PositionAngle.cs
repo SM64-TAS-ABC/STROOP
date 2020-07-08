@@ -1007,33 +1007,33 @@ namespace STROOP.Utilities
                     switch (coordinate)
                     {
                         case Coordinate.X:
-                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.X1);
+                            return TriangleOffsetsConfig.GetX1(address);
                         case Coordinate.Y:
-                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Y1);
+                            return TriangleOffsetsConfig.GetY1(address);
                         case Coordinate.Z:
-                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Z1);
+                            return TriangleOffsetsConfig.GetZ1(address);
                     }
                     break;
                 case 2:
                     switch (coordinate)
                     {
                         case Coordinate.X:
-                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.X2);
+                            return TriangleOffsetsConfig.GetX2(address);
                         case Coordinate.Y:
-                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Y2);
+                            return TriangleOffsetsConfig.GetY2(address);
                         case Coordinate.Z:
-                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Z2);
+                            return TriangleOffsetsConfig.GetZ2(address);
                     }
                     break;
                 case 3:
                     switch (coordinate)
                     {
                         case Coordinate.X:
-                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.X3);
+                            return TriangleOffsetsConfig.GetX3(address);
                         case Coordinate.Y:
-                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Y3);
+                            return TriangleOffsetsConfig.GetY3(address);
                         case Coordinate.Z:
-                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Z3);
+                            return TriangleOffsetsConfig.GetZ3(address);
                     }
                     break;
                 case 4:
@@ -1612,33 +1612,33 @@ namespace STROOP.Utilities
                     switch (coordinate)
                     {
                         case Coordinate.X:
-                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.X1);
+                            return TriangleOffsetsConfig.SetX1(value, address);
                         case Coordinate.Y:
-                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Y1);
+                            return TriangleOffsetsConfig.SetY1(value, address);
                         case Coordinate.Z:
-                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Z1);
+                            return TriangleOffsetsConfig.SetZ1(value, address);
                     }
                     break;
                 case 2:
                     switch (coordinate)
                     {
                         case Coordinate.X:
-                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.X2);
+                            return TriangleOffsetsConfig.SetX2(value, address);
                         case Coordinate.Y:
-                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Y2);
+                            return TriangleOffsetsConfig.SetY2(value, address);
                         case Coordinate.Z:
-                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Z2);
+                            return TriangleOffsetsConfig.SetZ2(value, address);
                     }
                     break;
                 case 3:
                     switch (coordinate)
                     {
                         case Coordinate.X:
-                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.X3);
+                            return TriangleOffsetsConfig.SetX3(value, address);
                         case Coordinate.Y:
-                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Y3);
+                            return TriangleOffsetsConfig.SetY3(value, address);
                         case Coordinate.Z:
-                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Z3);
+                            return TriangleOffsetsConfig.SetZ3(value, address);
                     }
                     break;
                 case 4:

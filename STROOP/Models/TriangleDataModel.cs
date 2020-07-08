@@ -102,15 +102,15 @@ namespace STROOP.Models
             YMinMinus5 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMin);
             YMaxPlus5 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMax);
 
-            X1 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.X1);
-            Y1 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Y1);
-            Z1 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Z1);
-            X2 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.X2);
-            Y2 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Y2);
-            Z2 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Z2);
-            X3 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.X3);
-            Y3 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Y3);
-            Z3 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Z3);
+            X1 = TriangleOffsetsConfig.GetX1(triangleAddress);
+            Y1 = TriangleOffsetsConfig.GetY1(triangleAddress);
+            Z1 = TriangleOffsetsConfig.GetZ1(triangleAddress);
+            X2 = TriangleOffsetsConfig.GetX2(triangleAddress);
+            Y2 = TriangleOffsetsConfig.GetY2(triangleAddress);
+            Z2 = TriangleOffsetsConfig.GetZ2(triangleAddress);
+            X3 = TriangleOffsetsConfig.GetX3(triangleAddress);
+            Y3 = TriangleOffsetsConfig.GetY3(triangleAddress);
+            Z3 = TriangleOffsetsConfig.GetZ3(triangleAddress);
 
             NormX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
             NormY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);

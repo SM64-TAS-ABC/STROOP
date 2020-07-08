@@ -303,15 +303,15 @@ namespace STROOP.Managers
         {
             uint triAddress = nullableTriAddress ?? TriangleAddress;
             short[] coordinates = new short[9];
-            coordinates[0] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.X1);
-            coordinates[1] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Y1);
-            coordinates[2] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Z1);
-            coordinates[3] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.X2);
-            coordinates[4] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Y2);
-            coordinates[5] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Z2);
-            coordinates[6] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.X3);
-            coordinates[7] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Y3);
-            coordinates[8] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Z3);
+            coordinates[0] = TriangleOffsetsConfig.GetX1(triAddress);
+            coordinates[1] = TriangleOffsetsConfig.GetY1(triAddress);
+            coordinates[2] = TriangleOffsetsConfig.GetZ1(triAddress);
+            coordinates[3] = TriangleOffsetsConfig.GetX2(triAddress);
+            coordinates[4] = TriangleOffsetsConfig.GetY2(triAddress);
+            coordinates[5] = TriangleOffsetsConfig.GetZ2(triAddress);
+            coordinates[6] = TriangleOffsetsConfig.GetX3(triAddress);
+            coordinates[7] = TriangleOffsetsConfig.GetY3(triAddress);
+            coordinates[8] = TriangleOffsetsConfig.GetZ3(triAddress);
             return coordinates;
         }
 
