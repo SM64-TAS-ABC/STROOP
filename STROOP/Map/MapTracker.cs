@@ -353,6 +353,21 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemHomeLine = new ToolStripMenuItem("Add Tracker for Home Line");
+            itemHomeLine.Click += (sender, e) =>
+            {
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObject()) return null;
+                    return (MapObject)new MapHomeLineObject(posAngle.GetObjAddress());
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                MapTracker tracker = new MapTracker(newMapObjs);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemPath = new ToolStripMenuItem("Add Tracker for Path");
             itemPath.Click += (sender, e) =>
             {
@@ -385,6 +400,7 @@ namespace STROOP.Map
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemArrow);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemCurrentUnit);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemAngleRange);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemHomeLine);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemPath);
             pictureBoxPlus.Click += (sender, e) => pictureBoxPlus.ContextMenuStrip.Show(Cursor.Position);
         }
