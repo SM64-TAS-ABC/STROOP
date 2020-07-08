@@ -92,6 +92,10 @@ namespace STROOP.Map
                 {
                     for (int z = zMin; z <= zMax; z++)
                     {
+                        if (z == 2253 && x == 410)
+                        {
+                            Config.Print("duh");
+                        }
                         if (MoreMath.IsPointInsideTriangle(
                             x, z,
                             vertexList[0].x, vertexList[0].z,

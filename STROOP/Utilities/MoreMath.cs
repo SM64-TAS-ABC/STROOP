@@ -264,13 +264,24 @@ namespace STROOP.Utilities
             bool leftOf12 = IsPointLeftOfLine(pX, pZ, v1X, v1Z, v2X, v2Z);
             bool leftOf23 = IsPointLeftOfLine(pX, pZ, v2X, v2Z, v3X, v3Z);
             bool leftOf31 = IsPointLeftOfLine(pX, pZ, v3X, v3Z, v1X, v1Z);
-            return leftOf12 == leftOf23 && leftOf23 == leftOf31;
+
+            bool rightOf12 = IsPointRightOfLine(pX, pZ, v1X, v1Z, v2X, v2Z);
+            bool rightOf23 = IsPointRightOfLine(pX, pZ, v2X, v2Z, v3X, v3Z);
+            bool rightOf31 = IsPointRightOfLine(pX, pZ, v3X, v3Z, v1X, v1Z);
+
+            return (leftOf12 && leftOf23 && leftOf31) || (rightOf12 && rightOf23 && rightOf31);
         }
 
         public static bool IsPointLeftOfLine(
             double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z)
         {
             return (v1Z - pZ) * (v2X - v1X) >= (v1X - pX) * (v2Z - v1Z);
+        }
+
+        public static bool IsPointRightOfLine(
+            double pX, double pZ, double v1X, double v1Z, double v2X, double v2Z)
+        {
+            return (v1Z - pZ) * (v2X - v1X) <= (v1X - pX) * (v2Z - v1Z);
         }
 
         public static double GetPlaneDistanceBetweenPoints(
