@@ -13,20 +13,16 @@ using System.Windows.Forms;
 
 namespace STROOP.Map
 {
-    public class MapObjectCustomArrowObject : MapArrowObject
+    public class MapObjectFacingArrowObject : MapArrowObject
     {
         private readonly PositionAngle _posAngle;
         private readonly uint _objAddress;
-        private readonly uint _yawOffset;
-        private readonly int _numBytes;
 
-        public MapObjectCustomArrowObject(PositionAngle posAngle, uint yawOffset, int numBytes)
+        public MapObjectFacingArrowObject(PositionAngle posAngle)
             : base()
         {
             _posAngle = posAngle;
             _objAddress = posAngle.GetObjAddress();
-            _yawOffset = yawOffset;
-            _numBytes = numBytes;
         }
 
         public override PositionAngle GetPositionAngle()
@@ -36,9 +32,7 @@ namespace STROOP.Map
 
         protected override double GetYaw()
         {
-            return _numBytes == 2 ?
-                Config.Stream.GetUInt16(_objAddress + _yawOffset) :
-                Config.Stream.GetUInt32(_objAddress + _yawOffset);
+            return Config.Stream.GetUInt16(_objAddress + ObjectConfig.YawFacingOffset);
         }
 
         protected override double GetRecommendedSize()
@@ -48,7 +42,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Object Custom Arrow for " + _posAngle.GetMapName();
+            return "Object Facing Arrow for " + _posAngle.GetMapName();
         }
     }
 }
