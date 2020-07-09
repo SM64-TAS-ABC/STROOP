@@ -303,8 +303,8 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemArrow = new ToolStripMenuItem("Add Tracker for Custom Object Arrow");
-            itemArrow.Click += (sender, e) =>
+            ToolStripMenuItem itemCustomObjectArrow = new ToolStripMenuItem("Add Tracker for Custom Object Arrow");
+            itemCustomObjectArrow.Click += (sender, e) =>
             {
                 string yawOffsetString = DialogUtilities.GetStringFromDialog(labelText: "Enter the offset (in hex) of the yaw variable in the object struct:");
                 if (yawOffsetString == null) return;
@@ -323,6 +323,9 @@ namespace STROOP.Map
                 MapTracker tracker = new MapTracker(newMapObjs);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
+
+            ToolStripMenuItem itemArrow = new ToolStripMenuItem("Add Tracker for Arrow...");
+            itemArrow.DropDownItems.Add(itemCustomObjectArrow);
 
             ToolStripMenuItem itemCurrentUnit = new ToolStripMenuItem("Add Tracker for Current Unit");
             itemCurrentUnit.Click += (sender, e) =>
@@ -397,6 +400,7 @@ namespace STROOP.Map
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemCeilingTriangles);
             pictureBoxPlus.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemArrow);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemCurrentUnit);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemAngleRange);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemHomeLine);
