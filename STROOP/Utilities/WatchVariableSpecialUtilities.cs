@@ -1606,10 +1606,7 @@ namespace STROOP.Structs
             _dictionary.Add("SlidingAngle",
                 ((uint dummy) =>
                 {
-                    float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                    float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
-                    double slidingAngle = MoreMath.AngleTo_AngleUnits(xSlidingSpeed, zSlidingSpeed);
-                    return slidingAngle;
+                    return GetMarioSlidingAngle();
                 },
                 (double newHSlidingAngle, uint dummy) =>
                 {
@@ -4194,6 +4191,14 @@ namespace STROOP.Structs
             float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
             double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
             return hSlidingSpeed;
+        }
+
+        public static double GetMarioSlidingAngle()
+        {
+            float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            double slidingAngle = MoreMath.AngleTo_AngleUnits(xSlidingSpeed, zSlidingSpeed);
+            return slidingAngle;
         }
 
         // Radius distance utility methods

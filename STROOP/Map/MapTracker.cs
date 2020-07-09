@@ -384,12 +384,67 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemMarioFacingArrow = new ToolStripMenuItem("Add Tracker for Mario Facing Arrow");
+            itemMarioFacingArrow.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapMarioFacingArrowObject();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
+            ToolStripMenuItem itemMarioMovingArrow = new ToolStripMenuItem("Add Tracker for Mario Moving Arrow");
+            itemMarioMovingArrow.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapMarioMovingArrowObject();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
+            ToolStripMenuItem itemMarioIntendedArrow = new ToolStripMenuItem("Add Tracker for Mario Intended Arrow");
+            itemMarioIntendedArrow.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapMarioIntendedArrowObject();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
+            ToolStripMenuItem itemMarioSlidingArrow = new ToolStripMenuItem("Add Tracker for Mario Sliding Arrow");
+            itemMarioSlidingArrow.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapMarioSlidingArrowObject();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
+            ToolStripMenuItem itemMarioTwirlArrow = new ToolStripMenuItem("Add Tracker for Mario Twirl Arrow");
+            itemMarioTwirlArrow.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapMarioTwirlArrowObject();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
+            ToolStripMenuItem itemMarioFloorArrow = new ToolStripMenuItem("Add Tracker for Mario Floor Arrow");
+            itemMarioFloorArrow.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapMarioFloorArrowObject();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemArrow = new ToolStripMenuItem("Add Tracker for Arrow...");
             itemArrow.DropDownItems.Add(itemObjectFacingArrow);
             itemArrow.DropDownItems.Add(itemObjectMovingArrow);
             itemArrow.DropDownItems.Add(itemObjectGraphicsArrow);
             itemArrow.DropDownItems.Add(itemObjectAngleToMarioArrow);
             itemArrow.DropDownItems.Add(itemObjectCustomArrow);
+            itemArrow.DropDownItems.Add(new ToolStripSeparator());
+            itemArrow.DropDownItems.Add(itemMarioFacingArrow);
+            itemArrow.DropDownItems.Add(itemMarioMovingArrow);
+            itemArrow.DropDownItems.Add(itemMarioIntendedArrow);
+            itemArrow.DropDownItems.Add(itemMarioSlidingArrow);
+            itemArrow.DropDownItems.Add(itemMarioTwirlArrow);
+            itemArrow.DropDownItems.Add(itemMarioFloorArrow);
 
             ToolStripMenuItem itemCurrentUnit = new ToolStripMenuItem("Add Tracker for Current Unit");
             itemCurrentUnit.Click += (sender, e) =>
