@@ -348,6 +348,21 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemObjectAngleToMarioArrow = new ToolStripMenuItem("Add Tracker for Object Angle to Mario Arrow");
+            itemObjectAngleToMarioArrow.Click += (sender, e) =>
+            {
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObject()) return null;
+                    return (MapObject)new MapObjectAngleToMarioArrowObject(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                MapTracker tracker = new MapTracker(newMapObjs);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemObjectCustomArrow = new ToolStripMenuItem("Add Tracker for Object Custom Arrow");
             itemObjectCustomArrow.Click += (sender, e) =>
             {
@@ -373,6 +388,7 @@ namespace STROOP.Map
             itemArrow.DropDownItems.Add(itemObjectFacingArrow);
             itemArrow.DropDownItems.Add(itemObjectMovingArrow);
             itemArrow.DropDownItems.Add(itemObjectGraphicsArrow);
+            itemArrow.DropDownItems.Add(itemObjectAngleToMarioArrow);
             itemArrow.DropDownItems.Add(itemObjectCustomArrow);
 
             ToolStripMenuItem itemCurrentUnit = new ToolStripMenuItem("Add Tracker for Current Unit");

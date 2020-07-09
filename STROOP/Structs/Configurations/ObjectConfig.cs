@@ -97,6 +97,9 @@ namespace STROOP.Structs
         public static readonly uint NumCollidedObjectsOffset = 0x76;
         public static readonly uint CollidedObjectsListStartOffset = 0x78;
 
+        public static readonly uint DistanceToMarioOffset = 0x15C;
+        public static readonly uint AngleToMarioOffset = 0x162;
+
         // Object specific vars
 
         public static readonly uint DustSpawnerBehaviorValue = 0x130024AC;

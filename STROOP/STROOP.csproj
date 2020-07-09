@@ -429,6 +429,7 @@
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Managers\QuarterFrameManager.cs" />
+    <Compile Include="Map\MapObjectAngleToMarioArrowObject.cs" />
     <Compile Include="Map\MapObjectGraphicsArrowObject.cs" />
     <Compile Include="Map\MapObjectMovingArrowObject.cs" />
     <Compile Include="Map\MapObjectFacingArrowObject.cs" />
