@@ -13,14 +13,14 @@ using System.Windows.Forms;
 
 namespace STROOP.Map
 {
-    public class MapCustomObjectArrowObject : MapArrowObject
+    public class MapObjectCustomArrowObject : MapArrowObject
     {
         private readonly PositionAngle _posAngle;
         private readonly uint _objAddress;
         private readonly uint _yawOffset;
         private readonly int _numBytes;
 
-        public MapCustomObjectArrowObject(PositionAngle posAngle, uint yawOffset, int numBytes)
+        public MapObjectCustomArrowObject(PositionAngle posAngle, uint yawOffset, int numBytes)
             : base()
         {
             _posAngle = posAngle;
@@ -48,7 +48,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Custom Object Arrow";
+            return "Object Custom Arrow";
         }
     }
 }
