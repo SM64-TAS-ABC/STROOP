@@ -429,6 +429,7 @@
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Managers\QuarterFrameManager.cs" />
+    <Compile Include="Map\MapCustomObjectArrowObject.cs" />
     <Compile Include="Map\MapHomeLineObject.cs" />
     <Compile Include="Map\MapCeilingObject.cs" />
     <Compile Include="Map\MapBackgroundObject.cs" />
@@ -440,7 +441,7 @@
     <Compile Include="Map\MapCustomCirclePointsObject.cs" />
     <Compile Include="Map\MapCUpFloorObject.cs" />
     <Compile Include="Map\MapPreviousPositionsObject.cs" />
-    <Compile Include="Map\MapObjectArrowObject.cs" />
+    <Compile Include="Map\MapArrowObject.cs" />
     <Compile Include="Map\MapMapObject.cs" />
     <Compile Include="Map\MapDrawType.cs" />
     <Compile Include="Map\MapAggregatedPathObject.cs" />

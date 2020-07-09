@@ -303,7 +303,7 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemArrow = new ToolStripMenuItem("Add Tracker for Arrow");
+            ToolStripMenuItem itemArrow = new ToolStripMenuItem("Add Tracker for Custom Object Arrow");
             itemArrow.Click += (sender, e) =>
             {
                 string yawOffsetString = DialogUtilities.GetStringFromDialog(labelText: "Enter the offset (in hex) of the yaw variable in the object struct:");
@@ -316,9 +316,8 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObjectOrMario()) return null;
-                    uint objAddress = posAngle.GetObjAddress();
-                    return (MapObject)new MapObjectArrowObject(objAddress, yawOffset, numBytes);
+                    if (!posAngle.IsObject()) return null;
+                    return (MapObject)new MapCustomObjectArrowObject(posAngle, yawOffset, numBytes);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);

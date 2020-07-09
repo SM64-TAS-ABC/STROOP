@@ -13,25 +13,17 @@ using System.Windows.Forms;
 
 namespace STROOP.Map
 {
-    public class MapObjectArrowObject : MapLineObject
+    public abstract class MapArrowObject : MapLineObject
     {
-        private readonly uint _objAddress;
-        private readonly uint _yawOffset;
-        private readonly int _numBytes;
-
-        private bool _useSpeedForArrowLength;
+        private bool _useRecommendedArrowLength;
         private float _arrowHeadSideLength;
 
         private ToolStripMenuItem _itemUseSpeedForArrowLength;
 
-        public MapObjectArrowObject(uint objAddress, uint yawOffset, int numBytes)
+        public MapArrowObject()
             : base()
         {
-            _objAddress = objAddress;
-            _yawOffset = yawOffset;
-            _numBytes = numBytes;
-
-            _useSpeedForArrowLength = false;
+            _useRecommendedArrowLength = false;
             _arrowHeadSideLength = 100;
 
             Size = 300;
@@ -41,15 +33,12 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVertices()
         {
-            float x = Config.Stream.GetSingle(_objAddress + ObjectConfig.XOffset);
-            float y = Config.Stream.GetSingle(_objAddress + ObjectConfig.YOffset);
-            float z = Config.Stream.GetSingle(_objAddress + ObjectConfig.ZOffset);
-            uint yaw = _numBytes == 2 ?
-                Config.Stream.GetUInt16(_objAddress + _yawOffset) :
-                Config.Stream.GetUInt32(_objAddress + _yawOffset);
-            float size = _useSpeedForArrowLength
-                ? Config.Stream.GetSingle(_objAddress + ObjectConfig.HSpeedOffset)
-                : Size;
+            PositionAngle posAngle = GetPositionAngle();
+            float x = (float)posAngle.X;
+            float y = (float)posAngle.Y;
+            float z = (float)posAngle.Z;
+            float yaw = (float)GetYaw();
+            float size = _useRecommendedArrowLength ? (float)GetRecommendedSize() : Size;
             (float arrowHeadX, float arrowHeadZ) =
                 ((float, float))MoreMath.AddVectorToPoint(size, yaw, x, z);
 
@@ -72,10 +61,9 @@ namespace STROOP.Map
             return vertices;
         }
 
-        public override string GetName()
-        {
-            return "Object Arrow";
-        }
+        protected abstract double GetYaw();
+
+        protected abstract double GetRecommendedSize();
 
         public override Image GetInternalImage()
         {
@@ -86,15 +74,15 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                _itemUseSpeedForArrowLength = new ToolStripMenuItem("Use Speed For Arrow Length");
+                _itemUseSpeedForArrowLength = new ToolStripMenuItem("Use Recommended Arrow Size");
                 _itemUseSpeedForArrowLength.Click += (sender, e) =>
                 {
                     MapObjectSettings settings = new MapObjectSettings(
-                        arrowChangeUseSpeedForLength: true,
-                        arrowNewUseSpeedForLength: !_useSpeedForArrowLength);
+                        arrowChangeUseRecommendedLength: true,
+                        arrowNewUseRecommendedLength: !_useRecommendedArrowLength);
                     GetParentMapTracker().ApplySettings(settings);
                 };
-                _itemUseSpeedForArrowLength.Checked = _useSpeedForArrowLength;
+                _itemUseSpeedForArrowLength.Checked = _useRecommendedArrowLength;
 
                 ToolStripMenuItem itemSetArrowHeadSideLength = new ToolStripMenuItem("Set Arrow Head Side Length");
                 itemSetArrowHeadSideLength.Click += (sender, e) =>
@@ -119,10 +107,10 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.ArrowChangeUseSpeedForLength)
+            if (settings.ArrowChangeUseRecommendedLength)
             {
-                _useSpeedForArrowLength = settings.ArrowNewUseSpeedForLength;
-                _itemUseSpeedForArrowLength.Checked = _useSpeedForArrowLength;
+                _useRecommendedArrowLength = settings.ArrowNewUseRecommendedLength;
+                _itemUseSpeedForArrowLength.Checked = _useRecommendedArrowLength;
             }
 
             if (settings.ArrowChangeHeadSideLength)
