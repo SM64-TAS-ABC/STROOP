@@ -28,7 +28,7 @@ namespace STROOP.Map
 
             int size = (int)Size;
             if (size < 0) size = 0;
-            int increment = (int)(16384 / Math.Pow(2, size));
+            int increment = 16384 / (size + 1);
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             for (int x = -8192; x <= 8192; x += increment)
             {
