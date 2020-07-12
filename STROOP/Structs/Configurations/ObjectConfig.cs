@@ -64,6 +64,8 @@ namespace STROOP.Structs
 
         public static readonly uint HitboxRadiusOffset = 0x1F8;
         public static readonly uint HitboxHeightOffset = 0x1FC;
+        public static readonly uint HurtboxRadiusOffset = 0x200;
+        public static readonly uint HurtboxHeightOffset = 0x204;
         public static readonly uint HitboxDownOffsetOffset = 0x208;
 
         public static readonly uint TangibleDistOffset = 0x194;

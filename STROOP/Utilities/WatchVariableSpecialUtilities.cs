@@ -609,6 +609,16 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("EffectiveHitboxRadius",
+                ((uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadiusOffset);
+                    float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
+                    return mObjHitboxRadius + objHitboxRadius;
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("MarioHitboxAwayFromObject",
                 ((uint objAddress) =>
                 {
