@@ -153,6 +153,21 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemEffectiveHitboxCylinder = new ToolStripMenuItem("Add Tracker for Effective Hitbox Cylinder");
+            itemEffectiveHitboxCylinder.Click += (sender, e) =>
+            {
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
+                    return (MapObject)new MapEffectiveHitboxCylinderObject(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                MapTracker tracker = new MapTracker(newMapObjs);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemHurtboxCylinder = new ToolStripMenuItem("Add Tracker for Hurtbox Cylinder");
             itemHurtboxCylinder.Click += (sender, e) =>
             {
@@ -162,6 +177,21 @@ namespace STROOP.Map
                     if (posAngle == null) return null;
                     if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapHurtboxCylinderObject(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                MapTracker tracker = new MapTracker(newMapObjs);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
+            ToolStripMenuItem itemEffectiveHurtboxCylinder = new ToolStripMenuItem("Add Tracker for Effective Hurtbox Cylinder");
+            itemEffectiveHurtboxCylinder.Click += (sender, e) =>
+            {
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
+                    return (MapObject)new MapEffectiveHurtboxCylinderObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -520,7 +550,9 @@ namespace STROOP.Map
 
             pictureBoxPlus.ContextMenuStrip = new ContextMenuStrip();
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemHitboxCylinder);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemEffectiveHitboxCylinder);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemHurtboxCylinder);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemEffectiveHurtboxCylinder);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemTangibilitySphere);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemDrawDistanceSphere);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemCustomCylinder);
