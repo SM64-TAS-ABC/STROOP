@@ -619,6 +619,16 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("EffectiveHurtboxRadius",
+                ((uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjHurtboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
+                    float objHurtboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxRadiusOffset);
+                    return mObjHurtboxRadius + objHurtboxRadius;
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("MarioHitboxAwayFromObject",
                 ((uint objAddress) =>
                 {
@@ -753,6 +763,147 @@ namespace STROOP.Structs
                     double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
 
                     bool overlap = marioHitboxAwayFromObject < 0 && marioHitboxAboveObject <= 0 && marioHitboxBelowObject <= 0;
+                    return overlap ? 1 : 0;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MarioHurtboxAwayFromObject",
+                ((uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
+                    float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
+                    float mObjHurtboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
+
+                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float objHurtboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxRadiusOffset);
+
+                    double marioHurtboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHurtboxRadius - objHurtboxRadius;
+                    return marioHurtboxAwayFromObject;
+                },
+                (double hurtboxDistAway, uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
+                    float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
+                    float mObjHurtboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
+
+                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float objHurtboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxRadiusOffset);
+
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
+                    double distAway = hurtboxDistAway + mObjHurtboxRadius + objHurtboxRadius;
+
+                    (double newMarioX, double newMarioZ) =
+                        MoreMath.ExtrapolateLine2D(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
+                    return BoolUtilities.Combine(
+                        marioPos.SetValues(x: newMarioX, z: newMarioZ),
+                        PositionAngle.MarioObj().SetValues(x: newMarioX, z: newMarioZ));
+                }
+            ));
+
+            _dictionary.Add("MarioHurtboxAboveObject",
+                ((uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHurtboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxHeightOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    float mObjHurtboxBottom = mObjY - mObjHitboxDownOffset;
+
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objHurtboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objHurtboxTop = objY + objHurtboxHeight - objHitboxDownOffset;
+
+                    double marioHurtboxAboveObject = mObjHurtboxBottom - objHurtboxTop;
+                    return marioHurtboxAboveObject;
+                },
+                (double hurtboxDistAbove, uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objHurtboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objHurtboxTop = objY + objHurtboxHeight - objHitboxDownOffset;
+
+                    double newMarioY = objHurtboxTop + mObjHitboxDownOffset + hurtboxDistAbove;
+                    return BoolUtilities.Combine(
+                        PositionAngle.Mario.SetY(newMarioY),
+                        PositionAngle.MarioObj().SetY(newMarioY));
+                }
+            ));
+
+            _dictionary.Add("MarioHurtboxBelowObject",
+                ((uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHurtboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxHeightOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    float mObjHurtboxTop = mObjY + mObjHurtboxHeight - mObjHitboxDownOffset;
+
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objHurtboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objHurtboxBottom = objY - objHitboxDownOffset;
+
+                    double marioHurtboxBelowObject = objHurtboxBottom - mObjHurtboxTop;
+                    return marioHurtboxBelowObject;
+                },
+                (double hurtboxDistBelow, uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHurtboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxHeightOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    float mObjHurtboxTop = mObjY + mObjHurtboxHeight - mObjHitboxDownOffset;
+
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objHurtboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objHurtboxBottom = objY - objHitboxDownOffset;
+
+                    double newMarioY = objHurtboxBottom - (mObjHurtboxTop - mObjY) - hurtboxDistBelow;
+                    return BoolUtilities.Combine(
+                        PositionAngle.Mario.SetY(newMarioY),
+                        PositionAngle.MarioObj().SetY(newMarioY));
+                }
+            ));
+
+            _dictionary.Add("MarioHurtboxOverlapsObject",
+                ((uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
+                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
+                    float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
+                    float mObjHurtboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
+                    float mObjHurtboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxHeightOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    float mObjHurtboxBottom = mObjY - mObjHitboxDownOffset;
+                    float mObjHurtboxTop = mObjY + mObjHurtboxHeight - mObjHitboxDownOffset;
+
+                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float objHurtboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxRadiusOffset);
+                    float objHurtboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objHurtboxBottom = objY - objHitboxDownOffset;
+                    float objHurtboxTop = objY + objHurtboxHeight - objHitboxDownOffset;
+
+                    double marioHurtboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHurtboxRadius - objHurtboxRadius;
+                    double marioHurtboxAboveObject = mObjHurtboxBottom - objHurtboxTop;
+                    double marioHurtboxBelowObject = objHurtboxBottom - mObjHurtboxTop;
+
+                    bool overlap = marioHurtboxAwayFromObject < 0 && marioHurtboxAboveObject <= 0 && marioHurtboxBelowObject <= 0;
                     return overlap ? 1 : 0;
                 },
                 DEFAULT_SETTER));

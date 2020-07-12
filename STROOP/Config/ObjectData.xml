@@ -68,11 +68,16 @@
   <Data groupList="Advanced" base="Object" specialType="EffectiveHitboxRadius">Effective Hitbox Radius</Data>
   <Data groupList="Advanced" type="float" offset="0x204" base="Object">Hurtbox Height</Data>
   <Data groupList="Advanced" type="float" offset="0x200" base="Object">Hurtbox Radius</Data>
+  <Data groupList="Advanced" base="Object" specialType="EffectiveHurtboxRadius">Effective Hurtbox Radius</Data>
   <Data groupList="Advanced" type="float" offset="0x208" base="Object">Hitbox Down Offset</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxAwayFromObject">Mario Hitbox Away</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxBelowObject">Mario Hitbox Below</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxOverlapsObject" subclass="Boolean">Mario Hitbox Overlap</Data>
+  <Data groupList="Advanced" base="Object" specialType="MarioHurtboxAwayFromObject">Mario Hurtbox Away</Data>
+  <Data groupList="Advanced" base="Object" specialType="MarioHurtboxAboveObject">Mario Hurtbox Above</Data>
+  <Data groupList="Advanced" base="Object" specialType="MarioHurtboxBelowObject">Mario Hurtbox Below</Data>
+  <Data groupList="Advanced" base="Object" specialType="MarioHurtboxOverlapsObject" subclass="Boolean">Mario Hurtbox Overlap</Data>
   <Data groupList="Advanced" base="Object" specialType="MarioPunchAngleAway" subclass="Angle" display="short">Punch Angle Away</Data>
 
   <Data groupList="Advanced" type="float" offset="0x128" base="Object">Min Wall Dist</Data>
