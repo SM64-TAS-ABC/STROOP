@@ -810,7 +810,6 @@ namespace STROOP.Structs
                 {
                     uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
                     float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                    float mObjHurtboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxHeightOffset);
                     float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
                     float mObjHurtboxBottom = mObjY - mObjHitboxDownOffset;
 
@@ -845,9 +844,9 @@ namespace STROOP.Structs
                 {
                     uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
                     float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                    float mObjHurtboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxHeightOffset);
+                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
                     float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
-                    float mObjHurtboxTop = mObjY + mObjHurtboxHeight - mObjHitboxDownOffset;
+                    float mObjHurtboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
                     float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
                     float objHurtboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxHeightOffset);
@@ -861,9 +860,9 @@ namespace STROOP.Structs
                 {
                     uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
                     float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                    float mObjHurtboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxHeightOffset);
+                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
                     float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
-                    float mObjHurtboxTop = mObjY + mObjHurtboxHeight - mObjHitboxDownOffset;
+                    float mObjHurtboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
                     float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
                     float objHurtboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxHeightOffset);
@@ -885,10 +884,10 @@ namespace STROOP.Structs
                     float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
                     float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
                     float mObjHurtboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
-                    float mObjHurtboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxHeightOffset);
+                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
                     float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
                     float mObjHurtboxBottom = mObjY - mObjHitboxDownOffset;
-                    float mObjHurtboxTop = mObjY + mObjHurtboxHeight - mObjHitboxDownOffset;
+                    float mObjHurtboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
                     float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
                     float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
