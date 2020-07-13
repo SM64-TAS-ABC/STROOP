@@ -254,7 +254,13 @@ namespace STROOP.Managers
                         int index = startRange.Value + i * iteratorDirection;
                         uint address = ObjectSlots[index].CurrentObject.Address;
                         if (!selection.Contains(address))
+                        {
                             selection.Add(address);
+                            if (selection == MarkedSlotsAddresses)
+                            {
+                                MarkedSlotsAddressesDictionary[address] = markedColor.Value;
+                            }
+                        }
                     }
                 }
                 else
