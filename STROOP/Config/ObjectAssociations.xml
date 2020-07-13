@@ -3794,6 +3794,7 @@
   <Object behaviorScriptAddress="0x130049C8" name="Spiny">
     <SpawnCode gfxId="0x55"/>
     <Image path="Spiny.png"/>
+    <MapImage path="Spiny Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xEC" base="Object">Ground/Air State</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xF8" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
