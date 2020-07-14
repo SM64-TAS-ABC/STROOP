@@ -187,7 +187,6 @@ namespace STROOP
                 labelVersionNumber,
                 new List<string>()
                 {
-                    "Disable Locking",
                     "Show Invisible Objects as Signs",
                     "Show Cog Tris",
                     "Show Shapes",
@@ -196,11 +195,6 @@ namespace STROOP
                 },
                 new List<Func<bool>>()
                 {
-                    () =>
-                    {
-                        LockConfig.LockingDisabled = !LockConfig.LockingDisabled;
-                        return LockConfig.LockingDisabled;
-                    },
                     () =>
                     {
                         TestingConfig.ShowInvisibleObjectsAsSigns = !TestingConfig.ShowInvisibleObjectsAsSigns;

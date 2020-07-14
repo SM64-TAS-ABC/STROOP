@@ -31,6 +31,7 @@ namespace STROOP.Controls
         private ToolStripMenuItem _itemHighlight;
         private ToolStripMenuItem _itemLock;
         private ToolStripMenuItem _itemRemoveAllLocks;
+        private ToolStripMenuItem _itemDisableAllLocks;
 
         // Custom items
         private ToolStripSeparator _separatorCustom;
@@ -121,6 +122,9 @@ namespace STROOP.Controls
             _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
             _itemRemoveAllLocks.Click += (sender, e) => WatchVariableLockManager.RemoveAllLocks();
 
+            _itemDisableAllLocks = new ToolStripMenuItem("Disable All Locks");
+            _itemDisableAllLocks.Click += (sender, e) => LockConfig.LockingDisabled = !LockConfig.LockingDisabled;
+
             ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy");
             itemCopyUnrounded.Click += (sender, e) => Clipboard.SetText(
                 GetValue(false, true, _watchVarControl.FixedAddressList).ToString());
@@ -131,6 +135,7 @@ namespace STROOP.Controls
             _contextMenuStrip.AddToBeginningList(_itemHighlight);
             _contextMenuStrip.AddToBeginningList(_itemLock);
             _contextMenuStrip.AddToBeginningList(_itemRemoveAllLocks);
+            _contextMenuStrip.AddToBeginningList(_itemDisableAllLocks);
             _contextMenuStrip.AddToBeginningList(itemCopyUnrounded);
             _contextMenuStrip.AddToBeginningList(itemPaste);
         }
@@ -267,6 +272,8 @@ namespace STROOP.Controls
             _itemHighlight.Checked = _watchVarControl.Highlighted;
             _itemLock.Checked = GetLockedBool(addresses);
             _itemRemoveAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
+            _itemDisableAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
+            _itemDisableAllLocks.Checked = LockConfig.LockingDisabled;
             _itemFixAddress.Checked = _watchVarControl.FixedAddressList != null;
         }
 
