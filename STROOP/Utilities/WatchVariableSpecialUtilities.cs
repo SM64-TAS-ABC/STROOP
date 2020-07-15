@@ -1527,7 +1527,16 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Min(tri => tri.GetMinX());
                 },
-                DEFAULT_SETTER));
+                (float newMinX, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    int minX = tris.Min(tri => tri.GetMinX());
+                    float diff = newMinX - minX;
+                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float newObjX = objX + diff;
+                    return Config.Stream.SetValue(newObjX, objAddress + ObjectConfig.XOffset);
+                }));
 
             _dictionary.Add("MaxXCoordinate",
                 ((uint objAddress) =>
@@ -1536,7 +1545,16 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxX());
                 },
-                DEFAULT_SETTER));
+                (float newMaxX, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    int maxX = tris.Max(tri => tri.GetMaxX());
+                    float diff = newMaxX - maxX;
+                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float newObjX = objX + diff;
+                    return Config.Stream.SetValue(newObjX, objAddress + ObjectConfig.XOffset);
+                }));
 
             _dictionary.Add("MinYCoordinate",
                 ((uint objAddress) =>
@@ -1545,7 +1563,16 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Min(tri => tri.GetMinY());
                 },
-                DEFAULT_SETTER));
+                (float newMinY, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    int minY = tris.Min(tri => tri.GetMinY());
+                    float diff = newMinY - minY;
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float newObjY = objY + diff;
+                    return Config.Stream.SetValue(newObjY, objAddress + ObjectConfig.YOffset);
+                }));
 
             _dictionary.Add("MaxYCoordinate",
                 ((uint objAddress) =>
@@ -1554,7 +1581,16 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxY());
                 },
-                DEFAULT_SETTER));
+                (float newMaxY, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    int maxY = tris.Max(tri => tri.GetMaxY());
+                    float diff = newMaxY - maxY;
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float newObjY = objY + diff;
+                    return Config.Stream.SetValue(newObjY, objAddress + ObjectConfig.YOffset);
+                }));
 
             _dictionary.Add("MinZCoordinate",
                 ((uint objAddress) =>
@@ -1563,7 +1599,16 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Min(tri => tri.GetMinZ());
                 },
-                DEFAULT_SETTER));
+                (float newMinZ, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    int minZ = tris.Min(tri => tri.GetMinZ());
+                    float diff = newMinZ - minZ;
+                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float newObjZ = objZ + diff;
+                    return Config.Stream.SetValue(newObjZ, objAddress + ObjectConfig.ZOffset);
+                }));
 
             _dictionary.Add("MaxZCoordinate",
                 ((uint objAddress) =>
@@ -1572,7 +1617,16 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxZ());
                 },
-                DEFAULT_SETTER));
+                (float newMaxZ, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    int maxZ = tris.Max(tri => tri.GetMaxZ());
+                    float diff = newMaxZ - maxZ;
+                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float newObjZ = objZ + diff;
+                    return Config.Stream.SetValue(newObjZ, objAddress + ObjectConfig.ZOffset);
+                }));
 
             _dictionary.Add("RangeXCoordinate",
                 ((uint objAddress) =>
@@ -1581,7 +1635,16 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxX()) - tris.Min(tri => tri.GetMinX());
                 },
-                DEFAULT_SETTER));
+                (float newXRange, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    float xRange = tris.Max(tri => tri.GetMaxX()) - tris.Min(tri => tri.GetMinX());
+                    float ratio = newXRange / xRange;
+                    float scaleX = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleWidthOffset);
+                    float newScaleX = scaleX * ratio;
+                    return Config.Stream.SetValue(newScaleX, objAddress + ObjectConfig.ScaleWidthOffset);
+                }));
 
             _dictionary.Add("RangeYCoordinate",
                 ((uint objAddress) =>
@@ -1590,7 +1653,16 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxY()) - tris.Min(tri => tri.GetMinY());
                 },
-                DEFAULT_SETTER));
+                (float newYRange, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    float yRange = tris.Max(tri => tri.GetMaxY()) - tris.Min(tri => tri.GetMinY());
+                    float ratio = newYRange / yRange;
+                    float scaleY = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleHeightOffset);
+                    float newScaleY = scaleY * ratio;
+                    return Config.Stream.SetValue(newScaleY, objAddress + ObjectConfig.ScaleHeightOffset);
+                }));
 
             _dictionary.Add("RangeZCoordinate",
                 ((uint objAddress) =>
@@ -1599,7 +1671,16 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxZ()) - tris.Min(tri => tri.GetMinZ());
                 },
-                DEFAULT_SETTER));
+                (float newZRange, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    float zRange = tris.Max(tri => tri.GetMaxZ()) - tris.Min(tri => tri.GetMinZ());
+                    float ratio = newZRange / zRange;
+                    float scaleZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleDepthOffset);
+                    float newScaleZ = scaleZ * ratio;
+                    return Config.Stream.SetValue(newScaleZ, objAddress + ObjectConfig.ScaleDepthOffset);
+                }));
 
             _dictionary.Add("MidpointXCoordinate",
                 ((uint objAddress) =>
@@ -1608,7 +1689,16 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return (tris.Max(tri => tri.GetMaxX()) + tris.Min(tri => tri.GetMinX())) / 2.0;
                 },
-                DEFAULT_SETTER));
+                (float newMidpointX, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    float midpointX = (tris.Max(tri => tri.GetMaxX()) + tris.Min(tri => tri.GetMinX())) / 2f;
+                    float diff = newMidpointX - midpointX;
+                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float newObjX = objX + diff;
+                    return Config.Stream.SetValue(newObjX, objAddress + ObjectConfig.XOffset);
+                }));
 
             _dictionary.Add("MidpointYCoordinate",
                 ((uint objAddress) =>
@@ -1617,7 +1707,16 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return (tris.Max(tri => tri.GetMaxY()) + tris.Min(tri => tri.GetMinY())) / 2.0;
                 },
-                DEFAULT_SETTER));
+                (float newMidpointY, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    float midpointY = (tris.Max(tri => tri.GetMaxY()) + tris.Min(tri => tri.GetMinY())) / 2f;
+                    float diff = newMidpointY - midpointY;
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float newObjY = objY + diff;
+                    return Config.Stream.SetValue(newObjY, objAddress + ObjectConfig.YOffset);
+                }));
 
             _dictionary.Add("MidpointZCoordinate",
                 ((uint objAddress) =>
@@ -1626,7 +1725,16 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return (tris.Max(tri => tri.GetMaxZ()) + tris.Min(tri => tri.GetMinZ())) / 2.0;
                 },
-                DEFAULT_SETTER));
+                (float newMidpointZ, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    float midpointZ = (tris.Max(tri => tri.GetMaxZ()) + tris.Min(tri => tri.GetMinZ())) / 2f;
+                    float diff = newMidpointZ - midpointZ;
+                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float newObjZ = objZ + diff;
+                    return Config.Stream.SetValue(newObjZ, objAddress + ObjectConfig.ZOffset);
+                }));
 
             _dictionary.Add("FarthestCoordinateDistance",
                 ((uint objAddress) =>
