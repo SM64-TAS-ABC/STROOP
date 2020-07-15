@@ -326,6 +326,44 @@ namespace STROOP.Structs
                 WatchVariableControl control = precursor.CreateWatchVariableControl();
                 panel.AddVariable(control);
             }
+            void createRealTimeVariable()
+            {
+                List<WatchVariableControl> controls = getVars();
+                for (int i = 0; i < controls.Count; i++)
+                {
+                    WatchVariableControl control = controls[i];
+                    string specialType = WatchVariableSpecialUtilities.AddRealTimeEntry(control);
+
+                    WatchVariable watchVariable =
+                        new WatchVariable(
+                            memoryTypeName: null,
+                            specialType: specialType,
+                            baseAddressType: BaseAddressTypeEnum.None,
+                            offsetUS: null,
+                            offsetJP: null,
+                            offsetSH: null,
+                            offsetEU: null,
+                            offsetDefault: null,
+                            mask: null,
+                            shift: null,
+                            handleMapping: true);
+                    WatchVariableControlPrecursor precursor =
+                        new WatchVariableControlPrecursor(
+                            name: string.Format("{0} Real Time", control.VarName),
+                            watchVar: watchVariable,
+                            subclass: WatchVariableSubclass.String,
+                            backgroundColor: null,
+                            displayType: null,
+                            roundingLimit: null,
+                            useHex: null,
+                            invertBool: null,
+                            isYaw: null,
+                            coordinate: null,
+                            groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                    WatchVariableControl control2 = precursor.CreateWatchVariableControl();
+                    panel.AddVariable(control2);
+                }
+            }
             ToolStripMenuItem itemAddVariables = new ToolStripMenuItem("Add Variable(s)...");
             ControlUtilities.AddDropDownItems(
                 itemAddVariables,
@@ -341,6 +379,8 @@ namespace STROOP.Structs
                     "Median",
                     "Min",
                     "Max",
+                    null,
+                    "Real Time",
                 },
                 new List<Action>()
                 {
@@ -354,6 +394,8 @@ namespace STROOP.Structs
                     () => createAggregateMathOperationVariable(AggregateMathOperation.Median),
                     () => createAggregateMathOperationVariable(AggregateMathOperation.Min),
                     () => createAggregateMathOperationVariable(AggregateMathOperation.Max),
+                    () => { },
+                    () => createRealTimeVariable(),
                 });
 
             ToolStripMenuItem itemSetCascadingValues = new ToolStripMenuItem("Set Cascading Values");

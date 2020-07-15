@@ -226,6 +226,23 @@ namespace STROOP.Structs
             return specialType;
         }
 
+        private static int _numRealTimeEntries = 0;
+
+        public static string AddRealTimeEntry(WatchVariableControl control)
+        {
+            string specialType = "RealTime" + _numRealTimeEntries;
+            _dictionary.Add(specialType,
+                ((uint dummy) =>
+                {
+                    uint totalFrames = ParsingUtilities.ParseUIntRoundingWrapping(
+                        control.GetValue(useRounding: false, handleFormatting: false)) ?? 0;
+                    return GetRealTime(totalFrames);
+                },
+                DEFAULT_SETTER));
+            _numRealTimeEntries++;
+            return specialType;
+        }
+
         public static string AddDummyEntry()
         {
             int index = SpecialConfig.DummyValues.Count;
@@ -3903,39 +3920,8 @@ namespace STROOP.Structs
             _dictionary.Add("PlayTime",
                 ((uint dummy) =>
                 {
-                    uint frameConst = 30;
-                    uint secondConst = 60;
-                    uint minuteConst = 60;
-                    uint hourConst = 24;
-                    uint dayConst = 365;
-
                     uint totalFrames = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                    uint totalSeconds = totalFrames / frameConst;
-                    uint totalMinutes = totalSeconds / secondConst;
-                    uint totalHours = totalMinutes / minuteConst;
-                    uint totalDays = totalHours / hourConst;
-                    uint totalYears = totalDays / dayConst;
-
-                    uint frames = totalFrames % frameConst;
-                    uint seconds = totalSeconds % secondConst;
-                    uint minutes = totalMinutes % minuteConst;
-                    uint hours = totalHours % hourConst;
-                    uint days = totalDays % dayConst;
-                    uint years = totalYears;
-
-                    List<uint> values = new List<uint> { years, days, hours, minutes, seconds, frames };
-                    int firstNonZeroIndex = values.FindIndex(value => value != 0);
-                    if (firstNonZeroIndex == -1) firstNonZeroIndex = values.Count - 1;
-                    int numValuesToShow = values.Count - firstNonZeroIndex;
-
-                    StringBuilder builder = new StringBuilder();
-                    if (numValuesToShow >= 6) builder.Append(years + "y ");
-                    if (numValuesToShow >= 5) builder.Append(days + "d ");
-                    if (numValuesToShow >= 4) builder.Append(hours + "h ");
-                    if (numValuesToShow >= 3) builder.Append(minutes + "m ");
-                    if (numValuesToShow >= 2) builder.Append(seconds + "s ");
-                    if (numValuesToShow >= 1) builder.Append(String.Format("{0:D2}", frames) + "f");
-                    return builder.ToString();
+                    return GetRealTime(totalFrames);
                 },
                 DEFAULT_SETTER));
 
@@ -5020,6 +5006,44 @@ namespace STROOP.Structs
             (double x, double z) = MoreMath.GetComponentsFromVector(1, angle);
             int inGameAngle = InGameTrigUtilities.InGameAngleTo(x, z);
             return angle - inGameAngle;
+        }
+
+        // Play Time
+
+        public static string GetRealTime(uint totalFrames)
+        {
+            uint frameConst = 30;
+            uint secondConst = 60;
+            uint minuteConst = 60;
+            uint hourConst = 24;
+            uint dayConst = 365;
+
+            uint totalSeconds = totalFrames / frameConst;
+            uint totalMinutes = totalSeconds / secondConst;
+            uint totalHours = totalMinutes / minuteConst;
+            uint totalDays = totalHours / hourConst;
+            uint totalYears = totalDays / dayConst;
+
+            uint frames = totalFrames % frameConst;
+            uint seconds = totalSeconds % secondConst;
+            uint minutes = totalMinutes % minuteConst;
+            uint hours = totalHours % hourConst;
+            uint days = totalDays % dayConst;
+            uint years = totalYears;
+
+            List<uint> values = new List<uint> { years, days, hours, minutes, seconds, frames };
+            int firstNonZeroIndex = values.FindIndex(value => value != 0);
+            if (firstNonZeroIndex == -1) firstNonZeroIndex = values.Count - 1;
+            int numValuesToShow = values.Count - firstNonZeroIndex;
+
+            StringBuilder builder = new StringBuilder();
+            if (numValuesToShow >= 6) builder.Append(years + "y ");
+            if (numValuesToShow >= 5) builder.Append(days + "d ");
+            if (numValuesToShow >= 4) builder.Append(hours + "h ");
+            if (numValuesToShow >= 3) builder.Append(minutes + "m ");
+            if (numValuesToShow >= 2) builder.Append(seconds + "s ");
+            if (numValuesToShow >= 1) builder.Append(String.Format("{0:D2}", frames) + "f");
+            return builder.ToString();
         }
     }
 }
