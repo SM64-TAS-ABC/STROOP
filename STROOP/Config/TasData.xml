@@ -88,10 +88,12 @@
   <Data groupList="Point" base="None" specialType="DAngleSelfToPoint" subclass="Angle" display="short" color="LightBlue">DAngle Self to Point</Data>
 
   <Data groupList="Point" base="None" specialType="AngleDiffSelfToPoint" subclass="Angle" display="short" color="LightBlue">DAngle Self to Angle</Data>
-  
+
   <Data groupList="Point" base="None" specialType="FDistPointToSelf" color="LightBlue">FDist Point to Self</Data>
   <Data groupList="Point" base="None" specialType="SDistPointToSelf" color="LightBlue">SDist Point to Self</Data>
   <Data groupList="Point" base="None" specialType="FSDistPointToSelf" subclass="String" color="LightBlue">FSDist Point to Self</Data>
+
+  <Data groupList="Point" base="None" specialType="PitchSelfToPoint" subclass="Angle" display="short" color="Pink">Pitch Self to Point</Data>
 
   <Data groupList="Point" base="None" specialType="WalkingDistance" color="Pink">Walking Distance</Data>
   <Data groupList="Point" base="None" specialType="WalkingDistanceDifferenceMarioToPoint" color="Pink">Walking Distance Diff</Data>

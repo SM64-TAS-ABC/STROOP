@@ -618,6 +618,33 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("PitchMarioToObj",
+                ((uint objAddress) =>
+                {
+                    PositionAngle mario = PositionAngle.Mario;
+                    PositionAngle obj = PositionAngle.Obj(objAddress);
+                    return MoreMath.GetPitch(mario.X, mario.Y, mario.Z, obj.X, obj.Y, obj.Z);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("DPitchMarioToObj",
+                ((uint objAddress) =>
+                {
+                    PositionAngle mario = PositionAngle.Mario;
+                    PositionAngle obj = PositionAngle.Obj(objAddress);
+                    double pitch = MoreMath.GetPitch(mario.X, mario.Y, mario.Z, obj.X, obj.Y, obj.Z);
+                    ushort marioPitch = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
+                    return marioPitch - pitch;
+                },
+                (double diff, uint objAddress) =>
+                {
+                    PositionAngle mario = PositionAngle.Mario;
+                    PositionAngle obj = PositionAngle.Obj(objAddress);
+                    double pitch = MoreMath.GetPitch(mario.X, mario.Y, mario.Z, obj.X, obj.Y, obj.Z);
+                    short newMarioPitch = MoreMath.NormalizeAngleShort(pitch + diff);
+                    return Config.Stream.SetValue(newMarioPitch, MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
+                }));
+
             _dictionary.Add("ObjectInGameDeltaYaw",
                 ((uint objAddress) =>
                 {
@@ -2232,6 +2259,15 @@ namespace STROOP.Structs
                     SpecialConfig.SelfPA.SetZ(SpecialConfig.PointZ + relZ);
                     return true;
                 }));
+
+            _dictionary.Add("PitchSelfToPoint",
+                ((uint dummy) =>
+                {
+                    return MoreMath.GetPitch(
+                        SpecialConfig.SelfX, SpecialConfig.SelfY, SpecialConfig.SelfZ,
+                        SpecialConfig.PointX, SpecialConfig.PointY, SpecialConfig.PointZ);
+                },
+                DEFAULT_SETTER));
 
             _dictionary.Add("WalkingDistance",
                 ((uint dummy) =>
