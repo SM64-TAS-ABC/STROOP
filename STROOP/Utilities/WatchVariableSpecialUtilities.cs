@@ -1825,6 +1825,32 @@ namespace STROOP.Structs
                     return SetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), radius, dist);
                 }));
 
+            // Object specific vars - WDW Rotating Platform
+
+            _dictionary.Add("WdwRotatingPlatformGoalAngle",
+                ((uint dummy) =>
+                {
+                    return WdwRotatingPlatformUtilities.GoalAngle;
+                },
+                (ushort goalAngle, uint dummy) =>
+                {
+                    WdwRotatingPlatformUtilities.GoalAngle = goalAngle;
+                    return true;
+                }));
+
+            _dictionary.Add("WdwRotatingPlatformFramesUntilGoal",
+                ((uint objAddress) =>
+                {
+                    ushort angle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                    return WdwRotatingPlatformUtilities.GetFramesToGoalAngle(angle);
+                },
+                (int numFrames, uint objAddress) =>
+                {
+                    ushort? newAngle = WdwRotatingPlatformUtilities.GetAngleNumFramesBeforeGoal(numFrames);
+                    if (!newAngle.HasValue) return false;
+                    return Config.Stream.SetValue(newAngle.Value, objAddress + ObjectConfig.YawFacingOffset);
+                }));
+
             // Mario vars
 
             _dictionary.Add("RotationDisplacementX",
