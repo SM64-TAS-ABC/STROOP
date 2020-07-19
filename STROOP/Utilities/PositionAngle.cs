@@ -367,12 +367,14 @@ namespace STROOP.Utilities
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
                 if (!address.HasValue) return null;
                 int? index = ParsingUtilities.ParseIntNullable(parts[2]);
-                if (!index.HasValue || index.Value < 0 || index.Value > 4) return null;
-                // 0 = closest vertex
+                if (!index.HasValue || index.Value < 1 || index.Value > 7) return null;
                 // 1 = vertex 1
                 // 2 = vertex 2
                 // 3 = vertex 3
-                // 4 = point on triangle
+                // 4 = vertex closest to Mario
+                // 5 = vertex closest to Self
+                // 6 = point on triangle under Mario
+                // 7 = point on triangle under Self
                 return Tri(address.Value, index.Value);
             }
             else if (parts.Count == 4 && parts[0] == "objtri")
@@ -534,7 +536,7 @@ namespace STROOP.Utilities
         {
             if (PosAngleType == PositionAngleTypeEnum.Tri)
             {
-                return Index == 0 || Index == 4;
+                return Index == 5 || Index == 7;
             }
             return false;
         }
@@ -999,10 +1001,6 @@ namespace STROOP.Utilities
             if (address == 0) return Double.NaN;
             switch (index)
             {
-                case 0:
-                    int closestVertex = new TriangleDataModel(address).GetClosestVertex(
-                        SpecialConfig.SelfX, SpecialConfig.SelfY, SpecialConfig.SelfZ);
-                    return GetTriangleVertexComponent(address, closestVertex, coordinate);
                 case 1:
                     switch (coordinate)
                     {
@@ -1037,6 +1035,26 @@ namespace STROOP.Utilities
                     }
                     break;
                 case 4:
+                    int closestVertexToMario = new TriangleDataModel(address).GetClosestVertex(
+                        Mario.X, Mario.Y, Mario.Z);
+                    return GetTriangleVertexComponent(address, closestVertexToMario, coordinate);
+                case 5:
+                    int closestVertexToSelf = new TriangleDataModel(address).GetClosestVertex(
+                        SpecialConfig.SelfX, SpecialConfig.SelfY, SpecialConfig.SelfZ);
+                    return GetTriangleVertexComponent(address, closestVertexToSelf, coordinate);
+                case 6:
+                    switch (coordinate)
+                    {
+                        case Coordinate.X:
+                            return Mario.X;
+                        case Coordinate.Y:
+                            return new TriangleDataModel(address).GetHeightOnTriangle(Mario.X, Mario.Z);
+                        case Coordinate.Z:
+                            return Mario.Z;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                case 7:
                     switch (coordinate)
                     {
                         case Coordinate.X:
@@ -1045,8 +1063,9 @@ namespace STROOP.Utilities
                             return new TriangleDataModel(address).GetHeightOnTriangle(SpecialConfig.SelfX, SpecialConfig.SelfZ);
                         case Coordinate.Z:
                             return SpecialConfig.SelfZ;
+                        default:
+                            throw new ArgumentOutOfRangeException();
                     }
-                    break;
             }
             throw new ArgumentOutOfRangeException();
         }
@@ -1604,10 +1623,6 @@ namespace STROOP.Utilities
             if (address == 0) return false;
             switch (index)
             {
-                case 0:
-                    int closestVertex = new TriangleDataModel(address).GetClosestVertex(
-                        SpecialConfig.SelfX, SpecialConfig.SelfY, SpecialConfig.SelfZ);
-                    return SetTriangleVertexComponent(value, address, closestVertex, coordinate);
                 case 1:
                     switch (coordinate)
                     {
@@ -1642,6 +1657,16 @@ namespace STROOP.Utilities
                     }
                     break;
                 case 4:
+                    int closestVertexToMario = new TriangleDataModel(address).GetClosestVertex(
+                        Mario.X, Mario.Y, Mario.Z);
+                    return SetTriangleVertexComponent(value, address, closestVertexToMario, coordinate);
+                case 5:
+                    int closestVertexToSelf = new TriangleDataModel(address).GetClosestVertex(
+                        SpecialConfig.SelfX, SpecialConfig.SelfY, SpecialConfig.SelfZ);
+                    return SetTriangleVertexComponent(value, address, closestVertexToSelf, coordinate);
+                case 6:
+                    return false;
+                case 7:
                     return false;
             }
             throw new ArgumentOutOfRangeException();
