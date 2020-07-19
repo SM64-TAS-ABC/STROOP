@@ -1827,6 +1827,29 @@ namespace STROOP.Structs
 
             // Object specific vars - WDW Rotating Platform
 
+            _dictionary.Add("WdwRotatingPlatformCurrentIndex",
+                ((uint objAddress) =>
+                {
+                    ushort angle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                    return WdwRotatingPlatformUtilities.GetIndex(angle) ?? double.NaN;
+                },
+                (int index, uint objAddress) =>
+                {
+                    ushort angle = WdwRotatingPlatformUtilities.GetAngle(index);
+                    return Config.Stream.SetValue(angle, objAddress + ObjectConfig.YawFacingOffset);
+                }));
+
+            _dictionary.Add("WdwRotatingPlatformGoalIndex",
+                ((uint dummy) =>
+                {
+                    return WdwRotatingPlatformUtilities.GetIndex(WdwRotatingPlatformUtilities.GoalAngle) ?? double.NaN;
+                },
+                (int index, uint dummy) =>
+                {
+                    WdwRotatingPlatformUtilities.GoalAngle = WdwRotatingPlatformUtilities.GetAngle(index);
+                    return true;
+                }));
+
             _dictionary.Add("WdwRotatingPlatformGoalAngle",
                 ((uint dummy) =>
                 {

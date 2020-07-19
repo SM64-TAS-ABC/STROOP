@@ -390,7 +390,10 @@
     <SpawnCode gfxId="0x3C"/>
     <Image path="WDW Rotating Platform.png"/>
     <MapImage path="WDW Rotating Platform Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Current Angle</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="WdwRotatingPlatformCurrentIndex" subclass="Angle" yaw="true" display="ushort">Current Index</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="WdwRotatingPlatformGoalAngle" subclass="Angle" yaw="true" display="ushort">Goal Angle</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="WdwRotatingPlatformGoalIndex" subclass="Angle" yaw="true" display="ushort">Goal Index</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="WdwRotatingPlatformFramesUntilGoal">Frames Until Goal</Data>
   </Object>
   <Object behaviorScriptAddress="0x130005D8" name="WF Tower">
