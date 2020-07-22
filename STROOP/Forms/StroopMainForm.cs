@@ -539,6 +539,7 @@ namespace STROOP
             TableConfig.Missions = XmlConfigParser.OpenMissionTable(@"Config/Missions.xml");
             TableConfig.CourseData = XmlConfigParser.OpenCourseDataTable(@"Config/CourseData.xml");
             TableConfig.FlyGuyData = new FlyGuyDataTable();
+            TableConfig.WdwRotatingPlatformTable = new ObjectAngleTable(1120);
 
             loadingForm.UpdateStatus("Creating Managers", statusNum++);
             CreateManagers();
