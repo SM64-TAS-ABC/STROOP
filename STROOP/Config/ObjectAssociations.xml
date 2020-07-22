@@ -3908,10 +3908,20 @@
   <Object behaviorScriptAddress="0x13004B44" name="BitS Revolving Elevator Axle" subType="0">
     <SpawnCode gfxId="0x3d"/>
     <Image path="Revolving Elevator Axle.png"/>
+    <Data groupList="ObjectSpecific" type="int" display="short" offset="0xD8" base="Object" subclass="Angle">Current Angle</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ElevatorAxleCurrentIndex" subclass="Angle" yaw="true" display="ushort">Current Index</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ElevatorAxleGoalAngle" subclass="Angle" yaw="true" display="ushort">Goal Angle</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ElevatorAxleGoalIndex" subclass="Angle" yaw="true" display="ushort">Goal Index</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ElevatorAxleFramesUntilGoal">Frames Until Goal</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004B44" name="BitDW Revolving Elevator Axle" subType="1">
     <SpawnCode gfxId="0x39"/>
     <Image path="Revolving Elevator Axle.png"/>
+    <Data groupList="ObjectSpecific" type="int" display="short" offset="0xD8" base="Object" subclass="Angle">Current Angle</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ElevatorAxleCurrentIndex" subclass="Angle" yaw="true" display="ushort">Current Index</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ElevatorAxleGoalAngle" subclass="Angle" yaw="true" display="ushort">Goal Angle</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ElevatorAxleGoalIndex" subclass="Angle" yaw="true" display="ushort">Goal Index</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="ElevatorAxleFramesUntilGoal">Frames Until Goal</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004B6C" name="Revolving Elevator">
     <Image path="Revolving Elevator BitS.png"/>

@@ -540,6 +540,7 @@ namespace STROOP
             TableConfig.CourseData = XmlConfigParser.OpenCourseDataTable(@"Config/CourseData.xml");
             TableConfig.FlyGuyData = new FlyGuyDataTable();
             TableConfig.WdwRotatingPlatformTable = new ObjectAngleTable(1120);
+            TableConfig.ElevatorAxleTable = new ObjectAngleTable(400);
 
             loadingForm.UpdateStatus("Creating Managers", statusNum++);
             CreateManagers();

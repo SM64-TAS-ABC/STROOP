@@ -1874,6 +1874,55 @@ namespace STROOP.Structs
                     return Config.Stream.SetValue(newAngle.Value, objAddress + ObjectConfig.YawFacingOffset);
                 }));
 
+            // Object specific vars - Elevator Axle
+
+            _dictionary.Add("ElevatorAxleCurrentIndex",
+                ((uint objAddress) =>
+                {
+                    ushort angle = Config.Stream.GetUInt16(objAddress + ObjectConfig.RollFacingOffset);
+                    return TableConfig.ElevatorAxleTable.GetIndex(angle) ?? double.NaN;
+                },
+                (int index, uint objAddress) =>
+                {
+                    ushort angle = TableConfig.ElevatorAxleTable.GetAngle(index);
+                    return Config.Stream.SetValue(angle, objAddress + ObjectConfig.RollFacingOffset);
+                }));
+            
+            _dictionary.Add("ElevatorAxleGoalIndex",
+                ((uint dummy) =>
+                {
+                    return TableConfig.ElevatorAxleTable.GetIndex(TableConfig.ElevatorAxleTable.GoalAngle) ?? double.NaN;
+                },
+                (int index, uint dummy) =>
+                {
+                    TableConfig.ElevatorAxleTable.GoalAngle = TableConfig.ElevatorAxleTable.GetAngle(index);
+                    return true;
+                }));
+
+            _dictionary.Add("ElevatorAxleGoalAngle",
+                ((uint dummy) =>
+                {
+                    return TableConfig.ElevatorAxleTable.GoalAngle;
+                },
+                (ushort goalAngle, uint dummy) =>
+                {
+                    TableConfig.ElevatorAxleTable.GoalAngle = goalAngle;
+                    return true;
+                }));
+
+            _dictionary.Add("ElevatorAxleFramesUntilGoal",
+                ((uint objAddress) =>
+                {
+                    ushort angle = Config.Stream.GetUInt16(objAddress + ObjectConfig.RollFacingOffset);
+                    return TableConfig.ElevatorAxleTable.GetFramesToGoalAngle(angle);
+                },
+                (int numFrames, uint objAddress) =>
+                {
+                    ushort? newAngle = TableConfig.ElevatorAxleTable.GetAngleNumFramesBeforeGoal(numFrames);
+                    if (!newAngle.HasValue) return false;
+                    return Config.Stream.SetValue(newAngle.Value, objAddress + ObjectConfig.RollFacingOffset);
+                }));
+
             // Mario vars
 
             _dictionary.Add("RotationDisplacementX",
