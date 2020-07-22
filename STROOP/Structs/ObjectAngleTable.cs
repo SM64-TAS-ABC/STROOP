@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs
 {
-    public static class WdwRotatingPlatformUtilities
+    public static class ObjectAngleTable
     {
         public static ushort GoalAngle = 0;
 
         private static Dictionary<ushort, int> _angleToIndexDictionary;
         private static Dictionary<int, ushort> _indexToAngleDictionary;
 
-        static WdwRotatingPlatformUtilities()
+        static ObjectAngleTable()
         {
             _angleToIndexDictionary = new Dictionary<ushort, int>();
             _indexToAngleDictionary = new Dictionary<int, ushort>();

@@ -1831,33 +1831,33 @@ namespace STROOP.Structs
                 ((uint objAddress) =>
                 {
                     ushort angle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
-                    return WdwRotatingPlatformUtilities.GetIndex(angle) ?? double.NaN;
+                    return ObjectAngleTable.GetIndex(angle) ?? double.NaN;
                 },
                 (int index, uint objAddress) =>
                 {
-                    ushort angle = WdwRotatingPlatformUtilities.GetAngle(index);
+                    ushort angle = ObjectAngleTable.GetAngle(index);
                     return Config.Stream.SetValue(angle, objAddress + ObjectConfig.YawFacingOffset);
                 }));
 
             _dictionary.Add("WdwRotatingPlatformGoalIndex",
                 ((uint dummy) =>
                 {
-                    return WdwRotatingPlatformUtilities.GetIndex(WdwRotatingPlatformUtilities.GoalAngle) ?? double.NaN;
+                    return ObjectAngleTable.GetIndex(ObjectAngleTable.GoalAngle) ?? double.NaN;
                 },
                 (int index, uint dummy) =>
                 {
-                    WdwRotatingPlatformUtilities.GoalAngle = WdwRotatingPlatformUtilities.GetAngle(index);
+                    ObjectAngleTable.GoalAngle = ObjectAngleTable.GetAngle(index);
                     return true;
                 }));
 
             _dictionary.Add("WdwRotatingPlatformGoalAngle",
                 ((uint dummy) =>
                 {
-                    return WdwRotatingPlatformUtilities.GoalAngle;
+                    return ObjectAngleTable.GoalAngle;
                 },
                 (ushort goalAngle, uint dummy) =>
                 {
-                    WdwRotatingPlatformUtilities.GoalAngle = goalAngle;
+                    ObjectAngleTable.GoalAngle = goalAngle;
                     return true;
                 }));
 
@@ -1865,11 +1865,11 @@ namespace STROOP.Structs
                 ((uint objAddress) =>
                 {
                     ushort angle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
-                    return WdwRotatingPlatformUtilities.GetFramesToGoalAngle(angle);
+                    return ObjectAngleTable.GetFramesToGoalAngle(angle);
                 },
                 (int numFrames, uint objAddress) =>
                 {
-                    ushort? newAngle = WdwRotatingPlatformUtilities.GetAngleNumFramesBeforeGoal(numFrames);
+                    ushort? newAngle = ObjectAngleTable.GetAngleNumFramesBeforeGoal(numFrames);
                     if (!newAngle.HasValue) return false;
                     return Config.Stream.SetValue(newAngle.Value, objAddress + ObjectConfig.YawFacingOffset);
                 }));
