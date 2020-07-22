@@ -46,65 +46,65 @@
   <Data groupList="QuarterFrameHack" type="float" offset="0x1BC" base="HackedArea" coord="Y">#3 pos Y</Data>
   <Data groupList="QuarterFrameHack" type="float" offset="0x1C0" base="HackedArea" coord="Z">#3 pos Z</Data>
 
-  <Data groupList="GhostHack" type="float" offset="0x80372F00" base="Relative" coord="X">Pos 1 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F04" base="Relative" coord="Y">Pos 1 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F08" base="Relative" coord="Z">Pos 1 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372F0E" base="Relative">Pos 1 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F10" base="Relative" coord="X">Pos 2 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F14" base="Relative" coord="Y">Pos 2 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F18" base="Relative" coord="Z">Pos 2 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372F1E" base="Relative">Pos 2 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F20" base="Relative" coord="X">Pos 3 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F24" base="Relative" coord="Y">Pos 3 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F28" base="Relative" coord="Z">Pos 3 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372F2E" base="Relative">Pos 3 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F30" base="Relative" coord="X">Pos 4 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F34" base="Relative" coord="Y">Pos 4 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F38" base="Relative" coord="Z">Pos 4 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372F3E" base="Relative">Pos 4 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F40" base="Relative" coord="X">Pos 5 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F44" base="Relative" coord="Y">Pos 5 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F48" base="Relative" coord="Z">Pos 5 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372F4E" base="Relative">Pos 5 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F50" base="Relative" coord="X">Pos 6 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F54" base="Relative" coord="Y">Pos 6 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F58" base="Relative" coord="Z">Pos 6 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372F5E" base="Relative">Pos 6 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F60" base="Relative" coord="X">Pos 7 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F64" base="Relative" coord="Y">Pos 7 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F68" base="Relative" coord="Z">Pos 7 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372F6E" base="Relative">Pos 7 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F70" base="Relative" coord="X">Pos 8 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F74" base="Relative" coord="Y">Pos 8 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F78" base="Relative" coord="Z">Pos 8 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372F7E" base="Relative">Pos 8 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F80" base="Relative" coord="X">Pos 9 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F84" base="Relative" coord="Y">Pos 9 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F88" base="Relative" coord="Z">Pos 9 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372F8E" base="Relative">Pos 9 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F90" base="Relative" coord="X">Pos 10 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F94" base="Relative" coord="Y">Pos 10 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372F98" base="Relative" coord="Z">Pos 10 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372F9E" base="Relative">Pos 10 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FA0" base="Relative" coord="X">Pos 11 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FA4" base="Relative" coord="Y">Pos 11 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FA8" base="Relative" coord="Z">Pos 11 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372FAE" base="Relative">Pos 11 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FB0" base="Relative" coord="X">Pos 12 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FB4" base="Relative" coord="Y">Pos 12 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FB8" base="Relative" coord="Z">Pos 12 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372FBE" base="Relative">Pos 12 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FC0" base="Relative" coord="X">Pos 13 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FC4" base="Relative" coord="Y">Pos 13 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FC8" base="Relative" coord="Z">Pos 13 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372FCE" base="Relative">Pos 13 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FD0" base="Relative" coord="X">Pos 14 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FD4" base="Relative" coord="Y">Pos 14 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FD8" base="Relative" coord="Z">Pos 14 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372FDE" base="Relative">Pos 14 Angle</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FE0" base="Relative" coord="X">Pos 15 X</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FE4" base="Relative" coord="Y">Pos 15 Y</Data>
-  <Data groupList="GhostHack" type="float" offset="0x80372FE8" base="Relative" coord="Z">Pos 15 Z</Data>
-  <Data groupList="GhostHack" type="ushort" offset="0x80372FEE" base="Relative">Pos 15 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F00" base="Relative" coord="X" color="Purple">Pos 1 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F04" base="Relative" coord="Y" color="Purple">Pos 1 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F08" base="Relative" coord="Z" color="Purple">Pos 1 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F0E" base="Relative" color="Purple">Pos 1 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F10" base="Relative" coord="X" color="Blue">Pos 2 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F14" base="Relative" coord="Y" color="Blue">Pos 2 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F18" base="Relative" coord="Z" color="Blue">Pos 2 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F1E" base="Relative" color="Blue">Pos 2 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F20" base="Relative" coord="X" color="Green">Pos 3 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F24" base="Relative" coord="Y" color="Green">Pos 3 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F28" base="Relative" coord="Z" color="Green">Pos 3 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F2E" base="Relative" color="Green">Pos 3 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F30" base="Relative" coord="X" color="Orange">Pos 4 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F34" base="Relative" coord="Y" color="Orange">Pos 4 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F38" base="Relative" coord="Z" color="Orange">Pos 4 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F3E" base="Relative" color="Orange">Pos 4 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F40" base="Relative" coord="X" color="Blue">Pos 5 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F44" base="Relative" coord="Y" color="Blue">Pos 5 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F48" base="Relative" coord="Z" color="Blue">Pos 5 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F4E" base="Relative" color="Blue">Pos 5 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F50" base="Relative" coord="X" color="Green">Pos 6 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F54" base="Relative" coord="Y" color="Green">Pos 6 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F58" base="Relative" coord="Z" color="Green">Pos 6 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F5E" base="Relative" color="Green">Pos 6 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F60" base="Relative" coord="X" color="Orange">Pos 7 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F64" base="Relative" coord="Y" color="Orange">Pos 7 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F68" base="Relative" coord="Z" color="Orange">Pos 7 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F6E" base="Relative" color="Orange">Pos 7 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F70" base="Relative" coord="X" color="Blue">Pos 8 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F74" base="Relative" coord="Y" color="Blue">Pos 8 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F78" base="Relative" coord="Z" color="Blue">Pos 8 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F7E" base="Relative" color="Blue">Pos 8 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F80" base="Relative" coord="X" color="Green">Pos 9 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F84" base="Relative" coord="Y" color="Green">Pos 9 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F88" base="Relative" coord="Z" color="Green">Pos 9 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F8E" base="Relative" color="Green">Pos 9 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F90" base="Relative" coord="X" color="Orange">Pos 10 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F94" base="Relative" coord="Y" color="Orange">Pos 10 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372F98" base="Relative" coord="Z" color="Orange">Pos 10 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372F9E" base="Relative" color="Orange">Pos 10 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FA0" base="Relative" coord="X" color="Blue">Pos 11 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FA4" base="Relative" coord="Y" color="Blue">Pos 11 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FA8" base="Relative" coord="Z" color="Blue">Pos 11 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372FAE" base="Relative" color="Blue">Pos 11 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FB0" base="Relative" coord="X" color="Green">Pos 12 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FB4" base="Relative" coord="Y" color="Green">Pos 12 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FB8" base="Relative" coord="Z" color="Green">Pos 12 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372FBE" base="Relative" color="Green">Pos 12 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FC0" base="Relative" coord="X" color="Orange">Pos 13 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FC4" base="Relative" coord="Y" color="Orange">Pos 13 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FC8" base="Relative" coord="Z" color="Orange">Pos 13 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372FCE" base="Relative" color="Orange">Pos 13 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FD0" base="Relative" coord="X" color="Blue">Pos 14 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FD4" base="Relative" coord="Y" color="Blue">Pos 14 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FD8" base="Relative" coord="Z" color="Blue">Pos 14 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372FDE" base="Relative" color="Blue">Pos 14 Angle</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FE0" base="Relative" coord="X" color="Red">Pos 15 X</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FE4" base="Relative" coord="Y" color="Red">Pos 15 Y</Data>
+  <Data groupList="GhostHack" type="float" offset="0x80372FE8" base="Relative" coord="Z" color="Red">Pos 15 Z</Data>
+  <Data groupList="GhostHack" type="ushort" offset="0x80372FEE" base="Relative" color="Red">Pos 15 Angle</Data>
 
 </VarData>
