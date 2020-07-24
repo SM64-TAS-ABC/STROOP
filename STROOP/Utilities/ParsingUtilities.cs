@@ -314,6 +314,7 @@ namespace STROOP.Utilities
 
         public static byte? ParseByteRoundingWrapping(object value)
         {
+            if (value == null) return null;
             double? doubleValue = ParseDoubleNullable(value.ToString());
             if (doubleValue.HasValue) return ParseByteRoundingWrapping(doubleValue.Value);
             return null;
@@ -321,6 +322,7 @@ namespace STROOP.Utilities
 
         public static sbyte? ParseSByteRoundingWrapping(object value)
         {
+            if (value == null) return null;
             double? doubleValue = ParseDoubleNullable(value.ToString());
             if (doubleValue.HasValue) return ParseSByteRoundingWrapping(doubleValue.Value);
             return null;
@@ -328,6 +330,7 @@ namespace STROOP.Utilities
 
         public static short? ParseShortRoundingWrapping(object value)
         {
+            if (value == null) return null;
             double? doubleValue = ParseDoubleNullable(value.ToString());
             if (doubleValue.HasValue) return ParseShortRoundingWrapping(doubleValue.Value);
             return null;
@@ -335,6 +338,7 @@ namespace STROOP.Utilities
 
         public static ushort? ParseUShortRoundingWrapping(object value)
         {
+            if (value == null) return null;
             double? doubleValue = ParseDoubleNullable(value.ToString());
             if (doubleValue.HasValue) return ParseUShortRoundingWrapping(doubleValue.Value);
             return null;
@@ -342,6 +346,7 @@ namespace STROOP.Utilities
 
         public static int? ParseIntRoundingWrapping(object value)
         {
+            if (value == null) return null;
             double? doubleValue = ParseDoubleNullable(value.ToString());
             if (doubleValue.HasValue) return ParseIntRoundingWrapping(doubleValue.Value);
             return null;
@@ -349,6 +354,7 @@ namespace STROOP.Utilities
 
         public static uint? ParseUIntRoundingWrapping(object value)
         {
+            if (value == null) return null;
             double? doubleValue = ParseDoubleNullable(value.ToString());
             if (doubleValue.HasValue) return ParseUIntRoundingWrapping(doubleValue.Value);
             return null;

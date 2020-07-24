@@ -109,6 +109,21 @@ namespace STROOP.Structs
             }
         }
 
+        public static object GetMemoryLockValue(
+            uint address, Type type, uint? mask, int? shift)
+        {
+            if (LockConfig.LockingDisabled) return null;
+            if (!ContainsAnyLocks()) return null;
+            foreach (WatchVariableLock currentLock in _lockList)
+            {
+                if (currentLock.EqualsMemorySignature(address, type, mask, shift))
+                {
+                    return currentLock.Value;
+                }
+            }
+            return null;
+        }
+
         public static void UpdateMemoryLockValue(
             object newValue, uint address, Type type, uint? mask, int? shift)
         {
