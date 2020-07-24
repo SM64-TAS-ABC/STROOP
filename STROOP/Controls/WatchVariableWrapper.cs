@@ -364,6 +364,7 @@ namespace STROOP.Controls
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
             value = HandleAngleUnconverting(value);
+            value = HandleNumberConversion(value);
             return value;
         }
 
@@ -461,6 +462,11 @@ namespace STROOP.Controls
         }
 
         protected virtual object HandleHexUndisplaying(object value)
+        {
+            return value;
+        }
+
+        protected virtual object HandleNumberConversion(object value)
         {
             return value;
         }

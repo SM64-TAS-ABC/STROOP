@@ -241,5 +241,11 @@ namespace STROOP.Controls
             bool displayAsHex = displayAsHexNullable ?? !_displayAsHex;
             _setDisplayAsHex(displayAsHex);
         }
+
+        protected override object HandleNumberConversion(object value)
+        {
+            if (TypeUtilities.IsNumber(value)) return value;
+            return ParsingUtilities.ParseDouble(value);
+        }
     }
 }
