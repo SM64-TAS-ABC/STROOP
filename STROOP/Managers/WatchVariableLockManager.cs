@@ -56,6 +56,22 @@ namespace STROOP.Structs
             return firstCheckState;
         }
 
+        public static List<object> GetExistingLockValues(
+            WatchVariable variable, List<uint> addresses = null)
+        {
+            if (LockConfig.LockingDisabled) return null;
+            // don't get the locks with values, or there's a stack overflow error
+            List<WatchVariableLock> locks = variable.GetLocksWithoutValues(addresses);
+            List<object> returnValues = new List<object>();
+            foreach (WatchVariableLock lok in locks)
+            {
+                WatchVariableLock existingLock = _lockList.FirstOrDefault(l => l.Equals(lok));
+                object value = existingLock?.Value;
+                returnValues.Add(value);
+            }
+            return returnValues;
+        }
+
         public static void UpdateLockValues(
             WatchVariable variable, object newValue, List<uint> addresses = null)
         {
