@@ -12,7 +12,7 @@ namespace STROOP.Forms
     {
         public CoinRingDisplayForm()
         {
-
+            InitializeComponent();
         }
     }
 }
