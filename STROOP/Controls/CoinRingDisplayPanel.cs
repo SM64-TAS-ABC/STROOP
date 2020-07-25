@@ -18,13 +18,30 @@ namespace STROOP
 {
     public class CoinRingDisplayPanel : Panel
     {
+        private readonly Image _coinImage;
+
         public CoinRingDisplayPanel()
         {
-            this.DoubleBuffered = true;
+            DoubleBuffered = true;
+
+            _coinImage = Config.ObjectAssociations.GetObjectImage("Yellow Coin");
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            Rectangle totalRect = new Rectangle(new Point(), Size);
+            e.Graphics.DrawImage(_coinImage, totalRect);
+
+            for (int row = 0; row < 4; row++)
+            {
+                for (int col = 0; col < 24; col++)
+                {
+                    Rectangle rect = GetRectangle(row, col);
+                    e.Graphics.DrawImage(_coinImage, rect);
+                }
+            }
+
+
             //if (_guiDictionary == null) return;
             //InputImageGui gui = _guiDictionary[_inputDisplayType];
 
@@ -32,10 +49,10 @@ namespace STROOP
 
             //Rectangle scaledRect = new Rectangle(new Point(), Size).Zoom(gui.ControllerImage.Size);
             //e.Graphics.DrawImage(gui.ControllerImage, scaledRect);
-            
+
             //InputFrame inputs = _currentInputs;
             //if (inputs == null) return;
-            
+
             //if (inputs.IsButtonPressed_A) e.Graphics.DrawImage(gui.ButtonAImage, scaledRect);
             //if (inputs.IsButtonPressed_B) e.Graphics.DrawImage(gui.ButtonBImage, scaledRect);
             //if (inputs.IsButtonPressed_Z) e.Graphics.DrawImage(gui.ButtonZImage, scaledRect);
@@ -59,6 +76,18 @@ namespace STROOP
 
             //RectangleF controlStickRectange = new RectangleF(scaledRect.X + hOffset, scaledRect.Y - vOffset, scaledRect.Width, scaledRect.Height);
             //e.Graphics.DrawImage(gui.ControlStickImage, controlStickRectange);
+        }
+
+        private Rectangle GetRectangle(int row, int col)
+        {
+            bool tooWide = Size.Width > Size.Height * 6;
+            int totalWidth = tooWide ? Size.Height * 6 : Size.Width;
+            int totalHeight = tooWide ? Size.Height : Size.Width / 6;
+
+            int rectWidth = totalWidth / 24;
+            int rectHeight = totalHeight / 4;
+
+            return new Rectangle(row * rectHeight, col * rectWidth, rectWidth, rectHeight);
         }
     }
 }

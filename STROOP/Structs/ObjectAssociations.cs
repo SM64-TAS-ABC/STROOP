@@ -157,6 +157,13 @@ namespace STROOP.Structs
             return transparent ? assoc.TransparentImage : assoc.Image;
         }
 
+        public Image GetObjectImage(string objName)
+        {
+            ObjectBehaviorAssociation assoc = _objAssoc.FirstOrDefault(a => a.Name == objName);
+            if (assoc == null) return EmptyImage;
+            return assoc.Image;
+        }
+
         public Image GetObjectMapImage(BehaviorCriteria behaviorCriteria)
         {
             if (behaviorCriteria.BehaviorAddress == 0)
