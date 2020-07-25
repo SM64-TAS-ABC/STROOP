@@ -18,6 +18,29 @@ namespace STROOP
 {
     public class CoinRingDisplayPanel : Panel
     {
+        private static readonly List<uint> _coinRingSpawnerAddresses =
+            new List<uint>()
+            {
+                0x80349028,
+                0x8034C6C8,
+                0x80349748,
+                0x803499A8,
+                0x80349C08,
+            };
+
+        private static readonly List<(int row, int col)> _coinOffsets =
+            new List<(int row, int col)>()
+            {
+                (2,4),
+                (1,3),
+                (0,2),
+                (1,1),
+                (2,0),
+                (3,1),
+                (4,2),
+                (3,3),
+            };
+
         private readonly Image _coinImage;
 
         public CoinRingDisplayPanel()
@@ -29,26 +52,36 @@ namespace STROOP
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            for (int row = 0; row < 4; row++)
+            for (int coinRingIndex = 0; coinRingIndex < 5; coinRingIndex++)
             {
-                for (int col = 0; col < 24; col++)
+                uint coinRingSpawnerAddress = _coinRingSpawnerAddresses[coinRingIndex];
+                List<bool> coinPresents = new List<bool>();
+                for (uint mask = 0x01; mask <= 0x80; mask <<= 1)
                 {
-                    Rectangle rect = GetRectangle(row, col);
-                    e.Graphics.DrawImage(_coinImage, rect);
+                    coinPresents.Add(Config.Stream.GetByte(coinRingSpawnerAddress + 0xF7, mask: mask) == 0);
+                }
+
+                int coinRingCol = 6 * coinRingIndex;
+                for (int coinIndex = 0; coinIndex < coinPresents.Count; coinIndex++)
+                {
+                    if (!coinPresents[coinIndex]) continue;
+                    (int row, int relCol) = _coinOffsets[coinIndex];
+                    int col = coinRingCol + relCol;
+                    e.Graphics.DrawImage(_coinImage, GetRectangle(row, col));
                 }
             }
         }
 
         private Rectangle GetRectangle(int row, int col)
         {
-            bool tooWide = Size.Width > Size.Height * 6;
-            int totalWidth = tooWide ? Size.Height * 6 : Size.Width;
-            int totalHeight = tooWide ? Size.Height : Size.Width / 6;
+            double ratio = 29 / 5;
+            int unitsWide = 29;
 
-            int rectWidth = totalWidth / 24;
-            int rectHeight = totalHeight / 4;
+            bool tooWide = Size.Width > Size.Height * ratio;
+            double totalWidth = tooWide ? Size.Height * ratio : Size.Width;
+            int rectWidth = (int)(totalWidth / unitsWide);
 
-            return new Rectangle(col * rectWidth, row * rectHeight, rectWidth, rectHeight);
+            return new Rectangle(col * rectWidth, row * rectWidth, rectWidth, rectWidth);
         }
     }
 }
