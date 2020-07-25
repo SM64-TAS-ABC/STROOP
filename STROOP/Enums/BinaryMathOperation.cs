@@ -16,5 +16,6 @@ namespace STROOP.Structs
         Multiply,
         Divide,
         Modulo,
+        NonNegativeModulo,
     };
 }

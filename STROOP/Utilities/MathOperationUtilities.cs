@@ -24,6 +24,8 @@ namespace STROOP.Utilities
                     return useSlash ? "/" : "÷";
                 case BinaryMathOperation.Modulo:
                     return "%";
+                case BinaryMathOperation.NonNegativeModulo:
+                    return "%%";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -43,6 +45,8 @@ namespace STROOP.Utilities
                     return "Division";
                 case BinaryMathOperation.Modulo:
                     return "Modulo";
+                case BinaryMathOperation.NonNegativeModulo:
+                    return "Non-Negative Modulo";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -62,6 +66,8 @@ namespace STROOP.Utilities
                     return "Quotient";
                 case BinaryMathOperation.Modulo:
                     return "Modulo";
+                case BinaryMathOperation.NonNegativeModulo:
+                    return "Non-Negative Modulo";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
