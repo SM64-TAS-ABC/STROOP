@@ -134,6 +134,7 @@ namespace STROOP
                     "Add Gfx Vertices",
                     "Show Skribblio Words",
                     "Show Image Form",
+                    "Show Coin Ring Display Form",
                     "Test Something",
                     "Test Something Else",
                     "Format Subtitles",
@@ -177,6 +178,11 @@ namespace STROOP
                     {
                         ImageForm imageForm = new ImageForm();
                         imageForm.Show();
+                    },
+                    () =>
+                    {
+                        CoinRingDisplayForm form = new CoinRingDisplayForm();
+                        form.Show();
                     },
                     () => TestUtilities.TestSomething(),
                     () => TestUtilities.TestSomethingElse(),
