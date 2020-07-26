@@ -207,27 +207,33 @@ namespace STROOP.Controls
 
         public List<WatchVariableLock> GetLocks(List<uint> addresses = null)
         {
+            List<uint> baseAddressList = addresses ?? GetBaseAddressList();
             List<uint> addressList = GetAddressList(addresses);
             List<object> values = GetValues(addressList);
-            if (values.Count != addressList.Count) return new List<WatchVariableLock>();
+            if (values.Count != addressList.Count || values.Count != baseAddressList.Count)
+                return new List<WatchVariableLock>();
 
             List<WatchVariableLock> locks = new List<WatchVariableLock>();
             for (int i = 0; i < values.Count; i++)
             {
                 locks.Add(new WatchVariableLock(
-                    IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], SpecialType, _setterFunction, values[i]));
+                    IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], baseAddressList[i], SpecialType, _setterFunction, values[i]));
             }
             return locks;
         }
 
         public List<WatchVariableLock> GetLocksWithoutValues(List<uint> addresses = null)
         {
+            List<uint> baseAddressList = addresses ?? GetBaseAddressList();
             List<uint> addressList = GetAddressList(addresses);
+            if (baseAddressList.Count != addressList.Count)
+                return new List<WatchVariableLock>();
+
             List<WatchVariableLock> locks = new List<WatchVariableLock>();
             for (int i = 0; i < addressList.Count; i++)
             {
                 locks.Add(new WatchVariableLock(
-                    IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], SpecialType, _setterFunction, null));
+                    IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], baseAddressList[i], SpecialType, _setterFunction, null));
             }
             return locks;
         }

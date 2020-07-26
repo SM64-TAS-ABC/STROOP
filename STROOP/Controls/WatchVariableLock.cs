@@ -22,6 +22,7 @@ namespace STROOP.Controls
         public readonly uint? Mask;
         public readonly int? Shift;
         public readonly uint Address;
+        public readonly uint BaseAddress;
         public readonly string SpecialType;
         public readonly Func<object, uint, bool> SetterFunction;
 
@@ -34,6 +35,7 @@ namespace STROOP.Controls
             uint? mask,
             int? shift,
             uint address,
+            uint baseAddress,
             string specialType,
             Func<object, uint, bool> setterFunction,
             object value)
@@ -44,6 +46,7 @@ namespace STROOP.Controls
             Mask = mask;
             Shift = shift;
             Address = address;
+            BaseAddress = baseAddress;
             SpecialType = specialType;
             SetterFunction = setterFunction;
 
