@@ -292,8 +292,7 @@ namespace STROOP.Controls
 
         private List<UIntPtr> GetProcessAddressList(List<uint> addresses = null)
         {
-            List<uint> addressList = GetAddressList(addresses);
-            List<uint> ramAddressList = GetRamAddressList(false, addressList);
+            List<uint> ramAddressList = GetRamAddressList(false, addresses);
             return ramAddressList.ConvertAll(address => Config.Stream.GetAbsoluteAddress(address, ByteCount.Value));
         }
 
