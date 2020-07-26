@@ -22,21 +22,13 @@ namespace STROOP
         private static readonly List<uint> _coinRingSpawnerAddresses =
             new List<uint>()
             {
-                0x80349028,
-                0x8034C6C8,
-                0x80349748,
-                0x803499A8,
-                0x80349C08,
+                0x80347CB8,0x8034B358,0x803483D8,0x80348638,0x80348898
             };
 
         private static readonly List<uint> _middleCoinAddresses =
             new List<uint>()
             {
-                0x8034AF08,
-                0x8034C928,
-                0x8034B168,
-                0x8034B3C8,
-                0x8034B628,
+                0x80349B98,0x8034B5B8,0x80349DF8,0x8034A058,0x8034A2B8
             };
 
         private static readonly List<(int x, int y, int z)> _middleCoinPositions =
@@ -52,11 +44,7 @@ namespace STROOP
         private static readonly List<uint> _secretAddresses =
             new List<uint>()
             {
-                0x80349288,
-                0x8034B888,
-                0x80349E68,
-                0x8034A0C8,
-                0x8034A328,
+                0x80347F18,0x8034A518,0x80348AF8,0x80348D58,0x80348FB8
             };
 
         private static readonly List<(int row, int col)> _coinOffsets =
@@ -89,7 +77,7 @@ namespace STROOP
         protected override void OnPaint(PaintEventArgs e)
         {
             List<ObjectDataModel> secrets = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Secret");
-            List<ObjectDataModel> yellowCoins = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Yellow Coin");
+            List<ObjectDataModel> yellowCoins = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Yellow / Blue Coin");
 
             for (int coinRingIndex = 0; coinRingIndex < 5; coinRingIndex++)
             {
