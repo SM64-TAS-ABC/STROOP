@@ -66,29 +66,19 @@ namespace STROOP.Controls
             }
         }
 
-        private List<uint> BaseAddressList
-        {
-            get => WatchVariableUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType);
-        }
-
-        private List<uint> AddressList
-        {
-            get => BaseAddressList.ConvertAll(baseAddress => baseAddress + Offset);
-        }
-
         public List<uint> GetBaseAddressList()
         {
-            return BaseAddressList;
+            return WatchVariableUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType);
         }
 
         public List<uint> GetAddressList()
         {
-            return AddressList;
+            return GetBaseAddressList().ConvertAll(baseAddress => baseAddress + Offset);
         }
 
         public List<uint> CoalesceAddresses(List<uint> addresses)
         {
-            return addresses ?? AddressList;
+            return addresses ?? GetAddressList();
         }
 
         public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
