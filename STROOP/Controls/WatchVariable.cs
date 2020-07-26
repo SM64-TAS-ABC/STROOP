@@ -209,7 +209,7 @@ namespace STROOP.Controls
         {
             List<uint> baseAddressList = addresses ?? GetBaseAddressList();
             List<uint> addressList = GetAddressList(addresses);
-            List<object> values = GetValues(addressList);
+            List<object> values = GetValues(addresses);
             if (values.Count != addressList.Count || values.Count != baseAddressList.Count)
                 return new List<WatchVariableLock>();
 
