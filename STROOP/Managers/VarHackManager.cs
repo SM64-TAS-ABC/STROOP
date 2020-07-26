@@ -210,7 +210,7 @@ namespace STROOP.Managers
             }
             else
             {
-                List<uint> addressList = watchVar.CoalesceAddresses(control.FixedAddressList);
+                List<uint> addressList = watchVar.GetAddressList(control.FixedAddressList);
                 for (int i = 0; i < addressList.Count; i++)
                 {
                     string indexSuffix = addressList.Count > 1 ? (i + 1).ToString() : "";
