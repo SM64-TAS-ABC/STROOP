@@ -408,7 +408,7 @@ namespace STROOP.Controls
 
         public List<uint> GetCurrentAddressesToFix()
         {
-            return WatchVar.GetAddressList();
+            return WatchVar.GetBaseAddressList();
         }
 
 

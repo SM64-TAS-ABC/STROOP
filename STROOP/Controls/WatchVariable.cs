@@ -78,7 +78,7 @@ namespace STROOP.Controls
 
         public List<uint> CoalesceAddresses(List<uint> addresses)
         {
-            return addresses ?? GetAddressList();
+            return (addresses ?? GetBaseAddressList()).ConvertAll(baseAddress => baseAddress + Offset);
         }
 
         public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
@@ -299,7 +299,7 @@ namespace STROOP.Controls
             if (IsSpecial) return "(none)";
             List<uint> addressList = CoalesceAddresses(addresses);
             if (addressList.Count == 0) return "(none)";
-            List<uint> ramAddressList = GetRamAddressList(addressArea, addressList);
+            List<uint> ramAddressList = GetRamAddressList(addressArea, addresses);
             List<string> stringList = ramAddressList.ConvertAll(address => HexUtilities.FormatValue(address, 8));
             return string.Join(", ", stringList);
         }
