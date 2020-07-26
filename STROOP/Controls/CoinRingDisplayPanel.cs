@@ -74,6 +74,7 @@ namespace STROOP
 
         private readonly Image _coinImage;
         private readonly Image _secretImage;
+        private readonly List<Image> _numberImages;
 
         public CoinRingDisplayPanel()
         {
@@ -81,6 +82,8 @@ namespace STROOP
 
             _coinImage = Config.ObjectAssociations.GetObjectImage("Yellow Coin");
             _secretImage = Config.ObjectAssociations.GetObjectImage("Secret");
+            _numberImages = Enumerable.Range(0, 10).ToList().ConvertAll(
+                index => Config.ObjectAssociations.GetObjectImage("Number " + index));
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -90,6 +93,8 @@ namespace STROOP
 
             for (int coinRingIndex = 0; coinRingIndex < 5; coinRingIndex++)
             {
+                int coinCount = 0;
+
                 // Get whether each coin is present
                 uint coinRingSpawnerAddress = _coinRingSpawnerAddresses[coinRingIndex];
                 List<bool> coinPresents = new List<bool>();
@@ -106,6 +111,7 @@ namespace STROOP
                     (int row, int relCol) = _coinOffsets[coinIndex];
                     int col = coinRingCol + relCol;
                     e.Graphics.DrawImage(_coinImage, GetRectangle(row, col));
+                    coinCount++;
                 }
 
                 // Draw the middle coins
@@ -124,6 +130,7 @@ namespace STROOP
                     double row = 1.5;
                     int col = coinRingCol + 2;
                     e.Graphics.DrawImage(_coinImage, GetRectangle(row, col));
+                    coinCount++;
                 }
 
                 // Draw the secrets
@@ -134,12 +141,19 @@ namespace STROOP
                     int col = coinRingCol + 2;
                     e.Graphics.DrawImage(_secretImage, GetRectangle(row, col));
                 }
+
+                // Draw the number
+                {
+                    int row = 6;
+                    int col = coinRingCol + 2;
+                    e.Graphics.DrawImage(_numberImages[coinCount], GetRectangle(row, col));
+                }
             }
         }
 
         private Rectangle GetRectangle(double row, double col)
         {
-            double ratio = 29 / 5;
+            double ratio = 29 / 7;
             int unitsWide = 29;
 
             bool tooWide = Size.Width > Size.Height * ratio;
