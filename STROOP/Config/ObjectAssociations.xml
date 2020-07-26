@@ -204,6 +204,12 @@
     <MarkedBlack>
       <OverlayImage path="MarkedBlack.png"/>
     </MarkedBlack>
+    <Locked>
+      <OverlayImage path="Locked.png"/>
+    </Locked>
+    <LockDisabled>
+      <OverlayImage path="LockDisabled.png"/>
+    </LockDisabled>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <SpawnCode gfxId="0xD5"/>

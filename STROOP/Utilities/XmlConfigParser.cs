@@ -247,7 +247,8 @@ namespace STROOP.Utilities
                 collision1OverlayImagePath = "", collision2OverlayImagePath = "", collision3OverlayImagePath = "", collision4OverlayImagePath = "",
                 markedRedOverlayImagePath = "", markedOrangeOverlayImagePath = "", markedYellowOverlayImagePath = "", markedGreenOverlayImagePath = "",
                 markedLightBlueOverlayImagePath = "", markedBlueOverlayImagePath = "", markedPurpleOverlayImagePath = "", markedPinkOverlayImagePath = "",
-                markedGreyOverlayImagePath = "", markedWhiteOverlayImagePath = "", markedBlackOverlayImagePath = "";
+                markedGreyOverlayImagePath = "", markedWhiteOverlayImagePath = "", markedBlackOverlayImagePath = "",
+                lockedImagePath = "", lockDisabledImagePath = "";
             uint marioBehavior = 0;
 
             foreach (XElement element in doc.Root.Elements())
@@ -543,6 +544,14 @@ namespace STROOP.Utilities
                                 case "MarkedBlack":
                                     markedBlackOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
+
+                                case "Locked":
+                                    lockedImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "LockDisabled":
+                                    lockDisabledImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -692,6 +701,8 @@ namespace STROOP.Utilities
             objectSlotManagerGui.MarkedGreyObjectOverlayImage = Image.FromFile(overlayImageDir + markedGreyOverlayImagePath);
             objectSlotManagerGui.MarkedWhiteObjectOverlayImage = Image.FromFile(overlayImageDir + markedWhiteOverlayImagePath);
             objectSlotManagerGui.MarkedBlackObjectOverlayImage = Image.FromFile(overlayImageDir + markedBlackOverlayImagePath);
+            objectSlotManagerGui.LockedOverlayImage = Image.FromFile(overlayImageDir + lockedImagePath);
+            objectSlotManagerGui.LockDisabledOverlayImage = Image.FromFile(overlayImageDir + lockDisabledImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
             {

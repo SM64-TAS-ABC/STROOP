@@ -45,6 +45,8 @@ namespace STROOP.Structs
         public Image MarkedGreyObjectOverlayImage;
         public Image MarkedWhiteObjectOverlayImage;
         public Image MarkedBlackObjectOverlayImage;
+        public Image LockedOverlayImage;
+        public Image LockDisabledOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
@@ -89,6 +91,8 @@ namespace STROOP.Structs
             MarkedBlackObjectOverlayImage?.Dispose();
             MarkedGreyObjectOverlayImage?.Dispose();
             MarkedWhiteObjectOverlayImage?.Dispose();
+            LockedOverlayImage?.Dispose();
+            LockDisabledOverlayImage?.Dispose();
         }
     }
 }
