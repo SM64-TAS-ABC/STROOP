@@ -141,8 +141,9 @@ namespace STROOP
 
         private Rectangle GetRectangle(double row, double col)
         {
-            double ratio = 29 / 7;
             int unitsWide = 29;
+            int unitsHigh = 7;
+            double ratio = unitsWide / (double)unitsHigh;
 
             bool tooWide = Size.Width > Size.Height * ratio;
             double totalWidth = tooWide ? Size.Height * ratio : Size.Width;
