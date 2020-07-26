@@ -24,21 +24,18 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVertices()
         {
+            // failsafe to prevent filling the whole screen
+            if (!MapUtilities.IsAbleToShowUnitPrecision())
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
 
             int xMin = (int)Config.MapGraphics.MapViewXMin - 1;
             int xMax = (int)Config.MapGraphics.MapViewXMax + 1;
             int zMin = (int)Config.MapGraphics.MapViewZMin - 1;
             int zMax = (int)Config.MapGraphics.MapViewZMax + 1;
-
-            // failsafe to prevent filling the whole screen
-            int xDiff = xMax - xMin;
-            int zDiff = zMax - zMin;
-            if (xDiff > Config.MapGui.GLControlMap2D.Width ||
-                zDiff > Config.MapGui.GLControlMap2D.Height)
-            {
-                return new List<(float x, float y, float z)>();
-            }
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             for (int x = xMin; x <= xMax; x += 1)

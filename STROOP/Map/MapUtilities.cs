@@ -329,5 +329,19 @@ namespace STROOP.Map
                 trackBar.ContextMenuStrip.Items.Add(item);
             }
         }
+
+        public static bool IsAbleToShowUnitPrecision()
+        {
+            int xMin = (int)Config.MapGraphics.MapViewXMin - 1;
+            int xMax = (int)Config.MapGraphics.MapViewXMax + 1;
+            int zMin = (int)Config.MapGraphics.MapViewZMin - 1;
+            int zMax = (int)Config.MapGraphics.MapViewZMax + 1;
+
+            int xDiff = xMax - xMin;
+            int zDiff = zMax - zMin;
+
+            return xDiff < Config.MapGui.GLControlMap2D.Width &&
+                zDiff < Config.MapGui.GLControlMap2D.Height;
+        }
     }
 }
