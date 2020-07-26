@@ -23,7 +23,7 @@ namespace STROOP.Map
 
         public override void DrawOn2DControl()
         {
-            if (ShowTriUnits)
+            if (ShowTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
             {
                 DrawOn2DControlWithUnits();
             }
