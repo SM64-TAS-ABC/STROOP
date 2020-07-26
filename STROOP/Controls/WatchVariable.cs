@@ -76,6 +76,11 @@ namespace STROOP.Controls
             get => BaseAddressList.ConvertAll(baseAddress => baseAddress + Offset);
         }
 
+        private List<uint> GetAddressList(List<uint> addresses)
+        {
+            return addresses ?? AddressList;
+        }
+
         public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
             uint? offsetUS, uint? offsetJP, uint? offsetSH, uint? offsetEU, uint? offsetDefault, uint? mask, int? shift, bool handleMapping)
         {
@@ -146,7 +151,7 @@ namespace STROOP.Controls
 
         public List<object> GetValues(List<uint> addresses = null)
         {
-            List<uint> addressList = addresses ?? AddressList;
+            List<uint> addressList = GetAddressList(addresses);
             List<object> realValues = addressList.ConvertAll(
                 address => _getterFunction(address));
             List<object> lockValues = WatchVariableLockManager.GetExistingLockValues(this, addresses);
@@ -162,7 +167,7 @@ namespace STROOP.Controls
 
         public bool SetValue(object value, List<uint> addresses = null)
         {
-            List<uint> addressList = addresses ?? AddressList;
+            List<uint> addressList = GetAddressList(addresses);
             if (addressList.Count == 0) return false;
 
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
@@ -182,7 +187,7 @@ namespace STROOP.Controls
 
         public bool SetValues(List<object> values, List<uint> addresses = null)
         {
-            List<uint> addressList = addresses ?? AddressList;
+            List<uint> addressList = GetAddressList(addresses);
             if (addressList.Count == 0) return false;
             int minCount = Math.Min(addressList.Count, values.Count);
 
@@ -206,7 +211,7 @@ namespace STROOP.Controls
 
         public List<WatchVariableLock> GetLocks(List<uint> addresses = null)
         {
-            List<uint> addressList = addresses ?? AddressList;
+            List<uint> addressList = GetAddressList(addresses);
             List<object> values = GetValues(addressList);
             if (values.Count != addressList.Count) return new List<WatchVariableLock>();
 
@@ -221,7 +226,7 @@ namespace STROOP.Controls
 
         public List<WatchVariableLock> GetLocksWithoutValues(List<uint> addresses = null)
         {
-            List<uint> addressList = addresses ?? AddressList;
+            List<uint> addressList = GetAddressList(addresses);
             List<WatchVariableLock> locks = new List<WatchVariableLock>();
             for (int i = 0; i < addressList.Count; i++)
             {
@@ -233,7 +238,7 @@ namespace STROOP.Controls
 
         public List<Func<object, bool>> GetSetters(List<uint> addresses = null)
         {
-            List<uint> addressList = addresses ?? AddressList;
+            List<uint> addressList = GetAddressList(addresses);
             return addressList.ConvertAll(
                 address => (Func<object, bool>)((object value) => _setterFunction(value, address)));
         }
@@ -275,7 +280,7 @@ namespace STROOP.Controls
         public string GetProcessAddressListString(List<uint> addresses = null)
         {
             if (IsSpecial) return "(none)";
-            List<uint> addressList = addresses ?? AddressList;
+            List<uint> addressList = GetAddressList(addresses);
             if (addressList.Count == 0) return "(none)";
             List<ulong> processAddressList = GetProcessAddressList(addresses).ConvertAll(address => address.ToUInt64());
             List<string> stringList = processAddressList.ConvertAll(address => HexUtilities.FormatValue(address, address > 0xFFFFFFFFU ? 16 : 8));
@@ -284,7 +289,7 @@ namespace STROOP.Controls
 
         private List<UIntPtr> GetProcessAddressList(List<uint> addresses = null)
         {
-            List<uint> addressList = addresses ?? AddressList;
+            List<uint> addressList = GetAddressList(addresses);
             List<uint> ramAddressList = GetRamAddressList(false, addressList);
             return ramAddressList.ConvertAll(address => Config.Stream.GetAbsoluteAddress(address, ByteCount.Value));
         }
@@ -292,7 +297,7 @@ namespace STROOP.Controls
         public string GetRamAddressListString(bool addressArea = true, List<uint> addresses = null)
         {
             if (IsSpecial) return "(none)";
-            List<uint> addressList = addresses ?? AddressList;
+            List<uint> addressList = GetAddressList(addresses);
             if (addressList.Count == 0) return "(none)";
             List<uint> ramAddressList = GetRamAddressList(addressArea, addressList);
             List<string> stringList = ramAddressList.ConvertAll(address => HexUtilities.FormatValue(address, 8));
@@ -301,7 +306,7 @@ namespace STROOP.Controls
 
         private List<uint> GetRamAddressList(bool addressArea = true, List<uint> addresses = null)
         {
-            List<uint> addressList = addresses ?? AddressList;
+            List<uint> addressList = GetAddressList(addresses);
             return addressList.ConvertAll(address => GetRamAddress(address, addressArea));
         }
 
