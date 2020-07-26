@@ -182,7 +182,7 @@ namespace STROOP.Forms
             {
                 _textBoxCurrentValue.BackColor = COLOR_RED;
                 _fixedAddressLists = _watchVarWrappers.ConvertAll(
-                    watchVarWrapper => watchVarWrapper.GetCurrentAddresses());
+                    watchVarWrapper => watchVarWrapper.GetCurrentAddressesToFix());
             }
             else
             {

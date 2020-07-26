@@ -249,7 +249,7 @@ namespace STROOP.Controls
         public void ViewInMemoryTab()
         {
             if (WatchVar.IsSpecial) return;
-            List<uint> addressList = WatchVar.AddressList;
+            List<uint> addressList = WatchVar.CoalesceAddresses(_watchVarControl.FixedAddressList);
             if (addressList.Count == 0) return;
             uint address = addressList[0];
             Config.TabControlMain.SelectedTab = Config.TabControlMain.TabPages["tabPageMemory"];
@@ -406,9 +406,9 @@ namespace STROOP.Controls
             return WatchVar.SetValues(newValues, addresses);
         }
 
-        public List<uint> GetCurrentAddresses()
+        public List<uint> GetCurrentAddressesToFix()
         {
-            return WatchVar.AddressList;
+            return WatchVar.GetAddressList();
         }
 
 

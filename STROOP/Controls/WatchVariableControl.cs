@@ -763,7 +763,7 @@ namespace STROOP.Controls
             foreach (WatchVariableControl watchVar in watchVars)
             {
                 List<WatchVariableControl> newVarList = new List<WatchVariableControl>();
-                List<uint> addressList = watchVar.FixedAddressList ?? watchVar.WatchVarWrapper.GetCurrentAddresses();
+                List<uint> addressList = watchVar.FixedAddressList ?? watchVar.WatchVarWrapper.GetCurrentAddressesToFix();
                 List<List<uint>> addressesLists =
                     addToTabType == AddToTabTypeEnum.GroupedByVariable
                             || addToTabType == AddToTabTypeEnum.GroupedByBaseAddress
@@ -831,7 +831,7 @@ namespace STROOP.Controls
         {
             if (FixedAddressList == null)
             {
-                FixedAddressList = WatchVarWrapper.GetCurrentAddresses();
+                FixedAddressList = WatchVarWrapper.GetCurrentAddressesToFix();
             }
             else
             {
@@ -843,7 +843,7 @@ namespace STROOP.Controls
         {
             if (fix)
             {
-                FixedAddressList = WatchVarWrapper.GetCurrentAddresses();
+                FixedAddressList = WatchVarWrapper.GetCurrentAddressesToFix();
             }
             else
             {
