@@ -74,7 +74,8 @@ namespace STROOP.Controls
         public List<uint> GetAddressList(List<uint> addresses)
         {
             List<uint> baseAddresses = addresses ?? GetBaseAddressList();
-            return baseAddresses.ConvertAll(baseAddress => baseAddress + Offset);
+            uint offset = Offset;
+            return baseAddresses.ConvertAll(baseAddress => baseAddress + offset);
         }
 
         public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
