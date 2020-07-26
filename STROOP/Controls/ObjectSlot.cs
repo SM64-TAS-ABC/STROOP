@@ -76,7 +76,8 @@ namespace STROOP
             _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawModelOverlay,
             _drawFloorOverlay, _drawWallOverlay, _drawCeilingOverlay,
             _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawChildOverlay,
-            _drawCollision1Overlay, _drawCollision2Overlay, _drawCollision3Overlay, _drawCollision4Overlay;
+            _drawCollision1Overlay, _drawCollision2Overlay, _drawCollision3Overlay, _drawCollision4Overlay,
+            _drawLockedOverlay, _drawLockDisabledOverlay;
         int? _drawMarkedOverlay;
 
         public ObjectSlot(ObjectSlotsManager manager, int index, ObjectSlotManagerGui gui, Size size)
@@ -410,6 +411,8 @@ namespace STROOP
                 _drawCollision3Overlay,
                 _drawCollision4Overlay,
                 _drawMarkedOverlay,
+                _drawLockedOverlay,
+                _drawLockDisabledOverlay,
             };
         }
 
@@ -565,6 +568,10 @@ namespace STROOP
                 e.Graphics.DrawImage(_gui.Collision3OverlayImage, new Rectangle(new Point(), Size));
             if (_drawCollision4Overlay)
                 e.Graphics.DrawImage(_gui.Collision4OverlayImage, new Rectangle(new Point(), Size));
+            if (_drawLockedOverlay)
+                e.Graphics.DrawImage(_gui.LockedOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawLockDisabledOverlay)
+                e.Graphics.DrawImage(_gui.LockDisabledOverlayImage, new Rectangle(new Point(), Size));
         }
 
         public void Update(ObjectDataModel obj)
@@ -628,6 +635,25 @@ namespace STROOP
 
                 _drawMarkedOverlay = _manager.MarkedSlotsAddressesDictionary.ContainsKey(address.Value) ?
                     _manager.MarkedSlotsAddressesDictionary[address.Value] : (int?)null;
+
+                if (WatchVariableLockManager.ContainsAnyLocksForObject(address.Value))
+                {
+                    if (LockConfig.LockingDisabled)
+                    {
+                        _drawLockedOverlay = false;
+                        _drawLockDisabledOverlay = true;
+                    }
+                    else
+                    {
+                        _drawLockedOverlay = true;
+                        _drawLockDisabledOverlay = false;
+                    }
+                }
+                else
+                {
+                    _drawLockedOverlay = false;
+                    _drawLockDisabledOverlay = false;
+                }
             }
             else
             {
@@ -653,6 +679,8 @@ namespace STROOP
                 _drawCollision3Overlay = false;
                 _drawCollision4Overlay = false;
                 _drawMarkedOverlay = null;
+                _drawLockedOverlay = false;
+                _drawLockDisabledOverlay = false;
             }
             List<object> overlays = GetCurrentOverlayValues();
 

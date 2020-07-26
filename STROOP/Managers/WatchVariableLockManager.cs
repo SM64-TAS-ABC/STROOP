@@ -148,6 +148,11 @@ namespace STROOP.Structs
             return _lockList.Count > 0;
         }
 
+        public static bool ContainsAnyLocksForObject(uint objAddress)
+        {
+            return _lockList.Any(lok => lok.BaseAddress == objAddress);
+        }
+
         public static void Update()
         {
             if (LockConfig.LockingDisabled) return;
