@@ -106,10 +106,10 @@ namespace STROOP.Managers
             Label labelTriangleSelection = splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label;
             ControlUtilities.AddContextMenuStripFunctions(
                 labelTriangleSelection,
-                new List<string>() { "Update Norms" },
+                new List<string>() { "Update Based on Coordinates" },
                 new List<Action>()
                 {
-                    () => UpdateNorms(),
+                    () => UpdateBasedOnCoordinates(),
                 });
 
             (splitContainerTriangles.Panel1.Controls["buttonGotoV1"] as Button).Click
@@ -288,16 +288,24 @@ namespace STROOP.Managers
             };
         }
 
-        private void UpdateNorms()
+        private void UpdateBasedOnCoordinates()
         {
             if (_triangleAddress == 0) return;
             TriangleDataModel tri = new TriangleDataModel(_triangleAddress);
+
+            // update norms
             (float normX, float normY, float normZ, float normOffset) =
                 TriangleUtilities.GetNorms(tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
             Config.Stream.SetValue(normX, _triangleAddress + TriangleOffsetsConfig.NormX);
             Config.Stream.SetValue(normY, _triangleAddress + TriangleOffsetsConfig.NormY);
             Config.Stream.SetValue(normZ, _triangleAddress + TriangleOffsetsConfig.NormZ);
             Config.Stream.SetValue(normOffset, _triangleAddress + TriangleOffsetsConfig.NormOffset);
+
+            // update y bounds
+            short yMaxPlus5 = (short)(tri.GetMaxY() + 5);
+            short yMinMinus5 = (short)(tri.GetMinY() - 5);
+            Config.Stream.SetValue(yMaxPlus5, _triangleAddress + TriangleOffsetsConfig.YMax);
+            Config.Stream.SetValue(yMinMinus5, _triangleAddress + TriangleOffsetsConfig.YMin);
         }
 
         private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)
