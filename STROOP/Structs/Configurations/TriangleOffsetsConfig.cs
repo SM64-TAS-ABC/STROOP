@@ -13,8 +13,8 @@ namespace STROOP.Structs.Configurations
         public static readonly uint ExertionAngle = 0x03;
         public static readonly uint Flags = 0x04;
         public static readonly uint Room = 0x05;
-        public static readonly uint YMin = 0x06;
-        public static readonly uint YMax = 0x08;
+        public static readonly uint YMinMinus5 = 0x06;
+        public static readonly uint YMaxPlus5 = 0x08;
 
         private static readonly uint X1 = 0x0A;
         private static readonly uint Y1 = 0x0C;

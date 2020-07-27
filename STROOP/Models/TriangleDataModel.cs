@@ -99,8 +99,8 @@ namespace STROOP.Models
             Flags = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.Flags);
             Room = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.Room);
 
-            YMinMinus5 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMin);
-            YMaxPlus5 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMax);
+            YMinMinus5 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMinMinus5);
+            YMaxPlus5 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
 
             X1 = TriangleOffsetsConfig.GetX1(triangleAddress);
             Y1 = TriangleOffsetsConfig.GetY1(triangleAddress);

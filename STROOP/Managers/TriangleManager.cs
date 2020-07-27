@@ -304,8 +304,8 @@ namespace STROOP.Managers
             // update y bounds
             short yMaxPlus5 = (short)(tri.GetMaxY() + 5);
             short yMinMinus5 = (short)(tri.GetMinY() - 5);
-            Config.Stream.SetValue(yMaxPlus5, _triangleAddress + TriangleOffsetsConfig.YMax);
-            Config.Stream.SetValue(yMinMinus5, _triangleAddress + TriangleOffsetsConfig.YMin);
+            Config.Stream.SetValue(yMaxPlus5, _triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
+            Config.Stream.SetValue(yMinMinus5, _triangleAddress + TriangleOffsetsConfig.YMinMinus5);
         }
 
         private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)

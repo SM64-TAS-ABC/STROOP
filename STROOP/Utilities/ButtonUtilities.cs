@@ -991,8 +991,8 @@ namespace STROOP.Utilities
             success &= TriangleOffsetsConfig.SetY1(v1Y, triangleAddress);
             success &= TriangleOffsetsConfig.SetY2(v2Y, triangleAddress);
             success &= TriangleOffsetsConfig.SetY3(v3Y, triangleAddress);
-            success &= Config.Stream.SetValue(yMin, triangleAddress + TriangleOffsetsConfig.YMin);
-            success &= Config.Stream.SetValue(yMax, triangleAddress + TriangleOffsetsConfig.YMax);
+            success &= Config.Stream.SetValue(yMin, triangleAddress + TriangleOffsetsConfig.YMinMinus5);
+            success &= Config.Stream.SetValue(yMax, triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
             success &= Config.Stream.SetValue(normOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -1124,8 +1124,8 @@ namespace STROOP.Utilities
             success &= TriangleOffsetsConfig.SetX3(newX3, triangleAddress);
             success &= TriangleOffsetsConfig.SetY3(newY3, triangleAddress);
             success &= TriangleOffsetsConfig.SetZ3(newZ3, triangleAddress);
-            success &= Config.Stream.SetValue(newYMin, triangleAddress + TriangleOffsetsConfig.YMin);
-            success &= Config.Stream.SetValue(newYMax, triangleAddress + TriangleOffsetsConfig.YMax);
+            success &= Config.Stream.SetValue(newYMin, triangleAddress + TriangleOffsetsConfig.YMinMinus5);
+            success &= Config.Stream.SetValue(newYMax, triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -1176,8 +1176,8 @@ namespace STROOP.Utilities
             success &= TriangleOffsetsConfig.SetX3(newX3, triangleAddress);
             success &= TriangleOffsetsConfig.SetY3(newY3, triangleAddress);
             success &= TriangleOffsetsConfig.SetZ3(newZ3, triangleAddress);
-            success &= Config.Stream.SetValue(newYMin, triangleAddress + TriangleOffsetsConfig.YMin);
-            success &= Config.Stream.SetValue(newYMax, triangleAddress + TriangleOffsetsConfig.YMax);
+            success &= Config.Stream.SetValue(newYMin, triangleAddress + TriangleOffsetsConfig.YMinMinus5);
+            success &= Config.Stream.SetValue(newYMax, triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
