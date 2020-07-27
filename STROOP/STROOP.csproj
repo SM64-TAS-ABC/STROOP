@@ -440,6 +440,7 @@
     <Compile Include="Managers\QuarterFrameManager.cs" />
     <Compile Include="Map\MapEffectiveHitboxCylinderObject.cs" />
     <Compile Include="Map\MapEffectiveHurtboxCylinderObject.cs" />
+    <Compile Include="Map\MapPunchDetectorObject.cs" />
     <Compile Include="Map\MapHurtboxCylinderObject.cs" />
     <Compile Include="Map\MapMarioFloorArrowObject.cs" />
     <Compile Include="Map\MapMarioTwirlArrowObject.cs" />

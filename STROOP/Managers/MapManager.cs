@@ -267,6 +267,14 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemPunchDetector = new ToolStripMenuItem("Add Tracker for Punch Detector");
+            itemPunchDetector.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapPunchDetectorObject();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemHitboxHackTris = new ToolStripMenuItem("Add Tracker for Hitbox Hack Tris");
             itemHitboxHackTris.Click += (sender, e) =>
             {
@@ -348,6 +356,7 @@ namespace STROOP.Managers
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCUpFloorTris);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemPunchFloorTris);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemPunchDetector);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemHitboxHackTris);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemAggregatedPath);
