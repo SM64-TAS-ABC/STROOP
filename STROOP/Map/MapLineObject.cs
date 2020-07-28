@@ -27,7 +27,9 @@ namespace STROOP.Map
 
             List<(float x, float y, float z)> vertices = GetVertices();
             List<(float x, float z)> veriticesForControl =
-                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z));
+                ShouldConvertCoordsForControl() ?
+                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z)) :
+                vertices.ConvertAll(vertex => (vertex.x, vertex.z));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -72,6 +74,11 @@ namespace STROOP.Map
         public override MapDrawType GetDrawType()
         {
             return MapDrawType.Perspective;
+        }
+
+        protected virtual bool ShouldConvertCoordsForControl()
+        {
+            return true;
         }
     }
 }

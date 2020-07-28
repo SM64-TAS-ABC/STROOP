@@ -19,6 +19,9 @@ namespace STROOP.Map
         private readonly List<(float x, float y, float z)> _vertices;
         private bool _drawingEnabled;
 
+        private bool _mouseIsDown;
+        private (float x, float y, float z) _lastVertex;
+
         public MapDrawingObject()
             : base()
         {
@@ -27,6 +30,8 @@ namespace STROOP.Map
 
             _vertices = new List<(float x, float y, float z)>();
             _drawingEnabled = false;
+
+            _mouseIsDown = false;
         }
 
         protected override List<(float x, float y, float z)> GetVertices()
@@ -61,6 +66,39 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void NotifyMouseEvent(MouseEvent mouseEvent, bool isLeftButton, int mouseX, int mouseY)
+        {
+            switch (mouseEvent)
+            {
+                case MouseEvent.MouseDown:
+                    _mouseIsDown = true;
+                    break;
+                case MouseEvent.MouseMove:
+                    if (_mouseIsDown)
+                    {
+                        _vertices.Add(_lastVertex);
+                        _vertices.Add((mouseX, 0, mouseY));
+                    }
+                    break;
+                case MouseEvent.MouseUp:
+                    _mouseIsDown = false;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            _lastVertex = (mouseX, 0, mouseY);
+        }
+
+        protected override bool ShouldConvertCoordsForControl()
+        {
+            return false;
+        }
+
+        public override void DrawOn3DControl()
+        {
+            // do nothing
         }
     }
 }
