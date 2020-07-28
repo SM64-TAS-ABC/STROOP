@@ -21,7 +21,7 @@ namespace STROOP.Forms
 
             textBoxVariableName.Text = name;
             textBoxClassValue.Text = clazz;
-            textBoxBaseOffsetValue.Text = baseOffset;
+            textBoxBaseTypeOffsetValue.Text = baseOffset;
             textBoxTypeValue.Text = type;
             textBoxN64AddressValue.Text = n64Address;
             textBoxEmulatorAddressValue.Text = emulatorAddress;
