@@ -238,24 +238,37 @@ namespace STROOP.Map
             float pos15Z = Config.Stream.GetSingle(0x80372FE8);
             float pos15A = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
-            return new List<(float x, float y, float z, float angle, int tex)>()
+            int numQFrames = Config.Stream.GetInt32(0x80372E3C) / 0x30;
+
+            List<(float x, float y, float z, float angle, int tex)> allResults =
+                new List<(float x, float y, float z, float angle, int tex)>()
+                {
+                    (pos01X, pos01Y, pos01Z, pos01A, _purpleMarioTex), // initial
+                    (pos02X, pos02Y, pos02Z, pos02A, _blueMarioTex), // wall1
+                    (pos03X, pos03Y, pos03Z, pos03A, _greenMarioTex), // wall2
+                    (pos04X, pos04Y, pos04Z, pos04A, _orangeMarioTex), // qstep1
+                    (pos05X, pos05Y, pos05Z, pos05A, _blueMarioTex), // wall1
+                    (pos06X, pos06Y, pos06Z, pos06A, _greenMarioTex), // wall2
+                    (pos07X, pos07Y, pos07Z, pos07A, _orangeMarioTex), //qstep2
+                    (pos08X, pos08Y, pos08Z, pos08A, _blueMarioTex), // wall1
+                    (pos09X, pos09Y, pos09Z, pos09A, _greenMarioTex), // wall2
+                    (pos10X, pos10Y, pos10Z, pos10A, _orangeMarioTex), // qstep3
+                    (pos11X, pos11Y, pos11Z, pos11A, _blueMarioTex), // wall1
+                    (pos12X, pos12Y, pos12Z, pos12A, _greenMarioTex), // wall2
+                    (pos13X, pos13Y, pos13Z, pos13A, _orangeMarioTex), // qstep4
+                    (pos14X, pos14Y, pos14Z, pos14A, _blueMarioTex), // wall1
+                    (pos15X, pos15Y, pos15Z, pos15A, _redMarioTex), // wall2
+                };
+
+            List<(float x, float y, float z, float angle, int tex)> partialResults =
+                new List<(float x, float y, float z, float angle, int tex)>();
+            for (int i = 0; i < numQFrames * 3; i++)
             {
-                (pos01X, pos01Y, pos01Z, pos01A, _purpleMarioTex), // initial
-                (pos02X, pos02Y, pos02Z, pos02A, _blueMarioTex), // wall1
-                (pos03X, pos03Y, pos03Z, pos03A, _greenMarioTex), // wall2
-                (pos04X, pos04Y, pos04Z, pos04A, _orangeMarioTex), // qstep1
-                (pos05X, pos05Y, pos05Z, pos05A, _blueMarioTex), // wall1
-                (pos06X, pos06Y, pos06Z, pos06A, _greenMarioTex), // wall2
-                (pos07X, pos07Y, pos07Z, pos07A, _orangeMarioTex), //qstep2
-                (pos08X, pos08Y, pos08Z, pos08A, _blueMarioTex), // wall1
-                (pos09X, pos09Y, pos09Z, pos09A, _greenMarioTex), // wall2
-                (pos10X, pos10Y, pos10Z, pos10A, _orangeMarioTex), // qstep3
-                (pos11X, pos11Y, pos11Z, pos11A, _blueMarioTex), // wall1
-                (pos12X, pos12Y, pos12Z, pos12A, _greenMarioTex), // wall2
-                (pos13X, pos13Y, pos13Z, pos13A, _orangeMarioTex), // qstep4
-                (pos14X, pos14Y, pos14Z, pos14A, _blueMarioTex), // wall1
-                (pos15X, pos15Y, pos15Z, pos15A, _redMarioTex), // wall2
-            };
+                (float x, float y, float z, float angle, int tex) = allResults[i];
+                tex = i == numQFrames * 3 - 1 ? _redMarioTex : tex;
+                partialResults.Add((x, y, z, angle, tex));
+            }
+            return partialResults;
         }
 
         public override void Update()
