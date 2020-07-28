@@ -75,7 +75,6 @@ namespace STROOP.Map
             Config.MapGui.GLControlMap2D.MouseMove += OnMouseMove;
             Config.MapGui.GLControlMap2D.MouseWheel += OnScroll;
             Config.MapGui.GLControlMap2D.DoubleClick += OnDoubleClick;
-            Config.MapGui.GLControlMap2D.Cursor = Cursors.Hand;
 
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
             GL.Enable(EnableCap.Texture2D);
@@ -87,6 +86,9 @@ namespace STROOP.Map
 
         private void OnPaint()
         {
+            Config.MapGui.GLControlMap2D.Cursor =
+                Config.MapManager.NumDrawingsEnabled > 0 ? Cursors.Cross : Cursors.Hand;
+
             Config.MapGui.GLControlMap2D.MakeCurrent();
             UpdateViewport();
             UpdateMapView();
