@@ -274,7 +274,7 @@ namespace STROOP.Controls
             }
         }
 
-        public string GetBaseOffsetDescription()
+        public string GetBaseTypeOffsetDescription()
         {
             string offsetString = IsSpecial ? SpecialType : HexUtilities.FormatValue(Offset);
             return BaseAddressType + " + " + offsetString;
@@ -324,6 +324,13 @@ namespace STROOP.Controls
                 address = addressPtr.ToUInt32();
 
             return addressArea ? address | 0x80000000 : address & 0x0FFFFFFF;
+        }
+
+        public string GetBaseAddressListString()
+        {
+            List<uint> baseAddresses = GetBaseAddressList();
+            List<string> baseAddressesString = baseAddresses.ConvertAll(address => HexUtilities.FormatValue(address, 8));
+            return string.Join(",", baseAddressesString);
         }
     }
 }

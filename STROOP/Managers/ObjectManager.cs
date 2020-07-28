@@ -503,6 +503,7 @@ namespace STROOP.Managers
                 "(none)",
                 "Object",
                 "Relative + " + HexUtilities.FormatValue(_objects.First().Address, 8),
+                HexUtilities.FormatValue(0, 8).ToString(),
                 HexUtilities.FormatValue(_objects.First().Address, 8),
                 HexUtilities.FormatValue(Config.Stream.GetAbsoluteAddress(_objects.First().Address).ToUInt32(), 8));
             variableInfo.Show();

@@ -15,13 +15,15 @@ namespace STROOP.Forms
 {
     public partial class VariableViewerForm : Form
     {
-        public VariableViewerForm(string name, string clazz, string type, string baseOffset, string n64Address, string emulatorAddress)
+        public VariableViewerForm(
+            string name, string clazz, string type, string baseTypeOffset, string baseAddress, string n64Address, string emulatorAddress)
         {
             InitializeComponent();
 
             textBoxVariableName.Text = name;
             textBoxClassValue.Text = clazz;
-            textBoxBaseTypeOffsetValue.Text = baseOffset;
+            textBoxBaseTypeOffsetValue.Text = baseTypeOffset;
+            textBoxBaseAddressValue.Text = baseAddress;
             textBoxTypeValue.Text = type;
             textBoxN64AddressValue.Text = n64Address;
             textBoxEmulatorAddressValue.Text = emulatorAddress;
