@@ -323,6 +323,14 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemDrawing = new ToolStripMenuItem("Add Tracker for Drawing");
+            itemDrawing.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapDrawingObject();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip = new ContextMenuStrip();
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemAllObjects);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMarkedObjects);
@@ -364,6 +372,7 @@ namespace STROOP.Managers
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomPositionAngle);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemLineSegment);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemDrawing);
 
             Config.MapGui.buttonMapOptionsAddNewTracker.Click += (sender, e) =>
                 Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Show(Cursor.Position);
