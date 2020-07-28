@@ -70,6 +70,8 @@ namespace STROOP.Map
 
         public override void NotifyMouseEvent(MouseEvent mouseEvent, bool isLeftButton, int mouseX, int mouseY)
         {
+            (float x, float z) inGameCoords = MapUtilities.ConvertCoordsForInGame(mouseX, mouseY);
+            (float x, float y, float z) currentVertex = (inGameCoords.x, 0, inGameCoords.z);
             switch (mouseEvent)
             {
                 case MouseEvent.MouseDown:
@@ -79,7 +81,7 @@ namespace STROOP.Map
                     if (_mouseIsDown)
                     {
                         _vertices.Add(_lastVertex);
-                        _vertices.Add((mouseX, 0, mouseY));
+                        _vertices.Add(currentVertex);
                     }
                     break;
                 case MouseEvent.MouseUp:
@@ -88,17 +90,7 @@ namespace STROOP.Map
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            _lastVertex = (mouseX, 0, mouseY);
-        }
-
-        protected override bool ShouldConvertCoordsForControl()
-        {
-            return false;
-        }
-
-        public override void DrawOn3DControl()
-        {
-            // do nothing
+            _lastVertex = currentVertex;
         }
     }
 }

@@ -57,6 +57,25 @@ namespace STROOP.Map
             return (centerX, centerZ);
         }
 
+        /** Takes in control coordinates, outputs in-game coordinates. */
+        public static (float x, float z) ConvertCoordsForInGame(float x, float z)
+        {
+            float xOffset = x - Config.MapGui.GLControlMap2D.Width / 2;
+            float zOffset = z - Config.MapGui.GLControlMap2D.Height / 2;
+            float xOffsetScaled = xOffset / Config.MapGraphics.MapViewScaleValue;
+            float zOffsetScaled = zOffset / Config.MapGraphics.MapViewScaleValue;
+            (float xOffsetScaledRotated, float zOffsetScaledRotated) =
+                ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
+                    xOffsetScaled,
+                    zOffsetScaled,
+                    0,
+                    0,
+                    Config.MapGraphics.MapViewAngleValue);
+            float centerX = xOffsetScaledRotated + Config.MapGraphics.MapViewCenterXValue;
+            float centerZ = zOffsetScaledRotated + Config.MapGraphics.MapViewCenterZValue;
+            return (centerX, centerZ);
+        }
+
         /** Takes in in-game coordinates, outputs control coordinates. */
         public static (float x, float y, float z) ConvertCoordsForControl(float x, float y, float z)
         {
