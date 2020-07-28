@@ -53,6 +53,7 @@ namespace STROOP.Map
                 {
                     _drawingEnabled = !_drawingEnabled;
                     itemEnableDrawing.Checked = _drawingEnabled;
+                    Config.MapManager.NotifyDrawingEnabledChange(_drawingEnabled);
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();

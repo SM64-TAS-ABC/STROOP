@@ -200,5 +200,16 @@ namespace STROOP.Map
                 }
             }
         }
+
+        public void NotifyMouseEvent(MouseEvent mouseEvent, bool isLeftButton, int mouseX, int mouseY)
+        {
+            lock (_objectLock)
+            {
+                foreach (MapTracker mapTracker in Controls)
+                {
+                    mapTracker.NotifyMouseEvent(mouseEvent, isLeftButton, mouseX, mouseY);
+                }
+            }
+        }
     }
 }

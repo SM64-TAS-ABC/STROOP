@@ -24,6 +24,12 @@ namespace STROOP.Managers
         public bool PauseMapUpdating = false;
         private bool _isLoaded2D = false;
         private bool _isLoaded3D = false;
+        public int NumDrawingsEnabled = 0;
+
+        public void NotifyDrawingEnabledChange(bool enabled)
+        {
+            NumDrawingsEnabled += enabled ? +1 : -1;
+        }
 
         public MapManager(string varFilePath)
             : base(varFilePath, Config.MapGui.watchVariablePanelMap3DVars)

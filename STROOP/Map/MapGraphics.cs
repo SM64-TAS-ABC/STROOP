@@ -371,6 +371,13 @@ namespace STROOP.Map
 
         private void OnMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            if (Config.MapManager.NumDrawingsEnabled > 0)
+            {
+                Config.MapGui.flowLayoutPanelMapTrackers.NotifyMouseEvent(
+                    MouseEvent.MouseDown, e.Button == MouseButtons.Left, e.X, e.Y);
+                return;
+            }
+
             switch (e.Button)
             {
                 case MouseButtons.Left:
@@ -391,6 +398,13 @@ namespace STROOP.Map
 
         private void OnMouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            if (Config.MapManager.NumDrawingsEnabled > 0)
+            {
+                Config.MapGui.flowLayoutPanelMapTrackers.NotifyMouseEvent(
+                    MouseEvent.MouseUp, e.Button == MouseButtons.Left, e.X, e.Y);
+                return;
+            }
+
             switch (e.Button)
             {
                 case MouseButtons.Left:
@@ -404,6 +418,13 @@ namespace STROOP.Map
 
         private void OnMouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            if (Config.MapManager.NumDrawingsEnabled > 0)
+            {
+                Config.MapGui.flowLayoutPanelMapTrackers.NotifyMouseEvent(
+                    MouseEvent.MouseMove, e.Button == MouseButtons.Left, e.X, e.Y);
+                return;
+            }
+
             if (_isTranslating)
             {
                 int pixelDiffX = e.X - _translateStartMouseX;
@@ -436,6 +457,11 @@ namespace STROOP.Map
 
         private void OnDoubleClick(object sender, EventArgs e)
         {
+            if (Config.MapManager.NumDrawingsEnabled > 0)
+            {
+                return;
+            }
+
             Config.MapGui.radioButtonMapControllersScaleCourseDefault.Checked = true;
             Config.MapGui.radioButtonMapControllersCenterBestFit.Checked = true;
             Config.MapGui.radioButtonMapControllersAngle32768.Checked = true;

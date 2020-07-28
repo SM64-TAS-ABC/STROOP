@@ -789,5 +789,13 @@ namespace STROOP.Map
         {
             return string.Join(", ", _mapObjectList);
         }
+
+        public void NotifyMouseEvent(MouseEvent mouseEvent, bool isLeftButton, int mouseX, int mouseY)
+        {
+            foreach (MapObject mapObj in _mapObjectList)
+            {
+                mapObj.NotifyMouseEvent(mouseEvent, isLeftButton, mouseX, mouseY);
+            }
+        }
     }
 }
