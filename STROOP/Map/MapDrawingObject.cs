@@ -61,8 +61,15 @@ namespace STROOP.Map
                     Config.MapManager.NotifyDrawingEnabledChange(_drawingEnabled);
                 };
 
+                ToolStripMenuItem itemClearDrawing = new ToolStripMenuItem("Clear Drawing");
+                itemClearDrawing.Click += (sender, e) =>
+                {
+                    _vertices.Clear();
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemEnableDrawing);
+                _contextMenuStrip.Items.Add(itemClearDrawing);
             }
 
             return _contextMenuStrip;
@@ -78,7 +85,7 @@ namespace STROOP.Map
                     _mouseIsDown = true;
                     break;
                 case MouseEvent.MouseMove:
-                    if (_mouseIsDown)
+                    if (_drawingEnabled && _mouseIsDown)
                     {
                         _vertices.Add(_lastVertex);
                         _vertices.Add(currentVertex);
