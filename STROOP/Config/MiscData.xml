@@ -6,7 +6,7 @@
   <Data groupList="Basic,Coin" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" offsetSH="0x8038BBC0" offsetEU="0x80389C60" base="Relative">RNG Value</Data>
   <Data groupList="Basic,Coin" base="None" specialType="RngIndex">RNG Index</Data>
   <Data groupList="Basic" base="None" specialType="RngIndexMod4">RNG Index Mod 4</Data>
-  <Data groupList="Basic" type="int" offsetUS="0x80367C60" offsetJP="0x80367C60" base="Relative">Num Non-Obj Rng Calls</Data>
+  <Data groupList="Basic" type="int" offsetUS="0x80367C60" offsetJP="0x80367C60" base="Relative">Num Non-Obj RNG Calls</Data>
   <Data groupList="Basic" base="None" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
 
   <Data groupList="Coin" base="LastCoin" offset="0xCA" type="ushort" color="Orange">Coin RNG Value</Data>
