@@ -15,19 +15,30 @@ namespace STROOP.Structs
 
         public static readonly int MaxSlots = 240;
 
+        public static readonly Color Pink = Color.FromArgb(255, 000, 165);
+        public static readonly Color Red = Color.FromArgb(255, 000, 000);
+        public static readonly Color RedOrange = Color.FromArgb(255, 084, 000);
+        public static readonly Color Orange = Color.FromArgb(255, 161, 000);
+        public static readonly Color Yellow = Color.FromArgb(255, 246, 000);
+        public static readonly Color Green = Color.FromArgb(016, 255, 000);
+        public static readonly Color LightBlue = Color.FromArgb(000, 255, 233);
+        public static readonly Color Blue = Color.FromArgb(000, 021, 255);
+        public static readonly Color Purple = Color.FromArgb(128, 000, 255);
+        public static readonly Color Brown = Color.FromArgb(155, 095, 028);
+
         private static readonly Dictionary<byte, Color> ProcessingGroupsColor =
             new Dictionary<byte, Color>()
             {
-                [0x0B] = Color.FromArgb(255, 000, 165), // pink
-                [0x09] = Color.FromArgb(255, 000, 000), // red
-                [0x0A] = Color.FromArgb(255, 084, 000), // red orange
-                [0x00] = Color.FromArgb(255, 161, 000), // orange
-                [0x05] = Color.FromArgb(255, 246, 000), // yellow
-                [0x04] = Color.FromArgb(016, 255, 000), // green
-                [0x02] = Color.FromArgb(000, 255, 233), // light blue
-                [0x06] = Color.FromArgb(000, 021, 255), // dark blue
-                [0x08] = Color.FromArgb(128, 000, 255), // purple
-                [0x0C] = Color.FromArgb(155, 095, 028), // brown
+                [0x0B] = Pink,
+                [0x09] = Red,
+                [0x0A] = RedOrange,
+                [0x00] = Orange,
+                [0x05] = Yellow,
+                [0x04] = Green,
+                [0x02] = LightBlue,
+                [0x06] = Blue,
+                [0x08] = Purple,
+                [0x0C] = Brown,
             };
         public static readonly Color VacantSlotColor = Color.FromArgb(170, 170, 170); // grey
         public static Color GetProcessingGroupColor(byte? group)
