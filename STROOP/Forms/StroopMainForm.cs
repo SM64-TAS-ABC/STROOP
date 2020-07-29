@@ -25,7 +25,6 @@ namespace STROOP
     {
         const string _version = "v1.0.1";
         
-        ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         List<InputImageGui> _inputImageGuiList = new List<Structs.InputImageGui>();
         FileImageGui _fileImageGui = new FileImageGui();
         ScriptParser _scriptParser;
@@ -351,7 +350,7 @@ namespace STROOP
                 trackBarMapFov = trackBarMapFov,
             };
 
-            
+
             M64Gui m64Gui = new M64Gui()
             {
                 LabelFileName = labelM64FileName,
@@ -456,13 +455,7 @@ namespace STROOP
             Config.M64Manager = new M64Manager(m64Gui);
 
             // Create Object Slots
-            _slotManagerGui.TabControl = tabControlMain;
-            _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
-            _slotManagerGui.FlowLayoutContainer = WatchVariablePanelObjects;
-            _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
-            _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
-            _slotManagerGui.SelectionMethodComboBox = comboBoxSelectionMethod;
-            Config.ObjectSlotsManager = new ObjectSlotsManager(_slotManagerGui, tabControlMain);
+            Config.ObjectSlotsManager = new ObjectSlotsManager(Config.ObjectSlotManagerGui, tabControlMain);
         }
 
         private void _sm64Stream_WarnReadonlyOff(object sender, EventArgs e)
@@ -499,6 +492,16 @@ namespace STROOP
 
         public void LoadConfig(MainLoadingForm loadingForm)
         {
+            Config.ObjectSlotManagerGui = new ObjectSlotManagerGui()
+            {
+                TabControl = tabControlMain,
+                LockLabelsCheckbox = checkBoxObjLockLabels,
+                FlowLayoutContainer = WatchVariablePanelObjects,
+                SortMethodComboBox = comboBoxSortMethod,
+                LabelMethodComboBox = comboBoxLabelMethod,
+                SelectionMethodComboBox = comboBoxSelectionMethod,
+            };
+
             int statusNum = 0;
 
             // Read configuration
@@ -508,7 +511,7 @@ namespace STROOP
             loadingForm.UpdateStatus("Loading Miscellaneous Data", statusNum++);
             loadingForm.UpdateStatus("Loading Object Data", statusNum++);
             loadingForm.UpdateStatus("Loading Object Associations", statusNum++);
-            Config.ObjectAssociations = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", _slotManagerGui);
+            Config.ObjectAssociations = XmlConfigParser.OpenObjectAssoc(@"Config/ObjectAssociations.xml", Config.ObjectSlotManagerGui);
             loadingForm.UpdateStatus("Loading Mario Data", statusNum++);
             loadingForm.UpdateStatus("Loading Camera Data", statusNum++);
             loadingForm.UpdateStatus("Loading Actions Data", statusNum++);
