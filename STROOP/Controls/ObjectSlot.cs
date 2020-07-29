@@ -708,7 +708,10 @@ namespace STROOP
                     break;
             }
 
-            Color mainColor = ObjectSlotsConfig.GetProcessingGroupColor(CurrentObject?.CurrentProcessGroup);
+            Color mainColor =
+                (SlotLabelType)Config.ObjectSlotManagerGui.LabelMethodComboBox.SelectedItem == SlotLabelType.RngUsage ?
+                ObjectRngUtilities.GetColor(CurrentObject) :
+                ObjectSlotsConfig.GetProcessingGroupColor(CurrentObject?.CurrentProcessGroup);
             Color textColor = _manager.LabelsLocked ? Color.Blue : Color.Black;
             string text = CurrentObject != null ? _manager.SlotLabelsForObjects[CurrentObject] : "";
 
