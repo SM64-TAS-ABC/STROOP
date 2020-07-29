@@ -3399,6 +3399,8 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="KoopaTheQuickHSpeedTarget">H Speed Target</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="KoopaTheQuickHSpeedChange">H Speed Change</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="KoopaTheQuick1Progress">Progress</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="KoopaTheQuick1ProgressOld">Progress Old</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="KoopaTheQuick1ProgressDiff">Progress Diff</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004580" name="Koopa the Quick #2" subType="3">
     <SpawnCode gfxId="0x68"/>

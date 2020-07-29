@@ -1250,6 +1250,25 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("KoopaTheQuick1ProgressOld",
+                ((uint objAddress) =>
+                {
+                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    double progressOld = PlushUtilities.GetProgressValue(globalTimer);
+                    return progressOld;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("KoopaTheQuick1ProgressDiff",
+                ((uint objAddress) =>
+                {
+                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    double progressOld = PlushUtilities.GetProgressValue(globalTimer);
+                    double progressNew = TableConfig.KoopaTheQuick1Waypoints.GetProgress(objAddress);
+                    return progressNew - progressOld;
+                },
+                DEFAULT_SETTER));
+
             // Object specific vars - Fly Guy
 
             _dictionary.Add("FlyGuyZone",

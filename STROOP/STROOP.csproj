@@ -700,6 +700,7 @@
     <Compile Include="Utilities\InGameFunctionCall.cs" />
     <Compile Include="Utilities\MathOperationUtilities.cs" />
     <Compile Include="Calculators\WallDisplacementCalculator.cs" />
+    <Compile Include="Utilities\PlushUtilities.cs" />
     <Compile Include="Utilities\SegmentationUtilities.cs" />
     <Compile Include="Utilities\BoolUtilities.cs" />
     <Compile Include="Utilities\CamHackUtilities.cs" />
