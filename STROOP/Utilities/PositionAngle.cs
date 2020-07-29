@@ -51,6 +51,7 @@ namespace STROOP.Utilities
             FirstHome,
             LastHome,
             GoombaProjection,
+            KoopaTheQuick,
             Ghost,
             Tri,
             ObjTri,
@@ -205,6 +206,7 @@ namespace STROOP.Utilities
         public static PositionAngle Mario = new PositionAngle(PositionAngleTypeEnum.Mario);
         public static PositionAngle Holp = new PositionAngle(PositionAngleTypeEnum.Holp);
         public static PositionAngle Selected = new PositionAngle(PositionAngleTypeEnum.Selected);
+        public static PositionAngle KoopaTheQuick = new PositionAngle(PositionAngleTypeEnum.KoopaTheQuick);
         public static PositionAngle Ghost = new PositionAngle(PositionAngleTypeEnum.Ghost);
         public static PositionAngle Camera = new PositionAngle(PositionAngleTypeEnum.Camera);
         public static PositionAngle CameraFocus = new PositionAngle(PositionAngleTypeEnum.CameraFocus);
@@ -357,6 +359,10 @@ namespace STROOP.Utilities
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
                 if (!address.HasValue) return null;
                 return GoombaProjection(address.Value);
+            }
+            else if (parts.Count == 1 && parts[0] == "koopathequick")
+            {
+                return KoopaTheQuick;
             }
             else if (parts.Count == 1 && parts[0] == "ghost")
             {
@@ -603,6 +609,8 @@ namespace STROOP.Utilities
                         return GetObjectValue(Text, false, CoordinateAngle.X, home: true);
                     case PositionAngleTypeEnum.GoombaProjection:
                         return GetGoombaProjection(Address.Value).x;
+                    case PositionAngleTypeEnum.KoopaTheQuick:
+                        return PlushUtilities.GetX();
                     case PositionAngleTypeEnum.Ghost:
                         return Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.XOffset);
                     case PositionAngleTypeEnum.Tri:
@@ -703,6 +711,8 @@ namespace STROOP.Utilities
                         return GetObjectValue(Text, false, CoordinateAngle.Y, home: true);
                     case PositionAngleTypeEnum.GoombaProjection:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.YOffset);
+                    case PositionAngleTypeEnum.KoopaTheQuick:
+                        return PlushUtilities.GetY();
                     case PositionAngleTypeEnum.Ghost:
                         return Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YOffset);
                     case PositionAngleTypeEnum.Tri:
@@ -803,6 +813,8 @@ namespace STROOP.Utilities
                         return GetObjectValue(Text, false, CoordinateAngle.Z, home: true);
                     case PositionAngleTypeEnum.GoombaProjection:
                         return GetGoombaProjection(Address.Value).z;
+                    case PositionAngleTypeEnum.KoopaTheQuick:
+                        return PlushUtilities.GetZ();
                     case PositionAngleTypeEnum.Ghost:
                         return Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.ZOffset);
                     case PositionAngleTypeEnum.Tri:
@@ -903,6 +915,8 @@ namespace STROOP.Utilities
                         return GetObjectValue(Text, false, CoordinateAngle.Angle, home: true);
                     case PositionAngleTypeEnum.GoombaProjection:
                         return MoreMath.NormalizeAngleUshort(Config.Stream.GetInt32(Address.Value + ObjectConfig.GoombaTargetAngleOffset));
+                    case PositionAngleTypeEnum.KoopaTheQuick:
+                        return PlushUtilities.GetAngle();
                     case PositionAngleTypeEnum.Ghost:
                         return Config.Stream.GetUInt16(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawFacingOffset);
                     case PositionAngleTypeEnum.Tri:
@@ -1196,6 +1210,8 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, Text, false, CoordinateAngle.X, home: true);
                 case PositionAngleTypeEnum.GoombaProjection:
                     return false;
+                case PositionAngleTypeEnum.KoopaTheQuick:
+                    return false;
                 case PositionAngleTypeEnum.Ghost:
                     return false;
                 case PositionAngleTypeEnum.Tri:
@@ -1296,6 +1312,8 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, Text, false, CoordinateAngle.Y, home: true);
                 case PositionAngleTypeEnum.GoombaProjection:
                     return false;
+                case PositionAngleTypeEnum.KoopaTheQuick:
+                    return false;
                 case PositionAngleTypeEnum.Ghost:
                     return false;
                 case PositionAngleTypeEnum.Tri:
@@ -1395,6 +1413,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.LastHome:
                     return SetObjectValue(value, Text, false, CoordinateAngle.Z, home: true);
                 case PositionAngleTypeEnum.GoombaProjection:
+                    return false;
+                case PositionAngleTypeEnum.KoopaTheQuick:
                     return false;
                 case PositionAngleTypeEnum.Ghost:
                     return false;
@@ -1504,6 +1524,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.LastHome:
                     return SetObjectValue(value, Text, false, CoordinateAngle.Angle, home: true);
                 case PositionAngleTypeEnum.GoombaProjection:
+                    return false;
+                case PositionAngleTypeEnum.KoopaTheQuick:
                     return false;
                 case PositionAngleTypeEnum.Ghost:
                     return false;
