@@ -18,7 +18,7 @@ namespace STROOP.Utilities
             int? objIndex = ObjectUtilities.GetObjectIndex(obj.Address);
             if (!objIndex.HasValue) return null;
             uint memoryOffset = (uint)objIndex.Value * 4;
-            return Config.Stream.GetInt32(MarioConfig.StructAddress + memoryOffset);
+            return Config.Stream.GetInt32(0x803678A0 + memoryOffset);
         }
 
         public static string GetNumRngUsagesAsString(ObjectDataModel obj)
