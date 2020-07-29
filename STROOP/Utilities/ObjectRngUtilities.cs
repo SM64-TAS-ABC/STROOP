@@ -31,19 +31,8 @@ namespace STROOP.Utilities
         {
             int? numRngUsages = GetNumRngUsages(obj);
             if (!numRngUsages.HasValue) return ObjectSlotsConfig.VacantSlotColor;
-            List<Color> colors = new List<Color>()
-            {
-                Color.White,
-                Color.Red,
-                Color.Orange,
-                Color.Yellow,
-                Color.Green,
-                Color.LightBlue,
-                Color.DarkBlue,
-                Color.Purple,
-            };
-            int index = MoreMath.Clamp(numRngUsages.Value, 0, colors.Count - 1);
-            return colors[index];
+            int index = MoreMath.Clamp(numRngUsages.Value, 0, ObjectSlotsConfig.RngUsageColors.Count - 1);
+            return ObjectSlotsConfig.RngUsageColors[index];
         }
     }
 }

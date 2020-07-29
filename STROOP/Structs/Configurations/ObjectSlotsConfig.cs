@@ -26,7 +26,7 @@ namespace STROOP.Structs
         public static readonly Color Purple = Color.FromArgb(128, 000, 255);
         public static readonly Color Brown = Color.FromArgb(155, 095, 028);
 
-        private static readonly Dictionary<byte, Color> ProcessingGroupsColor =
+        public static readonly Dictionary<byte, Color> ProcessingGroupsColor =
             new Dictionary<byte, Color>()
             {
                 [0x0B] = Pink,
@@ -49,6 +49,17 @@ namespace STROOP.Structs
                 return VacantSlotColor;
         }
         public static readonly List<byte> ProcessingGroups = ProcessingGroupsColor.Keys.ToList();
+
+        public static readonly List<Color> RngUsageColors = new List<Color>()
+        {
+            Color.White,
+            Red,
+            Orange,
+            Yellow,
+            LightBlue,
+            Blue,
+            Purple,
+        };
 
         public static uint ProcessGroupsStartAddress { get => RomVersionConfig.SwitchMap(ProcessGroupsStartAddressUS, ProcessGroupsStartAddressJP, ProcessGroupsStartAddressSH, ProcessGroupsStartAddressEU); }
         public static readonly uint ProcessGroupsStartAddressUS = 0x8033CBE0;
