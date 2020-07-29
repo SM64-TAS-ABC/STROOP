@@ -56,6 +56,7 @@ namespace STROOP.Structs
             Red,
             Orange,
             Yellow,
+            Green,
             LightBlue,
             Blue,
             Purple,
