@@ -507,11 +507,7 @@ namespace STROOP.Managers
                         + (SavedSettingsConfig.StartSlotIndexsFromOne ? 1 : 0));
 
                 case SlotLabelType.RngUsage:
-                    int? objIndex = ObjectUtilities.GetObjectIndex(obj.Address);
-                    if (!objIndex.HasValue) return "";
-                    uint memoryOffset = (uint)objIndex.Value * 4;
-                    int rngUsage = Config.Stream.GetInt32(MarioConfig.StructAddress + memoryOffset);
-                    return rngUsage.ToString();
+                    return ObjectRngUtilities.GetNumRngUsagesAsString(obj);
 
                 default:
                     return "";
