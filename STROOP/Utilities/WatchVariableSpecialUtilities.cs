@@ -1254,7 +1254,7 @@ namespace STROOP.Structs
                 ((uint objAddress) =>
                 {
                     uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                    double progressOld = PlushUtilities.GetProgressValue(globalTimer);
+                    double progressOld = PlushUtilities.GetProgress(globalTimer);
                     return progressOld;
                 },
                 DEFAULT_SETTER));
@@ -1263,7 +1263,7 @@ namespace STROOP.Structs
                 ((uint objAddress) =>
                 {
                     uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                    double progressOld = PlushUtilities.GetProgressValue(globalTimer);
+                    double progressOld = PlushUtilities.GetProgress(globalTimer);
                     double progressNew = TableConfig.KoopaTheQuick1Waypoints.GetProgress(objAddress);
                     return progressNew - progressOld;
                 },
