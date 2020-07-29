@@ -25,7 +25,7 @@ namespace STROOP.Managers
 
         public enum TabType { Object, Map, Model, Memory, Custom, Warp, TAS, CamHack, Other };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
-        public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex };
+        public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex, RngUsage };
         public enum SelectionMethodType { Clicked, Held, StoodOn, Interaction, Used, Floor, Wall, Ceiling, Closest };
         public enum ClickType { ObjectClick, MapClick, ModelClick, MemoryClick, CamHackClick, MarkClick };
 
@@ -505,6 +505,13 @@ namespace STROOP.Managers
 
                     return String.Format("VS{0}", vacantSlotIndex.Value
                         + (SavedSettingsConfig.StartSlotIndexsFromOne ? 1 : 0));
+
+                case SlotLabelType.RngUsage:
+                    int? objIndex = ObjectUtilities.GetObjectIndex(obj.Address);
+                    if (!objIndex.HasValue) return "";
+                    uint memoryOffset = (uint)objIndex.Value * 4;
+                    int rngUsage = Config.Stream.GetInt32(MarioConfig.StructAddress + memoryOffset);
+                    return rngUsage.ToString();
 
                 default:
                     return "";
