@@ -14,4 +14,5 @@
   <Hack name="Re-enable Debug Controls (U)" path="ReenableDebugControlsU.hck" />
   <Hack name="Previous Positions" path="PreviousPositionsHack.hck" />
   <Hack name="Num RNG Usages (U)" path="NumRngUsagesU.hck" />
+  <Hack name="Num RNG Usages (J)" path="NumRngUsagesJ.hck" />
 </Hacks>
