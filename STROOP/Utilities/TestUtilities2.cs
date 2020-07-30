@@ -17,6 +17,9 @@ namespace STROOP.Utilities
 {
     public static class TestUtilities2
     {
-        
+        public static void Test()
+        {
+
+        }
     }
 } 

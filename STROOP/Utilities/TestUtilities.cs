@@ -25,6 +25,7 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
+            TestUtilities2.Test();
         }
 
         public static void TestSomethingElse()
