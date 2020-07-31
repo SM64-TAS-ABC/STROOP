@@ -17,6 +17,7 @@ namespace STROOP.Map
     {
         private PositionAngle _posAngle1;
         private PositionAngle _posAngle2;
+        private bool _useFixedSize;
         private float _backwardsSize;
 
         public MapLineSegmentObject(PositionAngle posAngle1, PositionAngle posAngle2)
@@ -24,6 +25,7 @@ namespace STROOP.Map
         {
             _posAngle1 = posAngle1;
             _posAngle2 = posAngle2;
+            _useFixedSize = false;
             _backwardsSize = 0;
 
             Size = 0;
@@ -45,7 +47,7 @@ namespace STROOP.Map
             (double x2, double y2, double z2, double angle2) = _posAngle2.GetValues();
             double dist = PositionAngle.GetHDistance(_posAngle1, _posAngle2);
             (double startX, double startZ) = MoreMath.ExtrapolateLine2D(x2, z2, x1, z1, dist + _backwardsSize);
-            (double endX, double endZ) = MoreMath.ExtrapolateLine2D(x1, z1, x2, z2, dist + Size);
+            (double endX, double endZ) = MoreMath.ExtrapolateLine2D(x1, z1, x2, z2, (_useFixedSize ? 0 : dist) + Size);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             vertices.Add(((float)startX, 0, (float)startZ));
@@ -57,6 +59,13 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
+                ToolStripMenuItem itemUseFixedSize = new ToolStripMenuItem("Use Fixed Size");
+                itemUseFixedSize.Click += (sender, e) =>
+                {
+                    _useFixedSize = !_useFixedSize;
+                    itemUseFixedSize.Checked = _useFixedSize;
+                };
+
                 ToolStripMenuItem itemSetBackwardsSize = new ToolStripMenuItem("Set Backwards Size...");
                 itemSetBackwardsSize.Click += (sender, e) =>
                 {
@@ -67,6 +76,7 @@ namespace STROOP.Map
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemUseFixedSize);
                 _contextMenuStrip.Items.Add(itemSetBackwardsSize);
             }
 
