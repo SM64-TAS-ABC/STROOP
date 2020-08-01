@@ -103,6 +103,7 @@ namespace STROOP.Managers
                 WatchVariableControl.VariableValueWidth = WatchVariableControl.DEFAULT_VARIABLE_VALUE_WIDTH;
                 WatchVariableControl.VariableHeight = WatchVariableControl.DEFAULT_VARIABLE_HEIGHT;
                 WatchVariableControl.VariableTextSize = WatchVariableControl.DEFAULT_VARIABLE_TEXT_SIZE;
+                WatchVariableControl.VariableOffset = WatchVariableControl.DEFAULT_VARIABLE_OFFSET;
             };
 
             GroupBox groupBoxVarNameWidth = splitContainerCustomControls.Panel2.Controls["groupBoxVarNameWidth"] as GroupBox;
@@ -148,6 +149,17 @@ namespace STROOP.Managers
                 groupBoxVarTextSize.Controls["betterTextboxVarTextSizeGetSet"] as TextBox,
                 (int value) => { WatchVariableControl.VariableTextSize = value; },
                 () => WatchVariableControl.VariableTextSize);
+
+            GroupBox groupBoxVarOffset = splitContainerCustomControls.Panel2.Controls["groupBoxVarOffset"] as GroupBox;
+            InitializeAddSubtractGetSetFuncionality(
+                groupBoxVarOffset.Controls["buttonVarOffsetSubtract"] as Button,
+                groupBoxVarOffset.Controls["buttonVarOffsetAdd"] as Button,
+                groupBoxVarOffset.Controls["buttonVarOffsetGet"] as Button,
+                groupBoxVarOffset.Controls["buttonVarOffsetSet"] as Button,
+                groupBoxVarOffset.Controls["betterTextboxVarOffsetAddSubtract"] as TextBox,
+                groupBoxVarOffset.Controls["betterTextboxVarOffsetGetSet"] as TextBox,
+                (int value) => { WatchVariableControl.VariableOffset = value; },
+                () => WatchVariableControl.VariableOffset);
         }
 
         private static void InitializeAddSubtractGetSetFuncionality(
