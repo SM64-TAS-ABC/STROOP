@@ -35,7 +35,7 @@ namespace STROOP.Managers
         CheckBox _recordTriangleDataCheckbox;
         CheckBox _repeatFirstVertexCheckbox;
         Label _recordTriangleCountLabel;
-        List<short[]> _triangleData;
+        List<uint> _recordedTriangleAddresses;
 
         public uint TrianglePointerAddress
         {
@@ -85,7 +85,7 @@ namespace STROOP.Managers
         {
             _triangleCache = new Dictionary<uint, TriangleDataModel>();
 
-            _triangleData = new List<short[]>();
+            _recordedTriangleAddresses = new List<uint>();
 
             SplitContainer splitContainerTriangles = tabControl.Controls["splitContainerTriangles"] as SplitContainer;
 
@@ -355,20 +355,24 @@ namespace STROOP.Managers
         private void ShowTriangleData()
         {
             InfoForm infoForm = new InfoForm();
-            infoForm.SetTriangleData(_triangleData, _repeatFirstVertexCheckbox.Checked);
+            List<short[]> triangleVertices = _recordedTriangleAddresses.ConvertAll(
+                triAddress => GetTriangleCoordinates(triAddress));
+            infoForm.SetTriangleData(triangleVertices, _repeatFirstVertexCheckbox.Checked);
             infoForm.Show();
         }
 
         private void ShowTriangleVertices()
         {
             InfoForm infoForm = new InfoForm();
-            infoForm.SetTriangleVertices(_triangleData);
+            List<short[]> triangleVertices = _recordedTriangleAddresses.ConvertAll(
+                triAddress => GetTriangleCoordinates(triAddress));
+            infoForm.SetTriangleVertices(triangleVertices);
             infoForm.Show();
         }
 
         private void ClearTriangleData()
         {
-            _triangleData.Clear();
+            _recordedTriangleAddresses.Clear();
         }
 
         private void Mode_Click(object sender, EventArgs e, TriangleMode mode)
@@ -445,14 +449,13 @@ namespace STROOP.Managers
 
             if (_recordTriangleDataCheckbox.Checked && TriangleAddress != 0)
             {
-                short[] coordinates = GetTriangleCoordinates();
-                bool hasAlready = _triangleData.Any(coords => Enumerable.SequenceEqual(coords, coordinates));
-                if (!hasAlready) _triangleData.Add(coordinates);
+                bool hasAlready = _recordedTriangleAddresses.Any(triAddress => TriangleAddress == triAddress);
+                if (!hasAlready) _recordedTriangleAddresses.Add(TriangleAddress);
             }
 
             if (!updateView) return;
 
-            _recordTriangleCountLabel.Text = _triangleData.Count.ToString();
+            _recordTriangleCountLabel.Text = _recordedTriangleAddresses.Count.ToString();
 
             base.Update(updateView);
         }
