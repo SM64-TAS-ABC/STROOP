@@ -4172,13 +4172,10 @@ namespace STROOP.Structs
                     return Config.Stream.SetValue(rngValue, MiscConfig.RngAddress);
                 }));
 
-            _dictionary.Add("RngCallsPerFrame",
+            _dictionary.Add("NumRngCalls",
                 ((uint dummy) =>
                 {
-                    ushort preRng = Config.Stream.GetUInt16(MiscConfig.HackedAreaAddress + 0x0C);
-                    ushort currentRng = Config.Stream.GetUInt16(MiscConfig.HackedAreaAddress + 0x0E);
-                    int rngDiff = RngIndexer.GetRngIndexDiff(preRng, currentRng);
-                    return rngDiff;
+                    return ObjectRngUtilities.GetNumRngUsages();
                 },
                 DEFAULT_SETTER));
 
