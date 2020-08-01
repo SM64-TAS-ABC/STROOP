@@ -173,14 +173,17 @@ namespace STROOP.Controls
         public static readonly int DEFAULT_VARIABLE_NAME_WIDTH = 120;
         public static readonly int DEFAULT_VARIABLE_VALUE_WIDTH = 85;
         public static readonly int DEFAULT_VARIABLE_HEIGHT = 20;
+        public static readonly float DEFAULT_VARIABLE_TEXT_SIZE = 8.25f;
 
         public static int VariableNameWidth = DEFAULT_VARIABLE_NAME_WIDTH;
         public static int VariableValueWidth = DEFAULT_VARIABLE_VALUE_WIDTH;
         public static int VariableHeight = DEFAULT_VARIABLE_HEIGHT;
+        public static float VariableTextSize = DEFAULT_VARIABLE_TEXT_SIZE;
 
         private int _variableNameWidth;
         private int _variableValueWidth;
         private int _variableHeight;
+        private float _variableTextSize;
 
         public WatchVariableControl(
             WatchVariableControlPrecursor watchVarPrecursor,
@@ -228,6 +231,7 @@ namespace STROOP.Controls
             _variableNameWidth = 0;
             _variableValueWidth = 0;
             _variableHeight = 0;
+            _variableTextSize = 0;
 
             // Create watch var wrapper
             WatchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(
@@ -597,18 +601,21 @@ namespace STROOP.Controls
         {
             if (_variableNameWidth == VariableNameWidth &&
                 _variableValueWidth == VariableValueWidth &&
-                _variableHeight == VariableHeight)
+                _variableHeight == VariableHeight &&
+                _variableTextSize == VariableTextSize)
                 return;
 
             _variableNameWidth = VariableNameWidth;
             _variableValueWidth = VariableValueWidth;
             _variableHeight = VariableHeight;
+            _variableTextSize = VariableTextSize;
 
             Size = new Size(_variableNameWidth + _variableValueWidth, _variableHeight + 2);
             _tableLayoutPanel.RowStyles[0].Height = _variableHeight;
             _tableLayoutPanel.ColumnStyles[0].Width = _variableNameWidth;
             _tableLayoutPanel.ColumnStyles[1].Width = _variableValueWidth;
             _valueTextBox.Width = _variableValueWidth - VALUE_TEXTBOX_SIZE_DIFF;
+            _nameTextBox.Font = new Font("Microsoft Sans Serif", _variableTextSize);
         }
 
         private void UpdateColor()
