@@ -174,16 +174,19 @@ namespace STROOP.Controls
         public static readonly int DEFAULT_VARIABLE_VALUE_WIDTH = 85;
         public static readonly int DEFAULT_VARIABLE_HEIGHT = 20;
         public static readonly int DEFAULT_VARIABLE_TEXT_SIZE = 8;
+        public static readonly int DEFAULT_VARIABLE_OFFSET = 4;
 
         public static int VariableNameWidth = DEFAULT_VARIABLE_NAME_WIDTH;
         public static int VariableValueWidth = DEFAULT_VARIABLE_VALUE_WIDTH;
         public static int VariableHeight = DEFAULT_VARIABLE_HEIGHT;
         public static int VariableTextSize = DEFAULT_VARIABLE_TEXT_SIZE;
+        public static int VariableOffset = DEFAULT_VARIABLE_OFFSET;
 
         private int _variableNameWidth;
         private int _variableValueWidth;
         private int _variableHeight;
         private int _variableTextSize;
+        private int _variableOffset;
 
         public WatchVariableControl(
             WatchVariableControlPrecursor watchVarPrecursor,
@@ -232,6 +235,7 @@ namespace STROOP.Controls
             _variableValueWidth = 0;
             _variableHeight = 0;
             _variableTextSize = 0;
+            _variableOffset = 0;
 
             // Create watch var wrapper
             WatchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(
@@ -602,13 +606,15 @@ namespace STROOP.Controls
             if (_variableNameWidth == VariableNameWidth &&
                 _variableValueWidth == VariableValueWidth &&
                 _variableHeight == VariableHeight &&
-                _variableTextSize == VariableTextSize)
+                _variableTextSize == VariableTextSize &&
+                _variableOffset == VariableOffset)
                 return;
 
             _variableNameWidth = VariableNameWidth;
             _variableValueWidth = VariableValueWidth;
             _variableHeight = VariableHeight;
             _variableTextSize = VariableTextSize;
+            _variableOffset = VariableOffset;
 
             Size = new Size(_variableNameWidth + _variableValueWidth, _variableHeight + 2);
             _tableLayoutPanel.RowStyles[0].Height = _variableHeight;
@@ -617,6 +623,8 @@ namespace STROOP.Controls
             _valueTextBox.Width = _variableValueWidth - VALUE_TEXTBOX_SIZE_DIFF;
             _nameTextBox.Font = new Font("Microsoft Sans Serif", _variableTextSize);
             _valueTextBox.Font = new Font("Microsoft Sans Serif", _variableTextSize);
+            _nameTextBox.Location = new Point(_nameTextBox.Location.X, _variableOffset);
+            _valueTextBox.Location = new Point(_valueTextBox.Location.X, _variableOffset);
         }
 
         private void UpdateColor()
