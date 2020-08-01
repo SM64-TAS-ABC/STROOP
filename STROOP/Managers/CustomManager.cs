@@ -136,6 +136,17 @@ namespace STROOP.Managers
                 groupBoxVarHeight.Controls["betterTextboxVarHeightGetSet"] as TextBox,
                 (int value) => { WatchVariableControl.VariableHeight = value; },
                 () => WatchVariableControl.VariableHeight);
+
+            GroupBox groupBoxVarTextSize = splitContainerCustomControls.Panel2.Controls["groupBoxVarTextSize"] as GroupBox;
+            InitializeAddSubtractGetSetFuncionality(
+                groupBoxVarTextSize.Controls["buttonVarTextSizeSubtract"] as Button,
+                groupBoxVarTextSize.Controls["buttonVarTextSizeAdd"] as Button,
+                groupBoxVarTextSize.Controls["buttonVarTextSizeGet"] as Button,
+                groupBoxVarTextSize.Controls["buttonVarTextSizeSet"] as Button,
+                groupBoxVarTextSize.Controls["betterTextboxVarTextSizeAddSubtract"] as TextBox,
+                groupBoxVarTextSize.Controls["betterTextboxVarTextSizeGetSet"] as TextBox,
+                (int value) => { WatchVariableControl.VariableTextSize = value; },
+                () => WatchVariableControl.VariableTextSize);
         }
 
         private static void InitializeAddSubtractGetSetFuncionality(
