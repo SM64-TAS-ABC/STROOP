@@ -124,6 +124,7 @@ namespace STROOP
                     "Inject Hitbox View Code",
                     "Free Movement Action",
                     "Everything in File",
+                    "Go to Closest Triangle Vertex",
                     "Expand RAM Size",
                     "Save as Savestate",
                     "Show MHS Vars",
@@ -146,6 +147,7 @@ namespace STROOP
                     () => Config.GfxManager.InjectHitboxViewCode(),
                     () => Config.Stream.SetValue(MarioConfig.FreeMovementAction, MarioConfig.StructAddress + MarioConfig.ActionOffset),
                     () => Config.FileManager.DoEverything(),
+                    () => Config.TriangleManager.GoToClosestVertex(),
                     () =>
                     {
                         Config.RamSize = 0x800000;

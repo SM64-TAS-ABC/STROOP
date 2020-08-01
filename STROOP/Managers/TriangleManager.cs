@@ -288,6 +288,11 @@ namespace STROOP.Managers
             };
         }
 
+        public void GoToClosestVertex()
+        {
+            ButtonUtilities.GotoTriangleVertexClosest(_triangleAddress, _useMisalignmentOffsetCheckbox.Checked);
+        }
+
         private void UpdateBasedOnCoordinates()
         {
             if (_triangleAddress == 0) return;
