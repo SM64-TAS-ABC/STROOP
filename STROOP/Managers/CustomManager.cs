@@ -102,6 +102,7 @@ namespace STROOP.Managers
                 WatchVariableControl.VariableNameWidth = WatchVariableControl.DEFAULT_VARIABLE_NAME_WIDTH;
                 WatchVariableControl.VariableValueWidth = WatchVariableControl.DEFAULT_VARIABLE_VALUE_WIDTH;
                 WatchVariableControl.VariableHeight = WatchVariableControl.DEFAULT_VARIABLE_HEIGHT;
+                WatchVariableControl.VariableTextSize = WatchVariableControl.DEFAULT_VARIABLE_TEXT_SIZE;
             };
 
             GroupBox groupBoxVarNameWidth = splitContainerCustomControls.Panel2.Controls["groupBoxVarNameWidth"] as GroupBox;
