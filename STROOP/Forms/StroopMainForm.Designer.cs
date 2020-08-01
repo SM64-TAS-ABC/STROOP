@@ -378,7 +378,7 @@ namespace STROOP
             this.buttonFilePaste = new System.Windows.Forms.Button();
             this.buttonFileErase = new System.Windows.Forms.Button();
             this.buttonFileNumStars = new System.Windows.Forms.Button();
-            this.tableLayoutPanelFile = new DoubleBufferedTableLayoutPanel();
+            this.tableLayoutPanelFile = new STROOP.Controls.DoubleBufferedTableLayoutPanel();
             this.textBoxTableRow15Col10 = new STROOP.FileCoinScoreTextbox();
             this.textBoxTableRow14Col10 = new STROOP.FileCoinScoreTextbox();
             this.textBoxTableRow13Col10 = new STROOP.FileCoinScoreTextbox();
@@ -587,6 +587,8 @@ namespace STROOP
             this.tabPageInput = new System.Windows.Forms.TabPage();
             this.splitContainerInput = new STROOP.BetterSplitContainer();
             this.inputDisplayPanel = new STROOP.InputDisplayPanel();
+            this.labelRecStatus = new System.Windows.Forms.Label();
+            this.buttonRec = new STROOP.BinaryButton();
             this.watchVariablePanelInput = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageWater = new System.Windows.Forms.TabPage();
             this.watchVariablePanelWater = new STROOP.Controls.WatchVariableFlowLayoutPanel();
@@ -1633,8 +1635,13 @@ namespace STROOP
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonRec = new STROOP.BinaryButton();
-            this.labelRecStatus = new System.Windows.Forms.Label();
+            this.groupBoxVarTextSize = new System.Windows.Forms.GroupBox();
+            this.betterTextboxVarTextSizeGetSet = new STROOP.BetterTextbox();
+            this.betterTextboxVarTextSizeAddSubtract = new STROOP.BetterTextbox();
+            this.buttonVarTextSizeGet = new System.Windows.Forms.Button();
+            this.buttonVarTextSizeSubtract = new System.Windows.Forms.Button();
+            this.buttonVarTextSizeSet = new System.Windows.Forms.Button();
+            this.buttonVarTextSizeAdd = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -2119,6 +2126,7 @@ namespace STROOP
             this.splitContainerWarpLeft.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            this.groupBoxVarTextSize.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -5947,7 +5955,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 559F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 560F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8969,6 +8977,24 @@ namespace STROOP
             this.inputDisplayPanel.Size = new System.Drawing.Size(422, 457);
             this.inputDisplayPanel.TabIndex = 4;
             // 
+            // labelRecStatus
+            // 
+            this.labelRecStatus.AutoSize = true;
+            this.labelRecStatus.Location = new System.Drawing.Point(86, 11);
+            this.labelRecStatus.Name = "labelRecStatus";
+            this.labelRecStatus.Size = new System.Drawing.Size(52, 13);
+            this.labelRecStatus.TabIndex = 4;
+            this.labelRecStatus.Text = "recStatus";
+            // 
+            // buttonRec
+            // 
+            this.buttonRec.Location = new System.Drawing.Point(5, 5);
+            this.buttonRec.Name = "buttonRec";
+            this.buttonRec.Size = new System.Drawing.Size(75, 23);
+            this.buttonRec.TabIndex = 3;
+            this.buttonRec.Text = "recButton";
+            this.buttonRec.UseVisualStyleBackColor = true;
+            // 
             // watchVariablePanelInput
             // 
             this.watchVariablePanelInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -8979,7 +9005,7 @@ namespace STROOP
             this.watchVariablePanelInput.Location = new System.Drawing.Point(2, 31);
             this.watchVariablePanelInput.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelInput.Name = "watchVariablePanelInput";
-            this.watchVariablePanelInput.Size = new System.Drawing.Size(480, 428);
+            this.watchVariablePanelInput.Size = new System.Drawing.Size(483, 428);
             this.watchVariablePanelInput.TabIndex = 2;
             // 
             // tabPageWater
@@ -9679,7 +9705,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(415, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(418, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -10017,6 +10043,7 @@ namespace STROOP
             // splitContainerCustomControls.Panel2
             // 
             this.splitContainerCustomControls.Panel2.AutoScroll = true;
+            this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarTextSize);
             this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarHeight);
             this.splitContainerCustomControls.Panel2.Controls.Add(this.buttonResetVariableSizeToDefault);
             this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarValueWidth);
@@ -12745,7 +12772,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Padding = new System.Windows.Forms.Padding(2);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 683;
+            this.splitContainerMemory.SplitterDistance = 686;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12786,7 +12813,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(683, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(686, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -13003,7 +13030,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(683, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(686, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -13032,7 +13059,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(582, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(585, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -13044,7 +13071,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(219, 451);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(216, 451);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -14198,7 +14225,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(306, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -14230,7 +14257,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(317, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(300, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -14286,7 +14313,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(317, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(300, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -19020,7 +19047,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -20204,7 +20231,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(28, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(29, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -20377,7 +20404,7 @@ namespace STROOP
             this.splitContainerSoundMusic.Panel2.Controls.Add(this.buttonSoundPlayMusic);
             this.splitContainerSoundMusic.Panel2MinSize = 0;
             this.splitContainerSoundMusic.Size = new System.Drawing.Size(422, 457);
-            this.splitContainerSoundMusic.SplitterDistance = 425;
+            this.splitContainerSoundMusic.SplitterDistance = 428;
             this.splitContainerSoundMusic.SplitterWidth = 1;
             this.splitContainerSoundMusic.TabIndex = 35;
             // 
@@ -20388,7 +20415,7 @@ namespace STROOP
             this.listBoxSoundMusic.FormattingEnabled = true;
             this.listBoxSoundMusic.Location = new System.Drawing.Point(0, 0);
             this.listBoxSoundMusic.Name = "listBoxSoundMusic";
-            this.listBoxSoundMusic.Size = new System.Drawing.Size(420, 423);
+            this.listBoxSoundMusic.Size = new System.Drawing.Size(420, 426);
             this.listBoxSoundMusic.TabIndex = 19;
             // 
             // textBoxSoundMusic
@@ -20431,7 +20458,7 @@ namespace STROOP
             this.splitContainerSoundSoundEffect.Panel2.Controls.Add(this.buttonSoundPlaySoundEffect);
             this.splitContainerSoundSoundEffect.Panel2MinSize = 0;
             this.splitContainerSoundSoundEffect.Size = new System.Drawing.Size(486, 457);
-            this.splitContainerSoundSoundEffect.SplitterDistance = 425;
+            this.splitContainerSoundSoundEffect.SplitterDistance = 428;
             this.splitContainerSoundSoundEffect.SplitterWidth = 1;
             this.splitContainerSoundSoundEffect.TabIndex = 35;
             // 
@@ -20442,7 +20469,7 @@ namespace STROOP
             this.listBoxSoundSoundEffect.FormattingEnabled = true;
             this.listBoxSoundSoundEffect.Location = new System.Drawing.Point(0, 0);
             this.listBoxSoundSoundEffect.Name = "listBoxSoundSoundEffect";
-            this.listBoxSoundSoundEffect.Size = new System.Drawing.Size(484, 423);
+            this.listBoxSoundSoundEffect.Size = new System.Drawing.Size(484, 426);
             this.listBoxSoundSoundEffect.TabIndex = 19;
             // 
             // textBoxSoundSoundEffect
@@ -21216,23 +21243,84 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 36;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonRec
+            // groupBoxVarTextSize
             // 
-            this.buttonRec.Location = new System.Drawing.Point(5, 5);
-            this.buttonRec.Name = "buttonRec";
-            this.buttonRec.Size = new System.Drawing.Size(75, 23);
-            this.buttonRec.TabIndex = 3;
-            this.buttonRec.Text = "recButton";
-            this.buttonRec.UseVisualStyleBackColor = true;
+            this.groupBoxVarTextSize.Controls.Add(this.betterTextboxVarTextSizeGetSet);
+            this.groupBoxVarTextSize.Controls.Add(this.betterTextboxVarTextSizeAddSubtract);
+            this.groupBoxVarTextSize.Controls.Add(this.buttonVarTextSizeGet);
+            this.groupBoxVarTextSize.Controls.Add(this.buttonVarTextSizeSubtract);
+            this.groupBoxVarTextSize.Controls.Add(this.buttonVarTextSizeSet);
+            this.groupBoxVarTextSize.Controls.Add(this.buttonVarTextSizeAdd);
+            this.groupBoxVarTextSize.Location = new System.Drawing.Point(7, 266);
+            this.groupBoxVarTextSize.Name = "groupBoxVarTextSize";
+            this.groupBoxVarTextSize.Size = new System.Drawing.Size(185, 70);
+            this.groupBoxVarTextSize.TabIndex = 30;
+            this.groupBoxVarTextSize.TabStop = false;
+            this.groupBoxVarTextSize.Text = "Var Text Size";
             // 
-            // labelRecStatus
+            // betterTextboxVarTextSizeGetSet
             // 
-            this.labelRecStatus.AutoSize = true;
-            this.labelRecStatus.Location = new System.Drawing.Point(86, 11);
-            this.labelRecStatus.Name = "labelRecStatus";
-            this.labelRecStatus.Size = new System.Drawing.Size(52, 13);
-            this.labelRecStatus.TabIndex = 4;
-            this.labelRecStatus.Text = "recStatus";
+            this.betterTextboxVarTextSizeGetSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextboxVarTextSizeGetSet.Location = new System.Drawing.Point(67, 44);
+            this.betterTextboxVarTextSizeGetSet.Name = "betterTextboxVarTextSizeGetSet";
+            this.betterTextboxVarTextSizeGetSet.Size = new System.Drawing.Size(51, 20);
+            this.betterTextboxVarTextSizeGetSet.TabIndex = 33;
+            this.betterTextboxVarTextSizeGetSet.Text = "8.25";
+            this.betterTextboxVarTextSizeGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextboxVarTextSizeAddSubtract
+            // 
+            this.betterTextboxVarTextSizeAddSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextboxVarTextSizeAddSubtract.Location = new System.Drawing.Point(67, 19);
+            this.betterTextboxVarTextSizeAddSubtract.Name = "betterTextboxVarTextSizeAddSubtract";
+            this.betterTextboxVarTextSizeAddSubtract.Size = new System.Drawing.Size(51, 20);
+            this.betterTextboxVarTextSizeAddSubtract.TabIndex = 33;
+            this.betterTextboxVarTextSizeAddSubtract.Text = "0.25";
+            this.betterTextboxVarTextSizeAddSubtract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonVarTextSizeGet
+            // 
+            this.buttonVarTextSizeGet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarTextSizeGet.Location = new System.Drawing.Point(3, 41);
+            this.buttonVarTextSizeGet.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarTextSizeGet.Name = "buttonVarTextSizeGet";
+            this.buttonVarTextSizeGet.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarTextSizeGet.TabIndex = 35;
+            this.buttonVarTextSizeGet.Text = "Get";
+            this.buttonVarTextSizeGet.UseVisualStyleBackColor = true;
+            // 
+            // buttonVarTextSizeSubtract
+            // 
+            this.buttonVarTextSizeSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarTextSizeSubtract.Location = new System.Drawing.Point(3, 16);
+            this.buttonVarTextSizeSubtract.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarTextSizeSubtract.Name = "buttonVarTextSizeSubtract";
+            this.buttonVarTextSizeSubtract.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarTextSizeSubtract.TabIndex = 35;
+            this.buttonVarTextSizeSubtract.Text = "Size-";
+            this.buttonVarTextSizeSubtract.UseVisualStyleBackColor = true;
+            // 
+            // buttonVarTextSizeSet
+            // 
+            this.buttonVarTextSizeSet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarTextSizeSet.Location = new System.Drawing.Point(121, 41);
+            this.buttonVarTextSizeSet.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarTextSizeSet.Name = "buttonVarTextSizeSet";
+            this.buttonVarTextSizeSet.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarTextSizeSet.TabIndex = 35;
+            this.buttonVarTextSizeSet.Text = "Set";
+            this.buttonVarTextSizeSet.UseVisualStyleBackColor = true;
+            // 
+            // buttonVarTextSizeAdd
+            // 
+            this.buttonVarTextSizeAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVarTextSizeAdd.Location = new System.Drawing.Point(121, 16);
+            this.buttonVarTextSizeAdd.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonVarTextSizeAdd.Name = "buttonVarTextSizeAdd";
+            this.buttonVarTextSizeAdd.Size = new System.Drawing.Size(61, 25);
+            this.buttonVarTextSizeAdd.TabIndex = 35;
+            this.buttonVarTextSizeAdd.Text = "Size+";
+            this.buttonVarTextSizeAdd.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -21855,6 +21943,8 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.groupBoxVarTextSize.ResumeLayout(false);
+            this.groupBoxVarTextSize.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -22245,7 +22335,6 @@ namespace STROOP
         private BetterTextbox textBoxSpawnBehavior;
         private GroupBox groupBoxFile;
         private GroupBox groupBoxHatLocation;
-        private TableLayoutPanel tableLayoutPanelFile;
         private FileCourseLabel labelFileTableRow1;
         private FileCourseLabel labelFileTableRow2;
         private FileCourseLabel labelFileTableRow3;
@@ -23450,6 +23539,14 @@ namespace STROOP
         private CheckBox checkBoxMapOptionsTrackWallTri;
         private Label labelRecStatus;
         private BinaryButton buttonRec;
+        private GroupBox groupBoxVarTextSize;
+        private BetterTextbox betterTextboxVarTextSizeGetSet;
+        private BetterTextbox betterTextboxVarTextSizeAddSubtract;
+        private Button buttonVarTextSizeGet;
+        private Button buttonVarTextSizeSubtract;
+        private Button buttonVarTextSizeSet;
+        private Button buttonVarTextSizeAdd;
+        private DoubleBufferedTableLayoutPanel tableLayoutPanelFile;
     }
 }
 
