@@ -336,6 +336,24 @@ namespace STROOP.Managers
                 += (sender, e) => { currentAllCoinsMeaning = AllCoinsMeaning.MaxWithGlitches; };
         }
 
+        public void DoEverything()
+        {
+            FileSetCategory(
+                true,
+                new List<FileCategory>
+                {
+                    FileCategory.Stars,
+                    FileCategory.Cannons,
+                    FileCategory.Doors,
+                    FileCategory.Coins,
+                    FileCategory.Misc
+                });
+            short numStars = CalculateNumStars();
+            Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.StarCountOffset);
+            Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.StarDisplayOffset);
+            Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.PreviousStarCountOffset);
+        }
+
         public short CalculateNumStars(uint? nullableFileAddress = null)
         {
             uint fileAddress = nullableFileAddress ?? CurrentFileAddress;

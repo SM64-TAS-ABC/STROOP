@@ -123,6 +123,7 @@ namespace STROOP
                     "Clear Mapping",
                     "Inject Hitbox View Code",
                     "Free Movement Action",
+                    "Everything in File",
                     "Expand RAM Size",
                     "Save as Savestate",
                     "Show MHS Vars",
@@ -144,6 +145,7 @@ namespace STROOP
                     () => MappingConfig.ClearMapping(),
                     () => Config.GfxManager.InjectHitboxViewCode(),
                     () => Config.Stream.SetValue(MarioConfig.FreeMovementAction, MarioConfig.StructAddress + MarioConfig.ActionOffset),
+                    () => Config.FileManager.DoEverything(),
                     () =>
                     {
                         Config.RamSize = 0x800000;
