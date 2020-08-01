@@ -197,6 +197,8 @@ namespace STROOP.Managers
                 += (sender, e) => ShowTriangleData();
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowVertices"] as Button).Click
                 += (sender, e) => ShowTriangleVertices();
+            (splitContainerTriangles.Panel1.Controls["buttonTriangleShowAddresses"] as Button).Click
+                += (sender, e) => ShowTriangleAddresses();
             (splitContainerTriangles.Panel1.Controls["buttonTriangleClearData"] as Button).Click
                 += (sender, e) => ClearTriangleData();
 
@@ -367,6 +369,18 @@ namespace STROOP.Managers
             List<short[]> triangleVertices = _recordedTriangleAddresses.ConvertAll(
                 triAddress => GetTriangleCoordinates(triAddress));
             infoForm.SetTriangleVertices(triangleVertices);
+            infoForm.Show();
+        }
+
+        private void ShowTriangleAddresses()
+        {
+            InfoForm infoForm = new InfoForm();
+            List<string> addressStrings = _recordedTriangleAddresses.ConvertAll(
+                triAddress => HexUtilities.FormatValue(triAddress));
+            infoForm.SetText(
+                "Triangle Info",
+                "Triangle Addresses",
+                string.Join("\r\n", addressStrings));
             infoForm.Show();
         }
 
