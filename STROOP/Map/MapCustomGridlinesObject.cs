@@ -17,7 +17,7 @@ namespace STROOP.Map
         public MapCustomGridlinesObject()
             : base()
         {
-            Size = 1;
+            Size = 2;
             OutlineWidth = 3;
             OutlineColor = Color.Black;
         }
@@ -27,8 +27,8 @@ namespace STROOP.Map
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
 
             int size = (int)Size;
-            if (size < 0) size = 0;
-            int increment = 16384 / (size + 1);
+            if (size < 1) size = 1;
+            int increment = 16384 / size;
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             for (int x = -8192; x <= 8192; x += increment)
             {
