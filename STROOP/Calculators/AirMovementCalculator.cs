@@ -14,18 +14,18 @@ namespace STROOP.Structs
 {
     public static class AirMovementCalculator
     {
-        public static MarioState ApplyInput(MarioState marioState, Input input, int numQSteps = 4, List<TriangleDataModel> wallTris = null)
+        public static MarioState ApplyInput(MarioState marioState, Input input, int numQSteps = 4, List<TriangleDataModel> wallTris = null, List<MarioState> quarterSteps = null, bool resetHSpeedOnWalls = false)
         {
             MarioState withHSpeed = ComputeAirHSpeed(marioState, input);
-            MarioState moved = AirMove(withHSpeed, numQSteps, wallTris);
+            MarioState moved = AirMove(withHSpeed, numQSteps, wallTris, quarterSteps, resetHSpeedOnWalls);
             MarioState withYSpeed = ComputeAirYSpeed(moved);
             return withYSpeed;
         }
 
-        public static MarioState ApplyInput(MarioState marioState, int angleDiff, int numQSteps = 4, List<TriangleDataModel> wallTris = null)
+        public static MarioState ApplyInput(MarioState marioState, int angleDiff, int numQSteps = 4, List<TriangleDataModel> wallTris = null, List<MarioState> quarterSteps = null, bool resetHSpeedOnWalls = false)
         {
             MarioState withHSpeed = ComputeAirHSpeed(marioState, angleDiff);
-            MarioState moved = AirMove(withHSpeed, numQSteps, wallTris);
+            MarioState moved = AirMove(withHSpeed, numQSteps, wallTris, quarterSteps, resetHSpeedOnWalls);
             MarioState withYSpeed = ComputeAirYSpeed(moved);
             return withYSpeed;
         }
@@ -49,15 +49,19 @@ namespace STROOP.Structs
             return remainderQSteps == 0 ? marioState : ApplyInput(marioState, direction, remainderQSteps);
         }
 
-        public static MarioState AirMove(MarioState initialState, int numQSteps = 4, List<TriangleDataModel> wallTris = null)
+        public static MarioState AirMove(MarioState initialState, int numQSteps = 4, List<TriangleDataModel> wallTris = null, List<MarioState> quarterSteps = null, bool resetHSpeedOnWalls = false)
         {
+            bool resetHSpeed = false;
+
             float newX = initialState.X;
             float newY = initialState.Y;
             float newZ = initialState.Z;
 
             if (wallTris != null)
             {
-                (newX, newZ) = WallDisplacementCalculator.HandleWallDisplacement(newX, newY, newZ, wallTris, 50, 60);
+                bool collidedWithWall;
+                (newX, newZ, collidedWithWall) = WallDisplacementCalculator.HandleWallDisplacement2(newX, newY, newZ, wallTris, 50, 60);
+                if (collidedWithWall && resetHSpeedOnWalls) resetHSpeed = true;
             }
 
             for (int i = 0; i < numQSteps; i++)
@@ -68,8 +72,33 @@ namespace STROOP.Structs
 
                 if (wallTris != null)
                 {
-                    (newX, newZ) = WallDisplacementCalculator.HandleWallDisplacement(newX, newY, newZ, wallTris, 50, 150);
-                    (newX, newZ) = WallDisplacementCalculator.HandleWallDisplacement(newX, newY, newZ, wallTris, 50, 30);
+                    bool collidedWithWall1;
+                    bool collidedWithWall2;
+                    (newX, newZ, collidedWithWall1) = WallDisplacementCalculator.HandleWallDisplacement2(newX, newY, newZ, wallTris, 50, 150);
+                    (newX, newZ, collidedWithWall2) = WallDisplacementCalculator.HandleWallDisplacement2(newX, newY, newZ, wallTris, 50, 30);
+                    if (collidedWithWall1 && resetHSpeedOnWalls) resetHSpeed = true;
+                    if (collidedWithWall2 && resetHSpeedOnWalls) resetHSpeed = true;
+                }
+
+                if (quarterSteps != null)
+                {
+                    quarterSteps.Add(
+                        new MarioState(
+                            newX,
+                            newY,
+                            newZ,
+                            initialState.XSpeed,
+                            initialState.YSpeed,
+                            initialState.ZSpeed,
+                            initialState.HSpeed,
+                            initialState.SlidingSpeedX,
+                            initialState.SlidingSpeedZ,
+                            initialState.SlidingAngle,
+                            initialState.MarioAngle,
+                            initialState.CameraAngle,
+                            initialState.PreviousState,
+                            initialState.LastInput,
+                            initialState.Index));
                 }
             }
 
@@ -80,7 +109,7 @@ namespace STROOP.Structs
                 initialState.XSpeed,
                 initialState.YSpeed,
                 initialState.ZSpeed,
-                initialState.HSpeed,
+                resetHSpeed ? 0 : initialState.HSpeed,
                 initialState.SlidingSpeedX,
                 initialState.SlidingSpeedZ,
                 initialState.SlidingAngle,
