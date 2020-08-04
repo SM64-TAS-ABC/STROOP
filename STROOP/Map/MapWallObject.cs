@@ -109,7 +109,7 @@ namespace STROOP.Map
             }
         }
 
-        protected BetterContextMenuStrip CreateWallContextMenuStrip()
+        protected List<ToolStripMenuItem> GetWallToolStripMenuItems()
         {
             ToolStripMenuItem itemSetRelativeHeight = new ToolStripMenuItem("Set Relative Height");
             itemSetRelativeHeight.Click += (sender, e) =>
@@ -149,13 +149,13 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
-            BetterContextMenuStrip contextMenuStrip = new BetterContextMenuStrip();
-            contextMenuStrip.AddToEndingList(itemSetRelativeHeight);
-            contextMenuStrip.AddToEndingList(itemClearRelativeHeight);
-            contextMenuStrip.AddToEndingList(itemSetAbsoluteHeight);
-            contextMenuStrip.AddToEndingList(itemClearAbsoluteHeight);
-
-            return contextMenuStrip;
+            return new List<ToolStripMenuItem>()
+            {
+                itemSetRelativeHeight,
+                itemClearRelativeHeight,
+                itemSetAbsoluteHeight,
+                itemClearAbsoluteHeight,
+            };
         }
 
         public override void ApplySettings(MapObjectSettings settings)

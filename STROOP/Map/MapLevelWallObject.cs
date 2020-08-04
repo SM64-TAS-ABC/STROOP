@@ -79,14 +79,14 @@ namespace STROOP.Map
                     _triangleListForm.Show();
                 };
 
-                BetterContextMenuStrip contextMenuStrip = CreateWallContextMenuStrip();
-                contextMenuStrip.AddToBeginningList(itemAutoUpdate);
-                contextMenuStrip.AddToBeginningList(itemReset);
-                contextMenuStrip.AddToBeginningList(itemRemoveCurrentTri);
-                contextMenuStrip.AddToBeginningList(itemShowTriData);
-                contextMenuStrip.AddToBeginningList(itemOpenForm);
-                contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
-                _contextMenuStrip = contextMenuStrip;
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemAutoUpdate);
+                _contextMenuStrip.Items.Add(itemReset);
+                _contextMenuStrip.Items.Add(itemRemoveCurrentTri);
+                _contextMenuStrip.Items.Add(itemShowTriData);
+                _contextMenuStrip.Items.Add(itemOpenForm);
+                _contextMenuStrip.Items.Add(new ToolStripSeparator());
+                GetWallToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
             }
 
             return _contextMenuStrip;

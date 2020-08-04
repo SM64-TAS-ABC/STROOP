@@ -57,7 +57,8 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                _contextMenuStrip = CreateWallContextMenuStrip();
+                _contextMenuStrip = new ContextMenuStrip();
+                GetWallToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
             }
 
             return _contextMenuStrip;

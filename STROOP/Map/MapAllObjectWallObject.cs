@@ -46,10 +46,10 @@ namespace STROOP.Map
                 };
                 itemAutoUpdate.Checked = _autoUpdate;
 
-                BetterContextMenuStrip contextMenuStrip = CreateWallContextMenuStrip();
-                contextMenuStrip.AddToBeginningList(itemAutoUpdate);
-                contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
-                _contextMenuStrip = contextMenuStrip;
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemAutoUpdate);
+                _contextMenuStrip.Items.Add(new ToolStripSeparator());
+                GetWallToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
             }
 
             return _contextMenuStrip;
