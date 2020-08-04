@@ -439,6 +439,7 @@
     <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Managers\QuarterFrameManager.cs" />
+    <Compile Include="Map\MapAllObjectCeilingObject.cs" />
     <Compile Include="Map\MapEffectiveHitboxCylinderObject.cs" />
     <Compile Include="Map\MapEffectiveHurtboxCylinderObject.cs" />
     <Compile Include="Map\MapAllObjectFloorObject.cs" />
