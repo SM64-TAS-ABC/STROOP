@@ -145,5 +145,16 @@ namespace STROOP.Map
                 _objTriAddressList.AddRange(TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address));
             }
         }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                _contextMenuStrip = new ContextMenuStrip();
+                GetTriangleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
+            }
+
+            return _contextMenuStrip;
+        }
     }
 }
