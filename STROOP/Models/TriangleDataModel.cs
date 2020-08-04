@@ -355,16 +355,15 @@ namespace STROOP.Models
             return GetTruncatedHeightOnTriangle(doubleX, doubleZ);
         }
 
-        public bool IsMarioWithinVerticalDist(float? withinDistNullable)
+        public bool IsTriWithinVerticalDistOfCenter(float? withinDistNullable, float centerY)
         {
             if (!withinDistNullable.HasValue) return true;
             float withinDist = withinDistNullable.Value;
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             short minY = GetMinY();
             short maxY = GetMaxY();
-            bool tooFarDown = marioY - maxY > withinDist;
-            bool tooFarUp = minY - marioY > withinDist;
-            return !tooFarDown && !tooFarUp;
+            bool triTooFarDown = centerY - maxY > withinDist;
+            bool triTooFarUp = minY - centerY > withinDist;
+            return !triTooFarDown && !triTooFarUp;
         }
     }
 }

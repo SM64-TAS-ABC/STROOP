@@ -18,11 +18,13 @@ namespace STROOP.Map
     public abstract class MapTriangleObject : MapObject
     {
         private float? _withinDist;
+        private float? _withinCenter;
 
         public MapTriangleObject()
             : base()
         {
             _withinDist = null;
+            _withinCenter = null;
         }
 
         protected List<List<(float x, float y, float z)>> GetVertexLists()
@@ -32,8 +34,9 @@ namespace STROOP.Map
 
         protected List<TriangleDataModel> GetTrianglesWithinDist()
         {
+            float centerY = _withinCenter ?? Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             return GetTrianglesOfAnyDist()
-                .FindAll(tri => tri.IsMarioWithinVerticalDist(_withinDist));
+                .FindAll(tri => tri.IsTriWithinVerticalDistOfCenter(_withinDist, centerY));
         }
 
         protected abstract List<TriangleDataModel> GetTrianglesOfAnyDist();
@@ -49,7 +52,7 @@ namespace STROOP.Map
             ToolStripMenuItem itemSetWithinDist = new ToolStripMenuItem("Set Within Dist");
             itemSetWithinDist.Click += (sender, e) =>
             {
-                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the vertical distance from Mario within which to show tris.");
+                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the vertical distance from the center (default: Mario) within which to show tris.");
                 float? withinDistNullable = ParsingUtilities.ParseFloatNullable(text);
                 if (!withinDistNullable.HasValue) return;
                 _withinDist = withinDistNullable.Value;
@@ -61,10 +64,27 @@ namespace STROOP.Map
                 _withinDist = null;
             };
 
+            ToolStripMenuItem itemSetWithinCenter = new ToolStripMenuItem("Set Within Center");
+            itemSetWithinCenter.Click += (sender, e) =>
+            {
+                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the center y of the within-dist range.");
+                float? withinCenterNullable = ParsingUtilities.ParseFloatNullable(text);
+                if (!withinCenterNullable.HasValue) return;
+                _withinCenter = withinCenterNullable.Value;
+            };
+
+            ToolStripMenuItem itemClearWithinCenter = new ToolStripMenuItem("Clear Within Center");
+            itemClearWithinCenter.Click += (sender, e) =>
+            {
+                _withinCenter = null;
+            };
+
             return new List<ToolStripMenuItem>()
             {
                 itemSetWithinDist,
                 itemClearWithinDist,
+                itemSetWithinCenter,
+                itemClearWithinCenter,
             };
         }
 
