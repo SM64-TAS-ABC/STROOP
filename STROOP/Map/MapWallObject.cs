@@ -38,7 +38,7 @@ namespace STROOP.Map
             float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : (float?)null;
             height = height ?? _absoluteHeight;
 
-            List<(float x1, float z1, float x2, float z2, bool xProjection)> wallData = GetTriangles()
+            List<(float x1, float z1, float x2, float z2, bool xProjection)> wallData = GetTrianglesWithinDist()
                 .ConvertAll(tri => MapUtilities.Get2DWallDataFromTri(tri, height))
                 .FindAll(wallDataNullable => wallDataNullable.HasValue)
                 .ConvertAll(wallDataNullable => wallDataNullable.Value);
@@ -176,7 +176,7 @@ namespace STROOP.Map
         public override void DrawOn3DControl()
         {
             float relativeHeight = _relativeHeight ?? 0;
-            List<TriangleDataModel> tris = GetTriangles();
+            List<TriangleDataModel> tris = GetTrianglesWithinDist();
 
             List<List<(float x, float y, float z)>> centerSurfaces =
                 tris.ConvertAll(tri => tri.Get3DVertices()

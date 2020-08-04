@@ -36,7 +36,7 @@ namespace STROOP.Map
             _numLevelTris = _triAddressList.Count;
         }
 
-        protected override List<TriangleDataModel> GetTriangles()
+        protected override List<TriangleDataModel> GetTrianglesOfAnyDist()
         {
             return MapUtilities.GetTriangles(_triAddressList);
         }

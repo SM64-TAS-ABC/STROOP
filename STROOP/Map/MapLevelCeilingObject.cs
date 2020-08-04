@@ -23,7 +23,6 @@ namespace STROOP.Map
         private TriangleListForm _triangleListForm;
         private bool _autoUpdate;
         private int _numLevelTris;
-        private float? _withinDist;
 
         public MapLevelCeilingObject()
             : base()
@@ -35,13 +34,11 @@ namespace STROOP.Map
             _triangleListForm = null;
             _autoUpdate = true;
             _numLevelTris = _triAddressList.Count;
-            _withinDist = null;
         }
 
-        protected override List<TriangleDataModel> GetTriangles()
+        protected override List<TriangleDataModel> GetTrianglesOfAnyDist()
         {
-            return MapUtilities.GetTriangles(_triAddressList)
-                .FindAll(tri => tri.IsMarioWithinVerticalDist(_withinDist));
+            return MapUtilities.GetTriangles(_triAddressList);
         }
 
         public override ContextMenuStrip GetContextMenuStrip()
@@ -82,21 +79,6 @@ namespace STROOP.Map
                     _triangleListForm.Show();
                 };
 
-                ToolStripMenuItem itemSetWithinDist = new ToolStripMenuItem("Set Within Dist");
-                itemSetWithinDist.Click += (sender, e) =>
-                {
-                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the vertical distance from Mario within which to show tris.");
-                    float? withinDistNullable = ParsingUtilities.ParseFloatNullable(text);
-                    if (!withinDistNullable.HasValue) return;
-                    _withinDist = withinDistNullable.Value;
-                };
-
-                ToolStripMenuItem itemClearWithinDist = new ToolStripMenuItem("Clear Within Dist");
-                itemClearWithinDist.Click += (sender, e) =>
-                {
-                    _withinDist = null;
-                };
-
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemAutoUpdate);
                 _contextMenuStrip.Items.Add(itemReset);
@@ -104,8 +86,7 @@ namespace STROOP.Map
                 _contextMenuStrip.Items.Add(itemShowTriData);
                 _contextMenuStrip.Items.Add(itemOpenForm);
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
-                _contextMenuStrip.Items.Add(itemSetWithinDist);
-                _contextMenuStrip.Items.Add(itemClearWithinDist);
+                GetTriangleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
             }
 
             return _contextMenuStrip;

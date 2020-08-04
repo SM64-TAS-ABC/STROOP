@@ -39,7 +39,7 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            List<List<(float x, float y, float z, Color color)>> triData = GetTriangles()
+            List<List<(float x, float y, float z, Color color)>> triData = GetTrianglesWithinDist()
                 .ConvertAll(tri => new List<(float x, float y, float z, Color color)>()
                 {
                     (tri.X1, tri.Y1, tri.Z1, ColorUtilities.AddAlpha(GetColorForTri(tri, 1), OpacityByte)),
@@ -112,7 +112,7 @@ namespace STROOP.Map
             }
         }
 
-        protected override List<TriangleDataModel> GetTriangles()
+        protected override List<TriangleDataModel> GetTrianglesOfAnyDist()
         {
             return MapUtilities.GetTriangles(_levelTriAddressList.Concat(_objTriAddressList).ToList());
         }
