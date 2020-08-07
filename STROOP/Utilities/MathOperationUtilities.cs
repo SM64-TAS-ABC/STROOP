@@ -26,6 +26,8 @@ namespace STROOP.Utilities
                     return "%";
                 case BinaryMathOperation.NonNegativeModulo:
                     return "%%";
+                case BinaryMathOperation.Exponent:
+                    return "^";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -47,6 +49,8 @@ namespace STROOP.Utilities
                     return "Modulo";
                 case BinaryMathOperation.NonNegativeModulo:
                     return "Non-Negative Modulo";
+                case BinaryMathOperation.Exponent:
+                    return "Exponent";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -68,6 +72,8 @@ namespace STROOP.Utilities
                     return "Modulo";
                 case BinaryMathOperation.NonNegativeModulo:
                     return "Non-Negative Modulo";
+                case BinaryMathOperation.Exponent:
+                    return "Exponent";
                 default:
                     throw new ArgumentOutOfRangeException();
             }

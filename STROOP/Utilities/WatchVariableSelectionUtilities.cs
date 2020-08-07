@@ -251,7 +251,7 @@ namespace STROOP.Structs
                 infoForm.Show();
             };
 
-            void createBinaryMathOperationVariable (BinaryMathOperation operation)
+            void createBinaryMathOperationVariable(BinaryMathOperation operation)
             {
                 List<WatchVariableControl> controls = getVars();
                 if (controls.Count % 2 == 1) controls.RemoveAt(controls.Count - 1);
@@ -375,6 +375,7 @@ namespace STROOP.Structs
                     "Division",
                     "Modulo",
                     "Non-Negative Modulo",
+                    "Exponent",
                     null,
                     "Mean",
                     "Median",
@@ -391,6 +392,7 @@ namespace STROOP.Structs
                     () => createBinaryMathOperationVariable(BinaryMathOperation.Divide),
                     () => createBinaryMathOperationVariable(BinaryMathOperation.Modulo),
                     () => createBinaryMathOperationVariable(BinaryMathOperation.NonNegativeModulo),
+                    () => createBinaryMathOperationVariable(BinaryMathOperation.Exponent),
                     () => { },
                     () => createAggregateMathOperationVariable(AggregateMathOperation.Mean),
                     () => createAggregateMathOperationVariable(AggregateMathOperation.Median),
