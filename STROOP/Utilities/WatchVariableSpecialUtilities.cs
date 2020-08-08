@@ -255,31 +255,79 @@ namespace STROOP.Structs
             string specialType = "DistanceMathOperation" + _numDistanceMathOperationEntries;
             if (use3D)
             {
+                PositionAngle p1 = PositionAngle.Functions(
+                    new List<Func<double>>()
+                    {
+                        () => ParsingUtilities.ParseDouble(controls[0].GetValue(handleFormatting: false)),
+                        () => ParsingUtilities.ParseDouble(controls[1].GetValue(handleFormatting: false)),
+                        () => ParsingUtilities.ParseDouble(controls[2].GetValue(handleFormatting: false)),
+                    },
+                    new List<Func<double, bool>>()
+                    {
+                        (double value) => controls[0].SetValue(value),
+                        (double value) => controls[1].SetValue(value),
+                        (double value) => controls[2].SetValue(value),
+                    });
+                PositionAngle p2 = PositionAngle.Functions(
+                    new List<Func<double>>()
+                    {
+                        () => ParsingUtilities.ParseDouble(controls[3].GetValue(handleFormatting: false)),
+                        () => ParsingUtilities.ParseDouble(controls[4].GetValue(handleFormatting: false)),
+                        () => ParsingUtilities.ParseDouble(controls[5].GetValue(handleFormatting: false)),
+                    },
+                    new List<Func<double, bool>>()
+                    {
+                        (double value) => controls[3].SetValue(value),
+                        (double value) => controls[4].SetValue(value),
+                        (double value) => controls[5].SetValue(value),
+                    });
                 _dictionary.Add(specialType,
                     ((uint dummy) =>
                     {
-                        double x1 = ParsingUtilities.ParseDouble(controls[0].GetValue(handleFormatting: false));
-                        double y1 = ParsingUtilities.ParseDouble(controls[1].GetValue(handleFormatting: false));
-                        double z1 = ParsingUtilities.ParseDouble(controls[2].GetValue(handleFormatting: false));
-                        double x2 = ParsingUtilities.ParseDouble(controls[3].GetValue(handleFormatting: false));
-                        double y2 = ParsingUtilities.ParseDouble(controls[4].GetValue(handleFormatting: false));
-                        double z2 = ParsingUtilities.ParseDouble(controls[5].GetValue(handleFormatting: false));
-                        return MoreMath.GetDistanceBetween(x1, y1, z1, x2, y2, z2);
+                        return PositionAngle.GetDistance(p1, p2);
                     },
-                    DEFAULT_SETTER));
+                    (double dist, uint dummy) =>
+                    {
+                        return PositionAngle.SetDistance(p1, p2, dist);
+                    }));
             }
             else
             {
+                PositionAngle p1 = PositionAngle.Functions(
+                    new List<Func<double>>()
+                    {
+                        () => ParsingUtilities.ParseDouble(controls[0].GetValue(handleFormatting: false)),
+                        () => 0,
+                        () => ParsingUtilities.ParseDouble(controls[1].GetValue(handleFormatting: false)),
+                    },
+                    new List<Func<double, bool>>()
+                    {
+                        (double value) => controls[0].SetValue(value),
+                        (double value) => true,
+                        (double value) => controls[1].SetValue(value),
+                    });
+                PositionAngle p2 = PositionAngle.Functions(
+                    new List<Func<double>>()
+                    {
+                        () => ParsingUtilities.ParseDouble(controls[2].GetValue(handleFormatting: false)),
+                        () => 0,
+                        () => ParsingUtilities.ParseDouble(controls[3].GetValue(handleFormatting: false)),
+                    },
+                    new List<Func<double, bool>>()
+                    {
+                        (double value) => controls[2].SetValue(value),
+                        (double value) => true,
+                        (double value) => controls[3].SetValue(value),
+                    });
                 _dictionary.Add(specialType,
                     ((uint dummy) =>
                     {
-                        double x1 = ParsingUtilities.ParseDouble(controls[0].GetValue(handleFormatting: false));
-                        double z1 = ParsingUtilities.ParseDouble(controls[1].GetValue(handleFormatting: false));
-                        double x2 = ParsingUtilities.ParseDouble(controls[2].GetValue(handleFormatting: false));
-                        double z2 = ParsingUtilities.ParseDouble(controls[3].GetValue(handleFormatting: false));
-                        return MoreMath.GetDistanceBetween(x1, z1, x2, z2);
+                        return PositionAngle.GetHDistance(p1, p2);
                     },
-                    DEFAULT_SETTER));
+                    (double dist, uint dummy) =>
+                    {
+                        return PositionAngle.SetHDistance(p1, p2, dist);
+                    }));
             }
             _numDistanceMathOperationEntries++;
             return specialType;
