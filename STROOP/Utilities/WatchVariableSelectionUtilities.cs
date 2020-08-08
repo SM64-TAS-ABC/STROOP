@@ -326,6 +326,57 @@ namespace STROOP.Structs
                 WatchVariableControl control = precursor.CreateWatchVariableControl();
                 panel.AddVariable(control);
             }
+            void createDistanceMathOperationVariable(bool use3D)
+            {
+                List<WatchVariableControl> controls = getVars();
+                bool satisfies2D = !use3D && controls.Count >= 4;
+                bool satisfies3D = use3D && controls.Count >= 6;
+                if (!satisfies2D && !satisfies3D) return;
+                string specialType = WatchVariableSpecialUtilities.AddDistanceMathOperationEntry(controls, use3D);
+                string name = use3D ?
+                    string.Format(
+                        "({0},{1},{2}) to ({3},{4},{5})",
+                        controls[0].VarName,
+                        controls[1].VarName,
+                        controls[2].VarName,
+                        controls[3].VarName,
+                        controls[4].VarName,
+                        controls[5].VarName) :
+                    string.Format(
+                        "({0},{1}) to ({2},{3})",
+                        controls[0].VarName,
+                        controls[1].VarName,
+                        controls[2].VarName,
+                        controls[3].VarName);
+                WatchVariable watchVariable =
+                    new WatchVariable(
+                        memoryTypeName: null,
+                        specialType: specialType,
+                        baseAddressType: BaseAddressTypeEnum.None,
+                        offsetUS: null,
+                        offsetJP: null,
+                        offsetSH: null,
+                        offsetEU: null,
+                        offsetDefault: null,
+                        mask: null,
+                        shift: null,
+                        handleMapping: true);
+                WatchVariableControlPrecursor precursor =
+                    new WatchVariableControlPrecursor(
+                        name: name,
+                        watchVar: watchVariable,
+                        subclass: WatchVariableSubclass.Number,
+                        backgroundColor: null,
+                        displayType: null,
+                        roundingLimit: null,
+                        useHex: null,
+                        invertBool: null,
+                        isYaw: null,
+                        coordinate: null,
+                        groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                WatchVariableControl control = precursor.CreateWatchVariableControl();
+                panel.AddVariable(control);
+            }
             void createRealTimeVariable()
             {
                 List<WatchVariableControl> controls = getVars();
@@ -382,6 +433,9 @@ namespace STROOP.Structs
                     "Min",
                     "Max",
                     null,
+                    "2D Distance",
+                    "3D Distance",
+                    null,
                     "Real Time",
                 },
                 new List<Action>()
@@ -398,6 +452,9 @@ namespace STROOP.Structs
                     () => createAggregateMathOperationVariable(AggregateMathOperation.Median),
                     () => createAggregateMathOperationVariable(AggregateMathOperation.Min),
                     () => createAggregateMathOperationVariable(AggregateMathOperation.Max),
+                    () => { },
+                    () => createDistanceMathOperationVariable(use3D: false),
+                    () => createDistanceMathOperationVariable(use3D: true),
                     () => { },
                     () => createRealTimeVariable(),
                 });

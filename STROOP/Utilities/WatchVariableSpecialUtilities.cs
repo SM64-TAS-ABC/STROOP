@@ -248,6 +248,43 @@ namespace STROOP.Structs
             return specialType;
         }
 
+        private static int _numDistanceMathOperationEntries = 0;
+
+        public static string AddDistanceMathOperationEntry(List<WatchVariableControl> controls, bool use3D)
+        {
+            string specialType = "DistanceMathOperation" + _numDistanceMathOperationEntries;
+            if (use3D)
+            {
+                _dictionary.Add(specialType,
+                    ((uint dummy) =>
+                    {
+                        double x1 = ParsingUtilities.ParseDouble(controls[0].GetValue(handleFormatting: false));
+                        double y1 = ParsingUtilities.ParseDouble(controls[1].GetValue(handleFormatting: false));
+                        double z1 = ParsingUtilities.ParseDouble(controls[2].GetValue(handleFormatting: false));
+                        double x2 = ParsingUtilities.ParseDouble(controls[3].GetValue(handleFormatting: false));
+                        double y2 = ParsingUtilities.ParseDouble(controls[4].GetValue(handleFormatting: false));
+                        double z2 = ParsingUtilities.ParseDouble(controls[5].GetValue(handleFormatting: false));
+                        return MoreMath.GetDistanceBetween(x1, y1, z1, x2, y2, z2);
+                    },
+                    DEFAULT_SETTER));
+            }
+            else
+            {
+                _dictionary.Add(specialType,
+                    ((uint dummy) =>
+                    {
+                        double x1 = ParsingUtilities.ParseDouble(controls[0].GetValue(handleFormatting: false));
+                        double z1 = ParsingUtilities.ParseDouble(controls[1].GetValue(handleFormatting: false));
+                        double x2 = ParsingUtilities.ParseDouble(controls[2].GetValue(handleFormatting: false));
+                        double z2 = ParsingUtilities.ParseDouble(controls[3].GetValue(handleFormatting: false));
+                        return MoreMath.GetDistanceBetween(x1, z1, x2, z2);
+                    },
+                    DEFAULT_SETTER));
+            }
+            _numDistanceMathOperationEntries++;
+            return specialType;
+        }
+
         private static int _numRealTimeEntries = 0;
 
         public static string AddRealTimeEntry(WatchVariableControl control)
