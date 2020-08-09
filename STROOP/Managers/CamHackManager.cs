@@ -425,18 +425,18 @@ namespace STROOP.Managers
             {
                 if (globalTimer <= panModel.PanStartTime)
                 {
-                    Config.Stream.SetValue((float)panModel.PanFOVStart, CameraConfig.FOVAddress);
+                    Config.Stream.SetValue((float)panModel.PanFOVStart, CameraConfig.FOVStructAddress + CameraConfig.FOVValueOffset);
                 }
                 else if (globalTimer >= panModel.PanEndTime)
                 {
-                    Config.Stream.SetValue((float)panModel.PanFOVEnd, CameraConfig.FOVAddress);
+                    Config.Stream.SetValue((float)panModel.PanFOVEnd, CameraConfig.FOVStructAddress + CameraConfig.FOVValueOffset);
                 }
                 else
                 {
                     double proportion = (globalTimer - panModel.PanStartTime) / (panModel.PanEndTime - panModel.PanStartTime);
                     proportion = EasingUtilities.Ease(panModel.PanEaseDegree, proportion, panModel.PanEaseStart != 0, panModel.PanEaseEnd != 0);
                     double fov = panModel.PanFOVStart + proportion * (panModel.PanFOVEnd - panModel.PanFOVStart);
-                    Config.Stream.SetValue((float)fov, CameraConfig.FOVAddress);
+                    Config.Stream.SetValue((float)fov, CameraConfig.FOVStructAddress + CameraConfig.FOVValueOffset);
                 }
             }
 

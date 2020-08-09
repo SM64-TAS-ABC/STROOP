@@ -28,10 +28,12 @@ namespace STROOP.Structs.Configurations
         public static readonly uint MarioCamPossibleOffset = 0x165;
         public static readonly byte MarioCamPossibleMask = 0x04;
 
-        public static uint FOVAddress { get => RomVersionConfig.SwitchMap(FOVAddressUS, FOVAddressJP, null, FOVAddressEU); }
-        public static readonly uint FOVAddressUS = 0x8033C5A4;
-        public static readonly uint FOVAddressJP = 0x8033B234;
-        public static readonly uint FOVAddressEU = 0x8030A924;
+        public static uint FOVStructAddress { get => RomVersionConfig.SwitchMap(FOVStructAddressUS, FOVStructAddressJP, null, FOVStructAddressEU); }
+        public static readonly uint FOVStructAddressUS = 0x8033C5A0;
+        public static readonly uint FOVStructAddressJP = 0x8033B230;
+        public static readonly uint FOVStructAddressEU = 0x8030A920;
+
+        public static uint FOVValueOffset = 0x4;
 
         public static uint SecondaryObjectAddress { get => RomVersionConfig.SwitchMap(SecondaryObjectAddressUS, SecondaryObjectAddressJP, null, SecondaryObjectAddressEU); }
         public static readonly uint SecondaryObjectAddressUS = 0x8032DF30;
