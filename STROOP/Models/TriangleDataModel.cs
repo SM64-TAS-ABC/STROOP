@@ -167,6 +167,11 @@ namespace STROOP.Models
             };
         }
 
+        public TriangleDataModel((int, int, int) p1, (int, int, int) p2, (int, int, int) p3) :
+            this(p1.Item1, p1.Item2, p1.Item3, p2.Item1, p2.Item2, p2.Item3, p3.Item1, p3.Item2, p3.Item3)
+        {
+        }
+
         public TriangleDataModel(int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3)
         {
             X1 = (short)x1;

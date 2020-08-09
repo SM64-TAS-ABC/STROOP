@@ -983,5 +983,15 @@ namespace STROOP.Utilities
         {
             return value - GetPreviousFloatInterval(value);
         }
+
+        public static float MoveFloat(float value, int num)
+        {
+            int iters = Math.Abs(num);
+            for (int i = 0; i < iters; i++)
+            {
+                value = num > 0 ? GetNextFloat(value) : GetPreviousFloat(value);
+            }
+            return value;
+        }
     }
 }
