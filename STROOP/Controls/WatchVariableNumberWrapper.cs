@@ -244,6 +244,7 @@ namespace STROOP.Controls
 
         protected override object HandleNumberConversion(object value)
         {
+            if (value == null) return null;
             if (TypeUtilities.IsNumber(value)) return value;
             return ParsingUtilities.ParseDouble(value);
         }

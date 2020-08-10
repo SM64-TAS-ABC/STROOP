@@ -96,7 +96,8 @@ namespace STROOP.Structs
             if (LockConfig.LockingDisabled) return;
             if (!ContainsAnyLocks()) return;
             List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
-            for (int i = 0; i < newLocks.Count; i++)
+            int minCount = Math.Min(newValues.Count, newLocks.Count);
+            for (int i = 0; i < minCount; i++)
             {
                 if (newValues[i] == null) continue;
                 foreach (WatchVariableLock currentLock in _lockList)
