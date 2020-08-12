@@ -98,6 +98,8 @@ namespace STROOP.Utilities
 
         public static void AnnihilateAllTrianglesButDeathBarriers()
         {
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
             List<uint> triangleAddresses = GetLevelTriangleAddresses();
             triangleAddresses.ForEach(address =>
             {
@@ -107,6 +109,7 @@ namespace STROOP.Utilities
                     ButtonUtilities.AnnihilateTriangle(address);
                 }
             });
+            if (!streamAlreadySuspended) Config.Stream.Resume();
         }
 
         public static void NeutralizeTriangles(TriangleClassification? classification = null)
