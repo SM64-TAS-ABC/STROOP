@@ -5114,14 +5114,14 @@ namespace STROOP.Structs
         {
             ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
-            return MoreMath.GetDeltaAngleTruncated(marioYawFacing, marioYawIntended);
+            ushort diff = MoreMath.NormalizeAngleTruncated(marioYawIntended - marioYawFacing);
+            return MoreMath.NormalizeAngleShort(diff);
         }
 
         public static short GetDeltaYawIntendedBackwards()
         {
-            ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-            ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
-            return MoreMath.GetDeltaAngleTruncated(marioYawFacing + 32768, marioYawIntended);
+            short forwards = GetDeltaYawIntendedFacing();
+            return MoreMath.NormalizeAngleShort(forwards + 32768);
         }
 
         // Mario trajectory methods
