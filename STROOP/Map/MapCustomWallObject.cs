@@ -28,6 +28,13 @@ namespace STROOP.Map
         public static MapCustomWallObject Create(string text)
         {
             if (text == null) return null;
+            if (text == "")
+            {
+                uint wallTriangle = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+                if (wallTriangle == 0) return null;
+                List<uint> wallTriangles = new List<uint>() { wallTriangle };
+                return new MapCustomWallObject(wallTriangles);
+            }
             List<uint?> nullableUIntList = ParsingUtilities.ParseStringList(text)
                 .ConvertAll(word => ParsingUtilities.ParseHexNullable(word));
             if (nullableUIntList.Any(nullableUInt => !nullableUInt.HasValue))

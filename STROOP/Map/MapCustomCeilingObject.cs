@@ -28,6 +28,13 @@ namespace STROOP.Map
         public static MapCustomCeilingObject Create(string text)
         {
             if (text == null) return null;
+            if (text == "")
+            {
+                uint ceilingTriangle = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
+                if (ceilingTriangle == 0) return null;
+                List<uint> ceilingTriangles = new List<uint>() { ceilingTriangle };
+                return new MapCustomCeilingObject(ceilingTriangles);
+            }
             List<uint?> nullableUIntList = ParsingUtilities.ParseStringList(text)
                 .ConvertAll(word => ParsingUtilities.ParseHexNullable(word));
             if (nullableUIntList.Any(nullableUInt => !nullableUInt.HasValue))
