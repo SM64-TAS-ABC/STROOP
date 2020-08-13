@@ -292,7 +292,9 @@ namespace STROOP.Managers
 
         public void GoToClosestVertex()
         {
-            ButtonUtilities.GotoTriangleVertexClosest(_triangleAddress, _useMisalignmentOffsetCheckbox.Checked);
+            uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            if (floorTri == 0) return;
+            ButtonUtilities.GotoTriangleVertexClosest(floorTri);
         }
 
         private void UpdateBasedOnCoordinates()

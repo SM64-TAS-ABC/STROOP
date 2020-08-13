@@ -124,7 +124,7 @@ namespace STROOP
                     "Inject Hitbox View Code",
                     "Free Movement Action",
                     "Everything in File",
-                    "Go to Closest Triangle Vertex",
+                    "Go to Closest Floor Vertex",
                     "Expand RAM Size",
                     "Save as Savestate",
                     "Show MHS Vars",
