@@ -444,6 +444,7 @@
     <Compile Include="Map\MapEffectiveHitboxCylinderObject.cs" />
     <Compile Include="Map\MapEffectiveHurtboxCylinderObject.cs" />
     <Compile Include="Map\MapAllObjectFloorObject.cs" />
+    <Compile Include="Map\MapAllObjectsWithNameObject.cs" />
     <Compile Include="Map\MapPunchDetectorObject.cs" />
     <Compile Include="Map\MapHurtboxCylinderObject.cs" />
     <Compile Include="Map\MapMarioFloorArrowObject.cs" />

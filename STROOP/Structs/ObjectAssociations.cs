@@ -164,6 +164,11 @@ namespace STROOP.Structs
             return assoc.Image;
         }
 
+        public ObjectBehaviorAssociation GetObjectAssociation(string objName)
+        {
+            return _objAssoc.FirstOrDefault(a => a.Name == objName);
+        }
+
         public Image GetObjectMapImage(BehaviorCriteria behaviorCriteria)
         {
             if (behaviorCriteria.BehaviorAddress == 0)
