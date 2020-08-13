@@ -86,8 +86,11 @@ namespace STROOP.Map
 
         private void OnPaint()
         {
-            Config.MapGui.GLControlMap2D.Cursor =
-                Config.MapManager.NumDrawingsEnabled > 0 ? Cursors.Cross : Cursors.Hand;
+            Cursor cursor = Config.MapManager.NumDrawingsEnabled > 0 ? Cursors.Cross : Cursors.Hand;
+            if (Config.MapGui.GLControlMap2D.Cursor != cursor)
+            {
+                Config.MapGui.GLControlMap2D.Cursor = cursor;
+            }
 
             Config.MapGui.GLControlMap2D.MakeCurrent();
             UpdateViewport();
