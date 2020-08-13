@@ -15,13 +15,11 @@ using STROOP.Models;
 
 namespace STROOP.Map
 {
-    public class MapAllObjectsWithNameObject : MapObject
+    public class MapAllObjectsWithNameObject : MapIconObject
     {
         private readonly string _objName;
         private readonly Image _objImage;
         private readonly Image _objMapImage;
-        private readonly int _objTex;
-        private readonly int _objMapTex;
 
         public MapAllObjectsWithNameObject(ObjectBehaviorAssociation assoc)
             : base()
@@ -29,8 +27,6 @@ namespace STROOP.Map
             _objName = assoc.Name;
             _objImage = assoc.Image;
             _objMapImage = assoc.MapImage;
-            _objTex = MapUtilities.LoadTexture(assoc.Image as Bitmap);
-            _objMapTex = MapUtilities.LoadTexture(assoc.MapImage as Bitmap);
             InternalRotates = assoc.RotatesOnMap;
         }
 
@@ -48,13 +44,6 @@ namespace STROOP.Map
                 _objMapImage;
         }
 
-        public int GetTex()
-        {
-            return _iconType == MapTrackerIconType.ObjectSlotImage ?
-                _objTex :
-                _objMapTex;
-        }
-
         public override string GetName()
         {
             return "All " + _objName;
@@ -69,7 +58,7 @@ namespace STROOP.Map
                 (float x, float y, float z, float angle, int tex) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControl(x, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
-                SizeF size = MapUtilities.ScaleImageSizeForControl(GetInternalImage().Size, Size);
+                SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
                 MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
             }
@@ -101,7 +90,7 @@ namespace STROOP.Map
         
         public Matrix4 GetModelMatrix(float x, float y, float z, float ang)
         {
-            Image image = GetInternalImage();
+            Image image = Image;
             SizeF _imageNormalizedSize = new SizeF(
                 image.Width >= image.Height ? 1.0f : (float)image.Width / image.Height,
                 image.Width <= image.Height ? 1.0f : (float)image.Height / image.Width);
@@ -132,7 +121,7 @@ namespace STROOP.Map
         public List<(float x, float y, float z, float angle, int tex)> GetData()
         {
             List<ObjectDataModel> objs = Config.ObjectSlotsManager.GetLoadedObjectsWithName(_objName);
-            return objs.ConvertAll(obj => (obj.X, obj.Y, obj.Z, (float)obj.FacingYaw, GetTex()));
+            return objs.ConvertAll(obj => (obj.X, obj.Y, obj.Z, (float)obj.FacingYaw, TextureId));
         }
 
         public override bool ParticipatesInGlobalIconSize()
