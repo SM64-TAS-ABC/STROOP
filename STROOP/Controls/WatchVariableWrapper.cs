@@ -203,6 +203,7 @@ namespace STROOP.Controls
                 GetClass(),
                 WatchVar.GetTypeDescription(),
                 WatchVar.GetBaseTypeOffsetDescription(),
+                WatchVar.GetBaseAddressListString(_watchVarControl.FixedAddressList),
                 WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
                 WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList),
             };
@@ -215,7 +216,8 @@ namespace STROOP.Controls
                 "Name",
                 "Class",
                 "Type",
-                "Base + Offset",
+                "BaseType + Offset",
+                "Base Address",
                 "N64 Address",
                 "Emulator Address",
             };
