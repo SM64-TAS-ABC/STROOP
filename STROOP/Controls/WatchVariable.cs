@@ -329,6 +329,7 @@ namespace STROOP.Controls
         public string GetBaseAddressListString()
         {
             List<uint> baseAddresses = GetBaseAddressList();
+            if (baseAddresses.Count == 0) return "(none)";
             List<string> baseAddressesString = baseAddresses.ConvertAll(address => HexUtilities.FormatValue(address, 8));
             return string.Join(",", baseAddressesString);
         }
