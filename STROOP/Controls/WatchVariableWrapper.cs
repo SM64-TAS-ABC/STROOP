@@ -189,7 +189,7 @@ namespace STROOP.Controls
                     GetClass(),
                     WatchVar.GetTypeDescription(),
                     WatchVar.GetBaseTypeOffsetDescription(),
-                    WatchVar.GetBaseAddressListString(),
+                    WatchVar.GetBaseAddressListString(_watchVarControl.FixedAddressList),
                     WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
                     WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList));
             varInfo.Show();

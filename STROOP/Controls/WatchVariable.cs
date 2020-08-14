@@ -326,9 +326,9 @@ namespace STROOP.Controls
             return addressArea ? address | 0x80000000 : address & 0x0FFFFFFF;
         }
 
-        public string GetBaseAddressListString()
+        public string GetBaseAddressListString(List<uint> addresses = null)
         {
-            List<uint> baseAddresses = GetBaseAddressList();
+            List<uint> baseAddresses = addresses ?? GetBaseAddressList();
             if (baseAddresses.Count == 0) return "(none)";
             List<string> baseAddressesString = baseAddresses.ConvertAll(address => HexUtilities.FormatValue(address, 8));
             return string.Join(",", baseAddressesString);
