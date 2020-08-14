@@ -32,6 +32,7 @@ namespace STROOP.Map
 
         public static MapAllObjectsWithNameObject Create(string objName)
         {
+            if (objName == null) return null;
             ObjectBehaviorAssociation assoc = Config.ObjectAssociations.GetObjectAssociation(objName);
             if (assoc == null) return null;
             return new MapAllObjectsWithNameObject(assoc);
