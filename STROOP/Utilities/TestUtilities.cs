@@ -8,6 +8,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Ttc;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,40 @@ namespace STROOP.Utilities
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
+
+        public static void AddChuckyaMapObjects()
+        {
+            List<ObjectDataModel> chuckyas = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Chuckya");
+            foreach (ObjectDataModel chuckya in chuckyas)
+            {
+                PositionAngle chuckyaPosAngle = PositionAngle.Obj(chuckya.Address);
+                PositionAngle homePosAngle = PositionAngle.ObjHome(chuckya.Address);
+
+                MapObject mapObjChuckya = new MapObjectObject(chuckya.Address);
+                MapObject mapObjHome = new MapHomeObject(chuckya.Address);
+                MapObject mapObjFacingArrow = new MapObjectFacingArrowObject(chuckyaPosAngle);
+                MapObject mapObjSector = new MapSectorObject(chuckyaPosAngle);
+                MapObject mapObjFacingDivider = new MapFacingDividerObject(chuckyaPosAngle);
+                MapObject mapObjSphere = new MapCustomSphereObject(chuckyaPosAngle);
+                MapObject mapObjCylinder = new MapCustomCylinderObject(homePosAngle);
+
+                mapObjFacingArrow.OutlineColor = Color.Green;
+                mapObjFacingArrow.Size = 1500;
+                mapObjSector.Size = 1500;
+                mapObjFacingDivider.Size = 1500;
+                mapObjSphere.Size = 4000;
+                mapObjCylinder.Color = Color.Cyan;
+                mapObjCylinder.Size = 1900;
+
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjChuckya));
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjHome));
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjFacingArrow));
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjSector));
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjFacingDivider));
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjSphere));
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjCylinder));
+            }
+        }
 
         public static void GetWallGaps()
         {
