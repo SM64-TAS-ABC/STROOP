@@ -59,6 +59,7 @@ namespace STROOP.Utilities
                 mapObjSphere.Size = 4000;
                 mapObjCylinder.Color = Color.Cyan;
                 mapObjCylinder.Size = 1900;
+                mapObjCylinder.ApplySettings(new MapObjectSettings(customCylinderChangeRelativeMinY: true, customCylinderNewRelativeMinY: -5000));
 
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjChuckya));
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjHome));
