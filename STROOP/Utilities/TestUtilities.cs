@@ -53,9 +53,9 @@ namespace STROOP.Utilities
                 MapObject mapObjCylinder = new MapCustomCylinderObject(homePosAngle);
 
                 mapObjFacingArrow.OutlineColor = Color.Green;
-                mapObjFacingArrow.Size = 1500;
-                mapObjSector.Size = 1500;
-                mapObjFacingDivider.Size = 1500;
+                mapObjFacingArrow.Size = 3000;
+                mapObjSector.Size = 3000;
+                mapObjFacingDivider.Size = 3000;
                 mapObjSphere.Size = 4000;
                 mapObjCylinder.Color = Color.Cyan;
                 mapObjCylinder.Size = 1900;
