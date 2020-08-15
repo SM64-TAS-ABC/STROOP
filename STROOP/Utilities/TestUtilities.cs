@@ -30,9 +30,45 @@ namespace STROOP.Utilities
 
         public static void TestSomethingElse()
         {
+            GetWallGaps();
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
+
+        public static void GetWallGaps()
+        {
+            uint triAddress1 = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+            uint triAddress2 = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            TriangleDataModel tri1 = new TriangleDataModel(triAddress1);
+            TriangleDataModel tri2 = new TriangleDataModel(triAddress2);
+            List<(short x, short y, short z)> commonVertices = GetCommonVertices(tri1, tri2);
+            if (commonVertices.Count < 2) return;
+            (short x1, short y1, short z1) = commonVertices[0];
+            (short x2, short y2, short z2) = commonVertices[1];
+
+            int count = 0;
+            for (float y = y1; y != y2; y = MoreMath.MoveFloatTowards(y, y2))
+            {
+                count++;
+            }
+            InfoForm.ShowValue(count);
+        }
+
+        public static List<(short x, short y, short z)> GetCommonVertices(TriangleDataModel tri1, TriangleDataModel tri2)
+        {
+            List<(short x, short y, short z)> commonVertices = new List<(short x, short y, short z)>();
+            if (TriangleHasVertex(tri2, tri1.X1, tri1.Y1, tri1.Z1)) commonVertices.Add((tri1.X1, tri1.Y1, tri1.Z1));
+            if (TriangleHasVertex(tri2, tri1.X2, tri1.Y2, tri1.Z2)) commonVertices.Add((tri1.X2, tri1.Y2, tri1.Z2));
+            if (TriangleHasVertex(tri2, tri1.X3, tri1.Y3, tri1.Z3)) commonVertices.Add((tri1.X3, tri1.Y3, tri1.Z3));
+            return commonVertices;
+        }
+
+        public static bool TriangleHasVertex(TriangleDataModel tri, short x, short y, short z)
+        {
+            return tri.X1 == x && tri.Y1 == y && tri.Z1 == z ||
+                tri.X2 == x && tri.Y2 == y && tri.Z2 == z ||
+                tri.X3 == x && tri.Y3 == y && tri.Z3 == z;
+        }
 
         public static void SearchForBadWallTriangles()
         {

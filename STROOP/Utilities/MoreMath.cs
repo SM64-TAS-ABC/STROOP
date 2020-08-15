@@ -985,5 +985,12 @@ namespace STROOP.Utilities
             }
             return value;
         }
+
+        public static float MoveFloatTowards(float value, float goal)
+        {
+            if (goal > value) return GetNextFloat(value);
+            if (goal < value) return GetPreviousFloat(value);
+            return value;
+        }
     }
 }
