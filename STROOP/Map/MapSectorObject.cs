@@ -24,6 +24,7 @@ namespace STROOP.Map
         {
             _posAngle = posAngle;
 
+            Size = 1000;
             Opacity = 0.5;
             Color = Color.Yellow;
         }
@@ -84,7 +85,7 @@ namespace STROOP.Map
             (double x, double y, double z, double angle) = _posAngle.GetValues();
             return new List<(float centerX, float centerZ, float radius, float angle, float angleRadius)>()
             {
-                ((float)x, (float)z, 1000f, (float)angle, 1024f)
+                ((float)x, (float)z, Size, (float)angle, 1024f)
             };
         }
 
