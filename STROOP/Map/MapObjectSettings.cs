@@ -34,6 +34,9 @@ namespace STROOP.Map
         public readonly bool ArrowChangeHeadSideLength;
         public readonly float ArrowNewHeadSideLength;
 
+        public readonly bool SectorChangeAngleRadius;
+        public readonly float SectorNewAngleRadius;
+
         public readonly bool PathDoReset;
 
         public readonly bool PathChangeResetPathOnLevelChange;
@@ -67,6 +70,9 @@ namespace STROOP.Map
             bool arrowChangeHeadSideLength = false,
             float arrowNewHeadSideLength = 0,
 
+            bool sectorChangeAngleRadius = false,
+            float sectorNewAngleRadius = 0,
+
             bool pathDoReset = false,
 
             bool pathChangeResetPathOnLevelChange = false,
@@ -98,6 +104,9 @@ namespace STROOP.Map
 
             ArrowChangeHeadSideLength = arrowChangeHeadSideLength;
             ArrowNewHeadSideLength = arrowNewHeadSideLength;
+
+            SectorChangeAngleRadius = sectorChangeAngleRadius;
+            SectorNewAngleRadius = sectorNewAngleRadius;
 
             PathDoReset = pathDoReset;
 

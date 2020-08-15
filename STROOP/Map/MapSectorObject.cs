@@ -10,6 +10,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -18,11 +19,13 @@ namespace STROOP.Map
         protected readonly static int NUM_POINTS_2D = 257;
 
         private readonly PositionAngle _posAngle;
+        private float _angleRadius;
 
         public MapSectorObject(PositionAngle posAngle)
             : base()
         {
             _posAngle = posAngle;
+            _angleRadius = 1024;
 
             Size = 1000;
             Opacity = 0.5;
@@ -85,7 +88,7 @@ namespace STROOP.Map
             (double x, double y, double z, double angle) = _posAngle.GetValues();
             return new List<(float centerX, float centerZ, float radius, float angle, float angleRadius)>()
             {
-                ((float)x, (float)z, Size, (float)angle, 1024f)
+                ((float)x, (float)z, Size, (float)angle, _angleRadius)
             };
         }
 
@@ -102,6 +105,38 @@ namespace STROOP.Map
         public override string GetName()
         {
             return "Sector for " + _posAngle.GetMapName();
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                ToolStripMenuItem itemSetAngleRadius = new ToolStripMenuItem("Set Angle Radius");
+                itemSetAngleRadius.Click += (sender, e) =>
+                {
+                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the angle radius for sector:");
+                    float? angleRadius = ParsingUtilities.ParseFloatNullable(text);
+                    if (!angleRadius.HasValue) return;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        sectorChangeAngleRadius: true, sectorNewAngleRadius: angleRadius.Value);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemSetAngleRadius);
+            }
+
+            return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.SectorChangeAngleRadius)
+            {
+                _angleRadius = settings.SectorNewAngleRadius;
+            }
         }
     }
 }
