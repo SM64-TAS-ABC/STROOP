@@ -68,18 +68,13 @@ namespace STROOP.Utilities
 
         public static List<TriangleDataModel> GetTrianglesInRange(uint startAddress, int numTriangles)
         {
-            List<TriangleDataModel> triangleList = new List<TriangleDataModel>();
-            for (int i = 0; i < numTriangles; i++)
-            {
-                uint address = startAddress + (uint)(i * TriangleConfig.TriangleStructSize);
-                TriangleDataModel triangle = new TriangleDataModel(address);
-                triangleList.Add(triangle);
-            }
-            return triangleList;
+            return GetTriangleAddressesInRange(startAddress, numTriangles)
+                .ConvertAll(triAddress => new TriangleDataModel(triAddress));
         }
 
         public static List<uint> GetTriangleAddressesInRange(uint startAddress, int numTriangles)
         {
+            if (numTriangles > 10000) numTriangles = 10000;
             List<uint> triangleAddressList = new List<uint>();
             for (int i = 0; i < numTriangles; i++)
             {
