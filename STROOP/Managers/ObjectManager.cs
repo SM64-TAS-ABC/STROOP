@@ -397,7 +397,8 @@ namespace STROOP.Managers
                         nOffset,
                         -1 * vOffset,
                         useRelative,
-                        KeyboardUtilities.IsCtrlHeld());
+                        KeyboardUtilities.IsCtrlHeld(),
+                        KeyboardUtilities.IsAltHeld());
                 });
 
             var objAngleGroupBox = objPanel.Controls["groupBoxObjAngle"] as GroupBox;
