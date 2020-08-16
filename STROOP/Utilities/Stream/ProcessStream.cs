@@ -1,4 +1,5 @@
-﻿using STROOP.Structs;
+﻿using STROOP.Exceptions;
+using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Concurrent;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace STROOP.Utilities
 {
@@ -136,7 +138,16 @@ namespace STROOP.Utilities
 
         public bool SwitchProcess(Process newProcess, Emulator emulator)
         {
-            IEmuRamIO newIo = newProcess != null ? _ioCreationTable[emulator.IOType](newProcess, emulator) : null;
+            IEmuRamIO newIo = null;
+            try
+            {
+                newIo = newProcess != null ? _ioCreationTable[emulator.IOType](newProcess, emulator) : null;
+            }
+            catch (DolphinNotRunningGameException e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             return SwitchIO(newIo);
         }
 

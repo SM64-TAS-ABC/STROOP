@@ -1,4 +1,5 @@
-﻿using STROOP.Structs;
+﻿using STROOP.Exceptions;
+using STROOP.Structs;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -58,7 +59,7 @@ namespace STROOP.Utilities
                 }
             }
             if (_baseOffset.ToUInt64() == 0)
-                throw new ArgumentNullException("Dolphin running, but emulator hasn't started");
+                throw new DolphinNotRunningGameException();
 
             _baseOffset = (UIntPtr)(_baseOffset.ToUInt64() + _emulator.RamStart);
         }
