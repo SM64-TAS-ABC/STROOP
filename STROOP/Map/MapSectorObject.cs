@@ -25,7 +25,7 @@ namespace STROOP.Map
             : base()
         {
             _posAngle = posAngle;
-            _angleRadius = 2048;
+            _angleRadius = 4096;
 
             Size = 1000;
             Opacity = 0.5;
