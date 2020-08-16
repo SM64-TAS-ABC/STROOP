@@ -198,29 +198,11 @@ namespace STROOP
                 labelVersionNumber,
                 new List<string>()
                 {
-                    "Show Invisible Objects as Signs",
-                    "Show Cog Tris",
-                    "Show Shapes",
                     "Update Cam Hack Angle",
                     "Update Floor Tri",
                 },
                 new List<Func<bool>>()
                 {
-                    () =>
-                    {
-                        TestingConfig.ShowInvisibleObjectsAsSigns = !TestingConfig.ShowInvisibleObjectsAsSigns;
-                        return TestingConfig.ShowInvisibleObjectsAsSigns;
-                    },
-                    () =>
-                    {
-                        TestingConfig.ShowCogTris = !TestingConfig.ShowCogTris;
-                        return TestingConfig.ShowCogTris;
-                    },
-                    () =>
-                    {
-                        TestingConfig.ShowShapes = !TestingConfig.ShowShapes;
-                        return TestingConfig.ShowShapes;
-                    },
                     () =>
                     {
                         TestingConfig.UpdateCamHackAngle = !TestingConfig.UpdateCamHackAngle;

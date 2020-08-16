@@ -784,16 +784,6 @@ namespace STROOP.Managers
                 }
             }
 
-            // Show Invisible Objects as Signs
-            if (TestingConfig.ShowInvisibleObjectsAsSigns)
-            {
-                DataModels.Objects.ToList().ForEach(obj =>
-                {
-                    if (obj == null) return;
-                    if (obj.GraphicsID == 0) obj.GraphicsID = ObjectConfig.SignGraphicsId;
-                });
-            }
-
             // Obj at HOLP
             if (_checkBoxObjAtHOLPOn.Checked)
             {
