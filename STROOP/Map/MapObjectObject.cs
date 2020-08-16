@@ -32,6 +32,10 @@ namespace STROOP.Map
         public override Image GetInternalImage()
         {
             _obj.Update();
+            if (_obj.BehaviorAssociation == null)
+            {
+                return Config.ObjectAssociations.DefaultImage;
+            }
             return _iconType == MapTrackerIconType.ObjectSlotImage ?
                 _obj.BehaviorAssociation.Image :
                 _obj.BehaviorAssociation.MapImage;
