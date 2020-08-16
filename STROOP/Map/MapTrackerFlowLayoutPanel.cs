@@ -82,9 +82,15 @@ namespace STROOP.Map
 
         public void UpdateControl()
         {
-            _mapObjMap.Update();
-            _mapObjBackground.Update();
-            _mapObjHitboxHackTris.Update();
+            if (Config.MapGui.checkBoxMapOptionsEnable3D.Checked)
+            {            
+                _mapObjHitboxHackTris.Update();
+            }
+            else
+            {
+                _mapObjMap.Update();
+                _mapObjBackground.Update();
+            }
 
             lock (_objectLock)
             {
