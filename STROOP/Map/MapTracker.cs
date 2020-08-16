@@ -108,7 +108,7 @@ namespace STROOP.Map
             comboBoxVisibilityType.SelectedItem = MapTrackerVisibilityType.VisibleWhenLoaded;
 
             comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
-            comboBoxOrderType.SelectedItem = MapTrackerOrderType.OrderOnTop;
+            comboBoxOrderType.SelectedItem = MapTrackerOrderType.OrderByY;
 
             SetSize(null);
             SetOpacity(null);
