@@ -106,10 +106,15 @@ namespace STROOP.Managers
             Label labelTriangleSelection = splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label;
             ControlUtilities.AddContextMenuStripFunctions(
                 labelTriangleSelection,
-                new List<string>() { "Update Based on Coordinates" },
+                new List<string>()
+                {
+                    "Update Based on Coordinates",
+                    "Paste Triangles",
+                },
                 new List<Action>()
                 {
                     () => UpdateBasedOnCoordinates(),
+                    () => PasteTriangles(),
                 });
 
             (splitContainerTriangles.Panel1.Controls["buttonGotoV1"] as Button).Click
@@ -299,22 +304,33 @@ namespace STROOP.Managers
 
         private void UpdateBasedOnCoordinates()
         {
-            if (_triangleAddress == 0) return;
             TriangleDataModel tri = new TriangleDataModel(_triangleAddress);
+            UpdateBasedOnCoordinates(_triangleAddress, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+        }
+
+        private void UpdateBasedOnCoordinates(
+            uint triAddress, int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3)
+        {
+            if (triAddress == 0) return;
 
             // update norms
             (float normX, float normY, float normZ, float normOffset) =
-                TriangleUtilities.GetNorms(tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+                TriangleUtilities.GetNorms(x1, y1, z1, x2, y2, z2, x3, y3, z3);
             Config.Stream.SetValue(normX, _triangleAddress + TriangleOffsetsConfig.NormX);
             Config.Stream.SetValue(normY, _triangleAddress + TriangleOffsetsConfig.NormY);
             Config.Stream.SetValue(normZ, _triangleAddress + TriangleOffsetsConfig.NormZ);
             Config.Stream.SetValue(normOffset, _triangleAddress + TriangleOffsetsConfig.NormOffset);
 
             // update y bounds
-            short yMinMinus5 = (short)(tri.GetMinY() - 5);
-            short yMaxPlus5 = (short)(tri.GetMaxY() + 5);
+            short yMinMinus5 = (short)(MoreMath.Min(y1, y2, y3) - 5);
+            short yMaxPlus5 = (short)(MoreMath.Max(y1, y2, y3) + 5);
             Config.Stream.SetValue(yMinMinus5, _triangleAddress + TriangleOffsetsConfig.YMinMinus5);
             Config.Stream.SetValue(yMaxPlus5, _triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
+        }
+
+        private void PasteTriangles()
+        {
+
         }
 
         private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)
