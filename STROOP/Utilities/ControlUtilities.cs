@@ -10,6 +10,7 @@ using System.Drawing;
 using STROOP.Structs;
 using System.Reflection;
 using STROOP.Structs.Configurations;
+using STROOP.Forms;
 
 namespace STROOP.Utilities
 {
@@ -176,6 +177,14 @@ namespace STROOP.Utilities
                 SetFacingDirection(lastDirection, itemInverted.Checked);
             };
 
+            ToolStripMenuItem itemPopOut = new ToolStripMenuItem("Pop Out");
+            itemPopOut.Click += (sender, e) =>
+            {
+                VariableTripletControllerForm form = new VariableTripletControllerForm();
+                form.Initialize(coordinateSystem, allowRelativeOptions, actionMove);
+                form.ShowForm();
+            };
+
             ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Items.Add(itemLeft);
             contextMenuStrip.Items.Add(itemRight);
@@ -187,6 +196,8 @@ namespace STROOP.Utilities
             contextMenuStrip.Items.Add(itemDownRight);
             contextMenuStrip.Items.Add(new ToolStripSeparator());
             contextMenuStrip.Items.Add(itemInverted);
+            contextMenuStrip.Items.Add(new ToolStripSeparator());
+            contextMenuStrip.Items.Add(itemPopOut);
             groupbox.ContextMenuStrip = contextMenuStrip;
 
             AddInversionContextMenuStrip(buttonLineUp, buttonLineDown);

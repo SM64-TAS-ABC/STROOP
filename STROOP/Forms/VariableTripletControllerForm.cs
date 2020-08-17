@@ -82,6 +82,31 @@ namespace STROOP.Forms
                 });
         }
 
+        public void Initialize(
+            CoordinateSystem coordinateSystem,
+            bool allowRelativeOptions,
+            Action<float, float, float, bool> actionMove)
+        {
+            ControlUtilities.InitializeThreeDimensionController(
+                coordinateSystem,
+                allowRelativeOptions,
+                groupBoxVar,
+                groupBoxVar.Controls["buttonVarXn"] as Button,
+                groupBoxVar.Controls["buttonVarXp"] as Button,
+                groupBoxVar.Controls["buttonVarZn"] as Button,
+                groupBoxVar.Controls["buttonVarZp"] as Button,
+                groupBoxVar.Controls["buttonVarXnZn"] as Button,
+                groupBoxVar.Controls["buttonVarXnZp"] as Button,
+                groupBoxVar.Controls["buttonVarXpZn"] as Button,
+                groupBoxVar.Controls["buttonVarXpZp"] as Button,
+                groupBoxVar.Controls["buttonVarYp"] as Button,
+                groupBoxVar.Controls["buttonVarYn"] as Button,
+                groupBoxVar.Controls["textBoxVarXZ"] as TextBox,
+                groupBoxVar.Controls["textBoxVarY"] as TextBox,
+                groupBoxVar.Controls["checkBoxVarRelative"] as CheckBox,
+                actionMove);
+        }
+
         public void ShowForm()
         {
             Show();
