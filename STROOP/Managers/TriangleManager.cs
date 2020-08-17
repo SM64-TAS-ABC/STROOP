@@ -316,21 +316,45 @@ namespace STROOP.Managers
             // update norms
             (float normX, float normY, float normZ, float normOffset) =
                 TriangleUtilities.GetNorms(x1, y1, z1, x2, y2, z2, x3, y3, z3);
-            Config.Stream.SetValue(normX, _triangleAddress + TriangleOffsetsConfig.NormX);
-            Config.Stream.SetValue(normY, _triangleAddress + TriangleOffsetsConfig.NormY);
-            Config.Stream.SetValue(normZ, _triangleAddress + TriangleOffsetsConfig.NormZ);
-            Config.Stream.SetValue(normOffset, _triangleAddress + TriangleOffsetsConfig.NormOffset);
+            Config.Stream.SetValue(normX, triAddress + TriangleOffsetsConfig.NormX);
+            Config.Stream.SetValue(normY, triAddress + TriangleOffsetsConfig.NormY);
+            Config.Stream.SetValue(normZ, triAddress + TriangleOffsetsConfig.NormZ);
+            Config.Stream.SetValue(normOffset, triAddress + TriangleOffsetsConfig.NormOffset);
 
             // update y bounds
             short yMinMinus5 = (short)(MoreMath.Min(y1, y2, y3) - 5);
             short yMaxPlus5 = (short)(MoreMath.Max(y1, y2, y3) + 5);
-            Config.Stream.SetValue(yMinMinus5, _triangleAddress + TriangleOffsetsConfig.YMinMinus5);
-            Config.Stream.SetValue(yMaxPlus5, _triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
+            Config.Stream.SetValue(yMinMinus5, triAddress + TriangleOffsetsConfig.YMinMinus5);
+            Config.Stream.SetValue(yMaxPlus5, triAddress + TriangleOffsetsConfig.YMaxPlus5);
         }
 
         private void PasteTriangles()
         {
+            List<List<string>> lines = ParsingUtilities.ParseLines(Clipboard.GetText());
+            if (lines.Count != 10) return;
+            int numWords = lines[0].Count;
+            if (numWords == 0) return;
+            if (lines.Any(line => line.Count != numWords)) return;
 
+            for (int wordIndex = 0; wordIndex < numWords; wordIndex++)
+            {
+                uint triAddress = ParsingUtilities.ParseHexNullable(lines[0][wordIndex]) ?? 0;
+                List<int> coords = lines.Skip(1).ToList().ConvertAll(line => ParsingUtilities.ParseInt(line[wordIndex]));
+                TriangleOffsetsConfig.SetX1((short)coords[0], triAddress);
+                TriangleOffsetsConfig.SetY1((short)coords[1], triAddress);
+                TriangleOffsetsConfig.SetZ1((short)coords[2], triAddress);
+                TriangleOffsetsConfig.SetX2((short)coords[3], triAddress);
+                TriangleOffsetsConfig.SetY2((short)coords[4], triAddress);
+                TriangleOffsetsConfig.SetZ2((short)coords[5], triAddress);
+                TriangleOffsetsConfig.SetX3((short)coords[6], triAddress);
+                TriangleOffsetsConfig.SetY3((short)coords[7], triAddress);
+                TriangleOffsetsConfig.SetZ3((short)coords[8], triAddress);
+                UpdateBasedOnCoordinates(
+                    triAddress,
+                    coords[0], coords[1], coords[2],
+                    coords[3], coords[4], coords[5],
+                    coords[6], coords[7], coords[8]);
+            }
         }
 
         private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)

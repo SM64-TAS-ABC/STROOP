@@ -297,6 +297,19 @@ namespace STROOP.Utilities
             return new List<string>(stringArray);
         }
 
+        public static List<List<string>> ParseLines(string text)
+        {
+            if (text == null || text == "")
+            {
+                return new List<List<string>>();
+            }
+            string[] linesArray = text.Split('\n');
+            List<string> linesList = new List<string>(linesArray);
+            List<List<string>> output = linesList.ConvertAll(line => ParseStringList(line));
+            output = output.FindAll(line => line.Count > 0);
+            return output;
+        }
+
         public static List<uint> ParseHexList(string text)
         {
             return ParseStringList(text).ConvertAll(stringValue => ParseHex(stringValue));
