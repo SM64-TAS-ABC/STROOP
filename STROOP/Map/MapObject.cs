@@ -137,5 +137,9 @@ namespace STROOP.Map
         public virtual void NotifyMouseEvent(MouseEvent mouseEvent, bool isLeftButton, int mouseX, int mouseY)
         {
         }
+
+        public virtual void CleanUp()
+        {
+        }
     }
 }

@@ -813,6 +813,7 @@ namespace STROOP.Map
         public void CleanUp()
         {
             _semaphoreList.ForEach(semaphore => semaphore.IsUsed = false);
+            _mapObjectList.ForEach(mapObj => mapObj.CleanUp());
         }
 
         public override string ToString()

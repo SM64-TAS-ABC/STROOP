@@ -99,5 +99,14 @@ namespace STROOP.Map
             }
             _lastVertex = currentVertex;
         }
+
+        public override void CleanUp()
+        {
+            if (_drawingEnabled)
+            {
+                _drawingEnabled = false;
+                Config.MapManager.NotifyDrawingEnabledChange(_drawingEnabled);
+            }
+        }
     }
 }
