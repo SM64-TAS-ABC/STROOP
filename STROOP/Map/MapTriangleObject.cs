@@ -68,7 +68,10 @@ namespace STROOP.Map
             itemSetWithinCenter.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the center y of the within-dist range.");
-                float? withinCenterNullable = ParsingUtilities.ParseFloatNullable(text);
+                float? withinCenterNullable =
+                    text == "" ?
+                    Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset) :
+                    ParsingUtilities.ParseFloatNullable(text);
                 if (!withinCenterNullable.HasValue) return;
                 _withinCenter = withinCenterNullable.Value;
             };

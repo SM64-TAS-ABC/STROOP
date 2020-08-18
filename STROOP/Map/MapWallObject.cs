@@ -134,7 +134,10 @@ namespace STROOP.Map
             itemSetAbsoluteHeight.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the height at which you want to see the wall triangles.");
-                float? absoluteHeightNullable = ParsingUtilities.ParseFloatNullable(text);
+                float? absoluteHeightNullable =
+                    text == "" ?
+                    Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset) :
+                    ParsingUtilities.ParseFloatNullable(text);
                 if (!absoluteHeightNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(
                     wallChangeAbsoluteHeight: true, wallNewAbsoluteHeight: absoluteHeightNullable.Value);
