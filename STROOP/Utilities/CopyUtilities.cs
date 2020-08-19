@@ -42,6 +42,7 @@ namespace STROOP.Utilities
                 "Copy with Spaces",
                 "Copy with Tabs",
                 "Copy with Line Breaks",
+                "Copy with Commas and Spaces",
                 "Copy with Names",
                 "Copy for Code",
             };
@@ -55,6 +56,7 @@ namespace STROOP.Utilities
                 () => CopyWithSeparator(getVars(), " "),
                 () => CopyWithSeparator(getVars(), "\t"),
                 () => CopyWithSeparator(getVars(), "\r\n"),
+                () => CopyWithSeparator(getVars(), ", "),
                 () => CopyWithNames(getVars()),
                 () => CopyForCode(getVars()),
             };
