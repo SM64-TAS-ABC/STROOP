@@ -22,6 +22,8 @@ namespace STROOP.Map
         private int _purpleMarioTex = -1;
         private int _blueMarioTex = -1;
 
+        private DateTime _showEachPointStartTime = DateTime.MinValue;
+
         public MapPreviousPositionsObject()
             : base()
         {
@@ -45,10 +47,11 @@ namespace STROOP.Map
 
         public override void DrawOn2DControl()
         {
-            List<(float x, float y, float z, float angle, int tex)> data = GetData();
+            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
             foreach (var dataPoint in data)
             {
-                (float x, float y, float z, float angle, int tex) = dataPoint;
+                (float x, float y, float z, float angle, int tex, bool show) = dataPoint;
+                if (!show) continue;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControl(x, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size);
@@ -66,8 +69,8 @@ namespace STROOP.Map
                 GL.Begin(PrimitiveType.Lines);
                 for (int i = 0; i < data.Count - 1; i++)
                 {
-                    (float x1, float y1, float z1, float angle1, int tex1) = data[i];
-                    (float x2, float y2, float z2, float angle2, int tex2) = data[i + 1];
+                    (float x1, float y1, float z1, float angle1, int tex1, bool show1) = data[i];
+                    (float x2, float y2, float z2, float angle2, int tex2, bool show2) = data[i + 1];
                     (float x, float z) vertex1ForControl = MapUtilities.ConvertCoordsForControl(x1, z1);
                     (float x, float z) vertex2ForControl = MapUtilities.ConvertCoordsForControl(x2, z2);
                     GL.Vertex2(vertex1ForControl.x, vertex1ForControl.z);
@@ -80,11 +83,12 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            List<(float x, float y, float z, float angle, int tex)> data = GetData();
+            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
             data.Reverse();
             foreach (var dataPoint in data)
             {
-                (float x, float y, float z, float angle, int tex) = dataPoint;
+                (float x, float y, float z, float angle, int tex, bool show) = dataPoint;
+                if (!show) continue;
 
                 Matrix4 viewMatrix = GetModelMatrix(x, y, z, angle);
                 GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
@@ -106,8 +110,8 @@ namespace STROOP.Map
                 List<(float x, float y, float z)> vertexList = new List<(float x, float y, float z)>();
                 for (int i = 0; i < data.Count - 1; i++)
                 {
-                    (float x1, float y1, float z1, float angle1, int tex1) = data[i];
-                    (float x2, float y2, float z2, float angle2, int tex2) = data[i + 1];
+                    (float x1, float y1, float z1, float angle1, int tex1, bool show1) = data[i];
+                    (float x2, float y2, float z2, float angle2, int tex2, bool show2) = data[i + 1];
                     vertexList.Add((x1, y1, z1));
                     vertexList.Add((x2, y2, z2));
                 }
@@ -161,7 +165,7 @@ namespace STROOP.Map
             };
         }
 
-        public List<(float x, float y, float z, float angle, int tex)> GetData()
+        public List<(float x, float y, float z, float angle, int tex, bool show)> GetData()
         {
             float pos01X = Config.Stream.GetSingle(0x80372F00);
             float pos01Y = Config.Stream.GetSingle(0x80372F04);
@@ -239,6 +243,7 @@ namespace STROOP.Map
             float pos15A = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
             int numQFrames = Config.Stream.GetInt32(0x80372E3C) / 0x30;
+            int numPoints = numQFrames * 3;
 
             List<(float x, float y, float z, float angle, int tex)> allResults =
                 new List<(float x, float y, float z, float angle, int tex)>()
@@ -260,13 +265,28 @@ namespace STROOP.Map
                     (pos15X, pos15Y, pos15Z, pos15A, _redMarioTex), // wall2
                 };
 
-            List<(float x, float y, float z, float angle, int tex)> partialResults =
-                new List<(float x, float y, float z, float angle, int tex)>();
-            for (int i = 0; i < numQFrames * 3; i++)
+            double secondsPerPoint = 0.5;
+            double totalSeconds = secondsPerPoint * numPoints;
+            double elapsedSeconds = DateTime.Now.Subtract(_showEachPointStartTime).TotalSeconds;
+            int? pointToShow;
+            if (elapsedSeconds > totalSeconds)
+            {
+                _showEachPointStartTime = DateTime.MinValue;
+                pointToShow = null;
+            }
+            else
+            {
+                pointToShow = (int)(elapsedSeconds / secondsPerPoint);
+            }
+
+            List<(float x, float y, float z, float angle, int tex, bool show)> partialResults =
+                new List<(float x, float y, float z, float angle, int tex, bool show)>();
+            for (int i = 0; i < numPoints; i++)
             {
                 (float x, float y, float z, float angle, int tex) = allResults[i];
-                tex = i == numQFrames * 3 - 1 ? _redMarioTex : tex;
-                partialResults.Add((x, y, z, angle, tex));
+                tex = i == numPoints - 1 ? _redMarioTex : tex;
+                bool show = pointToShow.HasValue ? i == pointToShow.Value : true;
+                partialResults.Add((x, y, z, angle, tex, show));
             }
             return partialResults;
         }
@@ -308,6 +328,23 @@ namespace STROOP.Map
         public override MapDrawType GetDrawType()
         {
             return MapDrawType.Overlay;
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                ToolStripMenuItem itemShowEachPoint = new ToolStripMenuItem("Show Each Point");
+                itemShowEachPoint.Click += (sender, e) =>
+                {
+                    _showEachPointStartTime = DateTime.Now;
+                };
+
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemShowEachPoint);
+            }
+
+            return _contextMenuStrip;
         }
     }
 }
