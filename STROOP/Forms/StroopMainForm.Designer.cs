@@ -336,7 +336,7 @@ namespace STROOP
             this.checkBoxNeutralizeTriangle = new System.Windows.Forms.CheckBox();
             this.checkBoxRecordTriangleData = new System.Windows.Forms.CheckBox();
             this.checkBoxVertexMisalignment = new System.Windows.Forms.CheckBox();
-            this.maskedTextBoxOtherTriangle = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxOtherTriangle = new BetterTextbox();
             this.buttonTriangleShowEquation = new System.Windows.Forms.Button();
             this.buttonRetrieveTriangle = new System.Windows.Forms.Button();
             this.labelRecordTriangleCount = new System.Windows.Forms.Label();
@@ -5474,7 +5474,6 @@ namespace STROOP
             // 
             this.maskedTextBoxOtherTriangle.Location = new System.Drawing.Point(71, 87);
             this.maskedTextBoxOtherTriangle.Margin = new System.Windows.Forms.Padding(2);
-            this.maskedTextBoxOtherTriangle.Mask = "\\0xaaAAAAAA";
             this.maskedTextBoxOtherTriangle.Name = "maskedTextBoxOtherTriangle";
             this.maskedTextBoxOtherTriangle.Size = new System.Drawing.Size(87, 20);
             this.maskedTextBoxOtherTriangle.TabIndex = 5;
@@ -22119,7 +22118,7 @@ namespace STROOP
         private RadioButton radioButtonTriWall;
         private RadioButton radioButtonTriFloor;
         private Label labelTriangleSelection;
-        private MaskedTextBox maskedTextBoxOtherTriangle;
+        private BetterTextbox maskedTextBoxOtherTriangle;
         private RadioButton radioButtonTriOther;
         private WatchVariableFlowLayoutPanel watchVariablePanelTriangles;
         private Button buttonStandardHud;

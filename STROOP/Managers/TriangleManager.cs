@@ -18,7 +18,7 @@ namespace STROOP.Managers
     {
         private Dictionary<uint, TriangleDataModel> _triangleCache;
 
-        MaskedTextBox _addressBox;
+        BetterTextbox _addressBox;
         uint _triangleAddress = 0;
         CheckBox _useMisalignmentOffsetCheckbox;
 
@@ -89,10 +89,11 @@ namespace STROOP.Managers
 
             SplitContainer splitContainerTriangles = tabControl.Controls["splitContainerTriangles"] as SplitContainer;
 
-            _addressBox = splitContainerTriangles.Panel1.Controls["maskedTextBoxOtherTriangle"] as MaskedTextBox;
+            _addressBox = splitContainerTriangles.Panel1.Controls["maskedTextBoxOtherTriangle"] as BetterTextbox;
             _useMisalignmentOffsetCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxVertexMisalignment"] as CheckBox;
 
-            _addressBox.KeyDown += AddressBox_KeyDown;
+            // TODO fix this
+            // _addressBox.KeyDown += AddressBox_KeyDown;
 
             _radioButtonTriFloor = splitContainerTriangles.Panel1.Controls["radioButtonTriFloor"] as RadioButton;
             _radioButtonTriFloor.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Floor);
@@ -439,6 +440,7 @@ namespace STROOP.Managers
             Mode = mode;
         }
 
+        // TODO fix pressing enter on textbox
         private void AddressBox_KeyDown(object sender, KeyEventArgs e)
         {
             // On "Enter" key press
