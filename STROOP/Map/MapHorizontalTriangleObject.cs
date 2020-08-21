@@ -33,7 +33,38 @@ namespace STROOP.Map
         {
             if (_enableQuarterFrameLandings)
             {
-
+                float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                float marioYSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
+                List<(float y, float ySpeed)> steps = new List<(float y, float ySpeed)>();
+                for (int i = 0; i < 100 && steps.Count < 10; i++)
+                {
+                    if (marioYSpeed < 0)
+                    {
+                        steps.Add((marioY, marioYSpeed));
+                    }
+                    marioY += marioYSpeed;
+                    marioYSpeed = Math.Max(marioYSpeed - 4, -75);
+                }
+                List<(float yMin, float yMax)> yBounds = new List<(float yMin, float yMax)>();
+                foreach ((float y, float ySpeed) in steps)
+                {
+                    float y0 = y + (0 / 4f) * ySpeed;
+                    float y1 = y + (1 / 4f) * ySpeed;
+                    float y2 = y + (2 / 4f) * ySpeed;
+                    float y3 = y + (3 / 4f) * ySpeed;
+                    float y4 = y + (4 / 4f) * ySpeed;
+                    yBounds.Add((y1, y0));
+                    yBounds.Add((y2, y1));
+                    yBounds.Add((y3, y2));
+                    yBounds.Add((y4, y3));
+                }
+                for (int i = 0; i < yBounds.Count; i++)
+                {
+                    (float yMin, float yMax) = yBounds[i];
+                    List<Color> colors = new List<Color>() { Color.Red, Color.Yellow, Color.Green, Color.Cyan };
+                    Color color = colors[i % 4];
+                    DrawOn2DControlWithoutUnits(yMin, yMax, color);
+                }
             }
             else
             {
