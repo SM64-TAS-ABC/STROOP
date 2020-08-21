@@ -36,7 +36,7 @@ namespace STROOP.Map
                 float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                 float marioYSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
                 List<(float y, float ySpeed)> steps = new List<(float y, float ySpeed)>();
-                for (int i = 0; i < 100 && steps.Count < 20; i++)
+                for (int i = 0; i < 100 && steps.Count < 10; i++)
                 {
                     if (marioYSpeed < 0)
                     {
