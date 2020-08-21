@@ -284,7 +284,7 @@ namespace STROOP.Map
 
                 if (_minHeight.HasValue)
                 {
-                    if (_minHeight.Value >= maxY) continue; // don't add anything
+                    if (_minHeight.Value > maxY) continue; // don't add anything
                     if (_minHeight.Value > minY)
                     {
                         List<(float x, float y, float z)> tempVertexList = new List<(float x, float y, float z)>();
@@ -306,7 +306,7 @@ namespace STROOP.Map
 
                 if (_maxHeight.HasValue)
                 {
-                    if (_maxHeight.Value <= minY) continue; // don't add anything
+                    if (_maxHeight.Value < minY) continue; // don't add anything
                     if (_maxHeight.Value < maxY)
                     {
                         List<(float x, float y, float z)> tempVertexList = new List<(float x, float y, float z)>();
