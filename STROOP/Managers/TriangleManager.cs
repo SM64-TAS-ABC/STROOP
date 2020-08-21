@@ -116,6 +116,17 @@ namespace STROOP.Managers
             _radioButtonTriCustom = splitContainerTriangles.Panel1.Controls["radioButtonTriCustom"] as RadioButton;
             _radioButtonTriCustom.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Custom);
 
+            ControlUtilities.AddContextMenuStripFunctions(
+                _radioButtonTriCustom,
+                new List<string>()
+                {
+                    "Paste Addresses",
+                },
+                new List<Action>()
+                {
+                    () => EnterCustomText(Clipboard.GetText()),
+                });
+
             Label labelTriangleSelection = splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label;
             ControlUtilities.AddContextMenuStripFunctions(
                 labelTriangleSelection,
@@ -458,7 +469,12 @@ namespace STROOP.Managers
 
         private void AddressBoxEnter()
         {
-            List<uint> triangleAddresses = ParsingUtilities.ParseHexListNullable(_addressBox.Text);
+            EnterCustomText(_addressBox.Text);
+        }
+
+        private void EnterCustomText(string text)
+        {
+            List<uint> triangleAddresses = ParsingUtilities.ParseHexListNullable(text);
             if (triangleAddresses.Count > 0)
             {
                 SetCustomTriangleAddresses(triangleAddresses);
