@@ -385,6 +385,7 @@ namespace STROOP.Managers
 
         private void ShowTriangleCoordinates()
         {
+            if (TriangleAddresses.Count == 1 && TriangleAddresses[0] == 0) return;
             InfoForm infoForm = new InfoForm();
             infoForm.SetTriangleCoordinates(GetTriangleCoordinates());
             infoForm.Show();
@@ -392,6 +393,7 @@ namespace STROOP.Managers
 
         private void ShowTriangleEquation()
         {
+            if (TriangleAddresses.Count == 1 && TriangleAddresses[0] == 0) return;
             uint triangleAddress = TriangleAddresses[0];
 
             float normX, normY, normZ, normOffset;

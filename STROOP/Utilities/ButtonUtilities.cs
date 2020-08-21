@@ -914,14 +914,14 @@ namespace STROOP.Utilities
 
         public static bool GotoTriangleVertexClosest(uint triangleAddress, bool useMisalignmentOffset = false)
         {
+            if (triangleAddress == 0) return false;
             int closestVertex = WatchVariableSpecialUtilities.GetClosestTriangleVertexIndex(triangleAddress);
             return GotoTriangleVertex(triangleAddress, closestVertex, useMisalignmentOffset);
         }
 
         public static bool GotoTriangleVertex(uint triangleAddress, int vertex, bool _useMisalignmentOffset = false)
         {
-            if (triangleAddress == 0x0000)
-                return false;
+            if (triangleAddress == 0) return false;
 
             float newX, newY, newZ;
             switch (vertex)
@@ -960,6 +960,8 @@ namespace STROOP.Utilities
 
         public static bool RetrieveTriangle(List<uint> triangleAddresses)
         {
+            if (triangleAddresses.Count == 1 && triangleAddresses[0] == 0) return false;
+
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
@@ -1005,6 +1007,8 @@ namespace STROOP.Utilities
 
         public static bool NeutralizeTriangle(List<uint> triangleAddresses, bool? use0x15Nullable = null)
         {
+            if (triangleAddresses.Count == 1 && triangleAddresses[0] == 0) return false;
+
             short neutralizeValue = SavedSettingsConfig.NeutralizeTriangleValue(use0x15Nullable);
 
             bool success = true;
@@ -1039,6 +1043,8 @@ namespace STROOP.Utilities
 
         public static bool AnnihilateTriangle(List<uint> triangleAddresses)
         {
+            if (triangleAddresses.Count == 1 && triangleAddresses[0] == 0) return false;
+
             short xzCoordinate = 16000;
             short yCoordinate = 30000;
             short v1X = xzCoordinate;
@@ -1083,6 +1089,8 @@ namespace STROOP.Utilities
         public static bool MoveTriangle(List<uint> triangleAddresses,
             float xOffsetBase, float yOffsetBase, float zOffsetBase, bool useRelative)
         {
+            if (triangleAddresses.Count == 1 && triangleAddresses[0] == 0) return false;
+
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
@@ -1140,6 +1148,8 @@ namespace STROOP.Utilities
 
         public static bool MoveTriangleNormal(List<uint> triangleAddresses, float normalChange)
         {
+            if (triangleAddresses.Count == 1 && triangleAddresses[0] == 0) return false;
+
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
