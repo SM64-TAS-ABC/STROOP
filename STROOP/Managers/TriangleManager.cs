@@ -51,7 +51,12 @@ namespace STROOP.Managers
             if (triangleAddresses.Count == 0) return;
             TriangleAddresses.Clear();
             TriangleAddresses.AddRange(triangleAddresses);
-            List<string> triangleAddressStrings = triangleAddresses.ConvertAll(
+            RefreshAddressBox();
+        }
+
+        public void RefreshAddressBox()
+        {
+            List<string> triangleAddressStrings = TriangleAddresses.ConvertAll(
                 triAddress => HexUtilities.FormatValue(triAddress, 8));
             _addressBox.Text = string.Join(",", triangleAddressStrings);
         }
@@ -453,7 +458,14 @@ namespace STROOP.Managers
         private void AddressBoxEnter()
         {
             List<uint> triangleAddresses = ParsingUtilities.ParseHexListNullable(_addressBox.Text);
-            SetCustomTriangleAddresses(triangleAddresses);
+            if (triangleAddresses.Count > 0)
+            {
+                SetCustomTriangleAddresses(triangleAddresses);
+            }
+            else
+            {
+                RefreshAddressBox();
+            }
             _addressBox.SelectionLength = 0;
         }
 
