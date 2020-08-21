@@ -12,6 +12,7 @@ using OpenTK;
 using System.Drawing.Imaging;
 using STROOP.Map.Map3D;
 using System.Windows.Forms;
+using STROOP.Models;
 
 namespace STROOP.Map
 {
@@ -83,26 +84,23 @@ namespace STROOP.Map
 
         private void DrawOn2DControlWithUnits()
         {
-            List<List<(float x, float y, float z)>> triVertexLists = GetVertexLists();
-            List<(int x, int z)> unitPoints = triVertexLists.ConvertAll(vertexList =>
+            List<TriangleDataModel> triangles = GetTrianglesWithinDist();
+            List<(int x, int z)> unitPoints = triangles.ConvertAll(triangle =>
             {
-                if (vertexList.Count == 0) return new List<(int x, int z)>();
-
-                int xMin = (int)Math.Max(vertexList.Min(vertex => vertex.x), Config.MapGraphics.MapViewXMin - 1);
-                int xMax = (int)Math.Min(vertexList.Max(vertex => vertex.x), Config.MapGraphics.MapViewXMax + 1);
-                int zMin = (int)Math.Max(vertexList.Min(vertex => vertex.z), Config.MapGraphics.MapViewZMin - 1);
-                int zMax = (int)Math.Min(vertexList.Max(vertex => vertex.z), Config.MapGraphics.MapViewZMax + 1);
+                int xMin = (int)Math.Max(triangle.GetMinX(), Config.MapGraphics.MapViewXMin - 1);
+                int xMax = (int)Math.Min(triangle.GetMaxX(), Config.MapGraphics.MapViewXMax + 1);
+                int zMin = (int)Math.Max(triangle.GetMinZ(), Config.MapGraphics.MapViewZMin - 1);
+                int zMax = (int)Math.Min(triangle.GetMaxZ(), Config.MapGraphics.MapViewZMax + 1);
 
                 List<(int x, int z)> points = new List<(int x, int z)>();
                 for (int x = xMin; x <= xMax; x++)
                 {
                     for (int z = zMin; z <= zMax; z++)
                     {
-                        if (MoreMath.IsPointInsideTriangle(
-                            x, z,
-                            vertexList[0].x, vertexList[0].z,
-                            vertexList[1].x, vertexList[1].z,
-                            vertexList[2].x, vertexList[2].z))
+                        float? y = triangle.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
+                        if (y.HasValue &&
+                            (!_minHeight.HasValue || y.Value >= _minHeight.Value) &&
+                            (!_maxHeight.HasValue || y.Value <= _maxHeight.Value))
                         {
                             points.Add((x, z));
                         }
