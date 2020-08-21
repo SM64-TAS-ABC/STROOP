@@ -287,9 +287,8 @@ namespace STROOP.Map
                     if (_minHeight.Value >= maxY) continue; // don't add anything
                     if (_minHeight.Value > minY)
                     {
-                        int startIndex = splicedVertexList.FindIndex(vertex => vertex.y >= _minHeight.Value);
                         List<(float x, float y, float z)> tempVertexList = new List<(float x, float y, float z)>();
-                        for (int i = startIndex; !(i == startIndex && tempVertexList.Count > 0); i = (i + 1) % splicedVertexList.Count)
+                        for (int i = 0; i < splicedVertexList.Count; i++)
                         {
                             (float x1, float y1, float z1) = splicedVertexList[i];
                             (float x2, float y2, float z2) = splicedVertexList[(i + 1) % splicedVertexList.Count];
@@ -310,9 +309,8 @@ namespace STROOP.Map
                     if (_maxHeight.Value <= minY) continue; // don't add anything
                     if (_maxHeight.Value < maxY)
                     {
-                        int startIndex = splicedVertexList.FindIndex(vertex => vertex.y <= _maxHeight.Value);
                         List<(float x, float y, float z)> tempVertexList = new List<(float x, float y, float z)>();
-                        for (int i = startIndex; !(i == startIndex && tempVertexList.Count > 0); i = (i + 1) % splicedVertexList.Count)
+                        for (int i = 0; i < splicedVertexList.Count; i++)
                         {
                             (float x1, float y1, float z1) = splicedVertexList[i];
                             (float x2, float y2, float z2) = splicedVertexList[(i + 1) % splicedVertexList.Count];
