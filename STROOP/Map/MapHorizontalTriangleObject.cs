@@ -42,7 +42,7 @@ namespace STROOP.Map
 
         private void DrawOn2DControlWithoutUnits()
         {
-            List<List<(float x, float y, float z)>> vertexLists = GetVertexLists();
+            List<List<(float x, float y, float z)>> vertexLists = GetVertexListsWithSplicing();
             List<List<(float x, float y, float z)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                     vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.y, vertex.z)));
@@ -266,6 +266,33 @@ namespace STROOP.Map
             {
                 _maxHeight = settings.TriangleNewMaxHeight;
             }
+        }
+
+        private List<List<(float x, float y, float z)>> GetVertexListsWithSplicing()
+        {
+            List<List<(float x, float y, float z)>> vertexLists = GetVertexLists();
+            List<List<(float x, float y, float z)>> splicedVertexLists = new List<List<(float x, float y, float z)>>();
+            foreach (List<(float x, float y, float z)> vertexList in vertexLists)
+            {
+                List<(float x, float y, float z)> splicedVertexList = new List<(float x, float y, float z)>();
+                splicedVertexList.AddRange(vertexList);
+
+                float minY = splicedVertexList.Min(vertex => vertex.y);
+                float maxY = splicedVertexList.Max(vertex => vertex.y);
+
+                if (_minHeight.HasValue)
+                {
+
+                }
+
+                if (_maxHeight.HasValue)
+                {
+
+                }
+
+                splicedVertexLists.Add(splicedVertexList);
+            }
+            return splicedVertexLists;
         }
     }
 }
