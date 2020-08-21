@@ -271,6 +271,8 @@ namespace STROOP.Map
         private List<List<(float x, float y, float z)>> GetVertexListsWithSplicing()
         {
             List<List<(float x, float y, float z)>> vertexLists = GetVertexLists();
+            if (!_minHeight.HasValue && !_maxHeight.HasValue) return vertexLists; // short circuit
+
             List<List<(float x, float y, float z)>> splicedVertexLists = new List<List<(float x, float y, float z)>>();
             foreach (List<(float x, float y, float z)> vertexList in vertexLists)
             {
@@ -282,17 +284,62 @@ namespace STROOP.Map
 
                 if (_minHeight.HasValue)
                 {
-
+                    if (_minHeight.Value >= maxY) continue; // don't add anything
+                    if (_minHeight.Value > minY)
+                    {
+                        int startIndex = splicedVertexList.FindIndex(vertex => vertex.y >= _minHeight.Value);
+                        List<(float x, float y, float z)> tempVertexList = new List<(float x, float y, float z)>();
+                        for (int i = startIndex; !(i == startIndex && tempVertexList.Count > 0); i = (i + 1) % splicedVertexList.Count)
+                        {
+                            (float x1, float y1, float z1) = splicedVertexList[i];
+                            (float x2, float y2, float z2) = splicedVertexList[(i + 1) % splicedVertexList.Count];
+                            bool isValid1 = y1 >= _minHeight.Value;
+                            bool isValid2 = y2 >= _minHeight.Value;
+                            if (isValid1)
+                                tempVertexList.Add((x1, y1, z1));
+                            if (isValid1 != isValid2)
+                                tempVertexList.Add(InterpolatePointForY(x1, y1, z1, x2, y2, z2, _minHeight.Value));
+                        }
+                        splicedVertexList.Clear();
+                        splicedVertexList.AddRange(tempVertexList);
+                    }
                 }
 
                 if (_maxHeight.HasValue)
                 {
-
+                    if (_maxHeight.Value <= minY) continue; // don't add anything
+                    if (_maxHeight.Value < maxY)
+                    {
+                        int startIndex = splicedVertexList.FindIndex(vertex => vertex.y <= _maxHeight.Value);
+                        List<(float x, float y, float z)> tempVertexList = new List<(float x, float y, float z)>();
+                        for (int i = startIndex; !(i == startIndex && tempVertexList.Count > 0); i = (i + 1) % splicedVertexList.Count)
+                        {
+                            (float x1, float y1, float z1) = splicedVertexList[i];
+                            (float x2, float y2, float z2) = splicedVertexList[(i + 1) % splicedVertexList.Count];
+                            bool isValid1 = y1 <= _maxHeight.Value;
+                            bool isValid2 = y2 <= _maxHeight.Value;
+                            if (isValid1)
+                                tempVertexList.Add((x1, y1, z1));
+                            if (isValid1 != isValid2)
+                                tempVertexList.Add(InterpolatePointForY(x1, y1, z1, x2, y2, z2, _maxHeight.Value));
+                        }
+                        splicedVertexList.Clear();
+                        splicedVertexList.AddRange(tempVertexList);
+                    }
                 }
 
                 splicedVertexLists.Add(splicedVertexList);
             }
             return splicedVertexLists;
+        }
+
+        private (float x, float y, float z) InterpolatePointForY(
+            float x1, float y1, float z1, float x2, float y2, float z2, float y)
+        {
+            float proportion = (y - y1) / (y2 - y1);
+            float x = x1 + proportion * (x2 - x1);
+            float z = z1 + proportion * (z2 - z1);
+            return (x, y, z);
         }
     }
 }
