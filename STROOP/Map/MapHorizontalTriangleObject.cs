@@ -42,7 +42,7 @@ namespace STROOP.Map
 
         private void DrawOn2DControlWithoutUnits()
         {
-            List<List<(float x, float y, float z)>> vertexLists = GetVertexListsWithSplicing();
+            List<List<(float x, float y, float z)>> vertexLists = GetVertexListsWithMinMax();
             List<List<(float x, float y, float z)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                     vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.y, vertex.z)));
@@ -268,7 +268,7 @@ namespace STROOP.Map
             }
         }
 
-        private List<List<(float x, float y, float z)>> GetVertexListsWithSplicing()
+        private List<List<(float x, float y, float z)>> GetVertexListsWithMinMax()
         {
             List<List<(float x, float y, float z)>> vertexLists = GetVertexLists();
             if (!_minHeight.HasValue && !_maxHeight.HasValue) return vertexLists; // short circuit
