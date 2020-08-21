@@ -483,11 +483,6 @@ namespace STROOP.Managers
             _triangleCache.Clear();
             switch (Mode)
             {
-                case TriangleMode.Ceiling:
-                    TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset;
-                    SetTriangleAddresses(Config.Stream.GetUInt32(TrianglePointerAddress.Value));
-                    break;
-
                 case TriangleMode.Floor:
                     TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset;
                     SetTriangleAddresses(Config.Stream.GetUInt32(TrianglePointerAddress.Value));
@@ -495,6 +490,11 @@ namespace STROOP.Managers
 
                 case TriangleMode.Wall:
                     TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.WallTriangleOffset;
+                    SetTriangleAddresses(Config.Stream.GetUInt32(TrianglePointerAddress.Value));
+                    break;
+
+                case TriangleMode.Ceiling:
+                    TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset;
                     SetTriangleAddresses(Config.Stream.GetUInt32(TrianglePointerAddress.Value));
                     break;
 
