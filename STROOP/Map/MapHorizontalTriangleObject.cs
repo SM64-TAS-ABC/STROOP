@@ -53,15 +53,15 @@ namespace STROOP.Map
 
             // Draw triangle
             GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
-            GL.Begin(PrimitiveType.Triangles);
             foreach (List<(float x, float y, float z)> vertexList in vertexListsForControl)
             {
+                GL.Begin(PrimitiveType.Polygon);
                 foreach ((float x, float y, float z) in vertexList)
                 {
                     GL.Vertex2(x, z);
                 }
+                GL.End();
             }
-            GL.End();
 
             // Draw outline
             if (OutlineWidth != 0)
