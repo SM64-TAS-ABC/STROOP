@@ -958,64 +958,63 @@ namespace STROOP.Utilities
             return PuUtilities.SetMarioPositionInCurrentPu(newX, newY, newZ);
         }
 
-        public static bool RetrieveTriangle(uint triangleAddress)
+        public static bool RetrieveTriangle(List<uint> triangleAddresses)
         {
-            if (triangleAddress == 0x0000)
-                return false;
-
-            float normX, normY, normZ, oldNormOffset;
-            normX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
-            normY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
-            normZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
-            oldNormOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
-
-            // Get Mario position
-            float marioX, marioY, marioZ;
-            marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-
-            float normOffset = -(normX * marioX + normY * marioY + normZ * marioZ);
-            float normDiff = normOffset - oldNormOffset;
-
-            short yOffset = (short)(-normDiff * normY);
-
-            short v1Y, v2Y, v3Y;
-            v1Y = (short)(TriangleOffsetsConfig.GetY1(triangleAddress) + yOffset);
-            v2Y = (short)(TriangleOffsetsConfig.GetY2(triangleAddress) + yOffset);
-            v3Y = (short)(TriangleOffsetsConfig.GetY3(triangleAddress) + yOffset);
-
-            short yMin = (short)(Math.Min(Math.Min(v1Y, v2Y), v3Y) - 5);
-            short yMax = (short)(Math.Max(Math.Max(v1Y, v2Y), v3Y) + 5);
-
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= TriangleOffsetsConfig.SetY1(v1Y, triangleAddress);
-            success &= TriangleOffsetsConfig.SetY2(v2Y, triangleAddress);
-            success &= TriangleOffsetsConfig.SetY3(v3Y, triangleAddress);
-            success &= Config.Stream.SetValue(yMin, triangleAddress + TriangleOffsetsConfig.YMinMinus5);
-            success &= Config.Stream.SetValue(yMax, triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
-            success &= Config.Stream.SetValue(normOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
+            foreach (uint triangleAddress in triangleAddresses)
+            {
+                float normX, normY, normZ, oldNormOffset;
+                normX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
+                normY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
+                normZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
+                oldNormOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
+
+                // Get Mario position
+                float marioX, marioY, marioZ;
+                marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+
+                float normOffset = -(normX * marioX + normY * marioY + normZ * marioZ);
+                float normDiff = normOffset - oldNormOffset;
+
+                short yOffset = (short)(-normDiff * normY);
+
+                short v1Y, v2Y, v3Y;
+                v1Y = (short)(TriangleOffsetsConfig.GetY1(triangleAddress) + yOffset);
+                v2Y = (short)(TriangleOffsetsConfig.GetY2(triangleAddress) + yOffset);
+                v3Y = (short)(TriangleOffsetsConfig.GetY3(triangleAddress) + yOffset);
+
+                short yMin = (short)(Math.Min(Math.Min(v1Y, v2Y), v3Y) - 5);
+                short yMax = (short)(Math.Max(Math.Max(v1Y, v2Y), v3Y) + 5);
+
+                success &= TriangleOffsetsConfig.SetY1(v1Y, triangleAddress);
+                success &= TriangleOffsetsConfig.SetY2(v2Y, triangleAddress);
+                success &= TriangleOffsetsConfig.SetY3(v3Y, triangleAddress);
+                success &= Config.Stream.SetValue(yMin, triangleAddress + TriangleOffsetsConfig.YMinMinus5);
+                success &= Config.Stream.SetValue(yMax, triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
+                success &= Config.Stream.SetValue(normOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
+            }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool NeutralizeTriangle(uint triangleAddress, bool? use0x15Nullable = null)
+        public static bool NeutralizeTriangle(List<uint> triangleAddresses, bool? use0x15Nullable = null)
         {
-            if (triangleAddress == 0x0000)
-                return false;
-
-
             short neutralizeValue = SavedSettingsConfig.NeutralizeTriangleValue(use0x15Nullable);
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(neutralizeValue, triangleAddress + TriangleOffsetsConfig.SurfaceType);
+            foreach (uint triangleAddress in triangleAddresses)
+            {
+                success &= Config.Stream.SetValue(neutralizeValue, triangleAddress + TriangleOffsetsConfig.SurfaceType);
+            }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -1038,11 +1037,8 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool AnnihilateTriangle(uint triangleAddress)
+        public static bool AnnihilateTriangle(List<uint> triangleAddresses)
         {
-            if (triangleAddress == 0x0000)
-                return false;
-
             short xzCoordinate = 16000;
             short yCoordinate = 30000;
             short v1X = xzCoordinate;
@@ -1063,125 +1059,132 @@ namespace STROOP.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= TriangleOffsetsConfig.SetX1(v1X, triangleAddress);
-            success &= TriangleOffsetsConfig.SetY1(v1Y, triangleAddress);
-            success &= TriangleOffsetsConfig.SetZ1(v1Z, triangleAddress);
-            success &= TriangleOffsetsConfig.SetX2(v2X, triangleAddress);
-            success &= TriangleOffsetsConfig.SetY2(v2Y, triangleAddress);
-            success &= TriangleOffsetsConfig.SetZ2(v2Z, triangleAddress);
-            success &= TriangleOffsetsConfig.SetX3(v3X, triangleAddress);
-            success &= TriangleOffsetsConfig.SetY3(v3Y, triangleAddress);
-            success &= TriangleOffsetsConfig.SetZ3(v3Z, triangleAddress);
-            success &= Config.Stream.SetValue(normX, triangleAddress + TriangleOffsetsConfig.NormX);
-            success &= Config.Stream.SetValue(normY, triangleAddress + TriangleOffsetsConfig.NormY);
-            success &= Config.Stream.SetValue(normZ, triangleAddress + TriangleOffsetsConfig.NormZ);
-            success &= Config.Stream.SetValue(normOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
+            foreach (uint triangleAddress in triangleAddresses)
+            {
+                success &= TriangleOffsetsConfig.SetX1(v1X, triangleAddress);
+                success &= TriangleOffsetsConfig.SetY1(v1Y, triangleAddress);
+                success &= TriangleOffsetsConfig.SetZ1(v1Z, triangleAddress);
+                success &= TriangleOffsetsConfig.SetX2(v2X, triangleAddress);
+                success &= TriangleOffsetsConfig.SetY2(v2Y, triangleAddress);
+                success &= TriangleOffsetsConfig.SetZ2(v2Z, triangleAddress);
+                success &= TriangleOffsetsConfig.SetX3(v3X, triangleAddress);
+                success &= TriangleOffsetsConfig.SetY3(v3Y, triangleAddress);
+                success &= TriangleOffsetsConfig.SetZ3(v3Z, triangleAddress);
+                success &= Config.Stream.SetValue(normX, triangleAddress + TriangleOffsetsConfig.NormX);
+                success &= Config.Stream.SetValue(normY, triangleAddress + TriangleOffsetsConfig.NormY);
+                success &= Config.Stream.SetValue(normZ, triangleAddress + TriangleOffsetsConfig.NormZ);
+                success &= Config.Stream.SetValue(normOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
+            }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool MoveTriangle(uint triangleAddress,
-            float xOffset, float yOffset, float zOffset, bool useRelative)
+        public static bool MoveTriangle(List<uint> triangleAddresses,
+            float xOffsetBase, float yOffsetBase, float zOffsetBase, bool useRelative)
         {
-            if (triangleAddress == 0x0000)
-                return false;
-
-            HandleScaling(ref xOffset, ref zOffset);
-
-            float normX, normY, normZ, oldNormOffset;
-            normX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
-            normY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
-            normZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
-            oldNormOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
-
-            ushort relativeAngle = MoreMath.getUphillAngle(normX, normY, normZ);
-            HandleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
-
-            float newNormOffset = oldNormOffset - normX * xOffset - normY * yOffset - normZ * zOffset;
-
-            short newX1, newY1, newZ1, newX2, newY2, newZ2, newX3, newY3, newZ3;
-            newX1 = (short)(TriangleOffsetsConfig.GetX1(triangleAddress) + xOffset);
-            newY1 = (short)(TriangleOffsetsConfig.GetY1(triangleAddress) + yOffset);
-            newZ1 = (short)(TriangleOffsetsConfig.GetZ1(triangleAddress) + zOffset);
-            newX2 = (short)(TriangleOffsetsConfig.GetX2(triangleAddress) + xOffset);
-            newY2 = (short)(TriangleOffsetsConfig.GetY2(triangleAddress) + yOffset);
-            newZ2 = (short)(TriangleOffsetsConfig.GetZ2(triangleAddress) + zOffset);
-            newX3 = (short)(TriangleOffsetsConfig.GetX3(triangleAddress) + xOffset);
-            newY3 = (short)(TriangleOffsetsConfig.GetY3(triangleAddress) + yOffset);
-            newZ3 = (short)(TriangleOffsetsConfig.GetZ3(triangleAddress) + zOffset);
-
-            short newYMin = (short)(Math.Min(Math.Min(newY1, newY2), newY3) - 5);
-            short newYMax = (short)(Math.Max(Math.Max(newY1, newY2), newY3) + 5);
-
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(newNormOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
-            success &= TriangleOffsetsConfig.SetX1(newX1, triangleAddress);
-            success &= TriangleOffsetsConfig.SetY1(newY1, triangleAddress);
-            success &= TriangleOffsetsConfig.SetZ1(newZ1, triangleAddress);
-            success &= TriangleOffsetsConfig.SetX2(newX2, triangleAddress);
-            success &= TriangleOffsetsConfig.SetY2(newY2, triangleAddress);
-            success &= TriangleOffsetsConfig.SetZ2(newZ2, triangleAddress);
-            success &= TriangleOffsetsConfig.SetX3(newX3, triangleAddress);
-            success &= TriangleOffsetsConfig.SetY3(newY3, triangleAddress);
-            success &= TriangleOffsetsConfig.SetZ3(newZ3, triangleAddress);
-            success &= Config.Stream.SetValue(newYMin, triangleAddress + TriangleOffsetsConfig.YMinMinus5);
-            success &= Config.Stream.SetValue(newYMax, triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
+            foreach (uint triangleAddress in triangleAddresses)
+            {
+                float xOffset = xOffsetBase;
+                float yOffset = yOffsetBase;
+                float zOffset = zOffsetBase;
+
+                HandleScaling(ref xOffset, ref zOffset);
+
+                float normX, normY, normZ, oldNormOffset;
+                normX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
+                normY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
+                normZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
+                oldNormOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
+
+                ushort relativeAngle = MoreMath.getUphillAngle(normX, normY, normZ);
+                HandleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
+
+                float newNormOffset = oldNormOffset - normX * xOffset - normY * yOffset - normZ * zOffset;
+
+                short newX1, newY1, newZ1, newX2, newY2, newZ2, newX3, newY3, newZ3;
+                newX1 = (short)(TriangleOffsetsConfig.GetX1(triangleAddress) + xOffset);
+                newY1 = (short)(TriangleOffsetsConfig.GetY1(triangleAddress) + yOffset);
+                newZ1 = (short)(TriangleOffsetsConfig.GetZ1(triangleAddress) + zOffset);
+                newX2 = (short)(TriangleOffsetsConfig.GetX2(triangleAddress) + xOffset);
+                newY2 = (short)(TriangleOffsetsConfig.GetY2(triangleAddress) + yOffset);
+                newZ2 = (short)(TriangleOffsetsConfig.GetZ2(triangleAddress) + zOffset);
+                newX3 = (short)(TriangleOffsetsConfig.GetX3(triangleAddress) + xOffset);
+                newY3 = (short)(TriangleOffsetsConfig.GetY3(triangleAddress) + yOffset);
+                newZ3 = (short)(TriangleOffsetsConfig.GetZ3(triangleAddress) + zOffset);
+
+                short newYMin = (short)(Math.Min(Math.Min(newY1, newY2), newY3) - 5);
+                short newYMax = (short)(Math.Max(Math.Max(newY1, newY2), newY3) + 5);
+
+                success &= Config.Stream.SetValue(newNormOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
+                success &= TriangleOffsetsConfig.SetX1(newX1, triangleAddress);
+                success &= TriangleOffsetsConfig.SetY1(newY1, triangleAddress);
+                success &= TriangleOffsetsConfig.SetZ1(newZ1, triangleAddress);
+                success &= TriangleOffsetsConfig.SetX2(newX2, triangleAddress);
+                success &= TriangleOffsetsConfig.SetY2(newY2, triangleAddress);
+                success &= TriangleOffsetsConfig.SetZ2(newZ2, triangleAddress);
+                success &= TriangleOffsetsConfig.SetX3(newX3, triangleAddress);
+                success &= TriangleOffsetsConfig.SetY3(newY3, triangleAddress);
+                success &= TriangleOffsetsConfig.SetZ3(newZ3, triangleAddress);
+                success &= Config.Stream.SetValue(newYMin, triangleAddress + TriangleOffsetsConfig.YMinMinus5);
+                success &= Config.Stream.SetValue(newYMax, triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
+            }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool MoveTriangleNormal(uint triangleAddress, float normalChange)
+        public static bool MoveTriangleNormal(List<uint> triangleAddresses, float normalChange)
         {
-            if (triangleAddress == 0x0000)
-                return false;
-
-            float normX, normY, normZ, oldNormOffset;
-            normX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
-            normY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
-            normZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
-            oldNormOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
-
-            float newNormOffset = oldNormOffset - normalChange;
-
-            double xChange = normalChange * normX;
-            double yChange = normalChange * normY;
-            double zChange = normalChange * normZ;
-
-            short newX1, newY1, newZ1, newX2, newY2, newZ2, newX3, newY3, newZ3;
-            newX1 = (short)(TriangleOffsetsConfig.GetX1(triangleAddress) + xChange);
-            newY1 = (short)(TriangleOffsetsConfig.GetY1(triangleAddress) + yChange);
-            newZ1 = (short)(TriangleOffsetsConfig.GetZ1(triangleAddress) + zChange);
-            newX2 = (short)(TriangleOffsetsConfig.GetX2(triangleAddress) + xChange);
-            newY2 = (short)(TriangleOffsetsConfig.GetY2(triangleAddress) + yChange);
-            newZ2 = (short)(TriangleOffsetsConfig.GetZ2(triangleAddress) + zChange);
-            newX3 = (short)(TriangleOffsetsConfig.GetX3(triangleAddress) + xChange);
-            newY3 = (short)(TriangleOffsetsConfig.GetY3(triangleAddress) + yChange);
-            newZ3 = (short)(TriangleOffsetsConfig.GetZ3(triangleAddress) + zChange);
-
-            short newYMin = (short)(Math.Min(Math.Min(newY1, newY2), newY3) - 5);
-            short newYMax = (short)(Math.Max(Math.Max(newY1, newY2), newY3) + 5);
-
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(newNormOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
-            success &= TriangleOffsetsConfig.SetX1(newX1, triangleAddress);
-            success &= TriangleOffsetsConfig.SetY1(newY1, triangleAddress);
-            success &= TriangleOffsetsConfig.SetZ1(newZ1, triangleAddress);
-            success &= TriangleOffsetsConfig.SetX2(newX2, triangleAddress);
-            success &= TriangleOffsetsConfig.SetY2(newY2, triangleAddress);
-            success &= TriangleOffsetsConfig.SetZ2(newZ2, triangleAddress);
-            success &= TriangleOffsetsConfig.SetX3(newX3, triangleAddress);
-            success &= TriangleOffsetsConfig.SetY3(newY3, triangleAddress);
-            success &= TriangleOffsetsConfig.SetZ3(newZ3, triangleAddress);
-            success &= Config.Stream.SetValue(newYMin, triangleAddress + TriangleOffsetsConfig.YMinMinus5);
-            success &= Config.Stream.SetValue(newYMax, triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
+            foreach (uint triangleAddress in triangleAddresses)
+            {
+                float normX, normY, normZ, oldNormOffset;
+                normX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
+                normY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
+                normZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
+                oldNormOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
+
+                float newNormOffset = oldNormOffset - normalChange;
+
+                double xChange = normalChange * normX;
+                double yChange = normalChange * normY;
+                double zChange = normalChange * normZ;
+
+                short newX1, newY1, newZ1, newX2, newY2, newZ2, newX3, newY3, newZ3;
+                newX1 = (short)(TriangleOffsetsConfig.GetX1(triangleAddress) + xChange);
+                newY1 = (short)(TriangleOffsetsConfig.GetY1(triangleAddress) + yChange);
+                newZ1 = (short)(TriangleOffsetsConfig.GetZ1(triangleAddress) + zChange);
+                newX2 = (short)(TriangleOffsetsConfig.GetX2(triangleAddress) + xChange);
+                newY2 = (short)(TriangleOffsetsConfig.GetY2(triangleAddress) + yChange);
+                newZ2 = (short)(TriangleOffsetsConfig.GetZ2(triangleAddress) + zChange);
+                newX3 = (short)(TriangleOffsetsConfig.GetX3(triangleAddress) + xChange);
+                newY3 = (short)(TriangleOffsetsConfig.GetY3(triangleAddress) + yChange);
+                newZ3 = (short)(TriangleOffsetsConfig.GetZ3(triangleAddress) + zChange);
+
+                short newYMin = (short)(Math.Min(Math.Min(newY1, newY2), newY3) - 5);
+                short newYMax = (short)(Math.Max(Math.Max(newY1, newY2), newY3) + 5);
+
+                success &= Config.Stream.SetValue(newNormOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
+                success &= TriangleOffsetsConfig.SetX1(newX1, triangleAddress);
+                success &= TriangleOffsetsConfig.SetY1(newY1, triangleAddress);
+                success &= TriangleOffsetsConfig.SetZ1(newZ1, triangleAddress);
+                success &= TriangleOffsetsConfig.SetX2(newX2, triangleAddress);
+                success &= TriangleOffsetsConfig.SetY2(newY2, triangleAddress);
+                success &= TriangleOffsetsConfig.SetZ2(newZ2, triangleAddress);
+                success &= TriangleOffsetsConfig.SetX3(newX3, triangleAddress);
+                success &= TriangleOffsetsConfig.SetY3(newY3, triangleAddress);
+                success &= TriangleOffsetsConfig.SetZ3(newZ3, triangleAddress);
+                success &= Config.Stream.SetValue(newYMin, triangleAddress + TriangleOffsetsConfig.YMinMinus5);
+                success &= Config.Stream.SetValue(newYMax, triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
+            }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;

@@ -1737,8 +1737,7 @@ namespace STROOP.Utilities
             if (KeyboardUtilities.IsCtrlHeld()) numVertices = 4;
             if (KeyboardUtilities.IsNumberHeld()) numVertices = KeyboardUtilities.GetCurrentlyInputtedNumber().Value;
 
-            uint triangleAddress = Config.TriangleManager.TriangleAddress;
-            if (triangleAddress == 0) return;
+            uint triangleAddress = Config.TriangleManager.TriangleAddresses[0];
             TriangleDataModel triangle = new TriangleDataModel(triangleAddress);
             List<List<short>> triangleVertices = new List<List<short>>()
             {

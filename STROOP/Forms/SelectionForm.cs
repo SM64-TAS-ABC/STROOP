@@ -129,9 +129,12 @@ namespace STROOP.Forms
                     short? triangleType = TableConfig.TriangleInfo.GetType(triangleTypeDescription);
                     if (triangleType.HasValue)
                     {
-                        Config.Stream.SetValue(
-                            triangleType.Value,
-                            Config.TriangleManager.TriangleAddress + TriangleOffsetsConfig.SurfaceType);
+                        foreach (uint triangleAddress in Config.TriangleManager.TriangleAddresses)
+                        {
+                            Config.Stream.SetValue(
+                                triangleType.Value,
+                                triangleAddress + TriangleOffsetsConfig.SurfaceType);
+                        }
                     }
                 });
             selectionForm.Show();

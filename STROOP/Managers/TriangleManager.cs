@@ -19,10 +19,9 @@ namespace STROOP.Managers
         private Dictionary<uint, TriangleDataModel> _triangleCache;
 
         BetterTextbox _addressBox;
-        uint _triangleAddress = 0;
         CheckBox _useMisalignmentOffsetCheckbox;
 
-        public enum TriangleMode { Floor, Wall, Ceiling, Other };
+        public enum TriangleMode { Floor, Wall, Ceiling, Custom };
         public TriangleMode Mode = TriangleMode.Floor;
 
         private readonly RadioButton _radioButtonTriFloor;
@@ -37,29 +36,36 @@ namespace STROOP.Managers
         Label _recordTriangleCountLabel;
         List<uint> _recordedTriangleAddresses;
 
-        public uint TrianglePointerAddress
+        // the pointer to the current triangle, or null if custom is selected
+        public uint? TrianglePointerAddress = null;
+        // the currently selected triangles (never empty)
+        public readonly List<uint> TriangleAddresses = new List<uint>();
+
+        public void SetTriangleAddresses(uint triangleAddress)
         {
-            get;
-            private set;
+            SetTriangleAddresses(new List<uint> { triangleAddress });
         }
 
-        public uint TriangleAddress
+        public void SetTriangleAddresses(List<uint> triangleAddresses)
         {
-            get
-            {
-                return _triangleAddress;
-            }
-            private set
-            {
-                // update cache
-                if (value != 0) GetTriangleStruct(value);
+            if (triangleAddresses.Count == 0) return;
+            TriangleAddresses.Clear();
+            TriangleAddresses.AddRange(triangleAddresses);
+            List<string> triangleAddressStrings = triangleAddresses.ConvertAll(
+                triAddress => HexUtilities.FormatValue(triAddress, 8));
+            _addressBox.Text = string.Join(",", triangleAddressStrings);
+        }
 
-                if (_triangleAddress == value)
-                    return;
+        public void SetCustomTriangleAddresses(uint triangleAddress)
+        {
+            SetCustomTriangleAddresses(new List<uint> { triangleAddress });
+        }
 
-                _triangleAddress = value;
-                _addressBox.Text = HexUtilities.FormatValue(_triangleAddress, 8);
-            }
+        public void SetCustomTriangleAddresses(List<uint> triangleAddresses)
+        {
+            _radioButtonTriCustom.Checked = true;
+            Mode = TriangleMode.Custom;
+            SetTriangleAddresses(triangleAddresses);
         }
 
         private static readonly List<VariableGroup> ALL_VAR_GROUPS =
@@ -102,7 +108,7 @@ namespace STROOP.Managers
             _radioButtonTriCeiling = splitContainerTriangles.Panel1.Controls["radioButtonTriCeiling"] as RadioButton;
             _radioButtonTriCeiling.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Ceiling);
             _radioButtonTriCustom = splitContainerTriangles.Panel1.Controls["radioButtonTriCustom"] as RadioButton;
-            _radioButtonTriCustom.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Other);
+            _radioButtonTriCustom.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Custom);
 
             Label labelTriangleSelection = splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label;
             ControlUtilities.AddContextMenuStripFunctions(
@@ -119,30 +125,30 @@ namespace STROOP.Managers
                 });
 
             (splitContainerTriangles.Panel1.Controls["buttonGotoV1"] as Button).Click
-                += (sender, e) => ButtonUtilities.GotoTriangleVertex(_triangleAddress, 1, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GotoTriangleVertex(TriangleAddresses[0], 1, _useMisalignmentOffsetCheckbox.Checked);
             (splitContainerTriangles.Panel1.Controls["buttonGotoV2"] as Button).Click
-                += (sender, e) => ButtonUtilities.GotoTriangleVertex(_triangleAddress, 2, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GotoTriangleVertex(TriangleAddresses[0], 2, _useMisalignmentOffsetCheckbox.Checked);
             (splitContainerTriangles.Panel1.Controls["buttonGotoV3"] as Button).Click
-                += (sender, e) => ButtonUtilities.GotoTriangleVertex(_triangleAddress, 3, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GotoTriangleVertex(TriangleAddresses[0], 3, _useMisalignmentOffsetCheckbox.Checked);
             (splitContainerTriangles.Panel1.Controls["buttonGotoVClosest"] as Button).Click += (sender, e) =>
-                ButtonUtilities.GotoTriangleVertexClosest(_triangleAddress, _useMisalignmentOffsetCheckbox.Checked);
+                ButtonUtilities.GotoTriangleVertexClosest(TriangleAddresses[0], _useMisalignmentOffsetCheckbox.Checked);
 
             (splitContainerTriangles.Panel1.Controls["buttonRetrieveTriangle"] as Button).Click
-                += (sender, e) => ButtonUtilities.RetrieveTriangle(_triangleAddress);
+                += (sender, e) => ButtonUtilities.RetrieveTriangle(TriangleAddresses);
 
             Button buttonNeutralizeTriangle = splitContainerTriangles.Panel1.Controls["buttonNeutralizeTriangle"] as Button;
-            buttonNeutralizeTriangle.Click += (sender, e) => ButtonUtilities.NeutralizeTriangle(_triangleAddress);
+            buttonNeutralizeTriangle.Click += (sender, e) => ButtonUtilities.NeutralizeTriangle(TriangleAddresses);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonNeutralizeTriangle,
                 new List<string>() { "Neutralize", "Neutralize with 0", "Neutralize with 0x15" },
                 new List<Action>() {
-                    () => ButtonUtilities.NeutralizeTriangle(_triangleAddress),
-                    () => ButtonUtilities.NeutralizeTriangle(_triangleAddress, false),
-                    () => ButtonUtilities.NeutralizeTriangle(_triangleAddress, true),
+                    () => ButtonUtilities.NeutralizeTriangle(TriangleAddresses),
+                    () => ButtonUtilities.NeutralizeTriangle(TriangleAddresses, false),
+                    () => ButtonUtilities.NeutralizeTriangle(TriangleAddresses, true),
                 });
 
             Button buttonAnnihilateTriangle = splitContainerTriangles.Panel1.Controls["buttonAnnihilateTriangle"] as Button;
-            buttonAnnihilateTriangle.Click += (sender, e) => ButtonUtilities.AnnihilateTriangle(_triangleAddress);
+            buttonAnnihilateTriangle.Click += (sender, e) => ButtonUtilities.AnnihilateTriangle(TriangleAddresses);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonAnnihilateTriangle,
                 new List<string>() { "Annihilate All Tri But Death Barriers" },
@@ -172,7 +178,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.MoveTriangle(
-                        _triangleAddress,
+                        TriangleAddresses,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
@@ -186,7 +192,7 @@ namespace STROOP.Managers
                 triangleNormalGroupBox.Controls["textBoxTriangleNormal"] as TextBox,
                 (float normalValue) =>
                 {
-                    ButtonUtilities.MoveTriangleNormal(_triangleAddress, normalValue);
+                    ButtonUtilities.MoveTriangleNormal(TriangleAddresses, normalValue);
                 });
 
             _checkBoxNeutralizeTriangle = splitContainerTriangles.Panel1.Controls["checkBoxNeutralizeTriangle"] as CheckBox;
@@ -305,8 +311,11 @@ namespace STROOP.Managers
 
         private void UpdateBasedOnCoordinates()
         {
-            TriangleDataModel tri = new TriangleDataModel(_triangleAddress);
-            UpdateBasedOnCoordinates(_triangleAddress, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+            foreach (uint triangleAddress in TriangleAddresses)
+            {
+                TriangleDataModel tri = new TriangleDataModel(triangleAddress);
+                UpdateBasedOnCoordinates(triangleAddress, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+            }
         }
 
         private void UpdateBasedOnCoordinates(
@@ -360,7 +369,7 @@ namespace STROOP.Managers
 
         private short[] GetTriangleCoordinates(uint? nullableTriAddress = null)
         {
-            uint triAddress = nullableTriAddress ?? TriangleAddress;
+            uint triAddress = nullableTriAddress ?? TriangleAddresses[0];
             short[] coordinates = new short[9];
             coordinates[0] = TriangleOffsetsConfig.GetX1(triAddress);
             coordinates[1] = TriangleOffsetsConfig.GetY1(triAddress);
@@ -376,7 +385,6 @@ namespace STROOP.Managers
 
         private void ShowTriangleCoordinates()
         {
-            if (TriangleAddress == 0) return;
             InfoForm infoForm = new InfoForm();
             infoForm.SetTriangleCoordinates(GetTriangleCoordinates());
             infoForm.Show();
@@ -384,13 +392,13 @@ namespace STROOP.Managers
 
         private void ShowTriangleEquation()
         {
-            if (TriangleAddress == 0) return;
+            uint triangleAddress = TriangleAddresses[0];
 
             float normX, normY, normZ, normOffset;
-            normX = Config.Stream.GetSingle(TriangleAddress + TriangleOffsetsConfig.NormX);
-            normY = Config.Stream.GetSingle(TriangleAddress + TriangleOffsetsConfig.NormY);
-            normZ = Config.Stream.GetSingle(TriangleAddress + TriangleOffsetsConfig.NormZ);
-            normOffset = Config.Stream.GetSingle(TriangleAddress + TriangleOffsetsConfig.NormOffset);
+            normX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
+            normY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
+            normZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
+            normOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
 
             InfoForm infoForm = new InfoForm();
             infoForm.SetTriangleEquation(normX, normY, normZ, normOffset);
@@ -455,7 +463,7 @@ namespace STROOP.Managers
                 return;
             }
 
-            SetCustomTriangleAddress(newAddress);
+            //SetCustomTriangleAddress(newAddress);
             _addressBox.SelectionLength = 0;
         }
 
@@ -467,14 +475,6 @@ namespace STROOP.Managers
             return triStruct;
         }
 
-        public void SetCustomTriangleAddress(uint triAddress)
-        {
-            _radioButtonTriCustom.Checked = true;
-            Mode = TriangleMode.Other;
-            TrianglePointerAddress = 0;
-            TriangleAddress = triAddress;
-        }
-
         public override void Update(bool updateView)
         {
             _triangleCache.Clear();
@@ -482,33 +482,36 @@ namespace STROOP.Managers
             {
                 case TriangleMode.Ceiling:
                     TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset;
-                    TriangleAddress = Config.Stream.GetUInt32(TrianglePointerAddress);
+                    SetTriangleAddresses(Config.Stream.GetUInt32(TrianglePointerAddress.Value));
                     break;
 
                 case TriangleMode.Floor:
                     TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset;
-                    TriangleAddress = Config.Stream.GetUInt32(TrianglePointerAddress);
+                    SetTriangleAddresses(Config.Stream.GetUInt32(TrianglePointerAddress.Value));
                     break;
 
                 case TriangleMode.Wall:
                     TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.WallTriangleOffset;
-                    TriangleAddress = Config.Stream.GetUInt32(TrianglePointerAddress);
+                    SetTriangleAddresses(Config.Stream.GetUInt32(TrianglePointerAddress.Value));
                     break;
 
                 default:
-                    TrianglePointerAddress = 0;
+                    TrianglePointerAddress = null;
                     break;
             }
 
-            if (_checkBoxNeutralizeTriangle.Checked && TriangleAddress != 0)
+            if (_checkBoxNeutralizeTriangle.Checked)
             {
-                ButtonUtilities.NeutralizeTriangle(TriangleAddress);
+                ButtonUtilities.NeutralizeTriangle(TriangleAddresses);
             }
 
-            if (_recordTriangleDataCheckbox.Checked && TriangleAddress != 0)
+            if (_recordTriangleDataCheckbox.Checked)
             {
-                bool hasAlready = _recordedTriangleAddresses.Any(triAddress => TriangleAddress == triAddress);
-                if (!hasAlready) _recordedTriangleAddresses.Add(TriangleAddress);
+                foreach (uint triangleAddress in TriangleAddresses)
+                {
+                    bool hasAlready = _recordedTriangleAddresses.Any(recordedAddress => triangleAddress == recordedAddress);
+                    if (!hasAlready) _recordedTriangleAddresses.Add(triangleAddress);
+                }
             }
 
             if (!updateView) return;

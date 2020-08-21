@@ -95,10 +95,7 @@ namespace STROOP.Structs
                         obj => obj.CurrentProcessGroup ?? uint.MaxValue);
 
                 case BaseAddressTypeEnum.Triangle:
-                    {
-                        uint triangleAddress = Config.TriangleManager.TriangleAddress;
-                        return triangleAddress != 0 ? new List<uint>() { triangleAddress } : BaseAddressListEmpty;
-                    }
+                    return Config.TriangleManager.TriangleAddresses;
 
                 case BaseAddressTypeEnum.TriangleExertionForceTable:
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Triangle)

@@ -66,7 +66,7 @@ namespace STROOP.Forms
             rows.ForEach(row =>
             {
                 uint address = ParsingUtilities.ParseHex(row.Cells[0].Value);
-                ButtonUtilities.AnnihilateTriangle(address);
+                ButtonUtilities.AnnihilateTriangle(new List<uint>() { address });
             });
         }
 

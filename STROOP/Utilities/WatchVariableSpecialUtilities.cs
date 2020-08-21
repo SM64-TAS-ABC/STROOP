@@ -3048,7 +3048,7 @@ namespace STROOP.Structs
                     uint triangleListStartAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
                     uint structSize = TriangleConfig.TriangleStructSize;
                     uint newTriAddress = (uint)(triangleListStartAddress + index * structSize);
-                    Config.TriangleManager.SetCustomTriangleAddress(newTriAddress);
+                    Config.TriangleManager.SetCustomTriangleAddresses(newTriAddress);
                     return true;
                 }));
 
@@ -3077,7 +3077,7 @@ namespace STROOP.Structs
                 },
                 (uint address, uint triAddress) =>
                 {
-                    Config.TriangleManager.SetCustomTriangleAddress(address);
+                    Config.TriangleManager.SetCustomTriangleAddresses(address);
                     return true;
                 }));
 

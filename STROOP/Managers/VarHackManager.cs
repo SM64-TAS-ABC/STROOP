@@ -201,12 +201,15 @@ namespace STROOP.Managers
 
             if (watchVar.BaseAddressType == BaseAddressTypeEnum.Triangle)
             {
-                Config.VarHackManager.AddVariable(
-                    control.VarName + " " + VarHackConfig.EscapeChar,
-                    Config.TriangleManager.TrianglePointerAddress,
-                    watchVar.MemoryType,
-                    watchVarWrapper.GetUseHex(),
-                    watchVar.Offset);
+                if (Config.TriangleManager.TrianglePointerAddress.HasValue)
+                {
+                    Config.VarHackManager.AddVariable(
+                        control.VarName + " " + VarHackConfig.EscapeChar,
+                        Config.TriangleManager.TrianglePointerAddress.Value,
+                        watchVar.MemoryType,
+                        watchVarWrapper.GetUseHex(),
+                        watchVar.Offset);
+                }
             }
             else
             {

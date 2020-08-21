@@ -101,7 +101,7 @@ namespace STROOP.Utilities
                 short type = Config.Stream.GetInt16(address + TriangleOffsetsConfig.SurfaceType);
                 if (type != 0x0A)
                 {
-                    ButtonUtilities.AnnihilateTriangle(address);
+                    ButtonUtilities.AnnihilateTriangle(new List<uint>() { address });
                 }
             });
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -116,7 +116,7 @@ namespace STROOP.Utilities
                 TriangleClassification triClassification = CalculateClassification(ynorm);
                 if (classification == null || classification == triClassification)
                 {
-                    ButtonUtilities.NeutralizeTriangle(address);
+                    ButtonUtilities.NeutralizeTriangle(new List<uint>() { address });
                 }
             });
         }
@@ -129,7 +129,7 @@ namespace STROOP.Utilities
                 short type = Config.Stream.GetInt16(address + TriangleOffsetsConfig.SurfaceType);
                 if (type == surfaceType)
                 {
-                    ButtonUtilities.NeutralizeTriangle(address);
+                    ButtonUtilities.NeutralizeTriangle(new List<uint>() { address });
                 }
             });
         }
