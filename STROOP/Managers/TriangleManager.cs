@@ -63,6 +63,7 @@ namespace STROOP.Managers
 
         public void SetCustomTriangleAddresses(List<uint> triangleAddresses)
         {
+            if (triangleAddresses.Count == 0) return;
             _radioButtonTriCustom.Checked = true;
             Mode = TriangleMode.Custom;
             SetTriangleAddresses(triangleAddresses);
@@ -98,8 +99,7 @@ namespace STROOP.Managers
             _addressBox = splitContainerTriangles.Panel1.Controls["textBoxCustomTriangle"] as BetterTextbox;
             _useMisalignmentOffsetCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxVertexMisalignment"] as CheckBox;
 
-            // TODO fix this
-            // _addressBox.KeyDown += AddressBox_KeyDown;
+            _addressBox.AddEnterAction(() => AddressBoxEnter());
 
             _radioButtonTriFloor = splitContainerTriangles.Panel1.Controls["radioButtonTriFloor"] as RadioButton;
             _radioButtonTriFloor.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Floor);
@@ -448,22 +448,10 @@ namespace STROOP.Managers
             Mode = mode;
         }
 
-        // TODO fix pressing enter on textbox
-        private void AddressBox_KeyDown(object sender, KeyEventArgs e)
+        private void AddressBoxEnter()
         {
-            // On "Enter" key press
-            if (e.KeyData != Keys.Enter)
-                return;
-
-            uint newAddress;
-            if (!ParsingUtilities.TryParseHex(_addressBox.Text, out newAddress))
-            {
-                MessageBox.Show(String.Format("Address {0} is not valid!", _addressBox.Text),
-                    "Address Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            //SetCustomTriangleAddress(newAddress);
+            List<uint> triangleAddresses = ParsingUtilities.ParseHexListNullable(_addressBox.Text);
+            SetCustomTriangleAddresses(triangleAddresses);
             _addressBox.SelectionLength = 0;
         }
 

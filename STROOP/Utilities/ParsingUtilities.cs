@@ -315,6 +315,14 @@ namespace STROOP.Utilities
             return ParseStringList(text).ConvertAll(stringValue => ParseHex(stringValue));
         }
 
+        public static List<uint> ParseHexListNullable(string text)
+        {
+            return ParseStringList(text)
+                .ConvertAll(stringValue => ParseHexNullable(stringValue))
+                .FindAll(value => value != null)
+                .ConvertAll(value => value.Value);
+        }
+
         public static List<int?> ParseIntList(string text)
         {
             return ParseStringList(text).ConvertAll(stringValue => ParseIntNullable(stringValue));
