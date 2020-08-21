@@ -232,6 +232,14 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
+            ToolStripMenuItem itemClearMinHeight = new ToolStripMenuItem("Clear Min Height");
+            itemClearMinHeight.Click += (sender, e) =>
+            {
+                MapObjectSettings settings = new MapObjectSettings(
+                    triangleChangeMinHeight: true, triangleNewMinHeight: null);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
             ToolStripMenuItem itemSetMaxHeight = new ToolStripMenuItem("Set Max Height");
             itemSetMaxHeight.Click += (sender, e) =>
             {
@@ -246,10 +254,20 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
+            ToolStripMenuItem itemClearMaxHeight = new ToolStripMenuItem("Clear Max Height");
+            itemClearMaxHeight.Click += (sender, e) =>
+            {
+                MapObjectSettings settings = new MapObjectSettings(
+                    triangleChangeMaxHeight: true, triangleNewMaxHeight: null);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
             return new List<ToolStripMenuItem>()
             {
                 itemSetMinHeight,
+                itemClearMinHeight,
                 itemSetMaxHeight,
+                itemClearMaxHeight,
             };
         }
 
