@@ -269,14 +269,14 @@ namespace STROOP.Map
             double totalSeconds = secondsPerPoint * numPoints;
             double elapsedSeconds = DateTime.Now.Subtract(_showEachPointStartTime).TotalSeconds;
             int? pointToShow;
-            if (elapsedSeconds > totalSeconds)
+            if (elapsedSeconds < totalSeconds)
             {
-                _showEachPointStartTime = DateTime.MinValue;
-                pointToShow = null;
+                pointToShow = (int)(elapsedSeconds / secondsPerPoint);
             }
             else
             {
-                pointToShow = (int)(elapsedSeconds / secondsPerPoint);
+                _showEachPointStartTime = DateTime.MinValue;
+                pointToShow = null;
             }
 
             List<(float x, float y, float z, float angle, int tex, bool show)> partialResults =
