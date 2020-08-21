@@ -22,6 +22,12 @@ namespace STROOP.Map
         public readonly bool CustomCylinderChangeRelativeMaxY;
         public readonly float CustomCylinderNewRelativeMaxY;
 
+        public readonly bool TriangleChangeMinHeight;
+        public readonly float? TriangleNewMinHeight;
+
+        public readonly bool TriangleChangeMaxHeight;
+        public readonly float? TriangleNewMaxHeight;
+
         public readonly bool WallChangeRelativeHeight;
         public readonly float? WallNewRelativeHeight;
 
@@ -58,6 +64,12 @@ namespace STROOP.Map
             bool customCylinderChangeRelativeMaxY = false,
             float customCylinderNewRelativeMaxY = 0,
 
+            bool triangleChangeMinHeight = false,
+            float? triangleNewMinHeight = null,
+
+            bool triangleChangeMaxHeight = false,
+            float? triangleNewMaxHeight = null,
+
             bool wallChangeRelativeHeight = false,
             float? wallNewRelativeHeight = null,
 
@@ -92,6 +104,12 @@ namespace STROOP.Map
 
             CustomCylinderChangeRelativeMaxY = customCylinderChangeRelativeMaxY;
             CustomCylinderNewRelativeMaxY = customCylinderNewRelativeMaxY;
+
+            TriangleChangeMinHeight = triangleChangeMinHeight;
+            TriangleNewMinHeight = triangleNewMinHeight;
+
+            TriangleChangeMaxHeight = triangleChangeMaxHeight;
+            TriangleNewMaxHeight = triangleNewMaxHeight;
 
             WallChangeRelativeHeight = wallChangeRelativeHeight;
             WallNewRelativeHeight = wallNewRelativeHeight;

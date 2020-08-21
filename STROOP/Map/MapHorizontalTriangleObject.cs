@@ -11,14 +11,20 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using STROOP.Map.Map3D;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
     public abstract class MapHorizontalTriangleObject : MapTriangleObject
     {
+        private float? _minHeight;
+        private float? _maxHeight;
+
         public MapHorizontalTriangleObject()
             : base()
         {
+            _minHeight = null;
+            _maxHeight = null;
         }
 
         public override void DrawOn2DControl()
@@ -209,6 +215,58 @@ namespace STROOP.Map
                     GL.DrawArrays(PrimitiveType.LineLoop, 0, vertexes.Length);
                     GL.DeleteBuffer(buffer);
                 });
+            }
+        }
+
+        protected List<ToolStripMenuItem> GetHorizontalTriangleToolStripMenuItems()
+        {
+            ToolStripMenuItem itemSetMinHeight = new ToolStripMenuItem("Set Min Height");
+            itemSetMinHeight.Click += (sender, e) =>
+            {
+                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the min height.");
+                float? minHeightNullable =
+                    text == "" ?
+                    Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset) :
+                    ParsingUtilities.ParseFloatNullable(text);
+                if (!minHeightNullable.HasValue) return;
+                MapObjectSettings settings = new MapObjectSettings(
+                    triangleChangeMinHeight: true, triangleNewMinHeight: minHeightNullable.Value);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
+            ToolStripMenuItem itemSetMaxHeight = new ToolStripMenuItem("Set Max Height");
+            itemSetMaxHeight.Click += (sender, e) =>
+            {
+                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the max height.");
+                float? maxHeightNullable =
+                    text == "" ?
+                    Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset) :
+                    ParsingUtilities.ParseFloatNullable(text);
+                if (!maxHeightNullable.HasValue) return;
+                MapObjectSettings settings = new MapObjectSettings(
+                    triangleChangeMaxHeight: true, triangleNewMaxHeight: maxHeightNullable.Value);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
+            return new List<ToolStripMenuItem>()
+            {
+                itemSetMinHeight,
+                itemSetMaxHeight,
+            };
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.TriangleChangeMinHeight)
+            {
+                _minHeight = settings.TriangleNewMinHeight;
+            }
+
+            if (settings.TriangleChangeMaxHeight)
+            {
+                _maxHeight = settings.TriangleNewMaxHeight;
             }
         }
     }
