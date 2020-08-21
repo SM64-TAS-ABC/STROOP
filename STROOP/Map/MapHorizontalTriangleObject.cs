@@ -36,7 +36,7 @@ namespace STROOP.Map
                 float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                 float marioYSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
                 List<(float y, float ySpeed)> steps = new List<(float y, float ySpeed)>();
-                for (int i = 0; i < 100 && steps.Count < 10; i++)
+                for (int i = 0; i < 100 && steps.Count < 20; i++)
                 {
                     if (marioYSpeed < 0)
                     {
@@ -63,7 +63,14 @@ namespace STROOP.Map
                     (float yMin, float yMax) = yBounds[i];
                     List<Color> colors = new List<Color>() { Color.Red, Color.Yellow, Color.Green, Color.Cyan };
                     Color color = colors[i % 4];
-                    DrawOn2DControlWithoutUnits(yMin, yMax, color);
+                    if (ShowTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
+                    {
+                        DrawOn2DControlWithUnits(yMin, yMax, color);
+                    }
+                    else
+                    {
+                        DrawOn2DControlWithoutUnits(yMin, MoreMath.GetPreviousFloat(yMax), color);
+                    }
                 }
             }
             else
