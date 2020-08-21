@@ -58,7 +58,8 @@ namespace STROOP.Managers
         {
             List<string> triangleAddressStrings = TriangleAddresses.ConvertAll(
                 triAddress => HexUtilities.FormatValue(triAddress, 8));
-            _addressBox.Text = string.Join(",", triangleAddressStrings);
+            string newText = string.Join(",", triangleAddressStrings);
+            _addressBox.SubmitTextLoosely(newText);
         }
 
         public void SetCustomTriangleAddresses(uint triangleAddress)
