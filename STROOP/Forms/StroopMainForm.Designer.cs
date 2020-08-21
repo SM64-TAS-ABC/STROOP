@@ -316,7 +316,8 @@ namespace STROOP
             this.textBoxTriangleNormal = new STROOP.BetterTextbox();
             this.buttonTriangleNormalN = new System.Windows.Forms.Button();
             this.buttonTriangleNormalP = new System.Windows.Forms.Button();
-            this.radioButtonTriOther = new System.Windows.Forms.RadioButton();
+            this.radioButtonTriCustom = new System.Windows.Forms.RadioButton();
+            this.buttonTriangleShowAddresses = new System.Windows.Forms.Button();
             this.buttonTriangleClearData = new System.Windows.Forms.Button();
             this.buttonTriangleDisableAllCamCollision = new System.Windows.Forms.Button();
             this.buttonTriangleShowVertices = new System.Windows.Forms.Button();
@@ -336,7 +337,7 @@ namespace STROOP
             this.checkBoxNeutralizeTriangle = new System.Windows.Forms.CheckBox();
             this.checkBoxRecordTriangleData = new System.Windows.Forms.CheckBox();
             this.checkBoxVertexMisalignment = new System.Windows.Forms.CheckBox();
-            this.maskedTextBoxOtherTriangle = new BetterTextbox();
+            this.textBoxCustomTriangle = new STROOP.BetterTextbox();
             this.buttonTriangleShowEquation = new System.Windows.Forms.Button();
             this.buttonRetrieveTriangle = new System.Windows.Forms.Button();
             this.labelRecordTriangleCount = new System.Windows.Forms.Label();
@@ -1649,7 +1650,6 @@ namespace STROOP
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonTriangleShowAddresses = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -4958,7 +4958,7 @@ namespace STROOP
             this.splitContainerTriangles.Panel1.Controls.Add(this.groupBoxTrianglePos);
             this.splitContainerTriangles.Panel1.Controls.Add(this.groupBoxTriangleTypeConversion);
             this.splitContainerTriangles.Panel1.Controls.Add(this.groupBoxTriangleNormal);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriOther);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.radioButtonTriCustom);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleShowAddresses);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleClearData);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleDisableAllCamCollision);
@@ -4979,7 +4979,7 @@ namespace STROOP
             this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxNeutralizeTriangle);
             this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxRecordTriangleData);
             this.splitContainerTriangles.Panel1.Controls.Add(this.checkBoxVertexMisalignment);
-            this.splitContainerTriangles.Panel1.Controls.Add(this.maskedTextBoxOtherTriangle);
+            this.splitContainerTriangles.Panel1.Controls.Add(this.textBoxCustomTriangle);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonTriangleShowEquation);
             this.splitContainerTriangles.Panel1.Controls.Add(this.buttonRetrieveTriangle);
             this.splitContainerTriangles.Panel1.Controls.Add(this.labelRecordTriangleCount);
@@ -5278,15 +5278,24 @@ namespace STROOP
             this.buttonTriangleNormalP.Text = "Normal+";
             this.buttonTriangleNormalP.UseVisualStyleBackColor = true;
             // 
-            // radioButtonTriOther
+            // radioButtonTriCustom
             // 
-            this.radioButtonTriOther.AutoSize = true;
-            this.radioButtonTriOther.Location = new System.Drawing.Point(12, 88);
-            this.radioButtonTriOther.Name = "radioButtonTriOther";
-            this.radioButtonTriOther.Size = new System.Drawing.Size(54, 17);
-            this.radioButtonTriOther.TabIndex = 3;
-            this.radioButtonTriOther.Text = "Other:";
-            this.radioButtonTriOther.UseVisualStyleBackColor = true;
+            this.radioButtonTriCustom.AutoSize = true;
+            this.radioButtonTriCustom.Location = new System.Drawing.Point(12, 88);
+            this.radioButtonTriCustom.Name = "radioButtonTriCustom";
+            this.radioButtonTriCustom.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonTriCustom.TabIndex = 3;
+            this.radioButtonTriCustom.Text = "Custom:";
+            this.radioButtonTriCustom.UseVisualStyleBackColor = true;
+            // 
+            // buttonTriangleShowAddresses
+            // 
+            this.buttonTriangleShowAddresses.Location = new System.Drawing.Point(5, 526);
+            this.buttonTriangleShowAddresses.Name = "buttonTriangleShowAddresses";
+            this.buttonTriangleShowAddresses.Size = new System.Drawing.Size(87, 23);
+            this.buttonTriangleShowAddresses.TabIndex = 15;
+            this.buttonTriangleShowAddresses.Text = "Show Addrs";
+            this.buttonTriangleShowAddresses.UseVisualStyleBackColor = true;
             // 
             // buttonTriangleClearData
             // 
@@ -5470,13 +5479,13 @@ namespace STROOP
             this.checkBoxVertexMisalignment.Text = "Vertex Misalignment Offset";
             this.checkBoxVertexMisalignment.UseVisualStyleBackColor = true;
             // 
-            // maskedTextBoxOtherTriangle
+            // textBoxCustomTriangle
             // 
-            this.maskedTextBoxOtherTriangle.Location = new System.Drawing.Point(71, 87);
-            this.maskedTextBoxOtherTriangle.Margin = new System.Windows.Forms.Padding(2);
-            this.maskedTextBoxOtherTriangle.Name = "maskedTextBoxOtherTriangle";
-            this.maskedTextBoxOtherTriangle.Size = new System.Drawing.Size(87, 20);
-            this.maskedTextBoxOtherTriangle.TabIndex = 5;
+            this.textBoxCustomTriangle.Location = new System.Drawing.Point(77, 87);
+            this.textBoxCustomTriangle.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCustomTriangle.Name = "textBoxCustomTriangle";
+            this.textBoxCustomTriangle.Size = new System.Drawing.Size(87, 20);
+            this.textBoxCustomTriangle.TabIndex = 5;
             // 
             // buttonTriangleShowEquation
             // 
@@ -5964,7 +5973,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 562F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 563F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9014,7 +9023,7 @@ namespace STROOP
             this.watchVariablePanelInput.Location = new System.Drawing.Point(2, 31);
             this.watchVariablePanelInput.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelInput.Name = "watchVariablePanelInput";
-            this.watchVariablePanelInput.Size = new System.Drawing.Size(489, 428);
+            this.watchVariablePanelInput.Size = new System.Drawing.Size(492, 428);
             this.watchVariablePanelInput.TabIndex = 2;
             // 
             // tabPageWater
@@ -9714,7 +9723,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(424, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(427, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -12940,7 +12949,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Padding = new System.Windows.Forms.Padding(2);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 692;
+            this.splitContainerMemory.SplitterDistance = 695;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12981,7 +12990,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(692, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(695, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -13198,7 +13207,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(692, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(695, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -13227,7 +13236,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(591, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(594, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -13239,7 +13248,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(210, 451);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(207, 451);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -14393,7 +14402,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(272, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(255, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -14425,7 +14434,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(266, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(249, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -14481,7 +14490,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(266, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(249, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -19215,7 +19224,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -20399,7 +20408,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(31, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(32, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -21411,15 +21420,6 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 36;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonTriangleShowAddresses
-            // 
-            this.buttonTriangleShowAddresses.Location = new System.Drawing.Point(5, 526);
-            this.buttonTriangleShowAddresses.Name = "buttonTriangleShowAddresses";
-            this.buttonTriangleShowAddresses.Size = new System.Drawing.Size(87, 23);
-            this.buttonTriangleShowAddresses.TabIndex = 15;
-            this.buttonTriangleShowAddresses.Text = "Show Addrs";
-            this.buttonTriangleShowAddresses.UseVisualStyleBackColor = true;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -22118,8 +22118,8 @@ namespace STROOP
         private RadioButton radioButtonTriWall;
         private RadioButton radioButtonTriFloor;
         private Label labelTriangleSelection;
-        private BetterTextbox maskedTextBoxOtherTriangle;
-        private RadioButton radioButtonTriOther;
+        private BetterTextbox textBoxCustomTriangle;
+        private RadioButton radioButtonTriCustom;
         private WatchVariableFlowLayoutPanel watchVariablePanelTriangles;
         private Button buttonStandardHud;
         private Button buttonDie;

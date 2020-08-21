@@ -28,7 +28,7 @@ namespace STROOP.Managers
         private readonly RadioButton _radioButtonTriFloor;
         private readonly RadioButton _radioButtonTriWall;
         private readonly RadioButton _radioButtonTriCeiling;
-        private readonly RadioButton _radioButtonTriOther;
+        private readonly RadioButton _radioButtonTriCustom;
 
         CheckBox _checkBoxNeutralizeTriangle;
 
@@ -89,7 +89,7 @@ namespace STROOP.Managers
 
             SplitContainer splitContainerTriangles = tabControl.Controls["splitContainerTriangles"] as SplitContainer;
 
-            _addressBox = splitContainerTriangles.Panel1.Controls["maskedTextBoxOtherTriangle"] as BetterTextbox;
+            _addressBox = splitContainerTriangles.Panel1.Controls["textBoxCustomTriangle"] as BetterTextbox;
             _useMisalignmentOffsetCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxVertexMisalignment"] as CheckBox;
 
             // TODO fix this
@@ -101,8 +101,8 @@ namespace STROOP.Managers
             _radioButtonTriWall.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Wall);
             _radioButtonTriCeiling = splitContainerTriangles.Panel1.Controls["radioButtonTriCeiling"] as RadioButton;
             _radioButtonTriCeiling.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Ceiling);
-            _radioButtonTriOther = splitContainerTriangles.Panel1.Controls["radioButtonTriOther"] as RadioButton;
-            _radioButtonTriOther.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Other);
+            _radioButtonTriCustom = splitContainerTriangles.Panel1.Controls["radioButtonTriCustom"] as RadioButton;
+            _radioButtonTriCustom.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Other);
 
             Label labelTriangleSelection = splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label;
             ControlUtilities.AddContextMenuStripFunctions(
@@ -469,7 +469,7 @@ namespace STROOP.Managers
 
         public void SetCustomTriangleAddress(uint triAddress)
         {
-            _radioButtonTriOther.Checked = true;
+            _radioButtonTriCustom.Checked = true;
             Mode = TriangleMode.Other;
             TrianglePointerAddress = 0;
             TriangleAddress = triAddress;
