@@ -31,19 +31,26 @@ namespace STROOP.Map
 
         public override void DrawOn2DControl()
         {
-            if (ShowTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
+            if (_enableQuarterFrameLandings)
             {
-                DrawOn2DControlWithUnits();
+
             }
             else
             {
-                DrawOn2DControlWithoutUnits();
+                if (ShowTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
+                {
+                    DrawOn2DControlWithUnits(_minHeight, _maxHeight, Color);
+                }
+                else
+                {
+                    DrawOn2DControlWithoutUnits(_minHeight, _maxHeight, Color);
+                }
             }
         }
 
-        private void DrawOn2DControlWithoutUnits()
+        private void DrawOn2DControlWithoutUnits(float? minHeight, float? maxHeight, Color color)
         {
-            List<List<(float x, float y, float z)>> vertexLists = GetVertexListsWithSplicing();
+            List<List<(float x, float y, float z)>> vertexLists = GetVertexListsWithSplicing(minHeight, maxHeight);
             List<List<(float x, float y, float z)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                     vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.y, vertex.z)));
@@ -53,7 +60,7 @@ namespace STROOP.Map
             GL.LoadIdentity();
 
             // Draw triangle
-            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+            GL.Color4(color.R, color.G, color.B, OpacityByte);
             foreach (List<(float x, float y, float z)> vertexList in vertexListsForControl)
             {
                 GL.Begin(PrimitiveType.Polygon);
@@ -83,7 +90,7 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        private void DrawOn2DControlWithUnits()
+        private void DrawOn2DControlWithUnits(float? minHeight, float? maxHeight, Color color)
         {
             List<TriangleDataModel> triangles = GetTrianglesWithinDist();
             List<(int x, int z)> unitPoints = triangles.ConvertAll(triangle =>
@@ -100,8 +107,8 @@ namespace STROOP.Map
                     {
                         float? y = triangle.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
                         if (y.HasValue &&
-                            (!_minHeight.HasValue || y.Value >= _minHeight.Value) &&
-                            (!_maxHeight.HasValue || y.Value <= _maxHeight.Value))
+                            (!minHeight.HasValue || y.Value >= minHeight.Value) &&
+                            (!maxHeight.HasValue || y.Value <= maxHeight.Value))
                         {
                             points.Add((x, z));
                         }
@@ -120,7 +127,7 @@ namespace STROOP.Map
             GL.LoadIdentity();
 
             // Draw quad
-            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+            GL.Color4(color.R, color.G, color.B, OpacityByte);
             GL.Begin(PrimitiveType.Quads);
             foreach (List<(float x, float z)> quad in quadListForControl)
             {
@@ -295,10 +302,10 @@ namespace STROOP.Map
             }
         }
 
-        private List<List<(float x, float y, float z)>> GetVertexListsWithSplicing()
+        private List<List<(float x, float y, float z)>> GetVertexListsWithSplicing(float? minHeight, float? maxHeight)
         {
             List<List<(float x, float y, float z)>> vertexLists = GetVertexLists();
-            if (!_minHeight.HasValue && !_maxHeight.HasValue) return vertexLists; // short circuit
+            if (!minHeight.HasValue && !maxHeight.HasValue) return vertexLists; // short circuit
 
             List<List<(float x, float y, float z)>> splicedVertexLists = new List<List<(float x, float y, float z)>>();
             foreach (List<(float x, float y, float z)> vertexList in vertexLists)
@@ -309,44 +316,44 @@ namespace STROOP.Map
                 float minY = splicedVertexList.Min(vertex => vertex.y);
                 float maxY = splicedVertexList.Max(vertex => vertex.y);
 
-                if (_minHeight.HasValue)
+                if (minHeight.HasValue)
                 {
-                    if (_minHeight.Value > maxY) continue; // don't add anything
-                    if (_minHeight.Value > minY)
+                    if (minHeight.Value > maxY) continue; // don't add anything
+                    if (minHeight.Value > minY)
                     {
                         List<(float x, float y, float z)> tempVertexList = new List<(float x, float y, float z)>();
                         for (int i = 0; i < splicedVertexList.Count; i++)
                         {
                             (float x1, float y1, float z1) = splicedVertexList[i];
                             (float x2, float y2, float z2) = splicedVertexList[(i + 1) % splicedVertexList.Count];
-                            bool isValid1 = y1 >= _minHeight.Value;
-                            bool isValid2 = y2 >= _minHeight.Value;
+                            bool isValid1 = y1 >= minHeight.Value;
+                            bool isValid2 = y2 >= minHeight.Value;
                             if (isValid1)
                                 tempVertexList.Add((x1, y1, z1));
                             if (isValid1 != isValid2)
-                                tempVertexList.Add(InterpolatePointForY(x1, y1, z1, x2, y2, z2, _minHeight.Value));
+                                tempVertexList.Add(InterpolatePointForY(x1, y1, z1, x2, y2, z2, minHeight.Value));
                         }
                         splicedVertexList.Clear();
                         splicedVertexList.AddRange(tempVertexList);
                     }
                 }
 
-                if (_maxHeight.HasValue)
+                if (maxHeight.HasValue)
                 {
-                    if (_maxHeight.Value < minY) continue; // don't add anything
-                    if (_maxHeight.Value < maxY)
+                    if (maxHeight.Value < minY) continue; // don't add anything
+                    if (maxHeight.Value < maxY)
                     {
                         List<(float x, float y, float z)> tempVertexList = new List<(float x, float y, float z)>();
                         for (int i = 0; i < splicedVertexList.Count; i++)
                         {
                             (float x1, float y1, float z1) = splicedVertexList[i];
                             (float x2, float y2, float z2) = splicedVertexList[(i + 1) % splicedVertexList.Count];
-                            bool isValid1 = y1 <= _maxHeight.Value;
-                            bool isValid2 = y2 <= _maxHeight.Value;
+                            bool isValid1 = y1 <= maxHeight.Value;
+                            bool isValid2 = y2 <= maxHeight.Value;
                             if (isValid1)
                                 tempVertexList.Add((x1, y1, z1));
                             if (isValid1 != isValid2)
-                                tempVertexList.Add(InterpolatePointForY(x1, y1, z1, x2, y2, z2, _maxHeight.Value));
+                                tempVertexList.Add(InterpolatePointForY(x1, y1, z1, x2, y2, z2, maxHeight.Value));
                         }
                         splicedVertexList.Clear();
                         splicedVertexList.AddRange(tempVertexList);
