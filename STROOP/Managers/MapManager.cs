@@ -185,11 +185,21 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemCustomCirclePoints = new ToolStripMenuItem("Add Tracker for Custom Circle Points");
-            itemCustomCirclePoints.Click += (sender, e) =>
+            ToolStripMenuItem itemCustomCirclePoints2D = new ToolStripMenuItem("Add Tracker for Custom Circle Points (2D)");
+            itemCustomCirclePoints2D.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter points as pairs of floats.");
-                MapObject mapObj = MapCustomCirclePointsObject.Create(text);
+                MapObject mapObj = MapCustomCirclePointsObject.Create2D(text);
+                if (mapObj == null) return;
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
+            ToolStripMenuItem itemCustomCirclePoints3D = new ToolStripMenuItem("Add Tracker for Custom Circle Points (3D)");
+            itemCustomCirclePoints3D.Click += (sender, e) =>
+            {
+                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter points as triplets of floats.");
+                MapObject mapObj = MapCustomCirclePointsObject.Create3D(text);
                 if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
@@ -389,7 +399,8 @@ namespace STROOP.Managers
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomCeilingTris);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomUnitPoints);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomCirclePoints);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomCirclePoints2D);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomCirclePoints3D);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomMap);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomBackground);

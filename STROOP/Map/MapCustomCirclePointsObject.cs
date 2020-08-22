@@ -16,12 +16,12 @@ namespace STROOP.Map
 {
     public class MapCustomCirclePointsObject : MapCylinderObject
     {
-        private readonly List<(float x, float z)> _points;
+        private readonly List<(float x, float y, float z)> _points;
 
         private float _relativeMinY = 0;
         private float _relativeMaxY = 100;
 
-        public MapCustomCirclePointsObject(List<(float x, float z)> points)
+        public MapCustomCirclePointsObject(List<(float x, float y, float z)> points)
             : base()
         {
             _points = points;
@@ -29,7 +29,7 @@ namespace STROOP.Map
             Size = 100;
         }
 
-        public static MapCustomCirclePointsObject Create(string text)
+        public static MapCustomCirclePointsObject Create2D(string text)
         {
             if (text == null) return null;
             List<float?> nullableFloatList = ParsingUtilities.ParseStringList(text)
@@ -43,10 +43,32 @@ namespace STROOP.Map
             {
                 return null;
             }
-            List<(float x, float z)> circlePoints = new List<(float x, float z)>();
+            List<(float x, float y, float z)> circlePoints = new List<(float x, float y, float z)>();
             for (int i = 0; i < floatList.Count; i += 2)
             {
-                circlePoints.Add((floatList[i], floatList[i + 1]));
+                circlePoints.Add((floatList[i], 0, floatList[i + 1]));
+            }
+            return new MapCustomCirclePointsObject(circlePoints);
+        }
+
+        public static MapCustomCirclePointsObject Create3D(string text)
+        {
+            if (text == null) return null;
+            List<float?> nullableFloatList = ParsingUtilities.ParseStringList(text)
+                .ConvertAll(word => ParsingUtilities.ParseFloatNullable(word));
+            if (nullableFloatList.Any(nullableFloat => !nullableFloat.HasValue))
+            {
+                return null;
+            }
+            List<float> floatList = nullableFloatList.ConvertAll(nullableFloat => nullableFloat.Value);
+            if (floatList.Count % 3 != 0)
+            {
+                return null;
+            }
+            List<(float x, float y, float z)> circlePoints = new List<(float x, float y, float z)>();
+            for (int i = 0; i < floatList.Count; i += 3)
+            {
+                circlePoints.Add((floatList[i], floatList[i + 1], floatList[i + 2]));
             }
             return new MapCustomCirclePointsObject(circlePoints);
         }
