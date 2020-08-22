@@ -19,6 +19,7 @@ namespace STROOP.Map
     {
         private float? _withinDist;
         private float? _withinCenter;
+        protected bool _excludeDeathBarriers;
 
         public MapTriangleObject()
             : base()
@@ -35,8 +36,13 @@ namespace STROOP.Map
         protected List<TriangleDataModel> GetTrianglesWithinDist()
         {
             float centerY = _withinCenter ?? Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            return GetTrianglesOfAnyDist()
+            List<TriangleDataModel> tris = GetTrianglesOfAnyDist()
                 .FindAll(tri => tri.IsTriWithinVerticalDistOfCenter(_withinDist, centerY));
+            if (_excludeDeathBarriers)
+            {
+                tris = tris.FindAll(tri => tri.SurfaceType != 0x0A);
+            }
+            return tris;
         }
 
         protected abstract List<TriangleDataModel> GetTrianglesOfAnyDist();

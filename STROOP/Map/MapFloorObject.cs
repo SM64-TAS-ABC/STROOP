@@ -27,6 +27,13 @@ namespace STROOP.Map
 
         protected List<ToolStripMenuItem> GetFloorToolStripMenuItems()
         {
+            ToolStripMenuItem itemExcludeDeathBarriers = new ToolStripMenuItem("Exclude Death Barriers");
+            itemExcludeDeathBarriers.Click += (sender, e) =>
+            {
+                _excludeDeathBarriers = !_excludeDeathBarriers;
+                itemExcludeDeathBarriers.Checked = _excludeDeathBarriers;
+            };
+
             ToolStripMenuItem itemEnableQuarterFrameLandings = new ToolStripMenuItem("Enable Quarter Frame Landings");
             itemEnableQuarterFrameLandings.Click += (sender, e) =>
             {
@@ -36,6 +43,7 @@ namespace STROOP.Map
 
             return new List<ToolStripMenuItem>()
             {
+                itemExcludeDeathBarriers,
                 itemEnableQuarterFrameLandings,
             };
         }
