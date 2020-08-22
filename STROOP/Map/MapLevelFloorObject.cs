@@ -86,6 +86,8 @@ namespace STROOP.Map
                 _contextMenuStrip.Items.Add(itemShowTriData);
                 _contextMenuStrip.Items.Add(itemOpenForm);
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
+                GetFloorToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
+                _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetHorizontalTriangleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetTriangleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));

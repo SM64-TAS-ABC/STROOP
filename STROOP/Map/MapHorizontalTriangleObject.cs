@@ -20,7 +20,7 @@ namespace STROOP.Map
     {
         private float? _minHeight;
         private float? _maxHeight;
-        private bool _enableQuarterFrameLandings;
+        protected bool _enableQuarterFrameLandings;
 
         public MapHorizontalTriangleObject()
             : base()
@@ -308,20 +308,12 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
-            ToolStripMenuItem itemEnableQuarterFrameLandings = new ToolStripMenuItem("Enable Quarter Frame Landings");
-            itemEnableQuarterFrameLandings.Click += (sender, e) =>
-            {
-                _enableQuarterFrameLandings = !_enableQuarterFrameLandings;
-                itemEnableQuarterFrameLandings.Checked = _enableQuarterFrameLandings;
-            };
-
             return new List<ToolStripMenuItem>()
             {
                 itemSetMinHeight,
                 itemClearMinHeight,
                 itemSetMaxHeight,
                 itemClearMaxHeight,
-                itemEnableQuarterFrameLandings,
             };
         }
 

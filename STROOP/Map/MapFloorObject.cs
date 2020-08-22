@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using STROOP.Models;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -22,6 +23,21 @@ namespace STROOP.Map
             Size = 78;
             Opacity = 0.5;
             Color = Color.Blue;
+        }
+
+        protected List<ToolStripMenuItem> GetFloorToolStripMenuItems()
+        {
+            ToolStripMenuItem itemEnableQuarterFrameLandings = new ToolStripMenuItem("Enable Quarter Frame Landings");
+            itemEnableQuarterFrameLandings.Click += (sender, e) =>
+            {
+                _enableQuarterFrameLandings = !_enableQuarterFrameLandings;
+                itemEnableQuarterFrameLandings.Checked = _enableQuarterFrameLandings;
+            };
+
+            return new List<ToolStripMenuItem>()
+            {
+                itemEnableQuarterFrameLandings,
+            };
         }
     }
 }

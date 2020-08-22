@@ -43,6 +43,8 @@ namespace STROOP.Map
             if (_contextMenuStrip == null)
             {
                 _contextMenuStrip = new ContextMenuStrip();
+                GetFloorToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
+                _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetHorizontalTriangleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetTriangleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
