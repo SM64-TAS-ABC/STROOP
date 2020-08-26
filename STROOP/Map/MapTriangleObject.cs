@@ -26,6 +26,7 @@ namespace STROOP.Map
         {
             _withinDist = null;
             _withinCenter = null;
+            _excludeDeathBarriers = false;
         }
 
         protected List<List<(float x, float y, float z)>> GetVertexLists()
