@@ -33,7 +33,7 @@ namespace STROOP.Map
         protected override double GetYaw()
         {
             uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-            int targetAngle = Config.Stream.GetInt32(_objAddress + 0xFC);
+            int targetAngle = Config.Stream.GetInt32(_objAddress + ObjectConfig.SwooperTargetYawOffset);
             return targetAngle + (short)(3000 * InGameTrigUtilities.InGameCosine(4000 * (int)globalTimer));
         }
 

@@ -132,11 +132,6 @@ namespace STROOP.Structs
         public static readonly uint GoombaCountdownOffset = 0xFC;
         public static readonly uint GoombaTargetAngleOffset = 0x100;
 
-        public static uint SignGraphicsId { get => RomVersionConfig.SwitchMap(SignGraphicsIdUS, SignGraphicsIdJP, SignGraphicsIdSH); }
-        public static readonly uint SignGraphicsIdUS = 0x800F8C4C;
-        public static readonly uint SignGraphicsIdJP = 0x800F5DCC;
-        public static readonly uint SignGraphicsIdSH = 0x800F5DEC;
-
         public static readonly uint BitfsPlatformGroupTimerOffset = 0xF4;
 
         public static readonly uint HootLastReleaseTimeOffset = 0x110;
@@ -148,5 +143,7 @@ namespace STROOP.Structs
         public static readonly uint RollingLogDistLimitSquaredOffset = 0xF4;
 
         public static readonly uint ObjectSpawnerRadiusOffset = 0xF8;
+
+        public static readonly uint SwooperTargetYawOffset = 0xFC;
     }
 }
