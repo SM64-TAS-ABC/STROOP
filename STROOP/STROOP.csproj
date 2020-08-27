@@ -443,6 +443,7 @@
     <Compile Include="Map\MapAllObjectCeilingObject.cs" />
     <Compile Include="Map\MapAllObjectWallObject.cs" />
     <Compile Include="Map\MapFacingDividerObject.cs" />
+    <Compile Include="Map\MapSwooperTargetArrowObject.cs" />
     <Compile Include="Map\MapSectorObject.cs" />
     <Compile Include="Map\MapEffectiveHitboxCylinderObject.cs" />
     <Compile Include="Map\MapEffectiveHurtboxCylinderObject.cs" />
