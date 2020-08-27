@@ -2049,6 +2049,17 @@ namespace STROOP.Structs
                     return Config.Stream.SetValue(newAngle.Value, objAddress + ObjectConfig.RollFacingOffset);
                 }));
 
+            // Object specific vars - Swooper
+
+            _dictionary.Add("SwooperEffectiveTargetYaw",
+                ((uint objAddress) =>
+                {
+                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    int targetAngle = Config.Stream.GetInt32(objAddress + 0xFC);
+                    return targetAngle + (short)(3000 * InGameTrigUtilities.InGameCosine(4000 * (int)globalTimer));
+                },
+                DEFAULT_SETTER));
+
             // Mario vars
 
             _dictionary.Add("RotationDisplacementX",

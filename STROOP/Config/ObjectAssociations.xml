@@ -3512,6 +3512,7 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0x45" base="Object">Wing Flap</Data>
     <Data groupList="ObjectSpecific" type="int" display="short" offset="0xD8" base="Object" subclass="Angle">Roll Facing</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="SwooperEffectiveTargetYaw" subclass="Angle" display="ushort" yaw="true">Effective Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjToMario" subclass="Angle" display="ushort" yaw="true">Angle Obj to Mario</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DAngleObjToMario" subclass="Angle" display="short">DAngle Obj to Mario</Data>
