@@ -19,6 +19,7 @@ namespace STROOP.Managers
 {
     public class MapManager : DataManager
     {
+        private Action _checkBoxMarioAction;
         private List<int> _currentObjIndexes = new List<int>();
 
         public bool PauseMapUpdating = false;
@@ -434,6 +435,16 @@ namespace STROOP.Managers
                 Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Show(Cursor.Position);
             Config.MapGui.buttonMapOptionsClearAllTrackers.Click += (sender, e) =>
                 Config.MapGui.flowLayoutPanelMapTrackers.ClearControls();
+            ControlUtilities.AddContextMenuStripFunctions(
+                Config.MapGui.buttonMapOptionsClearAllTrackers,
+                new List<string>()
+                {
+                    "Reset to Initial State",
+                },
+                new List<Action>()
+                {
+                    () => ResetToInitialState(),
+                });
 
             // Buttons for Changing Scale
             Config.MapGui.buttonMapControllersScaleMinus.Click += (sender, e) =>
@@ -719,6 +730,18 @@ namespace STROOP.Managers
             });
         }
 
+        private void ResetToInitialState()
+        {
+            Config.MapGui.flowLayoutPanelMapTrackers.ClearControls();
+            _checkBoxMarioAction();
+            Config.MapGui.comboBoxMapOptionsLevel.SelectedItem = "Recommended";
+            Config.MapGui.comboBoxMapOptionsBackground.SelectedItem = "Recommended";
+            Config.MapGui.radioButtonMapControllersScaleCourseDefault.Checked = true;
+            Config.MapGui.radioButtonMapControllersCenterBestFit.Checked = true;
+            Config.MapGui.radioButtonMapControllersAngle32768.Checked = true;
+            SpecialConfig.Map3DMode = Map3DCameraMode.InGame;
+        }
+
         private void SetGlobalIconSize(float size)
         {
             Config.MapGui.flowLayoutPanelMapTrackers.SetGlobalIconSize(size);
@@ -730,7 +753,7 @@ namespace STROOP.Managers
 
         private void InitializeSemaphores()
         {
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackMario, MapSemaphoreManager.Mario, () => new MapMarioObject(), true);
+            _checkBoxMarioAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackMario, MapSemaphoreManager.Mario, () => new MapMarioObject(), true);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackHolp, MapSemaphoreManager.Holp, () => new MapHolpObject(), false);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCamera, MapSemaphoreManager.Camera, () => new MapCameraObject(), false);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackGhost, MapSemaphoreManager.Ghost, () => new MapGhostObject(), false);
@@ -742,7 +765,7 @@ namespace STROOP.Managers
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackUnitGridlines, MapSemaphoreManager.UnitGridlines, () => new MapUnitGridlinesObject(), false);
         }
 
-        private void InitializeCheckboxSemaphore(
+        private Action InitializeCheckboxSemaphore(
             CheckBox checkBox, MapSemaphore semaphore, Func<MapObject> mapObjFunc, bool startAsOn)
         {
             Action<bool> addTrackerAction = (bool withSemaphore) =>
@@ -771,6 +794,7 @@ namespace STROOP.Managers
             ToolStripMenuItem item = new ToolStripMenuItem("Add Additional Tracker");
             item.Click += (sender, e) => addTrackerAction(false);
             checkBox.ContextMenuStrip.Items.Add(item);
+            return clickAction;
         }
 
         public override void Update(bool updateView)
