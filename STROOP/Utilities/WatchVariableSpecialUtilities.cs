@@ -4452,6 +4452,17 @@ namespace STROOP.Structs
                     return true;
                 }));
 
+            _dictionary.Add("PositionControllerRelativity",
+                ((uint dummy) =>
+                {
+                    return PositionControllerRelativityConfig.RelativityPA.ToString();
+                },
+                (PositionAngle value, uint dummy) =>
+                {
+                    PositionControllerRelativityConfig.RelativityPA = value;
+                    return true;
+                }));
+
             // Area vars
 
             _dictionary.Add("CurrentAreaIndexMario",

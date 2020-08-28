@@ -5,4 +5,5 @@
   <Data base="None" specialType="RetrieveAboveOffset">Retrieve Above Offset</Data>
   <Data base="None" specialType="RetrieveInfrontOffset">Retrieve Infront Offset</Data>
   <Data base="None" specialType="FramesPerSecond">FPS</Data>
+  <Data base="None" specialType="PositionControllerRelativity" subclass="String">Pos Controller Relativity</Data>
 </VarData>
