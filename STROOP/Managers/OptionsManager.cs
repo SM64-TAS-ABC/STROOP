@@ -74,7 +74,9 @@ namespace STROOP.Managers
                 (bool value) => SavedSettingsConfig.UseExtendedLevelBoundaries = value,
             };
 
-            _savedSettingsCheckedListBox = tabControl.Controls["checkedListBoxSavedSettings"] as CheckedListBox;
+            SplitContainer splitContainerOptions = tabControl.Controls["splitContainerOptions"] as SplitContainer;
+
+            _savedSettingsCheckedListBox = splitContainerOptions.Panel1.Controls["checkedListBoxSavedSettings"] as CheckedListBox;
             for (int i = 0; i < _savedSettingsTextList.Count; i++)
             {
                 _savedSettingsCheckedListBox.Items.Add(_savedSettingsTextList[i], _savedSettingsGetterList[i]());
@@ -84,7 +86,7 @@ namespace STROOP.Managers
                 _savedSettingsSetterList[e.Index](e.NewValue == CheckState.Checked);
             };
 
-            Button buttonOptionsResetSavedSettings = tabControl.Controls["buttonOptionsResetSavedSettings"] as Button;
+            Button buttonOptionsResetSavedSettings = splitContainerOptions.Panel1.Controls["buttonOptionsResetSavedSettings"] as Button;
             buttonOptionsResetSavedSettings.Click += (sender, e) => SavedSettingsConfig.ResetSavedSettings();
 
             _savedSettingsItemList = _savedSettingsTextList.ConvertAll(text => new ToolStripMenuItem(text));
@@ -118,7 +120,7 @@ namespace STROOP.Managers
             cogControl.ContextMenuStrip.Items.Add(goToOptionsTabItem);
 
             // goto/retrieve offsets
-            GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
+            GroupBox groupBoxGotoRetrieveOffsets = splitContainerOptions.Panel1.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
             BetterTextbox textBoxGotoAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoAbove"] as BetterTextbox;
             textBoxGotoAbove.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
                 sender, ref GotoRetrieveConfig.GotoAboveOffset, GotoRetrieveConfig.GotoAboveDefault);
@@ -133,7 +135,7 @@ namespace STROOP.Managers
                 sender, ref GotoRetrieveConfig.RetrieveInfrontOffset, GotoRetrieveConfig.RetrieveInfrontDefault);
 
             // position controller relative angle
-            GroupBox groupBoxPositionControllerRelativeAngle = tabControl.Controls["groupBoxPositionControllerRelativeAngle"] as GroupBox;
+            GroupBox groupBoxPositionControllerRelativeAngle = splitContainerOptions.Panel1.Controls["groupBoxPositionControllerRelativeAngle"] as GroupBox;
             RadioButton radioButtonPositionControllerRelativeAngleRecommended =
                 groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleRecommended"] as RadioButton;
             radioButtonPositionControllerRelativeAngleRecommended.Click += (sender, e) =>
@@ -216,7 +218,7 @@ namespace STROOP.Managers
                 (bool value) => OverlayConfig.ShowOverlayChildObject = value,
             };
 
-            CheckedListBox checkedListBoxObjectSlotOverlaysToShow = tabControl.Controls["checkedListBoxObjectSlotOverlaysToShow"] as CheckedListBox;
+            CheckedListBox checkedListBoxObjectSlotOverlaysToShow = splitContainerOptions.Panel1.Controls["checkedListBoxObjectSlotOverlaysToShow"] as CheckedListBox;
             for (int i = 0; i < objectSlotOverlayTextList.Count; i++)
             {
                 checkedListBoxObjectSlotOverlaysToShow.Items.Add(objectSlotOverlayTextList[i], objectSlotOverlayGetterList[i]());
@@ -245,7 +247,7 @@ namespace STROOP.Managers
                 });
 
             // FPS
-            GroupBox groupBoxFPS = tabControl.Controls["groupBoxFPS"] as GroupBox;
+            GroupBox groupBoxFPS = splitContainerOptions.Panel1.Controls["groupBoxFPS"] as GroupBox;
             BetterTextbox betterTextboxFPS = groupBoxFPS.Controls["betterTextboxFPS"] as BetterTextbox;
             betterTextboxFPS.AddLostFocusAction(
                 () =>
