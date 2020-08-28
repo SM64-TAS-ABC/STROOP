@@ -4441,6 +4441,17 @@ namespace STROOP.Structs
                     return true;
                 }));
 
+            _dictionary.Add("FramesPerSecond",
+                ((uint dummy) =>
+                {
+                    return RefreshRateConfig.RefreshRateFreq;
+                },
+                (uint value, uint dummy) =>
+                {
+                    RefreshRateConfig.RefreshRateFreq = value;
+                    return true;
+                }));
+
             // Area vars
 
             _dictionary.Add("CurrentAreaIndexMario",
