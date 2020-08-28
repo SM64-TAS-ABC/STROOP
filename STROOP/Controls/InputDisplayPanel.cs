@@ -114,11 +114,10 @@ namespace STROOP
             ContextMenuStrip = new ContextMenuStrip() { };
             items.ForEach(item => ContextMenuStrip.Items.Add(item));
 
-            var recordToolStrip = new ToolStripButton("Recording: Start");
+            ToolStripMenuItem recordToolStrip = new ToolStripMenuItem("Record Video");
             recordToolStrip.Click += RecordToolStrip_Click;
+            ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ContextMenuStrip.Items.Add(recordToolStrip);
-            ContextMenuStrip.AutoSize = false;
-            ContextMenuStrip.AutoSize = true;
         }
 
         public void UpdateInputs()
@@ -139,13 +138,11 @@ namespace STROOP
 
         private void RecordToolStrip_Click(object sender, EventArgs e)
         {
-            var recordToolStrip = (sender as ToolStripItem);
+            ToolStripMenuItem recordToolStrip = (sender as ToolStripMenuItem);
             if (_isRecording)
             {
-                recordToolStrip.Text = "Recording: Start";
-                ContextMenuStrip.AutoSize = false;
-                ContextMenuStrip.AutoSize = true;
                 _isRecording = false;
+                recordToolStrip.Checked = false;
 
                 string path;
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -169,10 +166,8 @@ namespace STROOP
             else
             {
                 _currentRecordingSession = new RecordingSession(this.Size);
-                recordToolStrip.Text = "Recording: Stop";
-                ContextMenuStrip.AutoSize = false;
-                ContextMenuStrip.AutoSize = true;
                 _isRecording = true;
+                recordToolStrip.Checked = true;
             }
         }
 
