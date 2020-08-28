@@ -36,9 +36,8 @@ namespace STROOP.Managers
             : base(varFilePath, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             SplitContainer splitContainerTas = tabControl.Controls["splitContainerTas"] as SplitContainer;
-            SplitContainer splitContainerTasTable = splitContainerTas.Panel1.Controls["splitContainerTasTable"] as SplitContainer;
             
-            Button buttonTasStorePosition = splitContainerTasTable.Panel1.Controls["buttonTasStorePosition"] as Button;
+            Button buttonTasStorePosition = splitContainerTas.Panel1.Controls["buttonTasStorePosition"] as Button;
             buttonTasStorePosition.Click += (sender, e) => StoreInfo(x: true, y: true, z: true);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTasStorePosition,
@@ -63,10 +62,10 @@ namespace STROOP.Managers
                     () => ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), true),
                 });
 
-            Button buttonTasStoreAngle = splitContainerTasTable.Panel1.Controls["buttonTasStoreAngle"] as Button;
+            Button buttonTasStoreAngle = splitContainerTas.Panel1.Controls["buttonTasStoreAngle"] as Button;
             buttonTasStoreAngle.Click += (sender, e) => StoreInfo(angle: true);
             
-            Button buttonTasTakePosition = splitContainerTasTable.Panel1.Controls["buttonTasTakePosition"] as Button;
+            Button buttonTasTakePosition = splitContainerTas.Panel1.Controls["buttonTasTakePosition"] as Button;
             buttonTasTakePosition.Click += (sender, e) => TakeInfo(x: true, y: true, z: true);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTasTakePosition,
@@ -87,10 +86,10 @@ namespace STROOP.Managers
                     () => TakeInfo(z: true),
                 });
 
-            Button buttonTasTakeMarioAngle = splitContainerTasTable.Panel1.Controls["buttonTasTakeAngle"] as Button;
+            Button buttonTasTakeMarioAngle = splitContainerTas.Panel1.Controls["buttonTasTakeAngle"] as Button;
             buttonTasTakeMarioAngle.Click += (sender, e) => TakeInfo(angle: true);
 
-            Button buttonTasPasteSchedule = splitContainerTasTable.Panel1.Controls["buttonTasPasteSchedule"] as Button;
+            Button buttonTasPasteSchedule = splitContainerTas.Panel1.Controls["buttonTasPasteSchedule"] as Button;
             buttonTasPasteSchedule.Click += (sender, e) => SetScheduler(Clipboard.GetText(), false);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTasPasteSchedule,
