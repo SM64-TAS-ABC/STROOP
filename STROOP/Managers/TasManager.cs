@@ -13,29 +13,6 @@ namespace STROOP.Managers
 {
     public class TasManager : DataManager
     {
-        private DataGridView _dataGridViewTas;
-        private CheckBox _checkBoxTasRecordData;
-        private Button _buttonTasClearData;
-        private RichTextBox _richTextBoxTasInstructions;
-
-        private static readonly int WAITING_TIME_MS = 0;
-
-        private uint _waitingGlobalTimer;
-        private DateTime _waitingDateTime;
-        private uint _lastUpdatedGlobalTimer;
-
-        private Dictionary<uint, TasDataStruct> _dataDictionary;
-        private Dictionary<uint, DataGridViewRow> _rowDictionary;
-
-        //private static readonly int TABLE_INDEX_GLOBAL_TIMER = 0;
-        //private static readonly int TABLE_INDEX_CURRENT_CAM_ANGLE = 1;
-        private static readonly int TABLE_INDEX_NEXT_CAM_ANGLE = 2;
-        //private static readonly int TABLE_INDEX_MARIO_FACING_ANGLE = 3;
-        //private static readonly int TABLE_INDEX_MARIO_INTEND_ANGLE = 4;
-        //private static readonly int TABLE_INDEX_DANGLE = 5;
-        private static readonly int TABLE_INDEX_X_INPUT = 6;
-        private static readonly int TABLE_INDEX_Y_INPUT = 7;
-
         private static readonly List<VariableGroup> ALL_VAR_GROUPS =
             new List<VariableGroup>()
             {
@@ -60,11 +37,6 @@ namespace STROOP.Managers
         {
             SplitContainer splitContainerTas = tabControl.Controls["splitContainerTas"] as SplitContainer;
             SplitContainer splitContainerTasTable = splitContainerTas.Panel1.Controls["splitContainerTasTable"] as SplitContainer;
-            _dataGridViewTas = splitContainerTasTable.Panel2.Controls["dataGridViewTas"] as DataGridView;
-            _checkBoxTasRecordData = splitContainerTasTable.Panel1.Controls["checkBoxTasRecordData"] as CheckBox;
-            _buttonTasClearData = splitContainerTasTable.Panel1.Controls["buttonTasClearData"] as Button;
-            _buttonTasClearData.Click += (sender, e) => ClearData();
-            _richTextBoxTasInstructions = splitContainerTasTable.Panel1.Controls["richTextBoxTasInstructions"] as RichTextBox;
             
             Button buttonTasStorePosition = splitContainerTasTable.Panel1.Controls["buttonTasStorePosition"] as Button;
             buttonTasStorePosition.Click += (sender, e) => StoreInfo(x: true, y: true, z: true);
@@ -98,8 +70,16 @@ namespace STROOP.Managers
             buttonTasTakePosition.Click += (sender, e) => TakeInfo(x: true, y: true, z: true);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTasTakePosition,
-                new List<string>() { "Take Position", "Take Lateral Position", "Take X", "Take Y", "Take Z" },
-                new List<Action>() {
+                new List<string>()
+                {
+                    "Take Position",
+                    "Take Lateral Position",
+                    "Take X",
+                    "Take Y",
+                    "Take Z"
+                },
+                new List<Action>()
+                {
                     () => TakeInfo(x: true, y: true, z: true),
                     () => TakeInfo(x: true, z: true),
                     () => TakeInfo(x: true),
@@ -114,15 +94,14 @@ namespace STROOP.Managers
             buttonTasPasteSchedule.Click += (sender, e) => SetScheduler(Clipboard.GetText(), false);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTasPasteSchedule,
-                new List<string>() { "Paste Schedule as Floats", "TTC Reentry Schedule" },
-                new List<Action>() { () => SetScheduler(Clipboard.GetText(), true), () => SetTtcReentrySchedule() });
-
-            _waitingGlobalTimer = 0;
-            _waitingDateTime = DateTime.Now;
-            _lastUpdatedGlobalTimer = 0;
-
-            _dataDictionary = new Dictionary<uint, TasDataStruct>();
-            _rowDictionary = new Dictionary<uint, DataGridViewRow>();
+                new List<string>()
+                {
+                    "Paste Schedule as Floats"
+                },
+                new List<Action>()
+                {
+                    () => SetScheduler(Clipboard.GetText(), true)
+                });
         }
 
         private void StoreInfo(
@@ -141,99 +120,6 @@ namespace STROOP.Managers
             if (y) Config.Stream.SetValue((float)SpecialConfig.CustomY, MarioConfig.StructAddress + MarioConfig.YOffset);
             if (z) Config.Stream.SetValue((float)SpecialConfig.CustomZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
             if (angle) Config.Stream.SetValue((ushort)SpecialConfig.CustomAngle, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-        }
-
-        private class TasDataStruct
-        {
-            public readonly uint GlobalTimer;
-            public readonly ushort MarioFacingAngle;
-            public readonly ushort MarioIntendAngle;
-            public readonly short DAngle;
-            public readonly ushort CameraAngle;
-            public readonly sbyte BufferedXInput;
-            public readonly sbyte BufferedYInput;
-            public readonly sbyte CurrentXInput;
-            public readonly sbyte CurrentYInput;
-
-            public TasDataStruct(uint? globalTimer = null)
-            {
-                GlobalTimer = globalTimer ?? Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                MarioFacingAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-                MarioIntendAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
-                DAngle = WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing();
-                CameraAngle = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset);
-                BufferedXInput = Config.Stream.GetSByte(InputConfig.BufferedInputAddress + InputConfig.ControlStickXOffset);
-                BufferedYInput = Config.Stream.GetSByte(InputConfig.BufferedInputAddress + InputConfig.ControlStickYOffset);
-                CurrentXInput = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickXOffset);
-                CurrentYInput = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickYOffset);
-            }
-
-            public override bool Equals(object obj)
-            {
-                if (!(obj is TasDataStruct)) return false;
-                TasDataStruct other = obj as TasDataStruct;
-                return this.GlobalTimer == other.GlobalTimer
-                    && this.MarioFacingAngle == other.MarioFacingAngle
-                    && this.MarioIntendAngle == other.MarioIntendAngle
-                    && this.DAngle == other.DAngle
-                    && this.CameraAngle == other.CameraAngle
-                    && this.BufferedXInput == other.BufferedXInput
-                    && this.BufferedYInput == other.BufferedYInput
-                    && this.CurrentXInput == other.CurrentXInput
-                    && this.CurrentYInput == other.CurrentYInput;
-            }
-
-            public object[] GetValues()
-            {
-                return new object[]
-                {
-                    GlobalTimer,
-                    MarioFacingAngle,
-                    MarioIntendAngle,
-                    DAngle,
-                    CameraAngle,
-                    BufferedXInput,
-                    BufferedYInput,
-                    CurrentXInput,
-                    CurrentYInput
-                };
-            }
-
-            public override int GetHashCode()
-            {
-                return GetValues().GetHashCode();
-            }
-        }
-
-        private void ClearData()
-        {
-            _waitingGlobalTimer = 0;
-            _waitingDateTime = DateTime.Now;
-            _lastUpdatedGlobalTimer = 0;
-
-            _dataGridViewTas.Rows.Clear();
-            _dataDictionary.Clear();
-            _rowDictionary.Clear();
-
-            List<string> newInstructions = new List<string>()
-            {
-                "(1)", "(2)", "(3)", "(4)", "(5)",
-            };
-            _richTextBoxTasInstructions.Text = String.Join("\r\n", newInstructions);
-        }
-
-        private void ClearDataAtAndAfter(uint globalTimerThreshold)
-        {
-            List<uint> allGlobalTimers = _dataDictionary.Keys.ToList();
-            List<uint> toBeRemovedGlobalTimers =
-                allGlobalTimers.FindAll(globalTimer => globalTimer >= globalTimerThreshold);
-            foreach (uint globalTimer in toBeRemovedGlobalTimers)
-            {
-                DataGridViewRow row = _rowDictionary[globalTimer];
-                _dataDictionary.Remove(globalTimer);
-                _rowDictionary.Remove(globalTimer);
-                _dataGridViewTas.Rows.Remove(row);
-            }
         }
 
         public void ShowTaserVariables()
@@ -325,102 +211,10 @@ namespace STROOP.Managers
             }
         }
 
-        private void SetTtcReentrySchedule()
-        {
-            Dictionary<uint, (double, double, double, double, List<double>)> schedule =
-                new Dictionary<uint, (double, double, double, double, List<double>)>()
-                {
-                    [43816] = (-1378.91674804688f, -2434f, -1423.35168457031f, 39648, new List<double>()),
-                    [43817] = (-1305.64807128906f, -2414f, -1353.34362792969f, 39648, new List<double>()),
-                    [43818] = (-1308.1162109375f, -2398f, -1352.724609375f, 39648, new List<double>()),
-                    [43819] = (-1278.701171875f, -2386f, -1314.79345703125f, 39648, new List<double>()),
-                    [43820] = (-1249.2861328125f, -2377.2001953125f, -1276.8623046875f, 39648, new List<double>()),
-                    [43821] = (-1219.87109375f, -2371.6005859375f, -1238.93115234375f, 39648, new List<double>()),
-                    [43822] = (-1190.4560546875f, -2369.2001953125f, -1201f, 39648, new List<double>()),
-                    [43823] = (-1190.4560546875f, -2370f, -1201f, 39648, new List<double>()),
-                    [43824] = (-455.207397460938f, -2374f, -457.235229492188f, 39648, new List<double>()),
-                };
-            SetScheduler(schedule);
-        }
-
         public override void Update(bool updateView)
         {
             if (!updateView) return;
             base.Update(updateView);
-
-            if (!_checkBoxTasRecordData.Checked) return;
-
-            // Get current data
-            uint currentGlobalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-            TasDataStruct currentData = new TasDataStruct(currentGlobalTimer);
-
-            // Only proceed if it's a new global timer value that's been waited for
-            if (currentGlobalTimer == _lastUpdatedGlobalTimer) return;
-            if (currentGlobalTimer != _waitingGlobalTimer)
-            {
-                _waitingGlobalTimer = currentGlobalTimer;
-                _waitingDateTime = DateTime.Now;
-                return;
-            }
-            else
-            {
-                DateTime currentTime = DateTime.Now;
-                double waitingTime = currentTime.Subtract(_waitingDateTime).TotalMilliseconds;
-                if (waitingTime < WAITING_TIME_MS) return;
-                _lastUpdatedGlobalTimer = currentGlobalTimer;
-            }
-
-            // Clear any bad data
-            if (_dataDictionary.ContainsKey(currentGlobalTimer) &&
-                !currentData.Equals(_dataDictionary[currentGlobalTimer]))
-            {
-                ClearDataAtAndAfter(currentGlobalTimer);
-            }
-
-            // Add current data if we don't have it
-            if (!_dataDictionary.ContainsKey(currentGlobalTimer))
-            {
-                _dataDictionary.Add(currentGlobalTimer, currentData);
-                _dataGridViewTas.Rows.Add(
-                    currentData.GlobalTimer,
-                    currentData.CameraAngle,
-                    "" /* NextCameraAngle */,
-                    currentData.MarioFacingAngle,
-                    currentData.MarioIntendAngle,
-                    currentData.DAngle,
-                    "" /* X Input */,
-                    "" /* Z Input */);
-                DataGridViewRow lastRow = _dataGridViewTas.Rows[_dataGridViewTas.RowCount - 1];
-                _rowDictionary.Add(currentGlobalTimer, lastRow);
-            }
-
-            // Select the current row
-            DataGridViewRow currentRow = _rowDictionary[currentGlobalTimer];
-            currentRow.Selected = true;
-            _dataGridViewTas.FirstDisplayedScrollingRowIndex = _dataGridViewTas.Rows.IndexOf(currentRow);
-
-            // If we have the next row, then calculate the inputs of the current row
-            uint nextGlobalTimer = currentGlobalTimer + 1;
-            if (_dataDictionary.ContainsKey(nextGlobalTimer))
-            {
-                TasDataStruct nextData = _dataDictionary[nextGlobalTimer];
-                ushort nextCameraAngle = nextData.CameraAngle;
-                ushort goalAngle = currentData.MarioFacingAngle;
-                (int xInput, int yInput) = MoreMath.CalculateInputsForAngle(goalAngle, nextCameraAngle);
-                currentRow.Cells[TABLE_INDEX_NEXT_CAM_ANGLE].Value = nextCameraAngle;
-                currentRow.Cells[TABLE_INDEX_X_INPUT].Value = xInput;
-                currentRow.Cells[TABLE_INDEX_Y_INPUT].Value = -1 * yInput;
-
-                List<string> newInstructions = new List<string>()
-                {
-                    "(1) Set input to (" + xInput + "," + (-1 * yInput) + ")",
-                    "(2) Frame advance",
-                    "(3) Savestate",
-                    "(4) Frame advance",
-                    "(5) Revert",
-                };
-                _richTextBoxTasInstructions.Text = String.Join("\r\n", newInstructions);
-            }
         }
     }
 }
