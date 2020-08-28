@@ -4348,6 +4348,53 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("SegmentedToVirtualAddress",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.SegmentedToVirtualAddress;
+                },
+                (uint value, uint dummy) =>
+                {
+                    SpecialConfig.SegmentedToVirtualAddress = value;
+                    return true;
+                }));
+
+            _dictionary.Add("SegmentedToVirtualOutput",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.SegmentedToVirtualOutput;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("VirtualToSegmentedSegment",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.VirtualToSegmentedSegment;
+                },
+                (uint value, uint dummy) =>
+                {
+                    SpecialConfig.VirtualToSegmentedSegment = value;
+                    return true;
+                }));
+
+            _dictionary.Add("VirtualToSegmentedAddress",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.VirtualToSegmentedAddress;
+                },
+                (uint value, uint dummy) =>
+                {
+                    SpecialConfig.VirtualToSegmentedAddress = value;
+                    return true;
+                }));
+
+            _dictionary.Add("VirtualToSegmentedOutput",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.VirtualToSegmentedOutput;
+                },
+                DEFAULT_SETTER));
+
             // Area vars
 
             _dictionary.Add("CurrentAreaIndexMario",

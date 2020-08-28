@@ -30,7 +30,6 @@ namespace STROOP.Managers
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
-                VariableGroup.Advanced,
             };
 
         public MiscManager(string varFilePath, WatchVariableFlowLayoutPanel variableTable, Control miscControl)

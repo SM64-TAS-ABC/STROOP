@@ -185,6 +185,14 @@ namespace STROOP.Structs.Configurations
 
         public static int MupenLagOffset = 0;
 
+        // Segmented vars
+
+        public static uint SegmentedToVirtualAddress = 0;
+        public static uint SegmentedToVirtualOutput => SegmentationUtilities.SegmentedToVirtual(SegmentedToVirtualAddress);
+        public static uint VirtualToSegmentedSegment = 0;
+        public static uint VirtualToSegmentedAddress = 0;
+        public static uint VirtualToSegmentedOutput => SegmentationUtilities.VirtualToSegmented(VirtualToSegmentedSegment, VirtualToSegmentedAddress);
+
         // Map3D
 
         public static Map3DCameraMode Map3DMode = Map3DCameraMode.InGame;
