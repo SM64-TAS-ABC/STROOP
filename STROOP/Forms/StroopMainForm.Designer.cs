@@ -736,8 +736,8 @@ namespace STROOP
             this.buttonTasPasteSchedule = new System.Windows.Forms.Button();
             this.buttonTasStoreAngle = new System.Windows.Forms.Button();
             this.buttonTasTakeAngle = new System.Windows.Forms.Button();
-            this.buttonTasStorePosition = new System.Windows.Forms.Button();
             this.buttonTasTakePosition = new System.Windows.Forms.Button();
+            this.buttonTasStorePosition = new System.Windows.Forms.Button();
             this.watchVariablePanelTas = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new STROOP.BetterSplitContainer();
@@ -898,31 +898,13 @@ namespace STROOP
             this.glControlMap3D = new OpenTK.GLControl();
             this.glControlMap2D = new OpenTK.GLControl();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.splitContainerOptions = new STROOP.BetterSplitContainer();
             this.checkedListBoxObjectSlotOverlaysToShow = new System.Windows.Forms.CheckedListBox();
             this.checkedListBoxSavedSettings = new System.Windows.Forms.CheckedListBox();
-            this.buttonOptionsResetSavedSettings = new System.Windows.Forms.Button();
-            this.groupBoxPositionControllerRelativeAngle = new System.Windows.Forms.GroupBox();
-            this.textBoxPositionControllerRelativeAngleCustom = new STROOP.BetterTextbox();
-            this.radioButtonPositionControllerRelativeAngleMario = new System.Windows.Forms.RadioButton();
-            this.radioButtonPositionControllerRelativeAngleRecommended = new System.Windows.Forms.RadioButton();
-            this.radioButtonPositionControllerRelativeAngleCustom = new System.Windows.Forms.RadioButton();
-            this.groupBoxFPS = new System.Windows.Forms.GroupBox();
-            this.betterTextboxFPS = new STROOP.BetterTextbox();
-            this.groupBoxGotoRetrieveOffsets = new System.Windows.Forms.GroupBox();
-            this.labelRetrieveInfrontSuffix = new System.Windows.Forms.Label();
-            this.labelRetrieveInfrontPrefix = new System.Windows.Forms.Label();
-            this.textBoxRetrieveInfront = new STROOP.BetterTextbox();
-            this.labelRetrieveAboveSuffix = new System.Windows.Forms.Label();
-            this.labelRetrieveAbovePrefix = new System.Windows.Forms.Label();
-            this.textBoxRetrieveAbove = new STROOP.BetterTextbox();
-            this.labelGotoInfrontSuffix = new System.Windows.Forms.Label();
-            this.labelGotoInfrontPrefix = new System.Windows.Forms.Label();
-            this.textBoxGotoInfront = new STROOP.BetterTextbox();
-            this.labelGotoAboveSuffix = new System.Windows.Forms.Label();
-            this.labelGotoAbovePrefix = new System.Windows.Forms.Label();
-            this.textBoxGotoAbove = new STROOP.BetterTextbox();
-            this.label3 = new System.Windows.Forms.Label();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
+            this.buttonOptionsResetSavedSettings = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.watchVariablePanelOptions = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageMemory = new System.Windows.Forms.TabPage();
             this.splitContainerMemory = new STROOP.BetterSplitContainer();
             this.splitContainerMemoryControls = new STROOP.BetterSplitContainer();
@@ -1635,8 +1617,6 @@ namespace STROOP
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.splitContainerOptions = new STROOP.BetterSplitContainer();
-            this.watchVariablePanelOptions = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1927,9 +1907,10 @@ namespace STROOP
             this.groupBoxMapCameraSpherical.SuspendLayout();
             this.groupBoxMapCameraPosition.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
-            this.groupBoxPositionControllerRelativeAngle.SuspendLayout();
-            this.groupBoxFPS.SuspendLayout();
-            this.groupBoxGotoRetrieveOffsets.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerOptions)).BeginInit();
+            this.splitContainerOptions.Panel1.SuspendLayout();
+            this.splitContainerOptions.Panel2.SuspendLayout();
+            this.splitContainerOptions.SuspendLayout();
             this.tabPageMemory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemory)).BeginInit();
             this.splitContainerMemory.Panel1.SuspendLayout();
@@ -2118,10 +2099,6 @@ namespace STROOP
             this.splitContainerWarpLeft.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerOptions)).BeginInit();
-            this.splitContainerOptions.Panel1.SuspendLayout();
-            this.splitContainerOptions.Panel2.SuspendLayout();
-            this.splitContainerOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -5959,7 +5936,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 565F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 566F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9687,7 +9664,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(433, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(436, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -10653,16 +10630,6 @@ namespace STROOP
             this.buttonTasTakeAngle.Text = "Take Angle";
             this.buttonTasTakeAngle.UseVisualStyleBackColor = true;
             // 
-            // buttonTasStorePosition
-            // 
-            this.buttonTasStorePosition.Location = new System.Drawing.Point(2, 2);
-            this.buttonTasStorePosition.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonTasStorePosition.Name = "buttonTasStorePosition";
-            this.buttonTasStorePosition.Size = new System.Drawing.Size(93, 25);
-            this.buttonTasStorePosition.TabIndex = 37;
-            this.buttonTasStorePosition.Text = "Store Position";
-            this.buttonTasStorePosition.UseVisualStyleBackColor = true;
-            // 
             // buttonTasTakePosition
             // 
             this.buttonTasTakePosition.Location = new System.Drawing.Point(98, 2);
@@ -10672,6 +10639,16 @@ namespace STROOP
             this.buttonTasTakePosition.TabIndex = 37;
             this.buttonTasTakePosition.Text = "Take Position";
             this.buttonTasTakePosition.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasStorePosition
+            // 
+            this.buttonTasStorePosition.Location = new System.Drawing.Point(2, 2);
+            this.buttonTasStorePosition.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasStorePosition.Name = "buttonTasStorePosition";
+            this.buttonTasStorePosition.Size = new System.Drawing.Size(93, 25);
+            this.buttonTasStorePosition.TabIndex = 37;
+            this.buttonTasStorePosition.Text = "Store Position";
+            this.buttonTasStorePosition.UseVisualStyleBackColor = true;
             // 
             // watchVariablePanelTas
             // 
@@ -12461,6 +12438,35 @@ namespace STROOP
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
             // 
+            // splitContainerOptions
+            // 
+            this.splitContainerOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerOptions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerOptions.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerOptions.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerOptions.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerOptions.Name = "splitContainerOptions";
+            // 
+            // splitContainerOptions.Panel1
+            // 
+            this.splitContainerOptions.Panel1.AutoScroll = true;
+            this.splitContainerOptions.Panel1.Controls.Add(this.checkedListBoxObjectSlotOverlaysToShow);
+            this.splitContainerOptions.Panel1.Controls.Add(this.checkedListBoxSavedSettings);
+            this.splitContainerOptions.Panel1.Controls.Add(this.checkBoxUseRomHack);
+            this.splitContainerOptions.Panel1.Controls.Add(this.buttonOptionsResetSavedSettings);
+            this.splitContainerOptions.Panel1.Controls.Add(this.label3);
+            this.splitContainerOptions.Panel1MinSize = 0;
+            // 
+            // splitContainerOptions.Panel2
+            // 
+            this.splitContainerOptions.Panel2.Controls.Add(this.watchVariablePanelOptions);
+            this.splitContainerOptions.Panel2.Padding = new System.Windows.Forms.Padding(2);
+            this.splitContainerOptions.Panel2MinSize = 0;
+            this.splitContainerOptions.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerOptions.SplitterDistance = 468;
+            this.splitContainerOptions.SplitterWidth = 1;
+            this.splitContainerOptions.TabIndex = 42;
+            // 
             // checkedListBoxObjectSlotOverlaysToShow
             // 
             this.checkedListBoxObjectSlotOverlaysToShow.BackColor = System.Drawing.SystemColors.Control;
@@ -12481,6 +12487,17 @@ namespace STROOP
             this.checkedListBoxSavedSettings.Size = new System.Drawing.Size(257, 199);
             this.checkedListBoxSavedSettings.TabIndex = 40;
             // 
+            // checkBoxUseRomHack
+            // 
+            this.checkBoxUseRomHack.AutoSize = true;
+            this.checkBoxUseRomHack.Location = new System.Drawing.Point(10, 244);
+            this.checkBoxUseRomHack.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxUseRomHack.Name = "checkBoxUseRomHack";
+            this.checkBoxUseRomHack.Size = new System.Drawing.Size(166, 17);
+            this.checkBoxUseRomHack.TabIndex = 2;
+            this.checkBoxUseRomHack.Text = "Enable STROOP ROM hack*";
+            this.checkBoxUseRomHack.UseVisualStyleBackColor = true;
+            // 
             // buttonOptionsResetSavedSettings
             // 
             this.buttonOptionsResetSavedSettings.Location = new System.Drawing.Point(6, 210);
@@ -12490,216 +12507,6 @@ namespace STROOP
             this.buttonOptionsResetSavedSettings.TabIndex = 38;
             this.buttonOptionsResetSavedSettings.Text = "Reset Saved Settings";
             this.buttonOptionsResetSavedSettings.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxPositionControllerRelativeAngle
-            // 
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.textBoxPositionControllerRelativeAngleCustom);
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleMario);
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleRecommended);
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleCustom);
-            this.groupBoxPositionControllerRelativeAngle.Location = new System.Drawing.Point(445, 183);
-            this.groupBoxPositionControllerRelativeAngle.Name = "groupBoxPositionControllerRelativeAngle";
-            this.groupBoxPositionControllerRelativeAngle.Size = new System.Drawing.Size(141, 99);
-            this.groupBoxPositionControllerRelativeAngle.TabIndex = 39;
-            this.groupBoxPositionControllerRelativeAngle.TabStop = false;
-            this.groupBoxPositionControllerRelativeAngle.Text = "Pos Controller Rel Angle";
-            // 
-            // textBoxPositionControllerRelativeAngleCustom
-            // 
-            this.textBoxPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(74, 64);
-            this.textBoxPositionControllerRelativeAngleCustom.Name = "textBoxPositionControllerRelativeAngleCustom";
-            this.textBoxPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(50, 20);
-            this.textBoxPositionControllerRelativeAngleCustom.TabIndex = 38;
-            this.textBoxPositionControllerRelativeAngleCustom.Text = "32768";
-            this.textBoxPositionControllerRelativeAngleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // radioButtonPositionControllerRelativeAngleMario
-            // 
-            this.radioButtonPositionControllerRelativeAngleMario.AutoSize = true;
-            this.radioButtonPositionControllerRelativeAngleMario.Location = new System.Drawing.Point(11, 42);
-            this.radioButtonPositionControllerRelativeAngleMario.Name = "radioButtonPositionControllerRelativeAngleMario";
-            this.radioButtonPositionControllerRelativeAngleMario.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonPositionControllerRelativeAngleMario.TabIndex = 12;
-            this.radioButtonPositionControllerRelativeAngleMario.Text = "Mario";
-            this.radioButtonPositionControllerRelativeAngleMario.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonPositionControllerRelativeAngleRecommended
-            // 
-            this.radioButtonPositionControllerRelativeAngleRecommended.AutoSize = true;
-            this.radioButtonPositionControllerRelativeAngleRecommended.Checked = true;
-            this.radioButtonPositionControllerRelativeAngleRecommended.Location = new System.Drawing.Point(11, 19);
-            this.radioButtonPositionControllerRelativeAngleRecommended.Name = "radioButtonPositionControllerRelativeAngleRecommended";
-            this.radioButtonPositionControllerRelativeAngleRecommended.Size = new System.Drawing.Size(97, 17);
-            this.radioButtonPositionControllerRelativeAngleRecommended.TabIndex = 11;
-            this.radioButtonPositionControllerRelativeAngleRecommended.TabStop = true;
-            this.radioButtonPositionControllerRelativeAngleRecommended.Text = "Recommended";
-            this.radioButtonPositionControllerRelativeAngleRecommended.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonPositionControllerRelativeAngleCustom
-            // 
-            this.radioButtonPositionControllerRelativeAngleCustom.AutoSize = true;
-            this.radioButtonPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(11, 65);
-            this.radioButtonPositionControllerRelativeAngleCustom.Name = "radioButtonPositionControllerRelativeAngleCustom";
-            this.radioButtonPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(63, 17);
-            this.radioButtonPositionControllerRelativeAngleCustom.TabIndex = 13;
-            this.radioButtonPositionControllerRelativeAngleCustom.Text = "Custom:";
-            this.radioButtonPositionControllerRelativeAngleCustom.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxFPS
-            // 
-            this.groupBoxFPS.Controls.Add(this.betterTextboxFPS);
-            this.groupBoxFPS.Location = new System.Drawing.Point(445, 130);
-            this.groupBoxFPS.Name = "groupBoxFPS";
-            this.groupBoxFPS.Size = new System.Drawing.Size(62, 47);
-            this.groupBoxFPS.TabIndex = 38;
-            this.groupBoxFPS.TabStop = false;
-            this.groupBoxFPS.Text = "FPS";
-            // 
-            // betterTextboxFPS
-            // 
-            this.betterTextboxFPS.Location = new System.Drawing.Point(6, 19);
-            this.betterTextboxFPS.Name = "betterTextboxFPS";
-            this.betterTextboxFPS.Size = new System.Drawing.Size(50, 20);
-            this.betterTextboxFPS.TabIndex = 39;
-            this.betterTextboxFPS.Text = "30";
-            this.betterTextboxFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBoxGotoRetrieveOffsets
-            // 
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveInfrontSuffix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveInfrontPrefix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxRetrieveInfront);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveAboveSuffix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveAbovePrefix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxRetrieveAbove);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoInfrontSuffix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoInfrontPrefix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoInfront);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAboveSuffix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAbovePrefix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoAbove);
-            this.groupBoxGotoRetrieveOffsets.Location = new System.Drawing.Point(445, 3);
-            this.groupBoxGotoRetrieveOffsets.Name = "groupBoxGotoRetrieveOffsets";
-            this.groupBoxGotoRetrieveOffsets.Size = new System.Drawing.Size(154, 121);
-            this.groupBoxGotoRetrieveOffsets.TabIndex = 32;
-            this.groupBoxGotoRetrieveOffsets.TabStop = false;
-            this.groupBoxGotoRetrieveOffsets.Text = "Go to / Retrieve Offsets";
-            // 
-            // labelRetrieveInfrontSuffix
-            // 
-            this.labelRetrieveInfrontSuffix.AutoSize = true;
-            this.labelRetrieveInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveInfrontSuffix.Location = new System.Drawing.Point(106, 98);
-            this.labelRetrieveInfrontSuffix.Name = "labelRetrieveInfrontSuffix";
-            this.labelRetrieveInfrontSuffix.Size = new System.Drawing.Size(39, 13);
-            this.labelRetrieveInfrontSuffix.TabIndex = 39;
-            this.labelRetrieveInfrontSuffix.Text = "in front";
-            // 
-            // labelRetrieveInfrontPrefix
-            // 
-            this.labelRetrieveInfrontPrefix.AutoSize = true;
-            this.labelRetrieveInfrontPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveInfrontPrefix.Location = new System.Drawing.Point(11, 98);
-            this.labelRetrieveInfrontPrefix.Name = "labelRetrieveInfrontPrefix";
-            this.labelRetrieveInfrontPrefix.Size = new System.Drawing.Size(47, 13);
-            this.labelRetrieveInfrontPrefix.TabIndex = 38;
-            this.labelRetrieveInfrontPrefix.Text = "Retrieve";
-            // 
-            // textBoxRetrieveInfront
-            // 
-            this.textBoxRetrieveInfront.Location = new System.Drawing.Point(60, 95);
-            this.textBoxRetrieveInfront.Name = "textBoxRetrieveInfront";
-            this.textBoxRetrieveInfront.Size = new System.Drawing.Size(42, 20);
-            this.textBoxRetrieveInfront.TabIndex = 37;
-            this.textBoxRetrieveInfront.Text = "0";
-            this.textBoxRetrieveInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelRetrieveAboveSuffix
-            // 
-            this.labelRetrieveAboveSuffix.AutoSize = true;
-            this.labelRetrieveAboveSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveAboveSuffix.Location = new System.Drawing.Point(106, 73);
-            this.labelRetrieveAboveSuffix.Name = "labelRetrieveAboveSuffix";
-            this.labelRetrieveAboveSuffix.Size = new System.Drawing.Size(37, 13);
-            this.labelRetrieveAboveSuffix.TabIndex = 36;
-            this.labelRetrieveAboveSuffix.Text = "above";
-            // 
-            // labelRetrieveAbovePrefix
-            // 
-            this.labelRetrieveAbovePrefix.AutoSize = true;
-            this.labelRetrieveAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveAbovePrefix.Location = new System.Drawing.Point(11, 73);
-            this.labelRetrieveAbovePrefix.Name = "labelRetrieveAbovePrefix";
-            this.labelRetrieveAbovePrefix.Size = new System.Drawing.Size(47, 13);
-            this.labelRetrieveAbovePrefix.TabIndex = 35;
-            this.labelRetrieveAbovePrefix.Text = "Retrieve";
-            // 
-            // textBoxRetrieveAbove
-            // 
-            this.textBoxRetrieveAbove.Location = new System.Drawing.Point(60, 70);
-            this.textBoxRetrieveAbove.Name = "textBoxRetrieveAbove";
-            this.textBoxRetrieveAbove.Size = new System.Drawing.Size(42, 20);
-            this.textBoxRetrieveAbove.TabIndex = 34;
-            this.textBoxRetrieveAbove.Text = "300";
-            this.textBoxRetrieveAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelGotoInfrontSuffix
-            // 
-            this.labelGotoInfrontSuffix.AutoSize = true;
-            this.labelGotoInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoInfrontSuffix.Location = new System.Drawing.Point(106, 48);
-            this.labelGotoInfrontSuffix.Name = "labelGotoInfrontSuffix";
-            this.labelGotoInfrontSuffix.Size = new System.Drawing.Size(39, 13);
-            this.labelGotoInfrontSuffix.TabIndex = 33;
-            this.labelGotoInfrontSuffix.Text = "in front";
-            // 
-            // labelGotoInfrontPrefix
-            // 
-            this.labelGotoInfrontPrefix.AutoSize = true;
-            this.labelGotoInfrontPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoInfrontPrefix.Location = new System.Drawing.Point(11, 48);
-            this.labelGotoInfrontPrefix.Name = "labelGotoInfrontPrefix";
-            this.labelGotoInfrontPrefix.Size = new System.Drawing.Size(33, 13);
-            this.labelGotoInfrontPrefix.TabIndex = 32;
-            this.labelGotoInfrontPrefix.Text = "Go to";
-            // 
-            // textBoxGotoInfront
-            // 
-            this.textBoxGotoInfront.Location = new System.Drawing.Point(60, 45);
-            this.textBoxGotoInfront.Name = "textBoxGotoInfront";
-            this.textBoxGotoInfront.Size = new System.Drawing.Size(42, 20);
-            this.textBoxGotoInfront.TabIndex = 31;
-            this.textBoxGotoInfront.Text = "0";
-            this.textBoxGotoInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelGotoAboveSuffix
-            // 
-            this.labelGotoAboveSuffix.AutoSize = true;
-            this.labelGotoAboveSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoAboveSuffix.Location = new System.Drawing.Point(106, 23);
-            this.labelGotoAboveSuffix.Name = "labelGotoAboveSuffix";
-            this.labelGotoAboveSuffix.Size = new System.Drawing.Size(37, 13);
-            this.labelGotoAboveSuffix.TabIndex = 30;
-            this.labelGotoAboveSuffix.Text = "above";
-            // 
-            // labelGotoAbovePrefix
-            // 
-            this.labelGotoAbovePrefix.AutoSize = true;
-            this.labelGotoAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoAbovePrefix.Location = new System.Drawing.Point(11, 23);
-            this.labelGotoAbovePrefix.Name = "labelGotoAbovePrefix";
-            this.labelGotoAbovePrefix.Size = new System.Drawing.Size(33, 13);
-            this.labelGotoAbovePrefix.TabIndex = 29;
-            this.labelGotoAbovePrefix.Text = "Go to";
-            // 
-            // textBoxGotoAbove
-            // 
-            this.textBoxGotoAbove.Location = new System.Drawing.Point(60, 20);
-            this.textBoxGotoAbove.Name = "textBoxGotoAbove";
-            this.textBoxGotoAbove.Size = new System.Drawing.Size(42, 20);
-            this.textBoxGotoAbove.TabIndex = 28;
-            this.textBoxGotoAbove.Text = "300";
-            this.textBoxGotoAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -12711,16 +12518,16 @@ namespace STROOP
             this.label3.TabIndex = 5;
             this.label3.Text = "*Requires Pure Interpreter";
             // 
-            // checkBoxUseRomHack
+            // watchVariablePanelOptions
             // 
-            this.checkBoxUseRomHack.AutoSize = true;
-            this.checkBoxUseRomHack.Location = new System.Drawing.Point(10, 244);
-            this.checkBoxUseRomHack.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxUseRomHack.Name = "checkBoxUseRomHack";
-            this.checkBoxUseRomHack.Size = new System.Drawing.Size(166, 17);
-            this.checkBoxUseRomHack.TabIndex = 2;
-            this.checkBoxUseRomHack.Text = "Enable STROOP ROM hack*";
-            this.checkBoxUseRomHack.UseVisualStyleBackColor = true;
+            this.watchVariablePanelOptions.AutoScroll = true;
+            this.watchVariablePanelOptions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelOptions.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelOptions.Location = new System.Drawing.Point(2, 2);
+            this.watchVariablePanelOptions.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelOptions.Name = "watchVariablePanelOptions";
+            this.watchVariablePanelOptions.Size = new System.Drawing.Size(440, 457);
+            this.watchVariablePanelOptions.TabIndex = 5;
             // 
             // tabPageMemory
             // 
@@ -12754,7 +12561,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Padding = new System.Windows.Forms.Padding(2);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 701;
+            this.splitContainerMemory.SplitterDistance = 704;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12795,7 +12602,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(701, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(704, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -13012,7 +12819,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(701, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(704, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -13041,7 +12848,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(600, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(603, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -13053,7 +12860,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(201, 451);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(198, 451);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -14207,7 +14014,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(221, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(204, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -14239,7 +14046,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(215, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(198, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -14295,7 +14102,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(215, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(198, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -19029,7 +18836,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -20213,7 +20020,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(34, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(35, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -21225,49 +21032,6 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 36;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // splitContainerOptions
-            // 
-            this.splitContainerOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerOptions.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerOptions.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerOptions.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerOptions.Name = "splitContainerOptions";
-            // 
-            // splitContainerOptions.Panel1
-            // 
-            this.splitContainerOptions.Panel1.AutoScroll = true;
-            this.splitContainerOptions.Panel1.Controls.Add(this.checkedListBoxObjectSlotOverlaysToShow);
-            this.splitContainerOptions.Panel1.Controls.Add(this.checkedListBoxSavedSettings);
-            this.splitContainerOptions.Panel1.Controls.Add(this.checkBoxUseRomHack);
-            this.splitContainerOptions.Panel1.Controls.Add(this.buttonOptionsResetSavedSettings);
-            this.splitContainerOptions.Panel1.Controls.Add(this.label3);
-            this.splitContainerOptions.Panel1.Controls.Add(this.groupBoxPositionControllerRelativeAngle);
-            this.splitContainerOptions.Panel1.Controls.Add(this.groupBoxGotoRetrieveOffsets);
-            this.splitContainerOptions.Panel1.Controls.Add(this.groupBoxFPS);
-            this.splitContainerOptions.Panel1MinSize = 0;
-            // 
-            // splitContainerOptions.Panel2
-            // 
-            this.splitContainerOptions.Panel2.Controls.Add(this.watchVariablePanelOptions);
-            this.splitContainerOptions.Panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.splitContainerOptions.Panel2MinSize = 0;
-            this.splitContainerOptions.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerOptions.SplitterDistance = 637;
-            this.splitContainerOptions.SplitterWidth = 1;
-            this.splitContainerOptions.TabIndex = 42;
-            // 
-            // watchVariablePanelOptions
-            // 
-            this.watchVariablePanelOptions.AutoScroll = true;
-            this.watchVariablePanelOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelOptions.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelOptions.Location = new System.Drawing.Point(2, 2);
-            this.watchVariablePanelOptions.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelOptions.Name = "watchVariablePanelOptions";
-            this.watchVariablePanelOptions.Size = new System.Drawing.Size(271, 457);
-            this.watchVariablePanelOptions.TabIndex = 5;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -21638,12 +21402,11 @@ namespace STROOP
             this.groupBoxMapCameraPosition.ResumeLayout(false);
             this.groupBoxMapCameraPosition.PerformLayout();
             this.tabPageOptions.ResumeLayout(false);
-            this.groupBoxPositionControllerRelativeAngle.ResumeLayout(false);
-            this.groupBoxPositionControllerRelativeAngle.PerformLayout();
-            this.groupBoxFPS.ResumeLayout(false);
-            this.groupBoxFPS.PerformLayout();
-            this.groupBoxGotoRetrieveOffsets.ResumeLayout(false);
-            this.groupBoxGotoRetrieveOffsets.PerformLayout();
+            this.splitContainerOptions.Panel1.ResumeLayout(false);
+            this.splitContainerOptions.Panel1.PerformLayout();
+            this.splitContainerOptions.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerOptions)).EndInit();
+            this.splitContainerOptions.ResumeLayout(false);
             this.tabPageMemory.ResumeLayout(false);
             this.splitContainerMemory.Panel1.ResumeLayout(false);
             this.splitContainerMemory.Panel2.ResumeLayout(false);
@@ -21885,11 +21648,6 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.splitContainerOptions.Panel1.ResumeLayout(false);
-            this.splitContainerOptions.Panel1.PerformLayout();
-            this.splitContainerOptions.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerOptions)).EndInit();
-            this.splitContainerOptions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -22247,19 +22005,6 @@ namespace STROOP
         private Button buttonCameraHackPosXnZp;
         private Button buttonCameraHackPosXn;
         private Button buttonCameraHackPosXnZn;
-        private GroupBox groupBoxGotoRetrieveOffsets;
-        private Label labelRetrieveInfrontSuffix;
-        private Label labelRetrieveInfrontPrefix;
-        private BetterTextbox textBoxRetrieveInfront;
-        private Label labelRetrieveAboveSuffix;
-        private Label labelRetrieveAbovePrefix;
-        private BetterTextbox textBoxRetrieveAbove;
-        private Label labelGotoInfrontSuffix;
-        private Label labelGotoInfrontPrefix;
-        private BetterTextbox textBoxGotoInfront;
-        private Label labelGotoAboveSuffix;
-        private Label labelGotoAbovePrefix;
-        private BetterTextbox textBoxGotoAbove;
         private BetterSplitContainer splitContainerFile;
         private BetterSplitContainer splitContainerCamera;
         private BetterSplitContainer splitContainerTriangles;
@@ -22550,17 +22295,10 @@ namespace STROOP
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private Label labelModelVertices;
         private Label labelModelTriangles;
-        private GroupBox groupBoxPositionControllerRelativeAngle;
-        private RadioButton radioButtonPositionControllerRelativeAngleMario;
-        private RadioButton radioButtonPositionControllerRelativeAngleRecommended;
-        private RadioButton radioButtonPositionControllerRelativeAngleCustom;
-        private BetterTextbox textBoxPositionControllerRelativeAngleCustom;
         private BetterSplitContainer splitContainerModel;
         private BinaryButton button100Lives;
         private Button buttonTriangleClearData;
         private TabPage tabPageTesting;
-        private GroupBox groupBoxFPS;
-        private BetterTextbox betterTextboxFPS;
         private GroupBox groupBoxGoto;
         private BetterTextbox betterTextboxGotoZ;
         private BetterTextbox betterTextboxGotoY;

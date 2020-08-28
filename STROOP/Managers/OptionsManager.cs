@@ -121,21 +121,6 @@ namespace STROOP.Managers
             cogControl.ContextMenuStrip.Items.Add(resetSavedSettingsItem);
             cogControl.ContextMenuStrip.Items.Add(goToOptionsTabItem);
 
-            // goto/retrieve offsets
-            GroupBox groupBoxGotoRetrieveOffsets = splitContainerOptions.Panel1.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
-            BetterTextbox textBoxGotoAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoAbove"] as BetterTextbox;
-            textBoxGotoAbove.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
-                sender, ref GotoRetrieveConfig.GotoAboveOffset, 0);
-            BetterTextbox textBoxGotoInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoInfront"] as BetterTextbox;
-            textBoxGotoInfront.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
-                sender, ref GotoRetrieveConfig.GotoInfrontOffset, 0);
-            BetterTextbox textBoxRetrieveAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveAbove"] as BetterTextbox;
-            textBoxRetrieveAbove.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
-                sender, ref GotoRetrieveConfig.RetrieveAboveOffset, 0);
-            BetterTextbox textBoxRetrieveInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveInfront"] as BetterTextbox;
-            textBoxRetrieveInfront.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
-                sender, ref GotoRetrieveConfig.RetrieveInfrontOffset, 0);
-
             // object slot overlays
             List<string> objectSlotOverlayTextList = new List<string>()
             {
@@ -217,23 +202,6 @@ namespace STROOP.Managers
                 {
                     () => setAllObjectSlotOverlays(true),
                     () => setAllObjectSlotOverlays(false),
-                });
-
-            // FPS
-            GroupBox groupBoxFPS = splitContainerOptions.Panel1.Controls["groupBoxFPS"] as GroupBox;
-            BetterTextbox betterTextboxFPS = groupBoxFPS.Controls["betterTextboxFPS"] as BetterTextbox;
-            betterTextboxFPS.AddLostFocusAction(
-                () =>
-                {
-                    uint value;
-                    if (uint.TryParse(betterTextboxFPS.Text, out value))
-                    {
-                        RefreshRateConfig.RefreshRateFreq = value;
-                    }
-                    else
-                    {
-                        betterTextboxFPS.Text = RefreshRateConfig.RefreshRateFreq.ToString();
-                    }
                 });
       }
 
