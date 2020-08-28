@@ -4395,6 +4395,52 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            // Options vars
+
+            _dictionary.Add("GotoAboveOffset",
+                ((uint dummy) =>
+                {
+                    return GotoRetrieveConfig.GotoAboveOffset;
+                },
+                (float value, uint dummy) =>
+                {
+                    GotoRetrieveConfig.GotoAboveOffset = value;
+                    return true;
+                }));
+
+            _dictionary.Add("GotoInfrontOffset",
+                ((uint dummy) =>
+                {
+                    return GotoRetrieveConfig.GotoInfrontOffset;
+                },
+                (float value, uint dummy) =>
+                {
+                    GotoRetrieveConfig.GotoInfrontOffset = value;
+                    return true;
+                }));
+
+            _dictionary.Add("RetrieveAboveOffset",
+                ((uint dummy) =>
+                {
+                    return GotoRetrieveConfig.RetrieveAboveOffset;
+                },
+                (float value, uint dummy) =>
+                {
+                    GotoRetrieveConfig.RetrieveAboveOffset = value;
+                    return true;
+                }));
+
+            _dictionary.Add("RetrieveInfrontOffset",
+                ((uint dummy) =>
+                {
+                    return GotoRetrieveConfig.RetrieveInfrontOffset;
+                },
+                (float value, uint dummy) =>
+                {
+                    GotoRetrieveConfig.RetrieveInfrontOffset = value;
+                    return true;
+                }));
+
             // Area vars
 
             _dictionary.Add("CurrentAreaIndexMario",

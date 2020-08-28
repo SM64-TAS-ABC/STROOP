@@ -125,16 +125,16 @@ namespace STROOP.Managers
             GroupBox groupBoxGotoRetrieveOffsets = splitContainerOptions.Panel1.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
             BetterTextbox textBoxGotoAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoAbove"] as BetterTextbox;
             textBoxGotoAbove.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
-                sender, ref GotoRetrieveConfig.GotoAboveOffset, GotoRetrieveConfig.GotoAboveDefault);
+                sender, ref GotoRetrieveConfig.GotoAboveOffset, 0);
             BetterTextbox textBoxGotoInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoInfront"] as BetterTextbox;
             textBoxGotoInfront.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
-                sender, ref GotoRetrieveConfig.GotoInfrontOffset, GotoRetrieveConfig.GotoInfrontDefault);
+                sender, ref GotoRetrieveConfig.GotoInfrontOffset, 0);
             BetterTextbox textBoxRetrieveAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveAbove"] as BetterTextbox;
             textBoxRetrieveAbove.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
-                sender, ref GotoRetrieveConfig.RetrieveAboveOffset, GotoRetrieveConfig.RetrieveAboveDefault);
+                sender, ref GotoRetrieveConfig.RetrieveAboveOffset, 0);
             BetterTextbox textBoxRetrieveInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveInfront"] as BetterTextbox;
             textBoxRetrieveInfront.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
-                sender, ref GotoRetrieveConfig.RetrieveInfrontOffset, GotoRetrieveConfig.RetrieveInfrontDefault);
+                sender, ref GotoRetrieveConfig.RetrieveInfrontOffset, 0);
 
             // position controller relative angle
             GroupBox groupBoxPositionControllerRelativeAngle = splitContainerOptions.Panel1.Controls["groupBoxPositionControllerRelativeAngle"] as GroupBox;
