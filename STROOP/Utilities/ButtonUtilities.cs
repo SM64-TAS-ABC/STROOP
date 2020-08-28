@@ -102,17 +102,9 @@ namespace STROOP.Utilities
             }
             else
             {
-                switch (PositionControllerRelativityConfig.Relativity)
+                if (!PositionControllerRelativityConfig.RelativityPA.IsNone())
                 {
-                    case PositionControllerRelativity.Recommended:
-                        // relativeAngle is already correct
-                        break;
-                    case PositionControllerRelativity.Mario:
-                        relativeAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-                        break;
-                    case PositionControllerRelativity.Custom:
-                        relativeAngle = MoreMath.NormalizeAngleUshort(PositionControllerRelativityConfig.CustomAngle);
-                        break;
+                    relativeAngle = PositionControllerRelativityConfig.RelativityPA.Angle;
                 }
             }
 

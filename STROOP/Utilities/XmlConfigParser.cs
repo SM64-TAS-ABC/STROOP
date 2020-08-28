@@ -46,9 +46,6 @@ namespace STROOP.Utilities
         {
             var assembly = Assembly.GetExecutingAssembly();
 
-            PositionControllerRelativityConfig.Relativity = PositionControllerRelativity.Recommended;
-            PositionControllerRelativityConfig.CustomAngle = 32768;
-
             // Create schema set
             var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
             schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");

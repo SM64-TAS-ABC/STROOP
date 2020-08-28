@@ -136,35 +136,6 @@ namespace STROOP.Managers
             textBoxRetrieveInfront.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
                 sender, ref GotoRetrieveConfig.RetrieveInfrontOffset, 0);
 
-            // position controller relative angle
-            GroupBox groupBoxPositionControllerRelativeAngle = splitContainerOptions.Panel1.Controls["groupBoxPositionControllerRelativeAngle"] as GroupBox;
-            RadioButton radioButtonPositionControllerRelativeAngleRecommended =
-                groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleRecommended"] as RadioButton;
-            radioButtonPositionControllerRelativeAngleRecommended.Click += (sender, e) =>
-                PositionControllerRelativityConfig.Relativity = PositionControllerRelativity.Recommended;
-            RadioButton radioButtonPositionControllerRelativeAngleMario =
-                groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleMario"] as RadioButton;
-            radioButtonPositionControllerRelativeAngleMario.Click += (sender, e) =>
-                PositionControllerRelativityConfig.Relativity = PositionControllerRelativity.Mario;
-            RadioButton radioButtonPositionControllerRelativeAngleCustom =
-                groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleCustom"] as RadioButton;
-            radioButtonPositionControllerRelativeAngleCustom.Click += (sender, e) =>
-                PositionControllerRelativityConfig.Relativity = PositionControllerRelativity.Custom;
-            BetterTextbox textBoxPositionControllerRelativeAngleCustom =
-                groupBoxPositionControllerRelativeAngle.Controls["textBoxPositionControllerRelativeAngleCustom"] as BetterTextbox;
-            textBoxPositionControllerRelativeAngleCustom.LostFocus += (sender, e) =>
-            {
-                double value;
-                if (double.TryParse((sender as TextBox).Text, out value))
-                {
-                    PositionControllerRelativityConfig.CustomAngle = value;
-                }
-                else
-                {
-                    (sender as TextBox).Text = PositionControllerRelativityConfig.CustomAngle.ToString();
-                }
-            };
-
             // object slot overlays
             List<string> objectSlotOverlayTextList = new List<string>()
             {

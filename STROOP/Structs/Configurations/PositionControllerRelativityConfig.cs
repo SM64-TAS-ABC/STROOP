@@ -9,9 +9,6 @@ namespace STROOP.Structs.Configurations
 {
     public static class PositionControllerRelativityConfig
     {
-        public static PositionControllerRelativity Relativity;
-        public static double CustomAngle;
-
         public static PositionAngle RelativityPA = PositionAngle.None;
     }
 }
