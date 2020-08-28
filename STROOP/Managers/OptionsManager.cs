@@ -7,10 +7,11 @@ using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System.Windows.Forms;
 using STROOP.Utilities;
+using STROOP.Controls;
 
 namespace STROOP.Managers
 {
-    public class OptionsManager
+    public class OptionsManager : DataManager
     {
         private readonly List<Func<bool>> _savedSettingsGetterList;
         private readonly List<Action<bool>> _savedSettingsSetterList;
@@ -18,7 +19,8 @@ namespace STROOP.Managers
         private readonly List<ToolStripMenuItem> _savedSettingsItemList;
         private readonly CheckedListBox _savedSettingsCheckedListBox;
 
-        public OptionsManager(TabPage tabControl, Control cogControl)
+        public OptionsManager(string varFilePath, TabPage tabControl, WatchVariableFlowLayoutPanel variableTable, Control cogControl)
+            : base(varFilePath, variableTable)
         {
             _savedSettingsTextList = new List<string>()
             {
@@ -278,7 +280,7 @@ namespace STROOP.Managers
             }
         }
 
-        public void Update(bool updateView)
+        public override void Update(bool updateView)
         {
             for (int i = 0; i < _savedSettingsCheckedListBox.Items.Count; i++)
             {
@@ -286,6 +288,9 @@ namespace STROOP.Managers
                 _savedSettingsCheckedListBox.SetItemChecked(i, value);
                 _savedSettingsItemList[i].Checked = value;
             }
+
+            if (!updateView) return;
+            base.Update(updateView);
         }
     }
 }
