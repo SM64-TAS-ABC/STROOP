@@ -106,7 +106,7 @@ namespace STROOP.Map
                         double firstDistance = 25;
                         double lastDistance = totalDistance - 25;
                         double distanceDiff = lastDistance - firstDistance;
-                        int numMarks = (int)Math.Truncate(distanceDiff / 50);
+                        int numMarks = (int)Math.Truncate(distanceDiff / 50) + 1;
                         int numBetweens = numMarks - 1;
                         double betweenDistance = distanceDiff / numBetweens;
                         for (int i = 0; i < numMarks; i++)
