@@ -95,7 +95,68 @@ namespace STROOP.Map
 
                 if (_showArrows)
                 {
+                    double totalDistance = MoreMath.GetDistanceBetween(x1, z1, x2, z2);
+                    List<double> markDistances = new List<double>();
+                    if (totalDistance < 100)
+                    {
+                        markDistances.Add(totalDistance / 2);
+                    }
+                    else
+                    {
+                        double firstDistance = 25;
+                        double lastDistance = totalDistance - 25;
+                        double distanceDiff = lastDistance - firstDistance;
+                        int numMarks = (int)Math.Truncate(distanceDiff / 50);
+                        int numBetweens = numMarks - 1;
+                        double betweenDistance = distanceDiff / numBetweens;
+                        for (int i = 0; i < numMarks; i++)
+                        {
+                            markDistances.Add(firstDistance + i * betweenDistance);
+                        }
+                    }
 
+                    List<(float x, float z)> markPoints = new List<(float x, float z)>();
+                    foreach (double dist in markDistances)
+                    {
+                        double portion = dist / totalDistance;
+                        (double x, double z) pointOnMidpoint = (x1 + portion * (x2 - x1), z1 + portion * (z2 - z1));
+                        (double x, double z) pointOnSide1 = xProjection ?
+                            (pointOnMidpoint.x - projectionDist / 2, pointOnMidpoint.z) :
+                            (pointOnMidpoint.x, pointOnMidpoint.z - projectionDist / 2);
+                        (double x, double z) pointOnSide2 = xProjection ?
+                            (pointOnMidpoint.x + projectionDist / 2, pointOnMidpoint.z) :
+                            (pointOnMidpoint.x, pointOnMidpoint.z + projectionDist / 2);
+                        markPoints.Add(((float x, float z))pointOnSide1);
+                        markPoints.Add(((float x, float z))pointOnSide2);
+                    }
+
+                    List<List<(float x, float z)>> arrowPoints = markPoints.ConvertAll(point =>
+                    {
+                        return new List<(float x, float z)>()
+                        {
+                            (point.x - 10, point.z - 10),
+                            (point.x - 10, point.z + 10),
+                            (point.x + 10, point.z + 10),
+                            (point.x + 10, point.z - 10),
+                        };
+                    });
+
+                    List<List<(float x, float z)>> arrowsForControl =
+                        arrowPoints.ConvertAll(arrow => arrow.ConvertAll(
+                            vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z)));
+
+                    // Draw arrow
+                    Color arrowColor = Color.Darken(0.5);
+                    GL.Color4(arrowColor.R, arrowColor.G, arrowColor.B, OpacityByte);
+                    foreach (List<(float x, float z)> arrow in arrowsForControl)
+                    {
+                        GL.Begin(PrimitiveType.Polygon);
+                        foreach ((float x, float z) in arrow)
+                        {
+                            GL.Vertex2(x, z);
+                        }
+                        GL.End();
+                    }
                 }
 
                 // Draw outline
