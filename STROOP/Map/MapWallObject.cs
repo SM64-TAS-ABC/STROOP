@@ -139,8 +139,8 @@ namespace STROOP.Map
                     double angleDownLeft = pushAngle + 24576;
                     double angleDownRight = pushAngle - 24576;
 
-                    double arrowBaseLength = 20;
-                    double arrowSideLength = 10;
+                    double arrowBaseLength = 0.4 * Size;
+                    double arrowSideLength = 0.2 * Size;
 
                     List<List<(float x, float z)>> arrowPoints = markPoints.ConvertAll(midPoint =>
                     {
