@@ -65,6 +65,7 @@ namespace STROOP.Utilities
             Hybrid,
             Trunc,
             Pos,
+            Ang,
             Functions,
             Self,
             Point,
@@ -174,7 +175,9 @@ namespace STROOP.Utilities
             if (thisZ.HasValue != shouldHaveThisZ)
                 throw new ArgumentOutOfRangeException();
 
-            bool shouldHaveThisAngle = PosAngleType == PositionAngleTypeEnum.Pos;
+            bool shouldHaveThisAngle =
+                PosAngleType == PositionAngleTypeEnum.Pos ||
+                PosAngleType == PositionAngleTypeEnum.Ang;
             if (thisAngle.HasValue != shouldHaveThisAngle)
                 throw new ArgumentOutOfRangeException();
 
@@ -262,6 +265,8 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.Functions, getters: getters, setters: setters);
         public static PositionAngle Pos(double x, double y, double z, double angle = double.NaN) =>
             new PositionAngle(PositionAngleTypeEnum.Pos, thisX: x, thisY: y, thisZ: z, thisAngle: angle);
+        public static PositionAngle Ang(double angle) =>
+            new PositionAngle(PositionAngleTypeEnum.Ang, thisAngle: angle);
 
         public static PositionAngle FromString(string stringValue)
         {
@@ -443,13 +448,18 @@ namespace STROOP.Utilities
             {
                 return Point;
             }
-            else if (parts.Count >= 1 && parts[0] == "pos")
+            else if (parts.Count >= 1 && (parts[0] == "pos" || parts[0] == "position"))
             {
                 double x = parts.Count >= 2 ? ParsingUtilities.ParseDoubleNullable(parts[1]) ?? double.NaN : double.NaN;
                 double y = parts.Count >= 3 ? ParsingUtilities.ParseDoubleNullable(parts[2]) ?? double.NaN : double.NaN;
                 double z = parts.Count >= 4 ? ParsingUtilities.ParseDoubleNullable(parts[3]) ?? double.NaN : double.NaN;
                 double angle = parts.Count >= 5 ? ParsingUtilities.ParseDoubleNullable(parts[4]) ?? double.NaN : double.NaN;
                 return Pos(x, y, z, angle);
+            }
+            else if (parts.Count == 2 && (parts[0] == "ang" || parts[0] == "angle"))
+            {
+                double angle = ParsingUtilities.ParseDoubleNullable(parts[1]) ?? double.NaN;
+                return Ang(angle);
             }
             else if (parts.Count == 1 && parts[0] == "schedule")
             {
@@ -646,6 +656,8 @@ namespace STROOP.Utilities
                         return Getters[0]();
                     case PositionAngleTypeEnum.Pos:
                         return ThisX.Value;
+                    case PositionAngleTypeEnum.Ang:
+                        return double.NaN;
                     case PositionAngleTypeEnum.Trunc:
                         return (int)PosAngle1.X;
                     case PositionAngleTypeEnum.Self:
@@ -748,6 +760,8 @@ namespace STROOP.Utilities
                         return Getters[1]();
                     case PositionAngleTypeEnum.Pos:
                         return ThisY.Value;
+                    case PositionAngleTypeEnum.Ang:
+                        return double.NaN;
                     case PositionAngleTypeEnum.Trunc:
                         return (int)PosAngle1.Y;
                     case PositionAngleTypeEnum.Self:
@@ -850,6 +864,8 @@ namespace STROOP.Utilities
                         return Getters[2]();
                     case PositionAngleTypeEnum.Pos:
                         return ThisZ.Value;
+                    case PositionAngleTypeEnum.Ang:
+                        return double.NaN;
                     case PositionAngleTypeEnum.Trunc:
                         return (int)PosAngle1.Z;
                     case PositionAngleTypeEnum.Self:
@@ -945,6 +961,8 @@ namespace STROOP.Utilities
                         if (Getters.Count >= 4) return Getters[3]();
                         return Double.NaN;
                     case PositionAngleTypeEnum.Pos:
+                        return ThisAngle.Value;
+                    case PositionAngleTypeEnum.Ang:
                         return ThisAngle.Value;
                     case PositionAngleTypeEnum.Trunc:
                         return MoreMath.NormalizeAngleTruncated(PosAngle1.Angle);
@@ -1246,6 +1264,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Pos:
                     ThisX = value;
                     return true;
+                case PositionAngleTypeEnum.Ang:
+                    return false;
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetX(value);
                 case PositionAngleTypeEnum.Self:
@@ -1348,6 +1368,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Pos:
                     ThisY = value;
                     return true;
+                case PositionAngleTypeEnum.Ang:
+                    return false;
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetY(value);
                 case PositionAngleTypeEnum.Self:
@@ -1450,6 +1472,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Pos:
                     ThisZ = value;
                     return true;
+                case PositionAngleTypeEnum.Ang:
+                    return false;
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetZ(value);
                 case PositionAngleTypeEnum.Self:
@@ -1553,6 +1577,9 @@ namespace STROOP.Utilities
                     if (Setters.Count >= 4) return Setters[3](value);
                     return false;
                 case PositionAngleTypeEnum.Pos:
+                    ThisAngle = value;
+                    return true;
+                case PositionAngleTypeEnum.Ang:
                     ThisAngle = value;
                     return true;
                 case PositionAngleTypeEnum.Trunc:
