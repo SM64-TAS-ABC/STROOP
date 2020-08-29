@@ -465,6 +465,10 @@ namespace STROOP.Utilities
             {
                 return Scheduler;
             }
+            else if (parts.Count == 1 && parts[0] == "none")
+            {
+                return None;
+            }
 
             return null;
         }
