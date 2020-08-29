@@ -63,7 +63,7 @@
 
   <Data groupList="Intermediate" base="None" specialType="SegmentedToVirtualAddress" useHex="true" color="Green">SegToVirt Address</Data>
   <Data groupList="Intermediate" base="None" specialType="SegmentedToVirtualOutput" useHex="true" color="Green">SegToVirt Output</Data>
-  <Data groupList="Intermediate" base="None" specialType="VirtualToSegmentedSegment" useHex="true" color="Green">VirtToSeg Segment</Data>
+  <Data groupList="Intermediate" base="None" specialType="VirtualToSegmentedSegment" useHex="true" display="byte" color="Green">VirtToSeg Segment</Data>
   <Data groupList="Intermediate" base="None" specialType="VirtualToSegmentedAddress" useHex="true" color="Green">VirtToSeg Address</Data>
   <Data groupList="Intermediate" base="None" specialType="VirtualToSegmentedOutput" useHex="true" color="Green">VirtToSeg Output</Data>
 
