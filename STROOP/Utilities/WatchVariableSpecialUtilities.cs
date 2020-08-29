@@ -4803,9 +4803,14 @@ namespace STROOP.Structs
             return MoreMath.AngleUnitsToRadians(angle);
         }
 
-        private static double GetTriangleUphillAngle(uint triAddress)
+        public static double GetTriangleUphillAngle(uint triAddress)
         {
             TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            return GetTriangleUphillAngle(triStruct);
+        }
+
+        public static double GetTriangleUphillAngle(TriangleDataModel triStruct)
+        {
             double uphillAngle = 32768 + InGameTrigUtilities.InGameAngleTo(triStruct.NormX, triStruct.NormZ);
             if (triStruct.NormX == 0 && triStruct.NormZ == 0) uphillAngle = double.NaN;
             if (triStruct.IsCeiling()) uphillAngle += 32768;

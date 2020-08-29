@@ -243,28 +243,31 @@ namespace STROOP.Map
             return quadList;
         }
 
-        public static (float x1, float z1, float x2, float z2, bool xProjection)? Get2DWallDataFromTri(
+        public static (float x1, float z1, float x2, float z2, bool xProjection, double pushAngle)? Get2DWallDataFromTri(
             TriangleDataModel tri, float? heightNullable = null)
         {
+            double uphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(tri);
+            double pushAngle = MoreMath.ReverseAngle(uphillAngle);
+
             if (!heightNullable.HasValue)
             {
                 if (tri.X1 == tri.X2 && tri.Z1 == tri.Z2) // v2 is redundant
-                    return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection);
+                    return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection, pushAngle);
                 if (tri.X1 == tri.X3 && tri.Z1 == tri.Z3) // v3 is redundant
-                    return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
+                    return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection, pushAngle);
                 if (tri.X2 == tri.X3 && tri.Z2 == tri.Z3) // v3 is redundant
-                    return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
+                    return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection, pushAngle);
 
                 double dist12 = MoreMath.GetDistanceBetween(tri.X1, tri.Z1, tri.X2, tri.Z2);
                 double dist13 = MoreMath.GetDistanceBetween(tri.X1, tri.Z1, tri.X3, tri.Z3);
                 double dist23 = MoreMath.GetDistanceBetween(tri.X2, tri.Z2, tri.X3, tri.Z3);
 
                 if (dist12 >= dist13 && dist12 >= dist23)
-                    return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection);
+                    return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection, pushAngle);
                 else if (dist13 >= dist23)
-                    return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection);
+                    return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection, pushAngle);
                 else
-                    return (tri.X2, tri.Z2, tri.X3, tri.Z3, tri.XProjection);
+                    return (tri.X2, tri.Z2, tri.X3, tri.Z3, tri.XProjection, pushAngle);
             }
 
             float height = heightNullable.Value;
@@ -295,10 +298,10 @@ namespace STROOP.Map
                     points.RemoveAt(0); // BC is biggest, so remove A
                 }
             }
-            
+
             if (points.Count == 2)
             {
-                return (points[0].x, points[0].z, points[1].x, points[1].z, tri.XProjection);
+                return (points[0].x, points[0].z, points[1].x, points[1].z, tri.XProjection, pushAngle);
             }
 
             return null;

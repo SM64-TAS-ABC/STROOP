@@ -42,12 +42,12 @@ namespace STROOP.Map
             float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : (float?)null;
             height = height ?? _absoluteHeight;
 
-            List<(float x1, float z1, float x2, float z2, bool xProjection)> wallData = GetTrianglesWithinDist()
+            List<(float x1, float z1, float x2, float z2, bool xProjection, double pushAngle)> wallData = GetTrianglesWithinDist()
                 .ConvertAll(tri => MapUtilities.Get2DWallDataFromTri(tri, height))
                 .FindAll(wallDataNullable => wallDataNullable.HasValue)
                 .ConvertAll(wallDataNullable => wallDataNullable.Value);
 
-            foreach ((float x1, float z1, float x2, float z2, bool xProjection) in wallData)
+            foreach ((float x1, float z1, float x2, float z2, bool xProjection, double pushAngle) in wallData)
             {
                 float angle = (float)MoreMath.AngleTo_Radians(x1, z1, x2, z2);
                 float projectionDist = Size / (float)Math.Abs(xProjection ? Math.Cos(angle) : Math.Sin(angle));
@@ -92,6 +92,11 @@ namespace STROOP.Map
                     }
                 }
                 GL.End();
+
+                if (_showArrows)
+                {
+
+                }
 
                 // Draw outline
                 if (OutlineWidth != 0)

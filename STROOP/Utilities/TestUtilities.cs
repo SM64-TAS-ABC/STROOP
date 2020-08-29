@@ -114,7 +114,7 @@ namespace STROOP.Utilities
             List<TriangleDataModel> badWallTris = new List<TriangleDataModel>();
             foreach (TriangleDataModel wallTri in wallTris)
             {
-                (float x1, float z1, float x2, float z2, bool xProjection) = MapUtilities.Get2DWallDataFromTri(wallTri).Value;
+                (float x1, float z1, float x2, float z2, bool xProjection, double pushAngle) = MapUtilities.Get2DWallDataFromTri(wallTri).Value;
                
                 float angle = (float)MoreMath.AngleTo_Radians(x1, z1, x2, z2);
                 float projectionDist = 50 / (float)Math.Abs(xProjection ? Math.Cos(angle) : Math.Sin(angle));
