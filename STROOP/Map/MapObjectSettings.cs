@@ -28,6 +28,9 @@ namespace STROOP.Map
         public readonly bool TriangleChangeMaxHeight;
         public readonly float? TriangleNewMaxHeight;
 
+        public readonly bool WallChangeShowArrows;
+        public readonly bool WallNewShowArrows;
+
         public readonly bool WallChangeRelativeHeight;
         public readonly float? WallNewRelativeHeight;
 
@@ -70,6 +73,9 @@ namespace STROOP.Map
             bool triangleChangeMaxHeight = false,
             float? triangleNewMaxHeight = null,
 
+            bool wallChangeShowArrows = false,
+            bool wallNewShowArrows = false,
+
             bool wallChangeRelativeHeight = false,
             float? wallNewRelativeHeight = null,
 
@@ -110,6 +116,9 @@ namespace STROOP.Map
 
             TriangleChangeMaxHeight = triangleChangeMaxHeight;
             TriangleNewMaxHeight = triangleNewMaxHeight;
+
+            WallChangeShowArrows = wallChangeShowArrows;
+            WallNewShowArrows = wallNewShowArrows;
 
             WallChangeRelativeHeight = wallChangeRelativeHeight;
             WallNewRelativeHeight = wallNewRelativeHeight;

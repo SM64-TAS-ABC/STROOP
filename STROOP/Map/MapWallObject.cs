@@ -18,8 +18,11 @@ namespace STROOP.Map
 {
     public abstract class MapWallObject : MapTriangleObject
     {
+        private bool _showArrows;
         private float? _relativeHeight;
         private float? _absoluteHeight;
+
+        ToolStripMenuItem _itemShowArrows;
 
         public MapWallObject()
             : base()
@@ -28,6 +31,7 @@ namespace STROOP.Map
             Opacity = 0.5;
             Color = Color.Green;
 
+            _showArrows = false;
             _relativeHeight = null;
             _absoluteHeight = null;
         }
@@ -111,6 +115,14 @@ namespace STROOP.Map
 
         protected List<ToolStripMenuItem> GetWallToolStripMenuItems()
         {
+            _itemShowArrows = new ToolStripMenuItem("Show Arrows");
+            _itemShowArrows.Click += (sender, e) =>
+            {
+                MapObjectSettings settings = new MapObjectSettings(
+                    wallChangeShowArrows: true, wallNewShowArrows: !_showArrows);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
             ToolStripMenuItem itemSetRelativeHeight = new ToolStripMenuItem("Set Relative Height");
             itemSetRelativeHeight.Click += (sender, e) =>
             {
@@ -154,6 +166,7 @@ namespace STROOP.Map
 
             return new List<ToolStripMenuItem>()
             {
+                _itemShowArrows,
                 itemSetRelativeHeight,
                 itemClearRelativeHeight,
                 itemSetAbsoluteHeight,
@@ -164,6 +177,12 @@ namespace STROOP.Map
         public override void ApplySettings(MapObjectSettings settings)
         {
             base.ApplySettings(settings);
+
+            if (settings.WallChangeShowArrows)
+            {
+                _showArrows = settings.WallNewShowArrows;
+                _itemShowArrows.Checked = settings.WallNewShowArrows;
+            }
 
             if (settings.WallChangeRelativeHeight)
             {
