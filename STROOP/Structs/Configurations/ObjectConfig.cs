@@ -85,12 +85,28 @@ namespace STROOP.Structs
         public static readonly uint InitialReleaseStatusOffset = 0x1D4;
         public static readonly uint InteractionStatusOffset = 0x134;
 
-        public static uint ReleaseStatusThrownValue { get => RomVersionConfig.SwitchMap(ReleaseStatusThrownValueUS, ReleaseStatusThrownValueJP, ReleaseStatusThrownValueSH); }
+        public static uint ReleaseStatusThrownValue
+        {
+            get
+            {
+                return SpecialConfig.CustomReleaseStatus != 0 ?
+                    SpecialConfig.CustomReleaseStatus :
+                    RomVersionConfig.SwitchMap(ReleaseStatusThrownValueUS, ReleaseStatusThrownValueJP, ReleaseStatusThrownValueSH);
+            }
+        }
         public static readonly uint ReleaseStatusThrownValueUS = 0x800EE5F8;
         public static readonly uint ReleaseStatusThrownValueJP = 0x800EB778;
         public static readonly uint ReleaseStatusThrownValueSH = 0x800EB798;
 
-        public static uint ReleaseStatusDroppedValue { get => RomVersionConfig.SwitchMap(ReleaseStatusDroppedValueUS, ReleaseStatusDroppedValueJP, ReleaseStatusDroppedValueSH); }
+        public static uint ReleaseStatusDroppedValue
+        {
+            get
+            {
+                return SpecialConfig.CustomReleaseStatus != 0 ?
+                    SpecialConfig.CustomReleaseStatus :
+                    RomVersionConfig.SwitchMap(ReleaseStatusDroppedValueUS, ReleaseStatusDroppedValueJP, ReleaseStatusDroppedValueSH);
+            }
+        }
         public static readonly uint ReleaseStatusDroppedValueUS = 0x800EE5F0;
         public static readonly uint ReleaseStatusDroppedValueJP = 0x800EB770;
         public static readonly uint ReleaseStatusDroppedValueSH = 0x800EB790;

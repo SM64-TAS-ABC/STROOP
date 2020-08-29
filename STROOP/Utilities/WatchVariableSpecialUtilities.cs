@@ -4463,6 +4463,17 @@ namespace STROOP.Structs
                     return true;
                 }));
 
+            _dictionary.Add("CustomReleaseStatus",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.CustomReleaseStatus;
+                },
+                (uint value, uint dummy) =>
+                {
+                    SpecialConfig.CustomReleaseStatus = value;
+                    return true;
+                }));
+
             // Area vars
 
             _dictionary.Add("CurrentAreaIndexMario",

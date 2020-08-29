@@ -278,5 +278,9 @@ namespace STROOP.Structs.Configurations
         // Dummy Vars
 
         public static readonly List<double> DummyValues = new List<double>();
+
+        // Release Status
+
+        public static uint CustomReleaseStatus = 0;
     }
 }
