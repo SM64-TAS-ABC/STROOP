@@ -130,14 +130,44 @@ namespace STROOP.Map
                         markPoints.Add(((float x, float z))pointOnSide2);
                     }
 
-                    List<List<(float x, float z)>> arrowPoints = markPoints.ConvertAll(point =>
+                    double angleUp = pushAngle;
+                    double angleDown = pushAngle + 32768;
+                    double angleLeft = pushAngle + 16384;
+                    double angleRight = pushAngle - 16384;
+                    double angleUpLeft = pushAngle + 8192;
+                    double angleUpRight = pushAngle - 8192;
+                    double angleDownLeft = pushAngle + 24576;
+                    double angleDownRight = pushAngle - 24576;
+
+                    double arrowBaseLength = 20;
+                    double arrowSideLength = 10;
+
+                    List<List<(float x, float z)>> arrowPoints = markPoints.ConvertAll(midPoint =>
                     {
+                        (float x, float z) frontPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength, angleUp, midPoint.x, midPoint.z);
+                        (float x, float z) leftOuterPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength / 2 + arrowSideLength, angleLeft, midPoint.x, midPoint.z);
+                        (float x, float z) leftInnerPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength / 2, angleLeft, midPoint.x, midPoint.z);
+                        (float x, float z) rightOuterPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength / 2 + arrowSideLength, angleRight, midPoint.x, midPoint.z);
+                        (float x, float z) rightInnerPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength / 2, angleRight, midPoint.x, midPoint.z);
+                        (float x, float z) backLeftPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength, angleDown, leftInnerPoint.x, leftInnerPoint.z);
+                        (float x, float z) backRightPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength, angleDown, rightInnerPoint.x, rightInnerPoint.z);
+
                         return new List<(float x, float z)>()
                         {
-                            (point.x - 10, point.z - 10),
-                            (point.x - 10, point.z + 10),
-                            (point.x + 10, point.z + 10),
-                            (point.x + 10, point.z - 10),
+                            frontPoint,
+                            leftOuterPoint,
+                            leftInnerPoint,
+                            backLeftPoint,
+                            backRightPoint,
+                            rightInnerPoint,
+                            rightOuterPoint,
                         };
                     });
 
