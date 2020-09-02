@@ -208,6 +208,8 @@ namespace STROOP.Utilities
 
         public static float? ParseFloatNullable(object obj)
         {
+            if (obj is float floatValue) return floatValue;
+            if (obj is double doubleValue) return (float)doubleValue;
             string text = obj?.ToString();
             float parsed;
             if (float.TryParse(text, out parsed))
@@ -224,6 +226,8 @@ namespace STROOP.Utilities
 
         public static double? ParseDoubleNullable(object obj)
         {
+            if (obj is float floatValue) return floatValue;
+            if (obj is double doubleValue) return doubleValue;
             string text = obj?.ToString();
             double parsed;
             if (double.TryParse(text, out parsed))
