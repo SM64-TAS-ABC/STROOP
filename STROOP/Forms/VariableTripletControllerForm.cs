@@ -83,10 +83,12 @@ namespace STROOP.Forms
         }
 
         public void Initialize(
+            string text,
             CoordinateSystem coordinateSystem,
             bool allowRelativeOptions,
             Action<float, float, float, bool> actionMove)
         {
+            Text = text;
             ControlUtilities.InitializeThreeDimensionController(
                 coordinateSystem,
                 allowRelativeOptions,

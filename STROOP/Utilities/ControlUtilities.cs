@@ -181,7 +181,10 @@ namespace STROOP.Utilities
             itemPopOut.Click += (sender, e) =>
             {
                 VariableTripletControllerForm form = new VariableTripletControllerForm();
-                form.Initialize(coordinateSystem, allowRelativeOptions, actionMove);
+                TabPage parentTab = GetTab(groupbox);
+                Form parentForm = GetForm(groupbox);
+                string text = parentTab != null ? parentTab.Text + " " + groupbox.Text : parentForm.Text;
+                form.Initialize(text, coordinateSystem, allowRelativeOptions, actionMove);
                 form.ShowForm();
             };
 
@@ -599,6 +602,15 @@ namespace STROOP.Utilities
                 rows.Add(row);
             }
             return rows;
+        }
+
+        public static Form GetForm(Control control)
+        {
+            while (control != null && !(control is Form))
+            {
+                control = control.Parent;
+            }
+            return (Form)control;
         }
 
         public static TabPage GetTab(Control control)
