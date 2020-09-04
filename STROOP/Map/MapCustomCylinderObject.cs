@@ -53,11 +53,6 @@ namespace STROOP.Map
             return _posAngle;
         }
 
-        public override float GetY()
-        {
-            return (float)_posAngle.Y;
-        }
-
         public override ContextMenuStrip GetContextMenuStrip()
         {
             if (_contextMenuStrip == null)

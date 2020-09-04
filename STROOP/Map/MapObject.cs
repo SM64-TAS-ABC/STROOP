@@ -80,7 +80,9 @@ namespace STROOP.Map
 
         public virtual float GetY()
         {
-            return float.PositiveInfinity;
+            PositionAngle posAngle = GetPositionAngle();
+            if (posAngle == null) return float.PositiveInfinity;
+            return (float)posAngle.Y;
         }
 
         public void NotifyStoreBehaviorCritera()

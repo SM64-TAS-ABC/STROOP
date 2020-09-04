@@ -34,10 +34,5 @@ namespace STROOP.Map
         {
             return "Camera";
         }
-
-        public override float GetY()
-        {
-            return (float)PositionAngle.Camera.Y;
-        }
     }
 }

@@ -47,10 +47,5 @@ namespace STROOP.Map
         {
             return _posAngle;
         }
-
-        public override float GetY()
-        {
-            return (float)_posAngle.Y;
-        }
     }
 }

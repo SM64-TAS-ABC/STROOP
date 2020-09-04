@@ -34,10 +34,5 @@ namespace STROOP.Map
         {
             return "Ghost";
         }
-
-        public override float GetY()
-        {
-            return (float)PositionAngle.Ghost.Y;
-        }
     }
 }
