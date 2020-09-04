@@ -206,6 +206,21 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemCustomSpherePoints = new ToolStripMenuItem("Add Tracker for Custom Sphere Points");
+            itemCustomSpherePoints.Click += (sender, e) =>
+            {
+                (string, bool)? result = DialogUtilities.GetStringAndSideFromDialog(
+                    labelText: "Enter points as pairs or triplets of floats.",
+                    button1Text: "Pairs",
+                    button2Text: "Triplets");
+                if (!result.HasValue) return;
+                (string text, bool side) = result.Value;
+                MapObject mapObj = MapCustomSpherePointsObject.Create(text, side);
+                if (mapObj == null) return;
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemCustomMap = new ToolStripMenuItem("Add Tracker for Custom Map");
             itemCustomMap.Click += (sender, e) =>
             {
@@ -401,6 +416,7 @@ namespace STROOP.Managers
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomUnitPoints);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomCylinderPoints);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomSpherePoints);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomMap);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomBackground);
