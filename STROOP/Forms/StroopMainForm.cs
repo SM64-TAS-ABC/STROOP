@@ -125,7 +125,6 @@ namespace STROOP
                     "Free Movement Action",
                     "Everything in File",
                     "Go to Closest Floor Vertex",
-                    "Expand RAM Size",
                     "Save as Savestate",
                     "Show MHS Vars",
                     "Download Latest STROOP Release",
@@ -149,10 +148,6 @@ namespace STROOP
                     () => Config.Stream.SetValue(MarioConfig.FreeMovementAction, MarioConfig.StructAddress + MarioConfig.ActionOffset),
                     () => Config.FileManager.DoEverything(),
                     () => Config.TriangleManager.GoToClosestVertex(),
-                    () =>
-                    {
-                        Config.RamSize = 0x800000;
-                    },
                     () => saveAsSavestate(),
                     () =>
                     {
@@ -170,7 +165,7 @@ namespace STROOP
                     () => HelpfulHintUtilities.ShowAllHelpfulHints(),
                     () =>
                     {
-                        Config.RamSize = 0x800000;
+                        SavedSettingsConfig.UseExpandedRamSize = true;
                         splitContainerTas.Panel1Collapsed = true;
                         splitContainerTas.Panel2Collapsed = false;
                         Config.TasManager.ShowTaserVariables();

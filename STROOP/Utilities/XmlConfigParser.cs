@@ -84,9 +84,6 @@ namespace STROOP.Utilities
                     case "RefreshRateFreq":
                         RefreshRateConfig.RefreshRateFreq = uint.Parse(element.Value);
                         break;
-                    case "RamSize":
-                        Config.RamSize = ParsingUtilities.ParseHex(element.Value);
-                        break;
                 }
             }
         }

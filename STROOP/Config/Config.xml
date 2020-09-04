@@ -21,5 +21,4 @@
   <RomVersion>US</RomVersion>
 
   <RefreshRateFreq>30</RefreshRateFreq>
-  <RamSize>0x400000</RamSize>
 </Config>

@@ -16,7 +16,10 @@ namespace STROOP.Structs.Configurations
 {
     public static class Config
     {
-        public static uint RamSize;
+        public static uint RamSize
+        {
+            get => (uint)(SavedSettingsConfig.UseExpandedRamSize ? 0x800000 : 0x400000);
+        }
 
         public static List<Emulator> Emulators = new List<Emulator>();
         public static ProcessStream Stream;
