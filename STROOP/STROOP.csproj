@@ -271,6 +271,12 @@
     <Compile Include="Forms\CoinRingDisplayForm.Designer.cs">
       <DependentUpon>CoinRingDisplayForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ValueSplitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ValueSplitForm.Designer.cs">
+      <DependentUpon>ValueSplitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ValueForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -855,6 +861,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CoinRingDisplayForm.resx">
       <DependentUpon>CoinRingDisplayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ValueSplitForm.resx">
+      <DependentUpon>ValueSplitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ValueForm.resx">
       <DependentUpon>ValueForm.cs</DependentUpon>
