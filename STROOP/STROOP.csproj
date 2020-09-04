@@ -470,7 +470,7 @@
     <Compile Include="Map\MapLineSegmentObject.cs" />
     <Compile Include="Map\MapGhostObject.cs" />
     <Compile Include="Map\MapPunchFloorObject.cs" />
-    <Compile Include="Map\MapCustomCirclePointsObject.cs" />
+    <Compile Include="Map\MapCustomCylinderPointsObject.cs" />
     <Compile Include="Map\MapCUpFloorObject.cs" />
     <Compile Include="Map\MapPreviousPositionsObject.cs" />
     <Compile Include="Map\MapArrowObject.cs" />

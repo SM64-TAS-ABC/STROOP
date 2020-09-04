@@ -14,14 +14,14 @@ using System.Windows.Forms;
 
 namespace STROOP.Map
 {
-    public class MapCustomCirclePointsObject : MapCylinderObject
+    public class MapCustomCylinderPointsObject : MapCylinderObject
     {
         private readonly List<(float x, float y, float z)> _points;
 
         private float _relativeMinY = 0;
         private float _relativeMaxY = 100;
 
-        public MapCustomCirclePointsObject(List<(float x, float y, float z)> points)
+        public MapCustomCylinderPointsObject(List<(float x, float y, float z)> points)
             : base()
         {
             _points = points;
@@ -29,7 +29,7 @@ namespace STROOP.Map
             Size = 100;
         }
 
-        public static MapCustomCirclePointsObject Create2D(string text)
+        public static MapCustomCylinderPointsObject Create2D(string text)
         {
             if (text == null) return null;
             List<float?> nullableFloatList = ParsingUtilities.ParseStringList(text)
@@ -48,10 +48,10 @@ namespace STROOP.Map
             {
                 circlePoints.Add((floatList[i], 0, floatList[i + 1]));
             }
-            return new MapCustomCirclePointsObject(circlePoints);
+            return new MapCustomCylinderPointsObject(circlePoints);
         }
 
-        public static MapCustomCirclePointsObject Create3D(string text)
+        public static MapCustomCylinderPointsObject Create3D(string text)
         {
             if (text == null) return null;
             List<float?> nullableFloatList = ParsingUtilities.ParseStringList(text)
@@ -70,7 +70,7 @@ namespace STROOP.Map
             {
                 circlePoints.Add((floatList[i], floatList[i + 1], floatList[i + 2]));
             }
-            return new MapCustomCirclePointsObject(circlePoints);
+            return new MapCustomCylinderPointsObject(circlePoints);
         }
 
         protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
