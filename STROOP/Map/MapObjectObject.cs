@@ -18,15 +18,11 @@ namespace STROOP.Map
         private readonly ObjectDataModel _obj;
         private readonly PositionAngle _posAngle;
 
-        private BehaviorCriteria? _behaviorCriteriaToDisplay;
-
         public MapObjectObject(uint objAddress)
             : base()
         {
             _obj = new ObjectDataModel(objAddress);
             _posAngle = PositionAngle.Obj(objAddress);
-
-            _behaviorCriteriaToDisplay = null;
         }
 
         public override Image GetInternalImage()
@@ -54,28 +50,6 @@ namespace STROOP.Map
         public override float GetY()
         {
             return (float)_posAngle.Y;
-        }
-
-        public override bool ShouldDisplay(MapTrackerVisibilityType visiblityType)
-        {
-            _obj.Update();
-            switch (visiblityType)
-            {
-                case MapTrackerVisibilityType.VisibleAlways:
-                    return true;
-                case MapTrackerVisibilityType.VisibleWhenLoaded:
-                    return _obj.IsActive;
-                case MapTrackerVisibilityType.VisibleWhenThisBhvrIsLoaded:
-                    return _obj.IsActive && BehaviorCriteria.HasSameAssociation(_obj.BehaviorCriteria, _behaviorCriteriaToDisplay);
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        public override void NotifyStoreBehaviorCritera()
-        {
-            _obj.Update();
-            _behaviorCriteriaToDisplay = _obj.BehaviorCriteria;
         }
 
         public override void Update()

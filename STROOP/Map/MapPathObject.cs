@@ -360,5 +360,10 @@ namespace STROOP.Map
         {
             return MapDrawType.Perspective;
         }
+
+        public override PositionAngle GetPositionAngle()
+        {
+            return _posAngle;
+        }
     }
 }

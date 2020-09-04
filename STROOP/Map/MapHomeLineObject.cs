@@ -44,5 +44,10 @@ namespace STROOP.Map
         {
             return Config.ObjectAssociations.ArrowImage;
         }
+
+        public override PositionAngle GetPositionAngle()
+        {
+            return _objPosAngle;
+        }
     }
 }

@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
 using OpenTK.Graphics;
+using STROOP.Models;
 
 namespace STROOP.Map
 {
@@ -39,6 +40,8 @@ namespace STROOP.Map
         {
             get => CustomRotates ?? InternalRotates;
         }
+
+        private BehaviorCriteria? _behaviorCriteriaToDisplay = null;
 
         public bool ShowTriUnits = false;
 
@@ -80,18 +83,42 @@ namespace STROOP.Map
             return float.PositiveInfinity;
         }
 
-        public virtual bool ShouldDisplay(MapTrackerVisibilityType visiblityType)
+        public void NotifyStoreBehaviorCritera()
         {
-            return true;
+            ObjectDataModel obj = GetObject();
+            if (obj == null) return;
+            _behaviorCriteriaToDisplay = obj.BehaviorCriteria;
         }
 
-        public virtual void NotifyStoreBehaviorCritera()
+        public bool ShouldDisplay(MapTrackerVisibilityType visiblityType)
         {
+            ObjectDataModel obj = GetObject();
+            if (obj == null) return true;
+            switch (visiblityType)
+            {
+                case MapTrackerVisibilityType.VisibleAlways:
+                    return true;
+                case MapTrackerVisibilityType.VisibleWhenLoaded:
+                    return obj.IsActive;
+                case MapTrackerVisibilityType.VisibleWhenThisBhvrIsLoaded:
+                    return obj.IsActive && BehaviorCriteria.HasSameAssociation(obj.BehaviorCriteria, _behaviorCriteriaToDisplay);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         public virtual PositionAngle GetPositionAngle()
         {
             return null;
+        }
+
+        public virtual ObjectDataModel GetObject()
+        {
+            PositionAngle posAngle = GetPositionAngle();
+            if (posAngle == null) return null;
+            if (!posAngle.IsObjectDependent()) return null;
+            uint objAddress = posAngle.GetObjectAddressIfObjectDependent().Value;
+            return new ObjectDataModel(objAddress, true);
         }
 
         public override string ToString()

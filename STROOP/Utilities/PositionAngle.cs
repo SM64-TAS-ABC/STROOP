@@ -527,6 +527,16 @@ namespace STROOP.Utilities
             return PosAngleType == PositionAngleTypeEnum.Obj;
         }
 
+        public bool IsObjectDependent()
+        {
+            return PosAngleType == PositionAngleTypeEnum.Obj ||
+                PosAngleType == PositionAngleTypeEnum.ObjHome ||
+                PosAngleType == PositionAngleTypeEnum.ObjGfx ||
+                PosAngleType == PositionAngleTypeEnum.ObjScale ||
+                PosAngleType == PositionAngleTypeEnum.GoombaProjection ||
+                PosAngleType == PositionAngleTypeEnum.ObjTri;
+        }
+
         public bool IsObjectOrMario()
         {
             return PosAngleType == PositionAngleTypeEnum.Obj ||
@@ -544,6 +554,11 @@ namespace STROOP.Utilities
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        public uint? GetObjectAddressIfObjectDependent()
+        {
+            return IsObjectDependent() ? Address : null;
         }
 
         public bool IsSelfOrPoint()

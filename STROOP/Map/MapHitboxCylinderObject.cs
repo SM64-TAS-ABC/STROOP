@@ -48,6 +48,11 @@ namespace STROOP.Map
             return "Hitbox Cylinder for " + _posAngle.GetMapName();
         }
 
+        public override PositionAngle GetPositionAngle()
+        {
+            return _posAngle;
+        }
+
         public override float GetY()
         {
             return (float)_posAngle.Y;

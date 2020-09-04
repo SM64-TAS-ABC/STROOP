@@ -17,11 +17,13 @@ namespace STROOP.Map
 {
     public class MapObjectWallObject : MapWallObject
     {
+        private readonly PositionAngle _posAngle;
         private readonly uint _objAddress;
 
         public MapObjectWallObject(uint objAddress)
             : base()
         {
+            _posAngle = PositionAngle.Obj(objAddress);
             _objAddress = objAddress;
         }
 
@@ -52,6 +54,11 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public override PositionAngle GetPositionAngle()
+        {
+            return _posAngle;
         }
     }
 }

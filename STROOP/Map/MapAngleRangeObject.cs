@@ -39,6 +39,11 @@ namespace STROOP.Map
             return vertices;
         }
 
+        public override PositionAngle GetPositionAngle()
+        {
+            return _posAngle;
+        }
+
         public override string GetName()
         {
             return "Angle Range";

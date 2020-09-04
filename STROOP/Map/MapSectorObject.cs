@@ -138,5 +138,10 @@ namespace STROOP.Map
                 _angleRadius = settings.SectorNewAngleRadius;
             }
         }
+
+        public override PositionAngle GetPositionAngle()
+        {
+            return _posAngle;
+        }
     }
 }

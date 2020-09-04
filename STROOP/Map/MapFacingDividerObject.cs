@@ -52,5 +52,10 @@ namespace STROOP.Map
         {
             return "Facing Divider for " + _posAngle.GetMapName();
         }
+
+        public override PositionAngle GetPositionAngle()
+        {
+            return _posAngle;
+        }
     }
 }
