@@ -151,6 +151,9 @@ namespace STROOP.Utilities
                     case "UseExtendedLevelBoundaries":
                         SavedSettingsConfig.UseExtendedLevelBoundaries = bool.Parse(element.Value);
                         break;
+                    case "UseExpandedRamSize":
+                        SavedSettingsConfig.UseExpandedRamSize = bool.Parse(element.Value);
+                        break;
 
                     case "TabOrder":
                         {

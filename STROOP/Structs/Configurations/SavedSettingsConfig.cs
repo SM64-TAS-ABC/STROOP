@@ -192,6 +192,18 @@ namespace STROOP.Structs.Configurations
         }
         public static int TriangleVertexMultiplier => _useExtendedLevelBoundaries ? 4 : 1;
 
+        private static bool _useExpandedRamSize;
+        public static bool UseExpandedRamSize
+        {
+            get => _useExpandedRamSize;
+            set
+            {
+                if (_useExpandedRamSize == value) return;
+                _useExpandedRamSize = value;
+                if (IsLoaded) Save();
+            }
+        }
+
         public static List<TabPage> _recommendedTabOrder;
 
         public static void StoreRecommendedTabOrder()
@@ -347,6 +359,7 @@ namespace STROOP.Structs.Configurations
                 new XElement("CloningUpdatesHolpType", _cloningUpdatesHolpType),
                 new XElement("UseInGameTrigForAngleLogic", _useInGameTrigForAngleLogic),
                 new XElement("UseExtendedLevelBoundaries", _useExtendedLevelBoundaries),
+                new XElement("UseExpandedRamSize", _useExpandedRamSize),
                 tabOrderXElement,
                 removedTabsXElement,
             };
@@ -374,6 +387,7 @@ namespace STROOP.Structs.Configurations
             _cloningUpdatesHolpType = true;
             _useInGameTrigForAngleLogic = false;
             _useExtendedLevelBoundaries = false;
+            _useExpandedRamSize = false;
             Save();
         }
     }

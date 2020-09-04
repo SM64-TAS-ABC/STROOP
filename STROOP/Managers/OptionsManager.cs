@@ -38,6 +38,7 @@ namespace STROOP.Managers
                 "Cloning Updates Holp Type",
                 "Use In-Game Trig for Angle Logic",
                 "Use Extended Level Boundaries",
+                "Use Expanded Ram Size",
             };
 
             _savedSettingsGetterList = new List<Func<bool>>()
@@ -56,6 +57,7 @@ namespace STROOP.Managers
                 () => SavedSettingsConfig.CloningUpdatesHolpType,
                 () => SavedSettingsConfig.UseInGameTrigForAngleLogic,
                 () => SavedSettingsConfig.UseExtendedLevelBoundaries,
+                () => SavedSettingsConfig.UseExpandedRamSize,
             };
 
             _savedSettingsSetterList = new List<Action<bool>>()
@@ -74,6 +76,7 @@ namespace STROOP.Managers
                 (bool value) => SavedSettingsConfig.CloningUpdatesHolpType = value,
                 (bool value) => SavedSettingsConfig.UseInGameTrigForAngleLogic = value,
                 (bool value) => SavedSettingsConfig.UseExtendedLevelBoundaries = value,
+                (bool value) => SavedSettingsConfig.UseExpandedRamSize = value,
             };
 
             SplitContainer splitContainerOptions = tabControl.Controls["splitContainerOptions"] as SplitContainer;
