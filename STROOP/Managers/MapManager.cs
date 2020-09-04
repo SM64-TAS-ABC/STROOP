@@ -179,8 +179,13 @@ namespace STROOP.Managers
             ToolStripMenuItem itemCustomUnitPoints = new ToolStripMenuItem("Add Tracker for Custom Unit Points");
             itemCustomUnitPoints.Click += (sender, e) =>
             {
-                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter points as pairs of floats.");
-                MapObject mapObj = MapCustomUnitPointsObject.Create(text);
+                (string, bool)? result = DialogUtilities.GetStringAndSideFromDialog(
+                    labelText: "Enter points as pairs or triplets of floats.",
+                    button1Text: "Pairs",
+                    button2Text: "Triplets");
+                if (!result.HasValue) return;
+                (string text, bool side) = result.Value;
+                MapObject mapObj = MapCustomUnitPointsObject.Create(text, side);
                 if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);

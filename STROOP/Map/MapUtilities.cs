@@ -365,5 +365,36 @@ namespace STROOP.Map
             return xDiff < Config.MapGui.GLControlMap2D.Width &&
                 zDiff < Config.MapGui.GLControlMap2D.Height;
         }
+
+        public static List<(double x, double y, double z)> ParsePoints(string text, bool useTriplets)
+        {
+            if (text == null) return null;
+
+            List<double?> nullableDoubleList = ParsingUtilities.ParseStringList(text)
+                .ConvertAll(word => ParsingUtilities.ParseDoubleNullable(word));
+            if (nullableDoubleList.Any(nullableDouble => !nullableDouble.HasValue))
+            {
+                return null;
+            }
+            List<double> doubleList = nullableDoubleList.ConvertAll(nullableDouble => nullableDouble.Value);
+
+            int numbersPerGroup = useTriplets ? 3 : 2;
+            if (doubleList.Count % numbersPerGroup != 0)
+            {
+                return null;
+            }
+
+            List<(double x, double y, double z)> points = new List<(double x, double y, double z)>();
+            for (int i = 0; i < doubleList.Count; i += numbersPerGroup)
+            {
+                (double x, double y, double z) point =
+                    useTriplets ?
+                    (doubleList[i], doubleList[i + 1], doubleList[i + 2]) :
+                    (doubleList[i], 0, doubleList[i + 1]);
+                points.Add(point);
+            }
+
+            return points;
+        }
     }
 }

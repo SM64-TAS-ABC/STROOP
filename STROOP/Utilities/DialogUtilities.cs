@@ -171,6 +171,18 @@ namespace STROOP.Structs
             return null;
         }
 
+        public static (string text, bool rightButtonClicked)? GetStringAndSideFromDialog(
+            string textBoxText = "",
+            string labelText = "Enter Value:",
+            string button1Text = "OK",
+            string button2Text = "OK")
+        {
+            ValueSplitForm valueSplitForm = new ValueSplitForm(textBoxText, labelText, button1Text, button2Text);
+            if (valueSplitForm.ShowDialog() == DialogResult.OK)
+                return (valueSplitForm.StringValue, valueSplitForm.RightButtonClicked);
+            return null;
+        }
+
         public static List<string> ReadFileLines(string filePath)
         {
             List<string> lines = new List<string>();

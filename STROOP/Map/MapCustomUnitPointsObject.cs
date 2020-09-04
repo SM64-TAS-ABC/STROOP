@@ -26,25 +26,12 @@ namespace STROOP.Map
             Color = Color.Orange;
         }
 
-        public static MapCustomUnitPointsObject Create(string text)
+        public static MapCustomUnitPointsObject Create(string text, bool useTriplets)
         {
-            if (text == null) return null;
-            List<double?> nullableDoubleList = ParsingUtilities.ParseStringList(text)
-                .ConvertAll(word => ParsingUtilities.ParseDoubleNullable(word));
-            if (nullableDoubleList.Any(nullableDouble => !nullableDouble.HasValue))
-            {
-                return null;
-            }
-            List<int> intList = nullableDoubleList.ConvertAll(nullableDouble => (int)nullableDouble.Value);
-            if (intList.Count % 2 != 0)
-            {
-                return null;
-            }
-            List<(int x, int z)> unitPoints = new List<(int x, int z)>();
-            for (int i = 0; i < intList.Count; i += 2)
-            {
-                unitPoints.Add((intList[i], intList[i + 1]));
-            }
+            List<(double x, double y, double z)> points = MapUtilities.ParsePoints(text, useTriplets);
+            if (points == null) return null;
+            List<(int x, int z)> unitPoints = points.ConvertAll(
+                point => ((int)point.x, (int)point.z));
             return new MapCustomUnitPointsObject(unitPoints);
         }
 
