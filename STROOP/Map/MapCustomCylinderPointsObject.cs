@@ -29,53 +29,18 @@ namespace STROOP.Map
             Size = 100;
         }
 
-        public static MapCustomCylinderPointsObject Create2D(string text)
+        public static MapCustomCylinderPointsObject Create(string text, bool useTriplets)
         {
-            if (text == null) return null;
-            List<float?> nullableFloatList = ParsingUtilities.ParseStringList(text)
-                .ConvertAll(word => ParsingUtilities.ParseFloatNullable(word));
-            if (nullableFloatList.Any(nullableFloat => !nullableFloat.HasValue))
-            {
-                return null;
-            }
-            List<float> floatList = nullableFloatList.ConvertAll(nullableFloat => nullableFloat.Value);
-            if (floatList.Count % 2 != 0)
-            {
-                return null;
-            }
-            List<(float x, float y, float z)> circlePoints = new List<(float x, float y, float z)>();
-            for (int i = 0; i < floatList.Count; i += 2)
-            {
-                circlePoints.Add((floatList[i], 0, floatList[i + 1]));
-            }
-            return new MapCustomCylinderPointsObject(circlePoints);
-        }
-
-        public static MapCustomCylinderPointsObject Create3D(string text)
-        {
-            if (text == null) return null;
-            List<float?> nullableFloatList = ParsingUtilities.ParseStringList(text)
-                .ConvertAll(word => ParsingUtilities.ParseFloatNullable(word));
-            if (nullableFloatList.Any(nullableFloat => !nullableFloat.HasValue))
-            {
-                return null;
-            }
-            List<float> floatList = nullableFloatList.ConvertAll(nullableFloat => nullableFloat.Value);
-            if (floatList.Count % 3 != 0)
-            {
-                return null;
-            }
-            List<(float x, float y, float z)> circlePoints = new List<(float x, float y, float z)>();
-            for (int i = 0; i < floatList.Count; i += 3)
-            {
-                circlePoints.Add((floatList[i], floatList[i + 1], floatList[i + 2]));
-            }
-            return new MapCustomCylinderPointsObject(circlePoints);
+            List<(double x, double y, double z)> points = MapUtilities.ParsePoints(text, useTriplets);
+            if (points == null) return null;
+            List<(float x, float y, float z)> floatPoints = points.ConvertAll(
+                point => ((float)point.x, (float)point.y, (float)point.z));
+            return new MapCustomCylinderPointsObject(floatPoints);
         }
 
         protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
         {
-            return _points.ConvertAll(point => (point.x, point.z, Size, _relativeMinY, _relativeMaxY));
+            return _points.ConvertAll(point => (point.x, point.z, Size, point.y + _relativeMinY, point.y + _relativeMaxY));
         }
 
         public override Image GetInternalImage()

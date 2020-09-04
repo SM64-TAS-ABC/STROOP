@@ -191,21 +191,16 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemCustomCylinderPoints2D = new ToolStripMenuItem("Add Tracker for Custom Cylinder Points (2D)");
-            itemCustomCylinderPoints2D.Click += (sender, e) =>
+            ToolStripMenuItem itemCustomCylinderPoints = new ToolStripMenuItem("Add Tracker for Custom Cylinder Points");
+            itemCustomCylinderPoints.Click += (sender, e) =>
             {
-                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter points as pairs of floats.");
-                MapObject mapObj = MapCustomCylinderPointsObject.Create2D(text);
-                if (mapObj == null) return;
-                MapTracker tracker = new MapTracker(mapObj);
-                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
-            };
-
-            ToolStripMenuItem itemCustomCylinderPoints3D = new ToolStripMenuItem("Add Tracker for Custom Cylinder Points (3D)");
-            itemCustomCylinderPoints3D.Click += (sender, e) =>
-            {
-                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter points as triplets of floats.");
-                MapObject mapObj = MapCustomCylinderPointsObject.Create3D(text);
+                (string, bool)? result = DialogUtilities.GetStringAndSideFromDialog(
+                    labelText: "Enter points as pairs or triplets of floats.",
+                    button1Text: "Pairs",
+                    button2Text: "Triplets");
+                if (!result.HasValue) return;
+                (string text, bool side) = result.Value;
+                MapObject mapObj = MapCustomCylinderPointsObject.Create(text, side);
                 if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
@@ -405,8 +400,7 @@ namespace STROOP.Managers
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomCeilingTris);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomUnitPoints);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomCylinderPoints2D);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomCylinderPoints3D);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomCylinderPoints);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomMap);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomBackground);
