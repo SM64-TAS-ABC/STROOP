@@ -87,6 +87,7 @@ namespace STROOP.Map
         {
             ObjectDataModel obj = GetObject();
             if (obj == null) return;
+            obj.Update();
             _behaviorCriteriaToDisplay = obj.BehaviorCriteria;
         }
 
@@ -94,6 +95,7 @@ namespace STROOP.Map
         {
             ObjectDataModel obj = GetObject();
             if (obj == null) return true;
+            obj.Update();
             switch (visiblityType)
             {
                 case MapTrackerVisibilityType.VisibleAlways:
