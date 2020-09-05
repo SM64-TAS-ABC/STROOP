@@ -20,6 +20,14 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
+            //byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);
+            //byte area = Config.Stream.GetByte(MiscConfig.AreaAddress);
+
+            //byte level2 = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.LevelOffset);
+            //byte area2 = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.AreaOffset);
+
+            //Config.SetDebugText(level + " " + area + " " + level2 + " " + area2);
+
             //UpdateRacingPenguinWaypoints2();
             //Config.SetDebugText(DictionaryUtilities.GetString(Config.ObjectSlotsManager.MarkedSlotsAddressesDictionary));
         }

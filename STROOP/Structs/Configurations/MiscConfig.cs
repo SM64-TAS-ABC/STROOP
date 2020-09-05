@@ -9,6 +9,15 @@ namespace STROOP.Structs
 {
     public static class MiscConfig
     {
+        public static uint WarpDestinationAddress { get => RomVersionConfig.SwitchMap(WarpDestinationAddressUS, WarpDestinationAddressJP, WarpDestinationAddressSH, WarpDestinationAddressEU); }
+        public static readonly uint WarpDestinationAddressUS = 0x8033B248;
+        public static readonly uint WarpDestinationAddressJP = 0x80339ED8;
+        public static readonly uint WarpDestinationAddressSH = 0x8031DAA0;
+        public static readonly uint WarpDestinationAddressEU = 0x80309510;
+
+        public static uint LevelOffset = 0x01;
+        public static uint AreaOffset = 0x02;
+
         public static uint LevelAddress { get => RomVersionConfig.SwitchMap(LevelAddressUS, LevelAddressJP, LevelAddressSH, LevelAddressEU); }
         public static readonly uint LevelAddressUS = 0x8033B249;
         public static readonly uint LevelAddressJP = 0x80339ED9;
