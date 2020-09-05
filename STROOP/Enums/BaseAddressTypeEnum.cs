@@ -44,6 +44,7 @@ namespace STROOP.Structs
         Painting,
         Music,
         LastCoin,
+        WarpDestination,
 
         HackedArea,
         CamHack,

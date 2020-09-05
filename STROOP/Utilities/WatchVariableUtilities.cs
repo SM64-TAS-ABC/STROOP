@@ -194,6 +194,9 @@ namespace STROOP.Structs
                         return coinAddresses.Count > 0 ? new List<uint>() { coinAddresses.Last() } : BaseAddressListEmpty;
                     }
 
+                case BaseAddressTypeEnum.WarpDestination:
+                    return new List<uint>() { MiscConfig.WarpDestinationAddress };
+
                 case BaseAddressTypeEnum.HackedArea:
                     return new List<uint> { MiscConfig.HackedAreaAddress };
 
