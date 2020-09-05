@@ -857,8 +857,8 @@ namespace STROOP.Managers
             uint floorTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             float? yNorm = floorTriangleAddress == 0 ? (float?)null : Config.Stream.GetSingle(floorTriangleAddress + TriangleOffsetsConfig.NormY);
 
-            byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);
-            byte area = Config.Stream.GetByte(MiscConfig.AreaAddress);
+            byte level = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.LevelOffset);
+            byte area = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.AreaOffset);
             ushort loadingPoint = Config.Stream.GetUInt16(MiscConfig.LoadingPointAddress);
             ushort missionLayout = Config.Stream.GetUInt16(MiscConfig.MissionAddress);
 

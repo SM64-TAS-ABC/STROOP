@@ -60,8 +60,8 @@ namespace STROOP.Structs
 
         public MapLayout GetBestMap()
         {
-            byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);
-            byte area = Config.Stream.GetByte(MiscConfig.AreaAddress);
+            byte level = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.LevelOffset);
+            byte area = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.AreaOffset);
             ushort loadingPoint = Config.Stream.GetUInt16(MiscConfig.LoadingPointAddress);
             ushort missionLayout = Config.Stream.GetUInt16(MiscConfig.MissionAddress);
             float y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -70,8 +70,8 @@ namespace STROOP.Structs
 
         public (byte level, byte area, ushort loadingPoint, ushort missionLayout) GetCurrentLocationStats()
         {
-            byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);
-            byte area = Config.Stream.GetByte(MiscConfig.AreaAddress);
+            byte level = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.LevelOffset);
+            byte area = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.AreaOffset);
             ushort loadingPoint = Config.Stream.GetUInt16(MiscConfig.LoadingPointAddress);
             ushort missionLayout = Config.Stream.GetUInt16(MiscConfig.MissionAddress);
             return (level, area, loadingPoint, missionLayout);

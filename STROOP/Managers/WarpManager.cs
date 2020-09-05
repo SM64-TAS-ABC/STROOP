@@ -175,8 +175,8 @@ namespace STROOP.Managers
             uint warpNode1Address = mainSegmentEnd;
             uint warpNode2Address = mainSegmentEnd + 0xC;
 
-            byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);
-            byte area = Config.Stream.GetByte(MiscConfig.AreaAddress);
+            byte level = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.LevelOffset);
+            byte area = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.AreaOffset);
 
             Config.Stream.SetValue((byte)teleporter1Id, warpNode1Address + 0x0);
             Config.Stream.SetValue(level, warpNode1Address + 0x1);

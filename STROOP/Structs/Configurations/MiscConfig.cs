@@ -18,18 +18,6 @@ namespace STROOP.Structs
         public static uint LevelOffset = 0x01;
         public static uint AreaOffset = 0x02;
 
-        public static uint LevelAddress { get => RomVersionConfig.SwitchMap(LevelAddressUS, LevelAddressJP, LevelAddressSH, LevelAddressEU); }
-        public static readonly uint LevelAddressUS = 0x8033B249;
-        public static readonly uint LevelAddressJP = 0x80339ED9;
-        public static readonly uint LevelAddressSH = 0x8031DAA1;
-        public static readonly uint LevelAddressEU = 0x80309511;
-
-        public static uint AreaAddress { get => RomVersionConfig.SwitchMap(AreaAddressUS, AreaAddressJP, AreaAddressSH, AreaAddressEU); }
-        public static readonly uint AreaAddressUS = 0x8033B24A;
-        public static readonly uint AreaAddressJP = 0x80339EDA;
-        public static readonly uint AreaAddressSH = 0x8031DAA2;
-        public static readonly uint AreaAddressEU = 0x80309512;
-
         public static uint LoadingPointAddress { get => RomVersionConfig.SwitchMap(LoadingPointAddressUS, LoadingPointAddressJP, LoadingPointAddressSH, LoadingPointAddressEU); }
         public static readonly uint LoadingPointAddressUS = 0x8033BACA;
         public static readonly uint LoadingPointAddressJP = 0x8033A75A;

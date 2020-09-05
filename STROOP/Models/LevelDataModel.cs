@@ -18,7 +18,7 @@ namespace STROOP.Models
             get => _index;
             set
             {
-                if (Config.Stream.SetValue(value, MiscConfig.LevelAddress))
+                if (Config.Stream.SetValue(value, MiscConfig.WarpDestinationAddress + MiscConfig.LevelOffset))
                     _index = value;
             }
         }
@@ -29,7 +29,7 @@ namespace STROOP.Models
             get => _area;
             set
             {
-                if (Config.Stream.SetValue(value, MiscConfig.AreaAddress))
+                if (Config.Stream.SetValue(value, MiscConfig.WarpDestinationAddress + MiscConfig.AreaOffset))
                     _area = value;
             }
         }
@@ -59,8 +59,8 @@ namespace STROOP.Models
         public void Update()
         {
             // Get level and area
-            _index = Config.Stream.GetByte(MiscConfig.LevelAddress);
-            _area = Config.Stream.GetByte(MiscConfig.AreaAddress);
+            _index = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.LevelOffset);
+            _area = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.AreaOffset);
             _loadingPoint = Config.Stream.GetUInt16(MiscConfig.LoadingPointAddress);
             _missionLayout = Config.Stream.GetUInt16(MiscConfig.MissionAddress);
         }
