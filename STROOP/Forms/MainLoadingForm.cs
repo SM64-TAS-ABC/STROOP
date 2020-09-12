@@ -15,6 +15,7 @@ namespace STROOP.Forms
     public partial class MainLoadingForm : Form
     {
         int _maxStatus;
+        Point lastclickedpoint;
 
         public MainLoadingForm(int maxStatus)
         {
@@ -46,6 +47,36 @@ namespace STROOP.Forms
 
                 labelLoadingStatus.Text = String.Format(status + " [{0} / {1}]", number + 1, _maxStatus);
             }));
+        }
+
+        private void MainLoadingForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastclickedpoint.X = e.X;
+            lastclickedpoint.Y = e.Y;
+        }
+
+        private void MainLoadingForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastclickedpoint.X;
+                this.Top += e.Y - lastclickedpoint.Y;
+            }   
+        }
+
+        private void progressBarLoading_MouseDown(object sender, MouseEventArgs e)
+        {
+            // This has 4 references (each control)
+            lastclickedpoint = new Point(e.X, e.Y);
+        }
+
+        private void progressBarLoading_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastclickedpoint.X;
+                this.Top += e.Y - lastclickedpoint.Y;
+            }
         }
     }
 }
