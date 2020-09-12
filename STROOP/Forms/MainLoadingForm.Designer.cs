@@ -47,6 +47,8 @@
             this.progressBarLoading.Name = "progressBarLoading";
             this.progressBarLoading.Size = new System.Drawing.Size(423, 51);
             this.progressBarLoading.TabIndex = 0;
+            this.progressBarLoading.MouseDown += new System.Windows.Forms.MouseEventHandler(this.progressBarLoading_MouseDown);
+            this.progressBarLoading.MouseMove += new System.Windows.Forms.MouseEventHandler(this.progressBarLoading_MouseMove);
             // 
             // labelLoading
             // 
@@ -62,6 +64,8 @@
             this.labelLoading.TabIndex = 1;
             this.labelLoading.Text = "Loading STROOP";
             this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelLoading.MouseDown += new System.Windows.Forms.MouseEventHandler(this.progressBarLoading_MouseDown);
+            this.labelLoading.MouseMove += new System.Windows.Forms.MouseEventHandler(this.progressBarLoading_MouseMove);
             // 
             // labelLoadingStatus
             // 
@@ -73,6 +77,8 @@
             this.labelLoadingStatus.Size = new System.Drawing.Size(54, 13);
             this.labelLoadingStatus.TabIndex = 2;
             this.labelLoadingStatus.Text = "Loading...";
+            this.labelLoadingStatus.MouseDown += new System.Windows.Forms.MouseEventHandler(this.progressBarLoading_MouseDown);
+            this.labelLoadingStatus.MouseMove += new System.Windows.Forms.MouseEventHandler(this.progressBarLoading_MouseMove);
             // 
             // tableLayoutPanel1
             // 
@@ -106,8 +112,10 @@
             this.textBoxLoadingHelpfulHint.Size = new System.Drawing.Size(421, 73);
             this.textBoxLoadingHelpfulHint.TabIndex = 3;
             this.textBoxLoadingHelpfulHint.Text = "Helpful Hint: Do something.\nLine 2\nLine 3\nLine 4";
+            this.textBoxLoadingHelpfulHint.MouseDown += new System.Windows.Forms.MouseEventHandler(this.progressBarLoading_MouseDown);
+            this.textBoxLoadingHelpfulHint.MouseMove += new System.Windows.Forms.MouseEventHandler(this.progressBarLoading_MouseMove);
             // 
-            // LoadingForm
+            // MainLoadingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -116,10 +124,12 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "LoadingForm";
+            this.Name = "MainLoadingForm";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "LoadingForm";
             this.Load += new System.EventHandler(this.LoadingForm_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainLoadingForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainLoadingForm_MouseMove);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
