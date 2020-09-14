@@ -182,8 +182,8 @@ namespace STROOP.Controls
         {
             if (!_displayAsHex) return value;
             return SavedSettingsConfig.DisplayAsHexUsesMemory
-                ? HexUtilities.FormatMemory(value, GetHexDigitCount() ?? 8, true)
-                : HexUtilities.FormatValue(value, GetHexDigitCount() ?? 8, true);
+                ? HexUtilities.FormatMemory(value, GetHexDigitCount(), true)
+                : HexUtilities.FormatValue(value, GetHexDigitCount(), true);
         }
 
         protected override object HandleHexUndisplaying(object value)
