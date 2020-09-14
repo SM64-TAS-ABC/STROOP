@@ -102,54 +102,59 @@ namespace STROOP.Controls
             ToolStripMenuItem addMappingVariablesItem = new ToolStripMenuItem("Add Mapping Variables");
             addMappingVariablesItem.Click += (sender, e) => AddVariables(MappingConfig.GetVariables());
 
-            ToolStripMenuItem addDummyVariableItem = new ToolStripMenuItem("Add Dummy Variable");
-            addDummyVariableItem.Click += (sender, e) =>
+            ToolStripMenuItem addDummyVariableItem = new ToolStripMenuItem("Add Dummy Variable...");
+            foreach (string typeString in TypeUtilities.InGameTypeList)
             {
-                int numEntries = 1;
-                if (KeyboardUtilities.IsCtrlHeld())
+                ToolStripMenuItem typeItem = new ToolStripMenuItem(typeString);
+                addDummyVariableItem.DropDownItems.Add(typeItem);
+                typeItem.Click += (sender, e) =>
                 {
-                    string numEntriesString = DialogUtilities.GetStringFromDialog(labelText: "Enter Num Vars:");
-                    if (numEntriesString == null) return;
-                    int parsed = ParsingUtilities.ParseInt(numEntriesString);
-                    parsed = Math.Max(parsed, 0);
-                    numEntries = parsed;
-                }
+                    int numEntries = 1;
+                    if (KeyboardUtilities.IsCtrlHeld())
+                    {
+                        string numEntriesString = DialogUtilities.GetStringFromDialog(labelText: "Enter Num Vars:");
+                        if (numEntriesString == null) return;
+                        int parsed = ParsingUtilities.ParseInt(numEntriesString);
+                        parsed = Math.Max(parsed, 0);
+                        numEntries = parsed;
+                    }
 
-                List<WatchVariableControl> controls = new List<WatchVariableControl>();
-                for (int i = 0; i < numEntries; i++)
-                {
-                    string specialType = WatchVariableSpecialUtilities.AddDummyEntry();
-                    WatchVariable watchVariable =
-                        new WatchVariable(
-                            memoryTypeName: null,
-                            specialType: specialType,
-                            baseAddressType: BaseAddressTypeEnum.None,
-                            offsetUS: null,
-                            offsetJP: null,
-                            offsetSH: null,
-                            offsetEU: null,
-                            offsetDefault: null,
-                            mask: null,
-                            shift: null,
-                            handleMapping: true);
-                    WatchVariableControlPrecursor precursor =
-                        new WatchVariableControlPrecursor(
-                            name: specialType,
-                            watchVar: watchVariable,
-                            subclass: WatchVariableSubclass.Number,
-                            backgroundColor: null,
-                            displayType: null,
-                            roundingLimit: null,
-                            useHex: null,
-                            invertBool: null,
-                            isYaw: null,
-                            coordinate: null,
-                            groupList: new List<VariableGroup>() { VariableGroup.Custom });
-                    WatchVariableControl control = precursor.CreateWatchVariableControl();
-                    controls.Add(control);
-                }
-                AddVariables(controls);
-            };
+                    List<WatchVariableControl> controls = new List<WatchVariableControl>();
+                    for (int i = 0; i < numEntries; i++)
+                    {
+                        string specialType = WatchVariableSpecialUtilities.AddDummyEntry(typeString);
+                        WatchVariable watchVariable =
+                            new WatchVariable(
+                                memoryTypeName: null,
+                                specialType: specialType,
+                                baseAddressType: BaseAddressTypeEnum.None,
+                                offsetUS: null,
+                                offsetJP: null,
+                                offsetSH: null,
+                                offsetEU: null,
+                                offsetDefault: null,
+                                mask: null,
+                                shift: null,
+                                handleMapping: true);
+                        WatchVariableControlPrecursor precursor =
+                            new WatchVariableControlPrecursor(
+                                name: specialType,
+                                watchVar: watchVariable,
+                                subclass: WatchVariableSubclass.Number,
+                                backgroundColor: null,
+                                displayType: null,
+                                roundingLimit: null,
+                                useHex: null,
+                                invertBool: null,
+                                isYaw: null,
+                                coordinate: null,
+                                groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                        WatchVariableControl control = precursor.CreateWatchVariableControl();
+                        controls.Add(control);
+                    }
+                    AddVariables(controls);
+                };
+            }
 
             ToolStripMenuItem openSaveClearItem = new ToolStripMenuItem("Open / Save / Clear ...");
             ControlUtilities.AddDropDownItems(

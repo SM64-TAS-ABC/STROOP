@@ -41,5 +41,10 @@ namespace STROOP.Utilities
             return (num > 0 ? "+" : "") + num;
         }
 
+        public static string Capitalize(string s)
+        {
+            if (string.IsNullOrEmpty(s)) return s;
+            return s.Substring(0, 1).ToUpper() + s.Substring(1);
+        }
     }
 } 
