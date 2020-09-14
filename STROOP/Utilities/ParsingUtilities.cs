@@ -275,6 +275,23 @@ namespace STROOP.Utilities
             return null;
         }
 
+        public static object ParseValueRoundingWrapping(object obj, Type type)
+        {
+            if (obj != null && obj.ToString().StartsWith("0x"))
+            {
+                obj = ParseHexNullable(obj);
+            }
+            if (type == typeof(byte)) return ParseByteRoundingWrapping(obj);
+            if (type == typeof(sbyte)) return ParseSByteRoundingWrapping(obj);
+            if (type == typeof(short)) return ParseShortRoundingWrapping(obj);
+            if (type == typeof(ushort)) return ParseUShortRoundingWrapping(obj);
+            if (type == typeof(int)) return ParseIntRoundingWrapping(obj);
+            if (type == typeof(uint)) return ParseUIntRoundingWrapping(obj);
+            if (type == typeof(float)) return ParseFloatNullable(obj);
+            if (type == typeof(double)) return ParseDoubleNullable(obj);
+            return null;
+        }
+
         public static List<string> ParseStringList(string text, bool replaceCharacters = true, bool replaceComma = true)
         {
             if (text == null || text == "")

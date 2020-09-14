@@ -354,7 +354,7 @@ namespace STROOP.Structs
         {
             int index = SpecialConfig.DummyValues.Count;
             Type type = TypeUtilities.StringToType[typeString];
-            SpecialConfig.DummyValues.Add(ParsingUtilities.ParseValueNullable(0, type));
+            SpecialConfig.DummyValues.Add(ParsingUtilities.ParseValueRoundingWrapping(0, type));
             string specialType = "Dummy" + index + StringUtilities.Capitalize(typeString);
 
             _dictionary.Add(specialType,
@@ -364,7 +364,7 @@ namespace STROOP.Structs
                 },
                 (double value, uint dummy) =>
                 {
-                    object o = ParsingUtilities.ParseValueNullable(value, type);
+                    object o = ParsingUtilities.ParseValueRoundingWrapping(value, type);
                     if (o == null) return false;
                     SpecialConfig.DummyValues[index] = o;
                     return true;
