@@ -327,6 +327,14 @@ namespace STROOP.Utilities
             return (nx, ny, nz, originOffset);
         }
 
+        public static (TriangleDataModel, float) FindFloorAndY(float floatX, float floatY, float floatZ)
+        {
+            TriangleDataModel tri = FindFloor(floatX, floatY, floatZ);
+            if (tri == null) return (tri, -11000);
+            float y = tri.GetTruncatedHeightOnTriangle(floatX, floatZ);
+            return (tri, y);
+        }
+
         public static TriangleDataModel FindFloor(float floatX, float floatY, float floatZ)
         {
             int LEVEL_BOUNDARY_MAX = 0x2000;

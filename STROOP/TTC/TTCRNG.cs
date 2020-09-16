@@ -1,4 +1,5 @@
-﻿using STROOP.Structs.Configurations;
+﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,11 @@ namespace STROOP.Ttc
 
         //start off with RNG 0 by default
         private int _index;
+
+        public TtcRng()
+            : this(Config.Stream.GetUInt16(MiscConfig.RngAddress))
+        {
+        }
 
         public TtcRng(ushort rng)
         {
@@ -47,6 +53,11 @@ namespace STROOP.Ttc
             return GetRng();
         }
 
+        public float PollFloat()
+        {
+            return PollRNG() / (float)0x10000;
+        }
+
         public void PollRNG(int number)
         {
             for (int i = 0; i < number; i++)
@@ -67,6 +78,11 @@ namespace STROOP.Ttc
         public void SetRng(ushort rngValue)
         {
             _index = RngIndexer.GetRngIndex(rngValue);
+        }
+
+        public TtcRng Clone()
+        {
+            return new TtcRng(GetRng());
         }
 
         public override string ToString()
