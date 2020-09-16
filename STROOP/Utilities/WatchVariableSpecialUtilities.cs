@@ -3017,7 +3017,7 @@ namespace STROOP.Structs
             _dictionary.Add("TriangleCells",
                 ((uint triAddress) =>
                 {
-                    TriangleDataModel tri = new TriangleDataModel(triAddress);
+                    TriangleDataModel tri = TriangleDataModel.Create(triAddress);
                     short minCellX = lower_cell_index(tri.GetMinX());
                     short maxCellX = upper_cell_index(tri.GetMaxX());
                     short minCellZ = lower_cell_index(tri.GetMinZ());
@@ -3119,84 +3119,84 @@ namespace STROOP.Structs
             _dictionary.Add("TriMinX",
                 ((uint triAddress) =>
                 {
-                    return new TriangleDataModel(triAddress).GetMinX();
+                    return TriangleDataModel.Create(triAddress).GetMinX();
                 },
                 DEFAULT_SETTER));
 
             _dictionary.Add("TriMaxX",
                 ((uint triAddress) =>
                 {
-                    return new TriangleDataModel(triAddress).GetMaxX();
+                    return TriangleDataModel.Create(triAddress).GetMaxX();
                 },
                 DEFAULT_SETTER));
 
             _dictionary.Add("TriMinY",
                 ((uint triAddress) =>
                 {
-                    return new TriangleDataModel(triAddress).GetMinY();
+                    return TriangleDataModel.Create(triAddress).GetMinY();
                 },
                 DEFAULT_SETTER));
 
             _dictionary.Add("TriMaxY",
                 ((uint triAddress) =>
                 {
-                    return new TriangleDataModel(triAddress).GetMaxY();
+                    return TriangleDataModel.Create(triAddress).GetMaxY();
                 },
                 DEFAULT_SETTER));
 
             _dictionary.Add("TriMinZ",
                 ((uint triAddress) =>
                 {
-                    return new TriangleDataModel(triAddress).GetMinZ();
+                    return TriangleDataModel.Create(triAddress).GetMinZ();
                 },
                 DEFAULT_SETTER));
 
             _dictionary.Add("TriMaxZ",
                 ((uint triAddress) =>
                 {
-                    return new TriangleDataModel(triAddress).GetMaxZ();
+                    return TriangleDataModel.Create(triAddress).GetMaxZ();
                 },
                 DEFAULT_SETTER));
 
             _dictionary.Add("TriRangeX",
                 ((uint triAddress) =>
                 {
-                    return new TriangleDataModel(triAddress).GetRangeX();
+                    return TriangleDataModel.Create(triAddress).GetRangeX();
                 },
                 DEFAULT_SETTER));
 
             _dictionary.Add("TriRangeY",
                 ((uint triAddress) =>
                 {
-                    return new TriangleDataModel(triAddress).GetRangeY();
+                    return TriangleDataModel.Create(triAddress).GetRangeY();
                 },
                 DEFAULT_SETTER));
 
             _dictionary.Add("TriRangeZ",
                 ((uint triAddress) =>
                 {
-                    return new TriangleDataModel(triAddress).GetRangeZ();
+                    return TriangleDataModel.Create(triAddress).GetRangeZ();
                 },
                 DEFAULT_SETTER));
 
             _dictionary.Add("TriMidpointX",
                 ((uint triAddress) =>
                 {
-                    return new TriangleDataModel(triAddress).GetMidpointX();
+                    return TriangleDataModel.Create(triAddress).GetMidpointX();
                 },
                 DEFAULT_SETTER));
 
             _dictionary.Add("TriMidpointY",
                 ((uint triAddress) =>
                 {
-                    return new TriangleDataModel(triAddress).GetMidpointY();
+                    return TriangleDataModel.Create(triAddress).GetMidpointY();
                 },
                 DEFAULT_SETTER));
 
             _dictionary.Add("TriMidpointZ",
                 ((uint triAddress) =>
                 {
-                    return new TriangleDataModel(triAddress).GetMidpointZ();
+                    return TriangleDataModel.Create(triAddress).GetMidpointZ();
                 },
                 DEFAULT_SETTER));
 
@@ -3210,7 +3210,7 @@ namespace STROOP.Structs
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
                         triStruct.X3, triStruct.Z3, 1, 2,
-                        new TriangleDataModel(triAddress).Classification);
+                        TriangleDataModel.Create(triAddress).Classification);
                     return signedDistToLine12;
                 },
                 (double dist, uint triAddress) =>
@@ -3222,7 +3222,7 @@ namespace STROOP.Structs
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
                         triStruct.X3, triStruct.Z3, 1, 2,
-                        new TriangleDataModel(triAddress).Classification);
+                        TriangleDataModel.Create(triAddress).Classification);
 
                     double missingDist = dist - signedDistToLine12;
                     double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
@@ -3245,7 +3245,7 @@ namespace STROOP.Structs
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
                         triStruct.X3, triStruct.Z3, 2, 3,
-                        new TriangleDataModel(triAddress).Classification);
+                        TriangleDataModel.Create(triAddress).Classification);
                     return signedDistToLine23;
                 },
                 (double dist, uint triAddress) =>
@@ -3257,7 +3257,7 @@ namespace STROOP.Structs
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
                         triStruct.X3, triStruct.Z3, 2, 3,
-                        new TriangleDataModel(triAddress).Classification);
+                        TriangleDataModel.Create(triAddress).Classification);
 
                     double missingDist = dist - signedDistToLine23;
                     double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
@@ -3280,7 +3280,7 @@ namespace STROOP.Structs
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
                         triStruct.X3, triStruct.Z3, 3, 1,
-                        new TriangleDataModel(triAddress).Classification);
+                        TriangleDataModel.Create(triAddress).Classification);
                     return signedDistToLine31;
                 },
                 (double dist, uint triAddress) =>
@@ -3292,7 +3292,7 @@ namespace STROOP.Structs
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
                         triStruct.X3, triStruct.Z3, 3, 1,
-                        new TriangleDataModel(triAddress).Classification);
+                        TriangleDataModel.Create(triAddress).Classification);
 
                     double missingDist = dist - signedDistToLine31;
                     double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
@@ -3315,7 +3315,7 @@ namespace STROOP.Structs
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
                         triStruct.X3, triStruct.Z3, 1, 2,
-                        new TriangleDataModel(triAddress).Classification);
+                        TriangleDataModel.Create(triAddress).Classification);
                     return signedDistToLine12;
                 },
                 (double dist, uint triAddress) =>
@@ -3327,7 +3327,7 @@ namespace STROOP.Structs
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
                         triStruct.X3, triStruct.Z3, 1, 2,
-                        new TriangleDataModel(triAddress).Classification);
+                        TriangleDataModel.Create(triAddress).Classification);
 
                     double missingDist = dist - signedDistToLine12;
                     double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
@@ -3351,7 +3351,7 @@ namespace STROOP.Structs
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
                         triStruct.X3, triStruct.Z3, 2, 3,
-                        new TriangleDataModel(triAddress).Classification);
+                        TriangleDataModel.Create(triAddress).Classification);
                     return signedDistToLine23;
                 },
                 (double dist, uint triAddress) =>
@@ -3363,7 +3363,7 @@ namespace STROOP.Structs
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
                         triStruct.X3, triStruct.Z3, 2, 3,
-                        new TriangleDataModel(triAddress).Classification);
+                        TriangleDataModel.Create(triAddress).Classification);
 
                     double missingDist = dist - signedDistToLine23;
                     double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
@@ -3387,7 +3387,7 @@ namespace STROOP.Structs
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
                         triStruct.X3, triStruct.Z3, 3, 1,
-                        new TriangleDataModel(triAddress).Classification);
+                        TriangleDataModel.Create(triAddress).Classification);
                     return signedDistToLine31;
                 },
                 (double dist, uint triAddress) =>
@@ -3399,7 +3399,7 @@ namespace STROOP.Structs
                         triStruct.X1, triStruct.Z1,
                         triStruct.X2, triStruct.Z2,
                         triStruct.X3, triStruct.Z3, 3, 1,
-                        new TriangleDataModel(triAddress).Classification);
+                        TriangleDataModel.Create(triAddress).Classification);
 
                     double missingDist = dist - signedDistToLine31;
                     double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);

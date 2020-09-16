@@ -611,6 +611,7 @@ namespace STROOP
                 Config.HackManager.Update();
                 WatchVariableLockManager.Update();
                 TestUtilities.Update();
+                TriangleDataModel.ClearCache();
             }));
         }
 

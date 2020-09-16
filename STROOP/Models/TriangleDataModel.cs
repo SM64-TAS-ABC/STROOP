@@ -89,7 +89,24 @@ namespace STROOP.Models
 
         private readonly List<Object> FieldValueList;
 
-        public TriangleDataModel(uint triangleAddress)
+        private static Dictionary<uint, TriangleDataModel> _cache = new Dictionary<uint, TriangleDataModel>();
+
+        public static void ClearCache()
+        {
+            _cache.Clear();
+        }
+
+        public static TriangleDataModel Create(uint triangleAddress)
+        {
+            if (!_cache.ContainsKey(triangleAddress))
+            {
+                TriangleDataModel tri = new TriangleDataModel(triangleAddress);
+                _cache[triangleAddress] = tri;
+            }
+            return _cache[triangleAddress];
+        }
+
+        private TriangleDataModel(uint triangleAddress)
         {
             Address = triangleAddress;
 

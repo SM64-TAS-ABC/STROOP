@@ -200,7 +200,7 @@ namespace STROOP.Map
         public static List<TriangleDataModel> GetTriangles(List<uint> triAddresses)
         {
             return triAddresses.FindAll(triAddress => triAddress != 0)
-                .ConvertAll(triAddress => new TriangleDataModel(triAddress));
+                .ConvertAll(triAddress => TriangleDataModel.Create(triAddress));
         }
         
         public static List<List<(float x, float y, float z)>> ConvertUnitPointsToQuads(List<(int x, int z)> unitPoints)

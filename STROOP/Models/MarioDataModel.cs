@@ -354,11 +354,11 @@ namespace STROOP.Models
 
             // Update triangles
             UInt32 floorTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-            _floorTriangle = floorTriangleAddress != 0x00 ? new TriangleDataModel(floorTriangleAddress) : null;
+            _floorTriangle = floorTriangleAddress != 0x00 ? TriangleDataModel.Create(floorTriangleAddress) : null;
             UInt32 wallTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
-            _wallTriangle = wallTriangleAddress != 0x00 ? new TriangleDataModel(wallTriangleAddress) : null;
+            _wallTriangle = wallTriangleAddress != 0x00 ? TriangleDataModel.Create(wallTriangleAddress) : null;
             UInt32 ceilingTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
-            _ceilingTriangle = ceilingTriangleAddress != 0x00 ? new TriangleDataModel(ceilingTriangleAddress) : null;
+            _ceilingTriangle = ceilingTriangleAddress != 0x00 ? TriangleDataModel.Create(ceilingTriangleAddress) : null;
 
             _heldObject = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
             _stoodOnObject = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);

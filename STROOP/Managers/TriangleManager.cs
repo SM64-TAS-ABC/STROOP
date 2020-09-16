@@ -330,7 +330,7 @@ namespace STROOP.Managers
         {
             foreach (uint triangleAddress in TriangleAddresses)
             {
-                TriangleDataModel tri = new TriangleDataModel(triangleAddress);
+                TriangleDataModel tri = TriangleDataModel.Create(triangleAddress);
                 UpdateBasedOnCoordinates(triangleAddress, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
             }
         }
@@ -489,7 +489,7 @@ namespace STROOP.Managers
         public TriangleDataModel GetTriangleStruct(uint address)
         {
             if (_triangleCache.ContainsKey(address)) return _triangleCache[address];
-            TriangleDataModel triStruct = new TriangleDataModel(address);
+            TriangleDataModel triStruct = TriangleDataModel.Create(address);
             _triangleCache.Add(address, triStruct);
             return triStruct;
         }
