@@ -2109,7 +2109,7 @@ namespace STROOP.Structs
                     float scaledMagnitude = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ScaledMagnitudeOffset);
                     float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     uint floorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-                    TriangleDataModel floorStruct = Config.TriangleManager.GetTriangleStruct(floorAddress);
+                    TriangleDataModel floorStruct = TriangleDataModel.Create(floorAddress);
                     double A = floorStruct.FrictionMultiplier;
 
                     int intendedDYaw = intendedYaw - movingYaw;
@@ -2583,7 +2583,7 @@ namespace STROOP.Structs
             _dictionary.Add("Classification",
                 ((uint triAddress) =>
                 {
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     return triStruct.Classification.ToString();
                 },
                 DEFAULT_SETTER));
@@ -2591,7 +2591,7 @@ namespace STROOP.Structs
             _dictionary.Add("TriangleTypeDescription",
                 ((uint triAddress) =>
                 {
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     return triStruct.Description;
                 },
                 DEFAULT_SETTER));
@@ -2599,7 +2599,7 @@ namespace STROOP.Structs
             _dictionary.Add("TriangleSlipperiness",
                 ((uint triAddress) =>
                 {
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     return triStruct.Slipperiness;
                 },
                 DEFAULT_SETTER));
@@ -2607,7 +2607,7 @@ namespace STROOP.Structs
             _dictionary.Add("TriangleSlipperinessDescription",
                 ((uint triAddress) =>
                 {
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     return triStruct.SlipperinessDescription;
                 },
                 DEFAULT_SETTER));
@@ -2615,7 +2615,7 @@ namespace STROOP.Structs
             _dictionary.Add("TriangleFrictionMultiplier",
                 ((uint triAddress) =>
                 {
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     return triStruct.FrictionMultiplier;
                 },
                 DEFAULT_SETTER));
@@ -2623,7 +2623,7 @@ namespace STROOP.Structs
             _dictionary.Add("TriangleExertion",
                 ((uint triAddress) =>
                 {
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     return triStruct.Exertion ? 1 : 0;
                 },
                 DEFAULT_SETTER));
@@ -2669,7 +2669,7 @@ namespace STROOP.Structs
             _dictionary.Add("Steepness",
                 ((uint triAddress) =>
                 {
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double steepness = MoreMath.RadiansToAngleUnits(Math.Acos(triStruct.NormY));
                     return steepness;
                 },
@@ -2865,7 +2865,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double normalDistAway =
                         marioPos.X * triStruct.NormX +
                         marioPos.Y * triStruct.NormY +
@@ -2876,7 +2876,7 @@ namespace STROOP.Structs
                 (double distAway, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
 
                     double missingDist = distAway -
                         marioPos.X * triStruct.NormX -
@@ -2899,7 +2899,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double verticalDistAway =
                         marioPos.Y + (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
                     return verticalDistAway;
@@ -2907,7 +2907,7 @@ namespace STROOP.Structs
                 (double distAbove, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double newMarioY = distAbove - (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
                     return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
                 }));
@@ -2916,7 +2916,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double heightOnTriangle = triStruct.GetHeightOnTriangle(marioPos.X, marioPos.Z);
                     return heightOnTriangle;
                 },
@@ -2926,7 +2926,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle self = PositionAngle.Self;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double normalDistAway =
                         self.X * triStruct.NormX +
                         self.Y * triStruct.NormY +
@@ -2937,7 +2937,7 @@ namespace STROOP.Structs
                 (double distAway, uint triAddress) =>
                 {
                     PositionAngle self = PositionAngle.Self;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
 
                     double missingDist = distAway -
                         self.X * triStruct.NormX -
@@ -2961,7 +2961,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double verticalDistAway =
                         selfPos.Y + (selfPos.X * triStruct.NormX + selfPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
                     return verticalDistAway;
@@ -2969,7 +2969,7 @@ namespace STROOP.Structs
                 (double distAbove, uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double newSelfY = distAbove - (selfPos.X * triStruct.NormX + selfPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
                     selfPos.SetY(newSelfY);
                     return true;
@@ -2980,7 +2980,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double heightOnTriangle = triStruct.GetHeightOnTriangle(selfPos.X, selfPos.Z);
                     return heightOnTriangle;
                 },
@@ -3204,7 +3204,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
                         marioPos.X, marioPos.Z,
                         triStruct.X1, triStruct.Z1,
@@ -3216,7 +3216,7 @@ namespace STROOP.Structs
                 (double dist, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
                         marioPos.X, marioPos.Z,
                         triStruct.X1, triStruct.Z1,
@@ -3239,7 +3239,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
                         marioPos.X, marioPos.Z,
                         triStruct.X1, triStruct.Z1,
@@ -3251,7 +3251,7 @@ namespace STROOP.Structs
                 (double dist, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
                         marioPos.X, marioPos.Z,
                         triStruct.X1, triStruct.Z1,
@@ -3274,7 +3274,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
                         marioPos.X, marioPos.Z,
                         triStruct.X1, triStruct.Z1,
@@ -3286,7 +3286,7 @@ namespace STROOP.Structs
                 (double dist, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
                         marioPos.X, marioPos.Z,
                         triStruct.X1, triStruct.Z1,
@@ -3309,7 +3309,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
                         selfPos.X, selfPos.Z,
                         triStruct.X1, triStruct.Z1,
@@ -3321,7 +3321,7 @@ namespace STROOP.Structs
                 (double dist, uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
                         selfPos.X, selfPos.Z,
                         triStruct.X1, triStruct.Z1,
@@ -3345,7 +3345,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
                         selfPos.X, selfPos.Z,
                         triStruct.X1, triStruct.Z1,
@@ -3357,7 +3357,7 @@ namespace STROOP.Structs
                 (double dist, uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
                         selfPos.X, selfPos.Z,
                         triStruct.X1, triStruct.Z1,
@@ -3381,7 +3381,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
                         selfPos.X, selfPos.Z,
                         triStruct.X1, triStruct.Z1,
@@ -3393,7 +3393,7 @@ namespace STROOP.Structs
                 (double dist, uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
                         selfPos.X, selfPos.Z,
                         triStruct.X1, triStruct.Z1,
@@ -3417,7 +3417,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
                     double angleDiff = marioPos.Angle - angleV1ToV2;
@@ -3426,7 +3426,7 @@ namespace STROOP.Structs
                 (double angleDiff, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);;
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);;
                     double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
                     double newMarioAngleDouble = angleV1ToV2 + angleDiff;
@@ -3439,7 +3439,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double angleV2ToV1 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X2, triStruct.Z2, triStruct.X1, triStruct.Z1);
                     double angleDiff = marioPos.Angle - angleV2ToV1;
@@ -3448,7 +3448,7 @@ namespace STROOP.Structs
                 (double angleDiff, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double angleV2ToV1 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X2, triStruct.Z2, triStruct.X1, triStruct.Z1);
                     double newMarioAngleDouble = angleV2ToV1 + angleDiff;
@@ -3461,7 +3461,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double angleV2ToV3 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
                     double angleDiff = marioPos.Angle - angleV2ToV3;
@@ -3470,7 +3470,7 @@ namespace STROOP.Structs
                 (double angleDiff, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double angleV2ToV3 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
                     double newMarioAngleDouble = angleV2ToV3 + angleDiff;
@@ -3483,7 +3483,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double angleV3ToV2 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X3, triStruct.Z3, triStruct.X2, triStruct.Z2);
                     double angleDiff = marioPos.Angle - angleV3ToV2;
@@ -3492,7 +3492,7 @@ namespace STROOP.Structs
                 (double angleDiff, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double angleV3ToV2 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X3, triStruct.Z3, triStruct.X2, triStruct.Z2);
                     double newMarioAngleDouble = angleV3ToV2 + angleDiff;
@@ -3505,7 +3505,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double angleV3ToV1 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
                     double angleDiff = marioPos.Angle - angleV3ToV1;
@@ -3514,7 +3514,7 @@ namespace STROOP.Structs
                 (double angleDiff, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double angleV3ToV1 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
                     double newMarioAngleDouble = angleV3ToV1 + angleDiff;
@@ -3527,7 +3527,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double angleV1ToV3 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X1, triStruct.Z1, triStruct.X3, triStruct.Z3);
                     double angleDiff = marioPos.Angle - angleV1ToV3;
@@ -3536,7 +3536,7 @@ namespace STROOP.Structs
                 (double angleDiff, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
-                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double angleV1ToV3 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X1, triStruct.Z1, triStruct.X3, triStruct.Z3);
                     double newMarioAngleDouble = angleV1ToV3 + angleDiff;
@@ -4778,7 +4778,7 @@ namespace STROOP.Structs
         public static int GetClosestTriangleVertexIndex(uint triAddress)
         {
             PositionAngle marioPos = PositionAngle.Mario;
-            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
             double distToV1 = MoreMath.GetDistanceBetween(
                 marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
             double distToV2 = MoreMath.GetDistanceBetween(
@@ -4793,7 +4793,7 @@ namespace STROOP.Structs
         private static PositionAngle GetClosestTriangleVertexPosition(uint triAddress)
         {
             int closestTriangleVertexIndex = GetClosestTriangleVertexIndex(triAddress);
-            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
             if (closestTriangleVertexIndex == 1) return PositionAngle.Tri(triAddress, 1);
             if (closestTriangleVertexIndex == 2) return PositionAngle.Tri(triAddress, 2);
             if (closestTriangleVertexIndex == 3) return PositionAngle.Tri(triAddress, 3);
@@ -4808,7 +4808,7 @@ namespace STROOP.Structs
 
         public static double GetTriangleUphillAngle(uint triAddress)
         {
-            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
             return GetTriangleUphillAngle(triStruct);
         }
 
@@ -4822,7 +4822,7 @@ namespace STROOP.Structs
 
         private static double GetMaxHorizontalSpeedOnTriangle(uint triAddress, bool uphill, bool atAngle)
         {
-            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
             double vDist = uphill ? 78 : 100;
             if (atAngle)
             {

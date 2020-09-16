@@ -16,8 +16,6 @@ namespace STROOP.Managers
 {
     public class TriangleManager : DataManager
     {
-        private Dictionary<uint, TriangleDataModel> _triangleCache;
-
         BetterTextbox _addressBox;
         CheckBox _useMisalignmentOffsetCheckbox;
 
@@ -96,8 +94,6 @@ namespace STROOP.Managers
         public TriangleManager(Control tabControl, string varFilePath, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(varFilePath, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
-            _triangleCache = new Dictionary<uint, TriangleDataModel>();
-
             _recordedTriangleAddresses = new List<uint>();
 
             SplitContainer splitContainerTriangles = tabControl.Controls["splitContainerTriangles"] as SplitContainer;
@@ -486,17 +482,8 @@ namespace STROOP.Managers
             _addressBox.SelectionLength = 0;
         }
 
-        public TriangleDataModel GetTriangleStruct(uint address)
-        {
-            if (_triangleCache.ContainsKey(address)) return _triangleCache[address];
-            TriangleDataModel triStruct = TriangleDataModel.Create(address);
-            _triangleCache.Add(address, triStruct);
-            return triStruct;
-        }
-
         public override void Update(bool updateView)
         {
-            _triangleCache.Clear();
             switch (Mode)
             {
                 case TriangleMode.Floor:
