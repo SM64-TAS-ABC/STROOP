@@ -136,7 +136,7 @@ namespace STROOP.Utilities
             List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Mario };
 
             List<float> xMidpoints = new List<float>();
-            List<float> yMidpoints = new List<float>();
+            List<float> yMaxes = new List<float>();
             List<float> zMidpoints = new List<float>();
             foreach (ObjectDataModel obj in objects)
             {
@@ -145,24 +145,22 @@ namespace STROOP.Utilities
 
                 float xMin = tris.Min(tri => tri.GetMinX());
                 float xMax = tris.Max(tri => tri.GetMaxX());
-                float yMin = tris.Min(tri => tri.GetMinY());
                 float yMax = tris.Max(tri => tri.GetMaxY());
                 float zMin = tris.Min(tri => tri.GetMinZ());
                 float zMax = tris.Max(tri => tri.GetMaxZ());
 
                 float xMidpoint = (xMin + xMax) / 2;
-                float yMidpoint = (yMin + yMax) / 2;
                 float zMidpoint = (zMin + zMax) / 2;
 
                 xMidpoints.Add(xMidpoint);
-                yMidpoints.Add(yMidpoint);
+                yMaxes.Add(yMax);
                 zMidpoints.Add(zMidpoint);
             }
 
-            if (xMidpoints.Count == 0 || yMidpoints.Count == 0 || zMidpoints.Count == 0) return false;
+            if (xMidpoints.Count == 0 || yMaxes.Count == 0 || zMidpoints.Count == 0) return false;
 
             float xDestination = xMidpoints.Average();
-            float yDestination = yMidpoints.Average();
+            float yDestination = yMaxes.Average();
             float zDestination = zMidpoints.Average();
 
             HandleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
