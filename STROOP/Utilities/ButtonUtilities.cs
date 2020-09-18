@@ -128,6 +128,50 @@ namespace STROOP.Utilities
             return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, affects: affects);
         }
 
+        public static bool GotoObjectsCenter(List<ObjectDataModel> objects, bool lateralOnly)
+        {
+            if (!objects.Any())
+                return false;
+
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Mario };
+
+            List<float> xMidpoints = new List<float>();
+            List<float> yMidpoints = new List<float>();
+            List<float> zMidpoints = new List<float>();
+            foreach (ObjectDataModel obj in objects)
+            {
+                List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(obj.Address);
+                if (tris.Count == 0) continue;
+
+                float xMin = tris.Min(tri => tri.GetMinX());
+                float xMax = tris.Max(tri => tri.GetMaxX());
+                float yMin = tris.Min(tri => tri.GetMinY());
+                float yMax = tris.Max(tri => tri.GetMaxY());
+                float zMin = tris.Min(tri => tri.GetMinZ());
+                float zMax = tris.Max(tri => tri.GetMaxZ());
+
+                float xMidpoint = (xMin + xMax) / 2;
+                float yMidpoint = (yMin + yMax) / 2;
+                float zMidpoint = (zMin + zMax) / 2;
+
+                xMidpoints.Add(xMidpoint);
+                yMidpoints.Add(yMidpoint);
+                zMidpoints.Add(zMidpoint);
+            }
+
+            if (xMidpoints.Count == 0 || yMidpoints.Count == 0 || zMidpoints.Count == 0) return false;
+
+            float xDestination = xMidpoints.Average();
+            float yDestination = yMidpoints.Average();
+            float zDestination = zMidpoints.Average();
+
+            HandleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
+
+            (bool affectX, bool affectY, bool affectZ)? affects = lateralOnly ? (true, false, true) : (true, true, true);
+
+            return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, affects: affects);
+        }
+
         public static bool RetrieveObjects(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
             List<PositionAngle> posAngles =

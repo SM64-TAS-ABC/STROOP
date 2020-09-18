@@ -189,13 +189,16 @@ namespace STROOP.Managers
             goToButton.Click += (sender, e) => ButtonUtilities.GotoObjects(_objects);
             ControlUtilities.AddContextMenuStripFunctions(
                 goToButton,
-                new List<string>() { "Goto", "Goto Laterally", "Goto X", "Goto Y", "Goto Z" },
+                new List<string>() { "Goto", "Goto Laterally", "Goto X", "Goto Y", "Goto Z", null, "Goto Center Top", "Goto Center Laterally" },
                 new List<Action>() {
                     () => ButtonUtilities.GotoObjects(_objects, (true, true, true)),
                     () => ButtonUtilities.GotoObjects(_objects, (true, false, true)),
                     () => ButtonUtilities.GotoObjects(_objects, (true, false, false)),
                     () => ButtonUtilities.GotoObjects(_objects, (false, true, false)),
                     () => ButtonUtilities.GotoObjects(_objects, (false, false, true)),
+                    () => { },
+                    () => ButtonUtilities.GotoObjectsCenter(_objects, false),
+                    () => ButtonUtilities.GotoObjectsCenter(_objects, true),
                 });
 
             var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
