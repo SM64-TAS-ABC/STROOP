@@ -54,10 +54,30 @@
   
   <Data type="uint" offsetUS="0x80361184" offsetJP="0x8035FE14" base="Relative" subclass="Address" color="Purple">Water Pointer</Data>
   <Data type="short" offset="0x00" base="Water" color="Purple">Num Water Levels</Data>
-  <Data type="short" offset="0x0C" base="Water" color="Purple">Water Level 1</Data>
-  <Data type="short" offset="0x18" base="Water" color="Purple">Water Level 2</Data>
-  <Data type="short" offset="0x24" base="Water" color="Purple">Water Level 3</Data>
-  <Data type="short" offset="0x30" base="Water" color="Purple">Water Level 4</Data>
+
+  <Data type="short" offset="0x0C" base="Water" color="Purple">Water 1 Y</Data>
+  <Data type="short" offset="0x04" base="Water" color="Purple">Water 1 X Min</Data>
+  <Data type="short" offset="0x08" base="Water" color="Purple">Water 1 X Max</Data>
+  <Data type="short" offset="0x06" base="Water" color="Purple">Water 1 Z Min</Data>
+  <Data type="short" offset="0x0A" base="Water" color="Purple">Water 1 Z Max</Data>
+
+  <Data type="short" offset="0x18" base="Water" color="Purple">Water 2 Y</Data>
+  <Data type="short" offset="0x10" base="Water" color="Purple">Water 2 X Min</Data>
+  <Data type="short" offset="0x14" base="Water" color="Purple">Water 2 X Max</Data>
+  <Data type="short" offset="0x12" base="Water" color="Purple">Water 2 Z Min</Data>
+  <Data type="short" offset="0x16" base="Water" color="Purple">Water 2 Z Max</Data>
+
+  <Data type="short" offset="0x24" base="Water" color="Purple">Water 3 Y</Data>
+  <Data type="short" offset="0x1C" base="Water" color="Purple">Water 3 X Min</Data>
+  <Data type="short" offset="0x20" base="Water" color="Purple">Water 3 X Max</Data>
+  <Data type="short" offset="0x1E" base="Water" color="Purple">Water 3 Z Min</Data>
+  <Data type="short" offset="0x22" base="Water" color="Purple">Water 3 Z Max</Data>
+
+  <Data type="short" offset="0x30" base="Water" color="Purple">Water 4 Y</Data>
+  <Data type="short" offset="0x28" base="Water" color="Purple">Water 4 X Min</Data>
+  <Data type="short" offset="0x2C" base="Water" color="Purple">Water 4 X Max</Data>
+  <Data type="short" offset="0x2A" base="Water" color="Purple">Water 4 Z Min</Data>
+  <Data type="short" offset="0x2E" base="Water" color="Purple">Water 4 Z Max</Data>
 
   <Data type="float" offsetUS="0x8038BBA8" offsetJP="0x8038BBA8" base="Relative" color="Green">Default WL</Data>
 </VarData>
