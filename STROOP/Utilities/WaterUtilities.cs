@@ -34,5 +34,22 @@ namespace STROOP.Structs
             }
             return output;
         }
+
+        public static int GetCurrentWater()
+        {
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            List<(int y, int xMin, int xMax, int zMin, int zMax)> waterLevels = GetWaterLevels();
+
+            for (int i = 0; i < waterLevels.Count; i++)
+            {
+                var w = waterLevels[i];
+                if (marioX > w.xMin && marioX < w.xMax && marioZ > w.zMin && marioZ < w.zMax)
+                {
+                    return i + 1;
+                }
+            }
+            return 0;
+        }
     }
 }

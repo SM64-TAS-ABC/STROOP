@@ -51,7 +51,8 @@
   <Data type="short" offsetUS="0x80106FDA" offsetJP="0x8010415A" base="Relative">THI Huge Mt WL</Data>
   <Data type="short" offsetUS="0x801069C4" offsetJP="0x80103B44" base="Relative">CotMC WL</Data>
   <Data type="short" offsetUS="0x800FDEBE" offsetJP="0x800FB03E" base="Relative">SA WL</Data>
-  
+
+  <Data base="None" specialType="CurrentWater" color="Purple">Current Water</Data>
   <Data type="uint" offsetUS="0x80361184" offsetJP="0x8035FE14" base="Relative" subclass="Address" color="Purple">Water Pointer</Data>
   <Data type="short" offset="0x00" base="Water" color="Purple">Num Water Levels</Data>
 

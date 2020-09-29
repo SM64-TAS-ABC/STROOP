@@ -3718,6 +3718,13 @@ namespace STROOP.Structs
                     return Config.Stream.SetValue((float)goalMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
                 }));
 
+            _dictionary.Add("CurrentWater",
+                ((uint dummy) =>
+                {
+                    return WaterUtilities.GetCurrentWater();
+                },
+                DEFAULT_SETTER));
+
             // Cam Hack Vars
 
             _dictionary.Add("CamHackYaw",
