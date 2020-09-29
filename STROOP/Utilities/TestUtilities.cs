@@ -30,6 +30,11 @@ namespace STROOP.Utilities
 
             //UpdateRacingPenguinWaypoints2();
             //Config.SetDebugText(DictionaryUtilities.GetString(Config.ObjectSlotsManager.MarkedSlotsAddressesDictionary));
+
+            //List<(int y, int xMin, int xMax, int zMin, int zMax)> waterLevels = WaterUtilities.GetWaterLevels();
+            //List<string> outputStrings = waterLevels.ConvertAll(w => "[" + w.y + "," + w.xMin + "," + w.xMax + "," + w.zMin + "," + w.zMax + "]");
+            //string output = outputStrings.Count == 0 ? "NONE" : string.Join(",", outputStrings);
+            //Config.SetDebugText(output);
         }
 
         public static void TestSomething()
