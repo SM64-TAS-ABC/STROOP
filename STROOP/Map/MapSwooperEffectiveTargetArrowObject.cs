@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace STROOP.Map
 {
-    public class MapSwooperTargetArrowObject : MapArrowObject
+    public class MapSwooperEffectiveTargetArrowObject : MapArrowObject
     {
         private readonly PositionAngle _posAngle;
         private readonly uint _objAddress;
 
-        public MapSwooperTargetArrowObject(PositionAngle posAngle)
+        public MapSwooperEffectiveTargetArrowObject(PositionAngle posAngle)
             : base()
         {
             _posAngle = posAngle;

@@ -451,7 +451,7 @@
     <Compile Include="Map\MapWatersObject.cs" />
     <Compile Include="Map\MapCustomSpherePointsObject.cs" />
     <Compile Include="Map\MapFacingDividerObject.cs" />
-    <Compile Include="Map\MapSwooperTargetArrowObject.cs" />
+    <Compile Include="Map\MapSwooperEffectiveTargetArrowObject.cs" />
     <Compile Include="Map\MapSectorObject.cs" />
     <Compile Include="Map\MapEffectiveHitboxCylinderObject.cs" />
     <Compile Include="Map\MapEffectiveHurtboxCylinderObject.cs" />

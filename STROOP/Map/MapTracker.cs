@@ -429,7 +429,7 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemSwooperTargetArrow = new ToolStripMenuItem("Add Tracker for Swooper Target Arrow");
+            ToolStripMenuItem itemSwooperTargetArrow = new ToolStripMenuItem("Add Tracker for Swooper Effective Target Arrow");
             itemSwooperTargetArrow.Click += (sender, e) =>
             {
                 List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
@@ -437,7 +437,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapSwooperTargetArrowObject(posAngle);
+                    return (MapObject)new MapSwooperEffectiveTargetArrowObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
