@@ -15,14 +15,17 @@ namespace STROOP.Map
 {
     public class MapMarioFacingArrowObject : MapArrowObject
     {
-        public MapMarioFacingArrowObject()
+        private readonly PositionAngle _posAngle;
+
+        public MapMarioFacingArrowObject(PositionAngle posAngle)
             : base()
         {
+            _posAngle = posAngle;
         }
 
         public override PositionAngle GetPositionAngle()
         {
-            return PositionAngle.Mario;
+            return _posAngle;
         }
 
         protected override double GetYaw()
