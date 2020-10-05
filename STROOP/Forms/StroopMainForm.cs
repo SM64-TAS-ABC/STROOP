@@ -808,8 +808,8 @@ namespace STROOP
             var selectedProcess = (ProcessSelection?)listBoxProcessesList.SelectedItem;
 
             // Select the only process if there is one
-            if (!selectedProcess.HasValue && listBoxProcessesList.Items.Count == 1)
-                selectedProcess = (ProcessSelection)listBoxProcessesList.Items[0];
+            if (!selectedProcess.HasValue && listBoxProcessesList.Items.Count == 1 && AttachToProcess(selectedProcess.Value.Process))
+                    selectedProcess = (ProcessSelection)listBoxProcessesList.Items[0];
 
             if (!selectedProcess.HasValue || !AttachToProcess(selectedProcess.Value.Process))
             {
