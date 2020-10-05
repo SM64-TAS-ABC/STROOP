@@ -276,10 +276,22 @@ namespace STROOP.Managers
 
                     if (selection.Contains(selectedSlot.CurrentObject.Address))
                     {
-                        selection.Remove(selectedSlot.CurrentObject.Address);
                         if (selection == MarkedSlotsAddresses)
                         {
-                            MarkedSlotsAddressesDictionary.Remove(selectedSlot.CurrentObject.Address);
+                            int oldMarkedColor = MarkedSlotsAddressesDictionary[selectedSlot.CurrentObject.Address];
+                            if (markedColor == oldMarkedColor) // remove mark
+                            {
+                                selection.Remove(selectedSlot.CurrentObject.Address);
+                                MarkedSlotsAddressesDictionary.Remove(selectedSlot.CurrentObject.Address);
+                            }
+                            else // update the color
+                            {
+                                MarkedSlotsAddressesDictionary[selectedSlot.CurrentObject.Address] = markedColor.Value;
+                            }
+                        }
+                        else
+                        {
+                            selection.Remove(selectedSlot.CurrentObject.Address);
                         }
                     }
                     else
