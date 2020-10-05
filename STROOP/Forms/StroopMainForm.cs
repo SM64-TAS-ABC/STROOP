@@ -18,6 +18,7 @@ using STROOP.Forms;
 using STROOP.Models;
 using STROOP.Structs.Gui;
 using STROOP.Map;
+using System.IO;
 
 namespace STROOP
 {
@@ -885,8 +886,18 @@ namespace STROOP
         {
             if (openFileDialogSt.ShowDialog() != DialogResult.OK)
                 return;
-
-            Config.Stream.OpenSTFile(openFileDialogSt.FileName);
+            string stextension = Path.GetExtension(openFileDialogSt.FileName);
+            if (openFileDialogSt.CheckFileExists == true && stextension != ".st")
+            {
+                    try
+                    {
+                        Config.Stream.OpenSTFile(openFileDialogSt.FileName);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Savestate is corrupted not a savestate or doesnt exist", "Invalid Savestate",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+            }
             labelProcessSelect.Text = "Connected To: " + Config.Stream.ProcessName;
             panelConnect.Visible = false;
         }
