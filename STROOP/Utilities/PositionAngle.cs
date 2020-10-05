@@ -28,6 +28,13 @@ namespace STROOP.Utilities
 
         public static Dictionary<uint, (double, double, double, double, List<double>)> Schedule =
             new Dictionary<uint, (double, double, double, double, List<double>)>();
+        public static int ScheduleOffset = 0;
+
+        private static uint GetScheduleIndex()
+        {
+            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            return ParsingUtilities.ParseUIntRoundingCapping(globalTimer + ScheduleOffset);
+        }
 
         private enum PositionAngleTypeEnum
         {
@@ -666,8 +673,8 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.GFrame:
                         return GetGFrameComponent(Frame.Value, Coordinate.X);
                     case PositionAngleTypeEnum.Schedule:
-                        uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                        if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item1;
+                        uint scheduleIndex = GetScheduleIndex();
+                        if (Schedule.ContainsKey(scheduleIndex)) return Schedule[scheduleIndex].Item1;
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
                         return PosAngle1.X;
@@ -770,8 +777,8 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.GFrame:
                         return GetGFrameComponent(Frame.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.Schedule:
-                        uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                        if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item2;
+                        uint scheduleIndex = GetScheduleIndex();
+                        if (Schedule.ContainsKey(scheduleIndex)) return Schedule[scheduleIndex].Item2;
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
                         return PosAngle1.Y;
@@ -874,8 +881,8 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.GFrame:
                         return GetGFrameComponent(Frame.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.Schedule:
-                        uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                        if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item3;
+                        uint scheduleIndex = GetScheduleIndex();
+                        if (Schedule.ContainsKey(scheduleIndex)) return Schedule[scheduleIndex].Item3;
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
                         return PosAngle1.Z;
@@ -971,8 +978,8 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.GFrame:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Schedule:
-                        uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                        if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item4;
+                        uint scheduleIndex = GetScheduleIndex();
+                        if (Schedule.ContainsKey(scheduleIndex)) return Schedule[scheduleIndex].Item4;
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
                         return PosAngle2.Angle;
@@ -1004,9 +1011,9 @@ namespace STROOP.Utilities
         public double GetAdditionalValue(int index)
         {
             if (PosAngleType != PositionAngleTypeEnum.Schedule) return Double.NaN;
-            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-            if (!Schedule.ContainsKey(globalTimer)) return Double.NaN;
-            List<double> doubleList = Schedule[globalTimer].Item5;
+            uint scheduleIndex = GetScheduleIndex();
+            if (!Schedule.ContainsKey(scheduleIndex)) return Double.NaN;
+            List<double> doubleList = Schedule[scheduleIndex].Item5;
             if (index < 0 || index >= doubleList.Count) return Double.NaN;
             return doubleList[index];
         }

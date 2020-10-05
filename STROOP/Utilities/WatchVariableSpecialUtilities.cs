@@ -2529,7 +2529,18 @@ namespace STROOP.Structs
                     return diff;
                 },
                 DEFAULT_SETTER));
-            
+
+            _dictionary.Add("ScheduleOffset",
+                ((uint dummy) =>
+                {
+                    return PositionAngle.ScheduleOffset;
+                },
+                (int value, uint dummy) =>
+                {
+                    PositionAngle.ScheduleOffset = value;
+                    return true;
+                }));
+
             // HUD vars
 
             _dictionary.Add("HudTimeText",

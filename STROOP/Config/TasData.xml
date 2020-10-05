@@ -94,8 +94,8 @@
   <Data groupList="Point" base="None" specialType="FSDistPointToSelf" subclass="String" color="LightBlue">FSDist Point to Self</Data>
 
   <Data groupList="Point" base="None" specialType="PitchSelfToPoint" subclass="Angle" display="short" color="Pink">Pitch Self to Point</Data>
-
   <Data groupList="Point" base="None" specialType="WalkingDistance" color="Pink">Walking Distance</Data>
   <Data groupList="Point" base="None" specialType="WalkingDistanceDifferenceMarioToPoint" color="Pink">Walking Distance Diff</Data>
+  <Data groupList="Point" base="None" specialType="ScheduleOffset" color="Pink">Schedule Offset</Data>
 
 </VarData>
