@@ -60,6 +60,12 @@ namespace STROOP.Map
         public readonly bool PathChangeModulo;
         public readonly int PathNewModulo;
 
+        public readonly bool AngleRangeChangeUseRelativeAngles;
+        public readonly bool AngleRangeNewUseRelativeAngles;
+
+        public readonly bool AngleRangeChangeAngleDiff;
+        public readonly int AngleRangeNewAngleDiff;
+
         public MapObjectSettings(
             bool customCylinderChangeRelativeMinY = false,
             float customCylinderNewRelativeMinY = 0,
@@ -103,7 +109,13 @@ namespace STROOP.Map
             bool pathNewPaused = false,
 
             bool pathChangeModulo = false,
-            int pathNewModulo = 0)
+            int pathNewModulo = 0,
+            
+            bool angleRangeChangeUseRelativeAngles = false,
+            bool angleRangeNewUseRelativeAngles = false,
+
+            bool angleRangeChangeAngleDiff = false,
+            int angleRangeNewAngleDiff = 0)
         {
             CustomCylinderChangeRelativeMinY = customCylinderChangeRelativeMinY;
             CustomCylinderNewRelativeMinY = customCylinderNewRelativeMinY;
@@ -148,6 +160,12 @@ namespace STROOP.Map
 
             PathChangeModulo = pathChangeModulo;
             PathNewModulo = pathNewModulo;
+
+            AngleRangeChangeUseRelativeAngles = angleRangeChangeUseRelativeAngles;
+            AngleRangeNewUseRelativeAngles = angleRangeNewUseRelativeAngles;
+
+            AngleRangeChangeAngleDiff = angleRangeChangeAngleDiff;
+            AngleRangeNewAngleDiff = angleRangeNewAngleDiff;
         }
     }
 }
