@@ -383,7 +383,8 @@ namespace STROOP.Utilities
             {
                 uint triAddress = Config.Stream.GetUInt32(address + 4);
                 TriangleDataModel tri = TriangleDataModel.Create(triAddress);
-                if (tri.IsPointInsideAndAboveTriangle(shortX, shortY, shortZ)) return tri;
+                bool isLegitimateTriangle = tri.NormX != 0 || tri.NormY != 0 || tri.NormZ != 0;
+                if (isLegitimateTriangle && tri.IsPointInsideAndAboveTriangle(shortX, shortY, shortZ)) return tri;
                 address = Config.Stream.GetUInt32(address);
             }
 
