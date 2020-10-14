@@ -28,6 +28,11 @@ namespace STROOP.Ttc
             _dustFrames = new List<int>();
         }
 
+        public TtcDust(TtcRng rng, List<int> dustFrames) : base(rng)
+        {
+            _dustFrames = new List<int>(dustFrames);
+        }
+
         public override void Update()
         {
             if (_dustFrames.Contains(_currentFrame))
@@ -62,6 +67,10 @@ namespace STROOP.Ttc
             return new List<object>() { };
         }
 
+        public override TtcObject Clone(TtcRng rng)
+        {
+            return new TtcDust(rng, _dustFrames);
+        }
     }
 
 

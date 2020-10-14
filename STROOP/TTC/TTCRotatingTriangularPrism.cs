@@ -72,6 +72,11 @@ namespace STROOP.Ttc
             Config.Stream.SetValue(_timerMax, address + 0xFC);
             Config.Stream.SetValue(_timer, address + 0x154);
         }
+
+        public override TtcObject Clone(TtcRng rng)
+        {
+            return new TtcRotatingTriangularPrism(rng, _timerMax, _timer);
+        }
     }
 
 }

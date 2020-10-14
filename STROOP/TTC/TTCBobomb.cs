@@ -90,6 +90,11 @@ namespace STROOP.Ttc
         {
             Config.Stream.SetValue(_blinkingTimer, address + 0xF4);
         }
+
+        public override TtcObject Clone(TtcRng rng)
+        {
+            return new TtcBobomb(rng, _blinkingTimer, _withinMarioRange);
+        }
     }
 
 }

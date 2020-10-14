@@ -174,6 +174,11 @@ namespace STROOP.Ttc
         {
             return _state == 3 && _timer >= 33;
         }
+
+        public override TtcObject Clone(TtcRng rng)
+        {
+            return new TtcPusher(rng, _timerMax, _countdown, _state, _timer);
+        }
     }
 
 }

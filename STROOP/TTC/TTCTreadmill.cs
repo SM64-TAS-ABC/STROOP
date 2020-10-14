@@ -108,6 +108,11 @@ namespace STROOP.Ttc
             Config.Stream.SetValue(_timerMax, address + 0x104);
             Config.Stream.SetValue(_timer, address + 0x154);
         }
+
+        public override TtcObject Clone(TtcRng rng)
+        {
+            return new TtcTreadmill(rng, _subType, _currentSpeed, _targetSpeed, _timerMax, _timer);
+        }
     }
 
 }

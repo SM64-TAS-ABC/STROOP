@@ -131,6 +131,11 @@ namespace STROOP.Ttc
             Config.Stream.SetValue((float)_accelerationMagnitude, address + 0x100);
             Config.Stream.SetValue(_waitingTimer, address + 0x104);
         }
+
+        public override TtcObject Clone(TtcRng rng)
+        {
+            return new TtcPendulum(rng, _accelerationDirection, _angle, _angularVelocity, _accelerationMagnitude, _waitingTimer);
+        }
     }
 
 }
