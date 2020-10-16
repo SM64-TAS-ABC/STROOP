@@ -37,6 +37,8 @@ namespace STROOP
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
 
+        public bool savestateIsOpen;
+
         public StroopMainForm()
         {
             InitializeComponent();
@@ -842,10 +844,28 @@ namespace STROOP
 
         private void buttonDisconnect_Click(object sender, EventArgs e)
         {
-            Task.Run(() => Config.Stream.SwitchProcess(null, null));
-            buttonRefresh_Click(this, new EventArgs());
-            panelConnect.Size = this.Size;
-            panelConnect.Visible = true;
+            if (savestateIsOpen)
+            {
+                DialogResult r = MessageBox.Show("Do you want to save to current savestate before disconnecting?", "Savestate open", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(r == DialogResult.Yes)
+                {
+                    // Call savestate saving method
+                    saveAsSavestate();
+                    Task.Run(() => Config.Stream.SwitchProcess(null, null));
+                    buttonRefresh_Click(this, new EventArgs());
+                    panelConnect.Size = this.Size;
+                    savestateIsOpen = false;
+                    panelConnect.Visible = true;
+                }
+            }
+            else
+            {
+                Task.Run(() => Config.Stream.SwitchProcess(null, null));
+                buttonRefresh_Click(this, new EventArgs());
+                panelConnect.Size = this.Size;
+                savestateIsOpen = false;
+                panelConnect.Visible = true;
+            }
         }
 
         private void buttonRefreshAndConnect_Click(object sender, EventArgs e)
@@ -889,14 +909,15 @@ namespace STROOP
             string stextension = Path.GetExtension(openFileDialogSt.FileName);
             if (openFileDialogSt.CheckFileExists == true && stextension != ".st")
             {
-                    try
-                    {
-                        Config.Stream.OpenSTFile(openFileDialogSt.FileName);
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Savestate is corrupted not a savestate or doesnt exist", "Invalid Savestate",MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                try
+                {
+                    Config.Stream.OpenSTFile(openFileDialogSt.FileName);
+                    savestateIsOpen = true;
+                }
+                catch
+                {
+                    MessageBox.Show("Savestate is corrupted not a savestate or doesnt exist", "Invalid Savestate", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             labelProcessSelect.Text = "Connected To: " + Config.Stream.ProcessName;
             panelConnect.Visible = false;
@@ -914,9 +935,14 @@ namespace STROOP
             saveFileDialogSt.FileName = io.Name;
             DialogResult dr = saveFileDialogSt.ShowDialog();
             if (dr != DialogResult.OK)
-                return;
+                if (savestateIsOpen)
+                {
+
+                }
+            return;
 
             io.SaveMemory(saveFileDialogSt.FileName);
+            
         }
 
         public void SwitchTab(string name)
