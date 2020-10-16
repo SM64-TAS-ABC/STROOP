@@ -133,5 +133,7 @@ namespace STROOP.Ttc
             }
             return Normalize(newAngle);
         }
+
+        public abstract TtcObject Clone(TtcRng rng);
     }
 }

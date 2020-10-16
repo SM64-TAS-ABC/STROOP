@@ -72,6 +72,11 @@ namespace STROOP.Ttc
             Config.Stream.SetValue((float)_currentAngularVelocity, address + 0xF8);
             Config.Stream.SetValue((float)_targetAngularVelocity, address + 0xFC);
         }
+
+        public override TtcObject Clone(TtcRng rng)
+        {
+            return new TtcSpinningTriangle(rng, _angle, _currentAngularVelocity, _targetAngularVelocity);
+        }
     }
 
 

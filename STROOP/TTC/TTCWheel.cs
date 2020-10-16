@@ -124,6 +124,13 @@ namespace STROOP.Ttc
             Config.Stream.SetValue(_directionCountdown, address + 0x104);
             Config.Stream.SetValue(_timer, address + 0x154);
         }
+
+        public override TtcObject Clone(TtcRng rng)
+        {
+            return new TtcWheel(
+                rng, _angle, _timerMax, _targetAngle,
+                _displacement, _directionCountdown, _timer);
+        }
     }
 
 }

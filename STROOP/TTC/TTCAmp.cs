@@ -60,5 +60,10 @@ namespace STROOP.Ttc
             Config.Stream.SetValue(_state, address + 0x14C);
             Config.Stream.SetValue(_angle, address + 0xC8);
         }
+
+        public override TtcObject Clone(TtcRng rng)
+        {
+            return new TtcAmp(rng, _state, _angle);
+        }
     }
 }

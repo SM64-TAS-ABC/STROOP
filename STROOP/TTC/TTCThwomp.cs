@@ -147,6 +147,11 @@ namespace STROOP.Ttc
             Config.Stream.SetValue(_state, address + 0x14C);
             Config.Stream.SetValue(_timer, address + 0x154);
         }
+
+        public override TtcObject Clone(TtcRng rng)
+        {
+            return new TtcThwomp(rng, _height, _verticalSpeed, _timerMax, _state, _timer);
+        }
     }
 
 

@@ -112,6 +112,11 @@ namespace STROOP.Ttc
             Config.Stream.SetValue(_timerMax, address + 0xFC);
             Config.Stream.SetValue(_timer, address + 0x154);
         }
+
+        public override TtcObject Clone(TtcRng rng)
+        {
+            return new TtcElevator(rng, MIN_HEIGHT, MAX_HEIGHT, _height, _verticalSpeed, _direction, _timerMax, _timer);
+        }
     }
 
 
