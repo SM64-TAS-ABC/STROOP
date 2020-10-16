@@ -935,10 +935,6 @@ namespace STROOP
             saveFileDialogSt.FileName = io.Name;
             DialogResult dr = saveFileDialogSt.ShowDialog();
             if (dr != DialogResult.OK)
-                if (savestateIsOpen)
-                {
-
-                }
             return;
 
             io.SaveMemory(saveFileDialogSt.FileName);
