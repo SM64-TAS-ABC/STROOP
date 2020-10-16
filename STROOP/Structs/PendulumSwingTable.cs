@@ -91,18 +91,18 @@ namespace STROOP.Structs
         {
             string index = GetPendulumSwingIndexExtended(amplitude);
             if (index == Double.NaN.ToString()) return null;
-            int hyphenIndex = index.LastIndexOf('-');
+            int plusIndex = index.IndexOf('+');
 
             int? primaryIndex, secondaryIndex;
-            if (hyphenIndex == -1 || hyphenIndex == 0)
+            if (plusIndex == -1)
             {
                 primaryIndex = ParsingUtilities.ParseIntNullable(index);
                 secondaryIndex = 0;
             }
             else
             {
-                primaryIndex = ParsingUtilities.ParseIntNullable(index.Substring(0, hyphenIndex));
-                secondaryIndex = ParsingUtilities.ParseIntNullable(index.Substring(hyphenIndex + 1));
+                primaryIndex = ParsingUtilities.ParseIntNullable(index.Substring(0, plusIndex));
+                secondaryIndex = ParsingUtilities.ParseIntNullable(index.Substring(plusIndex + 1));
             }
 
             if (primaryIndex == null || secondaryIndex == null) return null;
@@ -140,7 +140,7 @@ namespace STROOP.Structs
                 if (dequeue.SecondaryIndex > range)
                     continue;
 
-                string extendedIndex = dequeue.PrimaryIndex + "-" + dequeue.SecondaryIndex;
+                string extendedIndex = dequeue.PrimaryIndex + "+" + dequeue.SecondaryIndex;
                 _extendedAmplitudeDictionary[dequeue.Amplitude] = extendedIndex;
 
                 List<PendulumSwing> successors = dequeue.GetSuccessors();
