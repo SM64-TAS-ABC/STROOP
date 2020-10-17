@@ -117,6 +117,11 @@ namespace STROOP.Ttc
             return TableConfig.PendulumSwings.GetPendulumSwingIndexExtended(GetAmplitude());
         }
 
+        public (int, int)? GetSwingIndexExtendedPair()
+        {
+            return TableConfig.PendulumSwings.GetPendulumSwingIndexExtendedPair(GetAmplitude());
+        }
+
         public int GetCountdown()
         {
             return WatchVariableSpecialUtilities.GetPendulumCountdown(
@@ -135,6 +140,19 @@ namespace STROOP.Ttc
         public override TtcObject Clone(TtcRng rng)
         {
             return new TtcPendulum(rng, _accelerationDirection, _angle, _angularVelocity, _accelerationMagnitude, _waitingTimer);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is TtcPendulum other)
+            {
+                return _accelerationDirection == other._accelerationDirection &&
+                    _angle == other._angle &&
+                    _angularVelocity == other._angularVelocity &&
+                    _accelerationMagnitude == other._accelerationMagnitude &&
+                    _waitingTimer == other._waitingTimer;
+            }
+            return false;
         }
     }
 
