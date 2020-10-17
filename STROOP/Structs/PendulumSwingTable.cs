@@ -1,4 +1,5 @@
-﻿using STROOP.Utilities;
+﻿using STROOP.Ttc;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -183,6 +184,24 @@ namespace STROOP.Structs
             {
                 string predecessorString = Predecessor?.ToString() ?? "";
                 return predecessorString + " =>" + Acceleration + "=> " + Amplitude;
+            }
+
+            public List<int> GetIntermediateAngles()
+            {
+                int accelerationDirection = -1 * Math.Sign(Amplitude);
+                int angularVelocity = 0;
+                int waitingTimer = 0;
+                TtcPendulum pendulum = new TtcPendulum(new TtcRng(0), accelerationDirection, Amplitude, angularVelocity, Acceleration, waitingTimer);
+
+                List<int> intermediateAngles = new List<int>();
+                intermediateAngles.Add(pendulum._angle);
+                while (true)
+                {
+                    pendulum.Update();
+                    intermediateAngles.Add(pendulum._angle);
+                    if (pendulum._angularVelocity == 0) break;
+                }
+                return intermediateAngles;
             }
         }
     }
