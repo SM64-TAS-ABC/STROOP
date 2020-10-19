@@ -107,6 +107,17 @@ namespace STROOP.Utilities
             if (!streamAlreadySuspended) Config.Stream.Resume();
         }
 
+        public static void AnnihilateAllCeilings()
+        {
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+            List<uint> ceilingAddresses = GetLevelTriangles()
+                .FindAll(tri => tri.IsCeiling())
+                .ConvertAll(tri => tri.Address);
+            ButtonUtilities.AnnihilateTriangle(ceilingAddresses);
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+        }
+
         public static void NeutralizeTriangles(TriangleClassification? classification = null)
         {
             List<uint> triangleAddresses = GetLevelTriangleAddresses();

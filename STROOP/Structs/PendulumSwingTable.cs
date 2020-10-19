@@ -1,4 +1,5 @@
-﻿using STROOP.Utilities;
+﻿using STROOP.Ttc;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,18 +92,18 @@ namespace STROOP.Structs
         {
             string index = GetPendulumSwingIndexExtended(amplitude);
             if (index == Double.NaN.ToString()) return null;
-            int hyphenIndex = index.LastIndexOf('-');
+            int plusIndex = index.IndexOf('+');
 
             int? primaryIndex, secondaryIndex;
-            if (hyphenIndex == -1 || hyphenIndex == 0)
+            if (plusIndex == -1)
             {
                 primaryIndex = ParsingUtilities.ParseIntNullable(index);
                 secondaryIndex = 0;
             }
             else
             {
-                primaryIndex = ParsingUtilities.ParseIntNullable(index.Substring(0, hyphenIndex));
-                secondaryIndex = ParsingUtilities.ParseIntNullable(index.Substring(hyphenIndex + 1));
+                primaryIndex = ParsingUtilities.ParseIntNullable(index.Substring(0, plusIndex));
+                secondaryIndex = ParsingUtilities.ParseIntNullable(index.Substring(plusIndex + 1));
             }
 
             if (primaryIndex == null || secondaryIndex == null) return null;
@@ -140,7 +141,7 @@ namespace STROOP.Structs
                 if (dequeue.SecondaryIndex > range)
                     continue;
 
-                string extendedIndex = dequeue.PrimaryIndex + "-" + dequeue.SecondaryIndex;
+                string extendedIndex = dequeue.PrimaryIndex + "+" + dequeue.SecondaryIndex;
                 _extendedAmplitudeDictionary[dequeue.Amplitude] = extendedIndex;
 
                 List<PendulumSwing> successors = dequeue.GetSuccessors();
@@ -183,6 +184,24 @@ namespace STROOP.Structs
             {
                 string predecessorString = Predecessor?.ToString() ?? "";
                 return predecessorString + " =>" + Acceleration + "=> " + Amplitude;
+            }
+
+            public List<int> GetIntermediateAngles()
+            {
+                int accelerationDirection = -1 * Math.Sign(Amplitude);
+                int angularVelocity = 0;
+                int waitingTimer = 0;
+                TtcPendulum pendulum = new TtcPendulum(new TtcRng(0), accelerationDirection, Amplitude, angularVelocity, Acceleration, waitingTimer);
+
+                List<int> intermediateAngles = new List<int>();
+                intermediateAngles.Add(pendulum._angle);
+                while (true)
+                {
+                    pendulum.Update();
+                    intermediateAngles.Add(pendulum._angle);
+                    if (pendulum._angularVelocity == 0) break;
+                }
+                return intermediateAngles;
             }
         }
     }

@@ -164,10 +164,15 @@ namespace STROOP.Managers
             buttonAnnihilateTriangle.Click += (sender, e) => ButtonUtilities.AnnihilateTriangle(TriangleAddresses);
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonAnnihilateTriangle,
-                new List<string>() { "Annihilate All Tri But Death Barriers" },
+                new List<string>()
+                {
+                    "Annihilate All Tri But Death Barriers",
+                    "Annihilate All Ceilings",
+                },
                 new List<Action>()
                 {
                     () => TriangleUtilities.AnnihilateAllTrianglesButDeathBarriers(),
+                    () => TriangleUtilities.AnnihilateAllCeilings(),
                 });
 
             var trianglePosGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTrianglePos"] as GroupBox;
