@@ -312,6 +312,30 @@ namespace STROOP.Managers
             }
         }
 
+        public void MarkAddresses(List<uint> addresses)
+        {
+            foreach (uint address in addresses)
+            {
+                if (!MarkedSlotsAddresses.Contains(address))
+                {
+                    MarkedSlotsAddresses.Add(address);
+                    MarkedSlotsAddressesDictionary[address] = 10;
+                }
+            }
+        }
+
+        public void UnmarkAddresses(List<uint> addresses)
+        {
+            foreach (uint address in addresses)
+            {
+                if (MarkedSlotsAddresses.Contains(address))
+                {
+                    MarkedSlotsAddresses.Remove(address);
+                    MarkedSlotsAddressesDictionary.Remove(address);
+                }
+            }
+        }
+
         public void Update()
         {
             UpdateSelectionMethod();

@@ -184,6 +184,20 @@ namespace STROOP
             ToolStripMenuItem itemUkikipedia = new ToolStripMenuItem("Ukikipedia");
             itemUkikipedia.Click += (sender, e) => ButtonUtilities.UkikipediaObject(CurrentObject);
 
+            ToolStripMenuItem itemMark = new ToolStripMenuItem("Mark");
+            itemMark.Click += (sender, e) =>
+            {
+                List<uint> addresses = getObjects().ConvertAll(obj => obj.Address);
+                Config.ObjectSlotsManager.MarkAddresses(addresses);
+            };
+
+            ToolStripMenuItem itemUnmark = new ToolStripMenuItem("Unmark");
+            itemUnmark.Click += (sender, e) =>
+            {
+                List<uint> addresses = getObjects().ConvertAll(obj => obj.Address);
+                Config.ObjectSlotsManager.UnmarkAddresses(addresses);
+            };
+
             ToolStripMenuItem itemCopyAddress = new ToolStripMenuItem("Copy Address");
             itemCopyAddress.Click += (sender, e) =>
             {
@@ -276,6 +290,9 @@ namespace STROOP
             ContextMenuStrip.Items.Add(itemRide);
             ContextMenuStrip.Items.Add(itemUnRide);
             ContextMenuStrip.Items.Add(itemUkikipedia);
+            ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            ContextMenuStrip.Items.Add(itemMark);
+            ContextMenuStrip.Items.Add(itemUnmark);
             ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ContextMenuStrip.Items.Add(itemCopyAddress);
             ContextMenuStrip.Items.Add(itemCopyPosition);
