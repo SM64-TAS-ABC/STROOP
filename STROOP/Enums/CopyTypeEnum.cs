@@ -14,6 +14,7 @@ namespace STROOP.Structs
         CopyWithLineBreaks,
         CopyWithCommasAndSpaces,
         CopyWithNames,
+        CopyAsTable,
         CopyForCode,
     }
 }

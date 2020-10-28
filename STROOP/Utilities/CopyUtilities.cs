@@ -44,6 +44,7 @@ namespace STROOP.Utilities
                 "Copy with Line Breaks",
                 "Copy with Commas and Spaces",
                 "Copy with Names",
+                "Copy as Table",
                 "Copy for Code",
             };
         }
@@ -58,6 +59,7 @@ namespace STROOP.Utilities
                 () => CopyWithSeparator(getVars(), "\r\n"),
                 () => CopyWithSeparator(getVars(), ", "),
                 () => CopyWithNames(getVars()),
+                () => CopyAsTable(getVars()),
                 () => CopyForCode(getVars()),
             };
         }
@@ -86,6 +88,36 @@ namespace STROOP.Utilities
             List<string> lines = controls.ConvertAll(
                 watchVar => watchVar.VarName + "\t" + watchVar.GetValue(false));
             Clipboard.SetText(string.Join("\r\n", lines));
+        }
+
+        private static void CopyAsTable(List<WatchVariableControl> controls)
+        {
+            if (controls.Count == 0)
+            {
+                Clipboard.SetText("");
+                return;
+            }
+
+            List<uint> addresses = controls[0].GetAddresses();
+            if (addresses.Count == 0)
+            {
+                Clipboard.SetText("");
+                return;
+            }
+            List<string> hexAddresses = addresses.ConvertAll(address => HexUtilities.FormatValue(address));
+            string header = "Vars\t" + string.Join("\t", hexAddresses);
+
+            List<string> names = controls.ConvertAll(control => control.VarName);
+            List<List<object>> valuesTable = controls.ConvertAll(control => control.GetValues());
+            List<string> valuesStrings = new List<string>();
+            for (int i = 0; i < names.Count; i++)
+            {
+                string line = names[i] + "\t" + string.Join("\t", valuesTable[i]);
+                valuesStrings.Add(line);
+            }
+
+            string output = header + "\r\n" + string.Join("\r\n", valuesStrings);
+            Clipboard.SetText(output);
         }
 
         private static void CopyForCode(List<WatchVariableControl> controls)
