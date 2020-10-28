@@ -1,4 +1,5 @@
 ﻿using STROOP.Forms;
+using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
@@ -44,6 +45,15 @@ namespace STROOP.Controls
                 Config.ObjectSlotsManager.SelectedSlotsAddresses.Clear();
             };
 
+            ToolStripMenuItem itemUnloadAllButMarkedSlots = new ToolStripMenuItem("Unload All but Marked Slots");
+            itemUnloadAllButMarkedSlots.Click += (sender, e) =>
+            {
+                List<ObjectDataModel> objsToUnload =
+                    DataModels.ObjectProcessor.Objects.ToList().FindAll(
+                        obj => !Config.ObjectSlotsManager.MarkedSlotsAddresses.Contains(obj.Address));
+                ButtonUtilities.UnloadObject(objsToUnload);
+            };
+
             ToolStripMenuItem itemFixHorizontalScroll = new ToolStripMenuItem("Fix Horizontal Scroll");
             itemFixHorizontalScroll.Click += (sender, e) =>
             {
@@ -67,6 +77,7 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(itemSelectCopiedAddress);
             ContextMenuStrip.Items.Add(itemClearMarkedSlots);
             ContextMenuStrip.Items.Add(itemClearSelectedSlots);
+            ContextMenuStrip.Items.Add(itemUnloadAllButMarkedSlots);
             ContextMenuStrip.Items.Add(itemFixHorizontalScroll);
         }
     }
