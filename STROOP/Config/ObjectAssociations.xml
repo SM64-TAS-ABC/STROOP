@@ -4153,8 +4153,15 @@
     <MapImage path="Mr. Blizzard Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Wearing Hat</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x198" base="Object">Num Coins</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0x108" base="Object">Dizziness Change</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x100" base="Object">Timer 2</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x104" base="Object">Dizziness</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x108" base="Object">Dizziness Change</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x10C" base="Object">Graph Y Offset</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Graph Y Vel</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">Scale</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xF8" base="Object" subclass="Object">Snowball</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">Dist from Home</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x1AC" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004E08" name="Snowball">
     <SpawnCode gfxId="0x9E"/>
