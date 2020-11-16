@@ -2362,6 +2362,7 @@
     <Image path="Wind Particle Spawner.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xF4" base="Object" subclass="Angle" yaw="true">Original Angle</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Blowing Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002E58" name="Walking Penguin">
