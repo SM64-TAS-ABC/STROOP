@@ -98,7 +98,7 @@ namespace STROOP.Structs
                     {
                         List<uint> triangleAddresses = Config.TriangleManager.TriangleAddresses;
                         if (triangleAddresses.Count == 1 && triangleAddresses[0] == 0) return BaseAddressListEmpty;
-                        return Config.TriangleManager.TriangleAddresses;
+                        return triangleAddresses;
                     }
 
                 case BaseAddressTypeEnum.TriangleExertionForceTable:
