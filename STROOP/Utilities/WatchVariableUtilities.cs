@@ -88,7 +88,7 @@ namespace STROOP.Structs
                     return new List<uint> { Config.MainSaveManager.CurrentMainSaveAddress };
 
                 case BaseAddressTypeEnum.Object:
-                    return Config.ObjectSlotsManager.SelectedSlotsAddresses.ToList();
+                    return Config.ObjectSlotsManager.SelectedSlotsAddresses;
 
                 case BaseAddressTypeEnum.ProcessGroup:
                     return Config.ObjectSlotsManager.SelectedObjects.ConvertAll(
