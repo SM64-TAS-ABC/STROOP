@@ -32,5 +32,14 @@ namespace STROOP.Utilities
             }
             return "[" + string.Join(",", entries) + "]";
         }
+
+        public static void TransferDictionary<K,V>(Dictionary<K, V> sender, Dictionary<K, V> receiver)
+        {
+            receiver.Clear();
+            foreach (K key in sender.Keys)
+            {
+                receiver[key] = sender[key];
+            }
+        }
     }
 }

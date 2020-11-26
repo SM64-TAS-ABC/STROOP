@@ -40,10 +40,30 @@ namespace STROOP.Managers
             EverythingPasses,
         };
 
-        private readonly Dictionary<uint, object> _dictionary;
-        private readonly Dictionary<uint, object> _undoDictionary;
+        public class Result
+        {
+            public readonly List<object> Values;
+
+            public Result(List<object> values)
+            {
+                Values = values;
+            }
+
+            public string Format(bool useHex)
+            {
+                List<string> strings = Values.ConvertAll(
+                    value => useHex ? HexUtilities.FormatValue(value) : value.ToString());
+                return string.Join(",", strings);
+            }
+        }
+
+        private readonly Dictionary<uint, Result> _dictionary;
+        private readonly Dictionary<uint, Result> _undoDictionary;
+
         private Type _memoryType;
+        private int _memoryTypeSize;
         private bool _useHex;
+        private int _numValues;
 
         private readonly ComboBox _comboBoxSearchMemoryType;
         private readonly ComboBox _comboBoxSearchValueRelationship;
@@ -62,10 +82,12 @@ namespace STROOP.Managers
         public SearchManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(null, watchVariablePanel)
         {
-            _dictionary = new Dictionary<uint, object>();
-            _undoDictionary = new Dictionary<uint, object>();
+            _dictionary = new Dictionary<uint, Result>();
+            _undoDictionary = new Dictionary<uint, Result>();
             _memoryType = typeof(byte);
+            _memoryTypeSize = 1;
             _useHex = false;
+            _numValues = 1;
 
             SplitContainer splitContainerSearch = tabControl.Controls["splitContainerSearch"] as SplitContainer;
             SplitContainer splitContainerSearchOptions = splitContainerSearch.Panel1.Controls["splitContainerSearchOptions"] as SplitContainer;
@@ -114,35 +136,38 @@ namespace STROOP.Managers
             {
                 uint? addressNullable = ParsingUtilities.ParseHexNullable(row.Cells[0].Value);
                 if (!addressNullable.HasValue) continue;
-                uint address = addressNullable.Value;
-
-                string typeString = TypeUtilities.TypeToString[_memoryType];
-                WatchVariable watchVar = new WatchVariable(
-                    memoryTypeName: typeString,
-                    specialType: null,
-                    baseAddressType: BaseAddressTypeEnum.Relative,
-                    offsetUS: address,
-                    offsetJP: address,
-                    offsetSH: address,
-                    offsetEU: address,
-                    offsetDefault: null,
-                    mask: null,
-                    shift: null,
-                    handleMapping: true);
-                WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
-                    name: typeString + " " + HexUtilities.FormatValue(address),
-                    watchVar: watchVar,
-                    subclass: WatchVariableSubclass.Number,
-                    backgroundColor: null,
-                    displayType: null,
-                    roundingLimit: null,
-                    useHex: _useHex ? true : (bool?)null,
-                    invertBool: null,
-                    isYaw: null,
-                    coordinate: null,
-                    groupList: new List<VariableGroup>() { VariableGroup.Custom });
-                WatchVariableControl control = precursor.CreateWatchVariableControl();
-                controls.Add(control);
+                uint startAddress = addressNullable.Value;
+                for (int i = 0; i < _numValues; i++)
+                {
+                    uint address = startAddress + (uint)(i * _memoryTypeSize);
+                    string typeString = TypeUtilities.TypeToString[_memoryType];
+                    WatchVariable watchVar = new WatchVariable(
+                        memoryTypeName: typeString,
+                        specialType: null,
+                        baseAddressType: BaseAddressTypeEnum.Relative,
+                        offsetUS: address,
+                        offsetJP: address,
+                        offsetSH: address,
+                        offsetEU: address,
+                        offsetDefault: null,
+                        mask: null,
+                        shift: null,
+                        handleMapping: true);
+                    WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
+                        name: typeString + " " + HexUtilities.FormatValue(address),
+                        watchVar: watchVar,
+                        subclass: WatchVariableSubclass.Number,
+                        backgroundColor: null,
+                        displayType: null,
+                        roundingLimit: null,
+                        useHex: _useHex ? true : (bool?)null,
+                        invertBool: null,
+                        isYaw: null,
+                        coordinate: null,
+                        groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                    WatchVariableControl control = precursor.CreateWatchVariableControl();
+                    controls.Add(control);
+                }
             }
             AddVariables(controls);
         }
@@ -151,21 +176,34 @@ namespace STROOP.Managers
         {
             string memoryTypeString = (string)_comboBoxSearchMemoryType.SelectedItem;
             _memoryType = TypeUtilities.StringToType[memoryTypeString];
-            int memoryTypeSize = TypeUtilities.TypeSize[_memoryType];
+            _memoryTypeSize = TypeUtilities.TypeSize[_memoryType];
             _useHex = _textBoxSearchValue.Text.StartsWith("0x");
 
-            (object searchValue1, object searchValue2) = ParseSearchValue(_textBoxSearchValue.Text, _memoryType);
-            object oldMemoryValue = null;
+            List<(object searchValue1, object searchValue2)> searchValues = ParseSearchValueAll(_textBoxSearchValue.Text, _memoryType);
+            _numValues = searchValues.Count;
 
-            TransferDictionary(_dictionary, _undoDictionary);
+            List<object> oldMemoryValues = Enumerable.Range(0, _numValues).ToList().ConvertAll(i => (object)null);
+
+            DictionaryUtilities.TransferDictionary(_dictionary, _undoDictionary);
             _dictionary.Clear();
             StartProgressBar();
-            for (uint address = 0x80000000; address < 0x80000000 + Config.RamSize - memoryTypeSize; address += (uint)memoryTypeSize)
+            for (uint address = 0x80000000; address < 0x80000000 + Config.RamSize - _memoryTypeSize * _numValues; address += (uint)_memoryTypeSize)
             {
-                object memoryValue = Config.Stream.GetValue(_memoryType, address);
-                if (ValueQualifies(memoryValue, oldMemoryValue, searchValue1, searchValue2, _memoryType))
+                List<object> memoryValues = Enumerable.Range(0, _numValues).ToList()
+                    .ConvertAll(i => Config.Stream.GetValue(_memoryType, address + (uint)(i * _memoryTypeSize)));
+
+                bool valuesQualify = true;
+                for (int i = 0; i < _numValues; i++)
                 {
-                    _dictionary[address] = memoryValue;
+                    if (!ValueQualifies(memoryValues[i], oldMemoryValues[i], searchValues[i].searchValue1, searchValues[i].searchValue2, _memoryType))
+                    {
+                        valuesQualify = false;
+                        break;
+                    }
+                }
+                if (valuesQualify)
+                {
+                    _dictionary[address] = new Result(memoryValues);
                 }
 
                 int offset = (int)(address - 0x80000000);
@@ -181,21 +219,33 @@ namespace STROOP.Managers
 
         private void DoNextScan()
         {
-            (object searchValue1, object searchValue2) = ParseSearchValue(_textBoxSearchValue.Text, _memoryType);
+            List<(object searchValue1, object searchValue2)> searchValues = ParseSearchValueAll(_textBoxSearchValue.Text, _memoryType);
 
-            List<KeyValuePair<uint, object>> pairs = _dictionary.ToList();
-            TransferDictionary(_dictionary, _undoDictionary);
+            List<KeyValuePair<uint, Result>> pairs = _dictionary.ToList();
+            DictionaryUtilities.TransferDictionary(_dictionary, _undoDictionary);
             _dictionary.Clear();
             StartProgressBar();
             for (int i = 0; i < pairs.Count; i++)
             {
-                KeyValuePair<uint, object> pair = pairs[i];
-                uint address = pair.Key;
-                object oldMemoryValue = pair.Value;
-                object memoryValue = Config.Stream.GetValue(_memoryType, address);
-                if (ValueQualifies(memoryValue, oldMemoryValue, searchValue1, searchValue2, _memoryType))
+                KeyValuePair<uint, Result> pair = pairs[i];
+                uint startAddress = pair.Key;
+                Result oldResult = pair.Value;
+                List<object> oldMemoryValues = oldResult.Values;
+                List<object> memoryValues = Enumerable.Range(0, _numValues).ToList()
+                    .ConvertAll(j => Config.Stream.GetValue(_memoryType, startAddress + (uint)(j * _memoryTypeSize)));
+
+                bool valuesQualify = true;
+                for (int j = 0; j < _numValues; j++)
                 {
-                    _dictionary[address] = memoryValue;
+                    if (!ValueQualifies(memoryValues[j], oldMemoryValues[j], searchValues[j].searchValue1, searchValues[j].searchValue2, _memoryType))
+                    {
+                        valuesQualify = false;
+                        break;
+                    }
+                }
+                if (valuesQualify)
+                {
+                    _dictionary[startAddress] = new Result(memoryValues);
                 }
 
                 if (pairs.Count > 10000)
@@ -215,7 +265,12 @@ namespace STROOP.Managers
             UpdateControlsBasedOnDictionary();
         }
 
-        private (object searchValue1, object searchValue2) ParseSearchValue(string text, Type type)
+        private List<(object searchValue1, object searchValue2)> ParseSearchValueAll(string text, Type type)
+        {
+            return text.Split(';').ToList().ConvertAll(s => ParseSearchValueSpecific(s.Trim(), type));
+        }
+
+        private (object searchValue1, object searchValue2) ParseSearchValueSpecific(string text, Type type)
         {
             List<string> stringValues = ParsingUtilities.ParseStringList(text);
             string stringValue1 = stringValues.Count >= 1 ? stringValues[0] : null;
@@ -239,7 +294,7 @@ namespace STROOP.Managers
             {
                 _dataGridViewSearch.Rows.Add(
                     HexUtilities.FormatValue(key),
-                    _useHex ? HexUtilities.FormatValue(_dictionary[key]) : _dictionary[key]);
+                    _dictionary[key].Format(_useHex));
             });
         }
 
@@ -271,18 +326,9 @@ namespace STROOP.Managers
             _progressBarSearch.Update();
         }
 
-        private void TransferDictionary(Dictionary<uint, object> sender, Dictionary<uint, object> receiver)
-        {
-            receiver.Clear();
-            foreach (uint key in sender.Keys)
-            {
-                receiver[key] = sender[key];
-            }
-        }
-
         private void UndoScan()
         {
-            TransferDictionary(_undoDictionary, _dictionary);
+            DictionaryUtilities.TransferDictionary(_undoDictionary, _dictionary);
             UpdateControlsBasedOnDictionary();
         }
 
