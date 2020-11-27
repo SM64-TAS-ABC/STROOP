@@ -32,7 +32,7 @@ namespace STROOP.Map
             Color = Color.Yellow;
         }
 
-        public override void DrawOn2DControl()
+        public override void DrawOn2DControlTopDownView()
         {
             List<(float centerX, float centerZ, float radius, float angle, float angleRadius)> dimenstionList = GetDimensions();
 

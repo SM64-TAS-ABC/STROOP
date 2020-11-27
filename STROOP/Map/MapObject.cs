@@ -51,7 +51,21 @@ namespace STROOP.Map
         {
         }
 
-        public abstract void DrawOn2DControl();
+        public void DrawOn2DControl()
+        {
+            if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
+            {
+                DrawOn2DControlSideView();
+            }
+            else
+            {
+                DrawOn2DControlTopDownView();
+            }
+        }
+
+        public abstract void DrawOn2DControlTopDownView();
+
+        public void DrawOn2DControlSideView() { } // TODO: make abstract
 
         public abstract void DrawOn3DControl();
 

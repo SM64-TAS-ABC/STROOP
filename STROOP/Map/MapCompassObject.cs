@@ -37,7 +37,7 @@ namespace STROOP.Map
             Color = Color.White;
         }
 
-        public override void DrawOn2DControl()
+        public override void DrawOn2DControlTopDownView()
         {
             List<CompassArrow> arrows = Enumerable.Range(0, 4).ToList().ConvertAll(index => new CompassArrow(16384 * index));
 

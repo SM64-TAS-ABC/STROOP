@@ -32,7 +32,7 @@ namespace STROOP.Map
             OutlineWidth = 0;
         }
 
-        public override void DrawOn2DControl()
+        public override void DrawOn2DControlTopDownView()
         {
             // do nothing
         }

@@ -21,7 +21,7 @@ namespace STROOP.Map
         {
         }
 
-        public override void DrawOn2DControl()
+        public override void DrawOn2DControlTopDownView()
         {
             if (OutlineWidth == 0) return;
 

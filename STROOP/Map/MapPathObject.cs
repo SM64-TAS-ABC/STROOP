@@ -101,7 +101,7 @@ namespace STROOP.Map
             return segments;
         }
 
-        public override void DrawOn2DControl()
+        public override void DrawOn2DControlTopDownView()
         {
             if (OutlineWidth == 0) return;
 

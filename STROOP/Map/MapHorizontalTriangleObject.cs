@@ -29,7 +29,7 @@ namespace STROOP.Map
             _maxHeight = null;
         }
 
-        public override void DrawOn2DControl()
+        public override void DrawOn2DControlTopDownView()
         {
             if (_enableQuarterFrameLandings)
             {

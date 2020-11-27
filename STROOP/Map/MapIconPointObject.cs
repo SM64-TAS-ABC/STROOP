@@ -20,7 +20,7 @@ namespace STROOP.Map
         {
         }
 
-        public override void DrawOn2DControl()
+        public override void DrawOn2DControlTopDownView()
         {
             // Update map object
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
