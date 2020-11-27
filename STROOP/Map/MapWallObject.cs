@@ -222,6 +222,7 @@ namespace STROOP.Map
             {
                 double pushAngleRadians = MoreMath.AngleUnitsToRadians(data.pushAngle);
                 float projectionDist = Size / (float)Math.Abs(data.xProjection ? Math.Sin(pushAngleRadians) : Math.Cos(pushAngleRadians));
+                float relativeHeight = _relativeHeight ?? 0;
                 switch (Config.MapGraphics.MapViewSideViewAngle)
                 {
                     case MapGraphics.MapSideViewAngle.Angle0:
@@ -232,17 +233,17 @@ namespace STROOP.Map
                             {
                                 new List<(float x, float y, float z)>()
                                 {
-                                    (data.x1, data.y1, data.z1),
-                                    (data.x2, data.y2, data.z2),
-                                    (data.x2 - projectionDist, data.y2, data.z2),
-                                    (data.x1 - projectionDist, data.y1, data.z1),
+                                    (data.x1, data.y1 + relativeHeight, data.z1),
+                                    (data.x2, data.y2 + relativeHeight, data.z2),
+                                    (data.x2 - projectionDist, data.y2 + relativeHeight, data.z2),
+                                    (data.x1 - projectionDist, data.y1 + relativeHeight, data.z1),
                                 },
                                 new List<(float x, float y, float z)>()
                                 {
-                                    (data.x1, data.y1, data.z1),
-                                    (data.x2, data.y2, data.z2),
-                                    (data.x2 + projectionDist, data.y2, data.z2),
-                                    (data.x1 + projectionDist, data.y1, data.z1),
+                                    (data.x1, data.y1 + relativeHeight, data.z1),
+                                    (data.x2, data.y2 + relativeHeight, data.z2),
+                                    (data.x2 + projectionDist, data.y2 + relativeHeight, data.z2),
+                                    (data.x1 + projectionDist, data.y1 + relativeHeight, data.z1),
                                 },
                             };
                         }
