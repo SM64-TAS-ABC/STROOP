@@ -301,6 +301,8 @@ namespace STROOP
                 buttonMapControllersCenterDownLeft = buttonMapControllersCenterDownLeft,
                 buttonMapControllersCenterLeft = buttonMapControllersCenterLeft,
                 buttonMapControllersCenterUpLeft = buttonMapControllersCenterUpLeft,
+                buttonMapControllersCenterIn = buttonMapControllersCenterIn,
+                buttonMapControllersCenterOut = buttonMapControllersCenterOut,
 
                 radioButtonMapControllersAngle0 = radioButtonMapControllersAngle0,
                 radioButtonMapControllersAngle16384 = radioButtonMapControllersAngle16384,

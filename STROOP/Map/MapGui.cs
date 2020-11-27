@@ -90,6 +90,8 @@ namespace STROOP.Map
         public Button buttonMapControllersCenterDownLeft;
         public Button buttonMapControllersCenterLeft;
         public Button buttonMapControllersCenterUpLeft;
+        public Button buttonMapControllersCenterIn;
+        public Button buttonMapControllersCenterOut;
 
 
 
