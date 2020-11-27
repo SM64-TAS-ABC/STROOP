@@ -29,6 +29,16 @@ namespace STROOP.Map
             }
         }
 
+        public override void DrawOn2DControlSideView()
+        {
+            List<(PointF loc, SizeF size)> dimensions = GetDimensions();
+            if (InternalRotates) return;
+            foreach ((PointF loc, SizeF size) in dimensions)
+            {
+                MapUtilities.DrawTexture(TextureId, loc, size, 0, Opacity);
+            }
+        }
+
         protected abstract List<(PointF loc, SizeF size)> GetDimensions();
     }
 }

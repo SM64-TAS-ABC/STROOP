@@ -65,7 +65,7 @@ namespace STROOP.Map
 
         public abstract void DrawOn2DControlTopDownView();
 
-        public void DrawOn2DControlSideView() { } // TODO(sideview): make abstract
+        public virtual void DrawOn2DControlSideView() { } // TODO(sideview): make abstract
 
         public abstract void DrawOn3DControl();
 
