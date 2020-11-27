@@ -36,7 +36,7 @@ namespace STROOP.Map
                 MapUtilities.GetPuCoordinates(rectangleCenterX, rectangleCenterZ) :
                 new List<(float x, float z)>() { (rectangleCenterX, rectangleCenterZ) };
             List<(float x, float z)> controlCenters = rectangleCenters.ConvertAll(
-                rectangleCenter => MapUtilities.ConvertCoordsForControl(rectangleCenter.x, rectangleCenter.z));
+                rectangleCenter => MapUtilities.ConvertCoordsForControlTopDownView(rectangleCenter.x, rectangleCenter.z));
             float sizeX = rectangle.Width * Config.MapGraphics.MapViewScaleValue;
             float sizeZ = rectangle.Height * Config.MapGraphics.MapViewScaleValue;
             List<(PointF loc, SizeF size)> dimensions = controlCenters.ConvertAll(

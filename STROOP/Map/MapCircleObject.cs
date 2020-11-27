@@ -31,7 +31,7 @@ namespace STROOP.Map
 
             foreach ((float centerX, float centerZ, float radius) in dimensionList)
             {
-                (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControl(centerX, centerZ);
+                (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(centerX, centerZ);
                 float controlRadius = radius * Config.MapGraphics.MapViewScaleValue;
                 List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS_2D).ToList()
                     .ConvertAll(index => (index / (float)NUM_POINTS_2D) * 65536)

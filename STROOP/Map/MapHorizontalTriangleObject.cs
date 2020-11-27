@@ -158,7 +158,7 @@ namespace STROOP.Map
             List<List<(float x, float y, float z)>> quadList = MapUtilities.ConvertUnitPointsToQuads(unitPoints);
             List<List<(float x, float z)>> quadListForControl =
                 quadList.ConvertAll(quad => quad.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z)));
+                    vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z)));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);

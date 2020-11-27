@@ -63,11 +63,11 @@ namespace STROOP.Map
             double forwardDist = MoreMath.GetDistanceBetween(cx, cz, fx, fz);
             double backwardDist = MoreMath.GetDistanceBetween(cx, cz, bx, bz);
 
-            (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControl(cx, cz);
+            (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(cx, cz);
             List<(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS).ToList()
                 .ConvertAll(index => (index / (float)NUM_POINTS) * 65536)
                 .ConvertAll(angle => GetEllipsePoint(cx, cz, sideDist, forwardDist, backwardDist, marioAngle, angle))
-                .ConvertAll(point => MapUtilities.ConvertCoordsForControl((float)point.x, (float)point.z));
+                .ConvertAll(point => MapUtilities.ConvertCoordsForControlTopDownView((float)point.x, (float)point.z));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);

@@ -66,7 +66,7 @@ namespace STROOP.Map
 
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<(float x, float z)> veriticesForControl =
-                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z));
+                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z));
 
             for (int i = 0; i < veriticesForControl.Count - 1; i++)
             {
@@ -107,7 +107,7 @@ namespace STROOP.Map
 
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<(float x, float z)> veriticesForControl =
-                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.z));
+                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);

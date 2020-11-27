@@ -37,7 +37,7 @@ namespace STROOP.Map
         }
 
         /** Takes in in-game coordinates, outputs control coordinates. */
-        public static (float x, float z) ConvertCoordsForControl(float x, float z)
+        public static (float x, float z) ConvertCoordsForControlTopDownView(float x, float z)
         {
             x = Config.MapGraphics.MapViewEnablePuView ? x : (float)PuUtilities.GetRelativeCoordinate(x);
             z = Config.MapGraphics.MapViewEnablePuView ? z : (float)PuUtilities.GetRelativeCoordinate(z);
@@ -76,10 +76,47 @@ namespace STROOP.Map
             return (centerX, centerZ);
         }
 
+        public static (float x, float z) ConvertCoordsForControlSideView(float x, float y, float z)
+        {
+            x = Config.MapGraphics.MapViewEnablePuView ? x : (float)PuUtilities.GetRelativeCoordinate(x);
+            y = Config.MapGraphics.MapViewEnablePuView ? y : (float)PuUtilities.GetRelativeCoordinate(y);
+            z = Config.MapGraphics.MapViewEnablePuView ? z : (float)PuUtilities.GetRelativeCoordinate(z);
+            float xOffset = x - Config.MapGraphics.MapViewCenterXValue;
+            float yOffset = y - Config.MapGraphics.MapViewCenterYValue;
+            float zOffset = z - Config.MapGraphics.MapViewCenterZValue;
+            float hOffset, vOffset;
+            switch (Config.MapGraphics.MapViewSideViewAngle)
+            {
+                case MapGraphics.MapSideViewAngle.Angle0:
+                    hOffset = -1 * xOffset;
+                    vOffset = -1 * yOffset;
+                    break;
+                case MapGraphics.MapSideViewAngle.Angle16384:
+                    hOffset = zOffset;
+                    vOffset = -1 * yOffset;
+                    break;
+                case MapGraphics.MapSideViewAngle.Angle32768:
+                    hOffset = xOffset;
+                    vOffset = -1 * yOffset;
+                    break;
+                case MapGraphics.MapSideViewAngle.Angle49152:
+                    hOffset = -1 * zOffset;
+                    vOffset = -1 * yOffset;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            float hOffsetPixels = hOffset * Config.MapGraphics.MapViewScaleValue;
+            float vOffsetPixels = vOffset * Config.MapGraphics.MapViewScaleValue;
+            float centerH = Config.MapGui.GLControlMap2D.Width / 2 + hOffsetPixels;
+            float centerV = Config.MapGui.GLControlMap2D.Height / 2 + vOffsetPixels;
+            return (centerH, centerV);
+        }
+
         /** Takes in in-game coordinates, outputs control coordinates. */
         public static (float x, float y, float z) ConvertCoordsForControl(float x, float y, float z)
         {
-            (float convertedX, float convertedZ) = ConvertCoordsForControl(x, z);
+            (float convertedX, float convertedZ) = ConvertCoordsForControlTopDownView(x, z);
             return (convertedX, y, convertedZ);
         }
 
