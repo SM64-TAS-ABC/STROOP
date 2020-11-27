@@ -24,7 +24,7 @@ namespace STROOP.Map
         {
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
             (float xPosPixels, float zPosPixels) = MapUtilities.ConvertCoordsForControlTopDownView((float)x, (float)z);
-            float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
+            float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControlTopDownView(angle) : 0;
             SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size);
             MapUtilities.DrawTexture(TextureId, new PointF(xPosPixels, zPosPixels), size, angleDegrees, Opacity);
         }
@@ -33,7 +33,7 @@ namespace STROOP.Map
         {
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
             (float xPosPixels, float yPosPixels) = MapUtilities.ConvertCoordsForControlSideView((float)x, (float)y, (float)z);
-            float angleDegrees = 0; // Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
+            float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControlSideView(angle) : 0;
             SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size);
             MapUtilities.DrawTexture(TextureId, new PointF(xPosPixels, yPosPixels), size, angleDegrees, Opacity);
         }
