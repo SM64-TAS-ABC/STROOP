@@ -527,8 +527,9 @@ namespace STROOP.Managers
                     () =>
                     {
                         float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        Config.MapGraphics.SetCustomCenter(marioX + ";" + marioZ);
+                        Config.MapGraphics.SetCustomCenter(marioX, marioY, marioZ);
                     }
                 });
 

@@ -243,17 +243,8 @@ namespace STROOP.Map
 
             if (MapViewCenter != MapCenter.Custom)
             {
-                SetCenterCheckbox(MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue);
+                SetCenterTextbox(MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue);
             }
-        }
-
-        private void SetCenterCheckbox(object xValue, object yValue, object zValue)
-        {
-            List<object> values = new List<object>();
-            values.Add(xValue);
-            if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked) values.Add(yValue);
-            values.Add(zValue);
-            Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(string.Join(";", values));
         }
 
         private void UpdateAngle()
@@ -408,7 +399,7 @@ namespace STROOP.Map
             float newCenterXValue = MapViewCenterXValue + xOffset * multiplier;
             float newCenterYValue = MapViewCenterYValue + yOffset * multiplier;
             float newCenterZValue = MapViewCenterZValue + zOffset * multiplier;
-            SetCenterCheckbox(newCenterXValue, newCenterYValue, newCenterZValue);
+            SetCenterTextbox(newCenterXValue, newCenterYValue, newCenterZValue);
         }
 
         public void ChangeAngle(int sign, object value)
@@ -427,10 +418,19 @@ namespace STROOP.Map
             Config.MapGui.textBoxMapControllersScaleCustom.SubmitText(value.ToString());
         }
 
-        public void SetCustomCenter(object value)
+        public void SetCustomCenter(object xValue, object yValue, object zValue)
         {
             Config.MapGui.radioButtonMapControllersCenterCustom.Checked = true;
-            Config.MapGui.textBoxMapControllersCenterCustom.SubmitText(value.ToString());
+            SetCenterTextbox(xValue, yValue, zValue);
+        }
+
+        private void SetCenterTextbox(object xValue, object yValue, object zValue)
+        {
+            List<object> values = new List<object>();
+            values.Add(xValue);
+            if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked) values.Add(yValue);
+            values.Add(zValue);
+            Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(string.Join(";", values));
         }
 
         public void SetCustomAngle(object value)
@@ -443,6 +443,7 @@ namespace STROOP.Map
         private int _translateStartMouseX = 0;
         private int _translateStartMouseY = 0;
         private float _translateStartCenterX = 0;
+        private float _translateStartCenterY = 0;
         private float _translateStartCenterZ = 0;
 
         private bool _isRotating = false;
@@ -466,6 +467,7 @@ namespace STROOP.Map
                     _translateStartMouseX = e.X;
                     _translateStartMouseY = e.Y;
                     _translateStartCenterX = MapViewCenterXValue;
+                    _translateStartCenterY = MapViewCenterYValue;
                     _translateStartCenterZ = MapViewCenterZValue;
                     break;
                 case MouseButtons.Right:
@@ -514,12 +516,45 @@ namespace STROOP.Map
                 pixelDiffY = MapUtilities.MaybeReverse(pixelDiffY);
                 float unitDiffX = pixelDiffX / MapViewScaleValue;
                 float unitDiffY = pixelDiffY / MapViewScaleValue;
-                (float rotatedX, float rotatedY) = ((float, float))
-                    MoreMath.RotatePointAboutPointAnAngularDistance(
-                        unitDiffX, unitDiffY, 0, 0, MapViewAngleValue);
-                float newCenterX = _translateStartCenterX - rotatedX;
-                float newCenterZ = _translateStartCenterZ - rotatedY;
-                SetCustomCenter(newCenterX + ";" + newCenterZ);
+                float newCenterX, newCenterY, newCenterZ;
+                if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
+                {
+                    switch (MapViewSideViewAngle)
+                    {
+                        case MapSideViewAngle.Angle0:
+                            newCenterX = _translateStartCenterX + unitDiffX;
+                            newCenterY = _translateStartCenterY + unitDiffY;
+                            newCenterZ = _translateStartCenterZ;
+                            break;
+                        case MapSideViewAngle.Angle16384:
+                            newCenterX = _translateStartCenterX;
+                            newCenterY = _translateStartCenterY + unitDiffY;
+                            newCenterZ = _translateStartCenterZ - unitDiffX;
+                            break;
+                        case MapSideViewAngle.Angle32768:
+                            newCenterX = _translateStartCenterX - unitDiffX;
+                            newCenterY = _translateStartCenterY + unitDiffY;
+                            newCenterZ = _translateStartCenterZ;
+                            break;
+                        case MapSideViewAngle.Angle49152:
+                            newCenterX = _translateStartCenterX;
+                            newCenterY = _translateStartCenterY + unitDiffY;
+                            newCenterZ = _translateStartCenterZ + unitDiffX;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+                else
+                {
+                    (float rotatedX, float rotatedY) = ((float, float))
+                        MoreMath.RotatePointAboutPointAnAngularDistance(
+                            unitDiffX, unitDiffY, 0, 0, MapViewAngleValue);
+                    newCenterX = _translateStartCenterX - rotatedX;
+                    newCenterY = _translateStartCenterY;
+                    newCenterZ = _translateStartCenterZ - rotatedY;
+                }
+                SetCustomCenter(newCenterX, newCenterY, newCenterZ);
             }
 
             if (_isRotating)
