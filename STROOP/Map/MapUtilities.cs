@@ -114,7 +114,7 @@ namespace STROOP.Map
         }
 
         /** Takes in in-game coordinates, outputs control coordinates. */
-        public static (float x, float y, float z) ConvertCoordsForControl(float x, float y, float z)
+        public static (float x, float y, float z) ConvertCoordsForControlTopDownView(float x, float y, float z)
         {
             (float convertedX, float convertedZ) = ConvertCoordsForControlTopDownView(x, z);
             return (convertedX, y, convertedZ);

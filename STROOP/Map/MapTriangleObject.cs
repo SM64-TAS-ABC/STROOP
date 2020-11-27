@@ -54,6 +54,48 @@ namespace STROOP.Map
             return (vertex.x + xOffset, vertex.y + yOffset, vertex.z + zOffset);
         }
 
+        public override void DrawOn2DControlSideView()
+        {
+            List<List<(float x, float y, float z)>> vertexLists = GetVertexLists();
+            List<List<(float x, float z)>> vertexListsForControl =
+                vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
+                    vertex => MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z)));
+
+            GL.BindTexture(TextureTarget.Texture2D, -1);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+
+            // Draw triangle
+            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+            foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+            {
+                GL.Begin(PrimitiveType.Polygon);
+                foreach ((float x, float z) in vertexList)
+                {
+                    GL.Vertex2(x, z);
+                }
+                GL.End();
+            }
+
+            // Draw outline
+            if (OutlineWidth != 0)
+            {
+                GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
+                GL.LineWidth(OutlineWidth);
+                foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+                {
+                    GL.Begin(PrimitiveType.LineLoop);
+                    foreach ((float x, float z) in vertexList)
+                    {
+                        GL.Vertex2(x, z);
+                    }
+                    GL.End();
+                }
+            }
+
+            GL.Color4(1, 1, 1, 1.0f);
+        }
+
         protected List<ToolStripMenuItem> GetTriangleToolStripMenuItems()
         {
             ToolStripMenuItem itemSetWithinDist = new ToolStripMenuItem("Set Within Dist");

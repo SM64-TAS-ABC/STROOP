@@ -91,7 +91,7 @@ namespace STROOP.Map
             List<List<(float x, float y, float z)>> vertexLists = GetVertexListsWithSplicing(minHeight, maxHeight);
             List<List<(float x, float y, float z)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControl(vertex.x, vertex.y, vertex.z)));
+                    vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.y, vertex.z)));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
