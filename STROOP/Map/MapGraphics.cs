@@ -21,10 +21,12 @@ namespace STROOP.Map
         private enum MapScale { CourseDefault, MaxCourseSize, Custom };
         private enum MapCenter { BestFit, Origin, Mario, Custom };
         private enum MapAngle { Angle0, Angle16384, Angle32768, Angle49152, Mario, Camera, Centripetal, Custom };
+        private enum MapSideViewAngle { Angle0, Angle16384, Angle32768, Angle49152 };
 
         private MapScale MapViewScale;
         private MapCenter MapViewCenter;
         private MapAngle MapViewAngle;
+        private MapSideViewAngle MapViewSideViewAngle;
         private bool MapViewScaleWasCourseDefault = true;
 
         private static readonly float DEFAULT_MAP_VIEW_SCALE_VALUE = 1;
@@ -303,6 +305,31 @@ namespace STROOP.Map
                         Config.MapGui.textBoxMapControllersAngleCustom.LastSubmittedText)
                         ?? DEFAULT_MAP_VIEW_ANGLE_VALUE;
                     break;
+            }
+
+            // set map side view angle
+            {
+                double added = MoreMath.NormalizeAngleDouble(MapViewAngleValue + 8192);
+                int divided = (int)added / 16384;
+                int multiplied = divided * 16384;
+                switch (multiplied)
+                {
+                    case 0:
+                        MapViewSideViewAngle = MapSideViewAngle.Angle0;
+                        break;
+                    case 16384:
+                        MapViewSideViewAngle = MapSideViewAngle.Angle16384;
+                        break;
+                    case 32768:
+                        MapViewSideViewAngle = MapSideViewAngle.Angle32768;
+                        break;
+                    case 49152:
+                        MapViewSideViewAngle = MapSideViewAngle.Angle49152;
+                        break;
+                    default:
+                        MapViewSideViewAngle = MapSideViewAngle.Angle32768;
+                        break;
+                }
             }
 
             if (MapViewAngle != MapAngle.Custom)
