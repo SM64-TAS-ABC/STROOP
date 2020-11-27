@@ -33,6 +33,7 @@ namespace STROOP.Map
 
         public CheckBox checkBoxMapOptionsEnable3D;
         public CheckBox checkBoxMapOptionsDisable3DHitboxHackTris;
+        public CheckBox checkBoxMapOptionsEnableSideView;
         public CheckBox checkBoxMapOptionsEnablePuView;
         public CheckBox checkBoxMapOptionsReverseDragging;
         public CheckBox checkBoxMapOptionsScaleIconSizes;
