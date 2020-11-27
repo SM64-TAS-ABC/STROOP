@@ -369,7 +369,7 @@ namespace STROOP.Map
             return null;
         }
 
-        public static (float x1, float y1, float z1, float x2, float y2, float z2)? Get2DDataFromTri(TriangleDataModel tri)
+        public static (float x1, float y1, float z1, float x2, float y2, float z2, TriangleClassification classification)? Get2DDataFromTri(TriangleDataModel tri)
         {
             switch (Config.MapGraphics.MapViewSideViewAngle)
             {
@@ -406,7 +406,9 @@ namespace STROOP.Map
 
                         if (points.Count == 2)
                         {
-                            return (points[0].x, points[0].y, Config.MapGraphics.MapViewCenterZValue, points[1].x, points[1].y, Config.MapGraphics.MapViewCenterZValue);
+                            return (points[0].x, points[0].y, Config.MapGraphics.MapViewCenterZValue,
+                                points[1].x, points[1].y, Config.MapGraphics.MapViewCenterZValue,
+                                tri.Classification);
                         }
 
                         return null;
@@ -444,7 +446,9 @@ namespace STROOP.Map
 
                         if (points.Count == 2)
                         {
-                            return (Config.MapGraphics.MapViewCenterXValue, points[0].y, points[0].z, Config.MapGraphics.MapViewCenterXValue, points[1].y, points[1].z);
+                            return (Config.MapGraphics.MapViewCenterXValue, points[0].y, points[0].z,
+                                Config.MapGraphics.MapViewCenterXValue, points[1].y, points[1].z,
+                                tri.Classification);
                         }
 
                         return null;

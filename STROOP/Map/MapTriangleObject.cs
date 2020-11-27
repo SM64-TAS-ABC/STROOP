@@ -20,6 +20,7 @@ namespace STROOP.Map
         private float? _withinDist;
         private float? _withinCenter;
         protected bool _excludeDeathBarriers;
+        private bool _useCrossSection;
 
         public MapTriangleObject()
             : base()
@@ -27,6 +28,7 @@ namespace STROOP.Map
             _withinDist = null;
             _withinCenter = null;
             _excludeDeathBarriers = false;
+            _useCrossSection = false;
         }
 
         protected List<List<(float x, float y, float z)>> GetVertexLists()
@@ -55,6 +57,88 @@ namespace STROOP.Map
         }
 
         public override void DrawOn2DControlSideView()
+        {
+            if (_useCrossSection)
+            {
+                DrawOn2DControlSideViewCrossSection();
+            }
+            else
+            {
+                DrawOn2DControlSideViewTotal();
+            }
+        }
+
+        public void DrawOn2DControlSideViewCrossSection()
+        {
+            List<(float x1, float y1, float z1, float x2, float y2, float z2, TriangleClassification classification)> triData =
+                GetTrianglesWithinDist().ConvertAll(tri => MapUtilities.Get2DDataFromTri(tri))
+                    .FindAll(data => data.HasValue)
+                    .ConvertAll(data => data.Value);
+
+            List<List<(float x, float y, float z)>> vertexLists = triData.ConvertAll(data =>
+            {
+                switch (data.classification)
+                {
+                    case TriangleClassification.Wall:
+                        {
+                            return new List<(float x, float y, float z)>(); // TODO FIX THIS
+                        }
+                    case TriangleClassification.Floor:
+                    case TriangleClassification.Ceiling:
+                        {
+                            return new List<(float x, float y, float z)>()
+                            {
+                                (data.x1, data.y1, data.z1),
+                                (data.x2, data.y2, data.z2),
+                                (data.x2, data.y2 - Size, data.z2),
+                                (data.x1, data.y1 - Size, data.z1),
+                            };
+                        }
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            });
+
+            List<List<(float x, float z)>> vertexListsForControl =
+                vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
+                    vertex => MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z)));
+
+            GL.BindTexture(TextureTarget.Texture2D, -1);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+
+            // Draw triangle
+            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+            foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+            {
+                GL.Begin(PrimitiveType.Polygon);
+                foreach ((float x, float z) in vertexList)
+                {
+                    GL.Vertex2(x, z);
+                }
+                GL.End();
+            }
+
+            // Draw outline
+            if (OutlineWidth != 0)
+            {
+                GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
+                GL.LineWidth(OutlineWidth);
+                foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+                {
+                    GL.Begin(PrimitiveType.LineLoop);
+                    foreach ((float x, float z) in vertexList)
+                    {
+                        GL.Vertex2(x, z);
+                    }
+                    GL.End();
+                }
+            }
+
+            GL.Color4(1, 1, 1, 1.0f);
+        }
+
+        public void DrawOn2DControlSideViewTotal()
         {
             List<List<(float x, float y, float z)>> vertexLists = GetVertexLists();
             List<List<(float x, float z)>> vertexListsForControl =
@@ -131,12 +215,20 @@ namespace STROOP.Map
                 _withinCenter = null;
             };
 
+            ToolStripMenuItem itemUseCrossSection = new ToolStripMenuItem("Use Cross Section");
+            itemUseCrossSection.Click += (sender, e) =>
+            {
+                _useCrossSection = !_useCrossSection;
+                itemUseCrossSection.Checked = _useCrossSection;
+            };
+
             return new List<ToolStripMenuItem>()
             {
                 itemSetWithinDist,
                 itemClearWithinDist,
                 itemSetWithinCenter,
                 itemClearWithinCenter,
+                itemUseCrossSection,
             };
         }
 
