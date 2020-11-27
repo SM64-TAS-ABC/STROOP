@@ -21,12 +21,11 @@ namespace STROOP.Map
         private enum MapScale { CourseDefault, MaxCourseSize, Custom };
         private enum MapCenter { BestFit, Origin, Mario, Custom };
         private enum MapAngle { Angle0, Angle16384, Angle32768, Angle49152, Mario, Camera, Centripetal, Custom };
-        private enum MapSideViewAngle { Angle0, Angle16384, Angle32768, Angle49152 };
+        public enum MapSideViewAngle { Angle0, Angle16384, Angle32768, Angle49152 };
 
         private MapScale MapViewScale;
         private MapCenter MapViewCenter;
         private MapAngle MapViewAngle;
-        private MapSideViewAngle MapViewSideViewAngle;
         private bool MapViewScaleWasCourseDefault = true;
 
         private static readonly float DEFAULT_MAP_VIEW_SCALE_VALUE = 1;
@@ -34,12 +33,14 @@ namespace STROOP.Map
         private static readonly float DEFAULT_MAP_VIEW_CENTER_Y_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_CENTER_Z_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_ANGLE_VALUE = 32768;
+        private static readonly MapSideViewAngle DEFAULT_MAP_VIEW_SIDE_VIEW_ANGLE = MapSideViewAngle.Angle32768;
 
         public float MapViewScaleValue = DEFAULT_MAP_VIEW_SCALE_VALUE;
         public float MapViewCenterXValue = DEFAULT_MAP_VIEW_CENTER_X_VALUE;
         public float MapViewCenterYValue = DEFAULT_MAP_VIEW_CENTER_Y_VALUE;
         public float MapViewCenterZValue = DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
         public float MapViewAngleValue = DEFAULT_MAP_VIEW_ANGLE_VALUE;
+        public MapSideViewAngle MapViewSideViewAngle = DEFAULT_MAP_VIEW_SIDE_VIEW_ANGLE;
 
         public bool MapViewEnablePuView = false;
         public bool MapViewScaleIconSizes = false;
@@ -327,7 +328,7 @@ namespace STROOP.Map
                         MapViewSideViewAngle = MapSideViewAngle.Angle49152;
                         break;
                     default:
-                        MapViewSideViewAngle = MapSideViewAngle.Angle32768;
+                        MapViewSideViewAngle = DEFAULT_MAP_VIEW_SIDE_VIEW_ANGLE;
                         break;
                 }
             }
