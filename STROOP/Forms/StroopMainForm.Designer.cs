@@ -1618,6 +1618,8 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.checkBoxMapOptionsEnableSideView = new System.Windows.Forms.CheckBox();
+            this.buttonMapControllersCenterIn = new System.Windows.Forms.Button();
+            this.buttonMapControllersCenterOut = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -11180,7 +11182,9 @@ namespace STROOP
             this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterUpLeft);
             this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterLeft);
             this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterDownLeft);
+            this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterOut);
             this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterDown);
+            this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterIn);
             this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterUpRight);
             this.groupBoxMapControllersCenter.Controls.Add(this.buttonMapControllersCenterUp);
             this.groupBoxMapControllersCenter.Location = new System.Drawing.Point(3, 73);
@@ -11316,7 +11320,7 @@ namespace STROOP
             // 
             this.buttonMapControllersCenterDown.BackgroundImage = global::STROOP.Properties.Resources.image_down;
             this.buttonMapControllersCenterDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMapControllersCenterDown.Location = new System.Drawing.Point(246, 58);
+            this.buttonMapControllersCenterDown.Location = new System.Drawing.Point(231, 58);
             this.buttonMapControllersCenterDown.Name = "buttonMapControllersCenterDown";
             this.buttonMapControllersCenterDown.Size = new System.Drawing.Size(25, 25);
             this.buttonMapControllersCenterDown.TabIndex = 39;
@@ -11336,7 +11340,7 @@ namespace STROOP
             // 
             this.buttonMapControllersCenterUp.BackgroundImage = global::STROOP.Properties.Resources.image_up;
             this.buttonMapControllersCenterUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonMapControllersCenterUp.Location = new System.Drawing.Point(246, 8);
+            this.buttonMapControllersCenterUp.Location = new System.Drawing.Point(231, 8);
             this.buttonMapControllersCenterUp.Name = "buttonMapControllersCenterUp";
             this.buttonMapControllersCenterUp.Size = new System.Drawing.Size(25, 25);
             this.buttonMapControllersCenterUp.TabIndex = 39;
@@ -21044,6 +21048,26 @@ namespace STROOP
             this.checkBoxMapOptionsEnableSideView.Text = "Enable Side View";
             this.checkBoxMapOptionsEnableSideView.UseVisualStyleBackColor = true;
             // 
+            // buttonMapControllersCenterIn
+            // 
+            this.buttonMapControllersCenterIn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMapControllersCenterIn.BackgroundImage")));
+            this.buttonMapControllersCenterIn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersCenterIn.Location = new System.Drawing.Point(262, 8);
+            this.buttonMapControllersCenterIn.Name = "buttonMapControllersCenterIn";
+            this.buttonMapControllersCenterIn.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersCenterIn.TabIndex = 39;
+            this.buttonMapControllersCenterIn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControllersCenterOut
+            // 
+            this.buttonMapControllersCenterOut.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMapControllersCenterOut.BackgroundImage")));
+            this.buttonMapControllersCenterOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControllersCenterOut.Location = new System.Drawing.Point(262, 58);
+            this.buttonMapControllersCenterOut.Name = "buttonMapControllersCenterOut";
+            this.buttonMapControllersCenterOut.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControllersCenterOut.TabIndex = 39;
+            this.buttonMapControllersCenterOut.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -23238,6 +23262,8 @@ namespace STROOP
         private BetterSplitContainer splitContainerOptions;
         private WatchVariableFlowLayoutPanel watchVariablePanelOptions;
         private CheckBox checkBoxMapOptionsEnableSideView;
+        private Button buttonMapControllersCenterOut;
+        private Button buttonMapControllersCenterIn;
     }
 }
 
