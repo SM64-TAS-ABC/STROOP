@@ -65,11 +65,11 @@ namespace STROOP.Map
                     Color color = colors[i % 4];
                     if (ShowTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
                     {
-                        DrawOn2DControlWithUnits(yMin, yMax, color);
+                        DrawOn2DControlTopDownViewWithUnits(yMin, yMax, color);
                     }
                     else
                     {
-                        DrawOn2DControlWithoutUnits(yMin, MoreMath.GetPreviousFloat(yMax), color);
+                        DrawOn2DControlTopDownViewWithoutUnits(yMin, MoreMath.GetPreviousFloat(yMax), color);
                     }
                 }
             }
@@ -77,16 +77,16 @@ namespace STROOP.Map
             {
                 if (ShowTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
                 {
-                    DrawOn2DControlWithUnits(_minHeight, _maxHeight, Color);
+                    DrawOn2DControlTopDownViewWithUnits(_minHeight, _maxHeight, Color);
                 }
                 else
                 {
-                    DrawOn2DControlWithoutUnits(_minHeight, _maxHeight, Color);
+                    DrawOn2DControlTopDownViewWithoutUnits(_minHeight, _maxHeight, Color);
                 }
             }
         }
 
-        private void DrawOn2DControlWithoutUnits(float? minHeight, float? maxHeight, Color color)
+        private void DrawOn2DControlTopDownViewWithoutUnits(float? minHeight, float? maxHeight, Color color)
         {
             List<List<(float x, float y, float z)>> vertexLists = GetVertexListsWithSplicing(minHeight, maxHeight);
             List<List<(float x, float y, float z)>> vertexListsForControl =
@@ -128,7 +128,7 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        private void DrawOn2DControlWithUnits(float? minHeight, float? maxHeight, Color color)
+        private void DrawOn2DControlTopDownViewWithUnits(float? minHeight, float? maxHeight, Color color)
         {
             List<TriangleDataModel> triangles = GetTrianglesWithinDist();
             List<(int x, int z)> unitPoints = triangles.ConvertAll(triangle =>
