@@ -25,9 +25,31 @@ namespace STROOP.Map
         {
             if (OutlineWidth == 0) return;
 
-            List<(float x, float y, float z)> vertices = GetVertices();
+            List<(float x, float y, float z)> vertices = GetVerticesTopDownView();
             List<(float x, float z)> veriticesForControl =
                 vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z));
+
+            GL.BindTexture(TextureTarget.Texture2D, -1);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+            GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, OpacityByte);
+            GL.LineWidth(OutlineWidth);
+            GL.Begin(PrimitiveType.Lines);
+            foreach ((float x, float z) in veriticesForControl)
+            {
+                GL.Vertex2(x, z);
+            }
+            GL.End();
+            GL.Color4(1, 1, 1, 1.0f);
+        }
+
+        public override void DrawOn2DControlSideView()
+        {
+            if (OutlineWidth == 0) return;
+
+            List<(float x, float y, float z)> vertices = GetVerticesSideView();
+            List<(float x, float z)> veriticesForControl =
+                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -47,7 +69,7 @@ namespace STROOP.Map
         {
             if (OutlineWidth == 0) return;
 
-            List<(float x, float y, float z)> vertexList = GetVertices();
+            List<(float x, float y, float z)> vertexList = GetVerticesTopDownView();
 
             Map3DVertex[] vertexArrayForEdges =
                 vertexList.ConvertAll(vertex => new Map3DVertex(new Vector3(
@@ -67,7 +89,12 @@ namespace STROOP.Map
             GL.DeleteBuffer(buffer);
         }
 
-        protected abstract List<(float x, float y, float z)> GetVertices();
+        protected abstract List<(float x, float y, float z)> GetVerticesTopDownView();
+
+        protected virtual List<(float x, float y, float z)> GetVerticesSideView()
+        {
+            return new List<(float x, float y, float z)>();
+        }
 
         public override MapDrawType GetDrawType()
         {

@@ -28,7 +28,7 @@ namespace STROOP.Map
             _setting = PuGridlineSetting.SETTING1;
         }
 
-        protected override List<(float x, float y, float z)> GetVertices()
+        protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
             switch (_setting)
             {

@@ -47,7 +47,7 @@ namespace STROOP.Map
         public bool MapViewCenterChangeByPixels = true;
 
         public float MapViewRadius { get => (float)MoreMath.GetHypotenuse(
-            Config.MapGui.GLControlMap2D.Width / 2, Config.MapGui.GLControlMap2D.Height / 2) / MapViewScaleValue; } // TODO(sideview): fix this
+            Config.MapGui.GLControlMap2D.Width / 2, Config.MapGui.GLControlMap2D.Height / 2) / MapViewScaleValue; }
         public float MapViewXMin { get => MapViewCenterXValue - MapViewRadius; }
         public float MapViewXMax { get => MapViewCenterXValue + MapViewRadius; }
         public float MapViewYMin { get => MapViewCenterYValue - MapViewRadius; }

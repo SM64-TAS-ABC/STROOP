@@ -34,7 +34,7 @@ namespace STROOP.Map
             _mouseIsDown = false;
         }
 
-        protected override List<(float x, float y, float z)> GetVertices()
+        protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
             return _vertices;
         }

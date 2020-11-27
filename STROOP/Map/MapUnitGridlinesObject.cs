@@ -22,7 +22,7 @@ namespace STROOP.Map
             OutlineColor = Color.Black;
         }
 
-        protected override List<(float x, float y, float z)> GetVertices()
+        protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
             // failsafe to prevent filling the whole screen
             if (!MapUtilities.IsAbleToShowUnitPrecision())
@@ -49,6 +49,62 @@ namespace STROOP.Map
                 vertices.Add((xMax, marioY, z));
             }
             return vertices;
+        }
+
+        protected override List<(float x, float y, float z)> GetVerticesSideView()
+        {
+            // failsafe to prevent filling the whole screen
+            if (!MapUtilities.IsAbleToShowUnitPrecision())
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
+            float xCenter = Config.MapGraphics.MapViewCenterXValue;
+            float zCenter = Config.MapGraphics.MapViewCenterZValue;
+            int xMin = (int)Config.MapGraphics.MapViewXMin - 1;
+            int xMax = (int)Config.MapGraphics.MapViewXMax + 1;
+            int yMin = (int)Config.MapGraphics.MapViewYMin - 1;
+            int yMax = (int)Config.MapGraphics.MapViewYMax + 1;
+            int zMin = (int)Config.MapGraphics.MapViewZMin - 1;
+            int zMax = (int)Config.MapGraphics.MapViewZMax + 1;
+
+            switch (Config.MapGraphics.MapViewSideViewAngle)
+            {
+                case MapGraphics.MapSideViewAngle.Angle0:
+                case MapGraphics.MapSideViewAngle.Angle32768:
+                    {
+                        List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                        for (int x = xMin; x <= xMax; x += 1)
+                        {
+                            vertices.Add((x, yMin, zCenter));
+                            vertices.Add((x, yMax, zCenter));
+                        }
+                        for (int y = yMin; y <= yMax; y += 1)
+                        {
+                            vertices.Add((xMin, y, zCenter));
+                            vertices.Add((xMax, y, zCenter));
+                        }
+                        return vertices;
+                    }
+                case MapGraphics.MapSideViewAngle.Angle16384:
+                case MapGraphics.MapSideViewAngle.Angle49152:
+                    {
+                        List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                        for (int z = zMin; z <= zMax; z += 1)
+                        {
+                            vertices.Add((xCenter, yMin, z));
+                            vertices.Add((xCenter, yMax, z));
+                        }
+                        for (int y = yMin; y <= yMax; y += 1)
+                        {
+                            vertices.Add((zCenter, y, zMin));
+                            vertices.Add((xCenter, y, zMax));
+                        }
+                        return vertices;
+                    }
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         public override string GetName()

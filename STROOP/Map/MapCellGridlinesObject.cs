@@ -21,7 +21,7 @@ namespace STROOP.Map
             OutlineColor = Color.Black;
         }
 
-        protected override List<(float x, float y, float z)> GetVertices()
+        protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
 
