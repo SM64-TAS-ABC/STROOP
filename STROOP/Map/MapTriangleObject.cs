@@ -70,7 +70,9 @@ namespace STROOP.Map
 
         public void DrawOn2DControlSideViewCrossSection()
         {
-            List<(float x1, float y1, float z1, float x2, float y2, float z2, TriangleClassification classification)> triData =
+            List<(float x1, float y1, float z1,
+                float x2, float y2, float z2,
+                TriangleClassification classification, bool xProjection, double pushAngle)> triData =
                 GetTrianglesWithinDist().ConvertAll(tri => MapUtilities.Get2DDataFromTri(tri))
                     .FindAll(data => data.HasValue)
                     .ConvertAll(data => data.Value);
@@ -81,23 +83,84 @@ namespace STROOP.Map
                 {
                     case TriangleClassification.Wall:
                         {
-                            return new List<(float x, float y, float z)>(); // TODO FIX THIS
+                            double pushAngleRadians = MoreMath.AngleUnitsToRadians(data.pushAngle);
+                            float projectionDist = Size / (float)Math.Abs(data.xProjection ? Math.Sin(pushAngleRadians) : Math.Cos(pushAngleRadians));
+                            switch (Config.MapGraphics.MapViewSideViewAngle)
+                            {
+                                case MapGraphics.MapSideViewAngle.Angle0:
+                                case MapGraphics.MapSideViewAngle.Angle32768:
+                                    if (data.xProjection)
+                                    {
+                                        return new List<List<(float x, float y, float z)>>()
+                                        {
+                                            new List<(float x, float y, float z)>()
+                                            {
+                                                (data.x1, data.y1, data.z1),
+                                                (data.x2, data.y2, data.z2),
+                                                (data.x2 - projectionDist, data.y2, data.z2),
+                                                (data.x1 - projectionDist, data.y1, data.z1),
+                                            },
+                                            new List<(float x, float y, float z)>()
+                                            {
+                                                (data.x1, data.y1, data.z1),
+                                                (data.x2, data.y2, data.z2),
+                                                (data.x2 + projectionDist, data.y2, data.z2),
+                                                (data.x1 + projectionDist, data.y1, data.z1),
+                                            },
+                                        };
+                                    }
+                                    else
+                                    {
+                                        return new List<List<(float x, float y, float z)>>();
+                                    }
+                                case MapGraphics.MapSideViewAngle.Angle16384:
+                                case MapGraphics.MapSideViewAngle.Angle49152:
+                                    if (data.xProjection)
+                                    {
+                                        return new List<List<(float x, float y, float z)>>();
+                                    }
+                                    else
+                                    {
+                                        return new List<List<(float x, float y, float z)>>()
+                                        {
+                                            new List<(float x, float y, float z)>()
+                                            {
+                                                (data.x1, data.y1, data.z1),
+                                                (data.x2, data.y2, data.z2),
+                                                (data.x2, data.y2, data.z2 - projectionDist),
+                                                (data.x1, data.y1, data.z1 - projectionDist),
+                                            },
+                                            new List<(float x, float y, float z)>()
+                                            {
+                                                (data.x1, data.y1, data.z1),
+                                                (data.x2, data.y2, data.z2),
+                                                (data.x2, data.y2, data.z2 + projectionDist),
+                                                (data.x1, data.y1, data.z1 + projectionDist),
+                                            },
+                                        };
+                                    }
+                                default:
+                                    throw new ArgumentOutOfRangeException();
+                            }
                         }
                     case TriangleClassification.Floor:
                     case TriangleClassification.Ceiling:
                         {
-                            return new List<(float x, float y, float z)>()
+                            return new List<List<(float x, float y, float z)>>()
                             {
-                                (data.x1, data.y1, data.z1),
-                                (data.x2, data.y2, data.z2),
-                                (data.x2, data.y2 - Size, data.z2),
-                                (data.x1, data.y1 - Size, data.z1),
+                                new List<(float x, float y, float z)>()
+                                {
+                                    (data.x1, data.y1, data.z1),
+                                    (data.x2, data.y2, data.z2),
+                                    (data.x2, data.y2 - Size, data.z2),
+                                    (data.x1, data.y1 - Size, data.z1),
+                                },
                             };
                         }
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-            });
+            }).SelectMany(list => list).ToList();
 
             List<List<(float x, float z)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(

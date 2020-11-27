@@ -369,8 +369,13 @@ namespace STROOP.Map
             return null;
         }
 
-        public static (float x1, float y1, float z1, float x2, float y2, float z2, TriangleClassification classification)? Get2DDataFromTri(TriangleDataModel tri)
+        public static (float x1, float y1, float z1,
+            float x2, float y2, float z2,
+            TriangleClassification classification, bool xProjection, double pushAngle)? Get2DDataFromTri(TriangleDataModel tri)
         {
+            double uphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(tri);
+            double pushAngle = MoreMath.ReverseAngle(uphillAngle);
+
             switch (Config.MapGraphics.MapViewSideViewAngle)
             {
                 case MapGraphics.MapSideViewAngle.Angle0:
@@ -408,7 +413,7 @@ namespace STROOP.Map
                         {
                             return (points[0].x, points[0].y, Config.MapGraphics.MapViewCenterZValue,
                                 points[1].x, points[1].y, Config.MapGraphics.MapViewCenterZValue,
-                                tri.Classification);
+                                tri.Classification, tri.XProjection, pushAngle);
                         }
 
                         return null;
@@ -448,7 +453,7 @@ namespace STROOP.Map
                         {
                             return (Config.MapGraphics.MapViewCenterXValue, points[0].y, points[0].z,
                                 Config.MapGraphics.MapViewCenterXValue, points[1].y, points[1].z,
-                                tri.Classification);
+                                tri.Classification, tri.XProjection, pushAngle);
                         }
 
                         return null;
