@@ -333,9 +333,9 @@ namespace STROOP.Map
             }
 
             float height = heightNullable.Value;
-            (float pointAX, float pointAZ) = GetHeightOnLine(height, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
-            (float pointBX, float pointBZ) = GetHeightOnLine(height, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
-            (float pointCX, float pointCZ) = GetHeightOnLine(height, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+            (float pointAX, float pointAZ) = GetYOnLine(height, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
+            (float pointBX, float pointBZ) = GetYOnLine(height, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
+            (float pointCX, float pointCZ) = GetYOnLine(height, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
 
             List<(float x, float z)> points = new List<(float x, float z)>();
             if (!float.IsNaN(pointAX) && !float.IsNaN(pointAZ)) points.Add((pointAX, pointAZ));
@@ -369,16 +369,125 @@ namespace STROOP.Map
             return null;
         }
 
-        private static (float x, float z) GetHeightOnLine(
-            float height, float x1, float y1, float z1, float x2, float y2, float z2)
+        public static (float x1, float y1, float z1, float x2, float y2, float z2)? Get2DDataFromTri(TriangleDataModel tri)
         {
-            if (y1 == y2 || height < Math.Min(y1, y2) || height > Math.Max(y1, y2))
+            switch (Config.MapGraphics.MapViewSideViewAngle)
+            {
+                case MapGraphics.MapSideViewAngle.Angle0:
+                case MapGraphics.MapSideViewAngle.Angle32768:
+                    {
+                        (float pointAX, float pointAY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
+                        (float pointBX, float pointBY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
+                        (float pointCX, float pointCY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+
+                        List<(float x, float y)> points = new List<(float x, float y)>();
+                        if (!float.IsNaN(pointAX) && !float.IsNaN(pointAY)) points.Add((pointAX, pointAY));
+                        if (!float.IsNaN(pointBX) && !float.IsNaN(pointBY)) points.Add((pointBX, pointBY));
+                        if (!float.IsNaN(pointCX) && !float.IsNaN(pointCY)) points.Add((pointCX, pointCY));
+
+                        if (points.Count == 3)
+                        {
+                            double distAB = MoreMath.GetDistanceBetween(pointAX, pointAY, pointBX, pointBY);
+                            double distAC = MoreMath.GetDistanceBetween(pointAX, pointAY, pointCX, pointCY);
+                            double distBC = MoreMath.GetDistanceBetween(pointBX, pointBY, pointCX, pointCY);
+                            if (distAB >= distAC && distAB >= distBC)
+                            {
+                                points.RemoveAt(2); // AB is biggest, so remove C
+                            }
+                            else if (distAC >= distBC)
+                            {
+                                points.RemoveAt(1); // AC is biggest, so remove B
+                            }
+                            else
+                            {
+                                points.RemoveAt(0); // BC is biggest, so remove A
+                            }
+                        }
+
+                        if (points.Count == 2)
+                        {
+                            return (points[0].x, points[0].y, Config.MapGraphics.MapViewCenterZValue, points[1].x, points[1].y, Config.MapGraphics.MapViewCenterZValue);
+                        }
+
+                        return null;
+                    }
+                case MapGraphics.MapSideViewAngle.Angle16384:
+                case MapGraphics.MapSideViewAngle.Angle49152:
+                    {
+                        (float pointAY, float pointAZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
+                        (float pointBY, float pointBZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
+                        (float pointCY, float pointCZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+
+                        List<(float y, float z)> points = new List<(float y, float z)>();
+                        if (!float.IsNaN(pointAY) && !float.IsNaN(pointAZ)) points.Add((pointAY, pointAZ));
+                        if (!float.IsNaN(pointBY) && !float.IsNaN(pointBZ)) points.Add((pointBY, pointBZ));
+                        if (!float.IsNaN(pointCY) && !float.IsNaN(pointCZ)) points.Add((pointCY, pointCZ));
+
+                        if (points.Count == 3)
+                        {
+                            double distAB = MoreMath.GetDistanceBetween(pointAY, pointAZ, pointBY, pointBZ);
+                            double distAC = MoreMath.GetDistanceBetween(pointAY, pointAZ, pointCY, pointCZ);
+                            double distBC = MoreMath.GetDistanceBetween(pointBY, pointBZ, pointCY, pointCZ);
+                            if (distAB >= distAC && distAB >= distBC)
+                            {
+                                points.RemoveAt(2); // AB is biggest, so remove C
+                            }
+                            else if (distAC >= distBC)
+                            {
+                                points.RemoveAt(1); // AC is biggest, so remove B
+                            }
+                            else
+                            {
+                                points.RemoveAt(0); // BC is biggest, so remove A
+                            }
+                        }
+
+                        if (points.Count == 2)
+                        {
+                            return (Config.MapGraphics.MapViewCenterXValue, points[0].y, points[0].z, Config.MapGraphics.MapViewCenterXValue, points[1].y, points[1].z);
+                        }
+
+                        return null;
+                    }
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private static (float y, float z) GetXOnLine(
+            float x, float x1, float y1, float z1, float x2, float y2, float z2)
+        {
+            if (x1 == x2 || x < Math.Min(x1, x2) || x > Math.Max(x1, x2))
                 return (float.NaN, float.NaN);
 
-            float p = (height - y1) / (y2 - y1);
+            float p = (x - x1) / (x2 - x1);
+            float py = y1 + p * (y2 - y1);
+            float pz = z1 + p * (z2 - z1);
+            return (py, pz);
+        }
+
+        private static (float x, float z) GetYOnLine(
+            float y, float x1, float y1, float z1, float x2, float y2, float z2)
+        {
+            if (y1 == y2 || y < Math.Min(y1, y2) || y > Math.Max(y1, y2))
+                return (float.NaN, float.NaN);
+
+            float p = (y - y1) / (y2 - y1);
             float px = x1 + p * (x2 - x1);
             float pz = z1 + p * (z2 - z1);
             return (px, pz);
+        }
+
+        private static (float x, float y) GetZOnLine(
+            float z, float x1, float y1, float z1, float x2, float y2, float z2)
+        {
+            if (z1 == z2 || z < Math.Min(z1, z2) || z > Math.Max(z1, z2))
+                return (float.NaN, float.NaN);
+
+            float p = (z - z1) / (z2 - z1);
+            float px = x1 + p * (x2 - x1);
+            float py = y1 + p * (y2 - y1);
+            return (px, py);
         }
 
         public static void MaybeChangeMapCameraMode()
