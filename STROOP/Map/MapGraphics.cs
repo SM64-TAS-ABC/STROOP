@@ -29,11 +29,13 @@ namespace STROOP.Map
 
         private static readonly float DEFAULT_MAP_VIEW_SCALE_VALUE = 1;
         private static readonly float DEFAULT_MAP_VIEW_CENTER_X_VALUE = 0;
+        private static readonly float DEFAULT_MAP_VIEW_CENTER_Y_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_CENTER_Z_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_ANGLE_VALUE = 32768;
 
         public float MapViewScaleValue = DEFAULT_MAP_VIEW_SCALE_VALUE;
         public float MapViewCenterXValue = DEFAULT_MAP_VIEW_CENTER_X_VALUE;
+        public float MapViewCenterYValue = DEFAULT_MAP_VIEW_CENTER_Y_VALUE;
         public float MapViewCenterZValue = DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
         public float MapViewAngleValue = DEFAULT_MAP_VIEW_ANGLE_VALUE;
 
@@ -42,9 +44,11 @@ namespace STROOP.Map
         public bool MapViewCenterChangeByPixels = true;
 
         public float MapViewRadius { get => (float)MoreMath.GetHypotenuse(
-            Config.MapGui.GLControlMap2D.Width / 2, Config.MapGui.GLControlMap2D.Height / 2) / MapViewScaleValue; }
+            Config.MapGui.GLControlMap2D.Width / 2, Config.MapGui.GLControlMap2D.Height / 2) / MapViewScaleValue; } // TODO(sideview): fix this
         public float MapViewXMin { get => MapViewCenterXValue - MapViewRadius; }
         public float MapViewXMax { get => MapViewCenterXValue + MapViewRadius; }
+        public float MapViewYMin { get => MapViewCenterYValue - MapViewRadius; }
+        public float MapViewYMax { get => MapViewCenterYValue + MapViewRadius; }
         public float MapViewZMin { get => MapViewCenterZValue - MapViewRadius; }
         public float MapViewZMax { get => MapViewCenterZValue + MapViewRadius; }
 
@@ -194,14 +198,17 @@ namespace STROOP.Map
                     RectangleF rectangle = MapViewScaleWasCourseDefault ?
                         MapUtilities.GetMapLayout().Coordinates : MAX_COURSE_SIZE;
                     MapViewCenterXValue = rectangle.X + rectangle.Width / 2;
+                    MapViewCenterYValue = 0;
                     MapViewCenterZValue = rectangle.Y + rectangle.Height / 2;
                     break;
                 case MapCenter.Origin:
                     MapViewCenterXValue = 0.5f;
+                    MapViewCenterYValue = 0;
                     MapViewCenterZValue = 0.5f;
                     break;
                 case MapCenter.Mario:
                     MapViewCenterXValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    MapViewCenterYValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                     MapViewCenterZValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     break;
                 case MapCenter.Custom:
@@ -210,32 +217,34 @@ namespace STROOP.Map
                     if (posAngle != null)
                     {
                         MapViewCenterXValue = (float)posAngle.X;
+                        MapViewCenterYValue = (float)posAngle.Y;
                         MapViewCenterZValue = (float)posAngle.Z;
                         break;
                     }
                     List<string> stringValues = ParsingUtilities.ParseStringList(
                         Config.MapGui.textBoxMapControllersCenterCustom.LastSubmittedText, replaceComma: false);
-                    if (stringValues.Count >= 2)
+
+                    if (stringValues.Count == 2)
                     {
                         MapViewCenterXValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_CENTER_X_VALUE;
                         MapViewCenterZValue = ParsingUtilities.ParseFloatNullable(stringValues[1]) ?? DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
                     }
-                    else if (stringValues.Count == 1)
+                    else if (stringValues.Count == 3)
                     {
                         MapViewCenterXValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_CENTER_X_VALUE;
-                        MapViewCenterZValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
-                    }
-                    else
-                    {
-                        MapViewCenterXValue = DEFAULT_MAP_VIEW_CENTER_X_VALUE;
-                        MapViewCenterZValue = DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
+                        MapViewCenterYValue = ParsingUtilities.ParseFloatNullable(stringValues[1]) ?? DEFAULT_MAP_VIEW_CENTER_Y_VALUE;
+                        MapViewCenterZValue = ParsingUtilities.ParseFloatNullable(stringValues[2]) ?? DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
                     }
                     break;
             }
 
             if (MapViewCenter != MapCenter.Custom)
             {
-                Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(MapViewCenterXValue + ";" + MapViewCenterZValue);
+                List<float> values = new List<float>();
+                values.Add(MapViewCenterXValue);
+                if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked) values.Add(MapViewCenterYValue);
+                values.Add(MapViewCenterZValue);
+                Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(string.Join(";", values));
             }
         }
 
