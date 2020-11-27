@@ -243,12 +243,17 @@ namespace STROOP.Map
 
             if (MapViewCenter != MapCenter.Custom)
             {
-                List<float> values = new List<float>();
-                values.Add(MapViewCenterXValue);
-                if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked) values.Add(MapViewCenterYValue);
-                values.Add(MapViewCenterZValue);
-                Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(string.Join(";", values));
+                SetCenterCheckbox(MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue);
             }
+        }
+
+        private void SetCenterCheckbox(object xValue, object yValue, object zValue)
+        {
+            List<object> values = new List<object>();
+            values.Add(xValue);
+            if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked) values.Add(yValue);
+            values.Add(zValue);
+            Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(string.Join(";", values));
         }
 
         private void UpdateAngle()
@@ -357,19 +362,53 @@ namespace STROOP.Map
             Config.MapGui.textBoxMapControllersScaleCustom.SubmitText(newScaleValue.ToString());
         }
 
-        public void ChangeCenter(int xSign, int zSign, object value)
+        public void ChangeCenter(int horizontalSign, int verticalSign, int depthSign, object value)
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
             Config.MapGui.radioButtonMapControllersCenterCustom.Checked = true;
-            float xOffset = xSign * parsed.Value;
-            float zOffset = zSign * parsed.Value;
-            (float xOffsetRotated, float zOffsetRotated) = ((float, float)) MoreMath.RotatePointAboutPointAnAngularDistance(
-                xOffset, zOffset, 0, 0, Config.MapGraphics.MapViewAngleValue);
+            float xOffset, yOffset, zOffset;
+            if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
+            {
+                switch (MapViewSideViewAngle)
+                {
+                    case MapSideViewAngle.Angle0:
+                        xOffset = -1 * horizontalSign * parsed.Value;
+                        yOffset = verticalSign * parsed.Value;
+                        zOffset = -1 * depthSign * parsed.Value;
+                        break;
+                    case MapSideViewAngle.Angle16384:
+                        xOffset = -1 * depthSign * parsed.Value;
+                        yOffset = verticalSign * parsed.Value;
+                        zOffset = horizontalSign * parsed.Value;
+                        break;
+                    case MapSideViewAngle.Angle32768:
+                        xOffset = horizontalSign * parsed.Value;
+                        yOffset = verticalSign * parsed.Value;
+                        zOffset = depthSign * parsed.Value;
+                        break;
+                    case MapSideViewAngle.Angle49152:
+                        xOffset = depthSign * parsed.Value;
+                        yOffset = verticalSign * parsed.Value;
+                        zOffset = -1 * horizontalSign * parsed.Value;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            else
+            {
+                xOffset = horizontalSign * parsed.Value;
+                yOffset = 0;
+                zOffset = -1 * verticalSign * parsed.Value;
+                (xOffset, zOffset) = ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
+                    xOffset, zOffset, 0, 0, Config.MapGraphics.MapViewAngleValue);
+            }
             float multiplier = MapViewCenterChangeByPixels ? 1 / MapViewScaleValue : 1;
-            float newCenterXValue = MapViewCenterXValue + xOffsetRotated * multiplier;
-            float newCenterZValue = MapViewCenterZValue + zOffsetRotated * multiplier;
-            Config.MapGui.textBoxMapControllersCenterCustom.SubmitText(newCenterXValue + ";" + newCenterZValue);
+            float newCenterXValue = MapViewCenterXValue + xOffset * multiplier;
+            float newCenterYValue = MapViewCenterYValue + yOffset * multiplier;
+            float newCenterZValue = MapViewCenterZValue + zOffset * multiplier;
+            SetCenterCheckbox(newCenterXValue, newCenterYValue, newCenterZValue);
         }
 
         public void ChangeAngle(int sign, object value)

@@ -500,21 +500,25 @@ namespace STROOP.Managers
 
             // Buttons for Changing Center
             Config.MapGui.buttonMapControllersCenterUp.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(0, -1, Config.MapGui.textBoxMapControllersCenterChange.Text);
+                Config.MapGraphics.ChangeCenter(0, 1, 0, Config.MapGui.textBoxMapControllersCenterChange.Text);
             Config.MapGui.buttonMapControllersCenterDown.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(0, 1, Config.MapGui.textBoxMapControllersCenterChange.Text);
+                Config.MapGraphics.ChangeCenter(0, -1, 0, Config.MapGui.textBoxMapControllersCenterChange.Text);
             Config.MapGui.buttonMapControllersCenterLeft.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(-1, 0, Config.MapGui.textBoxMapControllersCenterChange.Text);
+                Config.MapGraphics.ChangeCenter(-1, 0, 0, Config.MapGui.textBoxMapControllersCenterChange.Text);
             Config.MapGui.buttonMapControllersCenterRight.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(1, 0, Config.MapGui.textBoxMapControllersCenterChange.Text);
+                Config.MapGraphics.ChangeCenter(1, 0, 0, Config.MapGui.textBoxMapControllersCenterChange.Text);
             Config.MapGui.buttonMapControllersCenterUpLeft.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(-1, -1, Config.MapGui.textBoxMapControllersCenterChange.Text);
+                Config.MapGraphics.ChangeCenter(-1, 1, 0, Config.MapGui.textBoxMapControllersCenterChange.Text);
             Config.MapGui.buttonMapControllersCenterUpRight.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(1, -1, Config.MapGui.textBoxMapControllersCenterChange.Text);
+                Config.MapGraphics.ChangeCenter(1, 1, 0, Config.MapGui.textBoxMapControllersCenterChange.Text);
             Config.MapGui.buttonMapControllersCenterDownLeft.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(-1, 1, Config.MapGui.textBoxMapControllersCenterChange.Text);
+                Config.MapGraphics.ChangeCenter(-1, -1, 0, Config.MapGui.textBoxMapControllersCenterChange.Text);
             Config.MapGui.buttonMapControllersCenterDownRight.Click += (sender, e) =>
-                Config.MapGraphics.ChangeCenter(1, 1, Config.MapGui.textBoxMapControllersCenterChange.Text);
+                Config.MapGraphics.ChangeCenter(1, -1, 0, Config.MapGui.textBoxMapControllersCenterChange.Text);
+            Config.MapGui.buttonMapControllersCenterIn.Click += (sender, e) =>
+                Config.MapGraphics.ChangeCenter(0, 0, -1, Config.MapGui.textBoxMapControllersCenterChange.Text);
+            Config.MapGui.buttonMapControllersCenterOut.Click += (sender, e) =>
+                Config.MapGraphics.ChangeCenter(0, 0, 1, Config.MapGui.textBoxMapControllersCenterChange.Text);
             ControlUtilities.AddContextMenuStripFunctions(
                 Config.MapGui.groupBoxMapControllersCenter,
                 new List<string>() { "Center on Mario" },
