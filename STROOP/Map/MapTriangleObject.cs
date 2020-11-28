@@ -219,22 +219,32 @@ namespace STROOP.Map
 
         public void DrawOn2DControlSideViewTotal()
         {
-            List<List<(float x, float y, float z)>> vertexLists = GetVertexLists();
-            List<List<(float x, float z)>> vertexListsForControl =
+            List<List<(float x, float y, float z, Color color)>> vertexLists =
+                GetTrianglesWithinDist().ConvertAll(tri =>
+                {
+                    Color color = GetColorForSideView(tri.Classification);
+                    return tri.Get3DVertices().ConvertAll(vertex => (vertex.x, vertex.y, vertex.z, color));
+                });
+
+            List<List<(float x, float z, Color color)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z)));
+                    vertex =>
+                    {
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z);
+                        return (x, z, vertex.color);
+                    }));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
             // Draw triangle
-            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
-            foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+            foreach (List<(float x, float z, Color color)> vertexList in vertexListsForControl)
             {
                 GL.Begin(PrimitiveType.Polygon);
-                foreach ((float x, float z) in vertexList)
+                foreach ((float x, float z, Color color) in vertexList)
                 {
+                    GL.Color4(color.R, color.G, color.B, OpacityByte);
                     GL.Vertex2(x, z);
                 }
                 GL.End();
@@ -245,10 +255,10 @@ namespace STROOP.Map
             {
                 GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
                 GL.LineWidth(OutlineWidth);
-                foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+                foreach (List<(float x, float z, Color color)> vertexList in vertexListsForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z) in vertexList)
+                    foreach ((float x, float z, Color color) in vertexList)
                     {
                         GL.Vertex2(x, z);
                     }
