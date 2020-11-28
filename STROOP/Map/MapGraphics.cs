@@ -241,7 +241,25 @@ namespace STROOP.Map
                     break;
             }
 
-            if (MapViewCenter != MapCenter.Custom)
+            if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked &&
+                Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked)
+            {
+                switch (Config.MapGraphics.MapViewSideViewAngle)
+                {
+                    case MapSideViewAngle.Angle0:
+                    case MapSideViewAngle.Angle32768:
+                        MapViewCenterZValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        break;
+                    case MapSideViewAngle.Angle16384:
+                    case MapSideViewAngle.Angle49152:
+                        MapViewCenterXValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+
+            // if (MapViewCenter != MapCenter.Custom)
             {
                 SetCenterTextbox(MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue);
             }
