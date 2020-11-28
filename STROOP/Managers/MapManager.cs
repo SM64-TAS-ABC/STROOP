@@ -20,12 +20,16 @@ namespace STROOP.Managers
     public class MapManager : DataManager
     {
         private Action _checkBoxMarioAction;
+        private Action _checkBoxUnitGridlinesAction;
         private List<int> _currentObjIndexes = new List<int>();
 
         public bool PauseMapUpdating = false;
         private bool _isLoaded2D = false;
         private bool _isLoaded3D = false;
         public int NumDrawingsEnabled = 0;
+
+        private List<object> _mapLayoutChoices;
+        private List<object> _backgroundImageChoices;
 
         public void NotifyDrawingEnabledChange(bool enabled)
         {
@@ -64,15 +68,15 @@ namespace STROOP.Managers
 
             // ComboBox for Level
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
-            List<object> mapLayoutChoices = new List<object>() { "Recommended" };
-            mapLayouts.ForEach(mapLayout => mapLayoutChoices.Add(mapLayout));
-            Config.MapGui.comboBoxMapOptionsLevel.DataSource = mapLayoutChoices;
+            _mapLayoutChoices = new List<object>() { "Recommended" };
+            mapLayouts.ForEach(mapLayout => _mapLayoutChoices.Add(mapLayout));
+            Config.MapGui.comboBoxMapOptionsLevel.DataSource = _mapLayoutChoices;
 
             // ComboBox for Background
             List<BackgroundImage> backgroundImages = Config.MapAssociations.GetAllBackgroundImages();
-            List<object> backgroundImageChoices = new List<object>() { "Recommended" };
-            backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
-            Config.MapGui.comboBoxMapOptionsBackground.DataSource = backgroundImageChoices;
+            _backgroundImageChoices = new List<object>() { "Recommended" };
+            backgroundImages.ForEach(backgroundImage => _backgroundImageChoices.Add(backgroundImage));
+            Config.MapGui.comboBoxMapOptionsBackground.DataSource = _backgroundImageChoices;
 
             // Buttons on Options
 
@@ -464,10 +468,14 @@ namespace STROOP.Managers
                 new List<string>()
                 {
                     "Reset to Initial State",
+                    "Surface Triangles White",
+                    "Surface Triangles Black",
                 },
                 new List<Action>()
                 {
                     () => ResetToInitialState(),
+                    () => DoSurfaceTriangles(true),
+                    () => DoSurfaceTriangles(false),
                 });
 
             // Buttons for Changing Scale
@@ -771,6 +779,26 @@ namespace STROOP.Managers
             SpecialConfig.Map3DMode = Map3DCameraMode.InGame;
         }
 
+        private void DoSurfaceTriangles(bool useWhiteBackground)
+        {
+            string backgroundName = useWhiteBackground ? "White Background" : "Black Background";
+            object background = _backgroundImageChoices.Find(obj => obj.ToString() == backgroundName);
+            Config.MapGui.comboBoxMapOptionsBackground.SelectedItem = background;
+
+            object map = _mapLayoutChoices.Find(obj => obj.ToString() == "Transparent");
+            Config.MapGui.comboBoxMapOptionsLevel.SelectedItem = map;
+
+            MapTracker wallTracker = new MapTracker(new MapLevelWallObject());
+            wallTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
+            Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(wallTracker);
+
+            MapTracker floorTracker = new MapTracker(new MapLevelFloorObject());
+            floorTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
+            Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(floorTracker);
+
+            _checkBoxUnitGridlinesAction();
+        }
+
         private void SetGlobalIconSize(float size)
         {
             Config.MapGui.flowLayoutPanelMapTrackers.SetGlobalIconSize(size);
@@ -791,7 +819,7 @@ namespace STROOP.Managers
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackFloorTri, MapSemaphoreManager.FloorTri, () => new MapMarioFloorObject(), false);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackWallTri, MapSemaphoreManager.WallTri, () => new MapMarioWallObject(), false);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCeilingTri, MapSemaphoreManager.CeilingTri, () => new MapMarioCeilingObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackUnitGridlines, MapSemaphoreManager.UnitGridlines, () => new MapUnitGridlinesObject(), false);
+            _checkBoxUnitGridlinesAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackUnitGridlines, MapSemaphoreManager.UnitGridlines, () => new MapUnitGridlinesObject(), false);
         }
 
         private Action InitializeCheckboxSemaphore(

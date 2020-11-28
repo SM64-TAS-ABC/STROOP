@@ -709,6 +709,11 @@ namespace STROOP.Map
             return (MapTrackerOrderType)comboBoxOrderType.SelectedItem;
         }
 
+        public void SetOrderType(MapTrackerOrderType type)
+        {
+            comboBoxOrderType.SelectedItem = type;
+        }
+
         private void trackBarSize_ValueChanged()
         {
             SetSize(trackBarSize.Value);
