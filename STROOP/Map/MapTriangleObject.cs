@@ -45,6 +45,7 @@ namespace STROOP.Map
             {
                 tris = tris.FindAll(tri => tri.SurfaceType != 0x0A);
             }
+            tris = tris.OrderByDescending(tri => tri.Classification).ToList();
             return tris;
         }
 
