@@ -19,12 +19,14 @@ namespace STROOP.Map
 {
     public class MapHitboxHackTriangleObject : MapTriangleObject
     {
+        private readonly bool _isDefaultInstance;
         private readonly List<uint> _levelTriAddressList;
         private readonly List<uint> _objTriAddressList;
 
-        public MapHitboxHackTriangleObject()
+        public MapHitboxHackTriangleObject(bool isDefaultInstance)
             : base()
         {
+            _isDefaultInstance = isDefaultInstance;
             _levelTriAddressList = TriangleUtilities.GetLevelTriangles().ConvertAll(tri => tri.Address);
             _objTriAddressList = TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address);
 
@@ -57,8 +59,25 @@ namespace STROOP.Map
             }
         }
 
+        public override void DrawOn2DControlSideView()
+        {
+            if (_isDefaultInstance)
+            {
+                Opacity = 0.5;
+                OutlineWidth = 1;
+            }
+
+            base.DrawOn2DControlSideView();
+        }
+
         public override void DrawOn3DControl()
         {
+            if (_isDefaultInstance)
+            {
+                Opacity = 1;
+                OutlineWidth = 0;
+            }
+
             List<List<(float x, float y, float z, Color color)>> triData = GetTrianglesWithinDist()
                 .ConvertAll(tri => new List<(float x, float y, float z, Color color)>()
                 {

@@ -60,7 +60,7 @@ namespace STROOP.Managers
         {
             // FlowLayoutPanel
             Config.MapGui.flowLayoutPanelMapTrackers.Initialize(
-                new MapCurrentMapObject(), new MapCurrentBackgroundObject(), new MapHitboxHackTriangleObject());
+                new MapCurrentMapObject(), new MapCurrentBackgroundObject(), new MapHitboxHackTriangleObject(true));
 
             // ComboBox for Level
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
@@ -344,7 +344,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemHitboxHackTris = new ToolStripMenuItem("Add Tracker for Hitbox Hack Tris");
             itemHitboxHackTris.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapHitboxHackTriangleObject();
+                MapObject mapObj = new MapHitboxHackTriangleObject(false);
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
