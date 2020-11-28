@@ -140,6 +140,45 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
+        public override void DrawOn2DControlSideView()
+        {
+            if (OutlineWidth == 0) return;
+
+            List<(float x, float y, float z)> vertices = GetDictionaryValues();
+            List<(float x, float z)> veriticesForControl =
+                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z));
+
+            GL.BindTexture(TextureTarget.Texture2D, -1);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+            GL.LineWidth(OutlineWidth);
+            for (int i = 0; i < veriticesForControl.Count - 1; i++)
+            {
+                Color color = OutlineColor;
+                if (_useBlending)
+                {
+                    int distFromEnd = veriticesForControl.Count - i - 2;
+                    if (distFromEnd < Size)
+                    {
+                        color = ColorUtilities.InterpolateColor(
+                            OutlineColor, Color, distFromEnd / (double)Size);
+                    }
+                    else
+                    {
+                        color = Color;
+                    }
+                }
+                (float x1, float z1) = veriticesForControl[i];
+                (float x2, float z2) = veriticesForControl[i + 1];
+                GL.Color4(color.R, color.G, color.B, OpacityByte);
+                GL.Begin(PrimitiveType.Lines);
+                GL.Vertex2(x1, z1);
+                GL.Vertex2(x2, z2);
+                GL.End();
+            }
+            GL.Color4(1, 1, 1, 1.0f);
+        }
+
         public override void DrawOn3DControl()
         {
             if (OutlineWidth == 0) return;
