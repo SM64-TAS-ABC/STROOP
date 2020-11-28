@@ -65,6 +65,7 @@ namespace STROOP.Map
             {
                 Opacity = 0.5;
                 OutlineWidth = 1;
+                _useCrossSection = Config.MapGui.checkBoxMapOptionsEnableCrossSection.Checked;
             }
 
             base.DrawOn2DControlSideView();

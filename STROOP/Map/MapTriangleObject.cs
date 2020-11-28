@@ -20,7 +20,7 @@ namespace STROOP.Map
         private float? _withinDist;
         private float? _withinCenter;
         protected bool _excludeDeathBarriers;
-        private bool _useCrossSection;
+        protected bool _useCrossSection;
 
         public MapTriangleObject()
             : base()
