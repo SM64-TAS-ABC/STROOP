@@ -37,6 +37,26 @@ namespace STROOP.Map
             // do nothing
         }
 
+        public override float GetWallRelativeHeightForSideView()
+        {
+            return -30;
+        }
+
+        public override Color GetColorForSideView(TriangleClassification classification)
+        {
+            switch (classification)
+            {
+                case TriangleClassification.Wall:
+                    return Color.Green;
+                case TriangleClassification.Floor:
+                    return Color.Blue;
+                case TriangleClassification.Ceiling:
+                    return Color.Red;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         public override void DrawOn3DControl()
         {
             List<List<(float x, float y, float z, Color color)>> triData = GetTrianglesWithinDist()

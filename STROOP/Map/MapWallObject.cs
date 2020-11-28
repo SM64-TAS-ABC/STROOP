@@ -209,6 +209,11 @@ namespace STROOP.Map
             }
         }
 
+        public override float GetWallRelativeHeightForSideView()
+        {
+            return _relativeHeight ?? 0;
+        }
+
         protected List<ToolStripMenuItem> GetWallToolStripMenuItems()
         {
             _itemShowArrows = new ToolStripMenuItem("Show Arrows");

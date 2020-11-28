@@ -68,6 +68,16 @@ namespace STROOP.Map
             }
         }
 
+        public virtual float GetWallRelativeHeightForSideView()
+        {
+            return 0;
+        }
+
+        public virtual Color GetColorForSideView(TriangleClassification classification)
+        {
+            return Color;
+        }
+
         public void DrawOn2DControlSideViewCrossSection()
         {
             List<(float x1, float y1, float z1,
@@ -77,65 +87,67 @@ namespace STROOP.Map
                     .FindAll(data => data.HasValue)
                     .ConvertAll(data => data.Value);
 
-            List<List<(float x, float y, float z)>> vertexLists = triData.ConvertAll(data =>
+            List<List<(float x, float y, float z, Color color)>> vertexLists = triData.ConvertAll(data =>
             {
+                Color color = GetColorForSideView(data.classification);
                 switch (data.classification)
                 {
                     case TriangleClassification.Wall:
                         {
                             double pushAngleRadians = MoreMath.AngleUnitsToRadians(data.pushAngle);
                             float projectionDist = Size / (float)Math.Abs(data.xProjection ? Math.Sin(pushAngleRadians) : Math.Cos(pushAngleRadians));
+                            float relativeHeight = GetWallRelativeHeightForSideView();
                             switch (Config.MapGraphics.MapViewSideViewAngle)
                             {
                                 case MapGraphics.MapSideViewAngle.Angle0:
                                 case MapGraphics.MapSideViewAngle.Angle32768:
                                     if (data.xProjection)
                                     {
-                                        return new List<List<(float x, float y, float z)>>()
+                                        return new List<List<(float x, float y, float z, Color color)>>()
                                         {
-                                            new List<(float x, float y, float z)>()
+                                            new List<(float x, float y, float z, Color color)>()
                                             {
-                                                (data.x1, data.y1, data.z1),
-                                                (data.x2, data.y2, data.z2),
-                                                (data.x2 - projectionDist, data.y2, data.z2),
-                                                (data.x1 - projectionDist, data.y1, data.z1),
+                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
+                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
+                                                (data.x2 - projectionDist, data.y2 + relativeHeight, data.z2, color),
+                                                (data.x1 - projectionDist, data.y1 + relativeHeight, data.z1, color),
                                             },
-                                            new List<(float x, float y, float z)>()
+                                            new List<(float x, float y, float z, Color color)>()
                                             {
-                                                (data.x1, data.y1, data.z1),
-                                                (data.x2, data.y2, data.z2),
-                                                (data.x2 + projectionDist, data.y2, data.z2),
-                                                (data.x1 + projectionDist, data.y1, data.z1),
+                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
+                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
+                                                (data.x2 + projectionDist, data.y2 + relativeHeight, data.z2, color),
+                                                (data.x1 + projectionDist, data.y1 + relativeHeight, data.z1, color),
                                             },
                                         };
                                     }
                                     else
                                     {
-                                        return new List<List<(float x, float y, float z)>>();
+                                        return new List<List<(float x, float y, float z, Color color)>>();
                                     }
                                 case MapGraphics.MapSideViewAngle.Angle16384:
                                 case MapGraphics.MapSideViewAngle.Angle49152:
                                     if (data.xProjection)
                                     {
-                                        return new List<List<(float x, float y, float z)>>();
+                                        return new List<List<(float x, float y, float z, Color color)>>();
                                     }
                                     else
                                     {
-                                        return new List<List<(float x, float y, float z)>>()
+                                        return new List<List<(float x, float y, float z, Color color)>>()
                                         {
-                                            new List<(float x, float y, float z)>()
+                                            new List<(float x, float y, float z, Color color)>()
                                             {
-                                                (data.x1, data.y1, data.z1),
-                                                (data.x2, data.y2, data.z2),
-                                                (data.x2, data.y2, data.z2 - projectionDist),
-                                                (data.x1, data.y1, data.z1 - projectionDist),
+                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
+                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
+                                                (data.x2, data.y2 + relativeHeight, data.z2 - projectionDist, color),
+                                                (data.x1, data.y1 + relativeHeight, data.z1 - projectionDist, color),
                                             },
-                                            new List<(float x, float y, float z)>()
+                                            new List<(float x, float y, float z, Color color)>()
                                             {
-                                                (data.x1, data.y1, data.z1),
-                                                (data.x2, data.y2, data.z2),
-                                                (data.x2, data.y2, data.z2 + projectionDist),
-                                                (data.x1, data.y1, data.z1 + projectionDist),
+                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
+                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
+                                                (data.x2, data.y2 + relativeHeight, data.z2 + projectionDist, color),
+                                                (data.x1, data.y1 + relativeHeight, data.z1 + projectionDist, color),
                                             },
                                         };
                                     }
@@ -146,14 +158,14 @@ namespace STROOP.Map
                     case TriangleClassification.Floor:
                     case TriangleClassification.Ceiling:
                         {
-                            return new List<List<(float x, float y, float z)>>()
+                            return new List<List<(float x, float y, float z, Color color)>>()
                             {
-                                new List<(float x, float y, float z)>()
+                                new List<(float x, float y, float z, Color color)>()
                                 {
-                                    (data.x1, data.y1, data.z1),
-                                    (data.x2, data.y2, data.z2),
-                                    (data.x2, data.y2 - Size, data.z2),
-                                    (data.x1, data.y1 - Size, data.z1),
+                                    (data.x1, data.y1, data.z1, color),
+                                    (data.x2, data.y2, data.z2, color),
+                                    (data.x2, data.y2 - Size, data.z2, color),
+                                    (data.x1, data.y1 - Size, data.z1, color),
                                 },
                             };
                         }
@@ -162,21 +174,25 @@ namespace STROOP.Map
                 }
             }).SelectMany(list => list).ToList();
 
-            List<List<(float x, float z)>> vertexListsForControl =
+            List<List<(float x, float z, Color color)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z)));
+                    vertex =>
+                    {
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z);
+                        return (x, z, vertex.color);
+                    }));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
             // Draw triangle
-            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
-            foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+            foreach (List<(float x, float z, Color color)> vertexList in vertexListsForControl)
             {
                 GL.Begin(PrimitiveType.Polygon);
-                foreach ((float x, float z) in vertexList)
+                foreach ((float x, float z, Color color) in vertexList)
                 {
+                    GL.Color4(color.R, color.G, color.B, OpacityByte);
                     GL.Vertex2(x, z);
                 }
                 GL.End();
@@ -187,10 +203,10 @@ namespace STROOP.Map
             {
                 GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
                 GL.LineWidth(OutlineWidth);
-                foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+                foreach (List<(float x, float z, Color color)> vertexList in vertexListsForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z) in vertexList)
+                    foreach ((float x, float z, Color color) in vertexList)
                     {
                         GL.Vertex2(x, z);
                     }

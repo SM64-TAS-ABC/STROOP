@@ -82,15 +82,16 @@ namespace STROOP.Map
 
         public void UpdateControl()
         {
-            if (Config.MapGui.checkBoxMapOptionsEnable3D.Checked)
+            if (Config.MapGui.checkBoxMapOptionsEnable3D.Checked ||
+                Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
             {            
                 _mapObjHitboxHackTris.Update();
             }
-            else
+            if (!Config.MapGui.checkBoxMapOptionsEnable3D.Checked)
             {
                 _mapObjMap.Update();
-                _mapObjBackground.Update();
             }
+            _mapObjBackground.Update();
 
             lock (_objectLock)
             {
@@ -135,16 +136,14 @@ namespace STROOP.Map
             listOrderOnBottom.Reverse();
             listOrderByY.Reverse();
             listOrderByY = listOrderByY.OrderBy(obj => obj.GetY()).ToList();
+            List<MapObject> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
 
-            foreach (MapObject obj in listOrderOnBottom)
+            if (!Config.MapGui.checkBoxMapOptionsDisable3DHitboxHackTris.Checked)
             {
-                obj.DrawOn2DControl();
+                listCombined.Insert(0, _mapObjHitboxHackTris);
             }
-            foreach (MapObject obj in listOrderByY)
-            {
-                obj.DrawOn2DControl();
-            }
-            foreach (MapObject obj in listOrderOnTop)
+
+            foreach (MapObject obj in listCombined)
             {
                 obj.DrawOn2DControl();
             }
