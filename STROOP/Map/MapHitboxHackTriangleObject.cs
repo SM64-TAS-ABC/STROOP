@@ -37,11 +37,6 @@ namespace STROOP.Map
             // do nothing
         }
 
-        public override void DrawOn2DControlSideViewCrossSection()
-        {
-            // do nothing
-        }
-
         public override void DrawOn3DControl()
         {
             List<List<(float x, float y, float z, Color color)>> triData = GetTrianglesWithinDist()

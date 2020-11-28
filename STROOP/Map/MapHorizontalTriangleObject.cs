@@ -195,65 +195,6 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        public override void DrawOn2DControlSideViewCrossSection()
-        {
-            List<(float x1, float y1, float z1,
-                float x2, float y2, float z2,
-                TriangleClassification classification, bool xProjection, double pushAngle)> triData =
-                GetTrianglesWithinDist().ConvertAll(tri => MapUtilities.Get2DDataFromTri(tri))
-                    .FindAll(data => data.HasValue)
-                    .ConvertAll(data => data.Value);
-
-            List<List<(float x, float y, float z)>> vertexLists = triData.ConvertAll(data =>
-            {
-                return new List<(float x, float y, float z)>()
-                {
-                    (data.x1, data.y1, data.z1),
-                    (data.x2, data.y2, data.z2),
-                    (data.x2, data.y2 - Size, data.z2),
-                    (data.x1, data.y1 - Size, data.z1),
-                };
-            });
-
-            List<List<(float x, float z)>> vertexListsForControl =
-                vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z)));
-
-            GL.BindTexture(TextureTarget.Texture2D, -1);
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
-
-            // Draw triangle
-            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
-            foreach (List<(float x, float z)> vertexList in vertexListsForControl)
-            {
-                GL.Begin(PrimitiveType.Polygon);
-                foreach ((float x, float z) in vertexList)
-                {
-                    GL.Vertex2(x, z);
-                }
-                GL.End();
-            }
-
-            // Draw outline
-            if (OutlineWidth != 0)
-            {
-                GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
-                GL.LineWidth(OutlineWidth);
-                foreach (List<(float x, float z)> vertexList in vertexListsForControl)
-                {
-                    GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z) in vertexList)
-                    {
-                        GL.Vertex2(x, z);
-                    }
-                    GL.End();
-                }
-            }
-
-            GL.Color4(1, 1, 1, 1.0f);
-        }
-
         public override void DrawOn3DControl()
         {
             List<List<(float x, float y, float z)>> topSurfaces = GetVertexLists();
