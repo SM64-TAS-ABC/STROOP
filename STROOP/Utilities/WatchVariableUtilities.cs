@@ -174,6 +174,20 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Area:
                     return new List<uint> { Config.AreaManager.SelectedAreaAddress };
 
+                case BaseAddressTypeEnum.Whirlpool1:
+                    {
+                        uint whirlpoolArrayAddress = Config.Stream.GetUInt32(Config.AreaManager.SelectedAreaAddress + 0x2C);
+                        if (whirlpoolArrayAddress == 0) return BaseAddressListEmpty;
+                        return new List<uint>() { whirlpoolArrayAddress + 0x00 };
+                    }
+
+                case BaseAddressTypeEnum.Whirlpool2:
+                    {
+                        uint whirlpoolArrayAddress = Config.Stream.GetUInt32(Config.AreaManager.SelectedAreaAddress + 0x2C);
+                        if (whirlpoolArrayAddress == 0) return BaseAddressListEmpty;
+                        return new List<uint>() { whirlpoolArrayAddress + 0x08 };
+                    }
+
                 case BaseAddressTypeEnum.Painting:
                     {
                         uint? paintingAddress = Config.PaintingManager.GetPaintingAddress();

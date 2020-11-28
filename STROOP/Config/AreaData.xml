@@ -23,7 +23,17 @@
 
   <Data type="uint" offset="0x24" base="Area" subclass="Address">Level Camera Ptr</Data>
   <Data type="uint" offset="0x28" base="Area" subclass="Address">Mystery 4</Data>
-  <Data type="uint" offset="0x2C" base="Area" subclass="Address">Mystery 5</Data>
+  
+  <Data type="uint" offset="0x2C" base="Area" subclass="Address">Whirlpools</Data>
+  <Data type="short" offset="0x00" base="Whirlpool1" coord="X">Whirlpool 1 X</Data>
+  <Data type="short" offset="0x02" base="Whirlpool1" coord="Y">Whirlpool 1 Y</Data>
+  <Data type="short" offset="0x04" base="Whirlpool1" coord="Z">Whirlpool 1 Z</Data>
+  <Data type="short" offset="0x06" base="Whirlpool1">Whirlpool 1 Strength</Data>
+  <Data type="short" offset="0x00" base="Whirlpool2" coord="X">Whirlpool 2 X</Data>
+  <Data type="short" offset="0x02" base="Whirlpool2" coord="Y">Whirlpool 2 Y</Data>
+  <Data type="short" offset="0x04" base="Whirlpool2" coord="Z">Whirlpool 2 Z</Data>
+  <Data type="short" offset="0x06" base="Whirlpool2">Whirlpool 2 Strength</Data>
+
   <Data type="uint" offset="0x30" base="Area" subclass="Address">Mystery 6</Data>
 
   <Data type="sbyte" offset="0x34" base="Area">Level Dialog Index</Data>
