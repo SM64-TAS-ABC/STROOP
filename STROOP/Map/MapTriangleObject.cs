@@ -79,6 +79,11 @@ namespace STROOP.Map
             return Color;
         }
 
+        public virtual float GetSizeForSideView(TriangleClassification classification)
+        {
+            return Size;
+        }
+
         public void DrawOn2DControlSideViewCrossSection()
         {
             List<(float x1, float y1, float z1,
@@ -91,12 +96,13 @@ namespace STROOP.Map
             List<List<(float x, float y, float z, Color color)>> vertexLists = triData.ConvertAll(data =>
             {
                 Color color = GetColorForSideView(data.classification);
+                float size = GetSizeForSideView(data.classification);
                 switch (data.classification)
                 {
                     case TriangleClassification.Wall:
                         {
                             double pushAngleRadians = MoreMath.AngleUnitsToRadians(data.pushAngle);
-                            float projectionDist = Size / (float)Math.Abs(data.xProjection ? Math.Sin(pushAngleRadians) : Math.Cos(pushAngleRadians));
+                            float projectionDist = size / (float)Math.Abs(data.xProjection ? Math.Sin(pushAngleRadians) : Math.Cos(pushAngleRadians));
                             float relativeHeight = GetWallRelativeHeightForSideView();
                             switch (Config.MapGraphics.MapViewSideViewAngle)
                             {
@@ -165,8 +171,8 @@ namespace STROOP.Map
                                 {
                                     (data.x1, data.y1, data.z1, color),
                                     (data.x2, data.y2, data.z2, color),
-                                    (data.x2, data.y2 - Size, data.z2, color),
-                                    (data.x1, data.y1 - Size, data.z1, color),
+                                    (data.x2, data.y2 - size, data.z2, color),
+                                    (data.x1, data.y1 - size, data.z1, color),
                                 },
                             };
                         }

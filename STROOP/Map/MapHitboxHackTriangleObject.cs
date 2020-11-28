@@ -59,6 +59,21 @@ namespace STROOP.Map
             }
         }
 
+        public override float GetSizeForSideView(TriangleClassification classification)
+        {
+            switch (classification)
+            {
+                case TriangleClassification.Wall:
+                    return 50;
+                case TriangleClassification.Floor:
+                    return 78;
+                case TriangleClassification.Ceiling:
+                    return 160;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         public override void DrawOn2DControlSideView()
         {
             if (_isDefaultInstance)
