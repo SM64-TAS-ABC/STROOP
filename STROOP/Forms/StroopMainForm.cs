@@ -253,8 +253,9 @@ namespace STROOP
                 checkBoxMapOptionsTrackUnitGridlines = checkBoxMapOptionsTrackUnitGridlines,
 
                 checkBoxMapOptionsEnable3D = checkBoxMapOptionsEnable3D,
-                checkBoxMapOptionsDisable3DHitboxHackTris = checkBoxMapOptionsDisableHitboxHackTris,
+                checkBoxMapOptionsDisableHitboxHackTris = checkBoxMapOptionsDisableHitboxHackTris,
                 checkBoxMapOptionsEnableSideView = checkBoxMapOptionsEnableSideView,
+                checkBoxMapOptionsEnableCrossSection = checkBoxMapOptionsEnableCrossSection,
                 checkBoxMapOptionsEnablePuView = checkBoxMapOptionsEnablePuView,
                 checkBoxMapOptionsReverseDragging = checkBoxMapOptionsReverseDragging,
                 checkBoxMapOptionsScaleIconSizes = checkBoxMapOptionsScaleIconSizes,
@@ -292,6 +293,7 @@ namespace STROOP
                 textBoxMapControllersCenterCustom = textBoxMapControllersCenterCustom,
 
                 checkBoxMapControllersCenterChangeByPixels = checkBoxMapControllersCenterChangeByPixels,
+                checkBoxMapControllersCenterUseMarioDepth = checkBoxMapControllersCenterUseMarioDepth,
                 textBoxMapControllersCenterChange = textBoxMapControllersCenterChange,
                 buttonMapControllersCenterUp = buttonMapControllersCenterUp,
                 buttonMapControllersCenterUpRight = buttonMapControllersCenterUpRight,

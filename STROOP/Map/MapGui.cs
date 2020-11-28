@@ -32,8 +32,9 @@ namespace STROOP.Map
         public CheckBox checkBoxMapOptionsTrackUnitGridlines;
 
         public CheckBox checkBoxMapOptionsEnable3D;
-        public CheckBox checkBoxMapOptionsDisable3DHitboxHackTris;
+        public CheckBox checkBoxMapOptionsDisableHitboxHackTris;
         public CheckBox checkBoxMapOptionsEnableSideView;
+        public CheckBox checkBoxMapOptionsEnableCrossSection;
         public CheckBox checkBoxMapOptionsEnablePuView;
         public CheckBox checkBoxMapOptionsReverseDragging;
         public CheckBox checkBoxMapOptionsScaleIconSizes;
@@ -81,6 +82,7 @@ namespace STROOP.Map
 
         // Controllers - Center - Right
         public CheckBox checkBoxMapControllersCenterChangeByPixels;
+        public CheckBox checkBoxMapControllersCenterUseMarioDepth;
         public BetterTextbox textBoxMapControllersCenterChange;
         public Button buttonMapControllersCenterUp;
         public Button buttonMapControllersCenterUpRight;

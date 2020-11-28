@@ -138,7 +138,7 @@ namespace STROOP.Map
             listOrderByY = listOrderByY.OrderBy(obj => obj.GetY()).ToList();
             List<MapObject> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
 
-            if (!Config.MapGui.checkBoxMapOptionsDisable3DHitboxHackTris.Checked)
+            if (!Config.MapGui.checkBoxMapOptionsDisableHitboxHackTris.Checked)
             {
                 listCombined.Insert(0, _mapObjHitboxHackTris);
             }
@@ -183,7 +183,7 @@ namespace STROOP.Map
 
             List<MapObject> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
             listCombined.Insert(0, _mapObjBackground);
-            if (!Config.MapGui.checkBoxMapOptionsDisable3DHitboxHackTris.Checked)
+            if (!Config.MapGui.checkBoxMapOptionsDisableHitboxHackTris.Checked)
             {
                 listCombined.Insert(0, _mapObjHitboxHackTris);
             }
