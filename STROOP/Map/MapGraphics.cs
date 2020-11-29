@@ -376,6 +376,7 @@ namespace STROOP.Map
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
             Config.MapGui.radioButtonMapControllersCenterCustom.Checked = true;
+            if (depthSign != 0) Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked = false;
             float xOffset, yOffset, zOffset;
             if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
             {
