@@ -4510,6 +4510,9 @@
     <Image path="DDD Pole.png"/>
     <MapImage path="DDD Pole Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">Velocity</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Max Offset</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Offset</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300556C" name="Star Marker">
     <SpawnCode gfxId="0x79"/>
