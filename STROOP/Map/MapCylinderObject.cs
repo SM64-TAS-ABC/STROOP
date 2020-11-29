@@ -28,6 +28,74 @@ namespace STROOP.Map
 
         protected abstract List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions();
 
+        public override void DrawOn2DControlSideView()
+        {
+            List<List<(float x, float y, float z)>> vertexLists = Get3DDimensions().ConvertAll(dimension =>
+            {
+                switch (Config.MapGraphics.MapViewSideViewAngle)
+                {
+                    case MapGraphics.MapSideViewAngle.Angle0:
+                    case MapGraphics.MapSideViewAngle.Angle32768:
+                        return new List<(float x, float y, float z)>()
+                        {
+                            (dimension.centerX - dimension.radius, dimension.minY, dimension.centerZ),
+                            (dimension.centerX + dimension.radius, dimension.minY, dimension.centerZ),
+                            (dimension.centerX + dimension.radius, dimension.maxY, dimension.centerZ),
+                            (dimension.centerX - dimension.radius, dimension.maxY, dimension.centerZ),
+                        };
+                    case MapGraphics.MapSideViewAngle.Angle16384:
+                    case MapGraphics.MapSideViewAngle.Angle49152:
+                        return new List<(float x, float y, float z)>()
+                        {
+                            (dimension.centerX, dimension.minY, dimension.centerZ - dimension.radius),
+                            (dimension.centerX, dimension.minY, dimension.centerZ + dimension.radius),
+                            (dimension.centerX, dimension.maxY, dimension.centerZ + dimension.radius),
+                            (dimension.centerX, dimension.maxY, dimension.centerZ - dimension.radius),
+                        };
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            });
+
+            List<List<(float x, float z)>> vertexListsForControl =
+                vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
+                    vertex => MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z)));
+
+            GL.BindTexture(TextureTarget.Texture2D, -1);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+
+            // Draw triangle
+            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+            foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+            {
+                GL.Begin(PrimitiveType.Polygon);
+                foreach ((float x, float z) in vertexList)
+                {
+                    GL.Vertex2(x, z);
+                }
+                GL.End();
+            }
+
+            // Draw outline
+            if (OutlineWidth != 0)
+            {
+                GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
+                GL.LineWidth(OutlineWidth);
+                foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+                {
+                    GL.Begin(PrimitiveType.LineLoop);
+                    foreach ((float x, float z) in vertexList)
+                    {
+                        GL.Vertex2(x, z);
+                    }
+                    GL.End();
+                }
+            }
+
+            GL.Color4(1, 1, 1, 1.0f);
+        }
+
         public override void DrawOn3DControl()
         {
             List<(float centerX, float centerZ, float radius, float minY, float maxY)> dimensionList = Get3DDimensions();
