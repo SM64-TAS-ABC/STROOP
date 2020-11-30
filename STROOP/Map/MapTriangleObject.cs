@@ -163,7 +163,7 @@ namespace STROOP.Map
                                 default:
                                     if (data.xProjection)
                                     {
-                                        float projectionDist = size / (float)Math.Abs(Math.Cos(mapViewAngleRadians));
+                                        float projectionDist = size / (float)Math.Abs(Math.Cos(mapViewAngleRadians - pushAngleRadians + 0.5 * Math.PI));
                                         return new List<List<(float x, float y, float z, Color color)>>()
                                         {
                                             new List<(float x, float y, float z, Color color)>()
@@ -184,7 +184,7 @@ namespace STROOP.Map
                                     }
                                     else
                                     {
-                                        float projectionDist = size / (float)Math.Abs(Math.Sin(mapViewAngleRadians));
+                                        float projectionDist = size / (float)Math.Abs(Math.Sin(mapViewAngleRadians - pushAngleRadians));
                                         return new List<List<(float x, float y, float z, Color color)>>()
                                         {
                                             new List<(float x, float y, float z, Color color)>()
