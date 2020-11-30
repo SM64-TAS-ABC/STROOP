@@ -332,10 +332,10 @@ namespace STROOP.Map
             double uphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(tri);
             double pushAngle = MoreMath.ReverseAngle(uphillAngle);
 
-            switch (Config.MapGraphics.MapViewSideViewAngle)
+            switch (Config.MapGraphics.MapViewAngleValue)
             {
-                case MapGraphics.MapSideViewAngle.Angle0:
-                case MapGraphics.MapSideViewAngle.Angle32768:
+                case 0:
+                case 32768:
                     {
                         (float pointAX, float pointAY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
                         (float pointBX, float pointBY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
@@ -374,8 +374,8 @@ namespace STROOP.Map
 
                         return null;
                     }
-                case MapGraphics.MapSideViewAngle.Angle16384:
-                case MapGraphics.MapSideViewAngle.Angle49152:
+                case 16384:
+                case 49152:
                     {
                         (float pointAY, float pointAZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
                         (float pointBY, float pointBZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
@@ -415,7 +415,7 @@ namespace STROOP.Map
                         return null;
                     }
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    return null; // TODO(sideviewangle)
             }
         }
 
