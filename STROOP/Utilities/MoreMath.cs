@@ -992,5 +992,33 @@ namespace STROOP.Utilities
             if (goal < value) return GetPreviousFloat(value);
             return value;
         }
+
+        public static (double x, double y, double z, double t) GetPlaneLineIntersection(
+            double x, double y, double z, double angle, double x1, double y1, double z1, double x2, double y2, double z2)
+        {
+            // Ax + By + Cz = D
+            double angleRadians = MoreMath.AngleUnitsToRadians(angle);
+            double A = Math.Sin(angleRadians);
+            double B = 0;
+            double C = Math.Cos(angleRadians);
+            double D = A * x + B * y + C * z;
+
+            // x = x1 + xDiff * t
+            // y = y1 + yDiff * t
+            // z = z1 + zDiff * t
+            double xDiff = x2 - x1;
+            double yDiff = y2 - y1;
+            double zDiff = z2 - z1;
+
+            // A * x + B * y + C * z = D
+            // A * (x1 + xDiff * t) + B * (y1 + yDiff * t) + C * (z1 + zDiff * t) = D
+            // A * x1 + A * xDiff * t + B * y1 + B * yDiff * t + C * z1 + C * zDiff * t = D
+            // A * xDiff * t + B * yDiff * t + C * zDiff * t = D - (A * x1) - (B * y1) - (C * z1)
+            // t * (A * xDiff + B * yDiff + C * zDiff) = D - (A * x1) - (B * y1) - (C * z1)
+            // t = (D - (A * x1) - (B * y1) - (C * z1)) / (A * xDiff + B * yDiff + C * zDiff)
+            double t = (D - (A * x1) - (B * y1) - (C * z1)) / (A * xDiff + B * yDiff + C * zDiff);
+
+            return (x1 + xDiff * t, y1 + yDiff * t, z1 + zDiff * t, t);
+        }
     }
 }

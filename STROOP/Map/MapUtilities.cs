@@ -504,31 +504,10 @@ namespace STROOP.Map
         private static (float x, float y, float z) GetOnLine(
             float x, float y, float z, float angle, float x1, float y1, float z1, float x2, float y2, float z2)
         {
-            // Ax + By + Cz = D
-            double angleRadians = MoreMath.AngleUnitsToRadians(angle);
-            double A = Math.Sin(angleRadians);
-            double B = 0;
-            double C = Math.Cos(angleRadians);
-            double D = A * x + B * y + C * z;
-
-            // x = x1 + xDiff * t
-            // y = y1 + yDiff * t
-            // z = z1 + zDiff * t
-            double xDiff = x2 - x1;
-            double yDiff = y2 - y1;
-            double zDiff = z2 - z1;
-
-            // A * x + B * y + C * z = D
-            // A * (x1 + xDiff * t) + B * (y1 + yDiff * t) + C * (z1 + zDiff * t) = D
-            // A * x1 + A * xDiff * t + B * y1 + B * yDiff * t + C * z1 + C * zDiff * t = D
-            // A * xDiff * t + B * yDiff * t + C * zDiff * t = D - (A * x1) - (B * y1) - (C * z1)
-            // t * (A * xDiff + B * yDiff + C * zDiff) = D - (A * x1) - (B * y1) - (C * z1)
-            // t = (D - (A * x1) - (B * y1) - (C * z1)) / (A * xDiff + B * yDiff + C * zDiff)
-            double t = (D - (A * x1) - (B * y1) - (C * z1)) / (A * xDiff + B * yDiff + C * zDiff);
-
-            if (t < 0 || t > 1) return (float.NaN, float.NaN, float.NaN);
-
-            return ((float, float, float))(x1 + xDiff * t, y1 + yDiff * t, z1 + zDiff * t);
+            (float x0, float y0, float z0, float t0) = ((float, float, float, float))
+                MoreMath.GetPlaneLineIntersection(x, y, z, angle, x1, y1, z1, x2, y2, z2);
+            if (t0 < 0 || t0 > 1) return (float.NaN, float.NaN, float.NaN);
+            return (x0, y0, z0);
         }
 
         public static void MaybeChangeMapCameraMode()
