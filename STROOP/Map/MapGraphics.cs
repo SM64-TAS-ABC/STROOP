@@ -33,14 +33,12 @@ namespace STROOP.Map
         private static readonly float DEFAULT_MAP_VIEW_CENTER_Y_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_CENTER_Z_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_ANGLE_VALUE = 32768;
-        private static readonly MapSideViewAngle DEFAULT_MAP_VIEW_SIDE_VIEW_ANGLE = MapSideViewAngle.Angle32768;
 
         public float MapViewScaleValue = DEFAULT_MAP_VIEW_SCALE_VALUE;
         public float MapViewCenterXValue = DEFAULT_MAP_VIEW_CENTER_X_VALUE;
         public float MapViewCenterYValue = DEFAULT_MAP_VIEW_CENTER_Y_VALUE;
         public float MapViewCenterZValue = DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
         public float MapViewAngleValue = DEFAULT_MAP_VIEW_ANGLE_VALUE;
-        public MapSideViewAngle MapViewSideViewAngle = DEFAULT_MAP_VIEW_SIDE_VIEW_ANGLE;
 
         public bool MapViewEnablePuView = false;
         public bool MapViewScaleIconSizes = false;
@@ -244,18 +242,21 @@ namespace STROOP.Map
             if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked &&
                 Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked)
             {
-                switch (Config.MapGraphics.MapViewSideViewAngle)
+                float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                switch (MapViewAngleValue)
                 {
-                    case MapSideViewAngle.Angle0:
-                    case MapSideViewAngle.Angle32768:
-                        MapViewCenterZValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    case 0:
+                    case 32768:
+                        MapViewCenterZValue = marioZ;
                         break;
-                    case MapSideViewAngle.Angle16384:
-                    case MapSideViewAngle.Angle49152:
-                        MapViewCenterXValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    case 16384:
+                    case 49152:
+                        MapViewCenterXValue = marioX;
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        // TODO(sideviewangle)
+                        break;
                 }
             }
 
@@ -320,31 +321,6 @@ namespace STROOP.Map
                         Config.MapGui.textBoxMapControllersAngleCustom.LastSubmittedText)
                         ?? DEFAULT_MAP_VIEW_ANGLE_VALUE;
                     break;
-            }
-
-            // set map side view angle
-            {
-                double added = MoreMath.NormalizeAngleDouble(MapViewAngleValue + 8192);
-                int divided = (int)added / 16384;
-                int multiplied = divided * 16384;
-                switch (multiplied)
-                {
-                    case 0:
-                        MapViewSideViewAngle = MapSideViewAngle.Angle0;
-                        break;
-                    case 16384:
-                        MapViewSideViewAngle = MapSideViewAngle.Angle16384;
-                        break;
-                    case 32768:
-                        MapViewSideViewAngle = MapSideViewAngle.Angle32768;
-                        break;
-                    case 49152:
-                        MapViewSideViewAngle = MapSideViewAngle.Angle49152;
-                        break;
-                    default:
-                        MapViewSideViewAngle = DEFAULT_MAP_VIEW_SIDE_VIEW_ANGLE;
-                        break;
-                }
             }
 
             if (MapViewAngle != MapAngle.Custom)
