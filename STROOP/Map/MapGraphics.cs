@@ -538,30 +538,32 @@ namespace STROOP.Map
                 float newCenterX, newCenterY, newCenterZ;
                 if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
                 {
-                    switch (MapViewSideViewAngle)
+                    newCenterY = _translateStartCenterY + unitDiffY;
+                    switch (MapViewAngleValue)
                     {
-                        case MapSideViewAngle.Angle0:
+                        case 0:
                             newCenterX = _translateStartCenterX + unitDiffX;
-                            newCenterY = _translateStartCenterY + unitDiffY;
                             newCenterZ = _translateStartCenterZ;
                             break;
-                        case MapSideViewAngle.Angle16384:
+                        case 16384:
                             newCenterX = _translateStartCenterX;
-                            newCenterY = _translateStartCenterY + unitDiffY;
                             newCenterZ = _translateStartCenterZ - unitDiffX;
                             break;
-                        case MapSideViewAngle.Angle32768:
+                        case 32768:
                             newCenterX = _translateStartCenterX - unitDiffX;
-                            newCenterY = _translateStartCenterY + unitDiffY;
                             newCenterZ = _translateStartCenterZ;
                             break;
-                        case MapSideViewAngle.Angle49152:
+                        case 49152:
                             newCenterX = _translateStartCenterX;
-                            newCenterY = _translateStartCenterY + unitDiffY;
                             newCenterZ = _translateStartCenterZ + unitDiffX;
                             break;
                         default:
-                            throw new ArgumentOutOfRangeException();
+                            (float rotatedX, float rotatedY) = ((float, float))
+                                MoreMath.RotatePointAboutPointAnAngularDistance(
+                                    unitDiffX, 0, 0, 0, MapViewAngleValue);
+                            newCenterX = _translateStartCenterX - rotatedX;
+                            newCenterZ = _translateStartCenterZ - rotatedY;
+                            break;
                     }
                 }
                 else
