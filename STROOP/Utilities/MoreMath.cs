@@ -994,14 +994,14 @@ namespace STROOP.Utilities
         }
 
         public static (double x, double y, double z, double t) GetPlaneLineIntersection(
-            double x, double y, double z, double angle, double x1, double y1, double z1, double x2, double y2, double z2)
+            double planeX, double planeY, double planeZ, double planeNormal, double x1, double y1, double z1, double x2, double y2, double z2)
         {
             // Ax + By + Cz = D
-            double angleRadians = MoreMath.AngleUnitsToRadians(angle);
+            double angleRadians = MoreMath.AngleUnitsToRadians(planeNormal);
             double A = Math.Sin(angleRadians);
             double B = 0;
             double C = Math.Cos(angleRadians);
-            double D = A * x + B * y + C * z;
+            double D = A * planeX + B * planeY + C * planeZ;
 
             // x = x1 + xDiff * t
             // y = y1 + yDiff * t
@@ -1022,11 +1022,18 @@ namespace STROOP.Utilities
         }
 
         public static (double x, double y, double z) GetPlanePointAtPoint(
-            double x, double y, double z, double angle, double px, double py, double pz)
+            double planeX, double planeY, double planeZ, double planeNormal, double px, double py, double pz)
         {
-            (double qx, double qz) = AddVectorToPoint(1, angle, x, z);
-            (double rx, double ry, double rz, double t) = GetPlaneLineIntersection(px, py, pz, angle, x, y, z, qx, y, qz);
+            (double qx, double qz) = AddVectorToPoint(1, planeNormal, planeX, planeZ);
+            (double rx, double ry, double rz, double t) = GetPlaneLineIntersection(px, py, pz, planeNormal, planeX, planeY, planeZ, qx, planeY, qz);
             return (rx, ry, rz);
+        }
+
+        public static double GetPlaneDistanceToPoint(
+            double planeX, double planeY, double planeZ, double planeNormal, double px, double py, double pz)
+        {
+            (double x, double y, double z) = GetPlanePointAtPoint(planeX, planeY, planeZ, planeNormal, px, py, pz);
+            return GetDistanceBetween(planeX, planeY, planeZ, x, y, z);
         }
     }
 }

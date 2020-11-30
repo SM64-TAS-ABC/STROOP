@@ -67,7 +67,18 @@ namespace STROOP.Map
                             return (x, z, radius);
                         }
                     default:
-                        return (0, 0, 0); // TODO(sideviewangle)
+                        {
+                            float aDiff = (float)MoreMath.GetPlaneDistanceToPoint(
+                                Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
+                                Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewAngleValue,
+                                dimension.centerX, dimension.centerY, dimension.centerZ);
+                            float bDistSquared = dimension.radius3D * dimension.radius3D - aDiff * aDiff;
+                            float bDist = bDistSquared >= 0 ? (float)Math.Sqrt(bDistSquared) : 0;
+                            float radius = bDist * Config.MapGraphics.MapViewScaleValue;
+                            (float x, float z) = MapUtilities.ConvertCoordsForControlSideView(
+                                dimension.centerX, dimension.centerY, dimension.centerZ);
+                            return (x, z, radius);
+                        }
                 }
             });
 

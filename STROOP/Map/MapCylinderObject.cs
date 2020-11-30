@@ -53,7 +53,15 @@ namespace STROOP.Map
                             (dimension.centerX, dimension.maxY, dimension.centerZ - dimension.radius),
                         };
                     default:
-                        return new List<(float x, float y, float z)>(); // TODO(sideviewangle)
+                        double sideAngle = MoreMath.RotateAngleCW(Config.MapGraphics.MapViewAngleValue, 16384);
+                        (float sideDiffX, float sideDiffZ) = ((float, float))MoreMath.GetComponentsFromVector(dimension.radius, sideAngle);
+                        return new List<(float x, float y, float z)>()
+                        {
+                            (dimension.centerX - sideDiffX, dimension.minY, dimension.centerZ - sideDiffZ),
+                            (dimension.centerX + sideDiffX, dimension.minY, dimension.centerZ + sideDiffZ),
+                            (dimension.centerX + sideDiffX, dimension.maxY, dimension.centerZ + sideDiffZ),
+                            (dimension.centerX - sideDiffX, dimension.maxY, dimension.centerZ - sideDiffZ),
+                        };
                 }
             });
 
