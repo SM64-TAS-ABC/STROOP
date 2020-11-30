@@ -380,31 +380,14 @@ namespace STROOP.Map
             float xOffset, yOffset, zOffset;
             if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
             {
-                switch (MapViewSideViewAngle)
-                {
-                    case MapSideViewAngle.Angle0:
-                        xOffset = -1 * horizontalSign * parsed.Value;
-                        yOffset = verticalSign * parsed.Value;
-                        zOffset = -1 * depthSign * parsed.Value;
-                        break;
-                    case MapSideViewAngle.Angle16384:
-                        xOffset = -1 * depthSign * parsed.Value;
-                        yOffset = verticalSign * parsed.Value;
-                        zOffset = horizontalSign * parsed.Value;
-                        break;
-                    case MapSideViewAngle.Angle32768:
-                        xOffset = horizontalSign * parsed.Value;
-                        yOffset = verticalSign * parsed.Value;
-                        zOffset = depthSign * parsed.Value;
-                        break;
-                    case MapSideViewAngle.Angle49152:
-                        xOffset = depthSign * parsed.Value;
-                        yOffset = verticalSign * parsed.Value;
-                        zOffset = -1 * horizontalSign * parsed.Value;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                double angleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewAngleValue);
+                xOffset = (float)(
+                    Math.Sin(angleRadians) * -1 * depthSign * parsed.Value +
+                    Math.Cos(angleRadians) * -1 * horizontalSign * parsed.Value);
+                yOffset = verticalSign * parsed.Value;
+                zOffset = (float)(
+                    Math.Sin(angleRadians) * 1 * horizontalSign * parsed.Value +
+                    Math.Cos(angleRadians) * -1 * depthSign * parsed.Value);
             }
             else
             {
