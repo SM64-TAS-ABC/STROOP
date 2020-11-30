@@ -53,7 +53,7 @@ namespace STROOP.Map
             {
                 (float x, float y, float z, float angle, int tex) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
-                float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControlTopDownView(angle) : 0;
+                float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
                 MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);

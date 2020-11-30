@@ -22,7 +22,7 @@ namespace STROOP.Map
         public override void DrawOn2DControlTopDownView()
         {
             List<(PointF loc, SizeF size)> dimensions = GetDimensions();
-            float angle = InternalRotates ? MapUtilities.ConvertAngleForControlTopDownView(0) : 0; 
+            float angle = InternalRotates ? MapUtilities.ConvertAngleForControl(0) : 0; 
             foreach ((PointF loc, SizeF size) in dimensions)
             {
                 MapUtilities.DrawTexture(TextureId, loc, size, angle, Opacity);

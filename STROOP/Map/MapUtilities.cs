@@ -121,34 +121,9 @@ namespace STROOP.Map
         }
 
         /** Takes in in-game angle, outputs control angle. */
-        public static float ConvertAngleForControlTopDownView(double angle)
+        public static float ConvertAngleForControl(double angle)
         {
             angle += 32768 - Config.MapGraphics.MapViewAngleValue;
-            if (double.IsNaN(angle)) angle = 0;
-            return (float)MoreMath.AngleUnitsToDegrees(angle);
-        }
-
-        public static float ConvertAngleForControlSideView(double angle)
-        {
-            int sideViewAngle;
-            switch (Config.MapGraphics.MapViewSideViewAngle)
-            {
-                case MapGraphics.MapSideViewAngle.Angle0:
-                    sideViewAngle = 0;
-                    break;
-                case MapGraphics.MapSideViewAngle.Angle16384:
-                    sideViewAngle = 16384;
-                    break;
-                case MapGraphics.MapSideViewAngle.Angle32768:
-                    sideViewAngle = 32768;
-                    break;
-                case MapGraphics.MapSideViewAngle.Angle49152:
-                    sideViewAngle = 49152;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            angle += 32768 - sideViewAngle;
             if (double.IsNaN(angle)) angle = 0;
             return (float)MoreMath.AngleUnitsToDegrees(angle);
         }
