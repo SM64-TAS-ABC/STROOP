@@ -415,7 +415,53 @@ namespace STROOP.Map
                         return null;
                     }
                 default:
-                    return null; // TODO(sideviewangle)
+                    {
+                        (float pointAX, float pointAY, float pointAZ) = GetOnLine(
+                            Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
+                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewAngleValue,
+                            tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
+                        (float pointBX, float pointBY, float pointBZ) = GetOnLine(
+                            Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
+                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewAngleValue,
+                            tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
+                        (float pointCX, float pointCY, float pointCZ) = GetOnLine(
+                            Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
+                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewAngleValue,
+                            tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+
+                        List<(float x, float y, float z)> points = new List<(float x, float y, float z)>();
+                        if (!float.IsNaN(pointAX) && !float.IsNaN(pointAY) && !float.IsNaN(pointAZ)) points.Add((pointAX, pointAY, pointAZ));
+                        if (!float.IsNaN(pointBX) && !float.IsNaN(pointBY) && !float.IsNaN(pointBZ)) points.Add((pointBX, pointBY, pointBZ));
+                        if (!float.IsNaN(pointCX) && !float.IsNaN(pointCY) && !float.IsNaN(pointCZ)) points.Add((pointCX, pointCY, pointCZ));
+
+                        if (points.Count == 3)
+                        {
+                            double distAB = MoreMath.GetDistanceBetween(pointAX, pointAY, pointAZ, pointBX, pointBY, pointBZ);
+                            double distAC = MoreMath.GetDistanceBetween(pointAX, pointAY, pointAZ, pointCX, pointCY, pointCZ);
+                            double distBC = MoreMath.GetDistanceBetween(pointBX, pointBY, pointBZ, pointCX, pointCY, pointCZ);
+                            if (distAB >= distAC && distAB >= distBC)
+                            {
+                                points.RemoveAt(2); // AB is biggest, so remove C
+                            }
+                            else if (distAC >= distBC)
+                            {
+                                points.RemoveAt(1); // AC is biggest, so remove B
+                            }
+                            else
+                            {
+                                points.RemoveAt(0); // BC is biggest, so remove A
+                            }
+                        }
+
+                        if (points.Count == 2)
+                        {
+                            return (points[0].x, points[0].y, points[0].z,
+                                points[1].x, points[1].y, points[1].z,
+                                tri.Classification, tri.XProjection, pushAngle);
+                        }
+
+                        return null;
+                    }
             }
         }
 
@@ -453,6 +499,36 @@ namespace STROOP.Map
             float px = x1 + p * (x2 - x1);
             float py = y1 + p * (y2 - y1);
             return (px, py);
+        }
+
+        private static (float x, float y, float z) GetOnLine(
+            float x, float y, float z, float angle, float x1, float y1, float z1, float x2, float y2, float z2)
+        {
+            // Ax + By + Cz = D
+            double angleRadians = MoreMath.AngleUnitsToRadians(angle);
+            double A = Math.Sin(angleRadians);
+            double B = 0;
+            double C = Math.Cos(angleRadians);
+            double D = A * x + B * y + C * z;
+
+            // x = x1 + xDiff * t
+            // y = y1 + yDiff * t
+            // z = z1 + zDiff * t
+            double xDiff = x2 - x1;
+            double yDiff = y2 - y1;
+            double zDiff = z2 - z1;
+
+            // A * x + B * y + C * z = D
+            // A * (x1 + xDiff * t) + B * (y1 + yDiff * t) + C * (z1 + zDiff * t) = D
+            // A * x1 + A * xDiff * t + B * y1 + B * yDiff * t + C * z1 + C * zDiff * t = D
+            // A * xDiff * t + B * yDiff * t + C * zDiff * t = D - (A * x1) - (B * y1) - (C * z1)
+            // t * (A * xDiff + B * yDiff + C * zDiff) = D - (A * x1) - (B * y1) - (C * z1)
+            // t = (D - (A * x1) - (B * y1) - (C * z1)) / (A * xDiff + B * yDiff + C * zDiff)
+            double t = (D - (A * x1) - (B * y1) - (C * z1)) / (A * xDiff + B * yDiff + C * zDiff);
+
+            if (t < 0 || t > 1) return (float.NaN, float.NaN, float.NaN);
+
+            return ((float, float, float))(x1 + xDiff * t, y1 + yDiff * t, z1 + zDiff * t);
         }
 
         public static void MaybeChangeMapCameraMode()
