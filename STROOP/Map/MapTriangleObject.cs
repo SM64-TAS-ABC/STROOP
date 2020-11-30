@@ -104,105 +104,47 @@ namespace STROOP.Map
                             double pushAngleRadians = MoreMath.AngleUnitsToRadians(data.pushAngle);
                             double mapViewAngleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewAngleValue);
                             float relativeHeight = GetWallRelativeHeightForSideView();
-                            switch (Config.MapGraphics.MapViewAngleValue)
+                            if (data.xProjection)
                             {
-                                case 0:
-                                case 32768:
-                                    if (data.xProjection)
+                                float projectionDist = size / (float)Math.Abs(Math.Cos(mapViewAngleRadians - pushAngleRadians + 0.5 * Math.PI));
+                                return new List<List<(float x, float y, float z, Color color)>>()
+                                {
+                                    new List<(float x, float y, float z, Color color)>()
                                     {
-                                        float projectionDist = size / (float)Math.Abs(Math.Sin(pushAngleRadians));
-                                        return new List<List<(float x, float y, float z, Color color)>>()
-                                        {
-                                            new List<(float x, float y, float z, Color color)>()
-                                            {
-                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
-                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
-                                                (data.x2 - projectionDist, data.y2 + relativeHeight, data.z2, color),
-                                                (data.x1 - projectionDist, data.y1 + relativeHeight, data.z1, color),
-                                            },
-                                            new List<(float x, float y, float z, Color color)>()
-                                            {
-                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
-                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
-                                                (data.x2 + projectionDist, data.y2 + relativeHeight, data.z2, color),
-                                                (data.x1 + projectionDist, data.y1 + relativeHeight, data.z1, color),
-                                            },
-                                        };
-                                    }
-                                    else
+                                        (data.x1, data.y1 + relativeHeight, data.z1, color),
+                                        (data.x2, data.y2 + relativeHeight, data.z2, color),
+                                        (data.x2 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                        (data.x1 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                    },
+                                    new List<(float x, float y, float z, Color color)>()
                                     {
-                                        return new List<List<(float x, float y, float z, Color color)>>();
-                                    }
-                                case 16384:
-                                case 49152:
-                                    if (data.xProjection)
+                                        (data.x1, data.y1 + relativeHeight, data.z1, color),
+                                        (data.x2, data.y2 + relativeHeight, data.z2, color),
+                                        (data.x2 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                        (data.x1 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                    },
+                                };
+                            }
+                            else
+                            {
+                                float projectionDist = size / (float)Math.Abs(Math.Sin(mapViewAngleRadians - pushAngleRadians));
+                                return new List<List<(float x, float y, float z, Color color)>>()
+                                {
+                                    new List<(float x, float y, float z, Color color)>()
                                     {
-                                        return new List<List<(float x, float y, float z, Color color)>>();
-                                    }
-                                    else
+                                        (data.x1, data.y1 + relativeHeight, data.z1, color),
+                                        (data.x2, data.y2 + relativeHeight, data.z2, color),
+                                        (data.x2 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                        (data.x1 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                    },
+                                    new List<(float x, float y, float z, Color color)>()
                                     {
-                                        float projectionDist = size / (float)Math.Abs(Math.Cos(pushAngleRadians));
-                                        return new List<List<(float x, float y, float z, Color color)>>()
-                                        {
-                                            new List<(float x, float y, float z, Color color)>()
-                                            {
-                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
-                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
-                                                (data.x2, data.y2 + relativeHeight, data.z2 - projectionDist, color),
-                                                (data.x1, data.y1 + relativeHeight, data.z1 - projectionDist, color),
-                                            },
-                                            new List<(float x, float y, float z, Color color)>()
-                                            {
-                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
-                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
-                                                (data.x2, data.y2 + relativeHeight, data.z2 + projectionDist, color),
-                                                (data.x1, data.y1 + relativeHeight, data.z1 + projectionDist, color),
-                                            },
-                                        };
-                                    }
-                                default:
-                                    if (data.xProjection)
-                                    {
-                                        float projectionDist = size / (float)Math.Abs(Math.Cos(mapViewAngleRadians - pushAngleRadians + 0.5 * Math.PI));
-                                        return new List<List<(float x, float y, float z, Color color)>>()
-                                        {
-                                            new List<(float x, float y, float z, Color color)>()
-                                            {
-                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
-                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
-                                                (data.x2 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
-                                                (data.x1 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
-                                            },
-                                            new List<(float x, float y, float z, Color color)>()
-                                            {
-                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
-                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
-                                                (data.x2 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
-                                                (data.x1 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
-                                            },
-                                        };
-                                    }
-                                    else
-                                    {
-                                        float projectionDist = size / (float)Math.Abs(Math.Sin(mapViewAngleRadians - pushAngleRadians));
-                                        return new List<List<(float x, float y, float z, Color color)>>()
-                                        {
-                                            new List<(float x, float y, float z, Color color)>()
-                                            {
-                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
-                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
-                                                (data.x2 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
-                                                (data.x1 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
-                                            },
-                                            new List<(float x, float y, float z, Color color)>()
-                                            {
-                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
-                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
-                                                (data.x2 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
-                                                (data.x1 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
-                                            },
-                                        };
-                                    }
+                                        (data.x1, data.y1 + relativeHeight, data.z1, color),
+                                        (data.x2, data.y2 + relativeHeight, data.z2, color),
+                                        (data.x2 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                        (data.x1 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                    },
+                                };
                             }
                         }
                     case TriangleClassification.Floor:
