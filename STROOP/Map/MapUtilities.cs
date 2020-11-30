@@ -84,28 +84,9 @@ namespace STROOP.Map
             float xOffset = x - Config.MapGraphics.MapViewCenterXValue;
             float yOffset = y - Config.MapGraphics.MapViewCenterYValue;
             float zOffset = z - Config.MapGraphics.MapViewCenterZValue;
-            float hOffset, vOffset;
-            switch (Config.MapGraphics.MapViewSideViewAngle)
-            {
-                case MapGraphics.MapSideViewAngle.Angle0:
-                    hOffset = -1 * xOffset;
-                    vOffset = -1 * yOffset;
-                    break;
-                case MapGraphics.MapSideViewAngle.Angle16384:
-                    hOffset = zOffset;
-                    vOffset = -1 * yOffset;
-                    break;
-                case MapGraphics.MapSideViewAngle.Angle32768:
-                    hOffset = xOffset;
-                    vOffset = -1 * yOffset;
-                    break;
-                case MapGraphics.MapSideViewAngle.Angle49152:
-                    hOffset = -1 * zOffset;
-                    vOffset = -1 * yOffset;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            double angleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewAngleValue);
+            float hOffset = (float)(Math.Sin(angleRadians) * zOffset - Math.Cos(angleRadians) * xOffset);
+            float vOffset = -1 * yOffset;
             float hOffsetPixels = hOffset * Config.MapGraphics.MapViewScaleValue;
             float vOffsetPixels = vOffset * Config.MapGraphics.MapViewScaleValue;
             float centerH = Config.MapGui.GLControlMap2D.Width / 2 + hOffsetPixels;
