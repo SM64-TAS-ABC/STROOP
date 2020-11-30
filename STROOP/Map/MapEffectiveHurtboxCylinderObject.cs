@@ -37,11 +37,15 @@ namespace STROOP.Map
 
             uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
             float marioHurtboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
+            float marioHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
+
             float effectiveRadius = hurtboxRadius + marioHurtboxRadius;
+            float effectiveMinY = hurtboxMinY - marioHitboxHeight;
+            float effectiveMaxY = hurtboxMaxY;
 
             return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>()
             {
-                ((float)_posAngle.X, (float)_posAngle.Z, effectiveRadius, hurtboxMinY, hurtboxMaxY)
+                ((float)_posAngle.X, (float)_posAngle.Z, effectiveRadius, effectiveMinY, effectiveMaxY)
             };
         }
 
