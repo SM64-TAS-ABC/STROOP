@@ -29,7 +29,7 @@ namespace STROOP.Map
             _autoUpdate = true;
         }
 
-        protected override List<TriangleDataModel> GetTrianglesOfAnyDist()
+        protected override List<TriangleDataModel> GetUnfilteredTriangles()
         {
             return _tris;
         }

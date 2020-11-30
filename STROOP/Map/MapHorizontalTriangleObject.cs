@@ -130,7 +130,7 @@ namespace STROOP.Map
 
         private void DrawOn2DControlTopDownViewWithUnits(float? minHeight, float? maxHeight, Color color)
         {
-            List<TriangleDataModel> triangles = GetTrianglesWithinDist();
+            List<TriangleDataModel> triangles = GetFilteredTriangles();
             List<(int x, int z)> unitPoints = triangles.ConvertAll(triangle =>
             {
                 int xMin = (int)Math.Max(triangle.GetMinX(), Config.MapGraphics.MapViewXMin - 1);

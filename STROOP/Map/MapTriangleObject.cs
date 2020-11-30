@@ -33,13 +33,13 @@ namespace STROOP.Map
 
         protected List<List<(float x, float y, float z)>> GetVertexLists()
         {
-            return GetTrianglesWithinDist().ConvertAll(tri => tri.Get3DVertices());
+            return GetFilteredTriangles().ConvertAll(tri => tri.Get3DVertices());
         }
 
-        protected List<TriangleDataModel> GetTrianglesWithinDist()
+        protected List<TriangleDataModel> GetFilteredTriangles()
         {
             float centerY = _withinCenter ?? Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            List<TriangleDataModel> tris = GetTrianglesOfAnyDist()
+            List<TriangleDataModel> tris = GetUnfilteredTriangles()
                 .FindAll(tri => tri.IsTriWithinVerticalDistOfCenter(_withinDist, centerY));
             if (_excludeDeathBarriers)
             {
@@ -49,7 +49,7 @@ namespace STROOP.Map
             return tris;
         }
 
-        protected abstract List<TriangleDataModel> GetTrianglesOfAnyDist();
+        protected abstract List<TriangleDataModel> GetUnfilteredTriangles();
 
         protected static (float x, float y, float z) OffsetVertex(
             (float x, float y, float z) vertex, float xOffset, float yOffset, float zOffset)
@@ -89,7 +89,7 @@ namespace STROOP.Map
             List<(float x1, float y1, float z1,
                 float x2, float y2, float z2,
                 TriangleClassification classification, bool xProjection, double pushAngle)> triData =
-                GetTrianglesWithinDist().ConvertAll(tri => MapUtilities.Get2DDataFromTri(tri))
+                GetFilteredTriangles().ConvertAll(tri => MapUtilities.Get2DDataFromTri(tri))
                     .FindAll(data => data.HasValue)
                     .ConvertAll(data => data.Value);
 
@@ -227,7 +227,7 @@ namespace STROOP.Map
         public void DrawOn2DControlSideViewTotal()
         {
             List<List<(float x, float y, float z, Color color)>> vertexLists =
-                GetTrianglesWithinDist().ConvertAll(tri =>
+                GetFilteredTriangles().ConvertAll(tri =>
                 {
                     Color color = GetColorForSideView(tri.Classification);
                     return tri.Get3DVertices().ConvertAll(vertex => (vertex.x, vertex.y, vertex.z, color));

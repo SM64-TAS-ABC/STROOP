@@ -45,7 +45,7 @@ namespace STROOP.Map
             return new MapCustomFloorObject(uintList);
         }
 
-        protected override List<TriangleDataModel> GetTrianglesOfAnyDist()
+        protected override List<TriangleDataModel> GetUnfilteredTriangles()
         {
             return MapUtilities.GetTriangles(_triAddressList);
         }

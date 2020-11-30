@@ -94,7 +94,7 @@ namespace STROOP.Map
                 OutlineWidth = 0;
             }
 
-            List<List<(float x, float y, float z, Color color)>> triData = GetTrianglesWithinDist()
+            List<List<(float x, float y, float z, Color color)>> triData = GetFilteredTriangles()
                 .ConvertAll(tri => new List<(float x, float y, float z, Color color)>()
                 {
                     (tri.X1, tri.Y1, tri.Z1, ColorUtilities.AddAlpha(GetColorForTri(tri, 1), OpacityByte)),
@@ -167,7 +167,7 @@ namespace STROOP.Map
             }
         }
 
-        protected override List<TriangleDataModel> GetTrianglesOfAnyDist()
+        protected override List<TriangleDataModel> GetUnfilteredTriangles()
         {
             return MapUtilities.GetTriangles(_levelTriAddressList.Concat(_objTriAddressList).ToList());
         }
