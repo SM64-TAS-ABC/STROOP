@@ -1020,5 +1020,13 @@ namespace STROOP.Utilities
 
             return (x1 + xDiff * t, y1 + yDiff * t, z1 + zDiff * t, t);
         }
+
+        public static (double x, double y, double z) GetPlanePointAtPoint(
+            double x, double y, double z, double angle, double px, double py, double pz)
+        {
+            (double qx, double qz) = AddVectorToPoint(1, angle, x, z);
+            (double rx, double ry, double rz, double t) = GetPlaneLineIntersection(px, py, pz, angle, x, y, z, qx, y, qz);
+            return (rx, ry, rz);
+        }
     }
 }

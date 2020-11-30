@@ -243,6 +243,7 @@ namespace STROOP.Map
                 Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked)
             {
                 float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                 float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
                 switch (MapViewAngleValue)
                 {
@@ -255,7 +256,10 @@ namespace STROOP.Map
                         MapViewCenterXValue = marioX;
                         break;
                     default:
-                        // TODO(sideviewangle)
+                        (double x, double y, double z) = MoreMath.GetPlanePointAtPoint(
+                            MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue, MapViewAngleValue, marioX, marioY, marioZ);
+                        MapViewCenterXValue = (float)x;
+                        MapViewCenterZValue = (float)z;
                         break;
                 }
             }
