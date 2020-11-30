@@ -109,10 +109,10 @@ namespace STROOP.Map
             int zMaxMultiple = Math.Min((int)((viewZMax - gridlineMin) / increment) + 1, (int)size);
             int numZLines = zMaxMultiple - zMinMultiple + 1;
 
-            switch (Config.MapGraphics.MapViewSideViewAngle)
+            switch (Config.MapGraphics.MapViewAngleValue)
             {
-                case MapGraphics.MapSideViewAngle.Angle0:
-                case MapGraphics.MapSideViewAngle.Angle32768:
+                case 0:
+                case 32768:
                     {
                         if (numXLines > viewXDiffPixels || numYLines > viewYDiffPixels)
                             return new List<(float x, float y, float z)>();
@@ -132,8 +132,8 @@ namespace STROOP.Map
                         }
                         return vertices;
                     }
-                case MapGraphics.MapSideViewAngle.Angle16384:
-                case MapGraphics.MapSideViewAngle.Angle49152:
+                case 16384:
+                case 49152:
                     {
                         if (numZLines > viewZDiffPixels || numYLines > viewYDiffPixels)
                             return new List<(float x, float y, float z)>();
@@ -154,7 +154,7 @@ namespace STROOP.Map
                         return vertices;
                     }
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    return new List<(float x, float y, float z)>();
             }
         }
 

@@ -129,10 +129,10 @@ namespace STROOP.Map
                         int yMax = ((((int)Config.MapGraphics.MapViewYMax) / 65536) + 1) * 65536;
                         int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
                         int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
-                        switch (Config.MapGraphics.MapViewSideViewAngle)
+                        switch (Config.MapGraphics.MapViewAngleValue)
                         {
-                            case MapGraphics.MapSideViewAngle.Angle0:
-                            case MapGraphics.MapSideViewAngle.Angle32768:
+                            case 0:
+                            case 32768:
                                 {
                                     List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                                     for (int x = xMin; x <= xMax; x += 65536)
@@ -147,8 +147,8 @@ namespace STROOP.Map
                                     }
                                     return vertices;
                                 }
-                            case MapGraphics.MapSideViewAngle.Angle16384:
-                            case MapGraphics.MapSideViewAngle.Angle49152:
+                            case 16384:
+                            case 49152:
                                 {
                                     List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                                     for (int z = zMin; z <= zMax; z += 65536)
@@ -164,7 +164,7 @@ namespace STROOP.Map
                                     return vertices;
                                 }
                             default:
-                                throw new ArgumentOutOfRangeException();
+                                return new List<(float x, float y, float z)>();
                         }
                     }
                 case PuGridlineSetting.SETTING2:
@@ -177,10 +177,10 @@ namespace STROOP.Map
                         int yMax = ((((int)Config.MapGraphics.MapViewYMax) / 65536) + 1) * 65536 + 32768;
                         int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536 - 32768;
                         int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536 + 32768;
-                        switch (Config.MapGraphics.MapViewSideViewAngle)
+                        switch (Config.MapGraphics.MapViewAngleValue)
                         {
-                            case MapGraphics.MapSideViewAngle.Angle0:
-                            case MapGraphics.MapSideViewAngle.Angle32768:
+                            case 0:
+                            case 32768:
                                 {
                                     List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                                     for (int x = xMin; x <= xMax; x += 65536)
@@ -195,8 +195,8 @@ namespace STROOP.Map
                                     }
                                     return vertices;
                                 }
-                            case MapGraphics.MapSideViewAngle.Angle16384:
-                            case MapGraphics.MapSideViewAngle.Angle49152:
+                            case 16384:
+                            case 49152:
                                 {
                                     List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                                     for (int z = zMin; z <= zMax; z += 65536)
@@ -212,7 +212,7 @@ namespace STROOP.Map
                                     return vertices;
                                 }
                             default:
-                                throw new ArgumentOutOfRangeException();
+                                return new List<(float x, float y, float z)>();
                         }
                     }
                 case PuGridlineSetting.SETTING3:
@@ -225,10 +225,10 @@ namespace STROOP.Map
                         int yMax = ((((int)Config.MapGraphics.MapViewYMax) / 65536) + 1) * 65536;
                         int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
                         int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
-                        switch (Config.MapGraphics.MapViewSideViewAngle)
+                        switch (Config.MapGraphics.MapViewAngleValue)
                         {
-                            case MapGraphics.MapSideViewAngle.Angle0:
-                            case MapGraphics.MapSideViewAngle.Angle32768:
+                            case 0:
+                            case 32768:
                                 {
                                     List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                                     for (int x = xMin; x <= xMax; x += 65536)
@@ -255,8 +255,8 @@ namespace STROOP.Map
                                     }
                                     return vertices;
                                 }
-                            case MapGraphics.MapSideViewAngle.Angle16384:
-                            case MapGraphics.MapSideViewAngle.Angle49152:
+                            case 16384:
+                            case 49152:
                                 {
                                     List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                                     for (int z = zMin; z <= zMax; z += 65536)
@@ -284,7 +284,7 @@ namespace STROOP.Map
                                     return vertices;
                                 }
                             default:
-                                throw new ArgumentOutOfRangeException();
+                                return new List<(float x, float y, float z)>();
                         }
                     }
                 default:

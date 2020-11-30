@@ -42,10 +42,10 @@ namespace STROOP.Map
         {
             List<(float centerX, float centerZ, float radius)> dimensionList = Get3DDimensions().ConvertAll(dimension =>
             {
-                switch (Config.MapGraphics.MapViewSideViewAngle)
+                switch (Config.MapGraphics.MapViewAngleValue)
                 {
-                    case MapGraphics.MapSideViewAngle.Angle0:
-                    case MapGraphics.MapSideViewAngle.Angle32768:
+                    case 0:
+                    case 32768:
                         {
                             float zDiff = Config.MapGraphics.MapViewCenterZValue - dimension.centerZ;
                             float xDistSquared = dimension.radius3D * dimension.radius3D - zDiff * zDiff;
@@ -55,8 +55,8 @@ namespace STROOP.Map
                                 dimension.centerX, dimension.centerY, dimension.centerZ);
                             return (x, z, radius);
                         }
-                    case MapGraphics.MapSideViewAngle.Angle16384:
-                    case MapGraphics.MapSideViewAngle.Angle49152:
+                    case 16384:
+                    case 49152:
                         {
                             float xDiff = Config.MapGraphics.MapViewCenterXValue - dimension.centerX;
                             float zDistSquared = dimension.radius3D * dimension.radius3D - xDiff * xDiff;
@@ -67,7 +67,7 @@ namespace STROOP.Map
                             return (x, z, radius);
                         }
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        return (0, 0, 0); // TODO(sideviewangle)
                 }
             });
 
