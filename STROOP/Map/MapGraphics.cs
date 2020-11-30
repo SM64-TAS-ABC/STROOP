@@ -408,10 +408,7 @@ namespace STROOP.Map
 
         private void SetCenterTextbox(object xValue, object yValue, object zValue)
         {
-            List<object> values = new List<object>();
-            values.Add(xValue);
-            if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked) values.Add(yValue);
-            values.Add(zValue);
+            List<object> values = new List<object> { xValue, yValue, zValue };
             Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(string.Join(";", values));
         }
 
