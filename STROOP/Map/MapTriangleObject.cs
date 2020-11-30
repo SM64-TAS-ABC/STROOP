@@ -102,7 +102,7 @@ namespace STROOP.Map
                     case TriangleClassification.Wall:
                         {
                             double pushAngleRadians = MoreMath.AngleUnitsToRadians(data.pushAngle);
-                            float projectionDist = size / (float)Math.Abs(data.xProjection ? Math.Sin(pushAngleRadians) : Math.Cos(pushAngleRadians));
+                            double mapViewAngleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewAngleValue);
                             float relativeHeight = GetWallRelativeHeightForSideView();
                             switch (Config.MapGraphics.MapViewAngleValue)
                             {
@@ -110,6 +110,7 @@ namespace STROOP.Map
                                 case 32768:
                                     if (data.xProjection)
                                     {
+                                        float projectionDist = size / (float)Math.Abs(Math.Sin(pushAngleRadians));
                                         return new List<List<(float x, float y, float z, Color color)>>()
                                         {
                                             new List<(float x, float y, float z, Color color)>()
@@ -140,6 +141,7 @@ namespace STROOP.Map
                                     }
                                     else
                                     {
+                                        float projectionDist = size / (float)Math.Abs(Math.Cos(pushAngleRadians));
                                         return new List<List<(float x, float y, float z, Color color)>>()
                                         {
                                             new List<(float x, float y, float z, Color color)>()
@@ -159,7 +161,48 @@ namespace STROOP.Map
                                         };
                                     }
                                 default:
-                                    return new List<List<(float x, float y, float z, Color color)>>(); // TODO(sideviewangle)
+                                    if (data.xProjection)
+                                    {
+                                        float projectionDist = size / (float)Math.Abs(Math.Cos(mapViewAngleRadians));
+                                        return new List<List<(float x, float y, float z, Color color)>>()
+                                        {
+                                            new List<(float x, float y, float z, Color color)>()
+                                            {
+                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
+                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
+                                                (data.x2 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                                (data.x1 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                            },
+                                            new List<(float x, float y, float z, Color color)>()
+                                            {
+                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
+                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
+                                                (data.x2 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                                (data.x1 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                            },
+                                        };
+                                    }
+                                    else
+                                    {
+                                        float projectionDist = size / (float)Math.Abs(Math.Sin(mapViewAngleRadians));
+                                        return new List<List<(float x, float y, float z, Color color)>>()
+                                        {
+                                            new List<(float x, float y, float z, Color color)>()
+                                            {
+                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
+                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
+                                                (data.x2 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                                (data.x1 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                            },
+                                            new List<(float x, float y, float z, Color color)>()
+                                            {
+                                                (data.x1, data.y1 + relativeHeight, data.z1, color),
+                                                (data.x2, data.y2 + relativeHeight, data.z2, color),
+                                                (data.x2 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                                (data.x1 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                            },
+                                        };
+                                    }
                             }
                         }
                     case TriangleClassification.Floor:
