@@ -22,7 +22,7 @@ namespace STROOP.Map
         {
             _posAngle = posAngle;
 
-            Color = Color.Green;
+            Color = Color.Purple;
         }
 
         protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
