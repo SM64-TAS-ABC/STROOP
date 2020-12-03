@@ -994,13 +994,15 @@ namespace STROOP.Utilities
         }
 
         public static (double x, double y, double z, double t) GetPlaneLineIntersection(
-            double planeX, double planeY, double planeZ, double planeNormal, double x1, double y1, double z1, double x2, double y2, double z2)
+            double planeX, double planeY, double planeZ, double planeYaw, double planePitch,
+            double x1, double y1, double z1, double x2, double y2, double z2)
         {
             // Ax + By + Cz = D
-            double angleRadians = MoreMath.AngleUnitsToRadians(planeNormal);
-            double A = Math.Sin(angleRadians);
-            double B = 0;
-            double C = Math.Cos(angleRadians);
+            double yawRadians = MoreMath.AngleUnitsToRadians(planeYaw);
+            double pitchRadians = MoreMath.AngleUnitsToRadians(planePitch);
+            double A = Math.Sin(yawRadians) * Math.Cos(pitchRadians);
+            double B = Math.Sin(pitchRadians);
+            double C = Math.Cos(yawRadians) * Math.Cos(pitchRadians);
             double D = A * planeX + B * planeY + C * planeZ;
 
             // x = x1 + xDiff * t
@@ -1022,17 +1024,21 @@ namespace STROOP.Utilities
         }
 
         public static (double x, double y, double z) GetPlanePointAtPoint(
-            double planeX, double planeY, double planeZ, double planeNormal, double px, double py, double pz)
+            double planeX, double planeY, double planeZ, double planeYaw, double planePitch,
+            double px, double py, double pz)
         {
-            (double qx, double qz) = AddVectorToPoint(1, planeNormal, planeX, planeZ);
-            (double rx, double ry, double rz, double t) = GetPlaneLineIntersection(px, py, pz, planeNormal, planeX, planeY, planeZ, qx, planeY, qz);
+            (double qx, double qz) = AddVectorToPoint(1, planeYaw, planeX, planeZ);
+            (double rx, double ry, double rz, double t) = GetPlaneLineIntersection(
+                px, py, pz, planeYaw, planePitch, planeX, planeY, planeZ, qx, planeY, qz);
             return (rx, ry, rz);
         }
 
         public static double GetPlaneDistanceToPoint(
-            double planeX, double planeY, double planeZ, double planeNormal, double px, double py, double pz)
+            double planeX, double planeY, double planeZ, double planeYaw, double planePitch,
+            double px, double py, double pz)
         {
-            (double x, double y, double z) = GetPlanePointAtPoint(planeX, planeY, planeZ, planeNormal, px, py, pz);
+            (double x, double y, double z) = GetPlanePointAtPoint(
+                planeX, planeY, planeZ, planeYaw, planePitch, px, py, pz);
             return GetDistanceBetween(planeX, planeY, planeZ, x, y, z);
         }
     }

@@ -418,15 +418,15 @@ namespace STROOP.Map
                     {
                         (float pointAX, float pointAY, float pointAZ) = GetOnLine(
                             Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue,
+                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
                             tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
                         (float pointBX, float pointBY, float pointBZ) = GetOnLine(
                             Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue,
+                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
                             tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
                         (float pointCX, float pointCY, float pointCZ) = GetOnLine(
                             Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue,
+                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
                             tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
 
                         List<(float x, float y, float z)> points = new List<(float x, float y, float z)>();
@@ -502,10 +502,10 @@ namespace STROOP.Map
         }
 
         private static (float x, float y, float z) GetOnLine(
-            float x, float y, float z, float angle, float x1, float y1, float z1, float x2, float y2, float z2)
+            float x, float y, float z, float yaw, float pitch, float x1, float y1, float z1, float x2, float y2, float z2)
         {
             (float x0, float y0, float z0, float t0) = ((float, float, float, float))
-                MoreMath.GetPlaneLineIntersection(x, y, z, angle, x1, y1, z1, x2, y2, z2);
+                MoreMath.GetPlaneLineIntersection(x, y, z, yaw, pitch, x1, y1, z1, x2, y2, z2);
             if (t0 < 0 || t0 > 1) return (float.NaN, float.NaN, float.NaN);
             return (x0, y0, z0);
         }

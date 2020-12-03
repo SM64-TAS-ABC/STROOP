@@ -252,7 +252,7 @@ namespace STROOP.Map
                         break;
                     default:
                         (double x, double y, double z) = MoreMath.GetPlanePointAtPoint(
-                            MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue, MapViewYawValue, marioX, marioY, marioZ);
+                            MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue, MapViewYawValue, MapViewPitchValue, marioX, marioY, marioZ);
                         MapViewCenterXValue = (float)x;
                         MapViewCenterZValue = (float)z;
                         break;

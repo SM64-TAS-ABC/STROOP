@@ -70,7 +70,7 @@ namespace STROOP.Map
                         {
                             float aDiff = (float)MoreMath.GetPlaneDistanceToPoint(
                                 Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                                Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue,
+                                Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
                                 dimension.centerX, dimension.centerY, dimension.centerZ);
                             float bDistSquared = dimension.radius3D * dimension.radius3D - aDiff * aDiff;
                             float bDist = bDistSquared >= 0 ? (float)Math.Sqrt(bDistSquared) : 0;
