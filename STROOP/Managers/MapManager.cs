@@ -568,18 +568,18 @@ namespace STROOP.Managers
                     () =>
                     {
                         ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-                        Config.MapGraphics.SetCustomAngle(marioAngle);
+                        Config.MapGraphics.SetCustomYaw(marioAngle);
                     },
                     () =>
                     {
                         ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
-                        Config.MapGraphics.SetCustomAngle(cameraAngle);
+                        Config.MapGraphics.SetCustomYaw(cameraAngle);
                     },
                     () =>
                     {
                         ushort centripetalAngle = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset);
                         double centripetalAngleReversed = MoreMath.ReverseAngle(centripetalAngle);
-                        Config.MapGraphics.SetCustomAngle(centripetalAngleReversed);
+                        Config.MapGraphics.SetCustomYaw(centripetalAngleReversed);
                     },
                 });
 

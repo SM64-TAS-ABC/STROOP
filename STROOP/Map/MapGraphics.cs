@@ -26,12 +26,14 @@ namespace STROOP.Map
         private static readonly float DEFAULT_MAP_VIEW_CENTER_Y_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_CENTER_Z_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_YAW_VALUE = 32768;
+        private static readonly float DEFAULT_MAP_VIEW_PITCH_VALUE = 0;
 
         public float MapViewScaleValue = DEFAULT_MAP_VIEW_SCALE_VALUE;
         public float MapViewCenterXValue = DEFAULT_MAP_VIEW_CENTER_X_VALUE;
         public float MapViewCenterYValue = DEFAULT_MAP_VIEW_CENTER_Y_VALUE;
         public float MapViewCenterZValue = DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
         public float MapViewYawValue = DEFAULT_MAP_VIEW_YAW_VALUE;
+        public float MapViewPitchValue = DEFAULT_MAP_VIEW_PITCH_VALUE;
 
         public bool MapViewEnablePuView = false;
         public bool MapViewScaleIconSizes = false;
@@ -257,10 +259,7 @@ namespace STROOP.Map
                 }
             }
 
-            // if (MapViewCenter != MapCenter.Custom)
-            {
-                SetCenterTextbox(MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue);
-            }
+            SetCenterTextbox(MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue);
         }
 
         private void UpdateAngle()
@@ -314,16 +313,22 @@ namespace STROOP.Map
                         MapViewYawValue = (float)posAngle.Angle;
                         break;
                     }
-                    MapViewYawValue = ParsingUtilities.ParseFloatNullable(
-                        Config.MapGui.textBoxMapControllersAngleCustom.LastSubmittedText)
-                        ?? DEFAULT_MAP_VIEW_YAW_VALUE;
+
+                    List<string> stringValues = ParsingUtilities.ParseStringList(
+                        Config.MapGui.textBoxMapControllersAngleCustom.LastSubmittedText, replaceComma: false);
+                    if (stringValues.Count == 1)
+                    {
+                        MapViewYawValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_YAW_VALUE;
+                    }
+                    else if (stringValues.Count == 2)
+                    {
+                        MapViewYawValue = ParsingUtilities.ParseFloatNullable(stringValues[0]) ?? DEFAULT_MAP_VIEW_YAW_VALUE;
+                        MapViewPitchValue = ParsingUtilities.ParseFloatNullable(stringValues[1]) ?? DEFAULT_MAP_VIEW_PITCH_VALUE;
+                    }
                     break;
             }
 
-            if (MapViewYaw != MapYaw.Custom)
-            {
-                Config.MapGui.textBoxMapControllersAngleCustom.SubmitTextLoosely(MapViewYawValue.ToString());
-            }
+            SetAngleTextbox(MapViewYawValue, MapViewPitchValue);
         }
 
         public void ChangeScale(int sign, object value)
@@ -405,10 +410,16 @@ namespace STROOP.Map
             Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(string.Join(";", values));
         }
 
-        public void SetCustomAngle(object value)
+        public void SetCustomYaw(object value)
         {
             Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
-            Config.MapGui.textBoxMapControllersAngleCustom.SubmitText(value.ToString());
+            SetAngleTextbox(value, MapViewPitchValue);
+        }
+
+        private void SetAngleTextbox(object yawValue, object pitchValue)
+        {
+            List<object> values = new List<object> { yawValue, pitchValue };
+            Config.MapGui.textBoxMapControllersAngleCustom.SubmitTextLoosely(string.Join(";", values));
         }
 
         private bool _isTranslating = false;
@@ -536,7 +547,7 @@ namespace STROOP.Map
                 float angleToMouse = (float)MoreMath.AngleTo_AngleUnits(
                     _rotateStartMouseX, _rotateStartMouseY, e.X, e.Y) * MapUtilities.MaybeReverse(-1) + 32768;
                 float newAngle = _rotateStartAngle + angleToMouse;
-                SetCustomAngle(newAngle);
+                SetCustomYaw(newAngle);
             }
         }
 
