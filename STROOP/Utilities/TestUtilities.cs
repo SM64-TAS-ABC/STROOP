@@ -20,6 +20,31 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
+            //if (Config.MapGraphics != null)
+            //{
+            //    double dist1 = MoreMath.GetPlaneDistanceToPoint(
+            //        Config.MapGraphics.MapViewCenterXValue,
+            //        Config.MapGraphics.MapViewCenterYValue,
+            //        Config.MapGraphics.MapViewCenterZValue,
+            //        Config.MapGraphics.MapViewYawValue,
+            //        Config.MapGraphics.MapViewPitchValue,
+            //        Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset),
+            //        Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset),
+            //        Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset));
+
+            //    double dist2 = MoreMath.GetPlaneDistanceToPointSigned(
+            //        Config.MapGraphics.MapViewCenterXValue,
+            //        Config.MapGraphics.MapViewCenterYValue,
+            //        Config.MapGraphics.MapViewCenterZValue,
+            //        Config.MapGraphics.MapViewYawValue,
+            //        Config.MapGraphics.MapViewPitchValue,
+            //        Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset),
+            //        Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset),
+            //        Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset));
+
+            //    Config.SetDebugText(dist1 + " vs " + dist2);
+            //}
+
             //byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);
             //byte area = Config.Stream.GetByte(MiscConfig.AreaAddress);
 

@@ -1037,9 +1037,22 @@ namespace STROOP.Utilities
             double planeX, double planeY, double planeZ, double planeYaw, double planePitch,
             double px, double py, double pz)
         {
-            (double x, double y, double z) = GetPlanePointAtPoint(
-                planeX, planeY, planeZ, planeYaw, planePitch, px, py, pz);
-            return GetDistanceBetween(planeX, planeY, planeZ, x, y, z);
+            return Math.Abs(GetPlaneDistanceToPointSigned(
+                planeX, planeY, planeZ, planeYaw, planePitch, px, py, pz));
+        }
+
+        public static double GetPlaneDistanceToPointSigned(
+            double planeX, double planeY, double planeZ, double planeYaw, double planePitch,
+            double px, double py, double pz)
+        {
+            // Ax + By + Cz = D
+            double yawRadians = AngleUnitsToRadians(planeYaw);
+            double pitchRadians = AngleUnitsToRadians(planePitch);
+            double A = Math.Sin(yawRadians) * Math.Cos(pitchRadians);
+            double B = Math.Sin(pitchRadians);
+            double C = Math.Cos(yawRadians) * Math.Cos(pitchRadians);
+            double D = A * planeX + B * planeY + C * planeZ;
+            return A * px + B * py + C * pz - D;
         }
     }
 }
