@@ -102,7 +102,7 @@ namespace STROOP.Map
                     case TriangleClassification.Wall:
                         {
                             double pushAngleRadians = MoreMath.AngleUnitsToRadians(data.pushAngle);
-                            double mapViewAngleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewAngleValue);
+                            double mapViewAngleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
                             float relativeHeight = GetWallRelativeHeightForSideView();
                             if (data.xProjection)
                             {

@@ -160,7 +160,7 @@ namespace STROOP.Map
         private (float x, float z) RotatePoint(float x, float z)
         {
             return ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
-                x, z, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ, -1 * Config.MapGraphics.MapViewAngleValue);
+                x, z, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ, -1 * Config.MapGraphics.MapViewYawValue);
         }
 
         public override void DrawOn3DControl()

@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenTK;
-using OpenTK.Graphics;
-using OpenTK.Graphics.OpenGL;
-using System.Windows.Forms;
-using System.Drawing;
-using System.Drawing.Imaging;
+﻿using OpenTK.Graphics.OpenGL;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
-using OpenTK.Input;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -20,25 +14,24 @@ namespace STROOP.Map
     {
         private enum MapScale { CourseDefault, MaxCourseSize, Custom };
         private enum MapCenter { BestFit, Origin, Mario, Custom };
-        private enum MapAngle { Angle0, Angle16384, Angle32768, Angle49152, Mario, Camera, Centripetal, Custom };
-        public enum MapSideViewAngle { Angle0, Angle16384, Angle32768, Angle49152 };
+        private enum MapYaw { Angle0, Angle16384, Angle32768, Angle49152, Mario, Camera, Centripetal, Custom };
 
         private MapScale MapViewScale;
         private MapCenter MapViewCenter;
-        private MapAngle MapViewAngle;
+        private MapYaw MapViewYaw;
         private bool MapViewScaleWasCourseDefault = true;
 
         private static readonly float DEFAULT_MAP_VIEW_SCALE_VALUE = 1;
         private static readonly float DEFAULT_MAP_VIEW_CENTER_X_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_CENTER_Y_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_CENTER_Z_VALUE = 0;
-        private static readonly float DEFAULT_MAP_VIEW_ANGLE_VALUE = 32768;
+        private static readonly float DEFAULT_MAP_VIEW_YAW_VALUE = 32768;
 
         public float MapViewScaleValue = DEFAULT_MAP_VIEW_SCALE_VALUE;
         public float MapViewCenterXValue = DEFAULT_MAP_VIEW_CENTER_X_VALUE;
         public float MapViewCenterYValue = DEFAULT_MAP_VIEW_CENTER_Y_VALUE;
         public float MapViewCenterZValue = DEFAULT_MAP_VIEW_CENTER_Z_VALUE;
-        public float MapViewAngleValue = DEFAULT_MAP_VIEW_ANGLE_VALUE;
+        public float MapViewYawValue = DEFAULT_MAP_VIEW_YAW_VALUE;
 
         public bool MapViewEnablePuView = false;
         public bool MapViewScaleIconSizes = false;
@@ -157,7 +150,7 @@ namespace STROOP.Map
                     {
                         (float x, float z) = coord;
                         (double rotatedX, double rotatedZ) = MoreMath.RotatePointAboutPointAnAngularDistance(
-                            x, z, 0, 0, 32768 - Config.MapGraphics.MapViewAngleValue);
+                            x, z, 0, 0, 32768 - Config.MapGraphics.MapViewYawValue);
                         return ((float)rotatedX, (float)rotatedZ);
                     });
                     float rotatedXMax = rotatedCoordinates.Max(coord => coord.Item1);
@@ -245,7 +238,7 @@ namespace STROOP.Map
                 float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
                 float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                 float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                switch (MapViewAngleValue)
+                switch (MapViewYawValue)
                 {
                     case 0:
                     case 32768:
@@ -257,7 +250,7 @@ namespace STROOP.Map
                         break;
                     default:
                         (double x, double y, double z) = MoreMath.GetPlanePointAtPoint(
-                            MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue, MapViewAngleValue, marioX, marioY, marioZ);
+                            MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue, MapViewYawValue, marioX, marioY, marioZ);
                         MapViewCenterXValue = (float)x;
                         MapViewCenterZValue = (float)z;
                         break;
@@ -273,63 +266,63 @@ namespace STROOP.Map
         private void UpdateAngle()
         {
             if (Config.MapGui.radioButtonMapControllersAngle0.Checked)
-                MapViewAngle = MapAngle.Angle0;
+                MapViewYaw = MapYaw.Angle0;
             else if (Config.MapGui.radioButtonMapControllersAngle16384.Checked)
-                MapViewAngle = MapAngle.Angle16384;
+                MapViewYaw = MapYaw.Angle16384;
             else if (Config.MapGui.radioButtonMapControllersAngle32768.Checked)
-                MapViewAngle = MapAngle.Angle32768;
+                MapViewYaw = MapYaw.Angle32768;
             else if (Config.MapGui.radioButtonMapControllersAngle49152.Checked)
-                MapViewAngle = MapAngle.Angle49152;
+                MapViewYaw = MapYaw.Angle49152;
             else if (Config.MapGui.radioButtonMapControllersAngleMario.Checked)
-                MapViewAngle = MapAngle.Mario;
+                MapViewYaw = MapYaw.Mario;
             else if (Config.MapGui.radioButtonMapControllersAngleCamera.Checked)
-                MapViewAngle = MapAngle.Camera;
+                MapViewYaw = MapYaw.Camera;
             else if (Config.MapGui.radioButtonMapControllersAngleCentripetal.Checked)
-                MapViewAngle = MapAngle.Centripetal;
+                MapViewYaw = MapYaw.Centripetal;
             else
-                MapViewAngle = MapAngle.Custom;
+                MapViewYaw = MapYaw.Custom;
 
-            switch (MapViewAngle)
+            switch (MapViewYaw)
             {
-                case MapAngle.Angle0:
-                    MapViewAngleValue = 0;
+                case MapYaw.Angle0:
+                    MapViewYawValue = 0;
                     break;
-                case MapAngle.Angle16384:
-                    MapViewAngleValue = 16384;
+                case MapYaw.Angle16384:
+                    MapViewYawValue = 16384;
                     break;
-                case MapAngle.Angle32768:
-                    MapViewAngleValue = 32768;
+                case MapYaw.Angle32768:
+                    MapViewYawValue = 32768;
                     break;
-                case MapAngle.Angle49152:
-                    MapViewAngleValue = 49152;
+                case MapYaw.Angle49152:
+                    MapViewYawValue = 49152;
                     break;
-                case MapAngle.Mario:
-                    MapViewAngleValue = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                case MapYaw.Mario:
+                    MapViewYawValue = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     break;
-                case MapAngle.Camera:
-                    MapViewAngleValue = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+                case MapYaw.Camera:
+                    MapViewYawValue = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
                     break;
-                case MapAngle.Centripetal:
-                    MapViewAngleValue = (float)MoreMath.ReverseAngle(
+                case MapYaw.Centripetal:
+                    MapViewYawValue = (float)MoreMath.ReverseAngle(
                         Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset));
                     break;
-                case MapAngle.Custom:
+                case MapYaw.Custom:
                     PositionAngle posAngle = PositionAngle.FromString(
                         Config.MapGui.textBoxMapControllersAngleCustom.LastSubmittedText);
                     if (posAngle != null)
                     {
-                        MapViewAngleValue = (float)posAngle.Angle;
+                        MapViewYawValue = (float)posAngle.Angle;
                         break;
                     }
-                    MapViewAngleValue = ParsingUtilities.ParseFloatNullable(
+                    MapViewYawValue = ParsingUtilities.ParseFloatNullable(
                         Config.MapGui.textBoxMapControllersAngleCustom.LastSubmittedText)
-                        ?? DEFAULT_MAP_VIEW_ANGLE_VALUE;
+                        ?? DEFAULT_MAP_VIEW_YAW_VALUE;
                     break;
             }
 
-            if (MapViewAngle != MapAngle.Custom)
+            if (MapViewYaw != MapYaw.Custom)
             {
-                Config.MapGui.textBoxMapControllersAngleCustom.SubmitTextLoosely(MapViewAngleValue.ToString());
+                Config.MapGui.textBoxMapControllersAngleCustom.SubmitTextLoosely(MapViewYawValue.ToString());
             }
         }
 
@@ -360,7 +353,7 @@ namespace STROOP.Map
             float xOffset, yOffset, zOffset;
             if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
             {
-                double angleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewAngleValue);
+                double angleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
                 xOffset = (float)(
                     Math.Sin(angleRadians) * -1 * depthSign * parsed.Value +
                     Math.Cos(angleRadians) * -1 * horizontalSign * parsed.Value);
@@ -375,7 +368,7 @@ namespace STROOP.Map
                 yOffset = 0;
                 zOffset = -1 * verticalSign * parsed.Value;
                 (xOffset, zOffset) = ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
-                    xOffset, zOffset, 0, 0, Config.MapGraphics.MapViewAngleValue);
+                    xOffset, zOffset, 0, 0, Config.MapGraphics.MapViewYawValue);
             }
             float multiplier = MapViewCenterChangeByPixels ? 1 / MapViewScaleValue : 1;
             float newCenterXValue = MapViewCenterXValue + xOffset * multiplier;
@@ -389,7 +382,7 @@ namespace STROOP.Map
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
             Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
-            float newAngleValue = MapViewAngleValue + sign * parsed.Value;
+            float newAngleValue = MapViewYawValue + sign * parsed.Value;
             newAngleValue = (float)MoreMath.NormalizeAngleDouble(newAngleValue);
             Config.MapGui.textBoxMapControllersAngleCustom.SubmitText(newAngleValue.ToString());
         }
@@ -453,7 +446,7 @@ namespace STROOP.Map
                     _isRotating = true;
                     _rotateStartMouseX = e.X;
                     _rotateStartMouseY = e.Y;
-                    _rotateStartAngle = MapViewAngleValue;
+                    _rotateStartAngle = MapViewYawValue;
                     break;
             }
         }
@@ -499,7 +492,7 @@ namespace STROOP.Map
                 if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
                 {
                     newCenterY = _translateStartCenterY + unitDiffY;
-                    switch (MapViewAngleValue)
+                    switch (MapViewYawValue)
                     {
                         case 0:
                             newCenterX = _translateStartCenterX + unitDiffX;
@@ -520,7 +513,7 @@ namespace STROOP.Map
                         default:
                             (float rotatedX, float rotatedY) = ((float, float))
                                 MoreMath.RotatePointAboutPointAnAngularDistance(
-                                    unitDiffX, 0, 0, 0, MapViewAngleValue);
+                                    unitDiffX, 0, 0, 0, MapViewYawValue);
                             newCenterX = _translateStartCenterX - rotatedX;
                             newCenterZ = _translateStartCenterZ - rotatedY;
                             break;
@@ -530,7 +523,7 @@ namespace STROOP.Map
                 {
                     (float rotatedX, float rotatedY) = ((float, float))
                         MoreMath.RotatePointAboutPointAnAngularDistance(
-                            unitDiffX, unitDiffY, 0, 0, MapViewAngleValue);
+                            unitDiffX, unitDiffY, 0, 0, MapViewYawValue);
                     newCenterX = _translateStartCenterX - rotatedX;
                     newCenterY = _translateStartCenterY;
                     newCenterZ = _translateStartCenterZ - rotatedY;

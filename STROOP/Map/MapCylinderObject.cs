@@ -32,7 +32,7 @@ namespace STROOP.Map
         {
             List<List<(float x, float y, float z)>> vertexLists = Get3DDimensions().ConvertAll(dimension =>
             {
-                switch (Config.MapGraphics.MapViewAngleValue)
+                switch (Config.MapGraphics.MapViewYawValue)
                 {
                     case 0:
                     case 32768:
@@ -53,7 +53,7 @@ namespace STROOP.Map
                             (dimension.centerX, dimension.maxY, dimension.centerZ - dimension.radius),
                         };
                     default:
-                        double sideAngle = MoreMath.RotateAngleCW(Config.MapGraphics.MapViewAngleValue, 16384);
+                        double sideAngle = MoreMath.RotateAngleCW(Config.MapGraphics.MapViewYawValue, 16384);
                         (float sideDiffX, float sideDiffZ) = ((float, float))MoreMath.GetComponentsFromVector(dimension.radius, sideAngle);
                         return new List<(float x, float y, float z)>()
                         {

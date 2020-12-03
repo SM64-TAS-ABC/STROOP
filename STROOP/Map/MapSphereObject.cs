@@ -42,7 +42,7 @@ namespace STROOP.Map
         {
             List<(float centerX, float centerZ, float radius)> dimensionList = Get3DDimensions().ConvertAll(dimension =>
             {
-                switch (Config.MapGraphics.MapViewAngleValue)
+                switch (Config.MapGraphics.MapViewYawValue)
                 {
                     case 0:
                     case 32768:
@@ -70,7 +70,7 @@ namespace STROOP.Map
                         {
                             float aDiff = (float)MoreMath.GetPlaneDistanceToPoint(
                                 Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                                Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewAngleValue,
+                                Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue,
                                 dimension.centerX, dimension.centerY, dimension.centerZ);
                             float bDistSquared = dimension.radius3D * dimension.radius3D - aDiff * aDiff;
                             float bDist = bDistSquared >= 0 ? (float)Math.Sqrt(bDistSquared) : 0;

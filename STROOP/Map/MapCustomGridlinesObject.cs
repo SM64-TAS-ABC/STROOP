@@ -109,7 +109,7 @@ namespace STROOP.Map
             int zMaxMultiple = Math.Min((int)((viewZMax - gridlineMin) / increment) + 1, (int)size);
             int numZLines = zMaxMultiple - zMinMultiple + 1;
 
-            switch (Config.MapGraphics.MapViewAngleValue)
+            switch (Config.MapGraphics.MapViewYawValue)
             {
                 case 0:
                 case 32768:

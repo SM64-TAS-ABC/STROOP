@@ -129,7 +129,7 @@ namespace STROOP.Map
                         int yMax = ((((int)Config.MapGraphics.MapViewYMax) / 65536) + 1) * 65536;
                         int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
                         int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
-                        switch (Config.MapGraphics.MapViewAngleValue)
+                        switch (Config.MapGraphics.MapViewYawValue)
                         {
                             case 0:
                             case 32768:
@@ -177,7 +177,7 @@ namespace STROOP.Map
                         int yMax = ((((int)Config.MapGraphics.MapViewYMax) / 65536) + 1) * 65536 + 32768;
                         int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536 - 32768;
                         int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536 + 32768;
-                        switch (Config.MapGraphics.MapViewAngleValue)
+                        switch (Config.MapGraphics.MapViewYawValue)
                         {
                             case 0:
                             case 32768:
@@ -225,7 +225,7 @@ namespace STROOP.Map
                         int yMax = ((((int)Config.MapGraphics.MapViewYMax) / 65536) + 1) * 65536;
                         int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
                         int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
-                        switch (Config.MapGraphics.MapViewAngleValue)
+                        switch (Config.MapGraphics.MapViewYawValue)
                         {
                             case 0:
                             case 32768:

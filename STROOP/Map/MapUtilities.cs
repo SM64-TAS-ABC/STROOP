@@ -49,7 +49,7 @@ namespace STROOP.Map
                     zOffset,
                     0,
                     0,
-                    -1 * Config.MapGraphics.MapViewAngleValue);
+                    -1 * Config.MapGraphics.MapViewYawValue);
             float xOffsetPixels = xOffsetRotated * Config.MapGraphics.MapViewScaleValue;
             float zOffsetPixels = zOffsetRotated * Config.MapGraphics.MapViewScaleValue;
             float centerX = Config.MapGui.GLControlMap2D.Width / 2 + xOffsetPixels;
@@ -70,7 +70,7 @@ namespace STROOP.Map
                     zOffsetScaled,
                     0,
                     0,
-                    Config.MapGraphics.MapViewAngleValue);
+                    Config.MapGraphics.MapViewYawValue);
             float centerX = xOffsetScaledRotated + Config.MapGraphics.MapViewCenterXValue;
             float centerZ = zOffsetScaledRotated + Config.MapGraphics.MapViewCenterZValue;
             return (centerX, centerZ);
@@ -84,7 +84,7 @@ namespace STROOP.Map
             float xOffset = x - Config.MapGraphics.MapViewCenterXValue;
             float yOffset = y - Config.MapGraphics.MapViewCenterYValue;
             float zOffset = z - Config.MapGraphics.MapViewCenterZValue;
-            double angleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewAngleValue);
+            double angleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
             float hOffset = (float)(Math.Sin(angleRadians) * zOffset - Math.Cos(angleRadians) * xOffset);
             float vOffset = -1 * yOffset;
             float hOffsetPixels = hOffset * Config.MapGraphics.MapViewScaleValue;
@@ -104,7 +104,7 @@ namespace STROOP.Map
         /** Takes in in-game angle, outputs control angle. */
         public static float ConvertAngleForControl(double angle)
         {
-            angle += 32768 - Config.MapGraphics.MapViewAngleValue;
+            angle += 32768 - Config.MapGraphics.MapViewYawValue;
             if (double.IsNaN(angle)) angle = 0;
             return (float)MoreMath.AngleUnitsToDegrees(angle);
         }
@@ -332,7 +332,7 @@ namespace STROOP.Map
             double uphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(tri);
             double pushAngle = MoreMath.ReverseAngle(uphillAngle);
 
-            switch (Config.MapGraphics.MapViewAngleValue)
+            switch (Config.MapGraphics.MapViewYawValue)
             {
                 case 0:
                 case 32768:
@@ -418,15 +418,15 @@ namespace STROOP.Map
                     {
                         (float pointAX, float pointAY, float pointAZ) = GetOnLine(
                             Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewAngleValue,
+                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue,
                             tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
                         (float pointBX, float pointBY, float pointBZ) = GetOnLine(
                             Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewAngleValue,
+                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue,
                             tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
                         (float pointCX, float pointCY, float pointCZ) = GetOnLine(
                             Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewAngleValue,
+                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue,
                             tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
 
                         List<(float x, float y, float z)> points = new List<(float x, float y, float z)>();

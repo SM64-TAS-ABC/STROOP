@@ -68,7 +68,7 @@ namespace STROOP.Map
             int zMin = (int)Config.MapGraphics.MapViewZMin - 1;
             int zMax = (int)Config.MapGraphics.MapViewZMax + 1;
 
-            switch (Config.MapGraphics.MapViewAngleValue)
+            switch (Config.MapGraphics.MapViewYawValue)
             {
                 case 0:
                 case 32768:
