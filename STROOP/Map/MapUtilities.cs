@@ -86,7 +86,23 @@ namespace STROOP.Map
             float zOffset = z - Config.MapGraphics.MapViewCenterZValue;
             double angleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
             float hOffset = (float)(Math.Sin(angleRadians) * zOffset - Math.Cos(angleRadians) * xOffset);
-            float vOffset = -1 * yOffset;
+
+            // TODO(sideviewpitch): fix this
+            double pitchToPoint = (float)MoreMath.GetPitch(
+                Config.MapGraphics.MapViewCenterXValue,
+                Config.MapGraphics.MapViewCenterYValue,
+                Config.MapGraphics.MapViewCenterZValue,
+                xOffset, yOffset, zOffset);
+            double effectivePitch = pitchToPoint + Config.MapGraphics.MapViewPitchValue;
+            double effectivePitchRadians = MoreMath.AngleUnitsToRadians(effectivePitch);
+            double dist = (float)MoreMath.GetDistanceBetween(
+                Config.MapGraphics.MapViewCenterXValue,
+                Config.MapGraphics.MapViewCenterYValue,
+                Config.MapGraphics.MapViewCenterZValue,
+                xOffset, yOffset, zOffset);
+            float vOffset = (float)(-1 * dist * Math.Sin(effectivePitchRadians));
+
+            vOffset = -1 * yOffset;
             float hOffsetPixels = hOffset * Config.MapGraphics.MapViewScaleValue;
             float vOffsetPixels = vOffset * Config.MapGraphics.MapViewScaleValue;
             float centerH = Config.MapGui.GLControlMap2D.Width / 2 + hOffsetPixels;
