@@ -404,7 +404,7 @@ namespace STROOP
             };
 
             // Create managers
-            Config.MapManager = new MapManager(@"Config/Map3DVars.xml");
+            Config.MapManager = new MapManager(@"Config/MapVars.xml");
 
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
