@@ -37,7 +37,7 @@ namespace STROOP.Managers
         }
 
         public MapManager(string varFilePath)
-            : base(varFilePath, Config.MapGui.watchVariablePanelMap3DVars)
+            : base(varFilePath, Config.MapGui.watchVariablePanelMapVars)
         {
         }
 

@@ -327,7 +327,7 @@ namespace STROOP
                 labelMapDataIdValues = labelMapDataIdValues,
                 labelMapDataYNormValue = labelMapDataYNormValue,
 
-                watchVariablePanelMap3DVars = watchVariablePanelMap3DVars,
+                watchVariablePanelMapVars = watchVariablePanelMapVars,
 
                 groupBoxMapCameraPosition = groupBoxMapCameraPosition,
                 groupBoxMapFocusPosition = groupBoxMapFocusPosition,

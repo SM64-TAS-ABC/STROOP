@@ -825,8 +825,8 @@ namespace STROOP
             this.labelMapDataMapSubName = new System.Windows.Forms.Label();
             this.labelMapDataMapName = new System.Windows.Forms.Label();
             this.labelMapDataPuCoordinates = new System.Windows.Forms.Label();
-            this.tabPageMap3DVars = new System.Windows.Forms.TabPage();
-            this.watchVariablePanelMap3DVars = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.tabPageMapVars = new System.Windows.Forms.TabPage();
+            this.watchVariablePanelMapVars = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageMap3DControllers = new System.Windows.Forms.TabPage();
             this.textBoxMapFov = new STROOP.BetterTextbox();
             this.labelMapFov = new System.Windows.Forms.Label();
@@ -1903,7 +1903,7 @@ namespace STROOP
             this.groupBoxMapControllersCenter.SuspendLayout();
             this.groupBoxMapControllersScale.SuspendLayout();
             this.tabPageMapData.SuspendLayout();
-            this.tabPageMap3DVars.SuspendLayout();
+            this.tabPageMapVars.SuspendLayout();
             this.tabPageMap3DControllers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapFov)).BeginInit();
             this.groupBoxMapCameraFocus.SuspendLayout();
@@ -10731,7 +10731,7 @@ namespace STROOP
             this.tabControlMap.Controls.Add(this.tabPageMapOptions);
             this.tabControlMap.Controls.Add(this.tabPageMapControllers);
             this.tabControlMap.Controls.Add(this.tabPageMapData);
-            this.tabControlMap.Controls.Add(this.tabPageMap3DVars);
+            this.tabControlMap.Controls.Add(this.tabPageMapVars);
             this.tabControlMap.Controls.Add(this.tabPageMap3DControllers);
             this.tabControlMap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlMap.Location = new System.Drawing.Point(0, 0);
@@ -11634,29 +11634,29 @@ namespace STROOP
             this.labelMapDataPuCoordinates.TabIndex = 41;
             this.labelMapDataPuCoordinates.Text = "PU [X:Y:Z]:";
             // 
-            // tabPageMap3DVars
+            // tabPageMapVars
             // 
-            this.tabPageMap3DVars.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageMap3DVars.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap3DVars.Controls.Add(this.watchVariablePanelMap3DVars);
-            this.tabPageMap3DVars.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMap3DVars.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageMap3DVars.Name = "tabPageMap3DVars";
-            this.tabPageMap3DVars.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageMap3DVars.Size = new System.Drawing.Size(347, 292);
-            this.tabPageMap3DVars.TabIndex = 4;
-            this.tabPageMap3DVars.Text = "3D Vars";
+            this.tabPageMapVars.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMapVars.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMapVars.Controls.Add(this.watchVariablePanelMapVars);
+            this.tabPageMapVars.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMapVars.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMapVars.Name = "tabPageMapVars";
+            this.tabPageMapVars.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPageMapVars.Size = new System.Drawing.Size(347, 292);
+            this.tabPageMapVars.TabIndex = 4;
+            this.tabPageMapVars.Text = "Vars";
             // 
-            // watchVariablePanelMap3DVars
+            // watchVariablePanelMapVars
             // 
-            this.watchVariablePanelMap3DVars.AutoScroll = true;
-            this.watchVariablePanelMap3DVars.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelMap3DVars.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelMap3DVars.Location = new System.Drawing.Point(2, 2);
-            this.watchVariablePanelMap3DVars.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelMap3DVars.Name = "watchVariablePanelMap3DVars";
-            this.watchVariablePanelMap3DVars.Size = new System.Drawing.Size(341, 286);
-            this.watchVariablePanelMap3DVars.TabIndex = 6;
+            this.watchVariablePanelMapVars.AutoScroll = true;
+            this.watchVariablePanelMapVars.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelMapVars.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelMapVars.Location = new System.Drawing.Point(2, 2);
+            this.watchVariablePanelMapVars.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelMapVars.Name = "watchVariablePanelMapVars";
+            this.watchVariablePanelMapVars.Size = new System.Drawing.Size(341, 286);
+            this.watchVariablePanelMapVars.TabIndex = 6;
             // 
             // tabPageMap3DControllers
             // 
@@ -21449,7 +21449,7 @@ namespace STROOP
             this.groupBoxMapControllersScale.PerformLayout();
             this.tabPageMapData.ResumeLayout(false);
             this.tabPageMapData.PerformLayout();
-            this.tabPageMap3DVars.ResumeLayout(false);
+            this.tabPageMapVars.ResumeLayout(false);
             this.tabPageMap3DControllers.ResumeLayout(false);
             this.tabPageMap3DControllers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapFov)).EndInit();
@@ -23151,8 +23151,8 @@ namespace STROOP
         private CheckBox checkBoxMemoryReaderHex;
         private OpenTK.GLControl glControlMap3D;
         private CheckBox checkBoxMapOptionsEnable3D;
-        private TabPage tabPageMap3DVars;
-        private WatchVariableFlowLayoutPanel watchVariablePanelMap3DVars;
+        private TabPage tabPageMapVars;
+        private WatchVariableFlowLayoutPanel watchVariablePanelMapVars;
         private TabPage tabPageMap3DControllers;
         private GroupBox groupBoxMapCameraFocus;
         private CheckBox checkBoxMapCameraFocusRelative;
