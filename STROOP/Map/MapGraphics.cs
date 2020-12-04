@@ -375,7 +375,7 @@ namespace STROOP.Map
                     Math.Cos(pitchRadians) * verticalSign * parsed.Value +
                     Math.Sin(pitchRadians) * -1 * depthSign * parsed.Value);
                 zOffset = (float)(
-                    Math.Sin(yawRadians) * 1 * horizontalSign * parsed.Value +
+                    Math.Sin(yawRadians) * horizontalSign * parsed.Value +
                     Math.Cos(pitchRadians) * Math.Cos(yawRadians) * -1 * depthSign * parsed.Value +
                     Math.Sin(pitchRadians) * Math.Cos(yawRadians) * -1 * verticalSign * parsed.Value);
             }
@@ -538,33 +538,45 @@ namespace STROOP.Map
                 float newCenterX, newCenterY, newCenterZ;
                 if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
                 {
-                    double pitchRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewPitchValue);
-                    newCenterY = _translateStartCenterY + unitDiffY / (float)Math.Cos(pitchRadians);
-                    switch (MapViewYawValue)
+                    if (MapViewPitchValue == 0 && MapViewYawValue == 0)
                     {
-                        case 0:
-                            newCenterX = _translateStartCenterX + unitDiffX;
-                            newCenterZ = _translateStartCenterZ;
-                            break;
-                        case 16384:
-                            newCenterX = _translateStartCenterX;
-                            newCenterZ = _translateStartCenterZ - unitDiffX;
-                            break;
-                        case 32768:
-                            newCenterX = _translateStartCenterX - unitDiffX;
-                            newCenterZ = _translateStartCenterZ;
-                            break;
-                        case 49152:
-                            newCenterX = _translateStartCenterX;
-                            newCenterZ = _translateStartCenterZ + unitDiffX;
-                            break;
-                        default:
-                            (float rotatedX, float rotatedY) = ((float, float))
-                                MoreMath.RotatePointAboutPointAnAngularDistance(
-                                    unitDiffX, 0, 0, 0, MapViewYawValue);
-                            newCenterX = _translateStartCenterX - rotatedX;
-                            newCenterZ = _translateStartCenterZ - rotatedY;
-                            break;
+                        newCenterX = _translateStartCenterX + unitDiffX;
+                        newCenterY = _translateStartCenterY + unitDiffY;
+                        newCenterZ = _translateStartCenterZ;
+                    }
+                    else if (MapViewPitchValue == 0 && MapViewYawValue == 16384)
+                    {
+                        newCenterX = _translateStartCenterX;
+                        newCenterY = _translateStartCenterY + unitDiffY;
+                        newCenterZ = _translateStartCenterZ - unitDiffX;
+                    }
+                    else if (MapViewPitchValue == 0 && MapViewYawValue == 32768)
+                    {
+                        newCenterX = _translateStartCenterX - unitDiffX;
+                        newCenterY = _translateStartCenterY + unitDiffY;
+                        newCenterZ = _translateStartCenterZ;
+                    }
+                    else if (MapViewPitchValue == 0 && MapViewYawValue == 49152)
+                    {
+                        newCenterX = _translateStartCenterX;
+                        newCenterY = _translateStartCenterY + unitDiffY;
+                        newCenterZ = _translateStartCenterZ + unitDiffX;
+                    }
+                    else
+                    {
+                        double yawRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
+                        double pitchRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewPitchValue);
+                        float xOffset = (float)(
+                            Math.Cos(yawRadians) * unitDiffX +
+                            Math.Sin(pitchRadians) * -1 * Math.Sin(yawRadians) * unitDiffY);
+                        float yOffset = (float)(
+                            Math.Cos(pitchRadians) * unitDiffY);
+                        float zOffset = (float)(
+                            Math.Sin(yawRadians) * -1 * unitDiffX +
+                            Math.Sin(pitchRadians) * -1 * Math.Cos(yawRadians) * unitDiffY);
+                        newCenterX = _translateStartCenterX + xOffset;
+                        newCenterY = _translateStartCenterY + yOffset;
+                        newCenterZ = _translateStartCenterZ + zOffset;
                     }
                 }
                 else
