@@ -376,7 +376,7 @@ namespace STROOP.Map
             else
             {
                 xOffset = horizontalSign * parsed.Value;
-                yOffset = 0;
+                yOffset = depthSign * parsed.Value;
                 zOffset = -1 * verticalSign * parsed.Value;
                 (xOffset, zOffset) = ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
                     xOffset, zOffset, 0, 0, Config.MapGraphics.MapViewYawValue);
