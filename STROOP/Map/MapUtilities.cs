@@ -357,136 +357,135 @@ namespace STROOP.Map
             double uphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(tri);
             double pushAngle = MoreMath.ReverseAngle(uphillAngle);
 
-            switch (Config.MapGraphics.MapViewYawValue)
+            if (Config.MapGraphics.MapViewPitchValue == 0 &&
+                (Config.MapGraphics.MapViewYawValue == 0 ||
+                Config.MapGraphics.MapViewYawValue == 32768))
             {
-                case 0:
-                case 32768:
+                (float pointAX, float pointAY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
+                (float pointBX, float pointBY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
+                (float pointCX, float pointCY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+
+                List<(float x, float y)> points = new List<(float x, float y)>();
+                if (!float.IsNaN(pointAX) && !float.IsNaN(pointAY)) points.Add((pointAX, pointAY));
+                if (!float.IsNaN(pointBX) && !float.IsNaN(pointBY)) points.Add((pointBX, pointBY));
+                if (!float.IsNaN(pointCX) && !float.IsNaN(pointCY)) points.Add((pointCX, pointCY));
+
+                if (points.Count == 3)
+                {
+                    double distAB = MoreMath.GetDistanceBetween(pointAX, pointAY, pointBX, pointBY);
+                    double distAC = MoreMath.GetDistanceBetween(pointAX, pointAY, pointCX, pointCY);
+                    double distBC = MoreMath.GetDistanceBetween(pointBX, pointBY, pointCX, pointCY);
+                    if (distAB >= distAC && distAB >= distBC)
                     {
-                        (float pointAX, float pointAY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
-                        (float pointBX, float pointBY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
-                        (float pointCX, float pointCY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
-
-                        List<(float x, float y)> points = new List<(float x, float y)>();
-                        if (!float.IsNaN(pointAX) && !float.IsNaN(pointAY)) points.Add((pointAX, pointAY));
-                        if (!float.IsNaN(pointBX) && !float.IsNaN(pointBY)) points.Add((pointBX, pointBY));
-                        if (!float.IsNaN(pointCX) && !float.IsNaN(pointCY)) points.Add((pointCX, pointCY));
-
-                        if (points.Count == 3)
-                        {
-                            double distAB = MoreMath.GetDistanceBetween(pointAX, pointAY, pointBX, pointBY);
-                            double distAC = MoreMath.GetDistanceBetween(pointAX, pointAY, pointCX, pointCY);
-                            double distBC = MoreMath.GetDistanceBetween(pointBX, pointBY, pointCX, pointCY);
-                            if (distAB >= distAC && distAB >= distBC)
-                            {
-                                points.RemoveAt(2); // AB is biggest, so remove C
-                            }
-                            else if (distAC >= distBC)
-                            {
-                                points.RemoveAt(1); // AC is biggest, so remove B
-                            }
-                            else
-                            {
-                                points.RemoveAt(0); // BC is biggest, so remove A
-                            }
-                        }
-
-                        if (points.Count == 2)
-                        {
-                            return (points[0].x, points[0].y, Config.MapGraphics.MapViewCenterZValue,
-                                points[1].x, points[1].y, Config.MapGraphics.MapViewCenterZValue,
-                                tri.Classification, tri.XProjection, pushAngle);
-                        }
-
-                        return null;
+                        points.RemoveAt(2); // AB is biggest, so remove C
                     }
-                case 16384:
-                case 49152:
+                    else if (distAC >= distBC)
                     {
-                        (float pointAY, float pointAZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
-                        (float pointBY, float pointBZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
-                        (float pointCY, float pointCZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
-
-                        List<(float y, float z)> points = new List<(float y, float z)>();
-                        if (!float.IsNaN(pointAY) && !float.IsNaN(pointAZ)) points.Add((pointAY, pointAZ));
-                        if (!float.IsNaN(pointBY) && !float.IsNaN(pointBZ)) points.Add((pointBY, pointBZ));
-                        if (!float.IsNaN(pointCY) && !float.IsNaN(pointCZ)) points.Add((pointCY, pointCZ));
-
-                        if (points.Count == 3)
-                        {
-                            double distAB = MoreMath.GetDistanceBetween(pointAY, pointAZ, pointBY, pointBZ);
-                            double distAC = MoreMath.GetDistanceBetween(pointAY, pointAZ, pointCY, pointCZ);
-                            double distBC = MoreMath.GetDistanceBetween(pointBY, pointBZ, pointCY, pointCZ);
-                            if (distAB >= distAC && distAB >= distBC)
-                            {
-                                points.RemoveAt(2); // AB is biggest, so remove C
-                            }
-                            else if (distAC >= distBC)
-                            {
-                                points.RemoveAt(1); // AC is biggest, so remove B
-                            }
-                            else
-                            {
-                                points.RemoveAt(0); // BC is biggest, so remove A
-                            }
-                        }
-
-                        if (points.Count == 2)
-                        {
-                            return (Config.MapGraphics.MapViewCenterXValue, points[0].y, points[0].z,
-                                Config.MapGraphics.MapViewCenterXValue, points[1].y, points[1].z,
-                                tri.Classification, tri.XProjection, pushAngle);
-                        }
-
-                        return null;
+                        points.RemoveAt(1); // AC is biggest, so remove B
                     }
-                default:
+                    else
                     {
-                        (float pointAX, float pointAY, float pointAZ) = GetOnLine(
-                            Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
-                            tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
-                        (float pointBX, float pointBY, float pointBZ) = GetOnLine(
-                            Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
-                            tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
-                        (float pointCX, float pointCY, float pointCZ) = GetOnLine(
-                            Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                            Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
-                            tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
-
-                        List<(float x, float y, float z)> points = new List<(float x, float y, float z)>();
-                        if (!float.IsNaN(pointAX) && !float.IsNaN(pointAY) && !float.IsNaN(pointAZ)) points.Add((pointAX, pointAY, pointAZ));
-                        if (!float.IsNaN(pointBX) && !float.IsNaN(pointBY) && !float.IsNaN(pointBZ)) points.Add((pointBX, pointBY, pointBZ));
-                        if (!float.IsNaN(pointCX) && !float.IsNaN(pointCY) && !float.IsNaN(pointCZ)) points.Add((pointCX, pointCY, pointCZ));
-
-                        if (points.Count == 3)
-                        {
-                            double distAB = MoreMath.GetDistanceBetween(pointAX, pointAY, pointAZ, pointBX, pointBY, pointBZ);
-                            double distAC = MoreMath.GetDistanceBetween(pointAX, pointAY, pointAZ, pointCX, pointCY, pointCZ);
-                            double distBC = MoreMath.GetDistanceBetween(pointBX, pointBY, pointBZ, pointCX, pointCY, pointCZ);
-                            if (distAB >= distAC && distAB >= distBC)
-                            {
-                                points.RemoveAt(2); // AB is biggest, so remove C
-                            }
-                            else if (distAC >= distBC)
-                            {
-                                points.RemoveAt(1); // AC is biggest, so remove B
-                            }
-                            else
-                            {
-                                points.RemoveAt(0); // BC is biggest, so remove A
-                            }
-                        }
-
-                        if (points.Count == 2)
-                        {
-                            return (points[0].x, points[0].y, points[0].z,
-                                points[1].x, points[1].y, points[1].z,
-                                tri.Classification, tri.XProjection, pushAngle);
-                        }
-
-                        return null;
+                        points.RemoveAt(0); // BC is biggest, so remove A
                     }
+                }
+
+                if (points.Count == 2)
+                {
+                    return (points[0].x, points[0].y, Config.MapGraphics.MapViewCenterZValue,
+                        points[1].x, points[1].y, Config.MapGraphics.MapViewCenterZValue,
+                        tri.Classification, tri.XProjection, pushAngle);
+                }
+
+                return null;
+            }
+            else if (Config.MapGraphics.MapViewPitchValue == 0 &&
+               (Config.MapGraphics.MapViewYawValue == 16384 ||
+               Config.MapGraphics.MapViewYawValue == 49152))
+            {
+                (float pointAY, float pointAZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
+                (float pointBY, float pointBZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
+                (float pointCY, float pointCZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+
+                List<(float y, float z)> points = new List<(float y, float z)>();
+                if (!float.IsNaN(pointAY) && !float.IsNaN(pointAZ)) points.Add((pointAY, pointAZ));
+                if (!float.IsNaN(pointBY) && !float.IsNaN(pointBZ)) points.Add((pointBY, pointBZ));
+                if (!float.IsNaN(pointCY) && !float.IsNaN(pointCZ)) points.Add((pointCY, pointCZ));
+
+                if (points.Count == 3)
+                {
+                    double distAB = MoreMath.GetDistanceBetween(pointAY, pointAZ, pointBY, pointBZ);
+                    double distAC = MoreMath.GetDistanceBetween(pointAY, pointAZ, pointCY, pointCZ);
+                    double distBC = MoreMath.GetDistanceBetween(pointBY, pointBZ, pointCY, pointCZ);
+                    if (distAB >= distAC && distAB >= distBC)
+                    {
+                        points.RemoveAt(2); // AB is biggest, so remove C
+                    }
+                    else if (distAC >= distBC)
+                    {
+                        points.RemoveAt(1); // AC is biggest, so remove B
+                    }
+                    else
+                    {
+                        points.RemoveAt(0); // BC is biggest, so remove A
+                    }
+                }
+
+                if (points.Count == 2)
+                {
+                    return (Config.MapGraphics.MapViewCenterXValue, points[0].y, points[0].z,
+                        Config.MapGraphics.MapViewCenterXValue, points[1].y, points[1].z,
+                        tri.Classification, tri.XProjection, pushAngle);
+                }
+
+                return null;
+            }
+            else
+            {
+                (float pointAX, float pointAY, float pointAZ) = GetOnLine(
+                    Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
+                    Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
+                    tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
+                (float pointBX, float pointBY, float pointBZ) = GetOnLine(
+                    Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
+                    Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
+                    tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
+                (float pointCX, float pointCY, float pointCZ) = GetOnLine(
+                    Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
+                    Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
+                    tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+
+                List<(float x, float y, float z)> points = new List<(float x, float y, float z)>();
+                if (!float.IsNaN(pointAX) && !float.IsNaN(pointAY) && !float.IsNaN(pointAZ)) points.Add((pointAX, pointAY, pointAZ));
+                if (!float.IsNaN(pointBX) && !float.IsNaN(pointBY) && !float.IsNaN(pointBZ)) points.Add((pointBX, pointBY, pointBZ));
+                if (!float.IsNaN(pointCX) && !float.IsNaN(pointCY) && !float.IsNaN(pointCZ)) points.Add((pointCX, pointCY, pointCZ));
+
+                if (points.Count == 3)
+                {
+                    double distAB = MoreMath.GetDistanceBetween(pointAX, pointAY, pointAZ, pointBX, pointBY, pointBZ);
+                    double distAC = MoreMath.GetDistanceBetween(pointAX, pointAY, pointAZ, pointCX, pointCY, pointCZ);
+                    double distBC = MoreMath.GetDistanceBetween(pointBX, pointBY, pointBZ, pointCX, pointCY, pointCZ);
+                    if (distAB >= distAC && distAB >= distBC)
+                    {
+                        points.RemoveAt(2); // AB is biggest, so remove C
+                    }
+                    else if (distAC >= distBC)
+                    {
+                        points.RemoveAt(1); // AC is biggest, so remove B
+                    }
+                    else
+                    {
+                        points.RemoveAt(0); // BC is biggest, so remove A
+                    }
+                }
+
+                if (points.Count == 2)
+                {
+                    return (points[0].x, points[0].y, points[0].z,
+                        points[1].x, points[1].y, points[1].z,
+                        tri.Classification, tri.XProjection, pushAngle);
+                }
+
+                return null;
             }
         }
 
