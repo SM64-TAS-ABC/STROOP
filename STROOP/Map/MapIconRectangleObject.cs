@@ -29,7 +29,7 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn2DControlSideView()
+        public override void DrawOn2DControlOrthographicView()
         {
             List<(PointF loc, SizeF size)> dimensions = GetDimensions();
             if (InternalRotates) return;

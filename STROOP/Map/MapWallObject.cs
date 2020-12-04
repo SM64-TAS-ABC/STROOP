@@ -209,7 +209,7 @@ namespace STROOP.Map
             }
         }
 
-        public override float GetWallRelativeHeightForSideView()
+        public override float GetWallRelativeHeightForOrthographicView()
         {
             return _relativeHeight ?? 0;
         }

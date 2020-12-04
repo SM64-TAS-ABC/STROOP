@@ -51,7 +51,7 @@ namespace STROOP.Map
             return vertices;
         }
 
-        protected override List<(float x, float y, float z)> GetVerticesSideView()
+        protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
             // failsafe to prevent filling the whole screen
             if (!MapUtilities.IsAbleToShowUnitPrecision())

@@ -239,7 +239,7 @@ namespace STROOP.Map
                 float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
                 float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                 float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
+                if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
                 {
                     if (MapViewPitchValue == 0 && (MapViewYawValue == 0 || MapViewYawValue == 32768))
                     {
@@ -361,7 +361,7 @@ namespace STROOP.Map
             Config.MapGui.radioButtonMapControllersCenterCustom.Checked = true;
             if (depthSign != 0) Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked = false;
             float xOffset, yOffset, zOffset;
-            if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
+            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
             {
                 double yawRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
                 double pitchRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewPitchValue);
@@ -514,7 +514,7 @@ namespace STROOP.Map
                 float unitDiffX = pixelDiffX / MapViewScaleValue;
                 float unitDiffY = pixelDiffY / MapViewScaleValue;
                 float newCenterX, newCenterY, newCenterZ;
-                if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
+                if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
                 {
                     double pitchRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewPitchValue);
                     newCenterY = _translateStartCenterY + unitDiffY / (float)Math.Cos(pitchRadians);
@@ -559,7 +559,7 @@ namespace STROOP.Map
 
             if (_isRotating)
             {
-                if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
+                if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
                 {
                     int pixelDiffX = e.X - _rotateStartMouseX;
                     int pixelDiffY = e.Y - _rotateStartMouseY;

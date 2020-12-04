@@ -38,7 +38,7 @@ namespace STROOP.Map
 
         protected abstract List<(float centerX, float centerY, float centerZ, float radius3D)> Get3DDimensions();
 
-        public override void DrawOn2DControlSideView()
+        public override void DrawOn2DControlOrthographicView()
         {
             List<(float centerX, float centerZ, float radius)> dimensionList = Get3DDimensions().ConvertAll(dimension =>
             {
@@ -51,7 +51,7 @@ namespace STROOP.Map
                             float xDistSquared = dimension.radius3D * dimension.radius3D - zDiff * zDiff;
                             float xDist = xDistSquared >= 0 ? (float)Math.Sqrt(xDistSquared) : 0;
                             float radius = xDist * Config.MapGraphics.MapViewScaleValue;
-                            (float x, float z) = MapUtilities.ConvertCoordsForControlSideView(
+                            (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
                                 dimension.centerX, dimension.centerY, dimension.centerZ);
                             return (x, z, radius);
                         }
@@ -62,7 +62,7 @@ namespace STROOP.Map
                             float zDistSquared = dimension.radius3D * dimension.radius3D - xDiff * xDiff;
                             float zDist = zDistSquared >= 0 ? (float)Math.Sqrt(zDistSquared) : 0;
                             float radius = zDist * Config.MapGraphics.MapViewScaleValue;
-                            (float x, float z) = MapUtilities.ConvertCoordsForControlSideView(
+                            (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
                                 dimension.centerX, dimension.centerY, dimension.centerZ);
                             return (x, z, radius);
                         }
@@ -75,7 +75,7 @@ namespace STROOP.Map
                             float bDistSquared = dimension.radius3D * dimension.radius3D - aDiff * aDiff;
                             float bDist = bDistSquared >= 0 ? (float)Math.Sqrt(bDistSquared) : 0;
                             float radius = bDist * Config.MapGraphics.MapViewScaleValue;
-                            (float x, float z) = MapUtilities.ConvertCoordsForControlSideView(
+                            (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
                                 dimension.centerX, dimension.centerY, dimension.centerZ);
                             return (x, z, radius);
                         }

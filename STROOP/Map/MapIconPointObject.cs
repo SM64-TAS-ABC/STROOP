@@ -29,10 +29,10 @@ namespace STROOP.Map
             MapUtilities.DrawTexture(TextureId, new PointF(xPosPixels, zPosPixels), size, angleDegrees, Opacity);
         }
 
-        public override void DrawOn2DControlSideView()
+        public override void DrawOn2DControlOrthographicView()
         {
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
-            (float xPosPixels, float yPosPixels) = MapUtilities.ConvertCoordsForControlSideView((float)x, (float)y, (float)z);
+            (float xPosPixels, float yPosPixels) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z);
             float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
             SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size);
             MapUtilities.DrawTexture(TextureId, new PointF(xPosPixels, yPosPixels), size, angleDegrees, Opacity);

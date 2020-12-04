@@ -39,12 +39,12 @@ namespace STROOP.Map
             // do nothing
         }
 
-        public override float GetWallRelativeHeightForSideView()
+        public override float GetWallRelativeHeightForOrthographicView()
         {
             return -30;
         }
 
-        public override Color GetColorForSideView(TriangleClassification classification)
+        public override Color GetColorForOrthographicView(TriangleClassification classification)
         {
             switch (classification)
             {
@@ -59,7 +59,7 @@ namespace STROOP.Map
             }
         }
 
-        public override float GetSizeForSideView(TriangleClassification classification)
+        public override float GetSizeForOrthographicView(TriangleClassification classification)
         {
             switch (classification)
             {
@@ -74,7 +74,7 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn2DControlSideView()
+        public override void DrawOn2DControlOrthographicView()
         {
             if (_isDefaultInstance)
             {
@@ -83,7 +83,7 @@ namespace STROOP.Map
                 _useCrossSection = Config.MapGui.checkBoxMapOptionsEnableCrossSection.Checked;
             }
 
-            base.DrawOn2DControlSideView();
+            base.DrawOn2DControlOrthographicView();
         }
 
         public override void DrawOn3DControl()

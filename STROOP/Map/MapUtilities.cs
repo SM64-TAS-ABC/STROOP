@@ -76,7 +76,7 @@ namespace STROOP.Map
             return (centerX, centerZ);
         }
 
-        public static (float x, float z) ConvertCoordsForControlSideView(float x, float y, float z)
+        public static (float x, float z) ConvertCoordsForControlOrthographicView(float x, float y, float z)
         {
             x = Config.MapGraphics.MapViewEnablePuView ? x : (float)PuUtilities.GetRelativeCoordinate(x);
             y = Config.MapGraphics.MapViewEnablePuView ? y : (float)PuUtilities.GetRelativeCoordinate(y);

@@ -65,14 +65,14 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn2DControlSideView()
+        public override void DrawOn2DControlOrthographicView()
         {
             List<(float x, float y, float z, float angle, int tex)> data = GetData();
             data.Reverse();
             foreach (var dataPoint in data)
             {
                 (float x, float y, float z, float angle, int tex) = dataPoint;
-                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlSideView(x, y, z);
+                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);

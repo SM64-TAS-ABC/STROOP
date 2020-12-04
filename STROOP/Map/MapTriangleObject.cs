@@ -45,7 +45,7 @@ namespace STROOP.Map
             {
                 tris = tris.FindAll(tri => tri.SurfaceType != 0x0A);
             }
-            if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
+            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
             {
                 if (_useCrossSection)
                 {
@@ -77,34 +77,34 @@ namespace STROOP.Map
             return (vertex.x + xOffset, vertex.y + yOffset, vertex.z + zOffset);
         }
 
-        public override void DrawOn2DControlSideView()
+        public override void DrawOn2DControlOrthographicView()
         {
             if (_useCrossSection)
             {
-                DrawOn2DControlSideViewCrossSection();
+                DrawOn2DControlOrthographicViewCrossSection();
             }
             else
             {
-                DrawOn2DControlSideViewTotal();
+                DrawOn2DControlOrthographicViewTotal();
             }
         }
 
-        public virtual float GetWallRelativeHeightForSideView()
+        public virtual float GetWallRelativeHeightForOrthographicView()
         {
             return 0;
         }
 
-        public virtual Color GetColorForSideView(TriangleClassification classification)
+        public virtual Color GetColorForOrthographicView(TriangleClassification classification)
         {
             return Color;
         }
 
-        public virtual float GetSizeForSideView(TriangleClassification classification)
+        public virtual float GetSizeForOrthographicView(TriangleClassification classification)
         {
             return Size;
         }
 
-        public void DrawOn2DControlSideViewCrossSection()
+        public void DrawOn2DControlOrthographicViewCrossSection()
         {
             List<(float x1, float y1, float z1,
                 float x2, float y2, float z2,
@@ -115,15 +115,15 @@ namespace STROOP.Map
 
             List<List<(float x, float y, float z, Color color)>> vertexLists = triData.ConvertAll(data =>
             {
-                Color color = GetColorForSideView(data.classification);
-                float size = GetSizeForSideView(data.classification);
+                Color color = GetColorForOrthographicView(data.classification);
+                float size = GetSizeForOrthographicView(data.classification);
                 switch (data.classification)
                 {
                     case TriangleClassification.Wall:
                         {
                             double pushAngleRadians = MoreMath.AngleUnitsToRadians(data.pushAngle);
                             double mapViewAngleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
-                            float relativeHeight = GetWallRelativeHeightForSideView();
+                            float relativeHeight = GetWallRelativeHeightForOrthographicView();
                             if (data.xProjection)
                             {
                                 float projectionDist = size / (float)Math.Abs(Math.Cos(mapViewAngleRadians - pushAngleRadians + 0.5 * Math.PI));
@@ -190,7 +190,7 @@ namespace STROOP.Map
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                     vertex =>
                     {
-                        (float x, float z) = MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z);
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z);
                         return (x, z, vertex.color);
                     }));
 
@@ -229,12 +229,12 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        public void DrawOn2DControlSideViewTotal()
+        public void DrawOn2DControlOrthographicViewTotal()
         {
             List<List<(float x, float y, float z, Color color)>> vertexLists =
                 GetFilteredTriangles().ConvertAll(tri =>
                 {
-                    Color color = GetColorForSideView(tri.Classification);
+                    Color color = GetColorForOrthographicView(tri.Classification);
                     return tri.Get3DVertices().ConvertAll(vertex => (vertex.x, vertex.y, vertex.z, color));
                 });
 
@@ -242,7 +242,7 @@ namespace STROOP.Map
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                     vertex =>
                     {
-                        (float x, float z) = MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z);
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z);
                         return (x, z, vertex.color);
                     }));
 

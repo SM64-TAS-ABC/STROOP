@@ -83,7 +83,7 @@ namespace STROOP.Map
         public void UpdateControl()
         {
             if (Config.MapGui.checkBoxMapOptionsEnable3D.Checked ||
-                Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
+                Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
             {            
                 _mapObjHitboxHackTris.Update();
             }

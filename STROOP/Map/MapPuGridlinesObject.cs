@@ -115,7 +115,7 @@ namespace STROOP.Map
             }
         }
 
-        protected override List<(float x, float y, float z)> GetVerticesSideView()
+        protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
             switch (_setting)
             {

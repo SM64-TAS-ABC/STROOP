@@ -140,13 +140,13 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        public override void DrawOn2DControlSideView()
+        public override void DrawOn2DControlOrthographicView()
         {
             if (OutlineWidth == 0) return;
 
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<(float x, float z)> veriticesForControl =
-                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z));
+                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);

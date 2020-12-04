@@ -28,7 +28,7 @@ namespace STROOP.Map
 
         protected abstract List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions();
 
-        public override void DrawOn2DControlSideView()
+        public override void DrawOn2DControlOrthographicView()
         {
             List<List<(float x, float y, float z)>> vertexLists = Get3DDimensions().ConvertAll(dimension =>
             {
@@ -67,7 +67,7 @@ namespace STROOP.Map
 
             List<List<(float x, float z)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControlSideView(vertex.x, vertex.y, vertex.z)));
+                    vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z)));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);

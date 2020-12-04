@@ -53,9 +53,9 @@ namespace STROOP.Map
 
         public void DrawOn2DControl()
         {
-            if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
+            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
             {
-                DrawOn2DControlSideView();
+                DrawOn2DControlOrthographicView();
             }
             else
             {
@@ -65,7 +65,7 @@ namespace STROOP.Map
 
         public abstract void DrawOn2DControlTopDownView();
 
-        public virtual void DrawOn2DControlSideView() { } // TODO(sideview): make abstract
+        public virtual void DrawOn2DControlOrthographicView() { } // TODO(orthographicview): make abstract
 
         public abstract void DrawOn3DControl();
 

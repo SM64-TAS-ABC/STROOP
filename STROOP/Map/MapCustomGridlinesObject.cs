@@ -70,7 +70,7 @@ namespace STROOP.Map
             return vertices;
         }
 
-        protected override List<(float x, float y, float z)> GetVerticesSideView()
+        protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
             int gridlineMin = -8192;
             int gridlineMax = 8192;
