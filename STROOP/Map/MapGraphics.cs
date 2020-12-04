@@ -368,12 +368,16 @@ namespace STROOP.Map
                 double yawRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
                 double pitchRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewPitchValue);
                 xOffset = (float)(
-                    Math.Sin(yawRadians) * -1 * depthSign * parsed.Value +
-                    Math.Cos(yawRadians) * -1 * horizontalSign * parsed.Value);
-                yOffset = (float)(1 / Math.Cos(pitchRadians) * verticalSign * parsed.Value);
+                    Math.Cos(yawRadians) * -1 * horizontalSign * parsed.Value +
+                    Math.Cos(pitchRadians) * Math.Sin(yawRadians) * -1 * depthSign * parsed.Value +
+                    Math.Sin(pitchRadians) * Math.Sin(yawRadians) * -1 * verticalSign * parsed.Value);
+                yOffset = (float)(
+                    Math.Cos(pitchRadians) * verticalSign * parsed.Value +
+                    Math.Sin(pitchRadians) * -1 * depthSign * parsed.Value);
                 zOffset = (float)(
                     Math.Sin(yawRadians) * 1 * horizontalSign * parsed.Value +
-                    Math.Cos(yawRadians) * -1 * depthSign * parsed.Value);
+                    Math.Cos(pitchRadians) * Math.Cos(yawRadians) * -1 * depthSign * parsed.Value +
+                    Math.Sin(pitchRadians) * Math.Cos(yawRadians) * -1 * verticalSign * parsed.Value);
             }
             else
             {
