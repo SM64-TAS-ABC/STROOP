@@ -434,6 +434,12 @@ namespace STROOP.Map
             SetAngleTextbox(value, MapViewPitchValue);
         }
 
+        public void SetCustomPitch(object value)
+        {
+            Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
+            SetAngleTextbox(MapViewYawValue, value);
+        }
+
         public void SetCustomAngle(object yaw, object pitch)
         {
             Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;

@@ -563,9 +563,10 @@ namespace STROOP.Managers
                 Config.MapGui.groupBoxMapControllersAngle,
                 new List<string>()
                 {
-                    "Use Mario Angle",
-                    "Use Camera Angle",
-                    "Use Centripetal Angle",
+                    "Use Mario Yaw",
+                    "Use Camera Yaw",
+                    "Use Centripetal Yaw",
+                    "Use 0 Pitch",
                 },
                 new List<Action>()
                 {
@@ -584,6 +585,10 @@ namespace STROOP.Managers
                         ushort centripetalAngle = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset);
                         double centripetalAngleReversed = MoreMath.ReverseAngle(centripetalAngle);
                         Config.MapGraphics.SetCustomYaw(centripetalAngleReversed);
+                    },
+                    () =>
+                    {
+                        Config.MapGraphics.SetCustomPitch(0);
                     },
                 });
 
