@@ -198,9 +198,9 @@ namespace STROOP.Map
                     MapViewCenterZValue = rectangle.Y + rectangle.Height / 2;
                     break;
                 case MapCenter.Origin:
-                    MapViewCenterXValue = 0.5f;
+                    MapViewCenterXValue = 0;
                     MapViewCenterYValue = 0;
-                    MapViewCenterZValue = 0.5f;
+                    MapViewCenterZValue = 0;
                     break;
                 case MapCenter.Mario:
                     MapViewCenterXValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
