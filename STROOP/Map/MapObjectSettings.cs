@@ -8,6 +8,15 @@
         public readonly bool CustomCylinderChangeRelativeMaxY;
         public readonly float CustomCylinderNewRelativeMaxY;
 
+        public readonly bool TriangleChangeWithinDist;
+        public readonly float? TriangleNewWithinDist;
+
+        public readonly bool TriangleChangeWithinCenter;
+        public readonly float? TriangleNewWithinCenter;
+
+        public readonly bool TriangleChangeUseCrossSection;
+        public readonly bool TriangleNewUseCrossSection;
+
         public readonly bool HorizontalTriangleChangeMinHeight;
         public readonly float? HorizontalTriangleNewMinHeight;
 
@@ -59,6 +68,15 @@
             bool customCylinderChangeRelativeMaxY = false,
             float customCylinderNewRelativeMaxY = 0,
 
+            bool triangleChangeWithinDist = false,
+            float? triangleNewWithinDist = null,
+
+            bool triangleChangeWithinCenter = false,
+            float? triangleNewWithinCenter = null,
+
+            bool triangleChangeUseCrossSection = false,
+            bool triangleNewUseCrossSection = false,
+
             bool horizontalTriangleChangeMinHeight = false,
             float? horizontalTriangleNewMinHeight = null,
 
@@ -108,6 +126,15 @@
 
             CustomCylinderChangeRelativeMaxY = customCylinderChangeRelativeMaxY;
             CustomCylinderNewRelativeMaxY = customCylinderNewRelativeMaxY;
+
+            TriangleChangeWithinDist = triangleChangeWithinDist;
+            TriangleNewWithinDist = triangleNewWithinDist;
+
+            TriangleChangeWithinCenter = triangleChangeWithinCenter;
+            TriangleNewWithinCenter = triangleNewWithinCenter;
+
+            TriangleChangeUseCrossSection = triangleChangeUseCrossSection;
+            TriangleNewUseCrossSection = triangleNewUseCrossSection;
 
             HorizontalTriangleChangeMinHeight = horizontalTriangleChangeMinHeight;
             HorizontalTriangleNewMinHeight = horizontalTriangleNewMinHeight;

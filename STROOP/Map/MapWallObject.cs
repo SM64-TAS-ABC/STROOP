@@ -22,7 +22,7 @@ namespace STROOP.Map
         private float? _relativeHeight;
         private float? _absoluteHeight;
 
-        ToolStripMenuItem _itemShowArrows;
+        private ToolStripMenuItem _itemShowArrows;
 
         public MapWallObject()
             : base()

@@ -22,6 +22,8 @@ namespace STROOP.Map
         protected bool _excludeDeathBarriers;
         protected bool _useCrossSection;
 
+        private ToolStripMenuItem _itemUseCrossSection;
+
         public MapTriangleObject()
             : base()
         {
@@ -289,13 +291,17 @@ namespace STROOP.Map
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the vertical distance from the center (default: Mario) within which to show tris.");
                 float? withinDistNullable = ParsingUtilities.ParseFloatNullable(text);
                 if (!withinDistNullable.HasValue) return;
-                _withinDist = withinDistNullable.Value;
+                MapObjectSettings settings = new MapObjectSettings(
+                    triangleChangeWithinDist: true, triangleNewWithinDist: withinDistNullable.Value);
+                GetParentMapTracker().ApplySettings(settings);
             };
 
             ToolStripMenuItem itemClearWithinDist = new ToolStripMenuItem("Clear Within Dist");
             itemClearWithinDist.Click += (sender, e) =>
             {
-                _withinDist = null;
+                MapObjectSettings settings = new MapObjectSettings(
+                    triangleChangeWithinDist: true, triangleNewWithinDist: null);
+                GetParentMapTracker().ApplySettings(settings);
             };
 
             ToolStripMenuItem itemSetWithinCenter = new ToolStripMenuItem("Set Within Center");
@@ -307,20 +313,25 @@ namespace STROOP.Map
                     Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset) :
                     ParsingUtilities.ParseFloatNullable(text);
                 if (!withinCenterNullable.HasValue) return;
-                _withinCenter = withinCenterNullable.Value;
+                MapObjectSettings settings = new MapObjectSettings(
+                    triangleChangeWithinCenter: true, triangleNewWithinCenter: withinCenterNullable.Value);
+                GetParentMapTracker().ApplySettings(settings);
             };
 
             ToolStripMenuItem itemClearWithinCenter = new ToolStripMenuItem("Clear Within Center");
             itemClearWithinCenter.Click += (sender, e) =>
             {
-                _withinCenter = null;
+                MapObjectSettings settings = new MapObjectSettings(
+                    triangleChangeWithinCenter: true, triangleNewWithinCenter: null);
+                GetParentMapTracker().ApplySettings(settings);
             };
 
-            ToolStripMenuItem itemUseCrossSection = new ToolStripMenuItem("Use Cross Section");
-            itemUseCrossSection.Click += (sender, e) =>
+            _itemUseCrossSection = new ToolStripMenuItem("Use Cross Section");
+            _itemUseCrossSection.Click += (sender, e) =>
             {
-                _useCrossSection = !_useCrossSection;
-                itemUseCrossSection.Checked = _useCrossSection;
+                MapObjectSettings settings = new MapObjectSettings(
+                    triangleChangeUseCrossSection: true, triangleNewUseCrossSection: !_useCrossSection);
+                GetParentMapTracker().ApplySettings(settings);
             };
 
             return new List<ToolStripMenuItem>()
@@ -329,8 +340,29 @@ namespace STROOP.Map
                 itemClearWithinDist,
                 itemSetWithinCenter,
                 itemClearWithinCenter,
-                itemUseCrossSection,
+                _itemUseCrossSection,
             };
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.TriangleChangeWithinDist)
+            {
+                _withinDist = settings.TriangleNewWithinDist;
+            }
+
+            if (settings.TriangleChangeWithinCenter)
+            {
+                _withinCenter = settings.TriangleNewWithinCenter;
+            }
+
+            if (settings.TriangleChangeUseCrossSection)
+            {
+                _useCrossSection = settings.TriangleNewUseCrossSection;
+                _itemUseCrossSection.Checked = settings.TriangleNewUseCrossSection;
+            }
         }
 
         public override MapDrawType GetDrawType()
