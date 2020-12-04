@@ -87,22 +87,31 @@ namespace STROOP.Map
             double angleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
             float hOffset = (float)(Math.Sin(angleRadians) * zOffset - Math.Cos(angleRadians) * xOffset);
 
-            // TODO(sideviewpitch): fix this
-            double pitchToPoint = (float)MoreMath.GetPitch(
-                Config.MapGraphics.MapViewCenterXValue,
-                Config.MapGraphics.MapViewCenterYValue,
-                Config.MapGraphics.MapViewCenterZValue,
-                xOffset, yOffset, zOffset);
-            double effectivePitch = pitchToPoint + Config.MapGraphics.MapViewPitchValue;
-            double effectivePitchRadians = MoreMath.AngleUnitsToRadians(effectivePitch);
-            double dist = (float)MoreMath.GetDistanceBetween(
-                Config.MapGraphics.MapViewCenterXValue,
-                Config.MapGraphics.MapViewCenterYValue,
-                Config.MapGraphics.MapViewCenterZValue,
-                xOffset, yOffset, zOffset);
-            float vOffset = (float)(-1 * dist * Math.Sin(effectivePitchRadians));
+            (double x0, double y0, double z0, double t0) =
+                MoreMath.GetPlaneLineIntersection(
+                    Config.MapGraphics.MapViewCenterXValue,
+                    Config.MapGraphics.MapViewCenterYValue,
+                    Config.MapGraphics.MapViewCenterZValue,
+                    Config.MapGraphics.MapViewYawValue,
+                    Config.MapGraphics.MapViewPitchValue,
+                    x, y, z,
+                    Config.MapGraphics.MapViewYawValue,
+                    Config.MapGraphics.MapViewPitchValue);
+            double rightYaw = MoreMath.RotateAngleCW(
+                Config.MapGraphics.MapViewYawValue, 16384);
+            (double x1, double y1, double z1, double t1) =
+                MoreMath.GetPlaneLineIntersection(
+                    x0, y0, z0, rightYaw, 0,
+                    Config.MapGraphics.MapViewCenterXValue,
+                    Config.MapGraphics.MapViewCenterYValue,
+                    Config.MapGraphics.MapViewCenterZValue,
+                    rightYaw, 0);
+            double hDiff = MoreMath.GetDistanceBetween(x1, z1, x0, z0);
+            double yDiff = y1 - y0;
+            double yDiffSign = Math.Sign(yDiff);
+            double vOffsetMagnitude = MoreMath.GetHypotenuse(hDiff, yDiff);
+            float vOffset = (float)(vOffsetMagnitude * yDiffSign);
 
-            vOffset = -1 * yOffset;
             float hOffsetPixels = hOffset * Config.MapGraphics.MapViewScaleValue;
             float vOffsetPixels = vOffset * Config.MapGraphics.MapViewScaleValue;
             float centerH = Config.MapGui.GLControlMap2D.Width / 2 + hOffsetPixels;

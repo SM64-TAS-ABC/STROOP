@@ -998,8 +998,8 @@ namespace STROOP.Utilities
             double x1, double y1, double z1, double x2, double y2, double z2)
         {
             // Ax + By + Cz = D
-            double yawRadians = MoreMath.AngleUnitsToRadians(planeYaw);
-            double pitchRadians = MoreMath.AngleUnitsToRadians(planePitch);
+            double yawRadians = AngleUnitsToRadians(planeYaw);
+            double pitchRadians = AngleUnitsToRadians(planePitch);
             double A = Math.Sin(yawRadians) * Math.Cos(pitchRadians);
             double B = Math.Sin(pitchRadians);
             double C = Math.Cos(yawRadians) * Math.Cos(pitchRadians);
@@ -1011,6 +1011,34 @@ namespace STROOP.Utilities
             double xDiff = x2 - x1;
             double yDiff = y2 - y1;
             double zDiff = z2 - z1;
+
+            // A * x + B * y + C * z = D
+            // A * (x1 + xDiff * t) + B * (y1 + yDiff * t) + C * (z1 + zDiff * t) = D
+            // A * x1 + A * xDiff * t + B * y1 + B * yDiff * t + C * z1 + C * zDiff * t = D
+            // A * xDiff * t + B * yDiff * t + C * zDiff * t = D - (A * x1) - (B * y1) - (C * z1)
+            // t * (A * xDiff + B * yDiff + C * zDiff) = D - (A * x1) - (B * y1) - (C * z1)
+            // t = (D - (A * x1) - (B * y1) - (C * z1)) / (A * xDiff + B * yDiff + C * zDiff)
+            double t = (D - (A * x1) - (B * y1) - (C * z1)) / (A * xDiff + B * yDiff + C * zDiff);
+
+            return (x1 + xDiff * t, y1 + yDiff * t, z1 + zDiff * t, t);
+        }
+
+        public static (double x, double y, double z, double t) GetPlaneLineIntersection(
+            double planeX, double planeY, double planeZ, double planeYaw, double planePitch,
+            double x1, double y1, double z1, double lineYaw, double linePitch)
+        {
+            // Ax + By + Cz = D
+            double yawRadians = AngleUnitsToRadians(planeYaw);
+            double pitchRadians = AngleUnitsToRadians(planePitch);
+            double A = Math.Sin(yawRadians) * Math.Cos(pitchRadians);
+            double B = Math.Sin(pitchRadians);
+            double C = Math.Cos(yawRadians) * Math.Cos(pitchRadians);
+            double D = A * planeX + B * planeY + C * planeZ;
+
+            // x = x1 + xDiff * t
+            // y = y1 + yDiff * t
+            // z = z1 + zDiff * t
+            (double xDiff, double yDiff, double zDiff) = SphericalToEuler_AngleUnits(1, lineYaw, linePitch);
 
             // A * x + B * y + C * z = D
             // A * (x1 + xDiff * t) + B * (y1 + yDiff * t) + C * (z1 + zDiff * t) = D
