@@ -416,6 +416,12 @@ namespace STROOP.Map
             SetAngleTextbox(value, MapViewPitchValue);
         }
 
+        public void SetCustomAngle(object yaw, object pitch)
+        {
+            Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
+            SetAngleTextbox(yaw, pitch);
+        }
+
         private void SetAngleTextbox(object yawValue, object pitchValue)
         {
             List<object> values = new List<object> { yawValue, pitchValue };
@@ -432,7 +438,8 @@ namespace STROOP.Map
         private bool _isRotating = false;
         private int _rotateStartMouseX = 0;
         private int _rotateStartMouseY = 0;
-        private float _rotateStartAngle = 0;
+        private float _rotateStartYaw = 0;
+        private float _rotateStartPitch = 0;
 
         private void OnMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -457,7 +464,8 @@ namespace STROOP.Map
                     _isRotating = true;
                     _rotateStartMouseX = e.X;
                     _rotateStartMouseY = e.Y;
-                    _rotateStartAngle = MapViewYawValue;
+                    _rotateStartYaw = MapViewYawValue;
+                    _rotateStartPitch = MapViewPitchValue;
                     break;
             }
         }
@@ -544,10 +552,28 @@ namespace STROOP.Map
 
             if (_isRotating)
             {
-                float angleToMouse = (float)MoreMath.AngleTo_AngleUnits(
-                    _rotateStartMouseX, _rotateStartMouseY, e.X, e.Y) * MapUtilities.MaybeReverse(-1) + 32768;
-                float newAngle = _rotateStartAngle + angleToMouse;
-                SetCustomYaw(newAngle);
+                if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
+                {
+                    int pixelDiffX = e.X - _rotateStartMouseX;
+                    int pixelDiffY = e.Y - _rotateStartMouseY;
+                    pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
+                    pixelDiffY = MapUtilities.MaybeReverse(pixelDiffY);
+                    float pixelsInFullRotation = 512;
+                    float yawDiff = pixelDiffX * (65536 / pixelsInFullRotation);
+                    float pitchDiff = pixelDiffY * (65536 / pixelsInFullRotation);
+                    float newYaw = _rotateStartYaw - yawDiff;
+                    float newPitch = _rotateStartPitch - pitchDiff;
+                    newYaw = (float)MoreMath.NormalizeAngleDouble(newYaw);
+                    newPitch = (float)MoreMath.Clamp(newPitch, -16384, 16384);
+                    SetCustomAngle(newYaw, newPitch);
+                }
+                else
+                {
+                    float angleToMouse = (float)MoreMath.AngleTo_AngleUnits(
+                        _rotateStartMouseX, _rotateStartMouseY, e.X, e.Y) * MapUtilities.MaybeReverse(-1) + 32768;
+                    float newAngle = _rotateStartYaw + angleToMouse;
+                    SetCustomYaw(newAngle);
+                }
             }
         }
 
