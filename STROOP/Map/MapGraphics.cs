@@ -617,6 +617,7 @@ namespace STROOP.Map
             Config.MapGui.radioButtonMapControllersScaleCourseDefault.Checked = true;
             Config.MapGui.radioButtonMapControllersCenterBestFit.Checked = true;
             Config.MapGui.radioButtonMapControllersAngle32768.Checked = true;
+            MapViewPitchValue = 0;
         }
     }
 }
