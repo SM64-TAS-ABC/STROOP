@@ -564,7 +564,7 @@ namespace STROOP.Map
                     float newYaw = _rotateStartYaw - yawDiff;
                     float newPitch = _rotateStartPitch - pitchDiff;
                     newYaw = (float)MoreMath.NormalizeAngleDouble(newYaw);
-                    newPitch = (float)MoreMath.Clamp(newPitch, -16384, 16384);
+                    newPitch = (float)MoreMath.Clamp(newPitch, -16383, 16383);
                     SetCustomAngle(newYaw, newPitch);
                 }
                 else
