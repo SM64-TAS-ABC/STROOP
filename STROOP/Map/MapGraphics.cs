@@ -408,7 +408,6 @@ namespace STROOP.Map
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
-            Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
             float newPitchValue = (float)MoreMath.Clamp(
                 MapViewPitchValue + sign * parsed.Value, MAP_VIEW_PITCH_MIN_VALUE, MAP_VIEW_PITCH_MAX_VALUE);
             SetAngleTextbox(MapViewYawValue, newPitchValue);
