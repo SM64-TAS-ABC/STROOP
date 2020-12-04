@@ -185,13 +185,14 @@ namespace STROOP.Controls
         {
             VariableViewerForm varInfo =
                 new VariableViewerForm(
-                    _watchVarControl.VarName,
-                    GetClass(),
-                    WatchVar.GetTypeDescription(),
-                    WatchVar.GetBaseTypeOffsetDescription(),
-                    WatchVar.GetBaseAddressListString(_watchVarControl.FixedAddressList),
-                    WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
-                    WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList));
+                    name: _watchVarControl.VarName,
+                    clazz: GetClass(),
+                    type: WatchVar.GetTypeDescription(),
+                    baseTypeOffset: WatchVar.GetBaseTypeOffsetDescription(),
+                    n64BaseAddress: WatchVar.GetBaseAddressListString(_watchVarControl.FixedAddressList),
+                    emulatorBaseAddress: WatchVar.GetProcessBaseAddressListString(_watchVarControl.FixedAddressList),
+                    n64Address: WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
+                    emulatorAddress: WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList));
             varInfo.Show();
         }
 
@@ -204,6 +205,7 @@ namespace STROOP.Controls
                 WatchVar.GetTypeDescription(),
                 WatchVar.GetBaseTypeOffsetDescription(),
                 WatchVar.GetBaseAddressListString(_watchVarControl.FixedAddressList),
+                WatchVar.GetProcessBaseAddressListString(_watchVarControl.FixedAddressList),
                 WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
                 WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList),
             };
@@ -217,7 +219,8 @@ namespace STROOP.Controls
                 "Class",
                 "Type",
                 "BaseType + Offset",
-                "Base Address",
+                "N64 Base Address",
+                "Emulator Base Address",
                 "N64 Address",
                 "Emulator Address",
             };

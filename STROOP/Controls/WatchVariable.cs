@@ -285,12 +285,22 @@ namespace STROOP.Controls
             if (IsSpecial) return "(none)";
             List<uint> addressList = GetAddressList(addresses);
             if (addressList.Count == 0) return "(none)";
-            List<ulong> processAddressList = GetProcessAddressList(addresses).ConvertAll(address => address.ToUInt64());
+            List<ulong> processAddressList = GetProcessAddressList(addressList).ConvertAll(address => address.ToUInt64());
             List<string> stringList = processAddressList.ConvertAll(address => HexUtilities.FormatValue(address, address > 0xFFFFFFFFU ? 16 : 8));
             return string.Join(", ", stringList);
         }
 
-        private List<UIntPtr> GetProcessAddressList(List<uint> addresses = null)
+        public string GetProcessBaseAddressListString(List<uint> addresses = null)
+        {
+            if (IsSpecial) return "(none)";
+            List<uint> addressList = addresses ?? GetBaseAddressList();
+            if (addressList.Count == 0) return "(none)";
+            List<ulong> processAddressList = GetProcessAddressList(addressList).ConvertAll(address => address.ToUInt64());
+            List<string> stringList = processAddressList.ConvertAll(address => HexUtilities.FormatValue(address, address > 0xFFFFFFFFU ? 16 : 8));
+            return string.Join(", ", stringList);
+        }
+
+        private List<UIntPtr> GetProcessAddressList(List<uint> addresses)
         {
             List<uint> ramAddressList = GetRamAddressList(false, addresses);
             return ramAddressList.ConvertAll(address => Config.Stream.GetAbsoluteAddress(address, ByteCount.Value));
@@ -301,14 +311,13 @@ namespace STROOP.Controls
             if (IsSpecial) return "(none)";
             List<uint> addressList = GetAddressList(addresses);
             if (addressList.Count == 0) return "(none)";
-            List<uint> ramAddressList = GetRamAddressList(addressArea, addresses);
+            List<uint> ramAddressList = GetRamAddressList(addressArea, addressList);
             List<string> stringList = ramAddressList.ConvertAll(address => HexUtilities.FormatValue(address, 8));
             return string.Join(", ", stringList);
         }
 
-        private List<uint> GetRamAddressList(bool addressArea = true, List<uint> addresses = null)
+        private List<uint> GetRamAddressList(bool addressArea, List<uint> addressList)
         {
-            List<uint> addressList = GetAddressList(addresses);
             return addressList.ConvertAll(address => GetRamAddress(address, addressArea));
         }
 

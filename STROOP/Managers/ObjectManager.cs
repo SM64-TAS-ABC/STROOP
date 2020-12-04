@@ -503,13 +503,14 @@ namespace STROOP.Managers
 
             var variableTitle = "Object Address" + (_objects.Count > 1 ? " (First of Multiple)" : "");
             var variableInfo = new VariableViewerForm(
-                variableTitle,
-                "(none)",
-                "Object",
-                "Relative + " + HexUtilities.FormatValue(_objects.First().Address, 8),
-                HexUtilities.FormatValue(0, 8).ToString(),
-                HexUtilities.FormatValue(_objects.First().Address, 8),
-                HexUtilities.FormatValue(Config.Stream.GetAbsoluteAddress(_objects.First().Address).ToUInt32(), 8));
+                name: variableTitle,
+                clazz: "(none)",
+                type: "Object",
+                baseTypeOffset: "Relative + " + HexUtilities.FormatValue(_objects.First().Address, 8),
+                n64BaseAddress: HexUtilities.FormatValue(0, 8).ToString(),
+                emulatorBaseAddress: HexUtilities.FormatValue(0, 8).ToString(),
+                n64Address: HexUtilities.FormatValue(_objects.First().Address, 8),
+                emulatorAddress: HexUtilities.FormatValue(Config.Stream.GetAbsoluteAddress(_objects.First().Address).ToUInt32(), 8));
             variableInfo.Show();
         }
       
