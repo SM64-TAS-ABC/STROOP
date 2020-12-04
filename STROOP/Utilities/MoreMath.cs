@@ -34,6 +34,39 @@ namespace STROOP.Utilities
             return max;
         }
 
+        public static double Min(params double[] values)
+        {
+            if (values.Length == 0) return 0;
+            double min = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] < min) min = values[i];
+            }
+            return min;
+        }
+
+        public static double Max(params double[] values)
+        {
+            if (values.Length == 0) return 0;
+            double max = values[0];
+            for (int i = 1; i < values.Length; i++)
+            {
+                if (values[i] > max) max = values[i];
+            }
+            return max;
+        }
+
+        public static double Average(params double[] values)
+        {
+            if (values.Length == 0) return 0;
+            double sum = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                sum += values[i];
+            }
+            return sum / values.Length;
+        }
+
         public static double GetHypotenuse(double x, double y)
         {
             return Math.Sqrt(x * x + y * y);

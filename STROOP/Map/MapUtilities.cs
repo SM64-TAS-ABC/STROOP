@@ -603,5 +603,19 @@ namespace STROOP.Map
 
             return points;
         }
+
+        public static double GetSignedDistToCameraPlane(TriangleDataModel tri)
+        {
+            return MoreMath.Average(
+                MoreMath.GetPlaneDistanceToPointSigned(
+                    Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue, Config.MapGraphics.MapViewCenterZValue,
+                    Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue, tri.X1, tri.Y1, tri.Z1),
+                MoreMath.GetPlaneDistanceToPointSigned(
+                    Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue, Config.MapGraphics.MapViewCenterZValue,
+                    Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue, tri.X2, tri.Y2, tri.Z2),
+                MoreMath.GetPlaneDistanceToPointSigned(
+                    Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue, Config.MapGraphics.MapViewCenterZValue,
+                    Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue, tri.X3, tri.Y3, tri.Z3));
+        }
     }
 }

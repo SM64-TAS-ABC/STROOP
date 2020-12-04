@@ -45,7 +45,27 @@ namespace STROOP.Map
             {
                 tris = tris.FindAll(tri => tri.SurfaceType != 0x0A);
             }
-            tris = tris.OrderByDescending(tri => tri.Classification).ToList();
+            if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
+            {
+                if (_useCrossSection)
+                {
+                    tris.Sort((TriangleDataModel t1, TriangleDataModel t2) =>
+                    {
+                        string string1 = t1.Classification.ToString();
+                        string string2 = t2.Classification.ToString();
+                        return string1.CompareTo(string2);
+                    });
+                }
+                else
+                {
+                    tris.Sort((TriangleDataModel t1, TriangleDataModel t2) =>
+                    {
+                        double dist1 = MapUtilities.GetSignedDistToCameraPlane(t1);
+                        double dist2 = MapUtilities.GetSignedDistToCameraPlane(t2);
+                        return dist2.CompareTo(dist1);
+                    });
+                }
+            }
             return tris;
         }
 
