@@ -27,6 +27,8 @@ namespace STROOP.Map
         private static readonly float DEFAULT_MAP_VIEW_CENTER_Z_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_YAW_VALUE = 32768;
         private static readonly float DEFAULT_MAP_VIEW_PITCH_VALUE = 0;
+        private static readonly float MAP_VIEW_PITCH_MIN_VALUE = -16383;
+        private static readonly float MAP_VIEW_PITCH_MAX_VALUE = 16383;
 
         public float MapViewScaleValue = DEFAULT_MAP_VIEW_SCALE_VALUE;
         public float MapViewCenterXValue = DEFAULT_MAP_VIEW_CENTER_X_VALUE;
@@ -388,14 +390,24 @@ namespace STROOP.Map
             SetCenterTextbox(newCenterXValue, newCenterYValue, newCenterZValue);
         }
 
-        public void ChangeAngle(int sign, object value)
+        public void ChangeYaw(int sign, object value)
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
             Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
-            float newAngleValue = MapViewYawValue + sign * parsed.Value;
-            newAngleValue = (float)MoreMath.NormalizeAngleDouble(newAngleValue);
-            Config.MapGui.textBoxMapControllersAngleCustom.SubmitText(newAngleValue.ToString());
+            float newYawValue = MapViewYawValue + sign * parsed.Value;
+            newYawValue = (float)MoreMath.NormalizeAngleDouble(newYawValue);
+            SetAngleTextbox(newYawValue, MapViewPitchValue);
+        }
+
+        public void ChangePitch(int sign, object value)
+        {
+            float? parsed = ParsingUtilities.ParseFloatNullable(value);
+            if (!parsed.HasValue) return;
+            Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
+            float newPitchValue = (float)MoreMath.Clamp(
+                MapViewPitchValue + sign * parsed.Value, MAP_VIEW_PITCH_MIN_VALUE, MAP_VIEW_PITCH_MAX_VALUE);
+            SetAngleTextbox(MapViewYawValue, newPitchValue);
         }
 
         public void SetCustomScale(object value)
@@ -571,7 +583,7 @@ namespace STROOP.Map
                     float newYaw = _rotateStartYaw - yawDiff;
                     float newPitch = _rotateStartPitch - pitchDiff;
                     newYaw = (float)MoreMath.NormalizeAngleDouble(newYaw);
-                    newPitch = (float)MoreMath.Clamp(newPitch, -16383, 16383);
+                    newPitch = (float)MoreMath.Clamp(newPitch, MAP_VIEW_PITCH_MIN_VALUE, MAP_VIEW_PITCH_MAX_VALUE);
                     SetCustomAngle(newYaw, newPitch);
                 }
                 else

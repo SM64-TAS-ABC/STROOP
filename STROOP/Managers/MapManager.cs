@@ -552,9 +552,13 @@ namespace STROOP.Managers
 
             // Buttons for Changing Angle
             Config.MapGui.buttonMapControllersAngleCCW.Click += (sender, e) =>
-                Config.MapGraphics.ChangeAngle(-1, Config.MapGui.textBoxMapControllersAngleChange.Text);
+                Config.MapGraphics.ChangeYaw(-1, Config.MapGui.textBoxMapControllersAngleChange.Text);
             Config.MapGui.buttonMapControllersAngleCW.Click += (sender, e) =>
-                Config.MapGraphics.ChangeAngle(1, Config.MapGui.textBoxMapControllersAngleChange.Text);
+                Config.MapGraphics.ChangeYaw(1, Config.MapGui.textBoxMapControllersAngleChange.Text);
+            Config.MapGui.buttonMapControllersAngleUp.Click += (sender, e) =>
+                Config.MapGraphics.ChangePitch(-1, Config.MapGui.textBoxMapControllersAngleChange.Text);
+            Config.MapGui.buttonMapControllersAngleDown.Click += (sender, e) =>
+                Config.MapGraphics.ChangePitch(1, Config.MapGui.textBoxMapControllersAngleChange.Text);
             ControlUtilities.AddContextMenuStripFunctions(
                 Config.MapGui.groupBoxMapControllersAngle,
                 new List<string>()

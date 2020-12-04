@@ -114,6 +114,8 @@ namespace STROOP.Map
         public BetterTextbox textBoxMapControllersAngleChange;
         public Button buttonMapControllersAngleCCW;
         public Button buttonMapControllersAngleCW;
+        public Button buttonMapControllersAngleUp;
+        public Button buttonMapControllersAngleDown;
 
 
 

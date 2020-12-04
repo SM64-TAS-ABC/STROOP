@@ -319,6 +319,8 @@ namespace STROOP
                 textBoxMapControllersAngleChange = textBoxMapControllersAngleChange,
                 buttonMapControllersAngleCCW = buttonMapControllersAngleCCW,
                 buttonMapControllersAngleCW = buttonMapControllersAngleCW,
+                buttonMapControllersAngleUp = buttonMapControllersAngleUp,
+                buttonMapControllersAngleDown = buttonMapControllersAngleDown,
 
                 labelMapDataMapName = labelMapDataMapName,
                 labelMapDataMapSubName = labelMapDataMapSubName,
