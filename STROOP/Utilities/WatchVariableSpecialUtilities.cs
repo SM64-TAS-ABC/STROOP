@@ -517,6 +517,8 @@ namespace STROOP.Structs
                 new List<(string, Func<double>, Action<double>)>()
                 {
                     ("Map2DScrollSpeed", () => SpecialConfig.Map2DScrollSpeed, (double value) => SpecialConfig.Map2DScrollSpeed = value),
+                    ("Map2DOrthographicHorizontalRotateSpeed", () => SpecialConfig.Map2DOrthographicHorizontalRotateSpeed, (double value) => SpecialConfig.Map2DOrthographicHorizontalRotateSpeed = value),
+                    ("Map2DOrthographicVerticalRotateSpeed", () => SpecialConfig.Map2DOrthographicVerticalRotateSpeed, (double value) => SpecialConfig.Map2DOrthographicVerticalRotateSpeed = value),
                     ("Map3DScrollSpeed", () => SpecialConfig.Map3DScrollSpeed, (double value) => SpecialConfig.Map3DScrollSpeed = value),
                     ("Map3DTranslateSpeed", () => SpecialConfig.Map3DTranslateSpeed, (double value) => SpecialConfig.Map3DTranslateSpeed = value),
                     ("Map3DRotateSpeed", () => SpecialConfig.Map3DRotateSpeed, (double value) => SpecialConfig.Map3DRotateSpeed = value),

@@ -583,9 +583,8 @@ namespace STROOP.Map
                     int pixelDiffY = e.Y - _rotateStartMouseY;
                     pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
                     pixelDiffY = MapUtilities.MaybeReverse(pixelDiffY);
-                    float pixelsInFullRotation = 512;
-                    float yawDiff = pixelDiffX * (65536 / pixelsInFullRotation);
-                    float pitchDiff = pixelDiffY * (65536 / pixelsInFullRotation);
+                    float yawDiff = (float)(pixelDiffX * (65536 / SpecialConfig.Map2DOrthographicHorizontalRotateSpeed));
+                    float pitchDiff = (float)(pixelDiffY * (65536 / SpecialConfig.Map2DOrthographicVerticalRotateSpeed));
                     float newYaw = _rotateStartYaw - yawDiff;
                     float newPitch = _rotateStartPitch - pitchDiff;
                     newYaw = (float)MoreMath.NormalizeAngleDouble(newYaw);
