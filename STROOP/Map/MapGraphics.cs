@@ -410,6 +410,7 @@ namespace STROOP.Map
             if (!parsed.HasValue) return;
             float newPitchValue = (float)MoreMath.Clamp(
                 MapViewPitchValue + sign * parsed.Value, MAP_VIEW_PITCH_MIN_VALUE, MAP_VIEW_PITCH_MAX_VALUE);
+            MapViewPitchValue = newPitchValue;
             SetAngleTextbox(MapViewYawValue, newPitchValue);
         }
 
