@@ -516,7 +516,8 @@ namespace STROOP.Map
                 float newCenterX, newCenterY, newCenterZ;
                 if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
                 {
-                    newCenterY = _translateStartCenterY + unitDiffY;
+                    double pitchRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewPitchValue);
+                    newCenterY = _translateStartCenterY + unitDiffY / (float)Math.Cos(pitchRadians);
                     switch (MapViewYawValue)
                     {
                         case 0:
