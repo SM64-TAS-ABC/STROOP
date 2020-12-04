@@ -234,28 +234,33 @@ namespace STROOP.Map
                     break;
             }
 
-            if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked &&
-                Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked)
+            if (Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked)
             {
                 float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
                 float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                 float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                switch (MapViewYawValue)
+                if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
                 {
-                    case 0:
-                    case 32768:
+                    if (MapViewPitchValue == 0 && (MapViewYawValue == 0 || MapViewYawValue == 32768))
+                    {
                         MapViewCenterZValue = marioZ;
-                        break;
-                    case 16384:
-                    case 49152:
+                    }
+                    else if (MapViewPitchValue == 0 && (MapViewYawValue == 16384 || MapViewYawValue == 49152))
+                    {
                         MapViewCenterXValue = marioX;
-                        break;
-                    default:
+                    }
+                    else
+                    {
                         (double x, double y, double z) = MoreMath.GetPlanePointAtPoint(
                             MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue, MapViewYawValue, MapViewPitchValue, marioX, marioY, marioZ);
                         MapViewCenterXValue = (float)x;
+                        MapViewCenterYValue = (float)y;
                         MapViewCenterZValue = (float)z;
-                        break;
+                    }
+                }
+                else
+                {
+                    MapViewCenterYValue = marioY;
                 }
             }
 
