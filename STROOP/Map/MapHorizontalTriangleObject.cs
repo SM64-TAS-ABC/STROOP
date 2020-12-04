@@ -274,7 +274,7 @@ namespace STROOP.Map
                     ParsingUtilities.ParseFloatNullable(text);
                 if (!minHeightNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(
-                    triangleChangeMinHeight: true, triangleNewMinHeight: minHeightNullable.Value);
+                    horizontalTriangleChangeMinHeight: true, horizontalTriangleNewMinHeight: minHeightNullable.Value);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -282,7 +282,7 @@ namespace STROOP.Map
             itemClearMinHeight.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    triangleChangeMinHeight: true, triangleNewMinHeight: null);
+                    horizontalTriangleChangeMinHeight: true, horizontalTriangleNewMinHeight: null);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -296,7 +296,7 @@ namespace STROOP.Map
                     ParsingUtilities.ParseFloatNullable(text);
                 if (!maxHeightNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(
-                    triangleChangeMaxHeight: true, triangleNewMaxHeight: maxHeightNullable.Value);
+                    horizontalTriangleChangeMaxHeight: true, horizontalTriangleNewMaxHeight: maxHeightNullable.Value);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -304,7 +304,7 @@ namespace STROOP.Map
             itemClearMaxHeight.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    triangleChangeMaxHeight: true, triangleNewMaxHeight: null);
+                    horizontalTriangleChangeMaxHeight: true, horizontalTriangleNewMaxHeight: null);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -321,14 +321,14 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.TriangleChangeMinHeight)
+            if (settings.HorizontalTriangleChangeMinHeight)
             {
-                _minHeight = settings.TriangleNewMinHeight;
+                _minHeight = settings.HorizontalTriangleNewMinHeight;
             }
 
-            if (settings.TriangleChangeMaxHeight)
+            if (settings.HorizontalTriangleChangeMaxHeight)
             {
-                _maxHeight = settings.TriangleNewMaxHeight;
+                _maxHeight = settings.HorizontalTriangleNewMaxHeight;
             }
         }
 

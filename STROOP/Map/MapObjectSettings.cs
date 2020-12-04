@@ -1,18 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Drawing;
-using STROOP.Utilities;
-using STROOP.Structs;
-using STROOP.Extensions;
-using System.Reflection;
-using STROOP.Managers;
-using STROOP.Structs.Configurations;
-
-namespace STROOP.Map
+﻿namespace STROOP.Map
 {
     public class MapObjectSettings
     {
@@ -22,11 +8,11 @@ namespace STROOP.Map
         public readonly bool CustomCylinderChangeRelativeMaxY;
         public readonly float CustomCylinderNewRelativeMaxY;
 
-        public readonly bool TriangleChangeMinHeight;
-        public readonly float? TriangleNewMinHeight;
+        public readonly bool HorizontalTriangleChangeMinHeight;
+        public readonly float? HorizontalTriangleNewMinHeight;
 
-        public readonly bool TriangleChangeMaxHeight;
-        public readonly float? TriangleNewMaxHeight;
+        public readonly bool HorizontalTriangleChangeMaxHeight;
+        public readonly float? HorizontalTriangleNewMaxHeight;
 
         public readonly bool WallChangeShowArrows;
         public readonly bool WallNewShowArrows;
@@ -73,11 +59,11 @@ namespace STROOP.Map
             bool customCylinderChangeRelativeMaxY = false,
             float customCylinderNewRelativeMaxY = 0,
 
-            bool triangleChangeMinHeight = false,
-            float? triangleNewMinHeight = null,
+            bool horizontalTriangleChangeMinHeight = false,
+            float? horizontalTriangleNewMinHeight = null,
 
-            bool triangleChangeMaxHeight = false,
-            float? triangleNewMaxHeight = null,
+            bool horizontalTriangleChangeMaxHeight = false,
+            float? horizontalTriangleNewMaxHeight = null,
 
             bool wallChangeShowArrows = false,
             bool wallNewShowArrows = false,
@@ -123,11 +109,11 @@ namespace STROOP.Map
             CustomCylinderChangeRelativeMaxY = customCylinderChangeRelativeMaxY;
             CustomCylinderNewRelativeMaxY = customCylinderNewRelativeMaxY;
 
-            TriangleChangeMinHeight = triangleChangeMinHeight;
-            TriangleNewMinHeight = triangleNewMinHeight;
+            HorizontalTriangleChangeMinHeight = horizontalTriangleChangeMinHeight;
+            HorizontalTriangleNewMinHeight = horizontalTriangleNewMinHeight;
 
-            TriangleChangeMaxHeight = triangleChangeMaxHeight;
-            TriangleNewMaxHeight = triangleNewMaxHeight;
+            HorizontalTriangleChangeMaxHeight = horizontalTriangleChangeMaxHeight;
+            HorizontalTriangleNewMaxHeight = horizontalTriangleNewMaxHeight;
 
             WallChangeShowArrows = wallChangeShowArrows;
             WallNewShowArrows = wallNewShowArrows;
