@@ -100,10 +100,12 @@ namespace STROOP.Structs.Configurations
             System.Diagnostics.Trace.WriteLine(formatted);
         }
 
-        public static void SetDebugText(object obj)
+        public static void SetDebugText(object formatNullable = null, params object[] args)
         {
+            object format = formatNullable ?? "";
+            string formatted = string.Format(format.ToString(), args);
             DebugText.Visible = true;
-            DebugText.Text = obj.ToString();
+            DebugText.Text = formatted;
         }
     }
 }
