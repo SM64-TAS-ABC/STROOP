@@ -363,14 +363,15 @@ namespace STROOP.Map
             float xOffset, yOffset, zOffset;
             if (Config.MapGui.checkBoxMapOptionsEnableSideView.Checked)
             {
-                double angleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
+                double yawRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
+                double pitchRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewPitchValue);
                 xOffset = (float)(
-                    Math.Sin(angleRadians) * -1 * depthSign * parsed.Value +
-                    Math.Cos(angleRadians) * -1 * horizontalSign * parsed.Value);
-                yOffset = verticalSign * parsed.Value;
+                    Math.Sin(yawRadians) * -1 * depthSign * parsed.Value +
+                    Math.Cos(yawRadians) * -1 * horizontalSign * parsed.Value);
+                yOffset = (float)(1 / Math.Cos(pitchRadians) * verticalSign * parsed.Value);
                 zOffset = (float)(
-                    Math.Sin(angleRadians) * 1 * horizontalSign * parsed.Value +
-                    Math.Cos(angleRadians) * -1 * depthSign * parsed.Value);
+                    Math.Sin(yawRadians) * 1 * horizontalSign * parsed.Value +
+                    Math.Cos(yawRadians) * -1 * depthSign * parsed.Value);
             }
             else
             {
