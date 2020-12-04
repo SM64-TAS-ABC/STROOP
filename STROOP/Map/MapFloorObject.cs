@@ -17,6 +17,9 @@ namespace STROOP.Map
 {
     public abstract class MapFloorObject : MapHorizontalTriangleObject
     {
+        private ToolStripMenuItem _itemExcludeDeathBarriers;
+        private ToolStripMenuItem _itemEnableQuarterFrameLandings;
+
         public MapFloorObject()
             : base()
         {
@@ -27,25 +30,44 @@ namespace STROOP.Map
 
         protected List<ToolStripMenuItem> GetFloorToolStripMenuItems()
         {
-            ToolStripMenuItem itemExcludeDeathBarriers = new ToolStripMenuItem("Exclude Death Barriers");
-            itemExcludeDeathBarriers.Click += (sender, e) =>
+            _itemExcludeDeathBarriers = new ToolStripMenuItem("Exclude Death Barriers");
+            _itemExcludeDeathBarriers.Click += (sender, e) =>
             {
-                _excludeDeathBarriers = !_excludeDeathBarriers;
-                itemExcludeDeathBarriers.Checked = _excludeDeathBarriers;
+                MapObjectSettings settings = new MapObjectSettings(
+                    floorChangeExcludeDeathBarriers: true, floorNewExcludeDeathBarriers: !_excludeDeathBarriers);
+                GetParentMapTracker().ApplySettings(settings);
             };
 
-            ToolStripMenuItem itemEnableQuarterFrameLandings = new ToolStripMenuItem("Enable Quarter Frame Landings");
-            itemEnableQuarterFrameLandings.Click += (sender, e) =>
+            _itemEnableQuarterFrameLandings = new ToolStripMenuItem("Enable Quarter Frame Landings");
+            _itemEnableQuarterFrameLandings.Click += (sender, e) =>
             {
-                _enableQuarterFrameLandings = !_enableQuarterFrameLandings;
-                itemEnableQuarterFrameLandings.Checked = _enableQuarterFrameLandings;
+                MapObjectSettings settings = new MapObjectSettings(
+                    floorChangeEnableQuarterFrameLandings: true, floorNewEnableQuarterFrameLandings: !_enableQuarterFrameLandings);
+                GetParentMapTracker().ApplySettings(settings);
             };
 
             return new List<ToolStripMenuItem>()
             {
-                itemExcludeDeathBarriers,
-                itemEnableQuarterFrameLandings,
+                _itemExcludeDeathBarriers,
+                _itemEnableQuarterFrameLandings,
             };
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.FloorChangeExcludeDeathBarriers)
+            {
+                _excludeDeathBarriers = settings.FloorNewExcludeDeathBarriers;
+                _itemExcludeDeathBarriers.Checked = settings.FloorNewExcludeDeathBarriers;
+            }
+
+            if (settings.FloorChangeEnableQuarterFrameLandings)
+            {
+                _enableQuarterFrameLandings = settings.FloorNewEnableQuarterFrameLandings;
+                _itemEnableQuarterFrameLandings.Checked = settings.FloorNewEnableQuarterFrameLandings;
+            }
         }
     }
 }

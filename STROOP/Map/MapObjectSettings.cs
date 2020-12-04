@@ -23,6 +23,12 @@
         public readonly bool HorizontalTriangleChangeMaxHeight;
         public readonly float? HorizontalTriangleNewMaxHeight;
 
+        public readonly bool FloorChangeExcludeDeathBarriers;
+        public readonly bool FloorNewExcludeDeathBarriers;
+
+        public readonly bool FloorChangeEnableQuarterFrameLandings;
+        public readonly bool FloorNewEnableQuarterFrameLandings;
+
         public readonly bool WallChangeShowArrows;
         public readonly bool WallNewShowArrows;
 
@@ -83,6 +89,12 @@
             bool horizontalTriangleChangeMaxHeight = false,
             float? horizontalTriangleNewMaxHeight = null,
 
+            bool floorChangeExcludeDeathBarriers = false,
+            bool floorNewExcludeDeathBarriers = false,
+
+            bool floorChangeEnableQuarterFrameLandings = false,
+            bool floorNewEnableQuarterFrameLandings = false,
+
             bool wallChangeShowArrows = false,
             bool wallNewShowArrows = false,
 
@@ -141,6 +153,12 @@
 
             HorizontalTriangleChangeMaxHeight = horizontalTriangleChangeMaxHeight;
             HorizontalTriangleNewMaxHeight = horizontalTriangleNewMaxHeight;
+
+            FloorChangeExcludeDeathBarriers = floorChangeExcludeDeathBarriers;
+            FloorNewExcludeDeathBarriers = floorNewExcludeDeathBarriers;
+
+            FloorChangeEnableQuarterFrameLandings = floorChangeEnableQuarterFrameLandings;
+            FloorNewEnableQuarterFrameLandings = floorNewEnableQuarterFrameLandings;
 
             WallChangeShowArrows = wallChangeShowArrows;
             WallNewShowArrows = wallNewShowArrows;
