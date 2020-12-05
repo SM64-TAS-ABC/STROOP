@@ -292,7 +292,6 @@ namespace STROOP.Controls
 
         public string GetProcessBaseAddressListString(List<uint> addresses = null)
         {
-            if (IsSpecial) return "(none)";
             List<uint> addressList = addresses ?? GetBaseAddressList();
             if (addressList.Count == 0) return "(none)";
             List<ulong> processAddressList = GetProcessAddressList(addressList).ConvertAll(address => address.ToUInt64());
@@ -303,7 +302,7 @@ namespace STROOP.Controls
         private List<UIntPtr> GetProcessAddressList(List<uint> addresses)
         {
             List<uint> ramAddressList = GetRamAddressList(false, addresses);
-            return ramAddressList.ConvertAll(address => Config.Stream.GetAbsoluteAddress(address, ByteCount.Value));
+            return ramAddressList.ConvertAll(address => Config.Stream.GetAbsoluteAddress(address, ByteCount ?? 4));
         }
 
         public string GetRamAddressListString(bool addressArea = true, List<uint> addresses = null)
