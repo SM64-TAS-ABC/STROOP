@@ -100,6 +100,11 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
+        public override void DrawOn2DControlOrthographicView()
+        {
+            // do nothing
+        }
+
         public override void DrawOn3DControl()
         {
             for (int i = 1; i <= Size; i++)

@@ -65,7 +65,7 @@ namespace STROOP.Map
 
         public abstract void DrawOn2DControlTopDownView();
 
-        public virtual void DrawOn2DControlOrthographicView() { } // TODO(orthographicview): make abstract
+        public abstract void DrawOn2DControlOrthographicView();
 
         public abstract void DrawOn3DControl();
 

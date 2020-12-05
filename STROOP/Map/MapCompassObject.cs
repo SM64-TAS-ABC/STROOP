@@ -163,6 +163,11 @@ namespace STROOP.Map
                 x, z, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ, -1 * Config.MapGraphics.MapViewYawValue);
         }
 
+        public override void DrawOn2DControlOrthographicView()
+        {
+            // do nothing
+        }
+
         public override void DrawOn3DControl()
         {
             // do nothing
