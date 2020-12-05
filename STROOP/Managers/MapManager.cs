@@ -794,6 +794,7 @@ namespace STROOP.Managers
             Config.MapGui.radioButtonMapControllersScaleCourseDefault.Checked = true;
             Config.MapGui.radioButtonMapControllersCenterBestFit.Checked = true;
             Config.MapGui.radioButtonMapControllersAngle32768.Checked = true;
+            Config.MapGraphics.MapViewPitchValue = 0;
             SpecialConfig.Map3DMode = Map3DCameraMode.InGame;
         }
 
