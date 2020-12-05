@@ -93,7 +93,7 @@ namespace STROOP.Map
 
         protected virtual List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
-            return new List<(float x, float y, float z)>();
+            return GetVerticesTopDownView();
         }
 
         public override MapDrawType GetDrawType()
