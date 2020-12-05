@@ -68,42 +68,43 @@ namespace STROOP.Map
             int zMin = (int)Config.MapGraphics.MapViewZMin - 1;
             int zMax = (int)Config.MapGraphics.MapViewZMax + 1;
 
-            switch (Config.MapGraphics.MapViewYawValue)
+            if (Config.MapGraphics.MapViewPitchValue == 0 &&
+                (Config.MapGraphics.MapViewYawValue == 0 ||
+                Config.MapGraphics.MapViewYawValue == 32768))
             {
-                case 0:
-                case 32768:
-                    {
-                        List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                        for (int x = xMin; x <= xMax; x += 1)
-                        {
-                            vertices.Add((x, yMin, zCenter));
-                            vertices.Add((x, yMax, zCenter));
-                        }
-                        for (int y = yMin; y <= yMax; y += 1)
-                        {
-                            vertices.Add((xMin, y, zCenter));
-                            vertices.Add((xMax, y, zCenter));
-                        }
-                        return vertices;
-                    }
-                case 16384:
-                case 49152:
-                    {
-                        List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                        for (int z = zMin; z <= zMax; z += 1)
-                        {
-                            vertices.Add((xCenter, yMin, z));
-                            vertices.Add((xCenter, yMax, z));
-                        }
-                        for (int y = yMin; y <= yMax; y += 1)
-                        {
-                            vertices.Add((zCenter, y, zMin));
-                            vertices.Add((xCenter, y, zMax));
-                        }
-                        return vertices;
-                    }
-                default:
-                    return new List<(float x, float y, float z)>();
+                List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                for (int x = xMin; x <= xMax; x += 1)
+                {
+                    vertices.Add((x, yMin, zCenter));
+                    vertices.Add((x, yMax, zCenter));
+                }
+                for (int y = yMin; y <= yMax; y += 1)
+                {
+                    vertices.Add((xMin, y, zCenter));
+                    vertices.Add((xMax, y, zCenter));
+                }
+                return vertices;
+            }
+            if (Config.MapGraphics.MapViewPitchValue == 0 &&
+                (Config.MapGraphics.MapViewYawValue == 16384 ||
+                Config.MapGraphics.MapViewYawValue == 49152))
+            {
+                List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                for (int z = zMin; z <= zMax; z += 1)
+                {
+                    vertices.Add((xCenter, yMin, z));
+                    vertices.Add((xCenter, yMax, z));
+                }
+                for (int y = yMin; y <= yMax; y += 1)
+                {
+                    vertices.Add((zCenter, y, zMin));
+                    vertices.Add((xCenter, y, zMax));
+                }
+                return vertices;
+            }
+            else
+            {
+                return new List<(float x, float y, float z)>();
             }
         }
 
