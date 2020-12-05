@@ -67,11 +67,7 @@ namespace STROOP.Utilities
         private static void CopyWithSeparator(
             List<WatchVariableControl> controls, string separator)
         {
-            if (controls.Count == 0)
-            {
-                Clipboard.SetText("");
-                return;
-            }
+            if (controls.Count == 0) return;
             Clipboard.SetText(
                 string.Join(separator, controls.ConvertAll(
                     control => control.GetValue(
@@ -80,11 +76,7 @@ namespace STROOP.Utilities
 
         private static void CopyWithNames(List<WatchVariableControl> controls)
         {
-            if (controls.Count == 0)
-            {
-                Clipboard.SetText("");
-                return;
-            }
+            if (controls.Count == 0) return;
             List<string> lines = controls.ConvertAll(
                 watchVar => watchVar.VarName + "\t" + watchVar.GetValue(false));
             Clipboard.SetText(string.Join("\r\n", lines));
@@ -92,18 +84,9 @@ namespace STROOP.Utilities
 
         private static void CopyAsTable(List<WatchVariableControl> controls)
         {
-            if (controls.Count == 0)
-            {
-                Clipboard.SetText("");
-                return;
-            }
-
+            if (controls.Count == 0) return;
             List<uint> addresses = controls[0].GetAddresses();
-            if (addresses.Count == 0)
-            {
-                Clipboard.SetText("");
-                return;
-            }
+            if (addresses.Count == 0) return;
             List<string> hexAddresses = addresses.ConvertAll(address => HexUtilities.FormatValue(address));
             string header = "Vars\t" + string.Join("\t", hexAddresses);
 
@@ -122,11 +105,7 @@ namespace STROOP.Utilities
 
         private static void CopyForCode(List<WatchVariableControl> controls)
         {
-            if (controls.Count == 0)
-            {
-                Clipboard.SetText("");
-                return;
-            }
+            if (controls.Count == 0) return;
             Func<string, string> varNameFunc;
             if (KeyboardUtilities.IsCtrlHeld())
             {
