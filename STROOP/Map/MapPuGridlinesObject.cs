@@ -129,42 +129,44 @@ namespace STROOP.Map
                         int yMax = ((((int)Config.MapGraphics.MapViewYMax) / 65536) + 1) * 65536;
                         int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
                         int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
-                        switch (Config.MapGraphics.MapViewYawValue)
+
+                        if (Config.MapGraphics.MapViewPitchValue == 0 &&
+                            (Config.MapGraphics.MapViewYawValue == 0 ||
+                            Config.MapGraphics.MapViewYawValue == 32768))
                         {
-                            case 0:
-                            case 32768:
-                                {
-                                    List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                                    for (int x = xMin; x <= xMax; x += 65536)
-                                    {
-                                        vertices.Add((x, yMin, zCenter));
-                                        vertices.Add((x, yMax, zCenter));
-                                    }
-                                    for (int y = yMin; y <= yMax; y += 65536)
-                                    {
-                                        vertices.Add((xMin, y, zCenter));
-                                        vertices.Add((xMax, y, zCenter));
-                                    }
-                                    return vertices;
-                                }
-                            case 16384:
-                            case 49152:
-                                {
-                                    List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                                    for (int z = zMin; z <= zMax; z += 65536)
-                                    {
-                                        vertices.Add((xCenter, yMin, z));
-                                        vertices.Add((xCenter, yMax, z));
-                                    }
-                                    for (int y = yMin; y <= yMax; y += 65536)
-                                    {
-                                        vertices.Add((zCenter, y, zMin));
-                                        vertices.Add((xCenter, y, zMax));
-                                    }
-                                    return vertices;
-                                }
-                            default:
-                                return new List<(float x, float y, float z)>();
+                            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                            for (int x = xMin; x <= xMax; x += 65536)
+                            {
+                                vertices.Add((x, yMin, zCenter));
+                                vertices.Add((x, yMax, zCenter));
+                            }
+                            for (int y = yMin; y <= yMax; y += 65536)
+                            {
+                                vertices.Add((xMin, y, zCenter));
+                                vertices.Add((xMax, y, zCenter));
+                            }
+                            return vertices;
+                        }
+                        else if (Config.MapGraphics.MapViewPitchValue == 0 &&
+                            (Config.MapGraphics.MapViewYawValue == 16384 ||
+                            Config.MapGraphics.MapViewYawValue == 49152))
+                        {
+                            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                            for (int z = zMin; z <= zMax; z += 65536)
+                            {
+                                vertices.Add((xCenter, yMin, z));
+                                vertices.Add((xCenter, yMax, z));
+                            }
+                            for (int y = yMin; y <= yMax; y += 65536)
+                            {
+                                vertices.Add((zCenter, y, zMin));
+                                vertices.Add((xCenter, y, zMax));
+                            }
+                            return vertices;
+                        }
+                        else
+                        {
+                            return new List<(float x, float y, float z)>();
                         }
                     }
                 case PuGridlineSetting.SETTING2:
@@ -177,42 +179,44 @@ namespace STROOP.Map
                         int yMax = ((((int)Config.MapGraphics.MapViewYMax) / 65536) + 1) * 65536 + 32768;
                         int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536 - 32768;
                         int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536 + 32768;
-                        switch (Config.MapGraphics.MapViewYawValue)
+
+                        if (Config.MapGraphics.MapViewPitchValue == 0 &&
+                            (Config.MapGraphics.MapViewYawValue == 0 ||
+                            Config.MapGraphics.MapViewYawValue == 32768))
                         {
-                            case 0:
-                            case 32768:
-                                {
-                                    List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                                    for (int x = xMin; x <= xMax; x += 65536)
-                                    {
-                                        vertices.Add((x, yMin, zCenter));
-                                        vertices.Add((x, yMax, zCenter));
-                                    }
-                                    for (int y = yMin; y <= yMax; y += 65536)
-                                    {
-                                        vertices.Add((xMin, y, zCenter));
-                                        vertices.Add((xMax, y, zCenter));
-                                    }
-                                    return vertices;
-                                }
-                            case 16384:
-                            case 49152:
-                                {
-                                    List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                                    for (int z = zMin; z <= zMax; z += 65536)
-                                    {
-                                        vertices.Add((xCenter, yMin, z));
-                                        vertices.Add((xCenter, yMax, z));
-                                    }
-                                    for (int y = yMin; y <= yMax; y += 65536)
-                                    {
-                                        vertices.Add((zCenter, y, zMin));
-                                        vertices.Add((xCenter, y, zMax));
-                                    }
-                                    return vertices;
-                                }
-                            default:
-                                return new List<(float x, float y, float z)>();
+                            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                            for (int x = xMin; x <= xMax; x += 65536)
+                            {
+                                vertices.Add((x, yMin, zCenter));
+                                vertices.Add((x, yMax, zCenter));
+                            }
+                            for (int y = yMin; y <= yMax; y += 65536)
+                            {
+                                vertices.Add((xMin, y, zCenter));
+                                vertices.Add((xMax, y, zCenter));
+                            }
+                            return vertices;
+                        }
+                        else if (Config.MapGraphics.MapViewPitchValue == 0 &&
+                            (Config.MapGraphics.MapViewYawValue == 16384 ||
+                            Config.MapGraphics.MapViewYawValue == 49152))
+                        {
+                            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                            for (int z = zMin; z <= zMax; z += 65536)
+                            {
+                                vertices.Add((xCenter, yMin, z));
+                                vertices.Add((xCenter, yMax, z));
+                            }
+                            for (int y = yMin; y <= yMax; y += 65536)
+                            {
+                                vertices.Add((zCenter, y, zMin));
+                                vertices.Add((xCenter, y, zMax));
+                            }
+                            return vertices;
+                        }
+                        else
+                        {
+                            return new List<(float x, float y, float z)>();
                         }
                     }
                 case PuGridlineSetting.SETTING3:
@@ -225,66 +229,68 @@ namespace STROOP.Map
                         int yMax = ((((int)Config.MapGraphics.MapViewYMax) / 65536) + 1) * 65536;
                         int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
                         int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
-                        switch (Config.MapGraphics.MapViewYawValue)
+
+                        if (Config.MapGraphics.MapViewPitchValue == 0 &&
+                            (Config.MapGraphics.MapViewYawValue == 0 ||
+                            Config.MapGraphics.MapViewYawValue == 32768))
                         {
-                            case 0:
-                            case 32768:
+                            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                            for (int x = xMin; x <= xMax; x += 65536)
+                            {
+                                for (int y = yMin; y <= yMax; y += 65536)
                                 {
-                                    List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                                    for (int x = xMin; x <= xMax; x += 65536)
-                                    {
-                                        for (int y = yMin; y <= yMax; y += 65536)
-                                        {
-                                            float x1 = x - 8192;
-                                            float x2 = x + 8192;
-                                            float y1 = y - 8192;
-                                            float y2 = y + 8192;
+                                    float x1 = x - 8192;
+                                    float x2 = x + 8192;
+                                    float y1 = y - 8192;
+                                    float y2 = y + 8192;
 
-                                            vertices.Add((x1, y1, zCenter));
-                                            vertices.Add((x1, y2, zCenter));
+                                    vertices.Add((x1, y1, zCenter));
+                                    vertices.Add((x1, y2, zCenter));
 
-                                            vertices.Add((x2, y1, zCenter));
-                                            vertices.Add((x2, y2, zCenter));
+                                    vertices.Add((x2, y1, zCenter));
+                                    vertices.Add((x2, y2, zCenter));
 
-                                            vertices.Add((x1, y1, zCenter));
-                                            vertices.Add((x2, y1, zCenter));
+                                    vertices.Add((x1, y1, zCenter));
+                                    vertices.Add((x2, y1, zCenter));
 
-                                            vertices.Add((x1, y2, zCenter));
-                                            vertices.Add((x2, y2, zCenter));
-                                        }
-                                    }
-                                    return vertices;
+                                    vertices.Add((x1, y2, zCenter));
+                                    vertices.Add((x2, y2, zCenter));
                                 }
-                            case 16384:
-                            case 49152:
+                            }
+                            return vertices;
+                        }
+                        else if (Config.MapGraphics.MapViewPitchValue == 0 &&
+                            (Config.MapGraphics.MapViewYawValue == 16384 ||
+                            Config.MapGraphics.MapViewYawValue == 49152))
+                        {
+                            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                            for (int z = zMin; z <= zMax; z += 65536)
+                            {
+                                for (int y = yMin; y <= yMax; y += 65536)
                                 {
-                                    List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                                    for (int z = zMin; z <= zMax; z += 65536)
-                                    {
-                                        for (int y = yMin; y <= yMax; y += 65536)
-                                        {
-                                            float z1 = z - 8192;
-                                            float z2 = z + 8192;
-                                            float y1 = y - 8192;
-                                            float y2 = y + 8192;
+                                    float z1 = z - 8192;
+                                    float z2 = z + 8192;
+                                    float y1 = y - 8192;
+                                    float y2 = y + 8192;
 
-                                            vertices.Add((xCenter, y1, z1));
-                                            vertices.Add((xCenter, y2, z1));
+                                    vertices.Add((xCenter, y1, z1));
+                                    vertices.Add((xCenter, y2, z1));
 
-                                            vertices.Add((xCenter, y1, z2));
-                                            vertices.Add((xCenter, y2, z2));
+                                    vertices.Add((xCenter, y1, z2));
+                                    vertices.Add((xCenter, y2, z2));
 
-                                            vertices.Add((xCenter, y1, z1));
-                                            vertices.Add((xCenter, y1, z2));
+                                    vertices.Add((xCenter, y1, z1));
+                                    vertices.Add((xCenter, y1, z2));
 
-                                            vertices.Add((xCenter, y2, z1));
-                                            vertices.Add((xCenter, y2, z2));
-                                        }
-                                    }
-                                    return vertices;
+                                    vertices.Add((xCenter, y2, z1));
+                                    vertices.Add((xCenter, y2, z2));
                                 }
-                            default:
-                                return new List<(float x, float y, float z)>();
+                            }
+                            return vertices;
+                        }
+                        else
+                        {
+                            return new List<(float x, float y, float z)>();
                         }
                     }
                 default:

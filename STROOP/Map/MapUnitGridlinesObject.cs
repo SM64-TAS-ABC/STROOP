@@ -85,7 +85,7 @@ namespace STROOP.Map
                 }
                 return vertices;
             }
-            if (Config.MapGraphics.MapViewPitchValue == 0 &&
+            else if (Config.MapGraphics.MapViewPitchValue == 0 &&
                 (Config.MapGraphics.MapViewYawValue == 16384 ||
                 Config.MapGraphics.MapViewYawValue == 49152))
             {
