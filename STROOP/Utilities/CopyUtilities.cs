@@ -85,7 +85,7 @@ namespace STROOP.Utilities
         private static void CopyAsTable(List<WatchVariableControl> controls)
         {
             if (controls.Count == 0) return;
-            List<uint> addresses = controls[0].GetAddresses();
+            List<uint> addresses = controls[0].GetBaseAddresses();
             if (addresses.Count == 0) return;
             List<string> hexAddresses = addresses.ConvertAll(address => HexUtilities.FormatValue(address));
             string header = "Vars\t" + string.Join("\t", hexAddresses);

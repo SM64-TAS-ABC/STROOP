@@ -306,9 +306,9 @@ namespace STROOP.Controls
             return WatchVar.MemoryType;
         }
 
-        public List<uint> GetAddresses(List<uint> addresses = null)
+        public List<uint> GetBaseAddresses(List<uint> addresses = null)
         {
-            return WatchVar.GetAddressList(addresses);
+            return addresses ?? WatchVar.GetBaseAddressList();
         }
 
         private List<object> GetVerifiedValues(List<uint> addresses = null)

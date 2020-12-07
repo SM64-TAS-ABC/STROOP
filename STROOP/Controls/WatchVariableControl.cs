@@ -907,9 +907,9 @@ namespace STROOP.Controls
             return WatchVarWrapper.GetMemoryType();
         }
 
-        public List<uint> GetAddresses()
+        public List<uint> GetBaseAddresses()
         {
-            return WatchVarWrapper.GetAddresses(FixedAddressList);
+            return WatchVarWrapper.GetBaseAddresses(FixedAddressList);
         }
 
         public List<object> GetValues(bool useRounding = false, bool handleFormatting = true)
