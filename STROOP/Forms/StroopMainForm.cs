@@ -894,19 +894,19 @@ namespace STROOP
             if (openFileDialogSt.ShowDialog() != DialogResult.OK)
                 return;
             string stextension = Path.GetExtension(openFileDialogSt.FileName);
-            if (openFileDialogSt.CheckFileExists == true && stextension != ".st")
+            if (openFileDialogSt.CheckFileExists && stextension == ".st")
             {
-                    try
-                    {
-                        Config.Stream.OpenSTFile(openFileDialogSt.FileName);
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Savestate is corrupted not a savestate or doesnt exist", "Invalid Savestate",MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                try
+                {
+                    Config.Stream.OpenSTFile(openFileDialogSt.FileName);
+                    labelProcessSelect.Text = "Connected To: " + Config.Stream.ProcessName;
+                    panelConnect.Visible = false;
+                }
+                catch
+                {
+                    MessageBox.Show("Savestate is corrupted not a savestate or doesnt exist", "Invalid Savestate",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            labelProcessSelect.Text = "Connected To: " + Config.Stream.ProcessName;
-            panelConnect.Visible = false;
         }
 
         private void saveAsSavestate()
