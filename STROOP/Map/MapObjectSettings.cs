@@ -67,6 +67,9 @@
         public readonly bool AngleRangeChangeAngleDiff;
         public readonly int AngleRangeNewAngleDiff;
 
+        public readonly bool AngleRangeChangeUseInGameAngles;
+        public readonly bool AngleRangeNewUseInGameAngles;
+
         public MapObjectSettings(
             bool customCylinderChangeRelativeMinY = false,
             float customCylinderNewRelativeMinY = 0,
@@ -131,7 +134,10 @@
             bool angleRangeNewUseRelativeAngles = false,
 
             bool angleRangeChangeAngleDiff = false,
-            int angleRangeNewAngleDiff = 0)
+            int angleRangeNewAngleDiff = 0,
+
+            bool angleRangeChangeUseInGameAngles = false,
+            bool angleRangeNewUseInGameAngles = false)
         {
             CustomCylinderChangeRelativeMinY = customCylinderChangeRelativeMinY;
             CustomCylinderNewRelativeMinY = customCylinderNewRelativeMinY;
@@ -197,6 +203,9 @@
 
             AngleRangeChangeAngleDiff = angleRangeChangeAngleDiff;
             AngleRangeNewAngleDiff = angleRangeNewAngleDiff;
+
+            AngleRangeChangeUseInGameAngles = angleRangeChangeUseInGameAngles;
+            AngleRangeNewUseInGameAngles = angleRangeNewUseInGameAngles;
         }
     }
 }

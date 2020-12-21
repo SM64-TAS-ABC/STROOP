@@ -19,8 +19,10 @@ namespace STROOP.Map
 
         private bool _useRelativeAngles;
         private int _angleDiff;
+        private bool _useInGameAngles;
 
         private ToolStripMenuItem _itemUseRelativeAngles;
+        private ToolStripMenuItem _itemUseInGameAngles;
 
         public MapAngleRangeObject(PositionAngle posAngle)
             : base()
@@ -29,6 +31,7 @@ namespace STROOP.Map
 
             _useRelativeAngles = false;
             _angleDiff = 16;
+            _useInGameAngles = false;
 
             Size = 1000;
             OutlineWidth = 1;
@@ -38,13 +41,27 @@ namespace STROOP.Map
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            int startingAngle = _useRelativeAngles ? MoreMath.NormalizeAngleTruncated(_posAngle.Angle) : 0;
-            for (int angle = startingAngle; angle < startingAngle + 65536; angle += _angleDiff)
+            (double x1, double y1, double z1, double a) = _posAngle.GetValues();
+            int startingAngle = _useRelativeAngles ? MoreMath.NormalizeAngleTruncated(a) : 0;
+            void addPointUsingAngle(int angle)
             {
-                (double x1, double y1, double z1, double a) = _posAngle.GetValues();
                 (double x2, double z2) = MoreMath.AddVectorToPoint(Size, angle, x1, z1);
                 vertices.Add(((float)x1, (float)y1, (float)z1));
                 vertices.Add(((float)x2, (float)y1, (float)z2));
+            }
+            if (_useInGameAngles)
+            {
+                foreach (int angle in InGameTrigUtilities.GetInGameAngles())
+                {
+                    addPointUsingAngle(MoreMath.NormalizeAngleTruncated(angle));
+                }
+            }
+            else
+            {
+                for (int angle = startingAngle; angle < startingAngle + 65536; angle += _angleDiff)
+                {
+                    addPointUsingAngle(angle);
+                }
             }
             return vertices;
         }
@@ -88,9 +105,19 @@ namespace STROOP.Map
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
+                _itemUseInGameAngles = new ToolStripMenuItem("Use In-Game Angles");
+                _itemUseInGameAngles.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        angleRangeChangeUseInGameAngles: true,
+                        angleRangeNewUseInGameAngles: !_useInGameAngles);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(_itemUseRelativeAngles);
                 _contextMenuStrip.Items.Add(itemSetAngleDiff);
+                _contextMenuStrip.Items.Add(_itemUseInGameAngles);
             }
 
             return _contextMenuStrip;
@@ -109,6 +136,12 @@ namespace STROOP.Map
             if (settings.AngleRangeChangeAngleDiff)
             {
                 _angleDiff = settings.AngleRangeNewAngleDiff;
+            }
+
+            if (settings.AngleRangeChangeUseInGameAngles)
+            {
+                _useInGameAngles = settings.AngleRangeNewUseInGameAngles;
+                _itemUseInGameAngles.Checked = settings.AngleRangeNewUseInGameAngles;
             }
         }
     }

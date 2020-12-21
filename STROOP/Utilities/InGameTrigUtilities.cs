@@ -30,6 +30,27 @@ namespace STROOP.Utilities
         }
         */
 
+        private static List<int> _inGameAngles = null;
+
+        public static List<int> GetInGameAngles()
+        {
+            if (_inGameAngles == null)
+            {
+                _inGameAngles = new List<int>();
+                List<int> allAngles = Enumerable.Range(0, 65536).ToList();
+                foreach (int angle in allAngles)
+                {
+                    (double x, double z) = MoreMath.GetComponentsFromVector(1, angle);
+                    int inGameAngle = InGameAngleTo(x, z);
+                    if (!_inGameAngles.Contains(inGameAngle))
+                    {
+                        _inGameAngles.Add(inGameAngle);
+                    }
+                }
+            }
+            return new List<int>(_inGameAngles);
+        }
+
         public static float InGameSine(int angle)
         {
             ushort truncated = MoreMath.NormalizeAngleTruncated(angle);
