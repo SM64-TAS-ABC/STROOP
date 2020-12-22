@@ -20,6 +20,12 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            (TriangleDataModel tri, float y) = TriangleUtilities.FindCeilingAndY(marioX, marioY, marioZ);
+            Config.SetDebugText("tri={0} y={1}", tri == null ? "NULL" : HexUtilities.FormatValue(tri.Address), y);
+
             //if (Config.MapGraphics != null)
             //{
             //    double dist1 = MoreMath.GetPlaneDistanceToPoint(
