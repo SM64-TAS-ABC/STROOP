@@ -378,7 +378,7 @@ namespace STROOP.Models
             if (!MoreMath.IsPointInsideTriangle(shortX, shortZ, X1, Z1, X2, Z2, X3, Z3)) return false;
 
             double heightOnTriangle = GetHeightOnTriangle(shortX, shortZ, NormX, NormY, NormZ, NormOffset);
-            if (shortY > heightOnTriangle - 78) return false;
+            if (shortY > heightOnTriangle + 78) return false;
 
             return true;
         }

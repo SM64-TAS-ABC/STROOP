@@ -473,28 +473,14 @@ namespace STROOP.Managers
                 for (int z = zMin; z <= zMax - 1; z++)
                 {
                     counter++;
-                    double x05 = x + 0.5;
-                    double z05 = z + 0.5;
+                    float x05 = x + 0.5f;
+                    float z05 = z + 0.5f;
 
-                    float highestFloorHeightBelow = float.NegativeInfinity;
-                    float highestCeilingHeightBelow = float.NegativeInfinity;
+                    (TriangleDataModel floorTri, float floorY) = TriangleUtilities.FindFloorAndY(x05, y, z05);
+                    (TriangleDataModel ceilingTri, float ceilingY) = TriangleUtilities.FindCeilingAndY(x05, floorY, z05);
 
-                    floorTris.ForEach(tri =>
-                    {
-                        float? height = tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x05, z05);
-                        if (!height.HasValue || height.Value > y) return;
-                        highestFloorHeightBelow = Math.Max(highestFloorHeightBelow, height.Value);
-                    });
-
-                    ceilingTris.ForEach(tri =>
-                    {
-                        float? height = tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x05, z05);
-                        if (!height.HasValue || height.Value > y) return;
-                        highestCeilingHeightBelow = Math.Max(highestCeilingHeightBelow, height.Value);
-                    });
-
-                    bool isOutOfBounds = highestFloorHeightBelow == float.NegativeInfinity;
-                    bool isCeiling = highestCeilingHeightBelow > highestFloorHeightBelow;
+                    bool isOutOfBounds = floorTri == null;
+                    bool isCeiling = y >= ceilingY - 160;
                     if (isOutOfBounds || isCeiling) invisibleWallPoints.Add((x05, z05));
                 }
             }
