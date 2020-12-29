@@ -1599,48 +1599,6 @@ namespace STROOP.Utilities
             InfoForm.ShowValue(output);
         }
 
-        public static void TestSomething16()
-        {
-            int angle1 = 21163;
-            int angle2 = 25973;
-
-            TtcPendulum pendulum = new TtcPendulum(new TtcRng2(), 1, -56745, 0, 42, 0);
-            int startTimer = 35192;
-            for (int i = 0; i < 20000; i++)
-            {
-                int timer = startTimer + i;
-                int accelerationDirection = pendulum._accelerationDirection;
-                int accelerationMagnitude = pendulum._accelerationMagnitude;
-                int angularVelocity = pendulum._angularVelocity;
-                int angle = pendulum._angle;
-                int amplitude = (int)WatchVariableSpecialUtilities.GetPendulumAmplitude(
-                    accelerationDirection, accelerationMagnitude, angularVelocity, angle);
-                string index = TableConfig.PendulumSwings.GetPendulumSwingIndexExtended(amplitude);
-
-                string success = "";
-                int angleUshort = (int)MoreMath.NormalizeAngleDouble(angle);
-                if (angleUshort > angle1 && angleUshort < angle2 &&
-                    TableConfig.PendulumVertexes.HasVertexWithY(angle, -2434))
-                {
-                    success = "*******************************";
-                }
-
-                Config.Print(
-                    "[{0}] [{1}]: {2}, {3}, {4}, {5} | {6}, {7} {8}",
-                    i,
-                    timer,
-                    accelerationDirection,
-                    accelerationMagnitude,
-                    angularVelocity,
-                    angle,
-                    amplitude,
-                    index,
-                    success);
-
-                pendulum.Update();
-            }
-        }
-
         public static void TestSomething15()
         {
             string clipboard = Clipboard.GetText();
@@ -1693,29 +1651,6 @@ namespace STROOP.Utilities
             uint absoluteAddress = (uint)SpecialConfig.CustomX;
             uint relativeAddress = TypeUtilities.GetRelativeAddressFromAbsoluteAddress(absoluteAddress, 4);
             InfoForm.ShowValue(HexUtilities.FormatValue(relativeAddress));
-        }
-
-        public static void TestSomething12()
-        {
-            uint triAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-            if (triAddress == 0) return;
-            TriangleDataModel triDataModel = TriangleDataModel.Create(triAddress);
-            TriangleShape triShape =
-                new TriangleShape(
-                    triDataModel.X1, triDataModel.Y1, triDataModel.Z1,
-                    triDataModel.X2, triDataModel.Y2, triDataModel.Z2,
-                    triDataModel.X3, triDataModel.Y3, triDataModel.Z3);
-            /*
-            InfoForm.ShowValue(
-                String.Format(
-                    "NormX:{0}, NormY:{1}, NormZ:{2}, NormOffset:{3}",
-                    triShape.NormX, triShape.NormY, triShape.NormZ, triShape.NormOffset));
-            */
-
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-
-            InfoForm.ShowValue(triShape.GetY(marioX, marioZ));
         }
 
         public static void TestSomething10()
