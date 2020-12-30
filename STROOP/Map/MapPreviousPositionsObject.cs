@@ -107,8 +107,8 @@ namespace STROOP.Map
                 {
                     (float x1, float y1, float z1, float angle1, int tex1, bool show1) = data[i];
                     (float x2, float y2, float z2, float angle2, int tex2, bool show2) = data[i + 1];
-                    (float x, float z) vertex1ForControl = MapUtilities.ConvertCoordsForControlTopDownView(x1, z1);
-                    (float x, float z) vertex2ForControl = MapUtilities.ConvertCoordsForControlTopDownView(x2, z2);
+                    (float x, float z) vertex1ForControl = MapUtilities.ConvertCoordsForControlOrthographicView(x1, y1, z1);
+                    (float x, float z) vertex2ForControl = MapUtilities.ConvertCoordsForControlOrthographicView(x2, y2, z2);
                     GL.Vertex2(vertex1ForControl.x, vertex1ForControl.z);
                     GL.Vertex2(vertex2ForControl.x, vertex2ForControl.z);
                 }
