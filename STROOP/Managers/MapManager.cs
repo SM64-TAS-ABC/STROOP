@@ -1009,7 +1009,7 @@ namespace STROOP.Managers
         private static readonly List<string> greyVarNames = new List<string>()
         {
             "2D Scroll Speed",
-            "Orth H Scrolling Speed", "Orth V Scrolling Speed",
+            "Orth H Rotate Speed", "Orth V Rotate Speed",
             "3D Scroll Speed", "3D Translate Speed", "3D Rotate Speed",
             "Num Circle Points", "Num Sphere Points",
         };
