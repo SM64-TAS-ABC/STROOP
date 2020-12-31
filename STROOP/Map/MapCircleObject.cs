@@ -15,9 +15,6 @@ namespace STROOP.Map
 {
     public abstract class MapCircleObject : MapObject
     {
-        protected readonly static int NUM_POINTS_2D = 256;
-        protected readonly static int NUM_POINTS_3D = 64;
-
         public MapCircleObject()
             : base()
         {
@@ -33,8 +30,8 @@ namespace STROOP.Map
             {
                 (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(centerX, centerZ);
                 float controlRadius = radius * Config.MapGraphics.MapViewScaleValue;
-                List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS_2D).ToList()
-                    .ConvertAll(index => (index / (float)NUM_POINTS_2D) * 65536)
+                List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
+                    .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
                     .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(controlRadius, angle, controlCenterX, controlCenterZ));
 
                 GL.BindTexture(TextureTarget.Texture2D, -1);

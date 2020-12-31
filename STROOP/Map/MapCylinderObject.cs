@@ -112,8 +112,8 @@ namespace STROOP.Map
             {
                 Map3DVertex[] GetBaseVertices(float height, Color4 color)
                 {
-                    List<(float x, float y, float z)> points3D = Enumerable.Range(0, NUM_POINTS_2D).ToList()
-                        .ConvertAll(index => (index / (float)NUM_POINTS_2D) * 65536)
+                    List<(float x, float y, float z)> points3D = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
+                        .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
                         .ConvertAll(angle =>
                         {
                             (float x, float z) = ((float, float))MoreMath.AddVectorToPoint(radius, angle, centerX, centerZ);
@@ -134,8 +134,8 @@ namespace STROOP.Map
                     GetBaseVertices(minY, OutlineColor),
                 };
 
-                List<(float x, float z)> points2D = Enumerable.Range(0, NUM_POINTS_2D).ToList()
-                    .ConvertAll(index => (index / (float)NUM_POINTS_2D) * 65536)
+                List<(float x, float z)> points2D = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
+                    .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
                     .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(radius, angle, centerX, centerZ));
                 List<Map3DVertex[]> vertexArrayForCurve = new List<Map3DVertex[]>();
                 for (int i = 0; i < points2D.Count; i++)

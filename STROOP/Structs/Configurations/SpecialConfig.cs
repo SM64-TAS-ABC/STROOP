@@ -221,6 +221,9 @@ namespace STROOP.Structs.Configurations
         public static double Map3DTranslateSpeed = 20;
         public static double Map3DRotateSpeed = 50;
 
+        public static int MapCircleNumPoints2D = 256;
+        public static int MapCircleNumPoints3D = 64;
+
         public static CompassPosition CompassPosition;
         public static float CompassLineHeight = 50;
         public static float CompassLineWidth = 10;
