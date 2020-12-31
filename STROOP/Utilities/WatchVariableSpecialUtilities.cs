@@ -539,6 +539,28 @@ namespace STROOP.Structs
                 ));
             }
 
+            List<(string, Func<int>, Action<int>)> intEntries =
+                new List<(string, Func<int>, Action<int>)>()
+                {
+                    ("MapCircleNumPoints2D", () => SpecialConfig.MapCircleNumPoints2D, (int value) => SpecialConfig.MapCircleNumPoints2D = value),
+                    ("MapCircleNumPoints3D", () => SpecialConfig.MapCircleNumPoints3D, (int value) => SpecialConfig.MapCircleNumPoints3D = value),
+                };
+
+            foreach ((string key, Func<int> getter, Action<int> setter) in intEntries)
+            {
+                _dictionary.Add(key,
+                    ((uint dummy) =>
+                    {
+                        return getter();
+                    },
+                    (int intValue, uint dummy) =>
+                    {
+                        setter(intValue);
+                        return true;
+                    }
+                ));
+            }
+
             List<(string, Func<string>, Action<PositionAngle>)> posAngleEntries =
                 new List<(string, Func<string>, Action<PositionAngle>)>()
                 {

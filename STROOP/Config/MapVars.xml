@@ -32,4 +32,7 @@
   <Data base="None" specialType="Map3DTranslateSpeed">3D Translate Speed</Data>
   <Data base="None" specialType="Map3DRotateSpeed">3D Rotate Speed</Data>
 
+  <Data base="None" specialType="MapCircleNumPoints2D">Num Circle Points</Data>
+  <Data base="None" specialType="MapCircleNumPoints3D">Num Sphere Points</Data>
+
 </VarData>
