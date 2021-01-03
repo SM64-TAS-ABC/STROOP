@@ -266,7 +266,10 @@ namespace STROOP.Map
                 }
             }
 
-            SetCenterTextbox(MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue);
+            if (MapViewCenter != MapCenter.Custom)
+            {
+                SetCenterTextbox(MapViewCenterXValue, MapViewCenterYValue, MapViewCenterZValue);
+            }
         }
 
         private void UpdateAngle()
@@ -335,7 +338,10 @@ namespace STROOP.Map
                     break;
             }
 
-            SetAngleTextbox(MapViewYawValue, MapViewPitchValue);
+            if (MapViewYaw != MapViewAngl.Custom)
+            {
+                SetAngleTextbox(MapViewYawValue, MapViewPitchValue);
+            }
         }
 
         public void ChangeScale(int sign, object value)
