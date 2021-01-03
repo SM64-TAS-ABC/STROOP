@@ -338,7 +338,7 @@ namespace STROOP.Map
                     break;
             }
 
-            if (MapViewYaw != MapViewAngl.Custom)
+            if (MapViewYaw != MapYaw.Custom)
             {
                 SetAngleTextbox(MapViewYawValue, MapViewPitchValue);
             }
