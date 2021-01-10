@@ -502,20 +502,10 @@ namespace STROOP.Utilities
         {
             switch (PosAngleType)
             {
-                case PositionAngleTypeEnum.Mario:
-                    return "Mario";
-                case PositionAngleTypeEnum.Holp:
-                    return "HOLP";
-                case PositionAngleTypeEnum.Camera:
-                    return "Camera";
                 case PositionAngleTypeEnum.Obj:
                     return GetMapNameForObject(Address.Value);
                 case PositionAngleTypeEnum.ObjHome:
                     return "Home for " + GetMapNameForObject(Address.Value);
-                case PositionAngleTypeEnum.Self:
-                    return "Self";
-                case PositionAngleTypeEnum.Point:
-                    return "Point";
                 default:
                     return ToString();
             }
