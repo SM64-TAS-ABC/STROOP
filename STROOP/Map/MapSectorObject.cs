@@ -39,10 +39,11 @@ namespace STROOP.Map
             foreach ((float centerX, float centerZ, float radius, float angle, float angleRadius) in dimenstionList)
             {
                 (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(centerX, centerZ);
+                float controlAngle = angle + 32768 - Config.MapGraphics.MapViewYawValue;
                 float controlRadius = radius * Config.MapGraphics.MapViewScaleValue;
                 List <(float pointX, float pointZ)> outerPoints = Enumerable.Range(0, NUM_POINTS_2D).ToList()
                     .ConvertAll(index => (index - NUM_POINTS_2D / 2) / (float)(NUM_POINTS_2D / 2))
-                    .ConvertAll(proportion => angle + proportion * angleRadius)
+                    .ConvertAll(proportion => controlAngle + proportion * angleRadius)
                     .ConvertAll(ang => ((float, float))MoreMath.AddVectorToPoint(controlRadius, ang, controlCenterX, controlCenterZ));
 
                 GL.BindTexture(TextureTarget.Texture2D, -1);
