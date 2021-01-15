@@ -15,6 +15,7 @@
   <UseInGameTrigForAngleLogic>false</UseInGameTrigForAngleLogic>
   <UseExtendedLevelBoundaries>false</UseExtendedLevelBoundaries>
   <UseExpandedRamSize>false</UseExpandedRamSize>
+  <DoQuickStartup>false</DoQuickStartup>
   <TabOrder>
     <Tab>Object</Tab>
     <Tab>Mario</Tab>

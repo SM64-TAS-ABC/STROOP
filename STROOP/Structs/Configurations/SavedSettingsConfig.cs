@@ -204,6 +204,18 @@ namespace STROOP.Structs.Configurations
             }
         }
 
+        private static bool _doQuickStartup;
+        public static bool DoQuickStartup
+        {
+            get => _doQuickStartup;
+            set
+            {
+                if (_doQuickStartup == value) return;
+                _doQuickStartup = value;
+                if (IsLoaded) Save();
+            }
+        }
+
         public static List<TabPage> _recommendedTabOrder;
 
         public static void StoreRecommendedTabOrder()
@@ -360,6 +372,7 @@ namespace STROOP.Structs.Configurations
                 new XElement("UseInGameTrigForAngleLogic", _useInGameTrigForAngleLogic),
                 new XElement("UseExtendedLevelBoundaries", _useExtendedLevelBoundaries),
                 new XElement("UseExpandedRamSize", _useExpandedRamSize),
+                new XElement("DoQuickStartup", _doQuickStartup),
                 tabOrderXElement,
                 removedTabsXElement,
             };

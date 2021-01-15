@@ -151,6 +151,9 @@ namespace STROOP.Utilities
                     case "UseExpandedRamSize":
                         SavedSettingsConfig.UseExpandedRamSize = bool.Parse(element.Value);
                         break;
+                    case "DoQuickStartup":
+                        SavedSettingsConfig.DoQuickStartup = bool.Parse(element.Value);
+                        break;
 
                     case "TabOrder":
                         {

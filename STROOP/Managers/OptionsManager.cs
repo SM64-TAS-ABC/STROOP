@@ -39,6 +39,7 @@ namespace STROOP.Managers
                 "Use In-Game Trig for Angle Logic",
                 "Use Extended Level Boundaries",
                 "Use Expanded Ram Size",
+                "Do Quick Startup",
             };
 
             _savedSettingsGetterList = new List<Func<bool>>()
@@ -58,6 +59,7 @@ namespace STROOP.Managers
                 () => SavedSettingsConfig.UseInGameTrigForAngleLogic,
                 () => SavedSettingsConfig.UseExtendedLevelBoundaries,
                 () => SavedSettingsConfig.UseExpandedRamSize,
+                () => SavedSettingsConfig.DoQuickStartup,
             };
 
             _savedSettingsSetterList = new List<Action<bool>>()
@@ -77,6 +79,7 @@ namespace STROOP.Managers
                 (bool value) => SavedSettingsConfig.UseInGameTrigForAngleLogic = value,
                 (bool value) => SavedSettingsConfig.UseExtendedLevelBoundaries = value,
                 (bool value) => SavedSettingsConfig.UseExpandedRamSize = value,
+                (bool value) => SavedSettingsConfig.DoQuickStartup = value,
             };
 
             SplitContainer splitContainerOptions = tabControl.Controls["splitContainerOptions"] as SplitContainer;
