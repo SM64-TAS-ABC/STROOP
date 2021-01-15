@@ -16,6 +16,8 @@ namespace STROOP.Controls
 {
     public class WatchVariableFlowLayoutPanel : NoTearFlowLayoutPanel
     {
+        public bool IsInitialized { get; private set; }
+
         private string _varFilePath;
 
         private readonly Object _objectLock;
@@ -32,6 +34,8 @@ namespace STROOP.Controls
 
         public WatchVariableFlowLayoutPanel()
         {
+            IsInitialized = false;
+
             _objectLock = new Object();
             _watchVarControls = new List<WatchVariableControl>();
             _allGroups = new List<VariableGroup>();
@@ -56,6 +60,11 @@ namespace STROOP.Controls
             List<VariableGroup> allVariableGroupsNullable = null,
             List<VariableGroup> visibleVariableGroupsNullable = null)
         {
+            if (IsInitialized)
+            {
+                throw new ArgumentOutOfRangeException("WatchVariableFlowLayoutPanel already initialized");
+            }
+
             List<VariableGroup> allVariableGroups = allVariableGroupsNullable ?? new List<VariableGroup>();
             if (allVariableGroups.Contains(VariableGroup.Custom)) throw new ArgumentOutOfRangeException();
             allVariableGroups.Add(VariableGroup.Custom);
@@ -78,6 +87,8 @@ namespace STROOP.Controls
                 : XmlConfigParser.OpenWatchVariableControlPrecursors(_varFilePath);
             AddVariables(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
             AddItemsToContextMenuStrip();
+
+            IsInitialized = true;
         }
 
         private void AddItemsToContextMenuStrip()

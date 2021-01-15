@@ -15,6 +15,7 @@ namespace STROOP.Managers
     public class DataManager : VariableAdder
     {
         protected WatchVariableFlowLayoutPanel _variablePanel;
+        private Action _initializeAction;
 
         public DataManager(
             string varFilePath,
@@ -23,10 +24,11 @@ namespace STROOP.Managers
             List<VariableGroup> visibleVariableGroups = null) : base(variablePanel)
         {
             _variablePanel = variablePanel;
-            _variablePanel.Initialize(
-                varFilePath,
-                allVariableGroups,
-                visibleVariableGroups);
+            _initializeAction = () => _variablePanel.Initialize(varFilePath, allVariableGroups, visibleVariableGroups);
+            if (!SavedSettingsConfig.DoQuickStartup)
+            {
+                _initializeAction();
+            }
         }
 
         public virtual void RemoveVariableGroup(VariableGroup varGroup)
@@ -67,6 +69,10 @@ namespace STROOP.Managers
         public virtual void Update(bool updateView)
         {
             if (!updateView) return;
+            if (!_variablePanel.IsInitialized)
+            {
+                _initializeAction();
+            }
             _variablePanel.UpdatePanel();
         }
     }
