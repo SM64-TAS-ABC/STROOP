@@ -29,6 +29,58 @@ namespace STROOP.Controls
         public readonly List<uint> FixedAddresses;
 
         public WatchVariableControlPrecursor(
+            string typeName = null,
+            string specialType = null,
+            BaseAddressTypeEnum baseAddressType = BaseAddressTypeEnum.Relative,
+            uint? offsetUS = null,
+            uint? offsetJP = null,
+            uint? offsetSH = null,
+            uint? offsetEU = null,
+            uint? offsetDefault = null,
+            uint? mask = null,
+            int? shift = null,
+            bool handleMapping = true,
+            string name = null,
+            WatchVariableSubclass subclass = WatchVariableSubclass.Number,
+            Color? backgroundColor = null,
+            Type displayType = null,
+            int? roundingLimit = null,
+            bool? useHex = null,
+            bool? invertBool = null,
+            bool? isYaw = null,
+            Coordinate? coordinate = null,
+            List<VariableGroup> groupList = null,
+            List<uint> fixedAddresses = null)
+        {
+            WatchVar =
+                new WatchVariable(
+                    typeName,
+                    specialType,
+                    baseAddressType,
+                    offsetUS,
+                    offsetJP,
+                    offsetSH,
+                    offsetEU,
+                    offsetDefault,
+                    mask,
+                    shift,
+                    handleMapping);
+            Name = name;
+            Subclass = subclass;
+            BackgroundColor = backgroundColor;
+            DisplayType = displayType;
+            RoundingLimit = roundingLimit;
+            UseHex = useHex;
+            InvertBool = invertBool;
+            IsYaw = isYaw;
+            Coordinate = coordinate;
+            GroupList = groupList;
+            FixedAddresses = fixedAddresses;
+
+            VerifyState();
+        }
+
+        public WatchVariableControlPrecursor(
             string name,
             WatchVariable watchVar,
             WatchVariableSubclass subclass,
