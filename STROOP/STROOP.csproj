@@ -759,6 +759,7 @@
     <Compile Include="Utilities\SubtitleUtilities.cs" />
     <Compile Include="Utilities\TestUtilities2.cs" />
     <Compile Include="Utilities\WaterUtilities.cs" />
+    <Compile Include="Utilities\LazyImage.cs" />
     <Compile Include="Utilities\ZipUtilities.cs" />
     <Compile Include="Utilities\StringUtilities.cs" />
     <Compile Include="Utilities\TestUtilities.cs" />
