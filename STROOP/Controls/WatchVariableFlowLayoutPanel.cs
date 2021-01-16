@@ -82,9 +82,12 @@ namespace STROOP.Controls
                 WatchVariableSelectionUtilities.CreateSelectionToolStripItems(
                     () => new List<WatchVariableControl>(_selectedWatchVarControls), this);
 
-            List<WatchVariableControlPrecursor> precursors = _varFilePath == null
-                ? new List<WatchVariableControlPrecursor>()
-                : XmlConfigParser.OpenWatchVariableControlPrecursors(_varFilePath);
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            if (_varFilePath != null)
+            {
+                precursors = XmlConfigParser.OpenWatchVariableControlPrecursors(_varFilePath);
+                //precursors = WatchVariableData.GetPrecursors(_varFilePath);
+            }
 
             AddVariables(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
             AddItemsToContextMenuStrip();

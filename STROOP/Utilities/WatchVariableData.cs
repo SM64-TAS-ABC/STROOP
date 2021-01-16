@@ -13,7 +13,16 @@ namespace STROOP.Structs
 {
     public static class WatchVariableData
     {
-        public static Dictionary<string, List<WatchVariableControlPrecursor>> Dictionary =
+        public static List<WatchVariableControlPrecursor> GetPrecursors(string key)
+        {
+            if (_dictionary.ContainsKey(key))
+            {
+                return _dictionary[key];
+            }
+            return new List<WatchVariableControlPrecursor>();
+        }
+
+        private static Dictionary<string, List<WatchVariableControlPrecursor>> _dictionary =
             new Dictionary<string, List<WatchVariableControlPrecursor>>()
             {
                 [@"Config/MapVars.xml"] = new List<WatchVariableControlPrecursor>()
