@@ -92,15 +92,15 @@ namespace STROOP.Controls
             IsInitialized = true;
 
             ///////////////////////////////FOR DEBUGGING///////////////////////////////////////
-            Config.Print();
-            Config.Print("[@\"" + varFilePath + "\"] = new List<WatchVariableControlPrecursor>()");
-            Config.Print("{");
-            foreach (WatchVariableControlPrecursor precursor in precursors)
-            {
-                Config.Print("    " + precursor.ToStringForCode());
-            }
-            Config.Print("}");
-            Config.Print();
+            //Config.Print();
+            //Config.Print("[@\"" + varFilePath + "\"] = new List<WatchVariableControlPrecursor>()");
+            //Config.Print("{");
+            //foreach (WatchVariableControlPrecursor precursor in precursors)
+            //{
+            //    Config.Print("    " + precursor.ToStringForCode() + ",");
+            //}
+            //Config.Print("},");
+            //Config.Print();
             ///////////////////////////////////////////////////////////////////////////////////
         }
 

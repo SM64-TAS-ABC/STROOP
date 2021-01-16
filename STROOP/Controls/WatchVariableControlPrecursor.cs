@@ -381,7 +381,10 @@ namespace STROOP.Controls
 
         private static string FormatString(object obj)
         {
-            return "\"" + obj + "\"";
+            string s = obj.ToString();
+            s = s.Replace("\"", "\\\"");
+            s = s.Replace("&lt", "<");
+            return "\"" + s + "\"";
         }
 
         private static string FormatEnum(Type type, object obj)
@@ -417,6 +420,22 @@ namespace STROOP.Controls
             return output;
         }
 
+        private static string FormatBool(bool b)
+        {
+            return b.ToString().ToLower();
+        }
+
+        private static string FormatType(Type type)
+        {
+            return "typeof(" + TypeUtilities.TypeToString[type] + ")";
+        }
+
+        private static string FormatColor(Color color)
+        {
+            string colorString = FormatString(ColorUtilities.ConvertColorToString(color));
+            return string.Format("ColorUtilities.GetColorFromString({0})", colorString);
+        }
+
         public string ToStringForCode()
         {
             List<(string name, object value)> values = new List<(string name, object value)>();
@@ -424,7 +443,7 @@ namespace STROOP.Controls
             if (Name != null) values.Add(("name", FormatString(Name)));
             if (WatchVar.MemoryTypeName != null) values.Add(("typeName", FormatString(WatchVar.MemoryTypeName)));
             if (WatchVar.SpecialType != null) values.Add(("specialType", FormatString(WatchVar.SpecialType)));
-            if (DisplayType != null) values.Add(("displayType", FormatString(TypeUtilities.TypeToString[DisplayType])));
+            if (DisplayType != null) values.Add(("displayType", FormatType(DisplayType)));
             if (WatchVar.BaseAddressType != BaseAddressTypeEnum.Relative) values.Add(("baseAddressType", FormatEnum(typeof(BaseAddressTypeEnum), WatchVar.BaseAddressType)));
             if (WatchVar.OffsetUS != null) values.Add(("offsetUS", HexUtilities.FormatValue(WatchVar.OffsetUS)));
             if (WatchVar.OffsetJP != null) values.Add(("offsetJP", HexUtilities.FormatValue(WatchVar.OffsetJP)));
@@ -433,15 +452,15 @@ namespace STROOP.Controls
             if (WatchVar.OffsetDefault != null) values.Add(("offsetDefault", HexUtilities.FormatValue(WatchVar.OffsetDefault)));
             if (WatchVar.Mask != null) values.Add(("mask", HexUtilities.FormatValue(WatchVar.Mask)));
             if (WatchVar.Shift != null) values.Add(("shift", WatchVar.Shift));
-            if (WatchVar.HandleMapping != true) values.Add(("handleMapping", WatchVar.HandleMapping));
+            if (WatchVar.HandleMapping != true) values.Add(("handleMapping", FormatBool(WatchVar.HandleMapping)));
             if (Subclass != WatchVariableSubclass.Number) values.Add(("subclass", FormatEnum(typeof(WatchVariableSubclass), Subclass)));
             if (RoundingLimit != null) values.Add(("roundingLimit", RoundingLimit));
-            if (UseHex != null) values.Add(("useHex", UseHex));
-            if (InvertBool != null) values.Add(("invertBool", InvertBool));
-            if (IsYaw != null) values.Add(("isYaw", IsYaw));
+            if (UseHex != null) values.Add(("useHex", FormatBool(UseHex.Value)));
+            if (InvertBool != null) values.Add(("invertBool", FormatBool(InvertBool.Value)));
+            if (IsYaw != null) values.Add(("isYaw", FormatBool(IsYaw.Value)));
             if (Coordinate != null) values.Add(("coordinate", FormatEnum(typeof(Coordinate), Coordinate)));
             if (GroupList != null) values.Add(("groupList", FormatGroupList(GroupList)));
-            if (BackgroundColor != null) values.Add(("backgroundColor", ColorUtilities.ConvertColorToString(BackgroundColor.Value)));
+            if (BackgroundColor != null) values.Add(("backgroundColor", FormatColor(BackgroundColor.Value)));
             if (FixedAddresses != null) values.Add(("fixedAddresses", FormatFixedAddresses(FixedAddresses)));
 
             string output = "new WatchVariableControlPrecursor(";
@@ -452,7 +471,7 @@ namespace STROOP.Controls
                 output += name + ": " + value;
                 counter++;
             }
-            output += "),";
+            output += ")";
             return output;
         }
     }
