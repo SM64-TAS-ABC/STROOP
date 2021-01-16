@@ -85,10 +85,23 @@ namespace STROOP.Controls
             List<WatchVariableControlPrecursor> precursors = _varFilePath == null
                 ? new List<WatchVariableControlPrecursor>()
                 : XmlConfigParser.OpenWatchVariableControlPrecursors(_varFilePath);
+
             AddVariables(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
             AddItemsToContextMenuStrip();
 
             IsInitialized = true;
+
+            ///////////////////////////////FOR DEBUGGING///////////////////////////////////////
+            Config.Print();
+            Config.Print("[@\"" + varFilePath + "\"] = new List<WatchVariableControlPrecursor>()");
+            Config.Print("{");
+            foreach (WatchVariableControlPrecursor precursor in precursors)
+            {
+                Config.Print("    " + precursor.ToStringForCode());
+            }
+            Config.Print("}");
+            Config.Print();
+            ///////////////////////////////////////////////////////////////////////////////////
         }
 
         private void AddItemsToContextMenuStrip()

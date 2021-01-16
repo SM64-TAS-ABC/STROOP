@@ -374,5 +374,89 @@ namespace STROOP.Controls
         {
             return ToXML().ToString();
         }
+
+
+
+
+
+        private static string FormatString(object obj)
+        {
+            return "\"" + obj + "\"";
+        }
+
+        private static string FormatEnum(Type type, object obj)
+        {
+            return type.Name + "." + obj;
+        }
+
+        private static string FormatGroupList(List<VariableGroup> groupList)
+        {
+            string output = "new List<VariableGroup>() {";
+            int counter = 0;
+            foreach (VariableGroup group in groupList)
+            {
+                if (counter > 0) output += ", ";
+                output += FormatEnum(typeof(VariableGroup), group);
+                counter++;
+            }
+            output += "}";
+            return output;
+        }
+
+        private static string FormatFixedAddresses(List<uint> fixedAddresses)
+        {
+            string output = "new List<uint>() {";
+            int counter = 0;
+            foreach (uint fixedAddress in fixedAddresses)
+            {
+                if (counter > 0) output += ", ";
+                output += HexUtilities.FormatValue(fixedAddress);
+                counter++;
+            }
+            output += "}";
+            return output;
+        }
+
+        public string ToStringForCode()
+        {
+            List<(string name, object value)> values = new List<(string name, object value)>();
+
+            if (WatchVar.MemoryTypeName != null) values.Add(("typeName", FormatString(WatchVar.MemoryTypeName)));
+            if (WatchVar.SpecialType != null) values.Add(("specialType", FormatString(WatchVar.SpecialType)));
+            if (WatchVar.BaseAddressType != BaseAddressTypeEnum.Relative) values.Add(
+                ("baseAddressType", FormatEnum(typeof(BaseAddressTypeEnum), WatchVar.BaseAddressType)));
+            if (WatchVar.OffsetUS != null) values.Add(("offsetUS", HexUtilities.FormatValue(WatchVar.OffsetUS)));
+            if (WatchVar.OffsetJP != null) values.Add(("offsetJP", HexUtilities.FormatValue(WatchVar.OffsetJP)));
+            if (WatchVar.OffsetSH != null) values.Add(("offsetSH", HexUtilities.FormatValue(WatchVar.OffsetSH)));
+            if (WatchVar.OffsetEU != null) values.Add(("offsetEU", HexUtilities.FormatValue(WatchVar.OffsetEU)));
+            if (WatchVar.OffsetDefault != null) values.Add(("offsetDefault", HexUtilities.FormatValue(WatchVar.OffsetDefault)));
+            if (WatchVar.Mask != null) values.Add(("mask", HexUtilities.FormatValue(WatchVar.Mask)));
+            if (WatchVar.Shift != null) values.Add(("shift", WatchVar.Shift));
+            if (WatchVar.HandleMapping != true) values.Add(("handleMapping", WatchVar.HandleMapping));
+
+            if (Name != null) values.Add(("name", FormatString(Name)));
+            if (Subclass != WatchVariableSubclass.Number) values.Add(
+                ("subclass", FormatEnum(typeof(WatchVariableSubclass), Subclass)));
+            if (BackgroundColor != null) values.Add(("backgroundColor", ColorUtilities.ConvertColorToString(BackgroundColor.Value)));
+            if (DisplayType != null) values.Add(("displayType", FormatString(TypeUtilities.TypeToString[DisplayType])));
+            if (RoundingLimit != null) values.Add(("roundingLimit", RoundingLimit));
+            if (UseHex != null) values.Add(("useHex", UseHex));
+            if (InvertBool != null) values.Add(("invertBool", InvertBool));
+            if (IsYaw != null) values.Add(("isYaw", IsYaw));
+            if (Coordinate != null) values.Add(("coordinate", FormatEnum(typeof(Coordinate), Coordinate)));
+            if (GroupList != null) values.Add(("groupList", FormatGroupList(GroupList)));
+            if (FixedAddresses != null) values.Add(("fixedAddresses", FormatFixedAddresses(FixedAddresses)));
+
+            string output = "new WatchVariableControlPrecursor(";
+            int counter = 0;
+            foreach ((string name, object value) in values)
+            {
+                if (counter > 0) output += ", ";
+                output += name + ": " + value;
+                counter++;
+            }
+            output += "),";
+            return output;
+        }
     }
 }

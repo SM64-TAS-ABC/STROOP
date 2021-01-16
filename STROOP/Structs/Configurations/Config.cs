@@ -96,8 +96,15 @@ namespace STROOP.Structs.Configurations
         public static void Print(object formatNullable = null, params object[] args)
         {
             object format = formatNullable ?? "";
-            string formatted = String.Format(format.ToString(), args);
-            System.Diagnostics.Trace.WriteLine(formatted);
+            if (args.Length == 0)
+            {
+                System.Diagnostics.Trace.WriteLine(format);
+            }
+            else
+            {
+                string formatted = String.Format(format.ToString(), args);
+                System.Diagnostics.Trace.WriteLine(formatted);
+            }
         }
 
         public static void SetDebugText(object formatNullable = null, params object[] args)
