@@ -19,7 +19,7 @@ using STROOP.Models;
 
 namespace STROOP.Utilities
 {
-    public static class LazyImage
+    public class LazyImage
     {
         private string _filePath;
         private Image _image;

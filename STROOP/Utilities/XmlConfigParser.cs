@@ -709,22 +709,14 @@ namespace STROOP.Utilities
                 if (obj.ImagePath == null || obj.ImagePath == "")
                     continue;
 
-                using (var preLoad = Image.FromFile(imageDir + obj.ImagePath))
-                {
-                    float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
-                    obj.Image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
-                }
+                obj.Image = Image.FromFile(imageDir + obj.ImagePath);
                 if (obj.MapImagePath == "" || obj.MapImagePath == null)
                 {
                     obj.MapImage = obj.Image;
                 }
                 else
                 {
-                    using (var preLoad = Image.FromFile(mapImageDir + obj.MapImagePath))
-                    {
-                        float scale = Math.Max(preLoad.Height / 128f, preLoad.Width / 128f);
-                        obj.MapImage = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
-                    }
+                    obj.MapImage = Image.FromFile(mapImageDir + obj.MapImagePath);
                 }
                 obj.TransparentImage = obj.Image.GetOpaqueImage(0.5f);
             }
