@@ -421,10 +421,11 @@ namespace STROOP.Controls
         {
             List<(string name, object value)> values = new List<(string name, object value)>();
 
+            if (Name != null) values.Add(("name", FormatString(Name)));
             if (WatchVar.MemoryTypeName != null) values.Add(("typeName", FormatString(WatchVar.MemoryTypeName)));
             if (WatchVar.SpecialType != null) values.Add(("specialType", FormatString(WatchVar.SpecialType)));
-            if (WatchVar.BaseAddressType != BaseAddressTypeEnum.Relative) values.Add(
-                ("baseAddressType", FormatEnum(typeof(BaseAddressTypeEnum), WatchVar.BaseAddressType)));
+            if (DisplayType != null) values.Add(("displayType", FormatString(TypeUtilities.TypeToString[DisplayType])));
+            if (WatchVar.BaseAddressType != BaseAddressTypeEnum.Relative) values.Add(("baseAddressType", FormatEnum(typeof(BaseAddressTypeEnum), WatchVar.BaseAddressType)));
             if (WatchVar.OffsetUS != null) values.Add(("offsetUS", HexUtilities.FormatValue(WatchVar.OffsetUS)));
             if (WatchVar.OffsetJP != null) values.Add(("offsetJP", HexUtilities.FormatValue(WatchVar.OffsetJP)));
             if (WatchVar.OffsetSH != null) values.Add(("offsetSH", HexUtilities.FormatValue(WatchVar.OffsetSH)));
@@ -433,18 +434,14 @@ namespace STROOP.Controls
             if (WatchVar.Mask != null) values.Add(("mask", HexUtilities.FormatValue(WatchVar.Mask)));
             if (WatchVar.Shift != null) values.Add(("shift", WatchVar.Shift));
             if (WatchVar.HandleMapping != true) values.Add(("handleMapping", WatchVar.HandleMapping));
-
-            if (Name != null) values.Add(("name", FormatString(Name)));
-            if (Subclass != WatchVariableSubclass.Number) values.Add(
-                ("subclass", FormatEnum(typeof(WatchVariableSubclass), Subclass)));
-            if (BackgroundColor != null) values.Add(("backgroundColor", ColorUtilities.ConvertColorToString(BackgroundColor.Value)));
-            if (DisplayType != null) values.Add(("displayType", FormatString(TypeUtilities.TypeToString[DisplayType])));
+            if (Subclass != WatchVariableSubclass.Number) values.Add(("subclass", FormatEnum(typeof(WatchVariableSubclass), Subclass)));
             if (RoundingLimit != null) values.Add(("roundingLimit", RoundingLimit));
             if (UseHex != null) values.Add(("useHex", UseHex));
             if (InvertBool != null) values.Add(("invertBool", InvertBool));
             if (IsYaw != null) values.Add(("isYaw", IsYaw));
             if (Coordinate != null) values.Add(("coordinate", FormatEnum(typeof(Coordinate), Coordinate)));
             if (GroupList != null) values.Add(("groupList", FormatGroupList(GroupList)));
+            if (BackgroundColor != null) values.Add(("backgroundColor", ColorUtilities.ConvertColorToString(BackgroundColor.Value)));
             if (FixedAddresses != null) values.Add(("fixedAddresses", FormatFixedAddresses(FixedAddresses)));
 
             string output = "new WatchVariableControlPrecursor(";
