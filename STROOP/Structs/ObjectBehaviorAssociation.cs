@@ -1,4 +1,5 @@
 ﻿using STROOP.Controls;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,9 +17,9 @@ namespace STROOP.Structs
         public bool RotatesOnMap;
         public string ImagePath = "";
         public string MapImagePath = "";
-        public Image Image;
-        public Image TransparentImage;
-        public Image MapImage;
+        public LazyImage Image;
+        public LazyImage TransparentImage;
+        public LazyImage MapImage;
         public List<WatchVariableControlPrecursor> Precursors = new List<WatchVariableControlPrecursor>();
 
         private List<WatchVariableControl> _watchVariableControls = null;

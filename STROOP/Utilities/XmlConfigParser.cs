@@ -709,16 +709,16 @@ namespace STROOP.Utilities
                 if (obj.ImagePath == null || obj.ImagePath == "")
                     continue;
 
-                obj.Image = Image.FromFile(imageDir + obj.ImagePath);
+                obj.Image = new LazyImage(imageDir + obj.ImagePath);
                 if (obj.MapImagePath == "" || obj.MapImagePath == null)
                 {
                     obj.MapImage = obj.Image;
                 }
                 else
                 {
-                    obj.MapImage = Image.FromFile(mapImageDir + obj.MapImagePath);
+                    obj.MapImage = new LazyImage(mapImageDir + obj.MapImagePath);
                 }
-                obj.TransparentImage = obj.Image.GetOpaqueImage(0.5f);
+                obj.TransparentImage = new LazyImage(obj.Image, 0.5f);
             }
 
             return assoc;

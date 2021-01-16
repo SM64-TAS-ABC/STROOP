@@ -33,8 +33,8 @@ namespace STROOP.Map
                 return Config.ObjectAssociations.DefaultImage;
             }
             return _iconType == MapTrackerIconType.ObjectSlotImage ?
-                _obj.BehaviorAssociation.Image :
-                _obj.BehaviorAssociation.MapImage;
+                _obj.BehaviorAssociation.Image.Image :
+                _obj.BehaviorAssociation.MapImage.Image;
         }
 
         public override PositionAngle GetPositionAngle()

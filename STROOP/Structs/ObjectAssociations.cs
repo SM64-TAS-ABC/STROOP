@@ -115,8 +115,8 @@ namespace STROOP.Structs
                         BehaviorAddress = 0x0000,
                     },
                     RotatesOnMap = false,
-                    Image = EmptyImage,
-                    MapImage = EmptyImage,
+                    Image = new LazyImage(EmptyImage),
+                    MapImage = new LazyImage(EmptyImage),
                 });
         }
 
@@ -154,14 +154,14 @@ namespace STROOP.Structs
             if (assoc == null)
                 return transparent ? _transparentDefaultImage : _defaultImage;
 
-            return transparent ? assoc.TransparentImage : assoc.Image;
+            return transparent ? assoc.TransparentImage.Image : assoc.Image.Image;
         }
 
         public Image GetObjectImage(string objName)
         {
             ObjectBehaviorAssociation assoc = GetObjectAssociation(objName);
             if (assoc == null) return EmptyImage;
-            return assoc.Image;
+            return assoc.Image.Image;
         }
 
         public ObjectBehaviorAssociation GetObjectAssociation(string objName)
@@ -178,7 +178,7 @@ namespace STROOP.Structs
             if (assoc == null)
                 return _defaultImage;
 
-            return assoc.MapImage;
+            return assoc.MapImage.Image;
         }
 
         public bool GetObjectMapRotates(BehaviorCriteria behaviorCriteria)
@@ -263,9 +263,9 @@ namespace STROOP.Structs
             // Unload and dispose of all images
             foreach (var obj in _objAssoc)
             {
-                obj.Image?.Dispose();
-                obj.TransparentImage?.Dispose();
-                obj.MapImage?.Dispose();
+                obj.Image?.Image?.Dispose();
+                obj.TransparentImage?.Image?.Dispose();
+                obj.MapImage?.Image?.Dispose();
             }
 
             _transparentDefaultImage?.Dispose();

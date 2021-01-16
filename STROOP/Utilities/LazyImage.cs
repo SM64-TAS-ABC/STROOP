@@ -22,6 +22,9 @@ namespace STROOP.Utilities
     public class LazyImage
     {
         private string _filePath;
+        private LazyImage _preLazyImage;
+        private float? _opacity;
+
         private Image _image;
 
         public Image Image
@@ -30,7 +33,14 @@ namespace STROOP.Utilities
             {
                 if (_image == null)
                 {
-                    _image = Image.FromFile(_filePath);
+                    if (_filePath != null)
+                    {
+                        _image = Image.FromFile(_filePath);
+                    }
+                    else
+                    {
+                        _image = _preLazyImage.Image.GetOpaqueImage(_opacity.Value);
+                    }
                 }
                 return _image;
             }
@@ -39,7 +49,17 @@ namespace STROOP.Utilities
         public LazyImage(string filePath)
         {
             _filePath = filePath;
-            _image = null;
+        }
+
+        public LazyImage(LazyImage preLazyImage, float opacity)
+        {
+            _preLazyImage = preLazyImage;
+            _opacity = opacity;
+        }
+
+        public LazyImage(Image image)
+        {
+            _image = image;
         }
     }
 }

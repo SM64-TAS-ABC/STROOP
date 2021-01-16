@@ -25,8 +25,8 @@ namespace STROOP.Map
             : base()
         {
             _objName = assoc.Name;
-            _objImage = assoc.Image;
-            _objMapImage = assoc.MapImage;
+            _objImage = assoc.Image.Image;
+            _objMapImage = assoc.MapImage.Image;
             InternalRotates = assoc.RotatesOnMap;
         }
 
