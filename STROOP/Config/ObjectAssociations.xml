@@ -1077,7 +1077,7 @@
   <Object behaviorScriptAddress="0x130011D0" name="Shockwave">
     <SpawnCode gfxId="0x68"/>
     <Image path="Shockwave.png"/>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
   </Object>
   <Object behaviorScriptAddress="0x130011EC" name="Mario Burning Flame">
     <Image path="Mario Burning Flame.png"/>
@@ -1282,7 +1282,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x373" base="Graphics">Blinking State Graphic</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1AE" base="Object">Blinking Timer</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0x6C" base="Object" subclass="Object">Tail Anchor Obj</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001850" name="Bowser #2" subType="1">
@@ -1294,7 +1294,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x373" base="Graphics">Blinking State Graphic</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1AE" base="Object">Blinking Timer</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0x6C" base="Object" subclass="Object">Tail Anchor Obj</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001850" name="Bowser #3" subType="2">
@@ -1306,7 +1306,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x373" base="Graphics">Blinking State Graphic</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1AE" base="Object">Blinking Timer</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0x6C" base="Object" subclass="Object">Tail Anchor Obj</Data>
   </Object>
   <Object behaviorScriptAddress="0x130018CC" name="Bowser Body Anchor">
@@ -2063,15 +2063,15 @@
     <SpawnCode gfxId="0x54"/>
     <Image path="Boo.png"/>
     <MapImage path="Boo Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002710" name="Cage Boo">
     <SpawnCode gfxId="0x54"/>
     <Image path="Big Boo.png"/>
     <MapImage path="Big Boo Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opacity</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002768" name="Big Boo (Balcony)">
@@ -2079,8 +2079,8 @@
     <Image path="Big Boo.png"/>
     <MapImage path="Big Boo Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opacity</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300277C" name="Big Boo (Merry-Go-Round)">
@@ -2088,8 +2088,8 @@
     <Image path="Big Boo.png"/>
     <MapImage path="Big Boo Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opacity</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002790" name="Big Boo (Lobby)">
@@ -2097,8 +2097,8 @@
     <Image path="Big Boo.png"/>
     <MapImage path="Big Boo Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opacity</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130027D0" name="Boo Triplet Spawner">
@@ -2109,26 +2109,34 @@
     <SpawnCode gfxId="0x54"/>
     <Image path="Boo.png"/>
     <MapImage path="Boo Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opacity</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130027F4" name="Boo (Merry-Go-Round)">
     <SpawnCode gfxId="0x54"/>
     <Image path="Boo.png"/>
     <MapImage path="Boo Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opacity</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002804" name="Boo (Activates Text)">
     <SpawnCode gfxId="0x54"/>
     <Image path="Boo.png"/>
     <MapImage path="Boo Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" type="int" offset="0x88" base="Object">Death Status</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opacity</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Base Scale</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x100" base="Object" subclass="Angle" yaw="true">Yaw Moving During Hit</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x104" base="Object" subclass="Angle" yaw="true">Yaw Moving Before Hit</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x108" base="Object" subclass="Object">Parent Big Boo</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x10C" base="Object">Negated Aggressiveness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object" subclass="Angle" yaw="true">Yaw Moving Initial</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x1B0" base="Object">Turning Speed</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300286C" name="BBH Lobby Step (Already Risen)">
     <SpawnCode gfxId="0x35"/>
@@ -2396,7 +2404,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Text</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">State 2</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F40" name="Star to Unlock Door">
     <SpawnCode gfxId="0x7A"/>
@@ -2765,14 +2773,14 @@
     <SpawnCode gfxId="0x68"/>
     <Image path="Manta Ring.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">Ring Index</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x14F" base="Object" subclass="Boolean">Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003798" name="Water Ring (from Manta Ray)">
     <SpawnCode gfxId="0x68"/>
     <Image path="Manta Ring.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">Ring Index</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x14F" base="Object" subclass="Boolean">Collected</Data>
   </Object>
   <Object behaviorScriptAddress="0x130037E0" name="Manta Ring Manager">
@@ -2838,7 +2846,7 @@
     <Image path="Moneybag.png"/>
     <MapImage path="Moneybag Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Jumping Phase</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
   </Object>
   <Object behaviorScriptAddress="0x130039D4" name="Moneybag Coin">
     <SpawnCode gfxId="0x74"/>
@@ -4564,7 +4572,7 @@
     <SpawnCode gfxId="0xDE"/>
     <Image path="Peach.png"/>
     <MapImage path="Peach Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opacity</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300565C" name="Bird (for Pan to Castle)">
     <SpawnCode gfxId="0x54"/>
