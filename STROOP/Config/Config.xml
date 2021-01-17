@@ -16,7 +16,7 @@
     <Emulator name="Dolphin" processName="Dolphin" ramStart="0xe6a180" endianness="big" special="dolphin"/>
     <Emulator name="Mupen64Plus" processName="mupen64plus" ramStart="0x008FF142" endianness="little"/>
 
-    <Emulator name="Mupen64 rr Lua" processName="mupen64" ramStart="0x4bb7b0" endianness="little"/>
+    <Emulator name="Mupen64 rr Lua" processName="mupen64" ramStart="0x4bb7a0" endianness="little"/>
   </Emulators>
 
   <!-- US, JP, or SH -->
