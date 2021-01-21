@@ -20,6 +20,7 @@ namespace STROOP.Map
     public class MapCoordinateLabelsObject : MapObject
     {
         private Dictionary<(bool isX, int coord), int> _texes;
+        private static readonly int BUFFER = 40;
 
         public MapCoordinateLabelsObject()
             : base()
@@ -41,7 +42,7 @@ namespace STROOP.Map
 
             for (int x = xMin; x <= xMax; x++)
             {
-                ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, x);
+                ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, x, BUFFER);
                 if (!intersectionPoints.HasValue) continue;
                 (float g, float z) = intersectionPoints.Value.Item1;
                 (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
@@ -52,7 +53,7 @@ namespace STROOP.Map
 
             for (int z = zMin; z <= zMax; z++)
             {
-                ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, z);
+                ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, z, BUFFER);
                 if (!intersectionPoints.HasValue) continue;
                 (float x, float g) = intersectionPoints.Value.Item1;
                 (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
@@ -89,8 +90,6 @@ namespace STROOP.Map
             }
 
             GL.Color4(1, 1, 1, 1.0f);
-
-            GetLineIntersectionWithBorder(true, 0); // TODO: REMOVE THIS
         }
 
         public override void DrawOn2DControlOrthographicView()
@@ -153,12 +152,12 @@ namespace STROOP.Map
             return _contextMenuStrip;
         }
 
-        public ((float x1, float z1), (float x2, float z2))? GetLineIntersectionWithBorder(bool isX, int coord)
+        public ((float x1, float z1), (float x2, float z2))? GetLineIntersectionWithBorder(bool isX, int coord, int margin)
         {
-            (float topLeftX, float topLeftZ) = MapUtilities.ConvertCoordsForInGame(0, 0);
-            (float topRightX, float topRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.GLControlMap2D.Width, 0);
-            (float bottomRightX, float bottomRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.GLControlMap2D.Width, Config.MapGui.GLControlMap2D.Height);
-            (float bottomLeftX, float bottomLeftZ) = MapUtilities.ConvertCoordsForInGame(0, Config.MapGui.GLControlMap2D.Height);
+            (float topLeftX, float topLeftZ) = MapUtilities.ConvertCoordsForInGame(margin, margin);
+            (float topRightX, float topRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.GLControlMap2D.Width - margin, margin);
+            (float bottomRightX, float bottomRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.GLControlMap2D.Width - margin, Config.MapGui.GLControlMap2D.Height - margin);
+            (float bottomLeftX, float bottomLeftZ) = MapUtilities.ConvertCoordsForInGame(margin, Config.MapGui.GLControlMap2D.Height - margin);
 
             List<(float x, float z)> corners = new List<(float x, float z)>()
             {
