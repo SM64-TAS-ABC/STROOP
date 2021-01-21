@@ -19,8 +19,11 @@ namespace STROOP.Map
 {
     public class MapCoordinateLabelsObject : MapObject
     {
-        private Dictionary<(bool isX, int coord), int> _texes;
         private static readonly int BUFFER = 40;
+        private static readonly bool USE_HIGH_X = false;
+        private static readonly bool USE_HIGH_Z = false;
+
+        private Dictionary<(bool isX, int coord), int> _texes;
 
         public MapCoordinateLabelsObject()
             : base()
@@ -40,11 +43,19 @@ namespace STROOP.Map
             List<(float x, float z, float angle, int tex) > labelData =
                 new List<(float x, float z, float angle, int tex)>();
 
+            (float x1, float z1) getSuperlativePoint(bool isX, bool useHigh, ((float x, float z) p1, (float x, float z) p2) points)
+            {
+                float value1 = isX ? points.p1.x : points.p1.z;
+                float value2 = isX ? points.p2.x : points.p2.z;
+                bool isP1Winner = useHigh ? value1 > value2 : value1 < value2;
+                return isP1Winner ? points.p1 : points.p2;
+            }
+
             for (int x = xMin; x <= xMax; x++)
             {
                 ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, x, BUFFER);
                 if (!intersectionPoints.HasValue) continue;
-                (float g, float z) = intersectionPoints.Value.Item1;
+                (float g, float z) = getSuperlativePoint(true, USE_HIGH_X, intersectionPoints.Value);
                 (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 int tex = GetTex(true, x);
                 float angle = 0;
@@ -55,7 +66,7 @@ namespace STROOP.Map
             {
                 ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, z, BUFFER);
                 if (!intersectionPoints.HasValue) continue;
-                (float x, float g) = intersectionPoints.Value.Item1;
+                (float x, float g) = getSuperlativePoint(false, USE_HIGH_Z, intersectionPoints.Value);
                 (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 int tex = GetTex(false, z);
                 float angle = 0;
