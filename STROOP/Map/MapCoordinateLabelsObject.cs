@@ -19,14 +19,15 @@ namespace STROOP.Map
 {
     public class MapCoordinateLabelsObject : MapObject
     {
-        private static int BUFFER = 40;
+        private static double CUSTOM_SPACING = 0;
+        private static double MARGIN = 40;
+        private static double PIXEL_THRESHOLD = 15;
         private static bool SHOW_X_LABELS = true;
         private static bool SHOW_Z_LABELS = true;
         private static bool USE_HIGH_X = false;
         private static bool USE_HIGH_Z = false;
         private static bool SHOW_CURSOR_POS = true;
         private static bool BOLD = true;
-        private static int PIXEL_THRESHOLD = 15;
 
         private Dictionary<(bool isX, double coord), int> _texes;
         private Color _previousOutlineColor;
@@ -61,14 +62,23 @@ namespace STROOP.Map
 
             // smallerDimension / 10 >= biggerMultiplierDiff
 
-            int smallerDimension = Math.Min(Config.MapGui.GLControlMap2D.Width, Config.MapGui.GLControlMap2D.Height);
-            float biggerRange = Math.Max(
-                Config.MapGraphics.MapViewXMax - Config.MapGraphics.MapViewXMin,
-                Config.MapGraphics.MapViewZMax - Config.MapGraphics.MapViewZMin);
-            double pixelsPerUnit = smallerDimension / biggerRange;
-            double totalMultiplies = PIXEL_THRESHOLD / pixelsPerUnit;
-            double numMultiplies = (int)Math.Ceiling(Math.Log(totalMultiplies) / Math.Log(2));
-            double spacing = Math.Pow(2, numMultiplies);
+            double spacing;
+            if (CUSTOM_SPACING == 0)
+            {
+                int smallerDimension = Math.Min(Config.MapGui.GLControlMap2D.Width, Config.MapGui.GLControlMap2D.Height);
+                float biggerRange = Math.Max(
+                    Config.MapGraphics.MapViewXMax - Config.MapGraphics.MapViewXMin,
+                    Config.MapGraphics.MapViewZMax - Config.MapGraphics.MapViewZMin);
+                double pixelsPerUnit = smallerDimension / biggerRange;
+                double totalMultiplies = PIXEL_THRESHOLD / pixelsPerUnit;
+                double numMultiplies = (int)Math.Ceiling(Math.Log(totalMultiplies) / Math.Log(2));
+                spacing = Math.Pow(2, numMultiplies);
+            }
+            else
+            {
+                spacing = CUSTOM_SPACING;
+            }
+
             int xMinMultiplier = (int)(Config.MapGraphics.MapViewXMin / spacing) - 1;
             int xMaxMultiplier = (int)(Config.MapGraphics.MapViewXMax / spacing) + 1;
             int zMinMultiplier = (int)(Config.MapGraphics.MapViewZMin / spacing) - 1;
@@ -89,7 +99,7 @@ namespace STROOP.Map
             {
                 for (double x = xMinMultiplier * spacing; x <= xMaxMultiplier * spacing; x += spacing)
                 {
-                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, (float)x, BUFFER);
+                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, (float)x, (float)MARGIN);
                     if (!intersectionPoints.HasValue) continue;
                     (float g, float z) = getSuperlativePoint(false, USE_HIGH_Z, intersectionPoints.Value);
                     (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView((float)x, z);
@@ -105,7 +115,7 @@ namespace STROOP.Map
             {
                 for (double z = zMinMultiplier * spacing; z <= zMaxMultiplier * spacing; z += spacing)
                 {
-                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, (float)z, BUFFER);
+                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, (float)z, (float)MARGIN);
                     if (!intersectionPoints.HasValue) continue;
                     (float x, float g) = getSuperlativePoint(true, USE_HIGH_X, intersectionPoints.Value);
                     (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, (float)z);
@@ -195,7 +205,7 @@ namespace STROOP.Map
             return _contextMenuStrip;
         }
 
-        public ((float x1, float z1), (float x2, float z2))? GetLineIntersectionWithBorder(bool isX, float coord, int margin)
+        public ((float x1, float z1), (float x2, float z2))? GetLineIntersectionWithBorder(bool isX, float coord, float margin)
         {
             (float topLeftX, float topLeftZ) = MapUtilities.ConvertCoordsForInGame(margin, margin);
             (float topRightX, float topRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.GLControlMap2D.Width - margin, margin);
