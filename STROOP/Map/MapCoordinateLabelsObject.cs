@@ -157,15 +157,15 @@ namespace STROOP.Map
         {
             (float topLeftX, float topLeftZ) = MapUtilities.ConvertCoordsForInGame(0, 0);
             (float topRightX, float topRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.GLControlMap2D.Width, 0);
-            (float bottomLeftX, float bottomLeftZ) = MapUtilities.ConvertCoordsForInGame(0, Config.MapGui.GLControlMap2D.Height);
             (float bottomRightX, float bottomRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.GLControlMap2D.Width, Config.MapGui.GLControlMap2D.Height);
+            (float bottomLeftX, float bottomLeftZ) = MapUtilities.ConvertCoordsForInGame(0, Config.MapGui.GLControlMap2D.Height);
 
             List<(float x, float z)> corners = new List<(float x, float z)>()
             {
                 (topLeftX, topLeftZ),
                 (topRightX, topRightZ),
-                (bottomLeftX, bottomLeftZ),
                 (bottomRightX, bottomRightZ),
+                (bottomLeftX, bottomLeftZ),
             };
 
             List<((float x1, float z1), (float x2, float z2))> cornerSegments =
@@ -188,7 +188,7 @@ namespace STROOP.Map
                 else
                 {
                     if (z1 == z2 || coord < Math.Min(z1, z2) || coord > Math.Max(z1, z2)) continue;
-                    float p = (coord - z1) / (z2 - x1);
+                    float p = (coord - z1) / (z2 - z1);
                     float x = x1 + p * (x2 - x1);
                     intersectionPoints.Add((x, coord));
                 }
