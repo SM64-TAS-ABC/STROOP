@@ -20,6 +20,8 @@ namespace STROOP.Map
     public class MapCoordinateLabelsObject : MapObject
     {
         private static readonly int BUFFER = 40;
+        private static readonly bool SHOW_X_LABELS = true;
+        private static readonly bool SHOW_Z_LABELS = true;
         private static readonly bool USE_HIGH_X = false;
         private static readonly bool USE_HIGH_Z = false;
 
@@ -58,30 +60,36 @@ namespace STROOP.Map
                 return isP1Winner ? points.p1 : points.p2;
             }
 
-            for (int x = xMin; x <= xMax; x++)
+            if (SHOW_X_LABELS)
             {
-                ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, x, BUFFER);
-                if (!intersectionPoints.HasValue) continue;
-                (float g, float z) = getSuperlativePoint(false, USE_HIGH_Z, intersectionPoints.Value);
-                (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
-                float angle = -1 * Config.MapGraphics.MapViewYawValue + 16384;
-                if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
-                float angleDegrees = (float)MoreMath.AngleUnitsToDegrees(angle);
-                int tex = GetTex(true, x);
-                labelData.Add((xControl, zControl, angleDegrees, tex));
+                for (int x = xMin; x <= xMax; x++)
+                {
+                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, x, BUFFER);
+                    if (!intersectionPoints.HasValue) continue;
+                    (float g, float z) = getSuperlativePoint(false, USE_HIGH_Z, intersectionPoints.Value);
+                    (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
+                    float angle = -1 * Config.MapGraphics.MapViewYawValue + 16384;
+                    if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
+                    float angleDegrees = (float)MoreMath.AngleUnitsToDegrees(angle);
+                    int tex = GetTex(true, x);
+                    labelData.Add((xControl, zControl, angleDegrees, tex));
+                }
             }
 
-            for (int z = zMin; z <= zMax; z++)
+            if (SHOW_Z_LABELS)
             {
-                ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, z, BUFFER);
-                if (!intersectionPoints.HasValue) continue;
-                (float x, float g) = getSuperlativePoint(true, USE_HIGH_X, intersectionPoints.Value);
-                (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
-                float angle = -1 * Config.MapGraphics.MapViewYawValue + 32768;
-                if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
-                float angleDegrees = (float)MoreMath.AngleUnitsToDegrees(angle);
-                int tex = GetTex(false, z);
-                labelData.Add((xControl, zControl, angleDegrees, tex));
+                for (int z = zMin; z <= zMax; z++)
+                {
+                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, z, BUFFER);
+                    if (!intersectionPoints.HasValue) continue;
+                    (float x, float g) = getSuperlativePoint(true, USE_HIGH_X, intersectionPoints.Value);
+                    (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
+                    float angle = -1 * Config.MapGraphics.MapViewYawValue + 32768;
+                    if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
+                    float angleDegrees = (float)MoreMath.AngleUnitsToDegrees(angle);
+                    int tex = GetTex(false, z);
+                    labelData.Add((xControl, zControl, angleDegrees, tex));
+                }
             }
 
             foreach ((float x, float z, float angle, int tex) in labelData)
@@ -89,6 +97,8 @@ namespace STROOP.Map
                 SizeF size = new SizeF(Size, Size);
                 MapUtilities.DrawTexture(tex, new PointF(x, z), size, angle, Opacity);
             }
+
+
         }
 
         public override void DrawOn2DControlOrthographicView()
