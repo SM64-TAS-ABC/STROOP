@@ -26,8 +26,7 @@ namespace STROOP.Map
         private static bool USE_HIGH_Z = false;
         private static bool SHOW_CURSOR_POS = true;
         private static bool BOLD = true;
-        private static bool USE_CUSTOM_SPACING = true;
-        private static double CUSTOM_SPACING = 1;
+        private static int PIXEL_THRESHOLD = 15;
 
         private Dictionary<(bool isX, double coord), int> _texes;
         private Color _previousOutlineColor;
@@ -67,7 +66,7 @@ namespace STROOP.Map
                 Config.MapGraphics.MapViewXMax - Config.MapGraphics.MapViewXMin,
                 Config.MapGraphics.MapViewZMax - Config.MapGraphics.MapViewZMin);
             double pixelsPerUnit = smallerDimension / biggerRange;
-            double totalMultiplies = 10 / pixelsPerUnit;
+            double totalMultiplies = PIXEL_THRESHOLD / pixelsPerUnit;
             double numMultiplies = (int)Math.Ceiling(Math.Log(totalMultiplies) / Math.Log(2));
             double spacing = Math.Pow(2, numMultiplies);
             int xMinMultiplier = (int)(Config.MapGraphics.MapViewXMin / spacing) - 1;
