@@ -19,11 +19,12 @@ namespace STROOP.Map
 {
     public class MapCoordinateLabelsObject : MapObject
     {
-        private static readonly int BUFFER = 40;
-        private static readonly bool SHOW_X_LABELS = true;
-        private static readonly bool SHOW_Z_LABELS = true;
-        private static readonly bool USE_HIGH_X = false;
-        private static readonly bool USE_HIGH_Z = false;
+        private static int BUFFER = 40;
+        private static bool SHOW_X_LABELS = true;
+        private static bool SHOW_Z_LABELS = true;
+        private static bool USE_HIGH_X = false;
+        private static bool USE_HIGH_Z = false;
+        private static bool SHOW_CURSOR_POS = true;
 
         private Dictionary<(bool isX, int coord), int> _texes;
         private Color _previousOutlineColor;
@@ -94,11 +95,19 @@ namespace STROOP.Map
 
             foreach ((float x, float z, float angle, int tex) in labelData)
             {
-                SizeF size = new SizeF(Size, Size);
-                MapUtilities.DrawTexture(tex, new PointF(x, z), size, angle, Opacity);
+                MapUtilities.DrawTexture(tex, new PointF(x, z), new SizeF(Size, Size), angle, Opacity);
             }
 
-
+            if (SHOW_CURSOR_POS)
+            {
+                Point relPos = Config.MapGui.GLControlMap2D.PointToClient(Cursor.Position);
+                (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+                double stringX = Math.Round(inGameX, 3);
+                double stringZ = Math.Round(inGameZ, 3);
+                Bitmap texture = CreateTexture(stringX + "\r\n" + stringZ);
+                int tex = MapUtilities.LoadTexture(texture);
+                MapUtilities.DrawTexture(tex, new PointF(relPos.X + 20 + (int)Size / 2, relPos.Y), new SizeF(Size, Size), 0, Opacity);
+            }
         }
 
         public override void DrawOn2DControlOrthographicView()
