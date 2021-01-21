@@ -39,19 +39,6 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView()
         {
-            //double spacing = SpecialConfig.CustomX <= 0 ? 1 : SpecialConfig.CustomX; // TOOD: FIX THIS
-            //int xMinMultiplier = (int)(Config.MapGraphics.MapViewXMin / spacing) - 1;
-            //int xMaxMultiplier = (int)(Config.MapGraphics.MapViewXMax / spacing) + 1;
-            //int zMinMultiplier = (int)(Config.MapGraphics.MapViewZMin / spacing) - 1;
-            //int zMaxMultiplier = (int)(Config.MapGraphics.MapViewZMax / spacing) + 1;
-
-            //int smallerDimension = Math.Min(Config.MapGui.GLControlMap2D.Width, Config.MapGui.GLControlMap2D.Height);
-            //int biggerMultiplierDiff = Math.Max(xMaxMultiplier - xMinMultiplier, zMaxMultiplier - zMinMultiplier);
-            //int pixelsPerLabel = smallerDimension / biggerMultiplierDiff;
-            //if (pixelsPerLabel < 10) return;
-
-            // smallerDimension / 10 >= biggerMultiplierDiff
-
             double spacing;
             if (SpecialConfig.CoordinateLabelsCustomSpacing == 0)
             {
