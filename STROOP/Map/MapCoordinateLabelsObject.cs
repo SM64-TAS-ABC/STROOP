@@ -41,7 +41,9 @@ namespace STROOP.Map
 
             for (int x = xMin; x <= xMax; x++)
             {
-                float z = 0;
+                ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, x);
+                if (!intersectionPoints.HasValue) continue;
+                (float g, float z) = intersectionPoints.Value.Item1;
                 (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 int tex = GetTex(true, x);
                 float angle = 0;
@@ -50,7 +52,9 @@ namespace STROOP.Map
 
             for (int z = zMin; z <= zMax; z++)
             {
-                float x = 0;
+                ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, z);
+                if (!intersectionPoints.HasValue) continue;
+                (float x, float g) = intersectionPoints.Value.Item1;
                 (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 int tex = GetTex(false, z);
                 float angle = 0;
@@ -82,8 +86,11 @@ namespace STROOP.Map
                 GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-width / 2, -height / 2);
 
                 GL.End();
-        }
+            }
+
             GL.Color4(1, 1, 1, 1.0f);
+
+            GetLineIntersectionWithBorder(true, 0); // TODO: REMOVE THIS
         }
 
         public override void DrawOn2DControlOrthographicView()
@@ -144,6 +151,69 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public ((float x1, float z1), (float x2, float z2))? GetLineIntersectionWithBorder(bool isX, int coord)
+        {
+            (float topLeftX, float topLeftZ) = MapUtilities.ConvertCoordsForInGame(0, 0);
+            (float topRightX, float topRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.GLControlMap2D.Width, 0);
+            (float bottomLeftX, float bottomLeftZ) = MapUtilities.ConvertCoordsForInGame(0, Config.MapGui.GLControlMap2D.Height);
+            (float bottomRightX, float bottomRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.GLControlMap2D.Width, Config.MapGui.GLControlMap2D.Height);
+
+            List<(float x, float z)> corners = new List<(float x, float z)>()
+            {
+                (topLeftX, topLeftZ),
+                (topRightX, topRightZ),
+                (bottomLeftX, bottomLeftZ),
+                (bottomRightX, bottomRightZ),
+            };
+
+            List<((float x1, float z1), (float x2, float z2))> cornerSegments =
+                new List<((float x1, float z1), (float x2, float z2))>();
+            for (int i = 0; i < corners.Count; i++)
+            {
+                cornerSegments.Add((corners[i], corners[(i + 1) % corners.Count]));
+            }
+
+            List<(float x, float z)> intersectionPoints = new List<(float x, float z)>();
+            foreach (((float x1, float z1), (float x2, float z2)) in cornerSegments)
+            {
+                if (isX)
+                {
+                    if (x1 == x2 || coord < Math.Min(x1, x2) || coord > Math.Max(x1, x2)) continue;
+                    float p = (coord - x1) / (x2 - x1);
+                    float z = z1 + p * (z2 - z1);
+                    intersectionPoints.Add((coord, z));
+                }
+                else
+                {
+                    if (z1 == z2 || coord < Math.Min(z1, z2) || coord > Math.Max(z1, z2)) continue;
+                    float p = (coord - z1) / (z2 - x1);
+                    float x = x1 + p * (x2 - x1);
+                    intersectionPoints.Add((x, coord));
+                }
+            }
+            if (intersectionPoints.Count < 2) return null;
+
+            double biggestDist = double.MinValue;
+            (float p1X, float p1Z) = (float.NaN, float.NaN);
+            (float p2X, float p2Z) = (float.NaN, float.NaN);
+            for (int i = 0; i < intersectionPoints.Count; i++)
+            {
+                for (int j = i + 1; j < intersectionPoints.Count; j++)
+                {
+                    (float q1X, float q1Z) = intersectionPoints[i];
+                    (float q2X, float q2Z) = intersectionPoints[j];
+                    double dist = MoreMath.GetDistanceBetween(q1X, q1Z, q2X, q2Z);
+                    if (dist > biggestDist)
+                    {
+                        biggestDist = dist;
+                        (p1X, p1Z) = (q1X, q1Z);
+                        (p2X, p2Z) = (q2X, q2Z);
+                    }
+                }
+            }
+            return ((p1X, p1Z), (p2X, p2Z));
         }
     }
 }
