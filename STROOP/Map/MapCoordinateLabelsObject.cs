@@ -25,10 +25,12 @@ namespace STROOP.Map
         private static bool USE_HIGH_X = false;
         private static bool USE_HIGH_Z = false;
         private static bool SHOW_CURSOR_POS = true;
+        private static bool BOLD = true;
 
         private Dictionary<(bool isX, int coord), int> _texes;
         private Color _previousOutlineColor;
         private float _previousSize;
+        private bool _previousBold;
 
         public MapCoordinateLabelsObject()
             : base()
@@ -40,6 +42,7 @@ namespace STROOP.Map
             _texes = new Dictionary<(bool isX, int coord), int>();
             _previousOutlineColor = OutlineColor;
             _previousSize = Size;
+            _previousBold = BOLD;
         }
 
         public override void DrawOn2DControlTopDownView()
@@ -155,7 +158,7 @@ namespace STROOP.Map
             Bitmap bmp = new Bitmap(size, size, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
             Graphics gfx = Graphics.FromImage(bmp);
             gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            Font drawFont = new Font("Arial", size / 6);
+            Font drawFont = new Font("Arial", size / 6, FontStyle.Bold);
             SolidBrush drawBrush = new SolidBrush(OutlineColor);
             SizeF stringSize = gfx.MeasureString(text, drawFont);
             gfx.DrawString(text, drawFont, drawBrush, new PointF(size / 2 - stringSize.Width / 2, size / 2 - stringSize.Height / 2));
@@ -246,6 +249,12 @@ namespace STROOP.Map
             if (Size != _previousSize)
             {
                 _previousSize = Size;
+                _texes.Clear();
+            }
+
+            if (BOLD != _previousBold)
+            {
+                _previousBold = BOLD;
                 _texes.Clear();
             }
         }
