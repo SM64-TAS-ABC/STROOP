@@ -58,7 +58,7 @@ namespace STROOP.Map
                 (float g, float z) = getSuperlativePoint(true, USE_HIGH_X, intersectionPoints.Value);
                 (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 int tex = GetTex(true, x);
-                float angle = 0;
+                float angle = (float)MoreMath.AngleUnitsToDegrees(-1 * Config.MapGraphics.MapViewYawValue + 16384);
                 labelData.Add((xControl, zControl, angle, tex));
             }
 
@@ -69,38 +69,15 @@ namespace STROOP.Map
                 (float x, float g) = getSuperlativePoint(false, USE_HIGH_Z, intersectionPoints.Value);
                 (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 int tex = GetTex(false, z);
-                float angle = 0;
+                float angle = (float)MoreMath.AngleUnitsToDegrees(-1 * Config.MapGraphics.MapViewYawValue + 32768);
                 labelData.Add((xControl, zControl, angle, tex));
             }
 
-            GL.BindTexture(TextureTarget.Texture2D, -1);
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
-
             foreach ((float x, float z, float angle, int tex) in labelData)
             {
-                int width = 100;
-                int height = 100;
-
-                // Place and rotate texture to correct location on control
-                GL.LoadIdentity();
-                GL.Translate(new Vector3(x, z, 0));
-                GL.Color4(1.0, 1.0, 1.0, 1.0);
-
-                // Start drawing texture
-                GL.BindTexture(TextureTarget.Texture2D, tex);
-                GL.Begin(PrimitiveType.Quads);
-
-                // Set drawing coordinates
-                GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(-width / 2, height / 2);
-                GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(width / 2, height / 2);
-                GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(width / 2, -height / 2);
-                GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(-width / 2, -height / 2);
-
-                GL.End();
+                SizeF size = new SizeF(100, 100);
+                MapUtilities.DrawTexture(tex, new PointF(x, z), size, angle, Opacity);
             }
-
-            GL.Color4(1, 1, 1, 1.0f);
         }
 
         public override void DrawOn2DControlOrthographicView()
