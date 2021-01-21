@@ -47,7 +47,7 @@ namespace STROOP.Map
                     Config.MapGraphics.MapViewXMax - Config.MapGraphics.MapViewXMin,
                     Config.MapGraphics.MapViewZMax - Config.MapGraphics.MapViewZMin);
                 double pixelsPerUnit = smallerDimension / biggerRange;
-                double totalMultiplies = SpecialConfig.CoordinateLabelsPixelThreshold / pixelsPerUnit;
+                double totalMultiplies = SpecialConfig.CoordinateLabelsLabelDensity / pixelsPerUnit;
                 double numMultiplies = (int)Math.Ceiling(Math.Log(totalMultiplies) / Math.Log(2));
                 spacing = Math.Pow(2, numMultiplies);
             }
@@ -184,7 +184,7 @@ namespace STROOP.Map
                         {
                             ("CoordinateLabelsCustomSpacing", "Custom Spacing", WatchVariableSubclass.Number),
                             ("CoordinateLabelsMargin", "Margin", WatchVariableSubclass.Number),
-                            ("CoordinateLabelsPixelThreshold", "Pixel Threshold", WatchVariableSubclass.Number),
+                            ("CoordinateLabelsLabelDensity", "Label Density", WatchVariableSubclass.Number),
 
                             ("CoordinateLabelsShowCursorPos", "Show Cursor Pos", WatchVariableSubclass.Boolean),
                             ("CoordinateLabelsShowXLabels", "Show X Labels", WatchVariableSubclass.Boolean),

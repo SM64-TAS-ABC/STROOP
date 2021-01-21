@@ -525,7 +525,7 @@ namespace STROOP.Structs
 
                     ("CoordinateLabelsCustomSpacing", () => SpecialConfig.CoordinateLabelsCustomSpacing, (double value) => SpecialConfig.CoordinateLabelsCustomSpacing = value),
                     ("CoordinateLabelsMargin", () => SpecialConfig.CoordinateLabelsMargin, (double value) => SpecialConfig.CoordinateLabelsMargin = value),
-                    ("CoordinateLabelsPixelThreshold", () => SpecialConfig.CoordinateLabelsPixelThreshold, (double value) => SpecialConfig.CoordinateLabelsPixelThreshold = value),
+                    ("CoordinateLabelsLabelDensity", () => SpecialConfig.CoordinateLabelsLabelDensity, (double value) => SpecialConfig.CoordinateLabelsLabelDensity = value),
                     ("CoordinateLabelsShowCursorPos", () => SpecialConfig.CoordinateLabelsShowCursorPos, (double value) => SpecialConfig.CoordinateLabelsShowCursorPos = value),
                     ("CoordinateLabelsShowXLabels", () => SpecialConfig.CoordinateLabelsShowXLabels, (double value) => SpecialConfig.CoordinateLabelsShowXLabels = value),
                     ("CoordinateLabelsShowZLabels", () => SpecialConfig.CoordinateLabelsShowZLabels, (double value) => SpecialConfig.CoordinateLabelsShowZLabels = value),
