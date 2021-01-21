@@ -35,6 +35,7 @@ namespace STROOP.Map
         {
             Size = 100;
             OutlineColor = Color.Blue;
+            InternalRotates = true;
 
             _texes = new Dictionary<(bool isX, int coord), int>();
             _previousOutlineColor = OutlineColor;
@@ -71,7 +72,7 @@ namespace STROOP.Map
                     (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                     float angle = -1 * Config.MapGraphics.MapViewYawValue + 16384;
                     if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
-                    float angleDegrees = (float)MoreMath.AngleUnitsToDegrees(angle);
+                    float angleDegrees = Rotates ? (float)MoreMath.AngleUnitsToDegrees(angle) : 0;
                     int tex = GetTex(true, x);
                     labelData.Add((xControl, zControl, angleDegrees, tex));
                 }
@@ -87,7 +88,7 @@ namespace STROOP.Map
                     (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                     float angle = -1 * Config.MapGraphics.MapViewYawValue + 32768;
                     if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
-                    float angleDegrees = (float)MoreMath.AngleUnitsToDegrees(angle);
+                    float angleDegrees = Rotates ? (float)MoreMath.AngleUnitsToDegrees(angle) : 0;
                     int tex = GetTex(false, z);
                     labelData.Add((xControl, zControl, angleDegrees, tex));
                 }
@@ -106,7 +107,7 @@ namespace STROOP.Map
                 double stringZ = Math.Round(inGameZ, 3);
                 Bitmap texture = CreateTexture(stringX + "\r\n" + stringZ);
                 int tex = MapUtilities.LoadTexture(texture);
-                MapUtilities.DrawTexture(tex, new PointF(relPos.X + 20 + (int)Size / 2, relPos.Y), new SizeF(Size, Size), 0, Opacity);
+                MapUtilities.DrawTexture(tex, new PointF(relPos.X + 15 + (int)Size / 2, relPos.Y), new SizeF(Size, Size), 0, Opacity);
             }
         }
 
