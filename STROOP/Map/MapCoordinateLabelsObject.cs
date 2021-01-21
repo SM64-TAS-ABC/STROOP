@@ -55,22 +55,26 @@ namespace STROOP.Map
             {
                 ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, x, BUFFER);
                 if (!intersectionPoints.HasValue) continue;
-                (float g, float z) = getSuperlativePoint(true, USE_HIGH_X, intersectionPoints.Value);
+                (float g, float z) = getSuperlativePoint(false, USE_HIGH_Z, intersectionPoints.Value);
                 (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 int tex = GetTex(true, x);
-                float angle = (float)MoreMath.AngleUnitsToDegrees(-1 * Config.MapGraphics.MapViewYawValue + 16384);
-                labelData.Add((xControl, zControl, angle, tex));
+                float angle = -1 * Config.MapGraphics.MapViewYawValue + 16384;
+                if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
+                float angleDegrees = (float)MoreMath.AngleUnitsToDegrees(angle);
+                labelData.Add((xControl, zControl, angleDegrees, tex));
             }
 
             for (int z = zMin; z <= zMax; z++)
             {
                 ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, z, BUFFER);
                 if (!intersectionPoints.HasValue) continue;
-                (float x, float g) = getSuperlativePoint(false, USE_HIGH_Z, intersectionPoints.Value);
+                (float x, float g) = getSuperlativePoint(true, USE_HIGH_X, intersectionPoints.Value);
                 (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 int tex = GetTex(false, z);
-                float angle = (float)MoreMath.AngleUnitsToDegrees(-1 * Config.MapGraphics.MapViewYawValue + 32768);
-                labelData.Add((xControl, zControl, angle, tex));
+                float angle = -1 * Config.MapGraphics.MapViewYawValue + 32768;
+                if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
+                float angleDegrees = (float)MoreMath.AngleUnitsToDegrees(angle);
+                labelData.Add((xControl, zControl, angleDegrees, tex));
             }
 
             foreach ((float x, float z, float angle, int tex) in labelData)
