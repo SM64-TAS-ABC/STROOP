@@ -24,11 +24,18 @@ namespace STROOP.Map
         private static readonly bool USE_HIGH_Z = false;
 
         private Dictionary<(bool isX, int coord), int> _texes;
+        private Color _previousOutlineColor;
+        private float _previousSize;
 
         public MapCoordinateLabelsObject()
             : base()
         {
+            Size = 100;
+            OutlineColor = Color.Blue;
+
             _texes = new Dictionary<(bool isX, int coord), int>();
+            _previousOutlineColor = OutlineColor;
+            _previousSize = Size;
         }
 
         public override void DrawOn2DControlTopDownView()
@@ -79,7 +86,7 @@ namespace STROOP.Map
 
             foreach ((float x, float z, float angle, int tex) in labelData)
             {
-                SizeF size = new SizeF(100, 100);
+                SizeF size = new SizeF(Size, Size);
                 MapUtilities.DrawTexture(tex, new PointF(x, z), size, angle, Opacity);
             }
         }
@@ -128,7 +135,7 @@ namespace STROOP.Map
             Graphics gfx = Graphics.FromImage(bmp);
             gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             Font drawFont = new Font("Arial", 16);
-            SolidBrush drawBrush = new SolidBrush(Color.Black);
+            SolidBrush drawBrush = new SolidBrush(OutlineColor);
             SizeF stringSize = gfx.MeasureString(text, drawFont);
             gfx.DrawString(text, drawFont, drawBrush, new PointF(50 - stringSize.Width / 2, 50 - stringSize.Height / 2));
             return bmp;
@@ -205,6 +212,21 @@ namespace STROOP.Map
                 }
             }
             return ((p1X, p1Z), (p2X, p2Z));
+        }
+
+        public override void Update()
+        {
+            if (OutlineColor != _previousOutlineColor)
+            {
+                _previousOutlineColor = OutlineColor;
+                _texes.Clear();
+            }
+
+            if (Size != _previousSize)
+            {
+                _previousSize = Size;
+                _texes.Clear();
+            }
         }
     }
 }
