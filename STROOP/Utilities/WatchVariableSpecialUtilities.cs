@@ -522,6 +522,16 @@ namespace STROOP.Structs
                     ("Map3DScrollSpeed", () => SpecialConfig.Map3DScrollSpeed, (double value) => SpecialConfig.Map3DScrollSpeed = value),
                     ("Map3DTranslateSpeed", () => SpecialConfig.Map3DTranslateSpeed, (double value) => SpecialConfig.Map3DTranslateSpeed = value),
                     ("Map3DRotateSpeed", () => SpecialConfig.Map3DRotateSpeed, (double value) => SpecialConfig.Map3DRotateSpeed = value),
+
+                    ("CoordinateLabelsCustomSpacing", () => SpecialConfig.CoordinateLabelsCustomSpacing, (double value) => SpecialConfig.CoordinateLabelsCustomSpacing = value),
+                    ("CoordinateLabelsMargin", () => SpecialConfig.CoordinateLabelsMargin, (double value) => SpecialConfig.CoordinateLabelsMargin = value),
+                    ("CoordinateLabelsPixelThreshold", () => SpecialConfig.CoordinateLabelsPixelThreshold, (double value) => SpecialConfig.CoordinateLabelsPixelThreshold = value),
+                    ("CoordinateLabelsShowCursorPos", () => SpecialConfig.CoordinateLabelsShowCursorPos, (double value) => SpecialConfig.CoordinateLabelsShowCursorPos = value),
+                    ("CoordinateLabelsShowXLabels", () => SpecialConfig.CoordinateLabelsShowXLabels, (double value) => SpecialConfig.CoordinateLabelsShowXLabels = value),
+                    ("CoordinateLabelsShowZLabels", () => SpecialConfig.CoordinateLabelsShowZLabels, (double value) => SpecialConfig.CoordinateLabelsShowZLabels = value),
+                    ("CoordinateLabelsUseHighX", () => SpecialConfig.CoordinateLabelsUseHighX, (double value) => SpecialConfig.CoordinateLabelsUseHighX = value),
+                    ("CoordinateLabelsUseHighZ", () => SpecialConfig.CoordinateLabelsUseHighZ, (double value) => SpecialConfig.CoordinateLabelsUseHighZ = value),
+                    ("CoordinateLabelsBoldText", () => SpecialConfig.CoordinateLabelsBoldText, (double value) => SpecialConfig.CoordinateLabelsBoldText = value),
                 };
 
             foreach ((string key, Func<double> getter, Action<double> setter) in doubleEntries)

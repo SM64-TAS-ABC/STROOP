@@ -2,9 +2,6 @@
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace STROOP.Structs.Configurations
 {
@@ -279,6 +276,16 @@ namespace STROOP.Structs.Configurations
                 }
             }
         }
+
+        public static double CoordinateLabelsCustomSpacing = 0;
+        public static double CoordinateLabelsMargin = 40;
+        public static double CoordinateLabelsPixelThreshold = 15;
+        public static double CoordinateLabelsShowCursorPos = 1;
+        public static double CoordinateLabelsShowXLabels = 1;
+        public static double CoordinateLabelsShowZLabels = 1;
+        public static double CoordinateLabelsUseHighX = 0;
+        public static double CoordinateLabelsUseHighZ = 0;
+        public static double CoordinateLabelsBoldText = 1;
 
         // Dummy Vars
 

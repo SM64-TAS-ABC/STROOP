@@ -19,20 +19,10 @@ namespace STROOP.Map
 {
     public class MapCoordinateLabelsObject : MapObject
     {
-        private static double CUSTOM_SPACING = 0;
-        private static double MARGIN = 40;
-        private static double PIXEL_THRESHOLD = 15;
-        private static bool SHOW_X_LABELS = true;
-        private static bool SHOW_Z_LABELS = true;
-        private static bool USE_HIGH_X = false;
-        private static bool USE_HIGH_Z = false;
-        private static bool SHOW_CURSOR_POS = true;
-        private static bool BOLD = true;
-
         private Dictionary<(bool isX, double coord), int> _texes;
         private Color _previousOutlineColor;
         private float _previousSize;
-        private bool _previousBold;
+        private double _previousBold;
 
         public MapCoordinateLabelsObject()
             : base()
@@ -44,7 +34,7 @@ namespace STROOP.Map
             _texes = new Dictionary<(bool isX, double coord), int>();
             _previousOutlineColor = OutlineColor;
             _previousSize = Size;
-            _previousBold = BOLD;
+            _previousBold = SpecialConfig.CoordinateLabelsBoldText;
         }
 
         public override void DrawOn2DControlTopDownView()
@@ -63,20 +53,20 @@ namespace STROOP.Map
             // smallerDimension / 10 >= biggerMultiplierDiff
 
             double spacing;
-            if (CUSTOM_SPACING == 0)
+            if (SpecialConfig.CoordinateLabelsCustomSpacing == 0)
             {
                 int smallerDimension = Math.Min(Config.MapGui.GLControlMap2D.Width, Config.MapGui.GLControlMap2D.Height);
                 float biggerRange = Math.Max(
                     Config.MapGraphics.MapViewXMax - Config.MapGraphics.MapViewXMin,
                     Config.MapGraphics.MapViewZMax - Config.MapGraphics.MapViewZMin);
                 double pixelsPerUnit = smallerDimension / biggerRange;
-                double totalMultiplies = PIXEL_THRESHOLD / pixelsPerUnit;
+                double totalMultiplies = SpecialConfig.CoordinateLabelsPixelThreshold / pixelsPerUnit;
                 double numMultiplies = (int)Math.Ceiling(Math.Log(totalMultiplies) / Math.Log(2));
                 spacing = Math.Pow(2, numMultiplies);
             }
             else
             {
-                spacing = CUSTOM_SPACING;
+                spacing = SpecialConfig.CoordinateLabelsCustomSpacing;
             }
 
             int xMinMultiplier = (int)(Config.MapGraphics.MapViewXMin / spacing) - 1;
@@ -95,13 +85,13 @@ namespace STROOP.Map
                 return isP1Winner ? points.p1 : points.p2;
             }
 
-            if (SHOW_X_LABELS)
+            if (SpecialConfig.CoordinateLabelsShowXLabels == 1)
             {
                 for (double x = xMinMultiplier * spacing; x <= xMaxMultiplier * spacing; x += spacing)
                 {
-                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, (float)x, (float)MARGIN);
+                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, (float)x, (float)SpecialConfig.CoordinateLabelsMargin);
                     if (!intersectionPoints.HasValue) continue;
-                    (float g, float z) = getSuperlativePoint(false, USE_HIGH_Z, intersectionPoints.Value);
+                    (float g, float z) = getSuperlativePoint(false, SpecialConfig.CoordinateLabelsUseHighZ == 1, intersectionPoints.Value);
                     (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView((float)x, z);
                     float angle = -1 * Config.MapGraphics.MapViewYawValue + 16384;
                     if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
@@ -111,13 +101,13 @@ namespace STROOP.Map
                 }
             }
 
-            if (SHOW_Z_LABELS)
+            if (SpecialConfig.CoordinateLabelsShowZLabels == 1)
             {
                 for (double z = zMinMultiplier * spacing; z <= zMaxMultiplier * spacing; z += spacing)
                 {
-                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, (float)z, (float)MARGIN);
+                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, (float)z, (float)SpecialConfig.CoordinateLabelsMargin);
                     if (!intersectionPoints.HasValue) continue;
-                    (float x, float g) = getSuperlativePoint(true, USE_HIGH_X, intersectionPoints.Value);
+                    (float x, float g) = getSuperlativePoint(true, SpecialConfig.CoordinateLabelsUseHighX == 1, intersectionPoints.Value);
                     (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, (float)z);
                     float angle = -1 * Config.MapGraphics.MapViewYawValue + 32768;
                     if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
@@ -132,7 +122,7 @@ namespace STROOP.Map
                 MapUtilities.DrawTexture(tex, new PointF(x, z), new SizeF(Size, Size), angle, Opacity);
             }
 
-            if (SHOW_CURSOR_POS)
+            if (SpecialConfig.CoordinateLabelsShowCursorPos == 1)
             {
                 Point relPos = Config.MapGui.GLControlMap2D.PointToClient(Cursor.Position);
                 (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
@@ -188,7 +178,7 @@ namespace STROOP.Map
             Bitmap bmp = new Bitmap(size, size, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
             Graphics gfx = Graphics.FromImage(bmp);
             gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            Font drawFont = new Font("Arial", size / 6, FontStyle.Bold);
+            Font drawFont = new Font("Arial", size / 6, SpecialConfig.CoordinateLabelsBoldText == 1 ? FontStyle.Bold : FontStyle.Regular);
             SolidBrush drawBrush = new SolidBrush(OutlineColor);
             SizeF stringSize = gfx.MeasureString(text, drawFont);
             gfx.DrawString(text, drawFont, drawBrush, new PointF(size / 2 - stringSize.Width / 2, size / 2 - stringSize.Height / 2));
@@ -199,7 +189,62 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
+                ToolStripMenuItem itemOpenSettings = new ToolStripMenuItem("Open Settings");
+                itemOpenSettings.Click += (sender, e) =>
+                {
+                    List<(string specialType, string varName, WatchVariableSubclass subclass)> varData =
+                    new List<(string specialType, string varName, WatchVariableSubclass subclass)>()
+                        {
+                            ("CoordinateLabelsCustomSpacing", "Custom Spacing", WatchVariableSubclass.Number),
+                            ("CoordinateLabelsMargin", "Margin", WatchVariableSubclass.Number),
+                            ("CoordinateLabelsPixelThreshold", "Pixel Threshold", WatchVariableSubclass.Number),
+
+                            ("CoordinateLabelsShowCursorPos", "Show Cursor Pos", WatchVariableSubclass.Boolean),
+                            ("CoordinateLabelsShowXLabels", "Show X Labels", WatchVariableSubclass.Boolean),
+                            ("CoordinateLabelsShowZLabels", "Show Z Labels", WatchVariableSubclass.Boolean),
+                            ("CoordinateLabelsUseHighX", "Use High X", WatchVariableSubclass.Boolean),
+                            ("CoordinateLabelsUseHighZ", "Use High Z", WatchVariableSubclass.Boolean),
+                            ("CoordinateLabelsBoldText", "Bold Text", WatchVariableSubclass.Boolean),
+                        };
+
+                    List<WatchVariableControl> controls = new List<WatchVariableControl>();
+                    foreach ((string specialType, string varName, WatchVariableSubclass subclass) in varData)
+                    {
+                        WatchVariable watchVar = new WatchVariable(
+                            memoryTypeName: null,
+                            specialType: specialType,
+                            baseAddressType: BaseAddressTypeEnum.None,
+                            offsetUS: null,
+                            offsetJP: null,
+                            offsetSH: null,
+                            offsetEU: null,
+                            offsetDefault: null,
+                            mask: null,
+                            shift: null,
+                            handleMapping: true);
+                        WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
+                            name: varName,
+                            watchVar: watchVar,
+                            subclass: subclass,
+                            backgroundColor: null,
+                            displayType: null,
+                            roundingLimit: null,
+                            useHex: null,
+                            invertBool: null,
+                            isYaw: null,
+                            coordinate: null,
+                            groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                        WatchVariableControl control = precursor.CreateWatchVariableControl();
+                        controls.Add(control);
+                    }
+
+                    VariablePopOutForm form = new VariablePopOutForm();
+                    form.Initialize(controls);
+                    form.ShowForm();
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemOpenSettings);
             }
 
             return _contextMenuStrip;
@@ -282,9 +327,9 @@ namespace STROOP.Map
                 _texes.Clear();
             }
 
-            if (BOLD != _previousBold)
+            if (SpecialConfig.CoordinateLabelsBoldText != _previousBold)
             {
-                _previousBold = BOLD;
+                _previousBold = SpecialConfig.CoordinateLabelsBoldText;
                 _texes.Clear();
             }
         }
