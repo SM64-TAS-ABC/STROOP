@@ -42,12 +42,7 @@ namespace STROOP.Map
             double spacing;
             if (SpecialConfig.CoordinateLabelsCustomSpacing == 0)
             {
-                int smallerDimension = Math.Min(Config.MapGui.GLControlMap2D.Width, Config.MapGui.GLControlMap2D.Height);
-                float biggerRange = Math.Max(
-                    Config.MapGraphics.MapViewXMax - Config.MapGraphics.MapViewXMin,
-                    Config.MapGraphics.MapViewZMax - Config.MapGraphics.MapViewZMin);
-                double pixelsPerUnit = smallerDimension / biggerRange;
-                double totalMultiplies = SpecialConfig.CoordinateLabelsLabelDensity / pixelsPerUnit;
+                double totalMultiplies = SpecialConfig.CoordinateLabelsLabelDensity / Config.MapGraphics.MapViewScaleValue;
                 double numMultiplies = (int)Math.Ceiling(Math.Log(totalMultiplies) / Math.Log(2));
                 spacing = Math.Pow(2, numMultiplies);
             }

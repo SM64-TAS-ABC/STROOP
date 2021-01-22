@@ -279,7 +279,7 @@ namespace STROOP.Structs.Configurations
 
         public static double CoordinateLabelsCustomSpacing = 0;
         public static double CoordinateLabelsMargin = 40;
-        public static double CoordinateLabelsLabelDensity = 15;
+        public static double CoordinateLabelsLabelDensity = 20;
         public static double CoordinateLabelsShowCursorPos = 1;
         public static double CoordinateLabelsShowXLabels = 1;
         public static double CoordinateLabelsShowZLabels = 1;
