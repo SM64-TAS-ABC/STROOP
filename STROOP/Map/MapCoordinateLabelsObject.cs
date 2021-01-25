@@ -22,7 +22,7 @@ namespace STROOP.Map
         private Dictionary<(bool isX, double coord), int> _texes;
         private Color _previousOutlineColor;
         private float _previousSize;
-        private double _previousBold;
+        private double _previousBoldText;
 
         public MapCoordinateLabelsObject()
             : base()
@@ -34,7 +34,7 @@ namespace STROOP.Map
             _texes = new Dictionary<(bool isX, double coord), int>();
             _previousOutlineColor = OutlineColor;
             _previousSize = Size;
-            _previousBold = SpecialConfig.CoordinateLabelsBoldText;
+            _previousBoldText = SpecialConfig.CoordinateLabelsBoldText;
         }
 
         public override void DrawOn2DControlTopDownView()
@@ -309,9 +309,9 @@ namespace STROOP.Map
                 _texes.Clear();
             }
 
-            if (SpecialConfig.CoordinateLabelsBoldText != _previousBold)
+            if (SpecialConfig.CoordinateLabelsBoldText != _previousBoldText)
             {
-                _previousBold = SpecialConfig.CoordinateLabelsBoldText;
+                _previousBoldText = SpecialConfig.CoordinateLabelsBoldText;
                 _texes.Clear();
             }
         }
