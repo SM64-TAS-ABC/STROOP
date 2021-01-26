@@ -278,7 +278,7 @@ namespace STROOP.Controls
             _itemHighlight.Checked = _watchVarControl.Highlighted;
             _itemLock.Checked = GetLockedBool(addresses);
             _itemRemoveAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
-            _itemDisableAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
+            _itemDisableAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks() || LockConfig.LockingDisabled;
             _itemDisableAllLocks.Checked = LockConfig.LockingDisabled;
             _itemFixAddress.Checked = _watchVarControl.FixedAddressList != null;
         }
