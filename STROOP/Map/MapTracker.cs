@@ -75,9 +75,13 @@ namespace STROOP.Map
             };
             itemUseCustomImage.Click += (sender, e) =>
             {
-                Image image = DialogUtilities.GetImage();
-                if (image == null) return;
-                _mapObjectList.ForEach(mapObj => mapObj.SetIconType(MapTrackerIconType.CustomImage, image));
+                List<Image> images = DialogUtilities.GetImages();
+                if (images == null || images.Count == 0) return;
+                for (int i = 0; i < _mapObjectList.Count; i++)
+                {
+                    _mapObjectList[i].SetIconType(
+                        MapTrackerIconType.CustomImage, images[i % images.Count]);
+                }
                 pictureBoxItems.ForEach(item => item.Checked = item == itemUseCustomImage);
             };
             itemUseTopDownImage.Checked = true;

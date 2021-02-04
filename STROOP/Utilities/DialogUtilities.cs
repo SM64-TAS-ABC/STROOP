@@ -207,5 +207,16 @@ namespace STROOP.Structs
             string fileName = openFileDialog.FileName;
             return Image.FromFile(fileName);
         }
+
+        public static List<Image> GetImages()
+        {
+            string directory = Directory.GetCurrentDirectory() + "\\Resources\\Maps\\Object Images";
+            OpenFileDialog openFileDialog = CreateOpenFileDialog(FileType.Image, directory);
+            openFileDialog.Multiselect = true;
+            DialogResult result = openFileDialog.ShowDialog();
+            if (result != DialogResult.OK) return null;
+            List<string> fileNames = openFileDialog.FileNames.ToList();
+            return fileNames.ConvertAll(fileName => Image.FromFile(fileName));
+        }
     }
 }
