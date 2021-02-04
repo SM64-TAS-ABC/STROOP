@@ -2,6 +2,7 @@
 <Config>
   <Emulators>
     <Emulator name="Mupen 5.0 RR" processName="mupen64-rerecording" ramStart="0x008EBA80" endianness="little"/>
+    <Emulator name="Mupen 5.0 RR" processName="mupen64-new" ramStart="0x004BB7A0" endianness="little"/>
     <Emulator name="Mupen 5.0 RR" processName="mupen64-pucrash" ramStart="0x00912300" endianness="little"/>
     <Emulator name="Mupen 5.0 RR" processName="mupen64_lua" ramStart="0x00888F60" endianness="little"/>
     <Emulator name="Mupen 5.0 RR" processName="mupen64-wiivc" ramStart="0x00901920" endianness="little"/>
