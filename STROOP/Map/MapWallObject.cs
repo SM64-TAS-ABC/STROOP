@@ -39,8 +39,7 @@ namespace STROOP.Map
         public override void DrawOn2DControlTopDownView()
         {
             float marioHeight = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : (float?)null;
-            height = height ?? _absoluteHeight;
+            float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : _absoluteHeight;
 
             List<(float x1, float z1, float x2, float z2, bool xProjection, double pushAngle)> wallData = GetFilteredTriangles()
                 .ConvertAll(tri => MapUtilities.Get2DWallDataFromTri(tri, height))
