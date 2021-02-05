@@ -78,8 +78,8 @@
   <Data groupList="Advanced" type="short" offsetUS="0x8038B8A4" offsetJP="0x8038B8A4" base="Relative" color="Grey">Transition White Fade</Data>
   <Data groupList="Advanced" type="short" offsetUS="0x8033B254" offsetJP="0x80339EE4" base="Relative" color="Grey">Transition Shrinking</Data>
 
-  <Data groupList="Advanced" type="uint" offsetUS="0x8033B06C" offsetJP="0x8033B06C" base="Relative" subclass="Address" color="Orange">Gfx Buffer Start</Data>
-  <Data groupList="Advanced" type="uint" offsetUS="0x8033B070" offsetJP="0x8033B070" base="Relative" subclass="Address" color="Orange">Gfx Buffer End</Data>
+  <Data groupList="Advanced" type="uint" offsetUS="0x8033B06C" offsetJP="0x80339CFC" base="Relative" subclass="Address" color="Orange">Gfx Buffer Start</Data>
+  <Data groupList="Advanced" type="uint" offsetUS="0x8033B070" offsetJP="0x80339D00" base="Relative" subclass="Address" color="Orange">Gfx Buffer End</Data>
   <Data groupList="Advanced" base="None" specialType="GfxBufferSpace" color="Orange">Gfx Buffer Space</Data>
 
   <Data groupList="Advanced" type="int" offset="0x802F0000" base="Relative" useHex="true" color="Pink">ROM Version Tell</Data>

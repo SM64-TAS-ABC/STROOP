@@ -102,5 +102,13 @@ namespace STROOP.Structs
         public static readonly uint TtcSpeedSettingAddressUS = 0x80361258;
         public static readonly uint TtcSpeedSettingAddressJP = 0x8035FEE8;
         public static readonly uint TtcSpeedSettingAddressEU = 0x8032EE88;
+
+        public static uint GfxBufferStartAddress { get => RomVersionConfig.SwitchMap(GfxBufferStartAddressUS, GfxBufferStartAddressJP); }
+        public static readonly uint GfxBufferStartAddressUS = 0x8033B06C;
+        public static readonly uint GfxBufferStartAddressJP = 0x80339CFC;
+
+        public static uint GfxBufferEndAddress { get => RomVersionConfig.SwitchMap(GfxBufferEndAddressUS, GfxBufferEndAddressJP); }
+        public static readonly uint GfxBufferEndAddressUS = 0x8033B070;
+        public static readonly uint GfxBufferEndAddressJP = 0x80339D00;
     }
 }
