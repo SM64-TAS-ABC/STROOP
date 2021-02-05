@@ -15,4 +15,5 @@
   <Hack name="Previous Positions" path="PreviousPositionsHack.hck" />
   <Hack name="Num RNG Usages (U)" path="NumRngUsagesU.hck" />
   <Hack name="Num RNG Usages (J)" path="NumRngUsagesJ.hck" />
+  <Hack name="RCP Crash (J)" path="RcpCrashJ.hck" />
 </Hacks>
