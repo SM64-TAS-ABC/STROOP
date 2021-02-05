@@ -80,6 +80,8 @@ namespace STROOP.Controls
         public readonly bool ChangeFixedAddressToDefault;
         public readonly bool NewFixedAddress;
 
+        public readonly bool DoTruncateIfYaw;
+
         public WatchVariableControlSettings(
             bool changeRoundingLimit = false,
             bool changeRoundingLimitToDefault = false,
@@ -132,7 +134,9 @@ namespace STROOP.Controls
 
             bool changeFixedAddress = false,
             bool changeFixedAddressToDefault = false,
-            bool newFixedAddress = false)
+            bool newFixedAddress = false,
+            
+            bool doTruncateIfYaw = false)
         {
             ChangeRoundingLimit = changeRoundingLimit;
             ChangeRoundingLimitToDefault = changeRoundingLimitToDefault;
@@ -186,6 +190,8 @@ namespace STROOP.Controls
             ChangeFixedAddress = changeFixedAddress;
             ChangeFixedAddressToDefault = changeFixedAddressToDefault;
             NewFixedAddress = newFixedAddress;
+
+            DoTruncateIfYaw = doTruncateIfYaw;
         }
     }
 }

@@ -599,5 +599,15 @@ namespace STROOP.Controls
                 control.BaseColor = getColor(control);
             }
         }
+
+        public void MakeYawVariablesBeTruncated()
+        {
+            WatchVariableControlSettings settings =
+                new WatchVariableControlSettings(doTruncateIfYaw: true);
+            foreach (WatchVariableControl control in GetCurrentVariableControls())
+            {
+                control.ApplySettings(settings);
+            }
+        }
     }
 }

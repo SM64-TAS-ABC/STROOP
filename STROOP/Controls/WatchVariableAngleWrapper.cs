@@ -283,6 +283,10 @@ namespace STROOP.Controls
                 else
                     _setDisplayAsHex(settings.NewAngleDisplayAsHex);
             }
+            if (settings.DoTruncateIfYaw && _isYaw)
+            {
+                _setTruncateToMultipleOf16(true);
+            }
         }
 
         protected override string GetClass()

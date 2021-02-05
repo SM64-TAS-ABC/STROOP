@@ -170,6 +170,7 @@ namespace STROOP
                         splitContainerTas.Panel1Collapsed = true;
                         splitContainerTas.Panel2Collapsed = false;
                         Config.TasManager.ShowTaserVariables();
+                        Config.TasManager.MakeYawVariablesBeTruncated();
                         tabControlMain.SelectedTab = tabPageTas;
                     },
                     () => TestUtilities.AddGraphicsTriangleVerticesToTriangleTab(),

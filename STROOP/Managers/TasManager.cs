@@ -127,6 +127,11 @@ namespace STROOP.Managers
                 new List<VariableGroup>() { VariableGroup.TAS, VariableGroup.Custom });
         }
 
+        public void MakeYawVariablesBeTruncated()
+        {
+            _variablePanel.MakeYawVariablesBeTruncated();
+        }
+
         public void SetScheduler(string text, bool useFloats)
         {
             List<string> lines = text.Split('\n').ToList();
