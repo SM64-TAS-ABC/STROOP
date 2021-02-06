@@ -549,6 +549,23 @@ namespace STROOP.Managers
                         Config.MapGraphics.SetCustomCenter(marioX, marioY, marioZ);
                     }
                 });
+            Config.MapGui.groupBoxMapControllersCenter.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            ControlUtilities.AddCheckableContextMenuStripItems(
+                Config.MapGui.groupBoxMapControllersCenter,
+                new List<string>()
+                {
+                    "Can Drag Horizontally and Vertically",
+                    "Can Only Drag Horizontally",
+                    "Can Only Drag Vertically",
+                },
+                new List<MapGraphics.MapDragAbility>()
+                {
+                    MapGraphics.MapDragAbility.HorizontalAndVertical,
+                    MapGraphics.MapDragAbility.HorizontalOnly,
+                    MapGraphics.MapDragAbility.VerticalOnly,
+                },
+                dragAbility => Config.MapGraphics.MapViewCenterDragAbility = dragAbility,
+                Config.MapGraphics.MapViewCenterDragAbility);
 
             // Buttons for Changing Angle
             Config.MapGui.buttonMapControllersAngleCCW.Click += (sender, e) =>
@@ -591,6 +608,23 @@ namespace STROOP.Managers
                         Config.MapGraphics.SetCustomPitch(0);
                     },
                 });
+            Config.MapGui.groupBoxMapControllersAngle.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            ControlUtilities.AddCheckableContextMenuStripItems(
+                Config.MapGui.groupBoxMapControllersAngle,
+                new List<string>()
+                {
+                    "Can Drag Horizontally and Vertically",
+                    "Can Only Drag Horizontally",
+                    "Can Only Drag Vertically",
+                },
+                new List<MapGraphics.MapDragAbility>()
+                {
+                    MapGraphics.MapDragAbility.HorizontalAndVertical,
+                    MapGraphics.MapDragAbility.HorizontalOnly,
+                    MapGraphics.MapDragAbility.VerticalOnly,
+                },
+                dragAbility => Config.MapGraphics.MapViewYawDragAbility = dragAbility,
+                Config.MapGraphics.MapViewYawDragAbility);
 
             // TextBoxes for Custom Values
             Config.MapGui.textBoxMapControllersScaleCustom.AddEnterAction(() =>

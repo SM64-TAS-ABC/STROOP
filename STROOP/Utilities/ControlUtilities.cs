@@ -476,7 +476,8 @@ namespace STROOP.Utilities
             (List<ToolStripMenuItem> itemList, Action<T> valueAction) =
                 CreateCheckableItems(
                     itemNames, itemValues, setterAction, startingValue);
-            topLevelControl.ContextMenuStrip = new ContextMenuStrip();
+            if (topLevelControl.ContextMenuStrip == null)
+                topLevelControl.ContextMenuStrip = new ContextMenuStrip();
             itemList.ForEach(item => topLevelControl.ContextMenuStrip.Items.Add(item));
             return valueAction;
         }

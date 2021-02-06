@@ -15,11 +15,14 @@ namespace STROOP.Map
         private enum MapScale { CourseDefault, MaxCourseSize, Custom };
         private enum MapCenter { BestFit, Origin, Mario, Custom };
         private enum MapYaw { Angle0, Angle16384, Angle32768, Angle49152, Mario, Camera, Centripetal, Custom };
+        public enum MapDragAbility { HorizontalAndVertical, HorizontalOnly, VerticalOnly };
 
         private MapScale MapViewScale;
         private MapCenter MapViewCenter;
         private MapYaw MapViewYaw;
         private bool MapViewScaleWasCourseDefault = true;
+        public MapDragAbility MapViewCenterDragAbility = MapDragAbility.HorizontalAndVertical;
+        public MapDragAbility MapViewYawDragAbility = MapDragAbility.HorizontalAndVertical;
 
         private static readonly float DEFAULT_MAP_VIEW_SCALE_VALUE = 1;
         private static readonly float DEFAULT_MAP_VIEW_CENTER_X_VALUE = 0;
