@@ -538,8 +538,8 @@ namespace STROOP.Map
 
             if (_isTranslating)
             {
-                int pixelDiffX = e.X - _translateStartMouseX;
-                int pixelDiffY = e.Y - _translateStartMouseY;
+                int pixelDiffX = HandleDragAbility(true, true, e.X - _translateStartMouseX);
+                int pixelDiffY = HandleDragAbility(false, true, e.Y - _translateStartMouseY);
                 pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
                 pixelDiffY = MapUtilities.MaybeReverse(pixelDiffY);
                 float unitDiffX = pixelDiffX / MapViewScaleValue;
@@ -604,8 +604,8 @@ namespace STROOP.Map
             {
                 if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
                 {
-                    int pixelDiffX = e.X - _rotateStartMouseX;
-                    int pixelDiffY = e.Y - _rotateStartMouseY;
+                    int pixelDiffX = HandleDragAbility(true, false, e.X - _rotateStartMouseX);
+                    int pixelDiffY = HandleDragAbility(false, false, e.Y - _rotateStartMouseY);
                     pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
                     pixelDiffY = MapUtilities.MaybeReverse(pixelDiffY);
                     float yawDiff = (float)(pixelDiffX * (65536 / SpecialConfig.Map2DOrthographicHorizontalRotateSpeed));
@@ -623,6 +623,19 @@ namespace STROOP.Map
                     float newAngle = _rotateStartYaw + angleToMouse;
                     SetCustomYaw(newAngle);
                 }
+            }
+        }
+
+        private int HandleDragAbility(bool isHorizontal, bool isCenter, int value)
+        {
+            MapDragAbility dragAbility = isCenter ? MapViewCenterDragAbility : MapViewYawDragAbility;
+            if (isHorizontal)
+            {
+                return dragAbility == MapDragAbility.VerticalOnly ? 0 : value;
+            }
+            else
+            {
+                return dragAbility == MapDragAbility.HorizontalOnly ? 0 : value;
             }
         }
 
