@@ -32,7 +32,7 @@ namespace STROOP.Map
             _useBlending = true;
             _isPaused = false;
 
-            Size = 300;
+            Size = 30;
             OutlineWidth = 3;
             Color = Color.Yellow;
             OutlineColor = Color.Red;
