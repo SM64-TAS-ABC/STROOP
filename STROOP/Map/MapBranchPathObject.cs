@@ -208,7 +208,7 @@ namespace STROOP.Map
             // replace the last item in list
             if (_list.Count > 0 && _list[_list.Count - 1].globalTimer == globalTimer)
             {
-                _list[_list.Count - 1] = (globalTimer, x, y, z);
+                //_list[_list.Count - 1] = (globalTimer, x, y, z);
             }
             // add new item to list
             else
