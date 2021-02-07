@@ -652,6 +652,20 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemBranchPath = new ToolStripMenuItem("Add Tracker for Branch Path");
+            itemBranchPath.Click += (sender, e) =>
+            {
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    return (MapObject)new MapBranchPathObject(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                MapTracker tracker = new MapTracker(newMapObjs);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             pictureBoxPlus.ContextMenuStrip = new ContextMenuStrip();
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemHitboxCylinder);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemEffectiveHitboxCylinder);
@@ -678,6 +692,7 @@ namespace STROOP.Map
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemFacingDivider);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemHomeLine);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemPath);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemBranchPath);
             pictureBoxPlus.Click += (sender, e) => pictureBoxPlus.ContextMenuStrip.Show(Cursor.Position);
         }
 

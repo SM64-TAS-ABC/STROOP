@@ -65,15 +65,15 @@ namespace STROOP.Map
             if (OutlineWidth == 0) return segments;
 
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
-            List<(float x, float z)> veriticesForControl =
+            List<(float x, float z)> verticesForControl =
                 vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z));
 
-            for (int i = 0; i < veriticesForControl.Count - 1; i++)
+            for (int i = 0; i < verticesForControl.Count - 1; i++)
             {
                 Color color = OutlineColor;
                 if (_useBlending)
                 {
-                    int distFromEnd = veriticesForControl.Count - i - 2;
+                    int distFromEnd = verticesForControl.Count - i - 2;
                     if (distFromEnd < Size)
                     {
                         color = ColorUtilities.InterpolateColor(
@@ -84,8 +84,8 @@ namespace STROOP.Map
                         color = Color;
                     }
                 }
-                (float x1, float z1) = veriticesForControl[i];
-                (float x2, float z2) = veriticesForControl[i + 1];
+                (float x1, float z1) = verticesForControl[i];
+                (float x2, float z2) = verticesForControl[i + 1];
                 MapPathObjectSegment segment = new MapPathObjectSegment(
                     index: i,
                     startX: x1,
