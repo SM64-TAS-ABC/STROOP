@@ -40,12 +40,14 @@ namespace STROOP.Map
 
         private List<MapBranchPathObjectSegment> GetSegments()
         {
+            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
             List<MapBranchPathObjectSegment> segments = new List<MapBranchPathObjectSegment>();
             for (int i = 0; i < _list.Count - 1; i++)
             {
                 (uint globalTimer1, float x1, float y1, float z1) = _list[i];
                 (uint globalTimer2, float x2, float y2, float z2) = _list[i + 1];
                 if (globalTimer1 + 1 != globalTimer2) continue;
+                if (globalTimer2 > globalTimer) continue;
                 MapBranchPathObjectSegment segment = new MapBranchPathObjectSegment(globalTimer2, x1, y1, z1, x2, y2, z2);
                 segments.Add(segment);
             }
