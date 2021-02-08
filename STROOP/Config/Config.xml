@@ -2,7 +2,7 @@
 <Config>
   <Emulators>
     <Emulator name="Mupen 5.0 RR" processName="mupen64-rerecording" ramStart="0x008EBA80" endianness="little"/>
-    <Emulator name="Mupen 5.0 RR" processName="mupen64-new" ramStart="0x004BB7A0" endianness="little"/>
+    <Emulator name="Mupen 5.0 RR" processName="mupen64" ramStart="0x004BB7A0" endianness="little"/>
     <Emulator name="Mupen 5.0 RR" processName="mupen64-pucrash" ramStart="0x00912300" endianness="little"/>
     <Emulator name="Mupen 5.0 RR" processName="mupen64_lua" ramStart="0x00888F60" endianness="little"/>
     <Emulator name="Mupen 5.0 RR" processName="mupen64-wiivc" ramStart="0x00901920" endianness="little"/>
@@ -16,8 +16,6 @@
     <Emulator name="Project64" processName="Project64" ramStart="0x4BAF0000" endianness="little"/>
     <Emulator name="Dolphin" processName="Dolphin" ramStart="0xe6a180" endianness="big" special="dolphin"/>
     <Emulator name="Mupen64Plus" processName="mupen64plus" ramStart="0x008FF142" endianness="little"/>
-
-    <Emulator name="Mupen64 rr Lua" processName="mupen64" ramStart="0x4bb7b0" endianness="little"/>
   </Emulators>
 
   <!-- US, JP, or SH -->
