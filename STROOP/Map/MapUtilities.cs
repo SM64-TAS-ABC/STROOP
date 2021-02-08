@@ -108,7 +108,7 @@ namespace STROOP.Map
                     rightYaw, 0);
             double hDiff = MoreMath.GetDistanceBetween(x1, z1, x0, z0);
             double yDiff = y1 - y0;
-            double yDiffSign = Math.Sign(yDiff);
+            double yDiffSign = yDiff >= 0 ? 1 : -1;
             double vOffsetMagnitude = MoreMath.GetHypotenuse(hDiff, yDiff);
             float vOffset = (float)(vOffsetMagnitude * yDiffSign);
 
