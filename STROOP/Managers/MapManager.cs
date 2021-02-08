@@ -20,6 +20,8 @@ namespace STROOP.Managers
     public class MapManager : DataManager
     {
         private Action _checkBoxMarioAction;
+        private Action _checkBoxGhostAction;
+        private Action _checkBoxFloorAction;
         private Action _checkBoxUnitGridlinesAction;
         private List<int> _currentObjIndexes = new List<int>();
 
@@ -479,12 +481,14 @@ namespace STROOP.Managers
                     "Reset to Initial State",
                     "Surface Triangles White",
                     "Surface Triangles Black",
+                    "Enable TASer Settings",
                 },
                 new List<Action>()
                 {
                     () => ResetToInitialState(),
                     () => DoSurfaceTriangles(true),
                     () => DoSurfaceTriangles(false),
+                    () => DoTaserSettings(),
                 });
 
             // Buttons for Changing Scale
@@ -852,6 +856,39 @@ namespace STROOP.Managers
             _checkBoxUnitGridlinesAction();
         }
 
+        public void DoTaserSettings()
+        {
+            Config.MapGui.flowLayoutPanelMapTrackers.ClearControls();
+
+            _checkBoxMarioAction();
+            MapTracker marioTracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(0);
+            marioTracker.SetSize(15);
+
+            _checkBoxGhostAction();
+            MapTracker ghostTracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(1);
+            ghostTracker.SetSize(15);
+
+            MapTracker previousPositionsTracker = new MapTracker(new MapPreviousPositionsObject());
+            Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(previousPositionsTracker);
+            previousPositionsTracker.SetSize(10);
+
+            _checkBoxUnitGridlinesAction();
+            MapTracker unitGridlinesTracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(3);
+            unitGridlinesTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
+
+            _checkBoxFloorAction();
+            MapTracker floorTracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(4);
+            floorTracker.SetOpacity(8);
+            floorTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
+
+            MapLevelWallObject mapLevelWallObject = new MapLevelWallObject();
+            MapObjectSettings settings = new MapObjectSettings(wallChangeRelativeHeight: true, wallNewRelativeHeight: -30);
+            mapLevelWallObject.ApplySettings(settings);
+            MapTracker levelWallTracker = new MapTracker(mapLevelWallObject);
+            Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(levelWallTracker);
+            levelWallTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
+        }
+
         private void SetGlobalIconSize(float size)
         {
             Config.MapGui.flowLayoutPanelMapTrackers.SetGlobalIconSize(size);
@@ -866,10 +903,10 @@ namespace STROOP.Managers
             _checkBoxMarioAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackMario, MapSemaphoreManager.Mario, () => new MapMarioObject(), true);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackHolp, MapSemaphoreManager.Holp, () => new MapHolpObject(), false);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCamera, MapSemaphoreManager.Camera, () => new MapCameraObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackGhost, MapSemaphoreManager.Ghost, () => new MapGhostObject(), false);
+            _checkBoxGhostAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackGhost, MapSemaphoreManager.Ghost, () => new MapGhostObject(), false);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackSelf, MapSemaphoreManager.Self, () => new MapSelfObject(), false);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackPoint, MapSemaphoreManager.Point, () => new MapPointObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackFloorTri, MapSemaphoreManager.FloorTri, () => new MapMarioFloorObject(), false);
+            _checkBoxFloorAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackFloorTri, MapSemaphoreManager.FloorTri, () => new MapMarioFloorObject(), false);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackWallTri, MapSemaphoreManager.WallTri, () => new MapMarioWallObject(), false);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCeilingTri, MapSemaphoreManager.CeilingTri, () => new MapMarioCeilingObject(), false);
             _checkBoxUnitGridlinesAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackUnitGridlines, MapSemaphoreManager.UnitGridlines, () => new MapUnitGridlinesObject(), false);

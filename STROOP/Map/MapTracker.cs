@@ -744,7 +744,7 @@ namespace STROOP.Map
         }
 
         /** null if controls should be refreshed */
-        private void SetSize(float? sizeNullable)
+        public void SetSize(float? sizeNullable)
         {
             bool updateMapObjs = sizeNullable != null;
             float size = sizeNullable ?? _mapObjectList[0].Size;
@@ -769,7 +769,7 @@ namespace STROOP.Map
         }
 
         /** null if controls should be refreshed */
-        private void SetOpacity(int? opacityNullable)
+        public void SetOpacity(int? opacityNullable)
         {
             bool updateMapObjs = opacityNullable != null;
             int opacity = opacityNullable ?? _mapObjectList[0].OpacityPercent;
@@ -830,6 +830,12 @@ namespace STROOP.Map
                 _mapObjectList.ForEach(mapObj => mapObj.OutlineColor = outlineColor);
             }
             colorSelectorOutline.SelectedColor = outlineColor;
+        }
+
+        public void SetShowTriUnits(bool showTriUnits)
+        {
+            _showTriUnits = showTriUnits;
+            checkBoxShowTriUnits.Checked = showTriUnits;
         }
 
         private void CheckBoxShowTriUnits_CheckedChanged(object sender, EventArgs e)

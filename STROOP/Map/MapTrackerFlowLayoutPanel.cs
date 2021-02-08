@@ -52,6 +52,12 @@ namespace STROOP.Map
             }
         }
 
+        public MapTracker GetTrackerAtIndex(int index)
+        {
+            if (index < 0 || index >= Controls.Count) return null;
+            return Controls[index] as MapTracker;
+        }
+
         public void RemoveControl(MapTracker mapTracker)
         {
             lock (_objectLock)
