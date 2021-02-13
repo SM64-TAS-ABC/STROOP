@@ -188,7 +188,7 @@ namespace STROOP.Structs
 
             public List<int> GetIntermediateAngles()
             {
-                int accelerationDirection = -1 * Math.Sign(Amplitude);
+                int accelerationDirection = -1 * MoreMath.Sign(Amplitude);
                 int angularVelocity = 0;
                 int waitingTimer = 0;
                 TtcPendulum pendulum = new TtcPendulum(new TtcRng(0), accelerationDirection, Amplitude, angularVelocity, Acceleration, waitingTimer);

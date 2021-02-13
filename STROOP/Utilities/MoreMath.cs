@@ -12,6 +12,12 @@ namespace STROOP.Utilities
 {
     public static class MoreMath
     {
+        public static int Sign(double value)
+        {
+            if (value == 0 || double.IsNaN(value)) return 0;
+            return value > 0 ? 1 : -1;
+        }
+
         public static int Min(params int[] values)
         {
             if (values.Length == 0) return 0;

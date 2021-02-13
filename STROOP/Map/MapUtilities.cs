@@ -270,17 +270,17 @@ namespace STROOP.Map
                 }
                 else if (x == 0)
                 {
-                    addQuad(x, z, 1, Math.Sign(z));
-                    addQuad(x, z, -1, Math.Sign(z));
+                    addQuad(x, z, 1, MoreMath.Sign(z));
+                    addQuad(x, z, -1, MoreMath.Sign(z));
                 }
                 else if (z == 0)
                 {
-                    addQuad(x, z, Math.Sign(x), 1);
-                    addQuad(x, z, Math.Sign(x), -1);
+                    addQuad(x, z, MoreMath.Sign(x), 1);
+                    addQuad(x, z, MoreMath.Sign(x), -1);
                 }
                 else
                 {
-                    addQuad(x, z, Math.Sign(x), Math.Sign(z));
+                    addQuad(x, z, MoreMath.Sign(x), MoreMath.Sign(z));
                 }
             }
             return quadList;

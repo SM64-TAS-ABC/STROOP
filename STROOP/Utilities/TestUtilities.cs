@@ -1296,14 +1296,14 @@ namespace STROOP.Utilities
                 wIsX = true;
                 start = x1;
                 end = x2;
-                sign = Math.Sign(x2 - x1);
+                sign = MoreMath.Sign(x2 - x1);
             }
             else if (z1 != z2)
             {
                 wIsX = false;
                 start = z1;
                 end = z2;
-                sign = Math.Sign(z2 - z1);
+                sign = MoreMath.Sign(z2 - z1);
             }
             else
             {
@@ -1392,7 +1392,7 @@ namespace STROOP.Utilities
             {
                 int initialIndex = 305 + i;
                 int initialAngle = TableConfig.PendulumSwings.GetPendulumAmplitude(initialIndex);
-                TtcPendulum2 pendulum = new TtcPendulum2(new TtcRng(0), -1 * Math.Sign(initialAngle), initialAngle, 0, 13, 0);
+                TtcPendulum2 pendulum = new TtcPendulum2(new TtcRng(0), -1 * MoreMath.Sign(initialAngle), initialAngle, 0, 13, 0);
                 for (int j = 0; j < range2; j++)
                 {
                     pendulum.Update();
