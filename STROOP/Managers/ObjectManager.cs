@@ -154,6 +154,7 @@ namespace STROOP.Managers
                 VariableGroup.Movement,
                 VariableGroup.Transformation,
                 VariableGroup.Coordinate,
+                VariableGroup.FloorCoordinate,
                 VariableGroup.Rng,
             };
 

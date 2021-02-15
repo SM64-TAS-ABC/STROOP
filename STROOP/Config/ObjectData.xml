@@ -291,6 +291,13 @@
   <Data groupList="Coordinate" base="Object" specialType="MidpointZCoordinate" coord="Z" color="Blue">Z Midpoint</Data>
   <Data groupList="Coordinate" base="Object" specialType="FarthestCoordinateDistance" color="Blue">Farthest Dist</Data>
 
+  <Data groupList="FloorCoordinate" base="Object" specialType="MinXFloorCoordinate" color="LightBlue">Floor X Min</Data>
+  <Data groupList="FloorCoordinate" base="Object" specialType="MaxXFloorCoordinate" color="LightBlue">Floor X Max</Data>
+  <Data groupList="FloorCoordinate" base="Object" specialType="MinYFloorCoordinate" color="LightBlue">Floor Y Min</Data>
+  <Data groupList="FloorCoordinate" base="Object" specialType="MaxYFloorCoordinate" color="LightBlue">Floor Y Max</Data>
+  <Data groupList="FloorCoordinate" base="Object" specialType="MinZFloorCoordinate" color="LightBlue">Floor Z Min</Data>
+  <Data groupList="FloorCoordinate" base="Object" specialType="MaxZFloorCoordinate" color="LightBlue">Floor Z Max</Data>
+
   <Data groupList="Rng" type="ushort" offset="0xCA" base="Object" color="Orange">Object RNG Value</Data>
   <Data groupList="Rng" base="Object" specialType="ObjectRngIndex" color="Orange">Object RNG Index</Data>
   <Data groupList="Rng" base="Object" specialType="ObjectRngIndexDiff" color="Orange">Object RNG Index Diff</Data>

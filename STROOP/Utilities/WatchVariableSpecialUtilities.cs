@@ -1947,6 +1947,120 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("MinXFloorCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Min(tri => tri.GetMinX());
+                },
+                (float newMinX, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    int minX = tris.Min(tri => tri.GetMinX());
+                    float diff = newMinX - minX;
+                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float newObjX = objX + diff;
+                    return Config.Stream.SetValue(newObjX, objAddress + ObjectConfig.XOffset);
+                }
+            ));
+
+            _dictionary.Add("MaxXFloorCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Max(tri => tri.GetMaxX());
+                },
+                (float newMaxX, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    int maxX = tris.Max(tri => tri.GetMaxX());
+                    float diff = newMaxX - maxX;
+                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float newObjX = objX + diff;
+                    return Config.Stream.SetValue(newObjX, objAddress + ObjectConfig.XOffset);
+                }
+            ));
+
+            _dictionary.Add("MinYFloorCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Min(tri => tri.GetMinY());
+                },
+                (float newMinY, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    int minY = tris.Min(tri => tri.GetMinY());
+                    float diff = newMinY - minY;
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float newObjY = objY + diff;
+                    return Config.Stream.SetValue(newObjY, objAddress + ObjectConfig.YOffset);
+                }
+            ));
+
+            _dictionary.Add("MaxYFloorCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Max(tri => tri.GetMaxY());
+                },
+                (float newMaxY, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    int maxY = tris.Max(tri => tri.GetMaxY());
+                    float diff = newMaxY - maxY;
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float newObjY = objY + diff;
+                    return Config.Stream.SetValue(newObjY, objAddress + ObjectConfig.YOffset);
+                }
+            ));
+
+            _dictionary.Add("MinZFloorCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Min(tri => tri.GetMinZ());
+                },
+                (float newMinZ, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    int minZ = tris.Min(tri => tri.GetMinZ());
+                    float diff = newMinZ - minZ;
+                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float newObjZ = objZ + diff;
+                    return Config.Stream.SetValue(newObjZ, objAddress + ObjectConfig.ZOffset);
+                }
+            ));
+
+            _dictionary.Add("MaxZFloorCoordinate",
+                ((uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return double.NaN;
+                    return tris.Max(tri => tri.GetMaxZ());
+                },
+                (float newMaxZ, uint objAddress) =>
+                {
+                    List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
+                    if (tris.Count == 0) return false;
+                    int maxZ = tris.Max(tri => tri.GetMaxZ());
+                    float diff = newMaxZ - maxZ;
+                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float newObjZ = objZ + diff;
+                    return Config.Stream.SetValue(newObjZ, objAddress + ObjectConfig.ZOffset);
+                }
+            ));
+
             // Object specific vars - Rolling Log
 
             _dictionary.Add("RollingLogDistLimit",

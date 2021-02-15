@@ -28,6 +28,7 @@ namespace STROOP.Structs
         Movement,
         Transformation,
         Coordinate,
+        FloorCoordinate,
         ExtendedLevelBoundaries,
 
         HolpMario,
