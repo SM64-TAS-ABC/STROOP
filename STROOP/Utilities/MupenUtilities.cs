@@ -76,7 +76,8 @@ namespace STROOP.Utilities
         public static bool IsUsingMupen()
         {
             return Config.Stream.ProcessName == "mupen64-rerecording" ||
-                Config.Stream.ProcessName == "mupen64_lua";
+                Config.Stream.ProcessName == "mupen64_lua" ||
+                Config.Stream.ProcessName == "mupen64";
         }
 
     }
