@@ -20,7 +20,7 @@ namespace STROOP.Utilities
                         return (UIntPtr)0x0047A7A4;
                     case "mupen64_lua":
                         return (UIntPtr)0x004D614C;
-                    case "mupen":
+                    case "mupen64":
                         return (UIntPtr)0x004E8A64;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -37,7 +37,7 @@ namespace STROOP.Utilities
                         return (UIntPtr)0x0047A7A0;
                     case "mupen64_lua":
                         return (UIntPtr)0x004D6150;
-                    case "mupen":
+                    case "mupen64":
                         return (UIntPtr)0x004E8A68;
                     default:
                         throw new ArgumentOutOfRangeException();
