@@ -44,6 +44,23 @@ namespace STROOP.Utilities
                 }
             }
         }
+        private static int FrameCountOffset
+        {
+            get
+            {
+                switch (Config.Stream.ProcessName)
+                {
+                    case "mupen64-rerecording":
+                        return -1;
+                    case "mupen64_lua":
+                        return -1;
+                    case "mupen64":
+                        return 0;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
 
         /*
         private static int FrameCountAddress2 = 0x0077DF50;
@@ -56,7 +73,7 @@ namespace STROOP.Utilities
             byte[] buffer = new byte[4];
             Config.Stream.ReadProcessMemory(FrameCountAddress, buffer, EndiannessType.Little);
             int frameCount = BitConverter.ToInt32(buffer, 0);
-            return frameCount - 1;
+            return frameCount + FrameCountOffset;
         }
 
         public static int GetVICount()
