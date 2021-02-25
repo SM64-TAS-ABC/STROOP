@@ -79,9 +79,6 @@ namespace STROOP.Map
             if (size < 1) size = 1;
             double increment = 16384 / size;
 
-            float xCenter = Config.MapGraphics.MapViewCenterXValue;
-            float zCenter = Config.MapGraphics.MapViewCenterZValue;
-
             double viewXMin = Config.MapGraphics.MapViewXMin;
             double viewXMax = Config.MapGraphics.MapViewXMax;
             double viewXDiff = viewXMax - viewXMin;
@@ -109,54 +106,41 @@ namespace STROOP.Map
             int zMaxMultiple = Math.Min((int)((viewZMax - gridlineMin) / increment) + 1, (int)size);
             int numZLines = zMaxMultiple - zMinMultiple + 1;
 
-            if (Config.MapGraphics.MapViewPitchValue == 0 &&
-                (Config.MapGraphics.MapViewYawValue == 0 ||
-                Config.MapGraphics.MapViewYawValue == 32768))
-            {
-                if (numXLines > viewXDiffPixels || numYLines > viewYDiffPixels)
-                    return new List<(float x, float y, float z)>();
-
-                List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int multiple = xMinMultiple; multiple <= xMaxMultiple; multiple++)
-                {
-                    float x = (float)(multiple * increment + gridlineMin);
-                    vertices.Add((x, gridlineMin, zCenter));
-                    vertices.Add((x, gridlineMax, zCenter));
-                }
-                for (int multiple = yMinMultiple; multiple <= yMaxMultiple; multiple++)
-                {
-                    float y = (float)(multiple * increment + gridlineMin);
-                    vertices.Add((gridlineMin, y, zCenter));
-                    vertices.Add((gridlineMax, y, zCenter));
-                }
-                return vertices;
-            }
-            else if (Config.MapGraphics.MapViewPitchValue == 0 &&
-                (Config.MapGraphics.MapViewYawValue == 16384 ||
-                Config.MapGraphics.MapViewYawValue == 49152))
-            {
-                if (numZLines > viewZDiffPixels || numYLines > viewYDiffPixels)
-                    return new List<(float x, float y, float z)>();
-
-                List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int multiple = zMinMultiple; multiple <= zMaxMultiple; multiple++)
-                {
-                    float z = (float)(multiple * increment + gridlineMin);
-                    vertices.Add((xCenter, gridlineMin, z));
-                    vertices.Add((xCenter, gridlineMax, z));
-                }
-                for (int multiple = yMinMultiple; multiple <= yMaxMultiple; multiple++)
-                {
-                    float y = (float)(multiple * increment + gridlineMin);
-                    vertices.Add((xCenter, y, gridlineMin));
-                    vertices.Add((xCenter, y, gridlineMax));
-                }
-                return vertices;
-            }
-            else
-            {
+            if (numXLines > viewXDiffPixels || numYLines > viewYDiffPixels || numZLines > viewZDiffPixels)
                 return new List<(float x, float y, float z)>();
+
+            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+            for (int xMultiple = xMinMultiple; xMultiple <= xMaxMultiple; xMultiple++)
+            {
+                float x = (float)(xMultiple * increment + gridlineMin);
+                for (int yMultiple = yMinMultiple; yMultiple <= yMaxMultiple; yMultiple++)
+                {
+                    float y = (float)(yMultiple * increment + gridlineMin);
+                    vertices.Add((x, y, gridlineMin));
+                    vertices.Add((x, y, gridlineMax));
+                }
             }
+            for (int xMultiple = xMinMultiple; xMultiple <= xMaxMultiple; xMultiple++)
+            {
+                float x = (float)(xMultiple * increment + gridlineMin);
+                for (int zMultiple = zMinMultiple; zMultiple <= zMaxMultiple; zMultiple++)
+                {
+                    float z = (float)(zMultiple * increment + gridlineMin);
+                    vertices.Add((x, gridlineMin, z));
+                    vertices.Add((x, gridlineMax, z));
+                }
+            }
+            for (int zMultiple = zMinMultiple; zMultiple <= zMaxMultiple; zMultiple++)
+            {
+                float z = (float)(zMultiple * increment + gridlineMin);
+                for (int yMultiple = yMinMultiple; yMultiple <= yMaxMultiple; yMultiple++)
+                {
+                    float y = (float)(yMultiple * increment + gridlineMin);
+                    vertices.Add((gridlineMin, y, z));
+                    vertices.Add((gridlineMax, y, z));
+                }
+            }
+            return vertices;
         }
 
         public override string GetName()
