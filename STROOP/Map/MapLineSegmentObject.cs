@@ -20,6 +20,8 @@ namespace STROOP.Map
         private bool _useFixedSize;
         private float _backwardsSize;
 
+        private static readonly string SET_BACKWARDS_SIZE_TEXT = "Set Backwards Size";
+
         public MapLineSegmentObject(PositionAngle posAngle1, PositionAngle posAngle2)
             : base()
         {
@@ -66,13 +68,17 @@ namespace STROOP.Map
                     itemUseFixedSize.Checked = _useFixedSize;
                 };
 
-                ToolStripMenuItem itemSetBackwardsSize = new ToolStripMenuItem("Set Backwards Size...");
+                string suffix = string.Format(" ({0})", _backwardsSize);
+                ToolStripMenuItem itemSetBackwardsSize = new ToolStripMenuItem(SET_BACKWARDS_SIZE_TEXT + suffix);
                 itemSetBackwardsSize.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter backwards size.");
-                    double? backwardsSizeNullable = ParsingUtilities.ParseDoubleNullable(text);
+                    float? backwardsSizeNullable = ParsingUtilities.ParseFloatNullable(text);
                     if (!backwardsSizeNullable.HasValue) return;
-                    _backwardsSize = (float)backwardsSizeNullable.Value;
+                    float backwardsSize = backwardsSizeNullable.Value;
+                    _backwardsSize = backwardsSize;
+                    string suffix2 = string.Format(" ({0})", _backwardsSize);
+                    itemSetBackwardsSize.Text = SET_BACKWARDS_SIZE_TEXT + suffix2;
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
