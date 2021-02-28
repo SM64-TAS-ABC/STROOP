@@ -22,7 +22,10 @@ namespace STROOP.Map
         private bool _useInGameAngles;
 
         private ToolStripMenuItem _itemUseRelativeAngles;
+        private ToolStripMenuItem _itemSetAngleDiff;
         private ToolStripMenuItem _itemUseInGameAngles;
+
+        private static readonly string SET_ANGLE_DIFF_TEXT = "Set Angle Diff";
 
         public MapAngleRangeObject(PositionAngle posAngle)
             : base()
@@ -94,8 +97,9 @@ namespace STROOP.Map
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
-                ToolStripMenuItem itemSetAngleDiff = new ToolStripMenuItem("Set Angle Diff");
-                itemSetAngleDiff.Click += (sender, e) =>
+                string suffix = string.Format(" ({0})", _angleDiff);
+                _itemSetAngleDiff = new ToolStripMenuItem(SET_ANGLE_DIFF_TEXT + suffix);
+                _itemSetAngleDiff.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter angle diff.");
                     int? angleDiff = ParsingUtilities.ParseIntNullable(text);
@@ -116,7 +120,7 @@ namespace STROOP.Map
 
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(_itemUseRelativeAngles);
-                _contextMenuStrip.Items.Add(itemSetAngleDiff);
+                _contextMenuStrip.Items.Add(_itemSetAngleDiff);
                 _contextMenuStrip.Items.Add(_itemUseInGameAngles);
             }
 
@@ -136,6 +140,8 @@ namespace STROOP.Map
             if (settings.AngleRangeChangeAngleDiff)
             {
                 _angleDiff = settings.AngleRangeNewAngleDiff;
+                string suffix = string.Format(" ({0})", _angleDiff);
+                _itemSetAngleDiff.Text = SET_ANGLE_DIFF_TEXT + suffix;
             }
 
             if (settings.AngleRangeChangeUseInGameAngles)
