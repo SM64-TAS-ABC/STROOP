@@ -21,6 +21,12 @@ namespace STROOP.Map
         private float _relativeMinY = 0;
         private float _relativeMaxY = 100;
 
+        private ToolStripMenuItem _itemSetRelativeMinY;
+        private ToolStripMenuItem _itemSetRelativeMaxY;
+
+        private static readonly string SET_RELATIVE_MIN_Y_TEXT = "Set Relative Min Y";
+        private static readonly string SET_RELATIVE_MAX_Y_TEXT = "Set Relative Max Y";
+
         public MapCustomCylinderPointsObject(List<(float x, float y, float z)> points)
             : base()
         {
@@ -57,8 +63,9 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                ToolStripMenuItem itemSetRelativeMinY = new ToolStripMenuItem("Set Relative Min Y...");
-                itemSetRelativeMinY.Click += (sender, e) =>
+                string suffixMin = string.Format(" ({0})", _relativeMinY);
+                _itemSetRelativeMinY = new ToolStripMenuItem(SET_RELATIVE_MIN_Y_TEXT + suffixMin);
+                _itemSetRelativeMinY.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter a number.");
                     float? relativeMinY = ParsingUtilities.ParseFloatNullable(text);
@@ -68,8 +75,9 @@ namespace STROOP.Map
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
-                ToolStripMenuItem itemSetRelativeMaxY = new ToolStripMenuItem("Set Relative Max Y...");
-                itemSetRelativeMaxY.Click += (sender, e) =>
+                string suffixMax = string.Format(" ({0})", _relativeMaxY);
+                _itemSetRelativeMaxY = new ToolStripMenuItem(SET_RELATIVE_MAX_Y_TEXT + suffixMax);
+                _itemSetRelativeMaxY.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter a number.");
                     float? relativeMaxY = ParsingUtilities.ParseFloatNullable(text);
@@ -80,8 +88,8 @@ namespace STROOP.Map
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(itemSetRelativeMinY);
-                _contextMenuStrip.Items.Add(itemSetRelativeMaxY);
+                _contextMenuStrip.Items.Add(_itemSetRelativeMinY);
+                _contextMenuStrip.Items.Add(_itemSetRelativeMaxY);
             }
 
             return _contextMenuStrip;
@@ -94,11 +102,15 @@ namespace STROOP.Map
             if (settings.CustomCylinderChangeRelativeMinY)
             {
                 _relativeMinY = settings.CustomCylinderNewRelativeMinY;
+                string suffix = string.Format(" ({0})", _relativeMinY);
+                _itemSetRelativeMinY.Text = SET_RELATIVE_MIN_Y_TEXT + suffix;
             }
 
             if (settings.CustomCylinderChangeRelativeMaxY)
             {
                 _relativeMaxY = settings.CustomCylinderNewRelativeMaxY;
+                string suffix = string.Format(" ({0})", _relativeMaxY);
+                _itemSetRelativeMaxY.Text = SET_RELATIVE_MAX_Y_TEXT + suffix;
             }
         }
     }
