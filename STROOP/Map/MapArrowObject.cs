@@ -19,6 +19,9 @@ namespace STROOP.Map
         private float _arrowHeadSideLength;
 
         private ToolStripMenuItem _itemUseSpeedForArrowLength;
+        private ToolStripMenuItem _itemSetArrowHeadSideLength;
+
+        private static readonly string SET_ARROW_HEAD_SIDE_LENGTH_TEXT = "Set Arrow Head Side Length";
 
         public MapArrowObject()
             : base()
@@ -84,8 +87,9 @@ namespace STROOP.Map
                 };
                 _itemUseSpeedForArrowLength.Checked = _useRecommendedArrowLength;
 
-                ToolStripMenuItem itemSetArrowHeadSideLength = new ToolStripMenuItem("Set Arrow Head Side Length");
-                itemSetArrowHeadSideLength.Click += (sender, e) =>
+                string suffix = string.Format(" ({0})", _arrowHeadSideLength);
+                _itemSetArrowHeadSideLength = new ToolStripMenuItem(SET_ARROW_HEAD_SIDE_LENGTH_TEXT + suffix);
+                _itemSetArrowHeadSideLength.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the side length of the arrow head:");
                     float? arrowHeadSideLength = ParsingUtilities.ParseFloatNullable(text);
@@ -97,7 +101,7 @@ namespace STROOP.Map
 
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(_itemUseSpeedForArrowLength);
-                _contextMenuStrip.Items.Add(itemSetArrowHeadSideLength);
+                _contextMenuStrip.Items.Add(_itemSetArrowHeadSideLength);
             }
 
             return _contextMenuStrip;
@@ -116,6 +120,8 @@ namespace STROOP.Map
             if (settings.ArrowChangeHeadSideLength)
             {
                 _arrowHeadSideLength = settings.ArrowNewHeadSideLength;
+                string suffix = string.Format(" ({0})", _arrowHeadSideLength);
+                _itemSetArrowHeadSideLength.Text = SET_ARROW_HEAD_SIDE_LENGTH_TEXT + suffix;
             }
         }
     }
