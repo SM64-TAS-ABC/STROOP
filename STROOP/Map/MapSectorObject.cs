@@ -21,6 +21,10 @@ namespace STROOP.Map
         private readonly PositionAngle _posAngle;
         private float _angleRadius;
 
+        private ToolStripMenuItem _itemSetAngleRadius;
+
+        private static readonly string SET_ANGLE_RADIUS_TEXT = "Set Angle Radius";
+
         public MapSectorObject(PositionAngle posAngle)
             : base()
         {
@@ -117,8 +121,9 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                ToolStripMenuItem itemSetAngleRadius = new ToolStripMenuItem("Set Angle Radius");
-                itemSetAngleRadius.Click += (sender, e) =>
+                string suffix = string.Format(" ({0})", _angleRadius);
+                _itemSetAngleRadius = new ToolStripMenuItem(SET_ANGLE_RADIUS_TEXT + suffix);
+                _itemSetAngleRadius.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the angle radius for sector:");
                     float? angleRadius = ParsingUtilities.ParseFloatNullable(text);
@@ -129,7 +134,7 @@ namespace STROOP.Map
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(itemSetAngleRadius);
+                _contextMenuStrip.Items.Add(_itemSetAngleRadius);
             }
 
             return _contextMenuStrip;
@@ -142,6 +147,8 @@ namespace STROOP.Map
             if (settings.SectorChangeAngleRadius)
             {
                 _angleRadius = settings.SectorNewAngleRadius;
+                string suffix = string.Format(" ({0})", _angleRadius);
+                _itemSetAngleRadius.Text = SET_ANGLE_RADIUS_TEXT + suffix;
             }
         }
 
