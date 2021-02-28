@@ -23,6 +23,11 @@ namespace STROOP.Map
         private float? _absoluteHeight;
 
         private ToolStripMenuItem _itemShowArrows;
+        private ToolStripMenuItem _itemSetRelativeHeight;
+        private ToolStripMenuItem _itemSetAbsoluteHeight;
+
+        private static readonly string SET_RELATIVE_HEIGHT_TEXT = "Set Relative Height";
+        private static readonly string SET_ABSOLUTE_HEIGHT_TEXT = "Set Absolute Height";
 
         public MapWallObject()
             : base()
@@ -223,8 +228,8 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
-            ToolStripMenuItem itemSetRelativeHeight = new ToolStripMenuItem("Set Relative Height");
-            itemSetRelativeHeight.Click += (sender, e) =>
+            _itemSetRelativeHeight = new ToolStripMenuItem(SET_RELATIVE_HEIGHT_TEXT);
+            _itemSetRelativeHeight.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter relative height of wall hitbox compared to wall triangle.");
                 float? relativeHeightNullable = ParsingUtilities.ParseFloatNullable(text);
@@ -242,8 +247,8 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
-            ToolStripMenuItem itemSetAbsoluteHeight = new ToolStripMenuItem("Set Absolute Height");
-            itemSetAbsoluteHeight.Click += (sender, e) =>
+            _itemSetAbsoluteHeight = new ToolStripMenuItem(SET_ABSOLUTE_HEIGHT_TEXT);
+            _itemSetAbsoluteHeight.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the height at which you want to see the wall triangles.");
                 float? absoluteHeightNullable =
@@ -267,9 +272,9 @@ namespace STROOP.Map
             return new List<ToolStripMenuItem>()
             {
                 _itemShowArrows,
-                itemSetRelativeHeight,
+                _itemSetRelativeHeight,
                 itemClearRelativeHeight,
-                itemSetAbsoluteHeight,
+                _itemSetAbsoluteHeight,
                 itemClearAbsoluteHeight,
             };
         }
@@ -287,11 +292,15 @@ namespace STROOP.Map
             if (settings.WallChangeRelativeHeight)
             {
                 _relativeHeight = settings.WallNewRelativeHeight;
+                string suffix = _relativeHeight.HasValue ? string.Format(" ({0})", _relativeHeight.Value) : "";
+                _itemSetRelativeHeight.Text = SET_RELATIVE_HEIGHT_TEXT + suffix;
             }
 
             if (settings.WallChangeAbsoluteHeight)
             {
                 _absoluteHeight = settings.WallNewAbsoluteHeight;
+                string suffix = _absoluteHeight.HasValue ? string.Format(" ({0})", _absoluteHeight.Value) : "";
+                _itemSetAbsoluteHeight.Text = SET_ABSOLUTE_HEIGHT_TEXT + suffix;
             }
         }
 
