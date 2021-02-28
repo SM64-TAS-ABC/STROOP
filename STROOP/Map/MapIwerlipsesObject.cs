@@ -17,8 +17,6 @@ namespace STROOP.Map
 {
     public class MapIwerlipsesObject : MapObject
     {
-        private readonly static int NUM_POINTS = 256;
-
         private bool _lockPositions = false;
         private MarioState _marioState = null;
         private bool _showQuarterSteps = true;
@@ -64,8 +62,8 @@ namespace STROOP.Map
             double backwardDist = MoreMath.GetDistanceBetween(cx, cz, bx, bz);
 
             (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(cx, cz);
-            List<(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, NUM_POINTS).ToList()
-                .ConvertAll(index => (index / (float)NUM_POINTS) * 65536)
+            List<(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
+                .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
                 .ConvertAll(angle => GetEllipsePoint(cx, cz, sideDist, forwardDist, backwardDist, marioAngle, angle))
                 .ConvertAll(point => MapUtilities.ConvertCoordsForControlTopDownView((float)point.x, (float)point.z));
 
@@ -137,8 +135,8 @@ namespace STROOP.Map
             double forwardDist = MoreMath.GetDistanceBetween(cx, cz, fx, fz);
             double backwardDist = MoreMath.GetDistanceBetween(cx, cz, bx, bz);
 
-            List<(float x, float y, float z)> points = Enumerable.Range(0, NUM_POINTS).ToList()
-                .ConvertAll(index => (index / (float)NUM_POINTS) * 65536)
+            List<(float x, float y, float z)> points = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
+                .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
                 .ConvertAll(angle => GetEllipsePoint(cx, cz, sideDist, forwardDist, backwardDist, marioAngle, angle))
                 .ConvertAll(point => ((float)point.x, (float)marioStateCenter.Y, (float)point.z));
 
