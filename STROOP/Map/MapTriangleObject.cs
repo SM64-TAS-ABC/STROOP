@@ -22,7 +22,12 @@ namespace STROOP.Map
         protected bool _excludeDeathBarriers;
         protected bool _useCrossSection;
 
+        private ToolStripMenuItem _itemSetWithinDist;
+        private ToolStripMenuItem _itemSetWithinCenter;
         private ToolStripMenuItem _itemUseCrossSection;
+
+        private static readonly string SET_WITHIN_DIST_TEXT = "Set Within Dist";
+        private static readonly string SET_WITHIN_CENTER_TEXT = "Set Within Center";
 
         public MapTriangleObject()
             : base()
@@ -285,8 +290,8 @@ namespace STROOP.Map
 
         protected List<ToolStripMenuItem> GetTriangleToolStripMenuItems()
         {
-            ToolStripMenuItem itemSetWithinDist = new ToolStripMenuItem("Set Within Dist");
-            itemSetWithinDist.Click += (sender, e) =>
+            _itemSetWithinDist = new ToolStripMenuItem(SET_WITHIN_DIST_TEXT);
+            _itemSetWithinDist.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the vertical distance from the center (default: Mario) within which to show tris.");
                 float? withinDistNullable = ParsingUtilities.ParseFloatNullable(text);
@@ -304,8 +309,8 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
-            ToolStripMenuItem itemSetWithinCenter = new ToolStripMenuItem("Set Within Center");
-            itemSetWithinCenter.Click += (sender, e) =>
+            _itemSetWithinCenter = new ToolStripMenuItem(SET_WITHIN_CENTER_TEXT);
+            _itemSetWithinCenter.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the center y of the within-dist range.");
                 float? withinCenterNullable =
@@ -336,9 +341,9 @@ namespace STROOP.Map
 
             return new List<ToolStripMenuItem>()
             {
-                itemSetWithinDist,
+                _itemSetWithinDist,
                 itemClearWithinDist,
-                itemSetWithinCenter,
+                _itemSetWithinCenter,
                 itemClearWithinCenter,
                 _itemUseCrossSection,
             };
@@ -351,11 +356,15 @@ namespace STROOP.Map
             if (settings.TriangleChangeWithinDist)
             {
                 _withinDist = settings.TriangleNewWithinDist;
+                string suffix = _withinDist.HasValue ? string.Format(" ({0})", _withinDist.Value) : "";
+                _itemSetWithinDist.Text = SET_WITHIN_DIST_TEXT + suffix;
             }
 
             if (settings.TriangleChangeWithinCenter)
             {
                 _withinCenter = settings.TriangleNewWithinCenter;
+                string suffix = _withinCenter.HasValue ? string.Format(" ({0})", _withinCenter.Value) : "";
+                _itemSetWithinCenter.Text = SET_WITHIN_CENTER_TEXT + suffix;
             }
 
             if (settings.TriangleChangeUseCrossSection)
