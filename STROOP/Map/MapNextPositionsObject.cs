@@ -24,6 +24,8 @@ namespace STROOP.Map
         private bool _showQuarterSteps = true;
         private double _numFrames = 4;
 
+        private static readonly string SET_NUM_FRAMES_TEXT = "Set Num Frames";
+
         public MapNextPositionsObject()
             : base()
         {
@@ -207,7 +209,8 @@ namespace STROOP.Map
                 };
                 itemShowQuarterSteps.Checked = _showQuarterSteps;
 
-                ToolStripMenuItem itemSetNumFrames = new ToolStripMenuItem("Set Num Frames...");
+                string suffix = string.Format(" ({0})", _numFrames);
+                ToolStripMenuItem itemSetNumFrames = new ToolStripMenuItem(SET_NUM_FRAMES_TEXT + suffix);
                 itemSetNumFrames.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter num frames to the nearest 1/4th.");
@@ -215,6 +218,8 @@ namespace STROOP.Map
                     if (!numFramesNullable.HasValue) return;
                     double numFrames = numFramesNullable.Value;
                     _numFrames = numFrames;
+                    string suffix2 = string.Format(" ({0})", _numFrames);
+                    itemSetNumFrames.Text = SET_NUM_FRAMES_TEXT + suffix2;
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
