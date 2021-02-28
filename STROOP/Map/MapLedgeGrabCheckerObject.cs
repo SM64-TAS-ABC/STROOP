@@ -17,6 +17,8 @@ namespace STROOP.Map
     {
         private uint? _customWallTri;
 
+        private static readonly string SET_CUSTOM_WALL_TRIANGLE_TEXT = "Set Custom Wall Triangle";
+
         public MapLedgeGrabCheckerObject()
             : base()
         {
@@ -54,7 +56,7 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                ToolStripMenuItem itemSetCustomWallTriangle = new ToolStripMenuItem("Set Custom Wall Triangle...");
+                ToolStripMenuItem itemSetCustomWallTriangle = new ToolStripMenuItem(SET_CUSTOM_WALL_TRIANGLE_TEXT);
                 itemSetCustomWallTriangle.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter wall triangle as hex uint.");
@@ -62,10 +64,20 @@ namespace STROOP.Map
                     if (!wallTriangleNullable.HasValue) return;
                     uint wallTriangle = wallTriangleNullable.Value;
                     _customWallTri = wallTriangle;
+                    string suffix = string.Format(" ({0})", HexUtilities.FormatValue(_customWallTri.Value));
+                    itemSetCustomWallTriangle.Text = SET_CUSTOM_WALL_TRIANGLE_TEXT + suffix;
+                };
+
+                ToolStripMenuItem itemClearCustomWallTriangle = new ToolStripMenuItem("Clear Custom Wall Triangle");
+                itemClearCustomWallTriangle.Click += (sender, e) =>
+                {
+                    _customWallTri = null;
+                    itemSetCustomWallTriangle.Text = SET_CUSTOM_WALL_TRIANGLE_TEXT;
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemSetCustomWallTriangle);
+                _contextMenuStrip.Items.Add(itemClearCustomWallTriangle);
             }
 
             return _contextMenuStrip;
