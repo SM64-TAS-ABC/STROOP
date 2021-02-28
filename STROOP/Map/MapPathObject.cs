@@ -30,6 +30,9 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemResetPathOnLevelChange;
         private ToolStripMenuItem _itemUseBlending;
         private ToolStripMenuItem _itemPause;
+        private ToolStripMenuItem _itemSetModulo;
+
+        private static readonly string SET_MODULO_TEXT = "Set Modulo";
 
         public MapPathObject(PositionAngle posAngle)
             : base()
@@ -330,8 +333,9 @@ namespace STROOP.Map
                 };
                 _itemPause.Checked = _isPaused;
 
-                ToolStripMenuItem itemSetModulo = new ToolStripMenuItem("Set Modulo");
-                itemSetModulo.Click += (sender, e) =>
+                string suffix = string.Format(" ({0})", _modulo);
+                _itemSetModulo = new ToolStripMenuItem(SET_MODULO_TEXT + suffix);
+                _itemSetModulo.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter modulo.");
                     int? moduloNullable = ParsingUtilities.ParseIntNullable(text);
@@ -346,7 +350,7 @@ namespace STROOP.Map
                 _contextMenuStrip.Items.Add(_itemResetPathOnLevelChange);
                 _contextMenuStrip.Items.Add(_itemUseBlending);
                 _contextMenuStrip.Items.Add(_itemPause);
-                _contextMenuStrip.Items.Add(itemSetModulo);
+                _contextMenuStrip.Items.Add(_itemSetModulo);
             }
 
             return _contextMenuStrip;
@@ -382,6 +386,8 @@ namespace STROOP.Map
             if (settings.PathChangeModulo)
             {
                 _modulo = settings.PathNewModulo;
+                string suffix = string.Format(" ({0})", _modulo);
+                _itemSetModulo.Text = SET_MODULO_TEXT + suffix;
             }
         }
 
