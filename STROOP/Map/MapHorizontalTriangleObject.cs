@@ -22,6 +22,12 @@ namespace STROOP.Map
         private float? _maxHeight;
         protected bool _enableQuarterFrameLandings;
 
+        private ToolStripMenuItem _itemSetMinHeight;
+        private ToolStripMenuItem _itemSetMaxHeight;
+
+        private static readonly string SET_MIN_HEIGHT_TEXT = "Set Min Height";
+        private static readonly string SET_MAX_HEIGHT_TEXT = "Set Max Height";
+
         public MapHorizontalTriangleObject()
             : base()
         {
@@ -264,8 +270,8 @@ namespace STROOP.Map
 
         protected List<ToolStripMenuItem> GetHorizontalTriangleToolStripMenuItems()
         {
-            ToolStripMenuItem itemSetMinHeight = new ToolStripMenuItem("Set Min Height");
-            itemSetMinHeight.Click += (sender, e) =>
+            _itemSetMinHeight = new ToolStripMenuItem(SET_MIN_HEIGHT_TEXT);
+            _itemSetMinHeight.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the min height.");
                 float? minHeightNullable =
@@ -286,8 +292,8 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
-            ToolStripMenuItem itemSetMaxHeight = new ToolStripMenuItem("Set Max Height");
-            itemSetMaxHeight.Click += (sender, e) =>
+            _itemSetMaxHeight = new ToolStripMenuItem(SET_MAX_HEIGHT_TEXT);
+            _itemSetMaxHeight.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the max height.");
                 float? maxHeightNullable =
@@ -310,9 +316,9 @@ namespace STROOP.Map
 
             return new List<ToolStripMenuItem>()
             {
-                itemSetMinHeight,
+                _itemSetMinHeight,
                 itemClearMinHeight,
-                itemSetMaxHeight,
+                _itemSetMaxHeight,
                 itemClearMaxHeight,
             };
         }
@@ -324,11 +330,15 @@ namespace STROOP.Map
             if (settings.HorizontalTriangleChangeMinHeight)
             {
                 _minHeight = settings.HorizontalTriangleNewMinHeight;
+                string suffix = _minHeight.HasValue ? string.Format(" ({0})", _minHeight.Value) : "";
+                _itemSetMinHeight.Text = SET_MIN_HEIGHT_TEXT + suffix;
             }
 
             if (settings.HorizontalTriangleChangeMaxHeight)
             {
                 _maxHeight = settings.HorizontalTriangleNewMaxHeight;
+                string suffix = _maxHeight.HasValue ? string.Format(" ({0})", _maxHeight.Value) : "";
+                _itemSetMaxHeight.Text = SET_MAX_HEIGHT_TEXT + suffix;
             }
         }
 
