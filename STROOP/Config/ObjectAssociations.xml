@@ -309,7 +309,7 @@
     <SpawnCode gfxId="0x56"/>
     <Image path="King Bob-omb.png"/>
     <MapImage path="King Bob-omb Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x178" base="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x18C" base="Object">Phase 2</Data>
@@ -375,7 +375,7 @@
     <SpawnCode gfxId="0xDF"/>
     <Image path="Chuckya.png"/>
     <MapImage path="Chuckya Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Phase Timer</Data>
@@ -443,7 +443,7 @@
     <SpawnCode gfxId="0xBE"/>
     <Image path="Shell.png"/>
     <MapImage path="Shell Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000720" name="TTM Slide Ending Platform">
@@ -961,7 +961,7 @@
     <SpawnCode gfxId="0xDD"/>
     <Image path="Toad.png"/>
     <MapImage path="Toad Top.png" rotates="true"/>
-        <HitboxPadding padding="-10"/>
+    <PushHitbox padding="-10"/>
   </Object>
   <Object behaviorScriptAddress="0x13000EAC" name="Peach (for Ending Cutscene)">
     <SpawnCode gfxId="0xDE"/>
@@ -972,7 +972,7 @@
     <SpawnCode gfxId="0x56"/>
     <Image path="Ukiki.png"/>
     <MapImage path="Ukiki Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x147" base="Object" subclass="Boolean">Steals Hat</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x1B3" base="Object" subclass="Boolean">Wearing Hat</Data>
@@ -982,7 +982,7 @@
     <SpawnCode gfxId="0x56"/>
     <Image path="Ukiki.png"/>
     <MapImage path="Ukiki Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x147" base="Object" subclass="Boolean">Steals Hat</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x1B3" base="Object" subclass="Boolean">Wearing Hat</Data>
@@ -1234,7 +1234,7 @@
     <SpawnCode gfxId="0x59"/>
     <Image path="Heave-Ho.png"/>
     <MapImage path="Heave-Ho Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0x6C" base="Object" subclass="Object">Anchor Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x130015A4" name="Heave-Ho Anchor">
@@ -1248,7 +1248,7 @@
     <SpawnCode gfxId="0x81"/>
     <Image path="Crazy Box.png"/>
     <MapImage path="Crazy Box Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF0" base="Object">Appearance</Data>
   </Object>
@@ -1260,7 +1260,7 @@
   <Object behaviorScriptAddress="0x130016B8" name="Igloo Barrier">
     <SpawnCode gfxId="0x00"/>
     <Image path="Igloo Barrier.png"/>
-    <HitboxPadding padding="5"/>
+    <PushHitbox padding="5"/>
   </Object>
   <Object behaviorScriptAddress="0x130016E4" name="Bowser Key (Collectible)">
     <SpawnCode gfxId="0xCC"/>
@@ -1494,7 +1494,7 @@
     <SpawnCode gfxId="0xBE"/>
     <Image path="Shell.png"/>
     <MapImage path="Shell Top.png" rotates="true"/>
-    <HitboxPadding padding="2"/>
+    <PushHitbox padding="2"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x14F" base="Object" subclass="Boolean">Being Ridden</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001F68" name="Shell Riding Flame">
@@ -1604,7 +1604,7 @@
     <SpawnCode gfxId="0x57"/>
     <Image path="Penguin.png"/>
     <MapImage path="Penguin Top.png" rotates="true"/>
-    <HitboxPadding padding="2"/>
+    <PushHitbox padding="2"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
   </Object>
@@ -1612,7 +1612,7 @@
     <SpawnCode gfxId="0x57"/>
     <Image path="Baby Penguin.png"/>
     <MapImage path="Penguin Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x189" base="Object" subclass="Boolean">Fake</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x8B" base="Object" subclass="Boolean">Returning</Data>
@@ -1625,7 +1625,7 @@
     <SpawnCode gfxId="0x57"/>
     <Image path="Baby Penguin.png"/>
     <MapImage path="Penguin Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x189" base="Object" subclass="Boolean">Fake</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x8B" base="Object" subclass="Boolean">Returning</Data>
@@ -1638,7 +1638,7 @@
     <SpawnCode gfxId="0x57"/>
     <Image path="Baby Penguin.png"/>
     <MapImage path="Penguin Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x189" base="Object" subclass="Boolean">Fake</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x8B" base="Object" subclass="Boolean">Returning</Data>
@@ -1651,7 +1651,7 @@
     <SpawnCode gfxId="0x57"/>
     <Image path="Baby Penguin.png"/>
     <MapImage path="Penguin Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x189" base="Object" subclass="Boolean">Fake</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x8B" base="Object" subclass="Boolean">Returning</Data>
@@ -2416,7 +2416,7 @@
     <SpawnCode gfxId="0xDD"/>
     <Image path="Toad.png"/>
     <MapImage path="Toad Top.png" rotates="true"/>
-    <HitboxPadding padding="-10"/>
+    <PushHitbox padding="-10"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Text</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">State 2</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
@@ -2569,7 +2569,7 @@
     <SpawnCode gfxId="0xbc"/>
     <Image path="Bob-omb.png"/>
     <MapImage path="Bob-omb Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x147" base="Object" subclass="Boolean" invertBool="true">Can Move</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x18A" base="Object" subclass="Boolean" invertBool="true">Has Coin</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
@@ -2588,7 +2588,7 @@
     <SpawnCode gfxId="0xbc"/>
     <Image path="Bob-omb.png"/>
     <MapImage path="Bob-omb Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x147" base="Object" subclass="Boolean" invertBool="true">Can Move</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x18A" base="Object" subclass="Boolean" invertBool="true">Has Coin</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
@@ -2610,7 +2610,7 @@
     <SpawnCode gfxId="0xc3"/>
     <Image path="Bob-omb Buddy.png"/>
     <MapImage path="Bob-omb Buddy Top.png" rotates="true"/>
-    <HitboxPadding padding="-10"/>
+    <PushHitbox padding="-10"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object">Blinking Timer</Data>
   </Object>
@@ -2618,7 +2618,7 @@
     <SpawnCode gfxId="0xc3"/>
     <Image path="Bob-omb Buddy.png"/>
     <MapImage path="Bob-omb Buddy Top.png" rotates="true"/>
-    <HitboxPadding padding="-10"/>
+    <PushHitbox padding="-10"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object">Blinking Timer</Data>
   </Object>
@@ -2757,33 +2757,33 @@
     <SpawnCode gfxId="0x56"/>
     <Image path="Bully.png"/>
     <MapImage path="Bully Top.png" rotates="true"/>
-    <HitboxPadding padding="5"/>
+    <PushHitbox padding="5"/>
     <Data groupList="ObjectSpecific" base="Object" offset="0x104" type="int">Knockback Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003660" name="Big Bully (Loner)">
     <SpawnCode gfxId="0x57"/>
     <Image path="Big Bully.png"/>
     <MapImage path="Big Bully Top.png" rotates="true"/>
-    <HitboxPadding padding="5"/>
+    <PushHitbox padding="5"/>
     <Data groupList="ObjectSpecific" base="Object" offset="0x104" type="int">Knockback Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003694" name="Big Bully (After Triplets)">
     <SpawnCode gfxId="0x57"/>
     <Image path="Big Bully.png"/>
     <MapImage path="Big Bully Top.png" rotates="true"/>
-    <HitboxPadding padding="5"/>
+    <PushHitbox padding="5"/>
     <Data groupList="ObjectSpecific" base="Object" offset="0x104" type="int">Knockback Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130036C8" name="Small Chill Bully">
     <SpawnCode gfxId="0x64"/>
     <Image path="Chill Bully.png"/>
-    <HitboxPadding padding="5"/>
+    <PushHitbox padding="5"/>
     <MapImage path="Chill Bully Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003700" name="Chill Bully">
     <SpawnCode gfxId="0x65"/>
     <Image path="Chill Bully.png"/>
-    <HitboxPadding padding="5"/>
+    <PushHitbox padding="5"/>
     <MapImage path="Chill Bully Top.png" rotates="true"/>
   </Object>
   <Object behaviorScriptAddress="0x13003738" name="Water Ring Spawner">
@@ -3019,7 +3019,7 @@
   <Object behaviorScriptAddress="0x13003D4C" name="Snowman's Body (Doesn't Talk)">
     <SpawnCode gfxId="0xD2"/>
     <Image path="Snowman's Body.png"/>
-    <HitboxPadding padding="2"/>
+    <PushHitbox padding="2"/>
   </Object>
   <Object behaviorScriptAddress="0x13003D74" name="Rolling Rock">
     <SpawnCode gfxId="0x39"/>
@@ -3183,7 +3183,7 @@
     <SpawnCode gfxId="0x82"/>
     <Image path="Grabbable Cork Box.png"/>
     <MapImage path="Cork Box Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x8F" mask="0x08" base="Object" subclass="Boolean" invertBool="true">Static Angle</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x74" mask="0x02" base="Object" subclass="Boolean" invertBool="true">Active Hurtbox</Data>
@@ -3326,7 +3326,7 @@
     <SpawnCode gfxId="0x64"/>
     <Image path="MIPS.png"/>
     <MapImage path="MIPS Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0x144" base="Object" subclass="Boolean">Second Occurrence</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" subclass="Address">Starter WP</Data>
@@ -3352,7 +3352,7 @@
     <SpawnCode gfxId="0x64"/>
     <Image path="MIPS.png"/>
     <MapImage path="MIPS Top.png" rotates="true"/>
-    <HitboxPadding padding="-5"/>
+    <PushHitbox padding="-5"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0x144" base="Object" subclass="Boolean">Second Occurrence</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" subclass="Address">Starter WP</Data>
@@ -3378,7 +3378,7 @@
     <SpawnCode gfxId="0x55"/>
     <Image path="Yoshi.png"/>
     <MapImage path="Yoshi Top.png" rotates="true"/>
-    <HitboxPadding padding="-10"/>
+    <PushHitbox padding="-10"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Target Location</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Blinking Timer</Data>
