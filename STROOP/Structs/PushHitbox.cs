@@ -68,9 +68,23 @@ namespace STROOP.Structs
             float effectiveMaxY = hitboxMaxY;
 
             float finalRadius = radius ?? effectiveRadius + (padding ?? 0);
-            float finalMinY = extentY.HasValue ? Math.Max(effectiveMinY, objY - extentY.Value) : effectiveMinY;
-            float finalMaxY = extentY.HasValue ? Math.Min(effectiveMaxY, objY + extentY.Value) : effectiveMaxY;
-
+            float finalMinY;
+            float finalMaxY;
+            if (radius.HasValue && !extentY.HasValue) // pole
+            {
+                finalMinY = objY - 10;
+                finalMaxY = objY + hitboxHeight + 30;
+            }
+            else if (extentY.HasValue)
+            {
+                finalMinY = objY - extentY.Value;
+                finalMaxY = objY + extentY.Value;
+            }
+            else
+            {
+                finalMinY = effectiveMinY;
+                finalMaxY = effectiveMaxY;
+            }
             return (finalRadius, finalMinY, finalMaxY);
         }
     }
