@@ -32,7 +32,7 @@ namespace STROOP.Structs
             _isRacingPenguin = isRacingPenguin;
         }
 
-        public int GetRadius(uint objAddress)
+        public (float radius, float minY, float maxY) GetDetails(uint objAddress)
         {
             int? padding = _padding;
             int? radius = _radius;
@@ -52,7 +52,26 @@ namespace STROOP.Structs
                 extentY = subType == 0 ? 200 : 250;
             }
 
-            return 0;
+            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+            float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
+            float hitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeightOffset);
+            float hitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+            float hitboxMinY = objY - hitboxDownOffset;
+            float hitboxMaxY = hitboxMinY + hitboxHeight;
+
+            uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+            float marioHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadiusOffset);
+            float marioHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
+
+            float effectiveRadius = hitboxRadius + marioHitboxRadius;
+            float effectiveMinY = hitboxMinY - marioHitboxHeight;
+            float effectiveMaxY = hitboxMaxY;
+
+            float finalRadius = radius ?? effectiveRadius + (padding ?? 0);
+            float finalMinY = effectiveMinY;
+            float finalMaxY = effectiveMaxY;
+
+            return (finalRadius, finalMinY, finalMaxY);
         }
     }
 }
