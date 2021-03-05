@@ -3415,6 +3415,7 @@
     <SpawnCode gfxId="0x68"/>
     <Image path="Koopa the Quick with Flag.png"/>
     <MapImage path="Koopa Top.png" rotates="true"/>
+    <PushHitbox isKoopaTheQuick="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Movement Type</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Jump State</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
@@ -3451,6 +3452,7 @@
     <SpawnCode gfxId="0x68"/>
     <Image path="Koopa the Quick with Flag.png"/>
     <MapImage path="Koopa Top.png" rotates="true"/>
+    <PushHitbox isKoopaTheQuick="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Movement Type</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Jump State</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
@@ -4444,6 +4446,7 @@
     <SpawnCode gfxId="0x57"/>
     <Image path="Penguin.png"/>
     <MapImage path="Penguin Top.png" rotates="true"/>
+    <PushHitbox isRacingPenguin="true"/>
     <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1B2" base="Object" subclass="Boolean">Mario Cheated</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1AE" base="Object" subclass="Boolean">Mario Finished First</Data>
