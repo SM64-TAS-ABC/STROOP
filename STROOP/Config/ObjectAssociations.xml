@@ -253,11 +253,13 @@
   <Object behaviorScriptAddress="0x13000118" name="WF Big Pole">
     <SpawnCode gfxId="0x0D"/>
     <Image path="WF Big Pole.png"/>
+    <PushHitbox radius="70"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000144" name="Pole">
     <SpawnCode gfxId="0x00"/>
     <Image path="Pole.png"/>
+    <PushHitbox radius="70"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000174" name="THI Wiggler's Cave Cover (Large)">
@@ -1024,6 +1026,7 @@
   <Object behaviorScriptAddress="0x13001000" name="Rising and Lowering Pole">
     <SpawnCode gfxId="0x39"/>
     <Image path="Rising and Lowering Pole.png"/>
+    <PushHitbox radius="70"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0x68" base="Object" subclass="Object">Host Object</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
@@ -2994,6 +2997,7 @@
   <Object behaviorScriptAddress="0x13003CE4" name="Snowman's Body (Talks)">
     <SpawnCode gfxId="0xD2"/>
     <Image path="Snowman's Body.png"/>
+    <PushHitbox radius="210"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x1AF" base="Object" subclass="Boolean">Checkpoint Gotten</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x00" base="Waypoint">Prev WP Index</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x02" base="Waypoint" coord="X">Prev WP X</Data>
@@ -3010,6 +3014,7 @@
   <Object behaviorScriptAddress="0x13003D0C" name="Snowman's Head">
     <SpawnCode gfxId="0x37"/>
     <Image path="Snowman's Head.png"/>
+    <PushHitbox radius="180"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object" subclass="Boolean">Talking</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003D34" name="Snowman Path Checkpoint">
@@ -3315,6 +3320,7 @@
     <SpawnCode gfxId="0x65"/>
     <Image path="Chest Bottom.png"/>
     <MapImage path="Chest Bottom Top.png" rotates="true"/>
+    <PushHitbox radius="150"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x14F" base="Object" subclass="Boolean">Used</Data>
   </Object>
   <Object behaviorScriptAddress="0x130044E0" name="Chest Top">
@@ -4279,6 +4285,7 @@
   <Object behaviorScriptAddress="0x13004F10" name="Enemy Cannon Base">
     <SpawnCode gfxId="0x80"/>
     <Image path="Enemy Cannon Base.png"/>
+    <PushHitbox radius="220"/>
   </Object>
   <Object behaviorScriptAddress="0x13004F28" name="Enemy Cannon Shaft">
     <SpawnCode gfxId="0x7F"/>
@@ -4315,11 +4322,13 @@
   <Object behaviorScriptAddress="0x13004FD4" name="Haunted Chair">
     <SpawnCode gfxId="0x56"/>
     <Image path="Haunted Chair.png"/>
+    <PushHitbox radius="80"/>
   </Object>
   <Object behaviorScriptAddress="0x13005024" name="Mad Piano">
     <SpawnCode gfxId="0x57"/>
     <Image path="Mad Piano.png"/>
     <MapImage path="Mad Piano Top.png" rotates="true"/>
+    <PushHitbox radius="280"/>
   </Object>
   <Object behaviorScriptAddress="0x1300506C" name="Bookend">
     <SpawnCode gfxId="0x58"/>
@@ -4338,6 +4347,7 @@
   </Object>
   <Object behaviorScriptAddress="0x130050F4" name="Book Switch">
     <Image path="Book Switch.png"/>
+    <PushHitbox radius="70"/>
   </Object>
   <Object behaviorScriptAddress="0x13005120" name="Tiny Piranha Plant" subType="0">
     <SpawnCode gfxId="0x64"/>
@@ -4547,6 +4557,7 @@
     <SpawnCode gfxId="0x38"/>
     <Image path="DDD Pole.png"/>
     <MapImage path="DDD Pole Top.png" rotates="true"/>
+    <PushHitbox radius="70"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">Velocity</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Max Offset</Data>
