@@ -594,6 +594,17 @@ namespace STROOP.Utilities
                             rotates = bool.Parse(element.Element(XName.Get("MapImage")).Attribute(XName.Get("rotates")).Value);
                         }
 
+                        PushHitbox pushHitbox = null;
+                        var pushHitboxElement = element.Element(XName.Get("PushHitbox"));
+                        if (pushHitboxElement != null)
+                        {
+                            int? padding = ParsingUtilities.ParseIntNullable(pushHitboxElement.Attribute(XName.Get("padding"))?.Value);
+                            int? radius = ParsingUtilities.ParseIntNullable(pushHitboxElement.Attribute(XName.Get("radius"))?.Value);
+                            bool isKoopaTheQuick = ParsingUtilities.ParseBoolNullable(pushHitboxElement.Attribute(XName.Get("isKoopaTheQuick"))?.Value) ?? false;
+                            bool isRacingPenguin = ParsingUtilities.ParseBoolNullable(pushHitboxElement.Attribute(XName.Get("isRacingPenguin"))?.Value) ?? false;
+                            pushHitbox = new PushHitbox(padding, radius, isKoopaTheQuick, isRacingPenguin);
+                        }
+
                         List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
@@ -615,6 +626,7 @@ namespace STROOP.Utilities
                             MapImagePath = mapImagePath,
                             Name = name,
                             RotatesOnMap = rotates,
+                            PushHitbox = pushHitbox,
                             Precursors = precursors,
                         };
 

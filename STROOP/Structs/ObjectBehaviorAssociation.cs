@@ -20,6 +20,7 @@ namespace STROOP.Structs
         public LazyImage Image;
         public LazyImage TransparentImage;
         public LazyImage MapImage;
+        public PushHitbox PushHitbox;
         public List<WatchVariableControlPrecursor> Precursors = new List<WatchVariableControlPrecursor>();
 
         private List<WatchVariableControl> _watchVariableControls = null;

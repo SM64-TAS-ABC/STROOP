@@ -577,6 +577,7 @@
     <Compile Include="Structs\MusicEntry.cs" />
     <Compile Include="Structs\MusicTable.cs" />
     <Compile Include="Structs\PendulumVertexTable.cs" />
+    <Compile Include="Structs\PushHitbox.cs" />
     <Compile Include="Structs\TriangleInfoTable.cs" />
     <Compile Include="Structs\PointTable.cs" />
     <Compile Include="Ttc\TtcPendulum2.cs" />
