@@ -34,6 +34,24 @@ namespace STROOP.Structs
 
         public int GetRadius(uint objAddress)
         {
+            int? padding = _padding;
+            int? radius = _radius;
+            int? extentY = _extentY;
+
+            if (_isKoopaTheQuick)
+            {
+                int action = Config.Stream.GetInt32(objAddress + ObjectConfig.ActionOffset);
+                radius = action == 3 ? 180 : 140;
+                extentY = 300;
+            }
+            
+            if (_isRacingPenguin)
+            {
+                int subType = Config.Stream.GetInt32(objAddress + ObjectConfig.BehaviorSubtypeOffset);
+                radius = subType == 0 ? 200 : 350;
+                extentY = subType == 0 ? 200 : 250;
+            }
+
             return 0;
         }
     }
