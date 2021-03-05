@@ -31,8 +31,11 @@ namespace STROOP.Map
             uint objAddress = _posAngle.GetObjAddress();
             ObjectDataModel obj = new ObjectDataModel(objAddress);
             ObjectBehaviorAssociation assoc = Config.ObjectAssociations.FindObjectAssociation(obj.BehaviorCriteria);
+            if (assoc.PushHitbox == null)
+            {
+                return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>();
+            }
             (float radius, float minY, float maxY) = assoc.PushHitbox.GetDetails(objAddress);
-
             return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>()
             {
                 ((float)_posAngle.X, (float)_posAngle.Z, radius, minY, maxY)

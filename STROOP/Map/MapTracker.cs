@@ -211,10 +211,6 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    uint objAddress = posAngle.GetObjAddress();
-                    ObjectDataModel obj = new ObjectDataModel(objAddress);
-                    ObjectBehaviorAssociation assoc = Config.ObjectAssociations.FindObjectAssociation(obj.BehaviorCriteria);
-                    if (assoc.PushHitbox == null) return null;
                     return (MapObject)new MapPushHitboxCylinderObject(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
