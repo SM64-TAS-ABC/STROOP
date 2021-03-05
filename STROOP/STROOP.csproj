@@ -448,6 +448,7 @@
     <Compile Include="Managers\QuarterFrameManager.cs" />
     <Compile Include="Map\MapAllObjectCeilingObject.cs" />
     <Compile Include="Map\MapAllObjectWallObject.cs" />
+    <Compile Include="Map\MapPushHitboxCylinderObject.cs" />
     <Compile Include="Map\MapLedgeGrabCheckerObject.cs" />
     <Compile Include="Map\MapCoordinateLabelsObject.cs" />
     <Compile Include="Map\MapCustomPositionAngleArrowObject.cs" />

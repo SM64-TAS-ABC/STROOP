@@ -202,6 +202,21 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemPushHitboxCylinder = new ToolStripMenuItem("Add Tracker for Push Hitbox Cylinder");
+            itemPushHitboxCylinder.Click += (sender, e) =>
+            {
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
+                    return (MapObject)new MapPushHitboxCylinderObject(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                MapTracker tracker = new MapTracker(newMapObjs);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemTangibilitySphere = new ToolStripMenuItem("Add Tracker for Tangibility Sphere");
             itemTangibilitySphere.Click += (sender, e) =>
             {
@@ -671,6 +686,7 @@ namespace STROOP.Map
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemEffectiveHitboxCylinder);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemHurtboxCylinder);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemEffectiveHurtboxCylinder);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemPushHitboxCylinder);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemTangibilitySphere);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemDrawDistanceSphere);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemCustomCylinder);
