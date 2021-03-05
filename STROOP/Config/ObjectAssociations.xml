@@ -2997,7 +2997,7 @@
   <Object behaviorScriptAddress="0x13003CE4" name="Snowman's Body (Talks)">
     <SpawnCode gfxId="0xD2"/>
     <Image path="Snowman's Body.png"/>
-    <PushHitbox radius="210"/>
+    <PushHitbox radius="210" extentY="550"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x1AF" base="Object" subclass="Boolean">Checkpoint Gotten</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x00" base="Waypoint">Prev WP Index</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x02" base="Waypoint" coord="X">Prev WP X</Data>
@@ -3014,7 +3014,7 @@
   <Object behaviorScriptAddress="0x13003D0C" name="Snowman's Head">
     <SpawnCode gfxId="0x37"/>
     <Image path="Snowman's Head.png"/>
-    <PushHitbox radius="180"/>
+    <PushHitbox radius="180" extentY="150"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object" subclass="Boolean">Talking</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003D34" name="Snowman Path Checkpoint">
@@ -3320,7 +3320,7 @@
     <SpawnCode gfxId="0x65"/>
     <Image path="Chest Bottom.png"/>
     <MapImage path="Chest Bottom Top.png" rotates="true"/>
-    <PushHitbox radius="150"/>
+    <PushHitbox radius="150" extentY="150"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x14F" base="Object" subclass="Boolean">Used</Data>
   </Object>
   <Object behaviorScriptAddress="0x130044E0" name="Chest Top">
@@ -4287,7 +4287,7 @@
   <Object behaviorScriptAddress="0x13004F10" name="Enemy Cannon Base">
     <SpawnCode gfxId="0x80"/>
     <Image path="Enemy Cannon Base.png"/>
-    <PushHitbox radius="220"/>
+    <PushHitbox radius="220" extentY="300"/>
   </Object>
   <Object behaviorScriptAddress="0x13004F28" name="Enemy Cannon Shaft">
     <SpawnCode gfxId="0x7F"/>
@@ -4324,13 +4324,13 @@
   <Object behaviorScriptAddress="0x13004FD4" name="Haunted Chair">
     <SpawnCode gfxId="0x56"/>
     <Image path="Haunted Chair.png"/>
-    <PushHitbox radius="80"/>
+    <PushHitbox radius="80" extentY="120"/>
   </Object>
   <Object behaviorScriptAddress="0x13005024" name="Mad Piano">
     <SpawnCode gfxId="0x57"/>
     <Image path="Mad Piano.png"/>
     <MapImage path="Mad Piano Top.png" rotates="true"/>
-    <PushHitbox radius="280"/>
+    <PushHitbox radius="280" extentY="150"/>
   </Object>
   <Object behaviorScriptAddress="0x1300506C" name="Bookend">
     <SpawnCode gfxId="0x58"/>
@@ -4349,7 +4349,7 @@
   </Object>
   <Object behaviorScriptAddress="0x130050F4" name="Book Switch">
     <Image path="Book Switch.png"/>
-    <PushHitbox radius="70"/>
+    <PushHitbox radius="70" extentY="70"/>
   </Object>
   <Object behaviorScriptAddress="0x13005120" name="Tiny Piranha Plant" subType="0">
     <SpawnCode gfxId="0x64"/>

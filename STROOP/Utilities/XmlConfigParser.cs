@@ -600,9 +600,10 @@ namespace STROOP.Utilities
                         {
                             int? padding = ParsingUtilities.ParseIntNullable(pushHitboxElement.Attribute(XName.Get("padding"))?.Value);
                             int? radius = ParsingUtilities.ParseIntNullable(pushHitboxElement.Attribute(XName.Get("radius"))?.Value);
+                            int? extentY = ParsingUtilities.ParseIntNullable(pushHitboxElement.Attribute(XName.Get("extentY"))?.Value);
                             bool isKoopaTheQuick = ParsingUtilities.ParseBoolNullable(pushHitboxElement.Attribute(XName.Get("isKoopaTheQuick"))?.Value) ?? false;
                             bool isRacingPenguin = ParsingUtilities.ParseBoolNullable(pushHitboxElement.Attribute(XName.Get("isRacingPenguin"))?.Value) ?? false;
-                            pushHitbox = new PushHitbox(padding, radius, isKoopaTheQuick, isRacingPenguin);
+                            pushHitbox = new PushHitbox(padding, radius, extentY, isKoopaTheQuick, isRacingPenguin);
                         }
 
                         List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
