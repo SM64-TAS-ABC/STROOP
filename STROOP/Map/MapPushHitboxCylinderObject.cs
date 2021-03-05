@@ -10,6 +10,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using STROOP.Models;
 
 namespace STROOP.Map
 {
@@ -28,24 +29,13 @@ namespace STROOP.Map
         protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
         {
             uint objAddress = _posAngle.GetObjAddress();
-            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-            float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
-            float hitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeightOffset);
-            float hitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
-            float hitboxMinY = objY - hitboxDownOffset;
-            float hitboxMaxY = hitboxMinY + hitboxHeight;
-
-            uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-            float marioHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadiusOffset);
-            float marioHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
-
-            float effectiveRadius = hitboxRadius + marioHitboxRadius;
-            float effectiveMinY = hitboxMinY - marioHitboxHeight;
-            float effectiveMaxY = hitboxMaxY;
+            ObjectDataModel obj = new ObjectDataModel(objAddress);
+            ObjectBehaviorAssociation assoc = Config.ObjectAssociations.FindObjectAssociation(obj.BehaviorCriteria);
+            (float radius, float minY, float maxY) = assoc.PushHitbox.GetDetails(objAddress);
 
             return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>()
             {
-                ((float)_posAngle.X, (float)_posAngle.Z, effectiveRadius, effectiveMinY, effectiveMaxY)
+                ((float)_posAngle.X, (float)_posAngle.Z, radius, minY, maxY)
             };
         }
 
