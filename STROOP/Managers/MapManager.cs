@@ -14,6 +14,7 @@ using OpenTK.Graphics.OpenGL;
 using STROOP.Structs.Configurations;
 using STROOP.Map;
 using STROOP.Map.Map3D;
+using STROOP.Forms;
 
 namespace STROOP.Managers
 {
@@ -81,6 +82,13 @@ namespace STROOP.Managers
             Config.MapGui.comboBoxMapOptionsBackground.DataSource = _backgroundImageChoices;
 
             // Buttons on Options
+
+            ToolStripMenuItem itemMapPopOut = new ToolStripMenuItem("Add Map Pop Out");
+            itemMapPopOut.Click += (sender, e) =>
+            {
+                MapForm form = new MapForm();
+                form.ShowForm();
+            };
 
             ToolStripMenuItem itemAllObjects = new ToolStripMenuItem("Add Tracker for All Objects");
             itemAllObjects.Click += (sender, e) =>
@@ -428,6 +436,8 @@ namespace STROOP.Managers
             };
 
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip = new ContextMenuStrip();
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMapPopOut);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemAllObjects);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMarkedObjects);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemAllObjectsWithName);

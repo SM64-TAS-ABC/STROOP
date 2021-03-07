@@ -1,5 +1,6 @@
 ﻿using STROOP.Controls;
 using STROOP.Managers;
+using STROOP.Map;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System;
@@ -20,11 +21,18 @@ namespace STROOP.Forms
 
         public void UpdateForm()
         {
+            glControlMap2D.Invalidate();
         }
 
         public void ShowForm()
         {
             Show();
+        }
+
+        private async void Load2D(object sender, EventArgs e)
+        {
+            MapGraphics mapGraphics = new MapGraphics();
+            mapGraphics.Load(glControlMap2D);
         }
     }
 }
