@@ -1,4 +1,5 @@
-﻿using OpenTK.Graphics.OpenGL;
+﻿using OpenTK;
+using OpenTK.Graphics.OpenGL;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
@@ -12,6 +13,8 @@ namespace STROOP.Map
 {
     public class MapGraphics
     {
+        private GLControl _glControl;
+
         private enum MapScale { CourseDefault, MaxCourseSize, Custom };
         private enum MapCenter { BestFit, Origin, Mario, Custom };
         private enum MapYaw { Angle0, Angle16384, Angle32768, Angle49152, Mario, Camera, Centripetal, Custom };
@@ -45,7 +48,7 @@ namespace STROOP.Map
         public bool MapViewCenterChangeByPixels = true;
 
         public float MapViewRadius { get => (float)MoreMath.GetHypotenuse(
-            Config.MapGui.GLControlMap2D.Width / 2, Config.MapGui.GLControlMap2D.Height / 2) / MapViewScaleValue; }
+            _glControl.Width / 2, _glControl.Height / 2) / MapViewScaleValue; }
         public float MapViewXMin { get => MapViewCenterXValue - MapViewRadius; }
         public float MapViewXMax { get => MapViewCenterXValue + MapViewRadius; }
         public float MapViewYMin { get => MapViewCenterYValue - MapViewRadius; }
@@ -68,18 +71,20 @@ namespace STROOP.Map
         {
         }
 
-        public void Load()
+        public void Load(GLControl glControl)
         {
-            Config.MapGui.GLControlMap2D.MakeCurrent();
-            Config.MapGui.GLControlMap2D.Context.LoadAll();
+            _glControl = glControl;
 
-            Config.MapGui.GLControlMap2D.Paint += (sender, e) => OnPaint();
+            _glControl.MakeCurrent();
+            _glControl.Context.LoadAll();
 
-            Config.MapGui.GLControlMap2D.MouseDown += OnMouseDown;
-            Config.MapGui.GLControlMap2D.MouseUp += OnMouseUp;
-            Config.MapGui.GLControlMap2D.MouseMove += OnMouseMove;
-            Config.MapGui.GLControlMap2D.MouseWheel += OnScroll;
-            Config.MapGui.GLControlMap2D.DoubleClick += OnDoubleClick;
+            _glControl.Paint += (sender, e) => OnPaint();
+
+            _glControl.MouseDown += OnMouseDown;
+            _glControl.MouseUp += OnMouseUp;
+            _glControl.MouseMove += OnMouseMove;
+            _glControl.MouseWheel += OnScroll;
+            _glControl.DoubleClick += OnDoubleClick;
 
             GL.ClearColor(Color.FromKnownColor(KnownColor.Control));
             GL.Enable(EnableCap.Texture2D);
@@ -92,12 +97,12 @@ namespace STROOP.Map
         private void OnPaint()
         {
             Cursor cursor = Config.MapManager.NumDrawingsEnabled > 0 ? Cursors.Cross : Cursors.Hand;
-            if (Config.MapGui.GLControlMap2D.Cursor != cursor)
+            if (_glControl.Cursor != cursor)
             {
-                Config.MapGui.GLControlMap2D.Cursor = cursor;
+                _glControl.Cursor = cursor;
             }
 
-            Config.MapGui.GLControlMap2D.MakeCurrent();
+            _glControl.MakeCurrent();
             UpdateViewport();
             UpdateMapView();
 
@@ -107,13 +112,13 @@ namespace STROOP.Map
 
             Config.MapGui.flowLayoutPanelMapTrackers.DrawOn2DControl();
 
-            Config.MapGui.GLControlMap2D.SwapBuffers();
+            _glControl.SwapBuffers();
         }
 
         private void UpdateViewport()
         {
-            int w = Config.MapGui.GLControlMap2D.Width;
-            int h = Config.MapGui.GLControlMap2D.Height;
+            int w = _glControl.Width;
+            int h = _glControl.Height;
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
 
@@ -167,7 +172,7 @@ namespace STROOP.Map
                     float rotatedWidth = rotatedXMax - rotatedXMin;
                     float rotatedHeight = rotatedZMax - rotatedZMin;
                     MapViewScaleValue = Math.Min(
-                        Config.MapGui.GLControlMap2D.Width / rotatedWidth, Config.MapGui.GLControlMap2D.Height / rotatedHeight);
+                        _glControl.Width / rotatedWidth, _glControl.Height / rotatedHeight);
                     break;
                 case MapScale.Custom:
                     MapViewScaleValue = ParsingUtilities.ParseFloatNullable(
