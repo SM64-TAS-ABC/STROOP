@@ -67,8 +67,11 @@ namespace STROOP.Map
                 MAX_COURSE_SIZE_X_MAX - MAX_COURSE_SIZE_X_MIN,
                 MAX_COURSE_SIZE_Z_MAX - MAX_COURSE_SIZE_Z_MIN);
 
-        public MapGraphics()
+        private readonly bool _isMainGraphics;
+
+        public MapGraphics(bool isMainGraphics)
         {
+            _isMainGraphics = isMainGraphics;
         }
 
         public void Load(GLControl glControl)
@@ -130,6 +133,7 @@ namespace STROOP.Map
 
         private void UpdateMapView()
         {
+            if (!_isMainGraphics) return;
             UpdateAngle();
             UpdateScale();
             UpdateCenter();
@@ -367,9 +371,16 @@ namespace STROOP.Map
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
             if (!parsed.HasValue) return;
-            Config.MapGui.radioButtonMapControllersScaleCustom.Checked = true;
             float newScaleValue = MapViewScaleValue * (float)Math.Pow(parsed.Value, power);
-            Config.MapGui.textBoxMapControllersScaleCustom.SubmitText(newScaleValue.ToString());
+            if (_isMainGraphics)
+            {
+                Config.MapGui.radioButtonMapControllersScaleCustom.Checked = true;
+                Config.MapGui.textBoxMapControllersScaleCustom.SubmitText(newScaleValue.ToString());
+            }
+            else
+            {
+                MapViewScaleValue = newScaleValue;
+            }
         }
 
         public void ChangeCenter(int horizontalSign, int verticalSign, int depthSign, object value)
@@ -438,14 +449,23 @@ namespace STROOP.Map
 
         public void SetCustomCenter(object xValue, object yValue, object zValue)
         {
-            Config.MapGui.radioButtonMapControllersCenterCustom.Checked = true;
+            if (_isMainGraphics) Config.MapGui.radioButtonMapControllersCenterCustom.Checked = true;
             SetCenterTextbox(xValue, yValue, zValue);
         }
 
         private void SetCenterTextbox(object xValue, object yValue, object zValue)
         {
             List<object> values = new List<object> { xValue, yValue, zValue };
-            Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(string.Join(";", values));
+            if (_isMainGraphics)
+            {
+                Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(string.Join(";", values));
+            }
+            else
+            {
+                MapViewCenterXValue = ParsingUtilities.ParseFloat(xValue);
+                MapViewCenterYValue = ParsingUtilities.ParseFloat(yValue);
+                MapViewCenterZValue = ParsingUtilities.ParseFloat(zValue);
+            }
         }
 
         public void SetCustomYaw(object value)
@@ -469,7 +489,15 @@ namespace STROOP.Map
         private void SetAngleTextbox(object yawValue, object pitchValue)
         {
             List<object> values = new List<object> { yawValue, pitchValue };
-            Config.MapGui.textBoxMapControllersAngleCustom.SubmitTextLoosely(string.Join(";", values));
+            if (_isMainGraphics)
+            {
+                Config.MapGui.textBoxMapControllersAngleCustom.SubmitTextLoosely(string.Join(";", values));
+            }
+            else
+            {
+                MapViewYawValue = ParsingUtilities.ParseFloat(yawValue);
+                MapViewPitchValue = ParsingUtilities.ParseFloat(pitchValue);
+            }
         }
 
         private bool _isTranslating = false;
@@ -653,6 +681,8 @@ namespace STROOP.Map
 
         private void OnDoubleClick(object sender, EventArgs e)
         {
+            if (!_isMainGraphics) return;
+
             if (Config.MapManager.NumDrawingsEnabled > 0)
             {
                 return;

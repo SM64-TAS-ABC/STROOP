@@ -47,7 +47,7 @@ namespace STROOP.Managers
         public void Load2D()
         {
             // Create new graphics control
-            Config.MapGraphics = new MapGraphics();
+            Config.MapGraphics = new MapGraphics(true);
             Config.MapGraphics.Load(Config.MapGui.GLControlMap2D);
             _isLoaded2D = true;
 

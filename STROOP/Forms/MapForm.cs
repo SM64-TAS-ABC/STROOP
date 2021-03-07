@@ -31,7 +31,7 @@ namespace STROOP.Forms
 
         private async void Load2D(object sender, EventArgs e)
         {
-            MapGraphics mapGraphics = new MapGraphics();
+            MapGraphics mapGraphics = new MapGraphics(false);
             mapGraphics.Load(glControlMap2D);
         }
     }
