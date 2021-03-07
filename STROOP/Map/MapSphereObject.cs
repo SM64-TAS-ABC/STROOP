@@ -42,15 +42,15 @@ namespace STROOP.Map
         {
             List<(float centerX, float centerZ, float radius)> dimensionList = Get3DDimensions().ConvertAll(dimension =>
             {
-                switch (Config.MapGraphics.MapViewYawValue)
+                switch (Config.CurrentMapGraphics.MapViewYawValue)
                 {
                     case 0:
                     case 32768:
                         {
-                            float zDiff = Config.MapGraphics.MapViewCenterZValue - dimension.centerZ;
+                            float zDiff = Config.CurrentMapGraphics.MapViewCenterZValue - dimension.centerZ;
                             float xDistSquared = dimension.radius3D * dimension.radius3D - zDiff * zDiff;
                             float xDist = xDistSquared >= 0 ? (float)Math.Sqrt(xDistSquared) : 0;
-                            float radius = xDist * Config.MapGraphics.MapViewScaleValue;
+                            float radius = xDist * Config.CurrentMapGraphics.MapViewScaleValue;
                             (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
                                 dimension.centerX, dimension.centerY, dimension.centerZ);
                             return (x, z, radius);
@@ -58,10 +58,10 @@ namespace STROOP.Map
                     case 16384:
                     case 49152:
                         {
-                            float xDiff = Config.MapGraphics.MapViewCenterXValue - dimension.centerX;
+                            float xDiff = Config.CurrentMapGraphics.MapViewCenterXValue - dimension.centerX;
                             float zDistSquared = dimension.radius3D * dimension.radius3D - xDiff * xDiff;
                             float zDist = zDistSquared >= 0 ? (float)Math.Sqrt(zDistSquared) : 0;
-                            float radius = zDist * Config.MapGraphics.MapViewScaleValue;
+                            float radius = zDist * Config.CurrentMapGraphics.MapViewScaleValue;
                             (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
                                 dimension.centerX, dimension.centerY, dimension.centerZ);
                             return (x, z, radius);
@@ -69,12 +69,12 @@ namespace STROOP.Map
                     default:
                         {
                             float aDiff = (float)MoreMath.GetPlaneDistanceToPoint(
-                                Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                                Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
+                                Config.CurrentMapGraphics.MapViewCenterXValue, Config.CurrentMapGraphics.MapViewCenterYValue,
+                                Config.CurrentMapGraphics.MapViewCenterZValue, Config.CurrentMapGraphics.MapViewYawValue, Config.CurrentMapGraphics.MapViewPitchValue,
                                 dimension.centerX, dimension.centerY, dimension.centerZ);
                             float bDistSquared = dimension.radius3D * dimension.radius3D - aDiff * aDiff;
                             float bDist = bDistSquared >= 0 ? (float)Math.Sqrt(bDistSquared) : 0;
-                            float radius = bDist * Config.MapGraphics.MapViewScaleValue;
+                            float radius = bDist * Config.CurrentMapGraphics.MapViewScaleValue;
                             (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
                                 dimension.centerX, dimension.centerY, dimension.centerZ);
                             return (x, z, radius);

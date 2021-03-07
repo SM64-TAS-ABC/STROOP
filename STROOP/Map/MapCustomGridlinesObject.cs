@@ -33,15 +33,15 @@ namespace STROOP.Map
             if (size < 1) size = 1;
             double increment = 16384 / size;
 
-            double viewXMin = Config.MapGraphics.MapViewXMin;
-            double viewXMax = Config.MapGraphics.MapViewXMax;
+            double viewXMin = Config.CurrentMapGraphics.MapViewXMin;
+            double viewXMax = Config.CurrentMapGraphics.MapViewXMax;
             double viewXDiff = viewXMax - viewXMin;
-            double viewXDiffPixels = viewXDiff * Config.MapGraphics.MapViewScaleValue;
+            double viewXDiffPixels = viewXDiff * Config.CurrentMapGraphics.MapViewScaleValue;
 
-            double viewZMin = Config.MapGraphics.MapViewZMin;
-            double viewZMax = Config.MapGraphics.MapViewZMax;
+            double viewZMin = Config.CurrentMapGraphics.MapViewZMin;
+            double viewZMax = Config.CurrentMapGraphics.MapViewZMax;
             double viewZDiff = viewZMax - viewZMin;
-            double viewZDiffPixels = viewZDiff * Config.MapGraphics.MapViewScaleValue;
+            double viewZDiffPixels = viewZDiff * Config.CurrentMapGraphics.MapViewScaleValue;
 
             int xMinMultiple = Math.Max((int)((viewXMin - gridlineMin) / increment) - 1, 0);
             int xMaxMultiple = Math.Min((int)((viewXMax - gridlineMin) / increment) + 1, (int)size);
@@ -79,20 +79,20 @@ namespace STROOP.Map
             if (size < 1) size = 1;
             double increment = 16384 / size;
 
-            double viewXMin = Config.MapGraphics.MapViewXMin;
-            double viewXMax = Config.MapGraphics.MapViewXMax;
+            double viewXMin = Config.CurrentMapGraphics.MapViewXMin;
+            double viewXMax = Config.CurrentMapGraphics.MapViewXMax;
             double viewXDiff = viewXMax - viewXMin;
-            double viewXDiffPixels = viewXDiff * Config.MapGraphics.MapViewScaleValue;
+            double viewXDiffPixels = viewXDiff * Config.CurrentMapGraphics.MapViewScaleValue;
 
-            double viewYMin = Config.MapGraphics.MapViewYMin;
-            double viewYMax = Config.MapGraphics.MapViewYMax;
+            double viewYMin = Config.CurrentMapGraphics.MapViewYMin;
+            double viewYMax = Config.CurrentMapGraphics.MapViewYMax;
             double viewYDiff = viewYMax - viewYMin;
-            double viewYDiffPixels = viewYDiff * Config.MapGraphics.MapViewScaleValue;
+            double viewYDiffPixels = viewYDiff * Config.CurrentMapGraphics.MapViewScaleValue;
 
-            double viewZMin = Config.MapGraphics.MapViewZMin;
-            double viewZMax = Config.MapGraphics.MapViewZMax;
+            double viewZMin = Config.CurrentMapGraphics.MapViewZMin;
+            double viewZMax = Config.CurrentMapGraphics.MapViewZMax;
             double viewZDiff = viewZMax - viewZMin;
-            double viewZDiffPixels = viewZDiff * Config.MapGraphics.MapViewScaleValue;
+            double viewZDiffPixels = viewZDiff * Config.CurrentMapGraphics.MapViewScaleValue;
 
             int xMinMultiple = Math.Max((int)((viewXMin - gridlineMin) / increment) - 1, 0);
             int xMaxMultiple = Math.Min((int)((viewXMax - gridlineMin) / increment) + 1, (int)size);

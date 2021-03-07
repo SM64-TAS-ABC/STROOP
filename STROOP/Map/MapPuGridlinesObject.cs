@@ -36,10 +36,10 @@ namespace STROOP.Map
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-                        int xMin = ((((int)Config.MapGraphics.MapViewXMin) / 65536) - 1) * 65536;
-                        int xMax = ((((int)Config.MapGraphics.MapViewXMax) / 65536) + 1) * 65536;
-                        int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
-                        int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
+                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536;
+                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536;
+                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / 65536) - 1) * 65536;
+                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / 65536) + 1) * 65536;
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                         for (int x = xMin; x <= xMax; x += 65536)
@@ -58,10 +58,10 @@ namespace STROOP.Map
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-                        int xMin = ((((int)Config.MapGraphics.MapViewXMin) / 65536) - 1) * 65536 - 32768;
-                        int xMax = ((((int)Config.MapGraphics.MapViewXMax) / 65536) + 1) * 65536 + 32768;
-                        int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536 - 32768;
-                        int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536 + 32768;
+                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536 - 32768;
+                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536 + 32768;
+                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / 65536) - 1) * 65536 - 32768;
+                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / 65536) + 1) * 65536 + 32768;
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                         for (int x = xMin; x <= xMax; x += 65536)
@@ -80,10 +80,10 @@ namespace STROOP.Map
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-                        int xMin = ((((int)Config.MapGraphics.MapViewXMin) / 65536) - 1) * 65536;
-                        int xMax = ((((int)Config.MapGraphics.MapViewXMax) / 65536) + 1) * 65536;
-                        int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
-                        int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
+                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536;
+                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536;
+                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / 65536) - 1) * 65536;
+                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / 65536) + 1) * 65536;
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                         for (int x = xMin; x <= xMax; x += 65536)
@@ -121,18 +121,18 @@ namespace STROOP.Map
             {
                 case PuGridlineSetting.SETTING1:
                     {
-                        float xCenter = Config.MapGraphics.MapViewCenterXValue;
-                        float zCenter = Config.MapGraphics.MapViewCenterZValue;
-                        int xMin = ((((int)Config.MapGraphics.MapViewXMin) / 65536) - 1) * 65536;
-                        int xMax = ((((int)Config.MapGraphics.MapViewXMax) / 65536) + 1) * 65536;
-                        int yMin = ((((int)Config.MapGraphics.MapViewYMin) / 65536) - 1) * 65536;
-                        int yMax = ((((int)Config.MapGraphics.MapViewYMax) / 65536) + 1) * 65536;
-                        int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
-                        int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
+                        float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
+                        float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
+                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536;
+                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536;
+                        int yMin = ((((int)Config.CurrentMapGraphics.MapViewYMin) / 65536) - 1) * 65536;
+                        int yMax = ((((int)Config.CurrentMapGraphics.MapViewYMax) / 65536) + 1) * 65536;
+                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / 65536) - 1) * 65536;
+                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / 65536) + 1) * 65536;
 
-                        if (Config.MapGraphics.MapViewPitchValue == 0 &&
-                            (Config.MapGraphics.MapViewYawValue == 0 ||
-                            Config.MapGraphics.MapViewYawValue == 32768))
+                        if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                            (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
+                            Config.CurrentMapGraphics.MapViewYawValue == 32768))
                         {
                             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                             for (int x = xMin; x <= xMax; x += 65536)
@@ -147,9 +147,9 @@ namespace STROOP.Map
                             }
                             return vertices;
                         }
-                        else if (Config.MapGraphics.MapViewPitchValue == 0 &&
-                            (Config.MapGraphics.MapViewYawValue == 16384 ||
-                            Config.MapGraphics.MapViewYawValue == 49152))
+                        else if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                            (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+                            Config.CurrentMapGraphics.MapViewYawValue == 49152))
                         {
                             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                             for (int z = zMin; z <= zMax; z += 65536)
@@ -171,18 +171,18 @@ namespace STROOP.Map
                     }
                 case PuGridlineSetting.SETTING2:
                     {
-                        float xCenter = Config.MapGraphics.MapViewCenterXValue;
-                        float zCenter = Config.MapGraphics.MapViewCenterZValue;
-                        int xMin = ((((int)Config.MapGraphics.MapViewXMin) / 65536) - 1) * 65536 - 32768;
-                        int xMax = ((((int)Config.MapGraphics.MapViewXMax) / 65536) + 1) * 65536 + 32768;
-                        int yMin = ((((int)Config.MapGraphics.MapViewYMin) / 65536) - 1) * 65536 - 32768;
-                        int yMax = ((((int)Config.MapGraphics.MapViewYMax) / 65536) + 1) * 65536 + 32768;
-                        int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536 - 32768;
-                        int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536 + 32768;
+                        float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
+                        float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
+                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536 - 32768;
+                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536 + 32768;
+                        int yMin = ((((int)Config.CurrentMapGraphics.MapViewYMin) / 65536) - 1) * 65536 - 32768;
+                        int yMax = ((((int)Config.CurrentMapGraphics.MapViewYMax) / 65536) + 1) * 65536 + 32768;
+                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / 65536) - 1) * 65536 - 32768;
+                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / 65536) + 1) * 65536 + 32768;
 
-                        if (Config.MapGraphics.MapViewPitchValue == 0 &&
-                            (Config.MapGraphics.MapViewYawValue == 0 ||
-                            Config.MapGraphics.MapViewYawValue == 32768))
+                        if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                            (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
+                            Config.CurrentMapGraphics.MapViewYawValue == 32768))
                         {
                             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                             for (int x = xMin; x <= xMax; x += 65536)
@@ -197,9 +197,9 @@ namespace STROOP.Map
                             }
                             return vertices;
                         }
-                        else if (Config.MapGraphics.MapViewPitchValue == 0 &&
-                            (Config.MapGraphics.MapViewYawValue == 16384 ||
-                            Config.MapGraphics.MapViewYawValue == 49152))
+                        else if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                            (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+                            Config.CurrentMapGraphics.MapViewYawValue == 49152))
                         {
                             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                             for (int z = zMin; z <= zMax; z += 65536)
@@ -221,18 +221,18 @@ namespace STROOP.Map
                     }
                 case PuGridlineSetting.SETTING3:
                     {
-                        float xCenter = Config.MapGraphics.MapViewCenterXValue;
-                        float zCenter = Config.MapGraphics.MapViewCenterZValue;
-                        int xMin = ((((int)Config.MapGraphics.MapViewXMin) / 65536) - 1) * 65536;
-                        int xMax = ((((int)Config.MapGraphics.MapViewXMax) / 65536) + 1) * 65536;
-                        int yMin = ((((int)Config.MapGraphics.MapViewYMin) / 65536) - 1) * 65536;
-                        int yMax = ((((int)Config.MapGraphics.MapViewYMax) / 65536) + 1) * 65536;
-                        int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
-                        int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
+                        float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
+                        float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
+                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536;
+                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536;
+                        int yMin = ((((int)Config.CurrentMapGraphics.MapViewYMin) / 65536) - 1) * 65536;
+                        int yMax = ((((int)Config.CurrentMapGraphics.MapViewYMax) / 65536) + 1) * 65536;
+                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / 65536) - 1) * 65536;
+                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / 65536) + 1) * 65536;
 
-                        if (Config.MapGraphics.MapViewPitchValue == 0 &&
-                            (Config.MapGraphics.MapViewYawValue == 0 ||
-                            Config.MapGraphics.MapViewYawValue == 32768))
+                        if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                            (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
+                            Config.CurrentMapGraphics.MapViewYawValue == 32768))
                         {
                             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                             for (int x = xMin; x <= xMax; x += 65536)
@@ -259,9 +259,9 @@ namespace STROOP.Map
                             }
                             return vertices;
                         }
-                        else if (Config.MapGraphics.MapViewPitchValue == 0 &&
-                            (Config.MapGraphics.MapViewYawValue == 16384 ||
-                            Config.MapGraphics.MapViewYawValue == 49152))
+                        else if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                            (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+                            Config.CurrentMapGraphics.MapViewYawValue == 49152))
                         {
                             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                             for (int z = zMin; z <= zMax; z += 65536)

@@ -102,6 +102,7 @@ namespace STROOP.Map
                 _glControl.Cursor = cursor;
             }
 
+            Config.CurrentMapGraphics = this;
             Config.MapGui.CurrentControl = _glControl;
             _glControl.MakeCurrent();
             UpdateViewport();
@@ -163,7 +164,7 @@ namespace STROOP.Map
                     {
                         (float x, float z) = coord;
                         (double rotatedX, double rotatedZ) = MoreMath.RotatePointAboutPointAnAngularDistance(
-                            x, z, 0, 0, 32768 - Config.MapGraphics.MapViewYawValue);
+                            x, z, 0, 0, 32768 - Config.CurrentMapGraphics.MapViewYawValue);
                         return ((float)rotatedX, (float)rotatedZ);
                     });
                     float rotatedXMax = rotatedCoordinates.Max(coord => coord.Item1);
@@ -380,8 +381,8 @@ namespace STROOP.Map
             float xOffset, yOffset, zOffset;
             if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
             {
-                double yawRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
-                double pitchRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewPitchValue);
+                double yawRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewYawValue);
+                double pitchRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewPitchValue);
                 xOffset = (float)(
                     Math.Cos(yawRadians) * -1 * horizontalSign * parsed.Value +
                     Math.Cos(pitchRadians) * Math.Sin(yawRadians) * -1 * depthSign * parsed.Value +
@@ -400,7 +401,7 @@ namespace STROOP.Map
                 yOffset = depthSign * parsed.Value;
                 zOffset = -1 * verticalSign * parsed.Value;
                 (xOffset, zOffset) = ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
-                    xOffset, zOffset, 0, 0, Config.MapGraphics.MapViewYawValue);
+                    xOffset, zOffset, 0, 0, Config.CurrentMapGraphics.MapViewYawValue);
             }
             float multiplier = MapViewCenterChangeByPixels ? 1 / MapViewScaleValue : 1;
             float newCenterXValue = MapViewCenterXValue + xOffset * multiplier;
@@ -579,8 +580,8 @@ namespace STROOP.Map
                     }
                     else
                     {
-                        double yawRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
-                        double pitchRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewPitchValue);
+                        double yawRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewYawValue);
+                        double pitchRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewPitchValue);
                         float xOffset = (float)(
                             Math.Cos(yawRadians) * unitDiffX +
                             Math.Sin(pitchRadians) * -1 * Math.Sin(yawRadians) * unitDiffY);

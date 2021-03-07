@@ -30,6 +30,7 @@ namespace STROOP.Structs.Configurations
         public static TabControlEx TabControlMain;
         public static Label DebugText;
 
+        public static MapGraphics CurrentMapGraphics;
         public static MapGraphics MapGraphics;
         public static MapGui MapGui;
         public static Map3DGraphics Map3DGraphics;

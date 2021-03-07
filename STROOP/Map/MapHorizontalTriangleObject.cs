@@ -139,10 +139,10 @@ namespace STROOP.Map
             List<TriangleDataModel> triangles = GetFilteredTriangles();
             List<(int x, int z)> unitPoints = triangles.ConvertAll(triangle =>
             {
-                int xMin = (int)Math.Max(triangle.GetMinX(), Config.MapGraphics.MapViewXMin - 1);
-                int xMax = (int)Math.Min(triangle.GetMaxX(), Config.MapGraphics.MapViewXMax + 1);
-                int zMin = (int)Math.Max(triangle.GetMinZ(), Config.MapGraphics.MapViewZMin - 1);
-                int zMax = (int)Math.Min(triangle.GetMaxZ(), Config.MapGraphics.MapViewZMax + 1);
+                int xMin = (int)Math.Max(triangle.GetMinX(), Config.CurrentMapGraphics.MapViewXMin - 1);
+                int xMax = (int)Math.Min(triangle.GetMaxX(), Config.CurrentMapGraphics.MapViewXMax + 1);
+                int zMin = (int)Math.Max(triangle.GetMinZ(), Config.CurrentMapGraphics.MapViewZMin - 1);
+                int zMax = (int)Math.Min(triangle.GetMaxZ(), Config.CurrentMapGraphics.MapViewZMax + 1);
 
                 List<(int x, int z)> points = new List<(int x, int z)>();
                 for (int x = xMin; x <= xMax; x++)

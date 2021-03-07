@@ -39,19 +39,19 @@ namespace STROOP.Map
         /** Takes in in-game coordinates, outputs control coordinates. */
         public static (float x, float z) ConvertCoordsForControlTopDownView(float x, float z)
         {
-            x = Config.MapGraphics.MapViewEnablePuView ? x : (float)PuUtilities.GetRelativeCoordinate(x);
-            z = Config.MapGraphics.MapViewEnablePuView ? z : (float)PuUtilities.GetRelativeCoordinate(z);
-            float xOffset = x - Config.MapGraphics.MapViewCenterXValue;
-            float zOffset = z - Config.MapGraphics.MapViewCenterZValue;
+            x = Config.CurrentMapGraphics.MapViewEnablePuView ? x : (float)PuUtilities.GetRelativeCoordinate(x);
+            z = Config.CurrentMapGraphics.MapViewEnablePuView ? z : (float)PuUtilities.GetRelativeCoordinate(z);
+            float xOffset = x - Config.CurrentMapGraphics.MapViewCenterXValue;
+            float zOffset = z - Config.CurrentMapGraphics.MapViewCenterZValue;
             (float xOffsetRotated, float zOffsetRotated) =
                 ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
                     xOffset,
                     zOffset,
                     0,
                     0,
-                    -1 * Config.MapGraphics.MapViewYawValue);
-            float xOffsetPixels = xOffsetRotated * Config.MapGraphics.MapViewScaleValue;
-            float zOffsetPixels = zOffsetRotated * Config.MapGraphics.MapViewScaleValue;
+                    -1 * Config.CurrentMapGraphics.MapViewYawValue);
+            float xOffsetPixels = xOffsetRotated * Config.CurrentMapGraphics.MapViewScaleValue;
+            float zOffsetPixels = zOffsetRotated * Config.CurrentMapGraphics.MapViewScaleValue;
             float centerX = Config.MapGui.CurrentControl.Width / 2 + xOffsetPixels;
             float centerZ = Config.MapGui.CurrentControl.Height / 2 + zOffsetPixels;
             return (centerX, centerZ);
@@ -62,49 +62,49 @@ namespace STROOP.Map
         {
             float xOffset = x - Config.MapGui.CurrentControl.Width / 2;
             float zOffset = z - Config.MapGui.CurrentControl.Height / 2;
-            float xOffsetScaled = xOffset / Config.MapGraphics.MapViewScaleValue;
-            float zOffsetScaled = zOffset / Config.MapGraphics.MapViewScaleValue;
+            float xOffsetScaled = xOffset / Config.CurrentMapGraphics.MapViewScaleValue;
+            float zOffsetScaled = zOffset / Config.CurrentMapGraphics.MapViewScaleValue;
             (float xOffsetScaledRotated, float zOffsetScaledRotated) =
                 ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
                     xOffsetScaled,
                     zOffsetScaled,
                     0,
                     0,
-                    Config.MapGraphics.MapViewYawValue);
-            float centerX = xOffsetScaledRotated + Config.MapGraphics.MapViewCenterXValue;
-            float centerZ = zOffsetScaledRotated + Config.MapGraphics.MapViewCenterZValue;
+                    Config.CurrentMapGraphics.MapViewYawValue);
+            float centerX = xOffsetScaledRotated + Config.CurrentMapGraphics.MapViewCenterXValue;
+            float centerZ = zOffsetScaledRotated + Config.CurrentMapGraphics.MapViewCenterZValue;
             return (centerX, centerZ);
         }
 
         public static (float x, float z) ConvertCoordsForControlOrthographicView(float x, float y, float z)
         {
-            x = Config.MapGraphics.MapViewEnablePuView ? x : (float)PuUtilities.GetRelativeCoordinate(x);
-            y = Config.MapGraphics.MapViewEnablePuView ? y : (float)PuUtilities.GetRelativeCoordinate(y);
-            z = Config.MapGraphics.MapViewEnablePuView ? z : (float)PuUtilities.GetRelativeCoordinate(z);
-            float xOffset = x - Config.MapGraphics.MapViewCenterXValue;
-            float yOffset = y - Config.MapGraphics.MapViewCenterYValue;
-            float zOffset = z - Config.MapGraphics.MapViewCenterZValue;
-            double angleRadians = MoreMath.AngleUnitsToRadians(Config.MapGraphics.MapViewYawValue);
+            x = Config.CurrentMapGraphics.MapViewEnablePuView ? x : (float)PuUtilities.GetRelativeCoordinate(x);
+            y = Config.CurrentMapGraphics.MapViewEnablePuView ? y : (float)PuUtilities.GetRelativeCoordinate(y);
+            z = Config.CurrentMapGraphics.MapViewEnablePuView ? z : (float)PuUtilities.GetRelativeCoordinate(z);
+            float xOffset = x - Config.CurrentMapGraphics.MapViewCenterXValue;
+            float yOffset = y - Config.CurrentMapGraphics.MapViewCenterYValue;
+            float zOffset = z - Config.CurrentMapGraphics.MapViewCenterZValue;
+            double angleRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewYawValue);
             float hOffset = (float)(Math.Sin(angleRadians) * zOffset - Math.Cos(angleRadians) * xOffset);
 
             (double x0, double y0, double z0, double t0) =
                 MoreMath.GetPlaneLineIntersection(
-                    Config.MapGraphics.MapViewCenterXValue,
-                    Config.MapGraphics.MapViewCenterYValue,
-                    Config.MapGraphics.MapViewCenterZValue,
-                    Config.MapGraphics.MapViewYawValue,
-                    Config.MapGraphics.MapViewPitchValue,
+                    Config.CurrentMapGraphics.MapViewCenterXValue,
+                    Config.CurrentMapGraphics.MapViewCenterYValue,
+                    Config.CurrentMapGraphics.MapViewCenterZValue,
+                    Config.CurrentMapGraphics.MapViewYawValue,
+                    Config.CurrentMapGraphics.MapViewPitchValue,
                     x, y, z,
-                    Config.MapGraphics.MapViewYawValue,
-                    Config.MapGraphics.MapViewPitchValue);
+                    Config.CurrentMapGraphics.MapViewYawValue,
+                    Config.CurrentMapGraphics.MapViewPitchValue);
             double rightYaw = MoreMath.RotateAngleCW(
-                Config.MapGraphics.MapViewYawValue, 16384);
+                Config.CurrentMapGraphics.MapViewYawValue, 16384);
             (double x1, double y1, double z1, double t1) =
                 MoreMath.GetPlaneLineIntersection(
                     x0, y0, z0, rightYaw, 0,
-                    Config.MapGraphics.MapViewCenterXValue,
-                    Config.MapGraphics.MapViewCenterYValue,
-                    Config.MapGraphics.MapViewCenterZValue,
+                    Config.CurrentMapGraphics.MapViewCenterXValue,
+                    Config.CurrentMapGraphics.MapViewCenterYValue,
+                    Config.CurrentMapGraphics.MapViewCenterZValue,
                     rightYaw, 0);
             double hDiff = MoreMath.GetDistanceBetween(x1, z1, x0, z0);
             double yDiff = y1 - y0;
@@ -112,8 +112,8 @@ namespace STROOP.Map
             double vOffsetMagnitude = MoreMath.GetHypotenuse(hDiff, yDiff);
             float vOffset = (float)(vOffsetMagnitude * yDiffSign);
 
-            float hOffsetPixels = hOffset * Config.MapGraphics.MapViewScaleValue;
-            float vOffsetPixels = vOffset * Config.MapGraphics.MapViewScaleValue;
+            float hOffsetPixels = hOffset * Config.CurrentMapGraphics.MapViewScaleValue;
+            float vOffsetPixels = vOffset * Config.CurrentMapGraphics.MapViewScaleValue;
             float centerH = Config.MapGui.CurrentControl.Width / 2 + hOffsetPixels;
             float centerV = Config.MapGui.CurrentControl.Height / 2 + vOffsetPixels;
             return (centerH, centerV);
@@ -129,7 +129,7 @@ namespace STROOP.Map
         /** Takes in in-game angle, outputs control angle. */
         public static float ConvertAngleForControl(double angle)
         {
-            angle += 32768 - Config.MapGraphics.MapViewYawValue;
+            angle += 32768 - Config.CurrentMapGraphics.MapViewYawValue;
             if (double.IsNaN(angle)) angle = 0;
             return (float)MoreMath.AngleUnitsToDegrees(angle);
         }
@@ -137,7 +137,7 @@ namespace STROOP.Map
         public static SizeF ScaleImageSizeForControl(Size imageSize, float desiredRadius)
         {
             float desiredDiameter = desiredRadius * 2;
-            if (Config.MapGraphics.MapViewScaleIconSizes) desiredDiameter *= Config.MapGraphics.MapViewScaleValue;
+            if (Config.CurrentMapGraphics.MapViewScaleIconSizes) desiredDiameter *= Config.CurrentMapGraphics.MapViewScaleValue;
             float scale = Math.Max(imageSize.Height / desiredDiameter, imageSize.Width / desiredDiameter);
             return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
         }
@@ -170,10 +170,10 @@ namespace STROOP.Map
 
         public static List<(float x, float z)> GetPuCenters()
         {
-            int xMin = ((((int)Config.MapGraphics.MapViewXMin) / 65536) - 1) * 65536;
-            int xMax = ((((int)Config.MapGraphics.MapViewXMax) / 65536) + 1) * 65536;
-            int zMin = ((((int)Config.MapGraphics.MapViewZMin) / 65536) - 1) * 65536;
-            int zMax = ((((int)Config.MapGraphics.MapViewZMax) / 65536) + 1) * 65536;
+            int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536;
+            int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536;
+            int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / 65536) - 1) * 65536;
+            int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / 65536) + 1) * 65536;
             List<(float x, float z)> centers = new List<(float x, float z)>();
             for (int x = xMin; x <= xMax; x += 65536)
             {
@@ -357,13 +357,13 @@ namespace STROOP.Map
             double uphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(tri);
             double pushAngle = MoreMath.ReverseAngle(uphillAngle);
 
-            if (Config.MapGraphics.MapViewPitchValue == 0 &&
-                (Config.MapGraphics.MapViewYawValue == 0 ||
-                Config.MapGraphics.MapViewYawValue == 32768))
+            if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
+                Config.CurrentMapGraphics.MapViewYawValue == 32768))
             {
-                (float pointAX, float pointAY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
-                (float pointBX, float pointBY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
-                (float pointCX, float pointCY) = GetZOnLine(Config.MapGraphics.MapViewCenterZValue, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+                (float pointAX, float pointAY) = GetZOnLine(Config.CurrentMapGraphics.MapViewCenterZValue, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
+                (float pointBX, float pointBY) = GetZOnLine(Config.CurrentMapGraphics.MapViewCenterZValue, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
+                (float pointCX, float pointCY) = GetZOnLine(Config.CurrentMapGraphics.MapViewCenterZValue, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
 
                 List<(float x, float y)> points = new List<(float x, float y)>();
                 if (!float.IsNaN(pointAX) && !float.IsNaN(pointAY)) points.Add((pointAX, pointAY));
@@ -391,20 +391,20 @@ namespace STROOP.Map
 
                 if (points.Count == 2)
                 {
-                    return (points[0].x, points[0].y, Config.MapGraphics.MapViewCenterZValue,
-                        points[1].x, points[1].y, Config.MapGraphics.MapViewCenterZValue,
+                    return (points[0].x, points[0].y, Config.CurrentMapGraphics.MapViewCenterZValue,
+                        points[1].x, points[1].y, Config.CurrentMapGraphics.MapViewCenterZValue,
                         tri.Classification, tri.XProjection, pushAngle);
                 }
 
                 return null;
             }
-            else if (Config.MapGraphics.MapViewPitchValue == 0 &&
-               (Config.MapGraphics.MapViewYawValue == 16384 ||
-               Config.MapGraphics.MapViewYawValue == 49152))
+            else if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+               (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+               Config.CurrentMapGraphics.MapViewYawValue == 49152))
             {
-                (float pointAY, float pointAZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
-                (float pointBY, float pointBZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
-                (float pointCY, float pointCZ) = GetXOnLine(Config.MapGraphics.MapViewCenterXValue, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
+                (float pointAY, float pointAZ) = GetXOnLine(Config.CurrentMapGraphics.MapViewCenterXValue, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
+                (float pointBY, float pointBZ) = GetXOnLine(Config.CurrentMapGraphics.MapViewCenterXValue, tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
+                (float pointCY, float pointCZ) = GetXOnLine(Config.CurrentMapGraphics.MapViewCenterXValue, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
 
                 List<(float y, float z)> points = new List<(float y, float z)>();
                 if (!float.IsNaN(pointAY) && !float.IsNaN(pointAZ)) points.Add((pointAY, pointAZ));
@@ -432,8 +432,8 @@ namespace STROOP.Map
 
                 if (points.Count == 2)
                 {
-                    return (Config.MapGraphics.MapViewCenterXValue, points[0].y, points[0].z,
-                        Config.MapGraphics.MapViewCenterXValue, points[1].y, points[1].z,
+                    return (Config.CurrentMapGraphics.MapViewCenterXValue, points[0].y, points[0].z,
+                        Config.CurrentMapGraphics.MapViewCenterXValue, points[1].y, points[1].z,
                         tri.Classification, tri.XProjection, pushAngle);
                 }
 
@@ -442,16 +442,16 @@ namespace STROOP.Map
             else
             {
                 (float pointAX, float pointAY, float pointAZ) = GetOnLine(
-                    Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                    Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
+                    Config.CurrentMapGraphics.MapViewCenterXValue, Config.CurrentMapGraphics.MapViewCenterYValue,
+                    Config.CurrentMapGraphics.MapViewCenterZValue, Config.CurrentMapGraphics.MapViewYawValue, Config.CurrentMapGraphics.MapViewPitchValue,
                     tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2);
                 (float pointBX, float pointBY, float pointBZ) = GetOnLine(
-                    Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                    Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
+                    Config.CurrentMapGraphics.MapViewCenterXValue, Config.CurrentMapGraphics.MapViewCenterYValue,
+                    Config.CurrentMapGraphics.MapViewCenterZValue, Config.CurrentMapGraphics.MapViewYawValue, Config.CurrentMapGraphics.MapViewPitchValue,
                     tri.X1, tri.Y1, tri.Z1, tri.X3, tri.Y3, tri.Z3);
                 (float pointCX, float pointCY, float pointCZ) = GetOnLine(
-                    Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue,
-                    Config.MapGraphics.MapViewCenterZValue, Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue,
+                    Config.CurrentMapGraphics.MapViewCenterXValue, Config.CurrentMapGraphics.MapViewCenterYValue,
+                    Config.CurrentMapGraphics.MapViewCenterZValue, Config.CurrentMapGraphics.MapViewYawValue, Config.CurrentMapGraphics.MapViewPitchValue,
                     tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
 
                 List<(float x, float y, float z)> points = new List<(float x, float y, float z)>();
@@ -569,7 +569,7 @@ namespace STROOP.Map
 
         public static bool IsAbleToShowUnitPrecision()
         {
-            return Config.MapGraphics.MapViewScaleValue > 2;
+            return Config.CurrentMapGraphics.MapViewScaleValue > 2;
         }
 
         public static List<(double x, double y, double z)> ParsePoints(string text, bool useTriplets)
@@ -607,14 +607,14 @@ namespace STROOP.Map
         {
             return MoreMath.Average(
                 MoreMath.GetPlaneDistanceToPointSigned(
-                    Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue, Config.MapGraphics.MapViewCenterZValue,
-                    Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue, tri.X1, tri.Y1, tri.Z1),
+                    Config.CurrentMapGraphics.MapViewCenterXValue, Config.CurrentMapGraphics.MapViewCenterYValue, Config.CurrentMapGraphics.MapViewCenterZValue,
+                    Config.CurrentMapGraphics.MapViewYawValue, Config.CurrentMapGraphics.MapViewPitchValue, tri.X1, tri.Y1, tri.Z1),
                 MoreMath.GetPlaneDistanceToPointSigned(
-                    Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue, Config.MapGraphics.MapViewCenterZValue,
-                    Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue, tri.X2, tri.Y2, tri.Z2),
+                    Config.CurrentMapGraphics.MapViewCenterXValue, Config.CurrentMapGraphics.MapViewCenterYValue, Config.CurrentMapGraphics.MapViewCenterZValue,
+                    Config.CurrentMapGraphics.MapViewYawValue, Config.CurrentMapGraphics.MapViewPitchValue, tri.X2, tri.Y2, tri.Z2),
                 MoreMath.GetPlaneDistanceToPointSigned(
-                    Config.MapGraphics.MapViewCenterXValue, Config.MapGraphics.MapViewCenterYValue, Config.MapGraphics.MapViewCenterZValue,
-                    Config.MapGraphics.MapViewYawValue, Config.MapGraphics.MapViewPitchValue, tri.X3, tri.Y3, tri.Z3));
+                    Config.CurrentMapGraphics.MapViewCenterXValue, Config.CurrentMapGraphics.MapViewCenterYValue, Config.CurrentMapGraphics.MapViewCenterZValue,
+                    Config.CurrentMapGraphics.MapViewYawValue, Config.CurrentMapGraphics.MapViewPitchValue, tri.X3, tri.Y3, tri.Z3));
         }
     }
 }

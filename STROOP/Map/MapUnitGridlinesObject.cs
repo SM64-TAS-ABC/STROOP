@@ -32,10 +32,10 @@ namespace STROOP.Map
 
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int xMin = (int)Config.MapGraphics.MapViewXMin - 1;
-            int xMax = (int)Config.MapGraphics.MapViewXMax + 1;
-            int zMin = (int)Config.MapGraphics.MapViewZMin - 1;
-            int zMax = (int)Config.MapGraphics.MapViewZMax + 1;
+            int xMin = (int)Config.CurrentMapGraphics.MapViewXMin - 1;
+            int xMax = (int)Config.CurrentMapGraphics.MapViewXMax + 1;
+            int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
+            int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             for (int x = xMin; x <= xMax; x += 1)
@@ -59,18 +59,18 @@ namespace STROOP.Map
                 return new List<(float x, float y, float z)>();
             }
 
-            float xCenter = Config.MapGraphics.MapViewCenterXValue;
-            float zCenter = Config.MapGraphics.MapViewCenterZValue;
-            int xMin = (int)Config.MapGraphics.MapViewXMin - 1;
-            int xMax = (int)Config.MapGraphics.MapViewXMax + 1;
-            int yMin = (int)Config.MapGraphics.MapViewYMin - 1;
-            int yMax = (int)Config.MapGraphics.MapViewYMax + 1;
-            int zMin = (int)Config.MapGraphics.MapViewZMin - 1;
-            int zMax = (int)Config.MapGraphics.MapViewZMax + 1;
+            float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
+            float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
+            int xMin = (int)Config.CurrentMapGraphics.MapViewXMin - 1;
+            int xMax = (int)Config.CurrentMapGraphics.MapViewXMax + 1;
+            int yMin = (int)Config.CurrentMapGraphics.MapViewYMin - 1;
+            int yMax = (int)Config.CurrentMapGraphics.MapViewYMax + 1;
+            int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
+            int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
 
-            if (Config.MapGraphics.MapViewPitchValue == 0 &&
-                (Config.MapGraphics.MapViewYawValue == 0 ||
-                Config.MapGraphics.MapViewYawValue == 32768))
+            if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
+                Config.CurrentMapGraphics.MapViewYawValue == 32768))
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                 for (int x = xMin; x <= xMax; x += 1)
@@ -85,9 +85,9 @@ namespace STROOP.Map
                 }
                 return vertices;
             }
-            else if (Config.MapGraphics.MapViewPitchValue == 0 &&
-                (Config.MapGraphics.MapViewYawValue == 16384 ||
-                Config.MapGraphics.MapViewYawValue == 49152))
+            else if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+                Config.CurrentMapGraphics.MapViewYawValue == 49152))
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                 for (int z = zMin; z <= zMax; z += 1)

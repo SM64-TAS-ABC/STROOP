@@ -26,10 +26,10 @@ namespace STROOP.Map
         {
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            float xMin = Config.MapGraphics.MapViewXMin;
-            float xMax = Config.MapGraphics.MapViewXMax;
-            float zMin = Config.MapGraphics.MapViewZMin;
-            float zMax = Config.MapGraphics.MapViewZMax;
+            float xMin = Config.CurrentMapGraphics.MapViewXMin;
+            float xMax = Config.CurrentMapGraphics.MapViewXMax;
+            float zMin = Config.CurrentMapGraphics.MapViewZMin;
+            float zMax = Config.CurrentMapGraphics.MapViewZMax;
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             int xCounter = 0;

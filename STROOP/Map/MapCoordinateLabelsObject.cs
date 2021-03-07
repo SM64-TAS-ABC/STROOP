@@ -42,7 +42,7 @@ namespace STROOP.Map
             double spacing;
             if (SpecialConfig.CoordinateLabelsCustomSpacing == 0)
             {
-                double totalMultiplies = SpecialConfig.CoordinateLabelsLabelDensity / Config.MapGraphics.MapViewScaleValue;
+                double totalMultiplies = SpecialConfig.CoordinateLabelsLabelDensity / Config.CurrentMapGraphics.MapViewScaleValue;
                 double numMultiplies = (int)Math.Ceiling(Math.Log(totalMultiplies) / Math.Log(2));
                 spacing = Math.Pow(2, numMultiplies);
             }
@@ -51,10 +51,10 @@ namespace STROOP.Map
                 spacing = SpecialConfig.CoordinateLabelsCustomSpacing;
             }
 
-            int xMinMultiplier = (int)(Config.MapGraphics.MapViewXMin / spacing) - 1;
-            int xMaxMultiplier = (int)(Config.MapGraphics.MapViewXMax / spacing) + 1;
-            int zMinMultiplier = (int)(Config.MapGraphics.MapViewZMin / spacing) - 1;
-            int zMaxMultiplier = (int)(Config.MapGraphics.MapViewZMax / spacing) + 1;
+            int xMinMultiplier = (int)(Config.CurrentMapGraphics.MapViewXMin / spacing) - 1;
+            int xMaxMultiplier = (int)(Config.CurrentMapGraphics.MapViewXMax / spacing) + 1;
+            int zMinMultiplier = (int)(Config.CurrentMapGraphics.MapViewZMin / spacing) - 1;
+            int zMaxMultiplier = (int)(Config.CurrentMapGraphics.MapViewZMax / spacing) + 1;
 
             List<(float x, float z, float angle, int tex)> labelData =
                 new List<(float x, float z, float angle, int tex)>();
@@ -75,7 +75,7 @@ namespace STROOP.Map
                     if (!intersectionPoints.HasValue) continue;
                     (float g, float z) = getSuperlativePoint(false, SpecialConfig.CoordinateLabelsUseHighZ == 1, intersectionPoints.Value);
                     (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView((float)x, z);
-                    float angle = -1 * Config.MapGraphics.MapViewYawValue + 16384;
+                    float angle = -1 * Config.CurrentMapGraphics.MapViewYawValue + 16384;
                     if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
                     float angleDegrees = Rotates ? (float)MoreMath.AngleUnitsToDegrees(angle) : 0;
                     int tex = GetTex(true, x);
@@ -91,7 +91,7 @@ namespace STROOP.Map
                     if (!intersectionPoints.HasValue) continue;
                     (float x, float g) = getSuperlativePoint(true, SpecialConfig.CoordinateLabelsUseHighX == 1, intersectionPoints.Value);
                     (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, (float)z);
-                    float angle = -1 * Config.MapGraphics.MapViewYawValue + 32768;
+                    float angle = -1 * Config.CurrentMapGraphics.MapViewYawValue + 32768;
                     if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
                     float angleDegrees = Rotates ? (float)MoreMath.AngleUnitsToDegrees(angle) : 0;
                     int tex = GetTex(false, z);
