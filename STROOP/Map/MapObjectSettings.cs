@@ -44,6 +44,9 @@
         public readonly bool ArrowChangeHeadSideLength;
         public readonly float ArrowNewHeadSideLength;
 
+        public readonly bool ArrowChangeAngleOffset;
+        public readonly float ArrowNewAngleOffset;
+
         public readonly bool SectorChangeAngleRadius;
         public readonly float SectorNewAngleRadius;
 
@@ -113,6 +116,9 @@
             bool arrowChangeHeadSideLength = false,
             float arrowNewHeadSideLength = 0,
 
+            bool arrowChangeAngleOffset = false,
+            float arrowNewAngleOffset = 0,
+
             bool sectorChangeAngleRadius = false,
             float sectorNewAngleRadius = 0,
 
@@ -180,6 +186,9 @@
 
             ArrowChangeHeadSideLength = arrowChangeHeadSideLength;
             ArrowNewHeadSideLength = arrowNewHeadSideLength;
+
+            ArrowChangeAngleOffset = arrowChangeAngleOffset;
+            ArrowNewAngleOffset = arrowNewAngleOffset;
 
             SectorChangeAngleRadius = sectorChangeAngleRadius;
             SectorNewAngleRadius = sectorNewAngleRadius;
