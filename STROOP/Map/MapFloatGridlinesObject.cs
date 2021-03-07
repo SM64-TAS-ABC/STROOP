@@ -50,8 +50,8 @@ namespace STROOP.Map
             }
 
             // failsafe to prevent filling the whole screen
-            if (xCounter > Config.MapGui.GLControlMap2D.Width ||
-                zCounter > Config.MapGui.GLControlMap2D.Height)
+            if (xCounter > Config.MapGui.CurrentControl.Width ||
+                zCounter > Config.MapGui.CurrentControl.Height)
             {
                 return new List<(float x, float y, float z)>();
             }

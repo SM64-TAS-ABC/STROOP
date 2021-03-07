@@ -106,7 +106,7 @@ namespace STROOP.Map
 
             if (SpecialConfig.CoordinateLabelsShowCursorPos == 1)
             {
-                Point relPos = Config.MapGui.GLControlMap2D.PointToClient(Cursor.Position);
+                Point relPos = Config.MapGui.CurrentControl.PointToClient(Cursor.Position);
                 (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
                 double roundedX = Math.Round(inGameX, 3);
                 double roundedZ = Math.Round(inGameZ, 3);
@@ -235,9 +235,9 @@ namespace STROOP.Map
         public ((float x1, float z1), (float x2, float z2))? GetLineIntersectionWithBorder(bool isX, float coord, float margin)
         {
             (float topLeftX, float topLeftZ) = MapUtilities.ConvertCoordsForInGame(margin, margin);
-            (float topRightX, float topRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.GLControlMap2D.Width - margin, margin);
-            (float bottomRightX, float bottomRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.GLControlMap2D.Width - margin, Config.MapGui.GLControlMap2D.Height - margin);
-            (float bottomLeftX, float bottomLeftZ) = MapUtilities.ConvertCoordsForInGame(margin, Config.MapGui.GLControlMap2D.Height - margin);
+            (float topRightX, float topRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.CurrentControl.Width - margin, margin);
+            (float bottomRightX, float bottomRightZ) = MapUtilities.ConvertCoordsForInGame(Config.MapGui.CurrentControl.Width - margin, Config.MapGui.CurrentControl.Height - margin);
+            (float bottomLeftX, float bottomLeftZ) = MapUtilities.ConvertCoordsForInGame(margin, Config.MapGui.CurrentControl.Height - margin);
 
             List<(float x, float z)> corners = new List<(float x, float z)>()
             {

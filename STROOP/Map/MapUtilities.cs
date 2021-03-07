@@ -52,16 +52,16 @@ namespace STROOP.Map
                     -1 * Config.MapGraphics.MapViewYawValue);
             float xOffsetPixels = xOffsetRotated * Config.MapGraphics.MapViewScaleValue;
             float zOffsetPixels = zOffsetRotated * Config.MapGraphics.MapViewScaleValue;
-            float centerX = Config.MapGui.GLControlMap2D.Width / 2 + xOffsetPixels;
-            float centerZ = Config.MapGui.GLControlMap2D.Height / 2 + zOffsetPixels;
+            float centerX = Config.MapGui.CurrentControl.Width / 2 + xOffsetPixels;
+            float centerZ = Config.MapGui.CurrentControl.Height / 2 + zOffsetPixels;
             return (centerX, centerZ);
         }
 
         /** Takes in control coordinates, outputs in-game coordinates. */
         public static (float x, float z) ConvertCoordsForInGame(float x, float z)
         {
-            float xOffset = x - Config.MapGui.GLControlMap2D.Width / 2;
-            float zOffset = z - Config.MapGui.GLControlMap2D.Height / 2;
+            float xOffset = x - Config.MapGui.CurrentControl.Width / 2;
+            float zOffset = z - Config.MapGui.CurrentControl.Height / 2;
             float xOffsetScaled = xOffset / Config.MapGraphics.MapViewScaleValue;
             float zOffsetScaled = zOffset / Config.MapGraphics.MapViewScaleValue;
             (float xOffsetScaledRotated, float zOffsetScaledRotated) =
@@ -114,8 +114,8 @@ namespace STROOP.Map
 
             float hOffsetPixels = hOffset * Config.MapGraphics.MapViewScaleValue;
             float vOffsetPixels = vOffset * Config.MapGraphics.MapViewScaleValue;
-            float centerH = Config.MapGui.GLControlMap2D.Width / 2 + hOffsetPixels;
-            float centerV = Config.MapGui.GLControlMap2D.Height / 2 + vOffsetPixels;
+            float centerH = Config.MapGui.CurrentControl.Width / 2 + hOffsetPixels;
+            float centerV = Config.MapGui.CurrentControl.Height / 2 + vOffsetPixels;
             return (centerH, centerV);
         }
 

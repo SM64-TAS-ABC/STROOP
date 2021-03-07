@@ -102,6 +102,7 @@ namespace STROOP.Map
                 _glControl.Cursor = cursor;
             }
 
+            Config.MapGui.CurrentControl = _glControl;
             _glControl.MakeCurrent();
             UpdateViewport();
             UpdateMapView();

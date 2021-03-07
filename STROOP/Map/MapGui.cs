@@ -17,7 +17,7 @@ namespace STROOP.Map
         public GLControl GLControlMap3D;
         public MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
 
-
+        public GLControl CurrentControl;
 
         // Options - CheckBoxes
         public CheckBox checkBoxMapOptionsTrackMario;
