@@ -1,6 +1,6 @@
 ﻿namespace STROOP.Forms
 {
-    partial class MapForm
+    partial class MapPopOutForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapPopOutForm));
             this.glControlMap2D = new OpenTK.GLControl();
             this.SuspendLayout();
             // 
@@ -44,7 +44,7 @@
             this.glControlMap2D.VSync = false;
             this.glControlMap2D.Load += new System.EventHandler(this.Load2D);
             // 
-            // MapForm
+            // MapPopOutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -54,9 +54,9 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(10000, 10000);
             this.MinimizeBox = false;
-            this.Name = "MapForm";
+            this.Name = "MapPopOutForm";
             this.ShowIcon = false;
-            this.Text = "Map";
+            this.Text = "Map Pop Out";
             this.ResumeLayout(false);
 
         }

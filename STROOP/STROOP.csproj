@@ -295,11 +295,11 @@
     <Compile Include="Forms\LoadingForm.Designer.cs">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MapForm.cs">
+    <Compile Include="Forms\MapPopOutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MapForm.Designer.cs">
-      <DependentUpon>MapForm.cs</DependentUpon>
+    <Compile Include="Forms\MapPopOutForm.Designer.cs">
+      <DependentUpon>MapPopOutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\VariableTripletControllerForm.cs">
       <SubType>Form</SubType>
@@ -890,8 +890,8 @@
       <DependentUpon>LoadingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MapForm.resx">
-      <DependentUpon>MapForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MapPopOutForm.resx">
+      <DependentUpon>MapPopOutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\VariableTripletControllerForm.resx">
       <DependentUpon>VariableTripletControllerForm.cs</DependentUpon>

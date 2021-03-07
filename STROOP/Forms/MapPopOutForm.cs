@@ -10,9 +10,9 @@ using System.Xml.Linq;
 
 namespace STROOP.Forms
 {
-    public partial class MapForm : Form, IUpdatableForm
+    public partial class MapPopOutForm : Form, IUpdatableForm
     {
-        public MapForm()
+        public MapPopOutForm()
         {
             InitializeComponent();
             FormManager.AddForm(this);

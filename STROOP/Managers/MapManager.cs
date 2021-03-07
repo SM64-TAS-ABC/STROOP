@@ -86,7 +86,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemMapPopOut = new ToolStripMenuItem("Add Map Pop Out");
             itemMapPopOut.Click += (sender, e) =>
             {
-                MapForm form = new MapForm();
+                MapPopOutForm form = new MapPopOutForm();
                 form.ShowForm();
             };
 
