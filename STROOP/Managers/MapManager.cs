@@ -674,12 +674,6 @@ namespace STROOP.Managers
                 toBeVisible.Visible = true;
                 toBeInvisible.Visible = false;
             };
-            Config.MapGui.checkBoxMapOptionsEnablePuView.Click += (sender, e) =>
-                Config.MapGraphics.MapViewEnablePuView = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked;
-            Config.MapGui.checkBoxMapOptionsScaleIconSizes.Click += (sender, e) =>
-                Config.MapGraphics.MapViewScaleIconSizes = Config.MapGui.checkBoxMapOptionsScaleIconSizes.Checked;
-            Config.MapGui.checkBoxMapControllersCenterChangeByPixels.Click += (sender, e) =>
-                Config.MapGraphics.MapViewCenterChangeByPixels = Config.MapGui.checkBoxMapControllersCenterChangeByPixels.Checked;
 
             // Global Icon Size
             Config.MapGui.textBoxMapOptionsGlobalIconSize.AddEnterAction(() =>

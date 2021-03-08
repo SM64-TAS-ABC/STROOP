@@ -43,10 +43,6 @@ namespace STROOP.Map
         public float MapViewYawValue = DEFAULT_MAP_VIEW_YAW_VALUE;
         public float MapViewPitchValue = DEFAULT_MAP_VIEW_PITCH_VALUE;
 
-        public bool MapViewEnablePuView = false;
-        public bool MapViewScaleIconSizes = false;
-        public bool MapViewCenterChangeByPixels = true;
-
         public float MapViewRadius { get => (float)MoreMath.GetHypotenuse(
             _glControl.Width / 2, _glControl.Height / 2) / MapViewScaleValue; }
         public float MapViewXMin { get => MapViewCenterXValue - MapViewRadius; }
@@ -414,7 +410,7 @@ namespace STROOP.Map
                 (xOffset, zOffset) = ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
                     xOffset, zOffset, 0, 0, Config.CurrentMapGraphics.MapViewYawValue);
             }
-            float multiplier = MapViewCenterChangeByPixels ? 1 / MapViewScaleValue : 1;
+            float multiplier = Config.MapGui.checkBoxMapControllersCenterChangeByPixels.Checked ? 1 / MapViewScaleValue : 1;
             float newCenterXValue = MapViewCenterXValue + xOffset * multiplier;
             float newCenterYValue = MapViewCenterYValue + yOffset * multiplier;
             float newCenterZValue = MapViewCenterZValue + zOffset * multiplier;

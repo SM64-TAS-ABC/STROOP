@@ -39,8 +39,8 @@ namespace STROOP.Map
         /** Takes in in-game coordinates, outputs control coordinates. */
         public static (float x, float z) ConvertCoordsForControlTopDownView(float x, float z)
         {
-            x = Config.CurrentMapGraphics.MapViewEnablePuView ? x : (float)PuUtilities.GetRelativeCoordinate(x);
-            z = Config.CurrentMapGraphics.MapViewEnablePuView ? z : (float)PuUtilities.GetRelativeCoordinate(z);
+            x = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? x : (float)PuUtilities.GetRelativeCoordinate(x);
+            z = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? z : (float)PuUtilities.GetRelativeCoordinate(z);
             float xOffset = x - Config.CurrentMapGraphics.MapViewCenterXValue;
             float zOffset = z - Config.CurrentMapGraphics.MapViewCenterZValue;
             (float xOffsetRotated, float zOffsetRotated) =
@@ -78,9 +78,9 @@ namespace STROOP.Map
 
         public static (float x, float z) ConvertCoordsForControlOrthographicView(float x, float y, float z)
         {
-            x = Config.CurrentMapGraphics.MapViewEnablePuView ? x : (float)PuUtilities.GetRelativeCoordinate(x);
-            y = Config.CurrentMapGraphics.MapViewEnablePuView ? y : (float)PuUtilities.GetRelativeCoordinate(y);
-            z = Config.CurrentMapGraphics.MapViewEnablePuView ? z : (float)PuUtilities.GetRelativeCoordinate(z);
+            x = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? x : (float)PuUtilities.GetRelativeCoordinate(x);
+            y = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? y : (float)PuUtilities.GetRelativeCoordinate(y);
+            z = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? z : (float)PuUtilities.GetRelativeCoordinate(z);
             float xOffset = x - Config.CurrentMapGraphics.MapViewCenterXValue;
             float yOffset = y - Config.CurrentMapGraphics.MapViewCenterYValue;
             float zOffset = z - Config.CurrentMapGraphics.MapViewCenterZValue;
@@ -137,7 +137,7 @@ namespace STROOP.Map
         public static SizeF ScaleImageSizeForControl(Size imageSize, float desiredRadius)
         {
             float desiredDiameter = desiredRadius * 2;
-            if (Config.CurrentMapGraphics.MapViewScaleIconSizes) desiredDiameter *= Config.CurrentMapGraphics.MapViewScaleValue;
+            if (Config.MapGui.checkBoxMapOptionsScaleIconSizes.Checked) desiredDiameter *= Config.CurrentMapGraphics.MapViewScaleValue;
             float scale = Math.Max(imageSize.Height / desiredDiameter, imageSize.Width / desiredDiameter);
             return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
         }

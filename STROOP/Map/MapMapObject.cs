@@ -32,7 +32,7 @@ namespace STROOP.Map
             RectangleF rectangle = GetMapLayout().Coordinates;
             float rectangleCenterX = rectangle.X + rectangle.Width / 2;
             float rectangleCenterZ = rectangle.Y + rectangle.Height / 2;
-            List<(float x, float z)> rectangleCenters = Config.CurrentMapGraphics.MapViewEnablePuView ?
+            List<(float x, float z)> rectangleCenters = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ?
                 MapUtilities.GetPuCoordinates(rectangleCenterX, rectangleCenterZ) :
                 new List<(float x, float z)>() { (rectangleCenterX, rectangleCenterZ) };
             List<(float x, float z)> controlCenters = rectangleCenters.ConvertAll(
