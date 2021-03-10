@@ -408,12 +408,32 @@ namespace STROOP.Map
 
             if (settings.PathDoCopyPoints)
             {
-
+                StringBuilder builder = new StringBuilder();
+                foreach (var entry in _dictionary)
+                {
+                    builder.Append(
+                        string.Format(
+                            "{0}\t{1}\t{2}\t{3}\r\n",
+                            entry.Key,
+                            (double)entry.Value.x,
+                            (double)entry.Value.y,
+                            (double)entry.Value.z));
+                }
+                Clipboard.SetText(builder.ToString());
             }
 
             if (settings.PathDoPastePoints)
             {
-
+                _dictionary.Clear();
+                List<double?> values = ParsingUtilities.ParseDoubleList(Clipboard.GetText());
+                for (int i = 0; i < values.Count - 3; i += 4)
+                {
+                    uint globalTimer = (uint)(values[i] ?? 0);
+                    float x = (float)(values[i + 1] ?? 0);
+                    float y = (float)(values[i + 2] ?? 0);
+                    float z = (float)(values[i + 3] ?? 0);
+                    _dictionary[globalTimer] = (x, y, z);
+                }
             }
         }
 
