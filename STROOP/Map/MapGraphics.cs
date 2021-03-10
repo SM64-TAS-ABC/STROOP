@@ -439,7 +439,7 @@ namespace STROOP.Map
 
         public void SetCustomScale(object value)
         {
-            Config.MapGui.radioButtonMapControllersScaleCustom.Checked = true;
+            if (_isMainGraphics) Config.MapGui.radioButtonMapControllersScaleCustom.Checked = true;
             Config.MapGui.textBoxMapControllersScaleCustom.SubmitText(value.ToString());
         }
 
@@ -466,19 +466,19 @@ namespace STROOP.Map
 
         public void SetCustomYaw(object value)
         {
-            Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
+            if (_isMainGraphics) Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
             SetAngleTextbox(value, MapViewPitchValue);
         }
 
         public void SetCustomPitch(object value)
         {
-            Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
+            if (_isMainGraphics) Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
             SetAngleTextbox(MapViewYawValue, value);
         }
 
         public void SetCustomAngle(object yaw, object pitch)
         {
-            Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
+            if(_isMainGraphics) Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
             SetAngleTextbox(yaw, pitch);
         }
 
