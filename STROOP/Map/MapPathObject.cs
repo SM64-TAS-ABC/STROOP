@@ -345,12 +345,28 @@ namespace STROOP.Map
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
+                ToolStripMenuItem itemCopyPoints = new ToolStripMenuItem("Copy Points");
+                itemCopyPoints.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(pathDoCopyPoints: true);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
+                ToolStripMenuItem itemPastePoints = new ToolStripMenuItem("Paste Points");
+                itemPastePoints.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(pathDoPastePoints: true);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemResetPath);
                 _contextMenuStrip.Items.Add(_itemResetPathOnLevelChange);
                 _contextMenuStrip.Items.Add(_itemUseBlending);
                 _contextMenuStrip.Items.Add(_itemPause);
                 _contextMenuStrip.Items.Add(_itemSetModulo);
+                _contextMenuStrip.Items.Add(itemCopyPoints);
+                _contextMenuStrip.Items.Add(itemPastePoints);
             }
 
             return _contextMenuStrip;
@@ -388,6 +404,16 @@ namespace STROOP.Map
                 _modulo = settings.PathNewModulo;
                 string suffix = string.Format(" ({0})", _modulo);
                 _itemSetModulo.Text = SET_MODULO_TEXT + suffix;
+            }
+
+            if (settings.PathDoCopyPoints)
+            {
+
+            }
+
+            if (settings.PathDoPastePoints)
+            {
+
             }
         }
 

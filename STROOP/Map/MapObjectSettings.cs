@@ -52,6 +52,10 @@
 
         public readonly bool PathDoReset;
 
+        public readonly bool PathDoCopyPoints;
+
+        public readonly bool PathDoPastePoints;
+
         public readonly bool PathChangeResetPathOnLevelChange;
         public readonly bool PathNewResetPathOnLevelChange;
 
@@ -124,6 +128,10 @@
 
             bool pathDoReset = false,
 
+            bool pathDoCopyPoints = false,
+
+            bool pathDoPastePoints = false,
+
             bool pathChangeResetPathOnLevelChange = false,
             bool pathNewResetPathOnLevelChange = false,
 
@@ -194,6 +202,10 @@
             SectorNewAngleRadius = sectorNewAngleRadius;
 
             PathDoReset = pathDoReset;
+
+            PathDoCopyPoints = pathDoCopyPoints;
+
+            PathDoPastePoints = pathDoPastePoints;
 
             PathChangeResetPathOnLevelChange = pathChangeResetPathOnLevelChange;
             PathNewResetPathOnLevelChange = pathNewResetPathOnLevelChange;
