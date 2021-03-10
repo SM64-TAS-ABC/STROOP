@@ -408,18 +408,60 @@ namespace STROOP.Map
 
             if (settings.PathDoCopyPoints)
             {
-                StringBuilder builder = new StringBuilder();
-                foreach (var entry in _dictionary)
+                if (KeyboardUtilities.IsCtrlHeld()) // record q steps
                 {
-                    builder.Append(
-                        string.Format(
-                            "{0}\t{1}\t{2}\t{3}\r\n",
-                            entry.Key,
-                            (double)entry.Value.x,
-                            (double)entry.Value.y,
-                            (double)entry.Value.z));
+                    StringBuilder builder = new StringBuilder();
+                    uint globalTimerCounter = 0;
+                    List<uint> keys = _dictionary.Keys.ToList();
+                    for (int i = 0; i < keys.Count - 1; i++)
+                    {
+                        uint key1 = keys[i];
+                        uint key2 = keys[i + 1];
+                        (float x1, float y1, float z1) = _dictionary[key1];
+                        (float x2, float y2, float z2) = _dictionary[key2];
+                        if (i == 0)
+                        {
+                            builder.Append(
+                                string.Format(
+                                    "{0}\t{1}\t{2}\t{3}\r\n",
+                                    key1,
+                                    (double)x1,
+                                    (double)y1,
+                                    (double)z1));
+                            globalTimerCounter = key1;
+                        }
+                        for (int q = 1; q <= 4; q++)
+                        {
+                            float x = x1 + (q / 4f) * (x2 - x1);
+                            float y = y1 + (q / 4f) * (y2 - y1);
+                            float z = z1 + (q / 4f) * (z2 - z1);
+                            globalTimerCounter++;
+                            builder.Append(
+                                string.Format(
+                                    "{0}\t{1}\t{2}\t{3}\r\n",
+                                    globalTimerCounter,
+                                    (double)x,
+                                    (double)y,
+                                    (double)z));
+                        }
+                    }
+                    Clipboard.SetText(builder.ToString());
                 }
-                Clipboard.SetText(builder.ToString());
+                else
+                {
+                    StringBuilder builder = new StringBuilder();
+                    foreach (var entry in _dictionary)
+                    {
+                        builder.Append(
+                            string.Format(
+                                "{0}\t{1}\t{2}\t{3}\r\n",
+                                entry.Key,
+                                (double)entry.Value.x,
+                                (double)entry.Value.y,
+                                (double)entry.Value.z));
+                    }
+                    Clipboard.SetText(builder.ToString());
+                }
             }
 
             if (settings.PathDoPastePoints)
