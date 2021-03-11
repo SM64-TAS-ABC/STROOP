@@ -68,6 +68,9 @@
         public readonly bool PathChangeModulo;
         public readonly int PathNewModulo;
 
+        public readonly bool PathChangeIconSize;
+        public readonly float PathNewIconSize;
+
         public readonly bool AngleRangeChangeUseRelativeAngles;
         public readonly bool AngleRangeNewUseRelativeAngles;
 
@@ -143,7 +146,10 @@
 
             bool pathChangeModulo = false,
             int pathNewModulo = 0,
-            
+
+            bool pathChangeIconSize = false,
+            float pathNewIconSize = 0,
+
             bool angleRangeChangeUseRelativeAngles = false,
             bool angleRangeNewUseRelativeAngles = false,
 
@@ -218,6 +224,9 @@
 
             PathChangeModulo = pathChangeModulo;
             PathNewModulo = pathNewModulo;
+
+            PathChangeIconSize = pathChangeIconSize;
+            PathNewIconSize = pathNewIconSize;
 
             AngleRangeChangeUseRelativeAngles = angleRangeChangeUseRelativeAngles;
             AngleRangeNewUseRelativeAngles = angleRangeNewUseRelativeAngles;

@@ -34,8 +34,10 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemUseBlending;
         private ToolStripMenuItem _itemPause;
         private ToolStripMenuItem _itemSetModulo;
+        private ToolStripMenuItem _itemSetIconSize;
 
         private static readonly string SET_MODULO_TEXT = "Set Modulo";
+        private static readonly string SET_ICON_SIZE_TEXT = "Set Icon Size";
 
         public MapPathObject(PositionAngle posAngle)
             : base()
@@ -418,8 +420,8 @@ namespace STROOP.Map
                 };
                 _itemPause.Checked = _isPaused;
 
-                string suffix = string.Format(" ({0})", _modulo);
-                _itemSetModulo = new ToolStripMenuItem(SET_MODULO_TEXT + suffix);
+                string suffix1 = string.Format(" ({0})", _modulo);
+                _itemSetModulo = new ToolStripMenuItem(SET_MODULO_TEXT + suffix1);
                 _itemSetModulo.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter modulo.");
@@ -427,6 +429,18 @@ namespace STROOP.Map
                     if (!moduloNullable.HasValue || moduloNullable.Value <= 0) return;
                     MapObjectSettings settings = new MapObjectSettings(
                         pathChangeModulo: true, pathNewModulo: moduloNullable.Value);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
+                string suffix2 = string.Format(" ({0})", _imageSize);
+                _itemSetIconSize = new ToolStripMenuItem(SET_ICON_SIZE_TEXT + suffix2);
+                _itemSetIconSize.Click += (sender, e) =>
+                {
+                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter icon size.");
+                    float? sizeNullable = ParsingUtilities.ParseFloatNullable(text);
+                    if (!sizeNullable.HasValue) return;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        pathChangeIconSize: true, pathNewIconSize: sizeNullable.Value);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -450,6 +464,7 @@ namespace STROOP.Map
                 _contextMenuStrip.Items.Add(_itemUseBlending);
                 _contextMenuStrip.Items.Add(_itemPause);
                 _contextMenuStrip.Items.Add(_itemSetModulo);
+                _contextMenuStrip.Items.Add(_itemSetIconSize);
                 _contextMenuStrip.Items.Add(itemCopyPoints);
                 _contextMenuStrip.Items.Add(itemPastePoints);
             }
@@ -489,6 +504,13 @@ namespace STROOP.Map
                 _modulo = settings.PathNewModulo;
                 string suffix = string.Format(" ({0})", _modulo);
                 _itemSetModulo.Text = SET_MODULO_TEXT + suffix;
+            }
+
+            if (settings.PathChangeIconSize)
+            {
+                _imageSize = settings.PathNewIconSize;
+                string suffix = string.Format(" ({0})", _imageSize);
+                _itemSetIconSize.Text = SET_ICON_SIZE_TEXT + suffix;
             }
 
             if (settings.PathDoCopyPoints)
