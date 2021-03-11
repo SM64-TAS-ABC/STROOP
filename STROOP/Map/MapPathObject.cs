@@ -28,7 +28,7 @@ namespace STROOP.Map
         private int _modulo;
         private Image _image;
         private int _tex;
-        private int _imageSize;
+        private float _imageSize;
 
         private ToolStripMenuItem _itemResetPathOnLevelChange;
         private ToolStripMenuItem _itemUseBlending;
@@ -297,12 +297,12 @@ namespace STROOP.Map
         {
             return new Map3DVertex[]
             {
-                new Map3DVertex(new Vector3(-1, -1, 0), Color4, new Vector2(0, 1)),
-                new Map3DVertex(new Vector3(1, -1, 0), Color4, new Vector2(1, 1)),
-                new Map3DVertex(new Vector3(-1, 1, 0), Color4, new Vector2(0, 0)),
-                new Map3DVertex(new Vector3(1, 1, 0), Color4, new Vector2(1, 0)),
-                new Map3DVertex(new Vector3(-1, 1, 0), Color4,  new Vector2(0, 0)),
-                new Map3DVertex(new Vector3(1, -1, 0), Color4, new Vector2(1, 1)),
+                new Map3DVertex(new Vector3(-1, -1, 0), Color.White, new Vector2(0, 1)),
+                new Map3DVertex(new Vector3(1, -1, 0), Color.White, new Vector2(1, 1)),
+                new Map3DVertex(new Vector3(-1, 1, 0), Color.White, new Vector2(0, 0)),
+                new Map3DVertex(new Vector3(1, 1, 0), Color.White, new Vector2(1, 0)),
+                new Map3DVertex(new Vector3(-1, 1, 0), Color.White,  new Vector2(0, 0)),
+                new Map3DVertex(new Vector3(1, -1, 0), Color.White, new Vector2(1, 1)),
             };
         }
 
