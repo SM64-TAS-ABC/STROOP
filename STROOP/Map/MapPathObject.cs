@@ -26,6 +26,9 @@ namespace STROOP.Map
         private bool _isPaused;
         private uint _highestGlobalTimerValue;
         private int _modulo;
+        private Image _image;
+        private int _tex;
+        private int _imageSize;
 
         private ToolStripMenuItem _itemResetPathOnLevelChange;
         private ToolStripMenuItem _itemUseBlending;
@@ -47,6 +50,9 @@ namespace STROOP.Map
             _isPaused = false;
             _highestGlobalTimerValue = 0;
             _modulo = 1;
+            _image = null;
+            _tex = -1;
+            _imageSize = 10;
 
             Size = 300;
             OutlineWidth = 3;
@@ -106,41 +112,51 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView()
         {
-            if (OutlineWidth == 0) return;
-
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
-            List<(float x, float z)> veriticesForControl =
+            List<(float x, float z)> verticesForControl =
                 vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z));
 
-            GL.BindTexture(TextureTarget.Texture2D, -1);
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
-            GL.LineWidth(OutlineWidth);
-            for (int i = 0; i < veriticesForControl.Count - 1; i++)
+            if (OutlineWidth != 0)
             {
-                Color color = OutlineColor;
-                if (_useBlending)
+                GL.BindTexture(TextureTarget.Texture2D, -1);
+                GL.MatrixMode(MatrixMode.Modelview);
+                GL.LoadIdentity();
+                GL.LineWidth(OutlineWidth);
+                for (int i = 0; i < verticesForControl.Count - 1; i++)
                 {
-                    int distFromEnd = veriticesForControl.Count - i - 2;
-                    if (distFromEnd < Size)
+                    Color color = OutlineColor;
+                    if (_useBlending)
                     {
-                        color = ColorUtilities.InterpolateColor(
-                            OutlineColor, Color, distFromEnd / (double)Size);
+                        int distFromEnd = verticesForControl.Count - i - 2;
+                        if (distFromEnd < Size)
+                        {
+                            color = ColorUtilities.InterpolateColor(
+                                OutlineColor, Color, distFromEnd / (double)Size);
+                        }
+                        else
+                        {
+                            color = Color;
+                        }
                     }
-                    else
-                    {
-                        color = Color;
-                    }
+                    (float x1, float z1) = verticesForControl[i];
+                    (float x2, float z2) = verticesForControl[i + 1];
+                    GL.Color4(color.R, color.G, color.B, OpacityByte);
+                    GL.Begin(PrimitiveType.Lines);
+                    GL.Vertex2(x1, z1);
+                    GL.Vertex2(x2, z2);
+                    GL.End();
                 }
-                (float x1, float z1) = veriticesForControl[i];
-                (float x2, float z2) = veriticesForControl[i + 1];
-                GL.Color4(color.R, color.G, color.B, OpacityByte);
-                GL.Begin(PrimitiveType.Lines);
-                GL.Vertex2(x1, z1);
-                GL.Vertex2(x2, z2);
-                GL.End();
+                GL.Color4(1, 1, 1, 1.0f);
             }
-            GL.Color4(1, 1, 1, 1.0f);
+
+            if (_image != null)
+            {
+                foreach ((float x, float z) in verticesForControl)
+                {
+                    SizeF size = MapUtilities.ScaleImageSizeForControl(_image.Size, _imageSize);
+                    MapUtilities.DrawTexture(_tex, new PointF(x, z), size, 0, 1);
+                }
+            }
         }
 
         public override void DrawOn2DControlOrthographicView()
@@ -148,19 +164,19 @@ namespace STROOP.Map
             if (OutlineWidth == 0) return;
 
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
-            List<(float x, float z)> veriticesForControl =
+            List<(float x, float z)> verticesForControl =
                 vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
             GL.LineWidth(OutlineWidth);
-            for (int i = 0; i < veriticesForControl.Count - 1; i++)
+            for (int i = 0; i < verticesForControl.Count - 1; i++)
             {
                 Color color = OutlineColor;
                 if (_useBlending)
                 {
-                    int distFromEnd = veriticesForControl.Count - i - 2;
+                    int distFromEnd = verticesForControl.Count - i - 2;
                     if (distFromEnd < Size)
                     {
                         color = ColorUtilities.InterpolateColor(
@@ -171,8 +187,8 @@ namespace STROOP.Map
                         color = Color;
                     }
                 }
-                (float x1, float z1) = veriticesForControl[i];
-                (float x2, float z2) = veriticesForControl[i + 1];
+                (float x1, float z1) = verticesForControl[i];
+                (float x2, float z2) = verticesForControl[i + 1];
                 GL.Color4(color.R, color.G, color.B, OpacityByte);
                 GL.Begin(PrimitiveType.Lines);
                 GL.Vertex2(x1, z1);
@@ -289,6 +305,12 @@ namespace STROOP.Map
                         _highestGlobalTimerValue = globalTimer;
                     }
                 }
+            }
+
+            if (_customImage != null && _customImage != _image)
+            {
+                _image = _customImage;
+                _tex = MapUtilities.LoadTexture(_image as Bitmap);
             }
         }
 
