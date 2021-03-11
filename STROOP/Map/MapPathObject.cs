@@ -210,50 +210,100 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            if (OutlineWidth == 0) return;
-
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
-            List<Map3DVertex[]> vertexArrayList = new List<Map3DVertex[]>();
-            for (int i = 0; i < vertices.Count - 1; i++)
-            {
-                Color color = OutlineColor;
-                if (_useBlending)
-                {
-                    int distFromEnd = vertices.Count - i - 2;
-                    if (distFromEnd < Size)
-                    {
-                        color = ColorUtilities.InterpolateColor(
-                            OutlineColor, Color, distFromEnd / (double)Size);
-                    }
-                    else
-                    {
-                        color = Color;
-                    }
-                }
-                (float x1, float y1, float z1) = vertices[i];
-                (float x2, float y2, float z2) = vertices[i + 1];
 
-                vertexArrayList.Add(new Map3DVertex[]
+            if (OutlineWidth != 0)
+            {
+                List<Map3DVertex[]> vertexArrayList = new List<Map3DVertex[]>();
+                for (int i = 0; i < vertices.Count - 1; i++)
                 {
+                    Color color = OutlineColor;
+                    if (_useBlending)
+                    {
+                        int distFromEnd = vertices.Count - i - 2;
+                        if (distFromEnd < Size)
+                        {
+                            color = ColorUtilities.InterpolateColor(
+                                OutlineColor, Color, distFromEnd / (double)Size);
+                        }
+                        else
+                        {
+                            color = Color;
+                        }
+                    }
+                    (float x1, float y1, float z1) = vertices[i];
+                    (float x2, float y2, float z2) = vertices[i + 1];
+
+                    vertexArrayList.Add(new Map3DVertex[]
+                    {
                     new Map3DVertex(new Vector3(x1, y1, z1), color),
                     new Map3DVertex(new Vector3(x2, y2, z2), color),
+                    });
+                }
+
+                Matrix4 viewMatrix = GetModelMatrix() * Config.Map3DCamera.Matrix;
+                GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
+
+                vertexArrayList.ForEach(vertexes =>
+                {
+                    int buffer = GL.GenBuffer();
+                    GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
+                    GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
+                    GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map3DVertex.Size), vertexes, BufferUsageHint.DynamicDraw);
+                    GL.LineWidth(OutlineWidth);
+                    Config.Map3DGraphics.BindVertices();
+                    GL.DrawArrays(PrimitiveType.Lines, 0, vertexes.Length);
+                    GL.DeleteBuffer(buffer);
                 });
             }
 
-            Matrix4 viewMatrix = GetModelMatrix() * Config.Map3DCamera.Matrix;
-            GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
-
-            vertexArrayList.ForEach(vertexes =>
+            if (_image != null)
             {
-                int buffer = GL.GenBuffer();
-                GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
-                GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
-                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map3DVertex.Size), vertexes, BufferUsageHint.DynamicDraw);
-                GL.LineWidth(OutlineWidth);
-                Config.Map3DGraphics.BindVertices();
-                GL.DrawArrays(PrimitiveType.Lines, 0, vertexes.Length);
-                GL.DeleteBuffer(buffer);
-            });
+                foreach ((float x, float y, float z) in vertices)
+                {
+                    Matrix4 viewMatrix = GetModelMatrix(x, y, z, 0);
+                    GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
+
+                    Map3DVertex[] vertices2 = GetVertices();
+                    int vertexBuffer = GL.GenBuffer();
+                    GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
+                    GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices2.Length * Map3DVertex.Size),
+                        vertices2, BufferUsageHint.StaticDraw);
+                    GL.BindTexture(TextureTarget.Texture2D, _tex);
+                    GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
+                    Config.Map3DGraphics.BindVertices();
+                    GL.DrawArrays(PrimitiveType.Triangles, 0, vertices2.Length);
+                    GL.DeleteBuffer(vertexBuffer);
+                }
+            }
+        }
+
+        public Matrix4 GetModelMatrix(float x, float y, float z, float ang)
+        {
+            SizeF _imageNormalizedSize = new SizeF(
+                _image.Width >= _image.Height ? 1.0f : (float)_image.Width / _image.Height,
+                _image.Width <= _image.Height ? 1.0f : (float)_image.Height / _image.Width);
+
+            Vector3 pos = new Vector3(x, y, z);
+
+            float size = _imageSize / 200;
+            return Matrix4.CreateScale(size * _imageNormalizedSize.Width, size * _imageNormalizedSize.Height, 1)
+                * Matrix4.CreateRotationZ(0)
+                * Matrix4.CreateScale(1.0f / Config.Map3DGraphics.NormalizedWidth, 1.0f / Config.Map3DGraphics.NormalizedHeight, 1)
+                * Matrix4.CreateTranslation(MapUtilities.GetPositionOnViewFromCoordinate(pos));
+        }
+
+        private Map3DVertex[] GetVertices()
+        {
+            return new Map3DVertex[]
+            {
+                new Map3DVertex(new Vector3(-1, -1, 0), Color4, new Vector2(0, 1)),
+                new Map3DVertex(new Vector3(1, -1, 0), Color4, new Vector2(1, 1)),
+                new Map3DVertex(new Vector3(-1, 1, 0), Color4, new Vector2(0, 0)),
+                new Map3DVertex(new Vector3(1, 1, 0), Color4, new Vector2(1, 0)),
+                new Map3DVertex(new Vector3(-1, 1, 0), Color4,  new Vector2(0, 0)),
+                new Map3DVertex(new Vector3(1, -1, 0), Color4, new Vector2(1, 1)),
+            };
         }
 
         public override void Update()
