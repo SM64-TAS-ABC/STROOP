@@ -200,7 +200,8 @@ namespace STROOP.Managers
                         hOffset,
                         nOffset,
                         -1 * vOffset,
-                        useRelative);
+                        useRelative,
+                        KeyboardUtilities.IsCtrlHeld());
                 });
 
             var triangleNormalGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTriangleNormal"] as GroupBox;

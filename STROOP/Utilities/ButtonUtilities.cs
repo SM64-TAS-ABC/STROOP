@@ -1121,8 +1121,13 @@ namespace STROOP.Utilities
         }
 
         public static bool MoveTriangle(List<uint> triangleAddresses,
-            float xOffsetBase, float yOffsetBase, float zOffsetBase, bool useRelative)
+            float xOffsetBase, float yOffsetBase, float zOffsetBase, bool useRelative, bool doAllTriangles)
         {
+            if (doAllTriangles)
+            {
+                triangleAddresses = TriangleUtilities.GetAllTriangleAddresses();
+            }
+
             if (triangleAddresses.Count == 1 && triangleAddresses[0] == 0) return false;
 
             bool success = true;

@@ -71,6 +71,13 @@ namespace STROOP.Utilities
             return GetTrianglesInRange(triangleListAddress, numTotalTriangles);
         }
 
+        public static List<uint> GetAllTriangleAddresses()
+        {
+            uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
+            int numTotalTriangles = Config.Stream.GetInt32(TriangleConfig.TotalTriangleCountAddress);
+            return GetTriangleAddressesInRange(triangleListAddress, numTotalTriangles);
+        }
+
         public static List<TriangleDataModel> GetTrianglesInRange(uint startAddress, int numTriangles)
         {
             return GetTriangleAddressesInRange(startAddress, numTriangles)
