@@ -523,6 +523,8 @@ namespace STROOP.Structs
                     ("Map3DTranslateSpeed", () => SpecialConfig.Map3DTranslateSpeed, (double value) => SpecialConfig.Map3DTranslateSpeed = value),
                     ("Map3DRotateSpeed", () => SpecialConfig.Map3DRotateSpeed, (double value) => SpecialConfig.Map3DRotateSpeed = value),
 
+                    ("MapUnitPrecisionThreshold", () => SpecialConfig.MapUnitPrecisionThreshold, (double value) => SpecialConfig.MapUnitPrecisionThreshold = value),
+
                     ("CoordinateLabelsCustomSpacing", () => SpecialConfig.CoordinateLabelsCustomSpacing, (double value) => SpecialConfig.CoordinateLabelsCustomSpacing = value),
                     ("CoordinateLabelsMargin", () => SpecialConfig.CoordinateLabelsMargin, (double value) => SpecialConfig.CoordinateLabelsMargin = value),
                     ("CoordinateLabelsLabelDensity", () => SpecialConfig.CoordinateLabelsLabelDensity, (double value) => SpecialConfig.CoordinateLabelsLabelDensity = value),

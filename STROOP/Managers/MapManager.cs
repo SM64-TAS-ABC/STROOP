@@ -1096,6 +1096,7 @@ namespace STROOP.Managers
             "Orth H Rotate Speed", "Orth V Rotate Speed",
             "3D Scroll Speed", "3D Translate Speed", "3D Rotate Speed",
             "Num Circle Points", "Num Sphere Points",
+            "Unit Precision Threshold",
         };
         private static readonly List<string> inGameColoredVars = new List<string>() { };
         private static readonly List<string> cameraPosAndFocusColoredVars = new List<string>()

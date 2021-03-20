@@ -35,4 +35,6 @@
   <Data base="None" specialType="MapCircleNumPoints2D">Num Circle Points</Data>
   <Data base="None" specialType="MapCircleNumPoints3D">Num Sphere Points</Data>
 
+  <Data base="None" specialType="MapUnitPrecisionThreshold">Unit Precision Threshold</Data>
+
 </VarData>

@@ -569,7 +569,7 @@ namespace STROOP.Map
 
         public static bool IsAbleToShowUnitPrecision()
         {
-            return Config.CurrentMapGraphics.MapViewScaleValue > 2;
+            return Config.CurrentMapGraphics.MapViewScaleValue > SpecialConfig.MapUnitPrecisionThreshold;
         }
 
         public static List<(double x, double y, double z)> ParsePoints(string text, bool useTriplets)
