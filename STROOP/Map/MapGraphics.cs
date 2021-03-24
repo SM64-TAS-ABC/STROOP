@@ -645,6 +645,10 @@ namespace STROOP.Map
                     float newPitch = _rotateStartPitch - pitchDiff;
                     newYaw = (float)MoreMath.NormalizeAngleDouble(newYaw);
                     newPitch = (float)MoreMath.Clamp(newPitch, MAP_VIEW_PITCH_MIN_VALUE, MAP_VIEW_PITCH_MAX_VALUE);
+                    if (KeyboardUtilities.IsCtrlHeld())
+                    {
+                        newYaw = (float)MoreMath.NormalizeAngle45Degrees(newYaw);
+                    }
                     SetCustomAngle(newYaw, newPitch);
                 }
                 else
@@ -652,6 +656,10 @@ namespace STROOP.Map
                     float angleToMouse = (float)MoreMath.AngleTo_AngleUnits(
                         _rotateStartMouseX, _rotateStartMouseY, e.X, e.Y) * MapUtilities.MaybeReverse(-1) + 32768;
                     float newAngle = _rotateStartYaw + angleToMouse;
+                    if (KeyboardUtilities.IsCtrlHeld())
+                    {
+                        newAngle = (float)MoreMath.NormalizeAngle45Degrees(newAngle);
+                    }
                     SetCustomYaw(newAngle);
                 }
             }

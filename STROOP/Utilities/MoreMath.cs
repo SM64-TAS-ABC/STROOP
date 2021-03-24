@@ -394,6 +394,12 @@ namespace STROOP.Utilities
             throw new ArgumentOutOfRangeException("Cannot call NormalizeAngleUsingType with type " + type);
         }
 
+        public static double NormalizeAngle45Degrees(double angle)
+        {
+            int divided = NormalizeAngleUshort(angle + 4096) / 8192;
+            return divided * 8192;
+        }
+
         public static double AngleTo_Radians(double xFrom, double zFrom, double xTo, double zTo)
         {
             return Math.Atan2(xTo - xFrom, zTo - zFrom);
