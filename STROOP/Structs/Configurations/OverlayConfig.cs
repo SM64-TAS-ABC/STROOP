@@ -22,6 +22,7 @@ namespace STROOP.Structs
         public static bool ShowOverlayCeilingObject = true;
         public static bool ShowOverlayCollisionObject = true;
 
+        public static bool ShowOverlayHitboxOverlapObject = false;
         public static bool ShowOverlayParentObject = false;
         public static bool ShowOverlayChildObject = false;
     }

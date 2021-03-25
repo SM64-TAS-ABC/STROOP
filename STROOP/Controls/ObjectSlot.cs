@@ -653,7 +653,8 @@ namespace STROOP
                 _drawCollision4Overlay = OverlayConfig.ShowOverlayCollisionObject && 
                     address == ObjectUtilities.GetCollisionObject(collisionObjAddress, 4);
 
-                _drawHitboxOverlapOverlay = WatchVariableSpecialUtilities.IsMarioHitboxOverlapping(address.Value) != 0;
+                _drawHitboxOverlapOverlay = OverlayConfig.ShowOverlayHitboxOverlapObject &&
+                    WatchVariableSpecialUtilities.IsMarioHitboxOverlapping(address.Value) != 0;
 
                 _drawMarkedOverlay = _manager.MarkedSlotsAddressesDictionary.ContainsKey(address.Value) ?
                     _manager.MarkedSlotsAddressesDictionary[address.Value] : (int?)null;

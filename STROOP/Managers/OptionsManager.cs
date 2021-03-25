@@ -142,6 +142,7 @@ namespace STROOP.Managers
                 "Wall Object",
                 "Ceiling Object",
                 "Collision Object",
+                "Hitbox Overlap Object",
                 "Parent Object",
                 "Child Object",
             };
@@ -160,6 +161,7 @@ namespace STROOP.Managers
                 () => OverlayConfig.ShowOverlayWallObject,
                 () => OverlayConfig.ShowOverlayCeilingObject,
                 () => OverlayConfig.ShowOverlayCollisionObject,
+                () => OverlayConfig.ShowOverlayHitboxOverlapObject,
                 () => OverlayConfig.ShowOverlayParentObject,
                 () => OverlayConfig.ShowOverlayChildObject,
             };
@@ -178,6 +180,7 @@ namespace STROOP.Managers
                 (bool value) => OverlayConfig.ShowOverlayWallObject = value,
                 (bool value) => OverlayConfig.ShowOverlayCeilingObject = value,
                 (bool value) => OverlayConfig.ShowOverlayCollisionObject = value,
+                (bool value) => OverlayConfig.ShowOverlayHitboxOverlapObject = value,
                 (bool value) => OverlayConfig.ShowOverlayParentObject = value,
                 (bool value) => OverlayConfig.ShowOverlayChildObject = value,
             };
