@@ -80,6 +80,8 @@ namespace STROOP.Controls
         public readonly bool ChangeFixedAddressToDefault;
         public readonly bool NewFixedAddress;
 
+        public readonly bool DoFixAddressSpecial;
+
         public readonly bool DoTruncateIfYaw;
 
         public WatchVariableControlSettings(
@@ -135,6 +137,8 @@ namespace STROOP.Controls
             bool changeFixedAddress = false,
             bool changeFixedAddressToDefault = false,
             bool newFixedAddress = false,
+
+            bool doFixAddressSpecial = false,
             
             bool doTruncateIfYaw = false)
         {
@@ -190,6 +194,8 @@ namespace STROOP.Controls
             ChangeFixedAddress = changeFixedAddress;
             ChangeFixedAddressToDefault = changeFixedAddressToDefault;
             NewFixedAddress = newFixedAddress;
+
+            DoFixAddressSpecial = doFixAddressSpecial;
 
             DoTruncateIfYaw = doTruncateIfYaw;
         }

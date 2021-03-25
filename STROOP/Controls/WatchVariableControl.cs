@@ -727,6 +727,11 @@ namespace STROOP.Controls
                 }
             }
 
+            if (settings.DoFixAddressSpecial)
+            {
+                // do something
+            }
+
             WatchVarWrapper.ApplySettings(settings);
         }
 

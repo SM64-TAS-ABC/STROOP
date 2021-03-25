@@ -83,11 +83,12 @@ namespace STROOP.Structs
             ToolStripMenuItem itemFixAddress = new ToolStripMenuItem("Fix Address...");
             ControlUtilities.AddDropDownItems(
                 itemFixAddress,
-                new List<string>() { "Default", "Fix Address", "Don't Fix Address" },
+                new List<string>() { "Default", "Fix Address", "Fix Address Special", "Don't Fix Address" },
                 new List<Action>()
                 {
                     () => apply(new WatchVariableControlSettings(changeFixedAddress: true, changeFixedAddressToDefault: true)),
                     () => apply(new WatchVariableControlSettings(changeFixedAddress: true, newFixedAddress: true)),
+                    () => apply(new WatchVariableControlSettings(doFixAddressSpecial: true)),
                     () => apply(new WatchVariableControlSettings(changeFixedAddress: true, newFixedAddress: false)),
                 });
 
