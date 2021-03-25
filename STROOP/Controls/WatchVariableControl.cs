@@ -731,7 +731,17 @@ namespace STROOP.Controls
 
             if (settings.DoFixAddressSpecial)
             {
-                // do something
+                List<uint> addresses = FixedAddressListGetter() ?? WatchVarWrapper.GetCurrentAddressesToFix();
+                if (addresses.Count > 0)
+                {
+                    uint objAddress = addresses[0];
+                    uint parent = Config.Stream.GetUInt32(objAddress + ObjectConfig.ParentOffset);
+                    int subtype = Config.Stream.GetInt32(objAddress + ObjectConfig.BehaviorSubtypeOffset);
+                    FixedAddressListGetter = () =>
+                        Config.ObjectSlotsManager.GetLoadedObjectsWithPredicate(
+                            obj => obj.Parent == parent && obj.SubType == subtype && obj.Address != obj.Parent)
+                        .ConvertAll(obj => obj.Address);
+                }
             }
 
             WatchVarWrapper.ApplySettings(settings);
