@@ -34,6 +34,7 @@ namespace STROOP.Structs
         public Image Collision2OverlayImage;
         public Image Collision3OverlayImage;
         public Image Collision4OverlayImage;
+        public Image HitboxOverlapImage;
         public Image MarkedRedObjectOverlayImage;
         public Image MarkedOrangeObjectOverlayImage;
         public Image MarkedYellowObjectOverlayImage;
@@ -80,6 +81,7 @@ namespace STROOP.Structs
             Collision2OverlayImage?.Dispose();
             Collision3OverlayImage?.Dispose();
             Collision4OverlayImage?.Dispose();
+            HitboxOverlapImage?.Dispose();
             MarkedRedObjectOverlayImage?.Dispose();
             MarkedOrangeObjectOverlayImage?.Dispose();
             MarkedYellowObjectOverlayImage?.Dispose();

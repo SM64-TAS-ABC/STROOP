@@ -171,6 +171,9 @@
     <Collision4>
       <OverlayImage path="Collision4.png"/>
     </Collision4>
+    <HitboxOverlap>
+      <OverlayImage path="HitboxOverlap.png"/>
+    </HitboxOverlap>
     <MarkedRed>
       <OverlayImage path="MarkedRed.png"/>
     </MarkedRed>

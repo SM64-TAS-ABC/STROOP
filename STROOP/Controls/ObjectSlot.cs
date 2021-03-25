@@ -76,7 +76,7 @@ namespace STROOP
             _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawModelOverlay,
             _drawFloorOverlay, _drawWallOverlay, _drawCeilingOverlay,
             _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawChildOverlay,
-            _drawCollision1Overlay, _drawCollision2Overlay, _drawCollision3Overlay, _drawCollision4Overlay,
+            _drawCollision1Overlay, _drawCollision2Overlay, _drawCollision3Overlay, _drawCollision4Overlay, _drawHitboxOverlapOverlay,
             _drawLockedOverlay, _drawLockDisabledOverlay;
         int? _drawMarkedOverlay;
 
@@ -427,6 +427,7 @@ namespace STROOP
                 _drawCollision2Overlay,
                 _drawCollision3Overlay,
                 _drawCollision4Overlay,
+                _drawHitboxOverlapOverlay,
                 _drawMarkedOverlay,
                 _drawLockedOverlay,
                 _drawLockDisabledOverlay,
@@ -585,6 +586,8 @@ namespace STROOP
                 e.Graphics.DrawImage(_gui.Collision3OverlayImage, new Rectangle(new Point(), Size));
             if (_drawCollision4Overlay)
                 e.Graphics.DrawImage(_gui.Collision4OverlayImage, new Rectangle(new Point(), Size));
+            if (_drawHitboxOverlapOverlay)
+                e.Graphics.DrawImage(_gui.HitboxOverlapImage, new Rectangle(new Point(), Size));
             if (_drawLockedOverlay)
                 e.Graphics.DrawImage(_gui.LockedOverlayImage, new Rectangle(new Point(), Size));
             if (_drawLockDisabledOverlay)
@@ -650,6 +653,8 @@ namespace STROOP
                 _drawCollision4Overlay = OverlayConfig.ShowOverlayCollisionObject && 
                     address == ObjectUtilities.GetCollisionObject(collisionObjAddress, 4);
 
+                _drawHitboxOverlapOverlay = WatchVariableSpecialUtilities.IsMarioHitboxOverlapping(address.Value) != 0;
+
                 _drawMarkedOverlay = _manager.MarkedSlotsAddressesDictionary.ContainsKey(address.Value) ?
                     _manager.MarkedSlotsAddressesDictionary[address.Value] : (int?)null;
 
@@ -695,6 +700,7 @@ namespace STROOP
                 _drawCollision2Overlay = false;
                 _drawCollision3Overlay = false;
                 _drawCollision4Overlay = false;
+                _drawHitboxOverlapOverlay = false;
                 _drawMarkedOverlay = null;
                 _drawLockedOverlay = false;
                 _drawLockDisabledOverlay = false;
