@@ -28,7 +28,7 @@ namespace STROOP.Controls
             ToolStripMenuItem itemViewAddress = new ToolStripMenuItem("View Address");
             itemViewAddress.Click += (sender, e) =>
             {
-                object value = GetValue(true, false, _watchVarControl.FixedAddressList);
+                object value = GetValue(true, false, _watchVarControl.FixedAddressListGetter());
                 uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
                 if (!uintValueNullable.HasValue) return;
                 uint uintValue = uintValueNullable.Value;

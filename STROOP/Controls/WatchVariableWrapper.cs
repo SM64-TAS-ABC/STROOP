@@ -117,7 +117,7 @@ namespace STROOP.Controls
             _itemHighlight.Checked = _watchVarControl.Highlighted;
 
             _itemLock = new ToolStripMenuItem("Lock");
-            _itemLock.Click += (sender, e) => ToggleLocked(null, _watchVarControl.FixedAddressList);
+            _itemLock.Click += (sender, e) => ToggleLocked(null, _watchVarControl.FixedAddressListGetter());
 
             _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
             _itemRemoveAllLocks.Click += (sender, e) => WatchVariableLockManager.RemoveAllLocks();
@@ -127,7 +127,7 @@ namespace STROOP.Controls
 
             ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy");
             itemCopyUnrounded.Click += (sender, e) => Clipboard.SetText(
-                GetValue(false, true, _watchVarControl.FixedAddressList).ToString());
+                GetValue(false, true, _watchVarControl.FixedAddressListGetter()).ToString());
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) => _watchVarControl.SetValue(Clipboard.GetText());
@@ -166,7 +166,7 @@ namespace STROOP.Controls
             _itemFixAddress.Click += (sender, e) =>
             {
                 _watchVarControl.ToggleFixedAddress();
-                _itemFixAddress.Checked = _watchVarControl.FixedAddressList != null;
+                _itemFixAddress.Checked = _watchVarControl.FixedAddressListGetter() != null;
             };
 
             _itemRename = new ToolStripMenuItem("Rename");
@@ -189,10 +189,10 @@ namespace STROOP.Controls
                     clazz: GetClass(),
                     type: WatchVar.GetTypeDescription(),
                     baseTypeOffset: WatchVar.GetBaseTypeOffsetDescription(),
-                    n64BaseAddress: WatchVar.GetBaseAddressListString(_watchVarControl.FixedAddressList),
-                    emulatorBaseAddress: WatchVar.GetProcessBaseAddressListString(_watchVarControl.FixedAddressList),
-                    n64Address: WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
-                    emulatorAddress: WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList));
+                    n64BaseAddress: WatchVar.GetBaseAddressListString(_watchVarControl.FixedAddressListGetter()),
+                    emulatorBaseAddress: WatchVar.GetProcessBaseAddressListString(_watchVarControl.FixedAddressListGetter()),
+                    n64Address: WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressListGetter()),
+                    emulatorAddress: WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressListGetter()));
             varInfo.Show();
         }
 
@@ -204,10 +204,10 @@ namespace STROOP.Controls
                 GetClass(),
                 WatchVar.GetTypeDescription(),
                 WatchVar.GetBaseTypeOffsetDescription(),
-                WatchVar.GetBaseAddressListString(_watchVarControl.FixedAddressList),
-                WatchVar.GetProcessBaseAddressListString(_watchVarControl.FixedAddressList),
-                WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressList),
-                WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressList),
+                WatchVar.GetBaseAddressListString(_watchVarControl.FixedAddressListGetter()),
+                WatchVar.GetProcessBaseAddressListString(_watchVarControl.FixedAddressListGetter()),
+                WatchVar.GetRamAddressListString(true, _watchVarControl.FixedAddressListGetter()),
+                WatchVar.GetProcessAddressListString(_watchVarControl.FixedAddressListGetter()),
             };
         }
 
@@ -237,7 +237,7 @@ namespace STROOP.Controls
                 new VariableControllerForm(
                     _watchVarControl.VarName,
                     this,
-                    _watchVarControl.FixedAddressList);
+                    _watchVarControl.FixedAddressListGetter());
             varController.Show();
         }
 
@@ -248,14 +248,14 @@ namespace STROOP.Controls
                 new VariableBitForm(
                     _watchVarControl.VarName,
                     WatchVar,
-                    _watchVarControl.FixedAddressList);
+                    _watchVarControl.FixedAddressListGetter());
             varController.Show();
         }
 
         public void ViewInMemoryTab()
         {
             if (WatchVar.IsSpecial) return;
-            List<uint> addressList = WatchVar.GetAddressList(_watchVarControl.FixedAddressList);
+            List<uint> addressList = WatchVar.GetAddressList(_watchVarControl.FixedAddressListGetter());
             if (addressList.Count == 0) return;
             uint address = addressList[0];
             Config.TabControlMain.SelectedTab = Config.TabControlMain.TabPages["tabPageMemory"];
@@ -280,7 +280,7 @@ namespace STROOP.Controls
             _itemRemoveAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
             _itemDisableAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks() || LockConfig.LockingDisabled;
             _itemDisableAllLocks.Checked = LockConfig.LockingDisabled;
-            _itemFixAddress.Checked = _watchVarControl.FixedAddressList != null;
+            _itemFixAddress.Checked = _watchVarControl.FixedAddressListGetter() != null;
         }
 
         public void ToggleLocked(bool? newLockedValueNullable, List<uint> addresses = null)
@@ -541,7 +541,7 @@ namespace STROOP.Controls
         {
             if (settings.ChangeLocked)
             {
-                ToggleLocked(settings.NewLocked, _watchVarControl.FixedAddressList);
+                ToggleLocked(settings.NewLocked, _watchVarControl.FixedAddressListGetter());
             }
         }
 

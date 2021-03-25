@@ -549,7 +549,7 @@ namespace STROOP.Structs
                     new VariableControllerForm(
                         vars.ConvertAll(control => control.VarName),
                         vars.ConvertAll(control => control.WatchVarWrapper),
-                        vars.ConvertAll(control => control.FixedAddressList));
+                        vars.ConvertAll(control => control.FixedAddressListGetter()));
                 varController.Show();
             };
 

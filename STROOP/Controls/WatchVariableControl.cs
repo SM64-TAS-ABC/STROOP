@@ -152,8 +152,8 @@ namespace STROOP.Controls
             }
         }
 
-        private List<uint> _defaultFixedAddressList;
-        public List<uint> FixedAddressList;
+        private Func<List<uint>> _defaultFixedAddressListGetter;
+        public Func<List<uint>> FixedAddressListGetter;
 
         private int _settingsLevel = 0;
 
@@ -219,8 +219,10 @@ namespace STROOP.Controls
             _renameMode = false;
             _isSelected = false;
 
-            _defaultFixedAddressList = fixedAddresses;
-            FixedAddressList = fixedAddresses;
+            List<uint> copy1 = fixedAddresses == null ? null : new List<uint>(fixedAddresses);
+            _defaultFixedAddressListGetter = () => copy1;
+            List<uint> copy2 = fixedAddresses == null ? null : new List<uint>(fixedAddresses);
+            FixedAddressListGetter = () => copy2;
 
             // Initialize color fields
             _initialBaseColor = backgroundColor ?? DEFAULT_COLOR;
@@ -406,7 +408,7 @@ namespace STROOP.Controls
             else if (isLKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                WatchVarWrapper.ToggleLocked(null, FixedAddressList);
+                WatchVarWrapper.ToggleLocked(null, FixedAddressListGetter());
             }
             else if (isDKeyHeld)
             {
@@ -510,7 +512,7 @@ namespace STROOP.Controls
 
         private void OnCheckboxClick()
         {
-            bool success = WatchVarWrapper.SetCheckStateValue(_valueCheckBox.CheckState, FixedAddressList);
+            bool success = WatchVarWrapper.SetCheckStateValue(_valueCheckBox.CheckState, FixedAddressListGetter());
             if (!success) FlashColor(FAILURE_COLOR);
         }
 
@@ -526,8 +528,8 @@ namespace STROOP.Controls
 
             if (!EditMode)
             {
-                if (_valueTextBox.Visible) _valueTextBox.Text = WatchVarWrapper.GetValue(true, true, FixedAddressList).ToString();
-                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = WatchVarWrapper.GetCheckStateValue(FixedAddressList);
+                if (_valueTextBox.Visible) _valueTextBox.Text = WatchVarWrapper.GetValue(true, true, FixedAddressListGetter()).ToString();
+                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = WatchVarWrapper.GetCheckStateValue(FixedAddressListGetter());
             }
 
             if (EditMode) _valueTextBox.ShowTheCaret();
@@ -549,9 +551,9 @@ namespace STROOP.Controls
 
         private void UpdatePictureBoxes()
         {
-            Image currentLockImage = GetImageForCheckState(WatchVarWrapper.GetLockedCheckState(FixedAddressList));
+            Image currentLockImage = GetImageForCheckState(WatchVarWrapper.GetLockedCheckState(FixedAddressListGetter()));
             bool isLocked = currentLockImage != null;
-            bool isFixedAddress = FixedAddressList != null;
+            bool isFixedAddress = FixedAddressListGetter() != null;
 
             if (_lockPictureBox.Image == currentLockImage &&
                 _lockPictureBox.Visible == isLocked &&
@@ -719,7 +721,7 @@ namespace STROOP.Controls
             {
                 if (settings.ChangeFixedAddressToDefault)
                 {
-                    FixedAddressList = _defaultFixedAddressList;
+                    FixedAddressListGetter = _defaultFixedAddressListGetter;
                 }
                 else
                 {
@@ -759,7 +761,7 @@ namespace STROOP.Controls
                 VarName,
                 _baseColor,
                 new List<VariableGroup>() { VariableGroup.Custom },
-                FixedAddressList);
+                FixedAddressListGetter());
         }
 
         private static AddToTabTypeEnum GetAddToTabType()
@@ -784,7 +786,7 @@ namespace STROOP.Controls
             foreach (WatchVariableControl watchVar in watchVars)
             {
                 List<WatchVariableControl> newVarList = new List<WatchVariableControl>();
-                List<uint> addressList = watchVar.FixedAddressList ?? watchVar.WatchVarWrapper.GetCurrentAddressesToFix();
+                List<uint> addressList = watchVar.FixedAddressListGetter() ?? watchVar.WatchVarWrapper.GetCurrentAddressesToFix();
                 List<List<uint>> addressesLists =
                     addToTabType == AddToTabTypeEnum.GroupedByVariable
                             || addToTabType == AddToTabTypeEnum.GroupedByBaseAddress
@@ -850,13 +852,14 @@ namespace STROOP.Controls
 
         public void ToggleFixedAddress()
         {
-            if (FixedAddressList == null)
+            if (FixedAddressListGetter() == null)
             {
-                FixedAddressList = WatchVarWrapper.GetCurrentAddressesToFix();
+                List<uint> copy = new List<uint>(WatchVarWrapper.GetCurrentAddressesToFix());
+                FixedAddressListGetter = () => copy;
             }
             else
             {
-                FixedAddressList = null;
+                FixedAddressListGetter = () => null;
             }
         }
 
@@ -864,11 +867,12 @@ namespace STROOP.Controls
         {
             if (fix)
             {
-                FixedAddressList = WatchVarWrapper.GetCurrentAddressesToFix();
+                List<uint> copy = new List<uint>(WatchVarWrapper.GetCurrentAddressesToFix());
+                FixedAddressListGetter = () => copy;
             }
             else
             {
-                FixedAddressList = null;
+                FixedAddressListGetter = () => null;
             }
         }
 
@@ -914,17 +918,17 @@ namespace STROOP.Controls
 
         public List<uint> GetBaseAddresses()
         {
-            return WatchVarWrapper.GetBaseAddresses(FixedAddressList);
+            return WatchVarWrapper.GetBaseAddresses(FixedAddressListGetter());
         }
 
         public List<object> GetValues(bool useRounding = false, bool handleFormatting = true)
         {
-            return WatchVarWrapper.GetValues(useRounding, handleFormatting, FixedAddressList);
+            return WatchVarWrapper.GetValues(useRounding, handleFormatting, FixedAddressListGetter());
         }
 
         public object GetValue(bool useRounding = false, bool handleFormatting = true)
         {
-            return WatchVarWrapper.GetValue(useRounding, handleFormatting, FixedAddressList);
+            return WatchVarWrapper.GetValue(useRounding, handleFormatting, FixedAddressListGetter());
         }
 
         public bool SetValueOfValues(object value, int index)
@@ -940,21 +944,21 @@ namespace STROOP.Controls
 
         public bool SetValues(List<object> values)
         {
-            bool success = WatchVarWrapper.SetValues(values, FixedAddressList);
+            bool success = WatchVarWrapper.SetValues(values, FixedAddressListGetter());
             if (!success) FlashColor(FAILURE_COLOR);
             return success;
         }
 
         public bool SetValue(object value)
         {
-            bool success = WatchVarWrapper.SetValue(value, FixedAddressList);
+            bool success = WatchVarWrapper.SetValue(value, FixedAddressListGetter());
             if (!success) FlashColor(FAILURE_COLOR);
             return success;
         }
 
         public bool AddValue(object value, bool add)
         {
-            bool success = WatchVarWrapper.AddValue(value, add, FixedAddressList);
+            bool success = WatchVarWrapper.AddValue(value, add, FixedAddressListGetter());
             if (!success) FlashColor(FAILURE_COLOR);
             return success;
         }
@@ -964,7 +968,7 @@ namespace STROOP.Controls
             Color? color = _baseColor == DEFAULT_COLOR ? (Color?)null : _baseColor;
             if (useCurrentState)
                 return WatchVarPrecursor.ToXML(
-                    VarName, color, GroupList, FixedAddressList);
+                    VarName, color, GroupList, FixedAddressListGetter());
             else
                 return WatchVarPrecursor.ToXML();
         }
@@ -976,7 +980,7 @@ namespace STROOP.Controls
 
         public List<Func<object, bool>> GetSetters()
         {
-            return WatchVarWrapper.GetSetters(FixedAddressList);
+            return WatchVarWrapper.GetSetters(FixedAddressListGetter());
         }
 
         public void UnselectText()
