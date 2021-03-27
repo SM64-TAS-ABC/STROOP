@@ -849,12 +849,15 @@ namespace STROOP.Structs
                     PositionAngle objPos = PositionAngle.Obj(objAddress);
                     double distAway = hitboxDistAway + mObjHitboxRadius + objHitboxRadius;
 
-                    (double newMarioX, double newMarioZ) =
-                        MoreMath.ExtrapolateLine2D(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
+                    PositionAngle marioPA = PositionAngle.Mario;
+                    PositionAngle marioObjPA = PositionAngle.MarioObj();
+                    PositionAngle objPA = PositionAngle.Obj(objAddress);
+
                     return BoolUtilities.Combine(
-                        marioPos.SetValues(x: newMarioX, z: newMarioZ),
-                        PositionAngle.MarioObj().SetValues(x: newMarioX, z: newMarioZ));
-                }));
+                        PositionAngle.SetHDistance(objPA, marioPA, distAway),
+                        PositionAngle.SetHDistance(objPA, marioObjPA, distAway));
+                }
+            ));
 
             _dictionary.Add("MarioHitboxAboveObject",
                 ((uint objAddress) =>
@@ -963,11 +966,13 @@ namespace STROOP.Structs
                     PositionAngle objPos = PositionAngle.Obj(objAddress);
                     double distAway = hurtboxDistAway + mObjHurtboxRadius + objHurtboxRadius;
 
-                    (double newMarioX, double newMarioZ) =
-                        MoreMath.ExtrapolateLine2D(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
+                    PositionAngle marioPA = PositionAngle.Mario;
+                    PositionAngle marioObjPA = PositionAngle.MarioObj();
+                    PositionAngle objPA = PositionAngle.Obj(objAddress);
+
                     return BoolUtilities.Combine(
-                        marioPos.SetValues(x: newMarioX, z: newMarioZ),
-                        PositionAngle.MarioObj().SetValues(x: newMarioX, z: newMarioZ));
+                        PositionAngle.SetHDistance(objPA, marioPA, distAway),
+                        PositionAngle.SetHDistance(objPA, marioObjPA, distAway));
                 }
             ));
 
