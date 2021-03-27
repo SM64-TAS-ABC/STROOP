@@ -37,6 +37,8 @@ namespace STROOP.Managers
             BetweenExclusive,
             BetweenInclusive,
 
+            HasSensibleMagnitude,
+
             EverythingPasses,
         };
 
@@ -393,6 +395,8 @@ namespace STROOP.Managers
                     case ValueRelationship.BetweenInclusive:
                         if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
                         return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.HasSensibleMagnitude:
+                        return true;
                     case ValueRelationship.EverythingPasses:
                         return true;
                     default:
@@ -451,6 +455,8 @@ namespace STROOP.Managers
                     case ValueRelationship.BetweenInclusive:
                         if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
                         return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.HasSensibleMagnitude:
+                        return true;
                     case ValueRelationship.EverythingPasses:
                         return true;
                     default:
@@ -509,6 +515,8 @@ namespace STROOP.Managers
                     case ValueRelationship.BetweenInclusive:
                         if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
                         return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.HasSensibleMagnitude:
+                        return true;
                     case ValueRelationship.EverythingPasses:
                         return true;
                     default:
@@ -567,6 +575,8 @@ namespace STROOP.Managers
                     case ValueRelationship.BetweenInclusive:
                         if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
                         return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.HasSensibleMagnitude:
+                        return true;
                     case ValueRelationship.EverythingPasses:
                         return true;
                     default:
@@ -625,6 +635,8 @@ namespace STROOP.Managers
                     case ValueRelationship.BetweenInclusive:
                         if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
                         return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.HasSensibleMagnitude:
+                        return true;
                     case ValueRelationship.EverythingPasses:
                         return true;
                     default:
@@ -683,6 +695,8 @@ namespace STROOP.Managers
                     case ValueRelationship.BetweenInclusive:
                         if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
                         return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.HasSensibleMagnitude:
+                        return true;
                     case ValueRelationship.EverythingPasses:
                         return true;
                     default:
@@ -741,6 +755,8 @@ namespace STROOP.Managers
                     case ValueRelationship.BetweenInclusive:
                         if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
                         return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.HasSensibleMagnitude:
+                        return HasSensibleMagnitude(memoryValue.Value);
                     case ValueRelationship.EverythingPasses:
                         return true;
                     default:
@@ -799,6 +815,8 @@ namespace STROOP.Managers
                     case ValueRelationship.BetweenInclusive:
                         if (!searchValue1.HasValue || !searchValue2.HasValue) return false;
                         return searchValue1.Value <= memoryValue.Value && memoryValue.Value <= searchValue2.Value;
+                    case ValueRelationship.HasSensibleMagnitude:
+                        return HasSensibleMagnitude(memoryValue.Value);
                     case ValueRelationship.EverythingPasses:
                         return true;
                     default:
@@ -806,6 +824,12 @@ namespace STROOP.Managers
                 }
             }
             throw new ArgumentOutOfRangeException();
+        }
+
+        private static bool HasSensibleMagnitude(double value)
+        {
+            double abs = Math.Abs(value);
+            return abs > 1E-3 && abs < 1E6;
         }
     }
 }
