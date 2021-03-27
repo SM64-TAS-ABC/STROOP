@@ -930,10 +930,17 @@ namespace STROOP.Structs
                     float objHitboxBottom = objY - objHitboxDownOffset;
 
                     double newMarioY = objHitboxBottom - (mObjHitboxTop - mObjY) - hitboxDistBelow;
+                    double deltaY = newMarioY - objY;
+
+                    PositionAngle marioPA = PositionAngle.Mario;
+                    PositionAngle marioObjPA = PositionAngle.MarioObj();
+                    PositionAngle objPA = PositionAngle.Obj(objAddress);
+
                     return BoolUtilities.Combine(
-                        PositionAngle.Mario.SetY(newMarioY),
-                        PositionAngle.MarioObj().SetY(newMarioY));
-                }));
+                        PositionAngle.SetYDistance(objPA, marioPA, deltaY),
+                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY));
+                }
+            ));
 
             _dictionary.Add("MarioHitboxOverlapsObject",
                 ((uint objAddress) =>
@@ -1053,9 +1060,15 @@ namespace STROOP.Structs
                     float objHurtboxBottom = objY - objHitboxDownOffset;
 
                     double newMarioY = objHurtboxBottom - (mObjHurtboxTop - mObjY) - hurtboxDistBelow;
+                    double deltaY = newMarioY - objY;
+
+                    PositionAngle marioPA = PositionAngle.Mario;
+                    PositionAngle marioObjPA = PositionAngle.MarioObj();
+                    PositionAngle objPA = PositionAngle.Obj(objAddress);
+
                     return BoolUtilities.Combine(
-                        PositionAngle.Mario.SetY(newMarioY),
-                        PositionAngle.MarioObj().SetY(newMarioY));
+                        PositionAngle.SetYDistance(objPA, marioPA, deltaY),
+                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY));
                 }
             ));
 
