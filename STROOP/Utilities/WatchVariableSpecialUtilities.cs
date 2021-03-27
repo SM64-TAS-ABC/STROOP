@@ -888,9 +888,15 @@ namespace STROOP.Structs
                     float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
 
                     double newMarioY = objHitboxTop + mObjHitboxDownOffset + hitboxDistAbove;
+                    double deltaY = newMarioY - objY;
+
+                    PositionAngle marioPA = PositionAngle.Mario;
+                    PositionAngle marioObjPA = PositionAngle.MarioObj();
+                    PositionAngle objPA = PositionAngle.Obj(objAddress);
+
                     return BoolUtilities.Combine(
-                        PositionAngle.Mario.SetY(newMarioY),
-                        PositionAngle.MarioObj().SetY(newMarioY));
+                        PositionAngle.SetYDistance(objPA, marioPA, deltaY),
+                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY));
                 }));
 
             _dictionary.Add("MarioHitboxBelowObject",
@@ -1004,9 +1010,15 @@ namespace STROOP.Structs
                     float objHurtboxTop = objY + objHurtboxHeight - objHitboxDownOffset;
 
                     double newMarioY = objHurtboxTop + mObjHitboxDownOffset + hurtboxDistAbove;
+                    double deltaY = newMarioY - objY;
+
+                    PositionAngle marioPA = PositionAngle.Mario;
+                    PositionAngle marioObjPA = PositionAngle.MarioObj();
+                    PositionAngle objPA = PositionAngle.Obj(objAddress);
+
                     return BoolUtilities.Combine(
-                        PositionAngle.Mario.SetY(newMarioY),
-                        PositionAngle.MarioObj().SetY(newMarioY));
+                        PositionAngle.SetYDistance(objPA, marioPA, deltaY),
+                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY));
                 }
             ));
 
