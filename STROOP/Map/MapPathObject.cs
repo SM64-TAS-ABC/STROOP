@@ -24,6 +24,7 @@ namespace STROOP.Map
         private List<uint> _skippedKeys;
         private bool _useBlending;
         private bool _isPaused;
+        private bool _useValueAtStartOfGlobalTimer;
         private uint _highestGlobalTimerValue;
         private int _modulo;
         private Image _image;
@@ -33,6 +34,7 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemResetPathOnLevelChange;
         private ToolStripMenuItem _itemUseBlending;
         private ToolStripMenuItem _itemPause;
+        private ToolStripMenuItem _itemUseValueAtStartOfGlobalTimer;
         private ToolStripMenuItem _itemSetModulo;
         private ToolStripMenuItem _itemSetIconSize;
 
@@ -50,6 +52,7 @@ namespace STROOP.Map
             _skippedKeys = new List<uint>();
             _useBlending = true;
             _isPaused = false;
+            _useValueAtStartOfGlobalTimer = true;
             _highestGlobalTimerValue = 0;
             _modulo = 1;
             _image = null;
@@ -351,7 +354,7 @@ namespace STROOP.Map
                     }
                 }
 
-                if (!_dictionary.ContainsKey(globalTimer))
+                if (!_useValueAtStartOfGlobalTimer || !_dictionary.ContainsKey(globalTimer))
                 {
                     if (_numSkips > 0)
                     {
@@ -420,6 +423,16 @@ namespace STROOP.Map
                 };
                 _itemPause.Checked = _isPaused;
 
+                _itemUseValueAtStartOfGlobalTimer = new ToolStripMenuItem("Use Value at Start of Global Timer");
+                _itemUseValueAtStartOfGlobalTimer.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        pathChangeUseValueAtStartOfGlobalTimer: true,
+                        pathNewUseValueAtStartOfGlobalTimer: !_useValueAtStartOfGlobalTimer);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemUseValueAtStartOfGlobalTimer.Checked = _useValueAtStartOfGlobalTimer;
+
                 string suffix1 = string.Format(" ({0})", _modulo);
                 _itemSetModulo = new ToolStripMenuItem(SET_MODULO_TEXT + suffix1);
                 _itemSetModulo.Click += (sender, e) =>
@@ -463,6 +476,7 @@ namespace STROOP.Map
                 _contextMenuStrip.Items.Add(_itemResetPathOnLevelChange);
                 _contextMenuStrip.Items.Add(_itemUseBlending);
                 _contextMenuStrip.Items.Add(_itemPause);
+                _contextMenuStrip.Items.Add(_itemUseValueAtStartOfGlobalTimer);
                 _contextMenuStrip.Items.Add(_itemSetModulo);
                 _contextMenuStrip.Items.Add(_itemSetIconSize);
                 _contextMenuStrip.Items.Add(itemCopyPoints);
@@ -497,6 +511,12 @@ namespace STROOP.Map
             {
                 _isPaused = settings.PathNewPaused;
                 _itemPause.Checked = _isPaused;
+            }
+
+            if (settings.PathChangeUseValueAtStartOfGlobalTimer)
+            {
+                _useValueAtStartOfGlobalTimer = settings.PathNewUseValueAtStartOfGlobalTimer;
+                _itemUseValueAtStartOfGlobalTimer.Checked = _useValueAtStartOfGlobalTimer;
             }
 
             if (settings.PathChangeModulo)

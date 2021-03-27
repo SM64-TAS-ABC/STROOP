@@ -65,6 +65,9 @@
         public readonly bool PathChangePaused;
         public readonly bool PathNewPaused;
 
+        public readonly bool PathChangeUseValueAtStartOfGlobalTimer;
+        public readonly bool PathNewUseValueAtStartOfGlobalTimer;
+
         public readonly bool PathChangeModulo;
         public readonly int PathNewModulo;
 
@@ -144,6 +147,9 @@
             bool pathChangePaused = false,
             bool pathNewPaused = false,
 
+            bool pathChangeUseValueAtStartOfGlobalTimer = false,
+            bool pathNewUseValueAtStartOfGlobalTimer = false,
+
             bool pathChangeModulo = false,
             int pathNewModulo = 0,
 
@@ -221,6 +227,9 @@
 
             PathChangePaused = pathChangePaused;
             PathNewPaused = pathNewPaused;
+
+            PathChangeUseValueAtStartOfGlobalTimer = pathChangeUseValueAtStartOfGlobalTimer;
+            PathNewUseValueAtStartOfGlobalTimer = pathNewUseValueAtStartOfGlobalTimer;
 
             PathChangeModulo = pathChangeModulo;
             PathNewModulo = pathNewModulo;
