@@ -3138,8 +3138,7 @@ namespace STROOP.Structs
                     PositionAngle selfPos = PositionAngle.Self;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
                     double newSelfY = distAbove - (selfPos.X * triStruct.NormX + selfPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
-                    selfPos.SetY(newSelfY);
-                    return true;
+                    return selfPos.SetY(newSelfY);
                 }
             ));
 
