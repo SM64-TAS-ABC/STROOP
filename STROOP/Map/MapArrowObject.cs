@@ -16,10 +16,12 @@ namespace STROOP.Map
     public abstract class MapArrowObject : MapLineObject
     {
         private bool _useRecommendedArrowLength;
+        private bool _useTruncatedAngle;
         private float _arrowHeadSideLength;
         private float _angleOffset;
 
         private ToolStripMenuItem _itemUseSpeedForArrowLength;
+        private ToolStripMenuItem _itemUseTruncatedAngle;
         private ToolStripMenuItem _itemSetArrowHeadSideLength;
         private ToolStripMenuItem _itemSetAngleOffset;
 
@@ -30,6 +32,7 @@ namespace STROOP.Map
             : base()
         {
             _useRecommendedArrowLength = false;
+            _useTruncatedAngle = true;
             _arrowHeadSideLength = 100;
             _angleOffset = 0;
 
@@ -44,7 +47,8 @@ namespace STROOP.Map
             float x = (float)posAngle.X;
             float y = (float)posAngle.Y;
             float z = (float)posAngle.Z;
-            float yaw = (float)GetYaw() + _angleOffset;
+            float preYaw = (float)GetYaw() + _angleOffset;
+            float yaw = _useTruncatedAngle ? MoreMath.NormalizeAngleTruncated(preYaw) : preYaw;
             float size = _useRecommendedArrowLength ? (float)GetRecommendedSize() : Size;
             (float arrowHeadX, float arrowHeadZ) =
                 ((float, float))MoreMath.AddVectorToPoint(size, yaw, x, z);
@@ -91,6 +95,16 @@ namespace STROOP.Map
                 };
                 _itemUseSpeedForArrowLength.Checked = _useRecommendedArrowLength;
 
+                _itemUseTruncatedAngle = new ToolStripMenuItem("Use Truncated Angle");
+                _itemUseTruncatedAngle.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        arrowChangeUseTruncatedAngle: true,
+                        arrowNewUseTruncatedAngle: !_useTruncatedAngle);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemUseTruncatedAngle.Checked = _useTruncatedAngle;
+
                 string suffix1 = string.Format(" ({0})", _arrowHeadSideLength);
                 _itemSetArrowHeadSideLength = new ToolStripMenuItem(SET_ARROW_HEAD_SIDE_LENGTH_TEXT + suffix1);
                 _itemSetArrowHeadSideLength.Click += (sender, e) =>
@@ -117,6 +131,7 @@ namespace STROOP.Map
 
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(_itemUseSpeedForArrowLength);
+                _contextMenuStrip.Items.Add(_itemUseTruncatedAngle);
                 _contextMenuStrip.Items.Add(_itemSetArrowHeadSideLength);
                 _contextMenuStrip.Items.Add(_itemSetAngleOffset);
             }
@@ -132,6 +147,12 @@ namespace STROOP.Map
             {
                 _useRecommendedArrowLength = settings.ArrowNewUseRecommendedLength;
                 _itemUseSpeedForArrowLength.Checked = _useRecommendedArrowLength;
+            }
+
+            if (settings.ArrowChangeUseTruncatedAngle)
+            {
+                _useTruncatedAngle = settings.ArrowNewUseTruncatedAngle;
+                _itemUseTruncatedAngle.Checked = _useTruncatedAngle;
             }
 
             if (settings.ArrowChangeHeadSideLength)

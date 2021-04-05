@@ -41,6 +41,9 @@
         public readonly bool ArrowChangeUseRecommendedLength;
         public readonly bool ArrowNewUseRecommendedLength;
 
+        public readonly bool ArrowChangeUseTruncatedAngle;
+        public readonly bool ArrowNewUseTruncatedAngle;
+
         public readonly bool ArrowChangeHeadSideLength;
         public readonly float ArrowNewHeadSideLength;
 
@@ -123,6 +126,9 @@
             bool arrowChangeUseRecommendedLength = false,
             bool arrowNewUseRecommendedLength = false,
 
+            bool arrowChangeUseTruncatedAngle = false,
+            bool arrowNewUseTruncatedAngle = false,
+
             bool arrowChangeHeadSideLength = false,
             float arrowNewHeadSideLength = 0,
 
@@ -203,6 +209,9 @@
 
             ArrowChangeUseRecommendedLength = arrowChangeUseRecommendedLength;
             ArrowNewUseRecommendedLength = arrowNewUseRecommendedLength;
+
+            ArrowChangeUseTruncatedAngle = arrowChangeUseTruncatedAngle;
+            ArrowNewUseTruncatedAngle = arrowNewUseTruncatedAngle;
 
             ArrowChangeHeadSideLength = arrowChangeHeadSideLength;
             ArrowNewHeadSideLength = arrowNewHeadSideLength;
