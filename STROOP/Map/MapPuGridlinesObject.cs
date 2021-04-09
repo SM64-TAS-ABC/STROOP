@@ -37,20 +37,20 @@ namespace STROOP.Map
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-                        int spacing = (int)(65536 * Size);
+                        long spacing = (int)(65536 * Size);
 
-                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing;
-                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing;
-                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing;
-                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing;
+                        long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing;
+                        long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing;
+                        long zMin = ((((long)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing;
+                        long zMax = ((((long)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing;
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                        for (int x = xMin; x <= xMax; x += spacing)
+                        for (long x = xMin; x <= xMax; x += spacing)
                         {
                             vertices.Add((x, marioY, zMin));
                             vertices.Add((x, marioY, zMax));
                         }
-                        for (int z = zMin; z <= zMax; z += spacing)
+                        for (long z = zMin; z <= zMax; z += spacing)
                         {
                             vertices.Add((xMin, marioY, z));
                             vertices.Add((xMax, marioY, z));
