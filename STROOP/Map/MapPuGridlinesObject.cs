@@ -37,7 +37,7 @@ namespace STROOP.Map
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-                        long spacing = (int)(65536 * Size);
+                        long spacing = (long)(65536 * Size);
 
                         long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing;
                         long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing;
