@@ -29,10 +29,12 @@ namespace STROOP.Map
 
         protected override List<(PointF loc, SizeF size)> GetDimensions()
         {
-            RectangleF rectangle = GetMapLayout().Coordinates;
+            MapLayout mapLayout = GetMapLayout();
+            RectangleF rectangle = mapLayout.Coordinates;
             float rectangleCenterX = rectangle.X + rectangle.Width / 2;
             float rectangleCenterZ = rectangle.Y + rectangle.Height / 2;
-            List<(float x, float z)> rectangleCenters = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ?
+            List<(float x, float z)> rectangleCenters =
+                Config.MapGui.checkBoxMapOptionsEnablePuView.Checked && mapLayout.Id != "000" ?
                 MapUtilities.GetPuCoordinates(rectangleCenterX, rectangleCenterZ) :
                 new List<(float x, float z)>() { (rectangleCenterX, rectangleCenterZ) };
             List<(float x, float z)> controlCenters = rectangleCenters.ConvertAll(
