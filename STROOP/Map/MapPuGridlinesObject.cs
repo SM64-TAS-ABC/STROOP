@@ -22,6 +22,7 @@ namespace STROOP.Map
         public MapPuGridlinesObject()
             : base()
         {
+            Size = 1;
             OutlineWidth = 1;
             OutlineColor = Color.Black;
 
@@ -36,18 +37,20 @@ namespace STROOP.Map
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536;
-                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536;
-                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / 65536) - 1) * 65536;
-                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / 65536) + 1) * 65536;
+                        int spacing = (int)(65536 * Size);
+
+                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing;
+                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing;
+                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing;
+                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing;
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                        for (int x = xMin; x <= xMax; x += 65536)
+                        for (int x = xMin; x <= xMax; x += spacing)
                         {
                             vertices.Add((x, marioY, zMin));
                             vertices.Add((x, marioY, zMax));
                         }
-                        for (int z = zMin; z <= zMax; z += 65536)
+                        for (int z = zMin; z <= zMax; z += spacing)
                         {
                             vertices.Add((xMin, marioY, z));
                             vertices.Add((xMax, marioY, z));
