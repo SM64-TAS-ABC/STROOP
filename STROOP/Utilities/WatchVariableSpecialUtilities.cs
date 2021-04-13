@@ -2287,6 +2287,19 @@ namespace STROOP.Structs
                     return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                 }));
 
+            _dictionary.Add("SidewaysSpeed",
+                ((uint dummy) =>
+                {
+                    float xSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XSpeedOffset);
+                    float zSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZSpeedOffset);
+                    double speedMagnitude = MoreMath.GetHypotenuse(xSpeed, zSpeed);
+                    double speedAngle = MoreMath.AngleTo_AngleUnits(xSpeed, zSpeed);
+                    ushort angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    (double sidewaysDist, double forwardsDist) = MoreMath.GetComponentsFromVectorRelatively(speedMagnitude, speedAngle, angle);
+                    return sidewaysDist;
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("SlidingSpeed",
                 ((uint dummy) =>
                 {
