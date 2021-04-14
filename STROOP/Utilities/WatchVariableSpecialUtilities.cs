@@ -352,26 +352,45 @@ namespace STROOP.Structs
 
         public static string AddDummyEntry(string typeString)
         {
-            int index = SpecialConfig.DummyValues.Count;
-            Type type = TypeUtilities.StringToType[typeString];
-            SpecialConfig.DummyValues.Add(ParsingUtilities.ParseValueRoundingWrapping(0, type));
-            string specialType = "Dummy" + index + StringUtilities.Capitalize(typeString);
-
-            _dictionary.Add(specialType,
-                ((uint dummy) =>
-                {
-                    return SpecialConfig.DummyValues[index];
-                },
-                (double value, uint dummy) =>
-                {
-                    object o = ParsingUtilities.ParseValueRoundingWrapping(value, type);
-                    if (o == null) return false;
-                    SpecialConfig.DummyValues[index] = o;
-                    return true;
-                }
-            ));
-
-            return specialType;
+            if (typeString == "string")
+            {
+                int index = SpecialConfig.DummyValues.Count;
+                SpecialConfig.DummyValues.Add("value");
+                string specialType = "Dummy" + index + StringUtilities.Capitalize(typeString);
+                _dictionary.Add(specialType,
+                    ((uint dummy) =>
+                    {
+                        return SpecialConfig.DummyValues[index] as string;
+                    },
+                    (string value, uint dummy) =>
+                    {
+                        SpecialConfig.DummyValues[index] = value;
+                        return true;
+                    }
+                ));
+                return specialType;
+            }
+            else
+            {
+                int index = SpecialConfig.DummyValues.Count;
+                Type type = TypeUtilities.StringToType[typeString];
+                SpecialConfig.DummyValues.Add(ParsingUtilities.ParseValueRoundingWrapping(0, type));
+                string specialType = "Dummy" + index + StringUtilities.Capitalize(typeString);
+                _dictionary.Add(specialType,
+                    ((uint dummy) =>
+                    {
+                        return SpecialConfig.DummyValues[index];
+                    },
+                    (double value, uint dummy) =>
+                    {
+                        object o = ParsingUtilities.ParseValueRoundingWrapping(value, type);
+                        if (o == null) return false;
+                        SpecialConfig.DummyValues[index] = o;
+                        return true;
+                    }
+                ));
+                return specialType;
+            }
         }
 
         public static string AddSchedulerEntry(int index)

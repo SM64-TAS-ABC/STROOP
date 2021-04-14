@@ -130,7 +130,9 @@ namespace STROOP.Controls
             addMappingVariablesItem.Click += (sender, e) => AddVariables(MappingConfig.GetVariables());
 
             ToolStripMenuItem addDummyVariableItem = new ToolStripMenuItem("Add Dummy Variable...");
-            foreach (string typeString in TypeUtilities.InGameTypeList)
+            List<string> types = new List<string>(TypeUtilities.InGameTypeList);
+            types.Add("string");
+            foreach (string typeString in types)
             {
                 ToolStripMenuItem typeItem = new ToolStripMenuItem(typeString);
                 addDummyVariableItem.DropDownItems.Add(typeItem);
@@ -167,7 +169,7 @@ namespace STROOP.Controls
                             new WatchVariableControlPrecursor(
                                 name: specialType,
                                 watchVar: watchVariable,
-                                subclass: WatchVariableSubclass.Number,
+                                subclass: typeString == "string" ? WatchVariableSubclass.String : WatchVariableSubclass.Number,
                                 backgroundColor: null,
                                 displayType: null,
                                 roundingLimit: null,
