@@ -682,6 +682,24 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemCoffinBox = new ToolStripMenuItem("Add Tracker for Coffin Box");
+            itemCoffinBox.Click += (sender, e) =>
+            {
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObject()) return null;
+                    return (MapObject)new MapCoffinBoxObject(posAngle.GetObjAddress());
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                MapTracker tracker = new MapTracker(newMapObjs);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
+            ToolStripMenuItem itemObjectSpecific = new ToolStripMenuItem("Add Tracker for Object Specific...");
+            itemObjectSpecific.DropDownItems.Add(itemCoffinBox);
+
             pictureBoxPlus.ContextMenuStrip = new ContextMenuStrip();
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemHitboxCylinder);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemEffectiveHitboxCylinder);
@@ -710,6 +728,8 @@ namespace STROOP.Map
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemHomeLine);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemPath);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemBranchPath);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemObjectSpecific);
             pictureBoxPlus.Click += (sender, e) => pictureBoxPlus.ContextMenuStrip.Show(Cursor.Position);
         }
 
