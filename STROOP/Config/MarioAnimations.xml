@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MarioAnimations>
-  <Animation value="-1" name="nonexistant"/>
+  <Animation value="-1" name="nonexistent"/>
   <Animation value="0" name="slow ledge get up"/>
   <Animation value="1" name="hard backward knockback"/>
   <Animation value="2" name="backward air knockback"/>
