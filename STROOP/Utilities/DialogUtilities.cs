@@ -198,6 +198,14 @@ namespace STROOP.Structs
             return lines;
         }
 
+        public static string ReadFile(string filePath)
+        {
+            StreamReader file = new StreamReader(filePath);
+            string s = file.ReadToEnd();
+            file.Close();
+            return s;
+        }
+
         public static Image GetImage()
         {
             string directory = Directory.GetCurrentDirectory() + "\\Resources\\Maps\\Object Images";
