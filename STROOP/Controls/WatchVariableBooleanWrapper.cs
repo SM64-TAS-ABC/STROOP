@@ -67,7 +67,7 @@ namespace STROOP.Controls
             return boolValue != _displayAsInverted;
         }
 
-        protected override string GetClass()
+        public override string GetClass()
         {
             return "Boolean";
         }

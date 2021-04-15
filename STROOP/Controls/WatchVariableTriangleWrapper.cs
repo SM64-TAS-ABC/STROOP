@@ -39,7 +39,7 @@ namespace STROOP.Controls
             _contextMenuStrip.AddToBeginningList(itemSelectTriangle);
         }
 
-        protected override string GetClass()
+        public override string GetClass()
         {
             return "Triangle";
         }

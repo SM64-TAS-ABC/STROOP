@@ -48,11 +48,11 @@ namespace STROOP.Script
 
         public void Run()
         {
-            List<(string, object)> inputData = Config.ScriptManager.GetCurrentVariableNamesAndValues();
+            List<(string, object, string)> inputData = Config.ScriptManager.GetCurrentVariableInfo();
             List<string> inputItems = new List<string>();
-            foreach ((string name, object value) in inputData)
+            foreach ((string name, object value, string clazz) in inputData)
             {
-                string valueMark = value is string ? "\"" : "";
+                string valueMark = clazz == "String" ? "\"" : "";
                 inputItems.Add("\"" + name + "\":" + valueMark + value + valueMark);
             }
             string beforeLine = "var INPUT = {" + string.Join(",", inputItems) + "}; var OUTPUT = {};";

@@ -289,7 +289,7 @@ namespace STROOP.Controls
             }
         }
 
-        protected override string GetClass()
+        public override string GetClass()
         {
             return "Angle";
         }

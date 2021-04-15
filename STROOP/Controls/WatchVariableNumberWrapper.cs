@@ -155,7 +155,7 @@ namespace STROOP.Controls
                 throw new ArgumentOutOfRangeException(value + " is not a number");
         }
 
-        protected override string GetClass()
+        public override string GetClass()
         {
             return "Number";
         }

@@ -52,7 +52,7 @@ namespace STROOP.Controls
             _contextMenuStrip.AddToBeginningList(itemSelectObject);
         }
 
-        protected override string GetClass()
+        public override string GetClass()
         {
             return "Object";
         }
