@@ -77,7 +77,7 @@ namespace STROOP.Script
                 {
                     string line = lines[i].Trim();
                     List<string> parts = line.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).ToList();
-                    if (parts[0] == LOAD_FILE_KEY_WORD)
+                    if (parts.Count > 0 && parts[0] == LOAD_FILE_KEY_WORD)
                     {
                         int keyWordIndex = line.IndexOf(LOAD_FILE_KEY_WORD);
                         string filePath = line.Substring(keyWordIndex + LOAD_FILE_KEY_WORD.Length).Trim();
