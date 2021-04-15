@@ -72,10 +72,10 @@ namespace STROOP.Script
         {
             try
             {
-                List<string> lines = text.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList();
+                List<string> lines = text.Split(new string[] { "\n" }, StringSplitOptions.None).ToList();
                 for (int i = 0; i < lines.Count; i++)
                 {
-                    string line = lines[i];
+                    string line = lines[i].Trim();
                     List<string> parts = line.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries).ToList();
                     if (parts[0] == LOAD_FILE_KEY_WORD)
                     {
