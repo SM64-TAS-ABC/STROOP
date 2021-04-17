@@ -99,6 +99,8 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
+            GetContextMenuStrip(); // avoids NPE
+
             if (settings.CustomCylinderChangeRelativeMinY)
             {
                 _relativeMinY = settings.CustomCylinderNewRelativeMinY;

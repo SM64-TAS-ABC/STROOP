@@ -697,8 +697,45 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemChuckyaMapObjects = new ToolStripMenuItem("Add Trackers for Chuckya Map Objects");
+            itemChuckyaMapObjects.Click += (sender, e) =>
+            {
+                foreach (MapObject mapObj in _mapObjectList)
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (!posAngle.IsObject()) continue;
+                    uint address = posAngle.GetObjAddress();
+                    PositionAngle chuckyaPosAngle = PositionAngle.Obj(address);
+                    PositionAngle homePosAngle = PositionAngle.ObjHome(address);
+
+                    MapObject mapObjHome = new MapHomeObject(address);
+                    MapObject mapObjFacingArrow = new MapObjectFacingArrowObject(chuckyaPosAngle);
+                    MapObject mapObjSector = new MapSectorObject(chuckyaPosAngle);
+                    MapObject mapObjFacingDivider = new MapFacingDividerObject(chuckyaPosAngle);
+                    MapObject mapObjSphere = new MapCustomSphereObject(chuckyaPosAngle);
+                    MapObject mapObjCylinder = new MapCustomCylinderObject(homePosAngle);
+
+                    mapObjFacingArrow.OutlineColor = Color.Green;
+                    mapObjFacingArrow.Size = 3000;
+                    mapObjSector.Size = 3000;
+                    mapObjFacingDivider.Size = 3000;
+                    mapObjSphere.Size = 4000;
+                    mapObjCylinder.Color = Color.Cyan;
+                    mapObjCylinder.Size = 1900;
+                    mapObjCylinder.ApplySettings(new MapObjectSettings(customCylinderChangeRelativeMinY: true, customCylinderNewRelativeMinY: -5000));
+
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjHome));
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjFacingArrow));
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjSector));
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjFacingDivider));
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjSphere));
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjCylinder));
+                }
+            };
+
             ToolStripMenuItem itemObjectSpecific = new ToolStripMenuItem("Add Tracker for Object Specific...");
             itemObjectSpecific.DropDownItems.Add(itemCoffinBox);
+            itemObjectSpecific.DropDownItems.Add(itemChuckyaMapObjects);
 
             pictureBoxPlus.ContextMenuStrip = new ContextMenuStrip();
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemHitboxCylinder);
