@@ -73,6 +73,11 @@ namespace STROOP.Managers
             }
             _buttonScriptExamples.Click += (sender, e) =>
                 _buttonScriptExamples.ContextMenuStrip.Show(Cursor.Position);
+
+            ToolStripMenuItem itemClearConsole = new ToolStripMenuItem("Clear Console");
+            itemClearConsole.Click += (sender, e) => _richTextBoxConsole.Clear();
+            _richTextBoxConsole.ContextMenuStrip = new ContextMenuStrip();
+            _richTextBoxConsole.ContextMenuStrip.Items.Add(itemClearConsole);
         }
 
         public override void Update(bool updateView)
