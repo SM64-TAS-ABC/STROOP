@@ -38,15 +38,16 @@ namespace STROOP.Script
             _isEnabled = isEnabled;
         }
 
-        public void Update()
+        public List<string> Update()
         {
             if (_isEnabled)
             {
-                Run();
+                return Run();
             }
+            return new List<string>();
         }
 
-        public void Run()
+        public List<string> Run()
         {
             List<(string, object, string)> inputData = Config.ScriptManager.GetCurrentVariableInfo();
             List<string> inputItems = new List<string>();
@@ -55,17 +56,28 @@ namespace STROOP.Script
                 string valueMark = clazz == "String" ? "\"" : "";
                 inputItems.Add("\"" + name + "\":" + valueMark + value + valueMark);
             }
-            string beforeLine = "var INPUT = {" + string.Join(",", inputItems) + "}; var OUTPUT = {};";
-            string afterLine = @"var OUTPUT_STRING = """"; for (var OUTPUT_STRING_NAME in OUTPUT) OUTPUT_STRING += OUTPUT_STRING_NAME + ""\r\n"" + OUTPUT[OUTPUT_STRING_NAME] + ""\r\n""; OUTPUT_STRING";
+            string beforeLine = "var INPUT = {" + string.Join(",", inputItems) + "}; var OUTPUT = {}; var CONSOLE = [];";
+            string afterLine1 = @"var OUTPUT_STRING = """"; for (var OUTPUT_STRING_NAME in OUTPUT) OUTPUT_STRING += OUTPUT_STRING_NAME + ""\r\n"" + OUTPUT[OUTPUT_STRING_NAME] + ""\r\n"";";
+            string afterLine2 = @"var CONSOLE_STRING = """"; for (var CONSOLE_INDEX in CONSOLE) CONSOLE_STRING += CONSOLE[CONSOLE_INDEX] + ""\r\n"";";
+            string afterLine3 = @"OUTPUT_STRING + ""\0"" + CONSOLE_STRING";
             string text = PreProcess(_text);
-            string result = GetEngine().Eval(beforeLine + "\r\n" + text + "\r\n" + afterLine)?.ToString() ?? "";
-            List<string> outputItems = result.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            string result = GetEngine().Eval(beforeLine + "\r\n" + text + "\r\n" + afterLine1 + "\r\n" + afterLine2 + "\r\n" + afterLine3)?.ToString() ?? "";
+
+            int index = result.IndexOf("\0");
+            if (index == -1) return new List<string>();
+            string outputString = result.Substring(0, index);
+            string conosleString = result.Substring(index + 1);
+
+            List<string> outputItems = outputString.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             for (int i = 0; i < outputItems.Count - 1; i += 2)
             {
                 string name = outputItems[i];
                 string value = outputItems[i + 1];
                 Config.ScriptManager.SetVariableValueByName(name, value);
             }
+
+            List<string> consoleItems = conosleString.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            return consoleItems;
         }
 
         private string PreProcess(string text)

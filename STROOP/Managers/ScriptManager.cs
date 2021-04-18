@@ -52,7 +52,7 @@ namespace STROOP.Managers
             _buttonScriptRunOnce.Click += (sender, e) =>
             {
                 _script.SetScript(_richTextBoxScript.Text);
-                _script.Run();
+                UpdateConsole(_script.Run());
             };
 
             _buttonScriptInstructions.Click += (sender, e) =>
@@ -77,11 +77,19 @@ namespace STROOP.Managers
 
         public override void Update(bool updateView)
         {
-            _script.Update();
+            UpdateConsole(_script.Update());
 
             if (!updateView) return;
 
             base.Update(updateView);
+        }
+
+        private void UpdateConsole(List<string> consoleItems)
+        {
+            foreach (string consoleItem in consoleItems)
+            {
+                _richTextBoxConsole.AppendText(consoleItem + "\r\n");
+            }
         }
 
         private readonly List<string> _instructions = new List<string>()
