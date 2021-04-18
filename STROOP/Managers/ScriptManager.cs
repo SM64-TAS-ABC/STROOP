@@ -20,6 +20,7 @@ namespace STROOP.Managers
         private readonly Button _buttonScriptInstructions;
         private readonly Button _buttonScriptExamples;
         private readonly RichTextBoxEx _richTextBoxScript;
+        private readonly RichTextBoxEx _richTextBoxConsole;
 
         private readonly TokenScript _script;
 
@@ -32,7 +33,9 @@ namespace STROOP.Managers
             _buttonScriptRunOnce = splitContainerLeft.Panel1.Controls["buttonScriptRunOnce"] as Button;
             _buttonScriptInstructions = splitContainerLeft.Panel1.Controls["buttonScriptInstructions"] as Button;
             _buttonScriptExamples = splitContainerLeft.Panel1.Controls["buttonScriptExamples"] as Button;
-            _richTextBoxScript = splitContainerLeft.Panel2.Controls["richTextBoxScript"] as RichTextBoxEx;
+            SplitContainer splitContainerLeft2 = splitContainerLeft.Panel2.Controls["splitContainerScriptLeft2"] as SplitContainer;
+            _richTextBoxScript = splitContainerLeft2.Panel1.Controls["richTextBoxScript"] as RichTextBoxEx;
+            _richTextBoxConsole = splitContainerLeft2.Panel2.Controls["richTextBoxConsole"] as RichTextBoxEx;
 
             _script = new TokenScript();
 
