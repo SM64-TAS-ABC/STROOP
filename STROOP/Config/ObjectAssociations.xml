@@ -1390,6 +1390,9 @@
   <Object behaviorScriptAddress="0x13001B88" name="Checkered Elevator">
     <SpawnCode gfxId="0xCA"/>
     <Image path="Checkered Elevator.png"/>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Sub-Action</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Vertical Time</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1AC" base="Object">Rotate Speed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001BB4" name="Bowser Key (Opening Door)">
     <SpawnCode gfxId="0xCC"/>
