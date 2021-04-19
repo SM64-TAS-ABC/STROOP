@@ -357,6 +357,7 @@ namespace STROOP.Controls
             bool isPKeyHeld = Keyboard.IsKeyDown(Key.P);
             bool isXKeyHeld = Keyboard.IsKeyDown(Key.X);
             bool isSKeyHeld = Keyboard.IsKeyDown(Key.S);
+            bool isIKeyHeld = Keyboard.IsKeyDown(Key.I);
             bool isDeletishKeyHeld = KeyboardUtilities.IsDeletishKeyHeld();
             bool isBacktickHeld = Keyboard.IsKeyDown(Key.OemTilde);
             bool isZHeld = Keyboard.IsKeyDown(Key.Z);
@@ -378,6 +379,11 @@ namespace STROOP.Controls
             {
                 _watchVariablePanel.UnselectAllVariables();
                 AddToTab(Config.TasManager);
+            }
+            else if (isIKeyHeld)
+            {
+                _watchVariablePanel.UnselectAllVariables();
+                AddToTab(Config.ScriptManager);
             }
             else if (isMKeyHeld)
             {
