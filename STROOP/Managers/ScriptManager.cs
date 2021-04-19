@@ -22,6 +22,7 @@ namespace STROOP.Managers
         private readonly RichTextBoxEx _richTextBoxScript;
         private readonly RichTextBoxEx _richTextBoxConsole;
 
+        private readonly List<string> _consoleStrings;
         private readonly TokenScript _script;
 
         public ScriptManager(string varFilePath, TabPage tabPage, WatchVariableFlowLayoutPanel watchVariablePanel)
@@ -37,22 +38,17 @@ namespace STROOP.Managers
             _richTextBoxScript = splitContainerLeft2.Panel1.Controls["richTextBoxScript"] as RichTextBoxEx;
             _richTextBoxConsole = splitContainerLeft2.Panel2.Controls["richTextBoxConsole"] as RichTextBoxEx;
 
-            _script = new TokenScript();
+            _consoleStrings = new List<string>();
+            _script = new TokenScript(_consoleStrings);
 
             _checkBoxScriptRunContinuously.Click += (sender, e) =>
             {
-                if (_checkBoxScriptRunContinuously.Checked)
-                {
-                    _script.SetScript(_richTextBoxScript.Text);
-                }
-                _script.SetIsEnabled(_checkBoxScriptRunContinuously.Checked);
                 _richTextBoxScript.ReadOnly = _checkBoxScriptRunContinuously.Checked;
             };
 
             _buttonScriptRunOnce.Click += (sender, e) =>
             {
-                _script.SetScript(_richTextBoxScript.Text);
-                UpdateConsole(_script.Run());
+                RunScript();
             };
 
             _buttonScriptInstructions.Click += (sender, e) =>
@@ -82,19 +78,20 @@ namespace STROOP.Managers
 
         public override void Update(bool updateView)
         {
-            UpdateConsole(_script.Update());
+            if (_checkBoxScriptRunContinuously.Checked)
+            {
+                RunScript();
+            }
 
-            if (!updateView) return;
+            if (!updateView && !_checkBoxScriptRunContinuously.Checked) return;
 
             base.Update(updateView);
         }
 
-        private void UpdateConsole(List<string> consoleItems)
+        private void RunScript()
         {
-            foreach (string consoleItem in consoleItems)
-            {
-                _richTextBoxConsole.AppendText(consoleItem + "\r\n");
-            }
+            _script.Run(_richTextBoxScript.Text);
+            _richTextBoxConsole.Text = string.Join("\r\n", _consoleStrings);
         }
 
         private readonly List<string> _instructions = new List<string>()

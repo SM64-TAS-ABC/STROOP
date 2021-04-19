@@ -20,34 +20,14 @@ namespace STROOP.Script
         private static readonly string LOAD_FILE_KEY_WORD = "LOADFILE";
 
         private ScriptEngine _engine;
+        private readonly List<string> _consoleStrings;
 
-        private bool _isEnabled = false;
-        private string _text = "";
-
-        public TokenScript()
+        public TokenScript(List<string> consoleStrings)
         {
+            _consoleStrings = consoleStrings;
         }
 
-        public void SetScript(string text)
-        {
-            _text = text;
-        }
-
-        public void SetIsEnabled(bool isEnabled)
-        {
-            _isEnabled = isEnabled;
-        }
-
-        public List<string> Update()
-        {
-            if (_isEnabled)
-            {
-                return Run();
-            }
-            return new List<string>();
-        }
-
-        public List<string> Run()
+        public void Run(string text)
         {
             List<(string, object, string)> inputData = Config.ScriptManager.GetCurrentVariableInfo();
             List<string> inputItems = new List<string>();
@@ -56,17 +36,22 @@ namespace STROOP.Script
                 string valueMark = clazz == "String" ? "\"" : "";
                 inputItems.Add("\"" + name + "\":" + valueMark + value + valueMark);
             }
-            string beforeLine = "var INPUT = {" + string.Join(",", inputItems) + "}; var OUTPUT = {}; var CONSOLE = [];";
+            List<string> consoleItems = new List<string>();
+            foreach (string s in _consoleStrings)
+            {
+                consoleItems.Add("\"" + s + "\"");
+            }
+            string beforeLine = "var INPUT = {" + string.Join(",", inputItems) + "}; var OUTPUT = {}; var CONSOLE = [" + string.Join(",", consoleItems) + "];";
             string afterLine1 = @"var OUTPUT_STRING = """"; for (var OUTPUT_STRING_NAME in OUTPUT) OUTPUT_STRING += OUTPUT_STRING_NAME + ""\r\n"" + OUTPUT[OUTPUT_STRING_NAME] + ""\r\n"";";
             string afterLine2 = @"var CONSOLE_STRING = """"; for (var CONSOLE_INDEX in CONSOLE) CONSOLE_STRING += CONSOLE[CONSOLE_INDEX] + ""\r\n"";";
             string afterLine3 = @"OUTPUT_STRING + ""\0"" + CONSOLE_STRING";
-            string text = PreProcess(_text);
-            string result = GetEngine().Eval(beforeLine + "\r\n" + text + "\r\n" + afterLine1 + "\r\n" + afterLine2 + "\r\n" + afterLine3)?.ToString() ?? "";
+            string processedText = PreProcess(text);
+            string result = GetEngine().Eval(beforeLine + "\r\n" + processedText + "\r\n" + afterLine1 + "\r\n" + afterLine2 + "\r\n" + afterLine3)?.ToString() ?? "";
 
             int index = result.IndexOf("\0");
-            if (index == -1) return new List<string>();
+            if (index == -1) return;
             string outputString = result.Substring(0, index);
-            string conosleString = result.Substring(index + 1);
+            string consoleString = result.Substring(index + 1);
 
             List<string> outputItems = outputString.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             for (int i = 0; i < outputItems.Count - 1; i += 2)
@@ -76,8 +61,9 @@ namespace STROOP.Script
                 Config.ScriptManager.SetVariableValueByName(name, value);
             }
 
-            List<string> consoleItems = conosleString.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            return consoleItems;
+            List<string> newConsoleStrings = consoleString.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            _consoleStrings.Clear();
+            _consoleStrings.AddRange(newConsoleStrings);
         }
 
         private string PreProcess(string text)
