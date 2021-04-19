@@ -71,7 +71,11 @@ namespace STROOP.Managers
                 _buttonScriptExamples.ContextMenuStrip.Show(Cursor.Position);
 
             ToolStripMenuItem itemClearConsole = new ToolStripMenuItem("Clear Console");
-            itemClearConsole.Click += (sender, e) => _richTextBoxConsole.Clear();
+            itemClearConsole.Click += (sender, e) =>
+            {
+                _consoleStrings.Clear();
+                _richTextBoxConsole.Clear();
+            };
             _richTextBoxConsole.ContextMenuStrip = new ContextMenuStrip();
             _richTextBoxConsole.ContextMenuStrip.Items.Add(itemClearConsole);
         }
