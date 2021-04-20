@@ -42,8 +42,8 @@ namespace STROOP.Script
                 consoleItems.Add("\"" + s + "\"");
             }
             string beforeLine = "var INPUT = {" + string.Join(",", inputItems) + "}; var OUTPUT = {}; var CONSOLE = [" + string.Join(",", consoleItems) + "];";
-            string afterLine1 = @"var OUTPUT_STRING = """"; for (var OUTPUT_STRING_NAME in OUTPUT) OUTPUT_STRING += OUTPUT_STRING_NAME + ""\r\n"" + OUTPUT[OUTPUT_STRING_NAME] + ""\r\n"";";
-            string afterLine2 = @"var CONSOLE_STRING = """"; for (var CONSOLE_INDEX = 0; CONSOLE_INDEX < CONSOLE.length; CONSOLE_INDEX++) CONSOLE_STRING += CONSOLE[CONSOLE_INDEX] + ""\r\n"";";
+            string afterLine1 = @"var OUTPUT_STRING = """"; for (var OUTPUT_STRING_NAME in OUTPUT) OUTPUT_STRING += (OUTPUT_STRING.length > 0 ? ""\r\n"" : """") + OUTPUT_STRING_NAME + ""\r\n"" + OUTPUT[OUTPUT_STRING_NAME];";
+            string afterLine2 = @"var CONSOLE_STRING = """"; for (var CONSOLE_INDEX = 0; CONSOLE_INDEX < CONSOLE.length; CONSOLE_INDEX++) CONSOLE_STRING += (CONSOLE_STRING.length > 0 ? ""\r\n"" : """") + CONSOLE[CONSOLE_INDEX];";
             string afterLine3 = @"OUTPUT_STRING + ""\0"" + CONSOLE_STRING";
             string processedText = PreProcess(text);
             string result = GetEngine().Eval(beforeLine + "\r\n" + processedText + "\r\n" + afterLine1 + "\r\n" + afterLine2 + "\r\n" + afterLine3)?.ToString() ?? "";
@@ -53,17 +53,23 @@ namespace STROOP.Script
             string outputString = result.Substring(0, index);
             string consoleString = result.Substring(index + 1);
 
-            List<string> outputItems = outputString.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            for (int i = 0; i < outputItems.Count - 1; i += 2)
+            if (outputString.Length > 0)
             {
-                string name = outputItems[i];
-                string value = outputItems[i + 1];
-                Config.ScriptManager.SetVariableValueByName(name, value);
+                List<string> outputItems = outputString.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList();
+                for (int i = 0; i < outputItems.Count - 1; i += 2)
+                {
+                    string name = outputItems[i];
+                    string value = outputItems[i + 1];
+                    Config.ScriptManager.SetVariableValueByName(name, value);
+                }
             }
 
-            List<string> newConsoleStrings = consoleString.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            _consoleStrings.Clear();
-            _consoleStrings.AddRange(newConsoleStrings);
+            if (consoleString.Length > 0)
+            {
+                List<string> newConsoleStrings = consoleString.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList();
+                _consoleStrings.Clear();
+                _consoleStrings.AddRange(newConsoleStrings);
+            }
         }
 
         private string PreProcess(string text)
