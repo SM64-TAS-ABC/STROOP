@@ -43,7 +43,7 @@ namespace STROOP.Script
             }
             string beforeLine = "var INPUT = {" + string.Join(",", inputItems) + "}; var OUTPUT = {}; var CONSOLE = [" + string.Join(",", consoleItems) + "];";
             string afterLine1 = @"var OUTPUT_STRING = """"; for (var OUTPUT_STRING_NAME in OUTPUT) OUTPUT_STRING += OUTPUT_STRING_NAME + ""\r\n"" + OUTPUT[OUTPUT_STRING_NAME] + ""\r\n"";";
-            string afterLine2 = @"var CONSOLE_STRING = """"; for (var CONSOLE_INDEX in CONSOLE) CONSOLE_STRING += CONSOLE[CONSOLE_INDEX] + ""\r\n"";";
+            string afterLine2 = @"var CONSOLE_STRING = """"; for (var CONSOLE_INDEX = 0; CONSOLE_INDEX < CONSOLE.length; CONSOLE_INDEX++) CONSOLE_STRING += CONSOLE[CONSOLE_INDEX] + ""\r\n"";";
             string afterLine3 = @"OUTPUT_STRING + ""\0"" + CONSOLE_STRING";
             string processedText = PreProcess(text);
             string result = GetEngine().Eval(beforeLine + "\r\n" + processedText + "\r\n" + afterLine1 + "\r\n" + afterLine2 + "\r\n" + afterLine3)?.ToString() ?? "";
