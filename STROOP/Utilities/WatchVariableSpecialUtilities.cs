@@ -361,6 +361,67 @@ namespace STROOP.Structs
             return specialType;
         }
 
+        private static int _numDereferencedEntries = 0;
+
+        public static string AddDereferencedEntry(WatchVariableControl control, string typeString, uint? offset)
+        {
+            string specialType = "Dereferenced" + _numDereferencedEntries;
+            _dictionary.Add(specialType,
+                ((uint dummy) =>
+                {
+                    uint address = ParsingUtilities.ParseUInt(control.GetValue(useRounding: false, handleFormatting: false)) + (offset ?? 0);
+                    switch (typeString)
+                    {
+                        case "byte":
+                            return Config.Stream.GetByte(address);
+                        case "sbyte":
+                            return Config.Stream.GetSByte(address);
+                        case "short":
+                            return Config.Stream.GetInt16(address);
+                        case "ushort":
+                            return Config.Stream.GetUInt16(address);
+                        case "int":
+                            return Config.Stream.GetInt32(address);
+                        case "uint":
+                            return Config.Stream.GetUInt32(address);
+                        case "float":
+                            return Config.Stream.GetSingle(address);
+                        case "double":
+                            return Config.Stream.GetDouble(address);
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                },
+                (object value, uint dummy) =>
+                {
+                    uint address = ParsingUtilities.ParseUInt(control.GetValue(useRounding: false, handleFormatting: false)) + (offset ?? 0);
+                    switch (typeString)
+                    {
+                        case "byte":
+                            return Config.Stream.SetValue(ParsingUtilities.ParseByte(value), address);
+                        case "sbyte":
+                            return Config.Stream.SetValue(ParsingUtilities.ParseSByte(value), address);
+                        case "short":
+                            return Config.Stream.SetValue(ParsingUtilities.ParseShort(value), address);
+                        case "ushort":
+                            return Config.Stream.SetValue(ParsingUtilities.ParseUShort(value), address);
+                        case "int":
+                            return Config.Stream.SetValue(ParsingUtilities.ParseInt(value), address);
+                        case "uint":
+                            return Config.Stream.SetValue(ParsingUtilities.ParseUInt(value), address);
+                        case "float":
+                            return Config.Stream.SetValue(ParsingUtilities.ParseFloat(value), address);
+                        case "double":
+                            return Config.Stream.SetValue(ParsingUtilities.ParseDouble(value), address);
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+            ));
+            _numDereferencedEntries++;
+            return specialType;
+        }
+
         public static string AddDummyEntry(string typeString)
         {
             if (typeString == "string")

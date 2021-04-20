@@ -293,7 +293,7 @@ namespace STROOP.Structs
                     panel.AddVariable(control);
                 }
             }
-            void createAggregateMathOperationVariable (AggregateMathOperation operation)
+            void createAggregateMathOperationVariable(AggregateMathOperation operation)
             {
                 List<WatchVariableControl> controls = getVars();
                 if (controls.Count == 0) return;
@@ -416,6 +416,63 @@ namespace STROOP.Structs
                     panel.AddVariable(control2);
                 }
             }
+            void createDereferencedVariable(string typeString)
+            {
+                List<WatchVariableControl> controls = getVars();
+                uint? offset = null;
+                if (KeyboardUtilities.IsCtrlHeld())
+                {
+                    string offsetString = DialogUtilities.GetStringFromDialog(labelText: "Enter Offset in Hex:");
+                    if (offsetString != null)
+                    {
+                        offset = ParsingUtilities.ParseHexNullable(offsetString);
+                    }
+                }
+                for (int i = 0; i < controls.Count; i++)
+                {
+                    WatchVariableControl control = controls[i];
+                    string specialType = WatchVariableSpecialUtilities.AddDereferencedEntry(control, typeString, offset);
+
+                    WatchVariable watchVariable =
+                        new WatchVariable(
+                            memoryTypeName: null,
+                            specialType: specialType,
+                            baseAddressType: BaseAddressTypeEnum.None,
+                            offsetUS: null,
+                            offsetJP: null,
+                            offsetSH: null,
+                            offsetEU: null,
+                            offsetDefault: null,
+                            mask: null,
+                            shift: null,
+                            handleMapping: true);
+                    WatchVariableControlPrecursor precursor =
+                        new WatchVariableControlPrecursor(
+                            name: string.Format("{0}{1} Deref", control.VarName, offset.HasValue ? " + " + HexUtilities.FormatValue(offset.Value) : ""),
+                            watchVar: watchVariable,
+                            subclass: WatchVariableSubclass.Number,
+                            backgroundColor: null,
+                            displayType: null,
+                            roundingLimit: null,
+                            useHex: null,
+                            invertBool: null,
+                            isYaw: null,
+                            coordinate: null,
+                            groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                    WatchVariableControl control2 = precursor.CreateWatchVariableControl();
+                    panel.AddVariable(control2);
+                }
+            }
+            ToolStripMenuItem itemAddDereferencedVariable = new ToolStripMenuItem("Dereferenced...");
+            foreach (string typeString in TypeUtilities.InGameTypeList)
+            {
+                ToolStripMenuItem typeItem = new ToolStripMenuItem(typeString);
+                itemAddDereferencedVariable.DropDownItems.Add(typeItem);
+                typeItem.Click += (sender, e) =>
+                {
+                    createDereferencedVariable(typeString);
+                };
+            }
             ToolStripMenuItem itemAddVariables = new ToolStripMenuItem("Add Variable(s)...");
             ControlUtilities.AddDropDownItems(
                 itemAddVariables,
@@ -461,6 +518,7 @@ namespace STROOP.Structs
                     () => { },
                     () => createRealTimeVariable(),
                 });
+            itemAddVariables.DropDownItems.Add(itemAddDereferencedVariable);
 
             ToolStripMenuItem itemSetCascadingValues = new ToolStripMenuItem("Set Cascading Values");
             itemSetCascadingValues.Click += (sender, e) =>
