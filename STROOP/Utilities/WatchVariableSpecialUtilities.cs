@@ -241,6 +241,17 @@ namespace STROOP.Structs
                         },
                         DEFAULT_SETTER));
                     break;
+                case AggregateMathOperation.Sum:
+                    _dictionary.Add(specialType,
+                        ((uint dummy) =>
+                        {
+                            return controls
+                                .ConvertAll(control => control.GetValue(handleFormatting: false))
+                                .ConvertAll(value => ParsingUtilities.ParseDouble(value))
+                                .Sum();
+                        },
+                        DEFAULT_SETTER));
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

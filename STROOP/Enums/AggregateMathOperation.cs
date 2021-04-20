@@ -15,5 +15,6 @@ namespace STROOP.Structs
         Median,
         Min,
         Max,
+        Sum,
     };
 }
