@@ -16,6 +16,5 @@ namespace STROOP.Structs
         Min,
         Max,
         Sum,
-        Dereference,
     };
 }
