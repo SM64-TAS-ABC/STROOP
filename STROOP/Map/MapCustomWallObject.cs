@@ -30,7 +30,7 @@ namespace STROOP.Map
             if (text == null) return null;
             if (text == "")
             {
-                uint wallTriangle = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+                uint wallTriangle = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
                 if (wallTriangle == 0) return null;
                 List<uint> wallTriangles = new List<uint>() { wallTriangle };
                 return new MapCustomWallObject(wallTriangles);

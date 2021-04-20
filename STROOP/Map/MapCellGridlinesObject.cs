@@ -23,7 +23,7 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             for (int x = -8192; x <= 8192; x += 1024)

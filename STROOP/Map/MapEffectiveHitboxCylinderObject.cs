@@ -28,16 +28,16 @@ namespace STROOP.Map
         protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
         {
             uint objAddress = _posAngle.GetObjAddress();
-            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-            float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
-            float hitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeightOffset);
-            float hitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+            float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+            float hitboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxRadiusOffset);
+            float hitboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxHeightOffset);
+            float hitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
             float hitboxMinY = objY - hitboxDownOffset;
             float hitboxMaxY = hitboxMinY + hitboxHeight;
 
-            uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-            float marioHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadiusOffset);
-            float marioHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
+            uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+            float marioHitboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxRadiusOffset);
+            float marioHitboxHeight = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxHeightOffset);
 
             float effectiveRadius = hitboxRadius + marioHitboxRadius;
             float effectiveMinY = hitboxMinY - marioHitboxHeight;

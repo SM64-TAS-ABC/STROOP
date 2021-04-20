@@ -215,9 +215,9 @@ namespace STROOP.Map
                     MapViewCenterZValue = 0;
                     break;
                 case MapCenter.Mario:
-                    MapViewCenterXValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                    MapViewCenterYValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                    MapViewCenterZValue = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    MapViewCenterXValue = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    MapViewCenterYValue = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    MapViewCenterZValue = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     break;
                 case MapCenter.Custom:
                     PositionAngle posAngle = PositionAngle.FromString(
@@ -248,9 +248,9 @@ namespace STROOP.Map
 
             if (Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked)
             {
-                float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+                float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+                float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                 if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
                 {
                     if (MapViewPitchValue == 0 && (MapViewYawValue == 0 || MapViewYawValue == 32768))
@@ -316,14 +316,14 @@ namespace STROOP.Map
                     MapViewYawValue = 49152;
                     break;
                 case MapYaw.Mario:
-                    MapViewYawValue = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    MapViewYawValue = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     break;
                 case MapYaw.Camera:
-                    MapViewYawValue = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+                    MapViewYawValue = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
                     break;
                 case MapYaw.Centripetal:
                     MapViewYawValue = (float)MoreMath.ReverseAngle(
-                        Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset));
+                        Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset));
                     break;
                 case MapYaw.Custom:
                     PositionAngle posAngle = PositionAngle.FromString(

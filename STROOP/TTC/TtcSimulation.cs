@@ -33,7 +33,7 @@ namespace STROOP.Ttc
         public TtcSimulation(List<int> dustFrames = null)
         {
             //set up objects
-            _rng = new TtcRng(Config.Stream.GetUInt16(MiscConfig.RngAddress));
+            _rng = new TtcRng(Config.Stream.GetUShort(MiscConfig.RngAddress));
             _rngObjects = TtcUtilities.CreateRngObjectsFromGame(_rng, dustFrames);
 
             //set up testing variables

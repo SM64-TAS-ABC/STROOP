@@ -94,8 +94,8 @@ namespace STROOP.Utilities
             res.AppendLine(Indent(recursionDepth) + $"Decoding list at 0x{address:X8}");
             for (int i = 0; i < MaxDisplayListLength; i++)
             {
-                var firstWord = Config.Stream.GetUInt32(address);
-                var secondWord = Config.Stream.GetUInt32(address + 4);
+                var firstWord = Config.Stream.GetUInt(address);
+                var secondWord = Config.Stream.GetUInt(address + 4);
                 var opcode = (F3DOpcode)((firstWord >> 24) & 0xFF);
                 var name = Enum.GetName(typeof(F3DOpcode), opcode);
                 res.Append(Indent(recursionDepth) + $"{firstWord:X8} {secondWord:X8} " + name + " ");
@@ -144,12 +144,12 @@ namespace STROOP.Utilities
                         for (byte j = 0; j < vertexAmount; j++)
                         {
                             uint add = (uint)(vertexAddress + (j * 0x10));
-                            var x = Config.Stream.GetInt16(add + 0x00);
-                            var y = Config.Stream.GetInt16(add + 0x02);
-                            var z = Config.Stream.GetInt16(add + 0x04);
-                            var flags = Config.Stream.GetUInt16(add + 0x06);
-                            var texX = Config.Stream.GetInt16(add + 0x08);
-                            var texY = Config.Stream.GetInt16(add + 0x0A);
+                            var x = Config.Stream.GetShort(add + 0x00);
+                            var y = Config.Stream.GetShort(add + 0x02);
+                            var z = Config.Stream.GetShort(add + 0x04);
+                            var flags = Config.Stream.GetUShort(add + 0x06);
+                            var texX = Config.Stream.GetShort(add + 0x08);
+                            var texY = Config.Stream.GetShort(add + 0x0A);
                             var r = Config.Stream.GetByte(add + 0x0C);
                             var g = Config.Stream.GetByte(add + 0x0D);
                             var b = Config.Stream.GetByte(add + 0x0E);

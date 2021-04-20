@@ -140,7 +140,7 @@ namespace STROOP.Managers
         {
             if (!updateView) return;
 
-            short numSnowParticles = Config.Stream.GetInt16(SnowConfig.CounterAddress);
+            short numSnowParticles = Config.Stream.GetShort(SnowConfig.CounterAddress);
             if (numSnowParticles > _numSnowParticles) // need to add controls
             {
                 for (int i = _numSnowParticles; i < numSnowParticles; i++)

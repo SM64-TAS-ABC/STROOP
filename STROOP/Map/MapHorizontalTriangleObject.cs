@@ -39,8 +39,8 @@ namespace STROOP.Map
         {
             if (_enableQuarterFrameLandings)
             {
-                float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                float marioYSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
+                float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+                float marioYSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
                 List<(float y, float ySpeed)> steps = new List<(float y, float ySpeed)>();
                 for (int i = 0; i < 100 && steps.Count < 10; i++)
                 {
@@ -276,7 +276,7 @@ namespace STROOP.Map
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the min height.");
                 float? minHeightNullable =
                     text == "" ?
-                    Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset) :
+                    Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset) :
                     ParsingUtilities.ParseFloatNullable(text);
                 if (!minHeightNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(
@@ -298,7 +298,7 @@ namespace STROOP.Map
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the max height.");
                 float? maxHeightNullable =
                     text == "" ?
-                    Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset) :
+                    Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset) :
                     ParsingUtilities.ParseFloatNullable(text);
                 if (!maxHeightNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(

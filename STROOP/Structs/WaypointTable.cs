@@ -78,9 +78,9 @@ namespace STROOP.Structs
 
         public double GetProgress(uint objAddress)
         {
-            uint waypointAddress = Config.Stream.GetUInt32(objAddress + ObjectConfig.WaypointOffset);
+            uint waypointAddress = Config.Stream.GetUInt(objAddress + ObjectConfig.WaypointOffset);
             if (waypointAddress == 0) return 0;
-            short prevWaypointIndex = Config.Stream.GetInt16(waypointAddress + WaypointConfig.IndexOffset);
+            short prevWaypointIndex = Config.Stream.GetShort(waypointAddress + WaypointConfig.IndexOffset);
 
             if (!_waypointDictionary.ContainsKey(prevWaypointIndex)) return 0;
             WaypointReference previousWaypoint = _waypointDictionary[prevWaypointIndex];
@@ -101,9 +101,9 @@ namespace STROOP.Structs
                 nextWaypoint = nullableNextWaypoint.Value;
             }
 
-            float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-            float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+            float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
+            float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+            float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
 
             if (!_distanceDictionary.ContainsKey(previousWaypoint)) return 0;
             double previousDistance = _distanceDictionary[previousWaypoint];

@@ -64,7 +64,7 @@ namespace STROOP.Utilities
 
         public static int GetRngIndex()
         {
-            return GetRngIndex(Config.Stream.GetUInt16(MiscConfig.RngAddress));
+            return GetRngIndex(Config.Stream.GetUShort(MiscConfig.RngAddress));
         }
 
         public static int GetRngIndex(ushort rngValue)

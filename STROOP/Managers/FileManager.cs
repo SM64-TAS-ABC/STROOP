@@ -730,7 +730,7 @@ namespace STROOP.Managers
 
         public uint GetInGameFileAddress()
         {
-            short inGameFile = Config.Stream.GetInt16(MiscConfig.CurrentFileAddress);
+            short inGameFile = Config.Stream.GetShort(MiscConfig.CurrentFileAddress);
             switch (inGameFile)
             {
                 case 1:

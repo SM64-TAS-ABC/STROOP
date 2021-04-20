@@ -30,7 +30,7 @@ namespace STROOP.Structs
 
         public static string GetDemoCounterDescriptionUS(short? demoCounterNullable = null)
         {
-            short demoCounter = demoCounterNullable ?? Config.Stream.GetInt16(MiscConfig.DemoCounterAddress);
+            short demoCounter = demoCounterNullable ?? Config.Stream.GetShort(MiscConfig.DemoCounterAddress);
             switch (demoCounter)
             {
                 case 0:
@@ -54,7 +54,7 @@ namespace STROOP.Structs
 
         public static string GetDemoCounterDescriptionJP(short? demoCounterNullable = null)
         {
-            short demoCounter = demoCounterNullable ?? Config.Stream.GetInt16(MiscConfig.DemoCounterAddress);
+            short demoCounter = demoCounterNullable ?? Config.Stream.GetShort(MiscConfig.DemoCounterAddress);
             switch (demoCounter)
             {
                 case 0:

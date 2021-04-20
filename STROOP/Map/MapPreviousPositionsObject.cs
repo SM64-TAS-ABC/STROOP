@@ -203,82 +203,82 @@ namespace STROOP.Map
 
         public List<(float x, float y, float z, float angle, int tex, bool show)> GetData()
         {
-            float pos01X = Config.Stream.GetSingle(0x80372F00);
-            float pos01Y = Config.Stream.GetSingle(0x80372F04);
-            float pos01Z = Config.Stream.GetSingle(0x80372F08);
-            float pos01A = Config.Stream.GetUInt16(0x80372F0E);
+            float pos01X = Config.Stream.GetFloat(0x80372F00);
+            float pos01Y = Config.Stream.GetFloat(0x80372F04);
+            float pos01Z = Config.Stream.GetFloat(0x80372F08);
+            float pos01A = Config.Stream.GetUShort(0x80372F0E);
 
-            float pos02X = Config.Stream.GetSingle(0x80372F10);
-            float pos02Y = Config.Stream.GetSingle(0x80372F14);
-            float pos02Z = Config.Stream.GetSingle(0x80372F18);
-            float pos02A = Config.Stream.GetUInt16(0x80372F1E);
+            float pos02X = Config.Stream.GetFloat(0x80372F10);
+            float pos02Y = Config.Stream.GetFloat(0x80372F14);
+            float pos02Z = Config.Stream.GetFloat(0x80372F18);
+            float pos02A = Config.Stream.GetUShort(0x80372F1E);
 
-            float pos03X = Config.Stream.GetSingle(0x80372F20);
-            float pos03Y = Config.Stream.GetSingle(0x80372F24);
-            float pos03Z = Config.Stream.GetSingle(0x80372F28);
-            float pos03A = Config.Stream.GetUInt16(0x80372F2E);
+            float pos03X = Config.Stream.GetFloat(0x80372F20);
+            float pos03Y = Config.Stream.GetFloat(0x80372F24);
+            float pos03Z = Config.Stream.GetFloat(0x80372F28);
+            float pos03A = Config.Stream.GetUShort(0x80372F2E);
 
-            float pos04X = Config.Stream.GetSingle(0x80372F30);
-            float pos04Y = Config.Stream.GetSingle(0x80372F34);
-            float pos04Z = Config.Stream.GetSingle(0x80372F38);
-            float pos04A = Config.Stream.GetUInt16(0x80372F3E);
+            float pos04X = Config.Stream.GetFloat(0x80372F30);
+            float pos04Y = Config.Stream.GetFloat(0x80372F34);
+            float pos04Z = Config.Stream.GetFloat(0x80372F38);
+            float pos04A = Config.Stream.GetUShort(0x80372F3E);
 
-            float pos05X = Config.Stream.GetSingle(0x80372F40);
-            float pos05Y = Config.Stream.GetSingle(0x80372F44);
-            float pos05Z = Config.Stream.GetSingle(0x80372F48);
-            float pos05A = Config.Stream.GetUInt16(0x80372F4E);
+            float pos05X = Config.Stream.GetFloat(0x80372F40);
+            float pos05Y = Config.Stream.GetFloat(0x80372F44);
+            float pos05Z = Config.Stream.GetFloat(0x80372F48);
+            float pos05A = Config.Stream.GetUShort(0x80372F4E);
 
-            float pos06X = Config.Stream.GetSingle(0x80372F50);
-            float pos06Y = Config.Stream.GetSingle(0x80372F54);
-            float pos06Z = Config.Stream.GetSingle(0x80372F58);
-            float pos06A = Config.Stream.GetUInt16(0x80372F5E);
+            float pos06X = Config.Stream.GetFloat(0x80372F50);
+            float pos06Y = Config.Stream.GetFloat(0x80372F54);
+            float pos06Z = Config.Stream.GetFloat(0x80372F58);
+            float pos06A = Config.Stream.GetUShort(0x80372F5E);
 
-            float pos07X = Config.Stream.GetSingle(0x80372F60);
-            float pos07Y = Config.Stream.GetSingle(0x80372F64);
-            float pos07Z = Config.Stream.GetSingle(0x80372F68);
-            float pos07A = Config.Stream.GetUInt16(0x80372F6E);
+            float pos07X = Config.Stream.GetFloat(0x80372F60);
+            float pos07Y = Config.Stream.GetFloat(0x80372F64);
+            float pos07Z = Config.Stream.GetFloat(0x80372F68);
+            float pos07A = Config.Stream.GetUShort(0x80372F6E);
 
-            float pos08X = Config.Stream.GetSingle(0x80372F70);
-            float pos08Y = Config.Stream.GetSingle(0x80372F74);
-            float pos08Z = Config.Stream.GetSingle(0x80372F78);
-            float pos08A = Config.Stream.GetUInt16(0x80372F7E);
+            float pos08X = Config.Stream.GetFloat(0x80372F70);
+            float pos08Y = Config.Stream.GetFloat(0x80372F74);
+            float pos08Z = Config.Stream.GetFloat(0x80372F78);
+            float pos08A = Config.Stream.GetUShort(0x80372F7E);
 
-            float pos09X = Config.Stream.GetSingle(0x80372F80);
-            float pos09Y = Config.Stream.GetSingle(0x80372F84);
-            float pos09Z = Config.Stream.GetSingle(0x80372F88);
-            float pos09A = Config.Stream.GetUInt16(0x80372F8E);
+            float pos09X = Config.Stream.GetFloat(0x80372F80);
+            float pos09Y = Config.Stream.GetFloat(0x80372F84);
+            float pos09Z = Config.Stream.GetFloat(0x80372F88);
+            float pos09A = Config.Stream.GetUShort(0x80372F8E);
 
-            float pos10X = Config.Stream.GetSingle(0x80372F90);
-            float pos10Y = Config.Stream.GetSingle(0x80372F94);
-            float pos10Z = Config.Stream.GetSingle(0x80372F98);
-            float pos10A = Config.Stream.GetUInt16(0x80372F9E);
+            float pos10X = Config.Stream.GetFloat(0x80372F90);
+            float pos10Y = Config.Stream.GetFloat(0x80372F94);
+            float pos10Z = Config.Stream.GetFloat(0x80372F98);
+            float pos10A = Config.Stream.GetUShort(0x80372F9E);
 
-            float pos11X = Config.Stream.GetSingle(0x80372FA0);
-            float pos11Y = Config.Stream.GetSingle(0x80372FA4);
-            float pos11Z = Config.Stream.GetSingle(0x80372FA8);
-            float pos11A = Config.Stream.GetUInt16(0x80372FAE);
+            float pos11X = Config.Stream.GetFloat(0x80372FA0);
+            float pos11Y = Config.Stream.GetFloat(0x80372FA4);
+            float pos11Z = Config.Stream.GetFloat(0x80372FA8);
+            float pos11A = Config.Stream.GetUShort(0x80372FAE);
 
-            float pos12X = Config.Stream.GetSingle(0x80372FB0);
-            float pos12Y = Config.Stream.GetSingle(0x80372FB4);
-            float pos12Z = Config.Stream.GetSingle(0x80372FB8);
-            float pos12A = Config.Stream.GetUInt16(0x80372FBE);
+            float pos12X = Config.Stream.GetFloat(0x80372FB0);
+            float pos12Y = Config.Stream.GetFloat(0x80372FB4);
+            float pos12Z = Config.Stream.GetFloat(0x80372FB8);
+            float pos12A = Config.Stream.GetUShort(0x80372FBE);
 
-            float pos13X = Config.Stream.GetSingle(0x80372FC0);
-            float pos13Y = Config.Stream.GetSingle(0x80372FC4);
-            float pos13Z = Config.Stream.GetSingle(0x80372FC8);
-            float pos13A = Config.Stream.GetUInt16(0x80372FCE);
+            float pos13X = Config.Stream.GetFloat(0x80372FC0);
+            float pos13Y = Config.Stream.GetFloat(0x80372FC4);
+            float pos13Z = Config.Stream.GetFloat(0x80372FC8);
+            float pos13A = Config.Stream.GetUShort(0x80372FCE);
 
-            float pos14X = Config.Stream.GetSingle(0x80372FD0);
-            float pos14Y = Config.Stream.GetSingle(0x80372FD4);
-            float pos14Z = Config.Stream.GetSingle(0x80372FD8);
-            float pos14A = Config.Stream.GetUInt16(0x80372FDE);
+            float pos14X = Config.Stream.GetFloat(0x80372FD0);
+            float pos14Y = Config.Stream.GetFloat(0x80372FD4);
+            float pos14Z = Config.Stream.GetFloat(0x80372FD8);
+            float pos14A = Config.Stream.GetUShort(0x80372FDE);
 
-            float pos15X = Config.Stream.GetSingle(0x80372FE0);
-            float pos15Y = Config.Stream.GetSingle(0x80372FE4);
-            float pos15Z = Config.Stream.GetSingle(0x80372FE8);
-            float pos15A = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            float pos15X = Config.Stream.GetFloat(0x80372FE0);
+            float pos15Y = Config.Stream.GetFloat(0x80372FE4);
+            float pos15Z = Config.Stream.GetFloat(0x80372FE8);
+            float pos15A = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
-            int numQFrames = Config.Stream.GetInt32(0x80372E3C) / 0x30;
+            int numQFrames = Config.Stream.GetInt(0x80372E3C) / 0x30;
             int numPoints = numQFrames * 3;
 
             List<(float x, float y, float z, float angle, int tex)> allResults =

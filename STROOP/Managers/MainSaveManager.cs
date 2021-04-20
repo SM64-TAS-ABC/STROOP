@@ -131,7 +131,7 @@ namespace STROOP.Managers
                 mainSaveTextbox.UpdateText();
             }
 
-            ushort soundModeValue = Config.Stream.GetUInt16(CurrentMainSaveAddress + MainSaveConfig.SoundModeOffset);
+            ushort soundModeValue = Config.Stream.GetUShort(CurrentMainSaveAddress + MainSaveConfig.SoundModeOffset);
             _radioButtonMainSaveSoundModeStereo.Checked = soundModeValue == 0;
             _radioButtonMainSaveSoundModeMono.Checked = soundModeValue == 1;
             _radioButtonMainSaveSoundModeHeadset.Checked = soundModeValue == 2;

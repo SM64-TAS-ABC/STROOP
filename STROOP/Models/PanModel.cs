@@ -13,7 +13,7 @@ namespace STROOP.Models
     {
         public double PanGlobalTimer
         {
-            get => Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            get => Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
             set => Config.Stream.SetValue((uint)value, MiscConfig.GlobalTimerAddress);
         }
         public double PanStartTime = 0;

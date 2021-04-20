@@ -10,12 +10,12 @@ namespace STROOP.Utilities
     {
         private static float GetFloat(uint address)
         {
-            return Config.Stream.GetSingle(MarioConfig.StructAddress + address);
+            return Config.Stream.GetFloat(MarioConfig.StructAddress + address);
         }
 
         private static float GetShort(uint address)
         {
-            return Config.Stream.GetInt16(MarioConfig.StructAddress + address);
+            return Config.Stream.GetShort(MarioConfig.StructAddress + address);
         }
 
         private class MarioFlyingState

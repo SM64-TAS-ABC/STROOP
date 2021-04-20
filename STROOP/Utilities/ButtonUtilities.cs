@@ -98,7 +98,7 @@ namespace STROOP.Utilities
 
             if (KeyboardUtilities.IsShiftHeld() || double.IsNaN(relativeAngle))
             {
-                relativeAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                relativeAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             }
             else
             {
@@ -189,7 +189,7 @@ namespace STROOP.Utilities
             if (!SavedSettingsConfig.OffsetGotoRetrieveFunctions) return;
             float gotoAbove = GotoRetrieveConfig.GotoAboveOffset;
             float gotoInfront = GotoRetrieveConfig.GotoInfrontOffset;
-            ushort marioYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            ushort marioYaw = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
             double xOffset, zOffset;
             (xOffset, zOffset) = MoreMath.GetComponentsFromVector(-1 * gotoInfront, marioYaw);
@@ -204,7 +204,7 @@ namespace STROOP.Utilities
             if (!SavedSettingsConfig.OffsetGotoRetrieveFunctions) return;
             float retrieveAbove = GotoRetrieveConfig.RetrieveAboveOffset;
             float retrieveInfront = GotoRetrieveConfig.RetrieveInfrontOffset;
-            ushort marioYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            ushort marioYaw = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
             double xOffset, zOffset;
             (xOffset, zOffset) = MoreMath.GetComponentsFromVector(retrieveInfront, marioYaw);
@@ -251,12 +251,12 @@ namespace STROOP.Utilities
             foreach (ObjectDataModel obj in objects)
             {
                 ushort yawFacing, pitchFacing, rollFacing, yawMoving, pitchMoving, rollMoving;
-                yawFacing = Config.Stream.GetUInt16(obj.Address + ObjectConfig.YawFacingOffset);
-                pitchFacing = Config.Stream.GetUInt16(obj.Address + ObjectConfig.PitchFacingOffset);
-                rollFacing = Config.Stream.GetUInt16(obj.Address + ObjectConfig.RollFacingOffset);
-                yawMoving = Config.Stream.GetUInt16(obj.Address + ObjectConfig.YawMovingOffset);
-                pitchMoving = Config.Stream.GetUInt16(obj.Address + ObjectConfig.PitchMovingOffset);
-                rollMoving = Config.Stream.GetUInt16(obj.Address + ObjectConfig.RollMovingOffset);
+                yawFacing = Config.Stream.GetUShort(obj.Address + ObjectConfig.YawFacingOffset);
+                pitchFacing = Config.Stream.GetUShort(obj.Address + ObjectConfig.PitchFacingOffset);
+                rollFacing = Config.Stream.GetUShort(obj.Address + ObjectConfig.RollFacingOffset);
+                yawMoving = Config.Stream.GetUShort(obj.Address + ObjectConfig.YawMovingOffset);
+                pitchMoving = Config.Stream.GetUShort(obj.Address + ObjectConfig.PitchMovingOffset);
+                rollMoving = Config.Stream.GetUShort(obj.Address + ObjectConfig.RollMovingOffset);
 
                 yawFacing += (ushort)yawOffset;
                 pitchFacing += (ushort)pitchOffset;
@@ -523,12 +523,12 @@ namespace STROOP.Utilities
 
                 // Loop through and find last object in group
                 uint lastGroupObj = groupAddress;
-                while (Config.Stream.GetUInt32(lastGroupObj + ObjectConfig.ProcessedNextLinkOffset) != groupAddress)
-                    lastGroupObj = Config.Stream.GetUInt32(lastGroupObj + ObjectConfig.ProcessedNextLinkOffset);
+                while (Config.Stream.GetUInt(lastGroupObj + ObjectConfig.ProcessedNextLinkOffset) != groupAddress)
+                    lastGroupObj = Config.Stream.GetUInt(lastGroupObj + ObjectConfig.ProcessedNextLinkOffset);
 
                 // Remove object from current group
-                uint nextObj = Config.Stream.GetUInt32(obj.Address + ObjectConfig.ProcessedNextLinkOffset);
-                uint prevObj = Config.Stream.GetUInt32(ObjectSlotsConfig.VacantSlotsNodeAddress + ObjectConfig.ProcessedNextLinkOffset);
+                uint nextObj = Config.Stream.GetUInt(obj.Address + ObjectConfig.ProcessedNextLinkOffset);
+                uint prevObj = Config.Stream.GetUInt(ObjectSlotsConfig.VacantSlotsNodeAddress + ObjectConfig.ProcessedNextLinkOffset);
                 if (prevObj == obj.Address)
                 {
                     // Set new vacant pointer
@@ -538,7 +538,7 @@ namespace STROOP.Utilities
                 {
                     for (int i = 0; i < ObjectSlotsConfig.MaxSlots; i++)
                     {
-                        uint curObj = Config.Stream.GetUInt32(prevObj + ObjectConfig.ProcessedNextLinkOffset);
+                        uint curObj = Config.Stream.GetUInt(prevObj + ObjectConfig.ProcessedNextLinkOffset);
                         if (curObj == obj.Address)
                             break;
                         prevObj = curObj;
@@ -547,7 +547,7 @@ namespace STROOP.Utilities
                 }
 
                 // Insert object in new group
-                nextObj = Config.Stream.GetUInt32(lastGroupObj + ObjectConfig.ProcessedNextLinkOffset);
+                nextObj = Config.Stream.GetUInt(lastGroupObj + ObjectConfig.ProcessedNextLinkOffset);
                 success &= Config.Stream.SetValue(obj.Address, nextObj + ObjectConfig.ProcessedPreviousLinkOffset);
                 success &= Config.Stream.SetValue(obj.Address, lastGroupObj + ObjectConfig.ProcessedNextLinkOffset);
                 success &= Config.Stream.SetValue(lastGroupObj, obj.Address + ObjectConfig.ProcessedPreviousLinkOffset);
@@ -595,7 +595,7 @@ namespace STROOP.Utilities
 
             foreach (var obj in objects)
             {
-                uint initialReleaseStatus = Config.Stream.GetUInt32(obj.Address + ObjectConfig.InitialReleaseStatusOffset);
+                uint initialReleaseStatus = Config.Stream.GetUInt(obj.Address + ObjectConfig.InitialReleaseStatusOffset);
                 success &= Config.Stream.SetValue(initialReleaseStatus, obj.Address + ObjectConfig.ReleaseStatusOffset);
                 success &= Config.Stream.SetValue(ObjectConfig.StackIndexUnReleasedValue, obj.Address + ObjectConfig.StackIndexOffset);
             }
@@ -642,11 +642,11 @@ namespace STROOP.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            var heldObj = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
+            var heldObj = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
 
             if (heldObj != 0x00000000U)
             {
-                uint currentAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
+                uint currentAction = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.ActionOffset);
                 uint nextAction = TableConfig.MarioActions.GetHandsfreeValue(currentAction);
                 success = Config.Stream.SetValue(nextAction, MarioConfig.StructAddress + MarioConfig.ActionOffset);
             }
@@ -661,10 +661,10 @@ namespace STROOP.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            var marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+            var marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
             if (marioObjRef != 0x00000000U)
             {
-                var marioGraphics = Config.Stream.GetUInt32(marioObjRef + ObjectConfig.BehaviorGfxOffset);
+                var marioGraphics = Config.Stream.GetUInt(marioObjRef + ObjectConfig.BehaviorGfxOffset);
                 if (marioGraphics == 0)
                 {
                     success &= Config.Stream.SetValue(MarioObjectConfig.GraphicValue, marioObjRef + ObjectConfig.BehaviorGfxOffset);
@@ -695,9 +695,9 @@ namespace STROOP.Utilities
         {
             List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Mario };
 
-            float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
-            float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
-            float zDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
+            float xDestination = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+            float yDestination = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+            float zDestination = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
 
             return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, affects: affects);
         }
@@ -706,9 +706,9 @@ namespace STROOP.Utilities
         {
             List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Holp };
 
-            float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float zDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float xDestination = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float yDestination = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float zDestination = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, affects: affects);
         }
@@ -746,7 +746,7 @@ namespace STROOP.Utilities
 
         public static bool MarioChangeYaw(int yawOffset)
         {
-            ushort yaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            ushort yaw = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             yaw += (ushort)yawOffset;
 
             bool success = true;
@@ -761,7 +761,7 @@ namespace STROOP.Utilities
 
         public static bool MarioChangeHspd(float hspdOffset)
         {
-            float hspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            float hspd = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
             hspd += hspdOffset;
 
             bool success = true;
@@ -776,7 +776,7 @@ namespace STROOP.Utilities
 
         public static bool MarioChangeVspd(float vspdOffset)
         {
-            float vspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
+            float vspd = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
             vspd += vspdOffset;
 
             bool success = true;
@@ -791,8 +791,8 @@ namespace STROOP.Utilities
 
         public static void MarioChangeSlidingSpeedX(float xOffset)
         {
-            float slidingSpeedX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-            float slidingSpeedZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            float slidingSpeedX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            float slidingSpeedZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
 
             float newSlidingSpeedX = slidingSpeedX + xOffset;
             ushort newSlidingSpeedYaw = MoreMath.AngleTo_AngleUnitsRounded(newSlidingSpeedX, slidingSpeedZ);
@@ -808,8 +808,8 @@ namespace STROOP.Utilities
 
         public static void MarioChangeSlidingSpeedZ(float zOffset)
         {
-            float slidingSpeedX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-            float slidingSpeedZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            float slidingSpeedX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            float slidingSpeedZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
 
             float newSlidingSpeedZ = slidingSpeedZ + zOffset;
             ushort newSlidingSpeedYaw = MoreMath.AngleTo_AngleUnitsRounded(slidingSpeedX, newSlidingSpeedZ);
@@ -825,12 +825,12 @@ namespace STROOP.Utilities
 
         public static void MarioChangeSlidingSpeedH(float hOffset)
         {
-            float slidingSpeedX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-            float slidingSpeedZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            float slidingSpeedX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            float slidingSpeedZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
             double slidingSpeedH = MoreMath.GetHypotenuse(slidingSpeedX, slidingSpeedZ);
 
             double? slidingSpeedYawComputed = MoreMath.AngleTo_AngleUnitsNullable(slidingSpeedX, slidingSpeedZ);
-            ushort slidingSpeedYawMemory = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset);
+            ushort slidingSpeedYawMemory = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset);
             double slidingSpeedYaw = slidingSpeedYawComputed ?? slidingSpeedYawMemory;
 
             double newSlidingSpeedH = slidingSpeedH + hOffset;
@@ -849,12 +849,12 @@ namespace STROOP.Utilities
 
         public static void MarioChangeSlidingSpeedYaw(float yawOffset)
         {
-            float slidingSpeedX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-            float slidingSpeedZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            float slidingSpeedX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            float slidingSpeedZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
             double slidingSpeedH = MoreMath.GetHypotenuse(slidingSpeedX, slidingSpeedZ);
 
             double? slidingSpeedYawComputed = MoreMath.AngleTo_AngleUnitsNullable(slidingSpeedX, slidingSpeedZ);
-            ushort slidingSpeedYawMemory = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset);
+            ushort slidingSpeedYawMemory = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset);
             double slidingSpeedYaw = slidingSpeedYawComputed ?? slidingSpeedYawMemory;
 
             double newSlidingSpeedYaw = slidingSpeedYaw + yawOffset;
@@ -1003,16 +1003,16 @@ namespace STROOP.Utilities
             foreach (uint triangleAddress in triangleAddresses)
             {
                 float normX, normY, normZ, oldNormOffset;
-                normX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
-                normY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
-                normZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
-                oldNormOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
+                normX = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormX);
+                normY = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormY);
+                normZ = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormZ);
+                oldNormOffset = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormOffset);
 
                 // Get Mario position
                 float marioX, marioY, marioZ;
-                marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+                marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+                marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
                 float normOffset = -(normX * marioX + normY * marioY + normZ * marioZ);
                 float normDiff = normOffset - oldNormOffset;
@@ -1143,10 +1143,10 @@ namespace STROOP.Utilities
                 HandleScaling(ref xOffset, ref zOffset);
 
                 float normX, normY, normZ, oldNormOffset;
-                normX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
-                normY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
-                normZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
-                oldNormOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
+                normX = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormX);
+                normY = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormY);
+                normZ = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormZ);
+                oldNormOffset = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormOffset);
 
                 ushort relativeAngle = MoreMath.getUphillAngle(normX, normY, normZ);
                 HandleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
@@ -1196,10 +1196,10 @@ namespace STROOP.Utilities
             foreach (uint triangleAddress in triangleAddresses)
             {
                 float normX, normY, normZ, oldNormOffset;
-                normX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
-                normY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
-                normZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
-                oldNormOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
+                normX = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormX);
+                normY = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormY);
+                normZ = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormZ);
+                oldNormOffset = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormOffset);
 
                 float newNormOffset = oldNormOffset - normalChange;
 
@@ -1253,9 +1253,9 @@ namespace STROOP.Utilities
             HandleScaling(ref thetaOffset, ref phiOffset);
 
             float oldX, oldY, oldZ;
-            oldX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
-            oldY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
-            oldZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
+            oldX = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.XOffset);
+            oldY = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.YOffset);
+            oldZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.ZOffset);
 
             double newX, newY, newZ;
             (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ);
@@ -1281,16 +1281,16 @@ namespace STROOP.Utilities
         public static bool TranslateCameraFocusSpherically(float radiusOffset, float thetaOffset, float phiOffset)
         {
             float pivotX, pivotY, pivotZ;
-            pivotX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
-            pivotY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
-            pivotZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
+            pivotX = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.XOffset);
+            pivotY = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.YOffset);
+            pivotZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.ZOffset);
 
             HandleScaling(ref thetaOffset, ref phiOffset);
 
             float oldX, oldY, oldZ;
-            oldX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
-            oldY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
-            oldZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
+            oldX = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
+            oldY = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
+            oldZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
 
             double newX, newY, newZ;
             (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ);
@@ -1312,16 +1312,16 @@ namespace STROOP.Utilities
             switch (camHackMode)
             {
                 case CamHackMode.REGULAR:
-                    return Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+                    return Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
 
                 case CamHackMode.RELATIVE_ANGLE:
                 case CamHackMode.ABSOLUTE_ANGLE:
                 case CamHackMode.FIXED_POS:
                 case CamHackMode.FIXED_ORIENTATION:
-                    float camHackPosX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                    float camHackPosZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
-                    float camHackFocusX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                    float camHackFocusZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    float camHackPosX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    float camHackPosZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    float camHackFocusX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                    float camHackFocusZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
                     return MoreMath.AngleTo_AngleUnitsRounded(camHackPosX, camHackPosZ, camHackFocusX, camHackFocusZ);
 
                 default:
@@ -1331,7 +1331,7 @@ namespace STROOP.Utilities
 
         private static PositionAngle GetCamHackFocusPosAngle(CamHackMode camHackMode)
         {
-            uint camHackObject = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
+            uint camHackObject = Config.Stream.GetUInt(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
             switch (camHackMode)
             {
                 case CamHackMode.REGULAR:
@@ -1384,13 +1384,13 @@ namespace STROOP.Utilities
                         HandleScaling(ref xOffset, ref zOffset);
 
                         HandleRelativeAngle(ref xOffset, ref zOffset, useRelative, getCamHackYawFacing(camHackMode));
-                        float xDestination = xOffset + Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                        float yDestination = yOffset + Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
-                        float zDestination = zOffset + Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                        float xDestination = xOffset + Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                        float yDestination = yOffset + Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                        float zDestination = zOffset + Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
 
-                        float xFocus = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                        float yFocus = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
-                        float zFocus = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                        float xFocus = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                        float yFocus = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
+                        float zFocus = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
 
                         double radius, theta, height;
                         (radius, theta, height) = MoreMath.EulerToCylindricalAboutPivot(xDestination, yDestination, zDestination, xFocus, yFocus, zFocus);
@@ -1398,10 +1398,10 @@ namespace STROOP.Utilities
                         ushort relativeYawOffset = 0;
                         if (camHackMode == CamHackMode.RELATIVE_ANGLE)
                         {
-                            uint camHackObject = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
+                            uint camHackObject = Config.Stream.GetUInt(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
                             relativeYawOffset = camHackObject == 0
-                                ? Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset)
-                                : Config.Stream.GetUInt16(camHackObject + ObjectConfig.YawFacingOffset);
+                                ? Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset)
+                                : Config.Stream.GetUShort(camHackObject + ObjectConfig.YawFacingOffset);
                         }
 
                         bool success = true;
@@ -1427,9 +1427,9 @@ namespace STROOP.Utilities
             {
                 case CamHackMode.REGULAR:
                     {
-                        float xFocus = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
-                        float yFocus = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
-                        float zFocus = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
+                        float xFocus = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
+                        float yFocus = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
+                        float zFocus = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
                         return TranslateCameraSpherically(radiusOffset, thetaOffset, phiOffset, (xFocus, yFocus, zFocus));
                     }
 
@@ -1443,9 +1443,9 @@ namespace STROOP.Utilities
                         float yFocus = (float)focusPosAngle.Y;
                         float zFocus = (float)focusPosAngle.Z;
 
-                        float xCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                        float yCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
-                        float zCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                        float xCamPos = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                        float yCamPos = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                        float zCamPos = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
 
                         double xDestination, yDestination, zDestination;
                         (xDestination, yDestination, zDestination) =
@@ -1464,13 +1464,13 @@ namespace STROOP.Utilities
                     {
                         HandleScaling(ref thetaOffset, ref phiOffset);
 
-                        float xCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                        float yCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
-                        float zCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                        float xCamPos = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                        float yCamPos = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                        float zCamPos = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
 
-                        float xFocus = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                        float yFocus = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
-                        float zFocus = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                        float xFocus = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                        float yFocus = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
+                        float zFocus = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
 
                         double xDestination, yDestination, zDestination;
                         (xDestination, yDestination, zDestination) =
@@ -1482,10 +1482,10 @@ namespace STROOP.Utilities
                         ushort relativeYawOffset = 0;
                         if (camHackMode == CamHackMode.RELATIVE_ANGLE)
                         {
-                            uint camHackObject = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
+                            uint camHackObject = Config.Stream.GetUInt(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
                             relativeYawOffset = camHackObject == 0
-                                ? Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset)
-                                : Config.Stream.GetUInt16(camHackObject + ObjectConfig.YawFacingOffset);
+                                ? Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset)
+                                : Config.Stream.GetUShort(camHackObject + ObjectConfig.YawFacingOffset);
                         }
 
                         bool success = true;
@@ -1525,9 +1525,9 @@ namespace STROOP.Utilities
             float yFocus = (float)focusPosAngle.Y;
             float zFocus = (float)focusPosAngle.Z;
 
-            float xCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-            float yCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
-            float zCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+            float xCamPos = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+            float yCamPos = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+            float zCamPos = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
 
             double xDestination, yDestination, zDestination;
             (xDestination, yDestination, zDestination) =

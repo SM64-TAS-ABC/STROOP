@@ -30,12 +30,12 @@ namespace STROOP.Map
 
         protected override double GetYaw()
         {
-            return Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.TwirlYawOffset);
+            return Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.TwirlYawOffset);
         }
 
         protected override double GetRecommendedSize()
         {
-            return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
         }
 
         public override string GetName()

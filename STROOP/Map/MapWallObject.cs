@@ -43,7 +43,7 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView()
         {
-            float marioHeight = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioHeight = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
             float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : _absoluteHeight;
 
             List<(float x1, float z1, float x2, float z2, bool xProjection, double pushAngle)> wallData = GetFilteredTriangles()
@@ -253,7 +253,7 @@ namespace STROOP.Map
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the height at which you want to see the wall triangles.");
                 float? absoluteHeightNullable =
                     text == "" ?
-                    Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset) :
+                    Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset) :
                     ParsingUtilities.ParseFloatNullable(text);
                 if (!absoluteHeightNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(

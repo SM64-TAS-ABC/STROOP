@@ -30,7 +30,7 @@ namespace STROOP.Map
             if (text == null) return null;
             if (text == "")
             {
-                uint ceilingTriangle = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
+                uint ceilingTriangle = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
                 if (ceilingTriangle == 0) return null;
                 List<uint> ceilingTriangles = new List<uint>() { ceilingTriangle };
                 return new MapCustomCeilingObject(ceilingTriangles);

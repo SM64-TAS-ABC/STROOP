@@ -27,8 +27,8 @@ namespace STROOP.Ttc
         public TtcRotatingTriangularPrism(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                timerMax: Config.Stream.GetInt32(address + 0xFC),
-                timer: Config.Stream.GetInt32(address + 0x154))
+                timerMax: Config.Stream.GetInt(address + 0xFC),
+                timer: Config.Stream.GetInt(address + 0x154))
         {
         }
 

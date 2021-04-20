@@ -20,8 +20,8 @@ namespace STROOP.Structs
             {
                 uint address1 = 0x80064040 + 0x8 + (uint)i * 0x8 + 0x0;
                 uint address2 = 0x80064040 + 0x8 + (uint)i * 0x8 + 0x4;
-                int value1 = Config.Stream.GetInt32(address1);
-                int value2 = Config.Stream.GetInt32(address2);
+                int value1 = Config.Stream.GetInt(address1);
+                int value2 = Config.Stream.GetInt(address2);
                 _dictionary[i] = (value1, value2);
             }
         }

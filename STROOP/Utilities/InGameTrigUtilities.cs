@@ -132,7 +132,7 @@ namespace STROOP.Utilities
                 offset = 2 * (uint)((yComp / xComp) * 1024f + 0.5f);
 
             uint address = MappingConfig.HandleMapping(0x8038B000);
-            return Config.Stream.GetUInt16(address + offset);
+            return Config.Stream.GetUShort(address + offset);
             //int index = (int)(offset / 2);
             //return arcSineData[index];
         }

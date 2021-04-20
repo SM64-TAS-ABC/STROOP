@@ -77,7 +77,7 @@ namespace STROOP.Models
 
         private uint BehaviorScriptStart
         { 
-            get => Config.Stream.GetUInt32(Address + ObjectConfig.BehaviorScriptOffset);
+            get => Config.Stream.GetUInt(Address + ObjectConfig.BehaviorScriptOffset);
             set => Config.Stream.SetValue(value, Address + ObjectConfig.BehaviorScriptOffset);
         }
         #endregion
@@ -89,7 +89,7 @@ namespace STROOP.Models
             {
                 if (BehaviorScriptStart == 00000000)
                     return null;
-                uint firstScriptAction = Config.Stream.GetUInt32(BehaviorScriptStart);
+                uint firstScriptAction = Config.Stream.GetUInt(BehaviorScriptStart);
                 if ((firstScriptAction & 0xFF000000U) != 0x00000000U)
                     return null;
                 return (byte)((firstScriptAction & 0x00FF0000U) >> 16);
@@ -102,7 +102,7 @@ namespace STROOP.Models
         #region Object Graph
         public uint Parent
         {
-            get => Config.Stream.GetUInt32(Address + ObjectConfig.ParentOffset);
+            get => Config.Stream.GetUInt(Address + ObjectConfig.ParentOffset);
             set => Config.Stream.SetValue(value, Address + ObjectConfig.ParentOffset);
         }
         #endregion
@@ -210,7 +210,7 @@ namespace STROOP.Models
         private uint _releaseStatus;
         public uint ReleaseStatus
         {
-            get => Config.Stream.GetUInt32(Address + ObjectConfig.ReleaseStatusOffset);
+            get => Config.Stream.GetUInt(Address + ObjectConfig.ReleaseStatusOffset);
             set
             {
                 if (Config.Stream.SetValue(value, Address + ObjectConfig.ReleaseStatusOffset))
@@ -221,7 +221,7 @@ namespace STROOP.Models
         private uint _interactionStatus;
         public uint InteractionStatus
         {
-            get => Config.Stream.GetUInt32(Address + ObjectConfig.InteractionStatusOffset);
+            get => Config.Stream.GetUInt(Address + ObjectConfig.InteractionStatusOffset);
             set
             {
                 if (Config.Stream.SetValue(value, Address + ObjectConfig.InteractionStatusOffset))
@@ -264,13 +264,13 @@ namespace STROOP.Models
 
         public void Update()
         {
-            _isActive = Config.Stream.GetUInt16(Address + ObjectConfig.ActiveOffset) != 0x0000;
-            AbsoluteBehavior = Config.Stream.GetUInt32(Address + ObjectConfig.BehaviorScriptOffset) & ~0x80000000;
+            _isActive = Config.Stream.GetUShort(Address + ObjectConfig.ActiveOffset) != 0x0000;
+            AbsoluteBehavior = Config.Stream.GetUInt(Address + ObjectConfig.BehaviorScriptOffset) & ~0x80000000;
 
-            _gfxId = Config.Stream.GetUInt32(Address + ObjectConfig.BehaviorGfxOffset);
-            _subType = Config.Stream.GetUInt32(Address + ObjectConfig.BehaviorSubtypeOffset);
-            _appearance = Config.Stream.GetUInt32(Address + ObjectConfig.BehaviorAppearanceOffset);
-            _spawnObj = Config.Stream.GetUInt32(Address + ObjectConfig.BehaviorSpawnObjOffset);
+            _gfxId = Config.Stream.GetUInt(Address + ObjectConfig.BehaviorGfxOffset);
+            _subType = Config.Stream.GetUInt(Address + ObjectConfig.BehaviorSubtypeOffset);
+            _appearance = Config.Stream.GetUInt(Address + ObjectConfig.BehaviorAppearanceOffset);
+            _spawnObj = Config.Stream.GetUInt(Address + ObjectConfig.BehaviorSpawnObjOffset);
 
             long behaviorOffset = (long)AbsoluteBehavior - Config.ObjectAssociations.BehaviorBankStart;
             if (AbsoluteBehavior == 0 || behaviorOffset < 0) // Behavior is 0 or is appears to be stored below the start
@@ -295,20 +295,20 @@ namespace STROOP.Models
 
             BehaviorAssociation = Config.ObjectAssociations.FindObjectAssociation(BehaviorCriteria);
 
-            _x = Config.Stream.GetSingle(Address + ObjectConfig.XOffset);
-            _y = Config.Stream.GetSingle(Address + ObjectConfig.YOffset);
-            _z = Config.Stream.GetSingle(Address + ObjectConfig.ZOffset);
+            _x = Config.Stream.GetFloat(Address + ObjectConfig.XOffset);
+            _y = Config.Stream.GetFloat(Address + ObjectConfig.YOffset);
+            _z = Config.Stream.GetFloat(Address + ObjectConfig.ZOffset);
 
-            _homeX = Config.Stream.GetSingle(Address + ObjectConfig.HomeXOffset);
-            _homeY = Config.Stream.GetSingle(Address + ObjectConfig.HomeYOffset);
-            _homeZ = Config.Stream.GetSingle(Address + ObjectConfig.HomeZOffset);
+            _homeX = Config.Stream.GetFloat(Address + ObjectConfig.HomeXOffset);
+            _homeY = Config.Stream.GetFloat(Address + ObjectConfig.HomeYOffset);
+            _homeZ = Config.Stream.GetFloat(Address + ObjectConfig.HomeZOffset);
 
-            _facingYaw = Config.Stream.GetUInt16(Address + ObjectConfig.YawFacingOffset);
-            _facingPitch = Config.Stream.GetUInt16(Address + ObjectConfig.PitchFacingOffset);
-            _facingRoll = Config.Stream.GetUInt16(Address + ObjectConfig.RollFacingOffset);
+            _facingYaw = Config.Stream.GetUShort(Address + ObjectConfig.YawFacingOffset);
+            _facingPitch = Config.Stream.GetUShort(Address + ObjectConfig.PitchFacingOffset);
+            _facingRoll = Config.Stream.GetUShort(Address + ObjectConfig.RollFacingOffset);
 
-            _processedNextLink = Config.Stream.GetUInt32(Address + ObjectConfig.ProcessedNextLinkOffset);
-            _processedPrevLink = Config.Stream.GetUInt32(Address + ObjectConfig.ProcessedPreviousLinkOffset);
+            _processedNextLink = Config.Stream.GetUInt(Address + ObjectConfig.ProcessedNextLinkOffset);
+            _processedPrevLink = Config.Stream.GetUInt(Address + ObjectConfig.ProcessedPreviousLinkOffset);
         }
 
         public void Update2()

@@ -31,7 +31,7 @@ namespace STROOP
 
         private short GetHatLocationValueFromMemory()
         {
-            return Config.Stream.GetInt16(Config.FileManager.CurrentFileAddress + _addressOffset);
+            return Config.Stream.GetShort(Config.FileManager.CurrentFileAddress + _addressOffset);
         }
 
         protected override void SubmitValue()

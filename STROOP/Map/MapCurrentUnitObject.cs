@@ -28,7 +28,7 @@ namespace STROOP.Map
 
         protected override List<List<(float x, float y, float z)>> GetQuadList()
         {
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
             float posAngleX = (float)_posAngle.X;
             float posAngleZ = (float)_posAngle.Z;
             int xMin = (short)posAngleX;

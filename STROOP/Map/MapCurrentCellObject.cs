@@ -24,7 +24,7 @@ namespace STROOP.Map
 
         protected override List<List<(float x, float y, float z)>> GetQuadList()
         {
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
             (int cellX, int cellZ) = WatchVariableSpecialUtilities.GetMarioCell();
             int xMin = (cellX - 8) * 1024;
             int xMax = xMin + 1024;

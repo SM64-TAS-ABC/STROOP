@@ -34,9 +34,9 @@ namespace STROOP.Ttc
         public TtcCog(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                angle: Normalize(Config.Stream.GetInt32(address + 0xD4)),
-                currentAngularVelocity: (int)Config.Stream.GetSingle(address + 0xF8),
-                targetAngularVelocity: (int)Config.Stream.GetSingle(address + 0xFC))
+                angle: Normalize(Config.Stream.GetInt(address + 0xD4)),
+                currentAngularVelocity: (int)Config.Stream.GetFloat(address + 0xF8),
+                targetAngularVelocity: (int)Config.Stream.GetFloat(address + 0xFC))
         {
         }
 

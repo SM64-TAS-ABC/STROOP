@@ -58,8 +58,8 @@ namespace STROOP.Managers
                     () => StoreInfo(x: true),
                     () => StoreInfo(y: true),
                     () => StoreInfo(z: true),
-                    () => ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), false),
-                    () => ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), true),
+                    () => ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), false),
+                    () => ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), true),
                 });
 
             Button buttonTasStoreAngle = splitContainerTas.Panel1.Controls["buttonTasStoreAngle"] as Button;
@@ -106,10 +106,10 @@ namespace STROOP.Managers
         private void StoreInfo(
             bool x = false, bool y = false, bool z = false, bool angle = false)
         {
-            if (x) SpecialConfig.CustomX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            if (y) SpecialConfig.CustomY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            if (z) SpecialConfig.CustomZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            if (angle) SpecialConfig.CustomAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            if (x) SpecialConfig.CustomX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            if (y) SpecialConfig.CustomY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            if (z) SpecialConfig.CustomZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            if (angle) SpecialConfig.CustomAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
         }
 
         private void TakeInfo(

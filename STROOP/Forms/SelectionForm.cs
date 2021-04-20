@@ -93,7 +93,7 @@ namespace STROOP.Forms
                     int? animation = TableConfig.MarioAnimations.GetAnimationFromName(animationName);
                     if (animation.HasValue)
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                        uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
                         Config.Stream.SetValue((short)animation.Value, marioObjRef + MarioObjectConfig.AnimationOffset);
                     }
                 });

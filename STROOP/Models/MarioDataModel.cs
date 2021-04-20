@@ -338,39 +338,39 @@ namespace STROOP.Models
         public void Update()
         {
             // Get Mario position
-            _x = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            _y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            _z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            _x = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            _y = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            _z = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             // Get rotation
-            _facingYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-            _facingPitch = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
-            _facingRoll = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingRollOffset);
+            _facingYaw = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            _facingPitch = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
+            _facingRoll = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingRollOffset);
 
             // Get holp position
-            _holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
-            _holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
-            _holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
+            _holpX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+            _holpY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+            _holpZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
 
             // Update triangles
-            UInt32 floorTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            UInt32 floorTriangleAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             _floorTriangle = floorTriangleAddress != 0x00 ? TriangleDataModel.Create(floorTriangleAddress) : null;
-            UInt32 wallTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+            UInt32 wallTriangleAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
             _wallTriangle = wallTriangleAddress != 0x00 ? TriangleDataModel.Create(wallTriangleAddress) : null;
-            UInt32 ceilingTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
+            UInt32 ceilingTriangleAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
             _ceilingTriangle = ceilingTriangleAddress != 0x00 ? TriangleDataModel.Create(ceilingTriangleAddress) : null;
 
-            _heldObject = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
-            _stoodOnObject = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);
-            _riddenObject = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.RiddenObjectPointerOffset);
-            _interactionObject = Config.Stream.GetUInt32(MarioConfig.InteractionObjectPointerOffset + MarioConfig.StructAddress);
-            _usedObject = Config.Stream.GetUInt32(MarioConfig.UsedObjectPointerOffset + MarioConfig.StructAddress);
+            _heldObject = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
+            _stoodOnObject = Config.Stream.GetUInt(MarioConfig.StoodOnObjectPointerAddress);
+            _riddenObject = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.RiddenObjectPointerOffset);
+            _interactionObject = Config.Stream.GetUInt(MarioConfig.InteractionObjectPointerOffset + MarioConfig.StructAddress);
+            _usedObject = Config.Stream.GetUInt(MarioConfig.UsedObjectPointerOffset + MarioConfig.StructAddress);
 
-            _hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            _hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
 
-            _action = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
+            _action = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.ActionOffset);
            
-            _floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+            _floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
             _normalY = _floorTriangle == null ? 1 : _floorTriangle.NormY;
 
             ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(_facingYaw);

@@ -118,7 +118,7 @@ namespace STROOPUnitTests
 
             var valuesWithBytes = values.Select(s => (s.Item1, s.Item2, BitConverter.GetBytes(s.Item2))).ToList();
 
-            BasicTest<UInt16>(valuesWithBytes, processStream, (address, _, absolute) => processStream.GetUInt16(address, absolute));
+            BasicTest<UInt16>(valuesWithBytes, processStream, (address, _, absolute) => processStream.GetUShort(address, absolute));
         }
 
         [TestMethod]
@@ -133,7 +133,7 @@ namespace STROOPUnitTests
 
             var valuesWithBytes = values.Select(s => (s.Item1, s.Item2, BitConverter.GetBytes(s.Item2))).ToList();
 
-           BasicTest<UInt32>(valuesWithBytes, processStream, (address, _, absolute) => processStream.GetUInt32(address, absolute));
+           BasicTest<UInt32>(valuesWithBytes, processStream, (address, _, absolute) => processStream.GetUInt(address, absolute));
         }
 
         [TestMethod]

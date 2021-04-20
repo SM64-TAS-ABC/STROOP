@@ -20,8 +20,8 @@ namespace STROOP.Ttc
         public TtcAmp(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                state: Config.Stream.GetInt32(address + 0x14C),
-                angle: Normalize(Config.Stream.GetInt32(address + 0xC8)))
+                state: Config.Stream.GetInt(address + 0x14C),
+                angle: Normalize(Config.Stream.GetInt(address + 0xC8)))
         {
         }
 

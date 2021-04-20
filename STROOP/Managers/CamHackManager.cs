@@ -311,10 +311,10 @@ namespace STROOP.Managers
                 goto END;
             PanModel panModel = SpecialConfig.PanModels[panIndex];
 
-            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-            double camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-            double camY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
-            double camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+            uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
+            double camX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+            double camY = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+            double camZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
 
             if (SpecialConfig.PanCamPos != 0)
             {
@@ -448,16 +448,16 @@ END:
 
         private void DoTestingCalculations()
         {
-            uint objAddress = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
+            uint objAddress = Config.Stream.GetUInt(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
             if (objAddress == 0) return;
 
-            int currentGlobalTimer = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress);
+            int currentGlobalTimer = Config.Stream.GetInt(MiscConfig.GlobalTimerAddress);
             if (currentGlobalTimer == _globalTimer) return;
             _globalTimer = currentGlobalTimer;
 
             uint swooperTargetOffset = 0xFE;
-            ushort swooperTargetAngle = Config.Stream.GetUInt16(objAddress + swooperTargetOffset);
-            ushort cameraAngle = Config.Stream.GetUInt16(CamHackConfig.StructAddress + CamHackConfig.ThetaOffset);
+            ushort swooperTargetAngle = Config.Stream.GetUShort(objAddress + swooperTargetOffset);
+            ushort cameraAngle = Config.Stream.GetUShort(CamHackConfig.StructAddress + CamHackConfig.ThetaOffset);
 
             double angleCap = 1024;
             ushort newCameraAngle = MoreMath.NormalizeAngleUshort(MoreMath.RotateAngleTowards(cameraAngle, swooperTargetAngle, angleCap));
@@ -468,8 +468,8 @@ END:
 
         private CamHackMode getCorrectCamHackMode()
         {
-            int cameraMode = Config.Stream.GetInt32(CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
-            ushort absoluteAngle = Config.Stream.GetUInt16(CamHackConfig.StructAddress + CamHackConfig.AbsoluteAngleOffset);
+            int cameraMode = Config.Stream.GetInt(CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
+            ushort absoluteAngle = Config.Stream.GetUShort(CamHackConfig.StructAddress + CamHackConfig.AbsoluteAngleOffset);
             return cameraMode == 1 && absoluteAngle == 0 ? CamHackMode.RELATIVE_ANGLE :
                    cameraMode == 1 ? CamHackMode.ABSOLUTE_ANGLE :
                    cameraMode == 2 ? CamHackMode.FIXED_POS :

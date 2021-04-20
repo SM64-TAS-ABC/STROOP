@@ -14,7 +14,7 @@ namespace STROOP.Structs
 
         public static string GetTtcSpeedSettingDescription(short? ttcSpeedSettingNullable = null)
         {
-            short ttcSpeedSetting = ttcSpeedSettingNullable ?? Config.Stream.GetInt16(MiscConfig.TtcSpeedSettingAddress);
+            short ttcSpeedSetting = ttcSpeedSettingNullable ?? Config.Stream.GetShort(MiscConfig.TtcSpeedSettingAddress);
             switch (ttcSpeedSetting)
             {
                 case 0:

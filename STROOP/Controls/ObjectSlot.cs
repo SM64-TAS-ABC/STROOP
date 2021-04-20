@@ -643,7 +643,7 @@ namespace STROOP
                 }
 
                 uint collisionObjAddress = hoveredAddress.HasValue && Keyboard.IsKeyDown(Key.C)
-                    ? hoveredAddress.Value : Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    ? hoveredAddress.Value : Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
                 _drawCollision1Overlay = OverlayConfig.ShowOverlayCollisionObject &&
                     address == ObjectUtilities.GetCollisionObject(collisionObjAddress, 1);
                 _drawCollision2Overlay = OverlayConfig.ShowOverlayCollisionObject && 

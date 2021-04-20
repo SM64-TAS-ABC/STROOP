@@ -26,12 +26,12 @@ namespace STROOP.Utilities
             {
                 uint processGroupStructAddress = ObjectSlotsConfig.ProcessGroupsStartAddress + processGroupByte * ObjectSlotsConfig.ProcessGroupStructSize;
                 List<uint> processGroup = new List<uint>();
-                uint objAddress = Config.Stream.GetUInt32(processGroupStructAddress + ObjectConfig.ProcessedNextLinkOffset);
+                uint objAddress = Config.Stream.GetUInt(processGroupStructAddress + ObjectConfig.ProcessedNextLinkOffset);
                 while ((objAddress != processGroupStructAddress && slotIndex < ObjectSlotsConfig.MaxSlots))
                 {
                     processGroup.Add(objAddress);
                     slotIndex++;
-                    objAddress = Config.Stream.GetUInt32(objAddress + ObjectConfig.ProcessedNextLinkOffset);
+                    objAddress = Config.Stream.GetUInt(objAddress + ObjectConfig.ProcessedNextLinkOffset);
                 }
                 processGroups.Add(processGroup);
             }
@@ -39,12 +39,12 @@ namespace STROOP.Utilities
             // vacant slots
             {
                 List<uint> processGroup = new List<uint>();
-                uint objAddress = Config.Stream.GetUInt32(ObjectSlotsConfig.VacantSlotsNodeAddress + ObjectConfig.ProcessedNextLinkOffset);
+                uint objAddress = Config.Stream.GetUInt(ObjectSlotsConfig.VacantSlotsNodeAddress + ObjectConfig.ProcessedNextLinkOffset);
                 while ((objAddress != 0 && slotIndex < ObjectSlotsConfig.MaxSlots))
                 {
                     processGroup.Add(objAddress);
                     slotIndex++;
-                    objAddress = Config.Stream.GetUInt32(objAddress + ObjectConfig.ProcessedNextLinkOffset);
+                    objAddress = Config.Stream.GetUInt(objAddress + ObjectConfig.ProcessedNextLinkOffset);
                 }
                 processGroups.Add(processGroup);
             }

@@ -23,7 +23,7 @@ namespace STROOP.Models
         public void Update()
         {
             // Update behavior bank
-            Config.ObjectAssociations.BehaviorBankStart = Config.Stream.GetUInt32((Config.ObjectAssociations.SegmentTable & 0xFFFFFF) + 0x13 * 4);
+            Config.ObjectAssociations.BehaviorBankStart = Config.Stream.GetUInt((Config.ObjectAssociations.SegmentTable & 0xFFFFFF) + 0x13 * 4);
 
             int? vacantIndexStart = UpdateGetProcessedObjects();
             if (vacantIndexStart.HasValue)
@@ -63,14 +63,14 @@ namespace STROOP.Models
                 uint processGroupStructAddress = ObjectSlotsConfig.ProcessGroupsStartAddress + processGroup * ObjectSlotsConfig.ProcessGroupStructSize;
 
                 // Calculate start object
-                uint objAddress = Config.Stream.GetUInt32(processGroupStructAddress + ObjectConfig.ProcessedNextLinkOffset);
+                uint objAddress = Config.Stream.GetUInt(processGroupStructAddress + ObjectConfig.ProcessedNextLinkOffset);
 
                 // Loop through every object within the group
                 while ((objAddress != processGroupStructAddress && slotIndex < ObjectSlotsConfig.MaxSlots))
                 {
                     // Validate current object
                     if (objAddress == 0 ||
-                        Config.Stream.GetUInt16(objAddress + ObjectConfig.HeaderOffset) != 0x18)
+                        Config.Stream.GetUShort(objAddress + ObjectConfig.HeaderOffset) != 0x18)
                     {
                         if (successiveFails++ > successiveFailsThreshold)
                             ClearAllObjectSlots();
@@ -86,7 +86,7 @@ namespace STROOP.Models
                     obj.Update();
 
                     // Move to next object
-                    objAddress = Config.Stream.GetUInt32(objAddress + ObjectConfig.ProcessedNextLinkOffset);
+                    objAddress = Config.Stream.GetUInt(objAddress + ObjectConfig.ProcessedNextLinkOffset);
 
                     // Mark next slot
                     slotIndex++;
@@ -99,12 +99,12 @@ namespace STROOP.Models
         private void UpdateGetVacantObjects(int slotIndex)
         {
             // Now calculate vacant addresses
-            uint objAddress = Config.Stream.GetUInt32(ObjectSlotsConfig.VacantSlotsNodeAddress + ObjectConfig.ProcessedNextLinkOffset);
+            uint objAddress = Config.Stream.GetUInt(ObjectSlotsConfig.VacantSlotsNodeAddress + ObjectConfig.ProcessedNextLinkOffset);
             for (int vacantSlotIndex = 0; slotIndex < ObjectSlotsConfig.MaxSlots; slotIndex++, vacantSlotIndex++)
             {
                 // Validate current object
                 if (objAddress == 0 ||
-                    Config.Stream.GetUInt16(objAddress + ObjectConfig.HeaderOffset) != 0x18)
+                    Config.Stream.GetUShort(objAddress + ObjectConfig.HeaderOffset) != 0x18)
                 {
                     if (successiveFails++ > successiveFailsThreshold)
                         ClearAllObjectSlots();
@@ -118,7 +118,7 @@ namespace STROOP.Models
                 obj.VacantSlotIndex = vacantSlotIndex;
                 obj.Update();
 
-                objAddress = Config.Stream.GetUInt32(objAddress + ObjectConfig.ProcessedNextLinkOffset);
+                objAddress = Config.Stream.GetUInt(objAddress + ObjectConfig.ProcessedNextLinkOffset);
             }
 
             successiveFails = 0;

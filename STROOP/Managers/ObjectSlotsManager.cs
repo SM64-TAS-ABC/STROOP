@@ -207,7 +207,7 @@ namespace STROOP.Managers
             }
             else if (click == ClickType.CamHackClick)
             {
-                uint currentCamHackSlot = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
+                uint currentCamHackSlot = Config.Stream.GetUInt(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
                 uint newCamHackSlot = currentCamHackSlot == selectedSlot.CurrentObject.Address ? 0 
                     : selectedSlot.CurrentObject.Address;
                 Config.Stream.SetValue(newCamHackSlot, CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
@@ -390,43 +390,43 @@ namespace STROOP.Managers
                     break;
                 case SelectionMethodType.Held:
                     SelectedSlotsAddresses.Clear();
-                    uint heldObjectAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
+                    uint heldObjectAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
                     if (heldObjectAddress != 0) SelectedSlotsAddresses.Add(heldObjectAddress);
                     break;
                 case SelectionMethodType.StoodOn:
                     SelectedSlotsAddresses.Clear();
-                    uint stoodOnObjectAddress = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);
+                    uint stoodOnObjectAddress = Config.Stream.GetUInt(MarioConfig.StoodOnObjectPointerAddress);
                     if (stoodOnObjectAddress != 0) SelectedSlotsAddresses.Add(stoodOnObjectAddress);
                     break;
                 case SelectionMethodType.Interaction:
                     SelectedSlotsAddresses.Clear();
-                    uint interactionObjectAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.InteractionObjectPointerOffset);
+                    uint interactionObjectAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.InteractionObjectPointerOffset);
                     if (interactionObjectAddress != 0) SelectedSlotsAddresses.Add(interactionObjectAddress);
                     break;
                 case SelectionMethodType.Used:
                     SelectedSlotsAddresses.Clear();
-                    uint usedObjectAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.UsedObjectPointerOffset);
+                    uint usedObjectAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.UsedObjectPointerOffset);
                     if (usedObjectAddress != 0) SelectedSlotsAddresses.Add(usedObjectAddress);
                     break;
                 case SelectionMethodType.Floor:
                     SelectedSlotsAddresses.Clear();
-                    uint floorTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                    uint floorTriangleAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
                     if (floorTriangleAddress == 0) break;
-                    uint floorObjectAddress = Config.Stream.GetUInt32(floorTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
+                    uint floorObjectAddress = Config.Stream.GetUInt(floorTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
                     if (floorObjectAddress != 0) SelectedSlotsAddresses.Add(floorObjectAddress);
                     break;
                 case SelectionMethodType.Wall:
                     SelectedSlotsAddresses.Clear();
-                    uint wallTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+                    uint wallTriangleAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
                     if (wallTriangleAddress == 0) break;
-                    uint wallObjectAddress = Config.Stream.GetUInt32(wallTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
+                    uint wallObjectAddress = Config.Stream.GetUInt(wallTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
                     if (wallObjectAddress != 0) SelectedSlotsAddresses.Add(wallObjectAddress);
                     break;
                 case SelectionMethodType.Ceiling:
                     SelectedSlotsAddresses.Clear();
-                    uint ceilingTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
+                    uint ceilingTriangleAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
                     if (ceilingTriangleAddress == 0) break;
-                    uint ceilingObjectAddress = Config.Stream.GetUInt32(ceilingTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
+                    uint ceilingObjectAddress = Config.Stream.GetUInt(ceilingTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
                     if (ceilingObjectAddress != 0) SelectedSlotsAddresses.Add(ceilingObjectAddress);
                     break;
                 case SelectionMethodType.Closest:

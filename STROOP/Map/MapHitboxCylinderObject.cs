@@ -26,10 +26,10 @@ namespace STROOP.Map
         protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
         {
             uint objAddress = _posAngle.GetObjAddress();
-            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-            float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
-            float hitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeightOffset);
-            float hitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+            float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+            float hitboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxRadiusOffset);
+            float hitboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxHeightOffset);
+            float hitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
             float hitboxMinY = objY - hitboxDownOffset;
             float hitboxMaxY = hitboxMinY + hitboxHeight;
             return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>()

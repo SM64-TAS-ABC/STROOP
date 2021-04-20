@@ -31,13 +31,13 @@ namespace STROOP.Ttc
         public TtcElevator(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                minHeight: (int)Config.Stream.GetSingle(address + 0x168),
-                maxHeight: (int)Config.Stream.GetSingle(address + 0xF8),
-                height: (int)Config.Stream.GetSingle(address + 0xA4),
-                verticalSpeed: (int)Config.Stream.GetSingle(address + 0xB0),
-                direction: (int)Config.Stream.GetSingle(address + 0xF4),
-                timerMax: Config.Stream.GetInt32(address + 0xFC),
-                timer: Config.Stream.GetInt32(address + 0x154))
+                minHeight: (int)Config.Stream.GetFloat(address + 0x168),
+                maxHeight: (int)Config.Stream.GetFloat(address + 0xF8),
+                height: (int)Config.Stream.GetFloat(address + 0xA4),
+                verticalSpeed: (int)Config.Stream.GetFloat(address + 0xB0),
+                direction: (int)Config.Stream.GetFloat(address + 0xF4),
+                timerMax: Config.Stream.GetInt(address + 0xFC),
+                timer: Config.Stream.GetInt(address + 0x154))
         {
         }
 

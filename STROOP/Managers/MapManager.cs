@@ -566,9 +566,9 @@ namespace STROOP.Managers
                 {
                     () =>
                     {
-                        float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                         Config.MapGraphics.SetCustomCenter(marioX, marioY, marioZ);
                     }
                 });
@@ -612,17 +612,17 @@ namespace STROOP.Managers
                 {
                     () =>
                     {
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                        ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                         Config.MapGraphics.SetCustomYaw(marioAngle);
                     },
                     () =>
                     {
-                        ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+                        ushort cameraAngle = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
                         Config.MapGraphics.SetCustomYaw(cameraAngle);
                     },
                     () =>
                     {
-                        ushort centripetalAngle = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset);
+                        ushort centripetalAngle = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset);
                         double centripetalAngleReversed = MoreMath.ReverseAngle(centripetalAngle);
                         Config.MapGraphics.SetCustomYaw(centripetalAngleReversed);
                     },
@@ -987,9 +987,9 @@ namespace STROOP.Managers
 
         private void UpdateDataTab()
         {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             int puX = PuUtilities.GetPuIndex(marioX);
             int puY = PuUtilities.GetPuIndex(marioY);
@@ -999,13 +999,13 @@ namespace STROOP.Managers
             double qpuY = puY / 4.0;
             double qpuZ = puZ / 4.0;
 
-            uint floorTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-            float? yNorm = floorTriangleAddress == 0 ? (float?)null : Config.Stream.GetSingle(floorTriangleAddress + TriangleOffsetsConfig.NormY);
+            uint floorTriangleAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            float? yNorm = floorTriangleAddress == 0 ? (float?)null : Config.Stream.GetFloat(floorTriangleAddress + TriangleOffsetsConfig.NormY);
 
             byte level = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.LevelOffset);
             byte area = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.AreaOffset);
-            ushort loadingPoint = Config.Stream.GetUInt16(MiscConfig.LoadingPointAddress);
-            ushort missionLayout = Config.Stream.GetUInt16(MiscConfig.MissionAddress);
+            ushort loadingPoint = Config.Stream.GetUShort(MiscConfig.LoadingPointAddress);
+            ushort missionLayout = Config.Stream.GetUShort(MiscConfig.MissionAddress);
 
             MapLayout map = Config.MapAssociations.GetBestMap();
 

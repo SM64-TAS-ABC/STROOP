@@ -22,20 +22,20 @@ namespace STROOP.Structs
         {
             var segment = (segmentedAddress >> 24);
             var offset = segmentedAddress & 0xFFFFFF;
-            return offset + Config.Stream.GetUInt32(4 * segment + (SegmentationTableAddress & 0xFFFFFF));
+            return offset + Config.Stream.GetUInt(4 * segment + (SegmentationTableAddress & 0xFFFFFF));
         }
 
         public static uint SegmentedToVirtual(uint addr)
         {
             uint segment = addr >> 24;
             uint offset = addr & 0x00FFFFFF;
-            uint segmentTableValue = Config.Stream.GetUInt32(SegmentationTableAddress + 4 * segment);
+            uint segmentTableValue = Config.Stream.GetUInt(SegmentationTableAddress + 4 * segment);
             return (segmentTableValue + offset) | 0x80000000;
         }
 
         public static uint VirtualToSegmented(uint segment, uint addr)
         {
-            uint segmentTableValue = Config.Stream.GetUInt32(SegmentationTableAddress + 4 * segment);
+            uint segmentTableValue = Config.Stream.GetUInt(SegmentationTableAddress + 4 * segment);
             uint offset = (addr & 0x1FFFFFFF) - segmentTableValue;
             return (segment << 24) + offset;
         }

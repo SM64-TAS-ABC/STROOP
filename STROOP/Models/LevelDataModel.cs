@@ -61,8 +61,8 @@ namespace STROOP.Models
             // Get level and area
             _index = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.LevelOffset);
             _area = Config.Stream.GetByte(MiscConfig.WarpDestinationAddress + MiscConfig.AreaOffset);
-            _loadingPoint = Config.Stream.GetUInt16(MiscConfig.LoadingPointAddress);
-            _missionLayout = Config.Stream.GetUInt16(MiscConfig.MissionAddress);
+            _loadingPoint = Config.Stream.GetUShort(MiscConfig.LoadingPointAddress);
+            _missionLayout = Config.Stream.GetUShort(MiscConfig.MissionAddress);
         }
 
         public void Update2() { }

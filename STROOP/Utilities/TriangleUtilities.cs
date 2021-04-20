@@ -14,23 +14,23 @@ namespace STROOP.Utilities
     {
         public static List<TriangleDataModel> GetLevelTriangles()
         {
-            uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
-            int numLevelTriangles = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
+            uint triangleListAddress = Config.Stream.GetUInt(TriangleConfig.TriangleListPointerAddress);
+            int numLevelTriangles = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
             return GetTrianglesInRange(triangleListAddress, numLevelTriangles);
         }
 
         public static List<uint> GetLevelTriangleAddresses()
         {
-            uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
-            int numLevelTriangles = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
+            uint triangleListAddress = Config.Stream.GetUInt(TriangleConfig.TriangleListPointerAddress);
+            int numLevelTriangles = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
             return GetTriangleAddressesInRange(triangleListAddress, numLevelTriangles);
         }
 
         public static List<TriangleDataModel> GetObjectTriangles()
         {
-            uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
-            int numTotalTriangles = Config.Stream.GetInt32(TriangleConfig.TotalTriangleCountAddress);
-            int numLevelTriangles = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
+            uint triangleListAddress = Config.Stream.GetUInt(TriangleConfig.TriangleListPointerAddress);
+            int numTotalTriangles = Config.Stream.GetInt(TriangleConfig.TotalTriangleCountAddress);
+            int numLevelTriangles = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
 
             uint objectTriangleListAddress = triangleListAddress + (uint)(numLevelTriangles * TriangleConfig.TriangleStructSize);
             int numObjectTriangles = numTotalTriangles - numLevelTriangles;
@@ -66,15 +66,15 @@ namespace STROOP.Utilities
 
         public static List<TriangleDataModel> GetAllTriangles()
         {
-            uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
-            int numTotalTriangles = Config.Stream.GetInt32(TriangleConfig.TotalTriangleCountAddress);
+            uint triangleListAddress = Config.Stream.GetUInt(TriangleConfig.TriangleListPointerAddress);
+            int numTotalTriangles = Config.Stream.GetInt(TriangleConfig.TotalTriangleCountAddress);
             return GetTrianglesInRange(triangleListAddress, numTotalTriangles);
         }
 
         public static List<uint> GetAllTriangleAddresses()
         {
-            uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
-            int numTotalTriangles = Config.Stream.GetInt32(TriangleConfig.TotalTriangleCountAddress);
+            uint triangleListAddress = Config.Stream.GetUInt(TriangleConfig.TriangleListPointerAddress);
+            int numTotalTriangles = Config.Stream.GetInt(TriangleConfig.TotalTriangleCountAddress);
             return GetTriangleAddressesInRange(triangleListAddress, numTotalTriangles);
         }
 
@@ -110,7 +110,7 @@ namespace STROOP.Utilities
             List<uint> triangleAddresses = GetLevelTriangleAddresses();
             triangleAddresses.ForEach(address =>
             {
-                short type = Config.Stream.GetInt16(address + TriangleOffsetsConfig.SurfaceType);
+                short type = Config.Stream.GetShort(address + TriangleOffsetsConfig.SurfaceType);
                 if (type != 0x0A)
                 {
                     ButtonUtilities.AnnihilateTriangle(new List<uint>() { address });
@@ -135,7 +135,7 @@ namespace STROOP.Utilities
             List<uint> triangleAddresses = GetLevelTriangleAddresses();
             triangleAddresses.ForEach(address =>
             {
-                float ynorm = Config.Stream.GetSingle(address + TriangleOffsetsConfig.NormY);
+                float ynorm = Config.Stream.GetFloat(address + TriangleOffsetsConfig.NormY);
                 TriangleClassification triClassification = CalculateClassification(ynorm);
                 if (classification == null || classification == triClassification)
                 {
@@ -149,7 +149,7 @@ namespace STROOP.Utilities
             List<uint> triangleAddresses = GetLevelTriangleAddresses();
             triangleAddresses.ForEach(address =>
             {
-                short type = Config.Stream.GetInt16(address + TriangleOffsetsConfig.SurfaceType);
+                short type = Config.Stream.GetShort(address + TriangleOffsetsConfig.SurfaceType);
                 if (type == surfaceType)
                 {
                     ButtonUtilities.NeutralizeTriangle(new List<uint>() { address });
@@ -173,7 +173,7 @@ namespace STROOP.Utilities
             List<uint> triangleAddresses = GetLevelTriangleAddresses();
             triangleAddresses.ForEach(address =>
             {
-                float ynorm = Config.Stream.GetSingle(address + TriangleOffsetsConfig.NormY);
+                float ynorm = Config.Stream.GetFloat(address + TriangleOffsetsConfig.NormY);
                 TriangleClassification triClassification = CalculateClassification(ynorm);
                 if (classification == null || classification == triClassification)
                 {
@@ -282,15 +282,15 @@ namespace STROOP.Utilities
             int xSize = 3 * typeSize;
             int zSize = 16 * xSize;
             uint address = (uint)(partitionAddress + cellZ * zSize + cellX * xSize + type * typeSize);
-            address = Config.Stream.GetUInt32(address);
+            address = Config.Stream.GetUInt(address);
 
             while (address != 0)
             {
-                uint triAddress = Config.Stream.GetUInt32(address + 4);
+                uint triAddress = Config.Stream.GetUInt(address + 4);
                 TriangleDataModel tri = TriangleDataModel.Create(triAddress);
                 bool isLegitimateTriangle = tri.NormX != 0 || tri.NormY != 0 || tri.NormZ != 0;
                 if (isLegitimateTriangle && tri.IsPointInsideAndAboveTriangle(shortX, shortY, shortZ)) return tri;
-                address = Config.Stream.GetUInt32(address);
+                address = Config.Stream.GetUInt(address);
             }
 
             return null;
@@ -346,15 +346,15 @@ namespace STROOP.Utilities
             int xSize = 3 * typeSize;
             int zSize = 16 * xSize;
             uint address = (uint)(partitionAddress + cellZ * zSize + cellX * xSize + type * typeSize);
-            address = Config.Stream.GetUInt32(address);
+            address = Config.Stream.GetUInt(address);
 
             while (address != 0)
             {
-                uint triAddress = Config.Stream.GetUInt32(address + 4);
+                uint triAddress = Config.Stream.GetUInt(address + 4);
                 TriangleDataModel tri = TriangleDataModel.Create(triAddress);
                 bool isLegitimateTriangle = tri.NormX != 0 || tri.NormY != 0 || tri.NormZ != 0;
                 if (isLegitimateTriangle && tri.IsPointInsideAndBelowTriangle(shortX, shortY, shortZ)) return tri;
-                address = Config.Stream.GetUInt32(address);
+                address = Config.Stream.GetUInt(address);
             }
 
             return null;

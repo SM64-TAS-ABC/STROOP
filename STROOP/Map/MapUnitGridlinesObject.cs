@@ -30,7 +30,7 @@ namespace STROOP.Map
                 return new List<(float x, float y, float z)>();
             }
 
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
             int xMin = (int)Config.CurrentMapGraphics.MapViewXMin - 1;
             int xMax = (int)Config.CurrentMapGraphics.MapViewXMax + 1;

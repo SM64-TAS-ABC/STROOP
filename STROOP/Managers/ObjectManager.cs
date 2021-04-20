@@ -486,7 +486,7 @@ namespace STROOP.Managers
             if (_objects.Count == 0)
                 return;
 
-            var scriptAddress = Config.Stream.GetUInt32(_objects.First().Address + ObjectConfig.BehaviorScriptOffset);
+            var scriptAddress = Config.Stream.GetUInt(_objects.First().Address + ObjectConfig.BehaviorScriptOffset);
             Config.StroopMainForm.SwitchTab("tabPageScripts");
         }
 

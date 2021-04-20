@@ -18,7 +18,7 @@ namespace STROOP.Utilities
             int? objIndex = ObjectUtilities.GetObjectIndex(obj.Address);
             if (!objIndex.HasValue) return null;
             uint memoryOffset = (uint)objIndex.Value * 4;
-            return Config.Stream.GetInt32(0x803678A0 + memoryOffset);
+            return Config.Stream.GetInt(0x803678A0 + memoryOffset);
         }
 
         public static string GetNumRngUsagesAsString(ObjectDataModel obj)
@@ -41,7 +41,7 @@ namespace STROOP.Utilities
             for (int i = 0; i <= 240; i++)
             {
                 uint memoryOffset = (uint)i * 4;
-                numRngUsages += Config.Stream.GetInt32(0x803678A0 + memoryOffset);
+                numRngUsages += Config.Stream.GetInt(0x803678A0 + memoryOffset);
             }
             return numRngUsages;
         }

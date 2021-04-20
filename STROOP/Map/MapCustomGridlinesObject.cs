@@ -24,7 +24,7 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
             int gridlineMin = -8192;
             int gridlineMax = 8192;

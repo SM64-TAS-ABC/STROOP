@@ -202,7 +202,7 @@ namespace STROOP.Utilities
                 case BehaviorCommandType.Call:
                     {
                         address += 3; // Ignored
-                        uint function = stream.GetUInt32(address);
+                        uint function = stream.GetUInt(address);
                         decoded = $"fn{function:X8}()";
                         break;
                     }
@@ -249,9 +249,9 @@ namespace STROOP.Utilities
                 case BehaviorCommandType.SetHitboxSphere:
                     {
                         address += 3;
-                        UInt16 xz = stream.GetUInt16(address);
+                        UInt16 xz = stream.GetUShort(address);
                         address += 2;
-                        UInt16 y = stream.GetUInt16(address);
+                        UInt16 y = stream.GetUShort(address);
                         decoded = $"obj.set_sphere_hitbox(radius_xz={xz}, radius_y={y})";
                         break;
                     }
@@ -263,17 +263,17 @@ namespace STROOP.Utilities
                 case BehaviorCommandType.SetPhysics:
                     {
                         address += 3;
-                        UInt16 minWallDistance = stream.GetUInt16(address);
+                        UInt16 minWallDistance = stream.GetUShort(address);
                         address += 2;
-                        float floorHeight = stream.GetUInt16(address) / 100.0f;
+                        float floorHeight = stream.GetUShort(address) / 100.0f;
                         address += 2;
-                        float bounce = stream.GetUInt16(address) / 100.0f;
+                        float bounce = stream.GetUShort(address) / 100.0f;
                         address += 2;
-                        float drag = stream.GetUInt16(address) / 100.0f;
+                        float drag = stream.GetUShort(address) / 100.0f;
                         address += 2;
-                        float v_174 = stream.GetUInt16(address) / 100.0f;
+                        float v_174 = stream.GetUShort(address) / 100.0f;
                         address += 2;
-                        float buoyancy = stream.GetUInt16(address) / 100.0f;
+                        float buoyancy = stream.GetUShort(address) / 100.0f;
                         address += 2;
                         address += 4; // Ignored?
                         decoded = $"SetGravity(min_wall_distance={minWallDistance}, floor_height={floorHeight}, bounce={bounce}, drag={drag}, obj[0x174] = {v_174}), bouyancy={buoyancy})";
@@ -288,18 +288,18 @@ namespace STROOP.Utilities
                 case BehaviorCommandType.SpawnChildObject:
                     {
                         address += 3; // Ignored
-                        UInt32 modelId = stream.GetUInt32(address);
+                        UInt32 modelId = stream.GetUInt(address);
                         address += 4;
-                        UInt32 behavior = stream.GetUInt32(address);
+                        UInt32 behavior = stream.GetUInt(address);
                         decoded = $"obj.SpawnChildObject(model=0x{modelId:X8}, behavior=0x{behavior:X8})";
                         break;
                     }
                 case BehaviorCommandType.SpawnObject:
                     {
                         address += 3; // Ignored
-                        UInt32 modelId = stream.GetUInt32(address);
+                        UInt32 modelId = stream.GetUInt(address);
                         address += 4;
-                        UInt32 behavior = stream.GetUInt32(address);
+                        UInt32 behavior = stream.GetUInt(address);
                         decoded = $"SpawnObject(model=0x{modelId:X8}, behavior=0x{behavior:X8})";
                         break;
                     }

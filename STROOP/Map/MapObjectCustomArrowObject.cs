@@ -37,13 +37,13 @@ namespace STROOP.Map
         protected override double GetYaw()
         {
             return _numBytes == 2 ?
-                Config.Stream.GetUInt16(_objAddress + _yawOffset) :
-                Config.Stream.GetUInt32(_objAddress + _yawOffset);
+                Config.Stream.GetUShort(_objAddress + _yawOffset) :
+                Config.Stream.GetUInt(_objAddress + _yawOffset);
         }
 
         protected override double GetRecommendedSize()
         {
-            return Config.Stream.GetSingle(_objAddress + ObjectConfig.HSpeedOffset);
+            return Config.Stream.GetFloat(_objAddress + ObjectConfig.HSpeedOffset);
         }
 
         public override string GetName()

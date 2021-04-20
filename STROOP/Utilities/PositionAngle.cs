@@ -32,7 +32,7 @@ namespace STROOP.Utilities
 
         private static uint GetScheduleIndex()
         {
-            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
             return ParsingUtilities.ParseUIntRoundingCapping(globalTimer + ScheduleOffset);
         }
 
@@ -233,7 +233,7 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.Obj, address: address);
         public static PositionAngle ObjHome(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.ObjHome, address: address);
-        public static PositionAngle MarioObj() => Obj(Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress));
+        public static PositionAngle MarioObj() => Obj(Config.Stream.GetUInt(MarioObjectConfig.PointerAddress));
         public static PositionAngle ObjGfx(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.ObjGfx, address: address);
         public static PositionAngle ObjScale(uint address) =>
@@ -547,7 +547,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Obj:
                     return Address.Value;
                 case PositionAngleTypeEnum.Mario:
-                    return Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    return Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -595,35 +595,35 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Custom2:
                         return SpecialConfig.Custom2X;
                     case PositionAngleTypeEnum.Mario:
-                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
                     case PositionAngleTypeEnum.Holp:
-                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+                        return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
                     case PositionAngleTypeEnum.Camera:
-                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
+                        return Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.XOffset);
                     case PositionAngleTypeEnum.CameraFocus:
-                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
+                        return Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
                     case PositionAngleTypeEnum.CamHackCamera:
-                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                        return Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
                     case PositionAngleTypeEnum.CamHackFocus:
-                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                        return Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
                     case PositionAngleTypeEnum.MapCamera:
                         return SpecialConfig.Map3DCameraX;
                     case PositionAngleTypeEnum.MapFocus:
                         return SpecialConfig.Map3DFocusX;
                     case PositionAngleTypeEnum.Obj:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.XOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.XOffset);
                     case PositionAngleTypeEnum.ObjHome:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeXOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.HomeXOffset);
                     case PositionAngleTypeEnum.ObjGfx:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsXOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.GraphicsXOffset);
                     case PositionAngleTypeEnum.ObjScale:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleWidthOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.ScaleWidthOffset);
                     case PositionAngleTypeEnum.Selected:
                     {
                         List<uint> objAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
                         if (objAddresses.Count == 0) return Double.NaN;
                         uint objAddress = objAddresses[0];
-                        return Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                        return Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
                     }
                     case PositionAngleTypeEnum.First:
                         return GetObjectValue(Text, true, CoordinateAngle.X);
@@ -638,7 +638,7 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.KoopaTheQuick:
                         return PlushUtilities.GetX();
                     case PositionAngleTypeEnum.Ghost:
-                        return Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.XOffset);
+                        return Config.Stream.GetFloat(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.XOffset);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.X);
                     case PositionAngleTypeEnum.ObjTri:
@@ -649,13 +649,13 @@ namespace STROOP.Utilities
                         }
                     case PositionAngleTypeEnum.Wall:
                         return GetTriangleVertexComponent(
-                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.X);
+                            Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.X);
                     case PositionAngleTypeEnum.Floor:
                         return GetTriangleVertexComponent(
-                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), Index.Value, Coordinate.X);
+                            Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), Index.Value, Coordinate.X);
                     case PositionAngleTypeEnum.Ceiling:
                         return GetTriangleVertexComponent(
-                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.X);
+                            Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.X);
                     case PositionAngleTypeEnum.Snow:
                         return GetSnowComponent(Index.Value, Coordinate.X);
                     case PositionAngleTypeEnum.QFrame:
@@ -699,35 +699,35 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Custom2:
                         return SpecialConfig.Custom2Y;
                     case PositionAngleTypeEnum.Mario:
-                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     case PositionAngleTypeEnum.Holp:
-                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+                        return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
                     case PositionAngleTypeEnum.Camera:
-                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
+                        return Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.YOffset);
                     case PositionAngleTypeEnum.CameraFocus:
-                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
+                        return Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
                     case PositionAngleTypeEnum.CamHackCamera:
-                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                        return Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
                     case PositionAngleTypeEnum.CamHackFocus:
-                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
+                        return Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
                     case PositionAngleTypeEnum.MapCamera:
                         return SpecialConfig.Map3DCameraY;
                     case PositionAngleTypeEnum.MapFocus:
                         return SpecialConfig.Map3DFocusY;
                     case PositionAngleTypeEnum.Obj:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.YOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.YOffset);
                     case PositionAngleTypeEnum.ObjHome:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeYOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.HomeYOffset);
                     case PositionAngleTypeEnum.ObjGfx:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsYOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.GraphicsYOffset);
                     case PositionAngleTypeEnum.ObjScale:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleHeightOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.ScaleHeightOffset);
                     case PositionAngleTypeEnum.Selected:
                     {
                         List<uint> objAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
                         if (objAddresses.Count == 0) return Double.NaN;
                         uint objAddress = objAddresses[0];
-                        return Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                        return Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     }
                     case PositionAngleTypeEnum.First:
                         return GetObjectValue(Text, true, CoordinateAngle.Y);
@@ -738,11 +738,11 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.LastHome:
                         return GetObjectValue(Text, false, CoordinateAngle.Y, home: true);
                     case PositionAngleTypeEnum.GoombaProjection:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.YOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.YOffset);
                     case PositionAngleTypeEnum.KoopaTheQuick:
                         return PlushUtilities.GetY();
                     case PositionAngleTypeEnum.Ghost:
-                        return Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YOffset);
+                        return Config.Stream.GetFloat(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YOffset);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.ObjTri:
@@ -753,13 +753,13 @@ namespace STROOP.Utilities
                         }
                     case PositionAngleTypeEnum.Wall:
                         return GetTriangleVertexComponent(
-                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.Y);
+                            Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.Floor:
                         return GetTriangleVertexComponent(
-                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), Index.Value, Coordinate.Y);
+                            Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), Index.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.Ceiling:
                         return GetTriangleVertexComponent(
-                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Y);
+                            Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.Snow:
                         return GetSnowComponent(Index.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.QFrame:
@@ -803,35 +803,35 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Custom2:
                         return SpecialConfig.Custom2Z;
                     case PositionAngleTypeEnum.Mario:
-                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     case PositionAngleTypeEnum.Holp:
-                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
+                        return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
                     case PositionAngleTypeEnum.Camera:
-                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
+                        return Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.ZOffset);
                     case PositionAngleTypeEnum.CameraFocus:
-                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
+                        return Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
                     case PositionAngleTypeEnum.CamHackCamera:
-                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                        return Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
                     case PositionAngleTypeEnum.CamHackFocus:
-                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                        return Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
                     case PositionAngleTypeEnum.MapCamera:
                         return SpecialConfig.Map3DCameraZ;
                     case PositionAngleTypeEnum.MapFocus:
                         return SpecialConfig.Map3DFocusZ;
                     case PositionAngleTypeEnum.Obj:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ZOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.ZOffset);
                     case PositionAngleTypeEnum.ObjHome:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeZOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.HomeZOffset);
                     case PositionAngleTypeEnum.ObjGfx:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsZOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.GraphicsZOffset);
                     case PositionAngleTypeEnum.ObjScale:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleDepthOffset);
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.ScaleDepthOffset);
                     case PositionAngleTypeEnum.Selected:
                     {
                         List<uint> objAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
                         if (objAddresses.Count == 0) return Double.NaN;
                         uint objAddress = objAddresses[0];
-                        return Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                        return Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
                     }
                     case PositionAngleTypeEnum.First:
                         return GetObjectValue(Text, true, CoordinateAngle.Z);
@@ -846,7 +846,7 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.KoopaTheQuick:
                         return PlushUtilities.GetZ();
                     case PositionAngleTypeEnum.Ghost:
-                        return Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.ZOffset);
+                        return Config.Stream.GetFloat(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.ZOffset);
                     case PositionAngleTypeEnum.Tri:
                         return GetTriangleVertexComponent(Address.Value, Index.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.ObjTri:
@@ -857,13 +857,13 @@ namespace STROOP.Utilities
                         }
                     case PositionAngleTypeEnum.Wall:
                         return GetTriangleVertexComponent(
-                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.Z);
+                            Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.Floor:
                         return GetTriangleVertexComponent(
-                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), Index.Value, Coordinate.Z);
+                            Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), Index.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.Ceiling:
                         return GetTriangleVertexComponent(
-                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Z);
+                            Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.Snow:
                         return GetSnowComponent(Index.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.QFrame:
@@ -907,13 +907,13 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Custom2:
                         return SpecialConfig.Custom2Angle;
                     case PositionAngleTypeEnum.Mario:
-                        return Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                        return Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     case PositionAngleTypeEnum.Holp:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Camera:
-                        return Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+                        return Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
                     case PositionAngleTypeEnum.CameraFocus:
-                        return Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+                        return Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
                     case PositionAngleTypeEnum.CamHackCamera:
                         return CamHackUtilities.GetCamHackYawFacing();
                     case PositionAngleTypeEnum.CamHackFocus:
@@ -923,11 +923,11 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.MapFocus:
                         return SpecialConfig.Map3DCameraYaw;
                     case PositionAngleTypeEnum.Obj:
-                        return Config.Stream.GetUInt16(Address.Value + ObjectConfig.YawFacingOffset);
+                        return Config.Stream.GetUShort(Address.Value + ObjectConfig.YawFacingOffset);
                     case PositionAngleTypeEnum.ObjHome:
                         return Double.NaN;
                     case PositionAngleTypeEnum.ObjGfx:
-                        return Config.Stream.GetUInt16(Address.Value + ObjectConfig.GraphicsYawOffset);
+                        return Config.Stream.GetUShort(Address.Value + ObjectConfig.GraphicsYawOffset);
                     case PositionAngleTypeEnum.ObjScale:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Selected:
@@ -935,7 +935,7 @@ namespace STROOP.Utilities
                         List<uint> objAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
                         if (objAddresses.Count == 0) return Double.NaN;
                         uint objAddress = objAddresses[0];
-                        return Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                        return Config.Stream.GetUShort(objAddress + ObjectConfig.YawFacingOffset);
                     }
                     case PositionAngleTypeEnum.First:
                         return GetObjectValue(Text, true, CoordinateAngle.Angle);
@@ -946,11 +946,11 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.LastHome:
                         return GetObjectValue(Text, false, CoordinateAngle.Angle, home: true);
                     case PositionAngleTypeEnum.GoombaProjection:
-                        return MoreMath.NormalizeAngleUshort(Config.Stream.GetInt32(Address.Value + ObjectConfig.GoombaTargetAngleOffset));
+                        return MoreMath.NormalizeAngleUshort(Config.Stream.GetInt(Address.Value + ObjectConfig.GoombaTargetAngleOffset));
                     case PositionAngleTypeEnum.KoopaTheQuick:
                         return PlushUtilities.GetAngle();
                     case PositionAngleTypeEnum.Ghost:
-                        return Config.Stream.GetUInt16(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawFacingOffset);
+                        return Config.Stream.GetUShort(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawFacingOffset);
                     case PositionAngleTypeEnum.Tri:
                         return Double.NaN;
                     case PositionAngleTypeEnum.ObjTri:
@@ -1018,17 +1018,17 @@ namespace STROOP.Utilities
             {
                 case CoordinateAngle.X:
                     uint xOffset = home ? ObjectConfig.HomeXOffset : gfx ? ObjectConfig.GraphicsXOffset : ObjectConfig.XOffset;
-                    return Config.Stream.GetSingle(objAddress.Value + xOffset);
+                    return Config.Stream.GetFloat(objAddress.Value + xOffset);
                 case CoordinateAngle.Y:
                     uint yOffset = home ? ObjectConfig.HomeYOffset : gfx ? ObjectConfig.GraphicsYOffset : ObjectConfig.YOffset;
-                    return Config.Stream.GetSingle(objAddress.Value + yOffset);
+                    return Config.Stream.GetFloat(objAddress.Value + yOffset);
                 case CoordinateAngle.Z:
                     uint zOffset = home ? ObjectConfig.HomeZOffset : gfx ? ObjectConfig.GraphicsZOffset : ObjectConfig.ZOffset;
-                    return Config.Stream.GetSingle(objAddress.Value + zOffset);
+                    return Config.Stream.GetFloat(objAddress.Value + zOffset);
                 case CoordinateAngle.Angle:
                     if (home) return Double.NaN;
-                    if (gfx) return Config.Stream.GetUInt16(objAddress.Value + ObjectConfig.GraphicsYawOffset);
-                    return Config.Stream.GetUInt16(objAddress.Value + ObjectConfig.YawFacingOffset);
+                    if (gfx) return Config.Stream.GetUShort(objAddress.Value + ObjectConfig.GraphicsYawOffset);
+                    return Config.Stream.GetUShort(objAddress.Value + ObjectConfig.YawFacingOffset);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -1036,11 +1036,11 @@ namespace STROOP.Utilities
 
         private static (double x, double z) GetGoombaProjection(uint address)
         {
-            double startX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-            double startZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
-            double hSpeed = Config.Stream.GetSingle(address + ObjectConfig.HSpeedOffset);
-            int countdown = Config.Stream.GetInt32(address + ObjectConfig.GoombaCountdownOffset);
-            ushort targetAngle = MoreMath.NormalizeAngleUshort(Config.Stream.GetInt32(address + ObjectConfig.GoombaTargetAngleOffset));
+            double startX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+            double startZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
+            double hSpeed = Config.Stream.GetFloat(address + ObjectConfig.HSpeedOffset);
+            int countdown = Config.Stream.GetInt(address + ObjectConfig.GoombaCountdownOffset);
+            ushort targetAngle = MoreMath.NormalizeAngleUshort(Config.Stream.GetInt(address + ObjectConfig.GoombaTargetAngleOffset));
             return MoreMath.AddVectorToPoint(hSpeed * countdown, targetAngle, startX, startZ);
         }
 
@@ -1120,18 +1120,18 @@ namespace STROOP.Utilities
 
         private static double GetSnowComponent(int index, Coordinate coordinate)
         {
-            short numSnowParticles = Config.Stream.GetInt16(SnowConfig.CounterAddress);
+            short numSnowParticles = Config.Stream.GetShort(SnowConfig.CounterAddress);
             if (index < 0 || index >= numSnowParticles) return Double.NaN;
-            uint snowStart = Config.Stream.GetUInt32(SnowConfig.SnowArrayPointerAddress);
+            uint snowStart = Config.Stream.GetUInt(SnowConfig.SnowArrayPointerAddress);
             uint structOffset = (uint)index * SnowConfig.ParticleStructSize;
             switch (coordinate)
             {
                 case Coordinate.X:
-                    return Config.Stream.GetInt32(snowStart + structOffset + SnowConfig.XOffset);
+                    return Config.Stream.GetInt(snowStart + structOffset + SnowConfig.XOffset);
                 case Coordinate.Y:
-                    return Config.Stream.GetInt32(snowStart + structOffset + SnowConfig.YOffset);
+                    return Config.Stream.GetInt(snowStart + structOffset + SnowConfig.YOffset);
                 case Coordinate.Z:
-                    return Config.Stream.GetInt32(snowStart + structOffset + SnowConfig.ZOffset);
+                    return Config.Stream.GetInt(snowStart + structOffset + SnowConfig.ZOffset);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -1139,11 +1139,11 @@ namespace STROOP.Utilities
 
         private static double GetQFrameComponent(double frame, Coordinate coordinate)
         {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-            ushort angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            ushort angle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
             (double pointX, double pointZ) = MoreMath.AddVectorToPoint(hSpeed * frame, angle, marioX, marioZ);
             double pointY = marioY;
@@ -1163,12 +1163,12 @@ namespace STROOP.Utilities
 
         private static double GetGFrameComponent(double gFrame, Coordinate coordinate)
         {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-            ushort angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            ushort angle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
 
             double frame = gFrame - globalTimer;
             (double pointX, double pointZ) = MoreMath.AddVectorToPoint(hSpeed * frame, angle, marioX, marioZ);
@@ -1258,13 +1258,13 @@ namespace STROOP.Utilities
                     }
                 case PositionAngleTypeEnum.Wall:
                     return SetTriangleVertexComponent(
-                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.X);
+                        (short)value, Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.X);
                 case PositionAngleTypeEnum.Floor:
                     return SetTriangleVertexComponent(
-                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), Index.Value, Coordinate.X);
+                        (short)value, Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), Index.Value, Coordinate.X);
                 case PositionAngleTypeEnum.Ceiling:
                     return SetTriangleVertexComponent(
-                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.X);
+                        (short)value, Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.X);
                 case PositionAngleTypeEnum.Snow:
                     return SetSnowComponent((int)value, Index.Value, Coordinate.X);
                 case PositionAngleTypeEnum.QFrame:
@@ -1362,13 +1362,13 @@ namespace STROOP.Utilities
                     }
                 case PositionAngleTypeEnum.Wall:
                     return SetTriangleVertexComponent(
-                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.Y);
+                        (short)value, Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.Y);
                 case PositionAngleTypeEnum.Floor:
                     return SetTriangleVertexComponent(
-                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), Index.Value, Coordinate.Y);
+                        (short)value, Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), Index.Value, Coordinate.Y);
                 case PositionAngleTypeEnum.Ceiling:
                     return SetTriangleVertexComponent(
-                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Y);
+                        (short)value, Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Y);
                 case PositionAngleTypeEnum.Snow:
                     return SetSnowComponent((int)value, Index.Value, Coordinate.Y);
                 case PositionAngleTypeEnum.QFrame:
@@ -1466,13 +1466,13 @@ namespace STROOP.Utilities
                     }
                 case PositionAngleTypeEnum.Wall:
                     return SetTriangleVertexComponent(
-                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.Z);
+                        (short)value, Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), Index.Value, Coordinate.Z);
                 case PositionAngleTypeEnum.Floor:
                     return SetTriangleVertexComponent(
-                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), Index.Value, Coordinate.Z);
+                        (short)value, Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), Index.Value, Coordinate.Z);
                 case PositionAngleTypeEnum.Ceiling:
                     return SetTriangleVertexComponent(
-                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Z);
+                        (short)value, Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), Index.Value, Coordinate.Z);
                 case PositionAngleTypeEnum.Snow:
                     return SetSnowComponent((int)value, Index.Value, Coordinate.Z);
                 case PositionAngleTypeEnum.QFrame:
@@ -1633,7 +1633,7 @@ namespace STROOP.Utilities
 
             if (KeyboardUtilities.IsAltHeld())
             {
-                uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
                 switch (coordinate)
                 {
                     case Coordinate.X:
@@ -1739,9 +1739,9 @@ namespace STROOP.Utilities
 
         private static bool SetSnowComponent(int value, int index, Coordinate coordinate)
         {
-            short numSnowParticles = Config.Stream.GetInt16(SnowConfig.CounterAddress);
+            short numSnowParticles = Config.Stream.GetShort(SnowConfig.CounterAddress);
             if (index < 0 || index > numSnowParticles) return false;
-            uint snowStart = Config.Stream.GetUInt32(SnowConfig.SnowArrayPointerAddress);
+            uint snowStart = Config.Stream.GetUInt(SnowConfig.SnowArrayPointerAddress);
             uint structOffset = (uint)index * SnowConfig.ParticleStructSize;
             switch (coordinate)
             {

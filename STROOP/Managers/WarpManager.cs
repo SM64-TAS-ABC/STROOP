@@ -169,8 +169,8 @@ namespace STROOP.Managers
 
             uint teleporter1Address = objAddresses[0];
             uint teleporter2Address = objAddresses[1];
-            short teleporter1Id = Config.Stream.GetInt16(teleporter1Address + 0x188);
-            short teleporter2Id = Config.Stream.GetInt16(teleporter2Address + 0x188);
+            short teleporter1Id = Config.Stream.GetShort(teleporter1Address + 0x188);
+            short teleporter2Id = Config.Stream.GetShort(teleporter2Address + 0x188);
 
             uint warpNode1Address = mainSegmentEnd;
             uint warpNode2Address = mainSegmentEnd + 0xC;

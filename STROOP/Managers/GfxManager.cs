@@ -97,7 +97,7 @@ namespace STROOP.Managers
             if (SelectedNode != null && (SelectedNode is GfxDisplayList || SelectedNode is GfxAnimationNode
                 || SelectedNode is GfxTranslatedModel || SelectedNode is GfxRotationNode))
             {
-                uint address = Config.Stream.GetUInt32(SelectedNode.Address + 0x14);
+                uint address = Config.Stream.GetUInt(SelectedNode.Address + 0x14);
                 _outputTextBox.Text = Fast3DDecoder.DecodeList(SegmentationUtilities.DecodeSegmentedAddress(address));
 
             }
@@ -160,11 +160,11 @@ namespace STROOP.Managers
             _treeView.Nodes.Clear();
 
             // A pointer to the root node of the GFX tree is stored at offset 0x04 in a certain struct
-            var StructWithGfxRoot = Config.Stream.GetUInt32(RomVersionConfig.SwitchMap(0x8032DDCC, 0x8032CE6C));
+            var StructWithGfxRoot = Config.Stream.GetUInt(RomVersionConfig.SwitchMap(0x8032DDCC, 0x8032CE6C));
 
             if (StructWithGfxRoot > 0x80000000u)
             {
-                AddToTreeView(Config.Stream.GetUInt32(StructWithGfxRoot + 0x04));
+                AddToTreeView(Config.Stream.GetUInt(StructWithGfxRoot + 0x04));
             }
 
             ExpandNodesUpTo(_treeView.Nodes, 4);
@@ -223,7 +223,7 @@ namespace STROOP.Managers
                 return null;
             }
 
-            ushort type = Config.Stream.GetUInt16(address + 0x00);
+            ushort type = Config.Stream.GetUShort(address + 0x00);
             GfxNode res;
 
             switch (type)
@@ -262,11 +262,11 @@ namespace STROOP.Managers
                 // For some reason, the object parent has a null pointer as a child inbetween frames,
                 // but during updatng it temporarily sets it to the pointer at offset 0x14
                 // Object nodes also do something like that
-                childAddress = Config.Stream.GetUInt32(address + 0x14);
+                childAddress = Config.Stream.GetUInt(address + 0x14);
             }
             else
             {
-                childAddress = Config.Stream.GetUInt32(address + 0x10);  //offset 0x10 = child pointer
+                childAddress = Config.Stream.GetUInt(address + 0x10);  //offset 0x10 = child pointer
             }
 
             if (childAddress != 0)
@@ -276,7 +276,7 @@ namespace STROOP.Managers
                 for (int i = 0; i < _maxSiblings; i++)
                 {
                     res.Children.Add(ReadGfxNode(currentAddress));
-                    currentAddress = Config.Stream.GetUInt32(currentAddress + 0x08); //offset 0x08 = next pointer 
+                    currentAddress = Config.Stream.GetUInt(currentAddress + 0x08); //offset 0x08 = next pointer 
                     if (currentAddress == childAddress) break;
                 }
             }
@@ -371,7 +371,7 @@ namespace STROOP.Managers
         {
             get
             {
-                var functionAddress = Config.Stream.GetUInt32(Address + 0x14);
+                var functionAddress = Config.Stream.GetUInt(Address + 0x14);
                 string functionName = GetFunctionName(functionNameList, functionAddress);
                 return "Switch" + (functionName == null ? "" : ": " + functionName);
             }
@@ -452,7 +452,7 @@ namespace STROOP.Managers
         {
             get
             {
-                var functionAddress = Config.Stream.GetUInt32(Address + 0x14);
+                var functionAddress = Config.Stream.GetUInt(Address + 0x14);
                 string functionName = GetFunctionName(functionNameList, functionAddress);
                 return "Script" + (functionName == null ? "" : ": " + functionName);
             }

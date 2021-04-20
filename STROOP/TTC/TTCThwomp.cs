@@ -30,11 +30,11 @@ namespace STROOP.Ttc
         public TtcThwomp(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                height: (int)Config.Stream.GetSingle(address + 0xA4),
-                verticalSpeed: (int)Config.Stream.GetSingle(address + 0xB0),
-                timerMax: Config.Stream.GetInt32(address + 0xF4),
-                state: Config.Stream.GetInt32(address + 0x14C),
-                timer: Config.Stream.GetInt32(address + 0x154))
+                height: (int)Config.Stream.GetFloat(address + 0xA4),
+                verticalSpeed: (int)Config.Stream.GetFloat(address + 0xB0),
+                timerMax: Config.Stream.GetInt(address + 0xF4),
+                state: Config.Stream.GetInt(address + 0x14C),
+                timer: Config.Stream.GetInt(address + 0x154))
         {
         }
 

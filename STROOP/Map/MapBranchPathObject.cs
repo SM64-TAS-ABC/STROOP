@@ -40,7 +40,7 @@ namespace STROOP.Map
 
         private List<MapBranchPathObjectSegment> GetSegments()
         {
-            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
             List<MapBranchPathObjectSegment> segments = new List<MapBranchPathObjectSegment>();
             for (int i = 0; i < _list.Count - 1; i++)
             {
@@ -59,7 +59,7 @@ namespace STROOP.Map
             if (OutlineWidth == 0) return;
 
             List<MapBranchPathObjectSegment> segments = GetSegments();
-            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -103,7 +103,7 @@ namespace STROOP.Map
             if (OutlineWidth == 0) return;
 
             List<MapBranchPathObjectSegment> segments = GetSegments();
-            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -147,7 +147,7 @@ namespace STROOP.Map
             if (OutlineWidth == 0) return;
 
             List<MapBranchPathObjectSegment> segments = GetSegments();
-            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
 
             List<Map3DVertex[]> vertexArrayList = new List<Map3DVertex[]>();
             foreach (MapBranchPathObjectSegment segment in segments)
@@ -200,7 +200,7 @@ namespace STROOP.Map
         {
             if (_isPaused) return;
 
-            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
             float x = (float)_posAngle.X;
             float y = (float)_posAngle.Y;
             float z = (float)_posAngle.Z;

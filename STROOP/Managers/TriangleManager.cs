@@ -323,7 +323,7 @@ namespace STROOP.Managers
 
         public void GoToClosestVertex()
         {
-            uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            uint floorTri = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             if (floorTri == 0) return;
             ButtonUtilities.GotoTriangleVertexClosest(floorTri);
         }
@@ -416,10 +416,10 @@ namespace STROOP.Managers
             uint triangleAddress = TriangleAddresses[0];
 
             float normX, normY, normZ, normOffset;
-            normX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
-            normY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
-            normZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
-            normOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
+            normX = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormX);
+            normY = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormY);
+            normZ = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormZ);
+            normOffset = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormOffset);
 
             InfoForm infoForm = new InfoForm();
             infoForm.SetTriangleEquation(normX, normY, normZ, normOffset);
@@ -494,17 +494,17 @@ namespace STROOP.Managers
             {
                 case TriangleMode.Floor:
                     TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset;
-                    SetTriangleAddresses(Config.Stream.GetUInt32(TrianglePointerAddress.Value));
+                    SetTriangleAddresses(Config.Stream.GetUInt(TrianglePointerAddress.Value));
                     break;
 
                 case TriangleMode.Wall:
                     TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.WallTriangleOffset;
-                    SetTriangleAddresses(Config.Stream.GetUInt32(TrianglePointerAddress.Value));
+                    SetTriangleAddresses(Config.Stream.GetUInt(TrianglePointerAddress.Value));
                     break;
 
                 case TriangleMode.Ceiling:
                     TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset;
-                    SetTriangleAddresses(Config.Stream.GetUInt32(TrianglePointerAddress.Value));
+                    SetTriangleAddresses(Config.Stream.GetUInt(TrianglePointerAddress.Value));
                     break;
 
                 default:

@@ -45,7 +45,7 @@ namespace STROOP.Map
 
         protected List<TriangleDataModel> GetFilteredTriangles()
         {
-            float centerY = _withinCenter ?? Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float centerY = _withinCenter ?? Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
             List<TriangleDataModel> tris = GetUnfilteredTriangles()
                 .FindAll(tri => tri.IsTriWithinVerticalDistOfCenter(_withinDist, centerY));
             if (_excludeDeathBarriers)
@@ -315,7 +315,7 @@ namespace STROOP.Map
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the center y of the within-dist range.");
                 float? withinCenterNullable =
                     text == "" ?
-                    Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset) :
+                    Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset) :
                     ParsingUtilities.ParseFloatNullable(text);
                 if (!withinCenterNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(

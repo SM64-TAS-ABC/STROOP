@@ -377,15 +377,15 @@ namespace STROOP.Structs
                         case "sbyte":
                             return Config.Stream.GetSByte(address);
                         case "short":
-                            return Config.Stream.GetInt16(address);
+                            return Config.Stream.GetShort(address);
                         case "ushort":
-                            return Config.Stream.GetUInt16(address);
+                            return Config.Stream.GetUShort(address);
                         case "int":
-                            return Config.Stream.GetInt32(address);
+                            return Config.Stream.GetInt(address);
                         case "uint":
-                            return Config.Stream.GetUInt32(address);
+                            return Config.Stream.GetUInt(address);
                         case "float":
-                            return Config.Stream.GetSingle(address);
+                            return Config.Stream.GetFloat(address);
                         case "double":
                             return Config.Stream.GetDouble(address);
                         default:
@@ -870,7 +870,7 @@ namespace STROOP.Structs
                     PositionAngle mario = PositionAngle.Mario;
                     PositionAngle obj = PositionAngle.Obj(objAddress);
                     double pitch = MoreMath.GetPitch(mario.X, mario.Y, mario.Z, obj.X, obj.Y, obj.Z);
-                    ushort marioPitch = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
+                    ushort marioPitch = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
                     return marioPitch - pitch;
                 },
                 (double diff, uint objAddress) =>
@@ -885,7 +885,7 @@ namespace STROOP.Structs
             _dictionary.Add("ObjectInGameDeltaYaw",
                 ((uint objAddress) =>
                 {
-                    ushort objectAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                    ushort objectAngle = Config.Stream.GetUShort(objAddress + ObjectConfig.YawFacingOffset);
                     return GetDeltaInGameAngle(objectAngle);
                 },
                 DEFAULT_SETTER));
@@ -893,9 +893,9 @@ namespace STROOP.Structs
             _dictionary.Add("EffectiveHitboxRadius",
                 ((uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadiusOffset);
-                    float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjHitboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxRadiusOffset);
+                    float objHitboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxRadiusOffset);
                     return mObjHitboxRadius + objHitboxRadius;
                 },
                 DEFAULT_SETTER));
@@ -903,9 +903,9 @@ namespace STROOP.Structs
             _dictionary.Add("EffectiveHurtboxRadius",
                 ((uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjHurtboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
-                    float objHurtboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxRadiusOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjHurtboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
+                    float objHurtboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxRadiusOffset);
                     return mObjHurtboxRadius + objHurtboxRadius;
                 },
                 DEFAULT_SETTER));
@@ -913,28 +913,28 @@ namespace STROOP.Structs
             _dictionary.Add("MarioHitboxAwayFromObject",
                 ((uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
-                    float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
-                    float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadiusOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjX = Config.Stream.GetFloat(marioObjRef + ObjectConfig.XOffset);
+                    float mObjZ = Config.Stream.GetFloat(marioObjRef + ObjectConfig.ZOffset);
+                    float mObjHitboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxRadiusOffset);
 
-                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-                    float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
+                    float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
+                    float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
+                    float objHitboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxRadiusOffset);
 
                     double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
                     return marioHitboxAwayFromObject;
                 },
                 (double hitboxDistAway, uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
-                    float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
-                    float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadiusOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjX = Config.Stream.GetFloat(marioObjRef + ObjectConfig.XOffset);
+                    float mObjZ = Config.Stream.GetFloat(marioObjRef + ObjectConfig.ZOffset);
+                    float mObjHitboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxRadiusOffset);
 
-                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-                    float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
+                    float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
+                    float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
+                    float objHitboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxRadiusOffset);
 
                     PositionAngle marioPos = PositionAngle.Mario;
                     PositionAngle objPos = PositionAngle.Obj(objAddress);
@@ -953,15 +953,15 @@ namespace STROOP.Structs
             _dictionary.Add("MarioHitboxAboveObject",
                 ((uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
-                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxHeight = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxHeightOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
                     float mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
 
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeightOffset);
-                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    float objHitboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
                     float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
 
                     double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
@@ -969,13 +969,13 @@ namespace STROOP.Structs
                 },
                 (double hitboxDistAbove, uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
 
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeightOffset);
-                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    float objHitboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
                     float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
 
                     double newMarioY = objHitboxTop + mObjHitboxDownOffset + hitboxDistAbove;
@@ -993,15 +993,15 @@ namespace STROOP.Structs
             _dictionary.Add("MarioHitboxBelowObject",
                 ((uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
-                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxHeight = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxHeightOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
                     float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeightOffset);
-                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    float objHitboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
                     float objHitboxBottom = objY - objHitboxDownOffset;
 
                     double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
@@ -1009,15 +1009,15 @@ namespace STROOP.Structs
                 }, 
                 (double hitboxDistBelow, uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
-                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxHeight = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxHeightOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
                     float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeightOffset);
-                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    float objHitboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
                     float objHitboxBottom = objY - objHitboxDownOffset;
 
                     double newMarioY = objHitboxBottom - (mObjHitboxTop - mObjY) - hitboxDistBelow;
@@ -1043,28 +1043,28 @@ namespace STROOP.Structs
             _dictionary.Add("MarioHurtboxAwayFromObject",
                 ((uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
-                    float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
-                    float mObjHurtboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjX = Config.Stream.GetFloat(marioObjRef + ObjectConfig.XOffset);
+                    float mObjZ = Config.Stream.GetFloat(marioObjRef + ObjectConfig.ZOffset);
+                    float mObjHurtboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
 
-                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-                    float objHurtboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxRadiusOffset);
+                    float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
+                    float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
+                    float objHurtboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxRadiusOffset);
 
                     double marioHurtboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHurtboxRadius - objHurtboxRadius;
                     return marioHurtboxAwayFromObject;
                 },
                 (double hurtboxDistAway, uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
-                    float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
-                    float mObjHurtboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjX = Config.Stream.GetFloat(marioObjRef + ObjectConfig.XOffset);
+                    float mObjZ = Config.Stream.GetFloat(marioObjRef + ObjectConfig.ZOffset);
+                    float mObjHurtboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
 
-                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-                    float objHurtboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxRadiusOffset);
+                    float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
+                    float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
+                    float objHurtboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxRadiusOffset);
 
                     PositionAngle marioPos = PositionAngle.Mario;
                     PositionAngle objPos = PositionAngle.Obj(objAddress);
@@ -1083,14 +1083,14 @@ namespace STROOP.Structs
             _dictionary.Add("MarioHurtboxAboveObject",
                 ((uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
                     float mObjHurtboxBottom = mObjY - mObjHitboxDownOffset;
 
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    float objHurtboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxHeightOffset);
-                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    float objHurtboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
                     float objHurtboxTop = objY + objHurtboxHeight - objHitboxDownOffset;
 
                     double marioHurtboxAboveObject = mObjHurtboxBottom - objHurtboxTop;
@@ -1098,13 +1098,13 @@ namespace STROOP.Structs
                 },
                 (double hurtboxDistAbove, uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
 
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    float objHurtboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxHeightOffset);
-                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    float objHurtboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
                     float objHurtboxTop = objY + objHurtboxHeight - objHitboxDownOffset;
 
                     double newMarioY = objHurtboxTop + mObjHitboxDownOffset + hurtboxDistAbove;
@@ -1123,15 +1123,15 @@ namespace STROOP.Structs
             _dictionary.Add("MarioHurtboxBelowObject",
                 ((uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
-                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxHeight = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxHeightOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
                     float mObjHurtboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    float objHurtboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxHeightOffset);
-                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    float objHurtboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
                     float objHurtboxBottom = objY - objHitboxDownOffset;
 
                     double marioHurtboxBelowObject = objHurtboxBottom - mObjHurtboxTop;
@@ -1139,15 +1139,15 @@ namespace STROOP.Structs
                 },
                 (double hurtboxDistBelow, uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
-                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxHeight = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxHeightOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
                     float mObjHurtboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    float objHurtboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxHeightOffset);
-                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    float objHurtboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
                     float objHurtboxBottom = objY - objHitboxDownOffset;
 
                     double newMarioY = objHurtboxBottom - (mObjHurtboxTop - mObjY) - hurtboxDistBelow;
@@ -1166,22 +1166,22 @@ namespace STROOP.Structs
             _dictionary.Add("MarioHurtboxOverlapsObject",
                 ((uint objAddress) =>
                 {
-                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
-                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                    float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
-                    float mObjHurtboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
-                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
-                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+                    uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+                    float mObjX = Config.Stream.GetFloat(marioObjRef + ObjectConfig.XOffset);
+                    float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
+                    float mObjZ = Config.Stream.GetFloat(marioObjRef + ObjectConfig.ZOffset);
+                    float mObjHurtboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
+                    float mObjHitboxHeight = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxHeightOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
                     float mObjHurtboxBottom = mObjY - mObjHitboxDownOffset;
                     float mObjHurtboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
-                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-                    float objHurtboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxRadiusOffset);
-                    float objHurtboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HurtboxHeightOffset);
-                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+                    float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
+                    float objHurtboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxRadiusOffset);
+                    float objHurtboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxHeightOffset);
+                    float objHitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
                     float objHurtboxBottom = objY - objHitboxDownOffset;
                     float objHurtboxTop = objY + objHurtboxHeight - objHitboxDownOffset;
 
@@ -1228,15 +1228,15 @@ namespace STROOP.Structs
             _dictionary.Add("ObjectRngCallsPerFrame",
                 ((uint objAddress) =>
                 {
-                    uint numberOfRngObjs = Config.Stream.GetUInt32(MiscConfig.HackedAreaAddress);
+                    uint numberOfRngObjs = Config.Stream.GetUInt(MiscConfig.HackedAreaAddress);
                     int numOfCalls = 0;
                     for (int i = 0; i < Math.Min(numberOfRngObjs, ObjectSlotsConfig.MaxSlots); i++)
                     {
                         uint rngStructAdd = (uint)(MiscConfig.HackedAreaAddress + 0x30 + 0x08 * i);
-                        uint address = Config.Stream.GetUInt32(rngStructAdd + 0x04);
+                        uint address = Config.Stream.GetUInt(rngStructAdd + 0x04);
                         if (address != objAddress) continue;
-                        ushort preRng = Config.Stream.GetUInt16(rngStructAdd + 0x00);
-                        ushort postRng = Config.Stream.GetUInt16(rngStructAdd + 0x02);
+                        ushort preRng = Config.Stream.GetUShort(rngStructAdd + 0x00);
+                        ushort postRng = Config.Stream.GetUShort(rngStructAdd + 0x02);
                         numOfCalls = RngIndexer.GetRngIndexDiff(preRng, postRng);
                         break;
                     }
@@ -1262,7 +1262,7 @@ namespace STROOP.Structs
             _dictionary.Add("ObjectRngIndex",
                 ((uint objAddress) =>
                 {
-                    ushort coinRngValue = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawMovingOffset);
+                    ushort coinRngValue = Config.Stream.GetUShort(objAddress + ObjectConfig.YawMovingOffset);
                     int coinRngIndex = RngIndexer.GetRngIndex(coinRngValue);
                     return coinRngIndex;
                 },
@@ -1275,7 +1275,7 @@ namespace STROOP.Structs
             _dictionary.Add("ObjectRngIndexDiff",
                 ((uint objAddress) =>
                 {
-                    ushort coinRngValue = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawMovingOffset);
+                    ushort coinRngValue = Config.Stream.GetUShort(objAddress + ObjectConfig.YawMovingOffset);
                     int coinRngIndex = RngIndexer.GetRngIndex(coinRngValue);
                     int rngIndexDiff = coinRngIndex - SpecialConfig.GoalRngIndex;
                     return rngIndexDiff;
@@ -1356,7 +1356,7 @@ namespace STROOP.Structs
             _dictionary.Add("CogRotationIndex",
                 ((uint objAddress) =>
                 {
-                    ushort yawFacing = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                    ushort yawFacing = Config.Stream.GetUShort(objAddress + ObjectConfig.YawFacingOffset);
                     double rotationIndex = CogUtilities.GetRotationIndex(yawFacing) ?? Double.NaN;
                     return rotationIndex;
                 },
@@ -1434,7 +1434,7 @@ namespace STROOP.Structs
                 {
                     (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
                         GetRacingPenguinSpecialVars(objAddress);
-                    float hSpeed = Config.Stream.GetSingle(objAddress + ObjectConfig.HSpeedOffset);
+                    float hSpeed = Config.Stream.GetFloat(objAddress + ObjectConfig.HSpeedOffset);
                     double hSpeedDiff = hSpeed - hSpeedTarget;
                     return hSpeedDiff;
                 },
@@ -1485,7 +1485,7 @@ namespace STROOP.Structs
             _dictionary.Add("KoopaTheQuick1ProgressOld",
                 ((uint objAddress) =>
                 {
-                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
                     double progressOld = PlushUtilities.GetProgress(globalTimer);
                     return progressOld;
                 },
@@ -1494,7 +1494,7 @@ namespace STROOP.Structs
             _dictionary.Add("KoopaTheQuick1ProgressDiff",
                 ((uint objAddress) =>
                 {
-                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
                     double progressOld = PlushUtilities.GetProgress(globalTimer);
                     double progressNew = TableConfig.KoopaTheQuick1Waypoints.GetProgress(objAddress);
                     return progressNew - progressOld;
@@ -1506,8 +1506,8 @@ namespace STROOP.Structs
             _dictionary.Add("FlyGuyZone",
                 ((uint objAddress) =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     double heightDiff = marioY - objY;
                     if (heightDiff < -400) return "Low";
                     if (heightDiff > -200) return "High";
@@ -1518,7 +1518,7 @@ namespace STROOP.Structs
             _dictionary.Add("FlyGuyRelativeHeight",
                 ((uint objAddress) =>
                 {
-                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
+                    int oscillationTimer = Config.Stream.GetInt(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
                     double relativeHeight = TableConfig.FlyGuyData.GetRelativeHeight(oscillationTimer);
                     return relativeHeight;
                 },
@@ -1527,15 +1527,15 @@ namespace STROOP.Structs
             _dictionary.Add("FlyGuyMinHeight",
                 ((uint objAddress) =>
                 {
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    int oscillationTimer = Config.Stream.GetInt(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
                     double minHeight = TableConfig.FlyGuyData.GetMinHeight(oscillationTimer, objY);
                     return minHeight;
                 },
                 (double newMinHeight, uint objAddress) =>
                 {
-                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
-                    float oldHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    int oscillationTimer = Config.Stream.GetInt(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
+                    float oldHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     double oldMinHeight = TableConfig.FlyGuyData.GetMinHeight(oscillationTimer, oldHeight);
                     double heightDiff = newMinHeight - oldMinHeight;
                     double newHeight = oldHeight + heightDiff;
@@ -1545,15 +1545,15 @@ namespace STROOP.Structs
             _dictionary.Add("FlyGuyMaxHeight",
                 ((uint objAddress) =>
                 {
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    int oscillationTimer = Config.Stream.GetInt(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
                     double maxHeight = TableConfig.FlyGuyData.GetMaxHeight(oscillationTimer, objY);
                     return maxHeight;
                 },
                 (double newMaxHeight, uint objAddress) =>
                 {
-                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
-                    float oldHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    int oscillationTimer = Config.Stream.GetInt(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
+                    float oldHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     double oldMaxHeight = TableConfig.FlyGuyData.GetMaxHeight(oscillationTimer, oldHeight);
                     double heightDiff = newMaxHeight - oldMaxHeight;
                     double newHeight = oldHeight + heightDiff;
@@ -1586,7 +1586,7 @@ namespace STROOP.Structs
             _dictionary.Add("BobombBloatSize",
                 ((uint objAddress) =>
                 {
-                    float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
+                    float hitboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxRadiusOffset);
                     float bloatSize = (hitboxRadius - 65) / 13;
                     return bloatSize;
                 },
@@ -1608,7 +1608,7 @@ namespace STROOP.Structs
             _dictionary.Add("BobombRadius",
                 ((uint objAddress) =>
                 {
-                    float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
+                    float hitboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxRadiusOffset);
                     float radius = hitboxRadius + 32;
                     return radius;
                 },
@@ -1635,14 +1635,14 @@ namespace STROOP.Structs
                     PositionAngle objPos = PositionAngle.Obj(objAddress);
                     double hDist = MoreMath.GetDistanceBetween(
                         marioPos.X, marioPos.Z, objPos.X, objPos.Z);
-                    float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
+                    float hitboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxRadiusOffset);
                     float radius = hitboxRadius + 32;
                     double spaceBetween = hDist - radius;
                     return spaceBetween;
                 },
                 (double spaceBetween, uint objAddress) =>
                 {
-                    float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
+                    float hitboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxRadiusOffset);
                     float radius = hitboxRadius + 32;
                     double distAway = spaceBetween + radius;
 
@@ -1669,7 +1669,7 @@ namespace STROOP.Structs
             _dictionary.Add("ChuckyaAngleMod1024",
                 ((uint objAddress) =>
                 {
-                    ushort angle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawMovingOffset);
+                    ushort angle = Config.Stream.GetUShort(objAddress + ObjectConfig.YawMovingOffset);
                     int mod = angle % 1024;
                     return mod;
                 },
@@ -1680,14 +1680,14 @@ namespace STROOP.Structs
             _dictionary.Add("ScuttlebugDeltaAngleToTarget",
                 ((uint objAddress) =>
                 {
-                    ushort facingAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
-                    ushort targetAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.ScuttlebugTargetAngleOffset);
+                    ushort facingAngle = Config.Stream.GetUShort(objAddress + ObjectConfig.YawFacingOffset);
+                    ushort targetAngle = Config.Stream.GetUShort(objAddress + ObjectConfig.ScuttlebugTargetAngleOffset);
                     int angleDiff = facingAngle - targetAngle;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
                 (double angleDiff, uint objAddress) =>
                 {
-                    ushort targetAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.ScuttlebugTargetAngleOffset);
+                    ushort targetAngle = Config.Stream.GetUShort(objAddress + ObjectConfig.ScuttlebugTargetAngleOffset);
                     double newObjAngleDouble = targetAngle + angleDiff;
                     ushort newObjAngleUShort = MoreMath.NormalizeAngleUshort(newObjAngleDouble);
                     return PositionAngle.Obj(objAddress).SetAngle(newObjAngleUShort);
@@ -1720,17 +1720,17 @@ namespace STROOP.Structs
             _dictionary.Add("BitfsPlatformGroupMinHeight",
                 ((uint objAddress) =>
                 {
-                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
-                    float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    int timer = Config.Stream.GetInt(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float height = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     return BitfsPlatformGroupTable.GetMinHeight(timer, height);
                 },
                 (double newMinHeight, uint objAddress) =>
                 {
-                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
-                    float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    int timer = Config.Stream.GetInt(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float height = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     double oldMinHeight = BitfsPlatformGroupTable.GetMinHeight(timer, height);
                     double heightDiff = newMinHeight - oldMinHeight;
-                    float oldHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float oldHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     double newHeight = oldHeight + heightDiff;
                     return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
                 }));
@@ -1738,17 +1738,17 @@ namespace STROOP.Structs
             _dictionary.Add("BitfsPlatformGroupMaxHeight",
                 ((uint objAddress) =>
                 {
-                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
-                    float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    int timer = Config.Stream.GetInt(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float height = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     return BitfsPlatformGroupTable.GetMaxHeight(timer, height);
                 },
                 (double newMaxHeight, uint objAddress) =>
                 {
-                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
-                    float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    int timer = Config.Stream.GetInt(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float height = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     double oldMaxHeight = BitfsPlatformGroupTable.GetMaxHeight(timer, height);
                     double heightDiff = newMaxHeight - oldMaxHeight;
-                    float oldHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float oldHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     double newHeight = oldHeight + heightDiff;
                     return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
                 }));
@@ -1756,7 +1756,7 @@ namespace STROOP.Structs
             _dictionary.Add("BitfsPlatformGroupRelativeHeight",
                 ((uint objAddress) =>
                 {
-                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    int timer = Config.Stream.GetInt(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
                     return BitfsPlatformGroupTable.GetRelativeHeightFromMin(timer);
                 },
                 DEFAULT_SETTER));
@@ -1764,16 +1764,16 @@ namespace STROOP.Structs
             _dictionary.Add("BitfsPlatformGroupDisplacedHeight",
                 ((uint objAddress) =>
                 {
-                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
-                    float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    float homeHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
+                    int timer = Config.Stream.GetInt(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float height = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    float homeHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HomeYOffset);
                     return BitfsPlatformGroupTable.GetDisplacedHeight(timer, height, homeHeight);
                 },
                 (double displacedHeight, uint objAddress) =>
                 {
-                    float homeHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
+                    float homeHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HomeYOffset);
                     double newMaxHeight = homeHeight + displacedHeight;
-                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    int timer = Config.Stream.GetInt(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
                     float relativeHeightFromMax = BitfsPlatformGroupTable.GetRelativeHeightFromMax(timer);
                     double newHeight = newMaxHeight + relativeHeightFromMax;
                     return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
@@ -1784,14 +1784,14 @@ namespace STROOP.Structs
             _dictionary.Add("HootReleaseTimer",
                 ((uint objAddress) =>
                 {
-                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                    uint lastReleaseTime = Config.Stream.GetUInt32(objAddress + ObjectConfig.HootLastReleaseTimeOffset);
+                    uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
+                    uint lastReleaseTime = Config.Stream.GetUInt(objAddress + ObjectConfig.HootLastReleaseTimeOffset);
                     int diff = (int)(globalTimer - lastReleaseTime);
                     return diff;
                 },
                 (int newDiff, uint objAddress) =>
                 {
-                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
                     uint newLastReleaseTime = (uint)(globalTimer - newDiff);
                     return Config.Stream.SetValue(newLastReleaseTime, objAddress + ObjectConfig.HootLastReleaseTimeOffset);
                 }));
@@ -1801,7 +1801,7 @@ namespace STROOP.Structs
             _dictionary.Add("PowerStarMissionName",
                 ((uint objAddress) =>
                 {
-                    int courseIndex = Config.Stream.GetInt16(MiscConfig.LevelIndexAddress);
+                    int courseIndex = Config.Stream.GetShort(MiscConfig.LevelIndexAddress);
                     int missionIndex = Config.Stream.GetByte(objAddress + ObjectConfig.PowerStarMissionIndexOffset);
                     return TableConfig.Missions.GetInGameMissionName(courseIndex, missionIndex);
                 },
@@ -1822,7 +1822,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     int minX = tris.Min(tri => tri.GetMinX());
                     float diff = newMinX - minX;
-                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
                     float newObjX = objX + diff;
                     return Config.Stream.SetValue(newObjX, objAddress + ObjectConfig.XOffset);
                 }));
@@ -1840,7 +1840,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     int maxX = tris.Max(tri => tri.GetMaxX());
                     float diff = newMaxX - maxX;
-                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
                     float newObjX = objX + diff;
                     return Config.Stream.SetValue(newObjX, objAddress + ObjectConfig.XOffset);
                 }));
@@ -1858,7 +1858,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     int minY = tris.Min(tri => tri.GetMinY());
                     float diff = newMinY - minY;
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     float newObjY = objY + diff;
                     return Config.Stream.SetValue(newObjY, objAddress + ObjectConfig.YOffset);
                 }));
@@ -1876,7 +1876,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     int maxY = tris.Max(tri => tri.GetMaxY());
                     float diff = newMaxY - maxY;
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     float newObjY = objY + diff;
                     return Config.Stream.SetValue(newObjY, objAddress + ObjectConfig.YOffset);
                 }));
@@ -1894,7 +1894,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     int minZ = tris.Min(tri => tri.GetMinZ());
                     float diff = newMinZ - minZ;
-                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
                     float newObjZ = objZ + diff;
                     return Config.Stream.SetValue(newObjZ, objAddress + ObjectConfig.ZOffset);
                 }));
@@ -1912,7 +1912,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     int maxZ = tris.Max(tri => tri.GetMaxZ());
                     float diff = newMaxZ - maxZ;
-                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
                     float newObjZ = objZ + diff;
                     return Config.Stream.SetValue(newObjZ, objAddress + ObjectConfig.ZOffset);
                 }));
@@ -1930,7 +1930,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     float xRange = tris.Max(tri => tri.GetMaxX()) - tris.Min(tri => tri.GetMinX());
                     float ratio = newXRange / xRange;
-                    float scaleX = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleWidthOffset);
+                    float scaleX = Config.Stream.GetFloat(objAddress + ObjectConfig.ScaleWidthOffset);
                     float newScaleX = scaleX * ratio;
                     return Config.Stream.SetValue(newScaleX, objAddress + ObjectConfig.ScaleWidthOffset);
                 }));
@@ -1948,7 +1948,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     float yRange = tris.Max(tri => tri.GetMaxY()) - tris.Min(tri => tri.GetMinY());
                     float ratio = newYRange / yRange;
-                    float scaleY = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleHeightOffset);
+                    float scaleY = Config.Stream.GetFloat(objAddress + ObjectConfig.ScaleHeightOffset);
                     float newScaleY = scaleY * ratio;
                     return Config.Stream.SetValue(newScaleY, objAddress + ObjectConfig.ScaleHeightOffset);
                 }));
@@ -1966,7 +1966,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     float zRange = tris.Max(tri => tri.GetMaxZ()) - tris.Min(tri => tri.GetMinZ());
                     float ratio = newZRange / zRange;
-                    float scaleZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleDepthOffset);
+                    float scaleZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ScaleDepthOffset);
                     float newScaleZ = scaleZ * ratio;
                     return Config.Stream.SetValue(newScaleZ, objAddress + ObjectConfig.ScaleDepthOffset);
                 }));
@@ -1984,7 +1984,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     float midpointX = (tris.Max(tri => tri.GetMaxX()) + tris.Min(tri => tri.GetMinX())) / 2f;
                     float diff = newMidpointX - midpointX;
-                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
                     float newObjX = objX + diff;
                     return Config.Stream.SetValue(newObjX, objAddress + ObjectConfig.XOffset);
                 }));
@@ -2002,7 +2002,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     float midpointY = (tris.Max(tri => tri.GetMaxY()) + tris.Min(tri => tri.GetMinY())) / 2f;
                     float diff = newMidpointY - midpointY;
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     float newObjY = objY + diff;
                     return Config.Stream.SetValue(newObjY, objAddress + ObjectConfig.YOffset);
                 }));
@@ -2020,7 +2020,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     float midpointZ = (tris.Max(tri => tri.GetMaxZ()) + tris.Min(tri => tri.GetMinZ())) / 2f;
                     float diff = newMidpointZ - midpointZ;
-                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
                     float newObjZ = objZ + diff;
                     return Config.Stream.SetValue(newObjZ, objAddress + ObjectConfig.ZOffset);
                 }));
@@ -2028,9 +2028,9 @@ namespace STROOP.Structs
             _dictionary.Add("FarthestCoordinateDistance",
                 ((uint objAddress) =>
                 {
-                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+                    float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
 
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return double.NaN;
@@ -2059,7 +2059,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     int minX = tris.Min(tri => tri.GetMinX());
                     float diff = newMinX - minX;
-                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
                     float newObjX = objX + diff;
                     return Config.Stream.SetValue(newObjX, objAddress + ObjectConfig.XOffset);
                 }
@@ -2078,7 +2078,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     int maxX = tris.Max(tri => tri.GetMaxX());
                     float diff = newMaxX - maxX;
-                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
                     float newObjX = objX + diff;
                     return Config.Stream.SetValue(newObjX, objAddress + ObjectConfig.XOffset);
                 }
@@ -2097,7 +2097,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     int minY = tris.Min(tri => tri.GetMinY());
                     float diff = newMinY - minY;
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     float newObjY = objY + diff;
                     return Config.Stream.SetValue(newObjY, objAddress + ObjectConfig.YOffset);
                 }
@@ -2116,7 +2116,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     int maxY = tris.Max(tri => tri.GetMaxY());
                     float diff = newMaxY - maxY;
-                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     float newObjY = objY + diff;
                     return Config.Stream.SetValue(newObjY, objAddress + ObjectConfig.YOffset);
                 }
@@ -2135,7 +2135,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     int minZ = tris.Min(tri => tri.GetMinZ());
                     float diff = newMinZ - minZ;
-                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
                     float newObjZ = objZ + diff;
                     return Config.Stream.SetValue(newObjZ, objAddress + ObjectConfig.ZOffset);
                 }
@@ -2154,7 +2154,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return false;
                     int maxZ = tris.Max(tri => tri.GetMaxZ());
                     float diff = newMaxZ - maxZ;
-                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
                     float newObjZ = objZ + diff;
                     return Config.Stream.SetValue(newObjZ, objAddress + ObjectConfig.ZOffset);
                 }
@@ -2165,7 +2165,7 @@ namespace STROOP.Structs
             _dictionary.Add("RollingLogDistLimit",
                 ((uint objAddress) =>
                 {
-                    float distLimitSquared = Config.Stream.GetSingle(objAddress + ObjectConfig.RollingLogDistLimitSquaredOffset);
+                    float distLimitSquared = Config.Stream.GetFloat(objAddress + ObjectConfig.RollingLogDistLimitSquaredOffset);
                     double distLimit = Math.Sqrt(distLimitSquared);
                     return distLimit;
                 },
@@ -2178,10 +2178,10 @@ namespace STROOP.Structs
             _dictionary.Add("RollingLogDist",
                 ((uint objAddress) =>
                 {
-                    float x = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                    float z = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-                    float xCenter = Config.Stream.GetSingle(objAddress + ObjectConfig.RollingLogXCenterOffset);
-                    float zCenter = Config.Stream.GetSingle(objAddress + ObjectConfig.RollingLogZCenterOffset);
+                    float x = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
+                    float z = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
+                    float xCenter = Config.Stream.GetFloat(objAddress + ObjectConfig.RollingLogXCenterOffset);
+                    float zCenter = Config.Stream.GetFloat(objAddress + ObjectConfig.RollingLogZCenterOffset);
                     double dist = MoreMath.GetDistanceBetween(xCenter, zCenter, x, z);
                     return dist;
                 },
@@ -2192,12 +2192,12 @@ namespace STROOP.Structs
             _dictionary.Add("ObjectSpawnerRadiusDiff",
                 ((uint objAddress) =>
                 {
-                    float radius = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectSpawnerRadiusOffset);
+                    float radius = Config.Stream.GetFloat(objAddress + ObjectConfig.ObjectSpawnerRadiusOffset);
                     return GetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), radius);
                 },
                 (double dist, uint objAddress) =>
                 {
-                    float radius = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectSpawnerRadiusOffset);
+                    float radius = Config.Stream.GetFloat(objAddress + ObjectConfig.ObjectSpawnerRadiusOffset);
                     return SetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), radius, dist);
                 }));
 
@@ -2206,7 +2206,7 @@ namespace STROOP.Structs
             _dictionary.Add("WdwRotatingPlatformCurrentIndex",
                 ((uint objAddress) =>
                 {
-                    ushort angle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                    ushort angle = Config.Stream.GetUShort(objAddress + ObjectConfig.YawFacingOffset);
                     return TableConfig.WdwRotatingPlatformTable.GetIndex(angle) ?? double.NaN;
                 },
                 (int index, uint objAddress) =>
@@ -2240,7 +2240,7 @@ namespace STROOP.Structs
             _dictionary.Add("WdwRotatingPlatformFramesUntilGoal",
                 ((uint objAddress) =>
                 {
-                    ushort angle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                    ushort angle = Config.Stream.GetUShort(objAddress + ObjectConfig.YawFacingOffset);
                     return TableConfig.WdwRotatingPlatformTable.GetFramesToGoalAngle(angle);
                 },
                 (int numFrames, uint objAddress) =>
@@ -2255,7 +2255,7 @@ namespace STROOP.Structs
             _dictionary.Add("ElevatorAxleCurrentIndex",
                 ((uint objAddress) =>
                 {
-                    ushort angle = Config.Stream.GetUInt16(objAddress + ObjectConfig.RollFacingOffset);
+                    ushort angle = Config.Stream.GetUShort(objAddress + ObjectConfig.RollFacingOffset);
                     return TableConfig.ElevatorAxleTable.GetIndex(angle) ?? double.NaN;
                 },
                 (int index, uint objAddress) =>
@@ -2289,7 +2289,7 @@ namespace STROOP.Structs
             _dictionary.Add("ElevatorAxleFramesUntilGoal",
                 ((uint objAddress) =>
                 {
-                    ushort angle = Config.Stream.GetUInt16(objAddress + ObjectConfig.RollFacingOffset);
+                    ushort angle = Config.Stream.GetUShort(objAddress + ObjectConfig.RollFacingOffset);
                     return TableConfig.ElevatorAxleTable.GetFramesToGoalAngle(angle);
                 },
                 (int numFrames, uint objAddress) =>
@@ -2304,8 +2304,8 @@ namespace STROOP.Structs
             _dictionary.Add("SwooperEffectiveTargetYaw",
                 ((uint objAddress) =>
                 {
-                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                    int targetAngle = Config.Stream.GetInt32(objAddress + ObjectConfig.SwooperTargetYawOffset);
+                    uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
+                    int targetAngle = Config.Stream.GetInt(objAddress + ObjectConfig.SwooperTargetYawOffset);
                     return targetAngle + (short)(3000 * InGameTrigUtilities.InGameCosine(4000 * (int)globalTimer));
                 },
                 DEFAULT_SETTER));
@@ -2351,11 +2351,11 @@ namespace STROOP.Structs
                     not slippery: A = 0.92
                     */
 
-                    ushort intendedYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
-                    ushort movingYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.MovingYawOffset);
-                    float scaledMagnitude = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ScaledMagnitudeOffset);
-                    float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                    uint floorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                    ushort intendedYaw = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
+                    ushort movingYaw = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.MovingYawOffset);
+                    float scaledMagnitude = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ScaledMagnitudeOffset);
+                    float hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    uint floorAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
                     TriangleDataModel floorStruct = TriangleDataModel.Create(floorAddress);
                     double A = floorStruct.FrictionMultiplier;
 
@@ -2381,11 +2381,11 @@ namespace STROOP.Structs
             _dictionary.Add("SidewaysSpeed",
                 ((uint dummy) =>
                 {
-                    float xSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XSpeedOffset);
-                    float zSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZSpeedOffset);
+                    float xSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XSpeedOffset);
+                    float zSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZSpeedOffset);
                     double speedMagnitude = MoreMath.GetHypotenuse(xSpeed, zSpeed);
                     double speedAngle = MoreMath.AngleTo_AngleUnits(xSpeed, zSpeed);
-                    ushort angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    ushort angle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     (double sidewaysDist, double forwardsDist) = MoreMath.GetComponentsFromVectorRelatively(speedMagnitude, speedAngle, angle);
                     return sidewaysDist;
                 },
@@ -2398,8 +2398,8 @@ namespace STROOP.Structs
                 },
                 (double newHSlidingSpeed, uint dummy) =>
                 {
-                    float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                    float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+                    float xSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+                    float zSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
                     if (xSlidingSpeed == 0 && zSlidingSpeed == 0) xSlidingSpeed = 1;
                     double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
 
@@ -2420,8 +2420,8 @@ namespace STROOP.Structs
                 },
                 (double newHSlidingAngle, uint dummy) =>
                 {
-                    float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                    float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+                    float xSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+                    float zSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
                     double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
 
                     (double newXSlidingSpeed, double newZSlidingSpeed) =
@@ -2436,7 +2436,7 @@ namespace STROOP.Structs
             _dictionary.Add("TwirlYawMod2048",
                 ((uint dummy) =>
                 {
-                    ushort twirlYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.TwirlYawOffset);
+                    ushort twirlYaw = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.TwirlYawOffset);
                     return twirlYaw % 2048;
                 },
                 DEFAULT_SETTER));
@@ -2495,7 +2495,7 @@ namespace STROOP.Structs
             _dictionary.Add("TrajectoryRemainingHeight",
                 ((uint dummy) =>
                 {
-                    float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
+                    float vSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
                     double remainingHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                     return remainingHeight;
                 },
@@ -2508,15 +2508,15 @@ namespace STROOP.Structs
             _dictionary.Add("TrajectoryPeakHeight",
                 ((uint dummy) =>
                 {
-                    float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
+                    float vSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
                     double remainingHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double peakHeight = marioY + remainingHeight;
                     return peakHeight;
                 },
                 (double newPeakHeight, uint dummy) =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double newRemainingHeight = newPeakHeight - marioY;
                     double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newRemainingHeight);
                     return Config.Stream.SetValue((float)initialVSpeed, MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
@@ -2525,7 +2525,7 @@ namespace STROOP.Structs
             _dictionary.Add("DoubleJumpVerticalSpeed",
                 ((uint dummy) =>
                 {
-                    float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    float hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
                     return vSpeed;
                 },
@@ -2538,7 +2538,7 @@ namespace STROOP.Structs
             _dictionary.Add("DoubleJumpHeight",
                 ((uint dummy) =>
                 {
-                    float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    float hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
                     double doubleJumpHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                     return doubleJumpHeight;
@@ -2553,16 +2553,16 @@ namespace STROOP.Structs
             _dictionary.Add("DoubleJumpPeakHeight",
                 ((uint dummy) =>
                 {
-                    float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    float hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
                     double doubleJumpHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double doubleJumpPeakHeight = marioY + doubleJumpHeight;
                     return doubleJumpPeakHeight;
                 },
                 (double newPeakHeight, uint dummy) =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double newHeight = newPeakHeight - marioY;
                     double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newHeight);
                     double newHSpeed = ConvertDoubleJumpVSpeedToHSpeed(initialVSpeed);
@@ -2572,8 +2572,8 @@ namespace STROOP.Structs
             _dictionary.Add("MovementX",
                 ((uint dummy) =>
                 {
-                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float endX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x1C);
                     float movementX = endX - startX;
                     return movementX;
                 },
@@ -2582,8 +2582,8 @@ namespace STROOP.Structs
             _dictionary.Add("MovementY",
                 ((uint dummy) =>
                 {
-                    float endY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x14);
-                    float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
+                    float endY = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x14);
+                    float startY = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x20);
                     float movementY = endY - startY;
                     return movementY;
                 },
@@ -2592,8 +2592,8 @@ namespace STROOP.Structs
             _dictionary.Add("MovementZ",
                 ((uint dummy) =>
                 {
-                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float endZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x24);
                     float movementZ = endZ - startZ;
                     return movementZ;
                 },
@@ -2602,15 +2602,15 @@ namespace STROOP.Structs
             _dictionary.Add("MovementForwards",
                 ((uint dummy) =>
                 {
-                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float endX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x1C);
                     float movementX = endX - startX;
-                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float endZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x24);
                     float movementZ = endZ - startZ;
                     double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
                     double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
-                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     (double movementSideways, double movementForwards) =
                         MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
                     return movementForwards;
@@ -2620,15 +2620,15 @@ namespace STROOP.Structs
             _dictionary.Add("MovementSideways",
                 ((uint dummy) =>
                 {
-                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float endX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x1C);
                     float movementX = endX - startX;
-                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float endZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x24);
                     float movementZ = endZ - startZ;
                     double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
                     double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
-                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     (double movementSideways, double movementForwards) =
                         MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
                     return movementSideways;
@@ -2638,11 +2638,11 @@ namespace STROOP.Structs
             _dictionary.Add("MovementHorizontal",
                 ((uint dummy) =>
                 {
-                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float endX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x1C);
                     float movementX = endX - startX;
-                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float endZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x24);
                     float movementZ = endZ - startZ;
                     double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
                     return movementHorizontal;
@@ -2652,14 +2652,14 @@ namespace STROOP.Structs
             _dictionary.Add("MovementTotal",
                 ((uint dummy) =>
                 {
-                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float endX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x1C);
                     float movementX = endX - startX;
-                    float endY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x14);
-                    float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
+                    float endY = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x14);
+                    float startY = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x20);
                     float movementY = endY - startY;
-                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float endZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x24);
                     float movementZ = endZ - startZ;
                     double movementTotal = MoreMath.GetHypotenuse(movementX, movementY, movementZ);
                     return movementTotal;
@@ -2669,11 +2669,11 @@ namespace STROOP.Structs
             _dictionary.Add("MovementAngle",
                 ((uint dummy) =>
                 {
-                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float endX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x1C);
                     float movementX = endX - startX;
-                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float endZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x24);
                     float movementZ = endZ - startZ;
                     double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
                     return movementAngle;
@@ -2683,16 +2683,16 @@ namespace STROOP.Structs
             _dictionary.Add("QFrameCountEstimate",
                 ((uint dummy) =>
                 {
-                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float endX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x1C);
                     float movementX = endX - startX;
-                    float endY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x14);
-                    float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
+                    float endY = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x14);
+                    float startY = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x20);
                     float movementY = endY - startY;
-                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float endZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x24);
                     float movementZ = endZ - startZ;
-                    float oldHSpeed = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x28);
+                    float oldHSpeed = Config.Stream.GetFloat(MiscConfig.HackedAreaAddress + 0x28);
                     double qframes = Math.Abs(Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ) / (oldHSpeed / 4)));
                     if (qframes > 4) qframes = double.NaN;
                     return qframes;
@@ -2716,7 +2716,7 @@ namespace STROOP.Structs
             _dictionary.Add("MarioInGameDeltaYaw",
                 ((uint dummy) =>
                 {
-                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     return GetDeltaInGameAngle(marioAngle);
                 },
                 DEFAULT_SETTER));
@@ -2724,14 +2724,14 @@ namespace STROOP.Structs
             _dictionary.Add("FallHeight",
                 ((uint dummy) =>
                 {
-                    float peakHeight = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.PeakHeightOffset);
-                    float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    float peakHeight = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.PeakHeightOffset);
+                    float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                     float fallHeight = peakHeight - floorY;
                     return fallHeight;
                 },
                 (double fallHeight, uint dummy) =>
                 {
-                    float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                     double newPeakHeight = floorY + fallHeight;
                     return Config.Stream.SetValue((float)newPeakHeight, MarioConfig.StructAddress + MarioConfig.PeakHeightOffset);
                 }));
@@ -2770,7 +2770,7 @@ namespace STROOP.Structs
             _dictionary.Add("WalkingDistance",
                 ((uint dummy) =>
                 {
-                    float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    float hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     float remainder = hSpeed % 1;
                     int numFrames = (int)Math.Abs(Math.Truncate(hSpeed)) + 1;
                     float sum = (hSpeed + remainder) * numFrames / 2;
@@ -2806,7 +2806,7 @@ namespace STROOP.Structs
             _dictionary.Add("HudTimeText",
                 ((uint dummy) =>
                 {
-                    ushort time = Config.Stream.GetUInt16(MarioConfig.StructAddress + HudConfig.TimeOffset);
+                    ushort time = Config.Stream.GetUShort(MarioConfig.StructAddress + HudConfig.TimeOffset);
                     int totalDeciSeconds = time / 3;
                     int deciSecondComponent = totalDeciSeconds % 10;
                     int secondComponent = (totalDeciSeconds / 10) % 60;
@@ -2902,8 +2902,8 @@ namespace STROOP.Structs
             _dictionary.Add("TriangleHorizontalNormal",
                 ((uint triAddress) =>
                 {
-                    float normalX = Config.Stream.GetSingle(triAddress + TriangleOffsetsConfig.NormX);
-                    float normalZ = Config.Stream.GetSingle(triAddress + TriangleOffsetsConfig.NormZ);
+                    float normalX = Config.Stream.GetFloat(triAddress + TriangleOffsetsConfig.NormX);
+                    float normalZ = Config.Stream.GetFloat(triAddress + TriangleOffsetsConfig.NormZ);
                     float normalH = (float) Math.Sqrt(normalX * normalX + normalZ * normalZ);
                     return normalH;
                 },
@@ -2980,7 +2980,7 @@ namespace STROOP.Structs
             _dictionary.Add("UpHillDeltaAngle",
                 ((uint triAddress) =>
                 {
-                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     double uphillAngle = GetTriangleUphillAngle(triAddress);
                     double angleDiff = marioAngle - uphillAngle;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
@@ -2997,7 +2997,7 @@ namespace STROOP.Structs
             _dictionary.Add("DownHillDeltaAngle",
                 ((uint triAddress) =>
                 {
-                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     double uphillAngle = GetTriangleUphillAngle(triAddress);
                     double downhillAngle = MoreMath.ReverseAngle(uphillAngle);
                     double angleDiff = marioAngle - downhillAngle;
@@ -3016,7 +3016,7 @@ namespace STROOP.Structs
             _dictionary.Add("LeftHillDeltaAngle",
                 ((uint triAddress) =>
                 {
-                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     double uphillAngle = GetTriangleUphillAngle(triAddress);
                     double lefthillAngle = MoreMath.RotateAngleCCW(uphillAngle, 16384);
                     double angleDiff = marioAngle - lefthillAngle;
@@ -3035,7 +3035,7 @@ namespace STROOP.Structs
             _dictionary.Add("RightHillDeltaAngle",
                 ((uint triAddress) =>
                 {
-                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     double uphillAngle = GetTriangleUphillAngle(triAddress);
                     double righthillAngle = MoreMath.RotateAngleCW(uphillAngle, 16384);
                     double angleDiff = marioAngle - righthillAngle;
@@ -3054,7 +3054,7 @@ namespace STROOP.Structs
             _dictionary.Add("HillStatus",
                 ((uint triAddress) =>
                 {
-                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     double uphillAngle = GetTriangleUphillAngle(triAddress);
                     if (Double.IsNaN(uphillAngle)) return "No Hill";
                     double angleDiff = marioAngle - uphillAngle;
@@ -3094,9 +3094,9 @@ namespace STROOP.Structs
             _dictionary.Add("WallKickPostAngle",
                 ((uint triAddress) =>
                 {
-                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-                    float normX = Config.Stream.GetSingle(triAddress + TriangleOffsetsConfig.NormX);
-                    float normZ = Config.Stream.GetSingle(triAddress + TriangleOffsetsConfig.NormZ);
+                    ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    float normX = Config.Stream.GetFloat(triAddress + TriangleOffsetsConfig.NormX);
+                    float normZ = Config.Stream.GetFloat(triAddress + TriangleOffsetsConfig.NormZ);
                     ushort wallAngle = InGameTrigUtilities.InGameATan(normZ, normX);
                     return MoreMath.NormalizeAngleUshort(wallAngle - (marioAngle - wallAngle) + 32768);
                 },
@@ -3105,14 +3105,14 @@ namespace STROOP.Structs
             _dictionary.Add("DistanceAboveFloor",
                 ((uint dummy) =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                    float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                     float distAboveFloor = marioY - floorY;
                     return distAboveFloor;
                 },
                 (double distAbove, uint dummy) =>
                 {
-                    float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                     double newMarioY = floorY + distAbove;
                     return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
                 }));
@@ -3120,14 +3120,14 @@ namespace STROOP.Structs
             _dictionary.Add("DistanceBelowCeiling",
                 ((uint dummy) =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                    float ceilingY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.CeilingYOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float ceilingY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.CeilingYOffset);
                     float distBelowCeiling = ceilingY - marioY;
                     return distBelowCeiling;
                 },
                 (double distBelow, uint dummy) =>
                 {
-                    float ceilingY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.CeilingYOffset);
+                    float ceilingY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.CeilingYOffset);
                     double newMarioY = ceilingY - distBelow;
                     return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
                 }));
@@ -3308,8 +3308,8 @@ namespace STROOP.Structs
             _dictionary.Add("ObjectTriCount",
                 ((uint dummy) =>
                 {
-                    int totalTriangleCount = Config.Stream.GetInt32(TriangleConfig.TotalTriangleCountAddress);
-                    int levelTriangleCount = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
+                    int totalTriangleCount = Config.Stream.GetInt(TriangleConfig.TotalTriangleCountAddress);
+                    int levelTriangleCount = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
                     int objectTriangleCount = totalTriangleCount - levelTriangleCount;
                     return objectTriangleCount;
                 },
@@ -3318,7 +3318,7 @@ namespace STROOP.Structs
             _dictionary.Add("CurrentTriangleIndex",
                 ((uint triAddress) =>
                 {
-                    uint triangleListStartAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
+                    uint triangleListStartAddress = Config.Stream.GetUInt(TriangleConfig.TriangleListPointerAddress);
                     uint structSize = TriangleConfig.TriangleStructSize;
                     int addressDiff = triAddress >= triangleListStartAddress
                         ? (int)(triAddress - triangleListStartAddress)
@@ -3329,7 +3329,7 @@ namespace STROOP.Structs
                 },
                 (int index, uint triAddress) =>
                 {
-                    uint triangleListStartAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
+                    uint triangleListStartAddress = Config.Stream.GetUInt(TriangleConfig.TriangleListPointerAddress);
                     uint structSize = TriangleConfig.TriangleStructSize;
                     uint newTriAddress = (uint)(triangleListStartAddress + index * structSize);
                     Config.TriangleManager.SetCustomTriangleAddresses(newTriAddress);
@@ -3339,7 +3339,7 @@ namespace STROOP.Structs
             _dictionary.Add("CurrentTriangleObjectIndex",
                 ((uint triAddress) =>
                 {
-                    uint objAddress = Config.Stream.GetUInt32(triAddress + TriangleOffsetsConfig.AssociatedObject);
+                    uint objAddress = Config.Stream.GetUInt(triAddress + TriangleOffsetsConfig.AssociatedObject);
                     if (objAddress == 0) return double.NaN;
                     List<TriangleDataModel> objTris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     for (int i = 0; i < objTris.Count; i++)
@@ -3379,8 +3379,8 @@ namespace STROOP.Structs
             _dictionary.Add("ObjectNodeCount",
                 ((uint dummy) =>
                 {
-                    int totalNodeCount = Config.Stream.GetInt32(TriangleConfig.TotalNodeCountAddress);
-                    int levelNodeCount = Config.Stream.GetInt32(TriangleConfig.LevelNodeCountAddress);
+                    int totalNodeCount = Config.Stream.GetInt(TriangleConfig.TotalNodeCountAddress);
+                    int levelNodeCount = Config.Stream.GetInt(TriangleConfig.LevelNodeCountAddress);
                     int objectNodeCount = totalNodeCount - levelNodeCount;
                     return objectNodeCount;
                 },
@@ -3965,8 +3965,8 @@ namespace STROOP.Structs
             _dictionary.Add("WaterAboveMedian",
                 ((uint dummy) =>
                 {
-                    short waterLevel = Config.Stream.GetInt16(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
-                    short waterLevelMedian = Config.Stream.GetInt16(MiscConfig.WaterLevelMedianAddress);
+                    short waterLevel = Config.Stream.GetShort(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
+                    short waterLevelMedian = Config.Stream.GetShort(MiscConfig.WaterLevelMedianAddress);
                     double waterAboveMedian = waterLevel - waterLevelMedian;
                     return waterAboveMedian;
                 },
@@ -3975,15 +3975,15 @@ namespace STROOP.Structs
             _dictionary.Add("MarioAboveWater",
                 ((uint dummy) =>
                 {
-                    short waterLevel = Config.Stream.GetInt16(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    short waterLevel = Config.Stream.GetShort(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     float marioAboveWater = marioY - waterLevel;
                     return marioAboveWater;
                 },
                 (double goalMarioAboveWater, uint dummy) =>
                 {
-                    short waterLevel = Config.Stream.GetInt16(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    short waterLevel = Config.Stream.GetShort(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double goalMarioY = waterLevel + goalMarioAboveWater;
                     return Config.Stream.SetValue((float)goalMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
                 }));
@@ -4000,18 +4000,18 @@ namespace STROOP.Structs
             _dictionary.Add("CamHackYaw",
                 ((uint dummy) =>
                 {
-                    float camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                    float camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
-                    float focusX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                    float focusZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    float camX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    float camZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    float focusX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                    float focusZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
                     return MoreMath.AngleTo_AngleUnits(camX, camZ, focusX, focusZ);
                 },
                 (double yaw, uint dummy) =>
                 {
-                    float camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                    float camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
-                    float focusX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                    float focusZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    float camX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    float camZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    float focusX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                    float focusZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
                     (double newFocusX, double newFocusZ) = MoreMath.RotatePointAboutPointToAngle(focusX, focusZ, camX, camZ, yaw);
 
                     bool success = true;
@@ -4023,23 +4023,23 @@ namespace STROOP.Structs
             _dictionary.Add("CamHackPitch",
                 ((uint dummy) =>
                 {
-                    float camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                    float camY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
-                    float camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
-                    float focusX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                    float focusY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
-                    float focusZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    float camX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    float camY = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                    float camZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    float focusX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                    float focusY = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
+                    float focusZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
                     (double radius, double theta, double phi) = MoreMath.EulerToSpherical_AngleUnits(focusX - camX, focusY - camY, focusZ - camZ);
                     return phi;
                 },
                 (double pitch, uint dummy) =>
                 {
-                    float camX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                    float camY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
-                    float camZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
-                    float focusX = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                    float focusY = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
-                    float focusZ = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    float camX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    float camY = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                    float camZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    float focusX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                    float focusY = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
+                    float focusZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
                     (double radius, double theta, double phi) = MoreMath.EulerToSpherical_AngleUnits(focusX - camX, focusY - camY, focusZ - camZ);
                     (double diffX, double diffY, double diffZ) = MoreMath.SphericalToEuler_AngleUnits(radius, theta, pitch);
                     (double newFocusX, double newFocusY, double newFocusZ) = (camX + diffX, camY + diffY, camZ + diffZ);
@@ -4057,7 +4057,7 @@ namespace STROOP.Structs
             _dictionary.Add("MarioXQpuIndex",
                 ((uint dummy) =>
                 {
-                    float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
                     int puXIndex = PuUtilities.GetPuIndex(marioX);
                     double qpuXIndex = puXIndex / 4d;
                     return qpuXIndex;
@@ -4065,7 +4065,7 @@ namespace STROOP.Structs
                 (double newQpuXIndex, uint dummy) =>
                 {
                     int newPuXIndex = (int)Math.Round(newQpuXIndex * 4);
-                    float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
                     double newMarioX = PuUtilities.GetCoordinateInPu(marioX, newPuXIndex);
                     return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
                 }));
@@ -4073,7 +4073,7 @@ namespace STROOP.Structs
             _dictionary.Add("MarioYQpuIndex",
                 ((uint dummy) =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     int puYIndex = PuUtilities.GetPuIndex(marioY);
                     double qpuYIndex = puYIndex / 4d;
                     return qpuYIndex;
@@ -4081,7 +4081,7 @@ namespace STROOP.Structs
                 (double newQpuYIndex, uint dummy) =>
                 {
                     int newPuYIndex = (int)Math.Round(newQpuYIndex * 4);
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double newMarioY = PuUtilities.GetCoordinateInPu(marioY, newPuYIndex);
                     return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
                 }));
@@ -4089,7 +4089,7 @@ namespace STROOP.Structs
             _dictionary.Add("MarioZQpuIndex",
                 ((uint dummy) =>
                 {
-                    float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     int puZIndex = PuUtilities.GetPuIndex(marioZ);
                     double qpuZIndex = puZIndex / 4d;
                     return qpuZIndex;
@@ -4097,7 +4097,7 @@ namespace STROOP.Structs
                 (double newQpuZIndex, uint dummy) =>
                 {
                     int newPuZIndex = (int)Math.Round(newQpuZIndex * 4);
-                    float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     double newMarioZ = PuUtilities.GetCoordinateInPu(marioZ, newPuZIndex);
                     return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
                 }));
@@ -4105,13 +4105,13 @@ namespace STROOP.Structs
             _dictionary.Add("MarioXPuIndex",
                 ((uint dummy) =>
                 {
-                    float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
                     int puXIndex = PuUtilities.GetPuIndex(marioX);
                     return puXIndex;
                 },
                 (int newPuXIndex, uint dummy) =>
                 {
-                    float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
                     double newMarioX = PuUtilities.GetCoordinateInPu(marioX, newPuXIndex);
                     return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
                 }));
@@ -4119,13 +4119,13 @@ namespace STROOP.Structs
             _dictionary.Add("MarioYPuIndex",
                 ((uint dummy) =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     int puYIndex = PuUtilities.GetPuIndex(marioY);
                     return puYIndex;
                 },
                 (int newPuYIndex, uint dummy) =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double newMarioY = PuUtilities.GetCoordinateInPu(marioY, newPuYIndex);
                     return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
                 }));
@@ -4133,13 +4133,13 @@ namespace STROOP.Structs
             _dictionary.Add("MarioZPuIndex",
                 ((uint dummy) =>
                 {
-                    float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     int puZIndex = PuUtilities.GetPuIndex(marioZ);
                     return puZIndex;
                 },
                 (int newPuZIndex, uint dummy) =>
                 {
-                    float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     double newMarioZ = PuUtilities.GetCoordinateInPu(marioZ, newPuZIndex);
                     return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
                 }));
@@ -4147,13 +4147,13 @@ namespace STROOP.Structs
             _dictionary.Add("MarioXPuRelative",
                 ((uint dummy) =>
                 {
-                    float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
                     double relX = PuUtilities.GetRelativeCoordinate(marioX);
                     return relX;
                 },
                 (double newRelX, uint dummy) =>
                 {
-                    float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
                     int puXIndex = PuUtilities.GetPuIndex(marioX);
                     double newMarioX = PuUtilities.GetCoordinateInPu(newRelX, puXIndex);
                     return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
@@ -4162,13 +4162,13 @@ namespace STROOP.Structs
             _dictionary.Add("MarioYPuRelative",
                 ((uint dummy) =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double relY = PuUtilities.GetRelativeCoordinate(marioY);
                     return relY;
                 },
                 (double newRelY, uint dummy) =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     int puYIndex = PuUtilities.GetPuIndex(marioY);
                     double newMarioY = PuUtilities.GetCoordinateInPu(newRelY, puYIndex);
                     return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -4177,13 +4177,13 @@ namespace STROOP.Structs
             _dictionary.Add("MarioZPuRelative",
                 ((uint dummy) =>
                 {
-                    float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     double relZ = PuUtilities.GetRelativeCoordinate(marioZ);
                     return relZ;
                 },
                 (double newRelZ, uint dummy) =>
                 {
-                    float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     int puZIndex = PuUtilities.GetPuIndex(marioZ);
                     double newMarioZ = PuUtilities.GetCoordinateInPu(newRelZ, puZIndex);
                     return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
@@ -4196,12 +4196,12 @@ namespace STROOP.Structs
                 },
                 (double newDeFactoMultiplier, uint dummy) =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                    float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                     float distAboveFloor = marioY - floorY;
                     if (distAboveFloor != 0) return false;
 
-                    uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                    uint floorTri = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
                     if (floorTri == 0) return false;
                     return Config.Stream.SetValue((float)newDeFactoMultiplier, floorTri + TriangleOffsetsConfig.NormY);
                 }));
@@ -4213,12 +4213,12 @@ namespace STROOP.Structs
                 },
                 (double newSyncingSpeed, uint dummy) =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                    float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                     float distAboveFloor = marioY - floorY;
                     if (distAboveFloor != 0) return false;
 
-                    uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                    uint floorTri = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
                     if (floorTri == 0) return false;
                     double newYnorm = PuUtilities.QpuSpeed / newSyncingSpeed * SpecialConfig.PuHypotenuse;
                     return Config.Stream.SetValue((float)newYnorm, floorTri + TriangleOffsetsConfig.NormY);
@@ -4468,7 +4468,7 @@ namespace STROOP.Structs
             _dictionary.Add("GlobalTimerMod64",
                 ((uint dummy) =>
                 {
-                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
                     return globalTimer % 64;
                 },
                 DEFAULT_SETTER));
@@ -4476,7 +4476,7 @@ namespace STROOP.Structs
             _dictionary.Add("RngIndex",
                 ((uint dummy) =>
                 {
-                    ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
+                    ushort rngValue = Config.Stream.GetUShort(MiscConfig.RngAddress);
                     return RngIndexer.GetRngIndex(rngValue);
                 },
                 (int rngIndex, uint dummy) =>
@@ -4488,7 +4488,7 @@ namespace STROOP.Structs
             _dictionary.Add("RngIndexMod4",
                 ((uint dummy) =>
                 {
-                    ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
+                    ushort rngValue = Config.Stream.GetUShort(MiscConfig.RngAddress);
                     int rngIndex = RngIndexer.GetRngIndex();
                     return rngIndex % 4;
                 },
@@ -4497,7 +4497,7 @@ namespace STROOP.Structs
             _dictionary.Add("LastCoinRngIndex",
                 ((uint coinAddress) =>
                 {
-                    ushort coinRngValue = Config.Stream.GetUInt16(coinAddress + ObjectConfig.YawMovingOffset);
+                    ushort coinRngValue = Config.Stream.GetUShort(coinAddress + ObjectConfig.YawMovingOffset);
                     int coinRngIndex = RngIndexer.GetRngIndex(coinRngValue);
                     return coinRngIndex;
                 },
@@ -4510,7 +4510,7 @@ namespace STROOP.Structs
             _dictionary.Add("LastCoinRngIndexDiff",
                 ((uint coinAddress) =>
                 {
-                    ushort coinRngValue = Config.Stream.GetUInt16(coinAddress + ObjectConfig.YawMovingOffset);
+                    ushort coinRngValue = Config.Stream.GetUShort(coinAddress + ObjectConfig.YawMovingOffset);
                     int coinRngIndex = RngIndexer.GetRngIndex(coinRngValue);
                     int rngIndexDiff = coinRngIndex - SpecialConfig.GoalRngIndex;
                     return rngIndexDiff;
@@ -4547,7 +4547,7 @@ namespace STROOP.Structs
             _dictionary.Add("GoalRngIndexDiff",
                 ((uint dummy) =>
                 {
-                    ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
+                    ushort rngValue = Config.Stream.GetUShort(MiscConfig.RngAddress);
                     int rngIndex = RngIndexer.GetRngIndex(rngValue);
                     int rngIndexDiff = rngIndex - SpecialConfig.GoalRngIndex;
                     return rngIndexDiff;
@@ -4576,7 +4576,7 @@ namespace STROOP.Structs
             _dictionary.Add("PlayTime",
                 ((uint dummy) =>
                 {
-                    uint totalFrames = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    uint totalFrames = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
                     return GetRealTime(totalFrames);
                 },
                 DEFAULT_SETTER));
@@ -4622,8 +4622,8 @@ namespace STROOP.Structs
             _dictionary.Add("GfxBufferSpace",
                 ((uint dummy) =>
                 {
-                    uint gfxBufferStart = Config.Stream.GetUInt32(MiscConfig.GfxBufferStartAddress);
-                    uint gfxBufferEnd = Config.Stream.GetUInt32(MiscConfig.GfxBufferEndAddress);
+                    uint gfxBufferStart = Config.Stream.GetUInt(MiscConfig.GfxBufferStartAddress);
+                    uint gfxBufferEnd = Config.Stream.GetUInt(MiscConfig.GfxBufferEndAddress);
                     return gfxBufferEnd - gfxBufferStart;
                 },
                 DEFAULT_SETTER));
@@ -4759,7 +4759,7 @@ namespace STROOP.Structs
             _dictionary.Add("CurrentAreaIndexMario",
                 ((uint dummy) =>
                 {
-                    uint currentAreaMario = Config.Stream.GetUInt32(
+                    uint currentAreaMario = Config.Stream.GetUInt(
                         MarioConfig.StructAddress + MarioConfig.AreaPointerOffset);
                     double currentAreaIndexMario = AreaUtilities.GetAreaIndex(currentAreaMario) ?? Double.NaN;
                     return currentAreaIndexMario;
@@ -4775,7 +4775,7 @@ namespace STROOP.Structs
             _dictionary.Add("CurrentAreaIndex",
                 ((uint dummy) =>
                 {
-                    uint currentArea = Config.Stream.GetUInt32(AreaConfig.CurrentAreaPointerAddress);
+                    uint currentArea = Config.Stream.GetUInt(AreaConfig.CurrentAreaPointerAddress);
                     double currentAreaIndex = AreaUtilities.GetAreaIndex(currentArea) ?? Double.NaN;
                     return currentAreaIndex;
                 },
@@ -4789,7 +4789,7 @@ namespace STROOP.Structs
             _dictionary.Add("AreaTerrainDescription",
                 ((uint dummy) =>
                 {
-                    short terrainType = Config.Stream.GetInt16(
+                    short terrainType = Config.Stream.GetShort(
                         Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
                     string terrainDescription = AreaUtilities.GetTerrainDescription(terrainType);
                     return terrainDescription;
@@ -4949,7 +4949,7 @@ namespace STROOP.Structs
             _dictionary.Add("GhostActionDescription",
                 ((uint dummy) =>
                 {
-                    uint action = Config.Stream.GetUInt32(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.ActionOffset);
+                    uint action = Config.Stream.GetUInt(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.ActionOffset);
                     return TableConfig.MarioActions.GetActionName(action);
                 },
                 DEFAULT_SETTER));
@@ -4957,13 +4957,13 @@ namespace STROOP.Structs
             _dictionary.Add("GhostDeltaHSpeed",
                 ((uint dummy) =>
                 {
-                    float marioHSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                    float ghostHSpeed = Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.HSpeedOffset);
+                    float marioHSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    float ghostHSpeed = Config.Stream.GetFloat(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.HSpeedOffset);
                     return marioHSpeed - ghostHSpeed;
                 },
                 (float deltaHSpeed, uint dummy) =>
                 {
-                    float ghostHSpeed = Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.HSpeedOffset);
+                    float ghostHSpeed = Config.Stream.GetFloat(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.HSpeedOffset);
                     float newMarioHSpeed = ghostHSpeed + deltaHSpeed;
                     return Config.Stream.SetValue(newMarioHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                 }));
@@ -4971,13 +4971,13 @@ namespace STROOP.Structs
             _dictionary.Add("GhostDeltaYSpeed",
                 ((uint dummy) =>
                 {
-                    float marioYSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
-                    float ghostYSpeed = Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YSpeedOffset);
+                    float marioYSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
+                    float ghostYSpeed = Config.Stream.GetFloat(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YSpeedOffset);
                     return marioYSpeed - ghostYSpeed;
                 },
                 (float deltaYSpeed, uint dummy) =>
                 {
-                    float ghostYSpeed = Config.Stream.GetSingle(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YSpeedOffset);
+                    float ghostYSpeed = Config.Stream.GetFloat(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YSpeedOffset);
                     float newMarioYSpeed = ghostYSpeed + deltaYSpeed;
                     return Config.Stream.SetValue(newMarioYSpeed, MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
                 }));
@@ -4985,13 +4985,13 @@ namespace STROOP.Structs
             _dictionary.Add("GhostDeltaYawFacing",
                 ((uint dummy) =>
                 {
-                    ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-                    ushort ghostYawFacing = Config.Stream.GetUInt16(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawFacingOffset);
+                    ushort marioYawFacing = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    ushort ghostYawFacing = Config.Stream.GetUShort(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawFacingOffset);
                     return MoreMath.NormalizeAngleShort(marioYawFacing - ghostYawFacing);
                 },
                 (short deltaYawFacing, uint dummy) =>
                 {
-                    ushort ghostYawFacing = Config.Stream.GetUInt16(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawFacingOffset);
+                    ushort ghostYawFacing = Config.Stream.GetUShort(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawFacingOffset);
                     ushort newMarioYawFacing = MoreMath.NormalizeAngleUshort(ghostYawFacing + deltaYawFacing);
                     return Config.Stream.SetValue(newMarioYawFacing, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                 }));
@@ -4999,13 +4999,13 @@ namespace STROOP.Structs
             _dictionary.Add("GhostDeltaYawIntended",
                 ((uint dummy) =>
                 {
-                    ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
-                    ushort ghostYawIntended = Config.Stream.GetUInt16(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawIntendedOffset);
+                    ushort marioYawIntended = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
+                    ushort ghostYawIntended = Config.Stream.GetUShort(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawIntendedOffset);
                     return MoreMath.NormalizeAngleShort(marioYawIntended - ghostYawIntended);
                 },
                 (short deltaYawIntended, uint dummy) =>
                 {
-                    ushort ghostYawIntended = Config.Stream.GetUInt16(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawIntendedOffset);
+                    ushort ghostYawIntended = Config.Stream.GetUShort(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawIntendedOffset);
                     ushort newMarioYawIntended = MoreMath.NormalizeAngleUshort(ghostYawIntended + deltaYawIntended);
                     return Config.Stream.SetValue(newMarioYawIntended, MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
                 }
@@ -5014,10 +5014,10 @@ namespace STROOP.Structs
             _dictionary.Add("HorizontalMovement",
                 ((uint dummy) =>
                 {
-                    float pos01X = Config.Stream.GetSingle(0x80372F00);
-                    float pos01Z = Config.Stream.GetSingle(0x80372F08);
-                    float pos15X = Config.Stream.GetSingle(0x80372FE0);
-                    float pos15Z = Config.Stream.GetSingle(0x80372FE8);
+                    float pos01X = Config.Stream.GetFloat(0x80372F00);
+                    float pos01Z = Config.Stream.GetFloat(0x80372F08);
+                    float pos15X = Config.Stream.GetFloat(0x80372FE0);
+                    float pos15Z = Config.Stream.GetFloat(0x80372FE8);
                     return MoreMath.GetDistanceBetween(pos01X, pos01Z, pos15X, pos15Z);
                 },
                 DEFAULT_SETTER));
@@ -5103,7 +5103,7 @@ namespace STROOP.Structs
             double vDist = uphill ? 78 : 100;
             if (atAngle)
             {
-                ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                 double marioAngleRadians = MoreMath.AngleUnitsToRadians(marioAngle);
                 double uphillAngleRadians = GetTriangleUphillAngleRadians(triAddress);
                 double deltaAngle = marioAngleRadians - uphillAngleRadians;
@@ -5120,16 +5120,16 @@ namespace STROOP.Structs
 
         public static double GetMarioSlidingSpeed()
         {
-            float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-            float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            float xSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            float zSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
             double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
             return hSlidingSpeed;
         }
 
         public static double GetMarioSlidingAngle()
         {
-            float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-            float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            float xSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            float zSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
             double slidingAngle = MoreMath.AngleTo_AngleUnits(xSlidingSpeed, zSlidingSpeed);
             return slidingAngle;
         }
@@ -5157,20 +5157,20 @@ namespace STROOP.Structs
         private static (double dotProduct, double distToWaypointPlane, double distToWaypoint)
             GetWaypointSpecialVars(uint objAddress)
         {
-            float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-            float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+            float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
+            float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+            float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
 
-            uint prevWaypointAddress = Config.Stream.GetUInt32(objAddress + ObjectConfig.WaypointOffset);
-            short prevWaypointIndex = Config.Stream.GetInt16(prevWaypointAddress + WaypointConfig.IndexOffset);
-            short prevWaypointX = Config.Stream.GetInt16(prevWaypointAddress + WaypointConfig.XOffset);
-            short prevWaypointY = Config.Stream.GetInt16(prevWaypointAddress + WaypointConfig.YOffset);
-            short prevWaypointZ = Config.Stream.GetInt16(prevWaypointAddress + WaypointConfig.ZOffset);
+            uint prevWaypointAddress = Config.Stream.GetUInt(objAddress + ObjectConfig.WaypointOffset);
+            short prevWaypointIndex = Config.Stream.GetShort(prevWaypointAddress + WaypointConfig.IndexOffset);
+            short prevWaypointX = Config.Stream.GetShort(prevWaypointAddress + WaypointConfig.XOffset);
+            short prevWaypointY = Config.Stream.GetShort(prevWaypointAddress + WaypointConfig.YOffset);
+            short prevWaypointZ = Config.Stream.GetShort(prevWaypointAddress + WaypointConfig.ZOffset);
             uint nextWaypointAddress = prevWaypointAddress + WaypointConfig.StructSize;
-            short nextWaypointIndex = Config.Stream.GetInt16(nextWaypointAddress + WaypointConfig.IndexOffset);
-            short nextWaypointX = Config.Stream.GetInt16(nextWaypointAddress + WaypointConfig.XOffset);
-            short nextWaypointY = Config.Stream.GetInt16(nextWaypointAddress + WaypointConfig.YOffset);
-            short nextWaypointZ = Config.Stream.GetInt16(nextWaypointAddress + WaypointConfig.ZOffset);
+            short nextWaypointIndex = Config.Stream.GetShort(nextWaypointAddress + WaypointConfig.IndexOffset);
+            short nextWaypointX = Config.Stream.GetShort(nextWaypointAddress + WaypointConfig.XOffset);
+            short nextWaypointY = Config.Stream.GetShort(nextWaypointAddress + WaypointConfig.YOffset);
+            short nextWaypointZ = Config.Stream.GetShort(nextWaypointAddress + WaypointConfig.ZOffset);
 
             float objToWaypointX = nextWaypointX - objX;
             float objToWaypointY = nextWaypointY - objY;
@@ -5190,13 +5190,13 @@ namespace STROOP.Structs
         private static (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget)
             GetRacingPenguinSpecialVars(uint racingPenguinAddress)
         {
-            double marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            double objectY = Config.Stream.GetSingle(racingPenguinAddress + ObjectConfig.YOffset);
+            double marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            double objectY = Config.Stream.GetFloat(racingPenguinAddress + ObjectConfig.YOffset);
             double heightDiff = marioY - objectY;
 
-            uint prevWaypointAddress = Config.Stream.GetUInt32(racingPenguinAddress + ObjectConfig.WaypointOffset);
-            short prevWaypointIndex = Config.Stream.GetInt16(prevWaypointAddress);
-            double effort = Config.Stream.GetSingle(racingPenguinAddress + ObjectConfig.RacingPenguinEffortOffset);
+            uint prevWaypointAddress = Config.Stream.GetUInt(racingPenguinAddress + ObjectConfig.WaypointOffset);
+            short prevWaypointIndex = Config.Stream.GetShort(prevWaypointAddress);
+            double effort = Config.Stream.GetFloat(racingPenguinAddress + ObjectConfig.RacingPenguinEffortOffset);
 
             double effortTarget;
             double effortChange;
@@ -5223,8 +5223,8 @@ namespace STROOP.Structs
         private static (double hSpeedTarget, double hSpeedChange)
             GetKoopaTheQuickSpecialVars(uint koopaTheQuickAddress)
         {
-            double hSpeedMultiplier = Config.Stream.GetSingle(koopaTheQuickAddress + ObjectConfig.KoopaTheQuickHSpeedMultiplierOffset);
-            short pitchToWaypointAngleUnits = Config.Stream.GetInt16(koopaTheQuickAddress + ObjectConfig.PitchToWaypointOffset);
+            double hSpeedMultiplier = Config.Stream.GetFloat(koopaTheQuickAddress + ObjectConfig.KoopaTheQuickHSpeedMultiplierOffset);
+            short pitchToWaypointAngleUnits = Config.Stream.GetShort(koopaTheQuickAddress + ObjectConfig.PitchToWaypointOffset);
             double pitchToWaypointRadians = MoreMath.AngleUnitsToRadians(pitchToWaypointAngleUnits);
 
             double hSpeedTarget = hSpeedMultiplier * (Math.Sin(pitchToWaypointRadians) + 1) * 6;
@@ -5236,11 +5236,11 @@ namespace STROOP.Structs
         public static int GetPendulumCountdown(uint pendulumAddress)
         {
             // Get pendulum variables
-            float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
-            float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationMagnitudeOffset);
-            float angularVelocity = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngularVelocityOffset);
-            float angle = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngleOffset);
-            int waitingTimer = Config.Stream.GetInt32(pendulumAddress + ObjectConfig.PendulumWaitingTimerOffset);
+            float accelerationDirection = Config.Stream.GetFloat(pendulumAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
+            float accelerationMagnitude = Config.Stream.GetFloat(pendulumAddress + ObjectConfig.PendulumAccelerationMagnitudeOffset);
+            float angularVelocity = Config.Stream.GetFloat(pendulumAddress + ObjectConfig.PendulumAngularVelocityOffset);
+            float angle = Config.Stream.GetFloat(pendulumAddress + ObjectConfig.PendulumAngleOffset);
+            int waitingTimer = Config.Stream.GetInt(pendulumAddress + ObjectConfig.PendulumWaitingTimerOffset);
             return GetPendulumCountdown(accelerationDirection, accelerationMagnitude, angularVelocity, angle, waitingTimer);
         }
 
@@ -5253,10 +5253,10 @@ namespace STROOP.Structs
         public static float GetPendulumAmplitude(uint pendulumAddress)
         {
             // Get pendulum variables
-            float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
-            float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationMagnitudeOffset);
-            float angularVelocity = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngularVelocityOffset);
-            float angle = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngleOffset);
+            float accelerationDirection = Config.Stream.GetFloat(pendulumAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
+            float accelerationMagnitude = Config.Stream.GetFloat(pendulumAddress + ObjectConfig.PendulumAccelerationMagnitudeOffset);
+            float angularVelocity = Config.Stream.GetFloat(pendulumAddress + ObjectConfig.PendulumAngularVelocityOffset);
+            float angle = Config.Stream.GetFloat(pendulumAddress + ObjectConfig.PendulumAngleOffset);
             return GetPendulumAmplitude(accelerationDirection, accelerationMagnitude, angularVelocity, angle);
         }
 
@@ -5338,9 +5338,9 @@ namespace STROOP.Structs
 
         public static int GetCogNumFramesInRotation(uint cogAddress)
         {
-            ushort yawFacing = Config.Stream.GetUInt16(cogAddress + ObjectConfig.YawFacingOffset);
-            int currentYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogCurrentYawVelocity);
-            int targetYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogTargetYawVelocity);
+            ushort yawFacing = Config.Stream.GetUShort(cogAddress + ObjectConfig.YawFacingOffset);
+            int currentYawVel = (int)Config.Stream.GetFloat(cogAddress + ObjectConfig.CogCurrentYawVelocity);
+            int targetYawVel = (int)Config.Stream.GetFloat(cogAddress + ObjectConfig.CogTargetYawVelocity);
             return GetCogNumFramesInRotation(yawFacing, currentYawVel, targetYawVel);
         }
 
@@ -5354,9 +5354,9 @@ namespace STROOP.Structs
 
         public static ushort GetCogEndingYaw(uint cogAddress)
         {
-            ushort yawFacing = Config.Stream.GetUInt16(cogAddress + ObjectConfig.YawFacingOffset);
-            int currentYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogCurrentYawVelocity);
-            int targetYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogTargetYawVelocity);
+            ushort yawFacing = Config.Stream.GetUShort(cogAddress + ObjectConfig.YawFacingOffset);
+            int currentYawVel = (int)Config.Stream.GetFloat(cogAddress + ObjectConfig.CogCurrentYawVelocity);
+            int targetYawVel = (int)Config.Stream.GetFloat(cogAddress + ObjectConfig.CogTargetYawVelocity);
             return GetCogEndingYaw(yawFacing, currentYawVel, targetYawVel);
         }
 
@@ -5435,11 +5435,11 @@ namespace STROOP.Structs
 
         private static float GetDeFactoMultiplier()
         {
-            uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-            float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + TriangleOffsetsConfig.NormY);
+            uint floorTri = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            float yNorm = floorTri == 0 ? 1 : Config.Stream.GetFloat(floorTri + TriangleOffsetsConfig.NormY);
 
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
             float distAboveFloor = marioY - floorY;
 
             float defactoMultiplier = distAboveFloor == 0 ? yNorm : 1;
@@ -5448,7 +5448,7 @@ namespace STROOP.Structs
 
         public static float GetMarioDeFactoSpeed()
         {
-            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            float hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
             float defactoSpeed = hSpeed * GetDeFactoMultiplier();
             return defactoSpeed;
         }
@@ -5460,7 +5460,7 @@ namespace STROOP.Structs
 
         public static double GetQpuSpeed()
         {
-            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            float hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
             return hSpeed / GetSyncingSpeed();
         }
 
@@ -5475,19 +5475,19 @@ namespace STROOP.Structs
         public static (double x, double z) GetIntendedNextPosition(double numFrames)
         {
             double deFactoSpeed = GetMarioDeFactoSpeed();
-            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(marioAngle);
             (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(deFactoSpeed * numFrames, marioAngleTruncated);
 
-            float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float currentX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float currentZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
             return (currentX + xDiff, currentZ + zDiff);
         }
 
         private static double GetQsRelativeSpeed(double numFrames, bool xComp)
         {
             uint compOffset = xComp ? MarioConfig.XOffset : MarioConfig.ZOffset;
-            float currentComp = Config.Stream.GetSingle(MarioConfig.StructAddress + compOffset);
+            float currentComp = Config.Stream.GetFloat(MarioConfig.StructAddress + compOffset);
             double relCurrentComp = PuUtilities.GetRelativeCoordinate(currentComp);
             (double intendedX, double intendedZ) = GetIntendedNextPosition(numFrames);
             double intendedComp = xComp ? intendedX : intendedZ;
@@ -5506,8 +5506,8 @@ namespace STROOP.Structs
         
         private static bool GetQsRelativeIntendedNextComponent(double newValue, double numFrames, bool xComp, bool relativePosition)
         {
-            float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float currentX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float currentZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
             float currentComp = xComp ? currentX : currentZ;
             (double intendedX, double intendedZ) = GetIntendedNextPosition(numFrames);
             double intendedComp = xComp ? intendedX : intendedZ;
@@ -5515,7 +5515,7 @@ namespace STROOP.Structs
             double newRelativeComp = relativePosition ? currentComp + newValue : newValue;
             double newIntendedComp = PuUtilities.GetCoordinateInPu(newRelativeComp, intendedPuCompIndex);
 
-            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            float hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
             double intendedXComp = xComp ? newIntendedComp : intendedX;
             double intendedZComp = xComp ? intendedZ : newIntendedComp;
             (double newDeFactoSpeed, double newAngle) =
@@ -5534,8 +5534,8 @@ namespace STROOP.Structs
 
         public static short GetDeltaYawIntendedFacing()
         {
-            ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-            ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
+            ushort marioYawFacing = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            ushort marioYawIntended = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
             ushort diff = MoreMath.NormalizeAngleTruncated(marioYawIntended - marioYawFacing);
             return MoreMath.NormalizeAngleShort(diff);
         }
@@ -5578,7 +5578,7 @@ namespace STROOP.Structs
 
         private static (float x, float y, float z) GetRotationDisplacement()
         {
-            uint stoodOnObject = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);
+            uint stoodOnObject = Config.Stream.GetUInt(MarioConfig.StoodOnObjectPointerAddress);
             if (stoodOnObject == 0)
             {
                 return (0, 0, 0);
@@ -5586,16 +5586,16 @@ namespace STROOP.Structs
 
             float[] currentObjectPos = new float[]
             {
-                Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset),
-                Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset),
-                Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset),
+                Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset),
+                Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset),
+                Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset),
             };
 
             float[] platformPos = new float[]
             {
-                Config.Stream.GetSingle(stoodOnObject + ObjectConfig.XOffset),
-                Config.Stream.GetSingle(stoodOnObject + ObjectConfig.YOffset),
-                Config.Stream.GetSingle(stoodOnObject + ObjectConfig.ZOffset),
+                Config.Stream.GetFloat(stoodOnObject + ObjectConfig.XOffset),
+                Config.Stream.GetFloat(stoodOnObject + ObjectConfig.YOffset),
+                Config.Stream.GetFloat(stoodOnObject + ObjectConfig.ZOffset),
             };
 
             float[] currentObjectOffset = new float[]
@@ -5607,16 +5607,16 @@ namespace STROOP.Structs
 
             short[] platformAngularVelocity = new short[]
             {
-                (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.PitchVelocityOffset),
-                (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.YawVelocityOffset),
-                (short)Config.Stream.GetInt32(stoodOnObject + ObjectConfig.RollVelocityOffset),
+                (short)Config.Stream.GetInt(stoodOnObject + ObjectConfig.PitchVelocityOffset),
+                (short)Config.Stream.GetInt(stoodOnObject + ObjectConfig.YawVelocityOffset),
+                (short)Config.Stream.GetInt(stoodOnObject + ObjectConfig.RollVelocityOffset),
             };
 
             short[] platformFacingAngle = new short[]
             {
-                Config.Stream.GetInt16(stoodOnObject + ObjectConfig.PitchFacingOffset),
-                Config.Stream.GetInt16(stoodOnObject + ObjectConfig.YawFacingOffset),
-                Config.Stream.GetInt16(stoodOnObject + ObjectConfig.RollFacingOffset),
+                Config.Stream.GetShort(stoodOnObject + ObjectConfig.PitchFacingOffset),
+                Config.Stream.GetShort(stoodOnObject + ObjectConfig.YawFacingOffset),
+                Config.Stream.GetShort(stoodOnObject + ObjectConfig.RollFacingOffset),
             };
 
             short[] rotation = new short[]
@@ -5738,8 +5738,8 @@ namespace STROOP.Structs
 
         public static (int cellX, int cellZ) GetMarioCell()
         {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
             return GetCell(marioX, marioZ);
         }
 
@@ -5756,9 +5756,9 @@ namespace STROOP.Structs
 
         public static uint GetWarpNodesAddress()
         {
-            uint gAreas = Config.Stream.GetUInt32(0x8032DDC8);
-            short currentAreaIndex = Config.Stream.GetInt16(0x8033BACA);
-            uint warpNodesAddress = Config.Stream.GetUInt32(gAreas + (uint)currentAreaIndex * AreaConfig.AreaStructSize + 0x14);
+            uint gAreas = Config.Stream.GetUInt(0x8032DDC8);
+            short currentAreaIndex = Config.Stream.GetShort(0x8033BACA);
+            uint warpNodesAddress = Config.Stream.GetUInt(gAreas + (uint)currentAreaIndex * AreaConfig.AreaStructSize + 0x14);
             return warpNodesAddress;
         }
 
@@ -5769,7 +5769,7 @@ namespace STROOP.Structs
             while (address != 0)
             {
                 numWarpNodes++;
-                address = Config.Stream.GetUInt32(address + 0x8);
+                address = Config.Stream.GetUInt(address + 0x8);
             }
             return numWarpNodes;
         }
@@ -5781,7 +5781,7 @@ namespace STROOP.Structs
             while (address != 0)
             {
                 addresses.Add(address);
-                address = Config.Stream.GetUInt32(address + 0x8);
+                address = Config.Stream.GetUInt(address + 0x8);
             }
             return addresses;
         }
@@ -5837,22 +5837,22 @@ namespace STROOP.Structs
 
         public static int IsMarioHitboxOverlapping(uint objAddress)
         {
-            uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-            float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
-            float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-            float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
-            float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadiusOffset);
-            float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
-            float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
+            uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+            float mObjX = Config.Stream.GetFloat(marioObjRef + ObjectConfig.XOffset);
+            float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
+            float mObjZ = Config.Stream.GetFloat(marioObjRef + ObjectConfig.ZOffset);
+            float mObjHitboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxRadiusOffset);
+            float mObjHitboxHeight = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxHeightOffset);
+            float mObjHitboxDownOffset = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxDownOffsetOffset);
             float mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
             float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
-            float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-            float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-            float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
-            float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeightOffset);
-            float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+            float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
+            float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+            float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
+            float objHitboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxRadiusOffset);
+            float objHitboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxHeightOffset);
+            float objHitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
             float objHitboxBottom = objY - objHitboxDownOffset;
             float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
 

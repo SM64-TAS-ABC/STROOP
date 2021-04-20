@@ -99,7 +99,7 @@ namespace STROOP.Managers
                 () =>
                 {
                     return CameraConfig.FovFunctionAddresses.All(
-                        address => Config.Stream.GetUInt32(address) == 0);
+                        address => Config.Stream.GetUInt(address) == 0);
                 });
 
             var cameraFocusPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraFocusPos"] as GroupBox;
@@ -170,15 +170,15 @@ namespace STROOP.Managers
 
             if (pivotOnFocus)
             {
-                pivotX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
-                pivotY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
-                pivotZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
+                pivotX = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
+                pivotY = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
+                pivotZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
             }
             else // pivot on Mario
             {
-                pivotX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                pivotY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                pivotZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                pivotX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+                pivotY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+                pivotZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
             }
             return (pivotX, pivotY, pivotZ);
         }

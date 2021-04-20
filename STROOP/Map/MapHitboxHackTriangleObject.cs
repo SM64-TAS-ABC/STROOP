@@ -184,8 +184,8 @@ namespace STROOP.Map
 
         public override void Update()
         {
-            int numAllTriangles = Config.Stream.GetInt32(TriangleConfig.TotalTriangleCountAddress);
-            int numLevelTriangles = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
+            int numAllTriangles = Config.Stream.GetInt(TriangleConfig.TotalTriangleCountAddress);
+            int numLevelTriangles = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
             int numObjTriangles = numAllTriangles - numLevelTriangles;
 
             if (_levelTriAddressList.Count != numLevelTriangles)

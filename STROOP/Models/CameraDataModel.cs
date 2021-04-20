@@ -115,18 +115,18 @@ namespace STROOP.Models
         public void Update()
         {
             // Update camera position and rotation
-            _x = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
-            _y = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
-            _z = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
+            _x = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.XOffset);
+            _y = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.YOffset);
+            _z = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.ZOffset);
 
-            _facingYaw =    Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
-            _facingPitch =  Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingPitchOffset);
-            _facingRoll =   Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingRollOffset);
+            _facingYaw =    Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+            _facingPitch =  Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingPitchOffset);
+            _facingRoll =   Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingRollOffset);
 
-            _fov = Config.Stream.GetSingle(CameraConfig.FOVStructAddress + CameraConfig.FOVValueOffset);
+            _fov = Config.Stream.GetFloat(CameraConfig.FOVStructAddress + CameraConfig.FOVValueOffset);
 
-            _secondaryObject = Config.Stream.GetUInt32(CameraConfig.SecondaryObjectAddress);
-            _hackObject = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
+            _secondaryObject = Config.Stream.GetUInt(CameraConfig.SecondaryObjectAddress);
+            _hackObject = Config.Stream.GetUInt(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
         }
 
         public void Update2() { }

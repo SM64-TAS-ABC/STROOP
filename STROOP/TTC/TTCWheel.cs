@@ -27,12 +27,12 @@ namespace STROOP.Ttc
         public TtcWheel(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                angle: Normalize(Config.Stream.GetInt32(address + 0xD4)),
-                timerMax: Config.Stream.GetInt32(address + 0xF4),
-                targetAngle: Normalize(Config.Stream.GetInt32(address + 0xF8)),
-                displacement: Config.Stream.GetInt32(address + 0xFC),
-                directionCountdown: Config.Stream.GetInt32(address + 0x104),
-                timer: Config.Stream.GetInt32(address + 0x154))
+                angle: Normalize(Config.Stream.GetInt(address + 0xD4)),
+                timerMax: Config.Stream.GetInt(address + 0xF4),
+                targetAngle: Normalize(Config.Stream.GetInt(address + 0xF8)),
+                displacement: Config.Stream.GetInt(address + 0xFC),
+                directionCountdown: Config.Stream.GetInt(address + 0x104),
+                timer: Config.Stream.GetInt(address + 0x154))
         {
         }
 

@@ -331,7 +331,7 @@ namespace STROOP.Map
 
             if (!_isPaused)
             {
-                uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
                 float x = (float)_posAngle.X;
                 float y = (float)_posAngle.Y;
                 float z = (float)_posAngle.Z;

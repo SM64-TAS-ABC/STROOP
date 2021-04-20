@@ -182,11 +182,11 @@ namespace STROOP.Utilities
         {
             if (type == typeof(byte)) return GetByte(address, absoluteAddress, mask, shift);
             if (type == typeof(sbyte)) return GetSByte(address, absoluteAddress, mask, shift);
-            if (type == typeof(short)) return GetInt16(address, absoluteAddress, mask, shift);
-            if (type == typeof(ushort)) return GetUInt16(address, absoluteAddress, mask, shift);
-            if (type == typeof(int)) return GetInt32(address, absoluteAddress, mask, shift);
-            if (type == typeof(uint)) return GetUInt32(address, absoluteAddress, mask, shift);
-            if (type == typeof(float)) return GetSingle(address, absoluteAddress, mask, shift);
+            if (type == typeof(short)) return GetShort(address, absoluteAddress, mask, shift);
+            if (type == typeof(ushort)) return GetUShort(address, absoluteAddress, mask, shift);
+            if (type == typeof(int)) return GetInt(address, absoluteAddress, mask, shift);
+            if (type == typeof(uint)) return GetUInt(address, absoluteAddress, mask, shift);
+            if (type == typeof(float)) return GetFloat(address, absoluteAddress, mask, shift);
             if (type == typeof(double)) return GetDouble(address, absoluteAddress, mask, shift);
 
             throw new ArgumentOutOfRangeException("Cannot call ProcessStream.GetValue with type " + type);
@@ -216,7 +216,7 @@ namespace STROOP.Utilities
             return value;
         }
 
-        public short GetInt16(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
+        public short GetShort(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             object lockValue = WatchVariableLockManager.GetMemoryLockValue(address, typeof(short), mask, shift);
             short? parsedValue = ParsingUtilities.ParseShortRoundingWrapping(lockValue);
@@ -228,7 +228,7 @@ namespace STROOP.Utilities
             return value;
         }
 
-        public ushort GetUInt16(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
+        public ushort GetUShort(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             object lockValue = WatchVariableLockManager.GetMemoryLockValue(address, typeof(ushort), mask, shift);
             ushort? parsedValue = ParsingUtilities.ParseUShortRoundingWrapping(lockValue);
@@ -240,7 +240,7 @@ namespace STROOP.Utilities
             return value;
         }
 
-        public int GetInt32(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
+        public int GetInt(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             object lockValue = WatchVariableLockManager.GetMemoryLockValue(address, typeof(int), mask, shift);
             int? parsedValue = ParsingUtilities.ParseIntRoundingWrapping(lockValue);
@@ -252,7 +252,7 @@ namespace STROOP.Utilities
             return value;
         }
 
-        public uint GetUInt32(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
+        public uint GetUInt(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             object lockValue = WatchVariableLockManager.GetMemoryLockValue(address, typeof(uint), mask, shift);
             uint? parsedValue = ParsingUtilities.ParseUIntRoundingWrapping(lockValue);
@@ -264,7 +264,7 @@ namespace STROOP.Utilities
             return value;
         }
 
-        public float GetSingle(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
+        public float GetFloat(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             object lockValue = WatchVariableLockManager.GetMemoryLockValue(address, typeof(float), mask, shift);
             float? parsedValue = ParsingUtilities.ParseFloatNullable(lockValue);
@@ -449,7 +449,7 @@ namespace STROOP.Utilities
             }
             if (mask.HasValue)
             {
-                short oldValue = GetInt16(address, absoluteAddress);
+                short oldValue = GetShort(address, absoluteAddress);
                 value = (short)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
@@ -465,7 +465,7 @@ namespace STROOP.Utilities
             }
             if (mask.HasValue)
             {
-                ushort oldValue = GetUInt16(address, absoluteAddress);
+                ushort oldValue = GetUShort(address, absoluteAddress);
                 value = (ushort)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
@@ -481,7 +481,7 @@ namespace STROOP.Utilities
             }
             if (mask.HasValue)
             {
-                int oldValue = GetInt32(address, absoluteAddress);
+                int oldValue = GetInt(address, absoluteAddress);
                 value = (int)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
@@ -497,7 +497,7 @@ namespace STROOP.Utilities
             }
             if (mask.HasValue)
             {
-                uint oldValue = GetUInt32(address, absoluteAddress);
+                uint oldValue = GetUInt(address, absoluteAddress);
                 value = (uint)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);

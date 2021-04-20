@@ -291,16 +291,16 @@ namespace STROOP.Map.Map3D
             switch (SpecialConfig.Map3DMode)
             {
                 case Map3DCameraMode.InGame:
-                    SpecialConfig.Map3DCameraX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
-                    SpecialConfig.Map3DCameraY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
-                    SpecialConfig.Map3DCameraZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
-                    SpecialConfig.Map3DCameraYaw = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
-                    SpecialConfig.Map3DCameraPitch = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingPitchOffset);
-                    SpecialConfig.Map3DCameraRoll = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingRollOffset);
-                    SpecialConfig.Map3DFocusX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
-                    SpecialConfig.Map3DFocusY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
-                    SpecialConfig.Map3DFocusZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
-                    SpecialConfig.Map3DFOV = (float)MoreMath.Clamp(Config.Stream.GetSingle(CameraConfig.FOVStructAddress + CameraConfig.FOVValueOffset), 1, 179);
+                    SpecialConfig.Map3DCameraX = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.XOffset);
+                    SpecialConfig.Map3DCameraY = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.YOffset);
+                    SpecialConfig.Map3DCameraZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.ZOffset);
+                    SpecialConfig.Map3DCameraYaw = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+                    SpecialConfig.Map3DCameraPitch = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingPitchOffset);
+                    SpecialConfig.Map3DCameraRoll = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingRollOffset);
+                    SpecialConfig.Map3DFocusX = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
+                    SpecialConfig.Map3DFocusY = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
+                    SpecialConfig.Map3DFocusZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
+                    SpecialConfig.Map3DFOV = (float)MoreMath.Clamp(Config.Stream.GetFloat(CameraConfig.FOVStructAddress + CameraConfig.FOVValueOffset), 1, 179);
                     break;
                 case Map3DCameraMode.CameraPosAndFocus:
                     updateCameraAngles();

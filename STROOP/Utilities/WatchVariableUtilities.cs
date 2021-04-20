@@ -66,7 +66,7 @@ namespace STROOP.Structs
                     return new List<uint> { MarioConfig.StructAddress };
 
                 case BaseAddressTypeEnum.MarioObj:
-                    return new List<uint> { Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress) };
+                    return new List<uint> { Config.Stream.GetUInt(MarioObjectConfig.PointerAddress) };
 
                 case BaseAddressTypeEnum.Camera:
                     return new List<uint> { CameraConfig.StructAddress };
@@ -74,10 +74,10 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.CameraSettings:
                     {
                         uint a1 = 0x8033B910;
-                        uint a2 = Config.Stream.GetUInt32(a1);
-                        uint a3 = Config.Stream.GetUInt32(a2 + 0x10);
-                        uint a4 = Config.Stream.GetUInt32(a3 + 0x08);
-                        uint a5 = Config.Stream.GetUInt32(a4 + 0x10);
+                        uint a2 = Config.Stream.GetUInt(a1);
+                        uint a3 = Config.Stream.GetUInt(a2 + 0x10);
+                        uint a4 = Config.Stream.GetUInt(a3 + 0x08);
+                        uint a5 = Config.Stream.GetUInt(a4 + 0x10);
                         return new List<uint> { a5 };
                     }
 
@@ -125,19 +125,19 @@ namespace STROOP.Structs
 
                 case BaseAddressTypeEnum.Floor:
                     {
-                        uint floorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                        uint floorAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
                         return floorAddress != 0 ? new List<uint>() { floorAddress } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.Wall:
                     {
-                        uint wallAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+                        uint wallAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
                         return wallAddress != 0 ? new List<uint>() { wallAddress } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.Ceiling:
                     {
-                        uint ceilingAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
+                        uint ceilingAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
                         return ceilingAddress != 0 ? new List<uint>() { ceilingAddress } : BaseAddressListEmpty;
                     }
 
@@ -152,38 +152,38 @@ namespace STROOP.Structs
 
                 case BaseAddressTypeEnum.Graphics:
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object)
-                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.BehaviorGfxOffset));
+                        .ConvertAll(objAddress => Config.Stream.GetUInt(objAddress + ObjectConfig.BehaviorGfxOffset));
 
                 case BaseAddressTypeEnum.Animation:
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object)
-                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.AnimationOffset));
+                        .ConvertAll(objAddress => Config.Stream.GetUInt(objAddress + ObjectConfig.AnimationOffset));
 
                 case BaseAddressTypeEnum.Waypoint:
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object)
-                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.WaypointOffset));
+                        .ConvertAll(objAddress => Config.Stream.GetUInt(objAddress + ObjectConfig.WaypointOffset));
 
                 case BaseAddressTypeEnum.Water:
                     {
-                        uint waterAddress = Config.Stream.GetUInt32(MiscConfig.WaterPointerAddress);
+                        uint waterAddress = Config.Stream.GetUInt(MiscConfig.WaterPointerAddress);
                         return waterAddress != 0 ? new List<uint>() { waterAddress } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.Snow:
-                    return new List<uint> { Config.Stream.GetUInt32(SnowConfig.SnowArrayPointerAddress) };
+                    return new List<uint> { Config.Stream.GetUInt(SnowConfig.SnowArrayPointerAddress) };
 
                 case BaseAddressTypeEnum.Area:
                     return new List<uint> { Config.AreaManager.SelectedAreaAddress };
 
                 case BaseAddressTypeEnum.Whirlpool1:
                     {
-                        uint whirlpoolArrayAddress = Config.Stream.GetUInt32(Config.AreaManager.SelectedAreaAddress + 0x2C);
+                        uint whirlpoolArrayAddress = Config.Stream.GetUInt(Config.AreaManager.SelectedAreaAddress + 0x2C);
                         if (whirlpoolArrayAddress == 0) return BaseAddressListEmpty;
                         return new List<uint>() { whirlpoolArrayAddress + 0x00 };
                     }
 
                 case BaseAddressTypeEnum.Whirlpool2:
                     {
-                        uint whirlpoolArrayAddress = Config.Stream.GetUInt32(Config.AreaManager.SelectedAreaAddress + 0x2C);
+                        uint whirlpoolArrayAddress = Config.Stream.GetUInt(Config.AreaManager.SelectedAreaAddress + 0x2C);
                         if (whirlpoolArrayAddress == 0) return BaseAddressListEmpty;
                         return new List<uint>() { whirlpoolArrayAddress + 0x08 };
                     }

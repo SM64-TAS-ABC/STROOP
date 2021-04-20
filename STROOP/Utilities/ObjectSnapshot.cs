@@ -48,7 +48,7 @@ namespace STROOP.Utilities
             uintValues = new List<uint>();
             for (int i = 0; i < ObjectConfig.StructSize; i += 4)
             {
-                uint uintValue = Config.Stream.GetUInt32(address + (uint)i);
+                uint uintValue = Config.Stream.GetUInt(address + (uint)i);
                 uintValues.Add(uintValue);
             }
         }

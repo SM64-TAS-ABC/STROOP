@@ -33,9 +33,9 @@ namespace STROOP.Utilities
 
         public static (int puXIndex, int puYIndex, int puZIndex) GetMarioPuIndexes()
         {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             int puXIndex = GetPuIndex(marioX);
             int puYIndex = GetPuIndex(marioY);
@@ -75,17 +75,17 @@ namespace STROOP.Utilities
 
         public static bool SetMarioPu(int newPuX, int newPuY, int newPuZ)
         {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             double newMarioX = GetCoordinateInPu(marioX, newPuX);
             double newMarioY = GetCoordinateInPu(marioY, newPuY);
             double newMarioZ = GetCoordinateInPu(marioZ, newPuZ);
 
-            float cameraX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
-            float cameraY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
-            float cameraZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
+            float cameraX = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.XOffset);
+            float cameraY = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.YOffset);
+            float cameraZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.ZOffset);
 
             double newCamX = GetCoordinateInPu(cameraX, newPuX);
             double newCamY = GetCoordinateInPu(cameraY, newPuY);

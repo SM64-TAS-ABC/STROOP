@@ -33,7 +33,7 @@ namespace STROOP.Managers
             get
             {
                 uint modelObjectAddress = ModelObjectAddress;
-                return modelObjectAddress == 0 ? 0 : Config.Stream.GetUInt32(modelObjectAddress + ObjectConfig.ModelPointerOffset);
+                return modelObjectAddress == 0 ? 0 : Config.Stream.GetUInt(modelObjectAddress + ObjectConfig.ModelPointerOffset);
             }
         }
         private uint _previousModelPointer = 0;
@@ -191,14 +191,14 @@ namespace STROOP.Managers
         {
             List<short[]> vertices = new List<short[]>();
             modelPtr += 2;
-            int numberOfVertices = Math.Min(Config.Stream.GetUInt16(modelPtr), (ushort) 500);
+            int numberOfVertices = Math.Min(Config.Stream.GetUShort(modelPtr), (ushort) 500);
             modelPtr += 2;
 
             for (int i = 0; i < numberOfVertices; i++)
             {
-                short x = Config.Stream.GetInt16(modelPtr);
-                short y = Config.Stream.GetInt16(modelPtr + 0x02);
-                short z = Config.Stream.GetInt16(modelPtr + 0x04);
+                short x = Config.Stream.GetShort(modelPtr);
+                short y = Config.Stream.GetShort(modelPtr + 0x02);
+                short z = Config.Stream.GetShort(modelPtr + 0x04);
                 modelPtr += 0x06;
                 vertices.Add(new short[3] { x, y, z });
             }
@@ -212,22 +212,22 @@ namespace STROOP.Managers
 
             for (int totalVertices = 0, group = 0; totalVertices < 500 / 2; group++)
             {
-                ushort type = Config.Stream.GetUInt16(contModelPtr); // Type (unused, but here anyway for doc.)
+                ushort type = Config.Stream.GetUShort(contModelPtr); // Type (unused, but here anyway for doc.)
 
                 if (type == 0x41)
                     break;
 
                 contModelPtr += 2;
-                int numberOfTriangles = Config.Stream.GetUInt16(contModelPtr);
+                int numberOfTriangles = Config.Stream.GetUShort(contModelPtr);
                 contModelPtr += 2;
 
                 totalVertices += numberOfTriangles;
 
                 for (int i = 0; i < numberOfTriangles; i++)
                 {
-                    short v1 = Config.Stream.GetInt16(contModelPtr);
-                    short v2 = Config.Stream.GetInt16(contModelPtr + 0x02);
-                    short v3 = Config.Stream.GetInt16(contModelPtr + 0x04);
+                    short v1 = Config.Stream.GetShort(contModelPtr);
+                    short v2 = Config.Stream.GetShort(contModelPtr + 0x02);
+                    short v3 = Config.Stream.GetShort(contModelPtr + 0x04);
                     contModelPtr += 0x06;
                     triangles.Add(new int[] { v1, v2, v3, group, type});
                 }

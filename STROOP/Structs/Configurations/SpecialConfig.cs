@@ -106,7 +106,7 @@ namespace STROOP.Structs.Configurations
             get
             {
                 if (PanModels.Count == 0) return -1;
-                uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
                 for (int i = 0; i < PanModels.Count; i++)
                 {
                     if (globalTimer < PanModels[i].PanStartTime)

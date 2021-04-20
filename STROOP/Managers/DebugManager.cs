@@ -134,7 +134,7 @@ namespace STROOP.Managers
 
             // Resource meter
             byte resourceMeterOn = Config.Stream.GetByte(DebugConfig.ResourceMeterAddress);
-            ushort resourceMeterSetting = Config.Stream.GetUInt16(DebugConfig.ResourceMeterSettingAddress);
+            ushort resourceMeterSetting = Config.Stream.GetUShort(DebugConfig.ResourceMeterSettingAddress);
             if (resourceMeterOn != 0)
             {
                 if (resourceMeterSetting != 0)
@@ -152,7 +152,7 @@ namespace STROOP.Managers
             _spawnModeCheckbox.Checked = Config.Stream.GetByte(DebugConfig.AdvancedModeSettingAddress) == 0x03
                  && Config.Stream.GetByte(DebugConfig.SpawnModeAddress) == 0x01;
             _stageSelectCheckbox.Checked = Config.Stream.GetByte(DebugConfig.StageSelectAddress) == 0x01;
-            _freeMovementCheckbox.Checked = Config.Stream.GetUInt16(DebugConfig.FreeMovementAddress) == DebugConfig.FreeMovementOnValue;
+            _freeMovementCheckbox.Checked = Config.Stream.GetUShort(DebugConfig.FreeMovementAddress) == DebugConfig.FreeMovementOnValue;
         }
     }
 }

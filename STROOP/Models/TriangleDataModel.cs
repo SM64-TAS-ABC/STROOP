@@ -110,14 +110,14 @@ namespace STROOP.Models
         {
             Address = triangleAddress;
 
-            SurfaceType = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.SurfaceType);
+            SurfaceType = Config.Stream.GetShort(triangleAddress + TriangleOffsetsConfig.SurfaceType);
             ExertionForceIndex = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionForceIndex);
             ExertionAngle = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionAngle);
             Flags = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.Flags);
             Room = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.Room);
 
-            YMinMinus5 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMinMinus5);
-            YMaxPlus5 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
+            YMinMinus5 = Config.Stream.GetShort(triangleAddress + TriangleOffsetsConfig.YMinMinus5);
+            YMaxPlus5 = Config.Stream.GetShort(triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
 
             X1 = TriangleOffsetsConfig.GetX1(triangleAddress);
             Y1 = TriangleOffsetsConfig.GetY1(triangleAddress);
@@ -129,12 +129,12 @@ namespace STROOP.Models
             Y3 = TriangleOffsetsConfig.GetY3(triangleAddress);
             Z3 = TriangleOffsetsConfig.GetZ3(triangleAddress);
 
-            NormX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
-            NormY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
-            NormZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
-            NormOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
+            NormX = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormX);
+            NormY = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormY);
+            NormZ = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormZ);
+            NormOffset = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormOffset);
 
-            AssociatedObject = Config.Stream.GetUInt32(triangleAddress + TriangleOffsetsConfig.AssociatedObject);
+            AssociatedObject = Config.Stream.GetUInt(triangleAddress + TriangleOffsetsConfig.AssociatedObject);
 
             Classification = TriangleUtilities.CalculateClassification(NormY);
 
@@ -312,17 +312,17 @@ namespace STROOP.Models
 
         public double GetDistToMidpoint()
         {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
             return MoreMath.GetDistanceBetween(marioX, marioY, marioZ, GetMidpointX(), GetMidpointY(), GetMidpointZ());
         }
 
         public int GetClosestVertex()
         {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
             return GetClosestVertex(marioX, marioY, marioZ);
         }
 

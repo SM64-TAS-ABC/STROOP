@@ -32,14 +32,14 @@ namespace STROOP.Map
 
         protected override double GetYaw()
         {
-            uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-            int targetAngle = Config.Stream.GetInt32(_objAddress + ObjectConfig.SwooperTargetYawOffset);
+            uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
+            int targetAngle = Config.Stream.GetInt(_objAddress + ObjectConfig.SwooperTargetYawOffset);
             return targetAngle + (short)(3000 * InGameTrigUtilities.InGameCosine(4000 * (int)globalTimer));
         }
 
         protected override double GetRecommendedSize()
         {
-            return Config.Stream.GetSingle(_objAddress + ObjectConfig.HSpeedOffset);
+            return Config.Stream.GetFloat(_objAddress + ObjectConfig.HSpeedOffset);
         }
 
         public override string GetName()

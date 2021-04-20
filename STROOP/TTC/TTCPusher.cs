@@ -31,10 +31,10 @@ namespace STROOP.Ttc
         public TtcPusher(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                timerMax: Config.Stream.GetInt32(address + 0xF4),
-                countdown: Config.Stream.GetInt32(address + 0xF8),
-                state: Config.Stream.GetInt32(address + 0x14C),
-                timer: Config.Stream.GetInt32(address + 0x154))
+                timerMax: Config.Stream.GetInt(address + 0xF4),
+                countdown: Config.Stream.GetInt(address + 0xF8),
+                state: Config.Stream.GetInt(address + 0x14C),
+                timer: Config.Stream.GetInt(address + 0x154))
         {
         }
 

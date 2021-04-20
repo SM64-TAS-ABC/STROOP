@@ -27,7 +27,7 @@ namespace STROOP.Map
             List<(float centerX, float centerZ, float radius)> dimensions2D = dimensions3D.ConvertAll(
                 dimensions =>
                 {
-                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     float yDiff = marioY - dimensions.centerY;
                     float radiusSquared = dimensions.radius3D * dimensions.radius3D - yDiff * yDiff;
                     float radius2D = radiusSquared >= 0 ? (float)Math.Sqrt(radiusSquared) : 0;

@@ -26,7 +26,7 @@ namespace STROOP.Map
         protected override List<(float centerX, float centerY, float centerZ, float radius3D)> Get3DDimensions()
         {
             uint objAddress = _posAngle.GetObjAddress();
-            float tangibleDist = Config.Stream.GetSingle(objAddress + ObjectConfig.TangibleDistOffset);
+            float tangibleDist = Config.Stream.GetFloat(objAddress + ObjectConfig.TangibleDistOffset);
             return new List<(float centerX, float centerY, float centerZ, float radius3D)>()
             {
                 ((float)_posAngle.X, (float)_posAngle.Y, (float)_posAngle.Z, tangibleDist)

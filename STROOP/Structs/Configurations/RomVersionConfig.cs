@@ -73,7 +73,7 @@ namespace STROOP.Structs.Configurations
 
         private static RomVersion? GetRomVersionUsingTell()
         {
-            uint tell = Config.Stream.GetUInt32(RomVersionTellAddress);
+            uint tell = Config.Stream.GetUInt(RomVersionTellAddress);
             if (tell == RomVersionTellValueUS) return RomVersion.US;
             if (tell == RomVersionTellValueJP) return RomVersion.JP;
             if (tell == RomVersionTellValueSH) return RomVersion.SH;

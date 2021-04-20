@@ -741,8 +741,8 @@ namespace STROOP.Controls
                 if (addresses.Count > 0)
                 {
                     uint objAddress = addresses[0];
-                    uint parent = Config.Stream.GetUInt32(objAddress + ObjectConfig.ParentOffset);
-                    int subtype = Config.Stream.GetInt32(objAddress + ObjectConfig.BehaviorSubtypeOffset);
+                    uint parent = Config.Stream.GetUInt(objAddress + ObjectConfig.ParentOffset);
+                    int subtype = Config.Stream.GetInt(objAddress + ObjectConfig.BehaviorSubtypeOffset);
                     FixedAddressListGetter = () =>
                         Config.ObjectSlotsManager.GetLoadedObjectsWithPredicate(
                             obj => obj.Parent == parent && obj.SubType == subtype && obj.Address != obj.Parent)

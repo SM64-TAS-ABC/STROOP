@@ -29,11 +29,11 @@ namespace STROOP.Ttc
         public TtcPitBlock(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                height: (int)Config.Stream.GetSingle(address + 0xA4),
-                verticalSpeed: (int)Config.Stream.GetSingle(address + 0xB0),
-                direction: Config.Stream.GetInt32(address + 0xF8),
-                timerMax: Config.Stream.GetInt32(address + 0xFC),
-                timer: Config.Stream.GetInt32(address + 0x154))
+                height: (int)Config.Stream.GetFloat(address + 0xA4),
+                verticalSpeed: (int)Config.Stream.GetFloat(address + 0xB0),
+                direction: Config.Stream.GetInt(address + 0xF8),
+                timerMax: Config.Stream.GetInt(address + 0xFC),
+                timer: Config.Stream.GetInt(address + 0x154))
         {
         }
 

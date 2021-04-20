@@ -50,8 +50,8 @@ namespace STROOP.Structs
 
         public string GetAnimationName()
         {
-            uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-            short animation = Config.Stream.GetInt16(marioObjRef + MarioObjectConfig.AnimationOffset);
+            uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+            short animation = Config.Stream.GetShort(marioObjRef + MarioObjectConfig.AnimationOffset);
             return GetAnimationName(animation);
         }
 

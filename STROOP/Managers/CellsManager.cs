@@ -119,18 +119,18 @@ namespace STROOP.Managers
             int xSize = 3 * typeSize;
             int zSize = 16 * xSize;
             uint address = (uint)(partitionAddress + z * zSize + x * xSize + type * typeSize);
-            address = Config.Stream.GetUInt32(address);
+            address = Config.Stream.GetUInt(address);
 
             List<TreeNode> nodes = new List<TreeNode>();
             while (address != 0)
             {
-                uint triAddress = Config.Stream.GetUInt32(address + 4);
+                uint triAddress = Config.Stream.GetUInt(address + 4);
                 short y1 = TriangleOffsetsConfig.GetY1(triAddress);
                 string triAddressString = HexUtilities.FormatValue(triAddress) + " (y1 = " + y1 + ")";
                 TreeNode subNode = new TreeNode(triAddressString);
                 subNode.Tag = triAddress;
                 nodes.Add(subNode);
-                address = Config.Stream.GetUInt32(address);
+                address = Config.Stream.GetUInt(address);
             }
 
             string name = (type == 0 ? "Floors" : type == 1 ? "Ceilings" : "Walls") + " [" + nodes.Count + "]";

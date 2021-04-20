@@ -35,7 +35,7 @@ namespace STROOP.Map
             {
                 case PuGridlineSetting.SETTING1:
                     {
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
                         long spacing = (long)(65536 * Size);
 
@@ -59,7 +59,7 @@ namespace STROOP.Map
                     }
                 case PuGridlineSetting.SETTING2:
                     {
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
                         int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536 - 32768;
                         int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536 + 32768;
@@ -81,7 +81,7 @@ namespace STROOP.Map
                     }
                 case PuGridlineSetting.SETTING3:
                     {
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
                         int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536;
                         int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536;

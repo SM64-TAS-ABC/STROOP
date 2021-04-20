@@ -28,11 +28,11 @@ namespace STROOP.Ttc
         public TtcPendulum2(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                accelerationDirection: (int)Config.Stream.GetSingle(address + 0xF4),
-                angle: (int)Config.Stream.GetSingle(address + 0xF8),
-                angularVelocity: (int)Config.Stream.GetSingle(address + 0xFC),
-                accelerationMagnitude: (int)Config.Stream.GetSingle(address + 0x100),
-                waitingTimer: Config.Stream.GetInt32(address + 0x104))
+                accelerationDirection: (int)Config.Stream.GetFloat(address + 0xF4),
+                angle: (int)Config.Stream.GetFloat(address + 0xF8),
+                angularVelocity: (int)Config.Stream.GetFloat(address + 0xFC),
+                accelerationMagnitude: (int)Config.Stream.GetFloat(address + 0x100),
+                waitingTimer: Config.Stream.GetInt(address + 0x104))
         {
         }
 

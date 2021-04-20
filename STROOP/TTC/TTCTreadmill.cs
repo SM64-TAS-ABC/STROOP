@@ -31,11 +31,11 @@ namespace STROOP.Ttc
         public TtcTreadmill(TtcRng rng, uint address) :
              this(
                  rng: rng,
-                 subType: Config.Stream.GetInt32(address + 0x144),
-                 currentSpeed: (int)Config.Stream.GetSingle(address + 0xFC),
-                 targetSpeed: (int)Config.Stream.GetSingle(address + 0x100),
-                 timerMax: Config.Stream.GetInt32(address + 0x104),
-                 timer: Config.Stream.GetInt32(address + 0x154))
+                 subType: Config.Stream.GetInt(address + 0x144),
+                 currentSpeed: (int)Config.Stream.GetFloat(address + 0xFC),
+                 targetSpeed: (int)Config.Stream.GetFloat(address + 0x100),
+                 timerMax: Config.Stream.GetInt(address + 0x104),
+                 timer: Config.Stream.GetInt(address + 0x154))
         {
         }
 

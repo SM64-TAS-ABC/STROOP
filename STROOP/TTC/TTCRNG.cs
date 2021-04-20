@@ -20,7 +20,7 @@ namespace STROOP.Ttc
         private int _index;
 
         public TtcRng()
-            : this(Config.Stream.GetUInt16(MiscConfig.RngAddress))
+            : this(Config.Stream.GetUShort(MiscConfig.RngAddress))
         {
         }
 

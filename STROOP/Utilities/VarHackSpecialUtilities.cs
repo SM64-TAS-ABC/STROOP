@@ -30,8 +30,8 @@ namespace STROOP.Structs
                     name = "YNorm " + VarHackConfig.EscapeChar;
                     getterFunction = () =>
                     {
-                        uint triFloorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-                        float yNorm = Config.Stream.GetSingle(triFloorAddress + TriangleOffsetsConfig.NormY);
+                        uint triFloorAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                        float yNorm = Config.Stream.GetFloat(triFloorAddress + TriangleOffsetsConfig.NormY);
                         return FormatDouble(yNorm, 4, true);
                     };
                     break;

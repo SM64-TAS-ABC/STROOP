@@ -117,8 +117,8 @@ namespace STROOP.Utilities
 
         public static void GetWallGaps()
         {
-            uint triAddress1 = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
-            uint triAddress2 = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            uint triAddress1 = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+            uint triAddress2 = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             TriangleDataModel tri1 = TriangleDataModel.Create(triAddress1);
             TriangleDataModel tri2 = TriangleDataModel.Create(triAddress2);
             List<(short x, short y, short z)> commonVertices = GetCommonVertices(tri1, tri2);
@@ -249,8 +249,8 @@ namespace STROOP.Utilities
                 byte destLevel = Config.Stream.GetByte(address + 0x1);
                 byte destArea = Config.Stream.GetByte(address + 0x2);
                 byte destNode = Config.Stream.GetByte(address + 0x3);
-                uint obj = Config.Stream.GetUInt32(address + 0x4);
-                uint next = Config.Stream.GetUInt32(address + 0x8);
+                uint obj = Config.Stream.GetUInt(address + 0x4);
+                uint next = Config.Stream.GetUInt(address + 0x8);
                 string line = id + " " + destLevel + " " + destArea + " " + destNode + " " + HexUtilities.FormatValue(obj) + " " + HexUtilities.FormatValue(next);
                 lines.Add(line);
                 address = next;
@@ -288,9 +288,9 @@ namespace STROOP.Utilities
             if (obj != null)
             {
                 uint moneybagAddress = obj.Address;
-                float homeX = Config.Stream.GetSingle(moneybagAddress + ObjectConfig.HomeXOffset);
-                float homeY = Config.Stream.GetSingle(moneybagAddress + ObjectConfig.HomeYOffset);
-                float homeZ = Config.Stream.GetSingle(moneybagAddress + ObjectConfig.HomeZOffset);
+                float homeX = Config.Stream.GetFloat(moneybagAddress + ObjectConfig.HomeXOffset);
+                float homeY = Config.Stream.GetFloat(moneybagAddress + ObjectConfig.HomeYOffset);
+                float homeZ = Config.Stream.GetFloat(moneybagAddress + ObjectConfig.HomeZOffset);
                 Config.Stream.SetValue(homeX, coinAddress + ObjectConfig.XOffset);
                 Config.Stream.SetValue(homeY, coinAddress + ObjectConfig.YOffset);
                 Config.Stream.SetValue(homeZ, coinAddress + ObjectConfig.ZOffset);
@@ -304,9 +304,9 @@ namespace STROOP.Utilities
             uint scuttlebugAddress = 0x80344B48;
 
             Config.Stream.Suspend();
-            float homeX = Config.Stream.GetSingle(scuttlebugAddress + ObjectConfig.HomeXOffset);
-            float homeY = Config.Stream.GetSingle(scuttlebugAddress + ObjectConfig.HomeYOffset);
-            float homeZ = Config.Stream.GetSingle(scuttlebugAddress + ObjectConfig.HomeZOffset);
+            float homeX = Config.Stream.GetFloat(scuttlebugAddress + ObjectConfig.HomeXOffset);
+            float homeY = Config.Stream.GetFloat(scuttlebugAddress + ObjectConfig.HomeYOffset);
+            float homeZ = Config.Stream.GetFloat(scuttlebugAddress + ObjectConfig.HomeZOffset);
             Config.Stream.SetValue(homeX, coinAddress + ObjectConfig.XOffset);
             Config.Stream.SetValue(homeY, coinAddress + ObjectConfig.YOffset);
             Config.Stream.SetValue(homeZ, coinAddress + ObjectConfig.ZOffset);
@@ -334,10 +334,10 @@ namespace STROOP.Utilities
         private static void UpdateEel2Waypoints()
         {
             uint eelAddress = 0x8034EF28;
-            uint waypointAddress = Config.Stream.GetUInt32(eelAddress + 0x100);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            uint waypointAddress = Config.Stream.GetUInt(eelAddress + 0x100);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
             //if (waypointAddress == 0x80108824)
             //{
             //    waypointX = 5300;
@@ -347,9 +347,9 @@ namespace STROOP.Utilities
 
             foreach (uint address in _eel2Addresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 float scale = isCurrent ? 4 : 1;
 
@@ -389,10 +389,10 @@ namespace STROOP.Utilities
         private static void UpdateEel1Waypoints()
         {
             uint eelAddress = 0x8034E808;
-            uint waypointAddress = Config.Stream.GetUInt32(eelAddress + 0x100);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            uint waypointAddress = Config.Stream.GetUInt(eelAddress + 0x100);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
             if (waypointAddress == 0x80108824)
             {
                 waypointX = 5300;
@@ -402,9 +402,9 @@ namespace STROOP.Utilities
 
             foreach (uint address in _eel1Addresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 float scale = isCurrent ? 4 : 1;
 
@@ -472,16 +472,16 @@ namespace STROOP.Utilities
         public static void UpdateSnowmanWaypoints()
         {
             uint bowlingBallAddress = 0x803467C8;
-            uint waypointAddress = Config.Stream.GetUInt32(bowlingBallAddress + 0x100);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            uint waypointAddress = Config.Stream.GetUInt(bowlingBallAddress + 0x100);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
 
             foreach (uint address in _snowmanAddresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 float scale = isCurrent ? 4 : 1;
 
@@ -535,16 +535,16 @@ namespace STROOP.Utilities
         public static void UpdateBobUpperWaypoints()
         {
             uint bowlingBallAddress = 0x80355A08;
-            uint waypointAddress = Config.Stream.GetUInt32(bowlingBallAddress + 0x100);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            uint waypointAddress = Config.Stream.GetUInt(bowlingBallAddress + 0x100);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
 
             foreach (uint address in _bobUpperBowlingBallAddresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 float scale = isCurrent ? 4 : 1;
 
@@ -609,16 +609,16 @@ namespace STROOP.Utilities
         public static void UpdateBobLowerWaypoints()
         {
             uint bowlingBallAddress = 0x80353B28;
-            uint waypointAddress = Config.Stream.GetUInt32(bowlingBallAddress + 0x100);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            uint waypointAddress = Config.Stream.GetUInt(bowlingBallAddress + 0x100);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
 
             foreach (uint address in _bobLowerBowlingBallAddresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 float scale = isCurrent ? 4 : 1;
 
@@ -665,16 +665,16 @@ namespace STROOP.Utilities
         public static void UpdateTtmTinyWaypoints()
         {
             uint bowlingBallAddress = 0x80356388;
-            uint waypointAddress = Config.Stream.GetUInt32(bowlingBallAddress + 0x100);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            uint waypointAddress = Config.Stream.GetUInt(bowlingBallAddress + 0x100);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
 
             foreach (uint address in _ttmAddresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 float scale = isCurrent ? 4 : 1;
 
@@ -736,16 +736,16 @@ namespace STROOP.Utilities
         public static void UpdateThiTinyWaypoints()
         {
             uint bowlingBallAddress = 0x80341E28;
-            uint waypointAddress = Config.Stream.GetUInt32(bowlingBallAddress + 0x100);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            uint waypointAddress = Config.Stream.GetUInt(bowlingBallAddress + 0x100);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
 
             foreach (uint address in _thiTinyAddresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 float scale = isCurrent ? 2 : 1;
 
@@ -770,16 +770,16 @@ namespace STROOP.Utilities
         public static void UpdateThiHugeWaypoints()
         {
             uint bowlingBallAddress = 0x8034D9C8;
-            uint waypointAddress = Config.Stream.GetUInt32(bowlingBallAddress + 0x100);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            uint waypointAddress = Config.Stream.GetUInt(bowlingBallAddress + 0x100);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
 
             foreach (uint address in _thiHugeAddresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 float scale = isCurrent ? 4 : 1;
 
@@ -819,7 +819,7 @@ namespace STROOP.Utilities
         public static void UpdateKleptoWaypoints()
         {
             uint kleptoAddress = 0x803454C8;
-            short destination = Config.Stream.GetInt16(kleptoAddress + 0x1AC);
+            short destination = Config.Stream.GetShort(kleptoAddress + 0x1AC);
             for (int i = 0; i < kleptoAddresses.Count; i++)
             {
                 float scale = i == destination ? 4 : 1;
@@ -841,15 +841,15 @@ namespace STROOP.Utilities
                 0x8034C208,0x8034D9C8,0x8034CB88,0x8034CDE8
             };
 
-            float homeX = Config.Stream.GetSingle(yoshiAddress + ObjectConfig.HomeXOffset);
-            float homeY = Config.Stream.GetSingle(yoshiAddress + ObjectConfig.HomeYOffset);
-            float homeZ = Config.Stream.GetSingle(yoshiAddress + ObjectConfig.HomeZOffset);
+            float homeX = Config.Stream.GetFloat(yoshiAddress + ObjectConfig.HomeXOffset);
+            float homeY = Config.Stream.GetFloat(yoshiAddress + ObjectConfig.HomeYOffset);
+            float homeZ = Config.Stream.GetFloat(yoshiAddress + ObjectConfig.HomeZOffset);
 
             foreach (uint address in redCoinAddresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == homeX && redCoinY == homeY && redCoinZ == homeZ;
                 float scale = isCurrent ? 4 : 1;
 
@@ -920,20 +920,20 @@ namespace STROOP.Utilities
         public static void UpdateMipsWaypoints()
         {
             uint mipsAddress = 0x80341968;
-            int action = Config.Stream.GetInt32(mipsAddress + 0x14C);
-            uint waypointAddress = Config.Stream.GetUInt32(mipsAddress + ObjectConfig.WaypointOffset);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            int action = Config.Stream.GetInt(mipsAddress + 0x14C);
+            uint waypointAddress = Config.Stream.GetUInt(mipsAddress + ObjectConfig.WaypointOffset);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
 
             Dictionary<uint, float> sizes = new Dictionary<uint, float>();
 
             bool anyAreEnlarged = false;
             foreach (uint address in _mipsAddresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 if (isCurrent) anyAreEnlarged = true;
                 float scale = isCurrent ? 3 : 1;
@@ -942,15 +942,15 @@ namespace STROOP.Utilities
 
             if (!anyAreEnlarged && action != 0)
             {
-                uint wpAddress = Config.Stream.GetUInt32(mipsAddress + 0xFC);
-                short x = Config.Stream.GetInt16(wpAddress + 0x2);
-                short y = Config.Stream.GetInt16(wpAddress + 0x4);
-                short z = Config.Stream.GetInt16(wpAddress + 0x6);
+                uint wpAddress = Config.Stream.GetUInt(mipsAddress + 0xFC);
+                short x = Config.Stream.GetShort(wpAddress + 0x2);
+                short y = Config.Stream.GetShort(wpAddress + 0x4);
+                short z = Config.Stream.GetShort(wpAddress + 0x6);
                 foreach (uint address in _mipsAddresses)
                 {
-                    float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                    float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                    float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                    float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                    float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                    float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                     if (redCoinX == x && redCoinY == y && redCoinZ == z)
                     {
                         sizes[address] = 3;
@@ -1050,16 +1050,16 @@ namespace STROOP.Utilities
         public static void UpdateRacingPenguinWaypoints2()
         {
             uint objAddress = 0x80347868;
-            uint waypointAddress = Config.Stream.GetUInt32(objAddress + ObjectConfig.WaypointOffset);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            uint waypointAddress = Config.Stream.GetUInt(objAddress + ObjectConfig.WaypointOffset);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
 
             foreach (uint address in _racingPenguinAddresses2)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 float scale = isCurrent ? 4 : 1;
 
@@ -1087,16 +1087,16 @@ namespace STROOP.Utilities
         public static void UpdateRacingPenguinWaypoints()
         {
             uint objAddress = 0x80347868;
-            uint waypointAddress = Config.Stream.GetUInt32(objAddress + ObjectConfig.WaypointOffset);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            uint waypointAddress = Config.Stream.GetUInt(objAddress + ObjectConfig.WaypointOffset);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
 
             foreach (uint address in _racingPenguinAddresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 float scale = isCurrent ? 4 : 1;
 
@@ -1137,16 +1137,16 @@ namespace STROOP.Utilities
         public static void Update4Ktq2Waypoints()
         {
             uint ktqAddress = 0x803460A8;
-            uint waypointAddress = Config.Stream.GetUInt32(ktqAddress + ObjectConfig.WaypointOffset);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            uint waypointAddress = Config.Stream.GetUInt(ktqAddress + ObjectConfig.WaypointOffset);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
 
             foreach (uint address in ktq2WaypointAddresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 float scale = isCurrent ? 4 : 1;
 
@@ -1171,16 +1171,16 @@ namespace STROOP.Utilities
         public static void Update3Ktq1Waypoints()
         {
             uint ktqAddress = 0x8034E0E8;
-            uint waypointAddress = Config.Stream.GetUInt32(ktqAddress + ObjectConfig.WaypointOffset);
-            short waypointX = Config.Stream.GetInt16(waypointAddress + 0xA);
-            short waypointY = Config.Stream.GetInt16(waypointAddress + 0xC);
-            short waypointZ = Config.Stream.GetInt16(waypointAddress + 0xE);
+            uint waypointAddress = Config.Stream.GetUInt(ktqAddress + ObjectConfig.WaypointOffset);
+            short waypointX = Config.Stream.GetShort(waypointAddress + 0xA);
+            short waypointY = Config.Stream.GetShort(waypointAddress + 0xC);
+            short waypointZ = Config.Stream.GetShort(waypointAddress + 0xE);
 
             foreach (uint address in ktq1WaypointAddresses)
             {
-                float redCoinX = Config.Stream.GetSingle(address + ObjectConfig.XOffset);
-                float redCoinY = Config.Stream.GetSingle(address + ObjectConfig.YOffset);
-                float redCoinZ = Config.Stream.GetSingle(address + ObjectConfig.ZOffset);
+                float redCoinX = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+                float redCoinY = Config.Stream.GetFloat(address + ObjectConfig.YOffset);
+                float redCoinZ = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
                 bool isCurrent = redCoinX == waypointX && redCoinY == waypointY && redCoinZ == waypointZ;
                 float scale = isCurrent ? 4 : 1;
 
@@ -1238,12 +1238,12 @@ namespace STROOP.Utilities
 
         public static void Update2()
         {
-            uint marioObj = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-            int animationTimerValue = Config.Stream.GetInt16(marioObj + MarioObjectConfig.AnimationTimerOffset);
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            uint marioObj = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+            int animationTimerValue = Config.Stream.GetShort(marioObj + MarioObjectConfig.AnimationTimerOffset);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             (float holpX, float holpY, float holpZ) = HolpCalculator.GetHolpForStanding(animationTimerValue, marioX, marioY, marioZ, marioAngle);
             SpecialConfig.CustomX = holpX;
             SpecialConfig.CustomY = holpY;
@@ -1264,8 +1264,8 @@ namespace STROOP.Utilities
 
         public static void TestSomething27()
         {
-            uint wallAddress1 = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-            uint wallAddress2 = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+            uint wallAddress1 = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            uint wallAddress2 = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
             TriangleDataModel tri1 = TriangleDataModel.Create(wallAddress1);
             TriangleDataModel tri2 = TriangleDataModel.Create(wallAddress2);
             List<TriangleDataModel> tris = new List<TriangleDataModel>() { tri1, tri2 };
@@ -1451,12 +1451,12 @@ namespace STROOP.Utilities
 
         public static void Update1()
         {
-            uint marioObj = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-            short animation = Config.Stream.GetInt16(marioObj + 0x40);
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            uint marioObj = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+            short animation = Config.Stream.GetShort(marioObj + 0x40);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            ushort marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
             (float x, float y, float z) = HolpCalculator.GetHolpForWalking(animation, marioX, marioY, marioZ, marioAngle);
             SpecialConfig.CustomX = x;
@@ -1742,7 +1742,7 @@ namespace STROOP.Utilities
                     {
                         uint offset = (uint)(i * 0x10 + j * 0x02);
                         uint address = baseAddress + offset;
-                        short value = Config.Stream.GetInt16(address);
+                        short value = Config.Stream.GetShort(address);
                         string component = j == 0 ? "x" : j == 1 ? "y" : "z";
                         string name = "v" + (i + 1) + component;
 

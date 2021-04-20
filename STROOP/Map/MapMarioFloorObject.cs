@@ -24,7 +24,7 @@ namespace STROOP.Map
 
         protected override List<TriangleDataModel> GetUnfilteredTriangles()
         {
-            uint triAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            uint triAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             return MapUtilities.GetTriangles(triAddress);
         }
 

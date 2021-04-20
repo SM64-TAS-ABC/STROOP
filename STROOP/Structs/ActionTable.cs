@@ -85,13 +85,13 @@ namespace STROOP.Structs
 
         public string GetActionName()
         {
-            uint currentAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
+            uint currentAction = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.ActionOffset);
             return GetActionName(currentAction);
         }
 
         public string GetPrevActionName()
         {
-            uint prevAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.PrevActionOffset);
+            uint prevAction = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.PrevActionOffset);
             return GetActionName(prevAction);
         }
 
@@ -125,21 +125,21 @@ namespace STROOP.Structs
 
         public ushort GetId(uint? actionNullable = null)
         {
-            uint action = actionNullable ?? Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
+            uint action = actionNullable ?? Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.ActionOffset);
             ushort id = (ushort)(action & 0x000001FF);
             return id;
         }
 
         public ushort GetGroup(uint? actionNullable = null)
         {
-            uint action = actionNullable ?? Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
+            uint action = actionNullable ?? Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.ActionOffset);
             ushort actionGroup = (ushort)(action & 0x000001C0);
             return actionGroup;
         }
 
         public string GetGroupName(uint? actionNullable = null)
         {
-            uint action = actionNullable ?? Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
+            uint action = actionNullable ?? Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.ActionOffset);
             uint actionGroup = action & 0x000001C0;
             switch (actionGroup)
             {

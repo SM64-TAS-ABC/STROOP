@@ -15,8 +15,8 @@ namespace STROOP.Ttc
         private readonly List<byte> _bytes;
 
         public TtcSaveState() : this(
-            Config.Stream.GetUInt16(MiscConfig.RngAddress),
-            TtcUtilities.CreateRngObjectsFromGame(new TtcRng(Config.Stream.GetUInt16(MiscConfig.RngAddress))))
+            Config.Stream.GetUShort(MiscConfig.RngAddress),
+            TtcUtilities.CreateRngObjectsFromGame(new TtcRng(Config.Stream.GetUShort(MiscConfig.RngAddress))))
         {
         }
 

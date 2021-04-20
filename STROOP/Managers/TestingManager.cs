@@ -512,10 +512,10 @@ namespace STROOP.Managers
             List<uint> scuttlebugAddresses = GetScuttlebugAddresses();
             foreach (uint objAddress in scuttlebugAddresses)
             {
-                float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-                float homeX = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeXOffset);
-                float homeZ = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeZOffset);
+                float objX = Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset);
+                float objZ = Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset);
+                float homeX = Config.Stream.GetFloat(objAddress + ObjectConfig.HomeXOffset);
+                float homeZ = Config.Stream.GetFloat(objAddress + ObjectConfig.HomeZOffset);
                 ushort angleToHome = MoreMath.AngleTo_AngleUnitsRounded(objX, objZ, homeX, homeZ);
                 Config.Stream.SetValue(angleToHome, objAddress + ObjectConfig.YawFacingOffset);
                 Config.Stream.SetValue(angleToHome, objAddress + ObjectConfig.YawMovingOffset);
@@ -609,12 +609,12 @@ namespace STROOP.Managers
             {
                 return new VarStateMario()
                 {
-                    X = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset),
-                    Y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset),
-                    Z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset),
-                    Angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset),
-                    Vspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YSpeedOffset),
-                    Hspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset),
+                    X = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset),
+                    Y = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset),
+                    Z = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset),
+                    Angle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset),
+                    Vspd = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YSpeedOffset),
+                    Hspd = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset),
                 };
             }
 
@@ -722,10 +722,10 @@ namespace STROOP.Managers
                 int koopaTurnAngle = 1536;
                 int threshold = 4608;
 
-                uint koopaAddress = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
-                ushort koopaAngle = Config.Stream.GetUInt16(koopaAddress + ObjectConfig.YawFacingOffset);
+                uint koopaAddress = Config.Stream.GetUInt(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
+                ushort koopaAngle = Config.Stream.GetUShort(koopaAddress + ObjectConfig.YawFacingOffset);
                 uint cameraHackAngleAddress = 0x803E001E;
-                ushort cameraHackAngle = Config.Stream.GetUInt16(cameraHackAngleAddress);
+                ushort cameraHackAngle = Config.Stream.GetUShort(cameraHackAngleAddress);
                 if (MoreMath.GetAngleDistance(koopaAngle, cameraHackAngle) > threshold)
                 {
                     ushort newCameraHackAngle = (ushort)MoreMath.RotateAngleTowards(cameraHackAngle, koopaAngle, koopaTurnAngle);
@@ -735,17 +735,17 @@ namespace STROOP.Managers
 
             if (TestingConfig.UpdateFloorTri)
             {
-                uint koopaAddress = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
+                uint koopaAddress = Config.Stream.GetUInt(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
                 if (koopaAddress == 0) return;
-                float koopaX = Config.Stream.GetSingle(koopaAddress + ObjectConfig.XOffset);
-                float koopaY = Config.Stream.GetSingle(koopaAddress + ObjectConfig.YOffset);
-                float koopaZ = Config.Stream.GetSingle(koopaAddress + ObjectConfig.ZOffset);
+                float koopaX = Config.Stream.GetFloat(koopaAddress + ObjectConfig.XOffset);
+                float koopaY = Config.Stream.GetFloat(koopaAddress + ObjectConfig.YOffset);
+                float koopaZ = Config.Stream.GetFloat(koopaAddress + ObjectConfig.ZOffset);
                 TriangleDataModel koopaTri = TriangleUtilities.FindFloor(koopaX, koopaY, koopaZ);
                 byte room = koopaTri.Room;
 
                 //Config.Stream.SetValue((int)room, koopaAddress + ObjectConfig.NativeRoomOffset);
 
-                uint marioTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                uint marioTri = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
                 Config.Stream.SetValue(room, marioTri + TriangleOffsetsConfig.Room);
             }
 
@@ -757,7 +757,7 @@ namespace STROOP.Managers
                 uint globalTimerStart = 35000;
                 uint globalTimerEnd = globalTimerStart + 150;
 
-                uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
                 if (globalTimer >= globalTimerStart && globalTimer <= globalTimerEnd)
                 {
                     double ratio = (globalTimer - globalTimerStart) / (double)(globalTimerEnd - globalTimerStart);
@@ -776,9 +776,9 @@ namespace STROOP.Managers
                 uint? objAddress = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtHOLP.Text);
                 if (objAddress.HasValue)
                 {
-                    float holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
-                    float holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
-                    float holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
+                    float holpX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+                    float holpY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+                    float holpZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
 
                     Config.Stream.SetValue(holpX, objAddress.Value + ObjectConfig.XOffset);
                     Config.Stream.SetValue(holpY, objAddress.Value + ObjectConfig.YOffset);
@@ -793,9 +793,9 @@ namespace STROOP.Managers
                 uint? homeObjAddress = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtHomeHome.Text);
                 if (objAddress.HasValue && homeObjAddress.HasValue)
                 {
-                    float homeX = Config.Stream.GetSingle(homeObjAddress.Value + ObjectConfig.HomeXOffset);
-                    float homeY = Config.Stream.GetSingle(homeObjAddress.Value + ObjectConfig.HomeYOffset);
-                    float homeZ = Config.Stream.GetSingle(homeObjAddress.Value + ObjectConfig.HomeZOffset);
+                    float homeX = Config.Stream.GetFloat(homeObjAddress.Value + ObjectConfig.HomeXOffset);
+                    float homeY = Config.Stream.GetFloat(homeObjAddress.Value + ObjectConfig.HomeYOffset);
+                    float homeZ = Config.Stream.GetFloat(homeObjAddress.Value + ObjectConfig.HomeZOffset);
 
                     Config.Stream.SetValue(homeX, objAddress.Value + ObjectConfig.XOffset);
                     Config.Stream.SetValue(homeY, objAddress.Value + ObjectConfig.YOffset);
@@ -810,9 +810,9 @@ namespace STROOP.Managers
                 uint? obj2Address = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtObj2.Text);
                 if (obj1Address.HasValue && obj2Address.HasValue)
                 {
-                    float posX = Config.Stream.GetSingle(obj2Address.Value + ObjectConfig.XOffset);
-                    float posY = Config.Stream.GetSingle(obj2Address.Value + ObjectConfig.YOffset);
-                    float posZ = Config.Stream.GetSingle(obj2Address.Value + ObjectConfig.ZOffset);
+                    float posX = Config.Stream.GetFloat(obj2Address.Value + ObjectConfig.XOffset);
+                    float posY = Config.Stream.GetFloat(obj2Address.Value + ObjectConfig.YOffset);
+                    float posZ = Config.Stream.GetFloat(obj2Address.Value + ObjectConfig.ZOffset);
 
                     Config.Stream.SetValue(posX, obj1Address.Value + ObjectConfig.XOffset);
                     Config.Stream.SetValue(posY, obj1Address.Value + ObjectConfig.YOffset);
@@ -839,7 +839,7 @@ namespace STROOP.Managers
             // Schedule
             {
                 (int frame, double? x, double? y, double? z, double? hspd, string description) = _rollingRocksScheduleList[_rollingRocksScheduleIndex];
-                _labelSchedule1.Text = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress).ToString();
+                _labelSchedule1.Text = Config.Stream.GetInt(MiscConfig.GlobalTimerAddress).ToString();
                 _labelSchedule2.Text = (frame + _rollingRocksScheduleIndexOffset).ToString();
                 if (x.HasValue) _labelSchedule3.Text = x.Value.ToString();
                 if (y.HasValue) _labelSchedule4.Text = y.Value.ToString();
@@ -865,11 +865,11 @@ namespace STROOP.Managers
             (float effectiveX, float effectiveY) = MoreMath.GetEffectiveInput(rawX, -1 * rawY);
             _labelControlStick1.Text = effectiveX.ToString();
             _labelControlStick2.Text = effectiveY.ToString();
-            ushort marioFacingYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            ushort marioFacingYaw = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             _labelControlStick3.Text = marioFacingYaw.ToString();
 
             ushort angle = InGameTrigUtilities.InGameATan(effectiveY, -effectiveX);
-            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.StructAddress + 0xFC);
+            ushort cameraAngle = Config.Stream.GetUShort(CameraConfig.StructAddress + 0xFC);
             cameraAngle = MoreMath.NormalizeAngleUshort(MoreMath.ReverseAngle(cameraAngle));
             //cameraAngle = MoreMath.NormalizeAngleTruncated(cameraAngle);
             ushort summedAngle = MoreMath.NormalizeAngleUshort(angle + cameraAngle);
@@ -961,9 +961,9 @@ namespace STROOP.Managers
 
         private void GotoGetCurrentClick()
         {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
             _betterTextboxGotoX.Text = marioX.ToString();
             _betterTextboxGotoY.Text = marioY.ToString();
             _betterTextboxGotoZ.Text = marioZ.ToString();
@@ -1005,22 +1005,22 @@ namespace STROOP.Managers
 
         private void StateTransferUpdate()
         {
-            _betterTextboxStateTransferVar1Current.Text = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress).ToString();
-            _betterTextboxStateTransferVar2Current.Text = Config.Stream.GetUInt16(MiscConfig.RngAddress).ToString();
-            _betterTextboxStateTransferVar3Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset).ToString();
-            _betterTextboxStateTransferVar4Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset).ToString();
-            _betterTextboxStateTransferVar5Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset).ToString();
-            _betterTextboxStateTransferVar6Current.Text = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset).ToString();
-            _betterTextboxStateTransferVar7Current.Text = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.TwirlYawOffset).ToString();
+            _betterTextboxStateTransferVar1Current.Text = Config.Stream.GetInt(MiscConfig.GlobalTimerAddress).ToString();
+            _betterTextboxStateTransferVar2Current.Text = Config.Stream.GetUShort(MiscConfig.RngAddress).ToString();
+            _betterTextboxStateTransferVar3Current.Text = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpXOffset).ToString();
+            _betterTextboxStateTransferVar4Current.Text = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpYOffset).ToString();
+            _betterTextboxStateTransferVar5Current.Text = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HolpZOffset).ToString();
+            _betterTextboxStateTransferVar6Current.Text = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset).ToString();
+            _betterTextboxStateTransferVar7Current.Text = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.TwirlYawOffset).ToString();
             _betterTextboxStateTransferVar8Current.Text =
                 ((Config.Stream.GetByte(
                     CameraConfig.StructAddress + CameraConfig.MarioCamPossibleOffset) & CameraConfig.MarioCamPossibleMask) != 0).ToString();
             _betterTextboxStateTransferVar9Current.Text = Config.FileManager.GetChecksum(Config.FileManager.GetInGameFileAddress()).ToString();
-            _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(MarioConfig.StructAddress + HudConfig.HpCountOffset).ToString();
+            _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetShort(MarioConfig.StructAddress + HudConfig.HpCountOffset).ToString();
             _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(MarioConfig.StructAddress + HudConfig.LifeCountOffset).ToString();
-            _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetInt16(MarioConfig.StructAddress + HudConfig.StarCountOffset).ToString();
+            _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetShort(MarioConfig.StructAddress + HudConfig.StarCountOffset).ToString();
             _betterTextboxStateTransferVar13Current.Text = Config.Stream.GetByte(MiscConfig.SpecialTripleJumpAddress).ToString();
-            _betterTextboxStateTransferVar14Current.Text = Config.Stream.GetInt16(MiscConfig.AnimationTimerAddress).ToString();
+            _betterTextboxStateTransferVar14Current.Text = Config.Stream.GetShort(MiscConfig.AnimationTimerAddress).ToString();
         }
 
         private void StateTransferSave()

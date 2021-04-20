@@ -112,7 +112,7 @@ namespace STROOP.Map
         {
             if (_autoUpdate)
             {
-                int numLevelTriangles = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
+                int numLevelTriangles = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
                 if (_numLevelTris != numLevelTriangles)
                 {
                     _numLevelTris = numLevelTriangles;
@@ -122,7 +122,7 @@ namespace STROOP.Map
 
             if (_removeCurrentTri)
             {
-                uint currentTriAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
+                uint currentTriAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
                 if (_triAddressList.Contains(currentTriAddress))
                 {
                     _triAddressList.Remove(currentTriAddress);

@@ -239,7 +239,7 @@ namespace STROOP.Managers
         {
             if (_checkBoxCustomRecordValues.Checked)
             {
-                int currentTimer = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress);
+                int currentTimer = Config.Stream.GetInt(MiscConfig.GlobalTimerAddress);
 
                 bool alreadyContainsKey = _recordedValues.ContainsKey(currentTimer);
                 bool recordEvenIfAlreadyHave = !_checkBoxUseValueAtStartOfGlobalTimer.Checked;

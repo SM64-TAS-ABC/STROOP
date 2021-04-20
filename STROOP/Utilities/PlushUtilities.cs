@@ -2319,7 +2319,7 @@ namespace STROOP.Utilities
 
         public static double GetX(uint? globalTimerNullable = null)
         {
-            uint globalTimer = globalTimerNullable ?? Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            uint globalTimer = globalTimerNullable ?? Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
             if (_progressDictionary.ContainsKey(globalTimer))
             {
                 return _progressDictionary[globalTimer].x;
@@ -2329,7 +2329,7 @@ namespace STROOP.Utilities
 
         public static double GetY(uint? globalTimerNullable = null)
         {
-            uint globalTimer = globalTimerNullable ?? Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            uint globalTimer = globalTimerNullable ?? Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
             if (_progressDictionary.ContainsKey(globalTimer))
             {
                 return _progressDictionary[globalTimer].y;
@@ -2339,7 +2339,7 @@ namespace STROOP.Utilities
 
         public static double GetZ(uint? globalTimerNullable = null)
         {
-            uint globalTimer = globalTimerNullable ?? Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            uint globalTimer = globalTimerNullable ?? Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
             if (_progressDictionary.ContainsKey(globalTimer))
             {
                 return _progressDictionary[globalTimer].z;
@@ -2349,7 +2349,7 @@ namespace STROOP.Utilities
 
         public static double GetAngle(uint? globalTimerNullable = null)
         {
-            uint globalTimer = globalTimerNullable ?? Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            uint globalTimer = globalTimerNullable ?? Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
             if (_progressDictionary.ContainsKey(globalTimer))
             {
                 return _progressDictionary[globalTimer].angle;
@@ -2359,7 +2359,7 @@ namespace STROOP.Utilities
 
         public static double GetProgress(uint? globalTimerNullable = null)
         {
-            uint globalTimer = globalTimerNullable ?? Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+            uint globalTimer = globalTimerNullable ?? Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
             if (_progressDictionary.ContainsKey(globalTimer))
             {
                 return _progressDictionary[globalTimer].progress;

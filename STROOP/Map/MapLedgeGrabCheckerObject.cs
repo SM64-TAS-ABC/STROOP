@@ -30,16 +30,16 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
 
             vertices.Add((marioX, marioY + 30, marioZ));
             vertices.Add((marioX, marioY + 150, marioZ));
 
-            uint wallTriangle = _customWallTri ?? Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+            uint wallTriangle = _customWallTri ?? Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
             if (wallTriangle != 0)
             {
                 double wallUphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(wallTriangle);

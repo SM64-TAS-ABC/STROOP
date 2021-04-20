@@ -49,8 +49,8 @@ namespace STROOP.Managers
         public void ExecuteScript(GameScript script)
         {
             // Copy jump bytes
-            uint prevInst1 = Config.Stream.GetUInt32(script.InsertAddress);
-            uint prevInst2 = Config.Stream.GetUInt32(script.InsertAddress + 4);
+            uint prevInst1 = Config.Stream.GetUInt(script.InsertAddress);
+            uint prevInst2 = Config.Stream.GetUInt(script.InsertAddress + 4);
             byte[] prevInstBytes = new byte[8];
             BitConverter.GetBytes(prevInst1).CopyTo(prevInstBytes, 0);
             BitConverter.GetBytes(prevInst2).CopyTo(prevInstBytes, 4);
@@ -65,8 +65,8 @@ namespace STROOP.Managers
             Task.Delay(100).Wait();
 
             // Copy jump bytes (They may have changed)
-            prevInst1 = Config.Stream.GetUInt32(script.InsertAddress);
-            prevInst2 = Config.Stream.GetUInt32(script.InsertAddress + 4);
+            prevInst1 = Config.Stream.GetUInt(script.InsertAddress);
+            prevInst2 = Config.Stream.GetUInt(script.InsertAddress + 4);
             prevInstBytes = new byte[8];
             BitConverter.GetBytes(prevInst1).CopyTo(prevInstBytes, 0);
             BitConverter.GetBytes(prevInst2).CopyTo(prevInstBytes, 4);

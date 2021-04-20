@@ -56,17 +56,17 @@ namespace STROOP.Utilities
             if (collisionIndex < 1 || collisionIndex > 4)
                 throw new ArgumentOutOfRangeException();
 
-            ushort numCollidedObjects = Config.Stream.GetUInt16(objAddress + ObjectConfig.NumCollidedObjectsOffset);
+            ushort numCollidedObjects = Config.Stream.GetUShort(objAddress + ObjectConfig.NumCollidedObjectsOffset);
             if (collisionIndex > numCollidedObjects)
                 return null;
 
             uint collisionObjectOffset = ((uint)collisionIndex - 1) * 4;
-            return Config.Stream.GetUInt32(objAddress + ObjectConfig.CollidedObjectsListStartOffset + collisionObjectOffset);
+            return Config.Stream.GetUInt(objAddress + ObjectConfig.CollidedObjectsListStartOffset + collisionObjectOffset);
         }
 
         public static uint? GetMarioCollisionObject(int collisionIndex)
         {
-            uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+            uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
             return GetCollisionObject(marioObjRef, collisionIndex);
         }
 

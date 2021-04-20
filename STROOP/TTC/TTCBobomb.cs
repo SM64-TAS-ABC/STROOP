@@ -35,7 +35,7 @@ namespace STROOP.Ttc
         public TtcBobomb(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                blinkingTimer: Config.Stream.GetInt32(address + 0xF4),
+                blinkingTimer: Config.Stream.GetInt(address + 0xF4),
                 withinMarioRange: PositionAngle.GetDistance(PositionAngle.Obj(address), PositionAngle.Mario) < 4000 ? 1 : 0)
         {
         }

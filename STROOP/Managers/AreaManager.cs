@@ -49,7 +49,7 @@ namespace STROOP.Managers
         {
             if (_selectCurrentAreaCheckbox.Checked)
             {
-                _selectedAreaAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.AreaPointerOffset);
+                _selectedAreaAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.AreaPointerOffset);
             }
 
             if (!updateView) return;

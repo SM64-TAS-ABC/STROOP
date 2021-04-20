@@ -40,28 +40,28 @@ namespace STROOP.Structs
 
             if (_isKoopaTheQuick)
             {
-                int action = Config.Stream.GetInt32(objAddress + ObjectConfig.ActionOffset);
+                int action = Config.Stream.GetInt(objAddress + ObjectConfig.ActionOffset);
                 radius = action == 3 ? 180 : 140;
                 extentY = 300;
             }
             
             if (_isRacingPenguin)
             {
-                int subType = Config.Stream.GetInt32(objAddress + ObjectConfig.BehaviorSubtypeOffset);
+                int subType = Config.Stream.GetInt(objAddress + ObjectConfig.BehaviorSubtypeOffset);
                 radius = subType == 0 ? 200 : 350;
                 extentY = subType == 0 ? 200 : 250;
             }
 
-            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-            float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadiusOffset);
-            float hitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeightOffset);
-            float hitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffsetOffset);
+            float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+            float hitboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxRadiusOffset);
+            float hitboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxHeightOffset);
+            float hitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
             float hitboxMinY = objY - hitboxDownOffset;
             float hitboxMaxY = hitboxMinY + hitboxHeight;
 
-            uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-            float marioHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadiusOffset);
-            float marioHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeightOffset);
+            uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+            float marioHitboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxRadiusOffset);
+            float marioHitboxHeight = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxHeightOffset);
 
             float effectiveRadius = hitboxRadius + marioHitboxRadius;
             float effectiveMinY = hitboxMinY - marioHitboxHeight;
