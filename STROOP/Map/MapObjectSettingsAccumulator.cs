@@ -3,6 +3,7 @@ using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -34,6 +35,17 @@ namespace STROOP.Map
                     _dictionary[key2] = value2;
                 }
             }
+        }
+
+        public XElement ToXElement()
+        {
+            XElement xElement = new XElement("Settings");
+            foreach (string key in _dictionary.Keys)
+            {
+                object value = _dictionary[key];
+                xElement.Add(new XAttribute(key, value));
+            }
+            return xElement;
         }
 
         public override string ToString()
