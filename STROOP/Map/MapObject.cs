@@ -47,6 +47,8 @@ namespace STROOP.Map
 
         protected ContextMenuStrip _contextMenuStrip = null;
 
+        private MapObjectSettingsAccumulator _accumulator = new MapObjectSettingsAccumulator();
+
         public MapObject()
         {
         }
@@ -168,6 +170,7 @@ namespace STROOP.Map
 
         public virtual void ApplySettings(MapObjectSettings settings)
         {
+            _accumulator.ApplySettings(settings);
         }
 
         protected MapTracker GetParentMapTracker()
