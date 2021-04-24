@@ -2,258 +2,258 @@
 {
     public class MapObjectSettings
     {
-        public readonly bool CustomCylinderChangeRelativeMinY;
-        public readonly float CustomCylinderNewRelativeMinY;
+        public readonly bool ChangeCustomCylinderRelativeMinY;
+        public readonly float NewCustomCylinderRelativeMinY;
 
-        public readonly bool CustomCylinderChangeRelativeMaxY;
-        public readonly float CustomCylinderNewRelativeMaxY;
+        public readonly bool ChangeCustomCylinderRelativeMaxY;
+        public readonly float NewCustomCylinderRelativeMaxY;
 
-        public readonly bool TriangleChangeWithinDist;
-        public readonly float? TriangleNewWithinDist;
+        public readonly bool ChangeTriangleWithinDist;
+        public readonly float? NewTriangleWithinDist;
 
-        public readonly bool TriangleChangeWithinCenter;
-        public readonly float? TriangleNewWithinCenter;
+        public readonly bool ChangeTriangleWithinCenter;
+        public readonly float? NewTriangleWithinCenter;
 
-        public readonly bool TriangleChangeUseCrossSection;
-        public readonly bool TriangleNewUseCrossSection;
+        public readonly bool ChangeTriangleUseCrossSection;
+        public readonly bool NewTriangleUseCrossSection;
 
-        public readonly bool HorizontalTriangleChangeMinHeight;
-        public readonly float? HorizontalTriangleNewMinHeight;
+        public readonly bool ChangeHorizontalTriangleMinHeight;
+        public readonly float? NewHorizontalTriangleMinHeight;
 
-        public readonly bool HorizontalTriangleChangeMaxHeight;
-        public readonly float? HorizontalTriangleNewMaxHeight;
+        public readonly bool ChangeHorizontalTriangleMaxHeight;
+        public readonly float? NewHorizontalTriangleMaxHeight;
 
-        public readonly bool FloorChangeExcludeDeathBarriers;
-        public readonly bool FloorNewExcludeDeathBarriers;
+        public readonly bool ChangeFloorExcludeDeathBarriers;
+        public readonly bool NewFloorExcludeDeathBarriers;
 
-        public readonly bool FloorChangeEnableQuarterFrameLandings;
-        public readonly bool FloorNewEnableQuarterFrameLandings;
+        public readonly bool ChangeFloorEnableQuarterFrameLandings;
+        public readonly bool NewFloorEnableQuarterFrameLandings;
 
-        public readonly bool WallChangeShowArrows;
-        public readonly bool WallNewShowArrows;
+        public readonly bool ChangeWallShowArrows;
+        public readonly bool NewWallShowArrows;
 
-        public readonly bool WallChangeRelativeHeight;
-        public readonly float? WallNewRelativeHeight;
+        public readonly bool ChangeWallRelativeHeight;
+        public readonly float? NewWallRelativeHeight;
 
-        public readonly bool WallChangeAbsoluteHeight;
-        public readonly float? WallNewAbsoluteHeight;
+        public readonly bool ChangeWallAbsoluteHeight;
+        public readonly float? NewWallAbsoluteHeight;
 
-        public readonly bool ArrowChangeUseRecommendedLength;
-        public readonly bool ArrowNewUseRecommendedLength;
+        public readonly bool ChangeArrowUseRecommendedLength;
+        public readonly bool NewArrowUseRecommendedLength;
 
-        public readonly bool ArrowChangeUseTruncatedAngle;
-        public readonly bool ArrowNewUseTruncatedAngle;
+        public readonly bool ChangeArrowUseTruncatedAngle;
+        public readonly bool NewArrowUseTruncatedAngle;
 
-        public readonly bool ArrowChangeHeadSideLength;
-        public readonly float ArrowNewHeadSideLength;
+        public readonly bool ChangeArrowHeadSideLength;
+        public readonly float NewArrowHeadSideLength;
 
-        public readonly bool ArrowChangeAngleOffset;
-        public readonly float ArrowNewAngleOffset;
+        public readonly bool ChangeArrowAngleOffset;
+        public readonly float NewArrowAngleOffset;
 
-        public readonly bool SectorChangeAngleRadius;
-        public readonly float SectorNewAngleRadius;
+        public readonly bool ChangeSectorAngleRadius;
+        public readonly float NewSectorAngleRadius;
 
-        public readonly bool PathDoReset;
+        public readonly bool DoPathReset;
 
-        public readonly bool PathDoCopyPoints;
+        public readonly bool DoPathCopyPoints;
 
-        public readonly bool PathDoPastePoints;
+        public readonly bool DoPathPastePoints;
 
-        public readonly bool PathChangeResetPathOnLevelChange;
-        public readonly bool PathNewResetPathOnLevelChange;
+        public readonly bool ChangePathResetPathOnLevelChange;
+        public readonly bool NewPathResetPathOnLevelChange;
 
-        public readonly bool PathChangeUseBlending;
-        public readonly bool PathNewUseBlending;
+        public readonly bool ChangePathUseBlending;
+        public readonly bool NewPathUseBlending;
 
-        public readonly bool PathChangePaused;
-        public readonly bool PathNewPaused;
+        public readonly bool ChangePathPaused;
+        public readonly bool NewPathPaused;
 
-        public readonly bool PathChangeUseValueAtStartOfGlobalTimer;
-        public readonly bool PathNewUseValueAtStartOfGlobalTimer;
+        public readonly bool ChangePathUseValueAtStartOfGlobalTimer;
+        public readonly bool NewPathUseValueAtStartOfGlobalTimer;
 
-        public readonly bool PathChangeModulo;
-        public readonly int PathNewModulo;
+        public readonly bool ChangePathModulo;
+        public readonly int NewPathModulo;
 
-        public readonly bool PathChangeIconSize;
-        public readonly float PathNewIconSize;
+        public readonly bool ChangePathIconSize;
+        public readonly float NewPathIconSize;
 
-        public readonly bool AngleRangeChangeUseRelativeAngles;
-        public readonly bool AngleRangeNewUseRelativeAngles;
+        public readonly bool ChangeAngleRangeUseRelativeAngles;
+        public readonly bool NewAngleRangeUseRelativeAngles;
 
-        public readonly bool AngleRangeChangeAngleDiff;
-        public readonly int AngleRangeNewAngleDiff;
+        public readonly bool ChangeAngleRangeAngleDiff;
+        public readonly int NewAngleRangeAngleDiff;
 
-        public readonly bool AngleRangeChangeUseInGameAngles;
-        public readonly bool AngleRangeNewUseInGameAngles;
+        public readonly bool ChangeAngleRangeUseInGameAngles;
+        public readonly bool NewAngleRangeUseInGameAngles;
 
         public MapObjectSettings(
-            bool customCylinderChangeRelativeMinY = false,
-            float customCylinderNewRelativeMinY = 0,
+            bool changeCustomCylinderRelativeMinY = false,
+            float newCustomCylinderRelativeMinY = 0,
 
-            bool customCylinderChangeRelativeMaxY = false,
-            float customCylinderNewRelativeMaxY = 0,
+            bool changeCustomCylinderRelativeMaxY = false,
+            float newCustomCylinderRelativeMaxY = 0,
 
-            bool triangleChangeWithinDist = false,
-            float? triangleNewWithinDist = null,
+            bool changeTriangleWithinDist = false,
+            float? newTriangleWithinDist = null,
 
-            bool triangleChangeWithinCenter = false,
-            float? triangleNewWithinCenter = null,
+            bool changeTriangleWithinCenter = false,
+            float? newTriangleWithinCenter = null,
 
-            bool triangleChangeUseCrossSection = false,
-            bool triangleNewUseCrossSection = false,
+            bool changeTriangleUseCrossSection = false,
+            bool newTriangleUseCrossSection = false,
 
-            bool horizontalTriangleChangeMinHeight = false,
-            float? horizontalTriangleNewMinHeight = null,
+            bool changeHorizontalTriangleMinHeight = false,
+            float? newHorizontalTriangleMinHeight = null,
 
-            bool horizontalTriangleChangeMaxHeight = false,
-            float? horizontalTriangleNewMaxHeight = null,
+            bool changeHorizontalTriangleMaxHeight = false,
+            float? newHorizontalTriangleMaxHeight = null,
 
-            bool floorChangeExcludeDeathBarriers = false,
-            bool floorNewExcludeDeathBarriers = false,
+            bool changeFloorExcludeDeathBarriers = false,
+            bool newFloorExcludeDeathBarriers = false,
 
-            bool floorChangeEnableQuarterFrameLandings = false,
-            bool floorNewEnableQuarterFrameLandings = false,
+            bool changeFloorEnableQuarterFrameLandings = false,
+            bool newFloorEnableQuarterFrameLandings = false,
 
-            bool wallChangeShowArrows = false,
-            bool wallNewShowArrows = false,
+            bool changeWallShowArrows = false,
+            bool newWallShowArrows = false,
 
-            bool wallChangeRelativeHeight = false,
-            float? wallNewRelativeHeight = null,
+            bool changeWallRelativeHeight = false,
+            float? newWallRelativeHeight = null,
 
-            bool wallChangeAbsoluteHeight = false,
-            float? wallNewAbsoluteHeight = null,
+            bool changeWallAbsoluteHeight = false,
+            float? newWallAbsoluteHeight = null,
 
-            bool arrowChangeUseRecommendedLength = false,
-            bool arrowNewUseRecommendedLength = false,
+            bool changeArrowUseRecommendedLength = false,
+            bool newArrowUseRecommendedLength = false,
 
-            bool arrowChangeUseTruncatedAngle = false,
-            bool arrowNewUseTruncatedAngle = false,
+            bool changeArrowUseTruncatedAngle = false,
+            bool newArrowUseTruncatedAngle = false,
 
-            bool arrowChangeHeadSideLength = false,
-            float arrowNewHeadSideLength = 0,
+            bool changeArrowHeadSideLength = false,
+            float newArrowHeadSideLength = 0,
 
-            bool arrowChangeAngleOffset = false,
-            float arrowNewAngleOffset = 0,
+            bool changeArrowAngleOffset = false,
+            float newArrowAngleOffset = 0,
 
-            bool sectorChangeAngleRadius = false,
-            float sectorNewAngleRadius = 0,
+            bool changeSectorAngleRadius = false,
+            float newSectorAngleRadius = 0,
 
-            bool pathDoReset = false,
+            bool doPathReset = false,
 
-            bool pathDoCopyPoints = false,
+            bool doPathCopyPoints = false,
 
-            bool pathDoPastePoints = false,
+            bool doPathPastePoints = false,
 
-            bool pathChangeResetPathOnLevelChange = false,
-            bool pathNewResetPathOnLevelChange = false,
+            bool changePathResetPathOnLevelChange = false,
+            bool newPathResetPathOnLevelChange = false,
 
-            bool pathChangeUseBlending = false,
-            bool pathNewUseBlending = false,
+            bool changePathUseBlending = false,
+            bool newPathUseBlending = false,
 
-            bool pathChangePaused = false,
-            bool pathNewPaused = false,
+            bool changePathPaused = false,
+            bool newPathPaused = false,
 
-            bool pathChangeUseValueAtStartOfGlobalTimer = false,
-            bool pathNewUseValueAtStartOfGlobalTimer = false,
+            bool changePathUseValueAtStartOfGlobalTimer = false,
+            bool newPathUseValueAtStartOfGlobalTimer = false,
 
-            bool pathChangeModulo = false,
-            int pathNewModulo = 0,
+            bool changePathModulo = false,
+            int newPathModulo = 0,
 
-            bool pathChangeIconSize = false,
-            float pathNewIconSize = 0,
+            bool changePathIconSize = false,
+            float newPathIconSize = 0,
 
-            bool angleRangeChangeUseRelativeAngles = false,
-            bool angleRangeNewUseRelativeAngles = false,
+            bool changeAngleRangeUseRelativeAngles = false,
+            bool newAngleRangeUseRelativeAngles = false,
 
-            bool angleRangeChangeAngleDiff = false,
-            int angleRangeNewAngleDiff = 0,
+            bool changeAngleRangeAngleDiff = false,
+            int newAngleRangeAngleDiff = 0,
 
-            bool angleRangeChangeUseInGameAngles = false,
-            bool angleRangeNewUseInGameAngles = false)
+            bool changeAngleRangeUseInGameAngles = false,
+            bool newAngleRangeUseInGameAngles = false)
         {
-            CustomCylinderChangeRelativeMinY = customCylinderChangeRelativeMinY;
-            CustomCylinderNewRelativeMinY = customCylinderNewRelativeMinY;
+            ChangeCustomCylinderRelativeMinY = changeCustomCylinderRelativeMinY;
+            NewCustomCylinderRelativeMinY = newCustomCylinderRelativeMinY;
 
-            CustomCylinderChangeRelativeMaxY = customCylinderChangeRelativeMaxY;
-            CustomCylinderNewRelativeMaxY = customCylinderNewRelativeMaxY;
+            ChangeCustomCylinderRelativeMaxY = changeCustomCylinderRelativeMaxY;
+            NewCustomCylinderRelativeMaxY = newCustomCylinderRelativeMaxY;
 
-            TriangleChangeWithinDist = triangleChangeWithinDist;
-            TriangleNewWithinDist = triangleNewWithinDist;
+            ChangeTriangleWithinDist = changeTriangleWithinDist;
+            NewTriangleWithinDist = newTriangleWithinDist;
 
-            TriangleChangeWithinCenter = triangleChangeWithinCenter;
-            TriangleNewWithinCenter = triangleNewWithinCenter;
+            ChangeTriangleWithinCenter = changeTriangleWithinCenter;
+            NewTriangleWithinCenter = newTriangleWithinCenter;
 
-            TriangleChangeUseCrossSection = triangleChangeUseCrossSection;
-            TriangleNewUseCrossSection = triangleNewUseCrossSection;
+            ChangeTriangleUseCrossSection = changeTriangleUseCrossSection;
+            NewTriangleUseCrossSection = newTriangleUseCrossSection;
 
-            HorizontalTriangleChangeMinHeight = horizontalTriangleChangeMinHeight;
-            HorizontalTriangleNewMinHeight = horizontalTriangleNewMinHeight;
+            ChangeHorizontalTriangleMinHeight = changeHorizontalTriangleMinHeight;
+            NewHorizontalTriangleMinHeight = newHorizontalTriangleMinHeight;
 
-            HorizontalTriangleChangeMaxHeight = horizontalTriangleChangeMaxHeight;
-            HorizontalTriangleNewMaxHeight = horizontalTriangleNewMaxHeight;
+            ChangeHorizontalTriangleMaxHeight = changeHorizontalTriangleMaxHeight;
+            NewHorizontalTriangleMaxHeight = newHorizontalTriangleMaxHeight;
 
-            FloorChangeExcludeDeathBarriers = floorChangeExcludeDeathBarriers;
-            FloorNewExcludeDeathBarriers = floorNewExcludeDeathBarriers;
+            ChangeFloorExcludeDeathBarriers = changeFloorExcludeDeathBarriers;
+            NewFloorExcludeDeathBarriers = newFloorExcludeDeathBarriers;
 
-            FloorChangeEnableQuarterFrameLandings = floorChangeEnableQuarterFrameLandings;
-            FloorNewEnableQuarterFrameLandings = floorNewEnableQuarterFrameLandings;
+            ChangeFloorEnableQuarterFrameLandings = changeFloorEnableQuarterFrameLandings;
+            NewFloorEnableQuarterFrameLandings = newFloorEnableQuarterFrameLandings;
 
-            WallChangeShowArrows = wallChangeShowArrows;
-            WallNewShowArrows = wallNewShowArrows;
+            ChangeWallShowArrows = changeWallShowArrows;
+            NewWallShowArrows = newWallShowArrows;
 
-            WallChangeRelativeHeight = wallChangeRelativeHeight;
-            WallNewRelativeHeight = wallNewRelativeHeight;
+            ChangeWallRelativeHeight = changeWallRelativeHeight;
+            NewWallRelativeHeight = newWallRelativeHeight;
 
-            WallChangeAbsoluteHeight = wallChangeAbsoluteHeight;
-            WallNewAbsoluteHeight = wallNewAbsoluteHeight;
+            ChangeWallAbsoluteHeight = changeWallAbsoluteHeight;
+            NewWallAbsoluteHeight = newWallAbsoluteHeight;
 
-            ArrowChangeUseRecommendedLength = arrowChangeUseRecommendedLength;
-            ArrowNewUseRecommendedLength = arrowNewUseRecommendedLength;
+            ChangeArrowUseRecommendedLength = changeArrowUseRecommendedLength;
+            NewArrowUseRecommendedLength = newArrowUseRecommendedLength;
 
-            ArrowChangeUseTruncatedAngle = arrowChangeUseTruncatedAngle;
-            ArrowNewUseTruncatedAngle = arrowNewUseTruncatedAngle;
+            ChangeArrowUseTruncatedAngle = changeArrowUseTruncatedAngle;
+            NewArrowUseTruncatedAngle = newArrowUseTruncatedAngle;
 
-            ArrowChangeHeadSideLength = arrowChangeHeadSideLength;
-            ArrowNewHeadSideLength = arrowNewHeadSideLength;
+            ChangeArrowHeadSideLength = changeArrowHeadSideLength;
+            NewArrowHeadSideLength = newArrowHeadSideLength;
 
-            ArrowChangeAngleOffset = arrowChangeAngleOffset;
-            ArrowNewAngleOffset = arrowNewAngleOffset;
+            ChangeArrowAngleOffset = changeArrowAngleOffset;
+            NewArrowAngleOffset = newArrowAngleOffset;
 
-            SectorChangeAngleRadius = sectorChangeAngleRadius;
-            SectorNewAngleRadius = sectorNewAngleRadius;
+            ChangeSectorAngleRadius = changeSectorAngleRadius;
+            NewSectorAngleRadius = newSectorAngleRadius;
 
-            PathDoReset = pathDoReset;
+            DoPathReset = doPathReset;
 
-            PathDoCopyPoints = pathDoCopyPoints;
+            DoPathCopyPoints = doPathCopyPoints;
 
-            PathDoPastePoints = pathDoPastePoints;
+            DoPathPastePoints = doPathPastePoints;
 
-            PathChangeResetPathOnLevelChange = pathChangeResetPathOnLevelChange;
-            PathNewResetPathOnLevelChange = pathNewResetPathOnLevelChange;
+            ChangePathResetPathOnLevelChange = changePathResetPathOnLevelChange;
+            NewPathResetPathOnLevelChange = newPathResetPathOnLevelChange;
 
-            PathChangeUseBlending = pathChangeUseBlending;
-            PathNewUseBlending = pathNewUseBlending;
+            ChangePathUseBlending = changePathUseBlending;
+            NewPathUseBlending = newPathUseBlending;
 
-            PathChangePaused = pathChangePaused;
-            PathNewPaused = pathNewPaused;
+            ChangePathPaused = changePathPaused;
+            NewPathPaused = newPathPaused;
 
-            PathChangeUseValueAtStartOfGlobalTimer = pathChangeUseValueAtStartOfGlobalTimer;
-            PathNewUseValueAtStartOfGlobalTimer = pathNewUseValueAtStartOfGlobalTimer;
+            ChangePathUseValueAtStartOfGlobalTimer = changePathUseValueAtStartOfGlobalTimer;
+            NewPathUseValueAtStartOfGlobalTimer = newPathUseValueAtStartOfGlobalTimer;
 
-            PathChangeModulo = pathChangeModulo;
-            PathNewModulo = pathNewModulo;
+            ChangePathModulo = changePathModulo;
+            NewPathModulo = newPathModulo;
 
-            PathChangeIconSize = pathChangeIconSize;
-            PathNewIconSize = pathNewIconSize;
+            ChangePathIconSize = changePathIconSize;
+            NewPathIconSize = newPathIconSize;
 
-            AngleRangeChangeUseRelativeAngles = angleRangeChangeUseRelativeAngles;
-            AngleRangeNewUseRelativeAngles = angleRangeNewUseRelativeAngles;
+            ChangeAngleRangeUseRelativeAngles = changeAngleRangeUseRelativeAngles;
+            NewAngleRangeUseRelativeAngles = newAngleRangeUseRelativeAngles;
 
-            AngleRangeChangeAngleDiff = angleRangeChangeAngleDiff;
-            AngleRangeNewAngleDiff = angleRangeNewAngleDiff;
+            ChangeAngleRangeAngleDiff = changeAngleRangeAngleDiff;
+            NewAngleRangeAngleDiff = newAngleRangeAngleDiff;
 
-            AngleRangeChangeUseInGameAngles = angleRangeChangeUseInGameAngles;
-            AngleRangeNewUseInGameAngles = angleRangeNewUseInGameAngles;
+            ChangeAngleRangeUseInGameAngles = changeAngleRangeUseInGameAngles;
+            NewAngleRangeUseInGameAngles = newAngleRangeUseInGameAngles;
         }
     }
 }

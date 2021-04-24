@@ -389,7 +389,7 @@ namespace STROOP.Map
                 ToolStripMenuItem itemResetPath = new ToolStripMenuItem("Reset Path");
                 itemResetPath.Click += (sender, e) =>
                 {
-                    MapObjectSettings settings = new MapObjectSettings(pathDoReset: true);
+                    MapObjectSettings settings = new MapObjectSettings(doPathReset: true);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -397,8 +397,8 @@ namespace STROOP.Map
                 _itemResetPathOnLevelChange.Click += (sender, e) =>
                 {
                     MapObjectSettings settings = new MapObjectSettings(
-                        pathChangeResetPathOnLevelChange: true,
-                        pathNewResetPathOnLevelChange: !_resetPathOnLevelChange);
+                        changePathResetPathOnLevelChange: true,
+                        newPathResetPathOnLevelChange: !_resetPathOnLevelChange);
                     GetParentMapTracker().ApplySettings(settings);
                 };
                 _itemResetPathOnLevelChange.Checked = _resetPathOnLevelChange;
@@ -407,8 +407,8 @@ namespace STROOP.Map
                 _itemUseBlending.Click += (sender, e) =>
                 {
                     MapObjectSettings settings = new MapObjectSettings(
-                        pathChangeUseBlending: true,
-                        pathNewUseBlending: !_useBlending);
+                        changePathUseBlending: true,
+                        newPathUseBlending: !_useBlending);
                     GetParentMapTracker().ApplySettings(settings);
                 };
                 _itemUseBlending.Checked = _useBlending;
@@ -417,8 +417,8 @@ namespace STROOP.Map
                 _itemPause.Click += (sender, e) =>
                 {
                     MapObjectSettings settings = new MapObjectSettings(
-                        pathChangePaused: true,
-                        pathNewPaused: !_isPaused);
+                        changePathPaused: true,
+                        newPathPaused: !_isPaused);
                     GetParentMapTracker().ApplySettings(settings);
                 };
                 _itemPause.Checked = _isPaused;
@@ -427,8 +427,8 @@ namespace STROOP.Map
                 _itemUseValueAtStartOfGlobalTimer.Click += (sender, e) =>
                 {
                     MapObjectSettings settings = new MapObjectSettings(
-                        pathChangeUseValueAtStartOfGlobalTimer: true,
-                        pathNewUseValueAtStartOfGlobalTimer: !_useValueAtStartOfGlobalTimer);
+                        changePathUseValueAtStartOfGlobalTimer: true,
+                        newPathUseValueAtStartOfGlobalTimer: !_useValueAtStartOfGlobalTimer);
                     GetParentMapTracker().ApplySettings(settings);
                 };
                 _itemUseValueAtStartOfGlobalTimer.Checked = _useValueAtStartOfGlobalTimer;
@@ -441,7 +441,7 @@ namespace STROOP.Map
                     int? moduloNullable = ParsingUtilities.ParseIntNullable(text);
                     if (!moduloNullable.HasValue || moduloNullable.Value <= 0) return;
                     MapObjectSettings settings = new MapObjectSettings(
-                        pathChangeModulo: true, pathNewModulo: moduloNullable.Value);
+                        changePathModulo: true, newPathModulo: moduloNullable.Value);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -453,21 +453,21 @@ namespace STROOP.Map
                     float? sizeNullable = ParsingUtilities.ParseFloatNullable(text);
                     if (!sizeNullable.HasValue) return;
                     MapObjectSettings settings = new MapObjectSettings(
-                        pathChangeIconSize: true, pathNewIconSize: sizeNullable.Value);
+                        changePathIconSize: true, newPathIconSize: sizeNullable.Value);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
                 ToolStripMenuItem itemCopyPoints = new ToolStripMenuItem("Copy Points");
                 itemCopyPoints.Click += (sender, e) =>
                 {
-                    MapObjectSettings settings = new MapObjectSettings(pathDoCopyPoints: true);
+                    MapObjectSettings settings = new MapObjectSettings(doPathCopyPoints: true);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
                 ToolStripMenuItem itemPastePoints = new ToolStripMenuItem("Paste Points");
                 itemPastePoints.Click += (sender, e) =>
                 {
-                    MapObjectSettings settings = new MapObjectSettings(pathDoPastePoints: true);
+                    MapObjectSettings settings = new MapObjectSettings(doPathPastePoints: true);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -490,50 +490,50 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.PathDoReset)
+            if (settings.DoPathReset)
             {
                 _dictionary.Clear();
             }
 
-            if (settings.PathChangeResetPathOnLevelChange)
+            if (settings.ChangePathResetPathOnLevelChange)
             {
-                _resetPathOnLevelChange = settings.PathNewResetPathOnLevelChange;
+                _resetPathOnLevelChange = settings.NewPathResetPathOnLevelChange;
                 _itemResetPathOnLevelChange.Checked = _resetPathOnLevelChange;
             }
 
-            if (settings.PathChangeUseBlending)
+            if (settings.ChangePathUseBlending)
             {
-                _useBlending = settings.PathNewUseBlending;
+                _useBlending = settings.NewPathUseBlending;
                 _itemUseBlending.Checked = _useBlending;
             }
 
-            if (settings.PathChangePaused)
+            if (settings.ChangePathPaused)
             {
-                _isPaused = settings.PathNewPaused;
+                _isPaused = settings.NewPathPaused;
                 _itemPause.Checked = _isPaused;
             }
 
-            if (settings.PathChangeUseValueAtStartOfGlobalTimer)
+            if (settings.ChangePathUseValueAtStartOfGlobalTimer)
             {
-                _useValueAtStartOfGlobalTimer = settings.PathNewUseValueAtStartOfGlobalTimer;
+                _useValueAtStartOfGlobalTimer = settings.NewPathUseValueAtStartOfGlobalTimer;
                 _itemUseValueAtStartOfGlobalTimer.Checked = _useValueAtStartOfGlobalTimer;
             }
 
-            if (settings.PathChangeModulo)
+            if (settings.ChangePathModulo)
             {
-                _modulo = settings.PathNewModulo;
+                _modulo = settings.NewPathModulo;
                 string suffix = string.Format(" ({0})", _modulo);
                 _itemSetModulo.Text = SET_MODULO_TEXT + suffix;
             }
 
-            if (settings.PathChangeIconSize)
+            if (settings.ChangePathIconSize)
             {
-                _imageSize = settings.PathNewIconSize;
+                _imageSize = settings.NewPathIconSize;
                 string suffix = string.Format(" ({0})", _imageSize);
                 _itemSetIconSize.Text = SET_ICON_SIZE_TEXT + suffix;
             }
 
-            if (settings.PathDoCopyPoints)
+            if (settings.DoPathCopyPoints)
             {
                 if (KeyboardUtilities.IsCtrlHeld()) // record q steps
                 {
@@ -591,7 +591,7 @@ namespace STROOP.Map
                 }
             }
 
-            if (settings.PathDoPastePoints)
+            if (settings.DoPathPastePoints)
             {
                 _dictionary.Clear();
                 List<double?> values = ParsingUtilities.ParseDoubleList(Clipboard.GetText());

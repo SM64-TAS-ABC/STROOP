@@ -895,7 +895,7 @@ namespace STROOP.Managers
             floorTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
 
             MapLevelWallObject mapLevelWallObject = new MapLevelWallObject();
-            MapObjectSettings settings = new MapObjectSettings(wallChangeRelativeHeight: true, wallNewRelativeHeight: -30);
+            MapObjectSettings settings = new MapObjectSettings(changeWallRelativeHeight: true, newWallRelativeHeight: -30);
             mapLevelWallObject.ApplySettings(settings);
             MapTracker levelWallTracker = new MapTracker(mapLevelWallObject);
             Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(levelWallTracker);

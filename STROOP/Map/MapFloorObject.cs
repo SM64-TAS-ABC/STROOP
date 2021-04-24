@@ -34,7 +34,7 @@ namespace STROOP.Map
             _itemExcludeDeathBarriers.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    floorChangeExcludeDeathBarriers: true, floorNewExcludeDeathBarriers: !_excludeDeathBarriers);
+                    changeFloorExcludeDeathBarriers: true, newFloorExcludeDeathBarriers: !_excludeDeathBarriers);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -42,7 +42,7 @@ namespace STROOP.Map
             _itemEnableQuarterFrameLandings.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    floorChangeEnableQuarterFrameLandings: true, floorNewEnableQuarterFrameLandings: !_enableQuarterFrameLandings);
+                    changeFloorEnableQuarterFrameLandings: true, newFloorEnableQuarterFrameLandings: !_enableQuarterFrameLandings);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -57,16 +57,16 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.FloorChangeExcludeDeathBarriers)
+            if (settings.ChangeFloorExcludeDeathBarriers)
             {
-                _excludeDeathBarriers = settings.FloorNewExcludeDeathBarriers;
-                _itemExcludeDeathBarriers.Checked = settings.FloorNewExcludeDeathBarriers;
+                _excludeDeathBarriers = settings.NewFloorExcludeDeathBarriers;
+                _itemExcludeDeathBarriers.Checked = settings.NewFloorExcludeDeathBarriers;
             }
 
-            if (settings.FloorChangeEnableQuarterFrameLandings)
+            if (settings.ChangeFloorEnableQuarterFrameLandings)
             {
-                _enableQuarterFrameLandings = settings.FloorNewEnableQuarterFrameLandings;
-                _itemEnableQuarterFrameLandings.Checked = settings.FloorNewEnableQuarterFrameLandings;
+                _enableQuarterFrameLandings = settings.NewFloorEnableQuarterFrameLandings;
+                _itemEnableQuarterFrameLandings.Checked = settings.NewFloorEnableQuarterFrameLandings;
             }
         }
     }

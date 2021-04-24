@@ -224,7 +224,7 @@ namespace STROOP.Map
             _itemShowArrows.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    wallChangeShowArrows: true, wallNewShowArrows: !_showArrows);
+                    changeWallShowArrows: true, newWallShowArrows: !_showArrows);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -235,7 +235,7 @@ namespace STROOP.Map
                 float? relativeHeightNullable = ParsingUtilities.ParseFloatNullable(text);
                 if (!relativeHeightNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(
-                    wallChangeRelativeHeight: true, wallNewRelativeHeight: relativeHeightNullable.Value);
+                    changeWallRelativeHeight: true, newWallRelativeHeight: relativeHeightNullable.Value);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -243,7 +243,7 @@ namespace STROOP.Map
             itemClearRelativeHeight.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    wallChangeRelativeHeight: true, wallNewRelativeHeight: null);
+                    changeWallRelativeHeight: true, newWallRelativeHeight: null);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -257,7 +257,7 @@ namespace STROOP.Map
                     ParsingUtilities.ParseFloatNullable(text);
                 if (!absoluteHeightNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(
-                    wallChangeAbsoluteHeight: true, wallNewAbsoluteHeight: absoluteHeightNullable.Value);
+                    changeWallAbsoluteHeight: true, newWallAbsoluteHeight: absoluteHeightNullable.Value);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -265,7 +265,7 @@ namespace STROOP.Map
             itemClearAbsoluteHeight.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    wallChangeAbsoluteHeight: true, wallNewAbsoluteHeight: null);
+                    changeWallAbsoluteHeight: true, newWallAbsoluteHeight: null);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -283,22 +283,22 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.WallChangeShowArrows)
+            if (settings.ChangeWallShowArrows)
             {
-                _showArrows = settings.WallNewShowArrows;
-                _itemShowArrows.Checked = settings.WallNewShowArrows;
+                _showArrows = settings.NewWallShowArrows;
+                _itemShowArrows.Checked = settings.NewWallShowArrows;
             }
 
-            if (settings.WallChangeRelativeHeight)
+            if (settings.ChangeWallRelativeHeight)
             {
-                _relativeHeight = settings.WallNewRelativeHeight;
+                _relativeHeight = settings.NewWallRelativeHeight;
                 string suffix = _relativeHeight.HasValue ? string.Format(" ({0})", _relativeHeight.Value) : "";
                 _itemSetRelativeHeight.Text = SET_RELATIVE_HEIGHT_TEXT + suffix;
             }
 
-            if (settings.WallChangeAbsoluteHeight)
+            if (settings.ChangeWallAbsoluteHeight)
             {
-                _absoluteHeight = settings.WallNewAbsoluteHeight;
+                _absoluteHeight = settings.NewWallAbsoluteHeight;
                 string suffix = _absoluteHeight.HasValue ? string.Format(" ({0})", _absoluteHeight.Value) : "";
                 _itemSetAbsoluteHeight.Text = SET_ABSOLUTE_HEIGHT_TEXT + suffix;
             }

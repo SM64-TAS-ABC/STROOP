@@ -280,7 +280,7 @@ namespace STROOP.Map
                     ParsingUtilities.ParseFloatNullable(text);
                 if (!minHeightNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(
-                    horizontalTriangleChangeMinHeight: true, horizontalTriangleNewMinHeight: minHeightNullable.Value);
+                    changeHorizontalTriangleMinHeight: true, newHorizontalTriangleMinHeight: minHeightNullable.Value);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -288,7 +288,7 @@ namespace STROOP.Map
             itemClearMinHeight.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    horizontalTriangleChangeMinHeight: true, horizontalTriangleNewMinHeight: null);
+                    changeHorizontalTriangleMinHeight: true, newHorizontalTriangleMinHeight: null);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -302,7 +302,7 @@ namespace STROOP.Map
                     ParsingUtilities.ParseFloatNullable(text);
                 if (!maxHeightNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(
-                    horizontalTriangleChangeMaxHeight: true, horizontalTriangleNewMaxHeight: maxHeightNullable.Value);
+                    changeHorizontalTriangleMaxHeight: true, newHorizontalTriangleMaxHeight: maxHeightNullable.Value);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -310,7 +310,7 @@ namespace STROOP.Map
             itemClearMaxHeight.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    horizontalTriangleChangeMaxHeight: true, horizontalTriangleNewMaxHeight: null);
+                    changeHorizontalTriangleMaxHeight: true, newHorizontalTriangleMaxHeight: null);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -327,16 +327,16 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.HorizontalTriangleChangeMinHeight)
+            if (settings.ChangeHorizontalTriangleMinHeight)
             {
-                _minHeight = settings.HorizontalTriangleNewMinHeight;
+                _minHeight = settings.NewHorizontalTriangleMinHeight;
                 string suffix = _minHeight.HasValue ? string.Format(" ({0})", _minHeight.Value) : "";
                 _itemSetMinHeight.Text = SET_MIN_HEIGHT_TEXT + suffix;
             }
 
-            if (settings.HorizontalTriangleChangeMaxHeight)
+            if (settings.ChangeHorizontalTriangleMaxHeight)
             {
-                _maxHeight = settings.HorizontalTriangleNewMaxHeight;
+                _maxHeight = settings.NewHorizontalTriangleMaxHeight;
                 string suffix = _maxHeight.HasValue ? string.Format(" ({0})", _maxHeight.Value) : "";
                 _itemSetMaxHeight.Text = SET_MAX_HEIGHT_TEXT + suffix;
             }

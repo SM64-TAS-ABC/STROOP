@@ -127,7 +127,7 @@ namespace STROOP.Map
                     float? angleRadius = ParsingUtilities.ParseFloatNullable(text);
                     if (!angleRadius.HasValue) return;
                     MapObjectSettings settings = new MapObjectSettings(
-                        sectorChangeAngleRadius: true, sectorNewAngleRadius: angleRadius.Value);
+                        changeSectorAngleRadius: true, newSectorAngleRadius: angleRadius.Value);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -142,9 +142,9 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.SectorChangeAngleRadius)
+            if (settings.ChangeSectorAngleRadius)
             {
-                _angleRadius = settings.SectorNewAngleRadius;
+                _angleRadius = settings.NewSectorAngleRadius;
                 string suffix = string.Format(" ({0})", _angleRadius);
                 _itemSetAngleRadius.Text = SET_ANGLE_RADIUS_TEXT + suffix;
             }

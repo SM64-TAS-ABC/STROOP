@@ -297,7 +297,7 @@ namespace STROOP.Map
                 float? withinDistNullable = ParsingUtilities.ParseFloatNullable(text);
                 if (!withinDistNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(
-                    triangleChangeWithinDist: true, triangleNewWithinDist: withinDistNullable.Value);
+                    changeTriangleWithinDist: true, newTriangleWithinDist: withinDistNullable.Value);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -305,7 +305,7 @@ namespace STROOP.Map
             itemClearWithinDist.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    triangleChangeWithinDist: true, triangleNewWithinDist: null);
+                    changeTriangleWithinDist: true, newTriangleWithinDist: null);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -319,7 +319,7 @@ namespace STROOP.Map
                     ParsingUtilities.ParseFloatNullable(text);
                 if (!withinCenterNullable.HasValue) return;
                 MapObjectSettings settings = new MapObjectSettings(
-                    triangleChangeWithinCenter: true, triangleNewWithinCenter: withinCenterNullable.Value);
+                    changeTriangleWithinCenter: true, newTriangleWithinCenter: withinCenterNullable.Value);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -327,7 +327,7 @@ namespace STROOP.Map
             itemClearWithinCenter.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    triangleChangeWithinCenter: true, triangleNewWithinCenter: null);
+                    changeTriangleWithinCenter: true, newTriangleWithinCenter: null);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -335,7 +335,7 @@ namespace STROOP.Map
             _itemUseCrossSection.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    triangleChangeUseCrossSection: true, triangleNewUseCrossSection: !_useCrossSection);
+                    changeTriangleUseCrossSection: true, newTriangleUseCrossSection: !_useCrossSection);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -353,24 +353,24 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.TriangleChangeWithinDist)
+            if (settings.ChangeTriangleWithinDist)
             {
-                _withinDist = settings.TriangleNewWithinDist;
+                _withinDist = settings.NewTriangleWithinDist;
                 string suffix = _withinDist.HasValue ? string.Format(" ({0})", _withinDist.Value) : "";
                 _itemSetWithinDist.Text = SET_WITHIN_DIST_TEXT + suffix;
             }
 
-            if (settings.TriangleChangeWithinCenter)
+            if (settings.ChangeTriangleWithinCenter)
             {
-                _withinCenter = settings.TriangleNewWithinCenter;
+                _withinCenter = settings.NewTriangleWithinCenter;
                 string suffix = _withinCenter.HasValue ? string.Format(" ({0})", _withinCenter.Value) : "";
                 _itemSetWithinCenter.Text = SET_WITHIN_CENTER_TEXT + suffix;
             }
 
-            if (settings.TriangleChangeUseCrossSection)
+            if (settings.ChangeTriangleUseCrossSection)
             {
-                _useCrossSection = settings.TriangleNewUseCrossSection;
-                _itemUseCrossSection.Checked = settings.TriangleNewUseCrossSection;
+                _useCrossSection = settings.NewTriangleUseCrossSection;
+                _itemUseCrossSection.Checked = settings.NewTriangleUseCrossSection;
             }
         }
 

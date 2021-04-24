@@ -71,7 +71,7 @@ namespace STROOP.Map
                     float? relativeMinY = ParsingUtilities.ParseFloatNullable(text);
                     if (!relativeMinY.HasValue) return;
                     MapObjectSettings settings = new MapObjectSettings(
-                        customCylinderChangeRelativeMinY: true, customCylinderNewRelativeMinY: relativeMinY.Value);
+                        changeCustomCylinderRelativeMinY: true, newCustomCylinderRelativeMinY: relativeMinY.Value);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -83,7 +83,7 @@ namespace STROOP.Map
                     float? relativeMaxY = ParsingUtilities.ParseFloatNullable(text);
                     if (!relativeMaxY.HasValue) return;
                     MapObjectSettings settings = new MapObjectSettings(
-                        customCylinderChangeRelativeMaxY: true, customCylinderNewRelativeMaxY: relativeMaxY.Value);
+                        changeCustomCylinderRelativeMaxY: true, newCustomCylinderRelativeMaxY: relativeMaxY.Value);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -99,16 +99,16 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.CustomCylinderChangeRelativeMinY)
+            if (settings.ChangeCustomCylinderRelativeMinY)
             {
-                _relativeMinY = settings.CustomCylinderNewRelativeMinY;
+                _relativeMinY = settings.NewCustomCylinderRelativeMinY;
                 string suffix = string.Format(" ({0})", _relativeMinY);
                 _itemSetRelativeMinY.Text = SET_RELATIVE_MIN_Y_TEXT + suffix;
             }
 
-            if (settings.CustomCylinderChangeRelativeMaxY)
+            if (settings.ChangeCustomCylinderRelativeMaxY)
             {
-                _relativeMaxY = settings.CustomCylinderNewRelativeMaxY;
+                _relativeMaxY = settings.NewCustomCylinderRelativeMaxY;
                 string suffix = string.Format(" ({0})", _relativeMaxY);
                 _itemSetRelativeMaxY.Text = SET_RELATIVE_MAX_Y_TEXT + suffix;
             }

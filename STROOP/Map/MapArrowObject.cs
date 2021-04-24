@@ -89,8 +89,8 @@ namespace STROOP.Map
                 _itemUseSpeedForArrowLength.Click += (sender, e) =>
                 {
                     MapObjectSettings settings = new MapObjectSettings(
-                        arrowChangeUseRecommendedLength: true,
-                        arrowNewUseRecommendedLength: !_useRecommendedArrowLength);
+                        changeArrowUseRecommendedLength: true,
+                        newArrowUseRecommendedLength: !_useRecommendedArrowLength);
                     GetParentMapTracker().ApplySettings(settings);
                 };
                 _itemUseSpeedForArrowLength.Checked = _useRecommendedArrowLength;
@@ -99,8 +99,8 @@ namespace STROOP.Map
                 _itemUseTruncatedAngle.Click += (sender, e) =>
                 {
                     MapObjectSettings settings = new MapObjectSettings(
-                        arrowChangeUseTruncatedAngle: true,
-                        arrowNewUseTruncatedAngle: !_useTruncatedAngle);
+                        changeArrowUseTruncatedAngle: true,
+                        newArrowUseTruncatedAngle: !_useTruncatedAngle);
                     GetParentMapTracker().ApplySettings(settings);
                 };
                 _itemUseTruncatedAngle.Checked = _useTruncatedAngle;
@@ -113,7 +113,7 @@ namespace STROOP.Map
                     float? arrowHeadSideLength = ParsingUtilities.ParseFloatNullable(text);
                     if (!arrowHeadSideLength.HasValue) return;
                     MapObjectSettings settings = new MapObjectSettings(
-                        arrowChangeHeadSideLength: true, arrowNewHeadSideLength: arrowHeadSideLength.Value);
+                        changeArrowHeadSideLength: true, newArrowHeadSideLength: arrowHeadSideLength.Value);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -125,7 +125,7 @@ namespace STROOP.Map
                     float? angleOffsetNullable = ParsingUtilities.ParseFloatNullable(text);
                     if (!angleOffsetNullable.HasValue) return;
                     MapObjectSettings settings = new MapObjectSettings(
-                        arrowChangeAngleOffset: true, arrowNewAngleOffset: angleOffsetNullable.Value);
+                        changeArrowAngleOffset: true, newArrowAngleOffset: angleOffsetNullable.Value);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -143,28 +143,28 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.ArrowChangeUseRecommendedLength)
+            if (settings.ChangeArrowUseRecommendedLength)
             {
-                _useRecommendedArrowLength = settings.ArrowNewUseRecommendedLength;
+                _useRecommendedArrowLength = settings.NewArrowUseRecommendedLength;
                 _itemUseSpeedForArrowLength.Checked = _useRecommendedArrowLength;
             }
 
-            if (settings.ArrowChangeUseTruncatedAngle)
+            if (settings.ChangeArrowUseTruncatedAngle)
             {
-                _useTruncatedAngle = settings.ArrowNewUseTruncatedAngle;
+                _useTruncatedAngle = settings.NewArrowUseTruncatedAngle;
                 _itemUseTruncatedAngle.Checked = _useTruncatedAngle;
             }
 
-            if (settings.ArrowChangeHeadSideLength)
+            if (settings.ChangeArrowHeadSideLength)
             {
-                _arrowHeadSideLength = settings.ArrowNewHeadSideLength;
+                _arrowHeadSideLength = settings.NewArrowHeadSideLength;
                 string suffix = string.Format(" ({0})", _arrowHeadSideLength);
                 _itemSetArrowHeadSideLength.Text = SET_ARROW_HEAD_SIDE_LENGTH_TEXT + suffix;
             }
 
-            if (settings.ArrowChangeAngleOffset)
+            if (settings.ChangeArrowAngleOffset)
             {
-                _angleOffset = settings.ArrowNewAngleOffset;
+                _angleOffset = settings.NewArrowAngleOffset;
                 string suffix = string.Format(" ({0})", _angleOffset);
                 _itemSetAngleOffset.Text = SET_ANGLE_OFFSET_TEXT + suffix;
             }

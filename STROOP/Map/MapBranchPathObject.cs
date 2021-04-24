@@ -224,7 +224,7 @@ namespace STROOP.Map
                 ToolStripMenuItem itemResetPath = new ToolStripMenuItem("Reset Path");
                 itemResetPath.Click += (sender, e) =>
                 {
-                    MapObjectSettings settings = new MapObjectSettings(pathDoReset: true);
+                    MapObjectSettings settings = new MapObjectSettings(doPathReset: true);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -232,8 +232,8 @@ namespace STROOP.Map
                 _itemUseBlending.Click += (sender, e) =>
                 {
                     MapObjectSettings settings = new MapObjectSettings(
-                        pathChangeUseBlending: true,
-                        pathNewUseBlending: !_useBlending);
+                        changePathUseBlending: true,
+                        newPathUseBlending: !_useBlending);
                     GetParentMapTracker().ApplySettings(settings);
                 };
                 _itemUseBlending.Checked = _useBlending;
@@ -242,8 +242,8 @@ namespace STROOP.Map
                 _itemPause.Click += (sender, e) =>
                 {
                     MapObjectSettings settings = new MapObjectSettings(
-                        pathChangePaused: true,
-                        pathNewPaused: !_isPaused);
+                        changePathPaused: true,
+                        newPathPaused: !_isPaused);
                     GetParentMapTracker().ApplySettings(settings);
                 };
                 _itemPause.Checked = _isPaused;
@@ -261,20 +261,20 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.PathDoReset)
+            if (settings.DoPathReset)
             {
                 _list.Clear();
             }
 
-            if (settings.PathChangeUseBlending)
+            if (settings.ChangePathUseBlending)
             {
-                _useBlending = settings.PathNewUseBlending;
+                _useBlending = settings.NewPathUseBlending;
                 _itemUseBlending.Checked = _useBlending;
             }
 
-            if (settings.PathChangePaused)
+            if (settings.ChangePathPaused)
             {
-                _isPaused = settings.PathNewPaused;
+                _isPaused = settings.NewPathPaused;
                 _itemPause.Checked = _isPaused;
             }
         }

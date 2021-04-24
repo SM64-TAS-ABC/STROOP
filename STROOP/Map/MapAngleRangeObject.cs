@@ -92,8 +92,8 @@ namespace STROOP.Map
                 _itemUseRelativeAngles.Click += (sender, e) =>
                 {
                     MapObjectSettings settings = new MapObjectSettings(
-                        angleRangeChangeUseRelativeAngles: true,
-                        angleRangeNewUseRelativeAngles: !_useRelativeAngles);
+                        changeAngleRangeUseRelativeAngles: true,
+                        newAngleRangeUseRelativeAngles: !_useRelativeAngles);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -105,7 +105,7 @@ namespace STROOP.Map
                     int? angleDiff = ParsingUtilities.ParseIntNullable(text);
                     if (!angleDiff.HasValue || angleDiff.Value <= 0) return;
                     MapObjectSettings settings = new MapObjectSettings(
-                        angleRangeChangeAngleDiff: true, angleRangeNewAngleDiff: angleDiff.Value);
+                        changeAngleRangeAngleDiff: true, newAngleRangeAngleDiff: angleDiff.Value);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -113,8 +113,8 @@ namespace STROOP.Map
                 _itemUseInGameAngles.Click += (sender, e) =>
                 {
                     MapObjectSettings settings = new MapObjectSettings(
-                        angleRangeChangeUseInGameAngles: true,
-                        angleRangeNewUseInGameAngles: !_useInGameAngles);
+                        changeAngleRangeUseInGameAngles: true,
+                        newAngleRangeUseInGameAngles: !_useInGameAngles);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -131,23 +131,23 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.AngleRangeChangeUseRelativeAngles)
+            if (settings.ChangeAngleRangeUseRelativeAngles)
             {
-                _useRelativeAngles = settings.AngleRangeNewUseRelativeAngles;
-                _itemUseRelativeAngles.Checked = settings.AngleRangeNewUseRelativeAngles;
+                _useRelativeAngles = settings.NewAngleRangeUseRelativeAngles;
+                _itemUseRelativeAngles.Checked = settings.NewAngleRangeUseRelativeAngles;
             }
 
-            if (settings.AngleRangeChangeAngleDiff)
+            if (settings.ChangeAngleRangeAngleDiff)
             {
-                _angleDiff = settings.AngleRangeNewAngleDiff;
+                _angleDiff = settings.NewAngleRangeAngleDiff;
                 string suffix = string.Format(" ({0})", _angleDiff);
                 _itemSetAngleDiff.Text = SET_ANGLE_DIFF_TEXT + suffix;
             }
 
-            if (settings.AngleRangeChangeUseInGameAngles)
+            if (settings.ChangeAngleRangeUseInGameAngles)
             {
-                _useInGameAngles = settings.AngleRangeNewUseInGameAngles;
-                _itemUseInGameAngles.Checked = settings.AngleRangeNewUseInGameAngles;
+                _useInGameAngles = settings.NewAngleRangeUseInGameAngles;
+                _itemUseInGameAngles.Checked = settings.NewAngleRangeUseInGameAngles;
             }
         }
     }
