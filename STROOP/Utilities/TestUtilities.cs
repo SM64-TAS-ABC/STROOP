@@ -89,12 +89,12 @@ namespace STROOP.Utilities
                 PositionAngle homePosAngle = PositionAngle.ObjHome(chuckya.Address);
 
                 MapObject mapObjChuckya = new MapObjectObject(chuckya.Address);
-                MapObject mapObjHome = new MapHomeObject(chuckya.Address);
-                MapObject mapObjFacingArrow = new MapObjectFacingArrowObject(chuckyaPosAngle);
-                MapObject mapObjSector = new MapSectorObject(chuckyaPosAngle);
-                MapObject mapObjFacingDivider = new MapFacingDividerObject(chuckyaPosAngle);
-                MapObject mapObjSphere = new MapCustomSphereObject(chuckyaPosAngle);
-                MapObject mapObjCylinder = new MapCustomCylinderObject(homePosAngle);
+                MapObject mapObjHome = new MapObjectHome(chuckya.Address);
+                MapObject mapObjFacingArrow = new MapObjectObjectFacingArrow(chuckyaPosAngle);
+                MapObject mapObjSector = new MapObjectSector(chuckyaPosAngle);
+                MapObject mapObjFacingDivider = new MapObjectFacingDivider(chuckyaPosAngle);
+                MapObject mapObjSphere = new MapObjectCustomSphere(chuckyaPosAngle);
+                MapObject mapObjCylinder = new MapObjectCustomCylinder(homePosAngle);
 
                 mapObjFacingArrow.OutlineColor = Color.Green;
                 mapObjFacingArrow.Size = 3000;

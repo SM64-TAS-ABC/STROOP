@@ -13,7 +13,7 @@ using STROOP.Models;
 
 namespace STROOP.Map
 {
-    public class MapObjectObject : MapIconPointObject
+    public class MapObjectObject : MapObjectIconPoint
     {
         private readonly ObjectDataModel _obj;
         private readonly PositionAngle _posAngle;

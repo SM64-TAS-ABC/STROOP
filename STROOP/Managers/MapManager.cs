@@ -67,7 +67,7 @@ namespace STROOP.Managers
         {
             // FlowLayoutPanel
             Config.MapGui.flowLayoutPanelMapTrackers.Initialize(
-                new MapCurrentMapObject(), new MapCurrentBackgroundObject(), new MapHitboxHackTriangleObject(true));
+                new MapObjectCurrentMap(), new MapObjectCurrentBackground(), new MapObjectHitboxHackTriangle(true));
 
             // ComboBox for Level
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
@@ -106,7 +106,7 @@ namespace STROOP.Managers
             itemAllObjectsWithName.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the name of the object.");
-                MapObject mapObj = MapAllObjectsWithNameObject.Create(text);
+                MapObject mapObj = MapObjectAllObjectsWithName.Create(text);
                 if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
@@ -115,7 +115,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemLevelFloorTris = new ToolStripMenuItem("Add Tracker for Level Floor Tris");
             itemLevelFloorTris.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapLevelFloorObject();
+                MapObject mapObj = new MapObjectLevelFloor();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -123,7 +123,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemLevelWallTris = new ToolStripMenuItem("Add Tracker for Level Wall Tris");
             itemLevelWallTris.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapLevelWallObject();
+                MapObject mapObj = new MapObjectLevelWall();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -131,7 +131,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemLevelCeilingTris = new ToolStripMenuItem("Add Tracker for Level Ceiling Tris");
             itemLevelCeilingTris.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapLevelCeilingObject();
+                MapObject mapObj = new MapObjectLevelCeiling();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -139,7 +139,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemAllObjectFloorTris = new ToolStripMenuItem("Add Tracker for All Object Floor Tris");
             itemAllObjectFloorTris.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapAllObjectFloorObject();
+                MapObject mapObj = new MapObjectAllObjectFloor();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -147,7 +147,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemAllObjectWallTris = new ToolStripMenuItem("Add Tracker for All Object Wall Tris");
             itemAllObjectWallTris.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapAllObjectWallObject();
+                MapObject mapObj = new MapObjectAllObjectWall();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -155,7 +155,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemAllObjectCeilingTris = new ToolStripMenuItem("Add Tracker for All Object Ceiling Tris");
             itemAllObjectCeilingTris.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapAllObjectCeilingObject();
+                MapObject mapObj = new MapObjectAllObjectCeiling();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -164,7 +164,7 @@ namespace STROOP.Managers
             itemCustomFloorTris.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter triangle addresses as hex uints.");
-                MapObject mapObj = MapCustomFloorObject.Create(text);
+                MapObject mapObj = MapObjectCustomFloor.Create(text);
                 if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
@@ -174,7 +174,7 @@ namespace STROOP.Managers
             itemCustomWallTris.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter triangle addresses as hex uints.");
-                MapObject mapObj = MapCustomWallObject.Create(text);
+                MapObject mapObj = MapObjectCustomWall.Create(text);
                 if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
@@ -184,7 +184,7 @@ namespace STROOP.Managers
             itemCustomCeilingTris.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter triangle addresses as hex uints.");
-                MapObject mapObj = MapCustomCeilingObject.Create(text);
+                MapObject mapObj = MapObjectCustomCeiling.Create(text);
                 if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
@@ -199,7 +199,7 @@ namespace STROOP.Managers
                     button2Text: "Triplets");
                 if (!result.HasValue) return;
                 (string text, bool side) = result.Value;
-                MapObject mapObj = MapCustomUnitPointsObject.Create(text, side);
+                MapObject mapObj = MapObjectCustomUnitPoints.Create(text, side);
                 if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
@@ -214,7 +214,7 @@ namespace STROOP.Managers
                     button2Text: "Triplets");
                 if (!result.HasValue) return;
                 (string text, bool side) = result.Value;
-                MapObject mapObj = MapCustomCylinderPointsObject.Create(text, side);
+                MapObject mapObj = MapObjectCustomCylinderPoints.Create(text, side);
                 if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
@@ -229,7 +229,7 @@ namespace STROOP.Managers
                     button2Text: "Triplets");
                 if (!result.HasValue) return;
                 (string text, bool side) = result.Value;
-                MapObject mapObj = MapCustomSpherePointsObject.Create(text, side);
+                MapObject mapObj = MapObjectCustomSpherePoints.Create(text, side);
                 if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
@@ -238,7 +238,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemCustomMap = new ToolStripMenuItem("Add Tracker for Custom Map");
             itemCustomMap.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapCustomMapObject();
+                MapObject mapObj = new MapObjectCustomMap();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -246,7 +246,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemCustomBackground = new ToolStripMenuItem("Add Tracker for Custom Background");
             itemCustomBackground.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapCustomBackgroundObject();
+                MapObject mapObj = new MapObjectCustomBackground();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -254,7 +254,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemUnitGridlines = new ToolStripMenuItem("Add Tracker for Unit Gridlines");
             itemUnitGridlines.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapUnitGridlinesObject();
+                MapObject mapObj = new MapObjectUnitGridlines();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -262,7 +262,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemFloatGridlines = new ToolStripMenuItem("Add Tracker for Float Gridlines");
             itemFloatGridlines.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapFloatGridlinesObject();
+                MapObject mapObj = new MapObjectFloatGridlines();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -270,7 +270,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemCellGridlines = new ToolStripMenuItem("Add Tracker for Cell Gridlines");
             itemCellGridlines.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapCellGridlinesObject();
+                MapObject mapObj = new MapObjectCellGridlines();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -278,7 +278,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemPuGridlines = new ToolStripMenuItem("Add Tracker for PU Gridlines");
             itemPuGridlines.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapPuGridlinesObject();
+                MapObject mapObj = new MapObjectPuGridlines();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -286,7 +286,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemCustomGridlines = new ToolStripMenuItem("Add Tracker for Custom Gridlines");
             itemCustomGridlines.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapCustomGridlinesObject();
+                MapObject mapObj = new MapObjectCustomGridlines();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -294,7 +294,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemIwerlipses = new ToolStripMenuItem("Add Tracker for Iwerlipses");
             itemIwerlipses.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapIwerlipsesObject();
+                MapObject mapObj = new MapObjectIwerlipses();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -302,7 +302,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemNextPositions = new ToolStripMenuItem("Add Tracker for Next Positions");
             itemNextPositions.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapNextPositionsObject();
+                MapObject mapObj = new MapObjectNextPositions();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -310,7 +310,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemPreviousPositions = new ToolStripMenuItem("Add Tracker for Previous Positions");
             itemPreviousPositions.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapPreviousPositionsObject();
+                MapObject mapObj = new MapObjectPreviousPositions();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -318,7 +318,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemCurrentUnit = new ToolStripMenuItem("Add Tracker for Current Unit");
             itemCurrentUnit.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapCurrentUnitObject(PositionAngle.Mario);
+                MapObject mapObj = new MapObjectCurrentUnit(PositionAngle.Mario);
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -326,7 +326,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemCurrentCell = new ToolStripMenuItem("Add Tracker for Current Cell");
             itemCurrentCell.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapCurrentCellObject();
+                MapObject mapObj = new MapObjectCurrentCell();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -334,7 +334,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemCUpFloorTris = new ToolStripMenuItem("Add Tracker for C-Up Floor Tris");
             itemCUpFloorTris.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapCUpFloorObject();
+                MapObject mapObj = new MapObjectCUpFloor();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -342,7 +342,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemPunchFloorTris = new ToolStripMenuItem("Add Tracker for Punch Floor Tris");
             itemPunchFloorTris.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapPunchFloorObject();
+                MapObject mapObj = new MapObjectPunchFloor();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -350,7 +350,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemPunchDetector = new ToolStripMenuItem("Add Tracker for Punch Detector");
             itemPunchDetector.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapPunchDetectorObject();
+                MapObject mapObj = new MapObjectPunchDetector();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -358,7 +358,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemHitboxHackTris = new ToolStripMenuItem("Add Tracker for Hitbox Hack Tris");
             itemHitboxHackTris.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapHitboxHackTriangleObject(false);
+                MapObject mapObj = new MapObjectHitboxHackTriangle(false);
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -366,7 +366,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemWaters = new ToolStripMenuItem("Add Tracker for Waters");
             itemWaters.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapWatersObject();
+                MapObject mapObj = new MapObjectWaters();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -374,7 +374,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemAggregatedPath = new ToolStripMenuItem("Add Tracker for Aggregated Path");
             itemAggregatedPath.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapAggregatedPathObject();
+                MapObject mapObj = new MapObjectAggregatedPath();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -382,7 +382,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemCompass = new ToolStripMenuItem("Add Tracker for Compass");
             itemCompass.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapCompassObject();
+                MapObject mapObj = new MapObjectCompass();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -390,7 +390,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemCoordinateLabels = new ToolStripMenuItem("Add Tracker for Coordinate Labels");
             itemCoordinateLabels.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapCoordinateLabelsObject();
+                MapObject mapObj = new MapObjectCoordinateLabels();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -398,7 +398,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemLedgeGrabChecker = new ToolStripMenuItem("Add Tracker for Ledge Grab Checker");
             itemLedgeGrabChecker.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapLedgeGrabCheckerObject();
+                MapObject mapObj = new MapObjectLedgeGrabChecker();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -409,7 +409,7 @@ namespace STROOP.Managers
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter a PositionAngle.");
                 PositionAngle posAngle = PositionAngle.FromString(text);
                 if (posAngle == null) return;
-                MapObject mapObj = new MapCustomPositionAngleObject(posAngle);
+                MapObject mapObj = new MapObjectCustomPositionAngle(posAngle);
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -421,7 +421,7 @@ namespace STROOP.Managers
                 if (text1 == null) return;
                 string text2 = DialogUtilities.GetStringFromDialog(labelText: "Enter the second PositionAngle.");
                 if (text2 == null) return;
-                MapObject mapObj = MapLineSegmentObject.Create(text1, text2);
+                MapObject mapObj = MapObjectLineSegment.Create(text1, text2);
                 if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
@@ -430,7 +430,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemDrawing = new ToolStripMenuItem("Add Tracker for Drawing");
             itemDrawing.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapDrawingObject();
+                MapObject mapObj = new MapObjectDrawing();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -858,11 +858,11 @@ namespace STROOP.Managers
             object map = _mapLayoutChoices.Find(obj => obj.ToString() == "Transparent");
             Config.MapGui.comboBoxMapOptionsLevel.SelectedItem = map;
 
-            MapTracker wallTracker = new MapTracker(new MapLevelWallObject());
+            MapTracker wallTracker = new MapTracker(new MapObjectLevelWall());
             wallTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
             Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(wallTracker);
 
-            MapTracker floorTracker = new MapTracker(new MapLevelFloorObject());
+            MapTracker floorTracker = new MapTracker(new MapObjectLevelFloor());
             floorTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
             Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(floorTracker);
 
@@ -881,7 +881,7 @@ namespace STROOP.Managers
             MapTracker ghostTracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(1);
             ghostTracker.SetSize(15);
 
-            MapTracker previousPositionsTracker = new MapTracker(new MapPreviousPositionsObject());
+            MapTracker previousPositionsTracker = new MapTracker(new MapObjectPreviousPositions());
             Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(previousPositionsTracker);
             previousPositionsTracker.SetSize(10);
 
@@ -894,7 +894,7 @@ namespace STROOP.Managers
             floorTracker.SetOpacity(8);
             floorTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
 
-            MapLevelWallObject mapLevelWallObject = new MapLevelWallObject();
+            MapObjectLevelWall mapLevelWallObject = new MapObjectLevelWall();
             MapObjectSettings settings = new MapObjectSettings(changeWallRelativeHeight: true, newWallRelativeHeight: -30);
             mapLevelWallObject.ApplySettings(settings);
             MapTracker levelWallTracker = new MapTracker(mapLevelWallObject);
@@ -913,16 +913,16 @@ namespace STROOP.Managers
 
         private void InitializeSemaphores()
         {
-            _checkBoxMarioAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackMario, MapSemaphoreManager.Mario, () => new MapMarioObject(), true);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackHolp, MapSemaphoreManager.Holp, () => new MapHolpObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCamera, MapSemaphoreManager.Camera, () => new MapCameraObject(), false);
-            _checkBoxGhostAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackGhost, MapSemaphoreManager.Ghost, () => new MapGhostObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackSelf, MapSemaphoreManager.Self, () => new MapSelfObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackPoint, MapSemaphoreManager.Point, () => new MapPointObject(), false);
-            _checkBoxFloorAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackFloorTri, MapSemaphoreManager.FloorTri, () => new MapMarioFloorObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackWallTri, MapSemaphoreManager.WallTri, () => new MapMarioWallObject(), false);
-            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCeilingTri, MapSemaphoreManager.CeilingTri, () => new MapMarioCeilingObject(), false);
-            _checkBoxUnitGridlinesAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackUnitGridlines, MapSemaphoreManager.UnitGridlines, () => new MapUnitGridlinesObject(), false);
+            _checkBoxMarioAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackMario, MapSemaphoreManager.Mario, () => new MapObjectMario(), true);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackHolp, MapSemaphoreManager.Holp, () => new MapObjectHolp(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCamera, MapSemaphoreManager.Camera, () => new MapObjectCamera(), false);
+            _checkBoxGhostAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackGhost, MapSemaphoreManager.Ghost, () => new MapObjectGhost(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackSelf, MapSemaphoreManager.Self, () => new MapObjectSelf(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackPoint, MapSemaphoreManager.Point, () => new MapObjectPoint(), false);
+            _checkBoxFloorAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackFloorTri, MapSemaphoreManager.FloorTri, () => new MapObjectMarioFloor(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackWallTri, MapSemaphoreManager.WallTri, () => new MapObjectMarioWall(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCeilingTri, MapSemaphoreManager.CeilingTri, () => new MapObjectMarioCeiling(), false);
+            _checkBoxUnitGridlinesAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackUnitGridlines, MapSemaphoreManager.UnitGridlines, () => new MapObjectUnitGridlines(), false);
         }
 
         private Action InitializeCheckboxSemaphore(

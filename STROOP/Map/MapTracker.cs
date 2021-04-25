@@ -151,7 +151,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObjectOrMario()) return null;
-                    return (MapObject)new MapHitboxCylinderObject(posAngle);
+                    return (MapObject)new MapObjectHitboxCylinder(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -166,7 +166,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObjectOrMario()) return null;
-                    return (MapObject)new MapEffectiveHitboxCylinderObject(posAngle);
+                    return (MapObject)new MapObjectEffectiveHitboxCylinder(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -181,7 +181,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObjectOrMario()) return null;
-                    return (MapObject)new MapHurtboxCylinderObject(posAngle);
+                    return (MapObject)new MapObjectHurtboxCylinder(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -196,7 +196,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObjectOrMario()) return null;
-                    return (MapObject)new MapEffectiveHurtboxCylinderObject(posAngle);
+                    return (MapObject)new MapObjectEffectiveHurtboxCylinder(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -211,7 +211,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapPushHitboxCylinderObject(posAngle);
+                    return (MapObject)new MapObjectPushHitboxCylinder(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -226,7 +226,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObjectOrMario()) return null;
-                    return (MapObject)new MapTangibilitySphereObject(posAngle);
+                    return (MapObject)new MapObjectTangibilitySphere(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -241,7 +241,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObjectOrMario()) return null;
-                    return (MapObject)new MapDrawDistanceSphereObject(posAngle);
+                    return (MapObject)new MapObjectDrawDistanceSphere(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -255,7 +255,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapCustomCylinderObject(posAngle);
+                    return (MapObject)new MapObjectCustomCylinder(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -269,7 +269,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapCustomSphereObject(posAngle);
+                    return (MapObject)new MapObjectCustomSphere(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -284,7 +284,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapHomeObject(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectHome(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -300,7 +300,7 @@ namespace STROOP.Map
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
                     PositionAngle homePosAngle = PositionAngle.ObjHome(posAngle.GetObjAddress());
-                    return (MapObject)new MapCustomCylinderObject(homePosAngle);
+                    return (MapObject)new MapObjectCustomCylinder(homePosAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -316,7 +316,7 @@ namespace STROOP.Map
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
                     PositionAngle homePosAngle = PositionAngle.ObjHome(posAngle.GetObjAddress());
-                    return (MapObject)new MapCustomSphereObject(homePosAngle);
+                    return (MapObject)new MapObjectCustomSphere(homePosAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -331,7 +331,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapObjectFloorObject(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectObjectFloor(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -346,7 +346,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapObjectWallObject(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectObjectWall(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -361,7 +361,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapObjectCeilingObject(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectObjectCeiling(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -375,7 +375,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapMarioFacingArrowObject(posAngle);
+                    return (MapObject)new MapObjectMarioFacingArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -389,7 +389,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapMarioMovingArrowObject(posAngle);
+                    return (MapObject)new MapObjectMarioMovingArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -403,7 +403,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapMarioIntendedArrowObject(posAngle);
+                    return (MapObject)new MapObjectMarioIntendedArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -417,7 +417,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapMarioSlidingArrowObject(posAngle);
+                    return (MapObject)new MapObjectMarioSlidingArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -431,7 +431,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapMarioTwirlArrowObject(posAngle);
+                    return (MapObject)new MapObjectMarioTwirlArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -445,7 +445,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapMarioFloorArrowObject(posAngle);
+                    return (MapObject)new MapObjectMarioFloorArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -460,7 +460,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapObjectFacingArrowObject(posAngle);
+                    return (MapObject)new MapObjectObjectFacingArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -475,7 +475,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapObjectMovingArrowObject(posAngle);
+                    return (MapObject)new MapObjectObjectMovingArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -490,7 +490,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapObjectGraphicsArrowObject(posAngle);
+                    return (MapObject)new MapObjectObjectGraphicsArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -505,7 +505,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapObjectAngleToMarioArrowObject(posAngle);
+                    return (MapObject)new MapObjectObjectAngleToMarioArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -526,7 +526,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapObjectCustomArrowObject(posAngle, yawOffset, numBytes);
+                    return (MapObject)new MapObjectObjectCustomArrow(posAngle, yawOffset, numBytes);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -541,7 +541,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapSwooperEffectiveTargetArrowObject(posAngle);
+                    return (MapObject)new MapObjectSwooperEffectiveTargetArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -558,7 +558,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posPA = mapObj.GetPositionAngle();
                     if (posPA == null) return null;
-                    return (MapObject)new MapCustomPositionAngleArrowObject(posPA, anglePA);
+                    return (MapObject)new MapObjectCustomPositionAngleArrow(posPA, anglePA);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -590,7 +590,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapCurrentUnitObject(posAngle);
+                    return (MapObject)new MapObjectCurrentUnit(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -604,7 +604,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapAngleRangeObject(posAngle);
+                    return (MapObject)new MapObjectAngleRange(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -618,7 +618,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapSectorObject(posAngle);
+                    return (MapObject)new MapObjectSector(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -632,7 +632,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapFacingDividerObject(posAngle);
+                    return (MapObject)new MapObjectFacingDivider(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -647,7 +647,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapHomeLineObject(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectHomeLine(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -661,7 +661,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapPathObject(posAngle);
+                    return (MapObject)new MapObjectPath(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -675,7 +675,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    return (MapObject)new MapBranchPathObject(posAngle);
+                    return (MapObject)new MapObjectBranchPath(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -690,7 +690,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapCoffinBoxObject(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectCoffinBox(posAngle.GetObjAddress());
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -708,12 +708,12 @@ namespace STROOP.Map
                     PositionAngle chuckyaPosAngle = PositionAngle.Obj(address);
                     PositionAngle homePosAngle = PositionAngle.ObjHome(address);
 
-                    MapObject mapObjHome = new MapHomeObject(address);
-                    MapObject mapObjFacingArrow = new MapObjectFacingArrowObject(chuckyaPosAngle);
-                    MapObject mapObjSector = new MapSectorObject(chuckyaPosAngle);
-                    MapObject mapObjFacingDivider = new MapFacingDividerObject(chuckyaPosAngle);
-                    MapObject mapObjSphere = new MapCustomSphereObject(chuckyaPosAngle);
-                    MapObject mapObjCylinder = new MapCustomCylinderObject(homePosAngle);
+                    MapObject mapObjHome = new MapObjectHome(address);
+                    MapObject mapObjFacingArrow = new MapObjectObjectFacingArrow(chuckyaPosAngle);
+                    MapObject mapObjSector = new MapObjectSector(chuckyaPosAngle);
+                    MapObject mapObjFacingDivider = new MapObjectFacingDivider(chuckyaPosAngle);
+                    MapObject mapObjSphere = new MapObjectCustomSphere(chuckyaPosAngle);
+                    MapObject mapObjCylinder = new MapObjectCustomCylinder(homePosAngle);
 
                     mapObjFacingArrow.OutlineColor = Color.Green;
                     mapObjFacingArrow.Size = 3000;
@@ -775,12 +775,12 @@ namespace STROOP.Map
             return _mapObjectList.Contains(mapObject);
         }
 
-        public List<MapPathObject> GetMapPathObjects()
+        public List<MapObjectPath> GetMapPathObjects()
         {
-            List<MapPathObject> output = new List<MapPathObject>();
+            List<MapObjectPath> output = new List<MapObjectPath>();
             foreach (MapObject mapObj in _mapObjectList)
             {
-                if (mapObj is MapPathObject mapPathObj) output.Add(mapPathObj);
+                if (mapObj is MapObjectPath mapPathObj) output.Add(mapPathObj);
             }
             return output;
         }
