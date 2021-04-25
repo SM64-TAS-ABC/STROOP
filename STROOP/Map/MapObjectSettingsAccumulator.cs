@@ -43,7 +43,7 @@ namespace STROOP.Map
             foreach (string key in _dictionary.Keys)
             {
                 object value = _dictionary[key];
-                xElement.Add(new XAttribute(key, value));
+                xElement.Add(new XAttribute(key, value ?? ""));
             }
             return xElement;
         }
