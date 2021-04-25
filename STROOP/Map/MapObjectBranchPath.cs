@@ -39,6 +39,28 @@ namespace STROOP.Map
             OutlineColor = Color.Red;
         }
 
+        public MapObjectBranchPath(PositionAngle posAngle, List<(uint globalTimer, float x, float y, float z)> points) : this(posAngle)
+        {
+            foreach (var p in points)
+            {
+                _list.Add((p.globalTimer, p.x, p.y, p.z));
+            }
+        }
+
+        public static MapObjectBranchPath Create(PositionAngle posAngle, string pointString)
+        {
+            List<double?> doubleListNullable = ParsingUtilities.ParseDoubleList(pointString);
+            if (doubleListNullable.Any(d => !d.HasValue)) return null;
+            List<double> doubleList = doubleListNullable.ConvertAll(d => d.Value);
+            if (doubleList.Count % 4 != 0) return null;
+            List<(uint globalTimer, float x, float y, float z)> points = new List<(uint globalTimer, float x, float y, float z)>();
+            for (int i = 0; i < doubleList.Count; i += 4)
+            {
+                points.Add(((uint)doubleList[i], (float)doubleList[i + 1], (float)doubleList[i + 2], (float)doubleList[i + 3]));
+            }
+            return new MapObjectBranchPath(posAngle, points);
+        }
+
         private List<MapBranchPathObjectSegment> GetSegments()
         {
             uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
@@ -331,9 +353,12 @@ namespace STROOP.Map
 
         public override List<XAttribute> GetXAttributes()
         {
+            List<string> pointList = _list.ConvertAll(
+                p => string.Format("({0},{1},{2},{3})", p.globalTimer, (double)p.x, (double)p.y, (double)p.z));
             return new List<XAttribute>()
             {
                 new XAttribute("positionAngle", _posAngle),
+                new XAttribute("points", string.Join(",", pointList)),
             };
         }
     }
