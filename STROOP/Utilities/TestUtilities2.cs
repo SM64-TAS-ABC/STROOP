@@ -20,12 +20,18 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            MapObjectSettings settings = new MapObjectSettings(
-                changeTriangleWithinDist: true, newTriangleWithinDist: 100);
-            MapObjectSettingsAccumulator accumulator = new MapObjectSettingsAccumulator();
-            accumulator.ApplySettings(settings);
-            XElement xElement = accumulator.ToXElement();
-            MapObjectSettings output = MapObjectSettings.FromXElement(xElement);
+            MapObject mapObj = new MapMarioObject();
+            MapObjectSettings settings = new MapObjectSettings(changeTriangleWithinDist: true, newTriangleWithinDist: 100);
+            mapObj.ApplySettings(settings);
+            var xml = mapObj.ToXElement();
+            string s = xml.ToString();
+
+            //MapObjectSettings settings = new MapObjectSettings(
+            //    changeTriangleWithinDist: true, newTriangleWithinDist: 100);
+            //MapObjectSettingsAccumulator accumulator = new MapObjectSettingsAccumulator();
+            //accumulator.ApplySettings(settings);
+            //XElement xElement = accumulator.ToXElement();
+            //MapObjectSettings output = MapObjectSettings.FromXElement(xElement);
         }
     }
 } 

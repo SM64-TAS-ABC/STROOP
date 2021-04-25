@@ -12,6 +12,7 @@ using OpenTK;
 using System.Windows.Forms;
 using OpenTK.Graphics;
 using STROOP.Models;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -173,6 +174,14 @@ namespace STROOP.Map
             GetContextMenuStrip();
 
             _accumulator.ApplySettings(settings);
+        }
+
+        public XElement ToXElement()
+        {
+            XElement xElement = new XElement("MapObject");
+            xElement.Add(new XAttribute("type", GetType().Name));
+            xElement.Add(_accumulator.ToXElement());
+            return xElement;
         }
 
         protected MapTracker GetParentMapTracker()
