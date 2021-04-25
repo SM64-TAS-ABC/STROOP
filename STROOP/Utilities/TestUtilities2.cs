@@ -20,10 +20,15 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            MapObject mapObj = new MapMarioObject();
+            MapObject mapObj1 = new MapMarioObject();
             MapObjectSettings settings = new MapObjectSettings(changeTriangleWithinDist: true, newTriangleWithinDist: 100);
-            mapObj.ApplySettings(settings);
-            var xml = mapObj.ToXElement();
+            mapObj1.ApplySettings(settings);
+
+            MapObject mapObj2 = new MapHolpObject();
+
+            MapTracker mapTracker = new MapTracker(new List<MapObject>() { mapObj1, mapObj2 });
+
+            var xml = mapTracker.ToXElement();
             string s = xml.ToString();
 
             //MapObjectSettings settings = new MapObjectSettings(

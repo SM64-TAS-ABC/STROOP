@@ -1004,5 +1004,15 @@ namespace STROOP.Map
                 mapObj.NotifyMouseEvent(mouseEvent, isLeftButton, mouseX, mouseY);
             }
         }
+
+        public XElement ToXElement()
+        {
+            XElement xElement = new XElement("MapTracker");
+            foreach (MapObject mapObj in _mapObjectList)
+            {
+                xElement.Add(mapObj.ToXElement());
+            }
+            return xElement;
+        }
     }
 }
