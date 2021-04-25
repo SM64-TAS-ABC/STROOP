@@ -24,6 +24,10 @@ namespace STROOP.Map
         private bool _showQuarterSteps = true;
         private double _numFrames = 4;
 
+        private ToolStripMenuItem _itemUseColoredMarios;
+        private ToolStripMenuItem _itemShowQuarterSteps;
+        private ToolStripMenuItem _itemSetNumFrames;
+
         private static readonly string SET_NUM_FRAMES_TEXT = "Set Num Frames";
 
         public MapNextPositionsObject()
@@ -194,42 +198,68 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                ToolStripMenuItem itemUseColoredMarios = new ToolStripMenuItem("Use Colored Marios");
-                itemUseColoredMarios.Click += (sender, e) =>
+                _itemUseColoredMarios = new ToolStripMenuItem("Use Colored Marios");
+                _itemUseColoredMarios.Click += (sender, e) =>
                 {
-                    _useColoredMarios = !_useColoredMarios;
-                    itemUseColoredMarios.Checked = _useColoredMarios;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeNextPositionsUseColoredMarios: true, newNextPositionsUseColoredMarios: !_useColoredMarios);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
-                itemUseColoredMarios.Checked = _useColoredMarios;
+                _itemUseColoredMarios.Checked = _useColoredMarios;
 
-                ToolStripMenuItem itemShowQuarterSteps = new ToolStripMenuItem("Show Quarter Steps");
-                itemShowQuarterSteps.Click += (sender, e) =>
+                _itemShowQuarterSteps = new ToolStripMenuItem("Show Quarter Steps");
+                _itemShowQuarterSteps.Click += (sender, e) =>
                 {
-                    _showQuarterSteps = !_showQuarterSteps;
-                    itemShowQuarterSteps.Checked = _showQuarterSteps;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeShowQuarterSteps: true, newShowQuarterSteps: !_showQuarterSteps);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
-                itemShowQuarterSteps.Checked = _showQuarterSteps;
+                _itemShowQuarterSteps.Checked = _showQuarterSteps;
 
                 string suffix = string.Format(" ({0})", _numFrames);
-                ToolStripMenuItem itemSetNumFrames = new ToolStripMenuItem(SET_NUM_FRAMES_TEXT + suffix);
-                itemSetNumFrames.Click += (sender, e) =>
+                _itemSetNumFrames = new ToolStripMenuItem(SET_NUM_FRAMES_TEXT + suffix);
+                _itemSetNumFrames.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter num frames to the nearest 1/4th.");
                     double? numFramesNullable = ParsingUtilities.ParseDoubleNullable(text);
                     if (!numFramesNullable.HasValue) return;
                     double numFrames = numFramesNullable.Value;
-                    _numFrames = numFrames;
-                    string suffix2 = string.Format(" ({0})", _numFrames);
-                    itemSetNumFrames.Text = SET_NUM_FRAMES_TEXT + suffix2;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeNextPositionsNumFrames: true, newNextPositionsNumFrames: numFrames);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(itemUseColoredMarios);
-                _contextMenuStrip.Items.Add(itemShowQuarterSteps);
-                _contextMenuStrip.Items.Add(itemSetNumFrames);
+                _contextMenuStrip.Items.Add(_itemUseColoredMarios);
+                _contextMenuStrip.Items.Add(_itemShowQuarterSteps);
+                _contextMenuStrip.Items.Add(_itemSetNumFrames);
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeNextPositionsUseColoredMarios)
+            {
+                _useColoredMarios = settings.NewNextPositionsUseColoredMarios;
+                _itemUseColoredMarios.Checked = settings.NewNextPositionsUseColoredMarios;
+            }
+
+            if (settings.ChangeShowQuarterSteps)
+            {
+                _showQuarterSteps = settings.NewShowQuarterSteps;
+                _itemShowQuarterSteps.Checked = settings.NewShowQuarterSteps;
+            }
+
+            if (settings.ChangeNextPositionsNumFrames)
+            {
+                _numFrames = settings.NewNextPositionsNumFrames;
+                string suffix = string.Format(" ({0})", settings.NewNextPositionsNumFrames);
+                _itemSetNumFrames.Text = SET_NUM_FRAMES_TEXT + suffix;
+            }
         }
 
         public override bool ParticipatesInGlobalIconSize()

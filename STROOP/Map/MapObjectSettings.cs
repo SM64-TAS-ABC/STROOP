@@ -104,6 +104,12 @@
         public readonly bool ChangeLineSegmentBackwardsSize;
         public readonly float NewLineSegmentBackwardsSize;
 
+        public readonly bool ChangeNextPositionsUseColoredMarios;
+        public readonly bool NewNextPositionsUseColoredMarios;
+
+        public readonly bool ChangeNextPositionsNumFrames;
+        public readonly double NewNextPositionsNumFrames;
+
         public MapObjectSettings(
             bool changeCustomCylinderRelativeMinY = false,
             float newCustomCylinderRelativeMinY = 0,
@@ -205,7 +211,13 @@
             bool newLineSegmentUseFixedSize = false,
 
             bool changeLineSegmentBackwardsSize = false,
-            float newLineSegmentBackwardsSize = 0)
+            float newLineSegmentBackwardsSize = 0,
+
+            bool changeNextPositionsUseColoredMarios = false,
+            bool newNextPositionsUseColoredMarios = false,
+
+            bool changeNextPositionsNumFrames = false,
+            double newNextPositionsNumFrames = 0)
         {
             ChangeCustomCylinderRelativeMinY = changeCustomCylinderRelativeMinY;
             NewCustomCylinderRelativeMinY = newCustomCylinderRelativeMinY;
@@ -308,6 +320,12 @@
 
             ChangeLineSegmentBackwardsSize = changeLineSegmentBackwardsSize;
             NewLineSegmentBackwardsSize = newLineSegmentBackwardsSize;
+
+            ChangeNextPositionsUseColoredMarios = changeNextPositionsUseColoredMarios;
+            NewNextPositionsUseColoredMarios = newNextPositionsUseColoredMarios;
+
+            ChangeNextPositionsNumFrames = changeNextPositionsNumFrames;
+            NewNextPositionsNumFrames = newNextPositionsNumFrames;
         }
     }
 }
