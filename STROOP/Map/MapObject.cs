@@ -312,9 +312,9 @@ namespace STROOP.Map
                 case "MapObjectDrawDistanceSphere":
                     mapObject = new MapObjectDrawDistanceSphere(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
-                //case "MapObjectDrawing":
-                //    mapObject = new MapObjectDrawing();
-                //    break;
+                case "MapObjectDrawing":
+                    mapObject = MapObjectDrawing.Create(xElement.Attribute(XName.Get("points")).Value);
+                    break;
                 case "MapObjectEffectiveHitboxCylinder":
                     mapObject = new MapObjectEffectiveHitboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;

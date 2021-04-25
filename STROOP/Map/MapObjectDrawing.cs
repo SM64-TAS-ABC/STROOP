@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -32,6 +33,20 @@ namespace STROOP.Map
             _drawingEnabled = false;
 
             _mouseIsDown = false;
+        }
+
+        public MapObjectDrawing(List<(float x, float y, float z)> vertices) : this()
+        {
+            _vertices.AddRange(vertices);
+        }
+
+        public static MapObjectDrawing Create(string text)
+        {
+            List<(double x, double y, double z)> points = MapUtilities.ParsePoints(text, true);
+            if (points == null) return null;
+            List<(float x, float y, float z)> floatPoints = points.ConvertAll(
+                point => ((float)point.x, (float)point.y, (float)point.z));
+            return new MapObjectDrawing(floatPoints);
         }
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
@@ -107,6 +122,15 @@ namespace STROOP.Map
                 _drawingEnabled = false;
                 Config.MapManager.NotifyDrawingEnabledChange(_drawingEnabled);
             }
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            List<string> pointList = _vertices.ConvertAll(p => "(" + (double)p.x + "," + (double)p.y + "," + (double)p.z + ")");
+            return new List<XAttribute>()
+            {
+                new XAttribute("points", string.Join(",", pointList)),
+            };
         }
     }
 }

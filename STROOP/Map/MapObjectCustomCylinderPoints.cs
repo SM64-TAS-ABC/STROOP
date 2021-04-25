@@ -117,7 +117,7 @@ namespace STROOP.Map
 
         public override List<XAttribute> GetXAttributes()
         {
-            List<string> pointList = _points.ConvertAll(p => "(" + p.x + "," + p.y + "," + p.z + ")");
+            List<string> pointList = _points.ConvertAll(p => "(" + (double)p.x + "," + (double)p.y + "," + (double)p.z + ")");
             return new List<XAttribute>()
             {
                 new XAttribute("points", string.Join(",", pointList)),
