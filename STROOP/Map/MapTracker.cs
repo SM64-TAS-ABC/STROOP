@@ -1008,6 +1008,16 @@ namespace STROOP.Map
         public XElement ToXElement()
         {
             XElement xElement = new XElement("MapTracker");
+            xElement.Add(new XAttribute("size", _mapObjectList[0].Size));
+            xElement.Add(new XAttribute("opacity", _mapObjectList[0].OpacityPercent));
+            xElement.Add(new XAttribute("outlineWidth", _mapObjectList[0].OutlineWidth));
+            xElement.Add(new XAttribute("orderType", comboBoxOrderType.SelectedItem.ToString()));
+            xElement.Add(new XAttribute("visibilityType", comboBoxVisibilityType.SelectedItem.ToString()));
+            xElement.Add(new XAttribute("color", ColorUtilities.ConvertColorToParams(_mapObjectList[0].Color)));
+            xElement.Add(new XAttribute("outlineColor", ColorUtilities.ConvertColorToParams(_mapObjectList[0].OutlineColor)));
+            if (_mapObjectList[0].CustomRotates.HasValue) xElement.Add(new XAttribute("customRotates", _mapObjectList[0].CustomRotates));
+            xElement.Add(new XAttribute("showTriUnits", _mapObjectList[0].ShowTriUnits));
+            xElement.Add(new XAttribute("isVisible", _isVisible));
             foreach (MapObject mapObj in _mapObjectList)
             {
                 xElement.Add(mapObj.ToXElement());
