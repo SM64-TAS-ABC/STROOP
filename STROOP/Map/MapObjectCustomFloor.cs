@@ -12,6 +12,7 @@ using OpenTK;
 using System.Drawing.Imaging;
 using STROOP.Models;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -73,6 +74,15 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            List<string> hexList = _triAddressList.ConvertAll(triAddress => HexUtilities.FormatValue(triAddress));
+            return new List<XAttribute>()
+            {
+                new XAttribute("triangles", string.Join(",", hexList)),
+            };
         }
     }
 }

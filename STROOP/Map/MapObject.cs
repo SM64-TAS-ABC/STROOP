@@ -271,18 +271,18 @@ namespace STROOP.Map
                 case "MapObjectCustomBackground":
                     mapObject = new MapObjectCustomBackground();
                     break;
-                //case "MapObjectCustomCeiling":
-                //    mapObject = new MapObjectCustomCeiling();
-                //    break;
+                case "MapObjectCustomCeiling":
+                    mapObject = MapObjectCustomCeiling.Create(xElement.Attribute(XName.Get("triangles")).Value);
+                    break;
                 case "MapObjectCustomCylinder":
                     mapObject = new MapObjectCustomCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 //case "MapObjectCustomCylinderPoints":
                 //    mapObject = new MapObjectCustomCylinderPoints();
                 //    break;
-                //case "MapObjectCustomFloor":
-                //    mapObject = new MapObjectCustomFloor();
-                //    break;
+                case "MapObjectCustomFloor":
+                    mapObject = MapObjectCustomFloor.Create(xElement.Attribute(XName.Get("triangles")).Value);
+                    break;
                 case "MapObjectCustomGridlines":
                     mapObject = new MapObjectCustomGridlines();
                     break;
@@ -306,9 +306,9 @@ namespace STROOP.Map
                 //case "MapObjectCustomUnitPoints":
                 //    mapObject = new MapObjectCustomUnitPoints();
                 //    break;
-                //case "MapObjectCustomWall":
-                //    mapObject = new MapObjectCustomWall();
-                //    break;
+                case "MapObjectCustomWall":
+                    mapObject = MapObjectCustomWall.Create(xElement.Attribute(XName.Get("triangles")).Value);
+                    break;
                 case "MapObjectDrawDistanceSphere":
                     mapObject = new MapObjectDrawDistanceSphere(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
