@@ -235,18 +235,18 @@ namespace STROOP.Map
                 case "MapObjectAngleRange":
                     mapObject = new MapObjectAngleRange(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
-                //case "MapObjectBranchPath":
-                //    mapObject = new MapObjectBranchPath();
-                //    break;
-                //case "MapObjectCamera":
-                //    mapObject = new MapObjectCamera();
-                //    break;
-                //case "MapObjectCellGridlines":
-                //    mapObject = new MapObjectCellGridlines();
-                //    break;
-                //case "MapObjectCoffinBox":
-                //    mapObject = new MapObjectCoffinBox();
-                //    break;
+                case "MapObjectBranchPath":
+                    mapObject = new MapObjectBranchPath(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectCamera":
+                    mapObject = new MapObjectCamera();
+                    break;
+                case "MapObjectCellGridlines":
+                    mapObject = new MapObjectCellGridlines();
+                    break;
+                case "MapObjectCoffinBox":
+                    mapObject = new MapObjectCoffinBox(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    break;
                 //case "MapObjectCompass":
                 //    mapObject = new MapObjectCompass();
                 //    break;

@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
 using STROOP.Map.Map3D;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -326,6 +327,14 @@ namespace STROOP.Map
                 EndY = endY;
                 EndZ = endZ;
             }
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            return new List<XAttribute>()
+            {
+                new XAttribute("positionAngle", _posAngle),
+            };
         }
     }
 }

@@ -9,6 +9,7 @@ using STROOP.Utilities;
 using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -65,6 +66,14 @@ namespace STROOP.Map
         public override PositionAngle GetPositionAngle()
         {
             return _objPosAngle;
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            return new List<XAttribute>()
+            {
+                new XAttribute("objectAddress", HexUtilities.FormatValue(_objPosAngle.GetObjAddress())),
+            };
         }
     }
 }
