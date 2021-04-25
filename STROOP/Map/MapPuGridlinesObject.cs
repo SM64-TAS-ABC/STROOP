@@ -317,7 +317,12 @@ namespace STROOP.Map
             {
                 List<string> itemNames = new List<string>() { "Setting 1", "Setting 2", "Setting 3" };
                 List<PuGridlineSetting> itemValues = EnumUtilities.GetEnumValues<PuGridlineSetting>(typeof(PuGridlineSetting));
-                Action<PuGridlineSetting> setterAction = (PuGridlineSetting setting) => _setting = setting;
+                Action<PuGridlineSetting> setterAction = (PuGridlineSetting setting) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changePuGridlinesSetting: true, newPuGridlinesSetting: setting.ToString());
+                    GetParentMapTracker().ApplySettings(settings);
+                };
                 PuGridlineSetting startingValue = _setting;
                 (List<ToolStripMenuItem> itemList, Action<PuGridlineSetting> valueAction) =
                     ControlUtilities.CreateCheckableItems(
@@ -327,6 +332,16 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangePuGridlinesSetting)
+            {
+                _setting = (PuGridlineSetting)Enum.Parse(typeof(PuGridlineSetting), settings.NewPuGridlinesSetting);
+            }
         }
     }
 }

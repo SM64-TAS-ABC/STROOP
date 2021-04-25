@@ -110,6 +110,9 @@
         public readonly bool ChangeNextPositionsNumFrames;
         public readonly double NewNextPositionsNumFrames;
 
+        public readonly bool ChangePuGridlinesSetting;
+        public readonly string NewPuGridlinesSetting;
+
         public MapObjectSettings(
             bool changeCustomCylinderRelativeMinY = false,
             float newCustomCylinderRelativeMinY = 0,
@@ -217,7 +220,10 @@
             bool newNextPositionsUseColoredMarios = false,
 
             bool changeNextPositionsNumFrames = false,
-            double newNextPositionsNumFrames = 0)
+            double newNextPositionsNumFrames = 0,
+
+            bool changePuGridlinesSetting = false,
+            string newPuGridlinesSetting = null)
         {
             ChangeCustomCylinderRelativeMinY = changeCustomCylinderRelativeMinY;
             NewCustomCylinderRelativeMinY = newCustomCylinderRelativeMinY;
@@ -326,6 +332,9 @@
 
             ChangeNextPositionsNumFrames = changeNextPositionsNumFrames;
             NewNextPositionsNumFrames = newNextPositionsNumFrames;
+
+            ChangePuGridlinesSetting = changePuGridlinesSetting;
+            NewPuGridlinesSetting = newPuGridlinesSetting;
         }
     }
 }
