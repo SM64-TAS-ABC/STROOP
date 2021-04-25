@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Utilities
 {
@@ -19,7 +20,12 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            
+            MapObjectSettings settings = new MapObjectSettings(
+                changeTriangleWithinDist: true, newTriangleWithinDist: 100);
+            MapObjectSettingsAccumulator accumulator = new MapObjectSettingsAccumulator();
+            accumulator.ApplySettings(settings);
+            XElement xElement = accumulator.ToXElement();
+            MapObjectSettings output = MapObjectSettings.FromXElement(xElement);
         }
     }
 } 

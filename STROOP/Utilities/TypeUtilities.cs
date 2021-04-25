@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -269,6 +270,16 @@ namespace STROOP.Structs
             {
                 return null;
             }
+        }
+
+        public static object GetDefault(Type t)
+        {
+            return typeof(TypeUtilities).GetMethod("GetDefaultGeneric").MakeGenericMethod(t).Invoke(null, null);
+        }
+
+        public static T GetDefaultGeneric<T>()
+        {
+            return default(T);
         }
     }
 }

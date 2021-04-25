@@ -264,14 +264,15 @@ namespace STROOP.Utilities
             {
                 obj = ParseHexNullable(obj);
             }
-            if (type == typeof(byte)) return ParseByteNullable(obj);
-            if (type == typeof(sbyte)) return ParseSByteNullable(obj);
-            if (type == typeof(short)) return ParseShortNullable(obj);
-            if (type == typeof(ushort)) return ParseUShortNullable(obj);
-            if (type == typeof(int)) return ParseIntNullable(obj);
-            if (type == typeof(uint)) return ParseUIntNullable(obj);
-            if (type == typeof(float)) return ParseFloatNullable(obj);
-            if (type == typeof(double)) return ParseDoubleNullable(obj);
+            if (type == typeof(byte) || type == typeof(byte?)) return ParseByteNullable(obj);
+            if (type == typeof(sbyte) || type == typeof(sbyte?)) return ParseSByteNullable(obj);
+            if (type == typeof(short) || type == typeof(short?)) return ParseShortNullable(obj);
+            if (type == typeof(ushort) || type == typeof(ushort?)) return ParseUShortNullable(obj);
+            if (type == typeof(int) || type == typeof(int?)) return ParseIntNullable(obj);
+            if (type == typeof(uint) || type == typeof(uint?)) return ParseUIntNullable(obj);
+            if (type == typeof(float) || type == typeof(float?)) return ParseFloatNullable(obj);
+            if (type == typeof(double) || type == typeof(double?)) return ParseDoubleNullable(obj);
+            if (type == typeof(bool) || type == typeof(bool?)) return ParseBoolNullable(obj);
             return null;
         }
 

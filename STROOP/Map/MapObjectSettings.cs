@@ -1,4 +1,12 @@
-﻿namespace STROOP.Map
+﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
+using STROOP.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Xml.Linq;
+
+namespace STROOP.Map
 {
     public class MapObjectSettings
     {
@@ -335,6 +343,28 @@
 
             ChangePuGridlinesSetting = changePuGridlinesSetting;
             NewPuGridlinesSetting = newPuGridlinesSetting;
+        }
+
+        public static MapObjectSettings FromXElement(XElement xElement)
+        {
+            FieldInfo[] fieldInfoArray = typeof(MapObjectSettings).GetFields();
+            List<FieldInfo> fieldInfoList = new List<FieldInfo>(fieldInfoArray);
+            List<Type> typeList = fieldInfoList.ConvertAll(fieldInfo => fieldInfo.FieldType);
+            Type[] typeArray = typeList.ToArray();
+            ConstructorInfo constructorInfo = typeof(MapObjectSettings).GetConstructor(typeArray);
+
+            List<object> inputList = new List<object>();
+            foreach (FieldInfo fieldInfo in fieldInfoArray)
+            {
+                XAttribute attribute = xElement.Attribute(XName.Get(fieldInfo.Name));
+                object input = attribute == null ?
+                    TypeUtilities.GetDefault(fieldInfo.FieldType) :
+                    ParsingUtilities.ParseValueNullable(attribute.Value, fieldInfo.FieldType);
+                inputList.Add(input);
+            }
+            object[] inputArray = inputList.ToArray();
+
+            return (MapObjectSettings)constructorInfo.Invoke(inputArray);
         }
     }
 }
