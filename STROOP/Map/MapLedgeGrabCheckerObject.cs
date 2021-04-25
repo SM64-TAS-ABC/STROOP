@@ -17,6 +17,8 @@ namespace STROOP.Map
     {
         private uint? _customWallTri;
 
+        private ToolStripMenuItem _itemSetCustomWallTriangle;
+
         private static readonly string SET_CUSTOM_WALL_TRIANGLE_TEXT = "Set Custom Wall Triangle";
 
         public MapLedgeGrabCheckerObject()
@@ -56,31 +58,44 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                ToolStripMenuItem itemSetCustomWallTriangle = new ToolStripMenuItem(SET_CUSTOM_WALL_TRIANGLE_TEXT);
-                itemSetCustomWallTriangle.Click += (sender, e) =>
+                _itemSetCustomWallTriangle = new ToolStripMenuItem(SET_CUSTOM_WALL_TRIANGLE_TEXT);
+                _itemSetCustomWallTriangle.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter wall triangle as hex uint.");
                     uint? wallTriangleNullable = ParsingUtilities.ParseHexNullable(text);
                     if (!wallTriangleNullable.HasValue) return;
                     uint wallTriangle = wallTriangleNullable.Value;
-                    _customWallTri = wallTriangle;
-                    string suffix = string.Format(" ({0})", HexUtilities.FormatValue(_customWallTri.Value));
-                    itemSetCustomWallTriangle.Text = SET_CUSTOM_WALL_TRIANGLE_TEXT + suffix;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeTriangle: true, newTriangle: wallTriangle);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
 
                 ToolStripMenuItem itemClearCustomWallTriangle = new ToolStripMenuItem("Clear Custom Wall Triangle");
                 itemClearCustomWallTriangle.Click += (sender, e) =>
                 {
-                    _customWallTri = null;
-                    itemSetCustomWallTriangle.Text = SET_CUSTOM_WALL_TRIANGLE_TEXT;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeTriangle: true, newTriangle: null);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(itemSetCustomWallTriangle);
+                _contextMenuStrip.Items.Add(_itemSetCustomWallTriangle);
                 _contextMenuStrip.Items.Add(itemClearCustomWallTriangle);
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeTriangle)
+            {
+                _customWallTri = settings.NewTriangle;
+                string suffix = _customWallTri.HasValue ? string.Format(" ({0})", HexUtilities.FormatValue(_customWallTri)) : "";
+                _itemSetCustomWallTriangle.Text = SET_CUSTOM_WALL_TRIANGLE_TEXT + suffix;
+            }
         }
 
         public override string GetName()

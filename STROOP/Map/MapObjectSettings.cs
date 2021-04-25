@@ -95,6 +95,9 @@
         public readonly bool ChangeShowQuarterSteps;
         public readonly bool NewShowQuarterSteps;
 
+        public readonly bool ChangeTriangle;
+        public readonly uint? NewTriangle;
+
         public MapObjectSettings(
             bool changeCustomCylinderRelativeMinY = false,
             float newCustomCylinderRelativeMinY = 0,
@@ -187,7 +190,10 @@
             bool newIwerlipseLockPositions = false,
 
             bool changeShowQuarterSteps = false,
-            bool newShowQuarterSteps = false)
+            bool newShowQuarterSteps = false,
+
+            bool changeTriangle = false,
+            uint? newTriangle = null)
         {
             ChangeCustomCylinderRelativeMinY = changeCustomCylinderRelativeMinY;
             NewCustomCylinderRelativeMinY = newCustomCylinderRelativeMinY;
@@ -281,6 +287,9 @@
 
             ChangeShowQuarterSteps = changeShowQuarterSteps;
             NewShowQuarterSteps = newShowQuarterSteps;
+
+            ChangeTriangle = changeTriangle;
+            NewTriangle = newTriangle;
         }
     }
 }
