@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
 using STROOP.Map.Map3D;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -63,6 +64,28 @@ namespace STROOP.Map
             OutlineWidth = 3;
             Color = Color.Yellow;
             OutlineColor = Color.Red;
+        }
+
+        public MapObjectPath(PositionAngle posAngle, List<(uint globalTimer, float x, float y, float z)> points) : this(posAngle)
+        {
+            foreach (var p in points)
+            {
+                _dictionary[p.globalTimer] = (p.x, p.y, p.z);
+            }
+        }
+
+        public static MapObjectPath Create(PositionAngle posAngle, string pointString)
+        {
+            List<double?> doubleListNullable = ParsingUtilities.ParseDoubleList(pointString);
+            if (doubleListNullable.Any(d => !d.HasValue)) return null;
+            List<double> doubleList = doubleListNullable.ConvertAll(d => d.Value);
+            if (doubleList.Count % 4 != 0) return null;
+            List<(uint globalTimer, float x, float y, float z)> points = new List<(uint globalTimer, float x, float y, float z)>();
+            for (int i = 0; i < doubleList.Count; i += 4)
+            {
+                points.Add(((uint)doubleList[i], (float)doubleList[i + 1], (float)doubleList[i + 2], (float)doubleList[i + 3]));
+            }
+            return new MapObjectPath(posAngle, points);
         }
 
         private List<(float x, float y, float z)> GetDictionaryValues()
@@ -624,6 +647,21 @@ namespace STROOP.Map
         public override PositionAngle GetPositionAngle()
         {
             return _posAngle;
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            List<string> pointList = new List<string>();
+            foreach (uint key in _dictionary.Keys)
+            {
+                (float x, float y, float z) = _dictionary[key];
+                pointList.Add(string.Format("({0},{1},{2},{3})", key, (double)x, (double)y, (double)z));
+            }
+            return new List<XAttribute>()
+            {
+                new XAttribute("positionAngle", _posAngle),
+                new XAttribute("points", string.Join(",", pointList)),
+            };
         }
     }
 }
