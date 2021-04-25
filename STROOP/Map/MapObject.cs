@@ -211,7 +211,7 @@ namespace STROOP.Map
             return xElement;
         }
 
-        public MapObject FromXElement(XElement xElement)
+        public static MapObject FromXElement(XElement xElement)
         {
             string type = xElement.Attribute(XName.Get("type")).Value;
             switch (type)

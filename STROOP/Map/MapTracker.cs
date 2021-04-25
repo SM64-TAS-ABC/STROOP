@@ -1024,5 +1024,19 @@ namespace STROOP.Map
             }
             return xElement;
         }
+
+        public static MapTracker FromXElement(XElement xElement)
+        {
+            List<XElement> subElements = xElement.Descendants().ToList();
+            List<MapObject> mapObjs = subElements.ConvertAll(el => MapObject.FromXElement(el));
+            MapTracker tracker = new MapTracker(mapObjs);
+            tracker.SetSize(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("size"))?.Value));
+            tracker.SetOpacity(ParsingUtilities.ParseIntNullable(xElement.Attribute(XName.Get("opacity"))?.Value));
+            tracker.SetOutlineWidth(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("outlineWidth"))?.Value));
+
+
+
+            return tracker;
+        }
     }
 }
