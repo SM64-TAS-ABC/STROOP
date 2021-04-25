@@ -15,12 +15,12 @@ namespace STROOP.Map
 {
     public class MapObjectCoffinBox : MapObjectLine
     {
-        private readonly PositionAngle _objPosAngle;
+        private readonly PositionAngle _posAngle;
 
-        public MapObjectCoffinBox(uint objAddress)
+        public MapObjectCoffinBox(PositionAngle posAngle)
             : base()
         {
-            _objPosAngle = PositionAngle.Obj(objAddress);
+            _posAngle = posAngle;
 
             OutlineWidth = 3;
             OutlineColor = Color.Pink;
@@ -28,7 +28,7 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
-            (double x, double y, double z, double angle) = _objPosAngle.GetValues();
+            (double x, double y, double z, double angle) = _posAngle.GetValues();
             (double frontCenterX, double frontCenterZ) = MoreMath.AddVectorToPoint(150, angle, x, z);
             (double backCenterX, double backCenterZ) = MoreMath.AddVectorToPoint(-450, angle, x, z);
             (double frontLeftX, double frontLeftZ) = MoreMath.AddVectorToPoint(140, angle + 16384, frontCenterX, frontCenterZ);
@@ -65,14 +65,14 @@ namespace STROOP.Map
 
         public override PositionAngle GetPositionAngle()
         {
-            return _objPosAngle;
+            return _posAngle;
         }
 
         public override List<XAttribute> GetXAttributes()
         {
             return new List<XAttribute>()
             {
-                new XAttribute("objectAddress", HexUtilities.FormatValue(_objPosAngle.GetObjAddress())),
+                new XAttribute("positionAngle", _posAngle),
             };
         }
     }

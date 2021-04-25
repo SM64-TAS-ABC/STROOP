@@ -245,7 +245,7 @@ namespace STROOP.Map
                     mapObject = new MapObjectCellGridlines();
                     break;
                 case "MapObjectCoffinBox":
-                    mapObject = new MapObjectCoffinBox(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    mapObject = new MapObjectCoffinBox(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectCompass":
                     mapObject = new MapObjectCompass();
@@ -340,7 +340,7 @@ namespace STROOP.Map
                     mapObject = new MapObjectHolp();
                     break;
                 case "MapObjectHome":
-                    mapObject = new MapObjectHome(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    mapObject = new MapObjectHome(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectHomeLine":
                     mapObject = new MapObjectHomeLine(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
