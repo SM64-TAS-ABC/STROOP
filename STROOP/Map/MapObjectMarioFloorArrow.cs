@@ -42,5 +42,13 @@ namespace STROOP.Map
         {
             return "Mario Floor Arrow";
         }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            return new List<XAttribute>()
+            {
+                new XAttribute("positionAngle", _posAngle),
+            };
+        }
     }
 }

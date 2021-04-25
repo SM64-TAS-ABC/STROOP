@@ -330,75 +330,77 @@ namespace STROOP.Map
                 case "MapObjectGhost":
                     mapObject = new MapObjectGhost();
                     break;
-                //case "MapObjectHitboxCylinder":
-                //    mapObject = new MapObjectHitboxCylinder();
-                //    break;
-                //case "MapObjectHitboxHackTriangle":
-                //    mapObject = new MapObjectHitboxHackTriangle();
-                //    break;
-                //case "MapObjectHolp":
-                //    mapObject = new MapObjectHolp();
-                //    break;
-                //case "MapObjectHome":
-                //    mapObject = new MapObjectHome();
-                //    break;
-                //case "MapObjectHomeLine":
-                //    mapObject = new MapObjectHomeLine();
-                //    break;
-                //case "MapObjectHurtboxCylinder":
-                //    mapObject = new MapObjectHurtboxCylinder();
-                //    break;
-                //case "MapObjectIwerlipses":
-                //    mapObject = new MapObjectIwerlipses();
-                //    break;
-                //case "MapObjectLedgeGrabChecker":
-                //    mapObject = new MapObjectLedgeGrabChecker();
-                //    break;
-                //case "MapObjectLevelCeiling":
-                //    mapObject = new MapObjectLevelCeiling();
-                //    break;
-                //case "MapObjectLevelFloor":
-                //    mapObject = new MapObjectLevelFloor();
-                //    break;
-                //case "MapObjectLevelWall":
-                //    mapObject = new MapObjectLevelWall();
-                //    break;
-                //case "MapObjectLineSegment":
-                //    mapObject = new MapObjectLineSegment();
-                //    break;
-                //case "MapObjectMario":
-                //    mapObject = new MapObjectMario();
-                //    break;
-                //case "MapObjectMarioCeiling":
-                //    mapObject = new MapObjectMarioCeiling();
-                //    break;
-                //case "MapObjectMarioFacingArrow":
-                //    mapObject = new MapObjectMarioFacingArrow();
-                //    break;
-                //case "MapObjectMarioFloor":
-                //    mapObject = new MapObjectMarioFloor();
-                //    break;
-                //case "MapObjectMarioFloorArrow":
-                //    mapObject = new MapObjectMarioFloorArrow();
-                //    break;
-                //case "MapObjectMarioIntendedArrow":
-                //    mapObject = new MapObjectMarioIntendedArrow();
-                //    break;
-                //case "MapObjectMarioMovingArrow":
-                //    mapObject = new MapObjectMarioMovingArrow();
-                //    break;
-                //case "MapObjectMarioSlidingArrow":
-                //    mapObject = new MapObjectMarioSlidingArrow();
-                //    break;
-                //case "MapObjectMarioTwirlArrow":
-                //    mapObject = new MapObjectMarioTwirlArrow();
-                //    break;
-                //case "MapObjectMarioWall":
-                //    mapObject = new MapObjectMarioWall();
-                //    break;
-                //case "MapObjectNextPositions":
-                //    mapObject = new MapObjectNextPositions();
-                //    break;
+                case "MapObjectHitboxCylinder":
+                    mapObject = new MapObjectHitboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectHitboxHackTriangle":
+                    mapObject = new MapObjectHitboxHackTriangle(false);
+                    break;
+                case "MapObjectHolp":
+                    mapObject = new MapObjectHolp();
+                    break;
+                case "MapObjectHome":
+                    mapObject = new MapObjectHome(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    break;
+                case "MapObjectHomeLine":
+                    mapObject = new MapObjectHomeLine(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    break;
+                case "MapObjectHurtboxCylinder":
+                    mapObject = new MapObjectHurtboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectIwerlipses":
+                    mapObject = new MapObjectIwerlipses();
+                    break;
+                case "MapObjectLedgeGrabChecker":
+                    mapObject = new MapObjectLedgeGrabChecker();
+                    break;
+                case "MapObjectLevelCeiling":
+                    mapObject = new MapObjectLevelCeiling();
+                    break;
+                case "MapObjectLevelFloor":
+                    mapObject = new MapObjectLevelFloor();
+                    break;
+                case "MapObjectLevelWall":
+                    mapObject = new MapObjectLevelWall();
+                    break;
+                case "MapObjectLineSegment":
+                    mapObject = new MapObjectLineSegment(
+                        PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle1")).Value),
+                        PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle2")).Value));
+                    break;
+                case "MapObjectMario":
+                    mapObject = new MapObjectMario();
+                    break;
+                case "MapObjectMarioCeiling":
+                    mapObject = new MapObjectMarioCeiling();
+                    break;
+                case "MapObjectMarioFacingArrow":
+                    mapObject = new MapObjectMarioFacingArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectMarioFloor":
+                    mapObject = new MapObjectMarioFloor();
+                    break;
+                case "MapObjectMarioFloorArrow":
+                    mapObject = new MapObjectMarioFloorArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectMarioIntendedArrow":
+                    mapObject = new MapObjectMarioIntendedArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectMarioMovingArrow":
+                    mapObject = new MapObjectMarioMovingArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectMarioSlidingArrow":
+                    mapObject = new MapObjectMarioSlidingArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectMarioTwirlArrow":
+                    mapObject = new MapObjectMarioTwirlArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectMarioWall":
+                    mapObject = new MapObjectMarioWall();
+                    break;
+                case "MapObjectNextPositions":
+                    mapObject = new MapObjectNextPositions();
+                    break;
                 //case "MapObjectObject":
                 //    mapObject = new MapObjectObject();
                 //    break;
