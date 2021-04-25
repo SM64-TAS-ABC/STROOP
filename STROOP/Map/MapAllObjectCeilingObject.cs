@@ -21,6 +21,8 @@ namespace STROOP.Map
         private readonly List<TriangleDataModel> _tris;
         private bool _autoUpdate;
 
+        private ToolStripMenuItem _itemAutoUpdate;
+
         public MapAllObjectCeilingObject()
             : base()
         {
@@ -38,16 +40,17 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                ToolStripMenuItem itemAutoUpdate = new ToolStripMenuItem("Auto Update");
-                itemAutoUpdate.Click += (sender, e) =>
+                _itemAutoUpdate = new ToolStripMenuItem("Auto Update");
+                _itemAutoUpdate.Click += (sender, e) =>
                 {
-                    _autoUpdate = !_autoUpdate;
-                    itemAutoUpdate.Checked = _autoUpdate;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeAutoUpdate: true, newAutoUpdate: !_autoUpdate);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
-                itemAutoUpdate.Checked = _autoUpdate;
+                _itemAutoUpdate.Checked = _autoUpdate;
 
                 _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(itemAutoUpdate);
+                _contextMenuStrip.Items.Add(_itemAutoUpdate);
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetHorizontalTriangleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
@@ -55,6 +58,15 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            if (settings.ChangeAutoUpdate)
+            {
+                _autoUpdate = settings.NewAutoUpdate;
+                _itemAutoUpdate.Checked = settings.NewAutoUpdate;
+            }
         }
 
         public override void Update()
