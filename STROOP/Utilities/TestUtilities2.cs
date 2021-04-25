@@ -20,7 +20,15 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            XDocument doc = Config.MapGui.flowLayoutPanelMapTrackers.ToXDocument();
+            foreach (string mapObjName in mapObjNames)
+            {
+                Config.Print("case \"{0}\":", mapObjName);
+                Config.Print("    return new {0}();", mapObjName);
+            }
+
+
+
+            //XDocument doc = Config.MapGui.flowLayoutPanelMapTrackers.ToXDocument();
 
             //MapObject mapObj1 = new MapMarioObject();
             //MapObjectSettings settings = new MapObjectSettings(changeTriangleWithinDist: true, newTriangleWithinDist: 100);
@@ -40,5 +48,91 @@ namespace STROOP.Utilities
             //XElement xElement = accumulator.ToXElement();
             //MapObjectSettings output = MapObjectSettings.FromXElement(xElement);
         }
+
+        private static List<string> mapObjNames = new List<string>()
+        {
+            "MapObjectAggregatedPath",
+            "MapObjectAllObjectCeiling",
+            "MapObjectAllObjectFloor",
+            "MapObjectAllObjectsWithName",
+            "MapObjectAllObjectWall",
+            "MapObjectAngleRange",
+            "MapObjectBranchPath",
+            "MapObjectCamera",
+            "MapObjectCellGridlines",
+            "MapObjectCoffinBox",
+            "MapObjectCompass",
+            "MapObjectCoordinateLabels",
+            "MapObjectCUpFloor",
+            "MapObjectCurrentBackground",
+            "MapObjectCurrentCell",
+            "MapObjectCurrentMap",
+            "MapObjectCurrentUnit",
+            "MapObjectCustomBackground",
+            "MapObjectCustomCeiling",
+            "MapObjectCustomCylinder",
+            "MapObjectCustomCylinderPoints",
+            "MapObjectCustomFloor",
+            "MapObjectCustomGridlines",
+            "MapObjectCustomMap",
+            "MapObjectCustomPositionAngle",
+            "MapObjectCustomPositionAngleArrow",
+            "MapObjectCustomSphere",
+            "MapObjectCustomSpherePoints",
+            "MapObjectCustomUnitPoints",
+            "MapObjectCustomWall",
+            "MapObjectDrawDistanceSphere",
+            "MapObjectDrawing",
+            "MapObjectEffectiveHitboxCylinder",
+            "MapObjectEffectiveHurtboxCylinder",
+            "MapObjectFacingDivider",
+            "MapObjectFloatGridlines",
+            "MapObjectGhost",
+            "MapObjectHitboxCylinder",
+            "MapObjectHitboxHackTriangle",
+            "MapObjectHolp",
+            "MapObjectHome",
+            "MapObjectHomeLine",
+            "MapObjectHurtboxCylinder",
+            "MapObjectIwerlipses",
+            "MapObjectLedgeGrabChecker",
+            "MapObjectLevelCeiling",
+            "MapObjectLevelFloor",
+            "MapObjectLevelWall",
+            "MapObjectLineSegment",
+            "MapObjectMario",
+            "MapObjectMarioCeiling",
+            "MapObjectMarioFacingArrow",
+            "MapObjectMarioFloor",
+            "MapObjectMarioFloorArrow",
+            "MapObjectMarioIntendedArrow",
+            "MapObjectMarioMovingArrow",
+            "MapObjectMarioSlidingArrow",
+            "MapObjectMarioTwirlArrow",
+            "MapObjectMarioWall",
+            "MapObjectNextPositions",
+            "MapObjectObject",
+            "MapObjectObjectAngleToMarioArrow",
+            "MapObjectObjectCeiling",
+            "MapObjectObjectCustomArrow",
+            "MapObjectObjectFacingArrow",
+            "MapObjectObjectFloor",
+            "MapObjectObjectGraphicsArrow",
+            "MapObjectObjectMovingArrow",
+            "MapObjectObjectWall",
+            "MapObjectPath",
+            "MapObjectPoint",
+            "MapObjectPreviousPositions",
+            "MapObjectPuGridlines",
+            "MapObjectPunchDetector",
+            "MapObjectPunchFloor",
+            "MapObjectPushHitboxCylinder",
+            "MapObjectSector",
+            "MapObjectSelf",
+            "MapObjectSwooperEffectiveTargetArrow",
+            "MapObjectTangibilitySphere",
+            "MapObjectUnitGridlines",
+            "MapObjectWaters",
+        };
     }
 } 
