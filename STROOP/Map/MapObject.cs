@@ -176,14 +176,6 @@ namespace STROOP.Map
             _accumulator.ApplySettings(settings);
         }
 
-        public XElement ToXElement()
-        {
-            XElement xElement = new XElement("MapObject");
-            xElement.Add(new XAttribute("type", GetType().Name));
-            xElement.Add(_accumulator.ToXElement());
-            return xElement;
-        }
-
         protected MapTracker GetParentMapTracker()
         {
             foreach (MapTracker mapTracker in Config.MapGui.flowLayoutPanelMapTrackers.Controls)
@@ -201,19 +193,37 @@ namespace STROOP.Map
         {
         }
 
+        public virtual List<XAttribute> GetXAttributes()
+        {
+            return new List<XAttribute>();
+        }
+
+        public XElement ToXElement()
+        {
+            XElement xElement = new XElement("MapObject");
+            xElement.Add(new XAttribute("type", GetType().Name));
+            List<XAttribute> xAttributes = GetXAttributes();
+            foreach (XAttribute xAttribute in xAttributes)
+            {
+                xElement.Add(xAttribute);
+            }
+            xElement.Add(_accumulator.ToXElement());
+            return xElement;
+        }
+
         public MapObject FromXElement(XElement xElement)
         {
             string type = xElement.Attribute(XName.Get("type")).Value;
             switch (type)
             {
-                //case "MapObjectAggregatedPath":
-                //    return new MapObjectAggregatedPath();
-                //case "MapObjectAllObjectCeiling":
-                //    return new MapObjectAllObjectCeiling();
-                //case "MapObjectAllObjectFloor":
-                //    return new MapObjectAllObjectFloor();
-                //case "MapObjectAllObjectsWithName":
-                //    return new MapObjectAllObjectsWithName();
+                case "MapObjectAggregatedPath":
+                    return new MapObjectAggregatedPath();
+                case "MapObjectAllObjectCeiling":
+                    return new MapObjectAllObjectCeiling();
+                case "MapObjectAllObjectFloor":
+                    return new MapObjectAllObjectFloor();
+                case "MapObjectAllObjectsWithName":
+                    return MapObjectAllObjectsWithName.Create(xElement.Attribute(XName.Get("objectName")).Value);
                 //case "MapObjectAllObjectWall":
                 //    return new MapObjectAllObjectWall();
                 //case "MapObjectAngleRange":

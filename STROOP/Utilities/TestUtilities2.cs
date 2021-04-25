@@ -20,15 +20,13 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            foreach (string mapObjName in mapObjNames)
-            {
-                Config.Print("case \"{0}\":", mapObjName);
-                Config.Print("    return new {0}();", mapObjName);
-            }
+            XDocument doc = Config.MapGui.flowLayoutPanelMapTrackers.ToXDocument();
 
-
-
-            //XDocument doc = Config.MapGui.flowLayoutPanelMapTrackers.ToXDocument();
+            //foreach (string mapObjName in mapObjNames)
+            //{
+            //    Config.Print("case \"{0}\":", mapObjName);
+            //    Config.Print("    return new {0}();", mapObjName);
+            //}
 
             //MapObject mapObj1 = new MapMarioObject();
             //MapObjectSettings settings = new MapObjectSettings(changeTriangleWithinDist: true, newTriangleWithinDist: 100);

@@ -12,6 +12,7 @@ using OpenTK;
 using System.Windows.Forms;
 using STROOP.Map.Map3D;
 using STROOP.Models;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -148,6 +149,14 @@ namespace STROOP.Map
         public override MapDrawType GetDrawType()
         {
             return MapDrawType.Overlay;
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            return new List<XAttribute>()
+            {
+                new XAttribute("objectName", _objName),
+            };
         }
     }
 }
