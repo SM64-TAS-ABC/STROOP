@@ -10,6 +10,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using STROOP.Models;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -52,6 +53,14 @@ namespace STROOP.Map
             base.Update();
             _obj.Update();
             InternalRotates = Config.ObjectAssociations.GetObjectMapRotates(_obj.BehaviorCriteria);
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            return new List<XAttribute>()
+            {
+                new XAttribute("objectAddress", HexUtilities.FormatValue(_posAngle.GetObjAddress())),
+            };
         }
     }
 }

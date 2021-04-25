@@ -401,18 +401,21 @@ namespace STROOP.Map
                 case "MapObjectNextPositions":
                     mapObject = new MapObjectNextPositions();
                     break;
-                //case "MapObjectObject":
-                //    mapObject = new MapObjectObject();
-                //    break;
-                //case "MapObjectObjectAngleToMarioArrow":
-                //    mapObject = new MapObjectObjectAngleToMarioArrow();
-                //    break;
-                //case "MapObjectObjectCeiling":
-                //    mapObject = new MapObjectObjectCeiling();
-                //    break;
-                //case "MapObjectObjectCustomArrow":
-                //    mapObject = new MapObjectObjectCustomArrow();
-                //    break;
+                case "MapObjectObject":
+                    mapObject = new MapObjectObject(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    break;
+                case "MapObjectObjectAngleToMarioArrow":
+                    mapObject = new MapObjectObjectAngleToMarioArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectObjectCeiling":
+                    mapObject = new MapObjectObjectCeiling(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    break;
+                case "MapObjectObjectCustomArrow":
+                    mapObject = new MapObjectObjectCustomArrow(
+                        PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value),
+                        ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("yawOffset")).Value),
+                        ParsingUtilities.ParseInt(xElement.Attribute(XName.Get("numBytes")).Value));
+                    break;
                 //case "MapObjectObjectFacingArrow":
                 //    mapObject = new MapObjectObjectFacingArrow();
                 //    break;

@@ -10,6 +10,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
