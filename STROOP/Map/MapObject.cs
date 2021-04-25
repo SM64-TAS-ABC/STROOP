@@ -170,6 +170,8 @@ namespace STROOP.Map
 
         public virtual void ApplySettings(MapObjectSettings settings)
         {
+            GetContextMenuStrip();
+
             _accumulator.ApplySettings(settings);
         }
 
