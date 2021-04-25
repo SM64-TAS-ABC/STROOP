@@ -21,6 +21,9 @@ namespace STROOP.Map
         private MarioState _marioState = null;
         private bool _showQuarterSteps = true;
 
+        private ToolStripMenuItem _itemLockPositions;
+        private ToolStripMenuItem _itemShowQuarterSteps;
+
         public MapIwerlipsesObject()
             : base()
         {
@@ -203,28 +206,45 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                ToolStripMenuItem itemLockPositions = new ToolStripMenuItem("Lock Positions");
-                itemLockPositions.Click += (sender, e) =>
+                _itemLockPositions = new ToolStripMenuItem("Lock Positions");
+                _itemLockPositions.Click += (sender, e) =>
                 {
-                    _lockPositions = !_lockPositions;
-                    itemLockPositions.Checked = _lockPositions;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeIwerlipseLockPositions: true, newIwerlipseLockPositions: !_lockPositions);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
-                itemLockPositions.Checked = _lockPositions;
+                _itemLockPositions.Checked = _lockPositions;
 
-                ToolStripMenuItem itemShowQuarterSteps = new ToolStripMenuItem("Show Quarter Steps");
-                itemShowQuarterSteps.Click += (sender, e) =>
+                _itemShowQuarterSteps = new ToolStripMenuItem("Show Quarter Steps");
+                _itemShowQuarterSteps.Click += (sender, e) =>
                 {
-                    _showQuarterSteps = !_showQuarterSteps;
-                    itemShowQuarterSteps.Checked = _showQuarterSteps;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeShowQuarterSteps: true, newShowQuarterSteps: !_showQuarterSteps);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
-                itemShowQuarterSteps.Checked = _showQuarterSteps;
+                _itemShowQuarterSteps.Checked = _showQuarterSteps;
 
                 _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(itemLockPositions);
-                _contextMenuStrip.Items.Add(itemShowQuarterSteps);
+                _contextMenuStrip.Items.Add(_itemLockPositions);
+                _contextMenuStrip.Items.Add(_itemShowQuarterSteps);
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            if (settings.ChangeIwerlipseLockPositions)
+            {
+                _lockPositions = settings.NewIwerlipseLockPositions;
+                _itemLockPositions.Checked = settings.NewIwerlipseLockPositions;
+            }
+
+            if (settings.ChangeShowQuarterSteps)
+            {
+                _showQuarterSteps = settings.NewShowQuarterSteps;
+                _itemShowQuarterSteps.Checked = settings.NewShowQuarterSteps;
+            }
         }
 
         public override MapDrawType GetDrawType()

@@ -89,6 +89,12 @@
         public readonly bool ChangeAutoUpdate;
         public readonly bool NewAutoUpdate;
 
+        public readonly bool ChangeIwerlipseLockPositions;
+        public readonly bool NewIwerlipseLockPositions;
+
+        public readonly bool ChangeShowQuarterSteps;
+        public readonly bool NewShowQuarterSteps;
+
         public MapObjectSettings(
             bool changeCustomCylinderRelativeMinY = false,
             float newCustomCylinderRelativeMinY = 0,
@@ -175,7 +181,13 @@
             bool newAngleRangeUseInGameAngles = false,
 
             bool changeAutoUpdate = false,
-            bool newAutoUpdate = false)
+            bool newAutoUpdate = false,
+
+            bool changeIwerlipseLockPositions = false,
+            bool newIwerlipseLockPositions = false,
+
+            bool changeShowQuarterSteps = false,
+            bool newShowQuarterSteps = false)
         {
             ChangeCustomCylinderRelativeMinY = changeCustomCylinderRelativeMinY;
             NewCustomCylinderRelativeMinY = newCustomCylinderRelativeMinY;
@@ -263,6 +275,12 @@
 
             ChangeAutoUpdate = changeAutoUpdate;
             NewAutoUpdate = newAutoUpdate;
+
+            ChangeIwerlipseLockPositions = changeIwerlipseLockPositions;
+            NewIwerlipseLockPositions = newIwerlipseLockPositions;
+
+            ChangeShowQuarterSteps = changeShowQuarterSteps;
+            NewShowQuarterSteps = newShowQuarterSteps;
         }
     }
 }
