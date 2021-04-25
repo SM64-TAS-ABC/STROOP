@@ -214,175 +214,264 @@ namespace STROOP.Map
         public static MapObject FromXElement(XElement xElement)
         {
             string type = xElement.Attribute(XName.Get("type")).Value;
+            MapObject mapObject;
             switch (type)
             {
                 case "MapObjectAggregatedPath":
-                    return new MapObjectAggregatedPath();
+                    mapObject = new MapObjectAggregatedPath();
+                    break;
                 case "MapObjectAllObjectCeiling":
-                    return new MapObjectAllObjectCeiling();
+                    mapObject = new MapObjectAllObjectCeiling();
+                    break;
                 case "MapObjectAllObjectFloor":
-                    return new MapObjectAllObjectFloor();
+                    mapObject = new MapObjectAllObjectFloor();
+                    break;
                 case "MapObjectAllObjectsWithName":
-                    return MapObjectAllObjectsWithName.Create(xElement.Attribute(XName.Get("objectName")).Value);
+                    mapObject = MapObjectAllObjectsWithName.Create(xElement.Attribute(XName.Get("objectName")).Value);
+                    break;
                 //case "MapObjectAllObjectWall":
-                //    return new MapObjectAllObjectWall();
+                //    mapObject = new MapObjectAllObjectWall();
+                //    break;
                 //case "MapObjectAngleRange":
-                //    return new MapObjectAngleRange();
+                //    mapObject = new MapObjectAngleRange();
+                //    break;
                 //case "MapObjectBranchPath":
-                //    return new MapObjectBranchPath();
+                //    mapObject = new MapObjectBranchPath();
+                //    break;
                 //case "MapObjectCamera":
-                //    return new MapObjectCamera();
+                //    mapObject = new MapObjectCamera();
+                //    break;
                 //case "MapObjectCellGridlines":
-                //    return new MapObjectCellGridlines();
+                //    mapObject = new MapObjectCellGridlines();
+                //    break;
                 //case "MapObjectCoffinBox":
-                //    return new MapObjectCoffinBox();
+                //    mapObject = new MapObjectCoffinBox();
+                //    break;
                 //case "MapObjectCompass":
-                //    return new MapObjectCompass();
+                //    mapObject = new MapObjectCompass();
+                //    break;
                 //case "MapObjectCoordinateLabels":
-                //    return new MapObjectCoordinateLabels();
+                //    mapObject = new MapObjectCoordinateLabels();
+                //    break;
                 //case "MapObjectCUpFloor":
-                //    return new MapObjectCUpFloor();
+                //    mapObject = new MapObjectCUpFloor();
+                //    break;
                 //case "MapObjectCurrentBackground":
-                //    return new MapObjectCurrentBackground();
+                //    mapObject = new MapObjectCurrentBackground();
+                //    break;
                 //case "MapObjectCurrentCell":
-                //    return new MapObjectCurrentCell();
+                //    mapObject = new MapObjectCurrentCell();
+                //    break;
                 //case "MapObjectCurrentMap":
-                //    return new MapObjectCurrentMap();
+                //    mapObject = new MapObjectCurrentMap();
+                //    break;
                 //case "MapObjectCurrentUnit":
-                //    return new MapObjectCurrentUnit();
+                //    mapObject = new MapObjectCurrentUnit();
+                //    break;
                 //case "MapObjectCustomBackground":
-                //    return new MapObjectCustomBackground();
+                //    mapObject = new MapObjectCustomBackground();
+                //    break;
                 //case "MapObjectCustomCeiling":
-                //    return new MapObjectCustomCeiling();
+                //    mapObject = new MapObjectCustomCeiling();
+                //    break;
                 //case "MapObjectCustomCylinder":
-                //    return new MapObjectCustomCylinder();
+                //    mapObject = new MapObjectCustomCylinder();
+                //    break;
                 //case "MapObjectCustomCylinderPoints":
-                //    return new MapObjectCustomCylinderPoints();
+                //    mapObject = new MapObjectCustomCylinderPoints();
+                //    break;
                 //case "MapObjectCustomFloor":
-                //    return new MapObjectCustomFloor();
+                //    mapObject = new MapObjectCustomFloor();
+                //    break;
                 //case "MapObjectCustomGridlines":
-                //    return new MapObjectCustomGridlines();
+                //    mapObject = new MapObjectCustomGridlines();
+                //    break;
                 //case "MapObjectCustomMap":
-                //    return new MapObjectCustomMap();
+                //    mapObject = new MapObjectCustomMap();
+                //    break;
                 //case "MapObjectCustomPositionAngle":
-                //    return new MapObjectCustomPositionAngle();
+                //    mapObject = new MapObjectCustomPositionAngle();
+                //    break;
                 //case "MapObjectCustomPositionAngleArrow":
-                //    return new MapObjectCustomPositionAngleArrow();
+                //    mapObject = new MapObjectCustomPositionAngleArrow();
+                //    break;
                 //case "MapObjectCustomSphere":
-                //    return new MapObjectCustomSphere();
+                //    mapObject = new MapObjectCustomSphere();
+                //    break;
                 //case "MapObjectCustomSpherePoints":
-                //    return new MapObjectCustomSpherePoints();
+                //    mapObject = new MapObjectCustomSpherePoints();
+                //    break;
                 //case "MapObjectCustomUnitPoints":
-                //    return new MapObjectCustomUnitPoints();
+                //    mapObject = new MapObjectCustomUnitPoints();
+                //    break;
                 //case "MapObjectCustomWall":
-                //    return new MapObjectCustomWall();
+                //    mapObject = new MapObjectCustomWall();
+                //    break;
                 //case "MapObjectDrawDistanceSphere":
-                //    return new MapObjectDrawDistanceSphere();
+                //    mapObject = new MapObjectDrawDistanceSphere();
+                //    break;
                 //case "MapObjectDrawing":
-                //    return new MapObjectDrawing();
+                //    mapObject = new MapObjectDrawing();
+                //    break;
                 //case "MapObjectEffectiveHitboxCylinder":
-                //    return new MapObjectEffectiveHitboxCylinder();
+                //    mapObject = new MapObjectEffectiveHitboxCylinder();
+                //    break;
                 //case "MapObjectEffectiveHurtboxCylinder":
-                //    return new MapObjectEffectiveHurtboxCylinder();
+                //    mapObject = new MapObjectEffectiveHurtboxCylinder();
+                //    break;
                 //case "MapObjectFacingDivider":
-                //    return new MapObjectFacingDivider();
+                //    mapObject = new MapObjectFacingDivider();
+                //    break;
                 //case "MapObjectFloatGridlines":
-                //    return new MapObjectFloatGridlines();
+                //    mapObject = new MapObjectFloatGridlines();
+                //    break;
                 //case "MapObjectGhost":
-                //    return new MapObjectGhost();
+                //    mapObject = new MapObjectGhost();
+                //    break;
                 //case "MapObjectHitboxCylinder":
-                //    return new MapObjectHitboxCylinder();
+                //    mapObject = new MapObjectHitboxCylinder();
+                //    break;
                 //case "MapObjectHitboxHackTriangle":
-                //    return new MapObjectHitboxHackTriangle();
+                //    mapObject = new MapObjectHitboxHackTriangle();
+                //    break;
                 //case "MapObjectHolp":
-                //    return new MapObjectHolp();
+                //    mapObject = new MapObjectHolp();
+                //    break;
                 //case "MapObjectHome":
-                //    return new MapObjectHome();
+                //    mapObject = new MapObjectHome();
+                //    break;
                 //case "MapObjectHomeLine":
-                //    return new MapObjectHomeLine();
+                //    mapObject = new MapObjectHomeLine();
+                //    break;
                 //case "MapObjectHurtboxCylinder":
-                //    return new MapObjectHurtboxCylinder();
+                //    mapObject = new MapObjectHurtboxCylinder();
+                //    break;
                 //case "MapObjectIwerlipses":
-                //    return new MapObjectIwerlipses();
+                //    mapObject = new MapObjectIwerlipses();
+                //    break;
                 //case "MapObjectLedgeGrabChecker":
-                //    return new MapObjectLedgeGrabChecker();
+                //    mapObject = new MapObjectLedgeGrabChecker();
+                //    break;
                 //case "MapObjectLevelCeiling":
-                //    return new MapObjectLevelCeiling();
+                //    mapObject = new MapObjectLevelCeiling();
+                //    break;
                 //case "MapObjectLevelFloor":
-                //    return new MapObjectLevelFloor();
+                //    mapObject = new MapObjectLevelFloor();
+                //    break;
                 //case "MapObjectLevelWall":
-                //    return new MapObjectLevelWall();
+                //    mapObject = new MapObjectLevelWall();
+                //    break;
                 //case "MapObjectLineSegment":
-                //    return new MapObjectLineSegment();
+                //    mapObject = new MapObjectLineSegment();
+                //    break;
                 //case "MapObjectMario":
-                //    return new MapObjectMario();
+                //    mapObject = new MapObjectMario();
+                //    break;
                 //case "MapObjectMarioCeiling":
-                //    return new MapObjectMarioCeiling();
+                //    mapObject = new MapObjectMarioCeiling();
+                //    break;
                 //case "MapObjectMarioFacingArrow":
-                //    return new MapObjectMarioFacingArrow();
+                //    mapObject = new MapObjectMarioFacingArrow();
+                //    break;
                 //case "MapObjectMarioFloor":
-                //    return new MapObjectMarioFloor();
+                //    mapObject = new MapObjectMarioFloor();
+                //    break;
                 //case "MapObjectMarioFloorArrow":
-                //    return new MapObjectMarioFloorArrow();
+                //    mapObject = new MapObjectMarioFloorArrow();
+                //    break;
                 //case "MapObjectMarioIntendedArrow":
-                //    return new MapObjectMarioIntendedArrow();
+                //    mapObject = new MapObjectMarioIntendedArrow();
+                //    break;
                 //case "MapObjectMarioMovingArrow":
-                //    return new MapObjectMarioMovingArrow();
+                //    mapObject = new MapObjectMarioMovingArrow();
+                //    break;
                 //case "MapObjectMarioSlidingArrow":
-                //    return new MapObjectMarioSlidingArrow();
+                //    mapObject = new MapObjectMarioSlidingArrow();
+                //    break;
                 //case "MapObjectMarioTwirlArrow":
-                //    return new MapObjectMarioTwirlArrow();
+                //    mapObject = new MapObjectMarioTwirlArrow();
+                //    break;
                 //case "MapObjectMarioWall":
-                //    return new MapObjectMarioWall();
+                //    mapObject = new MapObjectMarioWall();
+                //    break;
                 //case "MapObjectNextPositions":
-                //    return new MapObjectNextPositions();
+                //    mapObject = new MapObjectNextPositions();
+                //    break;
                 //case "MapObjectObject":
-                //    return new MapObjectObject();
+                //    mapObject = new MapObjectObject();
+                //    break;
                 //case "MapObjectObjectAngleToMarioArrow":
-                //    return new MapObjectObjectAngleToMarioArrow();
+                //    mapObject = new MapObjectObjectAngleToMarioArrow();
+                //    break;
                 //case "MapObjectObjectCeiling":
-                //    return new MapObjectObjectCeiling();
+                //    mapObject = new MapObjectObjectCeiling();
+                //    break;
                 //case "MapObjectObjectCustomArrow":
-                //    return new MapObjectObjectCustomArrow();
+                //    mapObject = new MapObjectObjectCustomArrow();
+                //    break;
                 //case "MapObjectObjectFacingArrow":
-                //    return new MapObjectObjectFacingArrow();
+                //    mapObject = new MapObjectObjectFacingArrow();
+                //    break;
                 //case "MapObjectObjectFloor":
-                //    return new MapObjectObjectFloor();
+                //    mapObject = new MapObjectObjectFloor();
+                //    break;
                 //case "MapObjectObjectGraphicsArrow":
-                //    return new MapObjectObjectGraphicsArrow();
+                //    mapObject = new MapObjectObjectGraphicsArrow();
+                //    break;
                 //case "MapObjectObjectMovingArrow":
-                //    return new MapObjectObjectMovingArrow();
+                //    mapObject = new MapObjectObjectMovingArrow();
+                //    break;
                 //case "MapObjectObjectWall":
-                //    return new MapObjectObjectWall();
+                //    mapObject = new MapObjectObjectWall();
+                //    break;
                 //case "MapObjectPath":
-                //    return new MapObjectPath();
+                //    mapObject = new MapObjectPath();
+                //    break;
                 //case "MapObjectPoint":
-                //    return new MapObjectPoint();
+                //    mapObject = new MapObjectPoint();
+                //    break;
                 //case "MapObjectPreviousPositions":
-                //    return new MapObjectPreviousPositions();
+                //    mapObject = new MapObjectPreviousPositions();
+                //    break;
                 //case "MapObjectPuGridlines":
-                //    return new MapObjectPuGridlines();
+                //    mapObject = new MapObjectPuGridlines();
+                //    break;
                 //case "MapObjectPunchDetector":
-                //    return new MapObjectPunchDetector();
+                //    mapObject = new MapObjectPunchDetector();
+                //    break;
                 //case "MapObjectPunchFloor":
-                //    return new MapObjectPunchFloor();
+                //    mapObject = new MapObjectPunchFloor();
+                //    break;
                 //case "MapObjectPushHitboxCylinder":
-                //    return new MapObjectPushHitboxCylinder();
+                //    mapObject = new MapObjectPushHitboxCylinder();
+                //    break;
                 //case "MapObjectSector":
-                //    return new MapObjectSector();
+                //    mapObject = new MapObjectSector();
+                //    break;
                 //case "MapObjectSelf":
-                //    return new MapObjectSelf();
+                //    mapObject = new MapObjectSelf();
+                //    break;
                 //case "MapObjectSwooperEffectiveTargetArrow":
-                //    return new MapObjectSwooperEffectiveTargetArrow();
+                //    mapObject = new MapObjectSwooperEffectiveTargetArrow();
+                //    break;
                 //case "MapObjectTangibilitySphere":
-                //    return new MapObjectTangibilitySphere();
+                //    mapObject = new MapObjectTangibilitySphere();
+                //    break;
                 //case "MapObjectUnitGridlines":
-                //    return new MapObjectUnitGridlines();
+                //    mapObject = new MapObjectUnitGridlines();
+                //    break;
                 //case "MapObjectWaters":
-                //    return new MapObjectWaters();
+                //    mapObject = new MapObjectWaters();
+                //    break;
                 default:
                     throw new ArgumentOutOfRangeException("Unknown MapObject type: " + type);
             }
+
+            XElement settingsXElement = xElement.Element(XName.Get("Settings"));
+            MapObjectSettings settings = MapObjectSettings.FromXElement(settingsXElement);
+            mapObject.ApplySettings(settings);
+
+            return mapObject;
         }
     }
 }
