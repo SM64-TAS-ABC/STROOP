@@ -10,6 +10,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -48,6 +49,15 @@ namespace STROOP.Map
         public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.CustomPointsImage;
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            List<string> pointList = _unitPoints.ConvertAll(p => "(" + p.x + "," + p.z + ")");
+            return new List<XAttribute>()
+            {
+                new XAttribute("points", string.Join(",", pointList)),
+            };
         }
     }
 }

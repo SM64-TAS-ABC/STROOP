@@ -303,9 +303,9 @@ namespace STROOP.Map
                 //case "MapObjectCustomSpherePoints":
                 //    mapObject = new MapObjectCustomSpherePoints();
                 //    break;
-                //case "MapObjectCustomUnitPoints":
-                //    mapObject = new MapObjectCustomUnitPoints();
-                //    break;
+                case "MapObjectCustomUnitPoints":
+                    mapObject = MapObjectCustomUnitPoints.Create(xElement.Attribute(XName.Get("points")).Value, false);
+                    break;
                 case "MapObjectCustomWall":
                     mapObject = MapObjectCustomWall.Create(xElement.Attribute(XName.Get("triangles")).Value);
                     break;
