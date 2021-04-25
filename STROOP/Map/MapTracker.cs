@@ -99,11 +99,10 @@ namespace STROOP.Map
             itemResetCustomName.Click += (sender, e) => _customName = null;
             textBoxName.ContextMenuStrip.Items.Add(itemResetCustomName);
 
-            checkBoxRotates.Click += (sender, e) =>
-                _mapObjectList.ForEach(mapObj => mapObj.CustomRotates = checkBoxRotates.Checked);
+            checkBoxRotates.Click += (sender, e) => SetCustomRotates(checkBoxRotates.Checked);
             checkBoxRotates.ContextMenuStrip = new ContextMenuStrip();
             ToolStripMenuItem itemResetCustomRotates = new ToolStripMenuItem("Reset Custom Rotates");
-            itemResetCustomRotates.Click += (sender, e) => _mapObjectList.ForEach(mapObj => mapObj.CustomRotates = null);
+            itemResetCustomRotates.Click += (sender, e) => SetCustomRotates(null);
             checkBoxRotates.ContextMenuStrip.Items.Add(itemResetCustomRotates);
 
             tableLayoutPanel.BorderWidth = 2;
@@ -906,6 +905,11 @@ namespace STROOP.Map
             colorSelectorOutline.SelectedColor = outlineColor;
         }
 
+        public void SetCustomRotates(bool? customRotates)
+        {
+            _mapObjectList.ForEach(mapObj => mapObj.CustomRotates = customRotates);
+        }
+
         public void SetShowTriUnits(bool showTriUnits)
         {
             _showTriUnits = showTriUnits;
@@ -925,8 +929,13 @@ namespace STROOP.Map
 
         private void pictureBoxEye_Click(object sender, EventArgs e)
         {
-            _isVisible = !_isVisible;
-            pictureBoxEye.BackgroundImage = _isVisible ? ImageEyeOpen : ImageEyeClosed;
+            SetIsVisible(!_isVisible);
+        }
+
+        public void SetIsVisible(bool isVisible)
+        {
+            _isVisible = isVisible;
+            pictureBoxEye.BackgroundImage = isVisible ? ImageEyeOpen : ImageEyeClosed;
         }
 
         private void pictureBoxUpArrow_Click(object sender, EventArgs e)
@@ -1030,12 +1039,17 @@ namespace STROOP.Map
             List<XElement> subElements = xElement.Elements().ToList();
             List<MapObject> mapObjs = subElements.ConvertAll(el => MapObject.FromXElement(el));
             MapTracker tracker = new MapTracker(mapObjs);
-            tracker.SetSize(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("size"))?.Value));
-            tracker.SetOpacity(ParsingUtilities.ParseIntNullable(xElement.Attribute(XName.Get("opacity"))?.Value));
-            tracker.SetOutlineWidth(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("outlineWidth"))?.Value));
-
-
-
+            tracker.SetSize(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("size")).Value));
+            tracker.SetOpacity(ParsingUtilities.ParseIntNullable(xElement.Attribute(XName.Get("opacity")).Value));
+            tracker.SetOutlineWidth(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("outlineWidth")).Value));
+            tracker.comboBoxOrderType.SelectedItem = Enum.Parse(typeof(MapTrackerOrderType), xElement.Attribute(XName.Get("orderType")).Value);
+            tracker.comboBoxVisibilityType.SelectedItem = Enum.Parse(typeof(MapTrackerVisibilityType), xElement.Attribute(XName.Get("visibilityType")).Value);
+            tracker.SetColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("color")).Value));
+            tracker.SetOutlineColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("outlineColor")).Value));
+            bool? customRotates = ParsingUtilities.ParseBoolNullable(xElement.Attribute(XName.Get("customRotates"))?.Value);
+            if (customRotates.HasValue) tracker.SetCustomRotates(customRotates);
+            tracker.SetShowTriUnits(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("showTriUnits")).Value));
+            tracker.SetIsVisible(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisible")).Value));
             return tracker;
         }
     }
