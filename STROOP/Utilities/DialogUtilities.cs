@@ -32,6 +32,8 @@ namespace STROOP.Structs
                     return "Image files|*.jpg;*.jpeg;*.jpe;*.jfif;*.png|All Files|*.*";
                 case FileType.Mapping:
                     return "Mapping|*.map";
+                case FileType.StroopMapData:
+                    return "STROOP Map Data|*.mapdata";
                 default:
                     throw new ArgumentOutOfRangeException();
             }

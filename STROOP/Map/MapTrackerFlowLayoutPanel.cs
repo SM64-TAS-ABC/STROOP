@@ -223,20 +223,18 @@ namespace STROOP.Map
             }
         }
 
-        public XDocument ToXDocument()
+        public List<XElement> ToXElements()
         {
-            XDocument doc = new XDocument();
-            XElement root = new XElement(XName.Get("MapData"));
-            doc.Add(root);
+            List<XElement> xElements = new List<XElement>();
             lock (_objectLock)
             {
                 foreach (Control control in Controls)
                 {
                     MapTracker mapTracker = control as MapTracker;
-                    root.Add(mapTracker.ToXElement());
+                    xElements.Add(mapTracker.ToXElement());
                 }
             }
-            return doc;
+            return xElements;
         }
     }
 }

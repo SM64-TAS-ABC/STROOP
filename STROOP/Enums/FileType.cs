@@ -17,5 +17,6 @@ namespace STROOP.Structs
         MupenMovie,
         Image,
         Mapping,
+        StroopMapData,
     };
 }

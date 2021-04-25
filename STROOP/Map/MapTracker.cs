@@ -1027,7 +1027,7 @@ namespace STROOP.Map
 
         public static MapTracker FromXElement(XElement xElement)
         {
-            List<XElement> subElements = xElement.Descendants().ToList();
+            List<XElement> subElements = xElement.Elements().ToList();
             List<MapObject> mapObjs = subElements.ConvertAll(el => MapObject.FromXElement(el));
             MapTracker tracker = new MapTracker(mapObjs);
             tracker.SetSize(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("size"))?.Value));

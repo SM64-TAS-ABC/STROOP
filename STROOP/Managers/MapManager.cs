@@ -15,6 +15,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Map;
 using STROOP.Map.Map3D;
 using STROOP.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Managers
 {
@@ -491,6 +492,7 @@ namespace STROOP.Managers
 
             Config.MapGui.buttonMapOptionsAddNewTracker.Click += (sender, e) =>
                 Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Show(Cursor.Position);
+
             Config.MapGui.buttonMapOptionsClearAllTrackers.Click += (sender, e) =>
                 Config.MapGui.flowLayoutPanelMapTrackers.ClearControls();
             ControlUtilities.AddContextMenuStripFunctions(
@@ -509,6 +511,22 @@ namespace STROOP.Managers
                     () => DoSurfaceTriangles(false),
                     () => DoTaserSettings(),
                 });
+
+            Config.MapGui.buttonMapOptionsOpen.Click += (sender, e) =>
+            {
+                List<XElement> xElements = DialogUtilities.OpenXmlElements(FileType.StroopMapData);
+                List<MapTracker> mapTrackers = xElements.ConvertAll(xElement => MapTracker.FromXElement(xElement));
+                foreach (MapTracker mapTracker in mapTrackers)
+                {
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(mapTracker);
+                }
+            };
+
+            Config.MapGui.buttonMapOptionsSave.Click += (sender, e) =>
+            {
+                DialogUtilities.SaveXmlElements(
+                    FileType.StroopMapData, "MapData", Config.MapGui.flowLayoutPanelMapTrackers.ToXElements());
+            };
 
             // Buttons for Changing Scale
             Config.MapGui.buttonMapControllersScaleMinus.Click += (sender, e) =>

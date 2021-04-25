@@ -20,7 +20,7 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            XDocument doc = Config.MapGui.flowLayoutPanelMapTrackers.ToXDocument();
+            //XDocument doc = Config.MapGui.flowLayoutPanelMapTrackers.ToXDocument();
 
             //foreach (string mapObjName in mapObjNames)
             //{

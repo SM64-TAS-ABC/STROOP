@@ -268,6 +268,8 @@ namespace STROOP
 
                 buttonMapOptionsAddNewTracker = buttonMapOptionsAddNewTracker,
                 buttonMapOptionsClearAllTrackers = buttonMapOptionsClearAllTrackers,
+                buttonMapOptionsOpen = buttonMapOptionsOpen,
+                buttonMapOptionsSave = buttonMapOptionsSave,
 
                 comboBoxMapOptionsLevel = comboBoxMapOptionsLevel,
                 comboBoxMapOptionsBackground = comboBoxMapOptionsBackground,

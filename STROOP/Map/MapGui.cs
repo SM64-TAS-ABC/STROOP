@@ -47,6 +47,8 @@ namespace STROOP.Map
         // Options - Buttons
         public Button buttonMapOptionsAddNewTracker;
         public Button buttonMapOptionsClearAllTrackers;
+        public Button buttonMapOptionsOpen;
+        public Button buttonMapOptionsSave;
 
         // Options - ComboBoxes
         public ComboBox comboBoxMapOptionsLevel;
