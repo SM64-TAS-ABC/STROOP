@@ -330,7 +330,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapObjectObjectFloor(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectObjectFloor(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -345,7 +345,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapObjectObjectWall(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectObjectWall(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -360,7 +360,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapObjectObjectCeiling(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectObjectCeiling(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);
@@ -646,7 +646,7 @@ namespace STROOP.Map
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
                     if (!posAngle.IsObject()) return null;
-                    return (MapObject)new MapObjectHomeLine(posAngle.GetObjAddress());
+                    return (MapObject)new MapObjectHomeLine(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
                 MapTracker tracker = new MapTracker(newMapObjs);

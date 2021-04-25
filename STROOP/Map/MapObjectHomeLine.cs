@@ -18,11 +18,11 @@ namespace STROOP.Map
         private readonly PositionAngle _objPosAngle;
         private readonly PositionAngle _homePosAngle;
 
-        public MapObjectHomeLine(uint objAddress)
+        public MapObjectHomeLine(PositionAngle posAngle)
             : base()
         {
-            _objPosAngle = PositionAngle.Obj(objAddress);
-            _homePosAngle = PositionAngle.ObjHome(objAddress);
+            _objPosAngle = PositionAngle.Obj(posAngle.GetObjAddress());
+            _homePosAngle = PositionAngle.ObjHome(posAngle.GetObjAddress());
 
             OutlineWidth = 3;
             OutlineColor = Color.Black;
@@ -55,7 +55,7 @@ namespace STROOP.Map
         {
             return new List<XAttribute>()
             {
-                new XAttribute("objectAddress", HexUtilities.FormatValue(_objPosAngle.GetObjAddress())),
+                new XAttribute("positionAngle", _objPosAngle),
             };
         }
     }

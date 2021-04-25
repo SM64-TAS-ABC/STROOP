@@ -21,11 +21,11 @@ namespace STROOP.Map
         private readonly PositionAngle _posAngle;
         private readonly uint _objAddress;
 
-        public MapObjectObjectWall(uint objAddress)
+        public MapObjectObjectWall(PositionAngle posAngle)
             : base()
         {
-            _posAngle = PositionAngle.Obj(objAddress);
-            _objAddress = objAddress;
+            _posAngle = PositionAngle.Obj(posAngle.GetObjAddress());
+            _objAddress = posAngle.GetObjAddress();
         }
 
         protected override List<TriangleDataModel> GetUnfilteredTriangles()
@@ -66,7 +66,7 @@ namespace STROOP.Map
         {
             return new List<XAttribute>()
             {
-                new XAttribute("objectAddress", HexUtilities.FormatValue(_posAngle.GetObjAddress())),
+                new XAttribute("positionAngle", _posAngle),
             };
         }
     }

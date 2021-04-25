@@ -88,7 +88,7 @@ namespace STROOP.Utilities
                 PositionAngle chuckyaPosAngle = PositionAngle.Obj(chuckya.Address);
                 PositionAngle homePosAngle = PositionAngle.ObjHome(chuckya.Address);
 
-                MapObject mapObjChuckya = new MapObjectObject(chuckya.Address);
+                MapObject mapObjChuckya = new MapObjectObject(chuckyaPosAngle);
                 MapObject mapObjHome = new MapObjectHome(chuckyaPosAngle);
                 MapObject mapObjFacingArrow = new MapObjectObjectFacingArrow(chuckyaPosAngle);
                 MapObject mapObjSector = new MapObjectSector(chuckyaPosAngle);

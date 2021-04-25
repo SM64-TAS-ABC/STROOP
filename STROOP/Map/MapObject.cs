@@ -343,7 +343,7 @@ namespace STROOP.Map
                     mapObject = new MapObjectHome(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectHomeLine":
-                    mapObject = new MapObjectHomeLine(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    mapObject = new MapObjectHomeLine(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectHurtboxCylinder":
                     mapObject = new MapObjectHurtboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
@@ -402,13 +402,13 @@ namespace STROOP.Map
                     mapObject = new MapObjectNextPositions();
                     break;
                 case "MapObjectObject":
-                    mapObject = new MapObjectObject(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    mapObject = new MapObjectObject(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectObjectAngleToMarioArrow":
                     mapObject = new MapObjectObjectAngleToMarioArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectObjectCeiling":
-                    mapObject = new MapObjectObjectCeiling(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    mapObject = new MapObjectObjectCeiling(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectObjectCustomArrow":
                     mapObject = new MapObjectObjectCustomArrow(
@@ -420,7 +420,7 @@ namespace STROOP.Map
                     mapObject = new MapObjectObjectFacingArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectObjectFloor":
-                    mapObject = new MapObjectObjectFloor(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    mapObject = new MapObjectObjectFloor(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectObjectGraphicsArrow":
                     mapObject = new MapObjectObjectGraphicsArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
@@ -429,7 +429,7 @@ namespace STROOP.Map
                     mapObject = new MapObjectObjectMovingArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectObjectWall":
-                    mapObject = new MapObjectObjectWall(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    mapObject = new MapObjectObjectWall(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 //case "MapObjectPath":
                 //    mapObject = new MapObjectPath();

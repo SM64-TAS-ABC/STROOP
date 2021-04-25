@@ -1057,7 +1057,7 @@ namespace STROOP.Managers
             foreach (int index in toBeAddedIndexes)
             {
                 uint address = ObjectUtilities.GetObjectAddress(index);
-                MapObject mapObj = new MapObjectObject(address);
+                MapObject mapObj = new MapObjectObject(PositionAngle.Obj(address));
                 MapSemaphore semaphore = MapSemaphoreManager.Objects[index];
                 semaphore.IsUsed = true;
                 MapTracker tracker = new MapTracker(
@@ -1094,7 +1094,7 @@ namespace STROOP.Managers
         {
             if (addresses.Count == 0) return;
             List<MapObject> mapObjs = addresses
-                .ConvertAll(address => new MapObjectObject(address) as MapObject);
+                .ConvertAll(address => new MapObjectObject(PositionAngle.Obj(address)) as MapObject);
             List<int> indexes = addresses
                 .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
                 .FindAll(index => index.HasValue)

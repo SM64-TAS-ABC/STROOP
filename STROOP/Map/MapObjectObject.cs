@@ -19,11 +19,11 @@ namespace STROOP.Map
         private readonly ObjectDataModel _obj;
         private readonly PositionAngle _posAngle;
 
-        public MapObjectObject(uint objAddress)
+        public MapObjectObject(PositionAngle posAngle)
             : base()
         {
-            _obj = new ObjectDataModel(objAddress);
-            _posAngle = PositionAngle.Obj(objAddress);
+            _obj = new ObjectDataModel(posAngle.GetObjAddress());
+            _posAngle = PositionAngle.Obj(posAngle.GetObjAddress());
         }
 
         public override Image GetInternalImage()
@@ -59,7 +59,7 @@ namespace STROOP.Map
         {
             return new List<XAttribute>()
             {
-                new XAttribute("objectAddress", HexUtilities.FormatValue(_posAngle.GetObjAddress())),
+                new XAttribute("positionAngle", _posAngle),
             };
         }
     }

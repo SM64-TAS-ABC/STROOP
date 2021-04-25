@@ -20,7 +20,7 @@ namespace STROOP.Map
         public MapObjectCoffinBox(PositionAngle posAngle)
             : base()
         {
-            _posAngle = posAngle;
+            _posAngle = PositionAngle.Obj(posAngle.GetObjAddress());
 
             OutlineWidth = 3;
             OutlineColor = Color.Pink;
