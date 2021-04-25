@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -48,6 +49,15 @@ namespace STROOP.Map
         public override string GetName()
         {
             return "Custom Sphere Points";
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            List<string> pointList = _points.ConvertAll(p => "(" + p.x + "," + p.y + "," + p.z + ")");
+            return new List<XAttribute>()
+            {
+                new XAttribute("points", string.Join(",", pointList)),
+            };
         }
     }
 }

@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -112,6 +113,15 @@ namespace STROOP.Map
                 string suffix = string.Format(" ({0})", _relativeMaxY);
                 _itemSetRelativeMaxY.Text = SET_RELATIVE_MAX_Y_TEXT + suffix;
             }
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            List<string> pointList = _points.ConvertAll(p => "(" + p.x + "," + p.y + "," + p.z + ")");
+            return new List<XAttribute>()
+            {
+                new XAttribute("points", string.Join(",", pointList)),
+            };
         }
     }
 }

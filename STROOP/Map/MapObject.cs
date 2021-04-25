@@ -277,9 +277,9 @@ namespace STROOP.Map
                 case "MapObjectCustomCylinder":
                     mapObject = new MapObjectCustomCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
-                //case "MapObjectCustomCylinderPoints":
-                //    mapObject = new MapObjectCustomCylinderPoints();
-                //    break;
+                case "MapObjectCustomCylinderPoints":
+                    mapObject = MapObjectCustomCylinderPoints.Create(xElement.Attribute(XName.Get("points")).Value, true);
+                    break;
                 case "MapObjectCustomFloor":
                     mapObject = MapObjectCustomFloor.Create(xElement.Attribute(XName.Get("triangles")).Value);
                     break;
@@ -300,9 +300,9 @@ namespace STROOP.Map
                 case "MapObjectCustomSphere":
                     mapObject = new MapObjectCustomSphere(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
-                //case "MapObjectCustomSpherePoints":
-                //    mapObject = new MapObjectCustomSpherePoints();
-                //    break;
+                case "MapObjectCustomSpherePoints":
+                    mapObject = MapObjectCustomSpherePoints.Create(xElement.Attribute(XName.Get("points")).Value, true);
+                    break;
                 case "MapObjectCustomUnitPoints":
                     mapObject = MapObjectCustomUnitPoints.Create(xElement.Attribute(XName.Get("points")).Value, false);
                     break;
