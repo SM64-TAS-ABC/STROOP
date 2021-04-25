@@ -234,6 +234,8 @@ namespace STROOP.Map
 
         public override void ApplySettings(MapObjectSettings settings)
         {
+            base.ApplySettings(settings);
+
             if (settings.ChangeIwerlipseLockPositions)
             {
                 _lockPositions = settings.NewIwerlipseLockPositions;

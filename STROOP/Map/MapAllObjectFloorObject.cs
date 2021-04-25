@@ -64,6 +64,8 @@ namespace STROOP.Map
 
         public override void ApplySettings(MapObjectSettings settings)
         {
+            base.ApplySettings(settings);
+
             if (settings.ChangeAutoUpdate)
             {
                 _autoUpdate = settings.NewAutoUpdate;
