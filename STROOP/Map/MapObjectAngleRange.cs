@@ -10,6 +10,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -149,6 +150,14 @@ namespace STROOP.Map
                 _useInGameAngles = settings.NewAngleRangeUseInGameAngles;
                 _itemUseInGameAngles.Checked = settings.NewAngleRangeUseInGameAngles;
             }
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            return new List<XAttribute>()
+            {
+                new XAttribute("positionAngle", _posAngle),
+            };
         }
     }
 }

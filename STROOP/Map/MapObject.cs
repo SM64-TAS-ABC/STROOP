@@ -229,12 +229,12 @@ namespace STROOP.Map
                 case "MapObjectAllObjectsWithName":
                     mapObject = MapObjectAllObjectsWithName.Create(xElement.Attribute(XName.Get("objectName")).Value);
                     break;
-                //case "MapObjectAllObjectWall":
-                //    mapObject = new MapObjectAllObjectWall();
-                //    break;
-                //case "MapObjectAngleRange":
-                //    mapObject = new MapObjectAngleRange();
-                //    break;
+                case "MapObjectAllObjectWall":
+                    mapObject = new MapObjectAllObjectWall();
+                    break;
+                case "MapObjectAngleRange":
+                    mapObject = new MapObjectAngleRange(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
                 //case "MapObjectBranchPath":
                 //    mapObject = new MapObjectBranchPath();
                 //    break;
