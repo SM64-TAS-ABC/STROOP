@@ -416,60 +416,60 @@ namespace STROOP.Map
                         ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("yawOffset")).Value),
                         ParsingUtilities.ParseInt(xElement.Attribute(XName.Get("numBytes")).Value));
                     break;
-                //case "MapObjectObjectFacingArrow":
-                //    mapObject = new MapObjectObjectFacingArrow();
-                //    break;
-                //case "MapObjectObjectFloor":
-                //    mapObject = new MapObjectObjectFloor();
-                //    break;
-                //case "MapObjectObjectGraphicsArrow":
-                //    mapObject = new MapObjectObjectGraphicsArrow();
-                //    break;
-                //case "MapObjectObjectMovingArrow":
-                //    mapObject = new MapObjectObjectMovingArrow();
-                //    break;
-                //case "MapObjectObjectWall":
-                //    mapObject = new MapObjectObjectWall();
-                //    break;
+                case "MapObjectObjectFacingArrow":
+                    mapObject = new MapObjectObjectFacingArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectObjectFloor":
+                    mapObject = new MapObjectObjectFloor(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    break;
+                case "MapObjectObjectGraphicsArrow":
+                    mapObject = new MapObjectObjectGraphicsArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectObjectMovingArrow":
+                    mapObject = new MapObjectObjectMovingArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectObjectWall":
+                    mapObject = new MapObjectObjectWall(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
+                    break;
                 //case "MapObjectPath":
                 //    mapObject = new MapObjectPath();
                 //    break;
-                //case "MapObjectPoint":
-                //    mapObject = new MapObjectPoint();
-                //    break;
-                //case "MapObjectPreviousPositions":
-                //    mapObject = new MapObjectPreviousPositions();
-                //    break;
-                //case "MapObjectPuGridlines":
-                //    mapObject = new MapObjectPuGridlines();
-                //    break;
-                //case "MapObjectPunchDetector":
-                //    mapObject = new MapObjectPunchDetector();
-                //    break;
-                //case "MapObjectPunchFloor":
-                //    mapObject = new MapObjectPunchFloor();
-                //    break;
-                //case "MapObjectPushHitboxCylinder":
-                //    mapObject = new MapObjectPushHitboxCylinder();
-                //    break;
-                //case "MapObjectSector":
-                //    mapObject = new MapObjectSector();
-                //    break;
-                //case "MapObjectSelf":
-                //    mapObject = new MapObjectSelf();
-                //    break;
-                //case "MapObjectSwooperEffectiveTargetArrow":
-                //    mapObject = new MapObjectSwooperEffectiveTargetArrow();
-                //    break;
-                //case "MapObjectTangibilitySphere":
-                //    mapObject = new MapObjectTangibilitySphere();
-                //    break;
-                //case "MapObjectUnitGridlines":
-                //    mapObject = new MapObjectUnitGridlines();
-                //    break;
-                //case "MapObjectWaters":
-                //    mapObject = new MapObjectWaters();
-                //    break;
+                case "MapObjectPoint":
+                    mapObject = new MapObjectPoint();
+                    break;
+                case "MapObjectPreviousPositions":
+                    mapObject = new MapObjectPreviousPositions();
+                    break;
+                case "MapObjectPuGridlines":
+                    mapObject = new MapObjectPuGridlines();
+                    break;
+                case "MapObjectPunchDetector":
+                    mapObject = new MapObjectPunchDetector();
+                    break;
+                case "MapObjectPunchFloor":
+                    mapObject = new MapObjectPunchFloor();
+                    break;
+                case "MapObjectPushHitboxCylinder":
+                    mapObject = new MapObjectPushHitboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectSector":
+                    mapObject = new MapObjectSector(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectSelf":
+                    mapObject = new MapObjectSelf();
+                    break;
+                case "MapObjectSwooperEffectiveTargetArrow":
+                    mapObject = new MapObjectSwooperEffectiveTargetArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectTangibilitySphere":
+                    mapObject = new MapObjectTangibilitySphere(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectUnitGridlines":
+                    mapObject = new MapObjectUnitGridlines();
+                    break;
+                case "MapObjectWaters":
+                    mapObject = new MapObjectWaters();
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException("Unknown MapObject type: " + type);
             }
