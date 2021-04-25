@@ -222,5 +222,21 @@ namespace STROOP.Map
                 }
             }
         }
+
+        public XDocument ToXDocument()
+        {
+            XDocument doc = new XDocument();
+            XElement root = new XElement(XName.Get("MapData"));
+            doc.Add(root);
+            lock (_objectLock)
+            {
+                foreach (Control control in Controls)
+                {
+                    MapTracker mapTracker = control as MapTracker;
+                    root.Add(mapTracker.ToXElement());
+                }
+            }
+            return doc;
+        }
     }
 }

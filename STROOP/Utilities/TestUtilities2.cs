@@ -20,16 +20,18 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            MapObject mapObj1 = new MapMarioObject();
-            MapObjectSettings settings = new MapObjectSettings(changeTriangleWithinDist: true, newTriangleWithinDist: 100);
-            mapObj1.ApplySettings(settings);
+            XDocument doc = Config.MapGui.flowLayoutPanelMapTrackers.ToXDocument();
 
-            MapObject mapObj2 = new MapHolpObject();
+            //MapObject mapObj1 = new MapMarioObject();
+            //MapObjectSettings settings = new MapObjectSettings(changeTriangleWithinDist: true, newTriangleWithinDist: 100);
+            //mapObj1.ApplySettings(settings);
 
-            MapTracker mapTracker = new MapTracker(new List<MapObject>() { mapObj1, mapObj2 });
+            //MapObject mapObj2 = new MapHolpObject();
 
-            var xml = mapTracker.ToXElement();
-            string s = xml.ToString();
+            //MapTracker mapTracker = new MapTracker(new List<MapObject>() { mapObj1, mapObj2 });
+
+            //var xml = mapTracker.ToXElement();
+            //string s = xml.ToString();
 
             //MapObjectSettings settings = new MapObjectSettings(
             //    changeTriangleWithinDist: true, newTriangleWithinDist: 100);
