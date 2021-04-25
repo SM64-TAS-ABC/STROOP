@@ -235,9 +235,9 @@ namespace STROOP.Map
                 case "MapObjectAngleRange":
                     mapObject = new MapObjectAngleRange(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
-                case "MapObjectBranchPath":
-                    mapObject = new MapObjectBranchPath(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
-                    break;
+                //case "MapObjectBranchPath":
+                //    mapObject = new MapObjectBranchPath(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                //    break;
                 case "MapObjectCamera":
                     mapObject = new MapObjectCamera();
                     break;
@@ -247,57 +247,59 @@ namespace STROOP.Map
                 case "MapObjectCoffinBox":
                     mapObject = new MapObjectCoffinBox(ParsingUtilities.ParseHex(xElement.Attribute(XName.Get("objectAddress")).Value));
                     break;
-                //case "MapObjectCompass":
-                //    mapObject = new MapObjectCompass();
-                //    break;
-                //case "MapObjectCoordinateLabels":
-                //    mapObject = new MapObjectCoordinateLabels();
-                //    break;
-                //case "MapObjectCUpFloor":
-                //    mapObject = new MapObjectCUpFloor();
-                //    break;
-                //case "MapObjectCurrentBackground":
-                //    mapObject = new MapObjectCurrentBackground();
-                //    break;
-                //case "MapObjectCurrentCell":
-                //    mapObject = new MapObjectCurrentCell();
-                //    break;
-                //case "MapObjectCurrentMap":
-                //    mapObject = new MapObjectCurrentMap();
-                //    break;
-                //case "MapObjectCurrentUnit":
-                //    mapObject = new MapObjectCurrentUnit();
-                //    break;
-                //case "MapObjectCustomBackground":
-                //    mapObject = new MapObjectCustomBackground();
-                //    break;
+                case "MapObjectCompass":
+                    mapObject = new MapObjectCompass();
+                    break;
+                case "MapObjectCoordinateLabels":
+                    mapObject = new MapObjectCoordinateLabels();
+                    break;
+                case "MapObjectCUpFloor":
+                    mapObject = new MapObjectCUpFloor();
+                    break;
+                case "MapObjectCurrentBackground":
+                    mapObject = new MapObjectCurrentBackground();
+                    break;
+                case "MapObjectCurrentCell":
+                    mapObject = new MapObjectCurrentCell();
+                    break;
+                case "MapObjectCurrentMap":
+                    mapObject = new MapObjectCurrentMap();
+                    break;
+                case "MapObjectCurrentUnit":
+                    mapObject = new MapObjectCurrentUnit(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectCustomBackground":
+                    mapObject = new MapObjectCustomBackground();
+                    break;
                 //case "MapObjectCustomCeiling":
                 //    mapObject = new MapObjectCustomCeiling();
                 //    break;
-                //case "MapObjectCustomCylinder":
-                //    mapObject = new MapObjectCustomCylinder();
-                //    break;
+                case "MapObjectCustomCylinder":
+                    mapObject = new MapObjectCustomCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
                 //case "MapObjectCustomCylinderPoints":
                 //    mapObject = new MapObjectCustomCylinderPoints();
                 //    break;
                 //case "MapObjectCustomFloor":
                 //    mapObject = new MapObjectCustomFloor();
                 //    break;
-                //case "MapObjectCustomGridlines":
-                //    mapObject = new MapObjectCustomGridlines();
-                //    break;
-                //case "MapObjectCustomMap":
-                //    mapObject = new MapObjectCustomMap();
-                //    break;
-                //case "MapObjectCustomPositionAngle":
-                //    mapObject = new MapObjectCustomPositionAngle();
-                //    break;
-                //case "MapObjectCustomPositionAngleArrow":
-                //    mapObject = new MapObjectCustomPositionAngleArrow();
-                //    break;
-                //case "MapObjectCustomSphere":
-                //    mapObject = new MapObjectCustomSphere();
-                //    break;
+                case "MapObjectCustomGridlines":
+                    mapObject = new MapObjectCustomGridlines();
+                    break;
+                case "MapObjectCustomMap":
+                    mapObject = new MapObjectCustomMap();
+                    break;
+                case "MapObjectCustomPositionAngle":
+                    mapObject = new MapObjectCustomPositionAngle(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectCustomPositionAngleArrow":
+                    mapObject = new MapObjectCustomPositionAngleArrow(
+                        PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle1")).Value),
+                        PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle2")).Value));
+                    break;
+                case "MapObjectCustomSphere":
+                    mapObject = new MapObjectCustomSphere(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
                 //case "MapObjectCustomSpherePoints":
                 //    mapObject = new MapObjectCustomSpherePoints();
                 //    break;
@@ -307,27 +309,27 @@ namespace STROOP.Map
                 //case "MapObjectCustomWall":
                 //    mapObject = new MapObjectCustomWall();
                 //    break;
-                //case "MapObjectDrawDistanceSphere":
-                //    mapObject = new MapObjectDrawDistanceSphere();
-                //    break;
+                case "MapObjectDrawDistanceSphere":
+                    mapObject = new MapObjectDrawDistanceSphere(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
                 //case "MapObjectDrawing":
                 //    mapObject = new MapObjectDrawing();
                 //    break;
-                //case "MapObjectEffectiveHitboxCylinder":
-                //    mapObject = new MapObjectEffectiveHitboxCylinder();
-                //    break;
-                //case "MapObjectEffectiveHurtboxCylinder":
-                //    mapObject = new MapObjectEffectiveHurtboxCylinder();
-                //    break;
-                //case "MapObjectFacingDivider":
-                //    mapObject = new MapObjectFacingDivider();
-                //    break;
-                //case "MapObjectFloatGridlines":
-                //    mapObject = new MapObjectFloatGridlines();
-                //    break;
-                //case "MapObjectGhost":
-                //    mapObject = new MapObjectGhost();
-                //    break;
+                case "MapObjectEffectiveHitboxCylinder":
+                    mapObject = new MapObjectEffectiveHitboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectEffectiveHurtboxCylinder":
+                    mapObject = new MapObjectEffectiveHurtboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectFacingDivider":
+                    mapObject = new MapObjectFacingDivider(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectFloatGridlines":
+                    mapObject = new MapObjectFloatGridlines();
+                    break;
+                case "MapObjectGhost":
+                    mapObject = new MapObjectGhost();
+                    break;
                 //case "MapObjectHitboxCylinder":
                 //    mapObject = new MapObjectHitboxCylinder();
                 //    break;

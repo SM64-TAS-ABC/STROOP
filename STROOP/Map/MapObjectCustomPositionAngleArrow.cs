@@ -10,6 +10,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -43,6 +44,15 @@ namespace STROOP.Map
         public override string GetName()
         {
             return "Custom Position Angle Arrow";
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            return new List<XAttribute>()
+            {
+                new XAttribute("positionAngle1", _posPA),
+                new XAttribute("positionAngle2", _anglePA),
+            };
         }
     }
 }
