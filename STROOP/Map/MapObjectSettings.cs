@@ -98,6 +98,12 @@
         public readonly bool ChangeTriangle;
         public readonly uint? NewTriangle;
 
+        public readonly bool ChangeLineSegmentUseFixedSize;
+        public readonly bool NewLineSegmentUseFixedSize;
+
+        public readonly bool ChangeLineSegmentBackwardsSize;
+        public readonly float NewLineSegmentBackwardsSize;
+
         public MapObjectSettings(
             bool changeCustomCylinderRelativeMinY = false,
             float newCustomCylinderRelativeMinY = 0,
@@ -193,7 +199,13 @@
             bool newShowQuarterSteps = false,
 
             bool changeTriangle = false,
-            uint? newTriangle = null)
+            uint? newTriangle = null,
+
+            bool changeLineSegmentUseFixedSize = false,
+            bool newLineSegmentUseFixedSize = false,
+
+            bool changeLineSegmentBackwardsSize = false,
+            float newLineSegmentBackwardsSize = 0)
         {
             ChangeCustomCylinderRelativeMinY = changeCustomCylinderRelativeMinY;
             NewCustomCylinderRelativeMinY = newCustomCylinderRelativeMinY;
@@ -290,6 +302,12 @@
 
             ChangeTriangle = changeTriangle;
             NewTriangle = newTriangle;
+
+            ChangeLineSegmentUseFixedSize = changeLineSegmentUseFixedSize;
+            NewLineSegmentUseFixedSize = newLineSegmentUseFixedSize;
+
+            ChangeLineSegmentBackwardsSize = changeLineSegmentBackwardsSize;
+            NewLineSegmentBackwardsSize = newLineSegmentBackwardsSize;
         }
     }
 }

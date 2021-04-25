@@ -20,6 +20,9 @@ namespace STROOP.Map
         private bool _useFixedSize;
         private float _backwardsSize;
 
+        private ToolStripMenuItem _itemUseFixedSize;
+        private ToolStripMenuItem _itemSetBackwardsSize;
+
         private static readonly string SET_BACKWARDS_SIZE_TEXT = "Set Backwards Size";
 
         public MapLineSegmentObject(PositionAngle posAngle1, PositionAngle posAngle2)
@@ -61,32 +64,51 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                ToolStripMenuItem itemUseFixedSize = new ToolStripMenuItem("Use Fixed Size");
-                itemUseFixedSize.Click += (sender, e) =>
+                _itemUseFixedSize = new ToolStripMenuItem("Use Fixed Size");
+                _itemUseFixedSize.Click += (sender, e) =>
                 {
-                    _useFixedSize = !_useFixedSize;
-                    itemUseFixedSize.Checked = _useFixedSize;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeLineSegmentUseFixedSize: true, newLineSegmentUseFixedSize: !_useFixedSize);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
 
                 string suffix = string.Format(" ({0})", _backwardsSize);
-                ToolStripMenuItem itemSetBackwardsSize = new ToolStripMenuItem(SET_BACKWARDS_SIZE_TEXT + suffix);
-                itemSetBackwardsSize.Click += (sender, e) =>
+                _itemSetBackwardsSize = new ToolStripMenuItem(SET_BACKWARDS_SIZE_TEXT + suffix);
+                _itemSetBackwardsSize.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter backwards size.");
                     float? backwardsSizeNullable = ParsingUtilities.ParseFloatNullable(text);
                     if (!backwardsSizeNullable.HasValue) return;
                     float backwardsSize = backwardsSizeNullable.Value;
-                    _backwardsSize = backwardsSize;
-                    string suffix2 = string.Format(" ({0})", _backwardsSize);
-                    itemSetBackwardsSize.Text = SET_BACKWARDS_SIZE_TEXT + suffix2;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeLineSegmentBackwardsSize: true, newLineSegmentBackwardsSize: backwardsSize);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(itemUseFixedSize);
-                _contextMenuStrip.Items.Add(itemSetBackwardsSize);
+                _contextMenuStrip.Items.Add(_itemUseFixedSize);
+                _contextMenuStrip.Items.Add(_itemSetBackwardsSize);
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeLineSegmentUseFixedSize)
+            {
+                _useFixedSize = settings.NewLineSegmentUseFixedSize;
+                _itemUseFixedSize.Checked = settings.NewLineSegmentUseFixedSize;
+            }
+
+            if (settings.ChangeLineSegmentBackwardsSize)
+            {
+                _backwardsSize = settings.NewLineSegmentBackwardsSize;
+                string suffix = string.Format(" ({0})", settings.NewLineSegmentBackwardsSize);
+                _itemSetBackwardsSize.Text = SET_BACKWARDS_SIZE_TEXT + suffix;
+            }
         }
 
         public override string GetName()
