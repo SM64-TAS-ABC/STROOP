@@ -29,7 +29,7 @@ namespace STROOP.Map
 
         private bool _isVisible;
         private MapTrackerVisibilityType _currentVisiblityType;
-        private bool _showTriUnits;
+        private bool _scaleIcons;
 
         private string _customName;
 
@@ -54,7 +54,6 @@ namespace STROOP.Map
 
             _isVisible = true;
             _currentVisiblityType = MapTrackerVisibilityType.VisibleWhenLoaded;
-            _showTriUnits = false;
 
             pictureBoxPicture.ContextMenuStrip = new ContextMenuStrip();
             ToolStripMenuItem itemUseTopDownImage = new ToolStripMenuItem("Use Top Down Image");
@@ -128,7 +127,7 @@ namespace STROOP.Map
             trackBarOutlineWidth.AddManualChangeAction(() => trackBarOutlineWidth_ValueChanged());
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
             colorSelectorOutline.AddColorChangeAction((Color color) => SetOutlineColor(color));
-
+            checkBoxScaleIcons.Click += (sender, e) => SetScaleIcons(checkBoxScaleIcons.Checked);
             _mapObjectList.ForEach(mapObj => mapObj.GetContextMenuStrip()); // avoids null pointer exceptions
             pictureBoxCog.ContextMenuStrip = _mapObjectList[0].GetContextMenuStrip();
             pictureBoxCog.Click += (sender, e) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
@@ -910,16 +909,10 @@ namespace STROOP.Map
             _mapObjectList.ForEach(mapObj => mapObj.CustomRotates = customRotates);
         }
 
-        public void SetShowTriUnits(bool showTriUnits)
+        public void SetScaleIcons(bool scaleIcons)
         {
-            _showTriUnits = showTriUnits;
-            checkBoxShowTriUnits.Checked = showTriUnits;
-        }
-
-        private void CheckBoxShowTriUnits_CheckedChanged(object sender, EventArgs e)
-        {
-            _showTriUnits = checkBoxShowTriUnits.Checked;
-            _mapObjectList.ForEach(mapObj => mapObj.ShowTriUnits = _showTriUnits);
+            checkBoxScaleIcons.Checked = scaleIcons;
+            _mapObjectList.ForEach(mapObj => mapObj.ScaleIcons = scaleIcons);
         }
 
         private void pictureBoxRedX_Click(object sender, EventArgs e)
@@ -1025,7 +1018,7 @@ namespace STROOP.Map
             xElement.Add(new XAttribute("color", ColorUtilities.ConvertColorToParams(_mapObjectList[0].Color)));
             xElement.Add(new XAttribute("outlineColor", ColorUtilities.ConvertColorToParams(_mapObjectList[0].OutlineColor)));
             if (_mapObjectList[0].CustomRotates.HasValue) xElement.Add(new XAttribute("customRotates", _mapObjectList[0].CustomRotates));
-            xElement.Add(new XAttribute("showTriUnits", _mapObjectList[0].ShowTriUnits));
+            xElement.Add(new XAttribute("scaleIcons", _mapObjectList[0].ScaleIcons));
             xElement.Add(new XAttribute("isVisible", _isVisible));
             foreach (MapObject mapObj in _mapObjectList)
             {
@@ -1048,7 +1041,7 @@ namespace STROOP.Map
             tracker.SetOutlineColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("outlineColor")).Value));
             bool? customRotates = ParsingUtilities.ParseBoolNullable(xElement.Attribute(XName.Get("customRotates"))?.Value);
             if (customRotates.HasValue) tracker.SetCustomRotates(customRotates);
-            tracker.SetShowTriUnits(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("showTriUnits")).Value));
+            tracker.SetScaleIcons(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("scaleIcons")).Value));
             tracker.SetIsVisible(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisible")).Value));
             return tracker;
         }

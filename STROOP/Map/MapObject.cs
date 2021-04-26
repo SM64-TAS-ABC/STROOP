@@ -44,7 +44,7 @@ namespace STROOP.Map
 
         private BehaviorCriteria? _behaviorCriteriaToDisplay = null;
 
-        public bool ShowTriUnits = false;
+        public bool ScaleIcons = false;
 
         protected ContextMenuStrip _contextMenuStrip = null;
 

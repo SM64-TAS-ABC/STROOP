@@ -32,7 +32,7 @@ namespace STROOP.Map
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapTracker));
             this.tableLayoutPanel = new STROOP.Controls.BorderedTableLayoutPanel();
-            this.checkBoxShowTriUnits = new System.Windows.Forms.CheckBox();
+            this.checkBoxScaleIcons = new System.Windows.Forms.CheckBox();
             this.trackBarOutlineWidth = new STROOP.TrackBarEx();
             this.colorSelectorOutline = new STROOP.Controls.ColorSelector();
             this.pictureBoxDownArrow = new System.Windows.Forms.PictureBox();
@@ -82,7 +82,7 @@ namespace STROOP.Map
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel.Controls.Add(this.checkBoxShowTriUnits, 0, 5);
+            this.tableLayoutPanel.Controls.Add(this.checkBoxScaleIcons, 0, 5);
             this.tableLayoutPanel.Controls.Add(this.trackBarOutlineWidth, 0, 5);
             this.tableLayoutPanel.Controls.Add(this.colorSelectorOutline, 3, 3);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxDownArrow, 4, 3);
@@ -119,18 +119,17 @@ namespace STROOP.Map
             this.tableLayoutPanel.Size = new System.Drawing.Size(325, 128);
             this.tableLayoutPanel.TabIndex = 40;
             // 
-            // checkBoxShowTriUnits
+            // checkBoxScaleIcons
             // 
-            this.checkBoxShowTriUnits.AutoSize = true;
-            this.checkBoxShowTriUnits.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBoxShowTriUnits.Location = new System.Drawing.Point(187, 109);
-            this.checkBoxShowTriUnits.Margin = new System.Windows.Forms.Padding(3, 3, 0, 1);
-            this.checkBoxShowTriUnits.Name = "checkBoxShowTriUnits";
-            this.checkBoxShowTriUnits.Size = new System.Drawing.Size(103, 17);
-            this.checkBoxShowTriUnits.TabIndex = 44;
-            this.checkBoxShowTriUnits.Text = "Show Tri Units";
-            this.checkBoxShowTriUnits.UseVisualStyleBackColor = true;
-            this.checkBoxShowTriUnits.CheckedChanged += new System.EventHandler(this.CheckBoxShowTriUnits_CheckedChanged);
+            this.checkBoxScaleIcons.AutoSize = true;
+            this.checkBoxScaleIcons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxScaleIcons.Location = new System.Drawing.Point(187, 109);
+            this.checkBoxScaleIcons.Margin = new System.Windows.Forms.Padding(3, 3, 0, 1);
+            this.checkBoxScaleIcons.Name = "checkBoxScaleIcons";
+            this.checkBoxScaleIcons.Size = new System.Drawing.Size(103, 17);
+            this.checkBoxScaleIcons.TabIndex = 44;
+            this.checkBoxScaleIcons.Text = "Scale Icons";
+            this.checkBoxScaleIcons.UseVisualStyleBackColor = true;
             // 
             // trackBarOutlineWidth
             // 
@@ -471,6 +470,6 @@ namespace STROOP.Map
         private System.Windows.Forms.Label labelOutlineWidth;
         private BetterTextbox textBoxOutlineWidth;
         private System.Windows.Forms.PictureBox pictureBoxCog;
-        private System.Windows.Forms.CheckBox checkBoxShowTriUnits;
+        private System.Windows.Forms.CheckBox checkBoxScaleIcons;
     }
 }

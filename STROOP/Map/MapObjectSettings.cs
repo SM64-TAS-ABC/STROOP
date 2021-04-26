@@ -25,6 +25,9 @@ namespace STROOP.Map
         public readonly bool ChangeTriangleUseCrossSection;
         public readonly bool NewTriangleUseCrossSection;
 
+        public readonly bool ChangeHorizontalTriangleShowTriUnits;
+        public readonly bool NewHorizontalTriangleShowTriUnits;
+
         public readonly bool ChangeHorizontalTriangleMinHeight;
         public readonly float? NewHorizontalTriangleMinHeight;
 
@@ -137,6 +140,9 @@ namespace STROOP.Map
             bool changeTriangleUseCrossSection = false,
             bool newTriangleUseCrossSection = false,
 
+            bool changeHorizontalTriangleShowTriUnits = false,
+            bool newHorizontalTriangleShowTriUnits = false,
+
             bool changeHorizontalTriangleMinHeight = false,
             float? newHorizontalTriangleMinHeight = null,
 
@@ -247,6 +253,9 @@ namespace STROOP.Map
 
             ChangeTriangleUseCrossSection = changeTriangleUseCrossSection;
             NewTriangleUseCrossSection = newTriangleUseCrossSection;
+
+            ChangeHorizontalTriangleShowTriUnits = changeHorizontalTriangleShowTriUnits;
+            NewHorizontalTriangleShowTriUnits = newHorizontalTriangleShowTriUnits;
 
             ChangeHorizontalTriangleMinHeight = changeHorizontalTriangleMinHeight;
             NewHorizontalTriangleMinHeight = newHorizontalTriangleMinHeight;

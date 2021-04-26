@@ -18,10 +18,12 @@ namespace STROOP.Map
 {
     public abstract class MapObjectHorizontalTriangle : MapObjectTriangle
     {
+        private bool _showTriUnits;
         private float? _minHeight;
         private float? _maxHeight;
         protected bool _enableQuarterFrameLandings;
 
+        private ToolStripMenuItem _itemShowTriUnits;
         private ToolStripMenuItem _itemSetMinHeight;
         private ToolStripMenuItem _itemSetMaxHeight;
 
@@ -31,6 +33,7 @@ namespace STROOP.Map
         public MapObjectHorizontalTriangle()
             : base()
         {
+            _showTriUnits = false;
             _minHeight = null;
             _maxHeight = null;
         }
@@ -69,7 +72,7 @@ namespace STROOP.Map
                     (float yMin, float yMax) = yBounds[i];
                     List<Color> colors = new List<Color>() { Color.Red, Color.Yellow, Color.Green, Color.Cyan };
                     Color color = colors[i % 4];
-                    if (ShowTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
+                    if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
                     {
                         DrawOn2DControlTopDownViewWithUnits(yMin, yMax, color);
                     }
@@ -81,7 +84,7 @@ namespace STROOP.Map
             }
             else
             {
-                if (ShowTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
+                if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
                 {
                     DrawOn2DControlTopDownViewWithUnits(_minHeight, _maxHeight, Color);
                 }
@@ -270,6 +273,14 @@ namespace STROOP.Map
 
         protected List<ToolStripMenuItem> GetHorizontalTriangleToolStripMenuItems()
         {
+            _itemShowTriUnits = new ToolStripMenuItem("Show Tri Units");
+            _itemShowTriUnits.Click += (sender, e) =>
+            {
+                MapObjectSettings settings = new MapObjectSettings(
+                    changeHorizontalTriangleShowTriUnits: true, newHorizontalTriangleShowTriUnits: !_showTriUnits);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
             _itemSetMinHeight = new ToolStripMenuItem(SET_MIN_HEIGHT_TEXT);
             _itemSetMinHeight.Click += (sender, e) =>
             {
@@ -316,6 +327,7 @@ namespace STROOP.Map
 
             return new List<ToolStripMenuItem>()
             {
+                _itemShowTriUnits,
                 _itemSetMinHeight,
                 itemClearMinHeight,
                 _itemSetMaxHeight,
@@ -326,6 +338,12 @@ namespace STROOP.Map
         public override void ApplySettings(MapObjectSettings settings)
         {
             base.ApplySettings(settings);
+
+            if (settings.ChangeHorizontalTriangleShowTriUnits)
+            {
+                _showTriUnits = settings.NewHorizontalTriangleShowTriUnits;
+                _itemShowTriUnits.Checked = settings.NewHorizontalTriangleShowTriUnits;
+            }
 
             if (settings.ChangeHorizontalTriangleMinHeight)
             {
