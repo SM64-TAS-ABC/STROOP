@@ -181,7 +181,7 @@ namespace STROOP.Map
             {
                 foreach ((float x, float z) in verticesForControl)
                 {
-                    SizeF size = MapUtilities.ScaleImageSizeForControl(_image.Size, _imageSize);
+                    SizeF size = MapUtilities.ScaleImageSizeForControl(_image.Size, _imageSize, ScaleIcons);
                     MapUtilities.DrawTexture(_tex, new PointF(x, z), size, 0, 1);
                 }
             }
@@ -230,7 +230,7 @@ namespace STROOP.Map
             {
                 foreach ((float x, float z) in verticesForControl)
                 {
-                    SizeF size = MapUtilities.ScaleImageSizeForControl(_image.Size, _imageSize);
+                    SizeF size = MapUtilities.ScaleImageSizeForControl(_image.Size, _imageSize, ScaleIcons);
                     MapUtilities.DrawTexture(_tex, new PointF(x, z), size, 0, 1);
                 }
             }

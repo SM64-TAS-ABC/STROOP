@@ -260,7 +260,6 @@ namespace STROOP
                 checkBoxMapOptionsEnableCrossSection = checkBoxMapOptionsEnableCrossSection,
                 checkBoxMapOptionsEnablePuView = checkBoxMapOptionsEnablePuView,
                 checkBoxMapOptionsReverseDragging = checkBoxMapOptionsReverseDragging,
-                checkBoxMapOptionsScaleIconSizes = checkBoxMapOptionsScaleIconSizes,
 
                 labelMapOptionsGlobalIconSize = labelMapOptionsGlobalIconSize,
                 textBoxMapOptionsGlobalIconSize = textBoxMapOptionsGlobalIconSize,

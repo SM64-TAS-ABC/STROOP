@@ -134,10 +134,10 @@ namespace STROOP.Map
             return (float)MoreMath.AngleUnitsToDegrees(angle);
         }
 
-        public static SizeF ScaleImageSizeForControl(Size imageSize, float desiredRadius)
+        public static SizeF ScaleImageSizeForControl(Size imageSize, float desiredRadius, bool scaleIcons)
         {
             float desiredDiameter = desiredRadius * 2;
-            if (Config.MapGui.checkBoxMapOptionsScaleIconSizes.Checked) desiredDiameter *= Config.CurrentMapGraphics.MapViewScaleValue;
+            if (scaleIcons) desiredDiameter *= Config.CurrentMapGraphics.MapViewScaleValue;
             float scale = Math.Max(imageSize.Height / desiredDiameter, imageSize.Width / desiredDiameter);
             return new SizeF(imageSize.Width / scale, imageSize.Height / scale);
         }
