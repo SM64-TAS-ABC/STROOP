@@ -12,6 +12,7 @@ using OpenTK;
 using System.Drawing.Imaging;
 using STROOP.Models;
 using System.Windows.Forms;
+using STROOP.Map.Map3D;
 
 namespace STROOP.Map
 {
@@ -615,6 +616,70 @@ namespace STROOP.Map
                 MoreMath.GetPlaneDistanceToPointSigned(
                     Config.CurrentMapGraphics.MapViewCenterXValue, Config.CurrentMapGraphics.MapViewCenterYValue, Config.CurrentMapGraphics.MapViewCenterZValue,
                     Config.CurrentMapGraphics.MapViewYawValue, Config.CurrentMapGraphics.MapViewPitchValue, tri.X3, tri.Y3, tri.Z3));
+        }
+
+        public static void DrawLinesOn2DControlTopDownView(List<(float x, float y, float z)> vertices, float lineWidth, Color color, byte opacityByte)
+        {
+            if (lineWidth == 0) return;
+
+            List<(float x, float z)> veriticesForControl =
+                vertices.ConvertAll(vertex => ConvertCoordsForControlTopDownView(vertex.x, vertex.z));
+
+            GL.BindTexture(TextureTarget.Texture2D, -1);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+            GL.Color4(color.R, color.G, color.B, opacityByte);
+            GL.LineWidth(lineWidth);
+            GL.Begin(PrimitiveType.Lines);
+            foreach ((float x, float z) in veriticesForControl)
+            {
+                GL.Vertex2(x, z);
+            }
+            GL.End();
+            GL.Color4(1, 1, 1, 1.0f);
+        }
+
+        public static void DrawLinesOn2DControlOrthographicView(List<(float x, float y, float z)> vertices, float lineWidth, Color color, byte opacityByte)
+        {
+            if (lineWidth == 0) return;
+
+            List<(float x, float z)> veriticesForControl =
+                vertices.ConvertAll(vertex => ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z));
+
+            GL.BindTexture(TextureTarget.Texture2D, -1);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+            GL.Color4(color.R, color.G, color.B, opacityByte);
+            GL.LineWidth(lineWidth);
+            GL.Begin(PrimitiveType.Lines);
+            foreach ((float x, float z) in veriticesForControl)
+            {
+                GL.Vertex2(x, z);
+            }
+            GL.End();
+            GL.Color4(1, 1, 1, 1.0f);
+        }
+
+        public static void DrawLinesOn3DControl(List<(float x, float y, float z)> vertices, float lineWidth, Color color, Matrix4 modelMatrix)
+        {
+            if (lineWidth == 0) return;
+
+            Map3DVertex[] vertexArrayForEdges =
+                vertices.ConvertAll(vertex => new Map3DVertex(new Vector3(
+                    vertex.x, vertex.y, vertex.z), color)).ToArray();
+
+            Matrix4 viewMatrix = modelMatrix * Config.Map3DCamera.Matrix;
+            GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
+
+            int buffer = GL.GenBuffer();
+            GL.BindTexture(TextureTarget.Texture2D, WhiteTexture);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArrayForEdges.Length * Map3DVertex.Size),
+                vertexArrayForEdges, BufferUsageHint.DynamicDraw);
+            GL.LineWidth(lineWidth);
+            Config.Map3DGraphics.BindVertices();
+            GL.DrawArrays(PrimitiveType.Lines, 0, vertexArrayForEdges.Length);
+            GL.DeleteBuffer(buffer);
         }
     }
 }
