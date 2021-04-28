@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace STROOP.Map
 {
-    public class MapObjectLedgeGrabChecker : MapObjectLine
+    public class MapObjectLedgeGrabChecker : MapObject
     {
         private uint? _customWallTri;
 
@@ -24,35 +24,79 @@ namespace STROOP.Map
         public MapObjectLedgeGrabChecker()
             : base()
         {
-            OutlineWidth = 5;
+            Size = 3;
+            OutlineWidth = 9;
+            Color = Color.Orange;
             OutlineColor = Color.Purple;
 
             _customWallTri = null;
         }
 
-        protected override List<(float x, float y, float z)> GetVerticesTopDownView()
+        public override void DrawOn2DControlTopDownView()
+        {
+            foreach (bool b in new List<bool>() { false, true })
+            {
+                var data = GetData(b);
+                MapUtilities.DrawLinesOn2DControlTopDownView(data.vertices, data.lineWidth, data.color, OpacityByte);
+            }
+        }
+
+        public override void DrawOn2DControlOrthographicView()
+        {
+            foreach (bool b in new List<bool>() { false, true })
+            {
+                var data = GetData(b);
+                MapUtilities.DrawLinesOn2DControlOrthographicView(data.vertices, data.lineWidth, data.color, OpacityByte);
+            }
+        }
+
+        public override void DrawOn3DControl()
+        {
+            foreach (bool b in new List<bool>() { false, true })
+            {
+                var data = GetData(b);
+                MapUtilities.DrawLinesOn3DControl(data.vertices, data.lineWidth, data.color, GetModelMatrix());
+            }
+        }
+
+        protected (List<(float x, float y, float z)> vertices, float lineWidth, Color color) GetData(bool whichLine)
         {
             float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
             float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+            float lineWidth;
+            Color color;
 
-            vertices.Add((marioX, marioY + 30, marioZ));
-            vertices.Add((marioX, marioY + 150, marioZ));
-
-            uint wallTriangle = _customWallTri ?? Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
-            if (wallTriangle != 0)
+            if (whichLine)
             {
-                double wallUphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(wallTriangle);
-                (float x2, float z2) = ((float, float))MoreMath.AddVectorToPoint(60, wallUphillAngle, marioX, marioZ);
-                vertices.Add((x2, marioY + 100, z2));
-                vertices.Add((x2, marioY + 238, z2));
+                uint wallTriangle = _customWallTri ?? Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+                if (wallTriangle != 0)
+                {
+                    double wallUphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(wallTriangle);
+                    (float x2, float z2) = ((float, float))MoreMath.AddVectorToPoint(60, wallUphillAngle, marioX, marioZ);
+                    vertices.Add((x2, marioY + 100, z2));
+                    vertices.Add((x2, marioY + 238, z2));
+                }
+                lineWidth = Size;
+                color = Color;
+            }
+            else
+            {
+                vertices.Add((marioX, marioY + 30, marioZ));
+                vertices.Add((marioX, marioY + 150, marioZ));
+                lineWidth = OutlineWidth;
+                color = OutlineColor;
             }
 
-            return vertices;
+            return (vertices, lineWidth, color);
         }
 
+        public override MapDrawType GetDrawType()
+        {
+            return MapDrawType.Perspective;
+        }
 
         public override ContextMenuStrip GetContextMenuStrip()
         {
