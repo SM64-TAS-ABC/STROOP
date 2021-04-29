@@ -95,15 +95,16 @@ namespace STROOP.Map
 
         private void OnPaint()
         {
+            Config.CurrentMapGraphics = this;
+            Config.MapGui.CurrentControl = _glControl;
+            _glControl.MakeCurrent();
+
             Cursor cursor = Config.MapManager.NumDrawingsEnabled > 0 ? Cursors.Cross : Cursors.Hand;
             if (_glControl.Cursor != cursor)
             {
                 _glControl.Cursor = cursor;
             }
 
-            Config.CurrentMapGraphics = this;
-            Config.MapGui.CurrentControl = _glControl;
-            _glControl.MakeCurrent();
             UpdateViewport();
             UpdateMapView();
 
