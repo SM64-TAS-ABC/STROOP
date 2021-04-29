@@ -61,6 +61,25 @@ namespace STROOP.Map
             return vertices;
         }
 
+        protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
+        {
+            (double x1, double y1, double z1, double angle1) = _posAngle1.GetValues();
+            (double x2, double y2, double z2, double angle2) = _posAngle2.GetValues();
+            double dist = PositionAngle.GetDistance(_posAngle1, _posAngle2);
+            (double startX, double startY, double startZ) = MoreMath.ExtrapolateLine3D(x2, y2, z2, x1, y1, z1, dist + _backwardsSize);
+            (double endX, double endY, double endZ) = MoreMath.ExtrapolateLine3D(x1, y1, z1, x2, y2, z2, (_useFixedSize ? 0 : dist) + Size);
+
+            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+            vertices.Add(((float)startX, (float)startY, (float)startZ));
+            vertices.Add(((float)endX, (float)endY, (float)endZ));
+            return vertices;
+        }
+
+        protected override List<(float x, float y, float z)> GetVertices3D()
+        {
+            return GetVerticesOrthographicView();
+        }
+
         public override ContextMenuStrip GetContextMenuStrip()
         {
             if (_contextMenuStrip == null)
