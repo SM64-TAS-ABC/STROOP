@@ -1012,11 +1012,11 @@ namespace STROOP.Map
             xElement.Add(new XAttribute("size", _mapObjectList[0].Size));
             xElement.Add(new XAttribute("opacity", _mapObjectList[0].OpacityPercent));
             xElement.Add(new XAttribute("outlineWidth", _mapObjectList[0].OutlineWidth));
-            xElement.Add(new XAttribute("orderType", comboBoxOrderType.SelectedItem.ToString()));
-            xElement.Add(new XAttribute("visibilityType", comboBoxVisibilityType.SelectedItem.ToString()));
+            xElement.Add(new XAttribute("orderType", comboBoxOrderType.SelectedItem));
+            xElement.Add(new XAttribute("visibilityType", comboBoxVisibilityType.SelectedItem));
             xElement.Add(new XAttribute("color", ColorUtilities.ConvertColorToParams(_mapObjectList[0].Color)));
             xElement.Add(new XAttribute("outlineColor", ColorUtilities.ConvertColorToParams(_mapObjectList[0].OutlineColor)));
-            if (_mapObjectList[0].CustomRotates.HasValue) xElement.Add(new XAttribute("customRotates", _mapObjectList[0].CustomRotates));
+            xElement.Add(new XAttribute("customRotates", (object)_mapObjectList[0].CustomRotates ?? ""));
             xElement.Add(new XAttribute("scales", _mapObjectList[0].Scales));
             xElement.Add(new XAttribute("isVisible", _isVisible));
             foreach (MapObject mapObj in _mapObjectList)
@@ -1038,8 +1038,7 @@ namespace STROOP.Map
             tracker.comboBoxVisibilityType.SelectedItem = Enum.Parse(typeof(MapTrackerVisibilityType), xElement.Attribute(XName.Get("visibilityType")).Value);
             tracker.SetColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("color")).Value));
             tracker.SetOutlineColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("outlineColor")).Value));
-            bool? customRotates = ParsingUtilities.ParseBoolNullable(xElement.Attribute(XName.Get("customRotates"))?.Value);
-            if (customRotates.HasValue) tracker.SetCustomRotates(customRotates);
+            tracker.SetCustomRotates(ParsingUtilities.ParseBoolNullable(xElement.Attribute(XName.Get("customRotates")).Value));
             tracker.SetScales(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("scales")).Value));
             tracker.SetIsVisible(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisible")).Value));
             return tracker;
