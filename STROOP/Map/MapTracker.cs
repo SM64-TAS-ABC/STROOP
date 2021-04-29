@@ -117,6 +117,7 @@ namespace STROOP.Map
             SetOutlineWidth(null);
             SetColor(null);
             SetOutlineColor(null);
+            SetScales(null);
 
             textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
             trackBarSize.AddManualChangeAction(() => trackBarSize_ValueChanged());
@@ -908,10 +909,15 @@ namespace STROOP.Map
             _mapObjectList.ForEach(mapObj => mapObj.CustomRotates = customRotates);
         }
 
-        public void SetScales(bool scales)
+        public void SetScales(bool? scalesNullable)
         {
+            bool updateMapObjs = scalesNullable != null;
+            bool scales = scalesNullable ?? _mapObjectList[0].Scales;
+            if (updateMapObjs)
+            {
+                _mapObjectList.ForEach(mapObj => mapObj.Scales = scales);
+            }
             checkBoxScales.Checked = scales;
-            _mapObjectList.ForEach(mapObj => mapObj.Scales = scales);
         }
 
         private void pictureBoxRedX_Click(object sender, EventArgs e)

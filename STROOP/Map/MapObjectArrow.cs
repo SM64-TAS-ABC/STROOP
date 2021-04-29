@@ -39,6 +39,7 @@ namespace STROOP.Map
             Size = 300;
             OutlineWidth = 3;
             OutlineColor = Color.Yellow;
+            Scales = true;
         }
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
@@ -50,13 +51,16 @@ namespace STROOP.Map
             float preYaw = (float)GetYaw() + _angleOffset;
             float yaw = _useTruncatedAngle ? MoreMath.NormalizeAngleTruncated(preYaw) : preYaw;
             float size = _useRecommendedArrowLength ? (float)GetRecommendedSize() : Size;
+            if (!Scales) size /= Config.CurrentMapGraphics.MapViewScaleValue;
             (float arrowHeadX, float arrowHeadZ) =
                 ((float, float))MoreMath.AddVectorToPoint(size, yaw, x, z);
 
+            float sideLength = _arrowHeadSideLength;
+            if (!Scales) sideLength /= Config.CurrentMapGraphics.MapViewScaleValue;
             (float pointSide1X, float pointSide1Z) =
-                ((float, float))MoreMath.AddVectorToPoint(_arrowHeadSideLength, yaw + 32768 + 8192, arrowHeadX, arrowHeadZ);
+                ((float, float))MoreMath.AddVectorToPoint(sideLength, yaw + 32768 + 8192, arrowHeadX, arrowHeadZ);
             (float pointSide2X, float pointSide2Z) =
-                ((float, float))MoreMath.AddVectorToPoint(_arrowHeadSideLength, yaw + 32768 - 8192, arrowHeadX, arrowHeadZ);
+                ((float, float))MoreMath.AddVectorToPoint(sideLength, yaw + 32768 - 8192, arrowHeadX, arrowHeadZ);
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
 
