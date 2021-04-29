@@ -29,7 +29,6 @@ namespace STROOP.Map
 
         private bool _isVisible;
         private MapTrackerVisibilityType _currentVisiblityType;
-        private bool _scaleIcons;
 
         private string _customName;
 
@@ -127,7 +126,7 @@ namespace STROOP.Map
             trackBarOutlineWidth.AddManualChangeAction(() => trackBarOutlineWidth_ValueChanged());
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
             colorSelectorOutline.AddColorChangeAction((Color color) => SetOutlineColor(color));
-            checkBoxScaleIcons.Click += (sender, e) => SetScaleIcons(checkBoxScaleIcons.Checked);
+            checkBoxScales.Click += (sender, e) => SetScales(checkBoxScales.Checked);
             _mapObjectList.ForEach(mapObj => mapObj.GetContextMenuStrip()); // avoids null pointer exceptions
             pictureBoxCog.ContextMenuStrip = _mapObjectList[0].GetContextMenuStrip();
             pictureBoxCog.Click += (sender, e) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
@@ -909,10 +908,10 @@ namespace STROOP.Map
             _mapObjectList.ForEach(mapObj => mapObj.CustomRotates = customRotates);
         }
 
-        public void SetScaleIcons(bool scaleIcons)
+        public void SetScales(bool scales)
         {
-            checkBoxScaleIcons.Checked = scaleIcons;
-            _mapObjectList.ForEach(mapObj => mapObj.ScaleIcons = scaleIcons);
+            checkBoxScales.Checked = scales;
+            _mapObjectList.ForEach(mapObj => mapObj.Scales = scales);
         }
 
         private void pictureBoxRedX_Click(object sender, EventArgs e)
@@ -1018,7 +1017,7 @@ namespace STROOP.Map
             xElement.Add(new XAttribute("color", ColorUtilities.ConvertColorToParams(_mapObjectList[0].Color)));
             xElement.Add(new XAttribute("outlineColor", ColorUtilities.ConvertColorToParams(_mapObjectList[0].OutlineColor)));
             if (_mapObjectList[0].CustomRotates.HasValue) xElement.Add(new XAttribute("customRotates", _mapObjectList[0].CustomRotates));
-            xElement.Add(new XAttribute("scaleIcons", _mapObjectList[0].ScaleIcons));
+            xElement.Add(new XAttribute("scales", _mapObjectList[0].Scales));
             xElement.Add(new XAttribute("isVisible", _isVisible));
             foreach (MapObject mapObj in _mapObjectList)
             {
@@ -1041,7 +1040,7 @@ namespace STROOP.Map
             tracker.SetOutlineColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("outlineColor")).Value));
             bool? customRotates = ParsingUtilities.ParseBoolNullable(xElement.Attribute(XName.Get("customRotates"))?.Value);
             if (customRotates.HasValue) tracker.SetCustomRotates(customRotates);
-            tracker.SetScaleIcons(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("scaleIcons")).Value));
+            tracker.SetScales(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("scales")).Value));
             tracker.SetIsVisible(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisible")).Value));
             return tracker;
         }

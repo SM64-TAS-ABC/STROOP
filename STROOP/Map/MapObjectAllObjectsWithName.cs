@@ -60,7 +60,7 @@ namespace STROOP.Map
                 (float x, float y, float z, float angle, int tex) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
-                SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, ScaleIcons);
+                SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
                 MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
             }
@@ -75,7 +75,7 @@ namespace STROOP.Map
                 (float x, float y, float z, float angle, int tex) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
-                SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, ScaleIcons);
+                SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
                 MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
             }
