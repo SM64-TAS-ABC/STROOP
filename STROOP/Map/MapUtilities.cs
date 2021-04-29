@@ -13,6 +13,7 @@ using System.Drawing.Imaging;
 using STROOP.Models;
 using System.Windows.Forms;
 using STROOP.Map.Map3D;
+using OpenTK.Graphics;
 
 namespace STROOP.Map
 {
@@ -660,13 +661,14 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        public static void DrawLinesOn3DControl(List<(float x, float y, float z)> vertices, float lineWidth, Color color, Matrix4 modelMatrix)
+        public static void DrawLinesOn3DControl(List<(float x, float y, float z)> vertices, float lineWidth, Color color, byte opacityByte, Matrix4 modelMatrix)
         {
             if (lineWidth == 0) return;
 
+            Color4 color4 = new Color4(color.R, color.G, color.B, opacityByte);
             Map3DVertex[] vertexArrayForEdges =
                 vertices.ConvertAll(vertex => new Map3DVertex(new Vector3(
-                    vertex.x, vertex.y, vertex.z), color)).ToArray();
+                    vertex.x, vertex.y, vertex.z), color4)).ToArray();
 
             Matrix4 viewMatrix = modelMatrix * Config.Map3DCamera.Matrix;
             GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);

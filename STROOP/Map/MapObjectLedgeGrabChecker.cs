@@ -55,7 +55,7 @@ namespace STROOP.Map
             foreach (bool b in new List<bool>() { false, true })
             {
                 var data = GetData(b);
-                MapUtilities.DrawLinesOn3DControl(data.vertices, data.lineWidth, data.color, GetModelMatrix());
+                MapUtilities.DrawLinesOn3DControl(data.vertices, data.lineWidth, data.color, OpacityByte, GetModelMatrix());
             }
         }
 

@@ -33,7 +33,7 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            MapUtilities.DrawLinesOn3DControl(GetVertices3D(), OutlineWidth, OutlineColor, GetModelMatrix());
+            MapUtilities.DrawLinesOn3DControl(GetVertices3D(), OutlineWidth, OutlineColor, OpacityByte, GetModelMatrix());
         }
 
         protected abstract List<(float x, float y, float z)> GetVerticesTopDownView();
