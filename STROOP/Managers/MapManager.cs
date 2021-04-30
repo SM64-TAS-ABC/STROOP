@@ -864,6 +864,26 @@ namespace STROOP.Managers
             XElement root = new XElement(XName.Get("MapData"));
             doc.Add(root);
 
+            if (saveType == SaveType.MapTrackersMapTabSettingsStroopSettings)
+            {
+                XElement stroopSettings = new XElement(XName.Get("StroopSettings"));
+
+                stroopSettings.Add(new XAttribute("stroopMainFormWidth", Config.StroopMainForm.Width));
+                stroopSettings.Add(new XAttribute("stroopMainFormHeight", Config.StroopMainForm.Height));
+                stroopSettings.Add(new XAttribute("stroopMainFormLocationX", Config.StroopMainForm.Location.X));
+                stroopSettings.Add(new XAttribute("stroopMainFormLocationY", Config.StroopMainForm.Location.Y));
+
+                stroopSettings.Add(new XAttribute("splitContainerMainPanel1Collapsed", Config.SplitContainerMain.Panel1Collapsed));
+                stroopSettings.Add(new XAttribute("splitContainerMainPanel2Collapsed", Config.SplitContainerMain.Panel2Collapsed));
+                stroopSettings.Add(new XAttribute("splitContainerMainSplitterDistance", Config.SplitContainerMain.SplitterDistance));
+
+                stroopSettings.Add(new XAttribute("splitContainerMapPanel1Collapsed", Config.MapGui.splitContainerMap.Panel1Collapsed));
+                stroopSettings.Add(new XAttribute("splitContainerMapPanel2Collapsed", Config.MapGui.splitContainerMap.Panel2Collapsed));
+                stroopSettings.Add(new XAttribute("splitContainerMapSplitterDistance", Config.MapGui.splitContainerMap.SplitterDistance));
+
+                root.Add(stroopSettings);
+            }
+
             if (saveType == SaveType.MapTrackersMapTabSettings ||
                 saveType == SaveType.MapTrackersMapTabSettingsStroopSettings)
             {

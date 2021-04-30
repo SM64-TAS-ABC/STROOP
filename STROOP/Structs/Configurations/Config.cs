@@ -27,6 +27,7 @@ namespace STROOP.Structs.Configurations
         public static ObjectAssociations ObjectAssociations;
         public static MapAssociations MapAssociations;
         public static StroopMainForm StroopMainForm;
+        public static SplitContainer SplitContainerMain;
         public static TabControlEx TabControlMain;
         public static Label DebugText;
 

@@ -69,6 +69,7 @@ namespace STROOP
             SetUpContextMenuStrips();
 
             Config.StroopMainForm = this;
+            Config.SplitContainerMain = splitContainerMain;
             Config.TabControlMain = tabControlMain;
             Config.DebugText = labelDebugText;
 
@@ -242,6 +243,7 @@ namespace STROOP
                 GLControlMap2D = glControlMap2D,
                 GLControlMap3D = glControlMap3D,
                 flowLayoutPanelMapTrackers = flowLayoutPanelMapTrackers,
+                splitContainerMap = splitContainerMap,
 
                 checkBoxMapOptionsTrackMario = checkBoxMapOptionsTrackMario,
                 checkBoxMapOptionsTrackHolp = checkBoxMapOptionsTrackHolp,

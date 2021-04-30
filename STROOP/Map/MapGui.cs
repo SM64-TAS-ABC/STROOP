@@ -16,6 +16,7 @@ namespace STROOP.Map
         public GLControl GLControlMap2D;
         public GLControl GLControlMap3D;
         public MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
+        public SplitContainer splitContainerMap;
 
         public GLControl CurrentControl;
 
