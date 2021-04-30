@@ -21,6 +21,8 @@ namespace STROOP.Managers
 {
     public class MapManager : DataManager
     {
+        private enum SaveType { MapTrackers, MapTrackersMapTabSettings, MapTrackersMapTabSettingsStroopSettings };
+
         private Action _checkBoxMarioAction;
         private Action _checkBoxGhostAction;
         private Action _checkBoxFloorAction;
@@ -522,11 +524,21 @@ namespace STROOP.Managers
                 }
             };
 
-            Config.MapGui.buttonMapOptionsSave.Click += (sender, e) =>
-            {
-                DialogUtilities.SaveXmlElements(
-                    FileType.StroopMapData, "MapData", Config.MapGui.flowLayoutPanelMapTrackers.ToXElements());
-            };
+            Config.MapGui.buttonMapOptionsSave.Click += (sender, e) => Save(SaveType.MapTrackers);
+            ControlUtilities.AddContextMenuStripFunctions(
+                Config.MapGui.buttonMapOptionsSave,
+                new List<string>()
+                {
+                    "Save [Map Trackers]",
+                    "Save [Map Trackers], [Map Tab Settings]",
+                    "Save [Map Trackers], [Map Tab Settings], [STROOP Settings]",
+                },
+                new List<Action>()
+                {
+                    () => Save(SaveType.MapTrackers),
+                    () => Save(SaveType.MapTrackersMapTabSettings),
+                    () => Save(SaveType.MapTrackersMapTabSettingsStroopSettings),
+                });
 
             // Buttons for Changing Scale
             Config.MapGui.buttonMapControllersScaleMinus.Click += (sender, e) =>
@@ -852,6 +864,26 @@ namespace STROOP.Managers
                     ControlUtilities.SetTrackBarValueCapped(Config.MapGui.trackBarMapFov, parsed);
                 }
             });
+        }
+
+        private void Save(SaveType saveType)
+        {
+            XDocument document = GetXDocument(saveType);
+            DialogUtilities.SaveXmlDocument(FileType.StroopMapData, document);
+        }
+
+        private XDocument GetXDocument(SaveType saveType)
+        {
+            XDocument doc = new XDocument();
+            XElement root = new XElement(XName.Get("MapData"));
+            doc.Add(root);
+
+            foreach (XElement element in Config.MapGui.flowLayoutPanelMapTrackers.ToXElements())
+            {
+                root.Add(element);
+            }
+
+            return doc;
         }
 
         private void ResetToInitialState()

@@ -124,6 +124,19 @@ namespace STROOP.Structs
             document.Save(fileName);
         }
 
+        public static void SaveXmlDocument(
+            FileType fileType, XDocument document, string fileName = null)
+        {
+            if (fileName == null)
+            {
+                SaveFileDialog saveFileDialog = CreateSaveFileDialog(fileType);
+                DialogResult result = saveFileDialog.ShowDialog();
+                if (result != DialogResult.OK) return;
+                fileName = saveFileDialog.FileName;
+            }
+            document.Save(fileName);
+        }
+
         private static XDocument ConvertElementsIntoDocument(
             string xmlName, List<XElement> elements)
         {
