@@ -36,6 +36,8 @@ namespace STROOP.Managers
 
         private List<object> _mapLayoutChoices;
         private List<object> _backgroundImageChoices;
+        private Dictionary<string, object> _mapDictionary;
+        private Dictionary<string, object> _backgroundDictionary;
 
         public void NotifyDrawingEnabledChange(bool enabled)
         {
@@ -77,12 +79,16 @@ namespace STROOP.Managers
             _mapLayoutChoices = new List<object>() { "Recommended" };
             mapLayouts.ForEach(mapLayout => _mapLayoutChoices.Add(mapLayout));
             Config.MapGui.comboBoxMapOptionsLevel.DataSource = _mapLayoutChoices;
+            _mapDictionary = new Dictionary<string, object>();
+            _mapLayoutChoices.ForEach(map => _mapDictionary[map.ToString()] = map);
 
             // ComboBox for Background
             List<BackgroundImage> backgroundImages = Config.MapAssociations.GetAllBackgroundImages();
             _backgroundImageChoices = new List<object>() { "Recommended" };
             backgroundImages.ForEach(backgroundImage => _backgroundImageChoices.Add(backgroundImage));
             Config.MapGui.comboBoxMapOptionsBackground.DataSource = _backgroundImageChoices;
+            _backgroundDictionary = new Dictionary<string, object>();
+            _backgroundImageChoices.ForEach(background => _backgroundDictionary[background.ToString()] = background);
 
             // Buttons on Options
 
@@ -992,8 +998,8 @@ namespace STROOP.Managers
                 Config.MapGui.checkBoxMapOptionsEnableCrossSection.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableCrossSection")).Value);
                 Config.MapGui.checkBoxMapOptionsEnablePuView.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enablePuView")).Value);
                 Config.MapGui.checkBoxMapOptionsReverseDragging.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("reverseDragging")).Value);
-                // TODO: map
-                // TODO: background
+                Config.MapGui.comboBoxMapOptionsLevel.SelectedItem = _mapDictionary[mapTabSettings.Attribute(XName.Get("map")).Value];
+                Config.MapGui.comboBoxMapOptionsBackground.SelectedItem = _backgroundDictionary[mapTabSettings.Attribute(XName.Get("background")).Value];
 
                 Config.MapGraphics.SetScale((MapGraphics.MapScale)Enum.Parse(typeof(MapGraphics.MapScale), mapTabSettings.Attribute(XName.Get("mapViewScale")).Value));
                 if (Config.MapGraphics.MapViewScale == MapGraphics.MapScale.Custom)
