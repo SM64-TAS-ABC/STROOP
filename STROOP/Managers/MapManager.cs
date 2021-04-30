@@ -937,6 +937,24 @@ namespace STROOP.Managers
             XElement root = document.Root;
             List<XElement> xElements = root.Elements().ToList();
 
+            XElement stroopSettings = xElements.Find(el => el.Name == "StroopSettings");
+            if (stroopSettings != null)
+            {
+                Config.StroopMainForm.Width = ParsingUtilities.ParseInt(stroopSettings.Attribute(XName.Get("stroopMainFormWidth")).Value);
+                Config.StroopMainForm.Height = ParsingUtilities.ParseInt(stroopSettings.Attribute(XName.Get("stroopMainFormHeight")).Value);
+                Config.StroopMainForm.Location = new Point(
+                    ParsingUtilities.ParseInt(stroopSettings.Attribute(XName.Get("stroopMainFormLocationX")).Value),
+                    ParsingUtilities.ParseInt(stroopSettings.Attribute(XName.Get("stroopMainFormLocationY")).Value));
+
+                Config.SplitContainerMain.Panel1Collapsed = ParsingUtilities.ParseBool(stroopSettings.Attribute(XName.Get("splitContainerMainPanel1Collapsed")).Value);
+                Config.SplitContainerMain.Panel2Collapsed = ParsingUtilities.ParseBool(stroopSettings.Attribute(XName.Get("splitContainerMainPanel2Collapsed")).Value);
+                Config.SplitContainerMain.SplitterDistance = ParsingUtilities.ParseInt(stroopSettings.Attribute(XName.Get("splitContainerMainSplitterDistance")).Value);
+
+                Config.MapGui.splitContainerMap.Panel1Collapsed = ParsingUtilities.ParseBool(stroopSettings.Attribute(XName.Get("splitContainerMapPanel1Collapsed")).Value);
+                Config.MapGui.splitContainerMap.Panel2Collapsed = ParsingUtilities.ParseBool(stroopSettings.Attribute(XName.Get("splitContainerMapPanel2Collapsed")).Value);
+                Config.MapGui.splitContainerMap.SplitterDistance = ParsingUtilities.ParseInt(stroopSettings.Attribute(XName.Get("splitContainerMapSplitterDistance")).Value);
+            }
+
             xElements
                 .FindAll(xElement => xElement.Name == "MapTracker")
                 .ConvertAll(xElement => MapTracker.FromXElement(xElement))
