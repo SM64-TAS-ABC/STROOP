@@ -860,9 +860,9 @@ namespace STROOP.Managers
 
         private void Save(SaveType saveType)
         {
-            XDocument doc = new XDocument();
+            XDocument document = new XDocument();
             XElement root = new XElement(XName.Get("MapData"));
-            doc.Add(root);
+            document.Add(root);
 
             if (saveType == SaveType.MapTrackersMapTabSettingsStroopSettings)
             {
@@ -922,12 +922,9 @@ namespace STROOP.Managers
                 root.Add(mapTabSettings);
             }
 
-            foreach (XElement element in Config.MapGui.flowLayoutPanelMapTrackers.ToXElements())
-            {
-                root.Add(element);
-            }
+            Config.MapGui.flowLayoutPanelMapTrackers.ToXElements().ForEach(el => root.Add(el));
 
-            DialogUtilities.SaveXmlDocument(FileType.StroopMapData, doc);
+            DialogUtilities.SaveXmlDocument(FileType.StroopMapData, document);
         }
 
         private void Open()
