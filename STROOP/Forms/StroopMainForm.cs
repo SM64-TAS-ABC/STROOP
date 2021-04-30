@@ -272,7 +272,7 @@ namespace STROOP
                 buttonMapOptionsOpen = buttonMapOptionsOpen,
                 buttonMapOptionsSave = buttonMapOptionsSave,
 
-                comboBoxMapOptionsLevel = comboBoxMapOptionsLevel,
+                comboBoxMapOptionsMap = comboBoxMapOptionsMap,
                 comboBoxMapOptionsBackground = comboBoxMapOptionsBackground,
 
                 groupBoxMapControllersScale = groupBoxMapControllersScale,

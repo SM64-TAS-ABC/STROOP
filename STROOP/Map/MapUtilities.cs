@@ -146,7 +146,7 @@ namespace STROOP.Map
 
         public static MapLayout GetMapLayout(object mapLayoutChoice = null)
         {
-            mapLayoutChoice = mapLayoutChoice ?? Config.MapGui.comboBoxMapOptionsLevel.SelectedItem;
+            mapLayoutChoice = mapLayoutChoice ?? Config.MapGui.comboBoxMapOptionsMap.SelectedItem;
             if (mapLayoutChoice is MapLayout mapLayout)
             {
                 return mapLayout;

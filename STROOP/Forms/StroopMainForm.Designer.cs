@@ -745,7 +745,7 @@ namespace STROOP
             this.tabControlMap = new System.Windows.Forms.TabControl();
             this.tabPageMapOptions = new System.Windows.Forms.TabPage();
             this.comboBoxMapOptionsBackground = new System.Windows.Forms.ComboBox();
-            this.comboBoxMapOptionsLevel = new System.Windows.Forms.ComboBox();
+            this.comboBoxMapOptionsMap = new System.Windows.Forms.ComboBox();
             this.textBoxMapOptionsGlobalIconSize = new STROOP.BetterTextbox();
             this.labelMapOptionsGlobalIconSize = new System.Windows.Forms.Label();
             this.labelMapOptionsBackground = new System.Windows.Forms.Label();
@@ -10756,7 +10756,7 @@ namespace STROOP
             this.tabPageMapOptions.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMapOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPageMapOptions.Controls.Add(this.comboBoxMapOptionsBackground);
-            this.tabPageMapOptions.Controls.Add(this.comboBoxMapOptionsLevel);
+            this.tabPageMapOptions.Controls.Add(this.comboBoxMapOptionsMap);
             this.tabPageMapOptions.Controls.Add(this.textBoxMapOptionsGlobalIconSize);
             this.tabPageMapOptions.Controls.Add(this.labelMapOptionsGlobalIconSize);
             this.tabPageMapOptions.Controls.Add(this.labelMapOptionsBackground);
@@ -10798,14 +10798,14 @@ namespace STROOP
             this.comboBoxMapOptionsBackground.Size = new System.Drawing.Size(236, 21);
             this.comboBoxMapOptionsBackground.TabIndex = 13;
             // 
-            // comboBoxMapOptionsLevel
+            // comboBoxMapOptionsMap
             // 
-            this.comboBoxMapOptionsLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMapOptionsLevel.Location = new System.Drawing.Point(87, 240);
-            this.comboBoxMapOptionsLevel.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxMapOptionsLevel.Name = "comboBoxMapOptionsLevel";
-            this.comboBoxMapOptionsLevel.Size = new System.Drawing.Size(236, 21);
-            this.comboBoxMapOptionsLevel.TabIndex = 13;
+            this.comboBoxMapOptionsMap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMapOptionsMap.Location = new System.Drawing.Point(87, 240);
+            this.comboBoxMapOptionsMap.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxMapOptionsMap.Name = "comboBoxMapOptionsMap";
+            this.comboBoxMapOptionsMap.Size = new System.Drawing.Size(236, 21);
+            this.comboBoxMapOptionsMap.TabIndex = 13;
             // 
             // textBoxMapOptionsGlobalIconSize
             // 
@@ -23135,7 +23135,7 @@ namespace STROOP
         private TabControl tabControlMap;
         private TabPage tabPageMapOptions;
         private ComboBox comboBoxMapOptionsBackground;
-        private ComboBox comboBoxMapOptionsLevel;
+        private ComboBox comboBoxMapOptionsMap;
         private Label labelMapOptionsBackground;
         private Label labelMapOptionsLevel;
         private Button buttonMapOptionsClearAllTrackers;

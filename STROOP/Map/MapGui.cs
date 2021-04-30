@@ -51,7 +51,7 @@ namespace STROOP.Map
         public Button buttonMapOptionsSave;
 
         // Options - ComboBoxes
-        public ComboBox comboBoxMapOptionsLevel;
+        public ComboBox comboBoxMapOptionsMap;
         public ComboBox comboBoxMapOptionsBackground;
 
 

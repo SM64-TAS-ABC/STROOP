@@ -78,7 +78,7 @@ namespace STROOP.Managers
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
             _mapLayoutChoices = new List<object>() { "Recommended" };
             mapLayouts.ForEach(mapLayout => _mapLayoutChoices.Add(mapLayout));
-            Config.MapGui.comboBoxMapOptionsLevel.DataSource = _mapLayoutChoices;
+            Config.MapGui.comboBoxMapOptionsMap.DataSource = _mapLayoutChoices;
             _mapDictionary = new Dictionary<string, object>();
             _mapLayoutChoices.ForEach(map => _mapDictionary[map.ToString()] = map);
 
@@ -904,7 +904,7 @@ namespace STROOP.Managers
                 mapTabSettings.Add(new XAttribute("enableCrossSection", Config.MapGui.checkBoxMapOptionsEnableCrossSection.Checked));
                 mapTabSettings.Add(new XAttribute("enablePuView", Config.MapGui.checkBoxMapOptionsEnablePuView.Checked));
                 mapTabSettings.Add(new XAttribute("reverseDragging", Config.MapGui.checkBoxMapOptionsReverseDragging.Checked));
-                mapTabSettings.Add(new XAttribute("map", Config.MapGui.comboBoxMapOptionsLevel.SelectedItem));
+                mapTabSettings.Add(new XAttribute("map", Config.MapGui.comboBoxMapOptionsMap.SelectedItem));
                 mapTabSettings.Add(new XAttribute("background", Config.MapGui.comboBoxMapOptionsBackground.SelectedItem));
 
                 mapTabSettings.Add(new XAttribute("mapViewScale", Config.MapGraphics.MapViewScale));
@@ -998,7 +998,7 @@ namespace STROOP.Managers
                 Config.MapGui.checkBoxMapOptionsEnableCrossSection.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableCrossSection")).Value);
                 Config.MapGui.checkBoxMapOptionsEnablePuView.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enablePuView")).Value);
                 Config.MapGui.checkBoxMapOptionsReverseDragging.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("reverseDragging")).Value);
-                Config.MapGui.comboBoxMapOptionsLevel.SelectedItem = _mapDictionary[mapTabSettings.Attribute(XName.Get("map")).Value];
+                Config.MapGui.comboBoxMapOptionsMap.SelectedItem = _mapDictionary[mapTabSettings.Attribute(XName.Get("map")).Value];
                 Config.MapGui.comboBoxMapOptionsBackground.SelectedItem = _backgroundDictionary[mapTabSettings.Attribute(XName.Get("background")).Value];
 
                 Config.MapGraphics.SetScale((MapGraphics.MapScale)Enum.Parse(typeof(MapGraphics.MapScale), mapTabSettings.Attribute(XName.Get("mapViewScale")).Value));
@@ -1067,7 +1067,7 @@ namespace STROOP.Managers
         {
             Config.MapGui.flowLayoutPanelMapTrackers.ClearControls();
             _checkBoxMarioAction();
-            Config.MapGui.comboBoxMapOptionsLevel.SelectedItem = "Recommended";
+            Config.MapGui.comboBoxMapOptionsMap.SelectedItem = "Recommended";
             Config.MapGui.comboBoxMapOptionsBackground.SelectedItem = "Recommended";
             Config.MapGui.radioButtonMapControllersScaleCourseDefault.Checked = true;
             Config.MapGui.radioButtonMapControllersCenterBestFit.Checked = true;
@@ -1083,7 +1083,7 @@ namespace STROOP.Managers
             Config.MapGui.comboBoxMapOptionsBackground.SelectedItem = background;
 
             object map = _mapLayoutChoices.Find(obj => obj.ToString() == "Transparent");
-            Config.MapGui.comboBoxMapOptionsLevel.SelectedItem = map;
+            Config.MapGui.comboBoxMapOptionsMap.SelectedItem = map;
 
             MapTracker wallTracker = new MapTracker(new MapObjectLevelWall());
             wallTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
