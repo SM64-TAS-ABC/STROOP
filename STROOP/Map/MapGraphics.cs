@@ -355,6 +355,81 @@ namespace STROOP.Map
             }
         }
 
+        public void SetScale(MapScale mapScale)
+        {
+            MapViewScale = mapScale;
+            switch (mapScale)
+            {
+                case MapScale.CourseDefault:
+                    Config.MapGui.radioButtonMapControllersScaleCourseDefault.Checked = true;
+                    break;
+                case MapScale.MaxCourseSize:
+                    Config.MapGui.radioButtonMapControllersScaleMaxCourseSize.Checked = true;
+                    break;
+                case MapScale.Custom:
+                    Config.MapGui.radioButtonMapControllersScaleCustom.Checked = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void SetCenter(MapCenter mapCenter)
+        {
+            MapViewCenter = mapCenter;
+            switch (mapCenter)
+            {
+                case MapCenter.BestFit:
+                    Config.MapGui.radioButtonMapControllersCenterBestFit.Checked = true;
+                    break;
+                case MapCenter.Origin:
+                    Config.MapGui.radioButtonMapControllersCenterOrigin.Checked = true;
+                    break;
+                case MapCenter.Mario:
+                    Config.MapGui.radioButtonMapControllersCenterMario.Checked = true;
+                    break;
+                case MapCenter.Custom:
+                    Config.MapGui.radioButtonMapControllersCenterCustom.Checked = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void SetYaw(MapYaw mapYaw)
+        {
+            MapViewYaw = mapYaw;
+            switch (mapYaw)
+            {
+                case MapYaw.Angle0:
+                    Config.MapGui.radioButtonMapControllersAngle0.Checked = true;
+                    break;
+                case MapYaw.Angle16384:
+                    Config.MapGui.radioButtonMapControllersAngle16384.Checked = true;
+                    break;
+                case MapYaw.Angle32768:
+                    Config.MapGui.radioButtonMapControllersAngle32768.Checked = true;
+                    break;
+                case MapYaw.Angle49152:
+                    Config.MapGui.radioButtonMapControllersAngle49152.Checked = true;
+                    break;
+                case MapYaw.Mario:
+                    Config.MapGui.radioButtonMapControllersAngleMario.Checked = true;
+                    break;
+                case MapYaw.Camera:
+                    Config.MapGui.radioButtonMapControllersAngleCamera.Checked = true;
+                    break;
+                case MapYaw.Centripetal:
+                    Config.MapGui.radioButtonMapControllersAngleCentripetal.Checked = true;
+                    break;
+                case MapYaw.Custom:
+                    Config.MapGui.radioButtonMapControllersAngleCustom.Checked = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public void ChangeScale(int sign, object value)
         {
             float? parsed = ParsingUtilities.ParseFloatNullable(value);
