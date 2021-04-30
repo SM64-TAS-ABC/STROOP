@@ -919,6 +919,34 @@ namespace STROOP.Managers
                 }
                 mapTabSettings.Add(new XAttribute("mapViewPitchValue", (double)Config.MapGraphics.MapViewPitchValue));
 
+                mapTabSettings.Add(new XAttribute("map3DMode", SpecialConfig.Map3DMode));
+                mapTabSettings.Add(new XAttribute("map3DCameraX", (double)SpecialConfig.Map3DCameraX));
+                mapTabSettings.Add(new XAttribute("map3DCameraY", (double)SpecialConfig.Map3DCameraY));
+                mapTabSettings.Add(new XAttribute("map3DCameraZ", (double)SpecialConfig.Map3DCameraZ));
+                mapTabSettings.Add(new XAttribute("map3DCameraYaw", (double)SpecialConfig.Map3DCameraYaw));
+                mapTabSettings.Add(new XAttribute("map3DCameraPitch", (double)SpecialConfig.Map3DCameraPitch));
+                mapTabSettings.Add(new XAttribute("map3DCameraRoll", (double)SpecialConfig.Map3DCameraRoll));
+                mapTabSettings.Add(new XAttribute("map3DFocusX", (double)SpecialConfig.Map3DFocusX));
+                mapTabSettings.Add(new XAttribute("map3DFocusY", (double)SpecialConfig.Map3DFocusY));
+                mapTabSettings.Add(new XAttribute("map3DFocusZ", (double)SpecialConfig.Map3DFocusZ));
+                mapTabSettings.Add(new XAttribute("map3DCameraPosPA", SpecialConfig.Map3DCameraPosPA));
+                mapTabSettings.Add(new XAttribute("map3DCameraAnglePA", SpecialConfig.Map3DCameraAnglePA));
+                mapTabSettings.Add(new XAttribute("map3DFocusPosPA", SpecialConfig.Map3DFocusPosPA));
+                mapTabSettings.Add(new XAttribute("map3DFocusAnglePA", SpecialConfig.Map3DFocusAnglePA));
+                mapTabSettings.Add(new XAttribute("map3DFollowingRadius", (double)SpecialConfig.Map3DFollowingRadius));
+                mapTabSettings.Add(new XAttribute("map3DFollowingYOffset", (double)SpecialConfig.Map3DFollowingYOffset));
+                mapTabSettings.Add(new XAttribute("map3DFollowingYaw", (double)SpecialConfig.Map3DFollowingYaw));
+                mapTabSettings.Add(new XAttribute("map3DFOV", (double)SpecialConfig.Map3DFOV));
+                mapTabSettings.Add(new XAttribute("map2DScrollSpeed", SpecialConfig.Map2DScrollSpeed));
+                mapTabSettings.Add(new XAttribute("map2DOrthographicHorizontalRotateSpeed", SpecialConfig.Map2DOrthographicHorizontalRotateSpeed));
+                mapTabSettings.Add(new XAttribute("map2DOrthographicVerticalRotateSpeed", SpecialConfig.Map2DOrthographicVerticalRotateSpeed));
+                mapTabSettings.Add(new XAttribute("map3DScrollSpeed", SpecialConfig.Map3DScrollSpeed));
+                mapTabSettings.Add(new XAttribute("map3DTranslateSpeed", SpecialConfig.Map3DTranslateSpeed));
+                mapTabSettings.Add(new XAttribute("map3DRotateSpeed", SpecialConfig.Map3DRotateSpeed));
+                mapTabSettings.Add(new XAttribute("mapCircleNumPoints2D", SpecialConfig.MapCircleNumPoints2D));
+                mapTabSettings.Add(new XAttribute("mapCircleNumPoints3D", SpecialConfig.MapCircleNumPoints3D));
+                mapTabSettings.Add(new XAttribute("mapUnitPrecisionThreshold", SpecialConfig.MapUnitPrecisionThreshold));
+
                 root.Add(mapTabSettings);
             }
 
