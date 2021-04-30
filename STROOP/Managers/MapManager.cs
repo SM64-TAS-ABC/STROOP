@@ -686,16 +686,8 @@ namespace STROOP.Managers
             });
 
             // Additional Checkboxes
-            Config.MapGui.checkBoxMapOptionsEnable3D.Click += (sender, e) =>
-            {
-                // Make the toBeVisible one visible first in order to avoid flicker.
-                (GLControl toBeVisible, GLControl toBeInvisible) =
-                    Config.MapGui.checkBoxMapOptionsEnable3D.Checked ?
-                        (Config.MapGui.GLControlMap3D, Config.MapGui.GLControlMap2D) :
-                        (Config.MapGui.GLControlMap2D, Config.MapGui.GLControlMap3D);
-                toBeVisible.Visible = true;
-                toBeInvisible.Visible = false;
-            };
+            Config.MapGui.checkBoxMapOptionsEnable3D.Click +=
+                (sender, e) => SetEnable3D(Config.MapGui.checkBoxMapOptionsEnable3D.Checked);
 
             // Global Icon Size
             Config.MapGui.textBoxMapOptionsGlobalIconSize.AddEnterAction(() =>
@@ -858,6 +850,17 @@ namespace STROOP.Managers
             });
         }
 
+        private void SetEnable3D(bool enable3D)
+        {
+            Config.MapGui.checkBoxMapOptionsEnable3D.Checked = enable3D;
+            // Make the toBeVisible one visible first in order to avoid flicker.
+            (GLControl toBeVisible, GLControl toBeInvisible) = enable3D ?
+                (Config.MapGui.GLControlMap3D, Config.MapGui.GLControlMap2D) :
+                (Config.MapGui.GLControlMap2D, Config.MapGui.GLControlMap3D);
+            toBeVisible.Visible = true;
+            toBeInvisible.Visible = false;
+        }
+
         private void Save(SaveType saveType)
         {
             XDocument document = new XDocument();
@@ -978,6 +981,40 @@ namespace STROOP.Managers
                 Config.MapGui.splitContainerMap.Panel1Collapsed = ParsingUtilities.ParseBool(stroopSettings.Attribute(XName.Get("splitContainerMapPanel1Collapsed")).Value);
                 Config.MapGui.splitContainerMap.Panel2Collapsed = ParsingUtilities.ParseBool(stroopSettings.Attribute(XName.Get("splitContainerMapPanel2Collapsed")).Value);
                 Config.MapGui.splitContainerMap.SplitterDistance = ParsingUtilities.ParseInt(stroopSettings.Attribute(XName.Get("splitContainerMapSplitterDistance")).Value);
+            }
+
+            XElement mapTabSettings = xElements.Find(el => el.Name == "MapTabSettings");
+            if (mapTabSettings != null)
+            {
+                SetEnable3D(ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enable3D")).Value));
+                Config.MapGui.checkBoxMapOptionsDisableHitboxHackTris.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("disableHitboxHackTris")).Value);
+                Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableOrthographicView")).Value);
+                Config.MapGui.checkBoxMapOptionsEnableCrossSection.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableCrossSection")).Value);
+                Config.MapGui.checkBoxMapOptionsEnablePuView.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enablePuView")).Value);
+                Config.MapGui.checkBoxMapOptionsReverseDragging.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("reverseDragging")).Value);
+                // TODO: map
+                // TODO: background
+
+                Config.MapGraphics.MapViewScale = (MapGraphics.MapScale)Enum.Parse(typeof(MapGraphics.MapScale), mapTabSettings.Attribute(XName.Get("mapViewScale")).Value);
+                if (Config.MapGraphics.MapViewScale == MapGraphics.MapScale.Custom)
+                {
+                    Config.MapGraphics.MapViewScaleValue = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("mapViewScaleValue")).Value);
+                }
+                Config.MapGraphics.MapViewCenter = (MapGraphics.MapCenter)Enum.Parse(typeof(MapGraphics.MapCenter), mapTabSettings.Attribute(XName.Get("mapViewCenter")).Value);
+                if (Config.MapGraphics.MapViewCenter == MapGraphics.MapCenter.Custom)
+                {
+                    Config.MapGraphics.MapViewCenterXValue = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("mapViewCenterXValue")).Value);
+                    Config.MapGraphics.MapViewCenterYValue = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("mapViewCenterYValue")).Value);
+                    Config.MapGraphics.MapViewCenterZValue = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("mapViewCenterZValue")).Value);
+                }
+                Config.MapGui.checkBoxMapControllersCenterChangeByPixels.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("changeByPixels")).Value);
+                Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("useMarioDepth")).Value);
+                Config.MapGraphics.MapViewYaw = (MapGraphics.MapYaw)Enum.Parse(typeof(MapGraphics.MapYaw), mapTabSettings.Attribute(XName.Get("mapViewYaw")).Value);
+                if (Config.MapGraphics.MapViewYaw == MapGraphics.MapYaw.Custom)
+                {
+                    Config.MapGraphics.MapViewYawValue = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("mapViewYawValue")).Value);
+                }
+                Config.MapGraphics.MapViewPitchValue = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("mapViewPitchValue")).Value);
             }
 
             xElements
