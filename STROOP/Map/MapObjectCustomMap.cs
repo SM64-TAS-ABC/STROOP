@@ -16,11 +16,13 @@ namespace STROOP.Map
 {
     public class MapObjectCustomMap : MapObjectMap
     {
-        private object _mapLayoutChoice; 
+        private readonly Dictionary<string, object> _dictionary;
+        private object _mapLayoutChoice;
 
         public MapObjectCustomMap()
             : base()
         {
+            _dictionary = new Dictionary<string, object>();
             _mapLayoutChoice = "Recommended";
         }
 
@@ -41,6 +43,7 @@ namespace STROOP.Map
                 List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
                 List<object> mapLayoutChoices = new List<object>() { "Recommended" };
                 mapLayouts.ForEach(mapLayout => mapLayoutChoices.Add(mapLayout));
+                mapLayoutChoices.ForEach(mapLayout => _dictionary[mapLayout.ToString()] = mapLayout);
 
                 ToolStripMenuItem itemSelectMap = new ToolStripMenuItem("Select Map");
                 itemSelectMap.Click += (sender, e) =>
@@ -50,7 +53,12 @@ namespace STROOP.Map
                         "Select a Map",
                         "Set Map",
                         mapLayoutChoices,
-                        mapLayoutChoice => _mapLayoutChoice = mapLayoutChoice);
+                        mapLayoutChoice =>
+                        {
+                            MapObjectSettings settings = new MapObjectSettings(
+                                changeMap: true, newMap: mapLayoutChoice.ToString());
+                            GetParentMapTracker().ApplySettings(settings);
+                        });
                     form.Show();
                 };
                 _contextMenuStrip = new ContextMenuStrip();
@@ -58,6 +66,16 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeMap)
+            {
+                _mapLayoutChoice = _dictionary[settings.NewMap];
+            }
         }
     }
 }

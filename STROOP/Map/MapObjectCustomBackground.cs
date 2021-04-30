@@ -16,11 +16,13 @@ namespace STROOP.Map
 {
     public class MapObjectCustomBackground : MapObjectBackground
     {
+        private readonly Dictionary<string, object> _dictionary;
         private object _backgroundChoice;
 
         public MapObjectCustomBackground()
             : base()
         {
+            _dictionary = new Dictionary<string, object>();
             _backgroundChoice = "Recommended";
         }
 
@@ -41,6 +43,7 @@ namespace STROOP.Map
                 List<BackgroundImage> backgroundImages = Config.MapAssociations.GetAllBackgroundImages();
                 List<object> backgroundImageChoices = new List<object>() { "Recommended" };
                 backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
+                backgroundImageChoices.ForEach(backgroundImage => _dictionary[backgroundImage.ToString()] = backgroundImage);
 
                 ToolStripMenuItem itemSelectMap = new ToolStripMenuItem("Select Background");
                 itemSelectMap.Click += (sender, e) =>
@@ -50,7 +53,12 @@ namespace STROOP.Map
                         "Select a Background",
                         "Set Background",
                         backgroundImageChoices,
-                        backgroundChoice => _backgroundChoice = backgroundChoice);
+                        backgroundChoice =>
+                        {
+                            MapObjectSettings settings = new MapObjectSettings(
+                                changeBackground: true, newBackground: backgroundChoice.ToString());
+                            GetParentMapTracker().ApplySettings(settings);
+                        });
                     form.Show();
                 };
                 _contextMenuStrip = new ContextMenuStrip();
@@ -58,6 +66,16 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeBackground)
+            {
+                _backgroundChoice = _dictionary[settings.NewBackground];
+            }
         }
     }
 }

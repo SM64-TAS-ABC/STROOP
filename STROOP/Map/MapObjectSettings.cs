@@ -124,6 +124,12 @@ namespace STROOP.Map
         public readonly bool ChangePuGridlinesSetting;
         public readonly string NewPuGridlinesSetting;
 
+        public readonly bool ChangeMap;
+        public readonly string NewMap;
+
+        public readonly bool ChangeBackground;
+        public readonly string NewBackground;
+
         public MapObjectSettings(
             bool changeCustomCylinderRelativeMinY = false,
             float newCustomCylinderRelativeMinY = 0,
@@ -237,7 +243,13 @@ namespace STROOP.Map
             double newNextPositionsNumFrames = 0,
 
             bool changePuGridlinesSetting = false,
-            string newPuGridlinesSetting = null)
+            string newPuGridlinesSetting = null,
+
+            bool changeMap = false,
+            string newMap = null,
+
+            bool changeBackground = false,
+            string newBackground = null)
         {
             ChangeCustomCylinderRelativeMinY = changeCustomCylinderRelativeMinY;
             NewCustomCylinderRelativeMinY = newCustomCylinderRelativeMinY;
@@ -352,6 +364,12 @@ namespace STROOP.Map
 
             ChangePuGridlinesSetting = changePuGridlinesSetting;
             NewPuGridlinesSetting = newPuGridlinesSetting;
+
+            ChangeMap = changeMap;
+            NewMap = newMap;
+
+            ChangeBackground = changeBackground;
+            NewBackground = newBackground;
         }
 
         public static MapObjectSettings FromXElement(XElement xElement)

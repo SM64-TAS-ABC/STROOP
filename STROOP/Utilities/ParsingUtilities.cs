@@ -273,6 +273,7 @@ namespace STROOP.Utilities
             if (type == typeof(float) || type == typeof(float?)) return ParseFloatNullable(obj);
             if (type == typeof(double) || type == typeof(double?)) return ParseDoubleNullable(obj);
             if (type == typeof(bool) || type == typeof(bool?)) return ParseBoolNullable(obj);
+            if (type == typeof(string)) return obj?.ToString();
             return null;
         }
 
