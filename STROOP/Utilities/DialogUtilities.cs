@@ -110,6 +110,19 @@ namespace STROOP.Structs
             return ConvertDocumentIntoElements(varXml);
         }
 
+        public static XDocument OpenDocument(FileType fileType, string fileName = null)
+        {
+            if (fileName == null)
+            {
+                OpenFileDialog openFileDialog = CreateOpenFileDialog(fileType);
+                DialogResult result = openFileDialog.ShowDialog();
+                if (result != DialogResult.OK) return new XDocument();
+                fileName = openFileDialog.FileName;
+            }
+            XDocument varXml = XDocument.Load(fileName);
+            return varXml;
+        }
+
         public static void SaveXmlElements(
             FileType fileType, string xmlName, List<XElement> elements, string fileName = null)
         {

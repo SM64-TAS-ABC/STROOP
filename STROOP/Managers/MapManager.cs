@@ -514,15 +514,7 @@ namespace STROOP.Managers
                     () => DoTaserSettings(),
                 });
 
-            Config.MapGui.buttonMapOptionsOpen.Click += (sender, e) =>
-            {
-                List<XElement> xElements = DialogUtilities.OpenXmlElements(FileType.StroopMapData);
-                List<MapTracker> mapTrackers = xElements.ConvertAll(xElement => MapTracker.FromXElement(xElement));
-                foreach (MapTracker mapTracker in mapTrackers)
-                {
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(mapTracker);
-                }
-            };
+            Config.MapGui.buttonMapOptionsOpen.Click += (sender, e) => Open();
 
             Config.MapGui.buttonMapOptionsSave.Click += (sender, e) => Save(SaveType.MapTrackers);
             ControlUtilities.AddContextMenuStripFunctions(
@@ -868,12 +860,6 @@ namespace STROOP.Managers
 
         private void Save(SaveType saveType)
         {
-            XDocument document = GetXDocument(saveType);
-            DialogUtilities.SaveXmlDocument(FileType.StroopMapData, document);
-        }
-
-        private XDocument GetXDocument(SaveType saveType)
-        {
             XDocument doc = new XDocument();
             XElement root = new XElement(XName.Get("MapData"));
             doc.Add(root);
@@ -883,7 +869,19 @@ namespace STROOP.Managers
                 root.Add(element);
             }
 
-            return doc;
+            DialogUtilities.SaveXmlDocument(FileType.StroopMapData, doc);
+        }
+
+        private void Open()
+        {
+            XDocument document = DialogUtilities.OpenDocument(FileType.StroopMapData);
+            XElement root = document.Root;
+            List<XElement> xElements = root.Elements().ToList();
+
+            xElements
+                .FindAll(xElement => xElement.Name == "MapTracker")
+                .ConvertAll(xElement => MapTracker.FromXElement(xElement))
+                .ForEach(mapTracker => Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(mapTracker));
         }
 
         private void ResetToInitialState()
