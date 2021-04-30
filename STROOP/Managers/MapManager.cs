@@ -864,6 +864,44 @@ namespace STROOP.Managers
             XElement root = new XElement(XName.Get("MapData"));
             doc.Add(root);
 
+            if (saveType == SaveType.MapTrackersMapTabSettings ||
+                saveType == SaveType.MapTrackersMapTabSettingsStroopSettings)
+            {
+                XElement mapTabSettings = new XElement(XName.Get("MapTabSettings"));
+
+                mapTabSettings.Add(new XAttribute("enable3D", Config.MapGui.checkBoxMapOptionsEnable3D.Checked));
+                mapTabSettings.Add(new XAttribute("disableHitboxHackTris", Config.MapGui.checkBoxMapOptionsDisableHitboxHackTris.Checked));
+                mapTabSettings.Add(new XAttribute("enableOrthographicView", Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked));
+                mapTabSettings.Add(new XAttribute("enableCrossSection", Config.MapGui.checkBoxMapOptionsEnableCrossSection.Checked));
+                mapTabSettings.Add(new XAttribute("enablePuView", Config.MapGui.checkBoxMapOptionsEnablePuView.Checked));
+                mapTabSettings.Add(new XAttribute("reverseDragging", Config.MapGui.checkBoxMapOptionsReverseDragging.Checked));
+                mapTabSettings.Add(new XAttribute("map", Config.MapGui.comboBoxMapOptionsLevel.SelectedItem));
+                mapTabSettings.Add(new XAttribute("background", Config.MapGui.comboBoxMapOptionsBackground.SelectedItem));
+
+                mapTabSettings.Add(new XAttribute("mapViewScale", Config.MapGraphics.MapViewScale));
+                if (Config.MapGraphics.MapViewScale == MapGraphics.MapScale.Custom)
+                {
+                    mapTabSettings.Add(new XAttribute("mapViewScaleValue", (double)Config.MapGraphics.MapViewScaleValue));
+                }
+                mapTabSettings.Add(new XAttribute("mapViewCenter", Config.MapGraphics.MapViewCenter));
+                if (Config.MapGraphics.MapViewCenter == MapGraphics.MapCenter.Custom)
+                {
+                    mapTabSettings.Add(new XAttribute("mapViewCenterXValue", (double)Config.MapGraphics.MapViewCenterXValue));
+                    mapTabSettings.Add(new XAttribute("mapViewCenterYValue", (double)Config.MapGraphics.MapViewCenterYValue));
+                    mapTabSettings.Add(new XAttribute("mapViewCenterZValue", (double)Config.MapGraphics.MapViewCenterZValue));
+                }
+                mapTabSettings.Add(new XAttribute("changeByPixels", Config.MapGui.checkBoxMapControllersCenterChangeByPixels.Checked));
+                mapTabSettings.Add(new XAttribute("useMarioDepth", Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked));
+                mapTabSettings.Add(new XAttribute("mapViewYaw", Config.MapGraphics.MapViewYaw));
+                if (Config.MapGraphics.MapViewYaw == MapGraphics.MapYaw.Custom)
+                {
+                    mapTabSettings.Add(new XAttribute("mapViewYawValue", (double)Config.MapGraphics.MapViewYawValue));
+                }
+                mapTabSettings.Add(new XAttribute("mapViewPitchValue", (double)Config.MapGraphics.MapViewPitchValue));
+
+                root.Add(mapTabSettings);
+            }
+
             foreach (XElement element in Config.MapGui.flowLayoutPanelMapTrackers.ToXElements())
             {
                 root.Add(element);
@@ -875,6 +913,7 @@ namespace STROOP.Managers
         private void Open()
         {
             XDocument document = DialogUtilities.OpenDocument(FileType.StroopMapData);
+            if (document == null) return;
             XElement root = document.Root;
             List<XElement> xElements = root.Elements().ToList();
 

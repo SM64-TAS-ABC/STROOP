@@ -116,7 +116,7 @@ namespace STROOP.Structs
             {
                 OpenFileDialog openFileDialog = CreateOpenFileDialog(fileType);
                 DialogResult result = openFileDialog.ShowDialog();
-                if (result != DialogResult.OK) return new XDocument();
+                if (result != DialogResult.OK) return null;
                 fileName = openFileDialog.FileName;
             }
             XDocument varXml = XDocument.Load(fileName);
