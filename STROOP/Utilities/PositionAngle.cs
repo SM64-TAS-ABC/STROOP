@@ -1846,6 +1846,14 @@ namespace STROOP.Utilities
             return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
         }
 
+        public static (double x, double y, double z) GetMidPoint(PositionAngle p1, PositionAngle p2)
+        {
+            double x = (p1.X + p2.X) / 2;
+            double y = (p1.Y + p2.Y) / 2;
+            double z = (p1.Z + p2.Z) / 2;
+            return (x, y, z);
+        }
+
 
 
 

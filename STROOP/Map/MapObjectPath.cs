@@ -476,7 +476,7 @@ namespace STROOP.Map
                     float? sizeNullable = ParsingUtilities.ParseFloatNullable(text);
                     if (!sizeNullable.HasValue) return;
                     MapObjectSettings settings = new MapObjectSettings(
-                        changePathIconSize: true, newPathIconSize: sizeNullable.Value);
+                        changeIconSize: true, newIconSize: sizeNullable.Value);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -549,9 +549,9 @@ namespace STROOP.Map
                 _itemSetModulo.Text = SET_MODULO_TEXT + suffix;
             }
 
-            if (settings.ChangePathIconSize)
+            if (settings.ChangeIconSize)
             {
-                _imageSize = settings.NewPathIconSize;
+                _imageSize = settings.NewIconSize;
                 string suffix = string.Format(" ({0})", _imageSize);
                 _itemSetIconSize.Text = SET_ICON_SIZE_TEXT + suffix;
             }

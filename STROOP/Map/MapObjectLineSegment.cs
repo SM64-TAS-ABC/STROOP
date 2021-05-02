@@ -20,11 +20,16 @@ namespace STROOP.Map
         private PositionAngle _posAngle2;
         private bool _useFixedSize;
         private float _backwardsSize;
+        private float _iconSize;
+        private Image _image;
+        private int _tex;
 
         private ToolStripMenuItem _itemUseFixedSize;
         private ToolStripMenuItem _itemSetBackwardsSize;
+        private ToolStripMenuItem _itemSetIconSize;
 
         private static readonly string SET_BACKWARDS_SIZE_TEXT = "Set Backwards Size";
+        private static readonly string SET_ICON_SIZE_TEXT = "Set Icon Size";
 
         public MapObjectLineSegment(PositionAngle posAngle1, PositionAngle posAngle2)
             : base()
@@ -33,6 +38,9 @@ namespace STROOP.Map
             _posAngle2 = posAngle2;
             _useFixedSize = false;
             _backwardsSize = 0;
+            _iconSize = 10;
+            _image = null;
+            _tex = 0;
 
             Size = 0;
             OutlineWidth = 3;
@@ -80,6 +88,32 @@ namespace STROOP.Map
             return GetVerticesOrthographicView();
         }
 
+        public override void DrawOn2DControlTopDownView()
+        {
+            base.DrawOn2DControlTopDownView();
+
+            if (_image != null)
+            {
+                (float x, float y, float z) = ((float, float, float))PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
+                PointF point = new PointF(controlX, controlZ);
+                SizeF size = MapUtilities.ScaleImageSizeForControl(_image.Size, _iconSize, Scales);   
+                MapUtilities.DrawTexture(_tex, point, size, 0, 1);
+            }
+        }
+
+        public override void Update()
+        {
+            if (_customImage != _image)
+            {
+                _image = _customImage;
+                if (_image != null)
+                {
+                    _tex = MapUtilities.LoadTexture(_image as Bitmap);
+                }
+            }
+        }
+
         public override ContextMenuStrip GetContextMenuStrip()
         {
             if (_contextMenuStrip == null)
@@ -92,8 +126,8 @@ namespace STROOP.Map
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
-                string suffix = string.Format(" ({0})", _backwardsSize);
-                _itemSetBackwardsSize = new ToolStripMenuItem(SET_BACKWARDS_SIZE_TEXT + suffix);
+                string suffix1 = string.Format(" ({0})", _backwardsSize);
+                _itemSetBackwardsSize = new ToolStripMenuItem(SET_BACKWARDS_SIZE_TEXT + suffix1);
                 _itemSetBackwardsSize.Click += (sender, e) =>
                 {
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter backwards size.");
@@ -105,9 +139,23 @@ namespace STROOP.Map
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
+                string suffix2 = string.Format(" ({0})", _iconSize);
+                _itemSetIconSize = new ToolStripMenuItem(SET_ICON_SIZE_TEXT + suffix2);
+                _itemSetIconSize.Click += (sender, e) =>
+                {
+                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter icon size.");
+                    float? iconSizeNullable = ParsingUtilities.ParseFloatNullable(text);
+                    if (!iconSizeNullable.HasValue) return;
+                    float iconSize = iconSizeNullable.Value;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeIconSize: true, newIconSize: iconSize);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(_itemUseFixedSize);
                 _contextMenuStrip.Items.Add(_itemSetBackwardsSize);
+                _contextMenuStrip.Items.Add(_itemSetIconSize);
             }
 
             return _contextMenuStrip;
@@ -128,6 +176,13 @@ namespace STROOP.Map
                 _backwardsSize = settings.NewLineSegmentBackwardsSize;
                 string suffix = string.Format(" ({0})", settings.NewLineSegmentBackwardsSize);
                 _itemSetBackwardsSize.Text = SET_BACKWARDS_SIZE_TEXT + suffix;
+            }
+
+            if (settings.ChangeIconSize)
+            {
+                _iconSize = settings.NewIconSize;
+                string suffix = string.Format(" ({0})", settings.NewIconSize);
+                _itemSetIconSize.Text = SET_ICON_SIZE_TEXT + suffix;
             }
         }
 

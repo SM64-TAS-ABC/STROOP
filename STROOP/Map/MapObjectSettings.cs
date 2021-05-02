@@ -85,8 +85,8 @@ namespace STROOP.Map
         public readonly bool ChangePathModulo;
         public readonly int NewPathModulo;
 
-        public readonly bool ChangePathIconSize;
-        public readonly float NewPathIconSize;
+        public readonly bool ChangeIconSize;
+        public readonly float NewIconSize;
 
         public readonly bool ChangeAngleRangeUseRelativeAngles;
         public readonly bool NewAngleRangeUseRelativeAngles;
@@ -206,8 +206,8 @@ namespace STROOP.Map
             bool changePathModulo = false,
             int newPathModulo = 0,
 
-            bool changePathIconSize = false,
-            float newPathIconSize = 0,
+            bool changeIconSize = false,
+            float newIconSize = 0,
 
             bool changeAngleRangeUseRelativeAngles = false,
             bool newAngleRangeUseRelativeAngles = false,
@@ -326,8 +326,8 @@ namespace STROOP.Map
             ChangePathModulo = changePathModulo;
             NewPathModulo = newPathModulo;
 
-            ChangePathIconSize = changePathIconSize;
-            NewPathIconSize = newPathIconSize;
+            ChangeIconSize = changeIconSize;
+            NewIconSize = newIconSize;
 
             ChangeAngleRangeUseRelativeAngles = changeAngleRangeUseRelativeAngles;
             NewAngleRangeUseRelativeAngles = newAngleRangeUseRelativeAngles;
