@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using STROOP.Map.Map3D;
 
 namespace STROOP.Map
 {
@@ -100,6 +101,71 @@ namespace STROOP.Map
                 SizeF size = MapUtilities.ScaleImageSizeForControl(_image.Size, _iconSize, Scales);   
                 MapUtilities.DrawTexture(_tex, point, size, 0, 1);
             }
+        }
+
+        public override void DrawOn2DControlOrthographicView()
+        {
+            base.DrawOn2DControlOrthographicView();
+
+            if (_image != null)
+            {
+                (float x, float y, float z) = ((float, float, float))PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
+                PointF point = new PointF(controlX, controlZ);
+                SizeF size = MapUtilities.ScaleImageSizeForControl(_image.Size, _iconSize, Scales);
+                MapUtilities.DrawTexture(_tex, point, size, 0, 1);
+            }
+        }
+
+        public override void DrawOn3DControl()
+        {
+            base.DrawOn3DControl();
+
+            if (_image != null)
+            {
+                (float x, float y, float z) = ((float, float, float))PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
+                Matrix4 viewMatrix = GetModelMatrix(x, y, z, 0);
+                GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
+
+                Map3DVertex[] vertices2 = GetVertices();
+                int vertexBuffer = GL.GenBuffer();
+                GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
+                GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices2.Length * Map3DVertex.Size),
+                    vertices2, BufferUsageHint.StaticDraw);
+                GL.BindTexture(TextureTarget.Texture2D, _tex);
+                GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
+                Config.Map3DGraphics.BindVertices();
+                GL.DrawArrays(PrimitiveType.Triangles, 0, vertices2.Length);
+                GL.DeleteBuffer(vertexBuffer);
+            }
+        }
+
+        public Matrix4 GetModelMatrix(float x, float y, float z, float ang)
+        {
+            SizeF _imageNormalizedSize = new SizeF(
+                _image.Width >= _image.Height ? 1.0f : (float)_image.Width / _image.Height,
+                _image.Width <= _image.Height ? 1.0f : (float)_image.Height / _image.Width);
+
+            Vector3 pos = new Vector3(x, y, z);
+
+            float size = _iconSize / 200;
+            return Matrix4.CreateScale(size * _imageNormalizedSize.Width, size * _imageNormalizedSize.Height, 1)
+                * Matrix4.CreateRotationZ(0)
+                * Matrix4.CreateScale(1.0f / Config.Map3DGraphics.NormalizedWidth, 1.0f / Config.Map3DGraphics.NormalizedHeight, 1)
+                * Matrix4.CreateTranslation(MapUtilities.GetPositionOnViewFromCoordinate(pos));
+        }
+
+        private Map3DVertex[] GetVertices()
+        {
+            return new Map3DVertex[]
+            {
+                new Map3DVertex(new Vector3(-1, -1, 0), Color.White, new Vector2(0, 1)),
+                new Map3DVertex(new Vector3(1, -1, 0), Color.White, new Vector2(1, 1)),
+                new Map3DVertex(new Vector3(-1, 1, 0), Color.White, new Vector2(0, 0)),
+                new Map3DVertex(new Vector3(1, 1, 0), Color.White, new Vector2(1, 0)),
+                new Map3DVertex(new Vector3(-1, 1, 0), Color.White,  new Vector2(0, 0)),
+                new Map3DVertex(new Vector3(1, -1, 0), Color.White, new Vector2(1, 1)),
+            };
         }
 
         public override void Update()
