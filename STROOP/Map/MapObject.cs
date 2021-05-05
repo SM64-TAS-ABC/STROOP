@@ -80,6 +80,7 @@ namespace STROOP.Map
         public abstract string GetName();
 
         protected Image _customImage = null;
+        protected int _customImageTex = -1;
         public abstract Image GetInternalImage();
         public Image GetImage() { return _customImage ?? GetInternalImage(); }
 
@@ -91,6 +92,11 @@ namespace STROOP.Map
 
             _iconType = iconType;
             _customImage = image;
+
+            if (_customImage != null)
+            {
+                _customImageTex = MapUtilities.LoadTexture(_customImage as Bitmap);
+            }
         }
 
         public abstract MapDrawType GetDrawType();

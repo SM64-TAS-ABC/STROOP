@@ -28,8 +28,6 @@ namespace STROOP.Map
         private bool _useValueAtStartOfGlobalTimer;
         private uint _highestGlobalTimerValue;
         private int _modulo;
-        private Image _image;
-        private int _tex;
         private float _imageSize;
 
         private ToolStripMenuItem _itemResetPathOnLevelChange;
@@ -56,8 +54,6 @@ namespace STROOP.Map
             _useValueAtStartOfGlobalTimer = true;
             _highestGlobalTimerValue = 0;
             _modulo = 1;
-            _image = null;
-            _tex = -1;
             _imageSize = 10;
 
             Size = 300;
@@ -177,12 +173,12 @@ namespace STROOP.Map
                 GL.Color4(1, 1, 1, 1.0f);
             }
 
-            if (_image != null)
+            if (_customImage != null)
             {
                 foreach ((float x, float z) in verticesForControl)
                 {
-                    SizeF size = MapUtilities.ScaleImageSizeForControl(_image.Size, _imageSize, Scales);
-                    MapUtilities.DrawTexture(_tex, new PointF(x, z), size, 0, 1);
+                    SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
+                    MapUtilities.DrawTexture(_customImageTex, new PointF(x, z), size, 0, 1);
                 }
             }
         }
@@ -226,12 +222,12 @@ namespace STROOP.Map
                 GL.Color4(1, 1, 1, 1.0f);
             }
 
-            if (_image != null)
+            if (_customImage != null)
             {
                 foreach ((float x, float z) in verticesForControl)
                 {
-                    SizeF size = MapUtilities.ScaleImageSizeForControl(_image.Size, _imageSize, Scales);
-                    MapUtilities.DrawTexture(_tex, new PointF(x, z), size, 0, 1);
+                    SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
+                    MapUtilities.DrawTexture(_customImageTex, new PointF(x, z), size, 0, 1);
                 }
             }
         }
@@ -285,7 +281,7 @@ namespace STROOP.Map
                 });
             }
 
-            if (_image != null)
+            if (_customImage != null)
             {
                 foreach ((float x, float y, float z) in vertices)
                 {
@@ -297,7 +293,7 @@ namespace STROOP.Map
                     GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                     GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices2.Length * Map3DVertex.Size),
                         vertices2, BufferUsageHint.StaticDraw);
-                    GL.BindTexture(TextureTarget.Texture2D, _tex);
+                    GL.BindTexture(TextureTarget.Texture2D, _customImageTex);
                     GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                     Config.Map3DGraphics.BindVertices();
                     GL.DrawArrays(PrimitiveType.Triangles, 0, vertices2.Length);
@@ -309,8 +305,8 @@ namespace STROOP.Map
         public Matrix4 GetModelMatrix(float x, float y, float z, float ang)
         {
             SizeF _imageNormalizedSize = new SizeF(
-                _image.Width >= _image.Height ? 1.0f : (float)_image.Width / _image.Height,
-                _image.Width <= _image.Height ? 1.0f : (float)_image.Height / _image.Width);
+                _customImage.Width >= _customImage.Height ? 1.0f : (float)_customImage.Width / _customImage.Height,
+                _customImage.Width <= _customImage.Height ? 1.0f : (float)_customImage.Height / _customImage.Width);
 
             Vector3 pos = new Vector3(x, y, z);
 
@@ -392,15 +388,6 @@ namespace STROOP.Map
                         _dictionary[globalTimer] = (x, y, z);
                         _highestGlobalTimerValue = globalTimer;
                     }
-                }
-            }
-
-            if (_customImage != _image)
-            {
-                _image = _customImage;
-                if (_image != null)
-                {
-                    _tex = MapUtilities.LoadTexture(_image as Bitmap);
                 }
             }
         }

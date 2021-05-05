@@ -22,8 +22,6 @@ namespace STROOP.Map
         private bool _useFixedSize;
         private float _backwardsSize;
         private float _iconSize;
-        private Image _image;
-        private int _tex;
 
         private ToolStripMenuItem _itemUseFixedSize;
         private ToolStripMenuItem _itemSetBackwardsSize;
@@ -40,8 +38,6 @@ namespace STROOP.Map
             _useFixedSize = false;
             _backwardsSize = 0;
             _iconSize = 10;
-            _image = null;
-            _tex = 0;
 
             Size = 0;
             OutlineWidth = 3;
@@ -93,13 +89,13 @@ namespace STROOP.Map
         {
             base.DrawOn2DControlTopDownView();
 
-            if (_image != null)
+            if (_customImage != null)
             {
                 (float x, float y, float z) = ((float, float, float))PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
                 (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 PointF point = new PointF(controlX, controlZ);
-                SizeF size = MapUtilities.ScaleImageSizeForControl(_image.Size, _iconSize, Scales);   
-                MapUtilities.DrawTexture(_tex, point, size, 0, 1);
+                SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _iconSize, Scales);   
+                MapUtilities.DrawTexture(_customImageTex, point, size, 0, 1);
             }
         }
 
@@ -107,13 +103,13 @@ namespace STROOP.Map
         {
             base.DrawOn2DControlOrthographicView();
 
-            if (_image != null)
+            if (_customImage != null)
             {
                 (float x, float y, float z) = ((float, float, float))PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
                 (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                 PointF point = new PointF(controlX, controlZ);
-                SizeF size = MapUtilities.ScaleImageSizeForControl(_image.Size, _iconSize, Scales);
-                MapUtilities.DrawTexture(_tex, point, size, 0, 1);
+                SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _iconSize, Scales);
+                MapUtilities.DrawTexture(_customImageTex, point, size, 0, 1);
             }
         }
 
@@ -121,7 +117,7 @@ namespace STROOP.Map
         {
             base.DrawOn3DControl();
 
-            if (_image != null)
+            if (_customImage != null)
             {
                 (float x, float y, float z) = ((float, float, float))PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
                 Matrix4 viewMatrix = GetModelMatrix(x, y, z, 0);
@@ -132,7 +128,7 @@ namespace STROOP.Map
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                 GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices2.Length * Map3DVertex.Size),
                     vertices2, BufferUsageHint.StaticDraw);
-                GL.BindTexture(TextureTarget.Texture2D, _tex);
+                GL.BindTexture(TextureTarget.Texture2D, _customImageTex);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                 Config.Map3DGraphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Triangles, 0, vertices2.Length);
@@ -143,8 +139,8 @@ namespace STROOP.Map
         public Matrix4 GetModelMatrix(float x, float y, float z, float ang)
         {
             SizeF _imageNormalizedSize = new SizeF(
-                _image.Width >= _image.Height ? 1.0f : (float)_image.Width / _image.Height,
-                _image.Width <= _image.Height ? 1.0f : (float)_image.Height / _image.Width);
+                _customImage.Width >= _customImage.Height ? 1.0f : (float)_customImage.Width / _customImage.Height,
+                _customImage.Width <= _customImage.Height ? 1.0f : (float)_customImage.Height / _customImage.Width);
 
             Vector3 pos = new Vector3(x, y, z);
 
@@ -166,18 +162,6 @@ namespace STROOP.Map
                 new Map3DVertex(new Vector3(-1, 1, 0), Color.White,  new Vector2(0, 0)),
                 new Map3DVertex(new Vector3(1, -1, 0), Color.White, new Vector2(1, 1)),
             };
-        }
-
-        public override void Update()
-        {
-            if (_customImage != _image)
-            {
-                _image = _customImage;
-                if (_image != null)
-                {
-                    _tex = MapUtilities.LoadTexture(_image as Bitmap);
-                }
-            }
         }
 
         public override ContextMenuStrip GetContextMenuStrip()
