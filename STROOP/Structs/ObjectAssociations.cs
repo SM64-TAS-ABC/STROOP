@@ -34,6 +34,7 @@ namespace STROOP.Structs
         public Image GreenMarioMapImage;
         public Image OrangeMarioMapImage;
         public Image PurpleMarioMapImage;
+        public Image CameraFocusMapImage;
         public Image TriangleFloorImage;
         public Image TriangleWallImage;
         public Image TriangleCeilingImage;
@@ -277,6 +278,7 @@ namespace STROOP.Structs
             GreenMarioMapImage?.Dispose();
             OrangeMarioMapImage?.Dispose();
             PurpleMarioMapImage?.Dispose();
+            CameraFocusMapImage?.Dispose();
             HolpImage?.Dispose();
             HomeImage?.Dispose();
             HudImage?.Dispose();

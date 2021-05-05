@@ -33,6 +33,9 @@
   <PurpleMario>
     <MapImage path="Mario Purple.png"/>
   </PurpleMario>
+  <CameraFocus>
+    <MapImage path="Reticule.png"/>
+  </CameraFocus>
   <TriangleFloor>
     <MapImage path="Triangle Floor.png"/>
   </TriangleFloor>
