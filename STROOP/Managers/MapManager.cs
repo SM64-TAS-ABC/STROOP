@@ -23,6 +23,10 @@ namespace STROOP.Managers
     {
         private enum SaveType { MapTrackers, MapTrackersMapTabSettings, MapTrackersMapTabSettingsStroopSettings };
 
+        private MapObjectCurrentMap _defaulMapObjectCurrentMap;
+        private MapObjectCurrentBackground _defaulMapObjectCurrentBackground;
+        private MapObjectHitboxHackTriangle _defaulMapObjectHitboxHackTriangle;
+
         private Action _checkBoxMarioAction;
         private Action _checkBoxGhostAction;
         private Action _checkBoxFloorAction;
@@ -71,8 +75,13 @@ namespace STROOP.Managers
         private void InitializeControls()
         {
             // FlowLayoutPanel
+            _defaulMapObjectCurrentMap = new MapObjectCurrentMap();
+            _defaulMapObjectCurrentBackground = new MapObjectCurrentBackground();
+            _defaulMapObjectHitboxHackTriangle = new MapObjectHitboxHackTriangle(true);
             Config.MapGui.flowLayoutPanelMapTrackers.Initialize(
-                new MapObjectCurrentMap(), new MapObjectCurrentBackground(), new MapObjectHitboxHackTriangle(true));
+                _defaulMapObjectCurrentMap,
+                _defaulMapObjectCurrentBackground,
+                _defaulMapObjectHitboxHackTriangle);
 
             // ComboBox for Level
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
@@ -694,6 +703,16 @@ namespace STROOP.Managers
             // Additional Checkboxes
             Config.MapGui.checkBoxMapOptionsEnable3D.Click +=
                 (sender, e) => SetEnable3D(Config.MapGui.checkBoxMapOptionsEnable3D.Checked);
+            ControlUtilities.AddContextMenuStripFunctions(
+                Config.MapGui.checkBoxMapOptionsDisableHitboxHackTris,
+                new List<string>()
+                {
+                    "Reset"
+                },
+                new List<Action>()
+                {
+                    () => _defaulMapObjectHitboxHackTriangle.Reset()
+                });
 
             // Global Icon Size
             Config.MapGui.textBoxMapOptionsGlobalIconSize.AddEnterAction(() =>

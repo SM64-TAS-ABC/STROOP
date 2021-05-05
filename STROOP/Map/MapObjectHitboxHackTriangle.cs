@@ -172,6 +172,15 @@ namespace STROOP.Map
             return MapUtilities.GetTriangles(_levelTriAddressList.Concat(_objTriAddressList).ToList());
         }
 
+        public void Reset()
+        {
+            _levelTriAddressList.Clear();
+            _levelTriAddressList.AddRange(TriangleUtilities.GetLevelTriangles().ConvertAll(tri => tri.Address));
+
+            _objTriAddressList.Clear();
+            _objTriAddressList.AddRange(TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address));
+        }
+
         public override string GetName()
         {
             return "Level Tris";
