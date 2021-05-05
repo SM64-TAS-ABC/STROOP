@@ -317,7 +317,7 @@ namespace STROOP.Map
 
             List<(float x, float y, float z, float angle, int tex, bool show)> partialResults =
                 new List<(float x, float y, float z, float angle, int tex, bool show)>();
-            for (int i = 0; i < numPoints; i++)
+            for (int i = 0; i < Math.Min(numPoints, allResults.Count); i++)
             {
                 (float x, float y, float z, float angle, int tex) = allResults[i];
                 tex = i == numPoints - 1 ? _redMarioTex : tex;
