@@ -38,7 +38,14 @@ namespace STROOP.Map.Map3D
 
         private void UpdateProjection()
         {
-            _projection = Matrix4.CreatePerspectiveFieldOfView(FOV, Config.Map3DGraphics.AspectRatio, 0.1f, 0x8000);
+            try
+            {
+                _projection = Matrix4.CreatePerspectiveFieldOfView(FOV, Config.Map3DGraphics.AspectRatio, 0.1f, 0x8000);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         public void SetLookTarget(Vector3 target, Vector3 up)
