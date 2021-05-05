@@ -248,6 +248,7 @@ namespace STROOP
                 checkBoxMapOptionsTrackMario = checkBoxMapOptionsTrackMario,
                 checkBoxMapOptionsTrackHolp = checkBoxMapOptionsTrackHolp,
                 checkBoxMapOptionsTrackCamera = checkBoxMapOptionsTrackCamera,
+                checkBoxMapOptionsTrackCameraFocus = checkBoxMapOptionsTrackCameraFocus,
                 checkBoxMapOptionsTrackGhost = checkBoxMapOptionsTrackGhost,
                 checkBoxMapOptionsTrackSelf = checkBoxMapOptionsTrackSelf,
                 checkBoxMapOptionsTrackPoint = checkBoxMapOptionsTrackPoint,

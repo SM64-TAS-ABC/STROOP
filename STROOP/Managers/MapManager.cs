@@ -1162,6 +1162,7 @@ namespace STROOP.Managers
             _checkBoxMarioAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackMario, MapSemaphoreManager.Mario, () => new MapObjectMario(), true);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackHolp, MapSemaphoreManager.Holp, () => new MapObjectHolp(), false);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCamera, MapSemaphoreManager.Camera, () => new MapObjectCamera(), false);
+            InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackCameraFocus, MapSemaphoreManager.CameraFocus, () => new MapObjectCameraFocus(), false);
             _checkBoxGhostAction = InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackGhost, MapSemaphoreManager.Ghost, () => new MapObjectGhost(), false);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackSelf, MapSemaphoreManager.Self, () => new MapObjectSelf(), false);
             InitializeCheckboxSemaphore(Config.MapGui.checkBoxMapOptionsTrackPoint, MapSemaphoreManager.Point, () => new MapObjectPoint(), false);

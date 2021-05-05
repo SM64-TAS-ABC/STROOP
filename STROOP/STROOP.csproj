@@ -454,6 +454,7 @@
     <Compile Include="Managers\QuarterFrameManager.cs" />
     <Compile Include="Map\MapObjectAllObjectCeiling.cs" />
     <Compile Include="Map\MapObjectAllObjectWall.cs" />
+    <Compile Include="Map\MapObjectCameraFocus.cs" />
     <Compile Include="Map\MapObjectCoffinBox.cs" />
     <Compile Include="Map\MapObjectSettingsAccumulator.cs" />
     <Compile Include="Map\MapObjectPushHitboxCylinder.cs" />

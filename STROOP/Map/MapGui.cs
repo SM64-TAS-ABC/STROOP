@@ -24,6 +24,7 @@ namespace STROOP.Map
         public CheckBox checkBoxMapOptionsTrackMario;
         public CheckBox checkBoxMapOptionsTrackHolp;
         public CheckBox checkBoxMapOptionsTrackCamera;
+        public CheckBox checkBoxMapOptionsTrackCameraFocus;
         public CheckBox checkBoxMapOptionsTrackGhost;
         public CheckBox checkBoxMapOptionsTrackSelf;
         public CheckBox checkBoxMapOptionsTrackPoint;

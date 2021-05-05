@@ -15,6 +15,7 @@ namespace STROOP.Map
         public static MapSemaphore Mario = new MapSemaphore();
         public static MapSemaphore Holp = new MapSemaphore();
         public static MapSemaphore Camera = new MapSemaphore();
+        public static MapSemaphore CameraFocus = new MapSemaphore();
         public static MapSemaphore Ghost = new MapSemaphore();
         public static MapSemaphore Self = new MapSemaphore();
         public static MapSemaphore Point = new MapSemaphore();
