@@ -46,7 +46,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.ArrowImage;
+            return Config.ObjectAssociations.FacingDividerImage;
         }
 
         public override string GetName()

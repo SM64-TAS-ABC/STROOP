@@ -149,7 +149,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.CellGridlinesImage;
+            return Config.ObjectAssociations.LedgeGrabCheckerImage;
         }
     }
 }

@@ -180,7 +180,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.ArrowImage;
+            return Config.ObjectAssociations.CompassImage;
         }
 
         public override string GetName()

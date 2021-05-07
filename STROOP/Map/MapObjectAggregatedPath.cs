@@ -69,7 +69,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.PathImage;
+            return Config.ObjectAssociations.AggregatedPathImage;
         }
 
         public override MapDrawType GetDrawType()

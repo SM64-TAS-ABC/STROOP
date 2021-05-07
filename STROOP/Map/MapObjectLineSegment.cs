@@ -243,7 +243,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.ArrowImage;
+            return Config.ObjectAssociations.LineSegmentImage;
         }
 
         public override List<XAttribute> GetXAttributes()

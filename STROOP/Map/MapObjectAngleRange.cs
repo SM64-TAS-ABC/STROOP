@@ -82,7 +82,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.CustomGridlinesImage;
+            return Config.ObjectAssociations.AngleRangeImage;
         }
 
         public override ContextMenuStrip GetContextMenuStrip()

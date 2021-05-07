@@ -108,7 +108,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.ArrowImage;
+            return Config.ObjectAssociations.SectorImage;
         }
 
         public override string GetName()

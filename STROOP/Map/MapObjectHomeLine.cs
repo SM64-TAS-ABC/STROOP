@@ -43,7 +43,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.ArrowImage;
+            return Config.ObjectAssociations.HomeLineImage;
         }
 
         public override PositionAngle GetPositionAngle()
