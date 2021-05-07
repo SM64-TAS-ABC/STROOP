@@ -53,6 +53,19 @@ namespace STROOP.Structs
         public Image CustomPointsImage;
         public Image CustomGridlinesImage;
 
+        public Image AggregatedPathImage;
+        public Image AngleRangeImage;
+        public Image BranchPathImage;
+        public Image CoffinBoxImage;
+        public Image CompassImage;
+        public Image CoordinateLabelsImage;
+        public Image FacingDividerImage;
+        public Image HomeLineImage;
+        public Image LedgeGrabCheckerImage;
+        public Image LineSegmentImage;
+        public Image SectorImage;
+        public Image WatersImage;
+
         public Color MarioColor;
         public Color HudColor;
         public Color DebugColor;
@@ -303,6 +316,18 @@ namespace STROOP.Structs
             PathImage?.Dispose();
             CustomPointsImage?.Dispose();
             CustomGridlinesImage?.Dispose();
+            AggregatedPathImage?.Dispose();
+            AngleRangeImage?.Dispose();
+            BranchPathImage?.Dispose();
+            CoffinBoxImage?.Dispose();
+            CompassImage?.Dispose();
+            CoordinateLabelsImage?.Dispose();
+            FacingDividerImage?.Dispose();
+            HomeLineImage?.Dispose();
+            LedgeGrabCheckerImage?.Dispose();
+            LineSegmentImage?.Dispose();
+            SectorImage?.Dispose();
+            WatersImage?.Dispose();
         }
     }
 }

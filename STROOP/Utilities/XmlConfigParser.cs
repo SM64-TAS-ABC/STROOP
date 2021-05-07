@@ -248,7 +248,10 @@ namespace STROOP.Utilities
                 markedRedOverlayImagePath = "", markedOrangeOverlayImagePath = "", markedYellowOverlayImagePath = "", markedGreenOverlayImagePath = "",
                 markedLightBlueOverlayImagePath = "", markedBlueOverlayImagePath = "", markedPurpleOverlayImagePath = "", markedPinkOverlayImagePath = "",
                 markedGreyOverlayImagePath = "", markedWhiteOverlayImagePath = "", markedBlackOverlayImagePath = "",
-                lockedImagePath = "", lockDisabledImagePath = "";
+                lockedImagePath = "", lockDisabledImagePath = "",
+                aggregatedPathImagePath = "", angleRangeImagePath = "", branchPathImagePath = "", coffinBoxImagePath = "",
+                compassImagePath = "", coordinateLabelsImagePath = "", facingDividerImagePath = "", homeLineImagePath = "",
+                ledgeGrabCheckerImagePath = "", lineSegmentImagePath = "", sectorImagePath = "", watersImagePath = "";
             uint marioBehavior = 0;
 
             foreach (XElement element in doc.Root.Elements())
@@ -406,6 +409,54 @@ namespace STROOP.Utilities
 
                     case "CustomGridlines":
                         customGridlinesImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "AggregatedPath":
+                        aggregatedPathImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "AngleRange":
+                        angleRangeImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "BranchPath":
+                        branchPathImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "CoffinBox":
+                        coffinBoxImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "Compass":
+                        compassImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "CoordinateLabels":
+                        coordinateLabelsImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "FacingDivider":
+                        facingDividerImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "HomeLine":
+                        homeLineImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "LedgeGrabChecker":
+                        ledgeGrabCheckerImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "LineSegment":
+                        lineSegmentImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "Sector":
+                        sectorImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "Waters":
+                        watersImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "Overlays":
@@ -686,6 +737,20 @@ namespace STROOP.Utilities
             assoc.PathImage = Image.FromFile(mapImageDir + pathImagePath);
             assoc.CustomPointsImage = Image.FromFile(mapImageDir + customPointsImagePath);
             assoc.CustomGridlinesImage = Image.FromFile(mapImageDir + customGridlinesImagePath);
+
+            assoc.AggregatedPathImage = Image.FromFile(mapImageDir + aggregatedPathImagePath);
+            assoc.AngleRangeImage = Image.FromFile(mapImageDir + angleRangeImagePath);
+            assoc.BranchPathImage = Image.FromFile(mapImageDir + branchPathImagePath);
+            assoc.CoffinBoxImage = Image.FromFile(mapImageDir + coffinBoxImagePath);
+            assoc.CompassImage = Image.FromFile(mapImageDir + compassImagePath);
+            assoc.CoordinateLabelsImage = Image.FromFile(mapImageDir + coordinateLabelsImagePath);
+            assoc.FacingDividerImage = Image.FromFile(mapImageDir + facingDividerImagePath);
+            assoc.HomeLineImage = Image.FromFile(mapImageDir + homeLineImagePath);
+            assoc.LedgeGrabCheckerImage = Image.FromFile(mapImageDir + ledgeGrabCheckerImagePath);
+            assoc.LineSegmentImage = Image.FromFile(mapImageDir + lineSegmentImagePath);
+            assoc.SectorImage = Image.FromFile(mapImageDir + sectorImagePath);
+            assoc.WatersImage = Image.FromFile(mapImageDir + watersImagePath);
+
 
             assoc.MarioBehavior = marioBehavior;
 
