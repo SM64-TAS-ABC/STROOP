@@ -87,6 +87,42 @@
   <CustomGridlines>
     <MapImage path="Custom Gridlines.png"/>
   </CustomGridlines>
+  <AggregatedPath>
+    <MapImage path="Aggregated Path.png"/>
+  </AggregatedPath>
+  <AngleRange>
+    <MapImage path="Angle Range.png"/>
+  </AngleRange>
+  <BranchPath>
+    <MapImage path="Branch Path.png"/>
+  </BranchPath>
+  <CoffinBox>
+    <MapImage path="Coffin Box.png"/>
+  </CoffinBox>
+  <Compass>
+    <MapImage path="Compass.png"/>
+  </Compass>
+  <CoordinateLabels>
+    <MapImage path="Coordinate Labels.png"/>
+  </CoordinateLabels>
+  <FacingDivider>
+    <MapImage path="Facing Divider.png"/>
+  </FacingDivider>
+  <HomeLine>
+    <MapImage path="Home Line.png"/>
+  </HomeLine>
+  <LedgeGrabChecker>
+    <MapImage path="Ledge Grab Checker.png"/>
+  </LedgeGrabChecker>
+  <LineSegment>
+    <MapImage path="Line Segment.png"/>
+  </LineSegment>
+  <Sector>
+    <MapImage path="Sector.png"/>
+  </Sector>
+  <Waters>
+    <MapImage path="Waters.png"/>
+  </Waters>
   <Hud>
     <Image path="HUD.png"/>
     <Color>#aaaaaa</Color>
