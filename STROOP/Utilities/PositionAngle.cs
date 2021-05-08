@@ -1116,7 +1116,7 @@ namespace STROOP.Utilities
                     return GetTriangleVertexComponent(address, closestVertexToMario, coordinate);
                 case 5:
                     int closestVertexToSelf = TriangleDataModel.Create(address).GetClosestVertex(
-                        SpecialConfig.SelfX, SpecialConfig.SelfY, SpecialConfig.SelfZ);
+                        SpecialConfig.SelfPA.X, SpecialConfig.SelfPA.Y, SpecialConfig.SelfPA.Z);
                     return GetTriangleVertexComponent(address, closestVertexToSelf, coordinate);
                 case 6:
                     switch (coordinate)
@@ -1134,11 +1134,11 @@ namespace STROOP.Utilities
                     switch (coordinate)
                     {
                         case Coordinate.X:
-                            return SpecialConfig.SelfX;
+                            return SpecialConfig.SelfPA.X;
                         case Coordinate.Y:
-                            return TriangleDataModel.Create(address).GetHeightOnTriangle(SpecialConfig.SelfX, SpecialConfig.SelfZ);
+                            return TriangleDataModel.Create(address).GetHeightOnTriangle(SpecialConfig.SelfPA.X, SpecialConfig.SelfPA.Z);
                         case Coordinate.Z:
-                            return SpecialConfig.SelfZ;
+                            return SpecialConfig.SelfPA.Z;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
@@ -1771,7 +1771,7 @@ namespace STROOP.Utilities
                     return SetTriangleVertexComponent(value, address, closestVertexToMario, coordinate);
                 case 5:
                     int closestVertexToSelf = TriangleDataModel.Create(address).GetClosestVertex(
-                        SpecialConfig.SelfX, SpecialConfig.SelfY, SpecialConfig.SelfZ);
+                        SpecialConfig.SelfPA.X, SpecialConfig.SelfPA.Y, SpecialConfig.SelfPA.Z);
                     return SetTriangleVertexComponent(value, address, closestVertexToSelf, coordinate);
                 case 6:
                     return false;
