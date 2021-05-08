@@ -76,6 +76,8 @@ namespace STROOP.Utilities
             Functions,
             Self,
             Point,
+            Self2,
+            Point2,
             None,
         }
 
@@ -227,6 +229,8 @@ namespace STROOP.Utilities
         public static PositionAngle Scheduler = new PositionAngle(PositionAngleTypeEnum.Schedule);
         public static PositionAngle Self = new PositionAngle(PositionAngleTypeEnum.Self);
         public static PositionAngle Point = new PositionAngle(PositionAngleTypeEnum.Point);
+        public static PositionAngle Self2 = new PositionAngle(PositionAngleTypeEnum.Self2);
+        public static PositionAngle Point2 = new PositionAngle(PositionAngleTypeEnum.Point2);
         public static PositionAngle None = new PositionAngle(PositionAngleTypeEnum.None);
 
         public static PositionAngle Obj(uint address) =>
@@ -455,6 +459,14 @@ namespace STROOP.Utilities
             {
                 return Point;
             }
+            else if (parts.Count == 1 && parts[0] == "self2")
+            {
+                return Self2;
+            }
+            else if (parts.Count == 1 && parts[0] == "point2")
+            {
+                return Point2;
+            }
             else if (parts.Count >= 1 && (parts[0] == "pos" || parts[0] == "position"))
             {
                 double x = parts.Count >= 2 ? ParsingUtilities.ParseDoubleNullable(parts[1]) ?? double.NaN : double.NaN;
@@ -680,6 +692,10 @@ namespace STROOP.Utilities
                         return SpecialConfig.SelfPA.X;
                     case PositionAngleTypeEnum.Point:
                         return SpecialConfig.PointPA.X;
+                    case PositionAngleTypeEnum.Self2:
+                        return SpecialConfig.Self2PA.X;
+                    case PositionAngleTypeEnum.Point2:
+                        return SpecialConfig.Point2PA.X;
                     case PositionAngleTypeEnum.None:
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -784,6 +800,10 @@ namespace STROOP.Utilities
                         return SpecialConfig.SelfPA.Y;
                     case PositionAngleTypeEnum.Point:
                         return SpecialConfig.PointPA.Y;
+                    case PositionAngleTypeEnum.Self2:
+                        return SpecialConfig.Self2PA.Y;
+                    case PositionAngleTypeEnum.Point2:
+                        return SpecialConfig.Point2PA.Y;
                     case PositionAngleTypeEnum.None:
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -888,6 +908,10 @@ namespace STROOP.Utilities
                         return SpecialConfig.SelfPA.Z;
                     case PositionAngleTypeEnum.Point:
                         return SpecialConfig.PointPA.Z;
+                    case PositionAngleTypeEnum.Self2:
+                        return SpecialConfig.Self2PA.Z;
+                    case PositionAngleTypeEnum.Point2:
+                        return SpecialConfig.Point2PA.Z;
                     case PositionAngleTypeEnum.None:
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -986,6 +1010,10 @@ namespace STROOP.Utilities
                         return SpecialConfig.SelfPA.Angle;
                     case PositionAngleTypeEnum.Point:
                         return SpecialConfig.PointPA.Angle;
+                    case PositionAngleTypeEnum.Self2:
+                        return SpecialConfig.Self2PA.Angle;
+                    case PositionAngleTypeEnum.Point2:
+                        return SpecialConfig.Point2PA.Angle;
                     case PositionAngleTypeEnum.None:
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -1288,6 +1316,10 @@ namespace STROOP.Utilities
                     return SpecialConfig.SelfPA.SetX(value);
                 case PositionAngleTypeEnum.Point:
                     return SpecialConfig.PointPA.SetX(value);
+                case PositionAngleTypeEnum.Self2:
+                    return SpecialConfig.Self2PA.SetX(value);
+                case PositionAngleTypeEnum.Point2:
+                    return SpecialConfig.Point2PA.SetX(value);
                 case PositionAngleTypeEnum.None:
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -1392,6 +1424,10 @@ namespace STROOP.Utilities
                     return SpecialConfig.SelfPA.SetY(value);
                 case PositionAngleTypeEnum.Point:
                     return SpecialConfig.PointPA.SetY(value);
+                case PositionAngleTypeEnum.Self2:
+                    return SpecialConfig.Self2PA.SetY(value);
+                case PositionAngleTypeEnum.Point2:
+                    return SpecialConfig.Point2PA.SetY(value);
                 case PositionAngleTypeEnum.None:
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -1496,6 +1532,10 @@ namespace STROOP.Utilities
                     return SpecialConfig.SelfPA.SetZ(value);
                 case PositionAngleTypeEnum.Point:
                     return SpecialConfig.PointPA.SetZ(value);
+                case PositionAngleTypeEnum.Self2:
+                    return SpecialConfig.Self2PA.SetZ(value);
+                case PositionAngleTypeEnum.Point2:
+                    return SpecialConfig.Point2PA.SetZ(value);
                 case PositionAngleTypeEnum.None:
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -1604,6 +1644,10 @@ namespace STROOP.Utilities
                     return SpecialConfig.SelfPA.SetAngle(value);
                 case PositionAngleTypeEnum.Point:
                     return SpecialConfig.PointPA.SetAngle(value);
+                case PositionAngleTypeEnum.Self2:
+                    return SpecialConfig.Self2PA.SetAngle(value);
+                case PositionAngleTypeEnum.Point2:
+                    return SpecialConfig.Point2PA.SetAngle(value);
                 case PositionAngleTypeEnum.None:
                 default:
                     throw new ArgumentOutOfRangeException();
