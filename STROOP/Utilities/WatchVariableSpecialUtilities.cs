@@ -2778,9 +2778,9 @@ namespace STROOP.Structs
                     double sDist = values[1].Value;
                     (double relX, double relZ) =
                         MoreMath.RotatePointAboutPointAnAngularDistance(
-                            sDist, -1 * fDist, 0, 0, SpecialConfig.PointAngle);
-                    SpecialConfig.Self2PA.SetX(SpecialConfig.PointX + relX);
-                    SpecialConfig.Self2PA.SetZ(SpecialConfig.PointZ + relZ);
+                            sDist, -1 * fDist, 0, 0, SpecialConfig.Point2Angle);
+                    SpecialConfig.Self2PA.SetX(SpecialConfig.Point2X + relX);
+                    SpecialConfig.Self2PA.SetZ(SpecialConfig.Point2Z + relZ);
                     return true;
                 }
             ));
