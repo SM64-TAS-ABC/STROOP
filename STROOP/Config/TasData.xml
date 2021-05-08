@@ -110,11 +110,11 @@
   <Data groupList="Point2" base="None" specialType="AngleDiffSelf2ToPoint2" subclass="Angle" display="short" color="LightBlue">DAngle Self2 to Angle</Data>
   <Data groupList="Point2" base="None" specialType="FDistPoint2ToSelf2" color="LightBlue">FDist Point2 to Self2</Data>
   <Data groupList="Point2" base="None" specialType="SDistPoint2ToSelf2" color="LightBlue">SDist Point2 to Self2</Data>
-  <Data groupList="Point2" base="None" specialType="FSDistPoint2ToSelf2" subclass="String" color="LightBlue">FSDist Point2 to Self</Data>
+  <Data groupList="Point2" base="None" specialType="FSDistPoint2ToSelf2" subclass="String" color="LightBlue">FSDist Point2 to Self2</Data>
 
-  <Data groupList="Point" base="None" specialType="PitchSelfToPoint" subclass="Angle" display="short" color="Pink">Pitch Self to Point</Data>
-  <Data groupList="Point" base="None" specialType="WalkingDistance" color="Pink">Walking Distance</Data>
-  <Data groupList="Point" base="None" specialType="WalkingDistanceDifferenceMarioToPoint" color="Pink">Walking Distance Diff</Data>
-  <Data groupList="Point" base="None" specialType="ScheduleOffset" color="Pink">Schedule Offset</Data>
+  <Data groupList="MorePoint" base="None" specialType="PitchSelfToPoint" subclass="Angle" display="short" color="Pink">Pitch Self to Point</Data>
+  <Data groupList="MorePoint" base="None" specialType="WalkingDistance" color="Pink">Walking Distance</Data>
+  <Data groupList="MorePoint" base="None" specialType="WalkingDistanceDifferenceMarioToPoint" color="Pink">Walking Distance Diff</Data>
+  <Data groupList="MorePoint" base="None" specialType="ScheduleOffset" color="Pink">Schedule Offset</Data>
 
 </VarData>

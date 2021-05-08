@@ -37,6 +37,7 @@ namespace STROOP.Structs
         TAS,
         Point,
         Point2,
+        MorePoint,
         Coin,
         Hacks,
         Rng,
