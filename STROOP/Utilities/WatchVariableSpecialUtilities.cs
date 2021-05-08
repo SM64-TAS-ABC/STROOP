@@ -4864,7 +4864,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.SelfPosPA.SetX(doubleValue);
+                    return SpecialConfig.SelfPA.SetX(doubleValue);
                 }));
 
             _dictionary.Add("SelfY",
@@ -4874,7 +4874,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.SelfPosPA.SetY(doubleValue);
+                    return SpecialConfig.SelfPA.SetY(doubleValue);
                 }));
 
             _dictionary.Add("SelfZ",
@@ -4884,7 +4884,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.SelfPosPA.SetZ(doubleValue);
+                    return SpecialConfig.SelfPA.SetZ(doubleValue);
                 }));
 
             _dictionary.Add("SelfAngleType",
@@ -4906,7 +4906,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.SelfAnglePA.SetAngle(doubleValue);
+                    return SpecialConfig.SelfPA.SetAngle(doubleValue);
                 }));
 
             _dictionary.Add("PointPosType",
@@ -4927,7 +4927,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.PointPosPA.SetX(doubleValue);
+                    return SpecialConfig.PointPA.SetX(doubleValue);
                 }));
 
             _dictionary.Add("PointY",
@@ -4937,7 +4937,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.PointPosPA.SetY(doubleValue);
+                    return SpecialConfig.PointPA.SetY(doubleValue);
                 }));
 
             _dictionary.Add("PointZ",
@@ -4947,7 +4947,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.PointPosPA.SetZ(doubleValue);
+                    return SpecialConfig.PointPA.SetZ(doubleValue);
                 }));
 
             _dictionary.Add("PointAngleType",
@@ -4968,7 +4968,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.PointAnglePA.SetAngle(doubleValue);
+                    return SpecialConfig.PointPA.SetAngle(doubleValue);
                 }));
 
             _dictionary.Add("Self2PosType",
@@ -4990,7 +4990,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.Self2PosPA.SetX(doubleValue);
+                    return SpecialConfig.Self2PA.SetX(doubleValue);
                 }
             ));
 
@@ -5001,7 +5001,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.Self2PosPA.SetY(doubleValue);
+                    return SpecialConfig.Self2PA.SetY(doubleValue);
                 }
             ));
 
@@ -5012,7 +5012,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.Self2PosPA.SetZ(doubleValue);
+                    return SpecialConfig.Self2PA.SetZ(doubleValue);
                 }
             ));
 
@@ -5035,7 +5035,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.Self2AnglePA.SetAngle(doubleValue);
+                    return SpecialConfig.Self2PA.SetAngle(doubleValue);
                 }
             ));
 
@@ -5058,7 +5058,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.Point2PosPA.SetX(doubleValue);
+                    return SpecialConfig.Point2PA.SetX(doubleValue);
                 }
             ));
 
@@ -5069,7 +5069,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.Point2PosPA.SetY(doubleValue);
+                    return SpecialConfig.Point2PA.SetY(doubleValue);
                 }
             ));
 
@@ -5080,7 +5080,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.Point2PosPA.SetZ(doubleValue);
+                    return SpecialConfig.Point2PA.SetZ(doubleValue);
                 }
             ));
 
@@ -5103,7 +5103,7 @@ namespace STROOP.Structs
                 },
                 (double doubleValue, uint dummy) =>
                 {
-                    return SpecialConfig.Point2AnglePA.SetAngle(doubleValue);
+                    return SpecialConfig.Point2PA.SetAngle(doubleValue);
                 }
             ));
 
