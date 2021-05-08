@@ -17,13 +17,11 @@ namespace STROOP.Map
     public class MapObjectObjectFacingArrow : MapObjectArrow
     {
         private readonly PositionAngle _posAngle;
-        private readonly uint _objAddress;
 
         public MapObjectObjectFacingArrow(PositionAngle posAngle)
             : base()
         {
             _posAngle = posAngle;
-            _objAddress = posAngle.GetObjAddress();
         }
 
         public override PositionAngle GetPositionAngle()
@@ -33,12 +31,12 @@ namespace STROOP.Map
 
         protected override double GetYaw()
         {
-            return Config.Stream.GetUShort(_objAddress + ObjectConfig.YawFacingOffset);
+            return Config.Stream.GetUShort(_posAngle.GetObjAddress() + ObjectConfig.YawFacingOffset);
         }
 
         protected override double GetRecommendedSize()
         {
-            return Config.Stream.GetFloat(_objAddress + ObjectConfig.HSpeedOffset);
+            return Config.Stream.GetFloat(_posAngle.GetObjAddress() + ObjectConfig.HSpeedOffset);
         }
 
         public override string GetName()

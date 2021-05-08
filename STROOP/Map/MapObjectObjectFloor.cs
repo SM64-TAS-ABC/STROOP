@@ -19,24 +19,22 @@ namespace STROOP.Map
     public class MapObjectObjectFloor : MapObjectFloor
     {
         private readonly PositionAngle _posAngle;
-        private readonly uint _objAddress;
 
         public MapObjectObjectFloor(PositionAngle posAngle)
             : base()
         {
-            _posAngle = PositionAngle.Obj(posAngle.GetObjAddress());
-            _objAddress = posAngle.GetObjAddress();
+            _posAngle = posAngle;
         }
 
         protected override List<TriangleDataModel> GetUnfilteredTriangles()
         {
-            return TriangleUtilities.GetObjectTrianglesForObject(_objAddress)
+            return TriangleUtilities.GetObjectTrianglesForObject(_posAngle.GetObjAddress())
                 .FindAll(tri => tri.IsFloor());
         }
 
         public override string GetName()
         {
-            return "Floor Tris for " + PositionAngle.GetMapNameForObject(_objAddress);
+            return "Floor Tris for " + _posAngle.GetMapName();
         }
 
         public override Image GetInternalImage()

@@ -17,7 +17,6 @@ namespace STROOP.Map
     public class MapObjectObjectCustomArrow : MapObjectArrow
     {
         private readonly PositionAngle _posAngle;
-        private readonly uint _objAddress;
         private readonly uint _yawOffset;
         private readonly int _numBytes;
 
@@ -25,7 +24,6 @@ namespace STROOP.Map
             : base()
         {
             _posAngle = posAngle;
-            _objAddress = posAngle.GetObjAddress();
             _yawOffset = yawOffset;
             _numBytes = numBytes;
         }
@@ -38,13 +36,13 @@ namespace STROOP.Map
         protected override double GetYaw()
         {
             return _numBytes == 2 ?
-                Config.Stream.GetUShort(_objAddress + _yawOffset) :
-                Config.Stream.GetUInt(_objAddress + _yawOffset);
+                Config.Stream.GetUShort(_posAngle.GetObjAddress() + _yawOffset) :
+                Config.Stream.GetUInt(_posAngle.GetObjAddress() + _yawOffset);
         }
 
         protected override double GetRecommendedSize()
         {
-            return Config.Stream.GetFloat(_objAddress + ObjectConfig.HSpeedOffset);
+            return Config.Stream.GetFloat(_posAngle.GetObjAddress() + ObjectConfig.HSpeedOffset);
         }
 
         public override string GetName()
