@@ -208,7 +208,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectPushHitboxCylinder(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -281,7 +281,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectHome(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -296,7 +296,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     PositionAngle homePosAngle = PositionAngle.ObjHome(posAngle.GetObjAddress());
                     return (MapObject)new MapObjectCustomCylinder(homePosAngle);
                 }).FindAll(mapObj => mapObj != null);
@@ -312,7 +312,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     PositionAngle homePosAngle = PositionAngle.ObjHome(posAngle.GetObjAddress());
                     return (MapObject)new MapObjectCustomSphere(homePosAngle);
                 }).FindAll(mapObj => mapObj != null);
@@ -328,7 +328,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectObjectFloor(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -343,7 +343,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectObjectWall(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -358,7 +358,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectObjectCeiling(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -457,7 +457,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectObjectFacingArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -472,7 +472,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectObjectMovingArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -487,7 +487,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectObjectGraphicsArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -502,7 +502,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectObjectAngleToMarioArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -523,7 +523,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectObjectCustomArrow(posAngle, yawOffset, numBytes);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -538,7 +538,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectSwooperEffectiveTargetArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -644,7 +644,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectHomeLine(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -687,7 +687,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
-                    if (!posAngle.IsObject()) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectCoffinBox(posAngle);
                 }).FindAll(mapObj => mapObj != null);
                 if (newMapObjs.Count == 0) return;
@@ -701,7 +701,7 @@ namespace STROOP.Map
                 foreach (MapObject mapObj in _mapObjectList)
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
-                    if (!posAngle.IsObject()) continue;
+                    if (!posAngle.IsObjectOrMario()) continue;
                     uint address = posAngle.GetObjAddress();
                     PositionAngle chuckyaPosAngle = PositionAngle.Obj(address);
                     PositionAngle homePosAngle = PositionAngle.ObjHome(address);
