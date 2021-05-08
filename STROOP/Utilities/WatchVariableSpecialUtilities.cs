@@ -733,6 +733,8 @@ namespace STROOP.Structs
                     (uint address) => PositionAngle.Tri(address, 3),
                     (uint address) => SpecialConfig.PointPA,
                     (uint address) => SpecialConfig.SelfPA,
+                    (uint address) => SpecialConfig.Point2PA,
+                    (uint address) => SpecialConfig.Self2PA,
                 };
 
             List<string> posAngleStrings =
@@ -750,6 +752,8 @@ namespace STROOP.Structs
                     "TriV3",
                     "Point",
                     "Self",
+                    "Point2",
+                    "Self2",
                 };
 
             for (int i = 0; i < posAngleFuncs.Count; i++)
@@ -2757,6 +2761,29 @@ namespace STROOP.Structs
                     SpecialConfig.SelfPA.SetZ(SpecialConfig.PointZ + relZ);
                     return true;
                 }));
+
+            _dictionary.Add("FSDistPoint2ToSelf2",
+                ((uint dummy) =>
+                {
+                    double fDist = PositionAngle.GetFDistance(SpecialConfig.Point2PA, SpecialConfig.Self2PA);
+                    double sDist = PositionAngle.GetSDistance(SpecialConfig.Point2PA, SpecialConfig.Self2PA);
+                    return "(" + fDist + "," + sDist + ")";
+                },
+                (string value, uint dummy) =>
+                {
+                    List<double?> values = ParsingUtilities.ParseDoubleList(value);
+                    if (values.Count < 2) return false;
+                    if (!values[0].HasValue || !values[1].HasValue) return false;
+                    double fDist = values[0].Value;
+                    double sDist = values[1].Value;
+                    (double relX, double relZ) =
+                        MoreMath.RotatePointAboutPointAnAngularDistance(
+                            sDist, -1 * fDist, 0, 0, SpecialConfig.PointAngle);
+                    SpecialConfig.Self2PA.SetX(SpecialConfig.PointX + relX);
+                    SpecialConfig.Self2PA.SetZ(SpecialConfig.PointZ + relZ);
+                    return true;
+                }
+            ));
 
             _dictionary.Add("PitchSelfToPoint",
                 ((uint dummy) =>
@@ -4943,6 +4970,142 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.PointAnglePA.SetAngle(doubleValue);
                 }));
+
+            _dictionary.Add("Self2PosType",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Self2PosPA.ToString();
+                },
+                (PositionAngle posAngle, uint dummy) =>
+                {
+                    SpecialConfig.Self2PosPA = posAngle;
+                    return true;
+                }
+            ));
+
+            _dictionary.Add("Self2X",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Self2X;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.Self2PosPA.SetX(doubleValue);
+                }
+            ));
+
+            _dictionary.Add("Self2Y",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Self2Y;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.Self2PosPA.SetY(doubleValue);
+                }
+            ));
+
+            _dictionary.Add("Self2Z",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Self2Z;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.Self2PosPA.SetZ(doubleValue);
+                }
+            ));
+
+            _dictionary.Add("Self2AngleType",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Self2AnglePA.ToString();
+                },
+                (PositionAngle posAngle, uint dummy) =>
+                {
+                    SpecialConfig.Self2AnglePA = posAngle;
+                    return true;
+                }
+            ));
+
+            _dictionary.Add("Self2Angle",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Self2Angle;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.Self2AnglePA.SetAngle(doubleValue);
+                }
+            ));
+
+            _dictionary.Add("Point2PosType",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Point2PosPA.ToString();
+                },
+                (PositionAngle posAngle, uint dummy) =>
+                {
+                    SpecialConfig.Point2PosPA = posAngle;
+                    return true;
+                }
+            ));
+
+            _dictionary.Add("Point2X",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Point2X;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.Point2PosPA.SetX(doubleValue);
+                }
+            ));
+
+            _dictionary.Add("Point2Y",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Point2Y;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.Point2PosPA.SetY(doubleValue);
+                }
+            ));
+
+            _dictionary.Add("Point2Z",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Point2Z;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.Point2PosPA.SetZ(doubleValue);
+                }
+            ));
+
+            _dictionary.Add("Point2AngleType",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Point2AnglePA.ToString();
+                },
+                (PositionAngle posAngle, uint dummy) =>
+                {
+                    SpecialConfig.Point2AnglePA = posAngle;
+                    return true;
+                }
+            ));
+
+            _dictionary.Add("Point2Angle",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.Point2Angle;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.Point2AnglePA.SetAngle(doubleValue);
+                }
+            ));
 
             // Ghost vars
 

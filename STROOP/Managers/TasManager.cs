@@ -20,6 +20,7 @@ namespace STROOP.Managers
                 VariableGroup.Advanced,
                 VariableGroup.TAS,
                 VariableGroup.Point,
+                VariableGroup.Point2,
                 VariableGroup.Scheduler,
             };
 

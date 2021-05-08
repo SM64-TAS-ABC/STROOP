@@ -25,59 +25,41 @@ namespace STROOP.Structs.Configurations
 
         public static PositionAngle SelfPosPA = PositionAngle.Mario;
         public static PositionAngle SelfAnglePA = PositionAngle.Mario;
-        public static PositionAngle SelfPA
-        {
-            get => PositionAngle.Hybrid(SelfPosPA, SelfAnglePA);
-        }
-
-        public static double SelfX
-        {
-            get => SelfPA.X;
-        }
-
-        public static double SelfY
-        {
-            get => SelfPA.Y;
-        }
-
-        public static double SelfZ
-        {
-            get => SelfPA.Z;
-        }
-
-        public static double SelfAngle
-        {
-            get => SelfPA.Angle;
-        }
+        public static PositionAngle SelfPA { get => PositionAngle.Hybrid(SelfPosPA, SelfAnglePA); }
+        public static double SelfX { get => SelfPA.X; }
+        public static double SelfY { get => SelfPA.Y; }
+        public static double SelfZ { get => SelfPA.Z; }
+        public static double SelfAngle { get => SelfPA.Angle; }
 
         // - Point pos
 
         public static PositionAngle PointPosPA = PositionAngle.Custom;
         public static PositionAngle PointAnglePA = PositionAngle.Custom;
-        public static PositionAngle PointPA
-        {
-            get => PositionAngle.Hybrid(PointPosPA, PointAnglePA);
-        }
+        public static PositionAngle PointPA { get => PositionAngle.Hybrid(PointPosPA, PointAnglePA); }
+        public static double PointX { get => PointPA.X; }
+        public static double PointY { get => PointPA.Y; }
+        public static double PointZ { get => PointPA.Z; }
+        public static double PointAngle { get => PointPA.Angle; }
 
-        public static double PointX
-        {
-            get => PointPA.X;
-        }
+        // - Self2 pos
 
-        public static double PointY
-        {
-            get => PointPA.Y;
-        }
+        public static PositionAngle Self2PosPA = PositionAngle.Mario;
+        public static PositionAngle Self2AnglePA = PositionAngle.Mario;
+        public static PositionAngle Self2PA { get => PositionAngle.Hybrid(Self2PosPA, Self2AnglePA); }
+        public static double Self2X { get => Self2PA.X; }
+        public static double Self2Y { get => Self2PA.Y; }
+        public static double Self2Z { get => Self2PA.Z; }
+        public static double Self2Angle { get => Self2PA.Angle; }
 
-        public static double PointZ
-        {
-            get => PointPA.Z;
-        }
+        // - Point2 pos
 
-        public static double PointAngle
-        {
-            get => PointPA.Angle;
-        }
+        public static PositionAngle Point2PosPA = PositionAngle.Custom2;
+        public static PositionAngle Point2AnglePA = PositionAngle.Custom2;
+        public static PositionAngle Point2PA { get => PositionAngle.Hybrid(Point2PosPA, Point2AnglePA); }
+        public static double Point2X { get => Point2PA.X; }
+        public static double Point2Y { get => Point2PA.Y; }
+        public static double Point2Z { get => Point2PA.Z; }
+        public static double Point2Angle { get => Point2PA.Angle; }
 
         // - Functions
 
