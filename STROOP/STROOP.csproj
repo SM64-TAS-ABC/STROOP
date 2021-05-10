@@ -456,6 +456,7 @@
     <Compile Include="Map\MapObjectAllObjectWall.cs" />
     <Compile Include="Map\MapObjectCameraFocus.cs" />
     <Compile Include="Map\MapObjectCoffinBox.cs" />
+    <Compile Include="Map\MapObjectHolpDisplayer.cs" />
     <Compile Include="Map\MapObjectSettingsAccumulator.cs" />
     <Compile Include="Map\MapObjectPushHitboxCylinder.cs" />
     <Compile Include="Map\MapObjectLedgeGrabChecker.cs" />

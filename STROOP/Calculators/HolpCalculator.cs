@@ -161,6 +161,8 @@ namespace STROOP.Structs
 
         private static Dictionary<int, (double, double, double)> _dictionaryForWalking;
         private static Dictionary<int, (double, double, double)> _dictionaryForStanding;
+        public static readonly int WALKING_COUNT = 76;
+        public static readonly int STANDING_COUNT = 61;
 
         static HolpCalculator()
         {
