@@ -104,6 +104,62 @@ namespace STROOP.Managers
                 {
                     () => SetScheduler(Clipboard.GetText(), true)
                 });
+
+            GroupBox groupBoxTasSelf = splitContainerTas.Panel1.Controls["groupBoxTasSelf"] as GroupBox;
+            ControlUtilities.InitializeThreeDimensionController(
+                CoordinateSystem.Euler,
+                true,
+                groupBoxTasSelf,
+                groupBoxTasSelf.Controls["buttonTasSelfXn"] as Button,
+                groupBoxTasSelf.Controls["buttonTasSelfXp"] as Button,
+                groupBoxTasSelf.Controls["buttonTasSelfZn"] as Button,
+                groupBoxTasSelf.Controls["buttonTasSelfZp"] as Button,
+                groupBoxTasSelf.Controls["buttonTasSelfXnZn"] as Button,
+                groupBoxTasSelf.Controls["buttonTasSelfXnZp"] as Button,
+                groupBoxTasSelf.Controls["buttonTasSelfXpZn"] as Button,
+                groupBoxTasSelf.Controls["buttonTasSelfXpZp"] as Button,
+                groupBoxTasSelf.Controls["buttonTasSelfYp"] as Button,
+                groupBoxTasSelf.Controls["buttonTasSelfYn"] as Button,
+                groupBoxTasSelf.Controls["textBoxTasSelfXZ"] as TextBox,
+                groupBoxTasSelf.Controls["textBoxTasSelfY"] as TextBox,
+                groupBoxTasSelf.Controls["checkBoxTasSelfRelative"] as CheckBox,
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
+                {
+                    ButtonUtilities.TranslatePosAngle(
+                        new List<PositionAngle>() { PositionAngle.Self },
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
+                        useRelative);
+                });
+
+            GroupBox groupBoxTasPoint = splitContainerTas.Panel1.Controls["groupBoxTasPoint"] as GroupBox;
+            ControlUtilities.InitializeThreeDimensionController(
+                CoordinateSystem.Euler,
+                true,
+                groupBoxTasPoint,
+                groupBoxTasPoint.Controls["buttonTasPointXn"] as Button,
+                groupBoxTasPoint.Controls["buttonTasPointXp"] as Button,
+                groupBoxTasPoint.Controls["buttonTasPointZn"] as Button,
+                groupBoxTasPoint.Controls["buttonTasPointZp"] as Button,
+                groupBoxTasPoint.Controls["buttonTasPointXnZn"] as Button,
+                groupBoxTasPoint.Controls["buttonTasPointXnZp"] as Button,
+                groupBoxTasPoint.Controls["buttonTasPointXpZn"] as Button,
+                groupBoxTasPoint.Controls["buttonTasPointXpZp"] as Button,
+                groupBoxTasPoint.Controls["buttonTasPointYp"] as Button,
+                groupBoxTasPoint.Controls["buttonTasPointYn"] as Button,
+                groupBoxTasPoint.Controls["textBoxTasPointXZ"] as TextBox,
+                groupBoxTasPoint.Controls["textBoxTasPointY"] as TextBox,
+                groupBoxTasPoint.Controls["checkBoxTasPointRelative"] as CheckBox,
+                (float hOffset, float vOffset, float nOffset, bool useRelative) =>
+                {
+                    ButtonUtilities.TranslatePosAngle(
+                        new List<PositionAngle>() { PositionAngle.Point },
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
+                        useRelative);
+                });
         }
 
         private void StoreInfo(
