@@ -34,18 +34,18 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -767,6 +767,7 @@ namespace STROOP
             this.checkBoxMapOptionsTrackCeilingTri = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackWallTri = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackFloorTri = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapOptionsTrackCameraFocus = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackCamera = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackHolp = new System.Windows.Forms.CheckBox();
             this.checkBoxMapOptionsTrackMario = new System.Windows.Forms.CheckBox();
@@ -1627,7 +1628,35 @@ namespace STROOP
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.checkBoxMapOptionsTrackCameraFocus = new System.Windows.Forms.CheckBox();
+            this.buttonTasGotoVertex = new System.Windows.Forms.Button();
+            this.groupBoxTasSelf = new System.Windows.Forms.GroupBox();
+            this.checkBoxTasSelfRelative = new System.Windows.Forms.CheckBox();
+            this.textBoxTasSelfY = new STROOP.BetterTextbox();
+            this.buttonTasSelfYp = new System.Windows.Forms.Button();
+            this.buttonTasSelfYn = new System.Windows.Forms.Button();
+            this.buttonTasSelfXpZp = new System.Windows.Forms.Button();
+            this.textBoxTasSelfXZ = new STROOP.BetterTextbox();
+            this.buttonTasSelfXp = new System.Windows.Forms.Button();
+            this.buttonTasSelfXpZn = new System.Windows.Forms.Button();
+            this.buttonTasSelfZn = new System.Windows.Forms.Button();
+            this.buttonTasSelfZp = new System.Windows.Forms.Button();
+            this.buttonTasSelfXnZp = new System.Windows.Forms.Button();
+            this.buttonTasSelfXn = new System.Windows.Forms.Button();
+            this.buttonTasSelfXnZn = new System.Windows.Forms.Button();
+            this.groupBoxTasPoint = new System.Windows.Forms.GroupBox();
+            this.checkBoxTasPointRelative = new System.Windows.Forms.CheckBox();
+            this.textBoxTasPointY = new STROOP.BetterTextbox();
+            this.buttonTasPointYp = new System.Windows.Forms.Button();
+            this.buttonTasPointYn = new System.Windows.Forms.Button();
+            this.buttonTasPointXpZp = new System.Windows.Forms.Button();
+            this.textBoxTasPointXZ = new STROOP.BetterTextbox();
+            this.buttonTasPointXp = new System.Windows.Forms.Button();
+            this.buttonTasPointXpZn = new System.Windows.Forms.Button();
+            this.buttonTasPointZn = new System.Windows.Forms.Button();
+            this.buttonTasPointZp = new System.Windows.Forms.Button();
+            this.buttonTasPointXnZp = new System.Windows.Forms.Button();
+            this.buttonTasPointXn = new System.Windows.Forms.Button();
+            this.buttonTasPointXnZn = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -2114,6 +2143,8 @@ namespace STROOP
             this.splitContainerWarpLeft.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            this.groupBoxTasSelf.SuspendLayout();
+            this.groupBoxTasPoint.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -5951,7 +5982,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 576F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 577F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9679,7 +9710,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(430, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(433, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -9713,14 +9744,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -9741,14 +9772,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -10598,7 +10629,10 @@ namespace STROOP
             // splitContainerTas.Panel1
             // 
             this.splitContainerTas.Panel1.AutoScroll = true;
+            this.splitContainerTas.Panel1.Controls.Add(this.groupBoxTasPoint);
+            this.splitContainerTas.Panel1.Controls.Add(this.groupBoxTasSelf);
             this.splitContainerTas.Panel1.Controls.Add(this.buttonTasPasteSchedule);
+            this.splitContainerTas.Panel1.Controls.Add(this.buttonTasGotoVertex);
             this.splitContainerTas.Panel1.Controls.Add(this.buttonTasStoreAngle);
             this.splitContainerTas.Panel1.Controls.Add(this.buttonTasTakeAngle);
             this.splitContainerTas.Panel1.Controls.Add(this.buttonTasTakePosition);
@@ -10617,10 +10651,10 @@ namespace STROOP
             // 
             // buttonTasPasteSchedule
             // 
-            this.buttonTasPasteSchedule.Location = new System.Drawing.Point(2, 54);
+            this.buttonTasPasteSchedule.Location = new System.Drawing.Point(98, 54);
             this.buttonTasPasteSchedule.Margin = new System.Windows.Forms.Padding(0);
             this.buttonTasPasteSchedule.Name = "buttonTasPasteSchedule";
-            this.buttonTasPasteSchedule.Size = new System.Drawing.Size(189, 25);
+            this.buttonTasPasteSchedule.Size = new System.Drawing.Size(93, 25);
             this.buttonTasPasteSchedule.TabIndex = 37;
             this.buttonTasPasteSchedule.Text = "Paste Schedule";
             this.buttonTasPasteSchedule.UseVisualStyleBackColor = true;
@@ -11015,6 +11049,16 @@ namespace STROOP
             this.checkBoxMapOptionsTrackFloorTri.TabIndex = 19;
             this.checkBoxMapOptionsTrackFloorTri.Text = "Track Floor Tri";
             this.checkBoxMapOptionsTrackFloorTri.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapOptionsTrackCameraFocus
+            // 
+            this.checkBoxMapOptionsTrackCameraFocus.AutoSize = true;
+            this.checkBoxMapOptionsTrackCameraFocus.Location = new System.Drawing.Point(14, 61);
+            this.checkBoxMapOptionsTrackCameraFocus.Name = "checkBoxMapOptionsTrackCameraFocus";
+            this.checkBoxMapOptionsTrackCameraFocus.Size = new System.Drawing.Size(86, 17);
+            this.checkBoxMapOptionsTrackCameraFocus.TabIndex = 19;
+            this.checkBoxMapOptionsTrackCameraFocus.Text = "Track Focus";
+            this.checkBoxMapOptionsTrackCameraFocus.UseVisualStyleBackColor = true;
             // 
             // checkBoxMapOptionsTrackCamera
             // 
@@ -12667,7 +12711,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Padding = new System.Windows.Forms.Padding(2);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 697;
+            this.splitContainerMemory.SplitterDistance = 700;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12708,7 +12752,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(697, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(700, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -12925,7 +12969,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(697, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(700, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -12954,7 +12998,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(596, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(599, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12966,7 +13010,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Location = new System.Drawing.Point(2, 2);
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(205, 451);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(202, 451);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -14120,7 +14164,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(238, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(221, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -14152,7 +14196,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(232, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(215, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -14208,7 +14252,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(232, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(215, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -16460,14 +16504,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -16487,46 +16531,46 @@ namespace STROOP
             // 
             // rngIndex
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
             this.rngIndex.HeaderText = "RNG Index";
             this.rngIndex.MinimumWidth = 2;
             this.rngIndex.Name = "rngIndex";
             // 
             // rngValue
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
             this.rngValue.HeaderText = "RNG Value";
             this.rngValue.MinimumWidth = 2;
             this.rngValue.Name = "rngValue";
             // 
             // rngToGo
             // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
             this.rngToGo.HeaderText = "RNG To Go";
             this.rngToGo.MinimumWidth = 2;
             this.rngToGo.Name = "rngToGo";
             // 
             // coinHSpeed
             // 
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
             this.coinHSpeed.HeaderText = "Coin HSpeed";
             this.coinHSpeed.Name = "coinHSpeed";
             // 
             // coinVSpeed
             // 
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
             this.coinVSpeed.HeaderText = "Coin VSpeed";
             this.coinVSpeed.Name = "coinVSpeed";
             // 
             // coinAngle
             // 
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
             this.coinAngle.HeaderText = "Coin Angle";
             this.coinAngle.MinimumWidth = 2;
             this.coinAngle.Name = "coinAngle";
@@ -18942,7 +18986,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -20126,7 +20170,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(33, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(34, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -20585,14 +20629,14 @@ namespace STROOP
             this.dataGridViewSearch.AllowUserToOrderColumns = true;
             this.dataGridViewSearch.AllowUserToResizeRows = false;
             this.dataGridViewSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSearch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Address,
@@ -20607,8 +20651,8 @@ namespace STROOP
             // 
             // Address
             // 
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Address.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Address.DefaultCellStyle = dataGridViewCellStyle11;
             this.Address.HeaderText = "Address";
             this.Address.MinimumWidth = 2;
             this.Address.Name = "Address";
@@ -20616,8 +20660,8 @@ namespace STROOP
             // 
             // Value
             // 
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Value.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Value.DefaultCellStyle = dataGridViewCellStyle12;
             this.Value.HeaderText = "Value";
             this.Value.MinimumWidth = 2;
             this.Value.Name = "Value";
@@ -21176,15 +21220,321 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 36;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // checkBoxMapOptionsTrackCameraFocus
+            // buttonTasGotoVertex
             // 
-            this.checkBoxMapOptionsTrackCameraFocus.AutoSize = true;
-            this.checkBoxMapOptionsTrackCameraFocus.Location = new System.Drawing.Point(14, 61);
-            this.checkBoxMapOptionsTrackCameraFocus.Name = "checkBoxMapOptionsTrackCameraFocus";
-            this.checkBoxMapOptionsTrackCameraFocus.Size = new System.Drawing.Size(86, 17);
-            this.checkBoxMapOptionsTrackCameraFocus.TabIndex = 19;
-            this.checkBoxMapOptionsTrackCameraFocus.Text = "Track Focus";
-            this.checkBoxMapOptionsTrackCameraFocus.UseVisualStyleBackColor = true;
+            this.buttonTasGotoVertex.Location = new System.Drawing.Point(2, 54);
+            this.buttonTasGotoVertex.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasGotoVertex.Name = "buttonTasGotoVertex";
+            this.buttonTasGotoVertex.Size = new System.Drawing.Size(93, 25);
+            this.buttonTasGotoVertex.TabIndex = 37;
+            this.buttonTasGotoVertex.Text = "Goto Vertex";
+            this.buttonTasGotoVertex.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxTasSelf
+            // 
+            this.groupBoxTasSelf.Controls.Add(this.checkBoxTasSelfRelative);
+            this.groupBoxTasSelf.Controls.Add(this.textBoxTasSelfY);
+            this.groupBoxTasSelf.Controls.Add(this.buttonTasSelfYp);
+            this.groupBoxTasSelf.Controls.Add(this.buttonTasSelfYn);
+            this.groupBoxTasSelf.Controls.Add(this.buttonTasSelfXpZp);
+            this.groupBoxTasSelf.Controls.Add(this.textBoxTasSelfXZ);
+            this.groupBoxTasSelf.Controls.Add(this.buttonTasSelfXp);
+            this.groupBoxTasSelf.Controls.Add(this.buttonTasSelfXpZn);
+            this.groupBoxTasSelf.Controls.Add(this.buttonTasSelfZn);
+            this.groupBoxTasSelf.Controls.Add(this.buttonTasSelfZp);
+            this.groupBoxTasSelf.Controls.Add(this.buttonTasSelfXnZp);
+            this.groupBoxTasSelf.Controls.Add(this.buttonTasSelfXn);
+            this.groupBoxTasSelf.Controls.Add(this.buttonTasSelfXnZn);
+            this.groupBoxTasSelf.Location = new System.Drawing.Point(3, 86);
+            this.groupBoxTasSelf.Name = "groupBoxTasSelf";
+            this.groupBoxTasSelf.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxTasSelf.TabIndex = 38;
+            this.groupBoxTasSelf.TabStop = false;
+            this.groupBoxTasSelf.Text = "Self";
+            // 
+            // checkBoxTasSelfRelative
+            // 
+            this.checkBoxTasSelfRelative.AutoSize = true;
+            this.checkBoxTasSelfRelative.Location = new System.Drawing.Point(120, 0);
+            this.checkBoxTasSelfRelative.Name = "checkBoxTasSelfRelative";
+            this.checkBoxTasSelfRelative.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxTasSelfRelative.TabIndex = 36;
+            this.checkBoxTasSelfRelative.Text = "Relative";
+            this.checkBoxTasSelfRelative.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTasSelfY
+            // 
+            this.textBoxTasSelfY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTasSelfY.Location = new System.Drawing.Point(140, 70);
+            this.textBoxTasSelfY.Name = "textBoxTasSelfY";
+            this.textBoxTasSelfY.Size = new System.Drawing.Size(42, 20);
+            this.textBoxTasSelfY.TabIndex = 33;
+            this.textBoxTasSelfY.Text = "100";
+            this.textBoxTasSelfY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonTasSelfYp
+            // 
+            this.buttonTasSelfYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasSelfYp.Location = new System.Drawing.Point(140, 16);
+            this.buttonTasSelfYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasSelfYp.Name = "buttonTasSelfYp";
+            this.buttonTasSelfYp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasSelfYp.TabIndex = 35;
+            this.buttonTasSelfYp.Text = "Y+";
+            this.buttonTasSelfYp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasSelfYn
+            // 
+            this.buttonTasSelfYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasSelfYn.Location = new System.Drawing.Point(140, 100);
+            this.buttonTasSelfYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasSelfYn.Name = "buttonTasSelfYn";
+            this.buttonTasSelfYn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasSelfYn.TabIndex = 34;
+            this.buttonTasSelfYn.Text = "Y-";
+            this.buttonTasSelfYn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasSelfXpZp
+            // 
+            this.buttonTasSelfXpZp.Location = new System.Drawing.Point(87, 100);
+            this.buttonTasSelfXpZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasSelfXpZp.Name = "buttonTasSelfXpZp";
+            this.buttonTasSelfXpZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasSelfXpZp.TabIndex = 32;
+            this.buttonTasSelfXpZp.Text = "X+Z+";
+            this.buttonTasSelfXpZp.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTasSelfXZ
+            // 
+            this.textBoxTasSelfXZ.Location = new System.Drawing.Point(45, 70);
+            this.textBoxTasSelfXZ.Name = "textBoxTasSelfXZ";
+            this.textBoxTasSelfXZ.Size = new System.Drawing.Size(42, 20);
+            this.textBoxTasSelfXZ.TabIndex = 27;
+            this.textBoxTasSelfXZ.Text = "100";
+            this.textBoxTasSelfXZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonTasSelfXp
+            // 
+            this.buttonTasSelfXp.Location = new System.Drawing.Point(87, 58);
+            this.buttonTasSelfXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasSelfXp.Name = "buttonTasSelfXp";
+            this.buttonTasSelfXp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasSelfXp.TabIndex = 31;
+            this.buttonTasSelfXp.Text = "X+";
+            this.buttonTasSelfXp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasSelfXpZn
+            // 
+            this.buttonTasSelfXpZn.Location = new System.Drawing.Point(87, 16);
+            this.buttonTasSelfXpZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasSelfXpZn.Name = "buttonTasSelfXpZn";
+            this.buttonTasSelfXpZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasSelfXpZn.TabIndex = 30;
+            this.buttonTasSelfXpZn.Text = "X+Z-";
+            this.buttonTasSelfXpZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasSelfZn
+            // 
+            this.buttonTasSelfZn.Location = new System.Drawing.Point(45, 16);
+            this.buttonTasSelfZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasSelfZn.Name = "buttonTasSelfZn";
+            this.buttonTasSelfZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasSelfZn.TabIndex = 29;
+            this.buttonTasSelfZn.Text = "Z-";
+            this.buttonTasSelfZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasSelfZp
+            // 
+            this.buttonTasSelfZp.Location = new System.Drawing.Point(45, 100);
+            this.buttonTasSelfZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasSelfZp.Name = "buttonTasSelfZp";
+            this.buttonTasSelfZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasSelfZp.TabIndex = 28;
+            this.buttonTasSelfZp.Text = "Z+";
+            this.buttonTasSelfZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasSelfXnZp
+            // 
+            this.buttonTasSelfXnZp.Location = new System.Drawing.Point(3, 100);
+            this.buttonTasSelfXnZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasSelfXnZp.Name = "buttonTasSelfXnZp";
+            this.buttonTasSelfXnZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasSelfXnZp.TabIndex = 27;
+            this.buttonTasSelfXnZp.Text = "X-Z+";
+            this.buttonTasSelfXnZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasSelfXn
+            // 
+            this.buttonTasSelfXn.Location = new System.Drawing.Point(3, 58);
+            this.buttonTasSelfXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasSelfXn.Name = "buttonTasSelfXn";
+            this.buttonTasSelfXn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasSelfXn.TabIndex = 26;
+            this.buttonTasSelfXn.Text = "X-";
+            this.buttonTasSelfXn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasSelfXnZn
+            // 
+            this.buttonTasSelfXnZn.Location = new System.Drawing.Point(3, 16);
+            this.buttonTasSelfXnZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasSelfXnZn.Name = "buttonTasSelfXnZn";
+            this.buttonTasSelfXnZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasSelfXnZn.TabIndex = 25;
+            this.buttonTasSelfXnZn.Text = "X-Z-";
+            this.buttonTasSelfXnZn.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxTasPoint
+            // 
+            this.groupBoxTasPoint.Controls.Add(this.checkBoxTasPointRelative);
+            this.groupBoxTasPoint.Controls.Add(this.textBoxTasPointY);
+            this.groupBoxTasPoint.Controls.Add(this.buttonTasPointYp);
+            this.groupBoxTasPoint.Controls.Add(this.buttonTasPointYn);
+            this.groupBoxTasPoint.Controls.Add(this.buttonTasPointXpZp);
+            this.groupBoxTasPoint.Controls.Add(this.textBoxTasPointXZ);
+            this.groupBoxTasPoint.Controls.Add(this.buttonTasPointXp);
+            this.groupBoxTasPoint.Controls.Add(this.buttonTasPointXpZn);
+            this.groupBoxTasPoint.Controls.Add(this.buttonTasPointZn);
+            this.groupBoxTasPoint.Controls.Add(this.buttonTasPointZp);
+            this.groupBoxTasPoint.Controls.Add(this.buttonTasPointXnZp);
+            this.groupBoxTasPoint.Controls.Add(this.buttonTasPointXn);
+            this.groupBoxTasPoint.Controls.Add(this.buttonTasPointXnZn);
+            this.groupBoxTasPoint.Location = new System.Drawing.Point(3, 238);
+            this.groupBoxTasPoint.Name = "groupBoxTasPoint";
+            this.groupBoxTasPoint.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxTasPoint.TabIndex = 38;
+            this.groupBoxTasPoint.TabStop = false;
+            this.groupBoxTasPoint.Text = "Point";
+            // 
+            // checkBoxTasPointRelative
+            // 
+            this.checkBoxTasPointRelative.AutoSize = true;
+            this.checkBoxTasPointRelative.Location = new System.Drawing.Point(120, 0);
+            this.checkBoxTasPointRelative.Name = "checkBoxTasPointRelative";
+            this.checkBoxTasPointRelative.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxTasPointRelative.TabIndex = 36;
+            this.checkBoxTasPointRelative.Text = "Relative";
+            this.checkBoxTasPointRelative.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTasPointY
+            // 
+            this.textBoxTasPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTasPointY.Location = new System.Drawing.Point(140, 70);
+            this.textBoxTasPointY.Name = "textBoxTasPointY";
+            this.textBoxTasPointY.Size = new System.Drawing.Size(42, 20);
+            this.textBoxTasPointY.TabIndex = 33;
+            this.textBoxTasPointY.Text = "100";
+            this.textBoxTasPointY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonTasPointYp
+            // 
+            this.buttonTasPointYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasPointYp.Location = new System.Drawing.Point(140, 16);
+            this.buttonTasPointYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasPointYp.Name = "buttonTasPointYp";
+            this.buttonTasPointYp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasPointYp.TabIndex = 35;
+            this.buttonTasPointYp.Text = "Y+";
+            this.buttonTasPointYp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasPointYn
+            // 
+            this.buttonTasPointYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasPointYn.Location = new System.Drawing.Point(140, 100);
+            this.buttonTasPointYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasPointYn.Name = "buttonTasPointYn";
+            this.buttonTasPointYn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasPointYn.TabIndex = 34;
+            this.buttonTasPointYn.Text = "Y-";
+            this.buttonTasPointYn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasPointXpZp
+            // 
+            this.buttonTasPointXpZp.Location = new System.Drawing.Point(87, 100);
+            this.buttonTasPointXpZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasPointXpZp.Name = "buttonTasPointXpZp";
+            this.buttonTasPointXpZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasPointXpZp.TabIndex = 32;
+            this.buttonTasPointXpZp.Text = "X+Z+";
+            this.buttonTasPointXpZp.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTasPointXZ
+            // 
+            this.textBoxTasPointXZ.Location = new System.Drawing.Point(45, 70);
+            this.textBoxTasPointXZ.Name = "textBoxTasPointXZ";
+            this.textBoxTasPointXZ.Size = new System.Drawing.Size(42, 20);
+            this.textBoxTasPointXZ.TabIndex = 27;
+            this.textBoxTasPointXZ.Text = "100";
+            this.textBoxTasPointXZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonTasPointXp
+            // 
+            this.buttonTasPointXp.Location = new System.Drawing.Point(87, 58);
+            this.buttonTasPointXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasPointXp.Name = "buttonTasPointXp";
+            this.buttonTasPointXp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasPointXp.TabIndex = 31;
+            this.buttonTasPointXp.Text = "X+";
+            this.buttonTasPointXp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasPointXpZn
+            // 
+            this.buttonTasPointXpZn.Location = new System.Drawing.Point(87, 16);
+            this.buttonTasPointXpZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasPointXpZn.Name = "buttonTasPointXpZn";
+            this.buttonTasPointXpZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasPointXpZn.TabIndex = 30;
+            this.buttonTasPointXpZn.Text = "X+Z-";
+            this.buttonTasPointXpZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasPointZn
+            // 
+            this.buttonTasPointZn.Location = new System.Drawing.Point(45, 16);
+            this.buttonTasPointZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasPointZn.Name = "buttonTasPointZn";
+            this.buttonTasPointZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasPointZn.TabIndex = 29;
+            this.buttonTasPointZn.Text = "Z-";
+            this.buttonTasPointZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasPointZp
+            // 
+            this.buttonTasPointZp.Location = new System.Drawing.Point(45, 100);
+            this.buttonTasPointZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasPointZp.Name = "buttonTasPointZp";
+            this.buttonTasPointZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasPointZp.TabIndex = 28;
+            this.buttonTasPointZp.Text = "Z+";
+            this.buttonTasPointZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasPointXnZp
+            // 
+            this.buttonTasPointXnZp.Location = new System.Drawing.Point(3, 100);
+            this.buttonTasPointXnZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasPointXnZp.Name = "buttonTasPointXnZp";
+            this.buttonTasPointXnZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasPointXnZp.TabIndex = 27;
+            this.buttonTasPointXnZp.Text = "X-Z+";
+            this.buttonTasPointXnZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasPointXn
+            // 
+            this.buttonTasPointXn.Location = new System.Drawing.Point(3, 58);
+            this.buttonTasPointXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasPointXn.Name = "buttonTasPointXn";
+            this.buttonTasPointXn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasPointXn.TabIndex = 26;
+            this.buttonTasPointXn.Text = "X-";
+            this.buttonTasPointXn.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasPointXnZn
+            // 
+            this.buttonTasPointXnZn.Location = new System.Drawing.Point(3, 16);
+            this.buttonTasPointXnZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasPointXnZn.Name = "buttonTasPointXnZn";
+            this.buttonTasPointXnZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonTasPointXnZn.TabIndex = 25;
+            this.buttonTasPointXnZn.Text = "X-Z-";
+            this.buttonTasPointXnZn.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -21806,6 +22156,10 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.groupBoxTasSelf.ResumeLayout(false);
+            this.groupBoxTasSelf.PerformLayout();
+            this.groupBoxTasPoint.ResumeLayout(false);
+            this.groupBoxTasPoint.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -23394,6 +23748,35 @@ namespace STROOP
         private Button buttonMapOptionsSave;
         private Button buttonMapOptionsOpen;
         private CheckBox checkBoxMapOptionsTrackCameraFocus;
+        private GroupBox groupBoxTasPoint;
+        private CheckBox checkBoxTasPointRelative;
+        private BetterTextbox textBoxTasPointY;
+        private Button buttonTasPointYp;
+        private Button buttonTasPointYn;
+        private Button buttonTasPointXpZp;
+        private BetterTextbox textBoxTasPointXZ;
+        private Button buttonTasPointXp;
+        private Button buttonTasPointXpZn;
+        private Button buttonTasPointZn;
+        private Button buttonTasPointZp;
+        private Button buttonTasPointXnZp;
+        private Button buttonTasPointXn;
+        private Button buttonTasPointXnZn;
+        private GroupBox groupBoxTasSelf;
+        private CheckBox checkBoxTasSelfRelative;
+        private BetterTextbox textBoxTasSelfY;
+        private Button buttonTasSelfYp;
+        private Button buttonTasSelfYn;
+        private Button buttonTasSelfXpZp;
+        private BetterTextbox textBoxTasSelfXZ;
+        private Button buttonTasSelfXp;
+        private Button buttonTasSelfXpZn;
+        private Button buttonTasSelfZn;
+        private Button buttonTasSelfZp;
+        private Button buttonTasSelfXnZp;
+        private Button buttonTasSelfXn;
+        private Button buttonTasSelfXnZn;
+        private Button buttonTasGotoVertex;
     }
 }
 
