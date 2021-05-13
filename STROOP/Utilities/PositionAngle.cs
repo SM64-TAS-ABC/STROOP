@@ -1191,28 +1191,9 @@ namespace STROOP.Utilities
 
         private static double GetGFrameComponent(double gFrame, Coordinate coordinate)
         {
-            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            float hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-            ushort angle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
-
             double frame = gFrame - globalTimer;
-            (double pointX, double pointZ) = MoreMath.AddVectorToPoint(hSpeed * frame, angle, marioX, marioZ);
-            double pointY = marioY;
-
-            switch (coordinate)
-            {
-                case Coordinate.X:
-                    return pointX;
-                case Coordinate.Y:
-                    return pointY;
-                case Coordinate.Z:
-                    return pointZ;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            return GetQFrameComponent(frame, coordinate);
         }
 
 
