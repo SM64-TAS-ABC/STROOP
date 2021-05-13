@@ -51,8 +51,6 @@ namespace STROOP.Managers
                     "Store X",
                     "Store Y",
                     "Store Z",
-                    "Go to Closest Floor Vertex",
-                    "Go to Closest Floor Vertex Misalignment",
                 },
                 new List<Action>()
                 {
@@ -61,8 +59,6 @@ namespace STROOP.Managers
                     () => StoreInfo(x: true),
                     () => StoreInfo(y: true),
                     () => StoreInfo(z: true),
-                    () => ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), false),
-                    () => ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), true),
                 });
 
             Button buttonTasStoreAngle = splitContainerTas.Panel1.Controls["buttonTasStoreAngle"] as Button;
@@ -91,6 +87,10 @@ namespace STROOP.Managers
 
             Button buttonTasTakeMarioAngle = splitContainerTas.Panel1.Controls["buttonTasTakeAngle"] as Button;
             buttonTasTakeMarioAngle.Click += (sender, e) => TakeInfo(angle: true);
+
+            Button buttonTasGotoVertex = splitContainerTas.Panel1.Controls["buttonTasGotoVertex"] as Button;
+            buttonTasGotoVertex.Click += (sender, e) =>
+                ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), false);
 
             Button buttonTasPasteSchedule = splitContainerTas.Panel1.Controls["buttonTasPasteSchedule"] as Button;
             buttonTasPasteSchedule.Click += (sender, e) => SetScheduler(Clipboard.GetText(), false);
