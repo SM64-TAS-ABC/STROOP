@@ -964,7 +964,25 @@ namespace STROOP
         public void MakeNightMode()
         {
             List<Control> controls = ControlUtilities.GetAllControls(this);
-            Config.Print(controls.Count);
+            List<string> missingTypes = new List<string>();
+            foreach (Control control in controls)
+            {
+                //if (control is Button button)
+                {
+                    control.BackColor = Color.FromArgb(0, 0, 0);
+                    control.ForeColor = Color.White;
+                }
+                //else
+                {
+                    string missingType = control.GetType().FullName;
+                    if (!missingTypes.Contains(missingType))
+                    {
+                        missingTypes.Add(missingType);
+                    }
+                }
+            }
+            Config.Print("Missing the following types:");
+            Config.Print(string.Join("\r\n", missingTypes));
         }
     }
 }
