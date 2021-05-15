@@ -784,5 +784,16 @@ namespace STROOP.Utilities
             }
             return list;
         }
+
+        public static List<Control> GetAllControls(Control control)
+        {
+            List<Control> controls = new List<Control>();
+            controls.Add(control);
+            foreach (Control substroncol in control.Controls)
+            {
+                controls.AddRange(GetAllControls(substroncol));
+            }
+            return controls;
+        }
     }
 }

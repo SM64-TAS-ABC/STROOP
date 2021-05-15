@@ -20,7 +20,7 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            CalculatorMain.TestBitfsPosition1();
+            Config.StroopMainForm.MakeNightMode();
         }
     }
 } 

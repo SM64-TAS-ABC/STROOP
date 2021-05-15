@@ -960,5 +960,11 @@ namespace STROOP
             
             base.OnFormClosing(e);
         }
+
+        public void MakeNightMode()
+        {
+            List<Control> controls = ControlUtilities.GetAllControls(this);
+            Config.Print(controls.Count);
+        }
     }
 }
