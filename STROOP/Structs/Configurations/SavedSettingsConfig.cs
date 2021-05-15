@@ -14,6 +14,18 @@ namespace STROOP.Structs.Configurations
     {
         public static bool IsLoaded = false;
 
+        private static bool _useNightMode;
+        public static bool UseNightMode
+        {
+            get => _useNightMode;
+            set
+            {
+                if (_useNightMode == value && IsLoaded) return;
+                _useNightMode = value;
+                if (IsLoaded) Save();
+            }
+        }
+
         private static bool _displayYawAnglesAsUnsigned;
         public static bool DisplayYawAnglesAsUnsigned
         {
@@ -357,6 +369,7 @@ namespace STROOP.Structs.Configurations
 
             return new List<XElement>
             {
+                new XElement("UseNightMode", _useNightMode),
                 new XElement("DisplayYawAnglesAsUnsigned", _displayYawAnglesAsUnsigned),
                 new XElement("VariableValuesFlushRight", _variableValuesFlushRight),
                 new XElement("StartSlotIndexsFromOne", _startSlotIndexsFromOne),
@@ -386,6 +399,7 @@ namespace STROOP.Structs.Configurations
 
         public static void ResetSavedSettings()
         {
+            _useNightMode = false;
             _displayYawAnglesAsUnsigned = true;
             _variableValuesFlushRight = true;
             _startSlotIndexsFromOne = true;

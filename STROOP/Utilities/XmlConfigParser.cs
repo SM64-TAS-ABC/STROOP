@@ -106,6 +106,9 @@ namespace STROOP.Utilities
             {
                 switch (element.Name.ToString())
                 {
+                    case "UseNightMode":
+                        SavedSettingsConfig.UseNightMode = bool.Parse(element.Value);
+                        break;
                     case "DisplayYawAnglesAsUnsigned":
                         SavedSettingsConfig.DisplayYawAnglesAsUnsigned = bool.Parse(element.Value);
                         break;

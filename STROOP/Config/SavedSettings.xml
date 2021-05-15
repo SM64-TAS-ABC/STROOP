@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SavedSettings>
+  <UseNightMode>false</UseNightMode>
   <DisplayYawAnglesAsUnsigned>true</DisplayYawAnglesAsUnsigned>
   <VariableValuesFlushRight>true</VariableValuesFlushRight>
   <StartSlotIndexsFromOne>true</StartSlotIndexsFromOne>

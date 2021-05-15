@@ -24,6 +24,7 @@ namespace STROOP.Managers
         {
             _savedSettingsTextList = new List<string>()
             {
+                "Use Night Mode",
                 "Display Yaw Angles as Unsigned",
                 "Variable Values Flush Right",
                 "Start Slot Index From 1",
@@ -44,6 +45,7 @@ namespace STROOP.Managers
 
             _savedSettingsGetterList = new List<Func<bool>>()
             {
+                () => SavedSettingsConfig.UseNightMode,
                 () => SavedSettingsConfig.DisplayYawAnglesAsUnsigned,
                 () => SavedSettingsConfig.VariableValuesFlushRight,
                 () => SavedSettingsConfig.StartSlotIndexsFromOne,
@@ -64,6 +66,7 @@ namespace STROOP.Managers
 
             _savedSettingsSetterList = new List<Action<bool>>()
             {
+                (bool value) => SavedSettingsConfig.UseNightMode = value,
                 (bool value) => SavedSettingsConfig.DisplayYawAnglesAsUnsigned = value,
                 (bool value) => SavedSettingsConfig.VariableValuesFlushRight = value,
                 (bool value) => SavedSettingsConfig.StartSlotIndexsFromOne = value,
