@@ -34,6 +34,8 @@ namespace STROOP
         DataTable _tableOtherData = new DataTable();
         Dictionary<int, DataRow> _otherDataRowAssoc = new Dictionary<int, DataRow>();
 
+        bool _useNightMode = false;
+
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
 
@@ -582,6 +584,7 @@ namespace STROOP
         {
             this.TryInvoke(new Action(() =>
             {
+                UpdateNightMode();
                 UpdateComboBoxes();
                 DataModels.Update();
                 FormManager.Update();
@@ -961,7 +964,21 @@ namespace STROOP
             base.OnFormClosing(e);
         }
 
-        public void MakeNightMode()
+        private void UpdateNightMode()
+        {
+            if (SavedSettingsConfig.UseNightMode && !_useNightMode)
+            {
+                MakeNightMode();
+                _useNightMode = SavedSettingsConfig.UseNightMode;
+            }
+            if (!SavedSettingsConfig.UseNightMode && _useNightMode)
+            {
+                UnMakeNightMode();
+                _useNightMode = SavedSettingsConfig.UseNightMode;
+            }
+        }
+
+        private void MakeNightMode()
         {
             List<Control> controls = ControlUtilities.GetAllControls(this);
             List<string> missingTypes = new List<string>();
@@ -983,6 +1000,11 @@ namespace STROOP
             }
             Config.Print("Missing the following types:");
             Config.Print(string.Join("\r\n", missingTypes));
+        }
+
+        private void UnMakeNightMode()
+        {
+
         }
     }
 }
