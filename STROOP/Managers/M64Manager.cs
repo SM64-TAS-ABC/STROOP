@@ -1,5 +1,6 @@
 ﻿using STROOP.M64;
 using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using STROOP.Structs.Gui;
 using STROOP.Utilities;
 using System;
@@ -50,6 +51,18 @@ namespace STROOP.Managers
                 }
             };
             ControlUtilities.SetTableDoubleBuffered(_gui.DataGridViewInputs, true);
+            _gui.DataGridViewInputs.DragOver += (object sender, DragEventArgs e) =>
+            {
+                e.Effect = DragDropEffects.Copy;
+            };
+            _gui.DataGridViewInputs.DragDrop += (object sender, DragEventArgs e) =>
+            {
+                string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+                if (filePaths.Length == 0) return;
+                string filePath = filePaths[0];
+                string fileName = Path.GetFileName(filePath);
+                Open(filePath, fileName);
+            };
 
             _m64File = new M64File(_gui);
             _gui.DataGridViewInputs.DataSource = _m64File.Inputs;
