@@ -17,8 +17,8 @@ namespace STROOP.Map
         public MapObjectCellGridlines()
             : base()
         {
-            OutlineWidth = 3;
-            OutlineColor = Color.Black;
+            LineWidth = 3;
+            LineColor = Color.Black;
         }
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()

@@ -25,9 +25,9 @@ namespace STROOP.Map
             : base()
         {
             Size = 3;
-            OutlineWidth = 9;
+            LineWidth = 9;
             Color = Color.Orange;
-            OutlineColor = Color.Purple;
+            LineColor = Color.Purple;
 
             _customWallTri = null;
         }
@@ -86,8 +86,8 @@ namespace STROOP.Map
             {
                 vertices.Add((marioX, marioY + 30, marioZ));
                 vertices.Add((marioX, marioY + 150, marioZ));
-                lineWidth = OutlineWidth;
-                color = OutlineColor;
+                lineWidth = LineWidth;
+                color = LineColor;
             }
 
             return (vertices, lineWidth, color);

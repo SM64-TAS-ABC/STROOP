@@ -31,7 +31,7 @@ namespace STROOP.Map
             _objTriAddressList = TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address);
 
             Size = 40;
-            OutlineWidth = 0;
+            LineWidth = 0;
         }
 
         public override void DrawOn2DControlTopDownView()
@@ -79,7 +79,7 @@ namespace STROOP.Map
             if (_isDefaultInstance)
             {
                 Opacity = 0.5;
-                OutlineWidth = 1;
+                LineWidth = 1;
                 _useCrossSection = Config.MapGui.checkBoxMapOptionsEnableCrossSection.Checked;
             }
 
@@ -91,7 +91,7 @@ namespace STROOP.Map
             if (_isDefaultInstance)
             {
                 Opacity = 1;
-                OutlineWidth = 0;
+                LineWidth = 0;
             }
 
             List<List<(float x, float y, float z, Color color)>> triData = GetFilteredTriangles()
@@ -106,7 +106,7 @@ namespace STROOP.Map
                     vertex.x, vertex.y, vertex.z), vertex.color)).ToArray();
             List<Map3DVertex[]> vertexArray2 = triData.ConvertAll(
                 vertexList => vertexList.ConvertAll(vertex => new Map3DVertex(new Vector3(
-                    vertex.x, vertex.y, vertex.z), OutlineColor)).ToArray());
+                    vertex.x, vertex.y, vertex.z), LineColor)).ToArray());
 
             Matrix4 viewMatrix = GetModelMatrix() * Config.Map3DCamera.Matrix;
             GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
@@ -119,7 +119,7 @@ namespace STROOP.Map
             GL.DrawArrays(PrimitiveType.Triangles, 0, vertexArray.Length);
             GL.DeleteBuffer(buffer1);
 
-            if (OutlineWidth != 0)
+            if (LineWidth != 0)
             {
                 vertexArray2.ForEach(vertexes =>
                 {
@@ -127,7 +127,7 @@ namespace STROOP.Map
                     GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
                     GL.BindBuffer(BufferTarget.ArrayBuffer, buffer2);
                     GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map3DVertex.Size), vertexes, BufferUsageHint.DynamicDraw);
-                    GL.LineWidth(OutlineWidth);
+                    GL.LineWidth(LineWidth);
                     Config.Map3DGraphics.BindVertices();
                     GL.DrawArrays(PrimitiveType.LineLoop, 0, vertexes.Length);
                     GL.DeleteBuffer(buffer2);

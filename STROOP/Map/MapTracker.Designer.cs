@@ -33,8 +33,8 @@ namespace STROOP.Map
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapTracker));
             this.tableLayoutPanel = new STROOP.Controls.BorderedTableLayoutPanel();
             this.checkBoxScales = new System.Windows.Forms.CheckBox();
-            this.trackBarOutlineWidth = new STROOP.TrackBarEx();
-            this.colorSelectorOutline = new STROOP.Controls.ColorSelector();
+            this.trackBarLineWidth = new STROOP.TrackBarEx();
+            this.colorSelectorLine = new STROOP.Controls.ColorSelector();
             this.pictureBoxDownArrow = new System.Windows.Forms.PictureBox();
             this.pictureBoxUpArrow = new System.Windows.Forms.PictureBox();
             this.pictureBoxRedX = new System.Windows.Forms.PictureBox();
@@ -53,11 +53,11 @@ namespace STROOP.Map
             this.labelOpacity = new System.Windows.Forms.Label();
             this.colorSelector = new STROOP.Controls.ColorSelector();
             this.pictureBoxPlus = new System.Windows.Forms.PictureBox();
-            this.labelOutlineWidth = new System.Windows.Forms.Label();
-            this.textBoxOutlineWidth = new STROOP.BetterTextbox();
+            this.labelLineWidth = new System.Windows.Forms.Label();
+            this.textBoxLineWidth = new STROOP.BetterTextbox();
             this.pictureBoxCog = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarOutlineWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarLineWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).BeginInit();
@@ -83,8 +83,8 @@ namespace STROOP.Map
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel.Controls.Add(this.checkBoxScales, 0, 5);
-            this.tableLayoutPanel.Controls.Add(this.trackBarOutlineWidth, 0, 5);
-            this.tableLayoutPanel.Controls.Add(this.colorSelectorOutline, 3, 3);
+            this.tableLayoutPanel.Controls.Add(this.trackBarLineWidth, 0, 5);
+            this.tableLayoutPanel.Controls.Add(this.colorSelectorLine, 3, 3);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxDownArrow, 4, 3);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxUpArrow, 4, 2);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxRedX, 4, 0);
@@ -102,8 +102,8 @@ namespace STROOP.Map
             this.tableLayoutPanel.Controls.Add(this.labelOpacity, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.colorSelector, 3, 2);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxPlus, 4, 5);
-            this.tableLayoutPanel.Controls.Add(this.labelOutlineWidth, 1, 4);
-            this.tableLayoutPanel.Controls.Add(this.textBoxOutlineWidth, 2, 4);
+            this.tableLayoutPanel.Controls.Add(this.labelLineWidth, 1, 4);
+            this.tableLayoutPanel.Controls.Add(this.textBoxLineWidth, 2, 4);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxCog, 4, 4);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -131,30 +131,30 @@ namespace STROOP.Map
             this.checkBoxScales.Text = "Scales";
             this.checkBoxScales.UseVisualStyleBackColor = true;
             // 
-            // trackBarOutlineWidth
+            // trackBarLineWidth
             // 
-            this.tableLayoutPanel.SetColumnSpan(this.trackBarOutlineWidth, 2);
-            this.trackBarOutlineWidth.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBarOutlineWidth.Location = new System.Drawing.Point(64, 106);
-            this.trackBarOutlineWidth.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.trackBarOutlineWidth.Name = "trackBarOutlineWidth";
-            this.trackBarOutlineWidth.Size = new System.Drawing.Size(119, 20);
-            this.trackBarOutlineWidth.TabIndex = 42;
-            this.trackBarOutlineWidth.TickFrequency = 10;
-            this.trackBarOutlineWidth.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarOutlineWidth.Value = 1;
+            this.tableLayoutPanel.SetColumnSpan(this.trackBarLineWidth, 2);
+            this.trackBarLineWidth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBarLineWidth.Location = new System.Drawing.Point(64, 106);
+            this.trackBarLineWidth.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.trackBarLineWidth.Name = "trackBarLineWidth";
+            this.trackBarLineWidth.Size = new System.Drawing.Size(119, 20);
+            this.trackBarLineWidth.TabIndex = 42;
+            this.trackBarLineWidth.TickFrequency = 10;
+            this.trackBarLineWidth.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarLineWidth.Value = 1;
             // 
-            // colorSelectorOutline
+            // colorSelectorLine
             // 
-            this.colorSelectorOutline.BackColor = System.Drawing.Color.Transparent;
-            this.colorSelectorOutline.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.colorSelectorOutline.Location = new System.Drawing.Point(184, 64);
-            this.colorSelectorOutline.Margin = new System.Windows.Forms.Padding(0);
-            this.colorSelectorOutline.Name = "colorSelectorOutline";
-            this.colorSelectorOutline.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.colorSelectorOutline.SelectedColor = System.Drawing.SystemColors.Control;
-            this.colorSelectorOutline.Size = new System.Drawing.Size(106, 20);
-            this.colorSelectorOutline.TabIndex = 39;
+            this.colorSelectorLine.BackColor = System.Drawing.Color.Transparent;
+            this.colorSelectorLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.colorSelectorLine.Location = new System.Drawing.Point(184, 64);
+            this.colorSelectorLine.Margin = new System.Windows.Forms.Padding(0);
+            this.colorSelectorLine.Name = "colorSelectorLine";
+            this.colorSelectorLine.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.colorSelectorLine.SelectedColor = System.Drawing.SystemColors.Control;
+            this.colorSelectorLine.Size = new System.Drawing.Size(106, 20);
+            this.colorSelectorLine.TabIndex = 39;
             // 
             // pictureBoxDownArrow
             // 
@@ -383,27 +383,27 @@ namespace STROOP.Map
             this.pictureBoxPlus.TabIndex = 17;
             this.pictureBoxPlus.TabStop = false;
             // 
-            // labelOutlineWidth
+            // labelLineWidth
             // 
-            this.labelOutlineWidth.AutoSize = true;
-            this.labelOutlineWidth.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelOutlineWidth.Location = new System.Drawing.Point(70, 89);
-            this.labelOutlineWidth.Margin = new System.Windows.Forms.Padding(6, 4, 2, 0);
-            this.labelOutlineWidth.Name = "labelOutlineWidth";
-            this.labelOutlineWidth.Size = new System.Drawing.Size(42, 16);
-            this.labelOutlineWidth.TabIndex = 40;
-            this.labelOutlineWidth.Text = "Line:";
+            this.labelLineWidth.AutoSize = true;
+            this.labelLineWidth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelLineWidth.Location = new System.Drawing.Point(70, 89);
+            this.labelLineWidth.Margin = new System.Windows.Forms.Padding(6, 4, 2, 0);
+            this.labelLineWidth.Name = "labelLineWidth";
+            this.labelLineWidth.Size = new System.Drawing.Size(42, 16);
+            this.labelLineWidth.TabIndex = 40;
+            this.labelLineWidth.Text = "Line:";
             // 
-            // textBoxOutlineWidth
+            // textBoxLineWidth
             // 
-            this.textBoxOutlineWidth.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxOutlineWidth.Location = new System.Drawing.Point(115, 85);
-            this.textBoxOutlineWidth.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxOutlineWidth.Name = "textBoxOutlineWidth";
-            this.textBoxOutlineWidth.Size = new System.Drawing.Size(68, 20);
-            this.textBoxOutlineWidth.TabIndex = 41;
-            this.textBoxOutlineWidth.Text = "1";
-            this.textBoxOutlineWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxLineWidth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxLineWidth.Location = new System.Drawing.Point(115, 85);
+            this.textBoxLineWidth.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxLineWidth.Name = "textBoxLineWidth";
+            this.textBoxLineWidth.Size = new System.Drawing.Size(68, 20);
+            this.textBoxLineWidth.TabIndex = 41;
+            this.textBoxLineWidth.Text = "1";
+            this.textBoxLineWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBoxCog
             // 
@@ -429,7 +429,7 @@ namespace STROOP.Map
             this.Size = new System.Drawing.Size(325, 128);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarOutlineWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarLineWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).EndInit();
@@ -465,10 +465,10 @@ namespace STROOP.Map
         private System.Windows.Forms.Label labelSize;
         private System.Windows.Forms.Label labelOpacity;
         private ColorSelector colorSelector;
-        private TrackBarEx trackBarOutlineWidth;
-        private ColorSelector colorSelectorOutline;
-        private System.Windows.Forms.Label labelOutlineWidth;
-        private BetterTextbox textBoxOutlineWidth;
+        private TrackBarEx trackBarLineWidth;
+        private ColorSelector colorSelectorLine;
+        private System.Windows.Forms.Label labelLineWidth;
+        private BetterTextbox textBoxLineWidth;
         private System.Windows.Forms.PictureBox pictureBoxCog;
         private System.Windows.Forms.CheckBox checkBoxScales;
     }

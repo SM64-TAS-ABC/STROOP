@@ -57,9 +57,9 @@ namespace STROOP.Map
             _imageSize = 10;
 
             Size = 300;
-            OutlineWidth = 3;
+            LineWidth = 3;
             Color = Color.Yellow;
-            OutlineColor = Color.Red;
+            LineColor = Color.Red;
         }
 
         public MapObjectPath(PositionAngle posAngle, List<(uint globalTimer, float x, float y, float z)> points) : this(posAngle)
@@ -95,7 +95,7 @@ namespace STROOP.Map
         {
             List<MapObjectPathSegment> segments = new List<MapObjectPathSegment>();
 
-            if (OutlineWidth == 0) return segments;
+            if (LineWidth == 0) return segments;
 
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<(float x, float z)> verticesForControl =
@@ -103,14 +103,14 @@ namespace STROOP.Map
 
             for (int i = 0; i < verticesForControl.Count - 1; i++)
             {
-                Color color = OutlineColor;
+                Color color = LineColor;
                 if (_useBlending)
                 {
                     int distFromEnd = verticesForControl.Count - i - 2;
                     if (distFromEnd < Size)
                     {
                         color = ColorUtilities.InterpolateColor(
-                            OutlineColor, Color, distFromEnd / (double)Size);
+                            LineColor, Color, distFromEnd / (double)Size);
                     }
                     else
                     {
@@ -125,7 +125,7 @@ namespace STROOP.Map
                     startZ: z1,
                     endX: x2,
                     endZ: z2,
-                    lineWidth: OutlineWidth,
+                    lineWidth: LineWidth,
                     color: color,
                     opacity: OpacityByte);
                 segments.Add(segment);
@@ -140,22 +140,22 @@ namespace STROOP.Map
             List<(float x, float z)> verticesForControl =
                 vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z));
 
-            if (OutlineWidth != 0)
+            if (LineWidth != 0)
             {
                 GL.BindTexture(TextureTarget.Texture2D, -1);
                 GL.MatrixMode(MatrixMode.Modelview);
                 GL.LoadIdentity();
-                GL.LineWidth(OutlineWidth);
+                GL.LineWidth(LineWidth);
                 for (int i = 0; i < verticesForControl.Count - 1; i++)
                 {
-                    Color color = OutlineColor;
+                    Color color = LineColor;
                     if (_useBlending)
                     {
                         int distFromEnd = verticesForControl.Count - i - 2;
                         if (distFromEnd < Size)
                         {
                             color = ColorUtilities.InterpolateColor(
-                                OutlineColor, Color, distFromEnd / (double)Size);
+                                LineColor, Color, distFromEnd / (double)Size);
                         }
                         else
                         {
@@ -189,22 +189,22 @@ namespace STROOP.Map
             List<(float x, float z)> verticesForControl =
                 vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z));
 
-            if (OutlineWidth != 0)
+            if (LineWidth != 0)
             {
                 GL.BindTexture(TextureTarget.Texture2D, -1);
                 GL.MatrixMode(MatrixMode.Modelview);
                 GL.LoadIdentity();
-                GL.LineWidth(OutlineWidth);
+                GL.LineWidth(LineWidth);
                 for (int i = 0; i < verticesForControl.Count - 1; i++)
                 {
-                    Color color = OutlineColor;
+                    Color color = LineColor;
                     if (_useBlending)
                     {
                         int distFromEnd = verticesForControl.Count - i - 2;
                         if (distFromEnd < Size)
                         {
                             color = ColorUtilities.InterpolateColor(
-                                OutlineColor, Color, distFromEnd / (double)Size);
+                                LineColor, Color, distFromEnd / (double)Size);
                         }
                         else
                         {
@@ -236,19 +236,19 @@ namespace STROOP.Map
         {
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
 
-            if (OutlineWidth != 0)
+            if (LineWidth != 0)
             {
                 List<Map3DVertex[]> vertexArrayList = new List<Map3DVertex[]>();
                 for (int i = 0; i < vertices.Count - 1; i++)
                 {
-                    Color color = OutlineColor;
+                    Color color = LineColor;
                     if (_useBlending)
                     {
                         int distFromEnd = vertices.Count - i - 2;
                         if (distFromEnd < Size)
                         {
                             color = ColorUtilities.InterpolateColor(
-                                OutlineColor, Color, distFromEnd / (double)Size);
+                                LineColor, Color, distFromEnd / (double)Size);
                         }
                         else
                         {
@@ -274,7 +274,7 @@ namespace STROOP.Map
                     GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
                     GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
                     GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map3DVertex.Size), vertexes, BufferUsageHint.DynamicDraw);
-                    GL.LineWidth(OutlineWidth);
+                    GL.LineWidth(LineWidth);
                     Config.Map3DGraphics.BindVertices();
                     GL.DrawArrays(PrimitiveType.Lines, 0, vertexes.Length);
                     GL.DeleteBuffer(buffer);

@@ -40,8 +40,8 @@ namespace STROOP.Map
             _iconSize = 10;
 
             Size = 0;
-            OutlineWidth = 3;
-            OutlineColor = Color.Red;
+            LineWidth = 3;
+            LineColor = Color.Red;
         }
 
         public static MapObject Create(string text1, string text2)

@@ -96,7 +96,7 @@ namespace STROOP.Utilities
                 MapObject mapObjSphere = new MapObjectCustomSphere(chuckyaPosAngle);
                 MapObject mapObjCylinder = new MapObjectCustomCylinder(homePosAngle);
 
-                mapObjFacingArrow.OutlineColor = Color.Green;
+                mapObjFacingArrow.LineColor = Color.Green;
                 mapObjFacingArrow.Size = 3000;
                 mapObjSector.Size = 3000;
                 mapObjFacingDivider.Size = 3000;

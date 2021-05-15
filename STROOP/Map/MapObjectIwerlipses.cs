@@ -86,10 +86,10 @@ namespace STROOP.Map
             GL.End();
 
             // Draw outline
-            if (OutlineWidth != 0)
+            if (LineWidth != 0)
             {
-                GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
-                GL.LineWidth(OutlineWidth);
+                GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
+                GL.LineWidth(LineWidth);
                 GL.Begin(PrimitiveType.LineLoop);
                 foreach ((float x, float z) in controlPoints)
                 {
@@ -148,7 +148,7 @@ namespace STROOP.Map
                     vertex.x, vertex.y, vertex.z), Color4)).ToArray();
             Map3DVertex[] vertexArrayForEdges = points.ConvertAll(
                 vertex => new Map3DVertex(new Vector3(
-                    vertex.x, vertex.y, vertex.z), OutlineColor)).ToArray();
+                    vertex.x, vertex.y, vertex.z), LineColor)).ToArray();
 
             Matrix4 viewMatrix = GetModelMatrix() * Config.Map3DCamera.Matrix;
             GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
@@ -164,14 +164,14 @@ namespace STROOP.Map
                 GL.DeleteBuffer(buffer);
             }
 
-            if (OutlineWidth != 0)
+            if (LineWidth != 0)
             {
                 int buffer = GL.GenBuffer();
                 GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
                 GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexArrayForEdges.Length * Map3DVertex.Size),
                     vertexArrayForEdges, BufferUsageHint.DynamicDraw);
-                GL.LineWidth(OutlineWidth);
+                GL.LineWidth(LineWidth);
                 Config.Map3DGraphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.LineLoop, 0, vertexArrayForEdges.Length);
                 GL.DeleteBuffer(buffer);

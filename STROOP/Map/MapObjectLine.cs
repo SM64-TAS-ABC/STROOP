@@ -23,17 +23,17 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView()
         {
-            MapUtilities.DrawLinesOn2DControlTopDownView(GetVerticesTopDownView(), OutlineWidth, OutlineColor, OpacityByte);
+            MapUtilities.DrawLinesOn2DControlTopDownView(GetVerticesTopDownView(), LineWidth, LineColor, OpacityByte);
         }
 
         public override void DrawOn2DControlOrthographicView()
         {
-            MapUtilities.DrawLinesOn2DControlOrthographicView(GetVerticesOrthographicView(), OutlineWidth, OutlineColor, OpacityByte);
+            MapUtilities.DrawLinesOn2DControlOrthographicView(GetVerticesOrthographicView(), LineWidth, LineColor, OpacityByte);
         }
 
         public override void DrawOn3DControl()
         {
-            MapUtilities.DrawLinesOn3DControl(GetVertices3D(), OutlineWidth, OutlineColor, OpacityByte, GetModelMatrix());
+            MapUtilities.DrawLinesOn3DControl(GetVertices3D(), LineWidth, LineColor, OpacityByte, GetModelMatrix());
         }
 
         protected abstract List<(float x, float y, float z)> GetVerticesTopDownView();

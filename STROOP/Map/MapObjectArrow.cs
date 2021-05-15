@@ -37,8 +37,8 @@ namespace STROOP.Map
             _angleOffset = 0;
 
             Size = 300;
-            OutlineWidth = 3;
-            OutlineColor = Color.Yellow;
+            LineWidth = 3;
+            LineColor = Color.Yellow;
             Scales = true;
         }
 

@@ -24,8 +24,8 @@ namespace STROOP.Map
             _posAngle = posAngle;
 
             Size = 1000;
-            OutlineWidth = 3;
-            OutlineColor = Color.Red;
+            LineWidth = 3;
+            LineColor = Color.Red;
         }
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()

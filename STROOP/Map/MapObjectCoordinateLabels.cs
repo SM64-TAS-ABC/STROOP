@@ -28,11 +28,11 @@ namespace STROOP.Map
             : base()
         {
             Size = 100;
-            OutlineColor = Color.Blue;
+            LineColor = Color.Blue;
             InternalRotates = true;
 
             _texes = new Dictionary<(bool isX, double coord), int>();
-            _previousOutlineColor = OutlineColor;
+            _previousOutlineColor = LineColor;
             _previousSize = Size;
             _previousBoldText = SpecialConfig.CoordinateLabelsBoldText;
         }
@@ -161,7 +161,7 @@ namespace STROOP.Map
             Graphics gfx = Graphics.FromImage(bmp);
             gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             Font drawFont = new Font("Arial", size / 6, SpecialConfig.CoordinateLabelsBoldText == 1 ? FontStyle.Bold : FontStyle.Regular);
-            SolidBrush drawBrush = new SolidBrush(OutlineColor);
+            SolidBrush drawBrush = new SolidBrush(LineColor);
             SizeF stringSize = gfx.MeasureString(text, drawFont);
             gfx.DrawString(text, drawFont, drawBrush, new PointF(size / 2 - stringSize.Width / 2, size / 2 - stringSize.Height / 2));
             return bmp;
@@ -297,9 +297,9 @@ namespace STROOP.Map
 
         public override void Update()
         {
-            if (OutlineColor != _previousOutlineColor)
+            if (LineColor != _previousOutlineColor)
             {
-                _previousOutlineColor = OutlineColor;
+                _previousOutlineColor = LineColor;
                 _texes.Clear();
             }
 

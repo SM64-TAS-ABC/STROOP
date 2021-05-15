@@ -114,26 +114,26 @@ namespace STROOP.Map
 
             SetSize(null);
             SetOpacity(null);
-            SetOutlineWidth(null);
+            SetLineWidth(null);
             SetColor(null);
-            SetOutlineColor(null);
+            SetLineColor(null);
             SetScales(null);
 
             textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
             trackBarSize.AddManualChangeAction(() => trackBarSize_ValueChanged());
             textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
             trackBarOpacity.AddManualChangeAction(() => trackBarOpacity_ValueChanged());
-            textBoxOutlineWidth.AddEnterAction(() => textBoxOutlineWidth_EnterAction());
-            trackBarOutlineWidth.AddManualChangeAction(() => trackBarOutlineWidth_ValueChanged());
+            textBoxLineWidth.AddEnterAction(() => textBoxLineWidth_EnterAction());
+            trackBarLineWidth.AddManualChangeAction(() => trackBarLineWidth_ValueChanged());
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
-            colorSelectorOutline.AddColorChangeAction((Color color) => SetOutlineColor(color));
+            colorSelectorLine.AddColorChangeAction((Color color) => SetLineColor(color));
             checkBoxScales.Click += (sender, e) => SetScales(checkBoxScales.Checked);
             _mapObjectList.ForEach(mapObj => mapObj.GetContextMenuStrip()); // avoids null pointer exceptions
             pictureBoxCog.ContextMenuStrip = _mapObjectList[0].GetContextMenuStrip();
             pictureBoxCog.Click += (sender, e) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
 
             MapUtilities.CreateTrackBarContextMenuStrip(trackBarSize);
-            MapUtilities.CreateTrackBarContextMenuStrip(trackBarOutlineWidth);
+            MapUtilities.CreateTrackBarContextMenuStrip(trackBarLineWidth);
             InitializePlusContextMenuStrip();
 
             UpdateControl();
@@ -713,7 +713,7 @@ namespace STROOP.Map
                     MapObject mapObjSphere = new MapObjectCustomSphere(chuckyaPosAngle);
                     MapObject mapObjCylinder = new MapObjectCustomCylinder(homePosAngle);
 
-                    mapObjFacingArrow.OutlineColor = Color.Green;
+                    mapObjFacingArrow.LineColor = Color.Green;
                     mapObjFacingArrow.Size = 3000;
                     mapObjSector.Size = 3000;
                     mapObjFacingDivider.Size = 3000;
@@ -855,29 +855,29 @@ namespace STROOP.Map
             trackBarOpacity.StopChangingByCode();
         }
 
-        private void trackBarOutlineWidth_ValueChanged()
+        private void trackBarLineWidth_ValueChanged()
         {
-            SetOutlineWidth(trackBarOutlineWidth.Value);
+            SetLineWidth(trackBarLineWidth.Value);
         }
 
-        private void textBoxOutlineWidth_EnterAction()
+        private void textBoxLineWidth_EnterAction()
         {
-            SetOutlineWidth(ParsingUtilities.ParseFloatNullable(textBoxOutlineWidth.Text));
+            SetLineWidth(ParsingUtilities.ParseFloatNullable(textBoxLineWidth.Text));
         }
 
         /** null if controls should be refreshed */
-        private void SetOutlineWidth(float? outlineWidthNullable)
+        private void SetLineWidth(float? lineWidthNullable)
         {
-            bool updateMapObjs = outlineWidthNullable != null;
-            float outlineWidth = outlineWidthNullable ?? _mapObjectList[0].OutlineWidth;
+            bool updateMapObjs = lineWidthNullable != null;
+            float lineWidth = lineWidthNullable ?? _mapObjectList[0].LineWidth;
             if (updateMapObjs)
             {
-                _mapObjectList.ForEach(mapObj => mapObj.OutlineWidth = outlineWidth);
+                _mapObjectList.ForEach(mapObj => mapObj.LineWidth = lineWidth);
             }
-            textBoxOutlineWidth.SubmitText(outlineWidth.ToString());
-            trackBarOutlineWidth.StartChangingByCode();
-            ControlUtilities.SetTrackBarValueCapped(trackBarOutlineWidth, outlineWidth);
-            trackBarOutlineWidth.StopChangingByCode();
+            textBoxLineWidth.SubmitText(lineWidth.ToString());
+            trackBarLineWidth.StartChangingByCode();
+            ControlUtilities.SetTrackBarValueCapped(trackBarLineWidth, lineWidth);
+            trackBarLineWidth.StopChangingByCode();
         }
 
         /** null if controls should be refreshed */
@@ -893,15 +893,15 @@ namespace STROOP.Map
         }
 
         /** null if controls should be refreshed */
-        public void SetOutlineColor(Color? outlineColorNullable)
+        public void SetLineColor(Color? lineColorNullable)
         {
-            bool updateMapObjs = outlineColorNullable != null;
-            Color outlineColor = outlineColorNullable ?? _mapObjectList[0].OutlineColor;
+            bool updateMapObjs = lineColorNullable != null;
+            Color lineColor = lineColorNullable ?? _mapObjectList[0].LineColor;
             if (updateMapObjs)
             {
-                _mapObjectList.ForEach(mapObj => mapObj.OutlineColor = outlineColor);
+                _mapObjectList.ForEach(mapObj => mapObj.LineColor = lineColor);
             }
-            colorSelectorOutline.SelectedColor = outlineColor;
+            colorSelectorLine.SelectedColor = lineColor;
         }
 
         public void SetCustomRotates(bool? customRotates)
@@ -1017,11 +1017,11 @@ namespace STROOP.Map
             XElement xElement = new XElement("MapTracker");
             xElement.Add(new XAttribute("size", _mapObjectList[0].Size));
             xElement.Add(new XAttribute("opacity", _mapObjectList[0].OpacityPercent));
-            xElement.Add(new XAttribute("outlineWidth", _mapObjectList[0].OutlineWidth));
+            xElement.Add(new XAttribute("lineWidth", _mapObjectList[0].LineWidth));
             xElement.Add(new XAttribute("orderType", comboBoxOrderType.SelectedItem));
             xElement.Add(new XAttribute("visibilityType", comboBoxVisibilityType.SelectedItem));
             xElement.Add(new XAttribute("color", ColorUtilities.ConvertColorToParams(_mapObjectList[0].Color)));
-            xElement.Add(new XAttribute("outlineColor", ColorUtilities.ConvertColorToParams(_mapObjectList[0].OutlineColor)));
+            xElement.Add(new XAttribute("lineColor", ColorUtilities.ConvertColorToParams(_mapObjectList[0].LineColor)));
             xElement.Add(new XAttribute("customRotates", (object)_mapObjectList[0].CustomRotates ?? ""));
             xElement.Add(new XAttribute("scales", _mapObjectList[0].Scales));
             xElement.Add(new XAttribute("isVisible", _isVisible));
@@ -1039,11 +1039,11 @@ namespace STROOP.Map
             MapTracker tracker = new MapTracker(mapObjs);
             tracker.SetSize(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("size")).Value));
             tracker.SetOpacity(ParsingUtilities.ParseIntNullable(xElement.Attribute(XName.Get("opacity")).Value));
-            tracker.SetOutlineWidth(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("outlineWidth")).Value));
+            tracker.SetLineWidth(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("lineWidth")).Value));
             tracker.comboBoxOrderType.SelectedItem = Enum.Parse(typeof(MapTrackerOrderType), xElement.Attribute(XName.Get("orderType")).Value);
             tracker.comboBoxVisibilityType.SelectedItem = Enum.Parse(typeof(MapTrackerVisibilityType), xElement.Attribute(XName.Get("visibilityType")).Value);
             tracker.SetColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("color")).Value));
-            tracker.SetOutlineColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("outlineColor")).Value));
+            tracker.SetLineColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("lineColor")).Value));
             tracker.SetCustomRotates(ParsingUtilities.ParseBoolNullable(xElement.Attribute(XName.Get("customRotates")).Value));
             tracker.SetScales(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("scales")).Value));
             tracker.SetIsVisible(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisible")).Value));

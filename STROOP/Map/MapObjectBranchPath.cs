@@ -34,9 +34,9 @@ namespace STROOP.Map
             _isPaused = false;
 
             Size = 30;
-            OutlineWidth = 3;
+            LineWidth = 3;
             Color = Color.Yellow;
-            OutlineColor = Color.Red;
+            LineColor = Color.Red;
         }
 
         public MapObjectBranchPath(PositionAngle posAngle, List<(uint globalTimer, float x, float y, float z)> points) : this(posAngle)
@@ -79,7 +79,7 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView()
         {
-            if (OutlineWidth == 0) return;
+            if (LineWidth == 0) return;
 
             List<MapBranchPathObjectSegment> segments = GetSegments();
             uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
@@ -87,17 +87,17 @@ namespace STROOP.Map
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
-            GL.LineWidth(OutlineWidth);
+            GL.LineWidth(LineWidth);
             foreach (MapBranchPathObjectSegment segment in segments)
             {
-                Color color = OutlineColor;
+                Color color = LineColor;
                 if (_useBlending)
                 {
                     int time1 = (int)(globalTimer - Size);
                     int time2 = (int)globalTimer;
                     if (segment.GlobalTimer >= time2)
                     {
-                        color = OutlineColor;
+                        color = LineColor;
                     }
                     else if (segment.GlobalTimer <= time1)
                     {
@@ -107,7 +107,7 @@ namespace STROOP.Map
                     {
                         int distFromEnd = (int)(time2 - segment.GlobalTimer);
                         color = ColorUtilities.InterpolateColor(
-                            OutlineColor, Color, distFromEnd / (double)Size);
+                            LineColor, Color, distFromEnd / (double)Size);
                     }
                 }
                 (float x1, float z1) = MapUtilities.ConvertCoordsForControlTopDownView(segment.StartX, segment.StartZ);
@@ -123,7 +123,7 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlOrthographicView()
         {
-            if (OutlineWidth == 0) return;
+            if (LineWidth == 0) return;
 
             List<MapBranchPathObjectSegment> segments = GetSegments();
             uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
@@ -131,17 +131,17 @@ namespace STROOP.Map
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
-            GL.LineWidth(OutlineWidth);
+            GL.LineWidth(LineWidth);
             foreach (MapBranchPathObjectSegment segment in segments)
             {
-                Color color = OutlineColor;
+                Color color = LineColor;
                 if (_useBlending)
                 {
                     int time1 = (int)(globalTimer - Size);
                     int time2 = (int)globalTimer;
                     if (segment.GlobalTimer >= time2)
                     {
-                        color = OutlineColor;
+                        color = LineColor;
                     }
                     else if (segment.GlobalTimer <= time1)
                     {
@@ -151,7 +151,7 @@ namespace STROOP.Map
                     {
                         int distFromEnd = (int)(time2 - segment.GlobalTimer);
                         color = ColorUtilities.InterpolateColor(
-                            OutlineColor, Color, distFromEnd / (double)Size);
+                            LineColor, Color, distFromEnd / (double)Size);
                     }
                 }
                 (float x1, float z1) = MapUtilities.ConvertCoordsForControlOrthographicView(segment.StartX, segment.StartY, segment.StartZ);
@@ -167,7 +167,7 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            if (OutlineWidth == 0) return;
+            if (LineWidth == 0) return;
 
             List<MapBranchPathObjectSegment> segments = GetSegments();
             uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
@@ -175,14 +175,14 @@ namespace STROOP.Map
             List<Map3DVertex[]> vertexArrayList = new List<Map3DVertex[]>();
             foreach (MapBranchPathObjectSegment segment in segments)
             {
-                Color color = OutlineColor;
+                Color color = LineColor;
                 if (_useBlending)
                 {
                     int time1 = (int)(globalTimer - Size);
                     int time2 = (int)globalTimer;
                     if (segment.GlobalTimer >= time2)
                     {
-                        color = OutlineColor;
+                        color = LineColor;
                     }
                     else if (segment.GlobalTimer <= time1)
                     {
@@ -192,7 +192,7 @@ namespace STROOP.Map
                     {
                         int distFromEnd = (int)(time2 - segment.GlobalTimer);
                         color = ColorUtilities.InterpolateColor(
-                            OutlineColor, Color, distFromEnd / (double)Size);
+                            LineColor, Color, distFromEnd / (double)Size);
                     }
                 }
 
@@ -212,7 +212,7 @@ namespace STROOP.Map
                 GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
                 GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map3DVertex.Size), vertexes, BufferUsageHint.DynamicDraw);
-                GL.LineWidth(OutlineWidth);
+                GL.LineWidth(LineWidth);
                 Config.Map3DGraphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Lines, 0, vertexes.Length);
                 GL.DeleteBuffer(buffer);

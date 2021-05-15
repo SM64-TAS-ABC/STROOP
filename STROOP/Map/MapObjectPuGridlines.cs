@@ -23,8 +23,8 @@ namespace STROOP.Map
             : base()
         {
             Size = 1;
-            OutlineWidth = 1;
-            OutlineColor = Color.Black;
+            LineWidth = 1;
+            LineColor = Color.Black;
 
             _setting = PuGridlineSetting.SETTING1;
         }

@@ -30,10 +30,10 @@ namespace STROOP.Map
             get => (int)(Opacity * 100);
             set => Opacity = value / 100.0;
         }
-        public float OutlineWidth = 1;
+        public float LineWidth = 1;
         public Color Color = SystemColors.Control;
         public Color4 Color4 { get => new Color4(Color.R, Color.G, Color.B, OpacityByte); }
-        public Color OutlineColor = Color.Black;
+        public Color LineColor = Color.Black;
 
         public bool? CustomRotates = null;
         public bool InternalRotates = false;

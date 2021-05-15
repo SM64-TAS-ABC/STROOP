@@ -218,10 +218,10 @@ namespace STROOP.Map
             }
 
             // Draw outline
-            if (OutlineWidth != 0)
+            if (LineWidth != 0)
             {
-                GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
-                GL.LineWidth(OutlineWidth);
+                GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
+                GL.LineWidth(LineWidth);
                 foreach (List<(float x, float z, Color color)> vertexList in vertexListsForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
@@ -270,10 +270,10 @@ namespace STROOP.Map
             }
 
             // Draw outline
-            if (OutlineWidth != 0)
+            if (LineWidth != 0)
             {
-                GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
-                GL.LineWidth(OutlineWidth);
+                GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
+                GL.LineWidth(LineWidth);
                 foreach (List<(float x, float z, Color color)> vertexList in vertexListsForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);

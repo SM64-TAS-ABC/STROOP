@@ -86,10 +86,10 @@ namespace STROOP.Map
             }
 
             // Draw outline
-            if (OutlineWidth != 0)
+            if (LineWidth != 0)
             {
-                GL.Color4(OutlineColor.R, OutlineColor.G, OutlineColor.B, (byte)255);
-                GL.LineWidth(OutlineWidth);
+                GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
+                GL.LineWidth(LineWidth);
                 foreach (List<(float x, float z)> vertexList in vertexListsForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
@@ -130,8 +130,8 @@ namespace STROOP.Map
                 };
                 List<Map3DVertex[]> vertexArrayForEdges = new List<Map3DVertex[]>()
                 {
-                    GetBaseVertices(maxY, OutlineColor),
-                    GetBaseVertices(minY, OutlineColor),
+                    GetBaseVertices(maxY, LineColor),
+                    GetBaseVertices(minY, LineColor),
                 };
 
                 List<(float x, float z)> points2D = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
@@ -167,7 +167,7 @@ namespace STROOP.Map
                     GL.DeleteBuffer(buffer);
                 });
 
-                if (OutlineWidth != 0)
+                if (LineWidth != 0)
                 {
                     vertexArrayForEdges.ForEach(vertexes =>
                     {
@@ -175,7 +175,7 @@ namespace STROOP.Map
                         GL.BindTexture(TextureTarget.Texture2D, MapUtilities.WhiteTexture);
                         GL.BindBuffer(BufferTarget.ArrayBuffer, buffer);
                         GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertexes.Length * Map3DVertex.Size), vertexes, BufferUsageHint.DynamicDraw);
-                        GL.LineWidth(OutlineWidth);
+                        GL.LineWidth(LineWidth);
                         Config.Map3DGraphics.BindVertices();
                         GL.DrawArrays(PrimitiveType.LineLoop, 0, vertexes.Length);
                         GL.DeleteBuffer(buffer);

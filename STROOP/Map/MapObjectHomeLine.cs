@@ -24,8 +24,8 @@ namespace STROOP.Map
             _objPosAngle = PositionAngle.Obj(posAngle.GetObjAddress());
             _homePosAngle = PositionAngle.ObjHome(posAngle.GetObjAddress());
 
-            OutlineWidth = 3;
-            OutlineColor = Color.Black;
+            LineWidth = 3;
+            LineColor = Color.Black;
         }
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()

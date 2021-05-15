@@ -26,8 +26,8 @@ namespace STROOP.Map
         public MapObjectDrawing()
             : base()
         {
-            OutlineWidth = 3;
-            OutlineColor = Color.Red;
+            LineWidth = 3;
+            LineColor = Color.Red;
 
             _vertices = new List<(float x, float y, float z)>();
             _drawingEnabled = false;

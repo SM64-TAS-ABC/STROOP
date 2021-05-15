@@ -38,8 +38,8 @@ namespace STROOP.Map
             _useInGameAngles = false;
 
             Size = 1000;
-            OutlineWidth = 1;
-            OutlineColor = Color.Black;
+            LineWidth = 1;
+            LineColor = Color.Black;
         }
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
