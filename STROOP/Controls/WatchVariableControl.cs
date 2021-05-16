@@ -661,7 +661,7 @@ namespace STROOP.Controls
             if (!_editMode) _valueTextBox.BackColor = _currentColor;
             if (!_renameMode) _nameTextBox.BackColor = _currentColor;
 
-            Color textColor = IsSelected ? Color.White : Color.Black;
+            Color textColor = (IsSelected || _baseColor == Color.Black) ? Color.White : Color.Black;
             _valueTextBox.ForeColor = textColor;
             _nameTextBox.ForeColor = textColor;
         }
@@ -1014,6 +1014,22 @@ namespace STROOP.Controls
         public override string ToString()
         {
             return WatchVarPrecursor.ToString();
+        }
+
+        public void MakeNightMode()
+        {
+            if (_baseColor == SystemColors.Control)
+            {
+                _baseColor = Color.Black;
+            }
+        }
+
+        public void UnMakeNightMode()
+        {
+            if (_baseColor == Color.Black)
+            {
+                _baseColor = SystemColors.Control;
+            }
         }
     }
 }

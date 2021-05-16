@@ -989,6 +989,10 @@ namespace STROOP
                 _originalBackColors[control] = control.BackColor;
                 control.BackColor = Color.Black;
                 control.ForeColor = Color.White;
+                if (control is WatchVariableControl watchVariableControl)
+                {
+                    watchVariableControl.MakeNightMode();
+                }
             }
         }
 
@@ -999,6 +1003,10 @@ namespace STROOP
             {
                 control.ForeColor = _originalForeColors[control];
                 control.BackColor = _originalBackColors[control];
+                if (control is WatchVariableControl watchVariableControl)
+                {
+                    watchVariableControl.UnMakeNightMode();
+                }
             }
         }
     }
