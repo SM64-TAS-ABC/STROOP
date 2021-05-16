@@ -34,7 +34,9 @@ namespace STROOP
         DataTable _tableOtherData = new DataTable();
         Dictionary<int, DataRow> _otherDataRowAssoc = new Dictionary<int, DataRow>();
 
-        bool _useNightMode = false;
+        private bool _useNightMode = false;
+        private Dictionary<Control, Color> _originalForeColors = new Dictionary<Control, Color>();
+        private Dictionary<Control, Color> _originalBackColors = new Dictionary<Control, Color>();
 
         bool _resizing = true, _objSlotResizing = false;
         int _resizeTimeLeft = 0, _resizeObjSlotTime = 0;
@@ -981,30 +983,23 @@ namespace STROOP
         private void MakeNightMode()
         {
             List<Control> controls = ControlUtilities.GetAllControls(this);
-            List<string> missingTypes = new List<string>();
             foreach (Control control in controls)
             {
-                //if (control is Button button)
-                {
-                    control.BackColor = Color.FromArgb(0, 0, 0);
-                    control.ForeColor = Color.White;
-                }
-                //else
-                {
-                    string missingType = control.GetType().FullName;
-                    if (!missingTypes.Contains(missingType))
-                    {
-                        missingTypes.Add(missingType);
-                    }
-                }
+                _originalForeColors[control] = control.ForeColor;
+                _originalBackColors[control] = control.BackColor;
+                control.BackColor = Color.Black;
+                control.ForeColor = Color.White;
             }
-            Config.Print("Missing the following types:");
-            Config.Print(string.Join("\r\n", missingTypes));
         }
 
         private void UnMakeNightMode()
         {
-
+            List<Control> controls = ControlUtilities.GetAllControls(this);
+            foreach (Control control in controls)
+            {
+                control.ForeColor = _originalForeColors[control];
+                control.BackColor = _originalBackColors[control];
+            }
         }
     }
 }
