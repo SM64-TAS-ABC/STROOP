@@ -2,7 +2,7 @@
 <Config>
   <Emulators>
     <!-- If you are using new Mupen, update the ramStart value in the following entry. -->
-    <Emulator name="Mupen 5.0 RR" processName="mupen64" ramStart="0x004BB7A0" endianness="little"/>
+    <Emulator name="Mupen 5.0 RR" processName="mupen64" ramStart="0x004FC700" endianness="little"/>
 
     <Emulator name="Mupen 5.0 RR" processName="mupen64-rerecording" ramStart="0x008EBA80" endianness="little"/>
     <Emulator name="Mupen 5.0 RR" processName="mupen64-screen-recording" ramStart="0x004FA6F0" endianness="little"/>
