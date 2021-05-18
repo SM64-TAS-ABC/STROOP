@@ -1086,7 +1086,7 @@ namespace STROOP
                 }
                 else if (control is TextBox textBox)
                 {
-                    textBox.BackColor = SystemColors.Control;
+                    textBox.BackColor = Color.White;
                     textBox.ForeColor = Color.Black;
                 }
                 else if (control is Button button)
