@@ -993,10 +993,30 @@ namespace STROOP
                 {
                     splitContainer.BackColor = Color.Black;
                 }
+                else if (control is TabControl tabControl)
+                {
+                    tabControl.BackColor = Color.Black;
+                    tabControl.ForeColor = Color.White;
+                }
+                else if (control is TabPage tabPage)
+                {
+                    tabPage.BackColor = Color.Black;
+                    tabPage.ForeColor = Color.White;
+                }
+                else if (control is GroupBox groupBox)
+                {
+                    groupBox.BackColor = Color.Black;
+                    groupBox.ForeColor = Color.White;
+                }
                 else if (control is Label label)
                 {
                     label.BackColor = Color.Black;
                     label.ForeColor = Color.White;
+                }
+                else if (control is TextBox textBox)
+                {
+                    textBox.BackColor = Color.Black;
+                    textBox.ForeColor = Color.White;
                 }
                 else if (control is Button button)
                 {
@@ -1006,6 +1026,12 @@ namespace STROOP
                 else if (control is WatchVariableControl watchVariableControl)
                 {
                     watchVariableControl.MakeNightMode();
+                }
+
+                if (control.ContextMenuStrip != null)
+                {
+                    control.ContextMenuStrip.BackColor = Color.Black;
+                    control.ContextMenuStrip.ForeColor = Color.White;
                 }
             }
         }
@@ -1023,10 +1049,30 @@ namespace STROOP
                 {
                     splitContainer.BackColor = SystemColors.Control;
                 }
+                else if (control is TabControl tabControl)
+                {
+                    tabControl.BackColor = SystemColors.Control;
+                    tabControl.ForeColor = Color.Black;
+                }
+                else if (control is TabPage tabPage)
+                {
+                    tabPage.BackColor = SystemColors.Control;
+                    tabPage.ForeColor = Color.Black;
+                }
+                else if (control is GroupBox groupBox)
+                {
+                    groupBox.BackColor = SystemColors.Control;
+                    groupBox.ForeColor = Color.Black;
+                }
                 else if (control is Label label)
                 {
                     label.BackColor = SystemColors.Control;
                     label.ForeColor = Color.Black;
+                }
+                else if (control is TextBox textBox)
+                {
+                    textBox.BackColor = SystemColors.Control;
+                    textBox.ForeColor = Color.Black;
                 }
                 else if (control is Button button)
                 {
@@ -1036,6 +1082,12 @@ namespace STROOP
                 else if (control is WatchVariableControl watchVariableControl)
                 {
                     watchVariableControl.UnMakeNightMode();
+                }
+
+                if (control.ContextMenuStrip != null)
+                {
+                    control.ContextMenuStrip.BackColor = SystemColors.Control;
+                    control.ContextMenuStrip.ForeColor = Color.Black;
                 }
             }
         }
