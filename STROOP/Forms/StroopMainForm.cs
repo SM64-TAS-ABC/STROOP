@@ -1027,13 +1027,10 @@ namespace STROOP
                 {
                     watchVariableControl.MakeNightMode();
                 }
-                else if (control is PictureBox pictureBox)
+                
+                if (control.BackgroundImage != null)
                 {
-                    Image image = pictureBox.BackgroundImage;
-                    //if (ImageUtilities.IsOnlyColor(image, Color.Black))
-                    {
-                        pictureBox.BackgroundImage = ImageUtilities.ChangeColor(image, Color.White);
-                    }
+                    control.BackgroundImage = ImageUtilities.ChangeColor(control.BackgroundImage, Color.White);
                 }
 
                 if (control.ContextMenuStrip != null)
@@ -1091,13 +1088,10 @@ namespace STROOP
                 {
                     watchVariableControl.UnMakeNightMode();
                 }
-                else if (control is PictureBox pictureBox)
+
+                if (control.BackgroundImage != null)
                 {
-                    Image image = pictureBox.BackgroundImage;
-                    //if (ImageUtilities.IsOnlyColor(image, Color.White))
-                    {
-                        pictureBox.BackgroundImage = ImageUtilities.ChangeColor(image, Color.Black);
-                    }
+                    control.BackgroundImage = ImageUtilities.ChangeColor(control.BackgroundImage, Color.Black);
                 }
 
                 if (control.ContextMenuStrip != null)
