@@ -57,5 +57,40 @@ namespace STROOP.Utilities
 
             return transparentBitmap;
         }
+
+        public static bool IsOnlyColor(Image image, Color onlyColor)
+        {
+            if (image == null) return false;
+            Bitmap bitmap = new Bitmap(image);
+            for (int x = 0; x < image.Width; x++)
+            {
+                for (int y = 0; y < image.Height; y++)
+                {
+                    Color color = bitmap.GetPixel(x, y);
+                    if (color != onlyColor && color.A != 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public static Image ChangeColor(Image image, Color changeColor)
+        {
+            if (image == null) return null;
+            Bitmap originalBitmap = new Bitmap(image);
+            Bitmap transparentBitmap = new Bitmap(image.Width, image.Height);
+            for (int x = 0; x < image.Width; x++)
+            {
+                for (int y = 0; y < image.Height; y++)
+                {
+                    Color oldColor = originalBitmap.GetPixel(x, y);
+                    Color newColor = oldColor.A == 0 ? oldColor : changeColor;
+                    transparentBitmap.SetPixel(x, y, newColor);
+                }
+            }
+            return transparentBitmap;
+        }
     }
 }
