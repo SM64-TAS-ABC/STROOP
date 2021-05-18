@@ -985,11 +985,25 @@ namespace STROOP
             List<Control> controls = ControlUtilities.GetAllControls(this);
             foreach (Control control in controls)
             {
-                _originalForeColors[control] = control.ForeColor;
-                _originalBackColors[control] = control.BackColor;
-                control.BackColor = Color.Black;
-                control.ForeColor = Color.White;
-                if (control is WatchVariableControl watchVariableControl)
+                if (control is Form form)
+                {
+                    form.BackColor = Color.Black;
+                }
+                else if (control is SplitContainer splitContainer)
+                {
+                    splitContainer.BackColor = Color.Black;
+                }
+                else if (control is Label label)
+                {
+                    label.BackColor = Color.Black;
+                    label.ForeColor = Color.White;
+                }
+                else if (control is Button button)
+                {
+                    button.BackColor = Color.Black;
+                    button.ForeColor = Color.White;
+                }
+                else if (control is WatchVariableControl watchVariableControl)
                 {
                     watchVariableControl.MakeNightMode();
                 }
@@ -1001,9 +1015,25 @@ namespace STROOP
             List<Control> controls = ControlUtilities.GetAllControls(this);
             foreach (Control control in controls)
             {
-                control.ForeColor = _originalForeColors[control];
-                control.BackColor = _originalBackColors[control];
-                if (control is WatchVariableControl watchVariableControl)
+                if (control is Form form)
+                {
+                    form.BackColor = SystemColors.Control;
+                }
+                else if (control is SplitContainer splitContainer)
+                {
+                    splitContainer.BackColor = SystemColors.Control;
+                }
+                else if (control is Label label)
+                {
+                    label.BackColor = SystemColors.Control;
+                    label.ForeColor = Color.Black;
+                }
+                else if (control is Button button)
+                {
+                    button.BackColor = Color.Transparent;
+                    button.ForeColor = Color.Black;
+                }
+                else if (control is WatchVariableControl watchVariableControl)
                 {
                     watchVariableControl.UnMakeNightMode();
                 }
