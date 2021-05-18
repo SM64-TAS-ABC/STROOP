@@ -1008,6 +1008,11 @@ namespace STROOP
                     groupBox.BackColor = Color.Black;
                     groupBox.ForeColor = Color.White;
                 }
+                else if (control is CheckedListBox checkedListBox)
+                {
+                    checkedListBox.BackColor = Color.Black;
+                    checkedListBox.ForeColor = Color.White;
+                }
                 else if (control is Label label)
                 {
                     label.BackColor = Color.Black;
@@ -1068,6 +1073,11 @@ namespace STROOP
                 {
                     groupBox.BackColor = SystemColors.Control;
                     groupBox.ForeColor = Color.Black;
+                }
+                else if (control is CheckedListBox checkedListBox)
+                {
+                    checkedListBox.BackColor = SystemColors.Control;
+                    checkedListBox.ForeColor = Color.Black;
                 }
                 else if (control is Label label)
                 {
