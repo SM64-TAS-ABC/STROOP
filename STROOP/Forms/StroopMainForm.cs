@@ -134,6 +134,7 @@ namespace STROOP
                     "Save as Savestate",
                     "Show MHS Vars",
                     "Download Latest STROOP Release",
+                    "Copy Download Link",
                     "Documentation",
                     "Show All Helpful Hints",
                     "Enable TASer Settings",
@@ -167,6 +168,7 @@ namespace STROOP
                         form.ShowForm();
                     },
                     () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
+                    () => Clipboard.SetText("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
                     () => Process.Start("https://ukikipedia.net/wiki/STROOP"),
                     () => HelpfulHintUtilities.ShowAllHelpfulHints(),
                     () =>
