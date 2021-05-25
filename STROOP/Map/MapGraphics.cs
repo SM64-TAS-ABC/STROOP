@@ -89,7 +89,7 @@ namespace STROOP.Map
             GL.Enable(EnableCap.Texture2D);
             GL.Enable(EnableCap.Blend);
             GL.EnableClientState(ArrayCap.VertexArray);
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
         }
 
