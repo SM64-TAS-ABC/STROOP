@@ -32,7 +32,7 @@ namespace STROOP.Map
             uint objAddress = _posAngle.GetObjAddress();
             ObjectDataModel obj = new ObjectDataModel(objAddress);
             ObjectBehaviorAssociation assoc = Config.ObjectAssociations.FindObjectAssociation(obj.BehaviorCriteria);
-            if (assoc.PushHitbox == null)
+            if (assoc == null || assoc.PushHitbox == null)
             {
                 return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>();
             }
