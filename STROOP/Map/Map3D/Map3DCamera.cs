@@ -13,6 +13,9 @@ namespace STROOP.Map.Map3D
     {
         public Vector3 Position { get; set; }
 
+        public float ZNear = 0.1f;
+        public float ZFar = 0x8000;
+
         private float _fov = (float)Math.PI / 4.0f;
         public float FOV
         {
@@ -40,7 +43,7 @@ namespace STROOP.Map.Map3D
         {
             try
             {
-                _projection = Matrix4.CreatePerspectiveFieldOfView(FOV, Config.Map3DGraphics.AspectRatio, 0.1f, 0x8000);
+                _projection = Matrix4.CreatePerspectiveFieldOfView(FOV, Config.Map3DGraphics.AspectRatio, ZNear, ZFar);
             }
             catch (Exception)
             {
