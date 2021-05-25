@@ -215,20 +215,6 @@ namespace STROOP.Managers
                     () => setAllObjectSlotOverlays(true),
                     () => setAllObjectSlotOverlays(false),
                 });
-      }
-
-        private void textBoxGotoRetrieve_LostFocus(object sender, ref float offset, float defaultOffset)
-        {
-            float value;
-            if (float.TryParse((sender as TextBox).Text, out value))
-            {
-                offset = value;
-            }
-            else
-            {
-                offset = defaultOffset;
-                (sender as TextBox).Text = defaultOffset.ToString();
-            }
         }
 
         public override void Update(bool updateView)
