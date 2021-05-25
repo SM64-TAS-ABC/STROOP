@@ -41,6 +41,7 @@ namespace STROOP.Map.Map3D
         int _vertexShader, _fragmentShader;
 
         public int GLUniformView;
+        public int GLUnifromInvfarplanecoef;
         int _glAttributePosition = 1;
         int _glAttributeColor = 2;
         int _glAttributeTexCoords = 3;
@@ -101,6 +102,9 @@ namespace STROOP.Map.Map3D
                 return;
             }
             
+            // Note: 0x8000 needs to match the camera far plane
+            GL.Uniform1(Config.Map3DGraphics.GLUnifromInvfarplanecoef, 2.0f / (float)Math.Log(Config.Map3DCamera.ZFar + 1));
+
             // Setup Background
             GL.Disable(EnableCap.DepthTest);
 
@@ -228,6 +232,7 @@ namespace STROOP.Map.Map3D
 
             // Get uniform locatinos
             GLUniformView = GL.GetUniformLocation(_shaderProgram, "view");
+            GLUnifromInvfarplanecoef = GL.GetUniformLocation(_shaderProgram, "invfarplanecoef");
         }
 
         #region IDisposable Support
