@@ -42,9 +42,10 @@ namespace STROOP.Map
             foreach (var p in _points)
             {
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(p.x, p.z);
-                SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
+                Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
+                SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(_tex, point, size, 0, Opacity);
+                MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, 0, Opacity);
             }
         }
 
@@ -53,9 +54,10 @@ namespace STROOP.Map
             foreach (var p in _points)
             {
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z);
-                SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
+                Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
+                SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(_tex, point, size, 0, Opacity);
+                MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, 0, Opacity);
             }
         }
 
@@ -71,7 +73,7 @@ namespace STROOP.Map
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                 GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Map3DVertex.Size),
                     vertices, BufferUsageHint.StaticDraw);
-                GL.BindTexture(TextureTarget.Texture2D, _tex);
+                GL.BindTexture(TextureTarget.Texture2D, _customImageTex ?? _tex);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                 Config.Map3DGraphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Triangles, 0, vertices.Length);
@@ -81,7 +83,7 @@ namespace STROOP.Map
 
         public Matrix4 GetModelMatrix(float x, float y, float z)
         {
-            Image image = Config.ObjectAssociations.BlueMarioMapImage;
+            Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
             SizeF _imageNormalizedSize = new SizeF(
                 image.Width >= image.Height ? 1.0f : (float)image.Width / image.Height,
                 image.Width <= image.Height ? 1.0f : (float)image.Height / image.Width);

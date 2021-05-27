@@ -178,7 +178,7 @@ namespace STROOP.Map
                 foreach ((float x, float z) in verticesForControl)
                 {
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
-                    MapUtilities.DrawTexture(_customImageTex, new PointF(x, z), size, 0, 1);
+                    MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, 1);
                 }
             }
         }
@@ -227,7 +227,7 @@ namespace STROOP.Map
                 foreach ((float x, float z) in verticesForControl)
                 {
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
-                    MapUtilities.DrawTexture(_customImageTex, new PointF(x, z), size, 0, 1);
+                    MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, 1);
                 }
             }
         }
@@ -293,7 +293,7 @@ namespace STROOP.Map
                     GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                     GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices2.Length * Map3DVertex.Size),
                         vertices2, BufferUsageHint.StaticDraw);
-                    GL.BindTexture(TextureTarget.Texture2D, _customImageTex);
+                    GL.BindTexture(TextureTarget.Texture2D, _customImageTex.Value);
                     GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                     Config.Map3DGraphics.BindVertices();
                     GL.DrawArrays(PrimitiveType.Triangles, 0, vertices2.Length);
