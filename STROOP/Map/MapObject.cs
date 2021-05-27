@@ -297,6 +297,9 @@ namespace STROOP.Map
                 case "MapObjectCustomGridlines":
                     mapObject = new MapObjectCustomGridlines();
                     break;
+                case "MapObjectCustomIconPoints":
+                    mapObject = MapObjectCustomIconPoints.Create(xElement.Attribute(XName.Get("points")).Value, true);
+                    break;
                 case "MapObjectCustomMap":
                     mapObject = new MapObjectCustomMap();
                     break;
