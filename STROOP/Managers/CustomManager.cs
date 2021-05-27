@@ -42,6 +42,16 @@ namespace STROOP.Managers
 
             Button buttonOpenVars = splitContainerCustomControls.Panel1.Controls["buttonOpenVars"] as Button;
             buttonOpenVars.Click += (sender, e) => _variablePanel.OpenVariables();
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonOpenVars,
+                new List<string>()
+                {
+                    "Open Mario State Data",
+                },
+                new List<Action>()
+                {
+                    () => _variablePanel.OpenVariables(@"Config/MarioStateData.xml"),
+                });
 
             Button buttonSaveVars = splitContainerCustomControls.Panel1.Controls["buttonSaveVars"] as Button;
             buttonSaveVars.Click += (sender, e) => _variablePanel.SaveVariables();
