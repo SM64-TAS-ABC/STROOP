@@ -25,16 +25,37 @@ namespace STROOP.Forms
             button1.Text = button1Text;
             button2.Text = button2Text;
 
-            Action<bool> okAction = (bool rightButtonClicked) =>
+            Action<string, bool> okAction = (string stringValue, bool rightButtonClicked) =>
             {
-                StringValue = textBox1.Text;
+                StringValue = stringValue;
                 RightButtonClicked = rightButtonClicked;
                 DialogResult = DialogResult.OK;
                 Close();
             };
 
-            button1.Click += (sender, e) => okAction(false);
-            button2.Click += (sender, e) => okAction(true);
+            button1.Click += (sender, e) => okAction(textBox1.Text, false);
+            button2.Click += (sender, e) => okAction(textBox1.Text, true);
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                button1,
+                new List<string>()
+                {
+                    "Use Clipboard",
+                },
+                new List<Action>()
+                {
+                    () => okAction(Clipboard.GetText(), false),
+                });
+            ControlUtilities.AddContextMenuStripFunctions(
+                button2,
+                new List<string>()
+                {
+                    "Use Clipboard",
+                },
+                new List<Action>()
+                {
+                    () => okAction(Clipboard.GetText(), true),
+                });
         }
     }
 }
