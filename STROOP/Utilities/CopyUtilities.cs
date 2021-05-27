@@ -72,6 +72,7 @@ namespace STROOP.Utilities
                 string.Join(separator, controls.ConvertAll(
                     control => control.GetValue(
                         useRounding: false, handleFormatting: true))));
+            controls.ForEach(control => control.FlashColor(WatchVariableControl.COPY_COLOR));
         }
 
         public static void CopyWithNames(List<WatchVariableControl> controls)
@@ -80,6 +81,7 @@ namespace STROOP.Utilities
             List<string> lines = controls.ConvertAll(
                 watchVar => watchVar.VarName + "\t" + watchVar.GetValue(false));
             Clipboard.SetText(string.Join("\r\n", lines));
+            controls.ForEach(control => control.FlashColor(WatchVariableControl.COPY_COLOR));
         }
 
         public static void CopyAsTable(List<WatchVariableControl> controls)
@@ -101,6 +103,7 @@ namespace STROOP.Utilities
 
             string output = header + "\r\n" + string.Join("\r\n", valuesStrings);
             Clipboard.SetText(output);
+            controls.ForEach(control => control.FlashColor(WatchVariableControl.COPY_COLOR));
         }
 
         public static void CopyForCode(List<WatchVariableControl> controls, string dialogString = null)
@@ -132,6 +135,7 @@ namespace STROOP.Utilities
             if (lines.Count > 0)
             {
                 Clipboard.SetText(string.Join("\r\n", lines));
+                controls.ForEach(control => control.FlashColor(WatchVariableControl.COPY_COLOR));
             }
         }
     }

@@ -126,8 +126,11 @@ namespace STROOP.Controls
             _itemDisableAllLocks.Click += (sender, e) => LockConfig.LockingDisabled = !LockConfig.LockingDisabled;
 
             ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy");
-            itemCopyUnrounded.Click += (sender, e) => Clipboard.SetText(
-                GetValue(false, true, _watchVarControl.FixedAddressListGetter()).ToString());
+            itemCopyUnrounded.Click += (sender, e) =>
+            {
+                Clipboard.SetText(GetValue(false, true, _watchVarControl.FixedAddressListGetter()).ToString());
+                _watchVarControl.FlashColor(WatchVariableControl.COPY_COLOR);
+            };
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) => _watchVarControl.SetValue(Clipboard.GetText());

@@ -108,6 +108,7 @@ namespace STROOP.Controls
                 Clipboard.SetText(
                     String.Join(separator, coordinateVarList.ConvertAll(
                         coord => coord.GetValue(false))));
+                coordinateVarList.ForEach(coord => coord._watchVarControl.FlashColor(WatchVariableControl.COPY_COLOR));
             };
 
             ToolStripMenuItem itemCopyCoordinatesCommas = new ToolStripMenuItem("Copy Coordinates with Commas");
