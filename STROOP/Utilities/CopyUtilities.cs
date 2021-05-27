@@ -49,7 +49,7 @@ namespace STROOP.Utilities
             };
         }
 
-        private static List<Action> GetCopyActions(Func<List<WatchVariableControl>> getVars)
+        public static List<Action> GetCopyActions(Func<List<WatchVariableControl>> getVars)
         {
             return new List<Action>()
             {
@@ -64,7 +64,7 @@ namespace STROOP.Utilities
             };
         }
 
-        private static void CopyWithSeparator(
+        public static void CopyWithSeparator(
             List<WatchVariableControl> controls, string separator)
         {
             if (controls.Count == 0) return;
@@ -74,7 +74,7 @@ namespace STROOP.Utilities
                         useRounding: false, handleFormatting: true))));
         }
 
-        private static void CopyWithNames(List<WatchVariableControl> controls)
+        public static void CopyWithNames(List<WatchVariableControl> controls)
         {
             if (controls.Count == 0) return;
             List<string> lines = controls.ConvertAll(
@@ -82,7 +82,7 @@ namespace STROOP.Utilities
             Clipboard.SetText(string.Join("\r\n", lines));
         }
 
-        private static void CopyAsTable(List<WatchVariableControl> controls)
+        public static void CopyAsTable(List<WatchVariableControl> controls)
         {
             if (controls.Count == 0) return;
             List<uint> addresses = controls[0].GetBaseAddresses();
@@ -103,13 +103,13 @@ namespace STROOP.Utilities
             Clipboard.SetText(output);
         }
 
-        private static void CopyForCode(List<WatchVariableControl> controls)
+        public static void CopyForCode(List<WatchVariableControl> controls, string dialogString = null)
         {
             if (controls.Count == 0) return;
             Func<string, string> varNameFunc;
-            if (KeyboardUtilities.IsCtrlHeld())
+            if (dialogString != null || KeyboardUtilities.IsCtrlHeld())
             {
-                string template = DialogUtilities.GetStringFromDialog("$");
+                string template = dialogString ?? DialogUtilities.GetStringFromDialog("$");
                 if (template == null) return;
                 varNameFunc = varName => template.Replace("$", varName);
             }

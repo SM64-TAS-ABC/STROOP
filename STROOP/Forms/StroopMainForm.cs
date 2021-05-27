@@ -19,6 +19,7 @@ using STROOP.Models;
 using STROOP.Structs.Gui;
 using STROOP.Map;
 using System.IO;
+using System.Xml.Linq;
 
 namespace STROOP
 {
@@ -133,6 +134,7 @@ namespace STROOP
                     "Go to Closest Floor Vertex",
                     "Save as Savestate",
                     "Show MHS Vars",
+                    "Copy Mario State",
                     "Download Latest STROOP Release",
                     "Copy Download Link",
                     "Documentation",
@@ -166,6 +168,15 @@ namespace STROOP
                         VariablePopOutForm form = new VariablePopOutForm();
                         form.Initialize(controls);
                         form.ShowForm();
+                    },
+                    () =>
+                    {
+                        List<XElement> elements = DialogUtilities.OpenXmlElements(FileType.StroopVariables, @"Config/MarioStateData.xml");
+                        List<WatchVariableControlPrecursor> precursors =
+                            elements.ConvertAll(element => new WatchVariableControlPrecursor(element));
+                        List<WatchVariableControl> controls =
+                            precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl());
+                        CopyUtilities.CopyForCode(controls, "start$");
                     },
                     () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
                     () => Clipboard.SetText("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
