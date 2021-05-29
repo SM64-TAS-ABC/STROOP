@@ -275,7 +275,7 @@ namespace STROOP.Map
                     mapObject = new MapObjectCurrentBackground();
                     break;
                 case "MapObjectCurrentCell":
-                    mapObject = new MapObjectCurrentCell();
+                    mapObject = new MapObjectCurrentCell(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectCurrentMap":
                     mapObject = new MapObjectCurrentMap();

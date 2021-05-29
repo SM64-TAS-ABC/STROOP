@@ -10,22 +10,29 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
     public class MapObjectCurrentCell : MapObjectQuad
     {
-        public MapObjectCurrentCell()
+        private readonly PositionAngle _posAngle;
+
+        public MapObjectCurrentCell(PositionAngle posAngle)
             : base()
         {
+            _posAngle = posAngle;
+
             Opacity = 0.5;
             Color = Color.Yellow;
         }
 
         protected override List<List<(float x, float y, float z)>> GetQuadList()
         {
-            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
-            (int cellX, int cellZ) = WatchVariableSpecialUtilities.GetMarioCell();
+            (float posAngleX, float posAngleY, float posAngleZ, float posAngleAngle) =
+                ((float, float, float, float))_posAngle.GetValues();
+
+            (int cellX, int cellZ) = WatchVariableSpecialUtilities.GetCell(posAngleX, posAngleZ);
             int xMin = (cellX - 8) * 1024;
             int xMax = xMin + 1024;
             int zMin = (cellZ - 8) * 1024;
@@ -33,22 +40,35 @@ namespace STROOP.Map
             List<(float x, float y, float z)> quad =
                 new List<(float x, float y, float z)>()
                 {
-                    (xMin, marioY, zMin),
-                    (xMin, marioY, zMax),
-                    (xMax, marioY, zMax),
-                    (xMax, marioY, zMin),
+                    (xMin, posAngleY, zMin),
+                    (xMin, posAngleY, zMax),
+                    (xMax, posAngleY, zMax),
+                    (xMax, posAngleY, zMin),
                 };
             return new List<List<(float x, float y, float z)>>() { quad };
         }
 
         public override string GetName()
         {
-            return "Current Cell";
+            return "Current Cell for " + _posAngle.GetMapName();
         }
 
         public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.CurrentCellImage;
+        }
+
+        public override PositionAngle GetPositionAngle()
+        {
+            return _posAngle;
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            return new List<XAttribute>()
+            {
+                new XAttribute("positionAngle", _posAngle),
+            };
         }
     }
 }
