@@ -126,7 +126,7 @@ namespace STROOP.Utilities
                 Type type = watchVar.GetMemoryType();
                 string line = string.Format(
                     "{0} {1} = {2}{3};",
-                    type != null ? TypeUtilities.TypeToString[watchVar.GetMemoryType()] : "double",
+                    type != null ? TypeUtilities.TypeToString[type] : "double",
                     varNameFunc(watchVar.VarName.Replace(" ", "")),
                     watchVar.GetValue(false),
                     type == typeof(float) ? "f" : "");
