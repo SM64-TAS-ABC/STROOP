@@ -563,24 +563,6 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemArrow = new ToolStripMenuItem("Add Tracker for Arrow...");
-            itemArrow.DropDownItems.Add(itemMarioFacingArrow);
-            itemArrow.DropDownItems.Add(itemMarioMovingArrow);
-            itemArrow.DropDownItems.Add(itemMarioIntendedArrow);
-            itemArrow.DropDownItems.Add(itemMarioSlidingArrow);
-            itemArrow.DropDownItems.Add(itemMarioTwirlArrow);
-            itemArrow.DropDownItems.Add(itemMarioFloorArrow);
-            itemArrow.DropDownItems.Add(new ToolStripSeparator());
-            itemArrow.DropDownItems.Add(itemObjectFacingArrow);
-            itemArrow.DropDownItems.Add(itemObjectMovingArrow);
-            itemArrow.DropDownItems.Add(itemObjectGraphicsArrow);
-            itemArrow.DropDownItems.Add(itemObjectAngleToMarioArrow);
-            itemArrow.DropDownItems.Add(itemObjectCustomArrow);
-            itemArrow.DropDownItems.Add(new ToolStripSeparator());
-            itemArrow.DropDownItems.Add(itemSwooperTargetArrow);
-            itemArrow.DropDownItems.Add(new ToolStripSeparator());
-            itemArrow.DropDownItems.Add(itemCustomPositionAngleArrow);
-
             ToolStripMenuItem itemCurrentUnit = new ToolStripMenuItem("Add Tracker for Current Unit");
             itemCurrentUnit.Click += (sender, e) =>
             {
@@ -745,41 +727,70 @@ namespace STROOP.Map
                 }
             };
 
-            ToolStripMenuItem itemObjectSpecific = new ToolStripMenuItem("Add Tracker for Object Specific...");
+            ToolStripMenuItem itemCylinder = new ToolStripMenuItem("Cylinder...");
+            itemCylinder.DropDownItems.Add(itemHitboxCylinder);
+            itemCylinder.DropDownItems.Add(itemEffectiveHitboxCylinder);
+            itemCylinder.DropDownItems.Add(itemHurtboxCylinder);
+            itemCylinder.DropDownItems.Add(itemEffectiveHurtboxCylinder);
+            itemCylinder.DropDownItems.Add(itemPushHitboxCylinder);
+            itemCylinder.DropDownItems.Add(itemCustomCylinder);
+
+            ToolStripMenuItem itemSphere = new ToolStripMenuItem("Sphere...");
+            itemSphere.DropDownItems.Add(itemTangibilitySphere);
+            itemSphere.DropDownItems.Add(itemDrawDistanceSphere);
+            itemSphere.DropDownItems.Add(itemCustomSphere);
+
+            ToolStripMenuItem itemHomeContainer = new ToolStripMenuItem("Home...");
+            itemHomeContainer.DropDownItems.Add(itemHome);
+            itemHomeContainer.DropDownItems.Add(itemCustomCylinderForHome);
+            itemHomeContainer.DropDownItems.Add(itemCustomSphereForHome);
+
+            ToolStripMenuItem itemTriangles = new ToolStripMenuItem("Triangles...");
+            itemTriangles.DropDownItems.Add(itemFloorTriangles);
+            itemTriangles.DropDownItems.Add(itemWallTriangles);
+            itemTriangles.DropDownItems.Add(itemCeilingTriangles);
+
+            ToolStripMenuItem itemArrow = new ToolStripMenuItem("Arrow...");
+            itemArrow.DropDownItems.Add(itemMarioFacingArrow);
+            itemArrow.DropDownItems.Add(itemMarioMovingArrow);
+            itemArrow.DropDownItems.Add(itemMarioIntendedArrow);
+            itemArrow.DropDownItems.Add(itemMarioSlidingArrow);
+            itemArrow.DropDownItems.Add(itemMarioTwirlArrow);
+            itemArrow.DropDownItems.Add(itemMarioFloorArrow);
+            itemArrow.DropDownItems.Add(new ToolStripSeparator());
+            itemArrow.DropDownItems.Add(itemObjectFacingArrow);
+            itemArrow.DropDownItems.Add(itemObjectMovingArrow);
+            itemArrow.DropDownItems.Add(itemObjectGraphicsArrow);
+            itemArrow.DropDownItems.Add(itemObjectAngleToMarioArrow);
+            itemArrow.DropDownItems.Add(itemObjectCustomArrow);
+            itemArrow.DropDownItems.Add(new ToolStripSeparator());
+            itemArrow.DropDownItems.Add(itemSwooperTargetArrow);
+            itemArrow.DropDownItems.Add(new ToolStripSeparator());
+            itemArrow.DropDownItems.Add(itemCustomPositionAngleArrow);
+
+            ToolStripMenuItem itemMisc = new ToolStripMenuItem("Misc...");
+            itemMisc.DropDownItems.Add(itemCurrentUnit);
+            itemMisc.DropDownItems.Add(itemCurrentCell);
+            itemMisc.DropDownItems.Add(itemAngleRange);
+            itemMisc.DropDownItems.Add(itemSector);
+            itemMisc.DropDownItems.Add(itemFacingDivider);
+            itemMisc.DropDownItems.Add(itemHomeLine);
+            itemMisc.DropDownItems.Add(itemPath);
+            itemMisc.DropDownItems.Add(itemBranchPath);
+
+            ToolStripMenuItem itemObjectSpecific = new ToolStripMenuItem("Object Specific...");
             itemObjectSpecific.DropDownItems.Add(itemCoffinBox);
             itemObjectSpecific.DropDownItems.Add(itemChuckyaMapObjects);
 
             pictureBoxPlus.ContextMenuStrip = new ContextMenuStrip();
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemHitboxCylinder);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemEffectiveHitboxCylinder);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemHurtboxCylinder);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemEffectiveHurtboxCylinder);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemPushHitboxCylinder);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemTangibilitySphere);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemDrawDistanceSphere);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemCustomCylinder);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemCustomSphere);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemHome);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemCustomCylinderForHome);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemCustomSphereForHome);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemFloorTriangles);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemWallTriangles);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemCeilingTriangles);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemCylinder);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemSphere);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemHomeContainer);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemTriangles);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemArrow);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemCurrentUnit);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemCurrentCell);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemAngleRange);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemSector);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemFacingDivider);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemHomeLine);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemPath);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(itemBranchPath);
-            pictureBoxPlus.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemMisc);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemObjectSpecific);
+
             pictureBoxPlus.Click += (sender, e) => pictureBoxPlus.ContextMenuStrip.Show(Cursor.Position);
         }
 
