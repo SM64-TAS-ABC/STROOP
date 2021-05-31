@@ -1,4 +1,5 @@
 ﻿using STROOP.Controls;
+using STROOP.Forms;
 using STROOP.Managers;
 using STROOP.Structs.Configurations;
 using System;
@@ -23,6 +24,7 @@ namespace STROOP.Structs
 
         private readonly ToolStripMenuItem _itemRemoveAllLocks;
         private readonly ToolStripMenuItem _itemDisableLocking;
+        private readonly ToolStripMenuItem _itemSeeLockInfo;
 
         public WatchVariableLockManager(PictureBox pictureBoxLock)
         {
@@ -39,6 +41,10 @@ namespace STROOP.Structs
             _itemDisableLocking = new ToolStripMenuItem("Disable Locking");
             _itemDisableLocking.Click += (sender, e) => LockConfig.LockingDisabled = !LockConfig.LockingDisabled;
             _pictureBoxLock.ContextMenuStrip.Items.Add(_itemDisableLocking);
+
+            _itemSeeLockInfo = new ToolStripMenuItem("See Lock Info");
+            _itemSeeLockInfo.Click += (sender, e) => SeeLockInfo();
+            _pictureBoxLock.ContextMenuStrip.Items.Add(_itemSeeLockInfo);
         }
 
         public void AddLocks(WatchVariable variable, List<uint> addresses = null)
@@ -204,6 +210,17 @@ namespace STROOP.Structs
                     return LockBlackOpen;
                 }
             }
+        }
+
+        private void SeeLockInfo()
+        {
+            List<string> lines = new List<string>();
+            lines.Add(WatchVariableLock.GetHeaderLine());
+            foreach (WatchVariableLock lok in _lockList)
+            {
+                lines.Add(lok.ToString());
+            }
+            InfoForm.ShowValue(string.Join("\r\n", lines), "Lock Info", "Lock Info");
         }
 
         public void Update()

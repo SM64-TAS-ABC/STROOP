@@ -108,5 +108,36 @@ namespace STROOP.Controls
                 unchecked((int)Address);
         }
 
+        public static string GetHeaderLine()
+        {
+            List<object> info = new List<object>()
+            {
+                "IsSpecial",
+                "MemoryType",
+                "ByteCount",
+                "Mask",
+                "Shift",
+                "Address",
+                "BaseAddress",
+                "SpecialType",
+            };
+            return string.Join("\t", info);
+        }
+
+        public override string ToString()
+        {
+            List<object> info = new List<object>()
+            {
+                IsSpecial,
+                MemoryType,
+                ByteCount,
+                Mask.HasValue ? (object)HexUtilities.FormatValue(Mask.Value) : Mask,
+                Shift,
+                HexUtilities.FormatValue(Address),
+                HexUtilities.FormatValue(BaseAddress),
+                SpecialType,
+            };
+            return string.Join("\t", info);
+        }
     }
 }
