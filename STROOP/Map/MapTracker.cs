@@ -25,7 +25,12 @@ namespace STROOP.Map
         private readonly List<MapObject> _mapObjectList;
         private readonly List<MapSemaphore> _semaphoreList;
 
+        private MapTrackerIconType _iconType;
         private List<Image> _images;
+
+        private ToolStripMenuItem _itemUseTopDownImage = new ToolStripMenuItem("Use Top Down Image");
+        private ToolStripMenuItem _itemUseObjectSlotImage = new ToolStripMenuItem("Use Object Slot Image");
+        private ToolStripMenuItem _itemUseCustomImage = new ToolStripMenuItem("Use Custom Image");
 
         private bool _isVisible;
         private MapTrackerVisibilityType _currentVisiblityType;
@@ -49,44 +54,21 @@ namespace STROOP.Map
             _mapObjectList = new List<MapObject>(mapObjectList);
             _semaphoreList = new List<MapSemaphore>(semaphoreList);
 
+            _iconType = MapTrackerIconType.TopDownImage;
             _images = new List<Image>();
 
             _isVisible = true;
             _currentVisiblityType = MapTrackerVisibilityType.VisibleWhenLoaded;
 
             pictureBoxPicture.ContextMenuStrip = new ContextMenuStrip();
-            ToolStripMenuItem itemUseTopDownImage = new ToolStripMenuItem("Use Top Down Image");
-            ToolStripMenuItem itemUseObjectSlotImage = new ToolStripMenuItem("Use Object Slot Image");
-            ToolStripMenuItem itemUseCustomImage = new ToolStripMenuItem("Use Custom Image");
-            List<ToolStripMenuItem> pictureBoxItems = new List<ToolStripMenuItem>()
-            {
-                itemUseTopDownImage, itemUseObjectSlotImage, itemUseCustomImage
-            };
-            itemUseTopDownImage.Click += (sender, e) =>
-            {
-                _mapObjectList.ForEach(mapObj => mapObj.SetIconType(MapTrackerIconType.TopDownImage));
-                pictureBoxItems.ForEach(item => item.Checked = item == itemUseTopDownImage);
-            };
-            itemUseObjectSlotImage.Click += (sender, e) =>
-            {
-                _mapObjectList.ForEach(mapObj => mapObj.SetIconType(MapTrackerIconType.ObjectSlotImage));
-                pictureBoxItems.ForEach(item => item.Checked = item == itemUseObjectSlotImage);
-            };
-            itemUseCustomImage.Click += (sender, e) =>
-            {
-                List<Image> images = DialogUtilities.GetImages();
-                if (images == null || images.Count == 0) return;
-                for (int i = 0; i < _mapObjectList.Count; i++)
-                {
-                    _mapObjectList[i].SetIconType(
-                        MapTrackerIconType.CustomImage, images[i % images.Count]);
-                }
-                pictureBoxItems.ForEach(item => item.Checked = item == itemUseCustomImage);
-            };
-            itemUseTopDownImage.Checked = true;
-            pictureBoxPicture.ContextMenuStrip.Items.Add(itemUseTopDownImage);
-            pictureBoxPicture.ContextMenuStrip.Items.Add(itemUseObjectSlotImage);
-            pictureBoxPicture.ContextMenuStrip.Items.Add(itemUseCustomImage);
+            pictureBoxPicture.ContextMenuStrip.Items.Add(_itemUseTopDownImage);
+            pictureBoxPicture.ContextMenuStrip.Items.Add(_itemUseObjectSlotImage);
+            pictureBoxPicture.ContextMenuStrip.Items.Add(_itemUseCustomImage);
+
+            _itemUseTopDownImage.Click += (sender, e) => SetIconTypeTopDownImage();
+            _itemUseObjectSlotImage.Click += (sender, e) => SetIconTypeObjectSlotImage();
+            _itemUseCustomImage.Click += (sender, e) => SetIconTypeCustomImage();
+            _itemUseTopDownImage.Checked = true;
 
             _customName = null;
             textBoxName.AddEnterAction(() => _customName = textBoxName.Text);
@@ -794,6 +776,40 @@ namespace STROOP.Map
             pictureBoxPlus.Click += (sender, e) => pictureBoxPlus.ContextMenuStrip.Show(Cursor.Position);
         }
 
+        private void SetIconTypeTopDownImage()
+        {
+            _iconType = MapTrackerIconType.TopDownImage;
+            _mapObjectList.ForEach(mapObj => mapObj.SetIconType(MapTrackerIconType.TopDownImage));
+            _itemUseTopDownImage.Checked = true;
+            _itemUseObjectSlotImage.Checked = false;
+            _itemUseCustomImage.Checked = false;
+        }
+
+        private void SetIconTypeObjectSlotImage()
+        {
+            _iconType = MapTrackerIconType.ObjectSlotImage;
+            _mapObjectList.ForEach(mapObj => mapObj.SetIconType(MapTrackerIconType.ObjectSlotImage));
+            _itemUseTopDownImage.Checked = false;
+            _itemUseObjectSlotImage.Checked = true;
+            _itemUseCustomImage.Checked = false;
+        }
+
+        private void SetIconTypeCustomImage()
+        {
+            _iconType = MapTrackerIconType.CustomImage;
+            List<(Image image, string path)> data = DialogUtilities.GetImagesAndPaths();
+            if (data == null || data.Count == 0) return;
+            for (int i = 0; i < _mapObjectList.Count; i++)
+            {
+                (Image image, string path) = data[i % data.Count];
+                _mapObjectList[i].SetIconType(
+                    MapTrackerIconType.CustomImage, image, path);
+            }
+            _itemUseTopDownImage.Checked = false;
+            _itemUseObjectSlotImage.Checked = false;
+            _itemUseCustomImage.Checked = true;
+        }
+
         public bool ContainsMapObject(MapObject mapObject)
         {
             return _mapObjectList.Contains(mapObject);
@@ -1041,6 +1057,7 @@ namespace STROOP.Map
         public XElement ToXElement()
         {
             XElement xElement = new XElement("MapTracker");
+            xElement.Add(new XAttribute("iconType", _iconType));
             if (_customName != null)
             {
                 xElement.Add(new XAttribute("customName", _customName));

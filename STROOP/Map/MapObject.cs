@@ -79,19 +79,21 @@ namespace STROOP.Map
 
         public abstract string GetName();
 
-        protected Image _customImage = null;
-        protected int? _customImageTex = null;
+        public Image _customImage = null;
+        public string _customImagePath = null;
+        public int? _customImageTex = null;
         public abstract Image GetInternalImage();
         public Image GetImage() { return _customImage ?? GetInternalImage(); }
 
         protected MapTrackerIconType _iconType = MapTrackerIconType.TopDownImage;
-        public virtual void SetIconType(MapTrackerIconType iconType, Image image = null)
+        public virtual void SetIconType(MapTrackerIconType iconType, Image image = null, string path = null)
         {
             if ((iconType == MapTrackerIconType.CustomImage) != (image != null))
                 throw new ArgumentOutOfRangeException();
 
             _iconType = iconType;
             _customImage = image;
+            _customImagePath = path;
 
             if (_customImage != null)
             {
