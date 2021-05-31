@@ -1041,6 +1041,10 @@ namespace STROOP.Map
         public XElement ToXElement()
         {
             XElement xElement = new XElement("MapTracker");
+            if (_customName != null)
+            {
+                xElement.Add(new XAttribute("customName", _customName));
+            }
             xElement.Add(new XAttribute("size", _mapObjectList[0].Size));
             xElement.Add(new XAttribute("opacity", _mapObjectList[0].OpacityPercent));
             xElement.Add(new XAttribute("lineWidth", _mapObjectList[0].LineWidth));
@@ -1048,7 +1052,10 @@ namespace STROOP.Map
             xElement.Add(new XAttribute("visibilityType", comboBoxVisibilityType.SelectedItem));
             xElement.Add(new XAttribute("color", ColorUtilities.ConvertColorToParams(_mapObjectList[0].Color)));
             xElement.Add(new XAttribute("lineColor", ColorUtilities.ConvertColorToParams(_mapObjectList[0].LineColor)));
-            xElement.Add(new XAttribute("customRotates", (object)_mapObjectList[0].CustomRotates ?? ""));
+            if (_mapObjectList[0].CustomRotates.HasValue)
+            {
+                xElement.Add(new XAttribute("customRotates", _mapObjectList[0].CustomRotates.Value));
+            }
             xElement.Add(new XAttribute("scales", _mapObjectList[0].Scales));
             xElement.Add(new XAttribute("isVisible", _isVisible));
             foreach (MapObject mapObj in _mapObjectList)
@@ -1063,6 +1070,11 @@ namespace STROOP.Map
             List<XElement> subElements = xElement.Elements().ToList();
             List<MapObject> mapObjs = subElements.ConvertAll(el => MapObject.FromXElement(el));
             MapTracker tracker = new MapTracker(mapObjs);
+            string customName = xElement.Attribute(XName.Get("customName"))?.Value;
+            if (customName != null)
+            {
+                tracker._customName = customName;
+            }
             tracker.SetSize(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("size")).Value));
             tracker.SetOpacity(ParsingUtilities.ParseIntNullable(xElement.Attribute(XName.Get("opacity")).Value));
             tracker.SetLineWidth(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("lineWidth")).Value));
@@ -1070,7 +1082,11 @@ namespace STROOP.Map
             tracker.comboBoxVisibilityType.SelectedItem = Enum.Parse(typeof(MapTrackerVisibilityType), xElement.Attribute(XName.Get("visibilityType")).Value);
             tracker.SetColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("color")).Value));
             tracker.SetLineColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("lineColor")).Value));
-            tracker.SetCustomRotates(ParsingUtilities.ParseBoolNullable(xElement.Attribute(XName.Get("customRotates")).Value));
+            bool? customRotates = ParsingUtilities.ParseBoolNullable(xElement.Attribute(XName.Get("customRotates"))?.Value);
+            if (customRotates.HasValue)
+            {
+                tracker.SetCustomRotates(customRotates.Value);
+            }
             tracker.SetScales(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("scales")).Value));
             tracker.SetIsVisible(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisible")).Value));
             return tracker;
