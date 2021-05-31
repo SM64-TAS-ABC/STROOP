@@ -776,6 +776,24 @@ namespace STROOP.Map
             pictureBoxPlus.Click += (sender, e) => pictureBoxPlus.ContextMenuStrip.Show(Cursor.Position);
         }
 
+        private void SetIconType(MapTrackerIconType iconType, List<string> paths = null)
+        {
+            switch (iconType)
+            {
+                case MapTrackerIconType.TopDownImage:
+                    SetIconTypeTopDownImage();
+                    break;
+                case MapTrackerIconType.ObjectSlotImage:
+                    SetIconTypeObjectSlotImage();
+                    break;
+                case MapTrackerIconType.CustomImage:
+                    SetIconTypeCustomImage(paths);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         private void SetIconTypeTopDownImage()
         {
             _iconType = MapTrackerIconType.TopDownImage;
@@ -794,10 +812,18 @@ namespace STROOP.Map
             _itemUseCustomImage.Checked = false;
         }
 
-        private void SetIconTypeCustomImage()
+        private void SetIconTypeCustomImage(List<string> paths = null)
         {
             _iconType = MapTrackerIconType.CustomImage;
-            List<(Image image, string path)> data = DialogUtilities.GetImagesAndPaths();
+            List<(Image image, string path)> data;
+            if (paths != null)
+            {
+                data = paths.ConvertAll(path => (Image.FromFile(path), path));
+            }
+            else
+            {
+                data = DialogUtilities.GetImagesAndPaths();
+            }
             if (data == null || data.Count == 0) return;
             for (int i = 0; i < _mapObjectList.Count; i++)
             {
@@ -1058,6 +1084,11 @@ namespace STROOP.Map
         {
             XElement xElement = new XElement("MapTracker");
             xElement.Add(new XAttribute("iconType", _iconType));
+            if (_iconType == MapTrackerIconType.CustomImage)
+            {
+                List<string> paths = _mapObjectList.ConvertAll(mapObj => mapObj._customImagePath);
+                xElement.Add(new XAttribute("paths", string.Join("|", paths)));
+            }
             if (_customName != null)
             {
                 xElement.Add(new XAttribute("customName", _customName));
@@ -1087,6 +1118,13 @@ namespace STROOP.Map
             List<XElement> subElements = xElement.Elements().ToList();
             List<MapObject> mapObjs = subElements.ConvertAll(el => MapObject.FromXElement(el));
             MapTracker tracker = new MapTracker(mapObjs);
+            MapTrackerIconType iconType = (MapTrackerIconType)Enum.Parse(typeof(MapTrackerIconType), xElement.Attribute(XName.Get("iconType")).Value);
+            List<string> paths = null;
+            if (iconType == MapTrackerIconType.CustomImage)
+            {
+                paths = xElement.Attribute(XName.Get("paths")).Value.Split('|').ToList();
+            }
+            tracker.SetIconType(iconType, paths);
             string customName = xElement.Attribute(XName.Get("customName"))?.Value;
             if (customName != null)
             {
