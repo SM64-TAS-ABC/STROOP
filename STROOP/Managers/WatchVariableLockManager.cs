@@ -13,7 +13,14 @@ namespace STROOP.Structs
 {
     public class WatchVariableLockManager
     {
-        private List<WatchVariableLock> _lockList = new List<WatchVariableLock>();
+        private readonly PictureBox _pictureBoxLock;
+        private readonly List<WatchVariableLock> _lockList;
+
+        public WatchVariableLockManager(PictureBox pictureBoxLock)
+        {
+            _pictureBoxLock = pictureBoxLock;
+            _lockList = new List<WatchVariableLock>();
+        }
 
         public void AddLocks(WatchVariable variable, List<uint> addresses = null)
         {
