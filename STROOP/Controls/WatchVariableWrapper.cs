@@ -30,8 +30,6 @@ namespace STROOP.Controls
         // Main items
         private ToolStripMenuItem _itemHighlight;
         private ToolStripMenuItem _itemLock;
-        private ToolStripMenuItem _itemRemoveAllLocks;
-        private ToolStripMenuItem _itemDisableAllLocks;
 
         // Custom items
         private ToolStripSeparator _separatorCustom;
@@ -119,12 +117,6 @@ namespace STROOP.Controls
             _itemLock = new ToolStripMenuItem("Lock");
             _itemLock.Click += (sender, e) => ToggleLocked(null, _watchVarControl.FixedAddressListGetter());
 
-            _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
-            _itemRemoveAllLocks.Click += (sender, e) => Config.LockManager.RemoveAllLocks();
-
-            _itemDisableAllLocks = new ToolStripMenuItem("Disable All Locks");
-            _itemDisableAllLocks.Click += (sender, e) => LockConfig.LockingDisabled = !LockConfig.LockingDisabled;
-
             ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy");
             itemCopyUnrounded.Click += (sender, e) =>
             {
@@ -137,8 +129,6 @@ namespace STROOP.Controls
 
             _contextMenuStrip.AddToBeginningList(_itemHighlight);
             _contextMenuStrip.AddToBeginningList(_itemLock);
-            _contextMenuStrip.AddToBeginningList(_itemRemoveAllLocks);
-            _contextMenuStrip.AddToBeginningList(_itemDisableAllLocks);
             _contextMenuStrip.AddToBeginningList(itemCopyUnrounded);
             _contextMenuStrip.AddToBeginningList(itemPaste);
         }
@@ -280,9 +270,6 @@ namespace STROOP.Controls
         {
             _itemHighlight.Checked = _watchVarControl.Highlighted;
             _itemLock.Checked = GetLockedBool(addresses);
-            _itemRemoveAllLocks.Visible = Config.LockManager.ContainsAnyLocks();
-            _itemDisableAllLocks.Visible = Config.LockManager.ContainsAnyLocks() || LockConfig.LockingDisabled;
-            _itemDisableAllLocks.Checked = LockConfig.LockingDisabled;
             _itemFixAddress.Checked = _watchVarControl.FixedAddressListGetter() != null;
         }
 

@@ -16,10 +16,24 @@ namespace STROOP.Structs
         private readonly PictureBox _pictureBoxLock;
         private readonly List<WatchVariableLock> _lockList;
 
+        private readonly ToolStripMenuItem _itemRemoveAllLocks;
+        private readonly ToolStripMenuItem _itemDisableLocking;
+
         public WatchVariableLockManager(PictureBox pictureBoxLock)
         {
             _pictureBoxLock = pictureBoxLock;
             _lockList = new List<WatchVariableLock>();
+
+            _pictureBoxLock.ContextMenuStrip = new ContextMenuStrip();
+            _pictureBoxLock.Click += (sender, e) => _pictureBoxLock.ContextMenuStrip.Show(Cursor.Position);
+
+            _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
+            _itemRemoveAllLocks.Click += (sender, e) => Config.LockManager.RemoveAllLocks();
+            _pictureBoxLock.ContextMenuStrip.Items.Add(_itemRemoveAllLocks);
+
+            _itemDisableLocking = new ToolStripMenuItem("Disable Locking");
+            _itemDisableLocking.Click += (sender, e) => LockConfig.LockingDisabled = !LockConfig.LockingDisabled;
+            _pictureBoxLock.ContextMenuStrip.Items.Add(_itemDisableLocking);
         }
 
         public void AddLocks(WatchVariable variable, List<uint> addresses = null)
@@ -163,6 +177,13 @@ namespace STROOP.Structs
 
         public void Update()
         {
+            _itemRemoveAllLocks.Text = string.Format(
+                "Remove {0} Lock{1}",
+                _lockList.Count,
+                _lockList.Count == 1 ? "" : "s");
+            _itemRemoveAllLocks.Enabled = _lockList.Count > 0;
+            _itemDisableLocking.Checked = LockConfig.LockingDisabled;
+
             if (LockConfig.LockingDisabled) return;
             bool shouldSuspend = _lockList.Count >= 2;
             if (shouldSuspend) Config.Stream.Suspend();
