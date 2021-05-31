@@ -129,7 +129,7 @@ namespace STROOP.Controls
             List<object> info = new List<object>()
             {
                 IsSpecial,
-                MemoryType,
+                MemoryType != null ? (object)TypeUtilities.TypeToString[MemoryType] : MemoryType,
                 ByteCount,
                 Mask.HasValue ? (object)HexUtilities.FormatValue(Mask.Value) : Mask,
                 Shift,
