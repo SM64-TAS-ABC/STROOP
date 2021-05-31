@@ -28,9 +28,9 @@ namespace STROOP.Structs
 
         public WatchVariableLockManager(PictureBox pictureBoxLock)
         {
-            _pictureBoxLock = pictureBoxLock;
             _lockList = new List<WatchVariableLock>();
 
+            _pictureBoxLock = pictureBoxLock;
             _pictureBoxLock.ContextMenuStrip = new ContextMenuStrip();
             _pictureBoxLock.Click += (sender, e) => _pictureBoxLock.ContextMenuStrip.Show(Cursor.Position);
 
@@ -45,6 +45,12 @@ namespace STROOP.Structs
             _itemSeeLockInfo = new ToolStripMenuItem("See Lock Info");
             _itemSeeLockInfo.Click += (sender, e) => SeeLockInfo();
             _pictureBoxLock.ContextMenuStrip.Items.Add(_itemSeeLockInfo);
+        }
+
+        // for tests
+        public WatchVariableLockManager()
+        {
+            _lockList = new List<WatchVariableLock>();
         }
 
         public void AddLocks(WatchVariable variable, List<uint> addresses = null)
