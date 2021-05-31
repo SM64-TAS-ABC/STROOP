@@ -659,7 +659,7 @@ namespace STROOP
                 _drawMarkedOverlay = _manager.MarkedSlotsAddressesDictionary.ContainsKey(address.Value) ?
                     _manager.MarkedSlotsAddressesDictionary[address.Value] : (int?)null;
 
-                if (WatchVariableLockManager.ContainsAnyLocksForObject(address.Value))
+                if (Config.LockManager.ContainsAnyLocksForObject(address.Value))
                 {
                     if (LockConfig.LockingDisabled)
                     {

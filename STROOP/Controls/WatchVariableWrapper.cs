@@ -120,7 +120,7 @@ namespace STROOP.Controls
             _itemLock.Click += (sender, e) => ToggleLocked(null, _watchVarControl.FixedAddressListGetter());
 
             _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
-            _itemRemoveAllLocks.Click += (sender, e) => WatchVariableLockManager.RemoveAllLocks();
+            _itemRemoveAllLocks.Click += (sender, e) => Config.LockManager.RemoveAllLocks();
 
             _itemDisableAllLocks = new ToolStripMenuItem("Disable All Locks");
             _itemDisableAllLocks.Click += (sender, e) => LockConfig.LockingDisabled = !LockConfig.LockingDisabled;
@@ -268,37 +268,37 @@ namespace STROOP.Controls
 
         public CheckState GetLockedCheckState(List<uint> addresses = null)
         {
-            return WatchVariableLockManager.ContainsLocksCheckState(WatchVar, addresses);
+            return Config.LockManager.ContainsLocksCheckState(WatchVar, addresses);
         }
 
         public bool GetLockedBool(List<uint> addresses = null)
         {
-            return WatchVariableLockManager.ContainsLocksBool(WatchVar, addresses);
+            return Config.LockManager.ContainsLocksBool(WatchVar, addresses);
         }
 
         public void UpdateItemCheckStates(List<uint> addresses = null)
         {
             _itemHighlight.Checked = _watchVarControl.Highlighted;
             _itemLock.Checked = GetLockedBool(addresses);
-            _itemRemoveAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
-            _itemDisableAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks() || LockConfig.LockingDisabled;
+            _itemRemoveAllLocks.Visible = Config.LockManager.ContainsAnyLocks();
+            _itemDisableAllLocks.Visible = Config.LockManager.ContainsAnyLocks() || LockConfig.LockingDisabled;
             _itemDisableAllLocks.Checked = LockConfig.LockingDisabled;
             _itemFixAddress.Checked = _watchVarControl.FixedAddressListGetter() != null;
         }
 
         public void ToggleLocked(bool? newLockedValueNullable, List<uint> addresses = null)
         {
-            bool currentLockedValue = WatchVariableLockManager.ContainsLocksBool(WatchVar, addresses);
+            bool currentLockedValue = Config.LockManager.ContainsLocksBool(WatchVar, addresses);
             bool newLockedValue = newLockedValueNullable ?? !currentLockedValue;
             if (newLockedValue == currentLockedValue) return;
 
             if (newLockedValue)
             {
-                WatchVariableLockManager.AddLocks(WatchVar, addresses);
+                Config.LockManager.AddLocks(WatchVar, addresses);
             }
             else
             {
-                WatchVariableLockManager.RemoveLocks(WatchVar, addresses);
+                Config.LockManager.RemoveLocks(WatchVar, addresses);
             }
         }
 

@@ -151,7 +151,7 @@ namespace STROOP.Controls
             List<uint> addressList = GetAddressList(addresses);
             List<object> realValues = addressList.ConvertAll(
                 address => _getterFunction(address));
-            List<object> lockValues = WatchVariableLockManager.GetExistingLockValues(this, addresses);
+            List<object> lockValues = Config.LockManager.GetExistingLockValues(this, addresses);
             if (lockValues == null) return realValues; // short circuit if locking is disabled
             if (lockValues.Count != realValues.Count) throw new ArgumentOutOfRangeException();
             List<object> returnValues = new List<object>();
@@ -176,7 +176,7 @@ namespace STROOP.Controls
 
             if (success)
             {
-                WatchVariableLockManager.UpdateLockValues(this, value, addresses);
+                Config.LockManager.UpdateLockValues(this, value, addresses);
             }
 
             return success;
@@ -200,7 +200,7 @@ namespace STROOP.Controls
 
             if (success)
             {
-                WatchVariableLockManager.UpdateLockValues(this, values, addresses);
+                Config.LockManager.UpdateLockValues(this, values, addresses);
             }
 
             return success;

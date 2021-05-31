@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace STROOP.Structs
 {
-    public static class WatchVariableLockManager
+    public class WatchVariableLockManager
     {
-        private static List<WatchVariableLock> _lockList = new List<WatchVariableLock>();
+        private List<WatchVariableLock> _lockList = new List<WatchVariableLock>();
 
-        public static void AddLocks(WatchVariable variable, List<uint> addresses = null)
+        public void AddLocks(WatchVariable variable, List<uint> addresses = null)
         {
             List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
             foreach (WatchVariableLock newLock in newLocks)
@@ -24,7 +24,7 @@ namespace STROOP.Structs
             }
         }
 
-        public static void RemoveLocks(WatchVariable variable, List<uint> addresses = null)
+        public void RemoveLocks(WatchVariable variable, List<uint> addresses = null)
         {
             List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
             foreach (WatchVariableLock newLock in newLocks)
@@ -33,12 +33,12 @@ namespace STROOP.Structs
             }
         }
 
-        public static bool ContainsLocksBool(WatchVariable variable, List<uint> addresses = null)
+        public bool ContainsLocksBool(WatchVariable variable, List<uint> addresses = null)
         {
             return ContainsLocksCheckState(variable, addresses) != CheckState.Unchecked;
         }
 
-        public static CheckState ContainsLocksCheckState(
+        public CheckState ContainsLocksCheckState(
             WatchVariable variable, List<uint> addresses = null)
         {
             if (!ContainsAnyLocks()) return CheckState.Unchecked;
@@ -56,7 +56,7 @@ namespace STROOP.Structs
             return firstCheckState;
         }
 
-        public static List<object> GetExistingLockValues(
+        public List<object> GetExistingLockValues(
             WatchVariable variable, List<uint> addresses = null)
         {
             if (LockConfig.LockingDisabled) return null;
@@ -72,7 +72,7 @@ namespace STROOP.Structs
             return returnValues;
         }
 
-        public static void UpdateLockValues(
+        public void UpdateLockValues(
             WatchVariable variable, object newValue, List<uint> addresses = null)
         {
             if (LockConfig.LockingDisabled) return;
@@ -90,7 +90,7 @@ namespace STROOP.Structs
             }
         }
 
-        public static void UpdateLockValues(
+        public void UpdateLockValues(
             WatchVariable variable, List<object> newValues, List<uint> addresses = null)
         {
             if (LockConfig.LockingDisabled) return;
@@ -110,7 +110,7 @@ namespace STROOP.Structs
             }
         }
 
-        public static object GetMemoryLockValue(
+        public object GetMemoryLockValue(
             uint address, Type type, uint? mask, int? shift)
         {
             if (LockConfig.LockingDisabled) return null;
@@ -125,7 +125,7 @@ namespace STROOP.Structs
             return null;
         }
 
-        public static void UpdateMemoryLockValue(
+        public void UpdateMemoryLockValue(
             object newValue, uint address, Type type, uint? mask, int? shift)
         {
             if (LockConfig.LockingDisabled) return;
@@ -139,22 +139,22 @@ namespace STROOP.Structs
             }
         }
 
-        public static void RemoveAllLocks()
+        public void RemoveAllLocks()
         {
             _lockList.Clear();
         }
 
-        public static bool ContainsAnyLocks()
+        public bool ContainsAnyLocks()
         {
             return _lockList.Count > 0;
         }
 
-        public static bool ContainsAnyLocksForObject(uint objAddress)
+        public bool ContainsAnyLocksForObject(uint objAddress)
         {
             return _lockList.Any(lok => lok.BaseAddress == objAddress);
         }
 
-        public static void Update()
+        public void Update()
         {
             if (LockConfig.LockingDisabled) return;
             bool shouldSuspend = _lockList.Count >= 2;

@@ -76,6 +76,7 @@ namespace STROOP.Structs.Configurations
         public static WarpManager WarpManager;
         public static SoundManager SoundManager;
         public static M64Manager M64Manager;
+        public static WatchVariableLockManager LockManager;
 
         public static List<IVariableAdder> GetVariableAdders()
         {

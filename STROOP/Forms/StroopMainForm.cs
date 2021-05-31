@@ -462,6 +462,7 @@ namespace STROOP
             Config.ScriptManager = new ScriptManager(@"Config/ScriptData.xml", tabPageScript, watchVariablePanelScript);
             Config.SoundManager = new SoundManager(tabPageSound);
             Config.WarpManager = new WarpManager(@"Config/WarpData.xml", tabPageWarp, watchVariablePanelWarp);
+            Config.LockManager = new WatchVariableLockManager();
 
             Config.DisassemblyManager = new DisassemblyManager(tabPageDisassembly);
             Config.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
@@ -641,7 +642,7 @@ namespace STROOP
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();
                 Config.HackManager.Update();
-                WatchVariableLockManager.Update();
+                Config.LockManager.Update();
                 TestUtilities.Update();
                 TriangleDataModel.ClearCache();
             }));
