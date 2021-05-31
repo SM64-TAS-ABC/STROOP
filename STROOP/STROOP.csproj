@@ -833,6 +833,9 @@
     <Compile Include="Forms\VariableViewerForm.Designer.cs">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\lock_blue_open.png" />
+    <None Include="Resources\lock_black_open.png" />
+    <None Include="Resources\lock_black.png" />
     <None Include="app.manifest" />
     <None Include="Mappings\MappingJP.map">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

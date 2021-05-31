@@ -13,6 +13,11 @@ namespace STROOP.Structs
 {
     public class WatchVariableLockManager
     {
+        private static readonly Image LockBlackClosed = Properties.Resources.lock_black;
+        private static readonly Image LockBlackOpen = Properties.Resources.lock_black_open;
+        private static readonly Image LockBlueClosed = Properties.Resources.lock_blue;
+        private static readonly Image LockBlueOpen = Properties.Resources.lock_blue_open;
+
         private readonly PictureBox _pictureBoxLock;
         private readonly List<WatchVariableLock> _lockList;
 
@@ -175,6 +180,32 @@ namespace STROOP.Structs
             return _lockList.Any(lok => lok.BaseAddress == objAddress);
         }
 
+        private Image GetImageForLock()
+        {
+            if (_lockList.Count > 0)
+            {
+                if (LockConfig.LockingDisabled)
+                {
+                    return LockBlueClosed;
+                }
+                else
+                {
+                    return LockBlackClosed;
+                }
+            }
+            else
+            {
+                if (LockConfig.LockingDisabled)
+                {
+                    return LockBlueOpen;
+                }
+                else
+                {
+                    return LockBlackOpen;
+                }
+            }
+        }
+
         public void Update()
         {
             _itemRemoveAllLocks.Text = string.Format(
@@ -183,6 +214,11 @@ namespace STROOP.Structs
                 _lockList.Count == 1 ? "" : "s");
             _itemRemoveAllLocks.Enabled = _lockList.Count > 0;
             _itemDisableLocking.Checked = LockConfig.LockingDisabled;
+            Image lockImage = GetImageForLock();
+            if (_pictureBoxLock.BackgroundImage != lockImage)
+            {
+                _pictureBoxLock.BackgroundImage = lockImage;
+            }
 
             if (LockConfig.LockingDisabled) return;
             bool shouldSuspend = _lockList.Count >= 2;
