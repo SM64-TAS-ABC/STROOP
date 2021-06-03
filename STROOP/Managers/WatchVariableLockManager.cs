@@ -235,7 +235,6 @@ namespace STROOP.Structs
                 "Remove {0} Lock{1}",
                 _lockList.Count,
                 _lockList.Count == 1 ? "" : "s");
-            _itemRemoveAllLocks.Enabled = _lockList.Count > 0;
             _itemDisableLocking.Checked = LockConfig.LockingDisabled;
             Image lockImage = GetImageForLock();
             if (_pictureBoxLock.BackgroundImage != lockImage)

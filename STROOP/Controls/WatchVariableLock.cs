@@ -120,6 +120,7 @@ namespace STROOP.Controls
                 "Address",
                 "BaseAddress",
                 "SpecialType",
+                "Value",
             };
             return string.Join("\t", info);
         }
@@ -136,6 +137,7 @@ namespace STROOP.Controls
                 HexUtilities.FormatValue(Address),
                 HexUtilities.FormatValue(BaseAddress),
                 SpecialType,
+                Value,
             };
             return string.Join("\t", info);
         }
