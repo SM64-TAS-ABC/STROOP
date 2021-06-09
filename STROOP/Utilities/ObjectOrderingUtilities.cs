@@ -83,7 +83,6 @@ namespace STROOP.Utilities
             }
             int objIndex2 = objIndex1 + (rightwards ? +1 : -1);
             uint objAddress2 = ObjectUtilities.GetObjectAddress(objIndex2);
-            Config.Print("Moving {0} to {1}, {2} to {3}", objIndex1, objIndex2, objAddress1, objAddress2);
 
             SwapAddresses(objAddress1, objAddress2, processGroups);
             SwapObjects(objAddress1, objAddress2, objectSnapshots);
