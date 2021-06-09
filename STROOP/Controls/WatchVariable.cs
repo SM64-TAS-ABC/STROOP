@@ -222,7 +222,7 @@ namespace STROOP.Controls
             for (int i = 0; i < values.Count; i++)
             {
                 locks.Add(new WatchVariableLock(
-                    Name, IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], baseAddressList[i], SpecialType, _setterFunction, values[i]));
+                    Name, BaseAddressType, IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], baseAddressList[i], SpecialType, _setterFunction, values[i]));
             }
             return locks;
         }
@@ -238,7 +238,7 @@ namespace STROOP.Controls
             for (int i = 0; i < addressList.Count; i++)
             {
                 locks.Add(new WatchVariableLock(
-                    Name, IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], baseAddressList[i], SpecialType, _setterFunction, null));
+                    Name, BaseAddressType, IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], baseAddressList[i], SpecialType, _setterFunction, null));
             }
             return locks;
         }
