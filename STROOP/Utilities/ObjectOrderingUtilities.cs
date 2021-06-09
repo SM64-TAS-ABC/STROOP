@@ -37,23 +37,25 @@ namespace STROOP.Utilities
         private static void Move_Memory(bool rightwards)
         {
             Config.Stream.Suspend();
-            List<ObjectDataModel> selectedObjects = Config.ObjectSlotsManager.SelectedObjects;
-            List<uint> selectedAddresses = selectedObjects.ConvertAll(obj => obj.Address);
-            selectedAddresses.Sort((uint objAddress1, uint objAddress2) =>
-            {
-                int multiplier = rightwards ? -1 : +1;
-                int diff = objAddress1.CompareTo(objAddress2);
-                return multiplier * diff;
-            });
             int multiplicity = KeyboardUtilities.GetCurrentlyInputtedNumber() ?? 1;
             List<List<uint>> processGroups = GetProcessGroups();
             Dictionary<uint, ObjectSnapshot> objectSnapshots = new Dictionary<uint, ObjectSnapshot>();
             for (int i = 0; i < multiplicity; i++)
             {
+                List<ObjectDataModel> selectedObjects = Config.ObjectSlotsManager.SelectedObjects;
+                List<uint> selectedAddresses = selectedObjects.ConvertAll(obj => obj.Address);
+                List<uint> newSelectedAddresses = new List<uint>();
+                selectedAddresses.Sort((uint objAddress1, uint objAddress2) =>
+                {
+                    int multiplier = rightwards ? -1 : +1;
+                    int diff = objAddress1.CompareTo(objAddress2);
+                    return multiplier * diff;
+                });
                 foreach (uint address in selectedAddresses)
                 {
-                    Move_Memory(address, rightwards, processGroups, objectSnapshots);
+                    Move_Memory(address, rightwards, processGroups, objectSnapshots, newSelectedAddresses);
                 }
+                Config.ObjectSlotsManager.SelectAddresses(newSelectedAddresses);
             }
             ApplyProcessGroups(processGroups);
             foreach (uint address in objectSnapshots.Keys)
@@ -64,7 +66,12 @@ namespace STROOP.Utilities
             Config.Stream.Resume();
         }
 
-        public static void Move_Memory(uint objAddressToMove, bool rightwards, List<List<uint>> processGroups, Dictionary<uint, ObjectSnapshot> objectSnapshots)
+        public static void Move_Memory(
+            uint objAddressToMove,
+            bool rightwards,
+            List<List<uint>> processGroups,
+            Dictionary<uint, ObjectSnapshot> objectSnapshots,
+            List<uint> newSelectedAddresses)
         {
             uint objAddress1 = objAddressToMove;
             int objIndex1 = ObjectUtilities.GetObjectIndex(objAddress1).Value;
@@ -75,6 +82,7 @@ namespace STROOP.Utilities
 
             SwapAddresses(objAddress1, objAddress2, processGroups);
             SwapObjects(objAddress1, objAddress2, objectSnapshots);
+            newSelectedAddresses.Add(objAddress2);
         }
 
         private static void SwapObjects(uint objAddress1, uint objAddress2, Dictionary<uint, ObjectSnapshot> objectSnapshots)

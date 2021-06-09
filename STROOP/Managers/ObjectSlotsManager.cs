@@ -133,6 +133,12 @@ namespace STROOP.Managers
             DoSlotClickUsingSpecifications(selectedSlot, click, shouldToggle, shouldExtendRange, tabDestination, markedColor);
         }
 
+        public void SelectAddresses(List<uint> addresses)
+        {
+            SelectedSlotsAddresses.Clear();
+            SelectedSlotsAddresses.AddRange(addresses);
+        }
+
         public void SelectSlotByAddress(uint address)
         {
             ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.CurrentObject.Address == address);
