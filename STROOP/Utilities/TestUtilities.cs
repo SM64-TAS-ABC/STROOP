@@ -1762,6 +1762,7 @@ namespace STROOP.Utilities
                         for (int i = 0; i < addresses.Count; i++)
                         {
                             WatchVariable watchVar = new WatchVariable(
+                                names[i],
                                 memoryTypeName: "short",
                                 specialType: null,
                                 baseAddressType: BaseAddressTypeEnum.Relative,

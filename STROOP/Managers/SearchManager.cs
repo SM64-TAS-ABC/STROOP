@@ -143,7 +143,9 @@ namespace STROOP.Managers
                 {
                     uint address = startAddress + (uint)(i * _memoryTypeSize);
                     string typeString = TypeUtilities.TypeToString[_memoryType];
+                    string name = typeString + " " + HexUtilities.FormatValue(address);
                     WatchVariable watchVar = new WatchVariable(
+                        name: name,
                         memoryTypeName: typeString,
                         specialType: null,
                         baseAddressType: BaseAddressTypeEnum.Relative,
@@ -156,7 +158,7 @@ namespace STROOP.Managers
                         shift: null,
                         handleMapping: true);
                     WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
-                        name: typeString + " " + HexUtilities.FormatValue(address),
+                        name: name,
                         watchVar: watchVar,
                         subclass: WatchVariableSubclass.Number,
                         backgroundColor: null,

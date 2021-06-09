@@ -119,6 +119,7 @@ namespace STROOP.Structs.Configurations
                 string typeString = TypeUtilities.TypeToString[type];
 
                 WatchVariable watchVar = new WatchVariable(
+                    name: name,
                     memoryTypeName: typeString,
                     specialType: null,
                     baseAddressType: BaseAddressTypeEnum.Relative,

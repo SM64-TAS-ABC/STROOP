@@ -16,6 +16,7 @@ namespace STROOP.Controls
 {
     public class WatchVariableLock
     {
+        public readonly string Name;
         public readonly bool IsSpecial;
         public readonly Type MemoryType;
         public readonly int? ByteCount;
@@ -29,6 +30,7 @@ namespace STROOP.Controls
         public object Value { get; private set; }
 
         public WatchVariableLock(
+            string name,
             bool isSpecial,
             Type memoryType,
             int? byteCount,
@@ -40,6 +42,7 @@ namespace STROOP.Controls
             Func<object, uint, bool> setterFunction,
             object value)
         {
+            Name = name;
             IsSpecial = isSpecial;
             MemoryType = memoryType;
             ByteCount = byteCount;
@@ -112,6 +115,7 @@ namespace STROOP.Controls
         {
             List<object> info = new List<object>()
             {
+                "Name",
                 "IsSpecial",
                 "MemoryType",
                 "ByteCount",
@@ -129,6 +133,7 @@ namespace STROOP.Controls
         {
             List<object> info = new List<object>()
             {
+                Name,
                 IsSpecial,
                 MemoryType != null ? (object)TypeUtilities.TypeToString[MemoryType] : MemoryType,
                 ByteCount,

@@ -16,6 +16,8 @@ namespace STROOP.Controls
 {
     public class WatchVariable
     {
+        public readonly string Name;
+
         public readonly string MemoryTypeName;
         public readonly Type MemoryType;
         public readonly int? ByteCount;
@@ -78,7 +80,7 @@ namespace STROOP.Controls
             return baseAddresses.ConvertAll(baseAddress => baseAddress + offset);
         }
 
-        public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
+        public WatchVariable(string name, string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
             uint? offsetUS, uint? offsetJP, uint? offsetSH, uint? offsetEU, uint? offsetDefault, uint? mask, int? shift, bool handleMapping)
         {
             if (offsetDefault.HasValue && (offsetUS.HasValue || offsetJP.HasValue || offsetSH.HasValue || offsetEU.HasValue))
@@ -104,6 +106,8 @@ namespace STROOP.Controls
                     throw new ArgumentOutOfRangeException("Special var cannot have mask");
                 }
             }
+
+            Name = name;
 
             BaseAddressType = baseAddressType;
 
@@ -218,7 +222,7 @@ namespace STROOP.Controls
             for (int i = 0; i < values.Count; i++)
             {
                 locks.Add(new WatchVariableLock(
-                    IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], baseAddressList[i], SpecialType, _setterFunction, values[i]));
+                    Name, IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], baseAddressList[i], SpecialType, _setterFunction, values[i]));
             }
             return locks;
         }
@@ -234,7 +238,7 @@ namespace STROOP.Controls
             for (int i = 0; i < addressList.Count; i++)
             {
                 locks.Add(new WatchVariableLock(
-                    IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], baseAddressList[i], SpecialType, _setterFunction, null));
+                    Name, IsSpecial, MemoryType, ByteCount, Mask, Shift, addressList[i], baseAddressList[i], SpecialType, _setterFunction, null));
             }
             return locks;
         }

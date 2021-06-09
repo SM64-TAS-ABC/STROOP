@@ -54,6 +54,7 @@ namespace STROOP.Controls
         {
             WatchVar =
                 new WatchVariable(
+                    name,
                     typeName,
                     specialType,
                     baseAddressType,
@@ -127,9 +128,11 @@ namespace STROOP.Controls
                 int.Parse(element.Attribute(XName.Get("shift")).Value) : (int?)null;
             bool handleMapping = (element.Attribute(XName.Get("handleMapping")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("handleMapping")).Value) : true;
+            string name = element.Value;
 
             WatchVar = 
                 new WatchVariable(
+                    name,
                     typeName,
                     specialType,
                     baseAddressType,
@@ -142,7 +145,7 @@ namespace STROOP.Controls
                     shift,
                     handleMapping);
 
-            Name = element.Value;
+            Name = name;
             Subclass = WatchVariableUtilities.GetSubclass(element.Attribute(XName.Get("subclass"))?.Value);
             GroupList = WatchVariableUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
             BackgroundColor = (element.Attribute(XName.Get("color")) != null) ?

@@ -243,8 +243,10 @@ namespace STROOP.Managers
             for (int i = 0; i < maxDoubleListCount; i++)
             {
                 string specialType = WatchVariableSpecialUtilities.AddSchedulerEntry(i);
+                string name = "Var " + (i + 1);
                 WatchVariable watchVariable =
                     new WatchVariable(
+                        name: name,
                         memoryTypeName: null,
                         specialType: specialType,
                         baseAddressType: BaseAddressTypeEnum.None,
@@ -258,7 +260,7 @@ namespace STROOP.Managers
                         handleMapping: true);
                 WatchVariableControlPrecursor precursor =
                     new WatchVariableControlPrecursor(
-                        name: "Var " + (i + 1),
+                        name: name,
                         watchVar: watchVariable,
                         subclass: WatchVariableSubclass.Number,
                         backgroundColor: ColorUtilities.GetColorFromString("Purple"),

@@ -262,9 +262,11 @@ namespace STROOP.Structs
                     WatchVariableControl control1 = controls[i];
                     WatchVariableControl control2 = controls[i + controls.Count / 2];
                     string specialType = WatchVariableSpecialUtilities.AddBinaryMathOperationEntry(control1, control2, operation);
+                    string name = string.Format("{0} {1} {2}", control1.VarName, MathOperationUtilities.GetSymbol(operation), control2.VarName);
 
                     WatchVariable watchVariable =
                         new WatchVariable(
+                            name: name,
                             memoryTypeName: null,
                             specialType: specialType,
                             baseAddressType: BaseAddressTypeEnum.None,
@@ -278,7 +280,7 @@ namespace STROOP.Structs
                             handleMapping: true);
                     WatchVariableControlPrecursor precursor =
                         new WatchVariableControlPrecursor(
-                            name: string.Format("{0} {1} {2}", control1.VarName, MathOperationUtilities.GetSymbol(operation), control2.VarName),
+                            name: name,
                             watchVar: watchVariable,
                             subclass: WatchVariableSubclass.Number,
                             backgroundColor: null,
@@ -298,8 +300,10 @@ namespace STROOP.Structs
                 List<WatchVariableControl> controls = getVars();
                 if (controls.Count == 0) return;
                 string specialType = WatchVariableSpecialUtilities.AddAggregateMathOperationEntry(controls, operation);
+                string name = operation.ToString();
                 WatchVariable watchVariable =
                     new WatchVariable(
+                        name: name,
                         memoryTypeName: null,
                         specialType: specialType,
                         baseAddressType: BaseAddressTypeEnum.None,
@@ -313,7 +317,7 @@ namespace STROOP.Structs
                         handleMapping: true);
                 WatchVariableControlPrecursor precursor =
                     new WatchVariableControlPrecursor(
-                        name: operation.ToString(),
+                        name: name,
                         watchVar: watchVariable,
                         subclass: WatchVariableSubclass.Number,
                         backgroundColor: null,
@@ -351,6 +355,7 @@ namespace STROOP.Structs
                         controls[3].VarName);
                 WatchVariable watchVariable =
                     new WatchVariable(
+                        name: name,
                         memoryTypeName: null,
                         specialType: specialType,
                         baseAddressType: BaseAddressTypeEnum.None,
@@ -385,9 +390,11 @@ namespace STROOP.Structs
                 {
                     WatchVariableControl control = controls[i];
                     string specialType = WatchVariableSpecialUtilities.AddRealTimeEntry(control);
+                    string name = string.Format("{0} Real Time", control.VarName);
 
                     WatchVariable watchVariable =
                         new WatchVariable(
+                            name: name,
                             memoryTypeName: null,
                             specialType: specialType,
                             baseAddressType: BaseAddressTypeEnum.None,
@@ -401,7 +408,7 @@ namespace STROOP.Structs
                             handleMapping: true);
                     WatchVariableControlPrecursor precursor =
                         new WatchVariableControlPrecursor(
-                            name: string.Format("{0} Real Time", control.VarName),
+                            name: name,
                             watchVar: watchVariable,
                             subclass: WatchVariableSubclass.String,
                             backgroundColor: null,
@@ -432,9 +439,11 @@ namespace STROOP.Structs
                 {
                     WatchVariableControl control = controls[i];
                     string specialType = WatchVariableSpecialUtilities.AddDereferencedEntry(control, typeString, offset);
+                    string name = string.Format("{0}{1} Deref", control.VarName, offset.HasValue ? " + " + HexUtilities.FormatValue(offset.Value) : "");
 
                     WatchVariable watchVariable =
                         new WatchVariable(
+                            name: name,
                             memoryTypeName: null,
                             specialType: specialType,
                             baseAddressType: BaseAddressTypeEnum.None,
@@ -448,7 +457,7 @@ namespace STROOP.Structs
                             handleMapping: true);
                     WatchVariableControlPrecursor precursor =
                         new WatchVariableControlPrecursor(
-                            name: string.Format("{0}{1} Deref", control.VarName, offset.HasValue ? " + " + HexUtilities.FormatValue(offset.Value) : ""),
+                            name: name,
                             watchVar: watchVariable,
                             subclass: WatchVariableSubclass.Number,
                             backgroundColor: null,

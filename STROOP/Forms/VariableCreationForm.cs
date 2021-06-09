@@ -65,6 +65,7 @@ namespace STROOP.Forms
                 baseAddressType != BaseAddressTypeEnum.None;
 
             WatchVariable watchVar = new WatchVariable(
+                name: name,
                 memoryTypeName: memoryType,
                 specialType: null,
                 baseAddressType: baseAddressType,

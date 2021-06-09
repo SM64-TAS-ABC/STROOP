@@ -154,6 +154,7 @@ namespace STROOP.Controls
                         string specialType = WatchVariableSpecialUtilities.AddDummyEntry(typeString);
                         WatchVariable watchVariable =
                             new WatchVariable(
+                                name: specialType,
                                 memoryTypeName: null,
                                 specialType: specialType,
                                 baseAddressType: BaseAddressTypeEnum.None,

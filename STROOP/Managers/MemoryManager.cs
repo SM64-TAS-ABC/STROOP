@@ -408,8 +408,10 @@ namespace STROOP.Managers
                     useObjAddress ? BaseAddressTypeEnum.Object : BaseAddressTypeEnum.Relative;
                 uint offset = useObjAddress ? (uint)ByteIndex : MemoryAddress; 
                 uint nameOffset = useRelativeName ? (uint)ByteIndex : MemoryAddress;
+                string name = typeString + " " + HexUtilities.FormatValue(nameOffset);
 
                 WatchVariable watchVar = new WatchVariable(
+                    name: name,
                     memoryTypeName: typeString,
                     specialType: null,
                     baseAddressType: baseAddressType,
@@ -422,7 +424,7 @@ namespace STROOP.Managers
                     shift: null,
                     handleMapping: true);
                 return new WatchVariableControlPrecursor(
-                    name: typeString + " " + HexUtilities.FormatValue(nameOffset),
+                    name: name,
                     watchVar: watchVar,
                     subclass: subclass,
                     backgroundColor: null,

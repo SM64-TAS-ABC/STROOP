@@ -282,6 +282,7 @@ namespace STROOP.Map
                     foreach ((string specialType, string varName, WatchVariableSubclass subclass) in varData)
                     {
                         WatchVariable watchVar = new WatchVariable(
+                            name: varName,
                             memoryTypeName: null,
                             specialType: specialType,
                             baseAddressType: BaseAddressTypeEnum.None,

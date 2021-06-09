@@ -128,6 +128,7 @@ namespace STROOP.Managers
             for (int i = 0; i < 6; i++)
             {
                 WatchVariable watchVar = new WatchVariable(
+                    name: names[i],
                     memoryTypeName: types[i],
                     specialType: null,
                     baseAddressType: BaseAddressTypeEnum.Relative,
