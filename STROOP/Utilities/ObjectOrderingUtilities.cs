@@ -39,14 +39,32 @@ namespace STROOP.Utilities
             Config.Stream.Suspend();
             List<ObjectDataModel> selectedObjects = Config.ObjectSlotsManager.SelectedObjects;
             List<uint> selectedAddresses = selectedObjects.ConvertAll(obj => obj.Address);
-            if (selectedAddresses.Count == 0) return;
-            uint objAddress = selectedAddresses[0];
+            selectedAddresses.Sort((uint objAddress1, uint objAddress2) =>
+            {
+                int multiplier = rightwards ? -1 : +1;
+                int diff = objAddress1.CompareTo(objAddress2);
+                return multiplier * diff;
+            });
+            int multiplicity = KeyboardUtilities.GetCurrentlyInputtedNumber() ?? 1;
             List<List<uint>> processGroups = GetProcessGroups();
-            Move_Memory(objAddress, rightwards, processGroups);
+            Dictionary<uint, ObjectSnapshot> objectSnapshots = new Dictionary<uint, ObjectSnapshot>();
+            for (int i = 0; i < multiplicity; i++)
+            {
+                foreach (uint address in selectedAddresses)
+                {
+                    Move_Memory(address, rightwards, processGroups, objectSnapshots);
+                }
+            }
+            ApplyProcessGroups(processGroups);
+            foreach (uint address in objectSnapshots.Keys)
+            {
+                ObjectSnapshot objectSnapshot = objectSnapshots[address];
+                objectSnapshot.Apply(address, false);
+            }
             Config.Stream.Resume();
         }
 
-        public static void Move_Memory(uint objAddressToMove, bool rightwards, List<List<uint>> processGroups)
+        public static void Move_Memory(uint objAddressToMove, bool rightwards, List<List<uint>> processGroups, Dictionary<uint, ObjectSnapshot> objectSnapshots)
         {
             uint objAddress1 = objAddressToMove;
             int objIndex1 = ObjectUtilities.GetObjectIndex(objAddress1).Value;
@@ -55,17 +73,16 @@ namespace STROOP.Utilities
             int objIndex2 = objIndex1 + (rightwards ? +1 : -1);
             uint objAddress2 = ObjectUtilities.GetObjectAddress(objIndex2);
 
-            SwapObjects(objAddress1, objAddress2);
             SwapAddresses(objAddress1, objAddress2, processGroups);
-            ApplyProcessGroups(processGroups);
+            SwapObjects(objAddress1, objAddress2, objectSnapshots);
         }
 
-        private static void SwapObjects(uint objAddress1, uint objAddress2)
+        private static void SwapObjects(uint objAddress1, uint objAddress2, Dictionary<uint, ObjectSnapshot> objectSnapshots)
         {
-            ObjectSnapshot obj1 = new ObjectSnapshot(objAddress1);
-            ObjectSnapshot obj2 = new ObjectSnapshot(objAddress2);
-            obj1.Apply(objAddress2, false);
-            obj2.Apply(objAddress1, false);
+            ObjectSnapshot obj1 = objectSnapshots.ContainsKey(objAddress1) ? objectSnapshots[objAddress1] : new ObjectSnapshot(objAddress1);
+            ObjectSnapshot obj2 = objectSnapshots.ContainsKey(objAddress2) ? objectSnapshots[objAddress2] : new ObjectSnapshot(objAddress2);
+            objectSnapshots[objAddress1] = obj2;
+            objectSnapshots[objAddress2] = obj1;
         }
 
         private static void SwapAddresses(uint objAddress1, uint objAddress2, List<List<uint>> processGroups)
@@ -190,7 +207,6 @@ namespace STROOP.Utilities
                 return multiplier * diff;
             });
             int multiplicity = KeyboardUtilities.GetCurrentlyInputtedNumber() ?? 1;
-
             List<List<uint>> processGroups = GetProcessGroups();
             for (int i = 0; i < multiplicity; i++)
             {
