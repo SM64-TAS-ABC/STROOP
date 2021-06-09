@@ -40,10 +40,9 @@ namespace STROOP.Utilities
             int multiplicity = KeyboardUtilities.GetCurrentlyInputtedNumber() ?? 1;
             List<List<uint>> processGroups = GetProcessGroups();
             Dictionary<uint, ObjectSnapshot> objectSnapshots = new Dictionary<uint, ObjectSnapshot>();
+            List<uint> selectedAddresses = Config.ObjectSlotsManager.SelectedObjects.ConvertAll(obj => obj.Address);
             for (int i = 0; i < multiplicity; i++)
             {
-                List<ObjectDataModel> selectedObjects = Config.ObjectSlotsManager.SelectedObjects;
-                List<uint> selectedAddresses = selectedObjects.ConvertAll(obj => obj.Address);
                 List<uint> newSelectedAddresses = new List<uint>();
                 selectedAddresses.Sort((uint objAddress1, uint objAddress2) =>
                 {
@@ -55,7 +54,8 @@ namespace STROOP.Utilities
                 {
                     Move_Memory(address, rightwards, processGroups, objectSnapshots, newSelectedAddresses);
                 }
-                Config.ObjectSlotsManager.SelectAddresses(newSelectedAddresses);
+                selectedAddresses.Clear();
+                selectedAddresses.AddRange(newSelectedAddresses);
             }
             ApplyProcessGroups(processGroups);
             foreach (uint address in objectSnapshots.Keys)
@@ -63,6 +63,7 @@ namespace STROOP.Utilities
                 ObjectSnapshot objectSnapshot = objectSnapshots[address];
                 objectSnapshot.Apply(address, false);
             }
+            Config.ObjectSlotsManager.SelectAddresses(selectedAddresses);
             Config.Stream.Resume();
         }
 
@@ -75,10 +76,14 @@ namespace STROOP.Utilities
         {
             uint objAddress1 = objAddressToMove;
             int objIndex1 = ObjectUtilities.GetObjectIndex(objAddress1).Value;
-            if (objIndex1 == 0 && !rightwards) return; ;
-            if (objIndex1 == ObjectSlotsConfig.MaxSlots - 1 && rightwards) return;
+            if ((objIndex1 == 0 && !rightwards) || (objIndex1 == ObjectSlotsConfig.MaxSlots - 1 && rightwards))
+            {
+                newSelectedAddresses.Add(objAddress1);
+                return;
+            }
             int objIndex2 = objIndex1 + (rightwards ? +1 : -1);
             uint objAddress2 = ObjectUtilities.GetObjectAddress(objIndex2);
+            Config.Print("Moving {0} to {1}, {2} to {3}", objIndex1, objIndex2, objAddress1, objAddress2);
 
             SwapAddresses(objAddress1, objAddress2, processGroups);
             SwapObjects(objAddress1, objAddress2, objectSnapshots);
