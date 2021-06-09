@@ -36,7 +36,59 @@ namespace STROOP.Utilities
 
         private static void Move_Memory(bool rightwards)
         {
-            // TODO
+            Config.Stream.Suspend();
+            List<ObjectDataModel> selectedObjects = Config.ObjectSlotsManager.SelectedObjects;
+            List<uint> selectedAddresses = selectedObjects.ConvertAll(obj => obj.Address);
+            if (selectedAddresses.Count == 0) return;
+            uint objAddress = selectedAddresses[0];
+            List<List<uint>> processGroups = GetProcessGroups();
+            Move_Memory(objAddress, rightwards, processGroups);
+            Config.Stream.Resume();
+        }
+
+        public static void Move_Memory(uint objAddressToMove, bool rightwards, List<List<uint>> processGroups)
+        {
+            uint objAddress1 = objAddressToMove;
+            int objIndex1 = ObjectUtilities.GetObjectIndex(objAddress1).Value;
+            if (objIndex1 == 0 && !rightwards) return; ;
+            if (objIndex1 == ObjectSlotsConfig.MaxSlots - 1 && rightwards) return;
+            int objIndex2 = objIndex1 + (rightwards ? +1 : -1);
+            uint objAddress2 = ObjectUtilities.GetObjectAddress(objIndex2);
+
+            SwapObjects(objAddress1, objAddress2);
+            SwapAddresses(objAddress1, objAddress2, processGroups);
+            ApplyProcessGroups(processGroups);
+        }
+
+        private static void SwapObjects(uint objAddress1, uint objAddress2)
+        {
+            ObjectSnapshot obj1 = new ObjectSnapshot(objAddress1);
+            ObjectSnapshot obj2 = new ObjectSnapshot(objAddress2);
+            obj1.Apply(objAddress2, false);
+            obj2.Apply(objAddress1, false);
+        }
+
+        private static void SwapAddresses(uint objAddress1, uint objAddress2, List<List<uint>> processGroups)
+        {
+            uint temp = uint.MaxValue;
+            SetAddressTo(objAddress1, temp, processGroups);
+            SetAddressTo(objAddress2, objAddress1, processGroups);
+            SetAddressTo(temp, objAddress2, processGroups);
+        }
+
+        private static void SetAddressTo(uint objAddress, uint replacement, List<List<uint>> processGroups)
+        {
+            for (int i = 0; i < processGroups.Count; i++)
+            {
+                List<uint> processGroup = processGroups[i];
+                for (int j = 0; j < processGroup.Count; j++)
+                {
+                    if (processGroup[j] == objAddress)
+                    {
+                        processGroup[j] = replacement;
+                    }
+                }
+            }
         }
 
         private static List<List<uint>> GetProcessGroups()
@@ -128,6 +180,7 @@ namespace STROOP.Utilities
 
         public static void Move_ProcessGroups(bool rightwards)
         {
+            Config.Stream.Suspend();
             List<ObjectDataModel> selectedObjects = Config.ObjectSlotsManager.SelectedObjects;
             List<uint> selectedAddresses = selectedObjects.ConvertAll(obj => obj.Address);
             selectedAddresses.Sort((uint objAddress1, uint objAddress2) =>
@@ -147,6 +200,7 @@ namespace STROOP.Utilities
                 }
             }
             ApplyProcessGroups(processGroups);
+            Config.Stream.Resume();
         }
 
         public static List<List<uint>> Move_ProcessGroups(uint objAddressToMove, bool rightwards, List<List<uint>> processGroups)
