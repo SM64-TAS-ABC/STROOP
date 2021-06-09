@@ -791,7 +791,7 @@ namespace STROOP
         {
             if (KeyboardUtilities.IsCtrlHeld() || KeyboardUtilities.IsNumberHeld())
             {
-                ObjectOrderingUtilities.Move(false);
+                ObjectOrderingUtilities.Move(false, (ObjectSlotsManager.SortMethodType)comboBoxSortMethod.SelectedItem);
             }
             else
             {
@@ -803,7 +803,7 @@ namespace STROOP
         {
             if (KeyboardUtilities.IsCtrlHeld() || KeyboardUtilities.IsNumberHeld())
             {
-                ObjectOrderingUtilities.Move(true);
+                ObjectOrderingUtilities.Move(true, (ObjectSlotsManager.SortMethodType)comboBoxSortMethod.SelectedItem);
             }
             else
             {

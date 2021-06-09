@@ -10,11 +10,34 @@ using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Forms;
 using STROOP.Models;
+using STROOP.Managers;
 
 namespace STROOP.Utilities
 {
     public static class ObjectOrderingUtilities
     {
+        public static void Move(bool rightwards, ObjectSlotsManager.SortMethodType sortMethodType)
+        {
+            switch (sortMethodType)
+            {
+                case ObjectSlotsManager.SortMethodType.ProcessingOrder:
+                    Move_ProcessGroups(rightwards);
+                    break;
+                case ObjectSlotsManager.SortMethodType.MemoryOrder:
+                    Move_Memory(rightwards);
+                    break;
+                case ObjectSlotsManager.SortMethodType.DistanceToMario:
+                    // do nothing
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private static void Move_Memory(bool rightwards)
+        {
+            // TODO
+        }
 
         private static List<List<uint>> GetProcessGroups()
         {
@@ -52,7 +75,7 @@ namespace STROOP.Utilities
             return processGroups;
         }
 
-        private static void Apply(List<List<uint>> processGroups)
+        private static void ApplyProcessGroups(List<List<uint>> processGroups)
         {
             // processed slots
             for (int i = 0; i < ObjectSlotsConfig.ProcessingGroups.Count; i++)
@@ -103,7 +126,7 @@ namespace STROOP.Utilities
             return -1;
         }
 
-        public static void Move(bool rightwards)
+        public static void Move_ProcessGroups(bool rightwards)
         {
             List<ObjectDataModel> selectedObjects = Config.ObjectSlotsManager.SelectedObjects;
             List<uint> selectedAddresses = selectedObjects.ConvertAll(obj => obj.Address);
@@ -120,13 +143,13 @@ namespace STROOP.Utilities
             {
                 foreach (uint address in selectedAddresses)
                 {
-                    processGroups = Move(address, rightwards, processGroups);
+                    processGroups = Move_ProcessGroups(address, rightwards, processGroups);
                 }
             }
-            Apply(processGroups);
+            ApplyProcessGroups(processGroups);
         }
 
-        public static List<List<uint>> Move(uint objAddressToMove, bool rightwards, List<List<uint>> processGroups)
+        public static List<List<uint>> Move_ProcessGroups(uint objAddressToMove, bool rightwards, List<List<uint>> processGroups)
         {
             int i = 0;
             int j = 0;
@@ -206,8 +229,7 @@ namespace STROOP.Utilities
         public static void Debug3()
         {
             List<List<uint>> processGroups = GetProcessGroups();
-            Apply(processGroups);
+            ApplyProcessGroups(processGroups);
         }
-
     }
 }
