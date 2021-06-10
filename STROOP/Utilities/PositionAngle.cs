@@ -560,15 +560,15 @@ namespace STROOP.Utilities
 
         public uint GetObjAddress()
         {
-            switch (PosAngleType)
+            if (IsObjectDependent())
             {
-                case PositionAngleTypeEnum.Obj:
-                    return Address.Value;
-                case PositionAngleTypeEnum.Mario:
-                    return Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
-                default:
-                    throw new ArgumentOutOfRangeException();
+                return Address.Value;
             }
+            if (PosAngleType == PositionAngleTypeEnum.Mario)
+            {
+                return Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
+            }
+            throw new ArgumentOutOfRangeException();
         }
 
         public uint? GetObjectAddressIfObjectDependent()
