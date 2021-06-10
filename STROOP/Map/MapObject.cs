@@ -150,7 +150,7 @@ namespace STROOP.Map
             PositionAngle posAngle = GetPositionAngle();
             if (posAngle == null) return null;
             if (!posAngle.IsObjectDependent()) return null;
-            uint objAddress = posAngle.GetObjectAddressIfObjectDependent().Value;
+            uint objAddress = posAngle.GetObjAddress();
             return new ObjectDataModel(objAddress, true);
         }
 

@@ -571,11 +571,6 @@ namespace STROOP.Utilities
             throw new ArgumentOutOfRangeException();
         }
 
-        public uint? GetObjectAddressIfObjectDependent()
-        {
-            return IsObjectDependent() ? Address : null;
-        }
-
         public bool IsSelfOrPoint()
         {
             return PosAngleType == PositionAngleTypeEnum.Self ||
