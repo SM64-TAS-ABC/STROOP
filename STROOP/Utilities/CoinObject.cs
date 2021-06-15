@@ -234,6 +234,14 @@ namespace STROOP.Utilities
             numCoins: 5,
             name: "Moneybag");
 
+        public static CoinObject MrBlizzard = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 3,
+            name: "Mr. Blizzard");
+
         public static CoinObject MrI = new CoinObject(
             hSpeedScale: 10,
             vSpeedScale: 10,
@@ -273,14 +281,6 @@ namespace STROOP.Utilities
             coinParamOrder: CoinParamOrder.VHA,
             numCoins: 3,
             name: "Skeeter");
-
-        public static CoinObject Snowman = new CoinObject(
-            hSpeedScale: 10,
-            vSpeedScale: 10,
-            vSpeedOffset: 50,
-            coinParamOrder: CoinParamOrder.VHA,
-            numCoins: 3,
-            name: "Snowman");
 
         public static CoinObject Snufit = new CoinObject(
             hSpeedScale: 10,
