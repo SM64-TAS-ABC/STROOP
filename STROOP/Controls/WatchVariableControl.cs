@@ -162,6 +162,7 @@ namespace STROOP.Controls
         private static readonly Image _someLockedImage = Properties.Resources.img_lock_grey;
         private static readonly Image _disabledLockImage = Properties.Resources.lock_blue;
         private static readonly Image _pinnedImage = Properties.Resources.img_pin;
+        private static readonly Image _readOnlyLock = Properties.Resources.lock_red;
 
         private bool _rightFlush;
 
@@ -594,8 +595,11 @@ namespace STROOP.Controls
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            if (image != null && LockConfig.LockingDisabled)
-                image = _disabledLockImage;
+            if (image != null)
+            {
+                if (Config.Stream.Readonly) image = _readOnlyLock;
+                else if (LockConfig.LockingDisabled) image = _disabledLockImage;
+            }
             return image;
         }
 
