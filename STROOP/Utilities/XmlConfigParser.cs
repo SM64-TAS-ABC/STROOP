@@ -251,7 +251,7 @@ namespace STROOP.Utilities
                 markedRedOverlayImagePath = "", markedOrangeOverlayImagePath = "", markedYellowOverlayImagePath = "", markedGreenOverlayImagePath = "",
                 markedLightBlueOverlayImagePath = "", markedBlueOverlayImagePath = "", markedPurpleOverlayImagePath = "", markedPinkOverlayImagePath = "",
                 markedGreyOverlayImagePath = "", markedWhiteOverlayImagePath = "", markedBlackOverlayImagePath = "",
-                lockedImagePath = "", lockDisabledImagePath = "",
+                lockedImagePath = "", lockDisabledImagePath = "", lockReadOnlyImagePath = "",
                 aggregatedPathImagePath = "", angleRangeImagePath = "", branchPathImagePath = "", coffinBoxImagePath = "",
                 compassImagePath = "", coordinateLabelsImagePath = "", facingDividerImagePath = "", homeLineImagePath = "",
                 ledgeGrabCheckerImagePath = "", lineSegmentImagePath = "", sectorImagePath = "", watersImagePath = "";
@@ -614,6 +614,10 @@ namespace STROOP.Utilities
                                 case "LockDisabled":
                                     lockDisabledImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
+
+                                case "LockReadOnly":
+                                    lockReadOnlyImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -794,6 +798,7 @@ namespace STROOP.Utilities
             objectSlotManagerGui.MarkedBlackObjectOverlayImage = Image.FromFile(overlayImageDir + markedBlackOverlayImagePath);
             objectSlotManagerGui.LockedOverlayImage = Image.FromFile(overlayImageDir + lockedImagePath);
             objectSlotManagerGui.LockDisabledOverlayImage = Image.FromFile(overlayImageDir + lockDisabledImagePath);
+            objectSlotManagerGui.LockReadOnlyOverlayImage = Image.FromFile(overlayImageDir + lockReadOnlyImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
             {

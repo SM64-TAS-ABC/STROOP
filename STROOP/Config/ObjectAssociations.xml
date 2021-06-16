@@ -252,6 +252,9 @@
     <LockDisabled>
       <OverlayImage path="LockDisabled.png"/>
     </LockDisabled>
+    <LockReadOnly>
+      <OverlayImage path="LockReadOnly.png"/>
+    </LockReadOnly>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <SpawnCode gfxId="0xD5"/>

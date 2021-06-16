@@ -77,7 +77,7 @@ namespace STROOP
             _drawFloorOverlay, _drawWallOverlay, _drawCeilingOverlay,
             _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawChildOverlay,
             _drawCollision1Overlay, _drawCollision2Overlay, _drawCollision3Overlay, _drawCollision4Overlay, _drawHitboxOverlapOverlay,
-            _drawLockedOverlay, _drawLockDisabledOverlay;
+            _drawLockedOverlay, _drawLockDisabledOverlay, _drawLockReadOnlyOverlay;
         int? _drawMarkedOverlay;
 
         public ObjectSlot(ObjectSlotsManager manager, int index, ObjectSlotManagerGui gui, Size size)
@@ -431,6 +431,7 @@ namespace STROOP
                 _drawMarkedOverlay,
                 _drawLockedOverlay,
                 _drawLockDisabledOverlay,
+                _drawLockReadOnlyOverlay,
             };
         }
 
@@ -592,6 +593,8 @@ namespace STROOP
                 e.Graphics.DrawImage(_gui.LockedOverlayImage, new Rectangle(new Point(), Size));
             if (_drawLockDisabledOverlay)
                 e.Graphics.DrawImage(_gui.LockDisabledOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawLockReadOnlyOverlay)
+                e.Graphics.DrawImage(_gui.LockReadOnlyOverlayImage, new Rectangle(new Point(), Size));
         }
 
         public void Update(ObjectDataModel obj)
@@ -661,21 +664,30 @@ namespace STROOP
 
                 if (Config.LockManager.ContainsAnyLocksForObject(address.Value))
                 {
-                    if (LockConfig.LockingDisabled)
+                    if (Config.Stream.Readonly)
+                    {
+                        _drawLockedOverlay = false;
+                        _drawLockDisabledOverlay = false;
+                        _drawLockReadOnlyOverlay = true;
+                    }
+                    else if (LockConfig.LockingDisabled)
                     {
                         _drawLockedOverlay = false;
                         _drawLockDisabledOverlay = true;
+                        _drawLockReadOnlyOverlay = false;
                     }
                     else
                     {
                         _drawLockedOverlay = true;
                         _drawLockDisabledOverlay = false;
+                        _drawLockReadOnlyOverlay = false;
                     }
                 }
                 else
                 {
                     _drawLockedOverlay = false;
                     _drawLockDisabledOverlay = false;
+                    _drawLockReadOnlyOverlay = false;
                 }
             }
             else
@@ -705,6 +717,7 @@ namespace STROOP
                 _drawMarkedOverlay = null;
                 _drawLockedOverlay = false;
                 _drawLockDisabledOverlay = false;
+                _drawLockReadOnlyOverlay = false;
             }
             List<object> overlays = GetCurrentOverlayValues();
 
