@@ -18,6 +18,8 @@ namespace STROOP.Structs
         private static readonly Image LockBlackOpen = Properties.Resources.lock_black_open;
         private static readonly Image LockBlueClosed = Properties.Resources.lock_blue;
         private static readonly Image LockBlueOpen = Properties.Resources.lock_blue_open;
+        private static readonly Image LockRedClosed = Properties.Resources.lock_red;
+        private static readonly Image LockRedOpen = Properties.Resources.lock_red_open;
 
         private readonly PictureBox _pictureBoxLock;
         private readonly List<WatchVariableLock> _lockList;
@@ -196,25 +198,15 @@ namespace STROOP.Structs
         {
             if (_lockList.Count > 0)
             {
-                if (LockConfig.LockingDisabled)
-                {
-                    return LockBlueClosed;
-                }
-                else
-                {
-                    return LockBlackClosed;
-                }
+                if (Config.Stream.Readonly) return LockRedClosed;
+                if (LockConfig.LockingDisabled) return LockBlueClosed;
+                return LockBlackClosed;
             }
             else
             {
-                if (LockConfig.LockingDisabled)
-                {
-                    return LockBlueOpen;
-                }
-                else
-                {
-                    return LockBlackOpen;
-                }
+                if (Config.Stream.Readonly) return LockRedOpen;
+                if (LockConfig.LockingDisabled) return LockBlueOpen;
+                return LockBlackOpen;
             }
         }
 
