@@ -47,7 +47,7 @@ namespace STROOP.Map
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(_tex, point, size, 0, Opacity);
+                MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, 0, Opacity);
             }
 
             if (LineWidth != 0)
@@ -81,7 +81,7 @@ namespace STROOP.Map
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(_tex, point, size, 0, Opacity);
+                MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, 0, Opacity);
             }
 
             if (LineWidth != 0)
@@ -122,7 +122,7 @@ namespace STROOP.Map
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                 GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Map3DVertex.Size),
                     vertices, BufferUsageHint.StaticDraw);
-                GL.BindTexture(TextureTarget.Texture2D, _tex);
+                GL.BindTexture(TextureTarget.Texture2D, _customImageTex ?? _tex);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                 Config.Map3DGraphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Triangles, 0, vertices.Length);
@@ -161,7 +161,7 @@ namespace STROOP.Map
 
         public Matrix4 GetModelMatrix(float x, float y, float z, float ang)
         {
-            Image image = Config.ObjectAssociations.MarioImage;
+            Image image = GetImage();
             SizeF _imageNormalizedSize = new SizeF(
                 image.Width >= image.Height ? 1.0f : (float)image.Width / image.Height,
                 image.Width <= image.Height ? 1.0f : (float)image.Height / image.Width);
