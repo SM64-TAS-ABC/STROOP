@@ -235,7 +235,8 @@ namespace STROOP.Utilities
 
             // Create Behavior-ImagePath list
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", overlayImageDir = "",
-                marioImagePath = "", holpMapImagePath = "", homeMapImagePath = "", intendedNextPositionImagePath = "", hudImagePath = "", debugImagePath = "",
+                marioImagePath = "", holpMapImagePath = "", greenHolpMapImagePath = "",
+                homeMapImagePath = "", intendedNextPositionImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 blueMarioMapImagePath = "", greenMarioMapImagePath = "", orangeMarioMapImagePath = "", purpleMarioMapImagePath = "", cameraFocusImagePath = "",
                 triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "", hitboxHackTrisImagePath = "",
@@ -316,6 +317,10 @@ namespace STROOP.Utilities
 
                     case "Holp":
                         holpMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "GreenHolp":
+                        greenHolpMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "BlueMario":
@@ -715,6 +720,7 @@ namespace STROOP.Utilities
             assoc.DebugImage = Image.FromFile(imageDir + debugImagePath);
             assoc.MiscImage = Image.FromFile(imageDir + miscImagePath);
             assoc.HolpImage = Image.FromFile(mapImageDir + holpMapImagePath);
+            assoc.GreenHolpImage = Image.FromFile(mapImageDir + greenHolpMapImagePath);
             assoc.HomeImage = Image.FromFile(mapImageDir + homeMapImagePath);
             assoc.IntendedNextPositionImage = Image.FromFile(mapImageDir + intendedNextPositionImagePath);
             assoc.CameraMapImage = Image.FromFile(mapImageDir + cameraMapImagePath);

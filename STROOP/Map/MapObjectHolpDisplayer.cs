@@ -25,7 +25,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.HolpImage;
+            return Config.ObjectAssociations.GreenHolpImage;
         }
 
         public override string GetName()
@@ -208,7 +208,7 @@ namespace STROOP.Map
             if (_tex == -1)
             {
                 _tex = MapUtilities.LoadTexture(
-                    Config.ObjectAssociations.HolpImage as Bitmap);
+                    Config.ObjectAssociations.GreenHolpImage as Bitmap);
             }
         }
 

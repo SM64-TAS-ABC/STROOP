@@ -15,6 +15,9 @@
   <Holp>
     <MapImage path="HOLP.png"/>
   </Holp>
+  <GreenHolp>
+    <MapImage path="HOLP Green.png"/>
+  </GreenHolp>
   <Home>
     <MapImage path="Home.png"/>
   </Home>
