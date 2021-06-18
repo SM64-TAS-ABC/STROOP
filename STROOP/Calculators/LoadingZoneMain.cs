@@ -14,7 +14,53 @@ namespace STROOP.Structs
 {
     public static class LoadingZoneMain
     {
+        public static Random r = new Random();
+
         public static void Run()
+        {
+            while (true)
+            {
+                List<int> loadingZoneFrames = GenerateRandomLoadingZoneFrames();
+                List<int> bubbleSpawnerMaxTimers = GenerateRandomBubbleSpawnerMaxTimers();
+                foreach (bool isBubbleSpawnerPresent in new List<bool>() { false, true })
+                {
+                    for (int numInitialBubbles = 6; numInitialBubbles <= 10; numInitialBubbles++)
+                    {
+                        bool success = Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
+                        if (success)
+                        {
+                            Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
+                            Config.Print("bubbleSpawnerMaxTimers = " + string.Join(",", bubbleSpawnerMaxTimers));
+                            Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
+                            Config.Print("numInitialBubbles = " + numInitialBubbles);
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        public static List<int> GenerateRandomLoadingZoneFrames()
+        {
+            List<int> loadingZoneFrames = new List<int>();
+            for (int i = 0; i < 15; i++)
+            {
+                loadingZoneFrames.Add(r.Next(2, 6));
+            }
+            return loadingZoneFrames;
+        }
+
+        public static List<int> GenerateRandomBubbleSpawnerMaxTimers()
+        {
+            List<int> bubbleSpawnerMaxTimers = new List<int>();
+            for (int i = 0; i < 15; i++)
+            {
+                bubbleSpawnerMaxTimers.Add(r.Next(2, 11));
+            }
+            return bubbleSpawnerMaxTimers;
+        }
+
+        public static void RunTest()
         {
             List<int> loadingZoneFrames = new List<int>() { 1, 2, 3, 3, 15 };
             List<int> bubbleSpawnerMaxTimers = new List<int>() { 10, 2, 3, 3, 9, 9 };
@@ -23,7 +69,7 @@ namespace STROOP.Structs
             Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
         }
 
-        public static void Simulate(
+        public static bool Simulate(
             List<int> loadingZoneFrames,
             List<int> bubbleSpawnerMaxTimers,
             bool isBubbleSpawnerPresent,
@@ -37,18 +83,19 @@ namespace STROOP.Structs
             FrameTracker frameTracker = new FrameTracker(loadingZoneFrames);
             BubbleTracker bubbleTracker = new BubbleTracker(bubbleSpawnerMaxTimers);
             ObjSlotManager objSlotManager = InitializeObjSlotManager(isBubbleSpawnerPresent, numInitialBubbles, bubbleTracker);
+            ObjSlot heldSlot = objSlotManager.FindSlot(ObjName.CHUCKYA);
 
-            void print()
-            {
-                Config.Print(
-                    "FRAME=" + (startFrame + frame) +
-                    " isTownLoaded=" + isTownLoaded +
-                    " numFramesAreaLoaded=" + numFramesAreaLoaded);
-                Config.Print(objSlotManager);
-                Config.Print();
-            }
+            //void print()
+            //{
+            //    Config.Print(
+            //        "FRAME=" + (startFrame + frame) +
+            //        " isTownLoaded=" + isTownLoaded +
+            //        " numFramesAreaLoaded=" + numFramesAreaLoaded);
+            //    Config.Print(objSlotManager);
+            //    Config.Print();
+            //}
 
-            print();
+            //print();
 
             while (true)
             {
@@ -67,10 +114,17 @@ namespace STROOP.Structs
                 }
                 objSlotManager.FrameAdvance();
 
-                print();
+                //print();
+
+                if (isTownLoaded && heldSlot.ObjName == ObjName.STAR)
+                {
+                    return true;
+                }
 
                 if (frame == 24) break;
             }
+
+            return false;
         }
 
         public static void PassThroughLoadingZone(ObjSlotManager objSlotManager, bool loadsTown)
@@ -309,6 +363,18 @@ namespace STROOP.Structs
                         Unload(bubbleSpawner);
                     }
                 }
+            }
+
+            public ObjSlot FindSlot(ObjName objName)
+            {
+                foreach (ObjSlotColor color in _colors)
+                {
+                    foreach (ObjSlot objSlot in _dictionary[color])
+                    {
+                        if (objSlot.ObjName == objName) return objSlot;
+                    }
+                }
+                return null;
             }
 
             public override string ToString()
