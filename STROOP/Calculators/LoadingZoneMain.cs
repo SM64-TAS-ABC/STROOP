@@ -85,6 +85,7 @@ namespace STROOP.Structs
             objSlotManager.UnloadColor(ObjSlotColor.BLUE);
             objSlotManager.UnloadColor(ObjSlotColor.PURPLE);
             objSlotManager.UnloadColor(ObjSlotColor.RED);
+            objSlotManager.UnloadColor(ObjSlotColor.ORANGE);
             objSlotManager.UnloadColor(ObjSlotColor.PINK);
             objSlotManager.UnloadColor(ObjSlotColor.BROWN);
         }
@@ -318,7 +319,7 @@ namespace STROOP.Structs
                 {
                     foreach (ObjSlot objSlot in _dictionary[color])
                     {
-                        //strings.Add(objSlot.ToString());
+                        strings.Add(objSlot.ToString());
                     }
                 }
                 return string.Join("\r\n", strings);
