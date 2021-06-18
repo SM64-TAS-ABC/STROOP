@@ -16,16 +16,16 @@ namespace STROOP.Structs
     {
         public static void Run()
         {
-            List<int> loadingZoneFrames = new List<int>() { 1, 2, 3, 3, 5, 4 };
-            List<int> bubbleSpawnerMaxFrames = new List<int>() { 10, 2, 3, 3, 9, 4 };
+            List<int> loadingZoneFrames = new List<int>() { 1, 2, 3, 3, 15 };
+            List<int> bubbleSpawnerMaxTimers = new List<int>() { 10, 2, 3, 3, 9, 9 };
             bool isBubbleSpawnerPresent = true;
             int numInitialBubbles = 7;
-            Simulate(loadingZoneFrames, bubbleSpawnerMaxFrames, isBubbleSpawnerPresent, numInitialBubbles);
+            Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
         }
 
         public static void Simulate(
             List<int> loadingZoneFrames,
-            List<int> bubbleSpawnerMaxFrames,
+            List<int> bubbleSpawnerMaxTimers,
             bool isBubbleSpawnerPresent,
             int numInitialBubbles)
         {
@@ -33,8 +33,10 @@ namespace STROOP.Structs
             int frame = 0;
             bool isTownLoaded = false;
             int numFramesAreaLoaded = 0;
-            ObjSlotManager objSlotManager = GetInitialObjSlotManager(isBubbleSpawnerPresent, numInitialBubbles);
+
             FrameTracker frameTracker = new FrameTracker(loadingZoneFrames);
+            BubbleTracker bubbleTracker = new BubbleTracker(bubbleSpawnerMaxTimers);
+            ObjSlotManager objSlotManager = InitializeObjSlotManager(isBubbleSpawnerPresent, numInitialBubbles, bubbleTracker);
 
             void print()
             {
@@ -63,6 +65,7 @@ namespace STROOP.Structs
                 {
                     LoadYellowCoins(objSlotManager);
                 }
+                objSlotManager.FrameAdvance();
 
                 print();
 
@@ -102,11 +105,12 @@ namespace STROOP.Structs
             }
         }
 
-        public static ObjSlotManager GetInitialObjSlotManager(
+        public static ObjSlotManager InitializeObjSlotManager(
             bool isBubbleSpawnerPresent,
-            int numInitialBubbles)
+            int numInitialBubbles,
+            BubbleTracker bubbleTracker)
         {
-            ObjSlotManager objSlotManager = new ObjSlotManager();
+            ObjSlotManager objSlotManager = new ObjSlotManager(bubbleTracker);
             int counter = 0;
             foreach (var data in initialObjData)
             {
@@ -219,17 +223,25 @@ namespace STROOP.Structs
 
         public class ObjSlotManager
         {
+            private readonly BubbleTracker _bubbleTracker;
             private readonly Dictionary<ObjSlotColor, List<ObjSlot>> _dictionary;
             private readonly List<ObjSlotColor> _colors;
 
-            public ObjSlotManager()
+            private int bubbleSpawnerMaxTimer;
+            private int bubbleSpawnerTimer;
+
+            public ObjSlotManager(BubbleTracker bubbleTracker)
             {
+                _bubbleTracker = bubbleTracker;
                 _dictionary = new Dictionary<ObjSlotColor, List<ObjSlot>>();
                 _colors = EnumUtilities.GetEnumValues<ObjSlotColor>(typeof(ObjSlotColor));
                 foreach (ObjSlotColor color in _colors)
                 {
                     _dictionary[color] = new List<ObjSlot>();
                 }
+
+                bubbleSpawnerMaxTimer = int.MaxValue;
+                bubbleSpawnerTimer = 0;
             }
 
             public void AddToEndOfList(ObjSlot objSlot)
@@ -262,24 +274,54 @@ namespace STROOP.Structs
                 unloadedSlots.RemoveAt(0);
                 objSlot.Apply(data);
                 AddToEndOfList(objSlot);
+
+                if (data.objName == ObjName.BUBBLE_SPAWNER)
+                {
+                    bubbleSpawnerMaxTimer = _bubbleTracker.GetNextMaxTimer();
+                    bubbleSpawnerTimer = 0;
+                }
+            }
+
+            public void Unload(ObjSlot objSlot)
+            {
+                List<ObjSlot> listToUnloadFrom = _dictionary[objSlot.Color];
+                listToUnloadFrom.Remove(objSlot);
+                objSlot.Color = ObjSlotColor.GREY;
+                AddToStartOfList(objSlot);
             }
 
             public void FrameAdvance()
             {
-
+                ObjSlot bubbleSpawner = _dictionary[ObjSlotColor.PURPLE].FirstOrDefault(
+                    objSlot => objSlot.ObjName == ObjName.BUBBLE_SPAWNER);
+                if (bubbleSpawner == null)
+                {
+                    Load((ObjName.BUBBLE_SPAWNER, ObjSlotColor.PURPLE));
+                    bubbleSpawnerTimer++;
+                }
+                else
+                {
+                    bubbleSpawnerTimer++;
+                    if (bubbleSpawnerTimer > bubbleSpawnerMaxTimer)
+                    {
+                        Load((ObjName.BUBBLE, ObjSlotColor.BROWN));
+                        Unload(bubbleSpawner);
+                    }
+                }
             }
 
             public override string ToString()
             {
-                List<ObjSlot> objSlots = new List<ObjSlot>();
+                List<string> strings = new List<string>();
+                strings.Add(string.Format("timer={0} maxTimer={1}", bubbleSpawnerTimer, bubbleSpawnerMaxTimer));
                 foreach (ObjSlotColor color in _colors)
                 {
                     foreach (ObjSlot objSlot in _dictionary[color])
                     {
-                        objSlots.Add(objSlot);
+                        //strings.Add(objSlot.ToString());
                     }
                 }
-                return string.Join("\r\n", objSlots);
+                return string.Join("\r\n", strings);
             }
         }
 
@@ -309,6 +351,25 @@ namespace STROOP.Structs
                     _isTownLoaded = !_isTownLoaded;
                     return _isTownLoaded;
                 }
+            }
+        }
+
+        public class BubbleTracker
+        {
+            private readonly List<int> _bubbleSpawnerMaxTimers;
+
+            public BubbleTracker(List<int> bubbleSpawnerMaxTimers)
+            {
+                _bubbleSpawnerMaxTimers = bubbleSpawnerMaxTimers;
+            }
+
+            public int GetNextMaxTimer()
+            {
+                if (_bubbleSpawnerMaxTimers.Count == 0) return int.MaxValue;
+
+                int firstValue = _bubbleSpawnerMaxTimers[0];
+                _bubbleSpawnerMaxTimers.RemoveAt(0);
+                return firstValue;
             }
         }
 
