@@ -30,21 +30,43 @@ namespace STROOP.Structs
             int numInitialBubbles)
         {
             int startFrame = 1905;
+            int frame = 0;
             bool isTownLoaded = false;
+            int numFramesAreaLoaded = 0;
             ObjSlotManager objSlotManager = GetInitialObjSlotManager(isBubbleSpawnerPresent, numInitialBubbles);
             FrameTracker frameTracker = new FrameTracker(loadingZoneFrames);
-            for (int frame = 0; frame < 25; frame++)
-            {
-                Config.Print("FRAME=" + (startFrame + frame) + " isTownLoaded=" + isTownLoaded);
-                //Config.Print(objSlotManager);
-                //Config.Print();
 
+            void print()
+            {
+                Config.Print(
+                    "FRAME=" + (startFrame + frame) +
+                    " isTownLoaded=" + isTownLoaded +
+                    " numFramesAreaLoaded=" + numFramesAreaLoaded);
+                Config.Print(objSlotManager);
+                Config.Print();
+            }
+
+            print();
+
+            while (true)
+            {
                 bool? shouldLoadTown = frameTracker.AdvanceFrame();
                 if (shouldLoadTown.HasValue)
                 {
                     PassThroughLoadingZone(objSlotManager, shouldLoadTown.Value);
                     isTownLoaded = shouldLoadTown.Value;
+                    numFramesAreaLoaded = 0;
                 }
+                frame++;
+                numFramesAreaLoaded++;
+                if (isTownLoaded && numFramesAreaLoaded == 2)
+                {
+                    LoadYellowCoins(objSlotManager);
+                }
+
+                print();
+
+                if (frame == 24) break;
             }
         }
 
@@ -69,6 +91,14 @@ namespace STROOP.Structs
             foreach (var data in objData)
             {
                 objSlotManager.Load(data);
+            }
+        }
+
+        public static void LoadYellowCoins(ObjSlotManager objSlotManager)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                objSlotManager.Load((ObjName.YELLOW_COIN, ObjSlotColor.BLUE));
             }
         }
 
