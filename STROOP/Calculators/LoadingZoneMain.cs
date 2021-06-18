@@ -49,9 +49,10 @@ namespace STROOP.Structs
         public static List<int> GenerateRandomLoadingZoneFrames()
         {
             List<int> loadingZoneFrames = new List<int>();
+            int max = r.Next(2, 12);
             for (int i = 0; i < 15; i++)
             {
-                loadingZoneFrames.Add(r.Next(2, 6));
+                loadingZoneFrames.Add(r.Next(2, max));
             }
             return loadingZoneFrames;
         }
