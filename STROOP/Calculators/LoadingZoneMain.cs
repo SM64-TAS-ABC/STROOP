@@ -27,10 +27,10 @@ namespace STROOP.Structs
                 {
                     for (int numInitialBubbles = 6; numInitialBubbles <= 10; numInitialBubbles++)
                     {
-                        (bool success, int result) = Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
+                        (bool success, int result, ObjName objName) = Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
                         if (!results.Contains(result))
                         {
-                            Config.Print(result);
+                            Config.Print(result + " " + objName);
                             results.Add(result);
                         }
                         if (success)
@@ -75,7 +75,7 @@ namespace STROOP.Structs
             Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
         }
 
-        public static (bool success, int result) Simulate(
+        public static (bool success, int result, ObjName objName) Simulate(
             List<int> loadingZoneFrames,
             List<int> bubbleSpawnerMaxTimers,
             bool isBubbleSpawnerPresent,
@@ -124,13 +124,13 @@ namespace STROOP.Structs
 
                 if (isTownLoaded && heldSlot.ObjName == ObjName.STAR)
                 {
-                    return (true, heldSlot.InitialIndex);
+                    return (true, heldSlot.InitialIndex, heldSlot.ObjName);
                 }
 
                 if (frame == 24) break;
             }
 
-            return (false, objSlotManager.GetCurrentSlotIndex(heldSlot));
+            return (false, objSlotManager.GetCurrentSlotIndex(heldSlot), heldSlot.ObjName);
         }
 
         public static void PassThroughLoadingZone(ObjSlotManager objSlotManager, bool loadsTown)
