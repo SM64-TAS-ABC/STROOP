@@ -18,6 +18,7 @@ namespace STROOP.Structs
 
         public static void Run()
         {
+            HashSet<int> results = new HashSet<int>();
             while (true)
             {
                 List<int> loadingZoneFrames = GenerateRandomLoadingZoneFrames();
@@ -26,7 +27,12 @@ namespace STROOP.Structs
                 {
                     for (int numInitialBubbles = 6; numInitialBubbles <= 10; numInitialBubbles++)
                     {
-                        bool success = Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
+                        (bool success, int result) = Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
+                        if (!results.Contains(result))
+                        {
+                            Config.Print(result);
+                            results.Add(result);
+                        }
                         if (success)
                         {
                             Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
@@ -69,7 +75,7 @@ namespace STROOP.Structs
             Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
         }
 
-        public static bool Simulate(
+        public static (bool success, int result) Simulate(
             List<int> loadingZoneFrames,
             List<int> bubbleSpawnerMaxTimers,
             bool isBubbleSpawnerPresent,
@@ -118,13 +124,13 @@ namespace STROOP.Structs
 
                 if (isTownLoaded && heldSlot.ObjName == ObjName.STAR)
                 {
-                    return true;
+                    return (true, heldSlot.InitialIndex);
                 }
 
                 if (frame == 24) break;
             }
 
-            return false;
+            return (false, objSlotManager.GetCurrentSlotIndex(heldSlot));
         }
 
         public static void PassThroughLoadingZone(ObjSlotManager objSlotManager, bool loadsTown)
@@ -375,6 +381,20 @@ namespace STROOP.Structs
                     }
                 }
                 return null;
+            }
+
+            public int GetCurrentSlotIndex(ObjSlot goalObjSlot)
+            {
+                int counter = 0;
+                foreach (ObjSlotColor color in _colors)
+                {
+                    foreach (ObjSlot objSlot in _dictionary[color])
+                    {
+                        if (objSlot == goalObjSlot) return counter;
+                        counter++;
+                    }
+                }
+                return -1;
             }
 
             public override string ToString()
