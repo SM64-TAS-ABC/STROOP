@@ -60,7 +60,7 @@ namespace STROOP.Structs
                 {
                     for (int numInitialBubbles = 5; numInitialBubbles <= 12; numInitialBubbles++)
                     {
-                        (bool success, int result, ObjName objName, int numTransitions) =
+                        (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
                             Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles, false);
                         if (!results.Contains(result))
                         {
@@ -70,6 +70,7 @@ namespace STROOP.Structs
                         if (success)
                         {
                             Config.Print("-------------------------------------");
+                            Config.Print("numFrames = " + numFrames);
                             Config.Print("numTransitions = " + numTransitions);
                             Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
                             Config.Print("bubbleSpawnerMaxTimers = " + string.Join(",", bubbleSpawnerMaxTimers));
@@ -112,7 +113,7 @@ namespace STROOP.Structs
             Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles, true);
         }
 
-        public static (bool success, int result, ObjName objName, int numTransitions) Simulate(
+        public static (bool success, int result, ObjName objName, int numTransitions, int numFrames) Simulate(
             List<int> loadingZoneFrames,
             List<int> bubbleSpawnerMaxTimers,
             bool isBubbleSpawnerPresent,
@@ -142,7 +143,7 @@ namespace STROOP.Structs
 
             if (shouldPrint) print();
 
-            (bool success, int result, ObjName objName, int numTransitions) returnValue = (false, -1, ObjName.UNKNOWN, numTransitions);
+            (bool success, int result, ObjName objName, int numTransitions, int numFrames) returnValue = (false, -1, ObjName.UNKNOWN, numTransitions, -1);
 
             while (true)
             {
@@ -166,10 +167,10 @@ namespace STROOP.Structs
 
                 if (isTownLoaded && heldSlot.Color != ObjSlotColor.GREY)
                 {
-                    returnValue = (false, objSlotManager.GetCurrentSlotIndex(heldSlot), heldSlot.ObjName, numTransitions);
+                    returnValue = (false, objSlotManager.GetCurrentSlotIndex(heldSlot), heldSlot.ObjName, numTransitions, frame);
                     if (heldSlot.ObjName == ObjName.STAR)
                     {
-                        return (true, heldSlot.InitialIndex, heldSlot.ObjName, numTransitions);
+                        return (true, heldSlot.InitialIndex, heldSlot.ObjName, numTransitions, frame);
                     }
                 }
 
