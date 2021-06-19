@@ -16,6 +16,41 @@ namespace STROOP.Structs
     {
         public static Random r = new Random();
 
+        public static Dictionary<UnloadableId, bool> UnloadStrategy =
+            new Dictionary<UnloadableId, bool>()
+            {
+                [UnloadableId.LOADED_ALWAYS] = false, // do not change
+
+                [UnloadableId.SKEETER_CLOSE] = false,
+                [UnloadableId.SKEETER_FAR] = false,
+
+                [UnloadableId.CORK_BOX_EXPRESS_ELEVATOR] = false,
+                [UnloadableId.CORK_BOX_EDGE_1] = false,
+                [UnloadableId.CORK_BOX_EDGE_2] = false,
+                [UnloadableId.CORK_BOX_EDGE_3] = false,
+                [UnloadableId.CORK_BOX_EDGE_4] = false,
+                [UnloadableId.CORK_BOX_EDGE_BIG] = false,
+
+                [UnloadableId.BLUE_COIN] = false,
+                [UnloadableId.BLUE_COIN_BLOCK] = false,
+
+                [UnloadableId.ITEM_BLOCK_ARROW_LIFTS] = false,
+                [UnloadableId.ITEM_BLOCK_PENTAGON_PLATFORM] = false,
+                [UnloadableId.ITEM_BLOCK_EXPRESS_ELEVATOR] = false,
+                [UnloadableId.ITEM_BLOCK_SLIDE_KICK] = false,
+                [UnloadableId.ITEM_BLOCK_HIGH_CORNER] = false,
+                [UnloadableId.ITEM_BLOCK_TOP_O_TOWN] = false,
+
+                [UnloadableId.ONE_UP_TUNNEL_1] = false,
+                [UnloadableId.ONE_UP_TUNNEL_2] = false,
+
+                [UnloadableId.SECRET_EXPRESS_ELEVATOR] = false,
+                [UnloadableId.SECRET_BLOCK_HOLE] = false,
+                [UnloadableId.SECRET_PENTAGON_PLATFORM] = false,
+                [UnloadableId.SECRET_HIGH_CORNER] = false,
+                [UnloadableId.SECRET_WATER_BLOCK] = false,
+            };
+
         public static void Run()
         {
             HashSet<int> results = new HashSet<int>();
@@ -27,7 +62,8 @@ namespace STROOP.Structs
                 {
                     for (int numInitialBubbles = 5; numInitialBubbles <= 12; numInitialBubbles++)
                     {
-                        (bool success, int result, ObjName objName, int numTransitions) = Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
+                        (bool success, int result, ObjName objName, int numTransitions) =
+                            Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles, false);
                         if (!results.Contains(result))
                         {
                             //Config.Print(result + " " + objName);
@@ -70,18 +106,19 @@ namespace STROOP.Structs
 
         public static void RunTest()
         {
-            List<int> loadingZoneFrames = new List<int>() { 1, 2, 3, 3, 15 };
-            List<int> bubbleSpawnerMaxTimers = new List<int>() { 10, 2, 3, 3, 9, 9 };
+            List<int> loadingZoneFrames = new List<int>() { 1, 2, 3, 3, 10 };
+            List<int> bubbleSpawnerMaxTimers = new List<int>() { 10, 2, 3, 3, 9, 5 };
             bool isBubbleSpawnerPresent = true;
             int numInitialBubbles = 7;
-            Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
+            Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles, true);
         }
 
         public static (bool success, int result, ObjName objName, int numTransitions) Simulate(
             List<int> loadingZoneFrames,
             List<int> bubbleSpawnerMaxTimers,
             bool isBubbleSpawnerPresent,
-            int numInitialBubbles)
+            int numInitialBubbles,
+            bool shouldPrint)
         {
             int startFrame = 1905;
             int frame = 0;
@@ -94,17 +131,17 @@ namespace STROOP.Structs
             ObjSlotManager objSlotManager = InitializeObjSlotManager(isBubbleSpawnerPresent, numInitialBubbles, bubbleTracker);
             ObjSlot heldSlot = objSlotManager.FindSlot(ObjName.CHUCKYA);
 
-            //void print()
-            //{
-            //    Config.Print(
-            //        "FRAME=" + (startFrame + frame) +
-            //        " isTownLoaded=" + isTownLoaded +
-            //        " numFramesAreaLoaded=" + numFramesAreaLoaded);
-            //    Config.Print(objSlotManager);
-            //    Config.Print();
-            //}
+            void print()
+            {
+                Config.Print(
+                    "FRAME=" + (startFrame + frame) +
+                    " isTownLoaded=" + isTownLoaded +
+                    " numFramesAreaLoaded=" + numFramesAreaLoaded);
+                Config.Print(objSlotManager);
+                Config.Print();
+            }
 
-            //print();
+            if (shouldPrint) print();
 
             (bool success, int result, ObjName objName, int numTransitions) returnValue = (false, -1, ObjName.UNKNOWN, numTransitions);
 
@@ -126,7 +163,7 @@ namespace STROOP.Structs
                 }
                 objSlotManager.FrameAdvance();
 
-                //print();
+                if (shouldPrint) print();
 
                 if (isTownLoaded && heldSlot.Color != ObjSlotColor.GREY)
                 {
@@ -164,6 +201,7 @@ namespace STROOP.Structs
         {
             foreach (var data in objData)
             {
+                if (UnloadStrategy[data.id]) continue;
                 objSlotManager.Load(data);
             }
         }
@@ -185,6 +223,7 @@ namespace STROOP.Structs
             int counter = 0;
             foreach (var data in initialObjData)
             {
+                if (UnloadStrategy[data.id]) continue;
                 objSlotManager.AddToEndOfList(new ObjSlot(counter++, data.objName, data.color));
             }
             if (isBubbleSpawnerPresent)
