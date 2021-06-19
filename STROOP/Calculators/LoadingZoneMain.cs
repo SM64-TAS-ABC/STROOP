@@ -2,6 +2,7 @@
 using STROOP.Managers;
 using STROOP.Models;
 using STROOP.Structs.Configurations;
+using STROOP.Ttc;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -388,7 +389,6 @@ namespace STROOP.Structs
 
         public abstract class ObjSlotManager
         {
-            protected readonly BubbleTracker _bubbleTracker;
             protected readonly Dictionary<ObjSlotColor, List<ObjSlot>> _dictionary;
             protected readonly List<ObjSlotColor> _colors;
 
@@ -473,12 +473,27 @@ namespace STROOP.Structs
                 }
                 return -1;
             }
+
+            public override string ToString()
+            {
+                List<string> strings = new List<string>();
+                strings.Add(GetFirstLineForToString());
+                foreach (ObjSlotColor color in _colors)
+                {
+                    foreach (ObjSlot objSlot in _dictionary[color])
+                    {
+                        strings.Add(objSlot.ToString());
+                    }
+                }
+                return string.Join("\r\n", strings);
+            }
+
+            public abstract string GetFirstLineForToString();
         }
 
         public class BubbleObjSlotManager : ObjSlotManager
         {
             private readonly BubbleTracker _bubbleTracker;
-
             private int bubbleSpawnerMaxTimer;
             private int bubbleSpawnerTimer;
 
@@ -520,18 +535,33 @@ namespace STROOP.Structs
                 }
             }
 
-            public override string ToString()
+            public override string GetFirstLineForToString()
             {
-                List<string> strings = new List<string>();
-                strings.Add(string.Format("timer={0} maxTimer={1}", bubbleSpawnerTimer, bubbleSpawnerMaxTimer));
-                foreach (ObjSlotColor color in _colors)
-                {
-                    foreach (ObjSlot objSlot in _dictionary[color])
-                    {
-                        strings.Add(objSlot.ToString());
-                    }
-                }
-                return string.Join("\r\n", strings);
+                return string.Format("timer={0} maxTimer={1}", bubbleSpawnerTimer, bubbleSpawnerMaxTimer);
+            }
+        }
+
+        public class RngObjSlotManager : ObjSlotManager
+        {
+            private readonly TtcRng _rng;
+
+            public RngObjSlotManager(TtcRng rng)
+                : base()
+            {
+                _rng = rng;
+            }
+
+            public override void PostLoad((ObjName objName, ObjSlotColor color, UnloadableId id) data)
+            {
+            }
+
+            public override void FrameAdvance()
+            {
+            }
+
+            public override string GetFirstLineForToString()
+            {
+                return string.Format("index={0} value={1}", _rng.GetIndex(), _rng.GetRng());
             }
         }
 
