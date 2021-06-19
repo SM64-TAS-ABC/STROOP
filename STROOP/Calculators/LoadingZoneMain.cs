@@ -76,6 +76,7 @@ namespace STROOP.Structs
                             Config.Print("bubbleSpawnerMaxTimers = " + string.Join(",", bubbleSpawnerMaxTimers));
                             Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
                             Config.Print("numInitialBubbles = " + numInitialBubbles);
+                            Config.Print(FormatLoadingZoneFrames(loadingZoneFrames));
                             Config.Print("-------------------------------------");
                         }
                     }
@@ -102,6 +103,22 @@ namespace STROOP.Structs
                 bubbleSpawnerMaxTimers.Add(r.Next(2, 6));
             }
             return bubbleSpawnerMaxTimers;
+        }
+
+        public static string FormatLoadingZoneFrames(List<int> loadingZoneFrames)
+        {
+            List<string> outputList = new List<string>();
+            bool rightwards = true;
+            int frame = 1973;
+            for (int i = 1; i < 7; i++)
+            {
+                int frames = loadingZoneFrames[i];
+                frame += frames;
+                rightwards = !rightwards;
+                string output = frame + " " + (rightwards ? "RIGHT" : "LEFT");
+                outputList.Add(output);
+            }
+            return string.Join("\r\n", outputList);
         }
 
         public static void RunTest()
