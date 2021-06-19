@@ -21,7 +21,7 @@ namespace STROOP.Structs
             {
                 [UnloadableId.LOADED_ALWAYS] = false, // do not change
 
-                [UnloadableId.SKEETER_CLOSE] = false,
+                [UnloadableId.SKEETER_CLOSE] = true,
                 [UnloadableId.SKEETER_FAR] = false,
 
                 [UnloadableId.CORK_BOX_EXPRESS_ELEVATOR] = false,
@@ -34,12 +34,10 @@ namespace STROOP.Structs
                 [UnloadableId.BLUE_COIN] = false,
                 [UnloadableId.BLUE_COIN_BLOCK] = false,
 
-                [UnloadableId.ITEM_BLOCK_ARROW_LIFTS] = false,
                 [UnloadableId.ITEM_BLOCK_PENTAGON_PLATFORM] = false,
                 [UnloadableId.ITEM_BLOCK_EXPRESS_ELEVATOR] = false,
                 [UnloadableId.ITEM_BLOCK_SLIDE_KICK] = false,
                 [UnloadableId.ITEM_BLOCK_HIGH_CORNER] = false,
-                [UnloadableId.ITEM_BLOCK_TOP_O_TOWN] = false,
 
                 [UnloadableId.ONE_UP_TUNNEL_1] = false,
                 [UnloadableId.ONE_UP_TUNNEL_2] = false,
@@ -66,17 +64,18 @@ namespace STROOP.Structs
                             Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles, false);
                         if (!results.Contains(result))
                         {
-                            //Config.Print(result + " " + objName);
+                            Config.Print(result + " " + objName);
                             results.Add(result);
                         }
                         if (success)
                         {
+                            Config.Print("-------------------------------------");
                             Config.Print("numTransitions = " + numTransitions);
                             Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
                             Config.Print("bubbleSpawnerMaxTimers = " + string.Join(",", bubbleSpawnerMaxTimers));
                             Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
                             Config.Print("numInitialBubbles = " + numInitialBubbles);
-                            Config.Print();
+                            Config.Print("-------------------------------------");
                         }
                     }
                 }
@@ -323,12 +322,10 @@ namespace STROOP.Structs
             BLUE_COIN,
             BLUE_COIN_BLOCK,
 
-            ITEM_BLOCK_ARROW_LIFTS,
             ITEM_BLOCK_PENTAGON_PLATFORM,
             ITEM_BLOCK_EXPRESS_ELEVATOR,
             ITEM_BLOCK_SLIDE_KICK,
             ITEM_BLOCK_HIGH_CORNER,
-            ITEM_BLOCK_TOP_O_TOWN,
 
             ONE_UP_TUNNEL_1,
             ONE_UP_TUNNEL_2,
@@ -552,7 +549,7 @@ namespace STROOP.Structs
 
                 (ObjName.SIGN, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.BLUE_COIN_BLOCK, ObjSlotColor.RED, UnloadableId.BLUE_COIN_BLOCK),
-                (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.ITEM_BLOCK_ARROW_LIFTS),
+                (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.CANNON_LID, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.PUSHABLE_BLOCK, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.PUSHABLE_BLOCK, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
@@ -574,7 +571,7 @@ namespace STROOP.Structs
                 (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.ITEM_BLOCK_SLIDE_KICK),
                 (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.ITEM_BLOCK_HIGH_CORNER),
                 (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
-                (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.ITEM_BLOCK_TOP_O_TOWN),
+                (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.SIGN, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.CORK_BOX, ObjSlotColor.RED, UnloadableId.CORK_BOX_EDGE_1),
                 (ObjName.ROTATING_PLATFORM, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
@@ -664,7 +661,7 @@ namespace STROOP.Structs
                 (ObjName.BLUE_COIN, ObjSlotColor.BLUE, UnloadableId.BLUE_COIN),
                 (ObjName.BLUE_COIN, ObjSlotColor.BLUE, UnloadableId.BLUE_COIN),
                 (ObjName.BLUE_COIN, ObjSlotColor.BLUE, UnloadableId.BLUE_COIN),
-                (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.ITEM_BLOCK_ARROW_LIFTS),
+                (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.AMP, ObjSlotColor.GREEN, UnloadableId.LOADED_ALWAYS),
                 (ObjName.AMP, ObjSlotColor.GREEN, UnloadableId.LOADED_ALWAYS),
                 (ObjName.AMP, ObjSlotColor.GREEN, UnloadableId.LOADED_ALWAYS),
@@ -713,7 +710,7 @@ namespace STROOP.Structs
                 (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.ITEM_BLOCK_HIGH_CORNER),
                 (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.COIN_LINE, ObjSlotColor.PINK, UnloadableId.LOADED_ALWAYS),
-                (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.ITEM_BLOCK_TOP_O_TOWN),
+                (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.SIGN, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.CORK_BOX, ObjSlotColor.RED, UnloadableId.CORK_BOX_EDGE_1),
                 (ObjName.SKEETER, ObjSlotColor.GREEN, UnloadableId.SKEETER_FAR),
