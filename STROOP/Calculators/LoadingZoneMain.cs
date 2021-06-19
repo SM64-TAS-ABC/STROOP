@@ -21,11 +21,11 @@ namespace STROOP.Structs
             {
                 [UnloadableId.LOADED_ALWAYS] = false, // do not change
 
-                [UnloadableId.SKEETER_CLOSE] = true,
+                [UnloadableId.SKEETER_CLOSE] = false,
                 [UnloadableId.SKEETER_FAR] = false,
 
                 [UnloadableId.CORK_BOX_EXPRESS_ELEVATOR] = false,
-                [UnloadableId.CORK_BOX_EDGE_1] = false,
+                [UnloadableId.CORK_BOX_EDGE_1] = true,
                 [UnloadableId.CORK_BOX_EDGE_2] = false,
                 [UnloadableId.CORK_BOX_EDGE_3] = false,
                 [UnloadableId.CORK_BOX_EDGE_4] = false,
@@ -64,7 +64,7 @@ namespace STROOP.Structs
                             Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles, false);
                         if (!results.Contains(result))
                         {
-                            Config.Print(result + " " + objName);
+                            //Config.Print(result + " " + objName);
                             results.Add(result);
                         }
                         if (success)
