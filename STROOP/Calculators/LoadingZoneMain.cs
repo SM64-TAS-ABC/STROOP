@@ -25,21 +25,22 @@ namespace STROOP.Structs
                 List<int> bubbleSpawnerMaxTimers = GenerateRandomBubbleSpawnerMaxTimers();
                 foreach (bool isBubbleSpawnerPresent in new List<bool>() { false, true })
                 {
-                    for (int numInitialBubbles = 6; numInitialBubbles <= 10; numInitialBubbles++)
+                    for (int numInitialBubbles = 5; numInitialBubbles <= 12; numInitialBubbles++)
                     {
-                        (bool success, int result, ObjName objName) = Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
+                        (bool success, int result, ObjName objName, int numTransitions) = Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
                         if (!results.Contains(result))
                         {
-                            Config.Print(result + " " + objName);
+                            //Config.Print(result + " " + objName);
                             results.Add(result);
                         }
                         if (success)
                         {
+                            Config.Print("numTransitions = " + numTransitions);
                             Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
                             Config.Print("bubbleSpawnerMaxTimers = " + string.Join(",", bubbleSpawnerMaxTimers));
                             Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
                             Config.Print("numInitialBubbles = " + numInitialBubbles);
-                            return;
+                            Config.Print();
                         }
                     }
                 }
@@ -48,8 +49,8 @@ namespace STROOP.Structs
 
         public static List<int> GenerateRandomLoadingZoneFrames()
         {
-            List<int> loadingZoneFrames = new List<int>();
-            int max = r.Next(2, 12);
+            List<int> loadingZoneFrames = new List<int>() { 1 };
+            int max = r.Next(2, 8);
             for (int i = 0; i < 15; i++)
             {
                 loadingZoneFrames.Add(r.Next(2, max));
@@ -62,7 +63,7 @@ namespace STROOP.Structs
             List<int> bubbleSpawnerMaxTimers = new List<int>();
             for (int i = 0; i < 15; i++)
             {
-                bubbleSpawnerMaxTimers.Add(r.Next(2, 11));
+                bubbleSpawnerMaxTimers.Add(r.Next(2, 6));
             }
             return bubbleSpawnerMaxTimers;
         }
@@ -76,7 +77,7 @@ namespace STROOP.Structs
             Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles);
         }
 
-        public static (bool success, int result, ObjName objName) Simulate(
+        public static (bool success, int result, ObjName objName, int numTransitions) Simulate(
             List<int> loadingZoneFrames,
             List<int> bubbleSpawnerMaxTimers,
             bool isBubbleSpawnerPresent,
@@ -86,6 +87,7 @@ namespace STROOP.Structs
             int frame = 0;
             bool isTownLoaded = false;
             int numFramesAreaLoaded = 0;
+            int numTransitions = 0;
 
             FrameTracker frameTracker = new FrameTracker(loadingZoneFrames);
             BubbleTracker bubbleTracker = new BubbleTracker(bubbleSpawnerMaxTimers);
@@ -104,6 +106,8 @@ namespace STROOP.Structs
 
             //print();
 
+            (bool success, int result, ObjName objName, int numTransitions) returnValue = (false, -1, ObjName.UNKNOWN, numTransitions);
+
             while (true)
             {
                 bool? shouldLoadTown = frameTracker.AdvanceFrame();
@@ -112,6 +116,7 @@ namespace STROOP.Structs
                     PassThroughLoadingZone(objSlotManager, shouldLoadTown.Value);
                     isTownLoaded = shouldLoadTown.Value;
                     numFramesAreaLoaded = 0;
+                    numTransitions++;
                 }
                 frame++;
                 numFramesAreaLoaded++;
@@ -123,15 +128,19 @@ namespace STROOP.Structs
 
                 //print();
 
-                if (isTownLoaded && heldSlot.ObjName == ObjName.STAR)
+                if (isTownLoaded && heldSlot.Color != ObjSlotColor.GREY)
                 {
-                    return (true, heldSlot.InitialIndex, heldSlot.ObjName);
+                    returnValue = (false, objSlotManager.GetCurrentSlotIndex(heldSlot), heldSlot.ObjName, numTransitions);
+                    if (heldSlot.ObjName == ObjName.STAR)
+                    {
+                        return (true, heldSlot.InitialIndex, heldSlot.ObjName, numTransitions);
+                    }
                 }
 
                 if (frame == 24) break;
             }
 
-            return (false, objSlotManager.GetCurrentSlotIndex(heldSlot), heldSlot.ObjName);
+            return returnValue;
         }
 
         public static void PassThroughLoadingZone(ObjSlotManager objSlotManager, bool loadsTown)
@@ -420,7 +429,7 @@ namespace STROOP.Structs
 
             public FrameTracker(List<int> loadingZoneFrames)
             {
-                _loadingZoneFrames = loadingZoneFrames;
+                _loadingZoneFrames = new List<int>(loadingZoneFrames);
                 _isTownLoaded = false;
             }
 
@@ -448,7 +457,7 @@ namespace STROOP.Structs
 
             public BubbleTracker(List<int> bubbleSpawnerMaxTimers)
             {
-                _bubbleSpawnerMaxTimers = bubbleSpawnerMaxTimers;
+                _bubbleSpawnerMaxTimers = new List<int>(bubbleSpawnerMaxTimers);
             }
 
             public int GetNextMaxTimer()
@@ -469,7 +478,7 @@ namespace STROOP.Structs
                 (ObjName.COIN_LINE, ObjSlotColor.PINK),
 
                 (ObjName.SIGN, ObjSlotColor.RED),
-                (ObjName.BLUE_COIN_BLOCK, ObjSlotColor.RED),
+                //(ObjName.BLUE_COIN_BLOCK, ObjSlotColor.RED),
                 (ObjName.ITEM_BLOCK, ObjSlotColor.RED),
                 (ObjName.CANNON_LID, ObjSlotColor.RED),
                 (ObjName.PUSHABLE_BLOCK, ObjSlotColor.RED),
@@ -548,18 +557,18 @@ namespace STROOP.Structs
                 (ObjName.CHUCKYA_ANCHOR, ObjSlotColor.GREEN),
                 (ObjName.HEAVE_HO_ANCHOR, ObjSlotColor.GREEN),
 
-                (ObjName.BLUE_COIN, ObjSlotColor.BLUE),
-                (ObjName.BLUE_COIN, ObjSlotColor.BLUE),
-                (ObjName.BLUE_COIN, ObjSlotColor.BLUE),
-                (ObjName.BLUE_COIN, ObjSlotColor.BLUE),
+                //(ObjName.BLUE_COIN, ObjSlotColor.BLUE),
+                //(ObjName.BLUE_COIN, ObjSlotColor.BLUE),
+                //(ObjName.BLUE_COIN, ObjSlotColor.BLUE),
+                //(ObjName.BLUE_COIN, ObjSlotColor.BLUE),
                 (ObjName.ONE_UP, ObjSlotColor.BLUE),
                 (ObjName.ONE_UP, ObjSlotColor.BLUE),
                 (ObjName.SECRET, ObjSlotColor.BLUE),
                 (ObjName.SECRET, ObjSlotColor.BLUE),
                 (ObjName.SECRET, ObjSlotColor.BLUE),
                 (ObjName.SECRET, ObjSlotColor.BLUE),
-                (ObjName.BLUE_COIN, ObjSlotColor.BLUE),
-                (ObjName.BLUE_COIN, ObjSlotColor.BLUE),
+                //(ObjName.BLUE_COIN, ObjSlotColor.BLUE),
+                //(ObjName.BLUE_COIN, ObjSlotColor.BLUE),
                 (ObjName.SECRET, ObjSlotColor.BLUE),
                 (ObjName.STAR, ObjSlotColor.BLUE),
                 (ObjName.SECRET_STAR_SPAWNER, ObjSlotColor.BLUE),
@@ -577,11 +586,11 @@ namespace STROOP.Structs
                 (ObjName.BOB_OMB_BUDDY, ObjSlotColor.GREEN),
                 (ObjName.COIN_RING, ObjSlotColor.PINK),
                 (ObjName.COIN_LINE, ObjSlotColor.PINK),
-                (ObjName.BLUE_COIN_BLOCK, ObjSlotColor.RED),
-                (ObjName.BLUE_COIN, ObjSlotColor.BLUE),
-                (ObjName.BLUE_COIN, ObjSlotColor.BLUE),
-                (ObjName.BLUE_COIN, ObjSlotColor.BLUE),
-                (ObjName.BLUE_COIN, ObjSlotColor.BLUE),
+                //(ObjName.BLUE_COIN_BLOCK, ObjSlotColor.RED),
+                //(ObjName.BLUE_COIN, ObjSlotColor.BLUE),
+                //(ObjName.BLUE_COIN, ObjSlotColor.BLUE),
+                //(ObjName.BLUE_COIN, ObjSlotColor.BLUE),
+                //(ObjName.BLUE_COIN, ObjSlotColor.BLUE),
                 (ObjName.ITEM_BLOCK, ObjSlotColor.RED),
                 (ObjName.AMP, ObjSlotColor.GREEN),
                 (ObjName.AMP, ObjSlotColor.GREEN),
@@ -621,8 +630,8 @@ namespace STROOP.Structs
                 (ObjName.CORK_BOX, ObjSlotColor.RED),
                 (ObjName.CORK_BOX, ObjSlotColor.RED),
                 (ObjName.AMP, ObjSlotColor.GREEN),
-                (ObjName.BLUE_COIN, ObjSlotColor.BLUE),
-                (ObjName.BLUE_COIN, ObjSlotColor.BLUE),
+                //(ObjName.BLUE_COIN, ObjSlotColor.BLUE),
+                //(ObjName.BLUE_COIN, ObjSlotColor.BLUE),
                 (ObjName.ITEM_BLOCK, ObjSlotColor.RED),
                 (ObjName.ITEM_BLOCK, ObjSlotColor.RED),
                 (ObjName.SECRET, ObjSlotColor.BLUE),
