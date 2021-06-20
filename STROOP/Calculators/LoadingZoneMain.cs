@@ -26,7 +26,7 @@ namespace STROOP.Structs
                 [UnloadableId.SKEETER_FAR] = false,
 
                 [UnloadableId.CORK_BOX_EXPRESS_ELEVATOR] = false,
-                [UnloadableId.CORK_BOX_EDGE_1] = false, // make this true
+                [UnloadableId.CORK_BOX_EDGE_1] = true,
                 [UnloadableId.CORK_BOX_EDGE_2] = false,
                 [UnloadableId.CORK_BOX_EDGE_3] = false,
                 [UnloadableId.CORK_BOX_EDGE_4] = false,
@@ -52,9 +52,39 @@ namespace STROOP.Structs
 
         public static void Run()
         {
-            RunTest2();
-            return;
+            HashSet<string> instructionList = new HashSet<string>();
+            while (true)
+            {
+                List<int> loadingZoneFrames = GenerateRandomLoadingZoneFrames();
+                int rngIndex = r.Next(65114);
+                int rng = RngIndexer.GetRngValue(rngIndex);
+                foreach (bool isBubbleSpawnerPresent in new List<bool>() { false, true })
+                {
+                    for (int numInitialBubbles = 6; numInitialBubbles <= 6; numInitialBubbles++)
+                    {
+                        (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
+                            Simulate(loadingZoneFrames, rng, isBubbleSpawnerPresent, numInitialBubbles, false);
+                        string instructions = FormatLoadingZoneFrames(loadingZoneFrames);
+                        if (success && !instructionList.Contains(instructions))
+                        {
+                            instructionList.Add(instructions);
+                            Config.Print("-------------------------------------");
+                            Config.Print("numFrames = " + numFrames);
+                            Config.Print("numTransitions = " + numTransitions);
+                            Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
+                            Config.Print("rng = " + rng);
+                            Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
+                            Config.Print("numInitialBubbles = " + numInitialBubbles);
+                            Config.Print(instructions);
+                            Config.Print("-------------------------------------");
+                        }
+                    }
+                }
+            }
+        }
 
+        public static void Run2()
+        {
             HashSet<int> results = new HashSet<int>();
             HashSet<string> instructionList = new HashSet<string>();
             while (true)
