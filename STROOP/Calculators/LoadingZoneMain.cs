@@ -57,9 +57,9 @@ namespace STROOP.Structs
             while (true)
             {
                 List<int> loadingZoneFrames = GenerateRandomLoadingZoneFrames();
-                int rngIndex = RngIndexer.GetRngIndex();
-                int rng = RngIndexer.GetRngValue();
-                foreach (bool isBubbleSpawnerPresent in new List<bool>() { false, true })
+                int rngIndex = 14304; // RngIndexer.GetRngIndex();
+                int rng = 50195; // RngIndexer.GetRngValue();
+                foreach (bool isBubbleSpawnerPresent in new List<bool>() { true })
                 {
                     for (int numInitialBubbles = 6; numInitialBubbles <= 6; numInitialBubbles++)
                     {
