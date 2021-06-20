@@ -52,12 +52,13 @@ namespace STROOP.Structs
 
         public static void Run()
         {
+            Config.Print("STARTING...");
             HashSet<string> instructionList = new HashSet<string>();
             while (true)
             {
                 List<int> loadingZoneFrames = GenerateRandomLoadingZoneFrames();
-                int rngIndex = r.Next(65114);
-                int rng = RngIndexer.GetRngValue(rngIndex);
+                int rngIndex = RngIndexer.GetRngIndex();
+                int rng = RngIndexer.GetRngValue();
                 foreach (bool isBubbleSpawnerPresent in new List<bool>() { false, true })
                 {
                     for (int numInitialBubbles = 6; numInitialBubbles <= 6; numInitialBubbles++)
@@ -72,6 +73,7 @@ namespace STROOP.Structs
                             Config.Print("numFrames = " + numFrames);
                             Config.Print("numTransitions = " + numTransitions);
                             Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
+                            Config.Print("rngIndex = " + rngIndex);
                             Config.Print("rng = " + rng);
                             Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
                             Config.Print("numInitialBubbles = " + numInitialBubbles);
