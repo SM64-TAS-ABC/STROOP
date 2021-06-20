@@ -24,7 +24,7 @@ namespace STROOP.Managers
         public static readonly int DefaultSlotSize = 36;
 
         public enum TabType { Object, Map, Model, Memory, Custom, Warp, TAS, CamHack, Other };
-        public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
+        public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario, LockedLabels };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex, RngUsage };
         public enum SelectionMethodType { Clicked, Held, StoodOn, Interaction, Used, Floor, Wall, Ceiling, Closest };
         public enum ClickType { ObjectClick, MapClick, ModelClick, MemoryClick, CamHackClick, MarkClick };
@@ -374,6 +374,23 @@ namespace STROOP.Managers
 
                     sortedObjects = activeObjects.Concat(inActiveObjects);
                     break;
+
+                case SortMethodType.LockedLabels:
+                    sortedObjects = DataModels.Objects.OrderBy(o =>
+                    {
+                        uint address = o.Address;
+                        if (_lockedSlotIndices.ContainsKey(address))
+                        {
+                            Tuple<int?, int?> tuple = _lockedSlotIndices[address];
+                            return (LabelMethod == SlotLabelType.SlotPos ? tuple.Item1 : tuple.Item2) ?? 0;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    });
+                    break;
+
                 default:
                     throw new ArgumentOutOfRangeException("Uknown sort method type");
             }

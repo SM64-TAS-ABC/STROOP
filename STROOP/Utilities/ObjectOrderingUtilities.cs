@@ -27,6 +27,7 @@ namespace STROOP.Utilities
                     Move_Memory(rightwards);
                     break;
                 case ObjectSlotsManager.SortMethodType.DistanceToMario:
+                case ObjectSlotsManager.SortMethodType.LockedLabels:
                     // do nothing
                     break;
                 default:
