@@ -187,7 +187,7 @@ namespace STROOP.Structs
         {
             FrameTracker frameTracker = new FrameTracker(loadingZoneFrames);
             BubbleTracker bubbleTracker = new BubbleTracker(bubbleSpawnerMaxTimers);
-            ObjSlotManager objSlotManager = InitializeBubbleObjSlotManager(isBubbleSpawnerPresent, numInitialBubbles, bubbleTracker);
+            ObjSlotManager objSlotManager = InitializeObjSlotManager(isBubbleSpawnerPresent, numInitialBubbles, bubbleTracker);
             return Simulate(frameTracker, objSlotManager, shouldPrint);
         }
 
@@ -200,7 +200,7 @@ namespace STROOP.Structs
         {
             FrameTracker frameTracker = new FrameTracker(loadingZoneFrames);
             TtcRng ttcRng = new TtcRng((ushort)rng);
-            ObjSlotManager objSlotManager = InitializeBubbleObjSlotManager(isBubbleSpawnerPresent, numInitialBubbles, ttcRng);
+            ObjSlotManager objSlotManager = InitializeObjSlotManager(isBubbleSpawnerPresent, numInitialBubbles, ttcRng);
             return Simulate(frameTracker, objSlotManager, shouldPrint);
         }
 
@@ -300,7 +300,7 @@ namespace STROOP.Structs
             }
         }
 
-        public static ObjSlotManager InitializeBubbleObjSlotManager(
+        public static ObjSlotManager InitializeObjSlotManager(
             bool isBubbleSpawnerPresent,
             int numInitialBubbles,
             TtcRng rng)
@@ -309,7 +309,7 @@ namespace STROOP.Structs
             return InitializeBubbleObjSlotManager(objSlotManager, isBubbleSpawnerPresent, numInitialBubbles);
         }
 
-        public static ObjSlotManager InitializeBubbleObjSlotManager(
+        public static ObjSlotManager InitializeObjSlotManager(
             bool isBubbleSpawnerPresent,
             int numInitialBubbles,
             BubbleTracker bubbleTracker)
