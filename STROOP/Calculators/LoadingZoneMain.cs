@@ -418,6 +418,7 @@ namespace STROOP.Structs
             public int Timer;
             public int BubbleSpawnerMaxTimer;
             public int BobombBuddyBlinkingTimer;
+            public bool ShouldUnload;
 
             public ObjSlot(int initialIndex, ObjName objName, ObjSlotColor color)
             {
@@ -427,6 +428,8 @@ namespace STROOP.Structs
 
                 Timer = 0;
                 BubbleSpawnerMaxTimer = 0;
+                BobombBuddyBlinkingTimer = 0;
+                ShouldUnload = false;
             }
 
             public void Apply((ObjName objName, ObjSlotColor color, UnloadableId id) data)
@@ -438,19 +441,23 @@ namespace STROOP.Structs
             public override string ToString()
             {
                 return string.Format(
-                    "({0},{1},{2}____{3},{4},{5})",
+                    "({0},{1},{2}____{3},{4},{5},{6})",
                     InitialIndex, ObjName, Color,
-                    Timer, BubbleSpawnerMaxTimer, BobombBuddyBlinkingTimer);
+                    Timer, BubbleSpawnerMaxTimer, BobombBuddyBlinkingTimer, ShouldUnload);
             }
 
             public void Reset()
             {
                 Timer = 0;
                 BubbleSpawnerMaxTimer = 0;
+                BobombBuddyBlinkingTimer = 0;
+                ShouldUnload = false;
             }
 
             public void FrameAdvance(RngObjSlotManager rngObjSlotManager, TtcRng rng)
             {
+                if (Color == ObjSlotColor.GREY) return;
+
                 switch (ObjName)
                 {
                     case ObjName.ARROW_LIFT:
@@ -472,7 +479,8 @@ namespace STROOP.Structs
                         }
                         if (Timer == BubbleSpawnerMaxTimer)
                         {
-                            rngObjSlotManager.LoadBubbleAndUnloadBubbleSpawner(this);
+                            rngObjSlotManager.LoadBubble();
+                            ShouldUnload = true;
                         }
                         break;
                     case ObjName.BUBBLE:
@@ -681,19 +689,27 @@ namespace STROOP.Structs
                     Load((ObjName.BUBBLE_SPAWNER, ObjSlotColor.PURPLE, UnloadableId.LOADED_ALWAYS));
                 }
 
+                List<ObjSlot> objSlotsToUnload = new List<ObjSlot>();
                 foreach (ObjSlotColor color in _colors)
                 {
                     foreach (ObjSlot objSlot in _dictionary[color])
                     {
                         objSlot.FrameAdvance(this, _rng);
+                        if (objSlot.ShouldUnload)
+                        {
+                            objSlotsToUnload.Add(objSlot);
+                        }
                     }
+                }
+                foreach (ObjSlot objSlot in objSlotsToUnload)
+                {
+                    Unload(objSlot);
                 }
             }
 
-            public void LoadBubbleAndUnloadBubbleSpawner(ObjSlot bubbleSpawner)
+            public void LoadBubble()
             {
                 Load((ObjName.BUBBLE, ObjSlotColor.BROWN, UnloadableId.LOADED_ALWAYS));
-                Unload(bubbleSpawner);
             }
 
             public override string GetFirstLineForToString()
