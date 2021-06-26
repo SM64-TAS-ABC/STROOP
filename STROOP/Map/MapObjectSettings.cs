@@ -79,6 +79,9 @@ namespace STROOP.Map
         public readonly bool ChangePathPaused;
         public readonly bool NewPathPaused;
 
+        public readonly bool ChangePathTruncatePoints;
+        public readonly bool NewPathTruncatePoints;
+
         public readonly bool ChangePathUseValueAtStartOfGlobalTimer;
         public readonly bool NewPathUseValueAtStartOfGlobalTimer;
 
@@ -200,6 +203,9 @@ namespace STROOP.Map
             bool changePathPaused = false,
             bool newPathPaused = false,
 
+            bool changePathTruncatePoints = false,
+            bool newPathTruncatePoints = false,
+
             bool changePathUseValueAtStartOfGlobalTimer = false,
             bool newPathUseValueAtStartOfGlobalTimer = false,
 
@@ -319,6 +325,9 @@ namespace STROOP.Map
 
             ChangePathPaused = changePathPaused;
             NewPathPaused = newPathPaused;
+
+            ChangePathTruncatePoints = changePathTruncatePoints;
+            NewPathTruncatePoints = newPathTruncatePoints;
 
             ChangePathUseValueAtStartOfGlobalTimer = changePathUseValueAtStartOfGlobalTimer;
             NewPathUseValueAtStartOfGlobalTimer = newPathUseValueAtStartOfGlobalTimer;

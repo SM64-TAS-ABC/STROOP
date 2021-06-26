@@ -25,6 +25,7 @@ namespace STROOP.Map
         private List<uint> _skippedKeys;
         private bool _useBlending;
         private bool _isPaused;
+        private bool _truncatePoints;
         private bool _useValueAtStartOfGlobalTimer;
         private uint _highestGlobalTimerValue;
         private int _modulo;
@@ -33,6 +34,7 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemResetPathOnLevelChange;
         private ToolStripMenuItem _itemUseBlending;
         private ToolStripMenuItem _itemPause;
+        private ToolStripMenuItem _itemTruncatePoints;
         private ToolStripMenuItem _itemUseValueAtStartOfGlobalTimer;
         private ToolStripMenuItem _itemSetModulo;
         private ToolStripMenuItem _itemSetIconSize;
@@ -51,6 +53,7 @@ namespace STROOP.Map
             _skippedKeys = new List<uint>();
             _useBlending = true;
             _isPaused = false;
+            _truncatePoints = false;
             _useValueAtStartOfGlobalTimer = true;
             _highestGlobalTimerValue = 0;
             _modulo = 1;
@@ -88,7 +91,8 @@ namespace STROOP.Map
         {
             return _dictionary.Keys.ToList()
                 .FindAll(key => key % _modulo == 0)
-                .ConvertAll(key => _dictionary[key]);
+                .ConvertAll(key => _dictionary[key])
+                .ConvertAll(v => _truncatePoints ? ((int)v.x, (int)v.y, (int)v.z) : v);
         }
 
         public List<MapObjectPathSegment> GetSegments()
@@ -433,6 +437,16 @@ namespace STROOP.Map
                 };
                 _itemPause.Checked = _isPaused;
 
+                _itemTruncatePoints = new ToolStripMenuItem("Truncate Points");
+                _itemTruncatePoints.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changePathTruncatePoints: true,
+                        newPathTruncatePoints: !_truncatePoints);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemTruncatePoints.Checked = _isPaused;
+
                 _itemUseValueAtStartOfGlobalTimer = new ToolStripMenuItem("Use Value at Start of Global Timer");
                 _itemUseValueAtStartOfGlobalTimer.Click += (sender, e) =>
                 {
@@ -486,6 +500,7 @@ namespace STROOP.Map
                 _contextMenuStrip.Items.Add(_itemResetPathOnLevelChange);
                 _contextMenuStrip.Items.Add(_itemUseBlending);
                 _contextMenuStrip.Items.Add(_itemPause);
+                _contextMenuStrip.Items.Add(_itemTruncatePoints);
                 _contextMenuStrip.Items.Add(_itemUseValueAtStartOfGlobalTimer);
                 _contextMenuStrip.Items.Add(_itemSetModulo);
                 _contextMenuStrip.Items.Add(_itemSetIconSize);
@@ -521,6 +536,12 @@ namespace STROOP.Map
             {
                 _isPaused = settings.NewPathPaused;
                 _itemPause.Checked = _isPaused;
+            }
+
+            if (settings.ChangePathTruncatePoints)
+            {
+                _truncatePoints = settings.NewPathTruncatePoints;
+                _itemTruncatePoints.Checked = _truncatePoints;
             }
 
             if (settings.ChangePathUseValueAtStartOfGlobalTimer)
