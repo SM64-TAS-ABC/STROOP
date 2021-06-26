@@ -52,11 +52,6 @@ namespace STROOP.Map
         public float MapViewZMin { get => MapViewCenterZValue - MapViewRadius; }
         public float MapViewZMax { get => MapViewCenterZValue + MapViewRadius; }
 
-        public bool IsCardinallyAligned
-        {
-            get => Enumerable.Range(0, 4).ToList().ConvertAll(i => 16384f * i).Contains(MapViewScaleValue);
-        }
-
         public static readonly int MAX_COURSE_SIZE_X_MIN = -8191;
         public static readonly int MAX_COURSE_SIZE_X_MAX = 8192;
         public static readonly int MAX_COURSE_SIZE_Z_MIN = -8191;

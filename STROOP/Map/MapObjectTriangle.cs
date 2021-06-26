@@ -120,7 +120,7 @@ namespace STROOP.Map
         {
             List<(float x1, float y1, float z1,
                 float x2, float y2, float z2,
-                TriangleClassification classification, bool xProjection, double pushAngle)> triData =
+                TriangleClassification classification, bool xProjection, double pushAngle, TriangleDataModel tri)> triData =
                 GetFilteredTriangles().ConvertAll(tri => MapUtilities.Get2DDataFromTri(tri))
                     .FindAll(data => data.HasValue)
                     .ConvertAll(data => data.Value);
@@ -182,25 +182,29 @@ namespace STROOP.Map
                     case TriangleClassification.Floor:
                     case TriangleClassification.Ceiling:
                         {
-                            if (MapUtilities.IsAbleToShowUnitPrecision() &&
-                                GetShowTriUnits() &&
-                                Config.CurrentMapGraphics.IsCardinallyAligned)
+                            if (MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits())
                             {
-                                return null;
-                            }
-                            else
-                            {
-                                return new List<List<(float x, float y, float z, Color color)>>()
+                                if (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
+                                    Config.CurrentMapGraphics.MapViewYawValue == 32768)
                                 {
-                                    new List<(float x, float y, float z, Color color)>()
-                                    {
-                                        (data.x1, data.y1, data.z1, color),
-                                        (data.x2, data.y2, data.z2, color),
-                                        (data.x2, data.y2 - size, data.z2, color),
-                                        (data.x1, data.y1 - size, data.z1, color),
-                                    },
-                                };
+
+                                }
+                                if (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+                                    Config.CurrentMapGraphics.MapViewYawValue == 49152)
+                                {
+
+                                }
                             }
+                            return new List<List<(float x, float y, float z, Color color)>>()
+                            {
+                                new List<(float x, float y, float z, Color color)>()
+                                {
+                                    (data.x1, data.y1, data.z1, color),
+                                    (data.x2, data.y2, data.z2, color),
+                                    (data.x2, data.y2 - size, data.z2, color),
+                                    (data.x1, data.y1 - size, data.z1, color),
+                                },
+                            };
                         }
                     default:
                         throw new ArgumentOutOfRangeException();
