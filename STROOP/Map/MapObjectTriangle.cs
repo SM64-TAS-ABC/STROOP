@@ -187,7 +187,32 @@ namespace STROOP.Map
                                 if (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
                                     Config.CurrentMapGraphics.MapViewYawValue == 32768)
                                 {
-
+                                    int xMin = (int)Math.Max(data.tri.GetMinX(), Config.CurrentMapGraphics.MapViewXMin);
+                                    int xMax = (int)Math.Min(data.tri.GetMaxX(), Config.CurrentMapGraphics.MapViewXMax);
+                                    float z = Config.CurrentMapGraphics.MapViewCenterZValue;
+                                    List<List<(float x, float y, float z, Color color)>> output =
+                                        new List<List<(float x, float y, float z, Color color)>>();
+                                    List<(int xInner, int xOuter)> xPairs = new List<(int xInner, int xOuter)>();
+                                    for (int x = xMin; x <= xMax; x++)
+                                    {
+                                        if (x <= 0) xPairs.Add((x, x - 1));
+                                        if (x >= 0) xPairs.Add((x, x + 1));
+                                    }
+                                    foreach ((int xInner, int xOuter) in xPairs)
+                                    {
+                                        float? y = data.tri.GetTruncatedHeightOnTriangleIfInsideTriangle(xInner, z);
+                                        if (y.HasValue)
+                                        {
+                                            output.Add(new List<(float x, float y, float z, Color color)>()
+                                            {
+                                                (xInner, y.Value, z, color),
+                                                (xOuter, y.Value, z, color),
+                                                (xOuter, y.Value - size, z, color),
+                                                (xInner, y.Value - size, z, color),
+                                            });
+                                        }
+                                    }
+                                    return output;
                                 }
                                 if (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
                                     Config.CurrentMapGraphics.MapViewYawValue == 49152)
