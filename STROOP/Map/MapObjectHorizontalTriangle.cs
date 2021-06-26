@@ -271,6 +271,11 @@ namespace STROOP.Map
             }
         }
 
+        public override bool GetShowTriUnits()
+        {
+            return _showTriUnits;
+        }
+
         protected List<ToolStripMenuItem> GetHorizontalTriangleToolStripMenuItems()
         {
             _itemShowTriUnits = new ToolStripMenuItem("Show Tri Units");

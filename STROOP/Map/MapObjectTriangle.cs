@@ -111,6 +111,11 @@ namespace STROOP.Map
             return Size;
         }
 
+        public virtual bool GetShowTriUnits()
+        {
+            return false;
+        }
+
         public void DrawOn2DControlOrthographicViewCrossSection()
         {
             List<(float x1, float y1, float z1,
@@ -177,16 +182,25 @@ namespace STROOP.Map
                     case TriangleClassification.Floor:
                     case TriangleClassification.Ceiling:
                         {
-                            return new List<List<(float x, float y, float z, Color color)>>()
+                            if (MapUtilities.IsAbleToShowUnitPrecision() &&
+                                GetShowTriUnits() &&
+                                Config.CurrentMapGraphics.IsCardinallyAligned)
                             {
-                                new List<(float x, float y, float z, Color color)>()
+                                return null;
+                            }
+                            else
+                            {
+                                return new List<List<(float x, float y, float z, Color color)>>()
                                 {
-                                    (data.x1, data.y1, data.z1, color),
-                                    (data.x2, data.y2, data.z2, color),
-                                    (data.x2, data.y2 - size, data.z2, color),
-                                    (data.x1, data.y1 - size, data.z1, color),
-                                },
-                            };
+                                    new List<(float x, float y, float z, Color color)>()
+                                    {
+                                        (data.x1, data.y1, data.z1, color),
+                                        (data.x2, data.y2, data.z2, color),
+                                        (data.x2, data.y2 - size, data.z2, color),
+                                        (data.x1, data.y1 - size, data.z1, color),
+                                    },
+                                };
+                            }
                         }
                     default:
                         throw new ArgumentOutOfRangeException();
