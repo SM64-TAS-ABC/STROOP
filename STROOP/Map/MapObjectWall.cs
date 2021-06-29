@@ -134,6 +134,8 @@ namespace STROOP.Map
                         markPoints.Add(((float x, float z))pointOnSide2);
                     }
 
+                    markPoints = markPoints.FindAll(p => MapUtilities.IsInVisibleSpace(p.x, p.z, 200));
+
                     double angleUp = pushAngle;
                     double angleDown = pushAngle + 32768;
                     double angleLeft = pushAngle + 16384;

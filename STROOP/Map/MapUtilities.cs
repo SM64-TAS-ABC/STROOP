@@ -683,5 +683,12 @@ namespace STROOP.Map
             GL.DrawArrays(PrimitiveType.Lines, 0, vertexArrayForEdges.Length);
             GL.DeleteBuffer(buffer);
         }
+
+        public static bool IsInVisibleSpace(double x, double z, double bufferDistance)
+        {
+            double dist = MoreMath.GetDistanceBetween(
+                Config.CurrentMapGraphics.MapViewCenterXValue, Config.CurrentMapGraphics.MapViewCenterZValue, x, z);
+            return dist < Config.CurrentMapGraphics.MapViewRadius + bufferDistance;
+        }
     }
 }
