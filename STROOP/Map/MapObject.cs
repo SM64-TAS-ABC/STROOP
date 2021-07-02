@@ -460,7 +460,7 @@ namespace STROOP.Map
                     mapObject = new MapObjectPoint();
                     break;
                 case "MapObjectPreviousPositions":
-                    mapObject = new MapObjectPreviousPositions();
+                    mapObject = MapObjectPreviousPositions.Create(xElement.Attribute(XName.Get("points")).Value);
                     break;
                 case "MapObjectPuGridlines":
                     mapObject = new MapObjectPuGridlines();

@@ -124,6 +124,12 @@ namespace STROOP.Map
         public readonly bool ChangeNextPositionsNumFrames;
         public readonly double NewNextPositionsNumFrames;
 
+        public readonly bool ChangePreviousPositionsTrackHistory;
+        public readonly bool NewPreviousPositionsTrackHistory;
+
+        public readonly bool ChangePreviousPositionsPauseHistory;
+        public readonly bool NewPreviousPositionsPauseHistory;
+
         public readonly bool ChangePuGridlinesSetting;
         public readonly string NewPuGridlinesSetting;
 
@@ -248,6 +254,12 @@ namespace STROOP.Map
             bool changeNextPositionsNumFrames = false,
             double newNextPositionsNumFrames = 0,
 
+            bool changePreviousPositionsTrackHistory = false,
+            bool newPreviousPositionsTrackHistory = false,
+
+            bool changePreviousPositionsPauseHistory = false,
+            bool newPreviousPositionsPauseHistory = false,
+
             bool changePuGridlinesSetting = false,
             string newPuGridlinesSetting = null,
 
@@ -370,6 +382,12 @@ namespace STROOP.Map
 
             ChangeNextPositionsNumFrames = changeNextPositionsNumFrames;
             NewNextPositionsNumFrames = newNextPositionsNumFrames;
+
+            ChangePreviousPositionsTrackHistory = changePreviousPositionsTrackHistory;
+            NewPreviousPositionsTrackHistory = newPreviousPositionsTrackHistory;
+
+            ChangePreviousPositionsPauseHistory = changePreviousPositionsPauseHistory;
+            NewPreviousPositionsPauseHistory = newPreviousPositionsPauseHistory;
 
             ChangePuGridlinesSetting = changePuGridlinesSetting;
             NewPuGridlinesSetting = newPuGridlinesSetting;

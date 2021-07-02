@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
 using STROOP.Map.Map3D;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -27,6 +28,9 @@ namespace STROOP.Map
         private uint _highestGlobalTimerValue;
         private Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> _dictionary;
 
+        private ToolStripMenuItem _itemTrackHistory;
+        private ToolStripMenuItem _itemPauseHistory;
+
         private DateTime _showEachPointStartTime = DateTime.MinValue;
 
         public MapObjectPreviousPositions()
@@ -38,6 +42,44 @@ namespace STROOP.Map
             _dictionary = new Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>>();
 
             InternalRotates = true;
+        }
+
+        public MapObjectPreviousPositions(Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> dictionary)
+            : this()
+        {
+            foreach (uint key in dictionary.Keys)
+            {
+                _dictionary[key] = dictionary[key];
+            }
+        }
+
+        public static MapObjectPreviousPositions Create(string points)
+        {
+            Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> dictionary =
+                new Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>>();
+            List<string> frames = points.Split('|').ToList();
+            foreach (string frame in frames)
+            {
+                List<(float x, float y, float z, float angle, int tex, bool show)> partsCombined =
+                    new List<(float x, float y, float z, float angle, int tex, bool show)>();
+                List<string> parts = frame.Split(';').ToList();
+                uint key = ParsingUtilities.ParseUInt(parts[0]);
+                for (int i = 1; i < parts.Count; i++)
+                {
+                    string part = parts[i];
+                    List<string> values = part.Split(',').ToList();
+                    float x = ParsingUtilities.ParseFloat(values[0]);
+                    float y = ParsingUtilities.ParseFloat(values[1]);
+                    float z = ParsingUtilities.ParseFloat(values[2]);
+                    float angle = ParsingUtilities.ParseFloat(values[3]);
+                    int tex = ParsingUtilities.ParseInt(values[4]);
+                    bool show = ParsingUtilities.ParseBool(values[5]);
+                    var valuesCombined = (x, y, z, angle, tex, show);
+                    partsCombined.Add(valuesCombined);
+                }
+                dictionary[key] = partsCombined;
+            }
+            return new MapObjectPreviousPositions(dictionary);
         }
 
         public override Image GetInternalImage()
@@ -451,18 +493,20 @@ namespace STROOP.Map
                     _showEachPointStartTime = DateTime.Now;
                 };
 
-                ToolStripMenuItem itemTrackHistory = new ToolStripMenuItem("Track History");
-                itemTrackHistory.Click += (sender, e) =>
+                _itemTrackHistory = new ToolStripMenuItem("Track History");
+                _itemTrackHistory.Click += (sender, e) =>
                 {
-                    _trackHistory = !_trackHistory;
-                    itemTrackHistory.Checked = _trackHistory;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changePreviousPositionsTrackHistory: true, newPreviousPositionsTrackHistory: !_trackHistory);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
 
-                ToolStripMenuItem itemPauseHistory = new ToolStripMenuItem("Pause History");
-                itemPauseHistory.Click += (sender, e) =>
+                _itemPauseHistory = new ToolStripMenuItem("Pause History");
+                _itemPauseHistory.Click += (sender, e) =>
                 {
-                    _pauseHistory = !_pauseHistory;
-                    itemPauseHistory.Checked = _pauseHistory;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changePreviousPositionsPauseHistory: true, newPreviousPositionsPauseHistory: !_pauseHistory);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
 
                 ToolStripMenuItem itemClearHistory = new ToolStripMenuItem("Clear History");
@@ -473,12 +517,57 @@ namespace STROOP.Map
 
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemShowEachPoint);
-                _contextMenuStrip.Items.Add(itemTrackHistory);
-                _contextMenuStrip.Items.Add(itemPauseHistory);
+                _contextMenuStrip.Items.Add(_itemTrackHistory);
+                _contextMenuStrip.Items.Add(_itemPauseHistory);
                 _contextMenuStrip.Items.Add(itemClearHistory);
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangePreviousPositionsTrackHistory)
+            {
+                _trackHistory = settings.NewPreviousPositionsTrackHistory;
+                _itemTrackHistory.Checked = settings.NewPreviousPositionsTrackHistory;
+            }
+
+            if (settings.ChangePreviousPositionsPauseHistory)
+            {
+                _pauseHistory = settings.NewPreviousPositionsPauseHistory;
+                _itemPauseHistory.Checked = settings.NewPreviousPositionsPauseHistory;
+            }
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            List<string> pointList = new List<string>();
+            foreach (uint key in _dictionary.Keys)
+            {
+                List<(float x, float y, float z, float angle, int tex, bool show)> values = _dictionary[key];
+                List<object> frameData = values.ConvertAll(value =>
+                {
+                    List<object> parts = new List<object>()
+                    {
+                        (double)value.x,
+                        (double)value.y,
+                        (double)value.z,
+                        (double)value.angle,
+                        value.tex,
+                        value.show,
+                    };
+                    return (object)string.Join(",", parts);
+                });
+                frameData.Insert(0, key);
+                pointList.Add(string.Join(";", frameData));
+            }
+            return new List<XAttribute>()
+            {
+                new XAttribute("points", string.Join("|", pointList)),
+            };
         }
     }
 }
