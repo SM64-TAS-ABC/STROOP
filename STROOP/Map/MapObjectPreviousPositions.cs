@@ -22,11 +22,15 @@ namespace STROOP.Map
         private int _purpleMarioTex = -1;
         private int _blueMarioTex = -1;
 
+        private Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> _dictionary;
+
         private DateTime _showEachPointStartTime = DateTime.MinValue;
 
         public MapObjectPreviousPositions()
             : base()
         {
+            _dictionary = new Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>>();
+
             InternalRotates = true;
         }
 
@@ -48,6 +52,23 @@ namespace STROOP.Map
         public override void DrawOn2DControlTopDownView()
         {
             List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
+            DrawOn2DControlTopDownView(data);
+        }
+
+        public override void DrawOn2DControlOrthographicView()
+        {
+            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
+            DrawOn2DControlOrthographicView(data);
+        }
+
+        public override void DrawOn3DControl()
+        {
+            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
+            DrawOn3DControl(data);
+        }
+
+        public void DrawOn2DControlTopDownView(List<(float x, float y, float z, float angle, int tex, bool show)> data)
+        {
             foreach (var dataPoint in data)
             {
                 (float x, float y, float z, float angle, int tex, bool show) = dataPoint;
@@ -81,9 +102,8 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public void DrawOn2DControlOrthographicView(List<(float x, float y, float z, float angle, int tex, bool show)> data)
         {
-            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
             foreach (var dataPoint in data)
             {
                 (float x, float y, float z, float angle, int tex, bool show) = dataPoint;
@@ -117,9 +137,8 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn3DControl()
+        public void DrawOn3DControl(List<(float x, float y, float z, float angle, int tex, bool show)> data)
         {
-            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
             data.Reverse();
             foreach (var dataPoint in data)
             {
