@@ -22,6 +22,8 @@ namespace STROOP.Map
         private int _purpleMarioTex = -1;
         private int _blueMarioTex = -1;
 
+        private bool _trackHistory;
+        private uint _highestGlobalTimerValue;
         private Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> _dictionary;
 
         private DateTime _showEachPointStartTime = DateTime.MinValue;
@@ -29,6 +31,8 @@ namespace STROOP.Map
         public MapObjectPreviousPositions()
             : base()
         {
+            _trackHistory = false;
+            _highestGlobalTimerValue = 0;
             _dictionary = new Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>>();
 
             InternalRotates = true;
@@ -51,20 +55,26 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView()
         {
-            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
-            DrawOn2DControlTopDownView(data);
+            foreach (var data in GetAllFrameData())
+            {
+                DrawOn2DControlTopDownView(data);
+            }
         }
 
         public override void DrawOn2DControlOrthographicView()
         {
-            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
-            DrawOn2DControlOrthographicView(data);
+            foreach (var data in GetAllFrameData())
+            {
+                DrawOn2DControlTopDownView(data);
+            }
         }
 
         public override void DrawOn3DControl()
         {
-            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
-            DrawOn3DControl(data);
+            foreach (var data in GetAllFrameData())
+            {
+                DrawOn2DControlTopDownView(data);
+            }
         }
 
         public void DrawOn2DControlTopDownView(List<(float x, float y, float z, float angle, int tex, bool show)> data)
@@ -220,7 +230,18 @@ namespace STROOP.Map
             };
         }
 
-        public List<(float x, float y, float z, float angle, int tex, bool show)> GetData()
+        public List<List<(float x, float y, float z, float angle, int tex, bool show)>> GetAllFrameData()
+        {
+            List<List<(float x, float y, float z, float angle, int tex, bool show)>> values =
+                new List<List<(float x, float y, float z, float angle, int tex, bool show)>>();
+            foreach (var value in _dictionary.Values)
+            {
+                values.Add(value);
+            }
+            return values;
+        }
+
+        public List<(float x, float y, float z, float angle, int tex, bool show)> GetCurrentFrameData()
         {
             float pos01X = Config.Stream.GetFloat(0x80372F00);
             float pos01Y = Config.Stream.GetFloat(0x80372F04);
@@ -373,6 +394,36 @@ namespace STROOP.Map
                 _blueMarioTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.BlueMarioMapImage as Bitmap);
             }
+
+            if (!_trackHistory) _dictionary.Clear();
+
+            uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
+            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetCurrentFrameData();
+
+            if (globalTimer < _highestGlobalTimerValue)
+            {
+                Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> tempDictionary =
+                    new Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>>();
+                foreach (uint key in _dictionary.Keys)
+                {
+                    tempDictionary[key] = _dictionary[key];
+                }
+                _dictionary.Clear();
+                foreach (uint key in tempDictionary.Keys)
+                {
+                    if (key <= globalTimer)
+                    {
+                        _dictionary[key] = tempDictionary[key];
+                        _highestGlobalTimerValue = key;
+                    }
+                }
+            }
+
+            if (!_dictionary.ContainsKey(globalTimer))
+            {
+                _dictionary[globalTimer] = data;
+                _highestGlobalTimerValue = globalTimer;
+            }
         }
 
         public override bool ParticipatesInGlobalIconSize()
@@ -395,8 +446,23 @@ namespace STROOP.Map
                     _showEachPointStartTime = DateTime.Now;
                 };
 
+                ToolStripMenuItem itemTrackHistory = new ToolStripMenuItem("Track History");
+                itemTrackHistory.Click += (sender, e) =>
+                {
+                    _trackHistory = !_trackHistory;
+                    itemTrackHistory.Checked = _trackHistory;
+                };
+
+                ToolStripMenuItem itemClearHistory = new ToolStripMenuItem("Clear History");
+                itemClearHistory.Click += (sender, e) =>
+                {
+                    _dictionary.Clear();
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemShowEachPoint);
+                _contextMenuStrip.Items.Add(itemTrackHistory);
+                _contextMenuStrip.Items.Add(itemClearHistory);
             }
 
             return _contextMenuStrip;
