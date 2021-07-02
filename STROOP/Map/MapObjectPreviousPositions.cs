@@ -67,7 +67,7 @@ namespace STROOP.Map
         {
             foreach (var data in GetAllFrameData())
             {
-                DrawOn2DControlTopDownView(data);
+                DrawOn2DControlOrthographicView(data);
             }
         }
 
@@ -75,7 +75,7 @@ namespace STROOP.Map
         {
             foreach (var data in GetAllFrameData())
             {
-                DrawOn2DControlTopDownView(data);
+                DrawOn3DControl(data);
             }
         }
 
