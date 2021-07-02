@@ -23,6 +23,7 @@ namespace STROOP.Map
         private int _blueMarioTex = -1;
 
         private bool _trackHistory;
+        private bool _pauseHistory;
         private uint _highestGlobalTimerValue;
         private Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> _dictionary;
 
@@ -32,6 +33,7 @@ namespace STROOP.Map
             : base()
         {
             _trackHistory = false;
+            _pauseHistory = false;
             _highestGlobalTimerValue = 0;
             _dictionary = new Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>>();
 
@@ -395,34 +397,37 @@ namespace STROOP.Map
                     Config.ObjectAssociations.BlueMarioMapImage as Bitmap);
             }
 
-            if (!_trackHistory) _dictionary.Clear();
-
-            uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
-            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetCurrentFrameData();
-
-            if (globalTimer < _highestGlobalTimerValue)
+            if (!_pauseHistory)
             {
-                Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> tempDictionary =
-                    new Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>>();
-                foreach (uint key in _dictionary.Keys)
+                if (!_trackHistory) _dictionary.Clear();
+
+                uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
+                List<(float x, float y, float z, float angle, int tex, bool show)> data = GetCurrentFrameData();
+
+                if (globalTimer < _highestGlobalTimerValue)
                 {
-                    tempDictionary[key] = _dictionary[key];
-                }
-                _dictionary.Clear();
-                foreach (uint key in tempDictionary.Keys)
-                {
-                    if (key <= globalTimer)
+                    Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> tempDictionary =
+                        new Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>>();
+                    foreach (uint key in _dictionary.Keys)
                     {
-                        _dictionary[key] = tempDictionary[key];
-                        _highestGlobalTimerValue = key;
+                        tempDictionary[key] = _dictionary[key];
+                    }
+                    _dictionary.Clear();
+                    foreach (uint key in tempDictionary.Keys)
+                    {
+                        if (key <= globalTimer)
+                        {
+                            _dictionary[key] = tempDictionary[key];
+                            _highestGlobalTimerValue = key;
+                        }
                     }
                 }
-            }
 
-            if (!_dictionary.ContainsKey(globalTimer))
-            {
-                _dictionary[globalTimer] = data;
-                _highestGlobalTimerValue = globalTimer;
+                if (!_dictionary.ContainsKey(globalTimer))
+                {
+                    _dictionary[globalTimer] = data;
+                    _highestGlobalTimerValue = globalTimer;
+                }
             }
         }
 
@@ -453,6 +458,13 @@ namespace STROOP.Map
                     itemTrackHistory.Checked = _trackHistory;
                 };
 
+                ToolStripMenuItem itemPauseHistory = new ToolStripMenuItem("Pause History");
+                itemPauseHistory.Click += (sender, e) =>
+                {
+                    _pauseHistory = !_pauseHistory;
+                    itemPauseHistory.Checked = _pauseHistory;
+                };
+
                 ToolStripMenuItem itemClearHistory = new ToolStripMenuItem("Clear History");
                 itemClearHistory.Click += (sender, e) =>
                 {
@@ -462,6 +474,7 @@ namespace STROOP.Map
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemShowEachPoint);
                 _contextMenuStrip.Items.Add(itemTrackHistory);
+                _contextMenuStrip.Items.Add(itemPauseHistory);
                 _contextMenuStrip.Items.Add(itemClearHistory);
             }
 
