@@ -20,6 +20,13 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
+            //double marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            //double marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            //double marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            //(double x, double z) = MoreMath.GetLineIntersectionAtCoordinate(marioX, marioZ, marioAngle, 1, false);
+            //SpecialConfig.CustomX = x;
+            //SpecialConfig.CustomZ = z;
+
             //float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             //float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             //float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);

@@ -214,7 +214,7 @@ namespace STROOP.Map
                                     }
                                     return output;
                                 }
-                                if (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+                                else if (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
                                     Config.CurrentMapGraphics.MapViewYawValue == 49152)
                                 {
                                     int zMin = (int)Math.Max(data.tri.GetMinZ(), Config.CurrentMapGraphics.MapViewZMin);
@@ -243,6 +243,12 @@ namespace STROOP.Map
                                         }
                                     }
                                     return output;
+                                }
+                                else
+                                {
+                                    float pointX = Config.CurrentMapGraphics.MapViewCenterXValue;
+                                    float pointZ = Config.CurrentMapGraphics.MapViewCenterZValue;
+                                    float lineAngle = Config.CurrentMapGraphics.MapViewYawValue - 16384;
                                 }
                             }
                             return new List<List<(float x, float y, float z, Color color)>>()

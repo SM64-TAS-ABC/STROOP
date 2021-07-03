@@ -1127,5 +1127,24 @@ namespace STROOP.Utilities
             double D = A * planeX + B * planeY + C * planeZ;
             return A * px + B * py + C * pz - D;
         }
+
+        public static (double x, double z) GetLineIntersectionAtCoordinate(
+            double pointX, double pointZ, double lineAngle, double coord, bool isX)
+        {
+            if (isX)
+            {
+                double lineAngleRadians = AngleUnitsToRadians(-lineAngle + 16384);
+                double dx = coord - pointX;
+                double dz = Math.Tan(lineAngleRadians) * dx;
+                return (coord, pointZ + dz);
+            }
+            else
+            {
+                double lineAngleRadians = AngleUnitsToRadians(lineAngle);
+                double dz = coord - pointZ;
+                double dx = Math.Tan(lineAngleRadians) * dz;
+                return (pointX + dx, coord);
+            }
+        }
     }
 }
