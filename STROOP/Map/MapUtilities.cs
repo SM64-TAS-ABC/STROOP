@@ -690,5 +690,24 @@ namespace STROOP.Map
                 Config.CurrentMapGraphics.MapViewCenterXValue, Config.CurrentMapGraphics.MapViewCenterZValue, x, z);
             return dist < Config.CurrentMapGraphics.MapViewRadius + bufferDistance;
         }
+
+        public static List<(double x, double z)> GetUnitPointsCrossSection(double bufferDistance)
+        {
+            float pointX = Config.CurrentMapGraphics.MapViewCenterXValue;
+            float pointZ = Config.CurrentMapGraphics.MapViewCenterZValue;
+            float lineAngle = Config.CurrentMapGraphics.MapViewYawValue - 16384;
+
+            double xIntersection1 = MoreMath.GetLineIntersectionAtCoordinate(
+                pointX, pointZ, lineAngle, Config.CurrentMapGraphics.MapViewZMin, false).x;
+            double xIntersection2 = MoreMath.GetLineIntersectionAtCoordinate(
+                pointX, pointZ, lineAngle, Config.CurrentMapGraphics.MapViewZMax, false).x;
+            int xMin = (int)(MoreMath.Min(xIntersection1, xIntersection2, Config.CurrentMapGraphics.MapViewXMin) - bufferDistance);
+            int xMax = (int)(MoreMath.Max(xIntersection1, xIntersection2, Config.CurrentMapGraphics.MapViewXMax) + bufferDistance);
+            return new List<(double x, double z)>()
+            {
+                MoreMath.GetLineIntersectionAtCoordinate(pointX, pointZ, lineAngle, xMin, true),
+                MoreMath.GetLineIntersectionAtCoordinate(pointX, pointZ, lineAngle, xMax, true),
+            };
+        }
     }
 }

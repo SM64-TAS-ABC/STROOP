@@ -20,6 +20,15 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
+            //if (SpecialConfig.CustomAngle != 0)
+            //{
+            //    List<(double x, double z)> values = MapUtilities.GetUnitPointsCrossSection(-10);
+            //    SpecialConfig.CustomX = values[0].x;
+            //    SpecialConfig.CustomZ = values[0].z;
+            //    SpecialConfig.Custom2X = values[1].x;
+            //    SpecialConfig.Custom2Z = values[1].z;
+            //}
+
             //double marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
             //double marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
             //double marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
