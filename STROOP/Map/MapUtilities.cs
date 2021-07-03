@@ -701,8 +701,8 @@ namespace STROOP.Map
                 pointX, pointZ, lineAngle, Config.CurrentMapGraphics.MapViewZMin, false).x;
             double xIntersection2 = MoreMath.GetLineIntersectionAtCoordinate(
                 pointX, pointZ, lineAngle, Config.CurrentMapGraphics.MapViewZMax, false).x;
-            int xMin = (int)(MoreMath.Min(xIntersection1, xIntersection2, Config.CurrentMapGraphics.MapViewXMin) - bufferDistance);
-            int xMax = (int)(MoreMath.Max(xIntersection1, xIntersection2, Config.CurrentMapGraphics.MapViewXMax) + bufferDistance);
+            int xMin = (int)(Math.Max(Math.Min(xIntersection1, xIntersection2), Config.CurrentMapGraphics.MapViewXMin) - bufferDistance);
+            int xMax = (int)(Math.Min(Math.Max(xIntersection1, xIntersection2), Config.CurrentMapGraphics.MapViewXMax) + bufferDistance);
             return new List<(double x, double z)>()
             {
                 MoreMath.GetLineIntersectionAtCoordinate(pointX, pointZ, lineAngle, xMin, true),
