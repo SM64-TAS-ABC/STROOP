@@ -102,6 +102,16 @@ namespace STROOP.Map
                 }
                 return vertices;
             }
+            else if (Config.CurrentMapGraphics.MapViewPitchValue == 0)
+            {
+                List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                for (int y = yMin; y <= yMax; y += 1)
+                {
+                    vertices.Add((float.NegativeInfinity, y, float.NegativeInfinity));
+                    vertices.Add((float.PositiveInfinity, y, float.PositiveInfinity));
+                }
+                return vertices;
+            }
             else
             {
                 return new List<(float x, float y, float z)>();
