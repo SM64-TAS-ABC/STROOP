@@ -717,6 +717,7 @@ namespace STROOP.Map
             {
                 points.Add(MoreMath.GetLineIntersectionAtCoordinate(pointX, pointZ, lineAngle, z, false));
             }
+            points = Enumerable.OrderBy(points, point => point.x).ToList();
             return points;
         }
     }

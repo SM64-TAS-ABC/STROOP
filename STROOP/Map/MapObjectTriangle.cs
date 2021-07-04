@@ -246,9 +246,28 @@ namespace STROOP.Map
                                 }
                                 else
                                 {
-                                    float pointX = Config.CurrentMapGraphics.MapViewCenterXValue;
-                                    float pointZ = Config.CurrentMapGraphics.MapViewCenterZValue;
-                                    float lineAngle = Config.CurrentMapGraphics.MapViewYawValue - 16384;
+                                    List<List<(float x, float y, float z, Color color)>> output =
+                                        new List<List<(float x, float y, float z, Color color)>>();
+                                    List<(double x, double z)> points = MapUtilities.GetUnitPointsCrossSection(5);
+                                    for (int i = 0; i < points.Count - 1; i++)
+                                    {
+                                        (float x1, float z1) = ((float x, float z))points[i];
+                                        (float x2, float z2) = ((float x, float z))points[i + 1];
+                                        int x = (int)Math.Min(x1, x2);
+                                        int z = (int)Math.Max(z1, z2);
+                                        float? y = data.tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
+                                        if (y.HasValue)
+                                        {
+                                            output.Add(new List<(float x, float y, float z, Color color)>()
+                                            {
+                                                (x1, y.Value, z1, color),
+                                                (x2, y.Value, z2, color),
+                                                (x2, y.Value - size, z2, color),
+                                                (x1, y.Value - size, z1, color),
+                                            });
+                                        }
+                                    }
+                                    return output;
                                 }
                             }
                             return new List<List<(float x, float y, float z, Color color)>>()
