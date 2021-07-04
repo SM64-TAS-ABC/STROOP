@@ -78,11 +78,11 @@ namespace STROOP.Map
             return (centerX, centerZ);
         }
 
-        public static (float x, float z) ConvertCoordsForControlOrthographicView(float x, float y, float z)
+        public static (float x, float z) ConvertCoordsForControlOrthographicView(float rawX, float rawY, float rawZ)
         {
-            x = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? x : (float)PuUtilities.GetRelativeCoordinate(x);
-            y = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? y : (float)PuUtilities.GetRelativeCoordinate(y);
-            z = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? z : (float)PuUtilities.GetRelativeCoordinate(z);
+            float x = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? rawX : (float)PuUtilities.GetRelativeCoordinate(rawX);
+            float y = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? rawY : (float)PuUtilities.GetRelativeCoordinate(rawY);
+            float z = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? rawZ : (float)PuUtilities.GetRelativeCoordinate(rawZ);
             float xOffset = x - Config.CurrentMapGraphics.MapViewCenterXValue;
             float yOffset = y - Config.CurrentMapGraphics.MapViewCenterYValue;
             float zOffset = z - Config.CurrentMapGraphics.MapViewCenterZValue;
@@ -118,6 +118,15 @@ namespace STROOP.Map
             float vOffsetPixels = vOffset * Config.CurrentMapGraphics.MapViewScaleValue;
             float centerH = Config.MapGui.CurrentControl.Width / 2 + hOffsetPixels;
             float centerV = Config.MapGui.CurrentControl.Height / 2 + vOffsetPixels;
+
+            if (Config.CurrentMapGraphics.MapViewPitchValue == 0 && float.IsInfinity(rawX))
+            {
+                float yOffsetPixels = yOffset * Config.CurrentMapGraphics.MapViewScaleValue;
+                float centerY = Config.MapGui.CurrentControl.Height / 2 + yOffsetPixels;
+                if (float.IsNegativeInfinity(rawX)) return (0, centerY);
+                else return (Config.MapGui.CurrentControl.Width, centerY);
+            }
+
             return (centerH, centerV);
         }
 

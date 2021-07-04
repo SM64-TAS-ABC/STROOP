@@ -59,6 +59,47 @@ namespace STROOP.Map
             return vertices;
         }
 
+        protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
+        {
+            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+
+            if (Config.CurrentMapGraphics.MapViewPitchValue == 0)
+            {
+                float xMin = Config.CurrentMapGraphics.MapViewXMin;
+                float xMax = Config.CurrentMapGraphics.MapViewXMax;
+                float yMin = Config.CurrentMapGraphics.MapViewYMin;
+                float yMax = Config.CurrentMapGraphics.MapViewYMax;
+                float zMin = Config.CurrentMapGraphics.MapViewZMin;
+                float zMax = Config.CurrentMapGraphics.MapViewZMax;
+
+                int yCounter = 0;
+                for (float y = yMin; y <= yMax; y = MoreMath.GetNextFloat(y))
+                {
+                    vertices.Add((float.NegativeInfinity, y, float.NegativeInfinity));
+                    vertices.Add((float.PositiveInfinity, y, float.PositiveInfinity));
+                    yCounter++;
+                    if (yCounter > 4000) break;
+                }
+                //int zCounter = 0;
+                //for (float z = zMin; z <= zMax; z = MoreMath.GetNextFloat(z))
+                //{
+                //    vertices.Add((xMin, marioY, z));
+                //    vertices.Add((xMax, marioY, z));
+                //    zCounter++;
+                //    if (zCounter > 4000) break;
+                //}
+
+                //// failsafe to prevent filling the whole screen
+                //if (xCounter > Config.MapGui.CurrentControl.Width ||
+                //    zCounter > Config.MapGui.CurrentControl.Height)
+                //{
+                //    return new List<(float x, float y, float z)>();
+                //}
+            }
+
+            return vertices;
+        }
+
         public override string GetName()
         {
             return "Float Gridlines";
