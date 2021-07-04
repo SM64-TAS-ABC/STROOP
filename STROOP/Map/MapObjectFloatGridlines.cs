@@ -80,21 +80,40 @@ namespace STROOP.Map
                     yCounter++;
                     if (yCounter > 4000) break;
                 }
-                //int zCounter = 0;
-                //for (float z = zMin; z <= zMax; z = MoreMath.GetNextFloat(z))
-                //{
-                //    vertices.Add((xMin, marioY, z));
-                //    vertices.Add((xMax, marioY, z));
-                //    zCounter++;
-                //    if (zCounter > 4000) break;
-                //}
 
-                //// failsafe to prevent filling the whole screen
-                //if (xCounter > Config.MapGui.CurrentControl.Width ||
-                //    zCounter > Config.MapGui.CurrentControl.Height)
-                //{
-                //    return new List<(float x, float y, float z)>();
-                //}
+                int xCounter = 0;
+                if (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
+                    Config.CurrentMapGraphics.MapViewYawValue == 32768)
+                {
+                    for (float x = xMin; x <= xMax; x = MoreMath.GetNextFloat(x))
+                    {
+                        vertices.Add((x, yMin, Config.CurrentMapGraphics.MapViewCenterZValue));
+                        vertices.Add((x, yMax, Config.CurrentMapGraphics.MapViewCenterZValue));
+                        xCounter++;
+                        if (xCounter > 4000) break;
+                    }
+                }
+
+                int zCounter = 0;
+                if (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+                    Config.CurrentMapGraphics.MapViewYawValue == 49152)
+                {
+                    for (float z = zMin; z <= zMax; z = MoreMath.GetNextFloat(z))
+                    {
+                        vertices.Add((Config.CurrentMapGraphics.MapViewCenterXValue, yMin, z));
+                        vertices.Add((Config.CurrentMapGraphics.MapViewCenterXValue, yMax, z));
+                        zCounter++;
+                        if (zCounter > 4000) break;
+                    }
+                }
+
+                // failsafe to prevent filling the whole screen
+                if (xCounter > Config.MapGui.CurrentControl.Width ||
+                    yCounter > Config.MapGui.CurrentControl.Height ||
+                    zCounter > Config.MapGui.CurrentControl.Width)
+                {
+                    return new List<(float x, float y, float z)>();
+                }
             }
 
             return vertices;
