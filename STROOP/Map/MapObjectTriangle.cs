@@ -253,8 +253,8 @@ namespace STROOP.Map
                                     {
                                         (float x1, float z1) = ((float x, float z))points[i];
                                         (float x2, float z2) = ((float x, float z))points[i + 1];
-                                        int x = (int)Math.Min(x1, x2);
-                                        int z = (int)Math.Max(z1, z2);
+                                        int x = (int)(Math.Abs(x1) < Math.Abs(x2) ? x1 : x2);
+                                        int z = (int)(Math.Abs(z1) < Math.Abs(z2) ? z1 : z2);
                                         float? y = data.tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
                                         if (y.HasValue)
                                         {
