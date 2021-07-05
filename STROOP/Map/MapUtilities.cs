@@ -122,7 +122,7 @@ namespace STROOP.Map
             if (Config.CurrentMapGraphics.MapViewPitchValue == 0 && float.IsInfinity(rawX))
             {
                 float yOffsetPixels = yOffset * Config.CurrentMapGraphics.MapViewScaleValue;
-                float centerY = Config.MapGui.CurrentControl.Height / 2 + yOffsetPixels;
+                float centerY = Config.MapGui.CurrentControl.Height / 2 - yOffsetPixels;
                 if (float.IsNegativeInfinity(rawX)) return (0, centerY);
                 else return (Config.MapGui.CurrentControl.Width, centerY);
             }
