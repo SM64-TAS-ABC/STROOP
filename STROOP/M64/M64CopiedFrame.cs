@@ -5,27 +5,117 @@ using System.Windows.Forms;
 
 namespace STROOP.M64
 {
+    /// <summary>
+    /// A frame of copied data from a .m64 recording.
+    /// </summary>
+    /// <seealso cref="M64CopiedData"/>
     public class M64CopiedFrame
     {
+        /// <summary>
+        /// The horizontal push of the joystick.
+        /// </summary>
         public readonly sbyte? X;
+
+        /// <summary>
+        /// The vertical push of the joystick.
+        /// </summary>
         public readonly sbyte? Y;
+
+        /// <summary>
+        /// Whether the A button is being pressed.
+        /// </summary>
         public readonly bool? A;
+
+        /// <summary>
+        /// Whether the B button is being pressed.
+        /// </summary>
         public readonly bool? B;
+
+        /// <summary>
+        /// Whether the Z button is being pressed.
+        /// </summary>
         public readonly bool? Z;
+
+        /// <summary>
+        /// Whether the S button is being pressed.
+        /// </summary>
         public readonly bool? S;
+
+        /// <summary>
+        /// Whether the R button is being pressed.
+        /// </summary>
         public readonly bool? R;
+
+        /// <summary>
+        /// Whether the C^ button is being pressed.
+        /// </summary>
         public readonly bool? C_Up;
+
+        /// <summary>
+        /// Whether the Cv button is being pressed.
+        /// </summary>
         public readonly bool? C_Down;
+
+        /// <summary>
+        /// Whether the C&lt; button is being pressed.
+        /// </summary>
         public readonly bool? C_Left;
+
+        /// <summary>
+        /// Whether the C&gt; button is being pressed.
+        /// </summary>
         public readonly bool? C_Right;
+
+        /// <summary>
+        /// Whether the L button is being pressed.
+        /// </summary>
         public readonly bool? L;
+
+        /// <summary>
+        /// Whether the D^ button is being pressed.
+        /// </summary>
         public readonly bool? D_Up;
+
+        /// <summary>
+        /// Whether the Dv button is being pressed.
+        /// </summary>
         public readonly bool? D_Down;
+
+        /// <summary>
+        /// Whether the D&lt; button is being pressed.
+        /// </summary>
         public readonly bool? D_Left;
+      
+        /// <summary>
+        /// Whether the D&gt; button is being pressed.
+        /// </summary>
         public readonly bool? D_Right;
 
+        /// <summary>
+        /// The raw value of this frame.
+        /// </summary>
+        /// <seealso cref="M64InputFrame.RawValue"/>
         public readonly uint RawValue;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:STROOP.M64.M64CopiedFrame"/> class.
+        /// </summary>
+        /// <param name="X">The horizontal push of the joystick.</param>
+        /// <param name="Y">The vertical push of the joystick.</param>
+        /// <param name="A">Whether the A button is being pressed.</param>
+        /// <param name="B">Whether the B button is being pressed.</param>
+        /// <param name="Z">Whether the Z button is being pressed.</param>
+        /// <param name="S">Whether the S button is being pressed.</param>
+        /// <param name="R">Whether the R button is being pressed.</param>
+        /// <param name="C_Up">Whether the C^ button is being pressed.</param>
+        /// <param name="C_Down">Whether the Cv button is being pressed.</param>
+        /// <param name="C_Left">Whether the C&lt; button is being pressed.</param>
+        /// <param name="C_Right">Whether the C&gt; button is being pressed.</param>
+        /// <param name="L">Whether the L button is being pressed.</param>
+        /// <param name="D_Up">Whether the D^ button is being pressed.</param>
+        /// <param name="D_Down">Whether the Dv button is being pressed.</param>
+        /// <param name="D_Left">Whether the D&lt; button is being pressed.</param>
+        /// <param name="D_Right">Whether the D&gt; button is being pressed.</param>
         public M64CopiedFrame(
             sbyte? X = null,
             sbyte? Y = null,
@@ -61,6 +151,7 @@ namespace STROOP.M64
             this.D_Left = D_Left;
             this.D_Right = D_Right;
 
+            // get the raw value
             RawValue = M64Utilities.GetRawValueFromInputs(
                 X ?? 0,
                 Y ?? 0,
@@ -80,6 +171,13 @@ namespace STROOP.M64
                 D_Right ?? false);
         }
 
+        /// <summary>
+        /// Copy an input frame into a copied frame.
+        /// </summary>
+        /// <returns>The copied frame.</returns>
+        /// <param name="input">Input frame to copy from.</param>
+        /// <param name="useRows">If set to <c>true</c> use the entire rows, otherwise use <paramref name="inputsList"/>.</param>
+        /// <param name="inputsList">Inputs to select.</param>
         public static M64CopiedFrame CreateCopiedFrame(M64InputFrame input, bool useRows, string inputsList)
         {
             return new M64CopiedFrame(
@@ -101,19 +199,32 @@ namespace STROOP.M64
                 useRows || inputsList.Contains("D>") ? input.D_Right : (bool?)null);
         }
 
+        /// <summary>
+        /// An empty frame of copied data.
+        /// </summary>
         public static readonly M64CopiedFrame OneEmptyFrame =
             new M64CopiedFrame(
                 0, 0, false, false, false, false, false, false,
                 false, false, false, false, false, false, false, false);
 
+        /// <summary>
+        /// A frame consisting of pressing pause.
+        /// </summary>
         public static readonly M64CopiedFrame OnePauseFrame =
             new M64CopiedFrame(
                 0, 0, false, false, false, true, false, false,
                 false, false, false, false, false, false, false, false);
 
+        /// <summary>
+        /// A frame consisting of pressing pause, but with all other inputs null.
+        /// </summary>
         public static readonly M64CopiedFrame OnePauseFrameOverwrite =
             new M64CopiedFrame(S: true);
 
+        /// <summary>
+        /// Apply the copied data to an input frame.
+        /// </summary>
+        /// <param name="input">Input frame to apply to.</param>
         public void Apply(M64InputFrame input)
         {
             if (X.HasValue) input.X = X.Value;

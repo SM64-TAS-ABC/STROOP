@@ -1,25 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
-using System.Xml.Serialization;
-using STROOP.Structs;
 using System.ComponentModel;
-using STROOP.Utilities;
 using System.Windows.Forms;
 using STROOP.Forms;
+using STROOP.Structs;
 
 namespace STROOP.M64
 {
-    public class M64Stats
+  /// <summary>
+  /// Statistics for a .m64 recording.
+  /// </summary>
+  public class M64Stats
     {
+        // the file this belongs to
         private readonly M64File _m64;
+
+        // the bytes of the file
         private byte[] _rawBytes { get => _m64.RawBytes; }
+
+        // the header of the recording
         private M64Header _header { get => _m64.Header; }
+     
+        // a list of inputs
         private BindingList<M64InputFrame> _inputs { get => _m64.Inputs; }
 
+        /// <summary>
+        /// The number of A presses that took place during the recording.
+        /// </summary>
+        /// <value>The number of A presses.</value>
         [Category("\u200B\u200B\u200BMain Button Presses"), DisplayName("\u200B\u200B\u200B\u200BNum A Presses")]
         public int NumAPresses
         {
@@ -27,6 +35,10 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.A = false); }
         }
 
+        /// <summary>
+        /// The number of B presses that took place during the recording.
+        /// </summary>
+        /// <value>The number of B presses.</value>
         [Category("\u200B\u200B\u200BMain Button Presses"), DisplayName("\u200B\u200B\u200BNum B Presses")]
         public int NumBPresses
         {
@@ -34,6 +46,10 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.B = false); }
         }
 
+        /// <summary>
+        /// The number of Z presses that took place during the recording.
+        /// </summary>
+        /// <value>The number of Z presses.</value>
         [Category("\u200B\u200B\u200BMain Button Presses"), DisplayName("\u200B\u200BNum Z Presses")]
         public int NumZPresses
         {
@@ -41,6 +57,10 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.Z = false); }
         }
 
+        /// <summary>
+        /// The number of S presses that took place during the recording.
+        /// </summary>
+        /// <value>The number of S presses.</value>
         [Category("\u200B\u200B\u200BMain Button Presses"), DisplayName("\u200BNum S Presses")]
         public int NumSPresses
         {
@@ -48,6 +68,10 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.S = false); }
         }
 
+        /// <summary>
+        /// The number of R presses that took place during the recording.
+        /// </summary>
+        /// <value>The number of R presses.</value>
         [Category("\u200B\u200B\u200BMain Button Presses"), DisplayName("Num R Presses")]
         public int NumRPresses
         {
@@ -55,6 +79,10 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.R = false); }
         }
 
+        /// <summary>
+        /// The number of C^ presses that took place during the recording.
+        /// </summary>
+        /// <value>The number of C^ presses.</value>
         [Category("\u200B\u200BC Button Presses"), DisplayName("\u200B\u200B\u200BNum C^ Presses")]
         public int NumCUpPresses
         {
@@ -62,6 +90,10 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.C_Up = false); }
         }
 
+        /// <summary>
+        /// The number of Cv presses that took place during the recording.
+        /// </summary>
+        /// <value>The number of Cv presses.</value>
         [Category("\u200B\u200BC Button Presses"), DisplayName("\u200B\u200BNum Cv Presses")]
         public int NumCDownPresses
         {
@@ -69,6 +101,10 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.C_Down = false); }
         }
 
+        /// <summary>
+        /// The number of C&lt; presses that took place during the recording.
+        /// </summary>
+        /// <value>The number of C&lt; presses.</value>
         [Category("\u200B\u200BC Button Presses"), DisplayName("\u200BNum C< Presses")]
         public int NumCLeftPresses
         {
@@ -76,6 +112,10 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.C_Left = false); }
         }
 
+        /// <summary>
+        /// The number of C&gt; presses that took place during the recording.
+        /// </summary>
+        /// <value>The number of C&gt; presses.</value>
         [Category("\u200B\u200BC Button Presses"), DisplayName("Num C> Presses")]
         public int NumCRightPresses
         {
@@ -83,6 +123,10 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.C_Right = false); }
         }
 
+        /// <summary>
+        /// The number of L presses that took place over the recording.
+        /// </summary>
+        /// <value>The number of L presses.</value>
         [Category("\u200BNoop Button Presses"), DisplayName("\u200B\u200B\u200B\u200BNum L Presses")]
         public int NumLPresses
         {
@@ -90,6 +134,10 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.L = false); }
         }
 
+        /// <summary>
+        /// The number of D^ presses that took place during the recording.
+        /// </summary>
+        /// <value>The number of D^ presses.</value>
         [Category("\u200BNoop Button Presses"), DisplayName("\u200B\u200B\u200BNum D^ Presses")]
         public int NumDUpPresses
         {
@@ -97,13 +145,21 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.D_Up = false); }
         }
 
+        /// <summary>
+        /// The number of Dv presses that took place during recording.
+        /// </summary>
+        /// <value>The number of Dv presses.</value>
         [Category("\u200BNoop Button Presses"), DisplayName("\u200B\u200BNum Dv Presses")]
         public int NumDDownPresses
         {
             get { return FindPresses(input => input.D_Down).Count; }
             set { SetNumPreses(value, input => input.D_Down = false); }
         }
-
+    
+        /// <summary>
+        /// The number of D&lt; presses that took place during the recording.
+        /// </summary>
+        /// <value>The number of D&lt; presses.</value>
         [Category("\u200BNoop Button Presses"), DisplayName("\u200BNum D< Presses")]
         public int NumDLeftPresses
         {
@@ -111,6 +167,10 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.D_Left = false); }
         }
 
+        /// <summary>
+        /// The number of D&gt; presses that took place during
+        /// </summary>
+        /// <value>The number DR ight presses.</value>
         [Category("\u200BNoop Button Presses"), DisplayName("Num D> Presses")]
         public int NumDRightPresses
         {
@@ -118,13 +178,21 @@ namespace STROOP.M64
             set { SetNumPreses(value, input => input.D_Right = false); }
         }
 
+        /// <summary>
+        /// The number of extra frames that occur as a consequence of lag.
+        /// </summary>
+        /// <value>The number of extra frames.</value>
         [Category("Misc"), DisplayName("\u200B\u200B\u200BLag VIs")]
         public int LagVis
         {
             get { return _header.NumVis - 2 * _header.NumInputs; }
-            set { }
+            set { /* should be an exception or some kind of no-op here */ }
         }
 
+        /// <summary>
+        /// The number of frames that were not used as inputs.
+        /// </summary>
+        /// <value>The number of unused inputs.</value>
         [Category("Misc"), DisplayName("\u200B\u200BNum Unused Inputs")]
         public int NumUnusedInputs
         {
@@ -135,9 +203,13 @@ namespace STROOP.M64
                 int headerInputCount = _header.NumInputs;
                 return rawInputCount - headerInputCount;
             }
-            set { }
+            set { /* should be an exception or some kind of no-op here */ }
         }
 
+        /// <summary>
+        /// Gets or sets the number joystick frames.
+        /// </summary>
+        /// <value>The number joystick frames.</value>
         [Category("Misc"), DisplayName("\u200BNum Joystick Frames")]
         public int NumJoystickFrames
         {
@@ -149,14 +221,19 @@ namespace STROOP.M64
         public int NumInputChanges
         {
             get { return Math.Max(FindInputChanges().Count - 1, 0); }
-            set { }
+            set { /* should be an exception or some kind of no-op here */ }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:STROOP.M64.M64Stats"/> class.
+        /// </summary>
+        /// <param name="m64">The .m64 recording to analyze.</param>
         public M64Stats(M64File m64)
         {
             _m64 = m64;
         }
 
+        // find the number of presses of various items
         private List<(int, int)> FindPresses(Func<M64InputFrame, bool> isPressedFunction)
         {
             List<(int, int)> pressList = new List<(int, int)>();
@@ -197,6 +274,7 @@ namespace STROOP.M64
             return pressList;
         }
 
+        // set the number of presses of a certain button press type
         private void SetNumPreses(int numPresses, Action<M64InputFrame> unpressFunction)
         {
             if (numPresses != 0) return;
@@ -206,6 +284,7 @@ namespace STROOP.M64
             }
         }
 
+        // find the frames where the joystick is being activated
         private List<(int, int, int)> FindJoystickFrames()
         {
             List<(int, int, int)> joystickFrames = new List<(int, int, int)>();
@@ -218,6 +297,7 @@ namespace STROOP.M64
             return joystickFrames;
         }
 
+        // clear out all frames with joystick movement
         private void SetNumJoystickFrames(int numFrames)
         {
             if (numFrames != 0) return;
@@ -228,6 +308,7 @@ namespace STROOP.M64
             }
         }
 
+        // find the number of frames where the inputs change, and which ones
         private List<(int, string)> FindInputChanges()
         {
             List<(int, string)> inputChanges = new List<(int, string)>();
@@ -244,6 +325,10 @@ namespace STROOP.M64
             return inputChanges;
         }
 
+        /// <summary>
+        /// Create a context menu strip from these stats.
+        /// </summary>
+        /// <returns>The context menu strip.</returns>
         public ContextMenuStrip CreateContextMenuStrip()
         {
             List<ToolStripMenuItem> items = M64Utilities.ButtonNameList.ConvertAll(
@@ -269,6 +354,7 @@ namespace STROOP.M64
                 };
             }
 
+            // create tooltip for joystick frames
             ToolStripMenuItem itemShowAllJoystickFrames = new ToolStripMenuItem("Show All Joystick Frames");
             itemShowAllJoystickFrames.Click += (sender, e) =>
             {
@@ -279,6 +365,7 @@ namespace STROOP.M64
             };
             items.Add(itemShowAllJoystickFrames);
 
+            // create tooltip for input changes
             ToolStripMenuItem itemShowAllInputChanges = new ToolStripMenuItem("Show All Input Changes");
             itemShowAllInputChanges.Click += (sender, e) =>
             {
@@ -294,6 +381,7 @@ namespace STROOP.M64
             return contextMenuStrip;
         }
 
+        // format the inputs as a string
         private string FormatButtonPressesString(List<(int, int)> buttonPresses, string buttonName)
         {
             List<string> lines = new List<string>();
@@ -312,6 +400,7 @@ namespace STROOP.M64
             return String.Join("\r\n", lines);
         }
 
+        // format the joystick inputs as a string
         private string FormatJoystickFramesString(List<(int, int, int)> joystickFrames)
         {
             List<string> lines = new List<string>();
@@ -328,6 +417,7 @@ namespace STROOP.M64
             return String.Join("\r\n", lines);
         }
 
+        // format all inputs as a string
         private string FormatInputChangesString(List<(int, string)> inputChanges)
         {
             List<string> lines = new List<string>();
