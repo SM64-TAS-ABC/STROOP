@@ -183,7 +183,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Level Tris";
+            return "Hitbox Hack Tris";
         }
 
         public override Image GetInternalImage()
