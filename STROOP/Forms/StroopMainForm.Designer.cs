@@ -11168,7 +11168,7 @@ namespace STROOP
             this.textBoxMapOptionsGlobalIconSize.Name = "textBoxMapOptionsGlobalIconSize";
             this.textBoxMapOptionsGlobalIconSize.Size = new System.Drawing.Size(65, 20);
             this.textBoxMapOptionsGlobalIconSize.TabIndex = 43;
-            this.textBoxMapOptionsGlobalIconSize.Text = "100";
+            this.textBoxMapOptionsGlobalIconSize.Text = "25";
             this.textBoxMapOptionsGlobalIconSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelMapOptionsGlobalIconSize
@@ -11418,7 +11418,7 @@ namespace STROOP
             this.trackBarMapOptionsGlobalIconSize.Size = new System.Drawing.Size(119, 45);
             this.trackBarMapOptionsGlobalIconSize.TabIndex = 42;
             this.trackBarMapOptionsGlobalIconSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarMapOptionsGlobalIconSize.Value = 100;
+            this.trackBarMapOptionsGlobalIconSize.Value = 25;
             // 
             // tabPageMapControllers
             // 

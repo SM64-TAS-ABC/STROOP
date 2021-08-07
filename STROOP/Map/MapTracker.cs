@@ -114,8 +114,8 @@ namespace STROOP.Map
             pictureBoxCog.ContextMenuStrip = _mapObjectList[0].GetContextMenuStrip();
             pictureBoxCog.Click += (sender, e) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
 
-            MapUtilities.CreateTrackBarContextMenuStrip(trackBarSize);
-            MapUtilities.CreateTrackBarContextMenuStrip(trackBarLineWidth);
+            MapUtilities.CreateTrackBarContextMenuStrip(trackBarSize, () => _mapObjectList[0].Size);
+            MapUtilities.CreateTrackBarContextMenuStrip(trackBarLineWidth, () => _mapObjectList[0].LineWidth);
             InitializePlusContextMenuStrip();
 
             UpdateControl();
