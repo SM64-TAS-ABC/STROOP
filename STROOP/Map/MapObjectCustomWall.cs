@@ -52,7 +52,18 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
+                ToolStripMenuItem addMoreTrisItem = new ToolStripMenuItem("Add More Tris");
+                addMoreTrisItem.Click += (sender, e) =>
+                {
+                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter triangle addresses as hex uints.");
+                    List<uint> triAddressList = MapUtilities.ParseCustomTris(text, TriangleClassification.Wall);
+                    if (triAddressList == null) return;
+                    _triAddressList.AddRange(triAddressList);
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(addMoreTrisItem);
+                _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetWallToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetTriangleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
