@@ -28,22 +28,9 @@ namespace STROOP.Map
 
         public static MapObjectCustomCeiling Create(string text)
         {
-            if (text == null) return null;
-            if (text == "")
-            {
-                uint ceilingTriangle = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
-                if (ceilingTriangle == 0) return null;
-                List<uint> ceilingTriangles = new List<uint>() { ceilingTriangle };
-                return new MapObjectCustomCeiling(ceilingTriangles);
-            }
-            List<uint?> nullableUIntList = ParsingUtilities.ParseStringList(text)
-                .ConvertAll(word => ParsingUtilities.ParseHexNullable(word));
-            if (nullableUIntList.Any(nullableUInt => !nullableUInt.HasValue))
-            {
-                return null;
-            }
-            List<uint> uintList = nullableUIntList.ConvertAll(nullableUInt => nullableUInt.Value);
-            return new MapObjectCustomCeiling(uintList);
+            List<uint> triAddressList = MapUtilities.ParseCustomTris(text, TriangleClassification.Ceiling);
+            if (triAddressList == null) return null;
+            return new MapObjectCustomCeiling(triAddressList);
         }
 
         protected override List<TriangleDataModel> GetUnfilteredTriangles()

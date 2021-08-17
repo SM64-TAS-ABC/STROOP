@@ -359,5 +359,20 @@ namespace STROOP.Utilities
 
             return null;
         }
+
+        public static uint GetCurrentTriangle(TriangleClassification classification)
+        {
+            switch (classification)
+            {
+                case TriangleClassification.Wall:
+                    return Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+                case TriangleClassification.Floor:
+                    return Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                case TriangleClassification.Ceiling:
+                    return Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 } 

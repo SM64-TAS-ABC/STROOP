@@ -732,5 +732,23 @@ namespace STROOP.Map
             points = Enumerable.OrderBy(points, point => point.x).ToList();
             return points;
         }
+
+        public static List<uint> ParseCustomTris(string text, TriangleClassification classification)
+        {
+            if (text == null) return null;
+            if (text == "")
+            {
+                uint currentTriangle = TriangleUtilities.GetCurrentTriangle(classification);
+                if (currentTriangle == 0) return null;
+                return new List<uint>() { currentTriangle };
+            }
+            List<uint?> nullableUIntList = ParsingUtilities.ParseStringList(text)
+                .ConvertAll(word => ParsingUtilities.ParseHexNullable(word));
+            if (nullableUIntList.Any(nullableUInt => !nullableUInt.HasValue))
+            {
+                return null;
+            }
+            return nullableUIntList.ConvertAll(nullableUInt => nullableUInt.Value);
+        }
     }
 }
