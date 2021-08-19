@@ -754,10 +754,20 @@ namespace STROOP.Map
         public static double GetMaybeHoverOpacity(MapObject mapObject, MapObjectHoverData hoverData)
         {
             if (hoverData?.MapObject != mapObject) return mapObject.Opacity;
+            return GetHoverOpacity();
+        }
+
+        public static double GetHoverOpacity()
+        {
             long deltaTime = DateTimeOffset.Now.ToUnixTimeMilliseconds() - MapObjectHoverData.HoverStartTime;
             double trig = Math.Cos(deltaTime / 150.0);
             double opacity = (trig + 1) / 4 + 0.5;
             return opacity;
+        }
+
+        public static byte GetHoverOpacityByte()
+        {
+            return (byte)(GetHoverOpacity() * 255);
         }
     }
 }

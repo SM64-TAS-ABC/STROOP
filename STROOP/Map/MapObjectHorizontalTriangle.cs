@@ -115,10 +115,11 @@ namespace STROOP.Map
             // Draw triangle
             foreach (List<(float x, float y, float z, TriangleDataModel tri)> vertexList in vertexListsForControl)
             {
-                GL.Color4(color.R, color.G, color.B, OpacityByte);
                 GL.Begin(PrimitiveType.Polygon);
                 foreach ((float x, float y, float z, TriangleDataModel tri) in vertexList)
                 {
+                    byte opacityByte = hoverData != null && hoverData.Tri == tri ? MapUtilities.GetHoverOpacityByte() : OpacityByte;
+                    GL.Color4(color.R, color.G, color.B, opacityByte);
                     GL.Vertex2(x, z);
                 }
                 GL.End();
