@@ -38,7 +38,7 @@ namespace STROOP.Map
             return (float)PositionAngle.Mario.Y;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<(float x, float y, float z)> data = GetData();
             foreach (var dataPoint in data)

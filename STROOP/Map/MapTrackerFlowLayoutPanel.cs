@@ -159,7 +159,7 @@ namespace STROOP.Map
 
             foreach (MapObject obj in listCombined)
             {
-                obj.DrawOn2DControl();
+                obj.DrawOn2DControl(hoverData);
             }
         }
 

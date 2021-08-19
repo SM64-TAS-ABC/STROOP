@@ -37,7 +37,7 @@ namespace STROOP.Map
             _previousBoldText = SpecialConfig.CoordinateLabelsBoldText;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             double spacing;
             if (SpecialConfig.CoordinateLabelsCustomSpacing == 0)

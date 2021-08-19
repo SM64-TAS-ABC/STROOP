@@ -41,7 +41,7 @@ namespace STROOP.Map
             _absoluteHeight = null;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             float marioHeight = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
             float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : _absoluteHeight;

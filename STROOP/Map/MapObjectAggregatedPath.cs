@@ -21,7 +21,7 @@ namespace STROOP.Map
         {
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<MapObjectPath> paths = new List<MapObjectPath>();
             foreach (MapTracker mapTracker in Config.MapGui.flowLayoutPanelMapTrackers.Controls)

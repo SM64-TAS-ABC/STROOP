@@ -85,9 +85,9 @@ namespace STROOP.Map
             return GetVerticesOrthographicView();
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            base.DrawOn2DControlTopDownView();
+            base.DrawOn2DControlTopDownView(hoverData);
 
             if (_customImage != null)
             {

@@ -37,7 +37,7 @@ namespace STROOP.Map
             return new MapObjectCustomIconPoints(floatPoints);
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             foreach (var p in _points)
             {

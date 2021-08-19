@@ -19,7 +19,7 @@ namespace STROOP.Map
         {
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<(PointF loc, SizeF size)> dimensions = GetDimensions();
             float angle = InternalRotates ? MapUtilities.ConvertAngleForControl(0) : 0; 

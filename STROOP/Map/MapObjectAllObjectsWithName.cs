@@ -51,7 +51,7 @@ namespace STROOP.Map
             return "All " + _objName;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<(float x, float y, float z, float angle, int tex)> data = GetData();
             data.Reverse();

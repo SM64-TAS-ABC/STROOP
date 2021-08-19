@@ -138,7 +138,7 @@ namespace STROOP.Map
             return segments;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<(float x, float z)> verticesForControl =

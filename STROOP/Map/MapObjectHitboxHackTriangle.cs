@@ -34,7 +34,7 @@ namespace STROOP.Map
             LineWidth = 0;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             // do nothing
         }

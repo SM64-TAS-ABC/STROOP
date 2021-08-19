@@ -21,7 +21,7 @@ namespace STROOP.Map
         {
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<List<(float x, float y, float z)>> quadList = GetQuadList();
             List<List<(float x, float z)>> quadListForControl =

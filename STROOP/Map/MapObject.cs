@@ -54,7 +54,7 @@ namespace STROOP.Map
         {
         }
 
-        public void DrawOn2DControl()
+        public void DrawOn2DControl(MapObjectHoverData hoverData)
         {
             if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
             {
@@ -62,11 +62,11 @@ namespace STROOP.Map
             }
             else
             {
-                DrawOn2DControlTopDownView();
+                DrawOn2DControlTopDownView(hoverData);
             }
         }
 
-        public abstract void DrawOn2DControlTopDownView();
+        public abstract void DrawOn2DControlTopDownView(MapObjectHoverData hoverData);
 
         public abstract void DrawOn2DControlOrthographicView();
 
