@@ -78,7 +78,7 @@ namespace STROOP.Map
                     }
                     else
                     {
-                        DrawOn2DControlTopDownViewWithoutUnits(yMin, MoreMath.GetPreviousFloat(yMax), color);
+                        DrawOn2DControlTopDownViewWithoutUnits(yMin, MoreMath.GetPreviousFloat(yMax), color, hoverData);
                     }
                 }
             }
@@ -90,28 +90,34 @@ namespace STROOP.Map
                 }
                 else
                 {
-                    DrawOn2DControlTopDownViewWithoutUnits(_minHeight, _maxHeight, Color);
+                    DrawOn2DControlTopDownViewWithoutUnits(_minHeight, _maxHeight, Color, hoverData);
                 }
             }
         }
 
-        private void DrawOn2DControlTopDownViewWithoutUnits(float? minHeight, float? maxHeight, Color color)
+        private void DrawOn2DControlTopDownViewWithoutUnits(
+            float? minHeight, float? maxHeight, Color color, MapObjectHoverData hoverData)
         {
-            List<List<(float x, float y, float z)>> vertexLists = GetVertexListsWithSplicing(minHeight, maxHeight);
-            List<List<(float x, float y, float z)>> vertexListsForControl =
+            List<List<(float x, float y, float z, TriangleDataModel tri)>> vertexLists =
+                GetVertexListsWithSplicing(minHeight, maxHeight);
+            List<List<(float x, float y, float z, TriangleDataModel tri)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.y, vertex.z)));
+                    vertex =>
+                    {
+                        (float x, float y, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.y, vertex.z);
+                        return (x, y, z, vertex.tri);
+                    }));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
             // Draw triangle
-            GL.Color4(color.R, color.G, color.B, OpacityByte);
-            foreach (List<(float x, float y, float z)> vertexList in vertexListsForControl)
+            foreach (List<(float x, float y, float z, TriangleDataModel tri)> vertexList in vertexListsForControl)
             {
+                GL.Color4(color.R, color.G, color.B, OpacityByte);
                 GL.Begin(PrimitiveType.Polygon);
-                foreach ((float x, float y, float z) in vertexList)
+                foreach ((float x, float y, float z, TriangleDataModel tri) in vertexList)
                 {
                     GL.Vertex2(x, z);
                 }
@@ -123,10 +129,10 @@ namespace STROOP.Map
             {
                 GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
                 GL.LineWidth(LineWidth);
-                foreach (List<(float x, float y, float z)> vertexList in vertexListsForControl)
+                foreach (List<(float x, float y, float z, TriangleDataModel tri)> vertexList in vertexListsForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float y, float z) in vertexList)
+                    foreach ((float x, float y, float z, TriangleDataModel tri) in vertexList)
                     {
                         GL.Vertex2(x, z);
                     }
@@ -365,15 +371,18 @@ namespace STROOP.Map
             }
         }
 
-        private List<List<(float x, float y, float z)>> GetVertexListsWithSplicing(float? minHeight, float? maxHeight)
+        private List<List<(float x, float y, float z, TriangleDataModel tri)>> GetVertexListsWithSplicing(float? minHeight, float? maxHeight)
         {
-            List<List<(float x, float y, float z)>> vertexLists = GetVertexLists();
+            List<List<(float x, float y, float z, TriangleDataModel tri)>> vertexLists =
+                GetFilteredTriangles().ConvertAll(tri => tri.Get3DVerticesWithTri());
             if (!minHeight.HasValue && !maxHeight.HasValue) return vertexLists; // short circuit
 
-            List<List<(float x, float y, float z)>> splicedVertexLists = new List<List<(float x, float y, float z)>>();
-            foreach (List<(float x, float y, float z)> vertexList in vertexLists)
+            List<List<(float x, float y, float z, TriangleDataModel tri)>> splicedVertexLists =
+                new List<List<(float x, float y, float z, TriangleDataModel tri)>>();
+            foreach (List<(float x, float y, float z, TriangleDataModel tri)> vertexList in vertexLists)
             {
-                List<(float x, float y, float z)> splicedVertexList = new List<(float x, float y, float z)>();
+                List<(float x, float y, float z, TriangleDataModel tri)> splicedVertexList =
+                    new List<(float x, float y, float z, TriangleDataModel tri)>();
                 splicedVertexList.AddRange(vertexList);
 
                 float minY = splicedVertexList.Min(vertex => vertex.y);
@@ -384,17 +393,18 @@ namespace STROOP.Map
                     if (minHeight.Value > maxY) continue; // don't add anything
                     if (minHeight.Value > minY)
                     {
-                        List<(float x, float y, float z)> tempVertexList = new List<(float x, float y, float z)>();
+                        List<(float x, float y, float z, TriangleDataModel tri)> tempVertexList =
+                            new List<(float x, float y, float z, TriangleDataModel tri)>();
                         for (int i = 0; i < splicedVertexList.Count; i++)
                         {
-                            (float x1, float y1, float z1) = splicedVertexList[i];
-                            (float x2, float y2, float z2) = splicedVertexList[(i + 1) % splicedVertexList.Count];
+                            (float x1, float y1, float z1, TriangleDataModel tri1) = splicedVertexList[i];
+                            (float x2, float y2, float z2, TriangleDataModel tri2) = splicedVertexList[(i + 1) % splicedVertexList.Count];
                             bool isValid1 = y1 >= minHeight.Value;
                             bool isValid2 = y2 >= minHeight.Value;
                             if (isValid1)
-                                tempVertexList.Add((x1, y1, z1));
+                                tempVertexList.Add((x1, y1, z1, tri1));
                             if (isValid1 != isValid2)
-                                tempVertexList.Add(InterpolatePointForY(x1, y1, z1, x2, y2, z2, minHeight.Value));
+                                tempVertexList.Add(InterpolatePointForY(x1, y1, z1, x2, y2, z2, minHeight.Value, tri1));
                         }
                         splicedVertexList.Clear();
                         splicedVertexList.AddRange(tempVertexList);
@@ -406,17 +416,18 @@ namespace STROOP.Map
                     if (maxHeight.Value < minY) continue; // don't add anything
                     if (maxHeight.Value < maxY)
                     {
-                        List<(float x, float y, float z)> tempVertexList = new List<(float x, float y, float z)>();
+                        List<(float x, float y, float z, TriangleDataModel tri)> tempVertexList =
+                            new List<(float x, float y, float z, TriangleDataModel tri)>();
                         for (int i = 0; i < splicedVertexList.Count; i++)
                         {
-                            (float x1, float y1, float z1) = splicedVertexList[i];
-                            (float x2, float y2, float z2) = splicedVertexList[(i + 1) % splicedVertexList.Count];
+                            (float x1, float y1, float z1, TriangleDataModel tri1) = splicedVertexList[i];
+                            (float x2, float y2, float z2, TriangleDataModel tri2) = splicedVertexList[(i + 1) % splicedVertexList.Count];
                             bool isValid1 = y1 <= maxHeight.Value;
                             bool isValid2 = y2 <= maxHeight.Value;
                             if (isValid1)
-                                tempVertexList.Add((x1, y1, z1));
+                                tempVertexList.Add((x1, y1, z1, tri1));
                             if (isValid1 != isValid2)
-                                tempVertexList.Add(InterpolatePointForY(x1, y1, z1, x2, y2, z2, maxHeight.Value));
+                                tempVertexList.Add(InterpolatePointForY(x1, y1, z1, x2, y2, z2, maxHeight.Value, tri1));
                         }
                         splicedVertexList.Clear();
                         splicedVertexList.AddRange(tempVertexList);
@@ -428,13 +439,13 @@ namespace STROOP.Map
             return splicedVertexLists;
         }
 
-        private (float x, float y, float z) InterpolatePointForY(
-            float x1, float y1, float z1, float x2, float y2, float z2, float y)
+        private (float x, float y, float z, TriangleDataModel tri) InterpolatePointForY(
+            float x1, float y1, float z1, float x2, float y2, float z2, float y, TriangleDataModel tri)
         {
             float proportion = (y - y1) / (y2 - y1);
             float x = x1 + proportion * (x2 - x1);
             float z = z1 + proportion * (z2 - z1);
-            return (x, y, z);
+            return (x, y, z, tri);
         }
 
         public override MapObjectHoverData GetHoverData()

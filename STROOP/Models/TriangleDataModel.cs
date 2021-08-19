@@ -310,6 +310,14 @@ namespace STROOP.Models
             };
         }
 
+        public List<(float x, float y, float z, TriangleDataModel tri)> Get3DVerticesWithTri()
+        {
+            return new List<(float, float, float, TriangleDataModel)>()
+            {
+                (X1, Y1, Z1, this), (X2, Y2, Z2, this), (X3, Y3, Z3, this)
+            };
+        }
+
         public double GetDistToMidpoint()
         {
             float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
