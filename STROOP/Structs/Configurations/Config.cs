@@ -117,5 +117,10 @@ namespace STROOP.Structs.Configurations
             DebugText.Visible = true;
             DebugText.Text = formatted;
         }
+
+        public static void HideDebugText()
+        {
+            DebugText.Visible = false;
+        }
     }
 }

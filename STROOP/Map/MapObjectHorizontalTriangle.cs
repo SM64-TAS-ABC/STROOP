@@ -459,9 +459,10 @@ namespace STROOP.Map
             TriangleDataModel hoverTri = null;
             for (int i = trisSortedByY.Count - 1; i >= 0; i--)
             {
-                hoverTri = trisSortedByY[i];
-                if (hoverTri.IsPointInsideTriangle(inGameX, inGameZ, _showTriUnits))
+                TriangleDataModel tri = trisSortedByY[i];
+                if (tri.IsPointInsideTriangle(inGameX, inGameZ, _showTriUnits))
                 {
+                    hoverTri = tri;
                     break;
                 }
             }

@@ -1,6 +1,7 @@
 ﻿using OpenTK;
 using OpenTK.Graphics;
 using STROOP.Models;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace STROOP.Map
         {
             List<object> parts = new List<object>();
             parts.Add(MapObject);
-            if (Tri != null) parts.Add(Tri.Address);
+            if (Tri != null) parts.Add(HexUtilities.FormatValue(Tri.Address));
             return string.Join(",", parts);
         }
 

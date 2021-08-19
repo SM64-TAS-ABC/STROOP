@@ -167,7 +167,14 @@ namespace STROOP.Map
                     PreviousHoverData = hoverData;
                     MapObjectHoverData.HoverStartTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
                 }
-                Config.SetDebugText(hoverData?.ToString() ?? "NULL"); // TODO UNDO THIS
+                if (hoverData == null)
+                {
+                    Config.HideDebugText();
+                }
+                else
+                {
+                    Config.SetDebugText(hoverData);
+                }
             }
 
             foreach (MapObject obj in listCombined)
