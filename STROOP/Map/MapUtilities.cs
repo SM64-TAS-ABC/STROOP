@@ -750,5 +750,14 @@ namespace STROOP.Map
             }
             return nullableUIntList.ConvertAll(nullableUInt => nullableUInt.Value);
         }
+
+        public static double GetMaybeHoverOpacity(MapObject mapObject, MapObjectHoverData hoverData)
+        {
+            if (hoverData?.MapObject != mapObject) return mapObject.Opacity;
+            long deltaTime = DateTimeOffset.Now.ToUnixTimeMilliseconds() - MapObjectHoverData.HoverStartTime;
+            double trig = Math.Cos(deltaTime / 150.0);
+            double opacity = (trig + 1) / 4 + 0.5;
+            return opacity;
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace STROOP.Map
 {
     public class MapObjectHoverData
     {
+        public static long HoverStartTime = 0;
+
         public readonly MapObject MapObject;
 
         public MapObjectHoverData(MapObject mapObject)

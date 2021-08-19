@@ -19,6 +19,8 @@ namespace STROOP.Map
 {
     public class MapTrackerFlowLayoutPanel : NoTearFlowLayoutPanel
     {
+        private static bool HoverDataExists = false;
+
         private readonly object _objectLock = new object();
 
         private MapObject _mapObjMap;
@@ -154,6 +156,12 @@ namespace STROOP.Map
                 MapObject mapObject = listCombined[i];
                 hoverData = mapObject.GetHoverData();
                 if (hoverData != null) break;
+            }
+            bool hoverDataExists = hoverData != null;
+            if (HoverDataExists != hoverDataExists)
+            {
+                HoverDataExists = hoverDataExists;
+                MapObjectHoverData.HoverStartTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             }
             Config.SetDebugText(hoverData?.ToString() ?? "NULL"); // TODO UNDO THIS
 
