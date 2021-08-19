@@ -30,5 +30,15 @@ namespace STROOP.Map
             if (Tri != null) parts.Add(Tri.Address);
             return string.Join(",", parts);
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is MapObjectHoverData other)
+            {
+                return MapObject == other.MapObject &&
+                    Tri?.Address == other.Tri?.Address;
+            }
+            return false;
+        }
     }
 }

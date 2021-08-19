@@ -19,7 +19,7 @@ namespace STROOP.Map
 {
     public class MapTrackerFlowLayoutPanel : NoTearFlowLayoutPanel
     {
-        private static bool HoverDataExists = false;
+        private static MapObjectHoverData PreviousHoverData = null;
 
         private readonly object _objectLock = new object();
 
@@ -162,10 +162,9 @@ namespace STROOP.Map
                     hoverData = mapObject.GetHoverData();
                     if (hoverData != null) break;
                 }
-                bool hoverDataExists = hoverData != null;
-                if (HoverDataExists != hoverDataExists)
+                if (!Equals(PreviousHoverData, hoverData))
                 {
-                    HoverDataExists = hoverDataExists;
+                    PreviousHoverData = hoverData;
                     MapObjectHoverData.HoverStartTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
                 }
                 Config.SetDebugText(hoverData?.ToString() ?? "NULL"); // TODO UNDO THIS
