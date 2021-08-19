@@ -16,25 +16,29 @@ namespace STROOP.Map
         public static long HoverStartTime = 0;
 
         public readonly MapObject MapObject;
-        public readonly float X;
-        public readonly float Z;
         public readonly TriangleDataModel Tri;
+        public readonly float? MidUnitX;
+        public readonly float? MidUnitZ;
 
-        public MapObjectHoverData(MapObject mapObject, float x, float z, TriangleDataModel tri = null)
+        public MapObjectHoverData(
+            MapObject mapObject,
+            TriangleDataModel tri = null,
+            float? midUnitX = null,
+            float? midUnitZ = null)
         {
             MapObject = mapObject;
-            X = x;
-            Z = z;
             Tri = tri;
+            MidUnitX = midUnitX;
+            MidUnitZ = midUnitZ;
         }
 
         public override string ToString()
         {
             List<object> parts = new List<object>();
             parts.Add(MapObject);
-            parts.Add(X);
-            parts.Add(Z);
             if (Tri != null) parts.Add(HexUtilities.FormatValue(Tri.Address));
+            if (MidUnitX.HasValue) parts.Add(MidUnitX.Value);
+            if (MidUnitZ.HasValue) parts.Add(MidUnitZ.Value);
             return string.Join(",", parts);
         }
 
@@ -43,9 +47,9 @@ namespace STROOP.Map
             if (obj is MapObjectHoverData other)
             {
                 return MapObject == other.MapObject &&
-                    X == other.X &&
-                    Z == other.Z &&
-                    Tri?.Address == other.Tri?.Address;
+                    Tri?.Address == other.Tri?.Address &&
+                    MidUnitX == other.MidUnitX &&
+                    MidUnitZ == other.MidUnitZ;
             }
             return false;
         }

@@ -100,7 +100,7 @@ namespace STROOP.Map
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
             double dist = MoreMath.GetDistanceBetween(x, z, inGameX, inGameZ);
             double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
-            return dist <= radius ? new MapObjectHoverData(this, inGameX, inGameZ) : null;
+            return dist <= radius ? new MapObjectHoverData(this) : null;
         }
     }
 }

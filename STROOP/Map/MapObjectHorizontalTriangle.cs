@@ -177,7 +177,11 @@ namespace STROOP.Map
             bool hasHovered = false;
             foreach (List<(float x, float y, float z)> quad in quadList)
             {
-                bool isWithinQuad = hoverData != null && MapUtilities.IsWithinQuad(quad, hoverData.X, hoverData.Z);
+                bool isWithinQuad =
+                    hoverData != null &&
+                    hoverData.MidUnitX.HasValue &&
+                    hoverData.MidUnitZ.HasValue &&
+                    MapUtilities.IsWithinQuad(quad, hoverData.MidUnitX.Value, hoverData.MidUnitZ.Value);
                 bool isHovered = isWithinQuad && !hasHovered;
                 if (isHovered) hasHovered = true;
                 List<(float x, float y, float z, bool isHovered)> quadHovered =
@@ -468,6 +472,7 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverData()
         {
+            bool isShowingTriUnits = _showTriUnits && MapUtilities.IsAbleToShowUnitPrecision();
             Point relPos = Config.MapGui.CurrentControl.PointToClient(Cursor.Position);
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
             List<TriangleDataModel> tris = GetFilteredTriangles();
@@ -477,7 +482,7 @@ namespace STROOP.Map
             for (int i = trisSortedByY.Count - 1; i >= 0; i--)
             {
                 TriangleDataModel tri = trisSortedByY[i];
-                if (tri.IsPointInsideTriangle(inGameX, inGameZ, _showTriUnits))
+                if (tri.IsPointInsideTriangle(inGameX, inGameZ, isShowingTriUnits))
                 {
                     hoverTri = tri;
                     break;
@@ -486,7 +491,16 @@ namespace STROOP.Map
             
             if (hoverTri != null)
             {
-                return new MapObjectHoverData(this, inGameX, inGameZ, tri: hoverTri);
+                if (isShowingTriUnits)
+                {
+                    float midUnitX = (int)inGameX + (inGameX >= 0 ? 0.5f : -0.5f);
+                    float midUnitZ = (int)inGameZ + (inGameZ >= 0 ? 0.5f : -0.5f);
+                    return new MapObjectHoverData(this, tri: hoverTri, midUnitX: midUnitX, midUnitZ: midUnitZ);
+                }
+                else
+                {
+                    return new MapObjectHoverData(this, tri: hoverTri);
+                }
             }
 
             return null;
