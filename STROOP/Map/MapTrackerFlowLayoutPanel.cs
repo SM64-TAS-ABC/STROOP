@@ -110,7 +110,7 @@ namespace STROOP.Map
             }
         }
 
-        public void DrawOn2DControl()
+        public void DrawOn2DControl(bool isMainGraphics)
         {
             List<MapObject> listOrderOnTop = new List<MapObject>();
             List<MapObject> listOrderOnBottom = new List<MapObject>();
@@ -151,19 +151,25 @@ namespace STROOP.Map
             listCombined.Insert(0, _mapObjBackground);
 
             MapObjectHoverData hoverData = null;
-            for (int i = listCombined.Count - 1; i >= 0; i--)
+            if (isMainGraphics &&
+                !Config.MapGui.checkBoxMapOptionsEnable3D.Checked &&
+                !Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked &&
+                Config.MapGui.checkBoxMapOptionsSelectionMode.Checked)
             {
-                MapObject mapObject = listCombined[i];
-                hoverData = mapObject.GetHoverData();
-                if (hoverData != null) break;
+                for (int i = listCombined.Count - 1; i >= 0; i--)
+                {
+                    MapObject mapObject = listCombined[i];
+                    hoverData = mapObject.GetHoverData();
+                    if (hoverData != null) break;
+                }
+                bool hoverDataExists = hoverData != null;
+                if (HoverDataExists != hoverDataExists)
+                {
+                    HoverDataExists = hoverDataExists;
+                    MapObjectHoverData.HoverStartTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+                }
+                Config.SetDebugText(hoverData?.ToString() ?? "NULL"); // TODO UNDO THIS
             }
-            bool hoverDataExists = hoverData != null;
-            if (HoverDataExists != hoverDataExists)
-            {
-                HoverDataExists = hoverDataExists;
-                MapObjectHoverData.HoverStartTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
-            }
-            Config.SetDebugText(hoverData?.ToString() ?? "NULL"); // TODO UNDO THIS
 
             foreach (MapObject obj in listCombined)
             {

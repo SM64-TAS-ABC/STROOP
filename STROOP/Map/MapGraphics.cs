@@ -112,7 +112,7 @@ namespace STROOP.Map
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.MatrixMode(MatrixMode.Modelview);
 
-            Config.MapGui.flowLayoutPanelMapTrackers.DrawOn2DControl();
+            Config.MapGui.flowLayoutPanelMapTrackers.DrawOn2DControl(_isMainGraphics);
 
             _glControl.SwapBuffers();
         }
