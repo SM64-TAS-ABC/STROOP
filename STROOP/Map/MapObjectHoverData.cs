@@ -16,11 +16,15 @@ namespace STROOP.Map
         public static long HoverStartTime = 0;
 
         public readonly MapObject MapObject;
+        public readonly float X;
+        public readonly float Z;
         public readonly TriangleDataModel Tri;
 
-        public MapObjectHoverData(MapObject mapObject, TriangleDataModel tri = null)
+        public MapObjectHoverData(MapObject mapObject, float x, float z, TriangleDataModel tri = null)
         {
             MapObject = mapObject;
+            X = x;
+            Z = z;
             Tri = tri;
         }
 
@@ -37,6 +41,8 @@ namespace STROOP.Map
             if (obj is MapObjectHoverData other)
             {
                 return MapObject == other.MapObject &&
+                    X == other.X &&
+                    Z == other.Z &&
                     Tri?.Address == other.Tri?.Address;
             }
             return false;

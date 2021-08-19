@@ -74,7 +74,7 @@ namespace STROOP.Map
                     Color color = colors[i % 4];
                     if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
                     {
-                        DrawOn2DControlTopDownViewWithUnits(yMin, yMax, color);
+                        DrawOn2DControlTopDownViewWithUnits(yMin, yMax, color, hoverData);
                     }
                     else
                     {
@@ -86,7 +86,7 @@ namespace STROOP.Map
             {
                 if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
                 {
-                    DrawOn2DControlTopDownViewWithUnits(_minHeight, _maxHeight, Color);
+                    DrawOn2DControlTopDownViewWithUnits(_minHeight, _maxHeight, Color, hoverData);
                 }
                 else
                 {
@@ -144,7 +144,7 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        private void DrawOn2DControlTopDownViewWithUnits(float? minHeight, float? maxHeight, Color color)
+        private void DrawOn2DControlTopDownViewWithUnits(float? minHeight, float? maxHeight, Color color, MapObjectHoverData hoverData)
         {
             List<TriangleDataModel> triangles = GetFilteredTriangles();
             List<(int x, int z)> unitPoints = triangles.ConvertAll(triangle =>
@@ -469,7 +469,7 @@ namespace STROOP.Map
             
             if (hoverTri != null)
             {
-                return new MapObjectHoverData(this, tri: hoverTri);
+                return new MapObjectHoverData(this, inGameX, inGameZ, tri: hoverTri);
             }
 
             return null;
