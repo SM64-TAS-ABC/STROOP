@@ -297,6 +297,102 @@ namespace STROOP.Map
             return quadList;
         }
 
+        public static float GetXWithMinAbsValue(List<(float x, float y, float z)> quad)
+        {
+            float bestX = float.PositiveInfinity;
+            float bestAbs = float.PositiveInfinity;
+            foreach ((float x, float y, float z) in quad)
+            {
+                float abs = Math.Abs(x);
+                if (abs < bestAbs)
+                {
+                    bestX = x;
+                    bestAbs = abs;
+                }
+            }
+            return bestX;
+        }
+
+        public static float GetXWithMaxAbsValue(List<(float x, float y, float z)> quad)
+        {
+            float bestX = 0;
+            float bestAbs = 0;
+            foreach ((float x, float y, float z) in quad)
+            {
+                float abs = Math.Abs(x);
+                if (abs > bestAbs)
+                {
+                    bestX = x;
+                    bestAbs = abs;
+                }
+            }
+            return bestX;
+        }
+
+        public static float GetZWithMinAbsValue(List<(float x, float y, float z)> quad)
+        {
+            float bestZ = float.PositiveInfinity;
+            float bestAbs = float.PositiveInfinity;
+            foreach ((float x, float y, float z) in quad)
+            {
+                float abs = Math.Abs(z);
+                if (abs < bestAbs)
+                {
+                    bestZ = z;
+                    bestAbs = abs;
+                }
+            }
+            return bestZ;
+        }
+
+        public static float GetZWithMaxAbsValue(List<(float x, float y, float z)> quad)
+        {
+            float bestZ = 0;
+            float bestAbs = 0;
+            foreach ((float x, float y, float z) in quad)
+            {
+                float abs = Math.Abs(z);
+                if (abs > bestAbs)
+                {
+                    bestZ = z;
+                    bestAbs = abs;
+                }
+            }
+            return bestZ;
+        }
+
+        public static bool IsWithinQuad(List<(float x, float y, float z)> quad, float x, float z)
+        {
+            float xMinAbs = GetXWithMinAbsValue(quad);
+            float xMaxAbs = GetXWithMaxAbsValue(quad);
+            float zMinAbs = GetZWithMinAbsValue(quad);
+            float zMaxAbs = GetZWithMaxAbsValue(quad);
+
+            if (xMaxAbs < 0)
+            {
+                if (x <= xMaxAbs) return false;
+                if (x > xMinAbs) return false;
+            }
+            else
+            {
+                if (x < xMinAbs) return false;
+                if (x >= xMaxAbs) return false;
+            }
+
+            if (zMaxAbs < 0)
+            {
+                if (z <= zMaxAbs) return false;
+                if (z > zMinAbs) return false;
+            }
+            else
+            {
+                if (z < zMinAbs) return false;
+                if (z >= zMaxAbs) return false;
+            }
+
+            return true;
+        }
+
         public static (float x1, float z1, float x2, float z2, bool xProjection, double pushAngle)? Get2DWallDataFromTri(
             TriangleDataModel tri, float? heightNullable = null)
         {

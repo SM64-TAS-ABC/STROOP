@@ -172,6 +172,17 @@ namespace STROOP.Map
             }).SelectMany(points => points).Distinct().ToList();
 
             List<List<(float x, float y, float z)>> quadList = MapUtilities.ConvertUnitPointsToQuads(unitPoints);
+            List<List<(float x, float y, float z, bool isHovered)>> quadListHovered =
+                new List<List<(float x, float y, float z, bool isHovered)>>();
+            bool hasHovered = false;
+            foreach (List<(float x, float y, float z)> quad in quadList)
+            {
+                bool isWithinQuad = MapUtilities.IsWithinQuad(quad, hoverData.X, hoverData.Z);
+                bool isHovered = isWithinQuad && !hasHovered;
+                if (isHovered) hasHovered = true;
+            }
+
+
             List<List<(float x, float z)>> quadListForControl =
                 quadList.ConvertAll(quad => quad.ConvertAll(
                     vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z)));
