@@ -177,27 +177,33 @@ namespace STROOP.Map
             bool hasHovered = false;
             foreach (List<(float x, float y, float z)> quad in quadList)
             {
-                bool isWithinQuad = MapUtilities.IsWithinQuad(quad, hoverData.X, hoverData.Z);
+                bool isWithinQuad = hoverData != null && MapUtilities.IsWithinQuad(quad, hoverData.X, hoverData.Z);
                 bool isHovered = isWithinQuad && !hasHovered;
                 if (isHovered) hasHovered = true;
+                List<(float x, float y, float z, bool isHovered)> quadHovered =
+                    quad.ConvertAll(q => (q.x, q.y, q.z, isHovered));
+                quadListHovered.Add(quadHovered);
             }
-
-
-            List<List<(float x, float z)>> quadListForControl =
-                quadList.ConvertAll(quad => quad.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z)));
+            List<List<(float x, float z, bool isHovered)>> quadListForControl =
+                quadListHovered.ConvertAll(quad => quad.ConvertAll(
+                    vertex =>
+                    {
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z);
+                        return (x, z, vertex.isHovered);
+                    }));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
             // Draw quad
-            GL.Color4(color.R, color.G, color.B, OpacityByte);
             GL.Begin(PrimitiveType.Quads);
-            foreach (List<(float x, float z)> quad in quadListForControl)
+            foreach (List<(float x, float z, bool isHovered)> quad in quadListForControl)
             {
-                foreach ((float x, float z) in quad)
+                foreach ((float x, float z, bool isHovered) in quad)
                 {
+                    byte opacityByte = isHovered ? MapUtilities.GetHoverOpacityByte() : OpacityByte;
+                    GL.Color4(color.R, color.G, color.B, opacityByte);
                     GL.Vertex2(x, z);
                 }
             }
@@ -208,10 +214,10 @@ namespace STROOP.Map
             {
                 GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
                 GL.LineWidth(LineWidth);
-                foreach (List<(float x, float z)> quad in quadListForControl)
+                foreach (List<(float x, float z, bool isHovered)> quad in quadListForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z) in quad)
+                    foreach ((float x, float z, bool isHovered) in quad)
                     {
                         GL.Vertex2(x, z);
                     }

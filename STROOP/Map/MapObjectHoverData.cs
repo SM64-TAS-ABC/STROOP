@@ -32,6 +32,8 @@ namespace STROOP.Map
         {
             List<object> parts = new List<object>();
             parts.Add(MapObject);
+            parts.Add(X);
+            parts.Add(Z);
             if (Tri != null) parts.Add(HexUtilities.FormatValue(Tri.Address));
             return string.Join(",", parts);
         }
