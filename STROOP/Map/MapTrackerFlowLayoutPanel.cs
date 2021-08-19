@@ -110,9 +110,6 @@ namespace STROOP.Map
 
         public void DrawOn2DControl()
         {
-            _mapObjBackground.DrawOn2DControl();
-            _mapObjMap.DrawOn2DControl();
-            
             List<MapObject> listOrderOnTop = new List<MapObject>();
             List<MapObject> listOrderOnBottom = new List<MapObject>();
             List<MapObject> listOrderByY = new List<MapObject>();
@@ -148,6 +145,8 @@ namespace STROOP.Map
             {
                 listCombined.Insert(0, _mapObjHitboxHackTris);
             }
+            listCombined.Insert(0, _mapObjMap);
+            listCombined.Insert(0, _mapObjBackground);
 
             MapObjectHoverData hoverData = null;
             for (int i = listCombined.Count - 1; i >= 0; i--)
