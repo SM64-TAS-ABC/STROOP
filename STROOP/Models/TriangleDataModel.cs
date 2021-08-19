@@ -397,6 +397,16 @@ namespace STROOP.Models
             return true;
         }
 
+        public bool IsPointInsideTriangle(double doubleX, double doubleZ, bool truncate)
+        {
+            if (truncate)
+            {
+                doubleX = (short)doubleX;
+                doubleZ = (short)doubleZ;
+            }
+            return MoreMath.IsPointInsideTriangle(doubleX, doubleZ, X1, Z1, X2, Z2, X3, Z3);
+        }
+
         public double GetVerticalDistAwayFromTriangleHitbox(double doubleX, double doubleY, double doubleZ)
         {
             short shortX = (short)doubleX;

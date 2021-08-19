@@ -436,5 +436,30 @@ namespace STROOP.Map
             float z = z1 + proportion * (z2 - z1);
             return (x, y, z);
         }
+
+        public override MapObjectHoverData GetHoverData()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(Cursor.Position);
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+            List<TriangleDataModel> tris = GetFilteredTriangles();
+            List<TriangleDataModel> trisSortedByY = tris.OrderBy(tri => tri.Y1).ToList();
+
+            TriangleDataModel hoverTri = null;
+            for (int i = trisSortedByY.Count - 1; i >= 0; i--)
+            {
+                hoverTri = trisSortedByY[i];
+                if (hoverTri.IsPointInsideTriangle(inGameX, inGameZ, _showTriUnits))
+                {
+                    break;
+                }
+            }
+            
+            if (hoverTri != null)
+            {
+                return new MapObjectHoverData(this, tri: hoverTri);
+            }
+
+            return null;
+        }
     }
 }

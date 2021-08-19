@@ -1,5 +1,6 @@
 ﻿using OpenTK;
 using OpenTK.Graphics;
+using STROOP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +15,20 @@ namespace STROOP.Map
         public static long HoverStartTime = 0;
 
         public readonly MapObject MapObject;
+        public readonly TriangleDataModel Tri;
 
-        public MapObjectHoverData(MapObject mapObject)
+        public MapObjectHoverData(MapObject mapObject, TriangleDataModel tri = null)
         {
             MapObject = mapObject;
+            Tri = tri;
         }
 
         public override string ToString()
         {
-            return MapObject.ToString();
+            List<object> parts = new List<object>();
+            parts.Add(MapObject);
+            if (Tri != null) parts.Add(Tri.Address);
+            return string.Join(",", parts);
         }
     }
 }
