@@ -205,6 +205,11 @@ namespace STROOP.Map
         {
         }
 
+        public virtual MapObjectHoverData GetHoverData()
+        {
+            return null;
+        }
+
         public virtual List<XAttribute> GetXAttributes()
         {
             return new List<XAttribute>();

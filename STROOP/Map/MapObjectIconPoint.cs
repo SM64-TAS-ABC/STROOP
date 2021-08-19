@@ -10,6 +10,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using STROOP.Map.Map3D;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -89,6 +90,16 @@ namespace STROOP.Map
             Config.Map3DGraphics.BindVertices();
             GL.DrawArrays(PrimitiveType.Triangles, 0, vertices.Length);
             GL.DeleteBuffer(vertexBuffer);
+        }
+
+        public override MapObjectHoverData GetHoverData()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(Cursor.Position);
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+            (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
+            double dist = MoreMath.GetDistanceBetween(x, z, inGameX, inGameZ);
+            double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+            return dist <= radius ? new MapObjectHoverData(this) : null;
         }
     }
 }

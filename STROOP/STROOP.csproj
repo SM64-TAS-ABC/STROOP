@@ -553,6 +553,7 @@
     <Compile Include="Map\MapObjectCircle.cs" />
     <Compile Include="Map\MapObjectQuad.cs" />
     <Compile Include="Map\MapObjectUnitGridlines.cs" />
+    <Compile Include="Map\MapObjectHoverData.cs" />
     <Compile Include="Map\MapUtilities.cs" />
     <Compile Include="Map\MapObjectHorizontalTriangle.cs" />
     <Compile Include="Map\MapObjectCurrentMap.cs" />

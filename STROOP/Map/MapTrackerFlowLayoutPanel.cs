@@ -149,6 +149,15 @@ namespace STROOP.Map
                 listCombined.Insert(0, _mapObjHitboxHackTris);
             }
 
+            MapObjectHoverData hoverData = null;
+            for (int i = listCombined.Count - 1; i >= 0; i--)
+            {
+                MapObject mapObject = listCombined[i];
+                hoverData = mapObject.GetHoverData();
+                if (hoverData != null) break;
+            }
+            Config.SetDebugText(hoverData?.ToString() ?? "NULL"); // TODO UNDO THIS
+
             foreach (MapObject obj in listCombined)
             {
                 obj.DrawOn2DControl();
