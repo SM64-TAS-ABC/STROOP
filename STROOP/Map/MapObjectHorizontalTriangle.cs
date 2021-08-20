@@ -510,19 +510,32 @@ namespace STROOP.Map
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
-            ToolStripMenuItem copyAddressItem = new ToolStripMenuItem("Copy Address");
-            copyAddressItem.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(hoverData.Tri.Address));
-            output.Insert(0, copyAddressItem);
-
-            ToolStripMenuItem selectInTrianglesTabItem = new ToolStripMenuItem("Select in Triangles Tab");
-            selectInTrianglesTabItem.Click += (sender, e) =>
+            if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
             {
-                Config.TriangleManager.SetCustomTriangleAddresses(hoverData.Tri.Address);
-                List<TabPage> tabPages = ControlUtilities.GetTabPages(Config.TabControlMain);
-                bool containsTab = tabPages.Any(tabPage => tabPage == Config.TriangleManager.Tab);
-                if (containsTab) Config.TabControlMain.SelectTab(Config.TriangleManager.Tab);
-            };
-            output.Insert(1, selectInTrianglesTabItem);
+                List<object> basePointObjs = new List<object>() { (int)hoverData.MidUnitX.Value, (int)hoverData.MidUnitZ.Value };
+                ToolStripMenuItem copyBasePointItem = MapUtilities.CreateCopyItem(basePointObjs, "Base Point");
+                output.Insert(0, copyBasePointItem);
+
+                List<object> midpointObjs = new List<object>() { hoverData.MidUnitX.Value, hoverData.MidUnitZ.Value };
+                ToolStripMenuItem copyMidpointItem = MapUtilities.CreateCopyItem(midpointObjs, "Midpoint");
+                output.Insert(1, copyMidpointItem);
+            }
+            else
+            {
+                ToolStripMenuItem copyAddressItem = new ToolStripMenuItem("Copy Address");
+                copyAddressItem.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(hoverData.Tri.Address));
+                output.Insert(0, copyAddressItem);
+
+                ToolStripMenuItem selectInTrianglesTabItem = new ToolStripMenuItem("Select in Triangles Tab");
+                selectInTrianglesTabItem.Click += (sender, e) =>
+                {
+                    Config.TriangleManager.SetCustomTriangleAddresses(hoverData.Tri.Address);
+                    List<TabPage> tabPages = ControlUtilities.GetTabPages(Config.TabControlMain);
+                    bool containsTab = tabPages.Any(tabPage => tabPage == Config.TriangleManager.Tab);
+                    if (containsTab) Config.TabControlMain.SelectTab(Config.TriangleManager.Tab);
+                };
+                output.Insert(1, selectInTrianglesTabItem);
+            }
 
             return output;
         }

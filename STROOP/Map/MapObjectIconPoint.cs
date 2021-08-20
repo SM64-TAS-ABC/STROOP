@@ -109,7 +109,7 @@ namespace STROOP.Map
 
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
             List<object> posObjs = new List<object>() { x, y, z };
-            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs);
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
             output.Insert(0, copyPositionItem);
 
             return output;

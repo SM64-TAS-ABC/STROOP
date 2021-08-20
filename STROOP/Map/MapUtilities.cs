@@ -866,7 +866,7 @@ namespace STROOP.Map
             return (byte)(GetHoverOpacity() * 255);
         }
 
-        public static ToolStripMenuItem CreateCopyItem(List<object> objs)
+        public static ToolStripMenuItem CreateCopyItem(List<object> objs, string copyWord)
         {
             List<(string word, string character)> copyChoices =
                 new List<(string word, string character)>()
@@ -877,10 +877,10 @@ namespace STROOP.Map
                     ("Line Breaks", "\r\n"),
                 };
 
-            ToolStripMenuItem copyItem = new ToolStripMenuItem("Copy Position...");
+            ToolStripMenuItem copyItem = new ToolStripMenuItem("Copy " + copyWord + "...");
             foreach (var choice in copyChoices)
             {
-                ToolStripMenuItem choiceItem = new ToolStripMenuItem("Copy Position with " + choice.word);
+                ToolStripMenuItem choiceItem = new ToolStripMenuItem("Copy " + copyWord + " with " + choice.word);
                 choiceItem.Click += (sender, e) => Clipboard.SetText(string.Join(choice.character, objs));
                 copyItem.DropDownItems.Add(choiceItem);
             }
