@@ -514,6 +514,16 @@ namespace STROOP.Map
             copyAddressItem.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(hoverData.Tri.Address));
             output.Insert(0, copyAddressItem);
 
+            ToolStripMenuItem selectInTrianglesTabItem = new ToolStripMenuItem("Select in Triangles Tab");
+            selectInTrianglesTabItem.Click += (sender, e) =>
+            {
+                Config.TriangleManager.SetCustomTriangleAddresses(hoverData.Tri.Address);
+                List<TabPage> tabPages = ControlUtilities.GetTabPages(Config.TabControlMain);
+                bool containsTab = tabPages.Any(tabPage => tabPage == Config.TriangleManager.Tab);
+                if (containsTab) Config.TabControlMain.SelectTab(Config.TriangleManager.Tab);
+            };
+            output.Insert(1, selectInTrianglesTabItem);
+
             return output;
         }
     }
