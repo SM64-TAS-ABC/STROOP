@@ -95,7 +95,7 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverData()
         {
-            Point relPos = Config.MapGui.CurrentControl.PointToClient(Cursor.Position);
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
             double dist = MoreMath.GetDistanceBetween(x, z, inGameX, inGameZ);

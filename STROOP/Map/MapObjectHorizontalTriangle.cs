@@ -473,7 +473,7 @@ namespace STROOP.Map
         public override MapObjectHoverData GetHoverData()
         {
             bool isShowingTriUnits = _showTriUnits && MapUtilities.IsAbleToShowUnitPrecision();
-            Point relPos = Config.MapGui.CurrentControl.PointToClient(Cursor.Position);
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
             List<TriangleDataModel> tris = GetFilteredTriangles();
             List<TriangleDataModel> trisSortedByY = tris.OrderBy(tri => tri.Y1).ToList();

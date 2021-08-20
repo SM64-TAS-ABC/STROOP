@@ -80,6 +80,8 @@ namespace STROOP.Managers
             _contextMenuStrip = new ContextMenuStrip();
             _contextMenuStrip.Items.Add(new ToolStripMenuItem("test")); // needed so that first right click works
             _contextMenuStrip.Opening += (sender, e) => OnContextMenuStripOpening();
+            _contextMenuStrip.Opened += (sender, e) => OnContextMenuStripOpened();
+            _contextMenuStrip.Closed += (sender, e) => OnContextMenuStripClosed();
 
             // FlowLayoutPanel
             _defaulMapObjectCurrentMap = new MapObjectCurrentMap();
@@ -943,6 +945,17 @@ namespace STROOP.Managers
                 _contextMenuStrip.Items.AddRange(
                     Config.MapGui.flowLayoutPanelMapTrackers.PreviousHoverData.GetContextMenuStripItems().ToArray());
             }
+        }
+
+        private void OnContextMenuStripOpened()
+        {
+            MapObjectHoverData.ContextMenuStripIsOpen = true;
+            MapObjectHoverData.ContextMenuStripPoint = Cursor.Position;
+        }
+
+        private void OnContextMenuStripClosed()
+        {
+            MapObjectHoverData.ContextMenuStripIsOpen = false;
         }
 
         private void Save(SaveType saveType)

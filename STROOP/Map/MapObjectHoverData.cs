@@ -4,6 +4,7 @@ using STROOP.Models;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -15,6 +16,8 @@ namespace STROOP.Map
     public class MapObjectHoverData
     {
         public static long HoverStartTime = 0;
+        public static bool ContextMenuStripIsOpen = false;
+        public static Point ContextMenuStripPoint = new Point();
 
         public readonly MapObject MapObject;
         public readonly TriangleDataModel Tri;
@@ -31,6 +34,11 @@ namespace STROOP.Map
             Tri = tri;
             MidUnitX = midUnitX;
             MidUnitZ = midUnitZ;
+        }
+
+        public static Point GetCurrentPoint()
+        {
+            return ContextMenuStripIsOpen ? ContextMenuStripPoint : Cursor.Position;
         }
 
         public List<ToolStripItem> GetContextMenuStripItems()
