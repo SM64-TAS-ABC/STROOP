@@ -738,6 +738,8 @@ namespace STROOP.Managers
                 {
                     () => _defaulMapObjectHitboxHackTriangle.Reset()
                 });
+            Config.MapGui.checkBoxMapOptionsSelectionMode.Click +=
+                (sender, e) => SetSelectionMode(Config.MapGui.checkBoxMapOptionsSelectionMode.Checked);
 
             // Global Icon Size
             Config.MapGui.textBoxMapOptionsGlobalIconSize.AddEnterAction(() =>
@@ -911,6 +913,19 @@ namespace STROOP.Managers
                 (Config.MapGui.GLControlMap2D, Config.MapGui.GLControlMap3D);
             toBeVisible.Visible = true;
             toBeInvisible.Visible = false;
+        }
+
+        private void SetSelectionMode(bool enableSelectionMode)
+        {
+            Config.MapGui.checkBoxMapOptionsSelectionMode.Checked = enableSelectionMode;
+            if (enableSelectionMode)
+            {
+                Config.MapGui.GLControlMap2D.ContextMenuStrip = new ContextMenuStrip();
+            }
+            else
+            {
+                Config.MapGui.GLControlMap2D.ContextMenuStrip = null;
+            }
         }
 
         private void Save(SaveType saveType)

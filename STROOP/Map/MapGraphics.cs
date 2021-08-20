@@ -727,7 +727,7 @@ namespace STROOP.Map
                     }
                     SetCustomAngle(newYaw, newPitch);
                 }
-                else
+                else if (!Config.MapGui.checkBoxMapOptionsSelectionMode.Checked)
                 {
                     float angleToMouse = (float)MoreMath.AngleTo_AngleUnits(
                         _rotateStartMouseX, _rotateStartMouseY, e.X, e.Y) * MapUtilities.MaybeReverse(-1) + 32768;
