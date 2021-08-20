@@ -937,8 +937,11 @@ namespace STROOP.Managers
         private void OnContextMenuStripOpening()
         {
             _contextMenuStrip.Items.Clear();
-            _contextMenuStrip.Items.AddRange(
-                Config.MapGui.flowLayoutPanelMapTrackers.PreviousHoverData.GetContextMenuStripItems().ToArray());
+            if (Config.MapGui.flowLayoutPanelMapTrackers.PreviousHoverData != null)
+            {
+                _contextMenuStrip.Items.AddRange(
+                    Config.MapGui.flowLayoutPanelMapTrackers.PreviousHoverData.GetContextMenuStripItems().ToArray());
+            }
         }
 
         private void Save(SaveType saveType)

@@ -865,5 +865,25 @@ namespace STROOP.Map
         {
             return (byte)(GetHoverOpacity() * 255);
         }
+
+        public static ToolStripMenuItem CreateCopyItem(List<object> objs)
+        {
+            List<(string word, string character)> copyChoices =
+                new List<(string word, string character)>()
+                {
+                    ("Commas", ","),
+                    ("Spaces", " "),
+                    ("Tabs", "\t"),
+                    ("Line Breaks", "\r\n"),
+                };
+
+            ToolStripMenuItem copyItem = new ToolStripMenuItem("Copy...");
+            foreach (var choice in copyChoices)
+            {
+                ToolStripMenuItem choiceItem = new ToolStripMenuItem(choice.word);
+                choiceItem.Click += (sender, e) => Clipboard.SetText(string.Join(choice.character, objs));
+            }
+            return copyItem;
+        }
     }
 }
