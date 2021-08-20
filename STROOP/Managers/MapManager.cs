@@ -78,6 +78,7 @@ namespace STROOP.Managers
         {
             // ContextMenuStrip
             _contextMenuStrip = new ContextMenuStrip();
+            _contextMenuStrip.Items.Add(new ToolStripMenuItem("test")); // needed so that first right click works
             _contextMenuStrip.Opening += (sender, e) => OnContextMenuStripOpening();
 
             // FlowLayoutPanel
