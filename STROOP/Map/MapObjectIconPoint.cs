@@ -102,5 +102,13 @@ namespace STROOP.Map
             double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
             return dist <= radius ? new MapObjectHoverData(this) : null;
         }
+
+        public override List<ToolStripMenuItem> GetHoverContextMenuStripItems()
+        {
+            return new List<ToolStripMenuItem>()
+            {
+                new ToolStripMenuItem(ToString()),
+            };
+        }
     }
 }

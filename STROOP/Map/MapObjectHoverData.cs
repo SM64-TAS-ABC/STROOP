@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -30,6 +31,11 @@ namespace STROOP.Map
             Tri = tri;
             MidUnitX = midUnitX;
             MidUnitZ = midUnitZ;
+        }
+
+        public List<ToolStripMenuItem> GetContextMenuStripItems()
+        {
+            return MapObject.GetHoverContextMenuStripItems();
         }
 
         public override string ToString()

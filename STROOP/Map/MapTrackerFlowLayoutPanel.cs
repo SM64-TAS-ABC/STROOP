@@ -19,7 +19,7 @@ namespace STROOP.Map
 {
     public class MapTrackerFlowLayoutPanel : NoTearFlowLayoutPanel
     {
-        private static MapObjectHoverData PreviousHoverData = null;
+        public MapObjectHoverData PreviousHoverData = null;
 
         private readonly object _objectLock = new object();
 
