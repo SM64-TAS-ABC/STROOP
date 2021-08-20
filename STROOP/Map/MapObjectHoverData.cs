@@ -33,7 +33,7 @@ namespace STROOP.Map
             MidUnitZ = midUnitZ;
         }
 
-        public List<ToolStripMenuItem> GetContextMenuStripItems()
+        public List<ToolStripItem> GetContextMenuStripItems()
         {
             return MapObject.GetHoverContextMenuStripItems();
         }

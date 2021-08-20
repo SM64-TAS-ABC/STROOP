@@ -103,12 +103,16 @@ namespace STROOP.Map
             return dist <= radius ? new MapObjectHoverData(this) : null;
         }
 
-        public override List<ToolStripMenuItem> GetHoverContextMenuStripItems()
+        public override List<ToolStripItem> GetHoverContextMenuStripItems()
         {
-            return new List<ToolStripMenuItem>()
-            {
-                new ToolStripMenuItem(ToString()),
-            };
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems();
+
+            (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
+            ToolStripMenuItem copyPosition = new ToolStripMenuItem("Copy Position");
+            copyPosition.Click += (sender, e) => Clipboard.SetText(string.Format("{0},{1},{2}", x, y, z));
+            output.Insert(0, copyPosition);
+
+            return output;
         }
     }
 }

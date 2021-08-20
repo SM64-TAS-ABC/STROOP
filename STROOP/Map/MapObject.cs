@@ -210,9 +210,9 @@ namespace STROOP.Map
             return null;
         }
 
-        public virtual List<ToolStripMenuItem> GetHoverContextMenuStripItems()
+        public virtual List<ToolStripItem> GetHoverContextMenuStripItems()
         {
-            return new List<ToolStripMenuItem>();
+            return new List<ToolStripItem>();
         }
 
         public virtual List<XAttribute> GetXAttributes()
