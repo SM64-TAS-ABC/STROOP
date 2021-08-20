@@ -877,11 +877,12 @@ namespace STROOP.Map
                     ("Line Breaks", "\r\n"),
                 };
 
-            ToolStripMenuItem copyItem = new ToolStripMenuItem("Copy...");
+            ToolStripMenuItem copyItem = new ToolStripMenuItem("Copy Position...");
             foreach (var choice in copyChoices)
             {
-                ToolStripMenuItem choiceItem = new ToolStripMenuItem(choice.word);
+                ToolStripMenuItem choiceItem = new ToolStripMenuItem("Copy Position with " + choice.word);
                 choiceItem.Click += (sender, e) => Clipboard.SetText(string.Join(choice.character, objs));
+                copyItem.DropDownItems.Add(choiceItem);
             }
             return copyItem;
         }
