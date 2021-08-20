@@ -23,6 +23,8 @@ namespace STROOP.Managers
     {
         private enum SaveType { MapTrackers, MapTrackersMapTabSettings, MapTrackersMapTabSettingsStroopSettings };
 
+        private ContextMenuStrip _contextMenuStrip;
+
         private MapObjectCurrentMap _defaulMapObjectCurrentMap;
         private MapObjectCurrentBackground _defaulMapObjectCurrentBackground;
         private MapObjectHitboxHackTriangle _defaulMapObjectHitboxHackTriangle;
@@ -74,6 +76,10 @@ namespace STROOP.Managers
 
         private void InitializeControls()
         {
+            // ContextMenuStrip
+            _contextMenuStrip = new ContextMenuStrip();
+            _contextMenuStrip.Opening += (sender, e) => OnContextMenuStripOpening();
+
             // FlowLayoutPanel
             _defaulMapObjectCurrentMap = new MapObjectCurrentMap();
             _defaulMapObjectCurrentBackground = new MapObjectCurrentBackground();
@@ -920,12 +926,17 @@ namespace STROOP.Managers
             Config.MapGui.checkBoxMapOptionsSelectionMode.Checked = enableSelectionMode;
             if (enableSelectionMode)
             {
-                Config.MapGui.GLControlMap2D.ContextMenuStrip = new ContextMenuStrip();
+                Config.MapGui.GLControlMap2D.ContextMenuStrip = _contextMenuStrip;
             }
             else
             {
                 Config.MapGui.GLControlMap2D.ContextMenuStrip = null;
             }
+        }
+
+        private void OnContextMenuStripOpening()
+        {
+
         }
 
         private void Save(SaveType saveType)
