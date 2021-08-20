@@ -45,7 +45,7 @@ namespace STROOP.Map
             if (Tri != null) parts.Add(HexUtilities.FormatValue(Tri.Address));
             if (MidUnitX.HasValue) parts.Add(MidUnitX.Value);
             if (MidUnitZ.HasValue) parts.Add(MidUnitZ.Value);
-            return string.Join(",", parts);
+            return string.Join(" ", parts);
         }
 
         public override bool Equals(object obj)
