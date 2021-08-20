@@ -35,7 +35,7 @@ namespace STROOP.Map
 
         public List<ToolStripItem> GetContextMenuStripItems()
         {
-            return MapObject.GetHoverContextMenuStripItems();
+            return MapObject.GetHoverContextMenuStripItems(this);
         }
 
         public override string ToString()

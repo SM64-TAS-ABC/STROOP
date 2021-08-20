@@ -505,5 +505,16 @@ namespace STROOP.Map
 
             return null;
         }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            ToolStripMenuItem copyAddressItem = new ToolStripMenuItem("Copy Address");
+            copyAddressItem.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(hoverData.Tri.Address));
+            output.Insert(0, copyAddressItem);
+
+            return output;
+        }
     }
 }

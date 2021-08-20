@@ -210,7 +210,7 @@ namespace STROOP.Map
             return null;
         }
 
-        public virtual List<ToolStripItem> GetHoverContextMenuStripItems()
+        public virtual List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
         {
             return new List<ToolStripItem>();
         }
