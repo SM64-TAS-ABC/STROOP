@@ -65,6 +65,10 @@ namespace STROOP.Map
             selectObjectItem.Click += (sender, e) => Config.ObjectSlotsManager.SelectSlotByAddress(_posAngle.GetObjAddress());
             output.Insert(0, selectObjectItem);
 
+            ToolStripMenuItem copyAddressItem = new ToolStripMenuItem("Copy Address");
+            copyAddressItem.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(_posAngle.GetObjAddress()));
+            output.Insert(1, copyAddressItem);
+
             return output;
         }
 

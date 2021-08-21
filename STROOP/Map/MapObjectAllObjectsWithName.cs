@@ -184,12 +184,16 @@ namespace STROOP.Map
             selectObjectItem.Click += (sender, e) => Config.ObjectSlotsManager.SelectSlotByAddress(hoverData.ObjAddress.Value);
             output.Insert(0, selectObjectItem);
 
+            ToolStripMenuItem copyAddressItem = new ToolStripMenuItem("Copy Address");
+            copyAddressItem.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(hoverData.ObjAddress.Value));
+            output.Insert(1, copyAddressItem);
+
             float x = Config.Stream.GetFloat(hoverData.ObjAddress.Value + ObjectConfig.XOffset);
             float y = Config.Stream.GetFloat(hoverData.ObjAddress.Value + ObjectConfig.YOffset);
             float z = Config.Stream.GetFloat(hoverData.ObjAddress.Value + ObjectConfig.ZOffset);
             List<object> posObjs = new List<object>() { x, y, z };
             ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
-            output.Insert(1, copyPositionItem);
+            output.Insert(2, copyPositionItem);
 
             return output;
         }
