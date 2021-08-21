@@ -11,6 +11,8 @@ using STROOP.Structs;
 using OpenTK;
 using STROOP.Models;
 using System.Xml.Linq;
+using System.Windows.Forms;
+using static STROOP.Managers.ObjectSlotsManager;
 
 namespace STROOP.Map
 {
@@ -53,6 +55,17 @@ namespace STROOP.Map
             base.Update();
             _obj.Update();
             InternalRotates = Config.ObjectAssociations.GetObjectMapRotates(_obj.BehaviorCriteria);
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            ToolStripMenuItem selectObjectItem = new ToolStripMenuItem("Select Object in Object Tab");
+            selectObjectItem.Click += (sender, e) => Config.ObjectSlotsManager.SelectSlotByAddress(_posAngle.GetObjAddress());
+            output.Insert(0, selectObjectItem);
+
+            return output;
         }
 
         public override List<XAttribute> GetXAttributes()

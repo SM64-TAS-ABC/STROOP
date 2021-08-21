@@ -142,7 +142,10 @@ namespace STROOP.Managers
         public void SelectSlotByAddress(uint address)
         {
             ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.CurrentObject.Address == address);
-            if (slot != null) DoSlotClickUsingInput(slot, false, false, false, null);
+            if (slot != null)
+            {
+                DoSlotClickUsingSpecifications(slot, ClickType.ObjectClick, false, false, Config.ObjectManager.Tab, null);
+            }
         }
 
         private ClickType GetClickType(bool isMarking)
