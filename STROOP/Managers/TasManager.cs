@@ -90,7 +90,9 @@ namespace STROOP.Managers
 
             Button buttonTasGotoVertex = splitContainerTas.Panel1.Controls["buttonTasGotoVertex"] as Button;
             buttonTasGotoVertex.Click += (sender, e) =>
-                ButtonUtilities.GotoTriangleVertexClosest(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), false);
+                ButtonUtilities.GotoTriangleVertexClosest(
+                    Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset),
+                    TriangleVertexOffset.NONE);
 
             Button buttonTasPasteSchedule = splitContainerTas.Panel1.Controls["buttonTasPasteSchedule"] as Button;
             buttonTasPasteSchedule.Click += (sender, e) => SetScheduler(Clipboard.GetText(), false);

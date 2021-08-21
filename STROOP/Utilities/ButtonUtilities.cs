@@ -946,14 +946,14 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool GotoTriangleVertexClosest(uint triangleAddress, bool useMisalignmentOffset = false)
+        public static bool GotoTriangleVertexClosest(uint triangleAddress, TriangleVertexOffset offset)
         {
             if (triangleAddress == 0) return false;
             int closestVertex = WatchVariableSpecialUtilities.GetClosestTriangleVertexIndex(triangleAddress);
-            return GotoTriangleVertex(triangleAddress, closestVertex, useMisalignmentOffset);
+            return GotoTriangleVertex(triangleAddress, closestVertex, offset);
         }
 
-        public static bool GotoTriangleVertex(uint triangleAddress, int vertex, bool _useMisalignmentOffset = false)
+        public static bool GotoTriangleVertex(uint triangleAddress, int vertex, TriangleVertexOffset offset)
         {
             if (triangleAddress == 0) return false;
 
@@ -982,10 +982,21 @@ namespace STROOP.Utilities
                     throw new Exception("There are only 3 vertices in a triangle. You are an idiot :).");
             }
 
-            if (_useMisalignmentOffset)
+            switch (offset)
             {
-                newX += (newX >= 0) ? 0.5f : -0.5f;
-                newZ += (newZ >= 0) ? 0.5f : -0.5f;
+                case TriangleVertexOffset.NONE:
+                    // do nothing
+                    break;
+                case TriangleVertexOffset.O_5:
+                    newX += (newX >= 0) ? 0.5f : -0.5f;
+                    newZ += (newZ >= 0) ? 0.5f : -0.5f;
+                    break;
+                case TriangleVertexOffset.O_999:
+                    newX += (newX >= 0) ? 0.999f : -0.999f;
+                    newZ += (newZ >= 0) ? 0.999f : -0.999f;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             // Move mario to triangle (while in same Pu)
