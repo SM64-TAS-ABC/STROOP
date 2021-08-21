@@ -39,13 +39,19 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            foreach (var p in _points)
+            for (int i = 0; i <_points.Count; i++)
             {
+                var p = _points[i];
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(p.x, p.z);
                 Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, 0, Opacity);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject && i == hoverData?.Index)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, 0, opacity);
             }
         }
 
@@ -132,6 +138,38 @@ namespace STROOP.Map
         public override MapDrawType GetDrawType()
         {
             return MapDrawType.Overlay;
+        }
+
+        public override MapObjectHoverData GetHoverData()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+
+            int? hoverIndex = null;
+            for (int i = _points.Count - 1; i >= 0; i--)
+            {
+                var point = _points[i];
+                double dist = MoreMath.GetDistanceBetween(point.x, point.z, inGameX, inGameZ);
+                double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+                if (dist <= radius)
+                {
+                    hoverIndex = i;
+                    break;
+                }
+            }
+            return hoverIndex.HasValue ? new MapObjectHoverData(this, index: hoverIndex) : null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            var point = _points[hoverData.Index.Value];
+            List<object> posObjs = new List<object>() { point.x, point.y, point.z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
         }
 
         public override List<XAttribute> GetXAttributes()
