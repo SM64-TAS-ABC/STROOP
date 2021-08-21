@@ -321,7 +321,7 @@ namespace STROOP.Managers
             };
         }
 
-        public void GoToClosestVertex()
+        public void GoToClosestFloorVertex()
         {
             uint floorTri = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             if (floorTri == 0) return;

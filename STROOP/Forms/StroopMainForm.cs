@@ -156,7 +156,7 @@ namespace STROOP
                     () => Config.GfxManager.InjectHitboxViewCode(),
                     () => Config.Stream.SetValue(MarioConfig.FreeMovementAction, MarioConfig.StructAddress + MarioConfig.ActionOffset),
                     () => Config.FileManager.DoEverything(),
-                    () => Config.TriangleManager.GoToClosestVertex(),
+                    () => Config.TriangleManager.GoToClosestFloorVertex(),
                     () => saveAsSavestate(),
                     () =>
                     {
