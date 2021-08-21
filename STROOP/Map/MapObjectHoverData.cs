@@ -25,6 +25,7 @@ namespace STROOP.Map
         public readonly float? MidUnitX;
         public readonly float? MidUnitZ;
         public readonly int? Index;
+        public readonly int? Index2;
 
         public MapObjectHoverData(
             MapObject mapObject,
@@ -32,7 +33,8 @@ namespace STROOP.Map
             TriangleDataModel tri = null,
             float? midUnitX = null,
             float? midUnitZ = null,
-            int? index = null)
+            int? index = null,
+            int? index2 = null)
         {
             MapObject = mapObject;
             ObjAddress = objAddress;
@@ -40,6 +42,7 @@ namespace STROOP.Map
             MidUnitX = midUnitX;
             MidUnitZ = midUnitZ;
             Index = index;
+            Index2 = index2;
         }
 
         public static Point GetCurrentPoint()
@@ -61,6 +64,7 @@ namespace STROOP.Map
             if (MidUnitX.HasValue) parts.Add(MidUnitX.Value);
             if (MidUnitZ.HasValue) parts.Add(MidUnitZ.Value);
             if (Index.HasValue) parts.Add(Index);
+            if (Index2.HasValue) parts.Add(Index2);
             return string.Join(" ", parts);
         }
 
@@ -73,7 +77,8 @@ namespace STROOP.Map
                     Tri?.Address == other.Tri?.Address &&
                     MidUnitX == other.MidUnitX &&
                     MidUnitZ == other.MidUnitZ &&
-                    Index == other.Index;
+                    Index == other.Index &&
+                    Index2 == other.Index2;
             }
             return false;
         }

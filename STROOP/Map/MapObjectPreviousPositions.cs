@@ -99,9 +99,10 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            foreach (var data in GetAllFrameData())
+            var data = GetAllFrameData();
+            for (int i = 0; i < data.Count; i++)
             {
-                DrawOn2DControlTopDownView(data);
+                DrawOn2DControlTopDownView(data[i], i, hoverData);
             }
         }
 
@@ -121,17 +122,26 @@ namespace STROOP.Map
             }
         }
 
-        public void DrawOn2DControlTopDownView(List<(float x, float y, float z, float angle, int tex, bool show)> data)
+        public void DrawOn2DControlTopDownView(
+            List<(float x, float y, float z, float angle, int tex, bool show)> data,
+            int index,
+            MapObjectHoverData hoverData)
         {
-            foreach (var dataPoint in data)
+            for (int j = 0; j < data.Count; j++)
             {
+                var dataPoint = data[j];
                 (float x, float y, float z, float angle, int tex, bool show) = dataPoint;
                 if (!show) continue;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject && index == hoverData?.Index && j == hoverData?.Index2)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(tex, point, size, angleDegrees, opacity);
             }
 
             if (LineWidth != 0)
@@ -540,6 +550,47 @@ namespace STROOP.Map
                 _pauseHistory = settings.NewPreviousPositionsPauseHistory;
                 _itemPauseHistory.Checked = settings.NewPreviousPositionsPauseHistory;
             }
+        }
+
+        public override MapObjectHoverData GetHoverData()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+
+            var allFrameData = GetAllFrameData();
+            int? hoverIndex = null;
+            int? hoverIndex2 = null;
+            for (int i = allFrameData.Count - 1; i >= 0; i--)
+            {
+                var singleFrameData = allFrameData[i];
+                for (int j = singleFrameData.Count - 1; j >= 0; j--)
+                {
+                    var dataPoint = singleFrameData[j];
+                    double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
+                    double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+                    if (dist <= radius)
+                    {
+                        hoverIndex = i;
+                        hoverIndex2 = j;
+                        break;
+                    }
+                }
+                if (hoverIndex.HasValue) break;
+            }
+            return hoverIndex.HasValue ? new MapObjectHoverData(this, index: hoverIndex, index2: hoverIndex2) : null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            var data = GetAllFrameData();
+            var dataPoint = data[hoverData.Index.Value][hoverData.Index2.Value];
+            List<object> posObjs = new List<object>() { dataPoint.x, dataPoint.y, dataPoint.z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
         }
 
         public override List<XAttribute> GetXAttributes()
