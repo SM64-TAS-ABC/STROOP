@@ -27,8 +27,9 @@ namespace STROOP.Map
         {
             List<(float centerX, float centerZ, float radius)> dimensionList = Get2DDimensions();
 
-            foreach ((float centerX, float centerZ, float radius) in dimensionList)
+            for (int i = 0; i < dimensionList.Count; i++)
             {
+                (float centerX, float centerZ, float radius) = dimensionList[i];
                 (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(centerX, centerZ);
                 float controlRadius = radius * Config.CurrentMapGraphics.MapViewScaleValue;
                 List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
@@ -40,7 +41,12 @@ namespace STROOP.Map
                 GL.LoadIdentity();
 
                 // Draw circle
-                GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+                byte opacityByte = OpacityByte;
+                if (this == hoverData?.MapObject && i == hoverData?.Index)
+                {
+                    opacityByte = MapUtilities.GetHoverOpacityByte();
+                }
+                GL.Color4(Color.R, Color.G, Color.B, opacityByte);
                 GL.Begin(PrimitiveType.TriangleFan);
                 GL.Vertex2(controlCenterX, controlCenterZ);
                 foreach ((float x, float z) in controlPoints)
