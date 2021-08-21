@@ -526,10 +526,6 @@ namespace STROOP.Map
             }
             else
             {
-                ToolStripMenuItem copyAddressItem = new ToolStripMenuItem("Copy Address");
-                copyAddressItem.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(hoverData.Tri.Address));
-                output.Insert(0, copyAddressItem);
-
                 ToolStripMenuItem selectInTrianglesTabItem = new ToolStripMenuItem("Select in Triangles Tab");
                 selectInTrianglesTabItem.Click += (sender, e) =>
                 {
@@ -538,7 +534,11 @@ namespace STROOP.Map
                     bool containsTab = tabPages.Any(tabPage => tabPage == Config.TriangleManager.Tab);
                     if (containsTab) Config.TabControlMain.SelectTab(Config.TriangleManager.Tab);
                 };
-                output.Insert(1, selectInTrianglesTabItem);
+                output.Insert(0, selectInTrianglesTabItem);
+
+                ToolStripMenuItem copyAddressItem = new ToolStripMenuItem("Copy Address");
+                copyAddressItem.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(hoverData.Tri.Address));
+                output.Insert(1, copyAddressItem);
             }
 
             return output;
