@@ -22,17 +22,19 @@ namespace STROOP.Map
             Color = Color.Purple;
         }
 
-        protected override List<List<(float x, float y, float z)>> GetQuadList()
+        protected override List<List<(float x, float y, float z, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData)
         {
             List<(int y, int xMin, int xMax, int zMin, int zMax)> waters = WaterUtilities.GetWaterLevels();
-            List<List<(float x, float y, float z)>> quads = new List<List<(float x, float y, float z)>>();
+            List<List<(float x, float y, float z, bool isHovered)>> quads =
+                new List<List<(float x, float y, float z, bool isHovered)>>();
             foreach (var water in waters)
             {
-                List<(float x, float y, float z)> quad = new List<(float x, float y, float z)>();
-                quad.Add((water.xMin, water.y, water.zMin));
-                quad.Add((water.xMin, water.y, water.zMax));
-                quad.Add((water.xMax, water.y, water.zMax));
-                quad.Add((water.xMax, water.y, water.zMin));
+                List<(float x, float y, float z, bool isHovered)> quad =
+                    new List<(float x, float y, float z, bool isHovered)>();
+                quad.Add((water.xMin, water.y, water.zMin, false));
+                quad.Add((water.xMin, water.y, water.zMax, false));
+                quad.Add((water.xMax, water.y, water.zMax, false));
+                quad.Add((water.xMax, water.y, water.zMin, false));
                 quads.Add(quad);
             }
             return quads;

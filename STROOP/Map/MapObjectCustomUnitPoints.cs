@@ -37,9 +37,21 @@ namespace STROOP.Map
             return new MapObjectCustomUnitPoints(unitPoints);
         }
 
-        protected override List<List<(float x, float y, float z)>> GetQuadList()
+        protected override List<List<(float x, float y, float z, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData)
         {
-            return MapUtilities.ConvertUnitPointsToQuads(_unitPoints);
+            List<List<(float x, float y, float z, bool isHovered)>> output =
+                new List<List<(float x, float y, float z, bool isHovered)>>();
+            for (int i = 0; i < _unitPoints.Count; i++)
+            {
+                bool isHovered = this == hoverData?.MapObject && i == hoverData?.Index;
+                List<(int x, int z)> unit = new List<(int x, int z)>() { _unitPoints[i] };
+                List<List<(float x, float y, float z)>> quadList =
+                    MapUtilities.ConvertUnitPointsToQuads(unit);
+                List<List<(float x, float y, float z, bool isHovered)>> quadListHovered =
+                    quadList.ConvertAll(quad => quad.ConvertAll(p => (p.x, p.y, p.z, isHovered)));
+                output.AddRange(quadListHovered);
+            }
+            return output;
         }
 
         public override string GetName()
