@@ -53,26 +53,31 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            List<(float x, float y, float z, float angle, int tex, ObjectDataModel obj)> data = GetData();
+            List<(float x, float y, float z, float angle, int tex, uint objAddress)> data = GetData();
             data.Reverse();
             foreach (var dataPoint in data)
             {
-                (float x, float y, float z, float angle, int tex, ObjectDataModel obj) = dataPoint;
+                (float x, float y, float z, float angle, int tex, uint objAddress) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
+                double opacity = Opacity;
+                if (dataPoint.objAddress == hoverData?.ObjAddress)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(tex, point, size, angleDegrees, opacity);
             }
         }
 
         public override void DrawOn2DControlOrthographicView()
         {
-            List<(float x, float y, float z, float angle, int tex, ObjectDataModel obj)> data = GetData();
+            List<(float x, float y, float z, float angle, int tex, uint objAddress)> data = GetData();
             data.Reverse();
             foreach (var dataPoint in data)
             {
-                (float x, float y, float z, float angle, int tex, ObjectDataModel obj) = dataPoint;
+                (float x, float y, float z, float angle, int tex, uint objAddress) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
@@ -83,11 +88,11 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            List<(float x, float y, float z, float angle, int tex, ObjectDataModel obj)> data = GetData();
+            List<(float x, float y, float z, float angle, int tex, uint objAddress)> data = GetData();
             data.Reverse();
             foreach (var dataPoint in data)
             {
-                (float x, float y, float z, float angle, int tex, ObjectDataModel obj) = dataPoint;
+                (float x, float y, float z, float angle, int tex, uint objAddress) = dataPoint;
 
                 Matrix4 viewMatrix = GetModelMatrix(x, y, z, angle);
                 GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
@@ -135,10 +140,10 @@ namespace STROOP.Map
             };
         }
 
-        public List<(float x, float y, float z, float angle, int tex, ObjectDataModel obj)> GetData()
+        public List<(float x, float y, float z, float angle, int tex, uint objAddress)> GetData()
         {
             List<ObjectDataModel> objs = Config.ObjectSlotsManager.GetLoadedObjectsWithName(_objName);
-            return objs.ConvertAll(obj => (obj.X, obj.Y, obj.Z, (float)obj.FacingYaw, TextureId, obj));
+            return objs.ConvertAll(obj => (obj.X, obj.Y, obj.Z, (float)obj.FacingYaw, TextureId, obj.Address));
         }
 
         public override bool ParticipatesInGlobalIconSize()
@@ -156,20 +161,19 @@ namespace STROOP.Map
             Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
 
-            List<(float x, float y, float z, float angle, int tex, ObjectDataModel obj)> data = GetData();
-            data.Reverse();
-            ObjectDataModel hoverObj = null;
+            List<(float x, float y, float z, float angle, int tex, uint objAddress)> data = GetData();
+            uint? hoverObjAddress = null;
             foreach (var dataPoint in data)
             {
                 double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
                 double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
                 if (dist <= radius)
                 {
-                    hoverObj = dataPoint.obj;
+                    hoverObjAddress = dataPoint.objAddress;
                     break;
                 }
             }
-            return hoverObj == null ? null : new MapObjectHoverData(this, obj: hoverObj);
+            return hoverObjAddress.HasValue ? new MapObjectHoverData(this, objAddress: hoverObjAddress) : null;
         }
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
@@ -177,10 +181,13 @@ namespace STROOP.Map
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
             ToolStripMenuItem selectObjectItem = new ToolStripMenuItem("Select Object in Object Tab");
-            selectObjectItem.Click += (sender, e) => Config.ObjectSlotsManager.SelectSlotByAddress(hoverData.Obj.Address);
+            selectObjectItem.Click += (sender, e) => Config.ObjectSlotsManager.SelectSlotByAddress(hoverData.ObjAddress.Value);
             output.Insert(0, selectObjectItem);
 
-            List<object> posObjs = new List<object>() { hoverData.Obj.X, hoverData.Obj.Y, hoverData.Obj.Z };
+            float x = Config.Stream.GetFloat(hoverData.ObjAddress.Value + ObjectConfig.XOffset);
+            float y = Config.Stream.GetFloat(hoverData.ObjAddress.Value + ObjectConfig.YOffset);
+            float z = Config.Stream.GetFloat(hoverData.ObjAddress.Value + ObjectConfig.ZOffset);
+            List<object> posObjs = new List<object>() { x, y, z };
             ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
             output.Insert(1, copyPositionItem);
 
