@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using System.Xml.Linq;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -49,6 +50,38 @@ namespace STROOP.Map
         public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.CustomPointsImage;
+        }
+
+        public override MapObjectHoverData GetHoverData()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+
+            int inGameXTruncated = (int)inGameX;
+            int inGameZTruncated = (int)inGameZ;
+            int? hoverIndex = null;
+            for (int i = 0; i < _unitPoints.Count; i++)
+            {
+                var unitPoint = _unitPoints[i];
+                if (unitPoint.x == inGameXTruncated && unitPoint.z == inGameZTruncated)
+                {
+                    hoverIndex = i;
+                    break;
+                }
+            }
+            return hoverIndex.HasValue ? new MapObjectHoverData(this, index: hoverIndex) : null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            var unitPoint = _unitPoints[hoverData.Index.Value];
+            List<object> posObjs = new List<object>() { unitPoint.x, unitPoint.z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
         }
 
         public override List<XAttribute> GetXAttributes()
