@@ -10,6 +10,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -71,6 +72,39 @@ namespace STROOP.Map
         public override MapDrawType GetDrawType()
         {
             return MapDrawType.Perspective;
+        }
+
+        public override MapObjectHoverData GetHoverData()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+
+            List<(float centerX, float centerZ, float radius)> dimensionList = Get2DDimensions();
+            int? hoverIndex = null;
+            for (int i = 0; i < dimensionList.Count; i++)
+            {
+                var dimension = dimensionList[i];
+                double dist = MoreMath.GetDistanceBetween(dimension.centerX, dimension.centerZ, inGameX, inGameZ);
+                if (dist <= dimension.radius)
+                {
+                    hoverIndex = i;
+                    break;
+                }
+            }
+            return hoverIndex.HasValue ? new MapObjectHoverData(this, index: hoverIndex) : null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            List<(float centerX, float centerZ, float radius)> dimensionList = Get2DDimensions();
+            var dimension = dimensionList[hoverData.Index.Value];
+            List<object> posObjs = new List<object>() { dimension.centerX, dimension.centerZ };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
         }
     }
 }
