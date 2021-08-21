@@ -118,7 +118,11 @@ namespace STROOP.Map
                 GL.Begin(PrimitiveType.Polygon);
                 foreach ((float x, float y, float z, TriangleDataModel tri) in vertexList)
                 {
-                    byte opacityByte = hoverData != null && hoverData.Tri == tri ? MapUtilities.GetHoverOpacityByte() : OpacityByte;
+                    byte opacityByte = OpacityByte;
+                    if (this == hoverData?.MapObject && hoverData?.Tri == tri)
+                    {
+                        opacityByte = MapUtilities.GetHoverOpacityByte();
+                    }
                     GL.Color4(color.R, color.G, color.B, opacityByte);
                     GL.Vertex2(x, z);
                 }
@@ -178,7 +182,7 @@ namespace STROOP.Map
             foreach (List<(float x, float y, float z)> quad in quadList)
             {
                 bool isWithinQuad =
-                    hoverData != null &&
+                    this == hoverData?.MapObject &&
                     hoverData.MidUnitX.HasValue &&
                     hoverData.MidUnitZ.HasValue &&
                     MapUtilities.IsWithinQuad(quad, hoverData.MidUnitX.Value, hoverData.MidUnitZ.Value);

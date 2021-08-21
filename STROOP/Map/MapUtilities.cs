@@ -847,12 +847,6 @@ namespace STROOP.Map
             return nullableUIntList.ConvertAll(nullableUInt => nullableUInt.Value);
         }
 
-        public static double GetMaybeHoverOpacity(MapObject mapObject, MapObjectHoverData hoverData)
-        {
-            if (hoverData?.MapObject != mapObject) return mapObject.Opacity;
-            return GetHoverOpacity();
-        }
-
         public static double GetHoverOpacity()
         {
             long deltaTime = DateTimeOffset.Now.ToUnixTimeMilliseconds() - MapObjectHoverData.HoverStartTime;

@@ -27,7 +27,11 @@ namespace STROOP.Map
             (float xPosPixels, float zPosPixels) = MapUtilities.ConvertCoordsForControlTopDownView((float)x, (float)z);
             float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
             SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
-            double opacity = MapUtilities.GetMaybeHoverOpacity(this, hoverData);
+            double opacity = Opacity;
+            if (this == hoverData?.MapObject)
+            {
+                opacity = MapUtilities.GetHoverOpacity();
+            }
             MapUtilities.DrawTexture(TextureId, new PointF(xPosPixels, zPosPixels), size, angleDegrees, opacity);
         }
 
