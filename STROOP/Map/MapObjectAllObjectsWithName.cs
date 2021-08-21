@@ -63,7 +63,7 @@ namespace STROOP.Map
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
                 double opacity = Opacity;
-                if (dataPoint.objAddress == hoverData?.ObjAddress)
+                if (this == hoverData?.MapObject && dataPoint.objAddress == hoverData?.ObjAddress)
                 {
                     opacity = MapUtilities.GetHoverOpacity();
                 }
