@@ -20,17 +20,20 @@ namespace STROOP.Map
         public static Point ContextMenuStripPoint = new Point();
 
         public readonly MapObject MapObject;
+        public readonly ObjectDataModel Obj;
         public readonly TriangleDataModel Tri;
         public readonly float? MidUnitX;
         public readonly float? MidUnitZ;
 
         public MapObjectHoverData(
             MapObject mapObject,
+            ObjectDataModel obj = null,
             TriangleDataModel tri = null,
             float? midUnitX = null,
             float? midUnitZ = null)
         {
             MapObject = mapObject;
+            Obj = obj;
             Tri = tri;
             MidUnitX = midUnitX;
             MidUnitZ = midUnitZ;
@@ -50,6 +53,7 @@ namespace STROOP.Map
         {
             List<object> parts = new List<object>();
             parts.Add(MapObject);
+            if (Obj != null) parts.Add(Obj);
             if (Tri != null) parts.Add(HexUtilities.FormatValue(Tri.Address));
             if (MidUnitX.HasValue) parts.Add(MidUnitX.Value);
             if (MidUnitZ.HasValue) parts.Add(MidUnitZ.Value);
@@ -61,6 +65,7 @@ namespace STROOP.Map
             if (obj is MapObjectHoverData other)
             {
                 return MapObject == other.MapObject &&
+                    Obj?.Address == other.Obj?.Address &&
                     Tri?.Address == other.Tri?.Address &&
                     MidUnitX == other.MidUnitX &&
                     MidUnitZ == other.MidUnitZ;
