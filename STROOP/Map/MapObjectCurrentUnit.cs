@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using System.Xml.Linq;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -37,13 +38,14 @@ namespace STROOP.Map
             int zMin = (short)posAngleZ;
             int zMax = zMin + (posAngleZ >= 0 ? 1 : -1);
 
+            bool isHovered = this == hoverData?.MapObject;
             List<(float x, float y, float z, bool isHovered)> quad =
                 new List<(float x, float y, float z, bool isHovered)>()
                 {
-                    (xMin, posAngleY, zMin, false),
-                    (xMin, posAngleY, zMax, false),
-                    (xMax, posAngleY, zMax, false),
-                    (xMax, posAngleY, zMin, false),
+                    (xMin, posAngleY, zMin, isHovered),
+                    (xMin, posAngleY, zMax, isHovered),
+                    (xMax, posAngleY, zMax, isHovered),
+                    (xMax, posAngleY, zMin, isHovered),
                 };
             return new List<List<(float x, float y, float z, bool isHovered)>>() { quad };
         }
@@ -61,6 +63,30 @@ namespace STROOP.Map
         public override PositionAngle GetPositionAngle()
         {
             return _posAngle;
+        }
+
+        public override MapObjectHoverData GetHoverData()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+            int inGameXTruncated = (int)inGameX;
+            int inGameZTruncated = (int)inGameZ;
+            (double x, double y, double z, double angle) = _posAngle.GetValues();
+            int xTruncated = (int)x;
+            int zTruncated = (int)z;
+            bool isHovered = xTruncated == inGameXTruncated && zTruncated == inGameZTruncated;
+            return isHovered ? new MapObjectHoverData(this) : null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            List<object> posObjs = new List<object>() { (int)_posAngle.X, (int)_posAngle.Z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
         }
 
         public override List<XAttribute> GetXAttributes()
