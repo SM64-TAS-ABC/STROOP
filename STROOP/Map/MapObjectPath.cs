@@ -181,8 +181,11 @@ namespace STROOP.Map
 
             if (_customImage != null)
             {
-                foreach ((float x, float z) in verticesForControl)
+                List<(float x, float z)> imagePoints =
+                    _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(verticesForControl) : verticesForControl;
+                for (int i = 0; i < imagePoints.Count; i++)
                 {
+                    (float x, float z) = imagePoints[i];
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
                     MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, 1);
                 }
@@ -230,8 +233,11 @@ namespace STROOP.Map
 
             if (_customImage != null)
             {
-                foreach ((float x, float z) in verticesForControl)
+                List<(float x, float z)> imagePoints =
+                    _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(verticesForControl) : verticesForControl;
+                for (int i = 0; i < imagePoints.Count; i++)
                 {
+                    (float x, float z) = imagePoints[i];
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
                     MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, 1);
                 }
@@ -289,8 +295,12 @@ namespace STROOP.Map
 
             if (_customImage != null)
             {
-                foreach ((float x, float y, float z) in vertices)
+                List<(float x, float y, float z)> imagePoints =
+                    _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(vertices) : vertices;
+                for (int i = 0; i < imagePoints.Count; i++)
                 {
+                    (float x, float y, float z) = imagePoints[i];
+
                     Matrix4 viewMatrix = GetModelMatrix(x, y, z, 0);
                     GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
 

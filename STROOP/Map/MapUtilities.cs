@@ -880,5 +880,47 @@ namespace STROOP.Map
             }
             return copyItem;
         }
+
+        public static List<(float x, float z)> InterpolateQuarterSteps(List<(float x, float z)> points)
+        {
+            List<(float x, float z)> output = new List<(float x, float z)>();
+            for (int i = 0; i < points.Count - 1; i++)
+            {
+                (float x1, float z1) = points[i];
+                (float x2, float z2) = points[i + 1];
+                if (i == 0)
+                {
+                    output.Add((x1, z1));
+                }
+                for (int j = 1; j <= 4; j++)
+                {
+                    (float x, float z) point =
+                        (x1 + (x2 - x1) * (j / 4f), z1 + (z2 - z1) * (j / 4f));
+                    output.Add(point);
+                }
+            }
+            return output;
+        }
+
+        public static List<(float x, float y, float z)> InterpolateQuarterSteps(List<(float x, float y, float z)> points)
+        {
+            List<(float x, float y, float z)> output = new List<(float x, float y, float z)>();
+            for (int i = 0; i < points.Count - 1; i++)
+            {
+                (float x1, float y1, float z1) = points[i];
+                (float x2, float y2, float z2) = points[i + 1];
+                if (i == 0)
+                {
+                    output.Add((x1, y1, z1));
+                }
+                for (int j = 1; j <= 4; j++)
+                {
+                    (float x, float y, float z) point =
+                        (x1 + (x2 - x1) * (j / 4f), y1 + (y2 - y1) * (j / 4f), z1 + (z2 - z1) * (j / 4f));
+                    output.Add(point);
+                }
+            }
+            return output;
+        }
     }
 }
