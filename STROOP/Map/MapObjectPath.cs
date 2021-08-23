@@ -190,7 +190,12 @@ namespace STROOP.Map
                     (float x, float z) = imagePoints[i];
                     float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, imageSize, Scales);
-                    MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, 1);
+                    double opacity = Opacity;
+                    if (this == hoverData?.MapObject && i == hoverData?.Index)
+                    {
+                        opacity = MapUtilities.GetHoverOpacity();
+                    }
+                    MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, opacity);
                 }
             }
         }
@@ -693,6 +698,8 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverData()
         {
+            if (_customImage == null) return null;
+
             Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
 
