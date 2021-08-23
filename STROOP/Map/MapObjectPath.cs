@@ -17,6 +17,8 @@ namespace STROOP.Map
 {
     public class MapObjectPath : MapObject
     {
+        private static float QSTEP_RATIO = 0.5f;
+
         private readonly PositionAngle _posAngle;
         private readonly Dictionary<uint, (float x, float y, float z)> _dictionary;
         private (byte level, byte area, ushort loadingPoint, ushort missionLayout) _currentLocationStats;
@@ -186,7 +188,7 @@ namespace STROOP.Map
                 for (int i = 0; i < imagePoints.Count; i++)
                 {
                     (float x, float z) = imagePoints[i];
-                    float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize / 2 : _imageSize;
+                    float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, imageSize, Scales);
                     MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, 1);
                 }
@@ -239,7 +241,7 @@ namespace STROOP.Map
                 for (int i = 0; i < imagePoints.Count; i++)
                 {
                     (float x, float z) = imagePoints[i];
-                    float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize / 2 : _imageSize;
+                    float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, imageSize, Scales);
                     MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, 1);
                 }
@@ -302,7 +304,7 @@ namespace STROOP.Map
                 for (int i = 0; i < imagePoints.Count; i++)
                 {
                     (float x, float y, float z) = imagePoints[i];
-                    float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize / 2 : _imageSize;
+                    float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
 
                     Matrix4 viewMatrix = GetModelMatrix(x, y, z, 0, imageSize);
                     GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
@@ -687,6 +689,43 @@ namespace STROOP.Map
         public override PositionAngle GetPositionAngle()
         {
             return _posAngle;
+        }
+
+        public override MapObjectHoverData GetHoverData()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+
+            List<(float x, float y, float z)> preData = GetDictionaryValues();
+            List<(float x, float y, float z)> data = _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(preData) : preData;
+            int? hoverIndex = null;
+            for (int i = data.Count - 1; i >= 0; i--)
+            {
+                var dataPoint = data[i];
+                double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
+                float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
+                double radius = Scales ? imageSize : imageSize / Config.CurrentMapGraphics.MapViewScaleValue;
+                if (dist <= radius)
+                {
+                    hoverIndex = i;
+                    break;
+                }
+            }
+            return hoverIndex.HasValue ? new MapObjectHoverData(this, index: hoverIndex) : null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            List<(float x, float y, float z)> preData = GetDictionaryValues();
+            List<(float x, float y, float z)> data = _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(preData) : preData;
+            var dataPoint = data[hoverData.Index.Value];
+            List<object> posObjs = new List<object>() { dataPoint.x, dataPoint.y, dataPoint.z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
         }
 
         public override List<XAttribute> GetXAttributes()
