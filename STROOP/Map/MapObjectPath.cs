@@ -17,7 +17,7 @@ namespace STROOP.Map
 {
     public class MapObjectPath : MapObject
     {
-        private static float QSTEP_RATIO = 0.5f;
+        private static readonly float QSTEP_RATIO = 0.5f;
 
         private readonly PositionAngle _posAngle;
         private readonly Dictionary<uint, (float x, float y, float z)> _dictionary;
