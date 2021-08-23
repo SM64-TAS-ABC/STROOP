@@ -186,7 +186,8 @@ namespace STROOP.Map
                 for (int i = 0; i < imagePoints.Count; i++)
                 {
                     (float x, float z) = imagePoints[i];
-                    SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
+                    float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize / 2 : _imageSize;
+                    SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, imageSize, Scales);
                     MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, 1);
                 }
             }
@@ -238,7 +239,8 @@ namespace STROOP.Map
                 for (int i = 0; i < imagePoints.Count; i++)
                 {
                     (float x, float z) = imagePoints[i];
-                    SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
+                    float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize / 2 : _imageSize;
+                    SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, imageSize, Scales);
                     MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, 1);
                 }
             }
@@ -300,8 +302,9 @@ namespace STROOP.Map
                 for (int i = 0; i < imagePoints.Count; i++)
                 {
                     (float x, float y, float z) = imagePoints[i];
+                    float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize / 2 : _imageSize;
 
-                    Matrix4 viewMatrix = GetModelMatrix(x, y, z, 0);
+                    Matrix4 viewMatrix = GetModelMatrix(x, y, z, 0, imageSize);
                     GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
 
                     Map3DVertex[] vertices2 = GetVertices();
@@ -318,7 +321,7 @@ namespace STROOP.Map
             }
         }
 
-        public Matrix4 GetModelMatrix(float x, float y, float z, float ang)
+        public Matrix4 GetModelMatrix(float x, float y, float z, float ang, float imageSize)
         {
             SizeF _imageNormalizedSize = new SizeF(
                 _customImage.Width >= _customImage.Height ? 1.0f : (float)_customImage.Width / _customImage.Height,
@@ -326,7 +329,7 @@ namespace STROOP.Map
 
             Vector3 pos = new Vector3(x, y, z);
 
-            float size = _imageSize / 200;
+            float size = imageSize / 200;
             return Matrix4.CreateScale(size * _imageNormalizedSize.Width, size * _imageNormalizedSize.Height, 1)
                 * Matrix4.CreateRotationZ(0)
                 * Matrix4.CreateScale(1.0f / Config.Map3DGraphics.NormalizedWidth, 1.0f / Config.Map3DGraphics.NormalizedHeight, 1)
