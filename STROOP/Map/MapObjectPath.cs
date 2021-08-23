@@ -29,6 +29,7 @@ namespace STROOP.Map
         private bool _useValueAtStartOfGlobalTimer;
         private uint _highestGlobalTimerValue;
         private int _modulo;
+        private bool _showQuarterSteps;
         private float _imageSize;
 
         private ToolStripMenuItem _itemResetPathOnLevelChange;
@@ -37,6 +38,7 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemTruncatePoints;
         private ToolStripMenuItem _itemUseValueAtStartOfGlobalTimer;
         private ToolStripMenuItem _itemSetModulo;
+        private ToolStripMenuItem _itemShowQuarterSteps;
         private ToolStripMenuItem _itemSetIconSize;
 
         private static readonly string SET_MODULO_TEXT = "Set Modulo";
@@ -469,6 +471,16 @@ namespace STROOP.Map
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
+                _itemShowQuarterSteps = new ToolStripMenuItem("Show Quarter Steps");
+                _itemShowQuarterSteps.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeShowQuarterSteps: true,
+                        newShowQuarterSteps: !_showQuarterSteps);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemShowQuarterSteps.Checked = _showQuarterSteps;
+
                 string suffix2 = string.Format(" ({0})", _imageSize);
                 _itemSetIconSize = new ToolStripMenuItem(SET_ICON_SIZE_TEXT + suffix2);
                 _itemSetIconSize.Click += (sender, e) =>
@@ -503,6 +515,7 @@ namespace STROOP.Map
                 _contextMenuStrip.Items.Add(_itemTruncatePoints);
                 _contextMenuStrip.Items.Add(_itemUseValueAtStartOfGlobalTimer);
                 _contextMenuStrip.Items.Add(_itemSetModulo);
+                _contextMenuStrip.Items.Add(_itemShowQuarterSteps);
                 _contextMenuStrip.Items.Add(_itemSetIconSize);
                 _contextMenuStrip.Items.Add(itemCopyPoints);
                 _contextMenuStrip.Items.Add(itemPastePoints);
@@ -555,6 +568,12 @@ namespace STROOP.Map
                 _modulo = settings.NewPathModulo;
                 string suffix = string.Format(" ({0})", _modulo);
                 _itemSetModulo.Text = SET_MODULO_TEXT + suffix;
+            }
+
+            if (settings.ChangeShowQuarterSteps)
+            {
+                _showQuarterSteps = settings.NewShowQuarterSteps;
+                _itemShowQuarterSteps.Checked = _showQuarterSteps;
             }
 
             if (settings.ChangeIconSize)
