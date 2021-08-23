@@ -181,8 +181,9 @@ namespace STROOP.Map
 
             if (_customImage != null)
             {
-                foreach ((float x, float z) in verticesForControl)
+                for (int i = 0; i < verticesForControl.Count; i++)
                 {
+                    (float x, float z) = verticesForControl[i];
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
                     MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, 1);
                 }
@@ -230,8 +231,9 @@ namespace STROOP.Map
 
             if (_customImage != null)
             {
-                foreach ((float x, float z) in verticesForControl)
+                for (int i = 0; i < verticesForControl.Count; i++)
                 {
+                    (float x, float z) = verticesForControl[i];
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
                     MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, 1);
                 }
@@ -289,8 +291,9 @@ namespace STROOP.Map
 
             if (_customImage != null)
             {
-                foreach ((float x, float y, float z) in vertices)
+                for (int i = 0; i < vertices.Count; i++)
                 {
+                    (float x, float y, float z) = vertices[i];
                     Matrix4 viewMatrix = GetModelMatrix(x, y, z, 0);
                     GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
 
