@@ -4770,6 +4770,17 @@ namespace STROOP.Structs
                     return true;
                 }));
 
+            _dictionary.Add("ObjectSlotSize",
+                ((uint dummy) =>
+                {
+                    return Config.ObjectSlotsManager.GetObjectSlotSize();
+                },
+                (int value, uint dummy) =>
+                {
+                    Config.StroopMainForm.ChangeObjectSlotSize(value);
+                    return true;
+                }));
+
             _dictionary.Add("CustomReleaseStatus",
                 ((uint dummy) =>
                 {

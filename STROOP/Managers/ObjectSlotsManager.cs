@@ -84,6 +84,11 @@ namespace STROOP.Managers
                 objSlot.Size = new Size(newSize, newSize);
         }
 
+        public int GetObjectSlotSize()
+        {
+            return ObjectSlots[0].Size.Width;
+        }
+
         private static readonly Dictionary<string, TabType> TabNameToTabType = new Dictionary<string, TabType>()
         {
             ["Object"] = TabType.Object,

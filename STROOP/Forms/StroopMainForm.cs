@@ -890,7 +890,7 @@ namespace STROOP
             ChangeObjectSlotSize(trackBarObjSlotSize.Value);
         }
 
-        private async void ChangeObjectSlotSize(int size)
+        public async void ChangeObjectSlotSize(int size)
         {
             _resizeObjSlotTime = 500;
             if (_objSlotResizing)
