@@ -489,44 +489,8 @@ namespace STROOP
             // Draw Overlays
             if (_drawMarkedOverlay.HasValue)
             {
-                switch (_drawMarkedOverlay.Value)
-                {
-                    case 1:
-                        e.Graphics.DrawImage(_gui.MarkedRedObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 2:
-                        e.Graphics.DrawImage(_gui.MarkedOrangeObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 3:
-                        e.Graphics.DrawImage(_gui.MarkedYellowObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 4:
-                        e.Graphics.DrawImage(_gui.MarkedGreenObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 5:
-                        e.Graphics.DrawImage(_gui.MarkedLightBlueObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 6:
-                        e.Graphics.DrawImage(_gui.MarkedBlueObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 7:
-                        e.Graphics.DrawImage(_gui.MarkedPurpleObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 8:
-                        e.Graphics.DrawImage(_gui.MarkedPinkObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 9:
-                        e.Graphics.DrawImage(_gui.MarkedGreyObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 0:
-                        e.Graphics.DrawImage(_gui.MarkedWhiteObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 10:
-                        e.Graphics.DrawImage(_gui.MarkedBlackObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                Image image = _gui.MarkedColorDictionary[_drawMarkedOverlay.Value];
+                e.Graphics.DrawImage(image, new Rectangle(new Point(), Size));
             }
             switch (_selectionType)
             {

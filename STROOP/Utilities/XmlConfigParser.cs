@@ -806,6 +806,8 @@ namespace STROOP.Utilities
             objectSlotManagerGui.LockDisabledOverlayImage = Image.FromFile(overlayImageDir + lockDisabledImagePath);
             objectSlotManagerGui.LockReadOnlyOverlayImage = Image.FromFile(overlayImageDir + lockReadOnlyImagePath);
 
+            objectSlotManagerGui.InitializeMarkedColorDictionary();
+
             foreach (var obj in assoc.BehaviorAssociations)
             {
                 if (obj.ImagePath == null || obj.ImagePath == "")

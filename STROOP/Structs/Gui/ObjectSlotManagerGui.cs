@@ -57,6 +57,26 @@ namespace STROOP.Structs
         public ComboBox SelectionMethodComboBox;
         public ObjectSlotFlowLayoutPanel FlowLayoutContainer;
 
+        public Dictionary<int, Image> MarkedColorDictionary;
+
+        public void InitializeMarkedColorDictionary()
+        {
+            MarkedColorDictionary = new Dictionary<int, Image>()
+            {
+                [1] = MarkedRedObjectOverlayImage,
+                [2] = MarkedOrangeObjectOverlayImage,
+                [3] = MarkedYellowObjectOverlayImage,
+                [4] = MarkedGreenObjectOverlayImage,
+                [5] = MarkedLightBlueObjectOverlayImage,
+                [6] = MarkedBlueObjectOverlayImage,
+                [7] = MarkedPurpleObjectOverlayImage,
+                [8] = MarkedPinkObjectOverlayImage,
+                [9] = MarkedGreyObjectOverlayImage,
+                [0] = MarkedWhiteObjectOverlayImage,
+                [10] = MarkedBlackObjectOverlayImage,
+            };
+        }
+
         ~ObjectSlotManagerGui()
         {
             SelectedObjectOverlayImage?.Dispose();
