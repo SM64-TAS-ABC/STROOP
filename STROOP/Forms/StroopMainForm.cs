@@ -144,7 +144,6 @@ namespace STROOP
                     "Show Skribblio Words",
                     "Show Image Form",
                     "Show Coin Ring Display Form",
-                    "Toggle Object Grid/Row",
                     "Test Something",
                     "Test Something Else",
                     "Format Subtitles",
@@ -203,10 +202,6 @@ namespace STROOP
                     {
                         CoinRingDisplayForm form = new CoinRingDisplayForm();
                         form.Show();
-                    },
-                    () =>
-                    {
-                        WatchVariablePanelObjects.WrapContents = !WatchVariablePanelObjects.WrapContents;
                     },
                     () => TestUtilities.TestSomething(),
                     () => TestUtilities.TestSomethingElse(),

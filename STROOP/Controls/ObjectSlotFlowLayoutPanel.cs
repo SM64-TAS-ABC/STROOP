@@ -54,22 +54,12 @@ namespace STROOP.Controls
                 ButtonUtilities.UnloadObject(objsToUnload);
             };
 
-            ToolStripMenuItem itemFixHorizontalScroll = new ToolStripMenuItem("Fix Horizontal Scroll");
-            itemFixHorizontalScroll.Click += (sender, e) =>
+            ToolStripMenuItem itemDisplayAsRow = new ToolStripMenuItem("Display as Row");
+            itemDisplayAsRow.Click += (sender, e) =>
             {
-                List<Control> controls = new List<Control>();
-                foreach (Control control in Controls)
-                {
-                    controls.Add(control);
-                }
-                while (Controls.Count > 0)
-                {
-                    Controls.RemoveAt(0);
-                }
-                foreach (Control control in controls)
-                {
-                    Controls.Add(control);
-                }
+                WrapContents = !WrapContents;
+                itemDisplayAsRow.Checked = !WrapContents;
+                ResetSlots();
             };
 
             ContextMenuStrip = new ContextMenuStrip();
@@ -78,7 +68,24 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(itemClearMarkedSlots);
             ContextMenuStrip.Items.Add(itemClearSelectedSlots);
             ContextMenuStrip.Items.Add(itemUnloadAllButMarkedSlots);
-            ContextMenuStrip.Items.Add(itemFixHorizontalScroll);
+            ContextMenuStrip.Items.Add(itemDisplayAsRow);
+        }
+
+        private void ResetSlots()
+        {
+            List<Control> controls = new List<Control>();
+            foreach (Control control in Controls)
+            {
+                controls.Add(control);
+            }
+            while (Controls.Count > 0)
+            {
+                Controls.RemoveAt(0);
+            }
+            foreach (Control control in controls)
+            {
+                Controls.Add(control);
+            }
         }
     }
 }
