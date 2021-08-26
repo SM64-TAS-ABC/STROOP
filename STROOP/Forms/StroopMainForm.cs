@@ -144,7 +144,7 @@ namespace STROOP
                     "Show Skribblio Words",
                     "Show Image Form",
                     "Show Coin Ring Display Form",
-                    "Add Chuckya Map Objs",
+                    "Toggle Object Grid/Row",
                     "Test Something",
                     "Test Something Else",
                     "Format Subtitles",
@@ -204,7 +204,10 @@ namespace STROOP
                         CoinRingDisplayForm form = new CoinRingDisplayForm();
                         form.Show();
                     },
-                    () => TestUtilities.AddChuckyaMapObjects(),
+                    () =>
+                    {
+                        WatchVariablePanelObjects.WrapContents = !WatchVariablePanelObjects.WrapContents;
+                    },
                     () => TestUtilities.TestSomething(),
                     () => TestUtilities.TestSomethingElse(),
                     () => SubtitleUtilities.FormatSubtitlesFromClipboard(),
