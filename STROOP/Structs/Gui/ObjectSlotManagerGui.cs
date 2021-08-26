@@ -57,11 +57,11 @@ namespace STROOP.Structs
         public ComboBox SelectionMethodComboBox;
         public ObjectSlotFlowLayoutPanel FlowLayoutContainer;
 
-        public Dictionary<int, Image> MarkedColorDictionary;
+        public Dictionary<int, Image> MarkedImageDictionary;
 
         public void InitializeMarkedColorDictionary()
         {
-            MarkedColorDictionary = new Dictionary<int, Image>()
+            MarkedImageDictionary = new Dictionary<int, Image>()
             {
                 [1] = MarkedRedObjectOverlayImage,
                 [2] = MarkedOrangeObjectOverlayImage,

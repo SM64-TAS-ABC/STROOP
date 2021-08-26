@@ -489,7 +489,7 @@ namespace STROOP
             // Draw Overlays
             if (_drawMarkedOverlay.HasValue)
             {
-                Image image = _gui.MarkedColorDictionary[_drawMarkedOverlay.Value];
+                Image image = _gui.MarkedImageDictionary[_drawMarkedOverlay.Value];
                 e.Graphics.DrawImage(image, new Rectangle(new Point(), Size));
             }
             switch (_selectionType)

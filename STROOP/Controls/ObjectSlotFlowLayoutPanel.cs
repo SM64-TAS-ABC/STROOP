@@ -25,6 +25,37 @@ namespace STROOP.Controls
                 Config.ObjectSlotsManager.SelectedSlotsAddresses.AddRange(Config.ObjectSlotsManager.MarkedSlotsAddresses);
             };
 
+            ToolStripMenuItem itemSelectSpecificMarkedSlots = new ToolStripMenuItem("Select Specific Marked Slots...");
+            Dictionary<int, string> MarkedColorDictionary =
+                new Dictionary<int, string>()
+                {
+                    [1] = "Red",
+                    [2] = "Orange",
+                    [3] = "Yellow",
+                    [4] = "Green",
+                    [5] = "Light Blue",
+                    [6] = "Blue",
+                    [7] = "Purple",
+                    [8] = "Pink",
+                    [9] = "Grey",
+                    [0] = "White",
+                    [10] = "Black",
+                };
+            List<int> keys = MarkedColorDictionary.Keys.ToList();
+            foreach (int key in keys)
+            {
+                string colorName = MarkedColorDictionary[key];
+                ToolStripMenuItem item = new ToolStripMenuItem(colorName);
+                item.Click += (sender, e) =>
+                {
+                    List<uint> objAddresses = Config.ObjectSlotsManager.MarkedSlotsAddressesDictionary.Keys.ToList()
+                        .FindAll(objAddress => Config.ObjectSlotsManager.MarkedSlotsAddressesDictionary[objAddress] == key);
+                    Config.ObjectSlotsManager.SelectedSlotsAddresses.Clear();
+                    Config.ObjectSlotsManager.SelectedSlotsAddresses.AddRange(objAddresses);
+                };
+                itemSelectSpecificMarkedSlots.DropDownItems.Add(item);
+            }
+
             ToolStripMenuItem itemSelectCopiedAddress = new ToolStripMenuItem("Select Copied Address");
             itemSelectCopiedAddress.Click += (sender, e) =>
             {
@@ -64,6 +95,7 @@ namespace STROOP.Controls
 
             ContextMenuStrip = new ContextMenuStrip();
             ContextMenuStrip.Items.Add(itemSelectMarkedSlots);
+            ContextMenuStrip.Items.Add(itemSelectSpecificMarkedSlots);
             ContextMenuStrip.Items.Add(itemSelectCopiedAddress);
             ContextMenuStrip.Items.Add(itemClearMarkedSlots);
             ContextMenuStrip.Items.Add(itemClearSelectedSlots);
