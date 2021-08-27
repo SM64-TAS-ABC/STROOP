@@ -922,5 +922,27 @@ namespace STROOP.Map
             }
             return output;
         }
+
+        public static List<(float x, float z)> GetFloatPositions(int limit)
+        {
+            float xMin = Config.CurrentMapGraphics.MapViewXMin;
+            float xMax = Config.CurrentMapGraphics.MapViewXMax;
+            float zMin = Config.CurrentMapGraphics.MapViewZMin;
+            float zMax = Config.CurrentMapGraphics.MapViewZMax;
+
+            List<(float x, float z)> output = new List<(float x, float z)>();
+            for (float x = xMin; x <= xMax; x = MoreMath.GetNextFloat(x))
+            {
+                for (float z = zMin; z <= zMax; z = MoreMath.GetNextFloat(z))
+                {
+                    output.Add((x, z));
+                    if (output.Count >= limit)
+                    {
+                        return new List<(float x, float z)>();
+                    }
+                }
+            }
+            return output;
+        }
     }
 }

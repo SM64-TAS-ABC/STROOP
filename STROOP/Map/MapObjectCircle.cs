@@ -68,6 +68,20 @@ namespace STROOP.Map
                     }
                     GL.End();
                 }
+
+                if (_customImage != null)
+                {
+                    List<(float x, float z)> positions = MapUtilities.GetFloatPositions(10_000);
+                    for (int j = 0; j < positions.Count; j++)
+                    {
+                        (float x, float z) = positions[j];
+                        float dist = (float)MoreMath.GetDistanceBetween(centerX, centerZ, x, z);
+                        if (dist >= radius) continue;
+                        (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
+                        SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, 8, Scales);
+                        MapUtilities.DrawTexture(_customImageTex.Value, new PointF(controlX, controlZ), size, 0, 1);
+                    }
+                }
             }
 
             GL.Color4(1, 1, 1, 1.0f);
