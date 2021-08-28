@@ -24,6 +24,18 @@ namespace STROOP.Map
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             MapUtilities.DrawLinesOn2DControlTopDownView(GetVerticesTopDownView(), LineWidth, LineColor, OpacityByte);
+
+            if (_customImage != null)
+            {
+                List<(float x, float z)> positions = GetCustomImagePositions();
+                for (int i = 0; i < positions.Count; i++)
+                {
+                    (float x, float z) = positions[i];
+                    (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
+                    SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, 8, Scales);
+                    MapUtilities.DrawTexture(_customImageTex.Value, new PointF(controlX, controlZ), size, 0, 1);
+                }
+            }
         }
 
         public override void DrawOn2DControlOrthographicView()
@@ -46,6 +58,11 @@ namespace STROOP.Map
         protected virtual List<(float x, float y, float z)> GetVertices3D()
         {
             return GetVerticesTopDownView();
+        }
+
+        protected virtual List<(float x, float z)> GetCustomImagePositions()
+        {
+            return new List<(float x, float z)>();
         }
 
         public override MapDrawType GetDrawType()
