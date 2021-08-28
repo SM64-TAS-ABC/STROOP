@@ -655,7 +655,6 @@
     <Compile Include="Managers\TestingManager.cs" />
     <Compile Include="Managers\OptionsManager.cs" />
     <Compile Include="Managers\PuManager.cs" />
-    <Compile Include="Managers\InjectionManager.cs" />
     <Compile Include="Managers\TriangleManager.cs" />
     <Compile Include="Controls\ObjectSlot.cs">
       <SubType>Component</SubType>
@@ -1195,9 +1194,6 @@
     <Content Include="Config\ObjectData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\Scripts.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\MapAssociations.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

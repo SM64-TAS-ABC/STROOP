@@ -50,7 +50,6 @@ namespace STROOP.Structs.Configurations
         public static ObjectSlotsManager ObjectSlotsManager;
         public static OptionsManager OptionsManager;
         public static TestingManager TestingManager;
-        public static InjectionManager InjectionManager;
         public static TriangleManager TriangleManager;
         public static WaterManager WaterManager;
         public static SnowManager SnowManager;

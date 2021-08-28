@@ -29,7 +29,6 @@ namespace STROOP
         
         List<InputImageGui> _inputImageGuiList = new List<Structs.InputImageGui>();
         FileImageGui _fileImageGui = new FileImageGui();
-        ScriptParser _scriptParser;
         List<RomHack> _romHacks;
 
         DataTable _tableOtherData = new DataTable();
@@ -464,7 +463,6 @@ namespace STROOP
             Config.LockManager = new WatchVariableLockManager(pictureBoxLock);
 
             Config.DisassemblyManager = new DisassemblyManager(tabPageDisassembly);
-            Config.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
             Config.HackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
             Config.M64Manager = new M64Manager(m64Gui);
 
@@ -545,7 +543,6 @@ namespace STROOP
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
             Config.MapAssociations = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
             loadingForm.UpdateStatus("Loading Scripts", statusNum++);
-            _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
             loadingForm.UpdateStatus("Loading Hacks", statusNum++);
             _romHacks = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
             loadingForm.UpdateStatus("Loading Mario Actions", statusNum++);
@@ -639,7 +636,6 @@ namespace STROOP
                 Config.ScriptManager.Update(tabControlMain.SelectedTab == tabPageScript);
                 Config.WarpManager.Update(tabControlMain.SelectedTab == tabPageWarp);
                 Config.ModelManager?.Update();
-                Config.InjectionManager.Update();
                 Config.HackManager.Update();
                 Config.LockManager.Update();
                 TestUtilities.Update();
