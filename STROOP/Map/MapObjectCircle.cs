@@ -138,18 +138,34 @@ namespace STROOP.Map
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
 
             List<(float centerX, float centerZ, float radius)> dimensionList = Get2DDimensions();
-            int? hoverIndex = null;
-            for (int i = 0; i < dimensionList.Count; i++)
+            for (int i = dimensionList.Count - 1; i >= 0 ; i--)
             {
                 var dimension = dimensionList[i];
+
+                if (_customImage != null)
+                {
+                    List<(float x, float z)> positions = MapUtilities.GetFloatPositions(10_000);
+                    List<(float x, float z)> controlPositions = positions.ConvertAll(
+                        p => MapUtilities.ConvertCoordsForControlTopDownView(p.x, p.z));
+                    for (int j = controlPositions.Count - 1; j >= 0; j--)
+                    {
+                        var controlPosition = controlPositions[j];
+                        double controlDist = MoreMath.GetDistanceBetween(controlPosition.x, controlPosition.z, relPos.X, relPos.Y);
+                        double radius = Scales ? _imageSize * Config.CurrentMapGraphics.MapViewScaleValue : _imageSize;
+                        if (controlDist <= radius)
+                        {
+                            return new MapObjectHoverData(this, index: i, index2: j);
+                        }
+                    }
+                }
+
                 double dist = MoreMath.GetDistanceBetween(dimension.centerX, dimension.centerZ, inGameX, inGameZ);
                 if (dist <= dimension.radius)
                 {
-                    hoverIndex = i;
-                    break;
+                    return new MapObjectHoverData(this, index: i);
                 }
             }
-            return hoverIndex.HasValue ? new MapObjectHoverData(this, index: hoverIndex) : null;
+            return null;
         }
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
