@@ -177,11 +177,22 @@ namespace STROOP.Map
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
-            List<(float centerX, float centerZ, float radius)> dimensionList = Get2DDimensions();
-            var dimension = dimensionList[hoverData.Index.Value];
-            List<object> posObjs = new List<object>() { dimension.centerX, dimension.centerZ };
-            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
-            output.Insert(0, copyPositionItem);
+            if (hoverData.Index2.HasValue)
+            {
+                List<(float x, float z)> positions = MapUtilities.GetFloatPositions(10_000);
+                var position = positions[hoverData.Index2.Value];
+                List<object> posObjs = new List<object>() { (double)position.x, (double)position.z };
+                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
+                output.Insert(0, copyPositionItem);
+            }
+            else
+            {
+                List<(float centerX, float centerZ, float radius)> dimensionList = Get2DDimensions();
+                var dimension = dimensionList[hoverData.Index.Value];
+                List<object> posObjs = new List<object>() { dimension.centerX, dimension.centerZ };
+                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
+                output.Insert(0, copyPositionItem);
+            }
 
             return output;
         }
