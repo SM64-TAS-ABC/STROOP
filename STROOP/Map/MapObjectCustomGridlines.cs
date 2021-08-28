@@ -71,6 +71,49 @@ namespace STROOP.Map
             return vertices;
         }
 
+        protected override List<(float x, float z)> GetCustomImagePositions()
+        {
+            int gridlineMin = -8192;
+            int gridlineMax = 8192;
+
+            double size = Size;
+            if (size < 1) size = 1;
+            double increment = 16384 / size;
+
+            double viewXMin = Config.CurrentMapGraphics.MapViewXMin;
+            double viewXMax = Config.CurrentMapGraphics.MapViewXMax;
+            double viewXDiff = viewXMax - viewXMin;
+            double viewXDiffPixels = viewXDiff * Config.CurrentMapGraphics.MapViewScaleValue;
+
+            double viewZMin = Config.CurrentMapGraphics.MapViewZMin;
+            double viewZMax = Config.CurrentMapGraphics.MapViewZMax;
+            double viewZDiff = viewZMax - viewZMin;
+            double viewZDiffPixels = viewZDiff * Config.CurrentMapGraphics.MapViewScaleValue;
+
+            int xMinMultiple = Math.Max((int)((viewXMin - gridlineMin) / increment) - 1, 0);
+            int xMaxMultiple = Math.Min((int)((viewXMax - gridlineMin) / increment) + 1, (int)size);
+            int numXLines = xMaxMultiple - xMinMultiple + 1;
+
+            int zMinMultiple = Math.Max((int)((viewZMin - gridlineMin) / increment) - 1, 0);
+            int zMaxMultiple = Math.Min((int)((viewZMax - gridlineMin) / increment) + 1, (int)size);
+            int numZLines = zMaxMultiple - zMinMultiple + 1;
+
+            if (numXLines > viewXDiffPixels || numZLines > viewZDiffPixels)
+                return new List<(float x, float z)>();
+
+            List<(float x, float z)> vertices = new List<(float x, float z)>();
+            for (int multipleX = xMinMultiple; multipleX <= xMaxMultiple; multipleX++)
+            {
+                float x = (float)(multipleX * increment + gridlineMin);
+                for (int multipleZ = zMinMultiple; multipleZ <= zMaxMultiple; multipleZ++)
+                {
+                    float z = (float)(multipleZ * increment + gridlineMin);
+                    vertices.Add((x, z));
+                }
+            }
+            return vertices;
+        }
+
         protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
             int gridlineMin = -8192;
