@@ -31,6 +31,11 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
+            if (!Config.MapGui.checkBoxMapOptionsEnablePuView.Checked)
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
             switch (_setting)
             {
                 case PuGridlineSetting.SETTING1:
@@ -121,6 +126,11 @@ namespace STROOP.Map
 
         protected override List<(float x, float z)> GetCustomImagePositions()
         {
+            if (!Config.MapGui.checkBoxMapOptionsEnablePuView.Checked)
+            {
+                return new List<(float x, float z)>();
+            }
+
             if (_setting != PuGridlineSetting.SETTING1)
             {
                 return new List<(float x, float z)>();
@@ -147,6 +157,11 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
+            if (!Config.MapGui.checkBoxMapOptionsEnablePuView.Checked)
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
             switch (_setting)
             {
                 case PuGridlineSetting.SETTING1:
