@@ -51,6 +51,17 @@ namespace STROOP.Map
             return "Custom Sphere Points";
         }
 
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                _contextMenuStrip = new ContextMenuStrip();
+                GetCircleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
+            }
+
+            return _contextMenuStrip;
+        }
+
         public override List<XAttribute> GetXAttributes()
         {
             List<string> pointList = _points.ConvertAll(

@@ -16,9 +16,15 @@ namespace STROOP.Map
 {
     public abstract class MapObjectCircle : MapObject
     {
+        private float _imageSize;
+        private ToolStripMenuItem _itemSetIconSize;
+        private static readonly string SET_ICON_SIZE_TEXT = "Set Icon Size";
+
         public MapObjectCircle()
             : base()
         {
+            _imageSize = 8;
+
             Opacity = 0.5;
             Color = Color.Red;
         }
@@ -78,7 +84,7 @@ namespace STROOP.Map
                         float dist = (float)MoreMath.GetDistanceBetween(centerX, centerZ, x, z);
                         if (dist >= radius) continue;
                         (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
-                        SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, 8, Scales);
+                        SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
                         MapUtilities.DrawTexture(_customImageTex.Value, new PointF(controlX, controlZ), size, 0, 1);
                     }
                 }
@@ -92,6 +98,38 @@ namespace STROOP.Map
         public override MapDrawType GetDrawType()
         {
             return MapDrawType.Perspective;
+        }
+
+        protected List<ToolStripMenuItem> GetCircleToolStripMenuItems()
+        {
+            string suffix = string.Format(" ({0})", _imageSize);
+            _itemSetIconSize = new ToolStripMenuItem(SET_ICON_SIZE_TEXT + suffix);
+            _itemSetIconSize.Click += (sender, e) =>
+            {
+                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter icon size.");
+                float? sizeNullable = ParsingUtilities.ParseFloatNullable(text);
+                if (!sizeNullable.HasValue) return;
+                MapObjectSettings settings = new MapObjectSettings(
+                    changeIconSize: true, newIconSize: sizeNullable.Value);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
+            return new List<ToolStripMenuItem>()
+            {
+                _itemSetIconSize,
+            };
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeIconSize)
+            {
+                _imageSize = settings.NewIconSize;
+                string suffix = string.Format(" ({0})", _imageSize);
+                _itemSetIconSize.Text = SET_ICON_SIZE_TEXT + suffix;
+            }
         }
 
         public override MapObjectHoverData GetHoverData()
