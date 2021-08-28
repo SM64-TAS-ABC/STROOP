@@ -23,7 +23,6 @@ namespace STROOP.Managers
                 VariableGroup.HolpMario,
                 VariableGroup.HolpPoint,
                 VariableGroup.Trajectory,
-                VariableGroup.Hacks,
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
