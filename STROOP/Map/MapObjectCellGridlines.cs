@@ -40,6 +40,19 @@ namespace STROOP.Map
             return vertices;
         }
 
+        protected override List<(float x, float z)> GetCustomImagePositions()
+        {
+            List<(float x, float z)> vertices = new List<(float x, float z)>();
+            for (int x = -8192; x <= 8192; x += 1024)
+            {
+                for (int z = -8192; z <= 8192; z += 1024)
+                {
+                    vertices.Add((x, z));
+                }
+            }
+            return vertices;
+        }
+
         public override string GetName()
         {
             return "Cell Gridlines";
