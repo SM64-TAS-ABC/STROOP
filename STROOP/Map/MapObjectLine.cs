@@ -34,7 +34,12 @@ namespace STROOP.Map
                     (float x, float z) = positions[i];
                     (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, 8, Scales);
-                    MapUtilities.DrawTexture(_customImageTex.Value, new PointF(controlX, controlZ), size, 0, 1);
+                    double opacity = Opacity;
+                    if (this == hoverData?.MapObject && i == hoverData?.Index)
+                    {
+                        opacity = MapUtilities.GetHoverOpacity();
+                    }
+                    MapUtilities.DrawTexture(_customImageTex.Value, new PointF(controlX, controlZ), size, 0, opacity);
                 }
             }
         }
