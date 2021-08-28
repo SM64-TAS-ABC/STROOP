@@ -60,6 +60,44 @@ namespace STROOP.Map
             return vertices;
         }
 
+        protected override List<(float x, float z)> GetCustomImagePositions()
+        {
+            float xMin = Config.CurrentMapGraphics.MapViewXMin;
+            float xMax = Config.CurrentMapGraphics.MapViewXMax;
+            float zMin = Config.CurrentMapGraphics.MapViewZMin;
+            float zMax = Config.CurrentMapGraphics.MapViewZMax;
+
+            int xCounter = 0;
+            for (float x = xMin; x <= xMax; x = MoreMath.GetNextFloat(x))
+            {
+                xCounter++;
+                if (xCounter > 4000) break;
+            }
+            int zCounter = 0;
+            for (float z = zMin; z <= zMax; z = MoreMath.GetNextFloat(z))
+            {
+                zCounter++;
+                if (zCounter > 4000) break;
+            }
+
+            // failsafe to prevent filling the whole screen
+            if (xCounter > Config.MapGui.CurrentControl.Width ||
+                zCounter > Config.MapGui.CurrentControl.Height)
+            {
+                return new List<(float x, float z)>();
+            }
+
+            List<(float x, float z)> vertices = new List<(float x, float z)>();
+            for (float x = xMin; x <= xMax; x = MoreMath.GetNextFloat(x))
+            {
+                for (float z = zMin; z <= zMax; z = MoreMath.GetNextFloat(z))
+                {
+                    vertices.Add((x, z));
+                }
+            }
+            return vertices;
+        }
+
         protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
