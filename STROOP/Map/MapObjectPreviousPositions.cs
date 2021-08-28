@@ -586,8 +586,8 @@ namespace STROOP.Map
 
             var data = GetAllFrameData();
             var dataPoint = data[hoverData.Index.Value][hoverData.Index2.Value];
-            List<object> posObjs = new List<object>() { dataPoint.x, dataPoint.y, dataPoint.z };
-            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posObjs, "Position");
+            List<double> posValues = new List<double>() { dataPoint.x, dataPoint.y, dataPoint.z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
             output.Insert(0, copyPositionItem);
 
             return output;

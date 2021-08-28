@@ -516,12 +516,12 @@ namespace STROOP.Map
 
             if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
             {
-                List<object> basePointObjs = new List<object>() { (int)hoverData.MidUnitX.Value, (int)hoverData.MidUnitZ.Value };
-                ToolStripMenuItem copyBasePointItem = MapUtilities.CreateCopyItem(basePointObjs, "Base Point");
+                List<double> basePointValues = new List<double>() { (int)hoverData.MidUnitX.Value, (int)hoverData.MidUnitZ.Value };
+                ToolStripMenuItem copyBasePointItem = MapUtilities.CreateCopyItem(basePointValues, "Base Point");
                 output.Insert(0, copyBasePointItem);
 
-                List<object> midpointObjs = new List<object>() { hoverData.MidUnitX.Value, hoverData.MidUnitZ.Value };
-                ToolStripMenuItem copyMidpointItem = MapUtilities.CreateCopyItem(midpointObjs, "Midpoint");
+                List<double> midpointValues = new List<double>() { hoverData.MidUnitX.Value, hoverData.MidUnitZ.Value };
+                ToolStripMenuItem copyMidpointItem = MapUtilities.CreateCopyItem(midpointValues, "Midpoint");
                 output.Insert(1, copyMidpointItem);
             }
             else
