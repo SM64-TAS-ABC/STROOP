@@ -119,6 +119,32 @@ namespace STROOP.Map
             }
         }
 
+        protected override List<(float x, float z)> GetCustomImagePositions()
+        {
+            if (_setting != PuGridlineSetting.SETTING1)
+            {
+                return new List<(float x, float z)>();
+            }
+
+            float size = Math.Max(Size, 1);
+            long spacing = (long)(65536 * size);
+
+            long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing;
+            long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing;
+            long zMin = ((((long)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing;
+            long zMax = ((((long)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing;
+
+            List<(float x, float z)> vertices = new List<(float x, float z)>();
+            for (long x = xMin; x <= xMax; x += spacing)
+            {
+                for (long z = zMin; z <= zMax; z += spacing)
+                {
+                    vertices.Add((x, z));
+                }
+            }
+            return vertices;
+        }
+
         protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
             switch (_setting)
