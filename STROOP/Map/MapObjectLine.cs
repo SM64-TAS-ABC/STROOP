@@ -119,11 +119,11 @@ namespace STROOP.Map
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
 
             var positions = GetCustomImagePositions();
-            for (int i = 0; i < positions.Count; i++)
+            for (int i = positions.Count - 1; i >= 0; i--)
             {
                 var position = positions[i];
                 double dist = MoreMath.GetDistanceBetween(position.x, position.z, inGameX, inGameZ);
-                double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+                double radius = Scales ? _imageSize : _imageSize / Config.CurrentMapGraphics.MapViewScaleValue;
                 if (dist <= radius)
                 {
                     return new MapObjectHoverData(this, index: i);
