@@ -51,6 +51,30 @@ namespace STROOP.Map
             return vertices;
         }
 
+        protected override List<(float x, float z)> GetCustomImagePositions()
+        {
+            // failsafe to prevent filling the whole screen
+            if (!MapUtilities.IsAbleToShowUnitPrecision())
+            {
+                return new List<(float x, float z)>();
+            }
+
+            int xMin = (int)Config.CurrentMapGraphics.MapViewXMin - 1;
+            int xMax = (int)Config.CurrentMapGraphics.MapViewXMax + 1;
+            int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
+            int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
+
+            List<(float x, float z)> vertices = new List<(float x, float z)>();
+            for (int x = xMin; x <= xMax; x += 1)
+            {
+                for (int z = zMin; z <= zMax; z += 1)
+                {
+                    vertices.Add((x, z));
+                }
+            }
+            return vertices;
+        }
+
         protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
             // failsafe to prevent filling the whole screen
