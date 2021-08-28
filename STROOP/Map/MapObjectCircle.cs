@@ -48,7 +48,7 @@ namespace STROOP.Map
 
                 // Draw circle
                 byte opacityByte = OpacityByte;
-                if (this == hoverData?.MapObject && i == hoverData?.Index)
+                if (this == hoverData?.MapObject && i == hoverData?.Index && hoverData.Index2 == null)
                 {
                     opacityByte = MapUtilities.GetHoverOpacityByte();
                 }
@@ -85,7 +85,12 @@ namespace STROOP.Map
                         if (dist >= radius) continue;
                         (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                         SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
-                        MapUtilities.DrawTexture(_customImageTex.Value, new PointF(controlX, controlZ), size, 0, 1);
+                        double opacity = 1;
+                        if (this == hoverData?.MapObject && i == hoverData?.Index && j == hoverData?.Index2)
+                        {
+                            opacity = MapUtilities.GetHoverOpacity();
+                        }
+                        MapUtilities.DrawTexture(_customImageTex.Value, new PointF(controlX, controlZ), size, 0, opacity);
                     }
                 }
             }
