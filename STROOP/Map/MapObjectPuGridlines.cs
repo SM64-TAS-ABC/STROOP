@@ -328,8 +328,11 @@ namespace STROOP.Map
                 (List<ToolStripMenuItem> itemList, Action<PuGridlineSetting> valueAction) =
                     ControlUtilities.CreateCheckableItems(
                         itemNames, itemValues, setterAction, startingValue);
+
                 _contextMenuStrip = new ContextMenuStrip();
                 itemList.ForEach(item => _contextMenuStrip.Items.Add(item));
+                _contextMenuStrip.Items.Add(new ToolStripSeparator());
+                GetLineToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
             }
 
             return _contextMenuStrip;

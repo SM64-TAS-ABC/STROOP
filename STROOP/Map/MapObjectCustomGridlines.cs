@@ -9,6 +9,7 @@ using STROOP.Utilities;
 using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -151,6 +152,17 @@ namespace STROOP.Map
         public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.CustomGridlinesImage;
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                _contextMenuStrip = new ContextMenuStrip();
+                GetLineToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
+            }
+
+            return _contextMenuStrip;
         }
     }
 }

@@ -152,5 +152,16 @@ namespace STROOP.Map
         {
             return Config.ObjectAssociations.UnitGridlinesImage;
         }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                _contextMenuStrip = new ContextMenuStrip();
+                GetLineToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
+            }
+
+            return _contextMenuStrip;
+        }
     }
 }
