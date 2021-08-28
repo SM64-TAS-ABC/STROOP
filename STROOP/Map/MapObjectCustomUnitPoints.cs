@@ -71,17 +71,15 @@ namespace STROOP.Map
 
             int inGameXTruncated = (int)inGameX;
             int inGameZTruncated = (int)inGameZ;
-            int? hoverIndex = null;
             for (int i = 0; i < _unitPoints.Count; i++)
             {
                 var unitPoint = _unitPoints[i];
                 if (unitPoint.x == inGameXTruncated && unitPoint.z == inGameZTruncated)
                 {
-                    hoverIndex = i;
-                    break;
+                    return new MapObjectHoverData(this, index: i);
                 }
             }
-            return hoverIndex.HasValue ? new MapObjectHoverData(this, index: hoverIndex) : null;
+            return null;
         }
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)

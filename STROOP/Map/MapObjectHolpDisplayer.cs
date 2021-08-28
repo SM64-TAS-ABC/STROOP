@@ -234,7 +234,6 @@ namespace STROOP.Map
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
 
             List<(float x, float y, float z)> data = GetData();
-            int? hoverIndex = null;
             for (int i = data.Count - 1; i >= 0; i--)
             {
                 var dataPoint = data[i];
@@ -242,11 +241,10 @@ namespace STROOP.Map
                 double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
                 if (dist <= radius)
                 {
-                    hoverIndex = i;
-                    break;
+                    return new MapObjectHoverData(this, index: i);
                 }
             }
-            return hoverIndex.HasValue ? new MapObjectHoverData(this, index: hoverIndex) : null;
+            return null;
         }
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)

@@ -705,7 +705,6 @@ namespace STROOP.Map
 
             List<(float x, float y, float z)> preData = GetDictionaryValues();
             List<(float x, float y, float z)> data = _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(preData) : preData;
-            int? hoverIndex = null;
             for (int i = data.Count - 1; i >= 0; i--)
             {
                 var dataPoint = data[i];
@@ -714,11 +713,10 @@ namespace STROOP.Map
                 double radius = Scales ? imageSize : imageSize / Config.CurrentMapGraphics.MapViewScaleValue;
                 if (dist <= radius)
                 {
-                    hoverIndex = i;
-                    break;
+                    return new MapObjectHoverData(this, index: i);
                 }
             }
-            return hoverIndex.HasValue ? new MapObjectHoverData(this, index: hoverIndex) : null;
+            return null;
         }
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)

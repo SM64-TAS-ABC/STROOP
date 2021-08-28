@@ -74,8 +74,11 @@ namespace STROOP.Map
             (double x, double y, double z, double angle) = _posAngle.GetValues();
             int xTruncated = (int)x;
             int zTruncated = (int)z;
-            bool isHovered = xTruncated == inGameXTruncated && zTruncated == inGameZTruncated;
-            return isHovered ? new MapObjectHoverData(this) : null;
+            if (xTruncated == inGameXTruncated && zTruncated == inGameZTruncated)
+            {
+                return new MapObjectHoverData(this);
+            }
+            return null;
         }
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)

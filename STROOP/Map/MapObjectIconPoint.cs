@@ -104,7 +104,11 @@ namespace STROOP.Map
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
             double dist = MoreMath.GetDistanceBetween(x, z, inGameX, inGameZ);
             double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
-            return dist <= radius ? new MapObjectHoverData(this) : null;
+            if (dist <= radius)
+            {
+                return new MapObjectHoverData(this);
+            }
+            return null;
         }
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
