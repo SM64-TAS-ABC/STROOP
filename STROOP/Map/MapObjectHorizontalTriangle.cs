@@ -539,6 +539,16 @@ namespace STROOP.Map
                 ToolStripMenuItem copyAddressItem = new ToolStripMenuItem("Copy Address");
                 copyAddressItem.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(hoverData.Tri.Address));
                 output.Insert(1, copyAddressItem);
+
+                ToolStripMenuItem unloadAssociatedObjectItem = new ToolStripMenuItem("Unload Associated Object");
+                unloadAssociatedObjectItem.Click += (sender, e) =>
+                {
+                    uint objAddress = hoverData.Tri.AssociatedObject;
+                    if (objAddress == 0) return;
+                    ObjectDataModel obj = new ObjectDataModel(objAddress);
+                    ButtonUtilities.UnloadObject(new List<ObjectDataModel>() { obj });
+                };
+                output.Insert(2, unloadAssociatedObjectItem);
             }
 
             return output;
