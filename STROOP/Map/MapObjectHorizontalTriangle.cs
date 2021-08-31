@@ -183,9 +183,8 @@ namespace STROOP.Map
             {
                 bool isWithinQuad =
                     this == hoverData?.MapObject &&
-                    hoverData.MidUnitX.HasValue &&
-                    hoverData.MidUnitZ.HasValue &&
-                    MapUtilities.IsWithinQuad(quad, hoverData.MidUnitX.Value, hoverData.MidUnitZ.Value);
+                    hoverData.IsTriUnit &&
+                    MapUtilities.IsWithinQuad(quad, (float)hoverData.X, (float)hoverData.Z);
                 bool isHovered = isWithinQuad && !hasHovered;
                 if (isHovered) hasHovered = true;
                 List<(float x, float y, float z, bool isHovered)> quadHovered =
@@ -499,7 +498,7 @@ namespace STROOP.Map
                 {
                     float midUnitX = (int)inGameX + (inGameX >= 0 ? 0.5f : -0.5f);
                     float midUnitZ = (int)inGameZ + (inGameZ >= 0 ? 0.5f : -0.5f);
-                    return new MapObjectHoverData(this, midUnitX, midUnitZ, tri: hoverTri, midUnitX: midUnitX, midUnitZ: midUnitZ);
+                    return new MapObjectHoverData(this, midUnitX, midUnitZ, tri: hoverTri, isTriUnit: true);
                 }
                 else
                 {
@@ -514,13 +513,13 @@ namespace STROOP.Map
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
-            if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
+            if (hoverData.IsTriUnit)
             {
-                List<double> basePointValues = new List<double>() { (int)hoverData.MidUnitX.Value, (int)hoverData.MidUnitZ.Value };
+                List<double> basePointValues = new List<double>() { (int)hoverData.X, (int)hoverData.Z };
                 ToolStripMenuItem copyBasePointItem = MapUtilities.CreateCopyItem(basePointValues, "Base Point");
                 output.Insert(0, copyBasePointItem);
 
-                List<double> midpointValues = new List<double>() { hoverData.MidUnitX.Value, hoverData.MidUnitZ.Value };
+                List<double> midpointValues = new List<double>() { hoverData.X, hoverData.Z };
                 ToolStripMenuItem copyMidpointItem = MapUtilities.CreateCopyItem(midpointValues, "Midpoint");
                 output.Insert(1, copyMidpointItem);
             }

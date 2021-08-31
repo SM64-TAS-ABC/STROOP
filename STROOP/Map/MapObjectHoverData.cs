@@ -24,8 +24,7 @@ namespace STROOP.Map
         public readonly double Z;
         public readonly uint? ObjAddress;
         public readonly TriangleDataModel Tri;
-        public readonly float? MidUnitX;
-        public readonly float? MidUnitZ;
+        public readonly bool IsTriUnit;
         public readonly int? Index;
         public readonly int? Index2;
 
@@ -35,8 +34,7 @@ namespace STROOP.Map
             double z,
             uint? objAddress = null,
             TriangleDataModel tri = null,
-            float? midUnitX = null,
-            float? midUnitZ = null,
+            bool isTriUnit = false,
             int? index = null,
             int? index2 = null)
         {
@@ -45,8 +43,7 @@ namespace STROOP.Map
             Z = z;
             ObjAddress = objAddress;
             Tri = tri;
-            MidUnitX = midUnitX;
-            MidUnitZ = midUnitZ;
+            IsTriUnit = isTriUnit;
             Index = index;
             Index2 = index2;
         }
@@ -67,8 +64,7 @@ namespace STROOP.Map
             parts.Add(MapObject);
             if (ObjAddress != null) parts.Add(HexUtilities.FormatValue(ObjAddress));
             if (Tri != null) parts.Add(HexUtilities.FormatValue(Tri.Address));
-            if (MidUnitX.HasValue) parts.Add(MidUnitX.Value);
-            if (MidUnitZ.HasValue) parts.Add(MidUnitZ.Value);
+            if (IsTriUnit) parts.Add("Unit");
             if (Index.HasValue) parts.Add(Index);
             if (Index2.HasValue) parts.Add(Index2);
             parts.Add(string.Format("({0},{1})", X, Z));
@@ -80,10 +76,11 @@ namespace STROOP.Map
             if (obj is MapObjectHoverData other)
             {
                 return MapObject == other.MapObject &&
+                    X == other.X &&
+                    Z == other.Z &&
                     ObjAddress == other.ObjAddress &&
                     Tri?.Address == other.Tri?.Address &&
-                    MidUnitX == other.MidUnitX &&
-                    MidUnitZ == other.MidUnitZ &&
+                    IsTriUnit == other.IsTriUnit &&
                     Index == other.Index &&
                     Index2 == other.Index2;
             }
