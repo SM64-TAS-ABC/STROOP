@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace STROOP.Map
 {
-    public class MapObjectUnitGridlines : MapObjectLine
+    public class MapObjectUnitGridlines : MapObjectGridlines
     {
         public MapObjectUnitGridlines()
             : base()
@@ -52,7 +52,7 @@ namespace STROOP.Map
             return vertices;
         }
 
-        protected override List<(float x, float z)> GetCustomImagePositions()
+        protected override List<(float x, float z)> GetGridlineIntersectionPositions()
         {
             // failsafe to prevent filling the whole screen
             if (!MapUtilities.IsAbleToShowUnitPrecision())

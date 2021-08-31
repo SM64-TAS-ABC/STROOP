@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace STROOP.Map
 {
-    public class MapObjectPuGridlines : MapObjectLine
+    public class MapObjectPuGridlines : MapObjectGridlines
     {
         private enum PuGridlineSetting { SETTING1, SETTING2, SETTING3 };
         private PuGridlineSetting _setting;
@@ -124,7 +124,7 @@ namespace STROOP.Map
             }
         }
 
-        protected override List<(float x, float z)> GetCustomImagePositions()
+        protected override List<(float x, float z)> GetGridlineIntersectionPositions()
         {
             if (!Config.MapGui.checkBoxMapOptionsEnablePuView.Checked)
             {

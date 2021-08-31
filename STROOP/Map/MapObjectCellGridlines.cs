@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace STROOP.Map
 {
-    public class MapObjectCellGridlines : MapObjectLine
+    public class MapObjectCellGridlines : MapObjectGridlines
     {
         public MapObjectCellGridlines()
             : base()
@@ -40,7 +40,7 @@ namespace STROOP.Map
             return vertices;
         }
 
-        protected override List<(float x, float z)> GetCustomImagePositions()
+        protected override List<(float x, float z)> GetGridlineIntersectionPositions()
         {
             List<(float x, float z)> vertices = new List<(float x, float z)>();
             for (int x = -8192; x <= 8192; x += 1024)
