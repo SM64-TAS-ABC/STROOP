@@ -152,7 +152,7 @@ namespace STROOP.Map
                 double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
                 if (dist <= radius)
                 {
-                    return new MapObjectHoverData(this, index: i);
+                    return new MapObjectHoverData(this, point.x, point.z, index: i);
                 }
             }
             return null;

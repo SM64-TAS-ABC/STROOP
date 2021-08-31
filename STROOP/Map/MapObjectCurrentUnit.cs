@@ -76,7 +76,7 @@ namespace STROOP.Map
             int zTruncated = (int)z;
             if (xTruncated == inGameXTruncated && zTruncated == inGameZTruncated)
             {
-                return new MapObjectHoverData(this);
+                return new MapObjectHoverData(this, xTruncated, zTruncated);
             }
             return null;
         }

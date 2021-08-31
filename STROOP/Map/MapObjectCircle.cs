@@ -154,12 +154,13 @@ namespace STROOP.Map
                         p => MapUtilities.ConvertCoordsForControlTopDownView(p.x, p.z));
                     for (int j = controlPositions.Count - 1; j >= 0; j--)
                     {
+                        var position = positions[j];
                         var controlPosition = controlPositions[j];
                         double controlDist = MoreMath.GetDistanceBetween(controlPosition.x, controlPosition.z, relPos.X, relPos.Y);
                         double radius = Scales ? _imageSize * Config.CurrentMapGraphics.MapViewScaleValue : _imageSize;
                         if (controlDist <= radius)
                         {
-                            return new MapObjectHoverData(this, index: i, index2: j);
+                            return new MapObjectHoverData(this, position.x, position.z, index: i, index2: j);
                         }
                     }
                 }
@@ -167,7 +168,7 @@ namespace STROOP.Map
                 double dist = MoreMath.GetDistanceBetween(dimension.centerX, dimension.centerZ, inGameX, inGameZ);
                 if (dist <= dimension.radius)
                 {
-                    return new MapObjectHoverData(this, index: i);
+                    return new MapObjectHoverData(this, dimension.centerX, dimension.centerZ, index: i);
                 }
             }
             return null;
