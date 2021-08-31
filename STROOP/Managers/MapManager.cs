@@ -935,6 +935,10 @@ namespace STROOP.Managers
             {
                 Config.MapGui.GLControlMap2D.ContextMenuStrip = null;
             }
+            if (!enableSelectionMode)
+            {
+                Config.HideDebugText();
+            }
         }
 
         private void OnContextMenuStripOpening()
