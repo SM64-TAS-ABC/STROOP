@@ -221,7 +221,14 @@ namespace STROOP.M64
             Description = Encoding.UTF8.GetString(bytes, 0x300, 256).Replace("\0", "");
 
             // Verify that serialization works correctly
-            if (!Enumerable.SequenceEqual(bytes, ToBytes())) throw new ArgumentOutOfRangeException();
+            if (!Enumerable.SequenceEqual(bytes, ToBytes()))
+            {
+                DialogUtilities.DisplayMessage(
+                    "The m64 header cannot be serialized exactly as it is. " +
+                        "In other words, saving this file will change the m64 header. " +
+                        "Proceed at your own risk.",
+                    "Warning");
+            }
         }
 
         public byte[] ToBytes()
