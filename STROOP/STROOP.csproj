@@ -581,6 +581,7 @@
     <Compile Include="Map\Map3D\Map3DVertex.cs" />
     <Compile Include="Map\MapObjectSettings.cs" />
     <Compile Include="Models\PanModel.cs" />
+    <Compile Include="Models\TriangleMapData.cs" />
     <Compile Include="Script\ScriptEngine.cs" />
     <Compile Include="Script\TokenScript.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />

@@ -448,5 +448,11 @@ namespace STROOP.Models
             bool triTooFarUp = minY - centerY > withinDist;
             return !triTooFarDown && !triTooFarUp;
         }
+
+        public double GetPushAngle()
+        {
+            double uphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(this);
+            return MoreMath.ReverseAngle(uphillAngle);
+        }
     }
 }
