@@ -601,5 +601,10 @@ namespace STROOP.Map
         {
             return MapDrawType.Perspective;
         }
+
+        public void ToggleShowArrows()
+        {
+            _showArrows = !_showArrows;
+        }
     }
 }

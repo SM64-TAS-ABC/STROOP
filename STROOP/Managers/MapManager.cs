@@ -741,11 +741,13 @@ namespace STROOP.Managers
                 Config.MapGui.checkBoxMapOptionsDisableHitboxHackTris,
                 new List<string>()
                 {
-                    "Reset"
+                    "Reset",
+                    "Toggle Arrows",
                 },
                 new List<Action>()
                 {
-                    () => _defaulMapObjectHitboxHackTriangle.Reset()
+                    () => _defaulMapObjectHitboxHackTriangle.Reset(),
+                    () => _defaulMapObjectHitboxHackTriangle.ToggleShowArrows(),
                 });
             Config.MapGui.checkBoxMapOptionsSelectionMode.Click +=
                 (sender, e) => SetSelectionMode(Config.MapGui.checkBoxMapOptionsSelectionMode.Checked);
