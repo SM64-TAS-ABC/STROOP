@@ -128,7 +128,7 @@ namespace STROOP.Map
                     .FindAll(data => data.HasValue)
                     .ConvertAll(data => data.Value);
 
-            List<List<(float x, float y, float z, Color color)>> vertexLists = triData.ConvertAll(data =>
+            List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> vertexLists = triData.ConvertAll(data =>
             {
                 Color color = GetColorForOrthographicView(data.classification);
                 float size = GetSizeForOrthographicView(data.classification);
@@ -142,42 +142,42 @@ namespace STROOP.Map
                             if (data.xProjection)
                             {
                                 float projectionDist = size / (float)Math.Abs(Math.Cos(mapViewAngleRadians - pushAngleRadians + 0.5 * Math.PI));
-                                return new List<List<(float x, float y, float z, Color color)>>()
+                                return new List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>>()
                                 {
-                                    new List<(float x, float y, float z, Color color)>()
+                                    new List<(float x, float y, float z, Color color, TriangleDataModel tri)>()
                                     {
-                                        (data.x1, data.y1 + relativeHeight, data.z1, color),
-                                        (data.x2, data.y2 + relativeHeight, data.z2, color),
-                                        (data.x2 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
-                                        (data.x1 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                        (data.x1, data.y1 + relativeHeight, data.z1, color, data.tri),
+                                        (data.x2, data.y2 + relativeHeight, data.z2, color, data.tri),
+                                        (data.x2 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color, data.tri),
+                                        (data.x1 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color, data.tri),
                                     },
-                                    new List<(float x, float y, float z, Color color)>()
+                                    new List<(float x, float y, float z, Color color, TriangleDataModel tri)>()
                                     {
-                                        (data.x1, data.y1 + relativeHeight, data.z1, color),
-                                        (data.x2, data.y2 + relativeHeight, data.z2, color),
-                                        (data.x2 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
-                                        (data.x1 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                        (data.x1, data.y1 + relativeHeight, data.z1, color, data.tri),
+                                        (data.x2, data.y2 + relativeHeight, data.z2, color, data.tri),
+                                        (data.x2 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color, data.tri),
+                                        (data.x1 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color, data.tri),
                                     },
                                 };
                             }
                             else
                             {
                                 float projectionDist = size / (float)Math.Abs(Math.Sin(mapViewAngleRadians - pushAngleRadians));
-                                return new List<List<(float x, float y, float z, Color color)>>()
+                                return new List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>>()
                                 {
-                                    new List<(float x, float y, float z, Color color)>()
+                                    new List<(float x, float y, float z, Color color, TriangleDataModel tri)>()
                                     {
-                                        (data.x1, data.y1 + relativeHeight, data.z1, color),
-                                        (data.x2, data.y2 + relativeHeight, data.z2, color),
-                                        (data.x2 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
-                                        (data.x1 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                        (data.x1, data.y1 + relativeHeight, data.z1, color, data.tri),
+                                        (data.x2, data.y2 + relativeHeight, data.z2, color, data.tri),
+                                        (data.x2 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color, data.tri),
+                                        (data.x1 - (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 + (float)Math.Sin(mapViewAngleRadians) * projectionDist, color, data.tri),
                                     },
-                                    new List<(float x, float y, float z, Color color)>()
+                                    new List<(float x, float y, float z, Color color, TriangleDataModel tri)>()
                                     {
-                                        (data.x1, data.y1 + relativeHeight, data.z1, color),
-                                        (data.x2, data.y2 + relativeHeight, data.z2, color),
-                                        (data.x2 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
-                                        (data.x1 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color),
+                                        (data.x1, data.y1 + relativeHeight, data.z1, color, data.tri),
+                                        (data.x2, data.y2 + relativeHeight, data.z2, color, data.tri),
+                                        (data.x2 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y2 + relativeHeight, data.z2 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color, data.tri),
+                                        (data.x1 + (float)Math.Cos(mapViewAngleRadians) * projectionDist, data.y1 + relativeHeight, data.z1 - (float)Math.Sin(mapViewAngleRadians) * projectionDist, color, data.tri),
                                     },
                                 };
                             }
@@ -193,8 +193,8 @@ namespace STROOP.Map
                                     int xMin = (int)Math.Max(data.tri.GetMinX(), Config.CurrentMapGraphics.MapViewXMin);
                                     int xMax = (int)Math.Min(data.tri.GetMaxX(), Config.CurrentMapGraphics.MapViewXMax);
                                     float z = Config.CurrentMapGraphics.MapViewCenterZValue;
-                                    List<List<(float x, float y, float z, Color color)>> output =
-                                        new List<List<(float x, float y, float z, Color color)>>();
+                                    List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> output =
+                                        new List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>>();
                                     List<(int xInner, int xOuter)> xPairs = new List<(int xInner, int xOuter)>();
                                     for (int x = xMin; x <= xMax; x++)
                                     {
@@ -206,12 +206,12 @@ namespace STROOP.Map
                                         float? y = data.tri.GetTruncatedHeightOnTriangleIfInsideTriangle(xInner, z);
                                         if (y.HasValue)
                                         {
-                                            output.Add(new List<(float x, float y, float z, Color color)>()
+                                            output.Add(new List<(float x, float y, float z, Color color, TriangleDataModel tri)>()
                                             {
-                                                (xInner, y.Value, z, color),
-                                                (xOuter, y.Value, z, color),
-                                                (xOuter, y.Value - size, z, color),
-                                                (xInner, y.Value - size, z, color),
+                                                (xInner, y.Value, z, color, data.tri),
+                                                (xOuter, y.Value, z, color, data.tri),
+                                                (xOuter, y.Value - size, z, color, data.tri),
+                                                (xInner, y.Value - size, z, color, data.tri),
                                             });
                                         }
                                     }
@@ -223,8 +223,8 @@ namespace STROOP.Map
                                     int zMin = (int)Math.Max(data.tri.GetMinZ(), Config.CurrentMapGraphics.MapViewZMin);
                                     int zMax = (int)Math.Min(data.tri.GetMaxZ(), Config.CurrentMapGraphics.MapViewZMax);
                                     float x = Config.CurrentMapGraphics.MapViewCenterXValue;
-                                    List<List<(float x, float y, float z, Color color)>> output =
-                                        new List<List<(float x, float y, float z, Color color)>>();
+                                    List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> output =
+                                        new List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>>();
                                     List<(int zInner, int zOuter)> zPairs = new List<(int zInner, int zOuter)>();
                                     for (int z = zMin; z <= zMax; z++)
                                     {
@@ -236,12 +236,12 @@ namespace STROOP.Map
                                         float? y = data.tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, zInner);
                                         if (y.HasValue)
                                         {
-                                            output.Add(new List<(float x, float y, float z, Color color)>()
+                                            output.Add(new List<(float x, float y, float z, Color color, TriangleDataModel tri)>()
                                             {
-                                                (x, y.Value, zInner, color),
-                                                (x, y.Value, zOuter, color),
-                                                (x, y.Value - size, zOuter, color),
-                                                (x, y.Value - size, zInner, color),
+                                                (x, y.Value, zInner, color, data.tri),
+                                                (x, y.Value, zOuter, color, data.tri),
+                                                (x, y.Value - size, zOuter, color, data.tri),
+                                                (x, y.Value - size, zInner, color, data.tri),
                                             });
                                         }
                                     }
@@ -249,8 +249,8 @@ namespace STROOP.Map
                                 }
                                 else
                                 {
-                                    List<List<(float x, float y, float z, Color color)>> output =
-                                        new List<List<(float x, float y, float z, Color color)>>();
+                                    List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> output =
+                                        new List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>>();
                                     List<(double x, double z)> points = MapUtilities.GetUnitPointsCrossSection(5);
                                     for (int i = 0; i < points.Count - 1; i++)
                                     {
@@ -261,26 +261,26 @@ namespace STROOP.Map
                                         float? y = data.tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
                                         if (y.HasValue)
                                         {
-                                            output.Add(new List<(float x, float y, float z, Color color)>()
+                                            output.Add(new List<(float x, float y, float z, Color color, TriangleDataModel tri)>()
                                             {
-                                                (x1, y.Value, z1, color),
-                                                (x2, y.Value, z2, color),
-                                                (x2, y.Value - size, z2, color),
-                                                (x1, y.Value - size, z1, color),
+                                                (x1, y.Value, z1, color, data.tri),
+                                                (x2, y.Value, z2, color, data.tri),
+                                                (x2, y.Value - size, z2, color, data.tri),
+                                                (x1, y.Value - size, z1, color, data.tri),
                                             });
                                         }
                                     }
                                     return output;
                                 }
                             }
-                            return new List<List<(float x, float y, float z, Color color)>>()
+                            return new List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>>()
                             {
-                                new List<(float x, float y, float z, Color color)>()
+                                new List<(float x, float y, float z, Color color, TriangleDataModel tri)>()
                                 {
-                                    (data.x1, data.y1, data.z1, color),
-                                    (data.x2, data.y2, data.z2, color),
-                                    (data.x2, data.y2 - size, data.z2, color),
-                                    (data.x1, data.y1 - size, data.z1, color),
+                                    (data.x1, data.y1, data.z1, color, data.tri),
+                                    (data.x2, data.y2, data.z2, color, data.tri),
+                                    (data.x2, data.y2 - size, data.z2, color, data.tri),
+                                    (data.x1, data.y1 - size, data.z1, color, data.tri),
                                 },
                             };
                         }
@@ -353,18 +353,34 @@ namespace STROOP.Map
                         markPoints.Add(((float x, float y, float z))point);
                     }
 
-                    double pushAngle = 0;
+                    double arrowAngle;
+                    TriangleDataModel tri = vertexList[0].tri;
+                    switch (tri.Classification)
+                    {
+                        case TriangleClassification.Wall:
+                            arrowAngle = 16384;
+                            break;
+                        case TriangleClassification.Floor:
+                            arrowAngle = 32768;
+                            break;
+                        case TriangleClassification.Ceiling:
+                            arrowAngle = 0;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+
                     double arrowBaseLength = 10;
                     double arrowSideLength = 10;
 
-                    double angleUp = pushAngle;
-                    double angleDown = pushAngle + 32768;
-                    double angleLeft = pushAngle + 16384;
-                    double angleRight = pushAngle - 16384;
-                    double angleUpLeft = pushAngle + 8192;
-                    double angleUpRight = pushAngle - 8192;
-                    double angleDownLeft = pushAngle + 24576;
-                    double angleDownRight = pushAngle - 24576;
+                    double angleUp = arrowAngle;
+                    double angleDown = arrowAngle + 32768;
+                    double angleLeft = arrowAngle + 16384;
+                    double angleRight = arrowAngle - 16384;
+                    double angleUpLeft = arrowAngle + 8192;
+                    double angleUpRight = arrowAngle - 8192;
+                    double angleDownLeft = arrowAngle + 24576;
+                    double angleDownRight = arrowAngle - 24576;
 
                     foreach (var point in markPoints)
                     {
