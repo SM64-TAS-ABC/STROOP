@@ -18,15 +18,15 @@ namespace STROOP.Map
     public abstract class MapObjectTriangle : MapObject
     {
         protected bool _showArrows;
+        protected bool _useCrossSection;
         private float? _withinDist;
         private float? _withinCenter;
         protected bool _excludeDeathBarriers;
-        protected bool _useCrossSection;
 
         private ToolStripMenuItem _itemShowArrows;
+        private ToolStripMenuItem _itemUseCrossSection;
         private ToolStripMenuItem _itemSetWithinDist;
         private ToolStripMenuItem _itemSetWithinCenter;
-        private ToolStripMenuItem _itemUseCrossSection;
 
         private static readonly string SET_WITHIN_DIST_TEXT = "Set Within Dist";
         private static readonly string SET_WITHIN_CENTER_TEXT = "Set Within Center";
@@ -35,10 +35,10 @@ namespace STROOP.Map
             : base()
         {
             _showArrows = false;
+            _useCrossSection = false;
             _withinDist = null;
             _withinCenter = null;
             _excludeDeathBarriers = false;
-            _useCrossSection = false;
         }
 
         protected List<List<(float x, float y, float z)>> GetVertexLists()
@@ -506,6 +506,14 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
+            _itemUseCrossSection = new ToolStripMenuItem("Use Cross Section");
+            _itemUseCrossSection.Click += (sender, e) =>
+            {
+                MapObjectSettings settings = new MapObjectSettings(
+                    changeTriangleUseCrossSection: true, newTriangleUseCrossSection: !_useCrossSection);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
             _itemSetWithinDist = new ToolStripMenuItem(SET_WITHIN_DIST_TEXT);
             _itemSetWithinDist.Click += (sender, e) =>
             {
@@ -547,22 +555,14 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
-            _itemUseCrossSection = new ToolStripMenuItem("Use Cross Section");
-            _itemUseCrossSection.Click += (sender, e) =>
-            {
-                MapObjectSettings settings = new MapObjectSettings(
-                    changeTriangleUseCrossSection: true, newTriangleUseCrossSection: !_useCrossSection);
-                GetParentMapTracker().ApplySettings(settings);
-            };
-
             return new List<ToolStripMenuItem>()
             {
                 _itemShowArrows,
+                _itemUseCrossSection,
                 _itemSetWithinDist,
                 itemClearWithinDist,
                 _itemSetWithinCenter,
                 itemClearWithinCenter,
-                _itemUseCrossSection,
             };
         }
 
@@ -574,6 +574,12 @@ namespace STROOP.Map
             {
                 _showArrows = settings.NewTriangleShowArrows;
                 _itemShowArrows.Checked = settings.NewTriangleShowArrows;
+            }
+
+            if (settings.ChangeTriangleUseCrossSection)
+            {
+                _useCrossSection = settings.NewTriangleUseCrossSection;
+                _itemUseCrossSection.Checked = settings.NewTriangleUseCrossSection;
             }
 
             if (settings.ChangeTriangleWithinDist)
@@ -588,12 +594,6 @@ namespace STROOP.Map
                 _withinCenter = settings.NewTriangleWithinCenter;
                 string suffix = _withinCenter.HasValue ? string.Format(" ({0})", _withinCenter.Value) : "";
                 _itemSetWithinCenter.Text = SET_WITHIN_CENTER_TEXT + suffix;
-            }
-
-            if (settings.ChangeTriangleUseCrossSection)
-            {
-                _useCrossSection = settings.NewTriangleUseCrossSection;
-                _itemUseCrossSection.Checked = settings.NewTriangleUseCrossSection;
             }
         }
 

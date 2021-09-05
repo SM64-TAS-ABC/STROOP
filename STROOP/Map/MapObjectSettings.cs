@@ -19,14 +19,14 @@ namespace STROOP.Map
         public readonly bool ChangeTriangleShowArrows;
         public readonly bool NewTriangleShowArrows;
 
+        public readonly bool ChangeTriangleUseCrossSection;
+        public readonly bool NewTriangleUseCrossSection;
+
         public readonly bool ChangeTriangleWithinDist;
         public readonly float? NewTriangleWithinDist;
 
         public readonly bool ChangeTriangleWithinCenter;
         public readonly float? NewTriangleWithinCenter;
-
-        public readonly bool ChangeTriangleUseCrossSection;
-        public readonly bool NewTriangleUseCrossSection;
 
         public readonly bool ChangeHorizontalTriangleShowTriUnits;
         public readonly bool NewHorizontalTriangleShowTriUnits;
@@ -149,14 +149,14 @@ namespace STROOP.Map
             bool changeTriangleShowArrows = false,
             bool newTriangleShowArrows = false,
 
+            bool changeTriangleUseCrossSection = false,
+            bool newTriangleUseCrossSection = false,
+
             bool changeTriangleWithinDist = false,
             float? newTriangleWithinDist = null,
 
             bool changeTriangleWithinCenter = false,
             float? newTriangleWithinCenter = null,
-
-            bool changeTriangleUseCrossSection = false,
-            bool newTriangleUseCrossSection = false,
 
             bool changeHorizontalTriangleShowTriUnits = false,
             bool newHorizontalTriangleShowTriUnits = false,
@@ -278,14 +278,14 @@ namespace STROOP.Map
             ChangeTriangleShowArrows = changeTriangleShowArrows;
             NewTriangleShowArrows = newTriangleShowArrows;
 
+            ChangeTriangleUseCrossSection = changeTriangleUseCrossSection;
+            NewTriangleUseCrossSection = newTriangleUseCrossSection;
+
             ChangeTriangleWithinDist = changeTriangleWithinDist;
             NewTriangleWithinDist = newTriangleWithinDist;
 
             ChangeTriangleWithinCenter = changeTriangleWithinCenter;
             NewTriangleWithinCenter = newTriangleWithinCenter;
-
-            ChangeTriangleUseCrossSection = changeTriangleUseCrossSection;
-            NewTriangleUseCrossSection = newTriangleUseCrossSection;
 
             ChangeHorizontalTriangleShowTriUnits = changeHorizontalTriangleShowTriUnits;
             NewHorizontalTriangleShowTriUnits = newHorizontalTriangleShowTriUnits;
