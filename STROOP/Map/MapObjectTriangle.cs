@@ -312,7 +312,7 @@ namespace STROOP.Map
             }
 
             // Draw arrows
-            if (_showArrows || true) // TODO: UNDO THIS
+            if (_showArrows)
             {
                 foreach (var vertexList in vertexLists)
                 {
@@ -369,8 +369,9 @@ namespace STROOP.Map
                             throw new ArgumentOutOfRangeException();
                     }
 
-                    double arrowBaseLength = 10;
-                    double arrowSideLength = 10;
+                    float size = GetSizeForOrthographicView(tri.Classification);
+                    double arrowBaseLength = 0.4 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
+                    double arrowSideLength = 0.2 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
 
                     double angleUp = arrowAngle;
                     double angleDown = arrowAngle + 32768;
