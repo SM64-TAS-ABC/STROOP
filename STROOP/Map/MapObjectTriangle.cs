@@ -356,7 +356,8 @@ namespace STROOP.Map
                     switch (tri.Classification)
                     {
                         case TriangleClassification.Wall:
-                            arrowAngle = 16384;
+                            double angleDiff = MoreMath.GetAngleDifference(Config.CurrentMapGraphics.MapViewYawValue, tri.GetPushAngle());
+                            arrowAngle = angleDiff > 0 ? 49152 : 16384;
                             break;
                         case TriangleClassification.Floor:
                             arrowAngle = 32768;
