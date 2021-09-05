@@ -313,6 +313,151 @@ namespace STROOP.Map
                 GL.End();
             }
 
+            // Draw arrows
+            if (_showArrows || true) // TODO: UNDO THIS
+            {
+                foreach (var vertexList in vertexLists)
+                {
+                    float x1 = (vertexList[0].x + vertexList[3].x) / 2;
+                    float y1 = (vertexList[0].y + vertexList[3].y) / 2;
+                    float z1 = (vertexList[0].z + vertexList[3].z) / 2;
+                    float x2 = (vertexList[1].x + vertexList[2].x) / 2;
+                    float y2 = (vertexList[1].y + vertexList[2].y) / 2;
+                    float z2 = (vertexList[1].z + vertexList[2].z) / 2;
+
+                    double totalDistance = MoreMath.GetDistanceBetween(x1, y1, z1, x2, y2, z2);
+                    List<double> markDistances = new List<double>();
+                    if (totalDistance < 100)
+                    {
+                        markDistances.Add(totalDistance / 2);
+                    }
+                    else
+                    {
+                        double firstDistance = 25;
+                        double lastDistance = totalDistance - 25;
+                        double distanceDiff = lastDistance - firstDistance;
+                        int numMarks = (int)Math.Truncate(distanceDiff / 50) + 1;
+                        int numBetweens = numMarks - 1;
+                        double betweenDistance = distanceDiff / numBetweens;
+                        for (int i = 0; i < numMarks; i++)
+                        {
+                            markDistances.Add(firstDistance + i * betweenDistance);
+                        }
+                    }
+
+                    List<(float x, float y, float z)> markPoints = new List<(float x, float y, float z)>();
+                    foreach (double dist in markDistances)
+                    {
+                        double portion = dist / totalDistance;
+                        (double x, double y, double z) point = (x1 + portion * (x2 - x1), y1 + portion * (y2 - y1), z1 + portion * (z2 - z1));
+                        markPoints.Add(((float x, float y, float z))point);
+                    }
+
+                    double pushAngle = 0;
+                    double arrowBaseLength = 10;
+                    double arrowSideLength = 10;
+
+                    double angleUp = pushAngle;
+                    double angleDown = pushAngle + 32768;
+                    double angleLeft = pushAngle + 16384;
+                    double angleRight = pushAngle - 16384;
+                    double angleUpLeft = pushAngle + 8192;
+                    double angleUpRight = pushAngle - 8192;
+                    double angleDownLeft = pushAngle + 24576;
+                    double angleDownRight = pushAngle - 24576;
+
+                    foreach (var point in markPoints)
+                    {
+                        var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z);
+
+                        (float x, float z) frontPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength, angleUp, controlPoint.x, controlPoint.z);
+                        (float x, float z) leftOuterPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength / 2 + arrowSideLength, angleLeft, controlPoint.x, controlPoint.z);
+                        (float x, float z) leftInnerPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength / 2, angleLeft, controlPoint.x, controlPoint.z);
+                        (float x, float z) rightOuterPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength / 2 + arrowSideLength, angleRight, controlPoint.x, controlPoint.z);
+                        (float x, float z) rightInnerPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength / 2, angleRight, controlPoint.x, controlPoint.z);
+                        (float x, float z) backLeftPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength, angleDown, leftInnerPoint.x, leftInnerPoint.z);
+                        (float x, float z) backRightPoint = ((float, float))MoreMath.AddVectorToPoint(
+                            arrowBaseLength, angleDown, rightInnerPoint.x, rightInnerPoint.z);
+
+                        List<(float x, float z)> arrowPoints =
+                            new List<(float x, float z)>()
+                            {
+                                frontPoint,
+                                leftOuterPoint,
+                                leftInnerPoint,
+                                backLeftPoint,
+                                backRightPoint,
+                                rightInnerPoint,
+                                rightOuterPoint,
+                            };
+
+                        Color arrowColor = vertexList[0].color.Darken(0.5);
+                        GL.Color4(arrowColor.R, arrowColor.G, arrowColor.B, OpacityByte);
+                        GL.Begin(PrimitiveType.Polygon);
+                        foreach (var arrowPoint in arrowPoints)
+                        {
+                            GL.Vertex2(arrowPoint.x, arrowPoint.z);
+                        }
+                        GL.End();
+                    }
+
+                    //double arrowBaseLength = 0.4 * Math.Min(Size, 50);
+                    //double arrowSideLength = 0.2 * Math.Min(Size, 50);
+
+                    //List<List<(float x, float z)>> arrowPoints = markPoints.ConvertAll(midPoint =>
+                    //{
+                    //    (float x, float z) frontPoint = ((float, float))MoreMath.AddVectorToPoint(
+                    //        arrowBaseLength, angleUp, midPoint.x, midPoint.z);
+                    //    (float x, float z) leftOuterPoint = ((float, float))MoreMath.AddVectorToPoint(
+                    //        arrowBaseLength / 2 + arrowSideLength, angleLeft, midPoint.x, midPoint.z);
+                    //    (float x, float z) leftInnerPoint = ((float, float))MoreMath.AddVectorToPoint(
+                    //        arrowBaseLength / 2, angleLeft, midPoint.x, midPoint.z);
+                    //    (float x, float z) rightOuterPoint = ((float, float))MoreMath.AddVectorToPoint(
+                    //        arrowBaseLength / 2 + arrowSideLength, angleRight, midPoint.x, midPoint.z);
+                    //    (float x, float z) rightInnerPoint = ((float, float))MoreMath.AddVectorToPoint(
+                    //        arrowBaseLength / 2, angleRight, midPoint.x, midPoint.z);
+                    //    (float x, float z) backLeftPoint = ((float, float))MoreMath.AddVectorToPoint(
+                    //        arrowBaseLength, angleDown, leftInnerPoint.x, leftInnerPoint.z);
+                    //    (float x, float z) backRightPoint = ((float, float))MoreMath.AddVectorToPoint(
+                    //        arrowBaseLength, angleDown, rightInnerPoint.x, rightInnerPoint.z);
+
+                    //    return new List<(float x, float z)>()
+                    //    {
+                    //        frontPoint,
+                    //        leftOuterPoint,
+                    //        leftInnerPoint,
+                    //        backLeftPoint,
+                    //        backRightPoint,
+                    //        rightInnerPoint,
+                    //        rightOuterPoint,
+                    //    };
+                    //});
+
+                    //List<List<(float x, float z)>> arrowsForControl =
+                    //    arrowPoints.ConvertAll(arrow => arrow.ConvertAll(
+                    //        vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z)));
+
+                    //// Draw arrow
+                    //Color arrowColor = Color.Darken(0.5);
+                    //GL.Color4(arrowColor.R, arrowColor.G, arrowColor.B, OpacityByte);
+                    //foreach (List<(float x, float z)> arrow in arrowsForControl)
+                    //{
+                    //    GL.Begin(PrimitiveType.Polygon);
+                    //    foreach ((float x, float z) in arrow)
+                    //    {
+                    //        GL.Vertex2(x, z);
+                    //    }
+                    //    GL.End();
+                    //}
+                }
+            }
+
             // Draw outline
             if (LineWidth != 0)
             {
