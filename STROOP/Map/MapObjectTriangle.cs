@@ -17,11 +17,13 @@ namespace STROOP.Map
 {
     public abstract class MapObjectTriangle : MapObject
     {
+        protected bool _showArrows;
         private float? _withinDist;
         private float? _withinCenter;
         protected bool _excludeDeathBarriers;
         protected bool _useCrossSection;
 
+        private ToolStripMenuItem _itemShowArrows;
         private ToolStripMenuItem _itemSetWithinDist;
         private ToolStripMenuItem _itemSetWithinCenter;
         private ToolStripMenuItem _itemUseCrossSection;
@@ -32,6 +34,7 @@ namespace STROOP.Map
         public MapObjectTriangle()
             : base()
         {
+            _showArrows = false;
             _withinDist = null;
             _withinCenter = null;
             _excludeDeathBarriers = false;
@@ -383,6 +386,14 @@ namespace STROOP.Map
 
         protected List<ToolStripMenuItem> GetTriangleToolStripMenuItems()
         {
+            _itemShowArrows = new ToolStripMenuItem("Show Arrows");
+            _itemShowArrows.Click += (sender, e) =>
+            {
+                MapObjectSettings settings = new MapObjectSettings(
+                    changeTriangleShowArrows: true, newTriangleShowArrows: !_showArrows);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
             _itemSetWithinDist = new ToolStripMenuItem(SET_WITHIN_DIST_TEXT);
             _itemSetWithinDist.Click += (sender, e) =>
             {
@@ -434,6 +445,7 @@ namespace STROOP.Map
 
             return new List<ToolStripMenuItem>()
             {
+                _itemShowArrows,
                 _itemSetWithinDist,
                 itemClearWithinDist,
                 _itemSetWithinCenter,
@@ -445,6 +457,12 @@ namespace STROOP.Map
         public override void ApplySettings(MapObjectSettings settings)
         {
             base.ApplySettings(settings);
+
+            if (settings.ChangeTriangleShowArrows)
+            {
+                _showArrows = settings.NewTriangleShowArrows;
+                _itemShowArrows.Checked = settings.NewTriangleShowArrows;
+            }
 
             if (settings.ChangeTriangleWithinDist)
             {

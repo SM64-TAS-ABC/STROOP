@@ -16,6 +16,9 @@ namespace STROOP.Map
         public readonly bool ChangeCustomCylinderRelativeMaxY;
         public readonly float NewCustomCylinderRelativeMaxY;
 
+        public readonly bool ChangeTriangleShowArrows;
+        public readonly bool NewTriangleShowArrows;
+
         public readonly bool ChangeTriangleWithinDist;
         public readonly float? NewTriangleWithinDist;
 
@@ -39,9 +42,6 @@ namespace STROOP.Map
 
         public readonly bool ChangeFloorEnableQuarterFrameLandings;
         public readonly bool NewFloorEnableQuarterFrameLandings;
-
-        public readonly bool ChangeWallShowArrows;
-        public readonly bool NewWallShowArrows;
 
         public readonly bool ChangeWallRelativeHeight;
         public readonly float? NewWallRelativeHeight;
@@ -146,6 +146,9 @@ namespace STROOP.Map
             bool changeCustomCylinderRelativeMaxY = false,
             float newCustomCylinderRelativeMaxY = 0,
 
+            bool changeTriangleShowArrows = false,
+            bool newTriangleShowArrows = false,
+
             bool changeTriangleWithinDist = false,
             float? newTriangleWithinDist = null,
 
@@ -169,9 +172,6 @@ namespace STROOP.Map
 
             bool changeFloorEnableQuarterFrameLandings = false,
             bool newFloorEnableQuarterFrameLandings = false,
-
-            bool changeWallShowArrows = false,
-            bool newWallShowArrows = false,
 
             bool changeWallRelativeHeight = false,
             float? newWallRelativeHeight = null,
@@ -275,6 +275,9 @@ namespace STROOP.Map
             ChangeCustomCylinderRelativeMaxY = changeCustomCylinderRelativeMaxY;
             NewCustomCylinderRelativeMaxY = newCustomCylinderRelativeMaxY;
 
+            ChangeTriangleShowArrows = changeTriangleShowArrows;
+            NewTriangleShowArrows = newTriangleShowArrows;
+
             ChangeTriangleWithinDist = changeTriangleWithinDist;
             NewTriangleWithinDist = newTriangleWithinDist;
 
@@ -298,9 +301,6 @@ namespace STROOP.Map
 
             ChangeFloorEnableQuarterFrameLandings = changeFloorEnableQuarterFrameLandings;
             NewFloorEnableQuarterFrameLandings = newFloorEnableQuarterFrameLandings;
-
-            ChangeWallShowArrows = changeWallShowArrows;
-            NewWallShowArrows = newWallShowArrows;
 
             ChangeWallRelativeHeight = changeWallRelativeHeight;
             NewWallRelativeHeight = newWallRelativeHeight;
