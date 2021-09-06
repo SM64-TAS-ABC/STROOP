@@ -342,9 +342,6 @@ namespace STROOP.Map
                     {
                         double firstDistance = 25 / angleDiffSine;
                         double lastDistance = totalDistance - 25 / angleDiffSine;
-                        Config.SetDebugText(
-                            "angleDiff={0} angleDiffSine={1} totalDistance={2} firstDistance={3} lastDistance={4}",
-                            angleDiff, angleDiffSine, totalDistance, firstDistance, lastDistance);
                         double distanceDiff = lastDistance - firstDistance;
                         int numMarks = (int)Math.Truncate(distanceDiff / 50) + 1;
                         int numBetweens = numMarks - 1;
