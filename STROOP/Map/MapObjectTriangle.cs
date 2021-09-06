@@ -380,7 +380,61 @@ namespace STROOP.Map
 
                     if (SpecialConfig.MapUseNotForCeilings == 1 && vertexList[0].data.Tri.IsCeiling())
                     {
+                        TriangleDataModel tri = vertexList[0].data.Tri;
+                        float size = GetSizeForOrthographicView(tri.Classification);
+                        double notRadiusLength = 0.4 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
+                        double notLineThickness = 0.2 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
 
+                        double angleUp = 0;
+                        double angleDown = angleUp + 32768;
+                        double angleLeft = angleUp + 16384;
+                        double angleRight = angleUp - 16384;
+                        double angleUpLeft = angleUp + 8192;
+                        double angleUpRight = angleUp - 8192;
+                        double angleDownLeft = angleUp + 24576;
+                        double angleDownRight = angleUp - 24576;
+
+                        foreach (var point in markPoints)
+                        {
+                            var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z);
+
+                            (float x, float z) topLeftPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                notRadiusLength - notLineThickness / 2, angleUpLeft, controlPoint.x, controlPoint.z);
+                            (float x, float z) bottomRightPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                notRadiusLength - notLineThickness / 2, angleDownRight, controlPoint.x, controlPoint.z);
+
+                            (float x, float z) topLeftPointBottomleft = ((float, float))MoreMath.AddVectorToPoint(
+                                notLineThickness / 2, angleDownLeft, topLeftPoint.x, topLeftPoint.z);
+                            (float x, float z) topLeftPointTopRight = ((float, float))MoreMath.AddVectorToPoint(
+                                notLineThickness / 2, angleUpRight, topLeftPoint.x, topLeftPoint.z);
+                            (float x, float z) bottomRightPointBottomleft = ((float, float))MoreMath.AddVectorToPoint(
+                                notLineThickness / 2, angleDownLeft, bottomRightPoint.x, bottomRightPoint.z);
+                            (float x, float z) bottomRightPointTopRight = ((float, float))MoreMath.AddVectorToPoint(
+                                notLineThickness / 2, angleUpRight, bottomRightPoint.x, bottomRightPoint.z);
+
+                            List<(float x, float z)> linePoints =
+                                new List<(float x, float z)>()
+                                {
+                                    topLeftPointBottomleft,
+                                    topLeftPointTopRight,
+                                    bottomRightPointTopRight,
+                                    bottomRightPointBottomleft,
+                                };
+
+                            Color notColor = vertexList[0].color.Darken(0.5);
+                            GL.Begin(PrimitiveType.Polygon);
+                            foreach (var xPoint in linePoints)
+                            {
+                                byte opacityByte = OpacityByte;
+                                if (this == hoverData?.MapObject && vertexList[0].data.Tri.Address == hoverData?.Tri?.Address && hoverData?.Index == i)
+                                {
+                                    opacityByte = MapUtilities.GetHoverOpacityByte();
+                                }
+                                GL.Color4(notColor.R, notColor.G, notColor.B, opacityByte);
+                                GL.Vertex2(xPoint.x, xPoint.z);
+                            }
+                            GL.End();
+                        }
                     }
                     else if (SpecialConfig.MapUseXForCeilings == 1 && vertexList[0].data.Tri.IsCeiling())
                     {
