@@ -330,18 +330,18 @@ namespace STROOP.Map
                     double angle1 = MoreMath.AngleTo_AngleUnits(controlX1, controlZ1, controlX2, controlZ2);
                     double angle2 = MoreMath.AngleTo_AngleUnits(controlX2, controlZ2, controlX3, controlZ3);
                     double angleDiff = angle2 - angle1;
-                    double angleDiffSine = Math.Abs(Math.Sin(MoreMath.AngleUnitsToRadians(angleDiff)));
+                    double angleDiffCoefficient = 1 / Math.Abs(Math.Sin(MoreMath.AngleUnitsToRadians(angleDiff)));
 
                     double totalDistance = MoreMath.GetDistanceBetween(x1, y1, z1, x2, y2, z2);
                     List<double> markDistances = new List<double>();
-                    if (totalDistance < 100)
+                    if (totalDistance < 100 * angleDiffCoefficient)
                     {
                         markDistances.Add(totalDistance / 2);
                     }
                     else
                     {
-                        double firstDistance = 25 / angleDiffSine;
-                        double lastDistance = totalDistance - 25 / angleDiffSine;
+                        double firstDistance = 25 * angleDiffCoefficient;
+                        double lastDistance = totalDistance - 25 * angleDiffCoefficient;
                         double distanceDiff = lastDistance - firstDistance;
                         int numMarks = (int)Math.Truncate(distanceDiff / 50) + 1;
                         int numBetweens = numMarks - 1;
