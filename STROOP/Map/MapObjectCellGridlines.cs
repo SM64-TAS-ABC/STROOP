@@ -55,6 +55,11 @@ namespace STROOP.Map
             return vertices;
         }
 
+        protected override List<(float x, float y, float z)> GetGridlineIntersectionPositionsOrthographicView()
+        {
+            return GetGridlineIntersectionPositionsTopDownView();
+        }
+
         public override string GetName()
         {
             return "Cell Gridlines";

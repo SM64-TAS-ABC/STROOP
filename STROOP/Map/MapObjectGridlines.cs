@@ -25,10 +25,7 @@ namespace STROOP.Map
             _imageSize = 8;
         }
 
-        protected virtual List<(float x, float y, float z)> GetGridlineIntersectionPositionsTopDownView()
-        {
-            return new List<(float x, float y, float z)>();
-        }
+        protected abstract List<(float x, float y, float z)> GetGridlineIntersectionPositionsTopDownView();
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
@@ -52,10 +49,7 @@ namespace STROOP.Map
             }
         }
 
-        protected virtual List<(float x, float y, float z)> GetGridlineIntersectionPositionsOrthographicView()
-        {
-            return GetGridlineIntersectionPositionsTopDownView();
-        }
+        protected abstract List<(float x, float y, float z)> GetGridlineIntersectionPositionsOrthographicView();
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
