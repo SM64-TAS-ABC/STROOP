@@ -443,14 +443,13 @@ namespace STROOP.Map
                             }
                             GL.End();
 
-                            GL.Begin(PrimitiveType.Polygon);
-                            foreach (var p in outerCirclePoints)
+                            GL.Begin(PrimitiveType.QuadStrip);
+                            for (int j = 0; j <= outerCirclePoints.Count; j++)
                             {
-                                GL.Vertex2(p.x, p.z);
-                            }
-                            foreach (var p in innerCirclePoints)
-                            {
-                                GL.Vertex2(p.x, p.z);
+                                var outerPoint = outerCirclePoints[j % outerCirclePoints.Count];
+                                var innerPoint = innerCirclePoints[j % outerCirclePoints.Count];
+                                GL.Vertex2(outerPoint.x, outerPoint.z);
+                                GL.Vertex2(innerPoint.x, innerPoint.z);
                             }
                             GL.End();
                         }
