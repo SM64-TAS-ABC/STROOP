@@ -174,22 +174,22 @@ namespace STROOP.Utilities
             List<TriangleDataModel> badWallTris = new List<TriangleDataModel>();
             foreach (TriangleDataModel wallTri in wallTris)
             {
-                (float x1, float z1, float x2, float z2, bool xProjection, double pushAngle) = MapUtilities.Get2DWallDataFromTri(wallTri).Value;
+                TriangleMapData data = MapUtilities.Get2DWallDataFromTri(wallTri);
                
-                float angle = (float)MoreMath.AngleTo_Radians(x1, z1, x2, z2);
-                float projectionDist = 50 / (float)Math.Abs(xProjection ? Math.Cos(angle) : Math.Sin(angle));
+                float angle = (float)MoreMath.AngleTo_Radians(data.X1, data.Z1, data.X2, data.Z2);
+                float projectionDist = 50 / (float)Math.Abs(data.Tri.XProjection ? Math.Cos(angle) : Math.Sin(angle));
                 List<(float x, float z)> points = new List<(float x, float z)>();
                 Action<float, float> addPoint = (float xAdd, float zAdd) =>
                 {
                     points.AddRange(new List<(float x, float z)>()
                     {
-                        (x1, z1),
-                        (x1 + xAdd, z1 + zAdd),
-                        (x2 + xAdd, z2 + zAdd),
-                        (x2, z2),
+                        (data.X1, data.Z1),
+                        (data.X1 + xAdd, data.Z1 + zAdd),
+                        (data.X2 + xAdd, data.Z2 + zAdd),
+                        (data.X2, data.Z2),
                     });
                 };
-                if (xProjection)
+                if (data.Tri.XProjection)
                 {
                     addPoint(projectionDist, 0);
                     addPoint(-1 * projectionDist, 0);

@@ -43,27 +43,26 @@ namespace STROOP.Map
             float marioHeight = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
             float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : _absoluteHeight;
 
-            List<(float x1, float z1, float x2, float z2, bool xProjection, double pushAngle)> wallData = GetFilteredTriangles()
+            List<TriangleMapData> wallDataList = GetFilteredTriangles()
                 .ConvertAll(tri => MapUtilities.Get2DWallDataFromTri(tri, height))
-                .FindAll(wallDataNullable => wallDataNullable.HasValue)
-                .ConvertAll(wallDataNullable => wallDataNullable.Value);
+                .FindAll(wallDataNullable => wallDataNullable != null);
 
-            foreach ((float x1, float z1, float x2, float z2, bool xProjection, double pushAngle) in wallData)
+            foreach (TriangleMapData wallData in wallDataList)
             {
-                float angle = (float)MoreMath.AngleTo_Radians(x1, z1, x2, z2);
-                float projectionDist = Size / (float)Math.Abs(xProjection ? Math.Cos(angle) : Math.Sin(angle));
+                float angle = (float)MoreMath.AngleTo_Radians(wallData.X1, wallData.Z1, wallData.X2, wallData.Z2);
+                float projectionDist = Size / (float)Math.Abs(wallData.Tri.XProjection ? Math.Cos(angle) : Math.Sin(angle));
                 List<List<(float x, float z)>> quads = new List<List<(float x, float z)>>();
                 Action<float, float> addQuad = (float xAdd, float zAdd) =>
                 {
                     quads.Add(new List<(float x, float z)>()
                     {
-                        (x1, z1),
-                        (x1 + xAdd, z1 + zAdd),
-                        (x2 + xAdd, z2 + zAdd),
-                        (x2, z2),
+                        (wallData.X1, wallData.Z1),
+                        (wallData.X1 + xAdd, wallData.Z1 + zAdd),
+                        (wallData.X2 + xAdd, wallData.Z2 + zAdd),
+                        (wallData.X2, wallData.Z2),
                     });
                 };
-                if (xProjection)
+                if (wallData.Tri.XProjection)
                 {
                     addQuad(projectionDist, 0);
                     addQuad(-1 * projectionDist, 0);
@@ -96,7 +95,8 @@ namespace STROOP.Map
 
                 if (_showArrows)
                 {
-                    double totalDistance = MoreMath.GetDistanceBetween(x1, z1, x2, z2);
+                    double totalDistance = MoreMath.GetDistanceBetween(
+                        wallData.X1, wallData.Z1, wallData.X2, wallData.Z2);
                     List<double> markDistances = new List<double>();
                     if (totalDistance < 100)
                     {
@@ -120,11 +120,12 @@ namespace STROOP.Map
                     foreach (double dist in markDistances)
                     {
                         double portion = dist / totalDistance;
-                        (double x, double z) pointOnMidpoint = (x1 + portion * (x2 - x1), z1 + portion * (z2 - z1));
-                        (double x, double z) pointOnSide1 = xProjection ?
+                        (double x, double z) pointOnMidpoint =
+                            (wallData.X1 + portion * (wallData.X2 - wallData.X1), wallData.Z1 + portion * (wallData.Z2 - wallData.Z1));
+                        (double x, double z) pointOnSide1 = wallData.Tri.XProjection ?
                             (pointOnMidpoint.x - projectionDist / 2, pointOnMidpoint.z) :
                             (pointOnMidpoint.x, pointOnMidpoint.z - projectionDist / 2);
-                        (double x, double z) pointOnSide2 = xProjection ?
+                        (double x, double z) pointOnSide2 = wallData.Tri.XProjection ?
                             (pointOnMidpoint.x + projectionDist / 2, pointOnMidpoint.z) :
                             (pointOnMidpoint.x, pointOnMidpoint.z + projectionDist / 2);
                         markPoints.Add(((float x, float z))pointOnSide1);
@@ -133,6 +134,7 @@ namespace STROOP.Map
 
                     markPoints = markPoints.FindAll(p => MapUtilities.IsInVisibleSpace(p.x, p.z, 200));
 
+                    double pushAngle = wallData.Tri.GetPushAngle();
                     double angleUp = pushAngle;
                     double angleDown = pushAngle + 32768;
                     double angleLeft = pushAngle + 16384;
