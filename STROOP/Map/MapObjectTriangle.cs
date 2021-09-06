@@ -632,22 +632,29 @@ namespace STROOP.Map
         {
             Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
 
-            List<TriangleDataModel> tris = GetFilteredTriangles();
-            List<List<(float x, float z)>> trisForControl = tris
-                .ConvertAll(tri => tri.Get3DVertices())
-                .ConvertAll(vertices => vertices.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z)));
-
-            for (int i = trisForControl.Count - 1; i >= 0; i--)
+            if (MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits())
             {
-                var triForControl = trisForControl[i];
-                if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y))
-                {
-                    TriangleDataModel tri = tris[i];
-                    return new MapObjectHoverData(this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri);
-                }
+                return null;
             }
-            return null;
+            else
+            {
+                List<TriangleDataModel> tris = GetFilteredTriangles();
+                List<List<(float x, float z)>> trisForControl = tris
+                    .ConvertAll(tri => tri.Get3DVertices())
+                    .ConvertAll(vertices => vertices.ConvertAll(
+                        vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z)));
+
+                for (int i = trisForControl.Count - 1; i >= 0; i--)
+                {
+                    var triForControl = trisForControl[i];
+                    if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y))
+                    {
+                        TriangleDataModel tri = tris[i];
+                        return new MapObjectHoverData(this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri);
+                    }
+                }
+                return null;
+            }
         }
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
