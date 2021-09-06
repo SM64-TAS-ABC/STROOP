@@ -124,7 +124,7 @@ namespace STROOP.Map
                 }
                 for (int y = yMin; y <= yMax; y++)
                 {
-                    vertices.Add((zCenter, y, zMin));
+                    vertices.Add((xCenter, y, zMin));
                     vertices.Add((xCenter, y, zMax));
                 }
                 return vertices;
@@ -136,6 +136,57 @@ namespace STROOP.Map
                 {
                     vertices.Add((float.NegativeInfinity, y, float.NegativeInfinity));
                     vertices.Add((float.PositiveInfinity, y, float.PositiveInfinity));
+                }
+                return vertices;
+            }
+            else
+            {
+                return new List<(float x, float y, float z)>();
+            }
+        }
+
+        protected override List<(float x, float y, float z)> GetGridlineIntersectionPositionsOrthographicView()
+        {
+            // failsafe to prevent filling the whole screen
+            if (!MapUtilities.IsAbleToShowUnitPrecision())
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
+            float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
+            float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
+            int xMin = (int)Config.CurrentMapGraphics.MapViewXMin - 1;
+            int xMax = (int)Config.CurrentMapGraphics.MapViewXMax + 1;
+            int yMin = (int)Config.CurrentMapGraphics.MapViewYMin - 1;
+            int yMax = (int)Config.CurrentMapGraphics.MapViewYMax + 1;
+            int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
+            int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
+
+            if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
+                Config.CurrentMapGraphics.MapViewYawValue == 32768))
+            {
+                List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                for (int x = xMin; x <= xMax; x++)
+                {
+                    for (int y = yMin; y <= yMax; y++)
+                    {
+                        vertices.Add((x, y, zCenter));
+                    }
+                }
+                return vertices;
+            }
+            else if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+                Config.CurrentMapGraphics.MapViewYawValue == 49152))
+            {
+                List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                for (int z = zMin; z <= zMax; z++)
+                {
+                    for (int y = yMin; y <= yMax; y++)
+                    {
+                        vertices.Add((xCenter, y, z));
+                    }
                 }
                 return vertices;
             }
