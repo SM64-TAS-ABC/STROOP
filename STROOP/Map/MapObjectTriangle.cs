@@ -660,13 +660,14 @@ namespace STROOP.Map
                     if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y))
                     {
                         TriangleDataModel tri = tris[i][0].data.Tri;
+                        double y = tri.GetMidpointY();
                         string info = null;
                         if (MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits())
                         {
-                            float y = tris[i].Max(p => p.y);
+                            y = tris[i].Max(p => p.y);
                             info = string.Format("y={0}", y);
                         }
-                        return new MapObjectHoverData(this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri, index: i, info: info);
+                        return new MapObjectHoverData(this, tri.GetMidpointX(), y, tri.GetMidpointZ(), tri: tri, index: i, info: info);
                     }
                 }
                 return null;
@@ -731,6 +732,13 @@ namespace STROOP.Map
                     ButtonUtilities.UnloadObject(new List<ObjectDataModel>() { obj });
                 };
                 output.Insert(2, unloadAssociatedObjectItem);
+
+                if (MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits())
+                {
+                    ToolStripMenuItem copyYItem = new ToolStripMenuItem(string.Format("Copy Y ({0})", hoverData.Y));
+                    copyYItem.Click += (sender, e) => Clipboard.SetText(hoverData.Y.ToString());
+                    output.Insert(3, copyYItem);
+                }
             }
 
             return output;
