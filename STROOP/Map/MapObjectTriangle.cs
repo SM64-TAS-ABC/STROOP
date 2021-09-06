@@ -325,10 +325,13 @@ namespace STROOP.Map
             }
 
             // Draw arrows
-            if (_showArrows)
+            bool isShowingTriUnits = MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits();
+            if (_showArrows && !isShowingTriUnits)
             {
-                foreach (var vertexList in vertexLists)
+                for (int i = 0; i < vertexLists.Count; i++)
                 {
+                    var vertexList = vertexLists[i];
+
                     float x1 = (vertexList[0].x + vertexList[3].x) / 2;
                     float y1 = (vertexList[0].y + vertexList[3].y) / 2;
                     float z1 = (vertexList[0].z + vertexList[3].z) / 2;
@@ -359,9 +362,9 @@ namespace STROOP.Map
                         int numMarks = (int)Math.Truncate(distanceDiff / 50 + 0.25) + 1;
                         int numBetweens = numMarks - 1;
                         double betweenDistance = distanceDiff / numBetweens;
-                        for (int i = 0; i < numMarks; i++)
+                        for (int j = 0; j < numMarks; j++)
                         {
-                            markDistances.Add(firstDistance + i * betweenDistance);
+                            markDistances.Add(firstDistance + j * betweenDistance);
                         }
                     }
 
@@ -436,10 +439,15 @@ namespace STROOP.Map
                             };
 
                         Color arrowColor = vertexList[0].color.Darken(0.5);
-                        GL.Color4(arrowColor.R, arrowColor.G, arrowColor.B, OpacityByte);
                         GL.Begin(PrimitiveType.Polygon);
                         foreach (var arrowPoint in arrowPoints)
                         {
+                            byte opacityByte = OpacityByte;
+                            if (this == hoverData?.MapObject && vertexList[0].data.Tri.Address == hoverData?.Tri?.Address && hoverData?.Index == i)
+                            {
+                                opacityByte = MapUtilities.GetHoverOpacityByte();
+                            }
+                            GL.Color4(arrowColor.R, arrowColor.G, arrowColor.B, opacityByte);
                             GL.Vertex2(arrowPoint.x, arrowPoint.z);
                         }
                         GL.End();
