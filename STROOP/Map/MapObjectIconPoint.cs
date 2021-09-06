@@ -41,7 +41,12 @@ namespace STROOP.Map
             (float xPosPixels, float yPosPixels) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z);
             float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
             SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
-            MapUtilities.DrawTexture(TextureId, new PointF(xPosPixels, yPosPixels), size, angleDegrees, Opacity);
+            double opacity = Opacity;
+            if (this == hoverData?.MapObject)
+            {
+                opacity = MapUtilities.GetHoverOpacity();
+            }
+            MapUtilities.DrawTexture(TextureId, new PointF(xPosPixels, yPosPixels), size, angleDegrees, opacity);
         }
 
         public override bool ParticipatesInGlobalIconSize()
