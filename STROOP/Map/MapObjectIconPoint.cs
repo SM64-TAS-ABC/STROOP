@@ -111,6 +111,20 @@ namespace STROOP.Map
             return null;
         }
 
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
+            (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z);
+            double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+            double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
+            if (dist <= radius)
+            {
+                return new MapObjectHoverData(this, x, z);
+            }
+            return null;
+        }
+
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
