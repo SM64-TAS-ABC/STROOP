@@ -82,7 +82,12 @@ namespace STROOP.Map
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject && dataPoint.objAddress == hoverData?.ObjAddress)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(tex, point, size, angleDegrees, opacity);
             }
         }
 
@@ -166,6 +171,24 @@ namespace STROOP.Map
             {
                 double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
                 double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+                if (dist <= radius)
+                {
+                    return new MapObjectHoverData(this, dataPoint.x, dataPoint.z, objAddress: dataPoint.objAddress);
+                }
+            }
+            return null;
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+
+            List<(float x, float y, float z, float angle, int tex, uint objAddress)> data = GetData();
+            foreach (var dataPoint in data)
+            {
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
+                double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+                double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
                 if (dist <= radius)
                 {
                     return new MapObjectHoverData(this, dataPoint.x, dataPoint.z, objAddress: dataPoint.objAddress);
