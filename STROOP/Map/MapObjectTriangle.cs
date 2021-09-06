@@ -614,5 +614,49 @@ namespace STROOP.Map
         {
             _showArrows = !_showArrows;
         }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            if (hoverData.IsTriUnit)
+            {
+                List<double> basePointValues = new List<double>() { (int)hoverData.X, (int)hoverData.Z };
+                ToolStripMenuItem copyBasePointItem = MapUtilities.CreateCopyItem(basePointValues, "Base Point");
+                output.Insert(0, copyBasePointItem);
+
+                List<double> midpointValues = new List<double>() { hoverData.X, hoverData.Z };
+                ToolStripMenuItem copyMidpointItem = MapUtilities.CreateCopyItem(midpointValues, "Midpoint");
+                output.Insert(1, copyMidpointItem);
+            }
+            else
+            {
+                ToolStripMenuItem selectInTrianglesTabItem = new ToolStripMenuItem("Select in Triangles Tab");
+                selectInTrianglesTabItem.Click += (sender, e) =>
+                {
+                    Config.TriangleManager.SetCustomTriangleAddresses(hoverData.Tri.Address);
+                    List<TabPage> tabPages = ControlUtilities.GetTabPages(Config.TabControlMain);
+                    bool containsTab = tabPages.Any(tabPage => tabPage == Config.TriangleManager.Tab);
+                    if (containsTab) Config.TabControlMain.SelectTab(Config.TriangleManager.Tab);
+                };
+                output.Insert(0, selectInTrianglesTabItem);
+
+                ToolStripMenuItem copyAddressItem = new ToolStripMenuItem("Copy Address");
+                copyAddressItem.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(hoverData.Tri.Address));
+                output.Insert(1, copyAddressItem);
+
+                ToolStripMenuItem unloadAssociatedObjectItem = new ToolStripMenuItem("Unload Associated Object");
+                unloadAssociatedObjectItem.Click += (sender, e) =>
+                {
+                    uint objAddress = hoverData.Tri.AssociatedObject;
+                    if (objAddress == 0) return;
+                    ObjectDataModel obj = new ObjectDataModel(objAddress);
+                    ButtonUtilities.UnloadObject(new List<ObjectDataModel>() { obj });
+                };
+                output.Insert(2, unloadAssociatedObjectItem);
+            }
+
+            return output;
+        }
     }
 }
