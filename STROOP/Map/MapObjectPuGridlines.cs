@@ -345,6 +345,61 @@ namespace STROOP.Map
             }
         }
 
+        protected override List<(float x, float y, float z)> GetGridlineIntersectionPositionsOrthographicView()
+        {
+            if (!Config.MapGui.checkBoxMapOptionsEnablePuView.Checked)
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
+            if (_setting != PuGridlineSetting.SETTING1)
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
+            float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
+            float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
+            int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536;
+            int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536;
+            int yMin = ((((int)Config.CurrentMapGraphics.MapViewYMin) / 65536) - 1) * 65536;
+            int yMax = ((((int)Config.CurrentMapGraphics.MapViewYMax) / 65536) + 1) * 65536;
+            int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / 65536) - 1) * 65536;
+            int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / 65536) + 1) * 65536;
+
+            if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
+                Config.CurrentMapGraphics.MapViewYawValue == 32768))
+            {
+                List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                for (int x = xMin; x <= xMax; x += 65536)
+                {
+                    for (int y = yMin; y <= yMax; y += 65536)
+                    {
+                        vertices.Add((x, y, zCenter));
+                    }
+                }
+                return vertices;
+            }
+            else if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+                Config.CurrentMapGraphics.MapViewYawValue == 49152))
+            {
+                List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                for (int z = zMin; z <= zMax; z += 65536)
+                {
+                    for (int y = yMin; y <= yMax; y += 65536)
+                    {
+                        vertices.Add((xCenter, y, z));
+                    }
+                }
+                return vertices;
+            }
+            else
+            {
+                return new List<(float x, float y, float z)>();
+            }
+        }
+
         public override string GetName()
         {
             return "PU Gridlines";
