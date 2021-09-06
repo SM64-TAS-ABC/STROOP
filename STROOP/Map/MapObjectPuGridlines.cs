@@ -124,7 +124,7 @@ namespace STROOP.Map
             }
         }
 
-        protected override List<(float x, float z)> GetGridlineIntersectionPositions()
+        protected override List<(float x, float z)> GetGridlineIntersectionPositionsTopDownView()
         {
             if (!Config.MapGui.checkBoxMapOptionsEnablePuView.Checked)
             {

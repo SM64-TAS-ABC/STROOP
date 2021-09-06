@@ -71,7 +71,7 @@ namespace STROOP.Map
             return vertices;
         }
 
-        protected override List<(float x, float z)> GetGridlineIntersectionPositions()
+        protected override List<(float x, float z)> GetGridlineIntersectionPositionsTopDownView()
         {
             int gridlineMin = -8192;
             int gridlineMax = 8192;

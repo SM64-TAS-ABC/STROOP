@@ -52,7 +52,7 @@ namespace STROOP.Map
             return vertices;
         }
 
-        protected override List<(float x, float z)> GetGridlineIntersectionPositions()
+        protected override List<(float x, float z)> GetGridlineIntersectionPositionsTopDownView()
         {
             // failsafe to prevent filling the whole screen
             if (!MapUtilities.IsAbleToShowUnitPrecision())

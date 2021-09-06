@@ -25,7 +25,7 @@ namespace STROOP.Map
             _imageSize = 8;
         }
 
-        protected virtual List<(float x, float z)> GetGridlineIntersectionPositions()
+        protected virtual List<(float x, float z)> GetGridlineIntersectionPositionsTopDownView()
         {
             return new List<(float x, float z)>();
         }
@@ -36,11 +36,38 @@ namespace STROOP.Map
 
             if (_customImage != null)
             {
-                List<(float x, float z)> positions = GetGridlineIntersectionPositions();
+                List<(float x, float z)> positions = GetGridlineIntersectionPositionsTopDownView();
                 for (int i = 0; i < positions.Count; i++)
                 {
                     (float x, float z) = positions[i];
                     (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
+                    SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
+                    double opacity = Opacity;
+                    if (this == hoverData?.MapObject && i == hoverData?.Index)
+                    {
+                        opacity = MapUtilities.GetHoverOpacity();
+                    }
+                    MapUtilities.DrawTexture(_customImageTex.Value, new PointF(controlX, controlZ), size, 0, opacity);
+                }
+            }
+        }
+
+        protected virtual List<(float x, float y, float z)> GetGridlineIntersectionPositionsOrthographicView()
+        {
+            return new List<(float x, float y, float z)>();
+        }
+
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
+        {
+            base.DrawOn2DControlOrthographicView(hoverData);
+
+            if (_customImage != null)
+            {
+                List<(float x, float y, float z)> positions = GetGridlineIntersectionPositionsOrthographicView();
+                for (int i = 0; i < positions.Count; i++)
+                {
+                    (float x, float y, float z) = positions[i];
+                    (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
                     double opacity = Opacity;
                     if (this == hoverData?.MapObject && i == hoverData?.Index)
@@ -90,7 +117,7 @@ namespace STROOP.Map
             Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
 
-            var positions = GetGridlineIntersectionPositions();
+            var positions = GetGridlineIntersectionPositionsTopDownView();
             for (int i = positions.Count - 1; i >= 0; i--)
             {
                 var position = positions[i];
@@ -108,7 +135,7 @@ namespace STROOP.Map
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
-            var positions = GetGridlineIntersectionPositions();
+            var positions = GetGridlineIntersectionPositionsTopDownView();
             var position = positions[hoverData.Index.Value];
             List<double> posValues = new List<double>() { position.x, position.z };
             ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");

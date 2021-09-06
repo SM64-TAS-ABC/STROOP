@@ -60,7 +60,7 @@ namespace STROOP.Map
             return vertices;
         }
 
-        protected override List<(float x, float z)> GetGridlineIntersectionPositions()
+        protected override List<(float x, float z)> GetGridlineIntersectionPositionsTopDownView()
         {
             float xMin = Config.CurrentMapGraphics.MapViewXMin;
             float xMax = Config.CurrentMapGraphics.MapViewXMax;
