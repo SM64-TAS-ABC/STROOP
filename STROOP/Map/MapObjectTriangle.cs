@@ -383,7 +383,7 @@ namespace STROOP.Map
                         TriangleDataModel tri = vertexList[0].data.Tri;
                         float size = GetSizeForOrthographicView(tri.Classification);
                         double notRadiusLength = 0.4 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
-                        double notLineThickness = 0.2 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
+                        double notLineThickness = 0.15 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
 
                         double angleUp = 0;
                         double angleDown = angleUp + 32768;
@@ -415,7 +415,7 @@ namespace STROOP.Map
 
                             double firstAngle = 0.125;
                             double secondAngle = firstAngle + 0.5;
-                            double angleRadius = 0.1;
+                            double angleRadius = 0.05;
 
                             int firstGapStart = (int)(outerCirclePoints.Count * (firstAngle - angleRadius));
                             int firstGapEnd = (int)(outerCirclePoints.Count * (firstAngle + angleRadius));
