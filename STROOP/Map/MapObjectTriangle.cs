@@ -378,59 +378,148 @@ namespace STROOP.Map
                         markPoints.Add(((float x, float y, float z))point);
                     }
 
-                    double arrowAngle;
-                    TriangleDataModel tri = vertexList[0].data.Tri;
-                    switch (tri.Classification)
+                    if (SpecialConfig.MapUseArrowsForCeilings == 0 && vertexList[0].data.Tri.IsCeiling())
                     {
-                        case TriangleClassification.Wall:
-                            double wallAngleDiff = MoreMath.GetAngleDifference(Config.CurrentMapGraphics.MapViewYawValue, tri.GetPushAngle());
-                            arrowAngle = wallAngleDiff > 0 ? 49152 : 16384;
-                            break;
-                        case TriangleClassification.Floor:
-                            arrowAngle = 32768;
-                            break;
-                        case TriangleClassification.Ceiling:
-                            arrowAngle = 0;
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
+                        TriangleDataModel tri = vertexList[0].data.Tri;
+                        float size = GetSizeForOrthographicView(tri.Classification);
+                        double xBranchLength = 0.4 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
+                        double xLineThickness = 0.2 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
 
-                    float size = GetSizeForOrthographicView(tri.Classification);
-                    double arrowBaseLength = 0.4 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
-                    double arrowSideLength = 0.2 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
+                        double angleUp = 0;
+                        double angleDown = angleUp + 32768;
+                        double angleLeft = angleUp + 16384;
+                        double angleRight = angleUp - 16384;
+                        double angleUpLeft = angleUp + 8192;
+                        double angleUpRight = angleUp - 8192;
+                        double angleDownLeft = angleUp + 24576;
+                        double angleDownRight = angleUp - 24576;
 
-                    double angleUp = arrowAngle;
-                    double angleDown = arrowAngle + 32768;
-                    double angleLeft = arrowAngle + 16384;
-                    double angleRight = arrowAngle - 16384;
-                    double angleUpLeft = arrowAngle + 8192;
-                    double angleUpRight = arrowAngle - 8192;
-                    double angleDownLeft = arrowAngle + 24576;
-                    double angleDownRight = arrowAngle - 24576;
+                        foreach (var point in markPoints)
+                        {
+                            var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z);
 
-                    foreach (var point in markPoints)
-                    {
-                        var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z);
+                            (float x, float z) topLeftPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                xBranchLength, angleUpLeft, controlPoint.x, controlPoint.z);
+                            (float x, float z) topRightPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                xBranchLength, angleUpRight, controlPoint.x, controlPoint.z);
+                            (float x, float z) bottomLeftPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                xBranchLength, angleDownLeft, controlPoint.x, controlPoint.z);
+                            (float x, float z) bottomRightPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                xBranchLength, angleDownRight, controlPoint.x, controlPoint.z);
 
-                        (float x, float z) frontPoint = ((float, float))MoreMath.AddVectorToPoint(
-                            arrowBaseLength, angleUp, controlPoint.x, controlPoint.z);
-                        (float x, float z) leftOuterPoint = ((float, float))MoreMath.AddVectorToPoint(
-                            arrowBaseLength / 2 + arrowSideLength, angleLeft, controlPoint.x, controlPoint.z);
-                        (float x, float z) leftInnerPoint = ((float, float))MoreMath.AddVectorToPoint(
-                            arrowBaseLength / 2, angleLeft, controlPoint.x, controlPoint.z);
-                        (float x, float z) rightOuterPoint = ((float, float))MoreMath.AddVectorToPoint(
-                            arrowBaseLength / 2 + arrowSideLength, angleRight, controlPoint.x, controlPoint.z);
-                        (float x, float z) rightInnerPoint = ((float, float))MoreMath.AddVectorToPoint(
-                            arrowBaseLength / 2, angleRight, controlPoint.x, controlPoint.z);
-                        (float x, float z) backLeftPoint = ((float, float))MoreMath.AddVectorToPoint(
-                            arrowBaseLength, angleDown, leftInnerPoint.x, leftInnerPoint.z);
-                        (float x, float z) backRightPoint = ((float, float))MoreMath.AddVectorToPoint(
-                            arrowBaseLength, angleDown, rightInnerPoint.x, rightInnerPoint.z);
+                            (float x, float z) topLeftPointBottomLeft = ((float, float))MoreMath.AddVectorToPoint(
+                                xLineThickness / 2, angleDownLeft, topLeftPoint.x, topLeftPoint.z);
+                            (float x, float z) topLeftPointTopRight = ((float, float))MoreMath.AddVectorToPoint(
+                                xLineThickness / 2, angleUpRight, topLeftPoint.x, topLeftPoint.z);
+                            (float x, float z) topRightPointTopLeft = ((float, float))MoreMath.AddVectorToPoint(
+                                xLineThickness / 2, angleUpLeft, topRightPoint.x, topRightPoint.z);
+                            (float x, float z) topRightPointBottomRight = ((float, float))MoreMath.AddVectorToPoint(
+                                xLineThickness / 2, angleDownRight, topRightPoint.x, topRightPoint.z);
+                            (float x, float z) bottomLeftPointTopLeft = ((float, float))MoreMath.AddVectorToPoint(
+                                xLineThickness / 2, angleUpLeft, bottomLeftPoint.x, bottomLeftPoint.z);
+                            (float x, float z) bottomLeftPointBottomRight = ((float, float))MoreMath.AddVectorToPoint(
+                                xLineThickness / 2, angleDownRight, bottomLeftPoint.x, bottomLeftPoint.z);
+                            (float x, float z) bottomRightPointBottomLeft = ((float, float))MoreMath.AddVectorToPoint(
+                                xLineThickness / 2, angleDownLeft, bottomRightPoint.x, bottomRightPoint.z);
+                            (float x, float z) bottomRightPointTopRight = ((float, float))MoreMath.AddVectorToPoint(
+                                xLineThickness / 2, angleUpRight, bottomRightPoint.x, bottomRightPoint.z);
 
-                        List<(float x, float z)> arrowPoints =
-                            new List<(float x, float z)>()
+                            (float x, float z) topPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                xBranchLength - xLineThickness / 2, angleDownRight, topLeftPointTopRight.x, topLeftPointTopRight.z);
+                            (float x, float z) leftPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                xBranchLength - xLineThickness / 2, angleDownRight, topLeftPointBottomLeft.x, topLeftPointBottomLeft.z);
+                            (float x, float z) bottomPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                xBranchLength - xLineThickness / 2, angleUpLeft, bottomRightPointBottomLeft.x, bottomRightPointBottomLeft.z);
+                            (float x, float z) rightPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                xBranchLength - xLineThickness / 2, angleUpLeft, bottomRightPointTopRight.x, bottomRightPointTopRight.z);
+
+                            List<(float x, float z)> xPoints =
+                                new List<(float x, float z)>()
+                                {
+                                    topPoint,
+                                    topRightPointTopLeft,
+                                    topRightPointBottomRight,
+                                    rightPoint,
+                                    bottomRightPointTopRight,
+                                    bottomRightPointBottomLeft,
+                                    bottomPoint,
+                                    bottomLeftPointBottomRight,
+                                    bottomLeftPointTopLeft,
+                                    leftPoint,
+                                    topLeftPointBottomLeft,
+                                    topLeftPointTopRight,
+                                };
+
+                            Color xColor = vertexList[0].color.Darken(0.5);
+                            GL.Begin(PrimitiveType.Polygon);
+                            foreach (var xPoint in xPoints)
                             {
+                                byte opacityByte = OpacityByte;
+                                if (this == hoverData?.MapObject && vertexList[0].data.Tri.Address == hoverData?.Tri?.Address && hoverData?.Index == i)
+                                {
+                                    opacityByte = MapUtilities.GetHoverOpacityByte();
+                                }
+                                GL.Color4(xColor.R, xColor.G, xColor.B, opacityByte);
+                                GL.Vertex2(xPoint.x, xPoint.z);
+                            }
+                            GL.End();
+                        }
+                    }
+                    else
+                    {
+                        double arrowAngle;
+                        TriangleDataModel tri = vertexList[0].data.Tri;
+                        switch (tri.Classification)
+                        {
+                            case TriangleClassification.Wall:
+                                double wallAngleDiff = MoreMath.GetAngleDifference(Config.CurrentMapGraphics.MapViewYawValue, tri.GetPushAngle());
+                                arrowAngle = wallAngleDiff > 0 ? 49152 : 16384;
+                                break;
+                            case TriangleClassification.Floor:
+                                arrowAngle = 32768;
+                                break;
+                            case TriangleClassification.Ceiling:
+                                arrowAngle = 0;
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        float size = GetSizeForOrthographicView(tri.Classification);
+                        double arrowBaseLength = 0.4 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
+                        double arrowSideLength = 0.2 * Math.Min(size, 50) * Config.CurrentMapGraphics.MapViewScaleValue;
+
+                        double angleUp = arrowAngle;
+                        double angleDown = arrowAngle + 32768;
+                        double angleLeft = arrowAngle + 16384;
+                        double angleRight = arrowAngle - 16384;
+                        double angleUpLeft = arrowAngle + 8192;
+                        double angleUpRight = arrowAngle - 8192;
+                        double angleDownLeft = arrowAngle + 24576;
+                        double angleDownRight = arrowAngle - 24576;
+
+                        foreach (var point in markPoints)
+                        {
+                            var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z);
+
+                            (float x, float z) frontPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                arrowBaseLength, angleUp, controlPoint.x, controlPoint.z);
+                            (float x, float z) leftOuterPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                arrowBaseLength / 2 + arrowSideLength, angleLeft, controlPoint.x, controlPoint.z);
+                            (float x, float z) leftInnerPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                arrowBaseLength / 2, angleLeft, controlPoint.x, controlPoint.z);
+                            (float x, float z) rightOuterPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                arrowBaseLength / 2 + arrowSideLength, angleRight, controlPoint.x, controlPoint.z);
+                            (float x, float z) rightInnerPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                arrowBaseLength / 2, angleRight, controlPoint.x, controlPoint.z);
+                            (float x, float z) backLeftPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                arrowBaseLength, angleDown, leftInnerPoint.x, leftInnerPoint.z);
+                            (float x, float z) backRightPoint = ((float, float))MoreMath.AddVectorToPoint(
+                                arrowBaseLength, angleDown, rightInnerPoint.x, rightInnerPoint.z);
+
+                            List<(float x, float z)> arrowPoints =
+                                new List<(float x, float z)>()
+                                {
                                 frontPoint,
                                 leftOuterPoint,
                                 leftInnerPoint,
@@ -438,21 +527,22 @@ namespace STROOP.Map
                                 backRightPoint,
                                 rightInnerPoint,
                                 rightOuterPoint,
-                            };
+                                };
 
-                        Color arrowColor = vertexList[0].color.Darken(0.5);
-                        GL.Begin(PrimitiveType.Polygon);
-                        foreach (var arrowPoint in arrowPoints)
-                        {
-                            byte opacityByte = OpacityByte;
-                            if (this == hoverData?.MapObject && vertexList[0].data.Tri.Address == hoverData?.Tri?.Address && hoverData?.Index == i)
+                            Color arrowColor = vertexList[0].color.Darken(0.5);
+                            GL.Begin(PrimitiveType.Polygon);
+                            foreach (var arrowPoint in arrowPoints)
                             {
-                                opacityByte = MapUtilities.GetHoverOpacityByte();
+                                byte opacityByte = OpacityByte;
+                                if (this == hoverData?.MapObject && vertexList[0].data.Tri.Address == hoverData?.Tri?.Address && hoverData?.Index == i)
+                                {
+                                    opacityByte = MapUtilities.GetHoverOpacityByte();
+                                }
+                                GL.Color4(arrowColor.R, arrowColor.G, arrowColor.B, opacityByte);
+                                GL.Vertex2(arrowPoint.x, arrowPoint.z);
                             }
-                            GL.Color4(arrowColor.R, arrowColor.G, arrowColor.B, opacityByte);
-                            GL.Vertex2(arrowPoint.x, arrowPoint.z);
+                            GL.End();
                         }
-                        GL.End();
                     }
                 }
             }
