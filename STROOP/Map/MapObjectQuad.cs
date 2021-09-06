@@ -70,7 +70,7 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            List<List<(float x, float y, float z, bool isHovered)>> quadList = GetQuadList(null);
+            List<List<(float x, float y, float z, bool isHovered)>> quadList = GetQuadList(hoverData);
             List<List<(float x, float z, bool isHovered)>> quadListForControl =
                 quadList.ConvertAll(quad => quad.ConvertAll(
                     vertex =>
