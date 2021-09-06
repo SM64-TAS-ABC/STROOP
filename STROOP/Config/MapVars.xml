@@ -36,6 +36,7 @@
   <Data base="None" specialType="MapCircleNumPoints3D">Num Sphere Points</Data>
 
   <Data base="None" specialType="MapUnitPrecisionThreshold">Unit Precision Threshold</Data>
-  <Data base="None" specialType="MapUseArrowsForCeilings" subclass="Boolean">Use Arrows for Ceilings</Data>
+  <Data base="None" specialType="MapUseNotForCeilings" subclass="Boolean">Use Not for Ceilings</Data>
+  <Data base="None" specialType="MapUseXForCeilings" subclass="Boolean">Use X for Ceilings</Data>
 
 </VarData>

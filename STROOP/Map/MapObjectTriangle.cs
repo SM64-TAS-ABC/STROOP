@@ -378,7 +378,11 @@ namespace STROOP.Map
                         markPoints.Add(((float x, float y, float z))point);
                     }
 
-                    if (SpecialConfig.MapUseArrowsForCeilings == 0 && vertexList[0].data.Tri.IsCeiling())
+                    if (SpecialConfig.MapUseNotForCeilings == 1 && vertexList[0].data.Tri.IsCeiling())
+                    {
+
+                    }
+                    else if (SpecialConfig.MapUseXForCeilings == 1 && vertexList[0].data.Tri.IsCeiling())
                     {
                         TriangleDataModel tri = vertexList[0].data.Tri;
                         float size = GetSizeForOrthographicView(tri.Classification);
