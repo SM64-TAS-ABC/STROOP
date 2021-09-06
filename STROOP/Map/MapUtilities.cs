@@ -457,7 +457,7 @@ namespace STROOP.Map
             return null;
         }
 
-        public static TriangleMapData? Get2DDataFromTri(TriangleDataModel tri)
+        public static TriangleMapData Get2DDataFromTri(TriangleDataModel tri)
         {
             if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                 (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
@@ -493,16 +493,10 @@ namespace STROOP.Map
 
                 if (points.Count == 2)
                 {
-                    return new TriangleMapData()
-                    {
-                        X1 = points[0].x,
-                        Y1 = points[0].y,
-                        Z1 = Config.CurrentMapGraphics.MapViewCenterZValue,
-                        X2 = points[1].x,
-                        Y2 = points[1].y,
-                        Z2 = Config.CurrentMapGraphics.MapViewCenterZValue,
-                        Tri = tri,
-                    };
+                    return new TriangleMapData(
+                        points[0].x, points[0].y, Config.CurrentMapGraphics.MapViewCenterZValue,
+                        points[1].x, points[1].y, Config.CurrentMapGraphics.MapViewCenterZValue,
+                        tri);
                 }
 
                 return null;
@@ -541,16 +535,10 @@ namespace STROOP.Map
 
                 if (points.Count == 2)
                 {
-                    return new TriangleMapData()
-                    {
-                        X1 = Config.CurrentMapGraphics.MapViewCenterXValue,
-                        Y1 = points[0].y,
-                        Z1 = points[0].z,
-                        X2 = Config.CurrentMapGraphics.MapViewCenterXValue,
-                        Y2 = points[1].y,
-                        Z2 = points[1].z,
-                        Tri = tri,
-                    };
+                    return new TriangleMapData(
+                        Config.CurrentMapGraphics.MapViewCenterXValue, points[0].y, points[0].z,
+                        Config.CurrentMapGraphics.MapViewCenterXValue, points[1].y, points[1].z,
+                        tri);
                 }
 
                 return null;
@@ -596,16 +584,10 @@ namespace STROOP.Map
 
                 if (points.Count == 2)
                 {
-                    return new TriangleMapData()
-                    {
-                        X1 = points[0].x,
-                        Y1 = points[0].y,
-                        Z1 = points[0].z,
-                        X2 = points[1].x,
-                        Y2 = points[1].y,
-                        Z2 = points[1].z,
-                        Tri = tri,
-                    };
+                    return new TriangleMapData(
+                        points[0].x, points[0].y, points[0].z,
+                        points[1].x, points[1].y, points[1].z,
+                        tri);
                 }
 
                 return null;

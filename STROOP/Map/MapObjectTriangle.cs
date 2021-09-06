@@ -121,10 +121,9 @@ namespace STROOP.Map
 
         public void DrawOn2DControlOrthographicViewCrossSection()
         {
-            List<TriangleMapData> triData =
-                GetFilteredTriangles().ConvertAll(tri => MapUtilities.Get2DDataFromTri(tri))
-                    .FindAll(data => data.HasValue)
-                    .ConvertAll(data => data.Value);
+            List<TriangleMapData> triData = GetFilteredTriangles()
+                .ConvertAll(tri => MapUtilities.Get2DDataFromTri(tri))
+                .FindAll(data => data != null);
 
             List<List<(float x, float y, float z, Color color, TriangleMapData data)>> vertexLists = triData.ConvertAll(data =>
             {
