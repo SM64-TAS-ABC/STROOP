@@ -52,25 +52,27 @@ namespace STROOP.Map
             return vertices;
         }
 
-        protected override List<(float x, float z)> GetGridlineIntersectionPositionsTopDownView()
+        protected override List<(float x, float y, float z)> GetGridlineIntersectionPositionsTopDownView()
         {
             // failsafe to prevent filling the whole screen
             if (!MapUtilities.IsAbleToShowUnitPrecision())
             {
-                return new List<(float x, float z)>();
+                return new List<(float x, float y, float z)>();
             }
+
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
             int xMin = (int)Config.CurrentMapGraphics.MapViewXMin - 1;
             int xMax = (int)Config.CurrentMapGraphics.MapViewXMax + 1;
             int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
             int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
 
-            List<(float x, float z)> vertices = new List<(float x, float z)>();
+            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             for (int x = xMin; x <= xMax; x++)
             {
                 for (int z = zMin; z <= zMax; z++)
                 {
-                    vertices.Add((x, z));
+                    vertices.Add((x, marioY, z));
                 }
             }
             return vertices;

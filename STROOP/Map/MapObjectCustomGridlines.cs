@@ -71,8 +71,10 @@ namespace STROOP.Map
             return vertices;
         }
 
-        protected override List<(float x, float z)> GetGridlineIntersectionPositionsTopDownView()
+        protected override List<(float x, float y, float z)> GetGridlineIntersectionPositionsTopDownView()
         {
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+
             int gridlineMin = -8192;
             int gridlineMax = 8192;
 
@@ -99,16 +101,16 @@ namespace STROOP.Map
             int numZLines = zMaxMultiple - zMinMultiple + 1;
 
             if (numXLines > viewXDiffPixels || numZLines > viewZDiffPixels)
-                return new List<(float x, float z)>();
+                return new List<(float x, float y, float z)>();
 
-            List<(float x, float z)> vertices = new List<(float x, float z)>();
+            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             for (int multipleX = xMinMultiple; multipleX <= xMaxMultiple; multipleX++)
             {
                 float x = (float)(multipleX * increment + gridlineMin);
                 for (int multipleZ = zMinMultiple; multipleZ <= zMaxMultiple; multipleZ++)
                 {
                     float z = (float)(multipleZ * increment + gridlineMin);
-                    vertices.Add((x, z));
+                    vertices.Add((x, marioY, z));
                 }
             }
             return vertices;

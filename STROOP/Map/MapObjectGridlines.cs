@@ -25,9 +25,9 @@ namespace STROOP.Map
             _imageSize = 8;
         }
 
-        protected virtual List<(float x, float z)> GetGridlineIntersectionPositionsTopDownView()
+        protected virtual List<(float x, float y, float z)> GetGridlineIntersectionPositionsTopDownView()
         {
-            return new List<(float x, float z)>();
+            return new List<(float x, float y, float z)>();
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
@@ -36,10 +36,10 @@ namespace STROOP.Map
 
             if (_customImage != null)
             {
-                List<(float x, float z)> positions = GetGridlineIntersectionPositionsTopDownView();
+                List<(float x, float y, float z)> positions = GetGridlineIntersectionPositionsTopDownView();
                 for (int i = 0; i < positions.Count; i++)
                 {
-                    (float x, float z) = positions[i];
+                    (float x, float y, float z) = positions[i];
                     (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
                     double opacity = Opacity;
@@ -54,7 +54,7 @@ namespace STROOP.Map
 
         protected virtual List<(float x, float y, float z)> GetGridlineIntersectionPositionsOrthographicView()
         {
-            return new List<(float x, float y, float z)>();
+            return GetGridlineIntersectionPositionsTopDownView();
         }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
