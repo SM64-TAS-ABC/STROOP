@@ -1052,6 +1052,7 @@ namespace STROOP.Managers
                 mapTabSettings.Add(new XAttribute("mapCircleNumPoints2D", SpecialConfig.MapCircleNumPoints2D));
                 mapTabSettings.Add(new XAttribute("mapCircleNumPoints3D", SpecialConfig.MapCircleNumPoints3D));
                 mapTabSettings.Add(new XAttribute("mapUnitPrecisionThreshold", SpecialConfig.MapUnitPrecisionThreshold));
+                mapTabSettings.Add(new XAttribute("mapUseArrowsForCeilings", SpecialConfig.MapUseArrowsForCeilings));
 
                 root.Add(mapTabSettings);
             }
@@ -1152,6 +1153,7 @@ namespace STROOP.Managers
                 SpecialConfig.MapCircleNumPoints2D = ParsingUtilities.ParseInt(mapTabSettings.Attribute(XName.Get("mapCircleNumPoints2D")).Value);
                 SpecialConfig.MapCircleNumPoints3D = ParsingUtilities.ParseInt(mapTabSettings.Attribute(XName.Get("mapCircleNumPoints3D")).Value);
                 SpecialConfig.MapUnitPrecisionThreshold = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUnitPrecisionThreshold")).Value);
+                SpecialConfig.MapUseArrowsForCeilings = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUseArrowsForCeilings")).Value);
             }
 
             xElements
@@ -1423,6 +1425,7 @@ namespace STROOP.Managers
             "3D Scroll Speed", "3D Translate Speed", "3D Rotate Speed",
             "Num Circle Points", "Num Sphere Points",
             "Unit Precision Threshold",
+            "Use Arrows for Ceilings"
         };
         private static readonly List<string> inGameColoredVars = new List<string>() { };
         private static readonly List<string> cameraPosAndFocusColoredVars = new List<string>()

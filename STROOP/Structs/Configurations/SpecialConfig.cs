@@ -188,6 +188,7 @@ namespace STROOP.Structs.Configurations
         public static int MapCircleNumPoints3D = 64;
 
         public static double MapUnitPrecisionThreshold = 4;
+        public static double MapUseArrowsForCeilings = 0;
 
         public static CompassPosition CompassPosition;
         public static float CompassLineHeight = 50;
