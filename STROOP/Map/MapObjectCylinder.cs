@@ -81,24 +81,21 @@ namespace STROOP.Map
             GL.LoadIdentity();
 
             // Draw triangle
-            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
             foreach (List<(float x, float z)> vertexList in vertexListsForControl)
             {
+                GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
                 GL.Begin(PrimitiveType.Polygon);
                 foreach ((float x, float z) in vertexList)
                 {
                     GL.Vertex2(x, z);
                 }
                 GL.End();
-            }
 
-            // Draw outline
-            if (LineWidth != 0)
-            {
-                GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
-                GL.LineWidth(LineWidth);
-                foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+                // Draw outline
+                if (LineWidth != 0)
                 {
+                    GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
+                    GL.LineWidth(LineWidth);
                     GL.Begin(PrimitiveType.LineLoop);
                     foreach ((float x, float z) in vertexList)
                     {
