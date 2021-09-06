@@ -160,6 +160,87 @@ namespace STROOP.Map
             return vertices;
         }
 
+        protected override List<(float x, float y, float z)> GetGridlineIntersectionPositionsOrthographicView()
+        {
+            if (Config.CurrentMapGraphics.MapViewPitchValue == 0)
+            {
+                float xMin = Config.CurrentMapGraphics.MapViewXMin;
+                float xMax = Config.CurrentMapGraphics.MapViewXMax;
+                float yMin = Config.CurrentMapGraphics.MapViewYMin;
+                float yMax = Config.CurrentMapGraphics.MapViewYMax;
+                float zMin = Config.CurrentMapGraphics.MapViewZMin;
+                float zMax = Config.CurrentMapGraphics.MapViewZMax;
+
+                List<float> yValues = new List<float>();
+                for (float y = yMin; y <= yMax; y = MoreMath.GetNextFloat(y))
+                {
+                    yValues.Add(y);
+                    if (yValues.Count > 4000) break;
+                }
+
+                List<float> xValues = new List<float>();
+                if (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
+                    Config.CurrentMapGraphics.MapViewYawValue == 32768)
+                {
+                    for (float x = xMin; x <= xMax; x = MoreMath.GetNextFloat(x))
+                    {
+                        xValues.Add(x);
+                        if (xValues.Count > 4000) break;
+                    }
+                }
+
+                List<float> zValues = new List<float>();
+                if (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+                    Config.CurrentMapGraphics.MapViewYawValue == 49152)
+                {
+                    for (float z = zMin; z <= zMax; z = MoreMath.GetNextFloat(z))
+                    {
+                        zValues.Add(z);
+                        if (zValues.Count > 4000) break;
+                    }
+                }
+
+                // failsafe to prevent filling the whole screen
+                if (xValues.Count > Config.MapGui.CurrentControl.Width ||
+                    yValues.Count > Config.MapGui.CurrentControl.Height ||
+                    zValues.Count > Config.MapGui.CurrentControl.Width)
+                {
+                    return new List<(float x, float y, float z)>();
+                }
+
+
+                if (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
+                    Config.CurrentMapGraphics.MapViewYawValue == 32768)
+                {
+                    List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                    foreach (float x in xValues)
+                    {
+                        foreach (float y in yValues)
+                        {
+                            vertices.Add((x, y, Config.CurrentMapGraphics.MapViewCenterZValue));
+                        }
+                    }
+                    return vertices;
+                }
+
+                if (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+                    Config.CurrentMapGraphics.MapViewYawValue == 49152)
+                {
+                    List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                    foreach (float z in zValues)
+                    {
+                        foreach (float y in yValues)
+                        {
+                            vertices.Add((Config.CurrentMapGraphics.MapViewCenterXValue, y, z));
+                        }
+                    }
+                    return vertices;
+                }
+            }
+
+            return new List<(float x, float y, float z)>();
+        }
+
         public override string GetName()
         {
             return "Float Gridlines";
