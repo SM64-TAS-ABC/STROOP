@@ -323,6 +323,15 @@ namespace STROOP.Map
                     float y2 = (vertexList[1].y + vertexList[2].y) / 2;
                     float z2 = (vertexList[1].z + vertexList[2].z) / 2;
 
+                    (float controlX1, float controlZ1) = MapUtilities.ConvertCoordsForControlOrthographicView(vertexList[0].x, vertexList[0].y, vertexList[0].z);
+                    (float controlX2, float controlZ2) = MapUtilities.ConvertCoordsForControlOrthographicView(vertexList[1].x, vertexList[1].y, vertexList[1].z);
+                    (float controlX3, float controlZ3) = MapUtilities.ConvertCoordsForControlOrthographicView(vertexList[2].x, vertexList[2].y, vertexList[2].z);
+
+                    double angle1 = MoreMath.AngleTo_AngleUnits(controlX1, controlZ1, controlX2, controlZ2);
+                    double angle2 = MoreMath.AngleTo_AngleUnits(controlX2, controlZ2, controlX2, controlZ2);
+                    double angleDiff = angle2 - angle1;
+                    double angleDiffSine = Math.Abs(Math.Sin(MoreMath.AngleUnitsToRadians(angleDiff)));
+
                     double totalDistance = MoreMath.GetDistanceBetween(x1, y1, z1, x2, y2, z2);
                     List<double> markDistances = new List<double>();
                     if (totalDistance < 100)
@@ -331,8 +340,11 @@ namespace STROOP.Map
                     }
                     else
                     {
-                        double firstDistance = 25;
-                        double lastDistance = totalDistance - 25;
+                        double firstDistance = 25 / angleDiffSine;
+                        double lastDistance = totalDistance - 25 / angleDiffSine;
+                        Config.SetDebugText(
+                            "angleDiff={0} angleDiffSine={1} totalDistance={2} firstDistance={3} lastDistance={4}",
+                            angleDiff, angleDiffSine, totalDistance, firstDistance, lastDistance);
                         double distanceDiff = lastDistance - firstDistance;
                         int numMarks = (int)Math.Truncate(distanceDiff / 50) + 1;
                         int numBetweens = numMarks - 1;
@@ -356,8 +368,8 @@ namespace STROOP.Map
                     switch (tri.Classification)
                     {
                         case TriangleClassification.Wall:
-                            double angleDiff = MoreMath.GetAngleDifference(Config.CurrentMapGraphics.MapViewYawValue, tri.GetPushAngle());
-                            arrowAngle = angleDiff > 0 ? 49152 : 16384;
+                            double wallAngleDiff = MoreMath.GetAngleDifference(Config.CurrentMapGraphics.MapViewYawValue, tri.GetPushAngle());
+                            arrowAngle = wallAngleDiff > 0 ? 49152 : 16384;
                             break;
                         case TriangleClassification.Floor:
                             arrowAngle = 32768;
