@@ -114,7 +114,12 @@ namespace STROOP.Map
                 (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                 PointF point = new PointF(controlX, controlZ);
                 SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _iconSize, Scales);
-                MapUtilities.DrawTexture(_customImageTex.Value, point, size, 0, 1);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(_customImageTex.Value, point, size, 0, opacity);
             }
         }
 
@@ -269,6 +274,21 @@ namespace STROOP.Map
             double dist = MoreMath.GetDistanceBetween(x, z, inGameX, inGameZ);
             double radius = Scales ? _iconSize : _iconSize / Config.CurrentMapGraphics.MapViewScaleValue;
             Config.SetDebugText("{0} {1} {2} {3}", x, z, inGameX, inGameZ);
+            if (dist <= radius)
+            {
+                return new MapObjectHoverData(this, x, y, z);
+            }
+            return null;
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            if (_customImage == null) return null;
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (double x, double y, double z) = PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
+            (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z);
+            double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+            double radius = Scales ? _iconSize * Config.CurrentMapGraphics.MapViewScaleValue : _iconSize;
             if (dist <= radius)
             {
                 return new MapObjectHoverData(this, x, y, z);
