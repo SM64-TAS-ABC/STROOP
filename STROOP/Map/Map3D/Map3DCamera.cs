@@ -13,8 +13,20 @@ namespace STROOP.Map.Map3D
     {
         public Vector3 Position { get; set; }
 
-        public float ZNear = 0.1f;
-        public float ZFar = 0x8000;
+        public float[] ZRegions = { 0.1f, 0x80, 0x8000 };
+
+        public int ZRegionCount => ZRegions.Length - 1;
+
+        private int _zRegionCurrentIndex = 0;
+        public int ZRegionCurrentIndex
+        {
+            get => _zRegionCurrentIndex;
+            set
+            {
+                _zRegionCurrentIndex = value;
+                UpdateProjection();
+            }
+        }
 
         private float _fov = (float)Math.PI / 4.0f;
         public float FOV
@@ -43,7 +55,9 @@ namespace STROOP.Map.Map3D
         {
             try
             {
-                _projection = Matrix4.CreatePerspectiveFieldOfView(FOV, Config.Map3DGraphics.AspectRatio, ZNear, ZFar);
+                float zFar = ZRegions[ZRegionCount - ZRegionCurrentIndex];
+                float zNear = ZRegions[ZRegionCount - 1 - ZRegionCurrentIndex];
+                _projection = Matrix4.CreatePerspectiveFieldOfView(FOV, Config.Map3DGraphics.AspectRatio, zNear, zFar);
             }
             catch (Exception)
             {

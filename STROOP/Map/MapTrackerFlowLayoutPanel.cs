@@ -194,10 +194,14 @@ namespace STROOP.Map
                 listCombined.Insert(0, _mapObjHitboxHackTris);
             }
 
-            List<MapObject> listDrawType = listCombined.FindAll(obj => obj.GetDrawType() == drawType);
-            foreach (MapObject obj in listDrawType)
+            for (int i = 0; i < Config.Map3DCamera.ZRegionCount; i++)
             {
-                obj.DrawOn3DControl();
+                Config.Map3DCamera.ZRegionCurrentIndex = i;
+                List<MapObject> listDrawType = listCombined.FindAll(obj => obj.GetDrawType() == drawType);
+                foreach (MapObject obj in listDrawType)
+                {
+                    obj.DrawOn3DControl();
+                }
             }
         }
 

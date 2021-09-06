@@ -103,7 +103,7 @@ namespace STROOP.Map.Map3D
             }
             
             // Note: 0x8000 needs to match the camera far plane
-            GL.Uniform1(Config.Map3DGraphics.GLUnifromInvfarplanecoef, 2.0f / (float)Math.Log(Config.Map3DCamera.ZFar + 1));
+            GL.Uniform1(Config.Map3DGraphics.GLUnifromInvfarplanecoef, 1);
 
             // Setup Background
             GL.Disable(EnableCap.DepthTest);

@@ -19,7 +19,7 @@ float logzbuf( vec4 xyzw, float invfarplanecoef ) {
 void main()
 {
     gl_Position = view * vec4(position, 1.0);  
-    gl_Position.z = logzbuf(gl_Position, invfarplanecoef);
+    // gl_Position.z = logzbuf(gl_Position, invfarplanecoef);
     Color = color;
     TexCoords = texCoords;
 } 
