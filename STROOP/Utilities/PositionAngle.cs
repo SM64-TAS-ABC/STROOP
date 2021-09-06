@@ -69,6 +69,8 @@ namespace STROOP.Utilities
             QFrame,
             GFrame,
             RolloutPeak,
+            PreviousPositions,
+            NextPositions,
             Schedule,
             Hybrid,
             Trunc,
@@ -228,6 +230,8 @@ namespace STROOP.Utilities
         public static PositionAngle MapCamera = new PositionAngle(PositionAngleTypeEnum.MapCamera);
         public static PositionAngle MapFocus = new PositionAngle(PositionAngleTypeEnum.MapFocus);
         public static PositionAngle RolloutPeak = new PositionAngle(PositionAngleTypeEnum.RolloutPeak);
+        public static PositionAngle PreviousPositions = new PositionAngle(PositionAngleTypeEnum.PreviousPositions);
+        public static PositionAngle NextPositions = new PositionAngle(PositionAngleTypeEnum.NextPositions);
         public static PositionAngle Scheduler = new PositionAngle(PositionAngleTypeEnum.Schedule);
         public static PositionAngle Self = new PositionAngle(PositionAngleTypeEnum.Self);
         public static PositionAngle Point = new PositionAngle(PositionAngleTypeEnum.Point);
@@ -450,6 +454,14 @@ namespace STROOP.Utilities
             else if (parts.Count == 1 && parts[0] == "rolloutpeak")
             {
                 return RolloutPeak;
+            }
+            else if (parts.Count == 1 && parts[0] == "previouspositions")
+            {
+                return PreviousPositions;
+            }
+            else if (parts.Count == 1 && parts[0] == "nextpositions")
+            {
+                return NextPositions;
             }
             else if (parts.Count >= 1 && parts[0] == "trunc")
             {
@@ -677,6 +689,10 @@ namespace STROOP.Utilities
                         return GetGFrameComponent(Frame.Value, Coordinate.X);
                     case PositionAngleTypeEnum.RolloutPeak:
                         return GetRolloutPeakComponent(CoordinateAngle.X);
+                    case PositionAngleTypeEnum.PreviousPositions:
+                        return GetPreviousPositionsComponent(Coordinate.X);
+                    case PositionAngleTypeEnum.NextPositions:
+                        return GetNextPositionsComponent(Coordinate.X);
                     case PositionAngleTypeEnum.Schedule:
                         uint scheduleIndex = GetScheduleIndex();
                         if (Schedule.ContainsKey(scheduleIndex)) return Schedule[scheduleIndex].Item1;
@@ -787,6 +803,10 @@ namespace STROOP.Utilities
                         return GetGFrameComponent(Frame.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.RolloutPeak:
                         return GetRolloutPeakComponent(CoordinateAngle.Y);
+                    case PositionAngleTypeEnum.PreviousPositions:
+                        return GetPreviousPositionsComponent(Coordinate.Y);
+                    case PositionAngleTypeEnum.NextPositions:
+                        return GetNextPositionsComponent(Coordinate.Y);
                     case PositionAngleTypeEnum.Schedule:
                         uint scheduleIndex = GetScheduleIndex();
                         if (Schedule.ContainsKey(scheduleIndex)) return Schedule[scheduleIndex].Item2;
@@ -897,6 +917,10 @@ namespace STROOP.Utilities
                         return GetGFrameComponent(Frame.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.RolloutPeak:
                         return GetRolloutPeakComponent(CoordinateAngle.Z);
+                    case PositionAngleTypeEnum.PreviousPositions:
+                        return GetPreviousPositionsComponent(Coordinate.Z);
+                    case PositionAngleTypeEnum.NextPositions:
+                        return GetNextPositionsComponent(Coordinate.Z);
                     case PositionAngleTypeEnum.Schedule:
                         uint scheduleIndex = GetScheduleIndex();
                         if (Schedule.ContainsKey(scheduleIndex)) return Schedule[scheduleIndex].Item3;
@@ -1000,6 +1024,10 @@ namespace STROOP.Utilities
                         return Double.NaN;
                     case PositionAngleTypeEnum.RolloutPeak:
                         return GetRolloutPeakComponent(CoordinateAngle.Angle);
+                    case PositionAngleTypeEnum.PreviousPositions:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.NextPositions:
+                        return Double.NaN;
                     case PositionAngleTypeEnum.Schedule:
                         uint scheduleIndex = GetScheduleIndex();
                         if (Schedule.ContainsKey(scheduleIndex)) return Schedule[scheduleIndex].Item4;
@@ -1242,6 +1270,16 @@ namespace STROOP.Utilities
             }
         }
 
+        private static double GetPreviousPositionsComponent(Coordinate coordinate)
+        {
+            return double.NaN;
+        }
+
+        private static double GetNextPositionsComponent(Coordinate coordinate)
+        {
+            return double.NaN;
+        }
+
 
 
 
@@ -1327,6 +1365,10 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.GFrame:
                     return false;
                 case PositionAngleTypeEnum.RolloutPeak:
+                    return false;
+                case PositionAngleTypeEnum.PreviousPositions:
+                    return false;
+                case PositionAngleTypeEnum.NextPositions:
                     return false;
                 case PositionAngleTypeEnum.Schedule:
                     return false;
@@ -1438,6 +1480,10 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.RolloutPeak:
                     return false;
+                case PositionAngleTypeEnum.PreviousPositions:
+                    return false;
+                case PositionAngleTypeEnum.NextPositions:
+                    return false;
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
@@ -1547,6 +1593,10 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.GFrame:
                     return false;
                 case PositionAngleTypeEnum.RolloutPeak:
+                    return false;
+                case PositionAngleTypeEnum.PreviousPositions:
+                    return false;
+                case PositionAngleTypeEnum.NextPositions:
                     return false;
                 case PositionAngleTypeEnum.Schedule:
                     return false;
@@ -1659,6 +1709,10 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.GFrame:
                     return false;
                 case PositionAngleTypeEnum.RolloutPeak:
+                    return false;
+                case PositionAngleTypeEnum.PreviousPositions:
+                    return false;
+                case PositionAngleTypeEnum.NextPositions:
                     return false;
                 case PositionAngleTypeEnum.Schedule:
                     return false;
