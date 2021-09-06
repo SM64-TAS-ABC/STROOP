@@ -119,7 +119,7 @@ namespace STROOP.Map
             return false;
         }
 
-        public void DrawOn2DControlOrthographicViewCrossSection(MapObjectHoverData hoverData)
+        private List<List<(float x, float y, float z, Color color, TriangleMapData data)>> GetOrthographicVertexLists()
         {
             List<TriangleMapData> triData = GetFilteredTriangles()
                 .ConvertAll(tri => MapUtilities.Get2DDataFromTri(tri))
@@ -285,6 +285,13 @@ namespace STROOP.Map
                         throw new ArgumentOutOfRangeException();
                 }
             }).SelectMany(list => list).ToList();
+
+            return vertexLists;
+        }
+
+        public void DrawOn2DControlOrthographicViewCrossSection(MapObjectHoverData hoverData)
+        {
+            List<List<(float x, float y, float z, Color color, TriangleMapData data)>> vertexLists = GetOrthographicVertexLists();
 
             List<List<(float x, float z, Color color)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
