@@ -78,7 +78,12 @@ namespace STROOP.Map
                 var simpleQuad = quad.ConvertAll(q => (q.x, q.y, q.z));
                 if (MapUtilities.IsWithinRectangularQuad(simpleQuad, inGameX, inGameZ))
                 {
-                    return new MapObjectHoverData(this, 0, 0, 0, index: i);
+                    double xMin = quad.Min(p => p.x);
+                    double xMax = quad.Max(p => p.x);
+                    double zMin = quad.Min(p => p.z);
+                    double zMax = quad.Max(p => p.z);
+                    string info = string.Format("{0}<x<{1} {2}<z<{3}", xMin, xMax, zMin, zMax);
+                    return new MapObjectHoverData(this, 0, 0, 0, index: i, info: info);
                 }
             }
             return null;
@@ -94,7 +99,12 @@ namespace STROOP.Map
                 var quadForControl = quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z));
                 if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y))
                 {
-                    return new MapObjectHoverData(this, 0, 0, 0, index: i);
+                    double xMin = quad.Min(p => p.x);
+                    double xMax = quad.Max(p => p.x);
+                    double zMin = quad.Min(p => p.z);
+                    double zMax = quad.Max(p => p.z);
+                    string info = string.Format("{0}<x<{1} {2}<z<{3}", xMin, xMax, zMin, zMax);
+                    return new MapObjectHoverData(this, 0, 0, 0, index: i, info: info);
                 }
             }
             return null;
@@ -106,7 +116,6 @@ namespace STROOP.Map
 
             var quadList = GetQuadList(null);
             var quad = quadList[hoverData.Index.Value];
-            if (quad.Count == 0) return output;
 
             double xMin = quad.Min(p => p.x);
             double xMax = quad.Max(p => p.x);
