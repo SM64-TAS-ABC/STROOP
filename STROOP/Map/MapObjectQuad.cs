@@ -71,21 +71,26 @@ namespace STROOP.Map
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             List<List<(float x, float y, float z, bool isHovered)>> quadList = GetQuadList(null);
-            List<List<(float x, float z)>> quadListForControl =
+            List<List<(float x, float z, bool isHovered)>> quadListForControl =
                 quadList.ConvertAll(quad => quad.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z)));
+                    vertex =>
+                    {
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z);
+                        return (x, z, vertex.isHovered);
+                    }));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
             // Draw quad
-            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
             GL.Begin(PrimitiveType.Quads);
-            foreach (List<(float x, float z)> quad in quadListForControl)
+            foreach (List<(float x, float z, bool isHovered)> quad in quadListForControl)
             {
-                foreach ((float x, float z) in quad)
+                foreach ((float x, float z, bool isHovered) in quad)
                 {
+                    byte opacityByte = isHovered ? MapUtilities.GetHoverOpacityByte() : OpacityByte;
+                    GL.Color4(Color.R, Color.G, Color.B, opacityByte);
                     GL.Vertex2(x, z);
                 }
             }
@@ -96,10 +101,10 @@ namespace STROOP.Map
             {
                 GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
                 GL.LineWidth(LineWidth);
-                foreach (List<(float x, float z)> quad in quadListForControl)
+                foreach (List<(float x, float z, bool isHovered)> quad in quadListForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z) in quad)
+                    foreach ((float x, float z, bool isHovered) in quad)
                     {
                         GL.Vertex2(x, z);
                     }
