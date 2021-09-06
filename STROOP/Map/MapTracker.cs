@@ -846,7 +846,8 @@ namespace STROOP.Map
             List<T> output = new List<T>();
             foreach (MapObject mapObj in _mapObjectList)
             {
-                if (mapObj is T t) output.Add(t);
+                object obj = mapObj;
+                if (obj is T t) output.Add(t);
             }
             return output;
         }
