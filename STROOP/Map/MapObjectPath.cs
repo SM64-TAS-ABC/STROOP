@@ -248,7 +248,12 @@ namespace STROOP.Map
                     (float x, float z) = imagePoints[i];
                     float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, imageSize, Scales);
-                    MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, 1);
+                    double opacity = Opacity;
+                    if (this == hoverData?.MapObject && i == hoverData?.Index)
+                    {
+                        opacity = MapUtilities.GetHoverOpacity();
+                    }
+                    MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, opacity);
                 }
             }
         }
@@ -711,6 +716,28 @@ namespace STROOP.Map
                 double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
                 float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
                 double radius = Scales ? imageSize : imageSize / Config.CurrentMapGraphics.MapViewScaleValue;
+                if (dist <= radius)
+                {
+                    return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
+                }
+            }
+            return null;
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            if (_customImage == null) return null;
+
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            List<(float x, float y, float z)> preData = GetDictionaryValues();
+            List<(float x, float y, float z)> data = _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(preData) : preData;
+            for (int i = data.Count - 1; i >= 0; i--)
+            {
+                var dataPoint = data[i];
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
+                double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+                float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
+                double radius = Scales ? imageSize * Config.CurrentMapGraphics.MapViewScaleValue : imageSize;
                 if (dist <= radius)
                 {
                     return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
