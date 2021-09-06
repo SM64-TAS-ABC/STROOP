@@ -70,6 +70,22 @@ namespace STROOP.Map
             return null;
         }
 
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            var quadList = GetQuadList(null);
+            for (int i = quadList.Count - 1; i >= 0; i--)
+            {
+                var quad = quadList[i];
+                var quadForControl = quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z));
+                if (MapUtilities.IsWithinParallelogramQuadControl(quadForControl, relPos.X, relPos.Y))
+                {
+                    return new MapObjectHoverData(this, 0, 0, 0, index: i);
+                }
+            }
+            return null;
+        }
+
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
