@@ -398,35 +398,12 @@ namespace STROOP.Map
                         {
                             var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z);
 
-                            (float x, float z) topLeftPoint = ((float, float))MoreMath.AddVectorToPoint(
-                                notRadiusLength - notLineThickness / 2, angleUpLeft, controlPoint.x, controlPoint.z);
-                            (float x, float z) bottomRightPoint = ((float, float))MoreMath.AddVectorToPoint(
-                                notRadiusLength - notLineThickness / 2, angleDownRight, controlPoint.x, controlPoint.z);
-
-                            (float x, float z) topLeftPointBottomleft = ((float, float))MoreMath.AddVectorToPoint(
-                                notLineThickness / 2, angleDownLeft, topLeftPoint.x, topLeftPoint.z);
-                            (float x, float z) topLeftPointTopRight = ((float, float))MoreMath.AddVectorToPoint(
-                                notLineThickness / 2, angleUpRight, topLeftPoint.x, topLeftPoint.z);
-                            (float x, float z) bottomRightPointBottomleft = ((float, float))MoreMath.AddVectorToPoint(
-                                notLineThickness / 2, angleDownLeft, bottomRightPoint.x, bottomRightPoint.z);
-                            (float x, float z) bottomRightPointTopRight = ((float, float))MoreMath.AddVectorToPoint(
-                                notLineThickness / 2, angleUpRight, bottomRightPoint.x, bottomRightPoint.z);
-
                             List<(float x, float z)> outerCirclePoints = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
                                 .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
                                 .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(notRadiusLength, angle, controlPoint.x, controlPoint.z));
                             List<(float x, float z)> innerCirclePoints = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
                                 .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
                                 .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(notRadiusLength - notLineThickness, angle, controlPoint.x, controlPoint.z));
-
-                            List<(float x, float z)> linePoints =
-                                new List<(float x, float z)>()
-                                {
-                                    topLeftPointBottomleft,
-                                    topLeftPointTopRight,
-                                    bottomRightPointTopRight,
-                                    bottomRightPointBottomleft,
-                                };
 
                             Color notColor = vertexList[0].color.Darken(0.5);
                             byte opacityByte = OpacityByte;
@@ -436,21 +413,34 @@ namespace STROOP.Map
                             }
                             GL.Color4(notColor.R, notColor.G, notColor.B, opacityByte);
 
-                            GL.Begin(PrimitiveType.Polygon);
-                            foreach (var xPoint in linePoints)
-                            {
-                                GL.Vertex2(xPoint.x, xPoint.z);
-                            }
-                            GL.End();
+                            double firstAngle = 0.125;
+                            double secondAngle = firstAngle + 0.5;
+                            double angleRadius = 0.1;
+
+                            int firstGapStart = (int)(outerCirclePoints.Count * (firstAngle - angleRadius));
+                            int firstGapEnd = (int)(outerCirclePoints.Count * (firstAngle + angleRadius));
+                            int secondGapStart = (int)(outerCirclePoints.Count * (secondAngle - angleRadius));
+                            int secondGapEnd = (int)(outerCirclePoints.Count * (secondAngle + angleRadius));
 
                             GL.Begin(PrimitiveType.QuadStrip);
                             for (int j = 0; j <= outerCirclePoints.Count; j++)
                             {
-                                var outerPoint = outerCirclePoints[j % outerCirclePoints.Count];
-                                var innerPoint = innerCirclePoints[j % outerCirclePoints.Count];
+                                int indexOuter = j;
+                                int indexInner = j;
+                                if (j > firstGapStart && j < firstGapEnd) indexInner = firstGapStart;
+                                if (j > secondGapStart && j < secondGapEnd) indexInner = secondGapStart;
+                                var outerPoint = outerCirclePoints[indexOuter % outerCirclePoints.Count];
+                                var innerPoint = innerCirclePoints[indexInner % outerCirclePoints.Count];
                                 GL.Vertex2(outerPoint.x, outerPoint.z);
                                 GL.Vertex2(innerPoint.x, innerPoint.z);
                             }
+                            GL.End();
+
+                            GL.Begin(PrimitiveType.Quads);
+                            GL.Vertex2(innerCirclePoints[firstGapStart].x, innerCirclePoints[firstGapStart].z);
+                            GL.Vertex2(innerCirclePoints[firstGapEnd].x, innerCirclePoints[firstGapEnd].z);
+                            GL.Vertex2(innerCirclePoints[secondGapStart].x, innerCirclePoints[secondGapStart].z);
+                            GL.Vertex2(innerCirclePoints[secondGapEnd].x, innerCirclePoints[secondGapEnd].z);
                             GL.End();
                         }
                     }
