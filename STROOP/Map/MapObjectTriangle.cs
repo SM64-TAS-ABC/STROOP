@@ -314,7 +314,9 @@ namespace STROOP.Map
                 foreach ((float x, float z, Color color, TriangleMapData data) in vertexList)
                 {
                     byte opacityByte = OpacityByte;
-                    if (this == hoverData?.MapObject && data.Tri.Address == hoverData?.Tri?.Address && hoverData?.Index == i)
+                    if (this == hoverData?.MapObject &&
+                        data.Tri.Address == hoverData?.Tri?.Address &&
+                        (!hoverData.Index.HasValue || hoverData.Index.Value == i))
                     {
                         opacityByte = MapUtilities.GetHoverOpacityByte();
                     }
@@ -662,12 +664,14 @@ namespace STROOP.Map
                         TriangleDataModel tri = tris[i][0].data.Tri;
                         double y = tri.GetMidpointY();
                         string info = null;
+                        int? index = null;
                         if (MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits())
                         {
                             y = tris[i].Max(p => p.y);
                             info = string.Format("y={0}", y);
+                            index = i;
                         }
-                        return new MapObjectHoverData(this, tri.GetMidpointX(), y, tri.GetMidpointZ(), tri: tri, index: i, info: info);
+                        return new MapObjectHoverData(this, tri.GetMidpointX(), y, tri.GetMidpointZ(), tri: tri, index: index, info: info);
                     }
                 }
                 return null;
