@@ -74,15 +74,20 @@ namespace STROOP.Map
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             List<(float x, float y, float z, float angle, int tex)> data = GetData();
-            data.Reverse();
-            foreach (var dataPoint in data)
+            for (int i = data.Count - 1; i >= 0; i--)
             {
+                var dataPoint = data[i];
                 (float x, float y, float z, float angle, int tex) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject && i == hoverData?.Index)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(tex, point, size, angleDegrees, opacity);
             }
         }
 
@@ -288,6 +293,24 @@ namespace STROOP.Map
                 var dataPoint = data[i];
                 double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
                 double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+                if (dist <= radius)
+                {
+                    return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
+                }
+            }
+            return null;
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            var data = GetData();
+            for (int i = 0; i < data.Count; i++)
+            {
+                var dataPoint = data[i];
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
+                double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+                double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
                 if (dist <= radius)
                 {
                     return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
