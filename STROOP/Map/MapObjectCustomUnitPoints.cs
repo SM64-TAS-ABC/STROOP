@@ -82,6 +82,25 @@ namespace STROOP.Map
             return null;
         }
 
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            for (int i = 0; i < _unitPoints.Count; i++)
+            {
+                var unitPoint = _unitPoints[i];
+                List<(int x, int z)> unitPointList = new List<(int x, int z)>() { _unitPoints[i] };
+                List<List<(float x, float y, float z)>> quadList =
+                    MapUtilities.ConvertUnitPointsToQuads(unitPointList);
+                List<List<(float x, float z)>> quadListForControl =
+                    quadList.ConvertAll(quad => quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z)));
+                if (quadListForControl.Any(quad => MapUtilities.IsWithinParallelogramQuadControl(quad, relPos.X, relPos.Y)))
+                {
+                    return new MapObjectHoverData(this, unitPoint.x, 0, unitPoint.z, index: i);
+                }
+            }
+            return null;
+        }
+
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
