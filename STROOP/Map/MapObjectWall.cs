@@ -82,7 +82,12 @@ namespace STROOP.Map
                 GL.LoadIdentity();
 
                 // Draw quad
-                GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+                byte opacityByte = OpacityByte;
+                if (this == hoverData?.MapObject && hoverData?.Tri == wallData.Tri)
+                {
+                    opacityByte = MapUtilities.GetHoverOpacityByte();
+                }
+                GL.Color4(Color.R, Color.G, Color.B, opacityByte);
                 GL.Begin(PrimitiveType.Quads);
                 foreach (List<(float x, float z)> quad in quadsForControl)
                 {
@@ -182,7 +187,7 @@ namespace STROOP.Map
 
                     // Draw arrow
                     Color arrowColor = Color.Darken(0.5);
-                    GL.Color4(arrowColor.R, arrowColor.G, arrowColor.B, OpacityByte);
+                    GL.Color4(arrowColor.R, arrowColor.G, arrowColor.B, opacityByte);
                     foreach (List<(float x, float z)> arrow in arrowsForControl)
                     {
                         GL.Begin(PrimitiveType.Polygon);
