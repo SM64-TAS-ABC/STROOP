@@ -660,7 +660,13 @@ namespace STROOP.Map
                     if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y))
                     {
                         TriangleDataModel tri = tris[i][0].data.Tri;
-                        return new MapObjectHoverData(this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri, index: i);
+                        string info = null;
+                        if (MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits())
+                        {
+                            float y = tris[i].Max(p => p.y);
+                            info = string.Format("y={0}", y);
+                        }
+                        return new MapObjectHoverData(this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri, index: i, info: info);
                     }
                 }
                 return null;
