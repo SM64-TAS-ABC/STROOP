@@ -64,7 +64,7 @@ namespace STROOP.Map
             return Config.ObjectAssociations.CustomPointsImage;
         }
 
-        public override MapObjectHoverData GetHoverData()
+        public override MapObjectHoverData GetHoverDataTopDownView()
         {
             Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);

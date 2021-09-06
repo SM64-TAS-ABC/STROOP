@@ -389,7 +389,7 @@ namespace STROOP.Map
             }
         }
 
-        public override MapObjectHoverData GetHoverData()
+        public override MapObjectHoverData GetHoverDataTopDownView()
         {
             Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
 

@@ -153,7 +153,6 @@ namespace STROOP.Map
             MapObjectHoverData hoverData = null;
             if (isMainGraphics &&
                 !Config.MapGui.checkBoxMapOptionsEnable3D.Checked &&
-                !Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked &&
                 Config.MapGui.checkBoxMapOptionsSelectionMode.Checked)
             {
                 for (int i = listCombined.Count - 1; i >= 0; i--)

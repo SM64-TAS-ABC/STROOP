@@ -473,7 +473,7 @@ namespace STROOP.Map
             return (x, y, z, tri);
         }
 
-        public override MapObjectHoverData GetHoverData()
+        public override MapObjectHoverData GetHoverDataTopDownView()
         {
             bool isShowingTriUnits = _showTriUnits && MapUtilities.IsAbleToShowUnitPrecision();
             Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());

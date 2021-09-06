@@ -696,7 +696,7 @@ namespace STROOP.Map
             return _posAngle;
         }
 
-        public override MapObjectHoverData GetHoverData()
+        public override MapObjectHoverData GetHoverDataTopDownView()
         {
             if (_customImage == null) return null;
 

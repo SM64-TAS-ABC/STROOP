@@ -205,7 +205,24 @@ namespace STROOP.Map
         {
         }
 
-        public virtual MapObjectHoverData GetHoverData()
+        public MapObjectHoverData GetHoverData()
+        {
+            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+            {
+                return GetHoverDataOrthographicView();
+            }
+            else
+            {
+                return GetHoverDataTopDownView();
+            }
+        }
+
+        public virtual MapObjectHoverData GetHoverDataTopDownView()
+        {
+            return null;
+        }
+
+        public virtual MapObjectHoverData GetHoverDataOrthographicView()
         {
             return null;
         }
