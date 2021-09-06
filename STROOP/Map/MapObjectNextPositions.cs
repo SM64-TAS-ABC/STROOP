@@ -331,5 +331,39 @@ namespace STROOP.Map
 
             return output;
         }
+
+        public (float x, float y, float z) GetMidpoint()
+        {
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+
+            List<float> xValues = new List<float>() { marioX };
+            List<float> yValues = new List<float>() { marioY };
+            List<float> zValues = new List<float>() { marioZ };
+
+            var allFrameData = GetData();
+            foreach (var data in allFrameData)
+            {
+                xValues.Add(data.x);
+                yValues.Add(data.y);
+                zValues.Add(data.z);
+            }
+
+            if (xValues.Count == 0) return (0, 0, 0);
+
+            float xMin = xValues.Min();
+            float xMax = xValues.Max();
+            float yMin = yValues.Min();
+            float yMax = yValues.Max();
+            float zMin = zValues.Min();
+            float zMax = zValues.Max();
+
+            float xMidpoint = (xMin + xMax) / 2;
+            float yMidpoint = (yMin + yMax) / 2;
+            float zMidpoint = (zMin + zMax) / 2;
+
+            return (xMidpoint, yMidpoint, zMidpoint);
+        }
     }
 }

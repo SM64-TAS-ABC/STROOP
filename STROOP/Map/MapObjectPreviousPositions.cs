@@ -647,5 +647,38 @@ namespace STROOP.Map
                 new XAttribute("points", string.Join("|", pointList)),
             };
         }
+
+        public (float x, float y, float z) GetMidpoint()
+        {
+            List<float> xValues = new List<float>();
+            List<float> yValues = new List<float>();
+            List<float> zValues = new List<float>();
+
+            var allFrameData = GetAllFrameData();
+            foreach (var singleFrameData in allFrameData)
+            {
+                foreach (var data in singleFrameData)
+                {
+                    xValues.Add(data.x);
+                    yValues.Add(data.y);
+                    zValues.Add(data.z);
+                }
+            }
+
+            if (xValues.Count == 0) return (0, 0, 0);
+
+            float xMin = xValues.Min();
+            float xMax = xValues.Max();
+            float yMin = yValues.Min();
+            float yMax = yValues.Max();
+            float zMin = zValues.Min();
+            float zMax = zValues.Max();
+
+            float xMidpoint = (xMin + xMax) / 2;
+            float yMidpoint = (yMin + yMax) / 2;
+            float zMidpoint = (zMin + zMax) / 2;
+
+            return (xMidpoint, yMidpoint, zMidpoint);
+        }
     }
 }

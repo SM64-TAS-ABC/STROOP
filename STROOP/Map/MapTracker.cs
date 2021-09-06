@@ -841,12 +841,12 @@ namespace STROOP.Map
             return _mapObjectList.Contains(mapObject);
         }
 
-        public List<MapObjectPath> GetMapPathObjects()
+        public List<T> GetMapPathObjectsOfType<T>()
         {
-            List<MapObjectPath> output = new List<MapObjectPath>();
+            List<T> output = new List<T>();
             foreach (MapObject mapObj in _mapObjectList)
             {
-                if (mapObj is MapObjectPath mapPathObj) output.Add(mapPathObj);
+                if (mapObj is T t) output.Add(t);
             }
             return output;
         }

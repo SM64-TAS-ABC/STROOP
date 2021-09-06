@@ -1,4 +1,5 @@
-﻿using STROOP.Models;
+﻿using STROOP.Map;
+using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System;
@@ -1272,12 +1273,48 @@ namespace STROOP.Utilities
 
         private static double GetPreviousPositionsComponent(Coordinate coordinate)
         {
-            return double.NaN;
+            List<MapObjectPreviousPositions> prevPositionsObjs = new List<MapObjectPreviousPositions>();
+            foreach (MapTracker mapTracker in Config.MapGui.flowLayoutPanelMapTrackers.Controls)
+            {
+                prevPositionsObjs.AddRange(mapTracker.GetMapPathObjectsOfType<MapObjectPreviousPositions>());
+            }
+            if (prevPositionsObjs.Count == 0) return double.NaN;
+            MapObjectPreviousPositions prevPositions = prevPositionsObjs[0];
+            (float x, float y, float z) = prevPositions.GetMidpoint();
+            switch (coordinate)
+            {
+                case Coordinate.X:
+                    return x;
+                case Coordinate.Y:
+                    return y;
+                case Coordinate.Z:
+                    return z;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private static double GetNextPositionsComponent(Coordinate coordinate)
         {
-            return double.NaN;
+            List<MapObjectNextPositions> nextPositionsObjs = new List<MapObjectNextPositions>();
+            foreach (MapTracker mapTracker in Config.MapGui.flowLayoutPanelMapTrackers.Controls)
+            {
+                nextPositionsObjs.AddRange(mapTracker.GetMapPathObjectsOfType<MapObjectNextPositions>());
+            }
+            if (nextPositionsObjs.Count == 0) return double.NaN;
+            MapObjectNextPositions nextPositions = nextPositionsObjs[0];
+            (float x, float y, float z) = nextPositions.GetMidpoint();
+            switch (coordinate)
+            {
+                case Coordinate.X:
+                    return x;
+                case Coordinate.Y:
+                    return y;
+                case Coordinate.Z:
+                    return z;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
 
