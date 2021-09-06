@@ -108,9 +108,10 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            foreach (var data in GetAllFrameData())
+            var data = GetAllFrameData();
+            for (int i = 0; i < data.Count; i++)
             {
-                DrawOn2DControlOrthographicView(data);
+                DrawOn2DControlOrthographicView(data[i], i, hoverData);
             }
         }
 
@@ -166,17 +167,26 @@ namespace STROOP.Map
             }
         }
 
-        public void DrawOn2DControlOrthographicView(List<(float x, float y, float z, float angle, int tex, bool show)> data)
+        public void DrawOn2DControlOrthographicView(
+            List<(float x, float y, float z, float angle, int tex, bool show)> data,
+            int index,
+            MapObjectHoverData hoverData)
         {
-            foreach (var dataPoint in data)
+            for (int j = 0; j < data.Count; j++)
             {
+                var dataPoint = data[j];
                 (float x, float y, float z, float angle, int tex, bool show) = dataPoint;
                 if (!show) continue;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject && index == hoverData?.Index && j == hoverData?.Index2)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(tex, point, size, angleDegrees, opacity);
             }
 
             if (LineWidth != 0)
@@ -566,6 +576,28 @@ namespace STROOP.Map
                     var dataPoint = singleFrameData[j];
                     double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
                     double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+                    if (dist <= radius)
+                    {
+                        return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i, index2: j);
+                    }
+                }
+            }
+            return null;
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            var allFrameData = GetAllFrameData();
+            for (int i = allFrameData.Count - 1; i >= 0; i--)
+            {
+                var singleFrameData = allFrameData[i];
+                for (int j = singleFrameData.Count - 1; j >= 0; j--)
+                {
+                    var dataPoint = singleFrameData[j];
+                    (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
+                    double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+                    double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
                     if (dist <= radius)
                     {
                         return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i, index2: j);
