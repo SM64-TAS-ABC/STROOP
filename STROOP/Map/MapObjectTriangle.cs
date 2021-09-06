@@ -412,6 +412,13 @@ namespace STROOP.Map
                             (float x, float z) bottomRightPointTopRight = ((float, float))MoreMath.AddVectorToPoint(
                                 notLineThickness / 2, angleUpRight, bottomRightPoint.x, bottomRightPoint.z);
 
+                            List<(float x, float z)> outerCirclePoints = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
+                                .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
+                                .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(notRadiusLength, angle, controlPoint.x, controlPoint.z));
+                            List<(float x, float z)> innerCirclePoints = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
+                                .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
+                                .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(notRadiusLength - notLineThickness, angle, controlPoint.x, controlPoint.z));
+
                             List<(float x, float z)> linePoints =
                                 new List<(float x, float z)>()
                                 {
@@ -422,16 +429,28 @@ namespace STROOP.Map
                                 };
 
                             Color notColor = vertexList[0].color.Darken(0.5);
+                            byte opacityByte = OpacityByte;
+                            if (this == hoverData?.MapObject && vertexList[0].data.Tri.Address == hoverData?.Tri?.Address && hoverData?.Index == i)
+                            {
+                                opacityByte = MapUtilities.GetHoverOpacityByte();
+                            }
+                            GL.Color4(notColor.R, notColor.G, notColor.B, opacityByte);
+
                             GL.Begin(PrimitiveType.Polygon);
                             foreach (var xPoint in linePoints)
                             {
-                                byte opacityByte = OpacityByte;
-                                if (this == hoverData?.MapObject && vertexList[0].data.Tri.Address == hoverData?.Tri?.Address && hoverData?.Index == i)
-                                {
-                                    opacityByte = MapUtilities.GetHoverOpacityByte();
-                                }
-                                GL.Color4(notColor.R, notColor.G, notColor.B, opacityByte);
                                 GL.Vertex2(xPoint.x, xPoint.z);
+                            }
+                            GL.End();
+
+                            GL.Begin(PrimitiveType.Polygon);
+                            foreach (var p in outerCirclePoints)
+                            {
+                                GL.Vertex2(p.x, p.z);
+                            }
+                            foreach (var p in innerCirclePoints)
+                            {
+                                GL.Vertex2(p.x, p.z);
                             }
                             GL.End();
                         }
