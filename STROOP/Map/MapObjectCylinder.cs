@@ -81,12 +81,19 @@ namespace STROOP.Map
             GL.LoadIdentity();
 
             // Draw triangle
-            foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+            for (int i = 0; i < vertexListsForControl.Count; i++)
             {
-                GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+                List<(float x, float z)> vertexList = vertexListsForControl[i];
+
                 GL.Begin(PrimitiveType.Polygon);
                 foreach ((float x, float z) in vertexList)
                 {
+                    byte opacityByte = OpacityByte;
+                    if (this == hoverData?.MapObject && i == hoverData?.Index)
+                    {
+                        opacityByte = MapUtilities.GetHoverOpacityByte();
+                    }
+                    GL.Color4(Color.R, Color.G, Color.B, opacityByte);
                     GL.Vertex2(x, z);
                 }
                 GL.End();
