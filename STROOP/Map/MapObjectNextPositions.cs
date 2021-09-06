@@ -71,7 +71,7 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             List<(float x, float y, float z, float angle, int tex)> data = GetData();
             data.Reverse();

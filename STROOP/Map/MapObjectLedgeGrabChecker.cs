@@ -41,7 +41,7 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             foreach (bool b in new List<bool>() { false, true })
             {

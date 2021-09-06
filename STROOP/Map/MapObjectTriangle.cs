@@ -87,15 +87,15 @@ namespace STROOP.Map
             return (vertex.x + xOffset, vertex.y + yOffset, vertex.z + zOffset);
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             if (_useCrossSection)
             {
-                DrawOn2DControlOrthographicViewCrossSection();
+                DrawOn2DControlOrthographicViewCrossSection(hoverData);
             }
             else
             {
-                DrawOn2DControlOrthographicViewTotal();
+                DrawOn2DControlOrthographicViewTotal(hoverData);
             }
         }
 
@@ -119,7 +119,7 @@ namespace STROOP.Map
             return false;
         }
 
-        public void DrawOn2DControlOrthographicViewCrossSection()
+        public void DrawOn2DControlOrthographicViewCrossSection(MapObjectHoverData hoverData)
         {
             List<TriangleMapData> triData = GetFilteredTriangles()
                 .ConvertAll(tri => MapUtilities.Get2DDataFromTri(tri))
@@ -452,7 +452,7 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        public void DrawOn2DControlOrthographicViewTotal()
+        public void DrawOn2DControlOrthographicViewTotal(MapObjectHoverData hoverData)
         {
             List<List<(float x, float y, float z, Color color)>> vertexLists =
                 GetFilteredTriangles().ConvertAll(tri =>

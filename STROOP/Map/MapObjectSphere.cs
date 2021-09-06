@@ -38,7 +38,7 @@ namespace STROOP.Map
 
         protected abstract List<(float centerX, float centerY, float centerZ, float radius3D)> Get3DDimensions();
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             List<(float centerX, float centerZ, float radius)> dimensionList = Get3DDimensions().ConvertAll(dimension =>
             {

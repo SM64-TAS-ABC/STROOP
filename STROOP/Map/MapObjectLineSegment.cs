@@ -104,9 +104,9 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            base.DrawOn2DControlOrthographicView();
+            base.DrawOn2DControlOrthographicView(hoverData);
 
             if (_customImage != null)
             {

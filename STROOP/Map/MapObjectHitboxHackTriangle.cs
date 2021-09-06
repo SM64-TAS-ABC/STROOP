@@ -74,7 +74,7 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             if (_isDefaultInstance)
             {
@@ -83,7 +83,7 @@ namespace STROOP.Map
                 _useCrossSection = Config.MapGui.checkBoxMapOptionsEnableCrossSection.Checked;
             }
 
-            base.DrawOn2DControlOrthographicView();
+            base.DrawOn2DControlOrthographicView(hoverData);
         }
 
         public override void DrawOn3DControl()
