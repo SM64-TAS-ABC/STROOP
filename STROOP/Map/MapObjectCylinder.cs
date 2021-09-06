@@ -28,6 +28,11 @@ namespace STROOP.Map
 
         protected abstract List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions();
 
+        protected override List<(float x, float y, float z)> GetPoints()
+        {
+            return Get3DDimensions().ConvertAll(d => (d.centerX, d.minY, d.centerZ));
+        }
+
         private List<List<(float x, float z)>> GetOrthographicDimensionsForControl()
         {
             List<List<(float x, float y, float z)>> vertexLists = Get3DDimensions().ConvertAll(dimension =>

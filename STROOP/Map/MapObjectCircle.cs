@@ -100,6 +100,8 @@ namespace STROOP.Map
 
         protected abstract List<(float centerX, float centerZ, float radius)> Get2DDimensions();
 
+        protected abstract List<(float x, float y, float z)> GetPoints();
+
         public override MapDrawType GetDrawType()
         {
             return MapDrawType.Perspective;
@@ -188,9 +190,9 @@ namespace STROOP.Map
             }
             else
             {
-                List<(float centerX, float centerZ, float radius)> dimensionList = Get2DDimensions();
-                var dimension = dimensionList[hoverData.Index.Value];
-                List<double> posValues = new List<double>() { dimension.centerX, dimension.centerZ };
+                var points = GetPoints();
+                var point = points[hoverData.Index.Value];
+                List<double> posValues = new List<double>() { point.x, point.y, point.z };
                 ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
                 output.Insert(0, copyPositionItem);
             }
