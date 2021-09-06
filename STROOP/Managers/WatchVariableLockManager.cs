@@ -1,4 +1,5 @@
 ﻿using STROOP.Controls;
+using STROOP.Forms;
 using STROOP.Managers;
 using STROOP.Structs.Configurations;
 using System;
@@ -11,11 +12,50 @@ using System.Windows.Forms;
 
 namespace STROOP.Structs
 {
-    public static class WatchVariableLockManager
+    public class WatchVariableLockManager
     {
-        private static List<WatchVariableLock> _lockList = new List<WatchVariableLock>();
+        private static readonly Image LockBlackClosed = Properties.Resources.lock_black;
+        private static readonly Image LockBlackOpen = Properties.Resources.lock_black_open;
+        private static readonly Image LockBlueClosed = Properties.Resources.lock_blue;
+        private static readonly Image LockBlueOpen = Properties.Resources.lock_blue_open;
+        private static readonly Image LockRedClosed = Properties.Resources.lock_red;
+        private static readonly Image LockRedOpen = Properties.Resources.lock_red_open;
 
-        public static void AddLocks(WatchVariable variable, List<uint> addresses = null)
+        private readonly PictureBox _pictureBoxLock;
+        private readonly List<WatchVariableLock> _lockList;
+
+        private readonly ToolStripMenuItem _itemRemoveAllLocks;
+        private readonly ToolStripMenuItem _itemDisableLocking;
+        private readonly ToolStripMenuItem _itemSeeLockInfo;
+
+        public WatchVariableLockManager(PictureBox pictureBoxLock)
+        {
+            _lockList = new List<WatchVariableLock>();
+
+            _pictureBoxLock = pictureBoxLock;
+            _pictureBoxLock.ContextMenuStrip = new ContextMenuStrip();
+            _pictureBoxLock.Click += (sender, e) => _pictureBoxLock.ContextMenuStrip.Show(Cursor.Position);
+
+            _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
+            _itemRemoveAllLocks.Click += (sender, e) => Config.LockManager.RemoveAllLocks();
+            _pictureBoxLock.ContextMenuStrip.Items.Add(_itemRemoveAllLocks);
+
+            _itemDisableLocking = new ToolStripMenuItem("Disable Locking");
+            _itemDisableLocking.Click += (sender, e) => LockConfig.LockingDisabled = !LockConfig.LockingDisabled;
+            _pictureBoxLock.ContextMenuStrip.Items.Add(_itemDisableLocking);
+
+            _itemSeeLockInfo = new ToolStripMenuItem("See Lock Info");
+            _itemSeeLockInfo.Click += (sender, e) => SeeLockInfo();
+            _pictureBoxLock.ContextMenuStrip.Items.Add(_itemSeeLockInfo);
+        }
+
+        // for tests
+        public WatchVariableLockManager()
+        {
+            _lockList = new List<WatchVariableLock>();
+        }
+
+        public void AddLocks(WatchVariable variable, List<uint> addresses = null)
         {
             List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
             foreach (WatchVariableLock newLock in newLocks)
@@ -24,7 +64,7 @@ namespace STROOP.Structs
             }
         }
 
-        public static void RemoveLocks(WatchVariable variable, List<uint> addresses = null)
+        public void RemoveLocks(WatchVariable variable, List<uint> addresses = null)
         {
             List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
             foreach (WatchVariableLock newLock in newLocks)
@@ -33,12 +73,12 @@ namespace STROOP.Structs
             }
         }
 
-        public static bool ContainsLocksBool(WatchVariable variable, List<uint> addresses = null)
+        public bool ContainsLocksBool(WatchVariable variable, List<uint> addresses = null)
         {
             return ContainsLocksCheckState(variable, addresses) != CheckState.Unchecked;
         }
 
-        public static CheckState ContainsLocksCheckState(
+        public CheckState ContainsLocksCheckState(
             WatchVariable variable, List<uint> addresses = null)
         {
             if (!ContainsAnyLocks()) return CheckState.Unchecked;
@@ -56,7 +96,7 @@ namespace STROOP.Structs
             return firstCheckState;
         }
 
-        public static List<object> GetExistingLockValues(
+        public List<object> GetExistingLockValues(
             WatchVariable variable, List<uint> addresses = null)
         {
             if (LockConfig.LockingDisabled) return null;
@@ -72,7 +112,7 @@ namespace STROOP.Structs
             return returnValues;
         }
 
-        public static void UpdateLockValues(
+        public void UpdateLockValues(
             WatchVariable variable, object newValue, List<uint> addresses = null)
         {
             if (LockConfig.LockingDisabled) return;
@@ -90,7 +130,7 @@ namespace STROOP.Structs
             }
         }
 
-        public static void UpdateLockValues(
+        public void UpdateLockValues(
             WatchVariable variable, List<object> newValues, List<uint> addresses = null)
         {
             if (LockConfig.LockingDisabled) return;
@@ -110,7 +150,7 @@ namespace STROOP.Structs
             }
         }
 
-        public static object GetMemoryLockValue(
+        public object GetMemoryLockValue(
             uint address, Type type, uint? mask, int? shift)
         {
             if (LockConfig.LockingDisabled) return null;
@@ -125,7 +165,7 @@ namespace STROOP.Structs
             return null;
         }
 
-        public static void UpdateMemoryLockValue(
+        public void UpdateMemoryLockValue(
             object newValue, uint address, Type type, uint? mask, int? shift)
         {
             if (LockConfig.LockingDisabled) return;
@@ -139,23 +179,61 @@ namespace STROOP.Structs
             }
         }
 
-        public static void RemoveAllLocks()
+        public void RemoveAllLocks()
         {
             _lockList.Clear();
         }
 
-        public static bool ContainsAnyLocks()
+        public bool ContainsAnyLocks()
         {
             return _lockList.Count > 0;
         }
 
-        public static bool ContainsAnyLocksForObject(uint objAddress)
+        public bool ContainsAnyLocksForObject(uint objAddress)
         {
             return _lockList.Any(lok => lok.BaseAddress == objAddress);
         }
 
-        public static void Update()
+        private Image GetImageForLock()
         {
+            if (_lockList.Count > 0)
+            {
+                if (Config.Stream.Readonly) return LockRedClosed;
+                if (LockConfig.LockingDisabled) return LockBlueClosed;
+                return LockBlackClosed;
+            }
+            else
+            {
+                if (Config.Stream.Readonly) return LockRedOpen;
+                if (LockConfig.LockingDisabled) return LockBlueOpen;
+                return LockBlackOpen;
+            }
+        }
+
+        private void SeeLockInfo()
+        {
+            List<string> lines = new List<string>();
+            lines.Add(WatchVariableLock.GetHeaderLine());
+            foreach (WatchVariableLock lok in _lockList)
+            {
+                lines.Add(lok.ToString());
+            }
+            InfoForm.ShowValue(string.Join("\r\n", lines), "Lock Info", "Lock Info");
+        }
+
+        public void Update()
+        {
+            _itemRemoveAllLocks.Text = string.Format(
+                "Remove {0} Lock{1}",
+                _lockList.Count,
+                _lockList.Count == 1 ? "" : "s");
+            _itemDisableLocking.Checked = LockConfig.LockingDisabled;
+            Image lockImage = GetImageForLock();
+            if (_pictureBoxLock.BackgroundImage != lockImage)
+            {
+                _pictureBoxLock.BackgroundImage = lockImage;
+            }
+
             if (LockConfig.LockingDisabled) return;
             bool shouldSuspend = _lockList.Count >= 2;
             if (shouldSuspend) Config.Stream.Suspend();

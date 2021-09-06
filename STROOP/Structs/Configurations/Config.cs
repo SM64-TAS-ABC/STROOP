@@ -50,7 +50,6 @@ namespace STROOP.Structs.Configurations
         public static ObjectSlotsManager ObjectSlotsManager;
         public static OptionsManager OptionsManager;
         public static TestingManager TestingManager;
-        public static InjectionManager InjectionManager;
         public static TriangleManager TriangleManager;
         public static WaterManager WaterManager;
         public static SnowManager SnowManager;
@@ -76,6 +75,7 @@ namespace STROOP.Structs.Configurations
         public static WarpManager WarpManager;
         public static SoundManager SoundManager;
         public static M64Manager M64Manager;
+        public static WatchVariableLockManager LockManager;
 
         public static List<IVariableAdder> GetVariableAdders()
         {
@@ -115,6 +115,11 @@ namespace STROOP.Structs.Configurations
             string formatted = string.Format(format.ToString(), args);
             DebugText.Visible = true;
             DebugText.Text = formatted;
+        }
+
+        public static void HideDebugText()
+        {
+            DebugText.Visible = false;
         }
     }
 }

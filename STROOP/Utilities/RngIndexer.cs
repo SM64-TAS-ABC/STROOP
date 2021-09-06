@@ -72,6 +72,11 @@ namespace STROOP.Utilities
             return RNGToIndexDictionary[rngValue];
         }
 
+        public static ushort GetRngValue()
+        {
+            return Config.Stream.GetUShort(MiscConfig.RngAddress);
+        }
+
         public static ushort GetRngValue(int index)
         {
             index = MoreMath.NonNegativeModulus(index, RNG_COUNT);

@@ -37,7 +37,7 @@ namespace STROOP.Map
             Color = Color.White;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<CompassArrow> arrows = Enumerable.Range(0, 4).ToList().ConvertAll(index => new CompassArrow(16384 * index));
 
@@ -163,7 +163,7 @@ namespace STROOP.Map
                 x, z, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ, -1 * Config.CurrentMapGraphics.MapViewYawValue);
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             // do nothing
         }
@@ -282,6 +282,7 @@ namespace STROOP.Map
                     foreach ((string specialType, string varName, WatchVariableSubclass subclass) in varData)
                     {
                         WatchVariable watchVar = new WatchVariable(
+                            name: varName,
                             memoryTypeName: null,
                             specialType: specialType,
                             baseAddressType: BaseAddressTypeEnum.None,

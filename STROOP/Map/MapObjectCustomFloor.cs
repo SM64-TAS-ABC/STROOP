@@ -28,22 +28,9 @@ namespace STROOP.Map
 
         public static MapObjectCustomFloor Create(string text)
         {
-            if (text == null) return null;
-            if (text == "")
-            {
-                uint floorTriangle = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-                if (floorTriangle == 0) return null;
-                List<uint> floorTriangles = new List<uint>() { floorTriangle };
-                return new MapObjectCustomFloor(floorTriangles);
-            }
-            List<uint?> nullableUIntList = ParsingUtilities.ParseStringList(text)
-                .ConvertAll(word => ParsingUtilities.ParseHexNullable(word));
-            if (nullableUIntList.Any(nullableUInt => !nullableUInt.HasValue))
-            {
-                return null;
-            }
-            List<uint> uintList = nullableUIntList.ConvertAll(nullableUInt => nullableUInt.Value);
-            return new MapObjectCustomFloor(uintList);
+            List<uint> triAddressList = MapUtilities.ParseCustomTris(text, TriangleClassification.Floor);
+            if (triAddressList == null) return null;
+            return new MapObjectCustomFloor(triAddressList);
         }
 
         protected override List<TriangleDataModel> GetUnfilteredTriangles()
@@ -65,7 +52,18 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
+                ToolStripMenuItem addMoreTrisItem = new ToolStripMenuItem("Add More Tris");
+                addMoreTrisItem.Click += (sender, e) =>
+                {
+                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter triangle addresses as hex uints.");
+                    List<uint> triAddressList = MapUtilities.ParseCustomTris(text, TriangleClassification.Floor);
+                    if (triAddressList == null) return;
+                    _triAddressList.AddRange(triAddressList);
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(addMoreTrisItem);
+                _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetFloorToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetHorizontalTriangleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));

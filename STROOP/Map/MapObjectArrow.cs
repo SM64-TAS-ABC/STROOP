@@ -20,7 +20,7 @@ namespace STROOP.Map
         private float _arrowHeadSideLength;
         private float _angleOffset;
 
-        private ToolStripMenuItem _itemUseSpeedForArrowLength;
+        private ToolStripMenuItem _itemUseRecommendedArrowLength;
         private ToolStripMenuItem _itemUseTruncatedAngle;
         private ToolStripMenuItem _itemSetArrowHeadSideLength;
         private ToolStripMenuItem _itemSetAngleOffset;
@@ -89,15 +89,15 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                _itemUseSpeedForArrowLength = new ToolStripMenuItem("Use Recommended Arrow Size");
-                _itemUseSpeedForArrowLength.Click += (sender, e) =>
+                _itemUseRecommendedArrowLength = new ToolStripMenuItem("Use Recommended Arrow Size");
+                _itemUseRecommendedArrowLength.Click += (sender, e) =>
                 {
                     MapObjectSettings settings = new MapObjectSettings(
                         changeArrowUseRecommendedLength: true,
                         newArrowUseRecommendedLength: !_useRecommendedArrowLength);
                     GetParentMapTracker().ApplySettings(settings);
                 };
-                _itemUseSpeedForArrowLength.Checked = _useRecommendedArrowLength;
+                _itemUseRecommendedArrowLength.Checked = _useRecommendedArrowLength;
 
                 _itemUseTruncatedAngle = new ToolStripMenuItem("Use Truncated Angle");
                 _itemUseTruncatedAngle.Click += (sender, e) =>
@@ -134,7 +134,7 @@ namespace STROOP.Map
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(_itemUseSpeedForArrowLength);
+                _contextMenuStrip.Items.Add(_itemUseRecommendedArrowLength);
                 _contextMenuStrip.Items.Add(_itemUseTruncatedAngle);
                 _contextMenuStrip.Items.Add(_itemSetArrowHeadSideLength);
                 _contextMenuStrip.Items.Add(_itemSetAngleOffset);
@@ -150,7 +150,7 @@ namespace STROOP.Map
             if (settings.ChangeArrowUseRecommendedLength)
             {
                 _useRecommendedArrowLength = settings.NewArrowUseRecommendedLength;
-                _itemUseSpeedForArrowLength.Checked = _useRecommendedArrowLength;
+                _itemUseRecommendedArrowLength.Checked = _useRecommendedArrowLength;
             }
 
             if (settings.ChangeArrowUseTruncatedAngle)

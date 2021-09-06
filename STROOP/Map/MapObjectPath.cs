@@ -17,6 +17,8 @@ namespace STROOP.Map
 {
     public class MapObjectPath : MapObject
     {
+        private static readonly float QSTEP_RATIO = 0.5f;
+
         private readonly PositionAngle _posAngle;
         private readonly Dictionary<uint, (float x, float y, float z)> _dictionary;
         private (byte level, byte area, ushort loadingPoint, ushort missionLayout) _currentLocationStats;
@@ -25,16 +27,20 @@ namespace STROOP.Map
         private List<uint> _skippedKeys;
         private bool _useBlending;
         private bool _isPaused;
+        private bool _truncatePoints;
         private bool _useValueAtStartOfGlobalTimer;
         private uint _highestGlobalTimerValue;
         private int _modulo;
+        private bool _showQuarterSteps;
         private float _imageSize;
 
         private ToolStripMenuItem _itemResetPathOnLevelChange;
         private ToolStripMenuItem _itemUseBlending;
         private ToolStripMenuItem _itemPause;
+        private ToolStripMenuItem _itemTruncatePoints;
         private ToolStripMenuItem _itemUseValueAtStartOfGlobalTimer;
         private ToolStripMenuItem _itemSetModulo;
+        private ToolStripMenuItem _itemShowQuarterSteps;
         private ToolStripMenuItem _itemSetIconSize;
 
         private static readonly string SET_MODULO_TEXT = "Set Modulo";
@@ -51,6 +57,7 @@ namespace STROOP.Map
             _skippedKeys = new List<uint>();
             _useBlending = true;
             _isPaused = false;
+            _truncatePoints = false;
             _useValueAtStartOfGlobalTimer = true;
             _highestGlobalTimerValue = 0;
             _modulo = 1;
@@ -88,7 +95,8 @@ namespace STROOP.Map
         {
             return _dictionary.Keys.ToList()
                 .FindAll(key => key % _modulo == 0)
-                .ConvertAll(key => _dictionary[key]);
+                .ConvertAll(key => _dictionary[key])
+                .ConvertAll(v => _truncatePoints ? ((int)v.x, (int)v.y, (int)v.z) : v);
         }
 
         public List<MapObjectPathSegment> GetSegments()
@@ -134,7 +142,7 @@ namespace STROOP.Map
             return segments;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<(float x, float z)> verticesForControl =
@@ -175,15 +183,24 @@ namespace STROOP.Map
 
             if (_customImage != null)
             {
-                foreach ((float x, float z) in verticesForControl)
+                List<(float x, float z)> imagePoints =
+                    _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(verticesForControl) : verticesForControl;
+                for (int i = 0; i < imagePoints.Count; i++)
                 {
-                    SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
-                    MapUtilities.DrawTexture(_customImageTex, new PointF(x, z), size, 0, 1);
+                    (float x, float z) = imagePoints[i];
+                    float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
+                    SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, imageSize, Scales);
+                    double opacity = Opacity;
+                    if (this == hoverData?.MapObject && i == hoverData?.Index)
+                    {
+                        opacity = MapUtilities.GetHoverOpacity();
+                    }
+                    MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, opacity);
                 }
             }
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<(float x, float z)> verticesForControl =
@@ -224,10 +241,19 @@ namespace STROOP.Map
 
             if (_customImage != null)
             {
-                foreach ((float x, float z) in verticesForControl)
+                List<(float x, float z)> imagePoints =
+                    _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(verticesForControl) : verticesForControl;
+                for (int i = 0; i < imagePoints.Count; i++)
                 {
-                    SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
-                    MapUtilities.DrawTexture(_customImageTex, new PointF(x, z), size, 0, 1);
+                    (float x, float z) = imagePoints[i];
+                    float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
+                    SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, imageSize, Scales);
+                    double opacity = Opacity;
+                    if (this == hoverData?.MapObject && i == hoverData?.Index)
+                    {
+                        opacity = MapUtilities.GetHoverOpacity();
+                    }
+                    MapUtilities.DrawTexture(_customImageTex.Value, new PointF(x, z), size, 0, opacity);
                 }
             }
         }
@@ -283,9 +309,14 @@ namespace STROOP.Map
 
             if (_customImage != null)
             {
-                foreach ((float x, float y, float z) in vertices)
+                List<(float x, float y, float z)> imagePoints =
+                    _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(vertices) : vertices;
+                for (int i = 0; i < imagePoints.Count; i++)
                 {
-                    Matrix4 viewMatrix = GetModelMatrix(x, y, z, 0);
+                    (float x, float y, float z) = imagePoints[i];
+                    float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
+
+                    Matrix4 viewMatrix = GetModelMatrix(x, y, z, 0, imageSize);
                     GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
 
                     Map3DVertex[] vertices2 = GetVertices();
@@ -293,7 +324,7 @@ namespace STROOP.Map
                     GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                     GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices2.Length * Map3DVertex.Size),
                         vertices2, BufferUsageHint.StaticDraw);
-                    GL.BindTexture(TextureTarget.Texture2D, _customImageTex);
+                    GL.BindTexture(TextureTarget.Texture2D, _customImageTex.Value);
                     GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                     Config.Map3DGraphics.BindVertices();
                     GL.DrawArrays(PrimitiveType.Triangles, 0, vertices2.Length);
@@ -302,7 +333,7 @@ namespace STROOP.Map
             }
         }
 
-        public Matrix4 GetModelMatrix(float x, float y, float z, float ang)
+        public Matrix4 GetModelMatrix(float x, float y, float z, float ang, float imageSize)
         {
             SizeF _imageNormalizedSize = new SizeF(
                 _customImage.Width >= _customImage.Height ? 1.0f : (float)_customImage.Width / _customImage.Height,
@@ -310,7 +341,7 @@ namespace STROOP.Map
 
             Vector3 pos = new Vector3(x, y, z);
 
-            float size = _imageSize / 200;
+            float size = imageSize / 200;
             return Matrix4.CreateScale(size * _imageNormalizedSize.Width, size * _imageNormalizedSize.Height, 1)
                 * Matrix4.CreateRotationZ(0)
                 * Matrix4.CreateScale(1.0f / Config.Map3DGraphics.NormalizedWidth, 1.0f / Config.Map3DGraphics.NormalizedHeight, 1)
@@ -433,6 +464,16 @@ namespace STROOP.Map
                 };
                 _itemPause.Checked = _isPaused;
 
+                _itemTruncatePoints = new ToolStripMenuItem("Truncate Points");
+                _itemTruncatePoints.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changePathTruncatePoints: true,
+                        newPathTruncatePoints: !_truncatePoints);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemTruncatePoints.Checked = _isPaused;
+
                 _itemUseValueAtStartOfGlobalTimer = new ToolStripMenuItem("Use Value at Start of Global Timer");
                 _itemUseValueAtStartOfGlobalTimer.Click += (sender, e) =>
                 {
@@ -454,6 +495,16 @@ namespace STROOP.Map
                         changePathModulo: true, newPathModulo: moduloNullable.Value);
                     GetParentMapTracker().ApplySettings(settings);
                 };
+
+                _itemShowQuarterSteps = new ToolStripMenuItem("Show Quarter Steps");
+                _itemShowQuarterSteps.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeShowQuarterSteps: true,
+                        newShowQuarterSteps: !_showQuarterSteps);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemShowQuarterSteps.Checked = _showQuarterSteps;
 
                 string suffix2 = string.Format(" ({0})", _imageSize);
                 _itemSetIconSize = new ToolStripMenuItem(SET_ICON_SIZE_TEXT + suffix2);
@@ -486,8 +537,10 @@ namespace STROOP.Map
                 _contextMenuStrip.Items.Add(_itemResetPathOnLevelChange);
                 _contextMenuStrip.Items.Add(_itemUseBlending);
                 _contextMenuStrip.Items.Add(_itemPause);
+                _contextMenuStrip.Items.Add(_itemTruncatePoints);
                 _contextMenuStrip.Items.Add(_itemUseValueAtStartOfGlobalTimer);
                 _contextMenuStrip.Items.Add(_itemSetModulo);
+                _contextMenuStrip.Items.Add(_itemShowQuarterSteps);
                 _contextMenuStrip.Items.Add(_itemSetIconSize);
                 _contextMenuStrip.Items.Add(itemCopyPoints);
                 _contextMenuStrip.Items.Add(itemPastePoints);
@@ -523,6 +576,12 @@ namespace STROOP.Map
                 _itemPause.Checked = _isPaused;
             }
 
+            if (settings.ChangePathTruncatePoints)
+            {
+                _truncatePoints = settings.NewPathTruncatePoints;
+                _itemTruncatePoints.Checked = _truncatePoints;
+            }
+
             if (settings.ChangePathUseValueAtStartOfGlobalTimer)
             {
                 _useValueAtStartOfGlobalTimer = settings.NewPathUseValueAtStartOfGlobalTimer;
@@ -534,6 +593,12 @@ namespace STROOP.Map
                 _modulo = settings.NewPathModulo;
                 string suffix = string.Format(" ({0})", _modulo);
                 _itemSetModulo.Text = SET_MODULO_TEXT + suffix;
+            }
+
+            if (settings.ChangeShowQuarterSteps)
+            {
+                _showQuarterSteps = settings.NewShowQuarterSteps;
+                _itemShowQuarterSteps.Checked = _showQuarterSteps;
             }
 
             if (settings.ChangeIconSize)
@@ -634,6 +699,65 @@ namespace STROOP.Map
         public override PositionAngle GetPositionAngle()
         {
             return _posAngle;
+        }
+
+        public override MapObjectHoverData GetHoverDataTopDownView()
+        {
+            if (_customImage == null) return null;
+
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+
+            List<(float x, float y, float z)> preData = GetDictionaryValues();
+            List<(float x, float y, float z)> data = _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(preData) : preData;
+            for (int i = data.Count - 1; i >= 0; i--)
+            {
+                var dataPoint = data[i];
+                double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
+                float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
+                double radius = Scales ? imageSize : imageSize / Config.CurrentMapGraphics.MapViewScaleValue;
+                if (dist <= radius)
+                {
+                    return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
+                }
+            }
+            return null;
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            if (_customImage == null) return null;
+
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            List<(float x, float y, float z)> preData = GetDictionaryValues();
+            List<(float x, float y, float z)> data = _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(preData) : preData;
+            for (int i = data.Count - 1; i >= 0; i--)
+            {
+                var dataPoint = data[i];
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
+                double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+                float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
+                double radius = Scales ? imageSize * Config.CurrentMapGraphics.MapViewScaleValue : imageSize;
+                if (dist <= radius)
+                {
+                    return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
+                }
+            }
+            return null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            List<(float x, float y, float z)> preData = GetDictionaryValues();
+            List<(float x, float y, float z)> data = _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(preData) : preData;
+            var dataPoint = data[hoverData.Index.Value];
+            List<double> posValues = new List<double>() { dataPoint.x, dataPoint.y, dataPoint.z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
         }
 
         public override List<XAttribute> GetXAttributes()

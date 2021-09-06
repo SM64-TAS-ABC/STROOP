@@ -6,5 +6,6 @@
   <Data base="None" specialType="RetrieveInfrontOffset">Retrieve Infront Offset</Data>
   <Data base="None" specialType="FramesPerSecond">FPS</Data>
   <Data base="None" specialType="PositionControllerRelativity" subclass="String">Pos Controller Relativity</Data>
+  <Data base="None" specialType="ObjectSlotSize">Object Slot Size</Data>
   <Data base="None" specialType="CustomReleaseStatus" useHex="true">Custom Release Status</Data>
 </VarData>

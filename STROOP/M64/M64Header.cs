@@ -9,6 +9,7 @@ using STROOP.Structs;
 using System.ComponentModel;
 using STROOP.Utilities;
 using STROOP.Structs.Gui;
+using STROOP.Forms;
 
 namespace STROOP.M64
 {
@@ -220,7 +221,14 @@ namespace STROOP.M64
             Description = Encoding.UTF8.GetString(bytes, 0x300, 256).Replace("\0", "");
 
             // Verify that serialization works correctly
-            if (!Enumerable.SequenceEqual(bytes, ToBytes())) throw new ArgumentOutOfRangeException();
+            if (!Enumerable.SequenceEqual(bytes, ToBytes()))
+            {
+                DialogUtilities.DisplayMessage(
+                    "The m64 header cannot be serialized exactly as it is. " +
+                        "In other words, saving this file will change the m64 header. " +
+                        "Proceed at your own risk.",
+                    "Warning");
+            }
         }
 
         public byte[] ToBytes()
@@ -251,6 +259,129 @@ namespace STROOP.M64
             bytes.AddRange(TypeUtilities.GetBytes(Description, 256, Encoding.UTF8));
             if (bytes.Count != M64Config.HeaderSize) throw new ArgumentOutOfRangeException();
             return bytes.ToArray();
+        }
+
+        public void LoadBytesDebug(byte[] bytes)
+        {
+            Signature = BitConverter.ToUInt32(bytes, 0x000);
+            VersionNumber = BitConverter.ToUInt32(bytes, 0x004);
+            Uid = BitConverter.ToInt32(bytes, 0x008);
+            NumVis = BitConverter.ToInt32(bytes, 0x00C);
+            NumRerecords = BitConverter.ToInt32(bytes, 0x010);
+            Fps = bytes[0x014];
+            NumControllers = bytes[0x015];
+            NumInputs = BitConverter.ToInt32(bytes, 0x018);
+
+            short movieStartTypeShort = BitConverter.ToInt16(bytes, 0x01C);
+            MovieStartType = ConvertShortToMovieStartTypeEnum(movieStartTypeShort);
+
+            uint controllerFlagsValue = BitConverter.ToUInt16(bytes, 0x020);
+            Controller1Present = (controllerFlagsValue & (1 << 0)) != 0;
+            Controller2Present = (controllerFlagsValue & (1 << 1)) != 0;
+            Controller3Present = (controllerFlagsValue & (1 << 2)) != 0;
+            Controller4Present = (controllerFlagsValue & (1 << 3)) != 0;
+            Controller1MemPak = (controllerFlagsValue & (1 << 4)) != 0;
+            Controller2MemPak = (controllerFlagsValue & (1 << 5)) != 0;
+            Controller3MemPak = (controllerFlagsValue & (1 << 6)) != 0;
+            Controller4MemPak = (controllerFlagsValue & (1 << 7)) != 0;
+            Controller1RumblePak = (controllerFlagsValue & (1 << 8)) != 0;
+            Controller2RumblePak = (controllerFlagsValue & (1 << 9)) != 0;
+            Controller3RumblePak = (controllerFlagsValue & (1 << 10)) != 0;
+            Controller4RumblePak = (controllerFlagsValue & (1 << 11)) != 0;
+
+            RomName = Encoding.ASCII.GetString(bytes, 0x0C4, 32).Replace("\0", "");
+            Crc32 = BitConverter.ToUInt32(bytes, 0x0E4);
+            CountryCode = BitConverter.ToUInt16(bytes, 0x0E8);
+            VideoPlugin = Encoding.ASCII.GetString(bytes, 0x122, 64).Replace("\0", "");
+            SoundPlugin = Encoding.ASCII.GetString(bytes, 0x162, 64).Replace("\0", "");
+            InputPlugin = Encoding.ASCII.GetString(bytes, 0x1A2, 64).Replace("\0", "");
+            RspPlugin = Encoding.ASCII.GetString(bytes, 0x1E2, 64).Replace("\0", "");
+            Author = Encoding.UTF8.GetString(bytes, 0x222, 222).Replace("\0", "");
+            Description = Encoding.UTF8.GetString(bytes, 0x300, 256).Replace("\0", "");
+
+            byte[] SignatureBytes = TypeUtilities.GetBytes(Signature);
+            byte[] VersionNumberBytes = TypeUtilities.GetBytes(VersionNumber);
+            byte[] UidBytes = TypeUtilities.GetBytes(Uid);
+            byte[] NumVisBytes = TypeUtilities.GetBytes(NumVis);
+            byte[] NumRerecordsBytes = TypeUtilities.GetBytes(NumRerecords);
+            byte[] FpsBytes = TypeUtilities.GetBytes(Fps);
+            byte[] NumControllersBytes = TypeUtilities.GetBytes(NumControllers);
+            byte[] Empty1Bytes = new byte[2];
+            byte[] NumInputsBytes = TypeUtilities.GetBytes(NumInputs);
+            byte[] MovieStartTypeBytes = TypeUtilities.GetBytes(ConvertMovieStartTypeEnumToShort(MovieStartType));
+            byte[] Empty2Bytes = new byte[2];
+            byte[] ControllerFlagsBytes = TypeUtilities.GetBytes(GetControllerFlagsValue());
+            byte[] Empty3Bytes = new byte[160];
+            byte[] RomNameBytes = TypeUtilities.GetBytes(RomName, 32, Encoding.ASCII);
+            byte[] Crc32Bytes = TypeUtilities.GetBytes(Crc32);
+            byte[] CountryCodeBytes = TypeUtilities.GetBytes(CountryCode);
+            byte[] Empty4Bytes = new byte[56];
+            byte[] VideoPluginBytes = TypeUtilities.GetBytes(VideoPlugin, 64, Encoding.ASCII);
+            byte[] SoundPluginBytes = TypeUtilities.GetBytes(SoundPlugin, 64, Encoding.ASCII);
+            byte[] InputPluginBytes = TypeUtilities.GetBytes(InputPlugin, 64, Encoding.ASCII);
+            byte[] RspPluginBytes = TypeUtilities.GetBytes(RspPlugin, 64, Encoding.ASCII);
+            byte[] AuthorBytes = TypeUtilities.GetBytes(Author, 222, Encoding.UTF8);
+            byte[] DescriptionBytes = TypeUtilities.GetBytes(Description, 256, Encoding.UTF8);
+
+            byte[] GetRemoveFirstBytesFromList(List<byte> byteList, int size)
+            {
+                byte[] output = byteList.Take(size).ToArray();
+                List<byte> newByteList = byteList.Skip(size).ToList();
+                byteList.Clear();
+                byteList.AddRange(newByteList);
+                return output;
+            }
+
+            List<byte> bytesToUse = bytes.ToList();
+            byte[] SignatureBytes2 = GetRemoveFirstBytesFromList(bytesToUse, SignatureBytes.Length);
+            byte[] VersionNumberBytes2 = GetRemoveFirstBytesFromList(bytesToUse, VersionNumberBytes.Length);
+            byte[] UidBytes2 = GetRemoveFirstBytesFromList(bytesToUse, UidBytes.Length);
+            byte[] NumVisBytes2 = GetRemoveFirstBytesFromList(bytesToUse, NumVisBytes.Length);
+            byte[] NumRerecordsBytes2 = GetRemoveFirstBytesFromList(bytesToUse, NumRerecordsBytes.Length);
+            byte[] FpsBytes2 = GetRemoveFirstBytesFromList(bytesToUse, FpsBytes.Length);
+            byte[] NumControllersBytes2 = GetRemoveFirstBytesFromList(bytesToUse, NumControllersBytes.Length);
+            byte[] Empty1Bytes2 = GetRemoveFirstBytesFromList(bytesToUse, Empty1Bytes.Length);
+            byte[] NumInputsBytes2 = GetRemoveFirstBytesFromList(bytesToUse, NumInputsBytes.Length);
+            byte[] MovieStartTypeBytes2 = GetRemoveFirstBytesFromList(bytesToUse, MovieStartTypeBytes.Length);
+            byte[] Empty2Bytes2 = GetRemoveFirstBytesFromList(bytesToUse, Empty2Bytes.Length);
+            byte[] ControllerFlagsBytes2 = GetRemoveFirstBytesFromList(bytesToUse, ControllerFlagsBytes.Length);
+            byte[] Empty3Bytes2 = GetRemoveFirstBytesFromList(bytesToUse, Empty3Bytes.Length);
+            byte[] RomNameBytes2 = GetRemoveFirstBytesFromList(bytesToUse, RomNameBytes.Length);
+            byte[] Crc32Bytes2 = GetRemoveFirstBytesFromList(bytesToUse, Crc32Bytes.Length);
+            byte[] CountryCodeBytes2 = GetRemoveFirstBytesFromList(bytesToUse, CountryCodeBytes.Length);
+            byte[] Empty4Bytes2 = GetRemoveFirstBytesFromList(bytesToUse, Empty4Bytes.Length);
+            byte[] VideoPluginBytes2 = GetRemoveFirstBytesFromList(bytesToUse, VideoPluginBytes.Length);
+            byte[] SoundPluginBytes2 = GetRemoveFirstBytesFromList(bytesToUse, SoundPluginBytes.Length);
+            byte[] InputPluginBytes2 = GetRemoveFirstBytesFromList(bytesToUse, InputPluginBytes.Length);
+            byte[] RspPluginBytes2 = GetRemoveFirstBytesFromList(bytesToUse, RspPluginBytes.Length);
+            byte[] AuthorBytes2 = GetRemoveFirstBytesFromList(bytesToUse, AuthorBytes.Length);
+            byte[] DescriptionBytes2 = GetRemoveFirstBytesFromList(bytesToUse, DescriptionBytes.Length);
+
+            List<string> diffs = new List<string>();
+            if (!Enumerable.SequenceEqual(SignatureBytes, SignatureBytes2)) diffs.Add("SignatureBytes");
+            if (!Enumerable.SequenceEqual(VersionNumberBytes, VersionNumberBytes2)) diffs.Add("VersionNumberBytes");
+            if (!Enumerable.SequenceEqual(UidBytes, UidBytes2)) diffs.Add("UidBytes");
+            if (!Enumerable.SequenceEqual(NumVisBytes, NumVisBytes2)) diffs.Add("NumVisBytes");
+            if (!Enumerable.SequenceEqual(NumRerecordsBytes, NumRerecordsBytes2)) diffs.Add("NumRerecordsBytes");
+            if (!Enumerable.SequenceEqual(FpsBytes, FpsBytes2)) diffs.Add("FpsBytes");
+            if (!Enumerable.SequenceEqual(NumControllersBytes, NumControllersBytes2)) diffs.Add("NumControllersBytes");
+            if (!Enumerable.SequenceEqual(Empty1Bytes, Empty1Bytes2)) diffs.Add("Empty1Bytes");
+            if (!Enumerable.SequenceEqual(NumInputsBytes, NumInputsBytes2)) diffs.Add("NumInputsBytes");
+            if (!Enumerable.SequenceEqual(MovieStartTypeBytes, MovieStartTypeBytes2)) diffs.Add("MovieStartTypeBytes");
+            if (!Enumerable.SequenceEqual(Empty2Bytes, Empty2Bytes2)) diffs.Add("Empty2Bytes");
+            if (!Enumerable.SequenceEqual(ControllerFlagsBytes, ControllerFlagsBytes2)) diffs.Add("ControllerFlagsBytes");
+            if (!Enumerable.SequenceEqual(Empty3Bytes, Empty3Bytes2)) diffs.Add("Empty3Bytes");
+            if (!Enumerable.SequenceEqual(RomNameBytes, RomNameBytes2)) diffs.Add("RomNameBytes");
+            if (!Enumerable.SequenceEqual(Crc32Bytes, Crc32Bytes2)) diffs.Add("Crc32Bytes");
+            if (!Enumerable.SequenceEqual(CountryCodeBytes, CountryCodeBytes2)) diffs.Add("CountryCodeBytes");
+            if (!Enumerable.SequenceEqual(Empty4Bytes, Empty4Bytes2)) diffs.Add("Empty4Bytes");
+            if (!Enumerable.SequenceEqual(VideoPluginBytes, VideoPluginBytes2)) diffs.Add("VideoPluginBytes");
+            if (!Enumerable.SequenceEqual(SoundPluginBytes, SoundPluginBytes2)) diffs.Add("SoundPluginBytes");
+            if (!Enumerable.SequenceEqual(InputPluginBytes, InputPluginBytes2)) diffs.Add("InputPluginBytes");
+            if (!Enumerable.SequenceEqual(RspPluginBytes, RspPluginBytes2)) diffs.Add("RspPluginBytes");
+            if (!Enumerable.SequenceEqual(AuthorBytes, AuthorBytes2)) diffs.Add("AuthorBytes");
+            if (!Enumerable.SequenceEqual(DescriptionBytes, DescriptionBytes2)) diffs.Add("DescriptionBytes");
+            InfoForm.ShowValue(string.Join("\r\n", diffs));
         }
 
         private uint GetControllerFlagsValue()

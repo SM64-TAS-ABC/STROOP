@@ -125,74 +125,217 @@ namespace STROOP.Utilities
         public static CoinObject Bobomb = new CoinObject(
             hSpeedScale: 20,
             vSpeedScale: 40,
-            vSpeedOffset: 17,
+            vSpeedOffset: 20,
             coinParamOrder: CoinParamOrder.HVA,
             numCoins: 1,
             name: "Bob-omb");
 
-        public static CoinObject Scuttlebug = new CoinObject(
+        public static CoinObject Bookend = new CoinObject(
             hSpeedScale: 10,
             vSpeedScale: 10,
-            vSpeedOffset: 46,
-            coinParamOrder: CoinParamOrder.VHA,
-            numCoins: 3,
-            name: "Scuttlebug");
-
-        public static CoinObject TinyPiranhaPlant = new CoinObject(
-            hSpeedScale: 10,
-            vSpeedScale: 10, // more like 9.929076195
-            vSpeedOffset: 46,
+            vSpeedOffset: 50,
             coinParamOrder: CoinParamOrder.VHA,
             numCoins: 1,
-            name: "Tiny Piranha Plant");
+            name: "Bookend");
+
+        public static CoinObject Chuckya = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 5,
+            name: "Chuckya");
+
+        public static CoinObject CoinBlock = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 30,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 1,
+            name: "Coin Block");
+
+        public static CoinObject CorkBox = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 3,
+            name: "Cork Box");
+
+        public static CoinObject CrazyBox = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 5,
+            name: "Crazy Box");
+
+        public static CoinObject FlyGuy = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 2,
+            name: "Fly Guy");
 
         public static CoinObject Goomba = new CoinObject(
             hSpeedScale: 10,
-            vSpeedScale: 10, // more like 9.936193656
-            vSpeedOffset: 46,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
             coinParamOrder: CoinParamOrder.VHA,
             numCoins: 1,
             name: "Goomba");
 
-        public static CoinObject Lakitu = new CoinObject(
-            hSpeedScale: 10,
-            vSpeedScale: 10, // more like 9.936193656
-            vSpeedOffset: 46 + 4,
-            coinParamOrder: CoinParamOrder.VHA,
-            numCoins: 5,
-            name: "Lakitu");
-
-        public static CoinObject Moneybag = new CoinObject(
-            hSpeedScale: 20,
-            vSpeedScale: 40,
-            vSpeedOffset: 17,
-            coinParamOrder: CoinParamOrder.HVA,
-            numCoins: 5,
-            name: "Moneybag");
-
         public static CoinObject GrabbableCorkBox = new CoinObject(
             hSpeedScale: 20,
             vSpeedScale: 40,
-            vSpeedOffset: 17,
+            vSpeedOffset: 20,
             coinParamOrder: CoinParamOrder.HVA,
             numCoins: 3,
             name: "Grabbable Cork Box");
 
-        public static CoinObject BigCorkBox = new CoinObject(
+        public static CoinObject HugePiranhaPlant = new CoinObject(
             hSpeedScale: 10,
-            vSpeedScale: 10, // more like 9.936193656
-            vSpeedOffset: 46,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 2,
+            name: "Huge Piranha Plant");
+
+        public static CoinObject Koopa = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 1,
+            name: "Koopa");
+
+        public static CoinObject Lakitu = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 5,
+            name: "Lakitu");
+
+        public static CoinObject LLLBowserPuzzle = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 30,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 5,
+            name: "LLL Bowser Puzzle");
+
+        public static CoinObject Moneybag = new CoinObject(
+            hSpeedScale: 20,
+            vSpeedScale: 40,
+            vSpeedOffset: 20,
+            coinParamOrder: CoinParamOrder.HVA,
+            numCoins: 5,
+            name: "Moneybag");
+
+        public static CoinObject MrBlizzard = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
             coinParamOrder: CoinParamOrder.VHA,
             numCoins: 3,
-            name: "Big Cork Box");
+            name: "Mr. Blizzard");
 
-        public static CoinObject CoinBlock = new CoinObject(
+        public static CoinObject MrI = new CoinObject(
             hSpeedScale: 10,
-            vSpeedScale: 10, // more like 9.936193656
-            vSpeedOffset: 26,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
             coinParamOrder: CoinParamOrder.VHA,
-            numCoins: 10,
-            name: "Coin Block");
+            numCoins: 1,
+            name: "Mr. I");
 
+        public static CoinObject PiranhaPlant = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 1,
+            name: "Piranha Plant");
+
+        public static CoinObject Pokey = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 1,
+            name: "Pokey");
+
+        public static CoinObject Scuttlebug = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 3,
+            name: "Scuttlebug");
+
+        public static CoinObject Skeeter = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 3,
+            name: "Skeeter");
+
+        public static CoinObject Snufit = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 2,
+            name: "Snufit");
+
+        public static CoinObject Spindrift = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 3,
+            name: "Spindrift");
+
+        public static CoinObject Swooper = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 1,
+            name: "Swooper");
+
+        public static CoinObject TinyPiranhaPlant = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 1,
+            name: "Tiny Piranha Plant");
+
+        public static CoinObject WhompJumpOn = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 30,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 1,
+            name: "Whomp Jump On");
+
+        public static CoinObject WhompKill = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 5,
+            name: "Whomp Kill");
+
+        public static CoinObject WoodenPost = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 50,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 5,
+            name: "Wooden Post");
     }
 }

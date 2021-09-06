@@ -348,7 +348,7 @@ namespace STROOP.Managers
                     FileCategory.Coins,
                     FileCategory.Misc
                 });
-            short numStars = CalculateNumStars();
+            short numStars = 120;
             Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.StarCountOffset);
             Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.StarDisplayOffset);
             Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.PreviousStarCountOffset);

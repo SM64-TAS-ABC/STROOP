@@ -19,16 +19,16 @@ using STROOP.Models;
 using STROOP.Structs.Gui;
 using STROOP.Map;
 using System.IO;
+using System.Xml.Linq;
 
 namespace STROOP
 {
     public partial class StroopMainForm : Form
     {
-        const string _version = "v1.0.3";
+        const string _version = "v1.0.4";
         
         List<InputImageGui> _inputImageGuiList = new List<Structs.InputImageGui>();
         FileImageGui _fileImageGui = new FileImageGui();
-        ScriptParser _scriptParser;
         List<RomHack> _romHacks;
 
         DataTable _tableOtherData = new DataTable();
@@ -133,6 +133,7 @@ namespace STROOP
                     "Go to Closest Floor Vertex",
                     "Save as Savestate",
                     "Show MHS Vars",
+                    "Copy Mario State",
                     "Download Latest STROOP Release",
                     "Copy Download Link",
                     "Documentation",
@@ -142,7 +143,6 @@ namespace STROOP
                     "Show Skribblio Words",
                     "Show Image Form",
                     "Show Coin Ring Display Form",
-                    "Add Chuckya Map Objs",
                     "Test Something",
                     "Test Something Else",
                     "Format Subtitles",
@@ -154,7 +154,7 @@ namespace STROOP
                     () => Config.GfxManager.InjectHitboxViewCode(),
                     () => Config.Stream.SetValue(MarioConfig.FreeMovementAction, MarioConfig.StructAddress + MarioConfig.ActionOffset),
                     () => Config.FileManager.DoEverything(),
-                    () => Config.TriangleManager.GoToClosestVertex(),
+                    () => Config.TriangleManager.GoToClosestFloorVertex(),
                     () => saveAsSavestate(),
                     () =>
                     {
@@ -166,6 +166,15 @@ namespace STROOP
                         VariablePopOutForm form = new VariablePopOutForm();
                         form.Initialize(controls);
                         form.ShowForm();
+                    },
+                    () =>
+                    {
+                        List<XElement> elements = DialogUtilities.OpenXmlElements(FileType.StroopVariables, @"Config/MarioStateData.xml");
+                        List<WatchVariableControlPrecursor> precursors =
+                            elements.ConvertAll(element => new WatchVariableControlPrecursor(element));
+                        List<WatchVariableControl> controls =
+                            precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl());
+                        CopyUtilities.CopyForCode(controls, "start$");
                     },
                     () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
                     () => Clipboard.SetText("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
@@ -193,7 +202,6 @@ namespace STROOP
                         CoinRingDisplayForm form = new CoinRingDisplayForm();
                         form.Show();
                     },
-                    () => TestUtilities.AddChuckyaMapObjects(),
                     () => TestUtilities.TestSomething(),
                     () => TestUtilities.TestSomethingElse(),
                     () => SubtitleUtilities.FormatSubtitlesFromClipboard(),
@@ -269,6 +277,7 @@ namespace STROOP
                 checkBoxMapOptionsEnableCrossSection = checkBoxMapOptionsEnableCrossSection,
                 checkBoxMapOptionsEnablePuView = checkBoxMapOptionsEnablePuView,
                 checkBoxMapOptionsReverseDragging = checkBoxMapOptionsReverseDragging,
+                checkBoxMapOptionsSelectionMode = checkBoxMapOptionsSelectionMode,
 
                 labelMapOptionsGlobalIconSize = labelMapOptionsGlobalIconSize,
                 textBoxMapOptionsGlobalIconSize = textBoxMapOptionsGlobalIconSize,
@@ -451,9 +460,9 @@ namespace STROOP
             Config.ScriptManager = new ScriptManager(@"Config/ScriptData.xml", tabPageScript, watchVariablePanelScript);
             Config.SoundManager = new SoundManager(tabPageSound);
             Config.WarpManager = new WarpManager(@"Config/WarpData.xml", tabPageWarp, watchVariablePanelWarp);
+            Config.LockManager = new WatchVariableLockManager(pictureBoxLock);
 
             Config.DisassemblyManager = new DisassemblyManager(tabPageDisassembly);
-            Config.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
             Config.HackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
             Config.M64Manager = new M64Manager(m64Gui);
 
@@ -534,7 +543,6 @@ namespace STROOP
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
             Config.MapAssociations = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
             loadingForm.UpdateStatus("Loading Scripts", statusNum++);
-            _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
             loadingForm.UpdateStatus("Loading Hacks", statusNum++);
             _romHacks = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
             loadingForm.UpdateStatus("Loading Mario Actions", statusNum++);
@@ -628,9 +636,8 @@ namespace STROOP
                 Config.ScriptManager.Update(tabControlMain.SelectedTab == tabPageScript);
                 Config.WarpManager.Update(tabControlMain.SelectedTab == tabPageWarp);
                 Config.ModelManager?.Update();
-                Config.InjectionManager.Update();
                 Config.HackManager.Update();
-                WatchVariableLockManager.Update();
+                Config.LockManager.Update();
                 TestUtilities.Update();
                 TriangleDataModel.ClearCache();
             }));
@@ -779,7 +786,7 @@ namespace STROOP
         {
             if (KeyboardUtilities.IsCtrlHeld() || KeyboardUtilities.IsNumberHeld())
             {
-                ObjectOrderingUtilities.Move(false);
+                ObjectOrderingUtilities.Move(false, (ObjectSlotsManager.SortMethodType)comboBoxSortMethod.SelectedItem);
             }
             else
             {
@@ -791,7 +798,7 @@ namespace STROOP
         {
             if (KeyboardUtilities.IsCtrlHeld() || KeyboardUtilities.IsNumberHeld())
             {
-                ObjectOrderingUtilities.Move(true);
+                ObjectOrderingUtilities.Move(true, (ObjectSlotsManager.SortMethodType)comboBoxSortMethod.SelectedItem);
             }
             else
             {
@@ -879,7 +886,7 @@ namespace STROOP
             ChangeObjectSlotSize(trackBarObjSlotSize.Value);
         }
 
-        private async void ChangeObjectSlotSize(int size)
+        public async void ChangeObjectSlotSize(int size)
         {
             _resizeObjSlotTime = 500;
             if (_objSlotResizing)

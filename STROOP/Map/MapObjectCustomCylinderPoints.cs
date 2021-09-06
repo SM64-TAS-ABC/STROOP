@@ -91,6 +91,8 @@ namespace STROOP.Map
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(_itemSetRelativeMinY);
                 _contextMenuStrip.Items.Add(_itemSetRelativeMaxY);
+                _contextMenuStrip.Items.Add(new ToolStripSeparator());
+                GetCircleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
             }
 
             return _contextMenuStrip;

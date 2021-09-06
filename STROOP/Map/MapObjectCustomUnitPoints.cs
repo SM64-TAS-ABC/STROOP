@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using System.Xml.Linq;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -36,9 +37,21 @@ namespace STROOP.Map
             return new MapObjectCustomUnitPoints(unitPoints);
         }
 
-        protected override List<List<(float x, float y, float z)>> GetQuadList()
+        protected override List<List<(float x, float y, float z, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData)
         {
-            return MapUtilities.ConvertUnitPointsToQuads(_unitPoints);
+            List<List<(float x, float y, float z, bool isHovered)>> output =
+                new List<List<(float x, float y, float z, bool isHovered)>>();
+            for (int i = 0; i < _unitPoints.Count; i++)
+            {
+                bool isHovered = this == hoverData?.MapObject && i == hoverData?.Index;
+                List<(int x, int z)> unit = new List<(int x, int z)>() { _unitPoints[i] };
+                List<List<(float x, float y, float z)>> quadList =
+                    MapUtilities.ConvertUnitPointsToQuads(unit);
+                List<List<(float x, float y, float z, bool isHovered)>> quadListHovered =
+                    quadList.ConvertAll(quad => quad.ConvertAll(p => (p.x, p.y, p.z, isHovered)));
+                output.AddRange(quadListHovered);
+            }
+            return output;
         }
 
         public override string GetName()
@@ -49,6 +62,55 @@ namespace STROOP.Map
         public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.CustomPointsImage;
+        }
+
+        public override MapObjectHoverData GetHoverDataTopDownView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+
+            int inGameXTruncated = (int)inGameX;
+            int inGameZTruncated = (int)inGameZ;
+            for (int i = 0; i < _unitPoints.Count; i++)
+            {
+                var unitPoint = _unitPoints[i];
+                if (unitPoint.x == inGameXTruncated && unitPoint.z == inGameZTruncated)
+                {
+                    return new MapObjectHoverData(this, unitPoint.x, 0, unitPoint.z, index: i);
+                }
+            }
+            return null;
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            for (int i = 0; i < _unitPoints.Count; i++)
+            {
+                var unitPoint = _unitPoints[i];
+                List<(int x, int z)> unitPointList = new List<(int x, int z)>() { _unitPoints[i] };
+                List<List<(float x, float y, float z)>> quadList =
+                    MapUtilities.ConvertUnitPointsToQuads(unitPointList);
+                List<List<(float x, float z)>> quadListForControl =
+                    quadList.ConvertAll(quad => quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z)));
+                if (quadListForControl.Any(quad => MapUtilities.IsWithinShapeForControl(quad, relPos.X, relPos.Y)))
+                {
+                    return new MapObjectHoverData(this, unitPoint.x, 0, unitPoint.z, index: i);
+                }
+            }
+            return null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            var unitPoint = _unitPoints[hoverData.Index.Value];
+            List<double> posValues = new List<double>() { unitPoint.x, unitPoint.z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
         }
 
         public override List<XAttribute> GetXAttributes()

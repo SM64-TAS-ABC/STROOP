@@ -54,21 +54,21 @@ namespace STROOP.Map
         {
         }
 
-        public void DrawOn2DControl()
+        public void DrawOn2DControl(MapObjectHoverData hoverData)
         {
             if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
             {
-                DrawOn2DControlOrthographicView();
+                DrawOn2DControlOrthographicView(hoverData);
             }
             else
             {
-                DrawOn2DControlTopDownView();
+                DrawOn2DControlTopDownView(hoverData);
             }
         }
 
-        public abstract void DrawOn2DControlTopDownView();
+        public abstract void DrawOn2DControlTopDownView(MapObjectHoverData hoverData);
 
-        public abstract void DrawOn2DControlOrthographicView();
+        public abstract void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData);
 
         public abstract void DrawOn3DControl();
 
@@ -79,23 +79,29 @@ namespace STROOP.Map
 
         public abstract string GetName();
 
-        protected Image _customImage = null;
-        protected int _customImageTex = -1;
+        public Image _customImage = null;
+        public string _customImagePath = null;
+        public int? _customImageTex = null;
         public abstract Image GetInternalImage();
         public Image GetImage() { return _customImage ?? GetInternalImage(); }
 
         protected MapTrackerIconType _iconType = MapTrackerIconType.TopDownImage;
-        public virtual void SetIconType(MapTrackerIconType iconType, Image image = null)
+        public virtual void SetIconType(MapTrackerIconType iconType, Image image = null, string path = null)
         {
             if ((iconType == MapTrackerIconType.CustomImage) != (image != null))
                 throw new ArgumentOutOfRangeException();
 
             _iconType = iconType;
             _customImage = image;
+            _customImagePath = path;
 
             if (_customImage != null)
             {
                 _customImageTex = MapUtilities.LoadTexture(_customImage as Bitmap);
+            }
+            else
+            {
+                _customImageTex = null;
             }
         }
 
@@ -144,7 +150,7 @@ namespace STROOP.Map
             PositionAngle posAngle = GetPositionAngle();
             if (posAngle == null) return null;
             if (!posAngle.IsObjectDependent()) return null;
-            uint objAddress = posAngle.GetObjectAddressIfObjectDependent().Value;
+            uint objAddress = posAngle.GetObjAddress();
             return new ObjectDataModel(objAddress, true);
         }
 
@@ -197,6 +203,33 @@ namespace STROOP.Map
 
         public virtual void CleanUp()
         {
+        }
+
+        public MapObjectHoverData GetHoverData()
+        {
+            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+            {
+                return GetHoverDataOrthographicView();
+            }
+            else
+            {
+                return GetHoverDataTopDownView();
+            }
+        }
+
+        public virtual MapObjectHoverData GetHoverDataTopDownView()
+        {
+            return null;
+        }
+
+        public virtual MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            return null;
+        }
+
+        public virtual List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            return new List<ToolStripItem>();
         }
 
         public virtual List<XAttribute> GetXAttributes()
@@ -271,7 +304,7 @@ namespace STROOP.Map
                     mapObject = new MapObjectCurrentBackground();
                     break;
                 case "MapObjectCurrentCell":
-                    mapObject = new MapObjectCurrentCell();
+                    mapObject = new MapObjectCurrentCell(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectCurrentMap":
                     mapObject = new MapObjectCurrentMap();
@@ -296,6 +329,9 @@ namespace STROOP.Map
                     break;
                 case "MapObjectCustomGridlines":
                     mapObject = new MapObjectCustomGridlines();
+                    break;
+                case "MapObjectCustomIconPoints":
+                    mapObject = MapObjectCustomIconPoints.Create(xElement.Attribute(XName.Get("points")).Value, true);
                     break;
                 case "MapObjectCustomMap":
                     mapObject = new MapObjectCustomMap();
@@ -451,7 +487,7 @@ namespace STROOP.Map
                     mapObject = new MapObjectPoint();
                     break;
                 case "MapObjectPreviousPositions":
-                    mapObject = new MapObjectPreviousPositions();
+                    mapObject = MapObjectPreviousPositions.Create(xElement.Attribute(XName.Get("points")).Value);
                     break;
                 case "MapObjectPuGridlines":
                     mapObject = new MapObjectPuGridlines();

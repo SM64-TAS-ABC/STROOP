@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using STROOP.Map.Map3D;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -21,12 +22,12 @@ namespace STROOP.Map
         {
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             MapUtilities.DrawLinesOn2DControlTopDownView(GetVerticesTopDownView(), LineWidth, LineColor, OpacityByte);
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             MapUtilities.DrawLinesOn2DControlOrthographicView(GetVerticesOrthographicView(), LineWidth, LineColor, OpacityByte);
         }

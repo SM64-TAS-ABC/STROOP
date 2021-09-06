@@ -37,7 +37,7 @@ namespace STROOP.Map
             _previousBoldText = SpecialConfig.CoordinateLabelsBoldText;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             double spacing;
             if (SpecialConfig.CoordinateLabelsCustomSpacing == 0)
@@ -116,7 +116,7 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             // do nothing
         }
@@ -193,6 +193,7 @@ namespace STROOP.Map
                     foreach ((string specialType, string varName, WatchVariableSubclass subclass) in varData)
                     {
                         WatchVariable watchVar = new WatchVariable(
+                            name: varName,
                             memoryTypeName: null,
                             specialType: specialType,
                             baseAddressType: BaseAddressTypeEnum.None,

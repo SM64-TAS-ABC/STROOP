@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
 using STROOP.Map.Map3D;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -22,12 +23,63 @@ namespace STROOP.Map
         private int _purpleMarioTex = -1;
         private int _blueMarioTex = -1;
 
+        private bool _trackHistory;
+        private bool _pauseHistory;
+        private uint _highestGlobalTimerValue;
+        private Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> _dictionary;
+
+        private ToolStripMenuItem _itemTrackHistory;
+        private ToolStripMenuItem _itemPauseHistory;
+
         private DateTime _showEachPointStartTime = DateTime.MinValue;
 
         public MapObjectPreviousPositions()
             : base()
         {
+            _trackHistory = false;
+            _pauseHistory = false;
+            _highestGlobalTimerValue = 0;
+            _dictionary = new Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>>();
+
             InternalRotates = true;
+        }
+
+        public MapObjectPreviousPositions(Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> dictionary)
+            : this()
+        {
+            foreach (uint key in dictionary.Keys)
+            {
+                _dictionary[key] = dictionary[key];
+            }
+        }
+
+        public static MapObjectPreviousPositions Create(string points)
+        {
+            Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> dictionary =
+                new Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>>();
+            List<string> frames = points.Split('|').ToList();
+            foreach (string frame in frames)
+            {
+                List<(float x, float y, float z, float angle, int tex, bool show)> partsCombined =
+                    new List<(float x, float y, float z, float angle, int tex, bool show)>();
+                List<string> parts = frame.Split(';').ToList();
+                uint key = ParsingUtilities.ParseUInt(parts[0]);
+                for (int i = 1; i < parts.Count; i++)
+                {
+                    string part = parts[i];
+                    List<string> values = part.Split(',').ToList();
+                    float x = ParsingUtilities.ParseFloat(values[0]);
+                    float y = ParsingUtilities.ParseFloat(values[1]);
+                    float z = ParsingUtilities.ParseFloat(values[2]);
+                    float angle = ParsingUtilities.ParseFloat(values[3]);
+                    int tex = ParsingUtilities.ParseInt(values[4]);
+                    bool show = ParsingUtilities.ParseBool(values[5]);
+                    var valuesCombined = (x, y, z, angle, tex, show);
+                    partsCombined.Add(valuesCombined);
+                }
+                dictionary[key] = partsCombined;
+            }
+            return new MapObjectPreviousPositions(dictionary);
         }
 
         public override Image GetInternalImage()
@@ -45,18 +97,52 @@ namespace STROOP.Map
             return (float)PositionAngle.Mario.Y;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
-            foreach (var dataPoint in data)
+            var data = GetAllFrameData();
+            for (int i = 0; i < data.Count; i++)
             {
+                DrawOn2DControlTopDownView(data[i], i, hoverData);
+            }
+        }
+
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
+        {
+            var data = GetAllFrameData();
+            for (int i = 0; i < data.Count; i++)
+            {
+                DrawOn2DControlOrthographicView(data[i], i, hoverData);
+            }
+        }
+
+        public override void DrawOn3DControl()
+        {
+            foreach (var data in GetAllFrameData())
+            {
+                DrawOn3DControl(data);
+            }
+        }
+
+        public void DrawOn2DControlTopDownView(
+            List<(float x, float y, float z, float angle, int tex, bool show)> data,
+            int index,
+            MapObjectHoverData hoverData)
+        {
+            for (int j = 0; j < data.Count; j++)
+            {
+                var dataPoint = data[j];
                 (float x, float y, float z, float angle, int tex, bool show) = dataPoint;
                 if (!show) continue;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject && index == hoverData?.Index && j == hoverData?.Index2)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(tex, point, size, angleDegrees, opacity);
             }
 
             if (LineWidth != 0)
@@ -81,18 +167,26 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public void DrawOn2DControlOrthographicView(
+            List<(float x, float y, float z, float angle, int tex, bool show)> data,
+            int index,
+            MapObjectHoverData hoverData)
         {
-            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
-            foreach (var dataPoint in data)
+            for (int j = 0; j < data.Count; j++)
             {
+                var dataPoint = data[j];
                 (float x, float y, float z, float angle, int tex, bool show) = dataPoint;
                 if (!show) continue;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject && index == hoverData?.Index && j == hoverData?.Index2)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(tex, point, size, angleDegrees, opacity);
             }
 
             if (LineWidth != 0)
@@ -117,9 +211,8 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn3DControl()
+        public void DrawOn3DControl(List<(float x, float y, float z, float angle, int tex, bool show)> data)
         {
-            List<(float x, float y, float z, float angle, int tex, bool show)> data = GetData();
             data.Reverse();
             foreach (var dataPoint in data)
             {
@@ -201,7 +294,18 @@ namespace STROOP.Map
             };
         }
 
-        public List<(float x, float y, float z, float angle, int tex, bool show)> GetData()
+        public List<List<(float x, float y, float z, float angle, int tex, bool show)>> GetAllFrameData()
+        {
+            List<List<(float x, float y, float z, float angle, int tex, bool show)>> values =
+                new List<List<(float x, float y, float z, float angle, int tex, bool show)>>();
+            foreach (var value in _dictionary.Values)
+            {
+                values.Add(value);
+            }
+            return values;
+        }
+
+        public List<(float x, float y, float z, float angle, int tex, bool show)> GetCurrentFrameData()
         {
             float pos01X = Config.Stream.GetFloat(0x80372F00);
             float pos01Y = Config.Stream.GetFloat(0x80372F04);
@@ -354,6 +458,39 @@ namespace STROOP.Map
                 _blueMarioTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.BlueMarioMapImage as Bitmap);
             }
+
+            if (!_pauseHistory)
+            {
+                if (!_trackHistory) _dictionary.Clear();
+
+                uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
+                List<(float x, float y, float z, float angle, int tex, bool show)> data = GetCurrentFrameData();
+
+                if (globalTimer < _highestGlobalTimerValue)
+                {
+                    Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>> tempDictionary =
+                        new Dictionary<uint, List<(float x, float y, float z, float angle, int tex, bool show)>>();
+                    foreach (uint key in _dictionary.Keys)
+                    {
+                        tempDictionary[key] = _dictionary[key];
+                    }
+                    _dictionary.Clear();
+                    foreach (uint key in tempDictionary.Keys)
+                    {
+                        if (key <= globalTimer)
+                        {
+                            _dictionary[key] = tempDictionary[key];
+                            _highestGlobalTimerValue = key;
+                        }
+                    }
+                }
+
+                if (!_dictionary.ContainsKey(globalTimer))
+                {
+                    _dictionary[globalTimer] = data;
+                    _highestGlobalTimerValue = globalTimer;
+                }
+            }
         }
 
         public override bool ParticipatesInGlobalIconSize()
@@ -376,11 +513,172 @@ namespace STROOP.Map
                     _showEachPointStartTime = DateTime.Now;
                 };
 
+                _itemTrackHistory = new ToolStripMenuItem("Track History");
+                _itemTrackHistory.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changePreviousPositionsTrackHistory: true, newPreviousPositionsTrackHistory: !_trackHistory);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
+                _itemPauseHistory = new ToolStripMenuItem("Pause History");
+                _itemPauseHistory.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changePreviousPositionsPauseHistory: true, newPreviousPositionsPauseHistory: !_pauseHistory);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
+                ToolStripMenuItem itemClearHistory = new ToolStripMenuItem("Clear History");
+                itemClearHistory.Click += (sender, e) =>
+                {
+                    _dictionary.Clear();
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemShowEachPoint);
+                _contextMenuStrip.Items.Add(_itemTrackHistory);
+                _contextMenuStrip.Items.Add(_itemPauseHistory);
+                _contextMenuStrip.Items.Add(itemClearHistory);
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangePreviousPositionsTrackHistory)
+            {
+                _trackHistory = settings.NewPreviousPositionsTrackHistory;
+                _itemTrackHistory.Checked = settings.NewPreviousPositionsTrackHistory;
+            }
+
+            if (settings.ChangePreviousPositionsPauseHistory)
+            {
+                _pauseHistory = settings.NewPreviousPositionsPauseHistory;
+                _itemPauseHistory.Checked = settings.NewPreviousPositionsPauseHistory;
+            }
+        }
+
+        public override MapObjectHoverData GetHoverDataTopDownView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+
+            var allFrameData = GetAllFrameData();
+            for (int i = allFrameData.Count - 1; i >= 0; i--)
+            {
+                var singleFrameData = allFrameData[i];
+                for (int j = singleFrameData.Count - 1; j >= 0; j--)
+                {
+                    var dataPoint = singleFrameData[j];
+                    double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
+                    double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+                    if (dist <= radius)
+                    {
+                        return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i, index2: j);
+                    }
+                }
+            }
+            return null;
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            var allFrameData = GetAllFrameData();
+            for (int i = allFrameData.Count - 1; i >= 0; i--)
+            {
+                var singleFrameData = allFrameData[i];
+                for (int j = singleFrameData.Count - 1; j >= 0; j--)
+                {
+                    var dataPoint = singleFrameData[j];
+                    (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
+                    double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+                    double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
+                    if (dist <= radius)
+                    {
+                        return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i, index2: j);
+                    }
+                }
+            }
+            return null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            var data = GetAllFrameData();
+            var dataPoint = data[hoverData.Index.Value][hoverData.Index2.Value];
+            List<double> posValues = new List<double>() { dataPoint.x, dataPoint.y, dataPoint.z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            List<string> pointList = new List<string>();
+            foreach (uint key in _dictionary.Keys)
+            {
+                List<(float x, float y, float z, float angle, int tex, bool show)> values = _dictionary[key];
+                List<object> frameData = values.ConvertAll(value =>
+                {
+                    List<object> parts = new List<object>()
+                    {
+                        (double)value.x,
+                        (double)value.y,
+                        (double)value.z,
+                        (double)value.angle,
+                        value.tex,
+                        value.show,
+                    };
+                    return (object)string.Join(",", parts);
+                });
+                frameData.Insert(0, key);
+                pointList.Add(string.Join(";", frameData));
+            }
+            return new List<XAttribute>()
+            {
+                new XAttribute("points", string.Join("|", pointList)),
+            };
+        }
+
+        public (float x, float y, float z) GetMidpoint()
+        {
+            List<float> xValues = new List<float>();
+            List<float> yValues = new List<float>();
+            List<float> zValues = new List<float>();
+
+            var allFrameData = GetAllFrameData();
+            foreach (var singleFrameData in allFrameData)
+            {
+                foreach (var data in singleFrameData)
+                {
+                    xValues.Add(data.x);
+                    yValues.Add(data.y);
+                    zValues.Add(data.z);
+                }
+            }
+
+            if (xValues.Count == 0) return (0, 0, 0);
+
+            float xMin = xValues.Min();
+            float xMax = xValues.Max();
+            float yMin = yValues.Min();
+            float yMax = yValues.Max();
+            float zMin = zValues.Min();
+            float zMax = zValues.Max();
+
+            float xMidpoint = (xMin + xMax) / 2;
+            float yMidpoint = (yMin + yMax) / 2;
+            float zMidpoint = (zMin + zMax) / 2;
+
+            return (xMidpoint, yMidpoint, zMidpoint);
         }
     }
 }

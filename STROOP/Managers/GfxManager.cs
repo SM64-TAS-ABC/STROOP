@@ -311,6 +311,7 @@ namespace STROOP.Managers
                 ? ColorUtilities.GetColorFromString("Yellow")
                 : ColorUtilities.GetColorFromString("LightBlue");
             WatchVariable watchVar = new WatchVariable(
+                name: name,
                 memoryTypeName: type,
                 specialType: null,
                 baseAddressType: BaseAddressTypeEnum.GfxNode,

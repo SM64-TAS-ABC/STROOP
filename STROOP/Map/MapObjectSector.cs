@@ -35,7 +35,7 @@ namespace STROOP.Map
             Color = Color.Yellow;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<(float centerX, float centerZ, float radius, float angle, float angleRadius)> dimenstionList = GetDimensions();
 
@@ -82,7 +82,7 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             // do nothing
         }

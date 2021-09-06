@@ -10,6 +10,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace STROOP.Map
 {
@@ -46,6 +47,17 @@ namespace STROOP.Map
         public override float GetY()
         {
             return (float)PositionAngle.Mario.Y;
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                _contextMenuStrip = new ContextMenuStrip();
+                GetCircleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
+            }
+
+            return _contextMenuStrip;
         }
     }
 }

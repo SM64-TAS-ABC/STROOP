@@ -235,7 +235,8 @@ namespace STROOP.Utilities
 
             // Create Behavior-ImagePath list
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", overlayImageDir = "",
-                marioImagePath = "", holpMapImagePath = "", homeMapImagePath = "", intendedNextPositionImagePath = "", hudImagePath = "", debugImagePath = "",
+                marioImagePath = "", holpMapImagePath = "", greenHolpMapImagePath = "",
+                homeMapImagePath = "", intendedNextPositionImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 blueMarioMapImagePath = "", greenMarioMapImagePath = "", orangeMarioMapImagePath = "", purpleMarioMapImagePath = "", cameraFocusImagePath = "",
                 triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "", hitboxHackTrisImagePath = "",
@@ -251,7 +252,7 @@ namespace STROOP.Utilities
                 markedRedOverlayImagePath = "", markedOrangeOverlayImagePath = "", markedYellowOverlayImagePath = "", markedGreenOverlayImagePath = "",
                 markedLightBlueOverlayImagePath = "", markedBlueOverlayImagePath = "", markedPurpleOverlayImagePath = "", markedPinkOverlayImagePath = "",
                 markedGreyOverlayImagePath = "", markedWhiteOverlayImagePath = "", markedBlackOverlayImagePath = "",
-                lockedImagePath = "", lockDisabledImagePath = "",
+                lockedImagePath = "", lockDisabledImagePath = "", lockReadOnlyImagePath = "",
                 aggregatedPathImagePath = "", angleRangeImagePath = "", branchPathImagePath = "", coffinBoxImagePath = "",
                 compassImagePath = "", coordinateLabelsImagePath = "", facingDividerImagePath = "", homeLineImagePath = "",
                 ledgeGrabCheckerImagePath = "", lineSegmentImagePath = "", sectorImagePath = "", watersImagePath = "";
@@ -316,6 +317,10 @@ namespace STROOP.Utilities
 
                     case "Holp":
                         holpMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "GreenHolp":
+                        greenHolpMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "BlueMario":
@@ -614,6 +619,10 @@ namespace STROOP.Utilities
                                 case "LockDisabled":
                                     lockDisabledImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
+
+                                case "LockReadOnly":
+                                    lockReadOnlyImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
                             }
                         }
                         break;
@@ -711,6 +720,7 @@ namespace STROOP.Utilities
             assoc.DebugImage = Image.FromFile(imageDir + debugImagePath);
             assoc.MiscImage = Image.FromFile(imageDir + miscImagePath);
             assoc.HolpImage = Image.FromFile(mapImageDir + holpMapImagePath);
+            assoc.GreenHolpImage = Image.FromFile(mapImageDir + greenHolpMapImagePath);
             assoc.HomeImage = Image.FromFile(mapImageDir + homeMapImagePath);
             assoc.IntendedNextPositionImage = Image.FromFile(mapImageDir + intendedNextPositionImagePath);
             assoc.CameraMapImage = Image.FromFile(mapImageDir + cameraMapImagePath);
@@ -794,6 +804,9 @@ namespace STROOP.Utilities
             objectSlotManagerGui.MarkedBlackObjectOverlayImage = Image.FromFile(overlayImageDir + markedBlackOverlayImagePath);
             objectSlotManagerGui.LockedOverlayImage = Image.FromFile(overlayImageDir + lockedImagePath);
             objectSlotManagerGui.LockDisabledOverlayImage = Image.FromFile(overlayImageDir + lockDisabledImagePath);
+            objectSlotManagerGui.LockReadOnlyOverlayImage = Image.FromFile(overlayImageDir + lockReadOnlyImagePath);
+
+            objectSlotManagerGui.InitializeMarkedColorDictionary();
 
             foreach (var obj in assoc.BehaviorAssociations)
             {

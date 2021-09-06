@@ -77,7 +77,7 @@ namespace STROOP
             _drawFloorOverlay, _drawWallOverlay, _drawCeilingOverlay,
             _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawChildOverlay,
             _drawCollision1Overlay, _drawCollision2Overlay, _drawCollision3Overlay, _drawCollision4Overlay, _drawHitboxOverlapOverlay,
-            _drawLockedOverlay, _drawLockDisabledOverlay;
+            _drawLockedOverlay, _drawLockDisabledOverlay, _drawLockReadOnlyOverlay;
         int? _drawMarkedOverlay;
 
         public ObjectSlot(ObjectSlotsManager manager, int index, ObjectSlotManagerGui gui, Size size)
@@ -431,6 +431,7 @@ namespace STROOP
                 _drawMarkedOverlay,
                 _drawLockedOverlay,
                 _drawLockDisabledOverlay,
+                _drawLockReadOnlyOverlay,
             };
         }
 
@@ -488,44 +489,8 @@ namespace STROOP
             // Draw Overlays
             if (_drawMarkedOverlay.HasValue)
             {
-                switch (_drawMarkedOverlay.Value)
-                {
-                    case 1:
-                        e.Graphics.DrawImage(_gui.MarkedRedObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 2:
-                        e.Graphics.DrawImage(_gui.MarkedOrangeObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 3:
-                        e.Graphics.DrawImage(_gui.MarkedYellowObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 4:
-                        e.Graphics.DrawImage(_gui.MarkedGreenObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 5:
-                        e.Graphics.DrawImage(_gui.MarkedLightBlueObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 6:
-                        e.Graphics.DrawImage(_gui.MarkedBlueObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 7:
-                        e.Graphics.DrawImage(_gui.MarkedPurpleObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 8:
-                        e.Graphics.DrawImage(_gui.MarkedPinkObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 9:
-                        e.Graphics.DrawImage(_gui.MarkedGreyObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 0:
-                        e.Graphics.DrawImage(_gui.MarkedWhiteObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    case 10:
-                        e.Graphics.DrawImage(_gui.MarkedBlackObjectOverlayImage, new Rectangle(new Point(), Size));
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                Image image = _gui.MarkedImageDictionary[_drawMarkedOverlay.Value];
+                e.Graphics.DrawImage(image, new Rectangle(new Point(), Size));
             }
             switch (_selectionType)
             {
@@ -592,6 +557,8 @@ namespace STROOP
                 e.Graphics.DrawImage(_gui.LockedOverlayImage, new Rectangle(new Point(), Size));
             if (_drawLockDisabledOverlay)
                 e.Graphics.DrawImage(_gui.LockDisabledOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawLockReadOnlyOverlay)
+                e.Graphics.DrawImage(_gui.LockReadOnlyOverlayImage, new Rectangle(new Point(), Size));
         }
 
         public void Update(ObjectDataModel obj)
@@ -659,23 +626,32 @@ namespace STROOP
                 _drawMarkedOverlay = _manager.MarkedSlotsAddressesDictionary.ContainsKey(address.Value) ?
                     _manager.MarkedSlotsAddressesDictionary[address.Value] : (int?)null;
 
-                if (WatchVariableLockManager.ContainsAnyLocksForObject(address.Value))
+                if (Config.LockManager.ContainsAnyLocksForObject(address.Value))
                 {
-                    if (LockConfig.LockingDisabled)
+                    if (Config.Stream.Readonly)
+                    {
+                        _drawLockedOverlay = false;
+                        _drawLockDisabledOverlay = false;
+                        _drawLockReadOnlyOverlay = true;
+                    }
+                    else if (LockConfig.LockingDisabled)
                     {
                         _drawLockedOverlay = false;
                         _drawLockDisabledOverlay = true;
+                        _drawLockReadOnlyOverlay = false;
                     }
                     else
                     {
                         _drawLockedOverlay = true;
                         _drawLockDisabledOverlay = false;
+                        _drawLockReadOnlyOverlay = false;
                     }
                 }
                 else
                 {
                     _drawLockedOverlay = false;
                     _drawLockDisabledOverlay = false;
+                    _drawLockReadOnlyOverlay = false;
                 }
             }
             else
@@ -705,6 +681,7 @@ namespace STROOP
                 _drawMarkedOverlay = null;
                 _drawLockedOverlay = false;
                 _drawLockDisabledOverlay = false;
+                _drawLockReadOnlyOverlay = false;
             }
             List<object> overlays = GetCurrentOverlayValues();
 

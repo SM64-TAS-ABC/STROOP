@@ -21,12 +21,12 @@ namespace STROOP.Map
         {
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<MapObjectPath> paths = new List<MapObjectPath>();
             foreach (MapTracker mapTracker in Config.MapGui.flowLayoutPanelMapTrackers.Controls)
             {
-                paths.AddRange(mapTracker.GetMapPathObjects());
+                paths.AddRange(mapTracker.GetMapPathObjectsOfType<MapObjectPath>());
             }
             List<List<MapObjectPathSegment>> segmentLists = paths.ConvertAll(path => path.GetSegments());
             if (segmentLists.Count == 0) return;
@@ -52,7 +52,7 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             // do nothing
         }

@@ -32,7 +32,7 @@ namespace STROOP.Map
             Color = Color.Red;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             for (int i = 1; i <= Size; i++)
             {
@@ -101,7 +101,7 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             // do nothing
         }

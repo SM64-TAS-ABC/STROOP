@@ -85,23 +85,28 @@ namespace STROOP.Map
             return GetVerticesOrthographicView();
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            base.DrawOn2DControlTopDownView();
+            base.DrawOn2DControlTopDownView(hoverData);
 
             if (_customImage != null)
             {
                 (float x, float y, float z) = ((float, float, float))PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
                 (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 PointF point = new PointF(controlX, controlZ);
-                SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _iconSize, Scales);   
-                MapUtilities.DrawTexture(_customImageTex, point, size, 0, 1);
+                SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _iconSize, Scales);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(_customImageTex.Value, point, size, 0, opacity);
             }
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            base.DrawOn2DControlOrthographicView();
+            base.DrawOn2DControlOrthographicView(hoverData);
 
             if (_customImage != null)
             {
@@ -109,7 +114,12 @@ namespace STROOP.Map
                 (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                 PointF point = new PointF(controlX, controlZ);
                 SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _iconSize, Scales);
-                MapUtilities.DrawTexture(_customImageTex, point, size, 0, 1);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(_customImageTex.Value, point, size, 0, opacity);
             }
         }
 
@@ -128,7 +138,7 @@ namespace STROOP.Map
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                 GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices2.Length * Map3DVertex.Size),
                     vertices2, BufferUsageHint.StaticDraw);
-                GL.BindTexture(TextureTarget.Texture2D, _customImageTex);
+                GL.BindTexture(TextureTarget.Texture2D, _customImageTex.Value);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                 Config.Map3DGraphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Triangles, 0, vertices2.Length);
@@ -253,6 +263,49 @@ namespace STROOP.Map
                 new XAttribute("positionAngle1", _posAngle1),
                 new XAttribute("positionAngle2", _posAngle2),
             };
+        }
+
+        public override MapObjectHoverData GetHoverDataTopDownView()
+        {
+            if (_customImage == null) return null;
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+            (double x, double y, double z) = PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
+            double dist = MoreMath.GetDistanceBetween(x, z, inGameX, inGameZ);
+            double radius = Scales ? _iconSize : _iconSize / Config.CurrentMapGraphics.MapViewScaleValue;
+            Config.SetDebugText("{0} {1} {2} {3}", x, z, inGameX, inGameZ);
+            if (dist <= radius)
+            {
+                return new MapObjectHoverData(this, x, y, z);
+            }
+            return null;
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            if (_customImage == null) return null;
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (double x, double y, double z) = PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
+            (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z);
+            double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+            double radius = Scales ? _iconSize * Config.CurrentMapGraphics.MapViewScaleValue : _iconSize;
+            if (dist <= radius)
+            {
+                return new MapObjectHoverData(this, x, y, z);
+            }
+            return null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            (double x, double y, double z) = PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
+            List<double> posValues = new List<double>() { x, y, z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
         }
     }
 }

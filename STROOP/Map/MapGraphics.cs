@@ -112,7 +112,7 @@ namespace STROOP.Map
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.MatrixMode(MatrixMode.Modelview);
 
-            Config.MapGui.flowLayoutPanelMapTrackers.DrawOn2DControl();
+            Config.MapGui.flowLayoutPanelMapTrackers.DrawOn2DControl(_isMainGraphics);
 
             _glControl.SwapBuffers();
         }
@@ -709,34 +709,38 @@ namespace STROOP.Map
 
             if (_isRotating)
             {
-                if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+                bool isRightClickingForSelectionMode = Config.MapGui.checkBoxMapOptionsSelectionMode.Checked && _isMainGraphics;
+                if (!isRightClickingForSelectionMode)
                 {
-                    int pixelDiffX = HandleDragAbility(true, false, e.X - _rotateStartMouseX);
-                    int pixelDiffY = HandleDragAbility(false, false, e.Y - _rotateStartMouseY);
-                    pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
-                    pixelDiffY = MapUtilities.MaybeReverse(pixelDiffY);
-                    float yawDiff = (float)(pixelDiffX * (65536 / SpecialConfig.Map2DOrthographicHorizontalRotateSpeed));
-                    float pitchDiff = (float)(pixelDiffY * (65536 / SpecialConfig.Map2DOrthographicVerticalRotateSpeed));
-                    float newYaw = _rotateStartYaw - yawDiff;
-                    float newPitch = _rotateStartPitch - pitchDiff;
-                    newYaw = (float)MoreMath.NormalizeAngleDouble(newYaw);
-                    newPitch = (float)MoreMath.Clamp(newPitch, MAP_VIEW_PITCH_MIN_VALUE, MAP_VIEW_PITCH_MAX_VALUE);
-                    if (KeyboardUtilities.IsCtrlHeld())
+                    if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
                     {
-                        newYaw = (float)MoreMath.NormalizeAngle45Degrees(newYaw);
+                        int pixelDiffX = HandleDragAbility(true, false, e.X - _rotateStartMouseX);
+                        int pixelDiffY = HandleDragAbility(false, false, e.Y - _rotateStartMouseY);
+                        pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
+                        pixelDiffY = MapUtilities.MaybeReverse(pixelDiffY);
+                        float yawDiff = (float)(pixelDiffX * (65536 / SpecialConfig.Map2DOrthographicHorizontalRotateSpeed));
+                        float pitchDiff = (float)(pixelDiffY * (65536 / SpecialConfig.Map2DOrthographicVerticalRotateSpeed));
+                        float newYaw = _rotateStartYaw - yawDiff;
+                        float newPitch = _rotateStartPitch - pitchDiff;
+                        newYaw = (float)MoreMath.NormalizeAngleDouble(newYaw);
+                        newPitch = (float)MoreMath.Clamp(newPitch, MAP_VIEW_PITCH_MIN_VALUE, MAP_VIEW_PITCH_MAX_VALUE);
+                        if (KeyboardUtilities.IsCtrlHeld())
+                        {
+                            newYaw = (float)MoreMath.NormalizeAngle45Degrees(newYaw);
+                        }
+                        SetCustomAngle(newYaw, newPitch);
                     }
-                    SetCustomAngle(newYaw, newPitch);
-                }
-                else
-                {
-                    float angleToMouse = (float)MoreMath.AngleTo_AngleUnits(
-                        _rotateStartMouseX, _rotateStartMouseY, e.X, e.Y) * MapUtilities.MaybeReverse(-1) + 32768;
-                    float newAngle = _rotateStartYaw + angleToMouse;
-                    if (KeyboardUtilities.IsCtrlHeld())
+                    else
                     {
-                        newAngle = (float)MoreMath.NormalizeAngle45Degrees(newAngle);
+                        float angleToMouse = (float)MoreMath.AngleTo_AngleUnits(
+                            _rotateStartMouseX, _rotateStartMouseY, e.X, e.Y) * MapUtilities.MaybeReverse(-1) + 32768;
+                        float newAngle = _rotateStartYaw + angleToMouse;
+                        if (KeyboardUtilities.IsCtrlHeld())
+                        {
+                            newAngle = (float)MoreMath.NormalizeAngle45Degrees(newAngle);
+                        }
+                        SetCustomYaw(newAngle);
                     }
-                    SetCustomYaw(newAngle);
                 }
             }
         }

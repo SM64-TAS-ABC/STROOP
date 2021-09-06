@@ -25,6 +25,37 @@ namespace STROOP.Controls
                 Config.ObjectSlotsManager.SelectedSlotsAddresses.AddRange(Config.ObjectSlotsManager.MarkedSlotsAddresses);
             };
 
+            ToolStripMenuItem itemSelectSpecificMarkedSlots = new ToolStripMenuItem("Select Specific Marked Slots...");
+            Dictionary<int, string> MarkedColorDictionary =
+                new Dictionary<int, string>()
+                {
+                    [1] = "Red",
+                    [2] = "Orange",
+                    [3] = "Yellow",
+                    [4] = "Green",
+                    [5] = "Light Blue",
+                    [6] = "Blue",
+                    [7] = "Purple",
+                    [8] = "Pink",
+                    [9] = "Grey",
+                    [0] = "White",
+                    [10] = "Black",
+                };
+            List<int> keys = MarkedColorDictionary.Keys.ToList();
+            foreach (int key in keys)
+            {
+                string colorName = MarkedColorDictionary[key];
+                ToolStripMenuItem item = new ToolStripMenuItem(colorName);
+                item.Click += (sender, e) =>
+                {
+                    List<uint> objAddresses = Config.ObjectSlotsManager.MarkedSlotsAddressesDictionary.Keys.ToList()
+                        .FindAll(objAddress => Config.ObjectSlotsManager.MarkedSlotsAddressesDictionary[objAddress] == key);
+                    Config.ObjectSlotsManager.SelectedSlotsAddresses.Clear();
+                    Config.ObjectSlotsManager.SelectedSlotsAddresses.AddRange(objAddresses);
+                };
+                itemSelectSpecificMarkedSlots.DropDownItems.Add(item);
+            }
+
             ToolStripMenuItem itemSelectCopiedAddress = new ToolStripMenuItem("Select Copied Address");
             itemSelectCopiedAddress.Click += (sender, e) =>
             {
@@ -54,31 +85,39 @@ namespace STROOP.Controls
                 ButtonUtilities.UnloadObject(objsToUnload);
             };
 
-            ToolStripMenuItem itemFixHorizontalScroll = new ToolStripMenuItem("Fix Horizontal Scroll");
-            itemFixHorizontalScroll.Click += (sender, e) =>
+            ToolStripMenuItem itemDisplayAsRow = new ToolStripMenuItem("Display as Row");
+            itemDisplayAsRow.Click += (sender, e) =>
             {
-                List<Control> controls = new List<Control>();
-                foreach (Control control in Controls)
-                {
-                    controls.Add(control);
-                }
-                while (Controls.Count > 0)
-                {
-                    Controls.RemoveAt(0);
-                }
-                foreach (Control control in controls)
-                {
-                    Controls.Add(control);
-                }
+                WrapContents = !WrapContents;
+                itemDisplayAsRow.Checked = !WrapContents;
+                ResetSlots();
             };
 
             ContextMenuStrip = new ContextMenuStrip();
             ContextMenuStrip.Items.Add(itemSelectMarkedSlots);
+            ContextMenuStrip.Items.Add(itemSelectSpecificMarkedSlots);
             ContextMenuStrip.Items.Add(itemSelectCopiedAddress);
             ContextMenuStrip.Items.Add(itemClearMarkedSlots);
             ContextMenuStrip.Items.Add(itemClearSelectedSlots);
             ContextMenuStrip.Items.Add(itemUnloadAllButMarkedSlots);
-            ContextMenuStrip.Items.Add(itemFixHorizontalScroll);
+            ContextMenuStrip.Items.Add(itemDisplayAsRow);
+        }
+
+        private void ResetSlots()
+        {
+            List<Control> controls = new List<Control>();
+            foreach (Control control in Controls)
+            {
+                controls.Add(control);
+            }
+            while (Controls.Count > 0)
+            {
+                Controls.RemoveAt(0);
+            }
+            foreach (Control control in controls)
+            {
+                Controls.Add(control);
+            }
         }
     }
 }

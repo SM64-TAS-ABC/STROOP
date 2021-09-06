@@ -28,7 +28,12 @@ namespace STROOP.Map
 
         protected abstract List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions();
 
-        public override void DrawOn2DControlOrthographicView()
+        protected override List<(float x, float y, float z)> GetPoints()
+        {
+            return Get3DDimensions().ConvertAll(d => (d.centerX, d.minY, d.centerZ));
+        }
+
+        private List<List<(float x, float z)>> GetOrthographicDimensionsForControl()
         {
             List<List<(float x, float y, float z)>> vertexLists = Get3DDimensions().ConvertAll(dimension =>
             {
@@ -69,29 +74,40 @@ namespace STROOP.Map
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                     vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z)));
 
+            return vertexListsForControl;
+        }
+
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
+        {
+            List<List<(float x, float z)>> vertexListsForControl = GetOrthographicDimensionsForControl();
+
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
             // Draw triangle
-            GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
-            foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+            for (int i = 0; i < vertexListsForControl.Count; i++)
             {
+                List<(float x, float z)> vertexList = vertexListsForControl[i];
+
                 GL.Begin(PrimitiveType.Polygon);
                 foreach ((float x, float z) in vertexList)
                 {
+                    byte opacityByte = OpacityByte;
+                    if (this == hoverData?.MapObject && i == hoverData?.Index)
+                    {
+                        opacityByte = MapUtilities.GetHoverOpacityByte();
+                    }
+                    GL.Color4(Color.R, Color.G, Color.B, opacityByte);
                     GL.Vertex2(x, z);
                 }
                 GL.End();
-            }
 
-            // Draw outline
-            if (LineWidth != 0)
-            {
-                GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
-                GL.LineWidth(LineWidth);
-                foreach (List<(float x, float z)> vertexList in vertexListsForControl)
+                // Draw outline
+                if (LineWidth != 0)
                 {
+                    GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
+                    GL.LineWidth(LineWidth);
                     GL.Begin(PrimitiveType.LineLoop);
                     foreach ((float x, float z) in vertexList)
                     {
@@ -182,6 +198,23 @@ namespace STROOP.Map
                     });
                 }
             }
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            List<List<(float x, float z)>> dimensionList = GetOrthographicDimensionsForControl();
+            for (int i = dimensionList.Count - 1; i >= 0; i--)
+            {
+                List<(float x, float z)> dimension = dimensionList[i];
+                if (MapUtilities.IsWithinShapeForControl(dimension, relPos.X, relPos.Y))
+                {
+                    var inGameDimensionList = GetPoints();
+                    var inGameDimension = inGameDimensionList[i];
+                    return new MapObjectHoverData(this, inGameDimension.x, inGameDimension.y, inGameDimension.z, index: i);
+                }
+            }
+            return null;
         }
     }
 }

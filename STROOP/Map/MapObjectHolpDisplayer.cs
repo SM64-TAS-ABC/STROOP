@@ -25,7 +25,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.HolpImage;
+            return Config.ObjectAssociations.GreenHolpImage;
         }
 
         public override string GetName()
@@ -38,16 +38,22 @@ namespace STROOP.Map
             return (float)PositionAngle.Mario.Y;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<(float x, float y, float z)> data = GetData();
-            foreach (var dataPoint in data)
+            for (int i = 0; i < data.Count; i++)
             {
+                var dataPoint = data[i];
                 (float x, float y, float z) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(_tex, point, size, 0, Opacity);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject && i == hoverData?.Index)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, 0, opacity);
             }
 
             if (LineWidth != 0)
@@ -72,16 +78,22 @@ namespace STROOP.Map
             }
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             List<(float x, float y, float z)> data = GetData();
-            foreach (var dataPoint in data)
+            for (int i = 0; i < data.Count; i++)
             {
+                var dataPoint = data[i];
                 (float x, float y, float z) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(_tex, point, size, 0, Opacity);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject && i == hoverData?.Index)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, 0, opacity);
             }
 
             if (LineWidth != 0)
@@ -122,7 +134,7 @@ namespace STROOP.Map
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                 GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(vertices.Length * Map3DVertex.Size),
                     vertices, BufferUsageHint.StaticDraw);
-                GL.BindTexture(TextureTarget.Texture2D, _tex);
+                GL.BindTexture(TextureTarget.Texture2D, _customImageTex ?? _tex);
                 GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBuffer);
                 Config.Map3DGraphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Triangles, 0, vertices.Length);
@@ -161,7 +173,7 @@ namespace STROOP.Map
 
         public Matrix4 GetModelMatrix(float x, float y, float z, float ang)
         {
-            Image image = Config.ObjectAssociations.MarioImage;
+            Image image = GetImage();
             SizeF _imageNormalizedSize = new SizeF(
                 image.Width >= image.Height ? 1.0f : (float)image.Width / image.Height,
                 image.Width <= image.Height ? 1.0f : (float)image.Height / image.Width);
@@ -208,7 +220,7 @@ namespace STROOP.Map
             if (_tex == -1)
             {
                 _tex = MapUtilities.LoadTexture(
-                    Config.ObjectAssociations.HolpImage as Bitmap);
+                    Config.ObjectAssociations.GreenHolpImage as Bitmap);
             }
         }
 
@@ -220,6 +232,57 @@ namespace STROOP.Map
         public override MapDrawType GetDrawType()
         {
             return MapDrawType.Overlay;
+        }
+
+        public override MapObjectHoverData GetHoverDataTopDownView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+
+            List<(float x, float y, float z)> data = GetData();
+            for (int i = data.Count - 1; i >= 0; i--)
+            {
+                var dataPoint = data[i];
+                double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
+                double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+                if (dist <= radius)
+                {
+                    return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
+                }
+            }
+            return null;
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+
+            List<(float x, float y, float z)> data = GetData();
+            for (int i = data.Count - 1; i >= 0; i--)
+            {
+                var dataPoint = data[i];
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
+                double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+                double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
+                if (dist <= radius)
+                {
+                    return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
+                }
+            }
+            return null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            List<(float x, float y, float z)> data = GetData();
+            var dataPoint = data[hoverData.Index.Value];
+            List<double> posValues = new List<double>() { dataPoint.x, dataPoint.y, dataPoint.z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
         }
     }
 }

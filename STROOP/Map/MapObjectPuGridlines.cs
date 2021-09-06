@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace STROOP.Map
 {
-    public class MapObjectPuGridlines : MapObjectLine
+    public class MapObjectPuGridlines : MapObjectGridlines
     {
         private enum PuGridlineSetting { SETTING1, SETTING2, SETTING3 };
         private PuGridlineSetting _setting;
@@ -31,13 +31,19 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
+            if (!Config.MapGui.checkBoxMapOptionsEnablePuView.Checked)
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
             switch (_setting)
             {
                 case PuGridlineSetting.SETTING1:
                     {
                         float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-                        long spacing = (long)(65536 * Size);
+                        float size = Math.Max(Size, 1);
+                        long spacing = (long)(65536 * size);
 
                         long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing;
                         long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing;
@@ -118,8 +124,46 @@ namespace STROOP.Map
             }
         }
 
+        protected override List<(float x, float y, float z)> GetGridlineIntersectionPositionsTopDownView()
+        {
+            if (!Config.MapGui.checkBoxMapOptionsEnablePuView.Checked)
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
+            if (_setting != PuGridlineSetting.SETTING1)
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+
+            float size = Math.Max(Size, 1);
+            long spacing = (long)(65536 * size);
+
+            long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing;
+            long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing;
+            long zMin = ((((long)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing;
+            long zMax = ((((long)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing;
+
+            List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+            for (long x = xMin; x <= xMax; x += spacing)
+            {
+                for (long z = zMin; z <= zMax; z += spacing)
+                {
+                    vertices.Add((x, marioY, z));
+                }
+            }
+            return vertices;
+        }
+
         protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
+            if (!Config.MapGui.checkBoxMapOptionsEnablePuView.Checked)
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
             switch (_setting)
             {
                 case PuGridlineSetting.SETTING1:
@@ -301,6 +345,61 @@ namespace STROOP.Map
             }
         }
 
+        protected override List<(float x, float y, float z)> GetGridlineIntersectionPositionsOrthographicView()
+        {
+            if (!Config.MapGui.checkBoxMapOptionsEnablePuView.Checked)
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
+            if (_setting != PuGridlineSetting.SETTING1)
+            {
+                return new List<(float x, float y, float z)>();
+            }
+
+            float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
+            float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
+            int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536;
+            int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536;
+            int yMin = ((((int)Config.CurrentMapGraphics.MapViewYMin) / 65536) - 1) * 65536;
+            int yMax = ((((int)Config.CurrentMapGraphics.MapViewYMax) / 65536) + 1) * 65536;
+            int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / 65536) - 1) * 65536;
+            int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / 65536) + 1) * 65536;
+
+            if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
+                Config.CurrentMapGraphics.MapViewYawValue == 32768))
+            {
+                List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                for (int x = xMin; x <= xMax; x += 65536)
+                {
+                    for (int y = yMin; y <= yMax; y += 65536)
+                    {
+                        vertices.Add((x, y, zCenter));
+                    }
+                }
+                return vertices;
+            }
+            else if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
+                (Config.CurrentMapGraphics.MapViewYawValue == 16384 ||
+                Config.CurrentMapGraphics.MapViewYawValue == 49152))
+            {
+                List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
+                for (int z = zMin; z <= zMax; z += 65536)
+                {
+                    for (int y = yMin; y <= yMax; y += 65536)
+                    {
+                        vertices.Add((xCenter, y, z));
+                    }
+                }
+                return vertices;
+            }
+            else
+            {
+                return new List<(float x, float y, float z)>();
+            }
+        }
+
         public override string GetName()
         {
             return "PU Gridlines";
@@ -327,8 +426,11 @@ namespace STROOP.Map
                 (List<ToolStripMenuItem> itemList, Action<PuGridlineSetting> valueAction) =
                     ControlUtilities.CreateCheckableItems(
                         itemNames, itemValues, setterAction, startingValue);
+
                 _contextMenuStrip = new ContextMenuStrip();
                 itemList.ForEach(item => _contextMenuStrip.Items.Add(item));
+                _contextMenuStrip.Items.Add(new ToolStripSeparator());
+                GetLineToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
             }
 
             return _contextMenuStrip;

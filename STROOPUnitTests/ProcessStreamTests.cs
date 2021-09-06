@@ -15,6 +15,7 @@ namespace STROOPUnitTests
         [TestInitialize]
         public void TestInit()
         {
+            Config.LockManager = new WatchVariableLockManager();
         }
 
         public void BasicTest<T>(IEnumerable<(uint, T, byte[])> valuesToWrite, ProcessStream processStream, Func<uint, int, bool, T> valueReader)

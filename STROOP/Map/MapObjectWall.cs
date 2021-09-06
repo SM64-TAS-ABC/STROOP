@@ -18,11 +18,9 @@ namespace STROOP.Map
 {
     public abstract class MapObjectWall : MapObjectTriangle
     {
-        private bool _showArrows;
         private float? _relativeHeight;
         private float? _absoluteHeight;
 
-        private ToolStripMenuItem _itemShowArrows;
         private ToolStripMenuItem _itemSetRelativeHeight;
         private ToolStripMenuItem _itemSetAbsoluteHeight;
 
@@ -36,37 +34,35 @@ namespace STROOP.Map
             Opacity = 0.5;
             Color = Color.Green;
 
-            _showArrows = false;
             _relativeHeight = null;
             _absoluteHeight = null;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             float marioHeight = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
             float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : _absoluteHeight;
 
-            List<(float x1, float z1, float x2, float z2, bool xProjection, double pushAngle)> wallData = GetFilteredTriangles()
+            List<TriangleMapData> wallDataList = GetFilteredTriangles()
                 .ConvertAll(tri => MapUtilities.Get2DWallDataFromTri(tri, height))
-                .FindAll(wallDataNullable => wallDataNullable.HasValue)
-                .ConvertAll(wallDataNullable => wallDataNullable.Value);
+                .FindAll(wallDataNullable => wallDataNullable != null);
 
-            foreach ((float x1, float z1, float x2, float z2, bool xProjection, double pushAngle) in wallData)
+            foreach (TriangleMapData wallData in wallDataList)
             {
-                float angle = (float)MoreMath.AngleTo_Radians(x1, z1, x2, z2);
-                float projectionDist = Size / (float)Math.Abs(xProjection ? Math.Cos(angle) : Math.Sin(angle));
+                float angle = (float)MoreMath.AngleTo_Radians(wallData.X1, wallData.Z1, wallData.X2, wallData.Z2);
+                float projectionDist = Size / (float)Math.Abs(wallData.Tri.XProjection ? Math.Cos(angle) : Math.Sin(angle));
                 List<List<(float x, float z)>> quads = new List<List<(float x, float z)>>();
-                Action<float, float> addQuad = (float xAdd, float zAdd) =>
+                void addQuad(float xAdd, float zAdd)
                 {
                     quads.Add(new List<(float x, float z)>()
                     {
-                        (x1, z1),
-                        (x1 + xAdd, z1 + zAdd),
-                        (x2 + xAdd, z2 + zAdd),
-                        (x2, z2),
+                        (wallData.X1, wallData.Z1),
+                        (wallData.X1 + xAdd, wallData.Z1 + zAdd),
+                        (wallData.X2 + xAdd, wallData.Z2 + zAdd),
+                        (wallData.X2, wallData.Z2),
                     });
                 };
-                if (xProjection)
+                if (wallData.Tri.XProjection)
                 {
                     addQuad(projectionDist, 0);
                     addQuad(-1 * projectionDist, 0);
@@ -86,7 +82,12 @@ namespace STROOP.Map
                 GL.LoadIdentity();
 
                 // Draw quad
-                GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+                byte opacityByte = OpacityByte;
+                if (this == hoverData?.MapObject && hoverData?.Tri == wallData.Tri)
+                {
+                    opacityByte = MapUtilities.GetHoverOpacityByte();
+                }
+                GL.Color4(Color.R, Color.G, Color.B, opacityByte);
                 GL.Begin(PrimitiveType.Quads);
                 foreach (List<(float x, float z)> quad in quadsForControl)
                 {
@@ -99,7 +100,8 @@ namespace STROOP.Map
 
                 if (_showArrows)
                 {
-                    double totalDistance = MoreMath.GetDistanceBetween(x1, z1, x2, z2);
+                    double totalDistance = MoreMath.GetDistanceBetween(
+                        wallData.X1, wallData.Z1, wallData.X2, wallData.Z2);
                     List<double> markDistances = new List<double>();
                     if (totalDistance < 100)
                     {
@@ -110,7 +112,7 @@ namespace STROOP.Map
                         double firstDistance = 25;
                         double lastDistance = totalDistance - 25;
                         double distanceDiff = lastDistance - firstDistance;
-                        int numMarks = (int)Math.Truncate(distanceDiff / 50) + 1;
+                        int numMarks = (int)Math.Truncate(distanceDiff / 50 + 0.25) + 1;
                         int numBetweens = numMarks - 1;
                         double betweenDistance = distanceDiff / numBetweens;
                         for (int i = 0; i < numMarks; i++)
@@ -123,17 +125,21 @@ namespace STROOP.Map
                     foreach (double dist in markDistances)
                     {
                         double portion = dist / totalDistance;
-                        (double x, double z) pointOnMidpoint = (x1 + portion * (x2 - x1), z1 + portion * (z2 - z1));
-                        (double x, double z) pointOnSide1 = xProjection ?
+                        (double x, double z) pointOnMidpoint =
+                            (wallData.X1 + portion * (wallData.X2 - wallData.X1), wallData.Z1 + portion * (wallData.Z2 - wallData.Z1));
+                        (double x, double z) pointOnSide1 = wallData.Tri.XProjection ?
                             (pointOnMidpoint.x - projectionDist / 2, pointOnMidpoint.z) :
                             (pointOnMidpoint.x, pointOnMidpoint.z - projectionDist / 2);
-                        (double x, double z) pointOnSide2 = xProjection ?
+                        (double x, double z) pointOnSide2 = wallData.Tri.XProjection ?
                             (pointOnMidpoint.x + projectionDist / 2, pointOnMidpoint.z) :
                             (pointOnMidpoint.x, pointOnMidpoint.z + projectionDist / 2);
                         markPoints.Add(((float x, float z))pointOnSide1);
                         markPoints.Add(((float x, float z))pointOnSide2);
                     }
 
+                    markPoints = markPoints.FindAll(p => MapUtilities.IsInVisibleSpace(p.x, p.z, 200));
+
+                    double pushAngle = wallData.Tri.GetPushAngle();
                     double angleUp = pushAngle;
                     double angleDown = pushAngle + 32768;
                     double angleLeft = pushAngle + 16384;
@@ -181,7 +187,7 @@ namespace STROOP.Map
 
                     // Draw arrow
                     Color arrowColor = Color.Darken(0.5);
-                    GL.Color4(arrowColor.R, arrowColor.G, arrowColor.B, OpacityByte);
+                    GL.Color4(arrowColor.R, arrowColor.G, arrowColor.B, opacityByte);
                     foreach (List<(float x, float z)> arrow in arrowsForControl)
                     {
                         GL.Begin(PrimitiveType.Polygon);
@@ -220,14 +226,6 @@ namespace STROOP.Map
 
         protected List<ToolStripMenuItem> GetWallToolStripMenuItems()
         {
-            _itemShowArrows = new ToolStripMenuItem("Show Arrows");
-            _itemShowArrows.Click += (sender, e) =>
-            {
-                MapObjectSettings settings = new MapObjectSettings(
-                    changeWallShowArrows: true, newWallShowArrows: !_showArrows);
-                GetParentMapTracker().ApplySettings(settings);
-            };
-
             _itemSetRelativeHeight = new ToolStripMenuItem(SET_RELATIVE_HEIGHT_TEXT);
             _itemSetRelativeHeight.Click += (sender, e) =>
             {
@@ -271,7 +269,6 @@ namespace STROOP.Map
 
             return new List<ToolStripMenuItem>()
             {
-                _itemShowArrows,
                 _itemSetRelativeHeight,
                 itemClearRelativeHeight,
                 _itemSetAbsoluteHeight,
@@ -282,12 +279,6 @@ namespace STROOP.Map
         public override void ApplySettings(MapObjectSettings settings)
         {
             base.ApplySettings(settings);
-
-            if (settings.ChangeWallShowArrows)
-            {
-                _showArrows = settings.NewWallShowArrows;
-                _itemShowArrows.Checked = settings.NewWallShowArrows;
-            }
 
             if (settings.ChangeWallRelativeHeight)
             {
@@ -396,6 +387,62 @@ namespace STROOP.Map
                     GL.DeleteBuffer(buffer);
                 });
             }
+        }
+
+        public override MapObjectHoverData GetHoverDataTopDownView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+
+            float marioHeight = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : _absoluteHeight;
+
+            List<TriangleMapData> wallDataList = GetFilteredTriangles()
+                .ConvertAll(tri => MapUtilities.Get2DWallDataFromTri(tri, height))
+                .FindAll(wallDataNullable => wallDataNullable != null);
+
+            for (int i = wallDataList.Count - 1; i >= 0; i--)
+            {
+                TriangleMapData wallData = wallDataList[i];
+
+                float angle = (float)MoreMath.AngleTo_Radians(wallData.X1, wallData.Z1, wallData.X2, wallData.Z2);
+                float projectionDist = Size / (float)Math.Abs(wallData.Tri.XProjection ? Math.Cos(angle) : Math.Sin(angle));
+                List<List<(float x, float z)>> quads = new List<List<(float x, float z)>>();
+                void addQuad(float xAdd, float zAdd)
+                {
+                    quads.Add(new List<(float x, float z)>()
+                    {
+                        (wallData.X1, wallData.Z1),
+                        (wallData.X1 + xAdd, wallData.Z1 + zAdd),
+                        (wallData.X2 + xAdd, wallData.Z2 + zAdd),
+                        (wallData.X2, wallData.Z2),
+                    });
+                };
+                if (wallData.Tri.XProjection)
+                {
+                    addQuad(projectionDist, 0);
+                    addQuad(-1 * projectionDist, 0);
+                }
+                else
+                {
+                    addQuad(0, projectionDist);
+                    addQuad(0, -1 * projectionDist);
+                }
+
+                List<List<(float x, float z)>> quadsForControl =
+                    quads.ConvertAll(quad => quad.ConvertAll(
+                        vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z)));
+
+                foreach (List<(float x, float z)> quadForControl in quadsForControl)
+                {
+                    if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y))
+                    {
+                        return new MapObjectHoverData(
+                            this, wallData.Tri.GetMidpointX(), wallData.Tri.GetMidpointY(), wallData.Tri.GetMidpointZ(), tri: wallData.Tri);
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }

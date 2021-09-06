@@ -19,6 +19,8 @@ namespace STROOP.Map
 {
     public class MapTrackerFlowLayoutPanel : NoTearFlowLayoutPanel
     {
+        public MapObjectHoverData PreviousHoverData = null;
+
         private readonly object _objectLock = new object();
 
         private MapObject _mapObjMap;
@@ -108,11 +110,8 @@ namespace STROOP.Map
             }
         }
 
-        public void DrawOn2DControl()
+        public void DrawOn2DControl(bool isMainGraphics)
         {
-            _mapObjBackground.DrawOn2DControl();
-            _mapObjMap.DrawOn2DControl();
-            
             List<MapObject> listOrderOnTop = new List<MapObject>();
             List<MapObject> listOrderOnBottom = new List<MapObject>();
             List<MapObject> listOrderByY = new List<MapObject>();
@@ -148,10 +147,38 @@ namespace STROOP.Map
             {
                 listCombined.Insert(0, _mapObjHitboxHackTris);
             }
+            listCombined.Insert(0, _mapObjMap);
+            listCombined.Insert(0, _mapObjBackground);
+
+            MapObjectHoverData hoverData = null;
+            if (isMainGraphics &&
+                !Config.MapGui.checkBoxMapOptionsEnable3D.Checked &&
+                Config.MapGui.checkBoxMapOptionsSelectionMode.Checked)
+            {
+                for (int i = listCombined.Count - 1; i >= 0; i--)
+                {
+                    MapObject mapObject = listCombined[i];
+                    hoverData = mapObject.GetHoverData();
+                    if (hoverData != null) break;
+                }
+                if (!Equals(PreviousHoverData, hoverData))
+                {
+                    PreviousHoverData = hoverData;
+                    MapObjectHoverData.HoverStartTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+                }
+                if (hoverData == null)
+                {
+                    Config.HideDebugText();
+                }
+                else
+                {
+                    Config.SetDebugText(hoverData);
+                }
+            }
 
             foreach (MapObject obj in listCombined)
             {
-                obj.DrawOn2DControl();
+                obj.DrawOn2DControl(hoverData);
             }
         }
 

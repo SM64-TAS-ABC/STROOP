@@ -23,6 +23,8 @@ namespace STROOP.Managers
     {
         private enum SaveType { MapTrackers, MapTrackersMapTabSettings, MapTrackersMapTabSettingsStroopSettings };
 
+        private ContextMenuStrip _contextMenuStrip;
+
         private MapObjectCurrentMap _defaulMapObjectCurrentMap;
         private MapObjectCurrentBackground _defaulMapObjectCurrentBackground;
         private MapObjectHitboxHackTriangle _defaulMapObjectHitboxHackTriangle;
@@ -74,6 +76,13 @@ namespace STROOP.Managers
 
         private void InitializeControls()
         {
+            // ContextMenuStrip
+            _contextMenuStrip = new ContextMenuStrip();
+            _contextMenuStrip.Items.Add(new ToolStripMenuItem("test")); // needed so that first right click works
+            _contextMenuStrip.Opening += (sender, e) => OnContextMenuStripOpening();
+            _contextMenuStrip.Opened += (sender, e) => OnContextMenuStripOpened();
+            _contextMenuStrip.Closed += (sender, e) => OnContextMenuStripClosed();
+
             // FlowLayoutPanel
             _defaulMapObjectCurrentMap = new MapObjectCurrentMap();
             _defaulMapObjectCurrentBackground = new MapObjectCurrentBackground();
@@ -100,13 +109,6 @@ namespace STROOP.Managers
             _backgroundImageChoices.ForEach(background => _backgroundDictionary[background.ToString()] = background);
 
             // Buttons on Options
-
-            ToolStripMenuItem itemMapPopOut = new ToolStripMenuItem("Add Map Pop Out");
-            itemMapPopOut.Click += (sender, e) =>
-            {
-                MapPopOutForm form = new MapPopOutForm();
-                form.ShowForm();
-            };
 
             ToolStripMenuItem itemAllObjects = new ToolStripMenuItem("Add Tracker for All Objects");
             itemAllObjects.Click += (sender, e) =>
@@ -253,18 +255,17 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemCustomMap = new ToolStripMenuItem("Add Tracker for Custom Map");
-            itemCustomMap.Click += (sender, e) =>
+            ToolStripMenuItem itemCustomIconPoints = new ToolStripMenuItem("Add Tracker for Custom Icon Points");
+            itemCustomIconPoints.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapObjectCustomMap();
-                MapTracker tracker = new MapTracker(mapObj);
-                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
-            };
-
-            ToolStripMenuItem itemCustomBackground = new ToolStripMenuItem("Add Tracker for Custom Background");
-            itemCustomBackground.Click += (sender, e) =>
-            {
-                MapObject mapObj = new MapObjectCustomBackground();
+                (string, bool)? result = DialogUtilities.GetStringAndSideFromDialog(
+                    labelText: "Enter points as pairs or triplets of floats.",
+                    button1Text: "Pairs",
+                    button2Text: "Triplets");
+                if (!result.HasValue) return;
+                (string text, bool side) = result.Value;
+                MapObject mapObj = MapObjectCustomIconPoints.Create(text, side);
+                if (mapObj == null) return;
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -309,6 +310,22 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemCustomMap = new ToolStripMenuItem("Add Tracker for Custom Map");
+            itemCustomMap.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapObjectCustomMap();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
+            ToolStripMenuItem itemCustomBackground = new ToolStripMenuItem("Add Tracker for Custom Background");
+            itemCustomBackground.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapObjectCustomBackground();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemIwerlipses = new ToolStripMenuItem("Add Tracker for Iwerlipses");
             itemIwerlipses.Click += (sender, e) =>
             {
@@ -329,22 +346,6 @@ namespace STROOP.Managers
             itemPreviousPositions.Click += (sender, e) =>
             {
                 MapObject mapObj = new MapObjectPreviousPositions();
-                MapTracker tracker = new MapTracker(mapObj);
-                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
-            };
-
-            ToolStripMenuItem itemCurrentUnit = new ToolStripMenuItem("Add Tracker for Current Unit");
-            itemCurrentUnit.Click += (sender, e) =>
-            {
-                MapObject mapObj = new MapObjectCurrentUnit(PositionAngle.Mario);
-                MapTracker tracker = new MapTracker(mapObj);
-                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
-            };
-
-            ToolStripMenuItem itemCurrentCell = new ToolStripMenuItem("Add Tracker for Current Cell");
-            itemCurrentCell.Click += (sender, e) =>
-            {
-                MapObject mapObj = new MapObjectCurrentCell();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -461,60 +462,84 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemMapPopOut = new ToolStripMenuItem("Add Map Pop Out");
+            itemMapPopOut.Click += (sender, e) =>
+            {
+                MapPopOutForm form = new MapPopOutForm();
+                form.ShowForm();
+            };
+
+            ToolStripMenuItem itemObjects = new ToolStripMenuItem("Objects...");
+            itemObjects.DropDownItems.Add(itemAllObjects);
+            itemObjects.DropDownItems.Add(itemMarkedObjects);
+            itemObjects.DropDownItems.Add(itemAllObjectsWithName);
+
+            ToolStripMenuItem itemTriangles = new ToolStripMenuItem("Triangles...");
+            itemTriangles.DropDownItems.Add(itemLevelFloorTris);
+            itemTriangles.DropDownItems.Add(itemLevelWallTris);
+            itemTriangles.DropDownItems.Add(itemLevelCeilingTris);
+            itemTriangles.DropDownItems.Add(new ToolStripSeparator());
+            itemTriangles.DropDownItems.Add(itemAllObjectFloorTris);
+            itemTriangles.DropDownItems.Add(itemAllObjectWallTris);
+            itemTriangles.DropDownItems.Add(itemAllObjectCeilingTris);
+            itemTriangles.DropDownItems.Add(new ToolStripSeparator());
+            itemTriangles.DropDownItems.Add(itemCustomFloorTris);
+            itemTriangles.DropDownItems.Add(itemCustomWallTris);
+            itemTriangles.DropDownItems.Add(itemCustomCeilingTris);
+
+            ToolStripMenuItem itemPoints = new ToolStripMenuItem("Points...");
+            itemPoints.DropDownItems.Add(itemCustomUnitPoints);
+            itemPoints.DropDownItems.Add(itemCustomCylinderPoints);
+            itemPoints.DropDownItems.Add(itemCustomSpherePoints);
+            itemPoints.DropDownItems.Add(itemCustomIconPoints);
+
+            ToolStripMenuItem itemGridlines = new ToolStripMenuItem("Gridlines...");
+            itemGridlines.DropDownItems.Add(itemUnitGridlines);
+            itemGridlines.DropDownItems.Add(itemFloatGridlines);
+            itemGridlines.DropDownItems.Add(itemCellGridlines);
+            itemGridlines.DropDownItems.Add(itemPuGridlines);
+            itemGridlines.DropDownItems.Add(itemCustomGridlines);
+
+            ToolStripMenuItem itemMap = new ToolStripMenuItem("Map...");
+            itemMap.DropDownItems.Add(itemCustomMap);
+            itemMap.DropDownItems.Add(itemCustomBackground);
+
+            ToolStripMenuItem itemMarioPositions = new ToolStripMenuItem("Mario Positions...");
+            itemMarioPositions.DropDownItems.Add(itemIwerlipses);
+            itemMarioPositions.DropDownItems.Add(itemNextPositions);
+            itemMarioPositions.DropDownItems.Add(itemPreviousPositions);
+
+            ToolStripMenuItem itemMarioMove = new ToolStripMenuItem("Mario Move...");
+            itemMarioMove.DropDownItems.Add(itemCUpFloorTris);
+            itemMarioMove.DropDownItems.Add(itemPunchFloorTris);
+            itemMarioMove.DropDownItems.Add(itemPunchDetector);
+
+            ToolStripMenuItem itemMisc = new ToolStripMenuItem("Misc...");
+            itemMisc.DropDownItems.Add(itemWaters);
+            itemMisc.DropDownItems.Add(itemHitboxHackTris);
+            itemMisc.DropDownItems.Add(itemAggregatedPath);
+            itemMisc.DropDownItems.Add(itemCompass);
+            itemMisc.DropDownItems.Add(itemCoordinateLabels);
+            itemMisc.DropDownItems.Add(itemLedgeGrabChecker);
+            itemMisc.DropDownItems.Add(itemHolpDisplayer);
+
+            ToolStripMenuItem itemCustom = new ToolStripMenuItem("Custom...");
+            itemCustom.DropDownItems.Add(itemCustomPositionAngle);
+            itemCustom.DropDownItems.Add(itemLineSegment);
+            itemCustom.DropDownItems.Add(itemDrawing);
+
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip = new ContextMenuStrip();
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemObjects);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemTriangles);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemPoints);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemGridlines);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMap);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMarioPositions);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMarioMove);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMisc);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustom);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMapPopOut);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemAllObjects);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMarkedObjects);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemAllObjectsWithName);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemLevelFloorTris);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemLevelWallTris);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemLevelCeilingTris);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemAllObjectFloorTris);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemAllObjectWallTris);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemAllObjectCeilingTris);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomFloorTris);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomWallTris);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomCeilingTris);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomUnitPoints);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomCylinderPoints);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomSpherePoints);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomMap);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomBackground);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemUnitGridlines);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemFloatGridlines);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCellGridlines);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemPuGridlines);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomGridlines);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemIwerlipses);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemNextPositions);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemPreviousPositions);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCurrentUnit);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCurrentCell);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCUpFloorTris);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemPunchFloorTris);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemPunchDetector);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemWaters);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemHitboxHackTris);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemAggregatedPath);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCompass);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCoordinateLabels);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemLedgeGrabChecker);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemHolpDisplayer);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustomPositionAngle);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemLineSegment);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemDrawing);
 
             Config.MapGui.buttonMapOptionsAddNewTracker.Click += (sender, e) =>
                 Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Show(Cursor.Position);
@@ -716,12 +741,16 @@ namespace STROOP.Managers
                 Config.MapGui.checkBoxMapOptionsDisableHitboxHackTris,
                 new List<string>()
                 {
-                    "Reset"
+                    "Reset",
+                    "Toggle Arrows",
                 },
                 new List<Action>()
                 {
-                    () => _defaulMapObjectHitboxHackTriangle.Reset()
+                    () => _defaulMapObjectHitboxHackTriangle.Reset(),
+                    () => _defaulMapObjectHitboxHackTriangle.ToggleShowArrows(),
                 });
+            Config.MapGui.checkBoxMapOptionsSelectionMode.Click +=
+                (sender, e) => SetSelectionMode(Config.MapGui.checkBoxMapOptionsSelectionMode.Checked);
 
             // Global Icon Size
             Config.MapGui.textBoxMapOptionsGlobalIconSize.AddEnterAction(() =>
@@ -733,7 +762,9 @@ namespace STROOP.Managers
             });
             Config.MapGui.trackBarMapOptionsGlobalIconSize.AddManualChangeAction(() =>
                 SetGlobalIconSize(Config.MapGui.trackBarMapOptionsGlobalIconSize.Value));
-            MapUtilities.CreateTrackBarContextMenuStrip(Config.MapGui.trackBarMapOptionsGlobalIconSize);
+            MapUtilities.CreateTrackBarContextMenuStrip(
+                Config.MapGui.trackBarMapOptionsGlobalIconSize,
+                () => Config.MapGui.trackBarMapOptionsGlobalIconSize.Value);
 
             // 3D Controllers
             ControlUtilities.InitializeThreeDimensionController(
@@ -893,6 +924,44 @@ namespace STROOP.Managers
                 (Config.MapGui.GLControlMap2D, Config.MapGui.GLControlMap3D);
             toBeVisible.Visible = true;
             toBeInvisible.Visible = false;
+        }
+
+        private void SetSelectionMode(bool enableSelectionMode)
+        {
+            Config.MapGui.checkBoxMapOptionsSelectionMode.Checked = enableSelectionMode;
+            if (enableSelectionMode)
+            {
+                Config.MapGui.GLControlMap2D.ContextMenuStrip = _contextMenuStrip;
+            }
+            else
+            {
+                Config.MapGui.GLControlMap2D.ContextMenuStrip = null;
+            }
+            if (!enableSelectionMode)
+            {
+                Config.HideDebugText();
+            }
+        }
+
+        private void OnContextMenuStripOpening()
+        {
+            _contextMenuStrip.Items.Clear();
+            if (Config.MapGui.flowLayoutPanelMapTrackers.PreviousHoverData != null)
+            {
+                _contextMenuStrip.Items.AddRange(
+                    Config.MapGui.flowLayoutPanelMapTrackers.PreviousHoverData.GetContextMenuStripItems().ToArray());
+            }
+        }
+
+        private void OnContextMenuStripOpened()
+        {
+            MapObjectHoverData.ContextMenuStripIsOpen = true;
+            MapObjectHoverData.ContextMenuStripPoint = Cursor.Position;
+        }
+
+        private void OnContextMenuStripClosed()
+        {
+            MapObjectHoverData.ContextMenuStripIsOpen = false;
         }
 
         private void Save(SaveType saveType)
@@ -1310,6 +1379,7 @@ namespace STROOP.Managers
             Config.MapGui.checkBoxMapOptionsTrackMario.Checked = MapSemaphoreManager.Mario.IsUsed;
             Config.MapGui.checkBoxMapOptionsTrackHolp.Checked = MapSemaphoreManager.Holp.IsUsed;
             Config.MapGui.checkBoxMapOptionsTrackCamera.Checked = MapSemaphoreManager.Camera.IsUsed;
+            Config.MapGui.checkBoxMapOptionsTrackCameraFocus.Checked = MapSemaphoreManager.CameraFocus.IsUsed;
             Config.MapGui.checkBoxMapOptionsTrackGhost.Checked = MapSemaphoreManager.Ghost.IsUsed;
             Config.MapGui.checkBoxMapOptionsTrackSelf.Checked = MapSemaphoreManager.Self.IsUsed;
             Config.MapGui.checkBoxMapOptionsTrackPoint.Checked = MapSemaphoreManager.Point.IsUsed;

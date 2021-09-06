@@ -181,6 +181,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculators\LoadingZoneMain.cs" />
     <Compile Include="Calculators\GroundMovementCalculator.cs" />
     <Compile Include="Calculators\CalculatorUtilities.cs" />
     <Compile Include="Calculators\CalculatorMain.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Controls\WatchVariableTriangleWrapper.cs" />
     <Compile Include="Controls\WatchVariableStringWrapper.cs" />
     <Compile Include="Enums\AggregateMathOperation.cs" />
+    <Compile Include="Enums\TriangleVertexOffset.cs" />
     <Compile Include="Enums\CompassPosition.cs" />
     <Compile Include="Enums\MouseEvent.cs" />
     <Compile Include="Enums\CoordinateAngle.cs" />
@@ -455,7 +457,9 @@
     <Compile Include="Map\MapObjectAllObjectCeiling.cs" />
     <Compile Include="Map\MapObjectAllObjectWall.cs" />
     <Compile Include="Map\MapObjectCameraFocus.cs" />
+    <Compile Include="Map\MapObjectGridlines.cs" />
     <Compile Include="Map\MapObjectCoffinBox.cs" />
+    <Compile Include="Map\MapObjectCustomIconPoints.cs" />
     <Compile Include="Map\MapObjectHolpDisplayer.cs" />
     <Compile Include="Map\MapObjectSettingsAccumulator.cs" />
     <Compile Include="Map\MapObjectPushHitboxCylinder.cs" />
@@ -551,6 +555,7 @@
     <Compile Include="Map\MapObjectCircle.cs" />
     <Compile Include="Map\MapObjectQuad.cs" />
     <Compile Include="Map\MapObjectUnitGridlines.cs" />
+    <Compile Include="Map\MapObjectHoverData.cs" />
     <Compile Include="Map\MapUtilities.cs" />
     <Compile Include="Map\MapObjectHorizontalTriangle.cs" />
     <Compile Include="Map\MapObjectCurrentMap.cs" />
@@ -576,6 +581,7 @@
     <Compile Include="Map\Map3D\Map3DVertex.cs" />
     <Compile Include="Map\MapObjectSettings.cs" />
     <Compile Include="Models\PanModel.cs" />
+    <Compile Include="Models\TriangleMapData.cs" />
     <Compile Include="Script\ScriptEngine.cs" />
     <Compile Include="Script\TokenScript.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
@@ -651,7 +657,6 @@
     <Compile Include="Managers\TestingManager.cs" />
     <Compile Include="Managers\OptionsManager.cs" />
     <Compile Include="Managers\PuManager.cs" />
-    <Compile Include="Managers\InjectionManager.cs" />
     <Compile Include="Managers\TriangleManager.cs" />
     <Compile Include="Controls\ObjectSlot.cs">
       <SubType>Component</SubType>
@@ -832,6 +837,11 @@
     <Compile Include="Forms\VariableViewerForm.Designer.cs">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\lock_red_open.png" />
+    <None Include="Resources\lock_red.png" />
+    <None Include="Resources\lock_blue_open.png" />
+    <None Include="Resources\lock_black_open.png" />
+    <None Include="Resources\lock_black.png" />
     <None Include="app.manifest" />
     <None Include="Mappings\MappingJP.map">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -916,6 +926,9 @@
     </Content>
     <Content Include="Config\MainSaveData.xml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\MarioStateData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\MusicData2.xml">
@@ -1183,9 +1196,6 @@
     <Content Include="Config\ObjectData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Config\Scripts.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\MapAssociations.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

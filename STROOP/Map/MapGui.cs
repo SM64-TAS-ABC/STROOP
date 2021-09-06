@@ -39,6 +39,7 @@ namespace STROOP.Map
         public CheckBox checkBoxMapOptionsEnableCrossSection;
         public CheckBox checkBoxMapOptionsEnablePuView;
         public CheckBox checkBoxMapOptionsReverseDragging;
+        public CheckBox checkBoxMapOptionsSelectionMode;
 
         // Options - Global Icon Size
         public Label labelMapOptionsGlobalIconSize;

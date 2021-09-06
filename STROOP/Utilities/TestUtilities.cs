@@ -20,6 +20,22 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
+            //if (SpecialConfig.CustomAngle != 0)
+            //{
+            //    List<(double x, double z)> values = MapUtilities.GetUnitPointsCrossSection(-10);
+            //    SpecialConfig.CustomX = values[0].x;
+            //    SpecialConfig.CustomZ = values[0].z;
+            //    SpecialConfig.Custom2X = values[1].x;
+            //    SpecialConfig.Custom2Z = values[1].z;
+            //}
+
+            //double marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            //double marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            //double marioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            //(double x, double z) = MoreMath.GetLineIntersectionAtCoordinate(marioX, marioZ, marioAngle, 1, false);
+            //SpecialConfig.CustomX = x;
+            //SpecialConfig.CustomZ = z;
+
             //float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             //float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             //float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
@@ -158,22 +174,22 @@ namespace STROOP.Utilities
             List<TriangleDataModel> badWallTris = new List<TriangleDataModel>();
             foreach (TriangleDataModel wallTri in wallTris)
             {
-                (float x1, float z1, float x2, float z2, bool xProjection, double pushAngle) = MapUtilities.Get2DWallDataFromTri(wallTri).Value;
+                TriangleMapData data = MapUtilities.Get2DWallDataFromTri(wallTri);
                
-                float angle = (float)MoreMath.AngleTo_Radians(x1, z1, x2, z2);
-                float projectionDist = 50 / (float)Math.Abs(xProjection ? Math.Cos(angle) : Math.Sin(angle));
+                float angle = (float)MoreMath.AngleTo_Radians(data.X1, data.Z1, data.X2, data.Z2);
+                float projectionDist = 50 / (float)Math.Abs(data.Tri.XProjection ? Math.Cos(angle) : Math.Sin(angle));
                 List<(float x, float z)> points = new List<(float x, float z)>();
                 Action<float, float> addPoint = (float xAdd, float zAdd) =>
                 {
                     points.AddRange(new List<(float x, float z)>()
                     {
-                        (x1, z1),
-                        (x1 + xAdd, z1 + zAdd),
-                        (x2 + xAdd, z2 + zAdd),
-                        (x2, z2),
+                        (data.X1, data.Z1),
+                        (data.X1 + xAdd, data.Z1 + zAdd),
+                        (data.X2 + xAdd, data.Z2 + zAdd),
+                        (data.X2, data.Z2),
                     });
                 };
-                if (xProjection)
+                if (data.Tri.XProjection)
                 {
                     addPoint(projectionDist, 0);
                     addPoint(-1 * projectionDist, 0);
@@ -1762,6 +1778,7 @@ namespace STROOP.Utilities
                         for (int i = 0; i < addresses.Count; i++)
                         {
                             WatchVariable watchVar = new WatchVariable(
+                                names[i],
                                 memoryTypeName: "short",
                                 specialType: null,
                                 baseAddressType: BaseAddressTypeEnum.Relative,

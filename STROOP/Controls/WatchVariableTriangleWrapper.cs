@@ -33,6 +33,9 @@ namespace STROOP.Controls
                 if (!uintValueNullable.HasValue) return;
                 uint uintValue = uintValueNullable.Value;
                 Config.TriangleManager.SetCustomTriangleAddresses(uintValue);
+                List<TabPage> tabPages = ControlUtilities.GetTabPages(Config.TabControlMain);
+                bool containsTab = tabPages.Any(tabPage => tabPage == Config.TriangleManager.Tab);
+                if (containsTab) Config.TabControlMain.SelectTab(Config.TriangleManager.Tab);
             };
 
             _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());

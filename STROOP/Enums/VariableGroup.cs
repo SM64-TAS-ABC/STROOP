@@ -39,7 +39,6 @@ namespace STROOP.Structs
         Point2,
         MorePoint,
         Coin,
-        Hacks,
         Rng,
         Self,
         QuarterFrameHack,

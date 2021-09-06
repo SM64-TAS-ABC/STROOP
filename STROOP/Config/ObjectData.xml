@@ -99,8 +99,6 @@
   <Data groupList="Advanced" type="ushort" offset="0x74" base="Object" mask="0x0030" subclass="Boolean">Active During Timestop</Data>
   <Data groupList="Advanced" type="uint" offset="0x214" base="Object" subclass="Object">Platform Object</Data>
 
-  <Data groupList="Advanced" base="Object" specialType="ObjectRngCallsPerFrame">RNG Calls/Frame</Data>
-
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D0B8" offsetJP="0x8033BD48" base="Relative" subclass="Object" color="Pink">PG B Next</Data>
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033D0BC" offsetJP="0x8033BD4C" base="Relative" subclass="Object" color="Pink">PG B Prev</Data>
   <Data groupList="ProcessGroup" type="uint" offsetUS="0x8033CFE8" offsetJP="0x8033BC78" base="Relative" subclass="Object" color="Red">PG 9 Next</Data>

@@ -78,11 +78,11 @@ namespace STROOP.Map
             return (centerX, centerZ);
         }
 
-        public static (float x, float z) ConvertCoordsForControlOrthographicView(float x, float y, float z)
+        public static (float x, float z) ConvertCoordsForControlOrthographicView(float rawX, float rawY, float rawZ)
         {
-            x = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? x : (float)PuUtilities.GetRelativeCoordinate(x);
-            y = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? y : (float)PuUtilities.GetRelativeCoordinate(y);
-            z = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? z : (float)PuUtilities.GetRelativeCoordinate(z);
+            float x = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? rawX : (float)PuUtilities.GetRelativeCoordinate(rawX);
+            float y = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? rawY : (float)PuUtilities.GetRelativeCoordinate(rawY);
+            float z = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? rawZ : (float)PuUtilities.GetRelativeCoordinate(rawZ);
             float xOffset = x - Config.CurrentMapGraphics.MapViewCenterXValue;
             float yOffset = y - Config.CurrentMapGraphics.MapViewCenterYValue;
             float zOffset = z - Config.CurrentMapGraphics.MapViewCenterZValue;
@@ -118,6 +118,15 @@ namespace STROOP.Map
             float vOffsetPixels = vOffset * Config.CurrentMapGraphics.MapViewScaleValue;
             float centerH = Config.MapGui.CurrentControl.Width / 2 + hOffsetPixels;
             float centerV = Config.MapGui.CurrentControl.Height / 2 + vOffsetPixels;
+
+            if (Config.CurrentMapGraphics.MapViewPitchValue == 0 && float.IsInfinity(rawX))
+            {
+                float yOffsetPixels = yOffset * Config.CurrentMapGraphics.MapViewScaleValue;
+                float centerY = Config.MapGui.CurrentControl.Height / 2 - yOffsetPixels;
+                if (float.IsNegativeInfinity(rawX)) return (0, centerY);
+                else return (Config.MapGui.CurrentControl.Width, centerY);
+            }
+
             return (centerH, centerV);
         }
 
@@ -288,8 +297,119 @@ namespace STROOP.Map
             return quadList;
         }
 
-        public static (float x1, float z1, float x2, float z2, bool xProjection, double pushAngle)? Get2DWallDataFromTri(
-            TriangleDataModel tri, float? heightNullable = null)
+        public static float GetXWithMinAbsValue(List<(float x, float y, float z)> quad)
+        {
+            float bestX = float.PositiveInfinity;
+            float bestAbs = float.PositiveInfinity;
+            foreach ((float x, float y, float z) in quad)
+            {
+                float abs = Math.Abs(x);
+                if (abs < bestAbs)
+                {
+                    bestX = x;
+                    bestAbs = abs;
+                }
+            }
+            return bestX;
+        }
+
+        public static float GetXWithMaxAbsValue(List<(float x, float y, float z)> quad)
+        {
+            float bestX = 0;
+            float bestAbs = 0;
+            foreach ((float x, float y, float z) in quad)
+            {
+                float abs = Math.Abs(x);
+                if (abs > bestAbs)
+                {
+                    bestX = x;
+                    bestAbs = abs;
+                }
+            }
+            return bestX;
+        }
+
+        public static float GetZWithMinAbsValue(List<(float x, float y, float z)> quad)
+        {
+            float bestZ = float.PositiveInfinity;
+            float bestAbs = float.PositiveInfinity;
+            foreach ((float x, float y, float z) in quad)
+            {
+                float abs = Math.Abs(z);
+                if (abs < bestAbs)
+                {
+                    bestZ = z;
+                    bestAbs = abs;
+                }
+            }
+            return bestZ;
+        }
+
+        public static float GetZWithMaxAbsValue(List<(float x, float y, float z)> quad)
+        {
+            float bestZ = 0;
+            float bestAbs = 0;
+            foreach ((float x, float y, float z) in quad)
+            {
+                float abs = Math.Abs(z);
+                if (abs > bestAbs)
+                {
+                    bestZ = z;
+                    bestAbs = abs;
+                }
+            }
+            return bestZ;
+        }
+
+        public static bool IsWithinRectangularQuad(List<(float x, float y, float z)> quad, float x, float z)
+        {
+            float xMinAbs = GetXWithMinAbsValue(quad);
+            float xMaxAbs = GetXWithMaxAbsValue(quad);
+            float zMinAbs = GetZWithMinAbsValue(quad);
+            float zMaxAbs = GetZWithMaxAbsValue(quad);
+
+            if (xMaxAbs < 0)
+            {
+                if (x <= xMaxAbs) return false;
+                if (x > xMinAbs) return false;
+            }
+            else
+            {
+                if (x < xMinAbs) return false;
+                if (x >= xMaxAbs) return false;
+            }
+
+            if (zMaxAbs < 0)
+            {
+                if (z <= zMaxAbs) return false;
+                if (z > zMinAbs) return false;
+            }
+            else
+            {
+                if (z < zMinAbs) return false;
+                if (z >= zMaxAbs) return false;
+            }
+
+            return true;
+        }
+
+        public static bool IsWithinShapeForControl(List<(float x, float z)> quad, float x, float z)
+        {
+            bool? leftOfLine = null;
+            for (int i = 0; i < quad.Count; i++)
+            {
+                float x1 = quad[i].x;
+                float z1 = quad[i].z;
+                float x2 = quad[(i + 1) % quad.Count].x;
+                float z2 = quad[(i + 1) % quad.Count].z;
+                bool left = MoreMath.IsPointLeftOfLine(x, z, x1, z1, x2, z2);
+                if (leftOfLine.HasValue && leftOfLine.Value != left) return false;
+                leftOfLine = left;
+            }
+            return true;
+        }
+
+        public static TriangleMapData Get2DWallDataFromTri(TriangleDataModel tri, float? heightNullable = null)
         {
             double uphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(tri);
             double pushAngle = MoreMath.ReverseAngle(uphillAngle);
@@ -297,22 +417,22 @@ namespace STROOP.Map
             if (!heightNullable.HasValue)
             {
                 if (tri.X1 == tri.X2 && tri.Z1 == tri.Z2) // v2 is redundant
-                    return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection, pushAngle);
+                    return new TriangleMapData(tri.X1, 0, tri.Z1, tri.X3, 0, tri.Z3, tri);
                 if (tri.X1 == tri.X3 && tri.Z1 == tri.Z3) // v3 is redundant
-                    return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection, pushAngle);
+                    return new TriangleMapData(tri.X1, 0, tri.Z1, tri.X2, 0, tri.Z2, tri);
                 if (tri.X2 == tri.X3 && tri.Z2 == tri.Z3) // v3 is redundant
-                    return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection, pushAngle);
+                    return new TriangleMapData(tri.X1, 0, tri.Z1, tri.X2, 0, tri.Z2, tri);
 
                 double dist12 = MoreMath.GetDistanceBetween(tri.X1, tri.Z1, tri.X2, tri.Z2);
                 double dist13 = MoreMath.GetDistanceBetween(tri.X1, tri.Z1, tri.X3, tri.Z3);
                 double dist23 = MoreMath.GetDistanceBetween(tri.X2, tri.Z2, tri.X3, tri.Z3);
 
                 if (dist12 >= dist13 && dist12 >= dist23)
-                    return (tri.X1, tri.Z1, tri.X2, tri.Z2, tri.XProjection, pushAngle);
+                    return new TriangleMapData(tri.X1, 0, tri.Z1, tri.X2, 0, tri.Z2, tri);
                 else if (dist13 >= dist23)
-                    return (tri.X1, tri.Z1, tri.X3, tri.Z3, tri.XProjection, pushAngle);
+                    return new TriangleMapData(tri.X1, 0, tri.Z1, tri.X3, 0, tri.Z3, tri);
                 else
-                    return (tri.X2, tri.Z2, tri.X3, tri.Z3, tri.XProjection, pushAngle);
+                    return new TriangleMapData(tri.X2, 0, tri.Z2, tri.X3, 0, tri.Z3, tri);
             }
 
             float height = heightNullable.Value;
@@ -346,19 +466,14 @@ namespace STROOP.Map
 
             if (points.Count == 2)
             {
-                return (points[0].x, points[0].z, points[1].x, points[1].z, tri.XProjection, pushAngle);
+                return new TriangleMapData(points[0].x, 0, points[0].z, points[1].x, 0, points[1].z, tri);
             }
 
             return null;
         }
 
-        public static (float x1, float y1, float z1,
-            float x2, float y2, float z2,
-            TriangleClassification classification, bool xProjection, double pushAngle)? Get2DDataFromTri(TriangleDataModel tri)
+        public static TriangleMapData Get2DDataFromTri(TriangleDataModel tri)
         {
-            double uphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(tri);
-            double pushAngle = MoreMath.ReverseAngle(uphillAngle);
-
             if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                 (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
                 Config.CurrentMapGraphics.MapViewYawValue == 32768))
@@ -393,9 +508,10 @@ namespace STROOP.Map
 
                 if (points.Count == 2)
                 {
-                    return (points[0].x, points[0].y, Config.CurrentMapGraphics.MapViewCenterZValue,
+                    return new TriangleMapData(
+                        points[0].x, points[0].y, Config.CurrentMapGraphics.MapViewCenterZValue,
                         points[1].x, points[1].y, Config.CurrentMapGraphics.MapViewCenterZValue,
-                        tri.Classification, tri.XProjection, pushAngle);
+                        tri);
                 }
 
                 return null;
@@ -434,9 +550,10 @@ namespace STROOP.Map
 
                 if (points.Count == 2)
                 {
-                    return (Config.CurrentMapGraphics.MapViewCenterXValue, points[0].y, points[0].z,
+                    return new TriangleMapData(
+                        Config.CurrentMapGraphics.MapViewCenterXValue, points[0].y, points[0].z,
                         Config.CurrentMapGraphics.MapViewCenterXValue, points[1].y, points[1].z,
-                        tri.Classification, tri.XProjection, pushAngle);
+                        tri);
                 }
 
                 return null;
@@ -482,9 +599,10 @@ namespace STROOP.Map
 
                 if (points.Count == 2)
                 {
-                    return (points[0].x, points[0].y, points[0].z,
+                    return new TriangleMapData(
+                        points[0].x, points[0].y, points[0].z,
                         points[1].x, points[1].y, points[1].z,
-                        tri.Classification, tri.XProjection, pushAngle);
+                        tri);
                 }
 
                 return null;
@@ -549,7 +667,7 @@ namespace STROOP.Map
             return Config.MapGui.checkBoxMapOptionsReverseDragging.Checked ? -1 * value : value;
         }
 
-        public static void CreateTrackBarContextMenuStrip(TrackBar trackBar)
+        public static void CreateTrackBarContextMenuStrip(TrackBarEx trackBar, Func<double> getterFunction)
         {
             List<int> maxValues = Enumerable.Range(1, 9).ToList().ConvertAll(p => (int)Math.Pow(10, p));
             trackBar.ContextMenuStrip = new ContextMenuStrip();
@@ -562,6 +680,9 @@ namespace STROOP.Map
                 item.Click += (sender, e) =>
                 {
                     trackBar.Maximum = maxValue;
+                    trackBar.StartChangingByCode();
+                    ControlUtilities.SetTrackBarValueCapped(trackBar, getterFunction());
+                    trackBar.StopChangingByCode();
                     items.ForEach(it => it.Checked = it == item);
                 };
                 if (trackBar.Maximum == maxValue) item.Checked = true;
@@ -682,6 +803,159 @@ namespace STROOP.Map
             Config.Map3DGraphics.BindVertices();
             GL.DrawArrays(PrimitiveType.Lines, 0, vertexArrayForEdges.Length);
             GL.DeleteBuffer(buffer);
+        }
+
+        public static bool IsInVisibleSpace(double x, double z, double bufferDistance)
+        {
+            double dist = MoreMath.GetDistanceBetween(
+                Config.CurrentMapGraphics.MapViewCenterXValue, Config.CurrentMapGraphics.MapViewCenterZValue, x, z);
+            return dist < Config.CurrentMapGraphics.MapViewRadius + bufferDistance;
+        }
+
+        public static List<(double x, double z)> GetUnitPointsCrossSection(double bufferDistance)
+        {
+            float pointX = Config.CurrentMapGraphics.MapViewCenterXValue;
+            float pointZ = Config.CurrentMapGraphics.MapViewCenterZValue;
+            float lineAngle = Config.CurrentMapGraphics.MapViewYawValue - 16384;
+
+            double xIntersection1 = MoreMath.GetLineIntersectionAtCoordinate(
+                pointX, pointZ, lineAngle, Config.CurrentMapGraphics.MapViewZMin, false).x;
+            double xIntersection2 = MoreMath.GetLineIntersectionAtCoordinate(
+                pointX, pointZ, lineAngle, Config.CurrentMapGraphics.MapViewZMax, false).x;
+            int xMin = (int)(Math.Max(Math.Min(xIntersection1, xIntersection2), Config.CurrentMapGraphics.MapViewXMin) - bufferDistance);
+            int xMax = (int)(Math.Min(Math.Max(xIntersection1, xIntersection2), Config.CurrentMapGraphics.MapViewXMax) + bufferDistance);
+            int z1 = (int)MoreMath.GetLineIntersectionAtCoordinate(pointX, pointZ, lineAngle, xMin, true).z;
+            int z2 = (int)MoreMath.GetLineIntersectionAtCoordinate(pointX, pointZ, lineAngle, xMax, true).z;
+            int zMin = Math.Min(z1, z2);
+            int zMax = Math.Max(z1, z2);
+
+            List<(double x, double z)> points = new List<(double x, double z)>();
+            for (int x = xMin; x <= xMax; x++)
+            {
+                points.Add(MoreMath.GetLineIntersectionAtCoordinate(pointX, pointZ, lineAngle, x, true));
+            }
+            for (int z = zMin; z <= zMax; z++)
+            {
+                points.Add(MoreMath.GetLineIntersectionAtCoordinate(pointX, pointZ, lineAngle, z, false));
+            }
+            points = Enumerable.OrderBy(points, point => point.x).ToList();
+            return points;
+        }
+
+        public static List<uint> ParseCustomTris(string text, TriangleClassification classification)
+        {
+            if (text == null) return null;
+            if (text == "")
+            {
+                uint currentTriangle = TriangleUtilities.GetCurrentTriangle(classification);
+                if (currentTriangle == 0) return null;
+                return new List<uint>() { currentTriangle };
+            }
+            List<uint?> nullableUIntList = ParsingUtilities.ParseStringList(text)
+                .ConvertAll(word => ParsingUtilities.ParseHexNullable(word));
+            if (nullableUIntList.Any(nullableUInt => !nullableUInt.HasValue))
+            {
+                return null;
+            }
+            return nullableUIntList.ConvertAll(nullableUInt => nullableUInt.Value);
+        }
+
+        public static double GetHoverOpacity()
+        {
+            long deltaTime = DateTimeOffset.Now.ToUnixTimeMilliseconds() - MapObjectHoverData.HoverStartTime;
+            double trig = Math.Cos(deltaTime / 150.0);
+            double opacity = (trig + 1) / 4 + 0.5;
+            return opacity;
+        }
+
+        public static byte GetHoverOpacityByte()
+        {
+            return (byte)(GetHoverOpacity() * 255);
+        }
+
+        public static ToolStripMenuItem CreateCopyItem(List<double> values, string copyWord)
+        {
+            List<(string word, string character)> copyChoices =
+                new List<(string word, string character)>()
+                {
+                    ("Commas", ","),
+                    ("Spaces", " "),
+                    ("Tabs", "\t"),
+                    ("Line Breaks", "\r\n"),
+                };
+
+            ToolStripMenuItem copyItem = new ToolStripMenuItem("Copy " + copyWord + "...");
+            foreach (var choice in copyChoices)
+            {
+                ToolStripMenuItem choiceItem = new ToolStripMenuItem("Copy " + copyWord + " with " + choice.word);
+                choiceItem.Click += (sender, e) => Clipboard.SetText(string.Join(choice.character, values));
+                copyItem.DropDownItems.Add(choiceItem);
+            }
+            return copyItem;
+        }
+
+        public static List<(float x, float z)> InterpolateQuarterSteps(List<(float x, float z)> points)
+        {
+            List<(float x, float z)> output = new List<(float x, float z)>();
+            for (int i = 0; i < points.Count - 1; i++)
+            {
+                (float x1, float z1) = points[i];
+                (float x2, float z2) = points[i + 1];
+                if (i == 0)
+                {
+                    output.Add((x1, z1));
+                }
+                for (int j = 1; j <= 4; j++)
+                {
+                    (float x, float z) point =
+                        (x1 + (x2 - x1) * (j / 4f), z1 + (z2 - z1) * (j / 4f));
+                    output.Add(point);
+                }
+            }
+            return output;
+        }
+
+        public static List<(float x, float y, float z)> InterpolateQuarterSteps(List<(float x, float y, float z)> points)
+        {
+            List<(float x, float y, float z)> output = new List<(float x, float y, float z)>();
+            for (int i = 0; i < points.Count - 1; i++)
+            {
+                (float x1, float y1, float z1) = points[i];
+                (float x2, float y2, float z2) = points[i + 1];
+                if (i == 0)
+                {
+                    output.Add((x1, y1, z1));
+                }
+                for (int j = 1; j <= 4; j++)
+                {
+                    (float x, float y, float z) point =
+                        (x1 + (x2 - x1) * (j / 4f), y1 + (y2 - y1) * (j / 4f), z1 + (z2 - z1) * (j / 4f));
+                    output.Add(point);
+                }
+            }
+            return output;
+        }
+
+        public static List<(float x, float z)> GetFloatPositions(int limit)
+        {
+            float xMin = Config.CurrentMapGraphics.MapViewXMin;
+            float xMax = Config.CurrentMapGraphics.MapViewXMax;
+            float zMin = Config.CurrentMapGraphics.MapViewZMin;
+            float zMax = Config.CurrentMapGraphics.MapViewZMax;
+
+            List<(float x, float z)> output = new List<(float x, float z)>();
+            for (float x = xMin; x <= xMax; x = MoreMath.GetNextFloat(x))
+            {
+                for (float z = zMin; z <= zMax; z = MoreMath.GetNextFloat(z))
+                {
+                    output.Add((x, z));
+                    if (output.Count >= limit)
+                    {
+                        return new List<(float x, float z)>();
+                    }
+                }
+            }
+            return output;
         }
     }
 }

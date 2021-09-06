@@ -42,6 +42,16 @@ namespace STROOP.Managers
 
             Button buttonOpenVars = splitContainerCustomControls.Panel1.Controls["buttonOpenVars"] as Button;
             buttonOpenVars.Click += (sender, e) => _variablePanel.OpenVariables();
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonOpenVars,
+                new List<string>()
+                {
+                    "Open Mario State Data",
+                },
+                new List<Action>()
+                {
+                    () => _variablePanel.OpenVariables(@"Config/MarioStateData.xml"),
+                });
 
             Button buttonSaveVars = splitContainerCustomControls.Panel1.Controls["buttonSaveVars"] as Button;
             buttonSaveVars.Click += (sender, e) => _variablePanel.SaveVariables();
@@ -49,17 +59,17 @@ namespace STROOP.Managers
             Button buttonCopyVars = splitContainerCustomControls.Panel1.Controls["buttonCopyVars"] as Button;
             buttonCopyVars.Click += (sender, e) => CopyUtilities.Copy(_variablePanel.GetCurrentVariableControls(), _copyType);
             buttonCopyVars.ContextMenuStrip = new ContextMenuStrip();
+            CopyUtilities.AddContextMenuStripFunctions(
+                buttonCopyVars, _variablePanel.GetCurrentVariableControls);
+            buttonCopyVars.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ToolStripMenuItem itemSetDefaultCopyType = new ToolStripMenuItem("Set Default Copy Type");
             buttonCopyVars.ContextMenuStrip.Items.Add(itemSetDefaultCopyType);
-            buttonCopyVars.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ControlUtilities.AddCheckableDropDownItems(
                 itemSetDefaultCopyType,
                 CopyUtilities.GetCopyNames(),
                 EnumUtilities.GetEnumValues<CopyTypeEnum>(typeof(CopyTypeEnum)),
                 copyType => _copyType = copyType,
                 _copyType);
-            CopyUtilities.AddContextMenuStripFunctions(
-                buttonCopyVars, _variablePanel.GetCurrentVariableControls);
 
             Button buttonClearVars = splitContainerCustomControls.Panel1.Controls["buttonClearVars"] as Button;
             buttonClearVars.Click += (sender, e) => _variablePanel.ClearVariables();

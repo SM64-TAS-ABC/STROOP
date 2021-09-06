@@ -310,6 +310,14 @@ namespace STROOP.Models
             };
         }
 
+        public List<(float x, float y, float z, TriangleDataModel tri)> Get3DVerticesWithTri()
+        {
+            return new List<(float, float, float, TriangleDataModel)>()
+            {
+                (X1, Y1, Z1, this), (X2, Y2, Z2, this), (X3, Y3, Z3, this)
+            };
+        }
+
         public double GetDistToMidpoint()
         {
             float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
@@ -397,6 +405,16 @@ namespace STROOP.Models
             return true;
         }
 
+        public bool IsPointInsideTriangle(double doubleX, double doubleZ, bool truncate)
+        {
+            if (truncate)
+            {
+                doubleX = (short)doubleX;
+                doubleZ = (short)doubleZ;
+            }
+            return MoreMath.IsPointInsideTriangle(doubleX, doubleZ, X1, Z1, X2, Z2, X3, Z3);
+        }
+
         public double GetVerticalDistAwayFromTriangleHitbox(double doubleX, double doubleY, double doubleZ)
         {
             short shortX = (short)doubleX;
@@ -429,6 +447,12 @@ namespace STROOP.Models
             bool triTooFarDown = centerY - maxY > withinDist;
             bool triTooFarUp = minY - centerY > withinDist;
             return !triTooFarDown && !triTooFarUp;
+        }
+
+        public double GetPushAngle()
+        {
+            double uphillAngle = WatchVariableSpecialUtilities.GetTriangleUphillAngle(this);
+            return MoreMath.ReverseAngle(uphillAngle);
         }
     }
 }

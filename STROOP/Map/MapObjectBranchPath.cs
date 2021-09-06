@@ -77,7 +77,7 @@ namespace STROOP.Map
             return segments;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             if (LineWidth == 0) return;
 
@@ -121,7 +121,7 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             if (LineWidth == 0) return;
 

@@ -200,7 +200,7 @@ namespace STROOP.Managers
 
             Action<bool> setAllObjectSlotOverlays = (bool value) =>
             {
-                int specialCount = 2;
+                int specialCount = 3;
                 int totalCount = checkedListBoxObjectSlotOverlaysToShow.Items.Count;
                 for (int i = 0; i < totalCount - specialCount; i++)
                 {

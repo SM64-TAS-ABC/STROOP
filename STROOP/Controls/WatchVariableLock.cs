@@ -16,6 +16,8 @@ namespace STROOP.Controls
 {
     public class WatchVariableLock
     {
+        public readonly string Name;
+        public readonly BaseAddressTypeEnum BaseAddressType;
         public readonly bool IsSpecial;
         public readonly Type MemoryType;
         public readonly int? ByteCount;
@@ -29,6 +31,8 @@ namespace STROOP.Controls
         public object Value { get; private set; }
 
         public WatchVariableLock(
+            string name,
+            BaseAddressTypeEnum baseAddressType,
             bool isSpecial,
             Type memoryType,
             int? byteCount,
@@ -40,6 +44,8 @@ namespace STROOP.Controls
             Func<object, uint, bool> setterFunction,
             object value)
         {
+            Name = name;
+            BaseAddressType = baseAddressType;
             IsSpecial = isSpecial;
             MemoryType = memoryType;
             ByteCount = byteCount;
@@ -108,5 +114,42 @@ namespace STROOP.Controls
                 unchecked((int)Address);
         }
 
+        public static string GetHeaderLine()
+        {
+            List<object> info = new List<object>()
+            {
+                "Name",
+                "BaseAddressType",
+                "IsSpecial",
+                "MemoryType",
+                "ByteCount",
+                "Mask",
+                "Shift",
+                "Address",
+                "BaseAddress",
+                "SpecialType",
+                "Value",
+            };
+            return string.Join("\t", info);
+        }
+
+        public override string ToString()
+        {
+            List<object> info = new List<object>()
+            {
+                Name,
+                BaseAddressType,
+                IsSpecial,
+                MemoryType != null ? (object)TypeUtilities.TypeToString[MemoryType] : MemoryType,
+                ByteCount,
+                Mask.HasValue ? (object)HexUtilities.FormatValue(Mask.Value) : Mask,
+                Shift,
+                HexUtilities.FormatValue(Address),
+                HexUtilities.FormatValue(BaseAddress),
+                SpecialType,
+                Value,
+            };
+            return string.Join("\t", info);
+        }
     }
 }

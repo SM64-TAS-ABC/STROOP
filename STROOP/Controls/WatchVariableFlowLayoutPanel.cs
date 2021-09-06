@@ -154,6 +154,7 @@ namespace STROOP.Controls
                         string specialType = WatchVariableSpecialUtilities.AddDummyEntry(typeString);
                         WatchVariable watchVariable =
                             new WatchVariable(
+                                name: specialType,
                                 memoryTypeName: null,
                                 specialType: specialType,
                                 baseAddressType: BaseAddressTypeEnum.None,
@@ -413,15 +414,15 @@ namespace STROOP.Controls
             return GetCurrentVariableControls().ConvertAll(control => control.ToXml(useCurrentState));
         }
 
-        public void OpenVariables()
+        public void OpenVariables(string fileName = null)
         {
-            List<XElement> elements = DialogUtilities.OpenXmlElements(FileType.StroopVariables);
+            List<XElement> elements = DialogUtilities.OpenXmlElements(FileType.StroopVariables, fileName);
             OpenVariables(elements);
         }
 
-        public void OpenVariablesAsPopOut()
+        public void OpenVariablesAsPopOut(string fileName = null)
         {
-            List<XElement> elements = DialogUtilities.OpenXmlElements(FileType.StroopVariables);
+            List<XElement> elements = DialogUtilities.OpenXmlElements(FileType.StroopVariables, fileName);
             if (elements.Count == 0) return;
             List<WatchVariableControlPrecursor> precursors =
                 elements.ConvertAll(element => new WatchVariableControlPrecursor(element));

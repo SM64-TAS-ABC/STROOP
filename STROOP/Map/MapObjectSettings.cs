@@ -16,14 +16,17 @@ namespace STROOP.Map
         public readonly bool ChangeCustomCylinderRelativeMaxY;
         public readonly float NewCustomCylinderRelativeMaxY;
 
+        public readonly bool ChangeTriangleShowArrows;
+        public readonly bool NewTriangleShowArrows;
+
+        public readonly bool ChangeTriangleUseCrossSection;
+        public readonly bool NewTriangleUseCrossSection;
+
         public readonly bool ChangeTriangleWithinDist;
         public readonly float? NewTriangleWithinDist;
 
         public readonly bool ChangeTriangleWithinCenter;
         public readonly float? NewTriangleWithinCenter;
-
-        public readonly bool ChangeTriangleUseCrossSection;
-        public readonly bool NewTriangleUseCrossSection;
 
         public readonly bool ChangeHorizontalTriangleShowTriUnits;
         public readonly bool NewHorizontalTriangleShowTriUnits;
@@ -39,9 +42,6 @@ namespace STROOP.Map
 
         public readonly bool ChangeFloorEnableQuarterFrameLandings;
         public readonly bool NewFloorEnableQuarterFrameLandings;
-
-        public readonly bool ChangeWallShowArrows;
-        public readonly bool NewWallShowArrows;
 
         public readonly bool ChangeWallRelativeHeight;
         public readonly float? NewWallRelativeHeight;
@@ -78,6 +78,9 @@ namespace STROOP.Map
 
         public readonly bool ChangePathPaused;
         public readonly bool NewPathPaused;
+
+        public readonly bool ChangePathTruncatePoints;
+        public readonly bool NewPathTruncatePoints;
 
         public readonly bool ChangePathUseValueAtStartOfGlobalTimer;
         public readonly bool NewPathUseValueAtStartOfGlobalTimer;
@@ -121,6 +124,12 @@ namespace STROOP.Map
         public readonly bool ChangeNextPositionsNumFrames;
         public readonly double NewNextPositionsNumFrames;
 
+        public readonly bool ChangePreviousPositionsTrackHistory;
+        public readonly bool NewPreviousPositionsTrackHistory;
+
+        public readonly bool ChangePreviousPositionsPauseHistory;
+        public readonly bool NewPreviousPositionsPauseHistory;
+
         public readonly bool ChangePuGridlinesSetting;
         public readonly string NewPuGridlinesSetting;
 
@@ -137,14 +146,17 @@ namespace STROOP.Map
             bool changeCustomCylinderRelativeMaxY = false,
             float newCustomCylinderRelativeMaxY = 0,
 
+            bool changeTriangleShowArrows = false,
+            bool newTriangleShowArrows = false,
+
+            bool changeTriangleUseCrossSection = false,
+            bool newTriangleUseCrossSection = false,
+
             bool changeTriangleWithinDist = false,
             float? newTriangleWithinDist = null,
 
             bool changeTriangleWithinCenter = false,
             float? newTriangleWithinCenter = null,
-
-            bool changeTriangleUseCrossSection = false,
-            bool newTriangleUseCrossSection = false,
 
             bool changeHorizontalTriangleShowTriUnits = false,
             bool newHorizontalTriangleShowTriUnits = false,
@@ -160,9 +172,6 @@ namespace STROOP.Map
 
             bool changeFloorEnableQuarterFrameLandings = false,
             bool newFloorEnableQuarterFrameLandings = false,
-
-            bool changeWallShowArrows = false,
-            bool newWallShowArrows = false,
 
             bool changeWallRelativeHeight = false,
             float? newWallRelativeHeight = null,
@@ -199,6 +208,9 @@ namespace STROOP.Map
 
             bool changePathPaused = false,
             bool newPathPaused = false,
+
+            bool changePathTruncatePoints = false,
+            bool newPathTruncatePoints = false,
 
             bool changePathUseValueAtStartOfGlobalTimer = false,
             bool newPathUseValueAtStartOfGlobalTimer = false,
@@ -242,6 +254,12 @@ namespace STROOP.Map
             bool changeNextPositionsNumFrames = false,
             double newNextPositionsNumFrames = 0,
 
+            bool changePreviousPositionsTrackHistory = false,
+            bool newPreviousPositionsTrackHistory = false,
+
+            bool changePreviousPositionsPauseHistory = false,
+            bool newPreviousPositionsPauseHistory = false,
+
             bool changePuGridlinesSetting = false,
             string newPuGridlinesSetting = null,
 
@@ -257,14 +275,17 @@ namespace STROOP.Map
             ChangeCustomCylinderRelativeMaxY = changeCustomCylinderRelativeMaxY;
             NewCustomCylinderRelativeMaxY = newCustomCylinderRelativeMaxY;
 
+            ChangeTriangleShowArrows = changeTriangleShowArrows;
+            NewTriangleShowArrows = newTriangleShowArrows;
+
+            ChangeTriangleUseCrossSection = changeTriangleUseCrossSection;
+            NewTriangleUseCrossSection = newTriangleUseCrossSection;
+
             ChangeTriangleWithinDist = changeTriangleWithinDist;
             NewTriangleWithinDist = newTriangleWithinDist;
 
             ChangeTriangleWithinCenter = changeTriangleWithinCenter;
             NewTriangleWithinCenter = newTriangleWithinCenter;
-
-            ChangeTriangleUseCrossSection = changeTriangleUseCrossSection;
-            NewTriangleUseCrossSection = newTriangleUseCrossSection;
 
             ChangeHorizontalTriangleShowTriUnits = changeHorizontalTriangleShowTriUnits;
             NewHorizontalTriangleShowTriUnits = newHorizontalTriangleShowTriUnits;
@@ -280,9 +301,6 @@ namespace STROOP.Map
 
             ChangeFloorEnableQuarterFrameLandings = changeFloorEnableQuarterFrameLandings;
             NewFloorEnableQuarterFrameLandings = newFloorEnableQuarterFrameLandings;
-
-            ChangeWallShowArrows = changeWallShowArrows;
-            NewWallShowArrows = newWallShowArrows;
 
             ChangeWallRelativeHeight = changeWallRelativeHeight;
             NewWallRelativeHeight = newWallRelativeHeight;
@@ -319,6 +337,9 @@ namespace STROOP.Map
 
             ChangePathPaused = changePathPaused;
             NewPathPaused = newPathPaused;
+
+            ChangePathTruncatePoints = changePathTruncatePoints;
+            NewPathTruncatePoints = newPathTruncatePoints;
 
             ChangePathUseValueAtStartOfGlobalTimer = changePathUseValueAtStartOfGlobalTimer;
             NewPathUseValueAtStartOfGlobalTimer = newPathUseValueAtStartOfGlobalTimer;
@@ -361,6 +382,12 @@ namespace STROOP.Map
 
             ChangeNextPositionsNumFrames = changeNextPositionsNumFrames;
             NewNextPositionsNumFrames = newNextPositionsNumFrames;
+
+            ChangePreviousPositionsTrackHistory = changePreviousPositionsTrackHistory;
+            NewPreviousPositionsTrackHistory = newPreviousPositionsTrackHistory;
+
+            ChangePreviousPositionsPauseHistory = changePreviousPositionsPauseHistory;
+            NewPreviousPositionsPauseHistory = newPreviousPositionsPauseHistory;
 
             ChangePuGridlinesSetting = changePuGridlinesSetting;
             NewPuGridlinesSetting = newPuGridlinesSetting;

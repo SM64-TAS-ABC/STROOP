@@ -15,6 +15,9 @@
   <Holp>
     <MapImage path="HOLP.png"/>
   </Holp>
+  <GreenHolp>
+    <MapImage path="HOLP Green.png"/>
+  </GreenHolp>
   <Home>
     <MapImage path="Home.png"/>
   </Home>
@@ -252,6 +255,9 @@
     <LockDisabled>
       <OverlayImage path="LockDisabled.png"/>
     </LockDisabled>
+    <LockReadOnly>
+      <OverlayImage path="LockReadOnly.png"/>
+    </LockReadOnly>
   </Overlays>
   <Object behaviorScriptAddress="0x13000000" name="Star Door">
     <SpawnCode gfxId="0xD5"/>
@@ -373,6 +379,7 @@
   <Object behaviorScriptAddress="0x130002B8" name="Bubble Spawner">
     <SpawnCode gfxId="0x00"/>
     <Image path="Bubble Spawner.png"/>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Timer Max</Data>
   </Object>
   <Object behaviorScriptAddress="0x130002E4" name="Splash Bubble">
     <SpawnCode gfxId="0xA4"/>

@@ -138,13 +138,27 @@ namespace STROOP.Managers
                 });
 
             (splitContainerTriangles.Panel1.Controls["buttonGotoV1"] as Button).Click
-                += (sender, e) => ButtonUtilities.GotoTriangleVertex(TriangleAddresses[0], 1, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GotoTriangleVertex(
+                    TriangleAddresses[0], 1, _useMisalignmentOffsetCheckbox.Checked ? TriangleVertexOffset.O_5 : TriangleVertexOffset.NONE);
             (splitContainerTriangles.Panel1.Controls["buttonGotoV2"] as Button).Click
-                += (sender, e) => ButtonUtilities.GotoTriangleVertex(TriangleAddresses[0], 2, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GotoTriangleVertex(
+                    TriangleAddresses[0], 2, _useMisalignmentOffsetCheckbox.Checked ? TriangleVertexOffset.O_5 : TriangleVertexOffset.NONE);
             (splitContainerTriangles.Panel1.Controls["buttonGotoV3"] as Button).Click
-                += (sender, e) => ButtonUtilities.GotoTriangleVertex(TriangleAddresses[0], 3, _useMisalignmentOffsetCheckbox.Checked);
+                += (sender, e) => ButtonUtilities.GotoTriangleVertex(
+                    TriangleAddresses[0], 3, _useMisalignmentOffsetCheckbox.Checked ? TriangleVertexOffset.O_5 : TriangleVertexOffset.NONE);
             (splitContainerTriangles.Panel1.Controls["buttonGotoVClosest"] as Button).Click += (sender, e) =>
-                ButtonUtilities.GotoTriangleVertexClosest(TriangleAddresses[0], _useMisalignmentOffsetCheckbox.Checked);
+                ButtonUtilities.GotoTriangleVertexClosest(
+                    TriangleAddresses[0], _useMisalignmentOffsetCheckbox.Checked ? TriangleVertexOffset.O_5 : TriangleVertexOffset.NONE);
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                (splitContainerTriangles.Panel1.Controls["buttonGotoVClosest"] as Button),
+                new List<string>() { "Goto Closest", "Goto Closest + 0.5", "Goto Closest + 0.999" },
+                new List<Action>()
+                {
+                    () => ButtonUtilities.GotoTriangleVertexClosest(TriangleAddresses[0], TriangleVertexOffset.NONE),
+                    () => ButtonUtilities.GotoTriangleVertexClosest(TriangleAddresses[0], TriangleVertexOffset.O_5),
+                    () => ButtonUtilities.GotoTriangleVertexClosest(TriangleAddresses[0], TriangleVertexOffset.O_999),
+                });
 
             (splitContainerTriangles.Panel1.Controls["buttonRetrieveTriangle"] as Button).Click
                 += (sender, e) => ButtonUtilities.RetrieveTriangle(TriangleAddresses);
@@ -154,7 +168,8 @@ namespace STROOP.Managers
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonNeutralizeTriangle,
                 new List<string>() { "Neutralize", "Neutralize with 0", "Neutralize with 0x15" },
-                new List<Action>() {
+                new List<Action>()
+                {
                     () => ButtonUtilities.NeutralizeTriangle(TriangleAddresses),
                     () => ButtonUtilities.NeutralizeTriangle(TriangleAddresses, false),
                     () => ButtonUtilities.NeutralizeTriangle(TriangleAddresses, true),
@@ -321,11 +336,11 @@ namespace STROOP.Managers
             };
         }
 
-        public void GoToClosestVertex()
+        public void GoToClosestFloorVertex()
         {
             uint floorTri = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             if (floorTri == 0) return;
-            ButtonUtilities.GotoTriangleVertexClosest(floorTri);
+            ButtonUtilities.GotoTriangleVertexClosest(floorTri, TriangleVertexOffset.NONE);
         }
 
         private void UpdateBasedOnCoordinates()

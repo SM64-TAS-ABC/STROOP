@@ -51,33 +51,43 @@ namespace STROOP.Map
             return (float)PositionAngle.Mario.Y;
         }
 
-        public override void DrawOn2DControlTopDownView()
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<(float x, float y, float z, float angle, int tex)> data = GetData();
-            data.Reverse();
-            foreach (var dataPoint in data)
+            for (int i = data.Count - 1; i >= 0; i--)
             {
+                var dataPoint = data[i];
                 (float x, float y, float z, float angle, int tex) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject && i == hoverData?.Index)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(tex, point, size, angleDegrees, opacity);
             }
         }
 
-        public override void DrawOn2DControlOrthographicView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             List<(float x, float y, float z, float angle, int tex)> data = GetData();
-            data.Reverse();
-            foreach (var dataPoint in data)
+            for (int i = data.Count - 1; i >= 0; i--)
             {
+                var dataPoint = data[i];
                 (float x, float y, float z, float angle, int tex) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
-                MapUtilities.DrawTexture(tex, point, size, angleDegrees, Opacity);
+                double opacity = Opacity;
+                if (this == hoverData?.MapObject && i == hoverData?.Index)
+                {
+                    opacity = MapUtilities.GetHoverOpacity();
+                }
+                MapUtilities.DrawTexture(tex, point, size, angleDegrees, opacity);
             }
         }
 
@@ -270,6 +280,90 @@ namespace STROOP.Map
         public override MapDrawType GetDrawType()
         {
             return MapDrawType.Overlay;
+        }
+
+        public override MapObjectHoverData GetHoverDataTopDownView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+
+            var data = GetData();
+            for (int i = 0; i < data.Count; i++)
+            {
+                var dataPoint = data[i];
+                double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
+                double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+                if (dist <= radius)
+                {
+                    return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
+                }
+            }
+            return null;
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            var data = GetData();
+            for (int i = 0; i < data.Count; i++)
+            {
+                var dataPoint = data[i];
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
+                double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+                double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
+                if (dist <= radius)
+                {
+                    return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
+                }
+            }
+            return null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            var data = GetData();
+            var dataPoint = data[hoverData.Index.Value];
+            List<double> posValues = new List<double>() { dataPoint.x, dataPoint.y, dataPoint.z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
+        }
+
+        public (float x, float y, float z) GetMidpoint()
+        {
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+
+            List<float> xValues = new List<float>() { marioX };
+            List<float> yValues = new List<float>() { marioY };
+            List<float> zValues = new List<float>() { marioZ };
+
+            var allFrameData = GetData();
+            foreach (var data in allFrameData)
+            {
+                xValues.Add(data.x);
+                yValues.Add(data.y);
+                zValues.Add(data.z);
+            }
+
+            if (xValues.Count == 0) return (0, 0, 0);
+
+            float xMin = xValues.Min();
+            float xMax = xValues.Max();
+            float yMin = yValues.Min();
+            float yMax = yValues.Max();
+            float zMin = zValues.Min();
+            float zMax = zValues.Max();
+
+            float xMidpoint = (xMin + xMax) / 2;
+            float yMidpoint = (yMin + yMax) / 2;
+            float zMidpoint = (zMin + zMax) / 2;
+
+            return (xMidpoint, yMidpoint, zMidpoint);
         }
     }
 }
