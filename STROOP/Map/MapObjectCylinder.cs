@@ -28,7 +28,7 @@ namespace STROOP.Map
 
         protected abstract List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions();
 
-        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
+        private List<List<(float x, float z)>> GetOrthographicDimensionsForControl()
         {
             List<List<(float x, float y, float z)>> vertexLists = Get3DDimensions().ConvertAll(dimension =>
             {
@@ -68,6 +68,13 @@ namespace STROOP.Map
             List<List<(float x, float z)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                     vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z)));
+
+            return vertexListsForControl;
+        }
+
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
+        {
+            List<List<(float x, float z)>> vertexListsForControl = GetOrthographicDimensionsForControl();
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -182,6 +189,23 @@ namespace STROOP.Map
                     });
                 }
             }
+        }
+
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            List<List<(float x, float z)>> dimensionList = GetOrthographicDimensionsForControl();
+            for (int i = dimensionList.Count - 1; i >= 0; i--)
+            {
+                List<(float x, float z)> dimension = dimensionList[i];
+                if (MapUtilities.IsWithinParallelogramQuadControl(dimension, relPos.X, relPos.Y))
+                {
+                    var inGameDimensionList = Get3DDimensions();
+                    var inGameDimension = inGameDimensionList[i];
+                    return new MapObjectHoverData(this, inGameDimension.centerX, inGameDimension.centerZ, index: i);
+                }
+            }
+            return null;
         }
     }
 }
