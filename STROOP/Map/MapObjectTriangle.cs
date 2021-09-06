@@ -462,19 +462,19 @@ namespace STROOP.Map
 
         public void DrawOn2DControlOrthographicViewTotal(MapObjectHoverData hoverData)
         {
-            List<List<(float x, float y, float z, Color color)>> vertexLists =
+            List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> vertexLists =
                 GetFilteredTriangles().ConvertAll(tri =>
                 {
                     Color color = GetColorForOrthographicView(tri.Classification);
-                    return tri.Get3DVertices().ConvertAll(vertex => (vertex.x, vertex.y, vertex.z, color));
+                    return tri.Get3DVertices().ConvertAll(vertex => (vertex.x, vertex.y, vertex.z, color, tri));
                 });
 
-            List<List<(float x, float z, Color color)>> vertexListsForControl =
+            List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                     vertex =>
                     {
                         (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z);
-                        return (x, z, vertex.color);
+                        return (x, z, vertex.color, vertex.tri);
                     }));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
@@ -482,12 +482,17 @@ namespace STROOP.Map
             GL.LoadIdentity();
 
             // Draw triangle
-            foreach (List<(float x, float z, Color color)> vertexList in vertexListsForControl)
+            foreach (List<(float x, float z, Color color, TriangleDataModel tri)> vertexList in vertexListsForControl)
             {
                 GL.Begin(PrimitiveType.Polygon);
-                foreach ((float x, float z, Color color) in vertexList)
+                foreach ((float x, float z, Color color, TriangleDataModel tri) in vertexList)
                 {
-                    GL.Color4(color.R, color.G, color.B, OpacityByte);
+                    byte opacityByte = OpacityByte;
+                    if (this == hoverData?.MapObject && tri.Address == hoverData?.Tri?.Address)
+                    {
+                        opacityByte = MapUtilities.GetHoverOpacityByte();
+                    }
+                    GL.Color4(color.R, color.G, color.B, opacityByte);
                     GL.Vertex2(x, z);
                 }
                 GL.End();
@@ -498,10 +503,10 @@ namespace STROOP.Map
             {
                 GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
                 GL.LineWidth(LineWidth);
-                foreach (List<(float x, float z, Color color)> vertexList in vertexListsForControl)
+                foreach (List<(float x, float z, Color color, TriangleDataModel tri)> vertexList in vertexListsForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z, Color color) in vertexList)
+                    foreach ((float x, float z, Color color, TriangleDataModel tri) in vertexList)
                     {
                         GL.Vertex2(x, z);
                     }
@@ -636,7 +641,7 @@ namespace STROOP.Map
             for (int i = trisForControl.Count - 1; i >= 0; i--)
             {
                 var triForControl = trisForControl[i];
-                if (MapUtilities.IsWithinParallelogramQuadControl(triForControl, relPos.X, relPos.Y))
+                if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y))
                 {
                     TriangleDataModel tri = tris[i];
                     return new MapObjectHoverData(this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri);

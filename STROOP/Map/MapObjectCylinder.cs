@@ -207,7 +207,7 @@ namespace STROOP.Map
             for (int i = dimensionList.Count - 1; i >= 0; i--)
             {
                 List<(float x, float z)> dimension = dimensionList[i];
-                if (MapUtilities.IsWithinParallelogramQuadControl(dimension, relPos.X, relPos.Y))
+                if (MapUtilities.IsWithinShapeForControl(dimension, relPos.X, relPos.Y))
                 {
                     var inGameDimensionList = GetPoints();
                     var inGameDimension = inGameDimensionList[i];
