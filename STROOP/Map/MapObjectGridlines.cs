@@ -131,15 +131,45 @@ namespace STROOP.Map
             return null;
         }
 
+        public override MapObjectHoverData GetHoverDataOrthographicView()
+        {
+            if (_customImage == null) return null;
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            var positions = GetGridlineIntersectionPositionsOrthographicView();
+            for (int i = positions.Count - 1; i >= 0; i--)
+            {
+                var position = positions[i];
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(position.x, position.y, position.z);
+                double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+                double radius = Scales ? _imageSize * Config.CurrentMapGraphics.MapViewScaleValue : _imageSize;
+                if (dist <= radius)
+                {
+                    return new MapObjectHoverData(this, position.x, position.y, position.z, index: i);
+                }
+            }
+            return null;
+        }
+
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
-            var positions = GetGridlineIntersectionPositionsTopDownView();
-            var position = positions[hoverData.Index.Value];
-            List<double> posValues = new List<double>() { position.x, position.z };
-            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
-            output.Insert(0, copyPositionItem);
+            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+            {
+                var positions = GetGridlineIntersectionPositionsOrthographicView();
+                var position = positions[hoverData.Index.Value];
+                List<double> posValues = new List<double>() { position.x, position.y, position.z };
+                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
+                output.Insert(0, copyPositionItem);
+            }
+            else
+            {
+                var positions = GetGridlineIntersectionPositionsTopDownView();
+                var position = positions[hoverData.Index.Value];
+                List<double> posValues = new List<double>() { position.x, position.z };
+                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
+                output.Insert(0, copyPositionItem);
+            }
 
             return output;
         }
