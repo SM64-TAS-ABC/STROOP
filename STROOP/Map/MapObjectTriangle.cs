@@ -328,7 +328,7 @@ namespace STROOP.Map
                     (float controlX3, float controlZ3) = MapUtilities.ConvertCoordsForControlOrthographicView(vertexList[2].x, vertexList[2].y, vertexList[2].z);
 
                     double angle1 = MoreMath.AngleTo_AngleUnits(controlX1, controlZ1, controlX2, controlZ2);
-                    double angle2 = MoreMath.AngleTo_AngleUnits(controlX2, controlZ2, controlX2, controlZ2);
+                    double angle2 = MoreMath.AngleTo_AngleUnits(controlX2, controlZ2, controlX3, controlZ3);
                     double angleDiff = angle2 - angle1;
                     double angleDiffSine = Math.Abs(Math.Sin(MoreMath.AngleUnitsToRadians(angleDiff)));
 
