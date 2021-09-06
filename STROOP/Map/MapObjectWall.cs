@@ -436,7 +436,8 @@ namespace STROOP.Map
                 {
                     if (MapUtilities.IsWithinParallelogramQuadControl(quadForControl, relPos.X, relPos.Y))
                     {
-                        return new MapObjectHoverData(this, wallData.Tri.GetMidpointX(), wallData.Tri.GetMidpointZ(), tri: wallData.Tri);
+                        return new MapObjectHoverData(
+                            this, wallData.Tri.GetMidpointX(), wallData.Tri.GetMidpointY(), wallData.Tri.GetMidpointZ(), tri: wallData.Tri);
                     }
                 }
             }

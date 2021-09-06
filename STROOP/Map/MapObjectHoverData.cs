@@ -1,6 +1,7 @@
 ﻿using OpenTK;
 using OpenTK.Graphics;
 using STROOP.Models;
+using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace STROOP.Map
 
         public readonly MapObject MapObject;
         public readonly double X;
+        public readonly double Y;
         public readonly double Z;
         public readonly uint? ObjAddress;
         public readonly TriangleDataModel Tri;
@@ -31,6 +33,7 @@ namespace STROOP.Map
         public MapObjectHoverData(
             MapObject mapObject,
             double x,
+            double y,
             double z,
             uint? objAddress = null,
             TriangleDataModel tri = null,
@@ -40,6 +43,7 @@ namespace STROOP.Map
         {
             MapObject = mapObject;
             X = x;
+            Y = y;
             Z = z;
             ObjAddress = objAddress;
             Tri = tri;
@@ -67,7 +71,14 @@ namespace STROOP.Map
             if (IsTriUnit) parts.Add("Unit");
             if (Index.HasValue) parts.Add(Index);
             if (Index2.HasValue) parts.Add(Index2);
-            parts.Add(string.Format("({0},{1})", X, Z));
+            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+            {
+                parts.Add(string.Format("({0},{1},{2})", X, Y, Z));
+            }
+            else
+            {
+                parts.Add(string.Format("({0},{1})", X, Z));
+            }
             return string.Join(" ", parts);
         }
 
@@ -77,6 +88,7 @@ namespace STROOP.Map
             {
                 return MapObject == other.MapObject &&
                     X == other.X &&
+                    Y == other.Y &&
                     Z == other.Z &&
                     ObjAddress == other.ObjAddress &&
                     Tri?.Address == other.Tri?.Address &&

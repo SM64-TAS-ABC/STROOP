@@ -498,11 +498,12 @@ namespace STROOP.Map
                 {
                     float midUnitX = (int)inGameX + (inGameX >= 0 ? 0.5f : -0.5f);
                     float midUnitZ = (int)inGameZ + (inGameZ >= 0 ? 0.5f : -0.5f);
-                    return new MapObjectHoverData(this, midUnitX, midUnitZ, tri: hoverTri, isTriUnit: true);
+                    return new MapObjectHoverData(this, midUnitX, 0, midUnitZ, tri: hoverTri, isTriUnit: true);
                 }
                 else
                 {
-                    return new MapObjectHoverData(this, hoverTri.GetMidpointX(), hoverTri.GetMidpointZ(), tri: hoverTri);
+                    return new MapObjectHoverData(
+                        this, hoverTri.GetMidpointX(), hoverTri.GetMidpointY(), hoverTri.GetMidpointZ(), tri: hoverTri);
                 }
             }
 

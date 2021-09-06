@@ -76,7 +76,7 @@ namespace STROOP.Map
                 var unitPoint = _unitPoints[i];
                 if (unitPoint.x == inGameXTruncated && unitPoint.z == inGameZTruncated)
                 {
-                    return new MapObjectHoverData(this, unitPoint.x, unitPoint.z, index: i);
+                    return new MapObjectHoverData(this, unitPoint.x, 0, unitPoint.z, index: i);
                 }
             }
             return null;

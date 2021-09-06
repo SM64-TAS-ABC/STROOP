@@ -73,10 +73,11 @@ namespace STROOP.Map
             int inGameZTruncated = (int)inGameZ;
             (double x, double y, double z, double angle) = _posAngle.GetValues();
             int xTruncated = (int)x;
+            int yTruncated = (int)y;
             int zTruncated = (int)z;
             if (xTruncated == inGameXTruncated && zTruncated == inGameZTruncated)
             {
-                return new MapObjectHoverData(this, xTruncated, zTruncated);
+                return new MapObjectHoverData(this, xTruncated, yTruncated, zTruncated);
             }
             return null;
         }

@@ -271,7 +271,7 @@ namespace STROOP.Map
             Config.SetDebugText("{0} {1} {2} {3}", x, z, inGameX, inGameZ);
             if (dist <= radius)
             {
-                return new MapObjectHoverData(this, x, z);
+                return new MapObjectHoverData(this, x, y, z);
             }
             return null;
         }

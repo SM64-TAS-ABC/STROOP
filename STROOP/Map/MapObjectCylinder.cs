@@ -209,9 +209,9 @@ namespace STROOP.Map
                 List<(float x, float z)> dimension = dimensionList[i];
                 if (MapUtilities.IsWithinParallelogramQuadControl(dimension, relPos.X, relPos.Y))
                 {
-                    var inGameDimensionList = Get3DDimensions();
+                    var inGameDimensionList = GetPoints();
                     var inGameDimension = inGameDimensionList[i];
-                    return new MapObjectHoverData(this, inGameDimension.centerX, inGameDimension.centerZ, index: i);
+                    return new MapObjectHoverData(this, inGameDimension.x, inGameDimension.y, inGameDimension.z, index: i);
                 }
             }
             return null;

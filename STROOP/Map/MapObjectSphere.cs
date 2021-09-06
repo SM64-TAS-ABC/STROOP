@@ -203,9 +203,9 @@ namespace STROOP.Map
                 double dist = MoreMath.GetDistanceBetween(dimension.centerX, dimension.centerZ, relPos.X, relPos.Y);
                 if (dist <= dimension.radius)
                 {
-                    var inGameDimensionList = Get3DDimensions();
+                    var inGameDimensionList = GetPoints();
                     var inGameDimension = inGameDimensionList[i];
-                    return new MapObjectHoverData(this, inGameDimension.centerX, inGameDimension.centerZ, index: i);
+                    return new MapObjectHoverData(this, inGameDimension.x, inGameDimension.y, inGameDimension.z, index: i);
                 }
             }
             return null;
