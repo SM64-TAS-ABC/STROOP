@@ -184,7 +184,7 @@ namespace STROOP.Map
                 bool isWithinQuad =
                     this == hoverData?.MapObject &&
                     hoverData.IsTriUnit &&
-                    MapUtilities.IsWithinQuad(quad, (float)hoverData.X, (float)hoverData.Z);
+                    MapUtilities.IsWithinRectangularQuad(quad, (float)hoverData.X, (float)hoverData.Z);
                 bool isHovered = isWithinQuad && !hasHovered;
                 if (isHovered) hasHovered = true;
                 List<(float x, float y, float z, bool isHovered)> quadHovered =

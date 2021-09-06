@@ -361,7 +361,7 @@ namespace STROOP.Map
             return bestZ;
         }
 
-        public static bool IsWithinQuad(List<(float x, float y, float z)> quad, float x, float z)
+        public static bool IsWithinRectangularQuad(List<(float x, float y, float z)> quad, float x, float z)
         {
             float xMinAbs = GetXWithMinAbsValue(quad);
             float xMaxAbs = GetXWithMaxAbsValue(quad);
@@ -390,6 +390,22 @@ namespace STROOP.Map
                 if (z >= zMaxAbs) return false;
             }
 
+            return true;
+        }
+
+        public static bool IsWithinParallelogramQuadControl(List<(float x, float z)> quad, float x, float z)
+        {
+            bool? leftOfLine = null;
+            for (int i = 0; i < quad.Count; i++)
+            {
+                float x1 = quad[i].x;
+                float z1 = quad[i].z;
+                float x2 = quad[(i + 1) % quad.Count].x;
+                float z2 = quad[(i + 1) % quad.Count].z;
+                bool left = MoreMath.IsPointLeftOfLine(x, z, x1, z1, x2, z2);
+                if (leftOfLine.HasValue && leftOfLine.Value != left) return false;
+                leftOfLine = left;
+            }
             return true;
         }
 

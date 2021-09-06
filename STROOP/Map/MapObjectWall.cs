@@ -52,7 +52,7 @@ namespace STROOP.Map
                 float angle = (float)MoreMath.AngleTo_Radians(wallData.X1, wallData.Z1, wallData.X2, wallData.Z2);
                 float projectionDist = Size / (float)Math.Abs(wallData.Tri.XProjection ? Math.Cos(angle) : Math.Sin(angle));
                 List<List<(float x, float z)>> quads = new List<List<(float x, float z)>>();
-                Action<float, float> addQuad = (float xAdd, float zAdd) =>
+                void addQuad(float xAdd, float zAdd)
                 {
                     quads.Add(new List<(float x, float z)>()
                     {
@@ -382,6 +382,61 @@ namespace STROOP.Map
                     GL.DeleteBuffer(buffer);
                 });
             }
+        }
+
+        public override MapObjectHoverData GetHoverData()
+        {
+            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+
+            float marioHeight = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float? height = _relativeHeight.HasValue ? marioHeight - _relativeHeight.Value : _absoluteHeight;
+
+            List<TriangleMapData> wallDataList = GetFilteredTriangles()
+                .ConvertAll(tri => MapUtilities.Get2DWallDataFromTri(tri, height))
+                .FindAll(wallDataNullable => wallDataNullable != null);
+
+            for (int i = wallDataList.Count - 1; i >= 0; i--)
+            {
+                TriangleMapData wallData = wallDataList[i];
+
+                float angle = (float)MoreMath.AngleTo_Radians(wallData.X1, wallData.Z1, wallData.X2, wallData.Z2);
+                float projectionDist = Size / (float)Math.Abs(wallData.Tri.XProjection ? Math.Cos(angle) : Math.Sin(angle));
+                List<List<(float x, float z)>> quads = new List<List<(float x, float z)>>();
+                void addQuad(float xAdd, float zAdd)
+                {
+                    quads.Add(new List<(float x, float z)>()
+                    {
+                        (wallData.X1, wallData.Z1),
+                        (wallData.X1 + xAdd, wallData.Z1 + zAdd),
+                        (wallData.X2 + xAdd, wallData.Z2 + zAdd),
+                        (wallData.X2, wallData.Z2),
+                    });
+                };
+                if (wallData.Tri.XProjection)
+                {
+                    addQuad(projectionDist, 0);
+                    addQuad(-1 * projectionDist, 0);
+                }
+                else
+                {
+                    addQuad(0, projectionDist);
+                    addQuad(0, -1 * projectionDist);
+                }
+
+                List<List<(float x, float z)>> quadsForControl =
+                    quads.ConvertAll(quad => quad.ConvertAll(
+                        vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z)));
+
+                foreach (List<(float x, float z)> quadForControl in quadsForControl)
+                {
+                    if (MapUtilities.IsWithinParallelogramQuadControl(quadForControl, relPos.X, relPos.Y))
+                    {
+                        return new MapObjectHoverData(this, wallData.Tri.GetMidpointX(), wallData.Tri.GetMidpointZ(), tri: wallData.Tri);
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }
