@@ -618,6 +618,13 @@ namespace STROOP.Structs
                     ("MapUseNotForCeilings", () => SpecialConfig.MapUseNotForCeilings, (double value) => SpecialConfig.MapUseNotForCeilings = value),
                     ("MapUseXForCeilings", () => SpecialConfig.MapUseXForCeilings, (double value) => SpecialConfig.MapUseXForCeilings = value),
 
+                    ("MapScaleValue", () => Config.MapGraphics.MapViewScaleValue, (double value) => Config.MapGraphics.SetCustomScale(value)),
+                    ("MapCenterXValue", () => Config.MapGraphics.MapViewCenterXValue, (double value) => Config.MapGraphics.SetCustomCenter(xValue: value)),
+                    ("MapCenterYValue", () => Config.MapGraphics.MapViewCenterYValue, (double value) => Config.MapGraphics.SetCustomCenter(yValue: value)),
+                    ("MapCenterZValue", () => Config.MapGraphics.MapViewCenterZValue, (double value) => Config.MapGraphics.SetCustomCenter(zValue: value)),
+                    ("MapYawValue", () => Config.MapGraphics.MapViewYawValue, (double value) => Config.MapGraphics.SetCustomYaw(value)),
+                    ("MapPitchValue", () => Config.MapGraphics.MapViewPitchValue, (double value) => Config.MapGraphics.SetCustomPitch(value)),
+
                     ("CoordinateLabelsCustomSpacing", () => SpecialConfig.CoordinateLabelsCustomSpacing, (double value) => SpecialConfig.CoordinateLabelsCustomSpacing = value),
                     ("CoordinateLabelsMargin", () => SpecialConfig.CoordinateLabelsMargin, (double value) => SpecialConfig.CoordinateLabelsMargin = value),
                     ("CoordinateLabelsLabelDensity", () => SpecialConfig.CoordinateLabelsLabelDensity, (double value) => SpecialConfig.CoordinateLabelsLabelDensity = value),

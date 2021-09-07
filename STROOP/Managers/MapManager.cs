@@ -1430,6 +1430,15 @@ namespace STROOP.Managers
             "Use Not for Ceilings",
             "Use X for Ceilings",
         };
+        private static readonly List<string> blueVarNames = new List<string>()
+        {
+            "Scale Value",
+            "Center X Value",
+            "Center Y Value",
+            "Center Z Value",
+            "Yaw Value",
+            "Pitch Value",
+        };
         private static readonly List<string> inGameColoredVars = new List<string>() { };
         private static readonly List<string> cameraPosAndFocusColoredVars = new List<string>()
         {
@@ -1465,6 +1474,7 @@ namespace STROOP.Managers
                     control.VarName == "Mode" ? ColorUtilities.GetColorFromString("Green") :
                     coloredVarNames.Contains(control.VarName) ? ColorUtilities.GetColorFromString("Red") :
                     greyVarNames.Contains(control.VarName) ? ColorUtilities.GetColorFromString("Grey") :
+                    blueVarNames.Contains(control.VarName) ? ColorUtilities.GetColorFromString("Blue") :
                     SystemColors.Control);
         }
     }

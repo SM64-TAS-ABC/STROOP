@@ -519,9 +519,12 @@ namespace STROOP.Map
             Config.MapGui.textBoxMapControllersScaleCustom.SubmitText(value.ToString());
         }
 
-        public void SetCustomCenter(object xValue, object yValue, object zValue)
+        public void SetCustomCenter(object xValue = null, object yValue = null, object zValue = null)
         {
             if (_isMainGraphics) Config.MapGui.radioButtonMapControllersCenterCustom.Checked = true;
+            xValue = xValue ?? MapViewCenterXValue;
+            yValue = yValue ?? MapViewCenterYValue;
+            zValue = zValue ?? MapViewCenterZValue;
             SetCenterTextbox(xValue, yValue, zValue);
         }
 

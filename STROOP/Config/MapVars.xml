@@ -25,6 +25,13 @@
 
   <Data base="None" specialType="Map3DFOV">FOV</Data>
 
+  <Data base="None" specialType="MapScaleValue">Scale Value</Data>
+  <Data base="None" specialType="MapCenterXValue">Center X Value</Data>
+  <Data base="None" specialType="MapCenterYValue">Center Y Value</Data>
+  <Data base="None" specialType="MapCenterZValue">Center Z Value</Data>
+  <Data base="None" specialType="MapYawValue">Yaw Value</Data>
+  <Data base="None" specialType="MapPitchValue">Pitch Value</Data>
+
   <Data base="None" specialType="Map2DScrollSpeed">2D Scroll Speed</Data>
   <Data base="None" specialType="Map2DOrthographicHorizontalRotateSpeed">Orth H Rotate Speed</Data>
   <Data base="None" specialType="Map2DOrthographicVerticalRotateSpeed">Orth V Rotate Speed</Data>
