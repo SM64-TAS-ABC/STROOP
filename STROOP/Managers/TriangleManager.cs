@@ -370,6 +370,13 @@ namespace STROOP.Managers
             short yMaxPlus5 = (short)(MoreMath.Max(y1, y2, y3) + 5);
             Config.Stream.SetValue(yMinMinus5, triAddress + TriangleOffsetsConfig.YMinMinus5);
             Config.Stream.SetValue(yMaxPlus5, triAddress + TriangleOffsetsConfig.YMaxPlus5);
+
+            // update x projection
+            bool xProjection = normX < -0.707 || normX > 0.707;
+            Config.Stream.SetValue(
+                (byte)(xProjection ? TriangleOffsetsConfig.XProjectionMask : 0),
+                triAddress + TriangleOffsetsConfig.Flags,
+                mask: TriangleOffsetsConfig.XProjectionMask);
         }
 
         private void PasteTriangles()
