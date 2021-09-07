@@ -25,6 +25,10 @@ namespace STROOP.Forms
         private readonly List<WatchVariableWrapper> _watchVarWrappers;
         private List<List<uint>> _fixedAddressLists;
 
+        private readonly Action<bool> _addAction;
+        private bool _isDoingContinuousAdd;
+        private bool _isDoingContinuousSubtract;
+
         public VariableControllerForm(
             string varName, WatchVariableWrapper watchVarWrapper, List<uint> fixedAddressList) :
                 this (new List<string>() { varName },
@@ -41,45 +45,44 @@ namespace STROOP.Forms
             _watchVarWrappers = watchVarWrappers;
             _fixedAddressLists = fixedAddressLists;
 
+            _isDoingContinuousAdd = false;
+            _isDoingContinuousSubtract = false;
+
             InitializeComponent();
             FormManager.AddForm(this);
             FormClosing += (sender, e) => FormManager.RemoveForm(this);
 
             _textBoxVarName.Text = String.Join(",", _varNames);
 
-            Action<bool> addAction = (bool add) =>
+            _addAction = (bool add) =>
             {
                 List<string> values = ParsingUtilities.ParseStringList(_textBoxAddSubtract.Text);
                 if (values.Count == 0) return;
                 for (int i = 0; i < _watchVarWrappers.Count; i++)
                     _watchVarWrappers[i].AddValue(values[i % values.Count], add, _fixedAddressLists[i]);
             };
-            _buttonAdd.Click += (s, e) => addAction(true);
-            _buttonSubtract.Click += (s, e) => addAction(false);
+            _buttonAdd.Click += (s, e) => _addAction(true);
+            _buttonSubtract.Click += (s, e) => _addAction(false);
 
             Timer addTimer = new Timer { Interval = 30 };
-            addTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) addAction(true); };
+            addTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) _addAction(true); };
             _buttonAdd.MouseDown += (sender, e) => addTimer.Start();
             _buttonAdd.MouseUp += (sender, e) => addTimer.Stop();
 
-            Timer addTimer2 = new Timer { Interval = 30 };
-            addTimer2.Tick += (s, e) => { addAction(true); };
             ControlUtilities.AddContextMenuStripFunctions(
                 _buttonAdd,
                 new List<string>() { "Start Continuous Add", "Stop Continuous Add" },
-                new List<Action>() { () => addTimer2.Start(), () => addTimer2.Stop() });
+                new List<Action>() { () => _isDoingContinuousAdd = true, () => _isDoingContinuousAdd = false });
 
             Timer subtractTimer = new Timer { Interval = 30 };
-            subtractTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) addAction(false); };
+            subtractTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) _addAction(false); };
             _buttonSubtract.MouseDown += (sender, e) => subtractTimer.Start();
             _buttonSubtract.MouseUp += (sender, e) => subtractTimer.Stop();
 
-            Timer subtractTimer2 = new Timer { Interval = 30 };
-            subtractTimer2.Tick += (s, e) => { addAction(false); };
             ControlUtilities.AddContextMenuStripFunctions(
                 _buttonSubtract,
                 new List<string>() { "Start Continuous Subtract", "Stop Continuous Subtract" },
-                new List<Action>() { () => subtractTimer2.Start(), () => subtractTimer2.Stop() });
+                new List<Action>() { () => _isDoingContinuousSubtract = true, () => _isDoingContinuousSubtract = false });
 
             ToolStripMenuItem itemInvertedAdd = new ToolStripMenuItem("Inverted");
             ToolStripMenuItem itemInvertedSubtract = new ToolStripMenuItem("Inverted");
@@ -173,6 +176,8 @@ namespace STROOP.Forms
             for (int i = 0; i < _watchVarWrappers.Count; i++)
                 lockedBools.Add(_watchVarWrappers[i].GetLockedBool(_fixedAddressLists[i]));
             _checkBoxLock.CheckState = BoolUtilities.GetCheckState(lockedBools);
+            if (_isDoingContinuousAdd) _addAction(true);
+            if (_isDoingContinuousSubtract) _addAction(false);
         }
         
         public void ToggleFixedAddress()
