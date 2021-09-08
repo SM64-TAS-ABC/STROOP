@@ -216,7 +216,34 @@ namespace STROOP.Map
                         }));
 
                 }).SelectMany(points => points).ToList();
-            }).SelectMany(list => list)/*.Distinct()*/.ToList();
+            }).SelectMany(list => list).Distinct(_unitQuadComparer).ToList();
+        }
+
+        private UnitQuadComparer _unitQuadComparer = new UnitQuadComparer();
+
+        private class UnitQuadComparer : IEqualityComparer<List<(float x, float z, Color color, TriangleDataModel tri)>>
+        {
+            // Products are equal if their names and product numbers are equal.
+            public bool Equals(
+                List<(float x, float z, Color color, TriangleDataModel tri)> quad1,
+                List<(float x, float z, Color color, TriangleDataModel tri)> quad2)
+            {
+                List<(float x, float z)> simpleQuad1 = quad1.ConvertAll(q => (q.x, q.z));
+                List<(float x, float z)> simpleQuad2 = quad2.ConvertAll(q => (q.x, q.z));
+                return Enumerable.SequenceEqual(simpleQuad1, simpleQuad2);
+            }
+
+            // If Equals() returns true for a pair of objects
+            // then GetHashCode() must return the same value for these objects.
+            public int GetHashCode(List<(float x, float z, Color color, TriangleDataModel tri)> quad)
+            {
+                double product = 1;
+                foreach (var vertex in quad)
+                {
+                    product *= vertex.x * vertex.z;
+                }
+                return (int)product;
+            }
         }
 
         private void DrawVertexListsForControlWithUnits(
