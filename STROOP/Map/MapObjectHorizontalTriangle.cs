@@ -144,13 +144,14 @@ namespace STROOP.Map
             GL.LoadIdentity();
 
             // Draw triangle
-            foreach (var vertexList in vertexListsForControl)
+            for (int i = 0; i < vertexListsForControl.Count; i++)
             {
+                var vertexList = vertexListsForControl[i];
                 GL.Begin(PrimitiveType.Polygon);
                 foreach (var vertex in vertexList)
                 {
                     byte opacityByte = OpacityByte;
-                    if (this == hoverData?.MapObject && hoverData?.Tri == vertex.tri)
+                    if (this == hoverData?.MapObject && vertex.tri == hoverData?.Tri && i == hoverData?.Index)
                     {
                         opacityByte = MapUtilities.GetHoverOpacityByte();
                     }
@@ -565,14 +566,15 @@ namespace STROOP.Map
             {
                 List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
                     GetVertexListsForControlWithoutUnits(drawData);
-                foreach (var vertexList in vertexListsForControl)
+                for (int i = 0; i < vertexListsForControl.Count; i++)
                 {
+                    var vertexList = vertexListsForControl[i];
                     List<(float x, float z)> simpleVertexList = vertexList.ConvertAll(vertex => (vertex.x, vertex.z));
                     if (MapUtilities.IsWithinShapeForControl(simpleVertexList, relPos.X, relPos.Y))
                     {
                         TriangleDataModel tri = vertexList[0].tri;
                         return new MapObjectHoverData(
-                            this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri);
+                            this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri, index: i);
                     }
                 }
                 return null;
