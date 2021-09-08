@@ -228,11 +228,16 @@ namespace STROOP.Map
 
             // Draw quad
             GL.Begin(PrimitiveType.Quads);
-            foreach (var vertexList in vertexListsForControl)
+            for (int i = 0; i < vertexListsForControl.Count; i++)
             {
+                var vertexList = vertexListsForControl[i];
                 foreach (var vertex in vertexList)
                 {
-                    byte opacityByte = (false) ? MapUtilities.GetHoverOpacityByte() : OpacityByte;
+                    byte opacityByte = OpacityByte;
+                    if (this == hoverData?.MapObject && vertex.tri == hoverData?.Tri && i == hoverData?.Index)
+                    {
+                        opacityByte = MapUtilities.GetHoverOpacityByte();
+                    }
                     GL.Color4(vertex.color.R, vertex.color.G, vertex.color.B, opacityByte);
                     GL.Vertex2(vertex.x, vertex.z);
                 }
@@ -496,9 +501,15 @@ namespace STROOP.Map
             return (x, y, z, tri);
         }
 
-        private (float x, float z) GetInGameMidpointFromControlQuad(List<(float x, float z)>  vertexList)
+        private (float x, float z) GetInGameMidpointFromControlQuad(List<(float x, float z)> vertexList)
         {
-            return (0, 0);
+            List<(float x, float z)> inGameVertexList =
+                vertexList.ConvertAll(v => MapUtilities.ConvertCoordsForInGame(v.x, v.z));
+            float xAverage = inGameVertexList.Average(v => v.x);
+            float zAverage = inGameVertexList.Average(v => v.z);
+            float xMidpoint = (int)xAverage + (xAverage >= 0 ? 0.5f : -0.5f);
+            float zMidpoint = (int)zAverage + (zAverage >= 0 ? 0.5f : -0.5f);
+            return (xMidpoint, zMidpoint);
         }
 
         public override MapObjectHoverData GetHoverDataTopDownView()
