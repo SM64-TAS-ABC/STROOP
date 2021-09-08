@@ -476,7 +476,9 @@ namespace STROOP.Map
         public override MapObjectHoverData GetHoverDataTopDownView()
         {
             bool isShowingTriUnits = _showTriUnits && MapUtilities.IsAbleToShowUnitPrecision();
-            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
+            if (!relPosMaybe.HasValue) return null;
+            Point relPos = relPosMaybe.Value;
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
             List<TriangleDataModel> tris = GetFilteredTriangles();
             List<TriangleDataModel> trisSortedByY = tris.OrderBy(tri => tri.Y1).ToList();

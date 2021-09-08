@@ -148,7 +148,9 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataTopDownView()
         {
-            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
+            if (!relPosMaybe.HasValue) return null;
+            Point relPos = relPosMaybe.Value;
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
 
             for (int i = _points.Count - 1; i >= 0; i--)
@@ -166,7 +168,10 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataOrthographicView()
         {
-            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
+            if (!relPosMaybe.HasValue) return null;
+            Point relPos = relPosMaybe.Value;
+
             for (int i = _points.Count - 1; i >= 0; i--)
             {
                 var point = _points[i];

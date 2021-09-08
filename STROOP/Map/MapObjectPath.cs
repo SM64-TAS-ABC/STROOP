@@ -705,7 +705,9 @@ namespace STROOP.Map
         {
             if (_customImage == null) return null;
 
-            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
+            if (!relPosMaybe.HasValue) return null;
+            Point relPos = relPosMaybe.Value;
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
 
             List<(float x, float y, float z)> preData = GetDictionaryValues();
@@ -728,7 +730,10 @@ namespace STROOP.Map
         {
             if (_customImage == null) return null;
 
-            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
+            if (!relPosMaybe.HasValue) return null;
+            Point relPos = relPosMaybe.Value;
+
             List<(float x, float y, float z)> preData = GetDictionaryValues();
             List<(float x, float y, float z)> data = _showQuarterSteps ? MapUtilities.InterpolateQuarterSteps(preData) : preData;
             for (int i = data.Count - 1; i >= 0; i--)

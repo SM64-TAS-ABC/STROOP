@@ -141,7 +141,9 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataTopDownView()
         {
-            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
+            if (!relPosMaybe.HasValue) return null;
+            Point relPos = relPosMaybe.Value;
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
 
             List<(float centerX, float centerZ, float radius)> dimensionList = Get2DDimensions();

@@ -108,7 +108,10 @@ namespace STROOP.Map
         public override MapObjectHoverData GetHoverDataTopDownView()
         {
             if (_customImage == null) return null;
-            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
+            if (!relPosMaybe.HasValue) return null;
+            Point relPos = relPosMaybe.Value;
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
 
             var positions = GetGridlineIntersectionPositionsTopDownView();
@@ -128,7 +131,11 @@ namespace STROOP.Map
         public override MapObjectHoverData GetHoverDataOrthographicView()
         {
             if (_customImage == null) return null;
-            Point relPos = Config.MapGui.CurrentControl.PointToClient(MapObjectHoverData.GetCurrentPoint());
+
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
+            if (!relPosMaybe.HasValue) return null;
+            Point relPos = relPosMaybe.Value;
+
             var positions = GetGridlineIntersectionPositionsOrthographicView();
             for (int i = positions.Count - 1; i >= 0; i--)
             {
