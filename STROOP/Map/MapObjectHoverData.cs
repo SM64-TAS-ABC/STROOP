@@ -88,13 +88,19 @@ namespace STROOP.Map
             }
             else if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
             {
-                parts.Add(string.Format("({0},{1},{2})", X, Y, Z));
+                parts.Add(string.Format("({0},{1},{2})", HandleRounding(X), HandleRounding(Y), HandleRounding(Z)));
             }
             else
             {
-                parts.Add(string.Format("({0},{1})", X, Z));
+                parts.Add(string.Format("({0},{1})", HandleRounding(X), HandleRounding(Z)));
             }
             return string.Join(" ", parts);
+        }
+
+        private double HandleRounding(double value)
+        {
+            if (MapObject is MapObjectFloatGridlines) return value;
+            return Math.Round(value, 3);
         }
 
         public override bool Equals(object obj)
