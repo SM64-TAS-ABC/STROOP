@@ -183,70 +183,59 @@ namespace STROOP.Map
         private List<List<(float x, float z, Color color, TriangleDataModel tri)>> GetVertexListsForControlWithUnits(
             List<(float? minHeight, float? maxHeight, Color color)> drawData)
         {
-            List<TriangleDataModel> triangles = GetFilteredTriangles();
-            return drawData.ConvertAll(data =>
-            {
-                return triangles.ConvertAll(triangle =>
+            List<TriangleDataModel> tris = GetFilteredTriangles();
+            List<(int x, int z, Color color, TriangleDataModel tri)> unitPoints =
+                drawData.ConvertAll(data =>
                 {
-                    int xMin = (int)Math.Max(triangle.GetMinX(), Config.CurrentMapGraphics.MapViewXMin - 1);
-                    int xMax = (int)Math.Min(triangle.GetMaxX(), Config.CurrentMapGraphics.MapViewXMax + 1);
-                    int zMin = (int)Math.Max(triangle.GetMinZ(), Config.CurrentMapGraphics.MapViewZMin - 1);
-                    int zMax = (int)Math.Min(triangle.GetMaxZ(), Config.CurrentMapGraphics.MapViewZMax + 1);
-
-                    List<(int x, int z)> points = new List<(int x, int z)>();
-                    for (int x = xMin; x <= xMax; x++)
+                    return tris.ConvertAll(tri =>
                     {
-                        for (int z = zMin; z <= zMax; z++)
+                        int xMin = (int)Math.Max(tri.GetMinX(), Config.CurrentMapGraphics.MapViewXMin - 1);
+                        int xMax = (int)Math.Min(tri.GetMaxX(), Config.CurrentMapGraphics.MapViewXMax + 1);
+                        int zMin = (int)Math.Max(tri.GetMinZ(), Config.CurrentMapGraphics.MapViewZMin - 1);
+                        int zMax = (int)Math.Min(tri.GetMaxZ(), Config.CurrentMapGraphics.MapViewZMax + 1);
+
+                        List<(int x, int z, Color color, TriangleDataModel tri)> points =
+                            new List<(int x, int z, Color color, TriangleDataModel tri)>();
+                        for (int x = xMin; x <= xMax; x++)
                         {
-                            float? y = triangle.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
-                            if (y.HasValue &&
-                                (!data.minHeight.HasValue || y.Value >= data.minHeight.Value) &&
-                                (!data.maxHeight.HasValue || y.Value <= data.maxHeight.Value))
+                            for (int z = zMin; z <= zMax; z++)
                             {
-                                points.Add((x, z));
+                                float? y = tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
+                                if (y.HasValue &&
+                                    (!data.minHeight.HasValue || y.Value >= data.minHeight.Value) &&
+                                    (!data.maxHeight.HasValue || y.Value <= data.maxHeight.Value))
+                                {
+                                    points.Add((x, z, data.color, tri));
+                                }
                             }
                         }
-                    }
+                        return points;
+                    }).SelectMany(points => points).ToList();
+                }).SelectMany(list => list).ToList();
 
-                    List<List<(float x, float y, float z)>> quadList = MapUtilities.ConvertUnitPointsToQuads(points);
-                    return quadList.ConvertAll(quad => quad.ConvertAll(
-                        vertex =>
-                        {
-                            (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z);
-                            return (x, z, data.color, triangle);
-                        }));
-
-                }).SelectMany(points => points).ToList();
-            }).SelectMany(list => list).ToList();
-        }
-
-        private UnitQuadComparer _unitQuadComparer = new UnitQuadComparer();
-
-        private class UnitQuadComparer : IEqualityComparer<List<(float x, float z, Color color, TriangleDataModel tri)>>
-        {
-            public bool Equals(
-                List<(float x, float z, Color color, TriangleDataModel tri)> quad1,
-                List<(float x, float z, Color color, TriangleDataModel tri)> quad2)
+            List<(int x, int z, Color color, TriangleDataModel tri)> unitPointsDistinct =
+                new List<(int x, int z, Color color, TriangleDataModel tri)>();
+            HashSet<(int x, int z)> alreadySeen = new HashSet<(int x, int z)>();
+            foreach (var unitPoint in unitPoints)
             {
-                return quad1[0].x == quad2[0].x &&
-                    quad1[0].z == quad2[0].z &&
-                    quad1[1].x == quad2[1].x &&
-                    quad1[1].z == quad2[1].z &&
-                    quad1[2].x == quad2[2].x &&
-                    quad1[2].z == quad2[2].z &&
-                    quad1[3].x == quad2[3].x &&
-                    quad1[3].z == quad2[3].z;
+                if (alreadySeen.Contains((unitPoint.x, unitPoint.z))) continue;
+                alreadySeen.Add((unitPoint.x, unitPoint.z));
+                unitPointsDistinct.Add(unitPoint);
             }
 
-            public int GetHashCode(List<(float x, float z, Color color, TriangleDataModel tri)> quad)
+            return unitPointsDistinct.ConvertAll(unitPoint =>
             {
-                double product = 1;
-                foreach (var vertex in quad)
+                List<(int x, int z)> unitPointList = new List<(int x, int z)>() { (unitPoint.x, unitPoint.z) };
+                List<List<(float x, float y, float z)>> quadList = MapUtilities.ConvertUnitPointsToQuads(unitPointList);
+                return quadList.ConvertAll(quad =>
                 {
-                    product *= vertex.x * vertex.z;
-                }
-                return (int)product;
-            }
+                    return quad.ConvertAll(vertex =>
+                    {
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z);
+                        return (x, z, unitPoint.color, unitPoint.tri);
+                    });
+                });
+            }).SelectMany(list => list).ToList();
         }
 
         private void DrawVertexListsForControlWithUnits(
