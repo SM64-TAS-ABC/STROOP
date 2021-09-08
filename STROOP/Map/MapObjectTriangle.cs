@@ -55,7 +55,8 @@ namespace STROOP.Map
             {
                 tris = tris.FindAll(tri => tri.SurfaceType != 0x0A);
             }
-            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked &&
+                SpecialConfig.MapSortOrthographicTris != 0)
             {
                 if (_useCrossSection)
                 {

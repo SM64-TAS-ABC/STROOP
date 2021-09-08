@@ -188,6 +188,7 @@ namespace STROOP.Structs.Configurations
         public static int MapCircleNumPoints3D = 64;
 
         public static double MapUnitPrecisionThreshold = 4;
+        public static double MapSortOrthographicTris = 0;
         public static double MapUseNotForCeilings = 1;
         public static double MapUseXForCeilings = 0;
 

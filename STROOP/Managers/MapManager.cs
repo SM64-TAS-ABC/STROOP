@@ -1052,6 +1052,7 @@ namespace STROOP.Managers
                 mapTabSettings.Add(new XAttribute("mapCircleNumPoints2D", SpecialConfig.MapCircleNumPoints2D));
                 mapTabSettings.Add(new XAttribute("mapCircleNumPoints3D", SpecialConfig.MapCircleNumPoints3D));
                 mapTabSettings.Add(new XAttribute("mapUnitPrecisionThreshold", SpecialConfig.MapUnitPrecisionThreshold));
+                mapTabSettings.Add(new XAttribute("mapSortOrthographicTris", SpecialConfig.MapSortOrthographicTris));
                 mapTabSettings.Add(new XAttribute("mapUseNotForCeilings", SpecialConfig.MapUseNotForCeilings));
                 mapTabSettings.Add(new XAttribute("mapUseXForCeilings", SpecialConfig.MapUseXForCeilings));
 
@@ -1154,6 +1155,7 @@ namespace STROOP.Managers
                 SpecialConfig.MapCircleNumPoints2D = ParsingUtilities.ParseInt(mapTabSettings.Attribute(XName.Get("mapCircleNumPoints2D")).Value);
                 SpecialConfig.MapCircleNumPoints3D = ParsingUtilities.ParseInt(mapTabSettings.Attribute(XName.Get("mapCircleNumPoints3D")).Value);
                 SpecialConfig.MapUnitPrecisionThreshold = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUnitPrecisionThreshold")).Value);
+                SpecialConfig.MapSortOrthographicTris = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapSortOrthographicTris")).Value);
                 SpecialConfig.MapUseNotForCeilings = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUseNotForCeilings")).Value);
                 SpecialConfig.MapUseXForCeilings = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUseXForCeilings")).Value);
             }
@@ -1427,6 +1429,7 @@ namespace STROOP.Managers
             "3D Scroll Speed", "3D Translate Speed", "3D Rotate Speed",
             "Num Circle Points", "Num Sphere Points",
             "Unit Precision Threshold",
+            "Sort Orthographic Tris",
             "Use Not for Ceilings",
             "Use X for Ceilings",
         };
