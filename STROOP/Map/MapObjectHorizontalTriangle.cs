@@ -223,7 +223,6 @@ namespace STROOP.Map
 
         private class UnitQuadComparer : IEqualityComparer<List<(float x, float z, Color color, TriangleDataModel tri)>>
         {
-            // Products are equal if their names and product numbers are equal.
             public bool Equals(
                 List<(float x, float z, Color color, TriangleDataModel tri)> quad1,
                 List<(float x, float z, Color color, TriangleDataModel tri)> quad2)
@@ -233,8 +232,6 @@ namespace STROOP.Map
                 return Enumerable.SequenceEqual(simpleQuad1, simpleQuad2);
             }
 
-            // If Equals() returns true for a pair of objects
-            // then GetHashCode() must return the same value for these objects.
             public int GetHashCode(List<(float x, float z, Color color, TriangleDataModel tri)> quad)
             {
                 double product = 1;
