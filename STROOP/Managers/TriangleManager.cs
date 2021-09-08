@@ -11,6 +11,7 @@ using STROOP.Controls;
 using STROOP.Extensions;
 using STROOP.Structs.Configurations;
 using STROOP.Forms;
+using STROOP.Map;
 
 namespace STROOP.Managers
 {
@@ -19,13 +20,14 @@ namespace STROOP.Managers
         BetterTextbox _addressBox;
         CheckBox _useMisalignmentOffsetCheckbox;
 
-        public enum TriangleMode { Floor, Wall, Ceiling, Custom };
+        public enum TriangleMode { Floor, Wall, Ceiling, Custom, MapHover };
         public TriangleMode Mode = TriangleMode.Floor;
 
         private readonly RadioButton _radioButtonTriFloor;
         private readonly RadioButton _radioButtonTriWall;
         private readonly RadioButton _radioButtonTriCeiling;
         private readonly RadioButton _radioButtonTriCustom;
+        private readonly RadioButton _radioButtonTriMapHover;
 
         CheckBox _checkBoxNeutralizeTriangle;
 
@@ -111,6 +113,8 @@ namespace STROOP.Managers
             _radioButtonTriCeiling.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Ceiling);
             _radioButtonTriCustom = splitContainerTriangles.Panel1.Controls["radioButtonTriCustom"] as RadioButton;
             _radioButtonTriCustom.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Custom);
+            _radioButtonTriMapHover = splitContainerTriangles.Panel1.Controls["radioButtonTriMapHover"] as RadioButton;
+            _radioButtonTriMapHover.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.MapHover);
 
             ControlUtilities.AddContextMenuStripFunctions(
                 _radioButtonTriCustom,
@@ -527,6 +531,11 @@ namespace STROOP.Managers
                 case TriangleMode.Ceiling:
                     TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset;
                     SetTriangleAddresses(Config.Stream.GetUInt(TrianglePointerAddress.Value));
+                    break;
+
+                case TriangleMode.MapHover:
+                    TrianglePointerAddress = null;
+                    SetTriangleAddresses(MapObjectHoverData.LastTriangleAddress);
                     break;
 
                 default:

@@ -19,6 +19,7 @@ namespace STROOP.Map
         public static long HoverStartTime = 0;
         public static bool ContextMenuStripIsOpen = false;
         public static Point ContextMenuStripPoint = new Point();
+        public static uint LastTriangleAddress = 0;
 
         public readonly MapObject MapObject;
         public readonly double X;

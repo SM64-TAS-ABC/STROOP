@@ -165,6 +165,10 @@ namespace STROOP.Map
                 {
                     PreviousHoverData = hoverData;
                     MapObjectHoverData.HoverStartTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+                    if (hoverData != null && hoverData.Tri != null)
+                    {
+                        MapObjectHoverData.LastTriangleAddress = hoverData.Tri.Address;
+                    }
                 }
                 if (hoverData == null)
                 {
