@@ -217,7 +217,7 @@ namespace STROOP.Map
                         }));
 
                 }).SelectMany(points => points).ToList();
-            }).SelectMany(list => list).Distinct(_unitQuadComparer).ToList();
+            }).SelectMany(list => list).ToList();
         }
 
         private UnitQuadComparer _unitQuadComparer = new UnitQuadComparer();
