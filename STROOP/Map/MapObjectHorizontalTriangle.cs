@@ -228,9 +228,14 @@ namespace STROOP.Map
                 List<(float x, float z, Color color, TriangleDataModel tri)> quad1,
                 List<(float x, float z, Color color, TriangleDataModel tri)> quad2)
             {
-                List<(float x, float z)> simpleQuad1 = quad1.ConvertAll(q => (q.x, q.z));
-                List<(float x, float z)> simpleQuad2 = quad2.ConvertAll(q => (q.x, q.z));
-                return Enumerable.SequenceEqual(simpleQuad1, simpleQuad2);
+                return quad1[0].x == quad2[0].x &&
+                    quad1[0].z == quad2[0].z &&
+                    quad1[1].x == quad2[1].x &&
+                    quad1[1].z == quad2[1].z &&
+                    quad1[2].x == quad2[2].x &&
+                    quad1[2].z == quad2[2].z &&
+                    quad1[3].x == quad2[3].x &&
+                    quad1[3].z == quad2[3].z;
             }
 
             public int GetHashCode(List<(float x, float z, Color color, TriangleDataModel tri)> quad)
