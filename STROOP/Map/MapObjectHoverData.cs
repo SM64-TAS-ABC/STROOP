@@ -114,5 +114,10 @@ namespace STROOP.Map
             }
             return false;
         }
+
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
     }
 }
