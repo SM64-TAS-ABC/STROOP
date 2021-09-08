@@ -43,7 +43,7 @@ namespace STROOP.Map
             List<(float? minHeight, float? maxHeight, Color color)> drawData = GetDrawData();
             if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
             {
-                List<List<(float x, float z, Color color)>> vertexListsForControl =
+                List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
                     GetVertexListsForControlWithUnits(drawData);
                 DrawVertexListsForControlWithUnits(vertexListsForControl, hoverData);
             }
@@ -179,13 +179,13 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        private List<List<(float x, float z, Color color)>> GetVertexListsForControlWithUnits(
+        private List<List<(float x, float z, Color color, TriangleDataModel tri)>> GetVertexListsForControlWithUnits(
             List<(float? minHeight, float? maxHeight, Color color)> drawData)
         {
+            List<TriangleDataModel> triangles = GetFilteredTriangles();
             return drawData.ConvertAll(data =>
             {
-                List<TriangleDataModel> triangles = GetFilteredTriangles();
-                List<(int x, int z)> unitPoints = triangles.ConvertAll(triangle =>
+                return triangles.ConvertAll(triangle =>
                 {
                     int xMin = (int)Math.Max(triangle.GetMinX(), Config.CurrentMapGraphics.MapViewXMin - 1);
                     int xMax = (int)Math.Min(triangle.GetMaxX(), Config.CurrentMapGraphics.MapViewXMax + 1);
@@ -206,21 +206,21 @@ namespace STROOP.Map
                             }
                         }
                     }
-                    return points;
-                }).SelectMany(points => points).Distinct().ToList();
 
-                List<List<(float x, float y, float z)>> quadList = MapUtilities.ConvertUnitPointsToQuads(unitPoints);
-                return quadList.ConvertAll(quad => quad.ConvertAll(
-                    vertex =>
-                    {
-                        (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z);
-                        return (x, z, data.color);
-                    }));
-            }).SelectMany(list => list).ToList();
+                    List<List<(float x, float y, float z)>> quadList = MapUtilities.ConvertUnitPointsToQuads(points);
+                    return quadList.ConvertAll(quad => quad.ConvertAll(
+                        vertex =>
+                        {
+                            (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z);
+                            return (x, z, data.color, triangle);
+                        }));
+
+                }).SelectMany(points => points).ToList();
+            }).SelectMany(list => list)/*.Distinct()*/.ToList();
         }
 
         private void DrawVertexListsForControlWithUnits(
-            List<List<(float x, float z, Color color)>> vertexListsForControl, MapObjectHoverData hoverData)
+            List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl, MapObjectHoverData hoverData)
         {
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -496,43 +496,52 @@ namespace STROOP.Map
             return (x, y, z, tri);
         }
 
+        private (float x, float z) GetInGameMidpointFromControlQuad(List<(float x, float z)>  vertexList)
+        {
+            return (0, 0);
+        }
+
         public override MapObjectHoverData GetHoverDataTopDownView()
         {
             bool isShowingTriUnits = _showTriUnits && MapUtilities.IsAbleToShowUnitPrecision();
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
-            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
-            List<TriangleDataModel> tris = GetFilteredTriangles();
-            List<TriangleDataModel> trisSortedByY = tris.OrderBy(tri => tri.Y1).ToList();
 
-            TriangleDataModel hoverTri = null;
-            for (int i = trisSortedByY.Count - 1; i >= 0; i--)
+            List<(float? minHeight, float? maxHeight, Color color)> drawData = GetDrawData();
+            if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
             {
-                TriangleDataModel tri = trisSortedByY[i];
-                if (tri.IsPointInsideTriangle(inGameX, inGameZ, isShowingTriUnits))
+                List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
+                    GetVertexListsForControlWithUnits(drawData);
+                for (int i = 0; i < vertexListsForControl.Count; i++)
                 {
-                    hoverTri = tri;
-                    break;
+                    var vertexList = vertexListsForControl[i];
+                    List<(float x, float z)> simpleVertexList = vertexList.ConvertAll(vertex => (vertex.x, vertex.z));
+                    if (MapUtilities.IsWithinShapeForControl(simpleVertexList, relPos.X, relPos.Y))
+                    {
+                        (float x, float z) inGameMidpoint = GetInGameMidpointFromControlQuad(simpleVertexList);
+                        return new MapObjectHoverData(
+                            this, inGameMidpoint.x, 0, inGameMidpoint.z, tri: vertexList[0].tri, index: i);
+                    }
                 }
+                return null;
             }
-            
-            if (hoverTri != null)
+            else
             {
-                if (isShowingTriUnits)
+                List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
+                    GetVertexListsForControlWithoutUnits(drawData);
+                foreach (var vertexList in vertexListsForControl)
                 {
-                    float midUnitX = (int)inGameX + (inGameX >= 0 ? 0.5f : -0.5f);
-                    float midUnitZ = (int)inGameZ + (inGameZ >= 0 ? 0.5f : -0.5f);
-                    return new MapObjectHoverData(this, midUnitX, 0, midUnitZ, tri: hoverTri, isTriUnit: true);
+                    List<(float x, float z)> simpleVertexList = vertexList.ConvertAll(vertex => (vertex.x, vertex.z));
+                    if (MapUtilities.IsWithinShapeForControl(simpleVertexList, relPos.X, relPos.Y))
+                    {
+                        TriangleDataModel tri = vertexList[0].tri;
+                        return new MapObjectHoverData(
+                            this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri);
+                    }
                 }
-                else
-                {
-                    return new MapObjectHoverData(
-                        this, hoverTri.GetMidpointX(), hoverTri.GetMidpointY(), hoverTri.GetMidpointZ(), tri: hoverTri);
-                }
+                return null;
             }
-
-            return null;
         }
     }
 }
