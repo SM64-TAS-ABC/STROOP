@@ -40,6 +40,23 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
+            List<(float? minHeight, float? maxHeight, Color color)> drawData = GetDrawData();
+            if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
+            {
+                List<List<(float x, float z, Color color)>> vertexListsForControl =
+                    GetVertexListsForControlWithUnits(drawData);
+                DrawVertexListsForControlWithUnits(vertexListsForControl, hoverData);
+            }
+            else
+            {
+                List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
+                    GetVertexListsForControlWithoutUnits(drawData);
+                DrawVertexListsForControlWithoutUnits(vertexListsForControl, hoverData);
+            }
+        }
+
+        private List<(float? minHeight, float? maxHeight, Color color)> GetDrawData()
+        {
             if (_enableQuarterFrameLandings)
             {
                 float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -54,6 +71,7 @@ namespace STROOP.Map
                     marioY += marioYSpeed;
                     marioYSpeed = Math.Max(marioYSpeed - 4, -75);
                 }
+
                 List<(float yMin, float yMax)> yBounds = new List<(float yMin, float yMax)>();
                 foreach ((float y, float ySpeed) in steps)
                 {
@@ -67,6 +85,9 @@ namespace STROOP.Map
                     yBounds.Add((y3, y2));
                     yBounds.Add((y4, y3));
                 }
+
+                List<(float? minHeight, float? maxHeight, Color color)> drawData =
+                    new List<(float? minHeight, float? maxHeight, Color color)>();
                 for (int i = 0; i < yBounds.Count; i++)
                 {
                     (float yMin, float yMax) = yBounds[i];
@@ -74,57 +95,67 @@ namespace STROOP.Map
                     Color color = colors[i % 4];
                     if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
                     {
-                        DrawOn2DControlTopDownViewWithUnits(yMin, yMax, color, hoverData);
+                        drawData.Add((yMin, yMax, color));
                     }
                     else
                     {
-                        DrawOn2DControlTopDownViewWithoutUnits(yMin, MoreMath.GetPreviousFloat(yMax), color, hoverData);
+                        drawData.Add((yMin, MoreMath.GetPreviousFloat(yMax), color));
                     }
                 }
+                return drawData;
             }
             else
             {
+                List<(float? minHeight, float? maxHeight, Color color)> drawData =
+                    new List<(float? minHeight, float? maxHeight, Color color)>();
                 if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
                 {
-                    DrawOn2DControlTopDownViewWithUnits(_minHeight, _maxHeight, Color, hoverData);
+                    drawData.Add((_minHeight, _maxHeight, Color));
                 }
                 else
                 {
-                    DrawOn2DControlTopDownViewWithoutUnits(_minHeight, _maxHeight, Color, hoverData);
+                    drawData.Add((_minHeight, _maxHeight, Color));
                 }
+                return drawData;
             }
         }
 
-        private void DrawOn2DControlTopDownViewWithoutUnits(
-            float? minHeight, float? maxHeight, Color color, MapObjectHoverData hoverData)
+        private List<List<(float x, float z, Color color, TriangleDataModel tri)>> GetVertexListsForControlWithoutUnits(
+            List<(float? minHeight, float? maxHeight, Color color)> drawData)
         {
-            List<List<(float x, float y, float z, TriangleDataModel tri)>> vertexLists =
-                GetVertexListsWithSplicing(minHeight, maxHeight);
-            List<List<(float x, float y, float z, TriangleDataModel tri)>> vertexListsForControl =
-                vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
-                    vertex =>
-                    {
-                        (float x, float y, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.y, vertex.z);
-                        return (x, y, z, vertex.tri);
-                    }));
+            return drawData.ConvertAll(data =>
+            {
+                List<List<(float x, float y, float z, TriangleDataModel tri)>> vertexLists =
+                    GetVertexListsWithSplicing(data.minHeight, data.maxHeight);
+                return vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
+                        vertex =>
+                        {
+                            (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z);
+                            return (x, z, data.color, vertex.tri);
+                        }));
+            }).SelectMany(list => list).ToList();
+        }
 
+        private void DrawVertexListsForControlWithoutUnits(
+            List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl, MapObjectHoverData hoverData)
+        {
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
             // Draw triangle
-            foreach (List<(float x, float y, float z, TriangleDataModel tri)> vertexList in vertexListsForControl)
+            foreach (var vertexList in vertexListsForControl)
             {
                 GL.Begin(PrimitiveType.Polygon);
-                foreach ((float x, float y, float z, TriangleDataModel tri) in vertexList)
+                foreach (var vertex in vertexList)
                 {
                     byte opacityByte = OpacityByte;
-                    if (this == hoverData?.MapObject && hoverData?.Tri == tri)
+                    if (this == hoverData?.MapObject && hoverData?.Tri == vertex.tri)
                     {
                         opacityByte = MapUtilities.GetHoverOpacityByte();
                     }
-                    GL.Color4(color.R, color.G, color.B, opacityByte);
-                    GL.Vertex2(x, z);
+                    GL.Color4(vertex.color.R, vertex.color.G, vertex.color.B, opacityByte);
+                    GL.Vertex2(vertex.x, vertex.z);
                 }
                 GL.End();
             }
@@ -134,12 +165,12 @@ namespace STROOP.Map
             {
                 GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
                 GL.LineWidth(LineWidth);
-                foreach (List<(float x, float y, float z, TriangleDataModel tri)> vertexList in vertexListsForControl)
+                foreach (var vertexList in vertexListsForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float y, float z, TriangleDataModel tri) in vertexList)
+                    foreach (var vertex in vertexList)
                     {
-                        GL.Vertex2(x, z);
+                        GL.Vertex2(vertex.x, vertex.z);
                     }
                     GL.End();
                 }
@@ -148,70 +179,62 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        private void DrawOn2DControlTopDownViewWithUnits(float? minHeight, float? maxHeight, Color color, MapObjectHoverData hoverData)
+        private List<List<(float x, float z, Color color)>> GetVertexListsForControlWithUnits(
+            List<(float? minHeight, float? maxHeight, Color color)> drawData)
         {
-            List<TriangleDataModel> triangles = GetFilteredTriangles();
-            List<(int x, int z)> unitPoints = triangles.ConvertAll(triangle =>
+            return drawData.ConvertAll(data =>
             {
-                int xMin = (int)Math.Max(triangle.GetMinX(), Config.CurrentMapGraphics.MapViewXMin - 1);
-                int xMax = (int)Math.Min(triangle.GetMaxX(), Config.CurrentMapGraphics.MapViewXMax + 1);
-                int zMin = (int)Math.Max(triangle.GetMinZ(), Config.CurrentMapGraphics.MapViewZMin - 1);
-                int zMax = (int)Math.Min(triangle.GetMaxZ(), Config.CurrentMapGraphics.MapViewZMax + 1);
-
-                List<(int x, int z)> points = new List<(int x, int z)>();
-                for (int x = xMin; x <= xMax; x++)
+                List<TriangleDataModel> triangles = GetFilteredTriangles();
+                List<(int x, int z)> unitPoints = triangles.ConvertAll(triangle =>
                 {
-                    for (int z = zMin; z <= zMax; z++)
+                    int xMin = (int)Math.Max(triangle.GetMinX(), Config.CurrentMapGraphics.MapViewXMin - 1);
+                    int xMax = (int)Math.Min(triangle.GetMaxX(), Config.CurrentMapGraphics.MapViewXMax + 1);
+                    int zMin = (int)Math.Max(triangle.GetMinZ(), Config.CurrentMapGraphics.MapViewZMin - 1);
+                    int zMax = (int)Math.Min(triangle.GetMaxZ(), Config.CurrentMapGraphics.MapViewZMax + 1);
+
+                    List<(int x, int z)> points = new List<(int x, int z)>();
+                    for (int x = xMin; x <= xMax; x++)
                     {
-                        float? y = triangle.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
-                        if (y.HasValue &&
-                            (!minHeight.HasValue || y.Value >= minHeight.Value) &&
-                            (!maxHeight.HasValue || y.Value <= maxHeight.Value))
+                        for (int z = zMin; z <= zMax; z++)
                         {
-                            points.Add((x, z));
+                            float? y = triangle.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
+                            if (y.HasValue &&
+                                (!data.minHeight.HasValue || y.Value >= data.minHeight.Value) &&
+                                (!data.maxHeight.HasValue || y.Value <= data.maxHeight.Value))
+                            {
+                                points.Add((x, z));
+                            }
                         }
                     }
-                }
-                return points;
-            }).SelectMany(points => points).Distinct().ToList();
+                    return points;
+                }).SelectMany(points => points).Distinct().ToList();
 
-            List<List<(float x, float y, float z)>> quadList = MapUtilities.ConvertUnitPointsToQuads(unitPoints);
-            List<List<(float x, float y, float z, bool isHovered)>> quadListHovered =
-                new List<List<(float x, float y, float z, bool isHovered)>>();
-            bool hasHovered = false;
-            foreach (List<(float x, float y, float z)> quad in quadList)
-            {
-                bool isWithinQuad =
-                    this == hoverData?.MapObject &&
-                    hoverData.IsTriUnit &&
-                    MapUtilities.IsWithinRectangularQuad(quad, (float)hoverData.X, (float)hoverData.Z);
-                bool isHovered = isWithinQuad && !hasHovered;
-                if (isHovered) hasHovered = true;
-                List<(float x, float y, float z, bool isHovered)> quadHovered =
-                    quad.ConvertAll(q => (q.x, q.y, q.z, isHovered));
-                quadListHovered.Add(quadHovered);
-            }
-            List<List<(float x, float z, bool isHovered)>> quadListForControl =
-                quadListHovered.ConvertAll(quad => quad.ConvertAll(
+                List<List<(float x, float y, float z)>> quadList = MapUtilities.ConvertUnitPointsToQuads(unitPoints);
+                return quadList.ConvertAll(quad => quad.ConvertAll(
                     vertex =>
                     {
                         (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z);
-                        return (x, z, vertex.isHovered);
+                        return (x, z, data.color);
                     }));
+            }).SelectMany(list => list).ToList();
+        }
 
+        private void DrawVertexListsForControlWithUnits(
+            List<List<(float x, float z, Color color)>> vertexListsForControl, MapObjectHoverData hoverData)
+        {
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
             // Draw quad
             GL.Begin(PrimitiveType.Quads);
-            foreach (List<(float x, float z, bool isHovered)> quad in quadListForControl)
+            foreach (var vertexList in vertexListsForControl)
             {
-                foreach ((float x, float z, bool isHovered) in quad)
+                foreach (var vertex in vertexList)
                 {
-                    byte opacityByte = isHovered ? MapUtilities.GetHoverOpacityByte() : OpacityByte;
-                    GL.Color4(color.R, color.G, color.B, opacityByte);
-                    GL.Vertex2(x, z);
+                    byte opacityByte = (false) ? MapUtilities.GetHoverOpacityByte() : OpacityByte;
+                    GL.Color4(vertex.color.R, vertex.color.G, vertex.color.B, opacityByte);
+                    GL.Vertex2(vertex.x, vertex.z);
                 }
             }
             GL.End();
@@ -221,12 +244,12 @@ namespace STROOP.Map
             {
                 GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
                 GL.LineWidth(LineWidth);
-                foreach (List<(float x, float z, bool isHovered)> quad in quadListForControl)
+                foreach (var vertexList in vertexListsForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z, bool isHovered) in quad)
+                    foreach (var vertex in vertexList)
                     {
-                        GL.Vertex2(x, z);
+                        GL.Vertex2(vertex.x, vertex.z);
                     }
                     GL.End();
                 }
