@@ -18,7 +18,7 @@ namespace STROOP.Managers
     public class CustomManager : DataManager
     {
         private CheckBox _checkBoxCustomRecordValues;
-        private BetterTextbox _textBoxRecordValuesCount;
+        private Label _labelRecordValuesCount;
         private Button _buttonCustomShowValues;
         private Button _buttonCustomClearValues;
         private CheckBox _checkBoxUseValueAtStartOfGlobalTimer;
@@ -85,7 +85,7 @@ namespace STROOP.Managers
             _checkBoxCustomRecordValues = splitContainerCustomControls.Panel1.Controls["checkBoxCustomRecordValues"] as CheckBox;
             _checkBoxCustomRecordValues.Click += (sender, e) => ToggleRecording();
 
-            _textBoxRecordValuesCount = splitContainerCustomControls.Panel1.Controls["textBoxRecordValuesCount"] as BetterTextbox;
+            _labelRecordValuesCount = splitContainerCustomControls.Panel1.Controls["labelRecordValuesCount"] as Label;
 
             _buttonCustomShowValues = splitContainerCustomControls.Panel1.Controls["buttonCustomShowValues"] as Button;
             _buttonCustomShowValues.Click += (sender, e) => ShowRecordedValues();
@@ -281,7 +281,7 @@ namespace STROOP.Managers
             {
                 _labelCustomRecordingFrequencyValue.Text = "0";
             }
-            _textBoxRecordValuesCount.Text = _recordedValues.Count.ToString();
+            _labelRecordValuesCount.Text = _recordedValues.Count.ToString();
             _labelCustomRecordingGapsValue.Text = _numGaps.ToString();
 
             if (!updateView) return;
