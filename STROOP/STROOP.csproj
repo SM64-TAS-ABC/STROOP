@@ -729,6 +729,7 @@
     <Compile Include="Utilities\AnimationUtilities.cs" />
     <Compile Include="Utilities\CellUtilities.cs" />
     <Compile Include="Structs\ObjectAngleTable.cs" />
+    <Compile Include="Utilities\PasteUtilities.cs" />
     <Compile Include="Utilities\CopyUtilities.cs" />
     <Compile Include="Utilities\EasingUtilities.cs" />
     <Compile Include="Utilities\EnumUtilities.cs" />

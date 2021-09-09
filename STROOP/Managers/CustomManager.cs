@@ -71,6 +71,9 @@ namespace STROOP.Managers
                 copyType => _copyType = copyType,
                 _copyType);
 
+            Button buttonPasteVars = splitContainerCustomControls.Panel1.Controls["buttonPasteVars"] as Button;
+            buttonPasteVars.Click += (sender, e) => PasteUtilities.Paste(_variablePanel.GetCurrentVariableControls());
+
             Button buttonClearVars = splitContainerCustomControls.Panel1.Controls["buttonClearVars"] as Button;
             buttonClearVars.Click += (sender, e) => _variablePanel.ClearVariables();
             ControlUtilities.AddContextMenuStripFunctions(
