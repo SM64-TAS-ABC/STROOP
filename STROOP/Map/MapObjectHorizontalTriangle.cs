@@ -551,7 +551,7 @@ namespace STROOP.Map
                     {
                         (float x, float z) inGameMidpoint = GetInGameMidpointFromControlQuad(simpleVertexList);
                         return new MapObjectHoverData(
-                            this, inGameMidpoint.x, 0, inGameMidpoint.z, tri: vertexList[0].tri, index: i);
+                            this, inGameMidpoint.x, 0, inGameMidpoint.z, tri: vertexList[0].tri, isTriUnit: true, index: i);
                     }
                 }
                 return null;
