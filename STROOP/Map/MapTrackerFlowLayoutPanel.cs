@@ -161,7 +161,10 @@ namespace STROOP.Map
                     hoverData = mapObject.GetHoverData();
                     if (hoverData != null) break;
                 }
-                hoverData = hoverData ?? MapObjectHoverData.GetMapObjectHoverDataForCursor();
+                if (!Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+                {
+                    hoverData = hoverData ?? MapObjectHoverData.GetMapObjectHoverDataForCursor();
+                }
                 if (!Equals(PreviousHoverData, hoverData))
                 {
                     PreviousHoverData = hoverData;
