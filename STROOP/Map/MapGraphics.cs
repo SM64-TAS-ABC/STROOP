@@ -33,8 +33,8 @@ namespace STROOP.Map
         private static readonly float DEFAULT_MAP_VIEW_CENTER_Z_VALUE = 0;
         private static readonly float DEFAULT_MAP_VIEW_YAW_VALUE = 32768;
         private static readonly float DEFAULT_MAP_VIEW_PITCH_VALUE = 0;
-        private static readonly float MAP_VIEW_PITCH_MIN_VALUE = -16383;
-        private static readonly float MAP_VIEW_PITCH_MAX_VALUE = 16383;
+        private static float MAP_VIEW_PITCH_MIN_VALUE { get => -16384 + (float)SpecialConfig.Map2DOrthographicVerticalRotateSpeed; }
+        private static float MAP_VIEW_PITCH_MAX_VALUE { get => 16384 - (float)SpecialConfig.Map2DOrthographicVerticalRotateSpeed; }
 
         public float MapViewScaleValue = DEFAULT_MAP_VIEW_SCALE_VALUE;
         public float MapViewCenterXValue = DEFAULT_MAP_VIEW_CENTER_X_VALUE;
@@ -721,8 +721,8 @@ namespace STROOP.Map
                         int pixelDiffY = HandleDragAbility(false, false, e.Y - _rotateStartMouseY);
                         pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
                         pixelDiffY = MapUtilities.MaybeReverse(pixelDiffY);
-                        float yawDiff = (float)(pixelDiffX * (65536 / SpecialConfig.Map2DOrthographicHorizontalRotateSpeed));
-                        float pitchDiff = (float)(pixelDiffY * (65536 / SpecialConfig.Map2DOrthographicVerticalRotateSpeed));
+                        float yawDiff = (float)(pixelDiffX * SpecialConfig.Map2DOrthographicHorizontalRotateSpeed);
+                        float pitchDiff = (float)(pixelDiffY * SpecialConfig.Map2DOrthographicVerticalRotateSpeed);
                         float newYaw = _rotateStartYaw - yawDiff;
                         float newPitch = _rotateStartPitch - pitchDiff;
                         newYaw = (float)MoreMath.NormalizeAngleDouble(newYaw);
