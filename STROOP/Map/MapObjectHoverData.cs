@@ -68,15 +68,33 @@ namespace STROOP.Map
             return controlPos;
         }
 
+        public static MapObjectHoverData GetMapObjectHoverDataForCursor()
+        {
+            Point? relPosMaybe = GetPositionMaybe();
+            if (!relPosMaybe.HasValue) return null;
+            Point relPos = relPosMaybe.Value;
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+            return new MapObjectHoverData(null, inGameX, 0, inGameZ);
+        }
+
         public List<ToolStripItem> GetContextMenuStripItems()
         {
-            return MapObject.GetHoverContextMenuStripItems(this);
+            if (MapObject != null)
+            {
+                return MapObject.GetHoverContextMenuStripItems(this);
+            }
+
+            List<ToolStripItem> output = new List<ToolStripItem>();
+            List<double> posValues = new List<double>() { X, Z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Clicked Position");
+            output.Insert(0, copyPositionItem);
+            return output;
         }
 
         public override string ToString()
         {
             List<object> parts = new List<object>();
-            parts.Add(MapObject);
+            if (MapObject != null) parts.Add(MapObject);
             if (ObjAddress != null) parts.Add(HexUtilities.FormatValue(ObjAddress));
             if (Tri != null) parts.Add(HexUtilities.FormatValue(Tri.Address));
             if (IsTriUnit) parts.Add("Unit");
