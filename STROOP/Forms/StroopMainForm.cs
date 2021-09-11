@@ -183,7 +183,7 @@ namespace STROOP
                     () =>
                     {
                         SavedSettingsConfig.UseExpandedRamSize = true;
-                        SpecialConfig.Map2DScrollSpeed = 1.5;
+                        MapConfig.Map2DScrollSpeed = 1.5;
                         splitContainerTas.Panel1Collapsed = true;
                         splitContainerTas.Panel2Collapsed = false;
                         Config.TasManager.ShowTaserVariables();

@@ -38,8 +38,8 @@ namespace STROOP.Map
                 (float centerX, float centerZ, float radius) = dimensionList[i];
                 (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(centerX, centerZ);
                 float controlRadius = radius * Config.CurrentMapGraphics.MapViewScaleValue;
-                List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
-                    .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
+                List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
+                    .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 65536)
                     .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(controlRadius, angle, controlCenterX, controlCenterZ));
 
                 GL.BindTexture(TextureTarget.Texture2D, -1);

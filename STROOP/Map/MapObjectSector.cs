@@ -44,8 +44,8 @@ namespace STROOP.Map
                 (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(centerX, centerZ);
                 float controlAngle = angle + 32768 - Config.CurrentMapGraphics.MapViewYawValue;
                 float controlRadius = radius * Config.CurrentMapGraphics.MapViewScaleValue;
-                List<(float pointX, float pointZ)> outerPoints = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D + 1).ToList()
-                    .ConvertAll(index => (index - SpecialConfig.MapCircleNumPoints2D / 2) / (float)(SpecialConfig.MapCircleNumPoints2D / 2))
+                List<(float pointX, float pointZ)> outerPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D + 1).ToList()
+                    .ConvertAll(index => (index - MapConfig.MapCircleNumPoints2D / 2) / (float)(MapConfig.MapCircleNumPoints2D / 2))
                     .ConvertAll(proportion => controlAngle + proportion * angleRadius)
                     .ConvertAll(ang => ((float, float))MoreMath.AddVectorToPoint(controlRadius, ang, controlCenterX, controlCenterZ));
 

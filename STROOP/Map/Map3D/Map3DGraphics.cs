@@ -269,43 +269,43 @@ namespace STROOP.Map.Map3D
         {
             void updateCameraAngles()
             {
-                SpecialConfig.Map3DCameraYaw = (float)MoreMath.AngleTo_AngleUnits(
-                    SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraZ, SpecialConfig.Map3DFocusX, SpecialConfig.Map3DFocusZ);
-                SpecialConfig.Map3DCameraPitch = (float)MoreMath.GetPitch(
-                    SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ,
-                    SpecialConfig.Map3DFocusX, SpecialConfig.Map3DFocusY, SpecialConfig.Map3DFocusZ);
+                MapConfig.Map3DCameraYaw = (float)MoreMath.AngleTo_AngleUnits(
+                    MapConfig.Map3DCameraX, MapConfig.Map3DCameraZ, MapConfig.Map3DFocusX, MapConfig.Map3DFocusZ);
+                MapConfig.Map3DCameraPitch = (float)MoreMath.GetPitch(
+                    MapConfig.Map3DCameraX, MapConfig.Map3DCameraY, MapConfig.Map3DCameraZ,
+                    MapConfig.Map3DFocusX, MapConfig.Map3DFocusY, MapConfig.Map3DFocusZ);
             }
 
-            if (!SpecialConfig.Map3DCameraPosPA.IsNone())
+            if (!MapConfig.Map3DCameraPosPA.IsNone())
             {
-                SpecialConfig.Map3DCameraX = (float)SpecialConfig.Map3DCameraPosPA.X;
-                SpecialConfig.Map3DCameraY = (float)SpecialConfig.Map3DCameraPosPA.Y;
-                SpecialConfig.Map3DCameraZ = (float)SpecialConfig.Map3DCameraPosPA.Z;
+                MapConfig.Map3DCameraX = (float)MapConfig.Map3DCameraPosPA.X;
+                MapConfig.Map3DCameraY = (float)MapConfig.Map3DCameraPosPA.Y;
+                MapConfig.Map3DCameraZ = (float)MapConfig.Map3DCameraPosPA.Z;
             }
-            if (!SpecialConfig.Map3DCameraAnglePA.IsNone())
+            if (!MapConfig.Map3DCameraAnglePA.IsNone())
             {
-                SpecialConfig.Map3DCameraYaw = (float)SpecialConfig.Map3DCameraAnglePA.Angle;
+                MapConfig.Map3DCameraYaw = (float)MapConfig.Map3DCameraAnglePA.Angle;
             }
-            if (!SpecialConfig.Map3DFocusPosPA.IsNone())
+            if (!MapConfig.Map3DFocusPosPA.IsNone())
             {
-                SpecialConfig.Map3DFocusX = (float)SpecialConfig.Map3DFocusPosPA.X;
-                SpecialConfig.Map3DFocusY = (float)SpecialConfig.Map3DFocusPosPA.Y;
-                SpecialConfig.Map3DFocusZ = (float)SpecialConfig.Map3DFocusPosPA.Z;
+                MapConfig.Map3DFocusX = (float)MapConfig.Map3DFocusPosPA.X;
+                MapConfig.Map3DFocusY = (float)MapConfig.Map3DFocusPosPA.Y;
+                MapConfig.Map3DFocusZ = (float)MapConfig.Map3DFocusPosPA.Z;
             }
 
-            switch (SpecialConfig.Map3DMode)
+            switch (MapConfig.Map3DMode)
             {
                 case Map3DCameraMode.InGame:
-                    SpecialConfig.Map3DCameraX = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.XOffset);
-                    SpecialConfig.Map3DCameraY = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.YOffset);
-                    SpecialConfig.Map3DCameraZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.ZOffset);
-                    SpecialConfig.Map3DCameraYaw = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
-                    SpecialConfig.Map3DCameraPitch = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingPitchOffset);
-                    SpecialConfig.Map3DCameraRoll = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingRollOffset);
-                    SpecialConfig.Map3DFocusX = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
-                    SpecialConfig.Map3DFocusY = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
-                    SpecialConfig.Map3DFocusZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
-                    SpecialConfig.Map3DFOV = (float)MoreMath.Clamp(Config.Stream.GetFloat(CameraConfig.FOVStructAddress + CameraConfig.FOVValueOffset), 1, 179);
+                    MapConfig.Map3DCameraX = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.XOffset);
+                    MapConfig.Map3DCameraY = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.YOffset);
+                    MapConfig.Map3DCameraZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.ZOffset);
+                    MapConfig.Map3DCameraYaw = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+                    MapConfig.Map3DCameraPitch = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingPitchOffset);
+                    MapConfig.Map3DCameraRoll = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingRollOffset);
+                    MapConfig.Map3DFocusX = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
+                    MapConfig.Map3DFocusY = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
+                    MapConfig.Map3DFocusZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
+                    MapConfig.Map3DFOV = (float)MoreMath.Clamp(Config.Stream.GetFloat(CameraConfig.FOVStructAddress + CameraConfig.FOVValueOffset), 1, 179);
                     break;
                 case Map3DCameraMode.CameraPosAndFocus:
                     updateCameraAngles();
@@ -314,36 +314,36 @@ namespace STROOP.Map.Map3D
                     // do nothing, as we use whatever vars are stored
                     break;
                 case Map3DCameraMode.FollowFocusRelativeAngle:
-                    double angleOffset = SpecialConfig.Map3DFocusAnglePA.IsNone() ? 0 : SpecialConfig.Map3DFocusAnglePA.Angle;
-                    (SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraZ) =
+                    double angleOffset = MapConfig.Map3DFocusAnglePA.IsNone() ? 0 : MapConfig.Map3DFocusAnglePA.Angle;
+                    (MapConfig.Map3DCameraX, MapConfig.Map3DCameraZ) =
                         ((float, float))MoreMath.AddVectorToPoint(
-                            SpecialConfig.Map3DFollowingRadius,
-                            MoreMath.ReverseAngle(SpecialConfig.Map3DFollowingYaw + angleOffset),
-                            SpecialConfig.Map3DFocusX,
-                            SpecialConfig.Map3DFocusZ);
-                    SpecialConfig.Map3DCameraY = SpecialConfig.Map3DFocusY + SpecialConfig.Map3DFollowingYOffset;
+                            MapConfig.Map3DFollowingRadius,
+                            MoreMath.ReverseAngle(MapConfig.Map3DFollowingYaw + angleOffset),
+                            MapConfig.Map3DFocusX,
+                            MapConfig.Map3DFocusZ);
+                    MapConfig.Map3DCameraY = MapConfig.Map3DFocusY + MapConfig.Map3DFollowingYOffset;
                     updateCameraAngles();
                     break;
                 case Map3DCameraMode.FollowFocusAbsoluteAngle:
-                    (SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraZ) =
+                    (MapConfig.Map3DCameraX, MapConfig.Map3DCameraZ) =
                         ((float, float))MoreMath.AddVectorToPoint(
-                            SpecialConfig.Map3DFollowingRadius,
-                            MoreMath.ReverseAngle(SpecialConfig.Map3DFollowingYaw),
-                            SpecialConfig.Map3DFocusX,
-                            SpecialConfig.Map3DFocusZ);
-                    SpecialConfig.Map3DCameraY = SpecialConfig.Map3DFocusY + SpecialConfig.Map3DFollowingYOffset;
+                            MapConfig.Map3DFollowingRadius,
+                            MoreMath.ReverseAngle(MapConfig.Map3DFollowingYaw),
+                            MapConfig.Map3DFocusX,
+                            MapConfig.Map3DFocusZ);
+                    MapConfig.Map3DCameraY = MapConfig.Map3DFocusY + MapConfig.Map3DFollowingYOffset;
                     updateCameraAngles();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            Config.Map3DCamera.Position = new Vector3(SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ);
+            Config.Map3DCamera.Position = new Vector3(MapConfig.Map3DCameraX, MapConfig.Map3DCameraY, MapConfig.Map3DCameraZ);
             Config.Map3DCamera.SetRotation(
-                (float)MoreMath.AngleUnitsToRadians(SpecialConfig.Map3DCameraYaw),
-                (float)MoreMath.AngleUnitsToRadians(SpecialConfig.Map3DCameraPitch),
-                (float)MoreMath.AngleUnitsToRadians(SpecialConfig.Map3DCameraRoll));
-            Config.Map3DCamera.FOV = SpecialConfig.Map3DFOV / 180 * (float)Math.PI;
+                (float)MoreMath.AngleUnitsToRadians(MapConfig.Map3DCameraYaw),
+                (float)MoreMath.AngleUnitsToRadians(MapConfig.Map3DCameraPitch),
+                (float)MoreMath.AngleUnitsToRadians(MapConfig.Map3DCameraRoll));
+            Config.Map3DCamera.FOV = MapConfig.Map3DFOV / 180 * (float)Math.PI;
         }
 
         private bool _isTranslating = false;
@@ -367,16 +367,16 @@ namespace STROOP.Map.Map3D
                     _isTranslating = true;
                     _translateStartMouseX = e.X;
                     _translateStartMouseY = e.Y;
-                    _translateStartPositionX = SpecialConfig.Map3DCameraX;
-                    _translateStartPositionY = SpecialConfig.Map3DCameraY;
-                    _translateStartPositionZ = SpecialConfig.Map3DCameraZ;
+                    _translateStartPositionX = MapConfig.Map3DCameraX;
+                    _translateStartPositionY = MapConfig.Map3DCameraY;
+                    _translateStartPositionZ = MapConfig.Map3DCameraZ;
                     break;
                 case MouseButtons.Right:
                     _isRotating = true;
                     _rotateStartMouseX = e.X;
                     _rotateStartMouseY = e.Y;
-                    _rotateStartYaw = SpecialConfig.Map3DCameraYaw;
-                    _rotateStartPitch = SpecialConfig.Map3DCameraPitch;
+                    _rotateStartYaw = MapConfig.Map3DCameraYaw;
+                    _rotateStartPitch = MapConfig.Map3DCameraPitch;
                     break;
             }
         }
@@ -398,7 +398,7 @@ namespace STROOP.Map.Map3D
         {
             if (_isTranslating)
             {
-                float scale = (float)SpecialConfig.Map3DTranslateSpeed;
+                float scale = (float)MapConfig.Map3DTranslateSpeed;
                 int pixelDiffX = e.X - _translateStartMouseX;
                 int pixelDiffY = e.Y - _translateStartMouseY;
                 pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
@@ -407,18 +407,18 @@ namespace STROOP.Map.Map3D
                 float unitDiffY = pixelDiffY * scale;
                 (float rotX, float rotY, float rotZ) =
                     ((float, float, float))MoreMath.TranslateRelatively(
-                        SpecialConfig.Map3DCameraYaw, SpecialConfig.Map3DCameraPitch, SpecialConfig.Map3DCameraRoll,
+                        MapConfig.Map3DCameraYaw, MapConfig.Map3DCameraPitch, MapConfig.Map3DCameraRoll,
                         unitDiffX, unitDiffY, 0);
 
-                SpecialConfig.Map3DMode = Map3DCameraMode.CameraPosAndAngle;
-                SpecialConfig.Map3DCameraX = _translateStartPositionX - rotX;
-                SpecialConfig.Map3DCameraY = _translateStartPositionY - rotY;
-                SpecialConfig.Map3DCameraZ = _translateStartPositionZ - rotZ;
+                MapConfig.Map3DMode = Map3DCameraMode.CameraPosAndAngle;
+                MapConfig.Map3DCameraX = _translateStartPositionX - rotX;
+                MapConfig.Map3DCameraY = _translateStartPositionY - rotY;
+                MapConfig.Map3DCameraZ = _translateStartPositionZ - rotZ;
             }
 
             if (_isRotating)
             {
-                float scale = (float)SpecialConfig.Map3DRotateSpeed;
+                float scale = (float)MapConfig.Map3DRotateSpeed;
                 int pixelDiffX = e.X - _rotateStartMouseX;
                 int pixelDiffY = e.Y - _rotateStartMouseY;
                 pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
@@ -426,9 +426,9 @@ namespace STROOP.Map.Map3D
                 float angleDiffX = pixelDiffX * scale;
                 float angleDiffY = pixelDiffY * scale;
 
-                SpecialConfig.Map3DMode = Map3DCameraMode.CameraPosAndAngle;
-                SpecialConfig.Map3DCameraYaw = _rotateStartYaw + angleDiffX;
-                SpecialConfig.Map3DCameraPitch = _rotateStartPitch + angleDiffY;
+                MapConfig.Map3DMode = Map3DCameraMode.CameraPosAndAngle;
+                MapConfig.Map3DCameraYaw = _rotateStartYaw + angleDiffX;
+                MapConfig.Map3DCameraPitch = _rotateStartPitch + angleDiffY;
             }
         }
 
@@ -437,18 +437,18 @@ namespace STROOP.Map.Map3D
             int multiplier = e.Delta > 0 ? 1 : -1;
             (float rotX, float rotY, float rotZ) =
                 ((float, float, float))MoreMath.TranslateRelatively(
-                    SpecialConfig.Map3DCameraYaw, SpecialConfig.Map3DCameraPitch, SpecialConfig.Map3DCameraRoll,
-                    0, 0, multiplier * SpecialConfig.Map3DScrollSpeed);
+                    MapConfig.Map3DCameraYaw, MapConfig.Map3DCameraPitch, MapConfig.Map3DCameraRoll,
+                    0, 0, multiplier * MapConfig.Map3DScrollSpeed);
 
-            SpecialConfig.Map3DMode = Map3DCameraMode.CameraPosAndAngle;
-            SpecialConfig.Map3DCameraX += rotX;
-            SpecialConfig.Map3DCameraY += rotY;
-            SpecialConfig.Map3DCameraZ += rotZ;
+            MapConfig.Map3DMode = Map3DCameraMode.CameraPosAndAngle;
+            MapConfig.Map3DCameraX += rotX;
+            MapConfig.Map3DCameraY += rotY;
+            MapConfig.Map3DCameraZ += rotZ;
         }
 
         private void OnDoubleClick(object sender, EventArgs e)
         {
-            SpecialConfig.Map3DMode = Map3DCameraMode.InGame;
+            MapConfig.Map3DMode = Map3DCameraMode.InGame;
         }
     }
 }

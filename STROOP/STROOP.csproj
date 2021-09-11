@@ -585,6 +585,7 @@
     <Compile Include="Script\ScriptEngine.cs" />
     <Compile Include="Script\TokenScript.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
+    <Compile Include="Structs\Configurations\MapConfig.cs" />
     <Compile Include="Structs\Configurations\TtcObjectConfig.cs" />
     <Compile Include="Structs\Configurations\PaintingConfig.cs" />
     <Compile Include="Structs\Configurations\MappingConfig.cs" />

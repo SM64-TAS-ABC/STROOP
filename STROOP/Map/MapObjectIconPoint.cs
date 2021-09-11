@@ -61,7 +61,7 @@ namespace STROOP.Map
                 Image.Width <= Image.Height ? 1.0f : (float) Image.Height / Image.Width);
 
             PositionAngle posAngle = GetPositionAngle();
-            float angle = Rotates ? (float)MoreMath.AngleUnitsToRadians(posAngle.Angle - SpecialConfig.Map3DCameraYaw + 32768) : 0;
+            float angle = Rotates ? (float)MoreMath.AngleUnitsToRadians(posAngle.Angle - MapConfig.Map3DCameraYaw + 32768) : 0;
             Vector3 pos = new Vector3((float)posAngle.X, (float)posAngle.Y, (float)posAngle.Z);
 
             float size = Size / 200;

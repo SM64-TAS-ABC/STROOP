@@ -1613,13 +1613,13 @@ namespace STROOP.Utilities
 
             (double newX, double newY, double newZ) =
                 MoreMath.OffsetSphericallyAboutPivot(
-                    SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ,
+                    MapConfig.Map3DCameraX, MapConfig.Map3DCameraY, MapConfig.Map3DCameraZ,
                     radiusOffset, thetaOffset, phiOffset,
-                    SpecialConfig.Map3DFocusX, SpecialConfig.Map3DFocusY, SpecialConfig.Map3DFocusZ);
+                    MapConfig.Map3DFocusX, MapConfig.Map3DFocusY, MapConfig.Map3DFocusZ);
 
-            SpecialConfig.Map3DCameraX = (float)newX;
-            SpecialConfig.Map3DCameraY = (float)newY;
-            SpecialConfig.Map3DCameraZ = (float)newZ;
+            MapConfig.Map3DCameraX = (float)newX;
+            MapConfig.Map3DCameraY = (float)newY;
+            MapConfig.Map3DCameraZ = (float)newZ;
 
             return true;
         }
@@ -1636,22 +1636,22 @@ namespace STROOP.Utilities
             MapUtilities.MaybeChangeMapCameraMode();
             HandleScaling(ref thetaOffset, ref phiOffset);
 
-            if (SpecialConfig.Map3DMode == Map3DCameraMode.CameraPosAndAngle)
+            if (MapConfig.Map3DMode == Map3DCameraMode.CameraPosAndAngle)
             {
-                SpecialConfig.Map3DCameraYaw += thetaOffset;
-                SpecialConfig.Map3DCameraPitch += phiOffset;
+                MapConfig.Map3DCameraYaw += thetaOffset;
+                MapConfig.Map3DCameraPitch += phiOffset;
                 return true;
             }
 
             (double newX, double newY, double newZ) =
                 MoreMath.OffsetSphericallyAboutPivot(
-                    SpecialConfig.Map3DFocusX, SpecialConfig.Map3DFocusY, SpecialConfig.Map3DFocusZ,
+                    MapConfig.Map3DFocusX, MapConfig.Map3DFocusY, MapConfig.Map3DFocusZ,
                     radiusOffset, thetaOffset, phiOffset,
-                    SpecialConfig.Map3DCameraX, SpecialConfig.Map3DCameraY, SpecialConfig.Map3DCameraZ);
+                    MapConfig.Map3DCameraX, MapConfig.Map3DCameraY, MapConfig.Map3DCameraZ);
 
-            SpecialConfig.Map3DFocusX = (float)newX;
-            SpecialConfig.Map3DFocusY = (float)newY;
-            SpecialConfig.Map3DFocusZ = (float)newZ;
+            MapConfig.Map3DFocusX = (float)newX;
+            MapConfig.Map3DFocusY = (float)newY;
+            MapConfig.Map3DFocusZ = (float)newZ;
 
             return true;
         }

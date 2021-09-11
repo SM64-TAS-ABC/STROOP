@@ -899,7 +899,7 @@ namespace STROOP.Managers
             Config.MapGui.trackBarMapFov.ValueChanged += (sender, e) =>
             {
                 MapUtilities.MaybeChangeMapCameraMode();
-                SpecialConfig.Map3DFOV = Config.MapGui.trackBarMapFov.Value;
+                MapConfig.Map3DFOV = Config.MapGui.trackBarMapFov.Value;
                 Config.MapGui.textBoxMapFov.Text = Config.MapGui.trackBarMapFov.Value.ToString();
             };
 
@@ -909,7 +909,7 @@ namespace STROOP.Managers
                 if (parsed > 0 && parsed < 180)
                 {
                     MapUtilities.MaybeChangeMapCameraMode();
-                    SpecialConfig.Map3DFOV = parsed;
+                    MapConfig.Map3DFOV = parsed;
                     ControlUtilities.SetTrackBarValueCapped(Config.MapGui.trackBarMapFov, parsed);
                 }
             });
@@ -1025,36 +1025,36 @@ namespace STROOP.Managers
                 }
                 mapTabSettings.Add(new XAttribute("mapViewPitchValue", (double)Config.MapGraphics.MapViewPitchValue));
 
-                mapTabSettings.Add(new XAttribute("map3DMode", SpecialConfig.Map3DMode));
-                mapTabSettings.Add(new XAttribute("map3DCameraX", (double)SpecialConfig.Map3DCameraX));
-                mapTabSettings.Add(new XAttribute("map3DCameraY", (double)SpecialConfig.Map3DCameraY));
-                mapTabSettings.Add(new XAttribute("map3DCameraZ", (double)SpecialConfig.Map3DCameraZ));
-                mapTabSettings.Add(new XAttribute("map3DCameraYaw", (double)SpecialConfig.Map3DCameraYaw));
-                mapTabSettings.Add(new XAttribute("map3DCameraPitch", (double)SpecialConfig.Map3DCameraPitch));
-                mapTabSettings.Add(new XAttribute("map3DCameraRoll", (double)SpecialConfig.Map3DCameraRoll));
-                mapTabSettings.Add(new XAttribute("map3DFocusX", (double)SpecialConfig.Map3DFocusX));
-                mapTabSettings.Add(new XAttribute("map3DFocusY", (double)SpecialConfig.Map3DFocusY));
-                mapTabSettings.Add(new XAttribute("map3DFocusZ", (double)SpecialConfig.Map3DFocusZ));
-                mapTabSettings.Add(new XAttribute("map3DCameraPosPA", SpecialConfig.Map3DCameraPosPA));
-                mapTabSettings.Add(new XAttribute("map3DCameraAnglePA", SpecialConfig.Map3DCameraAnglePA));
-                mapTabSettings.Add(new XAttribute("map3DFocusPosPA", SpecialConfig.Map3DFocusPosPA));
-                mapTabSettings.Add(new XAttribute("map3DFocusAnglePA", SpecialConfig.Map3DFocusAnglePA));
-                mapTabSettings.Add(new XAttribute("map3DFollowingRadius", (double)SpecialConfig.Map3DFollowingRadius));
-                mapTabSettings.Add(new XAttribute("map3DFollowingYOffset", (double)SpecialConfig.Map3DFollowingYOffset));
-                mapTabSettings.Add(new XAttribute("map3DFollowingYaw", (double)SpecialConfig.Map3DFollowingYaw));
-                mapTabSettings.Add(new XAttribute("map3DFOV", (double)SpecialConfig.Map3DFOV));
-                mapTabSettings.Add(new XAttribute("map2DScrollSpeed", SpecialConfig.Map2DScrollSpeed));
-                mapTabSettings.Add(new XAttribute("map2DOrthographicHorizontalRotateSpeed", SpecialConfig.Map2DOrthographicHorizontalRotateSpeed));
-                mapTabSettings.Add(new XAttribute("map2DOrthographicVerticalRotateSpeed", SpecialConfig.Map2DOrthographicVerticalRotateSpeed));
-                mapTabSettings.Add(new XAttribute("map3DScrollSpeed", SpecialConfig.Map3DScrollSpeed));
-                mapTabSettings.Add(new XAttribute("map3DTranslateSpeed", SpecialConfig.Map3DTranslateSpeed));
-                mapTabSettings.Add(new XAttribute("map3DRotateSpeed", SpecialConfig.Map3DRotateSpeed));
-                mapTabSettings.Add(new XAttribute("mapCircleNumPoints2D", SpecialConfig.MapCircleNumPoints2D));
-                mapTabSettings.Add(new XAttribute("mapCircleNumPoints3D", SpecialConfig.MapCircleNumPoints3D));
-                mapTabSettings.Add(new XAttribute("mapUnitPrecisionThreshold", SpecialConfig.MapUnitPrecisionThreshold));
-                mapTabSettings.Add(new XAttribute("mapSortOrthographicTris", SpecialConfig.MapSortOrthographicTris));
-                mapTabSettings.Add(new XAttribute("mapUseNotForCeilings", SpecialConfig.MapUseNotForCeilings));
-                mapTabSettings.Add(new XAttribute("mapUseXForCeilings", SpecialConfig.MapUseXForCeilings));
+                mapTabSettings.Add(new XAttribute("map3DMode", MapConfig.Map3DMode));
+                mapTabSettings.Add(new XAttribute("map3DCameraX", (double)MapConfig.Map3DCameraX));
+                mapTabSettings.Add(new XAttribute("map3DCameraY", (double)MapConfig.Map3DCameraY));
+                mapTabSettings.Add(new XAttribute("map3DCameraZ", (double)MapConfig.Map3DCameraZ));
+                mapTabSettings.Add(new XAttribute("map3DCameraYaw", (double)MapConfig.Map3DCameraYaw));
+                mapTabSettings.Add(new XAttribute("map3DCameraPitch", (double)MapConfig.Map3DCameraPitch));
+                mapTabSettings.Add(new XAttribute("map3DCameraRoll", (double)MapConfig.Map3DCameraRoll));
+                mapTabSettings.Add(new XAttribute("map3DFocusX", (double)MapConfig.Map3DFocusX));
+                mapTabSettings.Add(new XAttribute("map3DFocusY", (double)MapConfig.Map3DFocusY));
+                mapTabSettings.Add(new XAttribute("map3DFocusZ", (double)MapConfig.Map3DFocusZ));
+                mapTabSettings.Add(new XAttribute("map3DCameraPosPA", MapConfig.Map3DCameraPosPA));
+                mapTabSettings.Add(new XAttribute("map3DCameraAnglePA", MapConfig.Map3DCameraAnglePA));
+                mapTabSettings.Add(new XAttribute("map3DFocusPosPA", MapConfig.Map3DFocusPosPA));
+                mapTabSettings.Add(new XAttribute("map3DFocusAnglePA", MapConfig.Map3DFocusAnglePA));
+                mapTabSettings.Add(new XAttribute("map3DFollowingRadius", (double)MapConfig.Map3DFollowingRadius));
+                mapTabSettings.Add(new XAttribute("map3DFollowingYOffset", (double)MapConfig.Map3DFollowingYOffset));
+                mapTabSettings.Add(new XAttribute("map3DFollowingYaw", (double)MapConfig.Map3DFollowingYaw));
+                mapTabSettings.Add(new XAttribute("map3DFOV", (double)MapConfig.Map3DFOV));
+                mapTabSettings.Add(new XAttribute("map2DScrollSpeed", MapConfig.Map2DScrollSpeed));
+                mapTabSettings.Add(new XAttribute("map2DOrthographicHorizontalRotateSpeed", MapConfig.Map2DOrthographicHorizontalRotateSpeed));
+                mapTabSettings.Add(new XAttribute("map2DOrthographicVerticalRotateSpeed", MapConfig.Map2DOrthographicVerticalRotateSpeed));
+                mapTabSettings.Add(new XAttribute("map3DScrollSpeed", MapConfig.Map3DScrollSpeed));
+                mapTabSettings.Add(new XAttribute("map3DTranslateSpeed", MapConfig.Map3DTranslateSpeed));
+                mapTabSettings.Add(new XAttribute("map3DRotateSpeed", MapConfig.Map3DRotateSpeed));
+                mapTabSettings.Add(new XAttribute("mapCircleNumPoints2D", MapConfig.MapCircleNumPoints2D));
+                mapTabSettings.Add(new XAttribute("mapCircleNumPoints3D", MapConfig.MapCircleNumPoints3D));
+                mapTabSettings.Add(new XAttribute("mapUnitPrecisionThreshold", MapConfig.MapUnitPrecisionThreshold));
+                mapTabSettings.Add(new XAttribute("mapSortOrthographicTris", MapConfig.MapSortOrthographicTris));
+                mapTabSettings.Add(new XAttribute("mapUseNotForCeilings", MapConfig.MapUseNotForCeilings));
+                mapTabSettings.Add(new XAttribute("mapUseXForCeilings", MapConfig.MapUseXForCeilings));
 
                 root.Add(mapTabSettings);
             }
@@ -1128,36 +1128,36 @@ namespace STROOP.Managers
                     Config.MapGraphics.MapViewPitchValue = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("mapViewPitchValue")).Value);
                 }
 
-                SpecialConfig.Map3DMode = (Map3DCameraMode)Enum.Parse(typeof(Map3DCameraMode), mapTabSettings.Attribute(XName.Get("map3DMode")).Value);
-                SpecialConfig.Map3DCameraX = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DCameraX")).Value);
-                SpecialConfig.Map3DCameraY = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DCameraY")).Value);
-                SpecialConfig.Map3DCameraZ = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DCameraZ")).Value);
-                SpecialConfig.Map3DCameraYaw = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DCameraYaw")).Value);
-                SpecialConfig.Map3DCameraPitch = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DCameraPitch")).Value);
-                SpecialConfig.Map3DCameraRoll = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DCameraRoll")).Value);
-                SpecialConfig.Map3DFocusX = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFocusX")).Value);
-                SpecialConfig.Map3DFocusY = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFocusY")).Value);
-                SpecialConfig.Map3DFocusZ = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFocusZ")).Value);
-                SpecialConfig.Map3DCameraPosPA = PositionAngle.FromString(mapTabSettings.Attribute(XName.Get("map3DCameraPosPA")).Value);
-                SpecialConfig.Map3DCameraAnglePA = PositionAngle.FromString(mapTabSettings.Attribute(XName.Get("map3DCameraAnglePA")).Value);
-                SpecialConfig.Map3DFocusPosPA = PositionAngle.FromString(mapTabSettings.Attribute(XName.Get("map3DFocusPosPA")).Value);
-                SpecialConfig.Map3DFocusAnglePA = PositionAngle.FromString(mapTabSettings.Attribute(XName.Get("map3DFocusAnglePA")).Value);
-                SpecialConfig.Map3DFollowingRadius = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFollowingRadius")).Value);
-                SpecialConfig.Map3DFollowingYOffset = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFollowingYOffset")).Value);
-                SpecialConfig.Map3DFollowingYaw = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFollowingYaw")).Value);
-                SpecialConfig.Map3DFOV = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFOV")).Value);
-                SpecialConfig.Map2DScrollSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map2DScrollSpeed")).Value);
-                SpecialConfig.Map2DOrthographicHorizontalRotateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map2DOrthographicHorizontalRotateSpeed")).Value);
-                SpecialConfig.Map2DOrthographicVerticalRotateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map2DOrthographicVerticalRotateSpeed")).Value);
-                SpecialConfig.Map3DScrollSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map3DScrollSpeed")).Value);
-                SpecialConfig.Map3DTranslateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map3DTranslateSpeed")).Value);
-                SpecialConfig.Map3DRotateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map3DRotateSpeed")).Value);
-                SpecialConfig.MapCircleNumPoints2D = ParsingUtilities.ParseInt(mapTabSettings.Attribute(XName.Get("mapCircleNumPoints2D")).Value);
-                SpecialConfig.MapCircleNumPoints3D = ParsingUtilities.ParseInt(mapTabSettings.Attribute(XName.Get("mapCircleNumPoints3D")).Value);
-                SpecialConfig.MapUnitPrecisionThreshold = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUnitPrecisionThreshold")).Value);
-                SpecialConfig.MapSortOrthographicTris = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapSortOrthographicTris")).Value);
-                SpecialConfig.MapUseNotForCeilings = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUseNotForCeilings")).Value);
-                SpecialConfig.MapUseXForCeilings = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUseXForCeilings")).Value);
+                MapConfig.Map3DMode = (Map3DCameraMode)Enum.Parse(typeof(Map3DCameraMode), mapTabSettings.Attribute(XName.Get("map3DMode")).Value);
+                MapConfig.Map3DCameraX = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DCameraX")).Value);
+                MapConfig.Map3DCameraY = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DCameraY")).Value);
+                MapConfig.Map3DCameraZ = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DCameraZ")).Value);
+                MapConfig.Map3DCameraYaw = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DCameraYaw")).Value);
+                MapConfig.Map3DCameraPitch = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DCameraPitch")).Value);
+                MapConfig.Map3DCameraRoll = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DCameraRoll")).Value);
+                MapConfig.Map3DFocusX = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFocusX")).Value);
+                MapConfig.Map3DFocusY = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFocusY")).Value);
+                MapConfig.Map3DFocusZ = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFocusZ")).Value);
+                MapConfig.Map3DCameraPosPA = PositionAngle.FromString(mapTabSettings.Attribute(XName.Get("map3DCameraPosPA")).Value);
+                MapConfig.Map3DCameraAnglePA = PositionAngle.FromString(mapTabSettings.Attribute(XName.Get("map3DCameraAnglePA")).Value);
+                MapConfig.Map3DFocusPosPA = PositionAngle.FromString(mapTabSettings.Attribute(XName.Get("map3DFocusPosPA")).Value);
+                MapConfig.Map3DFocusAnglePA = PositionAngle.FromString(mapTabSettings.Attribute(XName.Get("map3DFocusAnglePA")).Value);
+                MapConfig.Map3DFollowingRadius = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFollowingRadius")).Value);
+                MapConfig.Map3DFollowingYOffset = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFollowingYOffset")).Value);
+                MapConfig.Map3DFollowingYaw = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFollowingYaw")).Value);
+                MapConfig.Map3DFOV = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFOV")).Value);
+                MapConfig.Map2DScrollSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map2DScrollSpeed")).Value);
+                MapConfig.Map2DOrthographicHorizontalRotateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map2DOrthographicHorizontalRotateSpeed")).Value);
+                MapConfig.Map2DOrthographicVerticalRotateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map2DOrthographicVerticalRotateSpeed")).Value);
+                MapConfig.Map3DScrollSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map3DScrollSpeed")).Value);
+                MapConfig.Map3DTranslateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map3DTranslateSpeed")).Value);
+                MapConfig.Map3DRotateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map3DRotateSpeed")).Value);
+                MapConfig.MapCircleNumPoints2D = ParsingUtilities.ParseInt(mapTabSettings.Attribute(XName.Get("mapCircleNumPoints2D")).Value);
+                MapConfig.MapCircleNumPoints3D = ParsingUtilities.ParseInt(mapTabSettings.Attribute(XName.Get("mapCircleNumPoints3D")).Value);
+                MapConfig.MapUnitPrecisionThreshold = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUnitPrecisionThreshold")).Value);
+                MapConfig.MapSortOrthographicTris = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapSortOrthographicTris")).Value);
+                MapConfig.MapUseNotForCeilings = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUseNotForCeilings")).Value);
+                MapConfig.MapUseXForCeilings = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUseXForCeilings")).Value);
             }
 
             xElements
@@ -1176,7 +1176,7 @@ namespace STROOP.Managers
             Config.MapGui.radioButtonMapControllersCenterBestFit.Checked = true;
             Config.MapGui.radioButtonMapControllersAngle32768.Checked = true;
             Config.MapGraphics.MapViewPitchValue = 0;
-            SpecialConfig.Map3DMode = Map3DCameraMode.InGame;
+            MapConfig.Map3DMode = Map3DCameraMode.InGame;
         }
 
         private void DoSurfaceTriangles(bool useWhiteBackground)
@@ -1471,7 +1471,7 @@ namespace STROOP.Managers
 
         private void UpdateVarColors()
         {
-            List<string> coloredVarNames = coloredVarsMap[SpecialConfig.Map3DMode];
+            List<string> coloredVarNames = coloredVarsMap[MapConfig.Map3DMode];
             _variablePanel.ColorVarsUsingFunction(
                 control =>
                     control.VarName == "Mode" ? ColorUtilities.GetColorFromString("Green") :

@@ -656,9 +656,9 @@ namespace STROOP.Map
 
         public static void MaybeChangeMapCameraMode()
         {
-            if (SpecialConfig.Map3DMode == Map3DCameraMode.InGame)
+            if (MapConfig.Map3DMode == Map3DCameraMode.InGame)
             {
-                SpecialConfig.Map3DMode = Map3DCameraMode.CameraPosAndFocus;
+                MapConfig.Map3DMode = Map3DCameraMode.CameraPosAndFocus;
             }
         }
 
@@ -692,7 +692,7 @@ namespace STROOP.Map
 
         public static bool IsAbleToShowUnitPrecision()
         {
-            return Config.CurrentMapGraphics.MapViewScaleValue > SpecialConfig.MapUnitPrecisionThreshold;
+            return Config.CurrentMapGraphics.MapViewScaleValue > MapConfig.MapUnitPrecisionThreshold;
         }
 
         public static List<(double x, double y, double z)> ParsePoints(string text, bool useTriplets)

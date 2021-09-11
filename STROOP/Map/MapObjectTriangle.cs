@@ -56,7 +56,7 @@ namespace STROOP.Map
                 tris = tris.FindAll(tri => tri.SurfaceType != 0x0A);
             }
             if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked &&
-                SpecialConfig.MapSortOrthographicTris != 0)
+                MapConfig.MapSortOrthographicTris != 0)
             {
                 if (_useCrossSection)
                 {
@@ -379,7 +379,7 @@ namespace STROOP.Map
                         markPoints.Add(((float x, float y, float z))point);
                     }
 
-                    if (SpecialConfig.MapUseNotForCeilings == 1 && vertexList[0].data.Tri.IsCeiling())
+                    if (MapConfig.MapUseNotForCeilings == 1 && vertexList[0].data.Tri.IsCeiling())
                     {
                         TriangleDataModel tri = vertexList[0].data.Tri;
                         float size = GetSizeForOrthographicView(tri.Classification);
@@ -399,11 +399,11 @@ namespace STROOP.Map
                         {
                             var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z);
 
-                            List<(float x, float z)> outerCirclePoints = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
-                                .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
+                            List<(float x, float z)> outerCirclePoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
+                                .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 65536)
                                 .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(notRadiusLength, angle, controlPoint.x, controlPoint.z));
-                            List<(float x, float z)> innerCirclePoints = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
-                                .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
+                            List<(float x, float z)> innerCirclePoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
+                                .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 65536)
                                 .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(notRadiusLength - notLineThickness, angle, controlPoint.x, controlPoint.z));
 
                             Color notColor = vertexList[0].color.Darken(0.5);
@@ -445,7 +445,7 @@ namespace STROOP.Map
                             GL.End();
                         }
                     }
-                    else if (SpecialConfig.MapUseXForCeilings == 1 && vertexList[0].data.Tri.IsCeiling())
+                    else if (MapConfig.MapUseXForCeilings == 1 && vertexList[0].data.Tri.IsCeiling())
                     {
                         TriangleDataModel tri = vertexList[0].data.Tri;
                         float size = GetSizeForOrthographicView(tri.Classification);

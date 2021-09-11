@@ -122,7 +122,7 @@ namespace STROOP.Map
                 image.Width >= image.Height ? 1.0f : (float)image.Width / image.Height,
                 image.Width <= image.Height ? 1.0f : (float)image.Height / image.Width);
 
-            float angle = Rotates ? (float)MoreMath.AngleUnitsToRadians(ang - SpecialConfig.Map3DCameraYaw + 32768) : 0;
+            float angle = Rotates ? (float)MoreMath.AngleUnitsToRadians(ang - MapConfig.Map3DCameraYaw + 32768) : 0;
             Vector3 pos = new Vector3(x, y, z);
 
             float size = Size / 200;

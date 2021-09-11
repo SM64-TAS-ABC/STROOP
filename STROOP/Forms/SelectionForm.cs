@@ -207,7 +207,7 @@ namespace STROOP.Forms
                 {
                     try
                     {
-                        SpecialConfig.Map3DMode = (Map3DCameraMode)Enum.Parse(typeof(Map3DCameraMode), modeString, true);
+                        MapConfig.Map3DMode = (Map3DCameraMode)Enum.Parse(typeof(Map3DCameraMode), modeString, true);
                     }
                     catch (Exception) { }
                 });
@@ -225,7 +225,7 @@ namespace STROOP.Forms
                 {
                     try
                     {
-                        SpecialConfig.CompassPosition = (CompassPosition)Enum.Parse(typeof(CompassPosition), stringValue, true);
+                        MapConfig.CompassPosition = (CompassPosition)Enum.Parse(typeof(CompassPosition), stringValue, true);
                     }
                     catch (Exception) { }
                 });

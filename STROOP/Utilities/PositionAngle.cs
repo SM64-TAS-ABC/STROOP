@@ -633,9 +633,9 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.CamHackFocus:
                         return Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
                     case PositionAngleTypeEnum.MapCamera:
-                        return SpecialConfig.Map3DCameraX;
+                        return MapConfig.Map3DCameraX;
                     case PositionAngleTypeEnum.MapFocus:
-                        return SpecialConfig.Map3DFocusX;
+                        return MapConfig.Map3DFocusX;
                     case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetFloat(Address.Value + ObjectConfig.XOffset);
                     case PositionAngleTypeEnum.ObjHome:
@@ -747,9 +747,9 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.CamHackFocus:
                         return Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
                     case PositionAngleTypeEnum.MapCamera:
-                        return SpecialConfig.Map3DCameraY;
+                        return MapConfig.Map3DCameraY;
                     case PositionAngleTypeEnum.MapFocus:
-                        return SpecialConfig.Map3DFocusY;
+                        return MapConfig.Map3DFocusY;
                     case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetFloat(Address.Value + ObjectConfig.YOffset);
                     case PositionAngleTypeEnum.ObjHome:
@@ -861,9 +861,9 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.CamHackFocus:
                         return Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
                     case PositionAngleTypeEnum.MapCamera:
-                        return SpecialConfig.Map3DCameraZ;
+                        return MapConfig.Map3DCameraZ;
                     case PositionAngleTypeEnum.MapFocus:
-                        return SpecialConfig.Map3DFocusZ;
+                        return MapConfig.Map3DFocusZ;
                     case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetFloat(Address.Value + ObjectConfig.ZOffset);
                     case PositionAngleTypeEnum.ObjHome:
@@ -975,9 +975,9 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.CamHackFocus:
                         return CamHackUtilities.GetCamHackYawFacing();
                     case PositionAngleTypeEnum.MapCamera:
-                        return SpecialConfig.Map3DCameraYaw;
+                        return MapConfig.Map3DCameraYaw;
                     case PositionAngleTypeEnum.MapFocus:
-                        return SpecialConfig.Map3DCameraYaw;
+                        return MapConfig.Map3DCameraYaw;
                     case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetUShort(Address.Value + ObjectConfig.YawFacingOffset);
                     case PositionAngleTypeEnum.ObjHome:
@@ -1344,10 +1344,10 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.CamHackFocus:
                     return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
                 case PositionAngleTypeEnum.MapCamera:
-                    SpecialConfig.Map3DCameraX = (float)value;
+                    MapConfig.Map3DCameraX = (float)value;
                     return true;
                 case PositionAngleTypeEnum.MapFocus:
-                    SpecialConfig.Map3DFocusX = (float)value;
+                    MapConfig.Map3DFocusX = (float)value;
                     return true;
                 case PositionAngleTypeEnum.Obj:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.XOffset);
@@ -1458,10 +1458,10 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.CamHackFocus:
                     return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
                 case PositionAngleTypeEnum.MapCamera:
-                    SpecialConfig.Map3DCameraY = (float)value;
+                    MapConfig.Map3DCameraY = (float)value;
                     return true;
                 case PositionAngleTypeEnum.MapFocus:
-                    SpecialConfig.Map3DFocusY = (float)value;
+                    MapConfig.Map3DFocusY = (float)value;
                     return true;
                 case PositionAngleTypeEnum.Obj:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.YOffset);
@@ -1572,10 +1572,10 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.CamHackFocus:
                     return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
                 case PositionAngleTypeEnum.MapCamera:
-                    SpecialConfig.Map3DCameraZ = (float)value;
+                    MapConfig.Map3DCameraZ = (float)value;
                     return true;
                 case PositionAngleTypeEnum.MapFocus:
-                    SpecialConfig.Map3DFocusZ = (float)value;
+                    MapConfig.Map3DFocusZ = (float)value;
                     return true;
                 case PositionAngleTypeEnum.Obj:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ZOffset);
@@ -1687,10 +1687,10 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.CamHackFocus:
                     return false;
                 case PositionAngleTypeEnum.MapCamera:
-                    SpecialConfig.Map3DCameraYaw = (float)value;
+                    MapConfig.Map3DCameraYaw = (float)value;
                     return true;
                 case PositionAngleTypeEnum.MapFocus:
-                    SpecialConfig.Map3DCameraYaw = (float)value;
+                    MapConfig.Map3DCameraYaw = (float)value;
                     return true;
                 case PositionAngleTypeEnum.Obj:
                 {

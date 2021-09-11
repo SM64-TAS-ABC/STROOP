@@ -95,8 +95,8 @@ namespace STROOP.Map
             for (int i = 0; i < dimensionList.Count; i++)
             {
                 (float controlCenterX, float controlCenterZ, float controlRadius) = dimensionList[i];
-                List<(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints2D).ToList()
-                    .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints2D) * 65536)
+                List<(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
+                    .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 65536)
                     .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(controlRadius, angle, controlCenterX, controlCenterZ));
 
                 GL.BindTexture(TextureTarget.Texture2D, -1);
@@ -138,10 +138,10 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            List<float> thetaValues = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints3D).ToList()
-                .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints3D) * 65536);
-            List<float> phiValues = Enumerable.Range(0, SpecialConfig.MapCircleNumPoints3D + 1).ToList()
-                .ConvertAll(index => (index / (float)SpecialConfig.MapCircleNumPoints3D) * 32768 - 16384);
+            List<float> thetaValues = Enumerable.Range(0, MapConfig.MapCircleNumPoints3D).ToList()
+                .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints3D) * 65536);
+            List<float> phiValues = Enumerable.Range(0, MapConfig.MapCircleNumPoints3D + 1).ToList()
+                .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints3D) * 32768 - 16384);
 
             (float x, float y, float z) GetSpherePoint(
                 double radius, double theta, double phi, float startX, float startY, float startZ)

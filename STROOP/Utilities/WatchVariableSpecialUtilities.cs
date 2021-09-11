@@ -560,33 +560,33 @@ namespace STROOP.Structs
             List<(string, Func<float>, Action<float>)> floatEntries =
                 new List<(string, Func<float>, Action<float>)>()
                 {
-                    ("Map3DCameraX", () => SpecialConfig.Map3DCameraX, (float value) => SpecialConfig.Map3DCameraX = value),
-                    ("Map3DCameraY", () => SpecialConfig.Map3DCameraY, (float value) => SpecialConfig.Map3DCameraY = value),
-                    ("Map3DCameraZ", () => SpecialConfig.Map3DCameraZ, (float value) => SpecialConfig.Map3DCameraZ = value),
-                    ("Map3DCameraYaw", () => SpecialConfig.Map3DCameraYaw, (float value) => SpecialConfig.Map3DCameraYaw = value),
-                    ("Map3DCameraPitch", () => SpecialConfig.Map3DCameraPitch, (float value) => SpecialConfig.Map3DCameraPitch = value),
-                    ("Map3DCameraRoll", () => SpecialConfig.Map3DCameraRoll, (float value) => SpecialConfig.Map3DCameraRoll = value),
-                    ("Map3DFocusX", () => SpecialConfig.Map3DFocusX, (float value) => SpecialConfig.Map3DFocusX = value),
-                    ("Map3DFocusY", () => SpecialConfig.Map3DFocusY, (float value) => SpecialConfig.Map3DFocusY = value),
-                    ("Map3DFocusZ", () => SpecialConfig.Map3DFocusZ, (float value) => SpecialConfig.Map3DFocusZ = value),
-                    ("Map3DFollowingRadius", () => SpecialConfig.Map3DFollowingRadius, (float value) => SpecialConfig.Map3DFollowingRadius = value),
-                    ("Map3DFollowingYOffset", () => SpecialConfig.Map3DFollowingYOffset, (float value) => SpecialConfig.Map3DFollowingYOffset = value),
-                    ("Map3DFollowingYaw", () => SpecialConfig.Map3DFollowingYaw, (float value) => SpecialConfig.Map3DFollowingYaw = value),
-                    ("Map3DFOV", () => SpecialConfig.Map3DFOV, (float value) => SpecialConfig.Map3DFOV = value),
+                    ("Map3DCameraX", () => MapConfig.Map3DCameraX, (float value) => MapConfig.Map3DCameraX = value),
+                    ("Map3DCameraY", () => MapConfig.Map3DCameraY, (float value) => MapConfig.Map3DCameraY = value),
+                    ("Map3DCameraZ", () => MapConfig.Map3DCameraZ, (float value) => MapConfig.Map3DCameraZ = value),
+                    ("Map3DCameraYaw", () => MapConfig.Map3DCameraYaw, (float value) => MapConfig.Map3DCameraYaw = value),
+                    ("Map3DCameraPitch", () => MapConfig.Map3DCameraPitch, (float value) => MapConfig.Map3DCameraPitch = value),
+                    ("Map3DCameraRoll", () => MapConfig.Map3DCameraRoll, (float value) => MapConfig.Map3DCameraRoll = value),
+                    ("Map3DFocusX", () => MapConfig.Map3DFocusX, (float value) => MapConfig.Map3DFocusX = value),
+                    ("Map3DFocusY", () => MapConfig.Map3DFocusY, (float value) => MapConfig.Map3DFocusY = value),
+                    ("Map3DFocusZ", () => MapConfig.Map3DFocusZ, (float value) => MapConfig.Map3DFocusZ = value),
+                    ("Map3DFollowingRadius", () => MapConfig.Map3DFollowingRadius, (float value) => MapConfig.Map3DFollowingRadius = value),
+                    ("Map3DFollowingYOffset", () => MapConfig.Map3DFollowingYOffset, (float value) => MapConfig.Map3DFollowingYOffset = value),
+                    ("Map3DFollowingYaw", () => MapConfig.Map3DFollowingYaw, (float value) => MapConfig.Map3DFollowingYaw = value),
+                    ("Map3DFOV", () => MapConfig.Map3DFOV, (float value) => MapConfig.Map3DFOV = value),
 
-                    ("CompassLineHeight", () => SpecialConfig.CompassLineHeight, (float value) => SpecialConfig.CompassLineHeight = value),
-                    ("CompassLineWidth", () => SpecialConfig.CompassLineWidth, (float value) => SpecialConfig.CompassLineWidth = value),
-                    ("CompassArrowHeight", () => SpecialConfig.CompassArrowHeight, (float value) => SpecialConfig.CompassArrowHeight = value),
-                    ("CompassArrowWidth", () => SpecialConfig.CompassArrowWidth, (float value) => SpecialConfig.CompassArrowWidth = value),
-                    ("CompassHorizontalMargin", () => SpecialConfig.CompassHorizontalMargin, (float value) => SpecialConfig.CompassHorizontalMargin = value),
-                    ("CompassVerticalMargin", () => SpecialConfig.CompassVerticalMargin, (float value) => SpecialConfig.CompassVerticalMargin = value),
-                    ("CompassDirectionTextSize", () => SpecialConfig.CompassDirectionTextSize, (float value) => SpecialConfig.CompassDirectionTextSize = value),
-                    ("CompassAngleTextSize", () => SpecialConfig.CompassAngleTextSize, (float value) => SpecialConfig.CompassAngleTextSize = value),
-                    ("CompassDirectionTextPosition", () => SpecialConfig.CompassDirectionTextPosition, (float value) => SpecialConfig.CompassDirectionTextPosition = value),
-                    ("CompassAngleTextPosition", () => SpecialConfig.CompassAngleTextPosition, (float value) => SpecialConfig.CompassAngleTextPosition = value),
-                    ("CompassShowDirectionText", () => SpecialConfig.CompassShowDirectionText, (float value) => SpecialConfig.CompassShowDirectionText = value),
-                    ("CompassShowAngleText", () => SpecialConfig.CompassShowAngleText, (float value) => SpecialConfig.CompassShowAngleText = value),
-                    ("CompassAngleTextSigned", () => SpecialConfig.CompassAngleTextSigned, (float value) => SpecialConfig.CompassAngleTextSigned = value),
+                    ("CompassLineHeight", () => MapConfig.CompassLineHeight, (float value) => MapConfig.CompassLineHeight = value),
+                    ("CompassLineWidth", () => MapConfig.CompassLineWidth, (float value) => MapConfig.CompassLineWidth = value),
+                    ("CompassArrowHeight", () => MapConfig.CompassArrowHeight, (float value) => MapConfig.CompassArrowHeight = value),
+                    ("CompassArrowWidth", () => MapConfig.CompassArrowWidth, (float value) => MapConfig.CompassArrowWidth = value),
+                    ("CompassHorizontalMargin", () => MapConfig.CompassHorizontalMargin, (float value) => MapConfig.CompassHorizontalMargin = value),
+                    ("CompassVerticalMargin", () => MapConfig.CompassVerticalMargin, (float value) => MapConfig.CompassVerticalMargin = value),
+                    ("CompassDirectionTextSize", () => MapConfig.CompassDirectionTextSize, (float value) => MapConfig.CompassDirectionTextSize = value),
+                    ("CompassAngleTextSize", () => MapConfig.CompassAngleTextSize, (float value) => MapConfig.CompassAngleTextSize = value),
+                    ("CompassDirectionTextPosition", () => MapConfig.CompassDirectionTextPosition, (float value) => MapConfig.CompassDirectionTextPosition = value),
+                    ("CompassAngleTextPosition", () => MapConfig.CompassAngleTextPosition, (float value) => MapConfig.CompassAngleTextPosition = value),
+                    ("CompassShowDirectionText", () => MapConfig.CompassShowDirectionText, (float value) => MapConfig.CompassShowDirectionText = value),
+                    ("CompassShowAngleText", () => MapConfig.CompassShowAngleText, (float value) => MapConfig.CompassShowAngleText = value),
+                    ("CompassAngleTextSigned", () => MapConfig.CompassAngleTextSigned, (float value) => MapConfig.CompassAngleTextSigned = value),
                 };
 
             foreach ((string key, Func<float> getter, Action<float> setter) in floatEntries)
@@ -607,17 +607,17 @@ namespace STROOP.Structs
             List<(string, Func<double>, Action<double>)> doubleEntries =
                 new List<(string, Func<double>, Action<double>)>()
                 {
-                    ("Map2DScrollSpeed", () => SpecialConfig.Map2DScrollSpeed, (double value) => SpecialConfig.Map2DScrollSpeed = value),
-                    ("Map2DOrthographicHorizontalRotateSpeed", () => SpecialConfig.Map2DOrthographicHorizontalRotateSpeed, (double value) => SpecialConfig.Map2DOrthographicHorizontalRotateSpeed = value),
-                    ("Map2DOrthographicVerticalRotateSpeed", () => SpecialConfig.Map2DOrthographicVerticalRotateSpeed, (double value) => SpecialConfig.Map2DOrthographicVerticalRotateSpeed = value),
-                    ("Map3DScrollSpeed", () => SpecialConfig.Map3DScrollSpeed, (double value) => SpecialConfig.Map3DScrollSpeed = value),
-                    ("Map3DTranslateSpeed", () => SpecialConfig.Map3DTranslateSpeed, (double value) => SpecialConfig.Map3DTranslateSpeed = value),
-                    ("Map3DRotateSpeed", () => SpecialConfig.Map3DRotateSpeed, (double value) => SpecialConfig.Map3DRotateSpeed = value),
+                    ("Map2DScrollSpeed", () => MapConfig.Map2DScrollSpeed, (double value) => MapConfig.Map2DScrollSpeed = value),
+                    ("Map2DOrthographicHorizontalRotateSpeed", () => MapConfig.Map2DOrthographicHorizontalRotateSpeed, (double value) => MapConfig.Map2DOrthographicHorizontalRotateSpeed = value),
+                    ("Map2DOrthographicVerticalRotateSpeed", () => MapConfig.Map2DOrthographicVerticalRotateSpeed, (double value) => MapConfig.Map2DOrthographicVerticalRotateSpeed = value),
+                    ("Map3DScrollSpeed", () => MapConfig.Map3DScrollSpeed, (double value) => MapConfig.Map3DScrollSpeed = value),
+                    ("Map3DTranslateSpeed", () => MapConfig.Map3DTranslateSpeed, (double value) => MapConfig.Map3DTranslateSpeed = value),
+                    ("Map3DRotateSpeed", () => MapConfig.Map3DRotateSpeed, (double value) => MapConfig.Map3DRotateSpeed = value),
 
-                    ("MapUnitPrecisionThreshold", () => SpecialConfig.MapUnitPrecisionThreshold, (double value) => SpecialConfig.MapUnitPrecisionThreshold = value),
-                    ("MapSortOrthographicTris", () => SpecialConfig.MapSortOrthographicTris, (double value) => SpecialConfig.MapSortOrthographicTris = value),
-                    ("MapUseNotForCeilings", () => SpecialConfig.MapUseNotForCeilings, (double value) => SpecialConfig.MapUseNotForCeilings = value),
-                    ("MapUseXForCeilings", () => SpecialConfig.MapUseXForCeilings, (double value) => SpecialConfig.MapUseXForCeilings = value),
+                    ("MapUnitPrecisionThreshold", () => MapConfig.MapUnitPrecisionThreshold, (double value) => MapConfig.MapUnitPrecisionThreshold = value),
+                    ("MapSortOrthographicTris", () => MapConfig.MapSortOrthographicTris, (double value) => MapConfig.MapSortOrthographicTris = value),
+                    ("MapUseNotForCeilings", () => MapConfig.MapUseNotForCeilings, (double value) => MapConfig.MapUseNotForCeilings = value),
+                    ("MapUseXForCeilings", () => MapConfig.MapUseXForCeilings, (double value) => MapConfig.MapUseXForCeilings = value),
 
                     ("MapScaleValue", () => Config.MapGraphics.MapViewScaleValue, (double value) => Config.MapGraphics.SetCustomScale(value)),
                     ("MapCenterXValue", () => Config.MapGraphics.MapViewCenterXValue, (double value) => Config.MapGraphics.SetCustomCenter(xValue: value)),
@@ -626,15 +626,15 @@ namespace STROOP.Structs
                     ("MapYawValue", () => Config.MapGraphics.MapViewYawValue, (double value) => Config.MapGraphics.SetCustomYaw(value)),
                     ("MapPitchValue", () => Config.MapGraphics.MapViewPitchValue, (double value) => Config.MapGraphics.SetCustomPitch(value)),
 
-                    ("CoordinateLabelsCustomSpacing", () => SpecialConfig.CoordinateLabelsCustomSpacing, (double value) => SpecialConfig.CoordinateLabelsCustomSpacing = value),
-                    ("CoordinateLabelsMargin", () => SpecialConfig.CoordinateLabelsMargin, (double value) => SpecialConfig.CoordinateLabelsMargin = value),
-                    ("CoordinateLabelsLabelDensity", () => SpecialConfig.CoordinateLabelsLabelDensity, (double value) => SpecialConfig.CoordinateLabelsLabelDensity = value),
-                    ("CoordinateLabelsShowCursorPos", () => SpecialConfig.CoordinateLabelsShowCursorPos, (double value) => SpecialConfig.CoordinateLabelsShowCursorPos = value),
-                    ("CoordinateLabelsShowXLabels", () => SpecialConfig.CoordinateLabelsShowXLabels, (double value) => SpecialConfig.CoordinateLabelsShowXLabels = value),
-                    ("CoordinateLabelsShowZLabels", () => SpecialConfig.CoordinateLabelsShowZLabels, (double value) => SpecialConfig.CoordinateLabelsShowZLabels = value),
-                    ("CoordinateLabelsUseHighX", () => SpecialConfig.CoordinateLabelsUseHighX, (double value) => SpecialConfig.CoordinateLabelsUseHighX = value),
-                    ("CoordinateLabelsUseHighZ", () => SpecialConfig.CoordinateLabelsUseHighZ, (double value) => SpecialConfig.CoordinateLabelsUseHighZ = value),
-                    ("CoordinateLabelsBoldText", () => SpecialConfig.CoordinateLabelsBoldText, (double value) => SpecialConfig.CoordinateLabelsBoldText = value),
+                    ("CoordinateLabelsCustomSpacing", () => MapConfig.CoordinateLabelsCustomSpacing, (double value) => MapConfig.CoordinateLabelsCustomSpacing = value),
+                    ("CoordinateLabelsMargin", () => MapConfig.CoordinateLabelsMargin, (double value) => MapConfig.CoordinateLabelsMargin = value),
+                    ("CoordinateLabelsLabelDensity", () => MapConfig.CoordinateLabelsLabelDensity, (double value) => MapConfig.CoordinateLabelsLabelDensity = value),
+                    ("CoordinateLabelsShowCursorPos", () => MapConfig.CoordinateLabelsShowCursorPos, (double value) => MapConfig.CoordinateLabelsShowCursorPos = value),
+                    ("CoordinateLabelsShowXLabels", () => MapConfig.CoordinateLabelsShowXLabels, (double value) => MapConfig.CoordinateLabelsShowXLabels = value),
+                    ("CoordinateLabelsShowZLabels", () => MapConfig.CoordinateLabelsShowZLabels, (double value) => MapConfig.CoordinateLabelsShowZLabels = value),
+                    ("CoordinateLabelsUseHighX", () => MapConfig.CoordinateLabelsUseHighX, (double value) => MapConfig.CoordinateLabelsUseHighX = value),
+                    ("CoordinateLabelsUseHighZ", () => MapConfig.CoordinateLabelsUseHighZ, (double value) => MapConfig.CoordinateLabelsUseHighZ = value),
+                    ("CoordinateLabelsBoldText", () => MapConfig.CoordinateLabelsBoldText, (double value) => MapConfig.CoordinateLabelsBoldText = value),
                 };
 
             foreach ((string key, Func<double> getter, Action<double> setter) in doubleEntries)
@@ -655,8 +655,8 @@ namespace STROOP.Structs
             List<(string, Func<int>, Action<int>)> intEntries =
                 new List<(string, Func<int>, Action<int>)>()
                 {
-                    ("MapCircleNumPoints2D", () => SpecialConfig.MapCircleNumPoints2D, (int value) => SpecialConfig.MapCircleNumPoints2D = value),
-                    ("MapCircleNumPoints3D", () => SpecialConfig.MapCircleNumPoints3D, (int value) => SpecialConfig.MapCircleNumPoints3D = value),
+                    ("MapCircleNumPoints2D", () => MapConfig.MapCircleNumPoints2D, (int value) => MapConfig.MapCircleNumPoints2D = value),
+                    ("MapCircleNumPoints3D", () => MapConfig.MapCircleNumPoints3D, (int value) => MapConfig.MapCircleNumPoints3D = value),
                 };
 
             foreach ((string key, Func<int> getter, Action<int> setter) in intEntries)
@@ -677,10 +677,10 @@ namespace STROOP.Structs
             List<(string, Func<string>, Action<PositionAngle>)> posAngleEntries =
                 new List<(string, Func<string>, Action<PositionAngle>)>()
                 {
-                    ("Map3DCameraPosPA", () => SpecialConfig.Map3DCameraPosPA.ToString(), (PositionAngle value) => SpecialConfig.Map3DCameraPosPA = value),
-                    ("Map3DCameraAnglePA", () => SpecialConfig.Map3DCameraAnglePA.ToString(), (PositionAngle value) => SpecialConfig.Map3DCameraAnglePA = value),
-                    ("Map3DFocusPosPA", () => SpecialConfig.Map3DFocusPosPA.ToString(), (PositionAngle value) => SpecialConfig.Map3DFocusPosPA = value),
-                    ("Map3DFocusAnglePA", () => SpecialConfig.Map3DFocusAnglePA.ToString(), (PositionAngle value) => SpecialConfig.Map3DFocusAnglePA = value),
+                    ("Map3DCameraPosPA", () => MapConfig.Map3DCameraPosPA.ToString(), (PositionAngle value) => MapConfig.Map3DCameraPosPA = value),
+                    ("Map3DCameraAnglePA", () => MapConfig.Map3DCameraAnglePA.ToString(), (PositionAngle value) => MapConfig.Map3DCameraAnglePA = value),
+                    ("Map3DFocusPosPA", () => MapConfig.Map3DFocusPosPA.ToString(), (PositionAngle value) => MapConfig.Map3DFocusPosPA = value),
+                    ("Map3DFocusAnglePA", () => MapConfig.Map3DFocusAnglePA.ToString(), (PositionAngle value) => MapConfig.Map3DFocusAnglePA = value),
                 };
 
             foreach ((string key, Func<string> getter, Action<PositionAngle> setter) in posAngleEntries)
@@ -701,8 +701,8 @@ namespace STROOP.Structs
             List<(string, Func<string>, Action<string>)> stringEntries =
                 new List<(string, Func<string>, Action<string>)>()
                 {
-                    ("Map3DMode", () => SpecialConfig.Map3DMode.ToString(), (string value) => SpecialConfig.Map3DMode = (Map3DCameraMode)Enum.Parse(typeof(Map3DCameraMode), value, true)),
-                    ("CompassPosition", () => SpecialConfig.CompassPosition.ToString(), (string value) => SpecialConfig.CompassPosition = (CompassPosition)Enum.Parse(typeof(CompassPosition), value, true)),
+                    ("Map3DMode", () => MapConfig.Map3DMode.ToString(), (string value) => MapConfig.Map3DMode = (Map3DCameraMode)Enum.Parse(typeof(Map3DCameraMode), value, true)),
+                    ("CompassPosition", () => MapConfig.CompassPosition.ToString(), (string value) => MapConfig.CompassPosition = (CompassPosition)Enum.Parse(typeof(CompassPosition), value, true)),
                 };
 
             foreach ((string key, Func<string> getter, Action<string> setter) in stringEntries)

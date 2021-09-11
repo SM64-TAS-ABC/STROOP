@@ -47,7 +47,7 @@ namespace STROOP.Map
                 triPoints.Add(new List<(float x, float z)>() { arrow.ArrowHeadPoint, arrow.ArrowHeadCornerLeft, arrow.ArrowHeadCornerRight });
                 triPoints.Add(new List<(float x, float z)>() { arrow.ArrowHeadInnerCornerRight, arrow.ArrowHeadInnerCornerLeft, arrow.ArrowBaseLeft });
                 triPoints.Add(new List<(float x, float z)>() { arrow.ArrowBaseLeft, arrow.ArrowBaseRight, arrow.ArrowHeadInnerCornerRight });
-                triPoints.Add(new List<(float x, float z)>() { arrow.ArrowBaseRight, arrow.ArrowBaseLeft, (SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ) });
+                triPoints.Add(new List<(float x, float z)>() { arrow.ArrowBaseRight, arrow.ArrowBaseLeft, (MapConfig.CompassCenterX, MapConfig.CompassCenterZ) });
             }
             List<List<(float x, float z)>> triPointsForControl =
                 triPoints.ConvertAll(tri => tri.ConvertAll(
@@ -86,7 +86,7 @@ namespace STROOP.Map
             }
 
             // Draw direction labels
-            if (SpecialConfig.CompassShowDirectionText != 0)
+            if (MapConfig.CompassShowDirectionText != 0)
             {
                 List<int> directionTexs = new List<int>() { _texZP, _texXP, _texZM, _texXM };
                 for (int i = 0; i < arrows.Count; i++)
@@ -97,7 +97,7 @@ namespace STROOP.Map
                     (float x, float z) textPosition = arrow.DirectionTextPosition;
                     textPosition = RotatePoint(textPosition.x, textPosition.z);
                     PointF loc = new PointF(textPosition.x, textPosition.z);
-                    SizeF size = new SizeF((int)SpecialConfig.CompassDirectionTextSize, (int)SpecialConfig.CompassDirectionTextSize);
+                    SizeF size = new SizeF((int)MapConfig.CompassDirectionTextSize, (int)MapConfig.CompassDirectionTextSize);
 
                     // Place and rotate texture to correct location on control
                     GL.LoadIdentity();
@@ -119,10 +119,10 @@ namespace STROOP.Map
             }
 
             // Draw angle labels
-            if (SpecialConfig.CompassShowAngleText != 0)
+            if (MapConfig.CompassShowAngleText != 0)
             {
                 List<int> angleTexs =
-                    SpecialConfig.CompassAngleTextSigned != 0 ?
+                    MapConfig.CompassAngleTextSigned != 0 ?
                     new List<int>() { _tex0, _tex16384, _texM32768, _texM16384 } :
                     new List<int>() { _tex0, _tex16384, _tex32768, _tex49152 };
                 for (int i = 0; i < arrows.Count; i++)
@@ -133,7 +133,7 @@ namespace STROOP.Map
                     (float x, float z) textPosition = arrow.AngleTextPosition;
                     textPosition = RotatePoint(textPosition.x, textPosition.z);
                     PointF loc = new PointF(textPosition.x, textPosition.z);
-                    SizeF size = new SizeF((int)SpecialConfig.CompassAngleTextSize, (int)SpecialConfig.CompassAngleTextSize);
+                    SizeF size = new SizeF((int)MapConfig.CompassAngleTextSize, (int)MapConfig.CompassAngleTextSize);
 
                     // Place and rotate texture to correct location on control
                     GL.LoadIdentity();
@@ -160,7 +160,7 @@ namespace STROOP.Map
         private (float x, float z) RotatePoint(float x, float z)
         {
             return ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
-                x, z, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ, -1 * Config.CurrentMapGraphics.MapViewYawValue);
+                x, z, MapConfig.CompassCenterX, MapConfig.CompassCenterZ, -1 * Config.CurrentMapGraphics.MapViewYawValue);
         }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
@@ -345,15 +345,15 @@ namespace STROOP.Map
                 double angleDownLeft = angle + 24576;
                 double angleDownRight = angle - 24576;
 
-                ArrowBaseLeft = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineWidth / Math.Sqrt(2), angleUpLeft, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ);
-                ArrowBaseRight = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineWidth / Math.Sqrt(2), angleUpRight, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ);
-                ArrowHeadInnerCornerLeft = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight, angleUp, ArrowBaseLeft.x, ArrowBaseLeft.z);
-                ArrowHeadInnerCornerRight = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight, angleUp, ArrowBaseRight.x, ArrowBaseRight.z);
-                ArrowHeadCornerLeft = ((float, float))MoreMath.AddVectorToPoint((SpecialConfig.CompassArrowWidth - SpecialConfig.CompassLineWidth) / 2, angleLeft, ArrowHeadInnerCornerLeft.x, ArrowHeadInnerCornerLeft.z);
-                ArrowHeadCornerRight = ((float, float))MoreMath.AddVectorToPoint((SpecialConfig.CompassArrowWidth - SpecialConfig.CompassLineWidth) / 2, angleRight, ArrowHeadInnerCornerRight.x, ArrowHeadInnerCornerRight.z);
-                ArrowHeadPoint = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight + SpecialConfig.CompassArrowHeight, angleUp, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ);
-                DirectionTextPosition = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight + SpecialConfig.CompassArrowHeight * 0.45 + SpecialConfig.CompassDirectionTextPosition, angleUp, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ);
-                AngleTextPosition = ((float, float))MoreMath.AddVectorToPoint(SpecialConfig.CompassLineHeight + SpecialConfig.CompassArrowHeight * 0.45 + SpecialConfig.CompassAngleTextPosition, angleUp, SpecialConfig.CompassCenterX, SpecialConfig.CompassCenterZ);
+                ArrowBaseLeft = ((float, float))MoreMath.AddVectorToPoint(MapConfig.CompassLineWidth / Math.Sqrt(2), angleUpLeft, MapConfig.CompassCenterX, MapConfig.CompassCenterZ);
+                ArrowBaseRight = ((float, float))MoreMath.AddVectorToPoint(MapConfig.CompassLineWidth / Math.Sqrt(2), angleUpRight, MapConfig.CompassCenterX, MapConfig.CompassCenterZ);
+                ArrowHeadInnerCornerLeft = ((float, float))MoreMath.AddVectorToPoint(MapConfig.CompassLineHeight, angleUp, ArrowBaseLeft.x, ArrowBaseLeft.z);
+                ArrowHeadInnerCornerRight = ((float, float))MoreMath.AddVectorToPoint(MapConfig.CompassLineHeight, angleUp, ArrowBaseRight.x, ArrowBaseRight.z);
+                ArrowHeadCornerLeft = ((float, float))MoreMath.AddVectorToPoint((MapConfig.CompassArrowWidth - MapConfig.CompassLineWidth) / 2, angleLeft, ArrowHeadInnerCornerLeft.x, ArrowHeadInnerCornerLeft.z);
+                ArrowHeadCornerRight = ((float, float))MoreMath.AddVectorToPoint((MapConfig.CompassArrowWidth - MapConfig.CompassLineWidth) / 2, angleRight, ArrowHeadInnerCornerRight.x, ArrowHeadInnerCornerRight.z);
+                ArrowHeadPoint = ((float, float))MoreMath.AddVectorToPoint(MapConfig.CompassLineHeight + MapConfig.CompassArrowHeight, angleUp, MapConfig.CompassCenterX, MapConfig.CompassCenterZ);
+                DirectionTextPosition = ((float, float))MoreMath.AddVectorToPoint(MapConfig.CompassLineHeight + MapConfig.CompassArrowHeight * 0.45 + MapConfig.CompassDirectionTextPosition, angleUp, MapConfig.CompassCenterX, MapConfig.CompassCenterZ);
+                AngleTextPosition = ((float, float))MoreMath.AddVectorToPoint(MapConfig.CompassLineHeight + MapConfig.CompassArrowHeight * 0.45 + MapConfig.CompassAngleTextPosition, angleUp, MapConfig.CompassCenterX, MapConfig.CompassCenterZ);
             }
 
             public List<(float x, float z)> GetOutlinePoints()

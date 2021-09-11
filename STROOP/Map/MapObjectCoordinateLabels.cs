@@ -34,21 +34,21 @@ namespace STROOP.Map
             _texes = new Dictionary<(bool isX, double coord), int>();
             _previousOutlineColor = LineColor;
             _previousSize = Size;
-            _previousBoldText = SpecialConfig.CoordinateLabelsBoldText;
+            _previousBoldText = MapConfig.CoordinateLabelsBoldText;
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             double spacing;
-            if (SpecialConfig.CoordinateLabelsCustomSpacing == 0)
+            if (MapConfig.CoordinateLabelsCustomSpacing == 0)
             {
-                double totalMultiplies = SpecialConfig.CoordinateLabelsLabelDensity / Config.CurrentMapGraphics.MapViewScaleValue;
+                double totalMultiplies = MapConfig.CoordinateLabelsLabelDensity / Config.CurrentMapGraphics.MapViewScaleValue;
                 double numMultiplies = (int)Math.Ceiling(Math.Log(totalMultiplies) / Math.Log(2));
                 spacing = Math.Pow(2, numMultiplies);
             }
             else
             {
-                spacing = SpecialConfig.CoordinateLabelsCustomSpacing;
+                spacing = MapConfig.CoordinateLabelsCustomSpacing;
             }
 
             int xMinMultiplier = (int)(Config.CurrentMapGraphics.MapViewXMin / spacing) - 1;
@@ -67,13 +67,13 @@ namespace STROOP.Map
                 return isP1Winner ? points.p1 : points.p2;
             }
 
-            if (SpecialConfig.CoordinateLabelsShowXLabels == 1)
+            if (MapConfig.CoordinateLabelsShowXLabels == 1)
             {
                 for (double x = xMinMultiplier * spacing; x <= xMaxMultiplier * spacing; x += spacing)
                 {
-                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, (float)x, (float)SpecialConfig.CoordinateLabelsMargin);
+                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, (float)x, (float)MapConfig.CoordinateLabelsMargin);
                     if (!intersectionPoints.HasValue) continue;
-                    (float g, float z) = getSuperlativePoint(false, SpecialConfig.CoordinateLabelsUseHighZ == 1, intersectionPoints.Value);
+                    (float g, float z) = getSuperlativePoint(false, MapConfig.CoordinateLabelsUseHighZ == 1, intersectionPoints.Value);
                     (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView((float)x, z);
                     float angle = -1 * Config.CurrentMapGraphics.MapViewYawValue + 16384;
                     if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
@@ -83,13 +83,13 @@ namespace STROOP.Map
                 }
             }
 
-            if (SpecialConfig.CoordinateLabelsShowZLabels == 1)
+            if (MapConfig.CoordinateLabelsShowZLabels == 1)
             {
                 for (double z = zMinMultiplier * spacing; z <= zMaxMultiplier * spacing; z += spacing)
                 {
-                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, (float)z, (float)SpecialConfig.CoordinateLabelsMargin);
+                    ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, (float)z, (float)MapConfig.CoordinateLabelsMargin);
                     if (!intersectionPoints.HasValue) continue;
-                    (float x, float g) = getSuperlativePoint(true, SpecialConfig.CoordinateLabelsUseHighX == 1, intersectionPoints.Value);
+                    (float x, float g) = getSuperlativePoint(true, MapConfig.CoordinateLabelsUseHighX == 1, intersectionPoints.Value);
                     (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, (float)z);
                     float angle = -1 * Config.CurrentMapGraphics.MapViewYawValue + 32768;
                     if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
@@ -104,7 +104,7 @@ namespace STROOP.Map
                 MapUtilities.DrawTexture(tex, new PointF(x, z), new SizeF(Size, Size), angle, Opacity);
             }
 
-            if (SpecialConfig.CoordinateLabelsShowCursorPos == 1)
+            if (MapConfig.CoordinateLabelsShowCursorPos == 1)
             {
                 Point relPos = Config.MapGui.CurrentControl.PointToClient(Cursor.Position);
                 (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
@@ -160,7 +160,7 @@ namespace STROOP.Map
             Bitmap bmp = new Bitmap(size, size, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
             Graphics gfx = Graphics.FromImage(bmp);
             gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            Font drawFont = new Font("Arial", size / 6, SpecialConfig.CoordinateLabelsBoldText == 1 ? FontStyle.Bold : FontStyle.Regular);
+            Font drawFont = new Font("Arial", size / 6, MapConfig.CoordinateLabelsBoldText == 1 ? FontStyle.Bold : FontStyle.Regular);
             SolidBrush drawBrush = new SolidBrush(LineColor);
             SizeF stringSize = gfx.MeasureString(text, drawFont);
             gfx.DrawString(text, drawFont, drawBrush, new PointF(size / 2 - stringSize.Width / 2, size / 2 - stringSize.Height / 2));
@@ -310,9 +310,9 @@ namespace STROOP.Map
                 _texes.Clear();
             }
 
-            if (SpecialConfig.CoordinateLabelsBoldText != _previousBoldText)
+            if (MapConfig.CoordinateLabelsBoldText != _previousBoldText)
             {
-                _previousBoldText = SpecialConfig.CoordinateLabelsBoldText;
+                _previousBoldText = MapConfig.CoordinateLabelsBoldText;
                 _texes.Clear();
             }
         }
