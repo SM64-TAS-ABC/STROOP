@@ -94,7 +94,10 @@ namespace STROOP.Map
             }
 
             List<ToolStripItem> output = new List<ToolStripItem>();
-            List<double> posValues = new List<double>() { X, Z };
+            List<double> posValues =
+                Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked
+                    ? new List<double>() { X, Y, Z }
+                    : new List<double>() { X, Z };
             ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Clicked Position");
             output.Insert(0, copyPositionItem);
             return output;
