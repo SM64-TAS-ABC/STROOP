@@ -73,8 +73,17 @@ namespace STROOP.Map
             Point? relPosMaybe = GetPositionMaybe();
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
-            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
-            return new MapObjectHoverData(null, inGameX, 0, inGameZ);
+            float inGameX, inGameY, inGameZ;
+            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+            {
+                (inGameX, inGameY, inGameZ) = MapUtilities.ConvertCoordsForInGameOrthographicView(relPos.X, relPos.Y);
+            }
+            else
+            {
+                (inGameX, inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+                inGameY = 0;
+            }
+            return new MapObjectHoverData(null, inGameX, inGameY, inGameZ);
         }
 
         public List<ToolStripItem> GetContextMenuStripItems()

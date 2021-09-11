@@ -130,6 +130,32 @@ namespace STROOP.Map
             return (centerH, centerV);
         }
 
+        /** Takes in control coordinates, outputs in-game coordinates. */
+        public static (float x, float y, float z) ConvertCoordsForInGameOrthographicView(float x, float z)
+        {
+            if (Config.CurrentMapGraphics.MapViewPitchValue != 0)
+            {
+                return (0, 0, 0);
+            }
+            if (Config.CurrentMapGraphics.MapViewYawValue != 0 &&
+                Config.CurrentMapGraphics.MapViewYawValue != 16384 &&
+                Config.CurrentMapGraphics.MapViewYawValue != 32768 &&
+                Config.CurrentMapGraphics.MapViewYawValue != 49152)
+            {
+                return (0, 0, 0);
+            }
+
+            float hOffset = x - Config.MapGui.CurrentControl.Width / 2;
+            float vOffset = z - Config.MapGui.CurrentControl.Height / 2;
+            float hOffsetScaled = hOffset / Config.CurrentMapGraphics.MapViewScaleValue;
+            float vOffsetScaled = vOffset / Config.CurrentMapGraphics.MapViewScaleValue;
+            double angleRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewYawValue);
+            float inGameX = Config.CurrentMapGraphics.MapViewCenterXValue - (float)Math.Cos(angleRadians) * hOffsetScaled;
+            float inGameY = Config.CurrentMapGraphics.MapViewCenterYValue - vOffsetScaled;
+            float inGameZ = Config.CurrentMapGraphics.MapViewCenterZValue + (float)Math.Sin(angleRadians) * hOffsetScaled;
+            return (inGameX, inGameY, inGameZ);
+        }
+
         /** Takes in in-game coordinates, outputs control coordinates. */
         public static (float x, float y, float z) ConvertCoordsForControlTopDownView(float x, float y, float z)
         {
