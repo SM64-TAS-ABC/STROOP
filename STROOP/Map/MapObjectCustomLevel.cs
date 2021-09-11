@@ -45,13 +45,13 @@ namespace STROOP.Map
                 mapLayouts.ForEach(mapLayout => mapLayoutChoices.Add(mapLayout));
                 mapLayoutChoices.ForEach(mapLayout => _dictionary[mapLayout.ToString()] = mapLayout);
 
-                ToolStripMenuItem itemSelectMap = new ToolStripMenuItem("Select Map");
+                ToolStripMenuItem itemSelectMap = new ToolStripMenuItem("Select Level");
                 itemSelectMap.Click += (sender, e) =>
                 {
                     SelectionForm form = new SelectionForm();
                     form.Initialize(
-                        "Select a Map",
-                        "Set Map",
+                        "Select a Level",
+                        "Set Level",
                         mapLayoutChoices,
                         mapLayoutChoice =>
                         {
