@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
@@ -918,6 +919,17 @@ namespace STROOP.Ttc
                 List<int> pendulumState = dictionary[frame];
             }
             InfoForm.ShowValue(string.Join("\r\n", outputLines));
+        }
+
+        public XElement ToXml()
+        {
+            XElement xElement = new XElement("TtcState");
+            xElement.Add(_rng.ToXml());
+            foreach (TtcObject obj in _rngObjects)
+            {
+                xElement.Add(obj.ToXml());
+            }
+            return xElement;
         }
     }
 }

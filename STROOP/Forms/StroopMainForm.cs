@@ -20,6 +20,7 @@ using STROOP.Structs.Gui;
 using STROOP.Map;
 using System.IO;
 using System.Xml.Linq;
+using STROOP.Ttc;
 
 namespace STROOP
 {
@@ -143,6 +144,7 @@ namespace STROOP
                     "Show Skribblio Words",
                     "Show Image Form",
                     "Show Coin Ring Display Form",
+                    "Copy TTC XML",
                     "Test Something",
                     "Test Something Else",
                     "Format Subtitles",
@@ -201,6 +203,12 @@ namespace STROOP
                     {
                         CoinRingDisplayForm form = new CoinRingDisplayForm();
                         form.Show();
+                    },
+                    () =>
+                    {
+                        TtcSimulation simulation = new TtcSimulation();
+                        XElement xml = simulation.ToXml();
+                        Clipboard.SetText(xml.ToString());
                     },
                     () => TestUtilities.TestSomething(),
                     () => TestUtilities.TestSomethingElse(),

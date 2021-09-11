@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
@@ -88,6 +89,13 @@ namespace STROOP.Ttc
         public override string ToString()
         {
             return string.Format("Rng({0})[{1}]", GetRng(), GetIndex());
+        }
+
+        public XElement ToXml()
+        {
+            XElement xElement = new XElement("TtcRng");
+            xElement.Add(new XAttribute("value", GetRng()));
+            return xElement;
         }
     }
 
