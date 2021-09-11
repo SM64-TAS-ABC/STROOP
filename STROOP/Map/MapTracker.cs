@@ -303,8 +303,8 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemFloorTriangles = new ToolStripMenuItem("Add Tracker for Floor Triangles");
-            itemFloorTriangles.Click += (sender, e) =>
+            ToolStripMenuItem itemFloorTris = new ToolStripMenuItem("Add Tracker for Floor Tris");
+            itemFloorTris.Click += (sender, e) =>
             {
                 List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
@@ -318,8 +318,8 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemWallTriangles = new ToolStripMenuItem("Add Tracker for Wall Triangles");
-            itemWallTriangles.Click += (sender, e) =>
+            ToolStripMenuItem itemWallTris = new ToolStripMenuItem("Add Tracker for Wall Tris");
+            itemWallTris.Click += (sender, e) =>
             {
                 List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
@@ -333,8 +333,8 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemCeilingTriangles = new ToolStripMenuItem("Add Tracker for Ceiling Triangles");
-            itemCeilingTriangles.Click += (sender, e) =>
+            ToolStripMenuItem itemCeilingTris = new ToolStripMenuItem("Add Tracker for Ceiling Tris");
+            itemCeilingTris.Click += (sender, e) =>
             {
                 List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
                 {
@@ -728,9 +728,9 @@ namespace STROOP.Map
             itemHomeContainer.DropDownItems.Add(itemCustomSphereForHome);
 
             ToolStripMenuItem itemTriangles = new ToolStripMenuItem("Triangles...");
-            itemTriangles.DropDownItems.Add(itemFloorTriangles);
-            itemTriangles.DropDownItems.Add(itemWallTriangles);
-            itemTriangles.DropDownItems.Add(itemCeilingTriangles);
+            itemTriangles.DropDownItems.Add(itemFloorTris);
+            itemTriangles.DropDownItems.Add(itemWallTris);
+            itemTriangles.DropDownItems.Add(itemCeilingTris);
 
             ToolStripMenuItem itemArrow = new ToolStripMenuItem("Arrow...");
             itemArrow.DropDownItems.Add(itemMarioFacingArrow);
