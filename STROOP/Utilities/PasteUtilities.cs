@@ -20,6 +20,7 @@ namespace STROOP.Utilities
             for (int i = 0; i < varList.Count; i++)
             {
                 varList[i].SetValue(stringList[i % stringList.Count]);
+                varList[i].FlashColor(WatchVariableControl.PASTE_COLOR);
             }
             Config.Stream.Resume();
         }

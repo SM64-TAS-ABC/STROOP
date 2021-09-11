@@ -51,6 +51,7 @@ namespace STROOP.Controls
         public static readonly Color REORDER_RESET_COLOR = Color.Black;
         public static readonly Color ADD_TO_VAR_HACK_TAB_COLOR = Color.SandyBrown;
         public static readonly Color COPY_COLOR = Color.LightBlue;
+        public static readonly Color PASTE_COLOR = Color.Yellow;
         public static readonly Color SELECTED_COLOR = Color.FromArgb(51, 153, 255);
         private static readonly int FLASH_DURATION_MS = 1000;
 

@@ -125,7 +125,11 @@ namespace STROOP.Controls
             };
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
-            itemPaste.Click += (sender, e) => _watchVarControl.SetValue(Clipboard.GetText());
+            itemPaste.Click += (sender, e) =>
+            {
+                _watchVarControl.SetValue(Clipboard.GetText());
+                _watchVarControl.FlashColor(WatchVariableControl.PASTE_COLOR);
+            };
 
             _contextMenuStrip.AddToBeginningList(_itemHighlight);
             _contextMenuStrip.AddToBeginningList(_itemLock);
