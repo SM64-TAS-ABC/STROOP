@@ -137,13 +137,6 @@ namespace STROOP.Map
             {
                 return (0, 0, 0);
             }
-            if (Config.CurrentMapGraphics.MapViewYawValue != 0 &&
-                Config.CurrentMapGraphics.MapViewYawValue != 16384 &&
-                Config.CurrentMapGraphics.MapViewYawValue != 32768 &&
-                Config.CurrentMapGraphics.MapViewYawValue != 49152)
-            {
-                return (0, 0, 0);
-            }
 
             float hOffset = x - Config.MapGui.CurrentControl.Width / 2;
             float vOffset = z - Config.MapGui.CurrentControl.Height / 2;
