@@ -12,9 +12,9 @@ using OpenTK;
 
 namespace STROOP.Map
 {
-    public abstract class MapObjectMap : MapObjectIconRectangle
+    public abstract class MapObjectLevel : MapObjectIconRectangle
     {
-        public MapObjectMap()
+        public MapObjectLevel()
             : base()
         {
             InternalRotates = true;

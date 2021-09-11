@@ -25,7 +25,7 @@ namespace STROOP.Managers
 
         private ContextMenuStrip _contextMenuStrip;
 
-        private MapObjectCurrentMap _defaulMapObjectCurrentMap;
+        private MapObjectCurrentLevel _defaulMapObjectCurrentMap;
         private MapObjectCurrentBackground _defaulMapObjectCurrentBackground;
         private MapObjectHitboxHackTriangle _defaulMapObjectHitboxHackTriangle;
 
@@ -84,7 +84,7 @@ namespace STROOP.Managers
             _contextMenuStrip.Closed += (sender, e) => OnContextMenuStripClosed();
 
             // FlowLayoutPanel
-            _defaulMapObjectCurrentMap = new MapObjectCurrentMap();
+            _defaulMapObjectCurrentMap = new MapObjectCurrentLevel();
             _defaulMapObjectCurrentBackground = new MapObjectCurrentBackground();
             _defaulMapObjectHitboxHackTriangle = new MapObjectHitboxHackTriangle(true);
             Config.MapGui.flowLayoutPanelMapTrackers.Initialize(
@@ -310,10 +310,10 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemCustomMap = new ToolStripMenuItem("Add Tracker for Custom Map");
-            itemCustomMap.Click += (sender, e) =>
+            ToolStripMenuItem itemCustomLevel = new ToolStripMenuItem("Add Tracker for Custom Level");
+            itemCustomLevel.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapObjectCustomMap();
+                MapObject mapObj = new MapObjectCustomLevel();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -500,9 +500,9 @@ namespace STROOP.Managers
             itemGridlines.DropDownItems.Add(itemPuGridlines);
             itemGridlines.DropDownItems.Add(itemCustomGridlines);
 
-            ToolStripMenuItem itemMap = new ToolStripMenuItem("Map...");
-            itemMap.DropDownItems.Add(itemCustomMap);
-            itemMap.DropDownItems.Add(itemCustomBackground);
+            ToolStripMenuItem itemLevel = new ToolStripMenuItem("Level...");
+            itemLevel.DropDownItems.Add(itemCustomLevel);
+            itemLevel.DropDownItems.Add(itemCustomBackground);
 
             ToolStripMenuItem itemMarioPositions = new ToolStripMenuItem("Mario Positions...");
             itemMarioPositions.DropDownItems.Add(itemIwerlipses);
@@ -533,7 +533,7 @@ namespace STROOP.Managers
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemTriangles);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemPoints);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemGridlines);
-            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMap);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemLevel);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMarioPositions);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMarioMove);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMisc);

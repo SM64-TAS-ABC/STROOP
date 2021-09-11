@@ -12,9 +12,9 @@ using OpenTK;
 
 namespace STROOP.Map
 {
-    public class MapObjectCurrentMap : MapObjectMap
+    public class MapObjectCurrentLevel : MapObjectLevel
     {
-        public MapObjectCurrentMap()
+        public MapObjectCurrentLevel()
             : base()
         {
         }
@@ -26,7 +26,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Current Map";
+            return "Current Level";
         }
     }
 }

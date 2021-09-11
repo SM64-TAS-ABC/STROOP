@@ -501,7 +501,7 @@
     <Compile Include="Map\MapObjectCUpFloor.cs" />
     <Compile Include="Map\MapObjectPreviousPositions.cs" />
     <Compile Include="Map\MapObjectArrow.cs" />
-    <Compile Include="Map\MapObjectMap.cs" />
+    <Compile Include="Map\MapObjectLevel.cs" />
     <Compile Include="Map\MapDrawType.cs" />
     <Compile Include="Map\MapObjectAggregatedPath.cs" />
     <Compile Include="Map\MapObjectPathSegment.cs" />
@@ -519,7 +519,7 @@
     <Compile Include="Map\MapObjectLevelFloor.cs" />
     <Compile Include="Map\MapObjectLevelTriangleInterface.cs" />
     <Compile Include="Map\MapObjectLevelWall.cs" />
-    <Compile Include="Map\MapObjectCustomMap.cs" />
+    <Compile Include="Map\MapObjectCustomLevel.cs" />
     <Compile Include="Map\MapObjectPath.cs" />
     <Compile Include="Map\MapObjectCustomCeiling.cs" />
     <Compile Include="Map\MapObjectCustomWall.cs" />
@@ -558,7 +558,7 @@
     <Compile Include="Map\MapObjectHoverData.cs" />
     <Compile Include="Map\MapUtilities.cs" />
     <Compile Include="Map\MapObjectHorizontalTriangle.cs" />
-    <Compile Include="Map\MapObjectCurrentMap.cs" />
+    <Compile Include="Map\MapObjectCurrentLevel.cs" />
     <Compile Include="Map\MapObjectIconRectangle.cs" />
     <Compile Include="Map\MapObjectIconPoint.cs" />
     <Compile Include="Map\MapObjectHolp.cs" />

@@ -14,12 +14,12 @@ using STROOP.Forms;
 
 namespace STROOP.Map
 {
-    public class MapObjectCustomMap : MapObjectMap
+    public class MapObjectCustomLevel : MapObjectLevel
     {
         private readonly Dictionary<string, object> _dictionary;
         private object _mapLayoutChoice;
 
-        public MapObjectCustomMap()
+        public MapObjectCustomLevel()
             : base()
         {
             _dictionary = new Dictionary<string, object>();
@@ -33,7 +33,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Custom Map";
+            return "Custom Level";
         }
 
         public override ContextMenuStrip GetContextMenuStrip()

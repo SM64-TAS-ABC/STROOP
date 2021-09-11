@@ -306,8 +306,8 @@ namespace STROOP.Map
                 case "MapObjectCurrentCell":
                     mapObject = new MapObjectCurrentCell(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
-                case "MapObjectCurrentMap":
-                    mapObject = new MapObjectCurrentMap();
+                case "MapObjectCurrentLevel":
+                    mapObject = new MapObjectCurrentLevel();
                     break;
                 case "MapObjectCurrentUnit":
                     mapObject = new MapObjectCurrentUnit(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
@@ -333,8 +333,8 @@ namespace STROOP.Map
                 case "MapObjectCustomIconPoints":
                     mapObject = MapObjectCustomIconPoints.Create(xElement.Attribute(XName.Get("points")).Value, true);
                     break;
-                case "MapObjectCustomMap":
-                    mapObject = new MapObjectCustomMap();
+                case "MapObjectCustomLevel":
+                    mapObject = new MapObjectCustomLevel();
                     break;
                 case "MapObjectCustomPositionAngle":
                     mapObject = new MapObjectCustomPositionAngle(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
