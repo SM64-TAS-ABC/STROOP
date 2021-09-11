@@ -686,12 +686,29 @@ namespace STROOP.Map
             return Config.MapGui.checkBoxMapOptionsReverseDragging.Checked ? -1 * value : value;
         }
 
+        private static string GetNumberWithCommas(int number)
+        {
+            string numberString = number.ToString();
+            int count = 0;
+            string outputString = "";
+            for (int i = numberString.Length - 1; i >= 0; i--)
+            {
+                if (count > 0 && count % 3 == 0)
+                {
+                    outputString = "," + outputString;
+                }
+                outputString = numberString.Substring(i, 1) + outputString;
+                count++;
+            }
+            return outputString;
+        }
+
         public static void CreateTrackBarContextMenuStrip(TrackBarEx trackBar, Func<double> getterFunction)
         {
             List<int> maxValues = Enumerable.Range(1, 9).ToList().ConvertAll(p => (int)Math.Pow(10, p));
             trackBar.ContextMenuStrip = new ContextMenuStrip();
             List<ToolStripMenuItem> items = maxValues.ConvertAll(
-                maxValue => new ToolStripMenuItem("Max of " + maxValue));
+                maxValue => new ToolStripMenuItem("Max of " + GetNumberWithCommas(maxValue)));
             for (int i = 0; i < items.Count; i++)
             {
                 int maxValue = maxValues[i];
