@@ -19,8 +19,8 @@ namespace STROOP.Utilities
             Config.Stream.Suspend();
             for (int i = 0; i < varList.Count; i++)
             {
-                varList[i].SetValue(stringList[i % stringList.Count]);
-                varList[i].FlashColor(WatchVariableControl.PASTE_COLOR);
+                bool success = varList[i].SetValue(stringList[i % stringList.Count]);
+                varList[i].FlashColor(success ? WatchVariableControl.PASTE_COLOR : WatchVariableControl.FAILURE_COLOR);
             }
             Config.Stream.Resume();
         }
