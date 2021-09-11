@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
@@ -84,6 +85,14 @@ namespace STROOP.Ttc
         public override List<object> GetFields()
         {
             return new List<object>() { _blinkingTimer, _withinMarioRange };
+        }
+
+        public override XElement ToXml()
+        {
+            XElement xElement = new XElement("TtcBobomb");
+            xElement.Add(new XAttribute("_blinkingTimer", _blinkingTimer));
+            xElement.Add(new XAttribute("_withinMarioRange", _withinMarioRange));
+            return xElement;
         }
 
         public override void ApplyToAddress(uint address)

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
@@ -77,6 +78,15 @@ namespace STROOP.Ttc
         public override List<object> GetFields()
         {
             return new List<object>() { _angle, _currentAngularVelocity, _targetAngularVelocity };
+        }
+
+        public override XElement ToXml()
+        {
+            XElement xElement = new XElement("TtcCog");
+            xElement.Add(new XAttribute("_angle", _angle));
+            xElement.Add(new XAttribute("_currentAngularVelocity", _currentAngularVelocity));
+            xElement.Add(new XAttribute("_targetAngularVelocity", _targetAngularVelocity));
+            return xElement;
         }
 
         public override void ApplyToAddress(uint address)

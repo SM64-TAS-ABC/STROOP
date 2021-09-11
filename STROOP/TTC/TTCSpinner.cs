@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
@@ -90,6 +91,16 @@ namespace STROOP.Ttc
         public override List<object> GetFields()
         {
             return new List<object>() { _angle, _direction, _timerMax, _timer };
+        }
+
+        public override XElement ToXml()
+        {
+            XElement xElement = new XElement("TtcSpinner");
+            xElement.Add(new XAttribute("_angle", _angle));
+            xElement.Add(new XAttribute("_direction", _direction));
+            xElement.Add(new XAttribute("_timerMax", _timerMax));
+            xElement.Add(new XAttribute("_timer", _timer));
+            return xElement;
         }
 
         public override void ApplyToAddress(uint address)

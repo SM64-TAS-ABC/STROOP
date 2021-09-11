@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
@@ -95,6 +96,17 @@ namespace STROOP.Ttc
             {
                 _accelerationDirection, _angle, _angularVelocity, _accelerationMagnitude, _waitingTimer
             };
+        }
+
+        public override XElement ToXml()
+        {
+            XElement xElement = new XElement("TtcPendulum2");
+            xElement.Add(new XAttribute("_accelerationDirection", _accelerationDirection));
+            xElement.Add(new XAttribute("_angle", _angle));
+            xElement.Add(new XAttribute("_angularVelocity", _angularVelocity));
+            xElement.Add(new XAttribute("_accelerationMagnitude", _accelerationMagnitude));
+            xElement.Add(new XAttribute("_waitingTimer", _waitingTimer));
+            return xElement;
         }
 
         public int GetAmplitude()

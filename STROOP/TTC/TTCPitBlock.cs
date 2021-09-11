@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
@@ -102,6 +103,17 @@ namespace STROOP.Ttc
             {
                 _height, _verticalSpeed, _direction, _timerMax, _timer
             };
+        }
+
+        public override XElement ToXml()
+        {
+            XElement xElement = new XElement("TtcPitBlock");
+            xElement.Add(new XAttribute("_height", _height));
+            xElement.Add(new XAttribute("_verticalSpeed", _verticalSpeed));
+            xElement.Add(new XAttribute("_direction", _direction));
+            xElement.Add(new XAttribute("_timerMax", _timerMax));
+            xElement.Add(new XAttribute("_timer", _timer));
+            return xElement;
         }
 
         public override void ApplyToAddress(uint address)

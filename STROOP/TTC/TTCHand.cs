@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
@@ -122,6 +123,18 @@ namespace STROOP.Ttc
             {
                 _angle, _timerMax, _targetAngle, _displacement, _directionCountdown, _timer
             };
+        }
+
+        public override XElement ToXml()
+        {
+            XElement xElement = new XElement("TtcHand");
+            xElement.Add(new XAttribute("_angle", _angle));
+            xElement.Add(new XAttribute("_timerMax", _timerMax));
+            xElement.Add(new XAttribute("_targetAngle", _targetAngle));
+            xElement.Add(new XAttribute("_displacement", _displacement));
+            xElement.Add(new XAttribute("_directionCountdown", _directionCountdown));
+            xElement.Add(new XAttribute("_timer", _timer));
+            return xElement;
         }
 
         public override void ApplyToAddress(uint address)

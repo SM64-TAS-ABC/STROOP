@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
@@ -98,6 +99,17 @@ namespace STROOP.Ttc
         public override List<object> GetFields()
         {
             return new List<object>() { _subType, _currentSpeed, _targetSpeed, _timerMax, _timer };
+        }
+
+        public override XElement ToXml()
+        {
+            XElement xElement = new XElement("TtcTreadmill");
+            xElement.Add(new XAttribute("_subType", _subType));
+            xElement.Add(new XAttribute("_currentSpeed", _currentSpeed));
+            xElement.Add(new XAttribute("_targetSpeed", _targetSpeed));
+            xElement.Add(new XAttribute("_timerMax", _timerMax));
+            xElement.Add(new XAttribute("_timer", _timer));
+            return xElement;
         }
 
         public override void ApplyToAddress(uint address)

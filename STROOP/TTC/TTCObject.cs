@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
@@ -45,6 +46,8 @@ namespace STROOP.Ttc
         public override abstract string ToString();
 
         public abstract List<object> GetFields();
+
+        public abstract XElement ToXml();
 
         public int GetNumFields()
         {

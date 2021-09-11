@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
@@ -65,6 +66,12 @@ namespace STROOP.Ttc
         public override List<object> GetFields()
         {
             return new List<object>() { };
+        }
+
+        public override XElement ToXml()
+        {
+            XElement xElement = new XElement("TtcDust");
+            return xElement;
         }
 
         public override TtcObject Clone(TtcRng rng)

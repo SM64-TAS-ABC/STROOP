@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
@@ -53,6 +54,14 @@ namespace STROOP.Ttc
         public override List<object> GetFields()
         {
             return new List<object>() { _state, _angle };
+        }
+
+        public override XElement ToXml()
+        {
+            XElement xElement = new XElement("TtcAmp");
+            xElement.Add(new XAttribute("_state", _state));
+            xElement.Add(new XAttribute("_angle", _angle));
+            return xElement;
         }
 
         public override void ApplyToAddress(uint address)
