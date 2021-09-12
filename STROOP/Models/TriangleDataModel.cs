@@ -54,7 +54,8 @@ namespace STROOP.Models
         public readonly double SlopeDecelValue;
         public readonly bool Exertion;
 
-        public readonly static List<string> FieldNameList = new List<string> {
+        public readonly static List<string> FieldNameList =
+            new List<string> {
                 "Address",
                 "Classification",
                 "SurfaceType",
@@ -292,6 +293,21 @@ namespace STROOP.Models
         public double GetMidpointZ()
         {
             return (GetMinZ() + GetMaxZ()) / 2.0;
+        }
+
+        public (int x, int y, int z) GetP1()
+        {
+            return (X1, Y1, Z1);
+        }
+
+        public (int x, int y, int z) GetP2()
+        {
+            return (X2, Y2, Z2);
+        }
+
+        public (int x, int y, int z) GetP3()
+        {
+            return (X3, Y3, Z3);
         }
 
         public List<(float x, float z)> Get2DVertices()
