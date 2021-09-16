@@ -23,6 +23,9 @@ namespace STROOP.Map
         private TriangleListForm _triangleListForm;
         private bool _autoUpdate;
         private int _numLevelTris;
+        private bool _useCurrentCellTris;
+
+        private ToolStripMenuItem _itemUseCurrentCellTris;
 
         public MapObjectLevelCeiling()
             : base()
@@ -34,10 +37,16 @@ namespace STROOP.Map
             _triangleListForm = null;
             _autoUpdate = true;
             _numLevelTris = _triAddressList.Count;
+            _useCurrentCellTris = false;
         }
 
         protected override List<TriangleDataModel> GetUnfilteredTriangles()
         {
+            if (_useCurrentCellTris)
+            {
+                return MapUtilities.GetTriangles(
+                    CellUtilities.GetTriangleAddressesInMarioCell(true, TriangleClassification.Ceiling));
+            }
             return MapUtilities.GetTriangles(_triAddressList);
         }
 
@@ -79,12 +88,21 @@ namespace STROOP.Map
                     _triangleListForm.Show();
                 };
 
+                _itemUseCurrentCellTris = new ToolStripMenuItem("Use Current Cell Tris");
+                _itemUseCurrentCellTris.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeUseCurrentCellTris: true, newUseCurrentCellTris: !_useCurrentCellTris);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemAutoUpdate);
                 _contextMenuStrip.Items.Add(itemReset);
                 _contextMenuStrip.Items.Add(itemRemoveCurrentTri);
                 _contextMenuStrip.Items.Add(itemShowTriData);
                 _contextMenuStrip.Items.Add(itemOpenForm);
+                _contextMenuStrip.Items.Add(_itemUseCurrentCellTris);
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetHorizontalTriangleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
@@ -139,6 +157,17 @@ namespace STROOP.Map
         public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.TriangleCeilingImage;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeUseCurrentCellTris)
+            {
+                _useCurrentCellTris = settings.NewUseCurrentCellTris;
+                _itemUseCurrentCellTris.Checked = settings.NewUseCurrentCellTris;
+            }
         }
     }
 }
