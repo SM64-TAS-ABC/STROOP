@@ -49,6 +49,9 @@ namespace STROOP.Map
         public readonly bool ChangeWallAbsoluteHeight;
         public readonly float? NewWallAbsoluteHeight;
 
+        public readonly bool ChangeUseCurrentCellTris;
+        public readonly bool NewUseCurrentCellTris;
+
         public readonly bool ChangeArrowUseRecommendedLength;
         public readonly bool NewArrowUseRecommendedLength;
 
@@ -179,6 +182,9 @@ namespace STROOP.Map
             bool changeWallAbsoluteHeight = false,
             float? newWallAbsoluteHeight = null,
 
+            bool changeUseCurrentCellTris = false,
+            bool newUseCurrentCellTris = false,
+
             bool changeArrowUseRecommendedLength = false,
             bool newArrowUseRecommendedLength = false,
 
@@ -307,6 +313,9 @@ namespace STROOP.Map
 
             ChangeWallAbsoluteHeight = changeWallAbsoluteHeight;
             NewWallAbsoluteHeight = newWallAbsoluteHeight;
+
+            ChangeUseCurrentCellTris = changeUseCurrentCellTris;
+            NewUseCurrentCellTris = newUseCurrentCellTris;
 
             ChangeArrowUseRecommendedLength = changeArrowUseRecommendedLength;
             NewArrowUseRecommendedLength = newArrowUseRecommendedLength;
