@@ -20,8 +20,10 @@ namespace STROOP.Map
     {
         private readonly List<TriangleDataModel> _tris;
         private bool _autoUpdate;
+        private bool _useCurrentCellTris;
 
         private ToolStripMenuItem _itemAutoUpdate;
+        private ToolStripMenuItem _itemUseCurrentCellTris;
 
         public MapObjectAllObjectCeiling()
             : base()
@@ -29,10 +31,16 @@ namespace STROOP.Map
             _tris = TriangleUtilities.GetObjectTriangles()
                 .FindAll(tri => tri.IsCeiling());
             _autoUpdate = true;
+            _useCurrentCellTris = false;
         }
 
         protected override List<TriangleDataModel> GetUnfilteredTriangles()
         {
+            if (_useCurrentCellTris)
+            {
+                return MapUtilities.GetTriangles(
+                    CellUtilities.GetTriangleAddressesInMarioCell(false, TriangleClassification.Ceiling));
+            }
             return _tris;
         }
 
@@ -49,8 +57,17 @@ namespace STROOP.Map
                 };
                 _itemAutoUpdate.Checked = _autoUpdate;
 
+                _itemUseCurrentCellTris = new ToolStripMenuItem("Use Current Cell Tris");
+                _itemUseCurrentCellTris.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeUseCurrentCellTris: true, newUseCurrentCellTris: !_useCurrentCellTris);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(_itemAutoUpdate);
+                _contextMenuStrip.Items.Add(_itemUseCurrentCellTris);
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetHorizontalTriangleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
@@ -68,6 +85,12 @@ namespace STROOP.Map
             {
                 _autoUpdate = settings.NewAutoUpdate;
                 _itemAutoUpdate.Checked = settings.NewAutoUpdate;
+            }
+
+            if (settings.ChangeUseCurrentCellTris)
+            {
+                _useCurrentCellTris = settings.NewUseCurrentCellTris;
+                _itemUseCurrentCellTris.Checked = settings.NewUseCurrentCellTris;
             }
         }
 
