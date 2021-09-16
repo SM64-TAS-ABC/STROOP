@@ -187,5 +187,39 @@ namespace STROOP.Structs
             int cellZ = ((z + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
             return (cellX, cellZ);
         }
+
+        public static List<uint> GetTriangleAddressesInCell(int cellX, int cellZ, bool staticPartition, TriangleClassification classification)
+        {
+            uint partitionAddress = staticPartition ? TriangleConfig.StaticTrianglePartitionAddress : TriangleConfig.DynamicTrianglePartitionAddress;
+            int typeInt;
+            switch (classification)
+            {
+                case TriangleClassification.Wall:
+                    typeInt = 2;
+                    break;
+                case TriangleClassification.Floor:
+                    typeInt = 0;
+                    break;
+                case TriangleClassification.Ceiling:
+                    typeInt = 1;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            int typeSize = 2 * 4;
+            int xSize = 3 * typeSize;
+            int zSize = 16 * xSize;
+            uint address = (uint)(partitionAddress + cellZ * zSize + cellX * xSize + typeInt * typeSize);
+            address = Config.Stream.GetUInt(address);
+
+            List<uint> output = new List<uint>();
+            while (address != 0)
+            {
+                uint triAddress = Config.Stream.GetUInt(address + 4);
+                output.Add(triAddress);
+                address = Config.Stream.GetUInt(address);
+            }
+            return output;
+        }
     }
 }
