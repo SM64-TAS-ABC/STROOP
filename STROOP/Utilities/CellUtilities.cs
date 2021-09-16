@@ -188,6 +188,12 @@ namespace STROOP.Structs
             return (cellX, cellZ);
         }
 
+        public static List<uint> GetTriangleAddressesInMarioCell(bool staticPartition, TriangleClassification classification)
+        {
+            (int cellX, int cellZ) = GetMarioCell();
+            return GetTriangleAddressesInCell(cellX, cellZ, staticPartition, classification);
+        }
+
         public static List<uint> GetTriangleAddressesInCell(int cellX, int cellZ, bool staticPartition, TriangleClassification classification)
         {
             uint partitionAddress = staticPartition ? TriangleConfig.StaticTrianglePartitionAddress : TriangleConfig.DynamicTrianglePartitionAddress;
