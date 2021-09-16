@@ -47,7 +47,7 @@ namespace STROOP.Structs
          * time). This function determines the lower cell for a given x/z position.
          * @param coord The coordinate to test
          */
-        private static short lower_cell_index(short coord, bool buffer = true) {
+        public static short lower_cell_index(short coord, bool buffer = true) {
             short index;
 
             // Move from range [-0x2000, 0x2000) to [0, 0x4000)
@@ -83,7 +83,7 @@ namespace STROOP.Structs
          * time). This function determines the upper cell for a given x/z position.
          * @param coord The coordinate to test
          */
-        private static short upper_cell_index(short coord, bool buffer = true) {
+        public static short upper_cell_index(short coord, bool buffer = true) {
             short index;
 
             // Move from range [-0x2000, 0x2000) to [0, 0x4000)
@@ -168,6 +168,24 @@ namespace STROOP.Structs
                 }
             }
             return cells;
+        }
+
+        public static (int cellX, int cellZ) GetMarioCell()
+        {
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            return GetCell(marioX, marioZ);
+        }
+
+        public static (int cellX, int cellZ) GetCell(float floatX, float floatZ)
+        {
+            short x = (short)floatX;
+            short z = (short)floatZ;
+            int LEVEL_BOUNDARY_MAX = 0x2000;
+            int CELL_SIZE = 0x400;
+            int cellX = ((x + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
+            int cellZ = ((z + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
+            return (cellX, cellZ);
         }
     }
 }

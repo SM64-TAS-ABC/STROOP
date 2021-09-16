@@ -33,7 +33,7 @@ namespace STROOP.Map
             (float posAngleX, float posAngleY, float posAngleZ, float posAngleAngle) =
                 ((float, float, float, float))_posAngle.GetValues();
 
-            (int cellX, int cellZ) = WatchVariableSpecialUtilities.GetCell(posAngleX, posAngleZ);
+            (int cellX, int cellZ) = CellUtilities.GetCell(posAngleX, posAngleZ);
             int xMin = (cellX - 8) * 1024;
             int xMax = xMin + 1024;
             int zMin = (cellZ - 8) * 1024;

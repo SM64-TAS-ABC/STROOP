@@ -3176,10 +3176,10 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     TriangleDataModel tri = TriangleDataModel.Create(triAddress);
-                    short minCellX = lower_cell_index(tri.GetMinX());
-                    short maxCellX = upper_cell_index(tri.GetMaxX());
-                    short minCellZ = lower_cell_index(tri.GetMinZ());
-                    short maxCellZ = upper_cell_index(tri.GetMaxZ());
+                    short minCellX = CellUtilities.lower_cell_index(tri.GetMinX());
+                    short maxCellX = CellUtilities.upper_cell_index(tri.GetMaxX());
+                    short minCellZ = CellUtilities.lower_cell_index(tri.GetMinZ());
+                    short maxCellZ = CellUtilities.upper_cell_index(tri.GetMaxZ());
                     return string.Format("X:{0}-{1},Z:{2}-{3}",
                         minCellX, maxCellX, minCellZ, maxCellZ);
                 },
@@ -3188,7 +3188,7 @@ namespace STROOP.Structs
             _dictionary.Add("MarioCell",
                 ((uint dummy) =>
                 {
-                    (int cellX, int cellZ) = GetMarioCell();
+                    (int cellX, int cellZ) = CellUtilities.GetMarioCell();
                     return string.Format("X:{0},Z:{1}", cellX, cellZ);
                 },
                 DEFAULT_SETTER));
@@ -5724,70 +5724,6 @@ namespace STROOP.Structs
         }
 
         // Triangle methods
-
-        private static short lower_cell_index(short t)
-        {
-            short index;
-
-            // Move from range [-0x2000, 0x2000) to [0, 0x4000)
-            t += 0x2000;
-            if (t < 0)
-                t = 0;
-
-            // [0, 16)
-            index = (short)(t / 0x400);
-
-            // Include extra cell if close to boundary
-            if (t % 0x400 < 50)
-                index -= 1;
-
-            if (index < 0)
-                index = 0;
-
-            // Potentially > 15, but since the upper index is <= 15, not exploitable
-            return index;
-        }
-
-        private static short upper_cell_index(short t)
-        {
-            short index;
-
-            // Move from range [-0x2000, 0x2000) to [0, 0x4000)
-            t += 0x2000;
-            if (t < 0)
-                t = 0;
-
-            // [0, 16)
-            index = (short)(t / 0x400);
-
-            // Include extra cell if close to boundary
-            if (t % 0x400 > 0x400 - 50)
-                index += 1;
-
-            if (index > 15)
-                index = 15;
-
-            // Potentially < 0, but since lower index is >= 0, not exploitable
-            return index;
-        }
-
-        public static (int cellX, int cellZ) GetMarioCell()
-        {
-            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            return GetCell(marioX, marioZ);
-        }
-
-        public static (int cellX, int cellZ) GetCell(float floatX, float floatZ)
-        {
-            short x = (short)floatX;
-            short z = (short)floatZ;
-            int LEVEL_BOUNDARY_MAX = 0x2000;
-            int CELL_SIZE = 0x400;
-            int cellX = ((x + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
-            int cellZ = ((z + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x0F;
-            return (cellX, cellZ);
-        }
 
         public static uint GetWarpNodesAddress()
         {
