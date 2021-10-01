@@ -139,6 +139,7 @@ namespace STROOP.Controls
                 if (coordinateCount == 3 && stringCount == 3)
                     coordinateVarList[1]._watchVarControl.SetValue(stringList[1]);
                 coordinateVarList[coordinateCount - 1]._watchVarControl.SetValue(stringList[stringCount - 1]);
+                coordinateVarList.ForEach(coord => coord._watchVarControl.FlashColor(WatchVariableControl.PASTE_COLOR));
                 Config.Stream.Resume();
             };
 
