@@ -106,17 +106,10 @@ namespace STROOP.Map
             }
             else
             {
-                List<(float? minHeight, float? maxHeight, Color color)> drawData =
-                    new List<(float? minHeight, float? maxHeight, Color color)>();
-                if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
+                return new List<(float? minHeight, float? maxHeight, Color color)>()
                 {
-                    drawData.Add((_minHeight, _maxHeight, Color));
-                }
-                else
-                {
-                    drawData.Add((_minHeight, _maxHeight, Color));
-                }
-                return drawData;
+                    (_minHeight, _maxHeight, Color),
+                };
             }
         }
 
