@@ -79,6 +79,11 @@ namespace STROOP.Map
                     vertices.Add((x2, marioY + 100, z2));
                     vertices.Add((x2, marioY + 238, z2));
                 }
+                else
+                {
+                    vertices.Add((marioX, marioY + 100, marioZ));
+                    vertices.Add((marioX, marioY + 238, marioZ));
+                }
                 lineWidth = Size;
                 color = Color;
             }
