@@ -411,6 +411,46 @@ namespace STROOP.Structs
                     panel.AddVariable(control2);
                 }
             }
+            void createActionDescriptionVariable()
+            {
+                List<WatchVariableControl> controls = getVars();
+                for (int i = 0; i < controls.Count; i++)
+                {
+                    WatchVariableControl control = controls[i];
+                    string specialType = WatchVariableSpecialUtilities.AddActionDescriptionEntry(control);
+                    string name = string.Format("{0} Description", control.VarName);
+
+                    WatchVariable watchVariable =
+                        new WatchVariable(
+                            name: name,
+                            memoryTypeName: null,
+                            specialType: specialType,
+                            baseAddressType: BaseAddressTypeEnum.None,
+                            offsetUS: null,
+                            offsetJP: null,
+                            offsetSH: null,
+                            offsetEU: null,
+                            offsetDefault: null,
+                            mask: null,
+                            shift: null,
+                            handleMapping: true);
+                    WatchVariableControlPrecursor precursor =
+                        new WatchVariableControlPrecursor(
+                            name: name,
+                            watchVar: watchVariable,
+                            subclass: WatchVariableSubclass.String,
+                            backgroundColor: null,
+                            displayType: null,
+                            roundingLimit: null,
+                            useHex: null,
+                            invertBool: null,
+                            isYaw: null,
+                            coordinate: null,
+                            groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                    WatchVariableControl control2 = precursor.CreateWatchVariableControl();
+                    panel.AddVariable(control2);
+                }
+            }
             void createDereferencedVariable(string typeString)
             {
                 List<WatchVariableControl> controls = getVars();
@@ -493,6 +533,7 @@ namespace STROOP.Structs
                     "3D Distance",
                     null,
                     "Real Time",
+                    "Action Description",
                 },
                 new List<Action>()
                 {
@@ -514,6 +555,7 @@ namespace STROOP.Structs
                     () => createDistanceMathOperationVariable(use3D: true),
                     () => { },
                     () => createRealTimeVariable(),
+                    () => createActionDescriptionVariable(),
                 });
             itemAddVariables.DropDownItems.Add(itemAddDereferencedVariable);
 

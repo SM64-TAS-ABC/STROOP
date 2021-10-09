@@ -361,6 +361,23 @@ namespace STROOP.Structs
             return specialType;
         }
 
+        private static int _numActionDescriptionEntries = 0;
+
+        public static string AddActionDescriptionEntry(WatchVariableControl control)
+        {
+            string specialType = "ActionDescription" + _numActionDescriptionEntries;
+            _dictionary.Add(specialType,
+                ((uint dummy) =>
+                {
+                    uint action = ParsingUtilities.ParseUInt(
+                        control.GetValue(useRounding: false, handleFormatting: false));
+                    return TableConfig.MarioActions.GetActionName(action);
+                },
+                DEFAULT_SETTER));
+            _numActionDescriptionEntries++;
+            return specialType;
+        }
+
         private static int _numDereferencedEntries = 0;
 
         public static string AddDereferencedEntry(WatchVariableControl control, string typeString, uint? offset)
