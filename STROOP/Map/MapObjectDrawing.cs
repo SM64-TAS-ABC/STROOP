@@ -86,9 +86,19 @@ namespace STROOP.Map
                     _vertices.Clear();
                 };
 
+                ToolStripMenuItem itemUndoLastStroke = new ToolStripMenuItem("Undo Last Stroke");
+                itemUndoLastStroke.Click += (sender, e) =>
+                {
+                    if (_vertices.Count > 0)
+                    {
+                        _vertices.RemoveAt(_vertices.Count - 1);
+                    }
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemEnableDrawing);
                 _contextMenuStrip.Items.Add(itemClearDrawing);
+                _contextMenuStrip.Items.Add(itemUndoLastStroke);
             }
 
             return _contextMenuStrip;
