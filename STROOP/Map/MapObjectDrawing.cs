@@ -17,10 +17,9 @@ namespace STROOP.Map
 {
     public class MapObjectDrawing : MapObjectLine
     {
-        private readonly List<(float x, float y, float z)> _vertices;
+        private readonly List<List<(float x, float y, float z)>> _vertices;
         private bool _drawingEnabled;
-
-        private bool _mouseIsDown;
+        private List<(float x, float y, float z)> _currentStroke;
         private (float x, float y, float z) _lastVertex;
 
         public MapObjectDrawing()
@@ -29,29 +28,34 @@ namespace STROOP.Map
             LineWidth = 3;
             LineColor = Color.Red;
 
-            _vertices = new List<(float x, float y, float z)>();
+            _vertices = new List<List<(float x, float y, float z)>>();
             _drawingEnabled = false;
-
-            _mouseIsDown = false;
+            _currentStroke = null;
         }
 
-        public MapObjectDrawing(List<(float x, float y, float z)> vertices) : this()
+        public MapObjectDrawing(List<List<(float x, float y, float z)>> vertices) : this()
         {
             _vertices.AddRange(vertices);
         }
 
         public static MapObjectDrawing Create(string text)
         {
-            List<(double x, double y, double z)> points = MapUtilities.ParsePoints(text, true);
-            if (points == null) return null;
-            List<(float x, float y, float z)> floatPoints = points.ConvertAll(
-                point => ((float)point.x, (float)point.y, (float)point.z));
-            return new MapObjectDrawing(floatPoints);
+            List<string> strokes = text.Split(';').ToList();
+            List<List<(float x, float y, float z)>> vertices = new List<List<(float x, float y, float z)>>();
+            foreach (string stroke in strokes)
+            {
+                List<(double x, double y, double z)> points = MapUtilities.ParsePoints(stroke, true);
+                if (points == null) return null;
+                List<(float x, float y, float z)> floatPoints = points.ConvertAll(
+                    point => ((float)point.x, (float)point.y, (float)point.z));
+                vertices.Add(floatPoints);
+            }
+            return new MapObjectDrawing(vertices);
         }
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
-            return _vertices;
+            return _vertices.SelectMany(list => list).ToList();
         }
 
         public override string GetName()
@@ -97,17 +101,18 @@ namespace STROOP.Map
             switch (mouseEvent)
             {
                 case MouseEvent.MouseDown:
-                    _mouseIsDown = true;
+                    _currentStroke = new List<(float x, float y, float z)>();
+                    _vertices.Add(_currentStroke);
                     break;
                 case MouseEvent.MouseMove:
-                    if (_drawingEnabled && _mouseIsDown)
+                    if (_drawingEnabled && _currentStroke != null)
                     {
-                        _vertices.Add(_lastVertex);
-                        _vertices.Add(currentVertex);
+                        _currentStroke.Add(_lastVertex);
+                        _currentStroke.Add(currentVertex);
                     }
                     break;
                 case MouseEvent.MouseUp:
-                    _mouseIsDown = false;
+                    _currentStroke = null;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -126,11 +131,12 @@ namespace STROOP.Map
 
         public override List<XAttribute> GetXAttributes()
         {
-            List<string> pointList = _vertices.ConvertAll(
-                p => string.Format("({0},{1},{2})", (double)p.x, (double)p.y, (double)p.z));
+            string verticesString = string.Join(";", _vertices.ConvertAll(
+                stroke => string.Join(",", stroke.ConvertAll(
+                    p => string.Format("({0},{1},{2})", (double)p.x, (double)p.y, (double)p.z)))));
             return new List<XAttribute>()
             {
-                new XAttribute("points", string.Join(",", pointList)),
+                new XAttribute("points", verticesString),
             };
         }
     }
