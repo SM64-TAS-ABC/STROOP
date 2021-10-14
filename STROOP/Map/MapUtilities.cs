@@ -993,5 +993,14 @@ namespace STROOP.Map
             }
             return output;
         }
+
+        public static MouseButtons GetMouseButton(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && KeyboardUtilities.IsShiftHeld())
+            {
+                return MouseButtons.Right;
+            }
+            return e.Button;
+        }
     }
 }

@@ -597,7 +597,8 @@ namespace STROOP.Map
                 return;
             }
 
-            switch (e.Button)
+            MouseButtons button = MapUtilities.GetMouseButton(e);
+            switch (button)
             {
                 case MouseButtons.Left:
                     _isTranslating = true;
@@ -626,7 +627,8 @@ namespace STROOP.Map
                 return;
             }
 
-            switch (e.Button)
+            MouseButtons button = MapUtilities.GetMouseButton(e);
+            switch (button)
             {
                 case MouseButtons.Left:
                     _isTranslating = false;

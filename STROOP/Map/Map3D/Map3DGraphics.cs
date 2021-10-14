@@ -361,7 +361,8 @@ namespace STROOP.Map.Map3D
 
         private void OnMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            switch (e.Button)
+            MouseButtons button = MapUtilities.GetMouseButton(e);
+            switch (button)
             {
                 case MouseButtons.Left:
                     _isTranslating = true;
@@ -383,7 +384,8 @@ namespace STROOP.Map.Map3D
 
         private void OnMouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            switch (e.Button)
+            MouseButtons button = MapUtilities.GetMouseButton(e);
+            switch (button)
             {
                 case MouseButtons.Left:
                     _isTranslating = false;
