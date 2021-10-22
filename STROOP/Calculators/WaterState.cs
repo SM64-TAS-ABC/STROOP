@@ -13,23 +13,30 @@ namespace STROOP.Structs
 {
     public class WaterState
     {
+        public int Index;
         public float Y;
         public float YSpeed;
         public float HSpeed;
         public ushort Yaw;
         public short YawVel;
         public short Pitch;
-        public int Index;
 
         public WaterState()
         {
+            Index = 0;
             Y = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
             YSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
             HSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
             Yaw = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             YawVel = Config.Stream.GetShort(MarioConfig.StructAddress + MarioConfig.YawVelocityOffset);
             Pitch = Config.Stream.GetShort(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
-            Index = 0;
+        }
+
+        public override string ToString()
+        {
+            return string.Format(
+                "[{0}] Y={1} YSpeed={2} HSpeed={3} Yaw={4} YawVel={5} Pitch={6}",
+                Index, (double)Y, (double)YSpeed, (double)HSpeed, Yaw, YawVel, Pitch);
         }
 
         public void Update(Input input, int waterLevel)

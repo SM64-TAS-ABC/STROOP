@@ -16,15 +16,15 @@ namespace STROOP.Structs
         public static void Test()
         {
             int waterLevelIndex = WaterLevelCalculator.GetWaterLevelIndex();
-
             WaterState state = new WaterState();
-            for (int i = 0; i < 1000; i++)
+            Config.Print(state);
+            for (int i = 0; i < 10; i++)
             {
+                Input input = new Input(0, 0);
                 int waterLevel = WaterLevelCalculator.GetWaterLevelFromIndex(waterLevelIndex);
-                Config.Print(i + " = " + waterLevel);
+                state.Update(input, waterLevel);
+                Config.Print(state);
                 waterLevelIndex++;
-
-                //state.Update()
             }
         }
     }
