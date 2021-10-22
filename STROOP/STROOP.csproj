@@ -187,6 +187,7 @@
     <Compile Include="Calculators\CalculatorMain.cs" />
     <Compile Include="Calculators\Input.cs" />
     <Compile Include="Calculators\BobombState.cs" />
+    <Compile Include="Calculators\WaterState.cs" />
     <Compile Include="Calculators\MutableMarioState.cs" />
     <Compile Include="Calculators\MarioState.cs" />
     <Compile Include="Calculators\HolpCalculator.cs" />
