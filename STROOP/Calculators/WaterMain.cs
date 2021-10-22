@@ -200,22 +200,49 @@ namespace STROOP.Structs
 
     public class BubbleObject : WaterObject
     {
+        public float X;
+        public float Y;
+        public float Z;
         public int Timer;
         public int VarF4;
         public int VarF8;
         public int VarFC;
+        public int Var100;
 
-        public BubbleObject(TtcRng rng)
+        public BubbleObject(TtcRng rng, float x, float y, float z)
             : base(rng)
         {
+            X = x;
+            Y = y;
+            Z = z;
             Timer = 0;
+            VarF4 = 0;
+            VarF8 = 0;
+            VarFC = 0;
+            Var100 = 0;
         }
 
         public override void Update()
         {
+            if (Timer == 0)
+            {
+                bhv_bubble_wave_init();
+            }
 
+            VarF4 = (int)(-50 + Rng.PollFloat() * 100);
+            VarF8 = (int)(-50 + Rng.PollFloat() * 100);
+            X = X + VarF4;
+            Z = Z + VarF8;
+            VarFC = (int)(Rng.PollFloat() * 50);
+            Y = Y + VarFC;
 
             Timer++;
+        }
+
+        public void bhv_bubble_wave_init()
+        {
+            VarFC = 0x800 + (int)(Rng.PollFloat() * 2048.0f);
+            Var100 = 0x800 + (int)(Rng.PollFloat() * 2048.0f);
         }
 
         public override string ToString()
