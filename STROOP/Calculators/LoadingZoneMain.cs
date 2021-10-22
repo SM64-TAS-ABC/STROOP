@@ -17,8 +17,8 @@ namespace STROOP.Structs
     {
         public static Random r = new Random();
 
-        public static Dictionary<UnloadableId, bool> UnloadStrategy =
-            new Dictionary<UnloadableId, bool>()
+        public static Dictionary<UnloadableId, bool?> BaseUnloadStrategy =
+            new Dictionary<UnloadableId, bool?>()
             {
                 [UnloadableId.LOADED_ALWAYS] = false, // do not change
 
@@ -26,7 +26,7 @@ namespace STROOP.Structs
                 [UnloadableId.SKEETER_FAR] = false,
 
                 [UnloadableId.CORK_BOX_EXPRESS_ELEVATOR] = false,
-                [UnloadableId.CORK_BOX_EDGE_1] = true,
+                [UnloadableId.CORK_BOX_EDGE_1] = false,
                 [UnloadableId.CORK_BOX_EDGE_2] = false,
                 [UnloadableId.CORK_BOX_EDGE_3] = false,
                 [UnloadableId.CORK_BOX_EDGE_4] = false,
@@ -50,12 +50,15 @@ namespace STROOP.Structs
                 [UnloadableId.SECRET_WATER_BLOCK] = false,
             };
 
+        public static Dictionary<UnloadableId, bool> UnloadStrategy;
+
         public static void Run()
         {
             Config.Print("STARTING...");
             HashSet<string> instructionList = new HashSet<string>();
             while (true)
             {
+                GenerateUnloadStrategy();
                 List<int> loadingZoneFrames = GenerateRandomLoadingZoneFrames();
                 int rngIndex = 14304; // RngIndexer.GetRngIndex();
                 int rng = 50195; // RngIndexer.GetRngValue();
@@ -70,6 +73,7 @@ namespace STROOP.Structs
                         {
                             instructionList.Add(instructions);
                             Config.Print("-------------------------------------");
+                            Config.Print("objName = " + objName);
                             Config.Print("numFrames = " + numFrames);
                             Config.Print("numTransitions = " + numTransitions);
                             Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
@@ -78,6 +82,7 @@ namespace STROOP.Structs
                             Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
                             Config.Print("numInitialBubbles = " + numInitialBubbles);
                             Config.Print(instructions);
+                            Config.Print(DictionaryUtilities.GetString(UnloadStrategy));
                             Config.Print("-------------------------------------");
                         }
                     }
@@ -91,6 +96,7 @@ namespace STROOP.Structs
             HashSet<string> instructionList = new HashSet<string>();
             while (true)
             {
+                GenerateUnloadStrategy();
                 List<int> loadingZoneFrames = GenerateRandomLoadingZoneFrames();
                 List<int> bubbleSpawnerMaxTimers = GenerateRandomBubbleSpawnerMaxTimers();
                 foreach (bool isBubbleSpawnerPresent in new List<bool>() { false, true })
@@ -101,7 +107,7 @@ namespace STROOP.Structs
                             Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles, false);
                         if (!results.Contains(result))
                         {
-                            //Config.Print(result + " " + objName);
+                            Config.Print(result + " " + objName);
                             results.Add(result);
                         }
                         string instructions = FormatLoadingZoneFrames(loadingZoneFrames);
@@ -109,6 +115,7 @@ namespace STROOP.Structs
                         {
                             instructionList.Add(instructions);
                             Config.Print("-------------------------------------");
+                            Config.Print("objName = " + objName);
                             Config.Print("numFrames = " + numFrames);
                             Config.Print("numTransitions = " + numTransitions);
                             Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
@@ -116,10 +123,22 @@ namespace STROOP.Structs
                             Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
                             Config.Print("numInitialBubbles = " + numInitialBubbles);
                             Config.Print(instructions);
+                            Config.Print(DictionaryUtilities.GetString(UnloadStrategy));
                             Config.Print("-------------------------------------");
                         }
                     }
                 }
+            }
+        }
+
+        public static void GenerateUnloadStrategy()
+        {
+            UnloadStrategy = new Dictionary<UnloadableId, bool>();
+            foreach (UnloadableId key in BaseUnloadStrategy.Keys)
+            {
+                bool? valueNullable = BaseUnloadStrategy[key];
+                bool value = valueNullable ?? (r.Next(0, 2) == 0 ? false : true);
+                UnloadStrategy[key] = value;
             }
         }
 
@@ -254,7 +273,7 @@ namespace STROOP.Structs
                 if (isTownLoaded && heldSlot.Color != ObjSlotColor.GREY)
                 {
                     returnValue = (false, objSlotManager.GetCurrentSlotIndex(heldSlot), heldSlot.ObjName, numTransitions, frame);
-                    if (heldSlot.ObjName == ObjName.STAR)
+                    if (heldSlot.ObjName == ObjName.CORK_BOX_WHITE_BUILDING)
                     {
                         return (true, heldSlot.InitialIndex, heldSlot.ObjName, numTransitions, frame);
                     }
@@ -367,6 +386,8 @@ namespace STROOP.Structs
             CANNON_LID,
             PUSHABLE_BLOCK,
             CORK_BOX,
+            CORK_BOX_RED_ROOF,
+            CORK_BOX_WHITE_BUILDING,
             SWITCH,
             ROTATING_PLATFORM,
             LONG_WOODEN_BOARD,
@@ -1048,11 +1069,11 @@ namespace STROOP.Structs
                 (ObjName.FIRE_SPITTER, ObjSlotColor.GREEN, UnloadableId.LOADED_ALWAYS),
                 (ObjName.FIRE_SPITTER, ObjSlotColor.GREEN, UnloadableId.LOADED_ALWAYS),
                 (ObjName.CORK_BOX, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
+                (ObjName.CORK_BOX_RED_ROOF, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.CORK_BOX, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.CORK_BOX, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.CORK_BOX, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
-                (ObjName.CORK_BOX, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
-                (ObjName.CORK_BOX, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
+                (ObjName.CORK_BOX_WHITE_BUILDING, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.CORK_BOX, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.COIN_LINE, ObjSlotColor.PINK, UnloadableId.LOADED_ALWAYS),
                 (ObjName.COIN_LINE, ObjSlotColor.PINK, UnloadableId.LOADED_ALWAYS),
