@@ -20,7 +20,7 @@ namespace STROOP.Structs
             Config.Print(state);
             for (int i = 0; i < 10; i++)
             {
-                Input input = new Input(0, 0);
+                Input input = new Input(-40, 50);
                 int waterLevel = WaterLevelCalculator.GetWaterLevelFromIndex(waterLevelIndex);
                 state.Update(input, waterLevel);
                 Config.Print(state);
