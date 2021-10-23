@@ -15,21 +15,67 @@ namespace STROOP.Structs
 {
     public static class WaterMain
     {
-        public static void Simulate()
+        public static Random r = new Random();
+
+        public static void BruteForce()
+        {
+            while (true)
+            {
+                List<Input> inputs = GenerateInputs();
+                bool success = Simulate(inputs);
+                if (success)
+                {
+                    Config.Print(string.Join("\r\n", inputs));
+                    Config.Print();
+                }
+            }
+        }
+
+        public static List<Input> GenerateInputs()
         {
             List<Input> inputs = new List<Input>();
-            for (int i = 0; i < 200; i++)
+            bool movingDown = true;
+            while (true)
             {
-                Input input = i < 20 ? new Input(0, 127) : new Input(0, 0);
-                inputs.Add(input);
+                if (movingDown)
+                {
+                    int x = r.Next(-128, -30);
+                    int y = 127;
+                    Input input = new Input(x, y);
+                    int times = r.Next(5, 20);
+                    for (int i = 0; i < times; i++)
+                    {
+                        inputs.Add(input);
+                    }
+                }
+                else
+                {
+                    int x = r.Next(-128, -30);
+                    int y = -128;
+                    Input input = new Input(x, y);
+                    int times = r.Next(5, 20);
+                    for (int i = 0; i < times; i++)
+                    {
+                        inputs.Add(input);
+                    }
+                }
+                movingDown = !movingDown;
+                if (inputs.Count > 80) break;
             }
+            return inputs;
+        }
+
+        public static bool Simulate(List<Input> inputs)
+        {
             ObjSlotManager objSlotManager = new ObjSlotManager(inputs);
-            Config.Print(objSlotManager);
-            for (int i = 0; i < 200; i++)
+            //Config.Print(objSlotManager);
+            while (objSlotManager.GlobalTimer < 154061)
             {
                 objSlotManager.Update();
-                Config.Print(objSlotManager);
+                //Config.Print(objSlotManager);
             }
+
+            return objSlotManager.HasBubbleConfiguration(6, false);
         }
     }
 
@@ -149,6 +195,13 @@ namespace STROOP.Structs
             return PurpleObjects.Count > 0;
         }
 
+        public bool HasBubbleConfiguration(int numBubbles, bool bubbleSpawnerPresent)
+        {
+            bool satisfiesNumBubbles = numBubbles == BrownObjects.Count;
+            bool satisfiesBubbleSpawnerPresent = bubbleSpawnerPresent == (PurpleObjects.Count > 0);
+            return satisfiesNumBubbles && satisfiesBubbleSpawnerPresent;
+        }
+
         public override string ToString()
         {
             List<WaterObject> objList = ObjectLists.SelectMany(list => list).ToList();
@@ -196,7 +249,7 @@ namespace STROOP.Structs
         public override void Update()
         {
             int index = WaterState.Index;
-            Input input = index < Inputs.Count ? Inputs[index] : new Input(0, 0);
+            Input input = index < Inputs.Count ? Inputs[index] : new Input(0, 127);
             WaterState.Update(input, ObjSlotManager.WaterLevel);
 
             if ((WaterState.Y < (ObjSlotManager.WaterLevel - 160)) || (WaterState.Pitch < -0x800))
