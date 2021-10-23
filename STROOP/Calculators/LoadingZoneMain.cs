@@ -60,8 +60,8 @@ namespace STROOP.Structs
             {
                 GenerateUnloadStrategy();
                 List<int> loadingZoneFrames = GenerateRandomLoadingZoneFrames();
-                int rngIndex = 14304; // RngIndexer.GetRngIndex();
-                int rng = 50195; // RngIndexer.GetRngValue();
+                int rngIndex = RngIndexer.GetRngIndex();
+                int rng = RngIndexer.GetRngValue();
                 foreach (bool isBubbleSpawnerPresent in new List<bool>() { true })
                 {
                     for (int numInitialBubbles = 6; numInitialBubbles <= 6; numInitialBubbles++)

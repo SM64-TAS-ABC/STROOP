@@ -19,6 +19,7 @@ namespace STROOP.Structs
 
         public static void BruteForce()
         {
+            Input.USE_TAS_INPUT_Y = false;
             for (int count = 0; true; count++)
             {
                 List<Input> inputs = GenerateInputs();
@@ -44,8 +45,8 @@ namespace STROOP.Structs
             {
                 if (movingDown)
                 {
-                    int x = r.Next(-128, -30);
-                    int y = 127;
+                    int x = r.Next(-30, -10);
+                    int y = r.Next(30, 127);
                     Input input = new Input(x, y);
                     int times = r.Next(5, 20);
                     for (int i = 0; i < times; i++)
@@ -55,8 +56,8 @@ namespace STROOP.Structs
                 }
                 else
                 {
-                    int x = r.Next(-128, -30);
-                    int y = -128;
+                    int x = r.Next(-30, -10);
+                    int y = r.Next(-128, -30);
                     Input input = new Input(x, y);
                     int times = r.Next(5, 20);
                     for (int i = 0; i < times; i++)

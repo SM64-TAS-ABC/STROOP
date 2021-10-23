@@ -15,6 +15,8 @@ namespace STROOP.Structs
     // Y value is displayed in mupen convention
     public class Input
     {
+        public static bool USE_TAS_INPUT_Y = true;
+
         public readonly int X;
         public readonly int Y;
 
@@ -31,7 +33,7 @@ namespace STROOP.Structs
 
         public override string ToString()
         {
-            return String.Format("({0},{1})", X, -1 * Y);
+            return String.Format("({0},{1})", X, (USE_TAS_INPUT_Y ? -1 : 1) * Y);
         }
     }
 }
