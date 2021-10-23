@@ -33,59 +33,61 @@ namespace STROOP.Structs
     {
         public int GlobalTimer;
         TtcRng Rng;
+
         public List<List<WaterObject>> ObjectLists;
+        public List<WaterObject> YorangeObjects;
+        public List<WaterObject> GreenObjects;
+        public List<WaterObject> PurpleObjects;
+        public List<WaterObject> BrownObjects;
 
         public ObjSlotManager(List<Input> inputs)
         {
             GlobalTimer = Config.Stream.GetInt(MiscConfig.GlobalTimerAddress);
 
-            List<WaterObject> yorangeObjects = new List<WaterObject>();
-            List<WaterObject> greenObjects = new List<WaterObject>();
-            List<WaterObject> purpleObjects = new List<WaterObject>();
-            List<WaterObject> brownObjects = new List<WaterObject>();
+            YorangeObjects = new List<WaterObject>();
+            GreenObjects = new List<WaterObject>();
+            PurpleObjects = new List<WaterObject>();
+            BrownObjects = new List<WaterObject>();
             ObjectLists =
                 new List<List<WaterObject>>()
                 {
-                    yorangeObjects, greenObjects, purpleObjects, brownObjects,
+                    YorangeObjects, GreenObjects, PurpleObjects, BrownObjects,
                 };
 
             Rng = new TtcRng();
 
             MarioObject marioObject = new MarioObject(this, Rng, inputs);
-            yorangeObjects.Add(marioObject);
+            YorangeObjects.Add(marioObject);
 
             List<ObjectDataModel> bobombBuddyObjs = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Bob-omb Buddy (Opens Cannon)");
             foreach (var bobombBuddyObj in bobombBuddyObjs)
             {
                 int blinkingTimer = Config.Stream.GetInt(bobombBuddyObj.Address + 0xF4);
                 BobombBuddyObject bobombBuddyObject = new BobombBuddyObject(this, Rng, blinkingTimer);
-                greenObjects.Add(bobombBuddyObject);
+                GreenObjects.Add(bobombBuddyObject);
             }
 
             List<ObjectDataModel> bubbleSpawnerObjs = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Bubble Spawner");
             foreach (var bubbleSpawnerObj in bubbleSpawnerObjs)
             {
+                float y = Config.Stream.GetFloat(bubbleSpawnerObj.Address + ObjectConfig.YOffset);
                 int timer = Config.Stream.GetInt(bubbleSpawnerObj.Address + ObjectConfig.TimerOffset);
                 int timerMax = Config.Stream.GetInt(bubbleSpawnerObj.Address + 0xF4);
-                BubbleSpawnerObject bubbleSpawnerObject = new BubbleSpawnerObject(this, Rng, timer, timerMax);
-                purpleObjects.Add(bubbleSpawnerObject);
+                BubbleSpawnerObject bubbleSpawnerObject = new BubbleSpawnerObject(this, Rng, y, timer, timerMax);
+                PurpleObjects.Add(bubbleSpawnerObject);
             }
 
             List<ObjectDataModel> bubbleObjs = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Underwater Bubble");
             foreach (var bubbleObj in bubbleObjs)
             {
-                float x = Config.Stream.GetFloat(bubbleObj.Address + ObjectConfig.XOffset);
                 float y = Config.Stream.GetFloat(bubbleObj.Address + ObjectConfig.YOffset);
-                float z = Config.Stream.GetFloat(bubbleObj.Address + ObjectConfig.ZOffset);
                 int timer = Config.Stream.GetInt(bubbleObj.Address + ObjectConfig.TimerOffset);
-
                 float varF4 = Config.Stream.GetFloat(bubbleObj.Address + 0xF4);
                 float varF8 = Config.Stream.GetFloat(bubbleObj.Address + 0xF8);
                 float varFC = Config.Stream.GetFloat(bubbleObj.Address + 0xFC);
                 float var100 = Config.Stream.GetFloat(bubbleObj.Address + 0x100);
-
-                BubbleObject bubbleObject = new BubbleObject(this, Rng, x, y, z, timer, varF4, varF8, varFC, var100);
-                brownObjects.Add(bubbleObject);
+                BubbleObject bubbleObject = new BubbleObject(this, Rng, y, timer, varF4, varF8, varFC, var100);
+                BrownObjects.Add(bubbleObject);
             }
         }
 
@@ -110,6 +112,27 @@ namespace STROOP.Structs
                     }
                 }
             }
+        }
+
+        public void AddObject(WaterObject waterObject)
+        {
+            if (waterObject is BubbleSpawnerObject)
+            {
+                PurpleObjects.Add(waterObject);
+            }
+            else if (waterObject is BubbleObject)
+            {
+                BrownObjects.Add(waterObject);
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public bool HasBubbleSpawner()
+        {
+            return PurpleObjects.Count > 0;
         }
 
         public override string ToString()
@@ -164,6 +187,13 @@ namespace STROOP.Structs
             int waterLevel = WaterLevelCalculator.GetWaterLevelFromIndex(WaterLevelIndex);
             WaterState.Update(input, waterLevel);
             WaterLevelIndex++;
+
+            if (!ObjSlotManager.HasBubbleSpawner())
+            {
+                BubbleSpawnerObject bubbleSpawnerObject =
+                    new BubbleSpawnerObject(ObjSlotManager, Rng, WaterState.Y, 0, 0);
+                ObjSlotManager.AddObject(bubbleSpawnerObject);
+            }
         }
 
         public override string ToString()
@@ -205,12 +235,16 @@ namespace STROOP.Structs
 
     public class BubbleSpawnerObject : WaterObject
     {
+        public float Y;
         public int Timer;
         public int TimerMax;
 
-        public BubbleSpawnerObject(ObjSlotManager objSlotManager, TtcRng rng, int timer, int timerMax)
+        public BubbleSpawnerObject(
+            ObjSlotManager objSlotManager, TtcRng rng,
+            float y, int timer, int timerMax)
             : base(objSlotManager, rng)
         {
+            Y = y;
             Timer = timer;
             TimerMax = timerMax;
         }
@@ -222,22 +256,27 @@ namespace STROOP.Structs
                 TimerMax = 2 + (int)(9 * Rng.PollFloat());
             }
 
+            if (Timer == TimerMax)
+            {
+                BubbleObject bubbleObject =
+                    new BubbleObject(ObjSlotManager, Rng, Y, 0, 0, 0, 0, 0);
+                ObjSlotManager.AddObject(bubbleObject);
+            }
+
             Timer++;
         }
 
         public override string ToString()
         {
             return string.Format(
-                "{0} Timer={1} TimerMax={2}",
-                "BubbleSpawner", Timer, TimerMax);
+                "{0} Y={1} Timer={2} TimerMax={3}",
+                "BubbleSpawner", Y, Timer, TimerMax);
         }
     }
 
     public class BubbleObject : WaterObject
     {
-        public float X;
         public float Y;
-        public float Z;
         public int Timer;
         public float VarF4;
         public float VarF8;
@@ -246,13 +285,11 @@ namespace STROOP.Structs
 
         public BubbleObject(
                 ObjSlotManager objSlotManager, TtcRng rng,
-                float x, float y, float z, int timer,
+                float y, int timer,
                 float varF4, float varF8, float varFC, float var100)
             : base(objSlotManager, rng)
         {
-            X = x;
             Y = y;
-            Z = z;
             Timer = timer;
             VarF4 = varF4;
             VarF8 = varF8;
@@ -268,8 +305,6 @@ namespace STROOP.Structs
 
                 VarF4 = -50 + Rng.PollFloat() * 100;
                 VarF8 = -50 + Rng.PollFloat() * 100;
-                X += VarF4;
-                Z += VarF8;
                 VarFC = Rng.PollFloat() * 50;
                 Y += VarFC;
 
@@ -301,8 +336,6 @@ namespace STROOP.Structs
             Y += 7;
             VarF4 = -2 + Rng.PollFloat() * 5;
             VarF8 = -2 + Rng.PollFloat() * 5;
-            X += VarF4;
-            Z += VarF8;
         }
 
         public void bhv_small_water_wave_loop()
@@ -313,8 +346,8 @@ namespace STROOP.Structs
         public override string ToString()
         {
             return string.Format(
-                "{0} X={1} Y={2} Z={3} Timer={4}",
-                "Bubble", (double)X, (double)Y, (double)Z, Timer);
+                "{0} Y={1} Timer={2}",
+                "Bubble", (double)Y, Timer);
         }
     }
 }
