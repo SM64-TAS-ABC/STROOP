@@ -19,14 +19,19 @@ namespace STROOP.Structs
 
         public static void BruteForce()
         {
-            while (true)
+            for (int count = 0; true; count++)
             {
                 List<Input> inputs = GenerateInputs();
-                bool success = Simulate(inputs);
+                bool success = Simulate(inputs, false);
                 if (success)
                 {
+                    Config.Print("SUCCESS AFTER " + count);
+                    Config.Print();
                     Config.Print(string.Join("\r\n", inputs));
                     Config.Print();
+                    Simulate(inputs, true);
+                    Config.Print();
+                    return;
                 }
             }
         }
@@ -65,14 +70,14 @@ namespace STROOP.Structs
             return inputs;
         }
 
-        public static bool Simulate(List<Input> inputs)
+        public static bool Simulate(List<Input> inputs, bool print)
         {
             ObjSlotManager objSlotManager = new ObjSlotManager(inputs);
-            //Config.Print(objSlotManager);
+            if (print) Config.Print(objSlotManager);
             while (objSlotManager.GlobalTimer < 154061)
             {
                 objSlotManager.Update();
-                //Config.Print(objSlotManager);
+                if (print) Config.Print(objSlotManager);
             }
 
             return objSlotManager.HasBubbleConfiguration(6, false);
@@ -265,7 +270,12 @@ namespace STROOP.Structs
 
         public override string ToString()
         {
-            return "Mario " + WaterState.ToString();
+            int index = WaterState.Index - 1;
+            Input lastInput = index == -1 ? null : index < Inputs.Count ? Inputs[index] : new Input(0, 127);
+            string inputString = lastInput?.ToString() ?? "NO_INPUT";
+            string inputLine = "Input " + inputString;
+            string marioLine = "Mario " + WaterState.ToString();
+            return inputLine + "\r\n" + marioLine;
         }
     }
 
