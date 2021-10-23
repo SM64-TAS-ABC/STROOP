@@ -17,10 +17,15 @@ namespace STROOP.Structs
     {
         public static void Simulate()
         {
-            List<Input> inputs = Enumerable.Range(0, 100).ToList().ConvertAll(i => new Input(0, 127));
+            List<Input> inputs = new List<Input>();
+            for (int i = 0; i < 200; i++)
+            {
+                Input input = i < 20 ? new Input(0, 127) : new Input(0, 0);
+                inputs.Add(input);
+            }
             ObjSlotManager objSlotManager = new ObjSlotManager(inputs);
             Config.Print(objSlotManager);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 200; i++)
             {
                 objSlotManager.Update();
                 Config.Print(objSlotManager);
@@ -180,23 +185,19 @@ namespace STROOP.Structs
     {
         public List<Input> Inputs;
         public WaterState WaterState;
-        public int WaterLevelIndex;
 
         public MarioObject(ObjSlotManager objSlotManager, TtcRng rng, List<Input> inputs)
             : base(objSlotManager, rng)
         {
-            Inputs = new List<Input>();
+            Inputs = inputs;
             WaterState = new WaterState();
-            WaterLevelIndex = WaterLevelCalculator.GetWaterLevelIndex();
         }
 
         public override void Update()
         {
             int index = WaterState.Index;
             Input input = index < Inputs.Count ? Inputs[index] : new Input(0, 0);
-            int waterLevel = WaterLevelCalculator.GetWaterLevelFromIndex(WaterLevelIndex);
-            WaterState.Update(input, waterLevel);
-            WaterLevelIndex++;
+            WaterState.Update(input, ObjSlotManager.WaterLevel);
 
             if ((WaterState.Y < (ObjSlotManager.WaterLevel - 160)) || (WaterState.Pitch < -0x800))
             {
