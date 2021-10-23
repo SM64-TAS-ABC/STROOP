@@ -17,7 +17,7 @@ namespace STROOP.Structs
     {
         public static void Simulate()
         {
-            List<Input> inputs = new List<Input>();
+            List<Input> inputs = Enumerable.Range(0, 100).ToList().ConvertAll(i => new Input(0, 127));
             ObjSlotManager objSlotManager = new ObjSlotManager(inputs);
             Config.Print(objSlotManager);
             for (int i = 0; i < 10; i++)
@@ -31,6 +31,9 @@ namespace STROOP.Structs
     public class ObjSlotManager
     {
         public int GlobalTimer;
+        public int WaterLevelIndex;
+        public int WaterLevel;
+
         TtcRng Rng;
 
         public List<List<WaterObject>> ObjectLists;
@@ -42,6 +45,8 @@ namespace STROOP.Structs
         public ObjSlotManager(List<Input> inputs)
         {
             GlobalTimer = Config.Stream.GetInt(MiscConfig.GlobalTimerAddress);
+            WaterLevelIndex = WaterLevelCalculator.GetWaterLevelIndex();
+            WaterLevel = WaterLevelCalculator.GetWaterLevelFromIndex(WaterLevelIndex);
 
             YorangeObjects = new List<WaterObject>();
             GreenObjects = new List<WaterObject>();
@@ -92,6 +97,9 @@ namespace STROOP.Structs
 
         public void Update()
         {
+            WaterLevelIndex++;
+            WaterLevel = WaterLevelCalculator.GetWaterLevelFromIndex(WaterLevelIndex);
+
             foreach (var objList in ObjectLists)
             {
                 foreach (var obj in objList)
@@ -142,6 +150,7 @@ namespace STROOP.Structs
             List<string> stringList = objList.ConvertAll(obj => obj.ToString());
             stringList.Insert(0, GlobalTimer.ToString());
             stringList.Insert(1, Rng.ToString());
+            stringList.Insert(2, "WaterLevel=" + WaterLevel);
             return string.Join("\r\n", stringList) + "\r\n";
         }
     }
@@ -189,11 +198,14 @@ namespace STROOP.Structs
             WaterState.Update(input, waterLevel);
             WaterLevelIndex++;
 
-            if (!ObjSlotManager.HasBubbleSpawner())
+            if ((WaterState.Y < (ObjSlotManager.WaterLevel - 160)) || (WaterState.Pitch < -0x800))
             {
-                BubbleSpawnerObject bubbleSpawnerObject =
-                    new BubbleSpawnerObject(ObjSlotManager, Rng, WaterState.Y, 0, 0);
-                ObjSlotManager.AddObject(bubbleSpawnerObject);
+                if (!ObjSlotManager.HasBubbleSpawner())
+                {
+                    BubbleSpawnerObject bubbleSpawnerObject =
+                        new BubbleSpawnerObject(ObjSlotManager, Rng, WaterState.Y, 0, 0);
+                    ObjSlotManager.AddObject(bubbleSpawnerObject);
+                }
             }
         }
 
@@ -342,7 +354,11 @@ namespace STROOP.Structs
 
         public void bhv_small_water_wave_loop()
         {
-            
+            if (Y > ObjSlotManager.WaterLevel)
+            {
+                Y += 5;
+                MarkForDeletion();
+            }
         }
 
         public override string ToString()
