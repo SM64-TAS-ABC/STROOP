@@ -388,6 +388,10 @@
   <Object behaviorScriptAddress="0x13000338" name="Underwater Bubble">
     <SpawnCode gfxId="0xA8"/>
     <Image path="Bubble.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">VarF4</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">VarF8</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">VarFC</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x100" base="Object">Var100</Data>
   </Object>
   <Object behaviorScriptAddress="0x130003BC" name="HP Bubble">
     <SpawnCode gfxId="0xA8"/>

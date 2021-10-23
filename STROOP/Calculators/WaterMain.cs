@@ -204,10 +204,10 @@ namespace STROOP.Structs
         public float Y;
         public float Z;
         public int Timer;
-        public int VarF4;
-        public int VarF8;
-        public int VarFC;
-        public int Var100;
+        public float VarF4;
+        public float VarF8;
+        public float VarFC;
+        public float Var100;
 
         public BubbleObject(TtcRng rng, float x, float y, float z)
             : base(rng)
@@ -227,14 +227,19 @@ namespace STROOP.Structs
             if (Timer == 0)
             {
                 bhv_bubble_wave_init();
+
+                VarF4 = -50 + Rng.PollFloat() * 100;
+                VarF8 = -50 + Rng.PollFloat() * 100;
+                X += VarF4;
+                Z += VarF8;
+                VarFC = Rng.PollFloat() * 50;
+                Y += VarFC;
+
+                bhvSmallWaterWave398();
             }
 
-            VarF4 = (int)(-50 + Rng.PollFloat() * 100);
-            VarF8 = (int)(-50 + Rng.PollFloat() * 100);
-            X = X + VarF4;
-            Z = Z + VarF8;
-            VarFC = (int)(Rng.PollFloat() * 50);
-            Y = Y + VarFC;
+            bhvSmallWaterWave398();
+            bhv_small_water_wave_loop();
 
             Timer++;
         }
@@ -243,6 +248,20 @@ namespace STROOP.Structs
         {
             VarFC = 0x800 + (int)(Rng.PollFloat() * 2048.0f);
             Var100 = 0x800 + (int)(Rng.PollFloat() * 2048.0f);
+        }
+
+        public void bhvSmallWaterWave398()
+        {
+            Y += 7;
+            VarF4 = -2 + Rng.PollFloat() * 5;
+            VarF8 = -2 + Rng.PollFloat() * 5;
+            X += VarF4;
+            Z += VarF8;
+        }
+
+        public void bhv_small_water_wave_loop()
+        {
+            
         }
 
         public override string ToString()
