@@ -35,7 +35,8 @@ namespace STROOP.Structs
         public override string ToString()
         {
             return string.Format(
-                "[{0}] Y={1} YSpeed={2} HSpeed={3} Yaw={4} YawVel={5} Pitch={6}",
+                //"[{0}] Y={1} YSpeed={2} HSpeed={3} Yaw={4} YawVel={5} Pitch={6}",
+                "Y={1} YSpeed={2} HSpeed={3} Yaw={4} YawVel={5} Pitch={6}",
                 Index, (double)Y, (double)YSpeed, (double)HSpeed, Yaw, YawVel, Pitch);
         }
 
