@@ -15,17 +15,16 @@ namespace STROOP.Structs
 {
     public static class WaterMain
     {
-        public static void Test()
+        public static void Simulate()
         {
             List<Input> inputs = new List<Input>();
             ObjSlotManager objSlotManager = new ObjSlotManager(inputs);
             Config.Print(objSlotManager);
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    objSlotManager.Update();
-            //    Config.Print(objSlotManager);
-            //    Config.Print();
-            //}
+            for (int i = 0; i < 10; i++)
+            {
+                objSlotManager.Update();
+                Config.Print(objSlotManager);
+            }
         }
     }
 
@@ -112,6 +111,8 @@ namespace STROOP.Structs
                     }
                 }
             }
+
+            GlobalTimer++;
         }
 
         public void AddObject(WaterObject waterObject)
@@ -141,7 +142,7 @@ namespace STROOP.Structs
             List<string> stringList = objList.ConvertAll(obj => obj.ToString());
             stringList.Insert(0, GlobalTimer.ToString());
             stringList.Insert(1, Rng.ToString());
-            return string.Join("\r\n", stringList);
+            return string.Join("\r\n", stringList) + "\r\n";
         }
     }
 
@@ -261,6 +262,7 @@ namespace STROOP.Structs
                 BubbleObject bubbleObject =
                     new BubbleObject(ObjSlotManager, Rng, Y, 0, 0, 0, 0, 0);
                 ObjSlotManager.AddObject(bubbleObject);
+                MarkForDeletion();
             }
 
             Timer++;
