@@ -96,6 +96,7 @@ namespace STROOP.Managers
 
             _gui.ButtonQuickDuplicationDuplicate.Click += (sender, e) => PerformQuickDuplication();
             _gui.ButtonAddPauseBufferFrames.Click += (sender, e) => AddPauseBufferFrames();
+            _gui.ButtonPasteJoystick.Click += (sender, e) => PasteJoystick();
 
             _gui.ProgressBar.Visible = false;
             _gui.LabelProgressBar.Visible = false;
@@ -343,6 +344,15 @@ namespace STROOP.Managers
             int startFrame = startFrameNullable.Value;
             int endFrame = endFrameNullable.Value;
             _m64File.AddPauseBufferFrames(startFrame, endFrame);
+        }
+
+        private void PasteJoystick()
+        {
+            (int? startFrameNullable, int? endFrameNullable) = GetFrameBounds();
+            if (!startFrameNullable.HasValue || !endFrameNullable.HasValue) return;
+            int startFrame = startFrameNullable.Value;
+            int endFrame = endFrameNullable.Value;
+            _m64File.PasteJoystick(startFrame, endFrame);
         }
 
         private (int? startFrame, int? endFrame) GetFrameBounds()
