@@ -62,7 +62,7 @@ namespace STROOP.Structs
                 List<int> loadingZoneFrames = GenerateRandomLoadingZoneFrames();
                 int rngIndex = RngIndexer.GetRngIndex();
                 int rng = RngIndexer.GetRngValue();
-                foreach (bool isBubbleSpawnerPresent in new List<bool>() { true })
+                foreach (bool isBubbleSpawnerPresent in new List<bool>() { false })
                 {
                     for (int numInitialBubbles = 6; numInitialBubbles <= 6; numInitialBubbles++)
                     {
@@ -101,7 +101,7 @@ namespace STROOP.Structs
                 List<int> bubbleSpawnerMaxTimers = GenerateRandomBubbleSpawnerMaxTimers();
                 foreach (bool isBubbleSpawnerPresent in new List<bool>() { false, true })
                 {
-                    for (int numInitialBubbles = 6; numInitialBubbles <= 6; numInitialBubbles++)
+                    for (int numInitialBubbles = 6; numInitialBubbles <= 11; numInitialBubbles++)
                     {
                         (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
                             Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles, false);
@@ -167,8 +167,8 @@ namespace STROOP.Structs
         {
             List<string> outputList = new List<string>();
             bool rightwards = true;
-            int frame = 1973;
-            for (int i = 1; i < 7; i++)
+            int frame = 1904;
+            for (int i = 1; i < 11; i++)
             {
                 int frames = loadingZoneFrames[i];
                 frame += frames;
