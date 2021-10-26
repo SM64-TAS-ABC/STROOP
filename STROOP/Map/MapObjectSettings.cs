@@ -64,6 +64,9 @@ namespace STROOP.Map
         public readonly bool ChangeArrowAngleOffset;
         public readonly float NewArrowAngleOffset;
 
+        public readonly bool ChangeUsePitch;
+        public readonly bool NewUsePitch;
+
         public readonly bool ChangeSectorAngleRadius;
         public readonly float NewSectorAngleRadius;
 
@@ -197,6 +200,9 @@ namespace STROOP.Map
             bool changeArrowAngleOffset = false,
             float newArrowAngleOffset = 0,
 
+            bool changeUsePitch = false,
+            bool newUsePitch = false,
+
             bool changeSectorAngleRadius = false,
             float newSectorAngleRadius = 0,
 
@@ -328,6 +334,9 @@ namespace STROOP.Map
 
             ChangeArrowAngleOffset = changeArrowAngleOffset;
             NewArrowAngleOffset = newArrowAngleOffset;
+
+            ChangeUsePitch = changeUsePitch;
+            NewUsePitch = newUsePitch;
 
             ChangeSectorAngleRadius = changeSectorAngleRadius;
             NewSectorAngleRadius = newSectorAngleRadius;
