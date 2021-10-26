@@ -19,11 +19,13 @@ namespace STROOP.Map
         private bool _useTruncatedAngle;
         private float _arrowHeadSideLength;
         private float _angleOffset;
+        private bool _usePitch;
 
         private ToolStripMenuItem _itemUseRecommendedArrowLength;
         private ToolStripMenuItem _itemUseTruncatedAngle;
         private ToolStripMenuItem _itemSetArrowHeadSideLength;
         private ToolStripMenuItem _itemSetAngleOffset;
+        private ToolStripMenuItem _itemUsePitch;
 
         private static readonly string SET_ARROW_HEAD_SIDE_LENGTH_TEXT = "Set Arrow Head Side Length";
         private static readonly string SET_ANGLE_OFFSET_TEXT = "Set Angle Offset";
@@ -35,6 +37,7 @@ namespace STROOP.Map
             _useTruncatedAngle = true;
             _arrowHeadSideLength = 100;
             _angleOffset = 0;
+            _usePitch = false;
 
             Size = 300;
             LineWidth = 3;
@@ -133,11 +136,21 @@ namespace STROOP.Map
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
+                _itemUsePitch = new ToolStripMenuItem("Use Pitch");
+                _itemUsePitch.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeUsePitch: true, newUsePitch: !_usePitch);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemUsePitch.Checked = _usePitch;
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(_itemUseRecommendedArrowLength);
                 _contextMenuStrip.Items.Add(_itemUseTruncatedAngle);
                 _contextMenuStrip.Items.Add(_itemSetArrowHeadSideLength);
                 _contextMenuStrip.Items.Add(_itemSetAngleOffset);
+                _contextMenuStrip.Items.Add(_itemUsePitch);
             }
 
             return _contextMenuStrip;
@@ -171,6 +184,12 @@ namespace STROOP.Map
                 _angleOffset = settings.NewArrowAngleOffset;
                 string suffix = string.Format(" ({0})", _angleOffset);
                 _itemSetAngleOffset.Text = SET_ANGLE_OFFSET_TEXT + suffix;
+            }
+
+            if (settings.ChangeUsePitch)
+            {
+                _usePitch = settings.NewUsePitch;
+                _itemUsePitch.Checked = _usePitch;
             }
         }
     }
