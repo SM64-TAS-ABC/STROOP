@@ -23,10 +23,12 @@ namespace STROOP.Map
         private bool _useColoredMarios = true;
         private bool _showQuarterSteps = true;
         private double _numFrames = 4;
+        private bool _usePitch = false;
 
         private ToolStripMenuItem _itemUseColoredMarios;
         private ToolStripMenuItem _itemShowQuarterSteps;
         private ToolStripMenuItem _itemSetNumFrames;
+        private ToolStripMenuItem _itemUsePitch;
 
         private static readonly string SET_NUM_FRAMES_TEXT = "Set Num Frames";
 
@@ -239,10 +241,20 @@ namespace STROOP.Map
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
+                _itemUsePitch = new ToolStripMenuItem("Use Pitch");
+                _itemUsePitch.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeUsePitch: true, newUsePitch: !_usePitch);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemUsePitch.Checked = _usePitch;
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(_itemUseColoredMarios);
                 _contextMenuStrip.Items.Add(_itemShowQuarterSteps);
                 _contextMenuStrip.Items.Add(_itemSetNumFrames);
+                _contextMenuStrip.Items.Add(_itemUsePitch);
             }
 
             return _contextMenuStrip;
@@ -269,6 +281,12 @@ namespace STROOP.Map
                 _numFrames = settings.NewNextPositionsNumFrames;
                 string suffix = string.Format(" ({0})", settings.NewNextPositionsNumFrames);
                 _itemSetNumFrames.Text = SET_NUM_FRAMES_TEXT + suffix;
+            }
+
+            if (settings.ChangeUsePitch)
+            {
+                _usePitch = settings.NewUsePitch;
+                _itemUsePitch.Checked = settings.NewUsePitch;
             }
         }
 
