@@ -53,7 +53,7 @@ namespace STROOP.Map
             float z = (float)posAngle.Z;
             float preYaw = (float)GetYaw() + _angleOffset;
             float yaw = _useTruncatedAngle ? MoreMath.NormalizeAngleTruncated(preYaw) : preYaw;
-            float pitch = (float)GetPitch();
+            float pitch = _usePitch ? (float)GetPitch() : 0;
             float size = _useRecommendedArrowLength ? (float)GetRecommendedSize() : Size;
             if (!Scales) size /= Config.CurrentMapGraphics.MapViewScaleValue;
             float sideLength = _arrowHeadSideLength;
