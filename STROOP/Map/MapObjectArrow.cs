@@ -53,33 +53,58 @@ namespace STROOP.Map
             float z = (float)posAngle.Z;
             float preYaw = (float)GetYaw() + _angleOffset;
             float yaw = _useTruncatedAngle ? MoreMath.NormalizeAngleTruncated(preYaw) : preYaw;
+            float pitch = (float)GetPitch();
             float size = _useRecommendedArrowLength ? (float)GetRecommendedSize() : Size;
             if (!Scales) size /= Config.CurrentMapGraphics.MapViewScaleValue;
-            (float arrowHeadX, float arrowHeadZ) =
-                ((float, float))MoreMath.AddVectorToPoint(size, yaw, x, z);
-
             float sideLength = _arrowHeadSideLength;
             if (!Scales) sideLength /= Config.CurrentMapGraphics.MapViewScaleValue;
-            (float pointSide1X, float pointSide1Z) =
-                ((float, float))MoreMath.AddVectorToPoint(sideLength, yaw + 32768 + 8192, arrowHeadX, arrowHeadZ);
-            (float pointSide2X, float pointSide2Z) =
-                ((float, float))MoreMath.AddVectorToPoint(sideLength, yaw + 32768 - 8192, arrowHeadX, arrowHeadZ);
+
+            float arrowHeadX;
+            float arrowHeadY;
+            float arrowHeadZ;
+            if (_usePitch)
+            {
+                (arrowHeadX, arrowHeadY, arrowHeadZ) = ((float, float, float))
+                    MoreMath.AddVectorToPointWithPitch(size, yaw, pitch, x, y, z);
+            }
+            else
+            {
+                (arrowHeadX, arrowHeadZ) = ((float, float))
+                    MoreMath.AddVectorToPoint(size, yaw, x, z);
+                arrowHeadY = y;
+            }
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-
             vertices.Add((x, y, z));
             vertices.Add((arrowHeadX, y, arrowHeadZ));
 
-            vertices.Add((arrowHeadX, y, arrowHeadZ));
-            vertices.Add((pointSide1X, y, pointSide1Z));
+            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+            {
 
-            vertices.Add((arrowHeadX, y, arrowHeadZ));
-            vertices.Add((pointSide2X, y, pointSide2Z));
+            }
+            else
+            {
+                (float pointSide1X, float pointSide1Z) =
+                    ((float, float))MoreMath.AddVectorToPoint(sideLength, yaw + 32768 + 8192, arrowHeadX, arrowHeadZ);
+                (float pointSide2X, float pointSide2Z) =
+                    ((float, float))MoreMath.AddVectorToPoint(sideLength, yaw + 32768 - 8192, arrowHeadX, arrowHeadZ);
+
+                vertices.Add((arrowHeadX, arrowHeadY, arrowHeadZ));
+                vertices.Add((pointSide1X, arrowHeadY, pointSide1Z));
+
+                vertices.Add((arrowHeadX, arrowHeadY, arrowHeadZ));
+                vertices.Add((pointSide2X, arrowHeadY, pointSide2Z));
+            }
 
             return vertices;
         }
 
         protected abstract double GetYaw();
+
+        protected double GetPitch()
+        {
+            return Config.Stream.GetShort(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
+        }
 
         protected abstract double GetRecommendedSize();
 
