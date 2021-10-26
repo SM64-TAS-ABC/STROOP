@@ -175,7 +175,7 @@ namespace STROOP.Map
                     if (_usePitch)
                     {
                         return ((float x, float y, float z))MoreMath.AddVectorToPointWithPitch(
-                            frameStep * effectiveSpeed, marioYaw, marioPitch, marioX, marioY, marioZ);
+                            frameStep * effectiveSpeed, marioYaw, marioPitch, marioX, marioY, marioZ, false);
                     }
                     else
                     {

@@ -65,7 +65,7 @@ namespace STROOP.Map
             if (_usePitch)
             {
                 (arrowHeadX, arrowHeadY, arrowHeadZ) = ((float, float, float))
-                    MoreMath.AddVectorToPointWithPitch(size, yaw, pitch, x, y, z);
+                    MoreMath.AddVectorToPointWithPitch(size, yaw, pitch, x, y, z, false);
             }
             else
             {
@@ -82,10 +82,10 @@ namespace STROOP.Map
             {
                 (float pointSide1X, float pointSide1Y, float pointSide1Z) =
                     ((float, float, float))MoreMath.AddVectorToPointWithPitch(
-                        sideLength, yaw + 32768, -pitch + 8192, arrowHeadX, arrowHeadY, arrowHeadZ);
+                        sideLength, yaw + 32768, -pitch + 8192, arrowHeadX, arrowHeadY, arrowHeadZ, false);
                 (float pointSide2X, float pointSide2Y, float pointSide2Z) =
                     ((float, float, float))MoreMath.AddVectorToPointWithPitch(
-                        sideLength, yaw + 32768, -pitch - 8192, arrowHeadX, arrowHeadY, arrowHeadZ);
+                        sideLength, yaw + 32768, -pitch - 8192, arrowHeadX, arrowHeadY, arrowHeadZ, false);
 
                 vertices.Add((arrowHeadX, arrowHeadY, arrowHeadZ));
                 vertices.Add((pointSide1X, pointSide1Y, pointSide1Z));

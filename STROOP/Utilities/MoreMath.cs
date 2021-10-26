@@ -116,10 +116,10 @@ namespace STROOP.Utilities
         }
 
         public static (double x, double y, double z) AddVectorToPointWithPitch(
-            double magnitude, double angle, double pitch, double x, double y, double z)
+            double magnitude, double angle, double pitch, double x, double y, double z, bool clamp)
         {
             (double x2, double z2) = AddVectorToPoint(magnitude, angle, x, z);
-            return OffsetSphericallyAboutPivot(x2, y, z2, 0, 0, pitch, x, y, z);
+            return OffsetSphericallyAboutPivot(x2, y, z2, 0, 0, pitch, x, y, z, clamp);
         }
 
         public static (double sidewaysDist, double forwardsDist) GetComponentsFromVectorRelatively(
@@ -558,21 +558,22 @@ namespace STROOP.Utilities
         }
 
         public static (double x, double y, double z) OffsetSpherically(
-            double x, double y, double z, double radiusChange, double thetaChangeAngleUnits, double phiChangeAngleUnits)
+            double x, double y, double z, double radiusChange, double thetaChangeAngleUnits, double phiChangeAngleUnits, bool clamp)
         {
             double oldRadius, oldTheta, oldPhi;
             (oldRadius, oldTheta, oldPhi) = EulerToSpherical_AngleUnits(x, y, z);
 
             double newRadius = Math.Max(oldRadius + radiusChange, 0);
             double newTheta = NonNegativeModulus(oldTheta + thetaChangeAngleUnits, 65536);
-            double newPhi = Clamp(NormalizeAngleDoubleSigned(oldPhi) + phiChangeAngleUnits, -16384, 16384);
+            double newPhi = NormalizeAngleDoubleSigned(oldPhi) + phiChangeAngleUnits;
+            if (clamp) newPhi = Clamp(newPhi, -16384, 16384);
          
             return SphericalToEuler_AngleUnits(newRadius, newTheta, newPhi);
         }
 
         public static (double x, double y, double z) OffsetSphericallyAboutPivot(
             double x, double y, double z, double radiusChange, double thetaChangeAngleUnits, double phiChangeAngleUnits,
-            double pivotX, double pivotY, double pivotZ)
+            double pivotX, double pivotY, double pivotZ, bool clamp)
         {
             double oldRelX = x - pivotX;
             double oldRelY = y - pivotY;
@@ -580,7 +581,7 @@ namespace STROOP.Utilities
 
             double newRelX, newRelY, newRelZ;
             (newRelX, newRelY, newRelZ) =
-                OffsetSpherically(oldRelX, oldRelY, oldRelZ, radiusChange, thetaChangeAngleUnits, phiChangeAngleUnits);
+                OffsetSpherically(oldRelX, oldRelY, oldRelZ, radiusChange, thetaChangeAngleUnits, phiChangeAngleUnits, clamp);
 
             return (newRelX + pivotX, newRelY + pivotY, newRelZ + pivotZ);
         }

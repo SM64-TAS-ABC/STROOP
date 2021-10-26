@@ -109,7 +109,7 @@ namespace STROOP.Utilities
             }
 
             double thetaChange = MoreMath.NormalizeAngleDouble(relativeAngle - 32768);
-            (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0);
+            (xOffset, _, zOffset) = ((float, float, float))MoreMath.OffsetSpherically(xOffset, 0, zOffset, 0, thetaChange, 0, true);
         }
 
         public static bool GotoObjects(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
@@ -1269,7 +1269,7 @@ namespace STROOP.Utilities
             oldZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.ZOffset);
 
             double newX, newY, newZ;
-            (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ);
+            (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ, true);
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
@@ -1304,7 +1304,7 @@ namespace STROOP.Utilities
             oldZ = Config.Stream.GetFloat(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
 
             double newX, newY, newZ;
-            (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ);
+            (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ, true);
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
@@ -1460,7 +1460,7 @@ namespace STROOP.Utilities
 
                         double xDestination, yDestination, zDestination;
                         (xDestination, yDestination, zDestination) =
-                            MoreMath.OffsetSphericallyAboutPivot(xCamPos, yCamPos, zCamPos, radiusOffset, thetaOffset, phiOffset, xFocus, yFocus, zFocus);
+                            MoreMath.OffsetSphericallyAboutPivot(xCamPos, yCamPos, zCamPos, radiusOffset, thetaOffset, phiOffset, xFocus, yFocus, zFocus, true);
 
                         return ChangeValues(
                             new List<PositionAngle> { PositionAngle.CamHackCamera },
@@ -1485,7 +1485,7 @@ namespace STROOP.Utilities
 
                         double xDestination, yDestination, zDestination;
                         (xDestination, yDestination, zDestination) =
-                            MoreMath.OffsetSphericallyAboutPivot(xCamPos, yCamPos, zCamPos, radiusOffset, thetaOffset, phiOffset, xFocus, yFocus, zFocus);
+                            MoreMath.OffsetSphericallyAboutPivot(xCamPos, yCamPos, zCamPos, radiusOffset, thetaOffset, phiOffset, xFocus, yFocus, zFocus, true);
 
                         double radius, theta, height;
                         (radius, theta, height) = MoreMath.EulerToCylindricalAboutPivot(xDestination, yDestination, zDestination, xFocus, yFocus, zFocus);
@@ -1542,7 +1542,7 @@ namespace STROOP.Utilities
 
             double xDestination, yDestination, zDestination;
             (xDestination, yDestination, zDestination) =
-                MoreMath.OffsetSphericallyAboutPivot(xFocus, yFocus, zFocus, radiusOffset, thetaOffset, phiOffset, xCamPos, yCamPos, zCamPos);
+                MoreMath.OffsetSphericallyAboutPivot(xFocus, yFocus, zFocus, radiusOffset, thetaOffset, phiOffset, xCamPos, yCamPos, zCamPos, true);
 
             return ChangeValues(
                 new List<PositionAngle> { focusPosAngle },
@@ -1615,7 +1615,7 @@ namespace STROOP.Utilities
                 MoreMath.OffsetSphericallyAboutPivot(
                     MapConfig.Map3DCameraX, MapConfig.Map3DCameraY, MapConfig.Map3DCameraZ,
                     radiusOffset, thetaOffset, phiOffset,
-                    MapConfig.Map3DFocusX, MapConfig.Map3DFocusY, MapConfig.Map3DFocusZ);
+                    MapConfig.Map3DFocusX, MapConfig.Map3DFocusY, MapConfig.Map3DFocusZ, true);
 
             MapConfig.Map3DCameraX = (float)newX;
             MapConfig.Map3DCameraY = (float)newY;
@@ -1647,7 +1647,7 @@ namespace STROOP.Utilities
                 MoreMath.OffsetSphericallyAboutPivot(
                     MapConfig.Map3DFocusX, MapConfig.Map3DFocusY, MapConfig.Map3DFocusZ,
                     radiusOffset, thetaOffset, phiOffset,
-                    MapConfig.Map3DCameraX, MapConfig.Map3DCameraY, MapConfig.Map3DCameraZ);
+                    MapConfig.Map3DCameraX, MapConfig.Map3DCameraY, MapConfig.Map3DCameraZ, true);
 
             MapConfig.Map3DFocusX = (float)newX;
             MapConfig.Map3DFocusY = (float)newY;
