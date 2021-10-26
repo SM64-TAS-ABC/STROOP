@@ -67,6 +67,6 @@ namespace STROOP.Structs.Gui
         public Button ButtonQuickDuplicationDuplicate;
 
         public Button ButtonAddPauseBufferFrames;
-        public Button ButtonPasteJoystick;
+        public Button ButtonCopyClipboardForJoystick;
     }
 }

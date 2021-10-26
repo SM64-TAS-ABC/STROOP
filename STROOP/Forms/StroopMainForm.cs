@@ -430,7 +430,7 @@ namespace STROOP
                 ButtonQuickDuplicationDuplicate = buttonM64QuickDuplicationDuplicate,
 
                 ButtonAddPauseBufferFrames = buttonM64AddPauseBufferFrames,
-                ButtonPasteJoystick = buttonM64PasteJoystick,
+                ButtonCopyClipboardForJoystick = buttonM64CopyClipboardForJoystick,
             };
 
             // Create managers

@@ -273,31 +273,6 @@ namespace STROOP.M64
             Config.M64Manager.UpdateSelectionTextboxes();
         }
 
-        public void PasteJoystick(int startIndex, int endIndex)
-        {
-            if (RawBytes == null) return;
-            if (startIndex > endIndex) return;
-            startIndex = MoreMath.Clamp(startIndex, 0, Inputs.Count - 1);
-            endIndex = MoreMath.Clamp(endIndex, 0, Inputs.Count - 1);
-
-            List<int> clipboardValues = ParsingUtilities.ParseIntList(Clipboard.GetText()).ConvertAll(i => i ?? 0);
-            if (clipboardValues.Count == 0) return;
-
-            int count = 0;
-            for (int index = startIndex; index <= endIndex; index++)
-            {
-                Inputs[index].X = ParsingUtilities.ParseSByte(clipboardValues[count]);
-                count = (count + 1) % clipboardValues.Count;
-                Inputs[index].Y = ParsingUtilities.ParseSByte(clipboardValues[count]);
-                count = (count + 1) % clipboardValues.Count;
-            }
-
-            Config.M64Manager.UpdateTableSettings(ModifiedFrames);
-            IsModified = true;
-            _gui.DataGridViewInputs.Refresh();
-            Config.M64Manager.UpdateSelectionTextboxes();
-        }
-
         private void SetPasteProgressVisibility(bool visibility)
         {
             _gui.LabelProgressBar.Visible = visibility;
