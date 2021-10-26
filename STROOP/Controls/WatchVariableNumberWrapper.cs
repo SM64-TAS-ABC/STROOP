@@ -114,6 +114,9 @@ namespace STROOP.Controls
             ToolStripMenuItem itemCopyCoordinatesCommas = new ToolStripMenuItem("Copy Coordinates with Commas");
             itemCopyCoordinatesCommas.Click += (sender, e) => copyCoordinatesWithSeparator(",");
 
+            ToolStripMenuItem itemCopyCoordinatesSpaces = new ToolStripMenuItem("Copy Coordinates with Spaces");
+            itemCopyCoordinatesSpaces.Click += (sender, e) => copyCoordinatesWithSeparator(" ");
+
             ToolStripMenuItem itemCopyCoordinatesTabs = new ToolStripMenuItem("Copy Coordinates with Tabs");
             itemCopyCoordinatesTabs.Click += (sender, e) => copyCoordinatesWithSeparator("\t");
 
@@ -124,6 +127,7 @@ namespace STROOP.Controls
             itemCopyCoordinatesCommasAndSpaces.Click += (sender, e) => copyCoordinatesWithSeparator(", ");
 
             _itemCopyCoordinates.DropDownItems.Add(itemCopyCoordinatesCommas);
+            _itemCopyCoordinates.DropDownItems.Add(itemCopyCoordinatesSpaces);
             _itemCopyCoordinates.DropDownItems.Add(itemCopyCoordinatesTabs);
             _itemCopyCoordinates.DropDownItems.Add(itemCopyCoordinatesLineBreaks);
             _itemCopyCoordinates.DropDownItems.Add(itemCopyCoordinatesCommasAndSpaces);

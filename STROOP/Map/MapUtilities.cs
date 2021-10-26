@@ -918,6 +918,7 @@ namespace STROOP.Map
                     ("Spaces", " "),
                     ("Tabs", "\t"),
                     ("Line Breaks", "\r\n"),
+                    ("Commas and Spaces", ", "),
                 };
 
             ToolStripMenuItem copyItem = new ToolStripMenuItem("Copy " + copyWord + "...");
