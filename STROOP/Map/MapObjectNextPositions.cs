@@ -154,8 +154,9 @@ namespace STROOP.Map
             float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
             float marioYSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
             float marioHSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-            ushort preAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-            ushort marioAngle = MoreMath.NormalizeAngleTruncated(preAngle);
+            ushort preYaw = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            ushort marioYaw = MoreMath.NormalizeAngleTruncated(preYaw);
+            short marioPitch = Config.Stream.GetShort(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
 
             float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
             float multiplier = 1;
@@ -167,10 +168,22 @@ namespace STROOP.Map
             }
             float effectiveSpeed = marioHSpeed * multiplier;
 
-            List<(float x, float z)> points2D = Enumerable.Range(0, (int)(_numFrames * 4)).ToList()
+            List<(float x, float y, float z)> points2D = Enumerable.Range(0, (int)(_numFrames * 4)).ToList()
                 .ConvertAll(index => 0.25 + index / 4.0)
-                .ConvertAll(frameStep => ((float x, float z))MoreMath.AddVectorToPoint(
-                    frameStep * effectiveSpeed, marioAngle, marioX, marioZ));
+                .ConvertAll(frameStep =>
+                {
+                    if (_usePitch)
+                    {
+                        return ((float x, float y, float z))MoreMath.AddVectorToPointWithPitch(
+                            frameStep * effectiveSpeed, marioYaw, marioPitch, marioX, marioY, marioZ);
+                    }
+                    else
+                    {
+                        (float x, float z) = ((float x, float z))MoreMath.AddVectorToPoint(
+                            frameStep * effectiveSpeed, marioYaw, marioX, marioZ);
+                        return (x, marioY, z);
+                    }
+                });
 
             int fullStepTex = _useColoredMarios ? _blueMarioTex : _redMarioTex;
             int quarterStepTex = _useColoredMarios ? _orangeMarioTex : _redMarioTex;
@@ -180,9 +193,9 @@ namespace STROOP.Map
             {
                 bool isFullStep = i % 4 == 3;
                 if (!isFullStep && !_showQuarterSteps) continue;
-                (float x, float z) = points2D[i];
+                (float x, float y, float z) = points2D[i];
                 int tex = isFullStep ? fullStepTex : quarterStepTex;
-                data.Add((x, marioY, z, marioAngle, tex));
+                data.Add((x, y, z, marioYaw, tex));
             }
             return data;
         }

@@ -108,11 +108,18 @@ namespace STROOP.Utilities
             return (magnitude * xComponent, magnitude * zComponent);
         }
 
-        public static (double xDist, double zDist) AddVectorToPoint(
-            double magnitude, double angle, double x1, double z1)
+        public static (double x, double z) AddVectorToPoint(
+            double magnitude, double angle, double x, double z)
         {
             (double xDist, double zDist) = GetComponentsFromVector(magnitude, angle);
-            return (x1 + xDist, z1 + zDist);
+            return (x + xDist, z + zDist);
+        }
+
+        public static (double x, double y, double z) AddVectorToPointWithPitch(
+            double magnitude, double angle, double pitch, double x, double y, double z)
+        {
+            (double x2, double z2) = AddVectorToPoint(magnitude, angle, x, z);
+            return OffsetSphericallyAboutPivot(x2, y, z2, 0, 0, pitch, x, y, z);
         }
 
         public static (double sidewaysDist, double forwardsDist) GetComponentsFromVectorRelatively(
