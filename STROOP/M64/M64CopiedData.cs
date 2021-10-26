@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -7,11 +8,10 @@ namespace STROOP.M64
 {
     public class M64CopiedData
     {
-        public int TotalFrames { get => _totalFrames; }
+        public int TotalFrames { get => _copiedFrames.Count; }
 
         private readonly int _startFrame;
         private readonly int _endFrame;
-        private readonly int _totalFrames;
         private readonly string _typeString;
         private readonly string _fileName;
         private readonly string _customName;
@@ -27,12 +27,10 @@ namespace STROOP.M64
         {
             _startFrame = startFrame;
             _endFrame = endFrame;
-            _totalFrames = endFrame - startFrame + 1;
             _typeString = typeString;
             _fileName = fileName;
             _customName = customName;
             _copiedFrames = copiedFrames;
-            if (_totalFrames != copiedFrames.Count) throw new ArgumentOutOfRangeException();
         }
 
         public static M64CopiedData CreateCopiedData(
@@ -51,6 +49,20 @@ namespace STROOP.M64
                 input => M64CopiedFrame.CreateCopiedFrame(input, useRows, inputsString));
 
             return new M64CopiedData(startFrame, endFrame, type, fileName, null /* customName */, copiedFrames);
+        }
+
+        public static M64CopiedData CreateCopiedDataFromClipboardForJoystick()
+        {
+            List<string> stringList = ParsingUtilities.ParseStringList(Clipboard.GetText());
+            List<M64CopiedFrame> frames = new List<M64CopiedFrame>();
+            for (int i = 0; i < stringList.Count - 1; i += 2)
+            {
+                sbyte x = ParsingUtilities.ParseSByte(stringList[i]);
+                sbyte y = ParsingUtilities.ParseSByte(stringList[i + 1]);
+                M64CopiedFrame frame = new M64CopiedFrame(X: x, Y: y);
+                frames.Add(frame);
+            }
+            return new M64CopiedData(0, 0, null, null, string.Format("{0}f Joystick", frames.Count), frames);
         }
 
         public static readonly M64CopiedData OneEmptyFrame =
@@ -84,7 +96,7 @@ namespace STROOP.M64
             if (_customName != null) return _customName;
             return String.Format(
                 "{0}f [{1}] {2}-{3} @{4}",
-                _totalFrames, _typeString, _startFrame, _endFrame, _fileName);
+                TotalFrames, _typeString, _startFrame, _endFrame, _fileName);
         }
 
         internal uint GetRawValue(int index)

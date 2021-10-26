@@ -135,7 +135,10 @@ namespace STROOP.Managers
 
         private void CopyClipboardForJoystick()
         {
-
+            M64CopiedData copiedData = M64CopiedData.CreateCopiedDataFromClipboardForJoystick();
+            if (copiedData == null) return;
+            _gui.ListBoxCopied.Items.Add(copiedData);
+            _gui.ListBoxCopied.SelectedItem = copiedData;
         }
 
         private void CopyHeaderRomVersion()
