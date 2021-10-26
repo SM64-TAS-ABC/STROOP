@@ -36,6 +36,11 @@ namespace STROOP.Map
             return targetAngle + (short)(3000 * InGameTrigUtilities.InGameCosine(4000 * (int)globalTimer));
         }
 
+        protected override double GetPitch()
+        {
+            return -1 * Config.Stream.GetShort(_posAngle.GetObjAddress() + ObjectConfig.PitchFacingOffset);
+        }
+
         protected override double GetRecommendedSize()
         {
             return Config.Stream.GetFloat(_posAngle.GetObjAddress() + ObjectConfig.HSpeedOffset);

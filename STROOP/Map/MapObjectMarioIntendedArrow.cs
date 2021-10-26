@@ -34,6 +34,11 @@ namespace STROOP.Map
             return Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
         }
 
+        protected override double GetPitch()
+        {
+            return Config.Stream.GetShort(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
+        }
+
         protected override double GetRecommendedSize()
         {
             return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);

@@ -34,6 +34,11 @@ namespace STROOP.Map
             return WatchVariableSpecialUtilities.GetMarioSlidingAngle();
         }
 
+        protected override double GetPitch()
+        {
+            return Config.Stream.GetShort(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
+        }
+
         protected override double GetRecommendedSize()
         {
             return WatchVariableSpecialUtilities.GetMarioSlidingSpeed();

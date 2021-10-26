@@ -112,10 +112,7 @@ namespace STROOP.Map
 
         protected abstract double GetYaw();
 
-        protected double GetPitch()
-        {
-            return Config.Stream.GetShort(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
-        }
+        protected abstract double GetPitch();
 
         protected abstract double GetRecommendedSize();
 

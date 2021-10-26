@@ -34,6 +34,11 @@ namespace STROOP.Map
             return Config.Stream.GetUShort(_posAngle.GetObjAddress() + ObjectConfig.YawFacingOffset);
         }
 
+        protected override double GetPitch()
+        {
+            return -1 * Config.Stream.GetShort(_posAngle.GetObjAddress() + ObjectConfig.PitchFacingOffset);
+        }
+
         protected override double GetRecommendedSize()
         {
             return Config.Stream.GetFloat(_posAngle.GetObjAddress() + ObjectConfig.HSpeedOffset);

@@ -36,6 +36,11 @@ namespace STROOP.Map
             return _anglePA.Angle;
         }
 
+        protected override double GetPitch()
+        {
+            return 0;
+        }
+
         protected override double GetRecommendedSize()
         {
             return 100;
