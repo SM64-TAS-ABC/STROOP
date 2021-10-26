@@ -76,11 +76,22 @@ namespace STROOP.Map
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             vertices.Add((x, y, z));
-            vertices.Add((arrowHeadX, y, arrowHeadZ));
+            vertices.Add((arrowHeadX, arrowHeadY, arrowHeadZ));
 
             if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
             {
+                (float pointSide1X, float pointSide1Y, float pointSide1Z) =
+                    ((float, float, float))MoreMath.AddVectorToPointWithPitch(
+                        sideLength, yaw + 32768, -pitch + 8192, arrowHeadX, arrowHeadY, arrowHeadZ);
+                (float pointSide2X, float pointSide2Y, float pointSide2Z) =
+                    ((float, float, float))MoreMath.AddVectorToPointWithPitch(
+                        sideLength, yaw + 32768, -pitch - 8192, arrowHeadX, arrowHeadY, arrowHeadZ);
 
+                vertices.Add((arrowHeadX, arrowHeadY, arrowHeadZ));
+                vertices.Add((pointSide1X, pointSide1Y, pointSide1Z));
+
+                vertices.Add((arrowHeadX, arrowHeadY, arrowHeadZ));
+                vertices.Add((pointSide2X, pointSide2Y, pointSide2Z));
             }
             else
             {
