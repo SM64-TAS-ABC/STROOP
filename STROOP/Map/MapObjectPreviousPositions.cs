@@ -386,29 +386,82 @@ namespace STROOP.Map
             float pos15X = Config.Stream.GetFloat(0x80372FE0);
             float pos15Y = Config.Stream.GetFloat(0x80372FE4);
             float pos15Z = Config.Stream.GetFloat(0x80372FE8);
-            float pos15A = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            float pos15A = Config.Stream.GetUShort(0x80372FEE);
 
-            int numQFrames = Config.Stream.GetInt(0x80372E3C) / 0x30;
-            int numPoints = numQFrames * 3;
+            float pos16X = Config.Stream.GetFloat(0x80372FF0);
+            float pos16Y = Config.Stream.GetFloat(0x80372FF4);
+            float pos16Z = Config.Stream.GetFloat(0x80372FF8);
+            float pos16A = Config.Stream.GetUShort(0x80372FFE);
+
+            float pos17X = Config.Stream.GetFloat(0x80373000);
+            float pos17Y = Config.Stream.GetFloat(0x80373004);
+            float pos17Z = Config.Stream.GetFloat(0x80373008);
+            float pos17A = Config.Stream.GetUShort(0x8037300E);
+
+            float pos18X = Config.Stream.GetFloat(0x80373010);
+            float pos18Y = Config.Stream.GetFloat(0x80373014);
+            float pos18Z = Config.Stream.GetFloat(0x80373018);
+            float pos18A = Config.Stream.GetUShort(0x8037301E);
+
+            float pos19X = Config.Stream.GetFloat(0x80373020);
+            float pos19Y = Config.Stream.GetFloat(0x80373024);
+            float pos19Z = Config.Stream.GetFloat(0x80373028);
+            float pos19A = Config.Stream.GetUShort(0x8037302E);
+
+            float pos20X = Config.Stream.GetFloat(0x80373030);
+            float pos20Y = Config.Stream.GetFloat(0x80373034);
+            float pos20Z = Config.Stream.GetFloat(0x80373038);
+            float pos20A = Config.Stream.GetUShort(0x8037303E);
+
+            float pos21X = Config.Stream.GetFloat(0x80373040);
+            float pos21Y = Config.Stream.GetFloat(0x80373044);
+            float pos21Z = Config.Stream.GetFloat(0x80373048);
+            float pos21A = Config.Stream.GetUShort(0x8037304E);
+
+            float pos22X = Config.Stream.GetFloat(0x80373050);
+            float pos22Y = Config.Stream.GetFloat(0x80373054);
+            float pos22Z = Config.Stream.GetFloat(0x80373058);
+            float pos22A = Config.Stream.GetUShort(0x8037305E);
+
+            float pos23X = Config.Stream.GetFloat(0x80373060);
+            float pos23Y = Config.Stream.GetFloat(0x80373064);
+            float pos23Z = Config.Stream.GetFloat(0x80373068);
+            float pos23A = Config.Stream.GetUShort(0x8037306E);
+
+            float pos24X = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float pos24Y = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float pos24Z = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float pos24A = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+
+            int numQFrames = (Config.Stream.GetInt(0x80372E3C) - 112) / 64;
+            int numPoints = 7 + 4 * numQFrames;
 
             List<(float x, float y, float z, float angle, int tex)> allResults =
                 new List<(float x, float y, float z, float angle, int tex)>()
                 {
-                    (pos01X, pos01Y, pos01Z, pos01A, _purpleMarioTex), // initial
-                    (pos02X, pos02Y, pos02Z, pos02A, _blueMarioTex), // wall1
-                    (pos03X, pos03Y, pos03Z, pos03A, _greenMarioTex), // wall2
-                    (pos04X, pos04Y, pos04Z, pos04A, _orangeMarioTex), // qstep1
-                    (pos05X, pos05Y, pos05Z, pos05A, _blueMarioTex), // wall1
-                    (pos06X, pos06Y, pos06Z, pos06A, _greenMarioTex), // wall2
-                    (pos07X, pos07Y, pos07Z, pos07A, _orangeMarioTex), //qstep2
-                    (pos08X, pos08Y, pos08Z, pos08A, _blueMarioTex), // wall1
-                    (pos09X, pos09Y, pos09Z, pos09A, _greenMarioTex), // wall2
-                    (pos10X, pos10Y, pos10Z, pos10A, _orangeMarioTex), // qstep3
-                    (pos11X, pos11Y, pos11Z, pos11A, _blueMarioTex), // wall1
-                    (pos12X, pos12Y, pos12Z, pos12A, _greenMarioTex), // wall2
-                    (pos13X, pos13Y, pos13Z, pos13A, _orangeMarioTex), // qstep4
-                    (pos14X, pos14Y, pos14Z, pos14A, _blueMarioTex), // wall1
-                    (pos15X, pos15Y, pos15Z, pos15A, _redMarioTex), // wall2
+                    (pos01X, pos01Y, pos01Z, pos01A, _whiteMarioTex), // initial
+                    (pos02X, pos02Y, pos02Z, pos02A, _greyMarioTex), // platform displacement
+                    (pos03X, pos03Y, pos03Z, pos03A, _torquosieMarioTex), // wall0A
+                    (pos04X, pos04Y, pos04Z, pos04A, _greenMarioTex), // wall0B
+                    (pos05X, pos05Y, pos05Z, pos05A, _purpleMarioTex), // warp_area
+                    (pos06X, pos06Y, pos06Z, pos06A, _pinkMarioTex), // check_instant_warp
+                    (pos07X, pos07Y, pos07Z, pos07A, _brownMarioTex), // obj interactions
+                    (pos08X, pos08Y, pos08Z, pos08A, _orangeMarioTex), // qstep1
+                    (pos09X, pos09Y, pos09Z, pos09A, _torquosieMarioTex), // wall1A
+                    (pos10X, pos10Y, pos10Z, pos10A, _greenMarioTex), // wall1B
+                    (pos11X, pos11Y, pos11Z, pos11A, _blueMarioTex), // floor1
+                    (pos12X, pos12Y, pos12Z, pos12A, _orangeMarioTex), // qstep2
+                    (pos13X, pos13Y, pos13Z, pos13A, _torquosieMarioTex), // wall2A
+                    (pos14X, pos14Y, pos14Z, pos14A, _greenMarioTex), // wall2B
+                    (pos15X, pos15Y, pos15Z, pos15A, _blueMarioTex), // floor2
+                    (pos16X, pos16Y, pos16Z, pos16A, _orangeMarioTex), // qstep3
+                    (pos17X, pos17Y, pos17Z, pos17A, _torquosieMarioTex), // wall3A
+                    (pos18X, pos18Y, pos18Z, pos18A, _greenMarioTex), // wall3B
+                    (pos19X, pos19Y, pos19Z, pos19A, _blueMarioTex), // floor3
+                    (pos20X, pos20Y, pos20Z, pos20A, _orangeMarioTex), // qstep4
+                    (pos21X, pos21Y, pos21Z, pos21A, _torquosieMarioTex), // wall4A
+                    (pos22X, pos22Y, pos22Z, pos22A, _greenMarioTex), // wall4B
+                    (pos23X, pos23Y, pos23Z, pos23A, _blueMarioTex), // floor4
                 };
 
             double secondsPerPoint = 0.5;
