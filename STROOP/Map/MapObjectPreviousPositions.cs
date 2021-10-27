@@ -219,7 +219,6 @@ namespace STROOP.Map
 
         public void DrawOn3DControl(List<(float x, float y, float z, float angle, int tex, bool show)> data)
         {
-            data.Reverse();
             foreach (var dataPoint in data)
             {
                 (float x, float y, float z, float angle, int tex, bool show) = dataPoint;
@@ -439,7 +438,7 @@ namespace STROOP.Map
             List<(float x, float y, float z, float angle, int tex)> allResults =
                 new List<(float x, float y, float z, float angle, int tex)>()
                 {
-                    (pos01X, pos01Y, pos01Z, pos01A, _whiteMarioTex), // initial
+                    (pos01X, pos01Y, pos01Z, pos01A, _yellowMarioTex), // initial
                     (pos02X, pos02Y, pos02Z, pos02A, _greyMarioTex), // platform displacement
                     (pos03X, pos03Y, pos03Z, pos03A, _torquosieMarioTex), // wall0A
                     (pos04X, pos04Y, pos04Z, pos04A, _greenMarioTex), // wall0B
@@ -483,10 +482,11 @@ namespace STROOP.Map
             for (int i = 0; i < Math.Min(numPoints, allResults.Count); i++)
             {
                 (float x, float y, float z, float angle, int tex) = allResults[i];
-                tex = i == numPoints - 1 ? _redMarioTex : tex;
                 bool show = pointToShow.HasValue ? i == pointToShow.Value : true;
                 partialResults.Add((x, y, z, angle, tex, show));
             }
+
+            partialResults.Reverse();
             return partialResults;
         }
 
