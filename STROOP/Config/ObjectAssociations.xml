@@ -36,6 +36,24 @@
   <PurpleMario>
     <MapImage path="Mario Purple.png"/>
   </PurpleMario>
+  <TorquoiseMario>
+    <MapImage path="Mario Torquoise.png"/>
+  </TorquoiseMario>
+  <YellowMario>
+    <MapImage path="Mario Yellow.png"/>
+  </YellowMario>
+  <PinkMario>
+    <MapImage path="Mario Pink.png"/>
+  </PinkMario>
+  <BrownMario>
+    <MapImage path="Mario Brown.png"/>
+  </BrownMario>
+  <WhiteMario>
+    <MapImage path="Mario White.png"/>
+  </WhiteMario>
+  <GreyMario>
+    <MapImage path="Mario Grey.png"/>
+  </GreyMario>
   <CameraFocus>
     <MapImage path="Reticule.png"/>
   </CameraFocus>

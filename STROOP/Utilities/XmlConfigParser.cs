@@ -238,8 +238,9 @@ namespace STROOP.Utilities
                 marioImagePath = "", holpMapImagePath = "", greenHolpMapImagePath = "",
                 homeMapImagePath = "", intendedNextPositionImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
-                blueMarioMapImagePath = "", greenMarioMapImagePath = "", orangeMarioMapImagePath = "", purpleMarioMapImagePath = "", cameraFocusImagePath = "",
-                triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "", hitboxHackTrisImagePath = "",
+                blueMarioMapImagePath = "", greenMarioMapImagePath = "", orangeMarioMapImagePath = "", purpleMarioMapImagePath = "", torquoiseMarioMapImagePath = "",
+                yellowMarioMapImagePath = "", pinkMarioMapImagePath = "", brownMarioMapImagePath = "", whiteMarioMapImagePath = "", greyMarioMapImagePath = "",
+                cameraFocusImagePath = "", triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "", hitboxHackTrisImagePath = "",
                 cellGridlinesImagePath = "", currentCellImagePath = "", unitGridlinesImagePath = "", currentUnitImagePath = "",
                 nextPositionsImagePath = "", arrowImagePath = "", iwerlipsesImagePath = "", cylinderImagePath = "", sphereImagePath = "",
                 pathImagePath = "", customPointsImagePath = "", customGridlinesImagePath = "",
@@ -337,6 +338,30 @@ namespace STROOP.Utilities
 
                     case "PurpleMario":
                         purpleMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "TorquoiseMario":
+                        torquoiseMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "YellowMario":
+                        yellowMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "PinkMario":
+                        pinkMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "BrownMario":
+                        brownMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "WhiteMario":
+                        whiteMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "GreyMario":
+                        greyMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "CameraFocus":
@@ -728,6 +753,12 @@ namespace STROOP.Utilities
             assoc.GreenMarioMapImage = Image.FromFile(mapImageDir + greenMarioMapImagePath);
             assoc.OrangeMarioMapImage = Image.FromFile(mapImageDir + orangeMarioMapImagePath);
             assoc.PurpleMarioMapImage = Image.FromFile(mapImageDir + purpleMarioMapImagePath);
+            assoc.TurqoiseMarioMapImage = Image.FromFile(mapImageDir + torquoiseMarioMapImagePath);
+            assoc.YellowMarioMapImage = Image.FromFile(mapImageDir + yellowMarioMapImagePath);
+            assoc.PinkMarioMapImage = Image.FromFile(mapImageDir + pinkMarioMapImagePath);
+            assoc.BrownMarioMapImage = Image.FromFile(mapImageDir + brownMarioMapImagePath);
+            assoc.WhiteMarioMapImage = Image.FromFile(mapImageDir + whiteMarioMapImagePath);
+            assoc.GreyMarioMapImage = Image.FromFile(mapImageDir + greyMarioMapImagePath);
             assoc.CameraFocusMapImage = Image.FromFile(mapImageDir + cameraFocusImagePath);
 
             assoc.AddEmptyAssociation(); // Need to do this after Empty Image is set
