@@ -22,6 +22,12 @@ namespace STROOP.Map
         private int _orangeMarioTex = -1;
         private int _purpleMarioTex = -1;
         private int _blueMarioTex = -1;
+        private int _torquosieMarioTex = -1;
+        private int _yellowMarioTex = -1;
+        private int _pinkMarioTex = -1;
+        private int _brownMarioTex = -1;
+        private int _whiteMarioTex = -1;
+        private int _greyMarioTex = -1;
 
         private bool _trackHistory;
         private bool _pauseHistory;
@@ -457,6 +463,36 @@ namespace STROOP.Map
             {
                 _blueMarioTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.BlueMarioMapImage as Bitmap);
+            }
+            if (_torquosieMarioTex == -1)
+            {
+                _torquosieMarioTex = MapUtilities.LoadTexture(
+                    Config.ObjectAssociations.TorqoiseMarioMapImage as Bitmap);
+            }
+            if (_yellowMarioTex == -1)
+            {
+                _yellowMarioTex = MapUtilities.LoadTexture(
+                    Config.ObjectAssociations.YellowMarioMapImage as Bitmap);
+            }
+            if (_pinkMarioTex == -1)
+            {
+                _pinkMarioTex = MapUtilities.LoadTexture(
+                    Config.ObjectAssociations.PinkMarioMapImage as Bitmap);
+            }
+            if (_brownMarioTex == -1)
+            {
+                _brownMarioTex = MapUtilities.LoadTexture(
+                    Config.ObjectAssociations.BrownMarioMapImage as Bitmap);
+            }
+            if (_whiteMarioTex == -1)
+            {
+                _whiteMarioTex = MapUtilities.LoadTexture(
+                    Config.ObjectAssociations.WhiteMarioMapImage as Bitmap);
+            }
+            if (_greyMarioTex == -1)
+            {
+                _greyMarioTex = MapUtilities.LoadTexture(
+                    Config.ObjectAssociations.GreyMarioMapImage as Bitmap);
             }
 
             if (!_pauseHistory)

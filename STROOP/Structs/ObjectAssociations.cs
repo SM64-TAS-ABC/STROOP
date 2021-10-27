@@ -35,7 +35,7 @@ namespace STROOP.Structs
         public Image GreenMarioMapImage;
         public Image OrangeMarioMapImage;
         public Image PurpleMarioMapImage;
-        public Image TurqoiseMarioMapImage;
+        public Image TorqoiseMarioMapImage;
         public Image YellowMarioMapImage;
         public Image PinkMarioMapImage;
         public Image BrownMarioMapImage;
@@ -298,7 +298,7 @@ namespace STROOP.Structs
             GreenMarioMapImage?.Dispose();
             OrangeMarioMapImage?.Dispose();
             PurpleMarioMapImage?.Dispose();
-            TurqoiseMarioMapImage?.Dispose();
+            TorqoiseMarioMapImage?.Dispose();
             YellowMarioMapImage?.Dispose();
             PinkMarioMapImage?.Dispose();
             BrownMarioMapImage?.Dispose();

@@ -753,7 +753,7 @@ namespace STROOP.Utilities
             assoc.GreenMarioMapImage = Image.FromFile(mapImageDir + greenMarioMapImagePath);
             assoc.OrangeMarioMapImage = Image.FromFile(mapImageDir + orangeMarioMapImagePath);
             assoc.PurpleMarioMapImage = Image.FromFile(mapImageDir + purpleMarioMapImagePath);
-            assoc.TurqoiseMarioMapImage = Image.FromFile(mapImageDir + torquoiseMarioMapImagePath);
+            assoc.TorqoiseMarioMapImage = Image.FromFile(mapImageDir + torquoiseMarioMapImagePath);
             assoc.YellowMarioMapImage = Image.FromFile(mapImageDir + yellowMarioMapImagePath);
             assoc.PinkMarioMapImage = Image.FromFile(mapImageDir + pinkMarioMapImagePath);
             assoc.BrownMarioMapImage = Image.FromFile(mapImageDir + brownMarioMapImagePath);
