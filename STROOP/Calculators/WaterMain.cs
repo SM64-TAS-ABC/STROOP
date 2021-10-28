@@ -126,6 +126,8 @@ namespace STROOP.Structs
             public int GlobalTimer;
             public int WaterLevelIndex;
             public int WaterLevel;
+            public int FutureWaterLevelIndex;
+            public int FutureWaterLevel;
 
             public TtcRng Rng;
 
@@ -140,6 +142,8 @@ namespace STROOP.Structs
                 GlobalTimer = Config.Stream.GetInt(MiscConfig.GlobalTimerAddress);
                 WaterLevelIndex = WaterLevelCalculator.GetWaterLevelIndex();
                 WaterLevel = WaterLevelCalculator.GetWaterLevelFromIndex(WaterLevelIndex);
+                FutureWaterLevelIndex = WaterLevelCalculator.GetWaterLevelIndex() + 1;
+                FutureWaterLevel = WaterLevelCalculator.GetWaterLevelFromIndex(FutureWaterLevelIndex);
 
                 YorangeObjects = new List<WaterObject>();
                 GreenObjects = new List<WaterObject>();
@@ -192,6 +196,8 @@ namespace STROOP.Structs
             {
                 WaterLevelIndex++;
                 WaterLevel = WaterLevelCalculator.GetWaterLevelFromIndex(WaterLevelIndex);
+                FutureWaterLevelIndex++;
+                FutureWaterLevel = WaterLevelCalculator.GetWaterLevelFromIndex(FutureWaterLevelIndex);
 
                 foreach (var objList in ObjectLists)
                 {
@@ -460,7 +466,7 @@ namespace STROOP.Structs
 
             public void bhv_small_water_wave_loop()
             {
-                if (Y > ObjSlotManager.WaterLevel)
+                if (Y > ObjSlotManager.FutureWaterLevel)
                 {
                     Y += 5;
                     MarkForDeletion();
