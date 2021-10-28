@@ -90,7 +90,7 @@ namespace STROOP.Structs
                 int rng = RngIndexer.GetRngValue();
                 foreach (bool isBubbleSpawnerPresent in new List<bool>() { false })
                 {
-                    for (int numInitialBubbles = 6; numInitialBubbles <= 6; numInitialBubbles++)
+                    for (int numInitialBubbles = 7; numInitialBubbles <= 7; numInitialBubbles++)
                     {
                         (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
                             Simulate(ObjName.STAR, loadingZoneFrames, rng, isBubbleSpawnerPresent, numInitialBubbles, false);
@@ -114,6 +114,51 @@ namespace STROOP.Structs
                     }
                 }
             }
+        }
+
+        public static void Test()
+        {
+            for (int rngIndex = 0; rngIndex < 65114; rngIndex++)
+            {
+                bool success1 = Run(rngIndex, false, 7, 1, false);
+                bool success2 = Run(rngIndex, true, 6, 1, false);
+
+                if (success1) Config.Print("success1 " + rngIndex);
+                if (success2) Config.Print("success2 " + rngIndex);
+            }
+        }
+
+        public static bool Run(int rngIndex, bool isBubbleSpawnerPresent, int numInitialBubbles, int numTries, bool print)
+        {
+            for (int i = 0; i < numTries; i++)
+            {
+                GenerateUnloadStrategy();
+                List<int> loadingZoneFrames = new List<int>() { 1, 2, 4, 2, 3, 10, 2, 8, 7, 10, 6, 5, 3, 10, 11, 9 }; //GenerateRandomLoadingZoneFrames();
+                int rng = RngIndexer.GetRngValue(rngIndex);
+                (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
+                    Simulate(ObjName.STAR, loadingZoneFrames, rng, isBubbleSpawnerPresent, numInitialBubbles, false);
+                string instructions = FormatLoadingZoneFrames(loadingZoneFrames);
+                if (success)
+                {
+                    if (print)
+                    {
+                        Config.Print("-------------------------------------");
+                        Config.Print("objName = " + objName);
+                        Config.Print("numFrames = " + numFrames);
+                        Config.Print("numTransitions = " + numTransitions);
+                        Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
+                        Config.Print("rngIndex = " + rngIndex);
+                        Config.Print("rng = " + rng);
+                        Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
+                        Config.Print("numInitialBubbles = " + numInitialBubbles);
+                        Config.Print(instructions);
+                        Config.Print(DictionaryUtilities.GetString(UnloadStrategy));
+                        Config.Print("-------------------------------------");
+                    }
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static void Run2()

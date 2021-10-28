@@ -42,19 +42,30 @@ namespace STROOP.Structs
         public static void BruteForce()
         {
             Input.USE_TAS_INPUT_Y = false;
+            HashSet<int> seenRngIndexes = new HashSet<int>();
             for (int count = 0; true; count++)
             {
                 List<Input> inputs = GenerateInputs();
-                bool success = Simulate(inputs, false);
-                if (success)
+                ObjSlotManager objSlotManager = Simulate(inputs, false);
+                if (objSlotManager != null)
                 {
-                    Config.Print("SUCCESS AFTER " + count);
-                    Config.Print();
-                    Config.Print(string.Join("\r\n", inputs));
-                    Config.Print();
-                    Simulate(inputs, true);
-                    Config.Print();
-                    return;
+                    int rngIndex = objSlotManager.Rng.GetIndex();
+                    (int numInitialBubbles, bool isBubbleSpawnerPresent) = objSlotManager.GetBubbleConfiguration();
+                    int numTries = 1;
+                    seenRngIndexes.Add(rngIndex);
+                    Config.Print("CHECKING SECOND SUCCESS {0} {1} {2} {3}", rngIndex, isBubbleSpawnerPresent, numInitialBubbles, seenRngIndexes.Count);
+                    bool success2 = LoadingZoneMain.Run(rngIndex, isBubbleSpawnerPresent, numInitialBubbles, numTries, true);
+                    if (success2)
+                    {
+                        Config.Print();
+                        Config.Print("SUCCESS AFTER " + count);
+                        Config.Print();
+                        Config.Print(string.Join("\r\n", inputs));
+                        Config.Print();
+                        Simulate(inputs, true);
+                        Config.Print();
+                        return;
+                    }
                 }
             }
         }
@@ -93,7 +104,7 @@ namespace STROOP.Structs
             return inputs;
         }
 
-        public static bool Simulate(List<Input> inputs, bool print)
+        public static ObjSlotManager Simulate(List<Input> inputs, bool print)
         {
             ObjSlotManager objSlotManager = new ObjSlotManager(inputs);
             if (print) Config.Print(objSlotManager);
@@ -103,7 +114,11 @@ namespace STROOP.Structs
                 if (print) Config.Print(objSlotManager);
             }
 
-            return objSlotManager.HasBubbleConfiguration(6, false);
+            bool success =
+                objSlotManager.HasBubbleConfiguration(6, true) ||
+                objSlotManager.HasBubbleConfiguration(7, false);
+
+            return success ? objSlotManager : null;
         }
 
         public class ObjSlotManager
@@ -112,7 +127,7 @@ namespace STROOP.Structs
             public int WaterLevelIndex;
             public int WaterLevel;
 
-            TtcRng Rng;
+            public TtcRng Rng;
 
             public List<List<WaterObject>> ObjectLists;
             public List<WaterObject> YorangeObjects;
