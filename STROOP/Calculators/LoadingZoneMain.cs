@@ -26,7 +26,7 @@ namespace STROOP.Structs
                 [UnloadableId.SKEETER_FAR] = false,
 
                 [UnloadableId.CORK_BOX_EXPRESS_ELEVATOR] = false,
-                [UnloadableId.CORK_BOX_EDGE_1] = false,
+                [UnloadableId.CORK_BOX_EDGE_1] = null,
                 [UnloadableId.CORK_BOX_EDGE_2] = false,
                 [UnloadableId.CORK_BOX_EDGE_3] = false,
                 [UnloadableId.CORK_BOX_EDGE_4] = false,
@@ -52,6 +52,32 @@ namespace STROOP.Structs
 
         public static Dictionary<UnloadableId, bool> UnloadStrategy;
 
+        public static List<(int numBubbles, bool bubbleSpawnerPresent)> BubbleConfigurations =
+            new List<(int numBubbles, bool bubbleSpawnerPresent)>()
+            {
+                (5, true),
+                (6, false),
+                (6, true),
+                (7, false),
+                (7, true),
+                (8, false),
+                (8, true),
+                (9, false),
+                (9, true),
+                (10, false),
+                (10, true),
+                (11, false),
+                (11, true),
+                (12, false),
+                (12, true),
+                (13, false),
+                (13, true),
+                (14, false),
+                (14, true),
+                (15, false),
+                (15, true),
+            };
+
         public static void Run()
         {
             Config.Print("STARTING...");
@@ -67,7 +93,7 @@ namespace STROOP.Structs
                     for (int numInitialBubbles = 6; numInitialBubbles <= 6; numInitialBubbles++)
                     {
                         (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
-                            Simulate(loadingZoneFrames, rng, isBubbleSpawnerPresent, numInitialBubbles, false);
+                            Simulate(ObjName.STAR, loadingZoneFrames, rng, isBubbleSpawnerPresent, numInitialBubbles, false);
                         string instructions = FormatLoadingZoneFrames(loadingZoneFrames);
                         if (success && !instructionList.Contains(instructions))
                         {
@@ -99,33 +125,31 @@ namespace STROOP.Structs
                 GenerateUnloadStrategy();
                 List<int> loadingZoneFrames = GenerateRandomLoadingZoneFrames();
                 List<int> bubbleSpawnerMaxTimers = GenerateRandomBubbleSpawnerMaxTimers();
-                foreach (bool isBubbleSpawnerPresent in new List<bool>() { false, true })
+
+                foreach ((int numInitialBubbles, bool isBubbleSpawnerPresent) in BubbleConfigurations)
                 {
-                    for (int numInitialBubbles = 6; numInitialBubbles <= 11; numInitialBubbles++)
+                    (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
+                        Simulate(ObjName.STAR, loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles, false);
+                    if (!results.Contains(result))
                     {
-                        (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
-                            Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles, false);
-                        if (!results.Contains(result))
-                        {
-                            Config.Print(result + " " + objName);
-                            results.Add(result);
-                        }
-                        string instructions = FormatLoadingZoneFrames(loadingZoneFrames);
-                        if (success && !instructionList.Contains(instructions))
-                        {
-                            instructionList.Add(instructions);
-                            Config.Print("-------------------------------------");
-                            Config.Print("objName = " + objName);
-                            Config.Print("numFrames = " + numFrames);
-                            Config.Print("numTransitions = " + numTransitions);
-                            Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
-                            Config.Print("bubbleSpawnerMaxTimers = " + string.Join(",", bubbleSpawnerMaxTimers));
-                            Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
-                            Config.Print("numInitialBubbles = " + numInitialBubbles);
-                            Config.Print(instructions);
-                            Config.Print(DictionaryUtilities.GetString(UnloadStrategy));
-                            Config.Print("-------------------------------------");
-                        }
+                        Config.Print(result + " " + objName);
+                        results.Add(result);
+                    }
+                    string instructions = FormatLoadingZoneFrames(loadingZoneFrames);
+                    if (success && !instructionList.Contains(instructions))
+                    {
+                        instructionList.Add(instructions);
+                        Config.Print("-------------------------------------");
+                        Config.Print("objName = " + objName);
+                        Config.Print("numFrames = " + numFrames);
+                        Config.Print("numTransitions = " + numTransitions);
+                        Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
+                        Config.Print("bubbleSpawnerMaxTimers = " + string.Join(",", bubbleSpawnerMaxTimers));
+                        Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
+                        Config.Print("numInitialBubbles = " + numInitialBubbles);
+                        Config.Print(instructions);
+                        Config.Print(DictionaryUtilities.GetString(UnloadStrategy));
+                        Config.Print("-------------------------------------");
                     }
                 }
             }
@@ -185,7 +209,7 @@ namespace STROOP.Structs
             List<int> bubbleSpawnerMaxTimers = new List<int>() { 10, 2, 3, 3, 9, 5 };
             bool isBubbleSpawnerPresent = true;
             int numInitialBubbles = 7;
-            Simulate(loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles, true);
+            Simulate(ObjName.STAR, loadingZoneFrames, bubbleSpawnerMaxTimers, isBubbleSpawnerPresent, numInitialBubbles, true);
         }
 
         public static void RunTest2()
@@ -194,10 +218,11 @@ namespace STROOP.Structs
             int rng = 24331;
             bool isBubbleSpawnerPresent = true;
             int numInitialBubbles = 7;
-            Simulate(loadingZoneFrames, rng, isBubbleSpawnerPresent, numInitialBubbles, true);
+            Simulate(ObjName.STAR, loadingZoneFrames, rng, isBubbleSpawnerPresent, numInitialBubbles, true);
         }
 
         public static (bool success, int result, ObjName objName, int numTransitions, int numFrames) Simulate(
+            ObjName objName,
             List<int> loadingZoneFrames,
             List<int> bubbleSpawnerMaxTimers,
             bool isBubbleSpawnerPresent,
@@ -207,10 +232,11 @@ namespace STROOP.Structs
             FrameTracker frameTracker = new FrameTracker(loadingZoneFrames);
             BubbleTracker bubbleTracker = new BubbleTracker(bubbleSpawnerMaxTimers);
             ObjSlotManager objSlotManager = InitializeObjSlotManager(isBubbleSpawnerPresent, numInitialBubbles, bubbleTracker);
-            return Simulate(frameTracker, objSlotManager, shouldPrint);
+            return Simulate(objName, frameTracker, objSlotManager, shouldPrint);
         }
 
         public static (bool success, int result, ObjName objName, int numTransitions, int numFrames) Simulate(
+            ObjName objName,
             List<int> loadingZoneFrames,
             int rng,
             bool isBubbleSpawnerPresent,
@@ -220,10 +246,11 @@ namespace STROOP.Structs
             FrameTracker frameTracker = new FrameTracker(loadingZoneFrames);
             TtcRng ttcRng = new TtcRng((ushort)rng);
             ObjSlotManager objSlotManager = InitializeObjSlotManager(isBubbleSpawnerPresent, numInitialBubbles, ttcRng);
-            return Simulate(frameTracker, objSlotManager, shouldPrint);
+            return Simulate(objName, frameTracker, objSlotManager, shouldPrint);
         }
 
         public static (bool success, int result, ObjName objName, int numTransitions, int numFrames) Simulate(
+            ObjName objName,
             FrameTracker frameTracker,
             ObjSlotManager objSlotManager,
             bool shouldPrint)
@@ -273,7 +300,7 @@ namespace STROOP.Structs
                 if (isTownLoaded && heldSlot.Color != ObjSlotColor.GREY)
                 {
                     returnValue = (false, objSlotManager.GetCurrentSlotIndex(heldSlot), heldSlot.ObjName, numTransitions, frame);
-                    if (heldSlot.ObjName == ObjName.CORK_BOX_WHITE_BUILDING)
+                    if (heldSlot.ObjName == objName)
                     {
                         return (true, heldSlot.InitialIndex, heldSlot.ObjName, numTransitions, frame);
                     }
