@@ -26,7 +26,7 @@ namespace STROOP.Structs
                 [UnloadableId.SKEETER_FAR] = false,
 
                 [UnloadableId.CORK_BOX_EXPRESS_ELEVATOR] = false,
-                [UnloadableId.CORK_BOX_EDGE_1] = null,
+                [UnloadableId.CORK_BOX_EDGE_1] = false,
                 [UnloadableId.CORK_BOX_EDGE_2] = false,
                 [UnloadableId.CORK_BOX_EDGE_3] = false,
                 [UnloadableId.CORK_BOX_EDGE_4] = false,
@@ -136,7 +136,7 @@ namespace STROOP.Structs
                         results.Add(result);
                     }
                     string instructions = FormatLoadingZoneFrames(loadingZoneFrames);
-                    if (success && !instructionList.Contains(instructions))
+                    if (success)
                     {
                         instructionList.Add(instructions);
                         Config.Print("-------------------------------------");
@@ -169,7 +169,7 @@ namespace STROOP.Structs
         public static List<int> GenerateRandomLoadingZoneFrames()
         {
             List<int> loadingZoneFrames = new List<int>() { 1 };
-            int max = r.Next(2, 8);
+            int max = r.Next(2, 24);
             for (int i = 0; i < 15; i++)
             {
                 loadingZoneFrames.Add(r.Next(2, max));
@@ -180,9 +180,10 @@ namespace STROOP.Structs
         public static List<int> GenerateRandomBubbleSpawnerMaxTimers()
         {
             List<int> bubbleSpawnerMaxTimers = new List<int>();
+            int max = r.Next(2, 7);
             for (int i = 0; i < 15; i++)
             {
-                bubbleSpawnerMaxTimers.Add(r.Next(2, 6));
+                bubbleSpawnerMaxTimers.Add(r.Next(2, max));
             }
             return bubbleSpawnerMaxTimers;
         }
