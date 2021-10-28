@@ -17,6 +17,28 @@ namespace STROOP.Structs
     {
         public static Random r = new Random();
 
+        public static void FindAllBubbleConfigurations()
+        {
+            ObjSlotManager objSlotManager = new ObjSlotManager(new List<Input>());
+            for (int i = 0; i < 1000; i++)
+            {
+                objSlotManager.Update();
+            }
+
+            HashSet<(int numBubbles, bool bubbleSpawnerPresent)> alreadySeen =
+                new HashSet<(int numBubbles, bool bubbleSpawnerPresent)>();
+            while (true)
+            {
+                objSlotManager.Update();
+                var bubbleConfiguration = objSlotManager.GetBubbleConfiguration();
+                if (!alreadySeen.Contains(bubbleConfiguration))
+                {
+                    Config.Print(bubbleConfiguration);
+                    alreadySeen.Add(bubbleConfiguration);
+                }
+            }
+        }
+
         public static void BruteForce()
         {
             Input.USE_TAS_INPUT_Y = false;
@@ -205,6 +227,11 @@ namespace STROOP.Structs
                 bool satisfiesNumBubbles = numBubbles == BrownObjects.Count;
                 bool satisfiesBubbleSpawnerPresent = bubbleSpawnerPresent == (PurpleObjects.Count > 0);
                 return satisfiesNumBubbles && satisfiesBubbleSpawnerPresent;
+            }
+
+            public (int numBubbles, bool bubbleSpawnerPresent) GetBubbleConfiguration() 
+            {
+                return (BrownObjects.Count, PurpleObjects.Count > 0);
             }
 
             public override string ToString()

@@ -20,8 +20,7 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            //WaterMain.BruteForce();
-            LoadingZoneMain.Run();
+            WaterMain.FindAllBubbleConfigurations();
         }
     }
 } 
