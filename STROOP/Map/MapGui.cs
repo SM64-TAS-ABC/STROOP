@@ -109,6 +109,7 @@ namespace STROOP.Map
         public RadioButton radioButtonMapControllersAngle32768;
         public RadioButton radioButtonMapControllersAngle49152;
         public RadioButton radioButtonMapControllersAngleMario;
+        public RadioButton radioButtonMapControllersAngleMarioSide;
         public RadioButton radioButtonMapControllersAngleCamera;
         public RadioButton radioButtonMapControllersAngleCentripetal;
         public RadioButton radioButtonMapControllersAngleCustom;

@@ -17,7 +17,7 @@ namespace STROOP.Map
 
         public enum MapScale { CourseDefault, MaxCourseSize, Custom };
         public enum MapCenter { BestFit, Origin, Mario, Custom };
-        public enum MapYaw { Angle0, Angle16384, Angle32768, Angle49152, Mario, Camera, Centripetal, Custom };
+        public enum MapYaw { Angle0, Angle16384, Angle32768, Angle49152, Mario, MarioSide, Camera, Centripetal, Custom };
         public enum MapDragAbility { HorizontalAndVertical, HorizontalOnly, VerticalOnly };
 
         public MapScale MapViewScale;
@@ -295,6 +295,8 @@ namespace STROOP.Map
                 MapViewYaw = MapYaw.Angle49152;
             else if (Config.MapGui.radioButtonMapControllersAngleMario.Checked)
                 MapViewYaw = MapYaw.Mario;
+            else if (Config.MapGui.radioButtonMapControllersAngleMarioSide.Checked)
+                MapViewYaw = MapYaw.MarioSide;
             else if (Config.MapGui.radioButtonMapControllersAngleCamera.Checked)
                 MapViewYaw = MapYaw.Camera;
             else if (Config.MapGui.radioButtonMapControllersAngleCentripetal.Checked)
@@ -318,6 +320,10 @@ namespace STROOP.Map
                     break;
                 case MapYaw.Mario:
                     MapViewYawValue = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    break;
+                case MapYaw.MarioSide:
+                    MapViewYawValue = MoreMath.NormalizeAngleUshort(
+                        Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset) + 16384);
                     break;
                 case MapYaw.Camera:
                     MapViewYawValue = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
@@ -415,6 +421,9 @@ namespace STROOP.Map
                     break;
                 case MapYaw.Mario:
                     Config.MapGui.radioButtonMapControllersAngleMario.Checked = true;
+                    break;
+                case MapYaw.MarioSide:
+                    Config.MapGui.radioButtonMapControllersAngleMarioSide.Checked = true;
                     break;
                 case MapYaw.Camera:
                     Config.MapGui.radioButtonMapControllersAngleCamera.Checked = true;
