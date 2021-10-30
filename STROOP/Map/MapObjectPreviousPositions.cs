@@ -434,16 +434,17 @@ namespace STROOP.Map
 
             int numQFrames = (Config.Stream.GetInt(0x80372E3C) - 112) / 64;
             int numPoints = 7 + 4 * numQFrames;
+            Config.SetDebugText(numQFrames + " " + numPoints);
 
             List<(float x, float y, float z, float angle, int tex)> allResults =
                 new List<(float x, float y, float z, float angle, int tex)>()
                 {
-                    (pos01X, pos01Y, pos01Z, pos01A, _yellowMarioTex), // initial
-                    (pos02X, pos02Y, pos02Z, pos02A, _greyMarioTex), // platform displacement
-                    (pos03X, pos03Y, pos03Z, pos03A, _torquosieMarioTex), // wall0A
-                    (pos04X, pos04Y, pos04Z, pos04A, _greenMarioTex), // wall0B
-                    (pos05X, pos05Y, pos05Z, pos05A, _purpleMarioTex), // warp_area
-                    (pos06X, pos06Y, pos06Z, pos06A, _pinkMarioTex), // check_instant_warp
+                    (pos01X, pos01Y, pos01Z, pos01A, _pinkMarioTex), // initial
+                    (pos02X, pos02Y, pos02Z, pos02A, _yellowMarioTex), // warp_area
+                    (pos03X, pos03Y, pos03Z, pos03A, _purpleMarioTex), // check_instant_warp
+                    (pos04X, pos04Y, pos04Z, pos04A, _greyMarioTex), // platform displacement
+                    (pos05X, pos05Y, pos05Z, pos05A, _torquosieMarioTex), // wall0A
+                    (pos06X, pos06Y, pos06Z, pos06A, _greenMarioTex), // wall0B
                     (pos07X, pos07Y, pos07Z, pos07A, _brownMarioTex), // obj interactions
                     (pos08X, pos08Y, pos08Z, pos08A, _orangeMarioTex), // qstep1
                     (pos09X, pos09Y, pos09Z, pos09A, _torquosieMarioTex), // wall1A
