@@ -434,7 +434,6 @@ namespace STROOP.Map
 
             int numQFrames = (Config.Stream.GetInt(0x80372E3C) - 112) / 64;
             int numPoints = 7 + 4 * numQFrames;
-            Config.SetDebugText(numQFrames + " " + numPoints);
 
             List<(float x, float y, float z, float angle, int tex)> allResults =
                 new List<(float x, float y, float z, float angle, int tex)>()
