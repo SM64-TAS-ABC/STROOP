@@ -516,7 +516,7 @@ namespace STROOP.Map
             if (_torquosieMarioTex == -1)
             {
                 _torquosieMarioTex = MapUtilities.LoadTexture(
-                    Config.ObjectAssociations.TorqoiseMarioMapImage as Bitmap);
+                    Config.ObjectAssociations.TurqoiseMarioMapImage as Bitmap);
             }
             if (_yellowMarioTex == -1)
             {

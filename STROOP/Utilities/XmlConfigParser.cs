@@ -238,7 +238,7 @@ namespace STROOP.Utilities
                 marioImagePath = "", holpMapImagePath = "", greenHolpMapImagePath = "",
                 homeMapImagePath = "", intendedNextPositionImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
-                blueMarioMapImagePath = "", greenMarioMapImagePath = "", orangeMarioMapImagePath = "", purpleMarioMapImagePath = "", torquoiseMarioMapImagePath = "",
+                blueMarioMapImagePath = "", greenMarioMapImagePath = "", orangeMarioMapImagePath = "", purpleMarioMapImagePath = "", turquoiseMarioMapImagePath = "",
                 yellowMarioMapImagePath = "", pinkMarioMapImagePath = "", brownMarioMapImagePath = "", whiteMarioMapImagePath = "", greyMarioMapImagePath = "",
                 cameraFocusImagePath = "", triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "", hitboxHackTrisImagePath = "",
                 cellGridlinesImagePath = "", currentCellImagePath = "", unitGridlinesImagePath = "", currentUnitImagePath = "",
@@ -340,8 +340,8 @@ namespace STROOP.Utilities
                         purpleMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
-                    case "TorquoiseMario":
-                        torquoiseMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                    case "TurquoiseMario":
+                        turquoiseMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "YellowMario":
@@ -753,7 +753,7 @@ namespace STROOP.Utilities
             assoc.GreenMarioMapImage = Image.FromFile(mapImageDir + greenMarioMapImagePath);
             assoc.OrangeMarioMapImage = Image.FromFile(mapImageDir + orangeMarioMapImagePath);
             assoc.PurpleMarioMapImage = Image.FromFile(mapImageDir + purpleMarioMapImagePath);
-            assoc.TorqoiseMarioMapImage = Image.FromFile(mapImageDir + torquoiseMarioMapImagePath);
+            assoc.TurqoiseMarioMapImage = Image.FromFile(mapImageDir + turquoiseMarioMapImagePath);
             assoc.YellowMarioMapImage = Image.FromFile(mapImageDir + yellowMarioMapImagePath);
             assoc.PinkMarioMapImage = Image.FromFile(mapImageDir + pinkMarioMapImagePath);
             assoc.BrownMarioMapImage = Image.FromFile(mapImageDir + brownMarioMapImagePath);

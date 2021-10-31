@@ -36,9 +36,9 @@
   <PurpleMario>
     <MapImage path="Mario Purple.png"/>
   </PurpleMario>
-  <TorquoiseMario>
-    <MapImage path="Mario Torquoise.png"/>
-  </TorquoiseMario>
+  <TurquoiseMario>
+    <MapImage path="Mario Turquoise.png"/>
+  </TurquoiseMario>
   <YellowMario>
     <MapImage path="Mario Yellow.png"/>
   </YellowMario>
