@@ -242,7 +242,7 @@ namespace STROOP.Utilities
                 yellowMarioMapImagePath = "", pinkMarioMapImagePath = "", brownMarioMapImagePath = "", whiteMarioMapImagePath = "", greyMarioMapImagePath = "",
                 cameraFocusImagePath = "", triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "", hitboxHackTrisImagePath = "",
                 cellGridlinesImagePath = "", currentCellImagePath = "", unitGridlinesImagePath = "", currentUnitImagePath = "",
-                nextPositionsImagePath = "", arrowImagePath = "", iwerlipsesImagePath = "", cylinderImagePath = "", sphereImagePath = "",
+                nextPositionsImagePath = "", previousPositionsImagePath = "", arrowImagePath = "", iwerlipsesImagePath = "", cylinderImagePath = "", sphereImagePath = "",
                 pathImagePath = "", customPointsImagePath = "", customGridlinesImagePath = "",
                 selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
                 stoodOnOverlayImagePath = "", riddenOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
@@ -414,6 +414,10 @@ namespace STROOP.Utilities
 
                     case "NextPositions":
                         nextPositionsImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "PreviousPositions":
+                        previousPositionsImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "Arrow":
@@ -774,6 +778,7 @@ namespace STROOP.Utilities
             assoc.UnitGridlinesImage = Image.FromFile(mapImageDir + unitGridlinesImagePath);
             assoc.CurrentUnitImage = Image.FromFile(mapImageDir + currentUnitImagePath);
             assoc.NextPositionsImage = Image.FromFile(mapImageDir + nextPositionsImagePath);
+            assoc.PreviousPositionsImage = Image.FromFile(mapImageDir + previousPositionsImagePath);
             assoc.ArrowImage = Image.FromFile(mapImageDir + arrowImagePath);
             assoc.IwerlipsesImage = Image.FromFile(mapImageDir + iwerlipsesImagePath);
             assoc.CylinderImage = Image.FromFile(mapImageDir + cylinderImagePath);

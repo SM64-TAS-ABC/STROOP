@@ -87,6 +87,9 @@
   <NextPositions>
     <MapImage path="Next Positions.png"/>
   </NextPositions>
+  <PreviousPositions>
+    <MapImage path="Previous Positions.png"/>
+  </PreviousPositions>
   <Arrow>
     <MapImage path="Arrow.png"/>
   </Arrow>

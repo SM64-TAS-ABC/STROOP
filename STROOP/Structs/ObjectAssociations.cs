@@ -52,6 +52,7 @@ namespace STROOP.Structs
         public Image UnitGridlinesImage;
         public Image CurrentUnitImage;
         public Image NextPositionsImage;
+        public Image PreviousPositionsImage;
         public Image ArrowImage;
         public Image IwerlipsesImage;
         public Image CylinderImage;
@@ -323,6 +324,7 @@ namespace STROOP.Structs
             UnitGridlinesImage?.Dispose();
             CurrentUnitImage?.Dispose();
             NextPositionsImage?.Dispose();
+            PreviousPositionsImage?.Dispose();
             ArrowImage?.Dispose();
             IwerlipsesImage?.Dispose();
             CylinderImage?.Dispose();
