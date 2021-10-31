@@ -427,12 +427,8 @@ namespace STROOP.Map
             float pos23Z = Config.Stream.GetFloat(0x80373068);
             float pos23A = Config.Stream.GetUShort(0x8037306E);
 
-            float pos24X = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float pos24Y = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float pos24Z = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            float pos24A = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-
-            int numQFrames = (Config.Stream.GetInt(0x80372E3C) - 112) / 64;
+            int variable = Config.Stream.GetInt(0x80372E3C);
+            int numQFrames = (variable - 112) / 64;
             int numPoints = 7 + 4 * numQFrames;
 
             List<(float x, float y, float z, float angle, int tex)> allResults =
