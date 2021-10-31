@@ -12,6 +12,7 @@ using OpenTK;
 using System.Windows.Forms;
 using STROOP.Map.Map3D;
 using System.Xml.Linq;
+using STROOP.Forms;
 
 namespace STROOP.Map
 {
@@ -620,11 +621,18 @@ namespace STROOP.Map
                     _dictionary.Clear();
                 };
 
+                ToolStripMenuItem itemSeeKey = new ToolStripMenuItem("See Key");
+                itemSeeKey.Click += (sender, e) =>
+                {
+                    InfoForm.ShowValue(GetKeyString(), "Previous Positions", "Key");
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(itemShowEachPoint);
                 _contextMenuStrip.Items.Add(_itemTrackHistory);
                 _contextMenuStrip.Items.Add(_itemPauseHistory);
                 _contextMenuStrip.Items.Add(itemClearHistory);
+                _contextMenuStrip.Items.Add(itemSeeKey);
             }
 
             return _contextMenuStrip;
@@ -769,6 +777,41 @@ namespace STROOP.Map
             float zMidpoint = (zMin + zMax) / 2;
 
             return (xMidpoint, yMidpoint, zMidpoint);
+        }
+
+        public static string GetKeyString()
+        {
+            List<string> stringList = new List<string>()
+            {
+                "[01] pink: initial",
+                "[02] yellow: warp_area",
+                "[03] purple: check_instant_warp",
+                "[04] grey: platform displacement",
+                "[05] turquoise: wall0A",
+                "[06] green: wall0B",
+                "[07] brown: obj interactions",
+                "",
+                "[08] orange: qstep1",
+                "[09] turquoise: wall1A",
+                "[10] green: wall1B",
+                "[11] blue: floor1",
+                "",
+                "[12] orange: qstep2",
+                "[13] turquoise: wall2A",
+                "[14] green: wall2B",
+                "[15] blue: floor2",
+                "",
+                "[16] orange: qstep3",
+                "[17] turquoise: wall3A",
+                "[18] green: wall3B",
+                "[19] blue: floor3",
+                "",
+                "[20] orange: qstep4",
+                "[21] turquoise: wall4A",
+                "[22] green: wall4B",
+                "[23] blue: floor4",
+            };
+            return string.Join("\r\n", stringList);
         }
     }
 }
