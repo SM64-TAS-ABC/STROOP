@@ -17,6 +17,7 @@ namespace STROOP.Ttc
         public int _waitingTimer;
 
         public TtcFloatPendulum _predecessor;
+        public int _fitness;
 
         public TtcFloatPendulum(TtcRng rng, uint address) :
             this(

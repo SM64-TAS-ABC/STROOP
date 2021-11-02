@@ -1,4 +1,5 @@
-﻿using STROOP.Forms;
+﻿using Accord.Collections;
+using STROOP.Forms;
 using STROOP.Managers;
 using STROOP.Models;
 using STROOP.Structs.Configurations;
@@ -31,44 +32,74 @@ namespace STROOP.Structs
             }
 
             HashSet<TtcFloatPendulum> alreadySeen = new HashSet<TtcFloatPendulum>();
-            Queue<TtcFloatPendulum> queue = new Queue<TtcFloatPendulum>();
-
+            PriorityQueue<TtcFloatPendulum> queue = new PriorityQueue<TtcFloatPendulum>(capacity: 10_000_000);
             alreadySeen.Add(initialPendulum);
-            queue.Enqueue(initialPendulum);
+            queue.Enqueue(initialPendulum, initialPendulum._fitness);
 
             while (queue.Count > 0)
             {
-                TtcFloatPendulum dequeue = queue.Dequeue();
+                TtcFloatPendulum dequeue = queue.Dequeue().Value;
 
                 TtcFloatPendulum fast = (TtcFloatPendulum)dequeue.Clone(null);
-                fast._predecessor = dequeue;
-                TtcFloatPendulum slow = (TtcFloatPendulum)dequeue.Clone(null);
-                slow._predecessor = dequeue;
-
                 bool swungThroughZeroFast = fast.PerformSwing(true);
-                bool swungThroughZeroSlow = slow.PerformSwing(false);
-
+                fast._predecessor = dequeue;
+                fast._fitness = swungThroughZeroFast ? GetFitness(fast._angle) : dequeue._fitness + 1;
                 if (swungThroughZeroFast)
                 {
-                    queue.Clear();
-                    queue.Enqueue(fast);
-                    Config.Print("RESET " + fast._angle);
+                    Config.Print("swungThroughZeroFast {0} {1}", fast._angle, fast._fitness);
                 }
-                else
+                if (Math.Abs(fast._angle) > 2E31)
                 {
-                    if (!alreadySeen.Contains(fast))
-                    {
-                        alreadySeen.Add(fast);
-                        queue.Enqueue(fast);
-                    }
+                    Config.Print(GetLineage(fast));
+                    return;
+                }
 
-                    if (!alreadySeen.Contains(slow))
-                    {
-                        alreadySeen.Add(slow);
-                        queue.Enqueue(slow);
-                    }
+                TtcFloatPendulum slow = (TtcFloatPendulum)dequeue.Clone(null);
+                bool swungThroughZeroSlow = slow.PerformSwing(false);
+                slow._predecessor = dequeue;
+                slow._fitness = swungThroughZeroSlow ? GetFitness(slow._angle) : dequeue._fitness + 1;
+                if (swungThroughZeroSlow)
+                {
+                    Config.Print("swungThroughZeroSlow {0} {1}", slow._angle, slow._fitness);
+                }
+                if (Math.Abs(slow._angle) > 2E31)
+                {
+                    Config.Print(GetLineage(slow));
+                    return;
+                }
+
+                if (!alreadySeen.Contains(fast))
+                {
+                    alreadySeen.Add(fast);
+                    queue.Enqueue(fast, fast._fitness);
+                }
+
+                if (!alreadySeen.Contains(slow))
+                {
+                    alreadySeen.Add(slow);
+                    queue.Enqueue(slow, slow._fitness);
                 }
             }
+        }
+
+        public static int GetFitness(float angle)
+        {
+            float baseAngle = 3.373777E+07f;
+            float ratio = Math.Abs(angle / baseAngle) - 1;
+            return (int)(ratio * -400);
+        }
+
+        public static string GetLineage(TtcFloatPendulum pendulum)
+        {
+            List<string> lines = new List<string>();
+            while (pendulum != null)
+            {
+                lines.Insert(0, string.Format(
+                    "{0}\t{1}\t{2}",
+                    pendulum._accelerationMagnitude, (int)pendulum._angle, pendulum));
+                pendulum = pendulum._predecessor;
+            }
+            return string.Join("\r\n", lines);
         }
     }
 }
