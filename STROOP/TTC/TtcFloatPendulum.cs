@@ -44,30 +44,20 @@ namespace STROOP.Ttc
 
         public override void Update()
         {
-            // Stay still for a while
             if (_waitingTimer != 0)
             {
                 _waitingTimer--;
             }
             else
             {
-                // Accelerate in the direction that moves angle to zero
                 if (_angle * _accelerationDirection > 0.0f)
                 {
                     _accelerationDirection = -_accelerationDirection;
                 }
                 _angularVelocity += _accelerationMagnitude * _accelerationDirection;
 
-                // Ignoring floating point imprecision, angle vel should always be
-                // a multiple of angle accel, and so it will eventually reach zero
-                //! If the pendulum is moving fast enough, the vel could fail to
-                //  be a multiple of angle accel, and so the pendulum would continue
-                //  oscillating forever
                 if (_angularVelocity == 0.0f)
                 {
-                    // Select a new acceleration
-                    //! By manipulating this, we can cause the pendulum to reach
-                    //  extreme angles and speeds
                     if (PollRNG() % 3 != 0)
                     {
                         _accelerationMagnitude = 13.0f;
@@ -77,7 +67,6 @@ namespace STROOP.Ttc
                         _accelerationMagnitude = 42.0f;
                     }
 
-                    // Pick a random delay
                     if (PollRNG() % 2 == 0)
                     {
                         _waitingTimer = (int)(PollRNG() / 65536.0 * 30 + 5);
@@ -86,6 +75,39 @@ namespace STROOP.Ttc
 
                 _angle += _angularVelocity;
             }
+        }
+
+        public void Update2(bool goFast)
+        {
+            if (_waitingTimer != 0)
+            {
+                _waitingTimer--;
+            }
+            else
+            {
+                if (_angle * _accelerationDirection > 0.0f)
+                {
+                    _accelerationDirection = -_accelerationDirection;
+                }
+                _angularVelocity += _accelerationMagnitude * _accelerationDirection;
+
+                if (_angularVelocity == 0.0f)
+                {
+                    _accelerationMagnitude = goFast ? 42.0f : 13.0f;
+                }
+
+                _angle += _angularVelocity;
+            }
+        }
+
+        public float PerformSwing(bool goFast)
+        {
+            while (true)
+            {
+                Update2(goFast);
+                if (_angularVelocity == 0.0f) break;
+            }
+            return _angle;
         }
 
         public override string ToString()
