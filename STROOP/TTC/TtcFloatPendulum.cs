@@ -18,6 +18,7 @@ namespace STROOP.Ttc
 
         public TtcFloatPendulum _predecessor;
         public int _fitness;
+        public int _pathLength;
 
         public TtcFloatPendulum(TtcRng rng, uint address) :
             this(

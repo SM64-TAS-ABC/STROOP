@@ -32,7 +32,7 @@ namespace STROOP.Structs
             }
 
             HashSet<TtcFloatPendulum> alreadySeen = new HashSet<TtcFloatPendulum>();
-            PriorityQueue<TtcFloatPendulum> queue = new PriorityQueue<TtcFloatPendulum>(capacity: 10_000_000);
+            PriorityQueue<TtcFloatPendulum> queue = new PriorityQueue<TtcFloatPendulum>(capacity: 2_000_000);
             alreadySeen.Add(initialPendulum);
             queue.Enqueue(initialPendulum, initialPendulum._fitness);
 
@@ -44,9 +44,10 @@ namespace STROOP.Structs
                 bool swungThroughZeroFast = fast.PerformSwing(true);
                 fast._predecessor = dequeue;
                 fast._fitness = swungThroughZeroFast ? GetFitness(fast._angle) : dequeue._fitness + 1;
+                fast._pathLength = dequeue._pathLength + 1;
                 if (swungThroughZeroFast)
                 {
-                    Config.Print("swungThroughZeroFast {0} {1}", fast._angle, fast._fitness);
+                    Config.Print("swungThroughZeroFast {0} {1} {2} {3}", fast._angle, fast._fitness, fast._pathLength, queue.Count);
                 }
                 if (Math.Abs(fast._angle) > 2E31)
                 {
@@ -58,9 +59,10 @@ namespace STROOP.Structs
                 bool swungThroughZeroSlow = slow.PerformSwing(false);
                 slow._predecessor = dequeue;
                 slow._fitness = swungThroughZeroSlow ? GetFitness(slow._angle) : dequeue._fitness + 1;
+                slow._pathLength = dequeue._pathLength + 1;
                 if (swungThroughZeroSlow)
                 {
-                    Config.Print("swungThroughZeroSlow {0} {1}", slow._angle, slow._fitness);
+                    Config.Print("swungThroughZeroSlow {0} {1} {2} {3}", slow._angle, slow._fitness, slow._pathLength, queue.Count);
                 }
                 if (Math.Abs(slow._angle) > 2E31)
                 {
@@ -79,6 +81,8 @@ namespace STROOP.Structs
                     alreadySeen.Add(slow);
                     queue.Enqueue(slow, slow._fitness);
                 }
+
+                MaybePruneQueue(queue);
             }
         }
 
@@ -86,7 +90,7 @@ namespace STROOP.Structs
         {
             float baseAngle = 3.373777E+07f;
             float ratio = Math.Abs(angle / baseAngle) - 1;
-            return (int)(ratio * -400);
+            return (int)(ratio * -500);
         }
 
         public static string GetLineage(TtcFloatPendulum pendulum)
@@ -100,6 +104,26 @@ namespace STROOP.Structs
                 pendulum = pendulum._predecessor;
             }
             return string.Join("\r\n", lines);
+        }
+
+        public static void MaybePruneQueue(PriorityQueue<TtcFloatPendulum> queue)
+        {
+            if (queue.Count < 1_000_000) return;
+            Config.Print("PRUNING");
+
+            List<PriorityQueueNode<TtcFloatPendulum>> saved =
+                new List<PriorityQueueNode<TtcFloatPendulum>>();
+            for (int i = 0; i < 100_000; i++)
+            {
+                PriorityQueueNode<TtcFloatPendulum> node = queue.Dequeue();
+                saved.Add(node);
+            }
+
+            queue.Clear();
+            foreach (var node in saved)
+            {
+                queue.Enqueue(node.Value, node.Priority);
+            }
         }
     }
 }
