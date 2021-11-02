@@ -189,6 +189,7 @@
     <Compile Include="Calculators\BobombState.cs" />
     <Compile Include="Calculators\WaterLevelCalculator.cs" />
     <Compile Include="Calculators\OverflowJumpCalculator.cs" />
+    <Compile Include="Calculators\PendulumMain.cs" />
     <Compile Include="Calculators\WaterMain.cs" />
     <Compile Include="Calculators\WaterState.cs" />
     <Compile Include="Calculators\MutableMarioState.cs" />

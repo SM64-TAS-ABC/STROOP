@@ -28,7 +28,7 @@ namespace STROOP.Ttc
         }
 
         public TtcFloatPendulum(TtcRng rng) :
-            this(rng, 0, 6500, 0, 0, 0)
+            this(rng, 1, 6500, 0, 0, 0)
         {
         }
 
