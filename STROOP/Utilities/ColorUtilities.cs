@@ -20,6 +20,8 @@ namespace STROOP.Utilities
                 ["Purple"] = "#E5CCFF",
                 ["Pink"] = "#FFCCFF",
                 ["Grey"] = "#D0D0D0",
+                ["Turquoise"] = "#AAFFE6",
+                ["Brown"] = "#EBBE96",
             };
 
         public static readonly List<Color> ColorList =

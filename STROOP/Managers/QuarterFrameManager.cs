@@ -18,7 +18,7 @@ namespace STROOP.Managers
             new List<VariableGroup>()
             {
                 VariableGroup.QuarterFrameHack,
-                VariableGroup.GhostHack,
+                VariableGroup.PreviousPositions,
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =

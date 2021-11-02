@@ -42,6 +42,6 @@ namespace STROOP.Structs
         Rng,
         Self,
         QuarterFrameHack,
-        GhostHack,
+        PreviousPositions,
     };
 }

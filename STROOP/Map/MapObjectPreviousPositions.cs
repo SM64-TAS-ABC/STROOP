@@ -23,7 +23,7 @@ namespace STROOP.Map
         private int _orangeMarioTex = -1;
         private int _purpleMarioTex = -1;
         private int _blueMarioTex = -1;
-        private int _torquosieMarioTex = -1;
+        private int _turquosieMarioTex = -1;
         private int _yellowMarioTex = -1;
         private int _pinkMarioTex = -1;
         private int _brownMarioTex = -1;
@@ -439,23 +439,23 @@ namespace STROOP.Map
                     (pos02X, pos02Y, pos02Z, pos02A, _yellowMarioTex), // warp_area
                     (pos03X, pos03Y, pos03Z, pos03A, _purpleMarioTex), // check_instant_warp
                     (pos04X, pos04Y, pos04Z, pos04A, _greyMarioTex), // platform displacement
-                    (pos05X, pos05Y, pos05Z, pos05A, _torquosieMarioTex), // wall0A
+                    (pos05X, pos05Y, pos05Z, pos05A, _turquosieMarioTex), // wall0A
                     (pos06X, pos06Y, pos06Z, pos06A, _greenMarioTex), // wall0B
                     (pos07X, pos07Y, pos07Z, pos07A, _brownMarioTex), // obj interactions
                     (pos08X, pos08Y, pos08Z, pos08A, _orangeMarioTex), // qstep1
-                    (pos09X, pos09Y, pos09Z, pos09A, _torquosieMarioTex), // wall1A
+                    (pos09X, pos09Y, pos09Z, pos09A, _turquosieMarioTex), // wall1A
                     (pos10X, pos10Y, pos10Z, pos10A, _greenMarioTex), // wall1B
                     (pos11X, pos11Y, pos11Z, pos11A, _blueMarioTex), // floor1
                     (pos12X, pos12Y, pos12Z, pos12A, _orangeMarioTex), // qstep2
-                    (pos13X, pos13Y, pos13Z, pos13A, _torquosieMarioTex), // wall2A
+                    (pos13X, pos13Y, pos13Z, pos13A, _turquosieMarioTex), // wall2A
                     (pos14X, pos14Y, pos14Z, pos14A, _greenMarioTex), // wall2B
                     (pos15X, pos15Y, pos15Z, pos15A, _blueMarioTex), // floor2
                     (pos16X, pos16Y, pos16Z, pos16A, _orangeMarioTex), // qstep3
-                    (pos17X, pos17Y, pos17Z, pos17A, _torquosieMarioTex), // wall3A
+                    (pos17X, pos17Y, pos17Z, pos17A, _turquosieMarioTex), // wall3A
                     (pos18X, pos18Y, pos18Z, pos18A, _greenMarioTex), // wall3B
                     (pos19X, pos19Y, pos19Z, pos19A, _blueMarioTex), // floor3
                     (pos20X, pos20Y, pos20Z, pos20A, _orangeMarioTex), // qstep4
-                    (pos21X, pos21Y, pos21Z, pos21A, _torquosieMarioTex), // wall4A
+                    (pos21X, pos21Y, pos21Z, pos21A, _turquosieMarioTex), // wall4A
                     (pos22X, pos22Y, pos22Z, pos22A, _greenMarioTex), // wall4B
                     (pos23X, pos23Y, pos23Z, pos23A, _blueMarioTex), // floor4
                 };
@@ -514,9 +514,9 @@ namespace STROOP.Map
                 _blueMarioTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.BlueMarioMapImage as Bitmap);
             }
-            if (_torquosieMarioTex == -1)
+            if (_turquosieMarioTex == -1)
             {
-                _torquosieMarioTex = MapUtilities.LoadTexture(
+                _turquosieMarioTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.TurqoiseMarioMapImage as Bitmap);
             }
             if (_yellowMarioTex == -1)
