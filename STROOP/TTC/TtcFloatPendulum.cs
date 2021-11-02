@@ -16,6 +16,8 @@ namespace STROOP.Ttc
         public float _accelerationMagnitude;
         public int _waitingTimer;
 
+        public TtcFloatPendulum _predecessor;
+
         public TtcFloatPendulum(TtcRng rng, uint address) :
             this(
                 rng: rng,
@@ -100,14 +102,16 @@ namespace STROOP.Ttc
             }
         }
 
-        public float PerformSwing(bool goFast)
+        public bool PerformSwing(bool goFast)
         {
+            bool swungThroughZero = false;
             while (true)
             {
                 Update2(goFast);
+                if (_angle == 0) swungThroughZero = true;
                 if (_angularVelocity == 0.0f) break;
             }
-            return _angle;
+            return swungThroughZero;
         }
 
         public override string ToString()
@@ -191,6 +195,15 @@ namespace STROOP.Ttc
             }
             return false;
         }
-    }
 
+        public override int GetHashCode()
+        {
+            return
+                (int)_accelerationDirection * 7 +
+                (int)_angle * 11 +
+                (int)_angularVelocity * 13 +
+                (int)_accelerationMagnitude * 17 +
+                _waitingTimer * 19;
+        }
+    }
 }
