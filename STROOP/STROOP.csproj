@@ -602,6 +602,7 @@
     <Compile Include="Structs\PushHitbox.cs" />
     <Compile Include="Structs\TriangleInfoTable.cs" />
     <Compile Include="Structs\PointTable.cs" />
+    <Compile Include="Ttc\TtcFloatPendulum.cs" />
     <Compile Include="Ttc\TtcPendulum2.cs" />
     <Compile Include="Ttc\TtcRng2.cs" />
     <Compile Include="Ttc\TtcSaveStateByteIterator.cs" />
