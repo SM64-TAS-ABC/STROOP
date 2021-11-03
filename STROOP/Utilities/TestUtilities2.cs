@@ -28,14 +28,14 @@ namespace STROOP.Utilities
             List<int> dustFrames = dustFrameLists.SelectMany(list => list).ToList();
             int mupenFrame = MupenUtilities.GetFrameCount();
             int maxDustFrame = dustFrames[dustFrames.Count - 1];
-            List<int> dustBools = new List<int>();
+            List<int> frameActions = new List<int>();
             for (int i = mupenFrame; i <= maxDustFrame; i++)
             {
-                dustBools.Add(0);
+                frameActions.Add(0);
             }
             foreach (int frame in dustFrames)
             {
-                dustBools[frame - mupenFrame] = 1;
+                frameActions[frame - mupenFrame] = 1;
             }
 
             for (int i = 0; i < dustFrames.Count - 1; i++)
@@ -48,15 +48,27 @@ namespace STROOP.Utilities
                     int num400s = diff / 400;
                     for (int j = 1; j < num400s; j++)
                     {
-                        int zFrame = dustFrame1 + 400 * j;
-                        dustBools[zFrame - mupenFrame] = 2;
+                        int zPressFrame = dustFrame1 + 400 * j;
+                        frameActions[zPressFrame - mupenFrame] = 2;
                     }
                 }
             }
 
-            //List<M64CopiedFrame> copiedList = dustBools.ConvertAll(b => new M64CopiedFrame(Y: (sbyte)(b == 1 ? 127 : 0), Z: b == 2, R: true));
-            //M64CopiedData copiedData = new M64CopiedData(0, 0, null, null, "CUSTOM", copiedList);
-            //Config.M64Manager.AddCopiedData(copiedData);
+            uint emptyFrameValue = 0x00001000;
+            uint walkFrameValue = 0x7F001000;
+            uint zFrameValue = 0x00001020;
+
+            List<byte> emptyFrameBytes = BitConverter.GetBytes(emptyFrameValue).ToList();
+            List<byte> walkFrameBytes = BitConverter.GetBytes(walkFrameValue).ToList();
+            List<byte> zFrameBytes = BitConverter.GetBytes(zFrameValue).ToList();
+
+            byte[] newBytes = frameActions.ConvertAll(frameAction =>
+            {
+                if (frameAction == 0) return emptyFrameBytes;
+                if (frameAction == 1) return walkFrameBytes;
+                if (frameAction == 2) return zFrameBytes;
+                throw new ArgumentOutOfRangeException();
+            }).SelectMany(list => list).ToArray();
         }
     }
 }
