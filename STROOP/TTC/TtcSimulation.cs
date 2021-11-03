@@ -460,7 +460,7 @@ namespace STROOP.Ttc
                     rngObject.Update();
                 }
                 
-                if (pendulumAnglesForDust.Contains(pendulum._angle))
+                if (pendulumAnglesForDust.Contains((int)pendulum._angle))
                 {
                     output.Add(frame);
                 }

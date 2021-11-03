@@ -194,11 +194,11 @@ namespace STROOP.Structs
                 TtcPendulum pendulum = new TtcPendulum(new TtcRng(0), accelerationDirection, Amplitude, angularVelocity, Acceleration, waitingTimer);
 
                 List<int> intermediateAngles = new List<int>();
-                intermediateAngles.Add(pendulum._angle);
+                intermediateAngles.Add((int)pendulum._angle);
                 while (true)
                 {
                     pendulum.Update();
-                    intermediateAngles.Add(pendulum._angle);
+                    intermediateAngles.Add((int)pendulum._angle);
                     if (pendulum._angularVelocity == 0) break;
                 }
                 return intermediateAngles;

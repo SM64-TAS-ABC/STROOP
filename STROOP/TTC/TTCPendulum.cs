@@ -8,42 +8,36 @@ using System.Xml.Linq;
 
 namespace STROOP.Ttc
 {
-    /** A pendulum is the pendulum that swings back and forth.
-      *  
-      *  A pendulum at rest will call RNG to determine how long
-      *  it should wait for and how fast it should accelerates
-      *  during the next swing. After it's waited the allotted time,
-      *  it swings with that acceleration. Once it crosses strictly
-      *  past the vertical (i.e. angle 0), the pendulum decelerates
-      *  by that same acceleration until it comes to a stop.
-      */
     public class TtcPendulum : TtcObject
     {
-
-        public int _accelerationDirection;
-        public int _angle;
-        public int _angularVelocity;
-        public int _accelerationMagnitude;
+        public float _accelerationDirection;
+        public float _angle;
+        public float _angularVelocity;
+        public float _accelerationMagnitude;
         public int _waitingTimer;
+
+        public TtcPendulum _predecessor;
+        public int _fitness;
+        public int _pathLength;
 
         public TtcPendulum(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                accelerationDirection: (int)Config.Stream.GetFloat(address + 0xF4),
-                angle: (int)Config.Stream.GetFloat(address + 0xF8),
-                angularVelocity: (int)Config.Stream.GetFloat(address + 0xFC),
-                accelerationMagnitude: (int)Config.Stream.GetFloat(address + 0x100),
+                accelerationDirection: Config.Stream.GetFloat(address + 0xF4),
+                angle: Config.Stream.GetFloat(address + 0xF8),
+                angularVelocity: Config.Stream.GetFloat(address + 0xFC),
+                accelerationMagnitude: Config.Stream.GetFloat(address + 0x100),
                 waitingTimer: Config.Stream.GetInt(address + 0x104))
         {
         }
 
         public TtcPendulum(TtcRng rng) :
-            this(rng, 0, 6500, 0, 0, 0)
+            this(rng, 1, 6500, 0, 0, 0)
         {
         }
 
-        public TtcPendulum(TtcRng rng, int accelerationDirection, int angle,
-            int angularVelocity, int accelerationMagnitude, int waitingTimer) : base(rng)
+        public TtcPendulum(TtcRng rng, float accelerationDirection, float angle,
+            float angularVelocity, float accelerationMagnitude, int waitingTimer) : base(rng)
         {
             _accelerationDirection = accelerationDirection;
             _angle = angle;
@@ -54,35 +48,62 @@ namespace STROOP.Ttc
 
         public override void Update()
         {
-
-            if (_waitingTimer > 0)
-            { //waiting
+            if (_waitingTimer != 0)
+            {
                 _waitingTimer--;
             }
             else
-            { //swinging
-
-                if (_accelerationMagnitude == 0)
-                { //give initial acceleration on start
-                    _accelerationMagnitude = 13;
+            {
+                if (_angle * _accelerationDirection > 0.0f)
+                {
+                    _accelerationDirection = -_accelerationDirection;
                 }
+                _angularVelocity += _accelerationMagnitude * _accelerationDirection;
 
-                if (_angle > 0) _accelerationDirection = -1;
-                else if (_angle < 0) _accelerationDirection = 1;
+                if (_angularVelocity == 0.0f)
+                {
+                    if (PollRNG() % 3 != 0)
+                    {
+                        _accelerationMagnitude = 13.0f;
+                    }
+                    else
+                    {
+                        _accelerationMagnitude = 42.0f;
+                    }
 
-                _angularVelocity = _angularVelocity + _accelerationDirection * _accelerationMagnitude;
-                _angle = _angle + _angularVelocity;
-
-                if (_angularVelocity == 0)
-                { //reached peak of swing
-                    _accelerationMagnitude = (PollRNG() % 3 == 0) ? 42 : 13; // = 13, 42
                     if (PollRNG() % 2 == 0)
-                    { //stop for some time
-                        _waitingTimer = (int)(PollRNG() / 65536.0 * 30 + 5); // = [5,35)
+                    {
+                        _waitingTimer = (int)(PollRNG() / 65536.0 * 30 + 5);
                     }
                 }
-            }
 
+                _angle += _angularVelocity;
+            }
+        }
+
+        public void Update2(bool goFast)
+        {
+            _accelerationMagnitude = goFast ? 42.0f : 13.0f;
+
+            if (_angle * _accelerationDirection > 0.0f)
+            {
+                _accelerationDirection = -_accelerationDirection;
+            }
+            _angularVelocity += _accelerationMagnitude * _accelerationDirection;
+
+            _angle += _angularVelocity;
+        }
+
+        public bool PerformSwing(bool goFast)
+        {
+            bool swungThroughZero = false;
+            while (true)
+            {
+                Update2(goFast);
+                if (_angle == 0) swungThroughZero = true;
+                if (_angularVelocity == 0.0f) break;
+            }
+            return swungThroughZero;
         }
 
         public override string ToString()
@@ -142,10 +163,10 @@ namespace STROOP.Ttc
 
         public override void ApplyToAddress(uint address)
         {
-            Config.Stream.SetValue((float)_accelerationDirection, address + 0xF4);
-            Config.Stream.SetValue((float)_angle, address + 0xF8);
-            Config.Stream.SetValue((float)_angularVelocity, address + 0xFC);
-            Config.Stream.SetValue((float)_accelerationMagnitude, address + 0x100);
+            Config.Stream.SetValue(_accelerationDirection, address + 0xF4);
+            Config.Stream.SetValue(_angle, address + 0xF8);
+            Config.Stream.SetValue(_angularVelocity, address + 0xFC);
+            Config.Stream.SetValue(_accelerationMagnitude, address + 0x100);
             Config.Stream.SetValue(_waitingTimer, address + 0x104);
         }
 
@@ -166,6 +187,15 @@ namespace STROOP.Ttc
             }
             return false;
         }
-    }
 
+        public override int GetHashCode()
+        {
+            return
+                (int)_accelerationDirection * 7 +
+                (int)_angle * 11 +
+                (int)_angularVelocity * 13 +
+                (int)_accelerationMagnitude * 17 +
+                _waitingTimer * 19;
+        }
+    }
 }

@@ -18,7 +18,7 @@ namespace STROOP.Structs
     {
         public static void Test()
         {
-            TtcFloatPendulum initialPendulum = new TtcFloatPendulum(null);
+            TtcPendulum initialPendulum = new TtcPendulum(null);
             for (int i = 0; i <= 288; i++)
             {
                 bool swungThroughZero = initialPendulum.PerformSwing(i % 2 == 0);
@@ -31,16 +31,16 @@ namespace STROOP.Structs
                 if (initialPendulum._angle == 33578192) break;
             }
 
-            HashSet<TtcFloatPendulum> alreadySeen = new HashSet<TtcFloatPendulum>();
-            PriorityQueue<TtcFloatPendulum> queue = new PriorityQueue<TtcFloatPendulum>(capacity: 2_000_000);
+            HashSet<TtcPendulum> alreadySeen = new HashSet<TtcPendulum>();
+            PriorityQueue<TtcPendulum> queue = new PriorityQueue<TtcPendulum>(capacity: 2_000_000);
             alreadySeen.Add(initialPendulum);
             queue.Enqueue(initialPendulum, initialPendulum._fitness);
 
             while (queue.Count > 0)
             {
-                TtcFloatPendulum dequeue = queue.Dequeue().Value;
+                TtcPendulum dequeue = queue.Dequeue().Value;
 
-                TtcFloatPendulum fast = (TtcFloatPendulum)dequeue.Clone(null);
+                TtcPendulum fast = (TtcPendulum)dequeue.Clone(null);
                 bool swungThroughZeroFast = fast.PerformSwing(true);
                 fast._predecessor = dequeue;
                 fast._fitness = swungThroughZeroFast ? GetFitness(fast._angle) : dequeue._fitness + 1;
@@ -55,7 +55,7 @@ namespace STROOP.Structs
                     return;
                 }
 
-                TtcFloatPendulum slow = (TtcFloatPendulum)dequeue.Clone(null);
+                TtcPendulum slow = (TtcPendulum)dequeue.Clone(null);
                 bool swungThroughZeroSlow = slow.PerformSwing(false);
                 slow._predecessor = dequeue;
                 slow._fitness = swungThroughZeroSlow ? GetFitness(slow._angle) : dequeue._fitness + 1;
@@ -88,7 +88,7 @@ namespace STROOP.Structs
 
         public static void Test2()
         {
-            TtcFloatPendulum initialPendulum = new TtcFloatPendulum(null);
+            TtcPendulum initialPendulum = new TtcPendulum(null);
             for (int i = 0; i <= 288; i++)
             {
                 bool swungThroughZero = initialPendulum.PerformSwing(i % 2 == 0);
@@ -125,7 +125,7 @@ namespace STROOP.Structs
 
         public static void Test3()
         {
-            TtcFloatPendulum initialPendulum = new TtcFloatPendulum(null);
+            TtcPendulum initialPendulum = new TtcPendulum(null);
             for (int i = 0; i <= 288; i++)
             {
                 bool swungThroughZero = initialPendulum.PerformSwing(i % 2 == 0);
@@ -138,7 +138,7 @@ namespace STROOP.Structs
                 if (initialPendulum._angle == 33578192) break;
             }
 
-            TtcFloatPendulum testPendulum = (TtcFloatPendulum)initialPendulum.Clone(null);
+            TtcPendulum testPendulum = (TtcPendulum)initialPendulum.Clone(null);
             for (int i = 0; i < Solution.Count; i++)
             {
                 bool b = Solution[i];
@@ -154,7 +154,7 @@ namespace STROOP.Structs
             List<PendulumPossibility> output = new List<PendulumPossibility>();
             foreach (List<bool> boolPermuation in BoolPermuations)
             {
-                TtcFloatPendulum pendulum = (TtcFloatPendulum)possibility.Pendulum.Clone(null);
+                TtcPendulum pendulum = (TtcPendulum)possibility.Pendulum.Clone(null);
                 foreach (bool b in boolPermuation)
                 {
                     pendulum.PerformSwing(b);
@@ -185,12 +185,12 @@ namespace STROOP.Structs
 
         public class PendulumPossibility
         {
-            public readonly TtcFloatPendulum Pendulum;
+            public readonly TtcPendulum Pendulum;
             public readonly List<bool> BoolPermutation;
             public readonly PendulumPossibility Predecessor;
 
             public PendulumPossibility(
-                TtcFloatPendulum pendulum,
+                TtcPendulum pendulum,
                 List<bool> boolPermutation,
                 PendulumPossibility predecessor)
             {
@@ -234,7 +234,7 @@ namespace STROOP.Structs
             return (int)(ratio * -500);
         }
 
-        public static string GetLineage(TtcFloatPendulum pendulum)
+        public static string GetLineage(TtcPendulum pendulum)
         {
             List<string> lines = new List<string>();
             while (pendulum != null)
@@ -247,16 +247,16 @@ namespace STROOP.Structs
             return string.Join("\r\n", lines);
         }
 
-        public static void MaybePruneQueue(PriorityQueue<TtcFloatPendulum> queue)
+        public static void MaybePruneQueue(PriorityQueue<TtcPendulum> queue)
         {
             if (queue.Count < 1_000_000) return;
             Config.Print("PRUNING");
 
-            List<PriorityQueueNode<TtcFloatPendulum>> saved =
-                new List<PriorityQueueNode<TtcFloatPendulum>>();
+            List<PriorityQueueNode<TtcPendulum>> saved =
+                new List<PriorityQueueNode<TtcPendulum>>();
             for (int i = 0; i < 100_000; i++)
             {
-                PriorityQueueNode<TtcFloatPendulum> node = queue.Dequeue();
+                PriorityQueueNode<TtcPendulum> node = queue.Dequeue();
                 saved.Add(node);
             }
 

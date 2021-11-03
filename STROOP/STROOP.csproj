@@ -603,7 +603,7 @@
     <Compile Include="Structs\PushHitbox.cs" />
     <Compile Include="Structs\TriangleInfoTable.cs" />
     <Compile Include="Structs\PointTable.cs" />
-    <Compile Include="Ttc\TtcFloatPendulum.cs" />
+    <Compile Include="Ttc\TtcPendulum.cs" />
     <Compile Include="Ttc\TtcPendulum2.cs" />
     <Compile Include="Ttc\TtcRng2.cs" />
     <Compile Include="Ttc\TtcSaveStateByteIterator.cs" />
@@ -621,7 +621,7 @@
     <Compile Include="Ttc\TtcPusher.cs" />
     <Compile Include="Ttc\TtcRotatingBlock.cs" />
     <Compile Include="Ttc\TtcPitBlock.cs" />
-    <Compile Include="Ttc\TtcPendulum.cs" />
+    <Compile Include="Ttc\TtcPendulumBad.cs" />
     <Compile Include="Ttc\TtcHand.cs" />
     <Compile Include="Ttc\TtcElevator.cs" />
     <Compile Include="Ttc\TtcDust.cs" />
