@@ -33,6 +33,13 @@ namespace STROOP.Ttc
                 GetBytes(TypeUtilities.TypeSize[typeof(ushort)]));
         }
 
+        public float GetFloat()
+        {
+            return (float)TypeUtilities.ConvertBytes(
+                typeof(float),
+                GetBytes(TypeUtilities.TypeSize[typeof(float)]));
+        }
+
         private byte[] GetBytes(int numBytes)
         {
             byte[] bytes = _bytes.Skip(index).Take(numBytes).ToArray();

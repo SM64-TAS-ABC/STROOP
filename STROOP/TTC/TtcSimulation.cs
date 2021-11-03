@@ -261,6 +261,54 @@ namespace STROOP.Ttc
             return (false, null, 0);
         }
 
+        public (bool success, TtcSaveState saveState, int endFrame) FindIdealPendulumManipulation2(uint pendulumAddress, bool swingSpeed)
+        {
+            int? objectIndexNullable = ObjectUtilities.GetObjectIndex(pendulumAddress);
+            if (!objectIndexNullable.HasValue) return (false, null, 0);
+            int objectIndex = objectIndexNullable.Value;
+            TtcPendulum pendulum = _rngObjects[objectIndex] as TtcPendulum;
+            float goalSpeed = swingSpeed ? 42 : 13;
+
+            //iterate through frames to update objects
+            int frame = _startingFrame;
+            int counter = 0;
+            while (true)
+            {
+                frame++;
+                counter++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                if (pendulum._angularVelocity != 0) continue;
+
+                if (pendulum._accelerationMagnitude == goalSpeed && pendulum._waitingTimer == 0)
+                {
+                    float initialAccelerationDirection = pendulum._accelerationDirection;
+                    while (true)
+                    {
+                        frame++;
+                        counter++;
+                        foreach (TtcObject rngObject in _rngObjects)
+                        {
+                            rngObject.SetFrame(frame);
+                            rngObject.Update();
+                        }
+                        
+                        if (pendulum._accelerationDirection != initialAccelerationDirection &&
+                            Math.Abs(pendulum._angularVelocity) < 2000)
+                        {
+                            break;
+                        }
+                    }
+                    return (true, GetSaveState(), frame);
+                }
+                return (false, null, 0);
+            }
+        }
+
         public (bool success, TtcSaveState saveState, int endFrame) FindDualPendulumManipulation()
         {
             TtcPendulum pendulum1 = GetClosePendulum();

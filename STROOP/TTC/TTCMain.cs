@@ -88,6 +88,27 @@ namespace STROOP.Ttc
             return dustFrameLists;
         }
 
+        public static List<List<int>> FindIdealPendulumManipulation2(uint pendulumAddress, List<bool> swingSpeeds)
+        {
+            TtcSaveState currentSaveState = new TtcSaveState();
+            int currentStartFrame = MupenUtilities.GetFrameCount();
+
+            List<List<int>> dustFrameLists = new List<List<int>>();
+            foreach (bool b in swingSpeeds)
+            {
+                (bool success, TtcSaveState saveState, int relativeEndFrame, List<int> relativeDustFrames) =
+                    FindIdealPendulumManipulation2(pendulumAddress, currentSaveState, b);
+                if (!success) break;
+
+                List<int> absoluteDustFrames = relativeDustFrames.ConvertAll(rel => rel + currentStartFrame - 2);
+                dustFrameLists.Add(absoluteDustFrames);
+
+                currentSaveState = saveState;
+                currentStartFrame += relativeEndFrame;
+            }
+            return dustFrameLists;
+        }
+
         public static (bool success, TtcSaveState savestate, int endFrame, List<int> dustFrames)
             FindIdealPendulumManipulation(uint pendulumAddress, TtcSaveState saveState)
         {
@@ -97,6 +118,23 @@ namespace STROOP.Ttc
                 TtcSimulation simulation = new TtcSimulation(saveState);
                 simulation.AddDustFrames(dustFrames);
                 (bool success, TtcSaveState savestate, int endFrame) = simulation.FindIdealPendulumManipulation(pendulumAddress);
+                if (success)
+                {
+                    return (success, savestate, endFrame, dustFrames);
+                }
+            }
+            return (false, null, 0, null);
+        }
+
+        public static (bool success, TtcSaveState savestate, int endFrame, List<int> dustFrames)
+            FindIdealPendulumManipulation2(uint pendulumAddress, TtcSaveState saveState, bool swingSpeed)
+        {
+            List<List<int>> dustFrameLists = GetDustFrameLists(2, 25, 25);
+            foreach (List<int> dustFrames in dustFrameLists)
+            {
+                TtcSimulation simulation = new TtcSimulation(saveState);
+                simulation.AddDustFrames(dustFrames);
+                (bool success, TtcSaveState savestate, int endFrame) = simulation.FindIdealPendulumManipulation2(pendulumAddress, swingSpeed);
                 if (success)
                 {
                     return (success, savestate, endFrame, dustFrames);

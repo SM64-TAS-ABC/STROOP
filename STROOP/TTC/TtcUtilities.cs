@@ -216,7 +216,7 @@ namespace STROOP.Ttc
             }
             for (int i = 0; i < 4; i++)
             {
-                rngObjects.Add(new TtcPendulum(rng, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+                rngObjects.Add(new TtcPendulum(rng, iter.GetFloat(), iter.GetFloat(), iter.GetFloat(), iter.GetFloat(), iter.GetInt()).SetIndex(i + 1));
             }
             for (int i = 0; i < 5; i++)
             {
