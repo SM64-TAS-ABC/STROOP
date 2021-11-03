@@ -20,7 +20,7 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            PendulumMain.Test3();
+            PendulumMain.Test2();
         }
     }
 } 

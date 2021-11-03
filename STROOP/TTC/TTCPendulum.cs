@@ -16,10 +16,6 @@ namespace STROOP.Ttc
         public float _accelerationMagnitude;
         public int _waitingTimer;
 
-        public TtcPendulum _predecessor;
-        public int _fitness;
-        public int _pathLength;
-
         public TtcPendulum(TtcRng rng, uint address) :
             this(
                 rng: rng,
