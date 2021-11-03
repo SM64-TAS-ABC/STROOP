@@ -139,18 +139,11 @@ namespace STROOP.Structs
             }
 
             TtcFloatPendulum testPendulum = (TtcFloatPendulum)initialPendulum.Clone(null);
-            TtcFloatPendulum controlPendulum = (TtcFloatPendulum)initialPendulum.Clone(null);
-
-            List<int> exceptions = new List<int>() { 1013 };
             for (int i = 0; i < Solution.Count; i++)
             {
                 bool b = Solution[i];
-                testPendulum.PerformSwing(b);
-
-                bool b2 = !exceptions.Contains(i);
-                controlPendulum.PerformSwing(b2);
-                
-                Config.Print(i + ": " + StringUtilities.FormatIntegerWithSign((int)testPendulum._angle) + " " + StringUtilities.FormatIntegerWithSign((int)controlPendulum._angle));
+                testPendulum.PerformSwing(b);                
+                Config.Print(i + ": " + StringUtilities.FormatIntegerWithSign((int)testPendulum._angle) + " " + testPendulum._angle);
             }
         }
 
