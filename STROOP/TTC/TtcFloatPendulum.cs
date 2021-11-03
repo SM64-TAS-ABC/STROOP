@@ -83,25 +83,15 @@ namespace STROOP.Ttc
 
         public void Update2(bool goFast)
         {
-            if (_waitingTimer != 0)
-            {
-                _waitingTimer--;
-            }
-            else
-            {
-                if (_angle * _accelerationDirection > 0.0f)
-                {
-                    _accelerationDirection = -_accelerationDirection;
-                }
-                _angularVelocity += _accelerationMagnitude * _accelerationDirection;
+            _accelerationMagnitude = goFast ? 42.0f : 13.0f;
 
-                if (_angularVelocity == 0.0f)
-                {
-                    _accelerationMagnitude = goFast ? 42.0f : 13.0f;
-                }
-
-                _angle += _angularVelocity;
+            if (_angle * _accelerationDirection > 0.0f)
+            {
+                _accelerationDirection = -_accelerationDirection;
             }
+            _angularVelocity += _accelerationMagnitude * _accelerationDirection;
+
+            _angle += _angularVelocity;
         }
 
         public bool PerformSwing(bool goFast)
