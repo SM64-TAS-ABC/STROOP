@@ -2201,5 +2201,118 @@ namespace STROOP.Structs
             }
             Config.Print("DONE having considered " + counter + " paths");
         }
+
+        public static void TestTtcTreadmillPosition()
+        {
+            float startX = 2011.55419921875f;
+            float startY = -2523.00024414063f;
+            float startZ = -440.197174072266f;
+            float startXSpeed = 19.7194213867188f;
+            float startYSpeed = -24f;
+            float startZSpeed = 0.184553921222687f;
+            float startHSpeed = 19.6981372833252f;
+            float startXSlidingSpeed = 19.7194213867188f;
+            float startZSlidingSpeed = 0.184553921222687f;
+            ushort startYawMoving = 15797;
+            ushort startYawFacing = 15797;
+            ushort startCentAngle = 53840;
+
+            float startPos4X = 2011.55419921875f;
+            float startPos4Y = -2523.00024414063f;
+            float startPos4Z = -444.397186279297f;
+
+            ushort centAngle2 = 53760;
+
+            float goalX = 2031f;
+            float goalY = -2554.00024414063f;
+            float goalZ = -439.64697265625f;
+
+            List<Input> inputs1 = CalculatorUtilities.GetInputRange(-70, 50, -128, 0);
+            List<Input> inputs2 = CalculatorUtilities.GetInputRange(0, 127, -128, 0);
+
+            MarioState startState = new MarioState(
+                startPos4X,
+                startPos4Y,
+                startPos4Z,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                startXSlidingSpeed,
+                startZSlidingSpeed,
+                startYawMoving,
+                startYawFacing,
+                startCentAngle,
+                null,
+                null,
+                0);
+
+            int counter = 0;
+            int lastIndex = -1;
+            double bestDiff = double.MaxValue;
+            MarioState bestState = null;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            queue.Enqueue(startState);
+
+            List<(float xSpeed, string lineage)> outputList =
+                new List<(float xSpeed, string output)>();
+
+            while (queue.Count > 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+
+                if (dequeue.Index != lastIndex)
+                {
+                    lastIndex = dequeue.Index;
+                    Config.Print("Now at index " + lastIndex);
+                }
+
+                if (dequeue.Index == 1)
+                {
+                    double diff = Math.Abs(dequeue.Z - goalZ);
+                    if (diff > 3) continue;
+                    if (dequeue.Z > -441) continue;
+                }
+
+                if (dequeue.Index == 2)
+                {
+                    counter++;
+                    double diff = Math.Abs(dequeue.Z - goalZ);
+                    if (diff == 0 && dequeue.X >= 2031)
+                    {
+                        bestDiff = diff;
+                        bestState = dequeue;
+                        //Config.Print("Diff of " + bestDiff + " is: " + bestState.GetLineage());
+                        //Config.Print();
+                        outputList.Add((bestState.XSpeed, bestState.GetLineage()));
+                    }
+                    continue;
+                }
+
+                List<MarioState> nextStates;
+                if (dequeue.Index == 0)
+                {
+                    nextStates = inputs1.ConvertAll(
+                        input => AirMovementCalculator.ApplyInput(dequeue, input, numQSteps: 4));
+                    nextStates = nextStates.ConvertAll(state => state.WithCameraAngle(centAngle2));
+                    nextStates = nextStates.ConvertAll(state => state.WithAddedHSpeedIncrease(15));
+                }
+                else // dequeue.Index == 1
+                {
+                    nextStates = inputs2.ConvertAll(
+                        input => AirMovementCalculator.ApplyInput(dequeue, input, numQSteps: 1));
+                }
+                nextStates = ControlUtilities.Randomize(nextStates);
+                nextStates.ForEach(state => queue.Enqueue(state));
+            }
+
+            outputList = Enumerable.OrderBy(outputList, output => output.xSpeed).ToList();
+            foreach (var output in outputList)
+            {
+                Config.Print(output.lineage + "\r\n");
+            }
+
+            Config.Print("DONE having considered " + counter + " paths");
+        }
     }
 }

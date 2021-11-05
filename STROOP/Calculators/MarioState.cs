@@ -174,5 +174,15 @@ namespace STROOP.Structs
                 MarioAngle, CameraAngle,
                 PreviousState, LastInput, Index);
         }
+
+        public MarioState WithAddedHSpeedIncrease(float hSpeedIncrease)
+        {
+            return new MarioState(
+                X, Y, Z,
+                XSpeed, YSpeed, ZSpeed, HSpeed + hSpeedIncrease,
+                SlidingSpeedX, SlidingSpeedZ, SlidingAngle,
+                MarioAngle, CameraAngle,
+                PreviousState, LastInput, Index);
+        }
     }
 }
