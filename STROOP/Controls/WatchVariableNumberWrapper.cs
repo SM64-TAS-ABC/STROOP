@@ -139,11 +139,36 @@ namespace STROOP.Controls
                 if (stringCount != 2 && stringCount != 3) return;
 
                 Config.Stream.Suspend();
-                coordinateVarList[0]._watchVarControl.SetValue(stringList[0]);
                 if (coordinateCount == 3 && stringCount == 3)
+                {
+                    coordinateVarList[0]._watchVarControl.SetValue(stringList[0]);
                     coordinateVarList[1]._watchVarControl.SetValue(stringList[1]);
-                coordinateVarList[coordinateCount - 1]._watchVarControl.SetValue(stringList[stringCount - 1]);
-                coordinateVarList.ForEach(coord => coord._watchVarControl.FlashColor(WatchVariableControl.PASTE_COLOR));
+                    coordinateVarList[2]._watchVarControl.SetValue(stringList[2]);
+                    coordinateVarList[0]._watchVarControl.FlashColor(WatchVariableControl.PASTE_COLOR);
+                    coordinateVarList[1]._watchVarControl.FlashColor(WatchVariableControl.PASTE_COLOR);
+                    coordinateVarList[2]._watchVarControl.FlashColor(WatchVariableControl.PASTE_COLOR);
+                }
+                else if (coordinateCount == 3 && stringCount == 2)
+                {
+                    coordinateVarList[0]._watchVarControl.SetValue(stringList[0]);
+                    coordinateVarList[2]._watchVarControl.SetValue(stringList[1]);
+                    coordinateVarList[0]._watchVarControl.FlashColor(WatchVariableControl.PASTE_COLOR);
+                    coordinateVarList[2]._watchVarControl.FlashColor(WatchVariableControl.PASTE_COLOR);
+                }
+                else if (coordinateCount == 2 && stringCount == 3)
+                {
+                    coordinateVarList[0]._watchVarControl.SetValue(stringList[0]);
+                    coordinateVarList[1]._watchVarControl.SetValue(stringList[2]);
+                    coordinateVarList[0]._watchVarControl.FlashColor(WatchVariableControl.PASTE_COLOR);
+                    coordinateVarList[1]._watchVarControl.FlashColor(WatchVariableControl.PASTE_COLOR);
+                }
+                else if (coordinateCount == 2 && stringCount == 2)
+                {
+                    coordinateVarList[0]._watchVarControl.SetValue(stringList[0]);
+                    coordinateVarList[1]._watchVarControl.SetValue(stringList[1]);
+                    coordinateVarList[0]._watchVarControl.FlashColor(WatchVariableControl.PASTE_COLOR);
+                    coordinateVarList[1]._watchVarControl.FlashColor(WatchVariableControl.PASTE_COLOR);
+                }
                 Config.Stream.Resume();
             };
 
