@@ -2445,11 +2445,7 @@ namespace STROOP
             // 
             // openFileDialogSt
             // 
-            this.openFileDialogSt.Filter = "ST files |*.st|All files|*";
-            // 
-            // saveFileDialogSt
-            // 
-            this.saveFileDialogSt.Filter = "ST files |*.st";
+            this.openFileDialogSt.Filter = "ST files |*.st;*.savestate|All files|*";
             // 
             // splitContainerMain
             // 

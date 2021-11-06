@@ -923,8 +923,7 @@ namespace STROOP
         {
             if (openFileDialogSt.ShowDialog() != DialogResult.OK)
                 return;
-            string stextension = Path.GetExtension(openFileDialogSt.FileName);
-            if (openFileDialogSt.CheckFileExists && stextension == ".st")
+            if (openFileDialogSt.CheckFileExists)
             {
                 try
                 {
