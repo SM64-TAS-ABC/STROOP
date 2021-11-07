@@ -709,6 +709,21 @@ namespace STROOP.Map
                 }
             };
 
+            ToolStripMenuItem itemPendulumGraph = new ToolStripMenuItem("Add Tracker for Pendulum Graph");
+            itemPendulumGraph.Click += (sender, e) =>
+            {
+                List<MapObject> newMapObjs = _mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObject()) return null;
+                    return (MapObject)new MapObjectPendulumGraph(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+                if (newMapObjs.Count == 0) return;
+                MapTracker tracker = new MapTracker(newMapObjs);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemCylinder = new ToolStripMenuItem("Cylinder...");
             itemCylinder.DropDownItems.Add(itemHitboxCylinder);
             itemCylinder.DropDownItems.Add(itemEffectiveHitboxCylinder);
@@ -763,6 +778,7 @@ namespace STROOP.Map
             ToolStripMenuItem itemObjectSpecific = new ToolStripMenuItem("Object Specific...");
             itemObjectSpecific.DropDownItems.Add(itemCoffinBox);
             itemObjectSpecific.DropDownItems.Add(itemChuckyaMapObjects);
+            itemObjectSpecific.DropDownItems.Add(itemPendulumGraph);
 
             pictureBoxPlus.ContextMenuStrip = new ContextMenuStrip();
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemCylinder);
