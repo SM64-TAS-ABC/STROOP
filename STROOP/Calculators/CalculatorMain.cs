@@ -2206,34 +2206,30 @@ namespace STROOP.Structs
         {
             float startX = 2031f;
             float startY = -2523.00024414063f;
-            float startZ = -440.76806640625f;
+            float startZ = -444.763092041016f;
             float startXSpeed = 0f;
             float startYSpeed = -24f;
             float startZSpeed = 0f;
             float startHSpeed = 0f;
             float startXSlidingSpeed = 0f;
             float startZSlidingSpeed = 0f;
-            ushort startYawMoving = 16759;
-            ushort startYawFacing = 16759;
-            ushort startCentAngle = 53522;
+            ushort startYawMoving = 16403;
+            ushort startYawFacing = 16403;
+            ushort startCentAngle = 53619;
 
-            float startPos4X = 2031f;
-            float startPos4Y = -2523.00024414063f;
-            float startPos4Z = -441.608062744141f;
-
-            ushort centAngle2 = 53532;
+            ushort centAngle2 = 53629;
 
             float goalX = 2031f;
             float goalY = -2554.00024414063f;
             float goalZ = -439.64697265625f;
 
-            List<Input> inputs1 = CalculatorUtilities.GetInputRange(-70, 0, -128, 0);
-            List<Input> inputs2 = CalculatorUtilities.GetInputRange(0, 127, -128, 0);
+            List<Input> inputs1 = CalculatorUtilities.GetInputRange(0, 70, -70, 70);
+            List<Input> inputs2 = CalculatorUtilities.GetInputRange(0, 127, -70, 70);
 
             MarioState startState = new MarioState(
-                startPos4X,
-                startPos4Y,
-                startPos4Z,
+                startX,
+                startY,
+                startZ,
                 startXSpeed,
                 startYSpeed,
                 startZSpeed,
@@ -2275,7 +2271,7 @@ namespace STROOP.Structs
                 {
                     counter++;
                     double diff = Math.Abs(dequeue.Z - goalZ);
-                    if (diff == 0 && dequeue.X >= 2031)
+                    if (diff == 0 && dequeue.X >= 2031 && dequeue.XSpeed > 0)
                     {
                         bestDiff = diff;
                         bestState = dequeue;
