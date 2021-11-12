@@ -111,7 +111,8 @@ namespace STROOP.Map
                 ToolStripMenuItem itemResetData = new ToolStripMenuItem("Reset Data");
                 itemResetData.Click += (sender, e) =>
                 {
-                    _dictionary.Clear();
+                    MapObjectSettings settings = new MapObjectSettings(doReset: true);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
@@ -119,6 +120,16 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.DoReset)
+            {
+                _dictionary.Clear();
+            }
         }
 
         public override string GetName()

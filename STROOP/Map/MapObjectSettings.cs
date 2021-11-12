@@ -70,7 +70,7 @@ namespace STROOP.Map
         public readonly bool ChangeSectorAngleRadius;
         public readonly float NewSectorAngleRadius;
 
-        public readonly bool DoPathReset;
+        public readonly bool DoReset;
 
         public readonly bool DoPathCopyPoints;
 
@@ -206,7 +206,7 @@ namespace STROOP.Map
             bool changeSectorAngleRadius = false,
             float newSectorAngleRadius = 0,
 
-            bool doPathReset = false,
+            bool doReset = false,
 
             bool doPathCopyPoints = false,
 
@@ -341,7 +341,7 @@ namespace STROOP.Map
             ChangeSectorAngleRadius = changeSectorAngleRadius;
             NewSectorAngleRadius = newSectorAngleRadius;
 
-            DoPathReset = doPathReset;
+            DoReset = doReset;
 
             DoPathCopyPoints = doPathCopyPoints;
 

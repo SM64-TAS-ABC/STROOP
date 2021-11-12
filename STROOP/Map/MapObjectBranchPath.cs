@@ -247,7 +247,7 @@ namespace STROOP.Map
                 ToolStripMenuItem itemResetPath = new ToolStripMenuItem("Reset Path");
                 itemResetPath.Click += (sender, e) =>
                 {
-                    MapObjectSettings settings = new MapObjectSettings(doPathReset: true);
+                    MapObjectSettings settings = new MapObjectSettings(doReset: true);
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
@@ -284,7 +284,7 @@ namespace STROOP.Map
         {
             base.ApplySettings(settings);
 
-            if (settings.DoPathReset)
+            if (settings.DoReset)
             {
                 _list.Clear();
             }
