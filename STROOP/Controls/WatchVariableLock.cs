@@ -151,5 +151,20 @@ namespace STROOP.Controls
             };
             return string.Join("\t", info);
         }
+
+        public string GetCondensedInfo()
+        {
+            string output = string.Format(
+                "[{0}] = {1} for {2} {3}",
+                Name,
+                Value,
+                BaseAddressType,
+                HexUtilities.FormatValue(BaseAddress));
+            if (BaseAddressType == BaseAddressTypeEnum.Object)
+            {
+                output += string.Format(" ({0})", PositionAngle.GetMapNameForObject(BaseAddress));
+            }
+            return output;
+        }
     }
 }

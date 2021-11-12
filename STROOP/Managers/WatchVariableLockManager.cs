@@ -36,6 +36,7 @@ namespace STROOP.Structs
             _pictureBoxLock = pictureBoxLock;
             _pictureBoxLock.ContextMenuStrip = new ContextMenuStrip();
             _pictureBoxLock.Click += (sender, e) => _pictureBoxLock.ContextMenuStrip.Show(Cursor.Position);
+            _pictureBoxLock.ContextMenuStrip.Opening += (sender, e) => UpdateSpecificLocks();
 
             _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
             _itemRemoveAllLocks.Click += (sender, e) => Config.LockManager.RemoveAllLocks();
@@ -223,6 +224,18 @@ namespace STROOP.Structs
                 lines.Add(lok.ToString());
             }
             InfoForm.ShowValue(string.Join("\r\n", lines), "Lock Info", "Lock Info");
+        }
+
+        private void UpdateSpecificLocks()
+        {
+            List<ToolStripMenuItem> items = _lockList.ConvertAll(lok =>
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem(lok.GetCondensedInfo());
+                item.Click += (sender, e) => _lockList.Remove(lok);
+                return item;
+            });
+            _itemSpecificLock.DropDownItems.Clear();
+            _itemSpecificLock.DropDownItems.AddRange(items.ToArray());
         }
 
         public void Update()
