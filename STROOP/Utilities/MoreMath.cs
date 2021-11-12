@@ -1154,5 +1154,30 @@ namespace STROOP.Utilities
                 return (pointX + dx, coord);
             }
         }
+
+        public static (double x, double z) GetIntersectionOfLines(
+            double line1x1, double line1z1, double line1x2, double line1z2,
+            double line2x1, double line2z1, double line2x2, double line2z2)
+        {
+            // line1: (line1x1, line1z1) + t1 * (line1x2 - line1x1, line1z2 - line1z1)
+            // line2: (line2x1, line2z1) + t2 * (line2x2 - line2x1, line2z2 - line2z1)
+
+            // line1x1 + t1 * (line1x2 - line1x1) = line2x1 + t2 * (line2x2 - line2x1)
+            // line1z1 + t1 * (line1z2 - line1z1) = line2z1 + t2 * (line2z2 - line2z1)
+            // t1 = (line2x1 + t2 * (line2x2 - line2x1) - line1x1) / (line1x2 - line1x1)
+            // t1 = (line2z1 + t2 * (line2z2 - line2z1) - line1z1) / (line1z2 - line1z1)
+            // (line2x1 + t2 * (line2x2 - line2x1) - line1x1) / (line1x2 - line1x1) = (line2z1 + t2 * (line2z2 - line2z1) - line1z1) / (line1z2 - line1z1)
+            // (line2x1 + t2 * (line2x2 - line2x1) - line1x1) * (line1z2 - line1z1) = (line2z1 + t2 * (line2z2 - line2z1) - line1z1) * (line1x2 - line1x1)
+            // (t2 * (line2x2 - line2x1) + line2x1 - line1x1) * (line1z2 - line1z1) = (t2 * (line2z2 - line2z1) + line2z1 - line1z1) * (line1x2 - line1x1)
+            // t2 * (line2x2 - line2x1) * (line1z2 - line1z1) + (line2x1 - line1x1) * (line1z2 - line1z1) = t2 * (line2z2 - line2z1) * (line1x2 - line1x1) + (line2z1 - line1z1) * (line1x2 - line1x1)
+            // t2 * (line2x2 - line2x1) * (line1z2 - line1z1) - t2 * (line2z2 - line2z1) * (line1x2 - line1x1) = (line2z1 - line1z1) * (line1x2 - line1x1) - (line2x1 - line1x1) * (line1z2 - line1z1)
+            // t2 * ((line2x2 - line2x1) * (line1z2 - line1z1) - (line2z2 - line2z1) * (line1x2 - line1x1)) = (line2z1 - line1z1) * (line1x2 - line1x1) - (line2x1 - line1x1) * (line1z2 - line1z1)
+            // t2 = ((line2z1 - line1z1) * (line1x2 - line1x1) - (line2x1 - line1x1) * (line1z2 - line1z1)) / ((line2x2 - line2x1) * (line1z2 - line1z1) - (line2z2 - line2z1) * (line1x2 - line1x1))
+
+            double t2 = ((line2z1 - line1z1) * (line1x2 - line1x1) - (line2x1 - line1x1) * (line1z2 - line1z1)) / ((line2x2 - line2x1) * (line1z2 - line1z1) - (line2z2 - line2z1) * (line1x2 - line1x1));
+            double x = line2x1 + t2 * (line2x2 - line2x1);
+            double z = line2z1 + t2 * (line2z2 - line2z1);
+            return (x, z);
+        }
     }
 }
