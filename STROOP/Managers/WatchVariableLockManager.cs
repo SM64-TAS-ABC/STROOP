@@ -25,6 +25,7 @@ namespace STROOP.Structs
         private readonly List<WatchVariableLock> _lockList;
 
         private readonly ToolStripMenuItem _itemRemoveAllLocks;
+        private readonly ToolStripMenuItem _itemSpecificLock;
         private readonly ToolStripMenuItem _itemDisableLocking;
         private readonly ToolStripMenuItem _itemSeeLockInfo;
 
@@ -39,6 +40,9 @@ namespace STROOP.Structs
             _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
             _itemRemoveAllLocks.Click += (sender, e) => Config.LockManager.RemoveAllLocks();
             _pictureBoxLock.ContextMenuStrip.Items.Add(_itemRemoveAllLocks);
+
+            _itemSpecificLock = new ToolStripMenuItem("Remove Specific Lock...");
+            _pictureBoxLock.ContextMenuStrip.Items.Add(_itemSpecificLock);
 
             _itemDisableLocking = new ToolStripMenuItem("Disable Locking");
             _itemDisableLocking.Click += (sender, e) => LockConfig.LockingDisabled = !LockConfig.LockingDisabled;
