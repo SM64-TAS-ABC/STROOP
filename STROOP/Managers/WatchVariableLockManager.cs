@@ -224,9 +224,8 @@ namespace STROOP.Structs
         public void Update()
         {
             _itemRemoveAllLocks.Text = string.Format(
-                "Remove {0} Lock{1}",
-                _lockList.Count,
-                _lockList.Count == 1 ? "" : "s");
+                "Remove All Locks ({0})",
+                _lockList.Count);
             _itemDisableLocking.Checked = LockConfig.LockingDisabled;
             Image lockImage = GetImageForLock();
             if (_pictureBoxLock.BackgroundImage != lockImage)
