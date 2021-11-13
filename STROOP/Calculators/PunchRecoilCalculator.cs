@@ -1,19 +1,8 @@
-﻿using STROOP.Controls;
-using STROOP.Forms;
-using STROOP.M64;
-using STROOP.Managers;
-using STROOP.Map;
-using STROOP.Models;
+﻿using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
-using STROOP.Ttc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace STROOP.Utilities
 {
@@ -33,11 +22,41 @@ namespace STROOP.Utilities
         public static void Test()
         {
             Config.Print("START");
-            FindWallOverlaps();
+            FindWallOverlapsWithoutUsingSideFloor();
             Config.Print("DONE");
         }
 
-        public static void FindWallOverlaps()
+        public static void FindWallOverlapsWithoutUsingSideFloor()
+        {
+            SetUpDictionary();
+            for (int angle = 0; angle >= -16384; angle -= 16)
+            {
+                if (angle != -8512) continue; // TODO REMOVE
+                
+                TriangleDataModel ShaftTopTri = GetDictionaryValue(angle, ShaftTopIndex);
+                TriangleDataModel HeadFloor1Tri = GetDictionaryValue(angle, HeadFloor1Index);
+                TriangleDataModel HeadFloor2Tri = GetDictionaryValue(angle, HeadFloor2Index);
+
+                (int leftX, int leftY, int leftZ) = ShaftTopTri.GetP3();
+                (int rightX, int rightY, int rightZ) = ShaftTopTri.GetP2();
+                (int bottomRightX, int bottomRightY, int bottomRightZ) = HeadFloor1Tri.GetP1();
+                (int topRightX, int topRightY, int topRightZ) = HeadFloor1Tri.GetP2();
+                (int bottomLeftX, int bottomLeftY, int bottomLeftZ) = HeadFloor2Tri.GetP3();
+                (int topLeftX, int topLeftY, int topLeftZ) = HeadFloor2Tri.GetP2();
+
+                (int leftIntersectionX, int leftIntersectionZ) = ((int, int))MoreMath.GetIntersectionOfLines(
+                    leftX, leftZ, rightX, rightZ, bottomLeftX, bottomLeftZ, topLeftX, topLeftZ);
+                (int rightIntersectionX, int rightIntersectionZ) = ((int, int))MoreMath.GetIntersectionOfLines(
+                    leftX, leftZ, rightX, rightZ, bottomRightX, bottomRightZ, topRightX, topRightZ);
+
+                SpecialConfig.CustomX = leftIntersectionX;
+                SpecialConfig.CustomZ = leftIntersectionZ;
+                SpecialConfig.Custom2X = rightIntersectionX;
+                SpecialConfig.Custom2Z = rightIntersectionZ;
+            }
+        }
+
+        public static void FindWallOverlapsUsingSideFloor()
         {
             SetUpDictionary();
             List<DropDownPoint> dropDownPoints = new List<DropDownPoint>();
