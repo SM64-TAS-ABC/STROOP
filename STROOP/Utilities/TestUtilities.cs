@@ -20,17 +20,21 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
+            //float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            //float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            //float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            //TriangleDataModel triA = TriangleDataModel.Create(0x8016B640);
+            //TriangleDataModel triB = TriangleDataModel.Create(0x8016B130);
+            //int a1 = WallDisplacementCalculator.GetNumWallCollisions(marioX, marioY, marioZ, new List<TriangleDataModel>() { triA }, 50, 60);
+            //int b1 = WallDisplacementCalculator.GetNumWallCollisions(marioX, marioY, marioZ, new List<TriangleDataModel>() { triB }, 50, 60);
+            //Config.SetDebugText(a1 + " " + b1);
+
             //TriangleDataModel tri1 = TriangleDataModel.Create(0x8016B040);
             //TriangleDataModel tri2 = TriangleDataModel.Create(0x8016B850);
             //(int tri1_x1, int tri1_y1, int tri1_z1) = tri1.GetP2();
             //(int tri1_x2, int tri1_y2, int tri1_z2) = tri1.GetP3();
             //(int tri2_x1, int tri2_y1, int tri2_z1) = tri2.GetP2();
             //(int tri2_x2, int tri2_y2, int tri2_z2) = tri2.GetP3();
-
-            //(double intersectionX, double intersectionZ) = MoreMath.GetIntersectionOfLines(tri1_x1, tri1_z1, tri1_x2, tri1_z2, tri2_x1, tri2_z1, tri2_x2, tri2_z2);
-            //SpecialConfig.CustomX = intersectionX;
-            //SpecialConfig.CustomY = tri1_y1 + 60;
-            //SpecialConfig.CustomZ = intersectionZ;
 
             //// 3 -> 2
             //double dropDownX = 0;
@@ -49,6 +53,10 @@ namespace STROOP.Utilities
             //SpecialConfig.Custom2X = dropDownX;
             //SpecialConfig.Custom2Y = tri1Y + 60;
             //SpecialConfig.Custom2Z = dropDownZ;
+
+            //SpecialConfig.CustomX = dropDownX;
+            //SpecialConfig.CustomY = tri1Y;
+            //SpecialConfig.CustomZ = dropDownZ;
 
             //PositionAngle pa1 = PositionAngle.Obj(0x8033D488);
             //PositionAngle pa2 = PositionAngle.Obj(0x8033D6E8);
