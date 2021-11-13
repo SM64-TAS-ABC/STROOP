@@ -18,5 +18,6 @@ namespace STROOP.Structs
         Image,
         Mapping,
         StroopMapData,
+        Text,
     };
 }

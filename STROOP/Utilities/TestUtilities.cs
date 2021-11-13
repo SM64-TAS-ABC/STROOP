@@ -29,34 +29,34 @@ namespace STROOP.Utilities
             //int b1 = WallDisplacementCalculator.GetNumWallCollisions(marioX, marioY, marioZ, new List<TriangleDataModel>() { triB }, 50, 60);
             //Config.SetDebugText(a1 + " " + b1);
 
-            //TriangleDataModel tri1 = TriangleDataModel.Create(0x8016B040);
-            //TriangleDataModel tri2 = TriangleDataModel.Create(0x8016B850);
-            //(int tri1_x1, int tri1_y1, int tri1_z1) = tri1.GetP2();
-            //(int tri1_x2, int tri1_y2, int tri1_z2) = tri1.GetP3();
-            //(int tri2_x1, int tri2_y1, int tri2_z1) = tri2.GetP2();
-            //(int tri2_x2, int tri2_y2, int tri2_z2) = tri2.GetP3();
+            TriangleDataModel tri1 = TriangleDataModel.Create(0x8016B040);
+            TriangleDataModel tri2 = TriangleDataModel.Create(0x8016B850);
+            (int tri1_x1, int tri1_y1, int tri1_z1) = tri1.GetP2();
+            (int tri1_x2, int tri1_y2, int tri1_z2) = tri1.GetP3();
+            (int tri2_x1, int tri2_y1, int tri2_z1) = tri2.GetP2();
+            (int tri2_x2, int tri2_y2, int tri2_z2) = tri2.GetP3();
 
-            //// 3 -> 2
-            //double dropDownX = 0;
-            //double dropDownZ = 0;
-            //double tri1Y = 0;
-            //double tri2Y = 0;
-            //for (double t = 0; t <= 1; t += 0.001)
-            //{
-            //    dropDownX = tri2_x2 + t * (tri2_x1 - tri2_x2);
-            //    dropDownZ = tri2_z2 + t * (tri2_z1 - tri2_z2);
-            //    tri1Y = tri1.GetHeightOnTriangle(dropDownX, dropDownZ);
-            //    tri2Y = tri2.GetHeightOnTriangle(dropDownX, dropDownZ);
-            //    double diff = tri2Y - tri1Y;
-            //    if (diff > 100) break;
-            //}
-            //SpecialConfig.Custom2X = dropDownX;
-            //SpecialConfig.Custom2Y = tri1Y + 60;
-            //SpecialConfig.Custom2Z = dropDownZ;
+            // 3 -> 2
+            double dropDownX = 0;
+            double dropDownZ = 0;
+            double tri1Y = 0;
+            double tri2Y = 0;
+            for (double t = 0; t <= 1; t += 0.001)
+            {
+                dropDownX = tri2_x2 + t * (tri2_x1 - tri2_x2);
+                dropDownZ = tri2_z2 + t * (tri2_z1 - tri2_z2);
+                tri1Y = tri1.GetHeightOnTriangle(dropDownX, dropDownZ);
+                tri2Y = tri2.GetHeightOnTriangle(dropDownX, dropDownZ);
+                double diff = tri2Y - tri1Y;
+                if (diff > 100) break;
+            }
+            SpecialConfig.Custom2X = dropDownX;
+            SpecialConfig.Custom2Y = tri1Y + 60;
+            SpecialConfig.Custom2Z = dropDownZ;
 
-            //SpecialConfig.CustomX = dropDownX;
-            //SpecialConfig.CustomY = tri1Y;
-            //SpecialConfig.CustomZ = dropDownZ;
+            SpecialConfig.CustomX = dropDownX;
+            SpecialConfig.CustomY = tri1Y;
+            SpecialConfig.CustomZ = dropDownZ;
 
             //PositionAngle pa1 = PositionAngle.Obj(0x8033D488);
             //PositionAngle pa2 = PositionAngle.Obj(0x8033D6E8);

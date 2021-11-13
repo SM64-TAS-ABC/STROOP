@@ -34,6 +34,8 @@ namespace STROOP.Structs
                     return "Mapping|*.map";
                 case FileType.StroopMapData:
                     return "STROOP Map Data|*.mapdata";
+                case FileType.Text:
+                    return "Text|*.txt";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -95,6 +97,14 @@ namespace STROOP.Structs
             {
                 Filter = GetFilterString(fileType),
             };
+        }
+
+        public static string GetFilePath(FileType fileType)
+        {
+            OpenFileDialog openFileDialog = CreateOpenFileDialog(fileType);
+            DialogResult result = openFileDialog.ShowDialog();
+            if (result != DialogResult.OK) return null;
+            return openFileDialog.FileName;
         }
 
         public static List<XElement> OpenXmlElements(FileType fileType, string fileName = null)

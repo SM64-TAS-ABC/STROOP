@@ -181,6 +181,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculators\PunchRecoilCalculator.cs" />
     <Compile Include="Calculators\LoadingZoneMain.cs" />
     <Compile Include="Calculators\GroundMovementCalculator.cs" />
     <Compile Include="Calculators\CalculatorUtilities.cs" />
