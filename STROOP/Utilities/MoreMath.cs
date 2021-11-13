@@ -997,7 +997,6 @@ namespace STROOP.Utilities
 
         public static float GetNextFloatInterval(float value)
         {
-            value = Math.Abs(value);
             float interval = 262144;
             while (true)
             {
@@ -1009,7 +1008,6 @@ namespace STROOP.Utilities
 
         public static float GetPreviousFloatInterval(float value)
         {
-            value = Math.Abs(value);
             float interval = 262144;
             while (true)
             {

@@ -41,7 +41,7 @@ namespace STROOP.Utilities
         {
             SetUpDictionary();
             List<DropDownPoint> dropDownPoints = new List<DropDownPoint>();
-            foreach (int angle in GoodAngles)
+            foreach (int angle in MaybeAngles)
             {
                 TriangleDataModel ShaftSideForwards1Tri = GetDictionaryValue(angle, ShaftSideForwards1Index);
                 TriangleDataModel ShaftSideForwards2Tri = GetDictionaryValue(angle, ShaftSideForwards2Index);
@@ -154,7 +154,7 @@ namespace STROOP.Utilities
                 bool goodClassifications =
                     (ShaftSideForwards1Tri.Classification == TriangleClassification.Floor ||
                         ShaftSideForwards2Tri.Classification == TriangleClassification.Floor) &&
-                    ShaftSideBackwardsTri.Classification != TriangleClassification.Wall &&
+                    //ShaftSideBackwardsTri.Classification != TriangleClassification.Wall &&
                     HeadFloor1Tri.Classification == TriangleClassification.Floor &&
                     HeadFloor2Tri.Classification == TriangleClassification.Floor;
                 if (!goodClassifications) continue;
@@ -236,6 +236,87 @@ namespace STROOP.Utilities
             -10192,
             -10224,
             -10240,
+            -10672,
+        };
+
+        public static List<int> MaybeAngles = new List<int>()
+        {
+            -5600,
+            -5616,
+            -5632,
+            -5648,
+            -5680,
+            -5696,
+            -5712,
+            -5728,
+            -5760,
+            -6256,
+            -6448,
+            -6560,
+            -6672,
+            -6816,
+            -6928,
+            -6960,
+            -6976,
+            -6992,
+            -7008,
+            -7024,
+            -7040,
+            -7056,
+            -7072,
+            -7088,
+            -7104,
+            -7280,
+            -7488,
+            -7520,
+            -7552,
+            -7888,
+            -7984,
+            -8016,
+            -8048,
+            -8080,
+            -8112,
+            -8128,
+            -8144,
+            -8160,
+            -8176,
+            -8192,
+            -8208,
+            -8224,
+            -8240,
+            -8256,
+            -8272,
+            -8304,
+            -8640,
+            -8672,
+            -8704,
+            -8880,
+            -8912,
+            -9056,
+            -9088,
+            -9184,
+            -9200,
+            -9216,
+            -9232,
+            -9248,
+            -9264,
+            -9280,
+            -9296,
+            -9344,
+            -9568,
+            -9680,
+            -9760,
+            -9840,
+            -10080,
+            -10160,
+            -10176,
+            -10192,
+            -10208,
+            -10224,
+            -10240,
+            -10256,
+            -10496,
+            -10544,
             -10672,
         };
     }
