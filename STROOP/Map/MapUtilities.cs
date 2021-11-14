@@ -421,6 +421,10 @@ namespace STROOP.Map
                 float z1 = quad[i].z;
                 float x2 = quad[(i + 1) % quad.Count].x;
                 float z2 = quad[(i + 1) % quad.Count].z;
+                if (x1 == x2 && z1 == z2) // handle annihilated triangles
+                {
+                    return false;
+                }
                 bool left = MoreMath.IsPointLeftOfLine(x, z, x1, z1, x2, z2);
                 if (leftOfLine.HasValue && leftOfLine.Value != left) return false;
                 leftOfLine = left;
