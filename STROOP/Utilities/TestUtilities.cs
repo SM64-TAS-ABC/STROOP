@@ -20,6 +20,18 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
+            //if (PunchRecoilCalculator.Dictionary != null)
+            //{
+            //    TriangleDataModel tri1 = PunchRecoilCalculator.GetDictionaryValue(-9392, PunchRecoilCalculator.HeadWall1Index);
+            //    TriangleDataModel tri2 = PunchRecoilCalculator.GetDictionaryValue(-9392, PunchRecoilCalculator.HeadWall2Index);
+            //    float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            //    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            //    float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            //    int count1 = WallDisplacementCalculator.GetNumWallCollisions(marioX, marioY, marioZ, new List<TriangleDataModel>() { tri1 }, 50, 60);
+            //    int count2 = WallDisplacementCalculator.GetNumWallCollisions(marioX, marioY, marioZ, new List<TriangleDataModel>() { tri2 }, 50, 60);
+            //    Config.SetDebugText(count1 + " " + count2);
+            //}
+
             //float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
             //float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
             //float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);

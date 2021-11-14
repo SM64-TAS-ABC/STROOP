@@ -3,6 +3,7 @@ using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace STROOP.Utilities
 {
@@ -29,10 +30,9 @@ namespace STROOP.Utilities
         public static void FindWallOverlapsWithoutUsingSideFloor()
         {
             SetUpDictionary();
+            List<DropDownPoint> dropDownPoints = new List<DropDownPoint>();
             for (int angle = 0; angle >= -16384; angle -= 16)
             {
-                if (angle != -8512) continue; // TODO REMOVE
-                
                 TriangleDataModel ShaftTopTri = GetDictionaryValue(angle, ShaftTopIndex);
                 TriangleDataModel HeadFloor1Tri = GetDictionaryValue(angle, HeadFloor1Index);
                 TriangleDataModel HeadFloor2Tri = GetDictionaryValue(angle, HeadFloor2Index);
@@ -49,10 +49,101 @@ namespace STROOP.Utilities
                 (int rightIntersectionX, int rightIntersectionZ) = ((int, int))MoreMath.GetIntersectionOfLines(
                     leftX, leftZ, rightX, rightZ, bottomRightX, bottomRightZ, topRightX, topRightZ);
 
-                SpecialConfig.CustomX = leftIntersectionX;
-                SpecialConfig.CustomZ = leftIntersectionZ;
-                SpecialConfig.Custom2X = rightIntersectionX;
-                SpecialConfig.Custom2Z = rightIntersectionZ;
+                List<(int x, float y, int z)> edgePoints = new List<(int x, float y, int z)>();
+                int testX = leftIntersectionX - 1;
+                int testZ = leftIntersectionZ + 4;
+                while (true)
+                {
+                    int testTestZ = testZ;
+                    while (true)
+                    {
+                        float? y = ShaftTopTri.GetTruncatedHeightOnTriangleIfInsideTriangle(testX, testTestZ);
+                        if (y.HasValue)
+                        {
+                            edgePoints.Add((testX, y.Value, testTestZ));
+                            testTestZ--;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    testX += 1;
+                    testZ -= 1;
+                    if (testX - testZ > rightIntersectionX - rightIntersectionZ + 3) break;
+                }
+
+                foreach (var p in edgePoints)
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        int dropDownX = p.x - 1 + i;
+                        int dropDownZ = p.z - 1;
+                        float? topY = ShaftTopTri.GetTruncatedHeightOnTriangleIfInsideTriangle(dropDownX, dropDownZ);
+                        float? bottomY1 = HeadFloor1Tri.GetTruncatedHeightOnTriangleIfInsideTriangle(dropDownX, dropDownZ);
+                        float? bottomY2 = HeadFloor2Tri.GetTruncatedHeightOnTriangleIfInsideTriangle(dropDownX, dropDownZ);
+                        float? bottomY = bottomY1 ?? bottomY2;
+                        if (!topY.HasValue && bottomY.HasValue && p.y - bottomY.Value <= 100 && bottomY.Value <= 350)
+                        {
+                            dropDownPoints.Add(new DropDownPoint(angle, dropDownX, bottomY.Value, dropDownZ));
+                        }
+                    }
+                }
+            }
+
+            HashSet<string> seenOutput = new HashSet<string>();
+            List<(int speed, string output)> outputList = new List<(int speed, string output)>();
+            for (int angle = 0; angle >= -16384; angle -= 16)
+            {
+                TriangleDataModel HeadWall1Tri = GetDictionaryValue(angle, HeadWall1Index);
+                TriangleDataModel HeadWall2Tri = GetDictionaryValue(angle, HeadWall2Index);
+                foreach (var point in dropDownPoints)
+                {
+                    float x = point.X;
+                    float y = point.Y;
+                    float z1 = point.Z;
+                    float z2 = point.Z - 0.999f;
+                    int countZ1Tri1 = WallDisplacementCalculator.GetNumWallCollisions(x, y, z1, new List<TriangleDataModel>() { HeadWall1Tri }, 50, 60);
+                    int countZ1Tri2 = WallDisplacementCalculator.GetNumWallCollisions(x, y, z1, new List<TriangleDataModel>() { HeadWall2Tri }, 50, 60);
+                    int countZ2Tri1 = WallDisplacementCalculator.GetNumWallCollisions(x, y, z2, new List<TriangleDataModel>() { HeadWall1Tri }, 50, 60);
+                    int countZ2Tri2 = WallDisplacementCalculator.GetNumWallCollisions(x, y, z2, new List<TriangleDataModel>() { HeadWall2Tri }, 50, 60);
+                    if (countZ1Tri1 + countZ1Tri2 > 0 &&
+                        countZ2Tri1 + countZ2Tri2 > 0 &&
+                        (countZ1Tri1 + "" + countZ1Tri2) != (countZ2Tri1 + "" + countZ2Tri2))
+                    {
+                        for (float z = z1; z >= z2; z = MoreMath.GetPreviousFloat(z))
+                        {
+                            int count = WallDisplacementCalculator.GetNumWallCollisions(x, y, z, new List<TriangleDataModel>() { HeadWall1Tri, HeadWall2Tri }, 50, 60);
+                            if (count != 1)
+                            {
+                                int speed = angle - point.Angle;
+
+                                int testAngle = angle;
+                                int testSpeed = speed;
+                                while (testSpeed > 0)
+                                {
+                                    testAngle -= testSpeed;
+                                    testSpeed -= 42;
+                                }
+
+                                string output = string.Format(
+                                    "{0}, {1}=>{2}, {3} {4} {5}, {6}",
+                                    testAngle, point.Angle, angle, (double)x, (double)y, (double)z, count);
+                                if (!seenOutput.Contains(output))
+                                {
+                                    seenOutput.Add(output);
+                                    outputList.Add((speed, output));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            outputList = Enumerable.OrderBy(outputList, item => item.speed).ToList();
+            outputList.Reverse();
+            foreach (var item in outputList)
+            {
+                Config.Print(item.speed + ", " + item.output);
             }
         }
 
