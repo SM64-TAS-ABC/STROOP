@@ -886,6 +886,10 @@ namespace STROOP.Map
                 copyAddressItem.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(hoverData.Tri.Address));
                 output.Insert(1, copyAddressItem);
 
+                ToolStripMenuItem annihilateItem = new ToolStripMenuItem("Annihilate");
+                annihilateItem.Click += (sender, e) => ButtonUtilities.AnnihilateTriangle(new List<uint>() { hoverData.Tri.Address });
+                output.Insert(2, annihilateItem);
+
                 ToolStripMenuItem unloadAssociatedObjectItem = new ToolStripMenuItem("Unload Associated Object");
                 unloadAssociatedObjectItem.Click += (sender, e) =>
                 {
@@ -894,7 +898,7 @@ namespace STROOP.Map
                     ObjectDataModel obj = new ObjectDataModel(objAddress);
                     ButtonUtilities.UnloadObject(new List<ObjectDataModel>() { obj });
                 };
-                output.Insert(2, unloadAssociatedObjectItem);
+                output.Insert(3, unloadAssociatedObjectItem);
 
                 if (MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits())
                 {
