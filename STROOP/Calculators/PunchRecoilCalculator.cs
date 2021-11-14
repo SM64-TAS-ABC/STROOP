@@ -75,17 +75,24 @@ namespace STROOP.Utilities
 
                 foreach (var p in edgePoints)
                 {
-                    for (int i = 0; i < 2; i++)
+                    List<(int xDiff, int zDiff)> diffs = new List<(int xDiff, int zDiff)>()
                     {
-                        int dropDownX = p.x - 1 + i;
-                        int dropDownZ = p.z - 1;
+                        (0, -1), (0, -2), (-1, -1), (-1, -2), (-2, 2),
+                    };
+                    foreach (var diff in diffs)
+                    {
+                        int dropDownX = p.x + diff.xDiff;
+                        int dropDownZ = p.z + diff.zDiff;
                         float? topY = ShaftTopTri.GetTruncatedHeightOnTriangleIfInsideTriangle(dropDownX, dropDownZ);
                         float? bottomY1 = HeadFloor1Tri.GetTruncatedHeightOnTriangleIfInsideTriangle(dropDownX, dropDownZ);
                         float? bottomY2 = HeadFloor2Tri.GetTruncatedHeightOnTriangleIfInsideTriangle(dropDownX, dropDownZ);
-                        float? bottomY = bottomY1 ?? bottomY2;
-                        if (!topY.HasValue && bottomY.HasValue && p.y - bottomY.Value <= 100 && bottomY.Value <= 350)
+                        if (!topY.HasValue && bottomY1.HasValue && p.y - bottomY1.Value <= 100 && bottomY1.Value <= 350)
                         {
-                            dropDownPoints.Add(new DropDownPoint(angle, dropDownX, bottomY.Value, dropDownZ));
+                            dropDownPoints.Add(new DropDownPoint(angle, dropDownX, bottomY1.Value, dropDownZ));
+                        }
+                        if (!topY.HasValue && bottomY2.HasValue && p.y - bottomY2.Value <= 100 && bottomY2.Value <= 350)
+                        {
+                            dropDownPoints.Add(new DropDownPoint(angle, dropDownX, bottomY2.Value, dropDownZ));
                         }
                     }
                 }
