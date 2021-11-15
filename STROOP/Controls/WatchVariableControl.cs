@@ -953,7 +953,7 @@ namespace STROOP.Controls
             return WatchVarWrapper.GetValue(useRounding, handleFormatting, FixedAddressListGetter());
         }
 
-        public bool SetValueOfValues(object value, bool setManually, int index)
+        public bool SetValueOfValues(object value, bool allowToggle, int index)
         {
             List<object> values = new List<object>();
             for (int i = 0; i < index; i++)
@@ -961,26 +961,26 @@ namespace STROOP.Controls
                 values.Add(null);
             }
             values.Add(value);
-            return SetValues(values, setManually);
+            return SetValues(values, allowToggle);
         }
 
-        public bool SetValues(List<object> values, bool setManually)
+        public bool SetValues(List<object> values, bool allowToggle)
         {
-            bool success = WatchVarWrapper.SetValues(values, setManually, FixedAddressListGetter());
+            bool success = WatchVarWrapper.SetValues(values, allowToggle, FixedAddressListGetter());
             if (!success) FlashColor(FAILURE_COLOR);
             return success;
         }
 
-        public bool SetValue(object value, bool setManually)
+        public bool SetValue(object value, bool allowToggle)
         {
-            bool success = WatchVarWrapper.SetValue(value, setManually, FixedAddressListGetter());
+            bool success = WatchVarWrapper.SetValue(value, allowToggle, FixedAddressListGetter());
             if (!success) FlashColor(FAILURE_COLOR);
             return success;
         }
 
-        public bool AddValue(object value, bool add, bool setManually)
+        public bool AddValue(object value, bool add, bool allowToggle)
         {
-            bool success = WatchVarWrapper.AddValue(value, add, setManually, FixedAddressListGetter());
+            bool success = WatchVarWrapper.AddValue(value, add, allowToggle, FixedAddressListGetter());
             if (!success) FlashColor(FAILURE_COLOR);
             return success;
         }

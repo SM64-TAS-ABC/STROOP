@@ -54,12 +54,12 @@ namespace STROOP.Forms
 
             _textBoxVarName.Text = String.Join(",", _varNames);
 
-            _addAction = (bool add, bool setManually) =>
+            _addAction = (bool add, bool allowToggle) =>
             {
                 List<string> values = ParsingUtilities.ParseStringList(_textBoxAddSubtract.Text);
                 if (values.Count == 0) return;
                 for (int i = 0; i < _watchVarWrappers.Count; i++)
-                    _watchVarWrappers[i].AddValue(values[i % values.Count], add, setManually, _fixedAddressLists[i]);
+                    _watchVarWrappers[i].AddValue(values[i % values.Count], add, allowToggle, _fixedAddressLists[i]);
             };
             _buttonAdd.Click += (s, e) => _addAction(true, true);
             _buttonSubtract.Click += (s, e) => _addAction(false, true);
@@ -142,7 +142,7 @@ namespace STROOP.Forms
             return String.Join(",", values);
         }
 
-        private void SetValues(bool setManually)
+        private void SetValues(bool allowToggle)
         {
             List<string> values = ParsingUtilities.ParseStringList(_textBoxGetSet.Text);
             if (values.Count == 0) return;
@@ -150,7 +150,7 @@ namespace STROOP.Forms
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
             for (int i = 0; i < _watchVarWrappers.Count; i++)
-                _watchVarWrappers[i].SetValue(values[i % values.Count], setManually, _fixedAddressLists[i]);
+                _watchVarWrappers[i].SetValue(values[i % values.Count], allowToggle, _fixedAddressLists[i]);
             if (!streamAlreadySuspended) Config.Stream.Resume();
         }
 

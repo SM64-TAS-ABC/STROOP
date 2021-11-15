@@ -352,16 +352,16 @@ namespace STROOP.Controls
             return value;
         }
 
-        public bool SetValues(List<object> values, bool setManually, List<uint> addresses = null)
+        public bool SetValues(List<object> values, bool allowToggle, List<uint> addresses = null)
         {
             values = values.ConvertAll(value => UnconvertValue(value));
-            return WatchVar.SetValues(values, setManually, addresses);
+            return WatchVar.SetValues(values, allowToggle, addresses);
         }
 
-        public bool SetValue(object value, bool setManually, List<uint> addresses = null)
+        public bool SetValue(object value, bool allowToggle, List<uint> addresses = null)
         {
             value = UnconvertValue(value);
-            return WatchVar.SetValue(value, setManually, addresses);
+            return WatchVar.SetValue(value, allowToggle, addresses);
         }
 
         public object UnconvertValue(object value)
@@ -381,13 +381,13 @@ namespace STROOP.Controls
             return checkState;
         }
 
-        public bool SetCheckStateValue(CheckState checkState, bool setManually, List<uint> addresses = null)
+        public bool SetCheckStateValue(CheckState checkState, bool allowToggle, List<uint> addresses = null)
         {
             object value = ConvertCheckStateToValue(checkState);
-            return WatchVar.SetValue(value, setManually, addresses);
+            return WatchVar.SetValue(value, allowToggle, addresses);
         }
 
-        public bool AddValue(object objectValue, bool add, bool setManually, List<uint> addresses = null)
+        public bool AddValue(object objectValue, bool add, bool allowToggle, List<uint> addresses = null)
         {
             double? changeValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
             if (!changeValueNullable.HasValue) return false;
@@ -408,7 +408,7 @@ namespace STROOP.Controls
                 return unconvertedValue;
             });
 
-            return WatchVar.SetValues(newValues, setManually, addresses);
+            return WatchVar.SetValues(newValues, allowToggle, addresses);
         }
 
         public List<uint> GetCurrentAddressesToFix()

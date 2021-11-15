@@ -14,7 +14,7 @@ namespace STROOP.Structs
     public static class WatchVariableSpecialUtilities
     {
         private readonly static Func<uint, object> DEFAULT_GETTER = (uint address) => Double.NaN;
-        private readonly static Func<object, bool, uint, bool> DEFAULT_SETTER = (object value, bool setManually, uint address) => false;
+        private readonly static Func<object, bool, uint, bool> DEFAULT_SETTER = (object value, bool allowToggle, uint address) => false;
         private readonly static WatchVariableSpecialDictionary _dictionary;
 
         static WatchVariableSpecialUtilities()
@@ -50,19 +50,19 @@ namespace STROOP.Structs
                             double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                             return value1 + value2;
                         },
-                        (double sum, bool setManually, uint dummy) =>
+                        (double sum, bool allowToggle, uint dummy) =>
                         {
-                            if (!KeyboardUtilities.GetToggle(setManually))
+                            if (!KeyboardUtilities.GetToggle(allowToggle))
                             {
                                 double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                                 double newValue2 = sum - value1;
-                                return control2.SetValue(newValue2, setManually);
+                                return control2.SetValue(newValue2, allowToggle);
                             }
                             else
                             {
                                 double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                                 double newValue1 = sum - value2;
-                                return control1.SetValue(newValue1, setManually);
+                                return control1.SetValue(newValue1, allowToggle);
                             }
                         }));
                     break;
@@ -75,19 +75,19 @@ namespace STROOP.Structs
                             double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                             return value1 - value2;
                         },
-                        (double diff, bool setManually, uint dummy) =>
+                        (double diff, bool allowToggle, uint dummy) =>
                         {
-                            if (!KeyboardUtilities.GetToggle(setManually))
+                            if (!KeyboardUtilities.GetToggle(allowToggle))
                             {
                                 double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                                 double newValue2 = value1 - diff;
-                                return control2.SetValue(newValue2, setManually);
+                                return control2.SetValue(newValue2, allowToggle);
                             }
                             else
                             {
                                 double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                                 double newValue1 = value2 + diff;
-                                return control1.SetValue(newValue1, setManually);
+                                return control1.SetValue(newValue1, allowToggle);
                             }
                         }));
                     break;
@@ -100,19 +100,19 @@ namespace STROOP.Structs
                             double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                             return value1 * value2;
                         },
-                        (double product, bool setManually, uint dummy) =>
+                        (double product, bool allowToggle, uint dummy) =>
                         {
-                            if (!KeyboardUtilities.GetToggle(setManually))
+                            if (!KeyboardUtilities.GetToggle(allowToggle))
                             {
                                 double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                                 double newValue2 = product / value1;
-                                return control2.SetValue(newValue2, setManually);
+                                return control2.SetValue(newValue2, allowToggle);
                             }
                             else
                             {
                                 double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                                 double newValue1 = product / value2;
-                                return control1.SetValue(newValue1, setManually);
+                                return control1.SetValue(newValue1, allowToggle);
                             }
                         }));
                     break;
@@ -125,19 +125,19 @@ namespace STROOP.Structs
                             double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                             return value1 / value2;
                         },
-                        (double quotient, bool setManually, uint dummy) =>
+                        (double quotient, bool allowToggle, uint dummy) =>
                         {
-                            if (!KeyboardUtilities.GetToggle(setManually))
+                            if (!KeyboardUtilities.GetToggle(allowToggle))
                             {
                                 double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                                 double newValue2 = value1 / quotient;
-                                return control2.SetValue(newValue2, setManually);
+                                return control2.SetValue(newValue2, allowToggle);
                             }
                             else
                             {
                                 double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                                 double newValue1 = value2 * quotient;
-                                return control1.SetValue(newValue1, setManually);
+                                return control1.SetValue(newValue1, allowToggle);
                             }
                         }));
                     break;
@@ -297,9 +297,9 @@ namespace STROOP.Structs
                     {
                         return PositionAngle.GetDistance(p1, p2);
                     },
-                    (double dist, bool setManually, uint dummy) =>
+                    (double dist, bool allowToggle, uint dummy) =>
                     {
-                        return PositionAngle.SetDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually));
+                        return PositionAngle.SetDistance(p1, p2, dist, KeyboardUtilities.GetToggle(allowToggle));
                     }));
             }
             else
@@ -335,9 +335,9 @@ namespace STROOP.Structs
                     {
                         return PositionAngle.GetHDistance(p1, p2);
                     },
-                    (double dist, bool setManually, uint dummy) =>
+                    (double dist, bool allowToggle, uint dummy) =>
                     {
-                        return PositionAngle.SetHDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually));
+                        return PositionAngle.SetHDistance(p1, p2, dist, KeyboardUtilities.GetToggle(allowToggle));
                     }));
             }
             _numDistanceMathOperationEntries++;
@@ -409,7 +409,7 @@ namespace STROOP.Structs
                             throw new ArgumentOutOfRangeException();
                     }
                 },
-                (object value, bool setManually, uint dummy) =>
+                (object value, bool allowToggle, uint dummy) =>
                 {
                     uint address = ParsingUtilities.ParseUInt(control.GetValue(useRounding: false, handleFormatting: false)) + (offset ?? 0);
                     switch (typeString)
@@ -451,7 +451,7 @@ namespace STROOP.Structs
                     {
                         return SpecialConfig.DummyValues[index] as string;
                     },
-                    (string value, bool setManually, uint dummy) =>
+                    (string value, bool allowToggle, uint dummy) =>
                     {
                         SpecialConfig.DummyValues[index] = value;
                         return true;
@@ -470,7 +470,7 @@ namespace STROOP.Structs
                     {
                         return SpecialConfig.DummyValues[index];
                     },
-                    (double value, bool setManually, uint dummy) =>
+                    (double value, bool allowToggle, uint dummy) =>
                     {
                         object o = ParsingUtilities.ParseValueRoundingWrapping(value, type);
                         if (o == null) return false;
@@ -514,7 +514,7 @@ namespace STROOP.Structs
                     {
                         return getter();
                     },
-                    (double doubleValue, bool setManually, uint dummy) =>
+                    (double doubleValue, bool allowToggle, uint dummy) =>
                     {
                         setter(doubleValue);
                         return true;
@@ -564,7 +564,7 @@ namespace STROOP.Structs
                     {
                         return getter();
                     },
-                    (double doubleValue, bool setManually, uint dummy) =>
+                    (double doubleValue, bool allowToggle, uint dummy) =>
                     {
                         setter(doubleValue);
                         return true;
@@ -613,7 +613,7 @@ namespace STROOP.Structs
                     {
                         return getter();
                     },
-                    (float floatValue, bool setManually, uint dummy) =>
+                    (float floatValue, bool allowToggle, uint dummy) =>
                     {
                         setter(floatValue);
                         return true;
@@ -661,7 +661,7 @@ namespace STROOP.Structs
                     {
                         return getter();
                     },
-                    (double doubleValue, bool setManually, uint dummy) =>
+                    (double doubleValue, bool allowToggle, uint dummy) =>
                     {
                         setter(doubleValue);
                         return true;
@@ -683,7 +683,7 @@ namespace STROOP.Structs
                     {
                         return getter();
                     },
-                    (int intValue, bool setManually, uint dummy) =>
+                    (int intValue, bool allowToggle, uint dummy) =>
                     {
                         setter(intValue);
                         return true;
@@ -707,7 +707,7 @@ namespace STROOP.Structs
                     {
                         return getter();
                     },
-                    (PositionAngle posAngle, bool setManually, uint dummy) =>
+                    (PositionAngle posAngle, bool allowToggle, uint dummy) =>
                     {
                         setter(posAngle);
                         return true;
@@ -729,7 +729,7 @@ namespace STROOP.Structs
                     {
                         return getter();
                     },
-                    (string value, bool setManually, uint dummy) =>
+                    (string value, bool allowToggle, uint dummy) =>
                     {
                         try
                         {
@@ -809,13 +809,13 @@ namespace STROOP.Structs
                     List<Func<PositionAngle, PositionAngle, double, bool, bool>> distSetters =
                         new List<Func<PositionAngle, PositionAngle, double, bool, bool>>()
                         {
-                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetXDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
-                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetYDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
-                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetZDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
-                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetHDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
-                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
-                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetFDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
-                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetSDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool allowToggle) => PositionAngle.SetXDistance(p1, p2, dist, KeyboardUtilities.GetToggle(allowToggle)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool allowToggle) => PositionAngle.SetYDistance(p1, p2, dist, KeyboardUtilities.GetToggle(allowToggle)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool allowToggle) => PositionAngle.SetZDistance(p1, p2, dist, KeyboardUtilities.GetToggle(allowToggle)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool allowToggle) => PositionAngle.SetHDistance(p1, p2, dist, KeyboardUtilities.GetToggle(allowToggle)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool allowToggle) => PositionAngle.SetDistance(p1, p2, dist, KeyboardUtilities.GetToggle(allowToggle)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool allowToggle) => PositionAngle.SetFDistance(p1, p2, dist, KeyboardUtilities.GetToggle(allowToggle)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool allowToggle) => PositionAngle.SetSDistance(p1, p2, dist, KeyboardUtilities.GetToggle(allowToggle)),
                         };
 
                     for (int k = 0; k < distTypes.Count; k++)
@@ -829,9 +829,9 @@ namespace STROOP.Structs
                             {
                                 return getter(func1(address), func2(address));
                             },
-                            (double dist, bool setManually, uint address) =>
+                            (double dist, bool allowToggle, uint address) =>
                             {
-                                return setter(func1(address), func2(address), dist, KeyboardUtilities.GetToggle(setManually));
+                                return setter(func1(address), func2(address), dist, KeyboardUtilities.GetToggle(allowToggle));
                             }));
                     }
 
@@ -840,9 +840,9 @@ namespace STROOP.Structs
                         {
                             return PositionAngle.GetAngleTo(func1(address), func2(address), null, false);
                         },
-                        (double angle, bool setManually, uint address) =>
+                        (double angle, bool allowToggle, uint address) =>
                         {
-                            return PositionAngle.SetAngleTo(func1(address), func2(address), angle, KeyboardUtilities.GetToggle(setManually));
+                            return PositionAngle.SetAngleTo(func1(address), func2(address), angle, KeyboardUtilities.GetToggle(allowToggle));
                         }));
 
                     _dictionary.Add(String.Format("DAngle{0}To{1}", string1, string2),
@@ -850,9 +850,9 @@ namespace STROOP.Structs
                         {
                             return PositionAngle.GetDAngleTo(func1(address), func2(address), null, false);
                         },
-                        (double angleDiff, bool setManually, uint address) =>
+                        (double angleDiff, bool allowToggle, uint address) =>
                         {
-                            return PositionAngle.SetDAngleTo(func1(address), func2(address), angleDiff, KeyboardUtilities.GetToggle(setManually));
+                            return PositionAngle.SetDAngleTo(func1(address), func2(address), angleDiff, KeyboardUtilities.GetToggle(allowToggle));
                         }));
 
                     _dictionary.Add(String.Format("AngleDiff{0}To{1}", string1, string2),
@@ -860,9 +860,9 @@ namespace STROOP.Structs
                         {
                             return PositionAngle.GetAngleDifference(func1(address), func2(address), false);
                         },
-                        (double angleDiff, bool setManually, uint address) =>
+                        (double angleDiff, bool allowToggle, uint address) =>
                         {
-                            return PositionAngle.SetAngleDifference(func1(address), func2(address), angleDiff, KeyboardUtilities.GetToggle(setManually));
+                            return PositionAngle.SetAngleDifference(func1(address), func2(address), angleDiff, KeyboardUtilities.GetToggle(allowToggle));
                         }));
                 }
             }
@@ -904,7 +904,7 @@ namespace STROOP.Structs
                     ushort marioPitch = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
                     return marioPitch - pitch;
                 },
-                (double diff, bool setManually, uint objAddress) =>
+                (double diff, bool allowToggle, uint objAddress) =>
                 {
                     PositionAngle mario = PositionAngle.Mario;
                     PositionAngle obj = PositionAngle.Obj(objAddress);
@@ -956,7 +956,7 @@ namespace STROOP.Structs
                     double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
                     return marioHitboxAwayFromObject;
                 },
-                (double hitboxDistAway, bool setManually, uint objAddress) =>
+                (double hitboxDistAway, bool allowToggle, uint objAddress) =>
                 {
                     uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
                     float mObjX = Config.Stream.GetFloat(marioObjRef + ObjectConfig.XOffset);
@@ -976,8 +976,8 @@ namespace STROOP.Structs
                     PositionAngle objPA = PositionAngle.Obj(objAddress);
 
                     return BoolUtilities.Combine(
-                        PositionAngle.SetHDistance(objPA, marioPA, distAway, KeyboardUtilities.GetToggle(setManually)),
-                        PositionAngle.SetHDistance(objPA, marioObjPA, distAway, KeyboardUtilities.GetToggle(setManually)));
+                        PositionAngle.SetHDistance(objPA, marioPA, distAway, KeyboardUtilities.GetToggle(allowToggle)),
+                        PositionAngle.SetHDistance(objPA, marioObjPA, distAway, KeyboardUtilities.GetToggle(allowToggle)));
                 }
             ));
 
@@ -998,7 +998,7 @@ namespace STROOP.Structs
                     double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
                     return marioHitboxAboveObject;
                 },
-                (double hitboxDistAbove, bool setManually, uint objAddress) =>
+                (double hitboxDistAbove, bool allowToggle, uint objAddress) =>
                 {
                     uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
                     float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
@@ -1017,8 +1017,8 @@ namespace STROOP.Structs
                     PositionAngle objPA = PositionAngle.Obj(objAddress);
 
                     return BoolUtilities.Combine(
-                        PositionAngle.SetYDistance(objPA, marioPA, deltaY, KeyboardUtilities.GetToggle(setManually)),
-                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY, KeyboardUtilities.GetToggle(setManually)));
+                        PositionAngle.SetYDistance(objPA, marioPA, deltaY, KeyboardUtilities.GetToggle(allowToggle)),
+                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY, KeyboardUtilities.GetToggle(allowToggle)));
                 }));
 
             _dictionary.Add("MarioHitboxBelowObject",
@@ -1038,7 +1038,7 @@ namespace STROOP.Structs
                     double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
                     return marioHitboxBelowObject;
                 }, 
-                (double hitboxDistBelow, bool setManually, uint objAddress) =>
+                (double hitboxDistBelow, bool allowToggle, uint objAddress) =>
                 {
                     uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
                     float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
@@ -1059,8 +1059,8 @@ namespace STROOP.Structs
                     PositionAngle objPA = PositionAngle.Obj(objAddress);
 
                     return BoolUtilities.Combine(
-                        PositionAngle.SetYDistance(objPA, marioPA, deltaY, KeyboardUtilities.GetToggle(setManually)),
-                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY, KeyboardUtilities.GetToggle(setManually)));
+                        PositionAngle.SetYDistance(objPA, marioPA, deltaY, KeyboardUtilities.GetToggle(allowToggle)),
+                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY, KeyboardUtilities.GetToggle(allowToggle)));
                 }
             ));
 
@@ -1086,7 +1086,7 @@ namespace STROOP.Structs
                     double marioHurtboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHurtboxRadius - objHurtboxRadius;
                     return marioHurtboxAwayFromObject;
                 },
-                (double hurtboxDistAway, bool setManually, uint objAddress) =>
+                (double hurtboxDistAway, bool allowToggle, uint objAddress) =>
                 {
                     uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
                     float mObjX = Config.Stream.GetFloat(marioObjRef + ObjectConfig.XOffset);
@@ -1106,8 +1106,8 @@ namespace STROOP.Structs
                     PositionAngle objPA = PositionAngle.Obj(objAddress);
 
                     return BoolUtilities.Combine(
-                        PositionAngle.SetHDistance(objPA, marioPA, distAway, KeyboardUtilities.GetToggle(setManually)),
-                        PositionAngle.SetHDistance(objPA, marioObjPA, distAway, KeyboardUtilities.GetToggle(setManually)));
+                        PositionAngle.SetHDistance(objPA, marioPA, distAway, KeyboardUtilities.GetToggle(allowToggle)),
+                        PositionAngle.SetHDistance(objPA, marioObjPA, distAway, KeyboardUtilities.GetToggle(allowToggle)));
                 }
             ));
 
@@ -1127,7 +1127,7 @@ namespace STROOP.Structs
                     double marioHurtboxAboveObject = mObjHurtboxBottom - objHurtboxTop;
                     return marioHurtboxAboveObject;
                 },
-                (double hurtboxDistAbove, bool setManually, uint objAddress) =>
+                (double hurtboxDistAbove, bool allowToggle, uint objAddress) =>
                 {
                     uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
                     float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
@@ -1146,8 +1146,8 @@ namespace STROOP.Structs
                     PositionAngle objPA = PositionAngle.Obj(objAddress);
 
                     return BoolUtilities.Combine(
-                        PositionAngle.SetYDistance(objPA, marioPA, deltaY, KeyboardUtilities.GetToggle(setManually)),
-                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY, KeyboardUtilities.GetToggle(setManually)));
+                        PositionAngle.SetYDistance(objPA, marioPA, deltaY, KeyboardUtilities.GetToggle(allowToggle)),
+                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY, KeyboardUtilities.GetToggle(allowToggle)));
                 }
             ));
 
@@ -1168,7 +1168,7 @@ namespace STROOP.Structs
                     double marioHurtboxBelowObject = objHurtboxBottom - mObjHurtboxTop;
                     return marioHurtboxBelowObject;
                 },
-                (double hurtboxDistBelow, bool setManually, uint objAddress) =>
+                (double hurtboxDistBelow, bool allowToggle, uint objAddress) =>
                 {
                     uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
                     float mObjY = Config.Stream.GetFloat(marioObjRef + ObjectConfig.YOffset);
@@ -1189,8 +1189,8 @@ namespace STROOP.Structs
                     PositionAngle objPA = PositionAngle.Obj(objAddress);
 
                     return BoolUtilities.Combine(
-                        PositionAngle.SetYDistance(objPA, marioPA, deltaY, KeyboardUtilities.GetToggle(setManually)),
-                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY, KeyboardUtilities.GetToggle(setManually)));
+                        PositionAngle.SetYDistance(objPA, marioPA, deltaY, KeyboardUtilities.GetToggle(allowToggle)),
+                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY, KeyboardUtilities.GetToggle(allowToggle)));
                 }
             ));
 
@@ -1238,7 +1238,7 @@ namespace STROOP.Structs
                     int angleAway = angleDiffAbs - 0x2AAA;
                     return angleAway;
                 },
-                (double angleAway, bool setManually, uint objAddress) =>
+                (double angleAway, bool allowToggle, uint objAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     PositionAngle objPos = PositionAngle.Obj(objAddress);
@@ -1278,7 +1278,7 @@ namespace STROOP.Structs
                     int coinRngIndex = RngIndexer.GetRngIndex(coinRngValue);
                     return coinRngIndex;
                 },
-                (int rngIndex, bool setManually, uint objAddress) =>
+                (int rngIndex, bool allowToggle, uint objAddress) =>
                 {
                     ushort coinRngValue = RngIndexer.GetRngValue(rngIndex);
                     return Config.Stream.SetValue(coinRngValue, objAddress + ObjectConfig.YawMovingOffset);
@@ -1292,7 +1292,7 @@ namespace STROOP.Structs
                     int rngIndexDiff = coinRngIndex - SpecialConfig.GoalRngIndex;
                     return rngIndexDiff;
                 },
-                (int rngIndexDiff, bool setManually, uint objAddress) =>
+                (int rngIndexDiff, bool allowToggle, uint objAddress) =>
                 {
                     int coinRngIndex = SpecialConfig.GoalRngIndex + rngIndexDiff;
                     ushort coinRngValue = RngIndexer.GetRngValue(coinRngIndex);
@@ -1315,7 +1315,7 @@ namespace STROOP.Structs
                     float pendulumAmplitude = GetPendulumAmplitude(objAddress);
                     return pendulumAmplitude;
                 },
-                (double amplitude, bool setManually, uint objAddress) =>
+                (double amplitude, bool allowToggle, uint objAddress) =>
                 {
                     float accelerationDirection = amplitude > 0 ? -1 : 1;
 
@@ -1335,7 +1335,7 @@ namespace STROOP.Structs
                     int pendulumAmplitudeInt = pendulumAmplitudeIntNullable.Value;
                     return TableConfig.PendulumSwings.GetPendulumSwingIndexExtended(pendulumAmplitudeInt);
                 },
-                (int index, bool setManually, uint objAddress) =>
+                (int index, bool allowToggle, uint objAddress) =>
                 {
                     float amplitude = TableConfig.PendulumSwings.GetPendulumAmplitude(index);
                     float accelerationDirection = amplitude > 0 ? -1 : 1;
@@ -1544,7 +1544,7 @@ namespace STROOP.Structs
                     double minHeight = TableConfig.FlyGuyData.GetMinHeight(oscillationTimer, objY);
                     return minHeight;
                 },
-                (double newMinHeight, bool setManually, uint objAddress) =>
+                (double newMinHeight, bool allowToggle, uint objAddress) =>
                 {
                     int oscillationTimer = Config.Stream.GetInt(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
                     float oldHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
@@ -1562,7 +1562,7 @@ namespace STROOP.Structs
                     double maxHeight = TableConfig.FlyGuyData.GetMaxHeight(oscillationTimer, objY);
                     return maxHeight;
                 },
-                (double newMaxHeight, bool setManually, uint objAddress) =>
+                (double newMaxHeight, bool allowToggle, uint objAddress) =>
                 {
                     int oscillationTimer = Config.Stream.GetInt(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
                     float oldHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
@@ -1582,7 +1582,7 @@ namespace STROOP.Structs
                     double distDiff = dist - 4000;
                     return distDiff;
                 },
-                (double distDiff, bool setManually, uint objAddress) =>
+                (double distDiff, bool allowToggle, uint objAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     PositionAngle objPos = PositionAngle.Obj(objAddress);
@@ -1602,7 +1602,7 @@ namespace STROOP.Structs
                     float bloatSize = (hitboxRadius - 65) / 13;
                     return bloatSize;
                 },
-                (float bloatSize, bool setManually, uint objAddress) =>
+                (float bloatSize, bool allowToggle, uint objAddress) =>
                 {
                     float hitboxRadius = bloatSize * 13 + 65;
                     float hitboxHeight = bloatSize * 22.6f + 113;
@@ -1624,7 +1624,7 @@ namespace STROOP.Structs
                     float radius = hitboxRadius + 32;
                     return radius;
                 },
-                (float radius, bool setManually, uint objAddress) =>
+                (float radius, bool allowToggle, uint objAddress) =>
                 {
                     float bloatSize = (radius - 97) / 13;
                     float hitboxRadius = bloatSize * 13 + 65;
@@ -1652,7 +1652,7 @@ namespace STROOP.Structs
                     double spaceBetween = hDist - radius;
                     return spaceBetween;
                 },
-                (double spaceBetween, bool setManually, uint objAddress) =>
+                (double spaceBetween, bool allowToggle, uint objAddress) =>
                 {
                     float hitboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxRadiusOffset);
                     float radius = hitboxRadius + 32;
@@ -1671,7 +1671,7 @@ namespace STROOP.Structs
                 {
                     return GetRadiusDiff(PositionAngle.Mario, PositionAngle.ObjHome(objAddress), 400);
                 },
-                (double dist, bool setManually, uint objAddress) =>
+                (double dist, bool allowToggle, uint objAddress) =>
                 {
                     return SetRadiusDiff(PositionAngle.Mario, PositionAngle.ObjHome(objAddress), 400, dist);
                 }));
@@ -1697,7 +1697,7 @@ namespace STROOP.Structs
                     int angleDiff = facingAngle - targetAngle;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
-                (double angleDiff, bool setManually, uint objAddress) =>
+                (double angleDiff, bool allowToggle, uint objAddress) =>
                 {
                     ushort targetAngle = Config.Stream.GetUShort(objAddress + ObjectConfig.ScuttlebugTargetAngleOffset);
                     double newObjAngleDouble = targetAngle + angleDiff;
@@ -1712,7 +1712,7 @@ namespace STROOP.Structs
                 {
                     return GetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), 3000);
                 },
-                (double dist, bool setManually, uint objAddress) =>
+                (double dist, bool allowToggle, uint objAddress) =>
                 {
                     return SetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), 3000, dist);
                 }));
@@ -1722,7 +1722,7 @@ namespace STROOP.Structs
                 {
                     return GetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), 4000);
                 },
-                (double dist, bool setManually, uint objAddress) =>
+                (double dist, bool allowToggle, uint objAddress) =>
                 {
                     return SetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), 4000, dist);
                 }));
@@ -1736,7 +1736,7 @@ namespace STROOP.Structs
                     float height = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     return BitfsPlatformGroupTable.GetMinHeight(timer, height);
                 },
-                (double newMinHeight, bool setManually, uint objAddress) =>
+                (double newMinHeight, bool allowToggle, uint objAddress) =>
                 {
                     int timer = Config.Stream.GetInt(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
                     float height = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
@@ -1754,7 +1754,7 @@ namespace STROOP.Structs
                     float height = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
                     return BitfsPlatformGroupTable.GetMaxHeight(timer, height);
                 },
-                (double newMaxHeight, bool setManually, uint objAddress) =>
+                (double newMaxHeight, bool allowToggle, uint objAddress) =>
                 {
                     int timer = Config.Stream.GetInt(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
                     float height = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
@@ -1781,7 +1781,7 @@ namespace STROOP.Structs
                     float homeHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HomeYOffset);
                     return BitfsPlatformGroupTable.GetDisplacedHeight(timer, height, homeHeight);
                 },
-                (double displacedHeight, bool setManually, uint objAddress) =>
+                (double displacedHeight, bool allowToggle, uint objAddress) =>
                 {
                     float homeHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HomeYOffset);
                     double newMaxHeight = homeHeight + displacedHeight;
@@ -1801,7 +1801,7 @@ namespace STROOP.Structs
                     int diff = (int)(globalTimer - lastReleaseTime);
                     return diff;
                 },
-                (int newDiff, bool setManually, uint objAddress) =>
+                (int newDiff, bool allowToggle, uint objAddress) =>
                 {
                     uint globalTimer = Config.Stream.GetUInt(MiscConfig.GlobalTimerAddress);
                     uint newLastReleaseTime = (uint)(globalTimer - newDiff);
@@ -1828,7 +1828,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Min(tri => tri.GetMinX());
                 },
-                (float newMinX, bool setManually, uint objAddress) =>
+                (float newMinX, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -1846,7 +1846,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxX());
                 },
-                (float newMaxX, bool setManually, uint objAddress) =>
+                (float newMaxX, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -1864,7 +1864,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Min(tri => tri.GetMinY());
                 },
-                (float newMinY, bool setManually, uint objAddress) =>
+                (float newMinY, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -1882,7 +1882,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxY());
                 },
-                (float newMaxY, bool setManually, uint objAddress) =>
+                (float newMaxY, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -1900,7 +1900,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Min(tri => tri.GetMinZ());
                 },
-                (float newMinZ, bool setManually, uint objAddress) =>
+                (float newMinZ, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -1918,7 +1918,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxZ());
                 },
-                (float newMaxZ, bool setManually, uint objAddress) =>
+                (float newMaxZ, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -1936,7 +1936,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxX()) - tris.Min(tri => tri.GetMinX());
                 },
-                (float newXRange, bool setManually, uint objAddress) =>
+                (float newXRange, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -1954,7 +1954,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxY()) - tris.Min(tri => tri.GetMinY());
                 },
-                (float newYRange, bool setManually, uint objAddress) =>
+                (float newYRange, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -1972,7 +1972,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxZ()) - tris.Min(tri => tri.GetMinZ());
                 },
-                (float newZRange, bool setManually, uint objAddress) =>
+                (float newZRange, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -1990,7 +1990,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return (tris.Max(tri => tri.GetMaxX()) + tris.Min(tri => tri.GetMinX())) / 2.0;
                 },
-                (float newMidpointX, bool setManually, uint objAddress) =>
+                (float newMidpointX, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -2008,7 +2008,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return (tris.Max(tri => tri.GetMaxY()) + tris.Min(tri => tri.GetMinY())) / 2.0;
                 },
-                (float newMidpointY, bool setManually, uint objAddress) =>
+                (float newMidpointY, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -2026,7 +2026,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return (tris.Max(tri => tri.GetMaxZ()) + tris.Min(tri => tri.GetMinZ())) / 2.0;
                 },
-                (float newMidpointZ, bool setManually, uint objAddress) =>
+                (float newMidpointZ, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -2065,7 +2065,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Min(tri => tri.GetMinX());
                 },
-                (float newMinX, bool setManually, uint objAddress) =>
+                (float newMinX, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -2084,7 +2084,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxX());
                 },
-                (float newMaxX, bool setManually, uint objAddress) =>
+                (float newMaxX, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -2103,7 +2103,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Min(tri => tri.GetMinY());
                 },
-                (float newMinY, bool setManually, uint objAddress) =>
+                (float newMinY, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -2122,7 +2122,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxY());
                 },
-                (float newMaxY, bool setManually, uint objAddress) =>
+                (float newMaxY, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -2141,7 +2141,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Min(tri => tri.GetMinZ());
                 },
-                (float newMinZ, bool setManually, uint objAddress) =>
+                (float newMinZ, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -2160,7 +2160,7 @@ namespace STROOP.Structs
                     if (tris.Count == 0) return double.NaN;
                     return tris.Max(tri => tri.GetMaxZ());
                 },
-                (float newMaxZ, bool setManually, uint objAddress) =>
+                (float newMaxZ, bool allowToggle, uint objAddress) =>
                 {
                     List<TriangleDataModel> tris = TriangleUtilities.GetObjectFloorTrianglesForObject(objAddress);
                     if (tris.Count == 0) return false;
@@ -2181,7 +2181,7 @@ namespace STROOP.Structs
                     double distLimit = Math.Sqrt(distLimitSquared);
                     return distLimit;
                 },
-                (double newDistLimit, bool setManually, uint objAddress) =>
+                (double newDistLimit, bool allowToggle, uint objAddress) =>
                 {
                     double newDistLimitSquared = newDistLimit * newDistLimit;
                     return Config.Stream.SetValue((float)newDistLimitSquared, objAddress + ObjectConfig.RollingLogDistLimitSquaredOffset);
@@ -2207,7 +2207,7 @@ namespace STROOP.Structs
                     float radius = Config.Stream.GetFloat(objAddress + ObjectConfig.ObjectSpawnerRadiusOffset);
                     return GetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), radius);
                 },
-                (double dist, bool setManually, uint objAddress) =>
+                (double dist, bool allowToggle, uint objAddress) =>
                 {
                     float radius = Config.Stream.GetFloat(objAddress + ObjectConfig.ObjectSpawnerRadiusOffset);
                     return SetRadiusDiff(PositionAngle.Mario, PositionAngle.Obj(objAddress), radius, dist);
@@ -2221,7 +2221,7 @@ namespace STROOP.Structs
                     ushort angle = Config.Stream.GetUShort(objAddress + ObjectConfig.YawFacingOffset);
                     return TableConfig.WdwRotatingPlatformTable.GetIndex(angle) ?? double.NaN;
                 },
-                (int index, bool setManually, uint objAddress) =>
+                (int index, bool allowToggle, uint objAddress) =>
                 {
                     ushort angle = TableConfig.WdwRotatingPlatformTable.GetAngle(index);
                     return Config.Stream.SetValue(angle, objAddress + ObjectConfig.YawFacingOffset);
@@ -2232,7 +2232,7 @@ namespace STROOP.Structs
                 {
                     return TableConfig.WdwRotatingPlatformTable.GetIndex(TableConfig.WdwRotatingPlatformTable.GoalAngle) ?? double.NaN;
                 },
-                (int index, bool setManually, uint dummy) =>
+                (int index, bool allowToggle, uint dummy) =>
                 {
                     TableConfig.WdwRotatingPlatformTable.GoalAngle = TableConfig.WdwRotatingPlatformTable.GetAngle(index);
                     return true;
@@ -2243,7 +2243,7 @@ namespace STROOP.Structs
                 {
                     return TableConfig.WdwRotatingPlatformTable.GoalAngle;
                 },
-                (ushort goalAngle, bool setManually, uint dummy) =>
+                (ushort goalAngle, bool allowToggle, uint dummy) =>
                 {
                     TableConfig.WdwRotatingPlatformTable.GoalAngle = goalAngle;
                     return true;
@@ -2255,7 +2255,7 @@ namespace STROOP.Structs
                     ushort angle = Config.Stream.GetUShort(objAddress + ObjectConfig.YawFacingOffset);
                     return TableConfig.WdwRotatingPlatformTable.GetFramesToGoalAngle(angle);
                 },
-                (int numFrames, bool setManually, uint objAddress) =>
+                (int numFrames, bool allowToggle, uint objAddress) =>
                 {
                     ushort? newAngle = TableConfig.WdwRotatingPlatformTable.GetAngleNumFramesBeforeGoal(numFrames);
                     if (!newAngle.HasValue) return false;
@@ -2270,7 +2270,7 @@ namespace STROOP.Structs
                     ushort angle = Config.Stream.GetUShort(objAddress + ObjectConfig.RollFacingOffset);
                     return TableConfig.ElevatorAxleTable.GetIndex(angle) ?? double.NaN;
                 },
-                (int index, bool setManually, uint objAddress) =>
+                (int index, bool allowToggle, uint objAddress) =>
                 {
                     ushort angle = TableConfig.ElevatorAxleTable.GetAngle(index);
                     return Config.Stream.SetValue(angle, objAddress + ObjectConfig.RollFacingOffset);
@@ -2281,7 +2281,7 @@ namespace STROOP.Structs
                 {
                     return TableConfig.ElevatorAxleTable.GetIndex(TableConfig.ElevatorAxleTable.GoalAngle) ?? double.NaN;
                 },
-                (int index, bool setManually, uint dummy) =>
+                (int index, bool allowToggle, uint dummy) =>
                 {
                     TableConfig.ElevatorAxleTable.GoalAngle = TableConfig.ElevatorAxleTable.GetAngle(index);
                     return true;
@@ -2292,7 +2292,7 @@ namespace STROOP.Structs
                 {
                     return TableConfig.ElevatorAxleTable.GoalAngle;
                 },
-                (ushort goalAngle, bool setManually, uint dummy) =>
+                (ushort goalAngle, bool allowToggle, uint dummy) =>
                 {
                     TableConfig.ElevatorAxleTable.GoalAngle = goalAngle;
                     return true;
@@ -2304,7 +2304,7 @@ namespace STROOP.Structs
                     ushort angle = Config.Stream.GetUShort(objAddress + ObjectConfig.RollFacingOffset);
                     return TableConfig.ElevatorAxleTable.GetFramesToGoalAngle(angle);
                 },
-                (int numFrames, bool setManually, uint objAddress) =>
+                (int numFrames, bool allowToggle, uint objAddress) =>
                 {
                     ushort? newAngle = TableConfig.ElevatorAxleTable.GetAngleNumFramesBeforeGoal(numFrames);
                     if (!newAngle.HasValue) return false;
@@ -2384,7 +2384,7 @@ namespace STROOP.Structs
                 {
                     return GetMarioDeFactoSpeed();
                 },
-                (double newDefactoSpeed, bool setManually, uint dummy) =>
+                (double newDefactoSpeed, bool allowToggle, uint dummy) =>
                 {
                     double newHSpeed = newDefactoSpeed / GetDeFactoMultiplier();
                     return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
@@ -2408,7 +2408,7 @@ namespace STROOP.Structs
                 {
                     return GetMarioSlidingSpeed();
                 },
-                (double newHSlidingSpeed, bool setManually, uint dummy) =>
+                (double newHSlidingSpeed, bool allowToggle, uint dummy) =>
                 {
                     float xSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
                     float zSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
@@ -2430,7 +2430,7 @@ namespace STROOP.Structs
                 {
                     return GetMarioSlidingAngle();
                 },
-                (double newHSlidingAngle, bool setManually, uint dummy) =>
+                (double newHSlidingAngle, bool allowToggle, uint dummy) =>
                 {
                     float xSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
                     float zSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
@@ -2468,7 +2468,7 @@ namespace STROOP.Structs
                     double frames = GetObjectTrajectoryYDistToFrames(yDist);
                     return frames;
                 },
-                (double frames, bool setManually, uint dummy) =>
+                (double frames, bool allowToggle, uint dummy) =>
                 {
                     PositionAngle holpPos = PositionAngle.Holp;
                     double yDist = GetObjectTrajectoryFramesToYDist(frames);
@@ -2490,7 +2490,7 @@ namespace STROOP.Structs
                     double frames = GetObjectTrajectoryYDistToFrames(yDist);
                     return frames;
                 },
-                (double frames, bool setManually, uint dummy) =>
+                (double frames, bool allowToggle, uint dummy) =>
                 {
                     PositionAngle holpPos = PositionAngle.Holp;
                     double yDist = GetObjectTrajectoryFramesToYDist(frames);
@@ -2511,7 +2511,7 @@ namespace STROOP.Structs
                     double remainingHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                     return remainingHeight;
                 },
-                (double newRemainingHeight, bool setManually, uint dummy) =>
+                (double newRemainingHeight, bool allowToggle, uint dummy) =>
                 {
                     double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newRemainingHeight);
                     return Config.Stream.SetValue((float)initialVSpeed, MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
@@ -2526,7 +2526,7 @@ namespace STROOP.Structs
                     double peakHeight = marioY + remainingHeight;
                     return peakHeight;
                 },
-                (double newPeakHeight, bool setManually, uint dummy) =>
+                (double newPeakHeight, bool allowToggle, uint dummy) =>
                 {
                     float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double newRemainingHeight = newPeakHeight - marioY;
@@ -2541,7 +2541,7 @@ namespace STROOP.Structs
                     double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
                     return vSpeed;
                 },
-                (double newVSpeed, bool setManually, uint dummy) =>
+                (double newVSpeed, bool allowToggle, uint dummy) =>
                 {
                     double newHSpeed = ConvertDoubleJumpVSpeedToHSpeed(newVSpeed);
                     return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
@@ -2555,7 +2555,7 @@ namespace STROOP.Structs
                     double doubleJumpHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                     return doubleJumpHeight;
                 },
-                (double newHeight, bool setManually, uint dummy) =>
+                (double newHeight, bool allowToggle, uint dummy) =>
                 {
                     double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newHeight);
                     double newHSpeed = ConvertDoubleJumpVSpeedToHSpeed(initialVSpeed);
@@ -2572,7 +2572,7 @@ namespace STROOP.Structs
                     double doubleJumpPeakHeight = marioY + doubleJumpHeight;
                     return doubleJumpPeakHeight;
                 },
-                (double newPeakHeight, bool setManually, uint dummy) =>
+                (double newPeakHeight, bool allowToggle, uint dummy) =>
                 {
                     float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double newHeight = newPeakHeight - marioY;
@@ -2611,7 +2611,7 @@ namespace STROOP.Structs
                     float fallHeight = peakHeight - floorY;
                     return fallHeight;
                 },
-                (double fallHeight, bool setManually, uint dummy) =>
+                (double fallHeight, bool allowToggle, uint dummy) =>
                 {
                     float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                     double newPeakHeight = floorY + fallHeight;
@@ -2625,7 +2625,7 @@ namespace STROOP.Structs
                     double sDist = PositionAngle.GetSDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
                     return "(" + fDist + "," + sDist + ")";
                 },
-                (string value, bool setManually, uint dummy) =>
+                (string value, bool allowToggle, uint dummy) =>
                 {
                     List<double?> values = ParsingUtilities.ParseDoubleList(value);
                     if (values.Count < 2) return false;
@@ -2647,7 +2647,7 @@ namespace STROOP.Structs
                     double sDist = PositionAngle.GetSDistance(SpecialConfig.Point2PA, SpecialConfig.Self2PA);
                     return "(" + fDist + "," + sDist + ")";
                 },
-                (string value, bool setManually, uint dummy) =>
+                (string value, bool allowToggle, uint dummy) =>
                 {
                     List<double?> values = ParsingUtilities.ParseDoubleList(value);
                     if (values.Count < 2) return false;
@@ -2700,7 +2700,7 @@ namespace STROOP.Structs
                 {
                     return PositionAngle.ScheduleOffset;
                 },
-                (int value, bool setManually, uint dummy) =>
+                (int value, bool allowToggle, uint dummy) =>
                 {
                     PositionAngle.ScheduleOffset = value;
                     return true;
@@ -2718,7 +2718,7 @@ namespace STROOP.Structs
                     int minuteComponent = (totalDeciSeconds / 600);
                     return minuteComponent + "'" + secondComponent.ToString("D2") + "\"" + deciSecondComponent;
                 },
-                (string timerString, bool setManually, uint dummy) =>
+                (string timerString, bool allowToggle, uint dummy) =>
                 {
                     if (timerString.Length == 0) timerString = "0" + timerString;
                     if (timerString.Length == 1) timerString = "\"" + timerString;
@@ -2890,7 +2890,7 @@ namespace STROOP.Structs
                     double angleDiff = marioAngle - uphillAngle;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
-                (double angleDiff, bool setManually, uint triAddress) =>
+                (double angleDiff, bool allowToggle, uint triAddress) =>
                 {
                     double uphillAngle = GetTriangleUphillAngle(triAddress);
                     double newMarioAngleDouble = uphillAngle + angleDiff;
@@ -2908,7 +2908,7 @@ namespace STROOP.Structs
                     double angleDiff = marioAngle - downhillAngle;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
-                (double angleDiff, bool setManually, uint triAddress) =>
+                (double angleDiff, bool allowToggle, uint triAddress) =>
                 {
                     double uphillAngle = GetTriangleUphillAngle(triAddress);
                     double downhillAngle = MoreMath.ReverseAngle(uphillAngle);
@@ -2927,7 +2927,7 @@ namespace STROOP.Structs
                     double angleDiff = marioAngle - lefthillAngle;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
-                (double angleDiff, bool setManually, uint triAddress) =>
+                (double angleDiff, bool allowToggle, uint triAddress) =>
                 {
                     double uphillAngle = GetTriangleUphillAngle(triAddress);
                     double lefthillAngle = MoreMath.RotateAngleCCW(uphillAngle, 16384);
@@ -2946,7 +2946,7 @@ namespace STROOP.Structs
                     double angleDiff = marioAngle - righthillAngle;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
-                (double angleDiff, bool setManually, uint triAddress) =>
+                (double angleDiff, bool allowToggle, uint triAddress) =>
                 {
                     double uphillAngle = GetTriangleUphillAngle(triAddress);
                     double righthillAngle = MoreMath.RotateAngleCW(uphillAngle, 16384);
@@ -2980,7 +2980,7 @@ namespace STROOP.Structs
                     int angleAway = angleDiffAbs - 8192;
                     return angleAway;
                 },
-                (double angleAway, bool setManually, uint triAddress) =>
+                (double angleAway, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     double uphillAngle = GetTriangleUphillAngle(triAddress);
@@ -3015,7 +3015,7 @@ namespace STROOP.Structs
                     float distAboveFloor = marioY - floorY;
                     return distAboveFloor;
                 },
-                (double distAbove, bool setManually, uint dummy) =>
+                (double distAbove, bool allowToggle, uint dummy) =>
                 {
                     float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                     double newMarioY = floorY + distAbove;
@@ -3030,7 +3030,7 @@ namespace STROOP.Structs
                     float distBelowCeiling = ceilingY - marioY;
                     return distBelowCeiling;
                 },
-                (double distBelow, bool setManually, uint dummy) =>
+                (double distBelow, bool allowToggle, uint dummy) =>
                 {
                     float ceilingY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.CeilingYOffset);
                     double newMarioY = ceilingY - distBelow;
@@ -3049,7 +3049,7 @@ namespace STROOP.Structs
                         triStruct.NormOffset;
                     return normalDistAway;
                 },
-                (double distAway, bool setManually, uint triAddress) =>
+                (double distAway, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3080,7 +3080,7 @@ namespace STROOP.Structs
                         marioPos.Y + (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
                     return verticalDistAway;
                 },
-                (double distAbove, bool setManually, uint triAddress) =>
+                (double distAbove, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3110,7 +3110,7 @@ namespace STROOP.Structs
                         triStruct.NormOffset;
                     return normalDistAway;
                 },
-                (double distAway, bool setManually, uint triAddress) =>
+                (double distAway, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle self = PositionAngle.Self;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3142,7 +3142,7 @@ namespace STROOP.Structs
                         selfPos.Y + (selfPos.X * triStruct.NormX + selfPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
                     return verticalDistAway;
                 },
-                (double distAbove, bool setManually, uint triAddress) =>
+                (double distAbove, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3232,7 +3232,7 @@ namespace STROOP.Structs
                     if (triangleListStartAddress + indexGuess * structSize == triAddress) return indexGuess;
                     return Double.NaN;
                 },
-                (int index, bool setManually, uint triAddress) =>
+                (int index, bool allowToggle, uint triAddress) =>
                 {
                     uint triangleListStartAddress = Config.Stream.GetUInt(TriangleConfig.TriangleListPointerAddress);
                     uint structSize = TriangleConfig.TriangleStructSize;
@@ -3253,7 +3253,7 @@ namespace STROOP.Structs
                     }
                     return double.NaN;
                 },
-                (int index, bool setManually, uint triAddress) =>
+                (int index, bool allowToggle, uint triAddress) =>
                 {
                     return false;
                 }
@@ -3264,7 +3264,7 @@ namespace STROOP.Structs
                 {
                     return triAddress;
                 },
-                (uint address, bool setManually, uint triAddress) =>
+                (uint address, bool allowToggle, uint triAddress) =>
                 {
                     Config.TriangleManager.SetCustomTriangleAddresses(address);
                     return true;
@@ -3275,7 +3275,7 @@ namespace STROOP.Structs
                 {
                     return Config.CellsManager.TriangleAddress;
                 },
-                (uint address, bool setManually, uint dummy) =>
+                (uint address, bool allowToggle, uint dummy) =>
                 {
                     Config.CellsManager.TriangleAddress = address;
                     return true;
@@ -3388,7 +3388,7 @@ namespace STROOP.Structs
                         TriangleDataModel.Create(triAddress).Classification);
                     return signedDistToLine12;
                 },
-                (double dist, bool setManually, uint triAddress) =>
+                (double dist, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3423,7 +3423,7 @@ namespace STROOP.Structs
                         TriangleDataModel.Create(triAddress).Classification);
                     return signedDistToLine23;
                 },
-                (double dist, bool setManually, uint triAddress) =>
+                (double dist, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3458,7 +3458,7 @@ namespace STROOP.Structs
                         TriangleDataModel.Create(triAddress).Classification);
                     return signedDistToLine31;
                 },
-                (double dist, bool setManually, uint triAddress) =>
+                (double dist, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3493,7 +3493,7 @@ namespace STROOP.Structs
                         TriangleDataModel.Create(triAddress).Classification);
                     return signedDistToLine12;
                 },
-                (double dist, bool setManually, uint triAddress) =>
+                (double dist, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3529,7 +3529,7 @@ namespace STROOP.Structs
                         TriangleDataModel.Create(triAddress).Classification);
                     return signedDistToLine23;
                 },
-                (double dist, bool setManually, uint triAddress) =>
+                (double dist, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3565,7 +3565,7 @@ namespace STROOP.Structs
                         TriangleDataModel.Create(triAddress).Classification);
                     return signedDistToLine31;
                 },
-                (double dist, bool setManually, uint triAddress) =>
+                (double dist, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle selfPos = PositionAngle.Self;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3598,7 +3598,7 @@ namespace STROOP.Structs
                     double angleDiff = marioPos.Angle - angleV1ToV2;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
-                (double angleDiff, bool setManually, uint triAddress) =>
+                (double angleDiff, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);;
@@ -3620,7 +3620,7 @@ namespace STROOP.Structs
                     double angleDiff = marioPos.Angle - angleV2ToV1;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
-                (double angleDiff, bool setManually, uint triAddress) =>
+                (double angleDiff, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3642,7 +3642,7 @@ namespace STROOP.Structs
                     double angleDiff = marioPos.Angle - angleV2ToV3;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
-                (double angleDiff, bool setManually, uint triAddress) =>
+                (double angleDiff, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3664,7 +3664,7 @@ namespace STROOP.Structs
                     double angleDiff = marioPos.Angle - angleV3ToV2;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
-                (double angleDiff, bool setManually, uint triAddress) =>
+                (double angleDiff, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3686,7 +3686,7 @@ namespace STROOP.Structs
                     double angleDiff = marioPos.Angle - angleV3ToV1;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
-                (double angleDiff, bool setManually, uint triAddress) =>
+                (double angleDiff, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3708,7 +3708,7 @@ namespace STROOP.Structs
                     double angleDiff = marioPos.Angle - angleV1ToV3;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
-                (double angleDiff, bool setManually, uint triAddress) =>
+                (double angleDiff, bool allowToggle, uint triAddress) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = TriangleDataModel.Create(triAddress);
@@ -3725,7 +3725,7 @@ namespace STROOP.Structs
                 {
                     return TriangleOffsetsConfig.GetX1(triAddress);
                 },
-                (short value, bool setManually, uint triAddress) =>
+                (short value, bool allowToggle, uint triAddress) =>
                 {
                     return TriangleOffsetsConfig.SetX1(value, triAddress);
                 }));
@@ -3735,7 +3735,7 @@ namespace STROOP.Structs
                 {
                     return TriangleOffsetsConfig.GetY1(triAddress);
                 },
-                (short value, bool setManually, uint triAddress) =>
+                (short value, bool allowToggle, uint triAddress) =>
                 {
                     return TriangleOffsetsConfig.SetY1(value, triAddress);
                 }));
@@ -3745,7 +3745,7 @@ namespace STROOP.Structs
                 {
                     return TriangleOffsetsConfig.GetZ1(triAddress);
                 },
-                (short value, bool setManually, uint triAddress) =>
+                (short value, bool allowToggle, uint triAddress) =>
                 {
                     return TriangleOffsetsConfig.SetZ1(value, triAddress);
                 }));
@@ -3755,7 +3755,7 @@ namespace STROOP.Structs
                 {
                     return TriangleOffsetsConfig.GetX2(triAddress);
                 },
-                (short value, bool setManually, uint triAddress) =>
+                (short value, bool allowToggle, uint triAddress) =>
                 {
                     return TriangleOffsetsConfig.SetX2(value, triAddress);
                 }));
@@ -3765,7 +3765,7 @@ namespace STROOP.Structs
                 {
                     return TriangleOffsetsConfig.GetY2(triAddress);
                 },
-                (short value, bool setManually, uint triAddress) =>
+                (short value, bool allowToggle, uint triAddress) =>
                 {
                     return TriangleOffsetsConfig.SetY2(value, triAddress);
                 }));
@@ -3775,7 +3775,7 @@ namespace STROOP.Structs
                 {
                     return TriangleOffsetsConfig.GetZ2(triAddress);
                 },
-                (short value, bool setManually, uint triAddress) =>
+                (short value, bool allowToggle, uint triAddress) =>
                 {
                     return TriangleOffsetsConfig.SetZ2(value, triAddress);
                 }));
@@ -3785,7 +3785,7 @@ namespace STROOP.Structs
                 {
                     return TriangleOffsetsConfig.GetX3(triAddress);
                 },
-                (short value, bool setManually, uint triAddress) =>
+                (short value, bool allowToggle, uint triAddress) =>
                 {
                     return TriangleOffsetsConfig.SetX3(value, triAddress);
                 }));
@@ -3795,7 +3795,7 @@ namespace STROOP.Structs
                 {
                     return TriangleOffsetsConfig.GetY3(triAddress);
                 },
-                (short value, bool setManually, uint triAddress) =>
+                (short value, bool allowToggle, uint triAddress) =>
                 {
                     return TriangleOffsetsConfig.SetY3(value, triAddress);
                 }));
@@ -3805,7 +3805,7 @@ namespace STROOP.Structs
                 {
                     return TriangleOffsetsConfig.GetZ3(triAddress);
                 },
-                (short value, bool setManually, uint triAddress) =>
+                (short value, bool allowToggle, uint triAddress) =>
                 {
                     return TriangleOffsetsConfig.SetZ3(value, triAddress);
                 }));
@@ -3885,7 +3885,7 @@ namespace STROOP.Structs
                     float marioAboveWater = marioY - waterLevel;
                     return marioAboveWater;
                 },
-                (double goalMarioAboveWater, bool setManually, uint dummy) =>
+                (double goalMarioAboveWater, bool allowToggle, uint dummy) =>
                 {
                     short waterLevel = Config.Stream.GetShort(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
                     float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -3911,7 +3911,7 @@ namespace STROOP.Structs
                     float focusZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
                     return MoreMath.AngleTo_AngleUnits(camX, camZ, focusX, focusZ);
                 },
-                (double yaw, bool setManually, uint dummy) =>
+                (double yaw, bool allowToggle, uint dummy) =>
                 {
                     float camX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
                     float camZ = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
@@ -3937,7 +3937,7 @@ namespace STROOP.Structs
                     (double radius, double theta, double phi) = MoreMath.EulerToSpherical_AngleUnits(focusX - camX, focusY - camY, focusZ - camZ);
                     return phi;
                 },
-                (double pitch, bool setManually, uint dummy) =>
+                (double pitch, bool allowToggle, uint dummy) =>
                 {
                     float camX = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
                     float camY = Config.Stream.GetFloat(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
@@ -3967,7 +3967,7 @@ namespace STROOP.Structs
                     double qpuXIndex = puXIndex / 4d;
                     return qpuXIndex;
                 },
-                (double newQpuXIndex, bool setManually, uint dummy) =>
+                (double newQpuXIndex, bool allowToggle, uint dummy) =>
                 {
                     int newPuXIndex = (int)Math.Round(newQpuXIndex * 4);
                     float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
@@ -3983,7 +3983,7 @@ namespace STROOP.Structs
                     double qpuYIndex = puYIndex / 4d;
                     return qpuYIndex;
                 },
-                (double newQpuYIndex, bool setManually, uint dummy) =>
+                (double newQpuYIndex, bool allowToggle, uint dummy) =>
                 {
                     int newPuYIndex = (int)Math.Round(newQpuYIndex * 4);
                     float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -3999,7 +3999,7 @@ namespace STROOP.Structs
                     double qpuZIndex = puZIndex / 4d;
                     return qpuZIndex;
                 },
-                (double newQpuZIndex, bool setManually, uint dummy) =>
+                (double newQpuZIndex, bool allowToggle, uint dummy) =>
                 {
                     int newPuZIndex = (int)Math.Round(newQpuZIndex * 4);
                     float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
@@ -4014,7 +4014,7 @@ namespace STROOP.Structs
                     int puXIndex = PuUtilities.GetPuIndex(marioX);
                     return puXIndex;
                 },
-                (int newPuXIndex, bool setManually, uint dummy) =>
+                (int newPuXIndex, bool allowToggle, uint dummy) =>
                 {
                     float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
                     double newMarioX = PuUtilities.GetCoordinateInPu(marioX, newPuXIndex);
@@ -4028,7 +4028,7 @@ namespace STROOP.Structs
                     int puYIndex = PuUtilities.GetPuIndex(marioY);
                     return puYIndex;
                 },
-                (int newPuYIndex, bool setManually, uint dummy) =>
+                (int newPuYIndex, bool allowToggle, uint dummy) =>
                 {
                     float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     double newMarioY = PuUtilities.GetCoordinateInPu(marioY, newPuYIndex);
@@ -4042,7 +4042,7 @@ namespace STROOP.Structs
                     int puZIndex = PuUtilities.GetPuIndex(marioZ);
                     return puZIndex;
                 },
-                (int newPuZIndex, bool setManually, uint dummy) =>
+                (int newPuZIndex, bool allowToggle, uint dummy) =>
                 {
                     float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     double newMarioZ = PuUtilities.GetCoordinateInPu(marioZ, newPuZIndex);
@@ -4056,7 +4056,7 @@ namespace STROOP.Structs
                     double relX = PuUtilities.GetRelativeCoordinate(marioX);
                     return relX;
                 },
-                (double newRelX, bool setManually, uint dummy) =>
+                (double newRelX, bool allowToggle, uint dummy) =>
                 {
                     float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
                     int puXIndex = PuUtilities.GetPuIndex(marioX);
@@ -4071,7 +4071,7 @@ namespace STROOP.Structs
                     double relY = PuUtilities.GetRelativeCoordinate(marioY);
                     return relY;
                 },
-                (double newRelY, bool setManually, uint dummy) =>
+                (double newRelY, bool allowToggle, uint dummy) =>
                 {
                     float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     int puYIndex = PuUtilities.GetPuIndex(marioY);
@@ -4086,7 +4086,7 @@ namespace STROOP.Structs
                     double relZ = PuUtilities.GetRelativeCoordinate(marioZ);
                     return relZ;
                 },
-                (double newRelZ, bool setManually, uint dummy) =>
+                (double newRelZ, bool allowToggle, uint dummy) =>
                 {
                     float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     int puZIndex = PuUtilities.GetPuIndex(marioZ);
@@ -4099,7 +4099,7 @@ namespace STROOP.Structs
                 {
                     return GetDeFactoMultiplier();
                 },
-                (double newDeFactoMultiplier, bool setManually, uint dummy) =>
+                (double newDeFactoMultiplier, bool allowToggle, uint dummy) =>
                 {
                     float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
@@ -4116,7 +4116,7 @@ namespace STROOP.Structs
                 {
                     return GetSyncingSpeed();
                 },
-                (double newSyncingSpeed, bool setManually, uint dummy) =>
+                (double newSyncingSpeed, bool allowToggle, uint dummy) =>
                 {
                     float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     float floorY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
@@ -4134,7 +4134,7 @@ namespace STROOP.Structs
                 {
                     return GetQpuSpeed();
                 },
-                (double newQpuSpeed, bool setManually, uint dummy) =>
+                (double newQpuSpeed, bool allowToggle, uint dummy) =>
                 {
                     double newHSpeed = newQpuSpeed * GetSyncingSpeed();
                     return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
@@ -4146,7 +4146,7 @@ namespace STROOP.Structs
                     double puSpeed = GetQpuSpeed() * 4;
                     return puSpeed;
                 },
-                (double newPuSpeed, bool setManually, uint dummy) =>
+                (double newPuSpeed, bool allowToggle, uint dummy) =>
                 {
                     double newQpuSpeed = newPuSpeed / 4;
                     double newHSpeed = newQpuSpeed * GetSyncingSpeed();
@@ -4158,7 +4158,7 @@ namespace STROOP.Structs
                 {
                     return Math.Round(GetQpuSpeed());
                 },
-                (int newQpuSpeedComp, bool setManually, uint dummy) =>
+                (int newQpuSpeedComp, bool allowToggle, uint dummy) =>
                 {
                     double relativeSpeed = GetRelativePuSpeed();
                     double newHSpeed = newQpuSpeedComp * GetSyncingSpeed() + relativeSpeed / GetDeFactoMultiplier();
@@ -4170,7 +4170,7 @@ namespace STROOP.Structs
                 {
                     return Math.Round(GetQpuSpeed() * 4);
                 },
-                (int newPuSpeedComp, bool setManually, uint dummy) =>
+                (int newPuSpeedComp, bool allowToggle, uint dummy) =>
                 {
                     double newQpuSpeedComp = newPuSpeedComp / 4d;
                     double relativeSpeed = GetRelativePuSpeed();
@@ -4183,7 +4183,7 @@ namespace STROOP.Structs
                 {
                     return GetRelativePuSpeed();
                 },
-                (double newRelativeSpeed, bool setManually, uint dummy) =>
+                (double newRelativeSpeed, bool allowToggle, uint dummy) =>
                 {
                     double puSpeed = GetQpuSpeed() * 4;
                     double puSpeedRounded = Math.Round(puSpeed);
@@ -4196,7 +4196,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeSpeed(1 / 4d, true);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 1 / 4d, true, true);
                 }));
@@ -4206,7 +4206,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeSpeed(1 / 4d, false);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 1 / 4d, false, true);
                 }));
@@ -4216,7 +4216,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeIntendedNextComponent(1 / 4d, true);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 1 / 4d, true, false);
                 }));
@@ -4226,7 +4226,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeIntendedNextComponent(1 / 4d, false);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 1 / 4d, false, false);
                 }));
@@ -4236,7 +4236,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeSpeed(2 / 4d, true);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 2 / 4d, true, true);
                 }));
@@ -4246,7 +4246,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeSpeed(2 / 4d, false);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 2 / 4d, false, true);
                 }));
@@ -4256,7 +4256,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeIntendedNextComponent(2 / 4d, true);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 2 / 4d, true, false);
                 }));
@@ -4266,7 +4266,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeIntendedNextComponent(2 / 4d, false);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 2 / 4d, false, false);
                 }));
@@ -4276,7 +4276,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeSpeed(3 / 4d, true);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 3 / 4d, true, true);
                 }));
@@ -4286,7 +4286,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeSpeed(3 / 4d, false);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 3 / 4d, false, true);
                 }));
@@ -4296,7 +4296,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeIntendedNextComponent(3 / 4d, true);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 3 / 4d, true, false);
                 }));
@@ -4306,7 +4306,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeIntendedNextComponent(3 / 4d, false);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 3 / 4d, false, false);
                 }));
@@ -4316,7 +4316,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeSpeed(4 / 4d, true);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 4 / 4d, true, true);
                 }));
@@ -4326,7 +4326,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeSpeed(4 / 4d, false);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 4 / 4d, false, true);
                 }));
@@ -4336,7 +4336,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeIntendedNextComponent(4 / 4d, true);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 4 / 4d, true, false);
                 }));
@@ -4346,7 +4346,7 @@ namespace STROOP.Structs
                 {
                     return GetQsRelativeIntendedNextComponent(4 / 4d, false);
                 },
-                (double newValue, bool setManually, uint dummy) =>
+                (double newValue, bool allowToggle, uint dummy) =>
                 {
                     return GetQsRelativeIntendedNextComponent(newValue, 4 / 4d, false, false);
                 }));
@@ -4356,7 +4356,7 @@ namespace STROOP.Structs
                 {
                     return "(" + SpecialConfig.PuParam1 + "," + SpecialConfig.PuParam2 + ")";
                 },
-                (string puParamsString, bool setManually, uint dummy) =>
+                (string puParamsString, bool allowToggle, uint dummy) =>
                 {
                     List<string> stringList = ParsingUtilities.ParseStringList(puParamsString);
                     List<int?> intList = stringList.ConvertAll(
@@ -4384,7 +4384,7 @@ namespace STROOP.Structs
                     ushort rngValue = Config.Stream.GetUShort(MiscConfig.RngAddress);
                     return RngIndexer.GetRngIndex(rngValue);
                 },
-                (int rngIndex, bool setManually, uint dummy) =>
+                (int rngIndex, bool allowToggle, uint dummy) =>
                 {
                     ushort rngValue = RngIndexer.GetRngValue(rngIndex);
                     return Config.Stream.SetValue(rngValue, MiscConfig.RngAddress);
@@ -4406,7 +4406,7 @@ namespace STROOP.Structs
                     int coinRngIndex = RngIndexer.GetRngIndex(coinRngValue);
                     return coinRngIndex;
                 },
-                (int rngIndex, bool setManually, uint coinAddress) =>
+                (int rngIndex, bool allowToggle, uint coinAddress) =>
                 {
                     ushort coinRngValue = RngIndexer.GetRngValue(rngIndex);
                     return Config.Stream.SetValue(coinRngValue, coinAddress + ObjectConfig.YawMovingOffset);
@@ -4420,7 +4420,7 @@ namespace STROOP.Structs
                     int rngIndexDiff = coinRngIndex - SpecialConfig.GoalRngIndex;
                     return rngIndexDiff;
                 },
-                (int rngIndexDiff, bool setManually, uint coinAddress) =>
+                (int rngIndexDiff, bool allowToggle, uint coinAddress) =>
                 {
                     int coinRngIndex = SpecialConfig.GoalRngIndex + rngIndexDiff;
                     ushort coinRngValue = RngIndexer.GetRngValue(coinRngIndex);
@@ -4432,7 +4432,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.GoalRngValue;
                 },
-                (ushort goalRngValue, bool setManually, uint coinAddress) =>
+                (ushort goalRngValue, bool allowToggle, uint coinAddress) =>
                 {
                     SpecialConfig.GoalRngValue = goalRngValue;
                     return true;
@@ -4443,7 +4443,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.GoalRngIndex;
                 },
-                (ushort goalRngIndex, bool setManually, uint coinAddress) =>
+                (ushort goalRngIndex, bool allowToggle, uint coinAddress) =>
                 {
                     SpecialConfig.GoalRngIndex = goalRngIndex;
                     return true;
@@ -4457,7 +4457,7 @@ namespace STROOP.Structs
                     int rngIndexDiff = rngIndex - SpecialConfig.GoalRngIndex;
                     return rngIndexDiff;
                 },
-                (int rngIndexDiff, bool setManually, uint dummy) =>
+                (int rngIndexDiff, bool allowToggle, uint dummy) =>
                 {
                     int rngIndex = SpecialConfig.GoalRngIndex + rngIndexDiff;
                     ushort rngValue = RngIndexer.GetRngValue(rngIndex);
@@ -4491,7 +4491,7 @@ namespace STROOP.Structs
                 {
                     return DemoCounterUtilities.GetDemoCounterDescription();
                 },
-                (string description, bool setManually, uint dummy) =>
+                (string description, bool allowToggle, uint dummy) =>
                 {
                     short? demoCounterNullable = DemoCounterUtilities.GetDemoCounter(description);
                     if (!demoCounterNullable.HasValue) return false;
@@ -4504,7 +4504,7 @@ namespace STROOP.Structs
                 {
                     return TtcSpeedSettingUtilities.GetTtcSpeedSettingDescription();
                 },
-                (string description, bool setManually, uint dummy) =>
+                (string description, bool allowToggle, uint dummy) =>
                 {
                     short? ttcSpeedSettingNullable = TtcSpeedSettingUtilities.GetTtcSpeedSetting(description);
                     if (!ttcSpeedSettingNullable.HasValue) return false;
@@ -4516,7 +4516,7 @@ namespace STROOP.Structs
                 {
                     return new TtcSaveState().ToString();
                 },
-                (string saveStateString, bool setManually, uint dummy) =>
+                (string saveStateString, bool allowToggle, uint dummy) =>
                 {
                     TtcSaveState saveState = new TtcSaveState(saveStateString);
                     TtcUtilities.ApplySaveState(saveState);
@@ -4538,7 +4538,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.SegmentedToVirtualAddress;
                 },
-                (uint value, bool setManually, uint dummy) =>
+                (uint value, bool allowToggle, uint dummy) =>
                 {
                     SpecialConfig.SegmentedToVirtualAddress = value;
                     return true;
@@ -4556,7 +4556,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.VirtualToSegmentedSegment;
                 },
-                (uint value, bool setManually, uint dummy) =>
+                (uint value, bool allowToggle, uint dummy) =>
                 {
                     SpecialConfig.VirtualToSegmentedSegment = value;
                     return true;
@@ -4567,7 +4567,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.VirtualToSegmentedAddress;
                 },
-                (uint value, bool setManually, uint dummy) =>
+                (uint value, bool allowToggle, uint dummy) =>
                 {
                     SpecialConfig.VirtualToSegmentedAddress = value;
                     return true;
@@ -4587,7 +4587,7 @@ namespace STROOP.Structs
                 {
                     return GotoRetrieveConfig.GotoAboveOffset;
                 },
-                (float value, bool setManually, uint dummy) =>
+                (float value, bool allowToggle, uint dummy) =>
                 {
                     GotoRetrieveConfig.GotoAboveOffset = value;
                     return true;
@@ -4598,7 +4598,7 @@ namespace STROOP.Structs
                 {
                     return GotoRetrieveConfig.GotoInfrontOffset;
                 },
-                (float value, bool setManually, uint dummy) =>
+                (float value, bool allowToggle, uint dummy) =>
                 {
                     GotoRetrieveConfig.GotoInfrontOffset = value;
                     return true;
@@ -4609,7 +4609,7 @@ namespace STROOP.Structs
                 {
                     return GotoRetrieveConfig.RetrieveAboveOffset;
                 },
-                (float value, bool setManually, uint dummy) =>
+                (float value, bool allowToggle, uint dummy) =>
                 {
                     GotoRetrieveConfig.RetrieveAboveOffset = value;
                     return true;
@@ -4620,7 +4620,7 @@ namespace STROOP.Structs
                 {
                     return GotoRetrieveConfig.RetrieveInfrontOffset;
                 },
-                (float value, bool setManually, uint dummy) =>
+                (float value, bool allowToggle, uint dummy) =>
                 {
                     GotoRetrieveConfig.RetrieveInfrontOffset = value;
                     return true;
@@ -4631,7 +4631,7 @@ namespace STROOP.Structs
                 {
                     return RefreshRateConfig.RefreshRateFreq;
                 },
-                (uint value, bool setManually, uint dummy) =>
+                (uint value, bool allowToggle, uint dummy) =>
                 {
                     RefreshRateConfig.RefreshRateFreq = value;
                     return true;
@@ -4642,7 +4642,7 @@ namespace STROOP.Structs
                 {
                     return PositionControllerRelativityConfig.RelativityPA.ToString();
                 },
-                (PositionAngle value, bool setManually, uint dummy) =>
+                (PositionAngle value, bool allowToggle, uint dummy) =>
                 {
                     PositionControllerRelativityConfig.RelativityPA = value;
                     return true;
@@ -4653,7 +4653,7 @@ namespace STROOP.Structs
                 {
                     return Config.ObjectSlotsManager.GetObjectSlotSize();
                 },
-                (int value, bool setManually, uint dummy) =>
+                (int value, bool allowToggle, uint dummy) =>
                 {
                     Config.StroopMainForm.ChangeObjectSlotSize(value);
                     return true;
@@ -4664,7 +4664,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.CustomReleaseStatus;
                 },
-                (uint value, bool setManually, uint dummy) =>
+                (uint value, bool allowToggle, uint dummy) =>
                 {
                     SpecialConfig.CustomReleaseStatus = value;
                     return true;
@@ -4680,7 +4680,7 @@ namespace STROOP.Structs
                     double currentAreaIndexMario = AreaUtilities.GetAreaIndex(currentAreaMario) ?? Double.NaN;
                     return currentAreaIndexMario;
                 },
-                (int currentAreaIndexMario, bool setManually, uint dummy) =>
+                (int currentAreaIndexMario, bool allowToggle, uint dummy) =>
                 {
                     if (currentAreaIndexMario < 0 || currentAreaIndexMario >= 8) return false;
                     uint currentAreaAddressMario = AreaUtilities.GetAreaAddress(currentAreaIndexMario);
@@ -4695,7 +4695,7 @@ namespace STROOP.Structs
                     double currentAreaIndex = AreaUtilities.GetAreaIndex(currentArea) ?? Double.NaN;
                     return currentAreaIndex;
                 },
-                (int currentAreaIndex, bool setManually, uint dummy) =>
+                (int currentAreaIndex, bool allowToggle, uint dummy) =>
                 {
                     if (currentAreaIndex < 0 || currentAreaIndex >= 8) return false;
                     uint currentAreaAddress = AreaUtilities.GetAreaAddress(currentAreaIndex);
@@ -4710,7 +4710,7 @@ namespace STROOP.Structs
                     string terrainDescription = AreaUtilities.GetTerrainDescription(terrainType);
                     return terrainDescription;
                 },
-                (short terrainType, bool setManually, uint dummy) =>
+                (short terrainType, bool allowToggle, uint dummy) =>
                 {
                     return Config.Stream.SetValue(
                         terrainType, Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
@@ -4739,7 +4739,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.SelfPosPA.ToString();
                 },
-                (PositionAngle posAngle, bool setManually, uint dummy) =>
+                (PositionAngle posAngle, bool allowToggle, uint dummy) =>
                 {
                     if (posAngle.DependsOnSelf()) return false;
                     SpecialConfig.SelfPosPA = posAngle;
@@ -4751,7 +4751,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.SelfPA.X;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.SelfPA.SetX(doubleValue);
                 }));
@@ -4761,7 +4761,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.SelfPA.Y;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.SelfPA.SetY(doubleValue);
                 }));
@@ -4771,7 +4771,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.SelfPA.Z;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.SelfPA.SetZ(doubleValue);
                 }));
@@ -4781,7 +4781,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.SelfAnglePA.ToString();
                 },
-                (PositionAngle posAngle, bool setManually, uint dummy) =>
+                (PositionAngle posAngle, bool allowToggle, uint dummy) =>
                 {
                     if (posAngle.DependsOnSelf()) return false;
                     SpecialConfig.SelfAnglePA = posAngle;
@@ -4793,7 +4793,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.SelfPA.Angle;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.SelfPA.SetAngle(doubleValue);
                 }));
@@ -4803,7 +4803,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.PointPosPA.ToString();
                 },
-                (PositionAngle posAngle, bool setManually, uint dummy) =>
+                (PositionAngle posAngle, bool allowToggle, uint dummy) =>
                 {
                     SpecialConfig.PointPosPA = posAngle;
                     return true;
@@ -4814,7 +4814,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.PointPA.X;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.PointPA.SetX(doubleValue);
                 }));
@@ -4824,7 +4824,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.PointPA.Y;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.PointPA.SetY(doubleValue);
                 }));
@@ -4834,7 +4834,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.PointPA.Z;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.PointPA.SetZ(doubleValue);
                 }));
@@ -4844,7 +4844,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.PointAnglePA.ToString();
                 },
-                (PositionAngle posAngle, bool setManually, uint dummy) =>
+                (PositionAngle posAngle, bool allowToggle, uint dummy) =>
                 {
                     SpecialConfig.PointAnglePA = posAngle;
                     return true;
@@ -4855,7 +4855,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.PointPA.Angle;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.PointPA.SetAngle(doubleValue);
                 }));
@@ -4865,7 +4865,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.Self2PosPA.ToString();
                 },
-                (PositionAngle posAngle, bool setManually, uint dummy) =>
+                (PositionAngle posAngle, bool allowToggle, uint dummy) =>
                 {
                     SpecialConfig.Self2PosPA = posAngle;
                     return true;
@@ -4877,7 +4877,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.Self2PA.X;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.Self2PA.SetX(doubleValue);
                 }
@@ -4888,7 +4888,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.Self2PA.Y;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.Self2PA.SetY(doubleValue);
                 }
@@ -4899,7 +4899,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.Self2PA.Z;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.Self2PA.SetZ(doubleValue);
                 }
@@ -4910,7 +4910,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.Self2AnglePA.ToString();
                 },
-                (PositionAngle posAngle, bool setManually, uint dummy) =>
+                (PositionAngle posAngle, bool allowToggle, uint dummy) =>
                 {
                     SpecialConfig.Self2AnglePA = posAngle;
                     return true;
@@ -4922,7 +4922,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.Self2PA.Angle;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.Self2PA.SetAngle(doubleValue);
                 }
@@ -4933,7 +4933,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.Point2PosPA.ToString();
                 },
-                (PositionAngle posAngle, bool setManually, uint dummy) =>
+                (PositionAngle posAngle, bool allowToggle, uint dummy) =>
                 {
                     SpecialConfig.Point2PosPA = posAngle;
                     return true;
@@ -4945,7 +4945,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.Point2PA.X;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.Point2PA.SetX(doubleValue);
                 }
@@ -4956,7 +4956,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.Point2PA.Y;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.Point2PA.SetY(doubleValue);
                 }
@@ -4967,7 +4967,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.Point2PA.Z;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.Point2PA.SetZ(doubleValue);
                 }
@@ -4978,7 +4978,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.Point2AnglePA.ToString();
                 },
-                (PositionAngle posAngle, bool setManually, uint dummy) =>
+                (PositionAngle posAngle, bool allowToggle, uint dummy) =>
                 {
                     SpecialConfig.Point2AnglePA = posAngle;
                     return true;
@@ -4990,7 +4990,7 @@ namespace STROOP.Structs
                 {
                     return SpecialConfig.Point2PA.Angle;
                 },
-                (double doubleValue, bool setManually, uint dummy) =>
+                (double doubleValue, bool allowToggle, uint dummy) =>
                 {
                     return SpecialConfig.Point2PA.SetAngle(doubleValue);
                 }
@@ -5013,7 +5013,7 @@ namespace STROOP.Structs
                     float ghostHSpeed = Config.Stream.GetFloat(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.HSpeedOffset);
                     return marioHSpeed - ghostHSpeed;
                 },
-                (float deltaHSpeed, bool setManually, uint dummy) =>
+                (float deltaHSpeed, bool allowToggle, uint dummy) =>
                 {
                     float ghostHSpeed = Config.Stream.GetFloat(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.HSpeedOffset);
                     float newMarioHSpeed = ghostHSpeed + deltaHSpeed;
@@ -5027,7 +5027,7 @@ namespace STROOP.Structs
                     float ghostYSpeed = Config.Stream.GetFloat(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YSpeedOffset);
                     return marioYSpeed - ghostYSpeed;
                 },
-                (float deltaYSpeed, bool setManually, uint dummy) =>
+                (float deltaYSpeed, bool allowToggle, uint dummy) =>
                 {
                     float ghostYSpeed = Config.Stream.GetFloat(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YSpeedOffset);
                     float newMarioYSpeed = ghostYSpeed + deltaYSpeed;
@@ -5041,7 +5041,7 @@ namespace STROOP.Structs
                     ushort ghostYawFacing = Config.Stream.GetUShort(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawFacingOffset);
                     return MoreMath.NormalizeAngleShort(marioYawFacing - ghostYawFacing);
                 },
-                (short deltaYawFacing, bool setManually, uint dummy) =>
+                (short deltaYawFacing, bool allowToggle, uint dummy) =>
                 {
                     ushort ghostYawFacing = Config.Stream.GetUShort(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawFacingOffset);
                     ushort newMarioYawFacing = MoreMath.NormalizeAngleUshort(ghostYawFacing + deltaYawFacing);
@@ -5055,7 +5055,7 @@ namespace STROOP.Structs
                     ushort ghostYawIntended = Config.Stream.GetUShort(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawIntendedOffset);
                     return MoreMath.NormalizeAngleShort(marioYawIntended - ghostYawIntended);
                 },
-                (short deltaYawIntended, bool setManually, uint dummy) =>
+                (short deltaYawIntended, bool allowToggle, uint dummy) =>
                 {
                     ushort ghostYawIntended = Config.Stream.GetUShort(GhostHackConfig.CurrentGhostStruct + GhostHackConfig.YawIntendedOffset);
                     ushort newMarioYawIntended = MoreMath.NormalizeAngleUshort(ghostYawIntended + deltaYawIntended);
@@ -5083,7 +5083,7 @@ namespace STROOP.Structs
                     int lag = MupenUtilities.GetLagCount() + SpecialConfig.MupenLagOffset;
                     return lag;
                 },
-                (string stringValue, bool setManually, uint dummy) =>
+                (string stringValue, bool allowToggle, uint dummy) =>
                 {
                     if (!MupenUtilities.IsUsingMupen()) return false;
 

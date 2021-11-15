@@ -61,9 +61,9 @@ namespace STROOP.Managers
             return _variablePanel.GetCurrentVariableInfo(useRounding, handleFormatting);
         }
 
-        public virtual bool SetVariableValueByName(string name, object value, bool setManually)
+        public virtual bool SetVariableValueByName(string name, object value, bool allowToggle)
         {
-            return _variablePanel.SetVariableValueByName(name, value, setManually);
+            return _variablePanel.SetVariableValueByName(name, value, allowToggle);
         }
 
         public virtual void Update(bool updateView)

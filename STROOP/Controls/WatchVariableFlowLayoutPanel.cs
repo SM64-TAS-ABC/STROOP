@@ -569,11 +569,11 @@ namespace STROOP.Controls
                 control => (control.VarName, control.GetValue(useRounding, handleFormatting), control.WatchVarWrapper.GetClass()));
         }
 
-        public bool SetVariableValueByName(string name, object value, bool setManually)
+        public bool SetVariableValueByName(string name, object value, bool allowToggle)
         {
             WatchVariableControl control = GetCurrentVariableControls().FirstOrDefault(c => c.VarName == name);
             if (control == null) return false;
-            return control.SetValue(value, setManually);
+            return control.SetValue(value, allowToggle);
         }
 
         public void UpdatePanel()

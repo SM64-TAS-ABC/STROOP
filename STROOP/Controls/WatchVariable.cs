@@ -141,7 +141,7 @@ namespace STROOP.Controls
                     return Config.Stream.GetValue(
                         MemoryType, address, UseAbsoluteAddressing, Mask, Shift);
                 };
-                _setterFunction = (object value, bool setManually, uint address) =>
+                _setterFunction = (object value, bool allowToggle, uint address) =>
                 {
                     return Config.Stream.SetValueRoundingWrapping(
                         MemoryType, value, address, UseAbsoluteAddressing, Mask, Shift);
@@ -166,7 +166,7 @@ namespace STROOP.Controls
             return returnValues;
         }
 
-        public bool SetValue(object value, bool setManually, List<uint> addresses = null)
+        public bool SetValue(object value, bool allowToggle, List<uint> addresses = null)
         {
             List<uint> addressList = GetAddressList(addresses);
             if (addressList.Count == 0) return false;
@@ -174,7 +174,7 @@ namespace STROOP.Controls
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
             bool success = addressList.ConvertAll(
-                address => _setterFunction(value, setManually, address))
+                address => _setterFunction(value, allowToggle, address))
                     .Aggregate(true, (b1, b2) => b1 && b2);
             if (!streamAlreadySuspended) Config.Stream.Resume();
 
@@ -186,7 +186,7 @@ namespace STROOP.Controls
             return success;
         }
 
-        public bool SetValues(List<object> values, bool setManually, List<uint> addresses = null)
+        public bool SetValues(List<object> values, bool allowToggle, List<uint> addresses = null)
         {
             List<uint> addressList = GetAddressList(addresses);
             if (addressList.Count == 0) return false;
@@ -198,7 +198,7 @@ namespace STROOP.Controls
             for (int i = 0; i < minCount; i++)
             {
                 if (values[i] == null) continue;
-                success &= _setterFunction(values[i], setManually, addressList[i]);
+                success &= _setterFunction(values[i], allowToggle, addressList[i]);
             }
             if (!streamAlreadySuspended) Config.Stream.Resume();
 
@@ -247,7 +247,7 @@ namespace STROOP.Controls
         {
             List<uint> addressList = GetAddressList(addresses);
             return addressList.ConvertAll(
-                address => (Func<object, bool, bool>)((object value, bool setManually) => _setterFunction(value, setManually, address)));
+                address => (Func<object, bool, bool>)((object value, bool allowToggle) => _setterFunction(value, allowToggle, address)));
         }
 
         public string GetTypeDescription()
