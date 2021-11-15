@@ -2560,34 +2560,34 @@
   <Object behaviorScriptAddress="0x13002FC0" name="Yellow Background">
     <Image path="File Yellow Background.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002fe4" name="Save File (Started)" gfxIdUS="0x800925B0">
+  <Object behaviorScriptAddress="0x13002fe4" name="Save File (Started)" gfxIdUS="0x800925B0" gfxIdJP="0x80090C00">
     <Image path="File Started.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002fe4" name="Save File (New)" gfxIdUS="0x80092670">
+  <Object behaviorScriptAddress="0x13002fe4" name="Save File (New)" gfxIdUS="0x80092670" gfxIdJP="0x80090CC0">
     <Image path="File New.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002fe4" name="Score Option" gfxIdUS="0x80092568">
+  <Object behaviorScriptAddress="0x13002fe4" name="Score Option" gfxIdUS="0x80092568" gfxIdJP="0x80090BB8">
     <Image path="File Green.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002fe4" name="Copy Option" gfxIdUS="0x800924D8">
+  <Object behaviorScriptAddress="0x13002fe4" name="Copy Option" gfxIdUS="0x800924D8" gfxIdJP="0x80090B28">
     <Image path="File Blue.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002fe4" name="Erase Option" gfxIdUS="0x80092490">
+  <Object behaviorScriptAddress="0x13002fe4" name="Erase Option" gfxIdUS="0x80092490" gfxIdJP="0x80090AE0">
     <Image path="File Red.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002fe4" name="Stereo Option" gfxIdUS="0x800926D0">
+  <Object behaviorScriptAddress="0x13002fe4" name="Stereo Option" gfxIdUS="0x800926D0" gfxIdJP="0x80090D20">
     <Image path="File Purple.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002fe4" name="Return Option" gfxIdUS="0x80092520">
+  <Object behaviorScriptAddress="0x13002fe4" name="Return Option" gfxIdUS="0x80092520" gfxIdJP="0x80090B70">
     <Image path="File Yellow.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002fe4" name="Save File (Started)" gfxIdUS="0x80092430">
+  <Object behaviorScriptAddress="0x13002fe4" name="Save File (Started)" gfxIdUS="0x80092430" gfxIdJP="0x80090A80">
     <Image path="File Started.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002fe4" name="Save File (New)" gfxIdUS="0x80092610">
+  <Object behaviorScriptAddress="0x13002fe4" name="Save File (New)" gfxIdUS="0x80092610" gfxIdJP="0x80090C60">
     <Image path="File New.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002fe4" name="Stereo Option Choice" gfxIdUS="0x80092718">
+  <Object behaviorScriptAddress="0x13002fe4" name="Stereo Option Choice" gfxIdUS="0x80092718" gfxIdJP="0x80090D68">
     <Image path="File Blank.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13002fe4" name="File / Option">

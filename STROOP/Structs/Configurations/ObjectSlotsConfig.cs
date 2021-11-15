@@ -43,7 +43,7 @@ namespace STROOP.Structs
         public static readonly Color VacantSlotColor = Color.FromArgb(170, 170, 170); // grey
         public static Color GetProcessingGroupColor(byte? group)
         {
-            if (group.HasValue)
+            if (group.HasValue && ProcessingGroupsColor.ContainsKey(group.Value))
                 return ProcessingGroupsColor[group.Value];
             else
                 return VacantSlotColor;
