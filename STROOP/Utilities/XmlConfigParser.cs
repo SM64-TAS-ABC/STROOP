@@ -676,12 +676,6 @@ namespace STROOP.Utilities
                         if (element.Attribute(XName.Get("gfxIdEU")) != null)
                             gfxIdEU = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxIdEU")).Value) | 0x80000000U;
 
-                        // TODO REMOVE
-                        if (gfxIdUS.HasValue && !gfxIdJP.HasValue)
-                        {
-                            Config.Print(name);
-                        }
-
                         if (element.Attribute(XName.Get("subType")) != null)
                             subType = ParsingUtilities.ParseUIntNullable(element.Attribute(XName.Get("subType")).Value);
                         if (element.Attribute(XName.Get("appearance")) != null)
