@@ -56,13 +56,13 @@ namespace STROOP.Structs
                             {
                                 double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                                 double newValue2 = sum - value1;
-                                return control2.SetValue(newValue2, allowToggle);
+                                return control2.SetValue(newValue2, false);
                             }
                             else
                             {
                                 double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                                 double newValue1 = sum - value2;
-                                return control1.SetValue(newValue1, allowToggle);
+                                return control1.SetValue(newValue1, false);
                             }
                         }));
                     break;
@@ -81,13 +81,13 @@ namespace STROOP.Structs
                             {
                                 double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                                 double newValue2 = value1 - diff;
-                                return control2.SetValue(newValue2, allowToggle);
+                                return control2.SetValue(newValue2, false);
                             }
                             else
                             {
                                 double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                                 double newValue1 = value2 + diff;
-                                return control1.SetValue(newValue1, allowToggle);
+                                return control1.SetValue(newValue1, false);
                             }
                         }));
                     break;
@@ -106,13 +106,13 @@ namespace STROOP.Structs
                             {
                                 double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                                 double newValue2 = product / value1;
-                                return control2.SetValue(newValue2, allowToggle);
+                                return control2.SetValue(newValue2, false);
                             }
                             else
                             {
                                 double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                                 double newValue1 = product / value2;
-                                return control1.SetValue(newValue1, allowToggle);
+                                return control1.SetValue(newValue1, false);
                             }
                         }));
                     break;
@@ -131,13 +131,13 @@ namespace STROOP.Structs
                             {
                                 double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                                 double newValue2 = value1 / quotient;
-                                return control2.SetValue(newValue2, allowToggle);
+                                return control2.SetValue(newValue2, false);
                             }
                             else
                             {
                                 double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                                 double newValue1 = value2 * quotient;
-                                return control1.SetValue(newValue1, allowToggle);
+                                return control1.SetValue(newValue1, false);
                             }
                         }));
                     break;
