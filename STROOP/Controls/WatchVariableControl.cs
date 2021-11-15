@@ -953,7 +953,7 @@ namespace STROOP.Controls
             return WatchVarWrapper.GetValue(useRounding, handleFormatting, FixedAddressListGetter());
         }
 
-        public bool SetValueOfValues(object value, int index)
+        public bool SetValueOfValues(object value, bool setManually, int index)
         {
             List<object> values = new List<object>();
             for (int i = 0; i < index; i++)
@@ -961,26 +961,26 @@ namespace STROOP.Controls
                 values.Add(null);
             }
             values.Add(value);
-            return SetValues(values);
+            return SetValues(values, setManually);
         }
 
-        public bool SetValues(List<object> values)
+        public bool SetValues(List<object> values, bool setManually)
         {
-            bool success = WatchVarWrapper.SetValues(values, FixedAddressListGetter());
+            bool success = WatchVarWrapper.SetValues(values, setManually, FixedAddressListGetter());
             if (!success) FlashColor(FAILURE_COLOR);
             return success;
         }
 
-        public bool SetValue(object value)
+        public bool SetValue(object value, bool setManually)
         {
-            bool success = WatchVarWrapper.SetValue(value, FixedAddressListGetter());
+            bool success = WatchVarWrapper.SetValue(value, setManually, FixedAddressListGetter());
             if (!success) FlashColor(FAILURE_COLOR);
             return success;
         }
 
-        public bool AddValue(object value, bool add)
+        public bool AddValue(object value, bool add, bool setManually)
         {
-            bool success = WatchVarWrapper.AddValue(value, add, FixedAddressListGetter());
+            bool success = WatchVarWrapper.AddValue(value, add, setManually, FixedAddressListGetter());
             if (!success) FlashColor(FAILURE_COLOR);
             return success;
         }
@@ -1000,7 +1000,7 @@ namespace STROOP.Controls
             return WatchVarWrapper.GetVarInfo();
         }
 
-        public List<Func<object, bool>> GetSetters()
+        public List<Func<object, bool, bool>> GetSetters()
         {
             return WatchVarWrapper.GetSetters(FixedAddressListGetter());
         }

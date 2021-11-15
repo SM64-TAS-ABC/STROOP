@@ -25,7 +25,7 @@ namespace STROOP.Forms
         private readonly List<WatchVariableWrapper> _watchVarWrappers;
         private List<List<uint>> _fixedAddressLists;
 
-        private readonly Action<bool> _addAction;
+        private readonly Action<bool, bool> _addAction;
         private bool _isDoingContinuousAdd;
         private bool _isDoingContinuousSubtract;
 
@@ -54,18 +54,18 @@ namespace STROOP.Forms
 
             _textBoxVarName.Text = String.Join(",", _varNames);
 
-            _addAction = (bool add) =>
+            _addAction = (bool add, bool setManually) =>
             {
                 List<string> values = ParsingUtilities.ParseStringList(_textBoxAddSubtract.Text);
                 if (values.Count == 0) return;
                 for (int i = 0; i < _watchVarWrappers.Count; i++)
-                    _watchVarWrappers[i].AddValue(values[i % values.Count], add, _fixedAddressLists[i]);
+                    _watchVarWrappers[i].AddValue(values[i % values.Count], add, setManually, _fixedAddressLists[i]);
             };
-            _buttonAdd.Click += (s, e) => _addAction(true);
-            _buttonSubtract.Click += (s, e) => _addAction(false);
+            _buttonAdd.Click += (s, e) => _addAction(true, true);
+            _buttonSubtract.Click += (s, e) => _addAction(false, true);
 
             Timer addTimer = new Timer { Interval = 30 };
-            addTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) _addAction(true); };
+            addTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) _addAction(true, false); };
             _buttonAdd.MouseDown += (sender, e) => addTimer.Start();
             _buttonAdd.MouseUp += (sender, e) => addTimer.Stop();
 
@@ -75,7 +75,7 @@ namespace STROOP.Forms
                 new List<Action>() { () => _isDoingContinuousAdd = true, () => _isDoingContinuousAdd = false });
 
             Timer subtractTimer = new Timer { Interval = 30 };
-            subtractTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) _addAction(false); };
+            subtractTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) _addAction(false, false); };
             _buttonSubtract.MouseDown += (sender, e) => subtractTimer.Start();
             _buttonSubtract.MouseUp += (sender, e) => subtractTimer.Stop();
 
@@ -112,8 +112,8 @@ namespace STROOP.Forms
 
             _buttonGet.Click += (s, e) => _textBoxGetSet.Text = GetValues();
 
-            _buttonSet.Click += (s, e) => SetValues();
-            _textBoxGetSet.AddEnterAction(() => SetValues());
+            _buttonSet.Click += (s, e) => SetValues(true);
+            _textBoxGetSet.AddEnterAction(() => SetValues(true));
 
             _checkBoxFixAddress.Click += (s, e) => ToggleFixedAddress();
 
@@ -142,7 +142,7 @@ namespace STROOP.Forms
             return String.Join(",", values);
         }
 
-        private void SetValues()
+        private void SetValues(bool setManually)
         {
             List<string> values = ParsingUtilities.ParseStringList(_textBoxGetSet.Text);
             if (values.Count == 0) return;
@@ -150,7 +150,7 @@ namespace STROOP.Forms
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
             for (int i = 0; i < _watchVarWrappers.Count; i++)
-                _watchVarWrappers[i].SetValue(values[i % values.Count], _fixedAddressLists[i]);
+                _watchVarWrappers[i].SetValue(values[i % values.Count], setManually, _fixedAddressLists[i]);
             if (!streamAlreadySuspended) Config.Stream.Resume();
         }
 
@@ -176,8 +176,8 @@ namespace STROOP.Forms
             for (int i = 0; i < _watchVarWrappers.Count; i++)
                 lockedBools.Add(_watchVarWrappers[i].GetLockedBool(_fixedAddressLists[i]));
             _checkBoxLock.CheckState = BoolUtilities.GetCheckState(lockedBools);
-            if (_isDoingContinuousAdd) _addAction(true);
-            if (_isDoingContinuousSubtract) _addAction(false);
+            if (_isDoingContinuousAdd) _addAction(true, false);
+            if (_isDoingContinuousSubtract) _addAction(false, false);
         }
         
         public void ToggleFixedAddress()

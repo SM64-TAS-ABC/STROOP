@@ -39,7 +39,7 @@ namespace STROOP.Controls
         public readonly bool HandleMapping;
 
         private readonly Func<uint, object> _getterFunction;
-        private readonly Func<object, uint, bool> _setterFunction;
+        private readonly Func<object, bool, uint, bool> _setterFunction;
 
         public bool IsSpecial { get => SpecialType != null; }
         public bool UseAbsoluteAddressing { get => BaseAddressType == BaseAddressTypeEnum.Absolute; }
@@ -141,7 +141,7 @@ namespace STROOP.Controls
                     return Config.Stream.GetValue(
                         MemoryType, address, UseAbsoluteAddressing, Mask, Shift);
                 };
-                _setterFunction = (object value, uint address) =>
+                _setterFunction = (object value, bool setManually, uint address) =>
                 {
                     return Config.Stream.SetValueRoundingWrapping(
                         MemoryType, value, address, UseAbsoluteAddressing, Mask, Shift);
@@ -166,7 +166,7 @@ namespace STROOP.Controls
             return returnValues;
         }
 
-        public bool SetValue(object value, List<uint> addresses = null)
+        public bool SetValue(object value, bool setManually, List<uint> addresses = null)
         {
             List<uint> addressList = GetAddressList(addresses);
             if (addressList.Count == 0) return false;
@@ -174,7 +174,7 @@ namespace STROOP.Controls
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
             bool success = addressList.ConvertAll(
-                address => _setterFunction(value, address))
+                address => _setterFunction(value, setManually, address))
                     .Aggregate(true, (b1, b2) => b1 && b2);
             if (!streamAlreadySuspended) Config.Stream.Resume();
 
@@ -186,7 +186,7 @@ namespace STROOP.Controls
             return success;
         }
 
-        public bool SetValues(List<object> values, List<uint> addresses = null)
+        public bool SetValues(List<object> values, bool setManually, List<uint> addresses = null)
         {
             List<uint> addressList = GetAddressList(addresses);
             if (addressList.Count == 0) return false;
@@ -198,7 +198,7 @@ namespace STROOP.Controls
             for (int i = 0; i < minCount; i++)
             {
                 if (values[i] == null) continue;
-                success &= _setterFunction(values[i], addressList[i]);
+                success &= _setterFunction(values[i], setManually, addressList[i]);
             }
             if (!streamAlreadySuspended) Config.Stream.Resume();
 
@@ -243,11 +243,11 @@ namespace STROOP.Controls
             return locks;
         }
 
-        public List<Func<object, bool>> GetSetters(List<uint> addresses = null)
+        public List<Func<object, bool, bool>> GetSetters(List<uint> addresses = null)
         {
             List<uint> addressList = GetAddressList(addresses);
             return addressList.ConvertAll(
-                address => (Func<object, bool>)((object value) => _setterFunction(value, address)));
+                address => (Func<object, bool, bool>)((object value, bool setManually) => _setterFunction(value, setManually, address)));
         }
 
         public string GetTypeDescription()

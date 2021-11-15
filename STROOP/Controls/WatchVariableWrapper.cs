@@ -127,7 +127,7 @@ namespace STROOP.Controls
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) =>
             {
-                bool success = _watchVarControl.SetValue(Clipboard.GetText());
+                bool success = _watchVarControl.SetValue(Clipboard.GetText(), true);
                 _watchVarControl.FlashColor(success ? WatchVariableControl.PASTE_COLOR : WatchVariableControl.FAILURE_COLOR);
             };
 
@@ -223,7 +223,7 @@ namespace STROOP.Controls
             };
         }
 
-        public List<Func<object, bool>> GetSetters(List<uint> addresses = null)
+        public List<Func<object, bool, bool>> GetSetters(List<uint> addresses = null)
         {
             return WatchVar.GetSetters(addresses);
         }
@@ -352,16 +352,16 @@ namespace STROOP.Controls
             return value;
         }
 
-        public bool SetValues(List<object> values, List<uint> addresses = null)
+        public bool SetValues(List<object> values, bool setManually, List<uint> addresses = null)
         {
             values = values.ConvertAll(value => UnconvertValue(value));
-            return WatchVar.SetValues(values, addresses);
+            return WatchVar.SetValues(values, setManually, addresses);
         }
 
-        public bool SetValue(object value, List<uint> addresses = null)
+        public bool SetValue(object value, bool setManually, List<uint> addresses = null)
         {
             value = UnconvertValue(value);
-            return WatchVar.SetValue(value, addresses);
+            return WatchVar.SetValue(value, setManually, addresses);
         }
 
         public object UnconvertValue(object value)
@@ -381,13 +381,13 @@ namespace STROOP.Controls
             return checkState;
         }
 
-        public bool SetCheckStateValue(CheckState checkState, List<uint> addresses = null)
+        public bool SetCheckStateValue(CheckState checkState, bool setManually, List<uint> addresses = null)
         {
             object value = ConvertCheckStateToValue(checkState);
-            return WatchVar.SetValue(value, addresses);
+            return WatchVar.SetValue(value, setManually, addresses);
         }
 
-        public bool AddValue(object objectValue, bool add, List<uint> addresses = null)
+        public bool AddValue(object objectValue, bool add, bool setManually, List<uint> addresses = null)
         {
             double? changeValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
             if (!changeValueNullable.HasValue) return false;
@@ -408,7 +408,7 @@ namespace STROOP.Controls
                 return unconvertedValue;
             });
 
-            return WatchVar.SetValues(newValues, addresses);
+            return WatchVar.SetValues(newValues, setManually, addresses);
         }
 
         public List<uint> GetCurrentAddressesToFix()

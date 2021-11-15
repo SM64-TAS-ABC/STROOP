@@ -26,7 +26,7 @@ namespace STROOP.Controls
         public readonly uint Address;
         public readonly uint BaseAddress;
         public readonly string SpecialType;
-        public readonly Func<object, uint, bool> SetterFunction;
+        public readonly Func<object, bool, uint, bool> SetterFunction;
 
         public object Value { get; private set; }
 
@@ -41,7 +41,7 @@ namespace STROOP.Controls
             uint address,
             uint baseAddress,
             string specialType,
-            Func<object, uint, bool> setterFunction,
+            Func<object, bool, uint, bool> setterFunction,
             object value)
         {
             Name = name;
@@ -61,7 +61,7 @@ namespace STROOP.Controls
 
         public void Invoke()
         {
-            SetterFunction(Value, Address);
+            SetterFunction(Value, false, Address);
         }
 
         public void UpdateLockValue(object value)
