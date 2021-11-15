@@ -556,7 +556,7 @@
   <Object behaviorScriptAddress="0x130007DC" name="Bubble" gfxIdUS="0x800F874C" gfxIdJP="0x800F6418">
     <Image path="Bubble.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130007DC" name="Pebble Particle" gfxIdUS="0x800F9280" gfxId="0x800F62C8">
+  <Object behaviorScriptAddress="0x130007DC" name="Pebble Particle" gfxIdUS="0x800F9280" gfxIdJP="0x800F62C8">
     <Image path="Pebble.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130007DC" name="White Puff / Sand / Dirt / Snow / Bubble">
@@ -569,7 +569,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="PowerStarMissionName" subclass="String">Mission Name</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x192" mask="0x04" base="Object" subclass="Boolean">Displays Text</Data>
   </Object>
-  <Object behaviorScriptAddress="0x130007F8" name="Power Star (Blue)" gfxIdUS="0x800F8C00">
+  <Object behaviorScriptAddress="0x130007F8" name="Power Star (Blue)" gfxIdUS="0x800F8C00" gfxIdJP="0x800F5D80">
     <SpawnCode gfxId="0x79"/>
     <Image path="Power Star Blue.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188" base="Object">Mission</Data>
@@ -582,7 +582,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="PowerStarMissionName" subclass="String">Mission Name</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x192" mask="0x04" base="Object" subclass="Boolean">Displays Text</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300080C" name="Power Star (Blue)" gfxIdUS="0x800F8C00">
+  <Object behaviorScriptAddress="0x1300080C" name="Power Star (Blue)" gfxIdUS="0x800F8C00" gfxIdJP="0x800F5D80">
     <Image path="Power Star Blue.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188" base="Object">Mission</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="PowerStarMissionName" subclass="String">Mission Name</Data>
@@ -592,12 +592,12 @@
     <SpawnCode gfxId="0x76"/>
     <Image path="Blue Coin.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000888" name="Yellow Boo Coin" gfxIdUS="0x800F8AA4">
+  <Object behaviorScriptAddress="0x13000888" name="Yellow Boo Coin" gfxIdUS="0x800F8AA4" gfxIdJP="0x800F5C24">
     <SpawnCode gfxId="0x84"/>
     <Image path="Boo Coin Yellow.png"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0x68" base="Object" subclass="Object">Host Object</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000888" name="Blue Boo Coin" gfxIdUS="0x800F9464">
+  <Object behaviorScriptAddress="0x13000888" name="Blue Boo Coin" gfxIdUS="0x800F9464" gfxIdJP="0x800F65E4">
     <SpawnCode gfxId="0x84"/>
     <Image path="Boo Coin Blue.png"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0x68" base="Object" subclass="Object">Host Object</Data>
@@ -3144,7 +3144,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="PowerStarMissionName" subclass="String">Mission Name</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x192" mask="0x04" base="Object" subclass="Boolean">Displays Text</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13003E3C" name="Power Star (Blue)" gfxIdUS="0x800F8C00">
+  <Object behaviorScriptAddress="0x13003E3C" name="Power Star (Blue)" gfxIdUS="0x800F8C00" gfxIdJP="0x800F5D80">
     <Image path="Power Star Blue.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188" base="Object">Mission</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="PowerStarMissionName" subclass="String">Mission Name</Data>
@@ -3156,7 +3156,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="PowerStarMissionName" subclass="String">Mission Name</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x192" mask="0x04" base="Object" subclass="Boolean">Displays Text</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13003E64" name="Power Star (Blue)" gfxIdUS="0x800F8C00">
+  <Object behaviorScriptAddress="0x13003E64" name="Power Star (Blue)" gfxIdUS="0x800F8C00" gfxIdJP="0x800F5D80">
     <Image path="Power Star Blue.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188" base="Object">Mission</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="PowerStarMissionName" subclass="String">Mission Name</Data>
