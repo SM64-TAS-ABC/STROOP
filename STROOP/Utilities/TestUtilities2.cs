@@ -21,7 +21,7 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            CalculatorMain.TestPendulumLanding();
+            PunchRecoilCalculator.Test();
         }
     }
 }

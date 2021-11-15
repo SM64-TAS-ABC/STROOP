@@ -23,7 +23,7 @@ namespace STROOP.Utilities
         public static void Test()
         {
             Config.Print("START");
-            FindWallOverlapsStepDownEarly();
+            FindWallOverlapsUsingSideFloorStepDownEarly();
             Config.Print("DONE");
         }
 
@@ -411,6 +411,126 @@ namespace STROOP.Utilities
                                 Config.Print(
                                     "{0}=>{1}, {2} {3} {4}, {5}",
                                     point.Angle, angle, x, (double)y, z, count);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void FindWallOverlapsUsingSideFloorStepDownEarly()
+        {
+            SetUpDictionary();
+            List<PointData> frameEndPoints = new List<PointData>();
+            foreach (int angle in MaybeAngles)
+            {
+                TriangleDataModel ShaftSideForwards1Tri = GetDictionaryValue(angle, ShaftSideForwards1Index);
+                TriangleDataModel ShaftSideForwards2Tri = GetDictionaryValue(angle, ShaftSideForwards2Index);
+                TriangleDataModel ShaftSideBackwardsTri = GetDictionaryValue(angle, ShaftSideBackwardsIndex);
+                TriangleDataModel ShaftTopTri = GetDictionaryValue(angle, ShaftTopIndex);
+                TriangleDataModel HeadFloor1Tri = GetDictionaryValue(angle, HeadFloor1Index);
+                TriangleDataModel HeadFloor2Tri = GetDictionaryValue(angle, HeadFloor2Index);
+
+                int xMin = Math.Min(ShaftSideForwards1Tri.GetMinX(), ShaftSideForwards2Tri.GetMinX()) - 1;
+                int xMax = Math.Max(ShaftSideForwards1Tri.GetMaxX(), ShaftSideForwards2Tri.GetMaxX()) + 1;
+                int zMin = Math.Min(ShaftSideForwards1Tri.GetMinZ(), ShaftSideForwards2Tri.GetMinZ()) - 1;
+                int zMax = Math.Max(ShaftSideForwards1Tri.GetMaxZ(), ShaftSideForwards2Tri.GetMaxZ()) + 1;
+                List<(int x, float y, int z)> ShaftSideForwardsTriPoints = new List<(int x, float y, int z)>();
+                for (int x = xMin; x <= xMax; x++)
+                {
+                    for (int z = zMin; z <= zMax; z++)
+                    {
+                        float? y1 = ShaftSideForwards1Tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
+                        float? y2 = ShaftSideForwards2Tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
+                        float? topY = ShaftTopTri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
+                        if (y1.HasValue && !topY.HasValue)
+                        {
+                            ShaftSideForwardsTriPoints.Add((x, y1.Value, z));
+                        }
+                        if (y2.HasValue && !topY.HasValue)
+                        {
+                            ShaftSideForwardsTriPoints.Add((x, y2.Value, z));
+                        }
+                    }
+                }
+
+                List<(int x, float y, int z)> dropDownPoints = new List<(int x, float y, int z)>();
+                foreach (var point in ShaftSideForwardsTriPoints)
+                {
+                    int dropDownX = point.x;
+                    int dropDownZ = point.z - 1;
+                    float? y1 = HeadFloor1Tri.GetTruncatedHeightOnTriangleIfInsideTriangle(dropDownX, dropDownZ);
+                    float? y2 = HeadFloor2Tri.GetTruncatedHeightOnTriangleIfInsideTriangle(dropDownX, dropDownZ);
+                    if (y1.HasValue && point.y - y1.Value <= 100)
+                    {
+                        dropDownPoints.Add((dropDownX, y1.Value, dropDownZ));
+                    }
+                    if (y2.HasValue && point.y - y2.Value <= 100)
+                    {
+                        dropDownPoints.Add((dropDownX, y2.Value, dropDownZ));
+                    }
+                }
+
+                List<(int xDiff, int zDiff)> diffs = new List<(int xDiff, int zDiff)>()
+                {
+                    (0, 0), (0, -1), (-1, -1), (-1, -2), (-2, -2),
+                };
+                foreach (var point in dropDownPoints)
+                {
+                    foreach (var diff in diffs)
+                    {
+                        int x = point.x + diff.xDiff;
+                        int z = point.z + diff.zDiff;
+                        float? y1 = HeadFloor1Tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
+                        float? y2 = HeadFloor2Tri.GetTruncatedHeightOnTriangleIfInsideTriangle(x, z);
+                        if (y1.HasValue)
+                        {
+                            frameEndPoints.Add(new PointData(angle, x, y1.Value, z));
+                        }
+                        if (y2.HasValue)
+                        {
+                            frameEndPoints.Add(new PointData(angle, x, y2.Value, z));
+                        }
+                    }
+                }
+            }
+
+            for (int angle = 0; angle >= -16384; angle -= 16)
+            {
+                TriangleDataModel HeadWall1Tri = GetDictionaryValue(angle, HeadWall1Index);
+                TriangleDataModel HeadWall2Tri = GetDictionaryValue(angle, HeadWall2Index);
+                foreach (var point in frameEndPoints)
+                {
+                    float x = point.X;
+                    float y = point.Y;
+                    float z1 = point.Z;
+                    float z2 = point.Z - 1;
+                    int countZ1Tri1 = WallDisplacementCalculator.GetNumWallCollisions(x, y, z1, new List<TriangleDataModel>() { HeadWall1Tri }, 50, 60);
+                    int countZ1Tri2 = WallDisplacementCalculator.GetNumWallCollisions(x, y, z1, new List<TriangleDataModel>() { HeadWall2Tri }, 50, 60);
+                    int countZ2Tri1 = WallDisplacementCalculator.GetNumWallCollisions(x, y, z2, new List<TriangleDataModel>() { HeadWall1Tri }, 50, 60);
+                    int countZ2Tri2 = WallDisplacementCalculator.GetNumWallCollisions(x, y, z2, new List<TriangleDataModel>() { HeadWall2Tri }, 50, 60);
+                    if (countZ1Tri1 + countZ1Tri2 > 0 &&
+                        countZ2Tri1 + countZ2Tri2 > 0 &&
+                        (countZ1Tri1 + "" + countZ1Tri2) != (countZ2Tri1 + "" + countZ2Tri2))
+                    {
+                        for (float z = z1; z >= z2; z = MoreMath.GetPreviousFloat(z))
+                        {
+                            int count = WallDisplacementCalculator.GetNumWallCollisions(x, y, z, new List<TriangleDataModel>() { HeadWall1Tri, HeadWall2Tri }, 50, 60);
+                            if (count != 1)
+                            {
+                                int speed = angle - point.Angle;
+
+                                int testAngle = angle;
+                                int testSpeed = speed;
+                                while (testSpeed > 0)
+                                {
+                                    testAngle -= testSpeed;
+                                    testSpeed -= 42;
+                                }
+
+                                Config.Print(
+                                    "{0} {1}, {2}=>{3}, {4} {5} {6}, {7}",
+                                    testAngle, speed, point.Angle, angle, (double)x, (double)y, (double)z, count);
                             }
                         }
                     }
