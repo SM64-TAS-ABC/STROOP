@@ -1413,11 +1413,11 @@
   <Object behaviorScriptAddress="0x130019C8" name="Falling Flame">
     <Image path="Orange Falling Flame.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130019C8" name="Orange Falling Flame" gfxIdUS="0x800F8CC8">
+  <Object behaviorScriptAddress="0x130019C8" name="Orange Falling Flame" gfxIdUS="0x800F8CC8" gfxIdJP="0x800F5E48">
     <SpawnCode gfxId="0x90"/>
     <Image path="Orange Falling Flame.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130019C8" name="Blue Falling Flame" gfxIdUS="0x800F8DBC">
+  <Object behaviorScriptAddress="0x130019C8" name="Blue Falling Flame" gfxIdUS="0x800F8DBC" gfxIdJP="0x800F5F3C">
     <SpawnCode gfxId="0x91"/>
     <Image path="Blue Falling Flame.png"/>
   </Object>
@@ -2101,11 +2101,11 @@
   <Object behaviorScriptAddress="0x130025C0" name="Openable Gate">
     <Image path="Openable Gate BoB.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130025C0" name="BoB Openable Gate" gfxIdUS="0x8018F330">
+  <Object behaviorScriptAddress="0x130025C0" name="BoB Openable Gate" gfxIdUS="0x8018F330" gfxIdJP="0x8018C4B0">
     <SpawnCode gfxId="0x38"/>
     <Image path="Openable Gate BoB.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130025C0" name="HMC Openable Gate" gfxIdUS="0x8017F0C0">
+  <Object behaviorScriptAddress="0x130025C0" name="HMC Openable Gate" gfxIdUS="0x8017F0C0" gfxIdJP="0x8017C240">
     <SpawnCode gfxId="0x3C"/>
     <Image path="Openable Gate HMC.png"/>
   </Object>
@@ -2306,16 +2306,16 @@
     <Image path="Tree Standard.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxIdUS="0x80195C84">
+  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxIdUS="0x80195C84" gfxIdJP="0x80192374">
     <Image path="Tree Standard.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxIdUS="0x8018F2A0">
+  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxIdUS="0x8018F2A0" gfxIdJP="0x8018C420">
     <SpawnCode gfxId="0x17"/>
     <Image path="Tree Standard.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxIdUS="0x80194604">
+  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxIdUS="0x80194604" gfxIdJP="0x80191784">
     <Image path="Tree Standard.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
@@ -2323,25 +2323,25 @@
     <Image path="Tree Standard.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxIdUS="0x8019257C">
+  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxIdUS="0x8019257C" gfxIdJP="0x8018F6FC">
     <Image path="Tree Standard.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002AA4" name="Pine Tree" gfxIdUS="0x8015D22C">
+  <Object behaviorScriptAddress="0x13002AA4" name="Pine Tree" gfxIdUS="0x8015D22C" gfxIdJP="0x8015A3AC">
     <SpawnCode gfxId="0x18"/>
     <Image path="Tree Pine.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002AA4" name="Snowy Pine Tree" gfxIdUS="0x80184AB8">
+  <Object behaviorScriptAddress="0x13002AA4" name="Snowy Pine Tree" gfxIdUS="0x80184AB8" gfxIdJP="0x80181C28">
     <SpawnCode gfxId="0x19"/>
     <Image path="Tree Pine Snowy.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002AA4" name="Snowy Pine Tree" gfxIdUS="0x801709B4">
+  <Object behaviorScriptAddress="0x13002AA4" name="Snowy Pine Tree" gfxIdUS="0x801709B4" gfxIdJP="0x8016DB34">
     <Image path="Tree Pine Snowy.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002AA4" name="Palm Tree" gfxIdUS="0x80184864">
+  <Object behaviorScriptAddress="0x13002AA4" name="Palm Tree" gfxIdUS="0x80184864" gfxIdJP="0x801819E4">
     <SpawnCode gfxId="0x1B"/>
     <Image path="Tree Palm.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
