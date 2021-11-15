@@ -809,46 +809,46 @@
     <MapImage path="Warp Door Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="short" offset="0x188" base="Object">Destination</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000AFC" name="Wooden Door Warp" gfxIdUS="0x8018E9B4">
+  <Object behaviorScriptAddress="0x13000AFC" name="Wooden Warp Door" gfxIdUS="0x8018E9B4" gfxIdJP="0x8018BA44">
     <SpawnCode gfxId="0x27"/>
     <Image path="Door Wooden Warp.png"/>
     <MapImage path="Warp Door Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="short" offset="0x188" base="Object">Destination</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000AFC" name="Wooden Door Warp" gfxIdUS="0x8015D25C">
+  <Object behaviorScriptAddress="0x13000AFC" name="Wooden Warp Door" gfxIdUS="0x8015D25C" gfxIdJP="0x8015A3DC">
     <Image path="Door Wooden Warp.png"/>
     <MapImage path="Warp Door Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="short" offset="0x188" base="Object">Destination</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000AFC" name="Standard Door Warp" gfxIdUS="0x8018E8A8">
+  <Object behaviorScriptAddress="0x13000AFC" name="Standard Warp Door" gfxIdUS="0x8018E8A8" gfxIdJP="0x8018B938">
     <Image path="Door Standard Warp.png"/>
     <MapImage path="Warp Door Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="short" offset="0x188" base="Object">Destination</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000AFC" name="Standard Door Warp" gfxIdUS="0x80195CFC">
+  <Object behaviorScriptAddress="0x13000AFC" name="Standard Warp Door" gfxIdUS="0x80195CFC" gfxIdJP="0x801923EC">
     <SpawnCode gfxId="0x26"/>
     <Image path="Door Standard Warp.png"/>
     <MapImage path="Warp Door Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="short" offset="0x188" base="Object">Destination</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000AFC" name="Metal Door Warp" gfxIdUS="0x80195E08">
+  <Object behaviorScriptAddress="0x13000AFC" name="Metal Warp Door" gfxIdUS="0x80195E08" gfxIdJP="0x801924F8">
     <SpawnCode gfxId="0x29"/>
     <Image path="Door Metal Warp.png"/>
     <MapImage path="Warp Door Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="short" offset="0x188" base="Object">Destination</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000AFC" name="Metal Door Warp" gfxIdUS="0x8018EAC0">
+  <Object behaviorScriptAddress="0x13000AFC" name="Metal Warp Door" gfxIdUS="0x8018EAC0" gfxIdJP="0x8018BB50">
     <Image path="Door Metal Warp.png"/>
     <MapImage path="Warp Door Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="short" offset="0x188" base="Object">Destination</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000AFC" name="Key Door Warp" gfxIdUS="0x8018F198">
+  <Object behaviorScriptAddress="0x13000AFC" name="Key Warp Door" gfxIdUS="0x8018F198" gfxIdJP="0x8018C228">
     <SpawnCode gfxId="0x25"/>
     <Image path="Door Key Warp.png"/>
     <MapImage path="Warp Door Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="short" offset="0x188" base="Object">Destination</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000AFC" name="One-Sided Door Warp" gfxIdUS="0x801849AC">
+  <Object behaviorScriptAddress="0x13000AFC" name="Cabin Warp Door" gfxIdUS="0x801849AC" gfxIdJP="0x80181B1C">
     <SpawnCode gfxId="0x27"/>
     <Image path="Door Standard Warp.png"/>
     <MapImage path="Warp Door Top.png" rotates="true"/>
@@ -858,46 +858,41 @@
     <Image path="Door Standard.png"/>
     <MapImage path="Door Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000B0C" name="Standard Door" gfxIdUS="0x8018E8A8">
-    <SpawnCode gfxId="0x26"/>
-    <Image path="Door Standard.png"/>
-    <MapImage path="Door Top.png" rotates="true"/>
-  </Object>
-  <Object behaviorScriptAddress="0x13000B0C" name="Wooden Door" gfxIdUS="0x8018ECD8">
+  <Object behaviorScriptAddress="0x13000B0C" name="Wooden Door" gfxIdUS="0x8018ECD8" gfxIdJP="0x8018BD68">
     <SpawnCode gfxId="0x27"/>
     <Image path="Door Wooden.png"/>
     <MapImage path="Door Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000B0C" name="Wooden Door" gfxIdUS="0x8017EC64">
+  <Object behaviorScriptAddress="0x13000B0C" name="Wooden Door" gfxIdUS="0x8017EC64" gfxIdJP="0x8017BDE4">
     <Image path="Door Wooden.png"/>
     <MapImage path="Door Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000B0C" name="0 Star Door" gfxIdUS="0x8018EDE4">
+  <Object behaviorScriptAddress="0x13000B0C" name="0 Star Door" gfxIdUS="0x8018EDE4" gfxIdJP="0x8018BE74">
     <SpawnCode gfxId="0x22"/>
     <Image path="Door 0 Star.png"/>
     <MapImage path="Door Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000B0C" name="1 Star Door" gfxIdUS="0x8018EF20">
+  <Object behaviorScriptAddress="0x13000B0C" name="1 Star Door" gfxIdUS="0x8018EF20" gfxIdJP="0x8018BFB0">
     <SpawnCode gfxId="0x23"/>
     <Image path="Door 1 Star.png"/>
     <MapImage path="Door Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000B0C" name="3 Star Door" gfxIdUS="0x8018F05C">
+  <Object behaviorScriptAddress="0x13000B0C" name="3 Star Door" gfxIdUS="0x8018F05C" gfxIdJP="0x8018C0EC">
     <SpawnCode gfxId="0x24"/>
     <Image path="Door 3 Star.png"/>
     <MapImage path="Door Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000B0C" name="Metal Door" gfxIdUS="0x8017ED70">
+  <Object behaviorScriptAddress="0x13000B0C" name="Metal Door" gfxIdUS="0x8017ED70" gfxIdJP="0x8017BEF0">
     <SpawnCode gfxId="0x29"/>
     <Image path="Door Metal.png"/>
     <MapImage path="Door Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000B0C" name="Spooky Door" gfxIdUS="0x80188CC4">
+  <Object behaviorScriptAddress="0x13000B0C" name="Spooky Door" gfxIdUS="0x80188CC4" gfxIdJP="0x80185E44">
     <SpawnCode gfxId="0x1D"/>
     <Image path="Door Spooky.png"/>
     <MapImage path="Door Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000B0C" name="Starry Door" gfxIdUS="0x8017EE7C">
+  <Object behaviorScriptAddress="0x13000B0C" name="Starry Door" gfxIdUS="0x8017EE7C" gfxIdJP="0x8017BFFC">
     <SpawnCode gfxId="0x20"/>
     <Image path="Door Starry.png"/>
     <MapImage path="Door Top.png" rotates="true"/>
