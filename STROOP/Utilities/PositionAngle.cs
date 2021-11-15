@@ -25,7 +25,7 @@ namespace STROOP.Utilities
         private readonly PositionAngle PosAngle1;
         private readonly PositionAngle PosAngle2;
         private readonly List<Func<double>> Getters;
-        private readonly List<Func<double, bool, bool>> Setters;
+        private readonly List<Func<double, bool>> Setters;
 
         public static Dictionary<uint, (double, double, double, double, List<double>)> Schedule =
             new Dictionary<uint, (double, double, double, double, List<double>)>();
@@ -139,7 +139,7 @@ namespace STROOP.Utilities
             PositionAngle posAngle1 = null,
             PositionAngle posAngle2 = null,
             List<Func<double>> getters = null,
-            List<Func<double, bool, bool>> setters = null)
+            List<Func<double, bool>> setters = null)
         {
             PosAngleType = posAngleType;
             Address = address;
@@ -279,7 +279,7 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.Hybrid, posAngle1: posAngle1, posAngle2: posAngle2);
         public static PositionAngle Trunc(PositionAngle posAngle) =>
             new PositionAngle(PositionAngleTypeEnum.Trunc, posAngle1: posAngle);
-        public static PositionAngle Functions(List<Func<double>> getters, List<Func<double, bool, bool>> setters) =>
+        public static PositionAngle Functions(List<Func<double>> getters, List<Func<double, bool>> setters) =>
             new PositionAngle(PositionAngleTypeEnum.Functions, getters: getters, setters: setters);
         public static PositionAngle Pos(double x, double y, double z, double angle = double.NaN) =>
             new PositionAngle(PositionAngleTypeEnum.Pos, thisX: x, thisY: y, thisZ: z, thisAngle: angle);
@@ -1320,7 +1320,7 @@ namespace STROOP.Utilities
 
 
 
-        public bool SetX(double value, bool setManually = false)
+        public bool SetX(double value)
         {
             if (ShouldHaveAddress(PosAngleType) && Address == 0) return false;
             switch (PosAngleType)
@@ -1412,7 +1412,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Hybrid:
                     return PosAngle1.SetX(value);
                 case PositionAngleTypeEnum.Functions:
-                    return Setters[0](value, setManually);
+                    return Setters[0](value);
                 case PositionAngleTypeEnum.Pos:
                     ThisX = value;
                     return true;
@@ -1434,7 +1434,7 @@ namespace STROOP.Utilities
             }
         }
 
-        public bool SetY(double value, bool setManually = false)
+        public bool SetY(double value)
         {
             if (ShouldHaveAddress(PosAngleType) && Address == 0) return false;
             switch (PosAngleType)
@@ -1526,7 +1526,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Hybrid:
                     return PosAngle1.SetY(value);
                 case PositionAngleTypeEnum.Functions:
-                    return Setters[1](value, setManually);
+                    return Setters[1](value);
                 case PositionAngleTypeEnum.Pos:
                     ThisY = value;
                     return true;
@@ -1548,7 +1548,7 @@ namespace STROOP.Utilities
             }
         }
 
-        public bool SetZ(double value, bool setManually = false)
+        public bool SetZ(double value)
         {
             if (ShouldHaveAddress(PosAngleType) && Address == 0) return false;
             switch (PosAngleType)
@@ -1640,7 +1640,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Hybrid:
                     return PosAngle1.SetZ(value);
                 case PositionAngleTypeEnum.Functions:
-                    return Setters[2](value, setManually);
+                    return Setters[2](value);
                 case PositionAngleTypeEnum.Pos:
                     ThisZ = value;
                     return true;
@@ -1662,7 +1662,7 @@ namespace STROOP.Utilities
             }
         }
 
-        public bool SetAngle(double value, bool setManually = false)
+        public bool SetAngle(double value)
         {
             if (ShouldHaveAddress(PosAngleType) && Address == 0) return false;
             ushort valueUShort = MoreMath.NormalizeAngleUshort(value);
@@ -1756,7 +1756,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Hybrid:
                     return PosAngle2.SetAngle(value);
                 case PositionAngleTypeEnum.Functions:
-                    if (Setters.Count >= 4) return Setters[3](value, setManually);
+                    if (Setters.Count >= 4) return Setters[3](value);
                     return false;
                 case PositionAngleTypeEnum.Pos:
                     ThisAngle = value;
@@ -1926,13 +1926,13 @@ namespace STROOP.Utilities
             }
         }
 
-        public bool SetValues(double? x = null, double? y = null, double? z = null, double? angle = null, bool setManually = false)
+        public bool SetValues(double? x = null, double? y = null, double? z = null, double? angle = null)
         {
             bool success = true;
-            if (x.HasValue) success &= SetX(x.Value, setManually);
-            if (y.HasValue) success &= SetY(y.Value, setManually);
-            if (z.HasValue) success &= SetZ(z.Value, setManually);
-            if (angle.HasValue) success &= SetAngle(angle.Value, setManually);
+            if (x.HasValue) success &= SetX(x.Value);
+            if (y.HasValue) success &= SetY(y.Value);
+            if (z.HasValue) success &= SetZ(z.Value);
+            if (angle.HasValue) success &= SetAngle(angle.Value);
             return success;
         }
 

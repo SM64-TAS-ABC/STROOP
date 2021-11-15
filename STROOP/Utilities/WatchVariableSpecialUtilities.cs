@@ -273,11 +273,11 @@ namespace STROOP.Structs
                         () => ParsingUtilities.ParseDouble(controls[1].GetValue(handleFormatting: false)),
                         () => ParsingUtilities.ParseDouble(controls[2].GetValue(handleFormatting: false)),
                     },
-                    new List<Func<double, bool, bool>>()
+                    new List<Func<double, bool>>()
                     {
-                        (double value, bool setManually) => controls[0].SetValue(value, setManually),
-                        (double value, bool setManually) => controls[1].SetValue(value, setManually),
-                        (double value, bool setManually) => controls[2].SetValue(value, setManually),
+                        (double value) => controls[0].SetValue(value, false),
+                        (double value) => controls[1].SetValue(value, false),
+                        (double value) => controls[2].SetValue(value, false),
                     });
                 PositionAngle p2 = PositionAngle.Functions(
                     new List<Func<double>>()
@@ -286,11 +286,11 @@ namespace STROOP.Structs
                         () => ParsingUtilities.ParseDouble(controls[4].GetValue(handleFormatting: false)),
                         () => ParsingUtilities.ParseDouble(controls[5].GetValue(handleFormatting: false)),
                     },
-                    new List<Func<double, bool, bool>>()
+                    new List<Func<double, bool>>()
                     {
-                        (double value, bool setManually) => controls[3].SetValue(value, setManually),
-                        (double value, bool setManually) => controls[4].SetValue(value, setManually),
-                        (double value, bool setManually) => controls[5].SetValue(value, setManually),
+                        (double value) => controls[3].SetValue(value, false),
+                        (double value) => controls[4].SetValue(value, false),
+                        (double value) => controls[5].SetValue(value, false),
                     });
                 _dictionary.Add(specialType,
                     ((uint dummy) =>
@@ -311,11 +311,11 @@ namespace STROOP.Structs
                         () => 0,
                         () => ParsingUtilities.ParseDouble(controls[1].GetValue(handleFormatting: false)),
                     },
-                    new List<Func<double, bool, bool>>()
+                    new List<Func<double, bool>>()
                     {
-                        (double value, bool setManually) => controls[0].SetValue(value, setManually),
-                        (double value, bool setManually) => true,
-                        (double value, bool setManually) => controls[1].SetValue(value, setManually),
+                        (double value) => controls[0].SetValue(value, false),
+                        (double value) => true,
+                        (double value) => controls[1].SetValue(value, false),
                     });
                 PositionAngle p2 = PositionAngle.Functions(
                     new List<Func<double>>()
@@ -324,11 +324,11 @@ namespace STROOP.Structs
                         () => 0,
                         () => ParsingUtilities.ParseDouble(controls[3].GetValue(handleFormatting: false)),
                     },
-                    new List<Func<double, bool, bool>>()
+                    new List<Func<double, bool>>()
                     {
-                        (double value, bool setManually) => controls[2].SetValue(value, setManually),
-                        (double value, bool setManually) => true,
-                        (double value, bool setManually) => controls[3].SetValue(value, setManually),
+                        (double value) => controls[2].SetValue(value, false),
+                        (double value) => true,
+                        (double value) => controls[3].SetValue(value, false),
                     });
                 _dictionary.Add(specialType,
                     ((uint dummy) =>
