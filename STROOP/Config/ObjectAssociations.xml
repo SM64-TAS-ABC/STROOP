@@ -724,7 +724,7 @@
   <Object behaviorScriptAddress="0x1300090C" name="Yellow Coin?">
     <Image path="Yellow Coin.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x1300091C" name="Yellow Coin" gfxIdUS="0x800F9370">
+  <Object behaviorScriptAddress="0x1300091C" name="Yellow Coin" gfxIdUS="0x800F9370" gfxIdJP="0x800F64F0">
     <SpawnCode gfxId="0x74"/>
     <Image path="Yellow Coin.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x9C" base="Object">Collectable</Data>
@@ -732,14 +732,14 @@
     <Data groupList="ObjectSpecific" type="uint" offset="0x1D4" base="Object" subclass="Address">Disappear Bhvr</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x16" base="Object">Shadow</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300091C" name="Blue Coin" gfxIdUS="0x800F9464">
+  <Object behaviorScriptAddress="0x1300091C" name="Blue Coin" gfxIdUS="0x800F9464" gfxIdJP="0x800F65E4">
     <Image path="Blue Coin.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x9C" base="Object">Collectable</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x180" base="Object">Value</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0x1D4" base="Object" subclass="Address">Disappear Bhvr</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x16" base="Object">Shadow</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300091C" name="Yellow Coin" gfxIdUS="0x800F8AA4">
+  <Object behaviorScriptAddress="0x1300091C" name="Yellow Coin" gfxIdUS="0x800F8AA4" gfxIdJP="0x800F5C24">
     <Image path="Yellow Coin.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x9C" base="Object">Collectable</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x180" base="Object">Value</Data>
