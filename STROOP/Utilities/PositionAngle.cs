@@ -2028,11 +2028,6 @@ namespace STROOP.Utilities
 
 
 
-        private static bool GetToggle()
-        {
-            return KeyboardUtilities.IsCtrlHeld();
-        }
-
         public static bool SetDistance(PositionAngle p1, PositionAngle p2, double distance, bool toggle)
         {
             if (!toggle)
