@@ -27,7 +27,7 @@ namespace STROOP.Structs
                     case RomVersion.US:
                         return GfxIdUS;
                     case RomVersion.JP:
-                        return GfxIdJP ?? GfxIdUS; // TODO: Fix once gfx ids are set
+                        return GfxIdJP;
                     case RomVersion.SH:
                         return GfxIdSH ?? GfxIdUS; // TODO: Fix once gfx ids are set
                     case RomVersion.EU:
