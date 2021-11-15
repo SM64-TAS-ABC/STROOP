@@ -963,11 +963,11 @@
   <Object behaviorScriptAddress="0x13000C84" name="Wall Flame">
     <Image path="Orange Flame.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000C84" name="Orange Wall Flame" gfxIdUS="0x800F8CC8">
+  <Object behaviorScriptAddress="0x13000C84" name="Orange Wall Flame" gfxIdUS="0x800F8CC8" gfxIdJP="0x800F5E48">
     <SpawnCode gfxId="0x90"/>
     <Image path="Orange Flame.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000C84" name="Blue Wall Flame" gfxIdUS="0x800F8DBC">
+  <Object behaviorScriptAddress="0x13000C84" name="Blue Wall Flame" gfxIdUS="0x800F8DBC" gfxIdJP="0x800F5F3C">
     <SpawnCode gfxId="0x91"/>
     <Image path="Blue Flame.png"/>
   </Object>
@@ -987,23 +987,23 @@
     <SpawnCode gfxId="0x00"/>
     <Image path="Mario Breath Particle Spawner.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000DB4" name="Red Star Particle" gfxIdUS="0x800FA108" appearance="0">
+  <Object behaviorScriptAddress="0x13000DB4" name="Red Star Particle" gfxIdUS="0x800FA108" gfxIdJP="0x800F7288" appearance="0">
     <SpawnCode gfxId="0x8B"/>
     <Image path="Star Particle Red.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000DB4" name="Green Star Particle" gfxIdUS="0x800FA108" appearance="1">
+  <Object behaviorScriptAddress="0x13000DB4" name="Green Star Particle" gfxIdUS="0x800FA108" gfxIdJP="0x800F7288" appearance="1">
     <Image path="Star Particle Green.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000DB4" name="Blue Star Particle" gfxIdUS="0x800FA108" appearance="2">
+  <Object behaviorScriptAddress="0x13000DB4" name="Blue Star Particle" gfxIdUS="0x800FA108" gfxIdJP="0x800F7288" appearance="2">
     <Image path="Star Particle Blue.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000DB4" name="Gold Star Particle" gfxIdUS="0x800FA108" appearance="3">
+  <Object behaviorScriptAddress="0x13000DB4" name="Gold Star Particle" gfxIdUS="0x800FA108" gfxIdJP="0x800F7288" appearance="3">
     <Image path="Star Particle Gold.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000DB4" name="Gold Triangle Particle" gfxIdUS="0x800FA040" appearance="4">
+  <Object behaviorScriptAddress="0x13000DB4" name="Gold Triangle Particle" gfxIdUS="0x800FA040" gfxIdJP="0x800F71C0" appearance="4">
     <Image path="Triangle Particle Gold.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000DB4" name="Shard Particle" gfxIdUS="0x800FA040" appearance="3">
+  <Object behaviorScriptAddress="0x13000DB4" name="Shard Particle" gfxIdUS="0x800FA040" gfxIdJP="0x800F71C0" appearance="3">
     <SpawnCode gfxId="0x8A"/>
     <Image path="Box Shard.png"/>
   </Object>
