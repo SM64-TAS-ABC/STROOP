@@ -52,17 +52,17 @@ namespace STROOP.Structs
                         },
                         (double sum, bool setManually, uint dummy) =>
                         {
-                            if (!KeyboardUtilities.IsCtrlHeld())
+                            if (!KeyboardUtilities.GetToggle(setManually))
                             {
                                 double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                                 double newValue2 = sum - value1;
-                                return control2.SetValue(newValue2);
+                                return control2.SetValue(newValue2, setManually);
                             }
                             else
                             {
                                 double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                                 double newValue1 = sum - value2;
-                                return control1.SetValue(newValue1);
+                                return control1.SetValue(newValue1, setManually);
                             }
                         }));
                     break;
@@ -77,17 +77,17 @@ namespace STROOP.Structs
                         },
                         (double diff, bool setManually, uint dummy) =>
                         {
-                            if (!KeyboardUtilities.IsCtrlHeld())
+                            if (!KeyboardUtilities.GetToggle(setManually))
                             {
                                 double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                                 double newValue2 = value1 - diff;
-                                return control2.SetValue(newValue2);
+                                return control2.SetValue(newValue2, setManually);
                             }
                             else
                             {
                                 double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                                 double newValue1 = value2 + diff;
-                                return control1.SetValue(newValue1);
+                                return control1.SetValue(newValue1, setManually);
                             }
                         }));
                     break;
@@ -102,17 +102,17 @@ namespace STROOP.Structs
                         },
                         (double product, bool setManually, uint dummy) =>
                         {
-                            if (!KeyboardUtilities.IsCtrlHeld())
+                            if (!KeyboardUtilities.GetToggle(setManually))
                             {
                                 double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                                 double newValue2 = product / value1;
-                                return control2.SetValue(newValue2);
+                                return control2.SetValue(newValue2, setManually);
                             }
                             else
                             {
                                 double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                                 double newValue1 = product / value2;
-                                return control1.SetValue(newValue1);
+                                return control1.SetValue(newValue1, setManually);
                             }
                         }));
                     break;
@@ -127,17 +127,17 @@ namespace STROOP.Structs
                         },
                         (double quotient, bool setManually, uint dummy) =>
                         {
-                            if (!KeyboardUtilities.IsCtrlHeld())
+                            if (!KeyboardUtilities.GetToggle(setManually))
                             {
                                 double value1 = ParsingUtilities.ParseDouble(control1.GetValue(handleFormatting: false));
                                 double newValue2 = value1 / quotient;
-                                return control2.SetValue(newValue2);
+                                return control2.SetValue(newValue2, setManually);
                             }
                             else
                             {
                                 double value2 = ParsingUtilities.ParseDouble(control2.GetValue(handleFormatting: false));
                                 double newValue1 = value2 * quotient;
-                                return control1.SetValue(newValue1);
+                                return control1.SetValue(newValue1, setManually);
                             }
                         }));
                     break;
@@ -273,11 +273,11 @@ namespace STROOP.Structs
                         () => ParsingUtilities.ParseDouble(controls[1].GetValue(handleFormatting: false)),
                         () => ParsingUtilities.ParseDouble(controls[2].GetValue(handleFormatting: false)),
                     },
-                    new List<Func<double, bool>>()
+                    new List<Func<double, bool, bool>>()
                     {
-                        (double value) => controls[0].SetValue(value),
-                        (double value) => controls[1].SetValue(value),
-                        (double value) => controls[2].SetValue(value),
+                        (double value, bool setManually) => controls[0].SetValue(value, setManually),
+                        (double value, bool setManually) => controls[1].SetValue(value, setManually),
+                        (double value, bool setManually) => controls[2].SetValue(value, setManually),
                     });
                 PositionAngle p2 = PositionAngle.Functions(
                     new List<Func<double>>()
@@ -286,11 +286,11 @@ namespace STROOP.Structs
                         () => ParsingUtilities.ParseDouble(controls[4].GetValue(handleFormatting: false)),
                         () => ParsingUtilities.ParseDouble(controls[5].GetValue(handleFormatting: false)),
                     },
-                    new List<Func<double, bool>>()
+                    new List<Func<double, bool, bool>>()
                     {
-                        (double value) => controls[3].SetValue(value),
-                        (double value) => controls[4].SetValue(value),
-                        (double value) => controls[5].SetValue(value),
+                        (double value, bool setManually) => controls[3].SetValue(value, setManually),
+                        (double value, bool setManually) => controls[4].SetValue(value, setManually),
+                        (double value, bool setManually) => controls[5].SetValue(value, setManually),
                     });
                 _dictionary.Add(specialType,
                     ((uint dummy) =>
@@ -311,11 +311,11 @@ namespace STROOP.Structs
                         () => 0,
                         () => ParsingUtilities.ParseDouble(controls[1].GetValue(handleFormatting: false)),
                     },
-                    new List<Func<double, bool>>()
+                    new List<Func<double, bool, bool>>()
                     {
-                        (double value) => controls[0].SetValue(value),
-                        (double value) => true,
-                        (double value) => controls[1].SetValue(value),
+                        (double value, bool setManually) => controls[0].SetValue(value, setManually),
+                        (double value, bool setManually) => true,
+                        (double value, bool setManually) => controls[1].SetValue(value, setManually),
                     });
                 PositionAngle p2 = PositionAngle.Functions(
                     new List<Func<double>>()
@@ -324,11 +324,11 @@ namespace STROOP.Structs
                         () => 0,
                         () => ParsingUtilities.ParseDouble(controls[3].GetValue(handleFormatting: false)),
                     },
-                    new List<Func<double, bool>>()
+                    new List<Func<double, bool, bool>>()
                     {
-                        (double value) => controls[2].SetValue(value),
-                        (double value) => true,
-                        (double value) => controls[3].SetValue(value),
+                        (double value, bool setManually) => controls[2].SetValue(value, setManually),
+                        (double value, bool setManually) => true,
+                        (double value, bool setManually) => controls[3].SetValue(value, setManually),
                     });
                 _dictionary.Add(specialType,
                     ((uint dummy) =>

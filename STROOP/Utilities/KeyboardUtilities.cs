@@ -54,5 +54,10 @@ namespace STROOP.Utilities
                 Keyboard.IsKeyDown(Key.Back) ||
                 Keyboard.IsKeyDown(Key.Escape);
         }
+
+        public static bool GetToggle(bool setManually)
+        {
+            return setManually && IsCtrlHeld();
+        }
     }
 }

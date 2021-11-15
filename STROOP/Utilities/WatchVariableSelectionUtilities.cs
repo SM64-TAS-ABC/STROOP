@@ -569,10 +569,10 @@ namespace STROOP.Structs
                 double? number1 = ParsingUtilities.ParseDoubleNullable(value1);
                 double? number2 = ParsingUtilities.ParseDoubleNullable(value2);
                 if (!number1.HasValue || !number2.HasValue) return;
-                List<Func<object, bool>> setters = controls.SelectMany(control => control.GetSetters()).ToList();
+                List<Func<object, bool, bool>> setters = controls.SelectMany(control => control.GetSetters()).ToList();
                 for (int i = 0; i < setters.Count; i++)
                 {
-                    setters[i](number1.Value + i * number2.Value);
+                    setters[i](number1.Value + i * number2.Value, true);
                 }
             };
 

@@ -63,12 +63,12 @@ namespace STROOP.Forms
                             () => ParsingUtilities.ParseDouble(valueLists[2][index]),
                             () => controls.Count >= 4 ? ParsingUtilities.ParseDouble(valueLists[3][index]) : double.NaN,
                         };
-                        List<Func<double, bool>> setters = new List<Func<double, bool>>()
+                        List<Func<double, bool, bool>> setters = new List<Func<double, bool, bool>>()
                         {
-                            (double value) => controls[0].SetValueOfValues(value, index),
-                            (double value) => controls[1].SetValueOfValues(value, index),
-                            (double value) => controls[2].SetValueOfValues(value, index),
-                            (double value) => controls.Count >= 4 ? controls[3].SetValueOfValues(value, index) : true,
+                            (double value, bool setManually) => controls[0].SetValueOfValues(value, setManually, index),
+                            (double value, bool setManually) => controls[1].SetValueOfValues(value, setManually, index),
+                            (double value, bool setManually) => controls[2].SetValueOfValues(value, setManually, index),
+                            (double value, bool setManually) => controls.Count >= 4 ? controls[3].SetValueOfValues(value, setManually, index) : true,
                         };
                         PositionAngle posAngle = PositionAngle.Functions(getters, setters);
                         posAngles.Add(posAngle);

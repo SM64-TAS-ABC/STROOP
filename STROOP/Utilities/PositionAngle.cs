@@ -25,7 +25,7 @@ namespace STROOP.Utilities
         private readonly PositionAngle PosAngle1;
         private readonly PositionAngle PosAngle2;
         private readonly List<Func<double>> Getters;
-        private readonly List<Func<double, bool>> Setters;
+        private readonly List<Func<double, bool, bool>> Setters;
 
         public static Dictionary<uint, (double, double, double, double, List<double>)> Schedule =
             new Dictionary<uint, (double, double, double, double, List<double>)>();
@@ -139,7 +139,7 @@ namespace STROOP.Utilities
             PositionAngle posAngle1 = null,
             PositionAngle posAngle2 = null,
             List<Func<double>> getters = null,
-            List<Func<double, bool>> setters = null)
+            List<Func<double, bool, bool>> setters = null)
         {
             PosAngleType = posAngleType;
             Address = address;
@@ -279,7 +279,7 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.Hybrid, posAngle1: posAngle1, posAngle2: posAngle2);
         public static PositionAngle Trunc(PositionAngle posAngle) =>
             new PositionAngle(PositionAngleTypeEnum.Trunc, posAngle1: posAngle);
-        public static PositionAngle Functions(List<Func<double>> getters, List<Func<double, bool>> setters) =>
+        public static PositionAngle Functions(List<Func<double>> getters, List<Func<double, bool, bool>> setters) =>
             new PositionAngle(PositionAngleTypeEnum.Functions, getters: getters, setters: setters);
         public static PositionAngle Pos(double x, double y, double z, double angle = double.NaN) =>
             new PositionAngle(PositionAngleTypeEnum.Pos, thisX: x, thisY: y, thisZ: z, thisAngle: angle);

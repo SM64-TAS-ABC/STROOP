@@ -312,7 +312,7 @@ namespace STROOP.Controls
                     e.KeyData == (Keys.Enter | Keys.Control))
                 {
                     EditMode = false;
-                    SetValue(_valueTextBox.Text);
+                    SetValue(_valueTextBox.Text, true);
                     this.Focus();
                     return;
                 }
@@ -457,17 +457,17 @@ namespace STROOP.Controls
             else if (isZHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                SetValue(0);
+                SetValue(0, true);
             }
             else if (isMinusHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                AddValue(1, false);
+                AddValue(1, false, true);
             }
             else if (isPlusHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                AddValue(1, true);
+                AddValue(1, true, true);
             }
             else if (isQKeyHeld)
             {
@@ -521,7 +521,7 @@ namespace STROOP.Controls
 
         private void OnCheckboxClick()
         {
-            bool success = WatchVarWrapper.SetCheckStateValue(_valueCheckBox.CheckState, FixedAddressListGetter());
+            bool success = WatchVarWrapper.SetCheckStateValue(_valueCheckBox.CheckState, true, FixedAddressListGetter());
             if (!success) FlashColor(FAILURE_COLOR);
         }
 
