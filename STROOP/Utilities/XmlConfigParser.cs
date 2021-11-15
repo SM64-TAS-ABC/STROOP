@@ -665,7 +665,10 @@ namespace STROOP.Utilities
                         uint? gfxIdEU = null;
                         uint? subType = null;
                         uint? appearance = null;
-                        uint? spawnObj = null;
+                        uint? spawnObjUS = null;
+                        uint? spawnObjJP = null;
+                        uint? spawnObjSH = null;
+                        uint? spawnObjEU = null;
 
                         if (element.Attribute(XName.Get("gfxIdUS")) != null)
                             gfxIdUS = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxIdUS")).Value) | 0x80000000U;
@@ -680,8 +683,15 @@ namespace STROOP.Utilities
                             subType = ParsingUtilities.ParseUIntNullable(element.Attribute(XName.Get("subType")).Value);
                         if (element.Attribute(XName.Get("appearance")) != null)
                             appearance = ParsingUtilities.ParseUIntNullable(element.Attribute(XName.Get("appearance")).Value);
-                        if (element.Attribute(XName.Get("spawnObj")) != null)
-                            spawnObj = ParsingUtilities.ParseHex(element.Attribute(XName.Get("spawnObj")).Value);
+
+                        if (element.Attribute(XName.Get("spawnObjUS")) != null)
+                            spawnObjUS = ParsingUtilities.ParseHex(element.Attribute(XName.Get("spawnObjUS")).Value);
+                        if (element.Attribute(XName.Get("spawnObjJP")) != null)
+                            spawnObjJP = ParsingUtilities.ParseHex(element.Attribute(XName.Get("spawnObjJP")).Value);
+                        if (element.Attribute(XName.Get("spawnObjSH")) != null)
+                            spawnObjSH = ParsingUtilities.ParseHex(element.Attribute(XName.Get("spawnObjSH")).Value);
+                        if (element.Attribute(XName.Get("spawnObjEU")) != null)
+                            spawnObjEU = ParsingUtilities.ParseHex(element.Attribute(XName.Get("spawnObjEU")).Value);
 
                         var spawnElement = element.Element(XName.Get("SpawnCode"));
                         if (spawnElement != null)
@@ -738,7 +748,10 @@ namespace STROOP.Utilities
                                 GfxIdEU = gfxIdEU,
                                 SubType = subType,
                                 Appearance = appearance,
-                                SpawnObj = spawnObj,
+                                SpawnObjUS = spawnObjUS,
+                                SpawnObjJP = spawnObjJP,
+                                SpawnObjSH = spawnObjSH,
+                                SpawnObjEU = spawnObjEU,
                             },
                             ImagePath = imagePath,
                             MapImagePath = mapImagePath,

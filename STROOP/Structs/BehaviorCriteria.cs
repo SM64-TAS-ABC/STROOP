@@ -16,7 +16,10 @@ namespace STROOP.Structs
         public uint? GfxIdEU;
         public uint? SubType;
         public uint? Appearance;
-        public uint? SpawnObj;
+        public uint? SpawnObjUS;
+        public uint? SpawnObjJP;
+        public uint? SpawnObjSH;
+        public uint? SpawnObjEU;
 
         public uint? GfxId
         {
@@ -51,6 +54,46 @@ namespace STROOP.Structs
                         break;
                     case RomVersion.EU:
                         GfxIdEU = value;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+        public uint? SpawnObj
+        {
+            get
+            {
+                switch (RomVersionConfig.Version)
+                {
+                    case RomVersion.US:
+                        return SpawnObjUS;
+                    case RomVersion.JP:
+                        return SpawnObjJP;
+                    case RomVersion.SH:
+                        return SpawnObjSH ?? GfxIdUS; // TODO: Fix once gfx ids are set
+                    case RomVersion.EU:
+                        return SpawnObjEU ?? GfxIdUS; // TODO: Fix once gfx ids are set
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            set
+            {
+                switch (RomVersionConfig.Version)
+                {
+                    case RomVersion.US:
+                        SpawnObjUS = value;
+                        break;
+                    case RomVersion.JP:
+                        SpawnObjJP = value;
+                        break;
+                    case RomVersion.SH:
+                        SpawnObjSH = value;
+                        break;
+                    case RomVersion.EU:
+                        SpawnObjEU = value;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

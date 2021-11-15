@@ -2791,7 +2791,7 @@
   <Object behaviorScriptAddress="0x130035B0" name="Bob-omb Explosion Bubble">
     <Image path="Splash Bubble.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13003614" name="Cork Box Spawner" spawnObj="0x13004218">
+  <Object behaviorScriptAddress="0x13003614" name="Cork Box Spawner" spawnObjUS="0x13004218" spawnObjJP="0x130041F8">
     <SpawnCode gfxId="0x00"/>
     <Image path="Cork Box Spawner.png"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Spawn Obj Behavior</Data>
@@ -2800,7 +2800,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectSpawnerRadiusDiff">Radius Diff</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13003614" name="Bob-omb Spawner" spawnObj="0x13003174">
+  <Object behaviorScriptAddress="0x13003614" name="Bob-omb Spawner" spawnObjUS="0x13003174" spawnObjJP="0x13003154">
     <SpawnCode gfxId="0x00"/>
     <Image path="Bob-omb Spawner.png"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Spawn Obj Behavior</Data>
@@ -2810,7 +2810,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectSpawnerRadiusDiff">Radius Diff</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13003614" name="Snowman's Body Spawner" spawnObj="0x13003CE4">
+  <Object behaviorScriptAddress="0x13003614" name="Snowman's Body Spawner" spawnObjUS="0x13003CE4" spawnObjJP="0x13003CC4">
     <SpawnCode gfxId="0x00"/>
     <Image path="Snowman's Body Spawner.png"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Spawn Obj Behavior</Data>
@@ -2819,7 +2819,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectSpawnerRadiusDiff">Radius Diff</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13003614" name="Yoshi Spawner" spawnObj="0x13004538">
+  <Object behaviorScriptAddress="0x13003614" name="Yoshi Spawner" spawnObjUS="0x13004538" spawnObjJP="0x13004518">
     <SpawnCode gfxId="0x00"/>
     <Image path="Yoshi Spawner.png"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Spawn Obj Behavior</Data>
