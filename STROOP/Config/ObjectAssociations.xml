@@ -2319,7 +2319,7 @@
     <Image path="Tree Standard.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxIdUS="0x8018CCE4">
+  <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxIdUS="0x8018CCE4" gfxIdJP="0x80189E64">
     <Image path="Tree Standard.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
