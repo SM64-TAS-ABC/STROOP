@@ -2318,6 +2318,8 @@ namespace STROOP.Structs
             ushort centAngle2 = 15703;
             ushort centAngle3 = 15571;
 
+            TriangleDataModel tri = new TriangleDataModel(-1747, 426, -781, -1342, 764, -1187, -1370, 764, -1214);
+            int goalX = -1719;
             float goalZ = -869.552673339844f;
 
             int radius = 5;
@@ -2362,11 +2364,16 @@ namespace STROOP.Structs
                 if (dequeue.Index == 3)
                 {
                     counter++;
+
+                    float? y = tri.GetTruncatedHeightOnTriangleIfInsideTriangle(dequeue.X, dequeue.Z);
+                    if (!y.HasValue) continue;
+
                     MarioState afterPunch = DoPunchFrames(dequeue);
-                    double diff = Math.Abs(afterPunch.Z - goalZ);
-                    if (diff < bestDiff)
+                    double zDiff = Math.Abs(afterPunch.Z - goalZ);
+                    int xDiff = (int)afterPunch.X - goalX;
+                    if (zDiff == 0 && xDiff == 0)
                     {
-                        bestDiff = diff;
+                        bestDiff = zDiff;
                         bestState = dequeue;
                         Config.Print("Diff of " + bestDiff + " is: " + bestState.GetLineage());
                         Config.Print();
