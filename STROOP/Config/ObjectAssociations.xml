@@ -1600,72 +1600,72 @@
     <Image path="LLL Metal Mesh Platform.png"/>
     <MapImage path="LLL Metal Mesh Platform Top.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #1" gfxIdUS="0x8018B710">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #1" gfxIdUS="0x8018B710" gfxIdJP="0x80188920">
     <SpawnCode gfxId="0x43"/>
     <Image path="Bowser Puzzle Piece 1.png"/>
     <MapImage path="Bowser Puzzle Piece 1.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #2" gfxIdUS="0x8018B758">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #2" gfxIdUS="0x8018B758" gfxIdJP="0x80188968">
     <SpawnCode gfxId="0x44"/>
     <Image path="Bowser Puzzle Piece 2.png"/>
     <MapImage path="Bowser Puzzle Piece 2.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #3" gfxIdUS="0x8018B7A0">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #3" gfxIdUS="0x8018B7A0" gfxIdJP="0x801889B0">
     <SpawnCode gfxId="0x45"/>
     <Image path="Bowser Puzzle Piece 3.png"/>
     <MapImage path="Bowser Puzzle Piece 3.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #4" gfxIdUS="0x8018B7E8">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #4" gfxIdUS="0x8018B7E8" gfxIdJP="0x801889F8">
     <SpawnCode gfxId="0x46"/>
     <Image path="Bowser Puzzle Piece 4.png"/>
     <MapImage path="Bowser Puzzle Piece 4.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #5" gfxIdUS="0x8018B830">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #5" gfxIdUS="0x8018B830" gfxIdJP="0x80188A40">
     <SpawnCode gfxId="0x47"/>
     <Image path="Bowser Puzzle Piece 5.png"/>
     <MapImage path="Bowser Puzzle Piece 5.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #6" gfxIdUS="0x8018B878">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #6" gfxIdUS="0x8018B878" gfxIdJP="0x80188A88">
     <SpawnCode gfxId="0x48"/>
     <Image path="Bowser Puzzle Piece 6.png"/>
     <MapImage path="Bowser Puzzle Piece 6.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #7" gfxIdUS="0x8018B8C0">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #7" gfxIdUS="0x8018B8C0" gfxIdJP="0x80188AD0">
     <SpawnCode gfxId="0x49"/>
     <Image path="Bowser Puzzle Piece 7.png"/>
     <MapImage path="Bowser Puzzle Piece 7.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #8" gfxIdUS="0x8018B908">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #8" gfxIdUS="0x8018B908" gfxIdJP="0x80188B18">
     <SpawnCode gfxId="0x4A"/>
     <Image path="Bowser Puzzle Piece 8.png"/>
     <MapImage path="Bowser Puzzle Piece 8.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #9" gfxIdUS="0x8018B950">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #9" gfxIdUS="0x8018B950" gfxIdJP="0x80188B60">
     <SpawnCode gfxId="0x4B"/>
     <Image path="Bowser Puzzle Piece 9.png"/>
     <MapImage path="Bowser Puzzle Piece 9.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #10" gfxIdUS="0x8018B998">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #10" gfxIdUS="0x8018B998" gfxIdJP="0x80188BA8">
     <SpawnCode gfxId="0x4C"/>
     <Image path="Bowser Puzzle Piece 10.png"/>
     <MapImage path="Bowser Puzzle Piece 10.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #11" gfxIdUS="0x8018B9E0">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #11" gfxIdUS="0x8018B9E0" gfxIdJP="0x80188BF0">
     <SpawnCode gfxId="0x4D"/>
     <Image path="Bowser Puzzle Piece 11.png"/>
     <MapImage path="Bowser Puzzle Piece 11.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #12" gfxIdUS="0x8018BA28">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #12" gfxIdUS="0x8018BA28" gfxIdJP="0x80188C38">
     <SpawnCode gfxId="0x4E"/>
     <Image path="Bowser Puzzle Piece 12.png"/>
     <MapImage path="Bowser Puzzle Piece 12.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #13" gfxIdUS="0x8018BA70">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #13" gfxIdUS="0x8018BA70" gfxIdJP="0x80188C80">
     <SpawnCode gfxId="0x4F"/>
     <Image path="Bowser Puzzle Piece 13.png"/>
     <MapImage path="Bowser Puzzle Piece 13.png" rotates="true"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #14" gfxIdUS="0x8018BAB8">
+  <Object behaviorScriptAddress="0x13002038" name="Bowser Puzzle Piece #14" gfxIdUS="0x8018BAB8" gfxIdJP="0x80188CC8">
     <SpawnCode gfxId="0x50"/>
     <Image path="Bowser Puzzle Piece 14.png"/>
     <MapImage path="Bowser Puzzle Piece 14.png" rotates="true"/>
