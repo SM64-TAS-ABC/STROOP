@@ -2408,7 +2408,7 @@
     <SpawnCode gfxId="0xA4"/>
     <Image path="Splash Bubble.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002C60" name="Splash Fish" gfxIdUS="0x800F8F40">
+  <Object behaviorScriptAddress="0x13002C60" name="Splash Fish" gfxIdUS="0x800F8F40" gfxIdJP="0x800F60C0">
     <SpawnCode gfxId="0xA9"/>
     <Image path="Blue Fish.png"/>
     <MapImage path="Blue Fish Top.png" rotates="true"/>
@@ -2451,7 +2451,7 @@
     <SpawnCode gfxId="0x00"/>
     <Image path="Wind Behavior Invisible.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13002E20" name="Wind Behavior (Visible)" gfxIdUS="0x800F9298">
+  <Object behaviorScriptAddress="0x13002E20" name="Wind Behavior (Visible)" gfxIdUS="0x800F9298" gfxIdJP="0x800F6418">
     <SpawnCode gfxId="0x8E"/>
     <Image path="Wind Behavior.png"/>
   </Object>
@@ -2596,13 +2596,13 @@
   <Object behaviorScriptAddress="0x13003008" name="File Manager">
     <Image path="File Manager.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x1300302C" name="Mission Star (Yellow)" gfxIdUS="0x800F8B9C">
+  <Object behaviorScriptAddress="0x1300302C" name="Mission Star (Yellow)" gfxIdUS="0x800F8B9C" gfxIdJP="0x800F5D1C">
     <SpawnCode gfxId="0x7A"/>
     <Image path="Power Star Yellow.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object" subclass="Boolean">Spinning</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x108" base="Object">Scale</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300302C" name="Mission Star (Blue)" gfxIdUS="0x800F8C00">
+  <Object behaviorScriptAddress="0x1300302C" name="Mission Star (Blue)" gfxIdUS="0x800F8C00" gfxIdJP="0x800F5D80">
     <SpawnCode gfxId="0x79"/>
     <Image path="Power Star Blue.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object" subclass="Boolean">Spinning</Data>
@@ -2902,7 +2902,7 @@
     <SpawnCode gfxId="0x66"/>
     <Image path="Floating Mine Smoke.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13003868" name="Celebration Star" gfxIdUS="0x800F8B9C">
+  <Object behaviorScriptAddress="0x13003868" name="Celebration Star" gfxIdUS="0x800F8B9C" gfxIdJP="0x800F5D1C">
     <SpawnCode gfxId="0x7A"/>
     <Image path="Power Star Yellow.png"/>
   </Object>
@@ -3920,7 +3920,7 @@
     <SpawnCode gfxId="0x8E"/>
     <Image path="Cloud Puff.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130049AC" name="Fwoosh Face" gfxIdUS="0x8018D4FC">
+  <Object behaviorScriptAddress="0x130049AC" name="Fwoosh Face" gfxIdUS="0x8018D4FC" gfxIdJP="0x8018A67C">
     <SpawnCode gfxId="0x57"/>
     <Image path="Fwoosh Face.png"/>
   </Object>
@@ -3948,35 +3948,35 @@
     <SpawnCode gfxId="0xA1"/>
     <Image path="Pebble.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13004AB0" name="Carpet" gfxIdUS="0x8018D2A8">
+  <Object behaviorScriptAddress="0x13004AB0" name="Carpet" gfxIdUS="0x8018D2A8" gfxIdJP="0x8018A5E8">
     <SpawnCode gfxId="0x37"/>
     <Image path="Carpet.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188"  mask="0x04" base="Object" subclass="Boolean">Yaw Locked</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188"  mask="0x08" base="Object" subclass="Boolean" invertBool="true">Pitch Locked</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x189"  mask="0x80" base="Object" subclass="Boolean">Track Balls</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13004AB0" name="Ski Lift" gfxIdUS="0x80184AE8">
+  <Object behaviorScriptAddress="0x13004AB0" name="Ski Lift" gfxIdUS="0x80184AE8" gfxIdJP="0x80181C58">
     <SpawnCode gfxId="0x36"/>
     <Image path="Ski Lift.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188"  mask="0x04" base="Object" subclass="Boolean">Yaw Locked</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188"  mask="0x08" base="Object" subclass="Boolean" invertBool="true">Pitch Locked</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x189"  mask="0x80" base="Object" subclass="Boolean">Track Balls</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13004AB0" name="BitFS Fixed Track Elevator" gfxIdUS="0x80178368">
+  <Object behaviorScriptAddress="0x13004AB0" name="BitFS Fixed Track Elevator" gfxIdUS="0x80178368" gfxIdJP="0x801754E8">
     <SpawnCode gfxId="0x36"/>
     <Image path="BitFS Fixed Track Elevator.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188"  mask="0x04" base="Object" subclass="Boolean">Yaw Locked</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188"  mask="0x08" base="Object" subclass="Boolean" invertBool="true">Pitch Locked</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x189"  mask="0x80" base="Object" subclass="Boolean">Track Balls</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13004AB0" name="Fixed Track Elevator" gfxIdUS="0x80188FFC">
+  <Object behaviorScriptAddress="0x13004AB0" name="LLL Fixed Track Elevator" gfxIdUS="0x80188FFC" gfxIdJP="0x8018620C">
     <SpawnCode gfxId="0xCA"/>
     <Image path="Checkered Elevator.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188"  mask="0x04" base="Object" subclass="Boolean">Yaw Locked</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188"  mask="0x08" base="Object" subclass="Boolean" invertBool="true">Pitch Locked</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x189"  mask="0x80" base="Object" subclass="Boolean">Track Balls</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13004AB0" name="Fixed Track Elevator" gfxIdUS="0x8017C6EC">
+  <Object behaviorScriptAddress="0x13004AB0" name="HMC Fixed Track Elevator" gfxIdUS="0x8017C6EC" gfxIdJP="0x8017986C">
     <Image path="Checkered Elevator.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188"  mask="0x04" base="Object" subclass="Boolean">Yaw Locked</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188"  mask="0x08" base="Object" subclass="Boolean" invertBool="true">Pitch Locked</Data>
@@ -4054,11 +4054,11 @@
   <Object behaviorScriptAddress="0x13004B6C" name="Revolving Elevator">
     <Image path="Revolving Elevator BitS.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13004B6C" name="BitDW Revolving Elevator" gfxIdUS="0x80184340">
+  <Object behaviorScriptAddress="0x13004B6C" name="BitDW Revolving Elevator" gfxIdUS="0x80184340" gfxIdJP="0x801814C0">
     <SpawnCode gfxId="0x3A"/>
     <Image path="Revolving Elevator BitDW.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13004B6C" name="BitS Revolving Elevator" gfxIdUS="0x80187F18">
+  <Object behaviorScriptAddress="0x13004B6C" name="BitS Revolving Elevator" gfxIdUS="0x80187F18" gfxIdJP="0x80185098">
     <SpawnCode gfxId="0x3C"/>
     <Image path="Revolving Elevator BitS.png"/>
   </Object>
@@ -4207,7 +4207,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Displacement</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Direction Countdown</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13004D64" name="TTC 2D Cog (Small)" subType="1" gfxIdUS="0x80152730">
+  <Object behaviorScriptAddress="0x13004D64" name="TTC 2D Cog (Small)" subType="1" gfxIdUS="0x80152730" gfxIdJP="0x8014F8B0">
     <SpawnCode gfxId="0x43"/>
     <Image path="TTC 2D Cog.png"/>
     <MapImage path="TTC 2D Cog Top.png" rotates="true"/>
@@ -4217,7 +4217,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Displacement</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Direction Countdown</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13004D64" name="TTC 2D Cog (Big)" subType="1" gfxIdUS="0x80152760">
+  <Object behaviorScriptAddress="0x13004D64" name="TTC 2D Cog (Big)" subType="1" gfxIdUS="0x80152760" gfxIdJP="0x8014F8E0">
     <SpawnCode gfxId="0x44"/>
     <Image path="TTC 2D Cog.png"/>
     <MapImage path="TTC 2D Cog Top.png" rotates="true"/>
