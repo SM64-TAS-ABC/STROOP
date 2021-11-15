@@ -2299,5 +2299,175 @@ namespace STROOP.Structs
 
             Config.Print("DONE having considered " + counter + " paths");
         }
+
+        public static void TestPendulumLanding()
+        {
+            float startX = -1640.13903808594f;
+            float startY = 568.999877929688f;
+            float startZ = -804.69677734375f;
+            float startXSpeed = -23.9479904174805f;
+            float startYSpeed = -38f;
+            float startZSpeed = -9.76013565063477f;
+            float startHSpeed = 23.850606918335f;
+            float startXSlidingSpeed = -23.9479904174805f;
+            float startZSlidingSpeed = -9.76013565063477f;
+            ushort startYawMoving = 40982;
+            ushort startYawFacing = 40982;
+            ushort startCentAngle = 15763;
+
+            ushort centAngle2 = 15703;
+            ushort centAngle3 = 15571;
+
+            float goalZ = -869.552673339844f;
+
+            int radius = 5;
+            List<Input> inputs1 = CalculatorUtilities.GetInputRange(-128, -128 + 2 * radius, 109 - radius, 109 + radius);
+            List<Input> inputs2 = CalculatorUtilities.GetInputRange(-47 - radius, -47 + radius, -52 - radius, -52 + radius);
+            List<Input> inputs3 = CalculatorUtilities.GetInputRange(-47 - radius, -47 + radius, -52 - radius, -52 + radius);
+
+            MarioState startState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                startXSlidingSpeed,
+                startZSlidingSpeed,
+                startYawMoving,
+                startYawFacing,
+                startCentAngle,
+                null,
+                null,
+                0);
+
+            int counter = 0;
+            int lastIndex = -1;
+            double bestDiff = double.MaxValue;
+            MarioState bestState = null;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            queue.Enqueue(startState);
+
+            while (queue.Count > 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+
+                if (dequeue.Index != lastIndex)
+                {
+                    lastIndex = dequeue.Index;
+                    Config.Print("Now at index " + lastIndex);
+                }
+
+                if (dequeue.Index == 3)
+                {
+                    counter++;
+                    MarioState afterPunch = DoPunchFrames(dequeue);
+                    double diff = Math.Abs(afterPunch.Z - goalZ);
+                    if (diff < bestDiff)
+                    {
+                        bestDiff = diff;
+                        bestState = dequeue;
+                        Config.Print("Diff of " + bestDiff + " is: " + bestState.GetLineage());
+                        Config.Print();
+                    }
+                    continue;
+                }
+
+                List<MarioState> nextStates = null;
+                if (dequeue.Index == 0)
+                {
+                    nextStates = inputs1.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input, numQSteps: 4));
+                    nextStates = nextStates.ConvertAll(state => state.WithCameraAngle(centAngle2));
+                }
+                if (dequeue.Index == 1)
+                {
+                    nextStates = inputs2.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input, numQSteps: 4));
+                    nextStates = nextStates.ConvertAll(state => state.WithCameraAngle(centAngle3));
+                }
+                if (dequeue.Index == 2)
+                {
+                    nextStates = inputs3.ConvertAll(input => AirMovementCalculator.ApplyInput(dequeue, input, numQSteps: 3));
+                }
+                nextStates.ForEach(state => queue.Enqueue(state));
+            }
+
+            Config.Print("DONE having considered " + counter + " paths");
+        }
+
+        public static MarioState DoPunchFrames(MarioState marioState)
+        {
+            TriangleDataModel tri1 = new TriangleDataModel(-1739, 405, -790, -1370, 764, -1214, -1766, 405, -818);
+            TriangleDataModel tri2 = new TriangleDataModel(-1729, 383, -800, -1371, 763, -1213, -1756, 383, -828);
+            TriangleDataModel tri3 = new TriangleDataModel(-1717, 358, -812, -1371, 763, -1213, -1744, 358, -839);
+            TriangleDataModel tri4 = new TriangleDataModel(-1652, 235, -810, -1746, 235, -904, -1753, 312, -898);
+
+            MutableMarioState mutableMarioState = marioState.GetMutableMarioState(new Input(0, 0));
+
+            apply_slope_decel(mutableMarioState, 0.5f, tri1);
+            for (int i = 0; i < 4; i++)
+            {
+                mutableMarioState.X += tri1.NormY * (mutableMarioState.XSpeed / 4.0f);
+                mutableMarioState.Z += tri1.NormY * (mutableMarioState.ZSpeed / 4.0f);
+            }
+
+            apply_slope_decel(mutableMarioState, 0.5f, tri2);
+            for (int i = 0; i < 4; i++)
+            {
+                mutableMarioState.X += tri2.NormY * (mutableMarioState.XSpeed / 4.0f);
+                mutableMarioState.Z += tri2.NormY * (mutableMarioState.ZSpeed / 4.0f);
+            }
+
+            apply_slope_decel(mutableMarioState, 0.5f, tri3);
+            for (int i = 0; i < 2; i++)
+            {
+                mutableMarioState.X += tri3.NormY * (mutableMarioState.XSpeed / 4.0f);
+                mutableMarioState.Z += tri3.NormY * (mutableMarioState.ZSpeed / 4.0f);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mutableMarioState.X += tri4.NormY * (mutableMarioState.XSpeed / 4.0f);
+                mutableMarioState.Z += tri4.NormY * (mutableMarioState.ZSpeed / 4.0f);
+            }
+
+            return mutableMarioState.GetMarioState(marioState.PreviousState, marioState.LastInput);
+        }
+
+        public static void apply_slope_decel(MutableMarioState marioState, float decelCoef, TriangleDataModel floor)
+        {
+            float decel = decelCoef * 2.0f;
+            marioState.HSpeed = CalculatorUtilities.ApproachFloat(marioState.HSpeed, 0.0f, decel, decel);
+            apply_slope_accel(marioState, floor);
+        }
+
+        public static void apply_slope_accel(MutableMarioState marioState, TriangleDataModel floor) {
+            float steepness = (float)Math.Sqrt(floor.NormX * floor.NormX + floor.NormZ * floor.NormZ);
+            int floorAngle = InGameTrigUtilities.InGameATan(floor.NormZ, floor.NormX);
+
+            short floorDYaw = MoreMath.NormalizeAngleShort(floorAngle - marioState.MarioAngle);
+
+            if (mario_floor_is_slope(floor)) {
+                float slopeAccel = 1.7f;
+                if (floorDYaw > -0x4000 && floorDYaw< 0x4000) {
+                    marioState.HSpeed += slopeAccel* steepness;
+                } else {
+                    marioState.HSpeed -= slopeAccel* steepness;
+                }
+            }
+
+            marioState.SlidingAngle = marioState.MarioAngle;
+
+            marioState.SlidingSpeedX = marioState.HSpeed * InGameTrigUtilities.InGameSine(marioState.MarioAngle);
+            marioState.SlidingSpeedZ = marioState.HSpeed * InGameTrigUtilities.InGameCosine(marioState.MarioAngle);
+
+            marioState.XSpeed = marioState.SlidingSpeedX;
+            marioState.YSpeed = 0.0f;
+            marioState.ZSpeed = marioState.SlidingSpeedZ;
+        }
+
+        public static bool mario_floor_is_slope(TriangleDataModel tri) {
+            float normY = 0.9659258f;
+            return tri.NormY <= normY;
+        }
     }
 }

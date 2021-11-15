@@ -49,5 +49,26 @@ namespace STROOP.Structs
             }
             return current;
         }
+
+        public static float ApproachFloat(float current, float target, float inc, float dec)
+        {
+            if (current < target)
+            {
+                current += inc;
+                if (current > target)
+                {
+                    current = target;
+                }
+            }
+            else
+            {
+                current -= dec;
+                if (current < target)
+                {
+                    current = target;
+                }
+            }
+            return current;
+        }
     }
 }
