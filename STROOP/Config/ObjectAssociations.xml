@@ -924,22 +924,22 @@
     <Image path="Falling Block WF.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0xE8" base="Object">Floor Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000C04" name="WF Falling Block" gfxIdUS="0x80194BD4">
+  <Object behaviorScriptAddress="0x13000C04" name="WF Falling Block" gfxIdUS="0x80194BD4" gfxIdJP="0x80191D54">
     <SpawnCode gfxId="0xB0"/>
     <Image path="Falling Block WF.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0xE8" base="Object">Floor Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000C04" name="BBH Falling Block" gfxIdUS="0x80188E60">
+  <Object behaviorScriptAddress="0x13000C04" name="BBH Falling Block" gfxIdUS="0x80188E60" gfxIdJP="0x80185FE0">
     <SpawnCode gfxId="0x38"/>
     <Image path="Falling Block BBH.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0xE8" base="Object">Floor Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000C04" name="LLL Falling Block" gfxIdUS="0x8018BC20">
+  <Object behaviorScriptAddress="0x13000C04" name="LLL Falling Block" gfxIdUS="0x8018BC20" gfxIdJP="0x80188E30">
     <SpawnCode gfxId="0x3C"/>
     <Image path="Falling Block LLL.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0xE8" base="Object">Floor Height</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13000C04" name="BitFS Falling Block" gfxIdUS="0x80178560">
+  <Object behaviorScriptAddress="0x13000C04" name="BitFS Falling Block" gfxIdUS="0x80178560" gfxIdJP="0x801756E0">
     <SpawnCode gfxId="0x40"/>
     <Image path="Falling Block BitFS.png"/>
     <Data groupList="ObjectSpecific" type="float" offset="0xE8" base="Object">Floor Height</Data>
