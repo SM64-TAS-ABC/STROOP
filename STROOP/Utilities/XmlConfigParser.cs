@@ -660,11 +660,22 @@ namespace STROOP.Utilities
                         string name = element.Attribute(XName.Get("name")).Value;
                         uint behaviorSegmented = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
                         uint? gfxIdUS = null;
+                        uint? gfxIdJP = null;
+                        uint? gfxIdSH = null;
+                        uint? gfxIdEU = null;
                         uint? subType = null;
                         uint? appearance = null;
                         uint? spawnObj = null;
+
                         if (element.Attribute(XName.Get("gfxIdUS")) != null)
                             gfxIdUS = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxIdUS")).Value) | 0x80000000U;
+                        if (element.Attribute(XName.Get("gfxIdJP")) != null)
+                            gfxIdJP = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxIdJP")).Value) | 0x80000000U;
+                        if (element.Attribute(XName.Get("gfxIdSH")) != null)
+                            gfxIdSH = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxIdSH")).Value) | 0x80000000U;
+                        if (element.Attribute(XName.Get("gfxIdEU")) != null)
+                            gfxIdEU = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxIdEU")).Value) | 0x80000000U;
+
                         if (element.Attribute(XName.Get("subType")) != null)
                             subType = ParsingUtilities.ParseUIntNullable(element.Attribute(XName.Get("subType")).Value);
                         if (element.Attribute(XName.Get("appearance")) != null)
@@ -721,7 +732,10 @@ namespace STROOP.Utilities
                             Criteria = new BehaviorCriteria()
                             {
                                 BehaviorAddress = behaviorSegmented,
-                                GfxId = gfxIdUS,
+                                GfxIdUS = gfxIdUS,
+                                GfxIdJP = gfxIdJP,
+                                GfxIdSH = gfxIdSH,
+                                GfxIdEU = gfxIdEU,
                                 SubType = subType,
                                 Appearance = appearance,
                                 SpawnObj = spawnObj,

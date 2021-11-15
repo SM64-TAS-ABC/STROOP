@@ -10,10 +10,25 @@ namespace STROOP.Structs
     public struct BehaviorCriteria
     {
         public uint BehaviorAddress;
-        public uint? GfxId;
+        public uint? GfxIdUS;
+        public uint? GfxIdJP;
+        public uint? GfxIdSH;
+        public uint? GfxIdEU;
         public uint? SubType;
         public uint? Appearance;
         public uint? SpawnObj;
+
+        public uint? GfxId
+        {
+            get
+            {
+                return GfxIdUS;
+            }
+            set
+            {
+                GfxIdUS = value;
+            }
+        }
 
         public override bool Equals(object obj)
         {
