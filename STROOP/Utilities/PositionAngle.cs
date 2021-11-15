@@ -1320,7 +1320,7 @@ namespace STROOP.Utilities
 
 
 
-        public bool SetX(double value)
+        public bool SetX(double value, bool setManually = false)
         {
             if (ShouldHaveAddress(PosAngleType) && Address == 0) return false;
             switch (PosAngleType)
@@ -1412,7 +1412,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Hybrid:
                     return PosAngle1.SetX(value);
                 case PositionAngleTypeEnum.Functions:
-                    return Setters[0](value);
+                    return Setters[0](value, setManually);
                 case PositionAngleTypeEnum.Pos:
                     ThisX = value;
                     return true;
@@ -1434,7 +1434,7 @@ namespace STROOP.Utilities
             }
         }
 
-        public bool SetY(double value)
+        public bool SetY(double value, bool setManually = false)
         {
             if (ShouldHaveAddress(PosAngleType) && Address == 0) return false;
             switch (PosAngleType)
@@ -1526,7 +1526,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Hybrid:
                     return PosAngle1.SetY(value);
                 case PositionAngleTypeEnum.Functions:
-                    return Setters[1](value);
+                    return Setters[1](value, setManually);
                 case PositionAngleTypeEnum.Pos:
                     ThisY = value;
                     return true;
@@ -1548,7 +1548,7 @@ namespace STROOP.Utilities
             }
         }
 
-        public bool SetZ(double value)
+        public bool SetZ(double value, bool setManually = false)
         {
             if (ShouldHaveAddress(PosAngleType) && Address == 0) return false;
             switch (PosAngleType)
@@ -1640,7 +1640,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Hybrid:
                     return PosAngle1.SetZ(value);
                 case PositionAngleTypeEnum.Functions:
-                    return Setters[2](value);
+                    return Setters[2](value, setManually);
                 case PositionAngleTypeEnum.Pos:
                     ThisZ = value;
                     return true;
@@ -1662,7 +1662,7 @@ namespace STROOP.Utilities
             }
         }
 
-        public bool SetAngle(double value)
+        public bool SetAngle(double value, bool setManually = false)
         {
             if (ShouldHaveAddress(PosAngleType) && Address == 0) return false;
             ushort valueUShort = MoreMath.NormalizeAngleUshort(value);
@@ -1756,7 +1756,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Hybrid:
                     return PosAngle2.SetAngle(value);
                 case PositionAngleTypeEnum.Functions:
-                    if (Setters.Count >= 4) return Setters[3](value);
+                    if (Setters.Count >= 4) return Setters[3](value, setManually);
                     return false;
                 case PositionAngleTypeEnum.Pos:
                     ThisAngle = value;
@@ -1926,13 +1926,13 @@ namespace STROOP.Utilities
             }
         }
 
-        public bool SetValues(double? x = null, double? y = null, double? z = null, double? angle = null)
+        public bool SetValues(double? x = null, double? y = null, double? z = null, double? angle = null, bool setManually = false)
         {
             bool success = true;
-            if (x.HasValue) success &= SetX(x.Value);
-            if (y.HasValue) success &= SetY(y.Value);
-            if (z.HasValue) success &= SetZ(z.Value);
-            if (angle.HasValue) success &= SetAngle(angle.Value);
+            if (x.HasValue) success &= SetX(x.Value, setManually);
+            if (y.HasValue) success &= SetY(y.Value, setManually);
+            if (z.HasValue) success &= SetZ(z.Value, setManually);
+            if (angle.HasValue) success &= SetAngle(angle.Value, setManually);
             return success;
         }
 
@@ -2033,9 +2033,8 @@ namespace STROOP.Utilities
             return KeyboardUtilities.IsCtrlHeld();
         }
 
-        public static bool SetDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
+        public static bool SetDistance(PositionAngle p1, PositionAngle p2, double distance, bool toggle)
         {
-            bool toggle = toggleNullable ?? GetToggle();
             if (!toggle)
             {
                 (double x, double y, double z) = MoreMath.ExtrapolateLine3D(p1.X, p1.Y, p1.Z, p2.X, p2.Y, p2.Z, distance);
@@ -2048,9 +2047,8 @@ namespace STROOP.Utilities
             }
         }
 
-        public static bool SetHDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
+        public static bool SetHDistance(PositionAngle p1, PositionAngle p2, double distance, bool toggle)
         {
-            bool toggle = toggleNullable ?? GetToggle();
             if (!toggle)
             {
                 (double x, double z) = MoreMath.ExtrapolateLine2D(p1.X, p1.Z, p2.X, p2.Z, distance);
@@ -2063,9 +2061,8 @@ namespace STROOP.Utilities
             }
         }
 
-        public static bool SetXDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
+        public static bool SetXDistance(PositionAngle p1, PositionAngle p2, double distance, bool toggle)
         {
-            bool toggle = toggleNullable ?? GetToggle();
             if (!toggle)
             {
                 double x = p1.X + distance;
@@ -2078,9 +2075,8 @@ namespace STROOP.Utilities
             }
         }
 
-        public static bool SetYDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
+        public static bool SetYDistance(PositionAngle p1, PositionAngle p2, double distance, bool toggle)
         {
-            bool toggle = toggleNullable ?? GetToggle();
             if (!toggle)
             {
                 double y = p1.Y + distance;
@@ -2093,9 +2089,8 @@ namespace STROOP.Utilities
             }
         }
 
-        public static bool SetZDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
+        public static bool SetZDistance(PositionAngle p1, PositionAngle p2, double distance, bool toggle)
         {
-            bool toggle = toggleNullable ?? GetToggle();
             if (!toggle)
             {
                 double z = p1.Z + distance;
@@ -2108,9 +2103,8 @@ namespace STROOP.Utilities
             }
         }
 
-        public static bool SetFDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
+        public static bool SetFDistance(PositionAngle p1, PositionAngle p2, double distance, bool toggle)
         {
-            bool toggle = toggleNullable ?? GetToggle();
             if (!toggle)
             {
                 (double x, double z) =
@@ -2127,9 +2121,8 @@ namespace STROOP.Utilities
             }
         }
 
-        public static bool SetSDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
+        public static bool SetSDistance(PositionAngle p1, PositionAngle p2, double distance, bool toggle)
         {
-            bool toggle = toggleNullable ?? GetToggle();
             if (!toggle)
             {
                 (double x, double z) =
@@ -2146,9 +2139,8 @@ namespace STROOP.Utilities
             }
         }
 
-        public static bool SetAngleTo(PositionAngle p1, PositionAngle p2, double angle, bool? toggleNullable = null)
+        public static bool SetAngleTo(PositionAngle p1, PositionAngle p2, double angle, bool toggle)
         {
-            bool toggle = toggleNullable ?? GetToggle();
             if (!toggle)
             {
                 (double x, double z) = 
@@ -2165,9 +2157,8 @@ namespace STROOP.Utilities
             }
         }
 
-        public static bool SetDAngleTo(PositionAngle p1, PositionAngle p2, double angleDiff, bool? toggleNullable = null)
+        public static bool SetDAngleTo(PositionAngle p1, PositionAngle p2, double angleDiff, bool toggle)
         {
-            bool toggle = toggleNullable ?? GetToggle();
             if (!toggle)
             {
                 double currentAngle = MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
@@ -2184,9 +2175,8 @@ namespace STROOP.Utilities
             }
         }
 
-        public static bool SetAngleDifference(PositionAngle p1, PositionAngle p2, double angleDiff, bool? toggleNullable = null)
+        public static bool SetAngleDifference(PositionAngle p1, PositionAngle p2, double angleDiff, bool toggle)
         {
-            bool toggle = toggleNullable ?? GetToggle();
             if (!toggle)
             {
                 double newAngle = p2.Angle + angleDiff;

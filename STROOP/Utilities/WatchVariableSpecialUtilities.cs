@@ -299,7 +299,7 @@ namespace STROOP.Structs
                     },
                     (double dist, bool setManually, uint dummy) =>
                     {
-                        return PositionAngle.SetDistance(p1, p2, dist);
+                        return PositionAngle.SetDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually));
                     }));
             }
             else
@@ -337,7 +337,7 @@ namespace STROOP.Structs
                     },
                     (double dist, bool setManually, uint dummy) =>
                     {
-                        return PositionAngle.SetHDistance(p1, p2, dist);
+                        return PositionAngle.SetHDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually));
                     }));
             }
             _numDistanceMathOperationEntries++;
@@ -806,23 +806,23 @@ namespace STROOP.Structs
                             (PositionAngle p1, PositionAngle p2) => PositionAngle.GetFDistance(p1, p2),
                             (PositionAngle p1, PositionAngle p2) => PositionAngle.GetSDistance(p1, p2),
                         };
-                    List<Func<PositionAngle, PositionAngle, double, bool>> distSetters =
-                        new List<Func<PositionAngle, PositionAngle, double, bool>>()
+                    List<Func<PositionAngle, PositionAngle, double, bool, bool>> distSetters =
+                        new List<Func<PositionAngle, PositionAngle, double, bool, bool>>()
                         {
-                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetXDistance(p1, p2, dist),
-                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetYDistance(p1, p2, dist),
-                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetZDistance(p1, p2, dist),
-                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetHDistance(p1, p2, dist),
-                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetDistance(p1, p2, dist),
-                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetFDistance(p1, p2, dist),
-                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetSDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetXDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetYDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetZDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetHDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetFDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
+                            (PositionAngle p1, PositionAngle p2, double dist, bool setManually) => PositionAngle.SetSDistance(p1, p2, dist, KeyboardUtilities.GetToggle(setManually)),
                         };
 
                     for (int k = 0; k < distTypes.Count; k++)
                     {
                         string distType = distTypes[k];
                         Func<PositionAngle, PositionAngle, double> getter = distGetters[k];
-                        Func<PositionAngle, PositionAngle, double, bool> setter = distSetters[k];
+                        Func<PositionAngle, PositionAngle, double, bool, bool> setter = distSetters[k];
 
                         _dictionary.Add(String.Format("{0}Dist{1}To{2}", distType, string1, string2),
                             ((uint address) =>
@@ -831,7 +831,7 @@ namespace STROOP.Structs
                             },
                             (double dist, bool setManually, uint address) =>
                             {
-                                return setter(func1(address), func2(address), dist);
+                                return setter(func1(address), func2(address), dist, KeyboardUtilities.GetToggle(setManually));
                             }));
                     }
 
@@ -842,7 +842,7 @@ namespace STROOP.Structs
                         },
                         (double angle, bool setManually, uint address) =>
                         {
-                            return PositionAngle.SetAngleTo(func1(address), func2(address), angle);
+                            return PositionAngle.SetAngleTo(func1(address), func2(address), angle, KeyboardUtilities.GetToggle(setManually));
                         }));
 
                     _dictionary.Add(String.Format("DAngle{0}To{1}", string1, string2),
@@ -852,7 +852,7 @@ namespace STROOP.Structs
                         },
                         (double angleDiff, bool setManually, uint address) =>
                         {
-                            return PositionAngle.SetDAngleTo(func1(address), func2(address), angleDiff);
+                            return PositionAngle.SetDAngleTo(func1(address), func2(address), angleDiff, KeyboardUtilities.GetToggle(setManually));
                         }));
 
                     _dictionary.Add(String.Format("AngleDiff{0}To{1}", string1, string2),
@@ -862,7 +862,7 @@ namespace STROOP.Structs
                         },
                         (double angleDiff, bool setManually, uint address) =>
                         {
-                            return PositionAngle.SetAngleDifference(func1(address), func2(address), angleDiff);
+                            return PositionAngle.SetAngleDifference(func1(address), func2(address), angleDiff, KeyboardUtilities.GetToggle(setManually));
                         }));
                 }
             }
@@ -976,8 +976,8 @@ namespace STROOP.Structs
                     PositionAngle objPA = PositionAngle.Obj(objAddress);
 
                     return BoolUtilities.Combine(
-                        PositionAngle.SetHDistance(objPA, marioPA, distAway),
-                        PositionAngle.SetHDistance(objPA, marioObjPA, distAway));
+                        PositionAngle.SetHDistance(objPA, marioPA, distAway, KeyboardUtilities.GetToggle(setManually)),
+                        PositionAngle.SetHDistance(objPA, marioObjPA, distAway, KeyboardUtilities.GetToggle(setManually)));
                 }
             ));
 
@@ -1017,8 +1017,8 @@ namespace STROOP.Structs
                     PositionAngle objPA = PositionAngle.Obj(objAddress);
 
                     return BoolUtilities.Combine(
-                        PositionAngle.SetYDistance(objPA, marioPA, deltaY),
-                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY));
+                        PositionAngle.SetYDistance(objPA, marioPA, deltaY, KeyboardUtilities.GetToggle(setManually)),
+                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY, KeyboardUtilities.GetToggle(setManually)));
                 }));
 
             _dictionary.Add("MarioHitboxBelowObject",
@@ -1059,8 +1059,8 @@ namespace STROOP.Structs
                     PositionAngle objPA = PositionAngle.Obj(objAddress);
 
                     return BoolUtilities.Combine(
-                        PositionAngle.SetYDistance(objPA, marioPA, deltaY),
-                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY));
+                        PositionAngle.SetYDistance(objPA, marioPA, deltaY, KeyboardUtilities.GetToggle(setManually)),
+                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY, KeyboardUtilities.GetToggle(setManually)));
                 }
             ));
 
@@ -1106,8 +1106,8 @@ namespace STROOP.Structs
                     PositionAngle objPA = PositionAngle.Obj(objAddress);
 
                     return BoolUtilities.Combine(
-                        PositionAngle.SetHDistance(objPA, marioPA, distAway),
-                        PositionAngle.SetHDistance(objPA, marioObjPA, distAway));
+                        PositionAngle.SetHDistance(objPA, marioPA, distAway, KeyboardUtilities.GetToggle(setManually)),
+                        PositionAngle.SetHDistance(objPA, marioObjPA, distAway, KeyboardUtilities.GetToggle(setManually)));
                 }
             ));
 
@@ -1146,8 +1146,8 @@ namespace STROOP.Structs
                     PositionAngle objPA = PositionAngle.Obj(objAddress);
 
                     return BoolUtilities.Combine(
-                        PositionAngle.SetYDistance(objPA, marioPA, deltaY),
-                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY));
+                        PositionAngle.SetYDistance(objPA, marioPA, deltaY, KeyboardUtilities.GetToggle(setManually)),
+                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY, KeyboardUtilities.GetToggle(setManually)));
                 }
             ));
 
@@ -1189,8 +1189,8 @@ namespace STROOP.Structs
                     PositionAngle objPA = PositionAngle.Obj(objAddress);
 
                     return BoolUtilities.Combine(
-                        PositionAngle.SetYDistance(objPA, marioPA, deltaY),
-                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY));
+                        PositionAngle.SetYDistance(objPA, marioPA, deltaY, KeyboardUtilities.GetToggle(setManually)),
+                        PositionAngle.SetYDistance(objPA, marioObjPA, deltaY, KeyboardUtilities.GetToggle(setManually)));
                 }
             ));
 

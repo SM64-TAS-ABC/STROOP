@@ -60,7 +60,7 @@ namespace STROOP.Script
                 {
                     string name = outputItems[i];
                     string value = outputItems[i + 1];
-                    Config.ScriptManager.SetVariableValueByName(name, value);
+                    Config.ScriptManager.SetVariableValueByName(name, value, false);
                 }
             }
 
