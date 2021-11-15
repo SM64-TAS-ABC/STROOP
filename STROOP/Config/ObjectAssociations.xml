@@ -541,22 +541,22 @@
     <MapImage path="Warp Pipe Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="short" offset="0x188" base="Object">Destination</Data>
   </Object>
-  <Object behaviorScriptAddress="0x130007DC" name="White Puff" gfxIdUS="0x800F9298">
+  <Object behaviorScriptAddress="0x130007DC" name="White Puff" gfxIdUS="0x800F9298" gfxIdJP="0x800F6418">
     <SpawnCode gfxId="0x8E"/>
     <Image path="White Puff.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130007DC" name="Sand / Dirt" gfxIdUS="0x800F9148">
+  <Object behaviorScriptAddress="0x130007DC" name="Sand / Dirt" gfxIdUS="0x800F9148" gfxIdJP="0x800F62C8">
     <SpawnCode gfxId="0x9F"/>
     <Image path="Dirt.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130007DC" name="Snow" gfxIdUS="0x800F9328">
+  <Object behaviorScriptAddress="0x130007DC" name="Snow" gfxIdUS="0x800F9328" gfxIdJP="0x800F64A8">
     <SpawnCode gfxId="0x9E"/>
     <Image path="Snow.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130007DC" name="Bubble" gfxIdUS="0x800F874C">
+  <Object behaviorScriptAddress="0x130007DC" name="Bubble" gfxIdUS="0x800F874C" gfxIdJP="0x800F6418">
     <Image path="Bubble.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x130007DC" name="Pebble Particle" gfxIdUS="0x800F9280">
+  <Object behaviorScriptAddress="0x130007DC" name="Pebble Particle" gfxIdUS="0x800F9280" gfxId="0x800F62C8">
     <Image path="Pebble.png"/>
   </Object>
   <Object behaviorScriptAddress="0x130007DC" name="White Puff / Sand / Dirt / Snow / Bubble">
