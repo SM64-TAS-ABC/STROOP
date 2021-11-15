@@ -22,11 +22,39 @@ namespace STROOP.Structs
         {
             get
             {
-                return GfxIdUS;
+                switch (RomVersionConfig.Version)
+                {
+                    case RomVersion.US:
+                        return GfxIdUS;
+                    case RomVersion.JP:
+                        return GfxIdJP ?? GfxIdUS; // TODO: Fix once gfx ids are set
+                    case RomVersion.SH:
+                        return GfxIdSH ?? GfxIdUS; // TODO: Fix once gfx ids are set
+                    case RomVersion.EU:
+                        return GfxIdEU ?? GfxIdUS; // TODO: Fix once gfx ids are set
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
             set
             {
-                GfxIdUS = value;
+                switch (RomVersionConfig.Version)
+                {
+                    case RomVersion.US:
+                        GfxIdUS = value;
+                        break;
+                    case RomVersion.JP:
+                        GfxIdJP = value;
+                        break;
+                    case RomVersion.SH:
+                        GfxIdSH = value;
+                        break;
+                    case RomVersion.EU:
+                        GfxIdEU = value;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
         }
 
