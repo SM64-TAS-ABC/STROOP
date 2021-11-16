@@ -83,7 +83,7 @@ namespace STROOP.Map
 
                 // Draw quad
                 byte opacityByte = OpacityByte;
-                if (this == hoverData?.MapObject && hoverData?.Tri == wallData.Tri)
+                if (this == hoverData?.MapObject && hoverData?.Tri == wallData.Tri && !hoverData.Index.HasValue)
                 {
                     opacityByte = MapUtilities.GetHoverOpacityByte();
                 }
@@ -217,14 +217,16 @@ namespace STROOP.Map
 
                 if (_customImage != null)
                 {
-                    foreach (var quad in quadsForControl)
+                    for (int i = 0; i < quadsForControl.Count; i++)
                     {
-                        foreach (var vertex in quad)
+                        var quad = quadsForControl[i];
+                        for (int j = 0; j < quad.Count; j++)
                         {
+                            var vertex = quad[j];
                             PointF point = new PointF(vertex.x, vertex.z);
                             SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _iconSize, Scales);
                             double opacity = 1;
-                            if (this == hoverData?.MapObject)
+                            if (this == hoverData?.MapObject && hoverData?.Tri == wallData.Tri && i == hoverData?.Index && j == hoverData?.Index2)
                             {
                                 opacity = MapUtilities.GetHoverOpacity();
                             }
@@ -452,8 +454,23 @@ namespace STROOP.Map
                     quads.ConvertAll(quad => quad.ConvertAll(
                         vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z)));
 
-                foreach (List<(float x, float z)> quadForControl in quadsForControl)
+                for (int j = 0; j < quadsForControl.Count; j++)
                 {
+                    List<(float x, float z)> quadForControl = quadsForControl[j];
+                    if (_customImage != null)
+                    {
+                        for (int k = 0; k < quadForControl.Count; k++)
+                        {
+                            var vertex = quadForControl[k];
+                            double dist = MoreMath.GetDistanceBetween(vertex.x, vertex.z, relPos.X, relPos.Y);
+                            double radius = Scales ? _iconSize * Config.CurrentMapGraphics.MapViewScaleValue : _iconSize;
+                            if (dist <= radius)
+                            {
+                                (float x, float z) = MapUtilities.ConvertCoordsForInGame(vertex.x, vertex.z);
+                                return new MapObjectHoverData(this, x, 0, z, tri: wallData.Tri, index: j, index2: k);
+                            }
+                        }
+                    }
                     if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y))
                     {
                         return new MapObjectHoverData(
