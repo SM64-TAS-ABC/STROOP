@@ -665,7 +665,7 @@ namespace STROOP.Map
                 foreach ((float x, float z, Color color, TriangleDataModel tri) in vertexList)
                 {
                     byte opacityByte = OpacityByte;
-                    if (this == hoverData?.MapObject && tri.Address == hoverData?.Tri?.Address && !hoverData.Index.HasValue)
+                    if (this == hoverData?.MapObject && tri.Address == hoverData?.Tri?.Address && !hoverData.Index2.HasValue)
                     {
                         opacityByte = MapUtilities.GetHoverOpacityByte();
                     }
@@ -701,7 +701,7 @@ namespace STROOP.Map
                         PointF point = new PointF(vertex.x, vertex.z);
                         SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _iconSize, Scales);
                         double opacity = 1;
-                        if (this == hoverData?.MapObject && vertex.tri.Address == hoverData?.Tri?.Address && i == hoverData.Index)
+                        if (this == hoverData?.MapObject && vertex.tri.Address == hoverData?.Tri?.Address && i == hoverData.Index2)
                         {
                             opacity = MapUtilities.GetHoverOpacity();
                         }
@@ -900,7 +900,7 @@ namespace STROOP.Map
                             {
                                 TriangleDataModel tri = tris[i];
                                 (int x, int y, int z) = j == 0 ? tri.GetP1() : j == 1 ? tri.GetP2() : tri.GetP3();
-                                return new MapObjectHoverData(this, x, y, z, tri: tri, index: j, info: string.Format("V{0}", j + 1));
+                                return new MapObjectHoverData(this, x, y, z, tri: tri, index: i, index2: j, info: string.Format("V{0}", j + 1));
                             }
                         }
                     }
@@ -931,6 +931,12 @@ namespace STROOP.Map
                 List<double> midpointValues = new List<double>() { hoverData.X, hoverData.Z };
                 ToolStripMenuItem copyMidpointItem = MapUtilities.CreateCopyItem(midpointValues, "Midpoint");
                 output.Insert(1, copyMidpointItem);
+            }
+            else if (hoverData.Index2.HasValue)
+            {
+                List<double> position = new List<double>() { hoverData.X, hoverData.Y, hoverData.Z };
+                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(position, "Position");
+                output.Insert(0, copyPositionItem);
             }
             else
             {
