@@ -691,6 +691,24 @@ namespace STROOP.Map
                 }
             }
 
+            if (_customImage != null)
+            {
+                foreach (var vertexList in vertexListsForControl)
+                {
+                    foreach (var vertex in vertexList)
+                    {
+                        PointF point = new PointF(vertex.x, vertex.z);
+                        SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _iconSize, Scales);
+                        double opacity = 1;
+                        if (this == hoverData?.MapObject)
+                        {
+                            opacity = MapUtilities.GetHoverOpacity();
+                        }
+                        MapUtilities.DrawTexture(_customImageTex.Value, point, size, 0, opacity);
+                    }
+                }
+            }
+
             GL.Color4(1, 1, 1, 1.0f);
         }
 
