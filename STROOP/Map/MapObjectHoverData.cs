@@ -120,10 +120,7 @@ namespace STROOP.Map
             {
                 parts.Add(string.Format("({0},{1})", HandleRounding(X), HandleRounding(Z)));
             }
-            if (Info != null)
-            {
-                parts.Add(Info);
-            }
+            if (Info != null) parts.Add(Info);
             return string.Join(" ", parts);
         }
 
