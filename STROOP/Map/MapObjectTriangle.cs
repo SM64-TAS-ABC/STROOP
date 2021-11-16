@@ -665,7 +665,7 @@ namespace STROOP.Map
                 foreach ((float x, float z, Color color, TriangleDataModel tri) in vertexList)
                 {
                     byte opacityByte = OpacityByte;
-                    if (this == hoverData?.MapObject && tri.Address == hoverData?.Tri?.Address)
+                    if (this == hoverData?.MapObject && tri.Address == hoverData?.Tri?.Address && !hoverData.Index.HasValue)
                     {
                         opacityByte = MapUtilities.GetHoverOpacityByte();
                     }
@@ -695,12 +695,13 @@ namespace STROOP.Map
             {
                 foreach (var vertexList in vertexListsForControl)
                 {
-                    foreach (var vertex in vertexList)
+                    for (int i = 0; i < vertexList.Count; i++)
                     {
+                        var vertex = vertexList[i];
                         PointF point = new PointF(vertex.x, vertex.z);
                         SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _iconSize, Scales);
                         double opacity = 1;
-                        if (this == hoverData?.MapObject)
+                        if (this == hoverData?.MapObject && vertex.tri.Address == hoverData?.Tri?.Address && i == hoverData.Index)
                         {
                             opacity = MapUtilities.GetHoverOpacity();
                         }
@@ -885,7 +886,25 @@ namespace STROOP.Map
                     .ConvertAll(tri => tri.Get3DVertices())
                     .ConvertAll(vertices => vertices.ConvertAll(
                         vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z)));
-
+                if (_customImage != null)
+                {
+                    for (int i = trisForControl.Count - 1; i >= 0; i--)
+                    {
+                        var triForControl = trisForControl[i];
+                        for (int j = 0; j < triForControl.Count; j++)
+                        {
+                            var vertex = triForControl[j];
+                            double dist = MoreMath.GetDistanceBetween(vertex.x, vertex.z, relPos.X, relPos.Y);
+                            double radius = Scales ? _iconSize * Config.CurrentMapGraphics.MapViewScaleValue : _iconSize;
+                            if (dist <= radius)
+                            {
+                                TriangleDataModel tri = tris[i];
+                                (int x, int y, int z) = j == 0 ? tri.GetP1() : j == 1 ? tri.GetP2() : tri.GetP3();
+                                return new MapObjectHoverData(this, x, y, z, tri: tri, index: j);
+                            }
+                        }
+                    }
+                }
                 for (int i = trisForControl.Count - 1; i >= 0; i--)
                 {
                     var triForControl = trisForControl[i];
