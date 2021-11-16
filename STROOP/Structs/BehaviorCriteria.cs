@@ -111,9 +111,13 @@ namespace STROOP.Structs
             return otherCriteria == this;
         }
 
-        public bool BehaviorOnly()
+        public int GetNumFields()
         {
-            return (!GfxId.HasValue && !SubType.HasValue && !Appearance.HasValue && !SpawnObj.HasValue);
+            return
+                (SubType.HasValue ? 1 : 0) +
+                (Appearance.HasValue ? 1 : 0) +
+                (GfxId.HasValue ? 1 : 0) +
+                (SpawnObj.HasValue ? 1 : 0);
         }
 
         public bool CongruentTo(BehaviorCriteria otherCriteria)
@@ -121,13 +125,13 @@ namespace STROOP.Structs
             if (otherCriteria.BehaviorAddress != BehaviorAddress)
                 return false;
 
-            if (GfxId.HasValue && otherCriteria.GfxId.HasValue && GfxId.Value != otherCriteria.GfxId.Value)
-                return false;
-
             if (SubType.HasValue && otherCriteria.SubType.HasValue && SubType.Value != otherCriteria.SubType.Value)
                 return false;
 
             if (Appearance.HasValue && otherCriteria.Appearance.HasValue && Appearance.Value != otherCriteria.Appearance.Value)
+                return false;
+
+            if (GfxId.HasValue && otherCriteria.GfxId.HasValue && GfxId.Value != otherCriteria.GfxId.Value)
                 return false;
 
             if (SpawnObj.HasValue && otherCriteria.SpawnObj.HasValue && SpawnObj.Value != otherCriteria.SpawnObj.Value)
@@ -141,25 +145,29 @@ namespace STROOP.Structs
             if (otherCriteria.BehaviorAddress != BehaviorAddress)
                 return null;
 
-            if (GfxId.HasValue && otherCriteria.GfxId.HasValue && GfxId.Value != otherCriteria.GfxId.Value)
-                return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress};
-
             if (SubType.HasValue && otherCriteria.SubType.HasValue && SubType.Value != otherCriteria.SubType.Value)
-                return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress, GfxId = GfxId};
+                return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress };
 
             if (Appearance.HasValue && otherCriteria.Appearance.HasValue && Appearance.Value != otherCriteria.Appearance.Value)
-                return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress, GfxId = GfxId, SubType = SubType };
+                return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress, SubType = SubType };
+
+            if (GfxId.HasValue && otherCriteria.GfxId.HasValue && GfxId.Value != otherCriteria.GfxId.Value)
+                return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress, SubType = SubType, Appearance = Appearance };
 
             if (SpawnObj.HasValue && otherCriteria.SpawnObj.HasValue && SpawnObj.Value != otherCriteria.SpawnObj.Value)
-                return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress, GfxId = GfxId, SubType = SubType, Appearance = Appearance };
+                return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress, SubType = SubType, Appearance = Appearance, GfxId = GfxId };
 
             return this;
         }
 
         public static bool operator ==(BehaviorCriteria a, BehaviorCriteria b)
         {
-            return (a.BehaviorAddress == b.BehaviorAddress && a.GfxId == b.GfxId
-                && a.SubType == b.SubType && a.Appearance == b.Appearance && a.SpawnObj == b.SpawnObj);
+            return
+                a.BehaviorAddress == b.BehaviorAddress &&
+                a.SubType == b.SubType &&
+                a.Appearance == b.Appearance &&
+                a.GfxId == b.GfxId &&
+                a.SpawnObj == b.SpawnObj;
         }
 
         public static bool operator !=(BehaviorCriteria a, BehaviorCriteria b)

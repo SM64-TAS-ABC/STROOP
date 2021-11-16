@@ -155,10 +155,11 @@ namespace STROOP.Structs
                 return _cachedObjAssoc[behaviorCriteria];
             }
 
-            var possibleAssoc = _objAssoc.Where(objAssoc => objAssoc.MeetsCriteria(behaviorCriteria));
+            List<ObjectBehaviorAssociation> possibleAssoc =
+                _objAssoc.Where(objAssoc => objAssoc.MeetsCriteria(behaviorCriteria)).ToList();
 
-            if (possibleAssoc.Count() > 1 && possibleAssoc.Any(objAssoc => objAssoc.Criteria.BehaviorOnly()))
-                possibleAssoc = possibleAssoc.Where(objAssoc => !objAssoc.Criteria.BehaviorOnly());
+            possibleAssoc = Enumerable.OrderBy(possibleAssoc, assoc => assoc.Criteria.GetNumFields()).ToList();
+            possibleAssoc.Reverse();
 
             var behaviorAssoc = possibleAssoc.FirstOrDefault();
 
