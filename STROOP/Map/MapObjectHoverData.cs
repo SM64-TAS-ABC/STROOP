@@ -70,6 +70,13 @@ namespace STROOP.Map
 
         public static MapObjectHoverData GetMapObjectHoverDataForCursor()
         {
+            (float x, float y, float z)? cursorPosition = GetCursorPosition();
+            if (!cursorPosition.HasValue) return null;
+            return new MapObjectHoverData(null, cursorPosition.Value.x, cursorPosition.Value.y, cursorPosition.Value.z);
+        }
+
+        public static (float x, float y, float z)? GetCursorPosition()
+        {
             Point? relPosMaybe = GetPositionMaybe();
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
@@ -83,24 +90,31 @@ namespace STROOP.Map
                 (inGameX, inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
                 inGameY = 0;
             }
-            return new MapObjectHoverData(null, inGameX, inGameY, inGameZ);
+            return (inGameX, inGameY, inGameZ);
         }
 
         public List<ToolStripItem> GetContextMenuStripItems()
         {
+            List<ToolStripItem> items;
             if (MapObject != null)
             {
-                return MapObject.GetHoverContextMenuStripItems(this);
+                items = MapObject.GetHoverContextMenuStripItems(this);
             }
-
-            List<ToolStripItem> output = new List<ToolStripItem>();
-            List<double> posValues =
-                Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked
-                    ? new List<double>() { X, Y, Z }
-                    : new List<double>() { X, Z };
-            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Clicked Position");
-            output.Insert(0, copyPositionItem);
-            return output;
+            else
+            {
+                items = new List<ToolStripItem>();
+            }
+            (float x, float y, float z)? cursorPosition = GetCursorPosition();
+            if (cursorPosition.HasValue)
+            {
+                List<double> posValues =
+                    Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked
+                        ? new List<double>() { cursorPosition.Value.x, cursorPosition.Value.y, cursorPosition.Value.z }
+                        : new List<double>() { cursorPosition.Value.x, cursorPosition.Value.z };
+                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Clicked Position");
+                items.Add(copyPositionItem);
+            }
+            return items;
         }
 
         public override string ToString()
