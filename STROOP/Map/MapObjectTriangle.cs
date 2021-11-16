@@ -19,15 +19,18 @@ namespace STROOP.Map
     {
         protected bool _showArrows;
         protected bool _useCrossSection;
+        protected float _iconSize;
         private float? _withinDist;
         private float? _withinCenter;
         protected bool _excludeDeathBarriers;
 
         private ToolStripMenuItem _itemShowArrows;
         private ToolStripMenuItem _itemUseCrossSection;
+        private ToolStripMenuItem _itemSetIconSize;
         private ToolStripMenuItem _itemSetWithinDist;
         private ToolStripMenuItem _itemSetWithinCenter;
 
+        private static readonly string SET_ICON_SIZE_TEXT = "Set Icon Size";
         private static readonly string SET_WITHIN_DIST_TEXT = "Set Within Dist";
         private static readonly string SET_WITHIN_CENTER_TEXT = "Set Within Center";
 
@@ -36,6 +39,7 @@ namespace STROOP.Map
         {
             _showArrows = false;
             _useCrossSection = false;
+            _iconSize = 10;
             _withinDist = null;
             _withinCenter = null;
             _excludeDeathBarriers = false;
@@ -708,6 +712,19 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
+            string suffix = string.Format(" ({0})", _iconSize);
+            _itemSetIconSize = new ToolStripMenuItem(SET_ICON_SIZE_TEXT + suffix);
+            _itemSetIconSize.Click += (sender, e) =>
+            {
+                string text = DialogUtilities.GetStringFromDialog(labelText: "Enter icon size.");
+                float? iconSizeNullable = ParsingUtilities.ParseFloatNullable(text);
+                if (!iconSizeNullable.HasValue) return;
+                float iconSize = iconSizeNullable.Value;
+                MapObjectSettings settings = new MapObjectSettings(
+                    changeIconSize: true, newIconSize: iconSize);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
             _itemSetWithinDist = new ToolStripMenuItem(SET_WITHIN_DIST_TEXT);
             _itemSetWithinDist.Click += (sender, e) =>
             {
@@ -753,6 +770,7 @@ namespace STROOP.Map
             {
                 _itemShowArrows,
                 _itemUseCrossSection,
+                _itemSetIconSize,
                 _itemSetWithinDist,
                 itemClearWithinDist,
                 _itemSetWithinCenter,
@@ -774,6 +792,13 @@ namespace STROOP.Map
             {
                 _useCrossSection = settings.NewTriangleUseCrossSection;
                 _itemUseCrossSection.Checked = settings.NewTriangleUseCrossSection;
+            }
+
+            if (settings.ChangeIconSize)
+            {
+                _iconSize = settings.NewIconSize;
+                string suffix = string.Format(" ({0})", settings.NewIconSize);
+                _itemSetIconSize.Text = SET_ICON_SIZE_TEXT + suffix;
             }
 
             if (settings.ChangeTriangleWithinDist)
