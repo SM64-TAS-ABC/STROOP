@@ -900,7 +900,7 @@ namespace STROOP.Map
                             {
                                 TriangleDataModel tri = tris[i];
                                 (int x, int y, int z) = j == 0 ? tri.GetP1() : j == 1 ? tri.GetP2() : tri.GetP3();
-                                return new MapObjectHoverData(this, x, y, z, tri: tri, index: j);
+                                return new MapObjectHoverData(this, x, y, z, tri: tri, index: j, info: string.Format("V{0}", j + 1));
                             }
                         }
                     }

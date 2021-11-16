@@ -586,7 +586,7 @@ namespace STROOP.Map
                             if (dist <= radius)
                             {
                                 (int x, int y, int z) = j == 0 ? vertex.tri.GetP1() : j == 1 ? vertex.tri.GetP2() : vertex.tri.GetP3();
-                                return new MapObjectHoverData(this, x, y, z, tri: vertex.tri, index: i, index2: j);
+                                return new MapObjectHoverData(this, x, y, z, tri: vertex.tri, index: i, index2: j, info: string.Format("V{0}", j + 1));
                             }
                         }
                     }
