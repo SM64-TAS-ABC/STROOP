@@ -563,8 +563,9 @@ namespace STROOP.Map
                     if (MapUtilities.IsWithinShapeForControl(simpleVertexList, relPos.X, relPos.Y))
                     {
                         (float x, float z) inGameMidpoint = GetInGameMidpointFromControlQuad(simpleVertexList);
+                        float y = vertexList[0].tri.GetTruncatedHeightOnTriangle(inGameMidpoint.x, inGameMidpoint.z);
                         return new MapObjectHoverData(
-                            this, inGameMidpoint.x, 0, inGameMidpoint.z, tri: vertexList[0].tri, isTriUnit: true, index: i);
+                            this, inGameMidpoint.x, y, inGameMidpoint.z, tri: vertexList[0].tri, isTriUnit: true, index: i);
                     }
                 }
                 return null;
