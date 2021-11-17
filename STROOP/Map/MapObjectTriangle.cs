@@ -866,15 +866,13 @@ namespace STROOP.Map
                     {
                         TriangleDataModel tri = tris[i][0].data.Tri;
                         double y = tri.GetMidpointY();
-                        string info = null;
                         int? index = null;
                         if (MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits())
                         {
                             y = tris[i].Max(p => p.y);
-                            info = string.Format("y={0}", y);
                             index = i;
                         }
-                        return new MapObjectHoverData(this, tri.GetMidpointX(), y, tri.GetMidpointZ(), tri: tri, index: index, info: info);
+                        return new MapObjectHoverData(this, tri.GetMidpointX(), y, tri.GetMidpointZ(), tri: tri, index: index);
                     }
                 }
                 return null;

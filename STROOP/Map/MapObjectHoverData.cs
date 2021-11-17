@@ -126,7 +126,7 @@ namespace STROOP.Map
             if (IsTriUnit) parts.Add("Unit");
             if (Index.HasValue) parts.Add(Index);
             if (Index2.HasValue) parts.Add(Index2);
-            parts.Add(string.Format("({0},{1},{2})", HandleRounding(X), HandleRounding(Y), HandleRounding(Z)));
+            parts.Add(string.Format("({0}, {1}, {2})", HandleRounding(X), HandleRounding(Y), HandleRounding(Z)));
             if (Info != null) parts.Add(Info);
             return string.Join(" ", parts);
         }
