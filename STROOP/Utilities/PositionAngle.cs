@@ -45,6 +45,7 @@ namespace STROOP.Utilities
             Holp,
             Camera,
             CameraFocus,
+            CameraTarget,
             CamHackCamera,
             CamHackFocus,
             MapCamera,
@@ -226,6 +227,7 @@ namespace STROOP.Utilities
         public static PositionAngle Ghost = new PositionAngle(PositionAngleTypeEnum.Ghost);
         public static PositionAngle Camera = new PositionAngle(PositionAngleTypeEnum.Camera);
         public static PositionAngle CameraFocus = new PositionAngle(PositionAngleTypeEnum.CameraFocus);
+        public static PositionAngle CameraTarget = new PositionAngle(PositionAngleTypeEnum.CameraTarget);
         public static PositionAngle CamHackCamera = new PositionAngle(PositionAngleTypeEnum.CamHackCamera);
         public static PositionAngle CamHackFocus = new PositionAngle(PositionAngleTypeEnum.CamHackFocus);
         public static PositionAngle MapCamera = new PositionAngle(PositionAngleTypeEnum.MapCamera);

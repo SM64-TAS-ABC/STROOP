@@ -12,9 +12,9 @@
   <Data type="float" offset="0x184" base="Camera" coord="X">Camera X</Data>
   <Data type="float" offset="0x188" base="Camera" coord="Y">Camera Y</Data>
   <Data type="float" offset="0x18C" base="Camera" coord="Z">Camera Z</Data>
-  <Data type="float" offset="0x19C" base="Camera" coord="X">Camera Target X</Data>
-  <Data type="float" offset="0x1A0" base="Camera" coord="Y">Camera Target Y</Data>
-  <Data type="float" offset="0x1A4" base="Camera" coord="Z">Camera Target Z</Data>
+  <Data type="float" offset="0x19C" base="Camera" coord="X">Camera Goal X</Data>
+  <Data type="float" offset="0x1A0" base="Camera" coord="Y">Camera Goal Y</Data>
+  <Data type="float" offset="0x1A4" base="Camera" coord="Z">Camera Goal Z</Data>
   <Data type="ushort" offset="0x1C6" base="Camera" subclass="Angle" yaw="true">Camera Yaw</Data>
   <Data type="short" offset="0x1C4" base="Camera" subclass="Angle">Camera Pitch</Data>
   <Data type="ushort" offset="0x258" base="Camera" subclass="Angle" yaw="true">Fixed Cent Angle</Data>
@@ -23,6 +23,9 @@
   <Data type="float" offset="0x178" base="Camera" coord="X">Camera Focus X</Data>
   <Data type="float" offset="0x17C" base="Camera" coord="Y">Camera Focus Y</Data>
   <Data type="float" offset="0x180" base="Camera" coord="Z">Camera Focus Z</Data>
+  <Data type="float" offset="0x190" base="Camera" coord="X">Camera Goal Focus X</Data>
+  <Data type="float" offset="0x194" base="Camera" coord="Y">Camera Goal Focus Y</Data>
+  <Data type="float" offset="0x198" base="Camera" coord="Z">Camera Goal Focus Z</Data>
   <Data type="float" offset="0x25C" base="Camera">Focus Veer Dist</Data>
   <Data type="float" offset="0x1C0" base="Camera">Dist Cam to Focus</Data>
   <Data base="None" specialType="DistMarioToCamera">Dist Cam to Mario</Data>

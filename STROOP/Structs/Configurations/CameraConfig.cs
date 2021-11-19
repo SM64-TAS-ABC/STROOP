@@ -14,12 +14,22 @@ namespace STROOP.Structs.Configurations
         public static readonly uint StructAddressSH = 0x8031EC78;
         public static readonly uint StructAddressEU = 0x8030A7E0;
 
-        public static readonly uint XOffset = 0x184;
-        public static readonly uint YOffset = 0x188;
-        public static readonly uint ZOffset = 0x18C;
         public static readonly uint FocusXOffset = 0x178;
         public static readonly uint FocusYOffset = 0x17C;
         public static readonly uint FocusZOffset = 0x180;
+
+        public static readonly uint XOffset = 0x184;
+        public static readonly uint YOffset = 0x188;
+        public static readonly uint ZOffset = 0x18C;
+
+        public static readonly uint GoalFocusXOffset = 0x190;
+        public static readonly uint GoalFocusYOffset = 0x194;
+        public static readonly uint GoalFocusZOffset = 0x198;
+
+        public static readonly uint GoalXOffset = 0x19C;
+        public static readonly uint GoalYOffset = 0x1A0;
+        public static readonly uint GoalZOffset = 0x1A4;
+
         public static readonly uint FacingYawOffset = 0x1C6;
         public static readonly uint FacingPitchOffset = 0x1C4;
         public static readonly uint FacingRollOffset = 0x1C8;
