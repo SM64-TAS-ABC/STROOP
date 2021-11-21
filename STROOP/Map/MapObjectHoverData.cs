@@ -88,7 +88,7 @@ namespace STROOP.Map
             else
             {
                 (inGameX, inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
-                inGameY = 0;
+                inGameY = Config.CurrentMapGraphics.MapViewCenterYValue;
             }
             return (inGameX, inGameY, inGameZ);
         }
@@ -107,12 +107,13 @@ namespace STROOP.Map
             (float x, float y, float z)? cursorPosition = GetCursorPosition();
             if (cursorPosition.HasValue)
             {
-                List<double> posValues =
-                    Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked
-                        ? new List<double>() { cursorPosition.Value.x, cursorPosition.Value.y, cursorPosition.Value.z }
-                        : new List<double>() { cursorPosition.Value.x, cursorPosition.Value.z };
-                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Clicked Position");
-                items.Add(copyPositionItem);
+                List<double> posValuesXZ = new List<double>() { cursorPosition.Value.x, cursorPosition.Value.z };
+                ToolStripMenuItem copyPositionXZItem = MapUtilities.CreateCopyItem(posValuesXZ, "Clicked Position XZ");
+                items.Add(copyPositionXZItem);
+
+                List<double> posValuesXYZ = new List<double>() { cursorPosition.Value.x, cursorPosition.Value.y, cursorPosition.Value.z };
+                ToolStripMenuItem copyPositionXYZItem = MapUtilities.CreateCopyItem(posValuesXYZ, "Clicked Position XYZ");
+                items.Add(copyPositionXYZItem);
             }
             return items;
         }
