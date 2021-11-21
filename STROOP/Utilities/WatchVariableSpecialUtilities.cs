@@ -5744,8 +5744,8 @@ namespace STROOP.Structs
 
         public static uint GetWarpNodesAddress()
         {
-            uint gAreas = Config.Stream.GetUInt(0x8032DDC8);
-            short currentAreaIndex = Config.Stream.GetShort(0x8033BACA);
+            uint gAreas = Config.Stream.GetUInt(RomVersionConfig.SwitchMap(0x8032DDC8, 0x8032CE68));
+            short currentAreaIndex = Config.Stream.GetShort(RomVersionConfig.SwitchMap(0x8033BACA, 0x8033A75A));
             uint warpNodesAddress = Config.Stream.GetUInt(gAreas + (uint)currentAreaIndex * AreaConfig.AreaStructSize + 0x14);
             return warpNodesAddress;
         }

@@ -159,8 +159,8 @@ namespace STROOP.Managers
 
         public void HookUpTeleporters()
         {
-            uint mainSegmentEnd = 0x80367460;
-            uint engineSegmentStart = 0x80378800;
+            uint mainSegmentEnd = RomVersionConfig.SwitchMap(0x80367460, 0x803660F0);
+            uint engineSegmentStart = RomVersionConfig.SwitchMap(0x80378800, 0x80378800);
 
             uint lastWarpNodeAddress = WatchVariableSpecialUtilities.GetWarpNodeAddresses().LastOrDefault();
             if (lastWarpNodeAddress == 0) return;
