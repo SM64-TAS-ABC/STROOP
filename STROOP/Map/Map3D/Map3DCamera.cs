@@ -13,7 +13,7 @@ namespace STROOP.Map.Map3D
     {
         public Vector3 Position { get; set; }
 
-        public float[] ZRegions = { 0.1f, 0x80, 0x8000 };
+        public float[] ZRegions = { 0.1f, 0x80, 1_000_000 };
 
         public int ZRegionCount => ZRegions.Length - 1;
 
