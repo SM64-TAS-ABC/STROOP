@@ -107,6 +107,11 @@ namespace STROOP.Map
             (float x, float y, float z)? cursorPosition = GetCursorPosition();
             if (cursorPosition.HasValue)
             {
+                if (items.Count > 0)
+                {
+                    items.Add(new ToolStripSeparator());
+                }
+
                 List<double> posValuesXZ = new List<double>() { cursorPosition.Value.x, cursorPosition.Value.z };
                 ToolStripMenuItem copyPositionXZItem = MapUtilities.CreateCopyItem(posValuesXZ, "Clicked Position XZ");
                 items.Add(copyPositionXZItem);
