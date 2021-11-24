@@ -286,6 +286,7 @@ namespace STROOP
                 checkBoxMapOptionsEnablePuView = checkBoxMapOptionsEnablePuView,
                 checkBoxMapOptionsReverseDragging = checkBoxMapOptionsReverseDragging,
                 checkBoxMapOptionsSelectionMode = checkBoxMapOptionsSelectionMode,
+                checkBoxMapOptionsObjectDrag = checkBoxMapOptionsObjectDrag,
 
                 labelMapOptionsGlobalIconSize = labelMapOptionsGlobalIconSize,
                 textBoxMapOptionsGlobalIconSize = textBoxMapOptionsGlobalIconSize,
