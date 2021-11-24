@@ -169,7 +169,7 @@ namespace STROOP.Map
             }
             else
             {
-                Size = (float)(Scales ? dist : dist * Config.CurrentMapGraphics.MapViewScaleValue);
+                GetParentMapTracker().SetSize((float)(Scales ? dist : dist * Config.CurrentMapGraphics.MapViewScaleValue));
             }
             SetYaw(angle);
         }

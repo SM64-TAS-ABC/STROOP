@@ -48,7 +48,7 @@ namespace STROOP.Map
 
         protected override void SetRecommendedSize(double size)
         {
-            Size = (float)(Scales ? size : size * Config.CurrentMapGraphics.MapViewScaleValue);
+            GetParentMapTracker().SetSize((float)(Scales ? size : size * Config.CurrentMapGraphics.MapViewScaleValue));
         }
 
         protected override void SetYaw(double yaw)
