@@ -616,6 +616,12 @@ namespace STROOP.Map
         private float _rotateStartYaw = 0;
         private float _rotateStartPitch = 0;
 
+        private MapObjectHoverData _draggedObject = null;
+        private int _objectDragStartMouseX = 0;
+        private int _objectDragStartMouseY = 0;
+        private float _objectDragStartX = 0;
+        private float _objectDragStartZ = 0;
+
         private void OnMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (Config.MapManager.NumDrawingsEnabled > 0)
@@ -623,6 +629,24 @@ namespace STROOP.Map
                 Config.MapGui.flowLayoutPanelMapTrackers.NotifyMouseEvent(
                     MouseEvent.MouseDown, e.Button == MouseButtons.Left, e.X, e.Y);
                 return;
+            }
+
+            if (Config.MapGui.checkBoxMapOptionsObjectDrag.Checked)
+            {
+                if (Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData != null)
+                {
+                    _draggedObject = Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData;
+                    var dragPosStart = _draggedObject.GetPosition();
+                    if (dragPosStart.HasValue)
+                    {
+                        _draggedObject = Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData;
+                        _objectDragStartMouseX = e.X;
+                        _objectDragStartMouseY = e.Y;
+                        _objectDragStartX = (float)dragPosStart.Value.x;
+                        _objectDragStartZ = (float)dragPosStart.Value.z;
+                    }
+                    return;
+                }
             }
 
             MouseButtons button = MapUtilities.GetMouseButton(e);
@@ -655,6 +679,12 @@ namespace STROOP.Map
                 return;
             }
 
+            if (_draggedObject != null)
+            {
+                _draggedObject = null;
+                return;
+            }
+
             MouseButtons button = MapUtilities.GetMouseButton(e);
             switch (button)
             {
@@ -673,6 +703,21 @@ namespace STROOP.Map
             {
                 Config.MapGui.flowLayoutPanelMapTrackers.NotifyMouseEvent(
                     MouseEvent.MouseMove, e.Button == MouseButtons.Left, e.X, e.Y);
+                return;
+            }
+
+            if (_draggedObject != null)
+            {
+                int pixelDiffX = e.X - _objectDragStartMouseX;
+                int pixelDiffY = e.Y - _objectDragStartMouseY;
+                float unitDiffX = pixelDiffX / MapViewScaleValue;
+                float unitDiffY = pixelDiffY / MapViewScaleValue;
+                (float rotatedX, float rotatedY) = ((float, float))
+                    MoreMath.RotatePointAboutPointAnAngularDistance(
+                        unitDiffX, unitDiffY, 0, 0, MapViewYawValue);
+                float newObjX = _objectDragStartX + rotatedX;
+                float newObjZ = _objectDragStartZ + rotatedY;
+                _draggedObject.SetPosition(x: newObjX, z: newObjZ);
                 return;
             }
 
