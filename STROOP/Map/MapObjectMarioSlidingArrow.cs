@@ -49,11 +49,21 @@ namespace STROOP.Map
             if (!x.HasValue || !z.HasValue) return;
 
             PositionAngle posAngle = GetPositionAngle();
+            double dist = MoreMath.GetDistanceBetween(posAngle.X, posAngle.Z, x.Value, z.Value);
+            double angle = MoreMath.AngleTo_AngleUnits(posAngle.X, posAngle.Z, x.Value, z.Value);
             double xDiff = x.Value - posAngle.X;
             double zDiff = z.Value - posAngle.Z;
 
-            Config.Stream.SetValue((float)xDiff, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-            Config.Stream.SetValue((float)zDiff, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            if (_useRecommendedArrowLength)
+            {
+                Config.Stream.SetValue((float)xDiff, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+                Config.Stream.SetValue((float)zDiff, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            }
+            else
+            {
+                GetParentMapTracker().SetSize((float)(Scales ? dist : dist * Config.CurrentMapGraphics.MapViewScaleValue));
+                WatchVariableSpecialUtilities.SetMarioSlidingAngle(angle);
+            }
         }
 
         protected override void SetRecommendedSize(double size)

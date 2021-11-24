@@ -15,7 +15,7 @@ namespace STROOP.Map
 {
     public abstract class MapObjectArrow : MapObjectLine
     {
-        private bool _useRecommendedArrowLength;
+        protected bool _useRecommendedArrowLength;
         private bool _useTruncatedAngle;
         private float _arrowHeadSideLength;
         private float _angleOffset;
