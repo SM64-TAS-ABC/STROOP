@@ -270,8 +270,6 @@ namespace STROOP.Structs
 
                 // People
                 "pannenkoek2012",
-                "Ethan White",
-                "thestickman391",
                 "plush",
                 "1ted59",
                 "simpleflips",
