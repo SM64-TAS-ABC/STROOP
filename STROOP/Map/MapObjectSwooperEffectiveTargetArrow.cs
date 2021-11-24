@@ -46,6 +46,16 @@ namespace STROOP.Map
             return Config.Stream.GetFloat(_posAngle.GetObjAddress() + ObjectConfig.HSpeedOffset);
         }
 
+        protected override void SetRecommendedSize(double size)
+        {
+            Config.Stream.SetValue((float)size, _posAngle.GetObjAddress() + ObjectConfig.HSpeedOffset);
+        }
+
+        protected override void SetYaw(double yaw)
+        {
+            // do nothing
+        }
+
         public override string GetName()
         {
             return "Swooper Target Arrow for " + _posAngle.GetMapName();

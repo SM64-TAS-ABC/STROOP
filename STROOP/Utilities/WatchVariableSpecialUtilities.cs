@@ -2410,19 +2410,7 @@ namespace STROOP.Structs
                 },
                 (double newHSlidingSpeed, bool allowToggle, uint dummy) =>
                 {
-                    float xSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                    float zSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
-                    if (xSlidingSpeed == 0 && zSlidingSpeed == 0) xSlidingSpeed = 1;
-                    double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
-
-                    double multiplier = newHSlidingSpeed / hSlidingSpeed;
-                    double newXSlidingSpeed = xSlidingSpeed * multiplier;
-                    double newZSlidingSpeed = zSlidingSpeed * multiplier;
-
-                    bool success = true;
-                    success &= Config.Stream.SetValue((float)newXSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                    success &= Config.Stream.SetValue((float)newZSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
-                    return success;
+                    return SetMarioSlidingSpeed(newHSlidingSpeed);
                 }));
 
             _dictionary.Add("SlidingAngle",
@@ -2432,17 +2420,7 @@ namespace STROOP.Structs
                 },
                 (double newHSlidingAngle, bool allowToggle, uint dummy) =>
                 {
-                    float xSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                    float zSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
-                    double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
-
-                    (double newXSlidingSpeed, double newZSlidingSpeed) =
-                        MoreMath.GetComponentsFromVector(hSlidingSpeed, newHSlidingAngle);
-
-                    bool success = true;
-                    success &= Config.Stream.SetValue((float)newXSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                    success &= Config.Stream.SetValue((float)newZSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
-                    return success;
+                    return SetMarioSlidingAngle(newHSlidingAngle);
                 }));
 
             _dictionary.Add("TwirlYawMod2048",
@@ -5178,12 +5156,44 @@ namespace STROOP.Structs
             return hSlidingSpeed;
         }
 
+        public static bool SetMarioSlidingSpeed(double newSlidingSpeed)
+        {
+            float xSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            float zSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            if (xSlidingSpeed == 0 && zSlidingSpeed == 0) xSlidingSpeed = 1;
+            double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
+
+            double multiplier = newSlidingSpeed / hSlidingSpeed;
+            double newXSlidingSpeed = xSlidingSpeed * multiplier;
+            double newZSlidingSpeed = zSlidingSpeed * multiplier;
+
+            bool success = true;
+            success &= Config.Stream.SetValue((float)newXSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            success &= Config.Stream.SetValue((float)newZSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            return success;
+        }
+
         public static double GetMarioSlidingAngle()
         {
             float xSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
             float zSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
             double slidingAngle = MoreMath.AngleTo_AngleUnits(xSlidingSpeed, zSlidingSpeed);
             return slidingAngle;
+        }
+
+        public static bool SetMarioSlidingAngle(double newSlidingAngle)
+        {
+            float xSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            float zSlidingSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
+
+            (double newXSlidingSpeed, double newZSlidingSpeed) =
+                MoreMath.GetComponentsFromVector(hSlidingSpeed, newSlidingAngle);
+
+            bool success = true;
+            success &= Config.Stream.SetValue((float)newXSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            success &= Config.Stream.SetValue((float)newZSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            return success;
         }
 
         // Radius distance utility methods

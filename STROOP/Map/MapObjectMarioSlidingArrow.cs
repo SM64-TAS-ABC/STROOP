@@ -44,6 +44,16 @@ namespace STROOP.Map
             return WatchVariableSpecialUtilities.GetMarioSlidingSpeed();
         }
 
+        protected override void SetRecommendedSize(double size)
+        {
+            WatchVariableSpecialUtilities.SetMarioSlidingSpeed(size);
+        }
+
+        protected override void SetYaw(double yaw)
+        {
+            WatchVariableSpecialUtilities.SetMarioSlidingAngle(yaw);
+        }
+
         public override string GetName()
         {
             return "Mario Sliding Arrow";

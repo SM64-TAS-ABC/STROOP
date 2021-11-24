@@ -50,6 +50,23 @@ namespace STROOP.Map
             return Config.Stream.GetFloat(_posAngle.GetObjAddress() + ObjectConfig.HSpeedOffset);
         }
 
+        protected override void SetRecommendedSize(double size)
+        {
+            Config.Stream.SetValue((float)size, _posAngle.GetObjAddress() + ObjectConfig.HSpeedOffset);
+        }
+
+        protected override void SetYaw(double yaw)
+        {
+            if (_numBytes == 2)
+            {
+                Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(yaw), _posAngle.GetObjAddress() + _yawOffset);
+            }
+            else
+            {
+                Config.Stream.SetValue(ParsingUtilities.ParseInt(yaw), _posAngle.GetObjAddress() + _yawOffset);
+            }
+        }
+
         public override string GetName()
         {
             return "Object Custom Arrow for " + _posAngle.GetMapName();

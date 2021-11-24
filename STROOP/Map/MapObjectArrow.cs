@@ -180,15 +180,9 @@ namespace STROOP.Map
 
         protected abstract double GetRecommendedSize();
 
-        protected virtual void SetRecommendedSize(double size)
-        {
+        protected abstract void SetRecommendedSize(double size);
 
-        }
-
-        protected virtual void SetYaw(double yaw)
-        {
-
-        }
+        protected abstract void SetYaw(double yaw);
 
         public override Image GetInternalImage()
         {

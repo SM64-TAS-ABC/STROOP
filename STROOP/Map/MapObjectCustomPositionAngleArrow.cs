@@ -43,7 +43,17 @@ namespace STROOP.Map
 
         protected override double GetRecommendedSize()
         {
-            return 100;
+            return Size;
+        }
+
+        protected override void SetRecommendedSize(double size)
+        {
+            Size = (float)(Scales ? size : size * Config.CurrentMapGraphics.MapViewScaleValue);
+        }
+
+        protected override void SetYaw(double yaw)
+        {
+            _anglePA.SetAngle(yaw);
         }
 
         public override string GetName()

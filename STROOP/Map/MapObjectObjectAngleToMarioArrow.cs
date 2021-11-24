@@ -44,6 +44,16 @@ namespace STROOP.Map
             return Config.Stream.GetFloat(_posAngle.GetObjAddress() + ObjectConfig.DistanceToMarioOffset);
         }
 
+        protected override void SetRecommendedSize(double size)
+        {
+            Config.Stream.SetValue((float)size, _posAngle.GetObjAddress() + ObjectConfig.DistanceToMarioOffset);
+        }
+
+        protected override void SetYaw(double yaw)
+        {
+            Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(yaw), _posAngle.GetObjAddress() + ObjectConfig.AngleToMarioOffset);
+        }
+
         public override string GetName()
         {
             return "Object Angle to Mario Arrow for " + _posAngle.GetMapName();

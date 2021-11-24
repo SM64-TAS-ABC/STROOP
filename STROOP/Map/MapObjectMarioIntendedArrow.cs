@@ -44,6 +44,16 @@ namespace STROOP.Map
             return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
         }
 
+        protected override void SetRecommendedSize(double size)
+        {
+            Config.Stream.SetValue((float)size, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+        }
+
+        protected override void SetYaw(double yaw)
+        {
+            Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(yaw), MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
+        }
+
         public override string GetName()
         {
             return "Mario Intended Arrow";
