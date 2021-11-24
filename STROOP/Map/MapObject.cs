@@ -181,6 +181,15 @@ namespace STROOP.Map
             return false;
         }
 
+        public void SetPosition(double? x = null, double? y = null, double? z = null)
+        {
+            PositionAngle posAngle = GetPositionAngle();
+            if (posAngle != null)
+            {
+                posAngle.SetValues(x, y, z);
+            }
+        }
+
         public virtual void ApplySettings(MapObjectSettings settings)
         {
             GetContextMenuStrip();

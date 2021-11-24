@@ -178,11 +178,7 @@ namespace STROOP.Map
 
         public void SetPosition(double? x = null, double? y = null, double? z = null)
         {
-            PositionAngle posAngle = MapObject?.GetPositionAngle();
-            if (posAngle != null)
-            {
-                posAngle.SetValues(x, y, z);
-            }
+            MapObject?.SetPosition(x, y, z);
         }
     }
 }
