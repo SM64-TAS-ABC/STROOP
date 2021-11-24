@@ -20,6 +20,7 @@ namespace STROOP.Map
     public class MapTrackerFlowLayoutPanel : NoTearFlowLayoutPanel
     {
         public MapObjectHoverData PreviousHoverData = null;
+        public MapObjectHoverData ObjectDragData = null;
 
         private readonly object _objectLock = new object();
 
@@ -181,6 +182,19 @@ namespace STROOP.Map
                 else
                 {
                     Config.SetDebugText(hoverData);
+                }
+            }
+
+            ObjectDragData = null;
+            if (isMainGraphics &&
+                !Config.MapGui.checkBoxMapOptionsEnable3D.Checked &&
+                Config.MapGui.checkBoxMapOptionsObjectDrag.Checked)
+            {
+                for (int i = listCombined.Count - 1; i >= 0; i--)
+                {
+                    MapObject mapObject = listCombined[i];
+                    ObjectDragData = mapObject.GetHoverData();
+                    if (ObjectDragData != null) break;
                 }
             }
 

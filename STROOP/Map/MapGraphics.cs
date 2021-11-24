@@ -99,7 +99,26 @@ namespace STROOP.Map
             Config.MapGui.CurrentControl = _glControl;
             _glControl.MakeCurrent();
 
-            Cursor cursor = Config.MapManager.NumDrawingsEnabled > 0 ? Cursors.Cross : Cursors.Hand;
+            Cursor cursor;
+            if (Config.MapGui.checkBoxMapOptionsObjectDrag.Checked)
+            {
+                if (Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData != null)
+                {
+                    cursor = Cursors.Hand;
+                }
+                else
+                {
+                    cursor = Cursors.Default;
+                }
+            }
+            else if (Config.MapManager.NumDrawingsEnabled > 0)
+            {
+                cursor = Cursors.Cross;
+            }
+            else
+            {
+                cursor = Cursors.Hand;
+            }
             if (_glControl.Cursor != cursor)
             {
                 _glControl.Cursor = cursor;
