@@ -166,19 +166,14 @@ namespace STROOP.Map
             return ToString().GetHashCode();
         }
 
-        public (double x, double y, double z)? GetPosition()
+        public (double x, double y, double z)? GetDragPosition()
         {
-            PositionAngle posAngle = MapObject?.GetPositionAngle();
-            if (posAngle != null)
-            {
-                return (posAngle.X, posAngle.Y, posAngle.Z);
-            }
-            return null;
+            return MapObject?.GetDragPosition();
         }
 
-        public void SetPosition(double? x = null, double? y = null, double? z = null)
+        public void SetDragPosition(double? x = null, double? y = null, double? z = null)
         {
-            MapObject?.SetPosition(x, y, z);
+            MapObject?.SetDragPosition(x, y, z);
         }
     }
 }

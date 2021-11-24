@@ -150,11 +150,45 @@ namespace STROOP.Map
             return (arrowHeadX, arrowHeadY, arrowHeadZ);
         }
 
+        public override (double x, double y, double z)? GetDragPosition()
+        {
+            return GetArrowHeadPosition();
+        }
+
+        public override void SetDragPosition(double? x = null, double? y = null, double? z = null)
+        {
+            if (!x.HasValue || !z.HasValue) return;
+
+            PositionAngle posAngle = GetPositionAngle();
+            double dist = MoreMath.GetDistanceBetween(posAngle.X, posAngle.Z, x.Value, z.Value);
+            double angle = MoreMath.AngleTo_AngleUnits(posAngle.X, posAngle.Z, x.Value, z.Value);
+
+            if (_useRecommendedArrowLength)
+            {
+                SetRecommendedSize(dist);
+            }
+            else
+            {
+                Size = (float)(Scales ? dist : dist * Config.CurrentMapGraphics.MapViewScaleValue);
+            }
+            SetYaw(angle);
+        }
+
         protected abstract double GetYaw();
 
         protected abstract double GetPitch();
 
         protected abstract double GetRecommendedSize();
+
+        protected virtual void SetRecommendedSize(double size)
+        {
+
+        }
+
+        protected virtual void SetYaw(double yaw)
+        {
+
+        }
 
         public override Image GetInternalImage()
         {

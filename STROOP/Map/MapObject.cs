@@ -181,7 +181,17 @@ namespace STROOP.Map
             return false;
         }
 
-        public void SetPosition(double? x = null, double? y = null, double? z = null)
+        public virtual (double x, double y, double z)? GetDragPosition()
+        {
+            PositionAngle posAngle = GetPositionAngle();
+            if (posAngle != null)
+            {
+                return (posAngle.X, posAngle.Y, posAngle.Z);
+            }
+            return null;
+        }
+
+        public virtual void SetDragPosition(double? x = null, double? y = null, double? z = null)
         {
             PositionAngle posAngle = GetPositionAngle();
             if (posAngle != null)

@@ -636,7 +636,7 @@ namespace STROOP.Map
                 if (Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData != null)
                 {
                     _draggedObject = Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData;
-                    var dragPosStart = _draggedObject.GetPosition();
+                    var dragPosStart = _draggedObject.GetDragPosition();
                     if (dragPosStart.HasValue)
                     {
                         _draggedObject = Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData;
@@ -717,7 +717,7 @@ namespace STROOP.Map
                         unitDiffX, unitDiffY, 0, 0, MapViewYawValue);
                 float newObjX = _objectDragStartX + rotatedX;
                 float newObjZ = _objectDragStartZ + rotatedY;
-                _draggedObject.SetPosition(x: newObjX, z: newObjZ);
+                _draggedObject.SetDragPosition(x: newObjX, z: newObjZ);
                 return;
             }
 
