@@ -277,7 +277,6 @@ namespace STROOP.Map
             (double x, double y, double z) = PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
             double dist = MoreMath.GetDistanceBetween(x, z, inGameX, inGameZ);
             double radius = Scales ? _iconSize : _iconSize / Config.CurrentMapGraphics.MapViewScaleValue;
-            Config.SetDebugText("{0} {1} {2} {3}", x, z, inGameX, inGameZ);
             if (dist <= radius)
             {
                 return new MapObjectHoverData(this, x, y, z);

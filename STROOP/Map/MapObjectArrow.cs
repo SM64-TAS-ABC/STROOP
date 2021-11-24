@@ -110,6 +110,46 @@ namespace STROOP.Map
             return vertices;
         }
 
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
+        {
+            byte opacityByte = OpacityByte;
+            if (this == hoverData?.MapObject)
+            {
+                opacityByte = MapUtilities.GetHoverOpacityByte();
+            }
+            MapUtilities.DrawLinesOn2DControlTopDownView(GetVerticesTopDownView(), LineWidth, LineColor, opacityByte);
+        }
+
+        private (float x, float y, float z) GetArrowHeadPosition()
+        {
+            PositionAngle posAngle = GetPositionAngle();
+            float x = (float)posAngle.X;
+            float y = (float)posAngle.Y;
+            float z = (float)posAngle.Z;
+            float preYaw = (float)GetYaw() + _angleOffset;
+            float yaw = _useTruncatedAngle ? MoreMath.NormalizeAngleTruncated(preYaw) : preYaw;
+            float pitch = _usePitch ? (float)GetPitch() : 0;
+            float size = _useRecommendedArrowLength ? (float)GetRecommendedSize() : Size;
+            if (!Scales) size /= Config.CurrentMapGraphics.MapViewScaleValue;
+
+            float arrowHeadX;
+            float arrowHeadY;
+            float arrowHeadZ;
+            if (_usePitch)
+            {
+                (arrowHeadX, arrowHeadY, arrowHeadZ) = ((float, float, float))
+                    MoreMath.AddVectorToPointWithPitch(size, yaw, pitch, x, y, z, false);
+            }
+            else
+            {
+                (arrowHeadX, arrowHeadZ) = ((float, float))
+                    MoreMath.AddVectorToPoint(size, yaw, x, z);
+                arrowHeadY = y;
+            }
+
+            return (arrowHeadX, arrowHeadY, arrowHeadZ);
+        }
+
         protected abstract double GetYaw();
 
         protected abstract double GetPitch();
@@ -224,6 +264,34 @@ namespace STROOP.Map
                 _usePitch = settings.NewUsePitch;
                 _itemUsePitch.Checked = _usePitch;
             }
+        }
+
+        public override MapObjectHoverData GetHoverDataTopDownView()
+        {
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
+            if (!relPosMaybe.HasValue) return null;
+            Point relPos = relPosMaybe.Value;
+
+            (float inGameX, float inGameY, float inGameZ) = GetArrowHeadPosition();
+            (double controlX, double controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(inGameX, inGameZ);
+            double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+            if (dist <= 20)
+            {
+                return new MapObjectHoverData(this, inGameX, inGameY, inGameZ);
+            }
+            return null;
+        }
+
+        public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
+        {
+            List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
+
+            (double x, double y, double z) = GetArrowHeadPosition();
+            List<double> posValues = new List<double>() { x, y, z };
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Arrow Head Position");
+            output.Insert(0, copyPositionItem);
+
+            return output;
         }
     }
 }
