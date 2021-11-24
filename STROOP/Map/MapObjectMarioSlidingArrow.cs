@@ -44,6 +44,18 @@ namespace STROOP.Map
             return WatchVariableSpecialUtilities.GetMarioSlidingSpeed();
         }
 
+        public override void SetDragPosition(double? x = null, double? y = null, double? z = null)
+        {
+            if (!x.HasValue || !z.HasValue) return;
+
+            PositionAngle posAngle = GetPositionAngle();
+            double xDiff = x.Value - posAngle.X;
+            double zDiff = z.Value - posAngle.Z;
+
+            Config.Stream.SetValue((float)xDiff, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            Config.Stream.SetValue((float)zDiff, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+        }
+
         protected override void SetRecommendedSize(double size)
         {
             WatchVariableSpecialUtilities.SetMarioSlidingSpeed(size);
