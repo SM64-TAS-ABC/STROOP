@@ -402,13 +402,13 @@ namespace STROOP.Map
                     mapObject = new MapObjectLedgeGrabChecker();
                     break;
                 case "MapObjectLevelCeiling":
-                    mapObject = new MapObjectLevelCeiling();
+                    mapObject = MapObjectLevelCeiling.Create(xElement.Attribute(XName.Get("triangles")).Value);
                     break;
                 case "MapObjectLevelFloor":
-                    mapObject = new MapObjectLevelFloor();
+                    mapObject = MapObjectLevelFloor.Create(xElement.Attribute(XName.Get("triangles")).Value);
                     break;
                 case "MapObjectLevelWall":
-                    mapObject = new MapObjectLevelWall();
+                    mapObject = MapObjectLevelWall.Create(xElement.Attribute(XName.Get("triangles")).Value);
                     break;
                 case "MapObjectLineSegment":
                     mapObject = new MapObjectLineSegment(

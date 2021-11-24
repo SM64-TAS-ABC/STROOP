@@ -882,12 +882,12 @@ namespace STROOP.Map
             return points;
         }
 
-        public static List<uint> ParseCustomTris(string text, TriangleClassification classification)
+        public static List<uint> ParseCustomTris(string text, TriangleClassification? classification)
         {
             if (text == null) return null;
-            if (text == "")
+            if (classification.HasValue && text == "")
             {
-                uint currentTriangle = TriangleUtilities.GetCurrentTriangle(classification);
+                uint currentTriangle = TriangleUtilities.GetCurrentTriangle(classification.Value);
                 if (currentTriangle == 0) return null;
                 return new List<uint>() { currentTriangle };
             }

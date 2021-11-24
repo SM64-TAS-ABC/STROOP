@@ -13,6 +13,7 @@ using System.Drawing.Imaging;
 using STROOP.Models;
 using System.Windows.Forms;
 using STROOP.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Map
 {
@@ -28,16 +29,27 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemUseCurrentCellTris;
 
         public MapObjectLevelWall()
-            : base()
-        {
-            _triAddressList = TriangleUtilities.GetLevelTriangles()
+            : this(TriangleUtilities.GetLevelTriangles()
                 .FindAll(tri => tri.IsWall())
-                .ConvertAll(tri => tri.Address);
+                .ConvertAll(tri => tri.Address))
+        {
             _removeCurrentTri = false;
             _triangleListForm = null;
             _autoUpdate = true;
             _numLevelTris = _triAddressList.Count;
             _useCurrentCellTris = false;
+        }
+
+        public MapObjectLevelWall(List<uint> triAddressList)
+        {
+            _triAddressList = triAddressList;
+        }
+
+        public static MapObjectLevelWall Create(string text)
+        {
+            List<uint> triAddressList = MapUtilities.ParseCustomTris(text, null);
+            if (triAddressList == null) return null;
+            return new MapObjectLevelWall(triAddressList);
         }
 
         protected override List<TriangleDataModel> GetUnfilteredTriangles()
@@ -168,6 +180,15 @@ namespace STROOP.Map
                 _useCurrentCellTris = settings.NewUseCurrentCellTris;
                 _itemUseCurrentCellTris.Checked = settings.NewUseCurrentCellTris;
             }
+        }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            List<string> hexList = _triAddressList.ConvertAll(triAddress => HexUtilities.FormatValue(triAddress));
+            return new List<XAttribute>()
+            {
+                new XAttribute("triangles", string.Join(",", hexList)),
+            };
         }
     }
 }
