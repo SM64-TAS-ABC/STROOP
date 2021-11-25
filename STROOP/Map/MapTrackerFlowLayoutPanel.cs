@@ -193,7 +193,10 @@ namespace STROOP.Map
                 for (int i = listCombined.Count - 1; i >= 0; i--)
                 {
                     MapObject mapObject = listCombined[i];
-                    ObjectDragData = mapObject.GetHoverData();
+                    if (mapObject.GetDragPosition().HasValue)
+                    {
+                        ObjectDragData = mapObject.GetHoverData();
+                    }
                     if (ObjectDragData != null) break;
                 }
             }

@@ -49,6 +49,17 @@ namespace STROOP.Map
             MapUtilities.DrawTexture(TextureId, new PointF(xPosPixels, yPosPixels), size, angleDegrees, opacity);
         }
 
+        public override (double x, double y, double z)? GetDragPosition()
+        {
+            PositionAngle posAngle = GetPositionAngle();
+            return (posAngle.X, posAngle.Y, posAngle.Z);
+        }
+
+        public override void SetDragPosition(double? x = null, double? y = null, double? z = null)
+        {
+            GetPositionAngle().SetValues(x, y, z);
+        }
+
         public override bool ParticipatesInGlobalIconSize()
         {
             return true;
