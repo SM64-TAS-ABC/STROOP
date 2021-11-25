@@ -166,6 +166,10 @@ namespace STROOP.Map
                 {
                     hoverData = MapObjectHoverData.GetMapObjectHoverDataForCursor(false);
                 }
+                if (Config.CurrentMapGraphics.DraggedObject != null)
+                {
+                    hoverData = Config.CurrentMapGraphics.DraggedObject;
+                }
                 if (!Equals(PreviousHoverData, hoverData))
                 {
                     PreviousHoverData = hoverData;

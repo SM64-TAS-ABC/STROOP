@@ -616,7 +616,7 @@ namespace STROOP.Map
         private float _rotateStartYaw = 0;
         private float _rotateStartPitch = 0;
 
-        private MapObjectHoverData _draggedObject = null;
+        public MapObjectHoverData DraggedObject = null;
         private int _objectDragStartMouseX = 0;
         private int _objectDragStartMouseY = 0;
         private float _objectDragStartX = 0;
@@ -635,11 +635,10 @@ namespace STROOP.Map
             {
                 if (Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData != null)
                 {
-                    _draggedObject = Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData;
-                    var dragPosStart = _draggedObject.GetDragPosition();
+                    var dragPosStart = Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData.GetDragPosition();
                     if (dragPosStart.HasValue)
                     {
-                        _draggedObject = Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData;
+                        DraggedObject = Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData;
                         _objectDragStartMouseX = e.X;
                         _objectDragStartMouseY = e.Y;
                         _objectDragStartX = (float)dragPosStart.Value.x;
@@ -679,9 +678,9 @@ namespace STROOP.Map
                 return;
             }
 
-            if (_draggedObject != null)
+            if (DraggedObject != null)
             {
-                _draggedObject = null;
+                DraggedObject = null;
                 return;
             }
 
@@ -706,7 +705,7 @@ namespace STROOP.Map
                 return;
             }
 
-            if (_draggedObject != null)
+            if (DraggedObject != null)
             {
                 int pixelDiffX = e.X - _objectDragStartMouseX;
                 int pixelDiffY = e.Y - _objectDragStartMouseY;
@@ -717,7 +716,7 @@ namespace STROOP.Map
                         unitDiffX, unitDiffY, 0, 0, MapViewYawValue);
                 float newObjX = _objectDragStartX + rotatedX;
                 float newObjZ = _objectDragStartZ + rotatedY;
-                _draggedObject.SetDragPosition(x: newObjX, z: newObjZ);
+                DraggedObject.SetDragPosition(x: newObjX, z: newObjZ);
                 return;
             }
 
