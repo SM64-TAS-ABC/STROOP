@@ -148,9 +148,6 @@ namespace STROOP.Map
             if (obj is MapObjectHoverData other)
             {
                 return MapObject == other.MapObject &&
-                    X == other.X &&
-                    Y == other.Y &&
-                    Z == other.Z &&
                     ObjAddress == other.ObjAddress &&
                     Tri?.Address == other.Tri?.Address &&
                     IsTriUnit == other.IsTriUnit &&
@@ -163,7 +160,17 @@ namespace STROOP.Map
 
         public override int GetHashCode()
         {
-            return ToString().GetHashCode();
+            List<object> fields = new List<object>()
+            {
+                MapObject,
+                ObjAddress,
+                Tri?.Address,
+                IsTriUnit,
+                Index,
+                Index2,
+                Info,
+            };
+            return string.Join(",", fields).GetHashCode();
         }
 
         public (double x, double y, double z)? GetDragPosition()
