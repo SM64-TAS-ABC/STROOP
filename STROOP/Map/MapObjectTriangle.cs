@@ -840,6 +840,11 @@ namespace STROOP.Map
             return MapDrawType.Perspective;
         }
 
+        public void ToggleUseCrossSection()
+        {
+            _useCrossSection = !_useCrossSection;
+        }
+
         public void ToggleShowArrows()
         {
             _showArrows = !_showArrows;

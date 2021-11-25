@@ -34,13 +34,12 @@ namespace STROOP.Map
         public CheckBox checkBoxMapOptionsTrackUnitGridlines;
 
         public CheckBox checkBoxMapOptionsEnable3D;
-        public CheckBox checkBoxMapOptionsDisableHitboxHackTris;
+        public CheckBox checkBoxMapOptionsEnableHitboxHackTris;
         public CheckBox checkBoxMapOptionsEnableOrthographicView;
-        public CheckBox checkBoxMapOptionsEnableCrossSection;
         public CheckBox checkBoxMapOptionsEnablePuView;
-        public CheckBox checkBoxMapOptionsReverseDragging;
-        public CheckBox checkBoxMapOptionsSelectionMode;
-        public CheckBox checkBoxMapOptionsObjectDrag;
+        public CheckBox checkBoxMapOptionsEnableReverseDragging;
+        public CheckBox checkBoxMapOptionsEnableObjectHover;
+        public CheckBox checkBoxMapOptionsEnableObjectDrag;
 
         // Options - Global Icon Size
         public Label labelMapOptionsGlobalIconSize;

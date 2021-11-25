@@ -687,7 +687,7 @@ namespace STROOP.Map
 
         public static int MaybeReverse(int value)
         {
-            return Config.MapGui.checkBoxMapOptionsReverseDragging.Checked ? -1 * value : value;
+            return Config.MapGui.checkBoxMapOptionsEnableReverseDragging.Checked ? -1 * value : value;
         }
 
         private static string GetNumberWithCommas(int number)

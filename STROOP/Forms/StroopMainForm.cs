@@ -280,13 +280,12 @@ namespace STROOP
                 checkBoxMapOptionsTrackUnitGridlines = checkBoxMapOptionsTrackUnitGridlines,
 
                 checkBoxMapOptionsEnable3D = checkBoxMapOptionsEnable3D,
-                checkBoxMapOptionsDisableHitboxHackTris = checkBoxMapOptionsDisableHitboxHackTris,
+                checkBoxMapOptionsEnableHitboxHackTris = checkBoxMapOptionsEnableHitboxHackTris,
                 checkBoxMapOptionsEnableOrthographicView = checkBoxMapOptionsEnableOrthographicView,
-                checkBoxMapOptionsEnableCrossSection = checkBoxMapOptionsEnableCrossSection,
                 checkBoxMapOptionsEnablePuView = checkBoxMapOptionsEnablePuView,
-                checkBoxMapOptionsReverseDragging = checkBoxMapOptionsReverseDragging,
-                checkBoxMapOptionsSelectionMode = checkBoxMapOptionsSelectionMode,
-                checkBoxMapOptionsObjectDrag = checkBoxMapOptionsObjectDrag,
+                checkBoxMapOptionsEnableReverseDragging = checkBoxMapOptionsEnableReverseDragging,
+                checkBoxMapOptionsEnableObjectHover = checkBoxMapOptionsEnableObjectHover,
+                checkBoxMapOptionsEnableObjectDrag = checkBoxMapOptionsEnableObjectDrag,
 
                 labelMapOptionsGlobalIconSize = labelMapOptionsGlobalIconSize,
                 textBoxMapOptionsGlobalIconSize = textBoxMapOptionsGlobalIconSize,

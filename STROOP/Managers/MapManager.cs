@@ -735,22 +735,25 @@ namespace STROOP.Managers
             });
 
             // Additional Checkboxes
-            Config.MapGui.checkBoxMapOptionsEnable3D.Click +=
-                (sender, e) => SetEnable3D(Config.MapGui.checkBoxMapOptionsEnable3D.Checked);
+            Config.MapGui.checkBoxMapOptionsEnableHitboxHackTris.Checked = true;
             ControlUtilities.AddContextMenuStripFunctions(
-                Config.MapGui.checkBoxMapOptionsDisableHitboxHackTris,
+                Config.MapGui.checkBoxMapOptionsEnableHitboxHackTris,
                 new List<string>()
                 {
                     "Reset",
-                    "Toggle Arrows",
+                    "Toggle Use Cross Section",
+                    "Toggle Show Arrows",
                 },
                 new List<Action>()
                 {
                     () => _defaulMapObjectHitboxHackTriangle.Reset(),
+                    () => _defaulMapObjectHitboxHackTriangle.ToggleUseCrossSection(),
                     () => _defaulMapObjectHitboxHackTriangle.ToggleShowArrows(),
                 });
-            Config.MapGui.checkBoxMapOptionsSelectionMode.Click +=
-                (sender, e) => SetSelectionMode(Config.MapGui.checkBoxMapOptionsSelectionMode.Checked);
+            Config.MapGui.checkBoxMapOptionsEnable3D.Click +=
+                (sender, e) => SetEnable3D(Config.MapGui.checkBoxMapOptionsEnable3D.Checked);
+            Config.MapGui.checkBoxMapOptionsEnableObjectHover.Click +=
+                (sender, e) => SetEnableObjectHover(Config.MapGui.checkBoxMapOptionsEnableObjectHover.Checked);
 
             // Global Icon Size
             Config.MapGui.textBoxMapOptionsGlobalIconSize.AddEnterAction(() =>
@@ -926,10 +929,10 @@ namespace STROOP.Managers
             toBeInvisible.Visible = false;
         }
 
-        private void SetSelectionMode(bool enableSelectionMode)
+        private void SetEnableObjectHover(bool enableObjectHover)
         {
-            Config.MapGui.checkBoxMapOptionsSelectionMode.Checked = enableSelectionMode;
-            if (enableSelectionMode)
+            Config.MapGui.checkBoxMapOptionsEnableObjectHover.Checked = enableObjectHover;
+            if (enableObjectHover)
             {
                 Config.MapGui.GLControlMap2D.ContextMenuStrip = _contextMenuStrip;
             }
@@ -937,7 +940,7 @@ namespace STROOP.Managers
             {
                 Config.MapGui.GLControlMap2D.ContextMenuStrip = null;
             }
-            if (!enableSelectionMode)
+            if (!enableObjectHover)
             {
                 Config.HideDebugText();
             }
@@ -995,12 +998,13 @@ namespace STROOP.Managers
             {
                 XElement mapTabSettings = new XElement(XName.Get("MapTabSettings"));
 
+                mapTabSettings.Add(new XAttribute("enableHitboxHackTris", Config.MapGui.checkBoxMapOptionsEnableHitboxHackTris.Checked));
                 mapTabSettings.Add(new XAttribute("enable3D", Config.MapGui.checkBoxMapOptionsEnable3D.Checked));
-                mapTabSettings.Add(new XAttribute("disableHitboxHackTris", Config.MapGui.checkBoxMapOptionsDisableHitboxHackTris.Checked));
                 mapTabSettings.Add(new XAttribute("enableOrthographicView", Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked));
-                mapTabSettings.Add(new XAttribute("enableCrossSection", Config.MapGui.checkBoxMapOptionsEnableCrossSection.Checked));
                 mapTabSettings.Add(new XAttribute("enablePuView", Config.MapGui.checkBoxMapOptionsEnablePuView.Checked));
-                mapTabSettings.Add(new XAttribute("reverseDragging", Config.MapGui.checkBoxMapOptionsReverseDragging.Checked));
+                mapTabSettings.Add(new XAttribute("enableReverseDragging", Config.MapGui.checkBoxMapOptionsEnableReverseDragging.Checked));
+                mapTabSettings.Add(new XAttribute("enableObjectHover", Config.MapGui.checkBoxMapOptionsEnableObjectHover.Checked));
+                mapTabSettings.Add(new XAttribute("enableObjectDrag", Config.MapGui.checkBoxMapOptionsEnableObjectDrag.Checked));
                 mapTabSettings.Add(new XAttribute("map", Config.MapGui.comboBoxMapOptionsMap.SelectedItem));
                 mapTabSettings.Add(new XAttribute("background", Config.MapGui.comboBoxMapOptionsBackground.SelectedItem));
 
@@ -1092,12 +1096,13 @@ namespace STROOP.Managers
             XElement mapTabSettings = xElements.Find(el => el.Name == "MapTabSettings");
             if (mapTabSettings != null)
             {
+                Config.MapGui.checkBoxMapOptionsEnableHitboxHackTris.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableHitboxHackTris")).Value);
                 SetEnable3D(ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enable3D")).Value));
-                Config.MapGui.checkBoxMapOptionsDisableHitboxHackTris.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("disableHitboxHackTris")).Value);
                 Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableOrthographicView")).Value);
-                Config.MapGui.checkBoxMapOptionsEnableCrossSection.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableCrossSection")).Value);
                 Config.MapGui.checkBoxMapOptionsEnablePuView.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enablePuView")).Value);
-                Config.MapGui.checkBoxMapOptionsReverseDragging.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("reverseDragging")).Value);
+                Config.MapGui.checkBoxMapOptionsEnableReverseDragging.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableReverseDragging")).Value);
+                Config.MapGui.checkBoxMapOptionsEnableObjectHover.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableObjectHover")).Value);
+                Config.MapGui.checkBoxMapOptionsEnableObjectDrag.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableObjectDrag")).Value);
                 Config.MapGui.comboBoxMapOptionsMap.SelectedItem = _mapDictionary[mapTabSettings.Attribute(XName.Get("map")).Value];
                 Config.MapGui.comboBoxMapOptionsBackground.SelectedItem = _backgroundDictionary[mapTabSettings.Attribute(XName.Get("background")).Value];
 

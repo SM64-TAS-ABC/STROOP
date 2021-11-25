@@ -144,7 +144,7 @@ namespace STROOP.Map
             listOrderByY = listOrderByY.OrderBy(obj => obj.GetY()).ToList();
             List<MapObject> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
 
-            if (!Config.MapGui.checkBoxMapOptionsDisableHitboxHackTris.Checked)
+            if (Config.MapGui.checkBoxMapOptionsEnableHitboxHackTris.Checked)
             {
                 listCombined.Insert(0, _mapObjHitboxHackTris);
             }
@@ -154,7 +154,7 @@ namespace STROOP.Map
             MapObjectHoverData hoverData = null;
             if (isMainGraphics &&
                 !Config.MapGui.checkBoxMapOptionsEnable3D.Checked &&
-                Config.MapGui.checkBoxMapOptionsSelectionMode.Checked)
+                Config.MapGui.checkBoxMapOptionsEnableObjectHover.Checked)
             {
                 for (int i = listCombined.Count - 1; i >= 0; i--)
                 {
@@ -192,7 +192,7 @@ namespace STROOP.Map
             ObjectDragData = null;
             if (isMainGraphics &&
                 !Config.MapGui.checkBoxMapOptionsEnable3D.Checked &&
-                Config.MapGui.checkBoxMapOptionsObjectDrag.Checked)
+                Config.MapGui.checkBoxMapOptionsEnableObjectDrag.Checked)
             {
                 for (int i = listCombined.Count - 1; i >= 0; i--)
                 {
@@ -245,7 +245,7 @@ namespace STROOP.Map
 
             List<MapObject> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
             listCombined.Insert(0, _mapObjBackground);
-            if (!Config.MapGui.checkBoxMapOptionsDisableHitboxHackTris.Checked)
+            if (Config.MapGui.checkBoxMapOptionsEnableHitboxHackTris.Checked)
             {
                 listCombined.Insert(0, _mapObjHitboxHackTris);
             }

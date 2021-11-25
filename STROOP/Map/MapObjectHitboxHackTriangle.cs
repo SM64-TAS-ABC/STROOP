@@ -80,7 +80,6 @@ namespace STROOP.Map
             {
                 Opacity = 0.5;
                 LineWidth = 1;
-                _useCrossSection = Config.MapGui.checkBoxMapOptionsEnableCrossSection.Checked;
             }
 
             base.DrawOn2DControlOrthographicView(hoverData);

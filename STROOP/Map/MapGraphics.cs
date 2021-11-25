@@ -116,7 +116,7 @@ namespace STROOP.Map
         private void UpdateCursor()
         {
             Cursor cursor;
-            if (Config.MapGui.checkBoxMapOptionsObjectDrag.Checked)
+            if (Config.MapGui.checkBoxMapOptionsEnableObjectDrag.Checked)
             {
                 if (Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData != null)
                 {
@@ -644,7 +644,7 @@ namespace STROOP.Map
                 return;
             }
 
-            if (Config.MapGui.checkBoxMapOptionsObjectDrag.Checked)
+            if (Config.MapGui.checkBoxMapOptionsEnableObjectDrag.Checked)
             {
                 if (Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData != null)
                 {
@@ -799,8 +799,8 @@ namespace STROOP.Map
 
             if (_isRotating)
             {
-                bool isRightClickingForSelectionMode = Config.MapGui.checkBoxMapOptionsSelectionMode.Checked && _isMainGraphics;
-                if (!isRightClickingForSelectionMode)
+                bool isRightClickingForHover = Config.MapGui.checkBoxMapOptionsEnableObjectHover.Checked && _isMainGraphics;
+                if (!isRightClickingForHover)
                 {
                     if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
                     {
