@@ -544,7 +544,7 @@ namespace STROOP.Map
             return (xMidpoint, zMidpoint);
         }
 
-        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
             bool isShowingTriUnits = _showTriUnits && MapUtilities.IsAbleToShowUnitPrecision();
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
@@ -560,7 +560,7 @@ namespace STROOP.Map
                 {
                     var vertexList = vertexListsForControl[i];
                     List<(float x, float z)> simpleVertexList = vertexList.ConvertAll(vertex => (vertex.x, vertex.z));
-                    if (MapUtilities.IsWithinShapeForControl(simpleVertexList, relPos.X, relPos.Y))
+                    if (MapUtilities.IsWithinShapeForControl(simpleVertexList, relPos.X, relPos.Y) || forceCursorPosition)
                     {
                         (float x, float z) inGameMidpoint = GetInGameMidpointFromControlQuad(simpleVertexList);
                         float y = vertexList[0].tri.GetTruncatedHeightOnTriangle(inGameMidpoint.x, inGameMidpoint.z);
@@ -584,7 +584,7 @@ namespace STROOP.Map
                             var vertex = vertexList[j];
                             double dist = MoreMath.GetDistanceBetween(vertex.x, vertex.z, relPos.X, relPos.Y);
                             double radius = Scales ? _iconSize * Config.CurrentMapGraphics.MapViewScaleValue : _iconSize;
-                            if (dist <= radius)
+                            if (dist <= radius || forceCursorPosition)
                             {
                                 (int x, int y, int z) = j == 0 ? vertex.tri.GetP1() : j == 1 ? vertex.tri.GetP2() : vertex.tri.GetP3();
                                 return new MapObjectHoverData(this, x, y, z, tri: vertex.tri, index: i, index2: j, info: string.Format("V{0}", j + 1));
@@ -596,7 +596,7 @@ namespace STROOP.Map
                 {
                     var vertexList = vertexListsForControl[i];
                     List<(float x, float z)> simpleVertexList = vertexList.ConvertAll(vertex => (vertex.x, vertex.z));
-                    if (MapUtilities.IsWithinShapeForControl(simpleVertexList, relPos.X, relPos.Y))
+                    if (MapUtilities.IsWithinShapeForControl(simpleVertexList, relPos.X, relPos.Y) || forceCursorPosition)
                     {
                         TriangleDataModel tri = vertexList[0].tri;
                         return new MapObjectHoverData(

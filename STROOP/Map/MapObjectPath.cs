@@ -701,7 +701,7 @@ namespace STROOP.Map
             return _posAngle;
         }
 
-        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
             if (_customImage == null) return null;
 
@@ -718,7 +718,7 @@ namespace STROOP.Map
                 double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
                 float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
                 double radius = Scales ? imageSize : imageSize / Config.CurrentMapGraphics.MapViewScaleValue;
-                if (dist <= radius)
+                if (dist <= radius || forceCursorPosition)
                 {
                     return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
                 }
@@ -726,7 +726,7 @@ namespace STROOP.Map
             return null;
         }
 
-        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
             if (_customImage == null) return null;
 
@@ -743,7 +743,7 @@ namespace STROOP.Map
                 double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
                 float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
                 double radius = Scales ? imageSize * Config.CurrentMapGraphics.MapViewScaleValue : imageSize;
-                if (dist <= radius)
+                if (dist <= radius || forceCursorPosition)
                 {
                     return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
                 }

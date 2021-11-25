@@ -193,7 +193,7 @@ namespace STROOP.Map
             }
         }
 
-        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
@@ -203,7 +203,7 @@ namespace STROOP.Map
             {
                 var dimension = dimensionList[i];
                 double dist = MoreMath.GetDistanceBetween(dimension.centerX, dimension.centerZ, relPos.X, relPos.Y);
-                if (dist <= dimension.radius)
+                if (dist <= dimension.radius || forceCursorPosition)
                 {
                     var inGameDimensionList = GetPoints();
                     var inGameDimension = inGameDimensionList[i];

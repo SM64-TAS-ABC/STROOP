@@ -845,7 +845,7 @@ namespace STROOP.Map
             _showArrows = !_showArrows;
         }
 
-        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
@@ -862,7 +862,7 @@ namespace STROOP.Map
                 for (int i = trisForControl.Count - 1; i >= 0; i--)
                 {
                     var triForControl = trisForControl[i];
-                    if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y))
+                    if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y) || forceCursorPosition)
                     {
                         TriangleDataModel tri = tris[i][0].data.Tri;
                         double y = tri.GetMidpointY();
@@ -894,7 +894,7 @@ namespace STROOP.Map
                             var vertex = triForControl[j];
                             double dist = MoreMath.GetDistanceBetween(vertex.x, vertex.z, relPos.X, relPos.Y);
                             double radius = Scales ? _iconSize * Config.CurrentMapGraphics.MapViewScaleValue : _iconSize;
-                            if (dist <= radius)
+                            if (dist <= radius || forceCursorPosition)
                             {
                                 TriangleDataModel tri = tris[i];
                                 (int x, int y, int z) = j == 0 ? tri.GetP1() : j == 1 ? tri.GetP2() : tri.GetP3();
@@ -906,7 +906,7 @@ namespace STROOP.Map
                 for (int i = trisForControl.Count - 1; i >= 0; i--)
                 {
                     var triForControl = trisForControl[i];
-                    if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y))
+                    if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y) || forceCursorPosition)
                     {
                         TriangleDataModel tri = tris[i];
                         return new MapObjectHoverData(this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri);

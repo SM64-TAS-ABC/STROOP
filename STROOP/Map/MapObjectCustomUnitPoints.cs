@@ -64,7 +64,7 @@ namespace STROOP.Map
             return Config.ObjectAssociations.CustomPointsImage;
         }
 
-        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
@@ -76,7 +76,7 @@ namespace STROOP.Map
             for (int i = 0; i < _unitPoints.Count; i++)
             {
                 var unitPoint = _unitPoints[i];
-                if (unitPoint.x == inGameXTruncated && unitPoint.z == inGameZTruncated)
+                if ((unitPoint.x == inGameXTruncated && unitPoint.z == inGameZTruncated) || forceCursorPosition)
                 {
                     return new MapObjectHoverData(this, unitPoint.x, 0, unitPoint.z, index: i);
                 }
@@ -84,7 +84,7 @@ namespace STROOP.Map
             return null;
         }
 
-        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
@@ -97,7 +97,7 @@ namespace STROOP.Map
                     MapUtilities.ConvertUnitPointsToQuads(unitPointList);
                 List<List<(float x, float z)>> quadListForControl =
                     quadList.ConvertAll(quad => quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z)));
-                if (quadListForControl.Any(quad => MapUtilities.IsWithinShapeForControl(quad, relPos.X, relPos.Y)))
+                if (quadListForControl.Any(quad => MapUtilities.IsWithinShapeForControl(quad, relPos.X, relPos.Y)) || forceCursorPosition)
                 {
                     return new MapObjectHoverData(this, unitPoint.x, 0, unitPoint.z, index: i);
                 }

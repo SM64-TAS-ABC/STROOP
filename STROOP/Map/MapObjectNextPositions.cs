@@ -313,7 +313,7 @@ namespace STROOP.Map
             return MapDrawType.Overlay;
         }
 
-        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
@@ -326,7 +326,7 @@ namespace STROOP.Map
                 var dataPoint = data[i];
                 double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
                 double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
-                if (dist <= radius)
+                if (dist <= radius || forceCursorPosition)
                 {
                     return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
                 }
@@ -334,7 +334,7 @@ namespace STROOP.Map
             return null;
         }
 
-        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
@@ -346,7 +346,7 @@ namespace STROOP.Map
                 (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
                 double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
                 double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
-                if (dist <= radius)
+                if (dist <= radius || forceCursorPosition)
                 {
                     return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
                 }

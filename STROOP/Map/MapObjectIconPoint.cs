@@ -113,7 +113,7 @@ namespace STROOP.Map
             GL.DeleteBuffer(vertexBuffer);
         }
 
-        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
@@ -122,14 +122,14 @@ namespace STROOP.Map
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
             double dist = MoreMath.GetDistanceBetween(x, z, inGameX, inGameZ);
             double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
-            if (dist <= radius)
+            if (dist <= radius || forceCursorPosition)
             {
                 return new MapObjectHoverData(this, x, y, z);
             }
             return null;
         }
 
-        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
@@ -138,7 +138,7 @@ namespace STROOP.Map
             (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z);
             double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
             double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
-            if (dist <= radius)
+            if (dist <= radius || forceCursorPosition)
             {
                 return new MapObjectHoverData(this, x, y, z);
             }

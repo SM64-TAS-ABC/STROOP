@@ -145,7 +145,7 @@ namespace STROOP.Map
         {
             if (DraggedObject != null)
             {
-                DraggedObject = DraggedObject.MapObject?.GetHoverData(true) ?? DraggedObject;
+                DraggedObject = DraggedObject.MapObject?.GetHoverData(true, true) ?? DraggedObject;
             }
         }
 

@@ -409,7 +409,7 @@ namespace STROOP.Map
             }
         }
 
-        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
@@ -464,14 +464,14 @@ namespace STROOP.Map
                             var vertex = quadForControl[k];
                             double dist = MoreMath.GetDistanceBetween(vertex.x, vertex.z, relPos.X, relPos.Y);
                             double radius = Scales ? _iconSize * Config.CurrentMapGraphics.MapViewScaleValue : _iconSize;
-                            if (dist <= radius)
+                            if (dist <= radius || forceCursorPosition)
                             {
                                 (float x, float z) = MapUtilities.ConvertCoordsForInGame(vertex.x, vertex.z);
                                 return new MapObjectHoverData(this, x, 0, z, tri: wallData.Tri, index: j, index2: k);
                             }
                         }
                     }
-                    if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y))
+                    if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y) || forceCursorPosition)
                     {
                         return new MapObjectHoverData(
                             this, wallData.Tri.GetMidpointX(), wallData.Tri.GetMidpointY(), wallData.Tri.GetMidpointZ(), tri: wallData.Tri);

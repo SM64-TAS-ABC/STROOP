@@ -53,7 +53,7 @@ namespace STROOP.Map
             return Config.ObjectAssociations.WatersImage;
         }
 
-        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
@@ -64,7 +64,7 @@ namespace STROOP.Map
             {
                 var quad = quadList[i];
                 var simpleQuad = quad.ConvertAll(q => (q.x, q.y, q.z));
-                if (MapUtilities.IsWithinRectangularQuad(simpleQuad, inGameX, inGameZ))
+                if (MapUtilities.IsWithinRectangularQuad(simpleQuad, inGameX, inGameZ) || forceCursorPosition)
                 {
                     return new MapObjectHoverData(this, 0, 0, 0, index: i);
                 }
@@ -72,7 +72,7 @@ namespace STROOP.Map
             return null;
         }
 
-        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
@@ -83,7 +83,7 @@ namespace STROOP.Map
             {
                 var quad = quadList[i];
                 var quadForControl = quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z));
-                if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y))
+                if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y) || forceCursorPosition)
                 {
                     return new MapObjectHoverData(this, 0, 0, 0, index: i);
                 }

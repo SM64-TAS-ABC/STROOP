@@ -294,7 +294,7 @@ namespace STROOP.Map
             }
         }
 
-        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag)
+        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
@@ -303,7 +303,7 @@ namespace STROOP.Map
             (float inGameX, float inGameY, float inGameZ) = GetArrowHeadPosition();
             (double controlX, double controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(inGameX, inGameZ);
             double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
-            if (dist <= 20)
+            if (dist <= 20 || forceCursorPosition)
             {
                 return new MapObjectHoverData(this, inGameX, inGameY, inGameZ);
             }
