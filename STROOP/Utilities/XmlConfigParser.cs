@@ -240,7 +240,7 @@ namespace STROOP.Utilities
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 blueMarioMapImagePath = "", greenMarioMapImagePath = "", orangeMarioMapImagePath = "", purpleMarioMapImagePath = "", turquoiseMarioMapImagePath = "",
                 yellowMarioMapImagePath = "", pinkMarioMapImagePath = "", brownMarioMapImagePath = "", whiteMarioMapImagePath = "", greyMarioMapImagePath = "",
-                cameraFocusImagePath = "", triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "", hitboxHackTrisImagePath = "",
+                cameraFocusImagePath = "", triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "", hitboxTrisImagePath = "",
                 cellGridlinesImagePath = "", currentCellImagePath = "", unitGridlinesImagePath = "", currentUnitImagePath = "",
                 nextPositionsImagePath = "", previousPositionsImagePath = "", arrowImagePath = "", iwerlipsesImagePath = "", cylinderImagePath = "", sphereImagePath = "",
                 pathImagePath = "", customPointsImagePath = "", customGridlinesImagePath = "",
@@ -392,8 +392,8 @@ namespace STROOP.Utilities
                         triangleOtherImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
-                    case "HitboxHackTris":
-                        hitboxHackTrisImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                    case "HitboxTris":
+                        hitboxTrisImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "CellGridlines":
@@ -801,7 +801,7 @@ namespace STROOP.Utilities
             assoc.TriangleWallImage = Image.FromFile(mapImageDir + triangleWallImagePath);
             assoc.TriangleCeilingImage = Image.FromFile(mapImageDir + triangleCeilingImagePath);
             assoc.TriangleOtherImage = Image.FromFile(mapImageDir + triangleOtherImagePath);
-            assoc.HitboxHackTrisImage = Image.FromFile(mapImageDir + hitboxHackTrisImagePath);
+            assoc.HitboxTrisImage = Image.FromFile(mapImageDir + hitboxTrisImagePath);
 
             assoc.CellGridlinesImage = Image.FromFile(mapImageDir + cellGridlinesImagePath);
             assoc.CurrentCellImage = Image.FromFile(mapImageDir + currentCellImagePath);

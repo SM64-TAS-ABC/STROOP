@@ -46,7 +46,7 @@ namespace STROOP.Structs
         public Image TriangleWallImage;
         public Image TriangleCeilingImage;
         public Image TriangleOtherImage;
-        public Image HitboxHackTrisImage;
+        public Image HitboxTrisImage;
         public Image CellGridlinesImage;
         public Image CurrentCellImage;
         public Image UnitGridlinesImage;
@@ -319,7 +319,7 @@ namespace STROOP.Structs
             TriangleWallImage?.Dispose();
             TriangleCeilingImage?.Dispose();
             TriangleOtherImage?.Dispose();
-            HitboxHackTrisImage?.Dispose();
+            HitboxTrisImage?.Dispose();
             CellGridlinesImage?.Dispose();
             CurrentCellImage?.Dispose();
             UnitGridlinesImage?.Dispose();

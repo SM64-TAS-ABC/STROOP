@@ -26,13 +26,13 @@ namespace STROOP.Map
 
         private MapObject _mapObjMap;
         private MapObject _mapObjBackground;
-        private MapObject _mapObjHitboxHackTris;
+        private MapObject _mapObjHitboxTris;
 
-        public void Initialize(MapObject mapObjMap, MapObject mapObjBackground, MapObject mapObjHitboxHackTris)
+        public void Initialize(MapObject mapObjMap, MapObject mapObjBackground, MapObject mapObjHitboxTris)
         {
             _mapObjMap = mapObjMap;
             _mapObjBackground = mapObjBackground;
-            _mapObjHitboxHackTris = mapObjHitboxHackTris;
+            _mapObjHitboxTris = mapObjHitboxTris;
         }
 
         public void MoveUpControl(MapTracker mapTracker, int numMoves)
@@ -94,7 +94,7 @@ namespace STROOP.Map
             if (Config.MapGui.checkBoxMapOptionsEnable3D.Checked ||
                 Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
             {            
-                _mapObjHitboxHackTris.Update();
+                _mapObjHitboxTris.Update();
             }
             if (!Config.MapGui.checkBoxMapOptionsEnable3D.Checked)
             {
@@ -144,9 +144,9 @@ namespace STROOP.Map
             listOrderByY = listOrderByY.OrderBy(obj => obj.GetY()).ToList();
             List<MapObject> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
 
-            if (Config.MapGui.checkBoxMapOptionsEnableHitboxHackTris.Checked)
+            if (!Config.MapGui.checkBoxMapOptionsDisableHitboxTris.Checked)
             {
-                listCombined.Insert(0, _mapObjHitboxHackTris);
+                listCombined.Insert(0, _mapObjHitboxTris);
             }
             listCombined.Insert(0, _mapObjMap);
             listCombined.Insert(0, _mapObjBackground);
@@ -245,9 +245,9 @@ namespace STROOP.Map
 
             List<MapObject> listCombined = listOrderOnBottom.Concat(listOrderByY).Concat(listOrderOnTop).ToList();
             listCombined.Insert(0, _mapObjBackground);
-            if (Config.MapGui.checkBoxMapOptionsEnableHitboxHackTris.Checked)
+            if (!Config.MapGui.checkBoxMapOptionsDisableHitboxTris.Checked)
             {
-                listCombined.Insert(0, _mapObjHitboxHackTris);
+                listCombined.Insert(0, _mapObjHitboxTris);
             }
 
             for (int i = 0; i < Config.Map3DCamera.ZRegionCount; i++)

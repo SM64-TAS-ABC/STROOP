@@ -391,7 +391,7 @@ namespace STROOP.Map
                     mapObject = new MapObjectHitboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectHitboxHackTriangle":
-                    mapObject = new MapObjectHitboxHackTriangle(false);
+                    mapObject = new MapObjectHitboxTriangle(false);
                     break;
                 case "MapObjectHolp":
                     mapObject = new MapObjectHolp();

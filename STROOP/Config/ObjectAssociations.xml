@@ -69,9 +69,9 @@
   <TriangleOther>
     <MapImage path="Triangle Other.png"/>
   </TriangleOther>
-  <HitboxHackTris>
-    <MapImage path="Hitbox Hack Tris.png"/>
-  </HitboxHackTris>
+  <HitboxTris>
+    <MapImage path="Hitbox Tris.png"/>
+  </HitboxTris>
   <CellGridlines>
     <MapImage path="Cell Gridlines.png"/>
   </CellGridlines>

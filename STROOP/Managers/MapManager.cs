@@ -27,7 +27,7 @@ namespace STROOP.Managers
 
         private MapObjectCurrentLevel _defaulMapObjectCurrentMap;
         private MapObjectCurrentBackground _defaulMapObjectCurrentBackground;
-        private MapObjectHitboxHackTriangle _defaulMapObjectHitboxHackTriangle;
+        private MapObjectHitboxTriangle _defaulMapObjectHitboxTriangle;
 
         private Action _checkBoxMarioAction;
         private Action _checkBoxGhostAction;
@@ -86,11 +86,11 @@ namespace STROOP.Managers
             // FlowLayoutPanel
             _defaulMapObjectCurrentMap = new MapObjectCurrentLevel();
             _defaulMapObjectCurrentBackground = new MapObjectCurrentBackground();
-            _defaulMapObjectHitboxHackTriangle = new MapObjectHitboxHackTriangle(true);
+            _defaulMapObjectHitboxTriangle = new MapObjectHitboxTriangle(true);
             Config.MapGui.flowLayoutPanelMapTrackers.Initialize(
                 _defaulMapObjectCurrentMap,
                 _defaulMapObjectCurrentBackground,
-                _defaulMapObjectHitboxHackTriangle);
+                _defaulMapObjectHitboxTriangle);
 
             // ComboBox for Level
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
@@ -374,10 +374,10 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
-            ToolStripMenuItem itemHitboxHackTris = new ToolStripMenuItem("Add Tracker for Hitbox Hack Tris");
-            itemHitboxHackTris.Click += (sender, e) =>
+            ToolStripMenuItem itemHitboxTris = new ToolStripMenuItem("Add Tracker for Hitbox Tris");
+            itemHitboxTris.Click += (sender, e) =>
             {
-                MapObject mapObj = new MapObjectHitboxHackTriangle(false);
+                MapObject mapObj = new MapObjectHitboxTriangle(false);
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -516,7 +516,7 @@ namespace STROOP.Managers
 
             ToolStripMenuItem itemMisc = new ToolStripMenuItem("Misc...");
             itemMisc.DropDownItems.Add(itemWaters);
-            itemMisc.DropDownItems.Add(itemHitboxHackTris);
+            itemMisc.DropDownItems.Add(itemHitboxTris);
             itemMisc.DropDownItems.Add(itemAggregatedPath);
             itemMisc.DropDownItems.Add(itemCompass);
             itemMisc.DropDownItems.Add(itemCoordinateLabels);
@@ -735,9 +735,8 @@ namespace STROOP.Managers
             });
 
             // Additional Checkboxes
-            Config.MapGui.checkBoxMapOptionsEnableHitboxHackTris.Checked = true;
             ControlUtilities.AddContextMenuStripFunctions(
-                Config.MapGui.checkBoxMapOptionsEnableHitboxHackTris,
+                Config.MapGui.checkBoxMapOptionsDisableHitboxTris,
                 new List<string>()
                 {
                     "Reset",
@@ -746,9 +745,9 @@ namespace STROOP.Managers
                 },
                 new List<Action>()
                 {
-                    () => _defaulMapObjectHitboxHackTriangle.Reset(),
-                    () => _defaulMapObjectHitboxHackTriangle.ToggleUseCrossSection(),
-                    () => _defaulMapObjectHitboxHackTriangle.ToggleShowArrows(),
+                    () => _defaulMapObjectHitboxTriangle.Reset(),
+                    () => _defaulMapObjectHitboxTriangle.ToggleUseCrossSection(),
+                    () => _defaulMapObjectHitboxTriangle.ToggleShowArrows(),
                 });
             Config.MapGui.checkBoxMapOptionsEnable3D.Click +=
                 (sender, e) => SetEnable3D(Config.MapGui.checkBoxMapOptionsEnable3D.Checked);
@@ -998,7 +997,7 @@ namespace STROOP.Managers
             {
                 XElement mapTabSettings = new XElement(XName.Get("MapTabSettings"));
 
-                mapTabSettings.Add(new XAttribute("enableHitboxHackTris", Config.MapGui.checkBoxMapOptionsEnableHitboxHackTris.Checked));
+                mapTabSettings.Add(new XAttribute("disableHitboxTris", Config.MapGui.checkBoxMapOptionsDisableHitboxTris.Checked));
                 mapTabSettings.Add(new XAttribute("enable3D", Config.MapGui.checkBoxMapOptionsEnable3D.Checked));
                 mapTabSettings.Add(new XAttribute("enableOrthographicView", Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked));
                 mapTabSettings.Add(new XAttribute("enablePuView", Config.MapGui.checkBoxMapOptionsEnablePuView.Checked));
@@ -1096,7 +1095,7 @@ namespace STROOP.Managers
             XElement mapTabSettings = xElements.Find(el => el.Name == "MapTabSettings");
             if (mapTabSettings != null)
             {
-                Config.MapGui.checkBoxMapOptionsEnableHitboxHackTris.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableHitboxHackTris")).Value);
+                Config.MapGui.checkBoxMapOptionsDisableHitboxTris.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("disableHitboxTris")).Value);
                 SetEnable3D(ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enable3D")).Value));
                 Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableOrthographicView")).Value);
                 Config.MapGui.checkBoxMapOptionsEnablePuView.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enablePuView")).Value);

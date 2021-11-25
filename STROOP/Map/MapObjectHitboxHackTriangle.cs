@@ -17,13 +17,13 @@ using STROOP.Map.Map3D;
 
 namespace STROOP.Map
 {
-    public class MapObjectHitboxHackTriangle : MapObjectTriangle
+    public class MapObjectHitboxTriangle : MapObjectTriangle
     {
         private readonly bool _isDefaultInstance;
         private readonly List<uint> _levelTriAddressList;
         private readonly List<uint> _objTriAddressList;
 
-        public MapObjectHitboxHackTriangle(bool isDefaultInstance)
+        public MapObjectHitboxTriangle(bool isDefaultInstance)
             : base()
         {
             _isDefaultInstance = isDefaultInstance;
@@ -182,12 +182,12 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Hitbox Hack Tris";
+            return "Hitbox Tris";
         }
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.HitboxHackTrisImage;
+            return Config.ObjectAssociations.HitboxTrisImage;
         }
 
         public override void Update()
