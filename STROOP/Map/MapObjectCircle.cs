@@ -139,9 +139,9 @@ namespace STROOP.Map
             }
         }
 
-        public override MapObjectHoverData GetHoverDataTopDownView()
+        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag)
         {
-            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);

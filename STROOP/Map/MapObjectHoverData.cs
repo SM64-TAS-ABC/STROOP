@@ -56,9 +56,9 @@ namespace STROOP.Map
             Info = info;
         }
 
-        public static Point? GetPositionMaybe()
+        public static Point? GetPositionMaybe(bool isForObjectDrag)
         {
-            Point cursorPos = ContextMenuStripIsOpen ? ContextMenuStripPoint : Cursor.Position;
+            Point cursorPos = !isForObjectDrag && ContextMenuStripIsOpen ? ContextMenuStripPoint : Cursor.Position;
             Point controlPos = Config.MapGui.CurrentControl.PointToClient(cursorPos);
             if (controlPos.X < 0 || controlPos.X >= Config.MapGui.GLControlMap2D.Width ||
                 controlPos.Y < 0 || controlPos.Y >= Config.MapGui.GLControlMap2D.Height)
@@ -68,16 +68,16 @@ namespace STROOP.Map
             return controlPos;
         }
 
-        public static MapObjectHoverData GetMapObjectHoverDataForCursor()
+        public static MapObjectHoverData GetMapObjectHoverDataForCursor(bool isForObjectDrag)
         {
-            (float x, float y, float z)? cursorPosition = GetCursorPosition();
+            (float x, float y, float z)? cursorPosition = GetCursorPosition(isForObjectDrag);
             if (!cursorPosition.HasValue) return null;
             return new MapObjectHoverData(null, cursorPosition.Value.x, cursorPosition.Value.y, cursorPosition.Value.z);
         }
 
-        public static (float x, float y, float z)? GetCursorPosition()
+        public static (float x, float y, float z)? GetCursorPosition(bool isForObjectDrag)
         {
-            Point? relPosMaybe = GetPositionMaybe();
+            Point? relPosMaybe = GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
             float inGameX, inGameY, inGameZ;
@@ -104,7 +104,7 @@ namespace STROOP.Map
             {
                 items = new List<ToolStripItem>();
             }
-            (float x, float y, float z)? cursorPosition = GetCursorPosition();
+            (float x, float y, float z)? cursorPosition = GetCursorPosition(false);
             if (cursorPosition.HasValue)
             {
                 if (items.Count > 0)

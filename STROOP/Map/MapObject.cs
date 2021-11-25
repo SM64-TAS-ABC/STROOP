@@ -215,24 +215,24 @@ namespace STROOP.Map
         {
         }
 
-        public MapObjectHoverData GetHoverData()
+        public MapObjectHoverData GetHoverData(bool isForObjectDrag)
         {
             if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
             {
-                return GetHoverDataOrthographicView();
+                return GetHoverDataOrthographicView(isForObjectDrag);
             }
             else
             {
-                return GetHoverDataTopDownView();
+                return GetHoverDataTopDownView(isForObjectDrag);
             }
         }
 
-        public virtual MapObjectHoverData GetHoverDataTopDownView()
+        public virtual MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag)
         {
             return null;
         }
 
-        public virtual MapObjectHoverData GetHoverDataOrthographicView()
+        public virtual MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag)
         {
             return null;
         }

@@ -544,10 +544,10 @@ namespace STROOP.Map
             return (xMidpoint, zMidpoint);
         }
 
-        public override MapObjectHoverData GetHoverDataTopDownView()
+        public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag)
         {
             bool isShowingTriUnits = _showTriUnits && MapUtilities.IsAbleToShowUnitPrecision();
-            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
 

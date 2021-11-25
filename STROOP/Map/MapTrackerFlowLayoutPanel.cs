@@ -159,12 +159,12 @@ namespace STROOP.Map
                 for (int i = listCombined.Count - 1; i >= 0; i--)
                 {
                     MapObject mapObject = listCombined[i];
-                    hoverData = mapObject.GetHoverData();
+                    hoverData = mapObject.GetHoverData(false);
                     if (hoverData != null) break;
                 }
                 if (hoverData == null || KeyboardUtilities.IsCtrlHeld())
                 {
-                    hoverData = MapObjectHoverData.GetMapObjectHoverDataForCursor();
+                    hoverData = MapObjectHoverData.GetMapObjectHoverDataForCursor(false);
                 }
                 if (!Equals(PreviousHoverData, hoverData))
                 {
@@ -195,7 +195,7 @@ namespace STROOP.Map
                     MapObject mapObject = listCombined[i];
                     if (mapObject.GetDragPosition().HasValue)
                     {
-                        ObjectDragData = mapObject.GetHoverData();
+                        ObjectDragData = mapObject.GetHoverData(true);
                     }
                     if (ObjectDragData != null) break;
                 }

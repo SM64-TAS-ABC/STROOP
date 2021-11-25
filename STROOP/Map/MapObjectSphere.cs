@@ -193,9 +193,9 @@ namespace STROOP.Map
             }
         }
 
-        public override MapObjectHoverData GetHoverDataOrthographicView()
+        public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag)
         {
-            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe();
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
             List<(float centerX, float centerZ, float radius)> dimensionList = GetOrthographicDimensionsForControl();
