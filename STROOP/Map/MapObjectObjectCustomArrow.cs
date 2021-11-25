@@ -57,7 +57,6 @@ namespace STROOP.Map
 
         protected override void SetYaw(double yaw)
         {
-            Config.SetDebugText(yaw);
             if (_numBytes == 2)
             {
                 Config.Stream.SetValue(MoreMath.NormalizeAngleUshort(yaw), _posAngle.GetObjAddress() + _yawOffset);
