@@ -99,6 +99,22 @@ namespace STROOP.Map
             Config.MapGui.CurrentControl = _glControl;
             _glControl.MakeCurrent();
 
+            UpdateCursor();
+            UpdateDraggedObject();
+            UpdateViewport();
+            UpdateMapView();
+
+            // Set default background color (clear drawing area)
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            GL.MatrixMode(MatrixMode.Modelview);
+
+            Config.MapGui.flowLayoutPanelMapTrackers.DrawOn2DControl(_isMainGraphics);
+
+            _glControl.SwapBuffers();
+        }
+
+        private void UpdateCursor()
+        {
             Cursor cursor;
             if (Config.MapGui.checkBoxMapOptionsObjectDrag.Checked)
             {
@@ -123,17 +139,14 @@ namespace STROOP.Map
             {
                 _glControl.Cursor = cursor;
             }
+        }
 
-            UpdateViewport();
-            UpdateMapView();
-
-            // Set default background color (clear drawing area)
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            GL.MatrixMode(MatrixMode.Modelview);
-
-            Config.MapGui.flowLayoutPanelMapTrackers.DrawOn2DControl(_isMainGraphics);
-
-            _glControl.SwapBuffers();
+        private void UpdateDraggedObject()
+        {
+            if (DraggedObject != null)
+            {
+                DraggedObject = DraggedObject.MapObject?.GetHoverData(true) ?? DraggedObject;
+            }
         }
 
         private void UpdateViewport()
