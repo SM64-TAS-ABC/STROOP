@@ -15,7 +15,7 @@
   <CloningUpdatesHolpType>true</CloningUpdatesHolpType>
   <UseInGameTrigForAngleLogic>false</UseInGameTrigForAngleLogic>
   <UseExtendedLevelBoundaries>false</UseExtendedLevelBoundaries>
-  <UseExpandedRamSize>false</UseExpandedRamSize>
+  <UseExpandedRamSize>true</UseExpandedRamSize>
   <DoQuickStartup>false</DoQuickStartup>
   <TabOrder>
     <Tab>Object</Tab>
