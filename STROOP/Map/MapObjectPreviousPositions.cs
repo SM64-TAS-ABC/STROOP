@@ -313,7 +313,7 @@ namespace STROOP.Map
 
         public List<(float x, float y, float z, float angle, int tex, bool show)> GetCurrentFrameData()
         {
-            uint startAddress = 0x80372F00;
+            uint startAddress = RomVersionConfig.SwitchMap(0x80372F00, 0x80400010);
 
             List<int> texValues = new List<int>()
             {
@@ -353,7 +353,7 @@ namespace STROOP.Map
                 allResults.Add((x, y, z, angle, texValues[i]));
             }
 
-            int variable = Config.Stream.GetInt(0x80372E3C);
+            int variable = Config.Stream.GetInt(RomVersionConfig.SwitchMap(0x80372E3C, 0x80400000));
             int numQFrames = (variable - 112) / 64;
             int numPoints = 7 + 4 * numQFrames;
 
