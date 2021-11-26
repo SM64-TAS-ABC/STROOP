@@ -313,152 +313,49 @@ namespace STROOP.Map
 
         public List<(float x, float y, float z, float angle, int tex, bool show)> GetCurrentFrameData()
         {
-            float pos01X = Config.Stream.GetFloat(0x80372F00);
-            float pos01Y = Config.Stream.GetFloat(0x80372F04);
-            float pos01Z = Config.Stream.GetFloat(0x80372F08);
-            float pos01A = Config.Stream.GetUShort(0x80372F0E);
+            uint startAddress = 0x80372F00;
 
-            float pos02X = Config.Stream.GetFloat(0x80372F10);
-            float pos02Y = Config.Stream.GetFloat(0x80372F14);
-            float pos02Z = Config.Stream.GetFloat(0x80372F18);
-            float pos02A = Config.Stream.GetUShort(0x80372F1E);
+            List<int> texValues = new List<int>()
+            {
+                _pinkMarioTex, // initial
+                _yellowMarioTex, // warp_area
+                _purpleMarioTex, // check_instant_warp
+                _greyMarioTex, // platform displacement
+                _turquosieMarioTex, // wall0A
+                _greenMarioTex, // wall0B
+                _brownMarioTex, // obj interactions
+                _orangeMarioTex, // qstep1
+                _turquosieMarioTex, // wall1A
+                _greenMarioTex, // wall1B
+                _blueMarioTex, // floor1
+                _orangeMarioTex, // qstep2
+                _turquosieMarioTex, // wall2A
+                _greenMarioTex, // wall2B
+                _blueMarioTex, // floor2
+                _orangeMarioTex, // qstep3
+                _turquosieMarioTex, // wall3A
+                _greenMarioTex, // wall3B
+                _blueMarioTex, // floor3
+                _orangeMarioTex, // qstep4
+                _turquosieMarioTex, // wall4A
+                _greenMarioTex, // wall4B
+                _blueMarioTex, // floor4
+            };
 
-            float pos03X = Config.Stream.GetFloat(0x80372F20);
-            float pos03Y = Config.Stream.GetFloat(0x80372F24);
-            float pos03Z = Config.Stream.GetFloat(0x80372F28);
-            float pos03A = Config.Stream.GetUShort(0x80372F2E);
-
-            float pos04X = Config.Stream.GetFloat(0x80372F30);
-            float pos04Y = Config.Stream.GetFloat(0x80372F34);
-            float pos04Z = Config.Stream.GetFloat(0x80372F38);
-            float pos04A = Config.Stream.GetUShort(0x80372F3E);
-
-            float pos05X = Config.Stream.GetFloat(0x80372F40);
-            float pos05Y = Config.Stream.GetFloat(0x80372F44);
-            float pos05Z = Config.Stream.GetFloat(0x80372F48);
-            float pos05A = Config.Stream.GetUShort(0x80372F4E);
-
-            float pos06X = Config.Stream.GetFloat(0x80372F50);
-            float pos06Y = Config.Stream.GetFloat(0x80372F54);
-            float pos06Z = Config.Stream.GetFloat(0x80372F58);
-            float pos06A = Config.Stream.GetUShort(0x80372F5E);
-
-            float pos07X = Config.Stream.GetFloat(0x80372F60);
-            float pos07Y = Config.Stream.GetFloat(0x80372F64);
-            float pos07Z = Config.Stream.GetFloat(0x80372F68);
-            float pos07A = Config.Stream.GetUShort(0x80372F6E);
-
-            float pos08X = Config.Stream.GetFloat(0x80372F70);
-            float pos08Y = Config.Stream.GetFloat(0x80372F74);
-            float pos08Z = Config.Stream.GetFloat(0x80372F78);
-            float pos08A = Config.Stream.GetUShort(0x80372F7E);
-
-            float pos09X = Config.Stream.GetFloat(0x80372F80);
-            float pos09Y = Config.Stream.GetFloat(0x80372F84);
-            float pos09Z = Config.Stream.GetFloat(0x80372F88);
-            float pos09A = Config.Stream.GetUShort(0x80372F8E);
-
-            float pos10X = Config.Stream.GetFloat(0x80372F90);
-            float pos10Y = Config.Stream.GetFloat(0x80372F94);
-            float pos10Z = Config.Stream.GetFloat(0x80372F98);
-            float pos10A = Config.Stream.GetUShort(0x80372F9E);
-
-            float pos11X = Config.Stream.GetFloat(0x80372FA0);
-            float pos11Y = Config.Stream.GetFloat(0x80372FA4);
-            float pos11Z = Config.Stream.GetFloat(0x80372FA8);
-            float pos11A = Config.Stream.GetUShort(0x80372FAE);
-
-            float pos12X = Config.Stream.GetFloat(0x80372FB0);
-            float pos12Y = Config.Stream.GetFloat(0x80372FB4);
-            float pos12Z = Config.Stream.GetFloat(0x80372FB8);
-            float pos12A = Config.Stream.GetUShort(0x80372FBE);
-
-            float pos13X = Config.Stream.GetFloat(0x80372FC0);
-            float pos13Y = Config.Stream.GetFloat(0x80372FC4);
-            float pos13Z = Config.Stream.GetFloat(0x80372FC8);
-            float pos13A = Config.Stream.GetUShort(0x80372FCE);
-
-            float pos14X = Config.Stream.GetFloat(0x80372FD0);
-            float pos14Y = Config.Stream.GetFloat(0x80372FD4);
-            float pos14Z = Config.Stream.GetFloat(0x80372FD8);
-            float pos14A = Config.Stream.GetUShort(0x80372FDE);
-
-            float pos15X = Config.Stream.GetFloat(0x80372FE0);
-            float pos15Y = Config.Stream.GetFloat(0x80372FE4);
-            float pos15Z = Config.Stream.GetFloat(0x80372FE8);
-            float pos15A = Config.Stream.GetUShort(0x80372FEE);
-
-            float pos16X = Config.Stream.GetFloat(0x80372FF0);
-            float pos16Y = Config.Stream.GetFloat(0x80372FF4);
-            float pos16Z = Config.Stream.GetFloat(0x80372FF8);
-            float pos16A = Config.Stream.GetUShort(0x80372FFE);
-
-            float pos17X = Config.Stream.GetFloat(0x80373000);
-            float pos17Y = Config.Stream.GetFloat(0x80373004);
-            float pos17Z = Config.Stream.GetFloat(0x80373008);
-            float pos17A = Config.Stream.GetUShort(0x8037300E);
-
-            float pos18X = Config.Stream.GetFloat(0x80373010);
-            float pos18Y = Config.Stream.GetFloat(0x80373014);
-            float pos18Z = Config.Stream.GetFloat(0x80373018);
-            float pos18A = Config.Stream.GetUShort(0x8037301E);
-
-            float pos19X = Config.Stream.GetFloat(0x80373020);
-            float pos19Y = Config.Stream.GetFloat(0x80373024);
-            float pos19Z = Config.Stream.GetFloat(0x80373028);
-            float pos19A = Config.Stream.GetUShort(0x8037302E);
-
-            float pos20X = Config.Stream.GetFloat(0x80373030);
-            float pos20Y = Config.Stream.GetFloat(0x80373034);
-            float pos20Z = Config.Stream.GetFloat(0x80373038);
-            float pos20A = Config.Stream.GetUShort(0x8037303E);
-
-            float pos21X = Config.Stream.GetFloat(0x80373040);
-            float pos21Y = Config.Stream.GetFloat(0x80373044);
-            float pos21Z = Config.Stream.GetFloat(0x80373048);
-            float pos21A = Config.Stream.GetUShort(0x8037304E);
-
-            float pos22X = Config.Stream.GetFloat(0x80373050);
-            float pos22Y = Config.Stream.GetFloat(0x80373054);
-            float pos22Z = Config.Stream.GetFloat(0x80373058);
-            float pos22A = Config.Stream.GetUShort(0x8037305E);
-
-            float pos23X = Config.Stream.GetFloat(0x80373060);
-            float pos23Y = Config.Stream.GetFloat(0x80373064);
-            float pos23Z = Config.Stream.GetFloat(0x80373068);
-            float pos23A = Config.Stream.GetUShort(0x8037306E);
+            List<(float x, float y, float z, ushort angle, int tex)> allResults =
+                new List<(float x, float y, float z, ushort angle, int tex)>();
+            for (int i = 0; i < 23; i++)
+            {
+                float x = Config.Stream.GetFloat(startAddress + (uint)i * 0x10 + 0x0);
+                float y = Config.Stream.GetFloat(startAddress + (uint)i * 0x10 + 0x4);
+                float z = Config.Stream.GetFloat(startAddress + (uint)i * 0x10 + 0x8);
+                ushort angle = Config.Stream.GetUShort(startAddress + (uint)i * 0x10 + 0xE);
+                allResults.Add((x, y, z, angle, texValues[i]));
+            }
 
             int variable = Config.Stream.GetInt(0x80372E3C);
             int numQFrames = (variable - 112) / 64;
             int numPoints = 7 + 4 * numQFrames;
-
-            List<(float x, float y, float z, float angle, int tex)> allResults =
-                new List<(float x, float y, float z, float angle, int tex)>()
-                {
-                    (pos01X, pos01Y, pos01Z, pos01A, _pinkMarioTex), // initial
-                    (pos02X, pos02Y, pos02Z, pos02A, _yellowMarioTex), // warp_area
-                    (pos03X, pos03Y, pos03Z, pos03A, _purpleMarioTex), // check_instant_warp
-                    (pos04X, pos04Y, pos04Z, pos04A, _greyMarioTex), // platform displacement
-                    (pos05X, pos05Y, pos05Z, pos05A, _turquosieMarioTex), // wall0A
-                    (pos06X, pos06Y, pos06Z, pos06A, _greenMarioTex), // wall0B
-                    (pos07X, pos07Y, pos07Z, pos07A, _brownMarioTex), // obj interactions
-                    (pos08X, pos08Y, pos08Z, pos08A, _orangeMarioTex), // qstep1
-                    (pos09X, pos09Y, pos09Z, pos09A, _turquosieMarioTex), // wall1A
-                    (pos10X, pos10Y, pos10Z, pos10A, _greenMarioTex), // wall1B
-                    (pos11X, pos11Y, pos11Z, pos11A, _blueMarioTex), // floor1
-                    (pos12X, pos12Y, pos12Z, pos12A, _orangeMarioTex), // qstep2
-                    (pos13X, pos13Y, pos13Z, pos13A, _turquosieMarioTex), // wall2A
-                    (pos14X, pos14Y, pos14Z, pos14A, _greenMarioTex), // wall2B
-                    (pos15X, pos15Y, pos15Z, pos15A, _blueMarioTex), // floor2
-                    (pos16X, pos16Y, pos16Z, pos16A, _orangeMarioTex), // qstep3
-                    (pos17X, pos17Y, pos17Z, pos17A, _turquosieMarioTex), // wall3A
-                    (pos18X, pos18Y, pos18Z, pos18A, _greenMarioTex), // wall3B
-                    (pos19X, pos19Y, pos19Z, pos19A, _blueMarioTex), // floor3
-                    (pos20X, pos20Y, pos20Z, pos20A, _orangeMarioTex), // qstep4
-                    (pos21X, pos21Y, pos21Z, pos21A, _turquosieMarioTex), // wall4A
-                    (pos22X, pos22Y, pos22Z, pos22A, _greenMarioTex), // wall4B
-                    (pos23X, pos23Y, pos23Z, pos23A, _blueMarioTex), // floor4
-                };
 
             double secondsPerPoint = 0.5;
             double totalSeconds = secondsPerPoint * numPoints;
