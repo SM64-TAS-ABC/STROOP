@@ -722,19 +722,65 @@ namespace STROOP.Map
             {
                 if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
                 {
-
+                    int pixelDiffX = e.X - _objectDragStartMouseX;
+                    int pixelDiffY = e.Y - _objectDragStartMouseY;
+                    double unitDiffX = pixelDiffX / (double)MapViewScaleValue;
+                    double unitDiffY = pixelDiffY / (double)MapViewScaleValue;
+                    double newObjX, newObjY, newObjZ;
+                    if (MapViewPitchValue == 0 && MapViewYawValue == 0)
+                    {
+                        newObjX = _translateStartCenterX - unitDiffX;
+                        newObjY = _translateStartCenterY - unitDiffY;
+                        newObjZ = _translateStartCenterZ;
+                    }
+                    else if (MapViewPitchValue == 0 && MapViewYawValue == 16384)
+                    {
+                        newObjX = _translateStartCenterX;
+                        newObjY = _translateStartCenterY - unitDiffY;
+                        newObjZ = _translateStartCenterZ + unitDiffX;
+                    }
+                    else if (MapViewPitchValue == 0 && MapViewYawValue == 32768)
+                    {
+                        newObjX = _translateStartCenterX + unitDiffX;
+                        newObjY = _translateStartCenterY - unitDiffY;
+                        newObjZ = _translateStartCenterZ;
+                    }
+                    else if (MapViewPitchValue == 0 && MapViewYawValue == 49152)
+                    {
+                        newObjX = _translateStartCenterX;
+                        newObjY = _translateStartCenterY - unitDiffY;
+                        newObjZ = _translateStartCenterZ - unitDiffX;
+                    }
+                    else
+                    {
+                        double yawRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewYawValue);
+                        double pitchRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewPitchValue);
+                        double xOffset =
+                            Math.Cos(yawRadians) * unitDiffX +
+                            Math.Sin(pitchRadians) * -1 * Math.Sin(yawRadians) * unitDiffY;
+                        double yOffset =
+                            Math.Cos(pitchRadians) * unitDiffY;
+                        double zOffset =
+                            Math.Sin(yawRadians) * -1 * unitDiffX +
+                            Math.Sin(pitchRadians) * -1 * Math.Cos(yawRadians) * unitDiffY;
+                        newObjX = _translateStartCenterX - xOffset;
+                        newObjY = _translateStartCenterY - yOffset;
+                        newObjZ = _translateStartCenterZ - zOffset;
+                    }
+                    DraggedObject.SetDragPositionOrthographicView(x: newObjX, y: newObjY, z: newObjZ);
+                    return;
                 }
                 else
                 {
                     int pixelDiffX = e.X - _objectDragStartMouseX;
                     int pixelDiffY = e.Y - _objectDragStartMouseY;
-                    float unitDiffX = pixelDiffX / MapViewScaleValue;
-                    float unitDiffY = pixelDiffY / MapViewScaleValue;
-                    (float rotatedX, float rotatedY) = ((float, float))
+                    double unitDiffX = pixelDiffX / MapViewScaleValue;
+                    double unitDiffY = pixelDiffY / MapViewScaleValue;
+                    (double rotatedX, double rotatedY) =
                         MoreMath.RotatePointAboutPointAnAngularDistance(
                             unitDiffX, unitDiffY, 0, 0, MapViewYawValue);
-                    float newObjX = _objectDragStartX + rotatedX;
-                    float newObjZ = _objectDragStartZ + rotatedY;
+                    double newObjX = _objectDragStartX + rotatedX;
+                    double newObjZ = _objectDragStartZ + rotatedY;
                     DraggedObject.SetDragPositionTopDownView(x: newObjX, z: newObjZ);
                     return;
                 }
