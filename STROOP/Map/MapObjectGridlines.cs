@@ -112,7 +112,7 @@ namespace STROOP.Map
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
-            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
 
             var positions = GetGridlineIntersectionPositionsTopDownView();
             for (int i = positions.Count - 1; i >= 0; i--)

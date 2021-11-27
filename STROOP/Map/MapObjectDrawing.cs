@@ -106,7 +106,7 @@ namespace STROOP.Map
 
         public override void NotifyMouseEvent(MouseEvent mouseEvent, bool isLeftButton, int mouseX, int mouseY)
         {
-            (float x, float z) inGameCoords = MapUtilities.ConvertCoordsForInGame(mouseX, mouseY);
+            (float x, float z) inGameCoords = MapUtilities.ConvertCoordsForInGameTopDownView(mouseX, mouseY);
             (float x, float y, float z) currentVertex = (inGameCoords.x, 0, inGameCoords.z);
             switch (mouseEvent)
             {

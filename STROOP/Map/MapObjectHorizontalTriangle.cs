@@ -536,7 +536,7 @@ namespace STROOP.Map
         private (float x, float z) GetInGameMidpointFromControlQuad(List<(float x, float z)> vertexList)
         {
             List<(float x, float z)> inGameVertexList =
-                vertexList.ConvertAll(v => MapUtilities.ConvertCoordsForInGame(v.x, v.z));
+                vertexList.ConvertAll(v => MapUtilities.ConvertCoordsForInGameTopDownView(v.x, v.z));
             float xAverage = inGameVertexList.Average(v => v.x);
             float zAverage = inGameVertexList.Average(v => v.z);
             float xMidpoint = (int)xAverage + (xAverage >= 0 ? 0.5f : -0.5f);

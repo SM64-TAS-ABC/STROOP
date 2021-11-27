@@ -466,7 +466,7 @@ namespace STROOP.Map
                             double radius = Scales ? _iconSize * Config.CurrentMapGraphics.MapViewScaleValue : _iconSize;
                             if (dist <= radius || forceCursorPosition)
                             {
-                                (float x, float z) = MapUtilities.ConvertCoordsForInGame(vertex.x, vertex.z);
+                                (float x, float z) = MapUtilities.ConvertCoordsForInGameTopDownView(vertex.x, vertex.z);
                                 return new MapObjectHoverData(this, x, 0, z, tri: wallData.Tri, index: j, index2: k);
                             }
                         }

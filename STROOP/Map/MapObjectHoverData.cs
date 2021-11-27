@@ -87,7 +87,7 @@ namespace STROOP.Map
             }
             else
             {
-                (inGameX, inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+                (inGameX, inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
                 inGameY = Config.CurrentMapGraphics.MapViewCenterYValue;
             }
             return (inGameX, inGameY, inGameZ);

@@ -272,7 +272,7 @@ namespace STROOP.Map
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
-            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGame(relPos.X, relPos.Y);
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
 
             (double x, double y, double z) = PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
             double dist = MoreMath.GetDistanceBetween(x, z, inGameX, inGameZ);

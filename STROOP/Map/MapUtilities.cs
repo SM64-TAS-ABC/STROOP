@@ -60,7 +60,7 @@ namespace STROOP.Map
         }
 
         /** Takes in control coordinates, outputs in-game coordinates. */
-        public static (float x, float z) ConvertCoordsForInGame(float x, float z)
+        public static (float x, float z) ConvertCoordsForInGameTopDownView(float x, float z)
         {
             float xOffset = x - Config.MapGui.CurrentControl.Width / 2;
             float zOffset = z - Config.MapGui.CurrentControl.Height / 2;
