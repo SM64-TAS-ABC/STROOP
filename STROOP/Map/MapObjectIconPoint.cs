@@ -55,10 +55,24 @@ namespace STROOP.Map
             return (posAngle.X, posAngle.Y, posAngle.Z);
         }
 
-        public override void SetDragPosition(double? x = null, double? y = null, double? z = null)
+        public override void SetDragPositionTopDownView(double? x = null, double? y = null, double? z = null)
         {
             if (KeyboardUtilities.IsCtrlHeld()) z = null;
             if (KeyboardUtilities.IsShiftHeld()) x = null;
+            GetPositionAngle().SetValues(x, y, z);
+        }
+
+        public override void SetDragPositionOrthographicView(double? x = null, double? y = null, double? z = null)
+        {
+            if (KeyboardUtilities.IsCtrlHeld())
+            {
+                y = null;
+            }
+            if (KeyboardUtilities.IsShiftHeld())
+            {
+                x = null;
+                z = null;
+            }
             GetPositionAngle().SetValues(x, y, z);
         }
 

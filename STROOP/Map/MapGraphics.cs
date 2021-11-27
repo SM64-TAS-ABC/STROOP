@@ -720,17 +720,24 @@ namespace STROOP.Map
 
             if (DraggedObject != null)
             {
-                int pixelDiffX = e.X - _objectDragStartMouseX;
-                int pixelDiffY = e.Y - _objectDragStartMouseY;
-                float unitDiffX = pixelDiffX / MapViewScaleValue;
-                float unitDiffY = pixelDiffY / MapViewScaleValue;
-                (float rotatedX, float rotatedY) = ((float, float))
-                    MoreMath.RotatePointAboutPointAnAngularDistance(
-                        unitDiffX, unitDiffY, 0, 0, MapViewYawValue);
-                float newObjX = _objectDragStartX + rotatedX;
-                float newObjZ = _objectDragStartZ + rotatedY;
-                DraggedObject.SetDragPosition(x: newObjX, z: newObjZ);
-                return;
+                if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+                {
+
+                }
+                else
+                {
+                    int pixelDiffX = e.X - _objectDragStartMouseX;
+                    int pixelDiffY = e.Y - _objectDragStartMouseY;
+                    float unitDiffX = pixelDiffX / MapViewScaleValue;
+                    float unitDiffY = pixelDiffY / MapViewScaleValue;
+                    (float rotatedX, float rotatedY) = ((float, float))
+                        MoreMath.RotatePointAboutPointAnAngularDistance(
+                            unitDiffX, unitDiffY, 0, 0, MapViewYawValue);
+                    float newObjX = _objectDragStartX + rotatedX;
+                    float newObjZ = _objectDragStartZ + rotatedY;
+                    DraggedObject.SetDragPositionTopDownView(x: newObjX, z: newObjZ);
+                    return;
+                }
             }
 
             if (_isTranslating)

@@ -186,7 +186,12 @@ namespace STROOP.Map
             return null;
         }
 
-        public virtual void SetDragPosition(double? x = null, double? y = null, double? z = null)
+        public virtual void SetDragPositionTopDownView(double? x = null, double? y = null, double? z = null)
+        {
+            // do nothing
+        }
+
+        public virtual void SetDragPositionOrthographicView(double? x = null, double? y = null, double? z = null)
         {
             // do nothing
         }

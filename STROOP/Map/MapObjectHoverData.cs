@@ -178,9 +178,14 @@ namespace STROOP.Map
             return MapObject?.GetDragPosition();
         }
 
-        public void SetDragPosition(double? x = null, double? y = null, double? z = null)
+        public void SetDragPositionTopDownView(double? x = null, double? y = null, double? z = null)
         {
-            MapObject?.SetDragPosition(x, y, z);
+            MapObject?.SetDragPositionTopDownView(x, y, z);
+        }
+
+        public void SetDragPositionOrthographicView(double? x = null, double? y = null, double? z = null)
+        {
+            MapObject?.SetDragPositionOrthographicView(x, y, z);
         }
     }
 }

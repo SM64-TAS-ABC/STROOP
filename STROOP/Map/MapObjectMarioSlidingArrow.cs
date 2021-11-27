@@ -44,7 +44,7 @@ namespace STROOP.Map
             return WatchVariableSpecialUtilities.GetMarioSlidingSpeed();
         }
 
-        public override void SetDragPosition(double? x = null, double? y = null, double? z = null)
+        public override void SetDragPositionTopDownView(double? x = null, double? y = null, double? z = null)
         {
             if (!x.HasValue || !z.HasValue) return;
 
