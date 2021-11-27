@@ -57,6 +57,8 @@ namespace STROOP.Map
 
         public override void SetDragPosition(double? x = null, double? y = null, double? z = null)
         {
+            if (KeyboardUtilities.IsCtrlHeld()) z = null;
+            if (KeyboardUtilities.IsShiftHeld()) x = null;
             GetPositionAngle().SetValues(x, y, z);
         }
 

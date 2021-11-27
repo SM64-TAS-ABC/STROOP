@@ -163,15 +163,21 @@ namespace STROOP.Map
             double dist = MoreMath.GetDistanceBetween(posAngle.X, posAngle.Z, x.Value, z.Value);
             double angle = MoreMath.AngleTo_AngleUnits(posAngle.X, posAngle.Z, x.Value, z.Value);
 
-            if (_useRecommendedArrowLength)
+            if (!KeyboardUtilities.IsCtrlHeld())
             {
-                SetRecommendedSize(dist);
+                if (_useRecommendedArrowLength)
+                {
+                    SetRecommendedSize(dist);
+                }
+                else
+                {
+                    GetParentMapTracker().SetSize((float)(Scales ? dist : dist * Config.CurrentMapGraphics.MapViewScaleValue));
+                }
             }
-            else
+            if (!KeyboardUtilities.IsShiftHeld())
             {
-                GetParentMapTracker().SetSize((float)(Scales ? dist : dist * Config.CurrentMapGraphics.MapViewScaleValue));
+                SetYaw(angle);
             }
-            SetYaw(angle);
         }
 
         protected abstract double GetYaw();
