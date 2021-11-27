@@ -739,9 +739,9 @@ namespace STROOP.Map
                 int pixelDiffY = HandleDragAbility(false, true, e.Y - _translateStartMouseY);
                 pixelDiffX = MapUtilities.MaybeReverse(pixelDiffX);
                 pixelDiffY = MapUtilities.MaybeReverse(pixelDiffY);
-                float unitDiffX = pixelDiffX / MapViewScaleValue;
-                float unitDiffY = pixelDiffY / MapViewScaleValue;
-                float newCenterX, newCenterY, newCenterZ;
+                double unitDiffX = pixelDiffX / (double)MapViewScaleValue;
+                double unitDiffY = pixelDiffY / (double)MapViewScaleValue;
+                double newCenterX, newCenterY, newCenterZ;
                 if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
                 {
                     if (MapViewPitchValue == 0 && MapViewYawValue == 0)
@@ -772,14 +772,14 @@ namespace STROOP.Map
                     {
                         double yawRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewYawValue);
                         double pitchRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewPitchValue);
-                        float xOffset = (float)(
+                        double xOffset =
                             Math.Cos(yawRadians) * unitDiffX +
-                            Math.Sin(pitchRadians) * -1 * Math.Sin(yawRadians) * unitDiffY);
-                        float yOffset = (float)(
-                            Math.Cos(pitchRadians) * unitDiffY);
-                        float zOffset = (float)(
+                            Math.Sin(pitchRadians) * -1 * Math.Sin(yawRadians) * unitDiffY;
+                        double yOffset =
+                            Math.Cos(pitchRadians) * unitDiffY;
+                        double zOffset =
                             Math.Sin(yawRadians) * -1 * unitDiffX +
-                            Math.Sin(pitchRadians) * -1 * Math.Cos(yawRadians) * unitDiffY);
+                            Math.Sin(pitchRadians) * -1 * Math.Cos(yawRadians) * unitDiffY;
                         newCenterX = _translateStartCenterX + xOffset;
                         newCenterY = _translateStartCenterY + yOffset;
                         newCenterZ = _translateStartCenterZ + zOffset;
@@ -787,7 +787,7 @@ namespace STROOP.Map
                 }
                 else
                 {
-                    (float rotatedX, float rotatedY) = ((float, float))
+                    (double rotatedX, double rotatedY) =
                         MoreMath.RotatePointAboutPointAnAngularDistance(
                             unitDiffX, unitDiffY, 0, 0, MapViewYawValue);
                     newCenterX = _translateStartCenterX - rotatedX;
