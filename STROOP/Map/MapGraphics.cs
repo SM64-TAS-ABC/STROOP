@@ -633,6 +633,7 @@ namespace STROOP.Map
         private int _objectDragStartMouseX = 0;
         private int _objectDragStartMouseY = 0;
         private float _objectDragStartX = 0;
+        private float _objectDragStartY = 0;
         private float _objectDragStartZ = 0;
 
         private void OnMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -655,6 +656,7 @@ namespace STROOP.Map
                         _objectDragStartMouseX = e.X;
                         _objectDragStartMouseY = e.Y;
                         _objectDragStartX = (float)dragPosStart.Value.x;
+                        _objectDragStartY = (float)dragPosStart.Value.y;
                         _objectDragStartZ = (float)dragPosStart.Value.z;
                     }
                     return;
@@ -729,27 +731,27 @@ namespace STROOP.Map
                     double newObjX, newObjY, newObjZ;
                     if (MapViewPitchValue == 0 && MapViewYawValue == 0)
                     {
-                        newObjX = _translateStartCenterX - unitDiffX;
-                        newObjY = _translateStartCenterY - unitDiffY;
-                        newObjZ = _translateStartCenterZ;
+                        newObjX = _objectDragStartX - unitDiffX;
+                        newObjY = _objectDragStartY - unitDiffY;
+                        newObjZ = _objectDragStartZ;
                     }
                     else if (MapViewPitchValue == 0 && MapViewYawValue == 16384)
                     {
-                        newObjX = _translateStartCenterX;
-                        newObjY = _translateStartCenterY - unitDiffY;
-                        newObjZ = _translateStartCenterZ + unitDiffX;
+                        newObjX = _objectDragStartX;
+                        newObjY = _objectDragStartY - unitDiffY;
+                        newObjZ = _objectDragStartZ + unitDiffX;
                     }
                     else if (MapViewPitchValue == 0 && MapViewYawValue == 32768)
                     {
-                        newObjX = _translateStartCenterX + unitDiffX;
-                        newObjY = _translateStartCenterY - unitDiffY;
-                        newObjZ = _translateStartCenterZ;
+                        newObjX = _objectDragStartX + unitDiffX;
+                        newObjY = _objectDragStartY - unitDiffY;
+                        newObjZ = _objectDragStartZ;
                     }
                     else if (MapViewPitchValue == 0 && MapViewYawValue == 49152)
                     {
-                        newObjX = _translateStartCenterX;
-                        newObjY = _translateStartCenterY - unitDiffY;
-                        newObjZ = _translateStartCenterZ - unitDiffX;
+                        newObjX = _objectDragStartX;
+                        newObjY = _objectDragStartY - unitDiffY;
+                        newObjZ = _objectDragStartZ - unitDiffX;
                     }
                     else
                     {
@@ -763,9 +765,9 @@ namespace STROOP.Map
                         double zOffset =
                             Math.Sin(yawRadians) * -1 * unitDiffX +
                             Math.Sin(pitchRadians) * -1 * Math.Cos(yawRadians) * unitDiffY;
-                        newObjX = _translateStartCenterX - xOffset;
-                        newObjY = _translateStartCenterY - yOffset;
-                        newObjZ = _translateStartCenterZ - zOffset;
+                        newObjX = _objectDragStartX - xOffset;
+                        newObjY = _objectDragStartY - yOffset;
+                        newObjZ = _objectDragStartZ - zOffset;
                     }
                     DraggedObject.SetDragPositionOrthographicView(x: newObjX, y: newObjY, z: newObjZ);
                     return;
