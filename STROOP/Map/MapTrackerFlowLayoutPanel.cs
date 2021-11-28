@@ -192,22 +192,20 @@ namespace STROOP.Map
             if (isMainGraphics)
             {
                 ObjectDragData = null;
-            }
-            if (isMainGraphics &&
-                !Config.MapGui.checkBoxMapOptionsEnable3D.Checked &&
-                Config.MapGui.checkBoxMapOptionsEnableObjectDrag.Checked)
-            {
-                for (int i = listCombined.Count - 1; i >= 0; i--)
+                if (!Config.MapGui.checkBoxMapOptionsEnable3D.Checked &&
+                    Config.MapGui.checkBoxMapOptionsEnableObjectDrag.Checked)
                 {
-                    MapObject mapObject = listCombined[i];
-                    if (mapObject.GetDragPosition().HasValue)
+                    for (int i = listCombined.Count - 1; i >= 0; i--)
                     {
-                        ObjectDragData = mapObject.GetHoverData(true, false);
+                        MapObject mapObject = listCombined[i];
+                        if (mapObject.GetDragPosition().HasValue)
+                        {
+                            ObjectDragData = mapObject.GetHoverData(true, false);
+                        }
+                        if (ObjectDragData != null) break;
                     }
-                    if (ObjectDragData != null) break;
                 }
             }
-            Config.SetDebugText(ObjectDragData?.ToString() ?? "NULL");
 
             foreach (MapObject obj in listCombined)
             {
