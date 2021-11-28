@@ -189,7 +189,10 @@ namespace STROOP.Map
                 }
             }
 
-            ObjectDragData = null;
+            if (isMainGraphics)
+            {
+                ObjectDragData = null;
+            }
             if (isMainGraphics &&
                 !Config.MapGui.checkBoxMapOptionsEnable3D.Checked &&
                 Config.MapGui.checkBoxMapOptionsEnableObjectDrag.Checked)
@@ -204,6 +207,7 @@ namespace STROOP.Map
                     if (ObjectDragData != null) break;
                 }
             }
+            Config.SetDebugText(ObjectDragData?.ToString() ?? "NULL");
 
             foreach (MapObject obj in listCombined)
             {
