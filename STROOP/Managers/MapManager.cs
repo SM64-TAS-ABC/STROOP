@@ -1503,43 +1503,40 @@ namespace STROOP.Managers
         {
             if (MapConfig.MapAllowKeyboardControls == 0) return;
 
-            if (KeyboardUtilities.IsCtrlHeld())
+            if (Keyboard.IsKeyDown(Key.Left))
             {
-                if (Keyboard.IsKeyDown(Key.Left))
-                {
-
-                }
-                else if (Keyboard.IsKeyDown(Key.Right))
-                {
-
-                }
-                if (Keyboard.IsKeyDown(Key.Up))
-                {
-
-                }
-                else if (Keyboard.IsKeyDown(Key.Down))
-                {
-
-                }
+                Config.MapGraphics.ChangeCenter(-1, 0, 0, MapConfig.MapKeyboardTranslateSpeed);
             }
-            else
+            else if (Keyboard.IsKeyDown(Key.Right))
             {
-                if (Keyboard.IsKeyDown(Key.Left))
-                {
-                    Config.MapGraphics.ChangeCenter(-1, 0, 0, MapConfig.MapKeyboardTranslateSpeed);
-                }
-                else if (Keyboard.IsKeyDown(Key.Right))
-                {
-                    Config.MapGraphics.ChangeCenter(1, 0, 0, MapConfig.MapKeyboardTranslateSpeed);
-                }
-                if (Keyboard.IsKeyDown(Key.Up))
-                {
-                    Config.MapGraphics.ChangeCenter(0, 1, 0, MapConfig.MapKeyboardTranslateSpeed);
-                }
-                else if (Keyboard.IsKeyDown(Key.Down))
-                {
-                    Config.MapGraphics.ChangeCenter(0, -1, 0, MapConfig.MapKeyboardTranslateSpeed);
-                }
+                Config.MapGraphics.ChangeCenter(1, 0, 0, MapConfig.MapKeyboardTranslateSpeed);
+            }
+
+            if (Keyboard.IsKeyDown(Key.Up))
+            {
+                Config.MapGraphics.ChangeCenter(0, 1, 0, MapConfig.MapKeyboardTranslateSpeed);
+            }
+            else if (Keyboard.IsKeyDown(Key.Down))
+            {
+                Config.MapGraphics.ChangeCenter(0, -1, 0, MapConfig.MapKeyboardTranslateSpeed);
+            }
+
+            if (Keyboard.IsKeyDown(Key.S))
+            {
+                Config.MapGraphics.ChangeYaw(-1, MapConfig.MapKeyboardRotateSpeed);
+            }
+            else if (Keyboard.IsKeyDown(Key.F))
+            {
+                Config.MapGraphics.ChangeYaw(1, MapConfig.MapKeyboardRotateSpeed);
+            }
+
+            if (Keyboard.IsKeyDown(Key.E))
+            {
+                Config.MapGraphics.ChangeScale2(1, MapConfig.MapKeyboardZoomSpeed);
+            }
+            else if (Keyboard.IsKeyDown(Key.D))
+            {
+                Config.MapGraphics.ChangeScale2(-1, MapConfig.MapKeyboardZoomSpeed);
             }
         }
     }
