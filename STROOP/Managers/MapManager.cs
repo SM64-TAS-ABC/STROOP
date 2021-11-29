@@ -1058,6 +1058,7 @@ namespace STROOP.Managers
                 mapTabSettings.Add(new XAttribute("mapSortOrthographicTris", MapConfig.MapSortOrthographicTris));
                 mapTabSettings.Add(new XAttribute("mapUseNotForCeilings", MapConfig.MapUseNotForCeilings));
                 mapTabSettings.Add(new XAttribute("mapUseXForCeilings", MapConfig.MapUseXForCeilings));
+                mapTabSettings.Add(new XAttribute("mapAllowKeyboardControls", MapConfig.MapAllowKeyboardControls));
 
                 root.Add(mapTabSettings);
             }
@@ -1162,6 +1163,7 @@ namespace STROOP.Managers
                 MapConfig.MapSortOrthographicTris = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapSortOrthographicTris")).Value);
                 MapConfig.MapUseNotForCeilings = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUseNotForCeilings")).Value);
                 MapConfig.MapUseXForCeilings = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUseXForCeilings")).Value);
+                MapConfig.MapAllowKeyboardControls = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapAllowKeyboardControls")).Value);
             }
 
             xElements
@@ -1436,6 +1438,7 @@ namespace STROOP.Managers
             "Sort Orthographic Tris",
             "Use Not for Ceilings",
             "Use X for Ceilings",
+            "Allow Keyboard Controls",
         };
         private static readonly List<string> blueVarNames = new List<string>()
         {

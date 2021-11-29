@@ -46,5 +46,6 @@
   <Data base="None" specialType="MapSortOrthographicTris" subclass="Boolean">Sort Orthographic Tris</Data>
   <Data base="None" specialType="MapUseNotForCeilings" subclass="Boolean">Use Not for Ceilings</Data>
   <Data base="None" specialType="MapUseXForCeilings" subclass="Boolean">Use X for Ceilings</Data>
+  <Data base="None" specialType="MapAllowKeyboardControls" subclass="Boolean">Allow Keyboard Controls</Data>
 
 </VarData>
