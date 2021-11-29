@@ -46,6 +46,10 @@
   <Data base="None" specialType="MapSortOrthographicTris" subclass="Boolean">Sort Orthographic Tris</Data>
   <Data base="None" specialType="MapUseNotForCeilings" subclass="Boolean">Use Not for Ceilings</Data>
   <Data base="None" specialType="MapUseXForCeilings" subclass="Boolean">Use X for Ceilings</Data>
+  
   <Data base="None" specialType="MapAllowKeyboardControls" subclass="Boolean">Allow Keyboard Controls</Data>
+  <Data base="None" specialType="MapKeyboardTranslateSpeed">Keyboard Translate Speed</Data>
+  <Data base="None" specialType="MapKeyboardRotateSpeed">Keyboard Rotate Speed</Data>
+  <Data base="None" specialType="MapKeyboardZoomSpeed">Keyboard Zoom Speed</Data>
 
 </VarData>

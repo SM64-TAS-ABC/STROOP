@@ -635,7 +635,11 @@ namespace STROOP.Structs
                     ("MapSortOrthographicTris", () => MapConfig.MapSortOrthographicTris, (double value) => MapConfig.MapSortOrthographicTris = value),
                     ("MapUseNotForCeilings", () => MapConfig.MapUseNotForCeilings, (double value) => MapConfig.MapUseNotForCeilings = value),
                     ("MapUseXForCeilings", () => MapConfig.MapUseXForCeilings, (double value) => MapConfig.MapUseXForCeilings = value),
+
                     ("MapAllowKeyboardControls", () => MapConfig.MapAllowKeyboardControls, (double value) => MapConfig.MapAllowKeyboardControls = value),
+                    ("MapKeyboardTranslateSpeed", () => MapConfig.MapKeyboardTranslateSpeed, (double value) => MapConfig.MapKeyboardTranslateSpeed = value),
+                    ("MapKeyboardRotateSpeed", () => MapConfig.MapKeyboardRotateSpeed, (double value) => MapConfig.MapKeyboardRotateSpeed = value),
+                    ("MapKeyboardZoomSpeed", () => MapConfig.MapKeyboardZoomSpeed, (double value) => MapConfig.MapKeyboardZoomSpeed = value),
 
                     ("MapScaleValue", () => Config.MapGraphics.MapViewScaleValue, (double value) => Config.MapGraphics.SetCustomScale(value)),
                     ("MapCenterXValue", () => Config.MapGraphics.MapViewCenterXValue, (double value) => Config.MapGraphics.SetCustomCenter(xValue: value)),

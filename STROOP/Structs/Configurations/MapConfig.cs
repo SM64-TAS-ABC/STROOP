@@ -40,7 +40,11 @@ namespace STROOP.Structs.Configurations
         public static double MapSortOrthographicTris = 0;
         public static double MapUseNotForCeilings = 1;
         public static double MapUseXForCeilings = 0;
+
         public static double MapAllowKeyboardControls = 0;
+        public static double MapKeyboardTranslateSpeed = 10;
+        public static double MapKeyboardRotateSpeed = 256;
+        public static double MapKeyboardZoomSpeed = 1.1;
 
         public static CompassPosition CompassPosition;
         public static float CompassLineHeight = 50;

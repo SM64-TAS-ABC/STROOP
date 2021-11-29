@@ -1059,6 +1059,9 @@ namespace STROOP.Managers
                 mapTabSettings.Add(new XAttribute("mapUseNotForCeilings", MapConfig.MapUseNotForCeilings));
                 mapTabSettings.Add(new XAttribute("mapUseXForCeilings", MapConfig.MapUseXForCeilings));
                 mapTabSettings.Add(new XAttribute("mapAllowKeyboardControls", MapConfig.MapAllowKeyboardControls));
+                mapTabSettings.Add(new XAttribute("mapKeyboardTranslateSpeed", MapConfig.MapKeyboardTranslateSpeed));
+                mapTabSettings.Add(new XAttribute("mapKeyboardRotateSpeed", MapConfig.MapKeyboardRotateSpeed));
+                mapTabSettings.Add(new XAttribute("mapKeyboardZoomSpeed", MapConfig.MapKeyboardZoomSpeed));
 
                 root.Add(mapTabSettings);
             }
@@ -1164,6 +1167,9 @@ namespace STROOP.Managers
                 MapConfig.MapUseNotForCeilings = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUseNotForCeilings")).Value);
                 MapConfig.MapUseXForCeilings = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapUseXForCeilings")).Value);
                 MapConfig.MapAllowKeyboardControls = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapAllowKeyboardControls")).Value);
+                MapConfig.MapKeyboardTranslateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapKeyboardTranslateSpeed")).Value);
+                MapConfig.MapKeyboardRotateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapKeyboardRotateSpeed")).Value);
+                MapConfig.MapKeyboardZoomSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("mapKeyboardZoomSpeed")).Value);
             }
 
             xElements
@@ -1439,6 +1445,9 @@ namespace STROOP.Managers
             "Use Not for Ceilings",
             "Use X for Ceilings",
             "Allow Keyboard Controls",
+            "Keyboard Translate Speed",
+            "Keyboard Rotate Speed",
+            "Keyboard Zoom Speed",
         };
         private static readonly List<string> blueVarNames = new List<string>()
         {
