@@ -138,5 +138,74 @@ namespace STROOP.Structs
             new COL_TRI(27, 31, 24),
             new COL_TRI(28, 33, 34),
         };
+
+        public class Mat4
+        {
+            private float[][] _matrix;
+
+            public Mat4()
+            {
+                _matrix = new float[][]
+                {
+                    new float[] { 1, 0, 0, 0 },
+                    new float[] { 0, 1, 0, 0 },
+                    new float[] { 0, 0, 1, 0 },
+                    new float[] { 0, 0, 0, 1 },
+                };
+            }
+        }
+
+        //public static void load_object_collision_model()
+        //{
+        //    short[] vertexData = new short[600];
+
+        //    transform_object_vertices(&collisionData, vertexData);
+
+        //    // TERRAIN_LOAD_CONTINUE acts as an "end" to the terrain data.
+        //    while (*collisionData != TERRAIN_LOAD_CONTINUE)
+        //    {
+        //        load_object_surfaces(&collisionData, vertexData);
+        //    }
+        //}
+
+        //public static void transform_object_vertices(short[] vertexData)
+        //{
+        //    short[] vertices;
+        //    float vx, vy, vz;
+        //    int numVertices;
+
+        //    Mat4 objectTransform;
+        //    Mat4 m;
+
+        //    objectTransform = &gCurrentObject->transform;
+
+        //    numVertices = *(*data);
+        //    (*data)++;
+
+        //    vertices = *data;
+
+        //    if (gCurrentObject->header.gfx.throwMatrix == NULL)
+        //    {
+        //        gCurrentObject->header.gfx.throwMatrix = objectTransform;
+        //        obj_build_transform_from_pos_and_angle(gCurrentObject, O_POS_INDEX, O_FACE_ANGLE_INDEX);
+        //    }
+
+        //    obj_apply_scale_to_matrix(gCurrentObject, m, *objectTransform);
+
+        //    // Go through all vertices, rotating and translating them to transform the object.
+        //    while (numVertices--)
+        //    {
+        //        vx = *(vertices++);
+        //        vy = *(vertices++);
+        //        vz = *(vertices++);
+
+        //        //! No bounds check on vertex data
+        //        *vertexData++ = (s16)(vx * m[0][0] + vy * m[1][0] + vz * m[2][0] + m[3][0]);
+        //        *vertexData++ = (s16)(vx * m[0][1] + vy * m[1][1] + vz * m[2][1] + m[3][1]);
+        //        *vertexData++ = (s16)(vx * m[0][2] + vy * m[1][2] + vz * m[2][2] + m[3][2]);
+        //    }
+
+        //    *data = vertices;
+        //}
     }
 }
