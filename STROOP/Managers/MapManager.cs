@@ -16,6 +16,7 @@ using STROOP.Map;
 using STROOP.Map.Map3D;
 using STROOP.Forms;
 using System.Xml.Linq;
+using System.Windows.Input;
 
 namespace STROOP.Managers
 {
@@ -542,7 +543,7 @@ namespace STROOP.Managers
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMapPopOut);
 
             Config.MapGui.buttonMapOptionsAddNewTracker.Click += (sender, e) =>
-                Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Show(Cursor.Position);
+                Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Show(System.Windows.Forms.Cursor.Position);
 
             Config.MapGui.buttonMapOptionsClearAllTrackers.Click += (sender, e) =>
                 Config.MapGui.flowLayoutPanelMapTrackers.ClearControls();
@@ -958,7 +959,7 @@ namespace STROOP.Managers
         private void OnContextMenuStripOpened()
         {
             MapObjectHoverData.ContextMenuStripIsOpen = true;
-            MapObjectHoverData.ContextMenuStripPoint = Cursor.Position;
+            MapObjectHoverData.ContextMenuStripPoint = System.Windows.Forms.Cursor.Position;
         }
 
         private void OnContextMenuStripClosed()
@@ -1314,6 +1315,7 @@ namespace STROOP.Managers
             UpdateControlsBasedOnSemaphores();
             UpdateDataTab();
             UpdateVarColors();
+            UpdateBasedOnKeyboardControls();
 
             if (!PauseMapUpdating)
             {
@@ -1495,6 +1497,50 @@ namespace STROOP.Managers
                     greyVarNames.Contains(control.VarName) ? ColorUtilities.GetColorFromString("Grey") :
                     blueVarNames.Contains(control.VarName) ? ColorUtilities.GetColorFromString("Blue") :
                     SystemColors.Control);
+        }
+
+        private void UpdateBasedOnKeyboardControls()
+        {
+            if (MapConfig.MapAllowKeyboardControls == 0) return;
+
+            if (KeyboardUtilities.IsCtrlHeld())
+            {
+                if (Keyboard.IsKeyDown(Key.Left))
+                {
+
+                }
+                else if (Keyboard.IsKeyDown(Key.Right))
+                {
+
+                }
+                if (Keyboard.IsKeyDown(Key.Up))
+                {
+
+                }
+                else if (Keyboard.IsKeyDown(Key.Down))
+                {
+
+                }
+            }
+            else
+            {
+                if (Keyboard.IsKeyDown(Key.Left))
+                {
+                    Config.MapGraphics.ChangeCenter(-1, 0, 0, MapConfig.MapKeyboardTranslateSpeed);
+                }
+                else if (Keyboard.IsKeyDown(Key.Right))
+                {
+                    Config.MapGraphics.ChangeCenter(1, 0, 0, MapConfig.MapKeyboardTranslateSpeed);
+                }
+                if (Keyboard.IsKeyDown(Key.Up))
+                {
+                    Config.MapGraphics.ChangeCenter(0, 1, 0, MapConfig.MapKeyboardTranslateSpeed);
+                }
+                else if (Keyboard.IsKeyDown(Key.Down))
+                {
+                    Config.MapGraphics.ChangeCenter(0, -1, 0, MapConfig.MapKeyboardTranslateSpeed);
+                }
+            }
         }
     }
 }

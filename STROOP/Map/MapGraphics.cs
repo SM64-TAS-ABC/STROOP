@@ -571,16 +571,14 @@ namespace STROOP.Map
 
         private void SetCenterTextbox(object xValue, object yValue, object zValue)
         {
-            List<object> values = new List<object> { xValue, yValue, zValue };
+            MapViewCenterXValue = ParsingUtilities.ParseFloat(xValue);
+            MapViewCenterYValue = ParsingUtilities.ParseFloat(yValue);
+            MapViewCenterZValue = ParsingUtilities.ParseFloat(zValue);
+
             if (_isMainGraphics)
             {
+                List<object> values = new List<object> { xValue, yValue, zValue };
                 Config.MapGui.textBoxMapControllersCenterCustom.SubmitTextLoosely(string.Join(";", values));
-            }
-            else
-            {
-                MapViewCenterXValue = ParsingUtilities.ParseFloat(xValue);
-                MapViewCenterYValue = ParsingUtilities.ParseFloat(yValue);
-                MapViewCenterZValue = ParsingUtilities.ParseFloat(zValue);
             }
         }
 
