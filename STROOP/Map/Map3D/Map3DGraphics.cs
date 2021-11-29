@@ -440,7 +440,7 @@ namespace STROOP.Map.Map3D
             (float rotX, float rotY, float rotZ) =
                 ((float, float, float))MoreMath.TranslateRelatively(
                     MapConfig.Map3DCameraYaw, MapConfig.Map3DCameraPitch, MapConfig.Map3DCameraRoll,
-                    0, 0, multiplier * MapConfig.Map3DScrollSpeed);
+                    0, 0, multiplier * MapConfig.Map3DZoomSpeed);
 
             MapConfig.Map3DMode = Map3DCameraMode.CameraPosAndAngle;
             MapConfig.Map3DCameraX += rotX;

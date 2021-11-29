@@ -32,10 +32,10 @@
   <Data base="None" specialType="MapYawValue">Yaw Value</Data>
   <Data base="None" specialType="MapPitchValue">Pitch Value</Data>
 
-  <Data base="None" specialType="Map2DScrollSpeed">2D Scroll Speed</Data>
+  <Data base="None" specialType="Map2DZoomSpeed">2D Zoom Speed</Data>
   <Data base="None" specialType="Map2DOrthographicHorizontalRotateSpeed">Orth H Rotate Speed</Data>
   <Data base="None" specialType="Map2DOrthographicVerticalRotateSpeed">Orth V Rotate Speed</Data>
-  <Data base="None" specialType="Map3DScrollSpeed">3D Scroll Speed</Data>
+  <Data base="None" specialType="Map3DZoomSpeed">3D Zoom Speed</Data>
   <Data base="None" specialType="Map3DTranslateSpeed">3D Translate Speed</Data>
   <Data base="None" specialType="Map3DRotateSpeed">3D Rotate Speed</Data>
 

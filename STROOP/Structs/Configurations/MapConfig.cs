@@ -26,10 +26,10 @@ namespace STROOP.Structs.Configurations
         public static float Map3DFollowingYaw = 0;
         public static float Map3DFOV = 0;
 
-        public static double Map2DScrollSpeed = 1.1;
+        public static double Map2DZoomSpeed = 1.1;
         public static double Map2DOrthographicHorizontalRotateSpeed = 128;
         public static double Map2DOrthographicVerticalRotateSpeed = 128;
-        public static double Map3DScrollSpeed = 100;
+        public static double Map3DZoomSpeed = 100;
         public static double Map3DTranslateSpeed = 20;
         public static double Map3DRotateSpeed = 50;
 

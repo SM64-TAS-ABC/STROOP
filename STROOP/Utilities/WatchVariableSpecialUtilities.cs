@@ -624,10 +624,10 @@ namespace STROOP.Structs
             List<(string, Func<double>, Action<double>)> doubleEntries =
                 new List<(string, Func<double>, Action<double>)>()
                 {
-                    ("Map2DScrollSpeed", () => MapConfig.Map2DScrollSpeed, (double value) => MapConfig.Map2DScrollSpeed = value),
+                    ("Map2DZoomSpeed", () => MapConfig.Map2DZoomSpeed, (double value) => MapConfig.Map2DZoomSpeed = value),
                     ("Map2DOrthographicHorizontalRotateSpeed", () => MapConfig.Map2DOrthographicHorizontalRotateSpeed, (double value) => MapConfig.Map2DOrthographicHorizontalRotateSpeed = value),
                     ("Map2DOrthographicVerticalRotateSpeed", () => MapConfig.Map2DOrthographicVerticalRotateSpeed, (double value) => MapConfig.Map2DOrthographicVerticalRotateSpeed = value),
-                    ("Map3DScrollSpeed", () => MapConfig.Map3DScrollSpeed, (double value) => MapConfig.Map3DScrollSpeed = value),
+                    ("Map3DZoomSpeed", () => MapConfig.Map3DZoomSpeed, (double value) => MapConfig.Map3DZoomSpeed = value),
                     ("Map3DTranslateSpeed", () => MapConfig.Map3DTranslateSpeed, (double value) => MapConfig.Map3DTranslateSpeed = value),
                     ("Map3DRotateSpeed", () => MapConfig.Map3DRotateSpeed, (double value) => MapConfig.Map3DRotateSpeed = value),
 

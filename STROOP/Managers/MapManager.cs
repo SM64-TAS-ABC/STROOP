@@ -1047,10 +1047,10 @@ namespace STROOP.Managers
                 mapTabSettings.Add(new XAttribute("map3DFollowingYOffset", (double)MapConfig.Map3DFollowingYOffset));
                 mapTabSettings.Add(new XAttribute("map3DFollowingYaw", (double)MapConfig.Map3DFollowingYaw));
                 mapTabSettings.Add(new XAttribute("map3DFOV", (double)MapConfig.Map3DFOV));
-                mapTabSettings.Add(new XAttribute("map2DScrollSpeed", MapConfig.Map2DScrollSpeed));
+                mapTabSettings.Add(new XAttribute("map2DZoomSpeed", MapConfig.Map2DZoomSpeed));
                 mapTabSettings.Add(new XAttribute("map2DOrthographicHorizontalRotateSpeed", MapConfig.Map2DOrthographicHorizontalRotateSpeed));
                 mapTabSettings.Add(new XAttribute("map2DOrthographicVerticalRotateSpeed", MapConfig.Map2DOrthographicVerticalRotateSpeed));
-                mapTabSettings.Add(new XAttribute("map3DScrollSpeed", MapConfig.Map3DScrollSpeed));
+                mapTabSettings.Add(new XAttribute("map3DZoomSpeed", MapConfig.Map3DZoomSpeed));
                 mapTabSettings.Add(new XAttribute("map3DTranslateSpeed", MapConfig.Map3DTranslateSpeed));
                 mapTabSettings.Add(new XAttribute("map3DRotateSpeed", MapConfig.Map3DRotateSpeed));
                 mapTabSettings.Add(new XAttribute("mapCircleNumPoints2D", MapConfig.MapCircleNumPoints2D));
@@ -1155,10 +1155,10 @@ namespace STROOP.Managers
                 MapConfig.Map3DFollowingYOffset = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFollowingYOffset")).Value);
                 MapConfig.Map3DFollowingYaw = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFollowingYaw")).Value);
                 MapConfig.Map3DFOV = ParsingUtilities.ParseFloat(mapTabSettings.Attribute(XName.Get("map3DFOV")).Value);
-                MapConfig.Map2DScrollSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map2DScrollSpeed")).Value);
+                MapConfig.Map2DZoomSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map2DZoomSpeed")).Value);
                 MapConfig.Map2DOrthographicHorizontalRotateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map2DOrthographicHorizontalRotateSpeed")).Value);
                 MapConfig.Map2DOrthographicVerticalRotateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map2DOrthographicVerticalRotateSpeed")).Value);
-                MapConfig.Map3DScrollSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map3DScrollSpeed")).Value);
+                MapConfig.Map3DZoomSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map3DZoomSpeed")).Value);
                 MapConfig.Map3DTranslateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map3DTranslateSpeed")).Value);
                 MapConfig.Map3DRotateSpeed = ParsingUtilities.ParseDouble(mapTabSettings.Attribute(XName.Get("map3DRotateSpeed")).Value);
                 MapConfig.MapCircleNumPoints2D = ParsingUtilities.ParseInt(mapTabSettings.Attribute(XName.Get("mapCircleNumPoints2D")).Value);
@@ -1438,9 +1438,9 @@ namespace STROOP.Managers
 
         private static readonly List<string> greyVarNames = new List<string>()
         {
-            "2D Scroll Speed",
+            "2D Zoom Speed",
             "Orth H Rotate Speed", "Orth V Rotate Speed",
-            "3D Scroll Speed", "3D Translate Speed", "3D Rotate Speed",
+            "3D Zoom Speed", "3D Translate Speed", "3D Rotate Speed",
             "Num Circle Points", "Num Sphere Points",
             "Unit Precision Threshold",
             "Sort Orthographic Tris",
