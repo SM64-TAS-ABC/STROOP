@@ -934,6 +934,10 @@ namespace STROOP.Map
                 List<double> midpointValues = new List<double>() { hoverData.X, hoverData.Z };
                 ToolStripMenuItem copyMidpointItem = MapUtilities.CreateCopyItem(midpointValues, "Midpoint");
                 output.Insert(1, copyMidpointItem);
+
+                ToolStripMenuItem copyYItem = new ToolStripMenuItem("Copy Y");
+                copyYItem.Click += (sender, e) => Clipboard.SetText(hoverData.Y.ToString());
+                output.Insert(2, copyYItem);
             }
             else if (hoverData.Index2.HasValue)
             {
@@ -970,13 +974,6 @@ namespace STROOP.Map
                     ButtonUtilities.UnloadObject(new List<ObjectDataModel>() { obj });
                 };
                 output.Insert(3, unloadAssociatedObjectItem);
-
-                if (MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits())
-                {
-                    ToolStripMenuItem copyYItem = new ToolStripMenuItem(string.Format("Copy Y ({0})", hoverData.Y));
-                    copyYItem.Click += (sender, e) => Clipboard.SetText(hoverData.Y.ToString());
-                    output.Insert(3, copyYItem);
-                }
             }
 
             return output;
