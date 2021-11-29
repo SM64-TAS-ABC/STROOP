@@ -192,6 +192,7 @@
     <Compile Include="Calculators\OverflowJumpCalculator.cs" />
     <Compile Include="Calculators\PendulumMain.cs" />
     <Compile Include="Calculators\WaterMain.cs" />
+    <Compile Include="Calculators\PendulumData.cs" />
     <Compile Include="Calculators\WaterState.cs" />
     <Compile Include="Calculators\MutableMarioState.cs" />
     <Compile Include="Calculators\MarioState.cs" />
