@@ -236,7 +236,7 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
-            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
@@ -257,7 +257,7 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
-            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
 

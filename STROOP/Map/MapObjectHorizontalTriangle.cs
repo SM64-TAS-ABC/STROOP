@@ -547,7 +547,7 @@ namespace STROOP.Map
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
             bool isShowingTriUnits = _showTriUnits && MapUtilities.IsAbleToShowUnitPrecision();
-            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
 

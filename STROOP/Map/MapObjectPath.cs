@@ -705,7 +705,7 @@ namespace STROOP.Map
         {
             if (_customImage == null) return null;
 
-            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
@@ -730,7 +730,7 @@ namespace STROOP.Map
         {
             if (_customImage == null) return null;
 
-            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag);
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
 

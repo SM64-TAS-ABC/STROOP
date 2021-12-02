@@ -56,14 +56,17 @@ namespace STROOP.Map
             Info = info;
         }
 
-        public static Point? GetPositionMaybe(bool isForObjectDrag)
+        public static Point? GetPositionMaybe(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point cursorPos = !isForObjectDrag && ContextMenuStripIsOpen ? ContextMenuStripPoint : Cursor.Position;
             Point controlPos = Config.MapGui.CurrentControl.PointToClient(cursorPos);
-            if (controlPos.X < 0 || controlPos.X >= Config.MapGui.GLControlMap2D.Width ||
-                controlPos.Y < 0 || controlPos.Y >= Config.MapGui.GLControlMap2D.Height)
+            if (!forceCursorPosition)
             {
-                return null;
+                if (controlPos.X < 0 || controlPos.X >= Config.MapGui.GLControlMap2D.Width ||
+                    controlPos.Y < 0 || controlPos.Y >= Config.MapGui.GLControlMap2D.Height)
+                {
+                    return null;
+                }
             }
             return controlPos;
         }
@@ -77,7 +80,7 @@ namespace STROOP.Map
 
         public static (float x, float y, float z)? GetCursorPosition(bool isForObjectDrag)
         {
-            Point? relPosMaybe = GetPositionMaybe(isForObjectDrag);
+            Point? relPosMaybe = GetPositionMaybe(isForObjectDrag, false);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
             float inGameX, inGameY, inGameZ;
