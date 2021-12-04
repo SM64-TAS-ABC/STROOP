@@ -109,8 +109,10 @@ namespace STROOP.Map
                     }
                     else
                     {
-                        double firstDistance = 25;
-                        double lastDistance = totalDistance - 25;
+                        int cardinalAngle = wallData.Tri.XProjection ? 16384 : 0;
+                        double angleDiffCoefficient = 1 / Math.Abs(Math.Cos(MoreMath.AngleUnitsToRadians(wallData.Tri.GetPushAngle() - cardinalAngle)));
+                        double firstDistance = 25 * angleDiffCoefficient;
+                        double lastDistance = totalDistance - 25 * angleDiffCoefficient;
                         double distanceDiff = lastDistance - firstDistance;
                         int numMarks = (int)Math.Truncate(distanceDiff / 50 + 0.25) + 1;
                         int numBetweens = numMarks - 1;
