@@ -33,14 +33,6 @@
   <Data type="short" offset="0x1B4" base="Camera" useHex="true">Camera Mode</Data>
   <Data type="uint" offsetUS="0x8032DF30" offsetJP="0x8032CFD0" base="Relative" subclass="Object">Secondary Object</Data>
 
-  <Data type="byte" offsetUS="0x8033161C" offsetJP="0x80330530" base="Relative" subclass="Boolean" mask="0x01" color="Yellow">Mario Cam Selected</Data>
-  <Data type="byte" offsetUS="0x8033161C" offsetJP="0x80330530" base="Relative" subclass="Boolean" mask="0x02" color="Yellow">Fixed Cam Selected</Data>
-  <Data type="byte" offsetUS="0x80332609" offsetJP="0x803314F9" base="Relative" subclass="Boolean" mask="0x01" color="Yellow">Mario Cam Displayed</Data>
-  <Data type="byte" offsetUS="0x80332609" offsetJP="0x803314F9" base="Relative" subclass="Boolean" mask="0x02" color="Yellow">Lakitu Cam Displayed</Data>
-  <Data type="byte" offsetUS="0x80332609" offsetJP="0x803314F9" base="Relative" subclass="Boolean" mask="0x04" color="Yellow">Fixed Cam Displayed</Data>
-  <Data type="byte" offsetUS="0x80332609" offsetJP="0x803314F9" base="Relative" subclass="Boolean" mask="0x08" color="Yellow">Down Arrow Displayed</Data>
-  <Data type="byte" offsetUS="0x80332609" offsetJP="0x803314F9" base="Relative" subclass="Boolean" mask="0x10" color="Yellow">Up Arrow Displayed</Data>
-
   <Data type="float" offset="0x1C" base="CameraSettings" color="Green">FOV</Data>
   <Data type="short" offset="0x20" base="CameraSettings" color="Green">Near Dist</Data>
   <Data type="short" offset="0x22" base="CameraSettings" color="Green">Far Dist</Data>
