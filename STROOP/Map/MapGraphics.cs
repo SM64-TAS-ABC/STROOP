@@ -116,7 +116,11 @@ namespace STROOP.Map
         private void UpdateCursor()
         {
             Cursor cursor;
-            if (Config.MapGui.checkBoxMapOptionsEnableObjectDrag.Checked)
+            if (Config.MapManager.NumDrawingsEnabled > 0)
+            {
+                cursor = Cursors.Cross;
+            }
+            else if (Config.MapGui.checkBoxMapOptionsEnableObjectDrag.Checked)
             {
                 if (Config.MapGui.flowLayoutPanelMapTrackers.ObjectDragData != null)
                 {
@@ -126,10 +130,6 @@ namespace STROOP.Map
                 {
                     cursor = Cursors.Default;
                 }
-            }
-            else if (Config.MapManager.NumDrawingsEnabled > 0)
-            {
-                cursor = Cursors.Cross;
             }
             else
             {
