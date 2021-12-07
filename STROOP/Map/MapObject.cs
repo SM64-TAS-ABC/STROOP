@@ -23,7 +23,7 @@ namespace STROOP.Map
         public byte OpacityByte
         {
             get => (byte)(Opacity * 255);
-            set => Opacity = value / 255f;
+            set => Opacity = value / 255.0;
         }
         public int OpacityPercent
         {
