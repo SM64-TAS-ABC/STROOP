@@ -308,8 +308,7 @@ namespace STROOP.Map
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
             (double x, double y, double z) = PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
-            List<double> posValues = new List<double>() { x, y, z };
-            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(x, y, z, "Position");
             output.Insert(0, copyPositionItem);
 
             return output;

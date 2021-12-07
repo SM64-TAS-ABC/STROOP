@@ -216,8 +216,7 @@ namespace STROOP.Map
             float x = Config.Stream.GetFloat(hoverData.ObjAddress.Value + ObjectConfig.XOffset);
             float y = Config.Stream.GetFloat(hoverData.ObjAddress.Value + ObjectConfig.YOffset);
             float z = Config.Stream.GetFloat(hoverData.ObjAddress.Value + ObjectConfig.ZOffset);
-            List<double> posValues = new List<double>() { x, y, z };
-            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(x, y, z, "Position");
             output.Insert(2, copyPositionItem);
 
             return output;

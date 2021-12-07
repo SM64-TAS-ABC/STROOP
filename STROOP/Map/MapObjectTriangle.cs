@@ -927,12 +927,10 @@ namespace STROOP.Map
 
             if (hoverData.IsTriUnit)
             {
-                List<double> basePointValues = new List<double>() { (int)hoverData.X, (int)hoverData.Z };
-                ToolStripMenuItem copyBasePointItem = MapUtilities.CreateCopyItem(basePointValues, "Base Point");
+                ToolStripMenuItem copyBasePointItem = MapUtilities.CreateCopyItem((int)hoverData.X, (int)hoverData.Y, (int)hoverData.Z, "Base Point");
                 output.Insert(0, copyBasePointItem);
 
-                List<double> midpointValues = new List<double>() { hoverData.X, hoverData.Z };
-                ToolStripMenuItem copyMidpointItem = MapUtilities.CreateCopyItem(midpointValues, "Midpoint");
+                ToolStripMenuItem copyMidpointItem = MapUtilities.CreateCopyItem(hoverData.X, hoverData.Y, hoverData.Z, "Midpoint");
                 output.Insert(1, copyMidpointItem);
 
                 ToolStripMenuItem copyYItem = new ToolStripMenuItem("Copy Y");
@@ -941,8 +939,7 @@ namespace STROOP.Map
             }
             else if (hoverData.Index2.HasValue)
             {
-                List<double> position = new List<double>() { hoverData.X, hoverData.Y, hoverData.Z };
-                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(position, "Position");
+                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(hoverData.X, hoverData.Y, hoverData.Z, "Position");
                 output.Insert(0, copyPositionItem);
             }
             else

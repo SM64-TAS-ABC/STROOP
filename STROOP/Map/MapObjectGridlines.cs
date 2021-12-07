@@ -155,22 +155,12 @@ namespace STROOP.Map
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
-            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
-            {
-                var positions = GetGridlineIntersectionPositionsOrthographicView();
-                var position = positions[hoverData.Index.Value];
-                List<double> posValues = new List<double>() { position.x, position.y, position.z };
-                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
-                output.Insert(0, copyPositionItem);
-            }
-            else
-            {
-                var positions = GetGridlineIntersectionPositionsTopDownView();
-                var position = positions[hoverData.Index.Value];
-                List<double> posValues = new List<double>() { position.x, position.z };
-                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
-                output.Insert(0, copyPositionItem);
-            }
+            var positions = Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked
+                ? GetGridlineIntersectionPositionsOrthographicView()
+                : GetGridlineIntersectionPositionsTopDownView();
+            var position = positions[hoverData.Index.Value];
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(position.x, position.y, position.z, "Position");
+            output.Insert(0, copyPositionItem);
 
             return output;
         }

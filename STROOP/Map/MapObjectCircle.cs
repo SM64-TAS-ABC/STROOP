@@ -184,18 +184,18 @@ namespace STROOP.Map
 
             if (hoverData.Index2.HasValue)
             {
+                var points = GetPoints();
+                var point = points[hoverData.Index.Value];
                 List<(float x, float z)> positions = MapUtilities.GetFloatPositions(10_000);
                 var position = positions[hoverData.Index2.Value];
-                List<double> posValues = new List<double>() { position.x, position.z };
-                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
+                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(position.x, point.y, position.z, "Position");
                 output.Insert(0, copyPositionItem);
             }
             else
             {
                 var points = GetPoints();
                 var point = points[hoverData.Index.Value];
-                List<double> posValues = new List<double>() { point.x, point.y, point.z };
-                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(posValues, "Position");
+                ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(point.x, point.y, point.z, "Position");
                 output.Insert(0, copyPositionItem);
             }
 

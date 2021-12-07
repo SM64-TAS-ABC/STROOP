@@ -913,8 +913,11 @@ namespace STROOP.Map
             return (byte)(GetHoverOpacity() * 255);
         }
 
-        public static ToolStripMenuItem CreateCopyItem(List<double> values, string copyWord)
+        public static ToolStripMenuItem CreateCopyItem(double x, double y, double z, string copyWord)
         {
+            List<double> values = new List<double>() { x, y, z };
+            List<double> lateralValues = new List<double>() { x, z };
+
             List<(string word, string character)> copyChoices =
                 new List<(string word, string character)>()
                 {
@@ -930,6 +933,13 @@ namespace STROOP.Map
             {
                 ToolStripMenuItem choiceItem = new ToolStripMenuItem("Copy " + copyWord + " with " + choice.word);
                 choiceItem.Click += (sender, e) => Clipboard.SetText(string.Join(choice.character, values));
+                copyItem.DropDownItems.Add(choiceItem);
+            }
+            copyItem.DropDownItems.Add(new ToolStripSeparator());
+            foreach (var choice in copyChoices)
+            {
+                ToolStripMenuItem choiceItem = new ToolStripMenuItem("Copy Lateral " + copyWord + " with " + choice.word);
+                choiceItem.Click += (sender, e) => Clipboard.SetText(string.Join(choice.character, lateralValues));
                 copyItem.DropDownItems.Add(choiceItem);
             }
             return copyItem;
