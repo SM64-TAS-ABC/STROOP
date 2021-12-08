@@ -56,7 +56,7 @@ namespace STROOP.Map
 
         public void DrawOn2DControl(MapObjectHoverData hoverData)
         {
-            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+            if (Config.CurrentMapGraphics.IsOrthographicViewEnabled)
             {
                 DrawOn2DControlOrthographicView(hoverData);
             }
@@ -222,7 +222,7 @@ namespace STROOP.Map
 
         public MapObjectHoverData GetHoverData(bool isForObjectDrag, bool forceCursorPosition)
         {
-            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+            if (Config.CurrentMapGraphics.IsOrthographicViewEnabled)
             {
                 return GetHoverDataOrthographicView(isForObjectDrag, forceCursorPosition);
             }

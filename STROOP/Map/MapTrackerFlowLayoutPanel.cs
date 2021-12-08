@@ -91,15 +91,8 @@ namespace STROOP.Map
 
         public void UpdateControl()
         {
-            if (Config.MapGui.checkBoxMapOptionsEnable3D.Checked ||
-                Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
-            {            
-                _mapObjHitboxTris.Update();
-            }
-            if (!Config.MapGui.checkBoxMapOptionsEnable3D.Checked)
-            {
-                _mapObjMap.Update();
-            }
+            _mapObjHitboxTris.Update();
+            _mapObjMap.Update();
             _mapObjBackground.Update();
 
             lock (_objectLock)

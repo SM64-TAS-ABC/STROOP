@@ -517,7 +517,7 @@
     <Compile Include="Map\MapObjectCompass.cs" />
     <Compile Include="Map\MapObjectSphere.cs" />
     <Compile Include="Map\MapObjectCylinder.cs" />
-    <Compile Include="Map\MapObjectHitboxHackTriangle.cs" />
+    <Compile Include="Map\MapObjectHitboxTriangle.cs" />
     <Compile Include="Map\MapObjectFloor.cs" />
     <Compile Include="Map\MapObjectTriangle.cs" />
     <Compile Include="Map\MapObjectIwerlipses.cs" />

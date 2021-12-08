@@ -84,7 +84,7 @@ namespace STROOP.Map
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
             float inGameX, inGameY, inGameZ;
-            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+            if (Config.CurrentMapGraphics.IsOrthographicViewEnabled)
             {
                 (inGameX, inGameY, inGameZ) = MapUtilities.ConvertCoordsForInGameOrthographicView(relPos.X, relPos.Y);
             }

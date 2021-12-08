@@ -155,7 +155,7 @@ namespace STROOP.Map
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
-            var positions = Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked
+            var positions = Config.CurrentMapGraphics.IsOrthographicViewEnabled
                 ? GetGridlineIntersectionPositionsOrthographicView()
                 : GetGridlineIntersectionPositionsTopDownView();
             var position = positions[hoverData.Index.Value];

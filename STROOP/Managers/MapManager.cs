@@ -59,7 +59,7 @@ namespace STROOP.Managers
         public void Load2D()
         {
             // Create new graphics control
-            Config.MapGraphics = new MapGraphics(true);
+            Config.MapGraphics = new MapGraphics(true, Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked);
             Config.MapGraphics.Load(Config.MapGui.GLControlMap2D);
             _isLoaded2D = true;
 
@@ -750,6 +750,8 @@ namespace STROOP.Managers
                     () => _defaulMapObjectHitboxTriangle.ToggleUseCrossSection(),
                     () => _defaulMapObjectHitboxTriangle.ToggleShowArrows(),
                 });
+            Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Click +=
+                (sender, e) => Config.MapGraphics.IsOrthographicViewEnabled = Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked;
             Config.MapGui.checkBoxMapOptionsEnable3D.Click +=
                 (sender, e) => SetEnable3D(Config.MapGui.checkBoxMapOptionsEnable3D.Checked);
             Config.MapGui.checkBoxMapOptionsEnableObjectHover.Click +=

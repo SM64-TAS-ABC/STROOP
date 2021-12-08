@@ -64,10 +64,12 @@ namespace STROOP.Map
                 MAX_COURSE_SIZE_Z_MAX - MAX_COURSE_SIZE_Z_MIN);
 
         private readonly bool _isMainGraphics;
+        public bool IsOrthographicViewEnabled;
 
-        public MapGraphics(bool isMainGraphics)
+        public MapGraphics(bool isMainGraphics, bool isOrthographicViewEnabled)
         {
             _isMainGraphics = isMainGraphics;
+            IsOrthographicViewEnabled = isOrthographicViewEnabled;
         }
 
         public void Load(GLControl glControl)
@@ -279,7 +281,7 @@ namespace STROOP.Map
                     break;
             }
 
-            if (Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked)
+            if (IsOrthographicViewEnabled)
             {
                 float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
                 float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -503,7 +505,7 @@ namespace STROOP.Map
             Config.MapGui.radioButtonMapControllersCenterCustom.Checked = true;
             if (depthSign != 0) Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked = false;
             float xOffset, yOffset, zOffset;
-            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+            if (IsOrthographicViewEnabled)
             {
                 double yawRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewYawValue);
                 double pitchRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewPitchValue);
@@ -720,7 +722,7 @@ namespace STROOP.Map
 
             if (DraggedObject != null)
             {
-                if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+                if (IsOrthographicViewEnabled)
                 {
                     int pixelDiffX = e.X - _objectDragStartMouseX;
                     int pixelDiffY = e.Y - _objectDragStartMouseY;
@@ -795,7 +797,7 @@ namespace STROOP.Map
                 double unitDiffX = pixelDiffX / (double)MapViewScaleValue;
                 double unitDiffY = pixelDiffY / (double)MapViewScaleValue;
                 double newCenterX, newCenterY, newCenterZ;
-                if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+                if (IsOrthographicViewEnabled)
                 {
                     if (MapViewPitchValue == 0 && MapViewYawValue == 0)
                     {
@@ -855,7 +857,7 @@ namespace STROOP.Map
                 bool isRightClickingForHover = Config.MapGui.checkBoxMapOptionsEnableObjectHover.Checked && _isMainGraphics;
                 if (!isRightClickingForHover)
                 {
-                    if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+                    if (IsOrthographicViewEnabled)
                     {
                         int pixelDiffX = HandleDragAbility(true, false, e.X - _rotateStartMouseX);
                         int pixelDiffY = HandleDragAbility(false, false, e.Y - _rotateStartMouseY);

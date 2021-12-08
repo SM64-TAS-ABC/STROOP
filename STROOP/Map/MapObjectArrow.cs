@@ -78,7 +78,7 @@ namespace STROOP.Map
             vertices.Add((x, y, z));
             vertices.Add((arrowHeadX, arrowHeadY, arrowHeadZ));
 
-            if (Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked)
+            if (Config.CurrentMapGraphics.IsOrthographicViewEnabled)
             {
                 (float pointSide1X, float pointSide1Y, float pointSide1Z) =
                     ((float, float, float))MoreMath.AddVectorToPointWithPitch(
