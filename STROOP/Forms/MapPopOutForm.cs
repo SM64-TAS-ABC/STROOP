@@ -12,6 +12,8 @@ namespace STROOP.Forms
 {
     public partial class MapPopOutForm : Form, IUpdatableForm
     {
+        private MapGraphics _mapGraphics;
+
         public MapPopOutForm()
         {
             InitializeComponent();
@@ -31,8 +33,13 @@ namespace STROOP.Forms
 
         private async void Load2D(object sender, EventArgs e)
         {
-            MapGraphics mapGraphics = new MapGraphics(false, Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked);
-            mapGraphics.Load(glControlMap2D);
+            _mapGraphics = new MapGraphics(false, Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked);
+            _mapGraphics.Load(glControlMap2D);
+        }
+
+        public bool IsOrthographicViewEnabled()
+        {
+            return _mapGraphics.IsOrthographicViewEnabled;
         }
     }
 }

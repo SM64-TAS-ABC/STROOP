@@ -91,8 +91,15 @@ namespace STROOP.Map
 
         public void UpdateControl()
         {
-            _mapObjHitboxTris.Update();
-            _mapObjMap.Update();
+            (int num2DTopDown, int num2DOrthographic, int num3D) = FormManager.GetMapCounts();
+            if (!Config.MapGui.checkBoxMapOptionsDisableHitboxTris.Checked && (num2DOrthographic > 0 || num3D > 0))
+            {
+                _mapObjHitboxTris.Update();
+            }
+            if (num2DTopDown > 0)
+            {
+                _mapObjMap.Update();
+            }
             _mapObjBackground.Update();
 
             lock (_objectLock)
