@@ -16,6 +16,8 @@ namespace STROOP.Managers
 {
     public class MemoryManager : DataManager
     {
+        private readonly Label _labelMemoryBaseAddress;
+
         private readonly BetterTextbox _textBoxMemoryBaseAddress;
         private readonly BetterTextbox _textBoxMemoryMemorySize;
 
@@ -192,6 +194,38 @@ namespace STROOP.Managers
             moveDownContinuouslyTimer.Tick += (s, e) => ScrollMemory(1);
             _buttonMemoryMoveDownContinuously.MouseDown += (sender, e) => moveDownContinuouslyTimer.Start();
             _buttonMemoryMoveDownContinuously.MouseUp += (sender, e) => moveDownContinuouslyTimer.Stop();
+
+            _labelMemoryBaseAddress = splitContainerMemoryControls.Panel1.Controls["labelMemoryBaseAddress"] as Label;
+            _labelMemoryBaseAddress.ContextMenuStrip = new ContextMenuStrip();
+
+            ToolStripMenuItem itemBookmarkCurrentAddress = new ToolStripMenuItem("Bookmark Current Address");
+            itemBookmarkCurrentAddress.Click += (sender, e) => BookmarkCurrentAddress();
+            _labelMemoryBaseAddress.ContextMenuStrip.Items.Add(itemBookmarkCurrentAddress);
+
+            ToolStripMenuItem itemDeleteBookmark = new ToolStripMenuItem("Delete Bookmark...");
+            _labelMemoryBaseAddress.ContextMenuStrip.Items.Add(itemDeleteBookmark);
+        }
+
+        private void BookmarkCurrentAddress()
+        {
+            if (!Address.HasValue) return;
+            uint address = Address.Value;
+
+            ToolStripMenuItem useAddressItem = new ToolStripMenuItem("Go to " + HexUtilities.FormatValue(address));
+            useAddressItem.Click += (sender, e) => Address = address;
+            _labelMemoryBaseAddress.ContextMenuStrip.Items.Add(useAddressItem);
+
+            ToolStripMenuItem deleteAddressItem = new ToolStripMenuItem("Delete " + HexUtilities.FormatValue(address));
+            deleteAddressItem.Click += (sender, e) => DeleteBookmark(useAddressItem, deleteAddressItem);
+            ToolStripMenuItem itemDeleteBookmark = _labelMemoryBaseAddress.ContextMenuStrip.Items[1] as ToolStripMenuItem;
+            itemDeleteBookmark.DropDownItems.Add(deleteAddressItem);
+        }
+
+        private void DeleteBookmark(ToolStripMenuItem useAddressItem, ToolStripMenuItem deleteAddressItem)
+        {
+            _labelMemoryBaseAddress.ContextMenuStrip.Items.Remove(useAddressItem);
+            ToolStripMenuItem itemDeleteBookmark = _labelMemoryBaseAddress.ContextMenuStrip.Items[1] as ToolStripMenuItem;
+            itemDeleteBookmark.DropDownItems.Remove(deleteAddressItem);
         }
 
         private void ScrollMemory(int numLines)
