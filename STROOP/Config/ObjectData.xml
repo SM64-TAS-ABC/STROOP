@@ -267,7 +267,7 @@
   <Data groupList="Advanced" type="int" offset="0x1D0" base="Object">Stack Index</Data>
   <Data groupList="Basic" type="uint" offset="0x134" base="Object" useHex="true">Interaction Status</Data>
 
-  <Data groupList="Advanced" type="ushort" offset="0x74" base="Object" useHex="true">Loaded</Data>
+  <Data groupList="Advanced" type="ushort" offset="0x74" base="Object" useHex="true">Active Flags</Data>
 
   <Data groupList="Basic" type="int" offset="0x144" base="Object">Subtype</Data>
   <Data groupList="Basic" type="int" offset="0x14C" base="Object">Action</Data>
