@@ -96,7 +96,15 @@ namespace STROOP.Managers
 
             _gui.ButtonQuickDuplicationDuplicate.Click += (sender, e) => PerformQuickDuplication();
             _gui.ButtonAddPauseBufferFrames.Click += (sender, e) => AddPauseBufferFrames();
-            _gui.ButtonCopyClipboardForJoystick.Click += (sender, e) => CopyClipboardForJoystick();
+            _gui.ButtonCopyClipboardForJoystick.Click += (sender, e) => CopyClipboardForJoystick(null);
+            ControlUtilities.AddContextMenuStripFunctions(
+                _gui.ButtonCopyClipboardForJoystick,
+                new List<string>() { "Use X Only", "Use Y Only" },
+                new List<Action>()
+                {
+                    () => CopyClipboardForJoystick(true),
+                    () => CopyClipboardForJoystick(false),
+                });
 
             _gui.ProgressBar.Visible = false;
             _gui.LabelProgressBar.Visible = false;
@@ -133,9 +141,9 @@ namespace STROOP.Managers
             _gui.ListBoxCopied.SelectedItem = copiedData;
         }
 
-        private void CopyClipboardForJoystick()
+        private void CopyClipboardForJoystick(bool? component = null)
         {
-            M64CopiedData copiedData = M64CopiedData.CreateCopiedDataFromClipboardForJoystick();
+            M64CopiedData copiedData = M64CopiedData.CreateCopiedDataFromClipboardForJoystick(component);
             if (copiedData == null) return;
             _gui.ListBoxCopied.Items.Add(copiedData);
             _gui.ListBoxCopied.SelectedItem = copiedData;

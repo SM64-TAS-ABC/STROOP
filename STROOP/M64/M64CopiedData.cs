@@ -51,18 +51,31 @@ namespace STROOP.M64
             return new M64CopiedData(startFrame, endFrame, type, fileName, null /* customName */, copiedFrames);
         }
 
-        public static M64CopiedData CreateCopiedDataFromClipboardForJoystick()
+        public static M64CopiedData CreateCopiedDataFromClipboardForJoystick(bool? component = null)
         {
             List<string> stringList = ParsingUtilities.ParseStringList(Clipboard.GetText());
             List<M64CopiedFrame> frames = new List<M64CopiedFrame>();
-            for (int i = 0; i < stringList.Count - 1; i += 2)
+            if (component.HasValue)
             {
-                sbyte x = ParsingUtilities.ParseSByte(stringList[i]);
-                sbyte y = ParsingUtilities.ParseSByte(stringList[i + 1]);
-                M64CopiedFrame frame = new M64CopiedFrame(X: x, Y: y);
-                frames.Add(frame);
+                for (int i = 0; i < stringList.Count; i++)
+                {
+                    sbyte value = ParsingUtilities.ParseSByte(stringList[i]);
+                    M64CopiedFrame frame = component.Value ? new M64CopiedFrame(X: value) : new M64CopiedFrame(Y: value);
+                    frames.Add(frame);
+                }
             }
-            return new M64CopiedData(0, 0, null, null, string.Format("{0}f Joystick", frames.Count), frames);
+            else
+            {
+                for (int i = 0; i < stringList.Count - 1; i += 2)
+                {
+                    sbyte x = ParsingUtilities.ParseSByte(stringList[i]);
+                    sbyte y = ParsingUtilities.ParseSByte(stringList[i + 1]);
+                    M64CopiedFrame frame = new M64CopiedFrame(X: x, Y: y);
+                    frames.Add(frame);
+                }
+            }
+            string name = string.Format("{0}f Joystick{1}", frames.Count, component.HasValue ? (component.Value ? " X" : " Y") : "");
+            return new M64CopiedData(0, 0, null, null, name, frames);
         }
 
         public static readonly M64CopiedData OneEmptyFrame =
