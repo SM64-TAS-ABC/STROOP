@@ -34,6 +34,7 @@ namespace STROOP.Map
         public CheckBox checkBoxMapOptionsTrackUnitGridlines;
 
         public CheckBox checkBoxMapOptionsDisableHitboxTris;
+        public CheckBox checkBoxMapOptionsUseCrossSection;
         public CheckBox checkBoxMapOptionsEnable3D;
         public CheckBox checkBoxMapOptionsEnableOrthographicView;
         public CheckBox checkBoxMapOptionsEnablePuView;

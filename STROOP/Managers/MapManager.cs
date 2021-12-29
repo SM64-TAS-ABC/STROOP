@@ -741,19 +741,19 @@ namespace STROOP.Managers
                 new List<string>()
                 {
                     "Reset",
-                    "Toggle Use Cross Section",
                     "Toggle Show Arrows",
                 },
                 new List<Action>()
                 {
                     () => _defaulMapObjectHitboxTriangle.Reset(),
-                    () => _defaulMapObjectHitboxTriangle.ToggleUseCrossSection(),
                     () => _defaulMapObjectHitboxTriangle.ToggleShowArrows(),
                 });
             Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Click +=
                 (sender, e) => Config.MapGraphics.IsOrthographicViewEnabled = Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked;
             Config.MapGui.checkBoxMapOptionsEnable3D.Click +=
                 (sender, e) => SetEnable3D(Config.MapGui.checkBoxMapOptionsEnable3D.Checked);
+            Config.MapGui.checkBoxMapOptionsUseCrossSection.Click +=
+                (sender, e) => SetUseCrossSection(Config.MapGui.checkBoxMapOptionsUseCrossSection.Checked);
             Config.MapGui.checkBoxMapOptionsEnableObjectHover.Click +=
                 (sender, e) => SetEnableObjectHover(Config.MapGui.checkBoxMapOptionsEnableObjectHover.Checked);
 
@@ -931,6 +931,13 @@ namespace STROOP.Managers
             toBeInvisible.Visible = false;
         }
 
+        private void SetUseCrossSection(bool useCrossSection)
+        {
+            Config.MapGui.checkBoxMapOptionsUseCrossSection.Checked = useCrossSection;
+            _defaulMapObjectHitboxTriangle.ApplySettings(
+                new MapObjectSettings(changeTriangleUseCrossSection: true, newTriangleUseCrossSection: useCrossSection));
+        }
+
         private void SetEnableObjectHover(bool enableObjectHover)
         {
             Config.MapGui.checkBoxMapOptionsEnableObjectHover.Checked = enableObjectHover;
@@ -1001,6 +1008,7 @@ namespace STROOP.Managers
                 XElement mapTabSettings = new XElement(XName.Get("MapTabSettings"));
 
                 mapTabSettings.Add(new XAttribute("disableHitboxTris", Config.MapGui.checkBoxMapOptionsDisableHitboxTris.Checked));
+                mapTabSettings.Add(new XAttribute("useCrossSection", Config.MapGui.checkBoxMapOptionsUseCrossSection.Checked));
                 mapTabSettings.Add(new XAttribute("enable3D", Config.MapGui.checkBoxMapOptionsEnable3D.Checked));
                 mapTabSettings.Add(new XAttribute("enableOrthographicView", Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked));
                 mapTabSettings.Add(new XAttribute("enablePuView", Config.MapGui.checkBoxMapOptionsEnablePuView.Checked));
@@ -1103,6 +1111,7 @@ namespace STROOP.Managers
             if (mapTabSettings != null)
             {
                 Config.MapGui.checkBoxMapOptionsDisableHitboxTris.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("disableHitboxTris")).Value);
+                SetUseCrossSection(ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("useCrossSection")).Value));
                 SetEnable3D(ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enable3D")).Value));
                 Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enableOrthographicView")).Value);
                 Config.MapGui.checkBoxMapOptionsEnablePuView.Checked = ParsingUtilities.ParseBool(mapTabSettings.Attribute(XName.Get("enablePuView")).Value);

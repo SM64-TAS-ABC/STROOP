@@ -280,6 +280,7 @@ namespace STROOP
                 checkBoxMapOptionsTrackUnitGridlines = checkBoxMapOptionsTrackUnitGridlines,
 
                 checkBoxMapOptionsDisableHitboxTris = checkBoxMapOptionsDisableHitboxTris,
+                checkBoxMapOptionsUseCrossSection = checkBoxMapOptionsUseCrossSection,
                 checkBoxMapOptionsEnable3D = checkBoxMapOptionsEnable3D,
                 checkBoxMapOptionsEnableOrthographicView = checkBoxMapOptionsEnableOrthographicView,
                 checkBoxMapOptionsEnablePuView = checkBoxMapOptionsEnablePuView,
