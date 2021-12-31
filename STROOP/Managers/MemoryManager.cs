@@ -139,6 +139,10 @@ namespace STROOP.Managers
 
             // Set up controls
             _comboBoxMemoryTypes.DataSource = TypeUtilities.InGameTypeList;
+            ControlUtilities.AddContextMenuStripFunctions(
+                _comboBoxMemoryTypes,
+                new List<string>() { "Add All Vars" },
+                new List<Action>() { () => AddAllVars() });
 
             _checkBoxMemoryLittleEndian.Click += (sender, e) => UpdateHexDisplay();
             _comboBoxMemoryTypes.SelectedValueChanged += (sender, e) => UpdateHexDisplay();
@@ -322,6 +326,18 @@ namespace STROOP.Managers
             _richTextBoxMemoryValues.Parent.Focus();
         }
 
+        private void AddAllVars()
+        {
+            bool useObjAddress = _checkBoxMemoryUseObjAddress.Checked;
+            bool useHex = _checkBoxMemoryHex.Checked;
+            bool useObj = _checkBoxMemoryObj.Checked;
+            bool useRelativeName = _checkBoxMemoryRelativeAddresses.Checked;
+            foreach (ValueText valueText in _currentValueTexts)
+            {
+                valueText.AddVariable(useObjAddress, useHex, useObj, useRelativeName);
+            }
+        }
+
         private class ValueText
         {
             public readonly int ByteIndex;
@@ -409,7 +425,7 @@ namespace STROOP.Managers
                 }
             }
 
-            private void AddVariable(bool useObjAddress, bool useHex, bool useObj, bool useRelativeName)
+            public void AddVariable(bool useObjAddress, bool useHex, bool useObj, bool useRelativeName)
             {
                 WatchVariableControlPrecursor precursor = CreatePrecursor(useObjAddress, useHex, useObj, useRelativeName);
                 Config.MemoryManager.AddVariable(precursor.CreateWatchVariableControl());
