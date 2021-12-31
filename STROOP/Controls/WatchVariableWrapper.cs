@@ -125,11 +125,7 @@ namespace STROOP.Controls
             };
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
-            itemPaste.Click += (sender, e) =>
-            {
-                bool success = _watchVarControl.SetValue(Clipboard.GetText(), true);
-                _watchVarControl.FlashColor(success ? WatchVariableControl.PASTE_COLOR : WatchVariableControl.FAILURE_COLOR);
-            };
+            itemPaste.Click += (sender, e) => Paste();
 
             _contextMenuStrip.AddToBeginningList(_itemHighlight);
             _contextMenuStrip.AddToBeginningList(_itemLock);
@@ -291,6 +287,13 @@ namespace STROOP.Controls
             {
                 Config.LockManager.RemoveLocks(WatchVar, addresses);
             }
+        }
+
+        public bool Paste()
+        {
+            bool success = _watchVarControl.SetValue(Clipboard.GetText(), true);
+            _watchVarControl.FlashColor(success ? WatchVariableControl.PASTE_COLOR : WatchVariableControl.FAILURE_COLOR);
+            return success;
         }
 
 

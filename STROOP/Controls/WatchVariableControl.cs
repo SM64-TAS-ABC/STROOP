@@ -439,6 +439,11 @@ namespace STROOP.Controls
                 _watchVariablePanel.UnselectAllVariables();
                 WatchVarWrapper.ShowBitForm();
             }
+            else if (isPKeyHeld)
+            {
+                _watchVariablePanel.UnselectAllVariables();
+                WatchVarWrapper.Paste();
+            }
             else if (isDeletishKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
