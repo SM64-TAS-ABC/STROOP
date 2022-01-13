@@ -7,8 +7,8 @@
 
   <Data type="short" offset="0x18" base="Mario" color="Yellow">Action Phase</Data>
   <Data type="short" offset="0x1A" base="Mario" color="Yellow">Action Timer</Data>
-  
-  <Data type="short" offset="0x1E" base="Mario" color="Green">Punch Timer</Data>
+
+  <Data type="uint" offset="0x1C" base="Mario" useHex="true" color="Green">Action Parameter</Data>
   <Data type="byte" offset="0x2A" base="Mario" color="Green">Wall Kick Timer</Data>
   <Data type="byte" offset="0x2B" base="Mario" color="Green">Landing Timer</Data>
   <Data type="byte" offset="0x28" base="Mario" color="Green">A Press Timer</Data>
