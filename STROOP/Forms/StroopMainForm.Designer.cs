@@ -13302,8 +13302,8 @@ namespace STROOP
             // checkBoxMemoryLittleEndian
             // 
             this.checkBoxMemoryLittleEndian.AutoSize = true;
-            this.checkBoxMemoryLittleEndian.Checked = true;
-            this.checkBoxMemoryLittleEndian.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMemoryLittleEndian.Checked = false;
+            this.checkBoxMemoryLittleEndian.CheckState = System.Windows.Forms.CheckState.Unchecked;
             this.checkBoxMemoryLittleEndian.Location = new System.Drawing.Point(170, 6);
             this.checkBoxMemoryLittleEndian.Name = "checkBoxMemoryLittleEndian";
             this.checkBoxMemoryLittleEndian.Size = new System.Drawing.Size(84, 17);
