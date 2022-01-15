@@ -191,7 +191,7 @@ namespace STROOP
             switch (inputDisplayType)
             {
                 case InputDisplayTypeEnum.Classic:
-                    return 0.0003f;
+                    return 0.0004f;
                 case InputDisplayTypeEnum.Sleek:
                     return 0.0007f;
                 case InputDisplayTypeEnum.Vertical:
