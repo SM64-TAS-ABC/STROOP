@@ -519,7 +519,11 @@ namespace STROOP.Managers
             bool useObj = _checkBoxMemoryObj.Checked;
 
             // update memory addresses
-            _richTextBoxMemoryAddresses.Text = FormatAddresses(startAddress, (int)MemorySize);
+            string newText = FormatAddresses(startAddress, (int)MemorySize);
+            if (newText != _richTextBoxMemoryAddresses.Text)
+            {
+                _richTextBoxMemoryAddresses.Text = newText;
+            }
 
             // update memory values + highlighting
             int initialSelectionStart = _richTextBoxMemoryValues.SelectionStart;
