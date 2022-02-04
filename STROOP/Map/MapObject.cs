@@ -312,6 +312,9 @@ namespace STROOP.Map
                 case "MapObjectCoordinateLabels":
                     mapObject = new MapObjectCoordinateLabels();
                     break;
+                case "MapObjectCorkBoxTester":
+                    mapObject = new MapObjectCorkBoxTester();
+                    break;
                 case "MapObjectCUpFloor":
                     mapObject = new MapObjectCUpFloor();
                     break;
