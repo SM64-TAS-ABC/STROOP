@@ -1,5 +1,7 @@
 ﻿using STROOP.Managers;
+using STROOP.Models;
 using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,6 +13,8 @@ namespace STROOP.Structs
 {
     public class CorkBox
     {
+        private static int FLOOR_LOWER_LIMIT_MISC = -10_000;
+
         public float X;
         public float Y;
         public float Z;
@@ -18,11 +22,13 @@ namespace STROOP.Structs
         public float YSpeed;
         public float ZSpeed;
         public float HSpeed;
-        public float Yaw;
+        public ushort Yaw;
         public int InactivityTimer;
         public bool Broken;
 
-        public CorkBox(float x, float y, float z)
+        public List<TriangleDataModel> WallTris;
+
+        public CorkBox(float x, float y, float z, List<TriangleDataModel> wallTris)
         {
             X = x;
             Y = y;
@@ -34,6 +40,8 @@ namespace STROOP.Structs
             Yaw = 0;
             InactivityTimer = 0;
             Broken = false;
+
+            WallTris = wallTris;
         }
 
         public void Update()
@@ -44,7 +52,7 @@ namespace STROOP.Structs
 
         private void small_breakable_box_act_move()
         {
-            //short collisionFlags = object_step();
+            short collisionFlags = object_step();
 
             //obj_attack_collided_from_other_object(o);
 
@@ -77,6 +85,71 @@ namespace STROOP.Structs
         private void breakable_box_small_released_loop()
         {
             InactivityTimer++;
+        }
+
+        private short object_step()
+        {
+            float objX = X;
+            float objY = Y;
+            float objZ = Z;
+
+            float floorY;
+            float waterY = FLOOR_LOWER_LIMIT_MISC;
+
+            float objVelX = HSpeed * InGameTrigUtilities.InGameSine(Yaw);
+            float objVelZ = HSpeed * InGameTrigUtilities.InGameCosine(Yaw);
+
+            short collisionFlags = 0;
+
+            // Find any wall collisions, receive the push, and set the flag.
+            if (obj_find_wall(objX + objVelX, objY, objZ + objVelZ, objVelX, objVelZ) == 0)
+            {
+                Broken = true;
+            }
+
+            //floorY = find_floor(objX + objVelX, objY, objZ + objVelZ, &sObjFloor);
+            //if (turn_obj_away_from_steep_floor(sObjFloor, floorY, objVelX, objVelZ) == 1)
+            //{
+            //    waterY = find_water_level(objX + objVelX, objZ + objVelZ);
+            //    if (waterY > objY)
+            //    {
+            //        calc_new_obj_vel_and_pos_y_underwater(sObjFloor, floorY, objVelX, objVelZ, waterY);
+            //        collisionFlags += OBJ_COL_FLAG_UNDERWATER;
+            //    }
+            //    else
+            //    {
+            //        calc_new_obj_vel_and_pos_y(sObjFloor, floorY, objVelX, objVelZ);
+            //    }
+            //}
+            //else
+            //{
+            //    // Treat any awkward floors similar to a wall.
+            //    collisionFlags +=
+            //        ((collisionFlags & OBJ_COL_FLAG_HIT_WALL) ^ OBJ_COL_FLAG_HIT_WALL);
+            //}
+
+            //obj_update_pos_vel_xz();
+            //if ((s32)o->oPosY == (s32)floorY)
+            //{
+            //    collisionFlags += OBJ_COL_FLAG_GROUNDED;
+            //}
+
+            //if ((s32)o->oVelY == 0)
+            //{
+            //    collisionFlags += OBJ_COL_FLAG_NO_Y_VEL;
+            //}
+
+            //// Generate a splash if in water.
+            //obj_splash((s32)waterY, (s32)o->oPosY);
+            
+            return collisionFlags;
+        }
+
+        int obj_find_wall(float objNewX, float objY, float objNewZ, float objVelX, float objVelZ)
+        {
+            int numCollisions = WallDisplacementCalculator.GetNumWallCollisions(
+                objNewX, objY, objNewZ, WallTris, 60, 50);
+            return numCollisions > 0 ? 0 : 1;
         }
     }
 }

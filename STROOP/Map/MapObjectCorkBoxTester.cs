@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Windows.Forms;
 using STROOP.Map.Map3D;
+using STROOP.Models;
 
 namespace STROOP.Map
 {
@@ -20,10 +21,14 @@ namespace STROOP.Map
         private int _blueCircleTex = -1;
         private int _yellowCircleTex = -1;
 
+        private List<TriangleDataModel> _wallTris;
+
         public MapObjectCorkBoxTester()
             : base()
         {
             Size = 10;
+
+            _wallTris = TriangleUtilities.GetLevelTriangles().FindAll(tri => tri.IsWall());
         }
 
         public override Image GetInternalImage()
@@ -100,7 +105,7 @@ namespace STROOP.Map
                 {
                     double x = xMultiple * gap;
                     double z = zMultiple * gap;
-                    var d = CorkBoxUtilities.GetNumFrames(x, z);
+                    var d = CorkBoxUtilities.GetNumFrames(x, z, _wallTris);
                     data.Add((x, d.y, z, d.numFrames));
                 }
             }
@@ -123,6 +128,12 @@ namespace STROOP.Map
             {
                 _yellowCircleTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.YellowCircleMapImage as Bitmap);
+            }
+
+            int numLevelTriangles = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
+            if (_wallTris.Count != numLevelTriangles)
+            {
+                _wallTris = TriangleUtilities.GetLevelTriangles().FindAll(tri => tri.IsWall());
             }
         }
 

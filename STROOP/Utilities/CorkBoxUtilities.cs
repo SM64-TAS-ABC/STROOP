@@ -13,10 +13,10 @@ namespace STROOP.Structs
 {
     public static class CorkBoxUtilities
     {
-        public static (float y, int numFrames) GetNumFrames(double x, double z)
+        public static (float y, int numFrames) GetNumFrames(double x, double z, List<TriangleDataModel> wallTris)
         {
             (TriangleDataModel tri, float y) = TriangleUtilities.FindFloorAndY((float)x, 20_000, (float)z);
-            CorkBox corkBox = new CorkBox((float)x, y, (float)z);
+            CorkBox corkBox = new CorkBox((float)x, y, (float)z, wallTris);
             while (true)
             {
                 corkBox.Update();
