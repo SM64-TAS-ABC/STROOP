@@ -82,7 +82,7 @@ namespace STROOP.Map
             double powerFloor = Math.Floor(powerOffset);
             double floorDiff = powerOffset - powerFloor;
             double gap = Math.Pow(10, powerFloor);
-            if (floorDiff < 0.5)
+            if (floorDiff < 0.6)
             {
                 gap /= 2;
             }
