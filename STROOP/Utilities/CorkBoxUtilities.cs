@@ -11,9 +11,9 @@ namespace STROOP.Structs
 {
     public static class CorkBoxUtilities
     {
-        public static int GetNumFrames(double x, double z)
+        public static (float y, int numFrames) GetNumFrames(double x, double z)
         {
-            return (int)x;
+            return (1, (int)x);
         }
     }
 }

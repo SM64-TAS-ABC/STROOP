@@ -18,7 +18,7 @@ namespace STROOP.Map
     {
         private int _redCircleTex = -1;
         private int _blueCircleTex = -1;
-        private int _orangeCircleTex = -1;
+        private int _yellowCircleTex = -1;
 
         public MapObjectCorkBoxTester()
             : base()
@@ -38,13 +38,12 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            List<(float x, float y, float z, float angle, int tex)> data = GetData();
+            List<(double x, float y, double z, int numFrames)> data = GetData();
             for (int i = data.Count - 1; i >= 0; i--)
             {
                 var dataPoint = data[i];
-                (float x, float y, float z, float angle, int tex) = dataPoint;
-                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
-                float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
+                (double x, float y, double z, int numFrames) = dataPoint;
+                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView((float)x, (float)z);
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.RedCircleMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
                 double opacity = Opacity;
@@ -52,7 +51,9 @@ namespace STROOP.Map
                 {
                     opacity = MapUtilities.GetHoverOpacity();
                 }
-                MapUtilities.DrawTexture(tex, point, size, angleDegrees, opacity);
+                int threshold = 901;
+                int tex = numFrames < threshold ? _redCircleTex : numFrames > threshold ? _blueCircleTex : _yellowCircleTex;
+                MapUtilities.DrawTexture(tex, point, size, 0, opacity);
             }
         }
 
@@ -66,12 +67,27 @@ namespace STROOP.Map
             // do nothing
         }
         
-        public List<(float x, float y, float z, float angle, int tex)> GetData()
+        public List<(double x, float y, double z, int numFrames)> GetData()
         {
-            return new List<(float x, float y, float z, float angle, int tex)>()
+            double xMin = Config.CurrentMapGraphics.MapViewXMin;
+            double xMax = Config.CurrentMapGraphics.MapViewXMax;
+            double zMin = Config.CurrentMapGraphics.MapViewZMin;
+            double zMax = Config.CurrentMapGraphics.MapViewZMax;
+
+            double xGap = (xMax - xMin) / 10;
+            double zGap = (zMax - zMin) / 10;
+
+            List<(double x, float y, double z, int numFrames)> data =
+                new List<(double x, float y, double z, int numFrames)>();
+            for (double x = xMin; x < xMax; x += xGap)
             {
-                (0, 0, 0, 0, _redCircleTex),
-            };
+                for (double z = zMin; z < zMax; z += zGap)
+                {
+                    var d = CorkBoxUtilities.GetNumFrames(x, z);
+                    data.Add((x, d.y, z, d.numFrames));
+                }
+            }
+            return data;
         }
 
         public override void Update()
@@ -86,9 +102,9 @@ namespace STROOP.Map
                 _blueCircleTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.BlueCircleMapImage as Bitmap);
             }
-            if (_orangeCircleTex == -1)
+            if (_yellowCircleTex == -1)
             {
-                _orangeCircleTex = MapUtilities.LoadTexture(
+                _yellowCircleTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.YellowCircleMapImage as Bitmap);
             }
         }
