@@ -23,7 +23,7 @@ namespace STROOP.Map
         public MapObjectCorkBoxTester()
             : base()
         {
-
+            Size = 10;
         }
 
         public override Image GetInternalImage()
@@ -74,15 +74,32 @@ namespace STROOP.Map
             double zMin = Config.CurrentMapGraphics.MapViewZMin;
             double zMax = Config.CurrentMapGraphics.MapViewZMax;
 
-            double xGap = (xMax - xMin) / 10;
-            double zGap = (zMax - zMin) / 10;
+            double xRange = xMax - xMin;
+            double zRange = zMax - zMin;
+            double maxRange = Math.Max(xRange, zRange);
+            double power = Math.Log10(maxRange);
+            double powerOffset = power - 0.5;
+            double powerFloor = Math.Floor(powerOffset);
+            double floorDiff = powerOffset - powerFloor;
+            double gap = Math.Pow(10, powerFloor);
+            if (floorDiff < 0.5)
+            {
+                gap /= 2;
+            }
+
+            int xMultipleMin = (int)(xMin / gap) - 1;
+            int xMultipleMax = (int)(xMax / gap) + 1;
+            int zMultipleMin = (int)(zMin / gap) - 1;
+            int zMultipleMax = (int)(zMax / gap) + 1;
 
             List<(double x, float y, double z, int numFrames)> data =
                 new List<(double x, float y, double z, int numFrames)>();
-            for (double x = xMin; x < xMax; x += xGap)
+            for (int xMultiple = xMultipleMin; xMultiple <= xMultipleMax; xMultiple++)
             {
-                for (double z = zMin; z < zMax; z += zGap)
+                for (int zMultiple = zMultipleMin; zMultiple <= zMultipleMax; zMultiple++)
                 {
+                    double x = xMultiple * gap;
+                    double z = zMultiple * gap;
                     var d = CorkBoxUtilities.GetNumFrames(x, z);
                     data.Add((x, d.y, z, d.numFrames));
                 }
