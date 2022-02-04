@@ -39,6 +39,7 @@ namespace STROOP.Structs
         public void Update()
         {
             small_breakable_box_act_move();
+            breakable_box_small_released_loop();
         }
 
         private void small_breakable_box_act_move()
@@ -71,6 +72,11 @@ namespace STROOP.Structs
             //}
 
             //obj_check_floor_death(collisionFlags, sObjFloor);
+        }
+
+        private void breakable_box_small_released_loop()
+        {
+            InactivityTimer++;
         }
     }
 }
