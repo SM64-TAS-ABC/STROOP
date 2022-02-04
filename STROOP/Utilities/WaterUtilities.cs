@@ -53,7 +53,7 @@ namespace STROOP.Structs
                     return i + 1;
                 }
             }
-            return 0;
+            return -11000;
         }
     }
 }

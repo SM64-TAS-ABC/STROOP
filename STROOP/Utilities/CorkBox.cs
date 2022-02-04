@@ -58,6 +58,15 @@ namespace STROOP.Structs
             WallTris = wallTris;
         }
 
+        public override string ToString()
+        {
+            return string.Format(
+                "pos=({0},{1},{2}) spd=({3},{4},{5},{6}) yaw={7} itimer={8} dead={9}",
+                (double)X, (double)Y, (double)Z,
+                (double)XSpeed, (double)YSpeed, (double)ZSpeed, (double)HSpeed,
+                Yaw, InactivityTimer, Dead);
+        }
+
         public void Update()
         {
             small_breakable_box_act_move();
@@ -328,14 +337,17 @@ namespace STROOP.Structs
             Z += zVel;
         }
 
-        void obj_check_floor_death(short collisionFlags, TriangleDataModel floor) {
+        void obj_check_floor_death(short collisionFlags, TriangleDataModel floor)
+        {
             if (floor == null)
             {
                 return;
             }
 
-            if ((collisionFlags & OBJ_COL_FLAG_GROUNDED) == OBJ_COL_FLAG_GROUNDED) {
-                switch (floor.SurfaceType) {
+            if ((collisionFlags & OBJ_COL_FLAG_GROUNDED) == OBJ_COL_FLAG_GROUNDED)
+            {
+                switch (floor.SurfaceType)
+                {
                     case 0x0001:
                         Dead = true;
                         break;
