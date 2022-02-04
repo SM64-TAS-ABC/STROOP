@@ -133,35 +133,33 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
+            Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
+            if (!relPosMaybe.HasValue) return null;
+            Point relPos = relPosMaybe.Value;
+            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
+
+            var data = GetData();
+            for (int i = 0; i < data.Count; i++)
+            {
+                var dataPoint = data[i];
+                double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
+                double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+                if (dist <= radius || forceCursorPosition)
+                {
+                    return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i, info: "NumFrames=" + dataPoint.numFrames);
+                }
+            }
             return null;
-
-            //Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
-            //if (!relPosMaybe.HasValue) return null;
-            //Point relPos = relPosMaybe.Value;
-            //(float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
-
-            //var data = GetData();
-            //for (int i = 0; i < data.Count; i++)
-            //{
-            //    var dataPoint = data[i];
-            //    double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
-            //    double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
-            //    if (dist <= radius || forceCursorPosition)
-            //    {
-            //        return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, index: i);
-            //    }
-            //}
-            //return null;
         }
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
-            //var data = GetData();
-            //var dataPoint = data[hoverData.Index.Value];
-            //ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(dataPoint.x, dataPoint.y, dataPoint.z, "Position");
-            //output.Insert(0, copyPositionItem);
+            var data = GetData();
+            var dataPoint = data[hoverData.Index.Value];
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(dataPoint.x, dataPoint.y, dataPoint.z, "Position");
+            output.Insert(0, copyPositionItem);
 
             return output;
         }
