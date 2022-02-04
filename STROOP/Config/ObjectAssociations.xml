@@ -54,6 +54,15 @@
   <GreyMario>
     <MapImage path="Mario Grey.png"/>
   </GreyMario>
+  <RedCircle>
+    <MapImage path="Red Circle.png"/>
+  </RedCircle>
+  <BlueCircle>
+    <MapImage path="Blue Circle.png"/>
+  </BlueCircle>
+  <YellowCircle>
+    <MapImage path="Yellow Circle.png"/>
+  </YellowCircle>
   <CameraFocus>
     <MapImage path="Reticule.png"/>
   </CameraFocus>

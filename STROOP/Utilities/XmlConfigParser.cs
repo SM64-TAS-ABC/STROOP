@@ -240,6 +240,7 @@ namespace STROOP.Utilities
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 blueMarioMapImagePath = "", greenMarioMapImagePath = "", orangeMarioMapImagePath = "", purpleMarioMapImagePath = "", turquoiseMarioMapImagePath = "",
                 yellowMarioMapImagePath = "", pinkMarioMapImagePath = "", brownMarioMapImagePath = "", whiteMarioMapImagePath = "", greyMarioMapImagePath = "",
+                redCircleImagePath = "", blueCircleImagePath = "", yellowCircleImagePath = "",
                 cameraFocusImagePath = "", triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "", hitboxTrisImagePath = "",
                 cellGridlinesImagePath = "", currentCellImagePath = "", unitGridlinesImagePath = "", currentUnitImagePath = "",
                 nextPositionsImagePath = "", previousPositionsImagePath = "", arrowImagePath = "", iwerlipsesImagePath = "", cylinderImagePath = "", sphereImagePath = "",
@@ -362,6 +363,18 @@ namespace STROOP.Utilities
 
                     case "GreyMario":
                         greyMarioMapImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "RedCircle":
+                        redCircleImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "BlueCircle":
+                        blueCircleImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "YellowCircle":
+                        yellowCircleImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "CameraFocus":
@@ -794,6 +807,10 @@ namespace STROOP.Utilities
             assoc.WhiteMarioMapImage = Image.FromFile(mapImageDir + whiteMarioMapImagePath);
             assoc.GreyMarioMapImage = Image.FromFile(mapImageDir + greyMarioMapImagePath);
             assoc.CameraFocusMapImage = Image.FromFile(mapImageDir + cameraFocusImagePath);
+
+            assoc.RedCircleMapImage = Image.FromFile(mapImageDir + redCircleImagePath);
+            assoc.BlueCircleMapImage = Image.FromFile(mapImageDir + blueCircleImagePath);
+            assoc.YellowCircleMapImage = Image.FromFile(mapImageDir + yellowCircleImagePath);
 
             assoc.AddEmptyAssociation(); // Need to do this after Empty Image is set
 
