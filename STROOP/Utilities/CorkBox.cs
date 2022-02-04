@@ -24,6 +24,9 @@ namespace STROOP.Structs
         private static short OBJ_COL_FLAG_NO_Y_VEL = (1 << 3);
         private static short OBJ_COL_FLAGS_LANDED = (short)(OBJ_COL_FLAG_GROUNDED | OBJ_COL_FLAG_NO_Y_VEL);
 
+        private static short SURFACE_BURNING = 0x0001;
+        private static short SURFACE_DEATH_PLANE = 0x000A;
+
         public float X;
         public float Y;
         public float Z;
@@ -33,7 +36,7 @@ namespace STROOP.Structs
         public float HSpeed;
         public ushort Yaw;
         public int InactivityTimer;
-        public bool Broken;
+        public bool Dead;
 
         public TriangleDataModel StaticFloor;
         public List<TriangleDataModel> WallTris;
@@ -49,7 +52,7 @@ namespace STROOP.Structs
             HSpeed = 0;
             Yaw = 0;
             InactivityTimer = 0;
-            Broken = false;
+            Dead = false;
 
             StaticFloor = null;
             WallTris = wallTris;
@@ -65,32 +68,12 @@ namespace STROOP.Structs
         {
             short collisionFlags = object_step();
 
-            //obj_attack_collided_from_other_object(o);
+            if ((collisionFlags & OBJ_COL_FLAG_HIT_WALL) != 0)
+            {
+                Dead = true;
+            }
 
-            //if (collisionFlags == OBJ_COL_FLAG_GROUNDED)
-            //{
-            //    cur_obj_play_sound_2(SOUND_GENERAL_BOX_LANDING_2);
-            //}
-
-            //if (collisionFlags & OBJ_COL_FLAG_GROUNDED)
-            //{
-            //    if (o->oForwardVel > 20.0f)
-            //    {
-            //        cur_obj_play_sound_2(SOUND_ENV_SLIDING);
-            //        small_breakable_box_spawn_dust();
-            //    }
-            //}
-
-            //if (collisionFlags & OBJ_COL_FLAG_HIT_WALL)
-            //{
-            //    spawn_mist_particles();
-            //    spawn_triangle_break_particles(20, MODEL_DIRT_ANIMATION, 0.7f, 3);
-            //    obj_spawn_yellow_coins(o, 3);
-            //    create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
-            //    o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
-            //}
-
-            //obj_check_floor_death(collisionFlags, sObjFloor);
+            obj_check_floor_death(collisionFlags, StaticFloor);
         }
 
         private void breakable_box_small_released_loop()
@@ -113,7 +96,7 @@ namespace STROOP.Structs
 
             if (obj_find_wall(objX + objVelX, objY, objZ + objVelZ, objVelX, objVelZ) == 0)
             {
-                Broken = true;
+                Dead = true;
             }
 
             (TriangleDataModel staticFloor, float floorY) = TriangleUtilities.FindFloorAndY(objX + objVelX, objY, objZ + objVelZ);
@@ -343,6 +326,26 @@ namespace STROOP.Structs
 
             X += xVel;
             Z += zVel;
+        }
+
+        void obj_check_floor_death(short collisionFlags, TriangleDataModel floor) {
+            if (floor == null)
+            {
+                return;
+            }
+
+            if ((collisionFlags & OBJ_COL_FLAG_GROUNDED) == OBJ_COL_FLAG_GROUNDED) {
+                switch (floor.SurfaceType) {
+                    case 0x0001:
+                        Dead = true;
+                        break;
+                    case 0x000A:
+                        Dead = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }
