@@ -21,6 +21,8 @@ namespace STROOP.Map
         private int _blueCircleTex = -1;
         private int _yellowCircleTex = -1;
 
+        private Dictionary<(double x, double z), (float y, int numFrames)> _cache;
+        private List<TriangleDataModel> _levelTris;
         private List<TriangleDataModel> _wallTris;
 
         public MapObjectCorkBoxTester()
@@ -28,7 +30,9 @@ namespace STROOP.Map
         {
             Size = 10;
 
-            _wallTris = TriangleUtilities.GetLevelTriangles().FindAll(tri => tri.IsWall());
+            _cache = new Dictionary<(double x, double z), (float y, int numFrames)>();
+            _levelTris = TriangleUtilities.GetLevelTriangles();
+            _wallTris = _levelTris.FindAll(tri => tri.IsWall());
         }
 
         public override Image GetInternalImage()
@@ -105,11 +109,20 @@ namespace STROOP.Map
                 {
                     double x = xMultiple * gap;
                     double z = zMultiple * gap;
-                    var d = CorkBoxUtilities.GetNumFrames(x, z, _wallTris);
+                    var d = GetNumFramesFromCache(x, z, _wallTris);
                     data.Add((x, d.y, z, d.numFrames));
                 }
             }
             return data;
+        }
+
+        private (float y, int numFrames) GetNumFramesFromCache(double x, double z, List<TriangleDataModel> wallTris)
+        {
+            if (!_cache.ContainsKey((x, z)))
+            {
+                _cache[(x, z)] = CorkBoxUtilities.GetNumFrames(x, z, _wallTris);
+            }
+            return _cache[(x, z)];
         }
 
         public override void Update()
@@ -131,9 +144,11 @@ namespace STROOP.Map
             }
 
             int numLevelTriangles = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
-            if (_wallTris.Count != numLevelTriangles)
+            if (_levelTris.Count != numLevelTriangles)
             {
-                _wallTris = TriangleUtilities.GetLevelTriangles().FindAll(tri => tri.IsWall());
+                _cache.Clear();
+                _levelTris = TriangleUtilities.GetLevelTriangles();
+                _wallTris = _levelTris.FindAll(tri => tri.IsWall());
             }
         }
 
