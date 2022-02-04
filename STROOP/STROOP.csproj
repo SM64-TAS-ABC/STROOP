@@ -740,6 +740,7 @@
     <Compile Include="Utilities\AnimationUtilities.cs" />
     <Compile Include="Utilities\CellUtilities.cs" />
     <Compile Include="Structs\ObjectAngleTable.cs" />
+    <Compile Include="Utilities\CorkBox.cs" />
     <Compile Include="Utilities\CorkBoxUtilities.cs" />
     <Compile Include="Utilities\PasteUtilities.cs" />
     <Compile Include="Utilities\CopyUtilities.cs" />

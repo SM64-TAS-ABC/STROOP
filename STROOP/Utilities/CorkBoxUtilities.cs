@@ -1,5 +1,7 @@
 ﻿using STROOP.Managers;
+using STROOP.Models;
 using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,7 +15,16 @@ namespace STROOP.Structs
     {
         public static (float y, int numFrames) GetNumFrames(double x, double z)
         {
-            return (1, (int)x);
+            (TriangleDataModel tri, float y) = TriangleUtilities.FindFloorAndY((float)x, 20_000, (float)z);
+            CorkBox corkBox = new CorkBox((float)x, y, (float)z);
+            while (true)
+            {
+                corkBox.Update();
+                if (corkBox.Broken || corkBox.InactivityTimer > 900)
+                {
+                    return (y, corkBox.InactivityTimer);
+                }
+            }
         }
     }
 }
