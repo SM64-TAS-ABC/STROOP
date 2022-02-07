@@ -178,6 +178,53 @@ namespace STROOP.Utilities
             return _io?.GetRelativeAddress(relativeAddress, size) ?? 0;
         }
 
+        public struct GetStruct
+        {
+            public readonly int Type;
+            public readonly uint Address;
+            public readonly bool AbsoluteAddress;
+            public readonly uint? Mask;
+            public readonly int? Shift;
+
+            public GetStruct(int type, uint address, bool absoluteAddress, uint? mask, int? shift)
+            {
+                Type = type;
+                Address = address;
+                AbsoluteAddress = absoluteAddress;
+                Mask = mask;
+                Shift = shift;
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (obj is GetStruct g)
+                {
+                    return Type == g.Type &&
+                        Address == g.Address &&
+                        AbsoluteAddress == g.AbsoluteAddress &&
+                        Mask == g.Mask &&
+                        Shift == g.Shift;
+                }
+                return false;
+            }
+
+            public override int GetHashCode()
+            {
+                return Type * 7 +
+                    (int)Address * 19 +
+                    (AbsoluteAddress ? 1 : 2) +
+                    (Mask.HasValue ? (int)Mask.Value : 101) +
+                    (Shift.HasValue ? Shift.Value : 103);
+            }
+        }
+
+        public Dictionary<GetStruct, object> _cache = new Dictionary<GetStruct, object>();
+
+        public void ClearCache()
+        {
+            _cache.Clear();
+        }
+
         public object GetValue(Type type, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             if (type == typeof(byte)) return GetByte(address, absoluteAddress, mask, shift);
@@ -194,6 +241,12 @@ namespace STROOP.Utilities
 
         public byte GetByte(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            GetStruct getStruct = new GetStruct(0, address, absoluteAddress, mask, shift);
+            if (_cache.ContainsKey(getStruct))
+            {
+                return (byte)_cache[getStruct];
+            }
+
             object lockValue = Config.LockManager.GetMemoryLockValue(address, typeof(byte), mask, shift);
             byte? parsedValue = ParsingUtilities.ParseByteRoundingWrapping(lockValue);
             if (parsedValue.HasValue) return parsedValue.Value;
@@ -201,11 +254,18 @@ namespace STROOP.Utilities
             byte value = ReadRam((UIntPtr)address, 1, EndiannessType.Little, absoluteAddress)[0];
             if (mask.HasValue) value = (byte)(value & mask.Value);
             if (shift.HasValue) value = (byte)(value >> shift.Value);
+            _cache[getStruct] = value;
             return value;
         }
 
         public sbyte GetSByte(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            GetStruct getStruct = new GetStruct(1, address, absoluteAddress, mask, shift);
+            if (_cache.ContainsKey(getStruct))
+            {
+                return (sbyte)_cache[getStruct];
+            }
+
             object lockValue = Config.LockManager.GetMemoryLockValue(address, typeof(sbyte), mask, shift);
             sbyte? parsedValue = ParsingUtilities.ParseSByteRoundingWrapping(lockValue);
             if (parsedValue.HasValue) return parsedValue.Value;
@@ -213,11 +273,18 @@ namespace STROOP.Utilities
             sbyte value = (sbyte)ReadRam((UIntPtr)address, 1, EndiannessType.Little, absoluteAddress)[0];
             if (mask.HasValue) value = (sbyte)(value & mask.Value);
             if (shift.HasValue) value = (sbyte)(value >> shift.Value);
+            _cache[getStruct] = value;
             return value;
         }
 
         public short GetShort(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            GetStruct getStruct = new GetStruct(2, address, absoluteAddress, mask, shift);
+            if (_cache.ContainsKey(getStruct))
+            {
+                return (short)_cache[getStruct];
+            }
+
             object lockValue = Config.LockManager.GetMemoryLockValue(address, typeof(short), mask, shift);
             short? parsedValue = ParsingUtilities.ParseShortRoundingWrapping(lockValue);
             if (parsedValue.HasValue) return parsedValue.Value;
@@ -225,11 +292,18 @@ namespace STROOP.Utilities
             short value = BitConverter.ToInt16(ReadRam((UIntPtr)address, 2, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (short)(value & mask.Value);
             if (shift.HasValue) value = (short)(value >> shift.Value);
+            _cache[getStruct] = value;
             return value;
         }
 
         public ushort GetUShort(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            GetStruct getStruct = new GetStruct(3, address, absoluteAddress, mask, shift);
+            if (_cache.ContainsKey(getStruct))
+            {
+                return (ushort)_cache[getStruct];
+            }
+
             object lockValue = Config.LockManager.GetMemoryLockValue(address, typeof(ushort), mask, shift);
             ushort? parsedValue = ParsingUtilities.ParseUShortRoundingWrapping(lockValue);
             if (parsedValue.HasValue) return parsedValue.Value;
@@ -237,11 +311,18 @@ namespace STROOP.Utilities
             ushort value = BitConverter.ToUInt16(ReadRam((UIntPtr)address, 2, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (ushort)(value & mask.Value);
             if (shift.HasValue) value = (ushort)(value >> shift.Value);
+            _cache[getStruct] = value;
             return value;
         }
 
         public int GetInt(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            GetStruct getStruct = new GetStruct(4, address, absoluteAddress, mask, shift);
+            if (_cache.ContainsKey(getStruct))
+            {
+                return (int)_cache[getStruct];
+            }
+
             object lockValue = Config.LockManager.GetMemoryLockValue(address, typeof(int), mask, shift);
             int? parsedValue = ParsingUtilities.ParseIntRoundingWrapping(lockValue);
             if (parsedValue.HasValue) return parsedValue.Value;
@@ -249,11 +330,18 @@ namespace STROOP.Utilities
             int value = BitConverter.ToInt32(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (int)(value & mask.Value);
             if (shift.HasValue) value = (int)(value >> shift.Value);
+            _cache[getStruct] = value;
             return value;
         }
 
         public uint GetUInt(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            GetStruct getStruct = new GetStruct(5, address, absoluteAddress, mask, shift);
+            if (_cache.ContainsKey(getStruct))
+            {
+                return (uint)_cache[getStruct];
+            }
+
             object lockValue = Config.LockManager.GetMemoryLockValue(address, typeof(uint), mask, shift);
             uint? parsedValue = ParsingUtilities.ParseUIntRoundingWrapping(lockValue);
             if (parsedValue.HasValue) return parsedValue.Value;
@@ -261,25 +349,42 @@ namespace STROOP.Utilities
             uint value = BitConverter.ToUInt32(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (uint)(value & mask.Value);
             if (shift.HasValue) value = (uint)(value >> shift.Value);
+            _cache[getStruct] = value;
             return value;
         }
 
         public float GetFloat(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            GetStruct getStruct = new GetStruct(6, address, absoluteAddress, mask, shift);
+            if (_cache.ContainsKey(getStruct))
+            {
+                return (float)_cache[getStruct];
+            }
+
             object lockValue = Config.LockManager.GetMemoryLockValue(address, typeof(float), mask, shift);
             float? parsedValue = ParsingUtilities.ParseFloatNullable(lockValue);
             if (parsedValue.HasValue) return parsedValue.Value;
 
-            return BitConverter.ToSingle(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
+            float value = BitConverter.ToSingle(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
+            _cache[getStruct] = value;
+            return value;
         }
 
         public double GetDouble(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            GetStruct getStruct = new GetStruct(7, address, absoluteAddress, mask, shift);
+            if (_cache.ContainsKey(getStruct))
+            {
+                return (double)_cache[getStruct];
+            }
+
             object lockValue = Config.LockManager.GetMemoryLockValue(address, typeof(double), mask, shift);
             double? parsedValue = ParsingUtilities.ParseDoubleNullable(lockValue);
             if (parsedValue.HasValue) return parsedValue.Value;
 
-            return BitConverter.ToDouble(ReadRam((UIntPtr)address, 8, EndiannessType.Little, absoluteAddress), 0);
+            double value = BitConverter.ToDouble(ReadRam((UIntPtr)address, 8, EndiannessType.Little, absoluteAddress), 0);
+            _cache[getStruct] = value;
+            return value;
         }
 
         public byte[] ReadRam(uint address, int length, EndiannessType endianness, bool absoluteAddress = false)
