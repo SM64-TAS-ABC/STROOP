@@ -651,7 +651,6 @@ namespace STROOP
                 Config.LockManager.Update();
                 TestUtilities.Update();
                 TriangleDataModel.ClearCache();
-                Config.Stream.ClearCache();
             }));
         }
 
