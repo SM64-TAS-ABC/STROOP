@@ -20,7 +20,7 @@ namespace STROOP.Structs
             while (true)
             {
                 corkBox.Update();
-                if (corkBox.Dead || corkBox.InactivityTimer >= 902)
+                if (corkBox.Dead || corkBox.InactivityTimer > 1000)
                 {
                     return (y, corkBox.InactivityTimer);
                 }

@@ -18,7 +18,11 @@ namespace STROOP.Map
     public class MapObjectCorkBoxTester : MapObject
     {
         private int _redCircleTex = -1;
+        private int _redLightCircleTex = -1;
+        private int _redDarkCircleTex = -1;
         private int _blueCircleTex = -1;
+        private int _blueLightCircleTex = -1;
+        private int _blueDarkCircleTex = -1;
         private int _yellowCircleTex = -1;
 
         private int _levelTriangleCount;
@@ -60,8 +64,7 @@ namespace STROOP.Map
                 {
                     opacity = MapUtilities.GetHoverOpacity();
                 }
-                int threshold = 901;
-                int tex = numFrames < threshold ? _redCircleTex : numFrames > threshold ? _blueCircleTex : _yellowCircleTex;
+                int tex = GetTexForNumFrames(numFrames);
                 MapUtilities.DrawTexture(tex, point, size, 0, opacity);
             }
         }
@@ -75,7 +78,39 @@ namespace STROOP.Map
         {
             // do nothing
         }
-        
+
+        private int GetTexForNumFrames(int numFrames)
+        {
+            if (numFrames <= 500)
+            {
+                return _redDarkCircleTex;
+            }
+            else if (numFrames <= 800)
+            {
+                return _redCircleTex;
+            }
+            else if (numFrames <= 900)
+            {
+                return _redLightCircleTex;
+            }
+            else if (numFrames <= 901)
+            {
+                return _yellowCircleTex;
+            }
+            else if (numFrames <= 950)
+            {
+                return _blueLightCircleTex;
+            }
+            else if (numFrames <= 1000)
+            {
+                return _blueCircleTex;
+            }
+            else
+            {
+                return _blueDarkCircleTex;
+            }
+        }
+
         public List<(double x, float y, double z, int numFrames)> GetData()
         {
             double xMin = Config.CurrentMapGraphics.MapViewXMin;
@@ -131,14 +166,18 @@ namespace STROOP.Map
             {
                 _redCircleTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.RedCircleMapImage as Bitmap);
-            }
-            if (_blueCircleTex == -1)
-            {
+                _redLightCircleTex = MapUtilities.LoadTexture(
+                    ImageUtilities.ChangeColor(Config.ObjectAssociations.RedCircleMapImage, 0.5) as Bitmap);
+                _redDarkCircleTex = MapUtilities.LoadTexture(
+                    ImageUtilities.ChangeColor(Config.ObjectAssociations.RedCircleMapImage, -0.5) as Bitmap);
+
                 _blueCircleTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.BlueCircleMapImage as Bitmap);
-            }
-            if (_yellowCircleTex == -1)
-            {
+                _blueLightCircleTex = MapUtilities.LoadTexture(
+                    ImageUtilities.ChangeColor(Config.ObjectAssociations.BlueCircleMapImage, 0.8) as Bitmap);
+                _blueDarkCircleTex = MapUtilities.LoadTexture(
+                    ImageUtilities.ChangeColor(Config.ObjectAssociations.BlueCircleMapImage, -0.5) as Bitmap);
+
                 _yellowCircleTex = MapUtilities.LoadTexture(
                     Config.ObjectAssociations.YellowCircleMapImage as Bitmap);
             }
