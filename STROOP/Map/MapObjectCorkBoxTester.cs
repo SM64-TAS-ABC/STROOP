@@ -21,18 +21,18 @@ namespace STROOP.Map
         private int _blueCircleTex = -1;
         private int _yellowCircleTex = -1;
 
+        private int _levelTriangleCount;
+        private CellSnapshot _cellSnapshot;
         private Dictionary<(double x, double z), (float y, int numFrames)> _cache;
-        private List<TriangleDataModel> _levelTris;
-        private List<TriangleDataModel> _wallTris;
 
         public MapObjectCorkBoxTester()
             : base()
         {
             Size = 10;
 
+            _levelTriangleCount = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
+            _cellSnapshot = new CellSnapshot();
             _cache = new Dictionary<(double x, double z), (float y, int numFrames)>();
-            _levelTris = TriangleUtilities.GetLevelTriangles();
-            _wallTris = _levelTris.FindAll(tri => tri.IsWall());
         }
 
         public override Image GetInternalImage()
@@ -109,18 +109,18 @@ namespace STROOP.Map
                 {
                     double x = xMultiple * gap;
                     double z = zMultiple * gap;
-                    var d = GetNumFramesFromCache(x, z, _wallTris);
+                    var d = GetNumFramesFromCache(x, z, _cellSnapshot);
                     data.Add((x, d.y, z, d.numFrames));
                 }
             }
             return data;
         }
 
-        private (float y, int numFrames) GetNumFramesFromCache(double x, double z, List<TriangleDataModel> wallTris)
+        private (float y, int numFrames) GetNumFramesFromCache(double x, double z, CellSnapshot cellSnapshot)
         {
             if (!_cache.ContainsKey((x, z)))
             {
-                _cache[(x, z)] = CorkBoxUtilities.GetNumFrames(x, z, _wallTris);
+                _cache[(x, z)] = CorkBoxUtilities.GetNumFrames(x, z, cellSnapshot);
             }
             return _cache[(x, z)];
         }
@@ -143,12 +143,12 @@ namespace STROOP.Map
                     Config.ObjectAssociations.YellowCircleMapImage as Bitmap);
             }
 
-            int numLevelTriangles = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
-            if (_levelTris.Count != numLevelTriangles)
+            int levelTriangleCount = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
+            if (levelTriangleCount != _levelTriangleCount)
             {
+                _levelTriangleCount = levelTriangleCount;
+                _cellSnapshot = new CellSnapshot();
                 _cache.Clear();
-                _levelTris = TriangleUtilities.GetLevelTriangles();
-                _wallTris = _levelTris.FindAll(tri => tri.IsWall());
             }
         }
 

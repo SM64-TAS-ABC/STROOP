@@ -39,9 +39,9 @@ namespace STROOP.Structs
         public bool Dead;
 
         public TriangleDataModel StaticFloor;
-        public List<TriangleDataModel> WallTris;
+        public CellSnapshot CellSnapshot;
 
-        public CorkBox(float x, float y, float z, List<TriangleDataModel> wallTris)
+        public CorkBox(float x, float y, float z, CellSnapshot cellSnapshot)
         {
             X = x;
             Y = y;
@@ -55,7 +55,7 @@ namespace STROOP.Structs
             Dead = false;
 
             StaticFloor = null;
-            WallTris = wallTris;
+            CellSnapshot = cellSnapshot;
         }
 
         public override string ToString()
@@ -108,7 +108,7 @@ namespace STROOP.Structs
                 Dead = true;
             }
 
-            (TriangleDataModel staticFloor, float floorY) = TriangleUtilities.FindFloorAndY(objX + objVelX, objY, objZ + objVelZ);
+            (TriangleDataModel staticFloor, float floorY) = CellSnapshot.FindFloorAndY(objX + objVelX, objY, objZ + objVelZ);
             StaticFloor = staticFloor;
 
             if (turn_obj_away_from_steep_floor(StaticFloor, floorY, objVelX, objVelZ) == 1)
@@ -145,8 +145,9 @@ namespace STROOP.Structs
 
         int obj_find_wall(float objNewX, float objY, float objNewZ, float objVelX, float objVelZ)
         {
+            List<TriangleDataModel> wallTris = CellSnapshot.GetTrianglesAtPosition(objNewX, objNewZ, true, TriangleClassification.Wall);
             int numCollisions = WallDisplacementCalculator.GetNumWallCollisions(
-                objNewX, objY, objNewZ, WallTris, 60, 50);
+                objNewX, objY, objNewZ, wallTris, 60, 50);
             return numCollisions > 0 ? 0 : 1;
         }
 
