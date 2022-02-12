@@ -14,11 +14,13 @@ namespace STROOP.Structs
     {
         private readonly List<TriangleDataModel>[,,] _staticTris;
         private readonly List<TriangleDataModel>[,,] _dynamicTris;
+        private readonly List<(int y, int xMin, int xMax, int zMin, int zMax)> _waterLevels;
 
         public CellSnapshot()
         {
             _staticTris = GetTrianglesInPartition(true);
             _dynamicTris = GetTrianglesInPartition(false);
+            _waterLevels = WaterUtilities.GetWaterLevels();
         }
 
         private List<TriangleDataModel>[,,] GetTrianglesInPartition(bool staticPartition)
@@ -117,6 +119,18 @@ namespace STROOP.Structs
             }
 
             return null;
+        }
+
+        public int GetWaterAtPos(float x, float z)
+        {
+            foreach (var w in _waterLevels)
+            {
+                if (x > w.xMin && x < w.xMax && z > w.zMin && z < w.zMax)
+                {
+                    return w.y;
+                }
+            }
+            return -11000;
         }
     }
 }

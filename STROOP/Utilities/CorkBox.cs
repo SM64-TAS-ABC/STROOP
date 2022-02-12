@@ -113,7 +113,7 @@ namespace STROOP.Structs
 
             if (turn_obj_away_from_steep_floor(StaticFloor, floorY, objVelX, objVelZ) == 1)
             {
-                waterY = WaterUtilities.GetWaterAtPos(objX + objVelX, objZ + objVelZ);
+                waterY = CellSnapshot.GetWaterAtPos(objX + objVelX, objZ + objVelZ);
                 if (waterY > objY)
                 {
                     calc_new_obj_vel_and_pos_y_underwater(StaticFloor, floorY, objVelX, objVelZ, waterY);
