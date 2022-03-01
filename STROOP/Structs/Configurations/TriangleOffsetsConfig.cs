@@ -45,6 +45,7 @@ namespace STROOP.Structs.Configurations
         public static short GetX3(uint triAddress) => (short)(SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetShort(triAddress + X3));
         public static short GetY3(uint triAddress) => (short)(SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetShort(triAddress + Y3));
         public static short GetZ3(uint triAddress) => (short)(SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetShort(triAddress + Z3));
+        public static float GetNormalOffset(uint triAddress) => SavedSettingsConfig.TriangleVertexMultiplier * Config.Stream.GetFloat(triAddress + NormOffset);
 
         public static bool SetX1(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + X1);
         public static bool SetY1(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + Y1);
@@ -55,5 +56,6 @@ namespace STROOP.Structs.Configurations
         public static bool SetX3(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + X3);
         public static bool SetY3(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + Y3);
         public static bool SetZ3(short value, uint triAddress) => Config.Stream.SetValue((short)(value / SavedSettingsConfig.TriangleVertexMultiplier), triAddress + Z3);
+        public static bool SetNormalOffset(float value, uint triAddress) => Config.Stream.SetValue(value / SavedSettingsConfig.TriangleVertexMultiplier, triAddress + NormOffset);
     }
 }

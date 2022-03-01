@@ -3793,6 +3793,16 @@ namespace STROOP.Structs
                     return TriangleOffsetsConfig.SetZ3(value, triAddress);
                 }));
 
+            _dictionary.Add("TriangleNormalOffset",
+                ((uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.GetNormalOffset(triAddress);
+                },
+                (short value, bool allowToggle, uint triAddress) =>
+                {
+                    return TriangleOffsetsConfig.SetNormalOffset(value, triAddress);
+                }));
+
             // File vars
 
             _dictionary.Add("StarsInFile",

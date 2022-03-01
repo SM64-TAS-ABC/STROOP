@@ -74,6 +74,7 @@
   <Data groupList="Basic" type="float" offset="0x24" base="Triangle" round="10" coord="Z">Normal Z</Data>
   <Data groupList="Basic" base="Triangle" specialType="TriangleHorizontalNormal" round="10">Normal H</Data>
   <Data groupList="Basic" type="float" offset="0x28" base="Triangle">Normal Offset</Data>
+  <Data groupList="ExtendedLevelBoundaries" specialType="TriangleNormalOffset" base="Triangle" color="Orange">Normal Offset</Data>
   <Data groupList="Basic" type="uint" offset="0x2C" base="Triangle" subclass="Object">Associated Object</Data>
 
   <Data groupList="Intermediate" type="uint" offset="0x68" base="Mario" subclass="Triangle" color="Yellow">Floor Triangle</Data>
