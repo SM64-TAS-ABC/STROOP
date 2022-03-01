@@ -367,7 +367,7 @@ namespace STROOP.Managers
             Config.Stream.SetValue(normX, triAddress + TriangleOffsetsConfig.NormX);
             Config.Stream.SetValue(normY, triAddress + TriangleOffsetsConfig.NormY);
             Config.Stream.SetValue(normZ, triAddress + TriangleOffsetsConfig.NormZ);
-            Config.Stream.SetValue(normOffset, triAddress + TriangleOffsetsConfig.NormOffset);
+            TriangleOffsetsConfig.SetNormalOffset(normOffset, triAddress);
 
             // update y bounds
             short yMinMinus5 = (short)(MoreMath.Min(y1, y2, y3) - 5);
@@ -445,7 +445,7 @@ namespace STROOP.Managers
             normX = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormX);
             normY = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormY);
             normZ = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormZ);
-            normOffset = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormOffset);
+            normOffset = TriangleOffsetsConfig.GetNormalOffset(triangleAddress);
 
             InfoForm infoForm = new InfoForm();
             infoForm.SetTriangleEquation(normX, normY, normZ, normOffset);

@@ -1017,7 +1017,7 @@ namespace STROOP.Utilities
                 normX = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormX);
                 normY = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormY);
                 normZ = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormZ);
-                oldNormOffset = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormOffset);
+                oldNormOffset = TriangleOffsetsConfig.GetNormalOffset(triangleAddress);
 
                 // Get Mario position
                 float marioX, marioY, marioZ;
@@ -1043,7 +1043,7 @@ namespace STROOP.Utilities
                 success &= TriangleOffsetsConfig.SetY3(v3Y, triangleAddress);
                 success &= Config.Stream.SetValue(yMin, triangleAddress + TriangleOffsetsConfig.YMinMinus5);
                 success &= Config.Stream.SetValue(yMax, triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
-                success &= Config.Stream.SetValue(normOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
+                success &= TriangleOffsetsConfig.SetNormalOffset(normOffset, triangleAddress);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -1124,7 +1124,7 @@ namespace STROOP.Utilities
                 success &= Config.Stream.SetValue(normX, triangleAddress + TriangleOffsetsConfig.NormX);
                 success &= Config.Stream.SetValue(normY, triangleAddress + TriangleOffsetsConfig.NormY);
                 success &= Config.Stream.SetValue(normZ, triangleAddress + TriangleOffsetsConfig.NormZ);
-                success &= Config.Stream.SetValue(normOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
+                success &= TriangleOffsetsConfig.SetNormalOffset(normOffset, triangleAddress);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -1157,7 +1157,7 @@ namespace STROOP.Utilities
                 normX = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormX);
                 normY = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormY);
                 normZ = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormZ);
-                oldNormOffset = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormOffset);
+                oldNormOffset = TriangleOffsetsConfig.GetNormalOffset(triangleAddress);
 
                 ushort relativeAngle = MoreMath.getUphillAngle(normX, normY, normZ);
                 HandleRelativeAngle(ref xOffset, ref zOffset, useRelative, relativeAngle);
@@ -1178,7 +1178,7 @@ namespace STROOP.Utilities
                 short newYMin = (short)(Math.Min(Math.Min(newY1, newY2), newY3) - 5);
                 short newYMax = (short)(Math.Max(Math.Max(newY1, newY2), newY3) + 5);
 
-                success &= Config.Stream.SetValue(newNormOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
+                success &= TriangleOffsetsConfig.SetNormalOffset(newNormOffset, triangleAddress);
                 success &= TriangleOffsetsConfig.SetX1(newX1, triangleAddress);
                 success &= TriangleOffsetsConfig.SetY1(newY1, triangleAddress);
                 success &= TriangleOffsetsConfig.SetZ1(newZ1, triangleAddress);
@@ -1210,7 +1210,7 @@ namespace STROOP.Utilities
                 normX = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormX);
                 normY = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormY);
                 normZ = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormZ);
-                oldNormOffset = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormOffset);
+                oldNormOffset = TriangleOffsetsConfig.GetNormalOffset(triangleAddress);
 
                 float newNormOffset = oldNormOffset - normalChange;
 
@@ -1232,7 +1232,7 @@ namespace STROOP.Utilities
                 short newYMin = (short)(Math.Min(Math.Min(newY1, newY2), newY3) - 5);
                 short newYMax = (short)(Math.Max(Math.Max(newY1, newY2), newY3) + 5);
 
-                success &= Config.Stream.SetValue(newNormOffset, triangleAddress + TriangleOffsetsConfig.NormOffset);
+                success &= TriangleOffsetsConfig.SetNormalOffset(newNormOffset, triangleAddress);
                 success &= TriangleOffsetsConfig.SetX1(newX1, triangleAddress);
                 success &= TriangleOffsetsConfig.SetY1(newY1, triangleAddress);
                 success &= TriangleOffsetsConfig.SetZ1(newZ1, triangleAddress);

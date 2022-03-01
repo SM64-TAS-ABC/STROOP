@@ -29,7 +29,7 @@ namespace STROOP.Structs.Configurations
         public static readonly uint NormX = 0x1C;
         public static readonly uint NormY = 0x20;
         public static readonly uint NormZ = 0x24;
-        public static readonly uint NormOffset = 0x28;
+        private static readonly uint NormOffset = 0x28;
         public static readonly uint AssociatedObject = 0x2C;
 
         public static readonly byte BelongsToObjectMask = 0x01;

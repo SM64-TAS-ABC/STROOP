@@ -133,7 +133,7 @@ namespace STROOP.Models
             NormX = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormX);
             NormY = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormY);
             NormZ = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormZ);
-            NormOffset = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormOffset);
+            NormOffset = TriangleOffsetsConfig.GetNormalOffset(triangleAddress);
 
             AssociatedObject = Config.Stream.GetUInt(triangleAddress + TriangleOffsetsConfig.AssociatedObject);
 
