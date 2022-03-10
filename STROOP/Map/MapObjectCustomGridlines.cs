@@ -27,12 +27,12 @@ namespace STROOP.Map
         {
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int gridlineMin = -8192;
-            int gridlineMax = 8192;
+            int gridlineMin = -8192 * _multiplier;
+            int gridlineMax = 8192 * _multiplier;
 
             double size = Size;
             if (size < 1) size = 1;
-            double increment = 16384 / size;
+            double increment = 16384 / size * _multiplier;
 
             double viewXMin = Config.CurrentMapGraphics.MapViewXMin;
             double viewXMax = Config.CurrentMapGraphics.MapViewXMax;
@@ -75,12 +75,12 @@ namespace STROOP.Map
         {
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int gridlineMin = -8192;
-            int gridlineMax = 8192;
+            int gridlineMin = -8192 * _multiplier;
+            int gridlineMax = 8192 * _multiplier;
 
             double size = Size;
             if (size < 1) size = 1;
-            double increment = 16384 / size;
+            double increment = 16384 / size * _multiplier;
 
             double viewXMin = Config.CurrentMapGraphics.MapViewXMin;
             double viewXMax = Config.CurrentMapGraphics.MapViewXMax;
@@ -118,12 +118,12 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetVerticesOrthographicView()
         {
-            int gridlineMin = -8192;
-            int gridlineMax = 8192;
+            int gridlineMin = -8192 * _multiplier;
+            int gridlineMax = 8192 * _multiplier;
 
             double size = Size;
             if (size < 1) size = 1;
-            double increment = 16384 / size;
+            double increment = 16384 / size * _multiplier;
 
             double viewXMin = Config.CurrentMapGraphics.MapViewXMin;
             double viewXMax = Config.CurrentMapGraphics.MapViewXMax;
@@ -191,12 +191,12 @@ namespace STROOP.Map
 
         protected override List<(float x, float y, float z)> GetGridlineIntersectionPositionsOrthographicView()
         {
-            int gridlineMin = -8192;
-            int gridlineMax = 8192;
+            int gridlineMin = -8192 * _multiplier;
+            int gridlineMax = 8192 * _multiplier;
 
             double size = Size;
             if (size < 1) size = 1;
-            double increment = 16384 / size;
+            double increment = 16384 / size * _multiplier;
 
             double viewXMin = Config.CurrentMapGraphics.MapViewXMin;
             double viewXMax = Config.CurrentMapGraphics.MapViewXMax;

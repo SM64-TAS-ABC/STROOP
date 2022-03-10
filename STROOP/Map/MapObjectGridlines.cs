@@ -19,8 +19,9 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemSetIconSize;
         private static readonly string SET_ICON_SIZE_TEXT = "Set Icon Size";
 
-        private bool _useExtendedLevelBoundaries;
+        protected bool _useExtendedLevelBoundaries;
         private ToolStripMenuItem _itemUseExtendedLevelBoundaries;
+        protected int _multiplier => _useExtendedLevelBoundaries ? 4 : 1;
 
         public MapObjectGridlines()
             : base()
