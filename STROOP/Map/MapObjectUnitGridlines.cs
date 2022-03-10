@@ -23,6 +23,11 @@ namespace STROOP.Map
             LineColor = Color.Black;
         }
 
+        private int Normalize(float number)
+        {
+            return (int)number / _multiplier * _multiplier;
+        }
+
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
         {
             // failsafe to prevent filling the whole screen
@@ -33,18 +38,18 @@ namespace STROOP.Map
 
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int xMin = (int)Config.CurrentMapGraphics.MapViewXMin - 1;
-            int xMax = (int)Config.CurrentMapGraphics.MapViewXMax + 1;
-            int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
-            int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
+            int xMin = Normalize(Config.CurrentMapGraphics.MapViewXMin) - _multiplier;
+            int xMax = Normalize(Config.CurrentMapGraphics.MapViewXMax) + _multiplier;
+            int zMin = Normalize(Config.CurrentMapGraphics.MapViewZMin) - _multiplier;
+            int zMax = Normalize(Config.CurrentMapGraphics.MapViewZMax) + _multiplier;
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            for (int x = xMin; x <= xMax; x++)
+            for (int x = xMin; x <= xMax; x += _multiplier)
             {
                 vertices.Add((x, marioY, zMin));
                 vertices.Add((x, marioY, zMax));
             }
-            for (int z = zMin; z <= zMax; z++)
+            for (int z = zMin; z <= zMax; z += _multiplier)
             {
                 vertices.Add((xMin, marioY, z));
                 vertices.Add((xMax, marioY, z));
@@ -62,15 +67,15 @@ namespace STROOP.Map
 
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            int xMin = (int)Config.CurrentMapGraphics.MapViewXMin - 1;
-            int xMax = (int)Config.CurrentMapGraphics.MapViewXMax + 1;
-            int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
-            int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
+            int xMin = Normalize(Config.CurrentMapGraphics.MapViewXMin) - _multiplier;
+            int xMax = Normalize(Config.CurrentMapGraphics.MapViewXMax) + _multiplier;
+            int zMin = Normalize(Config.CurrentMapGraphics.MapViewZMin) - _multiplier;
+            int zMax = Normalize(Config.CurrentMapGraphics.MapViewZMax) + _multiplier;
 
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            for (int x = xMin; x <= xMax; x++)
+            for (int x = xMin; x <= xMax; x += _multiplier)
             {
-                for (int z = zMin; z <= zMax; z++)
+                for (int z = zMin; z <= zMax; z += _multiplier)
                 {
                     vertices.Add((x, marioY, z));
                 }
@@ -88,24 +93,24 @@ namespace STROOP.Map
 
             float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
             float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
-            int xMin = (int)Config.CurrentMapGraphics.MapViewXMin - 1;
-            int xMax = (int)Config.CurrentMapGraphics.MapViewXMax + 1;
-            int yMin = (int)Config.CurrentMapGraphics.MapViewYMin - 1;
-            int yMax = (int)Config.CurrentMapGraphics.MapViewYMax + 1;
-            int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
-            int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
+            int xMin = Normalize(Config.CurrentMapGraphics.MapViewXMin) - _multiplier;
+            int xMax = Normalize(Config.CurrentMapGraphics.MapViewXMax) + _multiplier;
+            int yMin = Normalize(Config.CurrentMapGraphics.MapViewYMin) - _multiplier;
+            int yMax = Normalize(Config.CurrentMapGraphics.MapViewYMax) + _multiplier;
+            int zMin = Normalize(Config.CurrentMapGraphics.MapViewZMin) - _multiplier;
+            int zMax = Normalize(Config.CurrentMapGraphics.MapViewZMax) + _multiplier;
 
             if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                 (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
                 Config.CurrentMapGraphics.MapViewYawValue == 32768))
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int x = xMin; x <= xMax; x++)
+                for (int x = xMin; x <= xMax; x += _multiplier)
                 {
                     vertices.Add((x, yMin, zCenter));
                     vertices.Add((x, yMax, zCenter));
                 }
-                for (int y = yMin; y <= yMax; y++)
+                for (int y = yMin; y <= yMax; y += _multiplier)
                 {
                     vertices.Add((xMin, y, zCenter));
                     vertices.Add((xMax, y, zCenter));
@@ -117,12 +122,12 @@ namespace STROOP.Map
                 Config.CurrentMapGraphics.MapViewYawValue == 49152))
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int z = zMin; z <= zMax; z++)
+                for (int z = zMin; z <= zMax; z += _multiplier)
                 {
                     vertices.Add((xCenter, yMin, z));
                     vertices.Add((xCenter, yMax, z));
                 }
-                for (int y = yMin; y <= yMax; y++)
+                for (int y = yMin; y <= yMax; y += _multiplier)
                 {
                     vertices.Add((xCenter, y, zMin));
                     vertices.Add((xCenter, y, zMax));
@@ -132,7 +137,7 @@ namespace STROOP.Map
             else if (Config.CurrentMapGraphics.MapViewPitchValue == 0)
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int y = yMin; y <= yMax; y++)
+                for (int y = yMin; y <= yMax; y += _multiplier)
                 {
                     vertices.Add((float.NegativeInfinity, y, float.NegativeInfinity));
                     vertices.Add((float.PositiveInfinity, y, float.PositiveInfinity));
@@ -155,21 +160,21 @@ namespace STROOP.Map
 
             float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
             float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
-            int xMin = (int)Config.CurrentMapGraphics.MapViewXMin - 1;
-            int xMax = (int)Config.CurrentMapGraphics.MapViewXMax + 1;
-            int yMin = (int)Config.CurrentMapGraphics.MapViewYMin - 1;
-            int yMax = (int)Config.CurrentMapGraphics.MapViewYMax + 1;
-            int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
-            int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
+            int xMin = Normalize(Config.CurrentMapGraphics.MapViewXMin) - _multiplier;
+            int xMax = Normalize(Config.CurrentMapGraphics.MapViewXMax) + _multiplier;
+            int yMin = Normalize(Config.CurrentMapGraphics.MapViewYMin) - _multiplier;
+            int yMax = Normalize(Config.CurrentMapGraphics.MapViewYMax) + _multiplier;
+            int zMin = Normalize(Config.CurrentMapGraphics.MapViewZMin) - _multiplier;
+            int zMax = Normalize(Config.CurrentMapGraphics.MapViewZMax) + _multiplier;
 
             if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                 (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
                 Config.CurrentMapGraphics.MapViewYawValue == 32768))
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int x = xMin; x <= xMax; x++)
+                for (int x = xMin; x <= xMax; x += _multiplier)
                 {
-                    for (int y = yMin; y <= yMax; y++)
+                    for (int y = yMin; y <= yMax; y += _multiplier)
                     {
                         vertices.Add((x, y, zCenter));
                     }
@@ -181,9 +186,9 @@ namespace STROOP.Map
                 Config.CurrentMapGraphics.MapViewYawValue == 49152))
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int z = zMin; z <= zMax; z++)
+                for (int z = zMin; z <= zMax; z += _multiplier)
                 {
-                    for (int y = yMin; y <= yMax; y++)
+                    for (int y = yMin; y <= yMax; y += _multiplier)
                     {
                         vertices.Add((xCenter, y, z));
                     }
