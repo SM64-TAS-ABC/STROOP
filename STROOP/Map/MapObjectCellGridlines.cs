@@ -26,16 +26,20 @@ namespace STROOP.Map
         {
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
+            int min = -8192 * _multiplier;
+            int max = 8192 * _multiplier;
+            int increment = 1024 * _multiplier;
+
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            for (int x = -8192; x <= 8192; x += 1024)
+            for (int x = min; x <= max; x += increment)
             {
-                vertices.Add((x, marioY, - 8192));
-                vertices.Add((x, marioY, 8192));
+                vertices.Add((x, marioY, min));
+                vertices.Add((x, marioY, max));
             }
-            for (int z = -8192; z <= 8192; z += 1024)
+            for (int z = min; z <= max; z += increment)
             {
-                vertices.Add((-8192, marioY, z));
-                vertices.Add((8192, marioY, z));
+                vertices.Add((min, marioY, z));
+                vertices.Add((max, marioY, z));
             }
             return vertices;
         }
@@ -44,10 +48,14 @@ namespace STROOP.Map
         {
             float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
+            int min = -8192 * _multiplier;
+            int max = 8192 * _multiplier;
+            int increment = 1024 * _multiplier;
+
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-            for (int x = -8192; x <= 8192; x += 1024)
+            for (int x = min; x <= max; x += increment)
             {
-                for (int z = -8192; z <= 8192; z += 1024)
+                for (int z = min; z <= max; z += increment)
                 {
                     vertices.Add((x, marioY, z));
                 }
