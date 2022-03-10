@@ -172,26 +172,29 @@ namespace STROOP.Map
             {
                 case PuGridlineSetting.SETTING1:
                     {
+                        float size = Math.Max(Size, 1);
+                        long spacing = (long)(puSize * size);
+
                         float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
                         float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
-                        int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / puSize) - 1) * puSize;
-                        int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / puSize) + 1) * puSize;
-                        int yMin = ((((int)Config.CurrentMapGraphics.MapViewYMin) / puSize) - 1) * puSize;
-                        int yMax = ((((int)Config.CurrentMapGraphics.MapViewYMax) / puSize) + 1) * puSize;
-                        int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / puSize) - 1) * puSize;
-                        int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / puSize) + 1) * puSize;
+                        long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing;
+                        long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing;
+                        long yMin = ((((long)Config.CurrentMapGraphics.MapViewYMin) / spacing) - 1) * spacing;
+                        long yMax = ((((long)Config.CurrentMapGraphics.MapViewYMax) / spacing) + 1) * spacing;
+                        long zMin = ((((long)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing;
+                        long zMax = ((((long)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing;
 
                         if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                             (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
                             Config.CurrentMapGraphics.MapViewYawValue == 32768))
                         {
                             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                            for (int x = xMin; x <= xMax; x += puSize)
+                            for (long x = xMin; x <= xMax; x += spacing)
                             {
                                 vertices.Add((x, yMin, zCenter));
                                 vertices.Add((x, yMax, zCenter));
                             }
-                            for (int y = yMin; y <= yMax; y += puSize)
+                            for (long y = yMin; y <= yMax; y += spacing)
                             {
                                 vertices.Add((xMin, y, zCenter));
                                 vertices.Add((xMax, y, zCenter));
@@ -203,12 +206,12 @@ namespace STROOP.Map
                             Config.CurrentMapGraphics.MapViewYawValue == 49152))
                         {
                             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                            for (int z = zMin; z <= zMax; z += puSize)
+                            for (long z = zMin; z <= zMax; z += spacing)
                             {
                                 vertices.Add((xCenter, yMin, z));
                                 vertices.Add((xCenter, yMax, z));
                             }
-                            for (int y = yMin; y <= yMax; y += puSize)
+                            for (long y = yMin; y <= yMax; y += spacing)
                             {
                                 vertices.Add((zCenter, y, zMin));
                                 vertices.Add((xCenter, y, zMax));
@@ -361,23 +364,26 @@ namespace STROOP.Map
                 return new List<(float x, float y, float z)>();
             }
 
+            float size = Math.Max(Size, 1);
+            long spacing = (long)(puSize * size);
+
             float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
             float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
-            int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / puSize) - 1) * puSize;
-            int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / puSize) + 1) * puSize;
-            int yMin = ((((int)Config.CurrentMapGraphics.MapViewYMin) / puSize) - 1) * puSize;
-            int yMax = ((((int)Config.CurrentMapGraphics.MapViewYMax) / puSize) + 1) * puSize;
-            int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / puSize) - 1) * puSize;
-            int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / puSize) + 1) * puSize;
+            long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing;
+            long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing;
+            long yMin = ((((long)Config.CurrentMapGraphics.MapViewYMin) / spacing) - 1) * spacing;
+            long yMax = ((((long)Config.CurrentMapGraphics.MapViewYMax) / spacing) + 1) * spacing;
+            long zMin = ((((long)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing;
+            long zMax = ((((long)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing;
 
             if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                 (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
                 Config.CurrentMapGraphics.MapViewYawValue == 32768))
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int x = xMin; x <= xMax; x += puSize)
+                for (long x = xMin; x <= xMax; x += spacing)
                 {
-                    for (int y = yMin; y <= yMax; y += puSize)
+                    for (long y = yMin; y <= yMax; y += spacing)
                     {
                         vertices.Add((x, y, zCenter));
                     }
@@ -389,9 +395,9 @@ namespace STROOP.Map
                 Config.CurrentMapGraphics.MapViewYawValue == 49152))
             {
                 List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
-                for (int z = zMin; z <= zMax; z += puSize)
+                for (long z = zMin; z <= zMax; z += spacing)
                 {
-                    for (int y = yMin; y <= yMax; y += puSize)
+                    for (long y = yMin; y <= yMax; y += spacing)
                     {
                         vertices.Add((xCenter, y, z));
                     }
