@@ -19,10 +19,14 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemSetIconSize;
         private static readonly string SET_ICON_SIZE_TEXT = "Set Icon Size";
 
+        private bool _useExtendedLevelBoundaries;
+        private ToolStripMenuItem _itemUseExtendedLevelBoundaries;
+
         public MapObjectGridlines()
             : base()
         {
             _imageSize = 8;
+            _useExtendedLevelBoundaries = false;
         }
 
         protected abstract List<(float x, float y, float z)> GetGridlineIntersectionPositionsTopDownView();
@@ -73,7 +77,7 @@ namespace STROOP.Map
             }
         }
 
-        protected List<ToolStripMenuItem> GetLineToolStripMenuItems()
+        protected List<ToolStripMenuItem> GetGridlinesToolStripMenuItems()
         {
             string suffix = string.Format(" ({0})", _imageSize);
             _itemSetIconSize = new ToolStripMenuItem(SET_ICON_SIZE_TEXT + suffix);
@@ -87,9 +91,19 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
+            _itemUseExtendedLevelBoundaries = new ToolStripMenuItem("Use Extended Level Boundaries");
+            _itemUseExtendedLevelBoundaries.Click += (sender, e) =>
+            {
+                MapObjectSettings settings = new MapObjectSettings(
+                    changeUseExtendedLevelBoundaries: true,
+                    newUseExtendedLevelBoundaries: !_useExtendedLevelBoundaries);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
             return new List<ToolStripMenuItem>()
             {
                 _itemSetIconSize,
+                _itemUseExtendedLevelBoundaries,
             };
         }
 
@@ -102,6 +116,12 @@ namespace STROOP.Map
                 _imageSize = settings.NewIconSize;
                 string suffix = string.Format(" ({0})", _imageSize);
                 _itemSetIconSize.Text = SET_ICON_SIZE_TEXT + suffix;
+            }
+
+            if (settings.ChangeUseExtendedLevelBoundaries)
+            {
+                _useExtendedLevelBoundaries = settings.NewUseExtendedLevelBoundaries;
+                _itemUseExtendedLevelBoundaries.Checked = settings.NewUseExtendedLevelBoundaries;
             }
         }
 

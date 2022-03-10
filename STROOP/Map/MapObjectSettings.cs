@@ -97,6 +97,9 @@ namespace STROOP.Map
         public readonly bool ChangeIconSize;
         public readonly float NewIconSize;
 
+        public readonly bool ChangeUseExtendedLevelBoundaries;
+        public readonly bool NewUseExtendedLevelBoundaries;
+
         public readonly bool ChangeAngleRangeUseRelativeAngles;
         public readonly bool NewAngleRangeUseRelativeAngles;
 
@@ -233,6 +236,9 @@ namespace STROOP.Map
             bool changeIconSize = false,
             float newIconSize = 0,
 
+            bool changeUseExtendedLevelBoundaries = false,
+            bool newUseExtendedLevelBoundaries = false,
+
             bool changeAngleRangeUseRelativeAngles = false,
             bool newAngleRangeUseRelativeAngles = false,
 
@@ -367,6 +373,9 @@ namespace STROOP.Map
 
             ChangeIconSize = changeIconSize;
             NewIconSize = newIconSize;
+
+            ChangeUseExtendedLevelBoundaries = changeUseExtendedLevelBoundaries;
+            NewUseExtendedLevelBoundaries = newUseExtendedLevelBoundaries;
 
             ChangeAngleRangeUseRelativeAngles = changeAngleRangeUseRelativeAngles;
             NewAngleRangeUseRelativeAngles = newAngleRangeUseRelativeAngles;
