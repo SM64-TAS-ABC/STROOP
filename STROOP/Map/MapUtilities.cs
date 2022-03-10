@@ -200,14 +200,16 @@ namespace STROOP.Map
 
         public static List<(float x, float z)> GetPuCenters()
         {
-            int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / 65536) - 1) * 65536;
-            int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / 65536) + 1) * 65536;
-            int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / 65536) - 1) * 65536;
-            int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / 65536) + 1) * 65536;
+            int puSize = 65536 * (SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1);
+
+            int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / puSize) - 1) * puSize;
+            int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / puSize) + 1) * puSize;
+            int zMin = ((((int)Config.CurrentMapGraphics.MapViewZMin) / puSize) - 1) * puSize;
+            int zMax = ((((int)Config.CurrentMapGraphics.MapViewZMax) / puSize) + 1) * puSize;
             List<(float x, float z)> centers = new List<(float x, float z)>();
-            for (int x = xMin; x <= xMax; x += 65536)
+            for (int x = xMin; x <= xMax; x += puSize)
             {
-                for (int z = zMin; z <= zMax; z += 65536)
+                for (int z = zMin; z <= zMax; z += puSize)
                 {
                     centers.Add((x, z));
                 }
