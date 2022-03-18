@@ -912,7 +912,7 @@ namespace STROOP.Map
             _mapObjectList.ForEach(mapObj => mapObj.ApplySettings(settings));
         }
 
-        public List<MapObject> GetMapObjectsToDisplay()
+        public List<MapObject> GetMapObjectsToDisplay(MapType mapType)
         {
             if (!_isVisible) return new List<MapObject>();
             return _mapObjectList.FindAll(mapObj => mapObj.ShouldDisplay(

@@ -235,6 +235,7 @@
     <Compile Include="Controls\WatchVariableTriangleWrapper.cs" />
     <Compile Include="Controls\WatchVariableStringWrapper.cs" />
     <Compile Include="Enums\AggregateMathOperation.cs" />
+    <Compile Include="Enums\MapType.cs" />
     <Compile Include="Enums\TriangleVertexOffset.cs" />
     <Compile Include="Enums\CompassPosition.cs" />
     <Compile Include="Enums\MouseEvent.cs" />
