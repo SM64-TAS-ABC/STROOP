@@ -915,6 +915,11 @@ namespace STROOP.Map
         public List<MapObject> GetMapObjectsToDisplay(MapType mapType)
         {
             if (!_isVisible) return new List<MapObject>();
+
+            if (mapType == MapType.Map2DTopDown && !_isVisibleFor2DTopDown) return new List<MapObject>();
+            if (mapType == MapType.Map2DOrthographic && !_isVisibleFor2DOrthographic) return new List<MapObject>();
+            if (mapType == MapType.Map3D && !_isVisibleFor3D) return new List<MapObject>();
+
             return _mapObjectList.FindAll(mapObj => mapObj.ShouldDisplay(
                 (MapTrackerVisibilityType)comboBoxVisibilityType.SelectedItem));
         }
