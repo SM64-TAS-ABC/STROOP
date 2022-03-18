@@ -33,6 +33,9 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemUseCustomImage = new ToolStripMenuItem("Use Custom Image");
 
         private bool _isVisible;
+        private bool _isVisibleFor2DTopDown;
+        private bool _isVisibleFor2DOrthographic;
+        private bool _isVisibleFor3D;
         private MapTrackerVisibilityType _currentVisiblityType;
 
         private string _customName;
@@ -58,6 +61,9 @@ namespace STROOP.Map
             _images = new List<Image>();
 
             _isVisible = true;
+            _isVisibleFor2DTopDown = true;
+            _isVisibleFor2DOrthographic = true;
+            _isVisibleFor3D = true;
             _currentVisiblityType = MapTrackerVisibilityType.VisibleWhenLoaded;
 
             pictureBoxPicture.ContextMenuStrip = new ContextMenuStrip();
@@ -116,9 +122,42 @@ namespace STROOP.Map
 
             MapUtilities.CreateTrackBarContextMenuStrip(trackBarSize, () => _mapObjectList[0].Size);
             MapUtilities.CreateTrackBarContextMenuStrip(trackBarLineWidth, () => _mapObjectList[0].LineWidth);
+            InitializeEyeContextMenuStrip();
             InitializePlusContextMenuStrip();
 
             UpdateControl();
+        }
+
+        private void InitializeEyeContextMenuStrip()
+        {
+            pictureBoxEye.ContextMenuStrip = new ContextMenuStrip();
+
+            ToolStripMenuItem itemVisibleOn2DTopDown = new ToolStripMenuItem("Visible for 2D Top Down");
+            itemVisibleOn2DTopDown.Click += (sender, e) =>
+            {
+                _isVisibleFor2DTopDown = !_isVisibleFor2DTopDown;
+                itemVisibleOn2DTopDown.Checked = _isVisibleFor2DTopDown;
+            };
+            itemVisibleOn2DTopDown.Checked = _isVisibleFor2DTopDown;
+            pictureBoxEye.ContextMenuStrip.Items.Add(itemVisibleOn2DTopDown);
+
+            ToolStripMenuItem itemVisibleOn2DOrthographic = new ToolStripMenuItem("Visible for 2D Orthographic");
+            itemVisibleOn2DOrthographic.Click += (sender, e) =>
+            {
+                _isVisibleFor2DOrthographic = !_isVisibleFor2DOrthographic;
+                itemVisibleOn2DOrthographic.Checked = _isVisibleFor2DOrthographic;
+            };
+            itemVisibleOn2DOrthographic.Checked = _isVisibleFor2DOrthographic;
+            pictureBoxEye.ContextMenuStrip.Items.Add(itemVisibleOn2DOrthographic);
+
+            ToolStripMenuItem itemVisibleOn3D = new ToolStripMenuItem("Visible for 3D");
+            itemVisibleOn3D.Click += (sender, e) =>
+            {
+                _isVisibleFor3D = !_isVisibleFor3D;
+                itemVisibleOn3D.Checked = _isVisibleFor3D;
+            };
+            itemVisibleOn3D.Checked = _isVisibleFor3D;
+            pictureBoxEye.ContextMenuStrip.Items.Add(itemVisibleOn3D);
         }
 
         private void InitializePlusContextMenuStrip()
