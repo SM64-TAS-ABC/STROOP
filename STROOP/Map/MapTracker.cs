@@ -38,6 +38,10 @@ namespace STROOP.Map
         private bool _isVisibleFor3D;
         private MapTrackerVisibilityType _currentVisiblityType;
 
+        private ToolStripMenuItem _itemVisibleOn2DTopDown;
+        private ToolStripMenuItem _itemVisibleOn2DOrthographic;
+        private ToolStripMenuItem _itemVisibleOn3D;
+
         private string _customName;
 
         public MapTracker(MapObject mapObj, List<MapSemaphore> semaphoreList = null)
@@ -132,32 +136,53 @@ namespace STROOP.Map
         {
             pictureBoxEye.ContextMenuStrip = new ContextMenuStrip();
 
-            ToolStripMenuItem itemVisibleOn2DTopDown = new ToolStripMenuItem("Visible for 2D Top Down");
-            itemVisibleOn2DTopDown.Click += (sender, e) =>
+            _itemVisibleOn2DTopDown = new ToolStripMenuItem("Visible for 2D Top Down");
+            _itemVisibleOn2DTopDown.Click += (sender, e) =>
             {
                 _isVisibleFor2DTopDown = !_isVisibleFor2DTopDown;
-                itemVisibleOn2DTopDown.Checked = _isVisibleFor2DTopDown;
+                _itemVisibleOn2DTopDown.Checked = _isVisibleFor2DTopDown;
             };
-            itemVisibleOn2DTopDown.Checked = _isVisibleFor2DTopDown;
-            pictureBoxEye.ContextMenuStrip.Items.Add(itemVisibleOn2DTopDown);
+            _itemVisibleOn2DTopDown.Checked = _isVisibleFor2DTopDown;
+            pictureBoxEye.ContextMenuStrip.Items.Add(_itemVisibleOn2DTopDown);
 
-            ToolStripMenuItem itemVisibleOn2DOrthographic = new ToolStripMenuItem("Visible for 2D Orthographic");
-            itemVisibleOn2DOrthographic.Click += (sender, e) =>
+            _itemVisibleOn2DOrthographic = new ToolStripMenuItem("Visible for 2D Orthographic");
+            _itemVisibleOn2DOrthographic.Click += (sender, e) =>
             {
                 _isVisibleFor2DOrthographic = !_isVisibleFor2DOrthographic;
-                itemVisibleOn2DOrthographic.Checked = _isVisibleFor2DOrthographic;
+                _itemVisibleOn2DOrthographic.Checked = _isVisibleFor2DOrthographic;
             };
-            itemVisibleOn2DOrthographic.Checked = _isVisibleFor2DOrthographic;
-            pictureBoxEye.ContextMenuStrip.Items.Add(itemVisibleOn2DOrthographic);
+            _itemVisibleOn2DOrthographic.Checked = _isVisibleFor2DOrthographic;
+            pictureBoxEye.ContextMenuStrip.Items.Add(_itemVisibleOn2DOrthographic);
 
-            ToolStripMenuItem itemVisibleOn3D = new ToolStripMenuItem("Visible for 3D");
-            itemVisibleOn3D.Click += (sender, e) =>
+            _itemVisibleOn3D = new ToolStripMenuItem("Visible for 3D");
+            _itemVisibleOn3D.Click += (sender, e) =>
             {
                 _isVisibleFor3D = !_isVisibleFor3D;
-                itemVisibleOn3D.Checked = _isVisibleFor3D;
+                _itemVisibleOn3D.Checked = _isVisibleFor3D;
             };
-            itemVisibleOn3D.Checked = _isVisibleFor3D;
-            pictureBoxEye.ContextMenuStrip.Items.Add(itemVisibleOn3D);
+            _itemVisibleOn3D.Checked = _isVisibleFor3D;
+            pictureBoxEye.ContextMenuStrip.Items.Add(_itemVisibleOn3D);
+        }
+
+        private void SetMapTypeVisibility(MapType mapType, bool value)
+        {
+            switch (mapType)
+            {
+                case MapType.Map2DTopDown:
+                    _isVisibleFor2DTopDown = value;
+                    _itemVisibleOn2DTopDown.Checked = value;
+                    break;
+                case MapType.Map2DOrthographic:
+                    _isVisibleFor2DOrthographic = value;
+                    _itemVisibleOn2DOrthographic.Checked = value;
+                    break;
+                case MapType.Map3D:
+                    _isVisibleFor3D = value;
+                    _itemVisibleOn3D.Checked = value;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private void InitializePlusContextMenuStrip()
@@ -1167,6 +1192,9 @@ namespace STROOP.Map
             }
             xElement.Add(new XAttribute("scales", _mapObjectList[0].Scales));
             xElement.Add(new XAttribute("isVisible", _isVisible));
+            xElement.Add(new XAttribute("isVisibleFor2DTopDown", _isVisibleFor2DTopDown));
+            xElement.Add(new XAttribute("isVisibleFor2DOrthographic", _isVisibleFor2DOrthographic));
+            xElement.Add(new XAttribute("isVisibleFor3D", _isVisibleFor3D));
             foreach (MapObject mapObj in _mapObjectList)
             {
                 xElement.Add(mapObj.ToXElement());
@@ -1205,6 +1233,9 @@ namespace STROOP.Map
             }
             tracker.SetScales(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("scales")).Value));
             tracker.SetIsVisible(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisible")).Value));
+            tracker.SetMapTypeVisibility(MapType.Map2DTopDown, ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisibleFor2DTopDown")).Value));
+            tracker.SetMapTypeVisibility(MapType.Map2DOrthographic, ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisibleFor2DOrthographic")).Value));
+            tracker.SetMapTypeVisibility(MapType.Map3D, ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisibleFor3D")).Value));
             return tracker;
         }
     }
