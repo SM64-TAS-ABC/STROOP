@@ -272,7 +272,7 @@ namespace STROOP.Map
         
         public Matrix4 GetModelMatrix(float x, float y, float z, float ang)
         {
-            Image image = Config.ObjectAssociations.MarioImage;
+            Image image = Config.ObjectAssociations.BlueMarioMapImage;
             SizeF _imageNormalizedSize = new SizeF(
                 image.Width >= image.Height ? 1.0f : (float)image.Width / image.Height,
                 image.Width <= image.Height ? 1.0f : (float)image.Height / image.Width);
