@@ -46,12 +46,18 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-
+            foreach (MapObject mapObj in _subMapObjs)
+            {
+                mapObj.DrawOn2DControlOrthographicView(hoverData);
+            }
         }
 
         public override void DrawOn3DControl()
         {
-
+            foreach (MapObject mapObj in _subMapObjs)
+            {
+                mapObj.DrawOn3DControl();
+            }
         }
 
         public override bool ParticipatesInGlobalIconSize()
