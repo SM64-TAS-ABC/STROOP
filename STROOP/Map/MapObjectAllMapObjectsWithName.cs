@@ -28,7 +28,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.DebugImage;
+            return _subMapObjs[0].GetInternalImage();
         }
 
         public override string GetName()
