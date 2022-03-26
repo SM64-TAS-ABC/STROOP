@@ -189,13 +189,28 @@ namespace STROOP.Map
         {
             void setUpClickAction(ToolStripMenuItem toolStripMenuItem, Func<List<MapObject>, List<MapObject>> createSubMapObjs)
             {
-                toolStripMenuItem.Click += (sender, e) =>
+                if (_mapObjectList[0] is MapObjectAllObjectsWithName mapObjectAllObjectsWithName)
                 {
-                    List<MapObject> newMapObjs = createSubMapObjs(_mapObjectList);
-                    if (newMapObjs.Count == 0) return;
-                    MapTracker tracker = new MapTracker(newMapObjs);
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
-                };
+                    toolStripMenuItem.Click += (sender, e) =>
+                    {
+                        List<MapObject> objs = ObjectUtilities.GetAllObjectAddresses()
+                            .ConvertAll(address => new MapObjectObject(PositionAngle.Obj(address)) as MapObject);
+                        List<MapObject> newMapObjs = createSubMapObjs(objs);
+                        if (newMapObjs.Count == 0) return;
+                        MapTracker tracker = new MapTracker(newMapObjs);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+                    };
+                }
+                else
+                {
+                    toolStripMenuItem.Click += (sender, e) =>
+                    {
+                        List<MapObject> newMapObjs = createSubMapObjs(_mapObjectList);
+                        if (newMapObjs.Count == 0) return;
+                        MapTracker tracker = new MapTracker(newMapObjs);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+                    };
+                }
             }
 
             ToolStripMenuItem itemHitboxCylinder = new ToolStripMenuItem("Add Tracker for Hitbox Cylinder");
