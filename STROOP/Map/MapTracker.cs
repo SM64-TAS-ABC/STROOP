@@ -818,7 +818,18 @@ namespace STROOP.Map
 
         public bool ContainsMapObject(MapObject mapObject)
         {
-            return _mapObjectList.Contains(mapObject);
+            foreach (MapObject mo in _mapObjectList)
+            {
+                if (mo == mapObject) return true;
+                if (mo is MapObjectAllMapObjectsWithName mo2)
+                {
+                    if (mo2.ContainsMapObject(mapObject))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         public List<T> GetMapPathObjectsOfType<T>()

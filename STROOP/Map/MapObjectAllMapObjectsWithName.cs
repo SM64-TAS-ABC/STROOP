@@ -115,6 +115,24 @@ namespace STROOP.Map
             return MapDrawType.Overlay;
         }
 
+        public bool ContainsMapObject(MapObject mapObject)
+        {
+            return _subMapObjs.Contains(mapObject);
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            return _subMapObjs[0].GetContextMenuStrip();
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            foreach (MapObject mapObj in _subMapObjs)
+            {
+                mapObj.ApplySettings(settings);
+            }
+        }
+
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
             //Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
