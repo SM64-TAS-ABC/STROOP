@@ -18,12 +18,16 @@ namespace STROOP.Map
 {
     public class MapObjectAllMapObjectsWithName : MapObject
     {
+        private readonly string _objName;
         private readonly List<MapObject> _subMapObjs;
 
-        public MapObjectAllMapObjectsWithName(List<MapObject> subMapObjs)
+        public MapObjectAllMapObjectsWithName(string objName, List<MapObject> subMapObjs)
             : base()
         {
+            _objName = objName;
             _subMapObjs = subMapObjs;
+
+            GetProperties();
         }
 
         public override Image GetInternalImage()
@@ -38,7 +42,7 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            foreach (MapObject mapObj in _subMapObjs)
+            foreach (MapObject mapObj in GetCurrentMapObjects())
             {
                 mapObj.DrawOn2DControlTopDownView(hoverData);
             }
@@ -46,7 +50,7 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            foreach (MapObject mapObj in _subMapObjs)
+            foreach (MapObject mapObj in GetCurrentMapObjects())
             {
                 mapObj.DrawOn2DControlOrthographicView(hoverData);
             }
@@ -54,10 +58,51 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            foreach (MapObject mapObj in _subMapObjs)
+            foreach (MapObject mapObj in GetCurrentMapObjects())
             {
                 mapObj.DrawOn3DControl();
             }
+        }
+
+        private List<MapObject> GetCurrentMapObjects()
+        {
+            List<MapObject> mapObjs = new List<MapObject>();
+            foreach (MapObject mapObj in _subMapObjs)
+            {
+                SetProperties(mapObj);
+                PositionAngle posAngle = mapObj.GetPositionAngle();
+                uint objAddress = posAngle.GetObjAddress();
+                ObjectDataModel obj = new ObjectDataModel(objAddress);
+                obj.Update();
+                if (obj.IsActive && obj.BehaviorAssociation?.Name?.ToLower() == _objName.ToLower())
+                {
+                    mapObjs.Add(mapObj);
+                }
+            }
+            return mapObjs;
+        }
+
+        private void GetProperties()
+        {
+            MapObject mapObj = _subMapObjs[0];
+            Size = mapObj.Size;
+            Opacity = mapObj.Opacity;
+            LineWidth = mapObj.LineWidth;
+            Color = mapObj.Color;
+            LineColor = mapObj.LineColor;
+            InternalRotates = mapObj.InternalRotates;
+            Scales = mapObj.Scales;
+        }
+
+        private void SetProperties(MapObject mapObj)
+        {
+            mapObj.Size = Size;
+            mapObj.Opacity = Opacity;
+            mapObj.LineWidth = LineWidth;
+            mapObj.Color = Color;
+            mapObj.LineColor = LineColor;
+            mapObj.InternalRotates = InternalRotates;
+            mapObj.Scales = Scales;
         }
 
         public override bool ParticipatesInGlobalIconSize()

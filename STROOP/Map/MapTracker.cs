@@ -197,7 +197,7 @@ namespace STROOP.Map
                             .ConvertAll(address => new MapObjectObject(PositionAngle.Obj(address)) as MapObject);
                         List<MapObject> newMapObjs = createSubMapObjs(objs);
                         if (newMapObjs.Count == 0) return;
-                        MapObject newMapObj = new MapObjectAllMapObjectsWithName(newMapObjs);
+                        MapObject newMapObj = new MapObjectAllMapObjectsWithName(mapObjectAllObjectsWithName.GetObjName(), newMapObjs);
                         MapTracker tracker = new MapTracker(newMapObj);
                         Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                     };

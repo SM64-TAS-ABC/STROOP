@@ -39,6 +39,11 @@ namespace STROOP.Map
             return new MapObjectAllObjectsWithName(assoc);
         }
 
+        public string GetObjName()
+        {
+            return _objName;
+        }
+
         public override Image GetInternalImage()
         {
             return _iconType == MapTrackerIconType.ObjectSlotImage ?
