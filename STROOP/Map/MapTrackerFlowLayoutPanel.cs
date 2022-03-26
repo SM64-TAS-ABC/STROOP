@@ -295,7 +295,9 @@ namespace STROOP.Map
                 foreach (Control control in Controls)
                 {
                     MapTracker mapTracker = control as MapTracker;
-                    xElements.Add(mapTracker.ToXElement());
+                    XElement xElement = mapTracker.ToXElement();
+                    if (xElement == null) continue;
+                    xElements.Add(xElement);
                 }
             }
             return xElements;
