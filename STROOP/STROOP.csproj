@@ -463,6 +463,7 @@
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Managers\QuarterFrameManager.cs" />
     <Compile Include="Map\MapObjectAllObjectCeiling.cs" />
+    <Compile Include="Map\MapObjectAllMapObjectsWithName.cs" />
     <Compile Include="Map\MapObjectAllObjectWall.cs" />
     <Compile Include="Map\MapObjectCameraFocus.cs" />
     <Compile Include="Map\MapObjectGridlines.cs" />
