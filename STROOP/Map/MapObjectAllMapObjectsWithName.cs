@@ -135,62 +135,17 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
-            //Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
-            //if (!relPosMaybe.HasValue) return null;
-            //Point relPos = relPosMaybe.Value;
-            //(float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
-
-            //List<(float x, float y, float z, float angle, int tex, uint objAddress)> data = GetData();
-            //foreach (var dataPoint in data)
-            //{
-            //    double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
-            //    double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
-            //    if (dist <= radius || forceCursorPosition)
-            //    {
-            //        return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, objAddress: dataPoint.objAddress);
-            //    }
-            //}
             return null;
         }
 
         public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
-            //Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
-            //if (!relPosMaybe.HasValue) return null;
-            //Point relPos = relPosMaybe.Value;
-
-            //List<(float x, float y, float z, float angle, int tex, uint objAddress)> data = GetData();
-            //foreach (var dataPoint in data)
-            //{
-            //    (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
-            //    double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
-            //    double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
-            //    if (dist <= radius || forceCursorPosition)
-            //    {
-            //        return new MapObjectHoverData(this, dataPoint.x, dataPoint.y, dataPoint.z, objAddress: dataPoint.objAddress);
-            //    }
-            //}
             return null;
         }
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
-
-            //ToolStripMenuItem selectObjectItem = new ToolStripMenuItem("Select Object in Object Tab");
-            //selectObjectItem.Click += (sender, e) => Config.ObjectSlotsManager.SelectSlotByAddress(hoverData.ObjAddress.Value);
-            //output.Insert(0, selectObjectItem);
-
-            //ToolStripMenuItem copyAddressItem = new ToolStripMenuItem("Copy Address");
-            //copyAddressItem.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(hoverData.ObjAddress.Value));
-            //output.Insert(1, copyAddressItem);
-
-            //float x = Config.Stream.GetFloat(hoverData.ObjAddress.Value + ObjectConfig.XOffset);
-            //float y = Config.Stream.GetFloat(hoverData.ObjAddress.Value + ObjectConfig.YOffset);
-            //float z = Config.Stream.GetFloat(hoverData.ObjAddress.Value + ObjectConfig.ZOffset);
-            //ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(x, y, z, "Position");
-            //output.Insert(2, copyPositionItem);
-
             return output;
         }
 
