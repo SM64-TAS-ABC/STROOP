@@ -15,7 +15,7 @@ namespace STROOP.M64
 {
     public class M64Header
     {
-        public enum MovieStartTypeEnum { FromStart, FromSnapshot }
+        public enum MovieStartTypeEnum { FromStart, FromSnapshot, FromEEPROM }
 
         private readonly M64File _m64File;
         private readonly M64Gui _gui;
@@ -419,10 +419,12 @@ namespace STROOP.M64
         {
             switch (movieStartType)
             {
-                case MovieStartTypeEnum.FromStart:
-                    return 2;
                 case MovieStartTypeEnum.FromSnapshot:
                     return 1;
+                case MovieStartTypeEnum.FromStart:
+                    return 2;
+                case MovieStartTypeEnum.FromEEPROM:
+                    return 4;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -436,6 +438,8 @@ namespace STROOP.M64
                     return MovieStartTypeEnum.FromSnapshot;
                 case 2:
                     return MovieStartTypeEnum.FromStart;
+                case 4:
+                    return MovieStartTypeEnum.FromEEPROM;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
