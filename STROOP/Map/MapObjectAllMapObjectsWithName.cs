@@ -37,7 +37,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "All " + _subMapObjs[0].GetType().Name;
+            return "All " + _subMapObjs[0].GetType().Name.Substring("MapObject".Length) + " for " + _objName;
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
