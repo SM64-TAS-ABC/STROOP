@@ -200,8 +200,7 @@ namespace STROOP.Utilities
                     TabPage parentTab = GetTab(groupbox);
                     Form parentForm = GetForm(groupbox);
                     string text = parentTab != null ? parentTab.Text + " " + groupbox.Text : parentForm.Text;
-                    List<uint> objAddresses = new List<uint>(Config.ObjectSlotsManager.SelectedSlotsAddresses);
-                    List<ObjectDataModel> objects = objAddresses.ConvertAll(objAddress => new ObjectDataModel(objAddress));
+                    List<ObjectDataModel> objects = Config.ObjectSlotsManager.SelectedSlotsAddresses.ConvertAll(objAddress => new ObjectDataModel(objAddress));
                     form.Initialize(
                         text,
                         coordinateSystem,
