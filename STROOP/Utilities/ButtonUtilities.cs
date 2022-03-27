@@ -217,6 +217,8 @@ namespace STROOP.Utilities
         public static bool TranslateObjects(List<ObjectDataModel> objects,
             float xOffset, float yOffset, float zOffset, bool useRelative, bool includeMario, bool includeHomes)
         {
+            Config.Print(string.Join(",", objects));
+
             List<PositionAngle> posAngles =
                 objects.ConvertAll(o => PositionAngle.Obj(o.Address));
 
