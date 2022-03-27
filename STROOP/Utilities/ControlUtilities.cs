@@ -11,6 +11,7 @@ using STROOP.Structs;
 using System.Reflection;
 using STROOP.Structs.Configurations;
 using STROOP.Forms;
+using STROOP.Models;
 
 namespace STROOP.Utilities
 {
@@ -38,7 +39,8 @@ namespace STROOP.Utilities
             TextBox textboxSquare,
             TextBox textboxLine,
             CheckBox checkbox,
-            Action<float, float, float, bool> actionMove)
+            Action<float, float, float, bool> actionMove,
+            Action<float, float, float, bool, List<ObjectDataModel>> actionMoveFixedObject = null)
         {
             Action<int, int> actionSquare = (int hSign, int vSign) =>
             {
@@ -188,6 +190,26 @@ namespace STROOP.Utilities
                 form.ShowForm();
             };
 
+            ToolStripMenuItem itemPopOutFixed = null;
+            if (actionMoveFixedObject != null)
+            {
+                itemPopOutFixed = new ToolStripMenuItem("Pop Out Fixed");
+                itemPopOutFixed.Click += (sender, e) =>
+                {
+                    VariableTripletControllerForm form = new VariableTripletControllerForm();
+                    TabPage parentTab = GetTab(groupbox);
+                    Form parentForm = GetForm(groupbox);
+                    string text = parentTab != null ? parentTab.Text + " " + groupbox.Text : parentForm.Text;
+                    List<ObjectDataModel> objects = new List<ObjectDataModel>(Config.ObjectSlotsManager.SelectedObjects);
+                    form.Initialize(
+                        text,
+                        coordinateSystem,
+                        allowRelativeOptions,
+                        (float x, float y, float z, bool useRelative) => actionMoveFixedObject(x, y, z, useRelative, objects));
+                    form.ShowForm();
+                };
+            }
+
             ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Items.Add(itemLeft);
             contextMenuStrip.Items.Add(itemRight);
@@ -201,6 +223,10 @@ namespace STROOP.Utilities
             contextMenuStrip.Items.Add(itemInverted);
             contextMenuStrip.Items.Add(new ToolStripSeparator());
             contextMenuStrip.Items.Add(itemPopOut);
+            if (itemPopOutFixed != null)
+            {
+                contextMenuStrip.Items.Add(itemPopOutFixed);
+            }
             groupbox.ContextMenuStrip = contextMenuStrip;
 
             AddInversionContextMenuStrip(buttonLineUp, buttonLineDown);

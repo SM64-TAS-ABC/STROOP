@@ -370,7 +370,7 @@ namespace STROOP.Managers
                     () => ButtonUtilities.RideObject(_objects.FirstOrDefault(), false),
                     () => ButtonUtilities.UnRideObject(true),
                     () => ButtonUtilities.UnRideObject(false),
-        });
+            });
 
             Button ukikipediaButton = objPanel.Controls["buttonObjUkikipedia"] as Button;
             ukikipediaButton.Click += (sender, e) => ButtonUtilities.UkikipediaObject(_objects.FirstOrDefault());
@@ -397,6 +397,17 @@ namespace STROOP.Managers
                 {
                     ButtonUtilities.TranslateObjects(
                         _objects,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
+                        useRelative,
+                        KeyboardUtilities.IsCtrlHeld(),
+                        KeyboardUtilities.IsAltHeld());
+                },
+                (float hOffset, float vOffset, float nOffset, bool useRelative, List<ObjectDataModel> objects) =>
+                {
+                    ButtonUtilities.TranslateObjects(
+                        objects,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
@@ -474,6 +485,15 @@ namespace STROOP.Managers
                 {
                     ButtonUtilities.TranslateObjectHomes(
                         _objects,
+                        hOffset,
+                        nOffset,
+                        -1 * vOffset,
+                        useRelative);
+                },
+                (float hOffset, float vOffset, float nOffset, bool useRelative, List<ObjectDataModel> objects) =>
+                {
+                    ButtonUtilities.TranslateObjectHomes(
+                        objects,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
