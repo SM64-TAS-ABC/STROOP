@@ -153,6 +153,9 @@
   <Sector>
     <MapImage path="Sector.png"/>
   </Sector>
+  <CameraView>
+    <MapImage path="Camera View.png"/>
+  </CameraView>
   <Waters>
     <MapImage path="Waters.png"/>
   </Waters>

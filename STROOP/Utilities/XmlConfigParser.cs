@@ -257,7 +257,7 @@ namespace STROOP.Utilities
                 lockedImagePath = "", lockDisabledImagePath = "", lockReadOnlyImagePath = "",
                 aggregatedPathImagePath = "", angleRangeImagePath = "", branchPathImagePath = "", coffinBoxImagePath = "",
                 compassImagePath = "", coordinateLabelsImagePath = "", facingDividerImagePath = "", homeLineImagePath = "",
-                ledgeGrabCheckerImagePath = "", lineSegmentImagePath = "", sectorImagePath = "", watersImagePath = "";
+                ledgeGrabCheckerImagePath = "", lineSegmentImagePath = "", sectorImagePath = "", cameraViewImagePath = "", watersImagePath = "";
             uint marioBehavior = 0;
 
             foreach (XElement element in doc.Root.Elements())
@@ -503,6 +503,10 @@ namespace STROOP.Utilities
 
                     case "Sector":
                         sectorImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "CameraView":
+                        cameraViewImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
 
                     case "Waters":
@@ -845,6 +849,7 @@ namespace STROOP.Utilities
             assoc.LedgeGrabCheckerImage = Image.FromFile(mapImageDir + ledgeGrabCheckerImagePath);
             assoc.LineSegmentImage = Image.FromFile(mapImageDir + lineSegmentImagePath);
             assoc.SectorImage = Image.FromFile(mapImageDir + sectorImagePath);
+            assoc.CameraViewImage = Image.FromFile(mapImageDir + cameraViewImagePath);
             assoc.WatersImage = Image.FromFile(mapImageDir + watersImagePath);
 
 

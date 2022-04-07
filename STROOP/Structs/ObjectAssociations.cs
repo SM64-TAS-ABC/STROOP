@@ -75,6 +75,7 @@ namespace STROOP.Structs
         public Image LedgeGrabCheckerImage;
         public Image LineSegmentImage;
         public Image SectorImage;
+        public Image CameraViewImage;
         public Image WatersImage;
 
         public Color MarioColor;
@@ -350,6 +351,7 @@ namespace STROOP.Structs
             LedgeGrabCheckerImage?.Dispose();
             LineSegmentImage?.Dispose();
             SectorImage?.Dispose();
+            CameraViewImage?.Dispose();
             WatersImage?.Dispose();
         }
     }

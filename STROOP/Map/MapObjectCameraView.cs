@@ -61,7 +61,7 @@ namespace STROOP.Map
 
         public override Image GetInternalImage()
         {
-            return Config.ObjectAssociations.CameraImage;
+            return Config.ObjectAssociations.CameraViewImage;
         }
     }
 }
