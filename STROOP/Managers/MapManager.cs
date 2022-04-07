@@ -439,6 +439,14 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemCameraView = new ToolStripMenuItem("Add Tracker for Camera View");
+            itemCameraView.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapObjectCameraView();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemCustomPositionAngle = new ToolStripMenuItem("Add Tracker for Custom PositionAngle");
             itemCustomPositionAngle.Click += (sender, e) =>
             {
@@ -532,6 +540,7 @@ namespace STROOP.Managers
             itemMisc.DropDownItems.Add(itemLedgeGrabChecker);
             itemMisc.DropDownItems.Add(itemHolpDisplayer);
             itemMisc.DropDownItems.Add(itemCorkBoxTester);
+            itemMisc.DropDownItems.Add(itemCameraView);
 
             ToolStripMenuItem itemCustom = new ToolStripMenuItem("Custom...");
             itemCustom.DropDownItems.Add(itemCustomPositionAngle);
