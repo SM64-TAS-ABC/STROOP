@@ -281,7 +281,7 @@ namespace STROOP.Map
                     break;
             }
 
-            if (IsOrthographicViewEnabled)
+            if (Config.MapGui.checkBoxMapControllersCenterUseMarioDepth.Checked)
             {
                 float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
                 float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
