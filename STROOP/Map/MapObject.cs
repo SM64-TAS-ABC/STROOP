@@ -300,6 +300,9 @@ namespace STROOP.Map
                 case "MapObjectCameraFocus":
                     mapObject = new MapObjectCameraFocus();
                     break;
+                case "MapObjectCameraView":
+                    mapObject = new MapObjectCameraView();
+                    break;
                 case "MapObjectCellGridlines":
                     mapObject = new MapObjectCellGridlines();
                     break;
