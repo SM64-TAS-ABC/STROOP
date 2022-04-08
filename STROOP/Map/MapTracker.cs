@@ -110,6 +110,7 @@ namespace STROOP.Map
             SetColor(null);
             SetLineColor(null);
             SetScales(null);
+            SetUseRelativeCoordinates(null);
 
             textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
             trackBarSize.AddManualChangeAction(() => trackBarSize_ValueChanged());
@@ -120,6 +121,7 @@ namespace STROOP.Map
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
             colorSelectorLine.AddColorChangeAction((Color color) => SetLineColor(color));
             checkBoxScales.Click += (sender, e) => SetScales(checkBoxScales.Checked);
+            checkBoxUseRelativeCoordinates.Click += (sender, e) => SetUseRelativeCoordinates(checkBoxUseRelativeCoordinates.Checked);
             _mapObjectList.ForEach(mapObj => mapObj.GetContextMenuStrip()); // avoids null pointer exceptions
             pictureBoxCog.ContextMenuStrip = _mapObjectList[0].GetContextMenuStrip();
             pictureBoxCog.Click += (sender, e) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
@@ -985,6 +987,18 @@ namespace STROOP.Map
             checkBoxScales.Checked = scales;
         }
 
+        
+        public void SetUseRelativeCoordinates(bool? useRelativeCoordinatesNullable)
+        {
+            bool updateMapObjs = useRelativeCoordinatesNullable != null;
+            bool useRelativeCoordinates = useRelativeCoordinatesNullable ?? _mapObjectList[0].UseRelativeCoordinates;
+            if (updateMapObjs)
+            {
+                _mapObjectList.ForEach(mapObj => mapObj.UseRelativeCoordinates = useRelativeCoordinates);
+            }
+            checkBoxUseRelativeCoordinates.Checked = useRelativeCoordinates;
+        }
+
         private void pictureBoxRedX_Click(object sender, EventArgs e)
         {
             Config.MapGui.flowLayoutPanelMapTrackers.RemoveControl(this);
@@ -1104,6 +1118,7 @@ namespace STROOP.Map
                 xElement.Add(new XAttribute("customRotates", _mapObjectList[0].CustomRotates.Value));
             }
             xElement.Add(new XAttribute("scales", _mapObjectList[0].Scales));
+            xElement.Add(new XAttribute("useRelativeCoordinates", _mapObjectList[0].UseRelativeCoordinates));
             xElement.Add(new XAttribute("isVisible", _isVisible));
             xElement.Add(new XAttribute("isVisibleFor2DTopDown", _isVisibleFor2DTopDown));
             xElement.Add(new XAttribute("isVisibleFor2DOrthographic", _isVisibleFor2DOrthographic));
@@ -1145,6 +1160,7 @@ namespace STROOP.Map
                 tracker.SetCustomRotates(customRotates.Value);
             }
             tracker.SetScales(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("scales")).Value));
+            tracker.SetUseRelativeCoordinates(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("useRelativeCoordinates")).Value));
             tracker.SetIsVisible(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisible")).Value));
             tracker.SetMapTypeVisibility(MapType.Map2DTopDown, ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisibleFor2DTopDown")).Value));
             tracker.SetMapTypeVisibility(MapType.Map2DOrthographic, ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisibleFor2DOrthographic")).Value));
