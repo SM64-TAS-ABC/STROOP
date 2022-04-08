@@ -56,7 +56,7 @@ namespace STROOP.Map
             this.labelLineWidth = new System.Windows.Forms.Label();
             this.textBoxLineWidth = new STROOP.BetterTextbox();
             this.pictureBoxCog = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxUseRelativeCoordinates = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLineWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
@@ -84,7 +84,7 @@ namespace STROOP.Map
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel.Controls.Add(this.checkBox1, 4, 4);
+            this.tableLayoutPanel.Controls.Add(this.checkBoxUseRelativeCoordinates, 4, 4);
             this.tableLayoutPanel.Controls.Add(this.checkBoxScales, 0, 5);
             this.tableLayoutPanel.Controls.Add(this.trackBarLineWidth, 0, 5);
             this.tableLayoutPanel.Controls.Add(this.colorSelectorLine, 3, 3);
@@ -430,15 +430,15 @@ namespace STROOP.Map
             // 
             // checkBox1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox1.Location = new System.Drawing.Point(249, 88);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(42, 17);
-            this.checkBox1.TabIndex = 45;
-            this.checkBox1.Text = "Rel";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxUseRelativeCoordinates.AutoSize = true;
+            this.checkBoxUseRelativeCoordinates.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxUseRelativeCoordinates.Location = new System.Drawing.Point(249, 88);
+            this.checkBoxUseRelativeCoordinates.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
+            this.checkBoxUseRelativeCoordinates.Name = "checkBox1";
+            this.checkBoxUseRelativeCoordinates.Size = new System.Drawing.Size(42, 17);
+            this.checkBoxUseRelativeCoordinates.TabIndex = 45;
+            this.checkBoxUseRelativeCoordinates.Text = "Rel";
+            this.checkBoxUseRelativeCoordinates.UseVisualStyleBackColor = true;
             // 
             // MapTracker
             // 
@@ -493,6 +493,6 @@ namespace STROOP.Map
         private BetterTextbox textBoxLineWidth;
         private System.Windows.Forms.PictureBox pictureBoxCog;
         private System.Windows.Forms.CheckBox checkBoxScales;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxUseRelativeCoordinates;
     }
 }
