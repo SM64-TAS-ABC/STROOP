@@ -96,7 +96,7 @@ namespace STROOP.Map
                 List<List<(float x, float y, float z)>> quadList =
                     MapUtilities.ConvertUnitPointsToQuads(unitPointList);
                 List<List<(float x, float z)>> quadListForControl =
-                    quadList.ConvertAll(quad => quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z)));
+                    quadList.ConvertAll(quad => quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z, UseRelativeCoordinates)));
                 if (quadListForControl.Any(quad => MapUtilities.IsWithinShapeForControl(quad, relPos.X, relPos.Y)) || forceCursorPosition)
                 {
                     return new MapObjectHoverData(this, unitPoint.x, 0, unitPoint.z, index: i);

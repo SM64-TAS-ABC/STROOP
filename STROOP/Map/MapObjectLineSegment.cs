@@ -92,7 +92,7 @@ namespace STROOP.Map
             if (_customImage != null)
             {
                 (float x, float y, float z) = ((float, float, float))PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
-                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z, UseRelativeCoordinates);
                 PointF point = new PointF(controlX, controlZ);
                 SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _iconSize, Scales);
                 double opacity = Opacity;
@@ -111,7 +111,7 @@ namespace STROOP.Map
             if (_customImage != null)
             {
                 (float x, float y, float z) = ((float, float, float))PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
-                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z, UseRelativeCoordinates);
                 PointF point = new PointF(controlX, controlZ);
                 SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _iconSize, Scales);
                 double opacity = Opacity;
@@ -293,7 +293,7 @@ namespace STROOP.Map
             Point relPos = relPosMaybe.Value;
 
             (double x, double y, double z) = PositionAngle.GetMidPoint(_posAngle1, _posAngle2);
-            (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z);
+            (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z, UseRelativeCoordinates);
             double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
             double radius = Scales ? _iconSize * Config.CurrentMapGraphics.MapViewScaleValue : _iconSize;
             if (dist <= radius || forceCursorPosition)

@@ -41,7 +41,7 @@ namespace STROOP.Map
 
             foreach ((float centerX, float centerZ, float radius, float angle, float angleRadius) in dimenstionList)
             {
-                (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(centerX, centerZ);
+                (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(centerX, centerZ, UseRelativeCoordinates);
                 float controlAngle = angle + 32768 - Config.CurrentMapGraphics.MapViewYawValue;
                 float controlRadius = radius * Config.CurrentMapGraphics.MapViewScaleValue;
                 List<(float pointX, float pointZ)> outerPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D + 1).ToList()

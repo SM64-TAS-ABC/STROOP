@@ -36,7 +36,7 @@ namespace STROOP.Map
             for (int i = 0; i < dimensionList.Count; i++)
             {
                 (float centerX, float centerZ, float radius) = dimensionList[i];
-                (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(centerX, centerZ);
+                (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(centerX, centerZ, UseRelativeCoordinates);
                 float controlRadius = radius * Config.CurrentMapGraphics.MapViewScaleValue;
                 List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
                     .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 65536)
@@ -83,7 +83,7 @@ namespace STROOP.Map
                         (float x, float z) = positions[j];
                         float dist = (float)MoreMath.GetDistanceBetween(centerX, centerZ, x, z);
                         if (dist >= radius) continue;
-                        (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
+                        (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z, UseRelativeCoordinates);
                         SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
                         double opacity = 1;
                         if (this == hoverData?.MapObject && i == hoverData?.Index && j == hoverData?.Index2)
@@ -155,7 +155,7 @@ namespace STROOP.Map
                 {
                     List<(float x, float z)> positions = MapUtilities.GetFloatPositions(10_000);
                     List<(float x, float z)> controlPositions = positions.ConvertAll(
-                        p => MapUtilities.ConvertCoordsForControlTopDownView(p.x, p.z));
+                        p => MapUtilities.ConvertCoordsForControlTopDownView(p.x, p.z, UseRelativeCoordinates));
                     for (int j = controlPositions.Count - 1; j >= 0; j--)
                     {
                         var position = positions[j];

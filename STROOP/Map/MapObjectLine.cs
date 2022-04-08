@@ -24,12 +24,12 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            MapUtilities.DrawLinesOn2DControlTopDownView(GetVerticesTopDownView(), LineWidth, LineColor, OpacityByte);
+            MapUtilities.DrawLinesOn2DControlTopDownView(GetVerticesTopDownView(), LineWidth, LineColor, OpacityByte, UseRelativeCoordinates);
         }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            MapUtilities.DrawLinesOn2DControlOrthographicView(GetVerticesOrthographicView(), LineWidth, LineColor, OpacityByte);
+            MapUtilities.DrawLinesOn2DControlOrthographicView(GetVerticesOrthographicView(), LineWidth, LineColor, OpacityByte, UseRelativeCoordinates);
         }
 
         public override void DrawOn3DControl()

@@ -110,8 +110,8 @@ namespace STROOP.Map
                             LineColor, Color, distFromEnd / (double)Size);
                     }
                 }
-                (float x1, float z1) = MapUtilities.ConvertCoordsForControlTopDownView(segment.StartX, segment.StartZ);
-                (float x2, float z2) = MapUtilities.ConvertCoordsForControlTopDownView(segment.EndX, segment.EndZ);
+                (float x1, float z1) = MapUtilities.ConvertCoordsForControlTopDownView(segment.StartX, segment.StartZ, UseRelativeCoordinates);
+                (float x2, float z2) = MapUtilities.ConvertCoordsForControlTopDownView(segment.EndX, segment.EndZ, UseRelativeCoordinates);
                 GL.Color4(color.R, color.G, color.B, OpacityByte);
                 GL.Begin(PrimitiveType.Lines);
                 GL.Vertex2(x1, z1);
@@ -154,8 +154,8 @@ namespace STROOP.Map
                             LineColor, Color, distFromEnd / (double)Size);
                     }
                 }
-                (float x1, float z1) = MapUtilities.ConvertCoordsForControlOrthographicView(segment.StartX, segment.StartY, segment.StartZ);
-                (float x2, float z2) = MapUtilities.ConvertCoordsForControlOrthographicView(segment.EndX, segment.EndY, segment.EndZ);
+                (float x1, float z1) = MapUtilities.ConvertCoordsForControlOrthographicView(segment.StartX, segment.StartY, segment.StartZ, UseRelativeCoordinates);
+                (float x2, float z2) = MapUtilities.ConvertCoordsForControlOrthographicView(segment.EndX, segment.EndY, segment.EndZ, UseRelativeCoordinates);
                 GL.Color4(color.R, color.G, color.B, OpacityByte);
                 GL.Begin(PrimitiveType.Lines);
                 GL.Vertex2(x1, z1);

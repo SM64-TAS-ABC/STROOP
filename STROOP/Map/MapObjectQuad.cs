@@ -28,7 +28,7 @@ namespace STROOP.Map
                 quadList.ConvertAll(quad => quad.ConvertAll(
                     vertex =>
                     {
-                        (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z);
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates);
                         return (x, z, vertex.isHovered);
                     }));
 
@@ -75,7 +75,7 @@ namespace STROOP.Map
                 quadList.ConvertAll(quad => quad.ConvertAll(
                     vertex =>
                     {
-                        (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z);
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z, UseRelativeCoordinates);
                         return (x, z, vertex.isHovered);
                     }));
 

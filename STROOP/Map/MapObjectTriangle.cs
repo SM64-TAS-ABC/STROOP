@@ -303,7 +303,7 @@ namespace STROOP.Map
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                     vertex =>
                     {
-                        (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z);
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z, UseRelativeCoordinates);
                         return (x, z, vertex.color, vertex.data);
                     }));
 
@@ -346,9 +346,9 @@ namespace STROOP.Map
                     float y2 = (vertexList[1].y + vertexList[2].y) / 2;
                     float z2 = (vertexList[1].z + vertexList[2].z) / 2;
 
-                    (float controlX1, float controlZ1) = MapUtilities.ConvertCoordsForControlOrthographicView(vertexList[0].x, vertexList[0].y, vertexList[0].z);
-                    (float controlX2, float controlZ2) = MapUtilities.ConvertCoordsForControlOrthographicView(vertexList[1].x, vertexList[1].y, vertexList[1].z);
-                    (float controlX3, float controlZ3) = MapUtilities.ConvertCoordsForControlOrthographicView(vertexList[2].x, vertexList[2].y, vertexList[2].z);
+                    (float controlX1, float controlZ1) = MapUtilities.ConvertCoordsForControlOrthographicView(vertexList[0].x, vertexList[0].y, vertexList[0].z, UseRelativeCoordinates);
+                    (float controlX2, float controlZ2) = MapUtilities.ConvertCoordsForControlOrthographicView(vertexList[1].x, vertexList[1].y, vertexList[1].z, UseRelativeCoordinates);
+                    (float controlX3, float controlZ3) = MapUtilities.ConvertCoordsForControlOrthographicView(vertexList[2].x, vertexList[2].y, vertexList[2].z, UseRelativeCoordinates);
 
                     double angle1 = MoreMath.AngleTo_AngleUnits(controlX1, controlZ1, controlX2, controlZ2);
                     double angle2 = MoreMath.AngleTo_AngleUnits(controlX2, controlZ2, controlX3, controlZ3);
@@ -401,7 +401,7 @@ namespace STROOP.Map
 
                         foreach (var point in markPoints)
                         {
-                            var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z);
+                            var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z, UseRelativeCoordinates);
 
                             List<(float x, float z)> outerCirclePoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
                                 .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 65536)
@@ -467,7 +467,7 @@ namespace STROOP.Map
 
                         foreach (var point in markPoints)
                         {
-                            var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z);
+                            var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z, UseRelativeCoordinates);
 
                             (float x, float z) topLeftPoint = ((float, float))MoreMath.AddVectorToPoint(
                                 xBranchLength, angleUpLeft, controlPoint.x, controlPoint.z);
@@ -571,7 +571,7 @@ namespace STROOP.Map
 
                         foreach (var point in markPoints)
                         {
-                            var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z);
+                            var controlPoint = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z, UseRelativeCoordinates);
 
                             (float x, float z) frontPoint = ((float, float))MoreMath.AddVectorToPoint(
                                 arrowBaseLength, angleUp, controlPoint.x, controlPoint.z);
@@ -650,7 +650,7 @@ namespace STROOP.Map
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                     vertex =>
                     {
-                        (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z);
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z, UseRelativeCoordinates);
                         return (x, z, vertex.color, vertex.tri);
                     }));
 
@@ -862,7 +862,7 @@ namespace STROOP.Map
                     GetOrthographicCrossSectionVertexLists();
                 List<List<(float x, float z)>> trisForControl =
                     tris.ConvertAll(vertexList => vertexList.ConvertAll(
-                        vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z)));
+                        vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z, UseRelativeCoordinates)));
 
                 for (int i = trisForControl.Count - 1; i >= 0; i--)
                 {
@@ -888,7 +888,7 @@ namespace STROOP.Map
                 List<List<(float x, float z)>> trisForControl = tris
                     .ConvertAll(tri => tri.Get3DVertices())
                     .ConvertAll(vertices => vertices.ConvertAll(
-                        vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z)));
+                        vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z, UseRelativeCoordinates)));
                 if (_customImage != null)
                 {
                     for (int i = trisForControl.Count - 1; i >= 0; i--)

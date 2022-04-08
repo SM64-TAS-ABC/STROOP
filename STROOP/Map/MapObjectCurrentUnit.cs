@@ -94,7 +94,7 @@ namespace STROOP.Map
             for (int i = quadList.Count - 1; i >= 0; i--)
             {
                 var quad = quadList[i];
-                var quadForControl = quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z));
+                var quadForControl = quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z, UseRelativeCoordinates));
                 if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y) || forceCursorPosition)
                 {
                     return new MapObjectHoverData(this, 0, 0, 0, index: i);

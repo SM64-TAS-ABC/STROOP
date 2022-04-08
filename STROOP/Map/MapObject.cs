@@ -46,6 +46,8 @@ namespace STROOP.Map
 
         public bool Scales = false;
 
+        public bool UseRelativeCoordinates = false;
+
         protected ContextMenuStrip _contextMenuStrip = null;
 
         private MapObjectSettingsAccumulator _accumulator = new MapObjectSettingsAccumulator();

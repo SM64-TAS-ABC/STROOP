@@ -107,7 +107,7 @@ namespace STROOP.Map
 
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<(float x, float z)> verticesForControl =
-                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z));
+                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates));
 
             for (int i = 0; i < verticesForControl.Count - 1; i++)
             {
@@ -146,7 +146,7 @@ namespace STROOP.Map
         {
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<(float x, float z)> verticesForControl =
-                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z));
+                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates));
 
             if (LineWidth != 0)
             {
@@ -204,7 +204,7 @@ namespace STROOP.Map
         {
             List<(float x, float y, float z)> vertices = GetDictionaryValues();
             List<(float x, float z)> verticesForControl =
-                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z));
+                vertices.ConvertAll(vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z, UseRelativeCoordinates));
 
             if (LineWidth != 0)
             {
@@ -739,7 +739,7 @@ namespace STROOP.Map
             for (int i = data.Count - 1; i >= 0; i--)
             {
                 var dataPoint = data[i];
-                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z, UseRelativeCoordinates);
                 double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
                 float imageSize = _showQuarterSteps && i % 4 != 0 ? _imageSize * QSTEP_RATIO : _imageSize;
                 double radius = Scales ? imageSize * Config.CurrentMapGraphics.MapViewScaleValue : imageSize;

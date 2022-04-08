@@ -45,7 +45,7 @@ namespace STROOP.Map
             {
                 var dataPoint = data[i];
                 (float x, float y, float z) = dataPoint;
-                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
+                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z, UseRelativeCoordinates);
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
                 double opacity = Opacity;
@@ -68,8 +68,8 @@ namespace STROOP.Map
                 {
                     (float x1, float y1, float z1) = data[i];
                     (float x2, float y2, float z2) = data[i + 1];
-                    (float x, float z) vertex1ForControl = MapUtilities.ConvertCoordsForControlTopDownView(x1, z1);
-                    (float x, float z) vertex2ForControl = MapUtilities.ConvertCoordsForControlTopDownView(x2, z2);
+                    (float x, float z) vertex1ForControl = MapUtilities.ConvertCoordsForControlTopDownView(x1, z1, UseRelativeCoordinates);
+                    (float x, float z) vertex2ForControl = MapUtilities.ConvertCoordsForControlTopDownView(x2, z2, UseRelativeCoordinates);
                     GL.Vertex2(vertex1ForControl.x, vertex1ForControl.z);
                     GL.Vertex2(vertex2ForControl.x, vertex2ForControl.z);
                 }
@@ -85,7 +85,7 @@ namespace STROOP.Map
             {
                 var dataPoint = data[i];
                 (float x, float y, float z) = dataPoint;
-                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
+                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z, UseRelativeCoordinates);
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.BlueMarioMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
                 double opacity = Opacity;
@@ -108,8 +108,8 @@ namespace STROOP.Map
                 {
                     (float x1, float y1, float z1) = data[i];
                     (float x2, float y2, float z2) = data[i + 1];
-                    (float x, float z) vertex1ForControl = MapUtilities.ConvertCoordsForControlOrthographicView(x1, y1, z1);
-                    (float x, float z) vertex2ForControl = MapUtilities.ConvertCoordsForControlOrthographicView(x2, y2, z2);
+                    (float x, float z) vertex1ForControl = MapUtilities.ConvertCoordsForControlOrthographicView(x1, y1, z1, UseRelativeCoordinates);
+                    (float x, float z) vertex2ForControl = MapUtilities.ConvertCoordsForControlOrthographicView(x2, y2, z2, UseRelativeCoordinates);
                     GL.Vertex2(vertex1ForControl.x, vertex1ForControl.z);
                     GL.Vertex2(vertex2ForControl.x, vertex2ForControl.z);
                 }
@@ -265,7 +265,7 @@ namespace STROOP.Map
             for (int i = data.Count - 1; i >= 0; i--)
             {
                 var dataPoint = data[i];
-                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z, UseRelativeCoordinates);
                 double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
                 double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
                 if (dist <= radius || forceCursorPosition)

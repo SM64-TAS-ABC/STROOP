@@ -42,7 +42,7 @@ namespace STROOP.Map
             for (int i = 0; i <_points.Count; i++)
             {
                 var p = _points[i];
-                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(p.x, p.z);
+                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(p.x, p.z, UseRelativeCoordinates);
                 Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
@@ -60,7 +60,7 @@ namespace STROOP.Map
             for (int i = 0; i < _points.Count; i++)
             {
                 var p = _points[i];
-                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z);
+                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z, UseRelativeCoordinates);
                 Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
@@ -175,7 +175,7 @@ namespace STROOP.Map
             for (int i = _points.Count - 1; i >= 0; i--)
             {
                 var point = _points[i];
-                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z);
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z, UseRelativeCoordinates);
                 double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
                 double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
                 if (dist <= radius || forceCursorPosition)

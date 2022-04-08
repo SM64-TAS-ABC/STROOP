@@ -75,7 +75,7 @@ namespace STROOP.Map
 
                 List<List<(float x, float z)>> quadsForControl =
                     quads.ConvertAll(quad => quad.ConvertAll(
-                        vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z)));
+                        vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates)));
 
                 GL.BindTexture(TextureTarget.Texture2D, -1);
                 GL.MatrixMode(MatrixMode.Modelview);
@@ -185,7 +185,7 @@ namespace STROOP.Map
 
                     List<List<(float x, float z)>> arrowsForControl =
                         arrowPoints.ConvertAll(arrow => arrow.ConvertAll(
-                            vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z)));
+                            vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates)));
 
                     // Draw arrow
                     Color arrowColor = Color.Darken(0.5);
@@ -454,7 +454,7 @@ namespace STROOP.Map
 
                 List<List<(float x, float z)>> quadsForControl =
                     quads.ConvertAll(quad => quad.ConvertAll(
-                        vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z)));
+                        vertex => MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates)));
 
                 for (int j = 0; j < quadsForControl.Count; j++)
                 {

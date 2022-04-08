@@ -24,7 +24,7 @@ namespace STROOP.Map
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
-            (float xPosPixels, float zPosPixels) = MapUtilities.ConvertCoordsForControlTopDownView((float)x, (float)z);
+            (float xPosPixels, float zPosPixels) = MapUtilities.ConvertCoordsForControlTopDownView((float)x, (float)z, UseRelativeCoordinates);
             float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
             SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
             double opacity = Opacity;
@@ -38,7 +38,7 @@ namespace STROOP.Map
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
-            (float xPosPixels, float yPosPixels) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z);
+            (float xPosPixels, float yPosPixels) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z, UseRelativeCoordinates);
             float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
             SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
             double opacity = Opacity;
@@ -151,7 +151,7 @@ namespace STROOP.Map
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
-            (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z);
+            (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z, UseRelativeCoordinates);
             double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
             double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
             if (dist <= radius || forceCursorPosition)

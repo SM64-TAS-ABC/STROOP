@@ -74,7 +74,7 @@ namespace STROOP.Map
                     ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(true, (float)x, (float)MapConfig.CoordinateLabelsMargin);
                     if (!intersectionPoints.HasValue) continue;
                     (float g, float z) = getSuperlativePoint(false, MapConfig.CoordinateLabelsUseHighZ == 1, intersectionPoints.Value);
-                    (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView((float)x, z);
+                    (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView((float)x, z, UseRelativeCoordinates);
                     float angle = -1 * Config.CurrentMapGraphics.MapViewYawValue + 16384;
                     if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
                     float angleDegrees = Rotates ? (float)MoreMath.AngleUnitsToDegrees(angle) : 0;
@@ -90,7 +90,7 @@ namespace STROOP.Map
                     ((float x1, float z1), (float x2, float z2))? intersectionPoints = GetLineIntersectionWithBorder(false, (float)z, (float)MapConfig.CoordinateLabelsMargin);
                     if (!intersectionPoints.HasValue) continue;
                     (float x, float g) = getSuperlativePoint(true, MapConfig.CoordinateLabelsUseHighX == 1, intersectionPoints.Value);
-                    (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, (float)z);
+                    (float xControl, float zControl) = MapUtilities.ConvertCoordsForControlTopDownView(x, (float)z, UseRelativeCoordinates);
                     float angle = -1 * Config.CurrentMapGraphics.MapViewYawValue + 32768;
                     if (MoreMath.GetAngleDistance(0, angle) > 16384) angle = (float)MoreMath.ReverseAngle(angle);
                     float angleDegrees = Rotates ? (float)MoreMath.AngleUnitsToDegrees(angle) : 0;

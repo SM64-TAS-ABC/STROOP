@@ -37,7 +37,7 @@ namespace STROOP.Map
             foreach (bool b in new List<bool>() { false, true })
             {
                 var data = GetData(b);
-                MapUtilities.DrawLinesOn2DControlTopDownView(data.vertices, data.lineWidth, data.color, OpacityByte);
+                MapUtilities.DrawLinesOn2DControlTopDownView(data.vertices, data.lineWidth, data.color, OpacityByte, UseRelativeCoordinates);
             }
         }
 
@@ -46,7 +46,7 @@ namespace STROOP.Map
             foreach (bool b in new List<bool>() { false, true })
             {
                 var data = GetData(b);
-                MapUtilities.DrawLinesOn2DControlOrthographicView(data.vertices, data.lineWidth, data.color, OpacityByte);
+                MapUtilities.DrawLinesOn2DControlOrthographicView(data.vertices, data.lineWidth, data.color, OpacityByte, UseRelativeCoordinates);
             }
         }
 

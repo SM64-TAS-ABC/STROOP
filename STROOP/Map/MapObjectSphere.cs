@@ -57,7 +57,7 @@ namespace STROOP.Map
                             float xDist = xDistSquared >= 0 ? (float)Math.Sqrt(xDistSquared) : 0;
                             float radius = xDist * Config.CurrentMapGraphics.MapViewScaleValue;
                             (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
-                                dimension.centerX, dimension.centerY, dimension.centerZ);
+                                dimension.centerX, dimension.centerY, dimension.centerZ, UseRelativeCoordinates);
                             return (x, z, radius);
                         }
                     case 16384:
@@ -68,7 +68,7 @@ namespace STROOP.Map
                             float zDist = zDistSquared >= 0 ? (float)Math.Sqrt(zDistSquared) : 0;
                             float radius = zDist * Config.CurrentMapGraphics.MapViewScaleValue;
                             (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
-                                dimension.centerX, dimension.centerY, dimension.centerZ);
+                                dimension.centerX, dimension.centerY, dimension.centerZ, UseRelativeCoordinates);
                             return (x, z, radius);
                         }
                     default:
@@ -81,7 +81,7 @@ namespace STROOP.Map
                             float bDist = bDistSquared >= 0 ? (float)Math.Sqrt(bDistSquared) : 0;
                             float radius = bDist * Config.CurrentMapGraphics.MapViewScaleValue;
                             (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
-                                dimension.centerX, dimension.centerY, dimension.centerZ);
+                                dimension.centerX, dimension.centerY, dimension.centerZ, UseRelativeCoordinates);
                             return (x, z, radius);
                         }
                 }

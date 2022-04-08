@@ -56,7 +56,7 @@ namespace STROOP.Map
             {
                 var dataPoint = data[i];
                 (double x, float y, double z, int numFrames) = dataPoint;
-                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView((float)x, (float)z);
+                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView((float)x, (float)z, UseRelativeCoordinates);
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Config.ObjectAssociations.RedCircleMapImage.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
                 double opacity = Opacity;

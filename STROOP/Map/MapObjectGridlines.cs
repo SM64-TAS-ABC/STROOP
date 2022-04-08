@@ -42,7 +42,7 @@ namespace STROOP.Map
                 for (int i = 0; i < positions.Count; i++)
                 {
                     (float x, float y, float z) = positions[i];
-                    (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
+                    (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(x, z, UseRelativeCoordinates);
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
                     double opacity = Opacity;
                     if (this == hoverData?.MapObject && i == hoverData?.Index)
@@ -66,7 +66,7 @@ namespace STROOP.Map
                 for (int i = 0; i < positions.Count; i++)
                 {
                     (float x, float y, float z) = positions[i];
-                    (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
+                    (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z, UseRelativeCoordinates);
                     SizeF size = MapUtilities.ScaleImageSizeForControl(_customImage.Size, _imageSize, Scales);
                     double opacity = Opacity;
                     if (this == hoverData?.MapObject && i == hoverData?.Index)
@@ -161,7 +161,7 @@ namespace STROOP.Map
             for (int i = positions.Count - 1; i >= 0; i--)
             {
                 var position = positions[i];
-                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(position.x, position.y, position.z);
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(position.x, position.y, position.z, UseRelativeCoordinates);
                 double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
                 double radius = Scales ? _imageSize * Config.CurrentMapGraphics.MapViewScaleValue : _imageSize;
                 if (dist <= radius || forceCursorPosition)

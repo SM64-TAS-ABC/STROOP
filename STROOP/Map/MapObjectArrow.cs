@@ -117,7 +117,7 @@ namespace STROOP.Map
             {
                 opacityByte = MapUtilities.GetHoverOpacityByte();
             }
-            MapUtilities.DrawLinesOn2DControlTopDownView(GetVerticesTopDownView(), LineWidth, LineColor, opacityByte);
+            MapUtilities.DrawLinesOn2DControlTopDownView(GetVerticesTopDownView(), LineWidth, LineColor, opacityByte, UseRelativeCoordinates);
         }
 
         private (float x, float y, float z) GetArrowHeadPosition()
@@ -307,7 +307,7 @@ namespace STROOP.Map
             Point relPos = relPosMaybe.Value;
 
             (float inGameX, float inGameY, float inGameZ) = GetArrowHeadPosition();
-            (double controlX, double controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(inGameX, inGameZ);
+            (double controlX, double controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(inGameX, inGameZ, UseRelativeCoordinates);
             double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
             if (dist <= 20 || forceCursorPosition)
             {

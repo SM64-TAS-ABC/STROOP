@@ -63,7 +63,7 @@ namespace STROOP.Map
             foreach (var dataPoint in data)
             {
                 (float x, float y, float z, float angle, int tex, uint objAddress) = dataPoint;
-                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z);
+                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z, UseRelativeCoordinates);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
@@ -83,7 +83,7 @@ namespace STROOP.Map
             foreach (var dataPoint in data)
             {
                 (float x, float y, float z, float angle, int tex, uint objAddress) = dataPoint;
-                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z);
+                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z, UseRelativeCoordinates);
                 float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
@@ -195,7 +195,7 @@ namespace STROOP.Map
             List<(float x, float y, float z, float angle, int tex, uint objAddress)> data = GetData();
             foreach (var dataPoint in data)
             {
-                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z);
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z, UseRelativeCoordinates);
                 double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
                 double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
                 if (dist <= radius || forceCursorPosition)

@@ -123,7 +123,7 @@ namespace STROOP.Map
                 return vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                         vertex =>
                         {
-                            (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z);
+                            (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates);
                             return (x, z, data.color, vertex.tri);
                         }));
             }).SelectMany(list => list).ToList();
@@ -244,7 +244,7 @@ namespace STROOP.Map
                 {
                     return quad.ConvertAll(vertex =>
                     {
-                        (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z);
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates);
                         return (x, z, unitPoint.color, unitPoint.tri);
                     });
                 });

@@ -72,7 +72,7 @@ namespace STROOP.Map
 
             List<List<(float x, float z)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z)));
+                    vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z, UseRelativeCoordinates)));
 
             return vertexListsForControl;
         }

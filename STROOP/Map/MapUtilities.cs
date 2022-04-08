@@ -39,10 +39,13 @@ namespace STROOP.Map
         }
 
         /** Takes in in-game coordinates, outputs control coordinates. */
-        public static (float x, float z) ConvertCoordsForControlTopDownView(float x, float z)
+        public static (float x, float z) ConvertCoordsForControlTopDownView(float x, float z, bool useRelativeCoordinates)
         {
-            x = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? x : (float)PuUtilities.GetRelativeCoordinate(x);
-            z = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? z : (float)PuUtilities.GetRelativeCoordinate(z);
+            if (useRelativeCoordinates)
+            {
+                x = (float)PuUtilities.GetRelativeCoordinate(x);
+                z = (float)PuUtilities.GetRelativeCoordinate(z);
+            }
             float xOffset = x - Config.CurrentMapGraphics.MapViewCenterXValue;
             float zOffset = z - Config.CurrentMapGraphics.MapViewCenterZValue;
             (float xOffsetRotated, float zOffsetRotated) =
@@ -78,11 +81,17 @@ namespace STROOP.Map
             return (centerX, centerZ);
         }
 
-        public static (float x, float z) ConvertCoordsForControlOrthographicView(float rawX, float rawY, float rawZ)
+        public static (float x, float z) ConvertCoordsForControlOrthographicView(float rawX, float rawY, float rawZ, bool useRelativeCoordinates)
         {
-            float x = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? rawX : (float)PuUtilities.GetRelativeCoordinate(rawX);
-            float y = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? rawY : (float)PuUtilities.GetRelativeCoordinate(rawY);
-            float z = Config.MapGui.checkBoxMapOptionsEnablePuView.Checked ? rawZ : (float)PuUtilities.GetRelativeCoordinate(rawZ);
+            float x = rawX;
+            float y = rawY;
+            float z = rawZ;
+            if (useRelativeCoordinates)
+            {
+                x = (float)PuUtilities.GetRelativeCoordinate(rawX);
+                y = (float)PuUtilities.GetRelativeCoordinate(rawY);
+                z = (float)PuUtilities.GetRelativeCoordinate(rawZ);
+            }
             float xOffset = x - Config.CurrentMapGraphics.MapViewCenterXValue;
             float yOffset = y - Config.CurrentMapGraphics.MapViewCenterYValue;
             float zOffset = z - Config.CurrentMapGraphics.MapViewCenterZValue;
@@ -150,9 +159,9 @@ namespace STROOP.Map
         }
 
         /** Takes in in-game coordinates, outputs control coordinates. */
-        public static (float x, float y, float z) ConvertCoordsForControlTopDownView(float x, float y, float z)
+        public static (float x, float y, float z) ConvertCoordsForControlTopDownView(float x, float y, float z, bool useRelativeCoordinates)
         {
-            (float convertedX, float convertedZ) = ConvertCoordsForControlTopDownView(x, z);
+            (float convertedX, float convertedZ) = ConvertCoordsForControlTopDownView(x, z, useRelativeCoordinates);
             return (convertedX, y, convertedZ);
         }
 
@@ -782,12 +791,12 @@ namespace STROOP.Map
                     Config.CurrentMapGraphics.MapViewYawValue, Config.CurrentMapGraphics.MapViewPitchValue, tri.X3, tri.Y3, tri.Z3));
         }
 
-        public static void DrawLinesOn2DControlTopDownView(List<(float x, float y, float z)> vertices, float lineWidth, Color color, byte opacityByte)
+        public static void DrawLinesOn2DControlTopDownView(List<(float x, float y, float z)> vertices, float lineWidth, Color color, byte opacityByte, bool useRelativeCoordinates)
         {
             if (lineWidth == 0) return;
 
             List<(float x, float z)> veriticesForControl =
-                vertices.ConvertAll(vertex => ConvertCoordsForControlTopDownView(vertex.x, vertex.z));
+                vertices.ConvertAll(vertex => ConvertCoordsForControlTopDownView(vertex.x, vertex.z, useRelativeCoordinates));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -803,12 +812,12 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        public static void DrawLinesOn2DControlOrthographicView(List<(float x, float y, float z)> vertices, float lineWidth, Color color, byte opacityByte)
+        public static void DrawLinesOn2DControlOrthographicView(List<(float x, float y, float z)> vertices, float lineWidth, Color color, byte opacityByte, bool useRelativeCoordinates)
         {
             if (lineWidth == 0) return;
 
             List<(float x, float z)> veriticesForControl =
-                vertices.ConvertAll(vertex => ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z));
+                vertices.ConvertAll(vertex => ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z, useRelativeCoordinates));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
