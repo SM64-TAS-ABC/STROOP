@@ -115,6 +115,13 @@ namespace STROOP.Utilities
             return (x + xDist, z + zDist);
         }
 
+        public static (double x, double y, double z) AddVectorToPoint(
+            double magnitude, double angle, double x, double y, double z)
+        {
+            (double xDist, double zDist) = GetComponentsFromVector(magnitude, angle);
+            return (x + xDist, y, z + zDist);
+        }
+
         public static (double x, double y, double z) AddVectorToPointWithPitch(
             double magnitude, double angle, double pitch, double x, double y, double z, bool clamp)
         {
