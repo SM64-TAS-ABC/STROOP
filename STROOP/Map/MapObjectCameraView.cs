@@ -16,6 +16,12 @@ namespace STROOP.Map
 {
     public class MapObjectCameraView : MapObjectQuad
     {
+        private double _radius = 1000;
+
+        private ToolStripMenuItem _itemSetRadius;
+
+        private static readonly string SET_RADIUS_TEXT = "Set Radius";
+
         public MapObjectCameraView()
             : base()
         {
@@ -134,8 +140,8 @@ namespace STROOP.Map
                 return (x, y, z);
             }
 
-            double tTop = 1000;
-            double tBottom = -1000;
+            double tTop = _radius;
+            double tBottom = -_radius;
 
             (double x, double y, double z) finalBackLeftTop = getPlaneLineIntersection(pointBackLeft, tTop);
             (double x, double y, double z) finalBackLeftBottom = getPlaneLineIntersection(pointBackLeft, tBottom);
@@ -170,6 +176,41 @@ namespace STROOP.Map
                 createQuad(finalBackLeftBottom, finalBackLeftTop, finalFrontLeftTop, finalFrontLeftBottom), // left
                 createQuad(finalBackRightBottom, finalBackRightTop, finalFrontRightTop, finalFrontRightBottom), // right
             };
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                string suffix = string.Format(" ({0})", _radius);
+                _itemSetRadius = new ToolStripMenuItem(SET_RADIUS_TEXT + suffix);
+                _itemSetRadius.Click += (sender, e) =>
+                {
+                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the radius.");
+                    double? radius = ParsingUtilities.ParseDoubleNullable(text);
+                    if (!radius.HasValue) return;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeCameraViewRadius: true, newCameraViewRadius: radius.Value);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(_itemSetRadius);
+            }
+
+            return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeCameraViewRadius)
+            {
+                _radius = settings.NewCameraViewRadius;
+                string suffix = string.Format(" ({0})", _radius);
+                _itemSetRadius.Text = SET_RADIUS_TEXT + suffix;
+            }
         }
 
         public override string GetName()

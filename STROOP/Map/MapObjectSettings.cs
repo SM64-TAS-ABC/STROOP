@@ -148,6 +148,9 @@ namespace STROOP.Map
         public readonly bool ChangeBackground;
         public readonly string NewBackground;
 
+        public readonly bool ChangeCameraViewRadius;
+        public readonly double NewCameraViewRadius;
+
         public MapObjectSettings(
             bool changeCustomCylinderRelativeMinY = false,
             float newCustomCylinderRelativeMinY = 0,
@@ -285,7 +288,10 @@ namespace STROOP.Map
             string newMap = null,
 
             bool changeBackground = false,
-            string newBackground = null)
+            string newBackground = null,
+
+            bool changeCameraViewRadius = false,
+            double newCameraViewRadius = 0)
         {
             ChangeCustomCylinderRelativeMinY = changeCustomCylinderRelativeMinY;
             NewCustomCylinderRelativeMinY = newCustomCylinderRelativeMinY;
@@ -424,6 +430,9 @@ namespace STROOP.Map
 
             ChangeBackground = changeBackground;
             NewBackground = newBackground;
+
+            ChangeCameraViewRadius = changeCameraViewRadius;
+            NewCameraViewRadius = newCameraViewRadius;
         }
 
         public static MapObjectSettings FromXElement(XElement xElement)
