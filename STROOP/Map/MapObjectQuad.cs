@@ -117,7 +117,7 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            List<List<(float x, float y, float z, bool isHovered)>> quadList = GetQuadList(null);
+            List<List<(float x, float y, float z, bool isHovered)>> quadList = GetQuadList3D() ?? GetQuadList(null);
 
             List<Map3DVertex[]> vertexArrayForSurfaces = quadList.ConvertAll(
                 vertexList => vertexList.ConvertAll(vertex => new Map3DVertex(new Vector3(
@@ -157,6 +157,11 @@ namespace STROOP.Map
         }
 
         protected abstract List<List<(float x, float y, float z, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData);
+
+        protected virtual List<List<(float x, float y, float z, bool isHovered)>> GetQuadList3D()
+        {
+            return null;
+        }
 
         public override MapDrawType GetDrawType()
         {
