@@ -123,16 +123,17 @@ namespace STROOP.Map
             {
                 foreach (MapTracker mapTracker in Controls)
                 {
+                    List<MapObject> mapObjects = mapTracker.GetMapObjectsToDisplay(mapType);
                     switch (mapTracker.GetOrderType())
                     {
                         case MapTrackerOrderType.OrderOnTop:
-                            listOrderOnTop.AddRange(mapTracker.GetMapObjectsToDisplay(mapType));
+                            listOrderOnTop.AddRange(mapObjects);
                             break;
                         case MapTrackerOrderType.OrderOnBottom:
-                            listOrderOnBottom.AddRange(mapTracker.GetMapObjectsToDisplay(mapType));
+                            listOrderOnBottom.AddRange(mapObjects);
                             break;
                         case MapTrackerOrderType.OrderByY:
-                            listOrderByY.AddRange(mapTracker.GetMapObjectsToDisplay(mapType));
+                            listOrderByY.AddRange(mapObjects);
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();
@@ -225,16 +226,17 @@ namespace STROOP.Map
             {
                 foreach (MapTracker mapTracker in Controls)
                 {
+                    List<MapObject> mapObjects = mapTracker.GetMapObjectsToDisplay(MapType.Map3D);
                     switch (mapTracker.GetOrderType())
                     {
                         case MapTrackerOrderType.OrderOnTop:
-                            listOrderOnTop.AddRange(mapTracker.GetMapObjectsToDisplay(MapType.Map3D));
+                            listOrderOnTop.AddRange(mapObjects);
                             break;
                         case MapTrackerOrderType.OrderOnBottom:
-                            listOrderOnBottom.AddRange(mapTracker.GetMapObjectsToDisplay(MapType.Map3D));
+                            listOrderOnBottom.AddRange(mapObjects);
                             break;
                         case MapTrackerOrderType.OrderByY:
-                            listOrderByY.AddRange(mapTracker.GetMapObjectsToDisplay(MapType.Map3D));
+                            listOrderByY.AddRange(mapObjects);
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();
