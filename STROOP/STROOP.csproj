@@ -471,6 +471,7 @@
     <Compile Include="Map\MapObjectCustomIconPoints.cs" />
     <Compile Include="Map\MapObjectHolpDisplayer.cs" />
     <Compile Include="Map\MapObjectCorkBoxTester.cs" />
+    <Compile Include="Map\MapObjectObjectSpeedArrow.cs" />
     <Compile Include="Map\MapObjectMarioSpeedArrow.cs" />
     <Compile Include="Map\MapObjectSettingsAccumulator.cs" />
     <Compile Include="Map\MapObjectPushHitboxCylinder.cs" />
