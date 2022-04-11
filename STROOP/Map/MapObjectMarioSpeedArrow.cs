@@ -99,7 +99,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Mario Speed Arrow";
+            return "Mario Speed Arrow for " + _posAngle.GetMapName();
         }
 
         public override List<XAttribute> GetXAttributes()

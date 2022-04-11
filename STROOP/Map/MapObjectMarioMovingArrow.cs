@@ -56,7 +56,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Mario Moving Arrow";
+            return "Mario Moving Arrow for " + _posAngle.GetMapName();
         }
 
         public override List<XAttribute> GetXAttributes()

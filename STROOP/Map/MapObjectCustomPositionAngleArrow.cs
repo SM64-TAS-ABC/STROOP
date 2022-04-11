@@ -58,7 +58,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Custom Position Angle Arrow";
+            return "Custom Position Angle Arrow for " + _posPA.GetMapName();
         }
 
         public override List<XAttribute> GetXAttributes()
