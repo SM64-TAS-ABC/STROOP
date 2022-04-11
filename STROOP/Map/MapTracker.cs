@@ -429,6 +429,17 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
             });
 
+            ToolStripMenuItem itemMarioSpeedArrow = new ToolStripMenuItem("Add Tracker for Mario Speed Arrow");
+            setUpClickAction(itemMarioSpeedArrow, mapObjectList =>
+            {
+                return mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    return (MapObject)new MapObjectMarioSpeedArrow(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+            });
+
             ToolStripMenuItem itemMarioSlidingArrow = new ToolStripMenuItem("Add Tracker for Mario Sliding Arrow");
             setUpClickAction(itemMarioSlidingArrow, mapObjectList =>
             {
@@ -718,6 +729,7 @@ namespace STROOP.Map
             itemArrow.DropDownItems.Add(itemMarioFacingArrow);
             itemArrow.DropDownItems.Add(itemMarioMovingArrow);
             itemArrow.DropDownItems.Add(itemMarioIntendedArrow);
+            itemArrow.DropDownItems.Add(itemMarioSpeedArrow);
             itemArrow.DropDownItems.Add(itemMarioSlidingArrow);
             itemArrow.DropDownItems.Add(itemMarioTwirlArrow);
             itemArrow.DropDownItems.Add(itemMarioFloorArrow);
