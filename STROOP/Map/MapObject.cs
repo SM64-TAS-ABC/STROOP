@@ -462,6 +462,9 @@ namespace STROOP.Map
                 case "MapObjectMarioSlidingArrow":
                     mapObject = new MapObjectMarioSlidingArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
+                case "MapObjectMarioSpeedArrow":
+                    mapObject = new MapObjectMarioSpeedArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
                 case "MapObjectMarioTwirlArrow":
                     mapObject = new MapObjectMarioTwirlArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
@@ -497,6 +500,9 @@ namespace STROOP.Map
                     break;
                 case "MapObjectObjectMovingArrow":
                     mapObject = new MapObjectObjectMovingArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
+                case "MapObjectObjectSpeedArrow":
+                    mapObject = new MapObjectObjectSpeedArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
                 case "MapObjectObjectWall":
                     mapObject = new MapObjectObjectWall(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
