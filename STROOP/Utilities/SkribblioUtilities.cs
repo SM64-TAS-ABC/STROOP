@@ -850,7 +850,6 @@ namespace STROOP.Structs
                 "Teacup",
                 "Plate",
                 "Spoon",
-                "Pitcher",
                 "Handle",
                 "Strawberry",
 
