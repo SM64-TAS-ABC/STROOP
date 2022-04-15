@@ -34,6 +34,14 @@ namespace STROOP.Forms
         private async void Load2D(object sender, EventArgs e)
         {
             _mapGraphics = new MapGraphics(false, Config.MapGui.checkBoxMapOptionsEnableOrthographicView.Checked);
+
+            _mapGraphics.MapViewScaleValue = Config.MapGraphics.MapViewScaleValue;
+            _mapGraphics.MapViewCenterXValue = Config.MapGraphics.MapViewCenterXValue;
+            _mapGraphics.MapViewCenterYValue = Config.MapGraphics.MapViewCenterYValue;
+            _mapGraphics.MapViewCenterZValue = Config.MapGraphics.MapViewCenterZValue;
+            _mapGraphics.MapViewYawValue = Config.MapGraphics.MapViewYawValue;
+            _mapGraphics.MapViewPitchValue = Config.MapGraphics.MapViewPitchValue;
+
             _mapGraphics.Load(glControlMap2D);
         }
 
