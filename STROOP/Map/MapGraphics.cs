@@ -872,6 +872,7 @@ namespace STROOP.Map
                         if (KeyboardUtilities.IsCtrlHeld())
                         {
                             newYaw = (float)MoreMath.NormalizeAngle45Degrees(newYaw);
+                            newPitch = 0;
                         }
                         SetCustomAngle(newYaw, newPitch);
                     }
