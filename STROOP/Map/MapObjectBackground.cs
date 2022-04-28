@@ -25,7 +25,7 @@ namespace STROOP.Map
         {
             float xCenter = Config.MapGui.CurrentControl.Width / 2;
             float yCenter = Config.MapGui.CurrentControl.Height / 2;
-            float length = Math.Max(Config.MapGui.CurrentControl.Width, Config.MapGui.CurrentControl.Height);
+            float length = Math.Max(Config.MapGui.CurrentControl.Width, Config.MapGui.CurrentControl.Height) + 2;
             (PointF loc, SizeF size) dimension = (new PointF(xCenter, yCenter), new SizeF(length, length));
             return new List<(PointF loc, SizeF size)>() { dimension };
         }
