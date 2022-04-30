@@ -48,7 +48,7 @@ namespace STROOP.Forms
             dataGridView.Rows.Clear();
             List<(uint address, double dist)> dataList =_triAddressList.ConvertAll(address =>
             {
-                TriangleDataModel tri = TriangleDataModel.Create(address);
+                TriangleDataModel tri = TriangleDataModel.CreateLazy(address);
                 double dist = tri.GetDistToMidpoint();
                 return (address, dist);
             });

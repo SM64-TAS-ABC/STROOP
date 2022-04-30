@@ -1177,11 +1177,11 @@ namespace STROOP.Utilities
                     }
                     break;
                 case 4:
-                    int closestVertexToMario = TriangleDataModel.Create(address).GetClosestVertex(
+                    int closestVertexToMario = TriangleDataModel.CreateLazy(address).GetClosestVertex(
                         Mario.X, Mario.Y, Mario.Z);
                     return GetTriangleVertexComponent(address, closestVertexToMario, coordinate);
                 case 5:
-                    int closestVertexToSelf = TriangleDataModel.Create(address).GetClosestVertex(
+                    int closestVertexToSelf = TriangleDataModel.CreateLazy(address).GetClosestVertex(
                         SpecialConfig.SelfPA.X, SpecialConfig.SelfPA.Y, SpecialConfig.SelfPA.Z);
                     return GetTriangleVertexComponent(address, closestVertexToSelf, coordinate);
                 case 6:
@@ -1190,7 +1190,7 @@ namespace STROOP.Utilities
                         case Coordinate.X:
                             return Mario.X;
                         case Coordinate.Y:
-                            return TriangleDataModel.Create(address).GetHeightOnTriangle(Mario.X, Mario.Z);
+                            return TriangleDataModel.CreateLazy(address).GetHeightOnTriangle(Mario.X, Mario.Z);
                         case Coordinate.Z:
                             return Mario.Z;
                         default:
@@ -1202,7 +1202,7 @@ namespace STROOP.Utilities
                         case Coordinate.X:
                             return SpecialConfig.SelfPA.X;
                         case Coordinate.Y:
-                            return TriangleDataModel.Create(address).GetHeightOnTriangle(SpecialConfig.SelfPA.X, SpecialConfig.SelfPA.Z);
+                            return TriangleDataModel.CreateLazy(address).GetHeightOnTriangle(SpecialConfig.SelfPA.X, SpecialConfig.SelfPA.Z);
                         case Coordinate.Z:
                             return SpecialConfig.SelfPA.Z;
                         default:
@@ -1936,11 +1936,11 @@ namespace STROOP.Utilities
                     }
                     break;
                 case 4:
-                    int closestVertexToMario = TriangleDataModel.Create(address).GetClosestVertex(
+                    int closestVertexToMario = TriangleDataModel.CreateLazy(address).GetClosestVertex(
                         Mario.X, Mario.Y, Mario.Z);
                     return SetTriangleVertexComponent(value, address, closestVertexToMario, coordinate);
                 case 5:
-                    int closestVertexToSelf = TriangleDataModel.Create(address).GetClosestVertex(
+                    int closestVertexToSelf = TriangleDataModel.CreateLazy(address).GetClosestVertex(
                         SpecialConfig.SelfPA.X, SpecialConfig.SelfPA.Y, SpecialConfig.SelfPA.Z);
                     return SetTriangleVertexComponent(value, address, closestVertexToSelf, coordinate);
                 case 6:

@@ -81,7 +81,7 @@ namespace STROOP.Utilities
         public static List<TriangleDataModel> GetTrianglesInRange(uint startAddress, int numTriangles)
         {
             return GetTriangleAddressesInRange(startAddress, numTriangles)
-                .ConvertAll(triAddress => TriangleDataModel.Create(triAddress));
+                .ConvertAll(triAddress => TriangleDataModel.CreateLazy(triAddress));
         }
 
         public static List<uint> GetTriangleAddressesInRange(uint startAddress, int numTriangles)
@@ -287,7 +287,7 @@ namespace STROOP.Utilities
             while (address != 0)
             {
                 uint triAddress = Config.Stream.GetUInt(address + 4);
-                TriangleDataModel tri = TriangleDataModel.Create(triAddress);
+                TriangleDataModel tri = TriangleDataModel.CreateLazy(triAddress);
                 bool isLegitimateTriangle = tri.NormX != 0 || tri.NormY != 0 || tri.NormZ != 0;
                 if (isLegitimateTriangle && tri.IsPointInsideAndAboveTriangle(shortX, shortY, shortZ)) return tri;
                 address = Config.Stream.GetUInt(address);
@@ -351,7 +351,7 @@ namespace STROOP.Utilities
             while (address != 0)
             {
                 uint triAddress = Config.Stream.GetUInt(address + 4);
-                TriangleDataModel tri = TriangleDataModel.Create(triAddress);
+                TriangleDataModel tri = TriangleDataModel.CreateLazy(triAddress);
                 bool isLegitimateTriangle = tri.NormX != 0 || tri.NormY != 0 || tri.NormZ != 0;
                 if (isLegitimateTriangle && tri.IsPointInsideAndBelowTriangle(shortX, shortY, shortZ)) return tri;
                 address = Config.Stream.GetUInt(address);

@@ -351,7 +351,7 @@ namespace STROOP.Managers
         {
             foreach (uint triangleAddress in TriangleAddresses)
             {
-                TriangleDataModel tri = TriangleDataModel.Create(triangleAddress);
+                TriangleDataModel tri = TriangleDataModel.CreateLazy(triangleAddress);
                 UpdateBasedOnCoordinates(triangleAddress, tri.X1, tri.Y1, tri.Z1, tri.X2, tri.Y2, tri.Z2, tri.X3, tri.Y3, tri.Z3);
             }
         }

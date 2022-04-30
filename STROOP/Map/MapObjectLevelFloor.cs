@@ -87,7 +87,7 @@ namespace STROOP.Map
                 ToolStripMenuItem itemShowTriData = new ToolStripMenuItem("Show Tri Data");
                 itemShowTriData.Click += (sender, e) =>
                 {
-                    List<TriangleDataModel> tris = _triAddressList.ConvertAll(address => TriangleDataModel.Create(address));
+                    List<TriangleDataModel> tris = _triAddressList.ConvertAll(address => TriangleDataModel.CreateLazy(address));
                     TriangleUtilities.ShowTriangles(tris);
                 };
 

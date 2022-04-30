@@ -556,7 +556,7 @@ namespace STROOP.Structs
             ushort marioAngle = 39655;
             ushort cameraAngle = 7142;
 
-            TriangleDataModel tri = TriangleDataModel.Create(0x8015F910);
+            TriangleDataModel tri = TriangleDataModel.CreateLazy(0x8015F910);
 
             List<(float, float)> successPositions = new List<(float, float)>();
             int numAttempts = 0;
@@ -1252,8 +1252,8 @@ namespace STROOP.Structs
 
             Input input = new Input(0, 0);
 
-            TriangleDataModel floor = TriangleDataModel.Create(0x80198DA0);
-            TriangleDataModel wall = TriangleDataModel.Create(0x801962E0);
+            TriangleDataModel floor = TriangleDataModel.CreateLazy(0x80198DA0);
+            TriangleDataModel wall = TriangleDataModel.CreateLazy(0x801962E0);
             List<TriangleDataModel> walls = new List<TriangleDataModel>() { wall };
 
             /////////////////////////////////
@@ -1636,7 +1636,7 @@ namespace STROOP.Structs
             float poleZ = -2190f;
 
             uint wallAddress = 0x8019AB30;
-            List<TriangleDataModel> walls = new List<TriangleDataModel>() { TriangleDataModel.Create(wallAddress) }; 
+            List<TriangleDataModel> walls = new List<TriangleDataModel>() { TriangleDataModel.CreateLazy(wallAddress) }; 
 
             MarioState startState = new MarioState(
                 startX,
@@ -1733,8 +1733,8 @@ namespace STROOP.Structs
             List<TriangleDataModel> walls =
                 new List<TriangleDataModel>()
                 {
-                    TriangleDataModel.Create(wallAddress1),
-                    TriangleDataModel.Create(wallAddress2),
+                    TriangleDataModel.CreateLazy(wallAddress1),
+                    TriangleDataModel.CreateLazy(wallAddress2),
                 };
 
             MarioState startState = new MarioState(
@@ -2318,7 +2318,7 @@ namespace STROOP.Structs
             ushort centAngle2 = 15703;
             ushort centAngle3 = 15571;
 
-            TriangleDataModel tri = new TriangleDataModel(-1747, 426, -781, -1342, 764, -1187, -1370, 764, -1214);
+            TriangleDataModel tri = TriangleDataModel.CreateCustom(-1747, 426, -781, -1342, 764, -1187, -1370, 764, -1214);
             int goalX = -1719;
             float goalZ = -869.552673339844f;
 
@@ -2404,10 +2404,10 @@ namespace STROOP.Structs
 
         public static MarioState DoPunchFrames(MarioState marioState)
         {
-            TriangleDataModel tri1 = new TriangleDataModel(-1739, 405, -790, -1370, 764, -1214, -1766, 405, -818);
-            TriangleDataModel tri2 = new TriangleDataModel(-1729, 383, -800, -1371, 763, -1213, -1756, 383, -828);
-            TriangleDataModel tri3 = new TriangleDataModel(-1717, 358, -812, -1371, 763, -1213, -1744, 358, -839);
-            TriangleDataModel tri4 = new TriangleDataModel(-1652, 235, -810, -1746, 235, -904, -1753, 312, -898);
+            TriangleDataModel tri1 = TriangleDataModel.CreateCustom(-1739, 405, -790, -1370, 764, -1214, -1766, 405, -818);
+            TriangleDataModel tri2 = TriangleDataModel.CreateCustom(-1729, 383, -800, -1371, 763, -1213, -1756, 383, -828);
+            TriangleDataModel tri3 = TriangleDataModel.CreateCustom(-1717, 358, -812, -1371, 763, -1213, -1744, 358, -839);
+            TriangleDataModel tri4 = TriangleDataModel.CreateCustom(-1652, 235, -810, -1746, 235, -904, -1753, 312, -898);
 
             MutableMarioState mutableMarioState = marioState.GetMutableMarioState(new Input(0, 0));
 

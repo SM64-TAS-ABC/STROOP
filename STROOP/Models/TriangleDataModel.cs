@@ -10,49 +10,51 @@ using STROOP.Structs;
 
 namespace STROOP.Models
 {
-    public class TriangleDataModel
+    public abstract class TriangleDataModel
     {
-        public readonly uint Address;
+        public abstract uint Address { get; }
 
-        public readonly short SurfaceType;
-        public readonly byte ExertionForceIndex;
-        public readonly byte ExertionAngle;
-        public readonly byte Flags;
-        public readonly byte Room;
+        public abstract short SurfaceType { get; }
+        public abstract byte ExertionForceIndex { get; }
+        public abstract byte ExertionAngle { get; }
+        public abstract byte Flags { get; }
+        public abstract byte Room { get; }
 
-        public readonly short YMinMinus5;
-        public readonly short YMaxPlus5;
+        public abstract short YMinMinus5 { get; }
+        public abstract short YMaxPlus5 { get; }
 
-        public readonly short X1;
-        public readonly short Y1;
-        public readonly short Z1;
-        public readonly short X2;
-        public readonly short Y2;
-        public readonly short Z2;
-        public readonly short X3;
-        public readonly short Y3;
-        public readonly short Z3;
+        public abstract short X1 { get; }
+        public abstract short Y1 { get; }
+        public abstract short Z1 { get; }
+        public abstract short X2 { get; }
+        public abstract short Y2 { get; }
+        public abstract short Z2 { get; }
+        public abstract short X3 { get; }
+        public abstract short Y3 { get; }
+        public abstract short Z3 { get; }
 
-        public readonly float NormX;
-        public readonly float NormY;
-        public readonly float NormZ;
-        public readonly float NormOffset;
+        public abstract float NormX { get; }
+        public abstract float NormY { get; }
+        public abstract float NormZ { get; }
+        public abstract float NormOffset { get; }
 
-        public readonly uint AssociatedObject;
+        public abstract uint AssociatedObject { get; }
 
-        public readonly TriangleClassification Classification;
+        public abstract TriangleClassification Classification { get; }
 
-        public readonly bool XProjection;
-        public readonly bool BelongsToObject;
-        public readonly bool NoCamCollision;
+        public abstract bool XProjection { get; }
+        public abstract bool BelongsToObject { get; }
+        public abstract bool NoCamCollision { get; }
 
-        public readonly string Description;
-        public readonly short Slipperiness;
-        public readonly string SlipperinessDescription;
-        public readonly double FrictionMultiplier;
-        public readonly double SlopeAccel;
-        public readonly double SlopeDecelValue;
-        public readonly bool Exertion;
+        public abstract string Description { get; }
+        public abstract short Slipperiness { get; }
+        public abstract string SlipperinessDescription { get; }
+        public abstract double FrictionMultiplier { get; }
+        public abstract double SlopeAccel { get; }
+        public abstract double SlopeDecelValue { get; }
+        public abstract bool Exertion { get; }
+
+        public abstract List<object> FieldValueList { get; }
 
         public readonly static List<string> FieldNameList =
             new List<string> {
@@ -88,8 +90,6 @@ namespace STROOP.Models
                 "AssociatedObject",
             };
 
-        private readonly List<Object> FieldValueList;
-
         private static Dictionary<uint, TriangleDataModel> _cache = new Dictionary<uint, TriangleDataModel>();
 
         public static void ClearCache()
@@ -97,119 +97,34 @@ namespace STROOP.Models
             _cache.Clear();
         }
 
-        public static TriangleDataModel Create(uint triangleAddress)
+        public static TriangleDataModel CreateFull(uint triangleAddress)
         {
             if (!_cache.ContainsKey(triangleAddress))
             {
-                TriangleDataModel tri = new TriangleDataModel(triangleAddress);
+                TriangleDataModel tri = new TriangleDataModelFull(triangleAddress);
                 _cache[triangleAddress] = tri;
             }
             return _cache[triangleAddress];
         }
 
-        private TriangleDataModel(uint triangleAddress)
+        public static TriangleDataModel CreateLazy(uint triangleAddress)
         {
-            Address = triangleAddress;
-
-            SurfaceType = Config.Stream.GetShort(triangleAddress + TriangleOffsetsConfig.SurfaceType);
-            ExertionForceIndex = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionForceIndex);
-            ExertionAngle = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionAngle);
-            Flags = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.Flags);
-            Room = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.Room);
-
-            YMinMinus5 = Config.Stream.GetShort(triangleAddress + TriangleOffsetsConfig.YMinMinus5);
-            YMaxPlus5 = Config.Stream.GetShort(triangleAddress + TriangleOffsetsConfig.YMaxPlus5);
-
-            X1 = TriangleOffsetsConfig.GetX1(triangleAddress);
-            Y1 = TriangleOffsetsConfig.GetY1(triangleAddress);
-            Z1 = TriangleOffsetsConfig.GetZ1(triangleAddress);
-            X2 = TriangleOffsetsConfig.GetX2(triangleAddress);
-            Y2 = TriangleOffsetsConfig.GetY2(triangleAddress);
-            Z2 = TriangleOffsetsConfig.GetZ2(triangleAddress);
-            X3 = TriangleOffsetsConfig.GetX3(triangleAddress);
-            Y3 = TriangleOffsetsConfig.GetY3(triangleAddress);
-            Z3 = TriangleOffsetsConfig.GetZ3(triangleAddress);
-
-            NormX = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormX);
-            NormY = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormY);
-            NormZ = Config.Stream.GetFloat(triangleAddress + TriangleOffsetsConfig.NormZ);
-            NormOffset = TriangleOffsetsConfig.GetNormalOffset(triangleAddress);
-
-            AssociatedObject = Config.Stream.GetUInt(triangleAddress + TriangleOffsetsConfig.AssociatedObject);
-
-            Classification = TriangleUtilities.CalculateClassification(NormY);
-
-            XProjection = (Flags & TriangleOffsetsConfig.XProjectionMask) != 0;
-            BelongsToObject = (Flags & TriangleOffsetsConfig.BelongsToObjectMask) != 0;
-            NoCamCollision = (Flags & TriangleOffsetsConfig.NoCamCollisionMask) != 0;
-
-            Description = TableConfig.TriangleInfo.GetDescription(SurfaceType);
-            Slipperiness = TableConfig.TriangleInfo.GetSlipperiness(SurfaceType) ?? 0;
-            SlipperinessDescription = TableConfig.TriangleInfo.GetSlipperinessDescription(SurfaceType);
-            FrictionMultiplier = TableConfig.TriangleInfo.GetFrictionMultiplier(SurfaceType);
-            SlopeAccel = TableConfig.TriangleInfo.GetSlopeAccel(SurfaceType);
-            SlopeDecelValue = TableConfig.TriangleInfo.GetSlopeDecelValue(SurfaceType);
-            Exertion = TableConfig.TriangleInfo.GetExertion(SurfaceType) ?? false;
-
-            FieldValueList = new List<object> {
-                HexUtilities.FormatValue(Address, 8),
-                Classification,
-                HexUtilities.FormatValue(SurfaceType, 2),
-                Description,
-                HexUtilities.FormatValue(Slipperiness, 2),
-                SlipperinessDescription,
-                Exertion,
-                ExertionForceIndex,
-                ExertionAngle,
-                HexUtilities.FormatValue(Flags, 2),
-                XProjection,
-                BelongsToObject,
-                NoCamCollision,
-                Room,
-                YMinMinus5,
-                YMaxPlus5,
-                X1,
-                Y1,
-                Z1,
-                X2,
-                Y2,
-                Z2,
-                X3,
-                Y3,
-                Z3,
-                NormX,
-                NormY,
-                NormZ,
-                NormOffset,
-                HexUtilities.FormatValue(AssociatedObject, 8),
-            };
+            if (!_cache.ContainsKey(triangleAddress))
+            {
+                TriangleDataModel tri = new TriangleDataModelLazy(triangleAddress);
+                _cache[triangleAddress] = tri;
+            }
+            return _cache[triangleAddress];
         }
 
-        public TriangleDataModel((int, int, int) p1, (int, int, int) p2, (int, int, int) p3) :
-            this(p1.Item1, p1.Item2, p1.Item3, p2.Item1, p2.Item2, p2.Item3, p3.Item1, p3.Item2, p3.Item3)
+        public static TriangleDataModel CreateCustom((int, int, int) p1, (int, int, int) p2, (int, int, int) p3)
         {
+            return new TriangleDataModelCustom(p1.Item1, p1.Item2, p1.Item3, p2.Item1, p2.Item2, p2.Item3, p3.Item1, p3.Item2, p3.Item3);
         }
 
-        public TriangleDataModel(int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3)
+        public static TriangleDataModel CreateCustom(int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3)
         {
-            X1 = (short)x1;
-            Y1 = (short)y1;
-            Z1 = (short)z1;
-            X2 = (short)x2;
-            Y2 = (short)y2;
-            Z2 = (short)z2;
-            X3 = (short)x3;
-            Y3 = (short)y3;
-            Z3 = (short)z3;
-
-            (NormX, NormY, NormZ, NormOffset) = TriangleUtilities.GetNorms(x1, y1, z1, x2, y2, z2, x3, y3, z3);
-
-            YMinMinus5 = (short)(MoreMath.Min(y1, y2, y3) - 5);
-            YMaxPlus5 = (short)(MoreMath.Max(y1, y2, y3) + 5);
-
-            XProjection = NormX < -0.707 || NormX > 0.707;
-
-            Classification = TriangleUtilities.CalculateClassification(NormY);
+            return new TriangleDataModelCustom(x1, y1, z1, x2, y2, z2, x3, y3, z3);
         }
 
         public override string ToString()

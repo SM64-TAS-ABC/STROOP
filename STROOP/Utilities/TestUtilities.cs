@@ -194,8 +194,8 @@ namespace STROOP.Utilities
         {
             uint triAddress1 = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
             uint triAddress2 = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-            TriangleDataModel tri1 = TriangleDataModel.Create(triAddress1);
-            TriangleDataModel tri2 = TriangleDataModel.Create(triAddress2);
+            TriangleDataModel tri1 = TriangleDataModel.CreateLazy(triAddress1);
+            TriangleDataModel tri2 = TriangleDataModel.CreateLazy(triAddress2);
             List<(short x, short y, short z)> commonVertices = GetCommonVertices(tri1, tri2);
             if (commonVertices.Count < 2) return;
             (short x1, short y1, short z1) = commonVertices[0];
@@ -228,7 +228,7 @@ namespace STROOP.Utilities
         public static void SearchForBadWallTriangles()
         {
             List<TriangleDataModel> wallTris = TriangleUtilities.GetLevelTriangles().FindAll(tri => tri.IsWall());
-            wallTris = new List<TriangleDataModel>() { TriangleDataModel.Create(0x801A47C0) };
+            wallTris = new List<TriangleDataModel>() { TriangleDataModel.CreateLazy(0x801A47C0) };
 
             List<TriangleDataModel> badWallTris = new List<TriangleDataModel>();
             foreach (TriangleDataModel wallTri in wallTris)
@@ -1276,8 +1276,8 @@ namespace STROOP.Utilities
 
             float y = -1916f;
 
-            TriangleDataModel wallTri1 = TriangleDataModel.Create(0x801A8FC0);
-            TriangleDataModel wallTri2 = TriangleDataModel.Create(0x801A8FF0);
+            TriangleDataModel wallTri1 = TriangleDataModel.CreateLazy(0x801A8FC0);
+            TriangleDataModel wallTri2 = TriangleDataModel.CreateLazy(0x801A8FF0);
             List<TriangleDataModel> wallTris = new List<TriangleDataModel>() { wallTri1, wallTri2 };
 
             float xMin = Math.Min(x1, x2);
@@ -1330,8 +1330,8 @@ namespace STROOP.Utilities
             (float x, float y, float z) = (-89.9566192626953f, 2253f, 7003f);
             uint wallAddress1 = 0x801A6110;
             uint wallAddress2 = 0x801A60E0;
-            TriangleDataModel tri1 = TriangleDataModel.Create(wallAddress1);
-            TriangleDataModel tri2 = TriangleDataModel.Create(wallAddress2);
+            TriangleDataModel tri1 = TriangleDataModel.CreateLazy(wallAddress1);
+            TriangleDataModel tri2 = TriangleDataModel.CreateLazy(wallAddress2);
             List<TriangleDataModel> tris = new List<TriangleDataModel>() { tri1, tri2 };
             int numCollisions = WallDisplacementCalculator.GetNumWallCollisions(x, y, z, tris, 50, 60);
             Config.SetDebugText("numCollisions = " + numCollisions);
@@ -1341,8 +1341,8 @@ namespace STROOP.Utilities
         {
             uint wallAddress1 = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             uint wallAddress2 = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
-            TriangleDataModel tri1 = TriangleDataModel.Create(wallAddress1);
-            TriangleDataModel tri2 = TriangleDataModel.Create(wallAddress2);
+            TriangleDataModel tri1 = TriangleDataModel.CreateLazy(wallAddress1);
+            TriangleDataModel tri2 = TriangleDataModel.CreateLazy(wallAddress2);
             List<TriangleDataModel> tris = new List<TriangleDataModel>() { tri1, tri2 };
 
             bool containsVertex(TriangleDataModel tri, int x0, int y0, int z0)
@@ -1793,7 +1793,7 @@ namespace STROOP.Utilities
 
             uint triangleAddress = Config.TriangleManager.TriangleAddresses[0];
             if (triangleAddress == 0) return;
-            TriangleDataModel triangle = TriangleDataModel.Create(triangleAddress);
+            TriangleDataModel triangle = TriangleDataModel.CreateLazy(triangleAddress);
             List<List<short>> triangleVertices = new List<List<short>>()
             {
                 new List<short>() { triangle.X1, triangle.Y1, triangle.Z1 },

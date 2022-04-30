@@ -30,9 +30,9 @@ namespace STROOP.Structs
             {
                 for (int x = 0; x < 16; x++)
                 {
-                    tris[z, x, 0] = CellUtilities.GetTriangleAddressesInCell(x, z, staticPartition, TriangleClassification.Floor).ConvertAll(triAddress => TriangleDataModel.Create(triAddress));
-                    tris[z, x, 1] = CellUtilities.GetTriangleAddressesInCell(x, z, staticPartition, TriangleClassification.Ceiling).ConvertAll(triAddress => TriangleDataModel.Create(triAddress));
-                    tris[z, x, 2] = CellUtilities.GetTriangleAddressesInCell(x, z, staticPartition, TriangleClassification.Wall).ConvertAll(triAddress => TriangleDataModel.Create(triAddress));
+                    tris[z, x, 0] = CellUtilities.GetTriangleAddressesInCell(x, z, staticPartition, TriangleClassification.Floor).ConvertAll(triAddress => TriangleDataModel.CreateLazy(triAddress));
+                    tris[z, x, 1] = CellUtilities.GetTriangleAddressesInCell(x, z, staticPartition, TriangleClassification.Ceiling).ConvertAll(triAddress => TriangleDataModel.CreateLazy(triAddress));
+                    tris[z, x, 2] = CellUtilities.GetTriangleAddressesInCell(x, z, staticPartition, TriangleClassification.Wall).ConvertAll(triAddress => TriangleDataModel.CreateLazy(triAddress));
                 }
             }
             return tris;
