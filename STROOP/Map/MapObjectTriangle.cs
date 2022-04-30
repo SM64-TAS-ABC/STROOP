@@ -727,7 +727,7 @@ namespace STROOP.Map
             _itemUseCrossSection.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    changeTriangleUseCrossSection: true, newTriangleUseCrossSection: !_useCrossSection);
+                    changeUseCrossSection: true, newUseCrossSection: !_useCrossSection);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -807,10 +807,10 @@ namespace STROOP.Map
                 _itemShowArrows.Checked = settings.NewTriangleShowArrows;
             }
 
-            if (settings.ChangeTriangleUseCrossSection)
+            if (settings.ChangeUseCrossSection)
             {
-                _useCrossSection = settings.NewTriangleUseCrossSection;
-                _itemUseCrossSection.Checked = settings.NewTriangleUseCrossSection;
+                _useCrossSection = settings.NewUseCrossSection;
+                _itemUseCrossSection.Checked = settings.NewUseCrossSection;
             }
 
             if (settings.ChangeIconSize)

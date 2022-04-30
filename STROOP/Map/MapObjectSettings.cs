@@ -19,8 +19,8 @@ namespace STROOP.Map
         public readonly bool ChangeTriangleShowArrows;
         public readonly bool NewTriangleShowArrows;
 
-        public readonly bool ChangeTriangleUseCrossSection;
-        public readonly bool NewTriangleUseCrossSection;
+        public readonly bool ChangeUseCrossSection;
+        public readonly bool NewUseCrossSection;
 
         public readonly bool ChangeTriangleWithinDist;
         public readonly float? NewTriangleWithinDist;
@@ -161,8 +161,8 @@ namespace STROOP.Map
             bool changeTriangleShowArrows = false,
             bool newTriangleShowArrows = false,
 
-            bool changeTriangleUseCrossSection = false,
-            bool newTriangleUseCrossSection = false,
+            bool changeUseCrossSection = false,
+            bool newUseCrossSection = false,
 
             bool changeTriangleWithinDist = false,
             float? newTriangleWithinDist = null,
@@ -302,8 +302,8 @@ namespace STROOP.Map
             ChangeTriangleShowArrows = changeTriangleShowArrows;
             NewTriangleShowArrows = newTriangleShowArrows;
 
-            ChangeTriangleUseCrossSection = changeTriangleUseCrossSection;
-            NewTriangleUseCrossSection = newTriangleUseCrossSection;
+            ChangeUseCrossSection = changeUseCrossSection;
+            NewUseCrossSection = newUseCrossSection;
 
             ChangeTriangleWithinDist = changeTriangleWithinDist;
             NewTriangleWithinDist = newTriangleWithinDist;

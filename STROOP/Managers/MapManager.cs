@@ -953,7 +953,7 @@ namespace STROOP.Managers
         {
             Config.MapGui.checkBoxMapOptionsUseCrossSection.Checked = useCrossSection;
             _defaulMapObjectHitboxTriangle.ApplySettings(
-                new MapObjectSettings(changeTriangleUseCrossSection: true, newTriangleUseCrossSection: useCrossSection));
+                new MapObjectSettings(changeUseCrossSection: true, newUseCrossSection: useCrossSection));
         }
 
         private void SetEnableObjectHover(bool enableObjectHover)

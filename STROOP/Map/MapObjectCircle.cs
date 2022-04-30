@@ -16,13 +16,18 @@ namespace STROOP.Map
 {
     public abstract class MapObjectCircle : MapObject
     {
+        private bool _useCrossSection;
         private float _imageSize;
+
+        private ToolStripMenuItem _itemUseCrossSection;
         private ToolStripMenuItem _itemSetIconSize;
+        
         private static readonly string SET_ICON_SIZE_TEXT = "Set Icon Size";
 
         public MapObjectCircle()
             : base()
         {
+            _useCrossSection = this is MapObjectSphere;
             _imageSize = 8;
 
             Opacity = 0.5;
@@ -109,6 +114,15 @@ namespace STROOP.Map
 
         protected List<ToolStripMenuItem> GetCircleToolStripMenuItems()
         {
+            _itemUseCrossSection = new ToolStripMenuItem("Use Cross Section");
+            _itemUseCrossSection.Click += (sender, e) =>
+            {
+                MapObjectSettings settings = new MapObjectSettings(
+                    changeUseCrossSection: true, newUseCrossSection: !_useCrossSection);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+            _itemUseCrossSection.Checked = _useCrossSection;
+
             string suffix = string.Format(" ({0})", _imageSize);
             _itemSetIconSize = new ToolStripMenuItem(SET_ICON_SIZE_TEXT + suffix);
             _itemSetIconSize.Click += (sender, e) =>
@@ -123,6 +137,7 @@ namespace STROOP.Map
 
             return new List<ToolStripMenuItem>()
             {
+                _itemUseCrossSection,
                 _itemSetIconSize,
             };
         }
@@ -130,6 +145,12 @@ namespace STROOP.Map
         public override void ApplySettings(MapObjectSettings settings)
         {
             base.ApplySettings(settings);
+
+            if (settings.ChangeUseCrossSection)
+            {
+                _useCrossSection = settings.NewUseCrossSection;
+                _itemUseCrossSection.Checked = settings.NewUseCrossSection;
+            }
 
             if (settings.ChangeIconSize)
             {
