@@ -23,17 +23,19 @@ namespace STROOP.Map
 
         protected override List<(float centerX, float centerZ, float radius)> Get2DDimensions()
         {
-            List<(float centerX, float centerY, float centerZ, float radius3D)> dimensions3D = Get3DDimensions();
-            List<(float centerX, float centerZ, float radius)> dimensions2D = dimensions3D.ConvertAll(
+            return Get3DDimensions().ConvertAll(
                 dimensions =>
                 {
+                    if (!_useCrossSection)
+                    {
+                        return (dimensions.centerX, dimensions.centerZ, dimensions.radius3D);
+                    }
                     float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
                     float yDiff = marioY - dimensions.centerY;
                     float radiusSquared = dimensions.radius3D * dimensions.radius3D - yDiff * yDiff;
                     float radius2D = radiusSquared >= 0 ? (float)Math.Sqrt(radiusSquared) : 0;
                     return (dimensions.centerX, dimensions.centerZ, radius2D);
                 });
-            return dimensions2D;
         }
 
         protected abstract List<(float centerX, float centerY, float centerZ, float radius3D)> Get3DDimensions();
@@ -47,6 +49,13 @@ namespace STROOP.Map
         {
             return Get3DDimensions().ConvertAll(dimension =>
             {
+                if (!_useCrossSection)
+                {
+                    (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
+                        dimension.centerX, dimension.centerY, dimension.centerZ, UseRelativeCoordinates);
+                    float radius = dimension.radius3D * Config.CurrentMapGraphics.MapViewScaleValue;
+                    return (x, z, radius);
+                }
                 switch (Config.CurrentMapGraphics.MapViewYawValue)
                 {
                     case 0:

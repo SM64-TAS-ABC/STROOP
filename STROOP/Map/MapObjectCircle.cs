@@ -16,7 +16,7 @@ namespace STROOP.Map
 {
     public abstract class MapObjectCircle : MapObject
     {
-        private bool _useCrossSection;
+        protected bool _useCrossSection;
         private float _imageSize;
 
         private ToolStripMenuItem _itemUseCrossSection;
