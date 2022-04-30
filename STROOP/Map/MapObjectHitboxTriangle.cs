@@ -194,7 +194,6 @@ namespace STROOP.Map
         {
             int numAllTriangles = Config.Stream.GetInt(TriangleConfig.TotalTriangleCountAddress);
             int numLevelTriangles = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
-            int numObjTriangles = numAllTriangles - numLevelTriangles;
 
             if (_levelTriAddressList.Count != numLevelTriangles)
             {
@@ -202,11 +201,8 @@ namespace STROOP.Map
                 _levelTriAddressList.AddRange(TriangleUtilities.GetLevelTriangles().ConvertAll(tri => tri.Address));
             }
 
-            if (_objTriAddressList.Count != numObjTriangles)
-            {
-                _objTriAddressList.Clear();
-                _objTriAddressList.AddRange(TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address));
-            }
+            _objTriAddressList.Clear();
+            _objTriAddressList.AddRange(TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address));
         }
 
         public override ContextMenuStrip GetContextMenuStrip()
