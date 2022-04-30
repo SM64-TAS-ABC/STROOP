@@ -20,15 +20,15 @@ namespace STROOP.Map
     public class MapObjectHitboxTriangle : MapObjectTriangle
     {
         private readonly bool _isDefaultInstance;
-        private readonly List<uint> _levelTriAddressList;
-        private readonly List<uint> _objTriAddressList;
+        private readonly List<TriangleDataModel> _levelTriAddressList;
+        private readonly List<TriangleDataModel> _objTriAddressList;
 
         public MapObjectHitboxTriangle(bool isDefaultInstance)
             : base()
         {
             _isDefaultInstance = isDefaultInstance;
-            _levelTriAddressList = TriangleUtilities.GetLevelTriangles().ConvertAll(tri => tri.Address);
-            _objTriAddressList = TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address);
+            _levelTriAddressList = TriangleUtilities.GetLevelTriangles();
+            _objTriAddressList = TriangleUtilities.GetObjectTriangles();
 
             Size = 40;
             LineWidth = 0;
@@ -168,16 +168,16 @@ namespace STROOP.Map
 
         protected override List<TriangleDataModel> GetUnfilteredTriangles()
         {
-            return MapUtilities.GetTriangles(_levelTriAddressList.Concat(_objTriAddressList).ToList());
+            return _levelTriAddressList.Concat(_objTriAddressList).ToList();
         }
 
         public void Reset()
         {
             _levelTriAddressList.Clear();
-            _levelTriAddressList.AddRange(TriangleUtilities.GetLevelTriangles().ConvertAll(tri => tri.Address));
+            _levelTriAddressList.AddRange(TriangleUtilities.GetLevelTriangles());
 
             _objTriAddressList.Clear();
-            _objTriAddressList.AddRange(TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address));
+            _objTriAddressList.AddRange(TriangleUtilities.GetObjectTriangles());
         }
 
         public override string GetName()
@@ -198,11 +198,11 @@ namespace STROOP.Map
             if (_levelTriAddressList.Count != numLevelTriangles)
             {
                 _levelTriAddressList.Clear();
-                _levelTriAddressList.AddRange(TriangleUtilities.GetLevelTriangles().ConvertAll(tri => tri.Address));
+                _levelTriAddressList.AddRange(TriangleUtilities.GetLevelTriangles());
             }
 
             _objTriAddressList.Clear();
-            _objTriAddressList.AddRange(TriangleUtilities.GetObjectTriangles().ConvertAll(tri => tri.Address));
+            _objTriAddressList.AddRange(TriangleUtilities.GetObjectTriangles());
         }
 
         public override ContextMenuStrip GetContextMenuStrip()
