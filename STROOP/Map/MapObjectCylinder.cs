@@ -37,6 +37,43 @@ namespace STROOP.Map
         {
             List<List<(float x, float y, float z)>> vertexLists = Get3DDimensions().ConvertAll(dimension =>
             {
+                if (_useCrossSection)
+                {
+                    double dist = MoreMath.GetDistanceBetween(
+                        Config.CurrentMapGraphics.MapViewCenterXValue,
+                        Config.CurrentMapGraphics.MapViewCenterZValue,
+                        dimension.centerX,
+                        dimension.centerZ);
+                    double angle = MoreMath.AngleTo_AngleUnits(
+                        Config.CurrentMapGraphics.MapViewCenterXValue,
+                        Config.CurrentMapGraphics.MapViewCenterZValue,
+                        dimension.centerX,
+                        dimension.centerZ);
+                    (double sidewaysDist, double forwardsDist) = 
+                        MoreMath.GetComponentsFromVectorRelatively(
+                            dist, angle, Config.CurrentMapGraphics.MapViewYawValue);
+                    if (forwardsDist > dimension.radius || forwardsDist < -1 * dimension.radius)
+                    {
+                        return null;
+                    }
+                    (double pointX, double pointZ) = MoreMath.AddVectorToPoint(
+                        -1 * forwardsDist,
+                        Config.CurrentMapGraphics.MapViewYawValue,
+                        dimension.centerX,
+                        dimension.centerZ);
+                    double legDist = Math.Sqrt(dimension.radius * dimension.radius - forwardsDist * forwardsDist);
+                    (float leftX, float leftZ) = ((float, float))MoreMath.AddVectorToPoint(
+                        legDist, Config.CurrentMapGraphics.MapViewYawValue + 16384, pointX, pointZ);
+                    (float rightX, float rightZ) = ((float, float))MoreMath.AddVectorToPoint(
+                        legDist, Config.CurrentMapGraphics.MapViewYawValue - 16384, pointX, pointZ);
+                    return new List<(float x, float y, float z)>()
+                    {
+                        (leftX, dimension.minY, leftZ),
+                        (rightX, dimension.minY, rightZ),
+                        (rightX, dimension.maxY, rightZ),
+                        (leftX, dimension.maxY, leftZ),
+                    };
+                }
                 switch (Config.CurrentMapGraphics.MapViewYawValue)
                 {
                     case 0:
@@ -68,7 +105,7 @@ namespace STROOP.Map
                             (dimension.centerX - sideDiffX, dimension.maxY, dimension.centerZ - sideDiffZ),
                         };
                 }
-            });
+            }).FindAll(list => list != null);
 
             List<List<(float x, float z)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
