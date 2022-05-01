@@ -18,12 +18,12 @@ namespace STROOP.Map
 {
     public class MapObjectCustomWall : MapObjectWall
     {
-        private readonly List<uint> _triAddressList;
+        private readonly List<TriangleDataModel> _triList;
 
         public MapObjectCustomWall(List<uint> triAddressList)
             : base()
         {
-            _triAddressList = triAddressList;
+            _triList = triAddressList.ConvertAll(address => TriangleDataModel.CreateLazy(address));
         }
 
         public static MapObjectCustomWall Create(string text)
@@ -35,7 +35,7 @@ namespace STROOP.Map
 
         protected override List<TriangleDataModel> GetUnfilteredTriangles()
         {
-            return MapUtilities.GetTriangles(_triAddressList);
+            return _triList;
         }
 
         public override string GetName()
@@ -58,7 +58,7 @@ namespace STROOP.Map
                     string text = DialogUtilities.GetStringFromDialog(labelText: "Enter triangle addresses as hex uints.");
                     List<uint> triAddressList = MapUtilities.ParseCustomTris(text, TriangleClassification.Wall);
                     if (triAddressList == null) return;
-                    _triAddressList.AddRange(triAddressList);
+                    _triList.AddRange(triAddressList.ConvertAll(address => TriangleDataModel.CreateLazy(address)));
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
@@ -74,7 +74,7 @@ namespace STROOP.Map
 
         public override List<XAttribute> GetXAttributes()
         {
-            List<string> hexList = _triAddressList.ConvertAll(triAddress => HexUtilities.FormatValue(triAddress));
+            List<string> hexList = _triList.ConvertAll(tri => HexUtilities.FormatValue(tri.Address));
             return new List<XAttribute>()
             {
                 new XAttribute("triangles", string.Join(",", hexList)),
