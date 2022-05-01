@@ -19,7 +19,7 @@ namespace STROOP.Map
 {
     public class MapObjectLevelFloor : MapObjectFloor, MapObjectLevelTriangleInterface
     {
-        private readonly List<uint> _triAddressList;
+        private readonly List<TriangleDataModel> _triList;
         private bool _removeCurrentTri;
         private TriangleListForm _triangleListForm;
         private bool _autoUpdate;
@@ -30,26 +30,26 @@ namespace STROOP.Map
 
         public MapObjectLevelFloor()
             : this(TriangleUtilities.GetLevelTriangles()
-                .FindAll(tri => tri.IsFloor())
-                .ConvertAll(tri => tri.Address))
+                .FindAll(tri => tri.IsFloor()))
         {
             _removeCurrentTri = false;
             _triangleListForm = null;
             _autoUpdate = true;
-            _numLevelTris = _triAddressList.Count;
+            _numLevelTris = _triList.Count;
             _useCurrentCellTris = false;
         }
 
-        public MapObjectLevelFloor(List<uint> triAddressList)
+        public MapObjectLevelFloor(List<TriangleDataModel> triList)
         {
-            _triAddressList = triAddressList;
+            _triList = triList;
         }
 
         public static MapObjectLevelFloor Create(string text)
         {
             List<uint> triAddressList = MapUtilities.ParseCustomTris(text, null);
             if (triAddressList == null) return null;
-            return new MapObjectLevelFloor(triAddressList);
+            List<TriangleDataModel> triList = triAddressList.ConvertAll(address => TriangleDataModel.CreateLazy(address));
+            return new MapObjectLevelFloor(triList);
         }
 
         protected override List<TriangleDataModel> GetUnfilteredTriangles()
@@ -59,7 +59,7 @@ namespace STROOP.Map
                 return MapUtilities.GetTriangles(
                     CellUtilities.GetTriangleAddressesInMarioCell(true, TriangleClassification.Floor));
             }
-            return MapUtilities.GetTriangles(_triAddressList);
+            return _triList;
         }
 
         public override ContextMenuStrip GetContextMenuStrip()
@@ -87,8 +87,7 @@ namespace STROOP.Map
                 ToolStripMenuItem itemShowTriData = new ToolStripMenuItem("Show Tri Data");
                 itemShowTriData.Click += (sender, e) =>
                 {
-                    List<TriangleDataModel> tris = _triAddressList.ConvertAll(address => TriangleDataModel.CreateLazy(address));
-                    TriangleUtilities.ShowTriangles(tris);
+                    TriangleUtilities.ShowTriangles(_triList);
                 };
 
                 ToolStripMenuItem itemOpenForm = new ToolStripMenuItem("Open Form");
@@ -96,7 +95,7 @@ namespace STROOP.Map
                 {
                     if (_triangleListForm != null) return;
                     _triangleListForm = new TriangleListForm(
-                        this, TriangleClassification.Floor, _triAddressList);
+                        this, TriangleClassification.Floor, _triList);
                     _triangleListForm.Show();
                 };
 
@@ -128,10 +127,9 @@ namespace STROOP.Map
 
         private void ResetTriangles()
         {
-            _triAddressList.Clear();
-            _triAddressList.AddRange(TriangleUtilities.GetLevelTriangles()
-                .FindAll(tri => tri.IsFloor())
-                .ConvertAll(tri => tri.Address));
+            _triList.Clear();
+            _triList.AddRange(TriangleUtilities.GetLevelTriangles()
+                .FindAll(tri => tri.IsFloor()));
             _triangleListForm?.RefreshAndSort();
         }
 
@@ -155,9 +153,10 @@ namespace STROOP.Map
             if (_removeCurrentTri)
             {
                 uint currentTriAddress = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-                if (_triAddressList.Contains(currentTriAddress))
+                int index = _triList.FindIndex(tri => tri.Address == currentTriAddress);
+                if (index >= 0)
                 {
-                    _triAddressList.Remove(currentTriAddress);
+                    _triList.RemoveAt(index);
                     _triangleListForm?.RefreshDataGridViewAfterRemoval();
                 }
             }
@@ -186,7 +185,7 @@ namespace STROOP.Map
 
         public override List<XAttribute> GetXAttributes()
         {
-            List<string> hexList = _triAddressList.ConvertAll(triAddress => HexUtilities.FormatValue(triAddress));
+            List<string> hexList = _triList.ConvertAll(tri => HexUtilities.FormatValue(tri.Address));
             return new List<XAttribute>()
             {
                 new XAttribute("triangles", string.Join(",", hexList)),

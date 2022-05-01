@@ -13,22 +13,22 @@ namespace STROOP.Forms
     public partial class TriangleListForm : Form
     {
         private readonly MapObjectLevelTriangleInterface _levelTriangleObject;
-        private readonly List<uint> _triAddressList;
+        private readonly List<TriangleDataModel> _triList;
         private long _lastRemoveTime;
 
         public TriangleListForm(
             MapObjectLevelTriangleInterface levelTriangleObject, 
             TriangleClassification classification,
-            List<uint> triAddressList)
+            List<TriangleDataModel> triList)
         {
             InitializeComponent();
 
             _levelTriangleObject = levelTriangleObject;
-            _triAddressList = triAddressList;
+            _triList = triList;
             _lastRemoveTime = 0;
 
             Text = classification + " Triangle List";
-            labelNumTriangles.Text = _triAddressList.Count + " Triangles";
+            labelNumTriangles.Text = _triList.Count + " Triangles";
             FormClosing += (sender, e) => TriangleListFormClosing();
             buttonSort.Click += (sender, e) => RefreshAndSort();
             buttonAnnihilate.Click += (sender, e) => Annihilate();
@@ -46,18 +46,17 @@ namespace STROOP.Forms
         public void RefreshAndSort()
         {
             dataGridView.Rows.Clear();
-            List<(uint address, double dist)> dataList =_triAddressList.ConvertAll(address =>
+            List<(uint address, double dist)> dataList =_triList.ConvertAll(tri =>
             {
-                TriangleDataModel tri = TriangleDataModel.CreateLazy(address);
                 double dist = tri.GetDistToMidpoint();
-                return (address, dist);
+                return (tri.Address, dist);
             });
             dataList = Enumerable.OrderBy(dataList, data => data.dist).ToList();
             dataList.ForEach(data =>
             {
                 dataGridView.Rows.Add(HexUtilities.FormatValue(data.address), Math.Round(data.dist, 3));
             });
-            labelNumTriangles.Text = _triAddressList.Count + " Triangles";
+            labelNumTriangles.Text = _triList.Count + " Triangles";
         }
 
         private void Annihilate()
@@ -89,7 +88,11 @@ namespace STROOP.Forms
             rows.ForEach(row =>
             {
                 uint address = ParsingUtilities.ParseHex(row.Cells[0].Value);
-                _triAddressList.Remove(address);
+                int index = _triList.FindIndex(tri => tri.Address == address);
+                if (index >= 0)
+                {
+                    _triList.RemoveAt(index);
+                }
             });
             RefreshDataGridViewAfterRemoval();
         }
@@ -100,12 +103,13 @@ namespace STROOP.Forms
             rows.ForEach(row =>
             {
                 uint address = ParsingUtilities.ParseHex(row.Cells[0].Value);
-                if (!_triAddressList.Contains(address))
+                int index = _triList.FindIndex(tri => tri.Address == address);
+                if (index == -1)
                 {
                     dataGridView.Rows.Remove(row);
                 }
             });
-            labelNumTriangles.Text = _triAddressList.Count + " Triangles";
+            labelNumTriangles.Text = _triList.Count + " Triangles";
         }
     }
 }
