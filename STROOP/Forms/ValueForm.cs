@@ -22,15 +22,26 @@ namespace STROOP.Forms
             label1.Text = labelText;
             button1.Text = buttonText;
 
-            Action okAction = () =>
+            Action<string> okAction = (string stringValue) =>
             {
-                StringValue = textBox1.Text;
+                StringValue = stringValue;
                 DialogResult = DialogResult.OK;
                 Close();
             };
 
-            button1.Click += (sender, e) => okAction();
-            textBox1.AddEnterAction(okAction);
+            button1.Click += (sender, e) => okAction(textBox1.Text);
+            textBox1.AddEnterAction(() => okAction(textBox1.Text));
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                button1,
+                new List<string>()
+                {
+                    "Use Clipboard",
+                },
+                new List<Action>()
+                {
+                    () => okAction(Clipboard.GetText()),
+                });
         }
     }
 }
