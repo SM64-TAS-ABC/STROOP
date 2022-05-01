@@ -39,12 +39,16 @@ namespace STROOP.Map
             {
                 if (_useCrossSection)
                 {
-                    float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
-                    float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
                     double dist = MoreMath.GetDistanceBetween(
-                        marioX, marioZ, dimension.centerX, dimension.centerZ);
+                        Config.CurrentMapGraphics.MapViewCenterXValue,
+                        Config.CurrentMapGraphics.MapViewCenterZValue,
+                        dimension.centerX,
+                        dimension.centerZ);
                     double angle = MoreMath.AngleTo_AngleUnits(
-                        marioX, marioZ, dimension.centerX, dimension.centerZ);
+                        Config.CurrentMapGraphics.MapViewCenterXValue,
+                        Config.CurrentMapGraphics.MapViewCenterZValue,
+                        dimension.centerX,
+                        dimension.centerZ);
                     (double sidewaysDist, double forwardsDist) = 
                         MoreMath.GetComponentsFromVectorRelatively(
                             dist, angle, Config.CurrentMapGraphics.MapViewYawValue);

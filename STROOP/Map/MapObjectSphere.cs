@@ -30,8 +30,7 @@ namespace STROOP.Map
                     {
                         return (dimensions.centerX, dimensions.centerZ, dimensions.radius3D);
                     }
-                    float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
-                    float yDiff = marioY - dimensions.centerY;
+                    float yDiff = Config.CurrentMapGraphics.MapViewCenterYValue - dimensions.centerY;
                     float radiusSquared = dimensions.radius3D * dimensions.radius3D - yDiff * yDiff;
                     float radius2D = radiusSquared >= 0 ? (float)Math.Sqrt(radiusSquared) : 0;
                     return (dimensions.centerX, dimensions.centerZ, radius2D);
