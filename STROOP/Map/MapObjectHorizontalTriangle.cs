@@ -229,6 +229,26 @@ namespace STROOP.Map
                         int zMin = (int)Math.Max(tri.GetMinZ(), Config.CurrentMapGraphics.MapViewZMin - 1);
                         int zMax = (int)Math.Min(tri.GetMaxZ(), Config.CurrentMapGraphics.MapViewZMax + 1);
 
+                        Color color = data.color;
+                        if (_distinguishSlidingClasses)
+                        {
+                            switch (tri.Slipperiness)
+                            {
+                                case 0x13:
+                                    color = Color.Red;
+                                    break;
+                                case 0x14:
+                                    color = Color.Yellow;
+                                    break;
+                                case 0x00:
+                                    color = Color.Green;
+                                    break;
+                                case 0x15:
+                                    color = Color.Cyan;
+                                    break;
+                            }
+                        }
+
                         List<(int x, int z, Color color, TriangleDataModel tri)> points =
                             new List<(int x, int z, Color color, TriangleDataModel tri)>();
                         for (int x = xMin; x <= xMax; x++)
@@ -240,7 +260,7 @@ namespace STROOP.Map
                                     (!data.minHeight.HasValue || y.Value >= data.minHeight.Value) &&
                                     (!data.maxHeight.HasValue || y.Value <= data.maxHeight.Value))
                                 {
-                                    points.Add((x, z, data.color, tri));
+                                    points.Add((x, z, color, tri));
                                 }
                             }
                         }
