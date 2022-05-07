@@ -126,8 +126,27 @@ namespace STROOP.Map
                 return vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                         vertex =>
                         {
+                            Color color = data.color;
+                            if (_distinguishSlidingClasses)
+                            {
+                                switch (vertex.tri.Slipperiness)
+                                {
+                                    case 0x13:
+                                        color = Color.Red;
+                                        break;
+                                    case 0x14:
+                                        color = Color.Yellow;
+                                        break;
+                                    case 0x00:
+                                        color = Color.Green;
+                                        break;
+                                    case 0x15:
+                                        color = Color.Cyan;
+                                        break;
+                                }
+                            }
                             (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates);
-                            return (x, z, data.color, vertex.tri);
+                            return (x, z, color, vertex.tri);
                         }));
             }).SelectMany(list => list).ToList();
         }
