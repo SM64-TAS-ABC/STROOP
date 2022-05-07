@@ -21,6 +21,7 @@ namespace STROOP.Map
         private bool _showTriUnits;
         private float? _minHeight;
         private float? _maxHeight;
+        protected bool _distinguishSlidingClasses;
         protected bool _enableQuarterFrameLandings;
 
         private ToolStripMenuItem _itemShowTriUnits;
@@ -36,6 +37,8 @@ namespace STROOP.Map
             _showTriUnits = false;
             _minHeight = null;
             _maxHeight = null;
+            _distinguishSlidingClasses = false;
+            _enableQuarterFrameLandings = false;
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)

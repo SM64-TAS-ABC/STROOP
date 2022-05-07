@@ -43,6 +43,9 @@ namespace STROOP.Map
         public readonly bool ChangeFloorEnableQuarterFrameLandings;
         public readonly bool NewFloorEnableQuarterFrameLandings;
 
+        public readonly bool ChangeFloorDistinguishSlidingClasses;
+        public readonly bool NewFloorDistinguishSlidingClasses;
+
         public readonly bool ChangeWallRelativeHeight;
         public readonly float? NewWallRelativeHeight;
 
@@ -185,6 +188,9 @@ namespace STROOP.Map
             bool changeFloorEnableQuarterFrameLandings = false,
             bool newFloorEnableQuarterFrameLandings = false,
 
+            bool changeFloorDistinguishSlidingClasses = false,
+            bool newFloorDistinguishSlidingClasses = false,
+
             bool changeWallRelativeHeight = false,
             float? newWallRelativeHeight = null,
 
@@ -325,6 +331,9 @@ namespace STROOP.Map
 
             ChangeFloorEnableQuarterFrameLandings = changeFloorEnableQuarterFrameLandings;
             NewFloorEnableQuarterFrameLandings = newFloorEnableQuarterFrameLandings;
+
+            ChangeFloorDistinguishSlidingClasses = changeFloorDistinguishSlidingClasses;
+            NewFloorDistinguishSlidingClasses = newFloorDistinguishSlidingClasses;
 
             ChangeWallRelativeHeight = changeWallRelativeHeight;
             NewWallRelativeHeight = newWallRelativeHeight;
