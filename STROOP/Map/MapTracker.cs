@@ -1159,11 +1159,11 @@ namespace STROOP.Map
             List<XElement> subElements = xElement.Elements().ToList();
             List<MapObject> mapObjs = subElements.ConvertAll(el => MapObject.FromXElement(el));
             MapTracker tracker = new MapTracker(mapObjs);
-            MapTrackerIconType iconType = (MapTrackerIconType)Enum.Parse(typeof(MapTrackerIconType), xElement.Attribute(XName.Get("iconType")).Value);
+            MapTrackerIconType iconType = (MapTrackerIconType)Enum.Parse(typeof(MapTrackerIconType), xElement.Attribute(XName.Get("iconType"))?.Value ?? MapTrackerIconType.TopDownImage.ToString());
             List<string> paths = null;
             if (iconType == MapTrackerIconType.CustomImage)
             {
-                paths = xElement.Attribute(XName.Get("paths")).Value.Split('|').ToList();
+                paths = xElement.Attribute(XName.Get("paths"))?.Value?.Split('|')?.ToList();
             }
             tracker.SetIconType(iconType, paths);
             string customName = xElement.Attribute(XName.Get("customName"))?.Value;
@@ -1171,24 +1171,24 @@ namespace STROOP.Map
             {
                 tracker._customName = customName;
             }
-            tracker.SetSize(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("size")).Value));
-            tracker.SetOpacity(ParsingUtilities.ParseIntNullable(xElement.Attribute(XName.Get("opacity")).Value));
-            tracker.SetLineWidth(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("lineWidth")).Value));
-            tracker.comboBoxOrderType.SelectedItem = Enum.Parse(typeof(MapTrackerOrderType), xElement.Attribute(XName.Get("orderType")).Value);
-            tracker.comboBoxVisibilityType.SelectedItem = Enum.Parse(typeof(MapTrackerVisibilityType), xElement.Attribute(XName.Get("visibilityType")).Value);
-            tracker.SetColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("color")).Value));
-            tracker.SetLineColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("lineColor")).Value));
+            tracker.SetSize(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("size"))?.Value ?? (25).ToString()));
+            tracker.SetOpacity(ParsingUtilities.ParseIntNullable(xElement.Attribute(XName.Get("opacity"))?.Value ?? (50).ToString()));
+            tracker.SetLineWidth(ParsingUtilities.ParseFloatNullable(xElement.Attribute(XName.Get("lineWidth"))?.Value ?? (1).ToString()));
+            tracker.comboBoxOrderType.SelectedItem = Enum.Parse(typeof(MapTrackerOrderType), xElement.Attribute(XName.Get("orderType"))?.Value ?? MapTrackerOrderType.OrderByY.ToString());
+            tracker.comboBoxVisibilityType.SelectedItem = Enum.Parse(typeof(MapTrackerVisibilityType), xElement.Attribute(XName.Get("visibilityType"))?.Value ?? MapTrackerVisibilityType.VisibleWhenLoaded.ToString());
+            tracker.SetColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("color"))?.Value ?? ColorUtilities.ConvertColorToParams(SystemColors.Control)));
+            tracker.SetLineColor(ColorUtilities.GetColorFromString(xElement.Attribute(XName.Get("lineColor"))?.Value ?? ColorUtilities.ConvertColorToParams(Color.Black)));
             bool? customRotates = ParsingUtilities.ParseBoolNullable(xElement.Attribute(XName.Get("customRotates"))?.Value);
             if (customRotates.HasValue)
             {
                 tracker.SetCustomRotates(customRotates.Value);
             }
-            tracker.SetScales(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("scales")).Value));
-            tracker.SetUseRelativeCoordinates(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("useRelativeCoordinates")).Value));
-            tracker.SetIsVisible(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisible")).Value));
-            tracker.SetMapTypeVisibility(MapType.Map2DTopDown, ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisibleFor2DTopDown")).Value));
-            tracker.SetMapTypeVisibility(MapType.Map2DOrthographic, ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisibleFor2DOrthographic")).Value));
-            tracker.SetMapTypeVisibility(MapType.Map3D, ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisibleFor3D")).Value));
+            tracker.SetScales(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("scales"))?.Value ?? false.ToString()));
+            tracker.SetUseRelativeCoordinates(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("useRelativeCoordinates"))?.Value ?? false.ToString()));
+            tracker.SetIsVisible(ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisible"))?.Value ?? true.ToString()));
+            tracker.SetMapTypeVisibility(MapType.Map2DTopDown, ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisibleFor2DTopDown"))?.Value ?? true.ToString()));
+            tracker.SetMapTypeVisibility(MapType.Map2DOrthographic, ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisibleFor2DOrthographic"))?.Value ?? true.ToString()));
+            tracker.SetMapTypeVisibility(MapType.Map3D, ParsingUtilities.ParseBool(xElement.Attribute(XName.Get("isVisibleFor3D"))?.Value ?? true.ToString()));
             return tracker;
         }
     }
