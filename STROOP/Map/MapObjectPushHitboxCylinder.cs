@@ -28,19 +28,19 @@ namespace STROOP.Map
             Color = Color.Orange;
         }
 
-        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
+        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)> Get3DDimensions()
         {
             uint objAddress = _posAngle.GetObjAddress();
             ObjectDataModel obj = new ObjectDataModel(objAddress);
             ObjectBehaviorAssociation assoc = Config.ObjectAssociations.FindObjectAssociation(obj.BehaviorCriteria);
             if (assoc == null || assoc.PushHitbox == null)
             {
-                return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>();
+                return new List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)>();
             }
             (float radius, float minY, float maxY) = assoc.PushHitbox.GetDetails(objAddress);
-            return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>()
+            return new List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)>()
             {
-                ((float)_posAngle.X, (float)_posAngle.Z, radius, minY, maxY)
+                ((float)_posAngle.X, (float)_posAngle.Z, radius, minY, maxY, Color)
             };
         }
 

@@ -45,9 +45,9 @@ namespace STROOP.Map
             return new MapObjectCustomCylinderPoints(floatPoints);
         }
 
-        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
+        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)> Get3DDimensions()
         {
-            return _points.ConvertAll(point => (point.x, point.z, Size, point.y + _relativeMinY, point.y + _relativeMaxY));
+            return _points.ConvertAll(point => (point.x, point.z, Size, point.y + _relativeMinY, point.y + _relativeMaxY, Color));
         }
 
         public override Image GetInternalImage()

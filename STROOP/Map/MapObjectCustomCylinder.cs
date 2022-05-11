@@ -36,12 +36,12 @@ namespace STROOP.Map
             Size = 1000;
         }
 
-        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
+        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)> Get3DDimensions()
         {
             float y = GetY();
-            return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>()
+            return new List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)>()
             {
-                ((float)_posAngle.X, (float)_posAngle.Z, Size, y + _relativeMinY, y + _relativeMaxY)
+                ((float)_posAngle.X, (float)_posAngle.Z, Size, y + _relativeMinY, y + _relativeMaxY, Color)
             };
         }
 

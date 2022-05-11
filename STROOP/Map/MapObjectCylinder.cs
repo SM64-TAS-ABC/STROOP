@@ -21,21 +21,21 @@ namespace STROOP.Map
         {
         }
 
-        protected override List<(float centerX, float centerZ, float radius)> Get2DDimensions()
+        protected override List<(float centerX, float centerZ, float radius, Color color)> Get2DDimensions()
         {
-            return Get3DDimensions().ConvertAll(dimension => (dimension.centerX, dimension.centerZ, dimension.radius));
+            return Get3DDimensions().ConvertAll(dimension => (dimension.centerX, dimension.centerZ, dimension.radius, dimension.color));
         }
 
-        protected abstract List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions();
+        protected abstract List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)> Get3DDimensions();
 
         protected override List<(float x, float y, float z)> GetPoints()
         {
             return Get3DDimensions().ConvertAll(d => (d.centerX, d.minY, d.centerZ));
         }
 
-        private List<List<(float x, float z)>> GetOrthographicDimensionsForControl()
+        private List<List<(float x, float z, Color color)>> GetOrthographicDimensionsForControl()
         {
-            List<List<(float x, float y, float z)>> vertexLists = Get3DDimensions().ConvertAll(dimension =>
+            List<List<(float x, float y, float z, Color color)>> vertexLists = Get3DDimensions().ConvertAll(dimension =>
             {
                 if (_useCrossSection)
                 {
@@ -66,57 +66,61 @@ namespace STROOP.Map
                         legDist, Config.CurrentMapGraphics.MapViewYawValue + 16384, pointX, pointZ);
                     (float rightX, float rightZ) = ((float, float))MoreMath.AddVectorToPoint(
                         legDist, Config.CurrentMapGraphics.MapViewYawValue - 16384, pointX, pointZ);
-                    return new List<(float x, float y, float z)>()
+                    return new List<(float x, float y, float z, Color color)>()
                     {
-                        (leftX, dimension.minY, leftZ),
-                        (rightX, dimension.minY, rightZ),
-                        (rightX, dimension.maxY, rightZ),
-                        (leftX, dimension.maxY, leftZ),
+                        (leftX, dimension.minY, leftZ, dimension.color),
+                        (rightX, dimension.minY, rightZ, dimension.color),
+                        (rightX, dimension.maxY, rightZ, dimension.color),
+                        (leftX, dimension.maxY, leftZ, dimension.color),
                     };
                 }
                 switch (Config.CurrentMapGraphics.MapViewYawValue)
                 {
                     case 0:
                     case 32768:
-                        return new List<(float x, float y, float z)>()
+                        return new List<(float x, float y, float z, Color color)>()
                         {
-                            (dimension.centerX - dimension.radius, dimension.minY, dimension.centerZ),
-                            (dimension.centerX + dimension.radius, dimension.minY, dimension.centerZ),
-                            (dimension.centerX + dimension.radius, dimension.maxY, dimension.centerZ),
-                            (dimension.centerX - dimension.radius, dimension.maxY, dimension.centerZ),
+                            (dimension.centerX - dimension.radius, dimension.minY, dimension.centerZ, dimension.color),
+                            (dimension.centerX + dimension.radius, dimension.minY, dimension.centerZ, dimension.color),
+                            (dimension.centerX + dimension.radius, dimension.maxY, dimension.centerZ, dimension.color),
+                            (dimension.centerX - dimension.radius, dimension.maxY, dimension.centerZ, dimension.color),
                         };
                     case 16384:
                     case 49152:
-                        return new List<(float x, float y, float z)>()
+                        return new List<(float x, float y, float z, Color color)>()
                         {
-                            (dimension.centerX, dimension.minY, dimension.centerZ - dimension.radius),
-                            (dimension.centerX, dimension.minY, dimension.centerZ + dimension.radius),
-                            (dimension.centerX, dimension.maxY, dimension.centerZ + dimension.radius),
-                            (dimension.centerX, dimension.maxY, dimension.centerZ - dimension.radius),
+                            (dimension.centerX, dimension.minY, dimension.centerZ - dimension.radius, dimension.color),
+                            (dimension.centerX, dimension.minY, dimension.centerZ + dimension.radius, dimension.color),
+                            (dimension.centerX, dimension.maxY, dimension.centerZ + dimension.radius, dimension.color),
+                            (dimension.centerX, dimension.maxY, dimension.centerZ - dimension.radius, dimension.color),
                         };
                     default:
                         double sideAngle = MoreMath.RotateAngleCW(Config.CurrentMapGraphics.MapViewYawValue, 16384);
                         (float sideDiffX, float sideDiffZ) = ((float, float))MoreMath.GetComponentsFromVector(dimension.radius, sideAngle);
-                        return new List<(float x, float y, float z)>()
+                        return new List<(float x, float y, float z, Color color)>()
                         {
-                            (dimension.centerX - sideDiffX, dimension.minY, dimension.centerZ - sideDiffZ),
-                            (dimension.centerX + sideDiffX, dimension.minY, dimension.centerZ + sideDiffZ),
-                            (dimension.centerX + sideDiffX, dimension.maxY, dimension.centerZ + sideDiffZ),
-                            (dimension.centerX - sideDiffX, dimension.maxY, dimension.centerZ - sideDiffZ),
+                            (dimension.centerX - sideDiffX, dimension.minY, dimension.centerZ - sideDiffZ, dimension.color),
+                            (dimension.centerX + sideDiffX, dimension.minY, dimension.centerZ + sideDiffZ, dimension.color),
+                            (dimension.centerX + sideDiffX, dimension.maxY, dimension.centerZ + sideDiffZ, dimension.color),
+                            (dimension.centerX - sideDiffX, dimension.maxY, dimension.centerZ - sideDiffZ, dimension.color),
                         };
                 }
             }).FindAll(list => list != null);
 
-            List<List<(float x, float z)>> vertexListsForControl =
+            List<List<(float x, float z, Color color)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
-                    vertex => MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z, UseRelativeCoordinates)));
+                    vertex =>
+                    {
+                        (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z, UseRelativeCoordinates);
+                        return (x, z, vertex.color);
+                    }));
 
             return vertexListsForControl;
         }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            List<List<(float x, float z)>> vertexListsForControl = GetOrthographicDimensionsForControl();
+            List<List<(float x, float z, Color color)>> vertexListsForControl = GetOrthographicDimensionsForControl();
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -125,17 +129,17 @@ namespace STROOP.Map
             // Draw triangle
             for (int i = 0; i < vertexListsForControl.Count; i++)
             {
-                List<(float x, float z)> vertexList = vertexListsForControl[i];
+                List<(float x, float z, Color color)> vertexList = vertexListsForControl[i];
 
                 GL.Begin(PrimitiveType.Polygon);
-                foreach ((float x, float z) in vertexList)
+                foreach ((float x, float z, Color color) in vertexList)
                 {
                     byte opacityByte = OpacityByte;
                     if (this == hoverData?.MapObject && i == hoverData?.Index)
                     {
                         opacityByte = MapUtilities.GetHoverOpacityByte();
                     }
-                    GL.Color4(Color.R, Color.G, Color.B, opacityByte);
+                    GL.Color4(color.R, color.G, color.B, opacityByte);
                     GL.Vertex2(x, z);
                 }
                 GL.End();
@@ -146,7 +150,7 @@ namespace STROOP.Map
                     GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
                     GL.LineWidth(LineWidth);
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z) in vertexList)
+                    foreach ((float x, float z, Color color) in vertexList)
                     {
                         GL.Vertex2(x, z);
                     }
@@ -159,11 +163,11 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            List<(float centerX, float centerZ, float radius, float minY, float maxY)> dimensionList = Get3DDimensions();
+            List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)> dimensionList = Get3DDimensions();
 
-            foreach ((float centerX, float centerZ, float radius, float minY, float maxY) in dimensionList)
+            foreach ((float centerX, float centerZ, float radius, float minY, float maxY, Color color) in dimensionList)
             {
-                Map3DVertex[] GetBaseVertices(float height, Color4 color)
+                Map3DVertex[] GetBaseVertices(float height, Color4 color2)
                 {
                     List<(float x, float y, float z)> points3D = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
                         .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 65536)
@@ -174,12 +178,12 @@ namespace STROOP.Map
                         });
                     return points3D.ConvertAll(
                         vertex => new Map3DVertex(new Vector3(
-                            vertex.x, vertex.y, vertex.z), color)).ToArray();
+                            vertex.x, vertex.y, vertex.z), color2)).ToArray();
                 }
                 List<Map3DVertex[]> vertexArrayForBases = new List<Map3DVertex[]>()
                 {
-                    GetBaseVertices(maxY, Color4),
-                    GetBaseVertices(minY, Color4),
+                    GetBaseVertices(maxY, new Color4(OpacityByte, color.R, color.G, color.B)),
+                    GetBaseVertices(minY, new Color4(OpacityByte, color.R, color.G, color.B)),
                 };
                 List<Map3DVertex[]> vertexArrayForEdges = new List<Map3DVertex[]>()
                 {
@@ -243,10 +247,11 @@ namespace STROOP.Map
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
 
-            List<List<(float x, float z)>> dimensionList = GetOrthographicDimensionsForControl();
+            List<List<(float x, float z, Color color)>> dimensionList = GetOrthographicDimensionsForControl();
             for (int i = dimensionList.Count - 1; i >= 0; i--)
             {
-                List<(float x, float z)> dimension = dimensionList[i];
+                List<(float x, float z, Color color)> dimensionWithColor = dimensionList[i];
+                List<(float x, float z)> dimension = dimensionWithColor.ConvertAll(d => (d.x, d.z));
                 if (MapUtilities.IsWithinShapeForControl(dimension, relPos.X, relPos.Y) || forceCursorPosition)
                 {
                     var inGameDimensionList = GetPoints();

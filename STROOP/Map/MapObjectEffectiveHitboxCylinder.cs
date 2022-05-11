@@ -31,7 +31,7 @@ namespace STROOP.Map
             Color = Color.Purple;
         }
 
-        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
+        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)> Get3DDimensions()
         {
             uint objAddress = _posAngle.GetObjAddress();
             float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
@@ -49,9 +49,9 @@ namespace STROOP.Map
             float effectiveMinY = hitboxMinY - marioHitboxHeight;
             float effectiveMaxY = hitboxMaxY;
 
-            return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>()
+            return new List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)>()
             {
-                ((float)_posAngle.X, (float)_posAngle.Z, effectiveRadius, effectiveMinY, effectiveMaxY)
+                ((float)_posAngle.X, (float)_posAngle.Z, effectiveRadius, effectiveMinY, effectiveMaxY, Color)
             };
         }
 

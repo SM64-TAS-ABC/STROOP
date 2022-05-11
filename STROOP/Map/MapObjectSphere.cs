@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using STROOP.Map.Map3D;
+using OpenTK.Graphics;
 
 namespace STROOP.Map
 {
@@ -21,30 +22,30 @@ namespace STROOP.Map
         {
         }
 
-        protected override List<(float centerX, float centerZ, float radius)> Get2DDimensions()
+        protected override List<(float centerX, float centerZ, float radius, Color color)> Get2DDimensions()
         {
             return Get3DDimensions().ConvertAll(
                 dimensions =>
                 {
                     if (!_useCrossSection)
                     {
-                        return (dimensions.centerX, dimensions.centerZ, dimensions.radius3D);
+                        return (dimensions.centerX, dimensions.centerZ, dimensions.radius3D, Color);
                     }
                     float yDiff = Config.CurrentMapGraphics.MapViewCenterYValue - dimensions.centerY;
                     float radiusSquared = dimensions.radius3D * dimensions.radius3D - yDiff * yDiff;
                     float radius2D = radiusSquared >= 0 ? (float)Math.Sqrt(radiusSquared) : 0;
-                    return (dimensions.centerX, dimensions.centerZ, radius2D);
+                    return (dimensions.centerX, dimensions.centerZ, radius2D, Color);
                 });
         }
 
-        protected abstract List<(float centerX, float centerY, float centerZ, float radius3D)> Get3DDimensions();
+        protected abstract List<(float centerX, float centerY, float centerZ, float radius3D, Color color)> Get3DDimensions();
 
         protected override List<(float x, float y, float z)> GetPoints()
         {
             return Get3DDimensions().ConvertAll(d => (d.centerX, d.centerY, d.centerZ));
         }
 
-        private List<(float centerX, float centerZ, float radius)> GetOrthographicDimensionsForControl()
+        private List<(float centerX, float centerZ, float radius, Color color)> GetOrthographicDimensionsForControl()
         {
             return Get3DDimensions().ConvertAll(dimension =>
             {
@@ -53,7 +54,7 @@ namespace STROOP.Map
                     (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
                         dimension.centerX, dimension.centerY, dimension.centerZ, UseRelativeCoordinates);
                     float radius = dimension.radius3D * Config.CurrentMapGraphics.MapViewScaleValue;
-                    return (x, z, radius);
+                    return (x, z, radius, dimension.color);
                 }
                 switch (Config.CurrentMapGraphics.MapViewYawValue)
                 {
@@ -66,7 +67,7 @@ namespace STROOP.Map
                             float radius = xDist * Config.CurrentMapGraphics.MapViewScaleValue;
                             (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
                                 dimension.centerX, dimension.centerY, dimension.centerZ, UseRelativeCoordinates);
-                            return (x, z, radius);
+                            return (x, z, radius, dimension.color);
                         }
                     case 16384:
                     case 49152:
@@ -77,7 +78,7 @@ namespace STROOP.Map
                             float radius = zDist * Config.CurrentMapGraphics.MapViewScaleValue;
                             (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
                                 dimension.centerX, dimension.centerY, dimension.centerZ, UseRelativeCoordinates);
-                            return (x, z, radius);
+                            return (x, z, radius, dimension.color);
                         }
                     default:
                         {
@@ -90,7 +91,7 @@ namespace STROOP.Map
                             float radius = bDist * Config.CurrentMapGraphics.MapViewScaleValue;
                             (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(
                                 dimension.centerX, dimension.centerY, dimension.centerZ, UseRelativeCoordinates);
-                            return (x, z, radius);
+                            return (x, z, radius, dimension.color);
                         }
                 }
             });
@@ -98,11 +99,11 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            List<(float centerX, float centerZ, float radius)> dimensionList = GetOrthographicDimensionsForControl();
+            List<(float centerX, float centerZ, float radius, Color color)> dimensionList = GetOrthographicDimensionsForControl();
 
             for (int i = 0; i < dimensionList.Count; i++)
             {
-                (float controlCenterX, float controlCenterZ, float controlRadius) = dimensionList[i];
+                (float controlCenterX, float controlCenterZ, float controlRadius, Color color) = dimensionList[i];
                 List<(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
                     .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 65536)
                     .ConvertAll(angle => ((float, float))MoreMath.AddVectorToPoint(controlRadius, angle, controlCenterX, controlCenterZ));
@@ -117,7 +118,7 @@ namespace STROOP.Map
                 {
                     opacityByte = MapUtilities.GetHoverOpacityByte();
                 }
-                GL.Color4(Color.R, Color.G, Color.B, opacityByte);
+                GL.Color4(color.R, color.G, color.B, opacityByte);
                 GL.Begin(PrimitiveType.TriangleFan);
                 GL.Vertex2(controlCenterX, controlCenterZ);
                 foreach ((float x, float z) in controlPoints)
@@ -158,9 +159,9 @@ namespace STROOP.Map
                 return (startX + (float)relX, startY + (float)relY, startZ + (float)relZ);
             }
 
-            List<(float centerX, float centerY, float centerZ, float radius3D)> dimensionList = Get3DDimensions();
+            List<(float centerX, float centerY, float centerZ, float radius3D, Color color)> dimensionList = Get3DDimensions();
 
-            foreach ((float centerX, float centerY, float centerZ, float radius3D) in dimensionList)
+            foreach ((float centerX, float centerY, float centerZ, float radius3D, Color color) in dimensionList)
             {
                 List<Map3DVertex[]> vertexArrayForSurfaces = new List<Map3DVertex[]>();
                 for (int p = 0; p < phiValues.Count - 1; p++)
@@ -180,7 +181,8 @@ namespace STROOP.Map
                         };
                         Map3DVertex[] pointsArray = pointsList.ConvertAll(
                             vertex => new Map3DVertex(new Vector3(
-                                vertex.x, vertex.y, vertex.z), Color4)).ToArray();
+                                vertex.x, vertex.y, vertex.z),
+                                new Color4(OpacityByte, color.R, color.G, color.B))).ToArray();
                         vertexArrayForSurfaces.Add(pointsArray);
                     }
                 }
@@ -206,7 +208,7 @@ namespace STROOP.Map
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
-            List<(float centerX, float centerZ, float radius)> dimensionList = GetOrthographicDimensionsForControl();
+            List<(float centerX, float centerZ, float radius, Color color)> dimensionList = GetOrthographicDimensionsForControl();
             for (int i = dimensionList.Count - 1; i >= 0; i--)
             {
                 var dimension = dimensionList[i];

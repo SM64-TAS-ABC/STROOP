@@ -36,9 +36,9 @@ namespace STROOP.Map
             return new MapObjectCustomSpherePoints(floatPoints);
         }
 
-        protected override List<(float centerX, float centerY, float centerZ, float radius3D)> Get3DDimensions()
+        protected override List<(float centerX, float centerY, float centerZ, float radius3D, Color color)> Get3DDimensions()
         {
-            return _points.ConvertAll(point => (point.x, point.y, point.z, Size));
+            return _points.ConvertAll(point => (point.x, point.y, point.z, Size, Color));
         }
 
         public override Image GetInternalImage()

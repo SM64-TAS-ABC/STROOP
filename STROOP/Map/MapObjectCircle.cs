@@ -36,11 +36,11 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            List<(float centerX, float centerZ, float radius)> dimensionList = Get2DDimensions();
+            List<(float centerX, float centerZ, float radius, Color color)> dimensionList = Get2DDimensions();
 
             for (int i = 0; i < dimensionList.Count; i++)
             {
-                (float centerX, float centerZ, float radius) = dimensionList[i];
+                (float centerX, float centerZ, float radius, Color color) = dimensionList[i];
                 (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(centerX, centerZ, UseRelativeCoordinates);
                 float controlRadius = radius * Config.CurrentMapGraphics.MapViewScaleValue;
                 List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
@@ -57,7 +57,7 @@ namespace STROOP.Map
                 {
                     opacityByte = MapUtilities.GetHoverOpacityByte();
                 }
-                GL.Color4(Color.R, Color.G, Color.B, opacityByte);
+                GL.Color4(color.R, color.G, color.B, opacityByte);
                 GL.Begin(PrimitiveType.TriangleFan);
                 GL.Vertex2(controlCenterX, controlCenterZ);
                 foreach ((float x, float z) in controlPoints)
@@ -103,7 +103,7 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        protected abstract List<(float centerX, float centerZ, float radius)> Get2DDimensions();
+        protected abstract List<(float centerX, float centerZ, float radius, Color color)> Get2DDimensions();
 
         protected abstract List<(float x, float y, float z)> GetPoints();
 
@@ -167,7 +167,7 @@ namespace STROOP.Map
             Point relPos = relPosMaybe.Value;
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
 
-            List<(float centerX, float centerZ, float radius)> dimensionList = Get2DDimensions();
+            List<(float centerX, float centerZ, float radius, Color color)> dimensionList = Get2DDimensions();
             for (int i = dimensionList.Count - 1; i >= 0 ; i--)
             {
                 var dimension = dimensionList[i];

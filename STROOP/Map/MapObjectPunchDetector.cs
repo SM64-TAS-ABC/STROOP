@@ -21,16 +21,16 @@ namespace STROOP.Map
         {
         }
 
-        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
+        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)> Get3DDimensions()
         {
             PositionAngle mario = PositionAngle.Mario;
             (double centerX, double centerZ) = MoreMath.AddVectorToPoint(50, mario.Angle, mario.X, mario.Z);
             double minY = mario.Y;
             double maxY = minY + 80;
             float radius = 5;
-            return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>()
+            return new List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)>()
             {
-                ((float)centerX, (float)centerZ, radius, (float)minY, (float)maxY)
+                ((float)centerX, (float)centerZ, radius, (float)minY, (float)maxY, Color)
             };
         }
 

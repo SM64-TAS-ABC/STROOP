@@ -25,12 +25,12 @@ namespace STROOP.Map
             _posAngle = posAngle;
         }
 
-        protected override List<(float centerX, float centerY, float centerZ, float radius3D)> Get3DDimensions()
+        protected override List<(float centerX, float centerY, float centerZ, float radius3D, Color color)> Get3DDimensions()
         {
             float tangibleDist = Config.Stream.GetFloat(_posAngle.GetObjAddress() + ObjectConfig.TangibleDistOffset);
-            return new List<(float centerX, float centerY, float centerZ, float radius3D)>()
+            return new List<(float centerX, float centerY, float centerZ, float radius3D, Color color)>()
             {
-                ((float)_posAngle.X, (float)_posAngle.Y, (float)_posAngle.Z, tangibleDist)
+                ((float)_posAngle.X, (float)_posAngle.Y, (float)_posAngle.Z, tangibleDist, Color),
             };
         }
 

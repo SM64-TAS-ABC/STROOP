@@ -25,7 +25,7 @@ namespace STROOP.Map
             _posAngle = posAngle;
         }
 
-        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY)> Get3DDimensions()
+        protected override List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)> Get3DDimensions()
         {
             uint objAddress = _posAngle.GetObjAddress();
             float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
@@ -34,9 +34,9 @@ namespace STROOP.Map
             float hitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
             float hurtboxMinY = objY - hitboxDownOffset;
             float hurtboxMaxY = hurtboxMinY + hurtboxHeight;
-            return new List<(float centerX, float centerZ, float radius, float minY, float maxY)>()
+            return new List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)>()
             {
-                ((float)_posAngle.X, (float)_posAngle.Z, hurtboxRadius, hurtboxMinY, hurtboxMaxY)
+                ((float)_posAngle.X, (float)_posAngle.Z, hurtboxRadius, hurtboxMinY, hurtboxMaxY, Color)
             };
         }
 
