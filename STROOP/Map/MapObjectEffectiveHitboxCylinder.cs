@@ -19,10 +19,14 @@ namespace STROOP.Map
     {
         private readonly PositionAngle _posAngle;
 
+        private bool _useInteractionStatusAsColor;
+        ToolStripMenuItem _useInteractionStatusAsColorItem;
+
         public MapObjectEffectiveHitboxCylinder(PositionAngle posAngle)
             : base()
         {
             _posAngle = posAngle;
+            _useInteractionStatusAsColor = false;
 
             Color = Color.Purple;
         }
@@ -70,11 +74,32 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
+                _useInteractionStatusAsColorItem = new ToolStripMenuItem("Use Interaction Status as Color");
+                _useInteractionStatusAsColorItem.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeUseInteractionStatusAsColor: true, newUseInteractionStatusAsColor: !_useInteractionStatusAsColor);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(_useInteractionStatusAsColorItem);
+                _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetCircleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeUseInteractionStatusAsColor)
+            {
+                _useInteractionStatusAsColor = settings.NewUseInteractionStatusAsColor;
+                _useInteractionStatusAsColorItem.Checked = settings.NewUseInteractionStatusAsColor;
+            }
         }
 
         public override List<XAttribute> GetXAttributes()

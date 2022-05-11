@@ -154,6 +154,9 @@ namespace STROOP.Map
         public readonly bool ChangeCameraViewRadius;
         public readonly double NewCameraViewRadius;
 
+        public readonly bool ChangeUseInteractionStatusAsColor;
+        public readonly bool NewUseInteractionStatusAsColor;
+
         public MapObjectSettings(
             bool changeCustomCylinderRelativeMinY = false,
             float newCustomCylinderRelativeMinY = 0,
@@ -297,7 +300,10 @@ namespace STROOP.Map
             string newBackground = null,
 
             bool changeCameraViewRadius = false,
-            double newCameraViewRadius = 0)
+            double newCameraViewRadius = 0,
+
+            bool changeUseInteractionStatusAsColor = false,
+            bool newUseInteractionStatusAsColor = false)
         {
             ChangeCustomCylinderRelativeMinY = changeCustomCylinderRelativeMinY;
             NewCustomCylinderRelativeMinY = newCustomCylinderRelativeMinY;
@@ -442,6 +448,9 @@ namespace STROOP.Map
 
             ChangeCameraViewRadius = changeCameraViewRadius;
             NewCameraViewRadius = newCameraViewRadius;
+
+            ChangeUseInteractionStatusAsColor = changeUseInteractionStatusAsColor;
+            NewUseInteractionStatusAsColor = newUseInteractionStatusAsColor;
         }
 
         public static MapObjectSettings FromXElement(XElement xElement)
