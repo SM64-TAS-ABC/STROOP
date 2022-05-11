@@ -49,9 +49,16 @@ namespace STROOP.Map
             float effectiveMinY = hurtboxMinY - marioHitboxHeight;
             float effectiveMaxY = hurtboxMaxY;
 
+            Color color = Color;
+            if (_useInteractionStatusAsColor)
+            {
+                uint interactionStatus = Config.Stream.GetUInt(_posAngle.GetObjAddress() + ObjectConfig.InteractionStatusOffset);
+                color = interactionStatus == 0 ? Color.Red : Color.Cyan;
+            }
+
             return new List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)>()
             {
-                ((float)_posAngle.X, (float)_posAngle.Z, effectiveRadius, effectiveMinY, effectiveMaxY, Color)
+                ((float)_posAngle.X, (float)_posAngle.Z, effectiveRadius, effectiveMinY, effectiveMaxY, color)
             };
         }
 
