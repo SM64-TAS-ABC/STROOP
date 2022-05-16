@@ -471,6 +471,7 @@ namespace STROOP.Managers
                     PositionAngle p2 = PositionAngle.Pos(xValue, 0, 8192);
                     MapObjectLineSegment mapObj = new MapObjectLineSegment(p1, p2);
                     MapTracker tracker = new MapTracker(mapObj);
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                 }
                 else if (testText.StartsWith("z="))
                 {
@@ -479,6 +480,7 @@ namespace STROOP.Managers
                     PositionAngle p2 = PositionAngle.Pos(8192, 0, zValue);
                     MapObjectLineSegment mapObj = new MapObjectLineSegment(p1, p2);
                     MapTracker tracker = new MapTracker(mapObj);
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
                 }
                 else
                 {
