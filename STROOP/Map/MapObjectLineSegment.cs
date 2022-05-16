@@ -248,7 +248,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Line Segment";
+            return "Line Segment from " + _posAngle1 + " to " + _posAngle2;
         }
 
         public override Image GetInternalImage()
