@@ -463,12 +463,32 @@ namespace STROOP.Managers
             {
                 string text1 = DialogUtilities.GetStringFromDialog(labelText: "Enter the first PositionAngle.");
                 if (text1 == null) return;
-                string text2 = DialogUtilities.GetStringFromDialog(labelText: "Enter the second PositionAngle.");
-                if (text2 == null) return;
-                MapObject mapObj = MapObjectLineSegment.Create(text1, text2);
-                if (mapObj == null) return;
-                MapTracker tracker = new MapTracker(mapObj);
-                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+                string testText = text1.Replace(" ", "").ToLower();
+                if (testText.StartsWith("x="))
+                {
+                    double xValue = ParsingUtilities.ParseDouble(testText.Substring(2));
+                    PositionAngle p1 = PositionAngle.Pos(xValue, 0, -8192);
+                    PositionAngle p2 = PositionAngle.Pos(xValue, 0, 8192);
+                    MapObjectLineSegment mapObj = new MapObjectLineSegment(p1, p2);
+                    MapTracker tracker = new MapTracker(mapObj);
+                }
+                else if (testText.StartsWith("z="))
+                {
+                    double zValue = ParsingUtilities.ParseDouble(testText.Substring(2));
+                    PositionAngle p1 = PositionAngle.Pos(-8192, 0, zValue);
+                    PositionAngle p2 = PositionAngle.Pos(8192, 0, zValue);
+                    MapObjectLineSegment mapObj = new MapObjectLineSegment(p1, p2);
+                    MapTracker tracker = new MapTracker(mapObj);
+                }
+                else
+                {
+                    string text2 = DialogUtilities.GetStringFromDialog(labelText: "Enter the second PositionAngle.");
+                    if (text2 == null) return;
+                    MapObject mapObj = MapObjectLineSegment.Create(text1, text2);
+                    if (mapObj == null) return;
+                    MapTracker tracker = new MapTracker(mapObj);
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+                }
             };
 
             ToolStripMenuItem itemDrawing = new ToolStripMenuItem("Add Tracker for Drawing");
