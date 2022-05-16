@@ -157,6 +157,11 @@ namespace STROOP.Utilities
             return processGroups;
         }
 
+        public static List<uint> GetObjectAddressesInProcessingOrder()
+        {
+            return GetProcessGroups().SelectMany(list => list).ToList();
+        }
+
         private static void ApplyProcessGroups(List<List<uint>> processGroups)
         {
             // processed slots

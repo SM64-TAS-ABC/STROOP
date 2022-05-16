@@ -42,7 +42,9 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            foreach (MapObject mapObj in GetCurrentMapObjects())
+            List<MapObject> mapObjs = GetCurrentMapObjects();
+            mapObjs.Reverse();
+            foreach (MapObject mapObj in mapObjs)
             {
                 mapObj.DrawOn2DControlTopDownView(hoverData);
             }
@@ -50,7 +52,9 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            foreach (MapObject mapObj in GetCurrentMapObjects())
+            List<MapObject> mapObjs = GetCurrentMapObjects();
+            mapObjs.Reverse();
+            foreach (MapObject mapObj in mapObjs)
             {
                 mapObj.DrawOn2DControlOrthographicView(hoverData);
             }
@@ -58,7 +62,9 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            foreach (MapObject mapObj in GetCurrentMapObjects())
+            List<MapObject> mapObjs = GetCurrentMapObjects();
+            mapObjs.Reverse();
+            foreach (MapObject mapObj in mapObjs)
             {
                 mapObj.DrawOn3DControl();
             }
@@ -66,19 +72,11 @@ namespace STROOP.Map
 
         private List<MapObject> GetCurrentMapObjects()
         {
-            List<MapObject> mapObjs = new List<MapObject>();
-            foreach (MapObject mapObj in _subMapObjs)
-            {
-                SetProperties(mapObj);
-                PositionAngle posAngle = mapObj.GetPositionAngle();
-                uint objAddress = posAngle.GetObjAddress();
-                ObjectDataModel obj = new ObjectDataModel(objAddress);
-                obj.Update();
-                if (obj.IsActive && obj.BehaviorAssociation?.Name?.ToLower() == _objName.ToLower())
-                {
-                    mapObjs.Add(mapObj);
-                }
-            }
+            List<MapObject> mapObjs = Config.ObjectSlotsManager.GetLoadedObjectsWithName(_objName)
+                .ConvertAll(obj => obj.Address)
+                .ConvertAll(address => ObjectUtilities.GetObjectIndex(address).Value)
+                .ConvertAll(index => _subMapObjs[index]);
+            mapObjs.ForEach(mapObj => SetProperties(mapObj));
             return mapObjs;
         }
 

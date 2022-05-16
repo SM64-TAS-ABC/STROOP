@@ -489,13 +489,17 @@ namespace STROOP.Managers
         {
             if (name == null) return new List<ObjectDataModel>();
 
-            return DataModels.Objects.Where(o => o != null && o.IsActive
+            List<uint> addresses = ObjectOrderingUtilities.GetObjectAddressesInProcessingOrder();
+            List<ObjectDataModel> objects = addresses.ConvertAll(address => new ObjectDataModel(address));
+            return objects.Where(o => o != null && o.IsActive
                 && o.BehaviorAssociation?.Name?.ToLower() == name.ToLower()).ToList();
         }
 
         public List<ObjectDataModel> GetLoadedObjectsWithPredicate(Func<ObjectDataModel, bool> func)
         {
-            return DataModels.Objects.Where(o => o != null && o.IsActive && func(o)).ToList();
+            List<uint> addresses = ObjectOrderingUtilities.GetObjectAddressesInProcessingOrder();
+            List<ObjectDataModel> objects = addresses.ConvertAll(address => new ObjectDataModel(address));
+            return objects.Where(o => o != null && o.IsActive && func(o)).ToList();
         }
 
         public ObjectDataModel GetObjectFromLabel(string name)
