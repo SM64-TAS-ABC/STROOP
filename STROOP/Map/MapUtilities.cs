@@ -63,21 +63,24 @@ namespace STROOP.Map
         }
 
         /** Takes in control coordinates, outputs in-game coordinates. */
-        public static (float x, float z) ConvertCoordsForInGameTopDownView(float x, float z)
+        public static (float x, float z) ConvertCoordsForInGameTopDownView(float x, float z, GLControl control = null)
         {
-            float xOffset = x - Config.MapGui.CurrentControl.Width / 2;
-            float zOffset = z - Config.MapGui.CurrentControl.Height / 2;
-            float xOffsetScaled = xOffset / Config.CurrentMapGraphics.MapViewScaleValue;
-            float zOffsetScaled = zOffset / Config.CurrentMapGraphics.MapViewScaleValue;
+            control = control ?? Config.MapGui.CurrentControl;
+            MapGraphics graphics = MapGraphics.Dictionary[control];
+
+            float xOffset = x - control.Width / 2;
+            float zOffset = z - control.Height / 2;
+            float xOffsetScaled = xOffset / graphics.MapViewScaleValue;
+            float zOffsetScaled = zOffset / graphics.MapViewScaleValue;
             (float xOffsetScaledRotated, float zOffsetScaledRotated) =
                 ((float, float))MoreMath.RotatePointAboutPointAnAngularDistance(
                     xOffsetScaled,
                     zOffsetScaled,
                     0,
                     0,
-                    Config.CurrentMapGraphics.MapViewYawValue);
-            float centerX = xOffsetScaledRotated + Config.CurrentMapGraphics.MapViewCenterXValue;
-            float centerZ = zOffsetScaledRotated + Config.CurrentMapGraphics.MapViewCenterZValue;
+                    graphics.MapViewYawValue);
+            float centerX = xOffsetScaledRotated + graphics.MapViewCenterXValue;
+            float centerZ = zOffsetScaledRotated + graphics.MapViewCenterZValue;
             return (centerX, centerZ);
         }
 

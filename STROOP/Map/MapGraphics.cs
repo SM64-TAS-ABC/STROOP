@@ -72,9 +72,12 @@ namespace STROOP.Map
             IsOrthographicViewEnabled = isOrthographicViewEnabled;
         }
 
+        public static Dictionary<GLControl, MapGraphics> Dictionary = new Dictionary<GLControl, MapGraphics>();
+
         public void Load(GLControl glControl)
         {
             _glControl = glControl;
+            Dictionary[glControl] = this;
 
             _glControl.MakeCurrent();
             _glControl.Context.LoadAll();
