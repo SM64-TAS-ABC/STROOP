@@ -104,7 +104,7 @@ namespace STROOP.Map
             return _contextMenuStrip;
         }
 
-        public override void NotifyMouseEvent(MouseEvent mouseEvent, bool isLeftButton, int mouseX, int mouseY)
+        public override void NotifyMouseEvent(MouseEvent mouseEvent, bool isLeftButton, int mouseX, int mouseY, GLControl control)
         {
             (float x, float z) inGameCoords = MapUtilities.ConvertCoordsForInGameTopDownView(mouseX, mouseY);
             (float x, float y, float z) currentVertex = (inGameCoords.x, 0, inGameCoords.z);

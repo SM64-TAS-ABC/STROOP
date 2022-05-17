@@ -214,7 +214,7 @@ namespace STROOP.Map
             return null;
         }
 
-        public virtual void NotifyMouseEvent(MouseEvent mouseEvent, bool isLeftButton, int mouseX, int mouseY)
+        public virtual void NotifyMouseEvent(MouseEvent mouseEvent, bool isLeftButton, int mouseX, int mouseY, GLControl control)
         {
         }
 

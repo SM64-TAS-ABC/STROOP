@@ -641,7 +641,7 @@ namespace STROOP.Map
             if (Config.MapManager.NumDrawingsEnabled > 0)
             {
                 Config.MapGui.flowLayoutPanelMapTrackers.NotifyMouseEvent(
-                    MouseEvent.MouseDown, e.Button == MouseButtons.Left, e.X, e.Y);
+                    MouseEvent.MouseDown, e.Button == MouseButtons.Left, e.X, e.Y, (GLControl)sender);
                 return;
             }
 
@@ -689,7 +689,7 @@ namespace STROOP.Map
             if (Config.MapManager.NumDrawingsEnabled > 0)
             {
                 Config.MapGui.flowLayoutPanelMapTrackers.NotifyMouseEvent(
-                    MouseEvent.MouseUp, e.Button == MouseButtons.Left, e.X, e.Y);
+                    MouseEvent.MouseUp, e.Button == MouseButtons.Left, e.X, e.Y, (GLControl)sender);
                 return;
             }
 
@@ -716,7 +716,7 @@ namespace STROOP.Map
             if (Config.MapManager.NumDrawingsEnabled > 0)
             {
                 Config.MapGui.flowLayoutPanelMapTrackers.NotifyMouseEvent(
-                    MouseEvent.MouseMove, e.Button == MouseButtons.Left, e.X, e.Y);
+                    MouseEvent.MouseMove, e.Button == MouseButtons.Left, e.X, e.Y, (GLControl)sender);
                 return;
             }
 

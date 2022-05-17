@@ -14,6 +14,7 @@ using STROOP.Structs.Configurations;
 using System.Drawing.Drawing2D;
 using STROOP.Interfaces;
 using STROOP.Models;
+using OpenTK;
 
 namespace STROOP.Map
 {
@@ -1107,11 +1108,11 @@ namespace STROOP.Map
             return string.Join(", ", _mapObjectList);
         }
 
-        public void NotifyMouseEvent(MouseEvent mouseEvent, bool isLeftButton, int mouseX, int mouseY)
+        public void NotifyMouseEvent(MouseEvent mouseEvent, bool isLeftButton, int mouseX, int mouseY, GLControl control)
         {
             foreach (MapObject mapObj in _mapObjectList)
             {
-                mapObj.NotifyMouseEvent(mouseEvent, isLeftButton, mouseX, mouseY);
+                mapObj.NotifyMouseEvent(mouseEvent, isLeftButton, mouseX, mouseY, control);
             }
         }
 
