@@ -166,10 +166,20 @@ namespace STROOP.Map
             List<ObjectDataModel> objs = Config.ObjectSlotsManager.GetLoadedObjectsWithRegex(_objName);
             return objs.ConvertAll(obj =>
             {
-                Image image = _iconType == MapTrackerIconType.ObjectSlotImage ?
-                    obj.BehaviorAssociation.Image.Image :
-                    obj.BehaviorAssociation.MapImage.Image;
-                int tex = texDictionary[image];
+                Image image;
+                int tex;
+                if (_customImage == null)
+                {
+                    image = _iconType == MapTrackerIconType.ObjectSlotImage ?
+                        obj.BehaviorAssociation.Image.Image :
+                        obj.BehaviorAssociation.MapImage.Image;
+                    tex = texDictionary[image];
+                }
+                else
+                {
+                    image = _customImage;
+                    tex = _customImageTex.Value;
+                }
                 return (obj.X, obj.Y, obj.Z, (float)obj.FacingYaw, image, tex, obj.Address);
             });
         }
