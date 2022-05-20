@@ -128,17 +128,6 @@ namespace STROOP.Managers
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the name of the object.");
                 if (text == null) return;
-
-
-
-
-                int count = Config.ObjectSlotsManager.GetLoadedObjectsWithRegex(text).Count;
-                Config.SetDebugText(count);
-                return;
-
-
-
-
                 MapObject mapObj = new MapObjectAllObjectsWithName(text);
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);

@@ -496,16 +496,11 @@ namespace STROOP.Managers
                 && o.BehaviorAssociation?.Name?.ToLower() == name.ToLower()).ToList();
         }
 
-        public List<ObjectDataModel> GetLoadedObjectsWithRegex(string regex)
+        public List<ObjectDataModel> GetLoadedObjectsWithRegex(string pattern)
         {
-            if (regex == null) return new List<ObjectDataModel>();
-
-            regex = "^" + Regex.Escape(regex) + "$";
-            regex = regex.Replace("\\$$", ".*");
-
             List<uint> addresses = ObjectOrderingUtilities.GetObjectAddressesInProcessingOrder();
             List<ObjectDataModel> objects = addresses.ConvertAll(address => new ObjectDataModel(address));
-            return objects.Where(o => o != null && o.IsActive && Regex.IsMatch(o.BehaviorAssociation?.Name ?? "", regex, RegexOptions.IgnoreCase)).ToList();
+            return objects.Where(o => o != null && o.IsActive && StringUtilities.IsRegexMatch(pattern, o.BehaviorAssociation?.Name ?? "")).ToList();
         }
 
         public List<ObjectDataModel> GetLoadedObjectsWithPredicate(Func<ObjectDataModel, bool> func)

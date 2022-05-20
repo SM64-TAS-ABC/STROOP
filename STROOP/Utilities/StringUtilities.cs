@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace STROOP.Utilities
@@ -45,6 +46,13 @@ namespace STROOP.Utilities
         {
             if (string.IsNullOrEmpty(s)) return s;
             return s.Substring(0, 1).ToUpper() + s.Substring(1);
+        }
+
+        public static bool IsRegexMatch(string pattern, string input)
+        {
+            pattern = "^" + Regex.Escape(pattern) + "$";
+            pattern = pattern.Replace("\\$$", ".*");
+            return Regex.IsMatch(input, pattern, RegexOptions.IgnoreCase);
         }
     }
 } 
