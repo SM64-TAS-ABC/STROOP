@@ -72,7 +72,7 @@ namespace STROOP.Map
 
         private List<MapObject> GetCurrentMapObjects()
         {
-            List<MapObject> mapObjs = Config.ObjectSlotsManager.GetLoadedObjectsWithName(_objName)
+            List<MapObject> mapObjs = Config.ObjectSlotsManager.GetLoadedObjectsWithRegex(_objName)
                 .ConvertAll(obj => obj.Address)
                 .ConvertAll(address => ObjectUtilities.GetObjectIndex(address).Value)
                 .ConvertAll(index => _subMapObjs[index]);

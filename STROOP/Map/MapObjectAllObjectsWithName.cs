@@ -154,7 +154,7 @@ namespace STROOP.Map
 
         public List<(float x, float y, float z, float angle, int tex, uint objAddress)> GetData()
         {
-            List<ObjectDataModel> objs = Config.ObjectSlotsManager.GetLoadedObjectsWithName(_objName);
+            List<ObjectDataModel> objs = Config.ObjectSlotsManager.GetLoadedObjectsWithRegex(_objName);
             return objs.ConvertAll(obj => (obj.X, obj.Y, obj.Z, (float)obj.FacingYaw, TextureId, obj.Address));
         }
 
