@@ -26,11 +26,19 @@ namespace STROOP.Map
             : base()
         {
             _objName = objName;
-
-            ObjectBehaviorAssociation assoc = Config.ObjectAssociations.GetObjectAssociation(objName);
-            _objImage = assoc.Image.Image;
-            _objMapImage = assoc.MapImage.Image;
-            InternalRotates = assoc.RotatesOnMap;
+            List<ObjectBehaviorAssociation> associations = Config.ObjectAssociations.GetObjectAssociations(objName);
+            if (associations.Count > 0)
+            {
+                _objImage = ImageUtilities.CreateMultiImage(associations.ConvertAll(a => a.Image.Image), 256, 256);
+                _objMapImage = ImageUtilities.CreateMultiImage(associations.ConvertAll(a => a.MapImage.Image), 256, 256);
+                InternalRotates = associations[0].RotatesOnMap;
+            }
+            else
+            {
+                _objImage = Config.ObjectAssociations.EmptyImage;
+                _objMapImage = Config.ObjectAssociations.EmptyImage;
+                InternalRotates = false;
+            }
         }
 
         public string GetObjName()

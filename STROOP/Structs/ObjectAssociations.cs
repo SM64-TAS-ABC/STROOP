@@ -196,6 +196,11 @@ namespace STROOP.Structs
             return _objAssoc.FirstOrDefault(a => a.Name.ToLower() == objName.ToLower());
         }
 
+        public List<ObjectBehaviorAssociation> GetObjectAssociations(string pattern)
+        {
+            return _objAssoc.ToList().FindAll(a => StringUtilities.IsRegexMatch(pattern, a.Name));
+        }
+
         public Image GetObjectMapImage(BehaviorCriteria behaviorCriteria)
         {
             if (behaviorCriteria.BehaviorAddress == 0)
