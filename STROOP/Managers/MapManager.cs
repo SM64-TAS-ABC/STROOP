@@ -127,8 +127,8 @@ namespace STROOP.Managers
             itemAllObjectsWithName.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the name of the object.");
-                MapObject mapObj = MapObjectAllObjectsWithName.Create(text);
-                if (mapObj == null) return;
+                if (text == null) return;
+                MapObject mapObj = new MapObjectAllObjectsWithName(text);
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };

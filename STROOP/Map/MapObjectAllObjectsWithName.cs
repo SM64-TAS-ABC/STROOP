@@ -22,21 +22,15 @@ namespace STROOP.Map
         private readonly Image _objImage;
         private readonly Image _objMapImage;
 
-        public MapObjectAllObjectsWithName(ObjectBehaviorAssociation assoc)
+        public MapObjectAllObjectsWithName(string objName)
             : base()
         {
-            _objName = assoc.Name;
+            _objName = objName;
+
+            ObjectBehaviorAssociation assoc = Config.ObjectAssociations.GetObjectAssociation(objName);
             _objImage = assoc.Image.Image;
             _objMapImage = assoc.MapImage.Image;
             InternalRotates = assoc.RotatesOnMap;
-        }
-
-        public static MapObjectAllObjectsWithName Create(string objName)
-        {
-            if (objName == null) return null;
-            ObjectBehaviorAssociation assoc = Config.ObjectAssociations.GetObjectAssociation(objName);
-            if (assoc == null) return null;
-            return new MapObjectAllObjectsWithName(assoc);
         }
 
         public string GetObjName()

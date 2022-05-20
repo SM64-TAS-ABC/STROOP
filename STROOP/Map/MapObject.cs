@@ -283,7 +283,7 @@ namespace STROOP.Map
                     mapObject = new MapObjectAllObjectFloor();
                     break;
                 case "MapObjectAllObjectsWithName":
-                    mapObject = MapObjectAllObjectsWithName.Create(xElement.Attribute(XName.Get("objectName")).Value);
+                    mapObject = new MapObjectAllObjectsWithName(xElement.Attribute(XName.Get("objectName")).Value);
                     break;
                 case "MapObjectAllObjectWall":
                     mapObject = new MapObjectAllObjectWall();
