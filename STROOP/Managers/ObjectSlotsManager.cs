@@ -13,6 +13,7 @@ using STROOP.Controls;
 using STROOP.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System.Text.RegularExpressions;
 
 namespace STROOP.Managers
 {
@@ -493,6 +494,18 @@ namespace STROOP.Managers
             List<ObjectDataModel> objects = addresses.ConvertAll(address => new ObjectDataModel(address));
             return objects.Where(o => o != null && o.IsActive
                 && o.BehaviorAssociation?.Name?.ToLower() == name.ToLower()).ToList();
+        }
+
+        public List<ObjectDataModel> GetLoadedObjectsWithRegex(string regex)
+        {
+            if (regex == null) return new List<ObjectDataModel>();
+
+            regex = "^" + Regex.Escape(regex) + "$";
+            regex = regex.Replace("\\$$", ".*");
+
+            List<uint> addresses = ObjectOrderingUtilities.GetObjectAddressesInProcessingOrder();
+            List<ObjectDataModel> objects = addresses.ConvertAll(address => new ObjectDataModel(address));
+            return objects.Where(o => o != null && o.IsActive && Regex.IsMatch(o.BehaviorAssociation?.Name ?? "", regex, RegexOptions.IgnoreCase)).ToList();
         }
 
         public List<ObjectDataModel> GetLoadedObjectsWithPredicate(Func<ObjectDataModel, bool> func)
