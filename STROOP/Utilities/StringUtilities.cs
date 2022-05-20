@@ -50,8 +50,9 @@ namespace STROOP.Utilities
 
         public static bool IsRegexMatch(string pattern, string input)
         {
-            pattern = "^" + Regex.Escape(pattern) + "$";
-            pattern = pattern.Replace("\\$$", ".*");
+            pattern = Regex.Escape(pattern);
+            pattern = pattern.Replace("\\$", ".*");
+            pattern = "^" + pattern + "$";
             return Regex.IsMatch(input, pattern, RegexOptions.IgnoreCase);
         }
     }
