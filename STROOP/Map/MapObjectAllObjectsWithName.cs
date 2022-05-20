@@ -70,13 +70,13 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            List<(float x, float y, float z, float angle, Image image, int tex, uint objAddress)> data = GetData();
+            List<(float x, float y, float z, float angle, bool rotates, Image image, int tex, uint objAddress)> data = GetData();
             data.Reverse();
             foreach (var dataPoint in data)
             {
-                (float x, float y, float z, float angle, Image image, int tex, uint objAddress) = dataPoint;
+                (float x, float y, float z, float angle, bool rotates, Image image, int tex, uint objAddress) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(x, z, UseRelativeCoordinates);
-                float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
+                float angleDegrees = (CustomRotates ?? rotates) ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
                 double opacity = Opacity;
@@ -90,13 +90,13 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            List<(float x, float y, float z, float angle, Image image, int tex, uint objAddress)> data = GetData();
+            List<(float x, float y, float z, float angle, bool rotates, Image image, int tex, uint objAddress)> data = GetData();
             data.Reverse();
             foreach (var dataPoint in data)
             {
-                (float x, float y, float z, float angle, Image image, int tex, uint objAddress) = dataPoint;
+                (float x, float y, float z, float angle, bool rotates, Image image, int tex, uint objAddress) = dataPoint;
                 (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(x, y, z, UseRelativeCoordinates);
-                float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
+                float angleDegrees = (CustomRotates ?? rotates) ? MapUtilities.ConvertAngleForControl(angle) : 0;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
                 double opacity = Opacity;
@@ -110,13 +110,13 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            List<(float x, float y, float z, float angle, Image image, int tex, uint objAddress)> data = GetData();
+            List<(float x, float y, float z, float angle, bool rotates, Image image, int tex, uint objAddress)> data = GetData();
             data.Reverse();
             foreach (var dataPoint in data)
             {
-                (float x, float y, float z, float angle, Image image, int tex, uint objAddress) = dataPoint;
+                (float x, float y, float z, float angle, bool rotates, Image image, int tex, uint objAddress) = dataPoint;
 
-                Matrix4 viewMatrix = GetModelMatrix(x, y, z, angle, image);
+                Matrix4 viewMatrix = GetModelMatrix(x, y, z, angle, rotates, image);
                 GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
 
                 Map3DVertex[] vertices = GetVertices();
@@ -132,13 +132,13 @@ namespace STROOP.Map
             }
         }
         
-        public Matrix4 GetModelMatrix(float x, float y, float z, float ang, Image image)
+        public Matrix4 GetModelMatrix(float x, float y, float z, float ang, bool rotates, Image image)
         {
             SizeF _imageNormalizedSize = new SizeF(
                 image.Width >= image.Height ? 1.0f : (float)image.Width / image.Height,
                 image.Width <= image.Height ? 1.0f : (float)image.Height / image.Width);
 
-            float angle = Rotates ? (float)MoreMath.AngleUnitsToRadians(ang - MapConfig.Map3DCameraYaw + 32768) : 0;
+            float angle = (CustomRotates ?? rotates) ? (float)MoreMath.AngleUnitsToRadians(ang - MapConfig.Map3DCameraYaw + 32768) : 0;
             Vector3 pos = new Vector3(x, y, z);
 
             float size = Size / 200;
@@ -161,7 +161,7 @@ namespace STROOP.Map
             };
         }
 
-        public List<(float x, float y, float z, float angle, Image image, int tex, uint objAddress)> GetData()
+        public List<(float x, float y, float z, float angle, bool rotates, Image image, int tex, uint objAddress)> GetData()
         {
             List<ObjectDataModel> objs = Config.ObjectSlotsManager.GetLoadedObjectsWithRegex(_objName);
             return objs.ConvertAll(obj =>
@@ -180,7 +180,7 @@ namespace STROOP.Map
                     image = _customImage;
                     tex = _customImageTex.Value;
                 }
-                return (obj.X, obj.Y, obj.Z, (float)obj.FacingYaw, image, tex, obj.Address);
+                return (obj.X, obj.Y, obj.Z, (float)obj.FacingYaw, obj.BehaviorAssociation.RotatesOnMap, image, tex, obj.Address);
             });
         }
 
@@ -201,7 +201,7 @@ namespace STROOP.Map
             Point relPos = relPosMaybe.Value;
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
 
-            List<(float x, float y, float z, float angle, Image image, int tex, uint objAddress)> data = GetData();
+            List<(float x, float y, float z, float angle, bool rotates, Image image, int tex, uint objAddress)> data = GetData();
             foreach (var dataPoint in data)
             {
                 double dist = MoreMath.GetDistanceBetween(dataPoint.x, dataPoint.z, inGameX, inGameZ);
@@ -220,7 +220,7 @@ namespace STROOP.Map
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
 
-            List<(float x, float y, float z, float angle, Image image, int tex, uint objAddress)> data = GetData();
+            List<(float x, float y, float z, float angle, bool rotates, Image image, int tex, uint objAddress)> data = GetData();
             foreach (var dataPoint in data)
             {
                 (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(dataPoint.x, dataPoint.y, dataPoint.z, UseRelativeCoordinates);
