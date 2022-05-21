@@ -50,10 +50,18 @@ namespace STROOP.Utilities
 
         public static bool IsRegexMatch(string pattern, string input)
         {
-            pattern = Regex.Escape(pattern);
-            pattern = pattern.Replace("\\$", ".*");
-            pattern = "^" + pattern + "$";
-            return Regex.IsMatch(input, pattern, RegexOptions.IgnoreCase);
+            if (pattern.Contains(";"))
+            {
+                List<string> patterns = pattern.Split(';').ToList();
+                return patterns.Any(p => IsRegexMatch(p, input));
+            }
+            else
+            {
+                pattern = Regex.Escape(pattern);
+                pattern = pattern.Replace("\\$", ".*");
+                pattern = "^" + pattern + "$";
+                return Regex.IsMatch(input, pattern, RegexOptions.IgnoreCase);
+            }
         }
     }
 } 
