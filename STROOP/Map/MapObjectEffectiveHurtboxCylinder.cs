@@ -35,6 +35,7 @@ namespace STROOP.Map
         {
             uint objAddress = _posAngle.GetObjAddress();
             float objY = Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset);
+
             float hurtboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxRadiusOffset);
             float hurtboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxHeightOffset);
             float hitboxDownOffset = Config.Stream.GetFloat(objAddress + ObjectConfig.HitboxDownOffsetOffset);
@@ -45,9 +46,9 @@ namespace STROOP.Map
             float marioHurtboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
             float marioHitboxHeight = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxHeightOffset);
 
-            float effectiveRadius = hurtboxRadius + marioHurtboxRadius;
-            float effectiveMinY = hurtboxMinY - marioHitboxHeight;
-            float effectiveMaxY = hurtboxMaxY;
+            float effectiveHurtboxRadius = hurtboxRadius + marioHurtboxRadius;
+            float effectiveHurtboxMinY = hurtboxMinY - marioHitboxHeight;
+            float effectiveHurtboxMaxY = hurtboxMaxY;
 
             Color color = Color;
             if (_useInteractionStatusAsColor)
@@ -58,7 +59,7 @@ namespace STROOP.Map
 
             return new List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)>()
             {
-                ((float)_posAngle.X, (float)_posAngle.Z, effectiveRadius, effectiveMinY, effectiveMaxY, color)
+                ((float)_posAngle.X, (float)_posAngle.Z, effectiveHurtboxRadius, effectiveHurtboxMinY, effectiveHurtboxMaxY, color)
             };
         }
 

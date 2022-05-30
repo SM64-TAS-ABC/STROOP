@@ -388,6 +388,9 @@ namespace STROOP.Map
                 case "MapObjectEffectiveHitboxCylinder":
                     mapObject = new MapObjectEffectiveHitboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
+                case "MapObjectEffectiveHitboxHurtboxCylinder":
+                    mapObject = new MapObjectEffectiveHitboxHurtboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
                 case "MapObjectEffectiveHurtboxCylinder":
                     mapObject = new MapObjectEffectiveHurtboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;

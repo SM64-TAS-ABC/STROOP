@@ -15,14 +15,14 @@ using System.Windows.Forms;
 
 namespace STROOP.Map
 {
-    public class MapObjectEffectiveHitboxCylinder : MapObjectCylinder
+    public class MapObjectEffectiveHitboxHurtboxCylinder : MapObjectCylinder
     {
         private readonly PositionAngle _posAngle;
 
         private bool _useInteractionStatusAsColor;
         ToolStripMenuItem _useInteractionStatusAsColorItem;
 
-        public MapObjectEffectiveHitboxCylinder(PositionAngle posAngle)
+        public MapObjectEffectiveHitboxHurtboxCylinder(PositionAngle posAngle)
             : base()
         {
             _posAngle = posAngle;
@@ -42,24 +42,37 @@ namespace STROOP.Map
             float hitboxMinY = objY - hitboxDownOffset;
             float hitboxMaxY = hitboxMinY + hitboxHeight;
 
+            float hurtboxRadius = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxRadiusOffset);
+            float hurtboxHeight = Config.Stream.GetFloat(objAddress + ObjectConfig.HurtboxHeightOffset);
+            float hurtboxMinY = objY - hitboxDownOffset;
+            float hurtboxMaxY = hurtboxMinY + hurtboxHeight;
+
             uint marioObjRef = Config.Stream.GetUInt(MarioObjectConfig.PointerAddress);
             float marioHitboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxRadiusOffset);
+            float marioHurtboxRadius = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HurtboxRadiusOffset);
             float marioHitboxHeight = Config.Stream.GetFloat(marioObjRef + ObjectConfig.HitboxHeightOffset);
 
             float effectiveHitboxRadius = hitboxRadius + marioHitboxRadius;
             float effectiveHitboxMinY = hitboxMinY - marioHitboxHeight;
             float effectiveHitboxMaxY = hitboxMaxY;
 
-            Color color = Color;
+            float effectiveHurtboxRadius = hurtboxRadius + marioHurtboxRadius;
+            float effectiveHurtboxMinY = hurtboxMinY - marioHitboxHeight;
+            float effectiveHurtboxMaxY = hurtboxMaxY;
+
+            Color hitboxColor = Color;
+            Color hurtboxColor = Color;
             if (_useInteractionStatusAsColor)
             {
+                hitboxColor = Color.Cyan;
                 uint interactionStatus = Config.Stream.GetUInt(_posAngle.GetObjAddress() + ObjectConfig.InteractionStatusOffset);
-                color = interactionStatus == 0 ? Color.Red : Color.Cyan;
+                hurtboxColor = interactionStatus == 0 ? Color.Red : Color.Cyan;
             }
 
             return new List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)>()
             {
-                ((float)_posAngle.X, (float)_posAngle.Z, effectiveHitboxRadius, effectiveHitboxMinY, effectiveHitboxMaxY, color)
+                ((float)_posAngle.X, (float)_posAngle.Z, effectiveHitboxRadius, effectiveHitboxMinY, effectiveHitboxMaxY, hitboxColor),
+                ((float)_posAngle.X, (float)_posAngle.Z, effectiveHurtboxRadius, effectiveHurtboxMinY, effectiveHurtboxMaxY, hurtboxColor),
             };
         }
 
@@ -70,7 +83,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Effective Hitbox Cylinder for " + _posAngle.GetMapName();
+            return "Effective Hitbox/Hurtbox Cylinder for " + _posAngle.GetMapName();
         }
 
         public override PositionAngle GetPositionAngle()

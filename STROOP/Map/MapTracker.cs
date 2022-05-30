@@ -265,6 +265,18 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
             });
 
+            ToolStripMenuItem itemEffectiveHitboxHurtboxCylinder = new ToolStripMenuItem("Add Tracker for Effective Hitbox/Hurtbox Cylinder");
+            setUpClickAction(itemEffectiveHitboxHurtboxCylinder, mapObjectList =>
+            {
+                return mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
+                    return (MapObject)new MapObjectEffectiveHitboxHurtboxCylinder(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+            });
+
             ToolStripMenuItem itemPushHitboxCylinder = new ToolStripMenuItem("Add Tracker for Push Hitbox Cylinder");
             setUpClickAction(itemPushHitboxCylinder, mapObjectList =>
             {
@@ -720,6 +732,7 @@ namespace STROOP.Map
             itemCylinder.DropDownItems.Add(itemHurtboxCylinder);
             itemCylinder.DropDownItems.Add(itemEffectiveHurtboxCylinder);
             itemCylinder.DropDownItems.Add(itemPushHitboxCylinder);
+            itemCylinder.DropDownItems.Add(itemEffectiveHitboxHurtboxCylinder);
             itemCylinder.DropDownItems.Add(itemCustomCylinder);
 
             ToolStripMenuItem itemSphere = new ToolStripMenuItem("Sphere...");

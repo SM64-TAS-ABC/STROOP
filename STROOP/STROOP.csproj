@@ -466,6 +466,7 @@
     <Compile Include="Map\MapObjectAllMapObjectsWithName.cs" />
     <Compile Include="Map\MapObjectAllObjectWall.cs" />
     <Compile Include="Map\MapObjectCameraFocus.cs" />
+    <Compile Include="Map\MapObjectEffectiveHitboxHurtboxCylinder.cs" />
     <Compile Include="Map\MapObjectGridlines.cs" />
     <Compile Include="Map\MapObjectCoffinBox.cs" />
     <Compile Include="Map\MapObjectCustomIconPoints.cs" />
