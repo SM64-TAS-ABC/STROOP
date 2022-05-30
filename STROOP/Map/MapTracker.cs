@@ -731,8 +731,8 @@ namespace STROOP.Map
             itemCylinder.DropDownItems.Add(itemEffectiveHitboxCylinder);
             itemCylinder.DropDownItems.Add(itemHurtboxCylinder);
             itemCylinder.DropDownItems.Add(itemEffectiveHurtboxCylinder);
-            itemCylinder.DropDownItems.Add(itemPushHitboxCylinder);
             itemCylinder.DropDownItems.Add(itemEffectiveHitboxHurtboxCylinder);
+            itemCylinder.DropDownItems.Add(itemPushHitboxCylinder);
             itemCylinder.DropDownItems.Add(itemCustomCylinder);
 
             ToolStripMenuItem itemSphere = new ToolStripMenuItem("Sphere...");
