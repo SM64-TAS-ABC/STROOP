@@ -198,6 +198,61 @@ namespace STROOP.Ttc
             return (false, null, 0, null);
         }
 
+        public static void FindPunchRecoilPendulumManipulation()
+        {
+            TtcSaveState currentSaveState = new TtcSaveState();
+            int currentStartFrame = MupenUtilities.GetFrameCount();
+
+            Dictionary<int, List<int>> dustFrameLists = new Dictionary<int, List<int>>();
+            for (int i = 0; i < 1500; i++)
+            {
+                (bool success, TtcSaveState saveState, int relativeEndFrame, List<int> relativeDustFrames) =
+                    FindPunchRecoilPendulumManipulation(currentSaveState);
+                if (!success) break;
+
+                List<int> absoluteDustFrames = relativeDustFrames.ConvertAll(rel => rel + currentStartFrame - 2);
+                dustFrameLists[currentStartFrame] = absoluteDustFrames;
+                Config.Print(i + ":\t[" + string.Join(",", absoluteDustFrames) + "]");
+
+                currentSaveState = saveState;
+                currentStartFrame += relativeEndFrame;
+            }
+
+            List<int> dustFrames = dustFrameLists.Values.SelectMany(list => list).ToList();
+            int firstDustFrame = dustFrames[0];
+            int lastDustFrame = dustFrames[dustFrames.Count - 1];
+            int dustFrameRange = lastDustFrame - firstDustFrame;
+
+            int[] joystickInputs = new int[dustFrameRange + 1000];
+            foreach (int dustFrame in dustFrames)
+            {
+                joystickInputs[dustFrame - firstDustFrame] = 127;
+            }
+
+            Config.Print();
+            foreach (int joystickInput in joystickInputs)
+            {
+                Config.Print(joystickInput);
+            }
+        }
+
+        public static (bool success, TtcSaveState savestate, int endFrame, List<int> dustFrames)
+            FindPunchRecoilPendulumManipulation(TtcSaveState saveState)
+        {
+            List<List<int>> dustFrameLists = GetDustFrameLists(2, 25, 25).Skip(1).ToList();
+            foreach (List<int> dustFrames in dustFrameLists)
+            {
+                TtcSimulation simulation = new TtcSimulation(saveState);
+                simulation.AddDustFrames(dustFrames);
+                (bool success, TtcSaveState savestate, int endFrame) = simulation.FindPunchRecoilPendulumManipulation();
+                if (success)
+                {
+                    return (success, savestate, endFrame, dustFrames);
+                }
+            }
+            return (false, null, 0, null);
+        }
+
         public static void FindIdealHandManipulation()
         {
             HandManipulationProgress startingProgress =

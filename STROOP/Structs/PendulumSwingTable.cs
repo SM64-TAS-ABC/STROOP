@@ -112,7 +112,7 @@ namespace STROOP.Structs
 
         public void FillInExtended()
         {
-            int range = 100; // 2000;
+            int range = 1000; // 2000;
 
             List<int> startingIndexes = new List<int>();
             for (int i = 0; i < range; i++)

@@ -88,6 +88,13 @@ namespace STROOP.Ttc
             dust.AddDustFrames(dustFrames);
         }
 
+        public int GetMaxDustFrame()
+        {
+            TtcDust dust = (TtcDust)_rngObjects.FirstOrDefault(obj => obj is TtcDust);
+            if (dust == null) throw new ArgumentOutOfRangeException();
+            return dust.GetMaxDustFrame();
+        }
+
         public void TurnOffBobombs()
         {
             foreach (TtcObject obj in _rngObjects)
@@ -364,6 +371,132 @@ namespace STROOP.Ttc
                     // update baseline to allow for more iterations
                     pendulum1SwingIndexBaseline = pendulum1SwingIndex;
                     pendulum2SwingIndexBaseline = pendulum2SwingIndex;
+                }
+            }
+
+            return (false, null, 0);
+        }
+
+        public (bool success, TtcSaveState saveState, int endFrame) FindPunchRecoilPendulumManipulation()
+        {
+            int p1A = -392;
+            int p1B = 889;
+            int p2A = 293;
+            int p2B = 157;
+
+            TtcPendulum pendulum1 = GetClosePendulum();
+            (int, int)? pendulum1SwingIndexBaselineNullable = pendulum1.GetSwingIndexExtendedPair();
+            if (!pendulum1SwingIndexBaselineNullable.HasValue) return (false, null, 0);
+            (int pendulum1SwingIndexBaselineA, int pendulum1SwingIndexBaselineB) = pendulum1SwingIndexBaselineNullable.Value;
+
+            TtcPendulum pendulum2 = GetFarPendulum();
+            (int, int)? pendulum2SwingIndexBaselineNullable = pendulum2.GetSwingIndexExtendedPair();
+            if (!pendulum2SwingIndexBaselineNullable.HasValue) return (false, null, 0);
+            (int pendulum2SwingIndexBaselineA, int pendulum2SwingIndexBaselineB) = pendulum2SwingIndexBaselineNullable.Value;
+
+            int frame = _startingFrame;
+            int counter = 0;
+            while (frame < _startingFrame + 1000)
+            {
+                frame++;
+                counter++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                (int, int)? pendulum1SwingIndexNullable = pendulum1.GetSwingIndexExtendedPair();
+                if (!pendulum1SwingIndexNullable.HasValue) return (false, null, 0);
+                (int pendulum1SwingIndexA, int pendulum1SwingIndexB) = pendulum1SwingIndexNullable.Value;
+                int pendulum1Countdown = pendulum1.GetCountdown();
+
+                (int, int)? pendulum2SwingIndexNullable = pendulum2.GetSwingIndexExtendedPair();
+                if (!pendulum2SwingIndexNullable.HasValue) return (false, null, 0);
+                (int pendulum2SwingIndexA, int pendulum2SwingIndexB) = pendulum2SwingIndexNullable.Value;
+                int pendulum2Countdown = pendulum2.GetCountdown();
+
+                // check if pendulum changed index
+                if (pendulum1SwingIndexA != pendulum1SwingIndexBaselineA ||
+                    pendulum1SwingIndexB != pendulum1SwingIndexBaselineB ||
+                    pendulum2SwingIndexA != pendulum2SwingIndexBaselineA ||
+                    pendulum2SwingIndexB != pendulum2SwingIndexBaselineB)
+                {
+                    bool pendulum1Changed =
+                        pendulum1SwingIndexA != pendulum1SwingIndexBaselineA ||
+                        pendulum1SwingIndexB != pendulum1SwingIndexBaselineB;
+                    bool pendulum2Changed =
+                        pendulum2SwingIndexA != pendulum2SwingIndexBaselineA ||
+                        pendulum2SwingIndexB != pendulum2SwingIndexBaselineB;
+
+                    // if pendulum is moving wrong way or has waiting timer, abort
+
+                    if (pendulum1Changed)
+                    {
+                        if (pendulum1SwingIndexBaselineA == p1A)
+                        {
+                            if (pendulum1SwingIndexBaselineB == p1B + 1)
+                            {
+                                bool satisfiesA = pendulum1SwingIndexA == pendulum1SwingIndexBaselineA;
+                                bool satisfiesB = pendulum1SwingIndexB == pendulum1SwingIndexBaselineB - 1;
+                                if (!satisfiesA || !satisfiesB) return (false, null, 0);
+                            }
+                            else
+                            {
+                                bool satisfiesA = pendulum1SwingIndexA == pendulum1SwingIndexBaselineA;
+                                bool satisfiesB = pendulum1SwingIndexB == pendulum1SwingIndexBaselineB + 1;
+                                if (!satisfiesA || !satisfiesB) return (false, null, 0);
+                            }
+                        }
+                        else
+                        {
+                            bool satisfiesA = pendulum1SwingIndexA == pendulum1SwingIndexBaselineA - 1;
+                            bool satisfiesB = pendulum1SwingIndexB == 0;
+                            if (!satisfiesA || !satisfiesB) return (false, null, 0);
+                        }
+                    }
+
+                    if (pendulum2Changed)
+                    {
+                        if (pendulum2SwingIndexBaselineA == p2A)
+                        {
+                            if (pendulum2SwingIndexBaselineB == p2B + 1)
+                            {
+                                bool satisfiesA = pendulum2SwingIndexA == pendulum2SwingIndexBaselineA;
+                                bool satisfiesB = pendulum2SwingIndexB == pendulum2SwingIndexBaselineB - 1;
+                                if (!satisfiesA || !satisfiesB) return (false, null, 0);
+                            }
+                            else
+                            {
+                                bool satisfiesA = pendulum2SwingIndexA == pendulum2SwingIndexBaselineA;
+                                bool satisfiesB = pendulum2SwingIndexB == pendulum2SwingIndexBaselineB + 1;
+                                if (!satisfiesA || !satisfiesB) return (false, null, 0);
+                            }
+                        }
+                        else
+                        {
+                            bool satisfiesA = pendulum2SwingIndexA == pendulum2SwingIndexBaselineA + 1;
+                            bool satisfiesB = pendulum2SwingIndexB == 0;
+                            if (!satisfiesA || !satisfiesB) return (false, null, 0);
+                        }
+                    }
+
+                    if (pendulum1._waitingTimer > 0 || pendulum2._waitingTimer > 0)
+                    {
+                        return (false, null, 0);
+                    }
+
+                    // if we're in a safe zone, return
+                    if (frame >= GetMaxDustFrame() && pendulum1Countdown >= 20 && pendulum2Countdown >= 20)
+                    {
+                        return (true, GetSaveState(), frame);
+                    }
+
+                    // update baseline to allow for more iterations
+                    pendulum1SwingIndexBaselineA = pendulum1SwingIndexA;
+                    pendulum1SwingIndexBaselineB = pendulum1SwingIndexB;
+                    pendulum2SwingIndexBaselineA = pendulum2SwingIndexA;
+                    pendulum2SwingIndexBaselineB = pendulum2SwingIndexB;
                 }
             }
 
