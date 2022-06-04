@@ -1,4 +1,5 @@
-﻿using STROOP.Ttc;
+﻿using STROOP.Structs.Configurations;
+using STROOP.Ttc;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -136,6 +137,7 @@ namespace STROOP.Structs
             while (queue.Count > 0)
             {
                 PendulumSwing dequeue = queue.Dequeue();
+
                 if (GetPendulumSwingIndexExtended(dequeue.Amplitude) != Double.NaN.ToString())
                     continue;
                 if (dequeue.SecondaryIndex > range)

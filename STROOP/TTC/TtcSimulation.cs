@@ -385,11 +385,13 @@ namespace STROOP.Ttc
             int p2B = 157;
 
             TtcPendulum pendulum1 = GetClosePendulum();
+            int pendulum1AmplitudeBaseline = pendulum1.GetAmplitude();
             (int, int)? pendulum1SwingIndexBaselineNullable = pendulum1.GetSwingIndexExtendedPair();
             if (!pendulum1SwingIndexBaselineNullable.HasValue) return (false, null, 0);
             (int pendulum1SwingIndexBaselineA, int pendulum1SwingIndexBaselineB) = pendulum1SwingIndexBaselineNullable.Value;
 
             TtcPendulum pendulum2 = GetFarPendulum();
+            int pendulum2AmplitudeBaseline = pendulum2.GetAmplitude();
             (int, int)? pendulum2SwingIndexBaselineNullable = pendulum2.GetSwingIndexExtendedPair();
             if (!pendulum2SwingIndexBaselineNullable.HasValue) return (false, null, 0);
             (int pendulum2SwingIndexBaselineA, int pendulum2SwingIndexBaselineB) = pendulum2SwingIndexBaselineNullable.Value;
@@ -406,47 +408,31 @@ namespace STROOP.Ttc
                     rngObject.Update();
                 }
 
+                int pendulum1Amplitude = pendulum1.GetAmplitude();
                 (int, int)? pendulum1SwingIndexNullable = pendulum1.GetSwingIndexExtendedPair();
                 if (!pendulum1SwingIndexNullable.HasValue) return (false, null, 0);
                 (int pendulum1SwingIndexA, int pendulum1SwingIndexB) = pendulum1SwingIndexNullable.Value;
                 int pendulum1Countdown = pendulum1.GetCountdown();
 
+                int pendulum2Amplitude = pendulum2.GetAmplitude();
                 (int, int)? pendulum2SwingIndexNullable = pendulum2.GetSwingIndexExtendedPair();
                 if (!pendulum2SwingIndexNullable.HasValue) return (false, null, 0);
                 (int pendulum2SwingIndexA, int pendulum2SwingIndexB) = pendulum2SwingIndexNullable.Value;
                 int pendulum2Countdown = pendulum2.GetCountdown();
 
                 // check if pendulum changed index
-                if (pendulum1SwingIndexA != pendulum1SwingIndexBaselineA ||
-                    pendulum1SwingIndexB != pendulum1SwingIndexBaselineB ||
-                    pendulum2SwingIndexA != pendulum2SwingIndexBaselineA ||
-                    pendulum2SwingIndexB != pendulum2SwingIndexBaselineB)
+                if (pendulum1Amplitude != pendulum1AmplitudeBaseline ||
+                    pendulum2Amplitude != pendulum2AmplitudeBaseline)
                 {
-                    bool pendulum1Changed =
-                        pendulum1SwingIndexA != pendulum1SwingIndexBaselineA ||
-                        pendulum1SwingIndexB != pendulum1SwingIndexBaselineB;
-                    bool pendulum2Changed =
-                        pendulum2SwingIndexA != pendulum2SwingIndexBaselineA ||
-                        pendulum2SwingIndexB != pendulum2SwingIndexBaselineB;
-
                     // if pendulum is moving wrong way or has waiting timer, abort
 
-                    if (pendulum1Changed)
+                    if (pendulum1Amplitude != pendulum1AmplitudeBaseline)
                     {
                         if (pendulum1SwingIndexBaselineA == p1A)
                         {
-                            if (pendulum1SwingIndexBaselineB == p1B + 1)
-                            {
-                                bool satisfiesA = pendulum1SwingIndexA == pendulum1SwingIndexBaselineA;
-                                bool satisfiesB = pendulum1SwingIndexB == pendulum1SwingIndexBaselineB - 1;
-                                if (!satisfiesA || !satisfiesB) return (false, null, 0);
-                            }
-                            else
-                            {
-                                bool satisfiesA = pendulum1SwingIndexA == pendulum1SwingIndexBaselineA;
-                                bool satisfiesB = pendulum1SwingIndexB == pendulum1SwingIndexBaselineB + 1;
-                                if (!satisfiesA || !satisfiesB) return (false, null, 0);
-                            }
+                            int goalAmplitude = 0; // TableConfig.PendulumSwings.Pendulum1Dictionary[pendulum1AmplitudeBaseline];
+                            bool satisfies = pendulum1Amplitude == goalAmplitude;
+                            if (!satisfies) return (false, null, 0);
                         }
                         else
                         {
@@ -456,22 +442,13 @@ namespace STROOP.Ttc
                         }
                     }
 
-                    if (pendulum2Changed)
+                    if (pendulum2Amplitude != pendulum2AmplitudeBaseline)
                     {
                         if (pendulum2SwingIndexBaselineA == p2A)
                         {
-                            if (pendulum2SwingIndexBaselineB == p2B + 1)
-                            {
-                                bool satisfiesA = pendulum2SwingIndexA == pendulum2SwingIndexBaselineA;
-                                bool satisfiesB = pendulum2SwingIndexB == pendulum2SwingIndexBaselineB - 1;
-                                if (!satisfiesA || !satisfiesB) return (false, null, 0);
-                            }
-                            else
-                            {
-                                bool satisfiesA = pendulum2SwingIndexA == pendulum2SwingIndexBaselineA;
-                                bool satisfiesB = pendulum2SwingIndexB == pendulum2SwingIndexBaselineB + 1;
-                                if (!satisfiesA || !satisfiesB) return (false, null, 0);
-                            }
+                            int goalAmplitude = 0; // TableConfig.PendulumSwings.Pendulum2Dictionary[pendulum2AmplitudeBaseline];
+                            bool satisfies = pendulum2Amplitude == goalAmplitude;
+                            if (!satisfies) return (false, null, 0);
                         }
                         else
                         {
@@ -493,8 +470,11 @@ namespace STROOP.Ttc
                     }
 
                     // update baseline to allow for more iterations
+                    pendulum1AmplitudeBaseline = pendulum1Amplitude;
                     pendulum1SwingIndexBaselineA = pendulum1SwingIndexA;
                     pendulum1SwingIndexBaselineB = pendulum1SwingIndexB;
+
+                    pendulum2AmplitudeBaseline = pendulum2Amplitude;
                     pendulum2SwingIndexBaselineA = pendulum2SwingIndexA;
                     pendulum2SwingIndexBaselineB = pendulum2SwingIndexB;
                 }
