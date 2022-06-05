@@ -253,6 +253,41 @@ namespace STROOP.Ttc
             return (false, null, 0, null);
         }
 
+        public static void FindPunchRecoilSetup()
+        {
+            TtcSaveState initialSaveState = new TtcSaveState();
+            int initialStartFrame = MupenUtilities.GetFrameCount();
+
+            for (int i = 0; true; i++)
+            {
+                if (i % 10_000 == 0)
+                {
+                    Config.Print("Tested " + i);
+                }
+
+                List<int> dustFrames = GetDustFrames(initialStartFrame + 2, 150, 10);
+                TtcSimulation simulation = new TtcSimulation(initialSaveState, initialStartFrame, dustFrames);
+                (bool success, int startFrame, List<int> usedDustFrames) = simulation.FindPunchRecoilSetup1();
+                if (success)
+                {
+                    Config.Print();
+                    Config.Print("SUCCESS: " + startFrame);
+                    List<int> inputFrames = dustFrames.ConvertAll(frame => frame - 2);
+                    foreach (int frame in inputFrames)
+                    {
+                        Config.Print(frame);
+                    }
+                    Config.Print("-------------------");
+                    List<int> usedInputFrames = usedDustFrames.ConvertAll(frame => frame - 2);
+                    foreach (int frame in usedInputFrames)
+                    {
+                        Config.Print(frame);
+                    }
+                    Config.Print();
+                }
+            }
+        }
+
         public static void FindIdealHandManipulation()
         {
             HandManipulationProgress startingProgress =
@@ -391,6 +426,19 @@ namespace STROOP.Ttc
         {
             TtcSimulation simulation = new TtcSimulation(dustFrames);
             return simulation.GetObjectsString(endFrame);
+        }
+
+        private static Random random = new Random();
+
+        private static List<int> GetDustFrames(int earliestDustFrame, int dustFrameRange, int numDusts)
+        {
+            bool[] bools = new bool[dustFrameRange];
+            for (int i = 0; i < numDusts; i++)
+            {
+                int randomIndex = random.Next(0, dustFrameRange);
+                bools[randomIndex] = true;
+            }
+            return ConvertBoolsToDustFrames(bools, earliestDustFrame);
         }
 
         private static List<List<int>> GetDustFrameLists(int earliestDustFrame, int dustFrameRange, int maxDustFrames, int minDustFrames = 0)

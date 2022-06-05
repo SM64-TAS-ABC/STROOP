@@ -88,6 +88,13 @@ namespace STROOP.Ttc
             dust.AddDustFrames(dustFrames);
         }
 
+        public List<int> GetDustFrames()
+        {
+            TtcDust dust = (TtcDust)_rngObjects.FirstOrDefault(obj => obj is TtcDust);
+            if (dust == null) throw new ArgumentOutOfRangeException();
+            return new List<int>(dust._dustFrames);
+        }
+
         public int GetMaxDustFrame()
         {
             TtcDust dust = (TtcDust)_rngObjects.FirstOrDefault(obj => obj is TtcDust);
@@ -483,6 +490,138 @@ namespace STROOP.Ttc
             return (false, null, 0);
         }
 
+        // simulates n frames and branches off if it starts the sequence
+        public (bool success, int startFrame, List<int> dustFrames) FindPunchRecoilSetup1()
+        {
+            TtcPendulum pendulum1 = GetClosePendulum();
+            TtcPendulum pendulum2 = GetFarPendulum();
+            int maxDustFrame = GetMaxDustFrame();
+
+            int frame = _startingFrame;
+            int counter = 0;
+            while (frame < _startingFrame + 2000)
+            {
+                frame++;
+                counter++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                (int p1A, int p1B) = pendulum1.GetSwingIndexExtendedPair().Value;
+                if (p1B < 888 || p1B > 890) return (false, 0, null);
+                
+                (int p2A, int p2B) = pendulum2.GetSwingIndexExtendedPair().Value;
+                if (p2B < 155 || p2B > 157) return (false, 0, null);
+
+                // pendulum is starting pre swing
+                if (frame > maxDustFrame && pendulum2.HasState(1, 13, 0, -12375, 0))
+                {
+                    TtcSimulation clone = Clone();
+                    (bool success, List<int> dustFrames) = clone.FindPunchRecoilSetup2(frame);
+                    if (success) return (true, frame, dustFrames);
+                }
+            }
+
+            return (false, 0, null);
+        }
+
+        private List<int> punchRecoilRelDustFrames =
+            new List<int>()
+            {
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                61,
+                64,
+                99,
+                100,
+                101,
+            };
+
+        public (bool success, List<int> dustFrames) FindPunchRecoilSetup2(int startFrame)
+        {
+            TtcPendulum pendulum1 = GetClosePendulum();
+            TtcPendulum pendulum2 = GetFarPendulum();
+            TtcPitBlock pitBlock = GetPitBlock();
+            TtcHand hand = GetLowerHand();
+
+            int? frame1_p2AccChange = null;
+            int? frame2_p2SwingStart = null;
+
+            int frame = startFrame;
+            int counter = 0;
+            while (frame < startFrame + 1000)
+            {
+                frame++;
+                counter++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                if (frame == startFrame + 33)
+                {
+                    if (pitBlock._height != 259)
+                    {
+                        return (false, null);
+                    }
+                }
+
+                // when p2 changes acc, check that it changed to the right one
+                if (!frame1_p2AccChange.HasValue && pendulum2._angularVelocity == 0)
+                {
+                    if (pendulum2._accelerationMagnitude == 42)
+                    {
+                        return (false, null);
+                    }
+                    frame1_p2AccChange = frame;
+                }
+                
+                // p2 is starting its swing, so add the dust frames of the movement
+                if (!frame2_p2SwingStart.HasValue && frame1_p2AccChange.HasValue && pendulum2._waitingTimer == 0)
+                {
+                    frame2_p2SwingStart = frame;
+                    List<int> dustFrames = punchRecoilRelDustFrames.ConvertAll(rel => frame + rel);
+                    AddDustFrames(dustFrames);
+                }
+
+                // now we know the exact frame everything should happen
+                if (frame2_p2SwingStart.HasValue)
+                {
+                    if (frame == frame2_p2SwingStart.Value + 103)
+                    {
+                        _rng.PollRNG(80);
+                    }
+
+                    if (frame == frame2_p2SwingStart.Value + 98)
+                    {
+                        if (!pendulum1.HasState(1, 42, 336, -10825, 0))
+                        {
+                            //Config.Print("FAILED: " + pendulum1);
+                            return (false, null);
+                        }
+                    }
+
+                    if (frame == frame2_p2SwingStart.Value + 155)
+                    {
+                        if (hand._angle != 296)
+                        {
+                            return (false, null);
+                        }
+                    }
+                }
+            }
+
+            return (true, GetDustFrames());
+        }
+
         private class CogConfiguration
         {
             public readonly int UpperCogAngle;
@@ -716,6 +855,11 @@ namespace STROOP.Ttc
         public TtcPusher GetUpperPusher()
         {
             return _rngObjects[20] as TtcPusher;
+        }
+
+        public TtcPitBlock GetPitBlock()
+        {
+            return _rngObjects[36] as TtcPitBlock;
         }
 
         // Given dust, goes forward and spawns height swings to investigate

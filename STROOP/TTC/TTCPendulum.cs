@@ -184,6 +184,20 @@ namespace STROOP.Ttc
             return false;
         }
 
+        public bool HasState(
+            int accelerationDirection,
+            int accelerationMagnitude,
+            int angularVelocity,
+            int angle,
+            int waitingTimer)
+        {
+            return _accelerationDirection == accelerationDirection &&
+                _accelerationMagnitude == accelerationMagnitude &&
+                _angularVelocity == angularVelocity &&
+                _angle == angle &&
+                _waitingTimer == waitingTimer;
+        }
+
         public override int GetHashCode()
         {
             return
