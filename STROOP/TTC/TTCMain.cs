@@ -258,6 +258,8 @@ namespace STROOP.Ttc
             TtcSaveState initialSaveState = new TtcSaveState();
             int initialStartFrame = MupenUtilities.GetFrameCount();
 
+            int successCounter = 0;
+
             for (int i = 0; true; i++)
             {
                 if (i % 10_000 == 0)
@@ -270,8 +272,10 @@ namespace STROOP.Ttc
                 (bool success, int startFrame, List<int> usedDustFrames) = simulation.FindPunchRecoilSetup1();
                 if (success)
                 {
+                    successCounter++;
+
                     Config.Print();
-                    Config.Print("SUCCESS: " + startFrame);
+                    Config.Print("SUCCESS#{0}: {1}", successCounter, startFrame);
                     List<int> inputFrames = dustFrames.ConvertAll(frame => frame - 2);
                     foreach (int frame in inputFrames)
                     {

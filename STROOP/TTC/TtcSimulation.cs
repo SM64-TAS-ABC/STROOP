@@ -550,6 +550,8 @@ namespace STROOP.Ttc
             TtcPendulum pendulum2 = GetFarPendulum();
             TtcPitBlock pitBlock = GetPitBlock();
             TtcHand hand = GetLowerHand();
+            TtcBobomb bobomb1 = GetFirstBobomb();
+            TtcBobomb bobomb2 = GetSecondBobomb();
 
             int? frame1_p2AccChange = null;
             int? frame2_p2SwingStart = null;
@@ -560,6 +562,30 @@ namespace STROOP.Ttc
             {
                 frame++;
                 counter++;
+
+                if (frame2_p2SwingStart.HasValue)
+                {
+                    if (frame == frame2_p2SwingStart.Value + 114)
+                    {
+                        bobomb1.SetWithinMarioRange(1);
+                    }
+
+                    if (frame == frame2_p2SwingStart.Value + 130)
+                    {
+                        bobomb1.SetWithinMarioRange(0);
+                    }
+
+                    if (frame == frame2_p2SwingStart.Value + 137)
+                    {
+                        bobomb1.SetWithinMarioRange(1);
+                    }
+
+                    if (frame == frame2_p2SwingStart.Value + 141)
+                    {
+                        bobomb2.SetWithinMarioRange(1);
+                    }
+                }
+
                 foreach (TtcObject rngObject in _rngObjects)
                 {
                     rngObject.SetFrame(frame);
@@ -595,11 +621,6 @@ namespace STROOP.Ttc
                 // now we know the exact frame everything should happen
                 if (frame2_p2SwingStart.HasValue)
                 {
-                    if (frame == frame2_p2SwingStart.Value + 103)
-                    {
-                        _rng.PollRNG(80);
-                    }
-
                     if (frame == frame2_p2SwingStart.Value + 98)
                     {
                         if (!pendulum1.HasState(1, 42, 336, -10825, 0))
@@ -607,6 +628,16 @@ namespace STROOP.Ttc
                             //Config.Print("FAILED: " + pendulum1);
                             return (false, null);
                         }
+                    }
+
+                    if (frame == frame2_p2SwingStart.Value + 103)
+                    {
+                        _rng.PollRNG(40);
+                    }
+
+                    if (frame >= 114 && frame <= 128 && frame % 2 == 0)
+                    {
+                        _rng.PollRNG(3);
                     }
 
                     if (frame == frame2_p2SwingStart.Value + 155)
