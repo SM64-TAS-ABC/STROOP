@@ -260,7 +260,7 @@ namespace STROOP.Ttc
 
             int successCounter = 0;
 
-            for (int i = 0; true; i++)
+            for (int i = 0; i < 1; i++)
             {
                 if (i % 10_000 == 0)
                 {

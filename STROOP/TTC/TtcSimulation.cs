@@ -635,7 +635,8 @@ namespace STROOP.Ttc
                         _rng.PollRNG(40);
                     }
 
-                    if (frame >= 114 && frame <= 128 && frame % 2 == 0)
+                    int delta = frame - frame2_p2SwingStart.Value;
+                    if (delta >= 114 && delta <= 128 && delta % 2 == 0)
                     {
                         _rng.PollRNG(3);
                     }
@@ -648,6 +649,8 @@ namespace STROOP.Ttc
                         }
                     }
                 }
+
+                //Config.Print(frame + ": " + this);
             }
 
             return (true, GetDustFrames());
