@@ -539,9 +539,9 @@ namespace STROOP.Ttc
                 12,
                 61,
                 64,
-                99,
-                100,
-                101,
+                96,
+                97,
+                98,
             };
 
         public (bool success, List<int> dustFrames) FindPunchRecoilSetup2(int startFrame)
@@ -565,22 +565,22 @@ namespace STROOP.Ttc
 
                 if (frame2_p2SwingStart.HasValue)
                 {
-                    if (frame == frame2_p2SwingStart.Value + 114)
+                    if (frame == frame2_p2SwingStart.Value + 111)
                     {
                         bobomb1.SetWithinMarioRange(1);
                     }
 
-                    if (frame == frame2_p2SwingStart.Value + 130)
+                    if (frame == frame2_p2SwingStart.Value + 127)
                     {
                         bobomb1.SetWithinMarioRange(0);
                     }
 
-                    if (frame == frame2_p2SwingStart.Value + 137)
+                    if (frame == frame2_p2SwingStart.Value + 134)
                     {
                         bobomb1.SetWithinMarioRange(1);
                     }
 
-                    if (frame == frame2_p2SwingStart.Value + 141)
+                    if (frame == frame2_p2SwingStart.Value + 138)
                     {
                         bobomb2.SetWithinMarioRange(1);
                     }
@@ -621,7 +621,7 @@ namespace STROOP.Ttc
                 // now we know the exact frame everything should happen
                 if (frame2_p2SwingStart.HasValue)
                 {
-                    if (frame == frame2_p2SwingStart.Value + 98)
+                    if (frame == frame2_p2SwingStart.Value + 95)
                     {
                         if (!pendulum1.HasState(1, 42, 336, -10825, 0))
                         {
@@ -630,18 +630,18 @@ namespace STROOP.Ttc
                         }
                     }
 
-                    if (frame == frame2_p2SwingStart.Value + 103)
+                    if (frame == frame2_p2SwingStart.Value + 100)
                     {
                         _rng.PollRNG(40);
                     }
 
                     int delta = frame - frame2_p2SwingStart.Value;
-                    if (delta >= 114 && delta <= 128 && delta % 2 == 0)
+                    if (delta >= 111 && delta <= 125 && delta % 2 == 1)
                     {
                         _rng.PollRNG(3);
                     }
 
-                    if (frame == frame2_p2SwingStart.Value + 155)
+                    if (frame == frame2_p2SwingStart.Value + 152)
                     {
                         if (hand._angle != 296)
                         {
