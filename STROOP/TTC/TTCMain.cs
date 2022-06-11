@@ -204,7 +204,7 @@ namespace STROOP.Ttc
             int currentStartFrame = MupenUtilities.GetFrameCount();
 
             Dictionary<int, List<int>> dustFrameLists = new Dictionary<int, List<int>>();
-            for (int i = 0; i < 400; i++)
+            for (int i = 0; i < 100; i++)
             {
                 (bool success, TtcSaveState saveState, int relativeEndFrame, List<int> relativeDustFrames) =
                     FindPunchRecoilPendulumManipulation(currentSaveState);

@@ -386,10 +386,10 @@ namespace STROOP.Ttc
 
         public (bool success, TtcSaveState saveState, int endFrame) FindPunchRecoilPendulumManipulation()
         {
-            int p1A = -392;
-            int p1B = 889;
-            int p2A = 293;
-            int p2B = 157;
+            int p1A = 315;
+            int p1B = 7;
+            int p2A = 297;
+            int p2B = 11;
 
             TtcPendulum pendulum1 = GetClosePendulum();
             int pendulum1AmplitudeBaseline = pendulum1.GetAmplitude();
@@ -437,13 +437,22 @@ namespace STROOP.Ttc
                     {
                         if (pendulum1SwingIndexBaselineA == p1A)
                         {
-                            int goalAmplitude = 0; // TableConfig.PendulumSwings.Pendulum1Dictionary[pendulum1AmplitudeBaseline];
-                            bool satisfies = pendulum1Amplitude == goalAmplitude;
-                            if (!satisfies) return (false, null, 0);
+                            if (pendulum1SwingIndexBaselineB == p1B)
+                            {
+                                bool satisfiesA = pendulum1SwingIndexA == pendulum1SwingIndexBaselineA;
+                                bool satisfiesB = pendulum1SwingIndexB == pendulum1SwingIndexBaselineB - 1;
+                                if (!satisfiesA || !satisfiesB) return (false, null, 0);
+                            }
+                            else
+                            {
+                                bool satisfiesA = pendulum1SwingIndexA == pendulum1SwingIndexBaselineA;
+                                bool satisfiesB = pendulum1SwingIndexB == pendulum1SwingIndexBaselineB + 1;
+                                if (!satisfiesA || !satisfiesB) return (false, null, 0);
+                            }
                         }
                         else
                         {
-                            bool satisfiesA = pendulum1SwingIndexA == pendulum1SwingIndexBaselineA - 1;
+                            bool satisfiesA = pendulum1SwingIndexA == pendulum1SwingIndexBaselineA + 1;
                             bool satisfiesB = pendulum1SwingIndexB == 0;
                             if (!satisfiesA || !satisfiesB) return (false, null, 0);
                         }
@@ -453,9 +462,18 @@ namespace STROOP.Ttc
                     {
                         if (pendulum2SwingIndexBaselineA == p2A)
                         {
-                            int goalAmplitude = 0; // TableConfig.PendulumSwings.Pendulum2Dictionary[pendulum2AmplitudeBaseline];
-                            bool satisfies = pendulum2Amplitude == goalAmplitude;
-                            if (!satisfies) return (false, null, 0);
+                            if (pendulum2SwingIndexBaselineB == p2B)
+                            {
+                                bool satisfiesA = pendulum2SwingIndexA == pendulum2SwingIndexBaselineA;
+                                bool satisfiesB = pendulum2SwingIndexB == pendulum2SwingIndexBaselineB - 1;
+                                if (!satisfiesA || !satisfiesB) return (false, null, 0);
+                            }
+                            else
+                            {
+                                bool satisfiesA = pendulum2SwingIndexA == pendulum2SwingIndexBaselineA;
+                                bool satisfiesB = pendulum2SwingIndexB == pendulum2SwingIndexBaselineB + 1;
+                                if (!satisfiesA || !satisfiesB) return (false, null, 0);
+                            }
                         }
                         else
                         {
