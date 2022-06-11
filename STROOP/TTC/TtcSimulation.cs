@@ -674,6 +674,80 @@ namespace STROOP.Ttc
             return (true, GetDustFrames());
         }
 
+        // simulates n frames and branches off if it starts the sequence
+        public (bool success, int startFrame) FindMidairWalkingSetup1()
+        {
+            TtcPendulum pendulum1 = GetClosePendulum();
+            TtcPendulum pendulum2 = GetFarPendulum();
+            int maxDustFrame = GetMaxDustFrame();
+
+            int frame = _startingFrame;
+            int counter = 0;
+            while (frame < _startingFrame + 1000)
+            {
+                frame++;
+                counter++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                // at 7
+                (int p1A, int p1B) = pendulum1.GetSwingIndexExtendedPair().Value;
+                if (p1B < 6 || p1B > 8) return (false, 0);
+
+                // 10 -> 11
+                (int p2A, int p2B) = pendulum2.GetSwingIndexExtendedPair().Value;
+                if (p2B < 9 || p2B > 11) return (false, 0);
+
+                // pendulum is starting pre swing
+                if (frame > maxDustFrame && pendulum2.HasState(1, 13, 0, -13955, 0))
+                {
+                    TtcSimulation clone = Clone();
+                    bool success = clone.FindMidairWalkingSetup2(frame);
+                    if (success) return (true, frame);
+                }
+            }
+
+            return (false, 0);
+        }
+
+        public bool FindMidairWalkingSetup2(int startFrame)
+        {
+            TtcPendulum pendulum1 = GetClosePendulum();
+            TtcPendulum pendulum2 = GetFarPendulum();
+
+            int frame = startFrame;
+            int counter = 0;
+            while (frame < startFrame + 1000)
+            {
+                frame++;
+                counter++;
+
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                if (counter == 92)
+                {
+                    if (pendulum2._waitingTimer < 10) return false;
+                }
+
+                if (counter >= 170 && counter <= 180)
+                {
+                    if (pendulum1._angle == 43852 && pendulum1._waitingTimer > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         private class CogConfiguration
         {
             public readonly int UpperCogAngle;

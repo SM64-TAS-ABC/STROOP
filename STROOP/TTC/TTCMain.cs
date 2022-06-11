@@ -292,6 +292,39 @@ namespace STROOP.Ttc
             }
         }
 
+        public static void FindMidairWalkingSetup()
+        {
+            TtcSaveState initialSaveState = new TtcSaveState();
+            int initialStartFrame = MupenUtilities.GetFrameCount();
+
+            int successCounter = 0;
+
+            for (int i = 0; true; i++)
+            {
+                if (i % 10_000 == 0)
+                {
+                    Config.Print("Tested " + i);
+                }
+
+                List<int> dustFrames = GetDustFrames(initialStartFrame + 2, 150, 10);
+                TtcSimulation simulation = new TtcSimulation(initialSaveState, initialStartFrame, dustFrames);
+                (bool success, int startFrame) = simulation.FindMidairWalkingSetup1();
+                if (success)
+                {
+                    successCounter++;
+
+                    Config.Print();
+                    Config.Print("SUCCESS#{0}: {1}", successCounter, startFrame);
+                    List<int> inputFrames = dustFrames.ConvertAll(frame => frame - 2);
+                    foreach (int frame in inputFrames)
+                    {
+                        Config.Print(frame);
+                    }
+                    Config.Print();
+                }
+            }
+        }
+
         public static void FindIdealHandManipulation()
         {
             HandManipulationProgress startingProgress =
