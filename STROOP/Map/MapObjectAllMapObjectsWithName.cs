@@ -146,5 +146,18 @@ namespace STROOP.Map
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
             return output;
         }
+
+        public override List<XAttribute> GetXAttributes()
+        {
+            return new List<XAttribute>()
+            {
+                new XAttribute("objectName", _objName),
+            };
+        }
+
+        public override List<MapObject> GetSubMapObjects()
+        {
+            return _subMapObjs;
+        }
     }
 }

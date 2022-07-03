@@ -1131,8 +1131,6 @@ namespace STROOP.Map
 
         public XElement ToXElement()
         {
-            if (_mapObjectList[0] is MapObjectAllMapObjectsWithName) return null;
-
             XElement xElement = new XElement("MapTracker");
             xElement.Add(new XAttribute("iconType", _iconType));
             if (_iconType == MapTrackerIconType.CustomImage)

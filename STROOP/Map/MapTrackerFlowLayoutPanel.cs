@@ -298,7 +298,6 @@ namespace STROOP.Map
                 {
                     MapTracker mapTracker = control as MapTracker;
                     XElement xElement = mapTracker.ToXElement();
-                    if (xElement == null) continue;
                     xElements.Add(xElement);
                 }
             }

@@ -254,6 +254,11 @@ namespace STROOP.Map
             return new List<XAttribute>();
         }
 
+        public virtual List<MapObject> GetSubMapObjects()
+        {
+            return new List<MapObject>();
+        }
+
         public XElement ToXElement()
         {
             XElement xElement = new XElement("MapObject");
@@ -264,6 +269,10 @@ namespace STROOP.Map
                 xElement.Add(xAttribute);
             }
             xElement.Add(_accumulator.ToXElement());
+            foreach (MapObject mapObject in GetSubMapObjects())
+            {
+                xElement.Add(mapObject.ToXElement());
+            }
             return xElement;
         }
 
@@ -275,6 +284,12 @@ namespace STROOP.Map
             {
                 case "MapObjectAggregatedPath":
                     mapObject = new MapObjectAggregatedPath();
+                    break;
+                case "MapObjectAllMapObjectsWithName":
+                    List<MapObject> subMapObjects = xElement.Elements().ToList()
+                        .FindAll(subElement => subElement.Name == "MapObject")
+                        .ConvertAll(subElement => FromXElement(subElement));
+                    mapObject = new MapObjectAllMapObjectsWithName(xElement.Attribute(XName.Get("objectName")).Value, subMapObjects);
                     break;
                 case "MapObjectAllObjectCeiling":
                     mapObject = new MapObjectAllObjectCeiling();
