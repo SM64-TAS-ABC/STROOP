@@ -55,6 +55,10 @@ namespace STROOP.Managers
 
             Button buttonSaveVars = splitContainerCustomControls.Panel1.Controls["buttonSaveVars"] as Button;
             buttonSaveVars.Click += (sender, e) => _variablePanel.SaveVariables();
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonSaveVars,
+                new List<string>() { "Save Pop Outs" },
+                new List<Action>() { () => FormManager.SavePopOuts() });
 
             Button buttonCopyVars = splitContainerCustomControls.Panel1.Controls["buttonCopyVars"] as Button;
             buttonCopyVars.Click += (sender, e) => CopyUtilities.Copy(_variablePanel.GetCurrentVariableControls(), _copyType);

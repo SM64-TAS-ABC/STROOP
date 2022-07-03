@@ -139,5 +139,21 @@ namespace STROOP.Forms
                 return _text;
             }
         }
+
+        public XElement GetData()
+        {
+            XElement xElement = new XElement("PopOut");
+            xElement.Add(new XAttribute("locationX", Location.X));
+            xElement.Add(new XAttribute("locationY", Location.Y));
+            xElement.Add(new XAttribute("width", Width));
+            xElement.Add(new XAttribute("height", Height));
+            xElement.Add(new XAttribute("borderless", _borderless));
+            xElement.Add(new XAttribute("alwaysOnTop", _alwaysOnTop));
+            foreach (WatchVariableControl control in _watchVariablePanel.GetCurrentVariableControls())
+            {
+                xElement.Add(control.ToXml());
+            }
+            return xElement;
+        }
     }
 }

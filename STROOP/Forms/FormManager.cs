@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace STROOP.Structs
 {
@@ -75,6 +76,19 @@ namespace STROOP.Structs
             }
 
             return (num2DTopDown, num2DOrthographic, num3D);
+        }
+
+        public static void SavePopOuts()
+        {
+            DialogUtilities.SaveXmlElements(
+                FileType.StroopVariables, "VarData", GetPopOutData());
+        }
+
+        public static List<XElement> GetPopOutData()
+        {
+            return _forms
+                .FindAll(form => form is VariablePopOutForm)
+                .ConvertAll(form => (form as VariablePopOutForm).GetData());
         }
     }
 }
