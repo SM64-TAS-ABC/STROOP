@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Linq;
+using STROOP.Utilities;
 
 namespace STROOP.Forms
 {
@@ -23,6 +25,9 @@ namespace STROOP.Forms
 
         private static int _instanceCouner = 0;
 
+        private ToolStripMenuItem _itemBorderless;
+        private ToolStripMenuItem _itemAlwaysOnTop;
+
         public VariablePopOutForm()
         {
             InitializeComponent();
@@ -39,6 +44,9 @@ namespace STROOP.Forms
                 WIDTH = Width;
                 HEIGHT = Height;
             };
+
+            _itemBorderless = new ToolStripMenuItem("Borderless");
+            _itemAlwaysOnTop = new ToolStripMenuItem("Always On Top");
         }
 
         public void Initialize(List<WatchVariableControl> controls)
@@ -48,26 +56,14 @@ namespace STROOP.Forms
             _watchVariablePanel.AddVariables(controls);
 
             // add borderless item to panel
-            ToolStripMenuItem itemBorderless = new ToolStripMenuItem("Borderless");
-            itemBorderless.Click += (sender, e) =>
-            {
-                _borderless = !_borderless;
-                itemBorderless.Checked = _borderless;
-                FormBorderStyle = _borderless ? FormBorderStyle.None : FormBorderStyle.Sizable;
-            };
-            itemBorderless.Checked = _borderless;
-            _watchVariablePanel.ContextMenuStrip.Items.Insert(0, itemBorderless);
+            _itemBorderless.Click += (sender, e) => SetBorderless(!_borderless);
+            _itemBorderless.Checked = _borderless;
+            _watchVariablePanel.ContextMenuStrip.Items.Insert(0, _itemBorderless);
 
             // add always on top item to panel
-            ToolStripMenuItem itemAlwaysOnTop = new ToolStripMenuItem("Always On Top");
-            itemAlwaysOnTop.Click += (sender, e) =>
-            {
-                _alwaysOnTop = !_alwaysOnTop;
-                itemAlwaysOnTop.Checked = _alwaysOnTop;
-                TopMost = _alwaysOnTop;
-            };
-            itemBorderless.Checked = _alwaysOnTop;
-            _watchVariablePanel.ContextMenuStrip.Items.Insert(1, itemAlwaysOnTop);
+            _itemAlwaysOnTop.Click += (sender, e) => SetAlwaysOnTop(!_alwaysOnTop);
+            _itemBorderless.Checked = _alwaysOnTop;
+            _watchVariablePanel.ContextMenuStrip.Items.Insert(1, _itemAlwaysOnTop);
 
             // add close item to panel
             ToolStripMenuItem itemClose = new ToolStripMenuItem("Close");
@@ -95,6 +91,64 @@ namespace STROOP.Forms
                     SetDesktopLocation(MousePosition.X - _dragX, MousePosition.Y - _dragY);
                 }
             };
+        }
+
+        public void SetBorderless(bool borderless)
+        {
+            _borderless = borderless;
+            _itemBorderless.Checked = borderless;
+            FormBorderStyle = borderless ? FormBorderStyle.None : FormBorderStyle.Sizable;
+        }
+
+        public void SetAlwaysOnTop(bool alwaysOnTop)
+        {
+            _alwaysOnTop = alwaysOnTop;
+            _itemAlwaysOnTop.Checked = alwaysOnTop;
+            TopMost = alwaysOnTop;
+        }
+
+        public static void OpenPopOutForm(XElement element)
+        {
+            VariablePopOutForm form = new VariablePopOutForm();
+
+            List<XElement> subElements = element.Elements().ToList();
+            List<WatchVariableControl> controls = subElements
+                .ConvertAll(subElement => new WatchVariableControlPrecursor(subElement))
+                .ConvertAll(precursor => precursor.CreateWatchVariableControl());
+            form.ShowForm();
+
+            bool? borderless = ParsingUtilities.ParseBoolNullable(element.Attribute(XName.Get("borderless"))?.Value);
+            if (borderless.HasValue && borderless.Value)
+            {
+                form.SetBorderless(borderless.Value);
+            }
+
+            bool? alwaysOnTop = ParsingUtilities.ParseBoolNullable(element.Attribute(XName.Get("alwaysOnTop"))?.Value);
+            if (alwaysOnTop.HasValue && alwaysOnTop.Value)
+            {
+                form.SetAlwaysOnTop(alwaysOnTop.Value);
+            }
+
+            int? locationX = ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("locationX"))?.Value);
+            int? locationY = ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("locationY"))?.Value);
+            if (locationX.HasValue && locationY.HasValue)
+            {
+                form.Location = new System.Drawing.Point(locationX.Value, locationY.Value);
+            }
+
+            int? width = ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("width"))?.Value);
+            if (width.HasValue)
+            {
+                form.Width = width.Value;
+            }
+
+            int? height = ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("height"))?.Value);
+            if (height.HasValue)
+            {
+                form.Height = height.Value;
+            }
+
+            form.Initialize(controls);
         }
 
         public void UpdateForm()

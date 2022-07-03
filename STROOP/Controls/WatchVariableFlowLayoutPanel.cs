@@ -434,9 +434,16 @@ namespace STROOP.Controls
 
         public void OpenVariables(List<XElement> elements)
         {
-            List<WatchVariableControlPrecursor> precursors =
-                elements.ConvertAll(element => new WatchVariableControlPrecursor(element));
-            AddVariables(precursors.ConvertAll(w => w.CreateWatchVariableControl()));
+            // open variables
+            List<WatchVariableControl> controls = elements
+                .FindAll(element => element.Name == "Data")
+                .ConvertAll(element => new WatchVariableControlPrecursor(element))
+                .ConvertAll(precursor => precursor.CreateWatchVariableControl());
+            AddVariables(controls);
+
+            // open pop outs
+            elements.FindAll(element => element.Name == "PopOut")
+                .ForEach(element => VariablePopOutForm.OpenPopOutForm(element));
         }
 
         public void SaveVariablesInPlace()
