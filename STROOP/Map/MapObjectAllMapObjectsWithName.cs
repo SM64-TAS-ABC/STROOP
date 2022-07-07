@@ -133,11 +133,23 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
+            List<MapObject> mapObjs = GetCurrentMapObjects();
+            foreach (MapObject mapObj in mapObjs)
+            {
+                MapObjectHoverData hoverData = mapObj.GetHoverDataTopDownView(isForObjectDrag, forceCursorPosition);
+                if (hoverData != null) return hoverData;
+            }
             return null;
         }
 
         public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
+            List<MapObject> mapObjs = GetCurrentMapObjects();
+            foreach (MapObject mapObj in mapObjs)
+            {
+                MapObjectHoverData hoverData = mapObj.GetHoverDataOrthographicView(isForObjectDrag, forceCursorPosition);
+                if (hoverData != null) return hoverData;
+            }
             return null;
         }
 
