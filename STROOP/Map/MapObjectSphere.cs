@@ -22,19 +22,19 @@ namespace STROOP.Map
         {
         }
 
-        protected override List<(float centerX, float centerZ, float radius, Color color)> Get2DDimensions()
+        protected override List<(float centerX, float centerY, float centerZ, float radius, Color color)> Get2DDimensions()
         {
             return Get3DDimensions().ConvertAll(
                 dimensions =>
                 {
                     if (!_useCrossSection)
                     {
-                        return (dimensions.centerX, dimensions.centerZ, dimensions.radius3D, Color);
+                        return (dimensions.centerX, dimensions.centerY, dimensions.centerZ, dimensions.radius3D, Color);
                     }
                     float yDiff = Config.CurrentMapGraphics.MapViewCenterYValue - dimensions.centerY;
                     float radiusSquared = dimensions.radius3D * dimensions.radius3D - yDiff * yDiff;
                     float radius2D = radiusSquared >= 0 ? (float)Math.Sqrt(radiusSquared) : 0;
-                    return (dimensions.centerX, dimensions.centerZ, radius2D, Color);
+                    return (dimensions.centerX, dimensions.centerY, dimensions.centerZ, radius2D, Color);
                 });
         }
 

@@ -36,11 +36,11 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            List<(float centerX, float centerZ, float radius, Color color)> dimensionList = Get2DDimensions();
+            List<(float centerX, float centerY, float centerZ, float radius, Color color)> dimensionList = Get2DDimensions();
 
             for (int i = 0; i < dimensionList.Count; i++)
             {
-                (float centerX, float centerZ, float radius, Color color) = dimensionList[i];
+                (float centerX, float centerY, float centerZ, float radius, Color color) = dimensionList[i];
                 (float controlCenterX, float controlCenterZ) = MapUtilities.ConvertCoordsForControlTopDownView(centerX, centerZ, UseRelativeCoordinates);
                 float controlRadius = radius * Config.CurrentMapGraphics.MapViewScaleValue;
                 List <(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
@@ -103,7 +103,7 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        protected abstract List<(float centerX, float centerZ, float radius, Color color)> Get2DDimensions();
+        protected abstract List<(float centerX, float centerY, float centerZ, float radius, Color color)> Get2DDimensions();
 
         protected abstract List<(float x, float y, float z)> GetPoints();
 
@@ -167,10 +167,11 @@ namespace STROOP.Map
             Point relPos = relPosMaybe.Value;
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
 
-            List<(float centerX, float centerZ, float radius, Color color)> dimensionList = Get2DDimensions();
+            List<(float centerX, float centerY, float centerZ, float radius, Color color)> dimensionList = Get2DDimensions();
             for (int i = dimensionList.Count - 1; i >= 0 ; i--)
             {
                 var dimension = dimensionList[i];
+                float y = dimension.centerY;
 
                 if (_customImage != null)
                 {
@@ -185,7 +186,7 @@ namespace STROOP.Map
                         double radius = Scales ? _imageSize * Config.CurrentMapGraphics.MapViewScaleValue : _imageSize;
                         if (controlDist <= radius || forceCursorPosition)
                         {
-                            return new MapObjectHoverData(this, position.x, 0, position.z, index: i, index2: j);
+                            return new MapObjectHoverData(this, position.x, y, position.z, index: i, index2: j);
                         }
                     }
                 }
@@ -193,7 +194,7 @@ namespace STROOP.Map
                 double dist = MoreMath.GetDistanceBetween(dimension.centerX, dimension.centerZ, inGameX, inGameZ);
                 if (dist <= dimension.radius)
                 {
-                    return new MapObjectHoverData(this, dimension.centerX, 0, dimension.centerZ, index: i);
+                    return new MapObjectHoverData(this, dimension.centerX, y, dimension.centerZ, index: i);
                 }
             }
             return null;

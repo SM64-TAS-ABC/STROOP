@@ -21,9 +21,9 @@ namespace STROOP.Map
         {
         }
 
-        protected override List<(float centerX, float centerZ, float radius, Color color)> Get2DDimensions()
+        protected override List<(float centerX, float centerY, float centerZ, float radius, Color color)> Get2DDimensions()
         {
-            return Get3DDimensions().ConvertAll(dimension => (dimension.centerX, dimension.centerZ, dimension.radius, dimension.color));
+            return Get3DDimensions().ConvertAll(dimension => (dimension.centerX, dimension.minY, dimension.centerZ, dimension.radius, dimension.color));
         }
 
         protected abstract List<(float centerX, float centerZ, float radius, float minY, float maxY, Color color)> Get3DDimensions();
