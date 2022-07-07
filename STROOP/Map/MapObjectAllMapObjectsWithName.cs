@@ -131,6 +131,14 @@ namespace STROOP.Map
             }
         }
 
+        public override void Update()
+        {
+            foreach (MapObject mapObj in _subMapObjs)
+            {
+                mapObj.Update();
+            }
+        }
+
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
             List<MapObject> mapObjs = GetCurrentMapObjects();
