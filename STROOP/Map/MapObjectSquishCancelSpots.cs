@@ -23,7 +23,6 @@ namespace STROOP.Map
             : base()
         {
             Opacity = 0.5;
-            Color = Color.Purple;
 
             _cellSnapshot = new CellSnapshot();
         }
@@ -40,7 +39,7 @@ namespace STROOP.Map
             int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
             int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
 
-            float y = GetY();
+            float y = GetHeight();
 
             List<List<(float x, float y, float z, Color color, bool isHovered)>> quads =
                 new List<List<(float x, float y, float z, Color color, bool isHovered)>>();
@@ -79,7 +78,7 @@ namespace STROOP.Map
             return quads;
         }
 
-        private float GetY()
+        private float GetHeight()
         {
             return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
         }
@@ -113,7 +112,7 @@ namespace STROOP.Map
                 if (MapUtilities.IsWithinRectangularQuad(simpleQuad, inGameX, inGameZ) || forceCursorPosition)
                 {
                     (float x, float z) = GetQuadMidpoint(quad);
-                    return new MapObjectHoverData(this, x, GetY(), z, index: i);
+                    return new MapObjectHoverData(this, x, GetHeight(), z, index: i);
                 }
             }
             return null;
@@ -133,7 +132,7 @@ namespace STROOP.Map
                 if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y) || forceCursorPosition)
                 {
                     (float x, float z) = GetQuadMidpoint(quad);
-                    return new MapObjectHoverData(this, x, GetY(), z, index: i);
+                    return new MapObjectHoverData(this, x, GetHeight(), z, index: i);
                 }
             }
             return null;
