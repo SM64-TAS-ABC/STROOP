@@ -23,21 +23,21 @@ namespace STROOP.Map
             Color = Color.Purple;
         }
 
-        protected override List<List<(float x, float y, float z, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData)
+        protected override List<List<(float x, float y, float z, Color color, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData)
         {
             List<(int y, int xMin, int xMax, int zMin, int zMax)> waters = WaterUtilities.GetWaterLevels();
-            List<List<(float x, float y, float z, bool isHovered)>> quads =
-                new List<List<(float x, float y, float z, bool isHovered)>>();
+            List<List<(float x, float y, float z, Color color, bool isHovered)>> quads =
+                new List<List<(float x, float y, float z, Color color, bool isHovered)>>();
             for (int i = 0; i < waters.Count; i++)
             {
                 bool isHovered = this == hoverData?.MapObject && i == hoverData?.Index;
                 var water = waters[i];
-                List<(float x, float y, float z, bool isHovered)> quad =
-                    new List<(float x, float y, float z, bool isHovered)>();
-                quad.Add((water.xMin, water.y, water.zMin, isHovered));
-                quad.Add((water.xMin, water.y, water.zMax, isHovered));
-                quad.Add((water.xMax, water.y, water.zMax, isHovered));
-                quad.Add((water.xMax, water.y, water.zMin, isHovered));
+                List<(float x, float y, float z, Color color, bool isHovered)> quad =
+                    new List<(float x, float y, float z, Color color, bool isHovered)>();
+                quad.Add((water.xMin, water.y, water.zMin, Color, isHovered));
+                quad.Add((water.xMin, water.y, water.zMax, Color, isHovered));
+                quad.Add((water.xMax, water.y, water.zMax, Color, isHovered));
+                quad.Add((water.xMax, water.y, water.zMin, Color, isHovered));
                 quads.Add(quad);
             }
             return quads;

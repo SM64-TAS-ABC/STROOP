@@ -28,11 +28,11 @@ namespace STROOP.Map
             _cellSnapshot = new CellSnapshot();
         }
 
-        protected override List<List<(float x, float y, float z, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData)
+        protected override List<List<(float x, float y, float z, Color color, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData)
         {
             if (!MapUtilities.IsAbleToShowUnitPrecision())
             {
-                return new List<List<(float x, float y, float z, bool isHovered)>>();
+                return new List<List<(float x, float y, float z, Color color, bool isHovered)>>();
             }
 
             int xMin = (int)Config.CurrentMapGraphics.MapViewXMin - 1;
@@ -42,8 +42,8 @@ namespace STROOP.Map
 
             float y = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-            List<List<(float x, float y, float z, bool isHovered)>> quads =
-                new List<List<(float x, float y, float z, bool isHovered)>>();
+            List<List<(float x, float y, float z, Color color, bool isHovered)>> quads =
+                new List<List<(float x, float y, float z, Color color, bool isHovered)>>();
             for (int x = xMin; x <= xMax; x++)
             {
                 for (int z = zMin; z <= zMax; z++)
@@ -60,7 +60,7 @@ namespace STROOP.Map
                     {
                         bool painful = ceilToFloorDist < 10.1f;
                         List<List<(float x, float y, float z)>> test = MapUtilities.ConvertUnitPointsToQuads(new List<(int x, int z)>() { (x, z) });
-                        quads.AddRange(test.ConvertAll(test2 => test2.ConvertAll(test3 => (test3.x, test3.y, test3.z, false))));
+                        quads.AddRange(test.ConvertAll(test2 => test2.ConvertAll(test3 => (test3.x, test3.y, test3.z, Color, false))));
                     }
                 }
             }

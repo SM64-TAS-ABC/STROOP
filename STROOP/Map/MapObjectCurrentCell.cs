@@ -28,7 +28,7 @@ namespace STROOP.Map
             Color = Color.Yellow;
         }
 
-        protected override List<List<(float x, float y, float z, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData)
+        protected override List<List<(float x, float y, float z, Color color, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData)
         {
             (float posAngleX, float posAngleY, float posAngleZ, float posAngleAngle) =
                 ((float, float, float, float))_posAngle.GetValues();
@@ -41,15 +41,15 @@ namespace STROOP.Map
 
             bool isHovered = this == hoverData?.MapObject;
 
-            List<(float x, float y, float z, bool isHovered)> quad =
-                new List<(float x, float y, float z, bool isHovered)>()
+            List<(float x, float y, float z, Color color, bool isHovered)> quad =
+                new List<(float x, float y, float z, Color color, bool isHovered)>()
                 {
-                    (xMin, posAngleY, zMin, isHovered),
-                    (xMin, posAngleY, zMax, isHovered),
-                    (xMax, posAngleY, zMax, isHovered),
-                    (xMax, posAngleY, zMin, isHovered),
+                    (xMin, posAngleY, zMin, Color, isHovered),
+                    (xMin, posAngleY, zMax, Color, isHovered),
+                    (xMax, posAngleY, zMax, Color, isHovered),
+                    (xMax, posAngleY, zMin, Color, isHovered),
                 };
-            return new List<List<(float x, float y, float z, bool isHovered)>>() { quad };
+            return new List<List<(float x, float y, float z, Color color, bool isHovered)>>() { quad };
         }
 
         public override string GetName()

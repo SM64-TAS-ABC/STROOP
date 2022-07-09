@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using STROOP.Map.Map3D;
+using OpenTK.Graphics;
 
 namespace STROOP.Map
 {
@@ -23,13 +24,13 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            List<List<(float x, float y, float z, bool isHovered)>> quadList = GetQuadList(hoverData);
-            List<List<(float x, float z, bool isHovered)>> quadListForControl =
+            List<List<(float x, float y, float z, Color color, bool isHovered)>> quadList = GetQuadList(hoverData);
+            List<List<(float x, float z, Color color, bool isHovered)>> quadListForControl =
                 quadList.ConvertAll(quad => quad.ConvertAll(
                     vertex =>
                     {
                         (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates);
-                        return (x, z, vertex.isHovered);
+                        return (x, z, vertex.color, vertex.isHovered);
                     }));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
@@ -38,12 +39,12 @@ namespace STROOP.Map
 
             // Draw quad
             GL.Begin(PrimitiveType.Quads);
-            foreach (List<(float x, float z, bool isHovered)> quad in quadListForControl)
+            foreach (List<(float x, float z, Color color, bool isHovered)> quad in quadListForControl)
             {
-                foreach ((float x, float z, bool isHovered) in quad)
+                foreach ((float x, float z, Color color, bool isHovered) in quad)
                 {
                     byte opacityByte = isHovered ? MapUtilities.GetHoverOpacityByte() : OpacityByte;
-                    GL.Color4(Color.R, Color.G, Color.B, opacityByte);
+                    GL.Color4(color.R, color.G, color.B, opacityByte);
                     GL.Vertex2(x, z);
                 }
             }
@@ -54,10 +55,10 @@ namespace STROOP.Map
             {
                 GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
                 GL.LineWidth(LineWidth);
-                foreach (List<(float x, float z, bool isHovered)> quad in quadListForControl)
+                foreach (List<(float x, float z, Color color, bool isHovered)> quad in quadListForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z, bool isHovered) in quad)
+                    foreach ((float x, float z, Color color, bool isHovered) in quad)
                     {
                         GL.Vertex2(x, z);
                     }
@@ -70,13 +71,13 @@ namespace STROOP.Map
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            List<List<(float x, float y, float z, bool isHovered)>> quadList = GetQuadList3D() ?? GetQuadList(hoverData);
-            List<List<(float x, float z, bool isHovered)>> quadListForControl =
+            List<List<(float x, float y, float z, Color color, bool isHovered)>> quadList = GetQuadList3D() ?? GetQuadList(hoverData);
+            List<List<(float x, float z, Color color, bool isHovered)>> quadListForControl =
                 quadList.ConvertAll(quad => quad.ConvertAll(
                     vertex =>
                     {
                         (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z, UseRelativeCoordinates);
-                        return (x, z, vertex.isHovered);
+                        return (x, z, vertex.color, vertex.isHovered);
                     }));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
@@ -85,12 +86,12 @@ namespace STROOP.Map
 
             // Draw quad
             GL.Begin(PrimitiveType.Quads);
-            foreach (List<(float x, float z, bool isHovered)> quad in quadListForControl)
+            foreach (List<(float x, float z, Color color, bool isHovered)> quad in quadListForControl)
             {
-                foreach ((float x, float z, bool isHovered) in quad)
+                foreach ((float x, float z, Color color, bool isHovered) in quad)
                 {
                     byte opacityByte = isHovered ? MapUtilities.GetHoverOpacityByte() : OpacityByte;
-                    GL.Color4(Color.R, Color.G, Color.B, opacityByte);
+                    GL.Color4(color.R, color.G, color.B, opacityByte);
                     GL.Vertex2(x, z);
                 }
             }
@@ -101,10 +102,10 @@ namespace STROOP.Map
             {
                 GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
                 GL.LineWidth(LineWidth);
-                foreach (List<(float x, float z, bool isHovered)> quad in quadListForControl)
+                foreach (List<(float x, float z, Color color, bool isHovered)> quad in quadListForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z, bool isHovered) in quad)
+                    foreach ((float x, float z, Color color, bool isHovered) in quad)
                     {
                         GL.Vertex2(x, z);
                     }
@@ -117,11 +118,11 @@ namespace STROOP.Map
 
         public override void DrawOn3DControl()
         {
-            List<List<(float x, float y, float z, bool isHovered)>> quadList = GetQuadList3D() ?? GetQuadList(null);
+            List<List<(float x, float y, float z, Color color, bool isHovered)>> quadList = GetQuadList3D() ?? GetQuadList(null);
 
             List<Map3DVertex[]> vertexArrayForSurfaces = quadList.ConvertAll(
                 vertexList => vertexList.ConvertAll(vertex => new Map3DVertex(new Vector3(
-                    vertex.x, vertex.y, vertex.z), Color4)).ToArray());
+                    vertex.x, vertex.y, vertex.z), new Color4(vertex.color.R, vertex.color.G, vertex.color.B, OpacityByte))).ToArray());
             List<Map3DVertex[]> vertexArrayForEdges = quadList.ConvertAll(
                 vertexList => vertexList.ConvertAll(vertex => new Map3DVertex(new Vector3(
                     vertex.x, vertex.y, vertex.z), LineColor)).ToArray());
@@ -156,9 +157,9 @@ namespace STROOP.Map
             }
         }
 
-        protected abstract List<List<(float x, float y, float z, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData);
+        protected abstract List<List<(float x, float y, float z, Color color, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData);
 
-        protected virtual List<List<(float x, float y, float z, bool isHovered)>> GetQuadList3D()
+        protected virtual List<List<(float x, float y, float z, Color color, bool isHovered)>> GetQuadList3D()
         {
             return null;
         }

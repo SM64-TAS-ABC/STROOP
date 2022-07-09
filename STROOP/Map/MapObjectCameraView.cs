@@ -30,7 +30,7 @@ namespace STROOP.Map
             Color = Color.Yellow;
         }
 
-        protected override List<List<(float x, float y, float z, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData)
+        protected override List<List<(float x, float y, float z, Color color, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData)
         {
             (double camX, double camY, double camZ, double camAngle) = PositionAngle.Camera.GetValues();
             double camPitch = Config.Stream.GetShort(CameraConfig.StructAddress + CameraConfig.FacingPitchOffset);
@@ -82,19 +82,19 @@ namespace STROOP.Map
             (double x, double y, double z) finalFrontLeft = getPlaneLineIntersection(pointFrontLeft);
             (double x, double y, double z) finalFrontRight = getPlaneLineIntersection(pointFrontRight);
 
-            return new List<List<(float x, float y, float z, bool isHovered)>>()
+            return new List<List<(float x, float y, float z, Color color, bool isHovered)>>()
             {
-                new List<(float x, float y, float z, bool isHovered)>()
+                new List<(float x, float y, float z, Color color, bool isHovered)>()
                 {
-                    ((float)finalBackLeft.x, (float)finalBackLeft.y, (float)finalBackLeft.z, false),
-                    ((float)finalBackRight.x, (float)finalBackRight.y, (float)finalBackRight.z, false),
-                    ((float)finalFrontRight.x, (float)finalFrontRight.y, (float)finalFrontRight.z, false),
-                    ((float)finalFrontLeft.x, (float)finalFrontLeft.y, (float)finalFrontLeft.z, false),
+                    ((float)finalBackLeft.x, (float)finalBackLeft.y, (float)finalBackLeft.z, Color, false),
+                    ((float)finalBackRight.x, (float)finalBackRight.y, (float)finalBackRight.z, Color, false),
+                    ((float)finalFrontRight.x, (float)finalFrontRight.y, (float)finalFrontRight.z, Color, false),
+                    ((float)finalFrontLeft.x, (float)finalFrontLeft.y, (float)finalFrontLeft.z, Color, false),
                 },
             };
         }
 
-        protected override List<List<(float x, float y, float z, bool isHovered)>> GetQuadList3D()
+        protected override List<List<(float x, float y, float z, Color color, bool isHovered)>> GetQuadList3D()
         {
             (double camX, double camY, double camZ, double camAngle) = PositionAngle.Camera.GetValues();
             double camPitch = Config.Stream.GetShort(CameraConfig.StructAddress + CameraConfig.FacingPitchOffset);
@@ -152,22 +152,22 @@ namespace STROOP.Map
             (double x, double y, double z) finalFrontRightTop = getPlaneLineIntersection(pointFrontRight, tTop);
             (double x, double y, double z) finalFrontRightBottom = getPlaneLineIntersection(pointFrontRight, tBottom);
 
-            List<(float x, float y, float z, bool isHovered)> createQuad(
+            List<(float x, float y, float z, Color color, bool isHovered)> createQuad(
                 (double x, double y, double z) p1,
                 (double x, double y, double z) p2,
                 (double x, double y, double z) p3,
                 (double x, double y, double z) p4)
             {
-                return new List<(float x, float y, float z, bool isHovered)>()
+                return new List<(float x, float y, float z, Color color, bool isHovered)>()
                 {
-                    ((float)p1.x, (float)p1.y, (float)p1.z, false),
-                    ((float)p2.x, (float)p2.y, (float)p2.z, false),
-                    ((float)p3.x, (float)p3.y, (float)p3.z, false),
-                    ((float)p4.x, (float)p4.y, (float)p4.z, false),
+                    ((float)p1.x, (float)p1.y, (float)p1.z, Color, false),
+                    ((float)p2.x, (float)p2.y, (float)p2.z, Color, false),
+                    ((float)p3.x, (float)p3.y, (float)p3.z, Color, false),
+                    ((float)p4.x, (float)p4.y, (float)p4.z, Color, false),
                 };
             }
 
-            return new List<List<(float x, float y, float z, bool isHovered)>>()
+            return new List<List<(float x, float y, float z, Color color, bool isHovered)>>()
             {
                 createQuad(finalBackLeftTop, finalBackLeftBottom, finalBackRightBottom, finalBackRightTop), // back
                 createQuad(finalFrontLeftTop, finalFrontLeftBottom, finalFrontRightBottom, finalFrontRightTop), // front
