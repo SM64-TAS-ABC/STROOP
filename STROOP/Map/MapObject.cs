@@ -105,6 +105,11 @@ namespace STROOP.Map
             {
                 _customImageTex = null;
             }
+
+            foreach (MapObject mapObj in GetSubMapObjects())
+            {
+                mapObj.SetIconType(iconType, image, path);
+            }
         }
 
         public abstract MapDrawType GetDrawType();
