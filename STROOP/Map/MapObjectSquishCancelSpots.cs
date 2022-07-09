@@ -17,6 +17,10 @@ namespace STROOP.Map
 {
     public class MapObjectSquishCancelSpots : MapObjectQuad
     {
+        private float? _customHeight = null;
+        private ToolStripMenuItem _itemSetCustomHeight;
+        private static readonly string SET_CUSTOM_HEIGHT_TEXT = "Set Custom Height";
+
         private CellSnapshot _cellSnapshot;
 
         public MapObjectSquishCancelSpots()
@@ -80,7 +84,7 @@ namespace STROOP.Map
 
         private float GetHeight()
         {
-            return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            return _customHeight ?? Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
         }
 
         public override string GetName()
@@ -96,6 +100,49 @@ namespace STROOP.Map
         public override void Update()
         {
             _cellSnapshot.Update();
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                _itemSetCustomHeight = new ToolStripMenuItem(SET_CUSTOM_HEIGHT_TEXT);
+                _itemSetCustomHeight.Click += (sender, e) =>
+                {
+                    string text = DialogUtilities.GetStringFromDialog(labelText: "Enter a custom height:");
+                    float? heightNullable = ParsingUtilities.ParseFloatNullable(text);
+                    if (!heightNullable.HasValue) return;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeCustomHeight: true, newCustomHeight: heightNullable.Value);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
+                ToolStripMenuItem itemClearCustomHeight = new ToolStripMenuItem("Clear Custom Height");
+                itemClearCustomHeight.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeCustomHeight: true, newCustomHeight: null);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(_itemSetCustomHeight);
+                _contextMenuStrip.Items.Add(itemClearCustomHeight);
+            }
+
+            return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeCustomHeight)
+            {
+                _customHeight = settings.NewCustomHeight;
+                string suffix = _customHeight.HasValue ? string.Format(" ({0})", _customHeight) : "";
+                _itemSetCustomHeight.Text = SET_CUSTOM_HEIGHT_TEXT + suffix;
+            }
         }
 
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
