@@ -50,10 +50,15 @@ namespace STROOP.Map
                 {
                     (TriangleDataModel floorTri, float floorY) = _cellSnapshot.FindFloorAndY(x, y, z);
                     (TriangleDataModel ceilingTri, float ceilingY) = _cellSnapshot.FindCeilingAndY(x, floorY + 80, z);
-                    if (floorTri == null || ceilingTri == null) continue;
 
-                    if (ceilingY - floorY < 150)
+                    if (floorTri == null || ceilingTri == null) continue;
+                    if (!floorTri.BelongsToObject && !ceilingTri.BelongsToObject) continue;
+                    if (floorTri.NormY >= 0.5f && ceilingTri.NormY <= -0.5f) continue;
+
+                    float ceilToFloorDist = ceilingY - floorY;
+                    if (0 <= ceilToFloorDist && ceilToFloorDist <= 150.0f)
                     {
+                        bool painful = ceilToFloorDist < 10.1f;
                         List<List<(float x, float y, float z)>> test = MapUtilities.ConvertUnitPointsToQuads(new List<(int x, int z)>() { (x, z) });
                         quads.AddRange(test.ConvertAll(test2 => test2.ConvertAll(test3 => (test3.x, test3.y, test3.z, false))));
                     }
