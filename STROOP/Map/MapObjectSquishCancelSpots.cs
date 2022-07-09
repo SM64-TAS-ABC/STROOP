@@ -40,7 +40,7 @@ namespace STROOP.Map
             int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
             int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
 
-            float y = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float y = GetY();
 
             List<List<(float x, float y, float z, Color color, bool isHovered)>> quads =
                 new List<List<(float x, float y, float z, Color color, bool isHovered)>>();
@@ -79,6 +79,11 @@ namespace STROOP.Map
             return quads;
         }
 
+        private float GetY()
+        {
+            return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+        }
+
         public override string GetName()
         {
             return "Squish Cancel Spots";
@@ -107,7 +112,8 @@ namespace STROOP.Map
                 var simpleQuad = quad.ConvertAll(q => (q.x, q.y, q.z));
                 if (MapUtilities.IsWithinRectangularQuad(simpleQuad, inGameX, inGameZ) || forceCursorPosition)
                 {
-                    return new MapObjectHoverData(this, 0, 0, 0, index: i);
+                    (float x, float z) = GetQuadMidpoint(quad);
+                    return new MapObjectHoverData(this, x, GetY(), z, index: i);
                 }
             }
             return null;
@@ -126,10 +132,23 @@ namespace STROOP.Map
                 var quadForControl = quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z, UseRelativeCoordinates));
                 if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y) || forceCursorPosition)
                 {
-                    return new MapObjectHoverData(this, 0, 0, 0, index: i);
+                    (float x, float z) = GetQuadMidpoint(quad);
+                    return new MapObjectHoverData(this, x, GetY(), z, index: i);
                 }
             }
             return null;
+        }
+
+        private (float x, float z) GetQuadMidpoint(List<(float x, float y, float z, Color color, bool isHovered)> quad)
+        {
+            float xMin = quad.Min(p => p.x);
+            float xMax = quad.Max(p => p.x);
+            float zMin = quad.Min(p => p.z);
+            float zMax = quad.Max(p => p.z);
+
+            float xMid = (xMin + xMax) / 2;
+            float zMid = (zMin + zMax) / 2;
+            return (xMid, zMid);
         }
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
