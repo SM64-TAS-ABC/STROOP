@@ -59,8 +59,9 @@ namespace STROOP.Map
                     if (0 <= ceilToFloorDist && ceilToFloorDist <= 150.0f)
                     {
                         bool painful = ceilToFloorDist < 10.1f;
-                        List<List<(float x, float y, float z)>> test = MapUtilities.ConvertUnitPointsToQuads(new List<(int x, int z)>() { (x, z) });
-                        quads.AddRange(test.ConvertAll(test2 => test2.ConvertAll(test3 => (test3.x, test3.y, test3.z, Color, false))));
+                        Color color = painful ? Color.Red : Color.Green;
+                        List<List<(float x, float y, float z)>> currentQuads = MapUtilities.ConvertUnitPointsToQuads(new List<(int x, int z)>() { (x, z) });
+                        quads.AddRange(currentQuads.ConvertAll(quad => quad.ConvertAll(point => (point.x, point.y, point.z, color, false))));
                     }
                 }
             }
