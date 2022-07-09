@@ -65,6 +65,17 @@ namespace STROOP.Map
                     }
                 }
             }
+            if (hoverData != null)
+            {
+                for (int i = 0; i < quads.Count; i++)
+                {
+                    bool isHovered = this == hoverData?.MapObject && i == hoverData?.Index;
+                    if (isHovered)
+                    {
+                        quads[i] = quads[i].ConvertAll(point => (point.x, point.y, point.z, point.color, isHovered));
+                    }
+                }
+            }
             return quads;
         }
 
