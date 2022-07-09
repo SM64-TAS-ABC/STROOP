@@ -201,6 +201,12 @@ namespace STROOP.Map
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
+            ToolStripMenuItem copyBasePointItem = MapUtilities.CreateCopyItem((int)hoverData.X, hoverData.Y, (int)hoverData.Z, "Base Point");
+            output.Insert(0, copyBasePointItem);
+
+            ToolStripMenuItem copyMidpointItem = MapUtilities.CreateCopyItem(hoverData.X, hoverData.Y, hoverData.Z, "Midpoint");
+            output.Insert(1, copyMidpointItem);
+
             return output;
         }
     }
