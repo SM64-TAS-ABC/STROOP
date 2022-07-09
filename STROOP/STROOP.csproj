@@ -481,6 +481,7 @@
     <Compile Include="Map\MapObjectCustomPositionAngleArrow.cs" />
     <Compile Include="Map\MapObjectBranchPath.cs" />
     <Compile Include="Map\MapObjectCameraView.cs" />
+    <Compile Include="Map\MapObjectSquishCancelSpots.cs" />
     <Compile Include="Map\MapObjectWaters.cs" />
     <Compile Include="Map\MapObjectCustomSpherePoints.cs" />
     <Compile Include="Map\MapObjectFacingDivider.cs" />

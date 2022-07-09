@@ -375,6 +375,30 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemLedgeGrabChecker = new ToolStripMenuItem("Add Tracker for Ledge Grab Checker");
+            itemLedgeGrabChecker.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapObjectLedgeGrabChecker();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
+            ToolStripMenuItem itemHolpDisplayer = new ToolStripMenuItem("Add Tracker for HOLP Displayer");
+            itemHolpDisplayer.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapObjectHolpDisplayer();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
+            ToolStripMenuItem itemSquishCancelSpots = new ToolStripMenuItem("Add Tracker for Squish Cancel Spots");
+            itemSquishCancelSpots.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapObjectSquishCancelSpots();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemHitboxTris = new ToolStripMenuItem("Add Tracker for Hitbox Tris");
             itemHitboxTris.Click += (sender, e) =>
             {
@@ -411,22 +435,6 @@ namespace STROOP.Managers
             itemCoordinateLabels.Click += (sender, e) =>
             {
                 MapObject mapObj = new MapObjectCoordinateLabels();
-                MapTracker tracker = new MapTracker(mapObj);
-                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
-            };
-
-            ToolStripMenuItem itemLedgeGrabChecker = new ToolStripMenuItem("Add Tracker for Ledge Grab Checker");
-            itemLedgeGrabChecker.Click += (sender, e) =>
-            {
-                MapObject mapObj = new MapObjectLedgeGrabChecker();
-                MapTracker tracker = new MapTracker(mapObj);
-                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
-            };
-
-            ToolStripMenuItem itemHolpDisplayer = new ToolStripMenuItem("Add Tracker for HOLP Displayer");
-            itemHolpDisplayer.Click += (sender, e) =>
-            {
-                MapObject mapObj = new MapObjectHolpDisplayer();
                 MapTracker tracker = new MapTracker(mapObj);
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
@@ -552,15 +560,16 @@ namespace STROOP.Managers
             itemMarioMove.DropDownItems.Add(itemCUpFloorTris);
             itemMarioMove.DropDownItems.Add(itemPunchFloorTris);
             itemMarioMove.DropDownItems.Add(itemPunchDetector);
-
+            itemMarioMove.DropDownItems.Add(itemLedgeGrabChecker);
+            itemMarioMove.DropDownItems.Add(itemHolpDisplayer);
+            itemMarioMove.DropDownItems.Add(itemSquishCancelSpots);
+            
             ToolStripMenuItem itemMisc = new ToolStripMenuItem("Misc...");
             itemMisc.DropDownItems.Add(itemWaters);
             itemMisc.DropDownItems.Add(itemHitboxTris);
             itemMisc.DropDownItems.Add(itemAggregatedPath);
             itemMisc.DropDownItems.Add(itemCompass);
             itemMisc.DropDownItems.Add(itemCoordinateLabels);
-            itemMisc.DropDownItems.Add(itemLedgeGrabChecker);
-            itemMisc.DropDownItems.Add(itemHolpDisplayer);
             itemMisc.DropDownItems.Add(itemCorkBoxTester);
             itemMisc.DropDownItems.Add(itemCameraView);
 
