@@ -1,6 +1,7 @@
 ﻿using STROOP.Managers;
 using STROOP.Models;
 using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,12 +13,14 @@ namespace STROOP.Structs
 {
     public class CellSnapshot
     {
-        private readonly List<TriangleDataModel>[,,] _staticTris;
-        private readonly List<TriangleDataModel>[,,] _dynamicTris;
-        private readonly List<(int y, int xMin, int xMax, int zMin, int zMax)> _waterLevels;
+        private int _numLevelTriangles;
+        private List<TriangleDataModel>[,,] _staticTris;
+        private List<TriangleDataModel>[,,] _dynamicTris;
+        private List<(int y, int xMin, int xMax, int zMin, int zMax)> _waterLevels;
 
         public CellSnapshot()
         {
+            _numLevelTriangles = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
             _staticTris = GetTrianglesInPartition(true);
             _dynamicTris = GetTrianglesInPartition(false);
             _waterLevels = WaterUtilities.GetWaterLevels();
@@ -131,6 +134,18 @@ namespace STROOP.Structs
                 }
             }
             return -11000;
+        }
+
+        public void Update()
+        {
+            int numLevelTriangles = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
+            if (_numLevelTriangles != numLevelTriangles)
+            {
+                _numLevelTriangles = numLevelTriangles;
+                _staticTris = GetTrianglesInPartition(true);
+                _waterLevels = WaterUtilities.GetWaterLevels();
+            }
+            _dynamicTris = GetTrianglesInPartition(false);
         }
     }
 }

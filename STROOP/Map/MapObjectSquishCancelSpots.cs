@@ -16,29 +16,41 @@ namespace STROOP.Map
 {
     public class MapObjectSquishCancelSpots : MapObjectQuad
     {
+        private CellSnapshot _cellSnapshot;
+
         public MapObjectSquishCancelSpots()
             : base()
         {
             Opacity = 0.5;
             Color = Color.Purple;
+
+            _cellSnapshot = new CellSnapshot();
         }
 
         protected override List<List<(float x, float y, float z, bool isHovered)>> GetQuadList(MapObjectHoverData hoverData)
         {
-            List<(int y, int xMin, int xMax, int zMin, int zMax)> waters = WaterUtilities.GetWaterLevels();
+            if (!MapUtilities.IsAbleToShowUnitPrecision())
+            {
+                return new List<List<(float x, float y, float z, bool isHovered)>>();
+            }
+
+            int xMin = (int)Config.CurrentMapGraphics.MapViewXMin - 1;
+            int xMax = (int)Config.CurrentMapGraphics.MapViewXMax + 1;
+            int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
+            int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
+
             List<List<(float x, float y, float z, bool isHovered)>> quads =
                 new List<List<(float x, float y, float z, bool isHovered)>>();
-            for (int i = 0; i < waters.Count; i++)
+            for (int x = xMin; x <= xMax; x++)
             {
-                bool isHovered = this == hoverData?.MapObject && i == hoverData?.Index;
-                var water = waters[i];
-                List<(float x, float y, float z, bool isHovered)> quad =
-                    new List<(float x, float y, float z, bool isHovered)>();
-                quad.Add((water.xMin, water.y, water.zMin, isHovered));
-                quad.Add((water.xMin, water.y, water.zMax, isHovered));
-                quad.Add((water.xMax, water.y, water.zMax, isHovered));
-                quad.Add((water.xMax, water.y, water.zMin, isHovered));
-                quads.Add(quad);
+                for (int z = zMin; z <= zMax; z++)
+                {
+                    if (x % 5 == 0 && z % 5 == 0)
+                    {
+                        List<List<(float x, float y, float z)>> test = MapUtilities.ConvertUnitPointsToQuads(new List<(int x, int z)>() { (x, z) });
+                        quads.AddRange(test.ConvertAll(test2 => test2.ConvertAll(test3 => (test3.x, test3.y, test3.z, false))));
+                    }
+                }
             }
             return quads;
         }
@@ -94,34 +106,6 @@ namespace STROOP.Map
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
         {
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
-
-            var quadList = GetQuadList(null);
-            var quad = quadList[hoverData.Index.Value];
-            if (quad.Count == 0) return output;
-
-            double xMin = quad.Min(p => p.x);
-            double xMax = quad.Max(p => p.x);
-            double zMin = quad.Min(p => p.z);
-            double zMax = quad.Max(p => p.z);
-            double y = quad.Max(p => p.y);
-
-            ToolStripMenuItem copyXMin = new ToolStripMenuItem(string.Format("Copy X Min ({0})", xMin));
-            ToolStripMenuItem copyXMax = new ToolStripMenuItem(string.Format("Copy X Max ({0})", xMax));
-            ToolStripMenuItem copyZMin = new ToolStripMenuItem(string.Format("Copy Z Min ({0})", zMin));
-            ToolStripMenuItem copyZMax = new ToolStripMenuItem(string.Format("Copy Z Max ({0})", zMax));
-            ToolStripMenuItem copyY = new ToolStripMenuItem(string.Format("Copy Y ({0})", y));
-
-            copyXMin.Click += (sender, e) => Clipboard.SetText(xMin.ToString());
-            copyXMax.Click += (sender, e) => Clipboard.SetText(xMax.ToString());
-            copyZMin.Click += (sender, e) => Clipboard.SetText(zMin.ToString());
-            copyZMax.Click += (sender, e) => Clipboard.SetText(zMax.ToString());
-            copyY.Click += (sender, e) => Clipboard.SetText(y.ToString());
-
-            output.Insert(0, copyXMin);
-            output.Insert(1, copyXMax);
-            output.Insert(2, copyZMin);
-            output.Insert(3, copyZMax);
-            output.Insert(4, copyY);
 
             return output;
         }
