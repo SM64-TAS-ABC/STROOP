@@ -11,6 +11,7 @@ using STROOP.Structs;
 using OpenTK;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+using STROOP.Models;
 
 namespace STROOP.Map
 {
@@ -39,13 +40,19 @@ namespace STROOP.Map
             int zMin = (int)Config.CurrentMapGraphics.MapViewZMin - 1;
             int zMax = (int)Config.CurrentMapGraphics.MapViewZMax + 1;
 
+            float y = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+
             List<List<(float x, float y, float z, bool isHovered)>> quads =
                 new List<List<(float x, float y, float z, bool isHovered)>>();
             for (int x = xMin; x <= xMax; x++)
             {
                 for (int z = zMin; z <= zMax; z++)
                 {
-                    if (x % 5 == 0 && z % 5 == 0)
+                    (TriangleDataModel floorTri, float floorY) = _cellSnapshot.FindFloorAndY(x, y, z);
+                    (TriangleDataModel ceilingTri, float ceilingY) = _cellSnapshot.FindCeilingAndY(x, floorY + 80, z);
+                    if (floorTri == null || ceilingTri == null) continue;
+
+                    if (ceilingY - floorY < 150)
                     {
                         List<List<(float x, float y, float z)>> test = MapUtilities.ConvertUnitPointsToQuads(new List<(int x, int z)>() { (x, z) });
                         quads.AddRange(test.ConvertAll(test2 => test2.ConvertAll(test3 => (test3.x, test3.y, test3.z, false))));
@@ -63,6 +70,11 @@ namespace STROOP.Map
         public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.CustomPointsImage;
+        }
+
+        public override void Update()
+        {
+            _cellSnapshot.Update();
         }
 
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)

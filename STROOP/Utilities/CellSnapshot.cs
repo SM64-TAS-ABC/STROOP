@@ -124,6 +124,61 @@ namespace STROOP.Structs
             return null;
         }
 
+        public (TriangleDataModel, float) FindCeilingAndY(float floatX, float floatY, float floatZ)
+        {
+            TriangleDataModel tri = FindCeiling(floatX, floatY, floatZ);
+            if (tri == null) return (tri, -11000);
+            float y = tri.GetTruncatedHeightOnTriangle(floatX, floatZ);
+            return (tri, y);
+        }
+
+        public TriangleDataModel FindCeiling(float floatX, float floatY, float floatZ)
+        {
+            int LEVEL_BOUNDARY_MAX = 0x2000;
+            int CELL_SIZE = 0x400;
+
+            short shortX = (short)floatX;
+            short shortY = (short)floatY;
+            short shortZ = (short)floatZ;
+
+            if (shortX <= -LEVEL_BOUNDARY_MAX || shortX >= LEVEL_BOUNDARY_MAX)
+            {
+                return null;
+            }
+            if (shortZ <= -LEVEL_BOUNDARY_MAX || shortZ >= LEVEL_BOUNDARY_MAX)
+            {
+                return null;
+            }
+
+            int cellX = ((shortX + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0xF;
+            int cellZ = ((shortZ + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0xF;
+
+            TriangleDataModel staticTri = FindCeilingFromList(shortX, shortY, shortZ, cellX, cellZ, true);
+            TriangleDataModel dynamicTri = FindCeilingFromList(shortX, shortY, shortZ, cellX, cellZ, false);
+
+            if (staticTri == null && dynamicTri == null) return null;
+            if (staticTri == null) return dynamicTri;
+            if (dynamicTri == null) return staticTri;
+
+            double yOnStaticTri = staticTri.GetHeightOnTriangle(shortX, shortZ);
+            double yOnDynamicTri = dynamicTri.GetHeightOnTriangle(shortX, shortZ);
+            return yOnDynamicTri < yOnStaticTri ? dynamicTri : staticTri;
+        }
+
+        private TriangleDataModel FindCeilingFromList(short shortX, short shortY, short shortZ, int cellX, int cellZ, bool isStaticParition)
+        {
+            List<TriangleDataModel>[,,] tris = isStaticParition ? _staticTris : _dynamicTris;
+            List<TriangleDataModel> ceilingTris = tris[cellZ, cellX, 1];
+
+            foreach (TriangleDataModel tri in ceilingTris)
+            {
+                bool isLegitimateTriangle = tri.NormX != 0 || tri.NormY != 0 || tri.NormZ != 0;
+                if (isLegitimateTriangle && tri.IsPointInsideAndBelowTriangle(shortX, shortY, shortZ)) return tri;
+            }
+
+            return null;
+        }
+
         public int GetWaterAtPos(float x, float z)
         {
             foreach (var w in _waterLevels)
