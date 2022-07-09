@@ -106,6 +106,35 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
+                ToolStripMenuItem itemCopyBasePoints = new ToolStripMenuItem("Copy Base Points");
+                itemCopyBasePoints.Click += (sender, e) =>
+                {
+                    List<string> pointStrings = new List<string>();
+                    var quadList = GetQuadList(null);
+                    foreach (var quad in quadList)
+                    {
+                        (int x, int z) = ((int, int))GetQuadMidpoint(quad);
+                        pointStrings.Add(x + "\t" + z);
+                    }
+                    pointStrings = pointStrings.Distinct().ToList();
+                    string combinedText = string.Join("\r\n", pointStrings);
+                    Clipboard.SetText(combinedText);
+                };
+
+                ToolStripMenuItem itemCopyMidpoints = new ToolStripMenuItem("Copy Midpoints");
+                itemCopyMidpoints.Click += (sender, e) =>
+                {
+                    List<string> pointStrings = new List<string>();
+                    var quadList = GetQuadList(null);
+                    foreach (var quad in quadList)
+                    {
+                        (float x, float z) = GetQuadMidpoint(quad);
+                        pointStrings.Add(x + "\t" + z);
+                    }
+                    string combinedText = string.Join("\r\n", pointStrings);
+                    Clipboard.SetText(combinedText);
+                };
+
                 _itemSetCustomHeight = new ToolStripMenuItem(SET_CUSTOM_HEIGHT_TEXT);
                 _itemSetCustomHeight.Click += (sender, e) =>
                 {
@@ -126,6 +155,8 @@ namespace STROOP.Map
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemCopyBasePoints);
+                _contextMenuStrip.Items.Add(itemCopyMidpoints);
                 _contextMenuStrip.Items.Add(_itemSetCustomHeight);
                 _contextMenuStrip.Items.Add(itemClearCustomHeight);
             }
