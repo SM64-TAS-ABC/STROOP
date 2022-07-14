@@ -210,9 +210,9 @@ namespace STROOP.Map
             }
         }
 
-        public static List<(float x, float z)> GetPuCenters()
+        public static List<(float x, float z)> GetPuCenters(int mod)
         {
-            int puSize = 65536 * (SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1);
+            int puSize = 65536 * (SavedSettingsConfig.UseExtendedLevelBoundaries ? 4 : 1) * mod;
 
             int xMin = ((((int)Config.CurrentMapGraphics.MapViewXMin) / puSize) - 1) * puSize;
             int xMax = ((((int)Config.CurrentMapGraphics.MapViewXMax) / puSize) + 1) * puSize;
@@ -229,9 +229,9 @@ namespace STROOP.Map
             return centers;
         }
 
-        public static List<(float x, float z)> GetPuCoordinates(float relX, float relZ)
+        public static List<(float x, float z)> GetPuCoordinates(float relX, float relZ, int mod)
         {
-            return GetPuCenters().ConvertAll(center => (center.x + relX, center.z + relZ));
+            return GetPuCenters(mod).ConvertAll(center => (center.x + relX, center.z + relZ));
         }
 
         public static int LoadTexture(Bitmap bmp)

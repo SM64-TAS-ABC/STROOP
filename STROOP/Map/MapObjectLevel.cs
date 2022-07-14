@@ -17,6 +17,7 @@ namespace STROOP.Map
         public MapObjectLevel()
             : base()
         {
+            Size = 1;
             InternalRotates = true;
         }
 
@@ -33,9 +34,10 @@ namespace STROOP.Map
             RectangleF rectangle = mapLayout.Coordinates;
             float rectangleCenterX = rectangle.X + rectangle.Width / 2;
             float rectangleCenterZ = rectangle.Y + rectangle.Height / 2;
+            int size = Math.Max(1, (int)Size);
             List<(float x, float z)> rectangleCenters =
                 Config.MapGui.checkBoxMapOptionsEnablePuView.Checked && mapLayout.Id != "000" ?
-                MapUtilities.GetPuCoordinates(rectangleCenterX, rectangleCenterZ) :
+                MapUtilities.GetPuCoordinates(rectangleCenterX, rectangleCenterZ, size) :
                 new List<(float x, float z)>() { (rectangleCenterX, rectangleCenterZ) };
             List<(float x, float z)> controlCenters = rectangleCenters.ConvertAll(
                 rectangleCenter => MapUtilities.ConvertCoordsForControlTopDownView(rectangleCenter.x, rectangleCenter.z, UseRelativeCoordinates));
