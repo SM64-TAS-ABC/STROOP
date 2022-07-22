@@ -23,7 +23,7 @@ namespace STROOP.Structs
                 [UnloadableId.LOADED_ALWAYS] = false, // do not change
 
                 [UnloadableId.SKEETER_CLOSE] = false,
-                [UnloadableId.SKEETER_FAR] = false,
+                [UnloadableId.SKEETER_FAR] = true,
 
                 [UnloadableId.CORK_BOX_EXPRESS_ELEVATOR] = false,
                 [UnloadableId.CORK_BOX_EDGE_1] = false,
@@ -32,8 +32,7 @@ namespace STROOP.Structs
                 [UnloadableId.CORK_BOX_EDGE_4] = false,
                 [UnloadableId.CORK_BOX_BIG] = false,
 
-                [UnloadableId.BLUE_COIN] = false,
-                [UnloadableId.BLUE_COIN_BLOCK] = false,
+                [UnloadableId.BLUE_COIN] = true,
 
                 [UnloadableId.ITEM_BLOCK_PENTAGON_PLATFORM] = false,
                 [UnloadableId.ITEM_BLOCK_EXPRESS_ELEVATOR] = false,
@@ -77,6 +76,253 @@ namespace STROOP.Structs
                 (15, false),
                 (15, true),
             };
+
+        public static List<(int numBubbles, bool bubbleSpawnerPresent)> BubbleConfigurationsSimplified =
+            new List<(int numBubbles, bool bubbleSpawnerPresent)>()
+            {
+                (5, true),
+                (6, true),
+                (7, true),
+                (8, true),
+                (9, true),
+                (10, true),
+                (11, true),
+                (12, true),
+                (13, true),
+                (14, true),
+                (15, true),
+            };
+
+        public class LoadingZoneState
+        {
+            public readonly int Frame;
+            public readonly List<int> LoadingZoneFrames;
+
+            public LoadingZoneState(
+                int frame,
+                List<int> loadingZoneFrames)
+            {
+                Frame = frame;
+                LoadingZoneFrames = loadingZoneFrames;
+            }
+
+            public List<LoadingZoneState> GetSuccessors()
+            {
+                List<LoadingZoneState> output = new List<LoadingZoneState>();
+                int remainingFrames = 17 - Frame;
+                int start = remainingFrames == 1 ? 1 : 2;
+                for (int i = start; i <= remainingFrames; i++)
+                {
+                    LoadingZoneState state = new LoadingZoneState(
+                        Frame + i, LoadingZoneFrames.Concat(new List<int>() { i }).ToList());
+                    output.Add(state);
+                }
+                return output;
+            }
+        }
+
+        public static void Run5()
+        {
+            Config.Print("START");
+
+            List<List<int>> loadingZoneFramesList = new List<List<int>>()
+            {
+                new List<int>() { 1,2,2,2,2,7,1 },
+                new List<int>() { 1,2,4,2,2,4,2 },
+                new List<int>() { 1,2,4,2,2,5,1 },
+                new List<int>() { 1,2,4,3,2,4,1 },
+                new List<int>() { 1,2,5,2,2,4,1 },
+                new List<int>() { 1,3,4,2,2,4,1 },
+            };
+
+            GenerateUnloadStrategy();
+            bool isBubbleSpawnerPresent = true;
+            int numInitialBubbles = 5;
+
+            for (int rngIndex = 0; rngIndex < 65114; rngIndex++)
+            {
+                foreach (List<int> loadingZoneFrames in loadingZoneFramesList)
+                {
+                    int rngValue = RngIndexer.GetRngValue(rngIndex);
+                    (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
+                        Simulate(ObjName.CORK_BOX_WHITE_BUILDING, loadingZoneFrames, rngValue, isBubbleSpawnerPresent, numInitialBubbles, false);
+                    string instructions = FormatLoadingZoneFrames(loadingZoneFrames);
+                    if (success)
+                    {
+                        //Config.Print("-------------------------------------");
+                        //Config.Print("objName = " + objName);
+                        //Config.Print("numFrames = " + numFrames);
+                        //Config.Print("numTransitions = " + numTransitions);
+                        //Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
+                        Config.Print("rngIndex = " + rngIndex);
+                        //Config.Print("rngValue = " + rngValue);
+                        //Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
+                        //Config.Print("numInitialBubbles = " + numInitialBubbles);
+                        //Config.Print(instructions);
+                        //Config.Print("-------------------------------------");
+                    }
+                }
+            }
+
+            Config.Print("DONE");
+        }
+
+        public static void Run4()
+        {
+            Config.Print("START");
+
+            Queue<LoadingZoneState> queue = new Queue<LoadingZoneState>();
+            List<LoadingZoneState> allStates = new List<LoadingZoneState>();
+
+            LoadingZoneState initialState = new LoadingZoneState(1, new List<int>() { 1 });
+            queue.Enqueue(initialState);
+            allStates.Add(initialState);
+
+            while (queue.Count > 0)
+            {
+                LoadingZoneState dequeue = queue.Dequeue();
+                List<LoadingZoneState> successors = dequeue.GetSuccessors();
+                foreach (LoadingZoneState successor in successors)
+                {
+                    queue.Enqueue(successor);
+                    allStates.Add(successor);
+                }
+            }
+
+            List<int> bubbleSpawnerMaxTimers = new List<int>() { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
+
+            GenerateUnloadStrategy();
+            foreach (var bubbleConfiguration in BubbleConfigurationsSimplified)
+            {
+                foreach (LoadingZoneState state in allStates)
+                {
+                    (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
+                        Simulate(
+                            ObjName.CORK_BOX_WHITE_BUILDING,
+                            state.LoadingZoneFrames,
+                            bubbleSpawnerMaxTimers,
+                            bubbleConfiguration.bubbleSpawnerPresent,
+                            bubbleConfiguration.numBubbles,
+                            false);
+
+                    if (success && numFrames <= 17)
+                    {
+                        Config.Print("new List<int>() { " + string.Join(",", state.LoadingZoneFrames) + " },");
+                        Config.Print("bubbleConfiguration.bubbleSpawnerPresent = " + bubbleConfiguration.bubbleSpawnerPresent);
+                        Config.Print("bubbleConfiguration.numBubbles = " + bubbleConfiguration.numBubbles);
+                        Config.Print();
+                    }
+                }
+            }
+
+            Config.Print("DONE");
+        }
+
+        public static void Run3()
+        {
+            Config.Print("START");
+
+            Queue<LoadingZoneState> queue = new Queue<LoadingZoneState>();
+            List<LoadingZoneState> allStates = new List<LoadingZoneState>();
+
+            LoadingZoneState initialState = new LoadingZoneState(1, new List<int>() { 1 });
+            queue.Enqueue(initialState);
+            allStates.Add(initialState);
+
+            while (queue.Count > 0)
+            {
+                LoadingZoneState dequeue = queue.Dequeue();
+                List<LoadingZoneState> successors = dequeue.GetSuccessors();
+                foreach (LoadingZoneState successor in successors)
+                {
+                    queue.Enqueue(successor);
+                    allStates.Add(successor);
+                }
+            }
+
+            List<int> bubbleSpawnerMaxTimers = new List<int>() { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
+
+            int numNull = BaseUnloadStrategy.Values.ToList().FindAll(b => b == null).Count;
+            List<List<bool>> boolsList = GenerateBoolLists(numNull);
+            boolsList = boolsList.FindAll(list => list.Count(b => b) <= 4);
+            boolsList.Sort((b1, b2) =>
+            {
+                int c1 = b1.Count(b => b);
+                int c2 = b2.Count(b => b);
+                return c1.CompareTo(c2);
+            });
+
+            int minFrames = int.MaxValue;
+
+            int counter = 0;
+            foreach (List<bool> bools in boolsList)
+            {
+                bool boolsSuccess = false;
+
+                if (counter % 100 == 0)
+                {
+                    Config.Print(counter + " / " + boolsList.Count);
+                    Config.Print();
+                }
+                counter++;
+
+                GenerateUnloadStrategy(bools);
+                foreach (var bubbleConfiguration in BubbleConfigurationsSimplified)
+                {
+                    foreach (LoadingZoneState state in allStates)
+                    {
+                        (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
+                            Simulate(
+                                ObjName.CORK_BOX_WHITE_BUILDING,
+                                state.LoadingZoneFrames,
+                                bubbleSpawnerMaxTimers,
+                                bubbleConfiguration.bubbleSpawnerPresent,
+                                bubbleConfiguration.numBubbles,
+                                false);
+
+                        if (success && numFrames <= 17)
+                        {
+                            Config.Print("success = " + success);
+                            Config.Print("result = " + result);
+                            Config.Print("objName = " + objName);
+                            Config.Print("numTransitions = " + numTransitions);
+                            Config.Print("numFrames = " + numFrames);
+
+                            Config.Print("bools = " + string.Join(",", bools));
+                            Config.Print("loadingZoneFrames = " + string.Join(",", state.LoadingZoneFrames));
+                            Config.Print("bubbleSpawnerMaxTimers = " + string.Join(",", bubbleSpawnerMaxTimers));
+                            Config.Print("bubbleSpawnerPresent = " + bubbleConfiguration.bubbleSpawnerPresent);
+                            Config.Print("numBubbles = " + bubbleConfiguration.numBubbles);
+
+                            List<UnloadableId> ids = BaseUnloadStrategy.ToList().FindAll(p => p.Value == null).ConvertAll(p => p.Key);
+                            List<UnloadableId> unloaded = new List<UnloadableId>();
+                            for (int i = 0; i < bools.Count; i++)
+                            {
+                                if (bools[i]) unloaded.Add(ids[i]);
+                            }
+                            Config.Print("unloadedObjs = " + string.Join(",", unloaded));
+                            Config.Print("unloadedCount = " + unloaded.Count);
+
+                            Config.Print();
+
+                            minFrames = Math.Min(minFrames, numFrames);
+
+                            boolsSuccess = true;
+                        }
+
+                        if (boolsSuccess) break;
+                    }
+
+                    if (boolsSuccess) break;
+                }
+
+                if (boolsSuccess) continue;
+            }
+
+            Config.Print("MIN FRAMES = " + minFrames);
+
+            Config.Print("DONE");
+        }
 
         public static void Run()
         {
@@ -200,6 +446,20 @@ namespace STROOP.Structs
             }
         }
 
+        public static List<List<bool>> GenerateBoolLists(int size)
+        {
+            List<List<bool>> output = new List<List<bool>>() { new List<bool>() { } };
+            for (int i = 0; i < size; i++)
+            {
+                output = output.SelectMany(b => new List<List<bool>>()
+                {
+                    b.Concat(new List<bool>() { false }).ToList(),
+                    b.Concat(new List<bool>() { true }).ToList(),
+                }).ToList();
+            }
+            return output;
+        }
+
         public static void GenerateUnloadStrategy()
         {
             UnloadStrategy = new Dictionary<UnloadableId, bool>();
@@ -207,6 +467,18 @@ namespace STROOP.Structs
             {
                 bool? valueNullable = BaseUnloadStrategy[key];
                 bool value = valueNullable ?? (r.Next(0, 2) == 0 ? false : true);
+                UnloadStrategy[key] = value;
+            }
+        }
+
+        public static void GenerateUnloadStrategy(List<bool> bools)
+        {
+            UnloadStrategy = new Dictionary<UnloadableId, bool>();
+            int counter = 0;
+            foreach (UnloadableId key in BaseUnloadStrategy.Keys)
+            {
+                bool? valueNullable = BaseUnloadStrategy[key];
+                bool value = valueNullable ?? bools[counter++];
                 UnloadStrategy[key] = value;
             }
         }
@@ -238,7 +510,7 @@ namespace STROOP.Structs
             List<string> outputList = new List<string>();
             bool rightwards = true;
             int frame = 1904;
-            for (int i = 1; i < 11; i++)
+            for (int i = 1; i < 11 && i < loadingZoneFrames.Count; i++)
             {
                 int frames = loadingZoneFrames[i];
                 frame += frames;
@@ -518,7 +790,6 @@ namespace STROOP.Structs
             CORK_BOX_BIG,
 
             BLUE_COIN,
-            BLUE_COIN_BLOCK,
 
             ITEM_BLOCK_PENTAGON_PLATFORM,
             ITEM_BLOCK_EXPRESS_ELEVATOR,
@@ -900,7 +1171,7 @@ namespace STROOP.Structs
                 (ObjName.COIN_LINE, ObjSlotColor.PINK, UnloadableId.LOADED_ALWAYS),
 
                 (ObjName.SIGN, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
-                (ObjName.BLUE_COIN_BLOCK, ObjSlotColor.RED, UnloadableId.BLUE_COIN_BLOCK),
+                (ObjName.BLUE_COIN_BLOCK, ObjSlotColor.RED, UnloadableId.BLUE_COIN),
                 (ObjName.ITEM_BLOCK, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.CANNON_LID, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
                 (ObjName.PUSHABLE_BLOCK, ObjSlotColor.RED, UnloadableId.LOADED_ALWAYS),
@@ -1008,7 +1279,7 @@ namespace STROOP.Structs
                 (ObjName.BOB_OMB_BUDDY, ObjSlotColor.GREEN, UnloadableId.LOADED_ALWAYS),
                 (ObjName.COIN_RING, ObjSlotColor.PINK, UnloadableId.LOADED_ALWAYS),
                 (ObjName.COIN_LINE, ObjSlotColor.PINK, UnloadableId.LOADED_ALWAYS),
-                (ObjName.BLUE_COIN_BLOCK, ObjSlotColor.RED, UnloadableId.BLUE_COIN_BLOCK),
+                (ObjName.BLUE_COIN_BLOCK, ObjSlotColor.RED, UnloadableId.BLUE_COIN),
                 (ObjName.BLUE_COIN, ObjSlotColor.BLUE, UnloadableId.BLUE_COIN),
                 (ObjName.BLUE_COIN, ObjSlotColor.BLUE, UnloadableId.BLUE_COIN),
                 (ObjName.BLUE_COIN, ObjSlotColor.BLUE, UnloadableId.BLUE_COIN),
