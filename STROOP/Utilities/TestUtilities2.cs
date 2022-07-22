@@ -21,7 +21,7 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            LoadingZoneMain.Run5();
+            WaterMain.BruteForce2();
         }
     }
 }

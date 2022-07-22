@@ -39,6 +39,37 @@ namespace STROOP.Structs
             }
         }
 
+        public static void BruteForce2()
+        {
+            Input.USE_TAS_INPUT_Y = false;
+
+            List<int> rngIndexes = LoadingZoneMain.GetRngIndexes();
+            bool[] rngIndexSuccesses = new bool[65114];
+            rngIndexes.ForEach(rngIndex => rngIndexSuccesses[rngIndex] = true);
+
+            for (int count = 0; true; count++)
+            {
+                List<Input> inputs = GenerateInputs();
+                ObjSlotManager objSlotManager = Simulate(inputs, false);
+                if (objSlotManager != null)
+                {
+                    int rngIndex = objSlotManager.Rng.GetIndex();
+                    bool success = rngIndexSuccesses[rngIndex];
+                    if (success)
+                    {
+                        Config.Print();
+                        Config.Print("SUCCESS AFTER " + count);
+                        Config.Print();
+                        Config.Print(string.Join("\r\n", inputs));
+                        Config.Print();
+                        Simulate(inputs, true);
+                        Config.Print();
+                        return;
+                    }
+                }
+            }
+        }
+
         public static void BruteForce()
         {
             Input.USE_TAS_INPUT_Y = false;
@@ -108,15 +139,15 @@ namespace STROOP.Structs
         {
             ObjSlotManager objSlotManager = new ObjSlotManager(inputs);
             if (print) Config.Print(objSlotManager);
-            while (objSlotManager.GlobalTimer < 154061)
+            while (objSlotManager.GlobalTimer < 7798)
             {
                 objSlotManager.Update();
                 if (print) Config.Print(objSlotManager);
             }
 
             bool success =
-                objSlotManager.HasBubbleConfiguration(6, true) ||
-                objSlotManager.HasBubbleConfiguration(7, false);
+                objSlotManager.HasBubbleConfiguration(5, true) ||
+                objSlotManager.HasBubbleConfiguration(6, false);
 
             return success ? objSlotManager : null;
         }
@@ -152,7 +183,7 @@ namespace STROOP.Structs
                 ObjectLists =
                     new List<List<WaterObject>>()
                     {
-                    YorangeObjects, GreenObjects, PurpleObjects, BrownObjects,
+                        YorangeObjects, GreenObjects, PurpleObjects, BrownObjects,
                     };
 
                 Rng = new TtcRng();

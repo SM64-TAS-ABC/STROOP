@@ -121,6 +121,40 @@ namespace STROOP.Structs
             }
         }
 
+        public static List<int> GetRngIndexes()
+        {
+            List<List<int>> loadingZoneFramesList = new List<List<int>>()
+            {
+                new List<int>() { 1,2,2,2,2,7,1 },
+                new List<int>() { 1,2,4,2,2,4,2 },
+                new List<int>() { 1,2,4,2,2,5,1 },
+                new List<int>() { 1,2,4,3,2,4,1 },
+                new List<int>() { 1,2,5,2,2,4,1 },
+                new List<int>() { 1,3,4,2,2,4,1 },
+            };
+
+            GenerateUnloadStrategy();
+            bool isBubbleSpawnerPresent = true;
+            int numInitialBubbles = 5;
+
+            List<int> rngIndexes = new List<int>();
+            for (int rngIndex = 0; rngIndex < 65114; rngIndex++)
+            {
+                foreach (List<int> loadingZoneFrames in loadingZoneFramesList)
+                {
+                    int rngValue = RngIndexer.GetRngValue(rngIndex);
+                    (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
+                        Simulate(ObjName.CORK_BOX_WHITE_BUILDING, loadingZoneFrames, rngValue, isBubbleSpawnerPresent, numInitialBubbles, false);
+                    if (success)
+                    {
+                        rngIndexes.Add(rngIndex);
+                        break;
+                    }
+                }
+            }
+            return rngIndexes;
+        }
+
         public static void Run5()
         {
             Config.Print("START");
