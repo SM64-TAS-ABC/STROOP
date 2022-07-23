@@ -47,6 +47,7 @@ namespace STROOP.Structs
             bool[] rngIndexSuccesses = new bool[65114];
             rngIndexes.ForEach(rngIndex => rngIndexSuccesses[rngIndex] = true);
 
+            HashSet<int> seenAlready = new HashSet<int>();
             for (int count = 0; true; count++)
             {
                 List<Input> inputs = GenerateInputs();
@@ -54,6 +55,13 @@ namespace STROOP.Structs
                 if (objSlotManager != null)
                 {
                     int rngIndex = objSlotManager.Rng.GetIndex();
+
+                    if (!seenAlready.Contains(rngIndex))
+                    {
+                        Config.Print("just saw " + rngIndex);
+                        seenAlready.Add(rngIndex);
+                    }
+
                     bool success = rngIndexSuccesses[rngIndex];
                     if (success)
                     {

@@ -125,12 +125,12 @@ namespace STROOP.Structs
         {
             List<List<int>> loadingZoneFramesList = new List<List<int>>()
             {
-                new List<int>() { 1,2,2,2,2,7,1 },
+                //new List<int>() { 1,2,2,2,2,7,1 },
                 new List<int>() { 1,2,4,2,2,4,2 },
-                new List<int>() { 1,2,4,2,2,5,1 },
-                new List<int>() { 1,2,4,3,2,4,1 },
-                new List<int>() { 1,2,5,2,2,4,1 },
-                new List<int>() { 1,3,4,2,2,4,1 },
+                //new List<int>() { 1,2,4,2,2,5,1 },
+                //new List<int>() { 1,2,4,3,2,4,1 },
+                //new List<int>() { 1,2,5,2,2,4,1 },
+                //new List<int>() { 1,3,4,2,2,4,1 },
             };
 
             GenerateUnloadStrategy();
@@ -161,39 +161,40 @@ namespace STROOP.Structs
 
             List<List<int>> loadingZoneFramesList = new List<List<int>>()
             {
-                new List<int>() { 1,2,2,2,2,7,1 },
+                //new List<int>() { 1,2,2,2,2,7,1 },
                 new List<int>() { 1,2,4,2,2,4,2 },
-                new List<int>() { 1,2,4,2,2,5,1 },
-                new List<int>() { 1,2,4,3,2,4,1 },
-                new List<int>() { 1,2,5,2,2,4,1 },
-                new List<int>() { 1,3,4,2,2,4,1 },
+                //new List<int>() { 1,2,4,2,2,5,1 },
+                //new List<int>() { 1,2,4,3,2,4,1 },
+                //new List<int>() { 1,2,5,2,2,4,1 },
+                //new List<int>() { 1,3,4,2,2,4,1 },
             };
 
             GenerateUnloadStrategy();
-            bool isBubbleSpawnerPresent = true;
-            int numInitialBubbles = 5;
+            bool isBubbleSpawnerPresent = false;
+            int numInitialBubbles = 6;
 
-            for (int rngIndex = 0; rngIndex < 65114; rngIndex++)
+            int rngIndex = 17551;
+            //for (int rngIndex = 0; rngIndex < 65114; rngIndex++)
             {
                 foreach (List<int> loadingZoneFrames in loadingZoneFramesList)
                 {
                     int rngValue = RngIndexer.GetRngValue(rngIndex);
                     (bool success, int result, ObjName objName, int numTransitions, int numFrames) =
-                        Simulate(ObjName.CORK_BOX_WHITE_BUILDING, loadingZoneFrames, rngValue, isBubbleSpawnerPresent, numInitialBubbles, false);
+                        Simulate(ObjName.CORK_BOX_WHITE_BUILDING, loadingZoneFrames, rngValue, isBubbleSpawnerPresent, numInitialBubbles, true);
                     string instructions = FormatLoadingZoneFrames(loadingZoneFrames);
                     if (success)
                     {
-                        //Config.Print("-------------------------------------");
-                        //Config.Print("objName = " + objName);
-                        //Config.Print("numFrames = " + numFrames);
-                        //Config.Print("numTransitions = " + numTransitions);
-                        //Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
+                        Config.Print("-------------------------------------");
+                        Config.Print("objName = " + objName);
+                        Config.Print("numFrames = " + numFrames);
+                        Config.Print("numTransitions = " + numTransitions);
+                        Config.Print("loadingZoneFrames = " + string.Join(",", loadingZoneFrames));
                         Config.Print("rngIndex = " + rngIndex);
-                        //Config.Print("rngValue = " + rngValue);
-                        //Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
-                        //Config.Print("numInitialBubbles = " + numInitialBubbles);
-                        //Config.Print(instructions);
-                        //Config.Print("-------------------------------------");
+                        Config.Print("rngValue = " + rngValue);
+                        Config.Print("isBubbleSpawnerPresent = " + isBubbleSpawnerPresent);
+                        Config.Print("numInitialBubbles = " + numInitialBubbles);
+                        Config.Print(instructions);
+                        Config.Print("-------------------------------------");
                     }
                 }
             }
@@ -607,7 +608,7 @@ namespace STROOP.Structs
             ObjSlotManager objSlotManager,
             bool shouldPrint)
         {
-            int startFrame = 1905;
+            int startFrame = 7797;
             int frame = 0;
             bool isTownLoaded = false;
             int numFramesAreaLoaded = 0;
