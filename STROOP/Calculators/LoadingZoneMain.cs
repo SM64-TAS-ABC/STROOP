@@ -110,8 +110,7 @@ namespace STROOP.Structs
             {
                 List<LoadingZoneState> output = new List<LoadingZoneState>();
                 int remainingFrames = 17 - Frame;
-                int start = remainingFrames == 1 ? 1 : 2;
-                for (int i = start; i <= remainingFrames; i++)
+                for (int i = 2; i <= remainingFrames; i++)
                 {
                     LoadingZoneState state = new LoadingZoneState(
                         Frame + i, LoadingZoneFrames.Concat(new List<int>() { i }).ToList());
