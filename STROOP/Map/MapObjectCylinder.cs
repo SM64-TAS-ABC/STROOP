@@ -182,8 +182,8 @@ namespace STROOP.Map
                 }
                 List<Map3DVertex[]> vertexArrayForBases = new List<Map3DVertex[]>()
                 {
-                    GetBaseVertices(maxY, new Color4(OpacityByte, color.R, color.G, color.B)),
-                    GetBaseVertices(minY, new Color4(OpacityByte, color.R, color.G, color.B)),
+                    GetBaseVertices(maxY, new Color4(color.R, color.G, color.B, OpacityByte)),
+                    GetBaseVertices(minY, new Color4(color.R, color.G, color.B, OpacityByte)),
                 };
                 List<Map3DVertex[]> vertexArrayForEdges = new List<Map3DVertex[]>()
                 {

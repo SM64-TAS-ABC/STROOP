@@ -182,7 +182,7 @@ namespace STROOP.Map
                         Map3DVertex[] pointsArray = pointsList.ConvertAll(
                             vertex => new Map3DVertex(new Vector3(
                                 vertex.x, vertex.y, vertex.z),
-                                new Color4(OpacityByte, color.R, color.G, color.B))).ToArray();
+                                new Color4(color.R, color.G, color.B, OpacityByte))).ToArray();
                         vertexArrayForSurfaces.Add(pointsArray);
                     }
                 }
