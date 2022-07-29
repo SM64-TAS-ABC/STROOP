@@ -26,7 +26,7 @@ namespace STROOP.Map
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
             (float xPosPixels, float zPosPixels) = MapUtilities.ConvertCoordsForControlTopDownView((float)x, (float)z, UseRelativeCoordinates);
             float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
-            SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
+            SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, GetSize(), Scales);
             double opacity = Opacity;
             if (this == hoverData?.MapObject)
             {
@@ -40,7 +40,7 @@ namespace STROOP.Map
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
             (float xPosPixels, float yPosPixels) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z, UseRelativeCoordinates);
             float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(angle) : 0;
-            SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, Size, Scales);
+            SizeF size = MapUtilities.ScaleImageSizeForControl(Image.Size, GetSize(), Scales);
             double opacity = Opacity;
             if (this == hoverData?.MapObject)
             {
@@ -91,7 +91,7 @@ namespace STROOP.Map
             float angle = Rotates ? (float)MoreMath.AngleUnitsToRadians(posAngle.Angle - MapConfig.Map3DCameraYaw + 32768) : 0;
             Vector3 pos = new Vector3((float)posAngle.X, (float)posAngle.Y, (float)posAngle.Z);
 
-            float size = Size / 200;
+            float size = GetSize() / 200;
             return Matrix4.CreateScale(size * _imageNormalizedSize.Width, size * _imageNormalizedSize.Height, 1)
                 * Matrix4.CreateRotationZ(angle)
                 * Matrix4.CreateScale(1.0f / Config.Map3DGraphics.NormalizedWidth, 1.0f / Config.Map3DGraphics.NormalizedHeight, 1)
@@ -137,7 +137,7 @@ namespace STROOP.Map
             (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
             double dist = MoreMath.GetDistanceBetween(x, z, inGameX, inGameZ);
-            double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+            double radius = Scales ? GetSize() : GetSize() / Config.CurrentMapGraphics.MapViewScaleValue;
             if (dist <= radius || forceCursorPosition)
             {
                 return new MapObjectHoverData(this, x, y, z);
@@ -153,7 +153,7 @@ namespace STROOP.Map
             (double x, double y, double z, double angle) = GetPositionAngle().GetValues();
             (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView((float)x, (float)y, (float)z, UseRelativeCoordinates);
             double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
-            double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
+            double radius = Scales ? GetSize() * Config.CurrentMapGraphics.MapViewScaleValue : GetSize();
             if (dist <= radius || forceCursorPosition)
             {
                 return new MapObjectHoverData(this, x, y, z);
@@ -170,6 +170,11 @@ namespace STROOP.Map
             output.Insert(0, copyPositionItem);
 
             return output;
+        }
+
+        public virtual float GetSize()
+        {
+            return Size;
         }
     }
 }
