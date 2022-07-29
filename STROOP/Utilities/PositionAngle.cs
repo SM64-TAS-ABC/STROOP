@@ -1411,6 +1411,11 @@ namespace STROOP.Utilities
             return OffsetAngle.Value;
         }
 
+        public PositionAngle GetBasePositionAngle()
+        {
+            return PosAngle1;
+        }
+
 
 
 

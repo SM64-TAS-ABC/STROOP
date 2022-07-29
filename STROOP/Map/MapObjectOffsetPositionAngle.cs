@@ -43,7 +43,24 @@ namespace STROOP.Map
 
         public override void SetDragPositionTopDownView(double? x = null, double? y = null, double? z = null)
         {
-            base.SetDragPositionTopDownView(x, y, z);
+            if (!x.HasValue || !z.HasValue) return;
+
+            PositionAngle posAngle = _posAngle.GetBasePositionAngle();
+            double dist = MoreMath.GetDistanceBetween(posAngle.X, posAngle.Z, x.Value, z.Value);
+            double angle = MoreMath.AngleTo_AngleUnits(posAngle.X, posAngle.Z, x.Value, z.Value);
+            if (Rotates)
+            {
+                angle -= posAngle.Angle;
+            }
+
+            if (!KeyboardUtilities.IsCtrlHeld())
+            {
+                _posAngle.SetOffsetDist(dist);
+            }
+            if (!KeyboardUtilities.IsShiftHeld())
+            {
+                _posAngle.SetOffsetAngle(angle);
+            }
 
             MapTracker mapTracker = GetParentMapTracker();
             mapTracker.SetSize((float)_posAngle.GetOffsetDist());
