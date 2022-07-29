@@ -160,6 +160,9 @@ namespace STROOP.Map
         public readonly bool ChangeCustomHeight;
         public readonly float? NewCustomHeight;
 
+        public readonly bool ChangeUseMarioAsOrigin;
+        public readonly bool NewUseMarioAsOrigin;
+
         public MapObjectSettings(
             bool changeCustomCylinderRelativeMinY = false,
             float newCustomCylinderRelativeMinY = 0,
@@ -309,7 +312,10 @@ namespace STROOP.Map
             bool newUseInteractionStatusAsColor = false,
 
             bool changeCustomHeight = false,
-            float? newCustomHeight = null)
+            float? newCustomHeight = null,
+            
+            bool changeUseMarioAsOrigin = false,
+            bool newUseMarioAsOrigin = false)
         {
             ChangeCustomCylinderRelativeMinY = changeCustomCylinderRelativeMinY;
             NewCustomCylinderRelativeMinY = newCustomCylinderRelativeMinY;
@@ -460,6 +466,9 @@ namespace STROOP.Map
 
             ChangeCustomHeight = changeCustomHeight;
             NewCustomHeight = newCustomHeight;
+
+            ChangeUseMarioAsOrigin = changeUseMarioAsOrigin;
+            NewUseMarioAsOrigin = newUseMarioAsOrigin;
         }
 
         public static MapObjectSettings FromXElement(XElement xElement)

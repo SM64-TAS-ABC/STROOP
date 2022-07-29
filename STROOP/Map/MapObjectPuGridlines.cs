@@ -19,6 +19,9 @@ namespace STROOP.Map
         private enum PuGridlineSetting { SETTING1, SETTING2, SETTING3 };
         private PuGridlineSetting _setting;
 
+        private bool _useMarioAsOrigin;
+        private ToolStripMenuItem _itemUseMarioAsOrigin;
+
         private int puSize => 65536 * _multiplier;
         private int halfPuSize => 32768 * _multiplier;
         private int halfCourseSize => 8192 * _multiplier;
@@ -31,6 +34,7 @@ namespace STROOP.Map
             LineColor = Color.Black;
 
             _setting = PuGridlineSetting.SETTING1;
+            _useMarioAsOrigin = false;
         }
 
         protected override List<(float x, float y, float z)> GetVerticesTopDownView()
@@ -417,8 +421,17 @@ namespace STROOP.Map
                     ControlUtilities.CreateCheckableItems(
                         itemNames, itemValues, setterAction, startingValue);
 
+                _itemUseMarioAsOrigin = new ToolStripMenuItem("Use Mario as Origin");
+                _itemUseMarioAsOrigin.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeUseMarioAsOrigin: true, newUseMarioAsOrigin: !_useMarioAsOrigin);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
                 _contextMenuStrip = new ContextMenuStrip();
                 itemList.ForEach(item => _contextMenuStrip.Items.Add(item));
+                _contextMenuStrip.Items.Add(_itemUseMarioAsOrigin);
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetGridlinesToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
             }
@@ -433,6 +446,12 @@ namespace STROOP.Map
             if (settings.ChangePuGridlinesSetting)
             {
                 _setting = (PuGridlineSetting)Enum.Parse(typeof(PuGridlineSetting), settings.NewPuGridlinesSetting);
+            }
+
+            if (settings.ChangeUseMarioAsOrigin)
+            {
+                _useMarioAsOrigin = settings.NewUseMarioAsOrigin;
+                _itemUseMarioAsOrigin.Checked = _useMarioAsOrigin;
             }
         }
     }
