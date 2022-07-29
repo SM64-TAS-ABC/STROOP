@@ -2290,5 +2290,20 @@ namespace STROOP.Utilities
                 return p2.SetValues(angle: newAngle);
             }
         }
+
+        public void SetOffsetDist(double value)
+        {
+            OffsetDist = value;
+        }
+
+        public void SetOffsetAngle(double value)
+        {
+            OffsetAngle = value;
+        }
+
+        public void SetOffsetAngleRelative(bool value)
+        {
+            OffsetAngleRelative = value;
+        }
     }
 }
