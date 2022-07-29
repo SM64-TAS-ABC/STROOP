@@ -187,17 +187,34 @@ namespace STROOP.Map
             {
                 case PuGridlineSetting.SETTING1:
                     {
-                        float size = Math.Max(Size, 1);
+                        long size = (long)Math.Max(Size, 1);
                         long spacing = (long)(puSize * size);
+
+                        long xOffset = 0;
+                        long yOffset = 0;
+                        long zOffset = 0;
+                        long xOffsetReverse = 0;
+                        long yOffsetReverse = 0;
+                        long zOffsetReverse = 0;
+                        if (_useMarioAsOrigin)
+                        {
+                            (int puXIndex, int puYIndex, int puZIndex) = PuUtilities.GetMarioPuIndexes();
+                            xOffset = (long)MoreMath.NonNegativeModulus(puXIndex, size);
+                            yOffset = (long)MoreMath.NonNegativeModulus(puYIndex, size);
+                            zOffset = (long)MoreMath.NonNegativeModulus(puZIndex, size);
+                            xOffsetReverse = size - xOffset;
+                            yOffsetReverse = size - yOffset;
+                            zOffsetReverse = size - zOffset;
+                        }
 
                         float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
                         float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
-                        long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing;
-                        long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing;
-                        long yMin = ((((long)Config.CurrentMapGraphics.MapViewYMin) / spacing) - 1) * spacing;
-                        long yMax = ((((long)Config.CurrentMapGraphics.MapViewYMax) / spacing) + 1) * spacing;
-                        long zMin = ((((long)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing;
-                        long zMax = ((((long)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing;
+                        long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing - puSize * xOffsetReverse;
+                        long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing + puSize * xOffset;
+                        long yMin = ((((long)Config.CurrentMapGraphics.MapViewYMin) / spacing) - 1) * spacing - puSize * yOffsetReverse;
+                        long yMax = ((((long)Config.CurrentMapGraphics.MapViewYMax) / spacing) + 1) * spacing + puSize * yOffset;
+                        long zMin = ((((long)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing - puSize * zOffsetReverse;
+                        long zMax = ((((long)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing + puSize * zOffset;
 
                         if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                             (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
@@ -374,17 +391,34 @@ namespace STROOP.Map
                 return new List<(float x, float y, float z)>();
             }
 
-            float size = Math.Max(Size, 1);
+            long size = (long)Math.Max(Size, 1);
             long spacing = (long)(puSize * size);
+
+            long xOffset = 0;
+            long yOffset = 0;
+            long zOffset = 0;
+            long xOffsetReverse = 0;
+            long yOffsetReverse = 0;
+            long zOffsetReverse = 0;
+            if (_useMarioAsOrigin)
+            {
+                (int puXIndex, int puYIndex, int puZIndex) = PuUtilities.GetMarioPuIndexes();
+                xOffset = (long)MoreMath.NonNegativeModulus(puXIndex, size);
+                yOffset = (long)MoreMath.NonNegativeModulus(puYIndex, size);
+                zOffset = (long)MoreMath.NonNegativeModulus(puZIndex, size);
+                xOffsetReverse = size - xOffset;
+                yOffsetReverse = size - yOffset;
+                zOffsetReverse = size - zOffset;
+            }
 
             float xCenter = Config.CurrentMapGraphics.MapViewCenterXValue;
             float zCenter = Config.CurrentMapGraphics.MapViewCenterZValue;
-            long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing;
-            long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing;
-            long yMin = ((((long)Config.CurrentMapGraphics.MapViewYMin) / spacing) - 1) * spacing;
-            long yMax = ((((long)Config.CurrentMapGraphics.MapViewYMax) / spacing) + 1) * spacing;
-            long zMin = ((((long)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing;
-            long zMax = ((((long)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing;
+            long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing - puSize * xOffsetReverse;
+            long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing + puSize * xOffset;
+            long yMin = ((((long)Config.CurrentMapGraphics.MapViewYMin) / spacing) - 1) * spacing - puSize * yOffsetReverse;
+            long yMax = ((((long)Config.CurrentMapGraphics.MapViewYMax) / spacing) + 1) * spacing + puSize * yOffset;
+            long zMin = ((((long)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing - puSize * zOffsetReverse;
+            long zMax = ((((long)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing + puSize * zOffset;
 
             if (Config.CurrentMapGraphics.MapViewPitchValue == 0 &&
                 (Config.CurrentMapGraphics.MapViewYawValue == 0 ||
