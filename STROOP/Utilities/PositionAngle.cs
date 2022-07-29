@@ -572,6 +572,9 @@ namespace STROOP.Utilities
             if (ThisY.HasValue) parts.Add(ThisY.Value);
             if (ThisZ.HasValue) parts.Add(ThisZ.Value);
             if (ThisAngle.HasValue) parts.Add(ThisAngle.Value);
+            if (OffsetDist.HasValue) parts.Add(OffsetDist.Value);
+            if (OffsetAngle.HasValue) parts.Add(OffsetAngle.Value);
+            if (OffsetAngleRelative.HasValue) parts.Add(OffsetAngleRelative.Value);
             if (PosAngle1 != null) parts.Add("[" + PosAngle1 + "]");
             if (PosAngle2 != null) parts.Add("[" + PosAngle2 + "]");
             return string.Join(" ", parts);
@@ -758,6 +761,8 @@ namespace STROOP.Utilities
                         return ThisX.Value;
                     case PositionAngleTypeEnum.Ang:
                         return double.NaN;
+                    case PositionAngleTypeEnum.Offset:
+                        return GetOffset(Coordinate.X);
                     case PositionAngleTypeEnum.Trunc:
                         return (int)PosAngle1.X;
                     case PositionAngleTypeEnum.Self:
@@ -876,6 +881,8 @@ namespace STROOP.Utilities
                         return ThisY.Value;
                     case PositionAngleTypeEnum.Ang:
                         return double.NaN;
+                    case PositionAngleTypeEnum.Offset:
+                        return GetOffset(Coordinate.Y);
                     case PositionAngleTypeEnum.Trunc:
                         return (int)PosAngle1.Y;
                     case PositionAngleTypeEnum.Self:
@@ -994,6 +1001,8 @@ namespace STROOP.Utilities
                         return ThisZ.Value;
                     case PositionAngleTypeEnum.Ang:
                         return double.NaN;
+                    case PositionAngleTypeEnum.Offset:
+                        return GetOffset(Coordinate.Z);
                     case PositionAngleTypeEnum.Trunc:
                         return (int)PosAngle1.Z;
                     case PositionAngleTypeEnum.Self:
@@ -1106,6 +1115,8 @@ namespace STROOP.Utilities
                         return ThisAngle.Value;
                     case PositionAngleTypeEnum.Ang:
                         return ThisAngle.Value;
+                    case PositionAngleTypeEnum.Offset:
+                        return 0;
                     case PositionAngleTypeEnum.Trunc:
                         return MoreMath.NormalizeAngleTruncated(PosAngle1.Angle);
                     case PositionAngleTypeEnum.Self:
@@ -1381,6 +1392,14 @@ namespace STROOP.Utilities
             }
         }
 
+        private double GetOffset(Coordinate coordinate)
+        {
+            if (coordinate == Coordinate.Y) return PosAngle1.Y;
+            double angle = OffsetAngleRelative.Value ? PosAngle1.Angle + OffsetAngle.Value : OffsetAngle.Value;
+            var point = MoreMath.AddVectorToPoint(OffsetDist.Value, angle, PosAngle1.X, PosAngle1.Z);
+            return coordinate == Coordinate.X ? point.x : point.z;
+        }
+
 
 
 
@@ -1485,6 +1504,8 @@ namespace STROOP.Utilities
                     ThisX = value;
                     return true;
                 case PositionAngleTypeEnum.Ang:
+                    return false;
+                case PositionAngleTypeEnum.Offset:
                     return false;
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetX(value);
@@ -1604,6 +1625,8 @@ namespace STROOP.Utilities
                     return true;
                 case PositionAngleTypeEnum.Ang:
                     return false;
+                case PositionAngleTypeEnum.Offset:
+                    return false;
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetY(value);
                 case PositionAngleTypeEnum.Self:
@@ -1721,6 +1744,8 @@ namespace STROOP.Utilities
                     ThisZ = value;
                     return true;
                 case PositionAngleTypeEnum.Ang:
+                    return false;
+                case PositionAngleTypeEnum.Offset:
                     return false;
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetZ(value);
@@ -1844,6 +1869,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Ang:
                     ThisAngle = value;
                     return true;
+                case PositionAngleTypeEnum.Offset:
+                    return false;
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetAngle(value);
                 case PositionAngleTypeEnum.Self:
