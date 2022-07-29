@@ -1506,7 +1506,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Ang:
                     return false;
                 case PositionAngleTypeEnum.Offset:
-                    return false;
+                    return SetOffset(value, Coordinate.X);
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetX(value);
                 case PositionAngleTypeEnum.Self:
@@ -1626,7 +1626,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Ang:
                     return false;
                 case PositionAngleTypeEnum.Offset:
-                    return false;
+                    return SetOffset(value, Coordinate.Y);
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetY(value);
                 case PositionAngleTypeEnum.Self:
@@ -1746,7 +1746,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Ang:
                     return false;
                 case PositionAngleTypeEnum.Offset:
-                    return false;
+                    return SetOffset(value, Coordinate.Z);
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetZ(value);
                 case PositionAngleTypeEnum.Self:
@@ -2289,6 +2289,25 @@ namespace STROOP.Utilities
                 double newAngle = p1.Angle - angleDiff;
                 return p2.SetValues(angle: newAngle);
             }
+        }
+
+        private bool SetOffset(double value, Coordinate coordinate)
+        {
+            if (coordinate == Coordinate.Y) return false;
+
+            double newX = coordinate == Coordinate.X ? value : X;
+            double newZ = coordinate == Coordinate.Z ? value : Z;
+
+            double dist = MoreMath.GetDistanceBetween(PosAngle1.X, PosAngle1.Z, newX, newZ);
+            double angle = MoreMath.AngleTo_AngleUnits(PosAngle1.X, PosAngle1.Z, newX, newZ);
+            if (OffsetAngleRelative.Value)
+            {
+                angle -= PosAngle1.Angle;
+            }
+
+            OffsetDist = dist;
+            OffsetAngle = angle;
+            return true;
         }
 
         public void SetOffsetDist(double value)
