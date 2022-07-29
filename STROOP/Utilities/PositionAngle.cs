@@ -536,6 +536,17 @@ namespace STROOP.Utilities
                 double angle = ParsingUtilities.ParseDoubleNullable(parts[1]) ?? double.NaN;
                 return Ang(angle);
             }
+            else if (parts[0] == "offset")
+            {
+                double dist = ParsingUtilities.ParseDouble(parts[1]);
+                double angle = ParsingUtilities.ParseDouble(parts[2]);
+                bool relative = ParsingUtilities.ParseBool(parts[3]);
+                int indexStart = stringValue.IndexOf("[");
+                int indexEnd = stringValue.LastIndexOf("]");
+                string substring = stringValue.Substring(indexStart + 1, indexEnd - indexStart - 1);
+                PositionAngle posAngle = FromString(substring);
+                return Offset(dist, angle, relative, posAngle);
+            }
             else if (parts.Count == 1 && parts[0] == "schedule")
             {
                 return Scheduler;
