@@ -1396,7 +1396,8 @@ namespace STROOP.Utilities
         {
             if (coordinate == Coordinate.Y) return PosAngle1.Y;
             double angle = OffsetAngleRelative.Value ? PosAngle1.Angle + OffsetAngle.Value : OffsetAngle.Value;
-            var point = MoreMath.AddVectorToPoint(OffsetDist.Value, angle, PosAngle1.X, PosAngle1.Z);
+            double angleTruncated = MoreMath.NormalizeAngleTruncated(angle);
+            var point = MoreMath.AddVectorToPoint(OffsetDist.Value, angleTruncated, PosAngle1.X, PosAngle1.Z);
             return coordinate == Coordinate.X ? point.x : point.z;
         }
 
