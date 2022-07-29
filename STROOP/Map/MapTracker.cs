@@ -984,7 +984,7 @@ namespace STROOP.Map
         }
 
         /** null if controls should be refreshed */
-        private void SetLineWidth(float? lineWidthNullable)
+        public void SetLineWidth(float? lineWidthNullable)
         {
             bool updateMapObjs = lineWidthNullable != null;
             float lineWidth = lineWidthNullable ?? _mapObjectList[0].LineWidth;

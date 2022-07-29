@@ -41,6 +41,15 @@ namespace STROOP.Map
             _posAngle.SetOffsetAngleRelative(Rotates);
         }
 
+        public override void SetDragPositionTopDownView(double? x = null, double? y = null, double? z = null)
+        {
+            base.SetDragPositionTopDownView(x, y, z);
+
+            MapTracker mapTracker = GetParentMapTracker();
+            mapTracker.SetSize((float)_posAngle.GetOffsetDist());
+            mapTracker.SetLineWidth((float)_posAngle.GetOffsetAngle());
+        }
+
         public override Image GetInternalImage()
         {
             return Config.ObjectAssociations.GreenMarioMapImage;

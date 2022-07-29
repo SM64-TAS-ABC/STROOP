@@ -1400,6 +1400,16 @@ namespace STROOP.Utilities
             return coordinate == Coordinate.X ? point.x : point.z;
         }
 
+        public double GetOffsetDist()
+        {
+            return OffsetDist.Value;
+        }
+
+        public double GetOffsetAngle()
+        {
+            return OffsetAngle.Value;
+        }
+
 
 
 
