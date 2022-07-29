@@ -530,6 +530,9 @@ namespace STROOP.Map
                 case "MapObjectObjectWall":
                     mapObject = new MapObjectObjectWall(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
+                case "MapObjectOffsetPositionAngle":
+                    mapObject = new MapObjectOffsetPositionAngle(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
                 case "MapObjectPath":
                     mapObject = MapObjectPath.Create(
                         PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value),
