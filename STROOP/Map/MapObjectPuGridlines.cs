@@ -45,13 +45,26 @@ namespace STROOP.Map
                     {
                         float marioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
 
-                        float size = Math.Max(Size, 1);
-                        long spacing = (long)(puSize * size);
+                        long size = (long)Math.Max(Size, 1);
+                        long spacing = puSize * size;
 
-                        long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing;
-                        long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing;
-                        long zMin = ((((long)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing;
-                        long zMax = ((((long)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing;
+                        long xOffset = 0;
+                        long zOffset = 0;
+                        long xOffsetReverse = 0;
+                        long zOffsetReverse = 0;
+                        if (_useMarioAsOrigin)
+                        {
+                            (int puXIndex, int puYIndex, int puZIndex) = PuUtilities.GetMarioPuIndexes();
+                            xOffset = (long)MoreMath.NonNegativeModulus(puXIndex, size);
+                            zOffset = (long)MoreMath.NonNegativeModulus(puZIndex, size);
+                            xOffsetReverse = size - xOffset;
+                            zOffsetReverse = size - zOffset;
+                        }
+
+                        long xMin = ((((long)Config.CurrentMapGraphics.MapViewXMin) / spacing) - 1) * spacing - puSize * xOffsetReverse;
+                        long xMax = ((((long)Config.CurrentMapGraphics.MapViewXMax) / spacing) + 1) * spacing + puSize * xOffset;
+                        long zMin = ((((long)Config.CurrentMapGraphics.MapViewZMin) / spacing) - 1) * spacing - puSize * zOffsetReverse;
+                        long zMax = ((((long)Config.CurrentMapGraphics.MapViewZMax) / spacing) + 1) * spacing + puSize * zOffset;
 
                         List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
                         for (long x = xMin; x <= xMax; x += spacing)
