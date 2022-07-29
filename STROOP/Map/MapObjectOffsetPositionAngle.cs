@@ -34,6 +34,8 @@ namespace STROOP.Map
 
         public override void Update()
         {
+            base.Update();
+
             _posAngle.SetOffsetDist(Size);
             _posAngle.SetOffsetAngle(LineWidth);
             _posAngle.SetOffsetAngleRelative(Rotates);

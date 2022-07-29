@@ -678,6 +678,18 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
             });
 
+            ToolStripMenuItem itemOffsetPositionAngle = new ToolStripMenuItem("Add Tracker for Offset PositionAngle");
+            setUpClickAction(itemOffsetPositionAngle, mapObjectList =>
+            {
+                return mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    return (MapObject)new MapObjectOffsetPositionAngle(
+                        PositionAngle.Offset(100, 0, false, posAngle));
+                }).FindAll(mapObj => mapObj != null);
+            });
+
             ToolStripMenuItem itemCoffinBox = new ToolStripMenuItem("Add Tracker for Coffin Box");
             setUpClickAction(itemCoffinBox, mapObjectList =>
             {
@@ -779,7 +791,8 @@ namespace STROOP.Map
             itemMisc.DropDownItems.Add(itemHomeLine);
             itemMisc.DropDownItems.Add(itemPath);
             itemMisc.DropDownItems.Add(itemBranchPath);
-
+            itemMisc.DropDownItems.Add(itemOffsetPositionAngle);
+            
             ToolStripMenuItem itemObjectSpecific = new ToolStripMenuItem("Object Specific...");
             itemObjectSpecific.DropDownItems.Add(itemCoffinBox);
             itemObjectSpecific.DropDownItems.Add(itemChuckyaMapObjects);
