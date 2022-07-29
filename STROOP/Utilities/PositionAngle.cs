@@ -22,6 +22,9 @@ namespace STROOP.Utilities
         private double? ThisY;
         private double? ThisZ;
         private double? ThisAngle;
+        private double? OffsetDist;
+        private double? OffsetAngle;
+        private bool? OffsetAngleRelative;
         private readonly PositionAngle PosAngle1;
         private readonly PositionAngle PosAngle2;
         private readonly List<Func<double>> Getters;
@@ -76,6 +79,7 @@ namespace STROOP.Utilities
             NextPositions,
             Schedule,
             Hybrid,
+            Offset,
             Trunc,
             Pos,
             Ang,
@@ -138,6 +142,9 @@ namespace STROOP.Utilities
             double? thisY = null,
             double? thisZ = null,
             double? thisAngle = null,
+            double? offsetDist = null,
+            double? offsetAngle = null,
+            bool? offsetAngleRelative = null,
             PositionAngle posAngle1 = null,
             PositionAngle posAngle2 = null,
             List<Func<double>> getters = null,
@@ -153,6 +160,9 @@ namespace STROOP.Utilities
             ThisY = thisY;
             ThisZ = thisZ;
             ThisAngle = thisAngle;
+            OffsetDist = offsetDist;
+            OffsetAngle = offsetAngle;
+            OffsetAngleRelative = offsetAngleRelative;
             PosAngle1 = posAngle1;
             PosAngle2 = posAngle2;
             Getters = getters;
@@ -196,8 +206,21 @@ namespace STROOP.Utilities
             if (thisAngle.HasValue != shouldHaveThisAngle)
                 throw new ArgumentOutOfRangeException();
 
+            bool shouldHaveOffsetDist = PosAngleType == PositionAngleTypeEnum.Offset;
+            if (offsetDist.HasValue != shouldHaveOffsetDist)
+                throw new ArgumentOutOfRangeException();
+
+            bool shouldHaveOffsetAngle = PosAngleType == PositionAngleTypeEnum.Offset;
+            if (offsetAngle.HasValue != shouldHaveOffsetAngle)
+                throw new ArgumentOutOfRangeException();
+
+            bool shouldHaveOffsetAngleRelative = PosAngleType == PositionAngleTypeEnum.Offset;
+            if (offsetAngleRelative.HasValue != shouldHaveOffsetAngleRelative)
+                throw new ArgumentOutOfRangeException();
+
             bool shouldHavePosAngle1 =
                 PosAngleType == PositionAngleTypeEnum.Hybrid ||
+                PosAngleType == PositionAngleTypeEnum.Offset ||
                 PosAngleType == PositionAngleTypeEnum.Trunc;
             if ((posAngle1 != null) != shouldHavePosAngle1)
                 throw new ArgumentOutOfRangeException();
@@ -281,6 +304,8 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.GFrame, frame: frame);
         public static PositionAngle Hybrid(PositionAngle posAngle1, PositionAngle posAngle2) =>
             new PositionAngle(PositionAngleTypeEnum.Hybrid, posAngle1: posAngle1, posAngle2: posAngle2);
+        public static PositionAngle Offset(double dist, double angle, bool relative, PositionAngle posAngle) =>
+            new PositionAngle(PositionAngleTypeEnum.Offset, offsetDist: dist, offsetAngle: angle, offsetAngleRelative: relative, posAngle1: posAngle);
         public static PositionAngle Trunc(PositionAngle posAngle) =>
             new PositionAngle(PositionAngleTypeEnum.Trunc, posAngle1: posAngle);
         public static PositionAngle Functions(List<Func<double>> getters, List<Func<double, bool>> setters) =>
