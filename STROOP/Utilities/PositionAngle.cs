@@ -64,6 +64,7 @@ namespace STROOP.Utilities
             FirstHome,
             LastHome,
             GoombaProjection,
+            BullyPivot,
             KoopaTheQuick,
             Ghost,
             Tri,
@@ -103,6 +104,7 @@ namespace STROOP.Utilities
                 posAngleType == PositionAngleTypeEnum.ObjGfx ||
                 posAngleType == PositionAngleTypeEnum.ObjScale ||
                 posAngleType == PositionAngleTypeEnum.GoombaProjection ||
+                PosAngleType == PositionAngleTypeEnum.BullyPivot ||
                 posAngleType == PositionAngleTypeEnum.Tri ||
                 posAngleType == PositionAngleTypeEnum.ObjTri;
         }
@@ -286,6 +288,8 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.LastHome, text: text);
         public static PositionAngle GoombaProjection(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.GoombaProjection, address: address);
+        public static PositionAngle BullyPivot(uint address) =>
+            new PositionAngle(PositionAngleTypeEnum.BullyPivot, address: address);
         public static PositionAngle Tri(uint address, int index) =>
             new PositionAngle(PositionAngleTypeEnum.Tri, address: address, index: index);
         public static PositionAngle ObjTri(uint address, int index, int index2) =>
@@ -419,6 +423,12 @@ namespace STROOP.Utilities
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
                 if (!address.HasValue) return null;
                 return GoombaProjection(address.Value);
+            }
+            else if (parts.Count == 2 && parts[0] == "bullypivot")
+            {
+                uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
+                if (!address.HasValue) return null;
+                return BullyPivot(address.Value);
             }
             else if (parts.Count == 1 && parts[0] == "koopathequick")
             {
@@ -613,6 +623,7 @@ namespace STROOP.Utilities
                 PosAngleType == PositionAngleTypeEnum.ObjGfx ||
                 PosAngleType == PositionAngleTypeEnum.ObjScale ||
                 PosAngleType == PositionAngleTypeEnum.GoombaProjection ||
+                PosAngleType == PositionAngleTypeEnum.BullyPivot ||
                 PosAngleType == PositionAngleTypeEnum.ObjTri;
         }
 
@@ -716,6 +727,8 @@ namespace STROOP.Utilities
                         return GetObjectValue(Text, false, CoordinateAngle.X, home: true);
                     case PositionAngleTypeEnum.GoombaProjection:
                         return GetGoombaProjection(Address.Value).x;
+                    case PositionAngleTypeEnum.BullyPivot:
+                        return GetBullyPivot(Address.Value, Coordinate.X);
                     case PositionAngleTypeEnum.KoopaTheQuick:
                         return PlushUtilities.GetX();
                     case PositionAngleTypeEnum.Ghost:
@@ -835,6 +848,8 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.LastHome:
                         return GetObjectValue(Text, false, CoordinateAngle.Y, home: true);
                     case PositionAngleTypeEnum.GoombaProjection:
+                        return Config.Stream.GetFloat(Address.Value + ObjectConfig.YOffset);
+                    case PositionAngleTypeEnum.BullyPivot:
                         return Config.Stream.GetFloat(Address.Value + ObjectConfig.YOffset);
                     case PositionAngleTypeEnum.KoopaTheQuick:
                         return PlushUtilities.GetY();
@@ -956,6 +971,8 @@ namespace STROOP.Utilities
                         return GetObjectValue(Text, false, CoordinateAngle.Z, home: true);
                     case PositionAngleTypeEnum.GoombaProjection:
                         return GetGoombaProjection(Address.Value).z;
+                    case PositionAngleTypeEnum.BullyPivot:
+                        return GetBullyPivot(Address.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.KoopaTheQuick:
                         return PlushUtilities.GetZ();
                     case PositionAngleTypeEnum.Ghost:
@@ -1076,6 +1093,8 @@ namespace STROOP.Utilities
                         return GetObjectValue(Text, false, CoordinateAngle.Angle, home: true);
                     case PositionAngleTypeEnum.GoombaProjection:
                         return MoreMath.NormalizeAngleUshort(Config.Stream.GetInt(Address.Value + ObjectConfig.GoombaTargetAngleOffset));
+                    case PositionAngleTypeEnum.BullyPivot:
+                        return double.NaN;
                     case PositionAngleTypeEnum.KoopaTheQuick:
                         return PlushUtilities.GetAngle();
                     case PositionAngleTypeEnum.Ghost:
@@ -1183,6 +1202,25 @@ namespace STROOP.Utilities
             int countdown = Config.Stream.GetInt(address + ObjectConfig.GoombaCountdownOffset);
             ushort targetAngle = MoreMath.NormalizeAngleUshort(Config.Stream.GetInt(address + ObjectConfig.GoombaTargetAngleOffset));
             return MoreMath.AddVectorToPoint(hSpeed * countdown, targetAngle, startX, startZ);
+        }
+
+        public static double GetBullyPivot(uint address, Coordinate coord)
+        {
+            float x = Config.Stream.GetFloat(address + ObjectConfig.XOffset);
+            float z = Config.Stream.GetFloat(address + ObjectConfig.ZOffset);
+            ushort yaw = Config.Stream.GetUShort(address + ObjectConfig.YawMovingOffset);
+            float hSpeed = Config.Stream.GetFloat(address + ObjectConfig.HSpeedOffset);
+
+            if (yaw % 2 == 0)
+            {
+                return coord == Coordinate.X ? x : z;
+            }
+            else
+            {
+                ushort truncated = MoreMath.NormalizeAngleTruncated(yaw + 32768);
+                (double nextX, double nextZ) = MoreMath.AddVectorToPoint(hSpeed, truncated, x, z);
+                return coord == Coordinate.X ? nextX : nextZ;
+            }
         }
 
         private static double GetTriangleVertexComponent(uint address, int index, Coordinate coordinate)
@@ -1477,6 +1515,8 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, Text, false, CoordinateAngle.X, home: true);
                 case PositionAngleTypeEnum.GoombaProjection:
                     return false;
+                case PositionAngleTypeEnum.BullyPivot:
+                    return false;
                 case PositionAngleTypeEnum.KoopaTheQuick:
                     return false;
                 case PositionAngleTypeEnum.Ghost:
@@ -1597,6 +1637,8 @@ namespace STROOP.Utilities
                     return SetObjectValue(value, Text, false, CoordinateAngle.Y, home: true);
                 case PositionAngleTypeEnum.GoombaProjection:
                     return false;
+                case PositionAngleTypeEnum.BullyPivot:
+                    return false;
                 case PositionAngleTypeEnum.KoopaTheQuick:
                     return false;
                 case PositionAngleTypeEnum.Ghost:
@@ -1716,6 +1758,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.LastHome:
                     return SetObjectValue(value, Text, false, CoordinateAngle.Z, home: true);
                 case PositionAngleTypeEnum.GoombaProjection:
+                    return false;
+                case PositionAngleTypeEnum.BullyPivot:
                     return false;
                 case PositionAngleTypeEnum.KoopaTheQuick:
                     return false;
@@ -1845,6 +1889,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.LastHome:
                     return SetObjectValue(value, Text, false, CoordinateAngle.Angle, home: true);
                 case PositionAngleTypeEnum.GoombaProjection:
+                    return false;
+                case PositionAngleTypeEnum.BullyPivot:
                     return false;
                 case PositionAngleTypeEnum.KoopaTheQuick:
                     return false;
