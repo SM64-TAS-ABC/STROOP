@@ -15,7 +15,7 @@ namespace STROOP.M64
 {
     public class M64Header
     {
-        public enum MovieStartTypeEnum { FromStart, FromSnapshot, FromEEPROM }
+        public enum MovieStartTypeEnum { FromStart, FromSnapshot, FromEEPROM, FromExistingSnapshot }
 
         private readonly M64File _m64File;
         private readonly M64Gui _gui;
@@ -39,6 +39,8 @@ namespace STROOP.M64
         // value 1: movie begins from snapshot(the snapshot will be loaded from an externalfile
         //     with the movie filename and a .st extension)
         // value 2: movie begins from power-on
+        // value 4: movie begins from power-on (eeprom)
+        // value 8: movie begins from existing snapshot
         // other values: invalid movie
         private MovieStartTypeEnum _movieStartType;
         [CategoryAttribute("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200BMovie Start Type")]
@@ -425,6 +427,8 @@ namespace STROOP.M64
                     return 2;
                 case MovieStartTypeEnum.FromEEPROM:
                     return 4;
+                case MovieStartTypeEnum.FromExistingSnapshot:
+                    return 8;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -440,6 +444,8 @@ namespace STROOP.M64
                     return MovieStartTypeEnum.FromStart;
                 case 4:
                     return MovieStartTypeEnum.FromEEPROM;
+                case 8:
+                    return MovieStartTypeEnum.FromExistingSnapshot;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
