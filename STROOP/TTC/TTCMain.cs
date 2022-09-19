@@ -79,7 +79,7 @@ namespace STROOP.Ttc
                     FindIdealPendulumManipulation(pendulumAddress, currentSaveState);
                 if (!success) break;
 
-                List<int> absoluteDustFrames = relativeDustFrames.ConvertAll(rel => rel + currentStartFrame - 2);
+                List<int> absoluteDustFrames = relativeDustFrames.ConvertAll(rel => rel + currentStartFrame - 1);
                 dustFrameLists.Add(absoluteDustFrames);
 
                 currentSaveState = saveState;
