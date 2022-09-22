@@ -39,9 +39,14 @@ namespace STROOP.Map
             // do nothing
         }
 
-        public override float GetWallRelativeHeightForOrthographicView()
+        public override float GetWallRelativeHeightForOrthographicViewCrossSection()
         {
             return -30;
+        }
+
+        public override float GetWallRelativeHeightForOrthographicViewTotal()
+        {
+            return 0;
         }
 
         public override Color GetColorForOrthographicView(TriangleClassification classification)

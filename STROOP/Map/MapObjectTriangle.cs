@@ -104,7 +104,12 @@ namespace STROOP.Map
             }
         }
 
-        public virtual float GetWallRelativeHeightForOrthographicView()
+        public virtual float GetWallRelativeHeightForOrthographicViewCrossSection()
+        {
+            return 0;
+        }
+
+        public virtual float GetWallRelativeHeightForOrthographicViewTotal()
         {
             return 0;
         }
@@ -140,7 +145,7 @@ namespace STROOP.Map
                         {
                             double pushAngleRadians = MoreMath.AngleUnitsToRadians(data.Tri.GetPushAngle());
                             double mapViewAngleRadians = MoreMath.AngleUnitsToRadians(Config.CurrentMapGraphics.MapViewYawValue);
-                            float relativeHeight = GetWallRelativeHeightForOrthographicView();
+                            float relativeHeight = GetWallRelativeHeightForOrthographicViewCrossSection();
                             if (data.Tri.XProjection)
                             {
                                 float projectionDist = size / (float)Math.Abs(Math.Cos(mapViewAngleRadians - pushAngleRadians + 0.5 * Math.PI));
@@ -643,7 +648,7 @@ namespace STROOP.Map
                 GetFilteredTriangles().ConvertAll(tri =>
                 {
                     Color color = GetColorForOrthographicView(tri.Classification);
-                    return tri.Get3DVertices().ConvertAll(vertex => (vertex.x, vertex.y, vertex.z, color, tri));
+                    return tri.Get3DVertices().ConvertAll(vertex => (vertex.x, vertex.y + GetWallRelativeHeightForOrthographicViewTotal(), vertex.z, color, tri));
                 });
 
             List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
