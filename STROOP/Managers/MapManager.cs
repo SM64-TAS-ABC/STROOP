@@ -123,6 +123,36 @@ namespace STROOP.Managers
                 TrackMultipleObjects(Config.ObjectSlotsManager.MarkedSlotsAddresses);
             };
 
+            ToolStripMenuItem itemSpecificMarkedObjects = new ToolStripMenuItem("Add Tracker for Specific Marked Objects...");
+            Dictionary<int, string> MarkedColorDictionary =
+                new Dictionary<int, string>()
+                {
+                    [1] = "Red",
+                    [2] = "Orange",
+                    [3] = "Yellow",
+                    [4] = "Green",
+                    [5] = "Light Blue",
+                    [6] = "Blue",
+                    [7] = "Purple",
+                    [8] = "Pink",
+                    [9] = "Grey",
+                    [0] = "White",
+                    [10] = "Black",
+                };
+            List<int> keys = MarkedColorDictionary.Keys.ToList();
+            foreach (int key in keys)
+            {
+                string colorName = MarkedColorDictionary[key];
+                ToolStripMenuItem item = new ToolStripMenuItem(colorName);
+                item.Click += (sender, e) =>
+                {
+                    List<uint> objAddresses = Config.ObjectSlotsManager.MarkedSlotsAddressesDictionary.Keys.ToList()
+                        .FindAll(objAddress => Config.ObjectSlotsManager.MarkedSlotsAddressesDictionary[objAddress] == key);
+                    TrackMultipleObjects(objAddresses);
+                };
+                itemSpecificMarkedObjects.DropDownItems.Add(item);
+            }
+
             ToolStripMenuItem itemAllObjectsWithName = new ToolStripMenuItem("Add Tracker for All Objects with Name");
             itemAllObjectsWithName.Click += (sender, e) =>
             {
@@ -519,6 +549,7 @@ namespace STROOP.Managers
             ToolStripMenuItem itemObjects = new ToolStripMenuItem("Objects...");
             itemObjects.DropDownItems.Add(itemAllObjects);
             itemObjects.DropDownItems.Add(itemMarkedObjects);
+            itemObjects.DropDownItems.Add(itemSpecificMarkedObjects);
             itemObjects.DropDownItems.Add(itemAllObjectsWithName);
 
             ToolStripMenuItem itemTriangles = new ToolStripMenuItem("Triangles...");
