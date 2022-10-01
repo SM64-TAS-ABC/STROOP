@@ -21,6 +21,7 @@ namespace STROOP.Map
         private readonly PositionAngle _posAngle;
         private bool _autoUpdate;
         private List<TriangleDataModel> _tris;
+        private ToolStripMenuItem _itemAutoUpdate;
 
         public MapObjectObjectCeiling(PositionAngle posAngle)
             : base()
@@ -56,14 +57,15 @@ namespace STROOP.Map
             {
                 _contextMenuStrip = new ContextMenuStrip();
 
-                ToolStripMenuItem itemAutoUpdate = new ToolStripMenuItem("Auto Update");
-                itemAutoUpdate.Click += (sender, e) =>
+                _itemAutoUpdate = new ToolStripMenuItem("Auto Update");
+                _itemAutoUpdate.Click += (sender, e) =>
                 {
-                    _autoUpdate = !_autoUpdate;
-                    itemAutoUpdate.Checked = _autoUpdate;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeAutoUpdate: true, newAutoUpdate: !_autoUpdate);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
-                itemAutoUpdate.Checked = _autoUpdate;
-                _contextMenuStrip.Items.Add(itemAutoUpdate);
+                _itemAutoUpdate.Checked = _autoUpdate;
+                _contextMenuStrip.Items.Add(_itemAutoUpdate);
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
 
                 GetHorizontalTriangleToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
@@ -72,6 +74,17 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeAutoUpdate)
+            {
+                _autoUpdate = settings.NewAutoUpdate;
+                _itemAutoUpdate.Checked = settings.NewAutoUpdate;
+            }
         }
 
         public override PositionAngle GetPositionAngle()
