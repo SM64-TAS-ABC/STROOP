@@ -855,6 +855,18 @@ namespace STROOP.Map
             _showArrows = !_showArrows;
         }
 
+        private (float x, float y, float z) GetMidpointOfTriUnitOrthographicCrossSection(List<(float x, float y, float z, Color color, TriangleMapData data)> data)
+        {
+            float y = data.Max(p => p.y);
+
+            float xAverage = data.Average(v => v.x);
+            float zAverage = data.Average(v => v.z);
+            float xMidpoint = (int)xAverage + (xAverage >= 0 ? 0.5f : -0.5f);
+            float zMidpoint = (int)zAverage + (zAverage >= 0 ? 0.5f : -0.5f);
+
+            return (xMidpoint, y, zMidpoint);
+        }
+
         public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
@@ -875,16 +887,15 @@ namespace STROOP.Map
                     if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y) || forceCursorPosition)
                     {
                         TriangleDataModel tri = tris[i][0].data.Tri;
-                        double y = tri.GetMidpointY();
-                        int? index = null;
-                        bool isTriUnit = false;
                         if (MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits())
                         {
-                            y = tris[i].Max(p => p.y);
-                            index = i;
-                            isTriUnit = true;
+                            (float x, float y, float z) = GetMidpointOfTriUnitOrthographicCrossSection(tris[i]);
+                            return new MapObjectHoverData(this, x, y, z, tri: tri, index: i, isTriUnit: true);
                         }
-                        return new MapObjectHoverData(this, tri.GetMidpointX(), y, tri.GetMidpointZ(), tri: tri, index: index, isTriUnit: isTriUnit);
+                        else
+                        {
+                            return new MapObjectHoverData(this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri);
+                        }
                     }
                 }
                 return null;
