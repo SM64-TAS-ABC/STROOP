@@ -23,8 +23,12 @@ namespace STROOP.Map
         private bool _removeCurrentTri;
         private TriangleListForm _triangleListForm;
         private bool _autoUpdate;
+        private bool _updateOnLevelChange;
         private int _numLevelTris;
         private bool _useCurrentCellTris;
+
+        private ToolStripMenuItem _itemAutoUpdate;
+        private ToolStripMenuItem _itemUpdateOnLevelChange;
 
         private ToolStripMenuItem _itemUseCurrentCellTris;
 
@@ -34,7 +38,8 @@ namespace STROOP.Map
         {
             _removeCurrentTri = false;
             _triangleListForm = null;
-            _autoUpdate = true;
+            _autoUpdate = false;
+            _updateOnLevelChange = true;
             _numLevelTris = _triList.Count;
             _useCurrentCellTris = false;
         }
@@ -66,13 +71,23 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
-                ToolStripMenuItem itemAutoUpdate = new ToolStripMenuItem("Auto Update");
-                itemAutoUpdate.Click += (sender, e) =>
+                _itemAutoUpdate = new ToolStripMenuItem("Auto Update");
+                _itemAutoUpdate.Click += (sender, e) =>
                 {
-                    _autoUpdate = !_autoUpdate;
-                    itemAutoUpdate.Checked = _autoUpdate;
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeAutoUpdate: true, newAutoUpdate: !_autoUpdate);
+                    GetParentMapTracker().ApplySettings(settings);
                 };
-                itemAutoUpdate.Checked = _autoUpdate;
+                _itemAutoUpdate.Checked = _autoUpdate;
+
+                _itemUpdateOnLevelChange = new ToolStripMenuItem("Update on Level Change");
+                _itemUpdateOnLevelChange.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeUpdateOnLevelChange: true, newUpdateOnLevelChange: !_updateOnLevelChange);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemUpdateOnLevelChange.Checked = _updateOnLevelChange;
 
                 ToolStripMenuItem itemReset = new ToolStripMenuItem("Reset");
                 itemReset.Click += (sender, e) => ResetTriangles();
@@ -108,7 +123,8 @@ namespace STROOP.Map
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
-                _contextMenuStrip.Items.Add(itemAutoUpdate);
+                _contextMenuStrip.Items.Add(_itemAutoUpdate);
+                _contextMenuStrip.Items.Add(_itemUpdateOnLevelChange);
                 _contextMenuStrip.Items.Add(itemReset);
                 _contextMenuStrip.Items.Add(itemRemoveCurrentTri);
                 _contextMenuStrip.Items.Add(itemShowTriData);
@@ -139,6 +155,11 @@ namespace STROOP.Map
         public override void Update()
         {
             if (_autoUpdate)
+            {
+                ResetTriangles();
+            }
+
+            if (_updateOnLevelChange)
             {
                 int numLevelTriangles = Config.Stream.GetInt(TriangleConfig.LevelTriangleCountAddress);
                 if (_numLevelTris != numLevelTriangles)
@@ -173,6 +194,18 @@ namespace STROOP.Map
         public override void ApplySettings(MapObjectSettings settings)
         {
             base.ApplySettings(settings);
+
+            if (settings.ChangeAutoUpdate)
+            {
+                _autoUpdate = settings.NewAutoUpdate;
+                _itemAutoUpdate.Checked = settings.NewAutoUpdate;
+            }
+
+            if (settings.ChangeUpdateOnLevelChange)
+            {
+                _updateOnLevelChange = settings.NewUpdateOnLevelChange;
+                _itemUpdateOnLevelChange.Checked = settings.NewUpdateOnLevelChange;
+            }
 
             if (settings.ChangeUseCurrentCellTris)
             {
