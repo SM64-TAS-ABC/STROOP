@@ -18,12 +18,17 @@ namespace STROOP.Map
 {
     public class MapObjectCustomWall : MapObjectWall
     {
-        private readonly List<TriangleDataModel> _triList;
+        private List<uint> _triAddressList;
+        private List<TriangleDataModel> _triList;
+        private bool _autoUpdate;
+        private ToolStripMenuItem _itemAutoUpdate;
 
         public MapObjectCustomWall(List<uint> triAddressList)
             : base()
         {
+            _triAddressList = new List<uint>(triAddressList);
             _triList = triAddressList.ConvertAll(address => TriangleDataModel.CreateLazy(address));
+            _autoUpdate = true;
         }
 
         public static MapObjectCustomWall Create(string text)
@@ -35,6 +40,10 @@ namespace STROOP.Map
 
         protected override List<TriangleDataModel> GetUnfilteredTriangles()
         {
+            if (_autoUpdate)
+            {
+                _triList = _triAddressList.ConvertAll(address => TriangleDataModel.CreateLazy(address));
+            }
             return _triList;
         }
 
@@ -52,6 +61,15 @@ namespace STROOP.Map
         {
             if (_contextMenuStrip == null)
             {
+                _itemAutoUpdate = new ToolStripMenuItem("Auto Update");
+                _itemAutoUpdate.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeAutoUpdate: true, newAutoUpdate: !_autoUpdate);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemAutoUpdate.Checked = _autoUpdate;
+
                 ToolStripMenuItem addMoreTrisItem = new ToolStripMenuItem("Add More Tris");
                 addMoreTrisItem.Click += (sender, e) =>
                 {
@@ -62,6 +80,7 @@ namespace STROOP.Map
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(_itemAutoUpdate);
                 _contextMenuStrip.Items.Add(addMoreTrisItem);
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetWallToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
@@ -70,6 +89,17 @@ namespace STROOP.Map
             }
 
             return _contextMenuStrip;
+        }
+
+        public override void ApplySettings(MapObjectSettings settings)
+        {
+            base.ApplySettings(settings);
+
+            if (settings.ChangeAutoUpdate)
+            {
+                _autoUpdate = settings.NewAutoUpdate;
+                _itemAutoUpdate.Checked = settings.NewAutoUpdate;
+            }
         }
 
         public override List<XAttribute> GetXAttributes()

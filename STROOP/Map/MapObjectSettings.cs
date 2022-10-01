@@ -115,6 +115,9 @@ namespace STROOP.Map
         public readonly bool ChangeAutoUpdate;
         public readonly bool NewAutoUpdate;
 
+        public readonly bool ChangeUpdateOnLevelChange;
+        public readonly bool NewUpdateOnLevelChange;
+
         public readonly bool ChangeIwerlipseLockPositions;
         public readonly bool NewIwerlipseLockPositions;
 
@@ -269,6 +272,9 @@ namespace STROOP.Map
             bool changeAutoUpdate = false,
             bool newAutoUpdate = false,
 
+            bool changeUpdateOnLevelChange = false,
+            bool newUpdateOnLevelChange = false,
+
             bool changeIwerlipseLockPositions = false,
             bool newIwerlipseLockPositions = false,
 
@@ -421,6 +427,9 @@ namespace STROOP.Map
 
             ChangeAutoUpdate = changeAutoUpdate;
             NewAutoUpdate = newAutoUpdate;
+
+            ChangeUpdateOnLevelChange = changeUpdateOnLevelChange;
+            NewUpdateOnLevelChange = newUpdateOnLevelChange;
 
             ChangeIwerlipseLockPositions = changeIwerlipseLockPositions;
             NewIwerlipseLockPositions = newIwerlipseLockPositions;
