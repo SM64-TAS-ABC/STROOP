@@ -877,12 +877,14 @@ namespace STROOP.Map
                         TriangleDataModel tri = tris[i][0].data.Tri;
                         double y = tri.GetMidpointY();
                         int? index = null;
+                        bool isTriUnit = false;
                         if (MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits())
                         {
                             y = tris[i].Max(p => p.y);
                             index = i;
+                            isTriUnit = true;
                         }
-                        return new MapObjectHoverData(this, tri.GetMidpointX(), y, tri.GetMidpointZ(), tri: tri, index: index);
+                        return new MapObjectHoverData(this, tri.GetMidpointX(), y, tri.GetMidpointZ(), tri: tri, index: index, isTriUnit: isTriUnit);
                     }
                 }
                 return null;
