@@ -102,7 +102,7 @@ namespace STROOP.Map
             {
                 var quad = quadList[i];
                 var quadForControl = quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z, UseRelativeCoordinates));
-                if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y) || forceCursorPosition)
+                if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y, forceCursorPosition))
                 {
                     double xMin = quad.Min(p => p.x);
                     double xMax = quad.Max(p => p.x);

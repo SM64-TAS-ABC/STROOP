@@ -426,8 +426,10 @@ namespace STROOP.Map
             return true;
         }
 
-        public static bool IsWithinShapeForControl(List<(float x, float z)> quad, float x, float z)
+        public static bool IsWithinShapeForControl(List<(float x, float z)> quad, float x, float z, bool forceCursorPosition)
         {
+            if (forceCursorPosition) return true;
+
             bool? leftOfLine = null;
             for (int i = 0; i < quad.Count; i++)
             {

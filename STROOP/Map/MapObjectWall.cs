@@ -478,7 +478,7 @@ namespace STROOP.Map
                             }
                         }
                     }
-                    if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y) || forceCursorPosition)
+                    if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y, forceCursorPosition))
                     {
                         return new MapObjectHoverData(
                             this, wallData.Tri.GetMidpointX(), wallData.Tri.GetMidpointY(), wallData.Tri.GetMidpointZ(), tri: wallData.Tri);

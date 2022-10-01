@@ -602,7 +602,7 @@ namespace STROOP.Map
                 {
                     var vertexList = vertexListsForControl[i];
                     List<(float x, float z)> simpleVertexList = vertexList.ConvertAll(vertex => (vertex.x, vertex.z));
-                    if (MapUtilities.IsWithinShapeForControl(simpleVertexList, relPos.X, relPos.Y) || forceCursorPosition)
+                    if (MapUtilities.IsWithinShapeForControl(simpleVertexList, relPos.X, relPos.Y, forceCursorPosition))
                     {
                         (float x, float z) inGameMidpoint = GetInGameMidpointFromControlQuad(simpleVertexList);
                         float y = vertexList[0].tri.GetTruncatedHeightOnTriangle(inGameMidpoint.x, inGameMidpoint.z);
@@ -638,7 +638,7 @@ namespace STROOP.Map
                 {
                     var vertexList = vertexListsForControl[i];
                     List<(float x, float z)> simpleVertexList = vertexList.ConvertAll(vertex => (vertex.x, vertex.z));
-                    if (MapUtilities.IsWithinShapeForControl(simpleVertexList, relPos.X, relPos.Y) || forceCursorPosition)
+                    if (MapUtilities.IsWithinShapeForControl(simpleVertexList, relPos.X, relPos.Y, forceCursorPosition))
                     {
                         TriangleDataModel tri = vertexList[0].tri;
                         return new MapObjectHoverData(

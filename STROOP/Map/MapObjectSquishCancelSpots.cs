@@ -207,7 +207,7 @@ namespace STROOP.Map
             {
                 var quad = quadList[i];
                 var quadForControl = quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z, UseRelativeCoordinates));
-                if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y) || forceCursorPosition)
+                if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y, forceCursorPosition))
                 {
                     (float x, float z) = GetQuadMidpoint(quad);
                     return new MapObjectHoverData(this, x, GetHeight(), z, index: i);

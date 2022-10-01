@@ -884,7 +884,7 @@ namespace STROOP.Map
                 for (int i = trisForControl.Count - 1; i >= 0; i--)
                 {
                     var triForControl = trisForControl[i];
-                    if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y) || forceCursorPosition)
+                    if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y, forceCursorPosition))
                     {
                         TriangleDataModel tri = tris[i][0].data.Tri;
                         if (MapUtilities.IsAbleToShowUnitPrecision() && GetShowTriUnits())
@@ -929,7 +929,7 @@ namespace STROOP.Map
                 for (int i = trisForControl.Count - 1; i >= 0; i--)
                 {
                     var triForControl = trisForControl[i];
-                    if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y) || forceCursorPosition)
+                    if (MapUtilities.IsWithinShapeForControl(triForControl, relPos.X, relPos.Y, forceCursorPosition))
                     {
                         TriangleDataModel tri = tris[i];
                         return new MapObjectHoverData(this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri);

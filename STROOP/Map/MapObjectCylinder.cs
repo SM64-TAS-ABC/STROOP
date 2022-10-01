@@ -252,7 +252,7 @@ namespace STROOP.Map
             {
                 List<(float x, float z, Color color)> dimensionWithColor = dimensionList[i];
                 List<(float x, float z)> dimension = dimensionWithColor.ConvertAll(d => (d.x, d.z));
-                if (MapUtilities.IsWithinShapeForControl(dimension, relPos.X, relPos.Y) || forceCursorPosition)
+                if (MapUtilities.IsWithinShapeForControl(dimension, relPos.X, relPos.Y, forceCursorPosition))
                 {
                     var inGameDimensionList = GetPoints();
                     var inGameDimension = inGameDimensionList[i];
