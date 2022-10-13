@@ -31,6 +31,9 @@ namespace STROOP.Map
         public readonly bool ChangeHorizontalTriangleShowTriUnits;
         public readonly bool NewHorizontalTriangleShowTriUnits;
 
+        public readonly bool ChangeHorizontalTriangleTruncateBottomOfHitbox;
+        public readonly bool NewHorizontalTriangleTruncateBottomOfHitbox;
+
         public readonly bool ChangeHorizontalTriangleMinHeight;
         public readonly float? NewHorizontalTriangleMinHeight;
 
@@ -188,6 +191,9 @@ namespace STROOP.Map
             bool changeHorizontalTriangleShowTriUnits = false,
             bool newHorizontalTriangleShowTriUnits = false,
 
+            bool changeHorizontalTriangleTruncateBottomOfHitbox = false,
+            bool newHorizontalTriangleTruncateBottomOfHitbox = false,
+
             bool changeHorizontalTriangleMinHeight = false,
             float? newHorizontalTriangleMinHeight = null,
 
@@ -343,6 +349,9 @@ namespace STROOP.Map
 
             ChangeHorizontalTriangleShowTriUnits = changeHorizontalTriangleShowTriUnits;
             NewHorizontalTriangleShowTriUnits = newHorizontalTriangleShowTriUnits;
+
+            ChangeHorizontalTriangleTruncateBottomOfHitbox = changeHorizontalTriangleTruncateBottomOfHitbox;
+            NewHorizontalTriangleTruncateBottomOfHitbox = newHorizontalTriangleTruncateBottomOfHitbox;
 
             ChangeHorizontalTriangleMinHeight = changeHorizontalTriangleMinHeight;
             NewHorizontalTriangleMinHeight = newHorizontalTriangleMinHeight;

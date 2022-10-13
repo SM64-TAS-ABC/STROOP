@@ -129,6 +129,11 @@ namespace STROOP.Map
             return false;
         }
 
+        public virtual bool GetTruncateBottomOfHitbox()
+        {
+            return false;
+        }
+
         private List<List<(float x, float y, float z, Color color, TriangleMapData data)>> GetOrthographicCrossSectionVertexLists()
         {
             List<TriangleMapData> triData = GetFilteredTriangles()

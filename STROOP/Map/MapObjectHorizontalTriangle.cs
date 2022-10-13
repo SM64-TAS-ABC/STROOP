@@ -19,12 +19,14 @@ namespace STROOP.Map
     public abstract class MapObjectHorizontalTriangle : MapObjectTriangle
     {
         private bool _showTriUnits;
+        private bool _truncateBottomOfHitbox;
         private float? _minHeight;
         private float? _maxHeight;
         protected bool _distinguishSlidingClasses;
         protected bool _enableQuarterFrameLandings;
 
         private ToolStripMenuItem _itemShowTriUnits;
+        private ToolStripMenuItem _itemTruncateBottomOfHitbox;
         private ToolStripMenuItem _itemSetMinHeight;
         private ToolStripMenuItem _itemSetMaxHeight;
 
@@ -409,6 +411,11 @@ namespace STROOP.Map
             return _showTriUnits;
         }
 
+        public override bool GetTruncateBottomOfHitbox()
+        {
+            return _truncateBottomOfHitbox;
+        }
+
         protected List<ToolStripMenuItem> GetHorizontalTriangleToolStripMenuItems()
         {
             _itemShowTriUnits = new ToolStripMenuItem("Show Tri Units");
@@ -416,6 +423,14 @@ namespace STROOP.Map
             {
                 MapObjectSettings settings = new MapObjectSettings(
                     changeHorizontalTriangleShowTriUnits: true, newHorizontalTriangleShowTriUnits: !_showTriUnits);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
+            _itemTruncateBottomOfHitbox = new ToolStripMenuItem("Truncate Bottom of Hitbox");
+            _itemTruncateBottomOfHitbox.Click += (sender, e) =>
+            {
+                MapObjectSettings settings = new MapObjectSettings(
+                    changeHorizontalTriangleTruncateBottomOfHitbox: true, newHorizontalTriangleTruncateBottomOfHitbox: !_truncateBottomOfHitbox);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -466,6 +481,7 @@ namespace STROOP.Map
             return new List<ToolStripMenuItem>()
             {
                 _itemShowTriUnits,
+                _itemTruncateBottomOfHitbox,
                 _itemSetMinHeight,
                 itemClearMinHeight,
                 _itemSetMaxHeight,
@@ -481,6 +497,12 @@ namespace STROOP.Map
             {
                 _showTriUnits = settings.NewHorizontalTriangleShowTriUnits;
                 _itemShowTriUnits.Checked = settings.NewHorizontalTriangleShowTriUnits;
+            }
+
+            if (settings.ChangeHorizontalTriangleTruncateBottomOfHitbox)
+            {
+                _truncateBottomOfHitbox = settings.NewHorizontalTriangleTruncateBottomOfHitbox;
+                _itemTruncateBottomOfHitbox.Checked = settings.NewHorizontalTriangleTruncateBottomOfHitbox;
             }
 
             if (settings.ChangeHorizontalTriangleMinHeight)
