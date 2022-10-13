@@ -134,6 +134,18 @@ namespace STROOP.Map
             return false;
         }
 
+        private float MaybeTruncateHitboxBottom(float y)
+        {
+            if (GetTruncateBottomOfHitbox())
+            {
+                return (float)(y >= 0 ? Math.Ceiling(y) : Math.Floor(y));
+            }
+            else
+            {
+                return y;
+            }
+        }
+
         private List<List<(float x, float y, float z, Color color, TriangleMapData data)>> GetOrthographicCrossSectionVertexLists()
         {
             List<TriangleMapData> triData = GetFilteredTriangles()
@@ -222,8 +234,8 @@ namespace STROOP.Map
                                             {
                                                 (xInner, y.Value, z, color, data),
                                                 (xOuter, y.Value, z, color, data),
-                                                (xOuter, y.Value - size, z, color, data),
-                                                (xInner, y.Value - size, z, color, data),
+                                                (xOuter, MaybeTruncateHitboxBottom(y.Value - size), z, color, data),
+                                                (xInner, MaybeTruncateHitboxBottom(y.Value - size), z, color, data),
                                             });
                                         }
                                     }
@@ -252,8 +264,8 @@ namespace STROOP.Map
                                             {
                                                 (x, y.Value, zInner, color, data),
                                                 (x, y.Value, zOuter, color, data),
-                                                (x, y.Value - size, zOuter, color, data),
-                                                (x, y.Value - size, zInner, color, data),
+                                                (x, MaybeTruncateHitboxBottom(y.Value - size), zOuter, color, data),
+                                                (x, MaybeTruncateHitboxBottom(y.Value - size), zInner, color, data),
                                             });
                                         }
                                     }
@@ -277,8 +289,8 @@ namespace STROOP.Map
                                             {
                                                 (x1, y.Value, z1, color, data),
                                                 (x2, y.Value, z2, color, data),
-                                                (x2, y.Value - size, z2, color, data),
-                                                (x1, y.Value - size, z1, color, data),
+                                                (x2, MaybeTruncateHitboxBottom(y.Value - size), z2, color, data),
+                                                (x1, MaybeTruncateHitboxBottom(y.Value - size), z1, color, data),
                                             });
                                         }
                                     }
