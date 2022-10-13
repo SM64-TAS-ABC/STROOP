@@ -461,33 +461,31 @@ namespace STROOP.Managers
             int zMax = (int)zMaxDouble.Value;
             int y = (int)yDouble.Value;
 
-            List<TriangleDataModel> levelTris = TriangleUtilities.GetLevelTriangles();
-            List<TriangleDataModel> floorTris = levelTris.FindAll(tri => tri.IsFloor());
-            List<TriangleDataModel> ceilingTris = levelTris.FindAll(tri => tri.IsCeiling());
+            CellSnapshot cellSnapshot = new CellSnapshot();
+            List<(int x, int z)> units = new List<(int x, int z)>();
 
-            List<(double x, double z)> invisibleWallPoints = new List<(double x, double z)>();
-
-            int counter = 0;
-            for (int x = xMin; x <= xMax - 1; x++)
+            for (int x = xMin; x <= xMax; x++)
             {
-                for (int z = zMin; z <= zMax - 1; z++)
+                for (int z = zMin; z <= zMax; z++)
                 {
-                    counter++;
-                    float x05 = x + 0.5f;
-                    float z05 = z + 0.5f;
-
-                    (TriangleDataModel floorTri, float floorY) = TriangleUtilities.FindFloorAndY(x05, y, z05);
-                    (TriangleDataModel ceilingTri, float ceilingY) = TriangleUtilities.FindCeilingAndY(x05, floorY, z05);
-
-                    bool isOutOfBounds = floorTri == null;
-                    bool isCeiling = y >= ceilingY - 160;
-                    if (isOutOfBounds || isCeiling) invisibleWallPoints.Add((x05, z05));
+                    (TriangleDataModel floor, float floorY) = cellSnapshot.FindFloorAndY(x, y, z);
+                    if (floor == null)
+                    {
+                        units.Add((x, z));
+                        continue;
+                    }
+                    (TriangleDataModel ceiling, float ceilingY) = cellSnapshot.FindCeilingAndY(x, floorY + 80, z);
+                    if (y + 160.0f > ceilingY)
+                    {
+                        units.Add((x, z));
+                        continue;
+                    }
                 }
             }
 
-            List<string> lines = invisibleWallPoints.ConvertAll(point => point.x + "\t" + point.z);
+            List<string> lines = units.ConvertAll(unit => unit.x + "\t" + unit.z);
             string output = string.Join("\r\n", lines);
-            InfoForm.ShowValue(output, "Invisible Wall Points", "Invisible Wall Points (" + counter + " points checked)");
+            InfoForm.ShowValue(output, "Invisible Wall Points", "Invisible Wall Points (" + units.Count + " points checked)");
         }
 
         private List<uint> GetScuttlebugAddresses()

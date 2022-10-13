@@ -127,7 +127,7 @@ namespace STROOP.Structs
         public (TriangleDataModel, float) FindCeilingAndY(float floatX, float floatY, float floatZ)
         {
             TriangleDataModel tri = FindCeiling(floatX, floatY, floatZ);
-            if (tri == null) return (tri, -11000);
+            if (tri == null) return (tri, 20_000);
             float y = tri.GetTruncatedHeightOnTriangle(floatX, floatZ);
             return (tri, y);
         }
