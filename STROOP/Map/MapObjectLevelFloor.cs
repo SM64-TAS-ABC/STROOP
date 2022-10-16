@@ -25,11 +25,12 @@ namespace STROOP.Map
         private bool _autoUpdate;
         private bool _updateOnLevelChange;
         private int _numLevelTris;
+        private bool _includeObjectTris;
         private bool _useCurrentCellTris;
 
         private ToolStripMenuItem _itemAutoUpdate;
         private ToolStripMenuItem _itemUpdateOnLevelChange;
-
+        private ToolStripMenuItem _itemIncludeObjectTris;
         private ToolStripMenuItem _itemUseCurrentCellTris;
 
         public MapObjectLevelFloor()
@@ -41,6 +42,7 @@ namespace STROOP.Map
             _autoUpdate = false;
             _updateOnLevelChange = true;
             _numLevelTris = _triList.Count;
+            _includeObjectTris = false;
             _useCurrentCellTris = false;
         }
 
@@ -114,6 +116,14 @@ namespace STROOP.Map
                     _triangleListForm.Show();
                 };
 
+                _itemIncludeObjectTris = new ToolStripMenuItem("Include Object Tris");
+                _itemIncludeObjectTris.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeIncludeObjectTris: true, newIncludeObjectTris: !_includeObjectTris);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
                 _itemUseCurrentCellTris = new ToolStripMenuItem("Use Current Cell Tris");
                 _itemUseCurrentCellTris.Click += (sender, e) =>
                 {
@@ -129,6 +139,7 @@ namespace STROOP.Map
                 _contextMenuStrip.Items.Add(itemRemoveCurrentTri);
                 _contextMenuStrip.Items.Add(itemShowTriData);
                 _contextMenuStrip.Items.Add(itemOpenForm);
+                _contextMenuStrip.Items.Add(_itemIncludeObjectTris);
                 _contextMenuStrip.Items.Add(_itemUseCurrentCellTris);
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
                 GetFloorToolStripMenuItems().ForEach(item => _contextMenuStrip.Items.Add(item));
@@ -207,6 +218,12 @@ namespace STROOP.Map
             {
                 _updateOnLevelChange = settings.NewUpdateOnLevelChange;
                 _itemUpdateOnLevelChange.Checked = settings.NewUpdateOnLevelChange;
+            }
+
+            if (settings.ChangeIncludeObjectTris)
+            {
+                _includeObjectTris = settings.NewIncludeObjectTris;
+                _itemIncludeObjectTris.Checked = settings.NewIncludeObjectTris;
             }
 
             if (settings.ChangeUseCurrentCellTris)
