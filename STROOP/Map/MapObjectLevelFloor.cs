@@ -63,10 +63,24 @@ namespace STROOP.Map
         {
             if (_useCurrentCellTris)
             {
-                return MapUtilities.GetTriangles(
+                List<TriangleDataModel> tris = MapUtilities.GetTriangles(
                     CellUtilities.GetTriangleAddressesInMarioCell(true, TriangleClassification.Floor));
+                if (_includeObjectTris)
+                {
+                    tris.AddRange(MapUtilities.GetTriangles(
+                        CellUtilities.GetTriangleAddressesInMarioCell(false, TriangleClassification.Floor)));
+                }
+                return tris;
             }
-            return _triList;
+            else
+            {
+                List<TriangleDataModel> tris = new List<TriangleDataModel>(_triList);
+                if (_includeObjectTris)
+                {
+                    tris.AddRange(TriangleUtilities.GetObjectTriangles().FindAll(tri => tri.IsFloor()));
+                }
+                return tris;
+            }
         }
 
         public override ContextMenuStrip GetContextMenuStrip()
