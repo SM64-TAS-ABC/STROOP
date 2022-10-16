@@ -455,19 +455,22 @@ namespace STROOP.Managers
 
             if (!xMinDouble.HasValue || !xMaxDouble.HasValue || !zMinDouble.HasValue || !zMaxDouble.HasValue || !yDouble.HasValue) return;
 
-            int xMin = (int)xMinDouble.Value;
-            int xMax = (int)xMaxDouble.Value;
-            int zMin = (int)zMinDouble.Value;
-            int zMax = (int)zMaxDouble.Value;
+            // allow for swapped bounds
+            int xMin = Math.Min((int)xMinDouble.Value, (int)xMaxDouble.Value);
+            int xMax = Math.Max((int)xMinDouble.Value, (int)xMaxDouble.Value);
+            int zMin = Math.Min((int)zMinDouble.Value, (int)zMaxDouble.Value);
+            int zMax = Math.Max((int)zMinDouble.Value, (int)zMaxDouble.Value);
             int y = (int)yDouble.Value;
 
             CellSnapshot cellSnapshot = new CellSnapshot();
             List<(int x, int z)> units = new List<(int x, int z)>();
+            int counter = 0;
 
             for (int x = xMin; x <= xMax; x++)
             {
                 for (int z = zMin; z <= zMax; z++)
                 {
+                    counter++;
                     (TriangleDataModel floor, float floorY) = cellSnapshot.FindFloorAndY(x, y, z);
                     if (floor == null)
                     {
@@ -485,7 +488,7 @@ namespace STROOP.Managers
 
             List<string> lines = units.ConvertAll(unit => unit.x + "\t" + unit.z);
             string output = string.Join("\r\n", lines);
-            InfoForm.ShowValue(output, "Invisible Wall Points", "Invisible Wall Points (" + units.Count + " points checked)");
+            InfoForm.ShowValue(output, "Invisible Wall Points", $"Invisible Wall Points ({units.Count} found / {counter} checked)");
         }
 
         private List<uint> GetScuttlebugAddresses()
