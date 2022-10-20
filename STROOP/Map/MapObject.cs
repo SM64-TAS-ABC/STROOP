@@ -229,13 +229,30 @@ namespace STROOP.Map
 
         public MapObjectHoverData GetHoverData(bool isForObjectDrag, bool forceCursorPosition)
         {
+            MapObjectHoverData hoverData;
             if (Config.CurrentMapGraphics.IsOrthographicViewEnabled)
             {
-                return GetHoverDataOrthographicView(isForObjectDrag, forceCursorPosition);
+                hoverData = GetHoverDataOrthographicView(isForObjectDrag, forceCursorPosition);
             }
             else
             {
-                return GetHoverDataTopDownView(isForObjectDrag, forceCursorPosition);
+                hoverData = GetHoverDataTopDownView(isForObjectDrag, forceCursorPosition);
+            }
+
+            if (hoverData != null && hoverData.Type != MapObjectHoverDataEnum.None)
+            {
+                if (Config.MapManager.HoverBools[hoverData.Type])
+                {
+                    return hoverData;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return hoverData;
             }
         }
 
