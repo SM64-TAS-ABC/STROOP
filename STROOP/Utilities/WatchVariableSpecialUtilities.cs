@@ -439,6 +439,28 @@ namespace STROOP.Structs
             return specialType;
         }
 
+        private static int _numTextboxEntries = 0;
+
+        public static string AddTextboxEntry(Func<float> getter, Action<float> setter)
+        {
+            string specialType = "Textbox" + _numTextboxEntries;
+
+            _dictionary.Add(specialType,
+                ((uint dummy) =>
+                {
+                    return getter();
+                },
+                (float value, bool allowToggle, uint dummy) =>
+                {
+                    setter(value);
+                    return true;
+                }
+            ));
+
+            _numTextboxEntries++;
+            return specialType;
+        }
+
         public static string AddDummyEntry(string typeString)
         {
             if (typeString == "string")

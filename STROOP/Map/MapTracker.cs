@@ -15,6 +15,8 @@ using System.Drawing.Drawing2D;
 using STROOP.Interfaces;
 using STROOP.Models;
 using OpenTK;
+using STROOP.Controls;
+using STROOP.Forms;
 
 namespace STROOP.Map
 {
@@ -127,12 +129,63 @@ namespace STROOP.Map
             pictureBoxCog.ContextMenuStrip = _mapObjectList[0].GetContextMenuStrip();
             pictureBoxCog.Click += (sender, e) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
 
+            AddControllerOption(labelSize, () => _mapObjectList[0].Size, (float value) => SetSize(value));
+            AddControllerOption(labelOpacity, () => _mapObjectList[0].OpacityPercent, (float value) => SetOpacity((int)value));
+            AddControllerOption(labelLineWidth, () => _mapObjectList[0].LineWidth, (float value) => SetLineWidth(value));
+
             MapUtilities.CreateTrackBarContextMenuStrip(trackBarSize, () => _mapObjectList[0].Size);
             MapUtilities.CreateTrackBarContextMenuStrip(trackBarLineWidth, () => _mapObjectList[0].LineWidth);
             InitializeEyeContextMenuStrip();
             InitializePlusContextMenuStrip();
 
             UpdateControl();
+        }
+
+        private void AddControllerOption(Label label, Func<float> getter, Action<float> setter)
+        {
+            ControlUtilities.AddContextMenuStripFunctions(
+                label,
+                new List<string>() { "Open Controller" },
+                new List<Action>() {
+                    () =>
+                    {
+                        string specialType = WatchVariableSpecialUtilities.AddTextboxEntry(getter, setter);
+                        string name = label.Text.Substring(0, label.Text.Length - 1);
+
+                        WatchVariable watchVariable =
+                            new WatchVariable(
+                                name: name,
+                                memoryTypeName: null,
+                                specialType: specialType,
+                                baseAddressType: BaseAddressTypeEnum.None,
+                                offsetUS: null,
+                                offsetJP: null,
+                                offsetSH: null,
+                                offsetEU: null,
+                                offsetDefault: null,
+                                mask: null,
+                                shift: null,
+                                handleMapping: true);
+                        WatchVariableControlPrecursor precursor =
+                            new WatchVariableControlPrecursor(
+                                name: name,
+                                watchVar: watchVariable,
+                                subclass: WatchVariableSubclass.Number,
+                                backgroundColor: null,
+                                displayType: null,
+                                roundingLimit: null,
+                                useHex: null,
+                                invertBool: null,
+                                isYaw: null,
+                                coordinate: null,
+                                groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                        WatchVariableControl control = precursor.CreateWatchVariableControl();
+
+                        VariableControllerForm varController =
+                            new VariableControllerForm(name, control.WatchVarWrapper, null);
+                        varController.Show();
+                    }
+                });
         }
 
         private void InitializeEyeContextMenuStrip()
