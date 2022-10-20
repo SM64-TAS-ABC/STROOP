@@ -190,7 +190,7 @@ namespace STROOP.Map
                 if (MapUtilities.IsWithinRectangularQuad(simpleQuad, inGameX, inGameZ) || forceCursorPosition)
                 {
                     (float x, float z) = GetQuadMidpoint(quad);
-                    return new MapObjectHoverData(this, x, GetHeight(), z, index: i);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Rectangle, x, GetHeight(), z, index: i);
                 }
             }
             return null;
@@ -210,7 +210,7 @@ namespace STROOP.Map
                 if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y, forceCursorPosition))
                 {
                     (float x, float z) = GetQuadMidpoint(quad);
-                    return new MapObjectHoverData(this, x, GetHeight(), z, index: i);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Rectangle, x, GetHeight(), z, index: i);
                 }
             }
             return null;

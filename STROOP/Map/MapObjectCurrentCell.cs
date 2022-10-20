@@ -85,7 +85,7 @@ namespace STROOP.Map
                     double zMin = quad.Min(p => p.z);
                     double zMax = quad.Max(p => p.z);
                     string info = string.Format("{0}<x<{1} {2}<z<{3}", xMin, xMax, zMin, zMax);
-                    return new MapObjectHoverData(this, 0, 0, 0, index: i, info: info);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Rectangle, 0, 0, 0, index: i, info: info);
                 }
             }
             return null;
@@ -109,7 +109,7 @@ namespace STROOP.Map
                     double zMin = quad.Min(p => p.z);
                     double zMax = quad.Max(p => p.z);
                     string info = string.Format("{0}<x<{1} {2}<z<{3}", xMin, xMax, zMin, zMax);
-                    return new MapObjectHoverData(this, 0, 0, 0, index: i, info: info);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Rectangle, 0, 0, 0, index: i, info: info);
                 }
             }
             return null;

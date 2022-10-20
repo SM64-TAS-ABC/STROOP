@@ -140,7 +140,7 @@ namespace STROOP.Map
             double radius = Scales ? GetSize() : GetSize() / Config.CurrentMapGraphics.MapViewScaleValue;
             if (dist <= radius || forceCursorPosition)
             {
-                return new MapObjectHoverData(this, x, y, z);
+                return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, x, y, z);
             }
             return null;
         }
@@ -156,7 +156,7 @@ namespace STROOP.Map
             double radius = Scales ? GetSize() * Config.CurrentMapGraphics.MapViewScaleValue : GetSize();
             if (dist <= radius || forceCursorPosition)
             {
-                return new MapObjectHoverData(this, x, y, z);
+                return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, x, y, z);
             }
             return null;
         }

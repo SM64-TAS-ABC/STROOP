@@ -78,7 +78,7 @@ namespace STROOP.Map
                 var unitPoint = _unitPoints[i];
                 if ((unitPoint.x == inGameXTruncated && unitPoint.z == inGameZTruncated) || forceCursorPosition)
                 {
-                    return new MapObjectHoverData(this, unitPoint.x, 0, unitPoint.z, index: i);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Rectangle, unitPoint.x, 0, unitPoint.z, index: i);
                 }
             }
             return null;
@@ -99,7 +99,7 @@ namespace STROOP.Map
                     quadList.ConvertAll(quad => quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z, UseRelativeCoordinates)));
                 if (quadListForControl.Any(quad => MapUtilities.IsWithinShapeForControl(quad, relPos.X, relPos.Y, forceCursorPosition)))
                 {
-                    return new MapObjectHoverData(this, unitPoint.x, 0, unitPoint.z, index: i);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Rectangle, unitPoint.x, 0, unitPoint.z, index: i);
                 }
             }
             return null;

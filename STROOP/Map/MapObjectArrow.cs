@@ -311,7 +311,7 @@ namespace STROOP.Map
             double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
             if (dist <= 20 || forceCursorPosition)
             {
-                return new MapObjectHoverData(this, inGameX, inGameY, inGameZ);
+                return new MapObjectHoverData(this, MapObjectHoverDataEnum.Arrow, inGameX, inGameY, inGameZ);
             }
             return null;
         }

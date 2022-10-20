@@ -629,7 +629,7 @@ namespace STROOP.Map
                         (float x, float z) inGameMidpoint = GetInGameMidpointFromControlQuad(simpleVertexList);
                         float y = vertexList[0].tri.GetTruncatedHeightOnTriangle(inGameMidpoint.x, inGameMidpoint.z);
                         return new MapObjectHoverData(
-                            this, inGameMidpoint.x, y, inGameMidpoint.z, tri: vertexList[0].tri, isTriUnit: true, index: i);
+                            this, MapObjectHoverDataEnum.Triangle, inGameMidpoint.x, y, inGameMidpoint.z, tri: vertexList[0].tri, isTriUnit: true, index: i);
                     }
                 }
                 return null;
@@ -651,7 +651,7 @@ namespace STROOP.Map
                             if (dist <= radius || forceCursorPosition)
                             {
                                 (int x, int y, int z) = j == 0 ? vertex.tri.GetP1() : j == 1 ? vertex.tri.GetP2() : vertex.tri.GetP3();
-                                return new MapObjectHoverData(this, x, y, z, tri: vertex.tri, index: i, index2: j, info: string.Format("V{0}", j + 1));
+                                return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, x, y, z, tri: vertex.tri, index: i, index2: j, info: string.Format("V{0}", j + 1));
                             }
                         }
                     }
@@ -664,7 +664,7 @@ namespace STROOP.Map
                     {
                         TriangleDataModel tri = vertexList[0].tri;
                         return new MapObjectHoverData(
-                            this, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri, index: i);
+                            this, MapObjectHoverDataEnum.Triangle, tri.GetMidpointX(), tri.GetMidpointY(), tri.GetMidpointZ(), tri: tri, index: i);
                     }
                 }
                 return null;

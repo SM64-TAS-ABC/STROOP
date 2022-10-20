@@ -186,7 +186,7 @@ namespace STROOP.Map
                         double radius = Scales ? _imageSize * Config.CurrentMapGraphics.MapViewScaleValue : _imageSize;
                         if (controlDist <= radius || forceCursorPosition)
                         {
-                            return new MapObjectHoverData(this, position.x, y, position.z, index: i, index2: j);
+                            return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, position.x, y, position.z, index: i, index2: j);
                         }
                     }
                 }
@@ -194,7 +194,7 @@ namespace STROOP.Map
                 double dist = MoreMath.GetDistanceBetween(dimension.centerX, dimension.centerZ, inGameX, inGameZ);
                 if (dist <= dimension.radius)
                 {
-                    return new MapObjectHoverData(this, dimension.centerX, y, dimension.centerZ, index: i);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Circle, dimension.centerX, y, dimension.centerZ, index: i);
                 }
             }
             return null;

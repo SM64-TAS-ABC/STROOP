@@ -256,7 +256,7 @@ namespace STROOP.Map
                 {
                     var inGameDimensionList = GetPoints();
                     var inGameDimension = inGameDimensionList[i];
-                    return new MapObjectHoverData(this, inGameDimension.x, inGameDimension.y, inGameDimension.z, index: i);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Circle, inGameDimension.x, inGameDimension.y, inGameDimension.z, index: i);
                 }
             }
             return null;

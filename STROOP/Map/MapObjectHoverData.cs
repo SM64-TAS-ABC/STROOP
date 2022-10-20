@@ -22,6 +22,7 @@ namespace STROOP.Map
         public static uint LastTriangleAddress = 0;
 
         public readonly MapObject MapObject;
+        public readonly MapObjectHoverDataEnum Type;
         public readonly double X;
         public readonly double Y;
         public readonly double Z;
@@ -34,6 +35,7 @@ namespace STROOP.Map
 
         public MapObjectHoverData(
             MapObject mapObject,
+            MapObjectHoverDataEnum type,
             double x,
             double y,
             double z,
@@ -45,6 +47,7 @@ namespace STROOP.Map
             string info = null)
         {
             MapObject = mapObject;
+            Type = type;
             X = x;
             Y = y;
             Z = z;
@@ -75,7 +78,7 @@ namespace STROOP.Map
         {
             (float x, float y, float z)? cursorPosition = GetCursorPosition(isForObjectDrag);
             if (!cursorPosition.HasValue) return null;
-            return new MapObjectHoverData(null, cursorPosition.Value.x, cursorPosition.Value.y, cursorPosition.Value.z);
+            return new MapObjectHoverData(null, MapObjectHoverDataEnum.None, cursorPosition.Value.x, cursorPosition.Value.y, cursorPosition.Value.z);
         }
 
         public static (float x, float y, float z)? GetCursorPosition(bool isForObjectDrag)

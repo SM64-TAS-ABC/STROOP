@@ -66,7 +66,7 @@ namespace STROOP.Map
                 var simpleQuad = quad.ConvertAll(q => (q.x, q.y, q.z));
                 if (MapUtilities.IsWithinRectangularQuad(simpleQuad, inGameX, inGameZ) || forceCursorPosition)
                 {
-                    return new MapObjectHoverData(this, 0, 0, 0, index: i);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Rectangle, 0, 0, 0, index: i);
                 }
             }
             return null;
@@ -85,7 +85,7 @@ namespace STROOP.Map
                 var quadForControl = quad.ConvertAll(p => MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z, UseRelativeCoordinates));
                 if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y, forceCursorPosition))
                 {
-                    return new MapObjectHoverData(this, 0, 0, 0, index: i);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Rectangle, 0, 0, 0, index: i);
                 }
             }
             return null;

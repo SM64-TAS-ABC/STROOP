@@ -474,14 +474,14 @@ namespace STROOP.Map
                             if (dist <= radius || forceCursorPosition)
                             {
                                 (float x, float z) = MapUtilities.ConvertCoordsForInGameTopDownView(vertex.x, vertex.z);
-                                return new MapObjectHoverData(this, x, 0, z, tri: wallData.Tri, index: j, index2: k);
+                                return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, x, 0, z, tri: wallData.Tri, index: j, index2: k);
                             }
                         }
                     }
                     if (MapUtilities.IsWithinShapeForControl(quadForControl, relPos.X, relPos.Y, forceCursorPosition))
                     {
                         return new MapObjectHoverData(
-                            this, wallData.Tri.GetMidpointX(), wallData.Tri.GetMidpointY(), wallData.Tri.GetMidpointZ(), tri: wallData.Tri);
+                            this, MapObjectHoverDataEnum.Triangle, wallData.Tri.GetMidpointX(), wallData.Tri.GetMidpointY(), wallData.Tri.GetMidpointZ(), tri: wallData.Tri);
                     }
                 }
             }
