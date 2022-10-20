@@ -41,6 +41,10 @@ namespace STROOP.Managers
         private bool _isLoaded3D = false;
         public int NumDrawingsEnabled = 0;
 
+        public bool EnableObjectHoverForIcons = true;
+        public bool EnableObjectHoverForArrows = true;
+        public bool EnableObjectHoverForCircles = true;
+
         private List<object> _mapLayoutChoices;
         private List<object> _backgroundImageChoices;
         private Dictionary<string, object> _mapDictionary;
@@ -836,6 +840,35 @@ namespace STROOP.Managers
                 (sender, e) => SetUseCrossSection(Config.MapGui.checkBoxMapOptionsUseCrossSection.Checked);
             Config.MapGui.checkBoxMapOptionsEnableObjectHover.Click +=
                 (sender, e) => SetEnableObjectHover(Config.MapGui.checkBoxMapOptionsEnableObjectHover.Checked);
+            
+            ToolStripMenuItem itemEnableObjectHoverForIcons = new ToolStripMenuItem("Enable Object Hover for Icons");
+            itemEnableObjectHoverForIcons.Click += (sender, e) =>
+            {
+                EnableObjectHoverForIcons = !EnableObjectHoverForIcons;
+                itemEnableObjectHoverForIcons.Checked = EnableObjectHoverForIcons;
+            };
+            itemEnableObjectHoverForIcons.Checked = EnableObjectHoverForIcons;
+
+            ToolStripMenuItem itemEnableObjectHoverForArrows = new ToolStripMenuItem("Enable Object Hover for Arrows");
+            itemEnableObjectHoverForArrows.Click += (sender, e) =>
+            {
+                EnableObjectHoverForArrows = !EnableObjectHoverForArrows;
+                itemEnableObjectHoverForArrows.Checked = EnableObjectHoverForArrows;
+            };
+            itemEnableObjectHoverForArrows.Checked = EnableObjectHoverForArrows;
+
+            ToolStripMenuItem itemEnableObjectHoverForCircles = new ToolStripMenuItem("Enable Object Hover for Circles");
+            itemEnableObjectHoverForCircles.Click += (sender, e) =>
+            {
+                EnableObjectHoverForCircles = !EnableObjectHoverForCircles;
+                itemEnableObjectHoverForCircles.Checked = EnableObjectHoverForCircles;
+            };
+            itemEnableObjectHoverForCircles.Checked = EnableObjectHoverForCircles;
+
+            Config.MapGui.checkBoxMapOptionsEnableObjectHover.ContextMenuStrip = new ContextMenuStrip();
+            Config.MapGui.checkBoxMapOptionsEnableObjectHover.ContextMenuStrip.Items.Add(itemEnableObjectHoverForIcons);
+            Config.MapGui.checkBoxMapOptionsEnableObjectHover.ContextMenuStrip.Items.Add(itemEnableObjectHoverForArrows);
+            Config.MapGui.checkBoxMapOptionsEnableObjectHover.ContextMenuStrip.Items.Add(itemEnableObjectHoverForCircles);
 
             // Global Icon Size
             Config.MapGui.textBoxMapOptionsGlobalIconSize.AddEnterAction(() =>
