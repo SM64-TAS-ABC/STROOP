@@ -2,6 +2,7 @@
 using STROOP.Forms;
 using STROOP.Managers;
 using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -28,6 +29,8 @@ namespace STROOP.Structs
         private readonly ToolStripMenuItem _itemSpecificLock;
         private readonly ToolStripMenuItem _itemDisableLocking;
         private readonly ToolStripMenuItem _itemSeeLockInfo;
+
+        public bool IsInvokingLocks = false;
 
         public WatchVariableLockManager(PictureBox pictureBoxLock)
         {
@@ -240,6 +243,11 @@ namespace STROOP.Structs
 
         public void Update()
         {
+            // FOR DEBUGGING LOCKS
+            //List<string> stringValues = _lockList.ConvertAll(l => HexUtilities.FormatValue(l.Address) + "=" + HexUtilities.FormatValue(l.Value));
+            //string stringValue = string.Join(" ", stringValues);
+            //Config.SetDebugText(stringValue);
+
             _itemRemoveAllLocks.Text = string.Format(
                 "Remove All Locks ({0})",
                 _lockList.Count);
@@ -253,9 +261,15 @@ namespace STROOP.Structs
             if (LockConfig.LockingDisabled) return;
             bool shouldSuspend = _lockList.Count >= 2;
             if (shouldSuspend) Config.Stream.Suspend();
-            _lockList.ForEach(varLock => varLock.Invoke());
+            InvokeLocks();
             if (shouldSuspend) Config.Stream.Resume();
         }
 
+        private void InvokeLocks()
+        {
+            IsInvokingLocks = true;
+            _lockList.ForEach(lok => lok.Invoke());
+            IsInvokingLocks = false;
+        }
     };
 }
