@@ -570,6 +570,7 @@ namespace STROOP.Map
                 {
                     PositionAngle posAngle = mapObj.GetPositionAngle();
                     if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectObjectSpeedArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
             });
@@ -595,6 +596,18 @@ namespace STROOP.Map
                     if (posAngle == null) return null;
                     if (!posAngle.IsObjectOrMario()) return null;
                     return (MapObject)new MapObjectObjectAngleToMarioArrow(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+            });
+
+            ToolStripMenuItem itemObjectTargetArrow = new ToolStripMenuItem("Add Tracker for Object Target Arrow");
+            setUpClickAction(itemObjectTargetArrow, mapObjectList =>
+            {
+                return mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
+                    return (MapObject)new MapObjectObjectTargetArrow(posAngle);
                 }).FindAll(mapObj => mapObj != null);
             });
 
@@ -829,6 +842,7 @@ namespace STROOP.Map
             itemArrow.DropDownItems.Add(itemObjectSpeedArrow);
             itemArrow.DropDownItems.Add(itemObjectGraphicsArrow);
             itemArrow.DropDownItems.Add(itemObjectAngleToMarioArrow);
+            itemArrow.DropDownItems.Add(itemObjectTargetArrow);
             itemArrow.DropDownItems.Add(itemObjectCustomArrow);
             itemArrow.DropDownItems.Add(new ToolStripSeparator());
             itemArrow.DropDownItems.Add(itemSwooperTargetArrow);
