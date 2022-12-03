@@ -73,8 +73,8 @@ namespace STROOP.Map
                 double midZ = (startZ + endZ) / 2;
                 double angle = PositionAngle.GetAngleTo(_posAngle1, _posAngle2, false, false);
 
-                (double sideX1, double sideZ1) = MoreMath.AddVectorToPoint(Config.CurrentMapGraphics.MapViewRadius, angle + 16384, midX, midZ);
-                (double sideX2, double sideZ2) = MoreMath.AddVectorToPoint(Config.CurrentMapGraphics.MapViewRadius, angle - 16384, midX, midZ);
+                (double sideX1, double sideZ1) = MoreMath.AddVectorToPoint(100_000, angle + 16384, midX, midZ);
+                (double sideX2, double sideZ2) = MoreMath.AddVectorToPoint(100_000, angle - 16384, midX, midZ);
 
                 vertices.Add(((float)sideX1, 0, (float)sideZ1));
                 vertices.Add(((float)sideX2, 0, (float)sideZ2));
