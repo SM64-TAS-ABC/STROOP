@@ -21,10 +21,12 @@ namespace STROOP.Map
         private PositionAngle _posAngle2;
         private bool _useFixedSize;
         private float _backwardsSize;
+        private bool _showMidline;
         private float _iconSize;
 
         private ToolStripMenuItem _itemUseFixedSize;
         private ToolStripMenuItem _itemSetBackwardsSize;
+        private ToolStripMenuItem _itemShowMidline;
         private ToolStripMenuItem _itemSetIconSize;
 
         private static readonly string SET_BACKWARDS_SIZE_TEXT = "Set Backwards Size";
@@ -37,6 +39,7 @@ namespace STROOP.Map
             _posAngle2 = posAngle2;
             _useFixedSize = false;
             _backwardsSize = 0;
+            _showMidline = false;
             _iconSize = 10;
 
             Size = 0;
@@ -199,6 +202,14 @@ namespace STROOP.Map
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
+                _itemShowMidline = new ToolStripMenuItem("Show Midline");
+                _itemShowMidline.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeLineSegmentShowMidline: true, newLineSegmentShowMidline: !_showMidline);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+
                 string suffix2 = string.Format(" ({0})", _iconSize);
                 _itemSetIconSize = new ToolStripMenuItem(SET_ICON_SIZE_TEXT + suffix2);
                 _itemSetIconSize.Click += (sender, e) =>
@@ -215,6 +226,7 @@ namespace STROOP.Map
                 _contextMenuStrip = new ContextMenuStrip();
                 _contextMenuStrip.Items.Add(_itemUseFixedSize);
                 _contextMenuStrip.Items.Add(_itemSetBackwardsSize);
+                _contextMenuStrip.Items.Add(_itemShowMidline);
                 _contextMenuStrip.Items.Add(_itemSetIconSize);
             }
 
@@ -236,6 +248,12 @@ namespace STROOP.Map
                 _backwardsSize = settings.NewLineSegmentBackwardsSize;
                 string suffix = string.Format(" ({0})", settings.NewLineSegmentBackwardsSize);
                 _itemSetBackwardsSize.Text = SET_BACKWARDS_SIZE_TEXT + suffix;
+            }
+
+            if (settings.ChangeLineSegmentShowMidline)
+            {
+                _showMidline = settings.NewLineSegmentShowMidline;
+                _itemShowMidline.Checked = settings.NewLineSegmentShowMidline;
             }
 
             if (settings.ChangeIconSize)

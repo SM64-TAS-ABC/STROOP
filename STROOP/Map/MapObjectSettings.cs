@@ -136,6 +136,9 @@ namespace STROOP.Map
         public readonly bool ChangeLineSegmentUseFixedSize;
         public readonly bool NewLineSegmentUseFixedSize;
 
+        public readonly bool ChangeLineSegmentShowMidline;
+        public readonly bool NewLineSegmentShowMidline;
+
         public readonly bool ChangeLineSegmentBackwardsSize;
         public readonly float NewLineSegmentBackwardsSize;
 
@@ -299,6 +302,9 @@ namespace STROOP.Map
             bool changeLineSegmentUseFixedSize = false,
             bool newLineSegmentUseFixedSize = false,
 
+            bool changeLineSegmentShowMidline = false,
+            bool newLineSegmentShowMidline = false,
+
             bool changeLineSegmentBackwardsSize = false,
             float newLineSegmentBackwardsSize = 0,
 
@@ -460,6 +466,9 @@ namespace STROOP.Map
 
             ChangeLineSegmentUseFixedSize = changeLineSegmentUseFixedSize;
             NewLineSegmentUseFixedSize = newLineSegmentUseFixedSize;
+
+            ChangeLineSegmentShowMidline = changeLineSegmentShowMidline;
+            NewLineSegmentShowMidline = newLineSegmentShowMidline;
 
             ChangeLineSegmentBackwardsSize = changeLineSegmentBackwardsSize;
             NewLineSegmentBackwardsSize = newLineSegmentBackwardsSize;
