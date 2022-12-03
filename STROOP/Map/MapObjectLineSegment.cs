@@ -66,6 +66,20 @@ namespace STROOP.Map
             List<(float x, float y, float z)> vertices = new List<(float x, float y, float z)>();
             vertices.Add(((float)startX, 0, (float)startZ));
             vertices.Add(((float)endX, 0, (float)endZ));
+
+            if (_showMidline)
+            {
+                double midX = (startX + endX) / 2;
+                double midZ = (startZ + endZ) / 2;
+                double angle = PositionAngle.GetAngleTo(_posAngle1, _posAngle2, false, false);
+
+                (double sideX1, double sideZ1) = MoreMath.AddVectorToPoint(Config.CurrentMapGraphics.MapViewRadius, angle + 16384, midX, midZ);
+                (double sideX2, double sideZ2) = MoreMath.AddVectorToPoint(Config.CurrentMapGraphics.MapViewRadius, angle - 16384, midX, midZ);
+
+                vertices.Add(((float)sideX1, 0, (float)sideZ1));
+                vertices.Add(((float)sideX2, 0, (float)sideZ2));
+            }
+
             return vertices;
         }
 
