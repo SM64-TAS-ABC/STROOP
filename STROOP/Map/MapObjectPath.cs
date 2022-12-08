@@ -30,6 +30,9 @@ namespace STROOP.Map
         private bool _truncatePoints;
         private bool _useValueAtStartOfGlobalTimer;
         private uint _highestGlobalTimerValue;
+        private float _lastX;
+        private float _lastY;
+        private float _lastZ;
         private int _modulo;
         private bool _deduplicatePoints;
         private bool _showQuarterSteps;
@@ -419,8 +422,20 @@ namespace STROOP.Map
                     }
                     else
                     {
-                        _dictionary[globalTimer] = (x, y, z);
-                        _highestGlobalTimerValue = globalTimer;
+                        bool shouldAddToDictionary = true;
+                        if (_deduplicatePoints && x == _lastX && y == _lastY && z == _lastZ)
+                        {
+                            shouldAddToDictionary = false;
+                        }
+
+                        if (shouldAddToDictionary)
+                        {
+                            _dictionary[globalTimer] = (x, y, z);
+                            _highestGlobalTimerValue = globalTimer;
+                            _lastX = x;
+                            _lastY = y;
+                            _lastZ = z;
+                        }
                     }
                 }
             }
