@@ -130,6 +130,9 @@ namespace STROOP.Map
         public readonly bool ChangeShowQuarterSteps;
         public readonly bool NewShowQuarterSteps;
 
+        public readonly bool ChangeDeduplicatePoints;
+        public readonly bool NewDeduplicatePoints;
+
         public readonly bool ChangeTriangle;
         public readonly uint? NewTriangle;
 
@@ -296,6 +299,9 @@ namespace STROOP.Map
             bool changeShowQuarterSteps = false,
             bool newShowQuarterSteps = false,
 
+            bool changeDeduplicatePoints = false,
+            bool newDeduplicatePoints = false,
+
             bool changeTriangle = false,
             uint? newTriangle = null,
 
@@ -460,6 +466,9 @@ namespace STROOP.Map
 
             ChangeShowQuarterSteps = changeShowQuarterSteps;
             NewShowQuarterSteps = newShowQuarterSteps;
+
+            ChangeDeduplicatePoints = changeDeduplicatePoints;
+            NewDeduplicatePoints = newDeduplicatePoints;
 
             ChangeTriangle = changeTriangle;
             NewTriangle = newTriangle;

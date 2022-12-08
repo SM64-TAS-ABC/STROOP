@@ -31,6 +31,7 @@ namespace STROOP.Map
         private bool _useValueAtStartOfGlobalTimer;
         private uint _highestGlobalTimerValue;
         private int _modulo;
+        private bool _deduplicatePoints;
         private bool _showQuarterSteps;
         private float _imageSize;
 
@@ -40,6 +41,7 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemTruncatePoints;
         private ToolStripMenuItem _itemUseValueAtStartOfGlobalTimer;
         private ToolStripMenuItem _itemSetModulo;
+        private ToolStripMenuItem _itemDeduplicatePoints;
         private ToolStripMenuItem _itemShowQuarterSteps;
         private ToolStripMenuItem _itemSetIconSize;
 
@@ -61,6 +63,7 @@ namespace STROOP.Map
             _useValueAtStartOfGlobalTimer = true;
             _highestGlobalTimerValue = 0;
             _modulo = 1;
+            _deduplicatePoints = false;
             _imageSize = 10;
 
             Size = 300;
@@ -496,6 +499,16 @@ namespace STROOP.Map
                     GetParentMapTracker().ApplySettings(settings);
                 };
 
+                _itemDeduplicatePoints = new ToolStripMenuItem("Deduplicate Points");
+                _itemDeduplicatePoints.Click += (sender, e) =>
+                {
+                    MapObjectSettings settings = new MapObjectSettings(
+                        changeDeduplicatePoints: true,
+                        newDeduplicatePoints: !_deduplicatePoints);
+                    GetParentMapTracker().ApplySettings(settings);
+                };
+                _itemDeduplicatePoints.Checked = _deduplicatePoints;
+
                 _itemShowQuarterSteps = new ToolStripMenuItem("Show Quarter Steps");
                 _itemShowQuarterSteps.Click += (sender, e) =>
                 {
@@ -540,6 +553,7 @@ namespace STROOP.Map
                 _contextMenuStrip.Items.Add(_itemTruncatePoints);
                 _contextMenuStrip.Items.Add(_itemUseValueAtStartOfGlobalTimer);
                 _contextMenuStrip.Items.Add(_itemSetModulo);
+                _contextMenuStrip.Items.Add(_itemDeduplicatePoints);
                 _contextMenuStrip.Items.Add(_itemShowQuarterSteps);
                 _contextMenuStrip.Items.Add(_itemSetIconSize);
                 _contextMenuStrip.Items.Add(itemCopyPoints);
@@ -593,6 +607,12 @@ namespace STROOP.Map
                 _modulo = settings.NewPathModulo;
                 string suffix = string.Format(" ({0})", _modulo);
                 _itemSetModulo.Text = SET_MODULO_TEXT + suffix;
+            }
+
+            if (settings.ChangeDeduplicatePoints)
+            {
+                _deduplicatePoints = settings.NewDeduplicatePoints;
+                _itemDeduplicatePoints.Checked = _deduplicatePoints;
             }
 
             if (settings.ChangeShowQuarterSteps)
