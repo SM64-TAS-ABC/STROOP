@@ -11,6 +11,7 @@ using STROOP.Forms;
 using STROOP.Models;
 using STROOP.Ttc;
 using STROOP.Controls;
+using STROOP.Map;
 
 namespace STROOP.Managers
 {
@@ -2546,5 +2547,194 @@ namespace STROOP.Managers
             (   1355, 80530.8494  ),
             (   1356, 80530.8494  ),
             (   1357, 80530.8494  ) };
+
+        public void UpdateMapPanning()
+        {
+            int transitionTime = 90;
+            double easePower = 3;
+            int delay = 15;
+
+            MapSetting centerMap = new MapSetting("center", 1091.8929443359375f, 0f, 2291.3427734375f, 0.58793109655380249f);
+            MapSetting leftMap = new MapSetting("left", 752.477294921875f, 0f, 1946.4150390625f, 4.45f);
+            MapSetting rightMap = new MapSetting("right", 1945.85620117188f, 0f, 1439.71304650219f, 0.2493401f);
+
+            List<(int frame, MapSetting mapSetting)> schedule = new List<(int frame, MapSetting mapSetting)>()
+            {
+                (0, centerMap),
+                (28197, leftMap),
+                (103906, centerMap),
+                (176097, leftMap),
+                (249664, centerMap),
+                (321638, leftMap),
+                (338146, centerMap),
+                (342885, rightMap),
+            };              
+
+            int currentFrame = Config.Stream.GetInt(MiscConfig.GlobalTimerAddress) - 1;
+
+            MapSetting m1 = schedule[0].mapSetting;
+            MapSetting m2 = schedule[0].mapSetting;
+            float p = 1;
+            for (int i = 0; i < schedule.Count; i++)
+            {
+                int frame = schedule[i].frame + delay;
+
+                if (frame > currentFrame) break;
+                m2 = schedule[i].mapSetting;
+                if (i > 0) m1 = schedule[i - 1].mapSetting;
+                if (currentFrame < frame + transitionTime)
+                {
+                    p = (currentFrame - frame) / (float)transitionTime;
+                }
+            }
+
+            float preP = p;
+            float scale, x, y, z;
+
+            if (p == 0)
+            {
+                scale = m1.Scale;
+                x = m1.X;
+                y = m1.Y;
+                z = m1.Z;
+            }
+            else if (p == 1)
+            {
+                scale = m2.Scale;
+                x = m2.X;
+                y = m2.Y;
+                z = m2.Z;
+
+                if (m2 == rightMap)
+                {
+                    MapTracker tracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(7);
+                    tracker.SetOpacity(0);
+                }
+            }
+            else
+            {
+                p = (float)EasingUtilities.EaseInOut(easePower, p);
+
+                scale = Interpolate2(m1.Scale, m2.Scale, p);
+                float scale3 = Interpolate3(m1.Scale, m2.Scale, p);
+                float q = (scale3 - m1.Scale) / (m2.Scale - m1.Scale);
+                q = 1 - q;
+
+                float left = Interpolate(m1.Left(), m2.Left(), q);
+                float right = Interpolate(m1.Right(), m2.Right(), q);
+                float top = Interpolate(m1.Top(), m2.Top(), q);
+                float bottom = Interpolate(m1.Bottom(), m2.Bottom(), q);
+
+                x = (left + right) / 2;
+                y = 0;
+                z = (top + bottom) / 2;
+
+                if (m2 == rightMap)
+                {
+                    MapTracker tracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(7);
+                    tracker.SetOpacity((int)(100 * (1 - preP)));
+                }
+            }
+
+            //Config.SetDebugText(p);
+
+            //2 * 1 / scale = (right - left);
+            //float x = (left + right) / 2;
+            //float y = 0;
+            //float z = (top + bottom) / 2;
+
+            //float log = (float)Math.Log(m2.Scale, m1.Scale);
+            //float q = p;
+            //if (p <= 0) q = 0;
+            //if (p >= 1) q = 1;
+            //Config.SetDebugText($"q={q}");
+
+            //float left = Interpolate(m1.Left(), m2.Left(), q);
+            //float right = Interpolate(m1.Right(), m2.Right(), q);
+            //float top = Interpolate(m1.Top(), m2.Top(), q);
+            //float bottom = Interpolate(m1.Bottom(), m2.Bottom(), q);
+
+            //float x = (left + right) / 2;
+            //float y = 0;
+            //float z = (top + bottom) / 2;
+            //float scale = 1 / ((right - left) / 2);
+
+            //float scale = Interpolate2(m1.Scale, m2.Scale, p);
+            //float r1 = (float)Math.Log(scale, m1.Scale);
+            //float r2 = (float)Math.Log(m2.Scale, m1.Scale);
+            //float ratio = r1 / r2;
+            //if (p <= 0) ratio = 0;
+            //if (p >= 1) ratio = 1;
+
+            //float x = Interpolate(m1.X, m2.X, ratio);
+            //float y = Interpolate(m1.Y, m2.Y, ratio);
+            //float z = Interpolate(m1.Z, m2.Z, ratio);
+
+            Config.MapGraphics?.SetCustomCenter(x, y, z);
+            Config.MapGraphics?.SetCustomScale(scale);
+        }
+
+        public float Interpolate(float v1, float v2, float p)
+        {
+            if (p <= 0) return v1;
+            if (p >= 1) return v2;
+            return v1 + p * (v2 - v1);
+        }
+
+        public float Interpolate2(float v1, float v2, float p)
+        {
+            if (p <= 0) return v1;
+            if (p >= 1) return v2;
+
+            float exp = (float)Math.Log(v2, v1);
+            return (float)Math.Pow(v1, Interpolate(1, exp, p));
+        }
+
+        public float Interpolate3(float v1, float v2, float p)
+        {
+            if (p <= 0) return v1;
+            if (p >= 1) return v2;
+
+            float exp = (float)Math.Log(v2, v1);
+            return (float)Math.Pow(v1, Interpolate(1, exp, 1 - p));
+        }
+
+        public class MapSetting
+        {
+            public readonly string Name;
+            public readonly float X;
+            public readonly float Y;
+            public readonly float Z;
+            public readonly float Scale;
+
+            public MapSetting(string name, float x, float y, float z, float scale)
+            {
+                Name = name;
+                X = x;
+                Y = y;
+                Z = z;
+                Scale = scale;
+            }
+
+            public float Left()
+            {
+                return X - 1 / Scale;
+            }
+
+            public float Right()
+            {
+                return X + 1 / Scale;
+            }
+
+            public float Top()
+            {
+                return Z - 1 / Scale;
+            }
+
+            public float Bottom()
+            {
+                return Z + 1 / Scale;
+            }
+        }
     }
 }

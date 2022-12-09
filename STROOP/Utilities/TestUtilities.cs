@@ -20,6 +20,8 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
+            //Config.TestingManager.UpdateMapPanning();
+
             //if (PunchRecoilCalculator.Dictionary != null)
             //{
             //    TriangleDataModel tri1 = PunchRecoilCalculator.GetDictionaryValue(-9392, PunchRecoilCalculator.HeadWall1Index);
