@@ -16,6 +16,9 @@
   <Background name="Cloud Background">
     <Image path="Cloud Background.png"/>
   </Background>
+  <Background name="Gray Background">
+    <Image path="Gray Background.png"/>
+  </Background>
   <Background name="Gridline Background">
     <Image path="Gridline Background.png"/>
   </Background>
