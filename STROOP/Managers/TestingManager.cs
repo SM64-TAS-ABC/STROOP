@@ -2607,7 +2607,7 @@ namespace STROOP.Managers
 
                 if (m2 == rightMap)
                 {
-                    MapTracker tracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(7);
+                    MapTracker tracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(8);
                     tracker.SetOpacity(0);
                 }
             }
@@ -2631,7 +2631,7 @@ namespace STROOP.Managers
 
                 if (m2 == rightMap)
                 {
-                    MapTracker tracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(7);
+                    MapTracker tracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(8);
                     tracker.SetOpacity((int)(100 * (1 - preP)));
                 }
             }
