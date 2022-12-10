@@ -576,6 +576,9 @@ namespace STROOP.Map
                 case "MapObjectPushHitboxCylinder":
                     mapObject = new MapObjectPushHitboxCylinder(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
+                case "MapObjectScuttlebugLungingArrow":
+                    mapObject = new MapObjectScuttlebugLungingArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
                 case "MapObjectSector":
                     mapObject = new MapObjectSector(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;

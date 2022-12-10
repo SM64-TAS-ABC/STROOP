@@ -467,6 +467,7 @@
     <Compile Include="Map\MapObjectAllObjectWall.cs" />
     <Compile Include="Map\MapObjectCameraFocus.cs" />
     <Compile Include="Map\MapObjectHoverDataEnum.cs" />
+    <Compile Include="Map\MapObjectScuttlebugLungingArrow.cs" />
     <Compile Include="Map\MapObjectObjectTargetArrow.cs" />
     <Compile Include="Map\MapObjectOffsetPositionAngle.cs" />
     <Compile Include="Map\MapObjectEffectiveHitboxHurtboxCylinder.cs" />

@@ -641,6 +641,18 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
             });
 
+            ToolStripMenuItem itemScuttlebugLungingArrow = new ToolStripMenuItem("Add Tracker for Scuttlebug Lunging Arrow");
+            setUpClickAction(itemScuttlebugLungingArrow, mapObjectList =>
+            {
+                return mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
+                    return (MapObject)new MapObjectScuttlebugLungingArrow(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+            });
+
             ToolStripMenuItem itemCustomPositionAngleArrow = new ToolStripMenuItem("Add Tracker for Custom PositionAngle Arrow");
             setUpClickAction(itemCustomPositionAngleArrow, mapObjectList =>
             {
@@ -846,6 +858,7 @@ namespace STROOP.Map
             itemArrow.DropDownItems.Add(itemObjectCustomArrow);
             itemArrow.DropDownItems.Add(new ToolStripSeparator());
             itemArrow.DropDownItems.Add(itemSwooperTargetArrow);
+            itemArrow.DropDownItems.Add(itemScuttlebugLungingArrow);
             itemArrow.DropDownItems.Add(new ToolStripSeparator());
             itemArrow.DropDownItems.Add(itemCustomPositionAngleArrow);
 
