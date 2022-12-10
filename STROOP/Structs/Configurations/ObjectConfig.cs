@@ -147,6 +147,8 @@ namespace STROOP.Structs
 
         public static readonly uint ScuttlebugPhaseOffset = 0x150;
         public static readonly uint ScuttlebugTargetAngleOffset = 0x162;
+        public static readonly uint ScuttlebugTargetLungingOffset = 0xF8;
+        public static readonly uint ScuttlebugTargetLungingTimerOffset = 0xFC;
 
         public static readonly uint GoombaCountdownOffset = 0xFC;
         public static readonly uint GoombaTargetAngleOffset = 0x100;

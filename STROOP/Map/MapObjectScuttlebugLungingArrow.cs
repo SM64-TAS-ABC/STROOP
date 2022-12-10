@@ -41,12 +41,14 @@ namespace STROOP.Map
 
         protected override double GetRecommendedSize()
         {
-            return Config.Stream.GetFloat(_posAngle.GetObjAddress() + ObjectConfig.HSpeedOffset);
+            bool isLunging = Config.Stream.GetInt(_posAngle.GetObjAddress() + ObjectConfig.ScuttlebugTargetLungingOffset) != 0;
+            int lungingTimer = Config.Stream.GetInt(_posAngle.GetObjAddress() + ObjectConfig.ScuttlebugTargetLungingTimerOffset);
+            float arrowProportion = isLunging ? (51 - lungingTimer) / 51f : 0;
+            return arrowProportion * Size;
         }
 
         protected override void SetRecommendedSize(double size)
         {
-            Config.Stream.SetValue((float)size, _posAngle.GetObjAddress() + ObjectConfig.HSpeedOffset);
         }
 
         protected override void SetYaw(double yaw)
