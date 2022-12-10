@@ -46,6 +46,10 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemVisibleOn3D;
 
         private string _customName;
+        public new string TrackerName
+        {
+            get => _customName ?? string.Join(", ", _mapObjectList.ConvertAll(obj => obj.GetName()));
+        }
 
         public MapTracker(MapObject mapObj, List<MapSemaphore> semaphoreList = null)
             : this(new List<MapObject>() { mapObj }, semaphoreList)
@@ -1170,7 +1174,7 @@ namespace STROOP.Map
 
         public void UpdateControl()
         {
-            textBoxName.SubmitTextLoosely(_customName ?? string.Join(", ", _mapObjectList.ConvertAll(obj => obj.GetName())));
+            textBoxName.SubmitTextLoosely(TrackerName);
 
             List<Image> images = _mapObjectList.ConvertAll(mapObj => mapObj.GetImage());
             if (!images.SequenceEqual(_images))

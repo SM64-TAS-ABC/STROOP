@@ -61,6 +61,18 @@ namespace STROOP.Map
             return Controls[index] as MapTracker;
         }
 
+        public MapTracker GetTrackerWithPredicate(Func<MapTracker, bool> func)
+        {
+            foreach (MapTracker tracker in Controls)
+            {
+                if (func(tracker))
+                {
+                    return tracker;
+                }
+            }
+            return null;
+        }
+
         public void RemoveControl(MapTracker mapTracker)
         {
             lock (_objectLock)

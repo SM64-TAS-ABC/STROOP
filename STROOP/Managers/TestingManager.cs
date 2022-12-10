@@ -2558,6 +2558,9 @@ namespace STROOP.Managers
             MapSetting leftMap = new MapSetting("left", 752.477294921875f, 0f, 1946.4150390625f, 4.45f);
             MapSetting rightMap = new MapSetting("right", 1945.85620117188f, 0f, 1439.71304650219f, 0.2493401f);
 
+            MapTracker a = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerWithPredicate(t => t.TrackerName == "a");
+            MapTracker b = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerWithPredicate(t => t.TrackerName == "b");
+
             List<(int frame, MapSetting mapSetting)> schedule = new List<(int frame, MapSetting mapSetting)>()
             {
                 (0, centerMap),
