@@ -2608,10 +2608,17 @@ namespace STROOP.Managers
                 y = m2.Y;
                 z = m2.Z;
 
-                if (m2 == rightMap)
+                if (m2.Name == "center")
                 {
-                    MapTracker tracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(8);
-                    tracker.SetOpacity(0);
+                    a.SetOpacity(100);
+                }
+                if (m2.Name == "left")
+                {
+                    a.SetOpacity(0);
+                }
+                if (m2.Name == "right")
+                {
+                    b.SetOpacity(100);
                 }
             }
             else
@@ -2632,10 +2639,17 @@ namespace STROOP.Managers
                 y = 0;
                 z = (top + bottom) / 2;
 
-                if (m2 == rightMap)
+                if (m1.Name == "center" && m2.Name == "left")
                 {
-                    MapTracker tracker = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerAtIndex(8);
-                    tracker.SetOpacity((int)(100 * (1 - preP)));
+                    a.SetOpacity((int)Math.Round(Interpolate(100, 0, preP)));
+                }
+                if (m1.Name == "left" && m2.Name == "center")
+                {
+                    a.SetOpacity((int)Math.Round(Interpolate(0, 100, preP)));
+                }
+                if (m1.Name == "center" && m2.Name == "right")
+                {
+                    b.SetOpacity((int)Math.Round(Interpolate(0, 100, preP)));
                 }
             }
 

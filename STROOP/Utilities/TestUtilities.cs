@@ -20,7 +20,7 @@ namespace STROOP.Utilities
     {
         public static void Update()
         {
-            Config.TestingManager.UpdateMapPanning();
+            //Config.TestingManager.UpdateMapPanning();
 
             //if (PunchRecoilCalculator.Dictionary != null)
             //{

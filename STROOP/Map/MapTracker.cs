@@ -46,7 +46,7 @@ namespace STROOP.Map
         private ToolStripMenuItem _itemVisibleOn3D;
 
         private string _customName;
-        public new string TrackerName
+        public string TrackerName
         {
             get => _customName ?? string.Join(", ", _mapObjectList.ConvertAll(obj => obj.GetName()));
         }
