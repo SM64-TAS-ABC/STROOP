@@ -1111,6 +1111,12 @@ namespace STROOP.Map
             _mapObjectList.ForEach(mapObj => mapObj.CustomRotates = customRotates);
         }
 
+        public void SetCustomName(string name)
+        {
+            textBoxName.Text = name;
+            _customName = name;
+        }
+
         public void SetScales(bool? scalesNullable)
         {
             bool updateMapObjs = scalesNullable != null;

@@ -541,6 +541,61 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemMarblerPreset = new ToolStripMenuItem("Add Marbler Preset");
+            itemMarblerPreset.Click += (sender, e) =>
+            {
+                List<MapTracker> mapTrackers = new List<MapTracker>();
+
+                MapTracker mapTrackerFloors = new MapTracker(new MapObjectLevelFloor());
+                mapTrackerFloors.SetCustomName("Floors");
+                mapTrackerFloors.ApplySettings(new MapObjectSettings(changeHorizontalTriangleShowTriUnits: true, newHorizontalTriangleShowTriUnits: true));
+                mapTrackerFloors.ApplySettings(new MapObjectSettings(changeTriangleWithinDist: true, newTriangleWithinDist: 500));
+                mapTrackers.Add(mapTrackerFloors);
+
+                MapTracker mapTrackerUpperWallsGround = new MapTracker(new MapObjectLevelWall());
+                mapTrackerUpperWallsGround.SetCustomName("Upper Walls (Ground)");
+                mapTrackerUpperWallsGround.ApplySettings(new MapObjectSettings(changeWallRelativeHeight: true, newWallRelativeHeight: -60));
+                mapTrackers.Add(mapTrackerUpperWallsGround);
+
+                MapTracker mapTrackerLowerWallsGround = new MapTracker(new MapObjectLevelWall());
+                mapTrackerLowerWallsGround.SetCustomName("Lower Walls (Ground)");
+                mapTrackerLowerWallsGround.SetSize(24);
+                mapTrackerLowerWallsGround.SetColor(Color.Cyan);
+                mapTrackerLowerWallsGround.ApplySettings(new MapObjectSettings(changeWallRelativeHeight: true, newWallRelativeHeight: -30));
+                mapTrackers.Add(mapTrackerLowerWallsGround);
+
+                MapTracker mapTrackerUpperWallsAir = new MapTracker(new MapObjectLevelWall());
+                mapTrackerUpperWallsAir.SetCustomName("Upper Walls (Air)");
+                mapTrackerUpperWallsAir.SetColor(Color.Cyan);
+                mapTrackerUpperWallsAir.ApplySettings(new MapObjectSettings(changeWallRelativeHeight: true, newWallRelativeHeight: -150));
+                mapTrackers.Add(mapTrackerUpperWallsAir);
+
+                MapTracker mapTrackerLowerWallsAir = new MapTracker(new MapObjectLevelWall());
+                mapTrackerLowerWallsAir.SetCustomName("Lower Walls (Air)");
+                mapTrackerLowerWallsAir.ApplySettings(new MapObjectSettings(changeWallRelativeHeight: true, newWallRelativeHeight: -30));
+                mapTrackers.Add(mapTrackerLowerWallsAir);
+
+                MapTracker mapTrackerWallsWater = new MapTracker(new MapObjectLevelWall());
+                mapTrackerWallsWater.SetCustomName("Walls (Water)");
+                mapTrackerWallsWater.SetSize(110);
+                mapTrackerWallsWater.ApplySettings(new MapObjectSettings(changeWallRelativeHeight: true, newWallRelativeHeight: -10));
+                mapTrackers.Add(mapTrackerWallsWater);
+
+                MapTracker mapTrackerCeilings = new MapTracker(new MapObjectLevelCeiling());
+                mapTrackerCeilings.SetCustomName("Ceilings");
+                mapTrackerCeilings.ApplySettings(new MapObjectSettings(changeHorizontalTriangleShowTriUnits: true, newHorizontalTriangleShowTriUnits: true));
+                mapTrackerCeilings.ApplySettings(new MapObjectSettings(changeTriangleWithinDist: true, newTriangleWithinDist: 500));
+                mapTrackers.Add(mapTrackerCeilings);
+
+                foreach (MapTracker mapTracker in mapTrackers)
+                {
+                    mapTracker.SetOpacity(20);
+                    mapTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
+                    mapTracker.ApplySettings(new MapObjectSettings(changeIncludeObjectTris: true, newIncludeObjectTris: true));
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(mapTracker);
+                }
+            };
+
             ToolStripMenuItem itemMapPopOut = new ToolStripMenuItem("Add Map Pop Out");
             itemMapPopOut.Click += (sender, e) =>
             {
@@ -611,6 +666,9 @@ namespace STROOP.Managers
             itemCustom.DropDownItems.Add(itemLineSegment);
             itemCustom.DropDownItems.Add(itemDrawing);
 
+            ToolStripMenuItem itemPreset = new ToolStripMenuItem("Preset...");
+            itemPreset.DropDownItems.Add(itemMarblerPreset);
+
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip = new ContextMenuStrip();
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemObjects);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemTriangles);
@@ -621,6 +679,7 @@ namespace STROOP.Managers
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMarioMove);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMisc);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemCustom);
+            Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemPreset);
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(new ToolStripSeparator());
             Config.MapGui.buttonMapOptionsAddNewTracker.ContextMenuStrip.Items.Add(itemMapPopOut);
 
