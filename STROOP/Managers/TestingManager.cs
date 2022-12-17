@@ -2610,15 +2610,15 @@ namespace STROOP.Managers
 
                 if (m2.Name == "center")
                 {
-                    a.SetOpacity(100);
+                    a?.SetOpacity(100);
                 }
                 if (m2.Name == "left")
                 {
-                    a.SetOpacity(0);
+                    a?.SetOpacity(0);
                 }
                 if (m2.Name == "right")
                 {
-                    b.SetOpacity(100);
+                    b?.SetOpacity(100);
                 }
             }
             else
@@ -2641,15 +2641,15 @@ namespace STROOP.Managers
 
                 if (m1.Name == "center" && m2.Name == "left")
                 {
-                    a.SetOpacity((int)Math.Round(Interpolate(100, 0, preP)));
+                    a?.SetOpacity((int)Math.Round(Interpolate(100, 0, p)));
                 }
                 if (m1.Name == "left" && m2.Name == "center")
                 {
-                    a.SetOpacity((int)Math.Round(Interpolate(0, 100, preP)));
+                    a?.SetOpacity((int)Math.Round(Interpolate(0, 100, p)));
                 }
                 if (m1.Name == "center" && m2.Name == "right")
                 {
-                    b.SetOpacity((int)Math.Round(Interpolate(0, 100, preP)));
+                    b?.SetOpacity((int)Math.Round(Interpolate(0, 100, p)));
                 }
             }
 
