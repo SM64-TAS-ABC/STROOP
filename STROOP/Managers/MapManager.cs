@@ -591,6 +591,7 @@ namespace STROOP.Managers
                 {
                     mapTracker.SetOpacity(20);
                     mapTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
+                    mapTracker.ApplySettings(new MapObjectSettings(changeAutoUpdate: true, newAutoUpdate: true));
                     mapTracker.ApplySettings(new MapObjectSettings(changeIncludeObjectTris: true, newIncludeObjectTris: true));
                     Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(mapTracker);
                 }
