@@ -26,6 +26,8 @@ namespace STROOP.Map
             : base()
         {
             _points = points;
+
+            LineWidth = 0;
         }
 
         public static MapObjectCustomIconPoints Create(string text, bool useTriplets)
@@ -53,6 +55,16 @@ namespace STROOP.Map
                 }
                 MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, 0, opacity);
             }
+
+            if (LineWidth != 0)
+            {
+                for (int i = 0; i < _points.Count - 1; i++)
+                {
+                    var p1 = _points[i];
+                    var p2 = _points[i + 1];
+                    MapUtilities.DrawLinesOn2DControlTopDownView(new List<(float x, float y, float z)>() { p1, p2 }, LineWidth, LineColor, 255, UseRelativeCoordinates);
+                }
+            }
         }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
@@ -70,6 +82,16 @@ namespace STROOP.Map
                     opacity = MapUtilities.GetHoverOpacity();
                 }
                 MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, 0, opacity);
+            }
+
+            if (LineWidth != 0)
+            {
+                for (int i = 0; i < _points.Count - 1; i++)
+                {
+                    var p1 = _points[i];
+                    var p2 = _points[i + 1];
+                    MapUtilities.DrawLinesOn2DControlOrthographicView(new List<(float x, float y, float z)>() { p1, p2 }, LineWidth, LineColor, 255, UseRelativeCoordinates);
+                }
             }
         }
 
@@ -90,6 +112,16 @@ namespace STROOP.Map
                 Config.Map3DGraphics.BindVertices();
                 GL.DrawArrays(PrimitiveType.Triangles, 0, vertices.Length);
                 GL.DeleteBuffer(vertexBuffer);
+            }
+
+            if (LineWidth != 0)
+            {
+                for (int i = 0; i < _points.Count - 1; i++)
+                {
+                    var p1 = _points[i];
+                    var p2 = _points[i + 1];
+                    MapUtilities.DrawLinesOn3DControl(new List<(float x, float y, float z)>() { p1, p2 }, LineWidth, LineColor, 255, GetModelMatrix());
+                }
             }
         }
 
