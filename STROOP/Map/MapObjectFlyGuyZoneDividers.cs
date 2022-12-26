@@ -14,7 +14,7 @@ using System.Xml.Linq;
 
 namespace STROOP.Map
 {
-    public class MapObjectFlyGuyZoneDividers : MapObjectLine
+    public class MapObjectFlyGuyZoneDividers : MapObject
     {
         private readonly PositionAngle _posAngle;
 
@@ -27,9 +27,42 @@ namespace STROOP.Map
             LineColor = Color.Blue;
         }
 
-        protected override List<(float x, float y, float z)> GetVerticesTopDownView()
+        public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            return new List<(float x, float y, float z)>();
+            if (LineWidth == 0) return;
+
+            var top = MapUtilities.ConvertCoordsForControlOrthographicView((float)_posAngle.X, (float)_posAngle.Y - 200, (float)_posAngle.Z, UseRelativeCoordinates);
+            var bottom = MapUtilities.ConvertCoordsForControlOrthographicView((float)_posAngle.X, (float)_posAngle.Y - 400, (float)_posAngle.Z, UseRelativeCoordinates);
+
+            GL.BindTexture(TextureTarget.Texture2D, -1);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+            GL.Color4(LineColor.R, LineColor.G, LineColor.B, OpacityByte);
+            GL.LineWidth(LineWidth);
+            GL.Begin(PrimitiveType.Lines);
+
+            GL.Vertex2(0, top.z);
+            GL.Vertex2(Config.MapGui.CurrentControl.Width, top.z);
+            GL.Vertex2(0, bottom.z);
+            GL.Vertex2(Config.MapGui.CurrentControl.Width, bottom.z);
+
+            GL.End();
+            GL.Color4(1, 1, 1, 1.0f);
+        }
+
+        public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
+        {
+            // do nothing
+        }
+
+        public override void DrawOn3DControl()
+        {
+            // do nothing
+        }
+
+        public override MapDrawType GetDrawType()
+        {
+            return MapDrawType.Perspective;
         }
 
         public override Image GetInternalImage()
