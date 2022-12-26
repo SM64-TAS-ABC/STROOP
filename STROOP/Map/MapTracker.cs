@@ -785,7 +785,7 @@ namespace STROOP.Map
             });
 
             ToolStripMenuItem itemFlyGuyZoneDividers = new ToolStripMenuItem("Add Tracker for Fly Guy Zone Dividers");
-            setUpClickAction(itemCoffinBox, mapObjectList =>
+            setUpClickAction(itemFlyGuyZoneDividers, mapObjectList =>
             {
                 return mapObjectList.ConvertAll(mapObj =>
                 {

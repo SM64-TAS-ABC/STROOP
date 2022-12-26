@@ -38,7 +38,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Home Line";
+            return "Home Line for " + _objPosAngle.GetMapName();
         }
 
         public override Image GetInternalImage()
