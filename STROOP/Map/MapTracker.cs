@@ -809,26 +809,37 @@ namespace STROOP.Map
 
                     MapObject mapObjHome = new MapObjectHome(chuckyaPosAngle);
                     MapObject mapObjFacingArrow = new MapObjectObjectFacingArrow(chuckyaPosAngle);
-                    MapObject mapObjSector = new MapObjectSector(chuckyaPosAngle);
+                    MapObject mapObjEffectiveHitboxCylinder = new MapObjectEffectiveHitboxCylinder(chuckyaPosAngle);
+                    MapObject mapObjGrabSector = new MapObjectSector(chuckyaPosAngle);
+                    MapObject mapObjNoticeSector = new MapObjectSector(chuckyaPosAngle);
                     MapObject mapObjFacingDivider = new MapObjectFacingDivider(chuckyaPosAngle);
-                    MapObject mapObjSphere = new MapObjectCustomSphere(chuckyaPosAngle);
-                    MapObject mapObjCylinder = new MapObjectCustomCylinder(homePosAngle);
+                    MapObject mapObjSphere = new MapObjectDrawDistanceSphere(chuckyaPosAngle);
+                    MapObject mapObjCylinder1 = new MapObjectCustomCylinder(homePosAngle);
+                    MapObject mapObjCylinder2 = new MapObjectCustomCylinder(homePosAngle);
+                    MapObject mapObjCylinder3 = new MapObjectCustomCylinder(homePosAngle);
 
                     mapObjFacingArrow.LineColor = Color.Green;
                     mapObjFacingArrow.Size = 3000;
-                    mapObjSector.Size = 3000;
+                    mapObjGrabSector.Size = 187;
+                    mapObjGrabSector.ApplySettings(new MapObjectSettings(changeSectorAngleRadius: true, newSectorAngleRadius: 10912));
+                    mapObjNoticeSector.Size = 3000;
                     mapObjFacingDivider.Size = 3000;
-                    mapObjSphere.Size = 4000;
-                    mapObjCylinder.Color = Color.Cyan;
-                    mapObjCylinder.Size = 1900;
-                    mapObjCylinder.ApplySettings(new MapObjectSettings(changeCustomCylinderRelativeMinY: true, newCustomCylinderRelativeMinY: -5000));
+                    mapObjCylinder1.Color = Color.Cyan;
+                    mapObjCylinder1.Size = 1900;
+                    mapObjCylinder1.ApplySettings(new MapObjectSettings(changeCustomCylinderRelativeMinY: true, newCustomCylinderRelativeMinY: -5000));
+                    mapObjCylinder2.Size = 500;
+                    mapObjCylinder3.Size = 2000;
 
                     Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjHome));
                     Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjFacingArrow));
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjSector));
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjEffectiveHitboxCylinder));
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjGrabSector));
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjNoticeSector));
                     Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjFacingDivider));
                     Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjSphere));
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjCylinder));
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjCylinder1));
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjCylinder2));
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjCylinder3));
                 }
             };
 
@@ -892,7 +903,9 @@ namespace STROOP.Map
             ToolStripMenuItem itemObjectSpecific = new ToolStripMenuItem("Object Specific...");
             itemObjectSpecific.DropDownItems.Add(itemCoffinBox);
             itemObjectSpecific.DropDownItems.Add(itemFlyGuyZoneDividers);
-            itemObjectSpecific.DropDownItems.Add(itemChuckyaMapObjects);
+
+            ToolStripMenuItem itemPreset = new ToolStripMenuItem("Preset...");
+            itemPreset.DropDownItems.Add(itemChuckyaMapObjects);
 
             pictureBoxPlus.ContextMenuStrip = new ContextMenuStrip();
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemCylinder);
@@ -902,6 +915,7 @@ namespace STROOP.Map
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemArrow);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemMisc);
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemObjectSpecific);
+            pictureBoxPlus.ContextMenuStrip.Items.Add(itemPreset);
 
             pictureBoxPlus.Click += (sender, e) => pictureBoxPlus.ContextMenuStrip.Show(Cursor.Position);
         }
