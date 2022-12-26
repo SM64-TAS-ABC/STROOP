@@ -437,6 +437,9 @@ namespace STROOP.Map
                 case "MapObjectFloatGridlines":
                     mapObject = new MapObjectFloatGridlines();
                     break;
+                case "MapObjectFlyGuyZoneDividers":
+                    mapObject = new MapObjectFlyGuyZoneDividers(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
                 case "MapObjectGhost":
                     mapObject = new MapObjectGhost();
                     break;
