@@ -867,6 +867,7 @@ namespace STROOP.Map
                     MapTracker drawDistanceSphere2 = new MapTracker(new MapObjectDrawDistanceSphere(objPosAngle));
                     drawDistanceSphere2.ApplySettings(new MapObjectSettings(changeUseCrossSection: true, newUseCrossSection: false));
                     MapTracker homeCylinder = new MapTracker(new MapObjectCustomCylinder(homePosAngle));
+                    MapTracker zoneDividers = new MapTracker(new MapObjectFlyGuyZoneDividers(objPosAngle));
 
                     Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(effectiveHitboxHurtboxCylinder);
                     Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(movingArrow);
@@ -876,6 +877,7 @@ namespace STROOP.Map
                     Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(drawDistanceSphere);
                     Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(drawDistanceSphere2);
                     Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(homeCylinder);
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(zoneDividers);
                 }
             };
 
