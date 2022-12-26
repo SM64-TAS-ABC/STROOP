@@ -843,6 +843,42 @@ namespace STROOP.Map
                 }
             };
 
+            ToolStripMenuItem itemFlyGuyMapObjects = new ToolStripMenuItem("Add Trackers for Fly Guy Map Objects");
+            itemFlyGuyMapObjects.Click += (sender, e) =>
+            {
+                foreach (MapObject mapObj in _mapObjectList)
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (!posAngle.IsObjectOrMario()) continue;
+                    uint address = posAngle.GetObjAddress();
+                    PositionAngle objPosAngle = PositionAngle.Obj(address);
+                    PositionAngle homePosAngle = PositionAngle.ObjHome(address);
+
+                    MapTracker effectiveHitboxHurtboxCylinder = new MapTracker(new MapObjectEffectiveHitboxHurtboxCylinder(objPosAngle));
+                    MapTracker movingArrow = new MapTracker(new MapObjectObjectMovingArrow(objPosAngle));
+                    movingArrow.SetSize(10_000);
+                    movingArrow.SetLineWidth(2);
+                    MapTracker homeLine = new MapTracker(new MapObjectHomeLine(objPosAngle));
+                    MapTracker sphere400 = new MapTracker(new MapObjectCustomSphere(objPosAngle));
+                    sphere400.SetSize(400);
+                    MapTracker sphere2000 = new MapTracker(new MapObjectCustomSphere(objPosAngle));
+                    sphere400.SetSize(2000);
+                    MapTracker drawDistanceSphere = new MapTracker(new MapObjectDrawDistanceSphere(objPosAngle));
+                    MapTracker drawDistanceSphere2 = new MapTracker(new MapObjectDrawDistanceSphere(objPosAngle));
+                    drawDistanceSphere2.ApplySettings(new MapObjectSettings(changeUseCrossSection: true, newUseCrossSection: false));
+                    MapTracker homeCylinder = new MapTracker(new MapObjectCustomCylinder(homePosAngle));
+
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(effectiveHitboxHurtboxCylinder);
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(movingArrow);
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(homeLine);
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(sphere400);
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(sphere2000);
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(drawDistanceSphere);
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(drawDistanceSphere2);
+                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(homeCylinder);
+                }
+            };
+
             ToolStripMenuItem itemCylinder = new ToolStripMenuItem("Cylinder...");
             itemCylinder.DropDownItems.Add(itemHitboxCylinder);
             itemCylinder.DropDownItems.Add(itemEffectiveHitboxCylinder);
@@ -906,6 +942,7 @@ namespace STROOP.Map
 
             ToolStripMenuItem itemPreset = new ToolStripMenuItem("Preset...");
             itemPreset.DropDownItems.Add(itemChuckyaMapObjects);
+            itemPreset.DropDownItems.Add(itemFlyGuyMapObjects);
 
             pictureBoxPlus.ContextMenuStrip = new ContextMenuStrip();
             pictureBoxPlus.ContextMenuStrip.Items.Add(itemCylinder);
