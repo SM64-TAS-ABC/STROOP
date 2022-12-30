@@ -806,40 +806,54 @@ namespace STROOP.Map
                     uint address = posAngle.GetObjAddress();
                     PositionAngle chuckyaPosAngle = PositionAngle.Obj(address);
                     PositionAngle homePosAngle = PositionAngle.ObjHome(address);
+                    List<MapTracker> mapTrackers = new List<MapTracker>();
 
-                    MapObject mapObjHome = new MapObjectHome(chuckyaPosAngle);
-                    MapObject mapObjFacingArrow = new MapObjectObjectFacingArrow(chuckyaPosAngle);
-                    MapObject mapObjEffectiveHitboxCylinder = new MapObjectEffectiveHitboxCylinder(chuckyaPosAngle);
-                    MapObject mapObjGrabSector = new MapObjectSector(chuckyaPosAngle);
-                    MapObject mapObjNoticeSector = new MapObjectSector(chuckyaPosAngle);
-                    MapObject mapObjFacingDivider = new MapObjectFacingDivider(chuckyaPosAngle);
-                    MapObject mapObjSphere = new MapObjectDrawDistanceSphere(chuckyaPosAngle);
-                    MapObject mapObjCylinder1 = new MapObjectCustomCylinder(homePosAngle);
-                    MapObject mapObjCylinder2 = new MapObjectCustomCylinder(homePosAngle);
-                    MapObject mapObjCylinder3 = new MapObjectCustomCylinder(homePosAngle);
+                    MapTracker mapObjHome = new MapTracker(new MapObjectHome(chuckyaPosAngle));
+                    mapTrackers.Add(mapObjHome);
 
-                    mapObjFacingArrow.LineColor = Color.Green;
-                    mapObjFacingArrow.Size = 3000;
-                    mapObjGrabSector.Size = 187;
+                    MapTracker mapObjFacingArrow = new MapTracker(new MapObjectObjectFacingArrow(chuckyaPosAngle));
+                    mapObjFacingArrow.SetLineColor(Color.Green);
+                    mapObjFacingArrow.SetSize(3000);
+                    mapTrackers.Add(mapObjFacingArrow);
+
+                    MapTracker mapObjEffectiveHitboxCylinder = new MapTracker(new MapObjectEffectiveHitboxCylinder(chuckyaPosAngle));
+                    mapTrackers.Add(mapObjEffectiveHitboxCylinder);
+
+                    MapTracker mapObjGrabSector = new MapTracker(new MapObjectSector(chuckyaPosAngle));
+                    mapObjGrabSector.SetSize(187);
                     mapObjGrabSector.ApplySettings(new MapObjectSettings(changeSectorAngleRadius: true, newSectorAngleRadius: 10912));
-                    mapObjNoticeSector.Size = 3000;
-                    mapObjFacingDivider.Size = 3000;
-                    mapObjCylinder1.Color = Color.Cyan;
-                    mapObjCylinder1.Size = 1900;
-                    mapObjCylinder1.ApplySettings(new MapObjectSettings(changeCustomCylinderRelativeMinY: true, newCustomCylinderRelativeMinY: -5000));
-                    mapObjCylinder2.Size = 500;
-                    mapObjCylinder3.Size = 2000;
+                    mapTrackers.Add(mapObjGrabSector);
 
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjHome));
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjFacingArrow));
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjEffectiveHitboxCylinder));
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjGrabSector));
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjNoticeSector));
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjFacingDivider));
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjSphere));
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjCylinder1));
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjCylinder2));
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(new MapTracker(mapObjCylinder3));
+                    MapTracker mapObjNoticeSector = new MapTracker(new MapObjectSector(chuckyaPosAngle));
+                    mapObjNoticeSector.SetSize(3000);
+                    mapTrackers.Add(mapObjNoticeSector);
+
+                    MapTracker mapObjFacingDivider = new MapTracker(new MapObjectFacingDivider(chuckyaPosAngle));
+                    mapObjFacingDivider.SetSize(3000);
+                    mapTrackers.Add(mapObjFacingDivider);
+
+                    MapTracker mapObjSphere = new MapTracker(new MapObjectDrawDistanceSphere(chuckyaPosAngle));
+                    mapTrackers.Add(mapObjSphere);
+
+                    MapTracker mapObjCylinder1 = new MapTracker(new MapObjectCustomCylinder(homePosAngle));
+                    mapObjCylinder1.SetColor(Color.Cyan);
+                    mapObjCylinder1.SetSize(1900);
+                    mapObjCylinder1.ApplySettings(new MapObjectSettings(changeCustomCylinderRelativeMinY: true, newCustomCylinderRelativeMinY: -5000));
+                    mapTrackers.Add(mapObjCylinder1);
+
+                    MapTracker mapObjCylinder2 = new MapTracker(new MapObjectCustomCylinder(homePosAngle));
+                    mapObjCylinder2.SetSize(500);
+                    mapTrackers.Add(mapObjCylinder2);
+
+                    MapTracker mapObjCylinder3 = new MapTracker(new MapObjectCustomCylinder(homePosAngle));
+                    mapObjCylinder3.SetSize(2000);
+                    mapTrackers.Add(mapObjCylinder3);
+
+                    foreach (MapTracker mapTracker in mapTrackers)
+                    {
+                        mapTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(mapTracker);
+                    }
                 }
             };
 
