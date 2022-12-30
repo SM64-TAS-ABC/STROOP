@@ -853,31 +853,50 @@ namespace STROOP.Map
                     uint address = posAngle.GetObjAddress();
                     PositionAngle objPosAngle = PositionAngle.Obj(address);
                     PositionAngle homePosAngle = PositionAngle.ObjHome(address);
+                    List<MapTracker> mapTrackers = new List<MapTracker>();
 
                     MapTracker effectiveHitboxHurtboxCylinder = new MapTracker(new MapObjectEffectiveHitboxHurtboxCylinder(objPosAngle));
+                    mapTrackers.Add(effectiveHitboxHurtboxCylinder);
+
                     MapTracker movingArrow = new MapTracker(new MapObjectObjectMovingArrow(objPosAngle));
                     movingArrow.SetSize(10_000);
                     movingArrow.SetLineWidth(2);
+                    mapTrackers.Add(movingArrow);
+
                     MapTracker homeLine = new MapTracker(new MapObjectHomeLine(objPosAngle));
+                    mapTrackers.Add(homeLine);
+
                     MapTracker sphere400 = new MapTracker(new MapObjectCustomSphere(objPosAngle));
                     sphere400.SetSize(400);
-                    MapTracker sphere2000 = new MapTracker(new MapObjectCustomSphere(objPosAngle));
-                    sphere400.SetSize(2000);
-                    MapTracker drawDistanceSphere = new MapTracker(new MapObjectDrawDistanceSphere(objPosAngle));
-                    MapTracker drawDistanceSphere2 = new MapTracker(new MapObjectDrawDistanceSphere(objPosAngle));
-                    drawDistanceSphere2.ApplySettings(new MapObjectSettings(changeUseCrossSection: true, newUseCrossSection: false));
-                    MapTracker homeCylinder = new MapTracker(new MapObjectCustomCylinder(homePosAngle));
-                    MapTracker zoneDividers = new MapTracker(new MapObjectFlyGuyZoneDividers(objPosAngle));
+                    sphere400.SetColor(Color.Cyan);
+                    mapTrackers.Add(sphere400);
 
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(effectiveHitboxHurtboxCylinder);
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(movingArrow);
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(homeLine);
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(sphere400);
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(sphere2000);
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(drawDistanceSphere);
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(drawDistanceSphere2);
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(homeCylinder);
-                    Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(zoneDividers);
+                    MapTracker sphere2000 = new MapTracker(new MapObjectCustomSphere(objPosAngle));
+                    sphere2000.SetSize(2000);
+                    sphere2000.SetColor(Color.FromArgb(0, 255, 0));
+                    mapTrackers.Add(sphere2000);
+
+                    MapTracker drawDistanceSphere = new MapTracker(new MapObjectDrawDistanceSphere(objPosAngle));
+                    drawDistanceSphere.SetColor(Color.Red);
+                    mapTrackers.Add(drawDistanceSphere);
+
+                    MapTracker drawDistanceSphere2 = new MapTracker(new MapObjectDrawDistanceSphere(objPosAngle));
+                    drawDistanceSphere2.SetColor(Color.Yellow);
+                    drawDistanceSphere2.ApplySettings(new MapObjectSettings(changeUseCrossSection: true, newUseCrossSection: false));
+                    mapTrackers.Add(drawDistanceSphere2);
+
+                    MapTracker homeCylinder = new MapTracker(new MapObjectCustomCylinder(homePosAngle));
+                    homeCylinder.SetColor(Color.Pink);
+                    mapTrackers.Add(homeCylinder);
+
+                    MapTracker zoneDividers = new MapTracker(new MapObjectFlyGuyZoneDividers(objPosAngle));
+                    mapTrackers.Add(zoneDividers);
+
+                    foreach (MapTracker mapTracker in mapTrackers)
+                    {
+                        mapTracker.SetOrderType(MapTrackerOrderType.OrderOnBottom);
+                        Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(mapTracker);
+                    }
                 }
             };
 
