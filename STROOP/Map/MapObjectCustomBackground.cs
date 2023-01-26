@@ -33,7 +33,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Custom Background";
+            return "Custom Background: " + _backgroundChoice;
         }
 
         public override ContextMenuStrip GetContextMenuStrip()

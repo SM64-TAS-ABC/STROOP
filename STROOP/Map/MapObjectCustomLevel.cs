@@ -33,7 +33,7 @@ namespace STROOP.Map
 
         public override string GetName()
         {
-            return "Custom Level";
+            return "Custom Level: " + _mapLayoutChoice;
         }
 
         public override ContextMenuStrip GetContextMenuStrip()
