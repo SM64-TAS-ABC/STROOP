@@ -75,6 +75,7 @@ namespace STROOP.Utilities
             Snow,
             QFrame,
             GFrame,
+            MarioProjection,
             RolloutPeak,
             PreviousPositions,
             NextPositions,
@@ -259,6 +260,7 @@ namespace STROOP.Utilities
         public static PositionAngle CamHackFocus = new PositionAngle(PositionAngleTypeEnum.CamHackFocus);
         public static PositionAngle MapCamera = new PositionAngle(PositionAngleTypeEnum.MapCamera);
         public static PositionAngle MapFocus = new PositionAngle(PositionAngleTypeEnum.MapFocus);
+        public static PositionAngle MarioProjection = new PositionAngle(PositionAngleTypeEnum.MarioProjection);
         public static PositionAngle RolloutPeak = new PositionAngle(PositionAngleTypeEnum.RolloutPeak);
         public static PositionAngle PreviousPositions = new PositionAngle(PositionAngleTypeEnum.PreviousPositions);
         public static PositionAngle NextPositions = new PositionAngle(PositionAngleTypeEnum.NextPositions);
@@ -498,6 +500,10 @@ namespace STROOP.Utilities
                 double? frame = ParsingUtilities.ParseDoubleNullable(parts[1]);
                 if (!frame.HasValue) return null;
                 return GFrame(frame.Value);
+            }
+            else if (parts.Count == 1 && parts[0] == "marioprojection")
+            {
+                return MarioProjection;
             }
             else if (parts.Count == 1 && parts[0] == "rolloutpeak")
             {
@@ -756,6 +762,8 @@ namespace STROOP.Utilities
                         return GetQFrameComponent(Frame.Value, Coordinate.X);
                     case PositionAngleTypeEnum.GFrame:
                         return GetGFrameComponent(Frame.Value, Coordinate.X);
+                    case PositionAngleTypeEnum.MarioProjection:
+                        return GetMarioProjection(Coordinate.X);
                     case PositionAngleTypeEnum.RolloutPeak:
                         return GetRolloutPeakComponent(CoordinateAngle.X);
                     case PositionAngleTypeEnum.PreviousPositions:
@@ -878,6 +886,8 @@ namespace STROOP.Utilities
                         return GetQFrameComponent(Frame.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.GFrame:
                         return GetGFrameComponent(Frame.Value, Coordinate.Y);
+                    case PositionAngleTypeEnum.MarioProjection:
+                        return GetMarioProjection(Coordinate.Y);
                     case PositionAngleTypeEnum.RolloutPeak:
                         return GetRolloutPeakComponent(CoordinateAngle.Y);
                     case PositionAngleTypeEnum.PreviousPositions:
@@ -1000,6 +1010,8 @@ namespace STROOP.Utilities
                         return GetQFrameComponent(Frame.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.GFrame:
                         return GetGFrameComponent(Frame.Value, Coordinate.Z);
+                    case PositionAngleTypeEnum.MarioProjection:
+                        return GetMarioProjection(Coordinate.Z);
                     case PositionAngleTypeEnum.RolloutPeak:
                         return GetRolloutPeakComponent(CoordinateAngle.Z);
                     case PositionAngleTypeEnum.PreviousPositions:
@@ -1115,6 +1127,8 @@ namespace STROOP.Utilities
                         return Double.NaN;
                     case PositionAngleTypeEnum.GFrame:
                         return Double.NaN;
+                    case PositionAngleTypeEnum.MarioProjection:
+                        return Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     case PositionAngleTypeEnum.RolloutPeak:
                         return GetRolloutPeakComponent(CoordinateAngle.Angle);
                     case PositionAngleTypeEnum.PreviousPositions:
@@ -1347,6 +1361,33 @@ namespace STROOP.Utilities
             return GetQFrameComponent(frame, coordinate);
         }
 
+        private static double GetMarioProjection(Coordinate coordinate)
+        {
+            if (coordinate == Coordinate.Y)
+            {
+                return Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            }
+
+            // 5.3 => 4.3 + 3.3 + 2.3 + 1.3 + 0.3
+
+            ushort angle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            double angleTruncated = MoreMath.TruncateToMultipleOf16(angle);
+            float marioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float hSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+
+            double sign = Math.Sign(hSpeed);
+            double hSpeedInt = (int)hSpeed;
+            double hSpeedFraction = hSpeed - hSpeedInt;
+            double hSpeedIntAbs = Math.Abs(hSpeedInt);
+            double hSpeedFractionAbs = Math.Abs(hSpeedFraction);
+            double distance = hSpeedIntAbs * (hSpeedIntAbs - 1) / 2 + hSpeedIntAbs * hSpeedFractionAbs;
+            double signedDistance = sign * distance;
+
+            (double x, double z) = MoreMath.AddVectorToPoint(signedDistance, angleTruncated, marioX, marioZ);
+            return coordinate == Coordinate.X ? x : z;
+        }
+
         private static double GetRolloutPeakComponent(CoordinateAngle coordAngle)
         {
             UpdateRolloutPeak();
@@ -1544,6 +1585,8 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.GFrame:
                     return false;
+                case PositionAngleTypeEnum.MarioProjection:
+                    return false;
                 case PositionAngleTypeEnum.RolloutPeak:
                     return false;
                 case PositionAngleTypeEnum.PreviousPositions:
@@ -1666,6 +1709,8 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.GFrame:
                     return false;
+                case PositionAngleTypeEnum.MarioProjection:
+                    return false;
                 case PositionAngleTypeEnum.RolloutPeak:
                     return false;
                 case PositionAngleTypeEnum.PreviousPositions:
@@ -1787,6 +1832,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.QFrame:
                     return false;
                 case PositionAngleTypeEnum.GFrame:
+                    return false;
+                case PositionAngleTypeEnum.MarioProjection:
                     return false;
                 case PositionAngleTypeEnum.RolloutPeak:
                     return false;
@@ -1911,6 +1958,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.QFrame:
                     return false;
                 case PositionAngleTypeEnum.GFrame:
+                    return false;
+                case PositionAngleTypeEnum.MarioProjection:
                     return false;
                 case PositionAngleTypeEnum.RolloutPeak:
                     return false;
