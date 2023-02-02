@@ -2554,8 +2554,9 @@ namespace STROOP.Managers
             double easePower = 3;
             int delay = 15;
 
-            MapSetting centerMap = new MapSetting("center", 1091.8929443359375f, 0f, 2291.3427734375f, 0.58793109655380249f);
-            MapSetting leftMap = new MapSetting("left", 752.477294921875f, 0f, 1946.4150390625f, 4.45f);
+            MapSetting startMap = new MapSetting("start", 1140.344f, 0f, 2461.225f, 0.455102f);
+            MapSetting centerMap = new MapSetting("center", 1140.34445879435f, 0f, 2131.62880780721f, 0.73294639587402344f);
+            MapSetting leftMap = new MapSetting("left", 806.3f, 0f, 1947f, 4.482646f);
             MapSetting rightMap = new MapSetting("right", 1945.85620117188f, 0f, 1439.71304650219f, 0.2493401f);
 
             MapTracker a = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerWithPredicate(t => t.TrackerName == "a");
@@ -2563,14 +2564,13 @@ namespace STROOP.Managers
 
             List<(int frame, MapSetting mapSetting)> schedule = new List<(int frame, MapSetting mapSetting)>()
             {
-                (0, centerMap),
-                (28197, leftMap),
-                (103906, centerMap),
-                (176097, leftMap),
-                (249664, centerMap),
-                (321638, leftMap),
-                (338146, centerMap),
-                (342885, rightMap),
+                (0, startMap),
+                (24609, centerMap),
+                (28317, leftMap),
+                (108807, centerMap),
+                (176368, leftMap),
+                (235807, centerMap),
+                (242966, rightMap),
             };              
 
             int currentFrame = Config.Stream.GetInt(MiscConfig.GlobalTimerAddress) - 1;
@@ -2608,14 +2608,14 @@ namespace STROOP.Managers
                 y = m2.Y;
                 z = m2.Z;
 
-                if (m2.Name == "center")
-                {
-                    a?.SetOpacity(100);
-                }
-                if (m2.Name == "left")
-                {
-                    a?.SetOpacity(0);
-                }
+                //if (m2.Name == "center")
+                //{
+                //    a?.SetOpacity(100);
+                //}
+                //if (m2.Name == "left")
+                //{
+                //    a?.SetOpacity(0);
+                //}
                 if (m2.Name == "right")
                 {
                     b?.SetOpacity(100);
@@ -2639,14 +2639,14 @@ namespace STROOP.Managers
                 y = 0;
                 z = (top + bottom) / 2;
 
-                if (m1.Name == "center" && m2.Name == "left")
-                {
-                    a?.SetOpacity((int)Math.Round(Interpolate(100, 0, p)));
-                }
-                if (m1.Name == "left" && m2.Name == "center")
-                {
-                    a?.SetOpacity((int)Math.Round(Interpolate(0, 100, p)));
-                }
+                //if (m1.Name == "center" && m2.Name == "left")
+                //{
+                //    a?.SetOpacity((int)Math.Round(Interpolate(100, 0, p)));
+                //}
+                //if (m1.Name == "left" && m2.Name == "center")
+                //{
+                //    a?.SetOpacity((int)Math.Round(Interpolate(0, 100, p)));
+                //}
                 if (m1.Name == "center" && m2.Name == "right")
                 {
                     b?.SetOpacity((int)Math.Round(Interpolate(0, 100, p)));
@@ -2689,6 +2689,27 @@ namespace STROOP.Managers
 
             Config.MapGraphics?.SetCustomCenter(x, y, z);
             Config.MapGraphics?.SetCustomScale(scale);
+
+            MapTracker c = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerWithPredicate(t => t.TrackerName == "c");
+            MapTracker d = Config.MapGui.flowLayoutPanelMapTrackers.GetTrackerWithPredicate(t => t.TrackerName == "d");
+
+            if (c != null && d != null)
+            {
+                uint addressC = c.GetMapObjectsToDisplay(MapType.Map2DTopDown)[0].GetPositionAngle().GetObjAddress();
+                uint addressD = d.GetMapObjectsToDisplay(MapType.Map2DTopDown)[0].GetPositionAngle().GetObjAddress();
+
+                float ySpeedC = Config.Stream.GetFloat(addressC + ObjectConfig.YSpeedOffset);
+                float ySpeedD = Config.Stream.GetFloat(addressD + ObjectConfig.YSpeedOffset);
+
+                ySpeedC = Math.Max(4, ySpeedC);
+                ySpeedD = Math.Max(4, ySpeedD);
+
+                int opacityC = (int)Math.Round((ySpeedC - 4) / 16f * 100f);
+                int opacityD = (int)Math.Round((ySpeedD - 4) / 16f * 100f);
+
+                c.SetOpacity(opacityC);
+                d.SetOpacity(opacityD);
+            }
         }
 
         public float Interpolate(float v1, float v2, float p)
