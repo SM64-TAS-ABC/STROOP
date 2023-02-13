@@ -1,6 +1,7 @@
 ﻿using OpenTK;
 using OpenTK.Graphics;
 using STROOP.Models;
+using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
@@ -117,6 +118,36 @@ namespace STROOP.Map
                 {
                     items.Add(new ToolStripSeparator());
                 }
+
+                ToolStripMenuItem goToClickedPositionItem = new ToolStripMenuItem("Go to Clicked Position");
+                goToClickedPositionItem.Click += (sender, e) =>
+                {
+                    if (!Config.MapGraphics.IsOrthographicViewEnabled)
+                    {
+                        Config.Stream.SetValue(cursorPosition.Value.x, MarioConfig.StructAddress + MarioConfig.XOffset);
+                        Config.Stream.SetValue(cursorPosition.Value.z, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    }
+                    else
+                    {
+                        if (Config.MapGraphics.MapViewYawValue == 0 || Config.MapGraphics.MapViewYawValue == 32768)
+                        {
+                            Config.Stream.SetValue(cursorPosition.Value.x, MarioConfig.StructAddress + MarioConfig.XOffset);
+                            Config.Stream.SetValue(cursorPosition.Value.y, MarioConfig.StructAddress + MarioConfig.YOffset);
+                        }
+                        else if (Config.MapGraphics.MapViewYawValue == 16384 || Config.MapGraphics.MapViewYawValue == 49152)
+                        {
+                            Config.Stream.SetValue(cursorPosition.Value.y, MarioConfig.StructAddress + MarioConfig.YOffset);
+                            Config.Stream.SetValue(cursorPosition.Value.z, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        }
+                        else
+                        {
+                            Config.Stream.SetValue(cursorPosition.Value.x, MarioConfig.StructAddress + MarioConfig.XOffset);
+                            Config.Stream.SetValue(cursorPosition.Value.y, MarioConfig.StructAddress + MarioConfig.YOffset);
+                            Config.Stream.SetValue(cursorPosition.Value.z, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        }
+                    }
+                };
+                items.Add(goToClickedPositionItem);
 
                 ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(
                     cursorPosition.Value.x, cursorPosition.Value.y, cursorPosition.Value.z, "Clicked Position");
