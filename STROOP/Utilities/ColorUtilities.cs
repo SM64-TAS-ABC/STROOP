@@ -196,5 +196,30 @@ namespace STROOP.Utilities
 
             return Color.FromArgb(Convert.ToByte(r * 255.0f), Convert.ToByte(g * 255.0f), Convert.ToByte(b * 255.0f));
         }
+
+        public static Color Rainbow(float progress)
+        {
+            float div = (Math.Abs(progress % 1) * 6);
+            int ascending = (int)((div % 1) * 255);
+            int descending = 255 - ascending;
+            ascending = MoreMath.Clamp(ascending, 0, 255);
+            descending = MoreMath.Clamp(descending, 0, 255);
+
+            switch ((int)div)
+            {
+                case 0:
+                    return Color.FromArgb(255, 255, ascending, 0);
+                case 1:
+                    return Color.FromArgb(255, descending, 255, 0);
+                case 2:
+                    return Color.FromArgb(255, 0, 255, ascending);
+                case 3:
+                    return Color.FromArgb(255, 0, descending, 255);
+                case 4:
+                    return Color.FromArgb(255, ascending, 0, 255);
+                default: // case 5:
+                    return Color.FromArgb(255, 255, 0, descending);
+            }
+        }
     }
 }

@@ -750,15 +750,20 @@ namespace STROOP.Map
             if (_colorByHeight)
             {
                 var vertexLists = GetVertexLists();
-                _maxColorY = vertexLists.Max(list => list.Max(v => v.y + GetWallRelativeHeightForOrthographicViewTotal()));
-                _minColorY = vertexLists.Min(list => list.Min(v => v.y + GetWallRelativeHeightForOrthographicViewTotal()));
+                if (vertexLists.Count > 0)
+                {
+                    _maxColorY = vertexLists.Max(list => list.Max(v => v.y + GetWallRelativeHeightForOrthographicViewTotal()));
+                    _minColorY = vertexLists.Min(list => list.Min(v => v.y + GetWallRelativeHeightForOrthographicViewTotal()));
+                }
             }
         }
 
         protected Color GetColorForHeight(float y)
         {
             double proportion = (y - _minColorY) / (_maxColorY - _minColorY);
-            return ColorUtilities.HSL2RGB(proportion, 0.5, 0.5);
+            proportion *= 0.9;
+            proportion = MoreMath.Clamp(proportion, 0, 1);
+            return ColorUtilities.Rainbow((float)proportion);
         }
 
         protected List<ToolStripMenuItem> GetTriangleToolStripMenuItems()

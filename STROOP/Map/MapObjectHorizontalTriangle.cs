@@ -54,7 +54,7 @@ namespace STROOP.Map
             }
             else
             {
-                List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
+                List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
                     GetVertexListsForControlWithoutUnits(drawData);
                 DrawVertexListsForControlWithoutUnits(vertexListsForControl, hoverData);
             }
@@ -118,7 +118,7 @@ namespace STROOP.Map
             }
         }
 
-        private List<List<(float x, float z, Color color, TriangleDataModel tri)>> GetVertexListsForControlWithoutUnits(
+        private List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> GetVertexListsForControlWithoutUnits(
             List<(float? minHeight, float? maxHeight, Color color)> drawData)
         {
             return drawData.ConvertAll(data =>
@@ -148,13 +148,13 @@ namespace STROOP.Map
                                 }
                             }
                             (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates);
-                            return (x, z, color, vertex.tri);
+                            return (x, vertex.y, z, color, vertex.tri);
                         }));
             }).SelectMany(list => list).ToList();
         }
 
         private void DrawVertexListsForControlWithoutUnits(
-            List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl, MapObjectHoverData hoverData)
+            List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> vertexListsForControl, MapObjectHoverData hoverData)
         {
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -172,7 +172,16 @@ namespace STROOP.Map
                     {
                         opacityByte = MapUtilities.GetHoverOpacityByte();
                     }
-                    GL.Color4(vertex.color.R, vertex.color.G, vertex.color.B, opacityByte);
+                    Color colorToUse = vertex.color;
+                    if (_colorByHeight)
+                    {
+                        if (vertex.tri.Address == 0x8019EC70)
+                        {
+                            int xyz = 1;
+                        }
+                        colorToUse = GetColorForHeight(vertex.y);
+                    }
+                    GL.Color4(colorToUse.R, colorToUse.G, colorToUse.B, opacityByte);
                     GL.Vertex2(vertex.x, vertex.z);
                 }
                 GL.End();
@@ -653,7 +662,7 @@ namespace STROOP.Map
             }
             else
             {
-                List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
+                List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
                     GetVertexListsForControlWithoutUnits(drawData);
                 if (_customImage != null)
                 {
