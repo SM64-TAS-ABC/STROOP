@@ -747,7 +747,6 @@ namespace STROOP.Map
                 var vertexLists = GetVertexLists();
                 _maxColorY = vertexLists.Max(list => list.Max(v => v.y));
                 _minColorY = vertexLists.Min(list => list.Min(v => v.y));
-                Config.SetDebugText(_minColorY + " to " + _maxColorY);
             }
         }
 
