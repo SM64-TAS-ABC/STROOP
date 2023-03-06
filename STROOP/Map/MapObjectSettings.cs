@@ -22,6 +22,9 @@ namespace STROOP.Map
         public readonly bool ChangeUseCrossSection;
         public readonly bool NewUseCrossSection;
 
+        public readonly bool ChangeColorByHeight;
+        public readonly bool NewColorByHeight;
+
         public readonly bool ChangeTriangleWithinDist;
         public readonly float? NewTriangleWithinDist;
 
@@ -191,6 +194,9 @@ namespace STROOP.Map
             bool changeUseCrossSection = false,
             bool newUseCrossSection = false,
 
+            bool changeColorByHeight = false,
+            bool newColorByHeight = false,
+
             bool changeTriangleWithinDist = false,
             float? newTriangleWithinDist = null,
 
@@ -358,6 +364,9 @@ namespace STROOP.Map
 
             ChangeUseCrossSection = changeUseCrossSection;
             NewUseCrossSection = newUseCrossSection;
+
+            ChangeColorByHeight = changeColorByHeight;
+            NewColorByHeight = newColorByHeight;
 
             ChangeTriangleWithinDist = changeTriangleWithinDist;
             NewTriangleWithinDist = newTriangleWithinDist;

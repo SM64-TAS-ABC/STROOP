@@ -19,6 +19,7 @@ namespace STROOP.Map
     {
         protected bool _showArrows;
         protected bool _useCrossSection;
+        protected bool _colorByHeight;
         protected float _iconSize;
         private float? _withinDist;
         private float? _withinCenter;
@@ -26,6 +27,7 @@ namespace STROOP.Map
 
         private ToolStripMenuItem _itemShowArrows;
         private ToolStripMenuItem _itemUseCrossSection;
+        private ToolStripMenuItem _itemColorByHeight;
         private ToolStripMenuItem _itemSetIconSize;
         private ToolStripMenuItem _itemSetWithinDist;
         private ToolStripMenuItem _itemSetWithinCenter;
@@ -39,6 +41,7 @@ namespace STROOP.Map
         {
             _showArrows = false;
             _useCrossSection = false;
+            _colorByHeight = false;
             _iconSize = 10;
             _withinDist = null;
             _withinCenter = null;
@@ -753,6 +756,14 @@ namespace STROOP.Map
                 GetParentMapTracker().ApplySettings(settings);
             };
 
+            _itemColorByHeight = new ToolStripMenuItem("Color by Height");
+            _itemColorByHeight.Click += (sender, e) =>
+            {
+                MapObjectSettings settings = new MapObjectSettings(
+                    changeColorByHeight: true, newColorByHeight: !_colorByHeight);
+                GetParentMapTracker().ApplySettings(settings);
+            };
+
             string suffix = string.Format(" ({0})", _iconSize);
             _itemSetIconSize = new ToolStripMenuItem(SET_ICON_SIZE_TEXT + suffix);
             _itemSetIconSize.Click += (sender, e) =>
@@ -811,6 +822,7 @@ namespace STROOP.Map
             {
                 _itemShowArrows,
                 _itemUseCrossSection,
+                _itemColorByHeight,
                 _itemSetIconSize,
                 _itemSetWithinDist,
                 itemClearWithinDist,
@@ -833,6 +845,12 @@ namespace STROOP.Map
             {
                 _useCrossSection = settings.NewUseCrossSection;
                 _itemUseCrossSection.Checked = settings.NewUseCrossSection;
+            }
+
+            if (settings.ChangeColorByHeight)
+            {
+                _colorByHeight = settings.NewColorByHeight;
+                _itemColorByHeight.Checked = settings.NewColorByHeight;
             }
 
             if (settings.ChangeIconSize)
