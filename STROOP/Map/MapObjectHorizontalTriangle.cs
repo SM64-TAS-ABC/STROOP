@@ -175,10 +175,6 @@ namespace STROOP.Map
                     Color colorToUse = vertex.color;
                     if (_colorByHeight)
                     {
-                        if (vertex.tri.Address == 0x8019EC70)
-                        {
-                            int xyz = 1;
-                        }
                         colorToUse = GetColorForHeight(vertex.y);
                     }
                     GL.Color4(colorToUse.R, colorToUse.G, colorToUse.B, opacityByte);
