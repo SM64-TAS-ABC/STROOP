@@ -48,7 +48,7 @@ namespace STROOP.Map
             List<(float? minHeight, float? maxHeight, Color color)> drawData = GetDrawData();
             if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
             {
-                List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
+                List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
                     GetVertexListsForControlWithUnits(drawData);
                 DrawVertexListsForControlWithUnits(vertexListsForControl, hoverData);
             }
@@ -226,11 +226,11 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        private List<List<(float x, float z, Color color, TriangleDataModel tri)>> GetVertexListsForControlWithUnits(
+        private List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> GetVertexListsForControlWithUnits(
             List<(float? minHeight, float? maxHeight, Color color)> drawData)
         {
             List<TriangleDataModel> tris = GetFilteredTriangles();
-            List<(int x, int z, Color color, TriangleDataModel tri)> unitPoints =
+            List<(int x, float y, int z, Color color, TriangleDataModel tri)> unitPoints =
                 drawData.ConvertAll(data =>
                 {
                     return tris.ConvertAll(tri =>
@@ -260,8 +260,8 @@ namespace STROOP.Map
                             }
                         }
 
-                        List<(int x, int z, Color color, TriangleDataModel tri)> points =
-                            new List<(int x, int z, Color color, TriangleDataModel tri)>();
+                        List<(int x, float y, int z, Color color, TriangleDataModel tri)> points =
+                            new List<(int x, float y, int z, Color color, TriangleDataModel tri)>();
                         for (int x = xMin; x <= xMax; x++)
                         {
                             for (int z = zMin; z <= zMax; z++)
@@ -271,7 +271,7 @@ namespace STROOP.Map
                                     (!data.minHeight.HasValue || y.Value >= data.minHeight.Value) &&
                                     (!data.maxHeight.HasValue || y.Value <= data.maxHeight.Value))
                                 {
-                                    points.Add((x, z, color, tri));
+                                    points.Add((x, y.Value, z, color, tri));
                                 }
                             }
                         }
@@ -279,8 +279,8 @@ namespace STROOP.Map
                     }).SelectMany(points => points).ToList();
                 }).SelectMany(list => list).ToList();
 
-            List<(int x, int z, Color color, TriangleDataModel tri)> unitPointsDistinct =
-                new List<(int x, int z, Color color, TriangleDataModel tri)>();
+            List<(int x, float y, int z, Color color, TriangleDataModel tri)> unitPointsDistinct =
+                new List<(int x, float y, int z, Color color, TriangleDataModel tri)>();
             HashSet<(int x, int z)> alreadySeen = new HashSet<(int x, int z)>();
             foreach (var unitPoint in unitPoints)
             {
@@ -298,14 +298,14 @@ namespace STROOP.Map
                     return quad.ConvertAll(vertex =>
                     {
                         (float x, float z) = MapUtilities.ConvertCoordsForControlTopDownView(vertex.x, vertex.z, UseRelativeCoordinates);
-                        return (x, z, unitPoint.color, unitPoint.tri);
+                        return (x, unitPoint.y, z, unitPoint.color, unitPoint.tri);
                     });
                 });
             }).SelectMany(list => list).ToList();
         }
 
         private void DrawVertexListsForControlWithUnits(
-            List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl, MapObjectHoverData hoverData)
+            List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> vertexListsForControl, MapObjectHoverData hoverData)
         {
             GL.BindTexture(TextureTarget.Texture2D, -1);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -323,7 +323,12 @@ namespace STROOP.Map
                     {
                         opacityByte = MapUtilities.GetHoverOpacityByte();
                     }
-                    GL.Color4(vertex.color.R, vertex.color.G, vertex.color.B, opacityByte);
+                    Color colorToUse = vertex.color;
+                    if (_colorByHeight)
+                    {
+                        colorToUse = GetColorForHeight(vertex.y);
+                    }
+                    GL.Color4(colorToUse.R, colorToUse.G, colorToUse.B, opacityByte);
                     GL.Vertex2(vertex.x, vertex.z);
                 }
             }
@@ -644,7 +649,7 @@ namespace STROOP.Map
             List<(float? minHeight, float? maxHeight, Color color)> drawData = GetDrawData();
             if (_showTriUnits && MapUtilities.IsAbleToShowUnitPrecision())
             {
-                List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
+                List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
                     GetVertexListsForControlWithUnits(drawData);
                 for (int i = 0; i < vertexListsForControl.Count; i++)
                 {
