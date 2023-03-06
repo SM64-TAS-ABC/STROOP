@@ -673,12 +673,12 @@ namespace STROOP.Map
                     return tri.Get3DVertices().ConvertAll(vertex => (vertex.x, vertex.y + GetWallRelativeHeightForOrthographicViewTotal(), vertex.z, color, tri));
                 });
 
-            List<List<(float x, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
+            List<List<(float x, float y, float z, Color color, TriangleDataModel tri)>> vertexListsForControl =
                 vertexLists.ConvertAll(vertexList => vertexList.ConvertAll(
                     vertex =>
                     {
                         (float x, float z) = MapUtilities.ConvertCoordsForControlOrthographicView(vertex.x, vertex.y, vertex.z, UseRelativeCoordinates);
-                        return (x, z, vertex.color, vertex.tri);
+                        return (x, vertex.y, z, vertex.color, vertex.tri);
                     }));
 
             GL.BindTexture(TextureTarget.Texture2D, -1);
@@ -686,17 +686,22 @@ namespace STROOP.Map
             GL.LoadIdentity();
 
             // Draw triangle
-            foreach (List<(float x, float z, Color color, TriangleDataModel tri)> vertexList in vertexListsForControl)
+            foreach (List<(float x, float y, float z, Color color, TriangleDataModel tri)> vertexList in vertexListsForControl)
             {
                 GL.Begin(PrimitiveType.Polygon);
-                foreach ((float x, float z, Color color, TriangleDataModel tri) in vertexList)
+                foreach ((float x, float y, float z, Color color, TriangleDataModel tri) in vertexList)
                 {
                     byte opacityByte = OpacityByte;
                     if (this == hoverData?.MapObject && tri.Address == hoverData?.Tri?.Address && !hoverData.Index2.HasValue)
                     {
                         opacityByte = MapUtilities.GetHoverOpacityByte();
                     }
-                    GL.Color4(color.R, color.G, color.B, opacityByte);
+                    Color colorToUse = color;
+                    if (_colorByHeight)
+                    {
+                        colorToUse = GetColorForHeight(y);
+                    }
+                    GL.Color4(colorToUse.R, colorToUse.G, colorToUse.B, opacityByte);
                     GL.Vertex2(x, z);
                 }
                 GL.End();
@@ -707,10 +712,10 @@ namespace STROOP.Map
             {
                 GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
                 GL.LineWidth(LineWidth);
-                foreach (List<(float x, float z, Color color, TriangleDataModel tri)> vertexList in vertexListsForControl)
+                foreach (List<(float x, float y, float z, Color color, TriangleDataModel tri)> vertexList in vertexListsForControl)
                 {
                     GL.Begin(PrimitiveType.LineLoop);
-                    foreach ((float x, float z, Color color, TriangleDataModel tri) in vertexList)
+                    foreach ((float x, float y, float z, Color color, TriangleDataModel tri) in vertexList)
                     {
                         GL.Vertex2(x, z);
                     }
@@ -745,9 +750,15 @@ namespace STROOP.Map
             if (_colorByHeight)
             {
                 var vertexLists = GetVertexLists();
-                _maxColorY = vertexLists.Max(list => list.Max(v => v.y));
-                _minColorY = vertexLists.Min(list => list.Min(v => v.y));
+                _maxColorY = vertexLists.Max(list => list.Max(v => v.y + GetWallRelativeHeightForOrthographicViewTotal()));
+                _minColorY = vertexLists.Min(list => list.Min(v => v.y + GetWallRelativeHeightForOrthographicViewTotal()));
             }
+        }
+
+        protected Color GetColorForHeight(float y)
+        {
+            double proportion = (y - _minColorY) / (_maxColorY - _minColorY);
+            return ColorUtilities.HSL2RGB(proportion, 0.5, 0.5);
         }
 
         protected List<ToolStripMenuItem> GetTriangleToolStripMenuItems()
