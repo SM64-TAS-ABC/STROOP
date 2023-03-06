@@ -489,6 +489,23 @@ namespace STROOP.Map
             };
         }
 
+        public override void Update()
+        {
+            base.Update();
+
+            if (_colorByHeight)
+            {
+                if (_minHeight.HasValue)
+                {
+                    _minColorY = Math.Max(_minColorY, _minHeight.Value);
+                }
+                if (_maxHeight.HasValue)
+                {
+                    _maxColorY = Math.Min(_maxColorY, _maxHeight.Value);
+                }
+            }
+        }
+
         public override void ApplySettings(MapObjectSettings settings)
         {
             base.ApplySettings(settings);
