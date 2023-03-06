@@ -24,6 +24,8 @@ namespace STROOP.Map
         private float? _withinDist;
         private float? _withinCenter;
         protected bool _excludeDeathBarriers;
+        protected float _minColorY;
+        protected float _maxColorY;
 
         private ToolStripMenuItem _itemShowArrows;
         private ToolStripMenuItem _itemUseCrossSection;
@@ -736,6 +738,17 @@ namespace STROOP.Map
             }
 
             GL.Color4(1, 1, 1, 1.0f);
+        }
+
+        public override void Update()
+        {
+            if (_colorByHeight)
+            {
+                var vertexLists = GetVertexLists();
+                _maxColorY = vertexLists.Max(list => list.Max(v => v.y));
+                _minColorY = vertexLists.Min(list => list.Min(v => v.y));
+                Config.SetDebugText(_minColorY + " to " + _maxColorY);
+            }
         }
 
         protected List<ToolStripMenuItem> GetTriangleToolStripMenuItems()

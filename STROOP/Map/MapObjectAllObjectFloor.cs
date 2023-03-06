@@ -98,6 +98,8 @@ namespace STROOP.Map
 
         public override void Update()
         {
+            base.Update();
+
             if (_autoUpdate)
             {
                 _tris.Clear();
