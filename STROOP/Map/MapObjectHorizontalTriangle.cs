@@ -22,6 +22,8 @@ namespace STROOP.Map
         private bool _truncateBottomOfHitbox;
         private float? _minHeight;
         private float? _maxHeight;
+        private PositionAngle _minPosAngle;
+        private PositionAngle _maxPosAngle;
         protected bool _distinguishSlidingClasses;
         protected bool _enableQuarterFrameLandings;
 
@@ -39,6 +41,8 @@ namespace STROOP.Map
             _showTriUnits = false;
             _minHeight = null;
             _maxHeight = null;
+            _minPosAngle = null;
+            _maxPosAngle = null;
             _distinguishSlidingClasses = false;
             _enableQuarterFrameLandings = false;
         }
@@ -113,7 +117,7 @@ namespace STROOP.Map
             {
                 return new List<(float? minHeight, float? maxHeight, Color color)>()
                 {
-                    (_minHeight, _maxHeight, Color),
+                    (GetMinY(), GetMaxY(), Color),
                 };
             }
         }
@@ -499,19 +503,32 @@ namespace STROOP.Map
             };
         }
 
+        public float? GetMinY()
+        {
+            return _minHeight;
+        }
+
+        public float? GetMaxY()
+        {
+            return _maxHeight;
+        }
+
         public override void Update()
         {
             base.Update();
 
             if (_colorByHeight)
             {
-                if (_minHeight.HasValue)
+                float? minY = GetMinY();
+                if (minY.HasValue)
                 {
-                    _minColorY = Math.Max(_minColorY, _minHeight.Value);
+                    _minColorY = Math.Max(_minColorY, minY.Value);
                 }
-                if (_maxHeight.HasValue)
+
+                float? maxY = GetMaxY();
+                if (maxY.HasValue)
                 {
-                    _maxColorY = Math.Min(_maxColorY, _maxHeight.Value);
+                    _maxColorY = Math.Min(_maxColorY, maxY.Value);
                 }
             }
         }
