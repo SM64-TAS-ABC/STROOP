@@ -452,21 +452,44 @@ namespace STROOP.Map
             _itemSetMinHeight.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the min height.");
-                float? minHeightNullable =
-                    text == "" ?
-                    Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset) :
-                    ParsingUtilities.ParseFloatNullable(text);
-                if (!minHeightNullable.HasValue) return;
-                MapObjectSettings settings = new MapObjectSettings(
-                    changeHorizontalTriangleMinHeight: true, newHorizontalTriangleMinHeight: minHeightNullable.Value);
-                GetParentMapTracker().ApplySettings(settings);
+                PositionAngle posAngle = PositionAngle.FromString(text);
+                if (posAngle != null)
+                {
+                    MapObjectSettings settings1 = new MapObjectSettings(
+                        changeHorizontalTriangleMinHeight: true,
+                        newHorizontalTriangleMinHeight: null);
+                    GetParentMapTracker().ApplySettings(settings1);
+                    MapObjectSettings settings2 = new MapObjectSettings(
+                        changeHorizontalTriangleMinHeightPositionAngle: true,
+                        newHorizontalTriangleMinHeightPositionAngle: text);
+                    GetParentMapTracker().ApplySettings(settings2);
+                }
+                else
+                {
+                    float? minHeightNullable =
+                        text == "" ?
+                        Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset) :
+                        ParsingUtilities.ParseFloatNullable(text);
+                    if (!minHeightNullable.HasValue) return;
+                    MapObjectSettings settings1 = new MapObjectSettings(
+                        changeHorizontalTriangleMinHeightPositionAngle: true,
+                        newHorizontalTriangleMinHeightPositionAngle: null);
+                    GetParentMapTracker().ApplySettings(settings1);
+                    MapObjectSettings settings2 = new MapObjectSettings(
+                        changeHorizontalTriangleMinHeight: true,
+                        newHorizontalTriangleMinHeight: minHeightNullable.Value);
+                    GetParentMapTracker().ApplySettings(settings2);
+                }
             };
 
             ToolStripMenuItem itemClearMinHeight = new ToolStripMenuItem("Clear Min Height");
             itemClearMinHeight.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    changeHorizontalTriangleMinHeight: true, newHorizontalTriangleMinHeight: null);
+                    changeHorizontalTriangleMinHeight: true,
+                    newHorizontalTriangleMinHeight: null,
+                    changeHorizontalTriangleMinHeightPositionAngle: true,
+                    newHorizontalTriangleMinHeightPositionAngle: null);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -474,21 +497,44 @@ namespace STROOP.Map
             _itemSetMaxHeight.Click += (sender, e) =>
             {
                 string text = DialogUtilities.GetStringFromDialog(labelText: "Enter the max height.");
-                float? maxHeightNullable =
+                PositionAngle posAngle = PositionAngle.FromString(text);
+                if (posAngle != null)
+                {
+                    MapObjectSettings settings1 = new MapObjectSettings(
+                        changeHorizontalTriangleMaxHeight: true,
+                        newHorizontalTriangleMaxHeight: null);
+                    GetParentMapTracker().ApplySettings(settings1);
+                    MapObjectSettings settings2 = new MapObjectSettings(
+                        changeHorizontalTriangleMaxHeightPositionAngle: true,
+                        newHorizontalTriangleMaxHeightPositionAngle: text);
+                    GetParentMapTracker().ApplySettings(settings2);
+                }
+                else
+                {
+                    float? maxHeightNullable =
                     text == "" ?
                     Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset) :
                     ParsingUtilities.ParseFloatNullable(text);
-                if (!maxHeightNullable.HasValue) return;
-                MapObjectSettings settings = new MapObjectSettings(
-                    changeHorizontalTriangleMaxHeight: true, newHorizontalTriangleMaxHeight: maxHeightNullable.Value);
-                GetParentMapTracker().ApplySettings(settings);
+                    if (!maxHeightNullable.HasValue) return;
+                    MapObjectSettings settings1 = new MapObjectSettings(
+                        changeHorizontalTriangleMaxHeightPositionAngle: true,
+                        newHorizontalTriangleMaxHeightPositionAngle: null);
+                    GetParentMapTracker().ApplySettings(settings1);
+                    MapObjectSettings settings2 = new MapObjectSettings(
+                        changeHorizontalTriangleMaxHeight: true,
+                        newHorizontalTriangleMaxHeight: maxHeightNullable.Value);
+                    GetParentMapTracker().ApplySettings(settings2);
+                }
             };
 
             ToolStripMenuItem itemClearMaxHeight = new ToolStripMenuItem("Clear Max Height");
             itemClearMaxHeight.Click += (sender, e) =>
             {
                 MapObjectSettings settings = new MapObjectSettings(
-                    changeHorizontalTriangleMaxHeight: true, newHorizontalTriangleMaxHeight: null);
+                    changeHorizontalTriangleMaxHeight: true,
+                    newHorizontalTriangleMaxHeight: null,
+                    changeHorizontalTriangleMaxHeightPositionAngle: true,
+                    newHorizontalTriangleMaxHeightPositionAngle: null);
                 GetParentMapTracker().ApplySettings(settings);
             };
 
@@ -505,11 +551,19 @@ namespace STROOP.Map
 
         public float? GetMinY()
         {
+            if (_minPosAngle != null)
+            {
+                return (float)_minPosAngle.Y;
+            }
             return _minHeight;
         }
 
         public float? GetMaxY()
         {
+            if (_maxPosAngle != null)
+            {
+                return (float)_maxPosAngle.Y;
+            }
             return _maxHeight;
         }
 
@@ -560,6 +614,20 @@ namespace STROOP.Map
             {
                 _maxHeight = settings.NewHorizontalTriangleMaxHeight;
                 string suffix = _maxHeight.HasValue ? string.Format(" ({0})", _maxHeight.Value) : "";
+                _itemSetMaxHeight.Text = SET_MAX_HEIGHT_TEXT + suffix;
+            }
+
+            if (settings.ChangeHorizontalTriangleMinHeightPositionAngle)
+            {
+                _minPosAngle = PositionAngle.FromString(settings.NewHorizontalTriangleMinHeightPositionAngle);
+                string suffix = _minPosAngle != null ? string.Format(" ({0})", _minPosAngle) : "";
+                _itemSetMinHeight.Text = SET_MIN_HEIGHT_TEXT + suffix;
+            }
+
+            if (settings.ChangeHorizontalTriangleMaxHeightPositionAngle)
+            {
+                _maxPosAngle = PositionAngle.FromString(settings.NewHorizontalTriangleMaxHeightPositionAngle);
+                string suffix = _maxPosAngle != null ? string.Format(" ({0})", _maxPosAngle) : "";
                 _itemSetMaxHeight.Text = SET_MAX_HEIGHT_TEXT + suffix;
             }
         }

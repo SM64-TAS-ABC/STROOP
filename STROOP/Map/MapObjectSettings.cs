@@ -43,6 +43,12 @@ namespace STROOP.Map
         public readonly bool ChangeHorizontalTriangleMaxHeight;
         public readonly float? NewHorizontalTriangleMaxHeight;
 
+        public readonly bool ChangeHorizontalTriangleMinHeightPositionAngle;
+        public readonly string NewHorizontalTriangleMinHeightPositionAngle;
+
+        public readonly bool ChangeHorizontalTriangleMaxHeightPositionAngle;
+        public readonly string NewHorizontalTriangleMaxHeightPositionAngle;
+
         public readonly bool ChangeFloorExcludeDeathBarriers;
         public readonly bool NewFloorExcludeDeathBarriers;
 
@@ -215,6 +221,12 @@ namespace STROOP.Map
             bool changeHorizontalTriangleMaxHeight = false,
             float? newHorizontalTriangleMaxHeight = null,
 
+            bool changeHorizontalTriangleMinHeightPositionAngle = false,
+            string newHorizontalTriangleMinHeightPositionAngle = null,
+
+            bool changeHorizontalTriangleMaxHeightPositionAngle = false,
+            string newHorizontalTriangleMaxHeightPositionAngle = null,
+
             bool changeFloorExcludeDeathBarriers = false,
             bool newFloorExcludeDeathBarriers = false,
 
@@ -385,6 +397,12 @@ namespace STROOP.Map
 
             ChangeHorizontalTriangleMaxHeight = changeHorizontalTriangleMaxHeight;
             NewHorizontalTriangleMaxHeight = newHorizontalTriangleMaxHeight;
+
+            ChangeHorizontalTriangleMinHeightPositionAngle = changeHorizontalTriangleMinHeightPositionAngle;
+            NewHorizontalTriangleMinHeightPositionAngle = newHorizontalTriangleMinHeightPositionAngle;
+
+            ChangeHorizontalTriangleMaxHeightPositionAngle = changeHorizontalTriangleMaxHeightPositionAngle;
+            NewHorizontalTriangleMaxHeightPositionAngle = newHorizontalTriangleMaxHeightPositionAngle;
 
             ChangeFloorExcludeDeathBarriers = changeFloorExcludeDeathBarriers;
             NewFloorExcludeDeathBarriers = newFloorExcludeDeathBarriers;
