@@ -1052,7 +1052,7 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Offset:
                         return GetOffset(Coordinate.Z);
                     case PositionAngleTypeEnum.YOffset:
-                        return PosAngle1.X;
+                        return PosAngle1.Z;
                     case PositionAngleTypeEnum.Trunc:
                         return (int)PosAngle1.Z;
                     case PositionAngleTypeEnum.Self:
