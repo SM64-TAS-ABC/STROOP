@@ -82,6 +82,7 @@ namespace STROOP.Utilities
             Schedule,
             Hybrid,
             Offset,
+            YOffset,
             Trunc,
             Pos,
             Ang,
@@ -209,7 +210,9 @@ namespace STROOP.Utilities
             if (thisAngle.HasValue != shouldHaveThisAngle)
                 throw new ArgumentOutOfRangeException();
 
-            bool shouldHaveOffsetDist = PosAngleType == PositionAngleTypeEnum.Offset;
+            bool shouldHaveOffsetDist =
+                PosAngleType == PositionAngleTypeEnum.Offset ||
+                PosAngleType == PositionAngleTypeEnum.YOffset;
             if (offsetDist.HasValue != shouldHaveOffsetDist)
                 throw new ArgumentOutOfRangeException();
 
@@ -224,6 +227,7 @@ namespace STROOP.Utilities
             bool shouldHavePosAngle1 =
                 PosAngleType == PositionAngleTypeEnum.Hybrid ||
                 PosAngleType == PositionAngleTypeEnum.Offset ||
+                PosAngleType == PositionAngleTypeEnum.YOffset ||
                 PosAngleType == PositionAngleTypeEnum.Trunc;
             if ((posAngle1 != null) != shouldHavePosAngle1)
                 throw new ArgumentOutOfRangeException();
@@ -312,6 +316,8 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.Hybrid, posAngle1: posAngle1, posAngle2: posAngle2);
         public static PositionAngle Offset(double dist, double angle, bool relative, PositionAngle posAngle) =>
             new PositionAngle(PositionAngleTypeEnum.Offset, offsetDist: dist, offsetAngle: angle, offsetAngleRelative: relative, posAngle1: posAngle);
+        public static PositionAngle YOffset(double dist, PositionAngle posAngle) =>
+            new PositionAngle(PositionAngleTypeEnum.YOffset, offsetDist: dist, posAngle1: posAngle);
         public static PositionAngle Trunc(PositionAngle posAngle) =>
             new PositionAngle(PositionAngleTypeEnum.Trunc, posAngle1: posAngle);
         public static PositionAngle Functions(List<Func<double>> getters, List<Func<double, bool>> setters) =>
@@ -563,6 +569,15 @@ namespace STROOP.Utilities
                 PositionAngle posAngle = FromString(substring);
                 return Offset(dist, angle, relative, posAngle);
             }
+            else if (parts[0] == "yoffset")
+            {
+                double dist = ParsingUtilities.ParseDouble(parts[1]);
+                int indexStart = stringValue.IndexOf("[");
+                int indexEnd = stringValue.LastIndexOf("]");
+                string substring = stringValue.Substring(indexStart + 1, indexEnd - indexStart - 1);
+                PositionAngle posAngle = FromString(substring);
+                return YOffset(dist, posAngle);
+            }
             else if (parts.Count == 1 && parts[0] == "schedule")
             {
                 return Scheduler;
@@ -784,6 +799,8 @@ namespace STROOP.Utilities
                         return double.NaN;
                     case PositionAngleTypeEnum.Offset:
                         return GetOffset(Coordinate.X);
+                    case PositionAngleTypeEnum.YOffset:
+                        return PosAngle1.X;
                     case PositionAngleTypeEnum.Trunc:
                         return (int)PosAngle1.X;
                     case PositionAngleTypeEnum.Self:
@@ -908,6 +925,8 @@ namespace STROOP.Utilities
                         return double.NaN;
                     case PositionAngleTypeEnum.Offset:
                         return GetOffset(Coordinate.Y);
+                    case PositionAngleTypeEnum.YOffset:
+                        return PosAngle1.Y + OffsetDist.Value;
                     case PositionAngleTypeEnum.Trunc:
                         return (int)PosAngle1.Y;
                     case PositionAngleTypeEnum.Self:
@@ -1032,6 +1051,8 @@ namespace STROOP.Utilities
                         return double.NaN;
                     case PositionAngleTypeEnum.Offset:
                         return GetOffset(Coordinate.Z);
+                    case PositionAngleTypeEnum.YOffset:
+                        return PosAngle1.X;
                     case PositionAngleTypeEnum.Trunc:
                         return (int)PosAngle1.Z;
                     case PositionAngleTypeEnum.Self:
@@ -1150,6 +1171,8 @@ namespace STROOP.Utilities
                         return ThisAngle.Value;
                     case PositionAngleTypeEnum.Offset:
                         return 0;
+                    case PositionAngleTypeEnum.YOffset:
+                        return PosAngle1.Angle;
                     case PositionAngleTypeEnum.Trunc:
                         return MoreMath.NormalizeAngleTruncated(PosAngle1.Angle);
                     case PositionAngleTypeEnum.Self:
@@ -1606,6 +1629,8 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.Offset:
                     return SetOffset(value, Coordinate.X);
+                case PositionAngleTypeEnum.YOffset:
+                    return false;
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetX(value);
                 case PositionAngleTypeEnum.Self:
@@ -1730,6 +1755,8 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.Offset:
                     return SetOffset(value, Coordinate.Y);
+                case PositionAngleTypeEnum.YOffset:
+                    return false;
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetY(value);
                 case PositionAngleTypeEnum.Self:
@@ -1854,6 +1881,8 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.Offset:
                     return SetOffset(value, Coordinate.Z);
+                case PositionAngleTypeEnum.YOffset:
+                    return false;
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetZ(value);
                 case PositionAngleTypeEnum.Self:
@@ -1981,6 +2010,8 @@ namespace STROOP.Utilities
                     ThisAngle = value;
                     return true;
                 case PositionAngleTypeEnum.Offset:
+                    return false;
+                case PositionAngleTypeEnum.YOffset:
                     return false;
                 case PositionAngleTypeEnum.Trunc:
                     return PosAngle1.SetAngle(value);
