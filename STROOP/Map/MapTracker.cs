@@ -796,6 +796,18 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
             });
 
+            ToolStripMenuItem itemPyramidPlatformNormals = new ToolStripMenuItem("Add Tracker for Pyramid Platform Normals");
+            setUpClickAction(itemPyramidPlatformNormals, mapObjectList =>
+            {
+                return mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
+                    return (MapObject)new MapObjectPyramidPlatformNormals(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+            });
+
             ToolStripMenuItem itemChuckyaMapObjects = new ToolStripMenuItem("Add Trackers for Chuckya Map Objects");
             itemChuckyaMapObjects.Click += (sender, e) =>
             {
@@ -974,6 +986,7 @@ namespace STROOP.Map
             ToolStripMenuItem itemObjectSpecific = new ToolStripMenuItem("Object Specific...");
             itemObjectSpecific.DropDownItems.Add(itemCoffinBox);
             itemObjectSpecific.DropDownItems.Add(itemFlyGuyZoneDividers);
+            itemObjectSpecific.DropDownItems.Add(itemPyramidPlatformNormals);
 
             ToolStripMenuItem itemPreset = new ToolStripMenuItem("Preset...");
             itemPreset.DropDownItems.Add(itemChuckyaMapObjects);
