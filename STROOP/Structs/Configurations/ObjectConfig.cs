@@ -166,5 +166,9 @@ namespace STROOP.Structs
         public static readonly uint ObjectSpawnerRadiusOffset = 0xF8;
 
         public static readonly uint SwooperTargetYawOffset = 0xFC;
+
+        public static readonly uint PyramidPlatformNormalXOffset = 0xF4;
+        public static readonly uint PyramidPlatformNormalYOffset = 0xF8;
+        public static readonly uint PyramidPlatformNormalZOffset = 0xFC;
     }
 }
