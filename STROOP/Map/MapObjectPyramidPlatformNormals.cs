@@ -32,8 +32,8 @@ namespace STROOP.Map
             float normalZ = Config.Stream.GetFloat(objAddress + ObjectConfig.PyramidPlatformNormalZOffset);
 
             DrawCircles();
-            DrawHyperbolas(normalX, Color.DarkRed);
-            DrawHyperbolas(normalZ, Color.Lime);
+            DrawHyperbolas(true, normalX, Color.DarkRed);
+            DrawHyperbolas(false, normalZ, Color.Lime);
         }
 
         private void DrawCircles()
@@ -112,16 +112,27 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        private void DrawHyperbolas(float normal, Color color)
+        private void DrawHyperbolas(bool isForX, float normal, Color color)
         {
             List<double> offsets = new List<double>() { -0.01, 0, 0.01 };
-            double range = 1000;
+            double range = 2000;
             foreach (double offset in offsets)
             {
-                List<(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
-                    .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 2 * range - range)
-                    .ConvertAll(z => (Math.Sqrt((250000 + ((z - _posAngle.Z) * (z - _posAngle.Z))) / ((1 / ((normal + offset) * (normal + offset))) - 1)) + _posAngle.X, z))
-                    .ConvertAll(p => MapUtilities.ConvertCoordsForControlTopDownView((float)p.Item1, (float)p.z, UseRelativeCoordinates));
+                List<(float pointX, float pointZ)> controlPoints;
+                if (isForX)
+                {
+                    controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
+                        .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 2 * range - range + _posAngle.Z)
+                        .ConvertAll(z => (Math.Sqrt((250000 + ((z - _posAngle.Z) * (z - _posAngle.Z))) / ((1 / ((normal + offset) * (normal + offset))) - 1)) + _posAngle.X, z))
+                        .ConvertAll(p => MapUtilities.ConvertCoordsForControlTopDownView((float)p.Item1, (float)p.z, UseRelativeCoordinates));
+                }
+                else
+                {
+                    controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
+                        .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 2 * range - range + _posAngle.X)
+                        .ConvertAll(x => (-1 * Math.Sqrt((250000 + ((x - _posAngle.X) * (x - _posAngle.X))) / ((1 / ((normal + offset) * (normal + offset))) - 1)) + _posAngle.Z, x))
+                        .ConvertAll(p => MapUtilities.ConvertCoordsForControlTopDownView((float)p.x, (float)p.Item1, UseRelativeCoordinates));
+                }
 
                 GL.BindTexture(TextureTarget.Texture2D, -1);
                 GL.MatrixMode(MatrixMode.Modelview);
@@ -132,7 +143,7 @@ namespace STROOP.Map
                 {
                     GL.Color4(color.R, color.G, color.B, (byte)255);
                     GL.LineWidth(LineWidth);
-                    GL.Begin(PrimitiveType.LineLoop);
+                    GL.Begin(PrimitiveType.LineStrip);
                     foreach ((float x, float z) in controlPoints)
                     {
                         GL.Vertex2(x, z);
