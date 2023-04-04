@@ -32,8 +32,8 @@ namespace STROOP.Map
             float normalZ = Config.Stream.GetFloat(objAddress + ObjectConfig.PyramidPlatformNormalZOffset);
 
             DrawCircles();
-            DrawHyperbolas(normalX);
-            DrawHyperbolas(normalZ);
+            DrawHyperbolas(normalX, Color.DarkRed);
+            DrawHyperbolas(normalZ, Color.Lime);
         }
 
         private void DrawCircles()
@@ -112,9 +112,36 @@ namespace STROOP.Map
             GL.Color4(1, 1, 1, 1.0f);
         }
 
-        private void DrawHyperbolas(float normal)
+        private void DrawHyperbolas(float normal, Color color)
         {
-            
+            List<double> offsets = new List<double>() { -0.01, 0, 0.01 };
+            double range = 1000;
+            foreach (double offset in offsets)
+            {
+                List<(float pointX, float pointZ)> controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
+                    .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 2 * range - range)
+                    .ConvertAll(z => (Math.Sqrt((250000 + ((z - _posAngle.Z) * (z - _posAngle.Z))) / ((1 / ((normal + offset) * (normal + offset))) - 1)) + _posAngle.X, z))
+                    .ConvertAll(p => MapUtilities.ConvertCoordsForControlTopDownView((float)p.Item1, (float)p.z, UseRelativeCoordinates));
+
+                GL.BindTexture(TextureTarget.Texture2D, -1);
+                GL.MatrixMode(MatrixMode.Modelview);
+                GL.LoadIdentity();
+
+                // Draw outline
+                if (LineWidth != 0)
+                {
+                    GL.Color4(color.R, color.G, color.B, (byte)255);
+                    GL.LineWidth(LineWidth);
+                    GL.Begin(PrimitiveType.LineLoop);
+                    foreach ((float x, float z) in controlPoints)
+                    {
+                        GL.Vertex2(x, z);
+                    }
+                    GL.End();
+                }
+
+                GL.Color4(1, 1, 1, 1.0f);
+            }
         }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
