@@ -115,44 +115,52 @@ namespace STROOP.Map
         private void DrawHyperbolas(bool isForX, float normal, Color color)
         {
             List<double> offsets = new List<double>() { -0.01, 0, 0.01 };
-            double range = 2000;
-            foreach (double offset in offsets)
-            {
-                List<(float pointX, float pointZ)> controlPoints;
-                if (isForX)
+            double range = 1000;
+            List<List<(float pointX, float pointZ)>> pointLists =
+                offsets.ConvertAll(offset =>
                 {
-                    controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
-                        .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 2 * range - range + _posAngle.Z)
-                        .ConvertAll(z => (Math.Sign(normal + offset) * Math.Sqrt((250000 + ((z - _posAngle.Z) * (z - _posAngle.Z))) / ((1 / ((normal + offset) * (normal + offset))) - 1)) + _posAngle.X, z))
-                        .ConvertAll(p => MapUtilities.ConvertCoordsForControlTopDownView((float)p.Item1, (float)p.z, UseRelativeCoordinates));
-                }
-                else
-                {
-                    controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
-                        .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 2 * range - range + _posAngle.X)
-                        .ConvertAll(x => (Math.Sign(normal + offset) * Math.Sqrt((250000 + ((x - _posAngle.X) * (x - _posAngle.X))) / ((1 / ((normal + offset) * (normal + offset))) - 1)) + _posAngle.Z, x))
-                        .ConvertAll(p => MapUtilities.ConvertCoordsForControlTopDownView((float)p.x, (float)p.Item1, UseRelativeCoordinates));
-                }
-
-                GL.BindTexture(TextureTarget.Texture2D, -1);
-                GL.MatrixMode(MatrixMode.Modelview);
-                GL.LoadIdentity();
-
-                // Draw outline
-                if (LineWidth != 0)
-                {
-                    GL.Color4(color.R, color.G, color.B, (byte)255);
-                    GL.LineWidth(LineWidth);
-                    GL.Begin(PrimitiveType.LineStrip);
-                    foreach ((float x, float z) in controlPoints)
+                    if (isForX)
                     {
-                        GL.Vertex2(x, z);
+                        return Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
+                            .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 2 * range - range + _posAngle.Z)
+                            .ConvertAll(z => (Math.Sign(normal + offset) * Math.Sqrt((250000 + ((z - _posAngle.Z) * (z - _posAngle.Z))) / ((1 / ((normal + offset) * (normal + offset))) - 1)) + _posAngle.X, z))
+                            .ConvertAll(p => MapUtilities.ConvertCoordsForControlTopDownView((float)p.Item1, (float)p.z, UseRelativeCoordinates));
                     }
-                    GL.End();
-                }
+                    else
+                    {
+                        return Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
+                            .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 2 * range - range + _posAngle.X)
+                            .ConvertAll(x => (Math.Sign(normal + offset) * Math.Sqrt((250000 + ((x - _posAngle.X) * (x - _posAngle.X))) / ((1 / ((normal + offset) * (normal + offset))) - 1)) + _posAngle.Z, x))
+                            .ConvertAll(p => MapUtilities.ConvertCoordsForControlTopDownView((float)p.x, (float)p.Item1, UseRelativeCoordinates));
+                    }
+                });
 
-                GL.Color4(1, 1, 1, 1.0f);
+            foreach (var pointList in pointLists)
+            {
+                DrawHyperbola(pointList, color);
             }
+        }
+
+        private void DrawHyperbola(List<(float pointX, float pointZ)> controlPoints, Color color)
+        {
+            GL.BindTexture(TextureTarget.Texture2D, -1);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+
+            // Draw outline
+            if (LineWidth != 0)
+            {
+                GL.Color4(color.R, color.G, color.B, (byte)255);
+                GL.LineWidth(LineWidth);
+                GL.Begin(PrimitiveType.LineStrip);
+                foreach ((float x, float z) in controlPoints)
+                {
+                    GL.Vertex2(x, z);
+                }
+                GL.End();
+            }
+
+            GL.Color4(1, 1, 1, 1.0f);
         }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
