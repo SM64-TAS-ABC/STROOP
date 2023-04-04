@@ -29,14 +29,21 @@ namespace STROOP.Map
         {
             uint objAddress = _posAngle.GetObjAddress();
             float normalX = Config.Stream.GetFloat(objAddress + ObjectConfig.PyramidPlatformNormalXOffset);
-            float normalY = Config.Stream.GetFloat(objAddress + ObjectConfig.PyramidPlatformNormalYOffset);
             float normalZ = Config.Stream.GetFloat(objAddress + ObjectConfig.PyramidPlatformNormalZOffset);
+
+            DrawCircles();
+            DrawHyperbolas(normalX);
+            DrawHyperbolas(normalZ);
+        }
+
+        private void DrawCircles()
+        {
+            uint objAddress = _posAngle.GetObjAddress();
+            float normalY = Config.Stream.GetFloat(objAddress + ObjectConfig.PyramidPlatformNormalYOffset);
 
             double r1 = 500 * Math.Sqrt(1 / ((normalY + 0.01) * (normalY + 0.01)) - 1);
             double r2 = 500 * Math.Sqrt(1 / ((normalY) * (normalY)) - 1);
             double r3 = 500 * Math.Sqrt(1 / ((normalY - 0.01) * (normalY - 0.01)) - 1);
-
-            Config.SetDebugText($"{r1} {r2} {r3}");
 
             Color lightCyan = Color.FromArgb(200, 255, 255);
             ShadeBetweenCircles((float)_posAngle.X, (float)_posAngle.Z, (float)r1, (float)r2, lightCyan);
@@ -103,6 +110,11 @@ namespace STROOP.Map
             GL.End();
 
             GL.Color4(1, 1, 1, 1.0f);
+        }
+
+        private void DrawHyperbolas(float normal)
+        {
+            
         }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
