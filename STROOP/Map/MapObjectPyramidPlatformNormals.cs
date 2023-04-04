@@ -123,14 +123,14 @@ namespace STROOP.Map
                 {
                     controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
                         .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 2 * range - range + _posAngle.Z)
-                        .ConvertAll(z => (Math.Sqrt((250000 + ((z - _posAngle.Z) * (z - _posAngle.Z))) / ((1 / ((normal + offset) * (normal + offset))) - 1)) + _posAngle.X, z))
+                        .ConvertAll(z => (Math.Sign(normal + offset) * Math.Sqrt((250000 + ((z - _posAngle.Z) * (z - _posAngle.Z))) / ((1 / ((normal + offset) * (normal + offset))) - 1)) + _posAngle.X, z))
                         .ConvertAll(p => MapUtilities.ConvertCoordsForControlTopDownView((float)p.Item1, (float)p.z, UseRelativeCoordinates));
                 }
                 else
                 {
                     controlPoints = Enumerable.Range(0, MapConfig.MapCircleNumPoints2D).ToList()
                         .ConvertAll(index => (index / (float)MapConfig.MapCircleNumPoints2D) * 2 * range - range + _posAngle.X)
-                        .ConvertAll(x => (-1 * Math.Sqrt((250000 + ((x - _posAngle.X) * (x - _posAngle.X))) / ((1 / ((normal + offset) * (normal + offset))) - 1)) + _posAngle.Z, x))
+                        .ConvertAll(x => (Math.Sign(normal + offset) * Math.Sqrt((250000 + ((x - _posAngle.X) * (x - _posAngle.X))) / ((1 / ((normal + offset) * (normal + offset))) - 1)) + _posAngle.Z, x))
                         .ConvertAll(p => MapUtilities.ConvertCoordsForControlTopDownView((float)p.x, (float)p.Item1, UseRelativeCoordinates));
                 }
 
