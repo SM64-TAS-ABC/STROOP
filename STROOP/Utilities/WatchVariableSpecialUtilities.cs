@@ -3166,6 +3166,18 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("TriangleSyncingSpeed",
+                ((uint triAddress) =>
+                {
+                    return 262144 / Config.Stream.GetFloat(triAddress + TriangleOffsetsConfig.NormY);
+                },
+                (double newSyncingSpeed, bool allowToggle, uint triAddress) =>
+                {
+                    double newNormY = 262144 / newSyncingSpeed;
+                    return Config.Stream.SetValue((float)newNormY, triAddress + TriangleOffsetsConfig.NormY);
+                }
+            ));
+
             _dictionary.Add("MaxHSpeedUphill",
                 ((uint triAddress) =>
                 {
