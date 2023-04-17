@@ -71,5 +71,18 @@ namespace STROOP.Utilities
             }
             return -1;
         }
+
+        public bool SetFrame(int frame, uint objAddress)
+        {
+            if (_dictionary.ContainsKey(frame))
+            {
+                _dictionary[frame].ApplyToObject(objAddress);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

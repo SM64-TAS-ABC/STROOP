@@ -2341,7 +2341,7 @@ namespace STROOP.Structs
             // Object specific vars - BitFS Fixed Track Elevator
 
             _dictionary.Add("BitfsFixedTrackElevatorNumComputedFrames",
-                ((uint objAddress) =>
+                ((uint dummy) =>
                 {
                     return TableConfig.TrackPlatformTable.GetNumComputedFrames();
                 },
@@ -2357,7 +2357,11 @@ namespace STROOP.Structs
                 {
                     return TableConfig.TrackPlatformTable.GetFrame(objAddress);
                 },
-                DEFAULT_SETTER));
+                (int newFrame, bool allowToggle, uint objAddress) =>
+                {
+                    return TableConfig.TrackPlatformTable.SetFrame(newFrame, objAddress);
+                }
+            ));
 
             // Object specific vars - Swooper
 

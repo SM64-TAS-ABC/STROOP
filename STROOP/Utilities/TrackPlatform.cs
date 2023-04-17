@@ -250,10 +250,62 @@ namespace STROOP.Utilities
         {
         }
 
+        public void ApplyToObject(uint objAddress)
+        {
+            Config.Stream.SetValue(oBehParams, objAddress + ObjectConfig.BehaviorParamsOffset);
+            Config.Stream.SetValue(oBehParams2ndByte, objAddress + ObjectConfig.BehaviorSubtypeOffset);
+
+            Config.Stream.SetValue(oPosX, objAddress + ObjectConfig.XOffset);
+            Config.Stream.SetValue(oPosY, objAddress + ObjectConfig.YOffset);
+            Config.Stream.SetValue(oPosZ, objAddress + ObjectConfig.ZOffset);
+
+            Config.Stream.SetValue(oHomeX, objAddress + ObjectConfig.HomeXOffset);
+            Config.Stream.SetValue(oHomeY, objAddress + ObjectConfig.HomeYOffset);
+            Config.Stream.SetValue(oHomeZ, objAddress + ObjectConfig.HomeZOffset);
+
+            Config.Stream.SetValue(oVelX, objAddress + ObjectConfig.XSpeedOffset);
+            Config.Stream.SetValue(oVelY, objAddress + ObjectConfig.YSpeedOffset);
+            Config.Stream.SetValue(oVelZ, objAddress + ObjectConfig.ZSpeedOffset);
+            Config.Stream.SetValue(oForwardVel, objAddress + ObjectConfig.HSpeedOffset);
+
+            Config.Stream.SetValue(oFaceAnglePitch, objAddress + ObjectConfig.PitchFacingOffsetUInt);
+            Config.Stream.SetValue(oFaceAngleYaw, objAddress + ObjectConfig.YawFacingOffsetUInt);
+            Config.Stream.SetValue(oFaceAngleRoll, objAddress + ObjectConfig.RollFacingOffsetUInt);
+
+            Config.Stream.SetValue(oMoveAnglePitch, objAddress + ObjectConfig.PitchMovingOffsetUInt);
+            Config.Stream.SetValue(oMoveAngleYaw, objAddress + ObjectConfig.YawMovingOffsetUInt);
+            Config.Stream.SetValue(oMoveAngleRoll, objAddress + ObjectConfig.RollMovingOffsetUInt);
+
+            Config.Stream.SetValue(oAngleVelPitch, objAddress + ObjectConfig.PitchVelocityOffset);
+            Config.Stream.SetValue(oAngleVelYaw, objAddress + ObjectConfig.YawVelocityOffset);
+            Config.Stream.SetValue(oAngleVelRoll, objAddress + ObjectConfig.RollVelocityOffset);
+
+            Config.Stream.SetValue(oGravity, objAddress + 0xE4);
+
+            Config.Stream.SetValue(oAction, objAddress + ObjectConfig.ActionOffset);
+            Config.Stream.SetValue(oPrevAction, objAddress + 0x18C);
+            Config.Stream.SetValue(oTimer, objAddress + ObjectConfig.TimerOffset);
+
+            Config.Stream.SetValue(oPlatformOnTrackBaseBallIndex, objAddress + 0x88);
+            Config.Stream.SetValue(oPlatformOnTrackDistMovedSinceLastBall, objAddress + 0xF4);
+            Config.Stream.SetValue(oPlatformOnTrackSkiLiftRollVel, objAddress + 0xF8);
+            Config.Stream.SetValue(RomVersionConfig.SwitchMap(oPlatformOnTrackStartWaypoint.AddressUS, oPlatformOnTrackStartWaypoint.AddressJP), objAddress + 0xFC);
+            Config.Stream.SetValue(RomVersionConfig.SwitchMap(oPlatformOnTrackPrevWaypoint.AddressUS, oPlatformOnTrackPrevWaypoint.AddressJP), objAddress + 0x100);
+            Config.Stream.SetValue(oPlatformOnTrackPrevWaypointFlags, objAddress + 0x104);
+            Config.Stream.SetValue(oPlatformOnTrackPitch, objAddress + 0x108);
+            Config.Stream.SetValue(oPlatformOnTrackYaw, objAddress + 0x10C);
+            Config.Stream.SetValue(oPlatformOnTrackOffsetY, objAddress + 0x110);
+            Config.Stream.SetValue(oPlatformOnTrackIsNotSkiLift, objAddress + 0x1AC);
+            Config.Stream.SetValue(oPlatformOnTrackIsNotHMC, objAddress + 0x1AE);
+            Config.Stream.SetValue(oPlatformOnTrackType, objAddress + 0x1B0);
+            Config.Stream.SetValue(oPlatformOnTrackWasStoodOn, objAddress + 0x1B2);
+        }
+
         private static TrackPlatformWaypoint FindWaypoint(uint address)
         {
             foreach (TrackPlatformWaypoint waypoint in Waypoints)
             {
+                if (waypoint == null) continue;
                 uint waypointAddress = RomVersionConfig.SwitchMap(waypoint.AddressUS, waypoint.AddressJP);
                 if (address == waypointAddress)
                 {
