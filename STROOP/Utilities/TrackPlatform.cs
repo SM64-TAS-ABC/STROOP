@@ -12,6 +12,16 @@ namespace STROOP.Utilities
 {
     public class TrackPlatform
     {
+        private static float sObjSavedPosX;
+        private static float sObjSavedPosY;
+        private static float sObjSavedPosZ;
+
+        const int POS_OP_SAVE_POSITION = 0;
+        const int POS_OP_COMPUTE_VELOCITY = 1;
+        const int POS_OP_RESTORE_POSITION = 2;
+
+        const int WAYPOINT_FLAGS_END = -1;
+
         const int PLATFORM_ON_TRACK_ACT_INIT = 0;
         const int PLATFORM_ON_TRACK_ACT_WAIT_FOR_MARIO = 1;
         const int PLATFORM_ON_TRACK_ACT_MOVE_ALONG_TRACK = 2;
@@ -61,6 +71,7 @@ namespace STROOP.Utilities
         public float oGravity;
 
         public int oAction;
+        public int oPrevAction;
         public int oTimer;
 
         public int oPlatformOnTrackBaseBallIndex;
@@ -76,6 +87,8 @@ namespace STROOP.Utilities
         public short oPlatformOnTrackIsNotHMC;
         public short oPlatformOnTrackType;
         public short oPlatformOnTrackWasStoodOn;
+
+        public bool isMarioStandingOnPlatform;
 
         public List<object> GetVariableValues()
         {
@@ -112,6 +125,7 @@ namespace STROOP.Utilities
                 oGravity,
 
                 oAction,
+                oPrevAction,
                 oTimer,
 
                 oPlatformOnTrackBaseBallIndex,
@@ -165,6 +179,7 @@ namespace STROOP.Utilities
                 "oGravity",
 
                 "oAction",
+                "oPrevAction",
                 "oTimer",
 
                 "oPlatformOnTrackBaseBallIndex",
@@ -252,16 +267,28 @@ namespace STROOP.Utilities
                 new TrackPlatformWaypoint(37, -4954, -3122, 0, 2148601188, 2148589284),
                 new TrackPlatformWaypoint(38, -5144, -3072, 0, 2148601196, 2148589292),
                 new TrackPlatformWaypoint(39, -5444, -3072, 0, 2148601204, 2148589300),
+                null,
             };
 
         public TrackPlatform()
         {
+            oBehParams = 120782848;
             bhv_platform_on_track_init();
         }
 
-        public void Update()
+        public void Update(bool isMarioStandingOnPlatform)
         {
+            this.isMarioStandingOnPlatform = isMarioStandingOnPlatform;
+            
             bhv_platform_on_track_update();
+
+            if (oAction != oPrevAction)
+            {
+                oTimer = 0;
+                oPrevAction = oAction;
+            }
+
+            oTimer++;
         }
 
         private void platform_on_track_reset()
@@ -277,14 +304,14 @@ namespace STROOP.Utilities
 
         private void bhv_platform_on_track_init()
         {
-            short pathIndex = (short)((ushort)(oBehParams >> 16) & PLATFORM_ON_TRACK_BP_MASK_PATH);
-            oPlatformOnTrackType = (short)(((ushort)(oBehParams >> 16) & PLATFORM_ON_TRACK_BP_MASK_TYPE) >> 4);
+            short pathIndex = 0; // (short)((ushort)(oBehParams >> 16) & PLATFORM_ON_TRACK_BP_MASK_PATH);
+            oPlatformOnTrackType = 3; // (short)(((ushort)(oBehParams >> 16) & PLATFORM_ON_TRACK_BP_MASK_TYPE) >> 4);
 
             oPlatformOnTrackIsNotSkiLift = (short)(oPlatformOnTrackType - PLATFORM_ON_TRACK_TYPE_SKI_LIFT);
 
             oPlatformOnTrackStartWaypoint = Waypoints[pathIndex];
 
-            oPlatformOnTrackIsNotHMC = (short)(pathIndex - 4);
+            oPlatformOnTrackIsNotHMC = -1; // (short)(pathIndex - 4);
 
             oBehParams2ndByte = oMoveAngleYaw;
         }
@@ -327,14 +354,125 @@ namespace STROOP.Utilities
             oAction = PLATFORM_ON_TRACK_ACT_WAIT_FOR_MARIO;
         }
 
+        private uint obj_perform_position_op(int op)
+        {
+            switch (op)
+            {
+                case POS_OP_SAVE_POSITION:
+                    sObjSavedPosX = oPosX;
+                    sObjSavedPosY = oPosY;
+                    sObjSavedPosZ = oPosZ;
+                    break;
+
+                case POS_OP_COMPUTE_VELOCITY:
+                    oVelX = oPosX - sObjSavedPosX;
+                    oVelY = oPosY - sObjSavedPosY;
+                    oVelZ = oPosZ - sObjSavedPosZ;
+                    break;
+
+                case POS_OP_RESTORE_POSITION:
+                    oPosX = sObjSavedPosX;
+                    oPosY = sObjSavedPosY;
+                    oPosZ = sObjSavedPosZ;
+                    break;
+            }
+
+            return 0;
+        }
+
         private void platform_on_track_update_pos_or_spawn_ball(int ballIndex, float x, float y, float z)
         {
-            // do nothing
+            TrackPlatformWaypoint initialPrevWaypoint;
+            TrackPlatformWaypoint nextWaypoint;
+            TrackPlatformWaypoint prevWaypoint;
+
+            float amountToMove;
+            float dx;
+            float dy;
+            float dz;
+            float distToNextWaypoint;
+
+            if (ballIndex == 0 || ((ushort)(oBehParams >> 16) & 0x0080) != 0)
+            {
+                initialPrevWaypoint = oPlatformOnTrackPrevWaypoint;
+                nextWaypoint = initialPrevWaypoint;
+
+                if (ballIndex != 0) {
+                    amountToMove = 300.0f * ballIndex;
+                } else {
+                    obj_perform_position_op(POS_OP_SAVE_POSITION);
+                    oPlatformOnTrackPrevWaypointFlags = 0;
+                    amountToMove = oForwardVel;
+                }
+
+                do {
+                    prevWaypoint = nextWaypoint;
+
+                    nextWaypoint = Waypoints[nextWaypoint.Index + 1];
+                    if (nextWaypoint == null)
+                    {
+                        if (ballIndex == 0)
+                        {
+                            oPlatformOnTrackPrevWaypointFlags = WAYPOINT_FLAGS_END;
+                        }
+
+                        if (((ushort)(oBehParams >> 16) & PLATFORM_ON_TRACK_BP_RETURN_TO_START) != 0)
+                        {
+                            nextWaypoint = oPlatformOnTrackStartWaypoint;
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+
+                    dx = nextWaypoint.X - x;
+                    dy = nextWaypoint.Y - y;
+                    dz = nextWaypoint.Z - z;
+
+                    distToNextWaypoint = (float)Math.Sqrt(dx* dx + dy* dy + dz* dz);
+
+                    amountToMove -= distToNextWaypoint;
+                    x += dx;
+                    y += dy;
+                    z += dz;
+                } while (amountToMove > 0.0f);
+
+                distToNextWaypoint = amountToMove / distToNextWaypoint;
+                x += dx * distToNextWaypoint;
+                y += dy * distToNextWaypoint;
+                z += dz * distToNextWaypoint;
+
+                if (ballIndex != 0)
+                {
+                    throw new NotImplementedException("spawning ball");
+                }
+                else
+                {
+                    if (prevWaypoint != initialPrevWaypoint)
+                    {
+                        if (oPlatformOnTrackPrevWaypointFlags == 0)
+                        {
+                            oPlatformOnTrackPrevWaypointFlags = initialPrevWaypoint.Index;
+                        }
+                        oPlatformOnTrackPrevWaypoint = prevWaypoint;
+                    }
+
+                    oPosX = x;
+                    oPosY = y;
+                    oPosZ = z;
+
+                    obj_perform_position_op(POS_OP_COMPUTE_VELOCITY);
+
+                    oPlatformOnTrackPitch = InGameTrigUtilities.InGameATan((float)Math.Sqrt(oVelX * oVelX + oVelZ * oVelZ), -oVelY);
+                    oPlatformOnTrackYaw = InGameTrigUtilities.InGameATan(oVelZ, oVelX);
+                }
+            }
         }
 
         private bool IsMarioStandingOnPlatform()
         {
-            return true;
+            return isMarioStandingOnPlatform;
         }
 
         private void platform_on_track_act_wait_for_mario()

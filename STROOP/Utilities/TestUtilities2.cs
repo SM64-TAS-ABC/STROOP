@@ -21,17 +21,13 @@ namespace STROOP.Utilities
     {
         public static void Test()
         {
-            for (int i = -100_000; i <= 100_000; i += 4)
+            TrackPlatform trackPlatform = new TrackPlatform();
+            for (int i = 0; i < 100; i++)
             {
-                int address = 0x004E8A64 + i;
-                byte[] buffer = new byte[4];
-                Config.Stream.ReadProcessMemory((UIntPtr)address, buffer, EndiannessType.Little);
-                int frameCount = BitConverter.ToInt32(buffer, 0);
-                if (frameCount > 42090 - 5 && frameCount < 42090 + 5)
-                {
-                    Config.Print(HexUtilities.FormatValue(address) + " => " + frameCount);
-                }
+                trackPlatform.Update(true);
+                Config.Print("{0}: {1}", i, trackPlatform.oPosX);
             }
+            Config.Print(trackPlatform);
         }
     }
 }
