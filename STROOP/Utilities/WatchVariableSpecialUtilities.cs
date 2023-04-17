@@ -2338,6 +2338,22 @@ namespace STROOP.Structs
                     return Config.Stream.SetValue(newAngle.Value, objAddress + ObjectConfig.RollFacingOffset);
                 }));
 
+            // Object specific vars - BitFS Fixed Track Elevator
+
+            _dictionary.Add("BitfsFixedTrackElevatorNumComputedFrames",
+                ((uint objAddress) =>
+                {
+                    return 1;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("BitfsFixedTrackElevatorFrame",
+                ((uint objAddress) =>
+                {
+                    return 2;
+                },
+                DEFAULT_SETTER));
+
             // Object specific vars - Swooper
 
             _dictionary.Add("SwooperEffectiveTargetYaw",

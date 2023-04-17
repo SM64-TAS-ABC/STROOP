@@ -3980,6 +3980,8 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0x188"  mask="0x04" base="Object" subclass="Boolean">Yaw Locked</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x188"  mask="0x08" base="Object" subclass="Boolean" invertBool="true">Pitch Locked</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x189"  mask="0x80" base="Object" subclass="Boolean">Track Balls</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="BitfsFixedTrackElevatorNumComputedFrames">Num Computed Frames</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="BitfsFixedTrackElevatorFrame">Frame</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004AB0" name="LLL Fixed Track Elevator" gfxIdUS="0x80188FFC" gfxIdJP="0x8018620C">
     <SpawnCode gfxId="0xCA"/>
