@@ -1,4 +1,5 @@
 ﻿using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace STROOP.Structs
         public static CourseDataTable CourseData;
         public static FlyGuyDataTable FlyGuyData;
         public static PendulumVertexTable PendulumVertexes;
+        public static TrackPlatformTable TrackPlatformTable;
         public static ObjectAngleTable WdwRotatingPlatformTable;
         public static ObjectAngleTable ElevatorAxleTable;
     }

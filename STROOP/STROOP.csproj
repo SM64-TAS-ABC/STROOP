@@ -807,6 +807,7 @@
     <Compile Include="Utilities\ProcessGroupUtilities.cs" />
     <Compile Include="Utilities\SubtitleUtilities.cs" />
     <Compile Include="Utilities\TestUtilities2.cs" />
+    <Compile Include="Utilities\TrackPlatformTable.cs" />
     <Compile Include="Utilities\TrackPlatform.cs" />
     <Compile Include="Utilities\WaterUtilities.cs" />
     <Compile Include="Utilities\LazyImage.cs" />

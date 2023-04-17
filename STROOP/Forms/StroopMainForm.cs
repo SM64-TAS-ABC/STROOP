@@ -570,6 +570,7 @@ namespace STROOP
             TableConfig.Missions = XmlConfigParser.OpenMissionTable(@"Config/Missions.xml");
             TableConfig.CourseData = XmlConfigParser.OpenCourseDataTable(@"Config/CourseData.xml");
             TableConfig.FlyGuyData = new FlyGuyDataTable();
+            TableConfig.TrackPlatformTable = new TrackPlatformTable();
             TableConfig.WdwRotatingPlatformTable = new ObjectAngleTable(1120);
             TableConfig.ElevatorAxleTable = new ObjectAngleTable(400);
 

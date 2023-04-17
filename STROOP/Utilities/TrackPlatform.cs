@@ -198,6 +198,282 @@ namespace STROOP.Utilities
             };
         }
 
+        public TrackPlatform(uint objAddress)
+            : this(
+                Config.Stream.GetInt(objAddress + ObjectConfig.BehaviorParamsOffset), // oBehParams
+                Config.Stream.GetInt(objAddress + ObjectConfig.BehaviorSubtypeOffset), // oBehParams2ndByte
+
+                Config.Stream.GetFloat(objAddress + ObjectConfig.XOffset), // oPosX
+                Config.Stream.GetFloat(objAddress + ObjectConfig.YOffset), // oPosY
+                Config.Stream.GetFloat(objAddress + ObjectConfig.ZOffset), // oPosZ
+
+                Config.Stream.GetFloat(objAddress + ObjectConfig.HomeXOffset), // oHomeX
+                Config.Stream.GetFloat(objAddress + ObjectConfig.HomeYOffset), // oHomeY
+                Config.Stream.GetFloat(objAddress + ObjectConfig.HomeZOffset), // oHomeZ
+
+                Config.Stream.GetFloat(objAddress + ObjectConfig.XSpeedOffset), // oVelX
+                Config.Stream.GetFloat(objAddress + ObjectConfig.YSpeedOffset), // oVelY
+                Config.Stream.GetFloat(objAddress + ObjectConfig.ZSpeedOffset), // oVelZ
+                Config.Stream.GetFloat(objAddress + ObjectConfig.HSpeedOffset), // oForwardVel
+
+                Config.Stream.GetInt(objAddress + ObjectConfig.PitchFacingOffsetUInt), // oFaceAnglePitch
+                Config.Stream.GetInt(objAddress + ObjectConfig.YawFacingOffsetUInt), // oFaceAngleYaw
+                Config.Stream.GetInt(objAddress + ObjectConfig.RollFacingOffsetUInt), // oFaceAngleRoll
+
+                Config.Stream.GetInt(objAddress + ObjectConfig.PitchMovingOffsetUInt), // oMoveAnglePitch
+                Config.Stream.GetInt(objAddress + ObjectConfig.YawMovingOffsetUInt), // oMoveAngleYaw
+                Config.Stream.GetInt(objAddress + ObjectConfig.RollMovingOffsetUInt), // oMoveAngleRoll
+
+                Config.Stream.GetInt(objAddress + ObjectConfig.PitchVelocityOffset), // oAngleVelPitch
+                Config.Stream.GetInt(objAddress + ObjectConfig.YawVelocityOffset), // oAngleVelYaw
+                Config.Stream.GetInt(objAddress + ObjectConfig.RollVelocityOffset), // oAngleVelRoll
+
+                Config.Stream.GetFloat(objAddress + 0xE4), // oGravity
+
+                Config.Stream.GetInt(objAddress + ObjectConfig.ActionOffset), // oAction
+                Config.Stream.GetInt(objAddress + 0x18C), // oPrevAction
+                Config.Stream.GetInt(objAddress + ObjectConfig.TimerOffset), // oTimer
+
+                Config.Stream.GetInt(objAddress + 0x88), // oPlatformOnTrackBaseBallIndex
+                Config.Stream.GetFloat(objAddress + 0xF4), // oPlatformOnTrackDistMovedSinceLastBall
+                Config.Stream.GetFloat(objAddress + 0xF8), // oPlatformOnTrackSkiLiftRollVel
+                FindWaypoint(Config.Stream.GetUInt(objAddress + 0xFC)), // oPlatformOnTrackStartWaypoint
+                FindWaypoint(Config.Stream.GetUInt(objAddress + 0x100)), // oPlatformOnTrackPrevWaypoint
+                Config.Stream.GetInt(objAddress + 0x104), // oPlatformOnTrackPrevWaypointFlags
+                Config.Stream.GetInt(objAddress + 0x108), // oPlatformOnTrackPitch
+                Config.Stream.GetInt(objAddress + 0x10C), // oPlatformOnTrackYaw
+                Config.Stream.GetFloat(objAddress + 0x110), // oPlatformOnTrackOffsetY
+                Config.Stream.GetShort(objAddress + 0x1AC), // oPlatformOnTrackIsNotSkiLift
+                Config.Stream.GetShort(objAddress + 0x1AE), // oPlatformOnTrackIsNotHMC
+                Config.Stream.GetShort(objAddress + 0x1B0), // oPlatformOnTrackType
+                Config.Stream.GetShort(objAddress + 0x1B2)) // oPlatformOnTrackWasStoodOn
+        {
+        }
+
+        private static TrackPlatformWaypoint FindWaypoint(uint address)
+        {
+            foreach (TrackPlatformWaypoint waypoint in Waypoints)
+            {
+                uint waypointAddress = RomVersionConfig.SwitchMap(waypoint.AddressUS, waypoint.AddressJP);
+                if (address == waypointAddress)
+                {
+                    return waypoint;
+                }
+            }
+            return null;
+        }
+
+        public TrackPlatform(
+            int oBehParams,
+            int oBehParams2ndByte,
+
+            float oPosX,
+            float oPosY,
+            float oPosZ,
+
+            float oHomeX,
+            float oHomeY,
+            float oHomeZ,
+
+            float oVelX,
+            float oVelY,
+            float oVelZ,
+            float oForwardVel,
+
+            int oFaceAnglePitch,
+            int oFaceAngleYaw,
+            int oFaceAngleRoll,
+
+            int oMoveAnglePitch,
+            int oMoveAngleYaw,
+            int oMoveAngleRoll,
+
+            int oAngleVelPitch,
+            int oAngleVelYaw,
+            int oAngleVelRoll,
+
+            float oGravity,
+
+            int oAction,
+            int oPrevAction,
+            int oTimer,
+
+            int oPlatformOnTrackBaseBallIndex,
+            float oPlatformOnTrackDistMovedSinceLastBall,
+            float oPlatformOnTrackSkiLiftRollVel,
+            TrackPlatformWaypoint oPlatformOnTrackStartWaypoint,
+            TrackPlatformWaypoint oPlatformOnTrackPrevWaypoint,
+            int oPlatformOnTrackPrevWaypointFlags,
+            int oPlatformOnTrackPitch,
+            int oPlatformOnTrackYaw,
+            float oPlatformOnTrackOffsetY,
+            short oPlatformOnTrackIsNotSkiLift,
+            short oPlatformOnTrackIsNotHMC,
+            short oPlatformOnTrackType,
+            short oPlatformOnTrackWasStoodOn)
+        {
+            this.oBehParams = oBehParams;
+            this.oBehParams2ndByte = oBehParams2ndByte;
+
+            this.oPosX = oPosX;
+            this.oPosY = oPosY;
+            this.oPosZ = oPosZ;
+
+            this.oHomeX = oHomeX;
+            this.oHomeY = oHomeY;
+            this.oHomeZ = oHomeZ;
+
+            this.oVelX = oVelX;
+            this.oVelY = oVelY;
+            this.oVelZ = oVelZ;
+            this.oForwardVel = oForwardVel;
+
+            this.oFaceAnglePitch = oFaceAnglePitch;
+            this.oFaceAngleYaw = oFaceAngleYaw;
+            this.oFaceAngleRoll = oFaceAngleRoll;
+
+            this.oMoveAnglePitch = oMoveAnglePitch;
+            this.oMoveAngleYaw = oMoveAngleYaw;
+            this.oMoveAngleRoll = oMoveAngleRoll;
+
+            this.oAngleVelPitch = oAngleVelPitch;
+            this.oAngleVelYaw = oAngleVelYaw;
+            this.oAngleVelRoll = oAngleVelRoll;
+
+            this.oGravity = oGravity;
+
+            this.oAction = oAction;
+            this.oPrevAction = oPrevAction;
+            this.oTimer = oTimer;
+
+            this.oPlatformOnTrackBaseBallIndex = oPlatformOnTrackBaseBallIndex;
+            this.oPlatformOnTrackDistMovedSinceLastBall = oPlatformOnTrackDistMovedSinceLastBall;
+            this.oPlatformOnTrackSkiLiftRollVel = oPlatformOnTrackSkiLiftRollVel;
+            this.oPlatformOnTrackStartWaypoint = oPlatformOnTrackStartWaypoint;
+            this.oPlatformOnTrackPrevWaypoint = oPlatformOnTrackPrevWaypoint;
+            this.oPlatformOnTrackPrevWaypointFlags = oPlatformOnTrackPrevWaypointFlags;
+            this.oPlatformOnTrackPitch = oPlatformOnTrackPitch;
+            this.oPlatformOnTrackYaw = oPlatformOnTrackYaw;
+            this.oPlatformOnTrackOffsetY = oPlatformOnTrackOffsetY;
+            this.oPlatformOnTrackIsNotSkiLift = oPlatformOnTrackIsNotSkiLift;
+            this.oPlatformOnTrackIsNotHMC = oPlatformOnTrackIsNotHMC;
+            this.oPlatformOnTrackType = oPlatformOnTrackType;
+            this.oPlatformOnTrackWasStoodOn = oPlatformOnTrackWasStoodOn;
+        }
+
+        public TrackPlatform Clone()
+        {
+            return new TrackPlatform(
+                oBehParams,
+                oBehParams2ndByte,
+
+                oPosX,
+                oPosY,
+                oPosZ,
+
+                oHomeX,
+                oHomeY,
+                oHomeZ,
+
+                oVelX,
+                oVelY,
+                oVelZ,
+                oForwardVel,
+
+                oFaceAnglePitch,
+                oFaceAngleYaw,
+                oFaceAngleRoll,
+
+                oMoveAnglePitch,
+                oMoveAngleYaw,
+                oMoveAngleRoll,
+
+                oAngleVelPitch,
+                oAngleVelYaw,
+                oAngleVelRoll,
+
+                oGravity,
+
+                oAction,
+                oPrevAction,
+                oTimer,
+
+                oPlatformOnTrackBaseBallIndex,
+                oPlatformOnTrackDistMovedSinceLastBall,
+                oPlatformOnTrackSkiLiftRollVel,
+                oPlatformOnTrackStartWaypoint,
+                oPlatformOnTrackPrevWaypoint,
+                oPlatformOnTrackPrevWaypointFlags,
+                oPlatformOnTrackPitch,
+                oPlatformOnTrackYaw,
+                oPlatformOnTrackOffsetY,
+                oPlatformOnTrackIsNotSkiLift,
+                oPlatformOnTrackIsNotHMC,
+                oPlatformOnTrackType,
+                oPlatformOnTrackWasStoodOn);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is TrackPlatform other)
+            {
+                return
+                    this.oBehParams == other.oBehParams &&
+                    this.oBehParams2ndByte == other.oBehParams2ndByte &&
+
+                    this.oPosX == other.oPosX &&
+                    this.oPosY == other.oPosY &&
+                    this.oPosZ == other.oPosZ &&
+
+                    this.oHomeX == other.oHomeX &&
+                    this.oHomeY == other.oHomeY &&
+                    this.oHomeZ == other.oHomeZ &&
+
+                    this.oVelX == other.oVelX &&
+                    this.oVelY == other.oVelY &&
+                    this.oVelZ == other.oVelZ &&
+                    this.oForwardVel == other.oForwardVel &&
+
+                    this.oFaceAnglePitch == other.oFaceAnglePitch &&
+                    this.oFaceAngleYaw == other.oFaceAngleYaw &&
+                    this.oFaceAngleRoll == other.oFaceAngleRoll &&
+
+                    this.oMoveAnglePitch == other.oMoveAnglePitch &&
+                    this.oMoveAngleYaw == other.oMoveAngleYaw &&
+                    this.oMoveAngleRoll == other.oMoveAngleRoll &&
+
+                    this.oAngleVelPitch == other.oAngleVelPitch &&
+                    this.oAngleVelYaw == other.oAngleVelYaw &&
+                    this.oAngleVelRoll == other.oAngleVelRoll &&
+
+                    this.oGravity == other.oGravity &&
+
+                    this.oAction == other.oAction &&
+                    this.oPrevAction == other.oPrevAction &&
+                    this.oTimer == other.oTimer &&
+
+                    this.oPlatformOnTrackBaseBallIndex == other.oPlatformOnTrackBaseBallIndex &&
+                    this.oPlatformOnTrackDistMovedSinceLastBall == other.oPlatformOnTrackDistMovedSinceLastBall &&
+                    this.oPlatformOnTrackSkiLiftRollVel == other.oPlatformOnTrackSkiLiftRollVel &&
+                    this.oPlatformOnTrackStartWaypoint == other.oPlatformOnTrackStartWaypoint &&
+                    this.oPlatformOnTrackPrevWaypoint == other.oPlatformOnTrackPrevWaypoint &&
+                    this.oPlatformOnTrackPrevWaypointFlags == other.oPlatformOnTrackPrevWaypointFlags &&
+                    this.oPlatformOnTrackPitch == other.oPlatformOnTrackPitch &&
+                    this.oPlatformOnTrackYaw == other.oPlatformOnTrackYaw &&
+                    this.oPlatformOnTrackOffsetY == other.oPlatformOnTrackOffsetY &&
+                    this.oPlatformOnTrackIsNotSkiLift == other.oPlatformOnTrackIsNotSkiLift &&
+                    this.oPlatformOnTrackIsNotHMC == other.oPlatformOnTrackIsNotHMC &&
+                    this.oPlatformOnTrackType == other.oPlatformOnTrackType &&
+                    this.oPlatformOnTrackWasStoodOn == other.oPlatformOnTrackWasStoodOn;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return (int)oPosX;
+        }
+
         public class TrackPlatformWaypoint
         {
             public readonly int Index;
@@ -224,7 +500,7 @@ namespace STROOP.Utilities
             }
         }
 
-        public List<TrackPlatformWaypoint> Waypoints =
+        public static List<TrackPlatformWaypoint> Waypoints =
             new List<TrackPlatformWaypoint>()
             {
                 new TrackPlatformWaypoint(0, -5744, -3072, 0, 2148600892, 2148588988),

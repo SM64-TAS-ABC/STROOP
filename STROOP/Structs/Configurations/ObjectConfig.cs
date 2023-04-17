@@ -21,6 +21,7 @@ namespace STROOP.Structs
         public static readonly uint BehaviorScriptOffset = 0x020C;
         public static readonly uint BehaviorGfxOffset = 0x14;
         public static readonly uint BehaviorSubtypeOffset = 0x144;
+        public static readonly uint BehaviorParamsOffset = 0x188;
         public static readonly uint BehaviorAppearanceOffset = 0xF0;
         public static readonly uint BehaviorSpawnObjOffset = 0xFC;
 

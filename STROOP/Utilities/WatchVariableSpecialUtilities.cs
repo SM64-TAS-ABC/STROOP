@@ -2343,14 +2343,19 @@ namespace STROOP.Structs
             _dictionary.Add("BitfsFixedTrackElevatorNumComputedFrames",
                 ((uint objAddress) =>
                 {
-                    return 1;
+                    return TableConfig.TrackPlatformTable.GetNumComputedFrames();
                 },
-                DEFAULT_SETTER));
+                (int newNumComputedFrames, bool allowToggle, uint dummy) =>
+                {
+                    TableConfig.TrackPlatformTable.SetNumComputedFrames(newNumComputedFrames);
+                    return true;
+                }
+            ));
 
             _dictionary.Add("BitfsFixedTrackElevatorFrame",
                 ((uint objAddress) =>
                 {
-                    return 2;
+                    return TableConfig.TrackPlatformTable.GetFrame(objAddress);
                 },
                 DEFAULT_SETTER));
 
