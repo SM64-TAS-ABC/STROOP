@@ -450,7 +450,7 @@ namespace STROOP.Utilities
 
                     this.oAction == other.oAction &&
                     this.oPrevAction == other.oPrevAction &&
-                    this.oTimer == other.oTimer &&
+                    //this.oTimer == other.oTimer &&
 
                     this.oPlatformOnTrackBaseBallIndex == other.oPlatformOnTrackBaseBallIndex &&
                     this.oPlatformOnTrackDistMovedSinceLastBall == other.oPlatformOnTrackDistMovedSinceLastBall &&
@@ -549,6 +549,8 @@ namespace STROOP.Utilities
         public TrackPlatform()
         {
             oBehParams = 120782848;
+            oGravity = -1;
+
             bhv_platform_on_track_init();
         }
 
@@ -740,8 +742,8 @@ namespace STROOP.Utilities
 
                     obj_perform_position_op(POS_OP_COMPUTE_VELOCITY);
 
-                    oPlatformOnTrackPitch = InGameTrigUtilities.InGameATan((float)Math.Sqrt(oVelX * oVelX + oVelZ * oVelZ), -oVelY);
-                    oPlatformOnTrackYaw = InGameTrigUtilities.InGameATan(oVelZ, oVelX);
+                    oPlatformOnTrackPitch = MoreMath.NormalizeAngleShort(InGameTrigUtilities.InGameATan((float)Math.Sqrt(oVelX * oVelX + oVelZ * oVelZ), -oVelY));
+                    oPlatformOnTrackYaw = MoreMath.NormalizeAngleShort(InGameTrigUtilities.InGameATan(oVelZ, oVelX));
                 }
             }
         }

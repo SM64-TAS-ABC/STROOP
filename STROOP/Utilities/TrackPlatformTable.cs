@@ -28,10 +28,17 @@ namespace STROOP.Utilities
 
         public void SetNumComputedFrames(int numFrames)
         {
-            TrackPlatform trackPlatform = new TrackPlatform();
-            trackPlatform.Update(false);
+            _dictionary.Clear();
+            _reverseDictionary.Clear();
 
-            for (int i = 0; i <= numFrames; i++)
+            TrackPlatform trackPlatform = new TrackPlatform();
+
+            for (int i = 0; i < 21; i++)
+            {
+                trackPlatform.Update(true);
+            }
+
+            for (int i = 0; i < numFrames; i++)
             {
                 _dictionary.Add(i, trackPlatform.Clone());
 
