@@ -30,10 +30,11 @@ namespace STROOP.Map
 
         private List<List<(float x, float y, float z)>> GetVertexLists()
         {
-            List<List<(float x, float y, float z)>> output =
+            List<List<(float x, float y, float z)>> triangles =
                 new List<List<(float x, float y, float z)>>();
             List<(float x, float y, float z)> vertices =
                 new List<(float x, float y, float z)>();
+            int vertexCommandCount = 0;
 
             uint address = 0x80400800;
             while (true)
@@ -47,6 +48,13 @@ namespace STROOP.Map
                 }
                 else if (commandID == 0x04) // vertex command
                 {
+                    // remove the first set of tris, because they belong to a glitched shadow
+                    vertexCommandCount++;
+                    if (vertexCommandCount == 2)
+                    {
+                        triangles.Clear();
+                    }
+
                     uint numVertices = (command & 0xFFFF) / 16;
                     address += 4;
 
@@ -73,7 +81,7 @@ namespace STROOP.Map
                     int yIndex = (int)yIndex10 / 10;
                     int zIndex = (int)zIndex10 / 10;
 
-                    output.Add(new List<(float x, float y, float z)>()
+                    triangles.Add(new List<(float x, float y, float z)>()
                     {
                         vertices[xIndex],
                         vertices[yIndex],
@@ -84,11 +92,11 @@ namespace STROOP.Map
                 }
                 else if (commandID == 0xB8) // end command
                 {
-                    return output;
+                    return triangles;
                 }
                 else
                 {
-                    return output;
+                    return triangles;
                 }
             }
         }
