@@ -466,6 +466,18 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
             });
 
+            ToolStripMenuItem itemGraphicsTris = new ToolStripMenuItem("Add Tracker for Gfx Tris");
+            setUpClickAction(itemGraphicsTris, mapObjectList =>
+            {
+                return mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
+                    return (MapObject)new MapObjectObjectGraphicsTriangles(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+            });
+
             ToolStripMenuItem itemMarioFacingArrow = new ToolStripMenuItem("Add Tracker for Mario Facing Arrow");
             setUpClickAction(itemMarioFacingArrow, mapObjectList =>
             {
@@ -949,6 +961,7 @@ namespace STROOP.Map
             itemTriangles.DropDownItems.Add(itemFloorTris);
             itemTriangles.DropDownItems.Add(itemWallTris);
             itemTriangles.DropDownItems.Add(itemCeilingTris);
+            itemTriangles.DropDownItems.Add(itemGraphicsTris);
 
             ToolStripMenuItem itemArrow = new ToolStripMenuItem("Arrow...");
             itemArrow.DropDownItems.Add(itemMarioFacingArrow);

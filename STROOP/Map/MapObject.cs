@@ -541,6 +541,9 @@ namespace STROOP.Map
                 case "MapObjectObjectGraphicsArrow":
                     mapObject = new MapObjectObjectGraphicsArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
+                case "MapObjectObjectGraphicsTriangles":
+                    mapObject = new MapObjectObjectGraphicsTriangles(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
                 case "MapObjectObjectMovingArrow":
                     mapObject = new MapObjectObjectMovingArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
