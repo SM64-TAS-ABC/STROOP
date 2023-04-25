@@ -91,17 +91,6 @@ namespace STROOP.Map
                     return output;
                 }
             }
-
-
-            return new List<List<(float x, float y, float z)>>()
-            {
-                new List<(float x, float y, float z)>()
-                {
-                    (100, 100, 100),
-                    (-100, 200, 100),
-                    (-100, 300, -100),
-                },
-            };
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
@@ -182,6 +171,23 @@ namespace STROOP.Map
             {
                 new XAttribute("positionAngle", _posAngle),
             };
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                ToolStripMenuItem useThisForGfxTrisItem = new ToolStripMenuItem("Use This for Gfx Tris");
+                useThisForGfxTrisItem.Click += (sender, e) =>
+                {
+                    Config.Stream.SetValue(_posAngle.GetObjAddress(), 0x804007F0);
+                };
+
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(useThisForGfxTrisItem);
+            }
+
+            return _contextMenuStrip;
         }
     }
 }
