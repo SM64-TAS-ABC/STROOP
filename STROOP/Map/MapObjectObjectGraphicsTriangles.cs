@@ -34,7 +34,6 @@ namespace STROOP.Map
                 new List<List<(float x, float y, float z)>>();
             List<(float x, float y, float z)> vertices =
                 new List<(float x, float y, float z)>();
-            int vertexCommandCount = 0;
 
             uint address = 0x80400800;
             while (true)
@@ -48,13 +47,6 @@ namespace STROOP.Map
                 }
                 else if (commandID == 0x04) // vertex command
                 {
-                    // remove the first set of tris, because they belong to a glitched shadow
-                    vertexCommandCount++;
-                    if (vertexCommandCount == 2)
-                    {
-                        triangles.Clear();
-                    }
-
                     uint numVertices = (command & 0xFFFF) / 16;
                     address += 4;
 
