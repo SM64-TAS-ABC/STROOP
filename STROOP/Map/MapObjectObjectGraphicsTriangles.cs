@@ -30,6 +30,69 @@ namespace STROOP.Map
 
         private List<List<(float x, float y, float z)>> GetVertexLists()
         {
+            List<List<(float x, float y, float z)>> output =
+                new List<List<(float x, float y, float z)>>();
+            List<(float x, float y, float z)> vertices =
+                new List<(float x, float y, float z)>();
+
+            uint address = 0x80400800;
+            while (true)
+            {
+                uint command = Config.Stream.GetUInt(address);
+                uint commandID = command >> 24;
+
+                if (commandID == 0x06) // tag command
+                {
+                    address += 8;
+                }
+                else if (commandID == 0x04) // vertex command
+                {
+                    uint numVertices = (command & 0xFFFF) / 16;
+                    address += 4;
+
+                    vertices = new List<(float x, float y, float z)>();
+                    for (int i = 0; i < numVertices; i++)
+                    {
+                        float x = Config.Stream.GetFloat(address);
+                        address += 4;
+                        float y = Config.Stream.GetFloat(address);
+                        address += 4;
+                        float z = Config.Stream.GetFloat(address);
+                        address += 4;
+
+                        vertices.Add((x, y, z));
+                    }
+                }
+                else if (commandID == 0xBF) // triangle command
+                {
+                    uint xIndex10 = (command >> 16) & 0xFF;
+                    uint yIndex10 = (command >> 8) & 0xFF;
+                    uint zIndex10 = command & 0xFF;
+
+                    int xIndex = (int)xIndex10 / 10;
+                    int yIndex = (int)yIndex10 / 10;
+                    int zIndex = (int)zIndex10 / 10;
+
+                    output.Add(new List<(float x, float y, float z)>()
+                    {
+                        vertices[xIndex],
+                        vertices[yIndex],
+                        vertices[zIndex],
+                    });
+
+                    address += 4;
+                }
+                else if (commandID == 0xB8) // end command
+                {
+                    return output;
+                }
+                else
+                {
+                    return output;
+                }
+            }
+
+
             return new List<List<(float x, float y, float z)>>()
             {
                 new List<(float x, float y, float z)>()
