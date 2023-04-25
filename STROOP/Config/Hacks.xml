@@ -18,4 +18,5 @@
   <Hack name="Num RNG Usages (J)" path="NumRngUsagesJ.hck" />
   <Hack name="RCP Crash (U)" path="RcpCrashU.hck" />
   <Hack name="RCP Crash (J)" path="RcpCrashJ.hck" />
+  <Hack name="Object Graphics Triangles" path="ObjectGraphicsTriangles.hck" />
 </Hacks>
