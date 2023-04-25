@@ -23,11 +23,69 @@ namespace STROOP.Map
         public MapObjectObjectGraphicsTriangles(PositionAngle posAngle)
         {
             _posAngle = posAngle;
+
+            Color = Color.Yellow;
+            Opacity = 0.5;
+        }
+
+        private List<List<(float x, float y, float z)>> GetVertexLists()
+        {
+            return new List<List<(float x, float y, float z)>>()
+            {
+                new List<(float x, float y, float z)>()
+                {
+                    (100, 100, 100),
+                    (-100, 200, 100),
+                    (-100, 300, -100),
+                },
+            };
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
+            GL.BindTexture(TextureTarget.Texture2D, -1);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
 
+            List<List<(float x, float y, float z)>> vertexLists = GetVertexLists();
+            List<List<(float x, float z)>> vertexListsForControl =
+                vertexLists.ConvertAll(vertexList =>
+                {
+                    return vertexList.ConvertAll(
+                        vertex => MapUtilities.ConvertCoordsForControlTopDownView(
+                            vertex.x, vertex.z, UseRelativeCoordinates));
+                });
+
+            // Draw triangle
+            for (int i = 0; i < vertexListsForControl.Count; i++)
+            {
+                var vertexList = vertexListsForControl[i];
+                GL.Begin(PrimitiveType.Polygon);
+                foreach (var vertex in vertexList)
+                {
+                    GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+                    GL.Vertex2(vertex.x, vertex.z);
+                }
+                GL.End();
+            }
+
+            // Draw outline
+            if (LineWidth != 0)
+            {
+                GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
+                GL.LineWidth(LineWidth);
+                foreach (var vertexList in vertexListsForControl)
+                {
+                    GL.Begin(PrimitiveType.LineLoop);
+                    foreach (var vertex in vertexList)
+                    {
+                        GL.Vertex2(vertex.x, vertex.z);
+                    }
+                    GL.End();
+                }
+            }
+
+            GL.Color4(1, 1, 1, 1.0f);
         }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
