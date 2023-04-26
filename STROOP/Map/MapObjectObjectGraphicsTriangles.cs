@@ -34,6 +34,8 @@ namespace STROOP.Map
                 new List<List<(float x, float y, float z)>>();
             List<(float x, float y, float z)> vertices =
                 new List<(float x, float y, float z)>();
+            List<(float x, float y, float z)> translations =
+                new List<(float x, float y, float z)>();
 
             uint address = 0x80400800;
             while (true)
@@ -82,12 +84,31 @@ namespace STROOP.Map
 
                     address += 4;
                 }
+                else if (commandID == 0x01) // matrix command
+                {
+                    address += 4;
+
+                    float x = 0;
+                    float y = 0;
+                    float z = 0;
+                    for (int i = 0; i < 16; i++)
+                    {
+                        float f = Config.Stream.GetFloat(address);
+                        if (i == 12) x = f;
+                        if (i == 13) y = f;
+                        if (i == 14) z = f;
+                        address += 4;
+                    }
+                    translations.Add((x, y, z));
+                }
                 else if (commandID == 0xB8) // end command
                 {
+                    triangles.Add(translations);
                     return triangles;
                 }
                 else
                 {
+                    triangles.Add(translations);
                     return triangles;
                 }
             }
@@ -159,13 +180,35 @@ namespace STROOP.Map
             for (int i = 0; i < vertexListsForControl.Count; i++)
             {
                 var vertexList = vertexListsForControl[i];
-                GL.Begin(PrimitiveType.Polygon);
-                foreach (var vertex in vertexList)
+                if (i == vertexListsForControl.Count - 1)
                 {
-                    GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
-                    GL.Vertex2(vertex.x, vertex.z);
+                    if (Scales)
+                    {
+                        Color color = Color.Red;
+                        var distinct = vertexList.Distinct().ToList();
+                        var subsets = ControlUtilities.GetSubsets(distinct, 3);
+                        foreach (var subset in subsets)
+                        {
+                            GL.Begin(PrimitiveType.Polygon);
+                            foreach (var vertex in subset)
+                            {
+                                GL.Color4(color.R, color.G, color.B, OpacityByte);
+                                GL.Vertex2(vertex.x, vertex.z);
+                            }
+                            GL.End();
+                        }
+                    }
                 }
-                GL.End();
+                else
+                {
+                    GL.Begin(PrimitiveType.Polygon);
+                    foreach (var vertex in vertexList)
+                    {
+                        GL.Color4(Color.R, Color.G, Color.B, OpacityByte);
+                        GL.Vertex2(vertex.x, vertex.z);
+                    }
+                    GL.End();
+                }
             }
 
             // Draw outline

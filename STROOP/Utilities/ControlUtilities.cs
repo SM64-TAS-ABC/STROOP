@@ -764,7 +764,7 @@ namespace STROOP.Utilities
         public static List<List<T>> GetSubsets<T>(List<T> masterList, int size)
         {
             if (size < 0 || size > masterList.Count)
-                throw new ArgumentOutOfRangeException();
+                return new List<List<T>>();
 
             List<List<T>> subsetList = new List<List<T>>();
             GetSubsetsRecursively(masterList, size, 0, new List<T>(), subsetList);
