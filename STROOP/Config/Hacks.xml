@@ -19,4 +19,5 @@
   <Hack name="RCP Crash (U)" path="RcpCrashU.hck" />
   <Hack name="RCP Crash (J)" path="RcpCrashJ.hck" />
   <Hack name="Object Graphics Triangles" path="ObjectGraphicsTriangles.hck" />
+  <Hack name="Object Graphics Triangles Cam POV" path="ObjectGraphicsTrianglesCameraPov.hck" />
 </Hacks>
