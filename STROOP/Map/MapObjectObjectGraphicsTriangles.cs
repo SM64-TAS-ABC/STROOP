@@ -216,14 +216,18 @@ namespace STROOP.Map
             {
                 GL.Color4(LineColor.R, LineColor.G, LineColor.B, (byte)255);
                 GL.LineWidth(LineWidth);
-                foreach (var vertexList in vertexListsForControl)
+                for (int i = 0; i < vertexListsForControl.Count; i++)
                 {
-                    GL.Begin(PrimitiveType.LineLoop);
-                    foreach (var vertex in vertexList)
+                    var vertexList = vertexListsForControl[i];
+                    if (i < vertexListsForControl.Count - 1 || Scales)
                     {
-                        GL.Vertex2(vertex.x, vertex.z);
+                        GL.Begin(PrimitiveType.LineLoop);
+                        foreach (var vertex in vertexList)
+                        {
+                            GL.Vertex2(vertex.x, vertex.z);
+                        }
+                        GL.End();
                     }
-                    GL.End();
                 }
             }
 
