@@ -219,7 +219,24 @@ namespace STROOP.Map
                 for (int i = 0; i < vertexListsForControl.Count; i++)
                 {
                     var vertexList = vertexListsForControl[i];
-                    if (i < vertexListsForControl.Count - 1 || Scales)
+                    if (i == vertexListsForControl.Count - 1)
+                    {
+                        if (Scales)
+                        {
+                            var distinct = vertexList.Distinct().ToList();
+                            var subsets = ControlUtilities.GetSubsets(distinct, 3);
+                            foreach (var subset in subsets)
+                            {
+                                GL.Begin(PrimitiveType.LineLoop);
+                                foreach (var vertex in subset)
+                                {
+                                    GL.Vertex2(vertex.x, vertex.z);
+                                }
+                                GL.End();
+                            }
+                        }
+                    }
+                    else
                     {
                         GL.Begin(PrimitiveType.LineLoop);
                         foreach (var vertex in vertexList)
