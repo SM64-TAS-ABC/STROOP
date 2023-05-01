@@ -152,6 +152,39 @@
   <Data groupList="Advanced" type="float" offset="0x13C" base="Object" coord="Y">Relative Y</Data>
   <Data groupList="Advanced" type="float" offset="0x140" base="Object" coord="Z">Relative Z</Data>
 
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00000001">00 Update Gfx Pos and Angle</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00000002">01 Move XZ Using FVel</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00000004">02 Move Y with Terminal Vel</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00000008">03 Set Face Yaw to Move Yaw</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00000010">04 Set Face Angle to Move Angle</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00000020">05 OBJ_FLAG_0020</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00000040">06 Compute Dist to Mario</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00000080">07 Active from Afar</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00000100">08 OBJ_FLAG_0100</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00000200">09 Transform Relative to Parent</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00000400">10 Holdable</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00000800">11 Set Throw Matrix from Transform</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00001000">12 OBJ_FLAG_1000</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00002000">13 Compute Angle to Mario</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00004000">14 Persistent Respawn</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00008000">15 OBJ_FLAG_8000</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00010000">16</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00020000">17</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00040000">18</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00080000">19</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00100000">20</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00200000">21</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00400000">22</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x00800000">23</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x01000000">24</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x02000000">25</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x04000000">26</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x08000000">27</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x10000000">28</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x20000000">29</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x40000000">30 OBJ_FLAG_30</Data>
+  <Data groupList="Flags" type="uint" offset="0x8C" base="Object" subclass="Boolean" mask="0x80000000">31</Data>
+
   <Data groupList="Advanced,Collision" type="uint" offset="0x130" base="Object" useHex="true">Collision Type</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000001">00 Hoot</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000002">01 Grabbable</Data>

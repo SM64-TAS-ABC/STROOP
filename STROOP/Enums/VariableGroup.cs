@@ -24,6 +24,7 @@ namespace STROOP.Structs
         Custom,
 
         ProcessGroup,
+        Flags,
         Collision,
         Movement,
         Transformation,

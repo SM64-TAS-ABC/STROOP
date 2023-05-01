@@ -150,6 +150,7 @@ namespace STROOP.Managers
                 VariableGroup.Advanced,
                 VariableGroup.ObjectSpecific,
                 VariableGroup.ProcessGroup,
+                VariableGroup.Flags,
                 VariableGroup.Collision,
                 VariableGroup.Movement,
                 VariableGroup.Transformation,
