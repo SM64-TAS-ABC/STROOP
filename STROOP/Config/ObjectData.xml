@@ -139,7 +139,7 @@
   <Data groupList="Advanced" type="byte" offset="0x17" base="Graphics">Shadow Type</Data>
   
   <Data groupList="Intermediate" type="byte" offset="0x3" mask="0x10" base="Object" subclass="Boolean" invertBool="true">Visible</Data>
-  <Data groupList="Intermediate" type="byte" offset="0x3" mask="0x01" base="Object" subclass="Boolean">Rendered</Data>
+  <Data groupList="Intermediate" type="byte" offset="0x3" mask="0x01" base="Object" subclass="Boolean">Active</Data>
   <Data groupList="Advanced" type="int" offset="0x8c" base="Object" subclass="Boolean" mask="0x00000001">Visual Pos Updates</Data>
   <Data groupList="Advanced" type="int" offset="0x8c" base="Object" subclass="Boolean" mask="0x00000008">Visual Angle Updates</Data>
   <Data groupList="Intermediate" type="byte" offset="0x3" mask="0x04" base="Object" subclass="Boolean">Face Camera</Data>
