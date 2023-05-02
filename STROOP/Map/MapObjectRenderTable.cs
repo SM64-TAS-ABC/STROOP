@@ -26,6 +26,10 @@ namespace STROOP.Map
         private static float BIG_TEXT_OFFSET = 6;
         private static float SMALL_TEXT_OFFSET = 70;
 
+        private static Color lightRed = Color.FromArgb(255, 213, 213);
+        private static Color lightBlue = Color.FromArgb(209, 253, 253);
+        private static Color lightPurple = Color.FromArgb(249, 217, 255);
+
         private Image _activeImage = null;
         private Image _inactiveImage = null;
         private Image _visibleImage = null;
@@ -72,7 +76,7 @@ namespace STROOP.Map
             foreach (var square in squares)
             {
                 GL.Color3(Color.Black);
-                GL.LineWidth(LineWidth);
+                GL.LineWidth(4);
                 GL.Begin(PrimitiveType.LineLoop);
                 foreach (var point in square)
                 {
@@ -124,6 +128,12 @@ namespace STROOP.Map
         private List<List<(float x, float y, Color color)>> GetSquares()
         {
             List<List<(float x, float y)>> midpoints = GetMidpoints();
+            bool isActive = Config.Stream.GetByte(_posAngle.GetObjAddress() + 0x3, mask: 0x01) != 0;
+            bool isVisible = Config.Stream.GetByte(_posAngle.GetObjAddress() + 0x3, mask: 0x10) == 0;
+            int activeX = isActive ? 2 : 3;
+            int activeY = 1;
+            int visibleX = 1;
+            int visibleY = isVisible ? 2 : 3;
 
             List<List<(float x, float y, Color color)>> squares =
                 new List<List<(float x, float y, Color color)>>();
@@ -134,6 +144,19 @@ namespace STROOP.Map
                     if (x == 1 && y == 1) continue;
 
                     Color color = Color.White;
+                    if (x == activeX && y == activeY)
+                    {
+                        color = lightRed;
+                    }
+                    if (x == visibleX && y == visibleY)
+                    {
+                        color = lightBlue;
+                    }
+                    if (x == activeX && y == visibleY)
+                    {
+                        color = lightPurple;
+                    }
+
                     var midpoint = midpoints[x][y];
                     List<(float x, float y, Color color)> square =
                         new List<(float x, float y, Color color)>()
