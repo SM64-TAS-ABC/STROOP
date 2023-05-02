@@ -36,6 +36,10 @@ namespace STROOP.Map
         private Image _invisibleImage = null;
         private Image _renderedImage = null;
         private Image _notRenderedImage = null;
+        private Image _redArrowImage = null;
+        private Image _blueArrowImage = null;
+        private Image _blueArrowDistanceImage = null;
+        private Image _grayArrowFlickerImage = null;
 
         private int _activeTex = -1;
         private int _inactiveTex = -1;
@@ -43,6 +47,10 @@ namespace STROOP.Map
         private int _invisibleTex = -1;
         private int _renderedTex = -1;
         private int _notRenderedTex = -1;
+        private int _redArrowTex = -1;
+        private int _blueArrowTex = -1;
+        private int _blueArrowDistanceTex = -1;
+        private int _grayArrowFlickerTex = -1;
 
         private PositionAngle _posAngle;
 
@@ -272,6 +280,27 @@ namespace STROOP.Map
             {
                 _notRenderedImage = Image.FromFile("Resources/Text Images/Not Rendered.png");
                 _notRenderedTex = MapUtilities.LoadTexture(_notRenderedImage as Bitmap);
+            }
+
+            if (_redArrowTex == -1)
+            {
+                _redArrowImage = Image.FromFile("Resources/Text Images/red arrow.png");
+                _redArrowTex = MapUtilities.LoadTexture(_redArrowImage as Bitmap);
+            }
+            if (_blueArrowTex == -1)
+            {
+                _blueArrowImage = Image.FromFile("Resources/Text Images/blue arrow.png");
+                _blueArrowTex = MapUtilities.LoadTexture(_blueArrowImage as Bitmap);
+            }
+            if (_blueArrowDistanceTex == -1)
+            {
+                _blueArrowDistanceImage = Image.FromFile("Resources/Text Images/blue arrow distance.png");
+                _blueArrowDistanceTex = MapUtilities.LoadTexture(_blueArrowDistanceImage as Bitmap);
+            }
+            if (_grayArrowFlickerTex == -1)
+            {
+                _grayArrowFlickerImage = Image.FromFile("Resources/Text Images/gray arrow flicker.png");
+                _grayArrowFlickerTex = MapUtilities.LoadTexture(_grayArrowFlickerImage as Bitmap);
             }
         }
 
