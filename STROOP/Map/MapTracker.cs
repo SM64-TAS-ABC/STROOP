@@ -750,6 +750,18 @@ namespace STROOP.Map
                 }).FindAll(mapObj => mapObj != null);
             });
 
+            ToolStripMenuItem itemRenderTable = new ToolStripMenuItem("Add Tracker for Render Table");
+            setUpClickAction(itemRenderTable, mapObjectList =>
+            {
+                return mapObjectList.ConvertAll(mapObj =>
+                {
+                    PositionAngle posAngle = mapObj.GetPositionAngle();
+                    if (posAngle == null) return null;
+                    if (!posAngle.IsObjectOrMario()) return null;
+                    return (MapObject)new MapObjectRenderTable(posAngle);
+                }).FindAll(mapObj => mapObj != null);
+            });
+
             ToolStripMenuItem itemPath = new ToolStripMenuItem("Add Tracker for Path");
             setUpClickAction(itemPath, mapObjectList =>
             {
@@ -992,6 +1004,7 @@ namespace STROOP.Map
             itemMisc.DropDownItems.Add(itemSector);
             itemMisc.DropDownItems.Add(itemFacingDivider);
             itemMisc.DropDownItems.Add(itemHomeLine);
+            itemMisc.DropDownItems.Add(itemRenderTable);
             itemMisc.DropDownItems.Add(itemPath);
             itemMisc.DropDownItems.Add(itemBranchPath);
             itemMisc.DropDownItems.Add(itemOffsetPositionAngle);

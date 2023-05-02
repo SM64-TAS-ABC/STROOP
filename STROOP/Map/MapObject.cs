@@ -585,6 +585,9 @@ namespace STROOP.Map
                 case "MapObjectPyramidPlatformNormals":
                     mapObject = new MapObjectPyramidPlatformNormals(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
+                case "MapObjectRenderTable":
+                    mapObject = new MapObjectRenderTable(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
+                    break;
                 case "MapObjectScuttlebugLungingArrow":
                     mapObject = new MapObjectScuttlebugLungingArrow(PositionAngle.FromString(xElement.Attribute(XName.Get("positionAngle")).Value));
                     break;
