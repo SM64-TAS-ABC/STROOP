@@ -20,47 +20,32 @@ namespace STROOP.Map
 {
     public class MapObjectRenderTable : MapObject
     {
-        private static float SQUARE_DIAMETER = 150;
-        private static int BIG_TEXT_SIZE = 20;
-        private static int SMALL_TEXT_SIZE = 15;
-        private static int SMALL_TEXT_OFFSET = -20;
+        private static float SQUARE_DIAMETER = 180;
+        private static float BIG_TEXT_SCALE = 0.41f;
+        private static float SMALL_TEXT_SCALE = 0.25f;
+        private static float BIG_TEXT_OFFSET = 6;
+        private static float SMALL_TEXT_OFFSET = 70;
 
-        private static Dictionary<(int x, int y), (string label, int size, int yOffset)> labelDictionary =
-            new Dictionary<(int x, int y), (string label, int size, int yOffset)>()
-            {
-                [(2, 1)] = ("Active", BIG_TEXT_SIZE, 0),
-                [(3, 1)] = ("Inactive", BIG_TEXT_SIZE, 0),
-                [(1, 2)] = ("Visible", BIG_TEXT_SIZE, 0),
-                [(1, 3)] = ("Invisible", BIG_TEXT_SIZE, 0),
-                [(2, 2)] = ("Rendered", SMALL_TEXT_SIZE, SMALL_TEXT_OFFSET),
-                [(2, 3)] = ("Not Rendered", SMALL_TEXT_SIZE, SMALL_TEXT_OFFSET),
-                [(3, 2)] = ("Not Rendered", SMALL_TEXT_SIZE, SMALL_TEXT_OFFSET),
-                [(3, 3)] = ("Not Rendered", SMALL_TEXT_SIZE, SMALL_TEXT_OFFSET),
-            };
+        private Image _activeImage = null;
+        private Image _inactiveImage = null;
+        private Image _visibleImage = null;
+        private Image _invisibleImage = null;
+        private Image _renderedImage = null;
+        private Image _notRenderedImage = null;
+
+        private int _activeTex = -1;
+        private int _inactiveTex = -1;
+        private int _visibleTex = -1;
+        private int _invisibleTex = -1;
+        private int _renderedTex = -1;
+        private int _notRenderedTex = -1;
 
         private PositionAngle _posAngle;
-
-        private Dictionary<(int x, int y), (int tex, float x, float y)> textDictionary =
-            new Dictionary<(int x, int y), (int tex, float x, float y)>();
 
         public MapObjectRenderTable(PositionAngle posAngle)
             : base()
         {
             _posAngle = posAngle;
-
-            List<List<(float x, float y)>> midpoints = GetMidpoints();
-            for (int x = 0; x < 4; x++)
-            {
-                for (int y = 0; y < 4; y++)
-                {
-                    var key = (x, y);
-                    if (!labelDictionary.ContainsKey(key)) continue;
-                    var value = labelDictionary[key];
-                    var midpoint = midpoints[x][y];
-                    int tex = MapUtilities.LoadTexture(CreateTexture(value.label, value.size));
-                    textDictionary[key] = (tex, midpoint.x, midpoint.y + value.yOffset);
-                }
-            }
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
@@ -96,12 +81,13 @@ namespace STROOP.Map
                 GL.End();
             }
 
-            foreach (var text in textDictionary.Values)
+            var texts = GetTexts();
+            foreach (var text in texts)
             {
                 int tex = text.tex;
                 (float x, float y) textPosition = (text.x, text.y);
                 PointF loc = new PointF(textPosition.x, textPosition.y);
-                SizeF size = new SizeF(SQUARE_DIAMETER, SQUARE_DIAMETER);
+                SizeF size = new SizeF(text.image.Width * text.scale, text.image.Height * text.scale);
 
                 // Place and rotate texture to correct location on control
                 GL.LoadIdentity();
@@ -109,6 +95,7 @@ namespace STROOP.Map
                 GL.Color4(1.0, 1.0, 1.0, 1.0);
 
                 // Start drawing texture
+                GL.TextureParameter(tex, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
                 GL.BindTexture(TextureTarget.Texture2D, tex);
                 GL.Begin(PrimitiveType.Quads);
 
@@ -132,19 +119,6 @@ namespace STROOP.Map
         public override void DrawOn3DControl()
         {
             // do nothing
-        }
-
-        private Bitmap CreateTexture(string text, int size)
-        {
-            int imageSize = (int)SQUARE_DIAMETER;
-            Bitmap bmp = new Bitmap(imageSize, imageSize, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-            Graphics gfx = Graphics.FromImage(bmp);
-            gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            Font drawFont = new Font("Calibri", size, FontStyle.Bold);
-            SolidBrush drawBrush = new SolidBrush(Color.Black);
-            SizeF stringSize = gfx.MeasureString(text, drawFont);
-            gfx.DrawString(text, drawFont, drawBrush, new PointF(imageSize / 2 - stringSize.Width / 2, imageSize / 2 - stringSize.Height / 2));
-            return bmp;
         }
 
         private List<List<(float x, float y, Color color)>> GetSquares()
@@ -175,6 +149,55 @@ namespace STROOP.Map
             return squares;
         }
 
+        private List<(Image image, int tex, float x, float y, float scale)> GetTexts()
+        {
+            List<List<(float x, float y)>> midpoints = GetMidpoints();
+
+            List<(Image image, int tex, float x, float y, float scale)> texts =
+                new List<(Image image, int tex, float x, float y, float scale)>();
+            for (int x = 0; x < 4; x++)
+            {
+                for (int y = 0; y < 4; y++)
+                {
+                    var midpoint = midpoints[x][y];
+                    if (x == 2 && y == 1)
+                    {
+                        texts.Add((_activeImage, _activeTex, midpoint.x, midpoint.y + BIG_TEXT_OFFSET, BIG_TEXT_SCALE));
+                    }
+                    if (x == 3 && y == 1)
+                    {
+                        texts.Add((_inactiveImage, _inactiveTex, midpoint.x, midpoint.y + BIG_TEXT_OFFSET, BIG_TEXT_SCALE));
+                    }
+                    if (x == 1 && y == 2)
+                    {
+                        texts.Add((_visibleImage, _visibleTex, midpoint.x, midpoint.y + BIG_TEXT_OFFSET, BIG_TEXT_SCALE));
+                    }
+                    if (x == 1 && y == 3)
+                    {
+                        texts.Add((_invisibleImage, _invisibleTex, midpoint.x, midpoint.y + BIG_TEXT_OFFSET, BIG_TEXT_SCALE));
+                    }
+
+                    if (x == 2 && y == 2)
+                    {
+                        texts.Add((_renderedImage, _renderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
+                    }
+                    if (x == 2 && y == 3)
+                    {
+                        texts.Add((_notRenderedImage, _notRenderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
+                    }
+                    if (x == 3 && y == 2)
+                    {
+                        texts.Add((_notRenderedImage, _notRenderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
+                    }
+                    if (x == 3 && y == 3)
+                    {
+                        texts.Add((_notRenderedImage, _notRenderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
+                    }
+                }
+            }
+            return texts;
+        }
+
         private List<List<(float x, float y)>> GetMidpoints()
         {
             float centerX = Config.MapGui.CurrentControl.Width / 2;
@@ -193,6 +216,40 @@ namespace STROOP.Map
                 midpoints.Add(oneRow);
             }
             return midpoints;
+        }
+
+        public override void Update()
+        {
+            if (_activeTex == -1)
+            {
+                _activeImage = Image.FromFile("Resources/Text Images/Active.png");
+                _activeTex = MapUtilities.LoadTexture(_activeImage as Bitmap);
+            }
+            if (_inactiveTex == -1)
+            {
+                _inactiveImage = Image.FromFile("Resources/Text Images/Inactive.png");
+                _inactiveTex = MapUtilities.LoadTexture(_inactiveImage as Bitmap);
+            }
+            if (_visibleTex == -1)
+            {
+                _visibleImage = Image.FromFile("Resources/Text Images/Visible.png");
+                _visibleTex = MapUtilities.LoadTexture(_visibleImage as Bitmap);
+            }
+            if (_invisibleTex == -1)
+            {
+                _invisibleImage = Image.FromFile("Resources/Text Images/Invisible.png");
+                _invisibleTex = MapUtilities.LoadTexture(_invisibleImage as Bitmap);
+            }
+            if (_renderedTex == -1)
+            {
+                _renderedImage = Image.FromFile("Resources/Text Images/Rendered.png");
+                _renderedTex = MapUtilities.LoadTexture(_renderedImage as Bitmap);
+            }
+            if (_notRenderedTex == -1)
+            {
+                _notRenderedImage = Image.FromFile("Resources/Text Images/Not Rendered.png");
+                _notRenderedTex = MapUtilities.LoadTexture(_notRenderedImage as Bitmap);
+            }
         }
 
         public override MapDrawType GetDrawType()
