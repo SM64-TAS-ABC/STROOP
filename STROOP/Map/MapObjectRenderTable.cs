@@ -25,6 +25,8 @@ namespace STROOP.Map
         private static float SMALL_TEXT_SCALE = 0.25f;
         private static float BIG_TEXT_OFFSET = 6;
         private static float SMALL_TEXT_OFFSET = 70;
+        private static float ARROW_CLOSER_OFFSET = 28;
+        private static float ARROW_DOUBLE_OFFSET = 50;
 
         private static Color lightRed = Color.FromArgb(255, 213, 213);
         private static Color lightBlue = Color.FromArgb(209, 253, 253);
@@ -93,13 +95,13 @@ namespace STROOP.Map
                 GL.End();
             }
 
-            var texts = GetTexts();
-            foreach (var text in texts)
+            var imageDatas = GetImageDatas();
+            foreach (var imageData in imageDatas)
             {
-                int tex = text.tex;
-                (float x, float y) textPosition = (text.x, text.y);
+                int tex = imageData.tex;
+                (float x, float y) textPosition = (imageData.x, imageData.y);
                 PointF loc = new PointF(textPosition.x, textPosition.y);
-                SizeF size = new SizeF(text.image.Width * text.scale, text.image.Height * text.scale);
+                SizeF size = new SizeF(imageData.image.Width * imageData.scale, imageData.image.Height * imageData.scale);
 
                 // Place and rotate texture to correct location on control
                 GL.LoadIdentity();
@@ -180,9 +182,20 @@ namespace STROOP.Map
             return squares;
         }
 
-        private List<(Image image, int tex, float x, float y, float scale)> GetTexts()
+        private List<(Image image, int tex, float x, float y, float scale)> GetImageDatas()
         {
             List<List<(float x, float y)>> midpoints = GetMidpoints();
+            bool isActive = Config.Stream.GetByte(_posAngle.GetObjAddress() + 0x3, mask: 0x01) != 0;
+            bool isVisible = Config.Stream.GetByte(_posAngle.GetObjAddress() + 0x3, mask: 0x10) == 0;
+            int activeX = isActive ? 2 : 3;
+            int activeY = 0;
+            int visibleX = 0;
+            int visibleY = isVisible ? 2 : 3;
+            int action = Config.Stream.GetInt(_posAngle.GetObjAddress() + ObjectConfig.ActionOffset);
+            int timer = Config.Stream.GetInt(_posAngle.GetObjAddress() + ObjectConfig.TimerOffset);
+            bool isVisible2 = !((action == 2 && timer >= 32 && timer % 2 == 0) || (action == 2 && timer > 70));
+            int visible2X = 0;
+            int visible2Y = isVisible2 ? 2 : 3;
 
             List<(Image image, int tex, float x, float y, float scale)> texts =
                 new List<(Image image, int tex, float x, float y, float scale)>();
@@ -223,6 +236,29 @@ namespace STROOP.Map
                     if (x == 3 && y == 3)
                     {
                         texts.Add((_notRenderedImage, _notRenderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
+                    }
+
+                    if (x == activeX && y == activeY)
+                    {
+                        texts.Add((_redArrowImage, _redArrowTex, midpoint.x, midpoint.y + ARROW_CLOSER_OFFSET, 1));
+                    }
+                    if (Scales)
+                    {
+                        if (x == visibleX && y == visibleY)
+                        {
+                            texts.Add((_blueArrowDistanceImage, _blueArrowDistanceTex, midpoint.x + ARROW_CLOSER_OFFSET, midpoint.y - ARROW_DOUBLE_OFFSET, 1));
+                        }
+                        if (x == visible2X && y == visible2Y)
+                        {
+                            texts.Add((_grayArrowFlickerImage, _grayArrowFlickerTex, midpoint.x + ARROW_CLOSER_OFFSET, midpoint.y + ARROW_DOUBLE_OFFSET, 1));
+                        }
+                    }
+                    else
+                    {
+                        if (x == visibleX && y == visibleY)
+                        {
+                            texts.Add((_blueArrowImage, _blueArrowTex, midpoint.x + ARROW_CLOSER_OFFSET, midpoint.y, 1));
+                        }
                     }
                 }
             }
