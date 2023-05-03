@@ -32,7 +32,7 @@ namespace STROOP.Map
         private static float IMAGE_OFFSET = -13;
 
         private static Color lightRed = Color.FromArgb(255, 213, 213);
-        private static Color lightBlue = Color.FromArgb(209, 253, 253);
+        private static Color lightBlue = Color.FromArgb(185, 252, 255);
         private static Color lightPurple = Color.FromArgb(249, 217, 255);
         private static Color darkGray = Color.FromArgb(150, 150, 150);
 
