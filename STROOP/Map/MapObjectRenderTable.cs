@@ -34,6 +34,7 @@ namespace STROOP.Map
         private static Color lightRed = Color.FromArgb(255, 213, 213);
         private static Color lightBlue = Color.FromArgb(209, 253, 253);
         private static Color lightPurple = Color.FromArgb(249, 217, 255);
+        private static Color darkGray = Color.FromArgb(150, 150, 150);
 
         private Image _activeImage = null;
         private Image _inactiveImage = null;
@@ -151,6 +152,7 @@ namespace STROOP.Map
             int activeY = 1;
             int visibleX = 1;
             int visibleY = isVisible ? 2 : 3;
+            bool isUnloaded = Config.Stream.GetUShort(_posAngle.GetObjAddress() + 0x74) == 0;
 
             List<List<(float x, float y, Color color)>> squares =
                 new List<List<(float x, float y, Color color)>>();
@@ -172,6 +174,11 @@ namespace STROOP.Map
                     if (x == activeX && y == visibleY)
                     {
                         color = lightPurple;
+                    }
+
+                    if (isUnloaded)
+                    {
+                        color = darkGray;
                     }
 
                     var midpoint = midpoints[x][y];
