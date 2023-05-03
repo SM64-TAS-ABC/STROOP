@@ -27,7 +27,8 @@ namespace STROOP.Map
         private static float SMALL_TEXT_OFFSET = 70;
         private static float ARROW_CLOSER_OFFSET = 28;
         private static float ARROW_DOUBLE_OFFSET = 50;
-        private static float IMAGE_HEIGHT = 110;
+        private static float IMAGE_HEIGHT = 120;
+        private static float IMAGE_WIDTH = 155;
         private static float IMAGE_OFFSET = -13;
 
         private static Color lightRed = Color.FromArgb(255, 213, 213);
@@ -248,22 +249,26 @@ namespace STROOP.Map
                     {
                         if (x == 2 && y == 2)
                         {
-                            texts.Add((_renderedObjectImage, _renderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET, IMAGE_HEIGHT / _renderedObjectImage.Height));
+                            texts.Add((_renderedObjectImage, _renderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET,
+                                Math.Min(IMAGE_HEIGHT / _renderedObjectImage.Height, IMAGE_WIDTH / _renderedObjectImage.Width)));
                         }
                     }
                     if (_notRenderedObjectTex != -1)
                     {
                         if (x == 2 && y == 3)
                         {
-                            texts.Add((_notRenderedObjectImage, _notRenderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET, IMAGE_HEIGHT / _notRenderedObjectImage.Height));
+                            texts.Add((_notRenderedObjectImage, _notRenderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET,
+                                Math.Min(IMAGE_HEIGHT / _notRenderedObjectImage.Height, IMAGE_WIDTH / _notRenderedObjectImage.Width)));
                         }
                         if (x == 3 && y == 2)
                         {
-                            texts.Add((_notRenderedObjectImage, _notRenderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET, IMAGE_HEIGHT / _notRenderedObjectImage.Height));
+                            texts.Add((_notRenderedObjectImage, _notRenderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET,
+                                Math.Min(IMAGE_HEIGHT / _notRenderedObjectImage.Height, IMAGE_WIDTH / _notRenderedObjectImage.Width)));
                         }
                         if (x == 3 && y == 3)
                         {
-                            texts.Add((_notRenderedObjectImage, _notRenderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET, IMAGE_HEIGHT / _notRenderedObjectImage.Height));
+                            texts.Add((_notRenderedObjectImage, _notRenderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET,
+                                Math.Min(IMAGE_HEIGHT / _notRenderedObjectImage.Height, IMAGE_WIDTH / _notRenderedObjectImage.Width)));
                         }
                     }
 
