@@ -27,8 +27,8 @@ namespace STROOP.Map
         private static float SMALL_TEXT_OFFSET = 70;
         private static float ARROW_CLOSER_OFFSET = 28;
         private static float ARROW_DOUBLE_OFFSET = 50;
-        private static float IMAGE_HEIGHT = 0.5f;
-        private static float IMAGE_OFFSET = 100;
+        private static float IMAGE_HEIGHT = 110;
+        private static float IMAGE_OFFSET = -13;
 
         private static Color lightRed = Color.FromArgb(255, 213, 213);
         private static Color lightBlue = Color.FromArgb(209, 253, 253);
@@ -243,11 +243,35 @@ namespace STROOP.Map
                     {
                         texts.Add((_notRenderedImage, _notRenderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
                     }
+                    
+                    if (_renderedObjectTex != -1)
+                    {
+                        if (x == 2 && y == 2)
+                        {
+                            texts.Add((_renderedObjectImage, _renderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET, IMAGE_HEIGHT / _renderedObjectImage.Height));
+                        }
+                    }
+                    if (_notRenderedObjectTex != -1)
+                    {
+                        if (x == 2 && y == 3)
+                        {
+                            texts.Add((_notRenderedObjectImage, _notRenderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET, IMAGE_HEIGHT / _notRenderedObjectImage.Height));
+                        }
+                        if (x == 3 && y == 2)
+                        {
+                            texts.Add((_notRenderedObjectImage, _notRenderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET, IMAGE_HEIGHT / _notRenderedObjectImage.Height));
+                        }
+                        if (x == 3 && y == 3)
+                        {
+                            texts.Add((_notRenderedObjectImage, _notRenderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET, IMAGE_HEIGHT / _notRenderedObjectImage.Height));
+                        }
+                    }
 
                     if (x == activeX && y == activeY)
                     {
                         texts.Add((_redArrowImage, _redArrowTex, midpoint.x, midpoint.y + ARROW_CLOSER_OFFSET, 1));
                     }
+
                     if (Scales)
                     {
                         if (x == visibleX && y == visibleY)
@@ -393,7 +417,7 @@ namespace STROOP.Map
                     string filePath = DialogUtilities.GetFilePath(FileType.Image);
                     if (filePath == null) return;
                     _notRenderedObjectImage = Image.FromFile(filePath);
-                    _notRenderedObjectTex = MapUtilities.LoadTexture(_renderedObjectImage as Bitmap);
+                    _notRenderedObjectTex = MapUtilities.LoadTexture(_notRenderedObjectImage as Bitmap);
                 };
 
                 _contextMenuStrip = new ContextMenuStrip();
