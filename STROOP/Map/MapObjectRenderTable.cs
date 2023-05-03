@@ -26,7 +26,9 @@ namespace STROOP.Map
         private static float BIG_TEXT_OFFSET = 6;
         private static float SMALL_TEXT_OFFSET = 70;
         private static float ARROW_CLOSER_OFFSET = 28;
-        private static float ARROW_DOUBLE_OFFSET = 50;
+        private static float ARROW_DOUBLE_OFFSET = 45;
+        private static float ARROW_DOUBLE_CLOSER_OFFSET = 33;
+        private static float ARROW_DOUBLE_SCALE => 0.9f;
         private static float IMAGE_HEIGHT = 120;
         private static float IMAGE_WIDTH = 155;
         private static float IMAGE_OFFSET = -13;
@@ -288,11 +290,11 @@ namespace STROOP.Map
                     {
                         if (x == visible2X && y == visible2Y)
                         {
-                            texts.Insert(0, (_grayArrowFlickerImage, _grayArrowFlickerTex, midpoint.x + ARROW_CLOSER_OFFSET, midpoint.y - ARROW_DOUBLE_OFFSET, 1));
+                            texts.Add((_grayArrowFlickerImage, _grayArrowFlickerTex, midpoint.x + ARROW_DOUBLE_CLOSER_OFFSET, midpoint.y - ARROW_DOUBLE_OFFSET, ARROW_DOUBLE_SCALE));
                         }
                         if (x == visibleX && y == visibleY)
                         {
-                            texts.Add((_blueArrowDistanceImage, _blueArrowDistanceTex, midpoint.x + ARROW_CLOSER_OFFSET, midpoint.y + ARROW_DOUBLE_OFFSET, 1));
+                            texts.Add((_blueArrowDistanceImage, _blueArrowDistanceTex, midpoint.x + ARROW_DOUBLE_CLOSER_OFFSET, midpoint.y + ARROW_DOUBLE_OFFSET, ARROW_DOUBLE_SCALE));
                         }
                     }
                     else
