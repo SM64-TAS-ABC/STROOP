@@ -27,6 +27,8 @@ namespace STROOP.Map
         private static float SMALL_TEXT_OFFSET = 70;
         private static float ARROW_CLOSER_OFFSET = 28;
         private static float ARROW_DOUBLE_OFFSET = 50;
+        private static float IMAGE_HEIGHT = 0.5f;
+        private static float IMAGE_OFFSET = 100;
 
         private static Color lightRed = Color.FromArgb(255, 213, 213);
         private static Color lightBlue = Color.FromArgb(209, 253, 253);
@@ -42,6 +44,8 @@ namespace STROOP.Map
         private Image _blueArrowImage = null;
         private Image _blueArrowDistanceImage = null;
         private Image _grayArrowFlickerImage = null;
+        private Image _renderedObjectImage = null;
+        private Image _notRenderedObjectImage = null;
 
         private int _activeTex = -1;
         private int _inactiveTex = -1;
@@ -53,6 +57,8 @@ namespace STROOP.Map
         private int _blueArrowTex = -1;
         private int _blueArrowDistanceTex = -1;
         private int _grayArrowFlickerTex = -1;
+        private int _renderedObjectTex = -1;
+        private int _notRenderedObjectTex = -1;
 
         private PositionAngle _posAngle;
 
@@ -366,6 +372,36 @@ namespace STROOP.Map
             {
                 new XAttribute("positionAngle", _posAngle),
             };
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                ToolStripMenuItem itemSelectRenderedObjectImage = new ToolStripMenuItem("Select Rendered Object Image");
+                itemSelectRenderedObjectImage.Click += (sender, e) =>
+                {
+                    string filePath = DialogUtilities.GetFilePath(FileType.Image);
+                    if (filePath == null) return;
+                    _renderedObjectImage = Image.FromFile(filePath);
+                    _renderedObjectTex = MapUtilities.LoadTexture(_renderedObjectImage as Bitmap);
+                };
+
+                ToolStripMenuItem itemSelectNotRenderedObjectImage = new ToolStripMenuItem("Select Not Rendered Object Image");
+                itemSelectNotRenderedObjectImage.Click += (sender, e) =>
+                {
+                    string filePath = DialogUtilities.GetFilePath(FileType.Image);
+                    if (filePath == null) return;
+                    _notRenderedObjectImage = Image.FromFile(filePath);
+                    _notRenderedObjectTex = MapUtilities.LoadTexture(_renderedObjectImage as Bitmap);
+                };
+
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemSelectRenderedObjectImage);
+                _contextMenuStrip.Items.Add(itemSelectNotRenderedObjectImage);
+            }
+
+            return _contextMenuStrip;
         }
     }
 }
