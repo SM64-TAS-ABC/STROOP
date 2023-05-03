@@ -288,7 +288,7 @@ namespace STROOP.Map
                     {
                         if (x == visible2X && y == visible2Y)
                         {
-                            texts.Add((_grayArrowFlickerImage, _grayArrowFlickerTex, midpoint.x + ARROW_CLOSER_OFFSET, midpoint.y - ARROW_DOUBLE_OFFSET, 1));
+                            texts.Insert(0, (_grayArrowFlickerImage, _grayArrowFlickerTex, midpoint.x + ARROW_CLOSER_OFFSET, midpoint.y - ARROW_DOUBLE_OFFSET, 1));
                         }
                         if (x == visibleX && y == visibleY)
                         {
