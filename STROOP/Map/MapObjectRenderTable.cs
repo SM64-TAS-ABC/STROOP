@@ -29,9 +29,9 @@ namespace STROOP.Map
         private static float ARROW_DOUBLE_OFFSET = 45;
         private static float ARROW_DOUBLE_CLOSER_OFFSET = 33;
         private static float ARROW_DOUBLE_SCALE => 0.9f;
-        private static float IMAGE_HEIGHT = 120;
+        private static float IMAGE_HEIGHT = 155;
         private static float IMAGE_WIDTH = 155;
-        private static float IMAGE_OFFSET = -13;
+        private static float IMAGE_OFFSET = 0;
 
         private static Color lightRed = Color.FromArgb(255, 213, 213);
         private static Color lightBlue = Color.FromArgb(185, 252, 255);
@@ -237,22 +237,22 @@ namespace STROOP.Map
                         texts.Add((_invisibleImage, _invisibleTex, midpoint.x, midpoint.y + BIG_TEXT_OFFSET, BIG_TEXT_SCALE));
                     }
 
-                    if (x == 2 && y == 2)
-                    {
-                        texts.Add((_renderedImage, _renderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
-                    }
-                    if (x == 2 && y == 3)
-                    {
-                        texts.Add((_notRenderedImage, _notRenderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
-                    }
-                    if (x == 3 && y == 2)
-                    {
-                        texts.Add((_notRenderedImage, _notRenderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
-                    }
-                    if (x == 3 && y == 3)
-                    {
-                        texts.Add((_notRenderedImage, _notRenderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
-                    }
+                    //if (x == 2 && y == 2)
+                    //{
+                    //    texts.Add((_renderedImage, _renderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
+                    //}
+                    //if (x == 2 && y == 3)
+                    //{
+                    //    texts.Add((_notRenderedImage, _notRenderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
+                    //}
+                    //if (x == 3 && y == 2)
+                    //{
+                    //    texts.Add((_notRenderedImage, _notRenderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
+                    //}
+                    //if (x == 3 && y == 3)
+                    //{
+                    //    texts.Add((_notRenderedImage, _notRenderedTex, midpoint.x, midpoint.y + SMALL_TEXT_OFFSET, SMALL_TEXT_SCALE));
+                    //}
                     
                     if (_renderedObjectTex != -1)
                     {
