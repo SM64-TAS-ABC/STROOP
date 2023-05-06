@@ -28,9 +28,7 @@ namespace STROOP.Map
         private static float ARROW_CLOSER_OFFSET = 28;
         private static float ARROW_DOUBLE_OFFSET = 45;
         private static float ARROW_DOUBLE_CLOSER_OFFSET = 33;
-        private static float ARROW_DOUBLE_SCALE => 0.9f;
-        private static float IMAGE_HEIGHT = 155;
-        private static float IMAGE_WIDTH = 155;
+        private static float ARROW_DOUBLE_SCALE = 0.9f;
         private static float IMAGE_OFFSET = 0;
 
         private static Color lightRed = Color.FromArgb(255, 213, 213);
@@ -143,6 +141,37 @@ namespace STROOP.Map
         public override void DrawOn3DControl()
         {
             // do nothing
+        }
+
+        Dictionary<(int, int), int> _heightDictionary =
+            new Dictionary<(int, int), int>()
+            {
+                [(251, 355)] = 150,
+                [(217, 215)] = 130,
+                [(222, 241)] = 130,
+                [(176, 170)] = 130,
+                [(575, 438)] = 115,
+                [(260, 261)] = 130,
+                [(384, 244)] = 100,
+                [(239, 354)] = 130,
+                [(334, 353)] = 130,
+                [(245, 213)] = 130,
+                [(191, 177)] = 120,
+            };
+
+        public float GetImageHeight()
+        {
+            if (_renderedObjectImage == null)
+            {
+                return 300;
+            }
+
+            if (_heightDictionary.ContainsKey((_renderedObjectImage.Width, _renderedObjectImage.Height)))
+            {
+                return _heightDictionary[(_renderedObjectImage.Width, _renderedObjectImage.Height)];
+            }
+
+            return 300;
         }
 
         private List<List<(float x, float y, Color color)>> GetSquares()
@@ -259,7 +288,7 @@ namespace STROOP.Map
                         if (x == 2 && y == 2)
                         {
                             texts.Add((_renderedObjectImage, _renderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET,
-                                Math.Min(IMAGE_HEIGHT / _renderedObjectImage.Height, IMAGE_WIDTH / _renderedObjectImage.Width)));
+                                GetImageHeight() / _renderedObjectImage.Height));
                         }
                     }
                     if (_notRenderedObjectTex != -1)
@@ -267,17 +296,17 @@ namespace STROOP.Map
                         if (x == 2 && y == 3)
                         {
                             texts.Add((_notRenderedObjectImage, _notRenderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET,
-                                Math.Min(IMAGE_HEIGHT / _notRenderedObjectImage.Height, IMAGE_WIDTH / _notRenderedObjectImage.Width)));
+                                GetImageHeight() / _notRenderedObjectImage.Height));
                         }
                         if (x == 3 && y == 2)
                         {
                             texts.Add((_notRenderedObjectImage, _notRenderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET,
-                                Math.Min(IMAGE_HEIGHT / _notRenderedObjectImage.Height, IMAGE_WIDTH / _notRenderedObjectImage.Width)));
+                                GetImageHeight() / _notRenderedObjectImage.Height));
                         }
                         if (x == 3 && y == 3)
                         {
                             texts.Add((_notRenderedObjectImage, _notRenderedObjectTex, midpoint.x, midpoint.y + IMAGE_OFFSET,
-                                Math.Min(IMAGE_HEIGHT / _notRenderedObjectImage.Height, IMAGE_WIDTH / _notRenderedObjectImage.Width)));
+                                GetImageHeight() / _notRenderedObjectImage.Height));
                         }
                     }
 
