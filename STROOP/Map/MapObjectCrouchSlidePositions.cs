@@ -47,12 +47,18 @@ namespace STROOP.Map
             public readonly float X;
             public readonly float Y;
             public readonly float Z;
+            public readonly ushort Angle;
 
-            public CrouchSlidePoint(float x, float y, float z)
+            public CrouchSlidePoint(
+                float x,
+                float y,
+                float z,
+                ushort angle)
             {
                 X = x;
                 Y = y;
                 Z = z;
+                Angle = angle;
             }
         }
 
@@ -132,7 +138,7 @@ namespace STROOP.Map
                             terrainType: terrainType,
                             new Input(x, y));
                     CrouchSlideCalculator.act_crouch_slide(marioState);
-                    CrouchSlidePoint point = new CrouchSlidePoint(marioState.X, marioState.Y, marioState.Z);
+                    CrouchSlidePoint point = new CrouchSlidePoint(marioState.X, marioState.Y, marioState.Z, marioState.MarioAngle);
                     storedPoints.Add(point);
                 }
             }
@@ -150,12 +156,13 @@ namespace STROOP.Map
                 Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
+                float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(p.Angle) : 0;
                 double opacity = Opacity;
                 if (this == hoverData?.MapObject && i == hoverData?.Index)
                 {
                     opacity = MapUtilities.GetHoverOpacity();
                 }
-                MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, 0, opacity);
+                MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, angleDegrees, opacity);
             }
 
             if (LineWidth != 0)
@@ -180,12 +187,13 @@ namespace STROOP.Map
                 Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
+                float angleDegrees = Rotates ? MapUtilities.ConvertAngleForControl(p.Angle) : 0;
                 double opacity = Opacity;
                 if (this == hoverData?.MapObject && i == hoverData?.Index)
                 {
                     opacity = MapUtilities.GetHoverOpacity();
                 }
-                MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, 0, opacity);
+                MapUtilities.DrawTexture(_customImageTex ?? _tex, point, size, angleDegrees, opacity);
             }
 
             if (LineWidth != 0)
@@ -205,7 +213,7 @@ namespace STROOP.Map
 
             foreach (var p in points)
             {
-                Matrix4 viewMatrix = GetModelMatrix(p.X, p.Y, p.Z);
+                Matrix4 viewMatrix = GetModelMatrix(p.X, p.Y, p.Z, p.Angle);
                 GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
 
                 Map3DVertex[] vertices = GetVertices();
@@ -231,18 +239,19 @@ namespace STROOP.Map
             }
         }
 
-        public Matrix4 GetModelMatrix(float x, float y, float z)
+        public Matrix4 GetModelMatrix(float x, float y, float z, float ang)
         {
             Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
             SizeF _imageNormalizedSize = new SizeF(
                 image.Width >= image.Height ? 1.0f : (float)image.Width / image.Height,
                 image.Width <= image.Height ? 1.0f : (float)image.Height / image.Width);
 
+            float angle = Rotates ? (float)MoreMath.AngleUnitsToRadians(ang - MapConfig.Map3DCameraYaw + 32768) : 0;
             Vector3 pos = new Vector3(x, y, z);
 
             float size = Size / 200;
             return Matrix4.CreateScale(size * _imageNormalizedSize.Width, size * _imageNormalizedSize.Height, 1)
-                * Matrix4.CreateRotationZ(0)
+                * Matrix4.CreateRotationZ(angle)
                 * Matrix4.CreateScale(1.0f / Config.Map3DGraphics.NormalizedWidth, 1.0f / Config.Map3DGraphics.NormalizedHeight, 1)
                 * Matrix4.CreateTranslation(MapUtilities.GetPositionOnViewFromCoordinate(pos));
         }
