@@ -233,5 +233,10 @@ namespace STROOP.Structs
             }
             return output;
         }
+
+        public static List<TriangleDataModel> GetTrianglesInCell(int cellX, int cellZ, bool staticPartition, TriangleClassification classification)
+        {
+            return GetTriangleAddressesInCell(cellX, cellZ, staticPartition, classification).ConvertAll(address => TriangleDataModel.CreateLazy(address));
+        }
     }
 }
