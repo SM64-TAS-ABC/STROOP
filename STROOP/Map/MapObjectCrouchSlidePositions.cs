@@ -316,6 +316,14 @@ namespace STROOP.Map
             ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(point.X, point.Y, point.Z, "Position");
             output.Insert(0, copyPositionItem);
 
+            var infos = GetInfoFromMarioState(point);
+            foreach (var info in infos)
+            {
+                ToolStripMenuItem copyItem = new ToolStripMenuItem($"Copy {info.Item1}");
+                copyItem.Click += (sender, e) => Clipboard.SetText(info.Item2.ToString());
+                output.Add(copyItem);
+            }
+
             return output;
         }
     }
