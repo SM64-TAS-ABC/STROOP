@@ -466,6 +466,7 @@
     <Compile Include="Map\MapObjectAllMapObjectsWithName.cs" />
     <Compile Include="Map\MapObjectAllObjectWall.cs" />
     <Compile Include="Map\MapObjectCameraFocus.cs" />
+    <Compile Include="Map\MapObjectCrouchSlidePositions.cs" />
     <Compile Include="Map\MapObjectRenderTable.cs" />
     <Compile Include="Map\MapObjectPyramidPlatformNormals.cs" />
     <Compile Include="Map\MapObjectFlyGuyZoneDividers.cs" />

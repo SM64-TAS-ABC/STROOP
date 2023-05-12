@@ -383,6 +383,14 @@ namespace STROOP.Managers
                 Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
             };
 
+            ToolStripMenuItem itemCrouchSlidePositions = new ToolStripMenuItem("Add Tracker for Crouch Slide Positions");
+            itemCrouchSlidePositions.Click += (sender, e) =>
+            {
+                MapObject mapObj = new MapObjectCrouchSlidePositions();
+                MapTracker tracker = new MapTracker(mapObj);
+                Config.MapGui.flowLayoutPanelMapTrackers.AddNewControl(tracker);
+            };
+
             ToolStripMenuItem itemCUpFloorTris = new ToolStripMenuItem("Add Tracker for C-Up Floor Tris");
             itemCUpFloorTris.Click += (sender, e) =>
             {
@@ -644,6 +652,7 @@ namespace STROOP.Managers
             itemMarioPositions.DropDownItems.Add(itemIwerlipses);
             itemMarioPositions.DropDownItems.Add(itemNextPositions);
             itemMarioPositions.DropDownItems.Add(itemPreviousPositions);
+            itemMarioPositions.DropDownItems.Add(itemCrouchSlidePositions);
 
             ToolStripMenuItem itemMarioMove = new ToolStripMenuItem("Mario Move...");
             itemMarioMove.DropDownItems.Add(itemCUpFloorTris);
