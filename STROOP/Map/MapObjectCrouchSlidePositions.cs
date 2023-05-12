@@ -34,6 +34,8 @@ namespace STROOP.Map
 
         private List<SlidingMarioState> storedPoints = new List<SlidingMarioState>();
 
+        private bool _isPaused = false;
+
         private int _tex = -1;
 
         public MapObjectCrouchSlidePositions()
@@ -44,6 +46,11 @@ namespace STROOP.Map
 
         private List<SlidingMarioState> GetPoints()
         {
+            if (_isPaused)
+            {
+                return storedPoints;
+            }
+
             float testMarioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
             float testMarioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
             float testMarioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
@@ -334,6 +341,24 @@ namespace STROOP.Map
             }
 
             return output;
+        }
+
+        public override ContextMenuStrip GetContextMenuStrip()
+        {
+            if (_contextMenuStrip == null)
+            {
+                ToolStripMenuItem itemPause = new ToolStripMenuItem("Pause");
+                itemPause.Click += (sender, e) =>
+                {
+                    _isPaused = !_isPaused;
+                    itemPause.Checked = _isPaused;
+                };
+
+                _contextMenuStrip = new ContextMenuStrip();
+                _contextMenuStrip.Items.Add(itemPause);
+            }
+
+            return _contextMenuStrip;
         }
     }
 }
