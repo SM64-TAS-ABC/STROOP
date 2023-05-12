@@ -124,6 +124,26 @@ namespace STROOP.Map
             return storedPoints;
         }
 
+        public List<(string, object)> GetInfoFromMarioState(SlidingMarioState marioState)
+        {
+            return new List<(string, object)>()
+            {
+                ("X", marioState.Input.X),
+                ("Y", marioState.Input.Y),
+                ("hSpeed", marioState.HSpeed),
+                ("facingYaw", marioState.MarioAngle),
+                ("slidingYaw", marioState.SlidingAngle),
+                ("puX", PuUtilities.GetPuIndex(marioState.X)),
+                ("puZ", PuUtilities.GetPuIndex(marioState.Z)),
+            };
+        }
+
+        public string GetInfoString(SlidingMarioState marioState)
+        {
+            List<string> tokens = GetInfoFromMarioState(marioState).ConvertAll(p => p.Item1 + "=" + p.Item2);
+            return string.Join(" ", tokens);
+        }
+
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
             List<SlidingMarioState> points = GetPoints();
@@ -258,8 +278,7 @@ namespace STROOP.Map
                 double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
                 if (dist <= radius || forceCursorPosition)
                 {
-                    string info = $"hSpeed={point.HSpeed} facingYaw={point.MarioAngle} slidingYaw={point.SlidingAngle} puX={PuUtilities.GetPuIndex(point.X)} puZ={PuUtilities.GetPuIndex(point.Z)}";
-                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.X, point.Y, point.Z, index: i, info: info);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.X, point.Y, point.Z, index: i, info: GetInfoString(point));
                 }
             }
             return null;
@@ -281,8 +300,7 @@ namespace STROOP.Map
                 double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
                 if (dist <= radius || forceCursorPosition)
                 {
-                    string info = $"hSpeed={point.HSpeed} facingYaw={point.MarioAngle} slidingYaw={point.SlidingAngle} puX={PuUtilities.GetPuIndex(point.X)} puZ={PuUtilities.GetPuIndex(point.Z)}";
-                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.X, point.Y, point.Z, index: i, info: info);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.X, point.Y, point.Z, index: i, info: GetInfoString(point));
                 }
             }
             return null;

@@ -30,6 +30,7 @@ namespace STROOP.Structs
         public float FloorHeight;
         public TriangleDataModel Wall;
         public short TerrainType;
+        public Input Input;
         public ushort IntendedAngle;
         public float IntendedMagnitude;
 
@@ -69,6 +70,7 @@ namespace STROOP.Structs
             FloorHeight = floorHeight;
             Wall = wall;
             TerrainType = terrainType;
+            Input = input;
             IntendedAngle = MoreMath.CalculateAngleFromInputs(input.X, input.Y, cameraAngle);
             IntendedMagnitude = input.GetScaledMagnitude();
         }
