@@ -19,6 +19,21 @@ namespace STROOP.Map
 {
     public class MapObjectCrouchSlidePositions : MapObject
     {
+        private float storedMarioX = 0;
+        private float storedMarioY = 0;
+        private float storedMarioZ = 0;
+        private float storedXSpeed = 0;
+        private float storedYSpeed = 0;
+        private float storedZSpeed = 0;
+        private float storedHSpeed = 0;
+        private float storedSlidingSpeedX = 0;
+        private float storedSlidingSpeedZ = 0;
+        private ushort storedSlidingAngle = 0;
+        private ushort storedMarioAngle = 0;
+        private ushort storedCameraAngle = 0;
+
+        private List<CrouchSlidePoint> storedPoints = new List<CrouchSlidePoint>();
+
         private int _tex = -1;
 
         public MapObjectCrouchSlidePositions()
@@ -43,30 +58,85 @@ namespace STROOP.Map
 
         private List<CrouchSlidePoint> GetPoints()
         {
-            SlidingMarioState marioState =
-                new SlidingMarioState(
-                    x: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset),
-                    y: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset),
-                    z: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset),
-                    xSpeed: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XSpeedOffset),
-                    ySpeed: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YSpeedOffset),
-                    zSpeed: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZSpeedOffset),
-                    hSpeed: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset),
-                    slidingSpeedX: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset),
-                    slidingSpeedZ: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset),
-                    slidingAngle: Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset),
-                    marioAngle: Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset),
-                    cameraAngle: Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset),
-                    action: Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.ActionOffset),
-                    floor: TriangleDataModel.CreateLazy(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset)),
-                    floorHeight: Config.Stream.GetFloat(MarioConfig.StructAddress + 0x70),
-                    wall: TriangleDataModel.CreateLazy(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset)),
-                    terrainType: Config.Stream.GetShort(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.AreaPointerOffset) + 0x2),
-                    new Input(30, 30));
+            float testMarioX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float testMarioY = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float testMarioZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float testXSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XSpeedOffset);
+            float testYSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YSpeedOffset);
+            float testZSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZSpeedOffset);
+            float testHSpeed = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            float testSlidingSpeedX = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            float testSlidingSpeedZ = Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            ushort testSlidingAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset);
+            ushort testMarioAngle = Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            ushort testCameraAngle = Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset);
 
-            CrouchSlideCalculator.act_crouch_slide(marioState);
+            if (testMarioX == storedMarioX &&
+                testMarioY == storedMarioY &&
+                testMarioZ == storedMarioZ &&
+                testXSpeed == storedXSpeed &&
+                testYSpeed == storedYSpeed &&
+                testZSpeed == storedZSpeed &&
+                testHSpeed == storedHSpeed &&
+                testSlidingSpeedX == storedSlidingSpeedX &&
+                testSlidingSpeedZ == storedSlidingSpeedZ &&
+                testSlidingAngle == storedSlidingAngle &&
+                testMarioAngle == storedMarioAngle &&
+                testCameraAngle == storedCameraAngle)
+            {
+                return storedPoints;
+            }
 
-            return new List<CrouchSlidePoint>() { new CrouchSlidePoint(marioState.X, marioState.Y, marioState.Z) };
+            storedMarioX = testMarioX;
+            storedMarioY = testMarioY;
+            storedMarioZ = testMarioZ;
+            storedXSpeed = testXSpeed;
+            storedYSpeed = testYSpeed;
+            storedZSpeed = testZSpeed;
+            storedHSpeed = testHSpeed;
+            storedSlidingSpeedX = testSlidingSpeedX;
+            storedSlidingSpeedZ = testSlidingSpeedZ;
+            storedSlidingAngle = testSlidingAngle;
+            storedMarioAngle = testMarioAngle;
+            storedCameraAngle = testCameraAngle;
+
+            uint action = Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.ActionOffset);
+            TriangleDataModel floor = TriangleDataModel.CreateLazy(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset));
+            float floorHeight = Config.Stream.GetFloat(MarioConfig.StructAddress + 0x70);
+            TriangleDataModel wall = TriangleDataModel.CreateLazy(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset));
+            short terrainType = Config.Stream.GetShort(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.AreaPointerOffset) + 0x2);
+
+            storedPoints.Clear();
+            for (int x = -128; x <= 127; x++)
+            {
+                for (int y = -128; y <= 127; y++)
+                {
+                    SlidingMarioState marioState =
+                        new SlidingMarioState(
+                            x: testMarioX,
+                            y: testMarioY,
+                            z: testMarioZ,
+                            xSpeed: testXSpeed,
+                            ySpeed: testYSpeed,
+                            zSpeed: testZSpeed,
+                            hSpeed: testHSpeed,
+                            slidingSpeedX: testSlidingSpeedX,
+                            slidingSpeedZ: testSlidingSpeedZ,
+                            slidingAngle: testSlidingAngle,
+                            marioAngle: testMarioAngle,
+                            cameraAngle: testCameraAngle,
+                            action: action,
+                            floor: floor,
+                            floorHeight: floorHeight,
+                            wall: wall,
+                            terrainType: terrainType,
+                            new Input(x, y));
+                    CrouchSlideCalculator.act_crouch_slide(marioState);
+                    CrouchSlidePoint point = new CrouchSlidePoint(marioState.X, marioState.Y, marioState.Z);
+                    storedPoints.Add(point);
+                }
+            }
+            return storedPoints;
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
