@@ -13,6 +13,7 @@ using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using STROOP.Map.Map3D;
+using STROOP.Models;
 
 namespace STROOP.Map
 {
@@ -42,7 +43,30 @@ namespace STROOP.Map
 
         private List<CrouchSlidePoint> GetPoints()
         {
-            return new List<CrouchSlidePoint>() { new CrouchSlidePoint(100, 100, 100) };
+            SlidingMarioState marioState =
+                new SlidingMarioState(
+                    x: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XOffset),
+                    y: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YOffset),
+                    z: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZOffset),
+                    xSpeed: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.XSpeedOffset),
+                    ySpeed: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.YSpeedOffset),
+                    zSpeed: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.ZSpeedOffset),
+                    hSpeed: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.HSpeedOffset),
+                    slidingSpeedX: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset),
+                    slidingSpeedZ: Config.Stream.GetFloat(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset),
+                    slidingAngle: Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset),
+                    marioAngle: Config.Stream.GetUShort(MarioConfig.StructAddress + MarioConfig.FacingYawOffset),
+                    cameraAngle: Config.Stream.GetUShort(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset),
+                    action: Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.ActionOffset),
+                    floor: TriangleDataModel.CreateLazy(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset)),
+                    floorHeight: Config.Stream.GetFloat(MarioConfig.StructAddress + 0x70),
+                    wall: TriangleDataModel.CreateLazy(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset)),
+                    terrainType: Config.Stream.GetShort(Config.Stream.GetUInt(MarioConfig.StructAddress + MarioConfig.AreaPointerOffset) + 0x2),
+                    new Input(30, 30));
+
+            CrouchSlideCalculator.act_crouch_slide(marioState);
+
+            return new List<CrouchSlidePoint>() { new CrouchSlidePoint(marioState.X, marioState.Y, marioState.Z) };
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
