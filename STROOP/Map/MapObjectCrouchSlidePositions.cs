@@ -26,19 +26,33 @@ namespace STROOP.Map
             LineWidth = 0;
         }
 
-        private List<(float x, float y, float z)> GetPoints()
+        private class CrouchSlidePoint
         {
-            return new List<(float x, float y, float z)>() { (100, 100, 100) };
+            public readonly float X;
+            public readonly float Y;
+            public readonly float Z;
+
+            public CrouchSlidePoint(float x, float y, float z)
+            {
+                X = x;
+                Y = y;
+                Z = z;
+            }
+        }
+
+        private List<CrouchSlidePoint> GetPoints()
+        {
+            return new List<CrouchSlidePoint>() { new CrouchSlidePoint(100, 100, 100) };
         }
 
         public override void DrawOn2DControlTopDownView(MapObjectHoverData hoverData)
         {
-            List<(float x, float y, float z)> points = GetPoints();
+            List<CrouchSlidePoint> points = GetPoints();
 
             for (int i = 0; i <points.Count; i++)
             {
                 var p = points[i];
-                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(p.x, p.z, UseRelativeCoordinates);
+                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlTopDownView(p.X, p.Z, UseRelativeCoordinates);
                 Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
@@ -56,19 +70,19 @@ namespace STROOP.Map
                 {
                     var p1 = points[i];
                     var p2 = points[i + 1];
-                    MapUtilities.DrawLinesOn2DControlTopDownView(new List<(float x, float y, float z)>() { p1, p2 }, LineWidth, LineColor, 255, UseRelativeCoordinates);
+                    //MapUtilities.DrawLinesOn2DControlTopDownView(new List<(float x, float y, float z)>() { p1, p2 }, LineWidth, LineColor, 255, UseRelativeCoordinates);
                 }
             }
         }
 
         public override void DrawOn2DControlOrthographicView(MapObjectHoverData hoverData)
         {
-            List<(float x, float y, float z)> points = GetPoints();
+            List<CrouchSlidePoint> points = GetPoints();
 
             for (int i = 0; i < points.Count; i++)
             {
                 var p = points[i];
-                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(p.x, p.y, p.z, UseRelativeCoordinates);
+                (float x, float z) positionOnControl = MapUtilities.ConvertCoordsForControlOrthographicView(p.X, p.Y, p.Z, UseRelativeCoordinates);
                 Image image = _customImage ?? Config.ObjectAssociations.GreenMarioMapImage;
                 SizeF size = MapUtilities.ScaleImageSizeForControl(image.Size, Size, Scales);
                 PointF point = new PointF(positionOnControl.x, positionOnControl.z);
@@ -86,18 +100,18 @@ namespace STROOP.Map
                 {
                     var p1 = points[i];
                     var p2 = points[i + 1];
-                    MapUtilities.DrawLinesOn2DControlOrthographicView(new List<(float x, float y, float z)>() { p1, p2 }, LineWidth, LineColor, 255, UseRelativeCoordinates);
+                    //MapUtilities.DrawLinesOn2DControlOrthographicView(new List<(float x, float y, float z)>() { p1, p2 }, LineWidth, LineColor, 255, UseRelativeCoordinates);
                 }
             }
         }
 
         public override void DrawOn3DControl()
         {
-            List<(float x, float y, float z)> points = GetPoints();
+            List<CrouchSlidePoint> points = GetPoints();
 
             foreach (var p in points)
             {
-                Matrix4 viewMatrix = GetModelMatrix(p.x, p.y, p.z);
+                Matrix4 viewMatrix = GetModelMatrix(p.X, p.Y, p.Z);
                 GL.UniformMatrix4(Config.Map3DGraphics.GLUniformView, false, ref viewMatrix);
 
                 Map3DVertex[] vertices = GetVertices();
@@ -118,7 +132,7 @@ namespace STROOP.Map
                 {
                     var p1 = points[i];
                     var p2 = points[i + 1];
-                    MapUtilities.DrawLinesOn3DControl(new List<(float x, float y, float z)>() { p1, p2 }, LineWidth, LineColor, 255, GetModelMatrix());
+                    //MapUtilities.DrawLinesOn3DControl(new List<(float x, float y, float z)>() { p1, p2 }, LineWidth, LineColor, 255, GetModelMatrix());
                 }
             }
         }
@@ -178,7 +192,7 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataTopDownView(bool isForObjectDrag, bool forceCursorPosition)
         {
-            List<(float x, float y, float z)> points = GetPoints();
+            List<CrouchSlidePoint> points = GetPoints();
 
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
             if (!relPosMaybe.HasValue) return null;
@@ -188,11 +202,11 @@ namespace STROOP.Map
             for (int i = points.Count - 1; i >= 0; i--)
             {
                 var point = points[i];
-                double dist = MoreMath.GetDistanceBetween(point.x, point.z, inGameX, inGameZ);
+                double dist = MoreMath.GetDistanceBetween(point.X, point.Z, inGameX, inGameZ);
                 double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
                 if (dist <= radius || forceCursorPosition)
                 {
-                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.x, point.y, point.z, index: i);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.X, point.Y, point.Z, index: i);
                 }
             }
             return null;
@@ -200,7 +214,7 @@ namespace STROOP.Map
 
         public override MapObjectHoverData GetHoverDataOrthographicView(bool isForObjectDrag, bool forceCursorPosition)
         {
-            List<(float x, float y, float z)> points = GetPoints();
+            List<CrouchSlidePoint> points = GetPoints();
 
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
             if (!relPosMaybe.HasValue) return null;
@@ -209,12 +223,12 @@ namespace STROOP.Map
             for (int i = points.Count - 1; i >= 0; i--)
             {
                 var point = points[i];
-                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(point.x, point.y, point.z, UseRelativeCoordinates);
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlOrthographicView(point.X, point.Y, point.Z, UseRelativeCoordinates);
                 double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
                 double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
                 if (dist <= radius || forceCursorPosition)
                 {
-                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.x, point.y, point.z, index: i);
+                    return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.X, point.Y, point.Z, index: i);
                 }
             }
             return null;
@@ -222,12 +236,12 @@ namespace STROOP.Map
 
         public override List<ToolStripItem> GetHoverContextMenuStripItems(MapObjectHoverData hoverData)
         {
-            List<(float x, float y, float z)> points = GetPoints();
+            List<CrouchSlidePoint> points = GetPoints();
 
             List<ToolStripItem> output = base.GetHoverContextMenuStripItems(hoverData);
 
             var point = points[hoverData.Index.Value];
-            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(point.x, point.y, point.z, "Position");
+            ToolStripMenuItem copyPositionItem = MapUtilities.CreateCopyItem(point.X, point.Y, point.Z, "Position");
             output.Insert(0, copyPositionItem);
 
             return output;
