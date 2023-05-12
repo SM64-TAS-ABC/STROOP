@@ -276,13 +276,13 @@ namespace STROOP.Map
             Point? relPosMaybe = MapObjectHoverData.GetPositionMaybe(isForObjectDrag, forceCursorPosition);
             if (!relPosMaybe.HasValue) return null;
             Point relPos = relPosMaybe.Value;
-            (float inGameX, float inGameZ) = MapUtilities.ConvertCoordsForInGameTopDownView(relPos.X, relPos.Y);
 
             for (int i = points.Count - 1; i >= 0; i--)
             {
                 var point = points[i];
-                double dist = MoreMath.GetDistanceBetween(point.X, point.Z, inGameX, inGameZ);
-                double radius = Scales ? Size : Size / Config.CurrentMapGraphics.MapViewScaleValue;
+                (float controlX, float controlZ) = MapUtilities.ConvertCoordsForControlTopDownView(point.X, point.Z, UseRelativeCoordinates);
+                double dist = MoreMath.GetDistanceBetween(controlX, controlZ, relPos.X, relPos.Y);
+                double radius = Scales ? Size * Config.CurrentMapGraphics.MapViewScaleValue : Size;
                 if (dist <= radius || forceCursorPosition)
                 {
                     return new MapObjectHoverData(this, MapObjectHoverDataEnum.Icon, point.X, point.Y, point.Z, index: i, info: GetInfoString(point));
